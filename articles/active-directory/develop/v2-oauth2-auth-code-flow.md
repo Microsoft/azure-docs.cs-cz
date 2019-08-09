@@ -1,6 +1,6 @@
 ---
-title: Platforma identit Microsoft a toku kódu autorizace OAuth | Azure
-description: Vytváření webových aplikací pomocí Microsoft identity platform implementace ověřovacího protokolu OAuth 2.0.
+title: Microsoft Identity Platform a tok autorizačního kódu OAuth | Azure
+description: Vytváření webových aplikací s využitím implementace ověřovacího protokolu OAuth 2,0 od Microsoft Identity Platform.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -16,35 +16,35 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8244707ec44b9afc51d5f2c21c3e95ff0692cfb
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: abdf60d92f51fdb34f36599aa7f4019b2adb8475
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482343"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852234"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma identit Microsoft a tok autorizačního kódu OAuth 2.0
+# <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Udělení autorizačního kódu OAuth 2.0 je možné v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. Pomocí Microsoft identity platform provádění OAuth 2.0, můžete přidat přihlášení a přístup k rozhraní API do vašich mobilních a desktopových aplikací. Tato příručka je nezávislá na jazyce a popisuje, jak posílat a přijímat zprávy HTTP bez použití [ověřování Azure open source knihoven](reference-v2-libraries.md).
+Udělení autorizačního kódu OAuth 2,0 se dá použít v aplikacích, které jsou nainstalované na zařízení, aby získal přístup k chráněným prostředkům, například k webovým rozhraním API. Pomocí implementace OAuth 2,0 pro Microsoft Identity Platform můžete přidat přihlašování a přístup k rozhraní API pro mobilní a desktopové aplikace. Tato příručka je nezávislá na jazyce a popisuje, jak odesílat a přijímat zprávy HTTP bez použití žádné knihovny pro [ověřování Azure Open Source](reference-v2-libraries.md).
 
 > [!NOTE]
-> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány bodem Microsoft identity platform. Chcete-li zjistit, zda by měl používat Microsoft identity platform endpoint, přečtěte si informace o [Microsoft identity platform omezení](active-directory-v2-limitations.md).
+> Ne všechny scénáře Azure Active Directory & funkce jsou podporovány koncovým bodem platformy Microsoft Identity Platform. Pokud chcete zjistit, jestli byste měli použít koncový bod platformy Microsoft identity, přečtěte si informace o [omezeních platformy Microsoft Identity](active-directory-v2-limitations.md).
 
-Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](https://tools.ietf.org/html/rfc6749). Používá se k provedení ověřování a autorizace ve většině typů aplikací, včetně [webové aplikace](v2-app-types.md#web-apps) a [nativně nainstalované aplikace](v2-app-types.md#mobile-and-native-apps). Tento tok umožňuje aplikacím bezpečně získat access_tokens, který slouží pro přístup k prostředkům zabezpečeným přes koncový bod Microsoft identity platform.
+Tok autorizačního kódu OAuth 2,0 je popsaný v [části 4,1 specifikace oauth 2,0](https://tools.ietf.org/html/rfc6749). Používá se k ověřování a autorizaci ve většině typů aplikací, včetně [webových aplikací](v2-app-types.md#web-apps) a nativně [nainstalovaných aplikací](v2-app-types.md#mobile-and-native-apps). Tok umožňuje aplikacím bezpečně získat access_tokens, které se dají použít k přístupu k prostředkům zabezpečeným koncovým bodem platformy Microsoft identity.
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 
-Na vysoké úrovni tok celý ověření pro nativní/mobilní aplikace vypadá trochu takto:
+V nejvyšší úrovni vypadá celý tok ověřování pro nativní nebo mobilní aplikace podobným způsobem:
 
 ![Tok kódu ověřování OAuth](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
-## <a name="request-an-authorization-code"></a>Žádost o autorizační kód
+## <a name="request-an-authorization-code"></a>Vyžádání autorizačního kódu
 
-Tok autorizačního kódu začíná klienta směruje uživatele `/authorize` koncového bodu. V této žádosti klient naznačuje oprávnění, která je potřeba získat od uživatele:
+Tok autorizačního kódu začíná klientem, který uživatele přesměruje na `/authorize` koncový bod. V této žádosti klient indikuje oprávnění, která potřebuje k získání od uživatele:
 
 ```
 // Line breaks for legibility only
@@ -59,31 +59,31 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Klikněte na odkaz níže k provedení tohoto požadavku. Po přihlášení by měl prohlížeč přesměrován na `https://localhost/myapp/` s `code` do adresního řádku.
+> Pro spuštění této žádosti klikněte na odkaz níže. Po přihlášení by měl být `https://localhost/myapp/` `code` v prohlížeči přesměrován na adresu na adresním řádku.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Parametr    | Požadované a volitelné | Popis |
+| Parametr    | Požadováno/volitelné | Popis |
 |--------------|-------------|--------------|
-| `tenant`    | Vyžaduje    | `{tenant}` Hodnota v cestě požadavku je možné řídit, kdo se můžete přihlásit do aplikace. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátorů klienta. Další podrobnosti najdete v části [protokol Základy](active-directory-v2-protocols.md#endpoints).  |
-| `client_id`   | Vyžaduje    | **ID aplikace (klient)** , který [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené vaší aplikaci.  |
-| `response_type` | Vyžaduje    | Musí zahrnovat `code` pro tok autorizačního kódu.       |
-| `redirect_uri`  | Vyžaduje | Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. Pro nativní a mobilní aplikace, byste měli použít výchozí hodnotu `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
-| `scope`  | Vyžaduje    | Místo oddělený seznam [obory](v2-permissions-and-consent.md) , že má uživatel vyjádřit souhlas.  Pro `/authorize` fáze požadavku, se může vztahovat na více zdrojů, umožňuje aplikaci vyžadovat souhlas pro několik webových rozhraní API, kterou chcete volat. |
-| `response_mode`   | Doporučené | Určuje metodu, která se má použít k odeslání výsledný token zpátky do vaší aplikace. Může být jedna z následujících akcí:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` poskytuje kód jako parametru řetězce dotazu na váš identifikátor URI pro přesměrování. Pokud se požaduje token ID pomocí implicitního toku, nemůžete použít `query` podle [OpenID specifikace](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete přesně takový kód, můžete použít `query`, `fragment`, nebo `form_post`. `form_post` provede příspěvek, který obsahuje kód, který váš identifikátor URI pro přesměrování. Další informace najdete v tématu [protokolu OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
-| `state`                 | Doporučené | Hodnota v požadavku, která se také vrátit v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Hodnota můžete kódovat také informace o stavu uživatele v aplikaci, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
-| `prompt`  | Volitelné    | Určuje typ interakce s uživatelem, který je požadován. V tuto chvíli pouze platné hodnoty jsou `login`, `none`, a `consent`.<br/><br/>- `prompt=login` Vynutí uživatele k zadání přihlašovacích údajů tohoto požadavku negace jednotného přihlašování.<br/>- `prompt=none` je opakem – zajistí, že uživatel se nezobrazí se žádné interaktivní výzvu jakýmkoli způsobem. Pokud nemůže požadavek dokončit tiše prostřednictvím jednotného přihlašování, koncový bod Microsoft identity platform vrátí `interaction_required` chyby.<br/>- `prompt=consent` Dialogové okno souhlasu OAuth se aktivuje, až se uživatel přihlásí, s výzvou uživateli udělit oprávnění k aplikaci. |
-| `login_hint`  | Volitelné    | Umožňuje předem vyplnit pole uživatelské jméno nebo e-mailová adresa stránky přihlášení pro uživatele, pokud znáte svoje uživatelské jméno předem. Často aplikace bude používat tento parametr během opětovné ověření uživatelského jména s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity.   |
-| `domain_hint`  | Volitelné    | Může být jedna z `consumers` nebo `organizations`.<br/><br/>Pokud zahrnutý, budou přeskočeny procesu zjišťování na základě e-mailu uživatele prochází na přihlašovací stránku, což vede k poněkud jednodušší činnost koncového uživatele. Často aplikace bude používat tento parametr během opětovné ověření extrahováním `tid` z předchozí přihlášení. Pokud `tid` deklarace identity, je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad`, měli byste použít `domain_hint=consumers`. Jinak použijte `domain_hint=organizations`.  |
-| `code_challenge_method` | Volitelné    | Metoda použitá pro kódování `code_verifier` pro `code_challenge` parametru. Může být jedna z následujících hodnot:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Pokud vyloučeny, `code_challenge` předpokládá, že je možné ve formátu prostého textu, pokud `code_challenge` je součástí. Platforma identit Microsoft podporuje obě `plain` a `S256`. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
-| `code_challenge`  | Volitelné | Používá k zabezpečení udělení autorizace kódu pomocí testování klíče pro výměnu kód (PKCE) z nativního klienta. Požadováno pokud `code_challenge_method` je součástí. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| `tenant`    | povinné    | `{tenant}` Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common`identifikátory klientů `organizations`, `consumers`, a. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints).  |
+| `client_id`   | povinné    | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci.  |
+| `response_type` | povinné    | Musí zahrnovat `code` tok autorizačního kódu.       |
+| `redirect_uri`  | povinné | Identifikátor redirect_uri vaší aplikace, kde lze odesílat a přijímat odpovědi na ověřování vaší aplikací. Musí přesně odpovídat jednomu z redirect_uris, který jste zaregistrovali na portálu, s výjimkou musí být zakódovaný URL. Pro nativní & mobilní aplikace byste měli použít výchozí hodnotu `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
+| `scope`  | povinné    | Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md) , ke kterým má uživatel udělit souhlas.  `/authorize` Pro nohy žádosti to může pokrývat více prostředků, což vaší aplikaci umožní získat souhlas s více webovými rozhraními API, která chcete volat. |
+| `response_mode`   | doporučil | Určuje metodu, která se má použít k odeslání výsledného tokenu zpátky do vaší aplikace. Může být jedna z následujících akcí:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query`poskytuje kód jako parametr řetězce dotazu v identifikátoru URI přesměrování. Pokud požadujete token ID pomocí implicitního toku, nemůžete použít `query` , jak je uvedeno ve [specifikaci OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete pouze kód, můžete použít `query`, `fragment`nebo `form_post`. `form_post`provede příspěvek obsahující kód pro identifikátor URI přesměrování. Další informace najdete v tématu [protokol OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
+| `state`                 | doporučil | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k [prevenci útoků proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Hodnota může také kódovat informace o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
+| `prompt`  | nepovinné    | Určuje typ interakce uživatele, která je povinná. Jediné platné hodnoty jsou `login`v tomto okamžiku, `none`a `consent`.<br/><br/>- `prompt=login`vynutí, aby uživatel zadal přihlašovací údaje k danému požadavku, přičemž se pro ně použije negace jednotného přihlašování.<br/>- `prompt=none`je opakem, zajistí, že se uživateli nebude zobrazovat žádná interaktivní výzva. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, vrátí `interaction_required` koncová platforma Microsoft Identity platformu chybu.<br/>- `prompt=consent`aktivuje dialog souhlasu OAuth po přihlášení uživatele a vyzve uživatele, aby aplikaci udělil oprávnění. |
+| `login_hint`  | nepovinné    | Dá se použít k předvyplnění pole uživatelské jméno a e-mailová adresa přihlašovací stránky pro uživatele, pokud znáte své uživatelské jméno předem. Aplikace budou často používat tento parametr během opakovaného ověřování, kteří už z předchozího přihlášení extrahovali uživatelské jméno, a to pomocí `preferred_username` deklarace identity.   |
+| `domain_hint`  | nepovinné    | Může to být jedna `consumers` z `organizations`nebo.<br/><br/>Pokud je zahrnuto, přeskočí proces zjišťování na základě e-mailu, který uživatel prochází na přihlašovací stránce, což vede k poněkud efektivnějšímu uživatelskému prostředí. Aplikace budou často používat tento parametr během opakovaného ověřování, a to extrakcí `tid` z předchozího přihlášení. `domain_hint=consumers`Pokud je `9188040d-6c67-4c5b-b112-36a304b66dad`hodnota deklarace identity, měli byste použít. `tid` V opačném `domain_hint=organizations`případě použijte.  |
+| `code_challenge_method` | nepovinné    | Metoda použitá k zakódování `code_verifier` `code_challenge` pro parametr. Může to být jedna z následujících hodnot:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Pokud je vyloučený, předpokládá se, že `code_challenge` je v `code_challenge` případě zahrnutí prostý text. Platforma Microsoft identity podporuje i `plain`. `S256` Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). |
+| `code_challenge`  | nepovinné | Slouží k zabezpečení autorizačního kódu prostřednictvím kontrolního klíče pro výměnu kódu (PKCE) z nativního klienta. Požadováno, `code_challenge_method` Pokud je zahrnuto. Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). |
 
-V tomto okamžiku uživatele vyzve k zadání přihlašovacích údajů a bylo možné ověření dokončit. Koncový bod Microsoft identity platform také pomohou zajistit, aby uživatel vyjádřil souhlas se oprávnění uvedená v `scope` parametr dotazu. Pokud uživatele. nevyjádřil souhlas některý z těchto oprávnění, požádá o souhlas požadovaná oprávnění. Podrobnosti o [zde uvedené aplikace s více tenanty, oprávnění a souhlas](v2-permissions-and-consent.md).
+V tomto okamžiku se uživateli zobrazí výzva k zadání přihlašovacích údajů a dokončení ověřování. Koncový bod platformy Microsoft Identity také zajistí, že uživatel souhlasí s oprávněními uvedenými v `scope` parametru dotazu. Pokud uživatel nesouhlasí s žádným z těchto oprávnění, požádá uživatele o souhlas s požadovanými oprávněními. Podrobnosti o [oprávněních, souhlasu a víceklientské aplikacích najdete tady](v2-permissions-and-consent.md).
 
-Jakmile se uživatel ověří a udělí svůj souhlas, koncový bod Microsoft identity platform vrátí odpověď na vaši aplikaci na označený `redirect_uri`, pomocí metody popsané v `response_mode` parametru.
+Jakmile uživatel ověří a udělí souhlas, koncový bod platformy Microsoft Identity Platform vrátí odpověď do vaší aplikace na uvedené `redirect_uri`adrese pomocí metody zadané `response_mode` v parametru.
 
-#### <a name="successful-response"></a>Úspěšné odpovědi
+#### <a name="successful-response"></a>Úspěšná odpověď
 
-Úspěšné odpovědi pomocí `response_mode=query` vypadá jako:
+Úspěšná odpověď pomocí `response_mode=query` vypadá takto:
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
@@ -93,12 +93,12 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 
 | Parametr | Popis  |
 |-----------|--------------|
-| `code` | Authorization_code požadovanou aplikaci. Aplikace může používat autorizační kód k vyžádání tokenu pro cílový prostředek. Authorization_codes jsou krátkodobé, obvykle platnost souhlasu vyprší po přibližně 10 minut. |
-| `state` | Pokud parametr stavu je zahrnutý v požadavku, by se zobrazit stejnou hodnotu v odpovědi. Aplikace by měl ověřit, že jsou identické hodnoty stavu v požadavku a odpovědi. |
+| `code` | Authorization_code, kterou aplikace požadovala Aplikace může pomocí autorizačního kódu požádat o přístupový token pro cílový prostředek. Authorization_codes jsou krátkodobé, obvykle vyprší po 10 minutách. |
+| `state` | Pokud je parametr State zahrnut v žádosti, v odpovědi by se měla objevit stejná hodnota. Aplikace by měla ověřit, že hodnoty stavu v žádosti a odpovědi jsou identické. |
 
-#### <a name="error-response"></a>Odpověď na chybu
+#### <a name="error-response"></a>Chybová odezva
 
-Chybové odpovědi může také být odeslán `redirect_uri` tak aplikaci můžete odpovídajícím způsobem zpracovat:
+Odpovědi na chyby mohou být také odesílány `redirect_uri` do, aby je aplikace mohla správně zpracovat:
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
@@ -108,28 +108,28 @@ error=access_denied
 
 | Parametr | Popis  |
 |----------|------------------|
-| `error`  | Řetězec kódu chyby, která slouží ke klasifikaci typy chyb, ke kterým dochází a je možné reagovat na chyby. |
-| `error_description` | Určité chybové zprávě, který vám pomůže vývojář zjistit původní příčinu chyby ověřování. |
+| `error`  | Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
+| `error_description` | Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování. |
 
-#### <a name="error-codes-for-authorization-endpoint-errors"></a>Kódy chyb pro chyby koncový bod autorizace
+#### <a name="error-codes-for-authorization-endpoint-errors"></a>Chybové kódy pro chyby koncového bodu autorizace
 
-Následující tabulka popisuje různé kódy chyb, které mohou být vráceny v `error` parametr odpovědi na chybu.
+Následující tabulka popisuje různé chybové kódy, které mohou být vráceny v `error` parametru chybové odpovědi.
 
 | Kód chyby  | Popis    | Akce klienta   |
 |-------------|----------------|-----------------|
-| `invalid_request` | Chyba protokolu, jako je například chybí povinný parametr. | Opravte a odešlete požadavek znovu. Jedná se o chybu vývoj obvykle zachycena během počátečního testování. |
-| `unauthorized_client` | Klientská aplikace není povoleno požádat o autorizační kód. | K této chybě obvykle dochází, když klientská aplikace není zaregistrovaný ve službě Azure AD nebo se nepřidal do tenanta služby Azure AD daného uživatele. Aplikace může vyzvat uživatele s pokyny pro instalaci aplikace a jeho přidání do služby Azure AD. |
-| `access_denied`  | Odepřen souhlas vlastníka prostředku  | Klientská aplikace může upozornit uživatele, který nemůže pokračovat, dokud uživatel souhlasí. |
-| `unsupported_response_type` | Autorizační server nepodporuje typ odpovědi v požadavku. | Opravte a odešlete požadavek znovu. Jedná se o chybu vývoj obvykle zachycena během počátečního testování.  |
-| `server_error`  | Na serveru došlo k neočekávané chybě.| Zkuste požadavek. Tyto chyby můžou být výsledkem dočasné situace. Klientská aplikace může vysvětlit uživatelům, že odpověď je zpožděno k dočasné chybě. |
-| `temporarily_unavailable`   | Server je dočasně příliš zaneprázdněn a nemůže žádost zpracovat. | Zkuste požadavek. Klientská aplikace může vysvětlit uživateli, odpověď se zpožďuje kvůli dočasné podmínce. |
-| `invalid_resource`  | Cílový prostředek je neplatný, protože buď neexistuje, Azure AD nelze najít nebo není správně nakonfigurovaný. | Tato chyba označuje, že prostředek, pokud existuje, nebyl nakonfigurován v tenantovi. Aplikace může vyzvat uživatele s pokyny pro instalaci aplikace a jeho přidání do služby Azure AD. |
-| `login_required` | Příliš mnoho nebo nebyli nalezeni žádní uživatelé | Klient vyžádal bezobslužné ověření (`prompt=none`), ale nepodařilo najít u jednoho uživatele. To může znamenat, že v relaci nebo žádní uživatelé jsou aktivní více uživatelů. To bere v úvahu tenanta zvolit (například, pokud existují dva aktivní účty Azure AD a jeden účet Microsoft, a `consumers` je vybrána, bude fungovat bezobslužné ověření). |
-| `interaction_required` | Požadavek vyžaduje zásah uživatele. | Je potřeba další ověřovací krok nebo souhlasu. Zkuste požadavek bez `prompt=none`. |
+| `invalid_request` | Chyba protokolu, například chybějící požadovaný parametr. | Opravte a odešlete požadavek znovu. Toto je chyba vývoje obvykle zachycena při počátečním testování. |
+| `unauthorized_client` | Klientská aplikace nemá oprávnění vyžadovat autorizační kód. | K této chybě obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
+| `access_denied`  | Vlastník prostředku zamítl souhlas.  | Klientská aplikace může uživatele informovat, že nemůže pokračovat, dokud se uživatel nesouhlasí. |
+| `unsupported_response_type` | Autorizační Server v žádosti nepodporuje typ odpovědi. | Opravte a odešlete požadavek znovu. Toto je chyba vývoje obvykle zachycena při počátečním testování.  |
+| `server_error`  | Na serveru došlo k neočekávané chybě.| Opakujte požadavek. Tyto chyby mohou být způsobeny dočasnými podmínkami. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděná na dočasnou chybu. |
+| `temporarily_unavailable`   | Server je dočasně zaneprázdněný pro zpracování žádosti. | Opakujte požadavek. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděna z důvodu dočasné podmínky. |
+| `invalid_resource`  | Cílový prostředek není platný, protože neexistuje, služba Azure AD ho nemůže najít nebo není správně nakonfigurovaná. | Tato chyba označuje prostředek, pokud existuje, není v tenantovi nakonfigurovaný. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
+| `login_required` | Bylo nalezeno příliš mnoho uživatelů. | Klient požadoval tiché ověřování (`prompt=none`), ale nenašlo se jeden uživatel. To může znamenat, že je v relaci aktivní více uživatelů, nebo žádní uživatelé. Tím se vezme v úvahu zvolený tenant (například pokud jsou aktivní dva účty Azure AD a jedna účet Microsoft a `consumers` je zvolena možnost tiché ověřování funguje). |
+| `interaction_required` | Požadavek vyžaduje zásah uživatele. | Vyžaduje se další krok ověřování nebo souhlas. Opakujte požadavek bez `prompt=none`. |
 
-## <a name="request-an-access-token"></a>Žádost o přístupový token
+## <a name="request-an-access-token"></a>Vyžádání přístupového tokenu
 
-Teď, když jste získali authorization_code a udělil oprávnění uživatele, můžete uplatnit `code` pro `access_token` u požadovaného prostředku. K tomu odesílání `POST` požádat o `/token` koncový bod:
+Teď, když jste získali authorization_code a udělili jste mu oprávnění, můžete uplatnit uplatnění `code` `access_token` pro na požadovaný prostředek. Provedete to tak `POST` , že odešlete požadavek `/token` na koncový bod:
 
 ```
 // Line breaks for legibility only
@@ -147,22 +147,22 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Pokuste se spustit tuto žádost do Postman! (Nezapomeňte nahradit `code`) [ ![zkusit spustit tento požadavek v nástroji Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Zkuste tento požadavek provést v nástroji post! (Nezapomeňte nahradit `code`) [ ![zkuste tento požadavek spustit v poli post](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d) .
 
-| Parametr  | Požadované a volitelné | Popis     |
+| Parametr  | Požadováno/volitelné | Popis     |
 |------------|-------------------|----------------|
-| `tenant`   | Vyžaduje   | `{tenant}` Hodnota v cestě požadavku je možné řídit, kdo se můžete přihlásit do aplikace. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátorů klienta. Další podrobnosti najdete v části [protokol Základy](active-directory-v2-protocols.md#endpoints).  |
-| `client_id` | Vyžaduje  | ID aplikace (klient), který [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky přiřazené vaší aplikaci. |
-| `grant_type` | Vyžaduje   | Musí být `authorization_code` pro tok autorizačního kódu.   |
-| `scope`      | Vyžaduje   | Seznam oborů oddělených mezerami. Požadovaný v této fáze obory musí být ekvivalentní, nebo jen některé obory požadovaný v první fáze. Všechny obory musí být z jednoho prostředku, společně s rozsahy OIDC (`profile`, `openid`, `email`). Podrobnější vysvětlení oborů, najdete v tématu [oprávnění, vyjádření souhlasu a obory](v2-permissions-and-consent.md). |
-| `code`          | Vyžaduje  | Authorization_code, kterou jste získali v první fáze toku. |
-| `redirect_uri`  | Vyžaduje  | Stejné redirect_uri hodnota, která byla použita k získání authorization_code. |
-| `client_secret` | vyžaduje se pro webové aplikace | Tajný klíč aplikace, kterou jste vytvořili v portálu pro registraci aplikace pro vaši aplikaci. Tajný klíč aplikace byste neměli používat v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které se budou moct bezpečně uložit hodnotu client_secret na straně serveru.  Tajný kód klienta musí být kódovaná adresou URL před odesláním.  |
-| `code_verifier` | Volitelné  | Stejné code_verifier, který se používá k získání authorization_code. Povinné, pokud PKCE použila žádost o udělení autorizace kódu. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| `tenant`   | povinné   | `{tenant}` Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common`identifikátory klientů `organizations`, `consumers`, a. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints).  |
+| `client_id` | povinné  | ID aplikace (klienta), které stránka [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená k vaší aplikaci. |
+| `grant_type` | povinné   | Musí být `authorization_code` pro tok autorizačního kódu.   |
+| `scope`      | povinné   | Mezerou oddělený seznam oborů. Rozsahy požadované v této nožkě musí být stejné jako podmnožina oborů požadovaných v první nožkě. Rozsahy musí být z jednoho prostředku, společně s OIDC obory (`profile`, `openid`, `email`). Podrobnější vysvětlení oborů najdete v tématu [oprávnění, souhlas a obory](v2-permissions-and-consent.md). |
+| `code`          | povinné  | Authorization_code, který jste získali v první nožkě toku. |
+| `redirect_uri`  | povinné  | Stejná hodnota identifikátoru redirect_uri, která byla použita k získání authorization_code. |
+| `client_secret` | vyžadováno pro webové aplikace | Tajný klíč aplikace, který jste vytvořili na portálu pro registraci aplikací pro vaši aplikaci. Nepoužívejte tajný klíč aplikace v nativní aplikaci, protože client_secrets nejde spolehlivě uložit na zařízení. Vyžaduje se pro webové aplikace a webová rozhraní API, která mají možnost bezpečně ukládat client_secret na straně serveru.  Tajný klíč klienta musí být před odesláním zakódovaný na adrese URL.  |
+| `code_verifier` | nepovinné  | Stejný code_verifier, který byl použit k získání authorization_code. Vyžaduje se, pokud se v žádosti o udělení autorizačního kódu použil PKCE. Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). |
 
-### <a name="successful-response"></a>Úspěšné odpovědi
+### <a name="successful-response"></a>Úspěšná odpověď
 
-Úspěšné odpovědi tokenu bude vypadat takto:
+Úspěšná odpověď tokenu bude vypadat takto:
 
 ```json
 {
@@ -177,16 +177,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr     | Popis   |
 |---------------|------------------------------|
-| `access_token`  | Požadovaný přístupový token. Aplikace můžete používat tento token k ověření k zabezpečeným prostředkům, jako je například webové rozhraní API.  |
-| `token_type`    | Určuje hodnotu pro typ tokenu. Nosiče je jediným typem, který podporuje Azure AD |
+| `access_token`  | Požadovaný přístupový token Aplikace může tento token použít k ověření zabezpečeného prostředku, jako je například webové rozhraní API.  |
+| `token_type`    | Určuje hodnotu typu tokenu. Jediný typ, který podporuje Azure AD, je nosič. |
 | `expires_in`    | Jak dlouho je přístupový token platný (v sekundách). |
-| `scope`         | Obory, které je platný pro access_token. |
-| `refresh_token` | Aktualizace tokenu OAuth 2.0. Aplikace můžete používat tento token získat dodatečné přístupové tokeny, až vyprší platnost aktuálního tokenu přístupu. Refresh_tokens jsou dlouhodobé a slouží k přístupu k prostředkům uchovávat po dlouhou dobu. Další podrobnosti o aktualizaci tokenu přístupu, najdete [níže v části](#refresh-the-access-token). <br> **Poznámka:** Pouze zadaný if `offline_access` byl vyžádán oboru. |
-| `id_token`      | JSON Web Token (JWT). Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token reference` ](id-tokens.md). <br> **Poznámka:** Pouze zadaný if `openid` byl vyžádán oboru. |
+| `scope`         | Rozsahy, pro které je access_token platný. |
+| `refresh_token` | Obnovovací token OAuth 2,0. Aplikace může tento token použít k získání dalších přístupových tokenů po vypršení platnosti aktuálního přístupového tokenu. Refresh_tokens jsou dlouhodobé a dají se použít k uchování přístupu k prostředkům po delší dobu. Další podrobnosti o aktualizaci přístupového tokenu najdete v [níže uvedené části](#refresh-the-access-token). <br> **Poznámka:** Zadáno pouze v `offline_access` případě, že byl požadován obor. |
+| `id_token`      | JSON Web Token (JWT). Aplikace může dekódovat segmenty tohoto tokenu a vyžádat si informace o uživateli, který se přihlásil. Aplikace může hodnoty ukládat do mezipaměti a zobrazovat je, ale nemělo by je spoléhat na jakékoli autorizace nebo hranice zabezpečení. Další informace o id_tokens najdete v tématu [`id_token reference`](id-tokens.md). <br> **Poznámka:** Zadáno pouze v `openid` případě, že byl požadován obor. |
 
-### <a name="error-response"></a>Odpověď na chybu
+### <a name="error-response"></a>Chybová odezva
 
-Chybové odpovědi bude vypadat takto:
+Chybové odpovědi budou vypadat takto:
 
 ```json
 {
@@ -203,32 +203,32 @@ Chybové odpovědi bude vypadat takto:
 
 | Parametr         | Popis    |
 |-------------------|----------------|
-| `error`       | Řetězec kódu chyby, která slouží ke klasifikaci typy chyb, ke kterým dochází a je možné reagovat na chyby. |
-| `error_description` | Určité chybové zprávě, který vám pomůže vývojář zjistit původní příčinu chyby ověřování. |
-| `error_codes` | Seznam kódy chyb specifické pro službu tokenů zabezpečení, které vám můžou pomoct při diagnostiky.  |
+| `error`       | Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
+| `error_description` | Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování. |
+| `error_codes` | Seznam chybových kódů specifických pro službu STS, které mohou být užitečné při diagnostice.  |
 | `timestamp`   | Čas, kdy došlo k chybě. |
-| `trace_id`    | Jedinečný identifikátor pro požadavek, který vám pomůže v diagnostice. |
-| `correlation_id` | Jedinečný identifikátor pro požadavek, který vám pomůže v diagnostice mezi komponentami. |
+| `trace_id`    | Jedinečný identifikátor pro požadavek, který může pomáhat při diagnostice. |
+| `correlation_id` | Jedinečný identifikátor pro požadavek, který může pomáhat při diagnostice napříč komponentami. |
 
-### <a name="error-codes-for-token-endpoint-errors"></a>Kódy chyb pro koncový bod tokenu chyby
+### <a name="error-codes-for-token-endpoint-errors"></a>Chybové kódy pro chyby koncového bodu tokenu
 
 | Kód chyby         | Popis        | Akce klienta    |
 |--------------------|--------------------|------------------|
-| `invalid_request`  | Chyba protokolu, jako je například chybí povinný parametr. | Opravte a odešlete požadavek znovu   |
-| `invalid_grant`    | Autorizační kód nebo ověřovač PKCE kódu je neplatná nebo vypršela platnost. | Vyzkoušejte nový požadavek `/authorize` koncového bodu a ověřte, že parametr code_verifier byla správná.  |
-| `unauthorized_client` | Ověřený klient nemá oprávnění používat tento typ udělení autorizace. | K tomu obvykle dojde, když klientská aplikace není zaregistrovaný ve službě Azure AD nebo se nepřidal do tenanta služby Azure AD daného uživatele. Aplikace může vyzvat uživatele s pokyny pro instalaci aplikace a jeho přidání do služby Azure AD. |
-| `invalid_client` | Ověření klienta se nezdařilo.  | Pověření klienta nejsou platná. Pokud chcete vyřešit, správce aplikace aktualizuje přihlašovací údaje.   |
-| `unsupported_grant_type` | Autorizační server nepodporuje typ udělení autorizace. | Změňte typ udělení v požadavku. Tento typ chyby se budou objevovat pouze během vývoje a zjistili při počátečním testování. |
-| `invalid_resource` | Cílový prostředek je neplatný, protože buď neexistuje, Azure AD nelze najít nebo není správně nakonfigurovaný. | To znamená, že prostředek, pokud existuje, nebyl nakonfigurován v tenantovi. Aplikace může vyzvat uživatele s pokyny pro instalaci aplikace a jeho přidání do služby Azure AD.  |
-| `interaction_required` | Požadavek vyžaduje zásah uživatele. Například další ověřovací krok je nutný. | Zkuste požadavek s stejný prostředek.  |
-| `temporarily_unavailable` | Server je dočasně příliš zaneprázdněn a nemůže žádost zpracovat. | Zkuste požadavek. Klientská aplikace může vysvětlit uživateli, odpověď se zpožďuje kvůli dočasné podmínce. |
+| `invalid_request`  | Chyba protokolu, například chybějící požadovaný parametr. | Opravte a znovu odešlete žádost.   |
+| `invalid_grant`    | Autorizační kód nebo ověřovatel kódu PKCE je neplatný nebo vypršela jeho platnost. | Vyzkoušejte nový požadavek na `/authorize` koncový bod a ověřte správnost parametru code_verifier.  |
+| `unauthorized_client` | Ověřený klient nemá autorizaci k použití tohoto autorizačního typu udělení. | K tomu obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
+| `invalid_client` | Ověření klienta se nezdařilo.  | Pověření klienta nejsou platná. Chcete-li opravit, správce aplikace aktualizuje pověření.   |
+| `unsupported_grant_type` | Autorizační Server nepodporuje typ udělení autorizace. | Změňte typ udělení v žádosti. Tento typ chyby by měl nastat pouze během vývoje a zjištěn při počátečním testování. |
+| `invalid_resource` | Cílový prostředek není platný, protože neexistuje, služba Azure AD ho nemůže najít nebo není správně nakonfigurovaná. | To znamená, že pokud tento prostředek existuje, není v tenantovi nakonfigurovaný. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD.  |
+| `interaction_required` | Požadavek vyžaduje zásah uživatele. Například je vyžadován další krok ověřování. | Opakujte požadavek se stejným prostředkem.  |
+| `temporarily_unavailable` | Server je dočasně zaneprázdněný pro zpracování žádosti. | Opakujte požadavek. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděna z důvodu dočasné podmínky. |
 
 ## <a name="use-the-access-token"></a>Použití přístupového tokenu
 
-Teď, když jste úspěšně získala `access_token`, můžete token v žádosti k webovým rozhraním API zahrnutím ho `Authorization` záhlaví:
+Teď, když jste úspěšně získali `access_token`, můžete token v žádosti do webových rozhraní API použít tak, že ho zahrnete `Authorization` do hlavičky:
 
 > [!TIP]
-> Provedení tohoto požadavku v nástroji Postman! (Nahradit `Authorization` záhlaví první) [ ![zkusit spustit tento požadavek v nástroji Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Provést tento požadavek v nástroji post! (Nejdřív nahraďte `Authorization` hlavičku) [ ![zkuste tuto žádost spustit v poli post](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d) .
 
 ```
 GET /v1.0/me/messages
@@ -236,13 +236,13 @@ Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-## <a name="refresh-the-access-token"></a>Obnovení přístupového tokenu
+## <a name="refresh-the-access-token"></a>Aktualizace přístupového tokenu
 
-Access_tokens jsou krátké životnost a po vypršení platnosti i nadále přístup k prostředkům, musíte je aktualizovat. Můžete tak učinit odesláním jiného `POST` požádat o `/token` koncový bod, v tuto chvíli poskytující `refresh_token` místo `code`.  Obnovovací tokeny jsou platné pro všechna oprávnění, které už klient přijal souhlas pro – díky tomu se obnovovací token vydaný na žádost o `scope=mail.read` umožňuje požádat o nový přístupový token pro `scope=api://contoso.com/api/UseResource`.  
+Access_tokens jsou krátkodobé a po vypršení jejich platnosti je musíte aktualizovat, aby bylo možné pokračovat v přístupu k prostředkům. `POST` Můžete to udělat tak `/token` `code`, že odešlete další požadavek na koncový bod a tentokrát zadáte místo.`refresh_token`  Aktualizační tokeny jsou platné pro všechna oprávnění, která klient již obdržel souhlas. proto je možné pro vyžádání nového přístupového `scope=mail.read` `scope=api://contoso.com/api/UseResource`tokenu použít obnovovací token vydaný na žádost pro.  
 
-Aktualizovat tokeny nemají zadaný životnosti. Životní cyklus obnovovací tokeny jsou obvykle poměrně dlouho. Ale v některých případech tokeny obnovení vyprší, byly odvolány nebo nemají dostatečná oprávnění pro požadovanou akci. Vaše aplikace potřebuje očekávat a zpracovat [chyby vrácené systémem koncový bod vystavování tokenů](#error-codes-for-token-endpoint-errors) správně. 
+Aktualizační tokeny nemají zadané životnosti. Obvykle jsou životnosti aktualizačních tokenů poměrně dlouhé. V některých případech ale platnost tokenů aktualizace vyprší, odvolají se nebo nemají dostatečná oprávnění pro požadovanou akci. Vaše aplikace musí očekávat a zpracovat [chyby vrácené koncovým bodem](#error-codes-for-token-endpoint-errors) vystavení tokenu správně. 
 
-I když tokeny obnovení nejsou odvolán, pokud se použije k získání nových přístupových tokenů, očekává se zrušit starý obnovovací token. [Specifikace OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-6) říká: "Autorizační server může vystavovat nový token obnovení, ve kterém musí zrušit případ klienta staré obnovovací token a nahraďte ji metodou nového tokenu obnovení. Autorizační server může zrušit starý obnovovací token po vydání nového tokenu obnovení do klienta."  
+I když se tokeny aktualizace neodvolává při použití k získání nových přístupových tokenů, očekává se, že se starý obnovovací token zruší. [Specifikace OAuth 2,0](https://tools.ietf.org/html/rfc6749#section-6) uvádí: "Autorizační Server může vydat nový obnovovací token. v takovém případě musí klient zrušit starý obnovovací token a nahradit ho novým tokenem aktualizace. Po vydání nového obnovovacího tokenu klientovi může autorizační Server odvolat starý obnovovací token. "  
 
 ```
 // Line breaks for legibility only
@@ -259,21 +259,21 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Pokuste se spustit tuto žádost do Postman! (Nezapomeňte nahradit `refresh_token`) [ ![zkusit spustit tento požadavek v nástroji Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Zkuste tento požadavek provést v nástroji post! (Nezapomeňte nahradit `refresh_token`) [ ![zkuste tento požadavek spustit v poli post](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d) .
 > 
 
 | Parametr     |                | Popis        |
 |---------------|----------------|--------------------|
-| `tenant`        | Vyžaduje     | `{tenant}` Hodnota v cestě požadavku je možné řídit, kdo se můžete přihlásit do aplikace. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátorů klienta. Další podrobnosti najdete v části [protokol Základy](active-directory-v2-protocols.md#endpoints).   |
-| `client_id`     | Vyžaduje    | **ID aplikace (klient)** , který [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené vaší aplikaci. |
-| `grant_type`    | Vyžaduje    | Musí být `refresh_token` pro tuto větev tok autorizačního kódu. |
-| `scope`         | Vyžaduje    | Seznam oborů oddělených mezerami. Obory požadovaný v této fáze musí být ekvivalentní, nebo podmnožina obory požadovaný v původní požadavek fáze authorization_code. Pokud span obory zadané v této žádosti více prostředků serveru, koncový bod Microsoft identity platform vrátí token pro prostředek určený v rámci první. Podrobnější vysvětlení oborů, najdete v tématu [oprávnění, vyjádření souhlasu a obory](v2-permissions-and-consent.md). |
-| `refresh_token` | Vyžaduje    | Refresh_token, kterou jste získali v druhé fáze toku. |
-| `client_secret` | vyžaduje se pro webové aplikace | Tajný klíč aplikace, kterou jste vytvořili v portálu pro registraci aplikace pro vaši aplikaci. Není vhodné jej použít v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které se budou moct bezpečně uložit hodnotu client_secret na straně serveru. |
+| `tenant`        | povinné     | `{tenant}` Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common`identifikátory klientů `organizations`, `consumers`, a. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints).   |
+| `client_id`     | povinné    | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
+| `grant_type`    | povinné    | Musí být `refresh_token` pro tuto nožku toku autorizačního kódu. |
+| `scope`         | povinné    | Mezerou oddělený seznam oborů. Rozsahy požadované v této nožkě musí být stejné jako podmnožina rozsahů požadovaných v původní nožkě žádosti authorization_code. Pokud obory zadané v tomto požadavku vynásobí více prostředků serveru, pak koncový bod platformy Microsoft Identity vrátí token pro prostředek zadaný v prvním oboru. Podrobnější vysvětlení oborů najdete v tématu [oprávnění, souhlas a obory](v2-permissions-and-consent.md). |
+| `refresh_token` | povinné    | Refresh_token, který jste získali v druhé nožkě toku. |
+| `client_secret` | vyžadováno pro webové aplikace | Tajný klíč aplikace, který jste vytvořili na portálu pro registraci aplikací pro vaši aplikaci. Neměl by se používat v nativní aplikaci, protože client_secrets nejde spolehlivě uložit na zařízení. Vyžaduje se pro webové aplikace a webová rozhraní API, která mají možnost bezpečně ukládat client_secret na straně serveru. |
 
-#### <a name="successful-response"></a>Úspěšné odpovědi
+#### <a name="successful-response"></a>Úspěšná odpověď
 
-Úspěšné odpovědi tokenu bude vypadat takto:
+Úspěšná odpověď tokenu bude vypadat takto:
 
 ```json
 {
@@ -287,14 +287,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 | Parametr     | Popis         |
 |---------------|-------------------------------------------------------------|
-| `access_token`  | Požadovaný přístupový token. Aplikace můžete používat tento token k ověření k zabezpečeným prostředkům, jako je například webové rozhraní API. |
-| `token_type`    | Určuje hodnotu pro typ tokenu. Nosiče je jediným typem, který podporuje Azure AD |
+| `access_token`  | Požadovaný přístupový token Aplikace může tento token použít k ověření zabezpečeného prostředku, jako je například webové rozhraní API. |
+| `token_type`    | Určuje hodnotu typu tokenu. Jediný typ, který podporuje Azure AD, je nosič. |
 | `expires_in`    | Jak dlouho je přístupový token platný (v sekundách).   |
-| `scope`         | Obory, které je platný pro access_token.    |
-| `refresh_token` | Nového tokenu obnovení OAuth 2.0. Staré obnovovací token měli nahradit tento nově získaná aktualizační token k zajištění, že obnovovací tokeny jsou dál platné pro co nejdéle. <br> **Poznámka:** Pouze zadaný if `offline_access` byl vyžádán oboru.|
-| `id_token`      | Bez znaménka JSON Web Token (JWT). Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token reference` ](id-tokens.md). <br> **Poznámka:** Pouze zadaný if `openid` byl vyžádán oboru. |
+| `scope`         | Rozsahy, pro které je access_token platný.    |
+| `refresh_token` | Nový token pro obnovení OAuth 2,0. Starý obnovovací token byste měli nahradit tímto nově získaným aktualizačním tokenem, abyste zajistili, že obnovovací tokeny zůstanou platné i tak dlouho. <br> **Poznámka:** Zadáno pouze v `offline_access` případě, že byl požadován obor.|
+| `id_token`      | Nepodepsaný JSON Web Token (JWT). Aplikace může dekódovat segmenty tohoto tokenu a vyžádat si informace o uživateli, který se přihlásil. Aplikace může hodnoty ukládat do mezipaměti a zobrazovat je, ale nemělo by je spoléhat na jakékoli autorizace nebo hranice zabezpečení. Další informace o id_tokens najdete v tématu [`id_token reference`](id-tokens.md). <br> **Poznámka:** Zadáno pouze v `openid` případě, že byl požadován obor. |
 
-#### <a name="error-response"></a>Odpověď na chybu
+#### <a name="error-response"></a>Chybová odezva
 
 ```json
 {
@@ -311,11 +311,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr         | Popis                                                                                        |
 |-------------------|----------------------------------------------------------------------------------------------------|
-| `error`           | Řetězec kódu chyby, která slouží ke klasifikaci typy chyb, ke kterým dochází a je možné reagovat na chyby. |
-| `error_description` | Určité chybové zprávě, který vám pomůže vývojář zjistit původní příčinu chyby ověřování.           |
-| `error_codes` |Seznam kódy chyb specifické pro službu tokenů zabezpečení, které vám můžou pomoct při diagnostiky. |
+| `error`           | Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
+| `error_description` | Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování.           |
+| `error_codes` |Seznam chybových kódů specifických pro službu STS, které mohou být užitečné při diagnostice. |
 | `timestamp` | Čas, kdy došlo k chybě. |
-| `trace_id` | Jedinečný identifikátor pro požadavek, který vám pomůže v diagnostice. |
-| `correlation_id` | Jedinečný identifikátor pro požadavek, který vám pomůže v diagnostice mezi komponentami. |
+| `trace_id` | Jedinečný identifikátor pro požadavek, který může pomáhat při diagnostice. |
+| `correlation_id` | Jedinečný identifikátor pro požadavek, který může pomáhat při diagnostice napříč komponentami. |
 
-Popis kódy chyb a akci doporučenou klientskou, naleznete v tématu [kódy chyb pro koncový bod tokenu chyby](#error-codes-for-token-endpoint-errors).
+Popis chybových kódů a doporučené akce klienta najdete v tématu [kódy chyb pro chyby koncového bodu tokenu](#error-codes-for-token-endpoint-errors).

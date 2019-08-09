@@ -1,6 +1,6 @@
 ---
-title: Aplikace a instanční objekty v Azure Active Directory
-description: Další informace o vztah mezi aplikací a instanční objekty v Azure Active Directory.
+title: Aplikační a instanční objekty v Azure Active Directory
+description: Přečtěte si o vztahu mezi aplikací a objekty zabezpečení služby v Azure Active Directory.
 documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
@@ -15,89 +15,89 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2019
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 822990ebc2eb5edbdbc6611a4f3729bc5cfadc55
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 83083026b20573d93777e77f44bf8d5480bfdd97
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482902"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853311"
 ---
-# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Aplikace a instanční objekty v Azure Active Directory
+# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Aplikační a instanční objekty v Azure Active Directory
 
-V některých případech význam "aplikace" může být nesprávně pochopeny, při použití v rámci služby Azure Active Directory (Azure AD). Tento článek vysvětluje koncepční a konkrétní aspekty integraci aplikací Azure AD, pomocí registrace a vyjádření souhlasu pro ilustraci [aplikace s více tenanty](developer-glossary.md#multi-tenant-application).
+V případě, že se používá v kontextu Azure Active Directory (Azure AD), může se stát, že výraz "aplikace" je v některých případech nesrozumitelný. Tento článek vysvětluje koncepční a konkrétní aspekty integrace aplikací Azure AD s ilustrací registrace a souhlasu pro [víceklientské aplikace](developer-glossary.md#multi-tenant-application).
 
 ## <a name="overview"></a>Přehled
 
-Aplikace integrovaná s Azure AD má důsledky, které přesahují aspekt softwaru. "Aplikace" se často používá jako konceptuální termín, odkazující na nejen aplikačního softwaru, ale také jeho registrace služby Azure AD a role v ověřování/autorizace "konverzace" za běhu.
+Aplikace, která je integrovaná se službou Azure AD, má vliv na rámec aspektu softwaru. Pojem "aplikace" se často používá jako koncepční termín, který odkazuje nejen na aplikační software, ale také na jeho registraci a roli Azure AD v části ověřování/autorizace "konverzace" za běhu.
 
-Podle definice může aplikace fungovat v těchto rolích:
+Aplikace může podle definice fungovat v těchto rolích:
 
-- [Klient](developer-glossary.md#client-application) role (využívání prostředku)
-- [Server prostředků](developer-glossary.md#resource-server) role (vystavení rozhraní API pro klienty)
-- Klientská role a role serveru prostředků
+- Role [klienta](developer-glossary.md#client-application) (spotřebovávání prostředku)
+- Role [serveru prostředků](developer-glossary.md#resource-server) (odhalení rozhraní API klientům)
+- Role klienta i role serveru prostředků
 
-[Toku udělení autorizace OAuth 2.0](developer-glossary.md#authorization-grant) definuje konverzace protokol, který umožňuje klienta nebo prostředek, který má přístup/ochranu zdroje dat, v uvedeném pořadí.
+[Tok udělení autorizace OAuth 2,0](developer-glossary.md#authorization-grant) definuje protokol konverzace, který umožňuje klientovi nebo prostředku přístup k datům prostředku nebo jejich ochraně.
 
-V následujících částech uvidíte, jak představuje aplikačního modelu služby Azure AD aplikace v době návrhu a za běhu.
+V následujících částech se dozvíte, jak model aplikace Azure AD představuje aplikaci v době návrhu a době běhu.
 
-## <a name="application-registration"></a>Registrace aplikací
+## <a name="application-registration"></a>Registrace aplikace
 
-Když se zaregistrujete aplikaci Azure AD v [webu Azure portal][AZURE-Portal], jsou vytvořeny dva objekty ve vašem tenantovi Azure AD:
+Když zaregistrujete aplikaci Azure AD v [Azure Portal][AZURE-Portal], vytvoří se ve vašem TENANTOVI Azure AD dva objekty:
 
 - Objekt aplikace a
-- Instanční objekt
+- Instanční objekt služby
 
 ### <a name="application-object"></a>Objekt aplikace
 
-Aplikaci Azure AD je definován tak, že je jeden a pouze aplikační objekt, který je umístěný v tenantovi Azure AD, kde byla aplikace zaregistrované, známé jako "domovskou" tenant vaší aplikace. Microsoft Graph [aplikace entity][MS-Graph-App-Entity] definuje schéma pro objekt aplikace vlastnosti.
+Aplikace služby Azure AD je definovaná jejím jediným objektem aplikace, který se nachází v tenantovi Azure AD, kde byla aplikace zaregistrovaná, označovaná jako "Domovská" tenant aplikace. Entita Microsoft Graph [aplikace][MS-Graph-App-Entity] definuje schéma pro vlastnosti objektu aplikace.
 
-### <a name="service-principal-object"></a>instanční objekt
+### <a name="service-principal-object"></a>Instanční objekt služby
 
-Pro přístup k prostředkům, které jsou zabezpečené pomocí tenanta služby Azure AD, musí být reprezentována entity, která vyžaduje přístup k objektu zabezpečení. To platí pro uživatele (uživatel instančního objektu) a aplikací (instanční objekt).
+Aby bylo možné získat přístup k prostředkům, které jsou zabezpečeny klientem služby Azure AD, musí být entita, která vyžaduje přístup, reprezentovaná objektem zabezpečení. To platí pro uživatele (hlavní uživatelské objekty) i pro aplikace (instanční objekt).
 
-Objekt zabezpečení definuje zásady přístupu a oprávnění pro uživatele nebo aplikaci v tenantovi Azure AD. To umožňuje základní funkce, jako je ověřování uživatelů a aplikací při přihlášení a ověření při přístupu k prostředkům.
+Objekt zabezpečení definuje zásady přístupu a oprávnění pro uživatele nebo aplikaci v tenantovi Azure AD. To umožňuje základní funkce, jako je ověřování uživatelů nebo aplikací během přihlašování, a autorizaci během přístupu k prostředkům.
 
-Když aplikaci uděleno oprávnění pro přístup k prostředkům v tenantovi (při registraci nebo [souhlas](developer-glossary.md#consent)), se vytvoří instanční objekt. Microsoft Graph [ServicePrincipal entity][MS-Graph-Sp-Entity] definuje schéma pro instanční objekt pro vlastnosti.
+Když aplikace udělí oprávnění k přístupu k prostředkům v tenantovi (při registraci nebo [souhlasu](developer-glossary.md#consent)), vytvoří se objekt instančního objektu. Entita Microsoft Graph [ServicePrincipal][MS-Graph-Sp-Entity] definuje schéma pro vlastnosti objektu instančního objektu.
 
-### <a name="application-and-service-principal-relationship"></a>Aplikace a relace instančního objektu služby
+### <a name="application-and-service-principal-relationship"></a>Vztah mezi aplikací a instančním objektem
 
-Vezměte v úvahu objekt aplikace jako *globální* reprezentace vaší aplikace pro použití ve všech tenantů a instanční objekt služby, jako *místní* reprezentaci pro použití v konkrétního tenanta.
+Zvažte použití objektu aplikace jako *globální* reprezentace aplikace pro použití ve všech klientech a instančního objektu jako *místní* reprezentace pro použití v konkrétním tenantovi.
 
-Objekt slouží aplikace jako šablony, ze které běžné a výchozí vlastnosti jsou *odvozené* pro použití při vytváření odpovídající instanční objekty. Objekt aplikace proto má vztah 1:1 s softwarové aplikace a 1:many vztahy s jeho odpovídající objekty instančního objektu služby.
+Objekt aplikace slouží jako šablona, ze které jsou odvozeny běžné a výchozí vlastnosti pro použití při vytváření odpovídajících objektů instančního objektu. Objekt aplikace má proto vztah 1:1 se softwarovou aplikací a 1: n vztahů s odpovídajícími objekty instančních služeb.
 
-Hlavní název služby musí být vytvořeny v každého klienta, kde se aplikace používá, bude moct vytvořit identitu pro přihlášení a/nebo přístup k prostředkům, které se zabezpečují prostřednictvím klienta. Aplikace jedním tenantem má pouze jeden instanční objekt (v domovském tenantovi), vytvořit a vyjádření souhlasu pro použití při registraci aplikace. Více tenanty webová aplikace/rozhraní API má také objekt služby, která je vytvořená v rámci každého tenanta, kde uživatele z tohoto tenanta vyjádřil souhlas se jeho použití.
+V každém tenantovi, kde se aplikace používá, se musí vytvořit instanční objekt, který mu umožní vytvořit identitu pro přihlášení a/nebo přístup k prostředkům, které klient zabezpečuje. Jedna klientská aplikace má pouze jeden instanční objekt (v jeho domovském tenantovi), který se vytvořil a souhlasí pro použití při registraci aplikace. Víceklientská webová aplikace/rozhraní API obsahuje taky instanční objekt vytvořený v každém tenantovi, kde uživatel z tohoto tenanta souhlasí s jeho použitím.
 
 > [!NOTE]
-> Všechny změny provedené na váš objekt aplikace se také projeví v jeho instanční objekt v domovském tenantovi aplikace pouze (tenanta, ve kterém byl zaregistrován). Pro víceklientské aplikace, změny pro daný aplikační objekt se neprojeví v žádné klienty příjemce instanční objekty, dokud neodebere přístup prostřednictvím [přístupového panelu aplikací](https://myapps.microsoft.com) a udělit znovu.
+> Všechny změny, které provedete v objektu aplikace, se projeví také v hlavním objektu služby v domovském tenantovi aplikace (tenant, ve kterém byl zaregistrován). U aplikací s více klienty se změny v objektu aplikace neprojeví v žádných objektech instančních objektů služby klienta, dokud se přístup neodebere přes [přístupový panel aplikace](https://myapps.microsoft.com) a znovu udělen.
 >
-> Všimněte si také, že je ve výchozím nastavení nativní aplikace zaregistrovaní jako více tenantů.
+> Všimněte si také, že nativní aplikace jsou ve výchozím nastavení registrovány jako víceklientské klienty.
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
-Následující diagram znázorňuje vztah mezi objekt aplikace a instanční objekty v rámci aplikace s více tenanty ukázka volat odpovídající služby aplikací **aplikací HR**. V tomto ukázkovém scénáři existují tři klienty Azure AD:
+Následující diagram znázorňuje vztah mezi objektem aplikace aplikace a odpovídajícími instančními objekty služby v kontextu ukázkové aplikace s více klienty s názvem **aplikace HR**. V tomto ukázkovém scénáři jsou tři klienti Azure AD:
 
-- **Adatum** -tenanta používaných ve společnosti, který vyvinul **aplikací HR**
-- **Contoso** -tenanta používá organizace Contoso, což je příjemce **aplikací HR**
-- **Společnost Fabrikam** -tenanta, používá společnost Fabrikam organizace, které také využívá **aplikací HR**
+- **Adatum** – tenant používaný společností, která vyvinula aplikaci pro **HR**
+- **Contoso** – tenant používaný organizací contoso, který je příjemcem **aplikace pro personální** oddělení
+- **Fabrikam** – tenant používaný organizací Fabrikam, který také využívá **aplikaci pro personální** oddělení
 
-![Vztah mezi objektem aplikaci a instanční objekt](./media/app-objects-and-service-principals/application-objects-relationship.svg)
+![Vztah mezi objektem aplikace a instančním objektem služby](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 
 V tomto ukázkovém scénáři:
 
 | Krok | Popis |
 |------|-------------|
-| 1    | Je proces vytváření aplikace a instanční objekty v domovském tenantovi aplikace. |
-| 2    | Při dokončení souhlas správce společnosti Contoso a Fabrikam instanční objekt se v tenantovi Azure AD vaší společnosti a přiřadit oprávnění, které poskytuje správce. Všimněte si také, že aplikace HR může být nakonfigurovaný/umožňují souhlasu uživatelem pro individuální použití. |
-| 3    | Tenanti příjemce HR aplikace (Contoso a Fabrikam) každý mají své vlastní instanční objekt. Každý představuje odsouhlasený. jejich použití instance aplikace za běhu, řídit oprávnění podle příslušného správce. |
+| 1    | Je proces vytváření aplikací a objektů zabezpečení služby v domovském tenantovi aplikace. |
+| 2    | Když správci společnosti Contoso a Fabrikam dokončí souhlas, vytvoří se v tenantovi služby Azure AD ve své společnosti objekt instančního objektu a přiřadí se mu oprávnění udělená správcem. Všimněte si také, že aplikace pro personální oddělení může být nakonfigurovaná/navržená tak, aby umožňovala souhlas uživatelům při individuálním použití. |
+| 3    | Klienti spotřebitelů aplikace pro personální oddělení (Contoso a Fabrikam) mají vlastní objekt instančního objektu. Každý představuje použití instance aplikace za běhu, řídí se oprávněním, která souhlasují příslušný správce. |
 
 ## <a name="next-steps"></a>Další postup
 
-- Můžete použít [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer) zadávat dotazy aplikaci a instanční objekty.
-- Objekt aplikace aplikace pomocí rozhraní Microsoft Graph API, dostanete [webu Azure portal][AZURE-Portal] editoru manifestu aplikace, nebo [rutin Powershellu pro Azure AD](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), jak je reprezentován jeho OData [ Aplikace entity][MS-Graph-App-Entity].
-- Instanční objekt aplikace přístupné prostřednictvím rozhraní Microsoft Graph API nebo [rutin Powershellu pro Azure AD](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), jak je reprezentován jeho OData [ServicePrincipal entity][MS-Graph-Sp-Entity].
+- K dotazování aplikace i instančních objektů služby můžete použít [průzkumníka Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) .
+- K aplikačnímu objektu aplikace můžete přistupovat pomocí rozhraní Microsoft Graph API, editoru manifestu aplikace [Azure Portal][AZURE-Portal] nebo [rutin služby Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), jak je znázorněno v [entitě aplikace][MS-Graph-App-Entity]OData.
+- K instančnímu objektu aplikace můžete přistupovat pomocí rozhraní Microsoft Graph API nebo [rutin Azure AD PowerShellu](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), které jsou reprezentované [entitou ServicePrincipal][MS-Graph-Sp-Entity]OData.
 
 <!--Image references-->
 

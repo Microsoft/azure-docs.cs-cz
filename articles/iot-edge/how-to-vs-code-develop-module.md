@@ -4,23 +4,22 @@ description: Použití Visual Studio Code k vývoji, sestavování a ladění mo
 services: iot-edge
 keywords: ''
 author: shizn
-manager: philmea
 ms.author: xshi
-ms.date: 07/23/2019
+ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 39b8485ac3f98cb7ca6739fe31378726bea3452b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2efda0e506cf0525b1a8ea868acca48a929f8f41
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565350"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848281"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití Visual Studio Code k vývoji a ladění modulů pro Azure IoT Edge
 
 Obchodní logiky můžete proměnit moduly pro Azure IoT Edge. V tomto článku se dozvíte, jak používat Visual Studio Code jako hlavní nástroj pro vývoj a ladění modulů.
 
-U modulů napsaných v C#, Node. js nebo Java existují dva způsoby, jak modul ladit v Visual Studio Code: Můžete buď připojit proces do kontejneru modulu, nebo spustit kód modulu v režimu ladění. Moduly napsané v Pythonu nebo C se dají ladit jenom připojením k procesu v kontejnerech Linux amd64.
+Existují dva způsoby, jak ladit moduly napsané C#v, Node. js nebo Java v Visual Studio Code: Můžete buď připojit proces do kontejneru modulu, nebo spustit kód modulu v režimu ladění. Chcete-li ladit moduly napsané v Pythonu nebo C, můžete se připojit pouze k procesu v kontejnerech Linux amd64.
 
 Pokud nejste obeznámeni s funkcemi ladění Visual Studio Code, přečtěte si o [ladění](https://code.visualstudio.com/Docs/editor/debugging).
 
@@ -53,7 +52,7 @@ Pro vývoj vašeho modulu budete taky muset nainstalovat některé další nást
 
 - Java: [Java se Development Kit 10](https://aka.ms/azure-jdks) a [Maven](https://maven.apache.org/). Budete muset [ `JAVA_HOME` nastavit proměnnou prostředí](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) tak, aby odkazovala na instalaci JDK.
 
-Aby bylo možné sestavit a nasadit image modulu, potřebujete Docker pro sestavení image modulu a registru kontejneru pro uložení image modulu:
+K sestavení a nasazení image modulu potřebujete Docker pro sestavení image modulu a registru kontejneru pro uložení image modulu:
 
 - [Docker Community Edition](https://docs.docker.com/install/) na vašem vývojovém počítači.
 
@@ -107,7 +106,7 @@ V rámci řešení jsou čtyři položky:
   > [!NOTE]
   > Soubor prostředí je vytvořen pouze v případě, že pro modul zadáte úložiště imagí. Pokud jste přijali, že se místní localhost bude standardně testovat a ladit, pak nemusíte deklarovat proměnné prostředí.
 
-- Soubor **Deployment. template. JSON** obsahuje nový modul spolu s ukázkovým modulem **tempSensor** , který simuluje data, která můžete použít pro testování. Další informace o tom, jak manifesty nasazení fungují, najdete v tématu Naučte se [používat manifesty nasazení k nasazení modulů a vytváření tras](module-composition.md).
+- Soubor **Deployment. template. JSON** obsahuje nový modul spolu s ukázkovým modulem **SimulatedTemperatureSensor** , který simuluje data, která můžete použít pro testování. Další informace o tom, jak manifesty nasazení fungují, najdete v tématu Naučte se [používat manifesty nasazení k nasazení modulů a vytváření tras](module-composition.md).
 
 ## <a name="add-additional-modules"></a>Přidat další moduly
 
@@ -124,7 +123,7 @@ Výchozí kód modulu, který je součástí řešení, je umístěn v následuj
 - Java: **moduly >  *&lt;&gt; název modulu* > src > Main > Java > com > edgemodulemodules > App. Java**
 - C: **moduly >  *&lt;název&gt; modulu* > Main. c**
 
-V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub.
+V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je sestaven tak, aby jednoduše převzal vstup ze zdroje (v tomto případě modul SimulatedTemperatureSensor, který simuluje data) a přesměruje jej na IoT Hub.
 
 Až budete připraveni šablonu přizpůsobit pomocí vlastního kódu, pomocí [sad SDK pro Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) Sestavte moduly, které řeší klíčová úložiště pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost.
 
@@ -227,7 +226,7 @@ Ve vývojovém počítači můžete spustit simulátor IoT Edge a nemusíte inst
 
 1. V zobrazení Průzkumníka Visual Studio Code klikněte pravým tlačítkem na `deployment.debug.template.json` soubor pro vaše řešení a pak vyberte sestavování **a spouštění IoT Edge řešení v simulátoru**. Všechny protokoly kontejneru modulů můžete sledovat ve stejném okně. Můžete také přejít do zobrazení Docker a sledovat stav kontejneru.
 
-   ![Sledovat proměnné](media/how-to-develop-csharp-module/view-log.png)
+   ![Sledovat proměnné](media/how-to-vs-code-develop-module/view-log.png)
 
 1. Přejděte do zobrazení ladění Visual Studio Code a vyberte konfigurační soubor ladění pro váš modul. Název možnosti ladění by měl být podobný   ***&lt;vašemu názvu&gt; modulu* vzdáleného ladění.**
 
@@ -359,7 +358,7 @@ Díky nedávným změnám v Docker i modulech Moby pro podporu připojení SSH a
 
 Další informace a podrobné pokyny najdete v této [položce blogu vývojář pro IoT](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po vytvoření modulu se naučíte, jak [nasadit Azure IoT Edge moduly z Visual Studio Code](how-to-deploy-modules-vscode.md).
 

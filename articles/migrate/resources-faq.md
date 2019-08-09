@@ -4,14 +4,14 @@ description: Řeší Nejčastější dotazy týkající se Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: bf591306220b2c8c1e6c8166686836d96432fc7d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372483"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856277"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Migrate (FAQ)
 
@@ -71,7 +71,8 @@ Zařízení se připojí k vCenter Server (port 443) s použitím přihlašovac�
 
 ### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>Můžu připojit stejné zařízení k více serverům vCenter?
 
-Ano, jedno zařízení Azure Migrate se dá použít ke zjišťování více serverů vCenter, ale ne souběžně. Je nutné spustit zjišťování jednu po druhém.
+Ne. Mezi zařízením a vCenter Server existuje mapování 1:1. Pokud potřebujete zjistit virtuální počítače na více serverech vCenter, je nutné nasadit více zařízení. 
+
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>Změnil (a) jsem velikost mého počítače. Můžu znovu spustit posouzení?
 

@@ -3,16 +3,16 @@ title: Nejčastější dotazy týkající se souborů Azure | Microsoft Docs
 description: Přečtěte si odpovědi na nejčastější dotazy týkající se služby Azure Files.
 author: roygara
 ms.service: storage
-ms.date: 01/02/2019
+ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 622a033b73ace93e98cfa0d5179002c78ec49b35
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e14fcbd81a562b8d6451bb89a479c6675569403a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704485"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854542"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy týkající se souborů Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -168,35 +168,27 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     
 ## <a name="security-authentication-and-access-control"></a>Zabezpečení, ověřování a řízení přístupu
 * <a id="ad-support"></a>
-**Podporuje služba soubory Azure ověřování na základě služby Active Directory a řízení přístupu?**  
+**Podporuje služba soubory Azure ověřování na základě identity a řízení přístupu?**  
     
-    Ano, soubory Azure podporují ověřování na základě identity a řízení přístupu pomocí služby Azure Active Directory (Azure AD) (Preview). Ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure využívá Azure Active Directory Domain Services k tomu, aby virtuální počítače připojené k doméně mohly přistupovat ke sdíleným složkám, adresářům a souborům pomocí přihlašovacích údajů Azure AD. Další podrobnosti najdete v tématu [přehled Azure Active Directory ověřování pomocí protokolu SMB pro soubory Azure (Preview)](storage-files-active-directory-overview.md). 
+    Ano, soubory Azure podporují ověřování na základě identity a řízení přístupu využívajících službu Azure AD Domain Service (Azure služba AD DS). Služba Azure služba AD DS Authentication přes SMB pro soubory Azure umožňuje virtuálním počítačům Azure služba AD DS připojeným k doméně přistupovat ke sdíleným složkám, adresářům a souborům pomocí přihlašovacích údajů Azure AD. Další podrobnosti najdete v článku [Přehled podpory ověřování Azure Files Azure Active Directory Domain Service (azure služba AD DS) pro přístup přes protokol SMB](storage-files-active-directory-overview.md). 
 
     Azure Files nabízí dva další způsoby, jak spravovat řízení přístupu:
 
     - Pomocí sdílených přístupových podpisů (SAS) můžete vygenerovat tokeny, které mají určitá oprávnění a které jsou platné po zadaný časový interval. Můžete například vygenerovat token s přístupem jen pro čtení ke konkrétnímu souboru, který má vypršení platnosti 10 minut. Každý, kdo má token, zatímco je token platný, má k tomuto souboru přístup jen pro čtení po dobu 10 minut. Klíče sdíleného přístupového podpisu se v současné době podporují jenom prostřednictvím REST API nebo v klientských knihovnách. Sdílenou složku Azure je nutné připojit přes protokol SMB pomocí klíčů účtu úložiště.
 
     - Azure File Sync zachovává a replikuje všechny volitelné seznamy řízení přístupu (DACL) a seznamy DACL (ať už jsou založené na službě Active Directory nebo místní) na všechny koncové body serveru, na které se synchronizuje. Vzhledem k tomu, že se Windows Server už může ověřit pomocí služby Active Directory, Azure File Sync je efektivní možnost zarážky, dokud se nedosáhne plné podpory ověřování založeného na službě Active Directory a podpory seznamu ACL.
-
-* <a id="ad-support-regions"></a>
-**Je verze Preview služby Azure AD přes SMB pro soubory Azure dostupné ve všech oblastech Azure?**
-
-    Verze Preview je dostupná ve všech veřejných oblastech.
-
-* <a id="ad-support-on-premises"></a>
-**Podporuje ověřování Azure AD přes SMB pro soubory Azure (Preview) ověřování pomocí Azure AD z místních počítačů?**
-
-    Ne, služba soubory Azure nepodporuje ověřování ve službě Azure AD z místních počítačů ve verzi Preview.
+    
+    V případě, že chcete mít k dispozici komplexní reprezentace všech protokolů podporovaných v Azure Storage Services, můžete použít odkaz pro [autorizaci Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) . 
 
 * <a id="ad-support-devices"></a>
-**Podporuje ověřování Azure AD přes SMB pro soubory Azure (Preview) přístup přes protokol SMB pomocí přihlašovacích údajů Azure AD ze zařízení, která jsou připojená k Azure AD?**
+**Podporuje Azure Files Azure služba AD DS ověřování pomocí přihlašovacích údajů Azure AD ze zařízení, která jsou připojená k Azure AD, nebo se k nim zaregistrovala?**
 
     Ne, tento scénář není podporován.
 
 * <a id="ad-support-rest-apis"></a>
 **Existují rozhraní REST API, která podporují seznamy ACL pro získání, nastavení/kopírování adresáře nebo souborů NTFS?**
 
-    Verze Preview nepodporuje rozhraní REST API k získání, nastavení nebo kopírování seznamů řízení přístupu NTFS pro adresáře nebo soubory.
+    V současnosti nepodporujeme rozhraní REST API k získání, nastavení nebo kopírování seznamů řízení přístupu NTFS pro adresáře nebo soubory.
 
 * <a id="ad-vm-subscription"></a>
 **Můžu získat přístup k souborům Azure pomocí přihlašovacích údajů Azure AD z virtuálního počítače v jiném předplatném?**
@@ -204,17 +196,17 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     Pokud je předplatné, pod kterým je nainstalovaná sdílená složka, přidruženo ke stejnému tenantovi služby Azure AD jako Azure AD Domain Services nasazení, ke kterému je připojený virtuální počítač, pak můžete přistupovat k souborům Azure pomocí stejných přihlašovacích údajů Azure AD. Omezení je uloženo v předplatném, ale na přidruženém tenantovi služby Azure AD.    
     
 * <a id="ad-support-subscription"></a>
-**Můžu povolit ověřování Azure AD přes protokol SMB pro soubory Azure pomocí tenanta Azure AD, který se liší od primárního tenanta, ke kterému je sdílená složka přidružená?**
+**Můžu povolit Azure Files Azure služba AD DS ověřování pomocí klienta služby Azure AD, který se liší od primárního tenanta, ke kterému je sdílená složka přidružená?**
 
-    Ne, soubory Azure podporují jenom integraci Azure AD s klientem Azure AD, který se nachází ve stejném předplatném jako sdílená složka. K tenantovi služby Azure AD může být přidruženo pouze jedno předplatné.
+    Ne, soubory Azure podporují integraci Azure služba AD DS jenom s klientem služby Azure AD, který se nachází ve stejném předplatném jako sdílená složka. K tenantovi služby Azure AD může být přidruženo pouze jedno předplatné.
 
 * <a id="ad-linux-vms"></a>
-**Podporuje služba Azure AD ověřování pomocí protokolu SMB pro soubory Azure (Preview) virtuální počítače se systémem Linux?**
+**Podporují Azure Files Azure služba AD DS ověřování virtuálních počítačů se systémem Linux?**
 
-    Ne, ověřování z virtuálních počítačů se systémem Linux není ve verzi Preview podporováno.
+    Ne, ověřování z virtuálních počítačů se systémem Linux není podporováno.
 
 * <a id="ad-aad-smb-afs"></a>
-**Je možné využít ověřování Azure AD prostřednictvím možností protokolu SMB u sdílených složek spravovaných pomocí Azure File Sync?**
+**Můžu využívat Azure Files Azure služba AD DS ověřování u sdílených složek spravovaných pomocí Azure File Sync?**
 
     Ne, soubory Azure nepodporují zachování seznamů ACL systému souborů NTFS u sdílených složek spravovaných pomocí Azure File Sync. Seznamy ACL souborů přenesené z místních souborových serverů jsou trvalé Azure File Sync. Všechny seznamy ACL NTFS nakonfigurované nativně proti souborům Azure budou přepsány službou Azure File Sync. Soubory Azure navíc nepodporují ověřování pomocí přihlašovacích údajů Azure AD pro přístup ke sdíleným složkám spravovaným službou Azure File Sync.
 
@@ -289,7 +281,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     Náklady na standardní transakci a standardní úložiště se vztahují na snímek. Snímky jsou přírůstkové. Základní snímek je samotným sdílením. Všechny následné snímky jsou přírůstkové a uloží rozdíl jenom z předchozího snímku. To znamená, že rozdílové změny, které budou zobrazeny ve vyúčtování, budou minimální, pokud je vaše zatížení minimální. Informace o cenách standardních souborů Azure najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/files/) . V současné době se vám podíváme na velikost spotřebované snímkem sdílení a porovnáte se s využitím účtované kapacity. Pracujeme na nástrojích, abychom vylepšili vytváření sestav.
 
 * <a id="ntfs-acls-snaphsots"></a>
-**Ukládají se seznamy řízení přístupu NTFS u adresářů a souborů na sdílené snímky?**
+**Ukládají se seznamy řízení přístupu NTFS u adresářů a souborů na sdílené snímky?**  
     Seznamy řízení přístupu (ACL) NTFS u adresářů a souborů jsou uložené v snímcích sdílené složky.
 
 ### <a name="create-share-snapshots"></a>Vytváření snímků sdílené složky

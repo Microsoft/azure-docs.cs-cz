@@ -1,19 +1,19 @@
 ---
 title: Scénáře dat zahrnující Azure Data Lake Storage Gen2 | Microsoft Docs
 description: Seznamte se s různými scénáři a nástroji, pomocí kterých se data mohou ingestovat, zpracovávat, stahovat a vizuálně vyrozumět v Data Lake Storage Gen2 (dříve označované jako Azure Data Lake Store).
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
-ms.openlocfilehash: 010b7bc38caf83c12dd0d8b8e731fdbad6e45256
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.reviewer: stewu
+ms.openlocfilehash: cafe761d2b566a7bddce503765c11bf9f8e00f2a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422877"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847458"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen2 pro požadavky na velké objemy dat
 
@@ -73,7 +73,7 @@ Tato tabulka ukazuje, jak udělit přístup pro jednotlivé služby nebo nástro
 |Apache DistCp | Přiřazení role k spravované identitě přiřazené uživatelem | [Vytvoření clusteru HDInsight pomocí Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Data Factory| Přiřazení role k uživatelsky přiřazené identitě spravované uživatelem<br>**nebo**<br> Přiřadit role k instančnímu objektu<br>**nebo**<br> Použití klíče účtu úložiště | [Vlastnosti propojené služby](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
 |Azure HDInsight| Přiřazení role k spravované identitě přiřazené uživatelem | [Vytvoření clusteru HDInsight pomocí Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
-|Azure Databricks| Přiřazení role k instančnímu objektu | [Postupy: Použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
+|Azure Databricks| Přiřazení role k instančnímu objektu | [Postup: Vytvoření aplikace Azure AD a instančního objektu s přístupem k prostředkům pomocí portálu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 Pokud chcete udělit přístup ke konkrétnímu souboru a složkám, přečtěte si tyto články.
 

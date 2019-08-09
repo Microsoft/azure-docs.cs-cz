@@ -4,19 +4,19 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: d1dcd7895025ea608e5f6c4db5e0967817934f2a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3c6147cc24f285fc32dce145e594f743c9633c20
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175520"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857355"
 ---
-Použijte postup odpovídající typu vašeho projektu back-end&mdash;buď [.NET back-endu](#dotnet) nebo [back-end Node.js](#nodejs).
+Použijte postup, který odpovídá vašemu typu&mdash;back-end projektu, back-endu [.NET](#dotnet) nebo back- [Endu Node. js](#nodejs).
 
 ### <a name="dotnet"></a>Projekt back-end .NET
 
-1. V sadě Visual Studio, klikněte pravým tlačítkem na projekt serveru a klikněte na tlačítko **spravovat balíčky NuGet**. Vyhledejte `Microsoft.Azure.NotificationHubs`a potom klikněte na tlačítko **nainstalovat**. Tím se nainstaluje klientské knihovně pro Notification Hubs.
-2. Ve složce řadiče otevřete TodoItemController.cs a přidejte následující `using` příkazy:
+1. V aplikaci Visual Studio klikněte pravým tlačítkem na projekt serveru a pak klikněte na **Spravovat balíčky NuGet**. Vyhledejte a klikněte na nainstalovat. `Microsoft.Azure.NotificationHubs` Tím se nainstaluje Klientská knihovna Notification Hubs.
+2. Ve složce Controllers otevřete TodoItemController.cs a přidejte následující `using` příkazy:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -65,12 +65,12 @@ Použijte postup odpovídající typu vašeho projektu back-end&mdash;buď [.NET
     }
     ```
 
-4. Znovu publikujte projekt serveru.
+4. Publikujte projekt serveru znovu.
 
-### <a name="nodejs"></a>Projekt back-end Node.js
+### <a name="nodejs"></a>Back-end projekt Node. js
 
-1. Pokud jste tak již neučinili, [stáhnout projekt rychlý Start](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), nebo použijte jiný [online editoru na webu Azure Portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Nahraďte stávající kód v souboru todoitem.js následujícími způsoby:
+1. Nastavte svůj back-end projekt.
+2. Existující kód nahraďte v souboru TodoItem. js následujícím kódem:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -117,6 +117,6 @@ Použijte postup odpovídající typu vašeho projektu back-end&mdash;buď [.NET
     module.exports = table;
     ```
 
-    Tím se odešle oznámení GCM, který obsahuje item.text při vložení nové položky seznamu úkolů.
+    Tím se pošle oznámení GCM, které obsahuje položku. text při vložení nové položky ToDo.
 
-3. Při úpravách souboru v místním počítači, znovu publikujte projekt serveru.
+3. Při úpravách souboru v místním počítači znovu publikujte projekt serveru.

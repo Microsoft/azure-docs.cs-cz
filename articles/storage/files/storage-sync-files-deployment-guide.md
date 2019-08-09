@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6fe08c15de7ea388a5194054791eb394dc2f6e01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: de0eb685e212b59705d8d659cbe9627338697e9d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840599"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854526"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Azure File Sync transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -94,7 +94,7 @@ if ($installType -ne "Server Core") {
 Nasazení Azure File Sync začíná umístěním prostředku **služby synchronizace úložiště** do skupiny prostředků vybraného předplatného. V případě potřeby doporučujeme zřídit tyto požadavky co nejvíce. Vytvoříte vztah důvěryhodnosti mezi servery a tímto prostředkem a Server lze registrovat pouze do jedné služby synchronizace úložiště. V důsledku toho se doporučuje nasadit tolik služeb synchronizace úložiště, kolik potřebujete k oddělení skupin serverů. Mějte na paměti, že servery z různých služeb synchronizace úložiště se vzájemně nemůžou synchronizovat.
 
 > [!Note]
-> Služba synchronizace úložiště zdědila přístupová oprávnění z předplatného a skupiny prostředků, do které byla nasazena. Doporučujeme pečlivě zkontrolovat, kdo k němu má přístup. Entity s přístupem pro zápis můžou začít synchronizovat nové sady souborů ze serverů zaregistrovaných do této služby synchronizace úložiště a způsobit, že se data přenášejí do úložiště Azure, ke kterému mají přístup.
+> Služba synchronizace úložiště dědí přístupová oprávnění z předplatného a skupiny prostředků, do které byla nasazena. Doporučujeme pečlivě zkontrolovat, kdo k němu má přístup. Entity s přístupem pro zápis můžou začít synchronizovat nové sady souborů ze serverů zaregistrovaných do této služby synchronizace úložiště a způsobit, že se data přenášejí do úložiště Azure, ke kterému mají přístup.
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Pokud chcete nasadit službu synchronizace úložiště, přejděte na [Azure Portal](https://portal.azure.com/), klikněte na *vytvořit prostředek* a vyhledejte Azure File Sync. Ve výsledcích hledání vyberte **Azure File Sync**a pak výběrem **vytvořit** otevřete kartu **nasadit synchronizaci úložiště** .

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
-ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/07/2019
+ms.openlocfilehash: d1ad89943f6acfec6e42199ef399643be12e2b8b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780905"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856216"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Enterprise Security for Azure Machine Learning Service
 
@@ -176,12 +176,24 @@ Služba Azure Machine Learning používá k ukládání přihlašovacích údaj�
 * Hesla k instancím služby Azure Container úložiště
 * Připojovací řetězce k úložištím dat
 
-Hesla a klíče SSH k výpočetním cílům, jako je HDI HDInsight a VM, se ukládají v samostatné Key Vault, která je přidružená k předplatnému Microsoft. Služba Azure Machine Learning ukládá všechna hesla nebo klíče, které uživatel zadal, a místo toho generuje, autorizuje a ukládá vlastní klíče SSH, aby se mohl připojit k virtuálnímu počítači/HDInsight a spustit experimenty.
+Hesla a klíče SSH k výpočetním cílům, jako je HDI HDInsight a VM, se ukládají v samostatné Key Vault, která je přidružená k předplatnému Microsoft. Služba Azure Machine Learning neukládá žádná hesla ani klíče poskytnuté uživatelem, ale generuje, autorizuje a ukládá vlastní klíče SSH pro připojení k virtuálnímu počítači/HDInsight za účelem spuštění experimentů.
 Každý pracovní prostor má přidruženou spravovanou identitu přiřazenou systémem (se stejným názvem jako má pracovní prostor), který má přístup ke všem klíčům, tajným klíčům a certifikátům v Key Vault.
 
 ## <a name="monitoring"></a>Monitorování
 
-Uživatelé můžou zobrazit protokol aktivit v pracovním prostoru, aby viděli různé operace provedené v pracovním prostoru a získali základní informace, jako je název operace, událost iniciovaná, časové razítko atd.
+### <a name="metrics"></a>Metriky
+
+Metriky Azure Monitor lze použít k zobrazení a monitorování metrik pro pracovní prostor služby Azure Machine Learning. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor a pak použijte odkaz __metriky__ .
+
+![Snímek obrazovky znázorňující ukázkovou metriku pro pracovní prostor](./media/enterprise-readiness/workspace-metrics.png)
+
+Metriky obsahují informace o spuštění, nasazení a registracích.
+
+Další informace najdete v tématu [metriky v Azure monitor](/azure/azure-monitor/platform/data-platform-metrics).
+
+### <a name="activity-log"></a>Protokol aktivit
+
+Pomocí protokolu aktivit v pracovním prostoru můžete zobrazit různé operace provedené v pracovním prostoru a získat základní informace, jako je název operace, událost iniciovaná nástrojem, časové razítko atd.
 
 Na následujícím snímku obrazovky vidíte protokol aktivit pro pracovní prostor:
 
@@ -252,7 +264,7 @@ Podívejte se na podrobnosti níže:
 
 ![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/inferencing.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
 * [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)

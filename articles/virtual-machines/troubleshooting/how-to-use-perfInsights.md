@@ -1,6 +1,6 @@
 ---
-title: Použití PerfInsights v Microsoft Azure | Dokumentace Microsoftu
-description: Naučí, jak použití PerfInsights k řešení potíží s výkonem virtuálního počítače Windows.
+title: Jak používat PerfInsights v Microsoft Azure | Microsoft Docs
+description: Naučte se používat PerfInsights k řešení problémů s výkonem virtuálních počítačů s Windows.
 services: virtual-machines-windows'
 documentationcenter: ''
 author: anandhms
@@ -14,305 +14,305 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 26301e9a8aef29f1ff786f4fcd28b806eb10b8df
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318297"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846750"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
-[PerfInsights](https://aka.ms/perfinsightsdownload) je nástroj Diagnostika samoobslužné podpory, který shromažďuje a analyzuje diagnostická data a poskytuje sestavy, které vám pomohou vyřešit problémy s výkonem virtuálního počítače Windows v Azure. PerfInsights může běžet na virtuálních počítačích jako samostatný nástroj, přímo z portálu pomocí [výkonu diagnostiky pro virtuální počítače Azure](performance-diagnostics.md), nebo po instalaci [rozšíření virtuálního počítače výkon diagnostiky Azure ](performance-diagnostics-vm-extension.md).
+[PerfInsights](https://aka.ms/perfinsightsdownload) je samoobslužný Nástroj pro diagnostiku, který shromažďuje a analyzuje diagnostická data a poskytuje zprávu, která vám může pomoct řešit problémy s výkonem virtuálních počítačů s Windows v Azure. PerfInsights je možné spustit na virtuálních počítačích jako samostatný nástroj přímo z portálu pomocí [diagnostiky výkonu pro virtuální počítače Azure](performance-diagnostics.md)nebo instalací [rozšíření virtuálního počítače Azure Performance Diagnostics](performance-diagnostics-vm-extension.md).
 
-Pokud máte problémy s výkonem s virtuálními počítači, než se obrátíte na podporu, spusťte tento nástroj.
+Pokud dochází k problémům s výkonem s virtuálními počítači, než se obrátíte na podporu, spusťte tento nástroj.
 
 ## <a name="supported-troubleshooting-scenarios"></a>Podporované scénáře řešení potíží
 
-PerfInsights můžete shromažďovat a analyzovat několik druhů informací. Následující části se věnují běžné scénáře.
+PerfInsights může shromažďovat a analyzovat několik druhů informací. V následujících částech najdete běžné scénáře.
 
-### <a name="quick-performance-analysis"></a>Rychlý výkon analýzy
+### <a name="quick-performance-analysis"></a>Rychlá analýza výkonu
 
-Tento scénář shromažďuje konfiguraci disku a další důležité informace, včetně:
+Tento scénář shromažďuje konfiguraci disku a další důležité informace, včetně těchto:
 
 -   Protokoly událostí
 
--   Stav sítě pro všechny příchozí a odchozí připojení
+-   Stav sítě pro všechna příchozí a odchozí připojení
 
--   Konfigurace nastavení sítě a brány firewall
+-   Nastavení konfigurace sítě a brány firewall
 
--   Seznam kroků pro všechny aplikace, které jsou aktuálně spuštěné v systému
+-   Seznam úkolů pro všechny aplikace, které jsou aktuálně spuštěné v systému
 
--   Nastavení konfigurace databáze serveru Microsoft SQL Server (Pokud je virtuální počítač se identifikuje jako server, na kterém běží SQL Server)
+-   Microsoft SQL Server nastavení konfigurace databáze (Pokud je virtuální počítač identifikovaný jako server, na kterém běží SQL Server)
 
--   Spolehlivost čítače úložiště
+-   Čítače spolehlivosti úložiště
 
--   Důležité opravy hotfix pro Windows
+-   Důležité opravy hotfix systému Windows
 
--   Filtrovat nainstalované ovladače
+-   Nainstalované ovladače filtru
 
-Toto je pasivní kolekce informací, které by neměla mít vliv na systém. 
+Jedná se o pasivní shromažďování informací, které by neměly mít vliv na systém. 
 
 >[!Note]
->Tento scénář je automaticky zahrnut v každém z následujících scénářů:
+>Tento scénář je automaticky zahrnutý v každém z následujících scénářů:
 
 ### <a name="benchmarking"></a>Srovnávací testy
 
-Tento scénář spuštěn [nástroje Diskspd](https://github.com/Microsoft/diskspd) srovnávacího testu (vstupně-výstupních operací a MB/s) pro všechny jednotky, které jsou připojené k virtuálnímu počítači. 
+V tomto scénáři se spustí srovnávací test [DiskSpd](https://github.com/Microsoft/diskspd) (IOPS a MB/s) pro všechny jednotky, které jsou připojené k virtuálnímu počítači. 
 
 > [!Note]
-> Tento scénář může mít vliv na systém a by neměl být spuštěn v produkčním systému. V případě potřeby spusťte tento scénář v okně vyhrazené Údržba a vyhněte se problémům. Vysoké pracovní vytížení, jež je způsobena trasování nebo srovnávacích testů může nepříznivě ovlivnit výkon virtuálního počítače.
+> Tento scénář může ovlivnit systém a neměl by být spuštěn v živém produkčním systému. V případě potřeby tento scénář spusťte ve vyhrazeném časovém období údržby, abyste se vyhnuli jakýmkoli problémům. Zvýšené zatížení, které je způsobeno trasováním nebo testem srovnávacích testů, může negativně ovlivnit výkon virtuálního počítače.
 >
 
 ### <a name="performance-analysis"></a>Analýza výkonu
 
-Tento scénář spustí [čítač výkonu](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) trasování pomocí čítače, které jsou uvedeny v souboru RuleEngineConfig.json. Pokud virtuální počítač je identifikován jako server, na kterém běží SQL Server, je spustit trasování čítače výkonu. Dělá to pomocí čítače, které se nacházejí v souboru RuleEngineConfig.json. Tento scénář také zahrnuje diagnostická data výkonu.
+Tento scénář spustí trasování [čítače výkonu](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) pomocí čítačů, které jsou zadány v souboru RuleEngineConfig. JSON. Pokud je virtuální počítač identifikovaný jako server, na kterém běží SQL Server, spustí se trasování čítače výkonu. K tomu slouží čítače, které se nacházejí v souboru RuleEngineConfig. JSON. Tento scénář také zahrnuje data diagnostiky výkonu.
 
-### <a name="azure-files-analysis"></a>Azure analysis soubory
+### <a name="azure-files-analysis"></a>Analýza souborů Azure
 
-Tento scénář spustí zachycení čítače výkonu speciální spolu s trasování v síti. Zachytávání zahrnuje všechny čítače zprávy bloku SMB (Server) klienta sdílené složky. Tady jsou některé klíčové klienta sdílená složka čítače výkonu SMB, které jsou součástí zachytávání:
+Tento scénář spouští speciální zachycení čítače výkonu společně se síťovým trasováním. Funkce Capture zahrnuje všechny čítače sdílených složek klienta protokolu SMB (Server Message Block). Níže jsou uvedeny některé čítače výkonu sdílené složky klienta SMB, které jsou součástí zachycení:
 
-| **Typ**     | **Čítač sdílené složky SMB klienta** |
+| **Typ**     | **Čítač sdílených složek klienta SMB** |
 |--------------|-------------------------------|
-| IOPS         | Data požadavků za sekundu             |
-|              | Číst počet požadavků za sekundu             |
-|              | Zápis požadavků za sekundu            |
-| Latence      | Požadavek na střední sec/dat         |
-|              | Průměrná/čtení                 |
-|              | Průměrná doba/zápis                |
-| Velikost vstupně-výstupních operací      | Střední Žádost o bajtů/dat       |
-|              | Střední / Přečtených bajtů               |
+| IOPS         | Požadavky na data/s             |
+|              | Počet žádostí o čtení za sekundu             |
+|              | Požadavky na zápis za sekundu            |
+| Latence      | Prům. s/požadavek na data         |
+|              | Prům. sekund/čtení                 |
+|              | Prům. s/zápis                |
+| Velikost v/v      | Střední Bajty/požadavek na data       |
+|              | Střední Bajty/čtení               |
 |              | Střední Bajty/zápis              |
-| Propustnost   | Data bajty/s                |
+| Propustnost   | Bajty dat/s                |
 |              | Přečtené bajty/s                |
-|              | Bajty zapsané/s               |
-| Délka fronty | Střední Délka fronty pro čtení        |
+|              | Zapsané bajty/s               |
+| Délka fronty | Střední Délka fronty čtení        |
 |              | Střední Délka fronty zápisu       |
-|              | Střední Délka fronty data        |
+|              | Střední Délka fronty dat        |
 
-### <a name="advanced-performance-analysis"></a>Analýza výkonu Upřesnit
+### <a name="advanced-performance-analysis"></a>Pokročilá analýza výkonu
 
-Když spustíte analýzu Upřesnit, vyberte trasování k paralelnímu spuštění. Pokud chcete, můžete je spustit všechny (čítače výkonu, Xperf, sítě a StorPort).  
+Když spustíte pokročilou analýzu výkonu, vyberete možnost trasování pro paralelní spuštění. Pokud chcete, můžete je spustit vše (čítač výkonu, Xperf, síť a ovladač StorPort).  
 
 > [!Note]
-> Tento scénář může mít vliv na systém a by neměl být spuštěn v produkčním systému. V případě potřeby spusťte tento scénář v okně vyhrazené Údržba a vyhněte se problémům. Vysoké pracovní vytížení, jež je způsobena trasování nebo srovnávacích testů může nepříznivě ovlivnit výkon virtuálního počítače.
+> Tento scénář může ovlivnit systém a neměl by být spuštěn v živém produkčním systému. V případě potřeby tento scénář spusťte ve vyhrazeném časovém období údržby, abyste se vyhnuli jakýmkoli problémům. Zvýšené zatížení, které je způsobeno trasováním nebo testem srovnávacích testů, může negativně ovlivnit výkon virtuálního počítače.
 >
 
-## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Jaké informace jsou shromažďovány podle PerfInsights?
+## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Jaký druh informací shromažďuje služba PerfInsights?
 
-Informace o virtuální počítač Windows, disků nebo konfigurace fondů úložiště, čítače výkonu, protokoly a se shromažďují různé trasování. To závisí na výkonu scénáře, který používáte. Následující tabulka obsahuje podrobnosti:
+Shromažďují se informace o virtuálním počítači s Windows, discích nebo konfiguraci fondů úložiště, čítačích výkonu, protokolech a různých trasováních. Závisí na scénáři výkonu, který používáte. Podrobnosti jsou uvedeny v následující tabulce:
 
 |Data shromážděná                              |  |  | Scénáře výkonu |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Rychlý výkon analýzy | Srovnávací testy | Analýza výkonu | Azure analysis soubory | Analýza výkonu Upřesnit |
+|                               | Rychlá analýza výkonu | Srovnávací testy | Analýza výkonu | Analýza souborů Azure | Pokročilá analýza výkonu |
 | Informace z protokolů událostí       | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Systémové informace                | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Mapování svazku                        | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Mapování disku                          | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Spouštění úloh                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Spolehlivost čítače úložiště      | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
+| Mapa svazků                        | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
+| Mapa disku                          | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
+| Spuštěné úkoly                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
+| Čítače spolehlivosti úložiště      | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Informace o úložiště               | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Výstup fsutil                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Informace o filtru ovladačů                | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
+| Fsutil Output                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
+| Filtrovat informace ovladače                | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Výstup příkazu netstat                    | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Konfigurace sítě             | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Konfigurace brány firewall            | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Konfigurace systému SQL Server          | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
+| Konfigurace SQL Server          | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Trasování diagnostiky výkonu *  | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Čítače sledování výkonu **      |                            |                                    | Ano                      |                      | Ano                  |
-| SMB čítačů trasování **              |                            |                                    |                          | Ano                  |                      |
+| Trasování čítače výkonu * *      |                            |                                    | Ano                      |                      | Ano                  |
+| Trasování čítače SMB * *              |                            |                                    |                          | Ano                  |                      |
 | SQL Server counter trace **       |                            |                                    | Ano                      |                      | Ano                  |
-| Trasování nástroje XPerf                       |                            |                                    |                          |                      | Ano                  |
-| Ovladače StorPort trasování                    |                            |                                    |                          |                      | Ano                  |
+| Xperf trasování                       |                            |                                    |                          |                      | Ano                  |
+| Trasování StorPort                    |                            |                                    |                          |                      | Ano                  |
 | Trasování sítě                     |                            |                                    |                          | Ano                  | Ano                  |
-| Trasování srovnávacího testu Diskspd ***       |                            | Ano                                |                          |                      |                      |
+| Sledování srovnávacích testů DiskSpd * * *       |                            | Ano                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Trasování diagnostiky výkonu (*)
 
-Běží na pozadí pro shromažďování dat a diagnostikovat problémy s výkonem probíhající modul založený na pravidlech. Aktuálně jsou podporovány následující pravidla:
+Spouští modul založený na pravidlech na pozadí ke shromažďování dat a diagnostice probíhajících problémů s výkonem. V současné době jsou podporovány následující pravidla:
 
-- HighCpuUsage pravidlo: Zjistí vysokou období využití procesoru a uvádí hlavních spotřebitelů využití procesoru během těchto období přistupovalo.
-- HighDiskUsage pravidlo: Zjistí období využití disku na fyzických discích a ukazuje využití příjemci nejvyšší disku během těchto období přistupovalo.
-- HighResolutionDiskMetric pravidlo: Zobrazuje metriky latence vstupně-výstupních operací, propustnosti a vstupně-výstupních operací na 50 milisekund u každého fyzického disku. Pomáhá rychle identifikovat období omezování disku.
-- HighMemoryUsage pravidlo: Zjistí období využití velkého množství paměti a zobrazuje hlavní paměti spotřebitele využití během těchto období přistupovalo.
+- Pravidlo HighCpuUsage: Zjistí vysoké objemy využití procesoru a v těchto obdobích zobrazí uživatele s nejvyšším využitím procesoru.
+- Pravidlo HighDiskUsage: Zjistí dobu využití disku na fyzických discích a v těchto obdobích zobrazí uživatele s nejvyšším využitím disku.
+- Pravidlo HighResolutionDiskMetric: Zobrazuje metriky latence, propustnosti a vstupně-výstupních operací na 50 milisekund pro každý fyzický disk. Pomáhá rychle identifikovat dobu omezení disku.
+- Pravidlo HighMemoryUsage: Zjistí dobu využití vysoké paměti a při těchto obdobích zobrazí uživatele s největším využitím paměti.
 
 > [!NOTE] 
-> V současné době se podporují Windows, které zahrnují rozhraní .NET Framework 4.5 nebo novější verze.
+> V současné době jsou podporovány verze Windows, které zahrnují .NET Framework 4,5 nebo novější verze.
 
-### <a name="performance-counter-trace-"></a>Čítače sledování výkonu (*)
+### <a name="performance-counter-trace-"></a>Trasování čítače výkonu (* *)
 
 Shromažďuje následující čítače výkonu:
 
-- \Process \Processor, \Memory, \Thread, \PhysicalDisk a \LogicalDisk
-- \Cache\Dirty stránky, \Cache\Lazy zápisu vyprázdnění za sekundu, \Server\Pool nestránkovaného, chyby a selhání \Server\Pool stránkovaného fondu
-- Vybrané čítače v rámci \Network rozhraní \IPv4\Datagrams \IPv6\Datagrams, \TCPv4\Segments, \TCPv6\Segments, \Network adaptér, \WFPv4\Packets, \WFPv6\Packets, \UDPv4\Datagrams, \UDPv6\Datagrams, \TCPv4\Connection, \TCPv6\Connection, \ QoS Policy\Packets sítě, \Per procesor síťové rozhraní karty aktivity a \Microsoft Winsock BSP
+- \Process, \Processor, \Memory, \Thread, \PhysicalDisk a \ logický disk
+- \Cache\Dirty stránky, vyprázdnění \Cache\Lazy zápisu za sekundu, \Server\Pool nestránkované, selhání a \Server\Pool stránkovaného selhání
+- Vybrané čítače v rámci rozhraní \Network, \IPv4\Datagrams, \IPv6\Datagrams, \TCPv4\Segments, \TCPv6\Segments, \Network Adapter, \WFPv4\Packets, \WFPv6\Packets, \UDPv4\Datagrams, \UDPv6\Datagrams, \TCPv4\Connection, \TCPv6\Connection, \ Síť QoS Policy\Packets, aktivita síťového rozhraní procesoru \Per a \Microsoft Winsock BSP
 
-#### <a name="for-sql-server-instances"></a>Pro instance systému SQL Server
-- Správce vyrovnávací paměti serveru: \SQL, \SQLServer:Resource fondu statistiky a \SQLServer:SQL Statistics\
-- \SQLServer:Locks \SQLServer:General statistiky
-- \SQLServer:Access metody
+#### <a name="for-sql-server-instances"></a>Pro instance SQL Server
+- \SQL Server: Správce vyrovnávací paměti, \SQLServer: statistiky fondu zdrojů a \SQLServer: Statistika SQL \
+- \SQLServer: zámky, \SQLServer: Obecné, Statistika
+- \SQLServer: metody přístupu
 
 #### <a name="for-azure-files"></a>Pro soubory Azure
-\SMB sdílených složek klienta
+\SMB sdílené složky klienta
 
-### <a name="diskspd-benchmark-trace-"></a>Trasování srovnávacího testu Diskspd (*)
-Diskspd vstupně-výstupních operací úloh testy (Disk s operačním systémem [zápis] a jednotky fondu [r/w])
+### <a name="diskspd-benchmark-trace-"></a>Sledování srovnávacích testů DiskSpd (* * *)
+DiskSpd vstupně-výstupních úloh testů (disk s operačním systémem [zápis] a jednotky fondu [čtení/zápis])
 
-## <a name="run-the-perfinsights-tool-on-your-vm"></a>Spusťte nástroj PerfInsights na vašem virtuálním počítači
+## <a name="run-the-perfinsights-tool-on-your-vm"></a>Spuštění nástroje PerfInsights na VIRTUÁLNÍm počítači
 
-### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Co musím vědět před mohu spustit nástroj? 
+### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Co musím vědět před spuštěním tohoto nástroje? 
 
 #### <a name="tool-requirements"></a>Požadavky na nástroj
 
--  Tento nástroj musíte spustit na virtuálním počítači, který má tyto problémy s výkonem. 
+-  Tento nástroj se musí spustit na virtuálním počítači, který má problém s výkonem. 
 
--  Následující operační systémy se podporují: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016, Windows 8.1 a Windows 10.
+-  Následující operační systémy se podporují: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016; Windows 8.1 a Windows 10.
 
-#### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Možné problémy při spuštění nástroje na produkčních virtuálních počítačů
+#### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Možné problémy při spuštění nástroje na produkčních virtuálních počítačích
 
--  Pro srovnávací testy scénář nebo scénáře "Pokročilé analýzy výkonu", který je nakonfigurován pro použití nástroje Xperf nebo nástroje Diskspd nástroj může nepříznivě ovlivnit výkon virtuálního počítače. Tyto scénáře neměli spouštět v produkčním prostředí.
+-  Pro scénář srovnávacích testů nebo pro scénář "Pokročilá analýza výkonu", který je nakonfigurován tak, aby používal Xperf nebo DiskSpd, může tento nástroj negativně ovlivnit výkon virtuálního počítače. Tyto scénáře by se neměly spouštět v živém provozním prostředí.
 
--  Pro srovnávací testy scénář nebo scénáře "Pokročilé analýzy výkonu", který je nakonfigurován pro použití nástroje Diskspd Ujistěte se, že žádné další aktivitu na pozadí dochází ke kolizím s vstupně-výstupní úlohy.
+-  Pro scénář srovnávacích testů nebo pro scénář "Pokročilá analýza výkonu", který je nakonfigurován na používání DiskSpd, se ujistěte, že žádná jiná aktivita na pozadí nekoliduje s vstupně-výstupní úlohou.
 
--  Ve výchozím nastavení používá nástroj pro shromažďování dat disk dočasného úložiště. Při trasování zůstane povolena po delší dobu, objem shromážděných dat můžou být relevantní. To může snížit dostupnost místo na dočasném disku a proto může ovlivnit jakékoli aplikace, která závisí na této jednotce.
+-  Nástroj ve výchozím nastavení používá k shromažďování dat jednotku dočasného úložiště. Pokud trasování zůstává povolené po delší dobu, může to být relevantní množství shromažďovaných dat. To může snížit dostupnost místa na dočasném disku a může proto ovlivnit jakoukoli aplikaci, která na této jednotce závisí.
 
-### <a name="how-do-i-run-perfinsights"></a>Spouštění PerfInsights 
+### <a name="how-do-i-run-perfinsights"></a>Návody PerfInsights spustit? 
 
-PerfInsights můžete spustit na virtuálním počítači s instalací [rozšíření virtuálního počítače Azure výkonu Diagnostics](performance-diagnostics-vm-extension.md). Můžete ho spustit také jako samostatný nástroj. 
+PerfInsights můžete na virtuálním počítači spustit tak, že nainstalujete [rozšíření virtuálního počítače Azure Performance Diagnostics](performance-diagnostics-vm-extension.md). Můžete ho také spustit jako samostatný nástroj. 
 
-**Nainstalujte a spusťte PerfInsights z portálu Azure portal**
+**Instalace a spuštění PerfInsights z Azure Portal**
 
-Další informace o této možnosti najdete v tématu [instalaci virtuálního počítače rozšíření diagnostiky Azure výkonu](performance-diagnostics-vm-extension.md#install-the-extension).  
+Další informace o této možnosti najdete v tématu [Instalace rozšíření virtuálního počítače Azure Performance Diagnostics](performance-diagnostics-vm-extension.md#install-the-extension).  
 
 **Spustit PerfInsights v samostatném režimu**
 
-Chcete-li spustit nástroj PerfInsights, postupujte takto:
+Chcete-li spustit nástroj PerfInsights, postupujte podle následujících kroků:
 
 
-1. Stáhněte si [PerfInsights.zip](https://aka.ms/perfinsightsdownload).
+1. Stáhněte si soubor [PerfInsights. zip](https://aka.ms/perfinsightsdownload).
 
-2. Odblokování PerfInsights.zip souboru. Chcete-li to provést, klikněte pravým tlačítkem na soubor PerfInsights.zip a vyberte **vlastnosti**. V **Obecné** kartu, vyberte možnost **Odblokovat**a pak vyberte **OK**. Tím se zajistí, že je nástroj spuštěn bez jakékoli další bezpečnostní výzvy.  
+2. Odblokujte soubor PerfInsights. zip. Provedete to tak, že kliknete pravým tlačítkem na soubor PerfInsights. zip a vyberete **vlastnosti**. Na kartě **Obecné** vyberte Odblokovat a pak vyberte **OK**. Tím se zajistí, že se nástroj spustí bez dalších výzev zabezpečení.  
 
-    ![Snímek obrazovky PerfInsights vlastnosti, se zvýrazněnou odblokování](media/how-to-use-perfInsights/unlock-file.png)
+    ![Snímek obrazovky s vlastnostmi PerfInsights se zvýrazněným odblokem](media/how-to-use-perfInsights/pi-unlock-file.png)
 
-3.  Rozbalte zkomprimovaný soubor PerfInsights.zip do dočasné jednotky (ve výchozím nastavení, to je obvykle jednotce D). 
+3.  Rozbalte komprimovaný soubor PerfInsights. zip na dočasnou jednotku (ve výchozím nastavení je to obvykle jednotka D). 
 
-4.  Otevřete příkazový řádek Windows jako správce a spusťte PerfInsights.exe zobrazíte parametry příkazového řádku k dispozici.
+4.  Otevřete příkazový řádek systému Windows jako správce a pak spusťte PerfInsights. exe, abyste zobrazili dostupné parametry příkazového řádku.
 
     ```
     cd <the path of PerfInsights folder>
     PerfInsights
     ```
-    ![Snímek obrazovky PerfInsights výstup příkazového řádku](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
+    ![Snímek obrazovky s výstupem příkazového řádku PerfInsights](media/how-to-use-perfInsights/pi-commandline.png)
     
-    Základní syntaxe pro spouštění PerfInsights scénáře je:
+    Základní syntaxe pro spouštění scénářů PerfInsights je:
     
     ```
     PerfInsights /run <ScenarioName> [AdditionalOptions]
     ```
 
-    Můžete použít následujícím příkladu pro spuštění scénáře pro analýzu výkonu pro 5 minut:
+    Pomocí níže uvedeného příkladu můžete spustit scénář analýzy výkonu po dobu 5 minut:
     
     ```
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics
     ```
 
-    V následujícím příkladu můžete použít ke spuštění pokročilý scénář pomocí nástroje Xperf a výkonu čítačů trasování pro 5 minut:
+    Následující příklad můžete použít ke spuštění pokročilého scénáře s trasováním Xperf a čítače výkonu po dobu 5 minut:
     
     ```
     PerfInsights /run advanced xp /d 300 /AcceptDisclaimerAndShareDiagnostics
     ```
 
-    Můžete použít následujícím příkladu ke spuštění scénáře pro analýzu výkonu pro 5 minut a nahrajte soubor zip výsledek do účtu úložiště:
+    Pomocí níže uvedeného příkladu můžete spustit scénář analýzy výkonu po dobu 5 minut a odeslat soubor zip výsledků do účtu úložiště:
     
     ```
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics /sa <StorageAccountName> /sk <StorageAccountKey>
     ```
 
-    Můžete vyhledat všechny dostupné scénářích a možnostech pomocí **/list** příkaz:
+    Všechny dostupné scénáře a možnosti můžete vyhledat pomocí příkazu **/list** :
     
     ```
     PerfInsights /list
     ```
 
     >[!Note]
-    >Před spuštěním scénáře, PerfInsights vyzve uživatele k souhlasí, že sdílet diagnostické informace a souhlas se smlouvou EULA. Použití **/AcceptDisclaimerAndShareDiagnostics** možnost pro přeskočení těchto pokynů. 
+    >Před spuštěním scénáře PerfInsights vyzve uživatele, aby souhlasil se sdílením diagnostických informací a souhlasil se smlouvou EULA. Tyto výzvy přeskočíte pomocí možnosti **/AcceptDisclaimerAndShareDiagnostics** . 
     >
-    >Pokud máte s Microsoftem a spuštěné PerfInsights dle požadavku pracují s pracovníkem technické podpory active lístku, ujistěte se, že k poskytování na podporu lístek čísla pomocí **/SR** možnost.
+    >Pokud máte aktivní lístek podpory s Microsoftem a provozujete PerfInsights na žádost pro inženýra podpory, se kterým pracujete, ujistěte se, že jste zadali číslo lístku podpory pomocí možnosti **/SR** .
     >
-    >Ve výchozím nastavení PerfInsights to samotné aktualizace na nejnovější verzi, pokud je k dispozici. Použití **/SkipAutoUpdate** nebo **/sau** parametru pro přeskočení automatické aktualizace.  
+    >Ve výchozím nastavení se PerfInsights pokusí aktualizovat na nejnovější verzi, pokud je dostupná. K přeskočení automatické aktualizace použijte parametr **/SkipAutoUpdate** nebo **/sau** .  
     >
-    >Pokud doba trvání **/d** není zadán, PerfInsights vás vyzve k reprodukci problému při spuštění vmslow azurefiles a pokročilé scénáře. 
+    >Pokud není zadaný přepínač trvání **/d** , PerfInsights vás vyzve k reprodukci problému při spouštění vmslow, azurefiles a pokročilých scénářů. 
 
-Po dokončení trasování nebo operace se zobrazí ve stejné složce jako PerfInsights nový soubor. Název souboru je **PerformanceDiagnostics\_rrrr MM-dd\_hh mm ss fff.zip.** Můžete odeslat tento soubor v agentovi podporu pro analýzu nebo otevřete sestavu v souboru zip a zkontrolujte výsledky a doporučení.
+Po dokončení trasování nebo operací se ve stejné složce jako PerfInsights zobrazí nový soubor. Název souboru je **PerformanceDiagnostics\_yyyy-MM-DD\_HH-MM-SS-FFF. zip.** Tento soubor můžete poslat agentovi podpory pro účely analýzy nebo otevřít sestavu v souboru zip a zkontrolovat si závěry a doporučení.
 
-## <a name="review-the-diagnostics-report"></a>Zkontrolujte sestavu diagnostiky
+## <a name="review-the-diagnostics-report"></a>Kontrola diagnostické sestavy
 
-V rámci **PerformanceDiagnostics\_rrrr MM-dd\_hh mm ss fff.zip** soubor, můžete najít zprávu ve formátu HTML s podrobnostmi o zjištění PerfInsights. Chcete-li zkontrolovat sestavy, rozbalte **PerformanceDiagnostics\_rrrr MM-dd\_hh mm ss fff.zip** souboru a pak otevřete **PerfInsights Report.html** souboru.
+V souboru **PerformanceDiagnostics\_yyyy-MM-DD\_HH-MM-SS-FFF. zip** můžete najít sestavu HTML, která podrobně popisuje zjištění PerfInsights. Chcete-li sestavu zkontrolovat, rozbalte **soubor\_PerformanceDiagnostics yyyy-mm-\_DD hh-mm-SS-FFF. zip** a otevřete soubor **PerfInsights Report. html** .
 
-Vyberte **zjištění** kartu.
+Vyberte kartu **zjištění** .
 
-![Snímek obrazovky sestavy PerfInsights](media/how-to-use-perfInsights/findingtab.png)
-![snímek sestavy PerfInsights](media/how-to-use-perfInsights/findings.PNG)
+![Snímek obrazovky sestavy](media/how-to-use-perfInsights/pi-finding-tab.png)
+![PerfInsights na snímku sestavy PerfInsights](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
-> Zjištění zařazených do kategorií vysoká jsou známé problémy, které můžou způsobovat problémy s výkonem. Zjištění kategorizována jako střední představují optimální konfigurace, které nutně nezpůsobí problémy s výkonem. Zjištění, které jsou klasifikovány jako s nízkou jsou pouze informativní příkazů.
+> Nálezy zařazené do kategorie vysoká jsou známé problémy, které mohou způsobit problémy s výkonem. Nálezy kategorizované jako střední představuje neoptimální konfigurace, které nemusí nutně způsobovat problémy s výkonem. Nálezy zařazené do kategorie nízká jsou informativní pouze informativní příkazy.
 
-Projděte si doporučení a odkazy na všechny vysoké a střední výsledky. Další informace o tom, jak může ovlivnit výkon a také o osvědčené postupy pro konfiguraci optimalizováno pro výkon.
+Přečtěte si doporučení a odkazy pro všechna vysoká a střední zjištění. Seznamte se s tím, jak mohou ovlivnit výkon, a také o osvědčených postupech pro konfigurace optimalizované pro výkon.
 
 ### <a name="storage-tab"></a>Karta úložiště
 
-**Zjištění** části zobrazí různé závěry a doporučení týkající se úložiště.
+V části nálezy se zobrazují různé závěry a doporučení týkající se úložiště.
 
-**Mapování disku** a **mapování svazku** části popisují, jak logické svazky a fyzické disky se vztahují k sobě navzájem.
+Oddíly **Mapa disku** a **Mapa svazků** popisují, jak se vzájemně souvisí logické svazky a fyzické disky.
 
-V perspektivě fyzický disk (Disk Map) v tabulce jsou uvedeny všechny logické svazky, které jsou spuštěny na disku. V následujícím příkladu **PhysicalDrive2** spustí dvě logické svazků vytvořených na několik oddílů (J a H):
+V perspektivě fyzického disku (mapa disku) zobrazuje tabulka všechny logické svazky, které jsou na disku spuštěné. V následujícím příkladu **PhysicalDrive2** spustí dva logické svazky vytvořené na více oddílech (J a H):
 
-![Snímek obrazovky s kartou disku](media/how-to-use-perfInsights/disktab.png)
+![Snímek obrazovky s kartou disk](media/how-to-use-perfInsights/pi-disk-tab.png)
 
-Tabulky v perspektivě svazek (Mapa svazku) zobrazují všechny fyzické disky v rámci každé logické svazku. Všimněte si, že RAID nebo dynamické disky, můžete spustit logický svazek na několik fyzických disků. V následujícím příkladu *C:\\připojit* přípojný bod je nakonfigurován jako *SpannedDisk* na fyzických discích, 2 a 3:
+V perspektivě svazku (mapa svazků) jsou v tabulkách zobrazeny všechny fyzické disky v rámci jednotlivých logických svazků. Všimněte si, že u polí RAID/dynamic disks můžete spustit logický svazek na více fyzických discích. V následujícím příkladu je *C:\\Mount* přípojný bod nakonfigurovaný jako *SpannedDisk* na fyzických discích 2 a 3:
 
-![Snímek obrazovky s kartou svazku](media/how-to-use-perfInsights/volumetab.png)
+![Snímek obrazovky s kartou Volume](media/how-to-use-perfInsights/pi-volume-tab.png)
 
 ### <a name="sql-tab"></a>Karta SQL
 
-Pokud cílový virtuální počítač hostuje všechny instance systému SQL Server, zobrazí se další kartu v sestavě, s názvem **SQL**:
+Pokud cílový virtuální počítač hostuje nějaké instance SQL Server, zobrazí se v sestavě další karta s názvem **SQL**:
 
-![Snímek obrazovky SQL kartu](media/how-to-use-perfInsights/sqltab.png)
+![Snímek obrazovky s kartou SQL](media/how-to-use-perfInsights/pi-sql-tab.png)
 
-Tato část obsahuje **zjištění** karty a další záložky pro jednotlivé instance SQL serveru hostované na virtuálním počítači.
+Tato část obsahuje kartu **zjištění** a další karty pro všechny SQL Server instance hostované na virtuálním počítači.
 
-**Zjištění** karta obsahuje seznam všech SQL týkající se problémů s výkonem, které najde, spolu s doporučení.
+Karta **nálezy** obsahuje seznam všech nalezených problémů s výkonem souvisejících s SQL, včetně doporučení.
 
-V následujícím příkladu **PhysicalDrive0** (spuštěna jednotce C) se zobrazí. Důvodem je, že i **modeldev** a **modellog** soubory jsou umístěny na jednotce C a jsou z různých typů (například data souborů a protokolů transakcí, v uvedeném pořadí).
+V následujícím příkladu se zobrazí **PhysicalDrive0** (spouští se jednotka C). Důvodem je to, že soubory **modeldev** a **modellog** jsou umístěné na jednotce C a jsou různými typy (například datový soubor a transakční protokol).
 
-![Snímek obrazovky se informace protokolu](media/how-to-use-perfInsights/loginfo.png)
+![Snímek obrazovky s informacemi o protokolu](media/how-to-use-perfInsights/pi-log-info.png)
 
-Karty pro konkrétní instance systému SQL Server obsahovat obecné oddíl, který zobrazuje základní informace o vybrané instance. Karty taky obsahovat další oddíly pro rozšířené informace, včetně nastavení, konfigurace a možnosti uživatele.
+Karty pro konkrétní instance SQL Server obsahují obecnou část, která zobrazuje základní informace o vybrané instanci. Karty také obsahují další části pro rozšířené informace, včetně nastavení, konfigurací a uživatelských možností.
 
-### <a name="diagnostic-tab"></a>Karta diagnostiky
-**Diagnostických** karta obsahuje informace o hlavních spotřebitelů procesoru, disku a paměti počítače po dobu trvání spuštění PerfInsights. Můžete také najít informace o důležitých oprav, že systém pravděpodobně chybí, seznam úkolů a důležitých systémových událostí. 
+### <a name="diagnostic-tab"></a>Karta Diagnostika
+Karta **Diagnostika** obsahuje informace o hlavních spotřebitelích procesoru, disku a paměti v počítači po dobu trvání běhu PerfInsights. Můžete také najít informace o důležitých opravách, které systém může chybět, seznam úkolů a důležité systémové události. 
 
-## <a name="references-to-the-external-tools-used"></a>Odkazy na externí nástroje použít
+## <a name="references-to-the-external-tools-used"></a>Odkazy na použité externí nástroje
 
-### <a name="diskspd"></a>Nástroje Diskspd
+### <a name="diskspd"></a>DiskSpd
 
-Diskspd je úložiště zatížení generátoru pro kontejnery a výkonu testovací nástroj od Microsoftu. Další informace najdete v tématu [nástroje Diskspd](https://github.com/Microsoft/diskspd).
+DiskSpd je generátor zátěžového úložiště a nástroj pro testování výkonu od Microsoftu. Další informace najdete v tématu [DiskSpd](https://github.com/Microsoft/diskspd).
 
-### <a name="xperf"></a>Nástroje XPerf
+### <a name="xperf"></a>Xperf
 
-Nástroje XPerf je nástroj příkazového řádku trasování z Windows Performance Toolkit. Další informace najdete v tématu [Windows Performance Toolkit – Xperf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
+Xperf je nástroj příkazového řádku pro zachycení trasování ze sady nástrojů Windows Performance Toolkit. Další informace najdete v tématu [Windows Performance Toolkit – Xperf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Diagnostické protokoly a sestavy můžete nahrát do Microsoft Support pro další kontrolu. Podpora vás může požádat, aby předaly výstupu, který je generován PerfInsights vám pomůže s proces řešení potíží.
+Protokoly diagnostiky a sestavy můžete odeslat podpora Microsoftu k dalšímu přezkoumání. Podpora může vyžadovat, abyste odeslali výstup, který je vygenerovaný PerfInsights, aby pomohl procesu řešení potíží.
 
-Následující snímek obrazovky ukazuje podobný co se může zobrazit zpráva:
+Na následujícím snímku obrazovky se zobrazí zpráva podobná tomu, co se vám může zobrazit:
 
-![Snímek obrazovky s ukázkovou zprávu z Microsoft Support](media/how-to-use-perfInsights/supportemail.png)
+![Snímek obrazovky ukázkové zprávy z podpora Microsoftu](media/how-to-use-perfInsights/pi-support-email.png)
 
-Postupujte podle pokynů ve zprávě pro přístup k pracovnímu prostoru přenos souboru. Za účelem zvýšení zabezpečení budete muset změnit heslo při prvním použití.
+Postupujte podle pokynů ve zprávě pro přístup k pracovnímu prostoru přenosu souborů. Pro zvýšení zabezpečení je nutné při prvním použití změnit heslo.
 
-Po přihlášení se vás bude dialogové okno pro nahrání **PerformanceDiagnostics\_rrrr MM-dd\_hh mm ss fff.zip** souboru, která byla shromážděna PerfInsights.
+Po přihlášení se zobrazí dialogové okno pro nahrání souboru **\_PerformanceDiagnostics yyyy-MM-DD\_HH-MM-SS-FFF. zip** , který byl shromážděn nástrojem PerfInsights.
 

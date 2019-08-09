@@ -1,7 +1,6 @@
 ---
-title: Azure Data Lake Storage Gen2 Storm výkonu pokyny k ladění | Dokumentace Microsoftu
-description: Azure Data Lake Storage Gen2 Storm výkonu pokyny k ladění
-services: storage
+title: Pokyny pro ladění výkonu Azure Data Lake Storage Gen2é zaplavování Microsoft Docs
+description: Pokyny pro ladění výkonu Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,112 +8,112 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: aa3c942448be6444044981eacc2bbc3214b9c1b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed13735b4da4818e969c4dddff68b55af6e71a15
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939393"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855426"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Průvodce laděním výkonu pro Storm v HDInsight a Azure Data Lake Storage Gen2
+# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Pokyny k ladění výkonu pro zaplavení v HDInsight a Azure Data Lake Storage Gen2
 
-Seznamte se s faktory, které by se měly zvažovat při optimalizaci výkonu topologii Storm v Azure. Například je důležité pochopit vlastnosti práce provedené spoutů a boltů (Určuje, zda práce se vstupně-výstupních operací nebo paměť). Tento článek popisuje celou řadu pokyny, včetně řešení běžných potíží pro optimalizaci výkonu.
+Seznamte se s faktory, které byste měli vzít v úvahu při ladění výkonu topologie Azure. Je například důležité pochopit charakteristiky práce prováděné spoutů a šrouby (zda je práce v/v nebo v paměti). Tento článek obsahuje řadu pokynů pro ladění výkonu, včetně řešení běžných potíží.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [rychlý start: Vytvořit úložiště účtů pro analytické](data-lake-storage-quickstart-create-account.md).
-* **Azure HDInsight cluster** s přístupem k účtu Data Lake Storage Gen2. Zobrazit [clusterů pomocí Azure Data Lake Storage Gen2 s Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Ujistěte se, že se že povolení vzdálené plochy pro cluster.
-* **S clusterem Storm v Data Lake Storage Gen2**. Další informace najdete v tématu [Storm v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
-* **Pokyny pro Data Lake Storage Gen2 pro optimalizaci výkonu**.  Obecné informace o výkonu koncepty, najdete v části [Data Lake Storage Gen2 ladění Průvodce výkonem](data-lake-storage-performance-tuning-guidance.md).   
+* **Účet Azure Data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [rychlý Start: Vytvořte účet úložiště pro analytickou](data-lake-storage-quickstart-create-account.md)sestavu.
+* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen2. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
+* **Spuštění clusteru nečinnosti v Data Lake Storage Gen2**. Další informace najdete v tématu zaplavení [v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
+* **Pokyny k ladění výkonu na data Lake Storage Gen2**.  Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen2 doprovodné materiály k ladění výkonu](data-lake-storage-performance-tuning-guidance.md).   
 
-## <a name="tune-the-parallelism-of-the-topology"></a>Vyladění paralelismus topologii
+## <a name="tune-the-parallelism-of-the-topology"></a>Vyladění paralelismu topologie
 
-Je možné zvýšit výkon zvýšením souběžnosti vstupně-výstupních operací do a z Data Lake Storage Gen2. Topologie Storm obsahuje sadu konfigurací, které určují paralelismus:
-* Počet pracovních procesů (zaměstnanci jsou rovnoměrně rozloženy mezi virtuální počítače).
-* Počet instancí spout prováděcího modulu.
-* Počet instancí bolt prováděcího modulu.
-* Počet úkolů spout.
-* Počet úkolů bolt.
+Můžete zvýšit výkon tím, že zvýšíte souběžnost vstupně-výstupních operací na a z Data Lake Storage Gen2. Topologie neserializátoru má sadu konfigurací, které určují paralelismus:
+* Počet pracovních procesů (pracovní procesy jsou rovnoměrně distribuovány napříč virtuálními počítači).
+* Počet instancí prováděcího modulu Spout
+* Počet instancí vykonavatele šroubů
+* Počet úloh Spout
+* Počet úloh šroubů.
 
-Například v clusteru s 4 virtuální počítače a 4 pracovních procesů, moduly provádění 32 spout a 32 spout úlohy a 256 bolt prováděcí moduly a 512 bolt úkoly, zvažte následující:
+Například v clusteru se čtyřmi virtuálními počítači a 4 pracovními procesy, 32 Spout vykonavatelé a 32 úlohy Spout 256 a prováděcí moduly a úlohy 512, zvažte následující:
 
-Každý správce, což je pracovního uzlu, má jednoho pracovního procesu Java virtual machine (JVM). Tento proces JVM spravuje 4 vlákna spout a 64 bolt vlákna. V rámci každé vlákno se úkoly spouštějí postupně. Předchozí konfiguraci každé vlákno spout má 1 úloha a každé vlákno bolt má 2 úlohy.
+Každý správce, který je pracovním uzlem, má jeden proces JVM (work Java Virtual Machine). Tento proces JVM spravuje 4 vlákna Spout a vlákna 64. V každém vlákně se úlohy spouštějí postupně. V předchozí konfiguraci každé vlákno Spout má 1 úlohu a každé vlákno šroubu má 2 úlohy.
 
-V Storm tady se využívá řada různých komponent a jaký vliv mají stupeň paralelismu, ke kterým máte:
-* Hlavní uzel (v Storm jako Nimbus) se používá k odesílání a Správa úloh. Tyto uzly mít žádný vliv na míru paralelismu.
-* Dohledové uzly. V HDInsight odpovídá pracovním uzlu virtuálního počítače Azure.
-* Úlohy pracovního procesu jsou Storm procesy ve virtuálních počítačích. Každý úkol pracovního procesu odpovídá instanci JVM. Storm distribuuje počet pracovních procesů, který zadáte jako rovnoměrně k pracovním uzlům.
-* Součástí spout a funkce bolt instancí prováděcího modulu. Každá instance prováděcí modul odpovídá do vlákna běžícího v rámci pracovních procesů (JVMs).
-* Úlohy pro Storm. Toto jsou logické úlohy, že každý z těchto spuštění vlákna. Nezmění se stupeň paralelismu, takže by se měl vyhodnotit, pokud potřebujete více úkolů na prováděcí modul, nebo ne.
+V rámci zaplavování jsou zde různé komponenty a jejich vliv na úroveň paralelismu, které máte:
+* Hlavní uzel (s názvem Nimbus v zaplavě) slouží k odesílání a správě úloh. Tyto uzly nemají žádný vliv na stupeň paralelismu.
+* Uzly správce. Ve službě HDInsight to odpovídá pracovním uzlům Azure VM.
+* Pracovní úlohy jsou procesy pro práci v rámci virtuálních počítačů. Každý pracovní úkol odpovídá instanci JVM. Hodnota vyplavě distribuuje počet pracovních procesů, které zadáte do pracovních uzlů, co nejblíže.
+* Instance prováděče Spout a šroubů. Každá instance vykonavatele odpovídá vláknu běžícímu v rámci pracovních procesů (JVMs).
+* Úlohy s více operacemi. Jedná se o logické úlohy, které každý z těchto vláken spouští. Tato akce nemění úroveň paralelismu, takže byste měli vyhodnotit, jestli potřebujete více úloh na vykonavatele.
 
-### <a name="get-the-best-performance-from-data-lake-storage-gen2"></a>Získání nejlepšího výkonu z Data Lake Storage Gen2
+### <a name="get-the-best-performance-from-data-lake-storage-gen2"></a>Dosažení nejlepšího výkonu z Data Lake Storage Gen2
 
-Při práci s Data Lake Storage Gen2 je získáte nejlepší výkon, pokud nastavíte takto:
-* COALESCE malou připojí do větší velikosti.
-* Proveďte jako libovolný počet souběžných požadavků. Protože každý podproces bolt dělá blokující operace čtení, budete chtít mít někde v rozsahu od 8 12 vláken na jádro. To zajišťuje síťového adaptéru a také využívá procesor. Větší virtuální počítač umožňuje víc souběžných požadavků.  
+Při práci s Data Lake Storage Gen2 dosáhnete nejlepšího výkonu, pokud provedete následující:
+* Sloučení malých připojení do větších velikostí.
+* Udělejte tolik souběžných požadavků, kolik můžete. Vzhledem k tomu, že každé vlákno šroubování blokuje čtení, chcete mít někde v rozsahu 8-12 vláken na jádro. Tím se zachová síťová karta a výkon procesoru. Větší virtuální počítač umožňuje víc souběžných požadavků.  
 
-### <a name="example-topology"></a>Ukázkové topologie
+### <a name="example-topology"></a>Ukázková topologie
 
-Předpokládejme, že máte cluster 8 pracovních uzlů v případě virtuálních počítačů Azure D13v2. Tento virtuální počítač má 8 jader, takže mezi 8 pracovních uzlů, budete mít 64 celkový počet jader.
+Předpokládejme, že máte cluster s 8 uzly pracovního procesu s D13v2 virtuálním počítačem Azure. Tento virtuální počítač má 8 jader, takže mezi uzly 8 pracovních procesů máte 64 celkem jader.
 
-Řekněme, že děláme 8 vláken bolt na jádro. Zadaný 64 jádra, to znamená, že chceme 512 celkový bolt prováděcí modul instance (vláken). V takovém případě Řekněme, že jsme začínat jeden JVM na virtuální počítač a používají převážně souběžnosti vláken v rámci JVM dosáhnout souběžnosti. To znamená, že potřebujeme 8 úlohy pracovního procesu (jeden do každého virtuálního počítače Azure) a moduly provádění 512 bolt. V této konfiguraci Storm se pokusí distribuovat pracovních procesů rovnoměrně mezi uzly pracovního procesu (označované také jako dohledové uzly), poskytuje každý pracovní uzel 1 JVM. Teď v rámci správců, se pokusí distribuovat prováděcí moduly rovnoměrně mezi nadřízeným Storm, poskytuje každý správce (JVM) 8 vlákny každý.
+Řekněme, že provedeme 8 vláken na jádro. S 64 jádry to znamená, že chceme instance vykonavatele 512 Total (tzn. Threads). V takovém případě řekněme, že začneme s jedním JVM na jeden virtuální počítač a hlavně pomocí souběžnosti vláken v rámci JVM dosáhnout souběžnosti. To znamená, že potřebujeme 8 pracovních úkolů (jeden pro každý virtuální počítač Azure) a prováděcí moduly 512. Vzhledem k této konfiguraci se nevyužívá k tomu, že se proces rozšíří pracovní procesy rovnoměrně za pracovní uzly (označované také jako uzly vedoucího procesu), přičemž každý pracovní uzel 1 JVM. V rámci vedoucích se v rámci nadřízených procesů pokusí distribuovat vykonavatele rovnoměrně mezi vedoucími, přičemž každý nadřízený (to znamená JVM) 8 vláken každé z nich.
 
-## <a name="tune-additional-parameters"></a>Ladit další parametry
-Jakmile budete mít základní topologie, můžete zvážit, jestli chcete upravit některou parametry:
-* **Počet JVMs na pracovní uzel.** Pokud máte strukturu velkých objemů dat (například vyhledávací tabulky), které je hostují v paměti, každý JVM vyžaduje samostatnou kopii. Alternativně můžete použít strukturu dat napříč několika vlákny, pokud máte méně JVMs. Pro vstupně-výstupních operací bolt počet JVMs Nedovolte, aby byly co nejvíce rozdíl jako počet vláken přidali napříč těmito JVMs. Pro jednoduchost je dobré mít jeden JVM za pracovního procesu. V závislosti na tom, co dělá váš bolt nebo jaké aplikace zpracování, které vyžadují, i když může být nutné změnit toto číslo.
-* **Počet spout prováděcí moduly.** Protože předchozí příklad používá k zápisu do Data Lake Storage Gen2 bolty, počet spoutů není přímo souvisí s výkonem bolt. V závislosti na objemu zpracování nebo probíhající spout vstupně-výstupních operací, je však vhodné optimalizovat spoutů pro zajištění nejlepšího výkonu. Ujistěte se, že máte dostatek spoutů mohli udržovat zaneprázdněný boltů. Výstup sazby spoutů by měl odpovídat propustnost boltů. Skutečné konfigurace závisí spout.
-* **Počet úloh.** Každý bolt běží jako jedno vlákno. Další úkoly na bolt neposkytují žádné další souběžnosti. Na kterých výhod se pouze pokud váš proces potvrdil řazené kolekce členů má velkou část času provádění funkcí bolt. Je vhodné do skupiny, že mnoho řazených kolekcí členů do větší připojení před odesláním potvrzení z bolt. Takže ve většině případů poskytují více úkolů žádné další výhody.
-* **Místní nebo seskupení náhodně.** Když je toto nastavení povolené, řazené kolekce členů se odesílají do funkcí bolts v rámci stejného pracovního procesu. To snižuje volání meziprocesové komunikace a sítě. To se doporučuje pro většinu topologií.
+## <a name="tune-additional-parameters"></a>Ladění dalších parametrů
+Po použití základní topologie můžete zvážit, zda chcete upravit některý z parametrů:
+* **Počet JVMs na pracovní uzel** Pokud máte rozsáhlou datovou strukturu (například vyhledávací tabulku), kterou hostuje paměť, každý JVM vyžaduje samostatnou kopii. Případně můžete datovou strukturu použít napříč mnoha vlákny, pokud máte méně JVMs. V případě vstupně-výstupních operací šroubu se počet JVMs neprovádí jako rozdíl mezi počtem vláken přidaných mezi tyto JVMs. Pro zjednodušení je dobré mít jeden JVM na pracovní proces. V závislosti na tom, co vaše šroub dělá nebo jaké zpracování aplikace potřebujete, ale možná budete muset změnit toto číslo.
+* **Počet prováděcích modulů Spout** Vzhledem k tomu, že předchozí příklad používá šrouby pro zápis do Data Lake Storage Gen2, počet spoutů není přímo relevantní pro výkon šroubu. V závislosti na množství zpracování nebo vstupně-výstupních operacích v Spout je ale vhodné vyladit spoutů pro nejlepší výkon. Ujistěte se, že máte dostatek spoutů, aby bylo možné podržet šrouby obsazené. Výstupní sazby spoutů by měly odpovídat propustnosti šrouby. Skutečná konfigurace závisí na Spout.
+* **Počet úkolů.** Každý šroub se spouští jako jedno vlákno. Další úkoly na šroub neposkytují žádnou další souběžnost. V takovém případě je v případě, že váš proces potvrzování řazené kolekce členů používá velký podíl času spuštění vaší služby, jediný čas, kdy je výhoda výhodná. Před odesláním potvrzení ze šroubu je vhodné seskupit mnoho řazených kolekcí členů do většího připojení. Ve většině případů ale více úkolů neposkytuje žádné další výhody.
+* **Místní nebo náhodné seskupení.** Pokud je toto nastavení povoleno, budou řazeny do šrouby v rámci stejného pracovního procesu. Tím se sníží komunikace mezi procesy a síťové hovory. Tento postup je doporučený pro většinu topologií.
 
-Tento základní scénář je dobrým výchozím bodem. Test s vlastními daty upravit předchozí parametry pro zajištění optimálního výkonu.
+Tento základní scénář je dobrým výchozím bodem. Otestujte vlastními daty a selepšit předchozí parametry, abyste dosáhli optimálního výkonu.
 
-## <a name="tune-the-spout"></a>Ladění spout
+## <a name="tune-the-spout"></a>Nalaďte Spout
 
-Můžete upravit následující nastavení a vylaďte spout.
+K ladění Spout můžete upravit následující nastavení.
 
-- **Časový limit řazené kolekce členů: topology.message.timeout.secs**. Toto nastavení určuje dobu zprávu potřebný k dokončení a zobrazí potvrzení, než bude považován za se nezdařilo.
+- **Časový limit řazené kolekce členů: topologie. Message. Timeout. sekund** Toto nastavení určuje dobu, po kterou je zpráva dokončena, a příjem potvrzení, než se bude považovat za neúspěšné.
 
-- **Maximální velikost paměti na pracovní proces: worker.childopts**. Toto nastavení umožňuje určit další parametry příkazového řádku pracovníkům Java. Nejčastěji používaná nastavení tady je XmX, která určuje maximální velikost paměti přidělené JVM haldy.
+- **Maximální velikost paměti na pracovní proces: Work. childopts**. Toto nastavení umožňuje určit další parametry příkazového řádku pro pracovníky Java. Nejčastěji používané nastavení je XmX, které určuje maximální velikost paměti přidělené haldě JVM.
 
-- **Spout maximální počet čekajících: topology.max.spout.pending**. Toto nastavení určuje počet řazených kolekcí členů, které mohou být v letu (ještě nebyla potvrzena na všechny uzly v topologii) na vlákno spout kdykoli.
+- **Maximální počet nevyřízených Spout: topologal. max. Spout. Pending**. Toto nastavení určuje počet řazených kolekcí členů, které mohou být v každém okamžiku na jednom vlákně Spout (dosud nepotvrzeny na všech uzlech v topologii).
 
-  Dobré výpočtu provedete je odhadovat velikost všech vašich řazené kolekce členů. Poté zjistěte, kolik paměti jeden spout vlákno má. Celková paměť přidělená pro vlákno, rozdělené podle této hodnoty by vám měl dát horní mez pro maximální spout čekající na parametr.
+  Dobrým výpočtem je odhad velikosti každé řazené kolekce členů. Pak Zjistěte, kolik paměti jedno vlákno spouto. Celková paměť přidělená vláknu, dělená touto hodnotou, by měla poskytnout horní mez pro parametr Max Spout Pending.
 
-Data Lake Storage Gen2 Storm bolt výchozí má parametr zásad synchronizace velikost (fileBufferSize), který slouží k ladění tohoto parametru.
+Výchozí hodnota Data Lake Storage Gen2 pro zaplavování má parametr zásad synchronizace velikosti (fileBufferSize), který se dá použít k vyladění tohoto parametru.
 
-Můžu vstupně-výstupními operacemi topologie je vhodné mít každý podproces bolt zapisovat do vlastního souboru a nastavit zásady souborů otočení (fileRotationSize). Pokud soubor dosáhne určité velikosti, automaticky vyprázdní datový proud a je zapsaný do nového souboru. Velikost doporučená soubor pro rotaci je 1 GB.
+V případě topologií náročných na vstupně-výstupní operace je vhodné, aby každý podproces šroubů napsal do vlastního souboru a nastavil zásady pro rotaci souborů (fileRotationSize). Když soubor dosáhne určité velikosti, datový proud se automaticky vyprázdní a zapíše se do něj nový soubor. Doporučená velikost souboru pro rotaci je 1 GB.
 
-## <a name="monitor-your-topology-in-storm"></a>Monitorování topologie ve Stormu  
-Zatímco vaše topologie běží, ji můžete sledovat v uživatelském rozhraní Storm. Tady jsou hlavní parametry podívat se na:
+## <a name="monitor-your-topology-in-storm"></a>Monitorování topologie v prostředí s více podsady  
+I když je vaše topologie spuštěná, můžete ji monitorovat v uživatelském rozhraní. Tady jsou hlavní parametry, které se mají najít:
 
-* **Latence spuštění celkový proces.** Toto je průměrná doba trvání jedné řazené kolekce členů, protože ho vygeneroval spout, zpracování funkcí bolt a potvrzení.
+* **Celková latence spuštění procesu.** Toto je průměrná doba, kterou bude jedna řazená kolekce členů vygenerována Spout, zpracována šroubem a potvrzena.
 
-* **Latence procesu celkový bolt.** Toto je průměrná doba zpracování v řazené kolekci členů na bolt, až do obdržení potvrzení.
+* **Celková latence procesu šroubů** Jedná se o průměrnou dobu trvání řazené kolekce členů na šroubu, dokud neobdrží potvrzení.
 
-* **Latence provedení celkem bolt.** Toto je průměrná doba zpracování funkcí bolt v metodě execute.
+* **Celková latence spuštění šroubu** Toto je průměrný čas strávený šroubem v metodě Execute.
 
-* **Počet chyb.** To se vztahuje na počet řazených kolekcí členů, které se nepodařilo plně zpracovány před vypršením časového limitu.
+* **Počet selhání** To odkazuje na počet řazených kolekcí členů, jejichž úplné zpracování se nezdařilo před vypršením časového limitu.
 
-* **Kapacita.** Toto je míra je zatížení systému. Pokud je toto číslo 1, vaše funkce bolts práci tak rychle, jak to jde. Pokud je menší než 1, zvýšení paralelismu. Pokud je větší než 1, omezte paralelismus.
+* **Klíčivost.** Toto je měřítko způsobu, jakým je systém zaneprázdněný. Pokud je toto číslo 1, vaše šrouby funguje tak rychle, jak může. Pokud je menší než 1, zvyšte paralelismus. Pokud je větší než 1, snižte paralelismus.
 
-## <a name="troubleshoot-common-problems"></a>S řešením běžných problémů
+## <a name="troubleshoot-common-problems"></a>Řešení běžných problémů
 Tady je několik běžných scénářů řešení potíží.
-* **Počet řazených kolekcí členů, se nestíhají.** Podívejte se na každém uzlu v topologii k určení snížení výkonu. Nejčastější příčinou je, že nejsou schopné udržovat tempo s spoutů boltů. To vede k zablokování vnitřní vyrovnávací paměti při čekání na zpracování řazené kolekce členů. Zvažte zvýšení hodnoty časového limitu klesající nebo rostoucí maximální spout čekající.
+* **Pro mnoho řazených kolekcí členů vypršel časový limit.** Podívejte se na každý uzel v topologii, abyste zjistili, kde je kritický bod. Nejběžnějším důvodem je to, že šrouby není možné udržet s spoutů. To vede k řazené kolekci členů k ukládání vnitřních vyrovnávacích pamětí při čekání na zpracování. Zvažte zvýšení hodnoty časového limitu nebo snížení maximálního počtu vyspoutch čeká na vyřízení.
 
-* **Je latence spuštění vysoký celkový počet procesů, ale latence procesu s nízkou bolt.** V takovém případě je možné, že řazené kolekce členů nejsou potvrzování dostatečně rychle. Zkontrolujte, zda jsou dostatečný počet acknowledgers. Další možností je, že čekání ve frontě příliš dlouho předtím, než funkce bolts spustit jejich zpracování. Snižte max. spout čekající.
+* **Existuje vysoká latence provádění procesu, ale nízká latence procesu.** V tomto případě je možné, že se řazené kolekce členů dostatečně rychle nepotvrzují. Ověřte, zda je k dispozici dostatečný počet potvrzování. Další možností je, že čekají ve frontě na příliš dlouhou dobu, než je tento šrouby začne zpracovávat. Snižte maximální počet Spout čeká na vyřízení.
 
-* **Je latence provedení vysokou bolt.** To znamená, že metoda execute() vaše bolt trvá moc dlouho. Optimalizace kódu, podívejte se na velikosti zápisů a vyprázdnění chování.
+* **Vysoká latence spouštění.** To znamená, že metoda Execute () vašeho šroubu trvá příliš dlouho. Optimalizujte kód, nebo se podívejte na velikost zápisu a chování při vyprazdňování.
 
-### <a name="data-lake-storage-gen2-throttling"></a>Data Lake Storage Gen2 omezování
-Pokud dosáhnete limitů šířky pásma poskytuje Data Lake Storage Gen2, může se zobrazit selhání úkolů. Pro omezení chyby v protokolech úloh. Zvětšení velikosti kontejneru, můžete zmenšit paralelismu.    
+### <a name="data-lake-storage-gen2-throttling"></a>Omezení Data Lake Storage Gen2
+Pokud jste dosáhli limitu šířky pásma poskytovaného Data Lake Storage Gen2, může se zobrazit chyba úlohy. V protokolech úloh se podívejte na chyby omezování. Paralelismus můžete snížit zvýšením velikosti kontejneru.    
 
-A zkontrolujte, zda jste se získávání omezují, povolte protokolování na straně klienta ladění:
+Pokud chcete zjistit, jestli se vám omezilo omezení, povolte protokolování ladění na straně klienta:
 
-1. V **Ambari** > **Storm** > **Config** > **Advanced storm pracovního log4j**, změnit **&lt;kořenové úrovně = "informace"&gt;** k  **&lt;kořenové úrovně = "debug"&gt;** . Restartujte všechny uzly nebo službu k provedení změn konfigurace.
-2. Monitorování topologie Storm protokoly na pracovních uzlech (v části /var/log/storm/worker-artifacts /&lt;TopologyName&gt;/&lt;port&gt;/worker.log) pro Data Lake Storage Gen2 omezování výjimky.
+1. V **Ambari** >  **&lt;&gt;** zaplavekonfigurace > Advanced-Work-log4j, změňte kořenovou úroveň = "informace" na kořenovou úroveň = >   **&lt; "ladění"&gt;** . Restartujte všechny uzly/služby, aby se konfigurace projevila.
+2. Sledujte protokoly rozplavení v uzlech pracovních procesů (&lt;pod/var/log/Storm/Worker-artifacts/em&gt;&gt;/&lt;/Worker.log portu) pro výjimky omezování Data Lake Storage Gen2.
 
 ## <a name="next-steps"></a>Další postup
-Optimalizace pro Storm může být odkazováno v dalších výkonu [tento blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/).
+Na [tomto blogu](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)se dá odkazovat na další ladění výkonu pro zaplavení.
 
-Další příklad spuštění, naleznete v tématu [tohoto objektu na Githubu](https://github.com/hdinsight/storm-performance-automation).
+Další příklad ke spuštění najdete [v tomto tématu na GitHubu](https://github.com/hdinsight/storm-performance-automation).

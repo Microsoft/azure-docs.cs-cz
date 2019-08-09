@@ -1,6 +1,6 @@
 ---
-title: Přidání nabízených oznámení do aplikace pro univerzální platformu Windows (UPW) | Dokumentace Microsoftu
-description: Další informace o použití Azure App Service Mobile Apps a Azure Notification Hubs k odesílání nabízených oznámení do aplikace pro univerzální platformu Windows (UPW).
+title: Přidání nabízených oznámení do aplikace Univerzální platforma Windows (UWP) | Microsoft Docs
+description: Naučte se používat Azure App Service Mobile Apps a Azure Notification Hubs k odesílání nabízených oznámení do aplikace pro Univerzální platforma Windows (UWP).
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
 author: elamalani
@@ -14,26 +14,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 3ea2b336f647d9a27baaeeb489895b8f67d2e2d9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7455ad33660a0af004a3a3ad982e929fc4b3031e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445612"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851126"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Přidání nabízených oznámení do aplikace pro Windows
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-push) ještě dnes.
+> Visual Studio App Center je investována v nových a integrovaných službách z centrálního vývoje mobilních aplikací. Vývojáři mohou pomocísestavování, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a diagnostických služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu. Podívejte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-push) ještě dnes.
 >
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu přidáte nabízená oznámení [Windows úvodní](app-service-mobile-windows-store-dotnet-get-started.md) projekt tak, aby na zařízení přijde nabízené oznámení pokaždé, když se vložení záznamu.
+V tomto kurzu přidáte nabízená oznámení do projektu [Windows Quick Start](app-service-mobile-windows-store-dotnet-get-started.md) , aby bylo při každém vložení záznamu nabízené oznámení odesíláno do zařízení.
 
-Pokud použijete serverový projekt stažené rychlý start, budete potřebovat balíček rozšíření nabízené oznámení. Zobrazit [pracovat s back-end .NET server SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) Další informace.
+Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) .
 
 ## <a name="configure-hub"></a>Konfigurace centra oznámení
 
@@ -41,36 +41,36 @@ Pokud použijete serverový projekt stažené rychlý start, budete potřebovat 
 
 ## <a name="register-your-app-for-push-notifications"></a>Registrace aplikace pro nabízená oznámení
 
-Budete potřebovat k odeslání aplikace do Microsoft Store a potom nakonfigurujte svůj serverový projekt pro integraci s [služby oznámení Windows (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) k odesílání nabízených oznámení.
+Musíte odeslat aplikaci do Microsoft Store a potom nakonfigurovat projekt serveru pro integraci se službou [Windows Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) , abyste mohli odeslat nabízení.
 
-1. V Průzkumníku řešení Visual Studio, klikněte pravým tlačítkem na projekt aplikace UPW, klikněte na tlačítko **Store** > **přidružit aplikaci Store...** .
+1. V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem na projekt aplikace UWP a klikněte na **Store** > **přidružit aplikaci k obchodu...** .
 
-    ![Propojit aplikaci s Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+    ![Přidružit aplikaci k Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
-2. V průvodci klikněte na tlačítko **Další**, přihlaste se pomocí účtu Microsoft, zadejte název pro vaši aplikaci v **rezervovat nový název aplikace**, pak klikněte na tlačítko **rezervy**.
-3. Po registraci aplikace je úspěšně vytvořen, zadat nový název aplikace, klikněte na tlačítko **Další**a potom klikněte na tlačítko **přidružit**. To přidá požadované informace o registraci Microsoft Store do manifestu aplikace.
-4. Přejděte [portál pro registraci aplikací](https://apps.dev.microsoft.com/) a přihlaste se pomocí svého účtu Microsoft. Klikněte na Windows Store aplikaci, kterou jste k v předchozím kroku.
-5. Na stránce registrace, poznamenejte si hodnoty v rámci **tajných klíčů aplikací** a **SID balíčku**, které potom použijete ke konfiguraci back-endu mobilní aplikace.
+2. V průvodci klikněte na **Další**, přihlaste se pomocí svého účet Microsoft, zadejte název vaší aplikace do pole **rezervovat nový název aplikace**a pak klikněte na **rezervovat**.
+3. Po úspěšném vytvoření registrace aplikace vyberte název nové aplikace, klikněte na **Další**a pak klikněte na přidružit. Tím se do manifestu aplikace přidá požadované registrační informace Microsoft Store.
+4. Přejděte na [portál pro registraci aplikací](https://apps.dev.microsoft.com/) a přihlaste se pomocí svého účet Microsoft. Klikněte na aplikaci pro Windows Store, kterou jste přidružili v předchozím kroku.
+5. Na stránce registrace si poznamenejte hodnotu v části **tajné klíče aplikace** a **identifikátor SID balíčku**, který budete dál používat ke konfiguraci back-endu mobilní aplikace.
 
-    ![Propojit aplikaci s Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
+    ![Přidružit aplikaci k Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
-   > Tajný klíč klienta a SID balíčku jsou důležitá pověření zabezpečení. Tyto hodnoty s nikým nesdílejte ani je nedistribuujte s vaší aplikací. **Id aplikace** je pomocí tajného klíče, použít ke konfiguraci ověřování Account Microsoft.
+   > Tajný klíč klienta a SID balíčku jsou důležitá pověření zabezpečení. Tyto hodnoty s nikým nesdílejte ani je nedistribuujte s vaší aplikací. **ID aplikace** se používá s tajným klíčem ke konfiguraci ověřování pomocí účtu Microsoft.
 
-[App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) také obsahuje pokyny pro konfiguraci aplikací pro UPW pro nabízená oznámení.
+[App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) taky obsahuje pokyny pro konfiguraci aplikací pro UWP pro nabízená oznámení.
 
-## <a name="configure-the-backend-to-send-push-notifications"></a>Konfigurace back-endu k odesílání nabízených oznámení
+## <a name="configure-the-backend-to-send-push-notifications"></a>Konfigurace back-endu pro odesílání nabízených oznámení
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-## <a id="update-service"></a>Aktualizovat server k odesílání nabízených oznámení
+## <a id="update-service"></a>Aktualizace serveru pro odesílání nabízených oznámení
 
-Pomocí níže uvedeného postupu, který odpovídá typu vašeho back-endový projekt&mdash;buď [back-endem .NET](#dotnet) nebo [back-end Node.js](#nodejs).
+Použijte níže uvedený postup, který odpovídá vašemu typu&mdash;back-endu, back- [Endu .NET](#dotnet) nebo [back-end Node. js](#nodejs).
 
-### <a name="dotnet"></a>Projekt back-end .NET
+### <a name="dotnet"></a>Projekt back-endu .NET
 
-1. V sadě Visual Studio, klikněte pravým tlačítkem na projekt serveru a klikněte na tlačítko **spravovat balíčky NuGet**, vyhledejte Microsoft.Azure.NotificationHubs a pak klikněte na tlačítko **nainstalovat**. Tím se nainstaluje klientské knihovně pro Notification Hubs.
-2. Rozbalte **řadiče**otevřete TodoItemController.cs a přidejte následující příkazy using:
+1. V aplikaci Visual Studio klikněte pravým tlačítkem myši na serverový projekt, klikněte na **Spravovat balíčky NuGet**, vyhledejte Microsoft. Azure. NotificationHubs a klikněte na **nainstalovat**. Tím se nainstaluje Klientská knihovna Notification Hubs.
+2. Rozbalte položku **řadiče**, otevřete TodoItemController.cs a přidejte následující příkazy using:
 
     ```csharp
     using System.Collections.Generic;
@@ -78,7 +78,7 @@ Pomocí níže uvedeného postupu, který odpovídá typu vašeho back-endový p
     using Microsoft.Azure.Mobile.Server.Config;
     ```
 
-3. V **PostTodoItem** metodu, přidejte následující kód po volání **InsertAsync**:
+3. Do metody **PostTodoItem** přidejte po volání **InsertAsync**následující kód:
 
     ```csharp
     // Get the settings for the server project.
@@ -114,13 +114,13 @@ Pomocí níže uvedeného postupu, který odpovídá typu vašeho back-endový p
     }
     ```
 
-    Tento kód říká centra oznámení k odesílání nabízených oznámení po vložení nové položky.
+    Tento kód informuje centrum oznámení o odeslání nabízeného oznámení po vložení nové položky.
 
-4. Znovu publikujte projekt serveru.
+4. Publikujte projekt serveru znovu.
 
-### <a name="nodejs"></a>Projekt back-end Node.js
-1. Pokud jste tak již neučinili, [stáhnout projekt rychlý Start](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) nebo použijte jiný [online editoru na webu Azure Portal](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Nahraďte stávající kód v souboru todoitem.js následujícími způsoby:
+### <a name="nodejs"></a>Back-end projekt Node. js
+1. Nastavte svůj back-end projekt.
+2. Existující kód nahraďte v souboru TodoItem. js následujícím kódem:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -164,21 +164,21 @@ Pomocí níže uvedeného postupu, který odpovídá typu vašeho back-endový p
     module.exports = table;
     ```
 
-    Tím se odešle oznámení s informační zprávou nabízených oznámení Windows, který obsahuje item.text při vložení nové položky seznamu úkolů.
+    Tím se pošle oznámení WNS informační zprávy, která obsahuje položku. text při vložení nové položky ToDo.
 
-3. Při úpravách souboru na místním počítači, znovu publikujte projekt serveru.
+3. Při úpravách souboru na místním počítači znovu publikujte projekt serveru.
 
-## <a id="update-app"></a>Přidání nabízených oznámení do vaší aplikace
-V dalším kroku musí aplikaci zaregistrovat pro nabízená oznámení na spuštění. Pokud už jste povolili ověřování, ujistěte se, že uživatel přihlásí před pokusem o registraci pro nabízená oznámení.
+## <a id="update-app"></a>Přidání nabízených oznámení do aplikace
+V dalším kroku se musí vaše aplikace při spuštění zaregistrovat pro nabízená oznámení. Pokud jste již povolili ověřování, ujistěte se, že se uživatel přihlásí před pokusem o registraci nabízených oznámení.
 
-1. Otevřít **App.xaml.cs** soubor projektu a přidejte následující `using` příkazy:
+1. Otevřete soubor projektu **App.XAML.cs** a přidejte následující `using` příkazy:
 
     ```csharp
     using System.Threading.Tasks;
     using Windows.Networking.PushNotifications;
     ```
 
-2. Ve stejném souboru přidejte následující **InitNotificationsAsync** definici metody **aplikace** třídy:
+2. Ve stejném souboru přidejte do třídy **App** následující definici metody **InitNotificationsAsync** :
 
     ```csharp
     private async Task InitNotificationsAsync()
@@ -192,9 +192,9 @@ V dalším kroku musí aplikaci zaregistrovat pro nabízená oznámení na spuš
     }
     ```
 
-    Tento kód načte parametr ChannelURI pro aplikaci z WNS a pak zaregistruje tento parametr ChannelURI pomocí mobilní aplikace App Service.
+    Tento kód načte parametr channeluri pro aplikaci z WNS a pak zaregistruje tento parametr channeluri do mobilní aplikace App Service.
 
-3. V horní části **OnLaunched** obslužné rutině událostí ve **App.xaml.cs**, přidejte **asynchronní** modifikátor definici metody a přidejte následující volání do nového  **InitNotificationsAsync** metody, jako v následujícím příkladu:
+3. V horní části obslužné rutiny události s možností **spuštění** v **App.XAML.cs**přidejte modifikátor **Async** do definice metody a přidejte následující volání do nové metody **InitNotificationsAsync** , jako v následujícím příkladu:
 
     ```csharp
     protected async override void OnLaunched(LaunchActivatedEventArgs e)
@@ -205,25 +205,25 @@ V dalším kroku musí aplikaci zaregistrovat pro nabízená oznámení na spuš
     }
     ```
 
-    Zaručí se tak, že je parametr ChannelURI krátkodobé a jednorázové zaregistrován při každém spuštění aplikace.
+    To zaručuje, že krátkodobý parametr channeluri je zaregistrován při každém spuštění aplikace.
 
-4. Znovu sestavte svůj projekt aplikace UPW. Vaše aplikace je teď připravena přijímat oznámení informačního nápisu.
+4. Sestavte projekt aplikace pro UWP znovu. Vaše aplikace je teď připravena přijímat oznámení informačního nápisu.
 
-## <a id="test"></a>Nabízená oznámení ve vaší aplikaci
+## <a id="test"></a>Testování nabízených oznámení ve vaší aplikaci
 
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
 ## <a id="more"></a>Další kroky
 
-Další informace o nabízených oznámení:
+Další informace o nabízených oznámeních:
 
-* [Jak používat spravovaného klienta pro Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications) šablony poskytují flexibilitu pro odesílání nabízených oznámení napříč platformami a lokalizovaných nabízených oznámení. Informace o postupu registrace šablony.
-* [Diagnostikujte problémy nabízená oznámení](../notification-hubs/notification-hubs-push-notification-fixer.md) existují různé důvody, proč oznámení může získáte nebo nekončí na zařízeních. V tomto tématu se dozvíte, jak analyzovat a zjistěte příčinu selhání nabízené oznámení.
+* [Jak používat spravovaného klienta pro Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications) Šablony vám poskytnou flexibilitu při odesílání nabízených oznámení mezi platformami a lokalizovaných nabízených oznámení. Přečtěte si, jak registrovat šablony.
+* [Diagnostikovat problémy s nabízenými oznámeními](../notification-hubs/notification-hubs-push-notification-fixer.md) Existují různé důvody, proč mohou být oznámení vyřazena nebo nekončí na zařízeních. V tomto tématu se dozvíte, jak analyzovat a zjistit hlavní příčinu selhání nabízených oznámení.
 
-Vezměte v úvahu pokračováním jednu z následujících kurzů:
+Zvažte pokračování v jednom z následujících kurzů:
 
 * [Přidání ověřování do vaší aplikace](app-service-mobile-windows-store-dotnet-get-started-users.md) Zjistěte, jak ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
-* [Povolení offline synchronizace u aplikace](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) zjistěte, jak přidat aplikace pomocí back-endu mobilní aplikace podporu offline režimu. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací &mdash; zobrazovat, přidávat a upravovat data &mdash; i v případě, že nemají připojení k síti.
+* [Povolit offline synchronizaci vaší aplikace](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) Naučte se, jak pomocí back-endu mobilní aplikace přidat do aplikace podporu offline režimu. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací &mdash; zobrazovat, přidávat a upravovat data &mdash; i v případě, že nemají připojení k síti.
 
 <!-- Anchors. -->
 

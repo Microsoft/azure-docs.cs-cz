@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 55722c35dddcbf8a20f4f51958170938225e87e5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 2b59797e60585876764e8c9e1276e4fd36571b18
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668387"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856026"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Sledování metrik a nasazení modelů pomocí služby MLflow a Azure Machine Learning (Preview)
 
@@ -52,7 +52,9 @@ V tomto článku se dozvíte, jak povolit sledování identifikátoru URI a prot
 ## <a name="prerequisites"></a>Požadavky
 
 * [Nainstalujte MLflow.](https://mlflow.org/docs/latest/quickstart.html)
-* Do [místního počítače nainstalujte sadu Azure Machine Learning Python SDK a vytvořte pracovní prostor Azure Machine Learning](setup-create-workspace.md#sdk). Sada SDK poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
+* [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) do místního počítače, kterou sada SDK poskytuje pro přístup k vašemu pracovnímu prostoru pro MLflow.
+* [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
+
 
 ## <a name="track-experiment-runs"></a>Sledování spouštění experimentů
 
@@ -154,7 +156,7 @@ Do pole **balíček** zadejte AzureML-mlflow a pak klikněte na nainstalovat. Op
 
 Po nastavení clusteru importujte Poznámkový blok experimentu, otevřete ho a připojte k němu svůj cluster.
 
-Následující kód by měl být v poznámkovém bloku experimentu. Tím získáte podrobné informace o vašem předplatném Azure, abyste mohli vytvořit instanci pracovního prostoru. Předpokládá se, že máte existující skupinu prostředků a Azure Machine Learning pracovní prostor, jinak je můžete [vytvořit](setup-create-workspace.md#portal). 
+Následující kód by měl být v poznámkovém bloku experimentu. Tím získáte podrobné informace o vašem předplatném Azure, abyste mohli vytvořit instanci pracovního prostoru. Předpokládá se, že máte existující skupinu prostředků a Azure Machine Learning pracovní prostor, jinak je můžete [vytvořit](how-to-manage-workspace.md). 
 
 ```python
 import mlflow
@@ -365,6 +367,6 @@ Pokud neplánujete použít zaznamenané metriky a artefakty v pracovním prosto
 
 [MLflow s poznámkovým blokům Azure ml](https://aka.ms/azureml-mlflow-examples) ukazují a rozšiřují koncepty prezentované v tomto článku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Spravujte své modely](concept-model-management-and-deployment.md).
 * Monitorujte v produkčních modelech [přenos dat](how-to-monitor-data-drift.md).

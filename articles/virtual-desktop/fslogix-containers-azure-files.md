@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: c01e138c8afcdd59fcb0c87f189d98bec10e16d7
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 13f80b42ef6dfd0c70067a3ecf5f3e172527a63f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828144"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846527"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
 
@@ -75,13 +75,13 @@ Clustery S2D vyžadují operační systém, který se opraví, aktualizuje a udr
 
 Od pořízení společnost Microsoft začala nahrazovat existující řešení uživatelských profilů, jako je UPD, pomocí kontejnerů profilů FSLogix.
 
-## <a name="azure-files-integration-with-azure-active-directory"></a>Integrace souborů Azure s Azure Active Directory
+## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Integrace souborů Azure s doménovou službou Azure Active Directory
 
-Výkon a funkce kontejnerů profilů FSLogix využívají cloud. V září. 24 2018 Microsoft Azure soubory oznámily veřejnou verzi Preview [souborů Azure, které podporují Azure Active Directory ověřování](https://azure.microsoft.com/blog/azure-active-directory-integration-for-smb-access-now-in-public-preview/). Díky zabezpečení nákladů i administrativních režijních nákladů je Azure Files s ověřováním v Azure Active Directory řešení Premium pro profily uživatelů v nové službě Virtual Desktop systému Windows.
+Výkon a funkce kontejnerů profilů FSLogix využívají cloud. Od 7. srpna 2019 Microsoft Azure soubory oznámily obecnou dostupnost [ověřování souborů Azure pomocí služby Azure Active Directory Domain Service (služba AD DS)](/articles/storage/files/storage-files-active-directory-overview.md). Díky ověřování Azure se službou Azure služba AD DS ověřování je pro profily uživatelů ve službě Virtual Desktop systému Windows výhodnější řešení Azure Files.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Osvědčené postupy pro virtuální počítače s Windows
 
-Virtuální plocha Windows nabízí plnou kontrolu velikosti, typu a počtu virtuálních počítačů, které používají zákazníci. Další informace najdete v tématu [co je verze Preview pro virtuální počítače s Windows?](https://docs.microsoft.com/azure/virtual-desktop/overview).
+Virtuální plocha Windows nabízí plnou kontrolu velikosti, typu a počtu virtuálních počítačů, které používají zákazníci. Další informace najdete v tématu [co je verze Preview pro virtuální počítače s Windows?](overview.md).
 
 Aby se zajistilo, že prostředí virtuálních počítačů s Windows dodržuje osvědčené postupy:
 
@@ -92,13 +92,13 @@ Aby se zajistilo, že prostředí virtuálních počítačů s Windows dodržuje
 - Pro zajištění optimálního výkonu by se řešení úložiště a kontejner profilu FSLogix měly nacházet ve stejném umístění datového centra.
 - Účet úložiště, který obsahuje hlavní bitovou kopii, musí být ve stejné oblasti a předplatném, ve kterém jsou virtuální počítače zřízené.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Při nastavování prostředí virtuálních počítačů s Windows použijte následující pokyny.
+K nastavení prostředí virtuálních ploch Windows použijte následující příručky.
 
-- Pokud chcete začít sestavovat vaše řešení virtualizace plochy, přečtěte si téma [Vytvoření tenanta ve virtuální ploše Windows](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory).
-- Pokud chcete vytvořit fond hostitelů v rámci tenanta virtuálních klientů Windows, přečtěte si téma [Vytvoření fondu hostitelů pomocí Azure Marketplace](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace).
-- Pokud chcete nastavit plně spravované sdílené složky v cloudu, přečtěte si téma [Nastavení sdílené složky Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable).
-- Pokud chcete nakonfigurovat kontejnery profilů FSLogix, přečtěte si téma [Nastavení sdílené složky profilu uživatele pro fond hostitelů](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-user-profile).
-- Pokud chcete přiřadit uživatele k fondu hostitelů, přečtěte si téma [Správa skupin aplikací pro virtuální počítač s Windows](https://docs.microsoft.com/azure/virtual-desktop/manage-app-groups).
-- Informace o přístupu k prostředkům virtuálního počítače s Windows z webového prohlížeče najdete v tématu [připojení k virtuálnímu](https://docs.microsoft.com/azure/virtual-desktop/connect-web)počítači s Windows.
+- Pokud chcete začít sestavovat vaše řešení virtualizace plochy, přečtěte si téma [Vytvoření tenanta ve virtuální ploše Windows](tenant-setup-azure-active-directory.md).
+- Pokud chcete vytvořit fond hostitelů v rámci tenanta virtuálních klientů Windows, přečtěte si téma [Vytvoření fondu hostitelů pomocí Azure Marketplace](create-host-pools-azure-marketplace.md).
+- Pokud chcete nastavit plně spravované sdílené složky v cloudu, přečtěte si téma [Nastavení sdílené složky Azure Files](/articles/storage/files/storage-files-active-directory-enable.md).
+- Pokud chcete nakonfigurovat kontejnery profilů FSLogix, přečtěte si téma [Nastavení sdílené složky profilu uživatele pro fond hostitelů](create-host-pools-user-profile.md).
+- Pokud chcete přiřadit uživatele k fondu hostitelů, přečtěte si téma [Správa skupin aplikací pro virtuální počítač s Windows](manage-app-groups.md).
+- Informace o přístupu k prostředkům virtuálního počítače s Windows z webového prohlížeče najdete v tématu [připojení k virtuálnímu](connect-web.md)počítači s Windows.

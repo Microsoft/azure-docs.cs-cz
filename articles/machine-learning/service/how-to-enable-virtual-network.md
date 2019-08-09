@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: 7c4c4ff611b35cac9aa8be1a9697a0d11bc4dc8b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9bd56984f088ab16fc5d80c588afce2cdc31240b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815963"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848119"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Zabezpečené spouštění experimentů a odvození v rámci virtuální sítě Azure
 
@@ -27,7 +27,7 @@ Tento článek poskytuje podrobné informace o **pokročilém nastavení zabezpe
 
 ## <a name="prerequisites"></a>Požadavky
 
-Vytvořte [pracovní prostor](setup-create-workspace.md) služby Azure Machine Learning, pokud ho ještě nemáte. V tomto dokumentu se předpokládá, že máte zkušenosti s virtuálními sítěmi Azure a obecně se jedná o sítě IP. Tento dokument také předpokládá, že jste vytvořili virtuální síť a podsíť pro použití s výpočetními prostředky. Pokud nejste obeznámeni s Azure Virtual Networks, přečtěte si následující články, které vám pomohou o této službě:
+Vytvořte [pracovní prostor](how-to-manage-workspace.md) služby Azure Machine Learning, pokud ho ještě nemáte. V tomto dokumentu se předpokládá, že máte zkušenosti s virtuálními sítěmi Azure a obecně se jedná o sítě IP. Tento dokument také předpokládá, že jste vytvořili virtuální síť a podsíť pro použití s výpočetními prostředky. Pokud nejste obeznámeni s Azure Virtual Networks, přečtěte si následující články, které vám pomohou o této službě:
 
 * [Přidělování IP adres](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
 * [Skupiny zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview)
@@ -36,7 +36,7 @@ Vytvořte [pracovní prostor](setup-create-workspace.md) služby Azure Machine L
 
 ## <a name="storage-account-for-your-workspace"></a>Účet úložiště pro váš pracovní prostor
 
-Pokud chcete použít výchozí účet Azure Storage pro pracovní prostor ve virtuální síti, použijte následující postup:
+Pokud chcete použít účet Azure Storage pro pracovní prostor ve virtuální síti, použijte následující postup:
 
 1. Vytvořte si výpočet experimentu ex. Výpočetní prostředky služby Machine Learning za virtuální sítí nebo připojte k pracovnímu prostoru výpočetní výkon v ex. Cluster HDInsight nebo virtuální počítač. Další informace najdete v tématu [použití výpočetní prostředky služby Machine Learning](#use-machine-learning-compute) a [použití oddílů virtuálního počítače nebo clusteru HDInsight](#use-a-virtual-machine-or-hdinsight-cluster) v tomto dokumentu.
 2. Přejít do úložiště připojeného k pracovnímu prostoru. ![Obrázek Azure Portal se zobrazením Azure Storage připojeného k pracovnímu prostoru služby Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)
@@ -55,7 +55,9 @@ Pokud chcete použít výchozí účet Azure Storage pro pracovní prostor ve vi
 > [!IMPORTANT]
 > __Výchozí účet úložiště__ pro vaši službu Azure Machine Learning můžete umístit do virtuální sítě __jenom při experimentování__.
 >
-> Pro __jiné než výchozí účty úložiště pro experimentování__nebo pokud pro odvození používáte účet úložiště, musíte mít __neomezený přístup k účtu úložiště__.
+> __Účty úložiště, které nejsou výchozí__ , se dají umístit taky do virtuální sítě, ale __jenom pro experimentování__.
+>
+> Výchozí nebo jiné účty úložiště, které se používají pro odvození, musí mít __neomezený přístup k účtu úložiště__.
 >
 > Pokud si nejste jistí, jestli jste tato nastavení změnili, nebo ne, přečtěte si téma __Změna výchozího pravidla přístupu k síti__ v tématu [konfigurace Azure Storagech bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security). Použijte postup povolení přístupu ze všech sítí během odvození nebo vyhodnocování modelu.
 
@@ -311,7 +313,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Po dokončení procesu vytváření můžete pro cluster AKS za virtuální sítí vytvořit odvození/skóre. Další informace najdete v tématu [Jak nasadit do AKS](how-to-deploy-to-aks.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nastavení školicích prostředí](how-to-set-up-training-targets.md)
 * [Kam chcete nasazovat modely](how-to-deploy-and-where.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 35f29e425fc471e4df4a037ef312af0fd041dcd7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: da8e82652b5406cb4e5fe6438f721e3394a4cd96
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699780"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854596"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -55,10 +55,11 @@ Všechny příklady kódu v tomto kurzu můžete přidat do metody `Main()` v so
 Knihovnu klienta Azure Storage můžete použít v jakémkoli typu aplikace .NET, včetně cloudové služby Azure nebo webové aplikace a desktopových a mobilních aplikací. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>Použití balíčku NuGet k instalaci požadovaných balíčků
-Abyste mohli tento kurz dokončit, potřebujete ze svého projektu odkazovat na dva balíčky:
+Jsou to balíčky, na které potřebujete odkazovat v projektu, abyste mohli dokončit tento kurz:
 
 * [Microsoft Azure Storage společnou knihovnu pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Tento balíček poskytuje programový přístup k běžným prostředkům v účtu úložiště.
 * [Microsoft Azure Storage knihovny objektů BLOB pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Tento balíček poskytuje programový přístup k prostředkům objektů BLOB ve vašem účtu úložiště.
+* [Microsoft Azure Storage knihovna souborů pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/): Tento balíček poskytuje programový přístup k prostředkům souborů ve vašem účtu úložiště.
 * [Microsoft Azure Configuration Manager Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Tento balíček poskytuje třídu pro analýzu připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
 K získání obou balíčků můžete použít balíček NuGet. Postupujte následovně:
@@ -457,7 +458,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 Podrobné pokyny, jak postupovat při řešení problémů, najdete v článku [Azure Files Troubleshooting Article](storage-troubleshoot-windows-file-connection-problems.md) (Soubory Azure – řešení problémů).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o službě Soubory Azure najdete na těchto odkazech.
 
 ### <a name="conceptual-articles-and-videos"></a>Koncepční články a videa

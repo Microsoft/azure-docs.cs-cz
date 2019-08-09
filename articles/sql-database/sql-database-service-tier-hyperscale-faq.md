@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 70ba6c5507cf31732d679a61c3e185a520b4c5f3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 94894126be98f0d3d4d404d97d0a4a39fff2e665
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566671"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847395"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy k databázím Azure SQL s škálovatelným škálováním
 
@@ -44,7 +44,7 @@ Databáze s technologií škálování je databáze SQL Azure v úrovni služby 
 - Úroveň služby Pro důležité obchodní informace je vhodná pro obchodní úlohy, u kterých je vstupně-výstupní latence v/v prioritou.
 
 | | Typ prostředku | Obecné použití |  Hyperškálování | Obchodně klíčové |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
 | **Nejlepší pro** |Vše|  Většina obchodních úloh. Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem. | Datové aplikace s vysokými nároky na kapacitu dat a možnost automatického škálování úložiště a škálování výpočetních prostředků. | OLTP aplikace s vysokou mírou transakcí a nejnižší latencí v/v. Nabízí nejvyšší odolnost proti chybám při použití několika izolovaných replik.|
 |  **Typ prostředku** ||Jedna databáze/elastický fond/spravovaná instance | Izolovaná databáze | Jedna databáze/elastický fond/spravovaná instance |
 | **Velikost výpočetního prostředí**|Jedna databáze/elastický fond * | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra * | 1 až 80 virtuální jádra |
@@ -55,7 +55,7 @@ Databáze s technologií škálování je databáze SQL Azure v úrovni služby 
 | **Propustnost vstupně-výstupních operací** | Samostatná databáze * * | 500 IOPS na vCore s maximálním počtem vstupně-výstupních operací 7000 | Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPs bude záviset na zatížení. | 5000 IOPS s 200 000m maximálním IOPS|
 | | Spravovaná instance | Závisí na velikosti souboru | Není k dispozici | Spravovaná instance: Závisí na velikosti souboru|
 |**Dostupnost**|Vše|1 replika bez měřítka pro čtení, žádná místní mezipaměť | Více replik, maximálně 15, částečná místní mezipaměť pro čtení a zmenšení | 3 repliky, 1 škálování pro čtení, zóna – redundantní HA, úplná místní mezipaměť |
-|**Vytvářet**|Vše|RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů)| RA-GRS, 7-35 dní (ve výchozím nastavení 7 dní), doba obnovení konstanty v čase (PITR) | RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů) |
+|**Vytvářet**|Vše|RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů)| RA-GRS, 7 dní, časový interval pro obnovení v čase konstanty (PITR) | RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů) |
 
 \*Elastické fondy nejsou podporované ve vrstvě služeb s škálováním na úrovni.
 
@@ -386,6 +386,6 @@ Ne. Databáze s škálovatelným škálováním mají sdílené úložiště, co
 
 Od okamžiku, kdy se transakce na primárním počítači potvrdí v závislosti na rychlosti generování protokolu, může být buď okamžitá, nebo v nižších milisekundách.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o úrovni služby škálování na úrovni služeb najdete v tématu [úroveň služby pro škálování na úrovni služby](sql-database-service-tier-hyperscale.md).

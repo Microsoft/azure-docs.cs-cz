@@ -1,6 +1,6 @@
 ---
-title: Jak používat Azure AD Graph API
-description: Rozhraní Graph API služby Azure Active Directory (Azure AD) poskytuje programový přístup ke službě Azure AD prostřednictvím koncových bodů rozhraní REST API pro OData. Aplikace můžete použít Azure AD Graph API k provedení vytvoření, čtení, aktualizace a odstranění (CRUD) operací objekty a daty adresáře.
+title: Jak používat Graph API Azure AD
+description: Služba Azure Active Directory (Azure AD) Graph API poskytuje programový přístup ke službě Azure AD prostřednictvím koncových bodů OData REST API. Aplikace můžou pomocí Graph API Azure AD provádět operace vytvoření, čtení, aktualizace a odstranění (CRUD) pro data a objekty adresáře.
 services: active-directory
 documentationcenter: n/a
 author: rwike77
@@ -17,88 +17,88 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: sureshja
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2ae83b655bfe607b1061168649ec74f02ab4064
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 85c3a1953ce34ab6bf60111715d9d8972a4682ba
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483179"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853387"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Postup: Použití Graph API v Azure AD
 
-Rozhraní Graph API služby Azure Active Directory (Azure AD) poskytuje programový přístup ke službě Azure AD prostřednictvím koncových bodů rozhraní REST API pro OData. Aplikace můžete použít Azure AD Graph API k provedení vytvoření, čtení, aktualizace a odstranění (CRUD) operací objekty a daty adresáře. Například můžete použít Azure AD Graph API k vytvoření nového uživatele, zobrazit nebo aktualizovat vlastnosti uživatele, změňte heslo uživatele, zkontrolovat členství ve skupinách pro přístup na základě rolí, zakázat nebo odstranit uživatele. Další informace o funkcích Azure AD Graph API a scénáře aplikací najdete v tématu [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) a [požadavky na Azure AD Graph API](https://msdn.microsoft.com/library/hh974476.aspx).
+Služba Azure Active Directory (Azure AD) Graph API poskytuje programový přístup ke službě Azure AD prostřednictvím koncových bodů OData REST API. Aplikace můžou pomocí Graph API Azure AD provádět operace vytvoření, čtení, aktualizace a odstranění (CRUD) pro data a objekty adresáře. Můžete například použít Azure AD Graph API k vytvoření nového uživatele, zobrazení nebo aktualizaci vlastností uživatele, změně hesla uživatele, kontrole členství ve skupině pro přístup na základě rolí, zakázání nebo odstranění uživatele. Další informace o funkcích Graph API a scénářích aplikací Azure AD najdete v článku [Azure ad Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) a [požadavky služby Azure AD Graph API](https://msdn.microsoft.com/library/hh974476.aspx).
 
-Tento článek se týká k Azure AD Graph API. Podobně jako informace související s Microsoft Graph API najdete v tématu [používání rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/use_the_api).
+Tento článek se týká Graph API služby Azure AD. Podobné informace související s Microsoft Graph API najdete v tématu [použití rozhraní api Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/use_the_api).
 
 > [!IMPORTANT]
 > Důrazně doporučujeme pro přístup k prostředkům Azure Active Directory použít [Microsoft Graph](https://developer.microsoft.com/graph) místo Azure AD Graph API. Náš vývojový program se nyní soustředí na Microsoft Graph a pro Azure AD Graph API nejsou plánovaná žádná další vylepšení. Existuje velmi omezený počet scénářů, pro které může být Azure AD Graph API stále vhodné. Další informace najdete v příspěvku [Microsoft Graph nebo Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogu na webu Office Dev Center.
 
-## <a name="how-to-construct-a-graph-api-url"></a>Jak vytvořit adresu URL rozhraní API Graphu
+## <a name="how-to-construct-a-graph-api-url"></a>Jak vytvořit adresu URL Graph API
 
-V rozhraní Graph API pro přístup k datům adresáře a objekty (jinými slovy, prostředky nebo entity), u kterých chcete provádět operace CRUD, můžete použít adresy URL na základě protokolu Open Data (OData). Adresy URL použité v rozhraní Graph API se skládá ze čtyř hlavních částí: root, identifikátor tenanta, cesta k prostředku a možnosti řetězce dotazu služby: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Provést například na následující adrese URL: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
+V Graph API můžete pro přístup k datům adresáře a objektům (jinými slovy, prostředkům nebo entitám), u kterých chcete provádět operace CRUD, používat adresy URL založené na protokolu OData (Open data). Adresy URL používané v Graph API se skládají ze čtyř hlavních částí: kořen služby, identifikátor tenanta, cesta prostředku a možnosti řetězce dotazu: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Vezměte v úvahu příklad následující adresy URL: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
 
-* **Služba kořenové**: V Azure AD Graph API, je vždy kořenový adresář https://graph.windows.net.
-* **Identifikátor tenanta**: Tato část může být název ověřené domény (registrovaných), v předchozím příkladu contoso.com. Může být ID objektu tenanta nebo "TatoOrganizace" nebo "me" alias. Další informace najdete v tématu [adresování entit a operace v Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview).
-* **Cesta k prostředku**: Tato část adresy URL identifikuje prostředek, který má být interagovat (uživatelů, skupin, konkrétního uživatele, nebo konkrétní skupiny atd.) V předchozím příkladu je nejvyšší úrovně "groups" adresu, kterou zdroj nastaven. Můžete také vyřešit konkrétní entitu, třeba "uživatelé / {ID objektu}" nebo "uživatelé/userPrincipalName".
-* **Parametrů dotazu**: Otazník (?) odděluje část cesty prostředku z oddílu parametry dotazu. Parametr dotazu "api-version" se vyžaduje u všech požadavků v Azure AD Graph API. Azure AD Graph API podporuje také následující možnosti dotazu OData: **$filter**, **$orderby**, **$expand**, **$top**a **$format**. Následující možnosti dotazu se momentálně nepodporují: **$count**, **$inlinecount**, a **$skip**. Další informace najdete v tématu [podporované dotazy, filtry a možnosti stránkování v Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
+* **Kořen služby**: V Azure AD Graph API je kořenový adresář služby vždycky https://graph.windows.net.
+* **Identifikátor tenanta**: V této části se může jednat o ověřený (registrovaný) název domény v předchozím příkladu contoso.com. Může to být také ID objektu tenanta nebo alias "myorganization" nebo "já". Další informace najdete v tématu věnovaném [adresování entit a operací v Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview).
+* **Cesta prostředku**: Tato část adresy URL identifikuje prostředek, se kterým se bude pracovat (uživatelé, skupiny, konkrétní uživatel nebo konkrétní skupina atd.). V předchozím příkladu je to nejvyšší úroveň "skupiny", která tuto sadu prostředků řeší. Můžete také adresovat konkrétní entitu, například "uživatelé/{objectId}" nebo "uživatelé/userPrincipalName".
+* **Parametry dotazu**: Otazník (?) odděluje oddíl cesta prostředku od části parametrů dotazu. Parametr dotazu API-Version je vyžadován u všech požadavků ve službě Azure AD Graph API. Azure AD Graph API také podporuje následující možnosti dotazů OData: **$Filter**, **$OrderBy**, **$expand**, **$Top**a **$Format**. Následující možnosti dotazu nejsou aktuálně podporovány: **$Count**, **$inlinecount**a **$Skip**. Další informace najdete v tématu [podporované dotazy, filtry a možnosti stránkování ve službě Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
 
-## <a name="graph-api-versions"></a>Verze rozhraní Graph API
+## <a name="graph-api-versions"></a>Verze Graph API
 
-Zadejte verzi pro žádost o rozhraní Graph API v parametru dotazu "api-version". Pro verze 1.5 a novější použijte hodnotu číselná verze; verze API-version = 1.6. U starších verzí pomocí řetězec data, která dodržuje formát rrrr-MM-DD; například verze api-version = 2013-11-08. Funkce ve verzi preview použijte řetězec "beta"; například verze api-version = beta. Další informace o rozdílech mezi verzemi rozhraní Graph API najdete v tématu [Správa verzí Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning).
+V parametru dotazu API-Version zadejte verzi pro požadavek Graph API. Pro verzi 1,5 a novější použijte číselnou hodnotu verze; API-Version = 1.6. V dřívějších verzích použijete řetězec data, který odpovídá formátu RRRR-MM-DD; například API-Version = 2013-11-08. V případě funkcí verze Preview použijte řetězec "beta"; například API-Version = beta. Další informace o rozdílech mezi verzemi Graph API najdete v tématu [Správa verzí Graph API Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning).
 
-## <a name="graph-api-metadata"></a>Rozhraní Graph API metadat
+## <a name="graph-api-metadata"></a>Graph API metadata
 
-Pokud chcete vrátit soubor metadat Azure AD Graph API, přidejte segment "$metadata" po identifikátor tenanta v příkladu adresy URL, na následující adrese URL vrátí metadata pro ukázkové společnosti: `https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.6`. Zadejte tuto adresu URL do adresního řádku webového prohlížeče a zobrazit metadata. Dokument metadat CSDL vrátil popisuje entity a komplexní typy, jejich vlastnosti a funkce a vystavené verzi rozhraní Graph API požadovaná akce. Vynechání parametru verze rozhraní api vrátí metadata pro nejnovější verzi.
+Pokud chcete vrátit soubor metadat Graph API služby Azure AD, přidejte segment "$metadata" za identifikátor tenanta v adrese URL, například následující adresa URL vrátí metadata pro ukázkovou společnost: `https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.6`. Tuto adresu URL můžete zadat v adresním řádku webového prohlížeče, aby se metadata zobrazila. Dokument metadat CSDL vrátil popis entit a komplexních typů, jejich vlastností a funkcí a akcí vystavených ve verzi Graph API, kterou jste požadovali. Vynechání parametru verze API vrátí metadata pro nejnovější verzi.
 
 ## <a name="common-queries"></a>Běžné dotazy
 
-[Azure AD Graph API běžné dotazy](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries) obsahuje seznam běžných dotazů, které lze použít s Azure AD Graph, včetně dotazů, které lze použít pro přístup k prostředkům nejvyšší úrovně ve vašem adresáři a dotazy k provádění operací ve vašem adresáři.
+[Azure ad Graph API Common dotazuje](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries) seznam běžných dotazů, které je možné používat s grafem Azure AD, včetně dotazů, které se dají použít k přístupu k prostředkům nejvyšší úrovně ve vašem adresáři a dotazům k provádění operací ve vašem adresáři.
 
-Například `https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` vrátí firemních informací pro directory contoso.com.
+Například `https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` vrátí informace společnosti pro adresář contoso.com.
 
-Nebo `https://graph.windows.net/contoso.com/users?api-version=1.6` obsahuje seznam všech objektů uživatelů v adresáři contoso.com.
+Nebo `https://graph.windows.net/contoso.com/users?api-version=1.6` vypíše všechny uživatelské objekty v adresáři contoso.com.
 
-## <a name="using-the-azure-ad-graph-explorer"></a>Pomocí Azure AD Graph Exploreru
-Azure AD Graph Explorer pro Azure AD Graph API můžete použít k dotazování na data adresáře při sestavování aplikace.
+## <a name="using-the-azure-ad-graph-explorer"></a>Používání Průzkumníka Azure AD graphu
+K dotazování na data adresáře při sestavování aplikace můžete použít Průzkumníka Azure AD graphu pro Graph API Azure AD.
 
-Na následujícím snímku obrazovky je uvidíte, pokud byste chtěli přejděte na Azure AD Graph Explorer, přihlaste se a zadejte výstup `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` zobrazíte všechny uživatele v adresáři uživatele přihlášeného:
+Následující snímek obrazovky je výstup, který vidíte, pokud jste chtěli přejít do Průzkumníka graphu služby Azure AD, přihlásit se a zadat `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` pro zobrazení všech uživatelů v adresáři přihlášeného uživatele:
 
-![Příklad výstupu v Azure AD Graph API Explorer](./media/active-directory-graph-api-quickstart/graph_explorer.png)
+![Příklad výstupu v Azure AD Graph API Exploreru](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
-**Načtení Azure AD Graph Exploreru**: Načíst nástroj, přejděte na [ https://graphexplorer.azurewebsites.net/ ](https://graphexplorer.azurewebsites.net/). Klikněte na tlačítko **přihlášení** a přihlaste se pomocí svých přihlašovacích údajů účtu služby Azure AD pro spuštění vašeho tenanta Azure AD Graph Explorer. Pokud spouštíte skript v vašeho vlastního tenanta Azure AD Graph Explorer, vy nebo váš správce musí vyjádřit souhlas při přihlašování. Pokud máte předplatné Office 365, budete mít automaticky tenanta služby Azure AD. Přihlašovací údaje, které používáte k přihlášení do služeb Office 365 jsou ve skutečnosti, účty služby Azure AD, a tyto přihlašovací údaje můžete použít s Azure AD Graph Exploreru.
+**Načíst Průzkumníka graphu služby Azure AD**: Pokud chcete nástroj načíst, přejděte na [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/). Klikněte na **Přihlásit** se a přihlaste se pomocí přihlašovacích údajů k účtu Azure AD a spusťte Průzkumníka Azure AD graphu s vaším klientem. Pokud spustíte Průzkumníka služby Azure AD Graph pro vašeho vlastního tenanta, budete vy nebo váš správce muset během přihlašování souhlasit. Pokud máte předplatné Office 365, budete mít automaticky tenanta Azure AD. Přihlašovací údaje, které používáte pro přihlášení k Office 365, jsou ve skutečnosti účty Azure AD a tyto přihlašovací údaje můžete použít s Průzkumníkem Azure AD Graph.
 
-**Spuštění dotazu**: Ke spuštění dotazu, zadejte svůj dotaz v textovém poli požadavku a klikněte na tlačítko **získat** nebo klikněte na tlačítko **zadejte** klíč. Výsledky se zobrazí v poli odpovědi. Například `https://graph.windows.net/myorganization/groups?api-version=1.6` zobrazuje seznam všech objektů skupiny v adresáři přihlášeného uživatele.
+**Spusťte dotaz**: Dotaz spustíte tak, že do textového pole žádost zadáte svůj dotaz a kliknete na **získat** nebo kliknete na klávesu **ENTER** . Výsledky se zobrazí v poli odpověď. Například `https://graph.windows.net/myorganization/groups?api-version=1.6` vypíše všechny objekty skupiny v adresáři přihlášeného uživatele.
 
-Mějte na paměti následující funkce a omezení Azure AD Graph Exploreru:
+Všimněte si následujících funkcí a omezení Průzkumníka Azure AD graphu:
 
-* Nastaví možnosti automatického dokončování v prostředku. Pokud chcete zobrazit tuto funkci, klepněte na textové pole požadavku (Pokud adresa URL společnosti se zobrazí). Můžete vybrat z rozevíracího seznamu Sada prostředků.
-* Historie žádostí.
-* Podporuje "me" a "TatoOrganizace" adresování aliasy. Například můžete použít `https://graph.windows.net/me?api-version=1.6` vrátit objekt uživatele přihlášeného uživatele nebo `https://graph.windows.net/myorganization/users?api-version=1.6` vrátí všechny uživatele v adresáři přihlášeného uživatele.
-* Podporuje úplné operace CRUD s vlastní adresáře pomocí `POST`, `GET`, `PATCH` a `DELETE`.
-* Oddíl hlavičky odpovědi. Tato část umožňuje snadněji řešit problémy, ke kterým dochází při spuštění dotazů.
-* Prohlížeč JSON pro odpovědi s možnostmi rozbalení a sbalení.
-* Bez podpory pro zobrazování nebo nahráním miniaturu fotografie.
+* Funkce automatického dokončování v sadách prostředků Tuto funkci zobrazíte tak, že kliknete na textové pole žádosti (kde se zobrazí adresa URL společnosti). Můžete vybrat sadu prostředků z rozevíracího seznamu.
+* Historie žádostí
+* Podporuje aliasy pro adresování "já" a "myorganization". Můžete například použít `https://graph.windows.net/me?api-version=1.6` k vrácení uživatelského objektu přihlášeného uživatele nebo `https://graph.windows.net/myorganization/users?api-version=1.6` vrácení všech uživatelů v adresáři přihlášeného uživatele.
+* Podporuje úplné operace CRUD proti vašemu vlastnímu adresáři `POST`pomocí `GET` `PATCH` , a `DELETE`.
+* Část s hlavičkami odpovědi. Tato část se dá použít k řešení problémů, ke kterým dochází při spouštění dotazů.
+* Prohlížeč JSON pro odpověď s funkcemi rozbalení a sbalení.
+* Žádná podpora pro zobrazení nebo nahrání fotografie miniatur.
 
-## <a name="using-fiddler-to-write-to-the-directory"></a>Použití aplikace Fiddler k zápisu do adresáře
+## <a name="using-fiddler-to-write-to-the-directory"></a>Zápis do adresáře pomocí Fiddler
 
-Pro účely této úvodní příručky můžete použít ladicí program webové aplikace Fiddler na postup provedení zápisu operace adresáře služby Azure AD. Například můžete mít a nahrát profilové fotky uživatele (což není možné pomocí Průzkumníka služby Azure AD Graph). Další informace a nainstalovat Fiddler, najdete v části [ https://www.telerik.com/fiddler ](https://www.telerik.com/fiddler).
+Pro účely tohoto průvodce rychlým startem můžete použít webový ladicí program Fiddler k provádění operací zápisu v adresáři Azure AD. Můžete například získat a nahrát fotografii profilu uživatele (což není možné v Průzkumníku Azure AD Graph). Další informace a pokyny k instalaci Fiddler najdete v [https://www.telerik.com/fiddler](https://www.telerik.com/fiddler)tématu.
 
-V následujícím příkladu použijte ladicí program webové aplikace Fiddler k vytvoření nové skupiny zabezpečení 'MyTestGroup' v adresáři služby Azure AD.
+V následujícím příkladu použijete webový ladicí program Fiddler k vytvoření nové skupiny zabezpečení ' MyTestGroup ' v adresáři služby Azure AD.
 
-**Získání přístupového tokenu**: Pro přístup k Azure AD Graph, klienti jsou nutné pro úspěšné ověření do služby Azure AD nejprve. Další informace najdete v tématu [scénáře ověřování pro službu Azure AD](authentication-scenarios.md).
+**Získání přístupového tokenu**: Aby bylo možné získat přístup k Azure AD graphu, musí se nejdřív úspěšně ověřit ve službě Azure AD. Další informace najdete v tématu [scénáře ověřování pro Azure AD](authentication-scenarios.md).
 
-**Vytvořte a spusťte dotaz**: Proveďte následující kroky:
+**Sestavit a spustit dotaz**: Proveďte následující kroky:
 
-1. Otevřete Fiddler ladicí program webového a přepněte **Composer** kartu.
-2. Protože ale chcete vytvořit novou skupinu zabezpečení, vyberte **příspěvek** jako metoda protokolu HTTP z rozevírací nabídky. Další informace o operacích a oprávnění na objekt skupiny najdete v tématu [skupiny](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#group-entity) v rámci [Azure AD Graph API Reference k rozhraní REST](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
-3. V poli vedle **příspěvek**, zadejte následující adresu URL požadavku: `https://graph.windows.net/{mytenantdomain}/groups?api-version=1.6`.
+1. Otevřete webový ladicí program Fiddler a přepněte na kartu skladatele.
+2. Vzhledem k tomu, že chcete vytvořit novou skupinu zabezpečení, v rozevírací nabídce vyberte **post** jako metoda HTTP. Další informace o operacích a oprávněních pro objekt skupiny najdete v tématu [Skupina](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#group-entity) v rámci [odkazu na REST API v grafu Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
+3. Do pole vedle **příspěvku**zadejte následující adresu URL žádosti: `https://graph.windows.net/{mytenantdomain}/groups?api-version=1.6`.
    
    > [!NOTE]
-   > {Mytenantdomain} je nutné nahradit názvem domény z adresáře Azure AD.
+   > {Mytenantdomain} je nutné nahradit názvem domény vlastního adresáře služby Azure AD.
 
-4. Do pole přímo pod rozevírací příspěvek zadejte následující hlavičku protokolu HTTP:
+4. Do pole přímo pod možností po vybírání příspěvku zadejte následující hlavičku protokolu HTTP:
    
     ```
    Host: graph.windows.net
@@ -107,9 +107,9 @@ V následujícím příkladu použijte ladicí program webové aplikace Fiddler 
    ```
    
    > [!NOTE]
-   > Náhradní vaše &lt;váš přístupový token&gt; s přístupovým tokenem pro váš adresář Azure AD.
+   > Pomocí přístupového tokenu pro váš adresář služby Azure AD Nahraďte svůj přístupový token&gt;. &lt;
 
-5. V **text žádosti** pole, zadejte následující kód JSON:
+5. Do pole **Text žádosti** zadejte následující kód JSON:
    
     ```
         {
@@ -120,11 +120,11 @@ V následujícím příkladu použijte ladicí program webové aplikace Fiddler 
         }
    ```
    
-    Další informace o vytváření skupin najdete v tématu [vytvořit skupinu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#CreateGroup).
+    Další informace o vytváření skupin najdete v tématu věnovaném [Vytvoření skupiny](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#CreateGroup).
 
-Další informace o Azure AD entity a typy, které jsou vystavené grafu a informace o operacích, které můžete provádět na nich s grafem najdete v tématu [Azure AD Graph API Reference k rozhraní REST](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
+Další informace o entitách a typech služby Azure AD, které jsou zpřístupněny v grafu, a informace o operacích, které lze s grafem provádět, naleznete v tématu [Azure AD Graph REST API Reference](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
-* Další informace o [obory oprávnění rozhraní API Graph pro Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+* Další informace o [Graph API Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
+* Další informace o [oborech oprávnění Graph API Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)

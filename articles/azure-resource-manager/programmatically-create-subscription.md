@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: jureid
-ms.openlocfilehash: 701b35d99cb98009ec0116c23eaeab94ff967f51
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d6ae863aed629f5f5b1497d5a6e0f8108f4703c8
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678935"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848702"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Vytváření předplatných Azure Enterprise (Preview) prostřednictvím kódu programu
 
@@ -69,7 +69,7 @@ Azure odpoví seznamem všech účtů zápisu, ke kterým máte přístup:
 }
 ```
 
-`principalName` Pomocí vlastnosti Identifikujte účet, na který se mají odběry fakturovat. `name` Zkopírujte účet tohoto účtu. Pokud byste například chtěli vytvořit předplatná v rámci SignUpEngineering@contoso.com účtu pro registraci, budete zkopírováni. ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` Toto je ID objektu registračního účtu. Vložte tuto hodnotu někam, abyste ji mohli použít v dalším kroku `enrollmentAccountObjectId`.
+`principalName` Pomocí vlastnosti Identifikujte účet, na který se mají odběry fakturovat. `name` Zkopírujte účet tohoto účtu. Pokud byste například chtěli vytvořit předplatná v rámci SignUpEngineering@contoso.com účtu pro registraci, budete zkopírováni. ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` Tento identifikátor je ID objektu registračního účtu. Vložte tuto hodnotu někam, abyste ji mohli použít v dalším kroku `enrollmentAccountObjectId`.
 
 ## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -117,7 +117,7 @@ Azure odpoví seznamem účtů pro zápis, ke kterým máte přístup:
 ]
 ```
 
-`principalName` Pomocí vlastnosti Identifikujte účet, na který se mají odběry fakturovat. `name` Zkopírujte účet tohoto účtu. Pokud byste například chtěli vytvořit předplatná v rámci SignUpEngineering@contoso.com účtu pro registraci, budete zkopírováni. ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` Toto je ID objektu registračního účtu. Vložte tuto hodnotu někam, abyste ji mohli použít v dalším kroku `enrollmentAccountObjectId`.
+`principalName` Pomocí vlastnosti Identifikujte účet, na který se mají odběry fakturovat. `name` Zkopírujte účet tohoto účtu. Pokud byste například chtěli vytvořit předplatná v rámci SignUpEngineering@contoso.com účtu pro registraci, budete zkopírováni. ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` Tento identifikátor je ID objektu registračního účtu. Vložte tuto hodnotu někam, abyste ji mohli použít v dalším kroku `enrollmentAccountObjectId`.
 
 ---
 
@@ -201,11 +201,11 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Omezení rozhraní API pro vytváření předplatných Azure Enterprise
 
 - Pomocí tohoto rozhraní API se dají vytvořit jenom předplatná Azure Enterprise.
-- Pro každý registrační účet je povolený limit 200 předplatných. Odběry se pak dají vytvořit jenom prostřednictvím centra účtů. Pokud chcete vytvořit další odběry prostřednictvím rozhraní API, vytvořte další účet pro zápis.
+- Pro každý registrační účet je povolený limit 200 předplatných. Další předplatná pro tento účet se pak dají vytvořit jenom prostřednictvím centra účtů. Pokud chcete vytvořit další odběry prostřednictvím rozhraní API, vytvořte další účet pro zápis.
 - Uživatelé, kteří nejsou vlastníkem účtu, ale Přidali se k účtu pro zápis přes RBAC, nemůžou vytvářet předplatná pomocí centra účtů.
 - Nemůžete vybrat tenanta, ve kterém se má předplatné vytvořit. Předplatné se vždy vytvoří v domovském tenantovi vlastníka účtu. Pokud chcete přesunout předplatné do jiného tenanta, přečtěte si téma [Změna tenanta](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)předplatného.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Příklad vytváření předplatných pomocí .NET najdete v tématu [vzorový kód na GitHubu](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
 * Teď, když jste vytvořili předplatné, můžete tuto schopnost udělit ostatním uživatelům a instančním objektům. Další informace najdete v tématu [udělení přístupu k vytváření předplatných Azure Enterprise (Preview)](grant-access-to-create-subscription.md).

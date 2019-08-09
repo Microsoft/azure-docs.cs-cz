@@ -8,43 +8,48 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b105fb14608d53c5c2ef469ab44e211ccdf4d3c8
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 928b0bcfb32d1a319c811d00fc84a37f85702895
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812466"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857349"
 ---
-Následující tabulka uvádí kvóty a omezení na konkrétní [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách služby Event Hubs najdete v tématu [ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
+V následující tabulce je uveden seznam kvót a omezení určených pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 | Omezení | Scope | Poznámky | Value |
 | --- | --- | --- | --- |
-| Počet obory názvů služby Event Hubs na předplatné |Subscription |- |100 |
-| Počet událostí centra na obor názvů |Obor názvů |Odeslání dalších žádostí o vytvoření nové Centrum událostí odmítají. |10 |
-| Počet oddílů na Centrum událostí |Entita |- |32 |
-| Počet skupin uživatelů na Centrum událostí |Entita |- |20 |
-| Počet připojení AMQP na obor názvů |Obor názvů |Odeslání dalších žádostí o další připojení budou odmítnuty, a volající kód obdrží výjimku. |5,000 |
-| Maximální velikost události služby Event Hubs|Entita |- |1 MB |
-| Maximální velikost název centra událostí |Entita |- |50 znaků. |
-| Number of non-epoch receivers per consumer group |Entita |- |5 |
-| Maximální doba uchovávání dat událostí |Entita |- |1-7 dní |
-| Maximální počet jednotek propustnosti |Obor názvů |Překročení omezení jednotek propustnosti způsobí, že se data omezí a generuje [výjimka zaneprázdněný server](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Chcete-li požádat o větší počet jednotek propustnosti úrovně Standard, souborů [žádost o podporu](/azure/azure-supportability/how-to-create-azure-support-request). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na základě potvrzení nákupu. |20 |
-| Počet ověřovacích pravidel na obor názvů |Obor názvů|Odeslání dalších žádostí o vytvoření pravidla autorizace odmítají.|12 |
-| Počet volání getruntimeinformation – metoda | Entita | - | 50 za sekundu | 
-| Počet virtuální síť (VNet) a pravidla konfigurace IP | Entita | - | 128 | 
+| Počet Event Hubs oborů názvů na předplatné |Subscription |- |100 |
+| Počet Center událostí na obor názvů |Obor názvů |Následné žádosti o vytvoření nového centra událostí budou odmítnuty. |10 |
+| Počet oddílů na centrum událostí |Entita |- |32 |
+| Maximální velikost události Event Hubs|Entita |- |1 MB |
+| Maximální velikost názvu centra událostí |Entita |- |50 znaků |
+| Počet neepochach přijímačů na skupinu uživatelů |Entita |- |5 |
+| Maximální počet jednotek propustnosti |Obor názvů |Překročení limitu jednotek propustnosti způsobí omezení vašich dat a vygeneruje [výjimku zaneprázdněnou serverem](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Pokud chcete požádat o větší počet jednotek propustnosti pro úroveň Standard, zaregistrujte [žádost o podporu](/azure/azure-supportability/how-to-create-azure-support-request). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na potvrzeném nákupu. |20 |
+| Počet autorizačních pravidel na obor názvů |Obor názvů|Následné žádosti o vytvoření autorizačního pravidla jsou odmítnuté.|12 |
+| Počet volání metody Getruntimeinformation – | Entita | - | 50 za sekundu | 
+| Počet pravidel virtuální sítě (VNet) a konfigurace protokolu IP | Entita | - | 128 | 
 
-### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs Dedicated - kvóty a omezení
-Event hubs úrovně Dedicated nabídka se účtuje za pevnou měsíční cenu s minimálně 4 hodin využití. Vyhrazené úroveň nabízí všechny funkce plánu Standard, ale s enterprise škálování kapacity a omezení pro zákazníky s náročné úlohy. 
+### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>Event Hubs úrovně Basic a Standard-kvóty a omezení
+| Omezení | Scope | Poznámky | Basic | Standard |
+| --- | --- | --- | -- | --- |
+| Počet skupin uživatelů na centrum událostí |Entita | - |1 |20 |
+| Počet připojení AMQP na obor názvů |Obor názvů |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |100 |5,000|
+| Maximální doba uchování dat události |Entita | - |1 den |1-7 dní |
+
+
+### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs úrovně Dedicated – kvóty a omezení
+V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
 
 | Funkce | Omezení |
 | --- | ---|
 | Šířka pásma |  20 kapacitní jednotky |
-| Obory názvů | 50 na kapacitní jednotku |
-| Event Hubs |  1 000 na obor názvů |
+| Názvové prostory | 50 za CU |
+| Event Hubs |  1000 na obor názvů |
 | Události příchozího přenosu dat | Zahrnuje |
-| Velikost zprávy | 1 milion bajtů |
-| Oddíly | 2000 na kapacitní jednotku |
-| Skupiny příjemců | Bez omezení na kapacitní jednotku, 1 000 na Centrum událostí |
+| Velikost zprávy | 1 000 000 bajtů |
+| Oddíly | 2000 za CU |
+| Skupiny příjemců | Bez omezení na CU, 1000 na každé centrum událostí |
 | Zprostředkovaná připojení | 100 tisíc v základu |
-| Uchovávání zpráv | Až na 7 dní (90 dnů uchovávání už brzo), 10 TB zahrnuté na kapacitní jednotku |
+| Uchovávání zpráv | Až 7 dní (90 dní již brzy přijde), za 10 TB zahrnuté na CU |
 | Zachycování | Zahrnuje |

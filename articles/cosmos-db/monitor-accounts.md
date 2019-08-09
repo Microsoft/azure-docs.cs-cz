@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 1c12007e04ff8cd08ddb7afdf9a3c2add9638de3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d8e80594e0c56f57527d1703b0cf1323571cf351
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277435"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855708"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Monitorujte metriky výkonu a úložiště ve službě Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Metriky lze zobrazit na stránce účtu, nové metriky stránky, nebo ve služb�
 ## <a name="set-up-alerts-in-the-portal"></a>Nastavte si upozornění na portálu
 
 > [!NOTE]
-> Klasické výstrahy v Azure Monitor budou vycházet z 31. srpna 2019. Azure Portal nabízí [migrační nástroj](../azure-monitor/platform/alerts-using-migration-tool.md) pro migraci klasických pravidel výstrah. Ale ne všechny klasické výstrahy na Azure Cosmos DB metriky se dají migrovat, ale existují nějaké výjimky. seznam klasických výstrah, které se nedají migrovat, najdete v článku [Azure monitor](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics) . 
+> Klasické výstrahy v Azure Monitor budou brzy vyřazeny. Azure Portal nabízí [migrační nástroj](../azure-monitor/platform/alerts-using-migration-tool.md) pro migraci klasických pravidel výstrah. Ale ne všechny klasické výstrahy Azure Cosmos DBch metriky je možné migrovat, ale existují nějaké výjimky. seznam klasických výstrah, které se nedají migrovat, najdete v článku [Azure monitor](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics) . 
 
 1. V [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko **všechny služby**, klikněte na tlačítko **služby Azure Cosmos DB**a pak klikněte na název účtu Azure Cosmos DB, pro kterou chcete nastavit výkonu upozornění na metriku.
 2. V nabídce prostředku klikněte na tlačítko **pravidla upozornění** otevřete stránku pravidla upozornění.  

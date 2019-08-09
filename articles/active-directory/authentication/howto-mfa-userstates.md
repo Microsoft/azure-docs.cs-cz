@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54146927bf344eed63e24a3df073aa13f7fa0676
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 98a339f3fe9d5318b71ef60ac916bc4dcc6112fb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319918"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853740"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak pro uživatele vyžadovat dvoustupňové ověřování
 
@@ -45,11 +45,11 @@ Uživatelské účty v Azure Multi-Factor Authentication mají následující t�
 |:---:|:---:|:---:|:--:|:--:|
 | Zakázáno |Výchozí stav nového uživatele, který není zaregistrovaný v Azure MFA. |Ne |Ne |Ne |
 | Enabled |Uživatel je zaregistrovaný v Azure MFA, ale není zaregistrovaný. Obdrží výzvu k registraci při příštím přihlášení. |Ne.  Budou dál fungovat, dokud se proces registrace nedokončí. | Ano. Po vypršení platnosti relace se vyžaduje registrace Azure MFA.| Ano. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure MFA. |
-| Vynuceno |Uživatel je zaregistrovaný a dokončil proces registrace pro Azure MFA. |Ano. Aplikace vyžadují hesla aplikací. |Ano. Při přihlášení se vyžaduje Azure MFA. | Ano. Při přihlášení se vyžaduje Azure MFA. |
+| Vynucováno |Uživatel je zaregistrovaný a dokončil proces registrace pro Azure MFA. |Ano. Aplikace vyžadují hesla aplikací. |Ano. Při přihlášení se vyžaduje Azure MFA. | Ano. Při přihlášení se vyžaduje Azure MFA. |
 
 Stav uživatele odráží, jestli ho správce zaregistroval v Azure MFA, a jestli dokončil proces registrace.
 
-Všichni uživatelé začínají *zakázáni*. Když zaregistrujete uživatele v Azure MFA, jejich stav se změní na *povoleno*. Když se uživatelé s povoleným přihlášením a dokončí proces registrace, jejich stav se změní na vynutilo.  
+Všichni uživatelé začínají *zakázáni*. Když zaregistrujete uživatele v Azure MFA, jejich stav se změní na *povoleno*. Když se uživatelé s povoleným přihlášením a dokončí proces registrace, jejichstav se změní na vynutilo.  
 
 ### <a name="view-the-status-for-a-user"></a>Zobrazit stav uživatele
 
@@ -142,11 +142,7 @@ Následující PowerShell vám může pomoci při převodu na ověřování Azur
 # Disable MFA for all users, keeping their MFA methods intact
 Get-MsolUser -All | Disable-MFA -KeepMethods
 
-# Enforce MFA for all users
-Get-MsolUser -All | Set-MfaState -State Enforced
-
-# Wrapper to disable MFA with the option to keep the MFA
-# methods (to avoid having to proof-up again later)
+# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
 function Disable-Mfa {
 
     [CmdletBinding()]
@@ -200,7 +196,7 @@ function Set-MfaState {
 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Proč se uživateli zobrazila výzva nebo nezobrazila výzva k provedení MFA? Viz část [Sestava přihlášení k Azure AD v sestavách v dokumentu Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
 * Informace o konfiguraci dalších nastavení, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a výstrahy na podvod, najdete v článku [Konfigurace nastavení Azure Multi-Factor Authentication](howto-mfa-mfasettings.md) .

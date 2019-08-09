@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6de348a19081eba685deafebd8a7c9b9d6556444
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688118"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850260"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Řešení potíží s konfigurací požadovaného stavu (DSC)
 
@@ -24,16 +24,17 @@ Tento článek poskytuje informace o řešení problémů s požadovanou konfigu
 
 Pokud máte chyby při kompilaci nebo nasazování konfigurací v konfiguraci stavu Azure, najdete tady několik kroků, které vám pomůžou problém diagnostikovat.
 
-1. **Ujistěte se, že se konfigurace úspěšně zkompiluje na místním počítači:**  Konfigurace stavu Azure je postavená na PowerShell DSC. Dokumentaci k jazyku DSC a syntaxi najdete v dokumentaci k PowerShellu [DSC](/powershell/dsc/overview/overview).
+1. **Ujistěte se, že se konfigurace úspěšně zkompiluje na místním počítači:**  Konfigurace stavu Azure je postavená na PowerShell DSC. Dokumentaci k jazyku DSC a syntaxi najdete v dokumentaci k PowerShellu [DSC](https://docs.microsoft.com/en-us/powershell/scripting/overview).
 
-   Sestavením konfigurace DSC na místním počítači můžete zjišťovat a řešit běžné chyby, jako například:
+   Zkompilováním konfigurace DSC na místním počítači můžete zjišťovat a řešit běžné chyby, jako například:
 
    - **Chybějící moduly**
    - **Chyby syntaxe**
    - **Logické chyby**
+
 2. **Zobrazit protokoly DSC v uzlu:** Pokud se konfigurace úspěšně zkompiluje, ale při použití v uzlu dojde k chybě, můžete najít podrobné informace v protokolech. Informace o tom, kde najít protokoly DSC, najdete v tématu [kde jsou protokoly událostí DSC](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
-   Futhermore, [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) vám může pomoct při analýze podrobných informací z protokolů DSC. Pokud se obrátíte na podporu, budou tyto protokoly vyžadovat, aby dianose váš problém.
+   Kromě toho vám [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) může pomoct při analýze podrobných informací z protokolů DSC. Pokud se obrátíte na podporu, budou tyto protokoly vyžadovat diagnostiku vašeho problému.
 
    **XDscDiagnostics** můžete na svém místním počítači nainstalovat podle pokynů uvedených v části [Instalace modulu stabilní verze](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
 
@@ -130,7 +131,7 @@ Pokud je výraz následující po klíčovém slově **uzlu** v konfiguraci DSC 
 Problém vyřeší některá z následujících řešení:
 
 * Ujistěte se, že výraz vedle klíčového slova **Node** v definici konfigurace není vyhodnocen jako $null.
-* Pokud předáváte ConfigurationData při kompilování konfigurace, ujistěte se, že předáváte očekávané hodnoty, které konfigurace vyžaduje od [ConfigurationData](../automation-dsc-compile.md#configurationdata).
+* Pokud předáváte ConfigurationData při kompilování konfigurace, ujistěte se, že předáváte očekávané hodnoty, které konfigurace vyžaduje od [ConfigurationData](../automation-dsc-compile.md).
 
 ### <a name="dsc-in-progress"></a>Případě Sestava uzlu DSC se zablokuje ve stavu probíhá.
 
@@ -166,7 +167,7 @@ V konfiguraci jste použili přihlašovací údaje, ale neposkytli správné **C
 
 #### <a name="resolution"></a>Řešení
 
-* Nezapomeňte předat správný **ConfigurationData** a nastavit **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu uvedenou v konfiguraci. Další informace najdete v tématu [assety in Azure Automation DSC](../automation-dsc-compile.md#assets).
+* Nezapomeňte předat správný **ConfigurationData** a nastavit **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu uvedenou v konfiguraci. Další informace najdete v tématu [assety in Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
 ### <a name="failure-processing-extension"></a>Případě Při připojování z rozšíření DSC se chyba při neúspěšném rozšíření zpracování
 
@@ -199,11 +200,27 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Příčina
 
-Zákazníci zjistili, že pokud je umístění adresáře/TMP nastavené na hodnotu unexec, aktuální verze DSC se nedaří použít konfigurace.
+Zjistili jsme, že pokud `/tmp` je umístění nastavené na `noexec`, aktuální verze DSC se nepodaří použít konfigurace.
 
 #### <a name="resolution"></a>Řešení
 
-* Z umístění adresáře/TMP odeberte možnost neexec.
+* `noexec` Odeberte možnost`/tmp` z umístění.
+
+### <a name="compilation-node-name-overlap"></a>Případě Názvy konfigurací uzlů, které se překrývají, by mohly vést k chybné verzi.
+
+#### <a name="issue"></a>Problém
+
+Pokud je pro generování více konfigurací uzlů použit jediný konfigurační skript a některé konfigurace uzlů mají název, který je podmnožinou dalších, může problém ve službě kompilace způsobit přiřazení nesprávné konfigurace.  K tomu dochází pouze při použití jediného skriptu ke generování konfigurací s konfiguračními daty na uzel a pouze v případě, že dojde k překrytí názvu na začátku řetězce.
+
+Pokud je například jeden konfigurační skript použit ke generování konfigurací založených na datech uzlu předaných jako zatřiďovací tabulka pomocí rutin a data uzlu zahrnuje server s názvem "Server" a "1server".
+
+#### <a name="cause"></a>Příčina
+
+Známý problém se službou kompilace.
+
+#### <a name="resolution"></a>Řešení
+
+Nejlepším alternativním řešením je kompilace místně nebo v kanálu CI/CD a nahrání souborů MOF přímo do služby.  Pokud je kompilace ve službě požadavkem, další nejlepší alternativní řešení by mělo rozdělit úlohy kompilace, aby se v názvech překrývaly.
 
 ## <a name="next-steps"></a>Další postup
 

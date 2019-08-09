@@ -1,6 +1,6 @@
 ---
-title: Článek o omezeních známé problémy a migrace s online migrace do služby Azure Database for MySQL | Dokumentace Microsoftu
-description: Přečtěte si o známých problémech a migrace omezení online migrace do služby Azure Database for MySQL.
+title: Článek o známých problémech nebo omezeních migrace pro online migrace do Azure Database for MySQL | Microsoft Docs
+description: Přečtěte si o známých problémech nebo omezeních migrace pro online migrace do Azure Database for MySQL.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,33 +10,34 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 0641545c10d7f59cb1874659eae9c7e7bf65932e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/06/2019
+ms.openlocfilehash: fc5565ab9e3be21b96ce5aa5a938cf22ec3caeb0
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60532269"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848486"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Známé problémy a migrace omezení online migrace do Azure DB for MySQL
+# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Známé problémy/omezení migrace pro online migrace do Azure DB for MySQL
 
-Známé problémy a omezení související s online migrace z MySQL do služby Azure Database for MySQL jsou popsány v následujících částech. 
+Známé problémy a omezení související s online migracemi z MySQL na Azure Database for MySQL jsou popsány v následujících částech.
 
-## <a name="online-migration-configuration"></a>Online migrace konfigurace
-- Zdrojový MySQL Server verze musí mít verzi 5.6.35, 5.7.18 nebo novější
+## <a name="online-migration-configuration"></a>Konfigurace online migrace
+
+- Zdrojový server MySQL verze musí být verze 5.6.35, 5.7.18 nebo novější.
 - Azure Database for MySQL podporuje:
-    - MySQL community edition
-    - Modul InnoDB
-- Migrace stejnou verzi. Migrace MySQL 5.6 na Azure Database for MySQL 5.7 není podporována.
-- Povolte binární protokolování v souboru my.ini (Windows) nebo my.cnf (Unix)
-    - Nastavte na 1, například Server_id Server_id na libovolné číslo větší nebo rovná = 1 (pouze pro MySQL 5.6)
-    - Nastavte log-bin = \<cesta > (pouze pro MySQL 5.6)
-    - Nastavit binlog_format = řádek
-    - Expire_logs_days = 5 (doporučeno – pouze pro MySQL 5.6)
+  - MySQL Community Edition
+  - Modul InnoDB
+- Migrace stejné verze. Migrace MySQL 5,6 na Azure Database for MySQL 5,7 není podporována.
+- Povolit binární protokolování v souboru my. ini (Windows) nebo My. CNF (UNIX)
+  - Nastavte Server_id na libovolné číslo větší nebo rovno 1, například Server_id = 1 (pouze pro MySQL 5,6).
+  - Set log-bin = \<Path > (pouze pro MySQL 5,6)
+  - Set binlog_format = řádek
+  - Expire_logs_days = 5 (doporučeno – pouze pro MySQL 5,6)
 - Uživatel musí mít roli ReplicationAdmin.
-- Kolace definované pro zdrojovou databázi MySQL jsou stejné jako ty, které jsou definovány v cíli – Azure Database for MySQL.
-- Schéma musí odpovídat mezi zdrojovou databázi MySQL a cílová databáze ve službě Azure Database for MySQL.
-- Cizí klíče nesmí mít schéma v cíl – Azure Database for MySQL. Vyřaďte cizí klíče pomocí následujícího dotazu:
+- Kolace definovaná pro zdrojovou databázi MySQL jsou shodná s těmi, která jsou definována v cílovém Azure Database for MySQL.
+- Schéma se musí shodovat se zdrojovou databází MySQL a cílovou databází v Azure Database for MySQL.
+- Schéma v cílovém Azure Database for MySQL nesmí obsahovat cizí klíče. K vyřazení cizích klíčů použijte následující dotaz:
     ```
     SET group_concat_max_len = 8192;
     SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
@@ -54,44 +55,79 @@ Známé problémy a omezení související s online migrace z MySQL do služby A
     ```
 
     Spusťte skript pro odstranění cizího klíče (druhý sloupec) ve výsledku dotazu odstraňte cizí klíč.
-- Schéma v cíl – Azure Database for MySQL nesmí obsahovat žádné aktivační události. K odpojení aktivačních událostí v cílové databázi:
+- Schéma v cílovém Azure Database for MySQL nesmí obsahovat žádné triggery. Zrušení aktivačních událostí v cílové databázi:
     ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
     ```
 
-## <a name="datatype-limitations"></a>Datový typ omezení
-- **Omezení**: Pokud je datový typ JSON ve zdrojové databázi MySQL, migrace selže během průběžné synchronizace.
+## <a name="datatype-limitations"></a>Omezení datového typu
 
-    **Alternativní řešení**: Změňte datový typ formátu JSON na střední text nebo longtext ve zdrojové databázi MySQL.
+- **Omezení**: Pokud ve zdrojové databázi MySQL existuje datový typ JSON, během nepřetržité synchronizace se migrace nezdaří.
 
-- **Omezení**: Pokud neexistuje žádný primární klíč v tabulkách, průběžné synchronizace se nezdaří.
- 
-    **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku pro migraci, abyste mohli pokračovat. Po dokončení migrace dat, můžete odebrat primární klíč.
+    **Alternativní řešení**: Upravte datový typ JSON na střední text nebo LONGTEXT ve zdrojové databázi MySQL.
+
+- **Omezení**: Pokud v tabulkách není žádný primární klíč, průběžná synchronizace se nezdaří.
+
+    **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku, aby bylo možné pokračovat v migraci. Po dokončení migrace dat můžete primární klíč odebrat.
 
 ## <a name="lob-limitations"></a>Omezení LOB
-Sloupce velkého objektu (LOB) jsou sloupce, které může rozvíjet velké. Pro MySQL, střední text Longtext, objektů Blob, Mediumblob, Longblob atd. jsou uvedeny některé typy LOB.
 
-- **Omezení**: Pokud obchodní datové typy se používají jako primární klíče, migrace selže.
+Sloupce Large Object (LOB) jsou sloupce, které mohou dosáhnout větší velikosti. Pro MySQL, střední text, LONGTEXT, BLOB, Mediumblob, Longblob atd. jsou některé z typů dat LOB.
 
-    **Alternativní řešení**: Nahraďte další datové typy nebo sloupce, které nejsou LOB primární klíč.
+- **Omezení**: Pokud se jako primární klíče používají datové typy LOB, migrace se nezdaří.
 
-- **Omezení**: Pokud délka sloupec velkého objektu (LOB) je větší než 32 KB, mohou být v cílovém zkráceny data. Délka sloupce LOB pomocí tohoto dotazu, můžete zkontrolovat:
+    **Alternativní řešení**: Nahraďte primární klíč jinými typy nebo sloupci, které nejsou typu LOB.
+
+- **Omezení**: Pokud je délka sloupce Large Object (LOB) větší než 32 KB, mohou být data v cíli zkrácena. Můžete kontrolovat délku sloupce LOB pomocí tohoto dotazu:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Alternativní řešení**: Pokud budete mít obchodní objekt, který je větší než 32 KB, obraťte se na technický tým na adrese [požádejte migracemi databází Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com). 
+    **Alternativní řešení**: Pokud máte objekt LOB, který je větší než 32 KB, kontaktujte technický tým na [vyžádání migrace databáze Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com). 
+
+## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>Omezení při migraci online z AWS VP MySQL
+
+Při pokusu o provedení online migrace z AWS VP MySQL do Azure Database for MySQL může docházet k následujícím chybám.
+
+- **Chyba:** {0}Databáze má v cíli cizí klíče (y). Opravte cíl a spusťte novou aktivitu migrace dat. Spustit pod skriptem na cíli a vypsat cizí klíč (y)
+
+  **Omezení**: Pokud vaše schéma obsahuje cizí klíče, počáteční načtení a průběžná synchronizace migrace selžou.
+  **Alternativní řešení**: V aplikaci MySQL Workbench spusťte následující skript, který extrahuje skript pro odstranění cizího klíče a skript pro přidání cizího klíče:
+
+  ```
+  SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
+  ```
+
+- **Chyba:** {0}Databáze na serveru neexistuje. U zadaného zdrojového serveru MySQL se rozlišují malá a velká písmena. Zkontrolujte název databáze.
+
+  **Omezení**: K této chybě může dojít při migraci databáze MySQL do Azure pomocí rozhraní příkazového řádku. Služba nemohla najít databázi na zdrojovém serveru, což může být způsobeno tím, že jste pravděpodobně zadali nesprávný název databáze nebo databáze na uvedeném serveru neexistuje. Poznámka: v názvech databází se rozlišují velká a malá písmena.
+
+  **Alternativní řešení**: Zadejte přesný název databáze a akci opakujte.
+
+- **Chyba:** V databázi {Database} jsou tabulky se stejným názvem. Azure Database for MySQL nepodporuje tabulky, u kterých se rozlišují malá a velká písmena.
+
+  **Omezení**: K této chybě dochází v případě, že ve zdrojové databázi máte dvě tabulky se stejným názvem. Azure Database for MySQL nepodporuje tabulky citlivé na velká a malá písmena.
+
+  **Alternativní řešení**: Aktualizujte názvy tabulek tak, aby byly jedinečné, a akci opakujte.
+
+- **Chyba:** Cílová databáze {Database} je prázdná. Proveďte migraci schématu.
+
+  **Omezení**: K této chybě dochází, pokud cílová databáze Azure Database for MySQL nemá požadované schéma. Migrace schématu je nutná k tomu, aby bylo možné migrovat data do cíle.
+
+  **Alternativní řešení**: [Migrujte schéma](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema) ze zdrojové databáze do cílové databáze.
 
 ## <a name="other-limitations"></a>Další omezení
-- Řetězec hesla, která má otevírací a uzavírací složené závorky {} na začátku a konce řetězce hesla se nepodporuje. Toto omezení platí pro obě připojení k MySQL zdroj a cíl – Azure Database for MySQL.
+
+- Řetězec hesla, který má levou a pravou složenou závorku {} na začátku a konci řetězce hesla, není podporován. Toto omezení platí pro připojení ke zdrojovému MySQL a cílové Azure Database for MySQL.
 - Následující DDLs nejsou podporovány:
-    - Všechny oddílu DDLs
-    - Odstranit tabulku
-    - Přejmenovat tabulku
-- Pomocí *příkaz alter table < table_name > Přidat sloupec < Název_sloupce >* příkaz Přidat sloupce na začátku nebo uprostřed tabulky není podporován. *Příkaz alter table < table_name > Přidat sloupec < Název_sloupce >* přidá sloupec na konec tabulky.
-- Indexy vytvořené na pouze část dat sloupce nejsou podporovány. Následující příkaz je příklad, který vytvoří index pomocí pouze část dat sloupce:
+  - Všechny oddíly DDLs
+  - Odkládací tabulka
+  - Přejmenovat tabulku
+- Pomocí příkazu *alter table < table_name > příkaz Přidat sloupec < column_name >* přidejte sloupce do začátku nebo do středu tabulky není podporováno. *Příkaz ALTER table < table_name > Přidat sloupec < column_name >* přidá sloupec na konci tabulky.
+- Indexy vytvořené pouze v části dat sloupce nejsou podporovány. Následující příkaz je příklad, který vytvoří index pomocí pouze části dat sloupce:
+
     ``` 
     CREATE INDEX partial_name ON customer (name(10));
     ```
 
-- Limit databáze k migraci v aktivitě migrací za jeden v DMS, jsou čtyři.
+- V DMS je limit databází pro migraci v jedné aktivitě migrace čtyři.

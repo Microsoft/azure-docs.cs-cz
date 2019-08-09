@@ -4,18 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: f289da08c63f655006801d89f82640c6e3c6b7be
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 5c90d7b5eefdf8357c0f6f8efb619bd69af12b06
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68622209"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843167"
 ---
 Pro aplikace, které spouštíte, je důležité udržovat svůj virtuální počítač zabezpečený. Zabezpečení virtuálních počítačů může zahrnovat jednu nebo víc služeb Azure a funkcí, které pokrývají zabezpečený přístup k virtuálním počítačům a zabezpečené úložiště vašich dat. Tento článek poskytuje informace, které vám umožní zajistit zabezpečení virtuálních počítačů a aplikací.
 
 ## <a name="antimalware"></a>Antimalware
 
-Moderní hrozby pro cloudová prostředí jsou dynamické a zvyšují tlak na zachování efektivní ochrany, aby splňoval požadavky na dodržování předpisů a zabezpečení. [Microsoft Antimalware pro Azure](../articles/security/fundamentals/antimalware.md) je bezplatná funkce ochrany v reálném čase, která pomáhá identifikovat a odebírat viry, spyware a další škodlivý software. Výstrahy je možné nakonfigurovat tak, aby vás upozornily na to, že se známý škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit na vašem VIRTUÁLNÍm počítači.
+Moderní hrozby pro cloudová prostředí jsou dynamické a zvyšují tlak na zachování efektivní ochrany, aby splňoval požadavky na dodržování předpisů a zabezpečení. [Microsoft Antimalware pro Azure](../articles/security/fundamentals/antimalware.md) je bezplatná funkce ochrany v reálném čase, která pomáhá identifikovat a odebírat viry, spyware a další škodlivý software. Výstrahy je možné nakonfigurovat tak, aby vás upozornily na to, že se známý škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit na vašem VIRTUÁLNÍm počítači. Nepodporuje se na virtuálních počítačích se systémem Linux nebo Windows Server 2008.
 
 ## <a name="azure-security-center"></a>Azure Security Center
 

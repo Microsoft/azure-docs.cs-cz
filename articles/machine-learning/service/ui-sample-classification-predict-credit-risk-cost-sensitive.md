@@ -1,31 +1,31 @@
 ---
-title: 'Klasifikace: Předpovědět úvěrové riziko (náklady na citlivé)'
+title: Mazal Předpověď úvěrového rizika (citlivé na náklady)
 titleSuffix: Azure Machine Learning service
-description: Tento článek ukazuje, jak vytvářet komplexní experimentu služby machine learning pomocí vizuální rozhraní. Se dozvíte, jak implementovat vlastní skripty Python a porovnávání několik modelů zvolit nejlepší možnost.
+description: V tomto článku se dozvíte, jak vytvořit složitý experiment strojového učení pomocí vizuálního rozhraní. Naučíte se, jak implementovat vlastní skripty v Pythonu a porovnat více modelů a vybrat nejlepší možnost.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: efed981b500ff14a66c2355a1d14bd762000622f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 942d6fa6db7ee2fc07fd11d3448ac7ec96c3bd43
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606166"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845974"
 ---
-# <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Ukázka 4 – klasifikace: Předpovědět úvěrové riziko (náklady na citlivé)
+# <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Ukázka 4 – klasifikace: Předpověď úvěrového rizika (citlivé na náklady)
 
-Tento článek ukazuje, jak vytvářet komplexní experimentu služby machine learning pomocí vizuální rozhraní. Se dozvíte, jak implementovat vlastní logiku pomocí skriptů Pythonu a porovnávání několik modelů zvolit nejlepší možnost.
+V tomto článku se dozvíte, jak vytvořit složitý experiment strojového učení pomocí vizuálního rozhraní. Naučíte se, jak implementovat vlastní logiku pomocí skriptů Pythonu a porovnat více modelů a vybrat nejlepší možnost.
 
-Tato ukázka trénovat klasifikátor předpovědět úvěrové riziko pomocí informací o aplikaci kredit jako je historie kreditu, věk a počet kreditní karty. Můžete však použít konceptů v tomto článku řešit vlastní strojového učení problémy.
+Tato ukázka navlakuje klasifikátor k předpovídání úvěrového rizika pomocí informací o kreditních aplikacích, jako je například historie kreditů, stáří a počet platebních karet. Koncepty v tomto článku ale můžete použít k tomu, abyste se mohli vypořádat s vlastními problémy machine learningu.
 
-Pokud právě začínáte s machine learningem, může trvat podívat [ukázka základní třídění](ui-sample-classification-predict-credit-risk-basic.md) první.
+Pokud se strojové učení teprve začíná, můžete si nejdřív prohlédnout [základní vzorek třídění](ui-sample-classification-predict-credit-risk-basic.md) .
 
-Tady je dokončené grafu pro tento experiment:
+Zde je dokončený graf pro tento experiment:
 
 [![Graf experimentu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
@@ -33,45 +33,45 @@ Tady je dokončené grafu pro tento experiment:
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Vyberte **otevřít** tlačítko pro 4 ukázkový experiment:
+4. Vyberte tlačítko **otevřít** pro experiment Sample 4:
 
-    ![Otevřete experiment](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
+    ![Otevřít experiment](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
 ## <a name="data"></a>Data
 
-Z úložiště UC Irvine používáme datovou sadu němčina platební karty. Tato datová sada obsahuje 1 000 vzorků s 20 funkcí a 1 popisek. Každá ukázka představuje osobu. 20 funkcí jsou zařazené do kategorií a číselné funkce. Najdete v článku [UCI webu](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) Další informace o datové sadě. Poslední sloupec je popisek, který označuje úvěrové riziko a má jenom dvě možné hodnoty: vysoké úvěrové riziko = 2 a nízké úvěrové riziko = 1.
+V úložišti UC Irvine používáme datovou sadu německé kreditní karty. Tato datová sada obsahuje 1 000 vzorků s 20 funkcemi a 1 popiskem. Každá ukázka představuje osobu. 20 funkcí zahrnuje číselné a kategorií funkce. Další informace o datové sadě najdete na [webu UCI](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) . Poslední sloupec je popisek, který označuje úvěrové riziko a má pouze dvě možné hodnoty: vysoké úvěrové riziko = 2 a nízké úvěrové riziko = 1.
 
-## <a name="experiment-summary"></a>Souhrn testu
+## <a name="experiment-summary"></a>Shrnutí experimentů
 
-V tento experiment nám porovnat dva různé přístupy k vytváření modelů pro vyřešení tohoto problému:
+V tomto experimentu porovnáme dva různé přístupy k vygenerování modelů pro vyřešení tohoto problému:
 
-- Školení s původní datové sady.
-- Školení s replikované datové sady.
+- Školení s původní datovou sadou.
+- Školení s replikovanou datovou sadou.
 
-S oba přístupy jsme vyhodnocení modelů s použitím testovací datové sady s replikací zajistit, že výsledky jsou v souladu s náklady na funkci. Testujeme dvěma Klasifikátory pomocí obou metod: **Two-Class Support Vector Machine** a **Two-Class posíleného rozhodovacího stromu**.
+Oba přístupy vyhodnotí modely pomocí testovací datové sady s replikací, aby bylo zajištěno, že výsledky budou zarovnány s funkcí cost. Testujeme dva třídění podle obou přístupů: **Podpora dvou tříd – vektorový počítač** a se **dvěma třídami se zvyšuje rozhodovací strom**.
 
-Misclassifying příklad s nízkým rizikem jako vysoké náklady na je 1 a 5 je misclassifying s vysokým rizikem příkladu jako nízké náklady. Používáme **Execute Python Script** modulu pro tento chybnou nákladů.
+Náklady na chybnou klasifikaci příkladu s nízkým rizikem jako vysoké jsou 1 a náklady na neklasifikaci vysoce rizikového příkladu, který je nízký, je 5. Pro tyto náklady na nesprávnou klasifikaci používáme modul vykonávání **skriptu Pythonu** .
 
-Tady je graf testu:
+Tady je graf experimentu:
 
 [![Graf experimentu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>Zpracování dat
 
-Začínáme s použitím **Editor metadat** modul a přidejte názvy sloupců, aby lépe vystihuje názvy nahraďte výchozí názvy sloupců získané z datové sady popisu na webu UCI. Nabízíme nové názvy sloupců jako hodnoty oddělené čárkami v **nový sloupec** pole název **Editor metadat**.
+Začneme pomocí modulu **Editor metadat** k přidání názvů sloupců, které nahradí výchozí názvy sloupců s více smysluplnými názvy získanými z popisu datové sady na webu UCI. Nové názvy sloupců poskytujeme jako hodnoty oddělené čárkami v poli **nový název sloupce** **editoru metadat**.
 
-V dalším kroku generovat školení a testovací sady, které slouží k vývoji prediktivního modelu rizika. Jsme rozdělit na původní datovou sadu učení a testovací sady stejné velikosti pomocí **rozdělení dat** modulu. Pokud chcete vytvořit sadu stejnou velikost, nastavíme **podíl řádků v první výstupní sadě dat** možnost 0,5.
+Dále vygenerujeme školicí a testovací sady, které se používají pro vývoj modelu předpovědi rizik. Původní datovou sadu rozdělíme na školicí a testovací sady se stejnou velikostí pomocí modulu **rozdělit data** . Chcete-li vytvořit sady se stejnou velikostí, nastavíme **zlomky řádků v první výstupní sadě dat** na 0,5.
 
-### <a name="generate-the-new-dataset"></a>Vytvořit novou datovou sadu
+### <a name="generate-the-new-dataset"></a>Generovat novou datovou sadu
 
-Protože je vysoké náklady podcenění rizika, nastavíme náklady chybnou takto:
+Vzhledem k tomu, že náklady na nebezpečí pododhadu jsou vysoké, nastavili jsme náklady na chybnou klasifikaci takto:
 
-- Pro vysoce riziková chybně klasifikované jako s nízkým rizikem případy: 5
-- Pro případy s nízkým rizikem chybně klasifikované jako vysoce rizikové: 1
+- U vysoce rizikových případů nesprávně klasifikovaných jako nízké riziko: 5
+- Pro případy s nízkým rizikem klasifikované jako vysoké riziko: 1
 
-Tak, aby odrážela tuto funkci náklady, se vygeneruje nová datová sada. V nové datové sady každý s vysokým rizikem příklad se replikuje pětkrát, ale nemění řadu příkladů s nízkým rizikem. Data rozdělíme do datových sad trénování a testování před replikací zakázat na stejném řádku v obou sadách.
+Aby odrážel tuto funkci nákladů, vygenerujeme novou datovou sadu. V nové datové sadě se každý příklad s vysokým rizikem replikuje pětkrát, ale počet příkladů s nízkým rizikem se nezmění. Data rozdělíme na školení a testování datových sad před replikací, aby se zabránilo tomu, aby byl stejný řádek v obou sadách.
 
-K replikaci dat s vysokou rizikovostí, máme tento kód Pythonu do **Execute Python Script** modul:
+Chcete-li replikovat data s vysokým rizikem, vložte tento kód Pythonu do modulu **spuštění skriptu Pythonu** :
 
 ```Python
 import pandas as pd
@@ -85,42 +85,42 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     return result,
 ```
 
-**Execute Python Script** modulu replikuje učení a testovací datové sady.
+Modul **spuštění skriptu Pythonu** replikuje jak školicí, tak testovací datové sady.
 
 ### <a name="feature-engineering"></a>Návrh funkcí
 
-**Two-Class Support Vector Machine** algoritmus vyžaduje normalizované data. Takže použijeme **normalizovat Data** modulu normalizovat všechny číselné funkce s rozsahy `tanh` transformace. A `tanh` transformace převede všechny číselné funkce na hodnoty v rozsahu 0 až 1 při zachování celkové distribuci hodnot.
+Algoritmus **vektorového stroje podpory dvou tříd** vyžaduje normalizovaná data. Proto používáme modul **normalizing data** k normalizaci rozsahů všech číselných funkcí pomocí `tanh` transformace. `tanh` Transformace převede všechny číselné funkce na hodnoty v rozsahu 0 až 1 a současně zachovává celkovou distribuci hodnot.
 
-**Two-Class Support Vector Machine** modul zpracuje řetězec funkcí, jejich konverze na funkce zařazené do kategorií a pak binární funkce s hodnotou 0 nebo 1. Proto nepotřebujeme normalizovat tyto funkce.
+Modul **vektorového stroje podpory dvou tříd** zpracovává řetězcové funkce, převádí je na funkce kategorií a pak na binární funkce s hodnotou 0 nebo 1. Proto není nutné tyto funkce normalizovat.
 
 ## <a name="models"></a>Modely
 
-Protože používáme dvěma Klasifikátory **Two-Class Support Vector Machine** (SVM) a **Two-Class Boosted Decision Tree**a také použít dvě datové sady, se vygeneruje celkem čtyři modely:
+Vzhledem k tomu, že použijeme dva klasifikátory, mezitřídní **vektorový počítač** (SVM) a **dvakrát rozhodovací strom se dvěma třídami**a použijeme také dvě datové sady, vygenerujeme celkem čtyři modely:
 
-- SVM trénink na původní data.
-- SVM trénink na replikovaná data.
-- Posílený rozhodovací strom trénink na původní data.
-- Posílený rozhodovací strom natrénovaný pomocí replikovaná data.
+- SVM se vyškolená s původními daty.
+- SVM je vyškolená pro replikovaná data.
+- Posílený rozhodovací strom byl vyučen s původními daty.
+- Posílený rozhodovací strom byl vyučen pomocí replikovaných dat.
 
-Můžeme použít standardní experimentální pracovního postupu pro vytváření, trénování a testování modely:
+Pro vytváření, analýzu a testování modelů používáme standardní experimentální pracovní postup:
 
-1. Inicializovat learning algoritmy, pomocí **Two-Class Support Vector Machine** a **Two-Class Boosted Decision Tree**.
-1. Použití **Train Model** použít algoritmus k datům a vytvoření skutečné modelu.
-1. Použití **Score Model** k vytvoření skóre, které se pomocí příkladů testu.
+1. Inicializujte algoritmy pro učení pomocí **dvou tříd – vektorový počítač podpory** a se **dvěma třídami se zvyšuje rozhodovací strom**.
+1. Použijte **model výuky** pro použití algoritmu pro data a vytvořte skutečný model.
+1. Použijte **model skóre** k vytvoření skóre pomocí příkladů testu.
 
-Následující diagram ukazuje část tento experiment, ve kterém jsou použity původní a replikované školicí sady pro trénování dva různé modely SVM. **Trénování modelu** je připojené k sadě školení a **Score Model** je připojené k testovací sadě.
+Následující diagram znázorňuje část tohoto experimentu, ve které se původní a replikované školicí sady používají ke školení dvou různých SVM modelů. **Model výuky** je připojen ke školicí sadě a **model skóre** je připojen k sadě testů.
 
-![Grafem experimentu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![Graf experimentu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
-Ve fázi hodnocení experimentu jsme výpočetní přesnost každého ze čtyř modelů. Pro tento experiment používáme **Evaluate Model** k porovnání příklady, které mají stejné chybnou nákladů.
+Ve fázi hodnocení experimentu vypočítáme přesnost každého ze čtyř modelů. Pro účely tohoto experimentu používáme **model Evaluate** k porovnání příkladů, které mají stejné náklady na klasifikaci.
 
-**Evaluate Model** modulu můžete vypočítat metriky výkonu pro až dva modely skóre. Takže použijeme jednu instanci **Evaluate Model** vyhodnocení dva modely SVM a jiná instance **Evaluate Model** vyhodnotit dva modely Boosted Decision Tree.
+Modul **vyhodnocení modelu** může vypočítat metriky výkonu, a to až pro dva modely skóre. K vyhodnocení dvou modelů SVM a jiné instance **modelu vyhodnocení** proto používáme jednu instanci **hodnocení** , aby bylo možné vyhodnotit dva modely zesíleného rozhodovacího stromu.
 
-Všimněte si, že replikované test datová sada použije jako vstup pro **Score Model**. Jinými slovy skóre konečné přesnost zahrnují cenu pro získání nesprávné popisky.
+Všimněte si, že se replikovaná testovací datová sada používá jako vstup pro **model skóre**. Jinými slovy, konečné skóre přesnosti zahrnuje náklady na získání špatných popisků.
 
 ## <a name="combine-multiple-results"></a>Kombinovat více výsledků
 
-**Evaluate Model** modul vytvoří tabulku s jeden řádek, který obsahuje různé metriky. Chcete-li vytvořit jednu sadu přesnost výsledků, nejprve používáme **přidat řádky** sloučit výsledky do jedné tabulky. Použijeme následující skript jazyka Python v **Execute Python Script** modul a přidejte název modelu a školení přístup pro každý řádek v tabulce výsledků:
+Modul **vyhodnocení modelu** vytvoří tabulku s jedním řádkem, který obsahuje různé metriky. Chcete-li vytvořit jednu sadu výsledků přesnosti, nejprve použijte příkaz **Přidat řádky** pro zkombinování výsledků do jedné tabulky. Potom pomocí následujícího skriptu Pythonu v modulu **spouštění skriptu Pythonu** přidáte název modelu a postup pro školení pro každý řádek v tabulce výsledků:
 
 ```Python
 import pandas as pd
@@ -142,15 +142,15 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="results"></a>Výsledky
 
-Chcete-li zobrazit výsledky testu, kliknete pravým tlačítkem na vizualizace výstupem posledního **výběr sloupců v datové sadě** modulu.
+Chcete-li zobrazit výsledky experimentu, můžete kliknout pravým tlačítkem myši na výstup vizualizace v modulu poslední **Výběr sloupců v datové sadě** .
 
-![Vizualizace výstupu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
+![Vizualizovat výstup](media/ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
-První sloupec uvádí strojového učení algoritmus používaný ke generování modelu.
-Druhý sloupec označuje typ trénovací sady.
-Třetí sloupec obsahuje hodnotu citlivé přesnost.
+První sloupec uvádí algoritmus strojového učení, který se používá k vygenerování modelu.
+Druhý sloupec indikuje typ sady školení.
+Třetí sloupec obsahuje hodnotu přesnosti citlivou na náklady.
 
-Tyto výsledky, uvidíte, že se model, který byl vytvořen pomocí poskytuje největší přesností **Two-Class Support Vector Machine** a trénované na replikované trénovací datové sady.
+Z těchto výsledků vidíte, že je nejlepší přesnost zajištěna modelem vytvořeným se dvěma třídami pro **vektorový stroj podpory** a vyškolenou na replikovanou datovou sadu školení.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -158,10 +158,10 @@ Tyto výsledky, uvidíte, že se model, který byl vytvořen pomocí poskytuje n
 
 ## <a name="next-steps"></a>Další postup
 
-Prozkoumejte službu k dispozici pro vizuální rozhraní ukázky:
+Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 
-- [Ukázka 1 - regrese: Předpovídat cenu automobilu představuje jeden](ui-sample-regression-predict-automobile-price-basic.md)
-- [Ukázka 2 - regrese: Porovnání algoritmy pro předpověď cen automobilů](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Ukázka 3 – klasifikace: Předpovědět úvěrové riziko](ui-sample-classification-predict-credit-risk-basic.md)
-- [Ukázka 5 – klasifikace: Předpověď výpovědi](ui-sample-classification-predict-churn.md)
-- [Ukázka 6 – klasifikace: Předpověď zpoždění letu](ui-sample-classification-predict-flight-delay.md)
+- [Ukázka 1 – regrese: Předpověď ceny automobilu](ui-sample-regression-predict-automobile-price-basic.md)
+- [Ukázka 2 – regrese: Porovnat algoritmy pro předpověď cen automobilu](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Ukázka 3 – klasifikace: Předpověď úvěrového rizika](ui-sample-classification-predict-credit-risk-basic.md)
+- [Ukázka 5 – klasifikace: Předpověď změn](ui-sample-classification-predict-churn.md)
+- [Ukázka 6 – klasifikace: Předpověď zpoždění letů](ui-sample-classification-predict-flight-delay.md)

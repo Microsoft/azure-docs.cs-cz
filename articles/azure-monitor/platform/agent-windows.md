@@ -1,6 +1,6 @@
 ---
-title: Připojení počítačů s Windows do Azure monitoru | Dokumentace Microsoftu
-description: Tento článek popisuje postup připojení počítačů s Windows hostovaných v jiných cloudech nebo místních do Azure monitoru pomocí agenta Log Analytics pro Windows.
+title: Připojit počítače s Windows k Azure Monitor | Microsoft Docs
+description: Tento článek popisuje, jak připojit počítače s Windows hostované v jiných cloudech nebo místně, aby se Azure Monitor s agentem Log Analytics pro Windows.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,134 +13,134 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 7f562959ac6022539ccf7137f352a2e9507758dc
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 8ca87f18a91af3937f8b4dd1148ecad8507e0dd5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67146355"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849065"
 ---
-# <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows do Azure monitoru
+# <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows k Azure Monitor
 
-Pokud chcete monitorování a správa virtuálních počítačů nebo fyzických počítačů v místním datovém centru nebo jiných cloudové prostředí pomocí Azure monitoru, je potřeba nasadit agenta Log Analytics (také označované jako Microsoft Monitoring Agent (MMA)) a konfigurací sestavy na jeden nebo více pracovních prostorů Log Analytics. Agent také podporuje role Hybrid Runbook Worker pro Azure Automation.  
+Aby bylo možné monitorovat a spravovat virtuální počítače nebo fyzické počítače v místním datovém centru nebo jiném cloudovém prostředí pomocí Azure Monitor, je nutné nasadit agenta Log Analytics (také označovaný jako Microsoft Monitoring Agent (MMA)) a nakonfigurovat ho na nahlaste se k jednomu nebo více Log Analytics pracovním prostorům. Agent také podporuje Hybrid Runbook Worker role pro Azure Automation.  
 
-Na monitorovaném počítači Windows je agent uveden jako služba Microsoft Monitoring Agent. Služba Microsoft Monitoring Agent shromažďuje události ze souborů protokolu a protokolu událostí Windows, údaje o výkonu a další telemetrie. I v případě, že agent není schopen komunikovat se službou Azure Monitor bude posílat sestavy, agent běží dál a zařadí do fronty shromážděná data na disk monitorovaného počítače. Při obnovení připojení služba Microsoft Monitoring Agent odešle shromážděná data do služby.
+Na monitorovaný počítač se systémem Windows je agent uveden jako služba Microsoft Monitoring Agent. Služba Microsoft Monitoring Agent shromažďuje události ze souborů protokolů a protokolu událostí systému Windows, údajů o výkonu a další telemetrie. I v případě, že Agent nemůže komunikovat s Azure Monitor IT zprávy, Agent pokračuje v běhu a zařadí shromážděná data do fronty na disk monitorovaného počítače. Po obnovení připojení služba Microsoft Monitoring Agent odesílá shromážděná data službě.
 
-Může být agent nainstalovaný pomocí jedné z následujících metod. Většina zařízení pomocí kombinace těchto metod nainstalovat různé sady počítačů, podle potřeby.  Podrobnosti o použití každé metody jsou k dispozici později v tomto článku.
+Agent může být nainstalován pomocí jedné z následujících metod. Většina instalací používá kombinaci těchto metod k instalaci různých sad počítačů podle potřeby.  Podrobnosti o použití jednotlivých metod jsou uvedené dále v článku.
 
-* Ruční instalace. Instalační program je v počítači pomocí Průvodce instalací, z příkazového řádku spustit ručně nebo nasadit pomocí stávajících nástroje pro distribuci softwaru.
-* Azure Automation Desired State Configuration (DSC). Používání DSC ve službě Azure Automation pomocí skriptu pro počítače Windows už nasazená ve vašem prostředí.  
-* Skript prostředí PowerShell.
-* Šablona Resource Manageru pro virtuální počítače s Windows v místním ve službě Azure Stack. 
+* Ruční instalace Instalační program se ručně spustí na počítači pomocí Průvodce instalací nástroje z příkazového řádku nebo nasazení pomocí existujícího nástroje pro distribuci softwaru.
+* Azure Automation konfiguraci požadovaného stavu (DSC). Použití DSC v Azure Automation se skriptem pro počítače se systémem Windows, které jsou již ve vašem prostředí nasazeny.  
+* PowerShellový skript.
+* Šablona Správce prostředků pro virtuální počítače, na kterých běží místní Windows, v Azure Stack. 
 
 >[!NOTE]
->Azure Security Center (ASC) závisí na Microsoft Monitoring Agent (také označované jako agenta Log Analytics Windows) a bude nainstalovat a nakonfigurovat, aby sestavy do pracovního prostoru Log Analytics jako součást nasazení. ASC zahrnuje možnost automatické zřizování, který umožňuje automatickou instalaci agenta Log Analytics Windows na všech virtuálních počítačů ve vašem předplatném a nakonfiguruje ho, aby zprávy do konkrétního pracovního prostoru. Další informace o této možnosti najdete v tématu [povolit automatické zřizování agenta Log Analytics](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-).
+>Azure Security Center (ASC) závisí na Microsoft Monitoring Agent (označuje se taky jako Log Analytics Agent pro Windows) a nainstaluje a nakonfiguruje ho tak, aby se v rámci nasazení nahlásil do pracovního prostoru Log Analytics. ASC obsahuje možnost automatického zřizování, která umožňuje automatickou instalaci Log Analyticsho agenta Windows na všech virtuálních počítačích ve vašem předplatném a nakonfiguruje ho, aby se nahlásil do konkrétního pracovního prostoru. Další informace o této možnosti najdete v tématu [Povolení automatického zřizování agenta Log Analytics](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-the-log-analytics-agent-).
 >
 
-Pokud je potřeba nakonfigurovat agenta na generování sestav k více než jednomu pracovnímu prostoru, toto nelze provést během počáteční instalace pouze později a aktualizuje nastavení v Ovládacích panelech nebo prostředí PowerShell popsaný v [přidání nebo odebrání pracovního prostoru](agent-manage.md#adding-or-removing-a-workspace).  
+Pokud potřebujete nakonfigurovat agenta tak, aby vydával zprávy do více než jednoho pracovního prostoru, nemůžete to provést při počáteční instalaci, a to až po aktualizaci nastavení z ovládacích panelů nebo PowerShellu, jak je popsáno v tématu [Přidání nebo odebrání pracovního prostoru](agent-manage.md#adding-or-removing-a-workspace).  
 
 Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Windows](log-analytics-agent.md#supported-windows-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-agent.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
-Před instalací agenta Log Analytics pro Windows, budete potřebovat ID pracovního prostoru a klíč vašeho pracovního prostoru Log Analytics.  Tyto informace jsou nezbytné při instalaci z každé metody instalace ke správné konfiguraci agenta a zajistěte, aby že mohla úspěšně komunikovat s Azure Monitor v komerční Azure a cloud pro státní správu USA. 
+Před instalací agenta Log Analytics pro Windows budete potřebovat ID a klíč pracovního prostoru pro pracovní prostor Log Analytics.  Tyto informace se vyžadují při instalaci z každé metody instalace, aby bylo možné správně nakonfigurovat agenta, a zajistit, aby mohl úspěšně komunikovat s Azure Monitor v cloudu pro státní správu Azure Commercial a USA. 
 
 1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
-2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který chcete v konfiguraci agenta pro hlášení.
+2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, do kterého chcete agenta nakonfigurovat.
 3. Vyberte **Upřesňující nastavení**.<br><br> ![Upřesňující nastavení Log Analytics](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. Vyberte **Připojené zdroje** a pak **Servery Windows**.   
-5. Zkopírujte a vložte do oblíbeného editoru, **ID pracovního prostoru** a **primární klíč**.    
+5. Zkopírujte a vložte do svého oblíbeného editoru, **ID pracovního prostoru** a **primární klíč**.    
    
-## <a name="configure-agent-to-use-tls-12"></a>Konfigurace agenta pro použití protokolu TLS 1.2
-Konfigurace používání [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) protokol pro komunikaci mezi agentem Windows a službě Log Analytics, můžete postupovat podle postupem uvedeným níže povolte předtím, než je agent nainstalovaný na virtuálním počítači nebo později.   
+## <a name="configure-agent-to-use-tls-12"></a>Nakonfigurovat agenta na používání protokolu TLS 1,2
+Chcete-li nakonfigurovat použití protokolu [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) pro komunikaci mezi agentem Windows a službou Log Analytics, můžete postupovat podle následujících kroků, abyste mohli povolit, aby byl agent nainstalován na virtuálním počítači nebo následně.   
 
 1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
-2. Vytvořit podklíč pod **protokoly** pro TLS 1.2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
-3. Vytvoření **klienta** podklíče pod podklíčem verze protokolu TLS 1.2 jste vytvořili dříve. Například **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**.
-4. Vytvořte následující hodnoty DWORD pod **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**:
+2. Vytvoření podklíče v části **protokoly** pro TLS 1,2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1,2**
+3. Vytvořte podklíč **klienta** pod podklíčem protokolu TLS 1,2 verze, který jste vytvořili dříve. Například **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Client**.
+4. V části **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ klient**vytvořte následující hodnoty DWORD:
 
-    * **Povolené** [hodnota = 1]
-    * **DisabledByDefault** [hodnota = 0]  
+    * **Povoleno** [Hodnota = 1]
+    * **DisabledByDefault** [Hodnota = 0]  
 
-Konfigurace rozhraní .NET Framework 4.6 nebo novější k podpoře zabezpečené šifrování, protože ve výchozím nastavení je zakázána. [Silného šifrování](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) používá bezpečnější síťové protokoly, jako je protokol TLS 1.2 a blokuje protokoly, které nejsou zabezpečeny. 
+Nakonfigurujte .NET Framework 4,6 nebo novější, aby podporovaly zabezpečenou kryptografii, protože ve výchozím nastavení je zakázaná. [Silná kryptografie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) používá bezpečnější síťové protokoly jako TLS 1,2 a blokuje protokoly, které nejsou zabezpečené. 
 
 1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319**.  
-2. Vytvořte hodnotu DWORD **SchUseStrongCrypto** v tomto podklíči s hodnotou **1**.  
+2. V tomto podklíči vytvořte hodnotu DWORD **do schusestrongcrypto** s hodnotou **1**.  
 3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319**.  
-4. Vytvořte hodnotu DWORD **SchUseStrongCrypto** v tomto podklíči s hodnotou **1**. 
-5. Restartujte systém pro nastavení projevilo. 
+4. V tomto podklíči vytvořte hodnotu DWORD **do schusestrongcrypto** s hodnotou **1**. 
+5. Restartujte systém, aby se nastavení projevilo. 
 
 ## <a name="install-the-agent-using-setup-wizard"></a>Instalace agenta pomocí Průvodce instalací
-Následující kroky instalace a konfigurace agenta Log Analytics v Azure a cloudu Azure Government s použitím Průvodce instalací pro agenta v počítači. Pokud chcete další informace o konfiguraci agenta tak, aby také sestavy ke skupině pro správu System Center Operations Manager najdete v tématu [nasazení agenta nástroje Operations Manager pomocí Průvodce instalací agenta](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
+Následující postup nainstaluje a nakonfiguruje agenta Log Analytics v Azure a Azure Government cloudu pomocí Průvodce instalací agenta v počítači. Pokud se chcete dozvědět, jak nakonfigurovat agenta tak, aby se také nahlásil do System Center Operations Manager skupiny pro správu, přečtěte si téma [nasazení agenta Operations Manager pomocí Průvodce instalací agenta](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
 
-1. V pracovním prostoru Log Analytics z **servery Windows** přejde dříve, vyberte příslušné stránky **stáhnout agenta Windows** verze ke stažení v závislosti na architektuře procesoru operační systém Windows.   
+1. V pracovním prostoru Log Analytics klikněte na stránce **Windows servery** , na kterou jste přešli na předchozí, vyberte příslušnou verzi **agenta pro Windows** ke stažení, která se má stáhnout v závislosti na architektuře procesoru operačního systému Windows.   
 2. Spusťte instalační program a nainstalujte agenta na svém počítači.
 2. Na **úvodní** stránce klikněte na **Další**.
 3. Na stránce **Licenční podmínky** si přečtěte licenční podmínky a pak klikněte na **Souhlasím**.
 4. Na stránce **Cílová složka** změňte nebo ponechte výchozí instalační složku a pak klikněte na **Další**.
 5. Na stránce **Možnosti instalace agenta** zvolte připojení agenta k Azure Log Analytics a pak klikněte na **Další**.   
 6. Na stránce **Azure Log Analytics** postupujte následovně:
-   1. Vložte **ID pracovního prostoru** a **Klíč pracovního prostoru (primární klíč)** , které jste si zkopírovali dříve.  Pokud se má počítač hlásit do pracovního prostoru služby Log Analytics v cloudu Azure Government, vyberte z rozevíracího seznamu **Cloud Azure** možnost **Azure US Government**.  
+   1. Vložte **ID pracovního prostoru** a **Klíč pracovního prostoru (primární klíč)** , které jste si zkopírovali dříve.  Pokud se má počítač hlásit do pracovního prostoru Log Analytics v cloudu Azure Government, vyberte z rozevíracího seznamu **Cloud Azure** možnost **Azure US Government**.  
    2. Pokud počítač potřebuje komunikovat se službou Log Analytics přes proxy server, klikněte na **Upřesnit** a zadejte adresu URL a číslo portu proxy serveru.  Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo pro ověření proxy serveru a pak klikněte na **Další**.  
 7. Jakmile dokončíte zadávání nezbytných nastavení konfigurace, klikněte na **Další**.<br><br> ![vložení ID pracovního prostoru a primárního klíče](media/agent-windows/log-analytics-mma-setup-laworkspace.png)<br><br>
 8. Na stránce **Připraveno k instalaci** zkontrolujte zvolené volby a pak klikněte na **Nainstalovat**.
 9. Na stránce **Konfigurace byla úspěšně dokončena** klikněte na **Dokončit**.
 
-Po dokončení se **Microsoft Monitoring Agent** zobrazí v **Ovládacích panelech**. Pokud chcete potvrdit, odesílá informace do Log Analytics, přečtěte si téma [ověřit připojení agenta k Log Analytics](#verify-agent-connectivity-to-log-analytics). 
+Po dokončení se **Microsoft Monitoring Agent** zobrazí v **Ovládacích panelech**. Pokud chcete potvrdit, že je hlášení Log Analytics, přečtěte si téma [ověření připojení agenta k Log Analytics](#verify-agent-connectivity-to-log-analytics). 
 
 ## <a name="install-the-agent-using-the-command-line"></a>Instalace agenta pomocí příkazového řádku
-Stažený soubor pro agenta je samostatná instalace balíčku.  Instalační program pro agenta a jeho podpůrné soubory jsou obsažené v balíčku a potřeba extrahovat, aby bylo možné správně nainstalovat pomocí příkazového řádku je znázorněno v následujícím příkladu.    
+Stažený soubor pro agenta je samostatný instalační balíček.  Instalační program pro agenta a podpůrné soubory jsou obsaženy v balíčku a je třeba jej extrahovat, aby bylo možné správně nainstalovat pomocí příkazového řádku zobrazeného v následujících příkladech.    
 
 >[!NOTE]
->Pokud chcete provést upgrade agenta, musíte používat službu Log Analytics, rozhraní API pro skriptování. Naleznete v tématu [Správa a údržba agenta Log Analytics pro Windows a Linux](agent-manage.md) pro další informace.
+>Pokud chcete upgradovat agenta, je nutné použít rozhraní API pro Log Analytics skriptování. Další informace najdete v tématu [Správa a údržba agenta Log Analytics pro systém Windows a Linux](agent-manage.md) .
 
-Následující tabulka obsahuje konkrétní parametry nepodporuje instalaci agenta, včetně toho, když se nasadí pomocí Automation DSC.
+V následující tabulce jsou vysvětlené konkrétní parametry podporované instalačním programem agenta, včetně nasazení pomocí Automatizace DSC.
 
-|Možnosti specifické pro agenta MMA                   |Poznámky         |
+|Možnosti specifické pro MMA                   |Poznámky         |
 |---------------------------------------|--------------|
-| NASTAVENÍ NOAPM = 1                               | Volitelný parametr. Nainstaluje agenta bez .NET Application Performance Monitoring pro aplikace.|   
-|ADD_OPINSIGHTS_WORKSPACE               | 1 = konfigurace agenta na generování sestav s pracovním prostorem                |
-|OPINSIGHTS_WORKSPACE_ID                | ID pracovního prostoru (guid) pro pracovní prostor pro přidání                    |
-|OPINSIGHTS_WORKSPACE_KEY               | Klíč pracovního prostoru pro počáteční ověření s pracovním prostorem |
-|OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE  | Zadejte cloudovém prostředí, kde se nachází pracovní prostor <br> 0 = komerčním cloudu azure (výchozí) <br> 1 = azure Government |
-|OPINSIGHTS_PROXY_URL               | Identifikátor URI pro použití proxy serveru |
-|OPINSIGHTS_PROXY_USERNAME               | Uživatelské jméno pro přístup k ověřený proxy server |
-|OPINSIGHTS_PROXY_PASSWORD               | Heslo pro přístup k ověřený proxy server |
+| NASTAVENÍ NOAPM = 1                               | Volitelný parametr. Nainstaluje agenta bez monitorování výkonu aplikace .NET.|   
+|ADD_OPINSIGHTS_WORKSPACE               | 1 = Konfigurace agenta pro hlášení do pracovního prostoru                |
+|OPINSIGHTS_WORKSPACE_ID                | ID pracovního prostoru (GUID) pro pracovní prostor, který se má přidat                    |
+|OPINSIGHTS_WORKSPACE_KEY               | Klíč pracovního prostoru, který se používá k prvotnímu ověření v pracovním prostoru |
+|OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE  | Zadejte cloudové prostředí, ve kterém se nachází pracovní prostor. <br> 0 = komerční cloud Azure (výchozí) <br> 1 = Azure Government |
+|OPINSIGHTS_PROXY_URL               | Identifikátor URI, který se má použít pro proxy |
+|OPINSIGHTS_PROXY_USERNAME               | Uživatelské jméno pro přístup k ověřenému proxy serveru |
+|OPINSIGHTS_PROXY_PASSWORD               | Heslo pro přístup k ověřenému proxy serveru |
 
-1. K extrakci instalačních souborů agenta z příkazového řádku se zvýšenými oprávněními spusťte `MMASetup-<platform>.exe /c` a zobrazí výzvu pro cestu k extrakci souborů.  Případně lze zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>`.  
-2. Bezobslužná instalace agenta a nakonfigurovat, aby hlásit do pracovního prostoru v komerčním cloudu Azure, ze složky extrahovány instalační soubory, zadejte: 
+1. K extrakci instalačních souborů agenta se spustí `MMASetup-<platform>.exe /c` příkazový řádek se zvýšenými oprávněními a zobrazí výzvu k zadání cesty k extrakci souborů.  Alternativně můžete zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>`.  
+2. Pokud chcete nainstalovat agenta v tichém režimu a nakonfigurovat ho tak, aby se nahlásil k pracovnímu prostoru ve službě Azure Commercial Cloud, ze složky, do které jste extrahovali instalační soubory, zadejte: 
    
      ```dos
     setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
 
-   nebo pokud chcete konfigurovat agenta na generování sestav do cloudu Azure pro státní správu USA, zadejte: 
+   nebo chcete-li nakonfigurovat agenta tak, aby hlásil do cloudu Azure USA pro státní správu, zadejte: 
 
      ```dos
     setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
     >[!NOTE]
-    >Řetězcové hodnoty pro parametry *OPINSIGHTS_WORKSPACE_ID* a *OPINSIGHTS_WORKSPACE_KEY* musí být zapouzdřen v uvozovkách dáte pokyn, aby instalační služby systému Windows na interprit jako možnosti pro balíček. 
+    >Řetězcové hodnoty parametrů *OPINSIGHTS_WORKSPACE_ID* a *OPINSIGHTS_WORKSPACE_KEY* je nutné zapouzdřit do dvojitých uvozovek, abyste Instalační služba systému Windowsi, aby interprit jako platné možnosti pro balíček. 
 
-## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Instalace agenta pomocí ve službě Azure Automation DSC
+## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Nainstalujte agenta pomocí DSC v Azure Automation
 
-Následující ukázkový skript můžete použít k instalaci agenta pomocí Azure Automation DSC.   Pokud nemáte účet Automation, přečtěte si téma [Začínáme s Azure Automation](/azure/automation/) vám pomohou pochopit požadavky a kroky pro vytvoření účtu Automation pomocí Automation DSC je požadována.  Pokud nejste obeznámeni s Automation DSC, přečtěte si [Začínáme se službou Automation DSC](../../automation/automation-dsc-getting-started.md).
+Pomocí následujícího příkladu skriptu můžete nainstalovat agenta pomocí Azure Automation DSC.   Pokud nemáte účet Automation, přečtěte si téma Začínáme [s Azure Automation](/azure/automation/) , abyste pochopili požadavky a kroky pro vytvoření účtu Automation, který je potřeba před použitím automatizace DSC.  Pokud nejste obeznámeni s Automatizace DSC, přečtěte si téma [Začínáme s Automatizace DSC](../../automation/automation-dsc-getting-started.md).
 
-Následující příklad nainstaluje agenta 64bitovým kompilátorem identifikované `URI` hodnotu. Můžete také použít 32bitovou verzi tak, že nahradíte hodnotu identifikátoru URI. Identifikátory URI pro obě verze jsou:
+Následující příklad nainstaluje agenta 64, který je identifikován `URI` hodnotou. Verzi 32 můžete použít i tak, že nahradíte hodnotu identifikátoru URI. Identifikátory URI pro obě verze jsou:
 
-- Agent Windows 64-bit – https://go.microsoft.com/fwlink/?LinkId=828603
-- Agent Windows 32-bit – https://go.microsoft.com/fwlink/?LinkId=828604
+- Windows 64 – bit Agent- https://go.microsoft.com/fwlink/?LinkId=828603
+- Windows 32 – bit Agent- https://go.microsoft.com/fwlink/?LinkId=828604
 
 
 >[!NOTE]
->Příklad tohoto postupu a skripty nepodporuje upgrade agenta už nasadili do počítače Windows.
+>Tento postup a příklad skriptu nepodporuje upgrade agenta, který už je nasazený na počítači s Windows.
 
-32bitové a 64bitové verze balíček agenta mají jiný produkt kódy a vydání nové verze také mít jedinečnou hodnotu.  Kód produktu je identifikátor GUID, který je základní identifikátor aplikace nebo produktu a je reprezentována Instalační služby systému Windows **ProductCode** vlastnost.  `ProductId` Hodnotu **MMAgent.ps1** skriptu musí odpovídat kód produktu z instalačního balíčku 32bitová nebo 64bitová verze agenta.
+32 bitové a 64 verze balíčku agenta mají různé kódy produktů a nové verze jsou také jedinečné.  Kód produktu je identifikátor GUID, který je hlavní identifikací aplikace nebo produktu a který je reprezentován vlastností Instalační služba systému Windows **ProductCode** .  Hodnota ve skriptu **MMAgent. ps1** musí odpovídat kódu produktu z balíčku pro instalaci agenta 32 nebo 64. `ProductId`
 
-Chcete-li načíst kód přímo z instalačního balíčku agenta, můžete použít Orca.exe z [Windows vývojáři sady SDK součásti pro Windows Installer](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , který je součástí sady Windows Software Development Kit nebo pomocí Prostředí PowerShell následující [ukázkový skript](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) napsané pomocí Microsoft Valuable Professional (MVP).  Kterýkoliv přístup, musíte nejprve k extrakci **MOMagent.msi** souboru z instalačního balíčku MMASetup.  To je ukázáno dříve v prvním kroku v části [instalace agenta pomocí příkazového řádku](#install-the-agent-using-the-command-line).  
+Chcete-li načíst kód produktu z instalačního balíčku agenta přímo, můžete použít program Orca. exe z [komponent Windows SDK pro instalační služba systému Windows vývojářů](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , kteří jsou součástí sady Windows Software Development Kit nebo pomocí prostředí PowerShell za [ Příklad skriptu](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) napsaného MVP (Microsoft hodnotný Professional).  Pro oba tyto metody musíte nejprve extrahovat soubor **MOMAgent. msi** z instalačního balíčku MMASetup.  Tento postup je uveden výše v prvním kroku v části [instalace agenta pomocí příkazového řádku](#install-the-agent-using-the-command-line).  
 
-1. Import DSC xPSDesiredStateConfiguration modulu z [ https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration ](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
-2.  Vytvoření proměnných assetů Azure Automation pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavte *OPSINSIGHTS_WS_ID* ID pracovního prostoru Log Analytics a nastavte *OPSINSIGHTS_WS_KEY* na primární klíč pracovního prostoru.
-3.  Zkopírujte skript a uložte ho jako MMAgent.ps1.
+1. Importujte modul xPSDesiredStateConfiguration DSC z [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) nástroje do Azure Automation.  
+2.  Vytvořte Azure Automation variabilní prostředky pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavte *OPSINSIGHTS_WS_ID* na své ID pracovního prostoru Log Analytics a nastavte *OPSINSIGHTS_WS_KEY* na primární klíč vašeho pracovního prostoru.
+3.  Zkopírujte skript a uložte ho jako MMAgent. ps1.
 
     ```powershell
     Configuration MMAgent
@@ -178,21 +178,21 @@ Chcete-li načíst kód přímo z instalačního balíčku agenta, můžete pou�
 
     ```
 
-4. Aktualizace `ProductId` hodnoty ve skriptu s kódem produktu extrahují z nejnovější verze agenta nainstalovat balíček pomocí metody doporučuje dříve. 
-5. [Importovat konfigurační skript MMAgent.ps1](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) do účtu Automation. 
-5. [Přiřaďte počítači Windows nebo uzlu](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) ke konfiguraci. Během 15 minut uzel ověří jeho konfigurace a agent se vloží do uzlu.
+4. Aktualizujte `ProductId` hodnotu ve skriptu pomocí kódu produktu extrahovaného z nejnovější verze instalačního balíčku agenta pomocí výše doporučených metod. 
+5. [Importujte konfigurační skript MMAgent. ps1](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) do svého účtu Automation. 
+5. Přiřaďte ke konfiguraci [počítač se systémem Windows nebo uzel](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) . Během 15 minut uzel zkontroluje svou konfiguraci a Agent se odešle do uzlu.
 
-## <a name="verify-agent-connectivity-to-log-analytics"></a>Ověřit připojení agenta k Log Analytics
+## <a name="verify-agent-connectivity-to-log-analytics"></a>Ověření připojení agenta k Log Analytics
 
-Po dokončení instalace agenta ověřením úspěšně připojen a generování sestav můžete provést dvěma způsoby.  
+Po dokončení instalace agenta ověřte, zda je úspěšné připojení a vytváření sestav lze provést dvěma způsoby.  
 
-V **Ovládacích panelech** na počítači vyhledejte položku **Microsoft Monitoring Agent**.  Vyberte ji a na kartě **Azure Log Analytics** by agent měl zobrazit tuto zprávu: **Microsoft Monitoring Agent se úspěšně připojilo ke službě Microsoft Operations Management Suite.**<br><br> ![Stav připojení MMA k Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+V **Ovládacích panelech** na počítači vyhledejte položku **Microsoft Monitoring Agent**.  Vyberte ji a na kartě **Azure Log Analytics** by agent měl zobrazit tuto zprávu: **Microsoft Monitoring Agent se úspěšně připojil ke službě Microsoft Operations Management Suite.**<br><br> ![Stav připojení MMA k Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
-Jednoduchý protokol dotazu můžete provést také na webu Azure Portal.  
+V Azure Portal můžete také provádět jednoduché dotazy protokolu.  
 
-1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Azure Monitor**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Azure Monitor**.  
-2. Vyberte **protokoly** v nabídce. 
-2. V podokně protokoly v aplikaci zadejte do pole dotazu:  
+1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Azure monitor**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Azure monitor**.  
+2. V nabídce vyberte **protokoly** . 
+2. V podokně protokoly zadejte do pole dotazu:  
 
     ```
     Heartbeat 
@@ -200,10 +200,10 @@ Jednoduchý protokol dotazu můžete provést také na webu Azure Portal.
     | where TimeGenerated > ago(30m)  
     ```
 
-Ve výsledcích hledání vrátí měli byste vidět záznamy prezenčního signálu pro počítač oznamující, že je připojený a vytváření sestav ve službě.   
+Ve výsledcích hledání byste měli vidět záznamy prezenčního signálu pro počítač, který označuje, že je připojený a hlásí službu.   
 
 ## <a name="next-steps"></a>Další postup
 
-- Kontrola [Správa a údržba agenta Log Analytics pro Windows a Linux](agent-manage.md) Další informace o tom, jak Správa agenta během životního cyklu jeho nasazení na vašich počítačích.  
+- Přečtěte si téma [Správa a údržba agenta Log Analytics pro systémy Windows a Linux](agent-manage.md) , kde se dozvíte, jak spravovat agenta během životního cyklu nasazení na vašich počítačích.  
 
-- Kontrola [řešení potíží s agentem Windows](agent-windows-troubleshoot.md) Pokud narazíte na problémy při instalaci a správě agenta.
+- Pokud narazíte na problémy při instalaci nebo správě agenta, přečtěte si téma [řešení potíží s agentem Windows](agent-windows-troubleshoot.md) .

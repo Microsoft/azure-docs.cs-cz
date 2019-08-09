@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 08/07/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 113e178d39ec776b63a0b38c55035f3493586ea2
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: f3aea108ed87debac56b18b5959d492f2bcb291d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233858"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853601"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 |     |
@@ -46,7 +46,7 @@ Pomocí přímé federace se uživatelé typu Host přihlásí k vašemu tenanto
 ## <a name="limitations"></a>Omezení
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Domény ověřené DNS v Azure AD
-Přímá federace je povolená jenom pro domény, které nejsou ve službě Azure AD ověřené ***DNS.*** Přímá federace je povolená pro nespravované (e-mailové nebo virové) klienty Azure AD, protože nejsou ověřené DNS.
+Doména, kterou chcete federovat s, nesmí být ověřená DNS ve službě Azure AD. Máte možnost nastavit přímou federaci s nespravovanými (e-mailem nebo "virovými") klienty Azure AD, protože nejsou ověřené DNS.
 ### <a name="authentication-url"></a>Adresa URL pro ověření
 Přímá federace je povolená jenom pro zásady, ve kterých se doména URL ověřování shoduje s cílovou doménou, nebo kde adresa URL ověřování je jedním z těchto povolených zprostředkovatelů identity (Tento seznam se může změnit):
 -   accounts.google.com
@@ -66,7 +66,7 @@ Pokud v nastavení zprostředkovatele identity zadáte adresu URL metadat, služ
 V současné době je podporováno maximálně 1 000 federačních vztahů. Toto omezení zahrnuje i [interní federace](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) i přímé federace.
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Můžu nastavit přímou federaci s doménou, pro kterou existuje nespravovaný tenant (e-mail ověřený)? 
-Ano. Pokud se doména neověřila a tenant neprošel převzetím [správce](../users-groups-roles/domains-admin-takeover.md), můžete nastavit přímou federaci. Nespravované nebo ověřené e-mailem jsou klienti vytvořeni v případě, že uživatel uplatní pozvánku B2B nebo provede samoobslužnou registraci pro službu Azure AD pomocí domény, která aktuálně neexistuje. S těmito doménami můžete nastavit přímou federaci. Pokud se pokusíte nastavit přímou federaci s doménou ověřenou DNS, ať už v Azure Portal nebo prostřednictvím PowerShellu, zobrazí se chyba.
+Ano. Pokud se doména neověřila a tenant neprošel převzetím [správce](../users-groups-roles/domains-admin-takeover.md), můžete nastavit přímou federaci s touto doménou. Nespravované nebo ověřené e-mailem jsou klienti vytvořeni v případě, že uživatel uplatní pozvánku B2B nebo provede samoobslužnou registraci pro službu Azure AD pomocí domény, která aktuálně neexistuje. S těmito doménami můžete nastavit přímou federaci. Pokud se pokusíte nastavit přímou federaci s doménou ověřenou DNS, ať už v Azure Portal nebo prostřednictvím PowerShellu, zobrazí se chyba.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Pokud je povolená přímá federace a e-mailová ověřování jednorázového hesla, která metoda má přednost?
 Pokud je v partnerské organizaci vytvořená přímá federace, má přednost před ověřováním jednorázovým heslem e-mailu pro nové uživatele typu host z této organizace. Pokud uživatel typu Host znovu nastavil pozvánku pomocí jednorázového ověřování hesla před nastavením přímé federace, bude používat jednorázové ověřování pomocí hesla. 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Jsou problémy s přihlašováním přímo v rámci federačních adres způsobeny částečně synchronizovanými tenantů?
@@ -90,7 +90,7 @@ V následujících tabulkách jsou uvedeny požadavky na konkrétní atributy a 
 
 Požadované atributy pro odpověď SAML 2,0 z IdP:
 
-|Atribut  |Hodnota  |
+|Atribut  |Value  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Cílová skupina     |`urn:federation:MicrosoftOnline`         |
@@ -116,7 +116,7 @@ V následujících tabulkách jsou uvedeny požadavky na konkrétní atributy a 
 
 Požadované atributy zprávy WS-dodané z IdP:
  
-|Atribut  |Hodnota  |
+|Atribut  |Value  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Cílová skupina     |`urn:federation:MicrosoftOnline`         |
@@ -131,7 +131,7 @@ Požadované deklarace pro token WS-dodaný vydaný IdP:
 
 ## <a name="step-2-configure-direct-federation-in-azure-ad"></a>Krok 2: Konfigurace přímé federace ve službě Azure AD 
 Dále nakonfigurujete federaci s poskytovatelem identity nakonfigurovaným v kroku 1 v Azure AD. Můžete použít buď portál Azure AD, nebo PowerShell. Může trvat 5-10 minut, než se uplatní zásady přímých federačních zásad. Během této doby se nepokusit uplatnit pozvánku na přímou federační doménu. Jsou vyžadovány následující atributy:
-- Identifikátor URI vystavitele partnerského IdPu
+- Identifikátor URI vystavitele nebo IdP partnera
 - Koncový bod pasivního ověřování partnera IdP (podporuje se jenom https)
 - Certifikát
 
@@ -149,9 +149,9 @@ Dále nakonfigurujete federaci s poskytovatelem identity nakonfigurovaným v kro
 
 5. Zadejte název domény partnerské organizace, který bude cílovým názvem domény pro přímou federaci.
 6. Můžete nahrát soubor metadat, který vyplní podrobnosti metadat. Pokud se rozhodnete zadat metadata ručně, zadejte následující informace:
-   - Název domény partnerského IdPu
-   - ID entity IdP partnera
-   - Pasivní koncový bod žadatele IdP partnera
+   - Název domény nebo IdP partnera
+   - ID entity nebo IdP partnera
+   - Pasivní koncový bod žadatele nebo IdP partnera
    - Certifikát
    > [!NOTE]
    > Adresa URL metadat je volitelná, ale důrazně ji doporučujeme. Pokud zadáte adresu URL metadat, může Azure AD automaticky obnovit podpisový certifikát, jakmile vyprší jeho platnost. Pokud se certifikát z jakéhokoli důvodu před časem vypršení platnosti nebo pokud neposkytnete adresa URL metadat, Azure AD ho nebude moct obnovit. V takovém případě budete muset podpisový certifikát aktualizovat ručně.

@@ -1,6 +1,6 @@
 ---
-title: Automatizace úloh správy ve službě Azure Virtual Machines pomocí rozšíření agenta SQL Server IaaS | Dokumentace Microsoftu
-description: Tento článek popisuje, jak spravovat rozšíření agenta SQL serveru, který automatizuje určité úlohy správy systému SQL Server. Patří mezi ně automatizovaného zálohování, automatické opravy a integrace Azure Key Vault.
+title: Automatizace úloh správy na virtuálních počítačích Azure pomocí rozšíření agenta SQL Server IaaS | Microsoft Docs
+description: Tento článek popisuje, jak spravovat rozšíření agenta SQL Server IaaS, které automatizuje konkrétní úlohy správy SQL Server. Mezi ně patří automatizované zálohování, automatizované opravy a Integrace Azure Key Vault.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -16,45 +16,48 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41023103dc30d16f599e847f9d324bc7bb4be11c
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: d95760745dc3554bc63271cedc63dcf3bf017c5c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798059"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855224"
 ---
-# <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-iaas-agent-extension"></a>Automatizace úloh správy ve službě Azure Virtual Machines pomocí rozšíření agenta SQL Server IaaS
+# <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Automatizace úloh správy na virtuálních počítačích Azure pomocí rozšíření agenta SQL Server IaaS
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-server-agent-extension.md)
 > * [Classic](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
 
-Rozšíření agenta SQL Server IaaS (SqlIaasExtension) běží na virtuálních počítačích Azure za účelem automatizace úloh správy. Tento článek obsahuje přehled a služeb podporuje rozšíření, stejně jako pokyny pro instalaci, stavu a odebrání.
+Rozšíření agenta SQL Server IaaS (SqlIaasExtension) běží na virtuálních počítačích Azure za účelem automatizace úloh správy. Tento článek poskytuje přehled služeb, které podporuje rozšíření. Tento článek také poskytuje pokyny k instalaci, stavu a odebrání rozšíření.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Chcete-li zobrazit klasickou verzi tohoto článku, najdete v článku [rozšíření agenta SQL serveru pro SQL Server virtuální počítače Classic](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md).
+Pokud chcete zobrazit klasickou verzi tohoto článku, přečtěte si téma [SQL Server rozšíření agenta IaaS pro SQL Server virtuální počítače (Classic)](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md).
 
-Existují tři režimy správy SQL pro rozšíření SQL IaaS: **Úplné**, **Lightweight**, a **NoAgent**. 
+Existují tři režimy správy pro rozšíření SQL Server IaaS: 
 
-- **Úplné** režimu zajišťuje všechny funkce, ale vyžaduje restartování systému SQL Server a SA oprávnění. Toto je možnost, která je ve výchozím nastavení nainstalované a by měla sloužit ke správě virtuálního počítače s SQL serverem s jednou instancí. 
+- **Úplný** režim zajišťuje všechny funkce, ale vyžaduje restartování oprávnění SQL Server a správce systému. Tato možnost je nainstalována ve výchozím nastavení. Použijte ji ke správě SQL Server virtuálního počítače s jedinou instancí. 
 
-- **Zjednodušené** nevyžaduje restartování systému SQL Server, ale podporuje jenom změnit typ licence a edici systému SQL Server. Tato možnost musí být použito pro virtuální počítače s SQL serverem s více instancemi nebo zapojený do instance clusteru převzetí služeb při selhání (FCI). 
+- **Odlehčený** nevyžaduje restartování SQL Server, ale podporuje pouze změnu typu licence a edice SQL Server. Tuto možnost použijte pro SQL Server virtuálních počítačů s více instancemi nebo pro účast v instanci clusteru s podporou převzetí služeb při selhání (FCI). 
 
-- **NoAgent** je vyhrazený pro SQL Server 2008 a SQL Server 2008 R2 nainstalovaná v systému Windows Server 2008. Informace o použití `NoAgent` režim pro vaši image Windows serveru 2008, viz [registrace Windows Server 2008](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008r2-on-windows-server-2008-vms). 
+- **Agent** je vyhrazený pro SQL Server 2008 a SQL Server 2008 R2 nainstalované v systému Windows Server 2008. Informace o použití tohoto režimu pro bitovou kopii systému Windows Server 2008 naleznete v tématu [registrace systému Windows server 2008](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms). 
 
 ## <a name="supported-services"></a>Podporované služby
 Rozšíření agenta SQL Server IaaS podporuje následující úlohy správy:
 
 | Funkce správy | Popis |
 | --- | --- |
-| **Automatizované zálohování SQL** |Automatizuje plánování zálohování pro všechny databáze pro buď výchozí instanci nebo [správně nainstalována](virtual-machines-windows-sql-server-iaas-faq.md#administration) pojmenovanou instanci systému SQL Server na virtuálním počítači. Další informace najdete v tématu [automatizované zálohování pro SQL Server na Azure Virtual Machines (Resource Manager)](virtual-machines-windows-sql-automated-backup.md). |
-| **Automatizované opravy SQL** |Nakonfiguruje časové období údržby, během které důležité aktualizace Windows k vašemu virtuálnímu počítači může proběhnout, takže se můžete vyhnout aktualizace během špiček pro vaši úlohu. Další informace najdete v tématu [automatizované opravy pro SQL Server na Azure Virtual Machines (Resource Manager)](virtual-machines-windows-sql-automated-patching.md). |
-| **Integrace se službou Azure Key Vault** |Umožňuje automaticky nainstalovat a nakonfigurovat služby Azure Key Vault na virtuální počítač s SQL serverem. Další informace najdete v tématu [konfigurace integrace Azure Key pro SQL Server na virtuálních počítačích Azure (Resource Manager) trezor](virtual-machines-windows-ps-sql-keyvault.md). |
+| **SQL Server automatizované zálohování** |Automatizuje plánování záloh pro všechny databáze, a to buď pro výchozí instanci, nebo pro [správnou nainstalovanou](virtual-machines-windows-sql-server-iaas-faq.md#administration) pojmenovanou instanci SQL Server na virtuálním počítači. Další informace najdete v tématu [automatizované zálohování pro SQL Server ve virtuálních počítačích Azure (Správce prostředků)](virtual-machines-windows-sql-automated-backup.md). |
+| **SQL Server automatizované opravy** |Nakonfiguruje časový interval pro správu a údržbu, během kterého může probíhat důležitá aktualizace Windows pro váš virtuální počítač, takže se můžete vyhnout aktualizacím během špičky pro vaše zatížení. Další informace najdete v tématu [automatizované opravy pro SQL Server ve virtuálních počítačích Azure (Správce prostředků)](virtual-machines-windows-sql-automated-patching.md). |
+| **Integrace Azure Key Vault** |Umožňuje automaticky nainstalovat a nakonfigurovat Azure Key Vault na VIRTUÁLNÍm počítači s SQL Server. Další informace najdete v tématu [Konfigurace integrace Azure Key Vault pro SQL Server v Azure Virtual Machines (Správce prostředků)](virtual-machines-windows-ps-sql-keyvault.md). |
 
-Po dokončení instalace a spuštění, rozšíření agenta SQL Server IaaS zpřístupní tyto funkce pro správu na serveru SQL Server panelu virtuálního počítače na webu Azure Portal a pomocí Azure Powershellu pro marketplace Image SQL serveru a Azure Prostředí PowerShell pro ruční instalace rozšíření. 
+Po instalaci a spuštění rozšíření agenta SQL Server IaaS se zpřístupní funkce správy:
+
+* Na panelu SQL Server virtuálního počítače v Azure Portal a Azure PowerShell pro SQL Server imagí na Azure Marketplace.
+* Prostřednictvím Azure PowerShell pro ruční instalaci rozšíření. 
 
 ## <a name="prerequisites"></a>Požadavky
-Požadavky pro použití rozšíření agenta SQL Server IaaS na vašem virtuálním počítači:
+Tady jsou požadavky na použití rozšíření agenta SQL Server IaaS na vašem VIRTUÁLNÍm počítači:
 
 **Operační systém**:
 
@@ -64,7 +67,7 @@ Požadavky pro použití rozšíření agenta SQL Server IaaS na vašem virtuál
 * Windows Server 2016
 * Windows Server. 2019 
 
-**Verze systému SQL Server**:
+**Verze SQL Server**:
 
 * SQL Server 2008 
 * SQL Server 2008 R2
@@ -75,14 +78,14 @@ Požadavky pro použití rozšíření agenta SQL Server IaaS na vašem virtuál
 
 **Azure PowerShell**:
 
-* [Stáhnout a nakonfigurovat nejnovější příkazy Azure Powershellu](/powershell/azure/overview)
+* [Stažení a konfigurace nejnovějších příkazů Azure PowerShell](/powershell/azure/overview)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 
-## <a name="change-management-modes"></a>Změnit režim správy
+## <a name="change-management-modes"></a>Režimy správy změn
 
-Aktuální režim agenta SQL IaaS můžete zobrazit pomocí prostředí PowerShell: 
+Aktuální režim SQL Server agenta IaaS můžete zobrazit pomocí prostředí PowerShell: 
 
   ```powershell-interactive
      //Get the SqlVirtualMachine
@@ -90,100 +93,99 @@ Aktuální režim agenta SQL IaaS můžete zobrazit pomocí prostředí PowerShe
      $sqlvm.Properties.sqlManagement
   ```
 
-Pro virtuální počítače SQL serveru, které mají *NoAgent* nebo *zjednodušené* nainstalované rozšíření IaaS, můžete upgradovat režim, který chcete *úplné* pomocí webu Azure portal. Není možné přejít na nižší verzi – v takovém případě budete muset úplně odinstalovat rozšíření SQL IaaS a znovu nainstalovat. 
+V případě SQL Server virtuálních počítačů, které mají nainstalovaného agenta nebo rozšíření IaaS, můžete pomocí Azure Portal upgradovat režim na úplný. Není možné downgradovat. Abyste to mohli udělat, musíte rozšíření SQL Server IaaS odinstalovat a znovu nainstalovat. 
 
-Do režimu upgradu agenta na *úplné*, postupujte takto: 
+Postup upgradu režimu agenta na úplný: 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte do vaší [virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) prostředků. 
-1. Vyberte virtuální počítač systému SQL Server a pak vyberte **přehled**. 
-1. Pro virtuální počítače s SQL se *NoAgent* nebo *zjednodušené* režimy IaaS, vyberte zprávu pro **licenci edice a typ aktualizace jsou dostupné s rozšířením SQL IaaS pouze**.
+1. Přejít na prostředek [virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) . 
+1. Vyberte svůj virtuální počítač SQL Server a vyberte **Přehled**. 
+1. V případě SQL Server virtuálních počítačů pomocí agenta nebo režimu zjednodušeného IaaS vyberte možnost **jediný typ licence a aktualizace edice jsou k dispozici ve zprávě rozšíření SQL IaaS** .
 
-    ![Spusťte Změna režimu z portálu](media/virtual-machines-windows-sql-server-agent-extension/change-sql-iaas-mode-portal.png)
+   ![Výběry pro změnu režimu z portálu](media/virtual-machines-windows-sql-server-agent-extension/change-sql-iaas-mode-portal.png)
 
-1. Souhlas s **restartovat službu systému SQL Server** výběrem zaškrtávacího políčka a pak vyberte **potvrdit** upgrade IaaS režim na hodnotu "full". 
+1. Zaškrtněte políčko **Souhlasím s restartováním služby SQL Server na virtuálním počítači** a pak vyberte **Potvrdit** , abyste upgradovali režim IaaS na úplný. 
 
-    ![Povolit úplnou správu IaaS rozšíření](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
+    ![Zaškrtávací políčko pro vyjádření souhlasu s restartováním služby SQL Server na virtuálním počítači](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
 
 ##  <a name="installation"></a>Instalace
-Je nainstalované rozšíření SQL IaaS, při registraci virtuálního počítače s SQL serverem s [poskytovatele prostředků SQL VM](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider). Ale v případě potřeby agenta SQL IaaS můžete také nainstalovat ručně pomocí *úplné* nebo *zjednodušené* režim instalace. 
+Rozšíření SQL Server IaaS se nainstaluje při registraci SQL Server virtuálního počítače pomocí [poskytovatele prostředků virtuálního počítače SQL](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-the-sql-vm-resource-provider). V případě potřeby můžete ručně nainstalovat agenta SQL Server IaaS pomocí úplného nebo zjednodušeného režimu. 
 
-*Úplné* rozšíření agenta SQL Server IaaS se automaticky nainstaluje při zřizování Image Galerie virtuálních počítačů SQL serveru pomocí webu Azure portal. 
+Rozšíření agenta SQL Server IaaS v plném režimu se automaticky nainstaluje při zřizování jednoho z SQL Server imagí Azure Marketplace virtuálních počítačů pomocí Azure Portal. 
 
-### <a name="full-mode-installation"></a>Režim zobrazení na celé instalace
-*Úplné* rozšíření SQL IaaS nabízí úplné možnosti správy pro jednu instanci na virtuálním počítači SQL serveru. Dojde-li výchozí instanci, pak bude rozšíření fungovat s výchozí instance a nebude podporovat, správu ostatních instancí. Pokud není žádná výchozí instance, ale pouze jednu pojmenovanou instanci, bude ho spravovat pojmenovanou instanci. Pokud není žádná výchozí instance a existuje víc instancí s názvem, se nezdaří rozšíření k instalaci. 
+### <a name="install-in-full-mode"></a>Nainstalovat v plném režimu
+Úplný režim pro rozšíření SQL Server IaaS nabízí plnou spravovatelnost pro jednu instanci na SQL Serverm virtuálním počítači. Pokud existuje výchozí instance, bude rozšíření fungovat s výchozí instancí a nebude podporovat správu jiných instancí. Pokud neexistuje žádná výchozí instance, ale pouze jedna pojmenovaná instance, bude spravovat pojmenovanou instanci. Pokud neexistuje žádná výchozí instance a existuje více pojmenovaných instancí, rozšíření se nedaří nainstalovat. 
 
-Instalace *úplné* režimu SQL IaaS se restartovat službu systému SQL Server. Chcete-li zabránit restartování služby SQL Server, nainstalujte *zjednodušené* režimu se místo toho omezené možnosti správy. 
-
-Instalace agenta SQL IaaS s *úplné* režimu pomocí prostředí PowerShell:
+Pomocí PowerShellu nainstalujte agenta SQL Server IaaS s úplným režimem:
 
   ```powershell-interactive
-     // Get the existing  Compute VM
+     // Get the existing compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register SQL VM with 'Full' SQL IaaS agent
+     // Register the SQL Server VM with 'Full' SQL Server IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='Full'}  
   
   ```
 
-| Parametr | Přípustné hodnoty                        |
+| Parametr | Přijatelné hodnoty                        |
 | :------------------| :-------------------------------|
-| **sqlServerLicenseType** | `'AHUB'`, nebo `'PAYG'`     |
+| **sqlServerLicenseType** | `AHUB` Nebo `PAYG`     |
 | &nbsp;             | &nbsp;                          |
 
 
-> [!WARNING]
-> - Pokud rozšíření ještě není nainstalovaná, instalace **úplné** rozšíření restartuje službu systému SQL Server. Použití **zjednodušené** režimu, aby se zabránilo restartovat službu systému SQL Server. 
-> - Aktualizuje se rozšíření SQL IaaS nerestartuje služby SQL Server. 
+> [!NOTE]
+> Pokud rozšíření ještě není nainstalované, instalace úplného rozšíření restartuje službu SQL Server. Abyste se vyhnuli restartování služby SQL Server, nainstalujte zjednodušený režim s možností omezené správy.
+> 
+> Aktualizace rozšíření SQL Server IaaS nerestartuje službu SQL Server. 
 
-#### <a name="install-on-a-vm-with-a-single-named-sql-server-instance"></a>Instalace na virtuální počítač pomocí jednoho pojmenované instance SQL serveru
-Rozšíření SQL IaaS budou fungovat s pojmenovanou instanci na SQL serveru, pokud výchozí instance je odinstalovat a přeinstalovat rozšíření IaaS.
+### <a name="install-on-a-vm-with-a-single-named-sql-server-instance"></a>Instalace na virtuální počítač s jednou s názvem SQL Server instance
+Rozšíření SQL Server IaaS bude pracovat s pojmenovanou instancí v SQL Server, pokud je výchozí instance odinstalována a přeinstalováno rozšíření IaaS.
 
-Pokud chcete použít pojmenovanou instanci systému SQL Server, postupujte takto:
-   1. Nasazení virtuálního počítače s SQL serverem z marketplace. 
-   1. Odinstalovat rozšíření IaaS v rámci [webu Azure portal](https://portal.azure.com).
-   1. Odinstalujte systém SQL Server zcela v rámci virtuálního počítače SQL serveru.
-   1. Nainstalujte SQL Server pomocí pojmenované instance na virtuálním počítači SQL serveru. 
-   1. Instalace rozšíření IaaS z webu Azure portal.  
+Použití pojmenované instance SQL Server:
+   1. Nasazení virtuálního počítače s SQL Server z Azure Marketplace. 
+   1. Odinstalujte rozšíření IaaS z [Azure Portal](https://portal.azure.com).
+   1. Odinstalace SQL Server kompletně v rámci SQL Server virtuálního počítače.
+   1. Nainstalujte SQL Server s pojmenovanou instancí v rámci SQL Server virtuálního počítače. 
+   1. Nainstalujte rozšíření IaaS z Azure Portal.  
 
 
-### <a name="install-in-lightweight-mode"></a>Nainstalujte ve zjednodušeném režimu
-Jednoduchý režim nebude restartujte službu systému SQL Server, ale nabízí omezené funkce. 
+### <a name="install-in-lightweight-mode"></a>Instalace v odlehčeném režimu
+Odlehčený režim neprovede restart služby SQL Server, ale nabízí omezené funkce. 
 
-Instalace agenta SQL IaaS s *zjednodušené* režimu pomocí prostředí PowerShell:
+Pomocí PowerShellu nainstalujte agenta SQL Server IaaS s odlehčeným režimem:
 
 
   ```powershell-interactive
      // Get the existing  Compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register SQL VM with 'Lightweight' SQL IaaS agent
+     // Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  
   
   ```
 
-| Parametr | Přípustné hodnoty                        |
+| Parametr | Přijatelné hodnoty                        |
 | :------------------| :-------------------------------|
-| **sqlServerLicenseType** | `'AHUB'`, nebo `'PAYG'`     |
+| **sqlServerLicenseType** | `AHUB` Nebo `PAYG`     |
 | &nbsp;             | &nbsp;                          |
 
 
-## <a name="get-status-of-sql-iaas-extension"></a>Načíst stav rozšíření SQL IaaS
-Chcete-li zobrazit stav agenta na webu Azure Portal je jeden způsob, jak ověřit, že rozšíření je nainstalované. Vyberte **všechna nastavení** v okně virtuálního počítače a potom kliknout na **rozšíření**. Měli byste vidět **SqlIaasExtension** uvedená rozšíření.
+## <a name="get-the-status-of-the-sql-server-iaas-extension"></a>Získat stav rozšíření SQL Server IaaS
+Jedním ze způsobů, jak ověřit, že je rozšíření nainstalované, je zobrazit stav agenta v Azure Portal. V okně virtuálního počítače vyberte **všechna nastavení** a pak vyberte **rozšíření**. Měla by se zobrazit uvedená rozšíření **SqlIaasExtension** .
 
-![Rozšíření agenta SQL Server IaaS na webu Azure portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
+![Stav rozšíření agenta SQL Server IaaS v Azure Portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 
-Můžete také použít **Get-AzVMSqlServerExtension** rutiny Azure Powershellu.
+Můžete také použít rutinu **Get-AzVMSqlServerExtension** Azure PowerShell:
 
    ```powershell-interactive
    Get-AzVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
    ```
 
-Předchozí příkaz potvrdí, agent je nainstalovaný a poskytuje obecné informace stavu. Získáte také konkrétní stavové informace o automatické zálohování a opravy pomocí následujících příkazů.
+Předchozí příkaz potvrdí, že je agent nainstalovaný a poskytuje obecné informace o stavu. Konkrétní informace o stavu automatizovaného zálohování a oprav můžete získat pomocí následujících příkazů:
 
    ```powershell-interactive
     $sqlext = Get-AzVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
@@ -192,18 +194,18 @@ Předchozí příkaz potvrdí, agent je nainstalovaný a poskytuje obecné infor
    ```
 
 ## <a name="removal"></a>Odebrání
-Na webu Azure Portal, můžete po kliknutí na tři tečky na odinstalovat rozšíření **rozšíření** okno vlastností virtuálního počítače. Potom klikněte na **Odstranit**.
+V Azure Portal můžete rozšíření odinstalovat tak, že vyberete tři tečky v okně **rozšíření** ve vlastnostech virtuálního počítače. Vyberte **Odstranit**.
 
-![Odinstalace rozšíření agenta SQL Server IaaS na webu Azure portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
+![Odinstalace rozšíření agenta SQL Server IaaS v Azure Portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
 
-Můžete také použít **odebrat AzVMSqlServerExtension** rutiny Powershellu.
+Můžete také použít rutinu prostředí PowerShell **Remove-AzVMSqlServerExtension** :
 
    ```powershell-interactive
     Remove-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
    ```
 
 ## <a name="next-steps"></a>Další postup
-Začněte používat jednu ze služeb podporovaný rozšířením. Další informace najdete v článcích odkazuje [podporované služby](#supported-services) části tohoto článku.
+Začněte používat jednu ze služeb, které podporuje rozšíření. Další informace najdete v článcích, na které se odkazuje v tomto článku v části věnované [podporovaným službám](#supported-services) .
 
-Další informace o spuštění SQL serveru na virtuálních počítačích Azure najdete v tématu [systému SQL Server na Azure Virtual Machines – přehled](virtual-machines-windows-sql-server-iaas-overview.md).
+Další informace o spouštění SQL Server v Azure Virtual Machines najdete v tématu [co je SQL Server na Virtual Machines Azure](virtual-machines-windows-sql-server-iaas-overview.md).
 

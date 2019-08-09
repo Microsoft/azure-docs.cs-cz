@@ -1,6 +1,6 @@
 ---
-title: Článek o omezeních známé problémy a migrace s online migrace do služby Azure Database for MySQL | Dokumentace Microsoftu
-description: Přečtěte si o známých problémech a migrace omezení online migrace do služby Azure Database for MySQL.
+title: Článek o známých problémech nebo omezeních migrace pro online migrace do Azure Database for MySQL | Microsoft Docs
+description: Přečtěte si o známých problémech nebo omezeních migrace pro online migrace do Azure Database for MySQL.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,38 +10,39 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 04/23/2019
-ms.openlocfilehash: 2c8a3f36e04fbedfdd127939d55fab376e3e6b30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/06/2019
+ms.openlocfilehash: 0b1632ab943026578eb753014575ab53d151c33f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "64691953"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855016"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Známé problémy a migrace omezení online migrace do Azure DB for PostgreSQL
+# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Známé problémy/omezení migrace pro online migrace do Azure DB pro PostgreSQL
 
-Známé problémy a omezení související s online migraci z PostgreSQL do služby Azure Database for PostgreSQL jsou popsány v následujících částech. 
+Známé problémy a omezení související s online migracemi z PostgreSQL do Azure Database for PostgreSQL jsou popsány v následujících částech.
 
-## <a name="online-migration-configuration"></a>Online migrace konfigurace
-- Zdrojový PostgreSQL Server musí běžet verze 9.5.11, 9.6.7 nebo 10.3 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](../postgresql/concepts-supported-versions.md).
-- Jsou podporovány pouze stejné verze migrace. Například migrace PostgreSQL 9.5.11 ke službě Azure Database for PostgreSQL 9.6.7 nepodporuje.
+## <a name="online-migration-configuration"></a>Konfigurace online migrace
+
+- Na zdrojovém serveru PostgreSQL musí běžet verze 9.5.11, 10,3 9.6.7 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](../postgresql/concepts-supported-versions.md).
+- Podporovány jsou pouze stejné migrace verzí. Například migrace PostgreSQL 9.5.11 na Azure Database for PostgreSQL 9.6.7 není podporována.
 
     > [!NOTE]
-    > Pro PostgreSQL verze 10 aktuálně DMS podporuje jenom migrace z verze 10.3 ke službě Azure Database for PostgreSQL. Plánujeme velmi brzy podporují novější verze PostgreSQL.
+    > Pro PostgreSQL verze 10 v současné době DMS podporuje pouze migraci verze 10,3 na Azure Database for PostgreSQL. Plánujeme, aby se už brzy podporovaly novější verze PostgreSQL.
 
-- Povolení logické replikace v **source PostgreSQL postgresql.conf** souborů, nastavit následující parametry:
-    - **wal_level** = logické
-    - **max_replication_slots** = [maximální počet databází pro migraci]; Pokud chcete migrovat databáze s 4, nastavte hodnotu na 4
-    - **max_wal_senders** = [počet databází, které jsou spuštěny souběžně]; Doporučená hodnota je 10
-- Přidat IP adresu agenta DMS do pg_hba.conf PostgresSQL zdroje
-    1. Poznamenejte DMS IP adresu, po dokončení zřizování instance DMS.
-    2. Přidáte IP adresu do souboru pg_hba.conf, jak je znázorněno:
+- Pokud chcete povolit logickou replikaci ve zdrojovém souboru **PostgreSQL PostgreSQL. conf** , nastavte následující parametry:
+  - **wal_level** = logická
+  - **max_replication_slots** = [maximální počet databází pro migraci]; Pokud chcete migrovat 4 databáze, nastavte hodnotu na 4.
+  - **max_wal_senders** = [počet databází, které jsou spuštěny souběžně]; Doporučená hodnota je 10.
+- Přidejte IP adresu agenta DMS do zdrojového PostgreSQL pg_hba. conf.
+  1. Po dokončení zřizování instance DMS si poznamenejte IP adresu DMS.
+  2. Do souboru pg_hba. conf přidejte IP adresu, jak je znázorněno na následujícím obrázku:
 
-        hostování všech 172.16.136.18/10 md5 hostitele replikace postgres 172.16.136.18/10 md5
+        hostovat všechny 172.16.136.18y hostitele MD5 pro replikaci Postgres 172.16.136.18/10
 
-- Uživatel musí mít oprávnění superuživatele na serveru, který hostuje zdrojové databáze
-- Kromě nutnosti VÝČTU ve schématu zdrojové databáze, musí odpovídat zdrojovými a cílovými schématy databáze.
-- Cizí klíče nesmí mít schéma v cílovou službu Azure Database for PostgreSQL. Vyřaďte cizí klíče pomocí následujícího dotazu:
+- Uživatel musí mít oprávnění superuživatele na serveru, který je hostitelem zdrojové databáze.
+- Kromě toho, že se má výčet ve schématu zdrojové databáze vyhodnotit, se musí shodovat schémata zdrojové a cílové databáze.
+- Schéma v cílovém Azure Database for PostgreSQL nesmí obsahovat cizí klíče. K vyřazení cizích klíčů použijte následující dotaz:
 
     ```
                                 SELECT Queries.tablename
@@ -72,43 +73,45 @@ Známé problémy a omezení související s online migraci z PostgreSQL do slu�
 
     Spusťte skript pro odstranění cizího klíče (druhý sloupec) ve výsledku dotazu odstraňte cizí klíč.
 
-- Schéma v cílovou službu Azure Database for PostgreSQL nesmí obsahovat žádné aktivační události. Pomocí následujícího postupu zakázat aktivační události v cílové databázi:
+- Schéma v cílovém Azure Database for PostgreSQL nesmí obsahovat žádné triggery. K zakázání triggerů v cílové databázi použijte následující postup:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
      ```
 
-## <a name="datatype-limitations"></a>Datový typ omezení
+## <a name="datatype-limitations"></a>Omezení datového typu
 
-- **Omezení**: Pokud je ve zdrojové databázi PostgreSQL datový typ VÝČTU, migrace selže během průběžné synchronizace.
+- **Omezení**: Pokud ve zdrojové databázi PostgreSQL existuje datový typ ENUM, migrace během nepřetržité synchronizace selže.
 
-    **Alternativní řešení**: Změňte datový typ VÝČTU znak různé ve službě Azure Database for PostgreSQL.
+    **Alternativní řešení**: Upravte datový typ výčtu na znak, který je v Azure Database for PostgreSQL proměnlivý.
 
-- **Omezení**: Pokud neexistuje žádný primární klíč v tabulkách, průběžné synchronizace se nezdaří.
+- **Omezení**: Pokud v tabulkách není žádný primární klíč, průběžná synchronizace se nezdaří.
 
-    **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku pro migraci, aby bylo možné pokračovat. Po dokončení migrace dat, můžete odebrat primární klíč.
+    **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku, aby bylo možné pokračovat v migraci. Po dokončení migrace dat můžete primární klíč odebrat.
 
 ## <a name="lob-limitations"></a>Omezení LOB
-Sloupce velkého objektu (LOB) jsou sloupce, které můžou růst velké. Pro PostgreSQL typů dat LOB příklady XML, JSON, OBRÁZKŮ, textu, atd.
 
-- **Omezení**: Pokud obchodní datové typy se používají jako primární klíče, migrace selže.
+Sloupce Large Object (LOB) jsou sloupce, které mohou dosáhnout většího množství. Pro PostgreSQL příklady datových typů LOB zahrnuje XML, JSON, IMAGE, TEXT atd.
 
-    **Alternativní řešení**: Nahraďte další datové typy nebo sloupce, které nejsou LOB primární klíč.
+- **Omezení**: Pokud se jako primární klíče používají datové typy LOB, migrace se nezdaří.
 
-- **Omezení**: Pokud délka sloupec velkého objektu (LOB) je větší než 32 KB, mohou být v cílovém zkráceny data. Délka sloupce LOB pomocí tohoto dotazu, můžete zkontrolovat:
+    **Alternativní řešení**: Nahraďte primární klíč jinými typy nebo sloupci, které nejsou typu LOB.
+
+- **Omezení**: Pokud je délka sloupce Large Object (LOB) větší než 32 KB, mohou být data v cíli zkrácena. Můžete kontrolovat délku sloupce LOB pomocí tohoto dotazu:
 
     ```
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **Alternativní řešení**: Pokud budete mít obchodní objekt, který je větší než 32 KB, obraťte se na technický tým na adrese [požádejte migracemi databází Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
+    **Alternativní řešení**: Pokud máte objekt LOB, který je větší než 32 KB, kontaktujte technický tým na [vyžádání migrace databáze Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
-- **Omezení**: Pokud existuje obchodní sloupců v tabulce a není nastaven primární klíč pro tabulku, nemusí být data migrována pro tuto tabulku.
+- **Omezení**: Pokud tabulka obsahuje sloupce LOB a pro tabulku není nastaven primární klíč, data nemusí být pro tuto tabulku migrována.
 
-    **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku pro migraci, aby bylo možné pokračovat. Po dokončení migrace dat, můžete odebrat primární klíč.
+    **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku, aby bylo možné pokračovat v migraci. Po dokončení migrace dat můžete primární klíč odebrat.
 
-## <a name="postgresql10-workaround"></a>PostgreSQL10 workaround
-PostgreSQL 10.x změní různé názvy složek pg_xlog a proto způsobí migrace neběží podle očekávání. Pokud migrujete z PostgreSQL 10.x k Azure Database for PostgreSQL 10.3, spusťte následující skript ve zdrojové databázi PostgreSQL vytvoříte funkci obálku kolem pg_xlog funkce.
+## <a name="postgresql10-workaround"></a>PostgreSQL10 řešení
+
+PostgreSQL 10. x provede různé změny v názvech složek pg_xlog, takže by to způsobilo, že migrace neběží podle očekávání. Pokud migrujete z PostgreSQL 10. x na Azure Database for PostgreSQL 10,3, spusťte následující skript ve zdrojové databázi PostgreSQL a vytvořte funkci wrapper kolem pg_xlog funkcí.
 
 ```
 BEGIN;
@@ -148,13 +151,38 @@ ALTER USER PG_User SET search_path = fnRenames, pg_catalog, "$user", public;
 COMMIT;
 ```
 
+## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>Omezení při migraci online z AWS VP PostgreSQL
+
+Při pokusu o provedení online migrace z AWS VP PostgreSQL pro Azure Database for PostgreSQL se může vyskytnout následující chyby.
+
+- **Chyba:** Výchozí hodnota sloupce {column} v tabulce {table} v databázi {database} se na zdrojovém a cílovém serveru liší. Hodnota na zdrojovém serveru: {value on source}. Hodnota na cílovém serveru: {value on target}.
+
+  **Omezení**: K této chybě dochází, pokud je výchozí hodnota schématu sloupce odlišná mezi zdrojovou a cílovou databází.
+  **Alternativní řešení**: Zajistěte, aby schéma na cíli odpovídalo schématu na zdroji. Podrobnosti o migraci schématu najdete v [online dokumentaci k migraci pro Azure PostgreSQL](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
+
+- **Chyba:** Cílová databáze {database} obsahuje {number of tables} tabulek, ale zdrojová databáze {database} obsahuje {number of tables} tabulek. Počet tabulek ve zdrojové i cílové databázi musí být stejný.
+
+  **Omezení**: K této chybě dochází, pokud se počet tabulek liší od zdrojové a cílové databáze.
+  **Alternativní řešení**: Zajistěte, aby schéma na cíli odpovídalo schématu na zdroji. Podrobnosti o migraci schématu najdete v [online dokumentaci k migraci pro Azure PostgreSQL](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
+
+- **Chyba:** Zdrojová databáze {Database} je prázdná.
+
+  **Omezení**: K této chybě dojde, pokud je zdrojová databáze prázdná. Nejčastější příčinou je výběr nesprávné zdrojové databáze.
+  **Alternativní řešení**: Zkontrolujte zdrojovou databázi, kterou jste vybrali pro migraci, a pak to zkuste znovu.
+
+- **Chyba:** Cílová databáze {Database} je prázdná. Proveďte migraci schématu.
+
+  **Omezení**: K této chybě dojde, pokud není v cílové databázi žádné schéma. Ujistěte se, že schéma na cíli odpovídá schématu na zdroji.
+  **Alternativní řešení**: Zajistěte, aby schéma na cíli odpovídalo schématu na zdroji. Podrobnosti o migraci schématu najdete v [online dokumentaci k migraci pro Azure PostgreSQL](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
+
 ## <a name="other-limitations"></a>Další omezení
-- Název databáze nesmí obsahovat středníkem (;).
-- Řetězec hesla, která má otevírací a uzavírací složené závorky {} není podporován. Toto omezení platí pro obě připojení k PostgreSQL zdroj a cíl – Azure Database for PostgreSQL.
-- Zachycené tabulka musí obsahovat primární klíč. Pokud tabulka nemá primární klíč, bude výsledek operace odstranění a aktualizace záznamu nepředvídatelné.
-- Aktualizuje se segment primárního klíče se ignoruje. V takových případech použití takové aktualizace budou označeny v cíli jako aktualizace, která nejsou aktualizovány žádné řádky a bude mít za následek záznam zapisují do tabulky výjimky.
-- Migrace z více tabulek se stejným názvem, ale jiné případu (například Tabulka1, Tabulka1 a Tabulka1) může způsobit nepředvídatelné chování a není proto podporována.
-- Změnit zpracování [vytvořit | PŘÍKAZ ALTER | PŘETAŽENÍ] tabulky DDLs jsou podporováno, pokud se ukládají v těle bloku vnitřní funkci či proceduru nebo v jiných vnořených objektů. Například následující změnu nebude možné zaznamenat:
+
+- Název databáze nesmí obsahovat středník (;).
+- Řetězec hesla, který má levou a pravou složenou závorku {}, se nepodporuje. Toto omezení platí pro připojení ke zdrojovému PostgreSQL a cílovým Azure Database for PostgreSQL.
+- Zachycená tabulka musí mít primární klíč. Pokud tabulka nemá primární klíč, výsledek operace odstranění a aktualizace záznamů nebude možné předpovědět.
+- Aktualizace segmentu primárního klíče se ignoruje. V takových případech bude použití takové aktualizace identifikována cílem jako aktualizace, která neaktualizovala žádné řádky, a výsledkem bude záznam zapsaný do tabulky výjimky.
+- Migrace více tabulek se stejným názvem, ale jiným případem (například Tabulka1, Tabulka1 a Tabulka1), může způsobit nepředvídatelné chování a není proto podporována.
+- Změnit zpracování [vytvořit | ZMĚNIT | DROP] tabulka DDLs je podporována, pokud nejsou držena v bloku těla funkce/procedury nebo v jiných vnořených konstrukcích. Například následující změna nebude zachycena:
 
     ```
     CREATE OR REPLACE FUNCTION pg.create_distributors1() RETURNS void
@@ -167,8 +195,10 @@ COMMIT;
     $$;
     ```
 
-- Zpracování změny (Průběžná synchronizace) TRUNCATE operací není podporováno. Migrace dělené tabulky není podporována. Když se zjistí dělenou tabulku, dojde k následující věci:
-    - Databáze budou hlásit seznam nadřazené a podřízené tabulky.
-    - V tabulce se vytvoří v cílové jako o běžnou tabulku s stejné vlastnosti jako vybrané tabulky.
-    - Pokud nadřazená tabulka v databázi správy zdrojových má stejnou hodnotu primárního klíče jako jeho podřízených tabulek, vygeneruje se chyba "duplicitní klíč".
-- Limit databáze k migraci v aktivitě migrací za jeden v DMS, jsou čtyři.
+- Změny zpracování (průběžná synchronizace) ZKRÁCENých operací se nepodporují. Migrace dělených tabulek není podporována. Při zjištění dělené tabulky dojde k následujícím akcím:
+
+  - Databáze oznámí seznam nadřazených a podřízených tabulek.
+  - Tabulka se vytvoří v cíli jako běžná tabulka se stejnými vlastnostmi, jako mají vybrané tabulky.
+  - Pokud má nadřazená tabulka ve zdrojové databázi stejnou hodnotu primárního klíče jako jeho podřízené tabulky, bude vygenerována chyba "duplicitní klíč".
+
+- V DMS je limit databází pro migraci v jedné aktivitě migrace čtyři.

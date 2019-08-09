@@ -1,29 +1,29 @@
 ---
-title: 'Klasifikace: Predikce zpoždění letů'
+title: Mazal Predikce zpoždění letů
 titleSuffix: Azure Machine Learning service
-description: V tomto článku se dozvíte, jak vytvořit model k předpovědi zpoždění letů pomocí přetahování myší vizuální rozhraní a vlastní kód R strojového učení.
+description: V tomto článku se dozvíte, jak vytvořit model strojového učení pro předpověď zpoždění letu pomocí vizuálního rozhraní přetažení a vlastního kódu jazyka R.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: 773e55fe4b5ca5acf27ba1765e5a16075f625187
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f2ef5fd17d6c6a91fa5f3c5d62700b68c5fbca24
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607634"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855968"
 ---
-# <a name="sample-6---classification-predict-flight-delays-using-r"></a>Ukázka 6 – klasifikace: Předpověď zpoždění letů pomocí jazyka R
+# <a name="sample-6---classification-predict-flight-delays-using-r"></a>Ukázka 6 – klasifikace: Předpověď zpoždění letu pomocí R
 
-Tento experiment používá historické cestě a data o počasí předpovědět, pokud naplánované civilní let odloží o bude zpozdit o víc než 15 minut.
+Tento experiment používá historická data o letu a počasí k předpovídání, jestli se naplánovaný osobní let zpozdí o více než 15 minut.
 
-Tento problém můžete použijí jako problém klasifikace, předpověď dvě třídy – zpoždění, nebo na čas. Chcete-li sestavení klasifikátoru, tento model pomocí velkého počtu příklady z historických zapisovači letových údajů.
+K tomuto problému může dojít jako problém klasifikace, předpověď dvou tříd – opožděné nebo v čase. Pokud chcete vytvořit klasifikátor, tento model využívá velký počet příkladů z historických letových dat.
 
-Tady je graf konečný experiment:
+Tady je výsledný graf experimentu:
 
 [![Graf experimentu](media/ui-sample-classification-predict-flight-delay/experiment-graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
@@ -31,98 +31,98 @@ Tady je graf konečný experiment:
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Vyberte **otevřít** tlačítko pro 6 ukázkový experiment:
+4. Vyberte tlačítko **otevřít** pro experiment s ukázkou 6:
 
-    ![Otevřete experiment](media/ui-sample-classification-predict-flight-delay/open-sample6.png)
+    ![Otevřít experiment](media/ui-sample-classification-predict-flight-delay/open-sample6.png)
 
 ## <a name="get-the-data"></a>Získání dat
 
-Tento experiment používá **zpoždění letů** datové sady. To je součástí TranStats shromažďování dat z USA Ministerstva dopravy. Datová sada obsahuje informace zpoždění letu od října 2013. Před nahráním dat pro vizuální rozhraní, jejich předběžné zpracování následujícím způsobem:
+Tento experiment používá datovou sadu **dat o zpoždění letů** . Je součástí shromažďování dat TranStats z USA. Oddělení dopravy. Datová sada obsahuje informace o zpoždění letu od dubna do října 2013. Před odesláním dat do vizuálního rozhraní byl předem zpracován následujícím způsobem:
 
-* Vyfiltrován, aby obsahoval 70 za nejvytíženější letiště v kontinentální části USA.
-* Pro zrušit lety, relabeled při zpoždění ve více než 15 minut.
-* Odfiltrovat odkloněných lety.
-* Vybrané sloupce 14.
+* Filtrováno tak, aby zahrnovalo letiště 70 nejvytíženější do kontinentální USA.
+* U zrušených letů přepište za zpožděné o více než 15 minut.
+* Vyfiltrováno odcházející lety.
+* Vybráno 14 sloupců.
 
-K doplnění zapisovači letových údajů **datovou sadu počasí** se používá. Data o počasí obsahuje po hodinách na základě pozemního počasí pozorování z NOAA a představuje připomínek letiště meteorologická stanice, pokrývající stejné časové období. dubna – říjen 2013. Než nahrajete do Azure ML vizuální rozhraní, jejich předběžné zpracování následujícím způsobem:
+Pro doplnění letových dat se použije **datová sada počasí** . Data o počasí obsahují hodinové počasí založené na půdě z NOAA a představují pozorování z povětrnostních stanic na letišti, které pokrývají stejné časové období v dubnu-říjnu 2013. Před odesláním do vizuálního rozhraní Azure ML byl předem zpracován následujícím způsobem:
 
-* ID meteorologická stanice se mapují na odpovídající letiště ID.
-* Stanice počasí nejsou spojena s 70 za nejvytíženější letiště byly odebrány.
-* Sloupec data byla rozdělit na samostatné sloupce: Rok, měsíc a den.
-* Vybrané sloupce 26.
+* ID povětrnostních stanic byly namapovány na odpovídající ID letišť.
+* Některé z povětrnostních stanic, které nejsou spojené s 70 nejvytíženější letiště, se odebraly.
+* Sloupec data byl rozdělen do samostatných sloupců: Rok, měsíc a den.
+* Vybráno 26 sloupců.
 
-## <a name="pre-process-the-data"></a>Předběžně zpracovat data
+## <a name="pre-process-the-data"></a>Předběžné zpracování dat
 
-Datové sady obvykle vyžaduje některé předběžného zpracování předtím, než mohou být analyzovány.
+Datová sada obvykle vyžaduje před analýzou některé předběžné zpracování.
 
-![proces dat](media/ui-sample-classification-predict-flight-delay/data-process.png)
+![zpracování dat](media/ui-sample-classification-predict-flight-delay/data-process.png)
 
-### <a name="flight-data"></a>Zapisovači letových údajů
+### <a name="flight-data"></a>Letová data
 
-Sloupce **dopravce**, **OriginAirportID**, a **DestAirportID** se uloží jako celá čísla. Nicméně jsou zařazené do kategorií atributy, použijte **upravit Metadata** modul pro převod do kategorií.
+Sloupce **přepravce**, **OriginAirportID**a **DestAirportID** se ukládají jako celá čísla. Jsou však kategorií atributy, a to pomocí modulu **Upravit metadata** a převeďte je na kategorií.
 
 ![edit-metadata](media/ui-sample-classification-predict-flight-delay/edit-metadata.png)
 
-Potom použijte **výběr sloupců** v modulu datovou sadu chcete vyloučit z datové sady sloupců, které jsou leakers možný cíl: **DepDelay**, **DepDel15**, **ArrDelay**, **zrušena**, **rok**. 
+Pak použijte modul **Vybrat sloupce** v datové sadě, který se vyloučí ze sloupců datové sady, které jsou možné nevrácením cíle: **DepDelay**, **DepDel15**, **ArrDelay**, **Canceled**, **year**. 
 
-Čas plánované odeslání připojit letu záznamy s hodinovou záznamy o počasí, lze použijte jako jeden z klíčů spojení. Provedete spojení musí CSRDepTime sloupci zaokrouhlená dolů na nejbližší hodiny, které se provádí v **spustit skript jazyka R** modulu. 
+Pokud se chcete připojit ke letovým záznamům pomocí hodinových záznamů počasí, použijte naplánovaný čas odchodu jako jeden z klíčů JOIN. Aby bylo možné spojení provést, musí být sloupec CSRDepTime zaokrouhlený dolů na nejbližší hodinu, kterou provádí v modulu **spuštění skriptu jazyka R** . 
 
 ### <a name="weather-data"></a>Data o počasí
 
-Sloupce, které obsahují velká část chybějící hodnoty budou vyloučeny pomocí **sloupce projektu** modulu. Tyto sloupce zahrňte všechny sloupce s hodnotou řetězce: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**, a **StationPressure**.
+Sloupce, které mají velký podíl chybějících hodnot, jsou vyloučeny pomocí modulu **projektové sloupce** . Tyto sloupce obsahují všechny sloupce s hodnotou řetězce: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**a **StationPressure**.
 
-**Vyčištění chybějících dat** modulu se následně použije na zbývající sloupce se mají odebrat řádky s chybějící data.
+Na zbývajících sloupcích se pak použije modul **Vyčištění chybějících dat** , aby se odstranily řádky s chybějícími daty.
 
-Doby zjišťování počasí se zaokrouhluje na nejbližší celé hodiny. Naplánovaný let časy a časy počasí pozorování jsou zaokrouhleny opačným směrem a ujistěte se, že používá model pouze počasí před časem letu. 
+Doby pozorování počasí se zaokrouhlují na nejbližší celou hodinu. Plánované lety a doby pozorování počasí jsou v opačném směru zaokrouhleny, aby model používaly pouze počasí před letovým časem. 
 
-Protože data o počasí v místním čase hlásí, jsou rozdíly v časových pásmech představoval tak, že sloupce časového pásma z naplánované odeslání čas a čas pozorování počasí. Tato operace se provádějí pomocí **spustit skript jazyka R** modulu.
+Vzhledem k tomu, že údaje o počasí jsou hlášeny v místním čase, účtují se rozdíly v časovém pásmu pro odečtením sloupců časového pásma od naplánovaného času odchodu a doby pozorování počasí. Tyto operace se provádějí pomocí modulu **skriptu pro spuštění R** .
 
-### <a name="joining-datasets"></a>Připojení k datové sady
+### <a name="joining-datasets"></a>Spojování datových sad
 
-Flight záznamy, které jsou spojeny s data o počasí v původu letu (**OriginAirportID**) pomocí **připojení dat** modulu.
+Letové záznamy jsou spojeny s daty o počasí v počátku letu (**OriginAirportID**) pomocí modulu **Join data** Module.
 
- ![připojení k cestě a weather podle zdroje](media/ui-sample-classification-predict-flight-delay/join-origin.png)
+ ![spojit lety a počasí podle původu](media/ui-sample-classification-predict-flight-delay/join-origin.png)
 
 
-Letu záznamy jsou spojeny s daty o počasí pomocí cílové letu (**DestAirportID**).
+Letové záznamy jsou spojené s daty o počasí, a to s využitím cíle letu (**DestAirportID**).
 
- ![Připojte se k cestě a weather podle cílové](media/ui-sample-classification-predict-flight-delay/join-destination.png)
+ ![Připojení letu a počasí podle cíle](media/ui-sample-classification-predict-flight-delay/join-destination.png)
 
-### <a name="preparing-training-and-test-samples"></a>Příprava trénování a ukázek testu
+### <a name="preparing-training-and-test-samples"></a>Příprava ukázek školení a testování
 
-**Rozdělení dat** modulu rozdělí data do dubna si září záznamy pro trénování a října záznamy pro test.
+Modul **rozdělit data** rozdělí data do dne do září záznamů pro školení a pro test na základě záznamů.
 
- ![Rozdělit, školení a údaje o testu](media/ui-sample-classification-predict-flight-delay/split.png)
+ ![Rozdělení dat školení a testování](media/ui-sample-classification-predict-flight-delay/split.png)
 
-Rok, měsíc a časové pásmo sloupce se odeberou z trénovací datové sady pomocí modulu výběr sloupců.
+Sloupce rok, měsíc a časové pásmo jsou z datové sady školení odebrány pomocí modulu vybrat sloupce.
 
-## <a name="define-features"></a>Definice funkcí
+## <a name="define-features"></a>Definovat funkce
 
-V machine learning jsou funkce jednotlivé měřitelné vlastnosti něčeho něco, co vás zajímá. Hledání propracované sady funkcí vyžaduje experimentování a domény znalosti. Některé příznaky jsou pro predikci cíle vhodnější než jiné. Také některé funkce možná mají silnou korelaci s jinými funkcemi a nebudou do modelu přidat nové informace. Tyto funkce se dá odebrat.
+Ve strojovém učení jsou funkce jednotlivé měřitelné vlastnosti něčeho, co vás zajímá. Nalezení silné sady funkcí vyžaduje experimenty a znalosti v doméně. Některé příznaky jsou pro predikci cíle vhodnější než jiné. Některé funkce také mohou mít silnou korelaci s jinými funkcemi a nebudou do modelu přidávat nové informace. Tyto funkce je možné odebrat.
 
-Sestavení modelu, můžete používat všechny funkce, které jsou k dispozici, nebo vybrat podmnožinu funkcí.
+Chcete-li vytvořit model, můžete použít všechny dostupné funkce nebo vybrat podmnožinu funkcí.
 
 ## <a name="choose-and-apply-a-learning-algorithm"></a>Volba a použití algoritmu učení
 
-Vytvořit pomocí modelu **Two-Class logistické regrese** modul a jeho trénování na trénovací datové sady. 
+Vytvořte model pomocí modulu **logistické regrese dvou tříd** a prohlaste ho v datové sadě školení. 
 
-Výsledkem **Train Model** modulu je natrénovaného klasifikačního model, který slouží ke stanovení skóre pro nové vzorky a k vytváření predikcí. Použití testu nastavte k vygenerování skóre z trénované modely. Potom použijte **Evaluate Model** modulu analyzovat a porovnat kvality modelů.
+Výsledkem modulu vlakového **modelu** je vyškolený model klasifikace, který se dá použít ke stanovení skóre nových vzorků, aby bylo možné předpovědiovat. Pomocí sady testů můžete vygenerovat skóre z vycvičených modelů. Pak pomocí modulu **vyhodnocení modelu** Analyzujte a porovnejte kvalitu modelů.
 
-Po spuštění testu se zobrazí výstup **Score Model** modulu tak, že kliknete na výstupní port a vyberete **vizualizovat**. Výstup bude obsahovat skóre popisky a pravděpodobnosti pro popisky.
+Po spuštění experimentu můžete zobrazit výstup z modulu **skóre modelu** kliknutím na výstupní port a výběrem možnosti **vizualizovat**. Výstup obsahuje popisky s skóre a pravděpodobnosti pro popisky.
 
-Nakonec pro otestování kvality výsledků, přidejte **Evaluate Model** modulů na experiment plátno a propojte jej s levým vstupním portem k výstupu modulu určení skóre modelu. Spusťte experiment a zobrazte výstup **Evaluate Model** modulu, že kliknete na výstupní port a vyberete **vizualizovat**.
+Nakonec pro otestování kvality výsledků přidejte modul vyhodnotit **model** na plátno experimentu a propojte levý vstupní port s výstupem modulu určení skóre modelu. Spusťte experiment a zobrazte výstup modulu **vyhodnocení modelu** tak, že kliknete na výstupní port a vyberete **vizualizovat**.
 
 ## <a name="evaluate"></a>Vyhodnotit
-Model logistické regrese má AUC 0.631 testovacího nastavení.
+Model logistické regrese má v sadě testů AUC 0,631.
 
  ![Vyhodnocení](media/ui-sample-classification-predict-flight-delay/evaluate.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte službu k dispozici pro vizuální rozhraní ukázky:
+Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 
-- [Ukázka 1 - regrese: Předpovídat cenu automobilu představuje jeden](ui-sample-regression-predict-automobile-price-basic.md)
-- [Ukázka 2 - regrese: Porovnání algoritmy pro předpověď cen automobilů](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Ukázka 3 – klasifikace: Předpovědět úvěrové riziko](ui-sample-classification-predict-credit-risk-basic.md)
-- [Ukázka 4 – klasifikace: Předpovědět úvěrové riziko (náklady na citlivé)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [Ukázka 5 – klasifikace: Předpověď výpovědi](ui-sample-classification-predict-churn.md)
+- [Ukázka 1 – regrese: Předpověď ceny automobilu](ui-sample-regression-predict-automobile-price-basic.md)
+- [Ukázka 2 – regrese: Porovnat algoritmy pro předpověď cen automobilu](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Ukázka 3 – klasifikace: Předpověď úvěrového rizika](ui-sample-classification-predict-credit-risk-basic.md)
+- [Ukázka 4 – klasifikace: Předpověď úvěrového rizika (citlivé na náklady)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Ukázka 5 – klasifikace: Předpověď změn](ui-sample-classification-predict-churn.md)

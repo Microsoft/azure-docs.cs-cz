@@ -1,7 +1,7 @@
 ---
-title: Jak používat rozhraní API detekce anomálií na vašich datech časových řad
+title: Jak používat rozhraní API pro detekci anomálií v datech časových řad
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak detekovat anomálie v datech v dávce nebo na streamovaných datech.
+description: Naučte se detekovat anomálie ve vašich datech buď jako dávku, nebo na streamovaná data.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,65 +10,65 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 551196815004cb047680e2ae2f8dbe32186c1a0c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 4b97c52ec0ed076e1ab8aeada90f430b8ed87514
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721787"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854795"
 ---
-# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Postup: Použití rozhraní API detektor anomálií ve vašich datech časových řad  
+# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Postup: Použití rozhraní API pro detekci anomálií v datech časových řad  
 
-[Rozhraní API detekce anomálií](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) nabízí dvě metody pro detekci anomálií. Buď můžete detekovat anomálie v dávce v celém vašem čase řady, nebo pomocí detekce anomálií stav poslední datový bod je generovaná data. Detekce modelu vrátí výsledky anomálií spolu s očekávanou hodnotu datových bodů a anomálií horní a dolní hranice zjišťování. Tyto hodnoty můžete použít k vizualizaci řadu běžných hodnot a anomálie v datech.
+[Rozhraní API detektoru anomálií](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) nabízí dvě metody detekce anomálií. Anomálie můžete detekovat jako dávku v rámci celé řady, nebo když data vygenerujete zjištěním stavu anomálií nejnovějšího datového bodu. Model detekce vrátí výsledky anomálií spolu s očekávanou hodnotou jednotlivých datových bodů a horní a dolní hranice detekce anomálií. Tyto hodnoty můžete použít k vizualizaci rozsahu běžných hodnot a anomálií v datech.
 
-## <a name="anomaly-detection-modes"></a>Režim detekce anomálií 
+## <a name="anomaly-detection-modes"></a>Režimy detekce anomálií 
 
-Poskytuje rozhraní API detekce anomálií detekce režimy: služby batch a streamování.
+Rozhraní API detektoru anomálií poskytuje režimy detekce: Batch a streamování.
 
 > [!NOTE]
-> Následující žádost, u které adresy URL musí být kombinován se příslušné koncový bod pro vaše předplatné. Příklad: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> Následující adresy URL musí být kombinovány s příslušným koncovým bodem pro vaše předplatné. Příklad: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
-### <a name="batch-detection"></a>Zjišťování služby batch
+### <a name="batch-detection"></a>Zjišťování dávky
 
-K detekci anomálií v rámci služby batch datových bodů za dané časové období, použijte následující identifikátor URI požadavku s daty časových řad: 
+K detekci anomálií v rámci dávky datových bodů v daném časovém rozsahu použijte následující identifikátor URI žádosti s daty časových řad: 
 
 `/timeseries/entire/detect`. 
 
-Odesláním najednou daty časových řad, bude rozhraní API pro generování modelu pomocí celé řady a analyzovat datových bodů s ním.  
+Když odesíláte data časových řad najednou, rozhraní API vygeneruje model pomocí celé řady a analyzuje každý datový bod.  
 
-### <a name="streaming-detection"></a>Zjišťování datových proudů
+### <a name="streaming-detection"></a>Detekce streamování
 
-Průběžně zjišťovat anomálie na streamovaných datech, použijte následující identifikátor URI požadavku s nejnovější datového bodu: 
+Pokud chcete průběžně zjišťovat anomálie při streamování dat, použijte následující identifikátor URI žádosti s vaším nejnovějším datovým bodem: 
 
 `/timeseries/last/detect'`. 
 
-Odesláním nové datové body, jako je vygenerovat, můžete sledovat data v reálném čase. Vygeneruje se vzor s datovými body, které odesíláte a rozhraní API se určit, zda nejnovější bod v časové řadě anomálie.
+Odesláním nových datových bodů při jejich generování můžete monitorovat data v reálném čase. Model bude vygenerován s datovými body, které odesíláte, a rozhraní API určí, zda je poslední bod v časové řadě anomálií.
 
-## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Nastavení hranic detekce anomálií nižším a vyšším
+## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Úprava hranic detekce dolních a horních anomálií
 
-Ve výchozím nastavení, horní a dolní hranice pro detekci anomálií vypočítají na základě `expectedValue`, `upperMargin`, a `lowerMargin`. Pokud požadujete různé hranice, doporučujeme použití `marginScale` k `upperMargin` nebo `lowerMargin`. Hranice se vypočítá následovně:
+Ve výchozím nastavení se horní a dolní hranice pro detekci anomálií počítají `expectedValue`pomocí `upperMargin`, a `lowerMargin`. Pokud požadujete jiné hranice, doporučujeme použít `marginScale` na `upperMargin` nebo `lowerMargin`. Hranice by se vypočítaly takto:
 
-|Hranice  |Výpočet  |
+|Překračuje  |Výpočet  |
 |---------|---------|
 |`upperBoundary` | `expectedValue + (100 - marginScale) * upperMargin`        |
 |`lowerBoundary` | `expectedValue - (100 - marginScale) * lowerMargin`        |
 
-Následující příklady ukazují výsledek rozhraní API detekce anomálií v různých citlivost.
+Následující příklady znázorňují výsledek rozhraní API detektoru anomálií v různých Sensitivities.
 
-### <a name="example-with-sensitivity-at-99"></a>Příklad s citlivosti na 99
+### <a name="example-with-sensitivity-at-99"></a>Příklad s citlivostí v 99
 
-![Výchozí citlivosti](../media/sensitivity_99.png)
+![Výchozí Citlivost](../media/sensitivity_99.png)
 
-### <a name="example-with-sensitivity-at-95"></a>Příklad s citlivosti na 95
+### <a name="example-with-sensitivity-at-95"></a>Příklad s citlivostí v 95
 
-![99 citlivosti](../media/sensitivity_95.png)
+![99 Citlivost](../media/sensitivity_95.png)
 
-### <a name="example-with-sensitivity-at-85"></a>Příklad s citlivosti na 85
+### <a name="example-with-sensitivity-at-85"></a>Příklad s citlivostí v 85
 
-![85 citlivosti](../media/sensitivity_85.png)
+![85 Citlivost](../media/sensitivity_85.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co je API detekce anomálií?](../overview.md)
-* [Rychlé zprovoznění: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API detekce anomálií](../quickstarts/detect-data-anomalies-csharp.md)
+* [Co je rozhraní API pro detekci anomálií?](../overview.md)
+* [Rychlé zprovoznění: Detekci anomálií v datech časových řad pomocí REST API detektoru anomálií](../quickstarts/detect-data-anomalies-csharp.md)

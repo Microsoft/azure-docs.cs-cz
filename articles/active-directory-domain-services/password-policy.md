@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Zásady pro hesla | Dokumentace Microsoftu'
-description: Vysvětlení zásad hesel na spravované domény
+title: 'Azure Active Directory Domain Services: Zásady hesel | Microsoft Docs'
+description: Principy zásad hesel ve spravovaných doménách
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,108 +15,108 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: ecf38543b2c4e5187aa5c6593c3bccf6668b8a8a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8829f16e580d0b926781ce0a3e9f8e6a63cf3110
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472763"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853781"
 ---
-# <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady uzamčení hesla a účtu na spravované domény
-Tento článek vysvětluje výchozí zásady hesel ve spravované doméně. Věnuje se také, jak můžete nakonfigurovat tyto zásady.
+# <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady hesel a uzamčení účtů ve spravovaných doménách
+Tento článek popisuje výchozí zásady hesel ve spravované doméně. Také se zabývá tím, jak můžete tyto zásady nakonfigurovat.
 
-## <a name="fine-grained-password-policies-fgpp"></a>Zásady pro hesla jemné jemněji (podrobných zásad pro HESLA)
-Pomocí podrobné zásady pro hesla můžete určit řadu zásady pro hesla v jedné doméně. Podrobné zásady pro HESLA můžete použít různá omezení zásady uzamčení hesla a účtu pro různé skupiny uživatelů v doméně. Například můžete použít nastavení striktní hesla k privilegovaným účtům.
+## <a name="fine-grained-password-policies-fgpp"></a>Podrobné zásady pro hesla (podrobné zásady)
+Pomocí podrobných zásad pro hesla můžete v jedné doméně určit mnoho zásad hesel. Podrobné zásady umožňuje použít různá omezení zásad hesel a uzamčení účtů pro různé skupiny uživatelů v doméně. Můžete například použít striktní nastavení hesla pro privilegované účty.
 
-Můžete nakonfigurovat následující nastavení hesla pomocí podrobných zásad pro HESLA:
+Pomocí podrobné zásady můžete nakonfigurovat následující nastavení hesla:
 * Minimální délka hesla
-* Historii hesel
-* Heslo musí splňovat požadavky na složitost
+* Historie hesel
+* Hesla musí splňovat požadavky na složitost.
 * Minimální stáří hesla
 * Maximální stáří hesla
 * Zásady uzamčení účtů
-    * Doba uzamčení účtu
-    * Počet neúspěšných pokusů o přihlášení povoleno
-    * Resetování neúspěšných pokusů o přihlášení počet po
+    * Doba trvání uzamčení účtu
+    * Počet povolených neúspěšných pokusů o přihlášení
+    * Resetovat počet neúspěšných pokusů o přihlášení za
 
 
-## <a name="default-fine-grained-password-policy-settings-on-a-managed-domain"></a>Výchozí nastavení zásad hesel podrobné ve spravované doméně
-Následující snímek obrazovky ukazuje výchozí jemné podrobné zásady hesel nakonfigurované ve spravované doméně Azure AD Domain Services.
+## <a name="default-fine-grained-password-policy-settings-on-a-managed-domain"></a>Výchozí jemně odstupňovaná nastavení zásad pro hesla ve spravované doméně
+Následující snímek obrazovky znázorňuje výchozí jemně odstupňované zásady hesel nakonfigurované na Azure AD Domain Services spravované doméně.
 
-![Výchozí podrobné zásady hesel](./media/how-to/default-fgpp.png)
+![Výchozí podrobné zásady pro hesla](./media/how-to/default-fgpp.png)
 
 > [!NOTE]
-> Nemůžete upravovat ani odstranit výchozí integrovanou podrobné zásady hesel. Členové skupiny 'Správci AAD DC' můžete vytvořit vlastní podrobných zásad pro HESLA a nakonfigurovat ho chcete přepsat (přednost) výchozí integrovanou podrobných zásad pro HESLA.
+> Nemůžete upravit ani odstranit výchozí integrované zásady pro hesla. Členové skupiny Správci AAD DC můžou vytvořit vlastní podrobné zásady a nakonfigurovat je tak, aby přepsali (mají přednost před) výchozí vestavěnou podrobné zásady.
 >
 >
 
-## <a name="password-policy-settings"></a>Nastavení zásad pro hesla
-Ve spravované doméně jsou ve výchozím nastavení nakonfigurované následující zásady pro hesla:
+## <a name="password-policy-settings"></a>Nastavení zásad hesel
+Ve spravované doméně jsou ve výchozím nastavení nakonfigurované následující zásady hesel:
 * Minimální délka hesla (ve znacích): 7
-* Maximální stáří hesla (životnost): 90 dnů
-* Heslo musí splňovat požadavky na složitost
+* Maximální stáří hesla (doba života): 90 dní
+* Hesla musí splňovat požadavky na složitost.
 
 ### <a name="account-lockout-settings"></a>Nastavení uzamčení účtu
-Ve spravované doméně jsou ve výchozím nastavení nakonfigurované následující zásady uzamčení účtu:
+Ve spravované doméně jsou ve výchozím nastavení nakonfigurované následující zásady uzamčení účtů:
 * Doba trvání uzamčení účtu: 30
-* Počet neúspěšných pokusů o přihlášení povolený: 5
-* Resetování neúspěšných pokusů o přihlášení počet po: 30 minut
+* Počet povolených neúspěšných pokusů o přihlášení: 5
+* Resetovat počet neúspěšných pokusů o přihlášení po: 30 minut
 
-Efektivní uživatelské účty jsou uzamčen po dobu 30 minut-li pět neplatných zadání hesla se používají během 2 minut. Účty se automaticky odemknout po 30 minutách.
+V případě, že se pět neplatných hesel používá během 2 minut, jsou uživatelské účty uzamčeny po dobu 30 minut. Účty se po 30 minutách automaticky odemkní.
 
 
-## <a name="create-a-custom-fine-grained-password-policy-fgpp-on-a-managed-domain"></a>Vytvoření vlastního hesla podrobné zásady (podrobných zásad pro HESLA) ve spravované doméně
-Můžete vytvořit vlastní podrobných zásad pro HESLA a použít ho na konkrétní skupiny ve vaší spravované doméně. Tato konfigurace ve výsledku přepíše výchozí podrobných zásad pro HESLA nakonfigurované pro spravovanou doménu.
+## <a name="create-a-custom-fine-grained-password-policy-fgpp-on-a-managed-domain"></a>Vytvoření vlastních podrobných zásad pro hesla (podrobné zásady) ve spravované doméně
+Můžete vytvořit vlastní podrobné zásady a použít ho na konkrétní skupiny ve spravované doméně. Tato konfigurace efektivně přepisuje výchozí podrobné zásady nakonfigurovaný pro spravovanou doménu.
 
 > [!TIP]
-> Pouze členové **"Správci AAD DC"** skupiny mají oprávnění k vytvoření vlastní zásady pro hesla podrobné.
+> Pouze členové skupiny **AAD DC Administrators** mají oprávnění vytvářet vlastní podrobné zásady pro hesla.
 >
 >
 
-Kromě toho můžete vytvořit vlastní heslo jemné jemněji zásady a použít je pro všechny vlastní organizační jednotky, vytvořte ve spravované doméně.
+Kromě toho můžete také vytvořit vlastní podrobné zásady pro hesla a použít je na jakékoli vlastní organizační jednotky, které vytvoříte ve spravované doméně.
 
-Vlastní podrobných zásad pro HESLA můžete nakonfigurovat z následujících důvodů:
-* Chcete-li nastavit zásady uzamčení jiný účet.
-* Konfigurovat výchozí nastavení doby platnosti hesla pro spravovanou doménu.
+Vlastní podrobné zásady můžete nakonfigurovat z následujících důvodů:
+* Chcete nastavit jiné zásady uzamčení účtů.
+* Pro konfiguraci výchozího nastavení životnosti hesla pro spravovanou doménu.
 
-Pokud chcete vytvořit vlastní podrobných zásad pro HESLA ve vaší spravované doméně:
-1. Přihlaste se k virtuálnímu počítači Windows můžete použít ke správě vaší spravované domény. Pokud ho nemáte, postupujte podle pokynů k [spravovat domény služby Azure AD Domain Services](manage-domain.md).
-2. Spusťte **Centrum správy služby Active Directory** na virtuálním počítači.
-3. Klikněte na název domény (například "contoso100.com").
-4. Dvakrát klikněte na panel **systému** otevřete kontejneru systému.
-5. Dvakrát klikněte na panel **kontejner nastavení hesel**.
-6. Zobrazí se výchozí názvem integrované podrobných zásad pro HESLA pro spravovanou doménu **AADDSSTFPSO**. Nelze upravit toto integrované podrobných zásad pro HESLA. Můžete však vytvořit nové vlastní potlačení podrobných zásad pro HESLA výchozí podrobných zásad pro HESLA.
-7. Na **úlohy** panelu klikněte pravým tlačítkem, **nový** a klikněte na tlačítko **nastavení hesla**.
-8. V **vytvořit nastavení hesla** dialogové okno, zadejte nastavení vlastní heslo použít jako součást vlastní podrobných zásad pro HESLA. Nezapomeňte si odpovídajícím způsobem nastavit prioritu přepsat výchozí nastavení podrobných zásad pro HESLA.
+Vytvoření vlastního podrobné zásady ve spravované doméně:
+1. Přihlaste se k virtuálnímu počítači s Windows, který používáte ke správě spravované domény (musí být minimálně Windows Server 2012 R2). Pokud ho nemáte, postupujte podle pokynů pro [správu domény Azure AD Domain Services](manage-domain.md).
+2. Na virtuálním počítači spusťte **Centrum správy služby Active Directory** .
+3. Klikněte na název domény (například ' contoso100.com ').
+4. Dvojím kliknutím na **systém** otevřete kontejner systému.
+5. Dvakrát klikněte na **kontejner nastavení hesel**.
+6. Zobrazí se výchozí integrovaná podrobné zásady pro spravovanou doménu s názvem **AADDSSTFPSO**. Tuto vestavěnou podrobné zásady nejde upravit. Můžete ale vytvořit nové vlastní podrobné zásady a přepsat výchozí podrobné zásady.
+7. Na panelu **úlohy** vpravo klikněte na **Nový** a pak na **Nastavení hesla**.
+8. V dialogovém okně **vytvořit nastavení hesla** zadejte vlastní nastavení hesla, které se má použít jako součást vlastního podrobné zásadyu. Nezapomeňte nastavit prioritu odpovídajícím způsobem, aby bylo možné přepsat výchozí podrobné zásady.
 
-   ![Vytvořit vlastní podrobných zásad pro HESLA](./media/how-to/custom-fgpp.png)
+   ![Vytvořit vlastní podrobné zásady](./media/how-to/custom-fgpp.png)
 
    > [!TIP]
-   > **Nezapomeňte zrušit zaškrtnutí chránit před náhodným odstraněním možnost.** Pokud je vybraná tato možnost, nelze uložit podrobných zásad pro HESLA.
+   > **Nezapomeňte zrušit volbu Možnosti chránit před náhodným odstraněním.** Pokud je vybraná tato možnost, podrobné zásady se nedá Uložit.
    >
    >
 
-9. V **vztahuje se přímo na**, klikněte na tlačítko **přidat** tlačítko. V **vybrat uživatele nebo skupiny** dialogového okna, klikněte na tlačítko **umístění** tlačítko.
+9. V části **přímo platí pro**klikněte na tlačítko **Přidat** . V dialogovém okně **Vybrat uživatele nebo skupiny** klikněte na tlačítko **umístění** .
 
    ![Vyberte uživatele a skupiny](./media/how-to/fgpp-applies-to.png)
 
-10. V **umístění** dialogového okna, rozbalte název domény a klikněte na tlačítko **uživatelé AADDC**. Nyní můžete vybrat skupinu z předdefinovaných uživatele organizační jednotky, pro kterou chcete použít podrobných zásad pro HESLA.
+10. V dialogovém okně **umístění** rozbalte název domény a klikněte na **AADDC uživatelé**. Teď můžete vybrat skupinu z vestavěných organizačních jednotek uživatelů, na které se má podrobné zásady použít.
 
-    ![Vybrat organizační jednotky této skupiny patří do](./media/how-to/fgpp-container.png)
+    ![Vyberte organizační jednotku, ke které patří skupina.](./media/how-to/fgpp-container.png)
 
-11. Zadejte název skupiny a klikněte na tlačítko **Kontrola názvů** tlačítko Ověřit skupině existuje.
+11. Zadejte název skupiny a kliknutím na tlačítko **Kontrola názvů** ověřte, zda skupina existuje.
 
-    ![Vyberte skupinu, kterou chcete použít podrobné zásady pro HESLA](./media/how-to/fgpp-apply-group.png)
+    ![Vyberte skupinu, kterou chcete použít podrobné zásady](./media/how-to/fgpp-apply-group.png)
 
-12. Název skupiny se zobrazí v **vztahuje se přímo na** oddílu. Klikněte na tlačítko **OK** tlačítka tyto změny uložit.
+12. Název skupiny se zobrazí v části **přímo platí pro** oddíl. Kliknutím na tlačítko **OK** uložte tyto změny.
 
-    ![Podrobné zásady pro HESLA použít](./media/how-to/fgpp-applied.png)
+    ![Podrobné zásady použito](./media/how-to/fgpp-applied.png)
 
 > [!TIP]
-> **K uplatnění zásad vlastního hesla pro uživatelské účty ve vlastní organizační jednotce:** Zásady pro hesla jemné jemněji lze použít pouze do skupin. Konfigurace zásad vlastní heslo jenom pro uživatele z vlastní organizační jednotky, vytvořte skupinu, která obsahuje uživatele v dané organizační jednotce.
+> **Použití vlastních zásad hesla pro uživatelské účty ve vlastní organizační jednotce:** Podrobné zásady pro hesla se dají použít jenom pro skupiny. Pokud chcete nakonfigurovat vlastní zásady pro hesla jenom pro uživatele z vlastní organizační jednotky, vytvořte skupinu, která bude obsahovat uživatele v této organizační jednotce.
 >
 >
 
 ## <a name="next-steps"></a>Další postup
-* [Další informace o zásadách jemné jemněji hesla služby Active Directory](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
-* [Konfigurace zásad podrobné hesla pomocí centra pro správu AD](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
+* [Přečtěte si o službě Active Directory jemně odstupňované zásady hesel.](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
+* [Konfigurace podrobných zásad pro hesla pomocí centra pro správu služby AD](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)

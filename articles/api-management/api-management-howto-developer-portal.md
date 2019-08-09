@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 2756444db010e23f7114e99f474de9ce6614aaee
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 27d5dcc99db040036ba296911aa33d8a312bb23f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837921"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851510"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Přístup k novému portálu pro vývojáře v Azure API Management a jeho přizpůsobení
 
@@ -96,11 +96,7 @@ Pořád pracujeme na tom, jak tento proces zarovnává se sadou API Management D
 
 Je nejspíš v souvislosti s CORS. Interaktivní konzola vytvoří požadavek rozhraní API na straně klienta z prohlížeče. Problém CORS můžete vyřešit tak, že do svých rozhraní API přidáte [zásadu CORS](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) . Všechny parametry můžete zadat ručně (například jako zdroj jako https://contoso.com) nebo použít zástupnou `*` hodnotu).
 
-### <a name="where-can-i-file-bugs"></a>Kde můžu soubory chybovat?
-
-[V úložišti GitHub](http://aka.ms/apimdevportal).
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o novém portálu pro vývojáře:
 

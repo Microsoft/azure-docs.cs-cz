@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 4a745648f1b7abac7267d51cac9e1fe642ae13d8
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779659"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853691"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -290,7 +290,9 @@ Instalace se dokončí po instalaci softwaru agenta DC na řadič domény a tent
 
 ## <a name="upgrading-the-proxy-agent"></a>Upgrade agenta proxy
 
-Pokud je k dispozici novější verze softwaru proxy ochrany heslem služby Azure AD, upgrade se docílí spuštěním nejnovější verze `AzureADPasswordProtectionProxySetup.exe` instalačního programu softwaru. Není nutný k odinstalaci aktuální verze softwaru proxy – instalační program provede místní upgrade. Při upgradu softwaru proxy by se neměl vyžadovat restart. Upgrade softwaru může být automatizovaný pomocí standardních procedur MSI, například: `AzureADPasswordProtectionProxySetup.exe /quiet`.
+Pokud je k dispozici novější verze softwaru proxy ochrany heslem služby Azure AD, upgrade se docílí spuštěním nejnovější verze `AzureADPasswordProtectionProxySetup.exe` instalačního programu softwaru. Nejnovější verzi softwaru najdete na [webu služby Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=57071).
+
+Není nutný k odinstalaci aktuální verze softwaru proxy – instalační program provede místní upgrade. Při upgradu softwaru proxy by se neměl vyžadovat restart. Upgrade softwaru může být automatizovaný pomocí standardních procedur MSI, například: `AzureADPasswordProtectionProxySetup.exe /quiet`.
 
 Agent proxy podporuje automatický upgrade. Automatický upgrade používá službu aktualizace agenta Microsoft Azure AD Connect, která je nainstalovaná souběžně s proxy službou. Automatický upgrade je ve výchozím nastavení zapnutý a může být povolený nebo zakázaný pomocí rutiny Set-AzureADPasswordProtectionProxyConfiguration. Pomocí rutiny Get-AzureADPasswordProtectionProxyConfiguration se dá zadat dotaz na aktuální nastavení. Microsoft doporučuje, aby byl automatický upgrade ponechán zapnutý.
 
@@ -298,7 +300,9 @@ Agent proxy podporuje automatický upgrade. Automatický upgrade používá slu�
 
 ## <a name="upgrading-the-dc-agent"></a>Upgrade agenta řadiče domény
 
-Pokud je k dispozici novější verze softwaru agenta Azure AD Password Protection, upgrade se provádí spuštěním nejnovější verze `AzureADPasswordProtectionDCAgentSetup.msi` softwarového balíčku. Pro odinstalaci aktuální verze softwaru agenta DC není nutné, aby instalační program provedl místní upgrade. Při upgradu softwaru agenta DC je vždy vyžadován restart – to je způsobeno základním chováním Windows. 
+Pokud je k dispozici novější verze softwaru agenta Azure AD Password Protection, upgrade se provádí spuštěním nejnovější verze `AzureADPasswordProtectionDCAgentSetup.msi` softwarového balíčku. Nejnovější verzi softwaru najdete na [webu služby Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=57071).
+
+Pro odinstalaci aktuální verze softwaru agenta DC není nutné, aby instalační program provedl místní upgrade. Při upgradu softwaru agenta DC je vždy vyžadován restart – to je způsobeno základním chováním Windows. 
 
 Upgrade softwaru může být automatizovaný pomocí standardních procedur MSI, například: `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`.
 
@@ -320,7 +324,7 @@ Hlavním problémem při dostupnosti ochrany heslem je dostupnost proxy serverů
 
 Návrh softwaru agenta DC snižuje běžné problémy, které jsou spojené s vysokou dostupností. Agent řadiče domény uchovává místní mezipaměť naposledy stažených zásad hesel. I když jsou všechny registrované proxy servery nedostupné, budou agenti řadiče domény nadále vysazovat zásady hesel v mezipaměti. Přiměřená frekvence aktualizace zásad hesel ve velkém nasazení je obvykle dny, ne hodiny nebo méně. To znamená, že krátké výpadky proxy serverů významně neovlivňují ochranu heslem Azure AD.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste nainstalovali služby, které potřebujete pro ochranu heslem Azure AD na místních serverech, [proveďte konfiguraci po instalaci a shromážděte informace pro vytváření sestav](howto-password-ban-bad-on-premises-operations.md) , abyste mohli nasazení dokončit.
 

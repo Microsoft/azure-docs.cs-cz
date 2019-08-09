@@ -1,26 +1,23 @@
 ---
 title: Změny provedené v projektu WebAPI při připojení ke službě Azure AD
 description: Popisuje, co se stane s vaším projektem WebAPI při připojení ke službě Azure AD pomocí sady Visual Studio.
-services: active-directory
 author: ghogen
-manager: douge
-ms.service: active-directory
-ms.subservice: develop
+manager: jillfra
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
 ms.workload: azure-vs
+ms.prod: visual-studio-windows
+ms.technology: vs-azure
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19a36ca4b194d8031b4a263a092ecb52be74cdd0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 32fc72d22d3f739018df22c315d7a1a3124c8823
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324278"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851801"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s mým projektem WebAPI (připojená služba sady Visual Studio Azure Active Directory)
 
@@ -130,7 +127,7 @@ Při přidávání připojené služby Visual Studio 2015 zálohované a odebran
 
 [Přečtěte si další informace o Azure Active Directory](https://azure.microsoft.com/services/active-directory/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Scénáře ověřování pro Azure Active Directory](authentication-scenarios.md)
 - [Přidání přihlašování do webové aplikace ASP.NET pomocí Microsoftu](quickstart-v1-aspnet-webapp.md)

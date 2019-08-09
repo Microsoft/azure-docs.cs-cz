@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 9a56fb27fdf9e196291942041d68b249d7f16648
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7cf382f511d2ba8452d77bf207f36b749cb31e94
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839249"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848790"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriky pro Azure NetApp Files
 
@@ -29,27 +29,40 @@ Azure NetApp Files poskytuje metriky přiděleného úložiště, skutečné vyu
 
 <!-- 
 - *Volume pool allocated size*  
-    This is the size (GiB) of the provisioned capacity pool.  
+    The size (GiB) of the provisioned capacity pool  
 --> 
 - *Využití přiděleného fondu svazků*  
-    Toto je celková kvóta svazku (GiB) v daném fondu kapacit (tj. celkový počet zřízených velikostí svazků ve fondu kapacit). Toto je velikost, kterou jste vybrali při vytváření svazku.  
+    Celková kvóta svazku (GiB) v daném fondu kapacity (tj. celkový počet zřízených velikostí svazků ve fondu kapacit)  
+    Toto je velikost, kterou jste vybrali při vytváření svazku.  
 - *Celková logická velikost fondu svazků*  
-    Toto je celkový počet logických prostorů (GiB) používaných napříč svazky ve fondu kapacit.  
+    Celkový počet logických prostorů (GiB) používaných napříč svazky ve fondu kapacity  
 <!-- 
 - *Volume pool total snapshot size*  
-    This is the total of incremental logical space used by the snapshots.  
+    The total of incremental logical space used by the snapshots  
 -->
 
 ## <a name="volumes"></a>Metriky využití pro svazky
 
 <!-- 
 - *Volume allocated size*   
-    This is the volume size (quota) provisioned in GiB.  
+    The volume size (quota) provisioned in GiB  
 --> 
 - *Logická velikost svazku*   
-    Toto je celkové logické místo použité ve svazku (GiB). Tato velikost zahrnuje logický prostor používaný aktivními systémy souborů a snímky.  
+    Celkové logické místo použité ve svazku (GiB)  
+    Tato velikost zahrnuje logický prostor používaný aktivními systémy souborů a snímky.  
 - *Velikost snímku svazku*   
-    Toto je přírůstkový logický prostor používaný snímky ve svazku.  
+   Přírůstkový logický prostor používaný snímky ve svazku  
+
+## <a name="performance-metrics-for-volumes"></a>Metriky výkonu pro svazky
+
+- *AverageReadLatency*   
+    Průměrná doba čtení ze svazku v milisekundách
+- *AverageWriteLatency*   
+    Průměrná doba zápisu ze svazku v milisekundách
+- *ReadIops*   
+    Počet čtení na svazek za sekundu
+- *WriteIops*   
+    Počet zápisů na svazek za sekundu
 
 ## <a name="next-steps"></a>Další postup
 

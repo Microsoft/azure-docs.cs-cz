@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3ac9d8d64e4f16a4d6268606e723b14e32d8c16e
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: e4460dd7131e35ee8b3f3112977099276da2d4ce
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261770"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849422"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Referenční C# informace pro vývojáře skriptu Azure Functions (. csx)
 
@@ -122,7 +122,7 @@ Třída POCO musí mít pro každou vlastnost definovanou metodu getter a setter
 
 ## <a name="reusing-csx-code"></a>Znovu se používá kód. csx
 
-Můžete použít třídy a metody definované v jiných souborech *. csx* v souboru *Run. csx* . K tomu použijte `#load` direktivy v souboru *Run. csx* . V následujícím příkladu `MyLogger` je rutina s názvem sdílena v *myLogger. csx* a načtena do  `#load` run. csx pomocí direktivy:
+Můžete použít třídy a metody definované v jiných souborech *. csx* v souboru *Run. csx* . K tomu použijte `#load` direktivy v souboru *Run. csx* . V následujícím příkladu `MyLogger` je rutina s názvem sdílena v *myLogger. csx* a načtena do `#load` run. csx pomocí direktivy:
 
 Příklad *spuštění. csx*:
 
@@ -206,10 +206,10 @@ public class Order
     public override String ToString()
     {
         return "\n{\n\torderId : " + orderId +
-                  "\n\tcustName : " + custName +             
-                  "\n\tcustAddress : " + custAddress +             
-                  "\n\tcustEmail : " + custEmail +             
-                  "\n\tcartId : " + cartId + "\n}";             
+                  "\n\tcustName : " + custName +
+                  "\n\tcustAddress : " + custAddress +
+                  "\n\tcustEmail : " + custEmail +
+                  "\n\tcartId : " + cartId + "\n}";
     }
 }
 ```
@@ -383,19 +383,19 @@ Pokud chcete používat balíčky NuGet ve funkci 2. C# x, nahrajte soubor *Func
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <PackageReference Include="Microsoft.ProjectOxford.Face" Version="1.1.0" />
     </ItemGroup>
 </Project>
 ```
 
-Pokud chcete použít vlastní kanál NuGet, určete kanál v souboru *NuGet. config* v kořenovém adresáři Function App. Další informace najdete v tématu [Konfigurace chování NuGet](/nuget/consume-packages/configuring-nuget-behavior). 
+Pokud chcete použít vlastní kanál NuGet, určete kanál v souboru *NuGet. config* v kořenovém adresáři Function App. Další informace najdete v tématu [Konfigurace chování NuGet](/nuget/consume-packages/configuring-nuget-behavior).
 
 > [!NOTE]
 > Ve funkci 1. C# x jsou balíčky NuGet odkazovány pomocí souboru *Project. JSON* namísto souboru *Function. proj* .
 
-Pro funkce 1. x použijte místo toho soubor *Project. JSON* . Tady je příklad souboru *Project. JSON* : 
+Pro funkce 1. x použijte místo toho soubor *Project. JSON* . Tady je příklad souboru *Project. JSON* :
 
 ```json
 {
@@ -446,7 +446,7 @@ public static string GetEnvironmentVariable(string name)
 }
 ```
 
-<a name="imperative-bindings"></a> 
+<a name="imperative-bindings"></a>
 
 ## <a name="binding-at-runtime"></a>Vazba za běhu
 
@@ -454,7 +454,7 @@ V C# a v jiných jazycích .NET můžete použít [imperativní](https://en.wiki
 
 Definujte imperativní vazbu následujícím způsobem:
 
-- **Nezahrnovat položku** *Function. JSON* pro požadované imperativní vazby.
+- Nezahrnovat položku *Function. JSON* pro požadované imperativní vazby.
 - Předejte vstupní parametr [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) nebo [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
 - K provedení datové C# vazby použijte následující vzor.
 
@@ -465,7 +465,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`je atribut rozhraní .NET, který definuje vaši vazbu `T` a je vstupní nebo výstupní typ podporovaný tímto typem vazby. `T`nelze zadat typ `out JObject`parametru(například). `out` Například výstupní vazba Mobile Apps tabulky podporuje [šest výstupních typů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale pro `T`nelze použít pouze [\<> ICollector t](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [IAsyncCollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) .
+`BindingTypeAttribute`je atribut rozhraní .NET, který definuje vaši vazbu `T` a je vstupní nebo výstupní typ podporovaný tímto typem vazby. `T`nelze zadat typ `out JObject`parametru(například). `out` Například výstupní vazba Mobile Apps tabulky podporuje [šest výstupních typů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale můžete použít pouze [\<> ICollector T](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) pro `T`.
 
 ### <a name="single-attribute-example"></a>Příklad jednoduchého atributu
 
@@ -497,7 +497,7 @@ using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
 public static async Task Run(string input, Binder binder)
 {
     var attributes = new Attribute[]
-    {    
+    {
         new BlobAttribute("samples-output/path"),
         new StorageAccountAttribute("MyStorageAccount")
     };

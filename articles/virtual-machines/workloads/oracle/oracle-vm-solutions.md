@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: f13c7e6db2bf13c0547ee8689e22c9f04fe6d511
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 44fb955c4539a3330386c38a7798c9f3c3fed2d9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826759"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846056"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Image virtuálních počítačů Oracle a jejich nasazení v Microsoft Azure
 
@@ -91,7 +91,7 @@ Vysoká dostupnost a zotavení po havárii pro Oracle Database Enterprise Editio
 
 Kurz [implementace Oracle data Guard v Azure](configure-oracle-dataguard.md) vás provede základními postupy nastavení v Azure.  
 
-Pomocí Oracle data Guard je možné dosáhnout vysoké dostupnosti s primární databází na jednom virtuálním počítači, sekundární (pohotovostní) databází na jiném virtuálním počítači a nastavením jednosměrné replikace. Výsledkem je přístup pro čtení k kopii databáze. Pomocí Oracle GoldenGate můžete nakonfigurovat obousměrnou replikaci mezi oběma databázemi. Informace o tom, jak nastavit řešení vysoké dostupnosti pro vaše databáze pomocí těchto nástrojů, najdete v dokumentaci k [Active Data Guard](https://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) a [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) na webu Oracle. Pokud potřebujete přístup pro čtení a zápis k kopii databáze, můžete použít [Oracle Active Data Guard](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html).
+Pomocí Oracle data Guard je možné dosáhnout vysoké dostupnosti s primární databází na jednom virtuálním počítači, sekundární (pohotovostní) databází na jiném virtuálním počítači a nastavením jednosměrné replikace. Výsledkem je přístup pro čtení k kopii databáze. Pomocí Oracle GoldenGate můžete nakonfigurovat obousměrnou replikaci mezi oběma databázemi. Informace o tom, jak nastavit řešení vysoké dostupnosti pro vaše databáze pomocí těchto nástrojů, najdete v dokumentaci k [Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html) a [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) na webu Oracle. Pokud potřebujete přístup pro čtení a zápis k kopii databáze, můžete použít [Oracle Active Data Guard](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html).
 
 Kurz [implementace Oracle GoldenGate v Azure](configure-oracle-golden-gate.md) vás provede základními postupy nastavení v Azure.
 

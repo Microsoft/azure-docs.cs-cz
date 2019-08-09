@@ -1,58 +1,58 @@
 ---
-title: Technologie Hyper-V na architekturu pro zotavení po havárii Azure ve službě Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled komponent a architektury používané při nasazení zotavení po havárii pro místní virtuální počítače Hyper-(bez VMM) do Azure pomocí služby Azure Site Recovery.
+title: Architektura zotavení po havárii z Hyper-V do Azure v Azure Site Recovery | Microsoft Docs
+description: Tento článek poskytuje přehled komponent a architektury používaných při nasazení zotavení po havárii pro místní virtuální počítače Hyper-V (bez VMM) do Azure pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 7a1685622c44666eed6dac328772f6dba1418371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3af96fd03ed8e9878c3418e66cfcf24c7f30088c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66398238"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845776"
 ---
-# <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Technologie Hyper-V na architekturu pro zotavení po havárii Azure
+# <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii z Hyper-V do Azure
 
 
-Tento článek popisuje, architektury a procesy používané při replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů Hyper-V (VM) mezi místní hostitelé Hyper-V a Azure, pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
+Tento článek popisuje architekturu a procesy používané při replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů Hyper-V mezi místními hostiteli Hyper-V a Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) .
 
-Hostitelé Hyper-V je možné Volitelně můžete spravovat v privátních cloudech System Center Virtual Machine Manager (VMM).
+Hostitele Hyper-V můžete volitelně spravovat v privátních cloudech System Center Virtual Machine Manager (VMM).
 
 
 
-## <a name="architectural-components---hyper-v-without-vmm"></a>Architektonické součásti - Hyper-V bez VMM
+## <a name="architectural-components---hyper-v-without-vmm"></a>Komponenty architektury – Hyper-V bez nástroje VMM
 
-Následující tabulka a obrázek poskytuje souhrnný přehled součásti použité pro replikaci Hyper-V do Azure, je-li hostitele Hyper-V nejsou spravovány nástrojem VMM.
+Následující tabulka a grafika obsahují podrobný pohled na součásti používané pro replikaci Hyper-V do Azure, když nejsou hostitelé Hyper-V spravováni nástrojem VMM.
 
 **Komponenta** | **Požadavek** | **Podrobnosti**
 --- | --- | ---
-**Azure** | Předplatné Azure, účet úložiště Azure a síť Azure. | Replikovaná data z místních virtuálních počítačů úloh je uložený v účtu úložiště. Virtuální počítače Azure se vytvoří s dat replikovaných úloh, když dojde k převzetí služeb při selhání z místní lokality.<br/><br/> Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
-**Hyper-V** | Během nasazování Site Recovery shromáždíte hostitelé a clustery Hyper-V do lokality Hyper-V. Nainstalujete zprostředkovatele Azure Site Recovery a služby Recovery Services agent na každém hostiteli Hyper-V samostatné, nebo na každém uzlu clusteru Hyper-V. | Zprostředkovatel orchestruje replikaci pomocí služby Site Recovery přes internet. Agent Recovery Services se stará o replikaci dat.<br/><br/> Komunikace z poskytovatele i agenta je zabezpečená a šifrovaná. Šifrují se rovněž replikovaná data v úložišti Azure.
-**Virtuální počítače Hyper-V** | Nejméně jeden virtuální počítač běží na Hyper-V. | Nic musí být nainstalován na virtuálních počítačích.
+**Azure** | Předplatné Azure, účet úložiště Azure a síť Azure. | Replikovaná data z místních úloh virtuálních počítačů se ukládají v účtu úložiště. Virtuální počítače Azure se vytvářejí s daty replikovaných úloh, když dojde k převzetí služeb při selhání z vaší místní lokality.<br/><br/> Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
+**Hyper-V** | Během nasazení Site Recovery shromažďujete hostitele a clustery Hyper-V do lokalit technologie Hyper-V. Na každého samostatného hostitele Hyper-V nebo na každém uzlu clusteru Hyper-V nainstalujete poskytovatele Azure Site Recovery a agenta Recovery Services. | Zprostředkovatel orchestruje replikaci pomocí služby Site Recovery přes internet. Agent Recovery Services se stará o replikaci dat.<br/><br/> Komunikace z poskytovatele i agenta je zabezpečená a šifrovaná. Šifrují se rovněž replikovaná data v úložišti Azure.
+**Virtuální počítače Hyper-V** | Jeden nebo více virtuálních počítačů běžících na technologii Hyper-V. | Na virtuálních počítačích není nutné explicitně instalovat žádné požadavky.
 
 
-**Hyper-V do Azure architektury (bez VMM)**
+**Architektura Hyper-V do Azure (bez VMM)**
 
 ![Architektura](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 
-## <a name="architectural-components---hyper-v-with-vmm"></a>Architektonické součásti - Hyper-V pomocí nástroje VMM
+## <a name="architectural-components---hyper-v-with-vmm"></a>Komponenty architektury – technologie Hyper-V s nástrojem VMM
 
-Následující tabulka a obrázek poskytuje souhrnný přehled komponenty používané pro replikaci Hyper-V do Azure, když jsou hostitelé Hyper-V spravované v cloudech VMM.
+Následující tabulka a grafika obsahují podrobný pohled na součásti používané pro replikaci Hyper-V do Azure, když jsou hostitelé Hyper-V spravováni v cloudech VMM.
 
 **Komponenta** | **Požadavek** | **Podrobnosti**
 --- | --- | ---
-**Azure** | Předplatné Azure, účet úložiště Azure a síť Azure. | Replikovaná data z místních virtuálních počítačů úloh je uložený v účtu úložiště. Virtuální počítače Azure se vytvoří s replikovanými daty, když dojde k převzetí služeb při selhání z místní lokality.<br/><br/> Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
-**Server VMM** | Server VMM obsahuje jeden nebo více cloudů s hostiteli Hyper-V. | Nainstalovat zprostředkovatele služby Site Recovery orchestrovat replikaci pomocí služby Site Recovery na server VMM a zaregistrujte server v trezoru služby Recovery Services.
-**Hostitel Hyper-V** | Jeden nebo několik hostitelů/clusterů Hyper-V spravovaných nástrojem VMM. |  Nainstalujte agenta služby Recovery Services na každém uzlu hostitele nebo clusteru Hyper-V.
+**Azure** | Předplatné Azure, účet úložiště Azure a síť Azure. | Replikovaná data z místních úloh virtuálních počítačů se ukládají v účtu úložiště. Když dojde k převzetí služeb při selhání z místního webu, vytvoří se virtuální počítače Azure s replikovanými daty.<br/><br/> Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
+**Server VMM** | Server VMM obsahuje jeden nebo více cloudů s hostiteli Hyper-V. | Na server VMM nainstalujete poskytovatele Site Recovery, pro orchestraci replikace pomocí Site Recovery a registraci serveru v trezoru služby Recovery Services.
+**Hostitel Hyper-V** | Jeden nebo několik hostitelů/clusterů Hyper-V spravovaných nástrojem VMM. |  Agenta Recovery Services nainstalujete na každého hostitele nebo uzel clusteru Hyper-V.
 **Virtuální počítače Hyper-V** | Jeden nebo několik virtuálních počítačů spuštěných na hostitelském serveru Hyper-V. | Na virtuálních počítačích není výslovně potřeba nic instalovat.
-**Sítě** | Logické sítě a sítě virtuálních počítačů nastavené na serveru VMM. Síť virtuálních počítačů musí být propojena na logickou síť, která je přidružena ke cloudu. | Sítě virtuálních počítačů se mapují k virtuálním sítím Azure. Virtuální počítače Azure vytvořené po převzetí služeb při selhání, se přidají k síti Azure, který se mapuje na síť virtuálních počítačů.
+**Sítě** | Logické sítě a sítě virtuálních počítačů nastavené na serveru VMM. Síť virtuálních počítačů by měla být propojená s logickou sítí, která je přidružená ke cloudu. | Sítě virtuálních počítačů jsou namapované na virtuální sítě Azure. Když se po převzetí služeb při selhání vytvoří virtuální počítače Azure, přidají se do sítě Azure, která je namapovaná na síť virtuálních počítačů.
 
-**Hyper-V do Azure architektury (s VMM)**
+**Architektura Hyper-V do Azure (s VMM)**
 
 ![Komponenty](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
@@ -60,7 +60,7 @@ Následující tabulka a obrázek poskytuje souhrnný přehled komponenty použ�
 
 ## <a name="replication-process"></a>Proces replikace
 
-![Hyper-V do Azure replikace](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
+![Replikace z Hyper-V do Azure](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
 
 **Replikace a proces obnovení**
 
@@ -73,77 +73,77 @@ Následující tabulka a obrázek poskytuje souhrnný přehled komponenty použ�
 4. Úlohu můžete sledovat na kartě **Úlohy**.      ![Seznam úloh](media/hyper-v-azure-architecture/image1.png) ![Podrobnosti povolení ochrany](media/hyper-v-azure-architecture/image2.png)
 
 
-### <a name="initial-data-replication"></a>Počáteční replikace dat.
+### <a name="initial-data-replication"></a>Počáteční replikace dat
 
-1. Při aktivaci počáteční replikace se [snímek virtuálního počítače Hyper-V](https://technet.microsoft.com/library/dd560637.aspx) pořízení snímku.
-2. Virtuální pevné disky na virtuálním počítači se replikují jeden po druhém, dokud se všechny nezkopírují do Azure. To může chvíli trvat, v závislosti na velikosti virtuálního počítače a šířka pásma sítě. [Zjistěte, jak](https://support.microsoft.com/kb/3056159) zvětšíte šířku pásma sítě.
-3. Pokud dojde ke změnám na disku, kdy probíhá počáteční replikace, Hyper-V Replica Replication Tracker zaznamenává změny zaznamená jako protokoly replikace technologie Hyper-V (.hrl). Tyto protokolové soubory jsou umístěny ve stejné složce jako disky. Každý disk má přidružený soubor .hrl, který se odešle do sekundárního úložiště. Soubory snímků a protokolů spotřebovávají prostředky disku v době, kdy probíhá počáteční replikace.
+1. Při spuštění počáteční replikace se pořídí snímek [virtuálního počítače Hyper-V](https://technet.microsoft.com/library/dd560637.aspx) .
+2. Virtuální pevné disky virtuálního počítače se replikují jednou po jednom, dokud se všechny nezkopírují do Azure. Tato situace může chvíli trvat, v závislosti na velikosti virtuálního počítače a šířce pásma sítě. [Přečtěte si, jak](https://support.microsoft.com/kb/3056159) zvýšit šířku pásma sítě.
+3. Pokud dojde ke změnám na disku v době, kdy probíhá počáteční replikace, sledování replikace repliky technologie Hyper-V sleduje změny jako protokoly replikace technologie Hyper-V (. hrl). Tyto soubory protokolu jsou umístěné ve stejné složce jako disky. Každý disk má přidružený soubor. hrl, který se odesílá do sekundárního úložiště. Soubory snímků a protokolů spotřebovávají prostředky disku v době, kdy probíhá počáteční replikace.
 4. Po dokončení počáteční replikace se snímek virtuálního počítače odstraní.
 5. Rozdílové změny na disku v protokolu se synchronizují a sloučí s nadřazeným diskem.
 
 
-### <a name="finalize-protection-process"></a>Dokončení procesu ochrany
+### <a name="finalize-protection-process"></a>Finalizace procesu ochrany
 
-1. Po dokončení počáteční replikace **dokončit ochranu na virtuálním počítači** úlohy spustí. Nakonfiguruje Síťová a další postreplikační nastavení tak, aby virtuální počítač je chráněný.
-2. V této fázi můžete zkontrolovat nastavení virtuálního počítače, abyste měli jistotu, že je připravený pro převzetí služeb při selhání. Můžete spustit zotavení po havárii (testovací převzetí služeb) pro virtuální počítač, zkontrolujte, že rutina selže, než podle očekávání. 
+1. Po dokončení počáteční replikace se spustí **ochrana finalizace úlohy virtuálního počítače** . Nakonfiguruje síť a další nastavení po replikaci tak, aby byl virtuální počítač chráněný.
+2. V této fázi můžete zkontrolovat nastavení virtuálního počítače, abyste se ujistili, že je připravený na převzetí služeb při selhání. Pro virtuální počítač můžete spustit postupné procházení zotavení po havárii (testovací převzetí služeb při selhání) a zkontrolovat, jestli převezme služby při selhání podle očekávání. 
 
 
 ## <a name="delta-replication"></a>Rozdílová replikace
 
-1. Po počáteční replikaci se zahájí rozdílová replikace, v souladu se zásadami replikace.
-2. Technologie Hyper-V Replica Replication Tracker zaznamenává změny na virtuální pevný disk souborech .hrl. Každý disk nakonfigurovaný pro replikaci má přidružený soubor .hrl.
-3. V protokolu se odešle do účtu úložiště zákazníka. Když protokol je při přenosu do Azure, se sledují změny na primárním disku do jiného souboru protokolu, ve stejné složce.
-4. Během počáteční a rozdílové replikace můžete sledovat virtuální počítač na webu Azure Portal.
+1. Po počáteční replikaci se v souladu se zásadami replikace spustí rozdílová replikace.
+2. Sledovací modul replikace replik technologie Hyper-V sleduje změny virtuálního pevného disku jako souborů. HRL. Každý disk nakonfigurovaný pro replikaci má přidružený soubor .hrl.
+3. Protokol se pošle do účtu úložiště zákazníka. Při přenosu protokolu do Azure jsou změny v primárním disku sledovány v jiném souboru protokolu ve stejné složce.
+4. Během počáteční a rozdílové replikace můžete virtuální počítač monitorovat v Azure Portal.
 
-### <a name="resynchronization-process"></a>Procesu synchronizace
+### <a name="resynchronization-process"></a>Proces opakované synchronizace
 
 1. Pokud rozdílová replikace selže a úplná replikace by byla náročná, pokud jde o šířku pásma nebo čas, pak se virtuální počítač označí pro resynchronizaci.
     - Pokud například soubory .hrl dosáhnou 50 % velikosti disku, pak se u virtuálního počítače stanoví nutnost resynchronizace.
-    -  Ve výchozím nastavení je Opětovná synchronizace naplánovat automatické spouštění mimo pracovní dobu.
-1.  Opětovná synchronizace – odesílá pouze rozdílová data.
-    - Minimalizuje množství dat odesílaných v rámci výpočtů kontrolních součtů zdrojové a cílové virtuální počítače.
-    - Využívá algoritmus vytváření bloků pevnou, kde jsou zdrojové a cílové soubory rozdělené do pevných bloků.
-    - Jsou generovány kontrolních součtů pro každý blok. Tyto jsou porovnány pro určení, které bloky ze zdroje je potřeba použít na cíl.
+    -  Ve výchozím nastavení je automatické spuštění resynchronizace naplánováno mimo kancelářskou dobu.
+1.  Opětovná synchronizace odesílá jenom rozdílová data.
+    - Minimalizuje množství dat odesílaných výpočetními součty zdrojového a cílového virtuálního počítače.
+    - Používá algoritmus bloků s pevným blokem, ve kterém jsou zdrojové a cílové soubory rozdělené do pevných bloků dat.
+    - Vygenerují se kontrolní součty pro jednotlivé bloky dat. Tyto jsou porovnány s cílem určit, které bloky ze zdroje je nutné použít na cíl.
 2. Po dokončení resynchronizace by měla pokračovat normální rozdílová replikace.
-3. Pokud nechcete čekat výchozí resynchronizace mimo pracovní dobu, můžete znovu synchronizovat virtuální počítač ručně. Například, pokud dojde k výpadku. Chcete-li to provést na webu Azure Portal, vyberte virtuální počítač > **opakovanou synchronizaci**.
+3. Pokud nechcete čekat na výchozí opětovnou synchronizaci mimo hodiny, můžete virtuální počítač znovu synchronizovat ručně. Například pokud dojde k výpadku. Provedete to tak, že v Azure Portal > znovu **synchronizujete**virtuální počítač.
 
     ![Ruční resynchronizace](./media/hyper-v-azure-architecture/image4-site.png)
 
 
-### <a name="retry-process"></a>Opakujte proces
+### <a name="retry-process"></a>Opakovat proces
 
-Pokud dojde k chybě replikace, je předdefinován opakovaný pokus. Opakování je klasifikován, jak je popsáno v tabulce.
+Pokud dojde k chybě replikace, je předdefinován opakovaný pokus. Opakování je klasifikované tak, jak je popsáno v tabulce.
 
 **Kategorie** | **Podrobnosti**
 --- | ---
-**Neopravitelné chyby** | Pokus se nebude opakovat. Stav virtuálního počítače bude **Kritický** a bude nutný zásah správce.<br/><br/> Příklady těchto chyb porušený řetězec virtuálních pevných disků, neplatný stav replikovaného virtuálního počítače, chyby ověřování sítě, chyby autorizace a virtuální počítač nebyl nalezen chyby (pro samostatné servery Hyper-V.
-**Opravitelné chyby** | Pokusy se budou opakovat v každém intervalu replikace a pomocí exponenciální regrese se bude od počátku prvního pokusu zvětšovat interval opakování o 1, 2, 4, 8 a 10 minut. Pokud chyba přetrvává, bude se pokus opakovat každých 30 minut. Příklady patří chyby sítě, chyby místu na disku a nedostatek paměti.
+**Neopravitelné chyby** | Pokus se nebude opakovat. Stav virtuálního počítače bude **Kritický** a bude nutný zásah správce.<br/><br/> Mezi příklady těchto chyb patří poškozený řetězec VHD, neplatný stav pro virtuální počítač repliky, chyby ověřování v síti, chyby autorizace a Chyby nenalezení virtuálních počítačů (pro samostatné servery Hyper-V.
+**Opravitelné chyby** | Pokusy se budou opakovat v každém intervalu replikace a pomocí exponenciální regrese se bude od počátku prvního pokusu zvětšovat interval opakování o 1, 2, 4, 8 a 10 minut. Pokud chyba přetrvává, bude se pokus opakovat každých 30 minut. Mezi tyto příklady patří chyby sítě, chybové zprávy s nízkým diskem a nedostatečné paměťové podmínky.
 
 
 
 ## <a name="failover-and-failback-process"></a>Proces převzetí služeb při selhání a navrácení služeb po obnovení
 
-1. Můžete spustit plánované nebo neplánované převzetí služeb při selhání z místních virtuálních počítačů Hyper-V do Azure. Pokud spustíte plánovanou operaci, dojde k ukončení zdrojových virtuálních počítačů, aby se zcela předešlo možné ztrátě dat. Spusťte neplánované převzetí služeb při selhání, pokud primární lokality není přístupná.
-2. Můžete převzetí služeb při selhání jednoho počítače nebo vytvořit plány obnovení a orchestrovat převzetí služeb při selhání více počítačů.
-3. Spuštění převzetí služeb při selhání. Po dokončení první fázi převzetí služeb při selhání byste měli vidět vytvořené replikované virtuální počítače v Azure. Virtuálnímu počítači můžete přiřadit veřejnou IP adresu, když je to třeba.
-4. Po potvrzení procesu převzetí služeb při selhání, chcete-li začít používat úlohu na replikovaném virtuálním počítači Azure.
+1. Můžete spustit plánované nebo neplánované převzetí služeb při selhání z místních virtuálních počítačů Hyper-V do Azure. Pokud spustíte plánovanou operaci, dojde k ukončení zdrojových virtuálních počítačů, aby se zcela předešlo možné ztrátě dat. Pokud vaše primární lokalita není dostupná, spusťte neplánované převzetí služeb při selhání.
+2. Můžete převzít služby při selhání jednoho počítače nebo vytvořit plány obnovení pro orchestraci převzetí služeb při selhání více počítačů.
+3. Spouštíte převzetí služeb při selhání. Po dokončení první fáze převzetí služeb při selhání byste měli být schopni zobrazit vytvořené virtuální počítače repliky v Azure. Virtuálnímu počítači můžete přiřadit veřejnou IP adresu, když je to třeba.
+4. Pak potvrdíte převzetí služeb při selhání, abyste mohli začít přistupovat ke úlohám z repliky virtuálního počítače Azure.
 
-Po znovu spuštěn a je v místní infrastruktuře, můžete službu navrátit. Ve třech fázích, dojde k navrácení služeb po obnovení:
+Po opětovném zprovoznění místní infrastruktury můžete provést navrácení služeb po obnovení. Navrácení služeb po obnovení proběhne ve třech fázích:
 
-1. Pusťte se plánované převzetí služeb při selhání z Azure do místní lokality:
-    - **Minimalizovat prostoje**: Pokud použijete tuto možnost Site Recovery synchronizuje data před převzetí služeb při selhání. Kontroluje bloky změněná data a stáhne do místní lokality při udržuje virtuálním počítači Azure spuštěný, minimalizace výpadků. Když ručně zadáte, že by se měl dokončit převzetí služeb při selhání, vypnutí virtuálního počítače Azure, se zkopírují všechny finální rozdílové změny a spustí převzetí služeb při selhání.
-    - **Úplné stažení**: Pomocí této možnosti se data synchronizují během převzetí služeb při selhání. Tato možnost umožňuje stáhnout celý disk. Je rychlejší, protože se počítají žádné kontrolní součty, ale není k dispozici další prostoje. Tuto možnost použijte, pokud běží repliky virtuálních počítačů Azure nějakou dobu, nebo pokud místní virtuální počítač byl odstraněn.
-    - **Vytvoření virtuálního počítače**: Můžete vybrat selhání zpět do stejného virtuálního počítače nebo do alternativní virtuálního počítače. Můžete určit, že by měl Site Recovery vytvořte virtuální počítač, pokud ještě neexistuje.
+1. Vykonání plánovaného převzetí služeb při selhání z Azure do místní lokality:
+    - **Minimalizovat prostoje**: Pokud použijete tuto možnost Site Recovery synchronizuje data před převzetím služeb při selhání. Kontroluje změněné bloky dat a stáhne je do místní lokality, zatímco virtuální počítač Azure běží a minimalizuje výpadky. Když ručně určíte, že převzetí služeb při selhání by mělo být dokončené, virtuální počítač Azure se vypne a všechny poslední změny rozdílu se zkopírují a spustí se převzetí služeb při selhání.
+    - **Úplné stažení**: Tato data možností se synchronizují během převzetí služeb při selhání. Tato možnost stáhne celý disk. Je rychlejší, protože nejsou vypočítány žádné kontrolní součty, ale existuje více výpadků. Tuto možnost použijte, pokud jste už nějakou dobu spustili repliky virtuálních počítačů Azure, nebo pokud se místní virtuální počítač odstranil.
+    - **Vytvořit virtuální počítač**: Můžete vybrat, že navrácení služeb po obnovení do stejného virtuálního počítače nebo na jiný virtuální počítač. Můžete určit, že Site Recovery vytvořit virtuální počítač, pokud ještě neexistuje.
 
-2. Po dokončení počáteční synchronizace, je vybrat k dokončení převzetí služeb. Po dokončení, přihlaste se na místní virtuální počítač, zkontrolujte, že všechno funguje podle očekávání. Na webu Azure Portal uvidíte, že virtuální počítače Azure byly zastaveny.
-3.  Po potvrzení převzetí služeb při selhání skončí a začít používat úlohu z místní virtuální počítač znovu.
-4. Po úloh se nepodařilo vrátit, povolíte zpětnou replikaci, tak, aby místní virtuální počítače replikovat do Azure znovu.
-
-
-
-## <a name="next-steps"></a>Další postup
+2. Po dokončení počáteční synchronizace můžete vybrat, aby se převzetí služeb při selhání dokončilo. Po dokončení se můžete přihlásit k místnímu virtuálnímu počítači a ověřit, jestli všechno funguje podle očekávání. V Azure Portal vidíte, že se virtuální počítače Azure zastavily.
+3.  Pak potvrdíte převzetí služeb při selhání, které se dokončí, a znovu otevřete přístup k zatížení z místního virtuálního počítače.
+4. Po úspěšném dokončení úloh se povolí zpětná replikace, aby se místní virtuální počítače znovu replikují do Azure.
 
 
-Postupujte podle [v tomto kurzu](tutorial-prepare-azure.md) začít s technologií Hyper-V do Azure replikace.
+
+## <a name="next-steps"></a>Další kroky
+
+
+V [tomto kurzu](tutorial-prepare-azure.md) se naučíte používat replikaci Hyper-V do Azure.
 
 

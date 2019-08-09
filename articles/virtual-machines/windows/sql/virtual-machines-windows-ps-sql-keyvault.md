@@ -1,6 +1,6 @@
 ---
-title: Integrace služby Key Vault s SQL serverem na virtuálních počítačích s Windows v Azure (Resource Manager) | Dokumentace Microsoftu
-description: Zjistěte, jak automatizovat konfiguraci systému SQL Server šifrování pro použití se službou Azure Key Vault. Toto téma vysvětluje, jak integrace se službou Azure Key Vault pomocí systému SQL Server na virtuálních počítačích vytvořených pomocí Resource Manageru.
+title: Integrace Key Vault s SQL Server na virtuálních počítačích s Windows v Azure (Správce prostředků) | Microsoft Docs
+description: Naučte se automatizovat konfiguraci SQL Serverho šifrování pro použití s Azure Key Vault. V tomto tématu se dozvíte, jak používat Azure Key Vault integraci s SQL Servermi virtuálními počítači vytvořenými pomocí Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -16,58 +16,58 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 13d698cfbc0241248a77fd5f3b148a9393320c64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7de54f7da8cef5942a8d8f41031eaf3e2565580
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076014"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846247"
 ---
-# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurace integrace Azure Key Vaultu pro SQL Server na Azure Virtual Machines (Resource Manager)
+# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurace integrace Azure Key Vault pro SQL Server v Azure Virtual Machines (Správce prostředků)
 
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-ps-sql-keyvault.md)
 > * [Classic](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
 
 ## <a name="overview"></a>Přehled
-Existuje více funkcí systému SQL Server šifrování, jako například [transparentní šifrování dat (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [šifrování na úrovni sloupce (Vymazat)](https://msdn.microsoft.com/library/ms173744.aspx), a [šifrování záloh](https://msdn.microsoft.com/library/dn449489.aspx). Tyto formy šifrování nutné ke správě a ukládání kryptografických klíčů, který používáte pro šifrování. Službu Azure Key Vaultu (AKV) je navržené pro zlepšení zabezpečení a správu těchto klíčů v zabezpečených a vysoce dostupných umístění. [Konektor SQL serveru](https://www.microsoft.com/download/details.aspx?id=45344) umožňuje SQL serveru používat tyto klíče ze služby Azure Key Vault.
+Existuje několik funkcí SQL Server šifrování, jako je [transparentní šifrování dat (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [šifrování na úrovni sloupce (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)a [šifrování záloh](https://msdn.microsoft.com/library/dn449489.aspx). Tyto formy šifrování vyžadují, abyste mohli spravovat a ukládat kryptografické klíče, které používáte pro šifrování. Služba Azure Key Vault (integrace) je navržená tak, aby vylepšila zabezpečení a správu těchto klíčů v zabezpečeném a vysoce dostupném umístění. [Konektor SQL serveru](https://www.microsoft.com/download/details.aspx?id=45344) umožňuje SQL Server používat tyto klíče z Azure Key Vault.
 
-Pokud používáte systém SQL Server pomocí místních počítačů, existují [kroky, pomocí kterých můžete pro přístup k Azure Key Vault z vašeho počítače systému SQL Server v místním](https://msdn.microsoft.com/library/dn198405.aspx). Ale pro SQL Server na virtuálních počítačích Azure, můžete ušetřit čas pomocí *integrace Azure Key Vault* funkce.
+Pokud používáte SQL Server s místními počítači, můžete postupovat [podle pokynů k přístupu k Azure Key Vault z místního počítače SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Ale pro SQL Server ve virtuálních počítačích Azure můžete ušetřit čas pomocí funkce *integrace Azure Key Vault* .
 
-Pokud je tato funkce povolena, automaticky se nainstaluje konektor SQL serveru, nakonfiguruje zprostředkovatele EKM. pro přístup k Azure Key Vault a vytvoří přihlašovací údaj, který umožňuje přístup k trezoru. Pokud podívali se na postup v dokumentaci k výše uvedené v místním, uvidíte, že tato funkce automatizuje kroky 2 a 3. Jediné, co by stále muset provést ručně, je vytvořit trezor klíčů a klíče. Tady je automatické celé nastavení virtuálního počítače s SQL. Po dokončení této instalace a nastavení tuto funkci můžete spustit příkazy T-SQL k zahájit šifrování vašich databází nebo zálohy jako obvykle.
+Když je tato funkce povolená, nainstaluje se Konektor SQL Serveru automaticky, nakonfiguruje poskytovatele EKM pro přístup k Azure Key Vault a vytvoří přihlašovací údaje, které vám umožní přístup k trezoru. Pokud jste si prohlédli postup uvedený v předchozí dokumentaci, vidíte, že tato funkce automatizuje kroky 2 a 3. Jedinou věcí, kterou byste pořád museli ručně udělat, je vytvoření trezoru klíčů a klíčů. Odtud je celá instalace vašeho virtuálního počítače SQL automatizovaná. Až tato funkce dokončí tuto instalaci, můžete spustit příkazy T-SQL, které zahájí šifrování databází nebo zálohování, jako byste to udělali normálně.
 
 [!INCLUDE [AKV Integration Prepare](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
 
   >[!NOTE]
-  > Zprostředkovatele EKM. verze 1.0.4.0 je nainstalovaný na virtuálním počítači SQL serveru prostřednictvím [rozšíření SQL IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension). Upgrade rozšíření SQL IaaS neaktualizuje verze zprostředkovatele. Zvážení prosím ručně upgrade verze zprostředkovatele EKM. v případě potřeby (například při migraci do spravované Instance SQL).
+  > Poskytovatel EKM verze 1.0.4.0 je nainstalovaný na virtuálním počítači s SQL Server prostřednictvím [rozšíření SQL IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension). Při upgradu rozšíření SQL IaaS se verze poskytovatele neaktualizuje. V případě potřeby prosím zvažte ruční upgrade verze zprostředkovatele EKM (například při migraci do spravované instance SQL).
 
 
-## <a name="enabling-and-configuring-akv-integration"></a>Povolení a konfigurace integrace se službou AZURE
-Můžete povolit integrace se službou AZURE během zřizování nebo ho nakonfigurovat pro stávající virtuální počítače.
+## <a name="enabling-and-configuring-akv-integration"></a>Povolení a konfigurace integrace integrace
+Integraci integrace můžete povolit během zřizování nebo nakonfigurovat pro stávající virtuální počítače.
 
 ### <a name="new-vms"></a>Nové virtuální počítače
-Pokud zřizujete nového virtuálního počítače SQL serveru s využitím Resource Manageru, na webu Azure portal poskytuje způsob, jak povolit integrace Azure Key Vault. Funkce Azure Key Vault je dostupná jenom pro Enterprise, Developer a zkušební edice systému SQL Server.
+Pokud zřizujete nový SQL Server virtuální počítač s Správce prostředků, Azure Portal poskytuje způsob, jak povolit integraci Azure Key Vault. Funkce Azure Key Vault je k dispozici pouze pro edice Enterprise, Developer a Evaluation pro SQL Server.
 
 ![Integrace se službou Azure Key Vault pro SQL](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 
-Podrobný postup zřizování, najdete v části [zřízení virtuálního počítače s SQL serverem na webu Azure Portal](virtual-machines-windows-portal-sql-server-provision.md).
+Podrobný návod k zřizování najdete v tématu [zřízení virtuálního počítače s SQL Server v Azure Portal](virtual-machines-windows-portal-sql-server-provision.md).
 
-### <a name="existing-vms"></a>Stávající virtuální počítače
+### <a name="existing-vms"></a>Existující virtuální počítače
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Existující virtuální počítače systému SQL Server, otevřete vaši [prostředků virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) a vyberte **zabezpečení** pod **nastavení**. Vyberte **povolit** povolení integrace Azure Key Vault. 
+U stávajících virtuálních počítačů s SQL Server otevřete svůj [prostředek virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) a v části **Nastavení**vyberte **zabezpečení** . Výběrem **Povolit** povolte integraci Azure Key Vault. 
 
-![Integrace se službou AZURE SQL pro stávající virtuální počítače](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
+![Integrace SQL integrace pro existující virtuální počítače](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
 
-Až budete hotovi, vyberte **použít** tlačítko v dolní části **zabezpečení** stránky uložte provedené změny.
-
-> [!NOTE]
-> Název přihlašovacího údaje, které jsme vytvořili v tomto poli se namapují na přihlášení typu SQL později. Díky tomu přihlašovací jméno SQL pro přístup k trezoru klíčů. 
-
+Po dokončení vyberte tlačítko **použít** v dolní části stránky **zabezpečení** a uložte provedené změny.
 
 > [!NOTE]
-> Můžete také nakonfigurovat integrace se službou AZURE pomocí šablony. Další informace najdete v tématu [šablona rychlého startu Azure pro integraci služby Azure Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).
+> Název přihlašovacího údaje, který jsme vytvořili tady, se později namapuje na přihlašovací údaje SQL. To umožňuje přihlašovacímu účtu SQL přístup k trezoru klíčů. 
+
+
+> [!NOTE]
+> Integraci integrace můžete nakonfigurovat také pomocí šablony. Další informace najdete v tématu [Šablona Azure pro rychlý Start pro Azure Key Vault integraci](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).
 
 
 [!INCLUDE [AKV Integration Next Steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]

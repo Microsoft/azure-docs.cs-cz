@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: f7cd0125de886eed4b3e5c31503fdd4b7cbb76dd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370466"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847821"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Metriky protokolu během školicích běhů v Azure Machine Learning
 
@@ -49,7 +49,7 @@ Pokud chcete sledovat nebo sledovat experimentu, musíte přidat kód pro spušt
 ## <a name="set-up-the-workspace"></a>Nastavit pracovní prostor
 Před přidáním protokolování a odeslání experimentu, musíte nastavit pracovní prostor.
 
-1. Načtení pracovního prostoru. Pokud chcete získat další informace o nastavení konfigurace pracovního prostoru, postupujte podle kroků v části [Vytvoření pracovního prostoru služby Azure Machine Learning](setup-create-workspace.md#sdk).
+1. Načtení pracovního prostoru. Další informace o nastavení konfigurace pracovního prostoru najdete v tématu [konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -58,7 +58,7 @@ Před přidáním protokolování a odeslání experimentu, musíte nastavit pra
    ws = Workspace.from_config()
    ```
   
-## <a name="option-1-use-startlogging"></a>Možnost 1: Použití start_logging
+## <a name="option-1-use-start_logging"></a>Možnost 1: Použití start_logging
 
 **start_logging** vytvoří interaktivní spuštění pro použití ve scénářích, jako je například poznámkových bloků. Všechny metriky, které jsou zaznamenány během relace jsou přidány do běhu záznam v experimentu.
 

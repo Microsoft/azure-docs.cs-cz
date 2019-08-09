@@ -4,17 +4,17 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 83a0adf98298225b52d3b4fdfa2ca861ebb70bb9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175693"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857354"
 ---
-**Back-endem .NET (C#)** :
+**Back-endC#.NET ()** :
   
-1. V sadě Visual Studio, klikněte pravým tlačítkem na projekt serveru a klikněte na tlačítko **spravovat balíčky NuGet**, vyhledejte `Microsoft.Azure.NotificationHubs`, pak klikněte na tlačítko **nainstalovat**. Tím se nainstaluje v knihovně Notification Hubs k odesílání oznámení z back-endu.
-2. V projektu sady Visual Studio na back-end, otevřete **řadiče** > **TodoItemController.cs**. Na začátek souboru přidejte následující `using` – příkaz:
+1. V aplikaci Visual Studio klikněte pravým tlačítkem myši na serverový projekt a pak klikněte na **Spravovat balíčky NuGet**, vyhledejte `Microsoft.Azure.NotificationHubs`a pak klikněte na **nainstalovat**. Tím se nainstaluje knihovna Notification Hubs pro odesílání oznámení z back-endu.
+2. V projektu sady Visual Studio back-endu otevřete **řadiče** > **TodoItemController.cs**. V horní části souboru přidejte následující `using` příkaz:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -63,13 +63,13 @@ ms.locfileid: "67175693"
     }
     ```
 
-4. Znovu publikujte projekt serveru.
+4. Publikujte projekt serveru znovu.
 
 **Back-end Node.js**:
 
-1. Pokud jste tak již neučinili, [stáhnout projekt rychlý Start](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) nebo použijte jiný [online editoru na webu Azure Portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).    
+1. Nastavte svůj back-end projekt.    
 
-2. Tabulkový skript todoitem.js nahraďte následujícím kódem:
+2. Nahraďte skript tabulky TodoItem. js následujícím kódem:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -110,4 +110,4 @@ ms.locfileid: "67175693"
     module.exports = table;
     ```
 
-3. Při úpravách souboru na místním počítači, znovu publikujte projekt serveru.
+3. Při úpravách souboru na místním počítači znovu publikujte projekt serveru.

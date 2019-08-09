@@ -1,6 +1,6 @@
 ---
-title: Vytvoření externí App Service environment – Azure
-description: Vysvětluje, jak vytvořit prostředí služby App Service při vytváření aplikace nebo samostatné
+title: Vytvoření externího prostředí App Service – Azure
+description: Vysvětluje, jak vytvořit prostředí App Service při vytváření aplikace nebo samostatného.
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -15,168 +15,168 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e04dfa4148213e88aa46e464a31cdd9b6125e0bf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/08/2019
 ms.locfileid: "67705766"
 ---
-# <a name="create-an-external-app-service-environment"></a>Vytvoření externí App Service environment
+# <a name="create-an-external-app-service-environment"></a>Vytvoření externího prostředí App Service
 
 Azure App Service Environment je nasazení služby Azure App Service do podsítě ve virtuální síti Azure.
 
 > [!NOTE]
-> Každá služba App Service Environment má virtuální IP (VIP), který slouží ke kontaktování služby App Service Environment.
+> Každý App Service Environment má virtuální IP adresu (VIP), která se dá použít ke kontaktování App Service Environment.
 
 Služba App Service Environment (ASE) se dá nasadit dvěma způsoby:
 
 - Pomocí virtuální IP adresy na externí IP adresu – často se označuje jako externí služba ASE
-- Pomocí virtuální IP adresy na interní IP adresa často se označuje ILB ASE protože interním koncovým bodem je interní zatížení Balancer (ILB).
+- S VIP na interní IP adrese, která se často označuje jako interního nástroje pomocného mechanismu, protože interní koncový bod je interní Load Balancer (interního nástroje).
 
-Tento článek ukazuje, jak vytvořit externí služby ASE. Přehled služby ASE najdete v tématu [Úvod do služby App Service Environment][Intro]. For information on how to create an ILB ASE, see [Create and use an ILB ASE][MakeILBASE].
+V tomto článku se dozvíte, jak vytvořit externí pomocný objekt pro vytváření. Přehled pomocného mechanismu služby najdete v [úvodu k App Service Environment][Intro]. Informace o tom, jak vytvořit interního nástroje pomocného mechanismu pro vytváření, najdete v tématu [Vytvoření a použití POmocného mechanismu interního nástroje][MakeILBASE].
 
-## <a name="before-you-create-your-ase"></a>Před vytvořením služby ASE
+## <a name="before-you-create-your-ase"></a>Před vytvořením pomocného mechanismu
 
-Po vytvoření služby ASE, nelze změnit následující:
+Po vytvoření pomocného mechanismu služby nemůžete změnit následující:
 
 - Location
 - Subscription
 - Resource group
-- Použít virtuální síť
-- Podsíť používá
+- Použitá virtuální síť
+- Použitá podsíť
 - Velikost podsítě
 
 > [!NOTE]
-> Vyberete virtuální síť a zadejte podsíť, ujistěte se, že je dostatečně velký pro přizpůsobení budoucímu růstu a potřeby škálování. Doporučujeme velikost `/24` s 256 adres.
+> Když zvolíte virtuální síť a zadáte podsíť, ujistěte se, že je dostatečně velká, aby vyhovovala budoucím požadavkům na růst a škálování. Doporučujeme velikost `/24` s 256 adresami.
 >
 
-## <a name="three-ways-to-create-an-ase"></a>Tři způsoby, jak vytvořit službu ASE
+## <a name="three-ways-to-create-an-ase"></a>Tři způsoby vytvoření pomocného mechanismu
 
-Existují tři způsoby, jak vytvořit službu ASE:
+Existují tři způsoby, jak vytvořit pomocného mechanismu řízení:
 
-- **Při vytváření plánu služby App Service**. Tato metoda vytvoří službu ASE a plán služby App Service v jednom kroku.
-- **Jako samostatnou akci**. Tato metoda vytvoří samostatnou službu ASE, což je služba ASE s žádné v ní. Tato metoda je pokročilejší proces vytvoření služby ASE. Použijete ji k vytvoření služby ASE s ILB.
-- **Ze šablony Azure Resource Manageru**. Tato metoda je pro zkušené uživatele. Další informace najdete v tématu [vytvoření ASE ze šablony][MakeASEfromTemplate].
+- **Při vytváření plánu App Service**. Tato metoda vytvoří pomocného průvodce a plán App Service v jednom kroku.
+- **Jako samostatnou akci**. Tato metoda vytvoří samostatný objekt pro vytváření, což je pomocným mechanismem, který v něm není nic. Tato metoda je pokročilejším procesem vytvoření pomocného mechanismu. Použijete ho k vytvoření pomocného objektu s interního nástroje.
+- **Ze šablony Azure Resource Manager**. Tato metoda je určena pro pokročilé uživatele. Další informace najdete v tématu [Vytvoření POmocného mechanismu ze šablony][MakeASEfromTemplate].
 
-Externí služba ASE má veřejnou virtuální IP adresy, což znamená, že všechny přenosy HTTP/HTTPS k aplikacím ve službě ASE narazí na IP adresu přístupné z Internetu. Služba ASE s ILB má IP adresu z podsítě používané služby ASE. Aplikace hostované ve službě ASE s ILB nejsou přímo zveřejněné Internetu.
+Externí přístupový modul pro čtení má veřejnou virtuální IP adresu, což znamená, že všechny přenosy HTTP/HTTPS do aplikací v pomocném mechanismu přístupu narazí na internetovou IP adresu. Služba pomocného objektu s interního nástroje má IP adresu z podsítě, kterou používá pomocným mechanismem řízení. Aplikace hostované v pomocném mechanismu interního nástroje se nezveřejňují přímo na internetu.
 
-## <a name="create-an-ase-and-an-app-service-plan-together"></a>Vytvoření služby ASE a plán služby App Service společně
+## <a name="create-an-ase-and-an-app-service-plan-together"></a>Vytvoření společně s pomocným mechanismem a App Servicem plánem
 
-Plán služby App Service je kontejner aplikace. Při vytváření aplikace ve službě App Service, zvolte nebo vytvořte plán služby App Service. Služby App Service Environment podržte plány služby App Service a plány služby App Service uchování aplikace.
+Plán App Service je kontejner aplikací. Když vytváříte aplikaci v App Service, zvolíte nebo vytvoříte plán App Service. App Service prostředí uchovávají App Service plány a App Service plány uchovávají aplikace.
 
-Vytvoření služby ASE, při vytváření plánu služby App Service:
+Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
-1. V [webu Azure portal](https://portal.azure.com/)vyberte **vytvořit prostředek** > **Web + mobilní zařízení** > **webovou aplikaci**.
+1. V [Azure Portal](https://portal.azure.com/)vyberte **vytvořit prostředek** > **web a mobilní zařízení** > **webovou aplikaci**.
 
     ![Vytvoření webové aplikace][1]
 
-2. Vyberte své předplatné. Aplikace a služby ASE se vytvoří ve stejném předplatném.
+2. Vyberte své předplatné. Aplikace a pomocného mechanismu se vytvoří ve stejných předplatných.
 
-3. Vyberte nebo vytvořte skupinu prostředků. Se skupinami prostředků můžete spravovat související prostředky Azure jako celek. Skupiny prostředků také jsou užitečné, když vytvořit pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [Přehled Azure Resource Manageru][ARMOverview].
+3. Vyberte nebo vytvořte skupinu prostředků. Pomocí skupin prostředků můžete spravovat související prostředky Azure jako jednotku. Skupiny prostředků jsou také užitečné, když vytváříte pravidla Access Control založená na rolích pro vaše aplikace. Další informace najdete v tématu [Přehled Azure Resource Manageru][ARMOverview].
 
-4. Vyberte svůj operační systém (Windows, Linuxu a Dockeru). 
+4. Vyberte svůj operační systém (Windows, Linux nebo Docker). 
 
-5. Vyberte plán služby App Service a pak vyberte **vytvořit nový**. Linuxové webové aplikace a webové aplikace Windows nemůžou být ve stejném plánu služby App Service, ale může být ve stejné službě App Service Environment. 
+5. Vyberte plán App Service a pak vyberte **vytvořit novou**. Webové aplikace a webové aplikace pro Linux nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment. 
 
     ![Nový plán služby App Service][2]
 
-6. V **umístění** rozevíracího seznamu vyberte oblast, ve kterém chcete vytvořit službu ASE. Pokud vyberete stávající služby ASE, nové služby ASE se nevytvoří. Plán služby App Service se vytvoří ve službě ASE, kterou jste vybrali. 
+6. V rozevíracím seznamu **umístění** vyberte oblast, ve které chcete vytvořit pomocného panelu. Když vyberete existující pomocným mechanismem, nevytvoří se nový. V rámci pomocného mechanismu, který jste vybrali, se vytvoří plán App Service. 
 
-7. Vyberte **cenová úroveň**a zvolte jednu z **izolované** ceny skladových položek. Pokud se rozhodnete **izolované** SKU karty a umístění, které není služba ASE nové služby ASE se vytvoří v příslušném umístění. Chcete-li zahájit proces vytvoření služby ASE, vyberte **vyberte**. **Izolované** SKU je k dispozici pouze ve spojení s ASE. Také nelze použít jiné cenové skladová položka ve službě ASE jiné než **izolované**. 
+7. Vyberte **cenovou úroveň**a zvolte jednu z **izolovaných** SKU s cenami. Pokud zvolíte kartu **izolované** SKU a umístění, které není pomocným mechanismem, vytvoří se v tomto umístění nový pomocný objekt pro vytváření. Pokud chcete zahájit proces vytváření pomocného mechanismu, vyberte **Vybrat**. **Izolovaná** SKU je k dispozici pouze ve spojení s pomocným mechanismem řízení. Nemůžete také použít žádnou jinou cenovou jednotku v pomocném objektu, který je jiný než **izolovaný**. 
 
     ![Výběr cenové úrovně][3]
 
-8. Zadejte název vaší služby ase. Tento název se používá v názvu adresovatelný pro vaše aplikace. Pokud je název služby ASE _appsvcenvdemo_, název domény je *. appsvcenvdemo.p.azurewebsites.net*. Pokud vytvoříte aplikaci s názvem *mytestapp*, je na mytestapp.appsvcenvdemo.p.azurewebsites.net adresovatelný. Prázdné znaky nelze použít v názvu. Pokud budete používat velká písmena, název domény je celkový počet malá verze s tímto názvem.
+8. Zadejte název pro pomocného správce. Tento název se používá v adresních názvech pro vaše aplikace. Pokud je název pomocného mechanismu _appsvcenvdemo_, název domény je *. appsvcenvdemo.p.azurewebsites.NET*. Pokud vytvoříte aplikaci s názvem *MyTestApp*, tato adresa se dá adresovat na MyTestApp.appsvcenvdemo.p.azurewebsites.NET. V názvu nelze použít prázdné znaky. Pokud použijete velká písmena, název domény je celková verze tohoto názvu.
 
-    ![Nový název plánu služby App Service][4]
+    ![Název nového plánu App Service][4]
 
-9. Zadejte vaše Azure podrobnosti virtuální sítě. Vyberte buď **vytvořit nový** nebo **vybrat existující**. Možnost vybrat stávající virtuální síť je dostupná jenom v případě, že máte virtuální síť ve vybrané oblasti. Pokud vyberete **vytvořit nový**, zadejte název pro virtuální síť. Vytvoří se nová virtuální síť Resource Manageru s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **vybrat existující**, budete muset:
+9. Zadejte podrobnosti o virtuální síti Azure. Vyberte možnost **vytvořit novou** nebo **Vyberte existující**. Možnost výběru existující virtuální sítě je dostupná jenom v případě, že ve vybrané oblasti máte virtuální síť. Pokud vyberete **vytvořit nový**, zadejte název virtuální sítě. Vytvoří se nová virtuální síť Správce prostředků s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **Vybrat existující**, budete potřebovat:
 
-    a. Blok adres virtuální sítě, vyberte, pokud máte více než jeden.
+    a. Vyberte blok adres virtuální sítě, pokud máte více než jeden.
 
-    b. Zadejte název nové podsítě.
+    b. Zadejte nový název podsítě.
 
-    c. Vyberte velikost podsítě. *Nezapomeňte vybrat velikost dostatečně velký pro přizpůsobení budoucímu růstu vaší služby ase.* Doporučujeme `/24`, která nabízí 128 adres a dokáže zpracovat maximální velikost služby ASE. Nedoporučujeme ale `/28`, například, protože nejsou k dispozici pouze 16 adres. Infrastruktura používá minimálně sedm adres a sítě Azure používá jiný 5. V `/28` podsítě, se připojíme maximálně pouze 3 a 4 instancí plánu služby App Service pro externí služby ASE škálování instance plánu služby App Service pro službu ASE.
+    c. Vyberte velikost podsítě. *Nezapomeňte si vybrat dostatečně velkou velikost, aby vyhovovala budoucímu růstu vašeho pomocného mechanismu.* Doporučujeme, `/24`abyste měli k dis128 adresám a mohli zpracovat maximální velikost pomocného mechanismu. Nedoporučujeme `/28`například, protože k dispozici jsou jenom 16 adres. Infrastruktura používá minimálně sedm adres a síť Azure používá další 5. `/28` V podsíti zůstanete s maximálním počtem 4 App Service instancí plánu pro externí pomocného mechanismu pro zápis a jenom 3 App Service plánování instancí pro interního nástroje.
 
     d. Vyberte rozsah IP adres podsítě.
 
-10. Vyberte **vytvořit** k vytvoření služby ASE. Tento proces také vytvoří plán služby App Service a aplikaci. Služby ASE, plán služby App Service a aplikace jsou všechno ve stejném předplatném a také ve stejné skupině prostředků. Pokud vaše služba ASE potřebuje do samostatné skupiny prostředků nebo pokud potřebujete službu ASE, postupujte podle kroků pro vytvoření služby ASE samostatně.
+10. Vyberte **vytvořit** a vytvořte tak pomocného mechanismu. Tento proces také vytvoří plán App Service a aplikaci. Pomocného nástroje, App Service plán a aplikace jsou všechny v rámci stejného předplatného a také ve stejné skupině prostředků. Pokud vaše pomocné služby potřebuje samostatnou skupinu prostředků, nebo pokud potřebujete interního nástroje pomocného mechanismu, postupujte podle pokynů pro vytvoření mechanismu řízení.
 
-## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Vytvoření služby ASE a Linuxovou webovou aplikaci pomocí vlastní image Dockeru dohromady
+## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Vytvořte si pomocného mechanismu pro čtení a webovou aplikaci pro Linux s využitím vlastní image Docker.
 
-1. V [webu Azure portal](https://portal.azure.com/), **vytvořit prostředek** > **Web + mobilní zařízení** > **Web App for Containers.** 
+1. V [Azure Portal](https://portal.azure.com/) **vytvořte** > web a mobilní zařízeníprostředku > **Web App for Containers.** 
 
     ![Vytvoření webové aplikace][7]
 
-1. Vyberte své předplatné. Aplikace a služby ASE se vytvoří ve stejném předplatném.
+1. Vyberte své předplatné. Aplikace a pomocného mechanismu se vytvoří ve stejných předplatných.
 
-1. Vyberte nebo vytvořte skupinu prostředků. Se skupinami prostředků můžete spravovat související prostředky Azure jako celek. Skupiny prostředků také jsou užitečné, když vytvořit pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [Přehled Azure Resource Manageru][ARMOverview].
+1. Vyberte nebo vytvořte skupinu prostředků. Pomocí skupin prostředků můžete spravovat související prostředky Azure jako jednotku. Skupiny prostředků jsou také užitečné, když vytváříte pravidla Access Control založená na rolích pro vaše aplikace. Další informace najdete v tématu [Přehled Azure Resource Manageru][ARMOverview].
 
-1. Vyberte plán služby App Service a pak vyberte **vytvořit nový**. Linuxové webové aplikace a webové aplikace Windows nemůžou být ve stejném plánu služby App Service, ale může být ve stejné službě App Service Environment. 
+1. Vyberte plán App Service a pak vyberte **vytvořit novou**. Webové aplikace a webové aplikace pro Linux nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment. 
 
     ![Nový plán služby App Service][8]
 
-1. V **umístění** rozevíracího seznamu vyberte oblast, ve kterém chcete vytvořit službu ASE. Pokud vyberete stávající služby ASE, nové služby ASE se nevytvoří. Plán služby App Service se vytvoří ve službě ASE, kterou jste vybrali. 
+1. V rozevíracím seznamu **umístění** vyberte oblast, ve které chcete vytvořit pomocného panelu. Když vyberete existující pomocným mechanismem, nevytvoří se nový. V rámci pomocného mechanismu, který jste vybrali, se vytvoří plán App Service. 
 
-1. Vyberte **cenová úroveň**a zvolte jednu z **izolované** ceny skladových položek. Pokud se rozhodnete **izolované** SKU karty a umístění, které není služba ASE nové služby ASE se vytvoří v příslušném umístění. Chcete-li zahájit proces vytvoření služby ASE, vyberte **vyberte**. **Izolované** SKU je k dispozici pouze ve spojení s ASE. Také nelze použít jiné cenové skladová položka ve službě ASE jiné než **izolované**. 
+1. Vyberte **cenovou úroveň**a zvolte jednu z **izolovaných** SKU s cenami. Pokud zvolíte kartu **izolované** SKU a umístění, které není pomocným mechanismem, vytvoří se v tomto umístění nový pomocný objekt pro vytváření. Pokud chcete zahájit proces vytváření pomocného mechanismu, vyberte **Vybrat**. **Izolovaná** SKU je k dispozici pouze ve spojení s pomocným mechanismem řízení. Nemůžete také použít žádnou jinou cenovou jednotku v pomocném objektu, který je jiný než **izolovaný**. 
 
     ![Výběr cenové úrovně][3]
 
-1. Zadejte název vaší služby ase. Tento název se používá v názvu adresovatelný pro vaše aplikace. Pokud je název služby ASE _appsvcenvdemo_, název domény je *. appsvcenvdemo.p.azurewebsites.net*. Pokud vytvoříte aplikaci s názvem *mytestapp*, je na mytestapp.appsvcenvdemo.p.azurewebsites.net adresovatelný. Prázdné znaky nelze použít v názvu. Pokud budete používat velká písmena, název domény je celkový počet malá verze s tímto názvem.
+1. Zadejte název pro pomocného správce. Tento název se používá v adresních názvech pro vaše aplikace. Pokud je název pomocného mechanismu _appsvcenvdemo_, název domény je *. appsvcenvdemo.p.azurewebsites.NET*. Pokud vytvoříte aplikaci s názvem *MyTestApp*, tato adresa se dá adresovat na MyTestApp.appsvcenvdemo.p.azurewebsites.NET. V názvu nelze použít prázdné znaky. Pokud použijete velká písmena, název domény je celková verze tohoto názvu.
 
-    ![Nový název plánu služby App Service][4]
+    ![Název nového plánu App Service][4]
 
-1. Zadejte vaše Azure podrobnosti virtuální sítě. Vyberte buď **vytvořit nový** nebo **vybrat existující**. Možnost vybrat stávající virtuální síť je dostupná jenom v případě, že máte virtuální síť ve vybrané oblasti. Pokud vyberete **vytvořit nový**, zadejte název pro virtuální síť. Vytvoří se nová virtuální síť Resource Manageru s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **vybrat existující**, budete muset:
+1. Zadejte podrobnosti o virtuální síti Azure. Vyberte možnost **vytvořit novou** nebo **Vyberte existující**. Možnost výběru existující virtuální sítě je dostupná jenom v případě, že ve vybrané oblasti máte virtuální síť. Pokud vyberete **vytvořit nový**, zadejte název virtuální sítě. Vytvoří se nová virtuální síť Správce prostředků s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **Vybrat existující**, budete potřebovat:
 
-    a. Blok adres virtuální sítě, vyberte, pokud máte více než jeden.
+    a. Vyberte blok adres virtuální sítě, pokud máte více než jeden.
 
-    b. Zadejte název nové podsítě.
+    b. Zadejte nový název podsítě.
 
-    c. Vyberte velikost podsítě. *Nezapomeňte vybrat velikost dostatečně velký pro přizpůsobení budoucímu růstu vaší služby ase.* Doporučujeme `/24`, která nabízí 128 adres a dokáže zpracovat maximální velikost služby ASE. Nedoporučujeme ale `/28`, například, protože nejsou k dispozici pouze 16 adres. Infrastruktura používá minimálně sedm adres a sítě Azure používá jiný 5. V `/28` podsítě, se připojíme maximálně pouze 3 a 4 instancí plánu služby App Service pro externí služby ASE škálování instance plánu služby App Service pro službu ASE.
+    c. Vyberte velikost podsítě. *Nezapomeňte si vybrat dostatečně velkou velikost, aby vyhovovala budoucímu růstu vašeho pomocného mechanismu.* Doporučujeme, `/24`abyste měli k dis128 adresám a mohli zpracovat maximální velikost pomocného mechanismu. Nedoporučujeme `/28`například, protože k dispozici jsou jenom 16 adres. Infrastruktura používá minimálně sedm adres a síť Azure používá další 5. `/28` V podsíti zůstanete s maximálním počtem 4 App Service instancí plánu pro externí pomocného mechanismu pro zápis a jenom 3 App Service plánování instancí pro interního nástroje.
 
     d. Vyberte rozsah IP adres podsítě.
 
-1.  Vyberte "Konfigurace kontejneru."
-    * Zadejte název vlastní image (můžete použít Azure Container Registry a Docker Hubu, privátního registru). Pokud nechcete použít vlastní kontejner, vám stačí dodejte vlastní kód a integrované image pomocí služby App Service v Linuxu pomocí výše uvedených pokynů. 
+1.  Vyberte konfigurovat kontejner.
+    * Zadejte název vlastní image (můžete použít Azure Container Registry, Docker Hub a vlastní privátní registr). Pokud nechcete používat svůj vlastní kontejner, můžete ho jednoduše přenést a použít integrovanou image s App Service v systému Linux pomocí výše uvedených pokynů. 
 
-    ![Konfigurace kontejneru][9]
+    ![Konfigurovat kontejner][9]
 
-1. Vyberte **vytvořit** k vytvoření služby ASE. Tento proces také vytvoří plán služby App Service a aplikaci. Služby ASE, plán služby App Service a aplikace jsou všechno ve stejném předplatném a také ve stejné skupině prostředků. Pokud vaše služba ASE potřebuje do samostatné skupiny prostředků nebo pokud potřebujete službu ASE, postupujte podle kroků pro vytvoření služby ASE samostatně.
+1. Vyberte **vytvořit** a vytvořte tak pomocného mechanismu. Tento proces také vytvoří plán App Service a aplikaci. Pomocného nástroje, App Service plán a aplikace jsou všechny v rámci stejného předplatného a také ve stejné skupině prostředků. Pokud vaše pomocné služby potřebuje samostatnou skupinu prostředků, nebo pokud potřebujete interního nástroje pomocného mechanismu, postupujte podle pokynů pro vytvoření mechanismu řízení.
 
 
-## <a name="create-an-ase-by-itself"></a>Vytvoření prostředí ASE sám o sobě
+## <a name="create-an-ase-by-itself"></a>Vytvoření namocného mechanismu služby samostatně
 
-Pokud vytvoříte samostatné služby ASE, nemá žádné v ní. Prázdný služby ASE se stále účtují měsíční poplatky za infrastrukturu. Postupujte podle těchto kroků k vytvoření služby ASE s ILB, nebo vytvořit službu ASE ve vlastní skupině prostředků. Po vytvoření služby ASE se v něm můžete vytvořit aplikace s použitím normální proces. Jako umístění vyberte nové služby ASE.
+Pokud vytvoříte samostatného pomocného mechanismu řízení, nemá nic v něm. Prázdnému pomocnému mechanismu řízení se pořád účtuje měsíční poplatek za infrastrukturu. Postupujte podle těchto kroků a vytvořte pomocí služby interního nástroje nebo vytvořte v vlastní skupině prostředků pomocného mechanismu řízení. Po vytvoření pomocného mechanismu služby můžete v něm vytvářet aplikace pomocí normálního procesu. Jako umístění vyberte nový pomocného panelu.
 
-1. Na Azure Marketplace vyhledejte **služby App Service Environment**, nebo vyberte **vytvořit prostředek** > **mobilní Web** > **aplikace Služba prostředí**. 
+1. Vyhledejte Azure Marketplace pro **App Service Environment**nebo vyberte **vytvořit prostředek** > **Web mobilní** > **App Service Environment**. 
 
-1. Zadejte název vaší služby ASE. Tento název se používá pro aplikace vytvořené ve službě ASE. Pokud je název *mynewdemoase*, je název subdomény *. mynewdemoase.p.azurewebsites.net*. Pokud vytvoříte aplikaci s názvem *mytestapp*, je na mytestapp.mynewdemoase.p.azurewebsites.net adresovatelný. Prázdné znaky nelze použít v názvu. Pokud budete používat velká písmena, název domény je celkový počet malá verzí názvu. Pokud používáte ILB, název vaší služby ASE se nepoužívá v vaše subdomény, ale místo toho výslovně stanovena během vytváření služby ASE.
+1. Zadejte název vašeho pomocného programu. Tento název se používá pro aplikace vytvořené v pomocném formuláři. Pokud je název *mynewdemoase*, název subdomény je *. mynewdemoase.p.azurewebsites.NET*. Pokud vytvoříte aplikaci s názvem *MyTestApp*, tato adresa se dá adresovat na MyTestApp.mynewdemoase.p.azurewebsites.NET. V názvu nelze použít prázdné znaky. Použijete-li velká písmena, název domény je celková verze názvu. Pokud použijete interního nástroje, váš název pomocného mechanismu se v subdoméně nepoužije, ale místo toho se zadává explicitně během vytváření pomocného mechanismu.
 
-    ![Služba ASE pojmenování][5]
+    ![Pojmenování pomocného mechanismu][5]
 
-1. Vyberte své předplatné. Toto předplatné je také všechny aplikace ve službě ASE používat. Nelze vložit svoji službu ASE ve virtuální síti, která je v jiném předplatném.
+1. Vyberte své předplatné. Toto předplatné je zároveň ta, kterou používají všechny aplikace v pomocném formuláři. Do virtuální sítě, která je v jiném předplatném, nemůžete dát svůj příhlasu.
 
-1. Vyberte nebo zadejte novou skupinu prostředků. Skupina prostředků použitá pro vaši službu ASE musí být stejný jako ten, který se používá pro vaši virtuální síť. Pokud vyberete stávající virtuální síť, výběr skupiny prostředků pro vaši službu ASE se aktualizuje tak, aby odrážely, který vaší virtuální sítě. *Můžete vytvořit službu ASE s skupinu prostředků, která se liší od skupiny prostředků virtuální sítě, pokud použijete šablonu Resource Manageru.* Vytvoření ASE ze šablony najdete v tématu [vytvoření služby App Service environment pomocí šablony][MakeASEfromTemplate].
+1. Vyberte nebo zadejte novou skupinu prostředků. Skupina prostředků použitá pro pomocného správce musí být stejná jako ta, která se používá ve vaší virtuální síti. Když vyberete existující virtuální síť, aktualizuje se výběr skupiny prostředků pro pomocného mechanismu, aby odrážela vaši virtuální síť. *Pokud použijete šablonu Správce prostředků, můžete vytvořit pomocné služby se skupinou prostředků, která se liší od skupiny prostředků virtuální sítě.* Informace o vytvoření služby pomocného mechanismu ze šablony najdete v tématu [vytvoření App Serviceho prostředí ze šablony][MakeASEfromTemplate].
 
     ![Výběr skupiny prostředků][6]
 
-1. Vyberte virtuální síť a umístění. Můžete vytvořit novou virtuální síť nebo vybrat stávající virtuální síť: 
+1. Vyberte svou virtuální síť a umístění. Můžete vytvořit novou virtuální síť nebo vybrat existující virtuální síť: 
 
     * Pokud vyberete novou virtuální síť, můžete zadat její název a umístění. 
     
-    * Nové virtuální sítě má 192.168.250.0/23 rozsah adres a podsíť s názvem výchozí. Podsíť je definován jako 192.168.250.0/24. Můžete vybrat pouze virtuální síť Resource Manageru. **Typ VIP** výběr určuje, zda vaše služba ASE je přímo přístupný z Internetu (externí), nebo pokud používá ILB. Další informace o těchto možnostech najdete v tématu [vytvoření a použití interního nástroje load balancer pomocí služby App Service environment][MakeILBASE]. 
+    * Nová virtuální síť má rozsah adres 192.168.250.0/23 a podsíť s názvem default. Podsíť je definovaná jako 192.168.250.0/24. Můžete vybrat jenom Správce prostředků virtuální síť. Výběr **typu VIP** určuje, jestli k vašemu přimocnému objektu se dá získat přímý pøístup z Internetu (externí) nebo jestli používá interního nástroje. Další informace o těchto možnostech najdete v tématu [Vytvoření a použití interního nástroje pro vyrovnávání zatížení v prostředí App Service][MakeILBASE]. 
 
-      * Pokud vyberete **externí** pro **typ VIP**, můžete vybrat kolik externích IP adres v systému se vytvoří s pro účely založené na protokolu IP SSL. 
+      * Pokud pro **Typ VIP**vyberete **externí** , můžete vybrat, kolik externích IP adres se má systém vytvořit, pro účely protokolu SSL založeného na protokolu IP. 
     
-      * Pokud vyberete **interní** pro **typ VIP**, je nutné zadat doménu, která používá vaše služba ASE. Můžete nasadit službu ASE do virtuální sítě, které se používají rozsahy adres veřejné nebo soukromé. Chcete-li používat virtuální síť s veřejnou adresu rozsahu, vytvořte virtuální síť předem. 
+      * Pokud pro **Typ VIP**vyberete **interní** , musíte zadat doménu, kterou používá váš správce přidaných mechanismů. Pomocného mechanismu můžete nasadit do virtuální sítě, která používá veřejné nebo soukromé rozsahy adres. Chcete-li použít virtuální síť s rozsahem veřejných adres, je nutné vytvořit virtuální síť předem. 
     
-    * Pokud vyberete stávající virtuální síť, novou podsíť se vytvoří při vytvoření služby ASE. *Nelze použít předem vytvořený podsítě na portálu. Pokud použijete šablonu Resource Manageru, můžete vytvořit službu ASE s existující podsítí.* Vytvoření ASE ze šablony najdete v tématu [vytvoření služby App Service Environment pomocí šablony][MakeASEfromTemplate].
+    * Pokud vyberete existující virtuální síť, vytvoří se při vytvoření pomocného mechanismu řízení Nová podsíť. *V portálu nemůžete použít předem vytvořenou podsíť. Pokud použijete šablonu Správce prostředků, můžete vytvořit pomocného programu s existující podsítí.* Informace o vytvoření pomocného mechanismu ze šablony naleznete v tématu [vytvoření App Service Environment ze šablony][MakeASEfromTemplate].
 
 ## <a name="app-service-environment-v1"></a>App Service Environment v1
 
-Přesto vytvořit instance první verzi služby App Service Environment (ASEv1). Chcete-li spustit tento proces, na Marketplace vyhledejte **služby App Service Environment v1**. Vytvoření služby ASE stejným způsobem, který vytvoříte samostatné služby ASE. Po dokončení, vaše ASEv1 obsahuje dva front-endů a dva pracovní procesy. ASEv1 musí spravovat front-endů a pracovních procesů. Přidávají se automaticky při vytváření vašich plánech služby App Service. Front-endů fungovat jako koncové body HTTP/HTTPS a odesílat provoz do zaměstnanců. Zaměstnanci jsou role, které jsou hostiteli vaše aplikace. Počet front-endů a pracovních procesů můžete upravit po vytvoření služby ASE. 
+Stále můžete vytvářet instance první verze App Service Environment (ASEv1). Pokud chcete tento proces spustit, vyhledejte na webu Marketplace **App Service Environment v1**. Pomocného mechanismu pro vytváření můžete vytvořit stejným způsobem jako samostatný pomocným mechanismem pro vytváření. Až se dokončí, vaše ASEv1 má dvě front-endy a dva pracovní procesy. V ASEv1 musíte spravovat front-endy a pracovníky. Při vytváření plánů App Service nejsou automaticky přidány. Front-endy slouží jako koncové body HTTP/HTTPS a odesílají do pracovních procesů provoz. Pracovní procesy jsou role hostující vaše aplikace. Po vytvoření pomocného mechanismu služeb můžete upravit množství front-endy a pracovníků. 
 
-Další informace o verzi ASEv1 najdete v tématu [Úvod do služby App Service Environment v1][ASEv1Intro]. For more information on scaling, managing, and monitoring ASEv1, see [How to configure an App Service Environment][ConfigureASEv1].
+Další informace o ASEv1 najdete v tématu [Úvod do App Service Environment v1][ASEv1Intro]. Další informace o škálování, správě a monitorování ASEv1 naleznete v tématu [How to Configure a App Service Environment][ConfigureASEv1].
 
 <!--Image references-->
 [1]: ./media/how_to_create_an_external_app_service_environment/createexternalase-create.png

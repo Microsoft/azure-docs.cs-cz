@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: f51c6bdc6cb2e381d5d5b855bf2f87b07d7fc180
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 0025f488f6a9b0af4e05a8bdf3ddf36c089d4d9f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638424"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856117"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>Nasazení modelu pomocí vlastní image Docker
 
@@ -40,8 +40,8 @@ Tento dokument je rozdělen do dvou částí:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní skupina služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](setup-create-workspace.md) .
-* Sada Azure Machine Learning SDK. Další informace najdete v části věnované sadě Python SDK v článku [Vytvoření pracovního prostoru](setup-create-workspace.md#sdk) .
+* Pracovní skupina služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
+* [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
 * [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * [Azure Container Registry](/azure/container-registry) nebo jiný registr Docker, který je přístupný na internetu.

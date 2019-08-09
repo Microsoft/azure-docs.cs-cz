@@ -1,41 +1,41 @@
 ---
-title: Ověření mezi tenanty – Azure Resource Manageru
-description: Popisuje, jak Azure Resource Manager zpracovává požadavky na ověření mezi tenanty.
+title: Ověřování napříč klienty – Azure Resource Manager
+description: Popisuje, jak Azure Resource Manager zpracovává žádosti o ověření napříč klienty.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5370b9b6d6a8bee82f8feca6dbcbcd78a4c12193
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 625a17156eaf199af0d51151c6fd37769b8f7b4a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205613"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848752"
 ---
-# <a name="authenticate-requests-across-tenants"></a>Ověřování požadavků mezi tenanty
+# <a name="authenticate-requests-across-tenants"></a>Ověřování žádostí napříč klienty
 
-Při vytváření aplikace s více tenanty, budete muset zpracování žádosti o ověření prostředků, které jsou v různých tenantech. Běžný scénář, kdy je, když virtuální počítač do jednoho tenanta musí připojit k virtuální síti v jiném tenantovi. Azure Resource Manager poskytuje hodnotu hlavičky pro ukládání pomocné tokeny k ověřování požadavků na různých tenantech.
+Při vytváření víceklientské aplikace možná budete muset zpracovat žádosti o ověření pro prostředky, které jsou v různých klientech. Běžným scénářem je, že virtuální počítač v jednom tenantovi se musí připojit k virtuální síti v jiném tenantovi. Azure Resource Manager poskytuje hodnotu hlavičky pro uložení pomocných tokenů pro ověření požadavků na různé klienty.
 
-## <a name="header-values-for-authentication"></a>Hodnoty hlavičky pro ověřování
+## <a name="header-values-for-authentication"></a>Hodnoty hlaviček pro ověřování
 
-Požadavek má následující hodnoty hlavičky ověřování:
+Požadavek má následující hodnoty hlaviček ověřování:
 
 | Název hlavičky | Popis | Příklad hodnoty |
 | ----------- | ----------- | ------------ |
-| Autorizace | Primární token | Bearer &lt;primary-token&gt; |
-| x-ms-authorization-auxiliary | Pomocné tokeny | Nosiče &lt;pomocné token1&gt;; EncryptedBearer &lt;pomocné token2&gt;; Nosiče &lt;pomocné token3&gt; |
+| Authorization | Primární token | &lt;Primární token nosiče&gt; |
+| x-MS-Authorization – pomocná | Pomocné tokeny | &lt;&gt; &lt;Nosič pomocná – token1&gt;, EncryptedBearer AUX-token2, nosič pomoc – token3 &lt;&gt; |
 
-Pomocné záhlaví může obsahovat až tři pomocných tokenů. 
+Pomocné záhlaví může obsahovat až tři pomocné tokeny. 
 
-V kódu vaší aplikace s více tenanty získání tokenu ověřování u jiných klientů a uložit je do pomocné záhlaví. Všechny tokeny musí být ze stejného uživatele nebo aplikace. Uživatel nebo aplikace musí mít pozvánku jako hosta do jiných tenantů.
+V kódu aplikace pro více tenantů Získejte ověřovací token pro ostatní klienty a uložte je do pomocných hlaviček. Všechny tokeny musí být ze stejného uživatele nebo aplikace. Uživatel nebo aplikace musí být pozvaní jako host pro ostatní klienty.
 
-## <a name="processing-the-request"></a>Zpracování žádosti
+## <a name="processing-the-request"></a>Zpracovává se žádost.
 
-Pokud vaše aplikace odešle požadavek do Resource Manageru, žádost spuštění pod identitou z primárního tokenu. Primární token musí být platná a nevypršela. Tento token musí být z klienta, která může spravovat předplatné.
+Když aplikace pošle požadavek na Správce prostředků, žádost se spustí pod identitou z primárního tokenu. Primární token musí být platný a nesmí být v platnosti. Tento token musí být z tenanta, který může spravovat předplatné.
 
-Když žádost odkazuje na prostředek z jiného tenanta, Resource Manageru zkontroluje pomocné tokeny k určení, pokud může požadavek zpracovat. Všechny pomocných tokenů v záhlaví musí být platná a nevypršela. Pokud žádné tokenu vypršela platnost, Resource Manageru vrátí kód odpovědi 401. Odpověď obsahuje klienta, ID a ID tenanta z tokenu, který není platný. Pokud pomocné záhlaví obsahuje neplatný token pro tenanta, je mezi tenanta požadavek zpracovat.
+Když požadavek odkazuje na prostředek z jiného tenanta, Správce prostředků zkontroluje pomocné tokeny a určí, jestli se žádost dá zpracovat. Všechny pomocné tokeny v hlavičce musí být platné a neprošlé. Pokud vypršela platnost nějakého tokenu, Správce prostředků vrátí kód odpovědi 401. Odpověď zahrnuje ID klienta a ID tenanta z tokenu, který není platný. Pokud pomocné záhlaví obsahuje pro tenanta platný token, je zpracován požadavek mezi klienty.
 
-## <a name="next-steps"></a>Další postup
-* Další informace o odeslání žádosti o ověření s rozhraními API Azure Resource Manageru najdete v tématu [ověřovací Resource Manageru pomocí rozhraní API pro přístup k předplatným](resource-manager-api-authentication.md).
-* Další informace o tokeny, naleznete v tématu [přístupové tokeny služby Azure Active Directory](/azure/active-directory/develop/access-tokens).
+## <a name="next-steps"></a>Další kroky
+* Další informace o posílání žádostí o ověření pomocí rozhraní API Azure Resource Manager najdete v tématu [použití rozhraní API pro ověřování Správce prostředků k přístupu k](resource-manager-api-authentication.md)předplatným.
+* Další informace o tokenech najdete v tématu [Azure Active Directory Access tokens](/azure/active-directory/develop/access-tokens).

@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: c7c0d2e3fb818f74a65502674188c523d23729e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05f2f52da90f499f7ac16de179d9967b97579997
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606740"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849189"
 ---
-# <a name="application-insights-connector-management-solution-deprecated"></a>Řešení Application Insights Connector správy (zastaralé)
+# <a name="application-insights-connector-management-solution-deprecated"></a>Řešení pro správu Application Insights Connector (zastaralé)
 
 ![Application Insights symbol](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> Díky podpoře [dotazy napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md), řešení pro správu konektoru Application Insights se už nevyžaduje. Bylo zastaralé a odeberou z Azure Marketplace, spolu s na portálu OMS, který byl oficiálně zastaralé na 15. ledna 2019 pro komerčním cloudu Azure. Ho se vyřadí z provozu 30. března 2019 pro Azure US Government cloud.
+> S podporou [dotazů mezi prostředky](../../azure-monitor/log-query/cross-workspace-query.md)už řešení pro správu Application Insights Connector není potřeba. Už se nepoužívá a odebírá se z Azure Marketplace společně s portálem OMS, který byl oficiálně zastaralý od 15. ledna 2019 pro komerční cloud Azure. Vyřadí se od 30. března 2019 pro státní správu Azure USA.
 >
->Existující připojení budou nadále fungovat až do 30. června 2019.  S vyřazení portálu OMS neexistuje žádný způsob, jak nakonfigurovat a odeberte existující připojení z portálu. Naleznete v tématu [odebrání konektoru s prostředím PowerShell](#removing-the-connector-with-powershell) níže pro skript na odebrání existující připojení přes PowerShell.
+>Stávající připojení budou fungovat i do 30. června 2019.  V případě zastaralého portálu OMS neexistuje způsob, jak nakonfigurovat a odebrat existující připojení z portálu. Pokud chcete pomocí PowerShellu odebrat existující připojení, přečtěte si téma [Odebrání konektoru pomocí PowerShellu](#removing-the-connector-with-powershell) .
 >
->Pokyny k dotazování služby Application Insights můžete vytvářet protokoly dat pro více aplikací, najdete v článku [sjednocení několik prostředků Azure monitoru Application Insights](../log-query/unify-app-resource-data.md). Další informace o vyřazení portálu OMS najdete v tématu [portálu OMS do Azure](../../azure-monitor/platform/oms-portal-transition.md).
+>Pokyny k dotazování na data protokolu Application Insights pro více aplikací najdete v tématu [sjednocení více Azure Monitorch Application Insightsch prostředků](../log-query/unify-app-resource-data.md). Další informace o zastaralých portálech OMS najdete v tématu [Přesun portálu OMS do Azure](../../azure-monitor/platform/oms-portal-transition.md).
 >
 > 
 
@@ -192,10 +192,10 @@ Záznam s *typ* z *ApplicationInsights* se vytvoří pro každý typ vstupní da
 | deviceType | Klientské zařízení |
 | ScreenResolution |   |
 | Kontinent | Kontinent původu žádosti |
-| Země | Země původu žádosti |
+| Country | Země nebo oblast, kde žádost pochází |
 | Kraj | Provincie, stavu nebo národní prostředí původu žádosti |
 | Město | Město nebo obec původu žádosti |
-| isSynthetic | Určuje, zda byla vytvořena uživatelem nebo automatizované metodou. True = generovaným uživateli nebo false = automatizované – metoda |
+| isSynthetic | Určuje, zda byla vytvořena uživatelem nebo automatizované metodou. True = automatizovaná metoda nebo false = generovaná uživatelem |
 | SamplingRate | Procento telemetrii generovanou sady SDK, která je odeslána na portál. V rozsahu od 0,0 100.0. |
 | SampledCount | 100/(SamplingRate). Například, 4 =&gt; 25 % |
 | Ověření identity | True nebo False |
@@ -272,8 +272,8 @@ Záznam s *typ* z *ApplicationInsights* se vytvoří pro každý typ vstupní da
 
 Toto řešení nemá sadu ukázky hledání v protokolech zobrazeny na řídicím panelu. Ale ukázkové dotazy prohledávání protokolu s popisy jsou uvedeny v [zobrazení Application Insights Connector informace](#view-application-insights-connector-information) oddílu.
 
-## <a name="removing-the-connector-with-powershell"></a>Odebrání konektoru s využitím Powershellu
-S vyřazení portálu OMS neexistuje žádný způsob, jak nakonfigurovat a odeberte existující připojení z portálu. Můžete odstranit stávající připojení pomocí následujícího skriptu prostředí PowerShell. Musíte být vlastníkem nebo přispěvatelem pracovního prostoru a čtečky prostředek služby Application Insights k provedení této operace.
+## <a name="removing-the-connector-with-powershell"></a>Odebrání konektoru pomocí PowerShellu
+V případě zastaralého portálu OMS neexistuje způsob, jak nakonfigurovat a odebrat existující připojení z portálu. Existující připojení můžete odebrat pomocí následujícího skriptu PowerShellu. Tuto operaci lze provést pouze v případě, že jste vlastníkem nebo přispěvatelem pracovního prostoru a čtecího modulu Application Insightsho prostředku.
 
 ```powershell
 $Subscription_app = "App Subscription Name"
@@ -290,7 +290,7 @@ Set-AzContext -SubscriptionId $Subscription_workspace
 Remove-AzOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
 ```
 
-Můžete načíst seznam aplikací s použitím následujícího skriptu Powershellu, která volá volání rozhraní REST API. 
+Seznam aplikací můžete načíst pomocí následujícího skriptu prostředí PowerShell, který vyvolá volání REST API. 
 
 ```powershell
 Connect-AzAccount
@@ -311,13 +311,13 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-Tento skript vyžaduje ověřovací token nosiče k ověřování vůči Azure Active Directory. Jeden způsob, jak načíst tento token používá článek v [webu Dokumentace k rozhraní REST API](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate). Klikněte na tlačítko **vyzkoušet** a přihlaste se k předplatnému Azure. Můžete zkopírovat nosný token z **ve verzi Preview požádat o** jak je znázorněno na následujícím obrázku.
+Tento skript vyžaduje ověřovací token nosiče pro ověřování proti Azure Active Directory. Jedním ze způsobů, jak tento token načíst, je použití článku na [webu dokumentace REST API](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate). Klikněte na **vyzkoušet** a přihlaste se k předplatnému Azure. Z **náhledu žádosti** můžete zkopírovat nosný token, jak je znázorněno na následujícím obrázku.
 
 
 ![Nosný token](media/app-insights-connector/bearer-token.png)
 
 
-Můžete také načíst seznam aplikací pomocí protokolu dotazu:
+Seznam aplikací můžete také načíst pomocí dotazu protokolu:
 
 ```Kusto
 ApplicationInsights | summarize by ApplicationName

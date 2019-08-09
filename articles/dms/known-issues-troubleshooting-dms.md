@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: e33f195ea821b34147c748e9c0aa64cb63b58fdc
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a35e0496c7e36d42e28a64fef438fe56713d3c78
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249981"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855005"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Řešení běžných problémů s Azure Database Migration Service a chyb
 
@@ -54,11 +54,11 @@ Když migrujete z MySQL na Azure Database for MySQL pomocí Azure Database Migra
 
 Při zastavování instance Azure Database Migration Service se zobrazí následující chyba:
 
-* **Chyba:** Zastavení služby se nezdařilo. Chyba: {' error ': {' Code ': ' InvalidRequest ', ' Message ': ' jedna nebo více aktivit aktuálně běží. Pokud chcete službu zastavit, počkejte, až se aktivity dokončí, nebo tyto aktivity zastavte ručně a zkuste to znovu.}}
+* **Chyba:** Zastavení služby se nezdařilo. Chyba: {'error':{'code':'InvalidRequest','message':'Aktuálně běží jedna nebo více aktivit. Pokud chcete službu zastavit, počkejte, až se aktivity dokončí, nebo tyto aktivity zastavte ručně a zkuste to znovu.}}
 
 | Příčina         | Řešení |
 | ------------- | ------------- |
-| Tato chyba se zobrazí, když instance služby, kterou se pokoušíte zastavit, zahrnuje aktivity, které jsou pořád spuštěné nebo přítomné v projektech migrace. <br><br><br><br><br><br> | Zajistěte, aby v instanci Azure Database Migration Service, kterou se pokoušíte zastavit, neběžely žádné aktivity. Před pokusem o zastavení služby můžete také odstranit aktivity nebo projekty. Následující postup ukazuje, jak odebrat projekty pro vyčištění instance služby migrace odstraněním všech spuštěných úloh:<br>1. Install-Module-Name AzureRM. datamigration <br>2. Login-AzureRmAccount <br>3. SELECT-AzureRmSubscription-Subscription "\<subname >" <br> 4. Remove-AzureRmDataMigrationProject-name \<ProjectName >-ResourceGroupName \<RgName >-ServiceName \<ServiceName >-DeleteRunningTask |
+| Tato chyba se zobrazí, když instance služby, kterou se pokoušíte zastavit, zahrnuje aktivity, které jsou pořád spuštěné nebo přítomné v projektech migrace. <br><br><br><br><br><br> | Zajistěte, aby v instanci Azure Database Migration Service, kterou se pokoušíte zastavit, neběžely žádné aktivity. Před pokusem o zastavení služby můžete také odstranit aktivity nebo projekty. Následující postup ukazuje, jak odebrat projekty pro vyčištění instance služby migrace odstraněním všech spuštěných úloh:<br>1. Install-Module -Name AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3. SELECT-AzureRmSubscription-Subscription "\<subname >" <br> 4. Remove-AzureRmDataMigrationProject-name \<ProjectName >-ResourceGroupName \<RgName >-ServiceName \<ServiceName >-DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Při pokusu o spuštění Azure Database Migration Service došlo k chybě.
 
@@ -98,7 +98,7 @@ Pokud se pokoušíte připojit ke zdroji v průvodci projektem služby Azure Dat
 | ------------- | ------------- |
 | Při použití [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [vyžaduje](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) Azure Database Migration Service zřízení tří koncových bodů služby v podsíti Virtual Network přidružené ke službě:<br> --Service Bus koncový bod<br> – Koncový bod úložiště<br> --Koncový bod cílové databáze (například koncový bod SQL, koncový bod Cosmos DB)<br><br><br><br><br> | [Povolte](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) pro připojení ExpressRoute mezi zdrojem a Azure Database Migration Service požadované koncové body služby. <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>Chyba časového limitu při migraci databáze MySQL do Azure MySQL
+## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Chyba časového limitu při migraci databáze MySQL do Azure DB pro MySQL
 
 Když migrujete databázi MySQL do instance Azure Database for MySQL přes Azure Database Migration Service, migrace se nezdařila s následující chybou vypršení časového limitu:
 

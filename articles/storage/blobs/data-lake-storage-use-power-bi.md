@@ -1,18 +1,19 @@
 ---
 title: Analyzovat data v Azure Data Lake Storage Gen2 pomocí Power BI | Microsoft Docs
 description: Použití Power BI k analýze dat uložených v Azure Data Lake Storage Gen2
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.subservice: data-lake-storage-gen2
+ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
-ms.openlocfilehash: ea8ceddbcbc26b2dfad5ac0618b30cb8bdc052e7
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.reviewer: bensack
+ms.openlocfilehash: cb82d47be11570baf7865468c804162a20a7685f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336462"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855471"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Analýza dat v Azure Data Lake Storage Gen2 pomocí Power BI
 
@@ -94,7 +95,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
     ![Výsečový graf](media/data-lake-storage-use-power-bi/pie-chart.png)
 
-14. Výběrem konkrétní země z filtrů na úrovni stránek teď můžete zobrazit počet ovladačů v každém městě vybrané země. Například na kartě vizualizace  v části **filtry na úrovni stránky**vyberte **Brazílie**.
+14. Výběrem konkrétní země z filtrů na úrovni stránek teď můžete zobrazit počet ovladačů v každém městě vybrané země. Například na kartě vizualizace v části **filtry na úrovni stránky**vyberte **Brazílie**.
 
     ![Filtry stránky](media/data-lake-storage-use-power-bi/page-filters.png)
 

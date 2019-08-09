@@ -11,12 +11,12 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c5626e2ddfc24eeaeed562f3eaf73d16626eb458
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 6b5157a71ce15d4dfd199b6826be22235e61df97
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278037"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848535"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webové přihlašování pomocí OpenID Connect v Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Azure AD B2C rozšiřuje standardní protokol OpenID Connect a provede více ne�
 
 Pokud vaše webová aplikace potřebuje ověřit uživatele a spustit tok uživatele, může uživatele nasměrovat na `/authorize` koncový bod. Uživatel provede akci v závislosti na toku uživatele.
 
-V této žádosti klient indikuje oprávnění, která musí získat od uživatele v `scope` parametru, a tok uživatele, který se má spustit `p` v parametru. V následujících oddílech jsou uvedeny tři příklady (s přerušením řádků pro čitelnost), z nichž každá používá jiný uživatelský tok. Pokud chcete zjistit, jak každý požadavek funguje, zkuste vložit požadavek do prohlížeče a spustit ho. Můžete nahradit `fabrikamb2c` názvem vašeho tenanta, pokud ho máte a máte vytvořeného toku uživatele.
+V této žádosti klient indikuje oprávnění, která musí získat od uživatele v `scope` parametru, a tok uživatele, který se má spustit `p` v parametru. V následujících oddílech jsou uvedeny tři příklady (s přerušením řádků pro čitelnost), z nichž každá používá jiný uživatelský tok. Pokud chcete zjistit, jak každý požadavek funguje, zkuste vložit požadavek do prohlížeče a spustit ho. Můžete nahradit `fabrikamb2c` názvem vašeho tenanta, pokud ho máte a máte vytvořeného toku uživatele. Budete také muset nahradit `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`. Nahraďte ID tohoto klienta ID aplikace, kterou jste vytvořili pro registraci aplikace. Změňte také název `b2c_1_sign_in` zásady na název zásady, který máte ve vašem tenantovi. 
 
 #### <a name="use-a-sign-in-user-flow"></a>Použití toku uživatele přihlašování
 ```
@@ -115,7 +115,7 @@ error=access_denied
 
 | Parametr | Popis |
 | --------- | ----------- |
-| error | Kód, který lze použít ke klasifikaci typů chyb, ke kterým dojde. |
+| chyba | Kód, který lze použít ke klasifikaci typů chyb, ke kterým dojde. |
 | error_description | Konkrétní chybová zpráva, která může přispět k identifikaci hlavní příčiny chyby ověřování. |
 | state | Pokud je `state` parametr zahrnut v žádosti, v odpovědi by se měla objevit stejná hodnota. Aplikace by měla ověřit, zda `state` jsou hodnoty v žádosti a odpovědi stejné. |
 
@@ -209,7 +209,7 @@ Chybové odpovědi vypadají jako:
 
 | Parametr | Popis |
 | --------- | ----------- |
-| error | Kód, který lze použít ke klasifikaci typů chyb, ke kterým dojde. |
+| chyba | Kód, který lze použít ke klasifikaci typů chyb, ke kterým dojde. |
 | error_description | Zpráva, která může pomáhat identifikovat hlavní příčinu chyby ověřování. |
 
 ## <a name="use-the-token"></a>Použití tokenu
@@ -276,7 +276,7 @@ Chybové odpovědi vypadají jako:
 
 | Parametr | Popis |
 | --------- | ----------- |
-| error | Kód, který lze použít ke klasifikaci typů chyb, ke kterým dojde. |
+| chyba | Kód, který lze použít ke klasifikaci typů chyb, ke kterým dojde. |
 | error_description | Zpráva, která může pomáhat identifikovat hlavní příčinu chyby ověřování. |
 
 ## <a name="send-a-sign-out-request"></a>Odeslat žádost o odhlášení

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e139b274ab8a1f7d91d46ec56171b84db4f5025e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a4d692110a304cbfbbfda69bb2b10e3a065b2450
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812827"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851531"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -200,9 +200,7 @@ Kromě toho může uživatel získat přístup k sestavám souvisejícím s při
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell je tato role označená jako "Power BI Správce služby". V [Azure Portal](https://portal.azure.com)je "Power BI správce".
 
-* **[Správce privilegovaného ověřování](#privileged-authentication-administrator)** : Uživatelé s touto rolí můžou nastavit nebo resetovat přihlašovací údaje hesla pro všechny uživatele, včetně globálních správců, a můžou aktualizovat hesla pro všechny uživatele. Správci privilegovaného ověřování můžou vynutit, aby se uživatelé znovu zaregistrovali proti stávajícím přihlašovacím údajům bez hesla (například MFA, FIDO) a odvolali si MFA na zařízení. při příštím přihlášení všech uživatelů se zobrazí dotaz na MFA. Správci privilegovaného ověřování můžou:
-  * Vynutí, aby se uživatelé znovu zaregistrovali u stávajících přihlašovacích údajů bez hesla (například MFA, FIDO).
-  * Odvolat "zapamatovat MFA na zařízení", dotázat se na MFA při příštím přihlášení
+* **[Správce privilegovaného ověřování](#privileged-authentication-administrator)** : Uživatelé s touto rolí můžou nastavit nebo resetovat přihlašovací údaje hesla pro všechny uživatele, včetně globálních správců, a můžou aktualizovat hesla pro všechny uživatele. Správci privilegovaného ověřování můžou vynutit, aby se uživatelé znovu zaregistrovali proti stávajícím přihlašovacím údajům bez hesla (například MFA, FIDO) a odvolali si MFA na zařízení. při příštím přihlášení všech uživatelů se zobrazí dotaz na MFA.
 
 * **[Správce privilegovaných rolí](#privileged-role-administrator)** : Uživatelé s touto rolí můžou spravovat přiřazení rolí v Azure Active Directory a taky v Azure AD Privileged Identity Management. Kromě toho tato role umožňuje správu všech aspektů Privileged Identity Management a jednotek pro správu.
 

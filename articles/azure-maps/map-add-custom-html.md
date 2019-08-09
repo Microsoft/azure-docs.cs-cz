@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 65777a87cd042a4d8b3b14255dbf99241cd42e18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: f8777a3d0eb9b97fff6f492f181a432d98d9341c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638751"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849306"
 ---
 # <a name="add-html-markers-to-the-map"></a>Přidání značek HTML do mapy
 
@@ -48,6 +48,9 @@ Výchozí `htmlContent` značkou HTML je šablona SVG, kde jsou umístěny slož
 <iframe height='500' scrolling='no' title='HTML značka s vlastní šablonou SVG' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/LXqMWx/'>značku HTML pera s vlastní šablonou SVG</a> pomocí<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+> [!TIP]
+> Sada Azure Maps Web SDK poskytuje několik šablon obrázků SVG, které lze použít se značkami HTML. Další informace najdete v dokumentu [použití šablon obrázků](how-to-use-image-templates-web-sdk.md) .
+
 ## <a name="add-a-css-styled-html-marker"></a>Přidat značku HTML ve stylu CSS
 
 Jednou z výhod značek HTML je, že existuje mnoho skvělých přizpůsobení, která lze dosáhnout pomocí šablon stylů CSS. V této ukázce obsah HtmlMarker se skládá z HTML a CSS, které vytvoří animovaný kód PIN, který se zahodí na místo a Pulse.
@@ -75,7 +78,7 @@ Tyto ukázky ukazují, jak přidat události myší a přetáhnout je do značky
 <iframe height='500' scrolling='no' title='Přidávání událostí myši do značek HTML' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>přidávání událostí myši do značek HTML</a> podle Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 
@@ -89,6 +92,9 @@ Další informace o třídách a metodách, které se používají v tomto člá
 > [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)
 
 Další příklady kódu pro přidání do map najdete v následujících článcích:
+
+> [!div class="nextstepaction"]
+> [Používání šablon obrázků](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Přidat vrstvu symbolů](./map-add-pin.md)

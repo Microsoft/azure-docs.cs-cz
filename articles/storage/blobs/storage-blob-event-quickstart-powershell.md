@@ -1,7 +1,6 @@
 ---
 title: Odesílání událostí služby Azure Blob storage na web koncového bodu – Powershell | Dokumentace Microsoftu
 description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage.
-services: storage,event-grid
 author: normesta
 ms.author: normesta
 ms.reviewer: dastanfo
@@ -9,15 +8,14 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.custom: seodec18
-ms.openlocfilehash: cf1b0ba5d70ed0934418a147c09791725b5465bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143373"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847159"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Rychlý start: Směrování událostí služby storage do webového koncového bodu pomocí Powershellu
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Rychlý start: Směrování událostí úložiště do webového koncového bodu pomocí PowerShellu
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí Azure Powershellu k odběru událostí služby Blob storage, aktivační událost a viděli výsledek. 
 
@@ -51,7 +49,7 @@ $location = "westus2"
 
 Témata služby Event Grid jsou prostředky Azure a musí být umístěné ve skupině prostředků Azure. Skupina prostředků je logická kolekce, ve které se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) příkazu.
+Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) .
 
 Následující příklad vytvoří skupinu prostředků **gridResourceGroup** v umístění **westus2**.  
 
@@ -64,7 +62,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 Události služby Blob Storage jsou dostupné v účtech úložiště pro obecné účely verze 2 a v účtech Blob Storage. Účty úložiště pro **obecné účely verze 2** podporují všechny funkce ve všech službách úložiště, včetně objektů blob, souborů, front a tabulek. **Účet úložiště objektů blob** je specializovaný účet úložiště pro ukládání nestrukturovaných dat v podobě objektů blob do služby Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
-Vytvoření účtu úložiště objektů Blob s replikací LRS pomocí [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount), pak načíst kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext. Tento příklad vytvoří účet úložiště s názvem **gridstorage** s místně redundantním úložištěm (LRS). 
+Vytvořte účet Blob Storage s replikací LRS pomocí [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)a pak načtěte kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext. Tento příklad vytvoří účet úložiště s názvem **gridstorage** s místně redundantním úložištěm (LRS). 
 
 > [!NOTE]
 > Názvy účtů úložiště jsou v oboru názvů globální, takže budete muset přidat některé náhodných znaků názvu zadanému v tento skript.

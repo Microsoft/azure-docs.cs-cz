@@ -1,20 +1,19 @@
 ---
 title: Protokolování Analýza úložiště Azure
 description: Naučte se protokolovat podrobnosti o požadavcích provedených proti Azure Storage.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.subservice: common
+ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.subservice: common
-ms.openlocfilehash: e46064076fb5d38fbde94bd4bb7e5dfbcff7e3b4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 36c6c914c96048825c82a8d1f590a7e805373c08
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68556162"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854605"
 ---
 # <a name="azure-storage-analytics-logging"></a>Protokolování analýzy Azure Storage
 
@@ -203,7 +202,7 @@ AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs
 
  Po stažení dat protokolu můžete zobrazit položky protokolu v souborech. Tyto soubory protokolu používají textový formát s oddělovači, který dokáže analyzovat mnoho nástrojů pro čtení protokolů, včetně Microsoft Message Analyzer (Další informace najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). Různé nástroje mají různá zařízení pro formátování, filtrování, řazení a reklamu při hledání obsahu souborů protokolu. Další informace o formátu a obsahu souboru protokolu protokolování úložiště najdete v článku [Formát protokolu analýza úložiště](/rest/api/storageservices/storage-analytics-log-format) a [Analýza úložiště protokolované operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Formát protokolu Analýza úložiště](/rest/api/storageservices/storage-analytics-log-format)
 * [Analýza úložiště protokolované operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)

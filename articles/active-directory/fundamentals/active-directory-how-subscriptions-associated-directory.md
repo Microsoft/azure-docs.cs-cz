@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a64bad11f5b83ddd7f6d7236ffed4ff4a6e39c2c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb4fa92d8b3c174cdf9b3695f8564cc11c1ad291
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561868"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851744"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do svého tenanta Azure Active Directory
 
@@ -66,7 +66,7 @@ Předtím, než můžete přiřadit nebo přidejte svoje předplatné, je třeba
     Adresář se změní pro předplatné a se zobrazí zpráva o úspěchu.
 
     ![Zpráva o úspěchu změny adresáře](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
-4. Pro přechod do nového adresáře použijte **přepínač adresáře** . Aby se všechno zobrazovalo správně, může trvat několik hodin. Pokud se zdá, že trvá příliš dlouho, ujistěte se, že jste pro přesunuté předplatné zkontrolovali **globální filtr** předplatného, abyste se ujistili, že není jednoduše skrytý.
+4. Pro přechod do nového adresáře použijte **přepínač adresáře** . Aby se všechno zobrazovalo správně, může trvat několik hodin. Pokud se zdá, že trvá moc dlouho, zkontrolujte **globální filtr** předplatného pro přesunuté předplatné, abyste se ujistili, že není skrytý. Možná se budete muset odhlásit z Azure Portal a znovu se přihlásit, abyste mohli zobrazit nový adresář. 
 
     ![Stránka přepínač adresáře s ukázkovými informacemi](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 

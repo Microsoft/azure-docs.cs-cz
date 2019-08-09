@@ -5,16 +5,16 @@ description: Spusťte TensorBoard k vizualizaci historie spouštění experiment
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: f65882cb851f8e35bb1d6c319d52fcfadb36ae91
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2e4527ba167076935505b668a7879e5f1446b25e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772718"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856072"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Vizualizace běhů experimentů a metrik pomocí TensorBoard a Azure Machine Learning
 
@@ -42,9 +42,9 @@ Způsob spuštění TensorBoard s Azure Machine Learning experimenty závisí na
         * tensorboard. ipynb
 
     * Váš vlastní server Juptyer notebook
-      * Použití [článku vytvořit pracovní prostor](setup-create-workspace.md) pro
           * [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) s `tensorboard` dalšími
-          * Vytvoření pracovního prostoru a jeho konfiguračního souboru (config. JSON)
+          * [Vytvořte pracovní prostor služby Azure Machine Learning](how-to-manage-workspace.md).  
+          * [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Možnost 1: Přímo zobrazit historii spuštění v TensorBoard
@@ -282,7 +282,7 @@ Až budete hotovi, ujistěte se, že zavoláte metodu [stop ()](https://docs.mic
 tb.stop()
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto postupu jste vytvořili dvě experimenty a zjistili jste, jak spustit TensorBoard na svých historiích spuštění, abyste identifikovali oblasti pro možné vyladění a přeškolení. 
 

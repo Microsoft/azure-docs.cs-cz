@@ -1,7 +1,6 @@
 ---
-title: Azure Data Lake Storage Gen2 výkonu pokyny k ladění | Dokumentace Microsoftu
-description: Azure Data Lake Storage Gen2 výkonu pokyny k ladění
-services: storage
+title: Pokyny pro ladění výkonu Azure Data Lake Storage Gen2 | Microsoft Docs
+description: Pokyny k ladění výkonu Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,135 +8,135 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 6f831dd0cde4641eb48f3c23e010f8c5e8aa3fa2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b134842303bebdf10efdf388057c8ad7b3be61be
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939362"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855579"
 ---
-# <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Optimalizace výkonu pro Azure Data Lake Storage Gen2
+# <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Ladění Azure Data Lake Storage Gen2 pro výkon
 
-Azure Data Lake Storage Gen2 podporuje vysokou propustnost vstupně-výstupní operace náročné na analýze a k údajům pohyb.  V Data Lake Storage Gen2 je použít všechny dostupné propustnosti – množství dat, které může číst nebo zapisovat za sekundu – důležité, abyste co nejlepšího výkonu.  Tím dosáhnete pomocí provádí tolik čtení a zapíše paralelně nejvíce.
+Azure Data Lake Storage Gen2 podporuje vysokou propustnost pro náročné I výstupní analýzy dat a přesun dat.  V Data Lake Storage Gen2 s využitím veškeré dostupné propustnosti – množství dat, která je možné číst nebo zapsat za sekundu – je důležité k dosažení nejlepšího výkonu.  Toho dosáhnete tak, že provedete souběžně tolik operací čtení a zápisu.
 
-![Data Lake Storage Gen2 výkonu](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
+![Data Lake Storage Gen2 výkon](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 můžete škálovat pro zajištění nezbytné propustnosti pro všechny scénáře analýzy. Ve výchozím nastavení poskytuje účet Data Lake Storage Gen2 automaticky dostatečnou propustnost pro potřeby hlavních kategorií případy použití. Pro případy, kdy zákazníci spouštět do výchozí limit, může účet Data Lake Storage Gen2 nakonfigurované na poskytování větší propustnost kontaktováním [podpory Azure](https://azure.microsoft.com/support/faq/).
+Data Lake Storage Gen2 se může škálovat, aby poskytovala potřebnou propustnost pro všechny scénáře analýzy. Ve výchozím nastavení poskytuje účet Data Lake Storage Gen2 automaticky dostatečnou propustnost pro splnění potřeb široké kategorie případů použití. V případech, kdy se zákazníci spouštějí do výchozího limitu, je možné účet Data Lake Storage Gen2 nakonfigurovat tak, aby poskytoval větší propustnost, kontaktováním [podpory Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="data-ingestion"></a>Přijímání dat
 
-Příjem dat ze zdrojového systému na Gen2 úložiště Data Lake, je důležité vzít v úvahu, že zdroj hardwaru, zdroj síťového hardwaru a síťové připojení k Data Lake Storage Gen2 může být problémové místo.  
+Při ingestování dat ze zdrojového systému do Data Lake Storage Gen2 je důležité zvážit, že zdrojový hardware, zdrojový síťový hardware a síťové připojení k Data Lake Storage Gen2 může být kritickým bodem.  
 
-![Data Lake Storage Gen2 výkonu](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![Data Lake Storage Gen2 výkon](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
-Je důležité zajistit, že přesun dat nemá vliv tyto faktory.
+Je důležité zajistit, aby přesun dat neovlivnily tyto faktory.
 
-### <a name="source-hardware"></a>Zdroj hardwaru
+### <a name="source-hardware"></a>Zdrojový hardware
 
-Ať používáte místní počítače nebo virtuální počítače v Azure, byste měli pečlivě zvolit vhodný hardware. Pro zdrojový Disk Hardware raději SSD disků HDD a vyberte hardware disku s rychlejší diskových jednotek. Pro zdroj síťového hardwaru použijte nejrychlejší možné síťové adaptéry.  V Azure doporučujeme D14 virtuální počítače Azure, které mají odpovídajícím způsobem výkonné disku a síťový hardware.
+Bez ohledu na to, jestli používáte místní počítače nebo virtuální počítače v Azure, byste měli pečlivě vybrat příslušný hardware. V případě hardwaru zdrojového disku preferovat SSD HDD a vyberte diskový hardware s rychlejšími disky. Pro zdrojový síťový hardware použijte nejrychlejší možné síťové karty.  V Azure doporučujeme virtuální počítače Azure s D14, které mají vhodně výkonný disk a síťový hardware.
 
-### <a name="network-connectivity-to-data-lake-storage-gen2"></a>Připojení k síti na Gen2 úložiště Data Lake
+### <a name="network-connectivity-to-data-lake-storage-gen2"></a>Připojení k síti Data Lake Storage Gen2
 
-Připojení k síti mezi zdrojem dat a Data Lake Storage Gen2 může být někdy problémové místo. Pokud zdrojová data nejsou v místním, zvažte použití vyhrazené propojení s [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . Pokud je zdrojová data v Azure, bude výkon nejlepší při data jsou ve stejné oblasti Azure jako účet Data Lake Storage Gen2.
+Síťové připojení mezi zdrojovými daty a Data Lake Storage Gen2 může někdy být kritickým bodem. Pokud jsou vaše zdrojová data místní, zvažte použití vyhrazeného propojení s [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . Pokud jsou zdrojová data v Azure, výkon bude nejlepší, pokud jsou data ve stejné oblasti Azure jako účet Data Lake Storage Gen2.
 
-### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Konfigurace nástroje pro ingestování dat pro maximální paralelizaci
+### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Konfigurace nástrojů pro přijímání dat pro maximální paralelismus
 
-Jakmile vyřešili zdrojového hardwaru a výše kritické body připojení k síti, jste připraveni ke konfiguraci nástroje pro ingestování. Následující tabulka shrnuje nastavení klíče pro nástroje pro několik oblíbených ingestování a poskytuje podrobné výkonů články pro ně.  Další informace o nástroji pro váš scénář, navštivte tuto [článku](data-lake-storage-data-scenarios.md).
+Po vyřešení výše uvedených slabých míst zdrojového hardwaru a síťového připojení budete připraveni ke konfiguraci nástrojů pro přijímání. Následující tabulka shrnuje nastavení klíče pro několik oblíbených nástrojů pro přijímání a poskytuje podrobné články pro ladění výkonu.  Další informace o tom, který nástroj použít pro váš scénář, najdete v tomto [článku](data-lake-storage-data-scenarios.md).
 
-| Nástroj               | Nastavení     | Další podrobnosti                                                                 |
+| Tool               | Nastavení     | Další podrobnosti                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| DistCp            | -m (mapování)   | [Odkaz](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
+| DistCp            | -m (mapovač)   | [Odkaz](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Odkaz](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS.Azure.Block.Size -m (mapování)    |   [Odkaz](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | FS. Azure. Block. Size,-m (Mapper)    |   [Odkaz](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
 
-## <a name="structure-your-data-set"></a>Struktury datové sady
+## <a name="structure-your-data-set"></a>Struktura sady dat
 
-Pokud jsou data uložená v Data Lake Storage Gen2, velikost, počet souborů a strukturu složek mít vliv na výkon.  Následující část popisuje osvědčené postupy v těchto oblastech.  
+Když jsou data uložená v Data Lake Storage Gen2, velikost souboru, počet souborů a struktura složek mají vliv na výkon.  V následující části jsou popsány osvědčené postupy v těchto oblastech.  
 
 ### <a name="file-size"></a>Velikost souboru
 
-Analytics modulů, jako je HDInsight a Azure Data Lake Analytics obvykle mají režijní náklady na soubor. Pokud data ukládáte tolik souborů malých, to negativně ovlivnit výkon. Obecně platí uspořádejte data do větší velikosti souborů pro zajištění lepšího výkonu (256MB až do velikosti 100GB). Některé weby a aplikace můžou mít potíže s efektivní zpracování souborů, které jsou větší než 100GB.
+Analytické stroje, jako je HDInsight a Azure Data Lake Analytics, obvykle mají režii vázané na soubor. Pokud uložíte data jako mnoho malých souborů, může to negativně ovlivnit výkon. Obecně je vhodné uspořádat data do souborů s větší velikostí, aby se zajistil vyšší výkon (256 MB až 100 GB velikosti). Některé moduly a aplikace mohou mít potíže efektivně se zpracováním souborů, které jsou větší než 100 GB velikost.
 
-V některých případech datové kanály, máte omezenou kontrolu nad nezpracovanými daty, která obsahuje velké množství malých souborů. Doporučuje se mít "kuchařkám" proces, který generuje větší soubory pro příjem dat aplikací.
+Někdy mají datové kanály omezenou kontrolu nad nezpracovaná data, která mají velké množství malých souborů. Doporučuje se mít "vaření" proces, který generuje větší soubory pro použití pro podřízené aplikace.
 
 ### <a name="organizing-time-series-data-in-folders"></a>Uspořádání dat časových řad ve složkách
 
-Pro úlohy Hive může pomoct oddílu vyřazení dat časových řad některé dotazy číst pouze podmnožinu dat, což zvyšuje výkon.    
+V případě zátěže podregistru může oddíl vyřazení dat časových řad do oddílů pomáhat u některých dotazů, které čtou pouze podmnožinu dat, která zvyšují výkon.    
 
-Tyto kanály, které ingestovat data časových řad, často umístit své soubory s velmi strukturovaných pojmenování pro soubory a složky. Níže je velmi Běžným příkladem, který se zobrazí pro data, která strukturovaná data:
+Tyto kanály, které ingestují data časových řad, často umísťují své soubory s velmi strukturovaným pojmenování pro soubory a složky. Níže je uveden velmi běžný příklad pro data, která jsou strukturována podle data:
 
     \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
 
-Všimněte si, že se zobrazí informace data a času jako složky a název souboru.
+Všimněte si, že informace o typu DateTime se zobrazí jak jako složky, tak i v názvu souboru.
 
-Pro datum a čas tady je běžný vzor
+Pro datum a čas je toto běžný vzor.
 
     \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
 
-Opět volba, kterou provádíte ve složce a organizace souboru by měla optimalizovat pro větší velikosti souboru a přiměřené počet souborů v každé složky.
+Výběr, který provedete se složkou a organizací souborů, by se měl optimalizovat pro větší velikosti souborů a přiměřený počet souborů v každé složce.
 
-## <a name="optimizing-io-intensive-jobs-on-hadoop-and-spark-workloads-on-hdinsight"></a>Optimalizace úlohy náročné na vstupně-výstupních operací úloh Hadoop a Spark v HDInsight
+## <a name="optimizing-io-intensive-jobs-on-hadoop-and-spark-workloads-on-hdinsight"></a>Optimalizace úloh náročných na vstupně-výstupní operace s clustery Hadoop a Spark v HDInsight
 
 Úlohy spadají do jedné z následujících tří kategorií:
 
-* **Náročné na prostředky procesoru.**  Tyto úlohy mají dlouhé výpočet časů s minimální časy vstupu a výstupu.  Mezi příklady patří machine learning a úloh zpracování přirozeného jazyka.  
-* **Náročné na paměť.**  Tyto úlohy používají velké množství paměti.  Mezi příklady patří PageRank a úlohy analýzy v reálném čase.  
-* **Vstupně-výstupní operace náročné na prostředky.**  Tyto úlohy tráví většinu svého času provádění vstupně-výstupních operací.  Běžným příkladem jsou úlohu kopírování, která jenom operace čtení a zápisu.  Další příklady úloh přípravy dat, které čtou velké množství dat, provádí některé transformace dat a pak zapíše data do úložiště.  
+* **Náročné na procesor.**  Tyto úlohy mají dlouhé časy výpočtu s minimálním počtem vstupně-výstupních operací.  Mezi příklady patří strojové učení a úlohy zpracování v přirozeném jazyce.  
+* **Náročné na paměť.**  Tyto úlohy využívají spoustu paměti.  Mezi příklady patří PageRank úlohy a analýzy v reálném čase.  
+* **I/O náročné.**  Tyto úlohy tráví většinu času při provádění vstupně-výstupních operací.  Běžným příkladem je úloha kopírování, která provádí pouze operace čtení a zápisu.  Mezi další příklady patří úlohy přípravy dat, které čtou velké množství dat, provádí transformaci dat a pak data zapisuje zpátky do úložiště.  
 
-Následující pokyny platí jenom pro úlohy náročné na vstupně-výstupních operací.
+Následující pokyny platí pouze pro úlohy náročné na vstupně-výstupní operace.
 
-## <a name="general-considerations"></a>Obecné aspekty
+## <a name="general-considerations"></a>Obecné požadavky
 
-Máte úlohu, která čte nebo zapisuje navýší 100MB v rámci jedné operace, ale do vyrovnávací paměti, které může snížit výkon.
-K optimalizaci výkonu, akci a chránit tak velikost vstupně-výstupní operace mezi 4MB, 16MB.
+Můžete mít úlohu, která čte nebo zapisuje až 100 MB v rámci jedné operace, ale vyrovnávací paměť této velikosti může ohrozit výkon.
+Chcete-li optimalizovat výkon, zkuste zachovat velikost vstupně-výstupních operací mezi 4MB MB a 16 MB.
 
-### <a name="general-considerations-for-an-hdinsight-cluster"></a>Obecné aspekty clusteru služby HDInsight
+### <a name="general-considerations-for-an-hdinsight-cluster"></a>Obecné požadavky na cluster HDInsight
 
-* **HDInsight verze.** Pro zajištění nejlepšího výkonu použijte nejnovější vydání HDInsight.
-* **Oblasti.** Účet Data Lake Storage Gen2 umístěte do stejné oblasti jako HDInsight cluster.  
+* **Verze HDInsight.** Nejlepšího výkonu dosáhnete, když použijete nejnovější verzi HDInsight.
+* **Regionu.** Data Lake Storage Gen2 účet umístěte do stejné oblasti jako cluster HDInsight.  
 
-HDInsight cluster se skládá z dvou hlavních uzlů a některé uzly pracovního procesu. Každý pracovní uzel obsahuje určitý počet jader a paměti, které se určuje podle typu virtuálního počítače.  Při spuštění úlohy, YARN je resource negotiator, který přiděluje dostupné paměti a jader k vytvoření kontejnerů.  Každý kontejner spustí úloh potřebných k dokončení úlohy.  Paralelní zpracování úloh rychle spouštět kontejnery. Proto se výkon spuštěním libovolný počet paralelních kontejnerů nejvíce.
+Cluster An HDInsight se skládá ze dvou hlavních uzlů a některých pracovních uzlů. Každý pracovní uzel poskytuje určitý počet jader a paměti, které určuje typ virtuálního počítače.  Při spuštění úlohy je PŘÍZe prostředkem projednávání prostředků, který přiděluje dostupnou paměť a jádra k vytváření kontejnerů.  Každý kontejner spouští úlohy potřebné k dokončení této úlohy.  Kontejnery běží paralelně a rychle zpracovávají úlohy. Proto se zvyšuje výkon tím, že spustí tolik paralelních kontejnerů, kolik jich je možné.
 
-Existují tři vrstvy v rámci clusteru služby HDInsight, který lze ladit o zvýšení počtu kontejnerů a všechny dostupné propustnosti.  
+V rámci clusteru HDInsight existují tři vrstvy, které je možné vyladit, aby se zvýšil počet kontejnerů a používala se veškerá dostupná propustnost.  
 
-* **Fyzickou vrstvu**
-* **Vrstva YARN**
-* **Vrstvu pracovního vytížení**
+* **Fyzická vrstva**
+* **PŘÍZ – vrstva**
+* **Vrstva úlohy**
 
-### <a name="physical-layer"></a>Fyzickou vrstvu
+### <a name="physical-layer"></a>Fyzická vrstva
 
-**Spuštění clusteru s více uzly a/nebo větší velikosti virtuálních počítačů.**  Větší cluster vám umožní spustit další kontejnery YARN, jak je znázorněno na obrázku níže.
+**Spusťte cluster s více uzly a/nebo s většími velikostmi virtuálních počítačů.**  Větší cluster vám umožní spustit více kontejnerů PŘÍZ, jak je znázorněno na obrázku níže.
 
-![Data Lake Storage Gen2 výkonu](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![Data Lake Storage Gen2 výkon](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
-**Použití virtuálních počítačů s větší šířku pásma sítě.**  Šířku pásma sítě může být kritickým bodem, pokud je menší šířku pásma sítě než Data Lake Storage Gen2 propustnosti.  Různé virtuální počítače budou mít různé velikosti šířky pásma sítě.  Vyberte virtuální počítač – typ, který má největší šířka pásma sítě je to možné.
+**Používejte virtuální počítače s větší šířkou pásma sítě.**  Velikost šířky pásma sítě může být kritickým bodem, pokud je menší šířka pásma sítě, než Data Lake Storage Gen2 propustnost.  Různé virtuální počítače budou mít proměnlivé velikosti šířky pásma sítě.  Vyberte typ virtuálního počítače, který má největší možnou šířku pásma sítě.
 
-### <a name="yarn-layer"></a>Vrstva YARN
+### <a name="yarn-layer"></a>PŘÍZ – vrstva
 
-**Použijte menší kontejnery YARN.**  Zmenšete velikost každého kontejneru YARN vytvoření více kontejnerů pomocí stejné množství prostředků.
+**Použijte menší kontejnery PŘÍZe.**  Zmenšete velikost každého kontejneru PŘÍZe, aby bylo možné vytvořit více kontejnerů se stejným množstvím prostředků.
 
-![Data Lake Storage Gen2 výkonu](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![Data Lake Storage Gen2 výkon](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
-V závislosti na velikosti pracovní zátěže bude vždy minimální velikost kontejneru YARN, které je potřeba. Pokud vyberete příliš malé kontejner, bude vaše úlohy narazíte na problémy na více instancí z důvodu nedostatku paměti. Kontejnery YARN by měl být obvykle nesmí být menší než 1GB. Je běžné zobrazte kontejnery YARN 3GB. Pro některé úlohy můžete potřebovat větší kontejnery YARN.  
+V závislosti na zatížení bude vždy potřeba minimální velikost kontejneru PŘÍZe. Pokud vybíráte příliš malý kontejner, úlohy budou fungovat při potížích s nedostatkem paměti. Obvykle kontejnery PŘÍZe by neměly být menší než 1 GB. Je běžné zobrazit kontejnery povolenou nitě. Pro některé úlohy budete možná potřebovat větší kontejnery PŘÍZe.  
 
-**Zvýšit počet jader na kontejneru YARN.**  Zvýšíte počet jader přidělené na každý kontejner zvyšte počet paralelních úloh, které běží v jednotlivých kontejnerech.  Tento postup funguje pro aplikace, jako je Spark, které běží více úkolů na kontejner.  Pro aplikace jako Hive, které běží jedno vlákno v jednotlivých kontejnerech je lepší mít víc kontejnerů než více jader na kontejner.
+**Zvětšete jádra na kontejner PŘÍZe.**  Zvyšte počet jader přidělených každému kontejneru a zvyšte počet paralelních úloh, které jsou spuštěny v každém kontejneru.  To funguje u aplikací, jako je Spark, které spouštějí více úkolů na kontejner.  U aplikací, jako je například podregistr, který spouští jedno vlákno v každém kontejneru, je lepší mít více kontejnerů místo více jader na kontejner.
 
-### <a name="workload-layer"></a>Vrstvu pracovního vytížení
+### <a name="workload-layer"></a>Vrstva úlohy
 
-**Použijte všechny dostupné kontejnery.**  Nastavte počet úloh tak, aby všechny prostředky přistupujících bude stejná nebo větší než počet dostupných kontejnerů.
+**Použijte všechny dostupné kontejnery.**  Nastavte počet úkolů, které mají být stejné nebo větší než počet dostupných kontejnerů, aby byly využity všechny prostředky.
 
-![Data Lake Storage Gen2 výkonu](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![Data Lake Storage Gen2 výkon](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
-**Neúspěšné úlohy je nákladné.** Pokud každý úkol má velké množství dat ke zpracování, selhání úkolu výsledků v nákladné opakování.  Proto je vhodnější vytvořit více úkolů, z nichž každý zpracovává malé množství dat.
+**Neúspěšné úlohy jsou nákladné.** Pokud má každý úkol zpracovat velké množství dat, pak při selhání úlohy dojde k nenáročnému opakování.  Proto je lepší vytvořit další úkoly, z nichž každý zpracovává malé množství dat.
 
-Kromě výše uvedených obecné pokyny každá aplikace má různé parametry, které jsou k dispozici pro ladění pro určitou aplikaci. Následující tabulka uvádí některé z parametrů a odkazy pro zahájení práce s pro jednotlivé aplikace pro optimalizaci výkonu.
+Kromě obecných pokynů uvedených v každé aplikaci jsou k dispozici různé parametry pro ladění pro danou konkrétní aplikaci. V následující tabulce jsou uvedené některé parametry a odkazy na začátek ladění výkonu pro jednotlivé aplikace.
 
-| Úloha | Parametr pro nastavení úlohy |
+| Úloha | Parametr pro nastavení úloh |
 |----------|------------------------|
-| [Spark v HDInsight](data-lake-storage-performance-tuning-spark.md) | <ul><li>Počet prováděcích modulů</li><li>Prováděcí modul paměti</li><li>Prováděcí modul jader</li></ul> |
-| [Hive s HDInsight](data-lake-storage-performance-tuning-hive.md) | <ul><li>hive.tez.container.size</li></ul> |
-| [MapReduce v HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.Memory</li><li>Mapreduce.job.reduces</li></ul> |
-| [Storm v HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Počet pracovních procesů</li><li>Počet instancí spout prováděcího modulu</li><li>Počet instancí bolt prováděcího modulu </li><li>Počet úkolů spout</li><li>Počet úkolů bolt</li></ul>|
+| [Spark ve službě HDInsight](data-lake-storage-performance-tuning-spark.md) | <ul><li>Počet – vykonavatelé</li><li>Prováděcí modul – paměť</li><li>Prováděcí modul – jádra</li></ul> |
+| [Podregistr v HDInsight](data-lake-storage-performance-tuning-hive.md) | <ul><li>hive.tez.container.size</li></ul> |
+| [MapReduce ve službě HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>MapReduce. map. Memory</li><li>Mapreduce.job.maps</li><li>MapReduce. zmenšení paměti</li><li>MapReduce. job. redukuje</li></ul> |
+| [Zaplavení v HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Počet pracovních procesů</li><li>Počet instancí prováděcího modulu Spout</li><li>Počet instancí vykonavatele šroubů </li><li>Počet úloh Spout</li><li>Počet úloh šroubů</li></ul>|
 
-## <a name="see-also"></a>Další informace najdete v tématech
-* [Přehled služby Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)
+## <a name="see-also"></a>Viz také:
+* [Přehled Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)

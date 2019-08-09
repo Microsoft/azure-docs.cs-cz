@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: cgronlun
+ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: eb6ae11bb4ffb39d9e9bcc692f17559fa2cde674
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a5db2c1c40c9c6f5c05205b9b2c652d2e23cf229
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720241"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848241"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytváření, zkoumání a nasazení automatických experimentů strojového učení v Azure Portal (Preview)
 
@@ -28,7 +28,7 @@ ms.locfileid: "68720241"
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
+* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru služby Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="get-started"></a>Začínáme
 
@@ -71,12 +71,12 @@ Vyberte **vytvořit experiment** a naplňte na nový formulář pro **Automatick
 
 1. Pomocí karet náhled a profil můžete dále konfigurovat data pro tento experiment.
 
-    1. Na kartě **Náhled** určete, jestli data obsahují záhlaví, a vyberte funkce (sloupce) pro školení pomocí integrovaných **tlačítek přepínače v** jednotlivých sloupcích funkce.
+    1. Na kartě **Náhled** určete, jestli data obsahují záhlaví, a vyberte funkce (sloupce) pro školení pomocí integrovaných tlačítek přepínače v jednotlivých sloupcích funkce.
 
     1. Na kartě **profil** můžete zobrazit [datový profil](#profile) podle funkcí a také rozdělení, typ a souhrn statistik (střední, střední, Max/min atd.) každého.
 
         >[!NOTE]
-        > Pokud váš výpočetní **kontext není** profilace povolený, zobrazí se následující chybová zpráva: *Profilace dat je k dispozici pouze pro cíle výpočetní služby, které jsou již spuštěny*.
+        > Pokud váš výpočetní kontext není profilace povolený, zobrazí se následující chybová zpráva: *Profilace dat je k dispozici pouze pro cíle výpočetní služby, které jsou již spuštěny*.
 
 1. Vyberte typ úlohy školení: klasifikace, regrese nebo prognózování.
 

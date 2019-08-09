@@ -1,7 +1,6 @@
 ---
 title: Přehled řízení přístupu v Azure Data Lake Storage Gen2 | Microsoft Docs
 description: Informace o tom, jak řízení přístupu funguje v Azure Data Lake Storage Gen2
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 112d3b18df8205aac173eafb8f8e30ed6c32e048
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: aa2cfbee6feeacf46003fdc244f0aeea5df0f41a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249074"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847348"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -65,7 +64,7 @@ Chcete-li nastavit oprávnění na úrovni souborů a adresářů, přečtěte s
 |REST API    |[Cesta – aktualizace](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> Pokud je objekt *zabezpečení instanční objekt* , je důležité použít ID objektu instančního objektu a nikoli ID objektu související registrace aplikace. Pokud chcete získat ID objektu instančního objektu, otevřete Azure CLI a pak použijte tento příkaz: `az ad sp show --id <Your App ID> --query objectId`. `<Your App ID>` zástupný text nahraďte ID aplikace registrace vaší aplikace.
+> Pokud je objekt zabezpečení instanční objekt , je důležité použít ID objektu instančního objektu a nikoli ID objektu související registrace aplikace. Pokud chcete získat ID objektu instančního objektu, otevřete Azure CLI a pak použijte tento příkaz: `az ad sp show --id <Your App ID> --query objectId`. `<Your App ID>` zástupný text nahraďte ID aplikace registrace vaší aplikace.
 
 ### <a name="types-of-access-control-lists"></a>Typy seznamů řízení přístupu
 
@@ -308,7 +307,7 @@ Zobrazí se identifikátor GUID, pokud položka představuje uživatele a tento 
 
 ### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>Návody pro instanční objekt správně nastavit seznamy ACL?
 
-Při definování seznamů ACL pro instanční objekty je důležité použít ID objektu (OID) instančního objektu pro registraci aplikace,  kterou jste vytvořili. Je důležité si uvědomit, že registrované aplikace mají samostatný instanční objekt v konkrétním tenantovi služby Azure AD. Registrované aplikace mají identifikátor OID, který je viditelný v Azure Portal, ale *instanční objekt* má jiný (odlišný) identifikátor OID.
+Při definování seznamů ACL pro instanční objekty je důležité použít ID objektu (OID) instančního objektu pro registraci aplikace, kterou jste vytvořili. Je důležité si uvědomit, že registrované aplikace mají samostatný instanční objekt v konkrétním tenantovi služby Azure AD. Registrované aplikace mají identifikátor OID, který je viditelný v Azure Portal, ale *instanční objekt* má jiný (odlišný) identifikátor OID.
 
 K získání Oid objektu služby, který odpovídá registraci aplikace, můžete použít `az ad sp show` příkaz. Jako parametr zadejte ID aplikace. Tady je příklad získání OID objektu služby, který odpovídá registraci aplikace s ID aplikace = 18218b12-1895-43E9-ad80-6e8fc1ea88ce. V Azure CLI spusťte následující příkaz:
 

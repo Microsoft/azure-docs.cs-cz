@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5e5ae11a00b2a3656deceeeaf928536238a325fc
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f00ad898ea45700b75607f89bc2c8e71288357c2
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840630"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847573"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů s podporou Azure Disk Encryption do jiné oblasti Azure
 
 Tento článek popisuje, jak replikovat virtuální počítače s podporou Azure Disk Encryption z jedné oblasti Azure do jiné.
 
 >[!NOTE]
->Azure Site Recovery aktuálně podporuje pouze virtuální počítače Azure, na kterých běží operační systém Windows.
+>Azure Site Recovery aktuálně podporuje pouze virtuální počítače s podporou Azure Disk Encryption, na kterých běží operační systém Windows.
 
 ## <a id="required-user-permissions"></a>Požadovaná uživatelská oprávnění
 Site Recovery vyžaduje, aby měl uživatel oprávnění k vytvoření trezoru klíčů v cílové oblasti a zkopírování klíčů z trezoru klíčů zdrojové oblasti do trezoru klíčů cílové oblasti.

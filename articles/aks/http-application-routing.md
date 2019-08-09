@@ -1,54 +1,54 @@
 ---
-title: Směrování aplikace HTTP – doplněk ve službě Azure Kubernetes Service (AKS)
+title: Doplněk pro směrování aplikace HTTP ve službě Azure Kubernetes (AKS)
 description: Použijte doplněk směrování aplikace HTTP ve službě Azure Kubernetes Service (AKS).
 services: container-service
 author: lachie83
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/25/2018
+ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: d6e1cc033416c90e27b5caf4bba310400e55b3a5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0975d0a60081b66d3d5a513954deb0c4fa1b978
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60466281"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851553"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
-Přístup k aplikacím, které jsou nasazené na clusteru Azure Kubernetes Service (AKS) usnadňuje řešení směrování aplikace HTTP. Když toto řešení povolené, nakonfiguruje kontroler příchozího přenosu dat ve vašem clusteru AKS. Jak se aplikace nasazují, řešení také vytváří veřejně dostupné názvy DNS pro koncové body aplikace.
+Řešení směrování aplikace HTTP usnadňuje přístup k aplikacím, které jsou nasazeny do vašeho clusteru Azure Kubernetes Service (AKS). Když je řešení povolené, nakonfiguruje v clusteru AKS [adaptér](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) příchozího přenosu dat. Při nasazení aplikací řešení také vytvoří veřejně přístupné názvy DNS pro koncové body aplikací.
 
-Pokud doplněk je povolená, vytvoří zónu DNS ve vašem předplatném. Další informace o nákladech DNS najdete v tématu [DNS ceny][dns-pricing].
+Když je doplněk povolený, vytvoří v předplatném zónu DNS. Další informace o cenách služby DNS najdete v tématu [ceny služby DNS][dns-pricing].
 
 > [!CAUTION]
-> Doplněk směrování aplikace HTTP je navržena tak, aby rychle vytvořit řadič příchozího přenosu dat a přístup k vaší aplikace. K tomu tento doplněk se nedoporučuje pro produkční použití. Nasazení příchozího přenosu dat připravené pro produkční prostředí, které obsahují více replik a TLS podporují, najdete v části [vytvořit řadič příchozího přenosu dat protokolu HTTPS](https://docs.microsoft.com/azure/aks/ingress-tls).
+> Doplněk pro směrování aplikací HTTP je navržený tak, aby vám umožnil rychle vytvořit kontroler příchozího přenosu dat a přistupovat k aplikacím. Tento doplněk není doporučen pro produkční použití. Pro nasazení příchozích dat do provozu, která zahrnují víc replik a podporu TLS, najdete informace v tématu [vytvoření řadiče HTTPS pro příchozí](https://docs.microsoft.com/azure/aks/ingress-tls)přenosy.
 
-## <a name="http-routing-solution-overview"></a>Přehled řešení směrování protokolu HTTP
+## <a name="http-routing-solution-overview"></a>Přehled řešení směrování HTTP
 
-Doplněk nasadí dvě součásti: [kontroler příchozího přenosu dat Kubernetes] [ ingress] a [externí DNS] [ external-dns] kontroleru.
+Doplněk nasazuje dvě součásti: kontroler příchozího přenosu dat [Kubernetes][ingress] a externí řadič [DNS][external-dns] .
 
-- **Kontroler příchozího přenosu dat**: Kontroler příchozího přenosu dat je přístupný Internetu s použitím služby Kubernetes typu nástroj pro vyrovnávání zatížení. Kontroler příchozího přenosu dat sleduje a implementuje [příchozího přenosu dat Kubernetes prostředky][ingress-resource], který vytvoří trasy pro koncové body aplikace.
-- **Externí DNS řadiče**: Sleduje různé prostředky Kubernetes příchozího přenosu dat a vytvoří záznamy DNS A v zóně DNS specifické pro cluster.
+- **Kontroler**příchozího přenosu dat: Kontroler příchozího přenosu dat je přístupný pro Internet pomocí služby Kubernetes typu pro vyrovnávání zatížení. Kontroler příchozího přenosu dat sleduje a implementuje [Kubernetes příchozí prostředky][ingress-resource], které vytváří trasy k koncovým bodům aplikace.
+- **Externí řadič DNS**: Sleduje Kubernetes příchozí prostředky a vytváří záznamy DNS v zóně DNS specifické pro clustery.
 
-## <a name="deploy-http-routing-cli"></a>Nasazení, směrování protokolu HTTP: Rozhraní příkazového řádku
+## <a name="deploy-http-routing-cli"></a>Nasazení směrování HTTP: Rozhraní příkazového řádku
 
-Pomocí Azure CLI je možné povolit doplněk směrování aplikace HTTP, při nasazování clusteru AKS. Chcete-li tak učinit, použijte [az aks vytvořit] [ az-aks-create] příkazů `--enable-addons` argument.
+Doplněk směrování aplikace HTTP může být při nasazení clusteru AKS povolen s rozhraním příkazového řádku Azure CLI. K tomu použijte příkaz [AZ AKS Create][az-aks-create] s `--enable-addons` argumentem.
 
 ```azurecli
 az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addons http_application_routing
 ```
 
 > [!TIP]
-> Pokud chcete povolit více doplňky, můžete je zadejte jako seznam oddělený čárkami. Například pokud chcete povolit monitorování a směrování aplikace HTTP, použijte formát `--enable-addons http_application_routing,monitoring`.
+> Pokud chcete povolit vícenásobné doplňky, poskytněte je jako seznam oddělený čárkami. Pokud chcete například povolit směrování a monitorování aplikací HTTP, použijte formát `--enable-addons http_application_routing,monitoring`.
 
-Můžete také povolit směrování na existující cluster AKS pomocí protokolu HTTP [az aks enable-addons] [ az-aks-enable-addons] příkazu. Pokud chcete povolit směrování protokolu HTTP v existujícím clusteru, přidejte `--addons` parametr a zadat *http_application_routing* jak je znázorněno v následujícím příkladu:
+V existujícím clusteru AKS můžete taky povolit směrování HTTP pomocí příkazu [AZ AKS Enable-addons][az-aks-enable-addons] . Pokud chcete povolit směrování protokolu HTTP v existujícím clusteru, `--addons` přidejte parametr a zadejte *http_application_routing* , jak je znázorněno v následujícím příkladu:
 
 ```azurecli
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
 ```
 
-Poté, co clusteru je nasazený nebo aktualizovat, použijte [az aks zobrazit] [ az-aks-show] příkaz, který načte název zóny DNS. Tento název je potřeba k nasazení aplikací do clusteru AKS.
+Po nasazení nebo aktualizaci clusteru použijte příkaz [AZ AKS show][az-aks-show] , který načte název zóny DNS. Tento název je nutný k nasazení aplikací do clusteru AKS.
 
 ```azurecli
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
@@ -58,26 +58,26 @@ Result
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
 ```
 
-## <a name="deploy-http-routing-portal"></a>Nasazení, směrování protokolu HTTP: Portál
+## <a name="deploy-http-routing-portal"></a>Nasazení směrování HTTP: Portál
 
-Na webu Azure portal je možné povolit doplněk směrování aplikace HTTP, při nasazování clusteru AKS.
+Doplněk směrování aplikace HTTP lze povolit prostřednictvím Azure Portal při nasazování clusteru AKS.
 
-![Povolit funkci směrování protokolu HTTP](media/http-routing/create.png)
+![Povolení funkce směrování protokolu HTTP](media/http-routing/create.png)
 
-Po nasazení clusteru, přejděte do skupiny automaticky vytvořený prostředek AKS a vyberte zónu DNS. Poznamenejte si název zóny DNS. Tento název je potřeba k nasazení aplikací do clusteru AKS.
+Po nasazení clusteru přejděte do automaticky vytvořené skupiny prostředků AKS a vyberte zónu DNS. Poznamenejte si název zóny DNS. Tento název je nutný k nasazení aplikací do clusteru AKS.
 
-![Získejte název zóny DNS](media/http-routing/dns.png)
+![Získat název zóny DNS](media/http-routing/dns.png)
 
 ## <a name="use-http-routing"></a>Použití směrování protokolu HTTP
 
-Řešení směrování aplikace HTTP můžou být vyvolány pouze na prostředky příchozího přenosu dat, které jsou opatřeny poznámkami následujícím způsobem:
+Řešení směrování aplikace HTTP se dá aktivovat jenom u prostředků příchozího přenosu dat, které jsou poznámy takto:
 
 ```yaml
 annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-Vytvořte soubor s názvem **ukázky http aplikace routing.yaml** a zkopírujte do následující kód YAML. Na řádku 43 aktualizovat `<CLUSTER_SPECIFIC_DNS_ZONE>` se zóna DNS shromážděných v předchozím kroku tohoto článku.
+Vytvořte soubor s názvem **Samples-http-Application-Routing. yaml** a ZKOPÍRUJTE následující YAML. Na řádku 43 aktualizujte `<CLUSTER_SPECIFIC_DNS_ZONE>` pomocí názvu zóny DNS shromážděného v předchozím kroku tohoto článku.
 
 
 ```yaml
@@ -136,7 +136,7 @@ spec:
         path: /
 ```
 
-Použití [použití kubectl] [ kubectl-apply] příkaz pro vytvoření prostředků.
+K vytvoření prostředků použijte příkaz [kubectl Apply][kubectl-apply] .
 
 ```bash
 $ kubectl apply -f samples-http-application-routing.yaml
@@ -146,7 +146,7 @@ service "party-clippy" created
 ingress "party-clippy" created
 ```
 
-Pomocí cURL nebo v prohlížeči přejděte na název hostitele definováno v sekci hostitele ukázky http aplikace routing.yaml souboru. Aplikace může trvat až jednu minutu, než je k dispozici prostřednictvím Internetu.
+Použijte kudrlinkou nebo prohlížeč a přejděte k názvu hostitele, který je zadaný v části Host v souboru Samples-http-Application-Routing. yaml. Aplikace může trvat až jednu minutu, než bude dostupná přes Internet.
 
 ```bash
 $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
@@ -171,15 +171,15 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
 ## <a name="remove-http-routing"></a>Odebrat směrování protokolu HTTP
 
-Řešení směrování protokolu HTTP lze odebrat pomocí příkazového řádku Azure. Provedete to spuštěním následujícího příkazu, nahraďte vaše AKS clusterů a prostředků název skupiny.
+Řešení směrování HTTP se dá odebrat pomocí Azure CLI. Uděláte to tak, že spustíte následující příkaz, kde nahradíte svůj cluster AKS a název skupiny prostředků.
 
 ```azurecli
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
-Pokud je zakázáno doplněk směrování aplikace HTTP, některé prostředky Kubernetesu může zůstat v clusteru. Tyto prostředky zahrnují *configMaps* a *tajných kódů*a vytvářejí *kube-system* oboru názvů. Chcete-li udržovat čisté clusteru, můžete odebrat tyto prostředky.
+Když je doplněk pro směrování aplikace HTTP zakázaný, některé prostředky Kubernetes můžou v clusteru zůstat. Tyto prostředky zahrnují *configMaps* a *tajné klíče*a vytvářejí se v oboru názvů *Kube-System* . Pokud chcete zachovat čistý cluster, možná budete chtít tyto prostředky odebrat.
 
-Vyhledejte *doplněk--směrování aplikace http* prostředky pomocí následujících [kubectl get] [ kubectl-get] příkazy:
+Vyhledejte prostředky *addon-http-Application-Routing* pomocí následujících příkazů [Get kubectl][kubectl-get] :
 
 ```console
 kubectl get deployments --namespace kube-system
@@ -188,7 +188,7 @@ kubectl get configmaps --namespace kube-system
 kubectl get secrets --namespace kube-system
 ```
 
-Následující příklad výstupu ukazuje configMaps, které mají být odstraněny:
+Následující příklad výstupu ukazuje configMaps, které by se měly odstranit:
 
 ```
 $ kubectl get configmaps --namespace kube-system
@@ -199,17 +199,17 @@ kube-system   addon-http-application-routing-tcp-services                0      
 kube-system   addon-http-application-routing-udp-services                0      9m7s
 ```
 
-Chcete-li odstranit prostředky, použijte [kubectl odstranit] [ kubectl-delete] příkazu. Zadejte typ prostředku, prostředek názvem a oborem názvů. Následující příklad odstraní jeden z předchozích configmaps:
+K odstranění prostředků použijte příkaz [kubectl Delete][kubectl-delete] . Zadejte typ prostředku, název prostředku a obor názvů. Následující příklad odstraní jednu z předchozích configmaps:
 
 ```console
 kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
 ```
 
-Opakujte předchozí `kubectl delete` krok pro všechny *doplněk--směrování aplikace http* prostředky, které zůstávají ve vašem clusteru.
+Opakujte předchozí `kubectl delete` krok pro všechny prostředky funkce *addon-http-Application-Routing* , které zůstaly ve vašem clusteru.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Použití [kubectl protokoly] [ kubectl-logs] příkazu zobrazte protokoly aplikací pro aplikaci externí DNS. Protokoly by měl potvrďte, že záznam TXT DNS a a byly úspěšně vytvořeny.
+Pomocí příkazu [kubectl logs][kubectl-logs] Zobrazte protokoly aplikací pro externí aplikaci DNS. Protokoly by měly potvrdit, že byl úspěšně vytvořen záznam DNS a a TXT.
 
 ```
 $ kubectl logs -f deploy/addon-http-application-routing-external-dns -n kube-system
@@ -218,11 +218,11 @@ time="2018-04-26T20:36:19Z" level=info msg="Updating A record named 'party-clipp
 time="2018-04-26T20:36:21Z" level=info msg="Updating TXT record named 'party-clippy' to '"heritage=external-dns,external-dns/owner=default"' for Azure DNS zone '471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io'."
 ```
 
-Tyto záznamy můžete zobrazit také na prostředku zóny DNS na webu Azure Portal.
+Tyto záznamy se taky můžou zobrazit na prostředku zóny DNS v Azure Portal.
 
 ![Získat záznamy DNS](media/http-routing/clippy.png)
 
-Použití [kubectl protokoly] [ kubectl-logs] příkazu zobrazte protokoly aplikací pro kontroler příchozího přenosu dat serveru Nginx. Ověřte, zda protokoly `CREATE` prostředek příchozího přenosu dat a znovu načíst kontroleru. Všechny HTTP aktivita se protokoluje.
+Pomocí příkazu [kubectl logs][kubectl-logs] Zobrazte protokoly aplikací pro kontroler Nginx pro příchozí přenosy. Protokoly by měly potvrdit `CREATE` prostředek příchozího přenosu dat a znovu načíst řadič. Všechny aktivity HTTP jsou protokolovány.
 
 ```bash
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system
@@ -263,7 +263,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 ## <a name="clean-up"></a>Vyčištění
 
-Odeberte přidružené Kubernetes objekty vytvořené v tomto článku.
+Odeberte přidružené objekty Kubernetes vytvořené v tomto článku.
 
 ```bash
 $ kubectl delete -f samples-http-application-routing.yaml
@@ -275,7 +275,7 @@ ingress "party-clippy" deleted
 
 ## <a name="next-steps"></a>Další postup
 
-Informace o tom, jak nainstalovat řadič protokol HTTPS zabezpečená příchozího přenosu dat ve službě AKS najdete v tématu [HTTPS příchozího přenosu dat ve službě Azure Kubernetes Service (AKS)][ingress-https].
+Informace o tom, jak nainstalovat řadič příchozího přenosu HTTPS v AKS, najdete v tématu https informing [on Azure Kubernetes Service (AKS)][ingress-https].
 
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create

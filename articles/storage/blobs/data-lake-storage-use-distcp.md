@@ -1,105 +1,104 @@
 ---
-title: Kopírování dat do Azure Data Lake Storage Gen2 pomocí DistCp | Dokumentace Microsoftu
-description: Pomocí DistCp nástroje pro kopírování dat do a z Data Lake Storage Gen2
-services: storage
+title: Kopírování dat do Azure Data Lake Storage Gen2 pomocí DistCp | Microsoft Docs
+description: Kopírování dat do a z Data Lake Storage Gen2 pomocí nástroje DistCp
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
-ms.reviewer: seguler
-ms.openlocfilehash: 0e85d2b2c7e9a3022e7fea2063ffa0aa915abb53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: stewu
+ms.openlocfilehash: d33518c7dc82f8af61fef02ecabb7ac7f42e28fb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939054"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847090"
 ---
-# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Použití DistCp ke kopírování dat mezi objekty BLOB Azure Storage a Azure Data Lake Storage Gen2
+# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2
 
-Můžete použít [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) ke kopírování dat mezi účet úložiště pro obecné účely V2 a účet úložiště pro obecné účely V2 s hierarchického oboru názvů povolené. Tento článek obsahuje pokyny, jak používat nástroj DistCp.
+Pomocí [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) můžete kopírovat data mezi účtem úložiště pro obecné účely v2 a účtem úložiště pro obecné účely v2 s povoleným hierarchickým oborem názvů. Tento článek poskytuje pokyny pro použití nástroje DistCp.
 
-DistCp poskytuje celou řadu parametrů příkazového řádku a důrazně doporučujeme, abyste v tomto článku k optimalizaci využití ho. Tento článek popisuje základní funkce při zaměření na jeho použití pro kopírování dat do účtu hierarchického oboru názvů povolené.
+DistCp poskytuje nejrůznější parametry příkazového řádku a důrazně doporučujeme, abyste si tento článek přečetli, abyste mohli optimalizovat jeho využití. Tento článek ukazuje základní funkce a zaměřuje se na její použití ke kopírování dat na účet s povoleným hierarchickým oborem názvů.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Existující účet úložiště Azure bez Data Lake Storage Gen2 funkcích (hierarchického oboru názvů), které přináší**.
-* **Účet služby Azure Storage s povolenou funkcí Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
-* **Systém souborů** , který byl vytvořen v účtu úložiště s hierarchického oboru názvů povolené.
-* **Azure HDInsight cluster** s přístupem k účtu úložiště pomocí Data Lake Storage Gen2 povolena. Zobrazit [clusterů pomocí Azure Data Lake Storage Gen2 s Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Ujistěte se, že se že povolení vzdálené plochy pro cluster.
+* **Existující účet Azure Storage bez povolených možností Data Lake Storage Gen2 (hierarchický obor názvů)** .
+* **Azure Storage účet s povolenou funkcí data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [Vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md) .
+* **Systém souborů** , který byl vytvořen v účtu úložiště s povoleným hierarchickým oborem názvů.
+* **Cluster Azure HDInsight** s přístupem k účtu úložiště s povoleným Data Lake Storage Gen2. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Použití DistCp z clusteru HDInsight Linux
 
-HDInsight cluster se dodává s DistCp nástroj, který slouží ke kopírování dat z různých zdrojů do clusteru služby HDInsight. Pokud nakonfigurujete cluster HDInsight používat Azure Blob Storage a Azure Data Lake Storage společně, může být nástroj DistCp používané out-of-the-box ke kopírování dat mezi také. V této části se podíváme na tom, jak používat nástroj DistCp.
+Cluster An HDInsight se dodává s nástrojem DistCp, který se dá použít ke kopírování dat z různých zdrojů do clusteru HDInsight. Pokud jste nakonfigurovali cluster HDInsight na používání Azure Blob Storage a Azure Data Lake Storage společně, můžete k kopírování dat mezi i použít nástroj DistCp. V této části se podíváme na použití nástroje DistCp.
 
-1. Vytvořte relaci SSH k vašemu clusteru HDI. Zobrazit [připojení ke clusteru HDInsight se systémem Linux](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Vytvořte relaci SSH ke clusteru HDI. Viz [připojení ke clusteru HDInsight se systémem Linux](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Ověřte, zda máte přístup vaší existující obecné účely V2 účtu (bez povolené hierarchického oboru názvů).
+2. Ověřte, jestli máte přístup k vašemu stávajícímu účtu pro obecné účely v2 (bez povoleného hierarchického oboru názvů).
 
         hdfs dfs –ls wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/
 
-    Výstup by měl poskytovat seznam obsah v kontejneru.
+    Výstup by měl poskytnout seznam obsahu v kontejneru.
 
-3. Stejně tak ověřte, zda účtu úložiště můžou přistupovat pomocí hierarchického oboru názvů povolené z clusteru. Spusťte následující příkaz:
+3. Podobně ověřte, zda máte přístup k účtu úložiště s povoleným hierarchickým oborem názvů z clusteru. Spusťte následující příkaz:
 
         hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
 
-    Výstup by měl poskytovat seznam souborů a složek v účtu Data Lake Storage.
+    Výstup by měl poskytnout seznam souborů nebo složek v účtu Data Lake Storage.
 
-4. Použití DistCp ke kopírování dat z WASB do účtu Data Lake Storage.
+4. Pomocí DistCp můžete kopírovat data z WASB na účet Data Lake Storage.
 
         hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
 
-    Příkaz zkopíruje obsah **/příklad/data/gutenberg/** složky v úložišti objektů Blob do **/myfolder** v účtu Data Lake Storage.
+    Příkaz zkopíruje obsah složky **/example/data/Gutenberg/** v úložišti objektů blob do **/myFolder** účtu Data Lake Storage.
 
-5. Podobně použití DistCp ke kopírování dat z účtu Data Lake Storage do úložiště objektů Blob (WASB).
+5. Podobně použijte DistCp ke zkopírování dat z Data Lake Storage účtu do Blob Storage (WASB).
 
         hadoop distcp abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg
 
-    Příkaz zkopíruje obsah **/myfolder** v účtu Data Lake Store k **/příklad/data/gutenberg/** složky WASB.
+    Příkaz zkopíruje obsah **/myFolder** v účtu Data Lake Store do složky **/example/data/Gutenberg/** v WASB.
 
-## <a name="performance-considerations-while-using-distcp"></a>Faktory ovlivňující výkon při použití DistCp
+## <a name="performance-considerations-while-using-distcp"></a>Požadavky na výkon při použití DistCp
 
-Protože DistCp na nejnižší členitost je jeden soubor, nastavení maximálního počtu souběžných kopie je nejdůležitější parametr k optimalizaci pro Data Lake Storage. Počet souběžných kopie je rovna počtu mapovačů (**m**) parametr příkazového řádku. Tento parametr určuje maximální počet mapovačů, které se používají ke kopírování dat. Výchozí hodnota je 20.
+Vzhledem k tomu, že je nejnižší členitost DistCp jediným souborem, je nastavení maximálního počtu souběžných kopií nejdůležitějším parametrem pro jejich optimalizaci proti Data Lake Storage. Počet souběžných kopií se rovná parametru počet mapovačů (**m**) na příkazovém řádku. Tento parametr určuje maximální počet mapovačů, které se použijí ke kopírování dat. Výchozí hodnota je 20.
 
 **Příklad**
 
     hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder -m 100
 
-### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Jak zjistím, počet mapovačů použít?
+### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Návody určit počet mapovačů, které se mají použít?
 
 Tady je několik rad, kterými se můžete řídit.
 
-* **Krok 1: Určit celkové paměti k dispozici do fronty aplikace YARN "default"** -prvním krokem je stanovit paměť k dispozici do fronty aplikace YARN "default". Tyto informace jsou k dispozici na portálu Ambari přidružené ke clusteru. Přejděte na YARN a zobrazit na kartě Konfigurace zobrazíte dostupné do fronty "default" aplikace YARN paměti. Toto je do celkově dostupné paměti pro úlohu DistCp (která je ve skutečnosti úlohu MapReduce).
+* **Krok 1: Určení celkové dostupné paměti pro výchozí frontu** přízových aplikací – prvním krokem je určení paměti dostupné pro výchozí frontu příz aplikace. Tyto informace jsou k dispozici na portálu Ambari přidruženém ke clusteru. Přejděte na PŘÍZe a zobrazte kartu Konfigurace, abyste viděli paměť PŘÍZe dostupnou pro výchozí frontu aplikací. Toto je celková dostupná paměť pro vaši úlohu DistCp (která je ve skutečnosti úlohou MapReduce).
 
-* **Krok 2: Vypočítat počet mapovačů** – hodnota **m** rovná podíl celkové paměti YARN děleného velikostí kontejneru YARN. Informace o velikosti kontejneru YARN je k dispozici na portálu Ambari. Přejděte na YARN a zobrazit na kartě konfigurace. V tomto okně je zobrazena velikost kontejneru YARN. Rovnice, můžete přejít na počet mapovačů (**m**) je
+* **Krok 2: Vypočítat počet mapovačů** – hodnota **m** se rovná podílu celkové paměti příze dělené velikostí kontejneru příze. Informace o velikosti kontejneru PŘÍZe jsou k dispozici také na portálu Ambari. Přejděte na PŘÍZe a zobrazte kartu konfigurace. V tomto okně se zobrazí velikost kontejneru PŘÍZe. Rovnice pro doručení do počtu mapovačů (**m**) je
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
 **Příklad**
 
-Předpokládejme, že máte 4 x D14v2s cluster a pokoušíte se převést 10 TB dat z 10 různými složkami. Všechny složky obsahuje různé množství dat a velikostí souboru v rámci každé složky se liší.
+Předpokládejme, že máte cluster s 4x D14v2s a snažíte se přenést 10 TB dat z 10 různých složek. Každá složka obsahuje různé objemy dat a velikosti souborů v jednotlivých složkách se liší.
 
-* **Celková kapacita paměti YARN**: Z portálu Ambari zjistíte, že paměti YARN 96 GB pro D14 uzel. Ano v celkové paměti YARN u clusteru se čtyřmi uzly se: 
+* **Celková paměť příze**: Na portálu Ambari zjistíte, že paměť PŘÍZe je 96 GB pro uzel D14. Proto je celková paměť PŘÍZe pro cluster se čtyřmi uzly: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* **Počet mapovačů**: Z portálu Ambari zjistíte, že velikost kontejneru YARN 3,072 MB pro D14 uzlu clusteru. Ano počet mapovačů je:
+* **Počet mapovačů**: Na portálu Ambari zjistíte, že velikost kontejneru PŘÍZe je 3 072 MB pro uzel clusteru D14. Proto je počet mapovačů:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 
-Pokud jiné aplikace používají paměti, je možné použít pro DistCp pouze část paměti YARN vašeho clusteru.
+Pokud jiné aplikace používají paměť, můžete zvolit, že chcete použít jenom část paměti PŘÍZe clusteru pro DistCp.
 
 ### <a name="copying-large-datasets"></a>Kopírování velkých datových sad
 
-Když je velká velikost datové sady, chcete-li přesunout (například > 1 TB) nebo pokud máte mnoho různých složek, měli byste zvážit použití více DistCp úloh. Pravděpodobně neexistuje žádný zvýšení výkonu, ale šíří navýšení kapacity úloh tak, že pokud některé z úloh selže, stačí restartovat tuto konkrétní úlohu, ne celý projekt.
+Když velikost datové sady, která se má přesunout, je velká (například > 1 TB) nebo pokud máte mnoho různých složek, měli byste zvážit použití více úloh DistCp. Je možné, že nedojde k nárůstu výkonu, ale rozšíří úlohy tak, aby v případě, že dojde k chybě jakékoli úlohy, stačí restartovat pouze tuto konkrétní úlohu, nikoli celou úlohu.
 
 ### <a name="limitations"></a>Omezení
 
-* DistCp se pokusí vytvořit mapovačů, které jsou podobné jako u velikosti za účelem optimalizace výkonu. Zvýšení počtu mapovačů nemusí vždy zvýšit výkon.
+* DistCp se snaží vytvořit mapovače, které mají pro optimalizaci výkonu podobnou velikost. Zvýšení počtu mapovačů nemusí vždy zvyšovat výkon.
 
-* DistCp je omezeno na pouze jednoho mapování na soubor. Proto by neměl mít více mapovačů, než jste soubory. Protože DistCp lze přiřadit pouze jeden Mapovač do souboru, to omezuje množství souběžnosti, který slouží ke kopírování velkých souborů.
+* DistCp je omezené jenom na jedno mapování na soubor. Proto byste neměli mít větší mapovače než soubory. Vzhledem k tomu, že DistCp může přiřazovat pouze jedno Mapovač k souboru, omezuje to velikost souběžnosti, kterou lze použít ke kopírování velkých souborů.
 
-* Pokud máte malé množství velkých souborů, byste je rozdělit do 256 MB bloky dat souborů poskytnout další potenciální souběžnosti.
+* Pokud máte malý počet velkých souborů, pak je byste měli rozdělit na bloky dat souborů 256 MB, abyste měli k dispozici více potenciálních souběžnosti.

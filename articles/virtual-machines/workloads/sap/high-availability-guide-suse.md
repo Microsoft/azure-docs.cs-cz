@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver na SUSE Linux Enterprise Server pro aplikace SAP | Dokumentace Microsoftu
-description: Příručka pro vysokou dostupnost pro SAP NetWeaver na SUSE Linux Enterprise Server pro aplikace SAP
+title: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v SUSE Linux Enterprise Server pro aplikace SAP | Microsoft Docs
+description: Průvodce vysokou dostupností pro SAP NetWeaver v SUSE Linux Enterprise Server pro aplikace SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
 ms.openlocfilehash: 16f88790d96a1e46f60db368f69155b3ad7afbef
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 08/08/2019
 ms.locfileid: "67797491"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP
@@ -53,51 +53,51 @@ ms.locfileid: "67797491"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů, instalaci rozhraní clusteru a instalace s vysokou dostupností systému SAP NetWeaver 7.50.
-V ukázkové konfigurace příkazy instalace atd. Číslo instance ASCS 00 Lajících instance číslo 02 a používá se ID NW1 systému SAP. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu se předpokládá, že jste použili [konvergované šablony][template-converged] systému SAP ID NW1 vytvoříte prostředky.
+Tento článek popisuje, jak nasadit virtuální počítače, nakonfigurovat virtuální počítače, nainstalovat architekturu clusteru a nainstalovat vysoce dostupný systém SAP NetWeaver 7,50.
+V ukázkových konfiguracích instalační příkazy atd. Je použito číslo instance ASCS 00, OLAJÍCÍCH instance 2 a SAP System ID NW1. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu předpokládají, že jste k vytváření prostředků použili [šablonu][template-converged] s ID systému SAP NW1.
 
-Přečtěte si následující poznámky SAP a Paper nejprve
+Nejprve si přečtěte následující poznámky a dokumenty SAP
 
-* Poznámka SAP [1928533], který obsahuje:
-  * Seznam velikostí virtuálních počítačů Azure, které jsou podporovány pro nasazení softwaru SAP
-  * Informace o kapacitě důležité pro velikosti virtuálních počítačů Azure
-  * Podporované SAP software a operační systém (OS) a kombinace databáze
+* Poznámka [1928533]pro SAP obsahuje:
+  * Seznam velikostí virtuálních počítačů Azure, které jsou podporované pro nasazení softwaru SAP
+  * Důležité informace o kapacitě pro velikosti virtuálních počítačů Azure
+  * Podporovaný software SAP a kombinace operačního systému (OS) a databáze
   * Požadovaná verze jádra SAP pro Windows a Linux v Microsoft Azure
 
-* Poznámka SAP [2015553] uvádí předpoklady pro nasazení softwaru SAP nepodporuje SAP v Azure.
-* Poznámka SAP [2205917] se doporučuje nastavení operačního systému SUSE Linux Enterprise Server pro aplikace SAP
-* Poznámka SAP [1944799] obsahuje pokyny pro SAP HANA pro SUSE Linux Enterprise Server pro aplikace SAP
-* Poznámka SAP [2178632] podrobné informace o všech monitorování metrik pro SAP v Azure.
-* Poznámka SAP [2191498] má požadovaná verze SAP hostitele agenta pro Linux v Azure.
-* Poznámka SAP [2243692] obsahuje informace o SAP programech v Linuxu v Azure.
-* Poznámka SAP [1984787] obsahuje obecné informace o operačním systémem SUSE Linux Enterprise Server 12.
-* Poznámka SAP [1999351] obsahuje další informace o odstraňování potíží pro rozšířené monitorování rozšíření Azure pro SAP.
-* [WIKI komunity SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
-* [Azure Virtual Machines, plánování a implementace SAP na platformě Linux][planning-guide]
-* [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux][deployment-guide]
-* [Nasazení Azure Virtual Machines DBMS pro SAP na platformě Linux][dbms-guide]
-* [SUSE SAP HA příručky s osvědčenými postupy][suse-ha-guide] vodítka obsahovat všechny požadované informace k nastavení Netweaver HA a SAP HANA System Replication místní. Pomocí těchto návodů jako obecné směrného plánu. Poskytují mnohem podrobnější informace.
-* [Zpráva k vydání verze s aktualizací SP3 SUSE vysokou dostupnost rozšíření 12][suse-ha-12sp3-relnotes]
+* SAP Note [2015553] uvádí požadavky na nasazení softwaru SAP podporovaná službou SAP v Azure.
+* Pro aplikace SAP Poznámka [2205917] se doporučuje nastavení operačního systému pro SUSE Linux Enterprise Server pro aplikace SAP.
+* Poznámka SAP Poznámka [1944799] obsahuje pokyny pro SAP HANA SUSE Linux Enterprise Server pro aplikace SAP.
+* Pro SAP Note [2178632] najdete podrobné informace o všech metrikách monitorování hlášených pro SAP v Azure.
+* V případě SAP Poznámka [2191498] je požadovaná verze agenta hostitele SAP pro Linux v Azure.
+* Poznámka SAP Poznámka [2243692] obsahuje informace o LICENCOVÁNí SAP v systému Linux v Azure.
+* Poznámka SAP poznámky [1984787] obsahuje obecné informace o SUSE Linux Enterprise Server 12.
+* V části SAP Note [1999351] najdete další informace o odstraňování potíží pro rozšíření Azure Enhanced Monitoring pro SAP.
+* [Komunitní komunita SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
+* [Plánování a implementace služby Azure Virtual Machines pro SAP v systému Linux][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP v systému Linux][deployment-guide]
+* [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
+* [Průvodce osvědčenými postupy pro SUSE SAP ha][suse-ha-guide] Příručky obsahují všechny požadované informace pro nastavení NetWeaver HA a SAP HANA místní replikace systému. Použijte tyto příručky jako obecné standardní hodnoty. Poskytují mnohem podrobnější informace.
+* [Zpráva k vydání verze SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>Přehled
 
-Abyste dosáhli vysoké dostupnosti, SAP NetWeaver vyžaduje serverem NFS. Server systému souborů NFS je nakonfigurované na jiném clusteru a mohou být využívána více systémů SAP.
+Pro zajištění vysoké dostupnosti vyžaduje SAP NetWeaver Server NFS. Server NFS je nakonfigurovaný v samostatném clusteru a může ho používat víc systémů SAP.
 
-![Přehled SAP NetWeaver vysoké dostupnosti](./media/high-availability-guide-suse/ha-suse.png)
+![Přehled vysoké dostupnosti SAP NetWeaver](./media/high-availability-guide-suse/ha-suse.png)
 
-Server systému souborů NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Lajících a databáze SAP HANA pomocí virtuální název hostitele a virtuální IP adresy. V Azure je potřeba nástroj pro vyrovnávání zatížení pomocí virtuální IP adresu. Následující seznam obsahuje konfiguraci (A) SCS a Lajících nástroj pro vyrovnávání zatížení.
+Server NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP HANA používají virtuální název hostitele a virtuální IP adresy. V Azure se nástroj pro vyrovnávání zatížení vyžaduje k použití virtuální IP adresy. Následující seznam uvádí konfiguraci (A) SCS a nástroj pro vyrovnávání zatížení OLAJÍCÍCH.
 
 > [!IMPORTANT]
-> S několika SID clusteringu SAP ASCS/Lajících s operačním systémem SUSE Linux jako hostovaný operační systém na virtuálních počítačích Azure je **nepodporuje**. Popisuje instalaci více instancí SAP ASCS/Lajících s různé identifikátory SID v jednom clusteru Pacemaker clustering s několika SID
+> Clustering s více identifikátory SID pro SAP ASCS/OLAJÍCÍCH s SUSE Linux jako hostovaný operační systém ve virtuálních počítačíchAzure se nepodporuje. Clustering s více SID popisuje instalaci více instancí SAP ASCS/OLAJÍCÍCH s různými identifikátory SID v jednom clusteru Pacemaker.
 
 ### <a name="ascs"></a>(A)SCS
 
-* Konfiguraci front-endu
-  * IP adresa 10.0.0.7
+* Konfigurace front-endu
+  * 10.0.0.7 IP adres
 * Konfigurace back-endu
-  * Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí (A) SCS/Lajících clusteru
-* Port testu
-  * Port 620<strong>&lt;nr&gt;</strong>
+  * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
+* Port testu paměti
+  * Port 620<strong>&lt;Nr&gt;</strong>
 * Načítání 
 * pravidla vyrovnávání
   * 32<strong>&lt;nr&gt;</strong> TCP
@@ -108,136 +108,136 @@ Server systému souborů NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeav
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-### <a name="ers"></a>ERS
+### <a name="ers"></a>OLAJÍCÍCH
 
-* Konfiguraci front-endu
-  * IP adresa 10.0.0.8
+* Konfigurace front-endu
+  * 10.0.0.8 IP adres
 * Konfigurace back-endu
-  * Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí (A) SCS/Lajících clusteru
-* Port testu
-  * Port 621<strong>&lt;nr&gt;</strong>
-* Pravidla Vyrovnávání zatížení
+  * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
+* Port testu paměti
+  * Port 621<strong>&lt;Nr&gt;</strong>
+* Pravidla vyrovnávání zatížení
   * 32<strong>&lt;nr&gt;</strong> TCP
   * 33<strong>&lt;nr&gt;</strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-## <a name="setting-up-a-highly-available-nfs-server"></a>Nastavení vysoce dostupný server pro systém souborů NFS
+## <a name="setting-up-a-highly-available-nfs-server"></a>Nastavení vysoce dostupného serveru NFS
 
-SAP NetWeaver vyžaduje sdílené úložiště pro přenos a profil adresář. Čtení [vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server][nfs-ha] o tom, jak nastavit serverem NFS pro SAP NetWeaver.
+SAP NetWeaver vyžaduje pro přenos a profilový adresář sdílené úložiště. Přečtěte si [vysokou dostupnost pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server][nfs-ha] o tom, jak nastavit server NFS pro SAP NetWeaver.
 
 ## <a name="setting-up-ascs"></a>Nastavení (A) SCS
 
-Nasadit všechny požadované prostředky Azure, včetně virtual machines můžete použít šablony Azure z Githubu, dostupnosti, nastavte a nástroj pro vyrovnávání zatížení nebo ručně nasadit prostředky.
+K nasazení všech požadovaných prostředků Azure, včetně virtuálních počítačů, skupiny dostupnosti a nástroje pro vyrovnávání zatížení, můžete použít buď šablonu Azure z GitHubu, nebo můžete prostředky nasadit ručně.
 
-### <a name="deploy-linux-via-azure-template"></a>Nasazení Linuxu pomocí šablony Azure
+### <a name="deploy-linux-via-azure-template"></a>Nasazení systému Linux prostřednictvím šablony Azure
 
-Na webu Azure Marketplace obsahuje bitovou kopii operačního systému SUSE Linux Enterprise Server pro 12 aplikací SAP, který můžete použít k nasazení nových virtuálních počítačů. Marketplace image obsahuje agenta prostředků pro SAP NetWeaver.
+Azure Marketplace obsahuje obrázek pro SUSE Linux Enterprise Server aplikace SAP 12, které můžete použít k nasazení nových virtuálních počítačů. Image Marketplace obsahuje agenta prostředků pro SAP NetWeaver.
 
-Můžete některou ze šablon quickstart na Githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, dostupnosti, atd. Postupujte podle těchto kroků a nasaďte šablonu:
+K nasazení všech požadovaných prostředků můžete použít jednu z šablon pro rychlý Start na GitHubu. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, skupinu dostupnosti atd. Pomocí těchto kroků nasaďte šablonu:
 
-1. Otevřít [šablony ASCS/SCS více SID][template-multisid-xscs] or the [converged template][template-converged] on the Azure portal. 
-   The ASCS/SCS template only creates the load-balancing rules for the SAP NetWeaver ASCS/SCS and ERS (Linux only) instances whereas the converged template also creates the load-balancing rules for a database (for example Microsoft SQL Server or SAP HANA). If you plan to install an SAP NetWeaver based system and you also want to install the database on the same machines, use the [converged template][template-converged].
-1. Zadejte následující parametry
-   1. Předpona prostředků (pouze šablona ASCS/SCS více SID)  
-      Zadejte předponu, kterou chcete použít. Hodnota se používá jako předpona pro prostředky, které jsou nasazené.
-   3. ID systému SAP (pouze sblížené šablona)  
-      Zadejte ID systému SAP systému SAP, ve kterém chcete nainstalovat. ID se používá jako předpona pro prostředky, které jsou nasazené.
+1. Otevřete [šablonu ASCS/SCS s více SID][template-multisid-xscs] nebo [sblíženou šablonu][template-converged] na Azure Portal. 
+   Šablona ASCS/SCS pouze vytvoří pravidla vyrovnávání zatížení pro instance SAP NetWeaver ASCS/SCS a OLAJÍCÍCH (pouze Linux), zatímco sblížená šablona také vytvoří pravidla vyrovnávání zatížení pro databázi (například Microsoft SQL Server nebo SAP HANA). Pokud plánujete instalaci systému založeného na SAP NetWeaver a chcete také nainstalovat databázi do stejného počítače, použijte [sblíženou šablonu][template-converged].
+1. Zadejte následující parametry.
+   1. Předpona prostředků (jenom šablona ASCS/SCS multi SID)  
+      Zadejte předponu, kterou chcete použít. Hodnota se používá jako předpona pro nasazené prostředky.
+   3. ID systému SAP (jenom sblížená šablona)  
+      Zadejte ID systému SAP pro systém SAP, který chcete nainstalovat. ID se používá jako předpona pro nasazené prostředky.
    4. Typ zásobníku  
-      Vyberte typ zásobníku SAP NetWeaver
+      Vyberte typ zásobníku SAP NetWeaver.
    5. Typ operačního systému  
-      Vyberte jednu z Linuxových distribucí. V tomto příkladu vyberte SLES 12 BYOS
+      Vyberte jednu ze distribucí systému Linux. V tomto příkladu vyberte SLES 12 BYOS.
    6. Typ databáze  
-      Vyberte HANA
+      Vybrat HANA
    7. Velikost systému SAP.  
-      Množství protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP bude systém vyžadovat, požádejte SAP technologické partnery nebo systémový integrátor
+      Množství SAP, které nový systém poskytuje. Pokud si nejste jistí, kolik SAP systém vyžaduje, požádejte svého partnera technologie SAP nebo systémový integrátor.
    8. Dostupnost systému  
-      Vyberte HA
-   9. Uživatelské jméno Admin a heslo správce  
-      Je vytvořen nový uživatel, který lze použít k přihlášení k počítači.
+      Vybrat HA
+   9. Uživatelské jméno správce a heslo správce  
+      Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    10. ID podsítě  
-   Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá /subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /poskytovatelé/ Microsoft.Network/virtualNetworks/ **&lt;název virtuální sítě&gt;** /subnets/ **&lt;název podsítě&gt;**
+   Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID&gt;** předplatného **&lt;/resourceGroups/název&gt;skupiny prostředků**/Providers/Microsoft.Network/virtualNetworks/ **&lt; &gt;** název**podsítě/subnets/&gt; názvu virtuální sítě&lt;**
 
-### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linuxu prostřednictvím webu Azure portal
+### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
-Nejprve musíte vytvořit virtuální počítače pro tento cluster systému souborů NFS. Potom vytvořte nástroj pro vyrovnávání zatížení a použijte virtuální počítače v back-endové fondy.
+Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému souborů NFS. Následně vytvoříte Nástroj pro vyrovnávání zatížení a použijete virtuální počítače ve fondech back-endu.
 
 1. Vytvoření skupiny prostředků
-1. Vytvoření virtuální sítě
+1. Vytvoření Virtual Network
 1. Vytvoření skupiny dostupnosti  
-   Nastavení maximální aktualizační doména
-1. Vytvoření virtuálního počítače 1  
-   Použijte alespoň 12 SP1 SLES4SAP, v tomto příkladu SLES4SAP 12 SP1 obrazu https://portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP1PremiumImage-ARM  
-   SLES pro SAP aplikace 12 SP1 se používá.  
-   Vyberte dříve vytvořenou skupinu dostupnosti  
-1. Vytvoření virtuálního počítače 2  
-   Použijte alespoň 12 SP1 SLES4SAP, v tomto příkladu SLES4SAP 12 SP1 obrazu https://portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP1PremiumImage-ARM  
-   SLES pro SAP aplikace 12 SP1 se používá.  
-   Vyberte dříve vytvořenou skupinu dostupnosti  
-1. Přidejte alespoň jeden datový disk pro oba virtuální počítače  
-   Datové disky se používajípro/USR/sap/`<SAPSID`> adresáře
-1. Vytvořte nástroj pro vyrovnávání zatížení (interní)  
-   1. Vytvoření front-endové IP adresy
-      1. IP adresa 10.0.0.7 ASC
-         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-endový fond IP adres a klikněte na tlačítko Přidat
-         1. Zadejte název nové front-endový fond IP (například **nw1. ascs front-end**)
-         1. Nastavení přiřazení do statické a zadejte IP adresu (například **10.0.0.7**)
-         1. Klikněte na tlačítko OK
-      1. IP adresa 10.0.0.8 ASCS Lajících
-         * Zopakujte výše uvedené kroky a vytvořte IP adresu pro Lajících (například **10.0.0.8** a **nw1-aers-backend**)
-   1. Vytvoření back-endové fondy
-      1. Vytvoření back-endový fond pro ASC
-         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte back-endové fondy a klikněte na tlačítko Přidat
-         1. Zadejte název nového back-endového fondu (například **nw1-ascs-backend**)
-         1. Klikněte na tlačítko Přidat virtuální počítač.
-         1. Vyberte skupinu dostupnosti jste vytvořili dříve
-         1. Vyberte virtuální počítače (A) SCS clusteru
-         1. Klikněte na tlačítko OK
-      1. Vytvoření back-endový fond pro ASCS Lajících
-         * Zopakujte výše uvedené kroky a vytvořte back-endový fond pro Lajících (například **nw1-aers-backend**)
-   1. Vytvoření sondy stavu
-      1. Port 620**00** pro ASC
-         1. Otevřete nástroj pro vyrovnávání zatížení vyberte testy stavu a klikněte na tlačítko Přidat
-         1. Zadejte název nového stavu testu (například **nw1. ascs hp**)
-         1. Jako protokol, port 620 vyberte TCP**00**, Interval 5 a prahová hodnota špatného stavu 2
-         1. Klikněte na tlačítko OK
-      1. Port 621**02** pro ASCS Lajících
-         * Zopakujte výše uvedené kroky a vytvořte sondu stavu pro Lajících (například 621**02** a **nw1. aers hp**)
-   1. Pravidla Vyrovnávání zatížení
-      1. 32**00** TCP pro ASC
-         1. Otevřete nástroj pro vyrovnávání zatížení, pravidla Vyrovnávání zatížení vyberte a klikněte na tlačítko Přidat
-         1. Zadejte název nového pravidla služby load balancer (například **nw1-lb-3200**)
-         1. Vyberte IP adresu front-endu, back-endového fondu a sondu stavu, které jste vytvořili dříve (například **nw1. ascs front-end**)
-         1. Zachovat protokol **TCP**, zadejte port **3200**
-         1. Zvyšte časový limit nečinnosti až 30 minut.
-         1. **Ujistěte se, že chcete povolit plovoucí IP adresy**
-         1. Klikněte na tlačítko OK
-      1. Další porty pro ASC
-         * Opakujte předchozí kroky pro porty 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASC
-      1. Další porty pro ASCS Lajících
-         * Opakujte předchozí kroky pro porty 33**02**, 5**02**13, 5**02**14, 5**02**16 a TCP pro ASCS Lajících
+   Nastavit maximální aktualizační doménu
+1. Vytvořit virtuální počítač 1  
+   Použijte minimálně SLES4SAP 12 SP1, v tomto příkladu obrázek SLES4SAP 12 SP1. https://portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP1PremiumImage-ARM  
+   SLES for SAP Applications 12 SP1 se používá  
+   Vybrat skupinu dostupnosti vytvořenou dříve  
+1. Vytvořit virtuální počítač 2  
+   Použijte minimálně SLES4SAP 12 SP1, v tomto příkladu obrázek SLES4SAP 12 SP1. https://portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP1PremiumImage-ARM  
+   SLES for SAP Applications 12 SP1 se používá  
+   Vybrat skupinu dostupnosti vytvořenou dříve  
+1. Přidejte alespoň jeden datový disk do obou virtuálních počítačů.  
+   Datové disky se používají pro > adresář/usr/SAP/`<SAPSID`
+1. Vytvořit Load Balancer (interní)  
+   1. Vytvoření IP adresy front-endu
+      1. IP adresa 10.0.0.7 pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
+         1. Zadejte název nového fondu IP adres front-endu (například **NW1-ASCS-front-end**).
+         1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.0.0.7**).
+         1. Klikněte na OK.
+      1. 10.0.0.8 IP adres pro ASCS OLAJÍCÍCH
+         * Zopakováním výše uvedených kroků vytvořte IP adresu pro OLAJÍCÍCH (například **10.0.0.8** a **NW1-aers-back-end**).
+   1. Vytvoření back-end fondů
+      1. Vytvoření fondu back-endu pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte fondy back-endu a klikněte na Přidat.
+         1. Zadejte název nového back-end fondu (například **NW1-ASCS-back-end**).
+         1. Klikněte na Přidat virtuální počítač.
+         1. Vyberte skupinu dostupnosti, kterou jste vytvořili dříve.
+         1. Vyberte virtuální počítače v clusteru (A) SCS.
+         1. Klikněte na OK.
+      1. Vytvoření fondu back-endu pro ASCS OLAJÍCÍCH
+         * Zopakováním výše uvedených kroků vytvořte back-end fond pro OLAJÍCÍCH (například **NW1-aers-back-end**).
+   1. Vytvoření sond stavu
+      1. Port 620**00** pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
+         1. Zadejte název nového testu stavu (například **NW1-ASCS-HP**).
+         1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
+         1. Klikněte na OK.
+      1. Port 621**02** pro ASCS olajících
+         * Zopakováním výše uvedených kroků vytvořte sondu stavu pro OLAJÍCÍCH (například 621**02** a **NW1-aers-HP**)
+   1. Pravidla vyrovnávání zatížení
+      1. 32**00** TCP pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
+         1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **NW1-kg-3200**).
+         1. Vyberte front-end IP adresu, fond back-endu a sondu stavu, který jste vytvořili dříve (například **NW1-ASCS-front-end**).
+         1. Zachovejte protokol **TCP**, zadejte port **3200**
+         1. Prodloužit časový limit nečinnosti na 30 minut
+         1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
+         1. Klikněte na OK.
+      1. Další porty pro ASCS
+         * Opakujte výše uvedené kroky pro porty 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASCS
+      1. Další porty pro ASCS OLAJÍCÍCH
+         * Opakujte výše uvedené kroky pro porty 33**02**, 5**02**13, 5**02**14, 5**02**16 a TCP pro ASCS olajících
 
 > [!IMPORTANT]
-> Nepovolujte TCP časová razítka na virtuálních počítačích Azure umístěných za nástrojem pro vyrovnávání zatížení Azure. Povolení protokolu TCP časová razítka způsobí, že sond stavu selhání. Nastavte parametr **net.ipv4.tcp_timestamps** k **0**. Podrobnosti najdete v tématu [sondy stavu nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. TCP _timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
-Postupujte podle kroků v [nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](high-availability-guide-suse-pacemaker.md) pro vytvoření základní Pacemaker clusteru pro tento server (A) SCS.
+Postupujte podle kroků v části [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](high-availability-guide-suse-pacemaker.md) a vytvořte pro tento server (a) SCS základní cluster Pacemaker.
 
 ### <a name="installation"></a>Instalace
 
 Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
 
-1. **[A]**  Nainstalovat konektor SUSE
+1. **[A]** instalace KONEKTORu SUSE
 
    <pre><code>sudo zypper install sap-suse-cluster-connector
    </code></pre>
 
    > [!NOTE]
-   > Nepoužívejte pomlčky v názvy hostitelů uzlů clusteru. V opačném případě nebude fungovat vašeho clusteru. Jedná se o známé omezení a SUSE pracuje na opravě. Oprava budou vydané jako oprava balíčku sap suse cloudový konektor.
+   > V hostitelských uzlech uzlů clusteru nepoužívejte pomlčky. V opačném případě nebude cluster fungovat. Jedná se o známé omezení a SUSE pracuje na opravě. Oprava se uvolní jako oprava balíčku SAP-SUSE-Cloud-Connector.
 
-   Ujistěte se, že jste nainstalovali novou verzi konektoru SAP SUSE clusteru. Starý byla volána sap_suse_cluster_connector a novým nazývá **sap suse clusteru konektor**.
+   Ujistěte se, že jste nainstalovali novou verzi konektoru SAP SUSE cluster. Stará se o název sap_suse_cluster_connector a nová se nazývá **SAP-SUSE-cluster-Connector**.
 
    ```
    sudo zypper info sap-suse-cluster-connector
@@ -257,19 +257,19 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    Summary        : SUSE High Availability Setup for SAP Products
    ```
 
-1. **[A]**  Agentů SAP aktualizace prostředku  
+1. **[A]** aktualizace agentů prostředků SAP  
    
-   Oprava pro balíček prostředků agenty je potřeba použít novou konfiguraci, která je popsána v tomto článku. Můžete zkontrolovat, pokud oprava je již nainstalována pomocí následujícího příkazu
+   Pro použití nové konfigurace, která je popsaná v tomto článku, je nutná oprava balíčku Resource-Agents. Můžete ověřit, jestli je oprava už nainstalovaná, a to pomocí následujícího příkazu.
 
    <pre><code>sudo grep 'parameter name="IS_ERS"' /usr/lib/ocf/resource.d/heartbeat/SAPInstance
    </code></pre>
 
-   Výstup by měl vypadat přibližně
+   Výstup by měl být podobný
 
    <pre><code>&lt;parameter name="IS_ERS" unique="0" required="0"&gt;
    </code></pre>
 
-   Pokud příkazu grep nenajde IS_ERS parametr, musíte nainstalovat opravu na [stránce pro stažení SUSE](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents)
+   Pokud příkaz grep nenalezne parametr IS_ERS, musíte nainstalovat opravu uvedenou na [stránce pro stažení SUSE](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents) .
 
    <pre><code># example for patch for SLES 12 SP1
    sudo zypper in -t patch SUSE-SLE-HA-12-SP1-2017-885=1
@@ -280,7 +280,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 1. **[A]**  Nastavit rozlišení názvu hostitele
 
    Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
-   Nahraďte IP adresu a název hostitele v následujících příkazech
+   V následujících příkazech nahraďte IP adresu a název hostitele.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
@@ -297,9 +297,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <b>10.0.0.13 nw1-db</b>
    </code></pre>
 
-## <a name="prepare-for-sap-netweaver-installation"></a>Příprava instalace SAP NetWeaver
+## <a name="prepare-for-sap-netweaver-installation"></a>Příprava na instalaci SAP NetWeaver
 
-1. **[A]**  Vytvořit sdílené složky
+1. **[A]** vytvoření sdílených adresářů
 
    <pre><code>sudo mkdir -p /sapmnt/<b>NW1</b>
    sudo mkdir -p /usr/sap/trans
@@ -314,7 +314,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo chattr +i /usr/sap/<b>NW1</b>/ERS<b>02</b>
    </code></pre>
 
-1. **[A]**  Konfigurace autofs
+1. **[A]** konfigurace AutoFS
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -323,7 +323,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    /- /etc/auto.direct
    </code></pre>
 
-   Vytvořte soubor s
+   Vytvořit soubor s
 
    <pre><code>sudo vi /etc/auto.direct
    
@@ -333,13 +333,13 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    /usr/sap/<b>NW1</b>/SYS -nfsvers=4,nosymlink,sync <b>nw1-nfs</b>:/<b>NW1</b>/sidsys
    </code></pre>
 
-   Restartujte autofs připojit nové sdílené složky
+   Pokud chcete připojit nové sdílené složky, restartujte autofs.
 
    <pre><code>sudo systemctl enable autofs
    sudo service autofs restart
    </code></pre>
 
-1. **[A]**  Nakonfigurovat ODKLÁDACÍHO souboru
+1. **[A]** konfigurace odkládacího souboru
 
    <pre><code>sudo vi /etc/waagent.conf
    
@@ -353,15 +353,15 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    ResourceDisk.SwapSizeMB=<b>2000</b>
    </code></pre>
 
-   Restartujte agenta k aktivaci změny
+   Restartujte agenta, aby se změna aktivovala.
 
    <pre><code>sudo service waagent restart
    </code></pre>
 
 
-### <a name="installing-sap-netweaver-ascsers"></a>Instalace SAP NetWeaver ASCS/Lajících
+### <a name="installing-sap-netweaver-ascsers"></a>Instalace SAP NetWeaver ASCS/OLAJÍCÍCH
 
-1. **[1]**  Vytvoření virtuální IP prostředku a sondu stavu pro instance ASC
+1. **[1]** vytvoření prostředku virtuální IP adresy a stavu – sonda pro instanci ASCS
 
    <pre><code>sudo crm node standby <b>nw1-cl-1</b>
    
@@ -382,7 +382,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
       meta resource-stickiness=3000
    </code></pre>
 
-   Ujistěte se, že stav clusteru je ok a zda jsou spuštěny všechny prostředky. Není důležité na uzlu, které jsou spuštěné prostředky.
+   Ujistěte se, že stav clusteru je OK a že všechny prostředky jsou spuštěné. Není důležité, na kterém uzlu jsou prostředky spuštěné.
 
    <pre><code>sudo crm_mon -r
    
@@ -398,22 +398,22 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    #      vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-0</b>
    </code></pre>
 
-1. **[1]** Install SAP NetWeaver ASCS  
+1. **[1]** instalace SAP NetWeaver ASCS  
 
-   Instalace SAP NetWeaver ASCS jako uživatel root na prvním uzlu pomocí virtuální název hostitele, který se mapuje na adresu IP konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS, například <b>nw1 ascs</b>, <b>10.0.0.7</b> a instance číslo, které jste použili pro test paměti nástroje pro vyrovnávání zatížení, například <b>00</b>.
+   Nainstalujte SAP NetWeaver ASCS jako kořen v prvním uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS, například <b>NW1-ASCS</b>, <b>10.0.0.7</b> a číslo instance, kterou jste použili pro test paměti. Nástroj pro vyrovnávání zatížení, například <b>00</b>.
 
-   Pokud chcete, aby uživatel nekořenovými pro připojení k sapinst můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER.
+   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   Pokud se instalace nezdaří vytvořit podsložku v umístění/USR/sap/**NW1**/ASCS**00**, zkuste nastavit vlastníka a skupiny ASCS**00** složky a zkuste to znovu.
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**NW1**/ASCS**00**, zkuste nastavit vlastníka a skupinu složky ASCS**00** a zkuste to znovu.
 
    <pre><code>chown nw1adm /usr/sap/<b>NW1</b>/ASCS<b>00</b>
    chgrp sapsys /usr/sap/<b>NW1</b>/ASCS<b>00</b>
    </code></pre>
 
-1. **[1]**  Vytvoření virtuální IP prostředku a sondu stavu pro instance Lajících
+1. **[1]** vytvoření prostředku virtuální IP adresy a stavu – sonda pro instanci olajících
 
    <pre><code>sudo crm node online <b>nw1-cl-1</b>
    sudo crm node standby <b>nw1-cl-0</b>
@@ -437,7 +437,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo crm configure group g-<b>NW1</b>_ERS fs_<b>NW1</b>_ERS nc_<b>NW1</b>_ERS vip_<b>NW1</b>_ERS
    </code></pre>
 
-   Ujistěte se, že stav clusteru je ok a zda jsou spuštěny všechny prostředky. Není důležité na uzlu, které jsou spuštěné prostředky.
+   Ujistěte se, že stav clusteru je OK a že všechny prostředky jsou spuštěné. Není důležité, na kterém uzlu jsou prostředky spuštěné.
 
    <pre><code>sudo crm_mon -r
    
@@ -457,26 +457,26 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    #      vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-1</b>
    </code></pre>
 
-1. **[2]** Install SAP NetWeaver ERS
+1. **[2]** instalace SAP NetWeaver olajících
 
-   Instalace SAP NetWeaver Lajících jako uživatel root na druhém uzlu pomocí virtuální název hostitele, který se mapuje na adresu IP konfigurace front-endu nástroje pro vyrovnávání zatížení pro Lajících, například <b>nw1 aers</b>, <b>10.0.0.8</b> a instance číslo, které jste použili pro test paměti nástroje pro vyrovnávání zatížení, například <b>02</b>.
+   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako kořen na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro OLAJÍCÍCH, například <b>NW1-aers</b>, <b>10.0.0.8</b> a číslo instance, kterou jste použili pro test paměti. Nástroj pro vyrovnávání zatížení, například <b>02</b>.
 
-   Pokud chcete, aby uživatel nekořenovými pro připojení k sapinst můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER.
+   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
    > [!NOTE]
-   > Použijte SWPM SP 20 PL 05 nebo vyšší. Nižší verze nenastavujte oprávnění správně a instalace se nezdaří.
+   > Použijte SWPM SP 20 PL 05 nebo vyšší. Nižší verze nenastaví správně oprávnění a instalace se nezdaří.
 
-   Pokud se instalace nezdaří vytvořit podsložku v umístění/USR/sap/**NW1**/ERS**02**, zkuste nastavit vlastníka a skupiny Lajících**02** složky a zkuste to znovu.
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**NW1**/ERS**02**, zkuste nastavit vlastníka a skupinu ve složce olajících**02** a zkuste to znovu.
 
    <pre><code>chown nw1adm /usr/sap/<b>NW1</b>/ERS<b>02</b>
    chgrp sapsys /usr/sap/<b>NW1</b>/ERS<b>02</b>
    </code></pre>
 
 
-1. **[1]**  Adapt ASCS/SCS a Lajících instance profily
+1. **[1]** přizpůsobení profilů instancí ASCS/SCS a olajících
  
    * Profil ASCS/SCS
 
@@ -494,7 +494,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    enque/encni/set_so_keepalive = true
    </code></pre>
 
-   * Profil Lajících
+   * Profil OLAJÍCÍCH
 
    <pre><code>sudo vi /sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b>
    
@@ -510,33 +510,33 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    # Autostart = 1
    </code></pre>
 
-1. **[A]**  Konfigurace zachování
+1. **[A]** konfigurace Keep Alive
 
-   Komunikace mezi aplikační server SAP NetWeaver a ASCS/SCS je směrován přes nástroj pro vyrovnávání zatížení softwaru. Nástroje pro vyrovnávání zatížení odpojí neaktivní připojení po Konfigurovatelný časový limit. Chcete-li tomu zabránit, budete muset nastavit parametr v SAP NetWeaver ASCS/SCS profilu a změnit nastavení systému Linux. Čtení [1410736 Poznámka SAP][1410736] Další informace.
+   Komunikace mezi aplikačním serverem SAP NetWeaver a ASCS/SCS je směrována prostřednictvím nástroje pro vyrovnávání zatížení softwaru. Nástroj pro vyrovnávání zatížení odpojí neaktivní připojení po konfigurovatelném časovém limitu. Abyste tomu předešli, musíte nastavit parametr v profilu SAP NetWeaver ASCS/SCS a změnit nastavení systému Linux. Další informace najdete v tématu [SAP Note 1410736][1410736] .
 
-   ASCS/SCS profilu parametr modul/encni/set_so_keepalive byl již přidán v posledním kroku.
+   Parametr profilu ASCS/SCS enque/encni/set_so_keepalive byl již přidán v posledním kroku.
 
    <pre><code># Change the Linux system configuration
    sudo sysctl net.ipv4.tcp_keepalive_time=120
    </code></pre>
 
-1. **[A]**  Po instalaci nastavit uživatelů SAPU
+1. **[A]** konfigurace uživatelů SAP po instalaci
 
    <pre><code># Add sidadm to the haclient group
    sudo usermod -aG haclient <b>nw1</b>adm
    </code></pre>
 
-1. **[1]**  Přidejte do souboru sapservice services ASCS a SAP Lajících
+1. **[1]** do souboru sapservice přidejte služby SAP ASCS a olajících.
 
-   Přidáte ASCS služby položku na druhém uzlu a zkopírovat položku služby Lajících do prvního uzlu.
+   Přidejte položku služby ASCS do druhého uzlu a zkopírujte položku služby OLAJÍCÍCH do prvního uzlu.
 
    <pre><code>cat /usr/sap/sapservices | grep ASCS<b>00</b> | sudo ssh <b>nw1-cl-1</b> "cat >>/usr/sap/sapservices"
    sudo ssh <b>nw1-cl-1</b> "cat /usr/sap/sapservices" | grep ERS<b>02</b> | sudo tee -a /usr/sap/sapservices
    </code></pre>
 
-1. **[1]**  Vytvořit prostředky clusteru SAP
+1. **[1]** vytvoření prostředků clusteru SAP
 
-Pokud používáte architekturu serveru 1 zařadit do fronty (ENSA1), definují prostředky následujícím způsobem:
+Pokud používáte architekturu serveru front Server 1 (ENSA1), definujte prostředky následujícím způsobem:
 
    <pre><code>sudo crm configure property maintenance-mode="true"
    
@@ -564,8 +564,8 @@ Pokud používáte architekturu serveru 1 zařadit do fronty (ENSA1), definují 
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-  Zavedení podpory pro zařazení do fronty server 2, včetně replikace, od SAP severozápadní 7.52 SAP. Od verze platformy 1809 ABAP, je nainstalován server zařazování 2 ve výchozím nastavení. Zobrazit SAP Poznámka [2630416](https://launchpad.support.sap.com/#/notes/2630416) pro podporu serveru 2 zařadit do fronty.
-Pokud používáte architekturu serveru 2 zařadit do fronty ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), definují prostředky následujícím způsobem:
+  SAP představilo podporu pro front-Server 2, včetně replikace, od SAP NW 7,52. Počínaje platformou ABAP 1809 se ve výchozím nastavení nainstaluje služba fronty serveru 2. Podporu služby zařazení serveru 2 pro frontu najdete v tématu SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) .
+Pokud používáte architekturu serveru fronty 2 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), definujte prostředky následujícím způsobem:
 
 <pre><code>sudo crm configure property maintenance-mode="true"
    
@@ -591,9 +591,9 @@ Pokud používáte architekturu serveru 2 zařadit do fronty ([ENSA2](https://he
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-  Pokud jsou upgradu ze starší verze a přechodu k zařazení do fronty server 2, přečtěte si téma SAP Poznámka [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
+  Pokud provádíte upgrade ze starší verze a přejdete na server fronty 2, přečtěte si článek SAP Note [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
-   Ujistěte se, že stav clusteru je ok a zda jsou spuštěny všechny prostředky. Není důležité na uzlu, které jsou spuštěné prostředky.
+   Ujistěte se, že stav clusteru je OK a že všechny prostředky jsou spuštěné. Není důležité, na kterém uzlu jsou prostředky spuštěné.
 
 
    <pre><code>sudo crm_mon -r
@@ -615,11 +615,11 @@ Pokud používáte architekturu serveru 2 zařadit do fronty ([ENSA2](https://he
    #      rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   <b>Started nw1-cl-0</b>
    </code></pre>
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver aplikace server přípravy
+## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Příprava aplikačního serveru SAP NetWeaver
 
-Některé databáze vyžadovat, aby instalaci instance databáze spuštěné na aplikační server. Příprava virtuálních počítačů pro server aplikace bude moct používat v těchto případech.
+Některé databáze vyžadují, aby se instalace instance databáze spustila na aplikačním serveru. Příprava virtuálních počítačů aplikačního serveru, aby je bylo možné používat v těchto případech.
 
-Kroky zmeškáte Předpokládejme, že nainstalujete aplikační server na serveru se liší od ASC/SCS a HANA servery. V opačném případě nejsou potřeba některé z kroků (např. konfigurace rozlišení názvu hostitele).
+Postup níže předpokládá, že instalujete aplikační server na jiný server než servery ASCS/SCS a HANA. Jinak se některé z následujících kroků (třeba konfigurace překladu názvů hostitelů) nevyžadují.
 
 1. Konfigurace operačního systému
 
@@ -632,10 +632,10 @@ Kroky zmeškáte Předpokládejme, že nainstalujete aplikační server na serve
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. Nastavit rozlišení názvu hostitele
+1. Nastavení rozlišení názvu hostitele
 
    Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
-   Nahraďte IP adresu a název hostitele v následujících příkazech
+   V následujících příkazech nahraďte IP adresu a název hostitele.
 
    ```bash
    sudo vi /etc/hosts
@@ -656,7 +656,7 @@ Kroky zmeškáte Předpokládejme, že nainstalujete aplikační server na serve
    <b>10.0.0.21 nw1-di-1</b>
    </code></pre>
 
-1. Vytvořit adresář sapmnt
+1. Vytvoření adresáře sapmnt
 
    <pre><code>sudo mkdir -p /sapmnt/<b>NW1</b>
    sudo mkdir -p /usr/sap/trans
@@ -665,7 +665,7 @@ Kroky zmeškáte Předpokládejme, že nainstalujete aplikační server na serve
    sudo chattr +i /usr/sap/trans
    </code></pre>
 
-1. Konfigurace autofs
+1. Konfigurace AutoFS
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -674,7 +674,7 @@ Kroky zmeškáte Předpokládejme, že nainstalujete aplikační server na serve
    /- /etc/auto.direct
    </code></pre>
 
-   Vytvořte nový soubor s
+   Vytvořit nový soubor s
 
    <pre><code>sudo vi /etc/auto.direct
    
@@ -683,13 +683,13 @@ Kroky zmeškáte Předpokládejme, že nainstalujete aplikační server na serve
    /usr/sap/trans -nfsvers=4,nosymlink,sync <b>nw1-nfs</b>:/<b>NW1</b>/trans
    </code></pre>
 
-   Restartujte autofs připojit nové sdílené složky
+   Pokud chcete připojit nové sdílené složky, restartujte autofs.
 
    <pre><code>sudo systemctl enable autofs
    sudo service autofs restart
    </code></pre>
 
-1. Konfigurace STRÁNKOVACÍHO souboru
+1. Nakonfigurovat odkládací soubor
 
    <pre><code>sudo vi /etc/waagent.conf
    
@@ -703,50 +703,50 @@ Kroky zmeškáte Předpokládejme, že nainstalujete aplikační server na serve
    ResourceDisk.SwapSizeMB=<b>2000</b>
    </code></pre>
 
-   Restartujte agenta k aktivaci změny
+   Restartujte agenta, aby se změna aktivovala.
 
    <pre><code>sudo service waagent restart
    </code></pre>
 
 ## <a name="install-database"></a>Instalace databáze
 
-V tomto příkladu je nainstalován SAP NetWeaver na systému SAP HANA. Všechny podporované databáze můžete použít pro tuto instalaci. Další informace o tom, jak instalace SAP HANA v Azure najdete v tématu [vysoké dostupnosti systému SAP HANA v Azure Virtual Machines (VM)][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+V tomto příkladu je SAP NetWeaver nainstalovaný na SAP HANA. Pro tuto instalaci můžete použít každou podporovanou databázi. Další informace o tom, jak nainstalovat SAP HANA v Azure, najdete v tématu [Vysoká dostupnost SAP HANA na Azure Virtual Machines (virtuálních počítačích)][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
-1. Spuštění instalace instancí databáze SAP
+1. Spusťte instalaci instance databáze SAP.
 
-   Nainstalujte instanci databáze SAP NetWeaver jako kořen virtuální název hostitele, který se mapuje na adresu IP konfigurace front-endu nástroje pro vyrovnávání zatížení pro databázi například pomocí <b>nw1 db</b> a <b>10.0.0.13</b>.
+   K instalaci instance databáze SAP NetWeaver jako kořenového adresáře použijte virtuální název hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro databázi, například <b>NW1-DB</b> a <b>10.0.0.13</b>.
 
-   Pokud chcete, aby uživatel nekořenovými pro připojení k sapinst můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER.
-
-   <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
-   </code></pre>
-
-## <a name="sap-netweaver-application-server-installation"></a>Instalace serveru aplikace SAP NetWeaver
-
-Postupujte podle těchto kroků nainstalujte aplikační server SAP.
-
-1. Příprava aplikace serveru
-
-   Postupujte podle kroků v kapitole [Příprava serveru aplikace SAP NetWeaver](high-availability-guide-suse.md#2d6008b0-685d-426c-b59e-6cd281fd45d7) výše a připravte je aplikační server.
-
-1. Instalace aplikační server SAP NetWeaver
-
-   Instalace serveru primární nebo dalších aplikací SAP NetWeaver.
-
-   Pokud chcete, aby uživatel nekořenovými pro připojení k sapinst můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER.
+   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-1. Zabezpečené úložiště pověření aktualizace SAP HANA
+## <a name="sap-netweaver-application-server-installation"></a>Instalace aplikačního serveru SAP NetWeaver
 
-   Aktualizujte SAP HANA zabezpečeného úložiště tak, aby odkazoval na virtuální název tohoto nastavení systémové replikace SAP HANA.
+Pomocí těchto kroků nainstalujete aplikační Server SAP.
 
-   Spusťte následující příkaz k výpisu záznamů
+1. Příprava aplikačního serveru
+
+   K přípravě aplikačního serveru použijte postup v části [Příprava aplikačního serveru SAP NetWeaver](high-availability-guide-suse.md#2d6008b0-685d-426c-b59e-6cd281fd45d7) .
+
+1. Instalace aplikačního serveru SAP NetWeaver
+
+   Nainstalujte primární nebo další server aplikace SAP NetWeaver.
+
+   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst.
+
+   <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
+   </code></pre>
+
+1. Aktualizace zabezpečeného úložiště SAP HANA
+
+   Aktualizujte SAP HANA zabezpečené úložiště tak, aby odkazovalo na virtuální název nastavení replikace SAP HANA systému.
+
+   Chcete-li zobrazit seznam položek, spusťte následující příkaz.
    <pre><code>hdbuserstore List
    </code></pre>
 
-   To by měla všechny položky seznamu a by měl vypadat podobně jako
+   Mělo by se zobrazit seznam všech položek, které by měly vypadat podobně jako
    <pre><code>DATA FILE       : /home/nw1adm/.hdb/nw1-di-0/SSFS_HDB.DAT
    KEY FILE        : /home/nw1adm/.hdb/nw1-di-0/SSFS_HDB.KEY
    
@@ -756,19 +756,19 @@ Postupujte podle těchto kroků nainstalujte aplikační server SAP.
      DATABASE: <b>HN1</b>
    </code></pre>
 
-   Výstup ukazuje, že IP adresa výchozí položku odkazuje k virtuálnímu počítači a ne na IP adresu nástroje pro vyrovnávání zatížení. Tato položka je potřeba změnit tak, aby odkazoval na virtuální název hostitele z nástroje pro vyrovnávání zatížení. Nezapomeňte použít stejný port (**30313** ve výstupu výše) a název databáze (**HN1** ve výstupu výše).
+   Výstup ukazuje, že IP adresa výchozí položky odkazuje na virtuální počítač, a ne na IP adresu nástroje pro vyrovnávání zatížení. Tato položka musí být změněna tak, aby odkazovala na virtuální název hostitele nástroje pro vyrovnávání zatížení. Nezapomeňte použít stejný port (**30313** ve výstupu výše) a název databáze (**HN1** ve výstupu výše).
 
    <pre><code>su - <b>nw1</b>adm
    hdbuserstore SET DEFAULT <b>nw1-db:30313@HN1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>
    </code></pre>
 
-## <a name="test-the-cluster-setup"></a>Test nastavení clusteru
+## <a name="test-the-cluster-setup"></a>Otestování instalace clusteru
 
-Následující testy jsou kopie testovacích případů v příručkách osvědčené postupy z operačního systému SUSE. Zkopírují se pro usnadnění práce. Vždy také přečtěte si osvědčené postupy vodítka a provádět všechny další testy, které byly přidány.
+Následující testy jsou kopie testovacích případů v SUSE průvodců osvědčenými postupy. Budou zkopírovány pro usnadnění práce. Vždy si přečtěte Příručky k osvědčeným postupům a proveďte všechny další testy, které mohou být přidány.
 
-1. Test HAGetFailoverConfig, HACheckConfig a HACheckFailoverConfig
+1. HAGetFailoverConfig testů, HACheckConfig a HACheckFailoverConfig
 
-   Spuštěním následujících příkazů jako \<sapsid > adm na uzlu, kde je aktuálně spuštěna instance ASC. Pokud se převzetí služeb při selhání příkazy: Nedostatek paměti, je možné příčiny pomlčky v názvu vašeho hostitele. Jedná se o známý problém a bude opraven v balíčku suse clusteru konektoru sap SUSE.
+   Spusťte následující příkazy jako \<sapsid > ADM na uzlu, ve kterém je aktuálně spuštěná instance ASCS. Pokud se příkazy nezdaří s CHYBou: Nedostatek paměti, může to být způsobeno pomlčkami ve vašem názvu hostitele. Jedná se o známý problém, který bude opraven nástrojem SUSE v balíčku SAP-SUSE-cluster-Connector.
 
    <pre><code>nw1-cl-0:nw1adm 54> sapcontrol -nr <b>00</b> -function HAGetFailoverConfig
    
@@ -819,7 +819,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
    # SUCCESS, SAP CONFIGURATION, SAPInstance RA sufficient version, SAPInstance includes is-ers patch
    </code></pre>
 
-1. ASCS instance přenášet ručně
+1. Ruční migrace instance ASCS
 
    Stav prostředku před spuštěním testu:
 
@@ -836,7 +836,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    </code></pre>
 
-   Spuštěním následujících příkazů jako uživatel root migrovat instance ASC.
+   Pro migraci instance ASCS spusťte následující příkazy jako kořen.
 
    <pre><code>nw1-cl-0:~ # crm resource migrate rsc_sap_NW1_ASCS00 force
    # INFO: Move constraint created for rsc_sap_NW1_ASCS00
@@ -880,7 +880,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Spuštěním následujících příkazů jako \<sapsid > adm migrovat instance ASC.
+   Spusťte následující příkazy jako \<sapsid > ADM k migraci instance ASCS.
 
    <pre><code>nw1-cl-0:nw1adm 55> sapcontrol -nr 00 -host nw1-ascs -user nw1adm &lt;password&gt; -function HAFailoverToNode ""
    
@@ -907,7 +907,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    </code></pre>
 
-1. Simulace selhání uzlu
+1. Simulace havárie uzlu
 
    Stav prostředku před spuštěním testu:
 
@@ -924,12 +924,12 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    </code></pre>
 
-   Spuštěním následujícího příkazu jako uživatel root v uzlu, kde je spuštěná instance ASC
+   Spusťte následující příkaz jako kořen v uzlu, ve kterém je spuštěná instance ASCS.
 
    <pre><code>nw1-cl-0:~ # echo b > /proc/sysrq-trigger
    </code></pre>
 
-   Pokud používáte SBD, Pacemaker nesmí začínat automaticky ukončil uzlu. Stav po spuštění uzlu znovu by měl vypadat takto.
+   Pokud používáte SBD, Pacemaker by se neměl automaticky spustit na ukončeném uzlu. Stav po spuštění uzlu by měl vypadat takto.
 
    <pre><code>Online: [ nw1-cl-1 ]
    OFFLINE: [ nw1-cl-0 ]
@@ -953,7 +953,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
        last-rc-change='Wed Aug 15 14:38:38 2018', queued=0ms, exec=0ms
    </code></pre>
 
-   Pomocí následujících příkazů start Pacemaker na ukončil uzlu, vyčistit SBD zprávy a vyčistit nevydařené zdroje.
+   Pomocí následujících příkazů spusťte Pacemaker na ukončeném uzlu, vyčistěte zprávy SBD a vyčistěte prostředky, které selhaly.
 
    <pre><code># run as root
    # list the SBD device(s)
@@ -982,7 +982,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-1. Ruční restartování testu ASCS instance
+1. Test ručního restartování instance ASCS
 
    Stav prostředku před spuštěním testu:
 
@@ -999,22 +999,22 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Vytvoření zámku zařadit do fronty, pro příklad úpravy uživatele v su01 transakce. Spuštěním následujících příkazů jako \<sapsid > adm na uzlu, kde je spuštěná instance ASC. Příkazy se zastavit instanci ASCS a spusťte jej znovu. Pokud používáte architekturu serveru 1 zařadit do fronty, zámek zařazování má dojít ke ztrátě v tomto testu. Pokud používáte architekturu serveru 2 zařadit do fronty, zařadit do fronty se zachovají. 
+   Vytvořte zámek zařazení do fronty, například upravit uživatele v su01 transakce. Spusťte následující příkazy jako \<sapsid > ADM v uzlu, ve kterém je spuštěná instance ASCS. Příkazy zazastaví instanci ASCS a znovu se spustí. Pokud používáte architekturu serveru fronty 1, očekává se, že se v tomto testu ztratí zámek fronty. Pokud používáte architekturu Server 2 pro zařazování do fronty, zachová se. 
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
 
-   ASCS instance by teď mělo být zakázané v Pacemaker
+   Instance ASCS by teď měla být v Pacemaker zakázaná.
 
    <pre><code>rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Stopped (disabled)
    </code></pre>
 
-   Znovu spusťte ASCS instance na stejném uzlu.
+   Znovu spusťte instanci ASCS na stejném uzlu.
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StartWait 600 2
    </code></pre>
 
-   Uzamčení zařazování transakce su01 by měl být ztraceny a back endu by byla obnovena. Stav prostředku po testu:
+   Zámek fronty transakcí su01 by měl být ztracený a back-end by měl být resetován. Stav prostředku po testu:
 
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
@@ -1029,7 +1029,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-1. Ukončit proces serveru zpráv
+1. Ukončit proces serveru zprávy
 
    Stav prostředku před spuštěním testu:
 
@@ -1046,12 +1046,12 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Spuštěním následujících příkazů jako kořenového adresáře Identifikujte proces serveru zpráv a ukončete ji.
+   Spuštěním následujících příkazů jako kořenového adresáře Identifikujte proces serveru a potom ho ukončete.
 
    <pre><code>nw1-cl-1:~ # pgrep ms.sapNW1 | xargs kill -9
    </code></pre>
 
-   Pokud jste pouze kill server zpráv jednou, se restartuje tak sapstart. Pokud je často dostatečné Pacemaker budou nakonec kill přesunout do jiného uzlu ASCS instance. Spuštěním následujících příkazů jako kořenový adresář pro vyčištění prostředků stavu instance ASCS a Lajících po testu.
+   Pokud server pouze jednou zastavíte, bude restartován pomocí sapstart. Pokud jste ho ASCS dostatečně přesunuli, Pacemaker se nakonec přesune instance na jiný uzel. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
 
    <pre><code>nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ASCS00
    nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
@@ -1072,7 +1072,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    </code></pre>
 
-1. Ukončení procesu zařazení do fronty serveru
+1. Proces serveru dezaktivačního zařazení do fronty
 
    Stav prostředku před spuštěním testu:
 
@@ -1089,12 +1089,12 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    </code></pre>
 
-   Spuštěním následujících příkazů jako uživatel root v uzlu, kde je spuštěná ASCS instance k ukončení serveru zařadit do fronty.
+   Spusťte následující příkazy jako kořen v uzlu, ve kterém je spuštěná instance ASCS, aby se mohl ukončit server fronty.
 
    <pre><code>nw1-cl-0:~ # pgrep en.sapNW1 | xargs kill -9
    </code></pre>
 
-   ASCS instance by měl bezprostředně převzetí služeb při selhání do jiného uzlu. Instance Lajících by měl také převzetí služeb při selhání po spuštění instance ASC. Spuštěním následujících příkazů jako kořenový adresář pro vyčištění prostředků stavu instance ASCS a Lajících po testu.
+   Instance ASCS by měla okamžitě převzít služby na jiný uzel. Instance OLAJÍCÍCH by také měla převzít služby při selhání po spuštění instance ASCS. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
 
    <pre><code>nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ASCS00
    nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
@@ -1115,7 +1115,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-1. Ukončení procesu zařazení do fronty replikace serveru
+1. Proces replikace replikačního serveru do fronty
 
    Stav prostředku před spuštěním testu:
 
@@ -1132,12 +1132,12 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Spusťte následující příkaz jako uživatel root v uzlu, kde je spuštěná instance Lajících k ukončení procesu zařazení do fronty replikace serveru.
+   Spusťte následující příkaz jako kořenový adresář v uzlu, ve kterém je spuštěná instance OLAJÍCÍCH, čímž se ukončí proces serveru replikace ve frontě.
 
    <pre><code>nw1-cl-0:~ # pgrep er.sapNW1 | xargs kill -9
    </code></pre>
 
-   Pokud spustíte pouze příkaz jednou, restartuje sapstart procesu. Při spuštění často dostatečné, bude sapstart restart procesu a prostředek bude v zastaveném stavu. Spuštěním následujících příkazů jako kořenový adresář pro vyčištění prostředků stavu instance Lajících po testu.
+   Pokud příkaz spustíte pouze jednou, sapstart proces restartuje. Pokud je spuštěno dostatečně často, sapstart proces nerestartuje a prostředek bude v zastaveném stavu. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředku instance OLAJÍCÍCH po testu.
 
    <pre><code>nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
    </code></pre>
@@ -1157,7 +1157,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-1. Ukončení procesu sapstartsrv zařadit do fronty
+1. Ukončit proces sapstartsrv zařazování do fronty
 
    Stav prostředku před spuštěním testu:
 
@@ -1174,7 +1174,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Spuštěním následujících příkazů jako kořenového adresáře na uzlu se spuštěným ASC.
+   Spusťte následující příkazy jako kořen v uzlu, kde je spuštěný ASCS.
 
    <pre><code>nw1-cl-1:~ # pgrep -fl ASCS00.*sapstartsrv
    # 59545 sapstartsrv
@@ -1182,7 +1182,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
    nw1-cl-1:~ # kill -9 59545
    </code></pre>
 
-   Proces sapstartsrv by měl být restartován vždy agentem Pacemaker prostředků. Stav prostředku po testu:
+   Proces sapstartsrv by měl být vždy restartován agentem prostředků Pacemaker. Stav prostředku po testu:
 
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
@@ -1199,8 +1199,8 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
 
 ## <a name="next-steps"></a>Další postup
 
-* [Azure Virtual Machines, plánování a implementace SAP][planning-guide]
-* [Nasazení virtuálních počítačů pro SAP v Azure][deployment-guide]
+* [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]
-* Informace o vytvoření vysoké dostupnosti a plánování zotavení po havárii SAP Hana v Azure (velké instance), najdete v článku [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
-* Informace o vytvoření vysoké dostupnosti a plánování zotavení po havárii SAP Hana na virtuálních počítačích Azure najdete v tématu [vysoké dostupnosti systému SAP HANA v Azure Virtual Machines (VM)][sap-hana-ha]
+* Informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA v Azure (velké instance), najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
+* Další informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA na virtuálních počítačích Azure, najdete v tématu [Vysoká dostupnost SAP HANA na azure Virtual Machines (virtuální počítače)][sap-hana-ha] .

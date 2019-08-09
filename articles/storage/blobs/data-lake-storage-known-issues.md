@@ -1,19 +1,19 @@
 ---
 title: Známé problémy s Azure Data Lake Storage Gen2 | Dokumentace Microsoftu
 description: Další informace o omezeních a známých problémech s Azure Data Lake Storage Gen2
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
-ms.openlocfilehash: 910e23814b627233395a2f7a646513d9cb6874d8
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.reviewer: jamesbak
+ms.openlocfilehash: bacb677b8354c0b0e219ce7483a1446a96c28288
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699037"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855520"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 

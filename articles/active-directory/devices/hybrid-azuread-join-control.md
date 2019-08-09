@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5d8cd7799dd23dabc2cbb423e82b8c7203b7bed
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834632"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851782"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Řízené ověřování hybridního připojení k Azure AD
 
@@ -72,7 +72,7 @@ Pomocí následujícího příkladu vytvořte objekt Zásady skupiny (GPO), kter
       1. Cesta ke klíči: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Název hodnoty: **TenantName**
       1. Typ hodnoty: **REG_SZ**
-      1. Data hodnoty: Ověřený **název domény** , pokud používáte federované prostředí, například AD FS. Pokud například používáte spravované prostředí, `contoso.onmicrosoft.com` váš ověřený * * název domény nebo název domény onmicrosoft.com.
+      1. Data hodnoty: Ověřený **název domény** , pokud používáte federované prostředí, například AD FS. Pokud například používáte spravované prostředí, `contoso.onmicrosoft.com` váš ověřený **název domény** nebo název domény onmicrosoft.com.
    1. Klikněte na tlačítko **OK**.
 1. Zavřít editor nově vytvořeného objektu zásad skupiny
 1. Propojení nově vytvořeného objektu zásad skupiny s požadovanými organizačními jednotkami, které patří počítačům připojeným k doméně, které patří k vašemu řízenému naplnění

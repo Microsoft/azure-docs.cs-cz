@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d721e750ddb77ba293643ad978cecf4bd2dbac0
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618810"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851709"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Práce s vlastními doménami v Proxy aplikací Azure AD
 
@@ -87,7 +87,7 @@ Aktuálně je všechny správy certifikátů prostřednictvím stránky jednotli
 
 ## <a name="next-steps"></a>Další postup
 * [Povolit jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md) pro aplikace publikované pomocí ověřování Azure AD.
-* [Povolte podmíněný přístup](application-proxy-integrate-with-sharepoint-server.md) k publikovaným aplikacím.
+* [Povolte podmíněný přístup](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/technical-reference#cloud-apps-assignments) k publikovaným aplikacím.
 * [Přidání vlastního názvu domény do Azure AD](../fundamentals/add-custom-domain.md)
 
 

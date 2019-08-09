@@ -3,20 +3,20 @@ title: Projekt akustické Unreal a integrace Wwise
 titlesuffix: Azure Cognitive Services
 description: Tento postup popisuje integraci projektu akustické Unreal a Wwise moduly plug-in do projektu.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5511dd6b9a7d77c0988a94fef747a30d25bb4fc3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 3fe9a28a99ea8becbfc40e1e64d1f5b109caace3
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706624"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854375"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Projekt akustické Unreal a integrace Wwise
 Tento postup poskytuje podrobné kroky pro integraci balíčku modulu plug-in projekt akustického prostředí do stávajícího projektu hry Unreal a Wwise. 
@@ -103,7 +103,7 @@ Znovu nasaďte Wwise do své hry i v případě, že jste už integraci Wwise. T
 Ukázkový projekt Wwise je součástí stažení ukázek. Doporučujeme vám, abyste si ho prohledali společně s těmito pokyny. Snímky obrazovky níže jsou pořízeny z tohoto projektu.
 
 ### <a name="bus-setup"></a>Nastavení sběrnice
-* Modul plug-in Unreal projektu bude hledat přidružený modul plug-in směšovače na sběrnici ****** s tímto přesným názvem: `Project Acoustics Bus`. Vytvořte novou zvukovou sběrnici s tímto názvem. Modul plug-in směšovače může pracovat v různých konfiguracích, ale v současné době předpokládáme, že se použije jenom k reverb zpracování. Tato sběrnice bude mít smíšený signál Reverb pro všechny zdroje, které využívají akustické prostředky. Může sloučit datový proud do jakékoli struktury směšování sběrnice. příklad je uveden níže, z našeho ukázkového projektu Wwise, který je zahrnutý v ukázkovém souboru ke stažení.
+* Modul plug-in Unreal projektu bude hledat přidružený modul plug-in směšovače na sběrnici s tímto přesným názvem: `Project Acoustics Bus`. Vytvořte novou zvukovou sběrnici s tímto názvem. Modul plug-in směšovače může pracovat v různých konfiguracích, ale v současné době předpokládáme, že se použije jenom k reverb zpracování. Tato sběrnice bude mít smíšený signál Reverb pro všechny zdroje, které využívají akustické prostředky. Může sloučit datový proud do jakékoli struktury směšování sběrnice. příklad je uveden níže, z našeho ukázkového projektu Wwise, který je zahrnutý v ukázkovém souboru ke stažení.
 
     ![Snímek obrazovky Wwise busses znázorňující sběrnici akustického projektu](media/acoustics-bus.png)
 

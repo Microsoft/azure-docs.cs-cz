@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: juliako
-ms.openlocfilehash: fd67e867b5eac58838551ac29e1fca5e860b15ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: b627a78edef1c0b0fe6b3ed011678145aea397ae
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414216"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845885"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -27,6 +27,16 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="july-2019"></a>Červenec 2019
+
+### <a name="editor-as-a-widget"></a>Editor jako widget
+
+Editor AI Video Indexer je teď k dispozici jako widget, který se má vložit do zákaznických aplikací.
+
+### <a name="update-custom-language-model-from-closed-caption-file-from-the-portal"></a>Aktualizace vlastního jazykového modelu z zavřeného souboru titulků z portálu
+
+Zákazníci můžou jako vstup pro jazykové modely na stránce vlastní nastavení portálu zadat formáty souborů VTT, SRT aplikace a TTML.
 
 ## <a name="june-2019"></a>Červeně 2019
 

@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 06194537a0c0cce3a52510e6f426a9c2904387b2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9cf39230d6a2c615925222b6545a091a4be941ac
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694347"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847985"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Nasazení modelu hloubkového učení pro odvození pomocí GPU
 
@@ -31,9 +31,9 @@ Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru služby Azure Machine Learning](setup-create-workspace.md).
+* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru služby Azure Machine Learning](how-to-manage-workspace.md).
 
-* Prostředí pro vývoj v Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v části věnované [sadě Python SDK](setup-create-workspace.md#sdk) v článku Vytvoření pracovního prostoru.
+* Prostředí pro vývoj v Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v tématu [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
 * Registrovaný model, který používá GPU.
 
@@ -48,7 +48,7 @@ Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model 
 Pokud se chcete připojit k existujícímu pracovnímu prostoru, použijte následující kód:
 
 > [!IMPORTANT]
-> Tento fragment kódu očekává uložení konfigurace pracovního prostoru do aktuálního adresáře nebo jeho nadřazeného objektu. Další informace o tom, jak vytvořit pracovní prostor a uložit konfiguraci do souboru, najdete v tématu [Vytvoření pracovního prostoru služby Azure Machine Learning](setup-create-workspace.md).
+> Tento fragment kódu očekává uložení konfigurace pracovního prostoru do aktuálního adresáře nebo jeho nadřazeného objektu. Další informace o vytváření pracovního prostoru najdete v tématu [Vytvoření a Správa pracovních prostorů služby Azure Machine Learning](how-to-manage-workspace.md).   Další informace o ukládání konfigurace do souboru najdete v tématu [vytvoření konfiguračního souboru pracovního prostoru](how-to-configure-environment.md#workspace).
 
 ```python
 from azureml.core import Workspace

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: da68c0ae1dc92f5b854c30c90b93856248c43281
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 105cbf173a9abe1adf0999f63740d47b3da51a29
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828349"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856293"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci Hyper-V
 
@@ -27,9 +27,9 @@ Tabulka shrnuje podporované scénáře pro virtuální počítače Hyper-V.
 **Nasazení** | **Zobrazí***
 --- | ---
 **Posouzení místních virtuálních počítačů Hyper-V** | [Nastavte](tutorial-prepare-hyper-v.md) své první posouzení.<br/><br/> [Spusťte](scale-hyper-v-assessment.md) hodnocení ve velkém měřítku.
-**Migrace virtuálních počítačů Hyper-V do Azure** | [Vyzkoušejte](tutorial-migrate-hyper-v.md) migraci do Azure.
+**Migrace virtuálních počítačů Hyper-V do Azure** | [Vyzkoušejte](tutorial-migrate-hyper-v.md) migraci do Azure. 
 
-
+Migrace serverů Hyper-V spravovaných pomocí System Center Virtual Machine Manager (VMM) není podporována migrací Azure Migrate serveru. 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projekty
 
@@ -180,6 +180,6 @@ Hostitelé nebo virtuální počítače Hyper-V | Odchozí připojení na portu 
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Připravte se na posouzení virtuálního počítače Hyper-V](tutorial-prepare-hyper-v.md) pro migraci.

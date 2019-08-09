@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1bd1882218630aca0707a792d120045c06dea127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552684"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855105"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Jazyk SSML (Speech Synthesis Markup Language)
 
@@ -290,7 +290,7 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 | oblasti  | Hodnota, která představuje rozsah roztečí textu. Můžete vyjádřit `range` použití stejných absolutních hodnot, relativních hodnot nebo hodnot výčtu používaných k popisu `pitch`. | volitelná, |
 | kmitočt  | Určuje míru projevení textu. Můžete vyjádřit `rate` jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Hodnota *0,5* vede k poloviční míře. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>středně silné</li><li>světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | volitelná, |
 | duration  | Časový interval, který by měl uplynout, zatímco služba rozpoznávání řeči (TTS) čte text v sekundách nebo milisekundách. Například *2S* nebo *1800ms*. | volitelná, |
-| svazek  | Určuje úroveň hlasitosti mluveného hlasu. Svazek můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo v rozsahu od 0,0 do 100,0, od Tichého po  nahlasu . Například 75. Výchozí hodnota je 100,0.</li><li>Relativní hodnota vyjádřená jako číslo začínající znakem "+" nebo "-", která určuje velikost pro změnu svazku. Například + 10 nebo-5,5.</li><li>Konstantní hodnota:<ul><li>tich</li><li>× – měkké</li><li>Pohyblivý</li><li>středně silné</li><li>rovnává</li><li>x-nahlas</li><li>default</li></ul></li></ul> | volitelná, |
+| svazek  | Určuje úroveň hlasitosti mluveného hlasu. Svazek můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo v rozsahu od 0,0 do 100,0, od Tichého po nahlasu. Například 75. Výchozí hodnota je 100,0.</li><li>Relativní hodnota vyjádřená jako číslo začínající znakem "+" nebo "-", která určuje velikost pro změnu svazku. Například + 10 nebo-5,5.</li><li>Konstantní hodnota:<ul><li>tich</li><li>× – měkké</li><li>Pohyblivý</li><li>středně silné</li><li>rovnává</li><li>x-nahlas</li><li>default</li></ul></li></ul> | volitelná, |
 
 ### <a name="change-speaking-rate"></a>Mluvy frekvence změny
 
@@ -413,8 +413,8 @@ V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete `au
 |-----------|-------------|---------------------|
 | src | Určuje umístění nebo adresu URL zvukového souboru na pozadí. | Vyžaduje se, pokud v dokumentu SSML používáte zvuk na pozadí. |
 | svazek | Určuje hlasitost zvukového souboru na pozadí. **Přijaté hodnoty**: `0` na `100` včetně Výchozí hodnota je `1`. | volitelná, |
-| fadein | Určuje dobu, po kterou se bude objevovat zvuk na pozadí. **Přijaté hodnoty**: `0` na `10000` včetně  | volitelná, |
-| zeslabení | Určuje dobu, po kterou se má zvuk na pozadí rozmizet. **Přijaté hodnoty**: `0` na `10000` včetně  | volitelná, |
+| fadein | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` na `10000` včetně  | volitelná, |
+| zeslabení | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` na `10000` včetně  | volitelná, |
 
 **Příklad**
 
