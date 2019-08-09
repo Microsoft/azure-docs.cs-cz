@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 08/07/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a4889d82ac1c837581771860f2aba86faf7650ee
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 4b9680b00905126d261562d7bec64bb931c1cda3
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399445"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845708"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovaných do Azure
 
@@ -39,9 +39,9 @@ Ujistěte se, že virtuální počítač neobsahuje žádné snímky a že je m�
 
 Převzetí služeb při selhání a navrácení služeb po obnovení probíhá ve třech fázích:
 
-1. **Převzetí služeb při selhání do Azure**: Převzetí služeb při selhání Hyper-V virtuálních počítačů z místní lokality do Azure.
-2. **Navrácení služeb po obnovení do místní**: Převzetí služeb při selhání virtuálních počítačů Azure do místní lokality, pokud je k dispozici v místní lokalitě. Spustí se synchronizace dat z Azure do místní lokality a po dokončení se zprovozní virtuální počítače v místní lokalitě.  
-3. **Zpětná replikace místních virtuálních počítačů**: Po selhání zpátky do místního, zpětnou replikaci místních virtuálních počítačů ke spuštění replikace do Azure.
+1. **Převzetí služeb při selhání do Azure**: Převzetí služeb při selhání virtuálních počítačů Hyper-V z místní lokality do Azure.
+2. **Navrácení služeb po obnovení do místního**prostředí: Převzetí služeb při selhání virtuálních počítačů Azure do místní lokality, když je místní lokalita k dispozici. Spustí se synchronizace dat z Azure do místní lokality a po dokončení se zprovozní virtuální počítače v místní lokalitě.  
+3. **Zpětná replikace místních virtuálních počítačů**: Po navrácení služby po obnovení do místní se můžete vrátit k replikaci místních virtuálních počítačů a začít je replikovat do Azure.
 
 ## <a name="verify-vm-properties"></a>Ověření vlastností virtuálního počítače
 
@@ -65,7 +65,7 @@ V části **Chráněné položky** klikněte na **Replikované položky** a pak 
 4. Po ověření převzetí služeb při selhání klikněte na **Potvrdit**. Tím se odstraní všechny dostupné body obnovení.
 
 > [!WARNING]
-> **Nepřerušujte převzetí služeb při selhání v průběhu**: Pokud zrušíte probíhá převzetí služeb při selhání zastaví, ale virtuální počítač se znovu nereplikuje.
+> **Nerušit probíhající převzetí služeb při selhání**: Pokud zrušíte probíhající zrušení, převzetí služeb při selhání se zastaví, ale virtuální počítač se znovu replikuje.
 
 ## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Navrácení služeb po obnovení virtuálního počítače Azure do místní lokality a zpětná replikace místního virtuálního počítače
 
