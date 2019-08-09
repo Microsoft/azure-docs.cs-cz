@@ -26,7 +26,7 @@ Použijte klientskou knihovnu detektoru anomálií pro Python:
 * Detekovat anomálie v celé datové sadě časových řad jako požadavek dávky
 * Zjistit stav anomálií z nejnovějšího datového bodu v časové řadě
 
-[Ukázky knihovny dokumentace k referenční dokumentaci](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | knihovny[(PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [](https://github.com/Azure-Samples/anomalydetector)
+[Ukázky knihovny dokumentace k referenční dokumentaci](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [knihovna zdroj](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [knihovny(PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [vzorky](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -14,7 +14,6 @@
     - name: Vytvoření clusteru Apache Spark – Azure CLI
       href: apache-spark-create-cluster-cli.md
     - name: Vytvoření clusteru Apache Spark – šablona
-      displayName: 'resource manager template, arm template, resource manager group'
       href: apache-spark-jupyter-spark-sql.md
 - name: Kurzy
   items:
@@ -50,30 +49,6 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
-    - name: Řešení potíží
-      items:
-        - name: Výjimka OutOfMemoryError
-          href: ./apache-spark-troubleshoot-outofmemory.md
-        - name: Selhání úlohy Apache Sparku – NoClassDefFoundError
-          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
-        - name: Selhání úlohy Apache Sparku – InvalidClassException
-          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: Pomalé úlohy Apache Sparku – listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
-        - name: Pomalé úlohy Apache Sparku – kontejner úložiště
-          href: ./apache-spark-troubleshoot-job-slowness-container.md
-        - name: Výjimka IllegalArgumentException
-          href: ./apache-spark-troubleshoot-illegalargumentexception.md
-        - name: Zastavování streamovací aplikace Apache Sparku
-          href: ./apache-spark-troubleshoot-application-stops.md
-        - name: Výjimka RpcTimeoutException
-          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
-        - name: Blokování rozhraní API pro více zdrojů
-          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
-        - name: Serializace Kryo se nepovedla
-          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
-        - name: Protokol událostí Apache Sparku – RequestBodyTooLarge
-          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: Postup
   items:
     - name: Použití úložiště clusteru
@@ -226,7 +201,6 @@
                 - name: Použití webu Azure Portal
                   href: ../hdinsight-hadoop-create-linux-clusters-portal.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Použití šablon Azure Resource Manageru
-                  displayName: 'resource manager template, arm template, resource manager group'
                   href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Použití sady SDK pro .NET
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
@@ -329,6 +303,30 @@
                   href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Optimalizace dotazů Apache Hive
                   href: ../hdinsight-hadoop-optimize-hive-query.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: Řešení potíží
+      items:
+        - name: Výjimka OutOfMemoryError
+          href: ./apache-spark-troubleshoot-outofmemory.md
+        - name: Selhání úlohy Apache Sparku – NoClassDefFoundError
+          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+        - name: Selhání úlohy Apache Sparku – InvalidClassException
+          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
+        - name: Pomalé úlohy Apache Sparku – listStatus
+          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
+        - name: Pomalé úlohy Apache Sparku – kontejner úložiště
+          href: ./apache-spark-troubleshoot-job-slowness-container.md
+        - name: Výjimka IllegalArgumentException
+          href: ./apache-spark-troubleshoot-illegalargumentexception.md
+        - name: Zastavování streamovací aplikace Apache Sparku
+          href: ./apache-spark-troubleshoot-application-stops.md
+        - name: Výjimka RpcTimeoutException
+          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
+        - name: Blokování rozhraní API pro více zdrojů
+          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
+        - name: Serializace Kryo se nepovedla
+          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
+        - name: Protokol událostí Apache Sparku – RequestBodyTooLarge
+          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: Referenční informace
   items:
     - name: Ukázky kódů
@@ -350,7 +348,6 @@
     - name: REST API (Apache Spark)
       href: /rest/api/hdinsightspark/
     - name: Šablona Resource Manageru
-      displayName: 'resource manager template, arm template, resource manager group'
       href: /azure/templates/microsoft.hdinsight/allversions
 - name: Zdroje a prostředky
   items:

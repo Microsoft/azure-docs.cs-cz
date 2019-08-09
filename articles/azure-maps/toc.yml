@@ -133,12 +133,14 @@
       items:
         - name: Začínáme s mapovým ovládacím prvkem Androidu
           href: how-to-use-android-map-control-library.md
+        - name: Změna stylu mapy
+          href: set-android-map-styles.md
         - name: Přidání vrstvy symbolů
           href: how-to-add-symbol-to-android-map.md
         - name: Přidání tvarů
           href: how-to-add-shapes-to-android-map.md
-        - name: Změna stylu mapy
-          href: set-android-map-styles.md
+        - name: Přidání vrstvy dlaždic
+          href: how-to-add-tile-layer-android-map.md
 - name: Referenční informace
   items:
     - name: Rozšíření rozhraní API a parametrů
