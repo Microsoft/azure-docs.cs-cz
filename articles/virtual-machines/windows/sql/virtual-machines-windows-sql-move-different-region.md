@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7b9a24161c76f9fbb0993ffb6719c1ea1b51dc55
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 846b4d95c7eb32af7c1c0ff42c2526612075a033
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775705"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882416"
 ---
 # <a name="move-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery-services"></a>Přesunutí virtuálního počítače SQL Server do jiné oblasti v rámci Azure pomocí služeb Azure Site Recovery
 
@@ -54,7 +54,7 @@ Připravte zdrojový virtuální počítač SQL Server i cílovou oblast pro př
 - Pro virtuální počítače se systémem Linux postupujte podle pokynů, které poskytuje distributor pro Linux, a získejte nejnovější důvěryhodné kořenové certifikáty a seznam odvolaných certifikátů na virtuálním počítači. 
 - Ujistěte se, že nepoužíváte ověřovací proxy server k řízení připojení k síti pro virtuální počítače, které chcete přesunout. 
 - Pokud virtuální počítač, který se pokoušíte přesunout, nemá přístup k Internetu, nebo k řízení odchozího přístupu používá proxy server brány firewall, Projděte si požadavky. 
-- Identifikujte rozložení zdrojové sítě a všechny prostředky, které your'e aktuálně používají. To zahrnuje, ale není omezené na nástroje pro vyrovnávání zatížení, skupiny zabezpečení sítě (skupin zabezpečení sítě) a veřejné IP adresy. 
+- Identifikujte rozložení zdrojové sítě a všechny prostředky, které aktuálně používáte. To zahrnuje, ale není omezené na nástroje pro vyrovnávání zatížení, skupiny zabezpečení sítě (skupin zabezpečení sítě) a veřejné IP adresy. 
 
 ### <a name="prepare-the-target-region"></a>Příprava cílové oblasti
 
@@ -148,7 +148,7 @@ Abyste se vyhnuli poplatkům za účtování, odeberte SQL Server virtuální po
 1. Pokud nemáte žádné plány k opakovanému použití některého z prostředků ve zdrojové oblasti, odstraňte všechny relevantní síťové prostředky a odpovídající účty úložiště. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v následujících článcích: 
 

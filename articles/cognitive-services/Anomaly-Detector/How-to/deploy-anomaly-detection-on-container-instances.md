@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: defbd1275e24217c235caaef15dc8f7a55ad8613
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: cdcf701c6356303c84d3f79ee4230271f64ace78
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296575"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854234"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Nasazení kontejneru detektoru anomálií pro Azure Container Instances
 
@@ -35,4 +35,8 @@ Aby bylo možné požádat o přístup ke kontejneru, je nutné nejprve dokonči
 
 [!INCLUDE [API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
-[!INCLUDE [Containers Next Steps](../../containers/includes/containers-next-steps.md)]
+## <a name="next-steps"></a>Další postup
+
+* Přečtěte si téma [instalace a spuštění kontejnerů](../anomaly-detector-container-configuration.md) pro vyžádání image kontejneru a spuštění kontejneru.
+* Kontrola [konfigurace kontejnery](../anomaly-detector-container-configuration.md) nastavení konfigurace
+* [Další informace o službě rozhraní API detektoru anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

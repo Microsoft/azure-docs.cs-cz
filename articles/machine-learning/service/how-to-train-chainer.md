@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: f95a7efd8b9303db0a9ba98c1be32e13d0c5e984
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
-ms.translationtype: HT
+ms.openlocfilehash: 91ac8b596373963aeba00c1932dfde5d76f27bd0
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780888"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856027"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Škálujte a Registrujte modely zřetězení ve velkém měřítku pomocí Azure Machine Learning služby
 
@@ -38,9 +38,9 @@ Spusťte tento kód v jednom z těchto prostředí:
 
 - Váš vlastní server Jupyter Notebook
 
-    - [Instalace sady Azure Machine Learning SDK pro Python](setup-create-workspace.md#sdk)
-    - [Vytvoření konfiguračního souboru pracovního prostoru](setup-create-workspace.md#write-a-configuration-file)
-    - Stažení ukázkového souboru skriptu [chainer_mnist. py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py)
+    - [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
+    - Stáhněte si vzorový soubor skriptu [chainer_mnist. py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py).
      - Dokončenou [Jupyter notebook verzi](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) tohoto průvodce můžete najít na stránce ukázek na GitHubu. Poznámkový blok obsahuje rozšířené oddíly, které pokrývají inteligentní ladění parametrů, nasazení modelů a widgety poznámkových bloků.
 
 ## <a name="set-up-the-experiment"></a>Nastavení experimentu
@@ -207,7 +207,7 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste si naučili a zaregistrovali obsáhlý Learning, neuronové síť pomocí chainer ve službě Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek [nasazení modelu](how-to-deploy-and-where.md) .
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae3f9f2f4a9f6966d3453123773887c244cf4e2
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 519a86bed6a3a09b476bce6435ae666d655dbe03
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334072"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852268"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (XAML)
 
@@ -320,7 +320,7 @@ Aplikace v této ukázce podporuje jednoho uživatele. Ale MSAL podporuje scén�
 
 Tokeny ID získané prostřednictvím **OpenID Connect** také obsahují malou podmnožinu informací, které se vztahují k uživateli. `DisplayBasicTokenInfo`Zobrazí základní informace obsažené v tokenu. Příklady jsou zobrazované jméno a ID uživatele, datum vypršení platnosti tokenu a řetězec, který představuje samotný přístupový token. Pokud si vyberete tlačítko pro **volání rozhraní API Microsoft Graph** několikrát, uvidíte, že se stejný token znovu použil pro následné požadavky. Můžete také zobrazit datum vypršení platnosti, pokud MSAL rozhodne, že je čas obnovit token.
 
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci.
 
 Teď je potřeba zaregistrovat aplikaci na portálu pro registraci aplikací Microsoftu:
 

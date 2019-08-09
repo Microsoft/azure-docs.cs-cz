@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 9852ec450b6da3814a3bd2bfc6aae7d19acaf584
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c5484c37d89cc9ae880bbe17987bb47f3114b8a4
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370386"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847899"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Detekce posunu dat (Preview) na modelech nasazených do služby Azure Kubernetes Service (AKS)
 
@@ -40,18 +40,20 @@ Pomocí služby Azure Machine Learning můžete sledovat vstupy modelu nasazené
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Jak se monitoruje posun dat ve službě Azure Machine Learning
 
-Pomocí Azure Machine Learning služby je mezi datovými sadami a nasazeními monitorovaná data. Chcete-li monitorovat pro posun dat, je určena datová sada, která je obvykle datovou sadou pro model. Druhá datová sada – obvykle modelují vstupní data shromážděná z nasazení – jsou testována proti základní datové sadě. Obě datové [sady jsou](how-to-explore-prepare-data.md#explore-with-summary-statistics) profilované a vstupní služba pro sledování datového posunu dat. Model strojového učení je vyškolen k detekci rozdílů mezi dvěma datovými sadami. Výkon modelu se převede na koeficient posunu, který měří velikost posunu mezi dvěma datovými sadami. Pomocí [Interpretace modelu](machine-learning-interpretability-explainability.md)jsou vypočítány funkce, které přispívají k součiniteli posunu. Z profilu datové sady jsou sledovány statistické informace o jednotlivých funkcích. 
+Pomocí Azure Machine Learning služby je mezi datovými sadami a nasazeními monitorovaná data. Chcete-li monitorovat pro posun dat, je určena datová sada, která je obvykle datovou sadou pro model. Druhá datová sada – obvykle modelují vstupní data shromážděná z nasazení – jsou testována proti základní datové sadě. Obě datové sady jsou [](how-to-explore-prepare-data.md#explore-with-summary-statistics) profilované a vstupní služba pro sledování datového posunu dat. Model strojového učení je vyškolen k detekci rozdílů mezi dvěma datovými sadami. Výkon modelu se převede na koeficient posunu, který měří velikost posunu mezi dvěma datovými sadami. Pomocí [Interpretace modelu](machine-learning-interpretability-explainability.md)jsou vypočítány funkce, které přispívají k součiniteli posunu. Z profilu datové sady jsou sledovány statistické informace o jednotlivých funkcích. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ho ještě nemáte, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-- Pracovní prostor služby Azure Machine Learning service a Azure Machine Learning SDK for nainstalovaný Python. Postupujte podle pokynů v tématu [Vytvoření pracovního prostoru služby Azure Machine Learning](setup-create-workspace.md#sdk) a proveďte následující akce:
+- Sada Azure Machine Learning SDK pro Python je nainstalována. Pokyny v [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) použijte k následujícím akcím:
 
     - Vytvoření prostředí Miniconda
     - Instalace sady Azure Machine Learning SDK pro Python
-    - Vytvoření pracovního prostoru
-    - Zápis konfiguračního souboru pracovního prostoru (aml_config/config. JSON).
+
+- [Pracovní prostor služby Azure Machine Learning](how-to-manage-workspace.md).
+
+- [Konfigurační soubor](how-to-configure-environment.md#workspace)pracovního prostoru.
 
 - Nainstalujte sadu SDK pro přenos dat pomocí následujícího příkazu:
 
@@ -195,6 +197,6 @@ Na základě výstupu předchozího kódu budete možná chtít svůj model pře
 
 ## <a name="next-steps"></a>Další postup
 
-* Úplný příklad použití posunu dat najdete v poznámkovém [bloku Azure ml – datový posun](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/data-drift/azure-ml-datadrift.ipynb). Tento Jupyter Notebook ukazuje použití [datové sady Azure Open](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) pro výuku modelu, který předpovídá počasí, nasadí ho do AKS a monitoruje posun dat. 
+* Úplný příklad použití posunu dat najdete v poznámkovém [bloku Azure ml – datový posun](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb). Tento Jupyter Notebook ukazuje použití [datové sady Azure Open](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) pro výuku modelu, který předpovídá počasí, nasadí ho do AKS a monitoruje posun dat. 
 
 * Rádi bychom si výrazně vyhodnotili vaše dotazy, komentáře a návrhy, protože se pohyb dat blíží k všeobecné dostupnosti. Použijte následující tlačítko pro odeslání názoru na produkt. 

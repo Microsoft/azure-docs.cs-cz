@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2019
+ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 833d0d0b17f7cc22b2ab37b4e225c1a8cce9c592
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9dcc5fa201c08ca4b1e65b8aae88118731eba427
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385540"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881069"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -133,6 +133,10 @@ Několik toků, z nichž každý má jinou cílovou IP adresu, port a protokol, 
 
 Porty UDP SNAT jsou spravovány jiným algoritmem než porty TCP SNAT.  Load Balancer používá algoritmus, který se označuje jako "kuželový překlad adres (NAT)" na portu UDP.  Pro každý tok se spotřebuje jeden port SNAT bez ohledu na cílovou IP adresu a port.
 
+#### <a name="snat-port-reuse"></a>Opakované použití portu SNAT
+
+Po uvolnění portu je možné port v případě potřeby znovu použít.  Porty SNAT si můžete představit jako sekvence od nejnižší po nejvyšší dostupnou pro daný scénář a jako první dostupný port SNAT se použije pro nová připojení. 
+ 
 #### <a name="exhaustion"></a>Vyčerpání
 
 Po vyčerpání prostředků portů SNAT dojde k selhání odchozích toků, dokud nebudou stávající toky vydány porty SNAT. Load Balancer redeklaracích portů SNAT po ukončení toku a používá prodlevu nečinnosti ve [4 minutách](#idletimeout) pro uvolnění portů SNAT z nečinných toků.
@@ -150,7 +154,7 @@ Stejný počet portů SNAT se má předběžně přidělit pro UDP a TCP a spot�
 >[!IMPORTANT]
 >Pořadová jednotka Standard SKU SNAT je podle přenosového protokolu IP a je odvozená od pravidla vyrovnávání zatížení.  Pokud existuje pouze pravidlo vyrovnávání zatížení TCP, je SNAT dostupné pouze pro protokol TCP. Pokud máte pouze pravidlo vyrovnávání zatížení TCP a potřebujete odchozí SNAT pro protokol UDP, vytvořte pravidlo vyrovnávání zatížení UDP ze stejného front-endu do stejného back-end fondu.  Tím se aktivuje programování SNAT pro UDP.  Pracovní pravidlo nebo sondu stavu se nevyžaduje.  Základní SKU SNAT SNAT vždycky pro protokol IP transportu (bez ohledu na transportní protokol zadaný v pravidle vyrovnávání zatížení).
 
-Azure předřadí porty SNAT do konfigurace protokolu IP síťové karty každého virtuálního počítače. Když se do fondu přidá konfigurace IP adresy, porty SNAT se pro tuto konfiguraci IP adres přidělí na základě velikosti fondu back-endu. Při vytváření odchozích toků se [Jana dynamicky spotřebovává](#pat) (až do limitu před přidělením) a uvolní tyto porty, když dojde k ukončení [](#idletimeout) toku nebo vypršení nečinnosti.
+Azure předřadí porty SNAT do konfigurace protokolu IP síťové karty každého virtuálního počítače. Když se do fondu přidá konfigurace IP adresy, porty SNAT se pro tuto konfiguraci IP adres přidělí na základě velikosti fondu back-endu. Při vytváření odchozích toků se [](#pat) Jana dynamicky spotřebovává (až do limitu před přidělením) a uvolní tyto porty, když dojde k ukončení toku nebo [vypršení nečinnosti](#idletimeout) .
 
 V následující tabulce jsou uvedena předalokace portů SNAT pro vrstvy velikostí back-endu:
 

@@ -1,6 +1,6 @@
 ---
-title: Žádní uživatelé se nezřizují k aplikaci Galerie Azure AD | Dokumentace Microsoftu
-description: Jak řešit běžné problémy, kterým čelí, když se uživatelům povolí, jste nakonfigurovali pro zřizování uživatelů pomocí Azure AD aplikace Galerie Azure AD
+title: Pro aplikaci Galerie Azure AD se nezřídí žádní uživatelé | Microsoft Docs
+description: Jak řešit běžné problémy s tím, jak se uživatelům nezobrazují v aplikaci Galerie Azure AD, kterou jste nakonfigurovali pro zřizování uživatelů pomocí Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,48 +16,48 @@ ms.date: 09/20/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaeb97f88c2482cb9d091afb1c205e9b09a85ce0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b80539181e6614283b6170b9cd9d4db85f812a5f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784588"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879899"
 ---
-# <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Žádní uživatelé se nezřizují k aplikaci Galerie Azure AD
-Po dokončení automatické zřizování konfigurace pro aplikaci (včetně ověření, že jsou platné přihlašovací údaje aplikace do služby Azure AD pro připojení k aplikaci k dispozici), potom uživatele a/nebo skupiny připravené k aplikaci. Zřizování se určuje podle následujících akcí:
+# <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Pro aplikaci Galerie Azure AD se nezřídí žádní uživatelé.
+Po nakonfigurování automatického zřizování pro aplikaci (včetně ověření, jestli jsou přihlašovací údaje, které se poskytly službě Azure AD pro připojení k aplikaci platné), budou uživatelé nebo skupiny zřízené v aplikaci. Zřizování je určeno následujícími postupy:
 
--   Které uživatelé a skupiny byly **přiřazené** do aplikace. Další informace o přiřazení najdete v tématu [přiřadit podnikové aplikace v Azure Active Directory uživatele nebo skupinu](assign-user-or-group-access-portal.md).
--   Určuje, jestli **mapování atributů** jsou povolené a nakonfigurované pro synchronizaci platné atributy ze služby Azure AD do aplikace. Další informace o mapování atributů najdete v tématu [přizpůsobení zřizování atribut mapování uživatele pro aplikace SaaS ve službě Azure Active Directory](customize-application-attributes.md).
--   Zda je **filtr oborů** k dispozici, který je filtrování uživatelů podle konkrétních atributů. Další informace o filtry oborů, naleznete v tématu [zřizování aplikací na základě atributů s filtry oborů](define-conditional-rules-for-provisioning-user-accounts.md).
+-   Kteří uživatelé a skupiny jsou **přiřazeni** k aplikaci. Upozorňujeme, že zřizování vnořených skupin nebo skupin Office 365 se nepodporuje. Další informace o přiřazení najdete v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory](assign-user-or-group-access-portal.md).
+-   Bez ohledu na to, jestli jsou **mapování atributů** povolená a nakonfigurovaná tak, aby synchronizoval platné atributy z Azure AD do aplikace. Další informace o mapování atributů najdete v tématu [Přizpůsobení mapování atributů zřizování uživatelů pro aplikace SaaS v Azure Active Directory](customize-application-attributes.md).
+-   Bez ohledu na to, zda existuje **Filtr oboru** , který filtruje uživatele na základě konkrétních hodnot atributů. Další informace o filtrech oborů najdete v tématu [zřizování aplikací na základě atributů s filtry oborů](define-conditional-rules-for-provisioning-user-accounts.md).
   
-Pokud zjistíte, že uživatelé se zřizuje, najdete v protokolech auditování ve službě Azure AD. Hledat položky protokolu pro konkrétního uživatele.
+Pokud zjistíte, že uživatelé nejsou zřizování, přečtěte si protokoly auditu v Azure AD. Vyhledejte položky protokolu pro konkrétního uživatele.
 
-Zřizování protokolů auditu je možný na webu Azure Portal, **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt; protokoly auditu** kartu. Filtrovat protokoly **zřizování účtů** kategorie zobrazíte jen zřizování události pro tuto aplikaci. Můžete hledat uživatele na základě "Odpovídající ID", která byla konfigurována pro ně mapování atributů. Například, pokud jste nakonfigurovali "hlavní název uživatele" nebo "e-mailovou adresu" jako odpovídající atribut na straně služby Azure AD a uživatel není zřizování má hodnotu "audrey@contoso.com", potom hledání v protokolech auditu "audrey@contoso.com" a zkontrolovat položky Vrátí.
+K protokolům auditu zřizování se dá v Azure Portal přihlašovat na kartě  **&gt; Azure Active Directory podnikové aplikace\] &gt; \[ &gt; název aplikace** . Vyfiltrujte protokoly v kategorii **zřizování účtů** , aby se zobrazily jenom události zřizování pro tuto aplikaci. Uživatele můžete vyhledat na základě "odpovídajícího ID", které bylo pro ně nakonfigurováno v mapování atributů. Pokud jste například nakonfigurovali atribut "hlavní název uživatele" nebo "e-mailová adresa" jako atribut pro porovnání na straně Azure AD a uživatel, který není zřizovánímaudrey@contoso.com, vyhledá v protokolech auditu "audrey@contoso.com" a zkontroluje položky. vrátil.
 
-Zřizování audit protokoluje záznamu všechny operace provedené službě zřizování, včetně dotazování služby Azure AD pro přiřazené uživatele, kteří jsou v oboru pro zřizování, dotazování cílové aplikace existenci těchto uživatelů, porovnání uživatelské objekty mezi systémem. Pak přidejte, aktualizovat nebo zakázat uživatelský účet v cílovém systému založené na porovnání.
+Protokoly zřizování zaznamenají všechny operace prováděné službou zřizování, včetně dotazování Azure AD na přiřazené uživatele v oboru pro zřizování, dotazování cílové aplikace na existenci těchto uživatelů a porovnání uživatelských objektů. mezi systémem. Pak na základě porovnání přidejte, aktualizujte nebo zakažte uživatelský účet v cílovém systému.
 
-## <a name="general-problem-areas-with-provisioning-to-consider"></a>Obecné problémových oblastí pomocí zřizování vzít v úvahu
-Níže je seznam obecné problémových oblastí, které můžete zobrazit další podrobnosti Pokud máte představu, kde začít.
+## <a name="general-problem-areas-with-provisioning-to-consider"></a>Obecné oblasti problému s zřizováním pro zvážení
+Níže je uveden seznam obecných oblastí problémů, na které můžete přejít, pokud máte představu o tom, kde začít.
 
-- [Služba zřizování se nezobrazí spuštění](#provisioning-service-does-not-appear-to-start)
-- [Protokoly auditu Řekněme, že uživatelé jsou vynechány a není zřízený, i když jsou přiřazeny](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
+- [Služba zřizování se nezdá spustit](#provisioning-service-does-not-appear-to-start)
+- [Protokoly auditu – uživatelé se přeskočí a nezřídí, i když se jim přiřadí.](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
-## <a name="provisioning-service-does-not-appear-to-start"></a>Služba zřizování se nezobrazí spuštění
-Pokud jste nastavili **stavu zřizování** bude **na** v **Azure Active Directory &gt; podnikové aplikace &gt; \[název_aplikace\] &gt;Zřizování** části webu Azure portal. Ale žádné jiné podrobnosti o stavu jsou uvedeny na této stránce po následné znovu načte, je pravděpodobné, že služba běží, ale nebyla dokončena ještě počáteční synchronizaci. Zkontrolujte **protokoly auditu** popsáno výše, a určit, jaké operace provádí služba, a pokud nejsou žádné chyby.
+## <a name="provisioning-service-does-not-appear-to-start"></a>Služba zřizování se nezdá spustit
+Pokud nastavíte **stav zřizování** na zapnuto, v části **Azure Active Directory &gt; podnikové\] aplikace &gt; \[název &gt;aplikace** Azure Portal . Po dalším opětovném načtení se na této stránce nezobrazují žádné další podrobnosti o stavu, je ale nejspíš, že služba běží, ale ještě nedokončila počáteční synchronizaci. Zkontrolujte **protokoly auditu** popsané výše a určete, jaké operace služba provádí, a pokud dojde k chybám.
 
 >[!NOTE]
->Počáteční synchronizace může trvat 20 minut i několik hodin, v závislosti na velikosti adresáře služby Azure AD a počet uživatelů v oboru pro zřizování. Následné synchronizuje po počáteční synchronizaci jsou rychlejší, zřizovací služba ukládá vodoznaky, představující stav obou systémů po počáteční synchronizaci. Počáteční synchronizace zlepšuje výkon následné synchronizace.
+>Počáteční synchronizace může trvat až 20 minut až několik hodin, v závislosti na velikosti adresáře Azure AD a počtu uživatelů v oboru pro zřizování. Následná synchronizace po počáteční synchronizaci je rychlejší, protože služba zřizování ukládá meze, které představují stav obou systémů po počáteční synchronizaci. Počáteční synchronizace vylepšuje výkon následných synchronizací.
 >
 
 
-## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Protokoly auditu Řekněme, že uživatelé jsou vynechány a není zřízený, i když jsou přiřazeny
+## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Protokoly auditu – uživatelé se přeskočili a nezřídili, i když jsou přiřazeni.
 
-Když uživatel zobrazí jako "vynecháno" z protokolů auditu, je potřeba Rozšířené podrobnosti najdete ve zprávě protokolu a zjistěte jeho důvod. Níže jsou uvedeny běžné důvody a jejich řešení:
+Pokud se uživateli v protokolech auditu zobrazí zpráva "přeskočeno", je důležité si přečíst rozšířené podrobnosti v protokolu, abyste zjistili důvod. Níže jsou uvedeny běžné důvody a řešení:
 
-- **Filtr oborů není nakonfigurovaná** **, který je odfiltrováním uživatele založené na hodnotě atributu**. Další informace o filtry oborů, naleznete v tématu [filtry oborů](define-conditional-rules-for-provisioning-user-accounts.md).
-- **Uživatel je "není oprávněn efektivně".** Pokud se zobrazí určité chybové zprávě, bude to, že dojde k nějakému problému s záznamu přiřazení uživatele uložených ve službě Azure AD. Chcete-li vyřešit tento problém, zrušení přiřazení uživatele (nebo skupiny) z aplikace a znovu přiřadit. Další informace o přiřazení najdete v tématu [přiřadit přístup uživatele nebo skupinu](assign-user-or-group-access-portal.md).
-- **Požadovaný atribut nebyl nalezen nebo není vyplněný pro uživatele.** Důležité vzít v úvahu při nastavování zřizování je ke kontrole a nakonfigurujte mapování atributů a pracovních postupů, které definují, které uživatel (nebo skupiny) vlastnosti toku ze služby Azure AD do aplikace. Tato konfigurace zahrnuje nastavení "odpovídající vlastnost", který slouží k jednoznačné identifikaci a odpovídající uživatelům nebo skupinám mezi těmito dvěma systémy. Další informace o tomto procesu důležité, naleznete v tématu [přizpůsobení zřizování atribut mapování uživatele pro aplikace SaaS ve službě Azure Active Directory](customize-application-attributes.md).
-- **Mapování atributů pro skupiny:** Zřizování název skupiny a podrobnosti o skupině, kromě členů, pokud se podporuje u některých aplikací. Můžete povolit nebo zakázat tuto funkci povolením nebo zakázáním **mapování** pro objekty skupiny je znázorněno **zřizování** kartu. Pokud je zapnutá zřizování skupin, nezapomeňte zkontrolovat mapování atributů k zajištění, že se že příslušné pole se používá pro "Odpovídající ID". Odpovídající ID může být zobrazovaný název nebo e-mailu alias. Skupiny a její členy nebyly zřízeny, pokud je odpovídající vlastnost prázdná nebo není vyplněný pro skupinu ve službě Azure AD.
+- Byl **nakonfigurován filtr oborů** . **který filtruje uživatele na základě hodnoty atributu**. Další informace o filtrech oborů najdete v [](define-conditional-rules-for-provisioning-user-accounts.md)tématu věnovaném filtrům rozsahu.
+- **Uživatel je "neefektivně oprávněný".** Pokud se zobrazí tato konkrétní chybová zpráva, je to proto, že došlo k potížím s záznamem přiřazení uživatele uloženým ve službě Azure AD. Pokud chcete tento problém vyřešit, zrušte přiřazení uživatele (nebo skupiny) z aplikace a znovu ho znovu přiřaďte. Další informace o přiřazení najdete v tématu [přiřazení přístupu uživatele nebo skupiny](assign-user-or-group-access-portal.md).
+- **Povinný atribut chybí nebo není vyplněný pro uživatele.** Při nastavování zřizování je důležité vzít v úvahu, že je potřeba zkontrolovat a nakonfigurovat mapování atributů a pracovní postupy, které definují, který uživatel (nebo skupinu) z Azure AD do aplikace přesměruje. Tato konfigurace zahrnuje nastavení "odpovídajících vlastností", která se používá k jednoznačné identifikaci uživatelů nebo skupin mezi oběma systémy a jejich porovnání. Další informace o tomto důležitém procesu najdete v tématu [Přizpůsobení mapování atributů zřizování uživatelů pro aplikace SaaS v Azure Active Directory](customize-application-attributes.md).
+- **Mapování atributů pro skupiny:** Zřizování názvu skupiny a podrobností skupiny, a to i u členů, pokud jsou podporovány pro některé aplikace. Tuto funkci můžete povolit nebo zakázat povolením nebo zakázáním **mapování** pro objekty skupiny zobrazené na kartě **zřizování** . Pokud jsou skupiny zřizování povoleny, nezapomeňte zkontrolovat mapování atributů, aby se zajistilo, že se pro "odpovídající ID" používá příslušné pole. ID porovnání může být zobrazované jméno nebo e-mailový alias. Skupina a její členové se nezřídí, pokud je vlastnost odpovídajícího typu prázdná nebo není naplněná pro skupinu ve službě Azure AD.
 
 ## <a name="next-steps"></a>Další postup
 

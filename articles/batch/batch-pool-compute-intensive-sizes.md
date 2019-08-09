@@ -122,8 +122,8 @@ Pokud chcete spouštět aplikace CUDA ve fondu uzlů Windows NC, musíte nainsta
 Chcete-li spouštět aplikace CUDA ve fondu uzlů systému Linux NC, je nutné nainstalovat potřebné ovladače NVIDIA Tesla GPU ze sady CUDA Toolkit. Následující příklady kroků vytvoří a nasadí vlastní image Ubuntu 16,04 LTS s ovladači GPU:
 
 1. Nasazení virtuálního počítače Azure NC-Series se systémem Ubuntu 16,04 LTS. Vytvořte například virtuální počítač v oblasti USA (střed) – jih. 
-2. Přidejte do virtuálního počítače rozšíření](../virtual-machines/extensions/hpccompute-gpu-linux.md
-) NVIDIAGPUovladačepomocíAzurePortal,klientskéhopočítače,kterýsepřipojujekpředplatnémuAzureneboAzureCloudShell.[ Případně postupujte podle pokynů pro připojení k virtuálnímu počítači a [nainstalujte ovladače CUDA](../virtual-machines/linux/n-series-driver-setup.md) ručně.
+2. [Přidejte do virtuálního počítače rozšíření](../virtual-machines/extensions/hpccompute-gpu-linux.md
+) NVIDIAGPUovladačepomocíAzurePortal,klientskéhopočítače,kterýsepřipojujekpředplatnémuAzureneboAzureCloudShell. Případně postupujte podle pokynů pro připojení k virtuálnímu počítači a [nainstalujte ovladače CUDA](../virtual-machines/linux/n-series-driver-setup.md) ručně.
 3. Použijte postup vytvoření [snímku a vlastní image virtuálního počítače se systémem Linux](batch-custom-images.md) pro službu Batch.
 4. Vytvořte účet Batch v oblasti, která podporuje virtuální počítače NC.
 5. Pomocí rozhraní API nebo Azure Portal dávky vytvořte fond s [použitím vlastní image](batch-custom-images.md) a požadovaného počtu uzlů a škálování. V následující tabulce jsou uvedena ukázková nastavení fondu pro bitovou kopii:

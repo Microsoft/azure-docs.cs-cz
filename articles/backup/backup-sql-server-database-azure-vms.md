@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: b7bf9943afa2a79f98fd28d15e5ea46fa63af732
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 6a929359c0e4e0a5c64eadbf41f565dfeb56a233
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688644"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854119"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -177,7 +177,7 @@ Jak zjišťovat databáze běžící na virtuálním počítači:
 
     ![Povolení automatické ochrany pro skupinu dostupnosti Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. V **zásadách zálohování**zvolte zásadu a pak vyberte **OK**.
+5. V **zásadách zálohování**zvolte zásadu a pak vyberte **OK**.
 
    - Jako HourlyLogBackup vyberte výchozí zásady.
    - Vyberte existující zásadu zálohování, která byla dříve vytvořena pro SQL.
@@ -185,11 +185,11 @@ Jak zjišťovat databáze běžící na virtuálním počítači:
 
      ![Vybrat zásady zálohování](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6. V **zálohování**vyberte **Povolit zálohování**.
+6. V **zálohování**vyberte **Povolit zálohování**.
 
     ![Povolit zvolenou zásadu zálohování](./media/backup-azure-sql-database/enable-backup-button.png)
 
-7. Sledujte průběh konfigurace v oblasti **oznámení** na portálu.
+7. Sledujte průběh konfigurace v oblasti **oznámení** na portálu.
 
     ![Oznamovací oblast](./media/backup-azure-sql-database/notifications-area.png)
 
@@ -273,7 +273,7 @@ Automatickou ochranu můžete povolit, pokud chcete automaticky zálohovat všec
 
 - Neexistuje žádné omezení počtu databází, které můžete v jednom okamžiku vybrat pro automatickou ochranu.
 - Nemůžete selektivně chránit nebo vyloučit databáze z ochrany v instanci v době, kdy jste povolili automatickou ochranu.
-- Pokud už vaše instance obsahuje některé chráněné databáze, zůstane chráněná v příslušných zásadách i po zapnutí automatické ochrany. Všechny nechráněné databáze přidané později budou mít jenom jednu zásadu, kterou definujete v době povolení automatické ochrany, která je uvedená v části **Konfigurace zálohování**. Zásadu přidruženou k databázi s automatickou ochranou ale můžete změnit později.  
+- Pokud už vaše instance obsahuje některé chráněné databáze, zůstane chráněná v příslušných zásadách i po zapnutí automatické ochrany. Všechny nechráněné databáze přidané později budou mít jenom jednu zásadu, kterou definujete v době povolení automatické ochrany, která je uvedená v části **Konfigurace zálohování**. Zásadu přidruženou k databázi s automatickou ochranou ale můžete změnit později.  
 
 Povolení automatické ochrany:
 
@@ -288,7 +288,7 @@ Pokud potřebujete vypnout automatickou ochranu, vyberte název instance v čás
 
 ![Zakázat automatickou ochranu u této instance](./media/backup-azure-sql-database/disable-auto-protection.png)
 
- 
+ 
 ## <a name="next-steps"></a>Další postup
 
 Naučte se:

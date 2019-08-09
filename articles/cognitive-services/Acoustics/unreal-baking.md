@@ -3,20 +3,20 @@ title: Kurz Unreal zanesli v projektu
 titlesuffix: Azure Cognitive Services
 description: Tento dokument popisuje proces odeslání akustické zanesli pomocí rozšíření editoru Unreal.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: michem
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 47946570db305ff3d54dfed9ea6f698e5deb7b72
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 7a868a5f9b06499e23710399733b0659d97f900d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704788"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854891"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Kurz Unreal zanesli v projektu
 Tento dokument popisuje proces odeslání akustické zanesli pomocí rozšíření editoru Unreal.
@@ -72,7 +72,7 @@ Navigační síť slouží k umístění testovacích bodů pro simulaci. Může
 
 ### <a name="acoustics-volumes"></a>Svazky s akustickými objemy ###
 
-Existují další rozšířené možnosti přizpůsobení, které můžete provádět v navigačních oblastech pomocí **akustických svazků**. **Akustické svazky** jsou objekty actor, které můžete přidat do své scény, které umožňují vybrat oblasti, které se mají zahrnout do navigační mřížky a ignorovat je. Objekt actor zpřístupňuje vlastnost, kterou lze přepnout mezi "include" a "Exclude". "Include" svazky zajistí, že se budou brát v úvahu jenom oblasti navigační mřížky a "vyloučit" svazky, které tyto oblasti mají ignorovat. Svazky "vyloučit" se vždycky používají po svazcích "include". Nezapomeňte označit akustické **objemy** , jako je například **Navigace** prostřednictvím běžného procesu na kartě objekty. Tyto objekty actor ***nejsou automaticky označeny*** .
+Existují další rozšířené možnosti přizpůsobení, které můžete provádět v navigačních oblastech pomocí **akustických svazků**. **Akustické svazky** jsou objekty actor, které můžete přidat do své scény, které umožňují vybrat oblasti, které se mají zahrnout do navigační mřížky a ignorovat je. Objekt actor zpřístupňuje vlastnost, kterou lze přepnout mezi "include" a "Exclude". "Include" svazky zajistí, že se budou brát v úvahu jenom oblasti navigační mřížky a "vyloučit" svazky, které tyto oblasti mají ignorovat. Svazky "vyloučit" se vždycky používají po svazcích "include". Nezapomeňte označit akustické **objemy** , jako je například **Navigace** prostřednictvím běžného procesu na kartě objekty. Tyto objekty actor nejsou automaticky označeny.
 
 ![Snímek vlastností svazků s akustickými Hlasitostmi v Unreal](media/unreal-acoustics-volume-properties.png)
 
@@ -215,7 +215,7 @@ Tento modul plug-in vytváří čtyři datové soubory v různých bodech. Za b�
 
 Je potřeba dbát, abyste neodstranili soubor *. ACE stažený z Azure. Tento soubor se nedá obnovit s výjimkou úprav scény.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Prozkoumejte [ovládací prvky návrhu pro Unreal](unreal-workflow.md)
 * Prozkoumejte [Koncepty návrhu projektových](design-process.md) řešení
 

@@ -1,6 +1,6 @@
 ---
-title: Microsoft identity platform token referenční informace o ID | Dokumentace Microsoftu
-description: Další informace o použití id_tokens, protože ho vygeneroval v1.0 Azure AD a Microsoft identity platform (v2.0) koncových bodů.
+title: Referenční informace o tokenu ID platformy Microsoft Identity Platform | Microsoft Docs
+description: Naučte se používat id_tokens vydávané koncovými body Azure AD v 1.0 a Microsoft Identity Platform (v 2.0).
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -14,27 +14,27 @@ ms.topic: conceptual
 ms.date: 04/13/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25408b2120a9ac9f38e7959ef8e9dbbb34df7c2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85145d4a81eb4d12910758e01dda675ea378a46b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962579"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853177"
 ---
-# <a name="microsoft-identity-platform-id-tokens"></a>Microsoft identity platform ID tokenů
+# <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
-`id_tokens` se odesílají do klientské aplikace jako součást [OpenID Connect](v1-protocols-openid-connect-code.md) toku. Může být odeslána po straně nebo místo přístupový token a klient používá k ověření uživatele.
+`id_tokens`jsou odesílány do klientské aplikace jako součást toku [OpenID Connect](v1-protocols-openid-connect-code.md) . Je možné je odeslat podél sebe nebo místo přístupového tokenu a klient je používá k ověření uživatele.
 
-## <a name="using-the-idtoken"></a>Použití požadavku id_token
+## <a name="using-the-id_token"></a>Použití id_token
 
-Tokeny typu ID by měla sloužit k ověření, že je uživatel který jejich tvrzení a další užitečné informace o nich – se nesmí používat pro povolení místo [přístupový token](access-tokens.md). Deklarace identity, které poskytuje lze použít pro uživatelské prostředí do své aplikace, vytvoření databáze a díky přístupu do klientské aplikace.
+Tokeny ID by se měly použít k ověření, že uživatel je vyhodnocený a získá další užitečné informace – neměl by se používat k autorizaci místo přístupového tokenu [](access-tokens.md). Deklarace identity, které poskytuje, lze použít pro UX v rámci aplikace, vytvoření klíče databáze a poskytnutí přístupu k klientské aplikaci.
 
-## <a name="claims-in-an-idtoken"></a>Deklarace identity ve za token ID.
+## <a name="claims-in-an-id_token"></a>Deklarace identity v id_token
 
-`id_tokens` pro Microsoft identity jsou [tokeny Jwt](https://tools.ietf.org/html/rfc7519), což znamená sestávají z část záhlaví datové části a podpisu. Záhlaví a podpis slouží k ověření pravosti tokenu, zatímco datová část obsahuje informace o uživateli požadoval vašeho klienta. Pokud není uvedeno jinak všechny deklarace identity, které jsou tady uvedené zobrazovat v tokenech v1.0 a v2.0.
+`id_tokens`pro identitu Microsoft je [JWTs](https://tools.ietf.org/html/rfc7519), což znamená, že se skládají z části záhlaví, datové části a podpisu. Hlavičku a podpis můžete použít k ověření pravosti tokenu, zatímco datová část obsahuje informace o uživateli, který požaduje váš klient. S výjimkou případů, kdy je uvedeno jinak, jsou všechny deklarace uvedené zde zobrazeny v tokenech v 1.0 i v 2.0.
 
 ### <a name="v10"></a>v1.0
 
@@ -42,7 +42,7 @@ Tokeny typu ID by měla sloužit k ověření, že je uživatel který jejich tv
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjdfWnVmMXR2a3dMeFlhSFMzcTZsVWpVWUlHdyIsImtpZCI6IjdfWnVmMXR2a3dMeFlhSFMzcTZsVWpVWUlHdyJ9.eyJhdWQiOiJiMTRhNzUwNS05NmU5LTQ5MjctOTFlOC0wNjAxZDBmYzljYWEiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkvIiwiaWF0IjoxNTM2Mjc1MTI0LCJuYmYiOjE1MzYyNzUxMjQsImV4cCI6MTUzNjI3OTAyNCwiYWlvIjoiQVhRQWkvOElBQUFBcXhzdUIrUjREMnJGUXFPRVRPNFlkWGJMRDlrWjh4ZlhhZGVBTTBRMk5rTlQ1aXpmZzN1d2JXU1hodVNTajZVVDVoeTJENldxQXBCNWpLQTZaZ1o5ay9TVTI3dVY5Y2V0WGZMT3RwTnR0Z2s1RGNCdGsrTExzdHovSmcrZ1lSbXY5YlVVNFhscGhUYzZDODZKbWoxRkN3PT0iLCJhbXIiOlsicnNhIl0sImVtYWlsIjoiYWJlbGlAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiTGluY29sbiIsImdpdmVuX25hbWUiOiJBYmUiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaXBhZGRyIjoiMTMxLjEwNy4yMjIuMjIiLCJuYW1lIjoiYWJlbGkiLCJub25jZSI6IjEyMzUyMyIsIm9pZCI6IjA1ODMzYjZiLWFhMWQtNDJkNC05ZWMwLTFiMmJiOTE5NDQzOCIsInJoIjoiSSIsInN1YiI6IjVfSjlyU3NzOC1qdnRfSWN1NnVlUk5MOHhYYjhMRjRGc2dfS29vQzJSSlEiLCJ0aWQiOiJmYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkiLCJ1bmlxdWVfbmFtZSI6IkFiZUxpQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJMeGVfNDZHcVRrT3BHU2ZUbG40RUFBIiwidmVyIjoiMS4wIn0=.UJQrCA6qn2bXq57qzGX_-D3HcPHqBMOKDPx4su1yKRLNErVD8xkxJLNLVRdASHqEcpyDctbdHccu6DPpkq5f0ibcaQFhejQNcABidJCTz0Bb2AbdUCTqAzdt9pdgQvMBnVH1xk3SCM6d4BbT4BkLLj10ZLasX7vRknaSjE_C5DI7Fg4WrZPwOhII1dB0HEZ_qpNaYXEiy-o94UJ94zCr07GgrqMsfYQqFR7kn-mn68AjvLcgwSfZvyR_yIK75S_K37vC3QryQ7cNoafDe9upql_6pB2ybMVlgWPs_DmbJ8g0om-sPlwyn74Cc1tW3ze-Xptw_2uVdPgWyqfuWAfq6Q
 ```
 
-Zobrazit tento token ukázkové verze 1.0 v [jwt.ms](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjdfWnVmMXR2a3dMeFlhSFMzcTZsVWpVWUlHdyIsImtpZCI6IjdfWnVmMXR2a3dMeFlhSFMzcTZsVWpVWUlHdyJ9.eyJhdWQiOiJiMTRhNzUwNS05NmU5LTQ5MjctOTFlOC0wNjAxZDBmYzljYWEiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkvIiwiaWF0IjoxNTM2Mjc1MTI0LCJuYmYiOjE1MzYyNzUxMjQsImV4cCI6MTUzNjI3OTAyNCwiYWlvIjoiQVhRQWkvOElBQUFBcXhzdUIrUjREMnJGUXFPRVRPNFlkWGJMRDlrWjh4ZlhhZGVBTTBRMk5rTlQ1aXpmZzN1d2JXU1hodVNTajZVVDVoeTJENldxQXBCNWpLQTZaZ1o5ay9TVTI3dVY5Y2V0WGZMT3RwTnR0Z2s1RGNCdGsrTExzdHovSmcrZ1lSbXY5YlVVNFhscGhUYzZDODZKbWoxRkN3PT0iLCJhbXIiOlsicnNhIl0sImVtYWlsIjoiYWJlbGlAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiTGluY29sbiIsImdpdmVuX25hbWUiOiJBYmUiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaXBhZGRyIjoiMTMxLjEwNy4yMjIuMjIiLCJuYW1lIjoiYWJlbGkiLCJub25jZSI6IjEyMzUyMyIsIm9pZCI6IjA1ODMzYjZiLWFhMWQtNDJkNC05ZWMwLTFiMmJiOTE5NDQzOCIsInJoIjoiSSIsInN1YiI6IjVfSjlyU3NzOC1qdnRfSWN1NnVlUk5MOHhYYjhMRjRGc2dfS29vQzJSSlEiLCJ0aWQiOiJmYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkiLCJ1bmlxdWVfbmFtZSI6IkFiZUxpQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJMeGVfNDZHcVRrT3BHU2ZUbG40RUFBIiwidmVyIjoiMS4wIn0=.UJQrCA6qn2bXq57qzGX_-D3HcPHqBMOKDPx4su1yKRLNErVD8xkxJLNLVRdASHqEcpyDctbdHccu6DPpkq5f0ibcaQFhejQNcABidJCTz0Bb2AbdUCTqAzdt9pdgQvMBnVH1xk3SCM6d4BbT4BkLLj10ZLasX7vRknaSjE_C5DI7Fg4WrZPwOhII1dB0HEZ_qpNaYXEiy-o94UJ94zCr07GgrqMsfYQqFR7kn-mn68AjvLcgwSfZvyR_yIK75S_K37vC3QryQ7cNoafDe9upql_6pB2ybMVlgWPs_DmbJ8g0om-sPlwyn74Cc1tW3ze-Xptw_2uVdPgWyqfuWAfq6Q).
+Podívejte se na vzorový token v 1.0 v [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjdfWnVmMXR2a3dMeFlhSFMzcTZsVWpVWUlHdyIsImtpZCI6IjdfWnVmMXR2a3dMeFlhSFMzcTZsVWpVWUlHdyJ9.eyJhdWQiOiJiMTRhNzUwNS05NmU5LTQ5MjctOTFlOC0wNjAxZDBmYzljYWEiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkvIiwiaWF0IjoxNTM2Mjc1MTI0LCJuYmYiOjE1MzYyNzUxMjQsImV4cCI6MTUzNjI3OTAyNCwiYWlvIjoiQVhRQWkvOElBQUFBcXhzdUIrUjREMnJGUXFPRVRPNFlkWGJMRDlrWjh4ZlhhZGVBTTBRMk5rTlQ1aXpmZzN1d2JXU1hodVNTajZVVDVoeTJENldxQXBCNWpLQTZaZ1o5ay9TVTI3dVY5Y2V0WGZMT3RwTnR0Z2s1RGNCdGsrTExzdHovSmcrZ1lSbXY5YlVVNFhscGhUYzZDODZKbWoxRkN3PT0iLCJhbXIiOlsicnNhIl0sImVtYWlsIjoiYWJlbGlAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiTGluY29sbiIsImdpdmVuX25hbWUiOiJBYmUiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaXBhZGRyIjoiMTMxLjEwNy4yMjIuMjIiLCJuYW1lIjoiYWJlbGkiLCJub25jZSI6IjEyMzUyMyIsIm9pZCI6IjA1ODMzYjZiLWFhMWQtNDJkNC05ZWMwLTFiMmJiOTE5NDQzOCIsInJoIjoiSSIsInN1YiI6IjVfSjlyU3NzOC1qdnRfSWN1NnVlUk5MOHhYYjhMRjRGc2dfS29vQzJSSlEiLCJ0aWQiOiJmYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkiLCJ1bmlxdWVfbmFtZSI6IkFiZUxpQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJMeGVfNDZHcVRrT3BHU2ZUbG40RUFBIiwidmVyIjoiMS4wIn0=.UJQrCA6qn2bXq57qzGX_-D3HcPHqBMOKDPx4su1yKRLNErVD8xkxJLNLVRdASHqEcpyDctbdHccu6DPpkq5f0ibcaQFhejQNcABidJCTz0Bb2AbdUCTqAzdt9pdgQvMBnVH1xk3SCM6d4BbT4BkLLj10ZLasX7vRknaSjE_C5DI7Fg4WrZPwOhII1dB0HEZ_qpNaYXEiy-o94UJ94zCr07GgrqMsfYQqFR7kn-mn68AjvLcgwSfZvyR_yIK75S_K37vC3QryQ7cNoafDe9upql_6pB2ybMVlgWPs_DmbJ8g0om-sPlwyn74Cc1tW3ze-Xptw_2uVdPgWyqfuWAfq6Q).
 
 ### <a name="v20"></a>v2.0
 
@@ -50,56 +50,56 @@ Zobrazit tento token ukázkové verze 1.0 v [jwt.ms](https://jwt.ms/#id_token=ey
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01xbyJ9.eyJ2ZXIiOiIyLjAiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vOTE4ODA0MGQtNmM2Ny00YzViLWIxMTItMzZhMzA0YjY2ZGFkL3YyLjAiLCJzdWIiOiJBQUFBQUFBQUFBQUFBQUFBQUFBQUFJa3pxRlZyU2FTYUZIeTc4MmJidGFRIiwiYXVkIjoiNmNiMDQwMTgtYTNmNS00NmE3LWI5OTUtOTQwYzc4ZjVhZWYzIiwiZXhwIjoxNTM2MzYxNDExLCJpYXQiOjE1MzYyNzQ3MTEsIm5iZiI6MTUzNjI3NDcxMSwibmFtZSI6IkFiZSBMaW5jb2xuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiQWJlTGlAbWljcm9zb2Z0LmNvbSIsIm9pZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC02NmYzLTMzMzJlY2E3ZWE4MSIsInRpZCI6IjMzMzgwNDBkLTZjNjctNGM1Yi1iMTEyLTM2YTMwNGI2NmRhZCIsIm5vbmNlIjoiMTIzNTIzIiwiYWlvIjoiRGYyVVZYTDFpeCFsTUNXTVNPSkJjRmF0emNHZnZGR2hqS3Y4cTVnMHg3MzJkUjVNQjVCaXN2R1FPN1lXQnlqZDhpUURMcSFlR2JJRGFreXA1bW5PcmNkcUhlWVNubHRlcFFtUnA2QUlaOGpZIn0=.1AFWW-Ck5nROwSlltm7GzZvDwUkqvhSQpm55TQsmVo9Y59cLhRXpvB8n-55HCr9Z6G_31_UbeUkoz612I2j_Sm9FFShSDDjoaLQr54CreGIJvjtmS3EkK9a7SJBbcpL1MpUtlfygow39tFjY7EVNW9plWUvRrTgVk7lYLprvfzw-CIqw3gHC-T7IK_m_xkr08INERBtaecwhTeN4chPC4W3jdmw_lIxzC48YoQ0dB1L9-ImX98Egypfrlbm0IBL5spFzL6JDZIRRJOu8vecJvj1mq-IUhGt0MacxX8jdxYLP-KUu2d9MbNKpCKJuZ7p8gwTL5B7NlUdh_dmSviPWrw
 ```
 
-Zobrazit tento token ukázkové verze 2.0 v [jwt.ms](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01xbyJ9.eyJ2ZXIiOiIyLjAiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vOTE4ODA0MGQtNmM2Ny00YzViLWIxMTItMzZhMzA0YjY2ZGFkL3YyLjAiLCJzdWIiOiJBQUFBQUFBQUFBQUFBQUFBQUFBQUFJa3pxRlZyU2FTYUZIeTc4MmJidGFRIiwiYXVkIjoiNmNiMDQwMTgtYTNmNS00NmE3LWI5OTUtOTQwYzc4ZjVhZWYzIiwiZXhwIjoxNTM2MzYxNDExLCJpYXQiOjE1MzYyNzQ3MTEsIm5iZiI6MTUzNjI3NDcxMSwibmFtZSI6IkFiZSBMaW5jb2xuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiQWJlTGlAbWljcm9zb2Z0LmNvbSIsIm9pZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC02NmYzLTMzMzJlY2E3ZWE4MSIsInRpZCI6IjMzMzgwNDBkLTZjNjctNGM1Yi1iMTEyLTM2YTMwNGI2NmRhZCIsIm5vbmNlIjoiMTIzNTIzIiwiYWlvIjoiRGYyVVZYTDFpeCFsTUNXTVNPSkJjRmF0emNHZnZGR2hqS3Y4cTVnMHg3MzJkUjVNQjVCaXN2R1FPN1lXQnlqZDhpUURMcSFlR2JJRGFreXA1bW5PcmNkcUhlWVNubHRlcFFtUnA2QUlaOGpZIn0.1AFWW-Ck5nROwSlltm7GzZvDwUkqvhSQpm55TQsmVo9Y59cLhRXpvB8n-55HCr9Z6G_31_UbeUkoz612I2j_Sm9FFShSDDjoaLQr54CreGIJvjtmS3EkK9a7SJBbcpL1MpUtlfygow39tFjY7EVNW9plWUvRrTgVk7lYLprvfzw-CIqw3gHC-T7IK_m_xkr08INERBtaecwhTeN4chPC4W3jdmw_lIxzC48YoQ0dB1L9-ImX98Egypfrlbm0IBL5spFzL6JDZIRRJOu8vecJvj1mq-IUhGt0MacxX8jdxYLP-KUu2d9MbNKpCKJuZ7p8gwTL5B7NlUdh_dmSviPWrw).
+Zobrazit ukázkový token v 2.0 v [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01xbyJ9.eyJ2ZXIiOiIyLjAiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vOTE4ODA0MGQtNmM2Ny00YzViLWIxMTItMzZhMzA0YjY2ZGFkL3YyLjAiLCJzdWIiOiJBQUFBQUFBQUFBQUFBQUFBQUFBQUFJa3pxRlZyU2FTYUZIeTc4MmJidGFRIiwiYXVkIjoiNmNiMDQwMTgtYTNmNS00NmE3LWI5OTUtOTQwYzc4ZjVhZWYzIiwiZXhwIjoxNTM2MzYxNDExLCJpYXQiOjE1MzYyNzQ3MTEsIm5iZiI6MTUzNjI3NDcxMSwibmFtZSI6IkFiZSBMaW5jb2xuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiQWJlTGlAbWljcm9zb2Z0LmNvbSIsIm9pZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC02NmYzLTMzMzJlY2E3ZWE4MSIsInRpZCI6IjMzMzgwNDBkLTZjNjctNGM1Yi1iMTEyLTM2YTMwNGI2NmRhZCIsIm5vbmNlIjoiMTIzNTIzIiwiYWlvIjoiRGYyVVZYTDFpeCFsTUNXTVNPSkJjRmF0emNHZnZGR2hqS3Y4cTVnMHg3MzJkUjVNQjVCaXN2R1FPN1lXQnlqZDhpUURMcSFlR2JJRGFreXA1bW5PcmNkcUhlWVNubHRlcFFtUnA2QUlaOGpZIn0.1AFWW-Ck5nROwSlltm7GzZvDwUkqvhSQpm55TQsmVo9Y59cLhRXpvB8n-55HCr9Z6G_31_UbeUkoz612I2j_Sm9FFShSDDjoaLQr54CreGIJvjtmS3EkK9a7SJBbcpL1MpUtlfygow39tFjY7EVNW9plWUvRrTgVk7lYLprvfzw-CIqw3gHC-T7IK_m_xkr08INERBtaecwhTeN4chPC4W3jdmw_lIxzC48YoQ0dB1L9-ImX98Egypfrlbm0IBL5spFzL6JDZIRRJOu8vecJvj1mq-IUhGt0MacxX8jdxYLP-KUu2d9MbNKpCKJuZ7p8gwTL5B7NlUdh_dmSviPWrw)
 
-### <a name="header-claims"></a>Deklarace identity záhlaví
+### <a name="header-claims"></a>Deklarace hlaviček
 
-|Deklarovat | Formát | Popis |
+|Deklarace identity | Formát | Popis |
 |-----|--------|-------------|
-|`typ` | String – vždy tokenů JWT"" | Označuje, že token je token JWT.|
-|`alg` | String | Určuje algoritmus, který se použil k podepsání token. Příklad: "RS256" |
-|`kid` | String | Kryptografický otisk pro veřejný klíč použitý k podpisu tohoto tokenu. Zaznamenávány do v1.0 a v2.0 `id_tokens`. |
-|`x5t` | String | Stejné (se používají a hodnota) jako `kid`. Je to ale starších deklarace identity zaznamenávány pouze do verze 1.0 `id_tokens` pro účely kompatibility. |
+|`typ` | Řetězec – vždycky "JWT" | Označuje, že token je JWT.|
+|`alg` | Řetězec | Určuje algoritmus, který se použil k podepsání tokenu. Příklad: "RS256" |
+|`kid` | Řetězec | Kryptografický otisk veřejného klíče, který se používá k podepsání tohoto tokenu. Vygenerováno v 1.0 i v 2.0 `id_tokens`. |
+|`x5t` | Řetězec | Stejné (používá se a hodnota) jako `kid`. Toto je však starší deklarace identity vygenerované pouze v 1.0 `id_tokens` pro účely kompatibility. |
 
-### <a name="payload-claims"></a>Datová část deklarace identity
+### <a name="payload-claims"></a>Deklarace datové části
 
-Tento seznam obsahuje deklarace, které jsou ve většině id_tokens ve výchozím nastavení (Pokud není uvedeno jinak).  Vaše aplikace však může využívat [nepovinných deklarací identity](active-directory-optional-claims.md) požádat o další deklarace identity v požadavku id_token.  Toto musí být v rozsahu `groups` deklaraci identity pro informace o jeho jméno.
+V tomto seznamu jsou uvedeny deklarace identity, které jsou ve výchozím nastavení ve většině id_tokens (s výjimkou popsaných případů).  Vaše aplikace ale může k vyžádání dalších deklarací v id_token použít [volitelné deklarace identity](active-directory-optional-claims.md) .  Ty můžou být v rozsahu `groups` od deklarace identity až po informace o jménu uživatele.
 
-|Deklarovat | Formát | Popis |
+|Deklarace identity | Formát | Popis |
 |-----|--------|-------------|
-|`aud` |  Řetězec, identifikátor ID URI aplikace | Identifikuje zamýšlený příjemce tokenu. V `id_tokens`, cílová skupina je ID vaší aplikace, přiřazené vaší aplikaci na webu Azure Portal. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud hodnota se neshoduje. |
-|`iss` |  Řetězec, identifikátor URI služby tokenů zabezpečení | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud byl token vydán bodem v2.0, identifikátor URI, skončí za `/v2.0`.  Identifikátor GUID, který označuje, že uživatel je příjemce uživatele z účtu Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikace by měla část GUID deklarace slouží k omezení sadu klienty, kteří se můžou přihlásit k aplikaci, pokud je k dispozici. |
-|`iat` |  int, UNIXOVÉ časové razítko | "Vystaveno v" označuje, kdy došlo k ověřování pro tento token.  |
-|`idp`|Řetězec, obvykle o identifikátor URI služby tokenů zabezpečení | Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. Tato hodnota se shoduje s hodnotu deklarace identity vystavitele, není-li uživatelský účet není ve stejném tenantovi jako vystavitel - hosté, třeba. Pokud deklarace identity není k dispozici, znamená to, že hodnota `iss` lze použít.  Pro osobní účty, které se používá v kontextu organizace (například pomocí osobního účtu pozvat do tenanta služby Azure AD) `idp` deklarace může být 'live.com' nebo identifikátor URI služby tokenů zabezpečení obsahující tenanta účtu Microsoft `9188040d-6c67-4c5b-b112-36a304b66dad`. |
-|`nbf` |  int, UNIXOVÉ časové razítko | Deklarace identity "nbf" (ne dřív) označuje čas, před kterým musí nebylo přijato tokenů JWT pro zpracování.|
-|`exp` |  int, UNIXOVÉ časové razítko | Deklarace identity "exp" (čas vypršení platnosti) označuje čas vypršení platnosti na nebo za které se token JWT nesmí přijaté ke zpracování.  Je důležité si uvědomit, že prostředek může před tímto časem také – Pokud například změny v ověřování se vyžaduje token zrušení byl zjištěn či odmítnout token. |
-| `c_hash`| String |Hodnota hash kódu je součástí tokeny typu ID, pouze v případě, že je vydaný ID token s autorizačního kódu OAuth 2.0. Slouží k ověření pravosti autorizační kód. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](https://openid.net/specs/openid-connect-core-1_0.html). |
-|`at_hash`| String |Přístup, který je zahrnuta hodnota hash tokenu v ID tokeny, pouze pokud ID token vydaný s přístupovým tokenem OAuth 2.0. Slouží k ověření pravosti tokenu přístupu. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](https://openid.net/specs/openid-connect-core-1_0.html). |
-|`aio` | Neprůhledný řetězec | Vnitřní deklarace, která používá Azure AD při zaznamenávání dat pro opakované použití tokenu. Třeba ji ignorovat.|
-|`preferred_username` | String | Primární uživatelské jméno, který reprezentuje uživatele. Může to být e-mailovou adresu, telefonní číslo nebo obecný uživatelské jméno bez zadaného formátu. Jeho hodnota je měnitelné a může v průběhu času měnit. Protože je proměnlivá, tato hodnota se nesmí používat pro autorizační rozhodnutí. `profile` Oboru se vyžaduje pro příjem tato deklarace identity.|
-|`email` | String | `email` Deklarace identity je k dispozici ve výchozím nastavení pro účet hosta, které mají e-mailovou adresu.  Vaše aplikace můžou požádat o deklarace identity e-mailu pro spravované uživatele (ty ze stejného tenanta jako prostředek) pomocí `email` [volitelnou deklaraci](active-directory-optional-claims.md).  Na koncový bod v2.0, vaše aplikace také můžete vyžádat `email` obor OpenID Connect - není nutné požádat o volitelnou deklaraci a obor získat deklarace identity.  Deklarace identity e-mailu podporuje pouze adresovatelný e-mailu z informací v profilu uživatele. |
-|`name` | String | `name` Deklarace identity poskytuje čitelné hodnotu, která identifikuje předmětem token. Hodnota nemusí být jedinečný, je proměnlivé a je navržena tak, aby se dá použít jenom pro účely zobrazení. `profile` Oboru se vyžaduje pro příjem tato deklarace identity. |
-|`nonce`| String | Hodnota nonce odpovídá parametru součástí původní / authorize požadavek na zprostředkovatele identity. Pokud se neshoduje, vaše aplikace by měla odmítnout token. |
-|`oid` | Řetězec identifikátoru GUID | Neměnné identifikátor objektu v Microsoft systém identit, v tomto případě uživatelský účet. Toto ID jednoznačně identifikuje uživatele v aplikacích – dva různé aplikace přihlášení stejného uživatele se zobrazí v stejnou hodnotu `oid` deklarací identity. Vrátí toto ID jako Microsoft Graph `id` vlastnost pro daný uživatelský účet. Protože `oid` umožňuje více aplikací ke koordinaci uživatelů, `profile` oboru se vyžaduje pro příjem tato deklarace identity. Všimněte si, že pokud jeden uživatel existuje v několika tenantech, uživatel bude obsahovat jiný objekt ID v jednotlivých tenantů – budou považovány za různé účty, i když se uživatel přihlašuje každý účet pomocí stejných přihlašovacích údajů. |
-|`roles`| pole řetězců | Sada rolí, které byly přiřazeny uživateli, který je přihlášení. |
-|`rh` | Neprůhledný řetězec |Interní deklaraci identity Azure používá k odhlášením tokeny. Třeba ji ignorovat. |
-|`sub` | Řetězec identifikátoru GUID | Objekt zabezpečení, o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. Předmět je identifikátor pairwise – je jedinečné ID konkrétní aplikace. Pokud jeden uživatel zaregistruje do dvou různých aplikací s využitím dva identifikátory ID jiného klienta, na aplikace, které se zobrazí dvě různé hodnoty pro deklarace identity subjektu. To může nebo nemusí být vždy žádoucí v závislosti na požadavcích vaší architektury a ochrana osobních údajů. |
-|`tid` | Řetězec identifikátoru GUID | Identifikátor GUID, který představuje jejímž je uživatel z tenanta Azure AD. Pro pracovní a školní účty je identifikátor GUID ID neměnné tenanta organizace, které tento uživatel patří do. Pro osobní účty, je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Oboru se vyžaduje pro příjem tato deklarace identity. |
-|`unique_name` | String | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota nemusí být jedinečný v rámci tenanta a by měla sloužit pouze pro účely zobrazení. Pouze vystavených v v1.0 `id_tokens`. |
-|`uti` | Neprůhledný řetězec | Interní deklaraci identity Azure používá k odhlášením tokeny. Třeba ji ignorovat. |
-|`ver` | Řetězec, 1.0 nebo 2.0 | Určuje verzi modulu požadavku id_token. |
+|`aud` |  Řetězec – identifikátor URI ID aplikace | Identifikuje zamýšleného příjemce tokenu. V `id_tokens`aplikaci je cílovou skupinou ID aplikace vaší aplikace, které je přiřazeno vaší aplikaci v Azure Portal. Vaše aplikace by měla tuto hodnotu ověřit a token zamítnout, pokud se hodnota neshoduje. |
+|`iss` |  Řetězec, identifikátor URI služby STS | Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token, a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud byl token vydán koncovým bodem v 2.0, identifikátor URI skončí `/v2.0`.  Identifikátor GUID, který označuje, že uživatel je uživatelem uživatele z účet Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad`. Vaše aplikace by měla použít část s identifikátorem GUID k omezení sady klientů, kteří se mohou k aplikaci přihlásit, pokud jsou k dispozici. |
+|`iat` |  int, časové razítko systému UNIX | "Vydáno v" označuje, kdy došlo k ověření pro tento token.  |
+|`idp`|Řetězec, obvykle identifikátor URI služby STS | Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. Tato hodnota je shodná s hodnotou deklarace vystavitele, pokud uživatelský účet, který není ve stejném tenantovi jako host pro vystavitele, například. Pokud tato deklarace identity není k dispozici, znamená to, `iss` že se místo toho dá použít hodnota.  Pro osobní účty používané v organizačním kontextu (například osobní účet, který je pozván na tenanta Azure AD) `idp` může být deklarace identity Live.com nebo identifikátor URI STS obsahující klienta `9188040d-6c67-4c5b-b112-36a304b66dad`účet Microsoft. |
+|`nbf` |  int, časové razítko systému UNIX | Deklarace "NBF" (ne dřív) určuje dobu, po jejímž uplynutí nesmí být požadavek JWT přijat ke zpracování.|
+|`exp` |  int, časové razítko systému UNIX | Deklarace "EXP" (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí může být požadavek JWT přijat ke zpracování.  Je důležité si uvědomit, že prostředek může před touto dobou odmítat token, a to například v případě, že se vyžaduje změna v ověřování nebo že bylo zjištěno odvolání tokenu. |
+| `c_hash`| Řetězec |Hodnota hash kódu je obsažena v tokenech ID pouze v případě, že je token ID vydán pomocí autorizačního kódu OAuth 2,0. Dá se použít k ověření pravosti autorizačního kódu. Podrobnosti o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html). |
+|`at_hash`| Řetězec |Hodnota hash přístupového tokenu je obsažena v tokenech ID pouze v případě, že je token ID vydán pomocí přístupového tokenu OAuth 2,0. Dá se použít k ověření pravosti přístupového tokenu. Podrobnosti o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html). |
+|`aio` | Neprůhledný řetězec | Interní deklarace, kterou používá služba Azure AD k záznamu dat pro opakované použití tokenu By měla být ignorována.|
+|`preferred_username` | Řetězec | Primární uživatelské jméno, které představuje uživatele. Může to být e-mailová adresa, telefonní číslo nebo obecné uživatelské jméno bez zadaného formátu. Jeho hodnota je proměnlivá a může se v průběhu času měnit. Protože je proměnlivá, nesmí se tato hodnota použít k rozhodování o autorizaci. Pro příjem této deklarace je vyžadován rozsah.`profile`|
+|`email` | Řetězec | `email` Deklarace identity je ve výchozím nastavení k dispozici pro účty hosta, které mají e-mailovou adresu.  Vaše aplikace může požádat o e-mailovou deklaraci identity pro spravované uživatele (ze stejného tenanta jako prostředku) `email` , a to pomocí [volitelné deklarace identity](active-directory-optional-claims.md).  V koncovém bodě verze 2.0 může aplikace požádat `email` o obor OpenID Connect – nemusíte požadovat žádnou volitelnou deklaraci identity a obor pro získání deklarace identity.  Deklarace e-mailu podporuje pouze adresovatelné pošty z informací o profilu uživatele. |
+|`name` | Řetězec | `name` Deklarace identity poskytuje lidský čitelný údaj, který identifikuje předmět tokenu. Hodnota není zaručena, že je jedinečná, je proměnlivá a je navržena tak, aby se používala pouze pro účely zobrazení. Pro příjem této deklarace je vyžadován rozsah.`profile` |
+|`nonce`| Řetězec | Hodnota nonce odpovídá parametru zahrnutému v původní žádosti/Authorize do IDP. Pokud se neshodují, vaše aplikace by měla token odmítnout. |
+|`oid` | Řetězec, identifikátor GUID | Neproměnlivý identifikátor pro objekt v systému Microsoft identity, v tomto případě uživatelský účet. Toto ID jednoznačně identifikuje uživatele napříč aplikacemi – dvě různé aplikace přihlášené ke stejnému uživateli získají stejnou hodnotu v `oid` deklaraci identity. Microsoft Graph bude toto ID vracet jako `id` vlastnost pro daný uživatelský účet. Vzhledem k tomu, že `profile` umožňujevíceaplikacímkorelovatuživatele,jepropříjemtétodeklaracevyžadovánrozsah.`oid` Všimněte si, že pokud jeden uživatel existuje ve více klientech, bude uživatel v každém tenantovi obsahovat jiné ID objektu – považují se za jiné účty, i když se uživatel do každého účtu přihlašuje pomocí stejných přihlašovacích údajů. |
+|`roles`| pole řetězců | Sada rolí, které byly přiřazeny uživateli, který se přihlašuje. |
+|`rh` | Neprůhledný řetězec |Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. By měla být ignorována. |
+|`sub` | Řetězec, identifikátor GUID | Objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Subjekt je párový identifikátor, který je jedinečný pro konkrétní ID aplikace. Pokud se jeden uživatel přihlásí ke dvěma různým aplikacím pomocí dvou různých ID klientů, budou tyto aplikace pro deklaraci deklarace subjektu dostávat dvě odlišné hodnoty. To může nebo nemusí být žádoucí v závislosti na vaší architektuře a požadavcích na ochranu osobních údajů. |
+|`tid` | Řetězec, identifikátor GUID | Identifikátor GUID, který představuje tenanta Azure AD, ze kterého je uživatel. V případě pracovních a školních účtů je identifikátor GUID neměnné ID klienta organizace, do které uživatel patří. U osobních účtů je `9188040d-6c67-4c5b-b112-36a304b66dad`tato hodnota. Pro příjem této deklarace je vyžadován rozsah.`profile` |
+|`unique_name` | Řetězec | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota není zaručena jako jedinečná v rámci tenanta a měla by být použita pouze pro účely zobrazení. Vydány jenom v 1.0 `id_tokens`. |
+|`uti` | Neprůhledný řetězec | Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. By měla být ignorována. |
+|`ver` | Řetězec, buď 1,0 nebo 2,0 | Určuje verzi id_token. |
 
-## <a name="validating-an-idtoken"></a>Ověřuje se za token ID.
+## <a name="validating-an-id_token"></a>Ověřování id_token
 
-Ověřování `id_token` je podobná první krok [ověření přístupového tokenu](access-tokens.md#validating-tokens) – vašeho klienta by měl ověřit, zda správné vystavitele odeslal zpět token a že nikdo neoprávněně nemanipuloval s. Protože `id_tokens` jsou vždy token JWT, existuje mnoho knihoven pro ověření těchto tokenů – doporučujeme používat jednu z těchto spíše než to sami.
+Ověřování je podobné jako při [ověřování přístupového tokenu](access-tokens.md#validating-tokens) – váš klient by měl ověřit, jestli se token vrátil zpátky, a že se nepoškodil. `id_token` Vzhledem `id_tokens` k tomu, že je vždy token JWT, existuje mnoho knihoven, aby bylo možné tyto tokeny ověřit – doporučujeme místo toho použít jednu z nich.
 
-Token ověří ručně, naleznete v postupu [ověření přístupového tokenu](access-tokens.md#validating-tokens). Po ověření podpisu v tokenu, následující deklarace by měla být ověřena v požadavku id_token (ty mohou také provádí knihovny ověřování tokenů):
+Postup ručního ověření tokenu najdete v podrobnostech v tématu [ověřování přístupového tokenu](access-tokens.md#validating-tokens). Po ověření podpisu tokenu by se v id_token měly ověřit následující deklarace identity (můžou to udělat i vaše knihovna ověření tokenu):
 
-* Časové razítko: `iat`, `nbf`, a `exp` časová razítka všechny patří před nebo po aktuálním čase podle potřeby. 
-* Cílová skupina: `aud` deklarace musí odpovídat ID aplikace pro vaši aplikaci.
-* Hodnota Nonce: `nonce` deklarace identity v datové části musí odpovídat parametr nonce předán koncovém bodu / authorize při počátečním požadavku.
+* Časová razítka `iat`: `nbf`časová `exp` razítka, a musí všechny přecházet před aktuálním časem nebo po něm. 
+* Cílová skupina: `aud` deklarace identity by měla odpovídat ID aplikace pro vaši aplikaci.
+* Hodnota nonce: `nonce` deklarace v datové části se musí shodovat s parametrem nonce předaným do koncového bodu/Authorize během počátečního požadavku.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [přístupové tokeny](access-tokens.md)
-* Přizpůsobení deklarací identity v požadavku id_token pomocí [nepovinných deklarací identity](active-directory-optional-claims.md).
+* Další informace [](access-tokens.md) o přístupových tokenech
+* Přizpůsobte deklarace identity ve vašem id_token pomocí [volitelných deklarací identity](active-directory-optional-claims.md).

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: 4534f7e5bba2e34316be3376e2627c15c20ba81f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694369"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847994"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Použití existujícího modelu s Azure Machine Learning službou
 
@@ -32,14 +32,14 @@ Pokud máte model strojového učení, který byl vyškolený mimo Azure Machine
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru](setup-create-workspace.md).
+* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru](how-to-manage-workspace.md).
 
     > [!TIP]
     > V příkladech Pythonu v tomto článku se `ws` předpokládá, že je proměnná nastavená na váš pracovní prostor služby Azure Machine Learning.
     >
     > Příklady rozhraní příkazového řádku používají zástupný `myworkspace` symbol `myresourcegroup`a. Nahraďte názvem vašeho pracovního prostoru a skupinou prostředků, která ho obsahuje.
 
-* Sada Azure Machine Learning SDK. Další informace najdete v části věnované sadě Python SDK v tématu [Vytvoření pracovního prostoru](setup-create-workspace.md#sdk).
+* [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
 * Rozšíření rozhraní příkazového řádku [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a [Machine Learning CLI](reference-azure-machine-learning-cli.md).
 

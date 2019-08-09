@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5dee966f8664bc14d81004e625ad9632066ffcb2
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
-ms.translationtype: HT
+ms.openlocfilehash: adca67152c33f4c6a3ec272b63c4c8157a777f36
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742309"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856193"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 
@@ -215,6 +215,9 @@ Primární metrika; Jak je znázorněno v předchozích příkladech Určuje met
 V každém automatizovaném experimentu Machine Learning se vaše data [automaticky škálují a normalizují](concept-automated-ml.md#preprocess) , aby se algoritmy lépe prováděly.  Můžete ale také povolit další předzpracování/featurization, například chybějící hodnoty imputac, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#preprocess).
 
 Chcete-li povolit tuto featurization `"preprocess": True` , zadejte [ `AutoMLConfig` pro třídu](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+
+> [!NOTE]
+> Automatické kroky před zpracováním strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky před zpracováním během školení.
 
 ### <a name="time-series-forecasting"></a>Prognózování časových řad
 Pro typ úkolu prognózy časových řad máte k definování další parametry.

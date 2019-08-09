@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: cfdc28486cf254c4dd808824ab167489818376ab
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 582e4d81851d570f99d25d626a1db8a9f5e98231
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619590"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881333"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -168,7 +168,7 @@ Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každ�
 |Upozornění     | 3 |
 |Chyba       | 4 |
 |Kritická    | 5 |
-|Žádný        | 6 |
+|Žádné        | 6 |
 
 Úroveň `None` protokolu je vysvětleno v další části. 
 
@@ -607,14 +607,21 @@ Pokud chcete ohlásit problém s Application Insights integrací v rámci funkc�
 
 ## <a name="streaming-logs"></a>Protokoly streamování
 
-Při vývoji aplikace je často užitečné zobrazit informace o protokolování téměř v reálném čase. Můžete zobrazit datový proud souborů protokolu generovaných vašimi funkcemi, a to buď v Azure Portal, nebo v relaci příkazového řádku na místním počítači.
+Při vývoji aplikace často budete chtít, aby se při spuštění v Azure v reálném čase psaly do protokolů téměř v reálném čase.
 
-Jedná se o ekvivalent výstupu zobrazeného při ladění funkcí během [místního vývoje](functions-develop-local.md). Další informace najdete v tématu [postup streamování protokolů](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).
+Existují dva způsoby, jak zobrazit datový proud souborů protokolu generovaných spuštěním vaší funkce.
 
-> [!NOTE]
-> Protokoly streamování podporují jenom jednu instanci hostitele Functions. Pokud je vaše funkce škálovaná na více instancí, data z jiných instancí se v datovém proudu protokolu nezobrazují. [Live Metrics Stream](../azure-monitor/app/live-stream.md) v Application Insights podporuje více instancí. I když prakticky v reálném čase, Stream Analytics je také založen na [ukázkových datech](#configure-sampling).
+* **Integrované streamování protokolů**: platforma App Service umožňuje zobrazit datový proud souborů protokolu aplikace. Jedná se o ekvivalent výstupu zobrazeného při ladění funkcí během [místního vývoje](functions-develop-local.md) a při použití karty **test** na portálu. Zobrazí se všechny informace založené na protokolu. Další informace najdete v tématu [postup streamování protokolů](../app-service/troubleshoot-diagnostic-logs.md#streamlogs). Tato metoda streamování podporuje pouze jednu instanci a nelze ji použít s aplikací spuštěnou v systému Linux v plánu spotřeby.
+
+* **Live Metrics Stream**: když je aplikace funkcí [připojená k Application Insights](#enable-application-insights-integration), můžete zobrazit data protokolu a další metriky téměř v reálném čase v Azure Portal pomocí [Live Metrics Stream](../azure-monitor/app/live-stream.md). Tuto metodu použijte, když chcete monitorovat funkce běžící na více instancích nebo v systému Linux v plánu spotřeby. Tato metoda používá [ukázková data](#configure-sampling).
+
+Streamy protokolů je možné zobrazit na portálu i ve většině místních vývojových prostředí. 
 
 ### <a name="portal"></a>Portál
+
+Oba typy datových proudů protokolů můžete zobrazit na portálu.
+
+#### <a name="built-in-log-streaming"></a>Integrované streamování protokolů
 
 Pokud chcete zobrazit protokoly streamování na portálu, vyberte v aplikaci Function App kartu **funkce platformy** . Pak v části **monitorování**zvolte **streamování protokolů**.
 
@@ -624,9 +631,21 @@ Tím se vaše aplikace připojí ke službě streamování protokolů a protokol
 
 ![Zobrazení protokolů streamování na portálu](./media/functions-monitoring/streaming-logs-window.png)
 
+#### <a name="live-metrics-stream"></a>Live Metrics Stream
+
+Pokud chcete zobrazit Live Metrics Stream pro vaši aplikaci, vyberte kartu **Přehled** aplikace Function App. Když Application Insights povolíte, zobrazí se v části **nakonfigurované funkce**odkaz **Application Insights** . Tento odkaz vás přesměruje na stránku Application Insights vaší aplikace.
+
+V Application Insights vyberte **Live Metrics Stream**. [Ukázkové položky protokolu](#configure-sampling) se zobrazují v části **ukázková telemetrie**.
+
+![Zobrazit Live Metrics Stream na portálu](./media/functions-monitoring/live-metrics-stream.png) 
+
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
+
+### <a name="core-tools"></a>Základní nástroje
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 

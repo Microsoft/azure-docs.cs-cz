@@ -1,19 +1,19 @@
 ---
 title: Přenos dat do nebo z úložiště objektů BLOB v Azure pomocí AzCopy v10 za účelem | Microsoft Docs
 description: Tento článek obsahuje kolekci AzCopy ukázkových příkazů, které vám pomůžou vytvářet kontejnery, kopírovat soubory a synchronizovat adresáře mezi místními systémy souborů a kontejnery.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 2ab561c387467086a40aa6676af347a107c2c452
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.reviewer: dineshm
+ms.openlocfilehash: d488189596fac4ae8fada3899d0b9c1bbe7900c6
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641114"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855300"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Přenos dat pomocí AzCopy a BLOB Storage
 

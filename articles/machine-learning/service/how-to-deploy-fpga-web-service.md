@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: cec1a74938690a4f781ea7850fdd6d649550b3eb
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 5e780c1a1d18954d0b3e9413e26f478e4ea3a8b1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494918"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856111"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Nasazení modelu jako webové služby v FPGA s využitím služby Azure Machine Learning
 
@@ -63,7 +63,7 @@ FPGA jsou k dispozici v těchto oblastech Azure:
 
     Pokud nemáte kvótu, odešlete žádost na [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI).
 
-- Pracovní prostor služby Azure Machine Learning service a Azure Machine Learning SDK for nainstalovaný Python. Další informace najdete v tématu [Vytvoření pracovního prostoru](setup-create-workspace.md).
+- Pracovní prostor služby Azure Machine Learning service a Azure Machine Learning SDK for nainstalovaný Python. Další informace najdete v tématu [Vytvoření pracovního prostoru](how-to-manage-workspace.md).
  
 - Sada Python SDK pro hardwarové a akcelerované modely:
 

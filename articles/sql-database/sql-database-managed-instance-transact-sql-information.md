@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fd029c1e7b67d308e3e1fdbedbdc90ea430b4f5b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 822b8bd1d0f5be854b6d345d68fcdb680b2ef1c4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567255"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882564"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database rozdílů v jazyce T-SQL spravované instance od SQL Server
 
@@ -25,7 +25,7 @@ Tento článek shrnuje a vysvětluje rozdíly v syntaxi a chování mezi Azure S
 - [Dostupnost](#availability) zahrnuje rozdíly v části [vždy zapnuto](#always-on-availability) a [zálohování](#backup).
 - [Zabezpečení](#security) zahrnuje rozdíly v [auditování](#auditing), [certifikáty](#certificates), [přihlašovací údaje](#credential), [zprostředkovatele kryptografických](#cryptographic-providers)služeb, [přihlášení a uživatele](#logins-and-users)a [klíč služby a hlavní klíč služby](#service-key-and-service-master-key).
 - [Konfigurace](#configuration) zahrnuje rozdíly v [rozšíření fondu vyrovnávací paměti](#buffer-pool-extension), [řazení](#collation), [úrovně kompatibility](#compatibility-levels), [zrcadlení databáze](#database-mirroring), [Možnosti databáze](#database-options), [SQL Server agenta](#sql-server-agent)a [Možnosti tabulky](#tables).
-- [](#functionalities) K funkcím patří [Bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [distribuované transakce](#distributed-transactions), [Rozšířené události](#extended-events), [externí knihovny](#external-libraries), [FileStream a Souborová](#filestream-and-filetable)vlastnost, fulltextový zápis. [ Sémantické vyhledávání](#full-text-semantic-search), [propojené servery](#linked-servers), [základní](#polybase), [replikace](#replication), [obnovení](#restore-statement), [Service Broker](#service-broker), [uložené procedury, funkce a triggery](#stored-procedures-functions-and-triggers).
+- Mezi [funkce](#functionalities) patří [Bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [distribuované transakce](#distributed-transactions), [Rozšířené události](#extended-events), [externí knihovny](#external-libraries), [FileStream a Souborová](#filestream-and-filetable)vlastnost, fulltextový zápis. [ Sémantické vyhledávání](#full-text-semantic-search), [propojené servery](#linked-servers), [základní](#polybase), [replikace](#replication), [obnovení](#restore-statement), [Service Broker](#service-broker), [uložené procedury, funkce a triggery](#stored-procedures-functions-and-triggers).
 - [Nastavení prostředí](#Environment) , jako jsou například virtuální sítě a konfigurace podsítí.
 - [Funkce, které mají různé chování ve spravovaných instancích](#Changes).
 - [Dočasná omezení a známé problémy](#Issues).
@@ -399,13 +399,44 @@ Externí tabulky, které odkazují na soubory v HDFS nebo Azure Blob Storage, se
 
 ### <a name="replication"></a>Replikace
 
-[Transakční replikace](sql-database-managed-instance-transactional-replication.md) je k dispozici pro veřejnou verzi Preview spravované instance s některými omezeními:
-- Al typy účastníků replikace (vydavatel, distributor, předplatitelé pro vyžádání obsahu a nabízený předplatitelé) je možné umístit do spravované instance, ale vydavatele a distributora nejde umístit na jiné instance.
-- Podporují se typy transakčních, snímků a obousměrné replikace. Slučovací replikace, replikace peer-to-peer a odběry, které lze aktualizovat, nejsou podporovány.
-- Spravovaná instance může komunikovat s nejnovějšími verzemi SQL Server. [Tady](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)najdete podporované verze.
-- Transakční replikace obsahuje některé [Další požadavky na síť](sql-database-managed-instance-transactional-replication.md#requirements).
+- Podporují se typy snímků a obousměrné replikace. Slučovací replikace, replikace peer-to-peer a aktualizovatelné odběry nejsou podporovány.
+- [Transakční replikace](sql-database-managed-instance-transactional-replication.md) je k dispozici pro veřejnou verzi Preview spravované instance s některými omezeními:
+    - Všechny typy účastníků replikace (vydavatel, distributor, předplatitelé pro vyžádání obsahu a nabízený předplatitelé) se dají umístit na spravované instance, ale vydavatele a distributora nejde umístit na jiné instance.
+    - Spravované instance můžou komunikovat s nejnovějšími verzemi SQL Server. [Tady](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)najdete podporované verze.
+    - Transakční replikace obsahuje některé [Další požadavky na síť](sql-database-managed-instance-transactional-replication.md#requirements).
 
-Informace o konfiguraci replikace najdete v tématu [kurz replikace](replication-with-sql-database-managed-instance.md).
+Informace o konfiguraci replikace najdete v [kurzu replikace](replication-with-sql-database-managed-instance.md).
+
+
+Pokud je replikace povolená v databázi ve [skupině převzetí služeb při selhání](sql-database-auto-failover-group.md), musí správce spravované instance vyčistit všechny publikace na staré primární primární databázi a po převzetí služeb při selhání je znovu nakonfigurovat na nové primární databázi. V tomto scénáři jsou potřeba následující aktivity:
+
+1. Zastavte všechny úlohy replikace běžící v databázi, pokud existují.
+2. Z vydavatele vyřaďte metadata odběru spuštěním následujícího skriptu v databázi vydavatele:
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. Odkládací metadata odběru od odběratele. Spusťte následující skript v databázi předplatného na instanci předplatitele:
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. Vynuceně vyřaďte všechny replikační objekty od vydavatele spuštěním následujícího skriptu v publikované databázi:
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. Nuceně odstranit starého distributora z původní primární instance (Pokud dojde k převzetí služeb při selhání do staré primární služby, která se použila k distributorovi). Spusťte následující skript v hlavní databázi v původní spravované instanci distributora:
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
 
 ### <a name="restore-statement"></a>Příkaz Restore 
 
@@ -467,7 +498,7 @@ Služba Service Broker mezi instancemi není podporována:
 ## <a name="Environment"></a>Omezení prostředí
 
 ### <a name="subnet"></a>Subnet
-- V podsíti rezervované pro vaši spravovanou instanci nemůžete umístit žádné další prostředky (například virtuální počítače). Tyto prostředky umístěte do jiných podsítí.
+-  V podsíti, do které jste nasadili spravovanou instanci, nemůžete umístit žádné další prostředky (například virtuální počítače). Nasaďte tyto prostředky pomocí jiné podsítě.
 - Podsíť musí mít dostatečný počet dostupných [IP adres](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimum je 16, ale doporučujeme mít minimálně 32 IP adres v podsíti.
 - [Koncové body služby nelze přidružit k podsíti spravované instance](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Ujistěte se, že je při vytváření virtuální sítě možnost koncové body služby zakázaná.
 - Počet virtuální jádra a typů instancí, které můžete nasadit v oblasti, mají některá [omezení a omezení](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
@@ -476,7 +507,7 @@ Služba Service Broker mezi instancemi není podporována:
 ### <a name="vnet"></a>VNET
 - Virtuální síť se dá nasadit pomocí modelu prostředků – model klasický pro virtuální síť se nepodporuje.
 - Po vytvoření spravované instance se nepodporují přesunutí spravované instance nebo virtuální sítě do jiné skupiny prostředků nebo předplatného.
-- Některé služby, jako jsou App Service prostředí, Logic Apps a spravované instance (používané pro geografickou replikaci, transakční replikaci nebo prostřednictvím odkazovaných serverů), nemají přístup ke spravovaným instancím v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globální. partnerský vztah](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K tomuto prostředku se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
+- Některé služby, jako jsou App Service prostředí, Logic Apps a spravované instance (používané pro geografickou replikaci, transakční replikaci nebo prostřednictvím odkazovaných serverů), nemají přístup ke spravovaným instancím v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globální. partnerský vztah](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
 
 ## <a name="Changes"></a>Změny chování
 
@@ -494,11 +525,11 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 
 ### <a name="tempdb-size"></a>Velikost databáze TEMPDB
 
-Maximální velikost `tempdb` souboru nemůže být větší než 24 GB na jádro na úrovni pro obecné účely. Maximální `tempdb` velikost vrstvy pro důležité obchodní informace je omezená na velikost úložiště instance. `tempdb`velikost souboru protokolu je omezena na 120 GB na úrovni Pro obecné účely i Pro důležité obchodní informace. `tempdb` Databáze je vždy rozdělena do 12 datových souborů. Tuto maximální velikost na soubor nelze změnit a nelze do `tempdb`něj přidat nové soubory. Některé dotazy mohou vracet chybu, pokud budou potřebovat více než 24 GB na jádro v `tempdb` nebo pokud vydávají více než 120 GB protokolu. `tempdb`je vždy znovu vytvořen jako prázdná databáze při spuštění nebo převzetí služeb při selhání a jakékoli změny provedené v `tempdb` nezůstanou zachovány. 
+Maximální velikost `tempdb` souboru nemůže být větší než 24 GB na jádro na úrovni pro obecné účely. Maximální `tempdb` velikost vrstvy pro důležité obchodní informace je omezená velikostí úložiště instance. `Tempdb`velikost souboru protokolu je omezena na 120 GB na úrovni Pro obecné účely i Pro důležité obchodní informace. `tempdb` Databáze je vždy rozdělena do 12 datových souborů. Tuto maximální velikost na soubor nelze změnit a nelze do `tempdb`něj přidat nové soubory. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb` nebo pokud vydávají více než 120 GB dat protokolu. `Tempdb`je vždy znovu vytvořen jako prázdná databáze při spuštění nebo převzetí služeb při selhání a jakékoli změny provedené v `tempdb` nezůstanou zachovány. 
 
 ### <a name="cant-restore-contained-database"></a>Nelze obnovit databázi s omezením
 
-Spravovaná instance nemůže obnovit [obsažené databáze](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). Obnovení existujících databází v časovém bodě nefunguje na spravované instanci. Tento problém bude brzy vyřešen. Mezitím doporučujeme odebrat možnost zahrnutí z databází, které jsou umístěny na spravované instanci. Nepoužívejte možnost omezení pro produkční databáze. 
+Spravovaná instance nemůže obnovit [obsažené databáze](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). Obnovení existujících databází v časovém bodě nefunguje na spravované instanci. Mezitím doporučujeme odebrat možnost zahrnutí z databází, které jsou umístěny na spravované instanci. Nepoužívejte možnost omezení pro produkční databáze. 
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Překročení úložného prostoru s malými databázovými soubory
 
@@ -506,7 +537,7 @@ Spravovaná instance nemůže obnovit [obsažené databáze](https://docs.micros
 
 Každá Pro obecné účely spravovaná instance má až 35 TB úložiště rezervovaného pro místo na disku Azure Premium. Každý databázový soubor je umístěn na samostatném fyzickém disku. Velikosti disků můžou být 128 GB, 256 GB, 512 GB, 1 TB nebo 4 TB. Nevyužité místo na disku se neúčtuje, ale celkový součet velikostí disků Azure Premium nesmí překročit 35 TB. V některých případech může spravovaná instance, která nepotřebuje 8 TB celkem, překročit 35 TB Azure na velikost úložiště kvůli vnitřní fragmentaci.
 
-Například Pro obecné účely spravovaná instance může mít jeden soubor o velikosti 1,2 TB umístěný na 4 TB disku. Také může mít 248 souborů o velikosti 1 GB, které jsou umístěny na samostatných discích 128-GB. V tomto příkladu:
+Například Pro obecné účely spravovaná instance může mít jeden velký soubor o velikosti 1,2 TB umístěný na 4 TB disku. Může taky mít 248 souborů o velikosti 1 GB, které jsou umístěné na samostatných discích 128-GB. V tomto příkladu:
 
 - Celková přidělená velikost diskového úložiště je 1 × 4 TB + 248 × 128 GB = 35 TB.
 - Celkové rezervované místo pro databáze v instanci je 1 × 1,2 TB + 248 × 1 GB = 1,4 TB.
@@ -547,7 +578,7 @@ Protokoly chyb, které jsou k dispozici ve spravované instanci, nejsou trvale u
 
 ### <a name="error-logs-are-verbose"></a>Protokoly chyb jsou podrobné
 
-Spravovaná instance umísťuje podrobné informace do protokolů chyb a většina z nich není relevantní. Množství informací v protokolech chyb se v budoucnu zkrátí.
+Spravovaná instance umísťuje podrobné informace do protokolů chyb a většina z nich není relevantní. 
 
 **Odstraníte** Pomocí vlastního postupu si můžete přečíst protokoly chyb, které odfiltrují některé nedůležité položky. Další informace najdete v tématu [spravovaná instance – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 

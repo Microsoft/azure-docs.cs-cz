@@ -1,90 +1,89 @@
 ---
-title: Správa registrací zařízení pomocí SDK služby zřizování zařízení Azure | Dokumentace Microsoftu
-description: Správa registrace zařízení v IoT Hubu službě Device Provisioning pomocí sady SDK pro služby
-author: yzhong94
-ms.author: yizhon
+title: Správa registrace zařízení pomocí sad SDK služby Azure Device Provisioning | Microsoft Docs
+description: Správa registrace zařízení v IoT Hub Device Provisioning Service pomocí sad SDK služby
+author: robinsh
+ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: arjmands
-ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 438cb579180458fcdeb75516a7c98b3ab2886366
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627265"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883385"
 ---
-# <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Správa registrací zařízení pomocí SDK služby zřizování zařízení Azure
-A *registrace zařízení* vytvoří záznam o jedno zařízení nebo skupině zařízení, která se v určitém okamžiku se můžou zaregistrovat do služby Device Provisioning. Záznam registrace obsahuje počáteční požadovanou konfiguraci zařízení jako součást registrace, včetně požadované centrum IoT hub. Tento článek ukazuje, jak Správa registrací zařízení pro vaši službu zřizování prostřednictvím kódu programu pomocí sad Azure IoT zřizování služby SDK.  Sady SDK jsou k dispozici na Githubu ve stejném úložišti jako sad SDK Azure IoT.
+# <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Správa registrace zařízení pomocí sad SDK služby Azure Device Provisioning
+*Registrace zařízení* vytvoří záznam o jednom zařízení nebo skupině zařízení, která se můžou v některých bodech zaregistrovat ve službě Device Provisioning. Záznam zápisu obsahuje počáteční požadovanou konfiguraci pro zařízení v rámci této registrace, včetně požadovaného centra IoT Hub. V tomto článku se dozvíte, jak spravovat registraci zařízení pro službu zřizování programově pomocí sad SDK služby zřizování pro Azure IoT.  Sady SDK jsou dostupné na GitHubu ve stejném úložišti jako sady SDK Azure IoT.
 
 ## <a name="prerequisites"></a>Požadavky
-* Získání připojovacího řetězce z vaší instanci služby Device Provisioning.
-* Získat artefaktů zabezpečení pro zařízení [mechanismus ověřování](concepts-security.md#attestation-mechanism) použít:
-    * [**Trusted Platform Module (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
-        * Jednotlivá registrace: ID registrace a ověřovacího klíče TPM z fyzického zařízení nebo simulátor TPM.
-        * Skupiny registrací se nevztahují na ověření identity čipem TPM.
+* Získejte připojovací řetězec z instance služby Device Provisioning.
+* Získejte artefakty zabezpečení zařízení pro použitý [mechanismus ověřování](concepts-security.md#attestation-mechanism) :
+    * [**Čip TPM (Trusted Platform Module)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
+        * Jednotlivá registrace: ID registrace a ověřovací klíč čipu TPM z fyzického zařízení nebo simulátoru TPM.
+        * Skupina registrace se nevztahuje na ověření identity čipem TPM.
     * [**X.509**](/azure/iot-dps/concepts-security):
-        * Jednotlivá registrace: [Listový certifikát](/azure/iot-dps/concepts-security) z fyzického zařízení nebo ze sady SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) emulátoru.
-        * Skupiny registrací: [Certifikační Autority nebo kořenovým certifikátem](/azure/iot-dps/concepts-security#root-certificate) nebo [zprostředkující certifikát](/azure/iot-dps/concepts-security#intermediate-certificate), která se používá k vytvoření certifikátu zařízení na fyzickém zařízení.  Může být taky vygenerovaná ze emulátorem SDK DICE.
-* Přesné volání rozhraní API se můžou lišit kvůli rozdílů jazyka. Prostudujte si podrobné informace k dispozici na Githubu ukázky:
-   * [Ukázky Java klienta služby zřizování](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
-   * [Ukázky Node.js klienta služby zřizování](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
-   * [Ukázky .NET klienta služby zřizování](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
+        * Jednotlivá registrace: [Listový certifikát](/azure/iot-dps/concepts-security) z fyzického zařízení nebo z emulátoru [kostky](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) sady SDK.
+        * Skupina registrace: [Certifikační autorita nebo kořenový certifikát](/azure/iot-dps/concepts-security#root-certificate) nebo [zprostředkující certifikát](/azure/iot-dps/concepts-security#intermediate-certificate), který se používá k vytvoření certifikátu zařízení na fyzickém zařízení.  Dá se taky vygenerovat z emulátoru kostky sady SDK.
+* Přesná volání rozhraní API se můžou lišit v důsledku jazykových rozdílů. Podrobnosti najdete v ukázkách uvedených na GitHubu:
+   * [Ukázky klientů služby zřizování pro Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
+   * [Ukázky klientů služby zřizování pro Node. js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
+   * [Ukázky klienta služby zřizování .NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
 
 ## <a name="create-a-device-enrollment"></a>Vytvoření registrace zařízení
-Existují dva způsoby, jak můžete zaregistrovat svoje zařízení pomocí zřizovací služby:
+Existují dva způsoby, jak můžete zařízení zaregistrovat pomocí služby zřizování:
 
-* **Skupinu registrací** je záznam pro skupinu zařízení, které sdílejí společné mechanismus ověřování certifikátů X.509, podepsány [kořenový certifikát](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) nebo [zprostředkující certifikát ](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate). Doporučujeme použít skupinu registrací pro velký počet zařízení, která sdílí požadovanou počáteční konfiguraci, nebo pro zařízení budou patřit do stejného tenanta. Všimněte si, že můžete registrovat jenom zařízení, která používají mechanismus ověřování X.509 jako *skupiny registrací*. 
+* **Skupina** registrací je položka pro skupinu zařízení, která sdílí běžný mechanismus ověřování certifikátů X. 509, podepsaný kořenovým certifikátem nebo zprostředkujícím [](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) [certifikátem](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate). Doporučujeme používat skupinu registrací pro velký počet zařízení, která sdílejí požadovanou počáteční konfiguraci, nebo pro všechna zařízení, která se budou napojovat do stejného tenanta. Všimněte si, že můžete registrovat jenom zařízení, která používají mechanismus ověřování X. 509 jako *skupiny*registrací. 
 
-    Vytvořit skupinu registrací spolu se sadami SDK následujícího pracovního postupu:
+    Můžete vytvořit skupinu registrací se sadami SDK, které následují tento pracovní postup:
 
-    1. Pro skupiny registrací používá mechanismus ověřování kořenového certifikátu X.509.  Volání rozhraní API sady SDK služby ```X509Attestation.createFromRootCertificate``` s kořenovým certifikátem k vytvoření ověřování pro registraci.  Kořenový certifikát X.509 je k dispozici v souboru PEM nebo jako řetězec.
-    1. Vytvořte nový ```EnrollmentGroup``` pomocí proměnných ```attestation``` vytvořený a jedinečný ```enrollmentGroupId```.  Volitelně můžete nastavit parametry jako ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
-    2. Volání rozhraní API sady SDK služby ```createOrUpdateEnrollmentGroup``` v back-endu aplikace pomocí ```EnrollmentGroup``` vytvořit skupinu registrací.
+    1. Pro skupinu registrací používá mechanismus ověřování certifikát X. 509 Root Certificate.  Volejte rozhraní API ```X509Attestation.createFromRootCertificate``` služby Service SDK s kořenovým certifikátem pro vytvoření ověření identity pro registraci.  Kořenový certifikát X. 509 je k dispozici buď v souboru PEM, nebo jako řetězec.
+    1. Vytvořte novou ```EnrollmentGroup``` proměnnou ```attestation``` pomocí vytvořeného a jedinečného ```enrollmentGroupId```.  Volitelně můžete nastavit parametry jako ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
+    2. V back-endu ```createOrUpdateEnrollmentGroup``` ```EnrollmentGroup``` aplikace volejte rozhraní API služby Service SDK a vytvořte skupinu registrace.
 
-* **Jednotlivou registraci** je záznam pro jedno zařízení, který může zaregistrovat. Jednotlivé registrace můžou jako mechanismus ověřování pomocí certifikátů X.509 nebo tokeny SAS (z fyzického nebo virtuálního čipu TPM). Doporučujeme používat jednotlivé registrace pro zařízení, která vyžadují jedinečnou počáteční konfiguraci, nebo zařízení, které můžou využívat pouze tokeny SAS prostřednictvím skutečného nebo virtuálního čipu TPM jako mechanismus ověřování. Jednotlivé registrace můžou mít zadané požadované ID zařízení centra IoT.
+* **Jednotlivá registrace** je záznam pro jedno zařízení, které se může zaregistrovat. Jednotlivé registrace můžou použít buď certifikáty X. 509, nebo tokeny SAS (z fyzického nebo virtuálního čipu TPM) jako mechanismy ověřování. Pro zařízení, která vyžadují jedinečné počáteční konfigurace, doporučujeme používat jednotlivé registrace nebo pro zařízení, která jako mechanismus ověřování používají jenom tokeny SAS přes TPM nebo virtuální čip TPM. Jednotlivé registrace můžou mít zadané požadované ID zařízení centra IoT.
 
-    Vytvoření jednotlivé registrace spolu se sadami SDK následujícího pracovního postupu:
+    Jednotlivé registrace můžete vytvořit pomocí sad SDK, které následují tento pracovní postup:
     
-    1. Zvolte vaši ```attestation``` mechanismus, který může být TPM nebo X.509.
-        1. **TPM**: Pomocí ověřovacího klíče z fyzického zařízení nebo simulátor TPM jako vstup, můžete volat rozhraní API sady SDK služby ```TpmAttestation``` vytvořit ověřování pro registraci. 
-        2. **X.509**: Pomocí klientského certifikátu jako vstup, můžete volat rozhraní API sady SDK služby ```X509Attestation.createFromClientCertificate``` vytvořit ověřování pro registraci.
-    2. Vytvořte nový ```IndividualEnrollment``` proměnné s použitím ```attestation``` vytvořený a jedinečný ```registrationId``` jako vstup, který je na vašem zařízení nebo generován ze simulátoru TPM.  Volitelně můžete nastavit parametry jako ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
-    3. Volání rozhraní API sady SDK služby ```createOrUpdateIndividualEnrollment``` v back-endu aplikace pomocí ```IndividualEnrollment``` k vytvoření jednotlivé registrace.
+    1. ```attestation``` Vyberte mechanismus, který může být TPM nebo X. 509.
+        1. **ČIP TPM**: Pomocí ověřovacího klíče z fyzického zařízení nebo simulátoru TPM jako vstupu můžete zavolat rozhraní API ```TpmAttestation``` sady SDK a vytvořit ověření pro registraci. 
+        2. **X.509**: Pomocí certifikátu klienta jako vstupu můžete volat rozhraní Service SDK API ```X509Attestation.createFromClientCertificate``` a vytvořit ověření pro registraci.
+    2. Vytvořte novou ```IndividualEnrollment``` proměnnou s ```attestation``` použitím vytvořeného a jedinečného ```registrationId``` jako vstupu, který je na vašem zařízení nebo vygenerovaný z simulátoru TPM.  Volitelně můžete nastavit parametry jako ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
+    3. Volání rozhraní API ```createOrUpdateIndividualEnrollment``` služby Service SDK ve vaší back ```IndividualEnrollment``` -endové aplikaci s cílem vytvořit jednotlivou registraci.
 
-Po úspěšném vytvoření registrace do služby Device Provisioning vrátí výsledek zápisu. Tento pracovní postup je znázorněn ve vzorcích [již bylo zmíněno dříve](#prerequisites).
+Po úspěšném vytvoření registrace služba Device Provisioning vrátí výsledek registrace. Tento pracovní postup je znázorněný v ukázkách [uvedených výše](#prerequisites).
 
-## <a name="update-an-enrollment-entry"></a>Aktualizovat položku registrace
+## <a name="update-an-enrollment-entry"></a>Aktualizace položky registrace
 
-Po vytvoření položky registrace můžete aktualizovat registraci.  Potenciální scénáře zahrnují aktualizace požadované vlastnosti, aktualizuje metodu ověření nebo odvolání přístupu k zařízení.  Existují jiné rozhraní API pro jednotlivou registraci a skupinové registrace, ale žádný rozdíl pro mechanismus ověřování.
+Po vytvoření položky registrace budete chtít registraci aktualizovat.  K potenciálním scénářům patří aktualizace požadované vlastnosti, aktualizace metody ověření identity nebo odvolávání přístupu k zařízení.  Pro jednotlivé registrace a zápis skupin jsou k dispozici různá rozhraní API, ale nejsou rozlišována pro mechanismus ověřování.
 
-Můžete aktualizovat položku registrace následujícího pracovního postupu:
+V tomto pracovním postupu můžete aktualizovat položku registrace:
 * **Jednotlivá registrace:**
-    1. Získat nejnovější registrace ze služby zřizování první pomocí rozhraní API sady SDK služby ```getIndividualEnrollment```.
-    2. Parametr nejnovější registrace podle potřeby změnit. 
-    3. Pomocí nejnovější registrace volání rozhraní API sady SDK služby ```createOrUpdateIndividualEnrollment``` aktualizovat vaši položku registrace.
-* **Skupinové registrace**:
-    1. Získat nejnovější registrace ze služby zřizování první pomocí rozhraní API sady SDK služby ```getEnrollmentGroup```.
-    2. Parametr nejnovější registrace podle potřeby změnit.
-    3. Pomocí nejnovější registrace volání rozhraní API sady SDK služby ```createOrUpdateEnrollmentGroup``` aktualizovat vaši položku registrace.
+    1. Získejte nejnovější registraci ze služby zřizování jako první s rozhraním API ```getIndividualEnrollment```sady SDK služby.
+    2. Podle potřeby upravte parametr nejnovější registrace. 
+    3. Pomocí nejnovější registrace volejte rozhraní Service SDK API ```createOrUpdateIndividualEnrollment``` , abyste aktualizovali položku registrace.
+* **Registrace skupiny**:
+    1. Získejte nejnovější registraci ze služby zřizování jako první s rozhraním API ```getEnrollmentGroup```sady SDK služby.
+    2. Podle potřeby upravte parametr nejnovější registrace.
+    3. Pomocí nejnovější registrace volejte rozhraní Service SDK API ```createOrUpdateEnrollmentGroup``` , abyste aktualizovali položku registrace.
 
-Tento pracovní postup je znázorněn ve vzorcích [již bylo zmíněno dříve](#prerequisites).
+Tento pracovní postup je znázorněný v ukázkách [uvedených výše](#prerequisites).
 
-## <a name="remove-an-enrollment-entry"></a>Odebrat položku registrace
+## <a name="remove-an-enrollment-entry"></a>Odebrání položky registrace
 
-* **Jednotlivé registrace** lze odstranit pomocí volání rozhraní API sady SDK služby ```deleteIndividualEnrollment``` pomocí ```registrationId```.
-* **Skupinové registrace** lze odstranit pomocí volání rozhraní API sady SDK služby ```deleteEnrollmentGroup``` pomocí ```enrollmentGroupId```.
+* **Jednotlivé registrace** je možné odstranit voláním rozhraní API ```deleteIndividualEnrollment``` služby SDK pomocí. ```registrationId```
+* **Zápis skupin** lze odstranit voláním rozhraní Service SDK API ```deleteEnrollmentGroup``` pomocí ```enrollmentGroupId```.
 
-Tento pracovní postup je znázorněn ve vzorcích [již bylo zmíněno dříve](#prerequisites).
+Tento pracovní postup je znázorněný v ukázkách [uvedených výše](#prerequisites).
 
-## <a name="bulk-operation-on-individual-enrollments"></a>Hromadné operace na jednotlivé registrace
+## <a name="bulk-operation-on-individual-enrollments"></a>Hromadná operace při individuální registraci
 
-Můžete provádět hromadné operace vytvoření, aktualizace nebo odebrání více jednotlivé registrace následujícího pracovního postupu:
+V rámci tohoto pracovního postupu můžete vytvořit, aktualizovat nebo odebrat několik individuálních registrací, a to prostřednictvím hromadné operace:
 
-1. Vytvořte proměnnou, která obsahuje více ```IndividualEnrollment```.  Implementace této proměnné se liší pro každý jazyk.  Projděte si hromadné operace ukázka na Githubu podrobnosti.
-2. Volání rozhraní API sady SDK služby ```runBulkOperation``` s ```BulkOperationMode``` pro požadovanou operaci a vaše proměnná pro jednotlivé registrace. Jsou podporovány čtyř režimů: vytvořit, aktualizovat, updateIfMatchEtag a odstranit.
+1. Vytvořte proměnnou, která obsahuje více ```IndividualEnrollment```.  Implementace této proměnné je pro každý jazyk odlišná.  Podrobnosti najdete v ukázce hromadné operace na GitHubu.
+2. Volejte rozhraní API ```runBulkOperation``` služby Service SDK ```BulkOperationMode``` s objektem pro požadovanou operaci a proměnnou pro jednotlivé registrace. Podporují se čtyři režimy: vytváření, aktualizace, updateIfMatchEtag a odstraňování.
 
-Po úspěšném provedení operace služby Device Provisioning vrátí výsledek operace hromadného.
+Po úspěšném provedení operace by služba Device Provisioning vrátila výsledek hromadné operace.
 
-Tento pracovní postup je znázorněn ve vzorcích [již bylo zmíněno dříve](#prerequisites).
+Tento pracovní postup je znázorněný v ukázkách [uvedených výše](#prerequisites).

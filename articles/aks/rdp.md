@@ -1,6 +1,6 @@
 ---
-title: Připojte se přes RDP uzlech clusteru serveru systému Windows Azure Kubernetes Service (AKS)
-description: Zjistěte, jak vytvořit připojení RDP s clusterem Azure Kubernetes Service (AKS) uzlech serveru systému Windows pro řešení potíží a údržby úlohy.
+title: Uzel protokolu RDP do clusterů Windows serveru v clusteru služby Azure Kubernetes Service (AKS)
+description: Přečtěte si, jak vytvořit připojení RDP s clustery Windows serveru clusteru Azure Kubernetes Service (AKS) pro úlohy odstraňování potíží a údržby.
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -8,33 +8,33 @@ ms.topic: article
 ms.date: 06/04/2019
 ms.author: mlearned
 ms.openlocfilehash: 0238278b81255d735f8a950ca307d0e05100cfec
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/08/2019
 ms.locfileid: "67614563"
 ---
-# <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Připojení přes RDP k Azure Kubernetes Service (AKS) uzlů clusteru Windows serveru pro údržbu nebo řešení potíží
+# <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Připojení pomocí protokolu RDP ke službě Azure Kubernetes (AKS) clustery Windows serveru pro účely údržby nebo řešení potíží
 
-V průběhu životního cyklu clusteru Azure Kubernetes Service (AKS) budete muset získat přístup k uzlu AKS Windows serveru. Tento přístup může být pro údržbu, shromažďování protokolů nebo jiné operace odstraňování potíží. Můžete přistupovat uzlů AKS Windows serveru pomocí protokolu RDP. Případně, pokud chcete použít SSH pro přístup k uzly AKS Windows serveru a mít přístup ke stejným klíčů, který jste použili při vytváření clusteru, provedením kroků v [SSH do uzlů clusteru Azure Kubernetes Service (AKS)][ssh-steps]. Z bezpečnostních důvodů nejsou uzlů AKS přístupný z Internetu.
+V průběhu životního cyklu clusteru AKS (Azure Kubernetes Service) bude možná potřeba získat přístup k uzlu AKS Windows serveru. Tento přístup může být pro údržbu, shromažďování protokolů nebo jiné operace řešení potíží. K uzlům Windows serveru AKS můžete přistupovat pomocí protokolu RDP. Případně, pokud chcete použít SSH pro přístup k uzlům Windows serveru AKS a máte přístup ke stejnému souboru KeyPair, které jste použili při vytváření clusteru, můžete postupovat podle kroků v [SSH do uzlů clusteru Azure Kubernetes Service (AKS)][ssh-steps]. Pro účely zabezpečení nejsou uzly AKS k dispozici pro Internet.
 
-Podpora uzel Windows Server je aktuálně ve verzi preview ve službě AKS.
+Podpora uzlů Windows serveru je v současné době ve verzi Preview v AKS.
 
-Tento článek ukazuje, jak vytvořit připojení RDP k uzlu AKS pomocí jejich privátní IP adresy.
+V tomto článku se dozvíte, jak vytvořit připojení RDP s uzlem AKS pomocí svých privátních IP adres.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte existující cluster AKS pomocí uzlu Windows serveru. Pokud potřebujete AKS cluster, najdete v článku [vytvoření clusteru AKS pomocí kontejneru Windows pomocí Azure CLI][aks-windows-cli]. You need the Windows administrator username and password for the Windows Server node you want to troubleshoot. You also need an RDP client such as [Microsoft Remote Desktop][rdp-mac].
+V tomto článku se předpokládá, že máte existující cluster AKS s uzlem Windows serveru. Pokud potřebujete cluster AKS, přečtěte si článek o [Vytvoření clusteru AKS s kontejnerem Windows pomocí Azure CLI][aks-windows-cli]. Pro uzel Windows serveru, pro který chcete řešit potíže, budete potřebovat uživatelské jméno a heslo správce systému Windows. Potřebujete také klienta protokolu RDP, například [Vzdálená plocha Microsoft][rdp-mac].
 
-Také nutné mít Azure CLI verze 2.0.61 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.61 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
-## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>Nasazení virtuálního počítače ve stejné podsíti jako váš cluster
+## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>Nasazení virtuálního počítače do stejné podsítě jako cluster
 
-Uzlů Windows Server ve vašem clusteru AKS nemají zvenku přístupný IP adresy. Chcete-li vytvořit připojení RDP, můžete nasadit virtuální počítač s veřejně dostupná IP adresa na stejné podsíti jako uzly Windows serveru.
+Uzly Windows serveru v clusteru AKS nemají IP adresy externě přístupné. Chcete-li vytvořit připojení RDP, můžete nasadit virtuální počítač s veřejně dostupnou IP adresou do stejné podsítě jako uzly Windows serveru.
 
-Následující příklad vytvoří virtuální počítač s názvem *myVM* v *myResourceGroup* skupinu prostředků.
+Následující příklad vytvoří virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* .
 
-Nejprve získejte podsíť používá váš fond uzlů Windows serveru. Pokud chcete získat id podsítě, budete potřebovat název podsítě. Pokud chcete získat název podsítě, budete potřebovat název virtuální sítě. Získejte název virtuální sítě pomocí dotazu na clusteru pro svůj seznam sítí. K dotazování clusteru, musíte její název. Získáte všechny tyto spuštěním následujícího ve službě Azure Cloud Shell:
+Nejprve získejte podsíť, kterou používá fond uzlů Windows serveru. Chcete-li získat ID podsítě, budete potřebovat název podsítě. Chcete-li získat název podsítě, budete potřebovat název virtuální sítě. Získejte název virtuální sítě tak, že Dotazujte svůj cluster na svůj seznam sítí. K dotazování clusteru budete potřebovat jeho jméno. Všechny z nich můžete získat spuštěním následujícího v Azure Cloud Shell:
 
 ```azurecli-interactive
 CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
@@ -43,7 +43,7 @@ SUBNET_NAME=$(az network vnet subnet list -g $CLUSTER_RG --vnet-name $VNET_NAME 
 SUBNET_ID=$(az network vnet subnet show -g $CLUSTER_RG --vnet-name $VNET_NAME --name $SUBNET_NAME --query id -o tsv)
 ```
 
-Teď, když máte SUBNET_ID, spusťte následující příkaz v okně Azure Cloud Shell vytvořte virtuální počítač:
+Teď, když máte SUBNET_ID, spusťte následující příkaz ve stejném Azure Cloud Shellm okně a vytvořte virtuální počítač:
 
 ```azurecli-interactive
 az vm create \
@@ -56,35 +56,35 @@ az vm create \
     --query publicIpAddress -o tsv
 ```
 
-Následující příklad výstupu ukazuje virtuální počítač byl úspěšně vytvořen a zobrazí veřejnou IP adresu virtuálního počítače.
+Následující příklad výstupu ukazuje, že se virtuální počítač úspěšně vytvořil a zobrazuje veřejnou IP adresu virtuálního počítače.
 
 ```console
 13.62.204.18
 ```
 
-Zaznamenejte veřejnou IP adresu virtuálního počítače. Tuto adresu použijete v pozdějším kroku.
+Poznamenejte si veřejnou IP adresu virtuálního počítače. Tuto adresu budete používat v pozdějším kroku.
 
-## <a name="get-the-node-address"></a>Získání adresy uzlu
+## <a name="get-the-node-address"></a>Získat adresu uzlu
 
-Ke správě clusteru Kubernetes použijete [kubectl][kubectl], klienta příkazového řádku Kubernetes. Pokud používáte Azure Cloud Shell, `kubectl` je již nainstalována. Chcete-li nainstalovat `kubectl` místně, použijte [az aks install-cli][az-aks-install-cli] příkaz:
+Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl][kubectl]. Pokud používáte Azure Cloud Shell, `kubectl` je již nainstalováno. Pokud chcete `kubectl` nainstalovat místně, použijte příkaz [AZ AKS Install-CLI][az-aks-install-cli] :
     
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Ke konfiguraci `kubectl` pro připojení k vašemu clusteru Kubernetes, použijte [az aks get-credentials][az-aks-get-credentials] příkazu. Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
+Pokud chcete `kubectl` nakonfigurovat připojení ke clusteru Kubernetes, použijte příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Seznam uzlů Windows Server pomocí interní IP adresa [kubectl get][kubectl-get] příkaz:
+Výpis interní IP adresy uzlů Windows serveru pomocí příkazu [kubectl Get][kubectl-get] :
 
 ```console
 kubectl get nodes -o wide
 ```
 
-Následující příklad výstupu ukazuje interních IP adres na všech uzlech v clusteru, včetně uzlů Windows serveru.
+Následující příklad výstupu ukazuje interní IP adresy všech uzlů v clusteru, včetně uzlů Windows serveru.
 
 ```console
 $ kubectl get nodes -o wide
@@ -93,35 +93,35 @@ aks-nodepool1-42485177-vmss000000   Ready    agent   18h   v1.12.7   10.240.0.4 
 aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437
 ```
 
-Zaznamenejte interní IP adresa uzlu Windows Server, který chcete vyřešit. Tuto adresu použijete v pozdějším kroku.
+Zaznamenejte interní IP adresu uzlu Windows serveru, na který chcete řešit potíže. Tuto adresu budete používat v pozdějším kroku.
 
-## <a name="connect-to-the-virtual-machine-and-node"></a>Připojte se k virtuálnímu počítači a uzel
+## <a name="connect-to-the-virtual-machine-and-node"></a>Připojení k virtuálnímu počítači a uzlu
 
-Připojte se k veřejnou IP adresu virtuálního počítače, které jste předtím vytvořili pomocí klienta protokolu RDP, jako [Vzdálená plocha od Microsoftu][rdp-mac].
+Připojte se k veřejné IP adrese virtuálního počítače, který jste vytvořili dříve pomocí klienta RDP, jako je například [Vzdálená plocha Microsoft][rdp-mac].
 
-![Obrázek připojení k virtuálnímu počítači pomocí klienta protokolu RDP](media/rdp/vm-rdp.png)
+![Obrázek připojení k virtuálnímu počítači pomocí klienta RDP](media/rdp/vm-rdp.png)
 
-Po připojení k virtuálnímu počítači, připojit k *interní IP adresa* uzlu Windows Server chcete řešení potíží pomocí klienta protokolu RDP z virtuálního počítače.
+Po připojení k virtuálnímu počítači se připojte k *interní IP adrese* uzlu Windows serveru, který chcete řešit pomocí klienta RDP z virtuálního počítače.
 
-![Obrázek připojení k uzlu Windows serveru pomocí klienta protokolu RDP](media/rdp/node-rdp.png)
+![Obrázek připojení k uzlu Windows serveru pomocí klienta RDP](media/rdp/node-rdp.png)
 
-Nyní jste připojeni k uzlu Windows serveru.
+Nyní jste připojeni k uzlu Windows Server.
 
-![Obrázek zavřete okno příkazového řádku v uzlu Windows Server](media/rdp/node-session.png)
+![Obrázek okna cmd v uzlu Windows serveru](media/rdp/node-session.png)
 
-Teď můžete spustit všechny příkazy, řešení problémů ve *cmd* okna. Protože uzly Windows serveru použít Windows Server Core, není úplným grafickým uživatelským rozhraním nebo jiné nástroje grafického uživatelského rozhraní při připojování k uzlu Windows serveru přes protokol RDP.
+Nyní můžete spustit jakékoli příkazy pro řešení potíží v okně *příkazového řádku* . Vzhledem k tomu, že uzly Windows serveru používají jádro Windows serveru, není k dispozici celé grafické rozhraní (GUI) nebo jiné nástroje grafického uživatelského rozhraní, když se k uzlu Windows serveru přes RDP připojíte
 
-## <a name="remove-rdp-access"></a>Odebrat přístup protokolu RDP
+## <a name="remove-rdp-access"></a>Odebrání přístupu RDP
 
-Až budete hotovi, ukončete připojení RDP k uzlu Windows Server pak ukončete relaci RDP k virtuálnímu počítači. Po ukončení obě relace protokolu RDP, odstraňte virtuální počítač s [az vm delete][az-vm-delete] příkaz:
+Až to budete mít, ukončete připojení RDP k uzlu Windows serveru a potom relaci RDP ukončete s virtuálním počítačem. Po ukončení obou relací RDP odstraňte virtuální počítač pomocí příkazu [AZ VM Delete][az-vm-delete] :
 
 ```azurecli-interactive
 az vm delete --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Pokud potřebujete další data pro řešení problémů, můžete [zobrazit protokoly hlavní uzel Kubernetes][view-master-logs] or [Azure Monitor][azure-monitor-containers].
+Pokud potřebujete další data pro řešení potíží, můžete [Zobrazit protokoly nebo Azure monitor Kubernetes hlavního uzlu][view-master-logs] . [][azure-monitor-containers]
 
 <!-- EXTERNAL LINKS -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/

@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 5e707fb004af7bbce915baf4b059514fcae8e52b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7dd053e3a9824ac0817db528b8b053666e1ded04
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725930"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881822"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 
@@ -322,6 +322,14 @@ Po publikování vlastního Azure Policy pomocí vlastního balíčku obsahu jso
 Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze.
 Tím budou zaručeny správné aktualizace všech vlastností.
 
+## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Převod obsahu Windows Zásady skupiny na Azure Policy konfiguraci hosta
+
+Konfigurace hosta, při auditování počítačů s Windows, je implementovaná syntaxe konfigurace požadovaného stavu prostředí PowerShell.
+Komunita DSC zveřejnila nástroje pro převod exportovaných šablon Zásady skupiny do formátu DSC.
+Pomocí tohoto nástroje spolu s rutinami konfigurace hosta, které jsou popsané výše, můžete převést Windows Zásady skupiny obsah a balíček/publikovat pro Azure Policy k auditování.
+Podrobnosti o používání tohoto nástroje najdete v článku [rychlý Start: Převeďte Zásady skupiny do](/powershell/dsc/quickstarts/gpo-quickstart)DSC.
+Až se obsah převede, výše uvedené kroky pro vytvoření pakcage a jeho publikování jako Azure Policy budou stejné jako u jakéhokoli obsahu DSC.
+
 ## <a name="optional-signing-guest-configuration-packages"></a>VOLITELNÉ Podepisování balíčků konfigurace hosta
 
 Vlastní zásady konfigurace hosta ve výchozím nastavení používají SHA256 hash k ověření, že se balíček zásad nezměnil z okamžiku, kdy byl publikován na serveru, který je auditován.
@@ -358,7 +366,7 @@ Dobrá Reference k vytváření GPG klíčů pro použití s virtuálními poč�
 Po publikování obsahu přidejte značku s názvem `GuestConfigPolicyCertificateValidation` a hodnotou `enabled` do všech virtuálních počítačů, kde by mělo být požadováno podepisování kódu. Tato značka se dá doručovat ve velkém rozsahu pomocí Azure Policy. Podívejte se na ukázku [použít značku a její výchozí hodnotu](../samples/apply-tag-default-value.md) .
 Jakmile je tato značka nastavená, definice zásady vytvořená pomocí `New-GuestConfigurationPolicy` rutiny povolí požadavek prostřednictvím rozšíření konfigurace hosta.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si o auditování virtuálních počítačů pomocí [Konfigurace hostů](../concepts/guest-configuration.md).
 - Zjistěte, jak [programově vytvářet zásady](programmatically-create.md).

@@ -8,14 +8,30 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f732ab6ceb17dcd013c6d032ef3943f6ad9bef71
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
-ms.translationtype: HT
+ms.openlocfilehash: 759422ea8c327ae67278354217dac4c60b32f7a9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782363"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850323"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení chyb pomocí runbooků
+
+Tento článek podrobně popisuje běžné problémy se sadami Runbook a jejich řešení.
+
+## <a name="steps-to-troubleshoot-runbooks"></a>Postup řešení potíží se sadami Runbook
+
+Pokud dojde k chybám při provádění sad Runbook v Azure Automation, můžete problém diagnostikovat pomocí následujících kroků.
+
+1. **Ujistěte se, že se váš skript Runbooku úspěšně spouští na vašem místním počítači:**  Odkazy na jazyky a výukové moduly najdete v dokumentaci k [prostředí PowerShell](/powershell/scripting/overview) nebo [dokumentaci Pythonu](https://docs.python.org/3/) .
+
+   Místní spuštění skriptu může zjišťovat a řešit běžné chyby, jako například:
+
+   - **Chybějící moduly**
+   - **Chyby syntaxe**
+   - **Logické chyby**
+
+2. **Ujistěte se, že uzly a pracovní prostor služby Automation mají požadované moduly:** Pokud vaše sada Runbook importuje nějaké moduly, ujistěte se, že jsou k dispozici v účtu Automation pomocí kroků uvedených v části [Import modulů](../shared-resources/modules.md#import-modules). Další informace najdete v tématu [řešení potíží s moduly](shared-resources.md#modules).
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Chyby ověřování při práci s Azure Automation Runbooky
 

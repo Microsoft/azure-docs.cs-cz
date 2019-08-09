@@ -1,73 +1,73 @@
 ---
-title: Vývoj a konfigurace aplikací služby Azure Functions SignalR
-description: Podrobnosti o tom, jak vyvíjet a konfigurovat aplikace bez serveru v reálném čase pomocí Azure Functions a služby Azure SignalR
+title: Vývoj a konfigurace aplikací služby signalizace Azure Functions
+description: Podrobnosti o tom, jak vyvíjet a konfigurovat aplikace bez serveru v reálném čase pomocí Azure Functions a služby Azure Signal
 author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: 9b68b9d0bbac984c29759cf4b7b026a559a9d819
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be77704f562a1e05485e6f3704dff265635b1dc2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809029"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882312"
 ---
-# <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions vývoje a konfigurace pomocí služby Azure SignalR
+# <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions vývoj a konfigurace pomocí služby Azure Signal Service
 
-Aplikace Azure Functions můžete využít [vazby služby Azure SignalR](../azure-functions/functions-bindings-signalr-service.md) to k přidávání funkcí v reálném čase. Klientské aplikace pomocí klientské sady SDK k dispozici v několika jazycích k připojení ke službě Azure SignalR a přijímání zpráv v reálném čase.
+Aplikace Azure Functions můžou využít [vazby služby Azure signaler](../azure-functions/functions-bindings-signalr-service.md) k přidávání možností v reálném čase. Klientské aplikace používají klientské sady SDK dostupné v několika jazycích pro připojení ke službě signalizace Azure a příjem zpráv v reálném čase.
 
-Tento článek popisuje koncepty pro vývoj a konfigurace aplikaci funkcí Azure je integrovaná se sadou služby SignalR.
+Tento článek popisuje koncepty pro vývoj a konfiguraci aplikace služby Azure Functions, která je integrovaná se službou signalizace.
 
-## <a name="signalr-service-configuration"></a>Konfigurace služby SignalR
+## <a name="signalr-service-configuration"></a>Konfigurace služby Signal
 
-Službě Azure SignalR je možné nakonfigurovat různými způsoby. Při použití s Azure Functions, služba se musí nakonfigurovat na *bez serveru* režimu.
+Služba signalizace Azure se dá nakonfigurovat v různých režimech. Při použití s Azure Functions musí být služba nakonfigurovaná v režimu bez *serveru* .
 
-Na webu Azure Portal, vyhledejte *nastavení* stránku vašeho prostředku služby SignalR. Nastavte *režim služby* k *bez serveru*.
+V Azure Portal vyhledejte stránku *Nastavení* prostředku služby signaler. Nastavte *režim služby* na bez *serveru*.
 
-![Režim služby SignalR](media/signalr-concept-azure-functions/signalr-service-mode.png)
+![Režim služby Signal](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
-## <a name="azure-functions-development"></a>Vývoj pro Azure Functions
+## <a name="azure-functions-development"></a>Vývoj Azure Functions
 
-Aplikace bez serveru v reálném čase vytvořených pomocí Azure Functions a služby Azure SignalR obvykle vyžaduje dvě funkce Azure:
+Aplikace v reálném čase vytvořená pomocí Azure Functions a služba signalizace Azure obvykle vyžaduje dvě Azure Functions:
 
-* Funkce "vyjednat", která volá klient získat platný služby SignalR přístupový token a adresu URL koncového bodu služby
-* Jednu nebo více funkcí, které odesílání zpráv nebo spravovat členství ve skupině
+* Funkce Negotiate, kterou klient volá za účelem získání platného přístupového tokenu služby Signal a adresy URL koncového bodu služby
+* Jedna nebo více funkcí, které odesílají zprávy nebo spravují členství ve skupině
 
-### <a name="negotiate-function"></a>vyjednávání – funkce
+### <a name="negotiate-function"></a>funkce Negotiate
 
-Klientská aplikace vyžaduje platný přístupový token se připojit ke službě Azure SignalR. Přístupový token může být anonymní nebo ověřené pro ID daného uživatele. Aplikace bez serveru služby SignalR vyžaduje koncový bod HTTP s názvem "vyjednat" získat token a další informace o připojení, jako je například adresa URL koncového bodu služby SignalR.
+Klientská aplikace vyžaduje pro připojení ke službě Azure Signal Service platný přístupový token. Přístupový token může být pro dané ID uživatele anonymní nebo ověřený. Aplikace služby signalizace bez serveru vyžadují koncový bod HTTP s názvem "Negotiate", aby získal token a jiné informace o připojení, jako je například adresa URL koncového bodu služby signalizace.
 
-Použití protokolu HTTP aktivované funkce Azure functions a *SignalRConnectionInfo* vstupní vazby ke generování objektu informací o připojení. Funkce musí být trasu HTTP s `/negotiate`.
+Pomocí funkce Azure aktivované protokolem HTTP a vstupní vazbou *SignalRConnectionInfo* vygenerujte objekt informace o připojení. Funkce musí mít trasu HTTP, která končí na `/negotiate`.
 
-Další informace o tom, jak vytvořit funkci negotiate, najdete v článku [ *SignalRConnectionInfo* vstupní vazby odkazu](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
+Další informace o tom, jak vytvořit funkci Negotiate, najdete v referenčních odkazech na [vstupní vazby *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
 
-Další informace o tom, jak vytvořit token pro ověření, naleznete [pomocí ověřování služby App Service](#using-app-service-authentication).
+Další informace o tom, jak vytvořit ověřený token, najdete v tématu [použití ověřování App Service](#using-app-service-authentication).
 
-### <a name="sending-messages-and-managing-group-membership"></a>Zasílání zpráv a Správa členství ve skupině
+### <a name="sending-messages-and-managing-group-membership"></a>Odesílání zpráv a Správa členství ve skupinách
 
-Použití *SignalR* výstupní vazby pro odesílání zpráv do klientů připojení ke službě Azure SignalR. Zprávy můžete vysílat pro všechny klienty, nebo jim můžete poslat na podmnožinu klienti, kteří jsou ověření pomocí ID konkrétního uživatele nebo byly přidány do konkrétní skupiny.
+Pomocí výstupní vazby *signálu* můžete odesílat zprávy klientům připojeným ke službě Azure Signal. Zprávy můžete vysílat všem klientům nebo je můžete odeslat do podmnožiny klientů, které jsou ověřeny pomocí konkrétního ID uživatele nebo byly přidány do konkrétní skupiny.
 
-Můžete přidat uživatele do jedné nebo více skupin. Můžete také použít *SignalR* výstupní vazbu k přidání nebo odebrání uživatelů do a ze skupiny.
+Uživatele lze přidat do jedné nebo více skupin. Výstupní vazbu *signálu* můžete také použít k přidání nebo odebrání uživatelů do nebo ze skupin.
 
-Další informace najdete v tématu [ *SignalR* vazby odkazu na výstup](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding).
+Další informace najdete v odkazu na [výstupní vazbu *signálu* ](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding).
 
-### <a name="signalr-hubs"></a>Rozbočovače SignalR
+### <a name="signalr-hubs"></a>Rozbočovače signálu
 
-Funkce SignalR používá koncept "centra". Každé připojení klienta a každá zpráva odeslaná ze služby Azure Functions je vymezen na konkrétní centrum. Hubs slouží jako způsob, jak oddělit připojení a zprávy do logických oborů názvů.
+Návěstí má koncept "centra". Každé připojení klienta a každá zpráva odeslaná z Azure Functions je vymezena na konkrétní centrum. Můžete použít centra jako způsob, jak oddělit vaše připojení a zprávy do logických oborů názvů.
 
-## <a name="client-development"></a>Vývoj pro klientské
+## <a name="client-development"></a>Vývoj klientů
 
-SignalR klientské aplikace můžou využívat funkce SignalR klientskou sadou SDK v jednom z několika jazyků snadno připojit k a přijímat zprávy ze služby Azure SignalR.
+Klientské aplikace pro signalizaci mohou využívat sadu SDK pro klienty signalizace v jednom z několika jazyků ke snadnému připojení a příjmu zpráv ze služby Azure Signal.
 
 ### <a name="configuring-a-client-connection"></a>Konfigurace připojení klienta
 
-Připojení ke službě SignalR, musíte klienta dokončit vyjednávání o úspěšném připojení, která se skládá z následujících kroků:
+Aby bylo možné se připojit ke službě Signaler, klient musí dokončit úspěšné vyjednávání připojení, které se skládá z těchto kroků:
 
-1. Vytvořit žádost o *vyjednávání* koncový bod HTTP probírali výše získat platné informace o připojení
-1. Připojení k službě SignalR pomocí adresy URL koncového bodu služby a získat přístupový token z *vyjednávání* koncového bodu
+1. Pokud chcete získat platné informace o připojení, vytvořte žádost na koncový bod *Negotiate* http popsanou výše.
+1. Připojení ke službě Signaler pomocí adresy URL koncového bodu služby a přístupového tokenu získaného z koncového bodu *Negotiate*
 
-SignalR klientské sady SDK už obsahují logiku potřebnou k provedení vyjednávání metody handshake. Předat adresu URL koncového bodu negotiate, mínus `negotiate` segmentu, sady SDK `HubConnectionBuilder`. Tady je příklad v jazyce JavaScript:
+Klientské sady SDK pro Signal už obsahují logiku potřebnou k provedení metody handshake pro vyjednávání. Předejte adresu URL koncového bodu Negotiate, `negotiate` mínus segment, do `HubConnectionBuilder`sady SDK. Tady je příklad v JavaScriptu:
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -75,37 +75,37 @@ const connection = new signalR.HubConnectionBuilder()
   .build()
 ```
 
-Podle konvence, sada SDK automaticky připojí `/negotiate` na adresu URL a použije ho k začít vyjednávání.
+Podle konvence sada SDK automaticky připojí `/negotiate` k adrese URL a použije ji k zahájení vyjednávání.
 
 > [!NOTE]
-> Pokud používáte sady SDK JavaScript/TypeScript v prohlížeči, budete muset [povolení prostředků různého původu (CORS) pro sdílení obsahu](#enabling-cors) na vaši aplikaci Function App.
+> Pokud v prohlížeči používáte JavaScript nebo TypeScript SDK, musíte ve svém Function App [Povolit sdílení prostředků mezi zdroji (CORS)](#enabling-cors) .
 
-Další informace o tom, jak používat funkci SignalR Klientská sada SDK, naleznete v dokumentaci pro váš jazyk:
+Další informace o tom, jak používat klientskou sadu SDK pro signalizaci, najdete v dokumentaci k vašemu jazyku:
 
 * [.NET Standard](https://docs.microsoft.com/aspnet/core/signalr/dotnet-client)
 * [JavaScript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
 * [Java](https://docs.microsoft.com/aspnet/core/signalr/java-client)
 
-### <a name="sending-messages-from-a-client-to-the-service"></a>Odesílání zpráv z klienta do služby
+### <a name="sending-messages-from-a-client-to-the-service"></a>Posílání zpráv od klienta ke službě
 
-Ačkoli SignalR SDK umožňuje získat klientským aplikacím k vyvolání back-end logiku do rozbočovače SignalR, tato funkce není dosud podporována při použití služby SignalR službou Azure Functions. Použití protokolu HTTP žádosti k vyvolání Azure Functions.
+Přestože sada Signal SDK umožňuje klientským aplikacím vyvolat v centru signalizace back-end logiku, tato funkce se ještě nepodporuje, pokud používáte službu signalizace s Azure Functions. K vyvolání Azure Functions použijte požadavky HTTP.
 
-## <a name="azure-functions-configuration"></a>Konfigurace služby Azure Functions
+## <a name="azure-functions-configuration"></a>Konfigurace Azure Functions
 
-Azure aplikace funkcí, které se integrují se službou Azure SignalR je nasadit stejně jako jakékoli Typická aplikace funkcí Azure, pomocí technik, jako [průběžné nasazení](../azure-functions/functions-continuous-deployment.md), [zip nasazení](../azure-functions/deployment-zip-push.md)a [spustit z balíčku](../azure-functions/run-functions-from-deployment-package.md).
+Aplikace Azure Functions, které se integrují se službou Azure Signal Service, se dají nasadit jako jakákoli Typická aplikace Function App, [](../azure-functions/functions-continuous-deployment.md)jako je například průběžné nasazování, [nasazování zip](../azure-functions/deployment-zip-push.md)a [spouštění z balíčku](../azure-functions/run-functions-from-deployment-package.md).
 
-Existují však několik speciální aspekty pro aplikace, které používají vazby služby SignalR. Pokud klient běží v prohlížeči, musí být povolená CORS. A pokud aplikace vyžaduje ověření, můžete integrovat negotiate koncový bod se ověřování pomocí služby App Service.
+Existuje však několik zvláštních doporučení pro aplikace, které používají vazby služby signalizace. Pokud klient běží v prohlížeči, musí být povolená CORS. A pokud aplikace vyžaduje ověření, můžete pomocí App Service ověřování integrovat koncový bod Negotiate.
 
 ### <a name="enabling-cors"></a>Povolení CORS
 
-JavaScript/TypeScript klient vytvoří požadavky HTTP na funkci negotiate k zahájení připojení vyjednávání. Když klientská aplikace hostována v jiné doméně než aplikace Azure Function app, prostředků mezi zdroji (CORS) pro sdílení obsahu musí být povolené na aplikaci funkcí nebo prohlížeč bude blokovat požadavky.
+Klient jazyka JavaScript/TypeScript zpřístupňuje vyjednávání připojení požadavky HTTP na funkci Negotiate. Když je klientská aplikace hostovaná v jiné doméně než aplikace funkce Azure, musí být ve Function App povolená možnost sdílení prostředků mezi zdroji (CORS), jinak se požadavky zablokuje v prohlížeči.
 
-#### <a name="localhost"></a>localhost
+#### <a name="localhost"></a>Místního
 
-Při spuštění aplikace Function app v místním počítači, můžete přidat `Host` části *local.settings.json* k povolení sdílení CORS. V `Host` části, přidejte dvě vlastnosti:
+Při spuštění aplikace Function App na místním počítači můžete přidat `Host` oddíl do *Local. Settings. JSON* a povolit CORS. `Host` V části přidejte dvě vlastnosti:
 
-* `CORS` -Zadejte základní adresu URL, který je původcem klientské aplikace
-* `CORSCredentials` – Nastavte na `true` "withCredentials" požadavků
+* `CORS`-Zadejte základní adresu URL, která je zdrojem klientské aplikace.
+* `CORSCredentials`– nastavte ho tak `true` , aby povoloval žádosti "withCredentials".
 
 Příklad:
 
@@ -122,25 +122,54 @@ Příklad:
 }
 ```
 
-#### <a name="azure"></a>Azure
+#### <a name="cloud---azure-functions-cors"></a>Cloud – Azure Functions CORS
 
-Povolení CORS na aplikaci funkcí Azure, přejděte na obrazovku pro konfiguraci CORS v části *funkce platformy* kartu aplikace Function App na webu Azure Portal.
+Pokud chcete povolit CORS ve službě Azure Function App, v Azure Portal na kartě *funkce platformy* ve vaší aplikaci Function App otevřete obrazovku konfigurace CORS.
 
-CORS s přístup – ovládací prvek-Allow-Credentials musí být povolena pro funkci SignalR klientovi umožní zavolat funkci negotiate. Zaškrtněte políčko, aby je.
+> [!NOTE]
+> Konfigurace CORS ještě není k dispozici v plánu využití Azure Functions Linux. K povolení CORS použijte [Azure API Management](#cloud---azure-api-management) .
 
-V *povolené zdroje* části, přidejte záznam s původní základní adresu URL webové aplikace.
+CORS s oprávněním Access-Control-Allow-Credentials musí být povolena pro klienta signalizace volání funkce Negotiate. Zaškrtněte políčko, které chcete povolit.
+
+V části *Povolené zdroje* přidejte položku se základní adresou URL vaší webové aplikace.
 
 ![Konfigurace CORS](media/signalr-concept-serverless-development-config/cors-settings.png)
 
-### <a name="using-app-service-authentication"></a>Použití ověřování pomocí služby App Service
+#### <a name="cloud---azure-api-management"></a>Cloud – API Management Azure
 
-Azure Functions nabízí integrované ověřování podporuje oblíbené poskytovatele, jako je Facebook, Twitter, Account Microsoft, Google a Azure Active Directory. Tato funkce je možné integrovat se službou *SignalRConnectionInfo* vazby připojení k službě Azure SignalR ověřené ID uživatele. Vaše aplikace může odesílat zprávy pomocí *SignalR* výstupní vazby, které jsou cíleny na tuto ID uživatele.
+Azure API Management poskytuje bránu rozhraní API, která přidává funkce do stávajících back-endové služby. Můžete ji použít k přidání CORS do aplikace Function App. Nabízí úroveň spotřeby s cenami plateb za akci a měsíčního grantu zdarma.
 
-Na webu Azure Portal, v aplikaci Function app *funkce platformy* otevřenou kartou *ověřování/autorizace* okno nastavení. Postupujte podle dokumentace pro [ověřování pomocí služby App Service](../app-service/overview-authentication-authorization.md) postup konfigurace ověřování pomocí zprostředkovatelů identity podle vašeho výběru.
+Informace o tom, jak [importovat aplikaci funkcí Azure Functions](../api-management/import-function-app-as-api.md), najdete v dokumentaci k API Management. Po importu můžete přidat příchozí zásadu a povolit CORS s podporou přístupu-řízení-povolit-přihlašovací údaje.
 
-Po nakonfigurování ověřených požadavků protokolu HTTP bude obsahovat `x-ms-client-principal-name` a `x-ms-client-principal-id` hlavičky, který obsahuje ověřená identita uživatelské jméno a ID uživatele.
+```xml
+<cors allow-credentials="true">
+  <allowed-origins>
+    <origin>https://azure-samples.github.io</origin>
+  </allowed-origins>
+  <allowed-methods>
+    <method>GET</method>
+    <method>POST</method>
+  </allowed-methods>
+  <allowed-headers>
+    <header>*</header>
+  </allowed-headers>
+  <expose-headers>
+    <header>*</header>
+  </expose-headers>
+</cors>
+```
 
-Můžete použít tyto hlavičky v vaše *SignalRConnectionInfo* konfigurace vazby ověřené připojení. Tady je příklad C# vyjednávání funkci, která používá `x-ms-client-principal-id` záhlaví.
+Nakonfigurujte klienty signalizace, aby používali API Management URL.
+
+### <a name="using-app-service-authentication"></a>Použití ověřování App Service
+
+Azure Functions má integrované ověřování, které podporuje oblíbené poskytovatele, jako je Facebook, Twitter, účet Microsoft, Google a Azure Active Directory. Tato funkce se dá integrovat s vazbou *SignalRConnectionInfo* k vytváření připojení ke službě Azure Signal, která byla ověřena pro ID uživatele. Vaše aplikace může odesílat zprávy pomocí výstupní vazby *signálu* , na kterou cílí toto ID uživatele.
+
+V Azure Portal na kartě *funkce platformy* Function App otevřete okno nastavení *ověřování/autorizace* . Podle dokumentace pro [App Service ověřování](../app-service/overview-authentication-authorization.md) nakonfigurujte ověřování pomocí poskytovatele identity dle vašeho výběru.
+
+Po nakonfigurování budou ověřené požadavky HTTP `x-ms-client-principal-name` zahrnovat `x-ms-client-principal-id` a hlavičky obsahující uživatelské jméno ověřené identity a ID uživatele v uvedeném pořadí.
+
+Pomocí těchto hlaviček v konfiguraci vazby *SignalRConnectionInfo* můžete vytvářet ověřená připojení. Zde je příklad C# funkce vyjednat, která `x-ms-client-principal-id` používá hlavičku.
 
 ```csharp
 [FunctionName("negotiate")]
@@ -155,7 +184,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-Pak můžete odesílat zprávy pro daného uživatele tak, že nastavíte `UserId` vlastnost zpráv SignalR.
+Pak můžete poslat zprávy tomuto uživateli nastavením `UserId` vlastnosti zprávy signálu.
 
 ```csharp
 [FunctionName("SendMessage")]
@@ -174,8 +203,8 @@ public static Task SendMessage(
 }
 ```
 
-Informace v jiných jazycích najdete v tématu [vazby služby Azure SignalR](../azure-functions/functions-bindings-signalr-service.md) pro Azure Functions odkazovat.
+Informace o dalších jazycích najdete v tématu [vazby služby signálu Azure](../azure-functions/functions-bindings-signalr-service.md) pro Azure Functions reference.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, jak vyvíjet a nakonfigurovat pomocí služby Azure Functions aplikace bez serveru služby SignalR. Zkuste vytvořit aplikaci sami pomocí jednoho z kurzů nebo rychlých startů na [stránka s přehledem služby SignalR](index.yml).
+V tomto článku jste se seznámili s postupem vývoje a konfigurace aplikací služby signalizace bez serveru pomocí Azure Functions. Zkuste vytvořit aplikaci sami pomocí některého z rychlých startů nebo kurzů na [stránce Přehled služby Signal](index.yml).

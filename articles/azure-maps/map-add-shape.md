@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0696eba4f3cca7beedc2efcda0182ab82b3d69d9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 377cfbf93e45872e34242f9cd2432195b6ba6f92
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638705"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849121"
 ---
 # <a name="add-a-shape-to-a-map"></a>Přidání tvaru do mapy
 
@@ -46,6 +46,9 @@ Tento příklad ukazuje, jak přidat ikony šipek podél čáry na mapě. Při p
 <iframe height="500" style="width: 100%;" scrolling="no" title="Zobrazit šipku podél čáry" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Podívejte se na <a href='https://codepen.io/azuremaps/pen/drBJwX/'>šipku zobrazení pera podél čáry</a> po Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+> [!TIP]
+> Sada Azure Maps Web SDK poskytuje několik přizpůsobitelných šablon obrázků, které lze použít s vrstvou symbolů. Další informace najdete v dokumentu [použití šablon obrázků](how-to-use-image-templates-web-sdk.md) .
 
 ### <a name="line-stroke-gradient"></a>Přidání přechodu mezi tahy na čáru
 
@@ -113,6 +116,10 @@ Kromě naplnění mnohoúhelníku barvou lze také použít vzorek obrázku. Na�
 Pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>se podívejte na <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>tvar výplně mnohoúhelníku</a> pera.
 </iframe>
 
+
+> [!TIP]
+> Sada Azure Maps Web SDK nabízí několik přizpůsobitelných šablon obrázků, které můžete použít jako vzory výplní. Další informace najdete v dokumentu [použití šablon obrázků](how-to-use-image-templates-web-sdk.md) .
+
 ### <a name="customize-a-polygon-layer"></a>Přizpůsobení vrstvy mnohoúhelníku
 
 Vrstva mnohoúhelníku má pouze několik možností stylů. Tady je nástroj pro jejich vyzkoušení.
@@ -179,3 +186,6 @@ Další příklady kódu pro přidání do map najdete v následujících člán
 
 > [!div class="nextstepaction"]
 > [Použití výrazů stylu založených na datech](data-driven-style-expressions-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Používání šablon obrázků](how-to-use-image-templates-web-sdk.md)

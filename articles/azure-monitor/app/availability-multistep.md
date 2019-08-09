@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 150c41dce06c81f2e9e07605ab6d5afa9e424453
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494489"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881445"
 ---
 # <a name="multi-step-web-tests"></a>Vícekrokové webové testy
 
 Zaznamenanou posloupnost adres URL a interakcí můžete sledovat na webu prostřednictvím webových testů s více kroky. Tento článek vás provede procesem vytvoření webového testu ve více krocích pomocí Visual Studio Enterprise.
 
 > [!NOTE]
-> Webové testy s více kroky závisejí na souborech WebTest sady Visual Studio. Bylo [oznámeno](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , že Visual Studio 2019 bude poslední verzí s funkcí webového testu. Je důležité si uvědomit, že i když nebudou přidány žádné nové funkce, funkce webového testu v aplikaci Visual Studio 2019 je stále nadále podporována a bude nadále podporována během životního cyklu podpory produktu. Tento Azure Monitor produktový tým se zabývá otázkami ohledně [budoucích testů dostupnosti](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)s více kroky.  
+> Webové testy s více kroky závisejí na souborech WebTest sady Visual Studio. Bylo [oznámeno](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , že Visual Studio 2019 bude poslední verzí s funkcí webového testu. Je důležité si uvědomit, že i když nebudou přidány žádné nové funkce, funkce webového testu v aplikaci Visual Studio 2019 je stále nadále podporována a bude nadále podporována během životního cyklu podpory produktu. Tento Azure Monitor produktový tým se zabývá otázkami ohledně budoucích testů dostupnosti s více kroky [](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101).  
 
 ## <a name="pre-requisites"></a>Požadavky
 
@@ -48,7 +48,7 @@ Pro vytvoření vícekrokového testu uložte scénář pomocí sady Visual Stud
 
 Slouží k zaznamenání relace webové aplikace Visual Studio Enterprise.
 
-1. Vytvořte projekt webového výkonu a zátěžového testu.  > **Nový** **Visual C#**  **test projektu** souboru >  >   > 
+1. Vytvořte projekt webového výkonu a zátěžového testu.  > **Nový** **Visual C#**  **test projektu**souboru >  >   > 
 
     ![Nové uživatelské rozhraní projektu sady Visual Studio](./media/availability-multistep/vs-web-performance-and-load-test.png)
 
@@ -136,7 +136,18 @@ Ve všech případech musíte v aplikaci vytvořit účet jenom pro účely test
 
 **Jednoduché uživatelské jméno a heslo** Záznam webového testu obvyklým způsobem. Nejprve odstraňte soubory cookie.
 
-**Ověřování SAML** Použijte modul plug-in SAML, který je k dispozici pro webové testy. Přístup k modulu plug-in pomocí...
+**Ověřování SAML**
+
+|Název vlastnosti| Popis|
+|----|-----|
+| Identifikátor URI cílové skupiny | Identifikátor URI cílové skupiny pro token SAML.  Toto je identifikátor URI pro Access Control Service (ACS) – včetně oboru názvů služby ACS a názvu hostitele. |
+| Heslo certifikátu | Heslo pro klientský certifikát, kterým bude udělen přístup k vloženému privátnímu klíči. |
+| Klientský certifikát  | Hodnota certifikátu klienta s privátním klíčem ve formátu kódování Base64. |
+| Identifikátor názvu | Identifikátor názvu pro token |
+| Není po | Hodnota TimeSpan, pro kterou bude token platný  Výchozí hodnota je 5 minut. |
+| Ne před | Hodnota TimeSpan, pro kterou byl token vytvořený v minulosti platný (k adresování časových intervalů).  Výchozí hodnota je (negativní) 5 minut. |
+| Název cílového kontextového parametru | Kontextový parametr, který získá generovaný kontrolní výraz. |
+
 
 **Tajný kód klienta** Pokud vaše aplikace obsahuje trasu přihlášení, která zahrnuje tajný klíč klienta, použijte tuto trasu. Azure Active Directory (AAD) je příkladem služby, která poskytuje přihlašování pomocí tajného klíče klienta. Ve službě AAD je tajným klíčem klienta klíč aplikace.
 

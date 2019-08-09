@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 019c4a8f77f2664c68dcc6499fb2f27cc0d1447c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 51ca9602ff155bf61eb28a59a97faa7a06322c7a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326928"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855171"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z GitHubu do Azure App Service s průběžnou integrací a nasazením Jenkinse
 
@@ -66,7 +66,7 @@ K dokončení tohoto kurzu budete potřebovat tyto položky:
    - [Modul plug-in Jenkinse prostředí pro vložení prostředí](https://plugins.jenkins.io/envinject)
    - [Přihlašovací údaje Azure](https://plugins.jenkins.io/azure-credentials)
 
-   Pokud se tyto moduly plug-in nezobrazí, ujistěte se, že jste ještě nenainstalovali, **** a to tak, že zkontrolujete kartu nainstalováno.
+   Pokud se tyto moduly plug-in nezobrazí, ujistěte se, že jste ještě nenainstalovali, a to tak, že zkontrolujete kartu nainstalováno.
 
 1. Pokud chcete nainstalovat vybrané moduly plug-in, vyberte **Stáhnout hned a po restartování nainstalujte**.
 
@@ -76,7 +76,7 @@ K dokončení tohoto kurzu budete potřebovat tyto položky:
 
 1. [Přihlaste se k úložišti GitHub pro ukázkovou aplikaci pro pružinové spouštění](https://github.com/spring-guides/gs-spring-boot). 
 
-1. V pravém horním rohu GitHubu vyberte možnost rozvětvení. ****
+1. V pravém horním rohu GitHubu vyberte rozvětvení.
 
    ![Ukázkové úložiště pro rozvětvení z GitHubu](media/tutorial-jenkins-deploy-web-app-azure-app-service/fork-github-repo.png)
 
@@ -102,7 +102,7 @@ Pokud chcete, aby nástroj Jenkinse monitoroval GitHub a reagovali, když se nov
 
    ![Přidat server GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
-1. Pokud není vybraná vlastnost **Spravovat háky** , vyberte tuto vlastnost. Zvolte **Upřesnit** , abyste mohli zadat další nastavení. 
+1. Pokud není vybraná vlastnost **Spravovat háky** , vyberte tuto vlastnost. Vyberte **Upřesnit** , abyste mohli zadat další nastavení. 
 
    ![Pro další nastavení vyberte Upřesnit.](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
@@ -162,7 +162,7 @@ Zde je výstup generovaný **`create-for-rbac`** příkazem:
 
    ![Přidat pověření instančního objektu služby Azure](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-service-principal-credentials.png)
 
-   | Vlastnost | Hodnota | Popis | 
+   | Vlastnost | Value | Popis | 
    |----------|-------|-------------| 
    | **ID předplatného** | <*yourAzureSubscription-ID*> | Hodnota GUID předplatného Azure <p>**Tip**: Pokud neznáte ID předplatného Azure, spusťte tento příkaz Azure CLI z příkazového řádku nebo v Cloud Shell a pak použijte `id` hodnotu GUID: <p>`az account list` | 
    | **ID klienta** | <*yourAzureServicePrincipal-ID*> | Hodnota `appId` GUID, která se dřív vygenerovala pro váš instanční objekt Azure | 
@@ -170,7 +170,7 @@ Zde je výstup generovaný **`create-for-rbac`** příkazem:
    | **ID tenanta** | <*yourAzureActiveDirectoryTenant-ID*> | Hodnota `tenant` GUID pro vašeho tenanta Azure Active Directory | 
    | **ID** | <*yourAzureServicePrincipalName*> | `displayName` Hodnota pro objekt služby Azure | 
 
-1. Pokud chcete potvrdit, že váš instanční objekt funguje, vyberte **ověřit instanční objekt**. Až budete hotovi, klikněte na **OK**.
+1. Pokud chcete potvrdit, že váš instanční objekt funguje, vyberte **ověřit instanční objekt**. Až to bude hotové, vyberte **OK**.
 
 Dále vytvořte kanál Jenkinse, který sestaví a nasadí vaši aplikaci.
 
@@ -182,7 +182,7 @@ V Jenkinse vytvořte úlohu kanálu pro sestavení a nasazení vaší aplikace.
 
    ![Vyberte "Nové položky"](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
-1. Zadejte název úlohy kanálu, například "My-Java-Web-App" a vyberte **kanál**. V dolní části klikněte na **tlačítko OK**.  
+1. Zadejte název úlohy kanálu, například "My-Java-Web-App" a vyberte **kanál**. V dolní části vyberte **OK**.  
 
    ![Vyberte kanál.](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
@@ -200,7 +200,7 @@ V Jenkinse vytvořte úlohu kanálu pro sestavení a nasazení vaší aplikace.
 
       ![Vyberte možnost Příprava prostředí pro běh a nastavte proměnné prostředí.](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
 
-1. Jakmile budete hotoví, vyberte **Uložit**.
+1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
 Dále vytvořte skripty sestavení a nasazení pro Jenkinse.
 
@@ -261,7 +261,7 @@ Nyní zadejte skript sestavení a nasazení, který má Jenkinse použít.
 
    1. V okně **SCM** , které se zobrazí, vyberte **Git** jako správu zdrojového kódu. 
 
-   1. V části **** úložiště v poli **Adresa URL úložiště**zadejte adresu URL rozvětvení GitHubu, například: 
+   1. V části úložiště v poli **Adresa URL úložiště**zadejte adresu URL rozvětvení GitHubu, například: 
 
       `https://github.com/<your-GitHub-username>/gs-spring-boot`
 
@@ -273,7 +273,7 @@ Nyní zadejte skript sestavení a nasazení, který má Jenkinse použít.
 
    ![Kanál bodu na skriptu](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
-1. Jakmile budete hotoví, vyberte **Uložit**.
+1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
 V dalším kroku Sestavte a nasaďte aplikaci pro Azure App Service. 
 
@@ -309,7 +309,7 @@ V dalším kroku Sestavte a nasaďte aplikaci pro Azure App Service.
 
    `complete/src/main/java/Hello/Application.java`
    
-1. V pravém horním rohu v GitHubu vyberte **Upravit tento soubor**.
+1. V pravém horním rohu GitHubu vyberte **Upravit tento soubor**.
 
 1. Proveďte tuto změnu na `commandLineRunner()` metodu a potvrďte změnu ve `master` větvi úložiště. Toto potvrzení ve `master` větvi spustí sestavení v Jenkinse. 
    
@@ -325,7 +325,7 @@ V dalším kroku Sestavte a nasaďte aplikaci pro Azure App Service.
 
 Pokud narazíte na chyby s moduly plug-in Jenkinse, zapište problém v [JENKINSE JIRA](https://issues.jenkins-ci.org/) pro konkrétní součást.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Použití virtuálních počítačů Azure jako agentů sestavení](/azure/jenkins/jenkins-azure-vm-agents)
