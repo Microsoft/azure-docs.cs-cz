@@ -212,13 +212,13 @@ Kopírování dat ze SAP BW Open centra, se používají následující mapován
 | Typ ABAP SAP | Data factory dočasné datový typ |
 |:--- |:--- |
 | C (String) | String |
-| Můžu (celé číslo) | Int32 |
+| I (integer) | Int32 |
 | F (Float) | Double |
 | D (Date) | String |
-| T (čas) | String |
-| P (konfiguračních dat spouštění, balení, Měna, Decimal, množství) | Decimal |
+| T (Time) | String |
+| P (BCD Packed, Currency, Decimal, Qty) | Decimal |
 | N (Numc) | String |
-| X (binární a Raw) | String |
+| X (Binary and Raw) | String |
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
