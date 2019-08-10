@@ -7,15 +7,15 @@ author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9b87529014a0eeb5561cd166a29f2309198733b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ca223735e64e5499313872ba0508bfb0d8ec7ed2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565639"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882703"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Definování a použití pracovních postupů moderování
 
@@ -51,7 +51,7 @@ Vyberte požadovaný výstup, který chcete použít, a nastavte podmínky pro j
 
 ### <a name="define-the-action"></a>Definovat akci
 
-Přejít **na část a** , kde vyberete akci. Následující příklad vytvoří revizi obrázku a přiřadí značku. Volitelně můžete přidat alternativní cestu (Else) a také pro ni nastavit akci.
+Přejít na část a, kde vyberete akci. Následující příklad vytvoří revizi obrázku a přiřadí značku. Volitelně můžete přidat alternativní cestu (Else) a také pro ni nastavit akci.
 
 ![Akce definování pracovního postupu](images/image-workflow-action.PNG)
 
@@ -81,6 +81,6 @@ V části **Revize** klikněte na kartu **Image** a ověřte, že se právě vyt
 
 ![Recenze obrázků](images/image-workflow-review.PNG)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této příručce jste zjistili, jak pomocí [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com)Content moderator nastavit a používat pracovní postupy moderování. Další informace o tom, jak programově vytvářet pracovní postupy, najdete v [průvodci REST API](../try-review-api-workflow.md) .

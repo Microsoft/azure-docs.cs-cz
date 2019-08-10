@@ -10,18 +10,18 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 886c93871a719770cbcbbcef2f536fd7515da34e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a2f743b2b7e63df8b81a1024b20e3e27a3f247a9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854218"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932997"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnerů detektoru anomálií
 
 Běhové prostředí kontejneru **detektoru anomálií** se konfiguruje `docker run` pomocí argumentů příkazu. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení fakturace jsou specifická pro kontejner. 
 
-# <a name="configuration-settings"></a>Nastavení konfigurace
+## <a name="configuration-settings"></a>Nastavení konfigurace
 
 Tento kontejner má následující nastavení:
 
@@ -135,7 +135,7 @@ Následující příklady Docker jsou pro kontejner detektoru anomálií.
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nasazení kontejneru detektoru anomálií pro Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)
 * [Další informace o službě rozhraní API detektoru anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

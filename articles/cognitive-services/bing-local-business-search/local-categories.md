@@ -6,15 +6,15 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: quickstart
+ms.topic: concpetual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: e7088ac11556d8810c744ab4b56d2639865fb2f5
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 44fb774e8f65d773766c92842820c47cbf931a55
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423416"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883367"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Kategorie hledání pro rozhraní API pro vyhledávání místních obchodních aplikací Bingu
 
@@ -215,7 +215,7 @@ X-MSEdge-Ref: Ref A: 68AFB51807C6485CAB8AAF20E232EFFF Ref B: CO1EDGE0108 Ref C: 
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Geografické hranice hledání](specify-geographic-search.md)
 - [Dotaz a odpověď](local-search-query-response.md)
 - [Rychlý Start vC#](quickstarts/local-quickstart.md)

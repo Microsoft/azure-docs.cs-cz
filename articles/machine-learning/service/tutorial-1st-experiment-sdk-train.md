@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 66a0c625d300a74787e3640992675d5a3f31610c
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a3db70925d59f9d0e2793b04824b2e8606719dd4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828544"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934240"
 ---
 # <a name="tutorial-train-your-first-model"></a>Kurz: Trénování prvního modelu
 
@@ -23,6 +23,7 @@ Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím ku
 
 V tomto kurzu se seznámíte s následujícími úlohami:
 
+> [!div class="checklist"]
 > * Připojte svůj pracovní prostor a vytvořte experiment.
 > * Načtěte data a Naučte scikit modely.
 > * Zobrazení výsledků školení na portálu
@@ -195,7 +196,7 @@ Pokud jste použili server cloudového poznámkového bloku, zastavte virtuáln�
 
 Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste provedli následující úlohy:
 

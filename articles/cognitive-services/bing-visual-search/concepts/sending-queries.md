@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 7/01/2019
 ms.author: aahi
-ms.openlocfilehash: b0b26c771f19edeb45fd4fb6aa3f24c335d0f51e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6604e5d5b3b77955c9e5f78df5d2a5b804bf09ef
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562713"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883582"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Odesílání vyhledávacích dotazů na rozhraní API pro vizuální vyhledávání Bingu
 
@@ -73,7 +73,7 @@ Požadavky se musí zasílat jenom jako požadavky HTTP POST.
 
 Následují parametry dotazu, které váš požadavek musí obsahovat. Měli byste aspoň zadat `mkt` parametr dotazu:
 
-| Name | Hodnota | type | Požadováno |
+| Name | Value | type | Požadováno |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | Kód země se dvěma znaky, který představuje místo, odkud pocházejí výsledky.<br /><br /> Pokud tento parametr nastavíte, musíte zadat také hlavičku [Accept-Language](#acceptlanguage). Bing použije první podporovaný jazyk, který najde v seznamu jazyků, a zkombinuje ho se zadaným kódem země, aby určil trh, ze kterého má vrátit výsledky. Pokud seznam jazyků podporovaný jazyk neobsahuje, najde Bing nejbližší jazyk a trh, který požadavek podporuje. Nebo může místo zadaného trhu pro výsledky použít trh agregovaný nebo výchozí.<br /><br /> Tento parametr dotazu a parametr dotazu `Accept-Language` byste měli použít jenom v případě, že zadáte více jazyků. Jinak byste měli použít parametry dotazu `mkt` a `setLang`.<br /><br /> Tento parametr a parametr dotazu [mkt](#mkt) se vzájemně vylučují &mdash; nezadávejte oba. | Řetězec | Ne       |
 | <a name="mkt" />mkt   | Trh, odkud pochází výsledky. <br /><br /> **POZNÁMKA:** Měli byste vždycky zadat trh, pokud je známý. Určení trhu pomáhá Bingu směrovat požadavek a vrátit odpovídající a optimální odpověď.<br /><br /> Tento parametr a parametr dotazu [cc](#cc) se vzájemně vylučují &mdash; nezadávejte oba. | Řetězec | Ano      |

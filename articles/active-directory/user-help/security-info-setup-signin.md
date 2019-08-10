@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4ca21ecf7ad0707ad33220a8e8c2700638f8e25
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 86c9368785bb28f27df599c8b9cbe09c1fa5dee2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824812"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880781"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Nastavení informací o zabezpečení (Preview) na příkazovém řádku přihlašovací stránky
 
@@ -56,6 +56,9 @@ Postupujte podle těchto kroků a nastavte bezpečnostní údaje pro svůj praco
 3. Při nastavování aplikace Microsoft Authenticator na mobilním zařízení zůstat na stránce **Nastavení účtu** .
 
 4. Otevřete aplikaci Microsoft Authenticator, vyberte, jestli se mají zobrazovat oznámení (Pokud se zobrazí výzva), vyberte **Přidat účet** z ikony **přizpůsobení a řízení** v pravém horním rohu a pak vyberte **pracovní nebo školní účet**.
+
+    >[!Note]
+    >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
 5. Vraťte se na váš počítač na stránku **Nastavení účtu** a pak vyberte **Další**.
 
@@ -133,7 +136,7 @@ Při používání hesel aplikací je důležité pamatovat:
 
     ![Stránka hesla aplikace s upozorněním na dokončení](media/security-info/app-password-complete.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Informace o tom, jak změnit, odstranit nebo aktualizovat výchozí bezpečnostní údaje, najdete v těchto tématech:
 

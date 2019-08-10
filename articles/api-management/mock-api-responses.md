@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8840c85e35a371b8c7a0a76dbee6353a20b212be
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205308"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881112"
 ---
 # <a name="mock-api-responses"></a>Napodobení odpovědí API
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
++ Dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Vytvoření testovacího rozhraní API 
 
@@ -79,7 +79,7 @@ Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéh
 5. Vyberte ze seznamu **200 OK**.
 6. Pod záhlavím **Reprezentace** na pravé straně vyberte **+ Přidat reprezentaci**.
 7. Do vyhledávacího pole zadejte *application/json* a vyberte typ obsahu **application/json**.
-8. Do textového pole **Ukázka** zadejte `{ 'sampleField' : 'test' }`.
+8. Do textového pole **Ukázka** zadejte `{ "sampleField" : "test" }`.
 9. Vyberte **Vytvořit**.
 
 ## <a name="enable-response-mocking"></a>Povolení napodobování odpovědí
@@ -120,7 +120,7 @@ Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéh
 
 > [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

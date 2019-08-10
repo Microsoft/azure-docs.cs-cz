@@ -7,15 +7,15 @@ author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: 70bc2c9f457aba09f3d3220061b2fd31d0923906
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5e12806aca7c53c254cc43c8ff5bb8d314f9993e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565661"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882734"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurace nástroje pro recenze
 
@@ -35,7 +35,7 @@ V této části se dozvíte, jak vytvářet dílčí týmy a rychle přiřazovat
 
 ### <a name="create-a-subteam"></a>Vytvořit subtým
 
-Přejděte do části  subtýmy a klikněte na **Přidat dílčí tým**. Do dialogového okna zadejte název svého subtýmu a klikněte na **Uložit**.
+Přejděte do části subtýmy a klikněte na **Přidat dílčí tým**. Do dialogového okna zadejte název svého subtýmu a klikněte na **Uložit**.
 
 ![Název subtýmu](images/1-Teams-2.PNG)
 

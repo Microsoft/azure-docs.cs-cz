@@ -7,15 +7,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: f1059fac4d44138a4e9bc04c858501234974dc43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/08/2019
+ms.openlocfilehash: 5d7414d13b3fb1390b12084f0480e0549a380264
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60526222"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931612"
 ---
-# <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Použití Pythonu k připojení a dotazování dat
+# <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Použití Pythonu pro připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí [Pythonu](https://python.org). Používá příkazy jazyka SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac OS, Ubuntu Linux a Windows. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Pythonu a teprve začínáte pracovat se službou Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -31,8 +31,8 @@ Nainstalujte na svém počítači [Python](https://www.python.org/downloads/) a 
 >
 
 ### <a name="windows"></a>Windows
-1. Z webu [python.org](https://www.python.org/downloads/windows/) stáhněte a nainstalujte Python 2.7. 
-2. Spusťte příkazový řádek a zkontrolujte instalaci Pythonu. Spuštěním příkazu `C:\python27\python.exe -V` s použitím přepínače V (velké písmeno) zobrazte číslo verze.
+1. Stáhněte a nainstalujte Python 3,7 z [Python.org](https://www.python.org/downloads/windows/). 
+2. Spusťte příkazový řádek a zkontrolujte instalaci Pythonu. Spuštěním příkazu `C:\python37\python.exe -V` s použitím přepínače V (velké písmeno) zobrazte číslo verze.
 3. Z webu [mysql.com](https://dev.mysql.com/downloads/connector/python/) nainstalujte konektor Pythonu pro MySQL odpovídající vaší verzi Pythonu.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)

@@ -1,36 +1,36 @@
 ---
 title: Odesílání dat do rozhraní API pro rozpoznávání rukopisu
 titleSuffix: Azure Cognitive Services
-description: Další informace o volání rozhraní API pro analyzátor Ink pro různé aplikace
+description: Další informace o volání rozhraní API analyzátoru barev pro různé aplikace
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 23431a6171f9ce4d2550ee62ac84679ce36126de
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: a5fe77ace5f745911bb9085dd6996a8d21fe265f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721777"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879035"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Odesílání dat do rozhraní API pro rozpoznávání rukopisu 
 
-Termín digitální rukopis označuje technologie, které umožňují digitální reprezentaci výstupu, jako jsou rukopis a kresby. To je obvykle opírá od digitizéru, který zachycuje pohybů vstupní zařízení, jako je stylus. Zařízení stále víc podporují bohatá prostředí digitálních rukopisů a umělá inteligence a strojové učení umožňují rozpoznávání psaných tvarů a textu v libovolném kontextu. Rozhraní API pro rozpoznávání rukopisu umožňuje odeslat inkoustových tahů a získat podrobné informace o nich. 
+Termín digitální rukopis označuje technologie, které umožňují digitální reprezentaci výstupu, jako jsou rukopis a kresby. To se obvykle dosahuje pomocí digitizéru, který zachycuje přesuny vstupních zařízení, jako je Stylus. Zařízení stále víc podporují bohatá prostředí digitálních rukopisů a umělá inteligence a strojové učení umožňují rozpoznávání psaných tvarů a textu v libovolném kontextu. Rozhraní API pro rozpoznávání rukopisu umožňuje odeslat tahy perem a získat podrobné informace o nich. 
 
-## <a name="the-ink-recognizer-api-vs-ocr-services"></a>Vs rozhraní API pro rozpoznávání rukopisu. OCR služby
+## <a name="the-ink-recognizer-api-vs-ocr-services"></a>Rozhraní API pro rozpoznávání rukopisu vs. Služby OCR
 
-Rozhraní API pro rozpoznávání rukopisu nepoužívá optické Recognition(OCR) znak. OCR služby zpracování dat pixel z bitové kopie poskytnout rozpoznávání textu psaného rukou a text. To se někdy nazývá offline rozpoznávání. Místo toho rozhraní API pro rozpoznávání rukopisu vyžaduje digitálních inkoust stroke data, která jsou zachyceny při použití vstupního zařízení. Zpracování dat digitálních inkoust tímto způsobem může vytvářet ve srovnání s OCR služby přesnější výsledky rozpoznávání. 
+Rozhraní API pro rozpoznávání rukopisu nepoužívá optické rozpoznávání znaků (OCR). Služba OCR zpracovává data v pixelech z obrázků, aby poskytovala rozpoznávání rukopisu a textu. To se někdy nazývá rozpoznávání offline. Místo toho rozhraní API pro rozpoznávání rukopisu vyžaduje, aby se při použití vstupního zařízení použila data digitálního tahu. Zpracování dat digitálního inkoustu tímto způsobem může dosáhnout přesnější výsledků rozpoznávání v porovnání se službami OCR. 
 
-## <a name="sending-ink-data"></a>Odesílání dat inkoustu
+## <a name="sending-ink-data"></a>Odesílání dat rukopisu
 
-Rozhraní API pro rozpoznávání rukopisu vyžaduje souřadnice X a Y, které představují inkoustových tahů vytvořené vstupní zařízení, od okamžiku, dotkne povrch detekce při je zrušeno. Body každého tahu musí být řetězcový hodnot oddělených čárkou a být ve formátu JSON jako v příkladu níže. Kromě toho každého tahu musí mít jedinečné ID v každém požadavku. Pokud ID se opakuje v rámci stejné žádosti, rozhraní API vrátí chybu. Pro velmi přesné rozpoznávání výsledky máte alespoň osm číslic za desetinnou čárkou. Počátek (0; 0) plátna je považován za levém horním rohu plátna rukopisu.
+Rozhraní API pro rozpoznávání rukopisu vyžaduje souřadnice X a Y, které reprezentují tahy rukopisu vytvořené vstupním zařízením, od okamžiku, kdy se dotkne roviny detekce na okamžik, kdy se přeruší. Body každého tahu musí být řetězcem hodnot oddělených čárkami a formátovány ve formátu JSON, podobně jako v následujícím příkladu. Každý tah inkoustu navíc musí mít v každém požadavku jedinečný identifikátor. Pokud se ID opakuje v rámci stejné žádosti, rozhraní API vrátí chybu. Pro nejpřesnější výsledky rozpoznávání musí mít za desetinnou čárkou aspoň osm číslic. Počátek (0, 0) plátna se považuje za levý horní roh plátna pro rukopis.
 
 > [!NOTE]
-> V následujícím příkladu není platný kód JSON. Žádost o úplné JSON pro rozpoznávání rukopisu můžete najít na [Githubu](https://go.microsoft.com/fwlink/?linkid=2089909).
+> Následující příklad není platný formát JSON. Na GitHubu můžete najít úplný požadavek na JSON pro rozpoznávání [](https://go.microsoft.com/fwlink/?linkid=2089909)rukopisu.
  
 ```json
 {
@@ -56,40 +56,40 @@ Rozhraní API pro rozpoznávání rukopisu vyžaduje souřadnice X a Y, které p
 }
 ```
 
-## <a name="ink-recognizer-response"></a>Odpověď modulu pro rozpoznávání rukopisu
+## <a name="ink-recognizer-response"></a>Odpověď na rozpoznávání rukopisu
 
-Rozhraní API pro rozpoznávání rukopisu vrátí odpověď analýzy o objekty, které uznává z obsahu rukopisu. Odpověď obsahuje rozpoznávání jednotek, které popisují vztahy mezi různé inkoustových tahů. Například tahy, které vytvářejí distinct, samostatné tvary bude obsažena v různých jednotkách. Každá jednotka obsahuje podrobné informace o jeho inkoustových tahů včetně rozpoznaný objektu, jeho souřadnice a další atributy kreslení.
+Rozhraní API pro rozpoznávání rukopisu vrátí odpověď na analýzu pro objekty, které rozpoznal obsah inkoustu. Odpověď obsahuje jednotky pro rozpoznávání, které popisují vztahy mezi různými tahy perem. Například tahy, které vytvářejí samostatné, oddělené tvary budou obsaženy v různých jednotkách. Každá jednotka obsahuje podrobné informace o jeho tazích pera, včetně rozpoznaného objektu, jeho souřadnic a dalších atributů kreslení.
 
-## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>Tvary rozpoznávaných rozhraní API pro rozpoznávání rukopisu
+## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>Obrazce rozpoznané rozhraním API pro rozpoznávání rukopisu
 
-Rozhraní API pro rozpoznávání rukopisu můžete identifikovat nejčastěji používané tvary v poznámek. Obrázku níže ukazuje některé základní příklady. Úplný seznam tvary a další obsah inkoustu rozpoznávaných rozhraní API najdete v článku [článkem referenční dokumentace rozhraní API](https://go.microsoft.com/fwlink/?linkid=2089907). 
+Rozhraní API pro rozpoznávání rukopisu dokáže identifikovat nejčastěji používané tvary v pořizování. Následující obrázek ukazuje několik základních příkladů. Úplný seznam obrazců a dalšího inkoustového obsahu rozpoznávaného rozhraním API najdete v [článku referenční informace k rozhraní API](https://go.microsoft.com/fwlink/?linkid=2089907). 
 
-![Seznam tvary rozpoznávaných rozhraní API pro rozpoznávání rukopisu](../media/shapes.png)
+![Seznam obrazců rozpoznaných rozhraním API pro rozpoznávání rukopisu](../media/shapes.png)
 
-## <a name="recommended-calling-patterns"></a>Doporučené způsoby volání
+## <a name="recommended-calling-patterns"></a>Doporučené vzory volání
 
-Můžete volat rozhraní REST API pro rozpoznávání rukopisu v různé vzorce podle vaší aplikace. 
+Můžete zavolat Nástroj pro rozpoznávání rukopisu REST API v různých vzorech podle vaší aplikace. 
 
-### <a name="user-initiated-api-calls"></a>Volání rozhraní API, kterou inicioval uživatel
+### <a name="user-initiated-api-calls"></a>Uživatelem iniciovaná volání rozhraní API
 
-Pokud vytváříte aplikaci, která využívá uživatelský vstup (například Poznámka odebírání nebo poznámky aplikace), možná budete chtít uživatelům umožnit při řízení a které rukopisu se odešlou do rozhraní API pro rozpoznávání rukopisu. Tato funkce je obzvláště užitečná při text i tvary jsou k dispozici na na plátno a uživatelé chtějí provádět různé akce u každého. Zvažte přidání funkce výběru (například nepravidelné oblasti nebo jiný nástroj pro výběr geometrické), které umožnit uživatelům si vybrat, co se odesílá do rozhraní API.  
+Pokud vytváříte aplikaci, která přijímá vstup uživatele (například pořizování nebo anotace aplikace), můžete jim poskytnout kontrolu nad tím, kdy a který rukopis se pošle do rozhraní API pro rozpoznávání rukopisu. Tato funkce je užitečná hlavně v případě, že je text a obrazce na plátně přítomné a uživatelé pro ně chtějí provádět různé akce. Zvažte přidání funkcí výběru (například laso nebo jiného nástroje pro geometrické výběry), které uživatelům umožňují vybrat, co se má do rozhraní API odeslat.  
 
-### <a name="app-initiated-api-calls"></a>Aplikace iniciovala volání rozhraní API
+### <a name="app-initiated-api-calls"></a>Volání rozhraní API iniciovaná aplikací
 
-Je také možné aplikaci volání rozhraní API pro rozpoznávání rukopisu po vypršení časového limitu. Když pravidelně odesílá aktuální inkoustových tahů rozhraní API, můžete ukládat výsledky rozpoznávání podle jejich vytvoření při současném zvyšování doba odezvy rozhraní API. Můžete například odeslat, že řádek rukou psaný text do rozhraní API potom, co detekovaly uživatel dokončil. 
+Aplikaci můžete také volat rozhraní API pro rozpoznávání rukopisu po vypršení časového limitu. Tím, že se aktuální tahy rukopisu odesílají do rozhraní API rutinně, můžete ukládat výsledky rozpoznávání při jejich vytváření a zároveň zlepšit dobu odezvy rozhraní API. Například po zjištění, že uživatel dokončil rozpoznávání, můžete do rozhraní API odeslat řádek ručně psaného textu. 
 
-S výsledky rozpoznávání předem poskytuje informace o vlastnostech inkoustových tahů jejich vztah k sobě navzájem. Například které tahy jsou seskupené do formuláře téhož slova, řádek, seznam, odstavce nebo tvar. Tyto informace můžete vylepšit nebudou moct vybrat skupiny tahů najednou, například funkce Výběr rukopisu vaší aplikace.
+Výsledkem rozpoznávání se předem získáte informace o vlastnostech tahů perem, které se navzájem týkají. Například, které tahy jsou seskupeny tak, aby tvořily stejné slovo, řádek, seznam, odstavec nebo tvar. Tyto informace mohou zlepšit funkce výběru inkoustu vaší aplikace, například možnost vybrat skupiny tahů najednou.
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>Integrace rozhraní API pro rozpoznávání rukopisu pomocí Windows Ink
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) poskytuje nástroje a technologie, které zvýší digitální prostředí rukopisu na mnoha různých zařízení. Platforma Windows Ink můžete kombinovat pomocí rozhraní API pro rozpoznávání rukopisu vytvářet aplikace, které zobrazí a interpretovat digitální inkoustových tahů.
+[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) nabízí nástroje a technologie, které umožňují digitální psaní digitálních zážitků na nejrůznějších zařízeních. Pomocí rozhraní API pro rozpoznávání rukopisu můžete kombinovat platformu Windows Ink k vytváření aplikací, které zobrazují a interpretují tahy digitálního pera.
 
 ## <a name="next-steps"></a>Další postup
 
 * [Co je rozhraní API pro rozpoznávání rukopisu?](../overview.md)
-* [Odkaz na rozhraní REST API pro rozpoznávání rukopisu](https://go.microsoft.com/fwlink/?linkid=2089907)
+* [Odkaz na REST API pro rozpoznávání rukopisu](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-* Zahájit odesílání dat stroke digitálního inkoustu pomocí:
+* Spustit posílání dat digitálního inkoustového tahu pomocí:
     * [C#](../quickstarts/csharp.md)
     * [Java](../quickstarts/java.md)
     * [JavaScript](../quickstarts/javascript.md)

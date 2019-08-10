@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: b3fdcfbb9869c0199c91f5bbc6ca1f02fec996cf
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 70fee90fb82618a409d2566a3235ad8ca42e1760
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828670"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934418"
 ---
-# <a name="tutorial-setup-environment-and-workspace"></a>Kurz: Nastavení prostředí a pracovního prostoru
+# <a name="tutorial-set-up-environment-and-workspace"></a>Kurz: Nastavení prostředí a pracovního prostoru
 
 V tomto kurzu dokončíte kompletní kroky, abyste mohli začít se sadou Azure Machine Learning Python SDK spuštěnou v poznámkových blocích Jupyter. Tento kurz je **první částí série kurzů se dvěma částmi**a popisuje nastavení a konfiguraci prostředí Python a také vytvoření pracovního prostoru pro správu experimentů a modelů strojového učení. [**Druhá část**](tutorial-1st-experiment-sdk-train.md) sestavení na této stránce umožňuje výuku více modelů strojového učení a zavedení procesu správy modelů pomocí Azure Portal i sady SDK.
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořte pracovní prostor Machine Learning, který chcete použít v dalším kurzu.
-> * Vytvořte si virtuální počítač s poznámkovým blokem, cloudový server Jupyter Azure Machine Learning s předinstalovaným a předem nakonfigurovanou sadou SDK pro Python.
+> * Vytvořte cloudový virtuální počítač Azure Machine Learning s Jupyter poznámkovým blokem s nainstalovanou a předem nakonfigurovanou sadou Python SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 

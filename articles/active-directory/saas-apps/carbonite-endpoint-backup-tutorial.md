@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5bf49538823ea50bca197a78ec54d4ddcae1ff
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: e078cb7daa787b9fe5e8bc996b36f0fef198f41c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708281"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879671"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Kurz: Integrace zálohování koncového bodu Carbonite s Azure Active Directory
 
@@ -125,27 +125,35 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 ### <a name="configure-carbonite-endpoint-backup-sso"></a>Konfigurace jednotného přihlašování koncového bodu Carbonite
 
-1. V jiném okně webového prohlížeče se přihlaste ke svému webu Carbonite Endpoint Backup jako správce.
+1. Pokud chcete automatizovat konfiguraci v rámci zálohování koncového bodu Carbonite, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-1. V levém podokně klikněte na **Společnost** .
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče klikněte na **nastavení zálohování koncového bodu Carbonite** , které vás nasměruje do zálohovací aplikace koncového bodu Carbonite. Odtud zadejte přihlašovací údaje správce, které se přihlásí k zálohování koncového bodu Carbonite. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-7.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+3. Pokud chcete nastavit zálohování koncového bodu Carbonite ručně, otevřete nové okno webového prohlížeče a přihlaste se k firemnímu webu Carbonite pro zálohování jako správce a proveďte následující kroky:
+
+4. V levém podokně klikněte na **Společnost** .
 
     ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
-1. Klikněte na **jednotné přihlašování**.
+5. Klikněte na **jednotné přihlašování**.
 
     ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
-1. Klikněte na **Povolit** a pak pro konfiguraci klikněte na **Upravit nastavení** .
+6. Klikněte na **Povolit** a pak pro konfiguraci klikněte na **Upravit nastavení** .
 
     ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
-1. Na stránce nastavení **jednotného přihlašování** proveďte následující kroky:
+7. Na stránce nastavení **jednotného přihlašování** proveďte následující kroky:
 
     ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
-    1. Do textového pole **název zprostředkovatele identity** zadejte název zprostředkovatele identity, například **Microsoft Azure AD**.
+    1. Do textového pole **název zprostředkovatele identity** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
 
-    1. Do textového pole **Adresa URL poskytovatele identity** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
+    1. Do textového pole **Adresa URL poskytovatele identity** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
     1. Klikněte na **zvolit soubor** a nahrajte stažený soubor **certifikátu (Base64)** z Azure Portal.
 

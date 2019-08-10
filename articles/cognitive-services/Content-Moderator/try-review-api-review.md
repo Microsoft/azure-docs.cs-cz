@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 581ab488337cfecae3f5dd97610c7f92c75af8b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ec45f182e24f44c2222d64f18e2aa0aeea845727
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564347"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882344"
 ---
 # <a name="create-human-reviews-rest"></a>Vytvořit lidské recenze (REST)
 
@@ -44,7 +44,7 @@ Upravte pole **Text žádosti** , aby se ZADAL požadavek JSON s následujícím
 
 - **Metadata**: Vlastní páry klíč-hodnota, které se mají vrátit do koncového bodu zpětného volání. Pokud je klíč krátkým kódem, který je definován v [nástroji](https://contentmoderator.cognitive.microsoft.com)pro revizi, zobrazí se jako značka.
 - **Obsah**: V případě obrázku a obsahu videa se jedná o řetězec adresy URL odkazující na obsah. V případě textového obsahu je to skutečný textový řetězec.
-- ID **obsahu:** Vlastní řetězec identifikátoru. Tento řetězec je předán rozhraní API a vrácen prostřednictvím zpětného volání. Je vhodný pro přidružení interních identifikátorů nebo metadat k výsledkům úlohy moderování.
+- ID obsahu: Vlastní řetězec identifikátoru. Tento řetězec je předán rozhraní API a vrácen prostřednictvím zpětného volání. Je vhodný pro přidružení interních identifikátorů nebo metadat k výsledkům úlohy moderování.
 - **CallbackEndpoint**: Volitelné Adresa URL pro příjem informací o zpětném volání po dokončení revize.
 
 Výchozí text požadavku ukazuje příklady různých typů revizí, které můžete vytvořit:

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: ed4a57a791c88ae7df0337a0c1cc74dde14a13d8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ba73b75e30639dd3f5cf5523124c926ea3442fa1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595084"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932026"
 ---
 # <a name="translator-text-api-30-detect"></a>Translator Text API 3,0: Detect
 
@@ -176,10 +176,6 @@ Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chy
 
 Následující příklad ukazuje, jak načíst jazyky podporované pro překlad textu.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"
 ```
-
----

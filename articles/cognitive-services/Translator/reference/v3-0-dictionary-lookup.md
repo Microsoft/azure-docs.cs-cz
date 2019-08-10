@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 9a06c8e3b50c3f54971694f8d3924a3a5ba5f071
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0bbdba343888bc91521245d0c9a0e4eaa87c5538
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595032"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932011"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3,0: Slovníkové vyhledávání
 
@@ -140,13 +140,9 @@ Platí následující omezení:
 
 Tento příklad ukazuje, jak vyhledat alternativní překlady ve španělštině anglického období `fly` .
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
 ```
-
----
 
 Tělo odpovědi (zkrácené pro přehlednost) je:
 
@@ -191,13 +187,9 @@ Tělo odpovědi (zkrácené pro přehlednost) je:
 
 Tento příklad ukazuje, co se stane, když hledaný termín neexistuje pro platnou dvojici slovníku.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"
 ```
-
----
 
 Vzhledem k tomu, že výraz nebyl nalezen ve slovníku, tělo odpovědi obsahuje prázdný `translations` seznam.
 

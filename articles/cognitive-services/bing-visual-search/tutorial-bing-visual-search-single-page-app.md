@@ -1,37 +1,37 @@
 ---
-title: " Vytvoření webové aplikace jednostránkové – vizuální vyhledávání Bingu"
+title: " Vytvoření jednostránkové webové aplikace – Vizuální vyhledávání Bingu"
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak integrovat Visual API Bingu pro vyhledávání do jednostránkovou webovou aplikaci.
+description: Naučte se integrovat rozhraní API pro vizuální vyhledávání Bingu do jednostránkové webové aplikace.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: aahi
-ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0370be1c10bc0f5813bec833be78ad31a3d61a7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829595"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880647"
 ---
-# <a name="create-a-visual-search-single-page-web-app"></a>Vytvořit pro vizuální vyhledávání jednostránkovou webovou aplikaci
+# <a name="create-a-visual-search-single-page-web-app"></a>Vytvoření webové aplikace Vizuální vyhledávání jednostránkového stránkování
 
-Bing API pro vizuální vyhledávání vrací přehledy o určité imagi. Můžete nahrát obrázek nebo zadejte adresu URL do jedné. Přehledy jsou vizuálně podobné obrázky, nákupní zdrojů, webové stránky, které zahrnují image a další. Jsou podobné těch, které jsou zobrazené na Bing.com/images přehledy vrácená rozhraním API vizuální vyhledávání Bingu.
+Rozhraní API pro vizuální vyhledávání Bingu vrátí přehledy pro obrázek. Můžete buď nahrát obrázek, nebo zadat adresu URL k jednomu. Přehledy jsou vizuálně podobné obrázky, nákupní zdroje, webové stránky, které obsahují obrázek, a další. Přehledy vrácené rozhraní API pro vizuální vyhledávání Bingu jsou podobné těm, které jsou zobrazené na Bing.com/images.
 
-Tento kurz vysvětluje, jak rozšířit jednostránkovou webovou aplikaci pro rozhraní API Bingu pro vyhledávání obrázků. K zobrazení tohoto kurzu nebo získat zdrojový kód se tady použít, najdete v článku [kurzu: Vytvoření jednostránkovou aplikaci pro rozhraní API Bingu pro vyhledávání obrázků](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md).
+V tomto kurzu se dozvíte, jak můžete na rozhraní API Bingu pro vyhledávání obrázků zvětšit jednostránkové webovou aplikaci. Pokud chcete zobrazit tento kurz nebo získat zde používaný zdrojový kód, přečtěte si téma [kurz: Vytvořte jednostránkovou aplikaci pro rozhraní API Bingu pro vyhledávání obrázků](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md).
 
-Úplný zdrojový kód pro tuto aplikaci (po rozšíření ho na použití Bing API pro vizuální vyhledávání), je k dispozici na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html).
+Úplný zdrojový kód pro tuto aplikaci (po rozšíření IT na použití rozhraní API pro vizuální vyhledávání Bingu) je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html).
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>Volání rozhraní API vizuální vyhledávání Bingu a zpracovat odpověď
+## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>Volání rozhraní API pro vizuální vyhledávání Bingu a zpracování odpovědi
 
-Upravit kurzu Bingu pro vyhledávání obrázků a přidejte následující kód do konce `<script>` – element (a před ukončením `</script>` značky). Následující kód zpracovává odpověď z rozhraní API pro vizuální vyhledávání, Iteruje přes výsledky a zobrazí je:
+Upravte kurz vyhledávání obrázků Bingu a přidejte následující kód na konec `<script>` elementu (a před uzavírací `</script>` značku). Následující kód zpracovává odezvu vizuálního hledání z rozhraní API, prochází výsledky a zobrazí je:
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -63,7 +63,7 @@ function handleVisualSearchResponse(){
 }
 ```
 
-Následující kód odešle požadavek hledání rozhraní API pomocí naslouchací proces událostí volání `handleVisualSearchResponse()`:
+Následující kód odešle požadavek na hledání do rozhraní API pomocí naslouchacího procesu události pro volání `handleVisualSearchResponse()`:
 
 ```javascript
 function bingVisualSearch(insightsToken){
@@ -101,7 +101,7 @@ function bingVisualSearch(insightsToken){
 
 ## <a name="capture-insights-token"></a>Zachycení tokenu přehledů
 
-Přidejte následující kód, který `searchItemsRenderer` objektu. Tento kód přidá odkaz **find similar** (najít podobné), který při kliknutí volá funkci `bingVisualSearch`. Funkce přijímá `imageInsightsToken` jako argument.
+Do `searchItemsRenderer` objektu přidejte následující kód. Tento kód přidá odkaz **find similar** (najít podobné), který při kliknutí volá funkci `bingVisualSearch`. Funkce přijímá `imageInsightsToken` jako argument.
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
@@ -109,7 +109,7 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 
 ## <a name="display-similar-images"></a>Zobrazení podobných obrázků
 
-Přidejte následující kód HTML na řádek 601. Tento kód kód přidá prvek pro zobrazení výsledků volání API pro vizuální vyhledávání Bingu:
+Přidejte následující kód HTML na řádek 601. Tento kód přidá element pro zobrazení výsledků volání rozhraní API pro vizuální vyhledávání Bingu:
 
 ``` html
 <div id="insights">
@@ -123,4 +123,4 @@ Když jsou všechny prvky kódu JavaScriptu a HTML na místě, zobrazují se vý
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz: Oříznutí obrázku s SDK vizuální vyhledávání Bingu proC#](tutorial-visual-search-crop-area-results.md)
+> [Kurz: Ořízne obrázek pomocí Vizuální vyhledávání Bingu SDK proC#](tutorial-visual-search-crop-area-results.md)

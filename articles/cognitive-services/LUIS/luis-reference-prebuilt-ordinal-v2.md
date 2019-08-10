@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 972f75fd1c977e79a2fa70c44bb3069e2c69a2c5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1579c50f2dcf78e350ce014ffb1516cec4ac85b3
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563403"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933489"
 ---
 # <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Předdefinovaná entita pořadí v2 pro aplikaci pro LUIS
 Pořadové číslo v2 rozbalí [pořadí](luis-reference-prebuilt-ordinal.md) , aby poskytoval relativní odkazy `next`, například, `last`a `previous`. Tyto nejsou extrahovány pomocí pořadí předem sestavené entity.
@@ -122,6 +122,6 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si [](luis-reference-prebuilt-percentage.md)o procentech, [telefonním číslu](luis-reference-prebuilt-phonenumber.md)a o [teplotních](luis-reference-prebuilt-temperature.md) entitách. 

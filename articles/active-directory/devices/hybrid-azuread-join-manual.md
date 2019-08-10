@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c9de4a9b72e446a7d2b6687af380ee910b58980
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: a56fcc45d4efb21c4904380d731d9e95584c39fd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741294"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879419"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace zařízení připojeného k hybridnímu Azure Active Directory
 
@@ -71,6 +71,8 @@ Pokud vaše organizace používá spravované (nefederované) nastavení s míst
 U zařízení s Windows 10 ve verzi 1703 nebo starší, pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, musíte implementovat automatické zjišťování webového proxy serveru (WPAD), aby se počítače s Windows 10 mohly registrovat do Azure AD.
 
 Počínaje systémem Windows 10 1803 i v případě, že pokus o připojení k hybridní službě Azure AD prostřednictvím zařízení ve federované doméně prostřednictvím AD FS selže a pokud je Azure AD Connect nakonfigurované pro synchronizaci objektů počítačů nebo zařízení s Azure AD, zařízení se pokusí dokončit připojení k hybridní službě Azure AD v USA. synchronizovaný počítač/zařízení.
+
+Pokud chcete ověřit, jestli má zařízení přístup k výše uvedeným prostředkům Microsoftu pod účtem System, můžete použít skript pro [připojení k registraci testovacího zařízení](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) .
 
 ## <a name="verify-configuration-steps"></a>Ověření kroků konfigurace
 
@@ -558,7 +560,7 @@ Pokud máte problémy s dokončením hybridního připojení ke službě Azure A
 * [Řešení potíží s hybridním připojením aktuálních zařízení s Windows k Azure AD](troubleshoot-hybrid-join-windows-current.md)
 * [Řešení potíží s hybridním připojením zařízení s Windows nižší úrovně k Azure AD](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Úvod do správy zařízení v Azure Active Directory](overview.md)
 

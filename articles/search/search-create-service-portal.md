@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9de7a6fdddf732f13c8dc7ab50fd151d9f90dc20
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0649fea0b598ffaaaf2611c9d1324174105ee5d4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855867"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931543"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Vytvoření služby Azure Search na portálu
 
@@ -44,7 +44,7 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 Pokud máte více než jedno předplatné, vyberte to, jehož součástí jsou také služby úložiště dat nebo souborů. Azure Search může automaticky detekovat Azure Table a BLOB Storage, SQL Database a Azure Cosmos DB pro indexování prostřednictvím [*indexerů*](search-indexer-overview.md), ale jenom pro služby v rámci stejného předplatného.
 
-## <a name="select-a-resource-group"></a>Vybrat skupinu prostředků
+## <a name="set-a-resource-group"></a>Nastavení skupiny prostředků
 
 Skupina prostředků je povinná a je užitečná pro správu prostředků, včetně služby cost management. Skupina prostředků se může skládat z jedné služby nebo více služeb používaných společně. Pokud například používáte Azure Search k indexování databáze Azure Cosmos DB, mohli byste pro účely správy nastavit obě služby stejné skupiny prostředků. 
 
@@ -57,7 +57,7 @@ Při používání služby můžete sledovat náklady na aktuální a předpokl�
 > [!TIP]
 > Odstraněním skupiny prostředků se odstraní také služby v této skupině. U prototypových projektů, které využívají více služeb, spojení všech služeb do stejné skupiny prostředků usnadňuje vyčištění po skončení projektu.
 
-## <a name="name-the-service-and-url-endpoint"></a>Zadání názvu služby a koncového bodu adresy URL
+## <a name="name-the-service"></a>Pojmenování služby
 
 V části Podrobnosti o instanci zadejte název služby do pole **Adresa URL** . Název je součástí koncového bodu adresy URL, proti kterému jsou vydávána `https://your-service-name.search.windows.net`volání rozhraní API:. Například pokud chcete `https://myservice.search.windows.net`, aby byl koncový bod, měli byste zadat `myservice`.
 
@@ -72,7 +72,7 @@ Požadavky na název služby:
 > [!TIP]
 > Pokud si myslíte, že budete používat víc služeb, doporučujeme, abyste do názvu služby jako zásadu vytváření názvů zavedli také oblast (nebo umístění). Služby v rámci stejné oblasti můžou bezplatně vyměňovat data, takže pokud je Azure Search v západní USA a máte i další služby v západní USA, název `mysearchservice-westus` , který vám může při rozhodování o kombinování a připojování prostředků ušetřit cestu na stránku vlastností.
 
-## <a name="select-a-location"></a>Vyberte umístění
+## <a name="choose-a-location"></a>Zvolit umístění
 
 Protože se jedná o službu Azure, je Azure Search možné hostovat v datových centrech po celém světě. Seznam podporovaných oblastí najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/). 
 
@@ -83,11 +83,11 @@ Pokud navíc používáte obohacení vyhledávání AI, vytvořte službu ve ste
 > [!Note]
 > Střed Indie není v tuto chvíli pro nové služby k dispozici. Pro služby, které jsou už v Střed Indie, můžete škálovat bez omezení a služba je v této oblasti plně podporovaná. Omezení v této oblasti je dočasné a omezené jenom na nové služby. Tato poznámka se odstraní, když už neplatí omezení.
 
-## <a name="select-a-pricing-tier-sku"></a>Výběr cenové úrovně (SKU)
+## <a name="choose-a-pricing-tier-sku"></a>Zvolit cenovou úroveň (SKU)
 
 [Azure Search se momentálně nabízí v několika cenových úrovních](https://azure.microsoft.com/pricing/details/search/): Free, Basic nebo Standard. Každá úroveň má svou vlastní [kapacitu a limity](search-limits-quotas-capacity.md). Další pokyny získáte v tématu věnovaném [volbě cenové úrovně nebo SKU](search-sku-tier.md).
 
-Basic a Standard jsou nejběžnější možnosti pro produkční úlohy, ale většina zákazníků začíná bezplatnou službou.
+Basic a Standard jsou nejběžnější možnosti pro produkční úlohy, ale většina zákazníků začíná bezplatnou službou. Hlavním rozdílem mezi úrovněmi je velikost oddílu a rychlost a omezení počtu objektů, které můžete vytvořit.
 
 Pamatujte, že cenovou úroveň nelze po vytvoření služby změnit. Pokud budete později potřebovat vyšší nebo nižší úroveň, budete muset službu znovu vytvořit.
 

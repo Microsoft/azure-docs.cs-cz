@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: rozhraní API pro tabulky pomocí jazyka Java Azure Cosmos DB'
+title: Vytvoření aplikace pomocí rozhraní API pro tabulky a Java – Azure Cosmos DB
 description: Tento rychlý start ukazuje, jak použít rozhraní Azure Cosmos DB Table API k vytvoření aplikace pomocí webu Azure Portal a Javy.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: daaf7db2ac75cec6cb5a305e994a7cbe558c83fc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: seo-java-august2019
+ms.openlocfilehash: d1eade1b5bdbbce2bc47c5e6177d21c7ff835936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854679"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933951"
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Rychlý start: Vytvoření aplikace rozhraní API pro tabulky pomocí jazyka Java a Azure Cosmos DB
 

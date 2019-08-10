@@ -1,40 +1,40 @@
 ---
-title: Podpora jazyků – API pro vizuální vyhledávání Bingu
+title: Jazyková podpora – rozhraní API pro vizuální vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
-description: Seznam přirozeného jazyka, země a oblasti, které podporují rozhraní API vizuální vyhledávání Bingu. Rozhraní API vizuální vyhledávání Bingu podporuje více než deseti tři zemích nebo oblastech, mnoho s více než jeden jazyk.
+description: Seznam přirozených jazyků, zemí a oblastí, které jsou podporovány rozhraní API pro vizuální vyhledávání Bingu. Rozhraní API pro vizuální vyhledávání Bingu podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 1639b8066f3c9943bc42f5151fcb456585441baf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866232"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883551"
 ---
-# <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Podpora jazyka a oblasti pro rozhraní API vizuální vyhledávání Bingu
+# <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Podpora jazyků a oblastí pro rozhraní API pro vizuální vyhledávání Bingu
 
-API pro vizuální vyhledávání Bingu podporuje více než deseti tři zemích nebo oblastech, mnoho s více než jeden jazyk. Každý požadavek by měl obsahovat zemi/oblast a jazyk podle vlastní volby uživatele. Znalost trhu uživatele pomáhá Bing vrátí odpovídající výsledky. Pokud nezadáte země/oblast a jazyk, díky Bingu pokusí určit jazyk a zemi/oblast uživatele. Vzhledem k tomu, že výsledky mohou obsahovat odkazy na Bingu, znalost země/oblast a jazyk může poskytnout upřednostňované lokalizované Bingu činnost koncového uživatele Pokud uživatel klikne na Bingu odkazy.
+Rozhraní API pro vizuální vyhledávání Bingu podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem. Každý požadavek by měl zahrnovat zemi nebo oblast uživatele a zvolený jazyk. Znalost trhu uživatele pomáhá službě Bing vracet odpovídající výsledky. Pokud nezadáte zemi, oblast a jazyk, Bing se snaží určit zemi, oblast a jazyk uživatele. Vzhledem k tomu, že výsledky mohou obsahovat odkazy na Bing, může správce země nebo oblasti a jazyku poskytovat preferované lokalizované uživatelské prostředí Bingu, pokud uživatel klikne na odkazy Bingu.
 
-Chcete-li zadat zemi/oblast a jazyk, nastavte `mkt` parametr dotazu (trhu) pro kódování ze **trhy** následující tabulka. Určuje, na trhu země/oblast a jazyk. Pokud uživatel preferuje zobrazíte zobrazení textu v jiném jazyce, nastavte `setLang` parametr kódu příslušný jazyk dotazu.
+Pokud chcete zadat zemi nebo oblast a jazyk, nastavte `mkt` parametr dotazu (na trhu) na kód z tabulky **trhy** níže. Tento trh určuje zemi nebo oblast i jazyk. Pokud uživatel upřednostňuje zobrazení textu v jiném jazyce, nastavte `setLang` parametr dotazu na příslušný kód jazyka.
 
-Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud chcete zadat určitá země nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` hlavičky protokolu HTTP. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro jednotlivé země v tabulce trhy.
+Případně můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Pokud zadáte zemi nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` hlavičky HTTP. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro každou zemi v tabulce trhy.
 
 
 
 > [!NOTE]
-> Platí následující omezení na trhu:
+> Platí následující omezení trhu:
 >
-> - Poznámky rozpoznávání obrázků jsou pouze k dispozici v angličtině.
-> - Recepty, nákupy a přehledů stránek, včetně jsou k dispozici pouze na trhu en US.
+> - Poznámky k rozpoznávání obrázků jsou k dispozici pouze v angličtině.
+> - Informace o receptu, nákupu a stránkách, včetně přehledů, jsou k dispozici pouze na trhu en-US.
 
 
-## <a name="countriesregions"></a>Země/oblasti
+## <a name="countriesregions"></a>Země nebo oblasti
 
 |Země/oblast|Kód|
 |-------|----|
@@ -49,12 +49,12 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
-|Hongkong – zvláštní administrativní oblast|HK|
+|Hongkong – zvláštní správní oblast|HK|
 |Indie|IN|
-|Indonésie|ID|
-|Itálie|IT|
+|Indonésie|id|
+|Itálie|it|
 |Japonsko|JP|
-|Jižní Korea|KR|
+|Korejská republika|KR|
 |Malajsie|MY|
 |Mexiko|MX|
 |Nizozemsko|NL|
@@ -78,13 +78,13 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 
 ## <a name="markets"></a>Trhy
 
-|Země/oblast|Jazyk|Kód na trhu|
+|Země/oblast|Jazyk|Kód trhu|
 |-------|--------|-----------|
-|Argentina|Španělština|es-AR|
+|Argentina|Španělština|ES-AR|
 |Austrálie|Angličtina|cs AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Holandština|nl-BE|
-|Belgie|Francouzština|fr-BE|
+|Belgie|Francouzština|fr – bude|
 |Brazílie|Portugalština|pt-BR|
 |Kanada|Angličtina|cs CA|
 |Kanada|Francouzština|fr-CA|
@@ -93,23 +93,23 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh-HK|
+|Hongkong – zvláštní správní oblast|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
-|Indonésie|Angličtina|cs ID|
+|Indonésie|Angličtina|EN-ID|
 |Itálie|italština|IT-IT|
 |Japonsko|Japonština|ja-JP|
-|Jižní Korea|Korejština|ko-KR|
-|Malajsie|Angličtina|cs MY|
+|Korejská republika|Korejština|ko-KR|
+|Malajsie|Angličtina|EN – MY|
 |Mexiko|Španělština|es-MX|
 |Nizozemsko|Holandština|NL-NL|
 |Nový Zéland|Angličtina|cs NZ|
 |Čína|Čínština|zh-CN|
 |Polsko|polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
-|Filipíny|Angličtina|cs PH|
+|Filipíny|Angličtina|EN-PH|
 |Rusko|ruština|ru-RU|
 |Saúdská Arábie|arabština|ar-SA|
-|Jižní Afrika|Angličtina|en-ZA|
+|Jižní Afrika|Angličtina|EN-ZA|
 |Španělsko|Španělština|es-ES|
 |Švédsko|švédština|sv-SE|
 |Švýcarsko|Francouzština|FR-CH|

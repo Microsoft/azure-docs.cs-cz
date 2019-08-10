@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 7dec738fca6991cbcbd822c192b96bf6b1cc6d87
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6d516590b90efd937789fa0847b707d2521f6459
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563503"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932581"
 ---
 # <a name="application-settings"></a>Nastavení aplikace
 

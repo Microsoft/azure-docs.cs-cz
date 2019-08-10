@@ -17,12 +17,12 @@ ms.date: 07/25/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 946eb0343c2858e275e40b7a581fd48e1713accd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 507758831885bff7f61677ebae0224cc828dcb2e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853519"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879273"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Toky ověřování a scénáře aplikací
 
@@ -143,7 +143,7 @@ Další informace najdete v [mobilní aplikaci, která volá webová rozhraní A
 
 ### <a name="protected-web-api"></a>Chráněné webové rozhraní API
 
-Pomocí koncového bodu Microsoft Identity Platform můžete zabezpečit webové služby, například webové rozhraní API RESTful vaší aplikace. Chráněné webové rozhraní API se volá pomocí přístupového tokenu, který zabezpečuje jeho data a ověřuje příchozí požadavky. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP. Pokud chcete chránit ASP.NET nebo ASP.NET Core webového rozhraní API, bude nutné ověřit přístupový token. V takovém případě použijete middleware ASP.NET JWT. V digestoři se ověřování provádí pomocí [rozšíření IdentityModel pro knihovnu .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , nikoli MSAL.NET
+Pomocí koncového bodu Microsoft Identity Platform můžete zabezpečit webové služby, například webové rozhraní API RESTful vaší aplikace. Chráněné webové rozhraní API se volá pomocí přístupového tokenu, který zabezpečuje jeho data a ověřuje příchozí požadavky. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP. Pokud chcete chránit rozhraní API ASP.NET nebo ASP.NET Core webového rozhraní API, budete muset ověřit přístupový token. V takovém případě použijete middleware ASP.NET JWT. V digestoři se ověřování provádí pomocí [rozšíření IdentityModel pro knihovnu .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , nikoli MSAL.NET
 
 Další informace najdete v [chráněném webovém rozhraní API](scenario-protected-web-api-overview.md)pro čtení.
 
@@ -199,5 +199,5 @@ Ne každý typ aplikace je k dispozici na všech platformách. K sestavování a
 
 Viz také [knihovny podporované společností Microsoft podle operačního systému/jazyka](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [základech ověřování](authentication-scenarios.md) a [přístupových tokenech](access-tokens.md).

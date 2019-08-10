@@ -2,20 +2,20 @@
 title: Kurz – Připojení ke službě Azure Analysis Services pomocí Power BI Desktopu | Microsoft Docs
 author: minewiskan
 manager: kfile
-description: Zjistěte, jak se připojit ke službě Azure Analysis Services v Power BI Desktopu.
+description: Naučte se, jak se připojit k Azure Analysis Services pomocí Power BI Desktop.
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: ea2a6612a568d4080a8df2c569f79aaaa283e9c4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: daebc3e720eec8d958697288922c788a44156778
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702846"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932381"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>Kurz: Spojte se s Power BI Desktopu
+# <a name="tutorial-connect-with-power-bi-desktop"></a>Kurz: Připojení pomocí Power BI Desktop
 
 V tomto kurzu použijete Power BI Desktop pro připojení k ukázkové modelové databázi adventureworks na vašem serveru. Vámi provedené úlohy budou simulovat typické uživatelské připojení k modelu a vytvoření základní sestavy z dat modelu.
 
@@ -31,7 +31,7 @@ V tomto kurzu použijete Power BI Desktop pro připojení k ukázkové modelové
 - [Nainstalujte nejnovější Power BI Desktop](https://powerbi.microsoft.com/desktop).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-V tomto kurzu jste přihlášení k portálu získat název serveru. Uživatelé obvykle získají název serveru od správce serveru.
+V tomto kurzu jste na portálu a získali jenom název serveru. Uživatelé obvykle získají název serveru od správce serveru.
 
 Přihlaste se k [portálu](https://portal.azure.com/).
 
@@ -70,5 +70,5 @@ Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopí
 
 Pokud už sestavu nepotřebujete, neukládejte ji. Pokud jste ji uložili, soubor můžete odstranit.
 
-## <a name="next-steps"></a>Další postup
-V tomto kurzu jste se naučili používat Power BI Desktop pro připojení k datovému modelu na serveru a také vytvořit základní sestavu. Pokud nejste obeznámeni s postupy vytvoření datového modelu, najdete v článku [kurzu modelování tabulkových dat společnosti Adventure Works Internet Sales](https://docs.microsoft.com/sql/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) v dokumentaci SQL Server Analysis Services.
+## <a name="next-steps"></a>Další kroky
+V tomto kurzu jste se naučili používat Power BI Desktop pro připojení k datovému modelu na serveru a také vytvořit základní sestavu. Pokud nejste obeznámeni s tím, jak vytvořit datový model, přečtěte si kurz o vytváření [tabulkových dat společnosti Adventure Works Internet Sales](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) v dokumentaci SQL Server Analysis Services.

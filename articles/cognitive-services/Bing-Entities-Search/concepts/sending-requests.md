@@ -1,25 +1,25 @@
 ---
-title: Odesílání žádostí o hledání do rozhraní API Bingu pro vyhledávání entit
+title: Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání entit
 titleSuffix: Azure cognitive Services
-description: Zjistěte, jak k odesílání žádostí o hledání do rozhraní API Bingu pro vyhledávání entit
+description: Přečtěte si, jak odesílat žádosti o vyhledávání na rozhraní API Bingu pro vyhledávání entit
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 25cb4845de9b23b04aa25140fae88f50e77cc72c
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 0788b220f2612170fdea974a8bb27e8374a0b3be
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542806"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879208"
 ---
-# <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Odesílání žádostí o hledání do rozhraní API Bingu pro vyhledávání entit
+# <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání entit
 
-Rozhraní API Bingu pro vyhledávání entit odešle vyhledávací dotaz do Bingu a načte výsledky, které zahrnují entity a místa. Mezi místa patří například restaurace, hotely nebo jiné místní firmy. U míst může dotaz obsahovat název místní firmy nebo může žádat o seznam (například restaurants near me). Mezi výsledky entit patří osoby, místa nebo věci. V tomto kontextu se turistických zajímavostí, státy, země/oblasti, atd.
+Rozhraní API Bingu pro vyhledávání entit odešle vyhledávací dotaz do Bingu a načte výsledky, které zahrnují entity a místa. Mezi místa patří například restaurace, hotely nebo jiné místní firmy. U míst může dotaz obsahovat název místní firmy nebo může žádat o seznam (například restaurants near me). Mezi výsledky entit patří osoby, místa nebo věci. Místo v tomto kontextu jsou turistické attractions, státy, země/oblasti atd.
 
 ## <a name="the-endpoint"></a>Koncový bod
 
@@ -132,7 +132,7 @@ BingAPIs-Market: en-US
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Vyhledávání entit pomocí rozhraní API Bingu pro Entity](search-for-entities.md)
-* [Požadavky na zobrazení a používání rozhraní API Bingu](../use-display-requirements.md)
+* [Hledání entit pomocí rozhraní API entity Bingu](search-for-entities.md)
+* [Požadavky na používání a zobrazení rozhraní API Bingu](../use-display-requirements.md)

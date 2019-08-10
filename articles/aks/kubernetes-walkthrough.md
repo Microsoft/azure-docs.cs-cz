@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/20/2019
 ms.author: mlearned
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 2079144cf6cb36870645d3182aabdecccfcbadd0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8a5fb9313fca2a8d787d0fbde47401f6d3e1d229
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615076"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880684"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -217,7 +217,7 @@ Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` mů�
 kubectl get service azure-vote-front --watch
 ```
 
-Zpočátku je *externí IP adresa* pro službu *Azure-hlas-front-end* zobrazená jako nevyřízená.
+Zpočátku je *externí IP adresa* pro službu *Azure-hlas-front-end* zobrazenájako nevyřízená.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -243,15 +243,15 @@ Pokud chcete zobrazit aktuální stav, dobu provozu a využití prostředků pro
 1. Otevřete webový prohlížeč na Azure Portal [https://portal.azure.com][azure-portal].
 1. Vyberte vaši skupinu prostředků, například *myResourceGroup*, a pak váš cluster AKS, například *myAKSCluster*.
 1. V části **monitorování** na levé straně vyberte přehledy.
-1. V horní části zvolte **+ Přidat filtr**
-1. Jako vlastnost vyberte *Obor názvů* a potom zvolte *\<Všechny kromě kube-system\>* .
-1. Vyberte zobrazení **Kontejnery**.
+1. V horní části vyberte **+ Přidat filtr**.
+1. Jako vlastnost vyberte *obor názvů* a pak zvolte  *\<All, ale Kube-\>System*.
+1. Vyberte **kontejnery**.
 
 Zobrazí se kontejnery *azure-vote-back* a *azure-vote-front*, jak ukazuje následující příklad:
 
 ![Zobrazení stavu spuštěných kontejnerů v AKS](media/kubernetes-walkthrough/monitor-containers.png)
 
-Chcete-li zobrazit protokoly `azure-vote-back` pro pod, zvolte možnost **zobrazení v analýze**a potom klikněte na odkaz **Zobrazit protokoly kontejnerů** na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
+Chcete-li zobrazit protokoly `azure-vote-back` pro pod, zvolte možnost **zobrazení v analýze**a pak vyberte odkaz **Zobrazit protokoly kontejnerů** na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
 
 ![Zobrazení protokolů kontejneru v AKS](media/kubernetes-walkthrough/monitor-container-logs.png)
 
@@ -272,7 +272,7 @@ V tomto rychlém startu se k vytvoření nasazení Kubernetes použily předem v
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci. K webovému [řídicímu panelu Kubernetes můžete získat přístup][kubernetes-dashboard] také pro svůj cluster AKS.
 

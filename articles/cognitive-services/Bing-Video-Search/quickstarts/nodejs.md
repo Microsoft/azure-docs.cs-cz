@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: ab3d1e71515df80b5bdba1edf8cd16ba3ed6b0a9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 786302b882fbd59932af17ccc6a390fa41b30ac9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500123"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932960"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Rychlý start: Hledání videí pomocí Vvyhledávání videí Bingu REST API a Node. js
 
@@ -75,7 +75,7 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
        });
        ```
 
-# <a name="create-and-send-the-search-request"></a>Vytvoření a odeslání žádosti o vyhledávání
+## <a name="create-and-send-the-search-request"></a>Vytvoření a odeslání žádosti o vyhledávání
 
 1. Vytvořte funkci s názvem `bing_video_search()`. Přidejte parametry pro svůj požadavek včetně názvu hostitele a hlaviček. Zakódování hledaného termínu a jeho připojení k parametru cesty s `?q=` parametrem. Pak odešlete žádost pomocí `req.end()`.
 
@@ -205,7 +205,7 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)

@@ -16,40 +16,40 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6640708905abc266b07b7b66f5da09aeb890f01
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: d0ed4cd677392a6a48038eed80c36664ccef9494
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823868"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879878"
 ---
 # <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>Kurz: Integrace Amazon Web Services (AWS) s Azure Active Directory
 
-V tomto kurzu se naučíte, jak integrovat Amazon Web Services (AWS) s Azure Active Directory (Azure AD). Když integrujete Amazon Web Services (AWS) s Azure AD, můžete:
+V tomto kurzu se naučíte, jak integrovat Amazon Web Services (AWS) s Azure Active Directory (Azure AD). Když integrujete AWS s Azure AD, můžete:
 
-* Řízení ve službě Azure AD, která má přístup k Amazon Web Services (AWS).
-* Umožněte uživatelům, aby se automaticky přihlásili k Amazon Web Services (AWS) s jejich účty Azure AD.
-* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
+* Řízení ve službě Azure AD, která má přístup k AWS.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k AWS svým účtům Azure AD.
+* Spravujte své účty na jednom centrálním místě, Azure Portal.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-![Amazon Web Services (AWS)](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
+![Diagram vztahu Azure AD a AWS](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Můžete nakonfigurovat více identifikátorů pro více instancí, jak je uvedeno níže.
+Pro více instancí můžete nakonfigurovat více identifikátorů. Příklad:
 
 * `https://signin.aws.amazon.com/saml#1`
 
 * `https://signin.aws.amazon.com/saml#2`
 
-Pomocí těchto hodnot služba Azure AD odebere hodnotu **#** a pošle správnou hodnotu `https://signin.aws.amazon.com/saml` jako adresu URL cílové skupiny v tokenu SAML.
+Díky těmto hodnotám Azure AD odstraní hodnotu **#** a pošle správnou hodnotu `https://signin.aws.amazon.com/saml` jako adresu URL cílové skupiny v tokenu SAML.
 
-**Tuto metodu doporučujeme použít z následujících důvodů:**
+Tento postup doporučujeme z následujících důvodů:
 
-a. Každá aplikace vám poskytne jedinečný certifikát x509. Každá instance instance aplikace AWS může mít jiné datum vypršení platnosti certifikátu, které se dá spravovat na základě jednotlivých účtů AWS. V tomto případě bude snazší celková změna certifikátu.
+- Každá aplikace poskytuje jedinečný certifikát x509. Každá instance instance aplikace AWS může mít jiné datum vypršení platnosti certifikátu, které se dá spravovat na základě jednotlivých účtů AWS. V tomto případě je snazší celková změna certifikátu.
 
-b. Můžete povolit zřizování uživatelů pomocí aplikace AWS ve službě Azure AD a potom naše služba načte všechny role z tohoto účtu AWS. V aplikaci nemusíte ručně přidávat ani aktualizovat role AWS.
+- Můžete povolit zřizování uživatelů pomocí aplikace AWS ve službě Azure AD a potom naše služba načte všechny role z tohoto účtu AWS. V aplikaci nemusíte ručně přidávat ani aktualizovat role AWS.
 
-c. Vlastník aplikace můžete přiřadit individuálně pro aplikaci, která může spravovat aplikaci přímo ve službě Azure AD.
+- Vlastník aplikace můžete přiřadit individuálně pro aplikaci. Tato osoba může spravovat aplikaci přímo ve službě Azure AD.
 
 > [!Note]
 > Ujistěte se, že používáte jenom aplikaci Galerie.
@@ -59,35 +59,35 @@ c. Vlastník aplikace můžete přiřadit individuálně pro aplikaci, která m�
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Amazon Web Services (AWS) odběr s povoleným jednotným přihlašováním (SSO).
+* Předplatné s povoleným AWSm jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Amazon Web Services (AWS) podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. AWS podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 
-## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Přidání Amazon Web Services (AWS) z Galerie
+## <a name="add-aws-from-the-gallery"></a>Přidání AWS z Galerie
 
-Pokud chcete nakonfigurovat integraci Amazon Web Services (AWS) do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS Přidat Amazon Web Services (AWS) z galerie.
+Pokud chcete nakonfigurovat integraci AWS do služby Azure AD, musíte přidat AWS z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém podokně vyberte službu **Azure Active Directory** .
+1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Amazon Web Services (AWS)** .
-1. Z panelu výsledků vyberte **Amazon Web Services (AWS)** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. Na panelu výsledků vyberte **Amazon Web Services (AWS)** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Amazon Web Services (AWS) pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Amazon Web Services (AWS).
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí AWS pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojený vztah mezi uživatelem služby Azure AD a souvisejícím uživatelem v AWS.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Amazon Web Services (AWS), dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí AWS, dokončete následující stavební bloky:
 
-1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
-2. **[Nakonfigurujte Amazon Web Services (AWS)](#configure-amazon-web-services-aws)** pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
-4. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, **[přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** .
-5. **[Vytvořit testovacího uživatele Amazon Web Services (AWS)](#create-amazon-web-services-aws-test-user)** , aby měl protějšek B. Simon v Amazon Web Services (AWS), která je propojená s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
+1. **NAKONFIGURUJTE jednotné přihlašování Azure AD** , aby vaši uživatelé mohli používat tuto funkci.
+2. **NAKONFIGURUJTE AWS** pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **Vytvořte testovacího uživatele Azure AD** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
+4. **Přiřaďte testovacímu uživateli Azure AD** povolení B. Simon pro použití jednotného přihlašování služby Azure AD.
+5. **Vytvořte AWS testovacího uživatele** , který bude mít protějšek B. Simon v AWS, který je propojený s zastoupením uživatele Azure AD.
+6. **Otestujte jednotné přihlašování** a ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
@@ -95,21 +95,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **Amazon Web Services (AWS)** najděte část **Správa** a vyberte jednotné přihlašování.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu pera pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Snímek obrazovky nastavení jednotného přihlašování pomocí stránky SAML se zvýrazněnou ikonou pera](common/edit-urls.png)
 
-4. V **základní sekci konfigurace SAML** je aplikace předem nakonfigurovaná a potřebné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
+4. V **základní sekci konfigurace SAML** je aplikace předem nakonfigurovaná a potřebné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit výběrem možnosti **Uložit**.
 
-5. Pokud konfigurujete víc než jednu instanci, zadejte prosím hodnotu identifikátoru. Od druhé instance zadejte prosím hodnotu identifikátoru v následujícím formátu. Použijte **#** prosím znaménko k zadání jedinečné hodnoty hlavního názvu služby (SPN).
+5. Pokud konfigurujete více než jednu instanci, zadejte hodnotu identifikátoru. Od druhé instance a dále použijte následující formát, včetně **#** znaménka k zadání jedinečné hodnoty hlavního názvu služby (SPN).
 
     `https://signin.aws.amazon.com/saml#2`
 
-6. Aplikace Amazon Web Services (AWS) očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
+6. Aplikace AWS očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Výběrem ikony pera otevřete dialogové okno atributy uživatele.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky dialogového okna atributů uživatele se zvýrazněnou ikonou pera](common/edit-attribute.png)
 
-7. Kromě výše uvedené aplikace Amazon Web Services (AWS) očekává, že se v odpovědi SAML zpátky vrátí několik atributů. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
+7. Kromě předchozích atributů očekává aplikace AWS několik dalších atributů, které se vrátí zpět v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky a přidejte tak atribut tokenu SAML.
 
     | Name  | Zdrojový atribut  | Obor názvů |
     | --------------- | --------------- | --------------- |
@@ -117,117 +117,117 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     | SessionDuration             | "zadejte hodnotu v rozmezí 900 sekund (15 minut) až 43200 sekund (12 hodin)" |  https://aws.amazon.com/SAML/Attributes |
 
-    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
+    a. Výběrem možnosti **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![image](common/new-save-attribute.png)
+    ![Snímek obrazovky s deklarací identity uživatelů s přidáním nové deklarace identity a zvýrazněnou možností Uložit](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Snímek obrazovky dialogového okna spravovat deklarace identity uživatelů](common/new-attribute-details.png)
 
-    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
+    b. Do pole **název**zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Do textového pole **obor názvů** zadejte hodnotu oboru názvů zobrazenou pro tento řádek.
+    c. Do pole **obor názvů**zadejte hodnotu oboru názvů zobrazenou pro tento řádek.
 
-    d. Jako **atribut**vyberte zdroj.
+    d. Ve **zdroji**vyberte **atribut**.
 
     e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
-    f. Klikněte na tlačítko **Ok**
+    f. Vyberte **OK**.
 
-    g. Klikněte na **Uložit**.
+    g. Vyberte **Uložit**.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML federačních metadat**. Vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-   ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+   ![Snímek obrazovky s oddílem podpisového certifikátu SAML se zvýrazněnou možností stažení](common/metadataxml.png)
 
-1. V části **nastavit Amazon Web Services (AWS)** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+1. V části **nastavit Amazon Web Services (AWS)** zkopírujte příslušné adresy URL podle vašeho požadavku.
 
-   ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+   ![Snímek obrazovky s nastavením Amazon Web Services (AWS) v oddílu s zvýrazněnými adresami URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-amazon-web-services-aws"></a>Konfigurace Amazon Web Services (AWS)
+### <a name="configure-aws"></a>Konfigurace AWS
 
-1. V jiném okně prohlížeče se přihlaste do vaší Amazon Web Services (AWS) firemní web jako správce.
+1. V jiném okně prohlížeče se přihlaste k webu AWS společnosti jako správce.
 
-2. Klikněte na **AWS Home (domů**).
+2. Vyberte **AWS Home (domů**).
 
-    ![Konfigurace jednotného přihlašování domů][11]
+    ![Snímek obrazovky AWS společnosti se zvýrazněnou ikonou domovské stránky AWS][11]
 
-3. Klikněte na **Správa identit a přístupu**.
+3. Vyberte **Správa identit a přístupu**.
 
-    ![Konfigurovat identitu jednotného přihlašování][12]
+    ![Snímek stránky AWS Services se zvýrazněným nástrojem IAM][12]
 
-4. Klikněte na **Zprostředkovatelé identity**a pak klikněte na **vytvořit poskytovatele**.
+4. Vyberte **Zprostředkovatelé** > identity**vytvořit poskytovatele**.
 
-    ![Konfigurace poskytovatele jednotného přihlašování][13]
+    ![Snímek stránky IAM se zvýrazněnou možností poskytovatelé identity a poskytovatel pro vytváření][13]
 
 5. Na stránce **Konfigurovat poskytovatele** proveďte následující kroky:
 
-    ![Dialogové okno Konfigurace jednotného přihlašování][14]
+    ![Snímek obrazovky s konfigurací zprostředkovatele][14]
 
     a. Jako **Typ poskytovatele**vyberte **SAML**.
 
-    b. Do textového pole **název zprostředkovatele** zadejte název zprostředkovatele (například: *WAAD*).
+    b. Jako **název poskytovatele**zadejte název zprostředkovatele (například: *WAAD*).
 
-    c. Pokud chcete nahrát stažený **soubor metadat** z Azure Portal klikněte na **zvolit soubor**.
+    c. Pokud chcete nahrát stažený **soubor metadat** z Azure Portal, vyberte **zvolit soubor**.
 
-    d. Klikněte na **Další krok**.
+    d. Vyberte **Další krok**.
 
-6. Na stránce **ověřit informace o poskytovateli** klikněte na **vytvořit**.
+6. Na stránce **ověřit informace o poskytovateli** vyberte **vytvořit**.
 
-    ![Konfigurace ověření jednotného přihlašování][15]
+    ![Snímek obrazovky s ověřením informací o poskytovateli se zvýrazněným výrazem vytvořit][15]
 
-7. Klikněte na **role**a pak klikněte na **vytvořit roli**.
+7. Vyberte **role** > **vytvořit roli**.
 
-    ![Konfigurace rolí jednotného přihlašování][16]
+    ![Snímek stránky rolí][16]
 
 8. Na stránce **vytvořit roli** proveďte následující kroky:  
 
-    ![Nakonfigurovat vztah důvěryhodnosti s jednotným přihlašováním][19]
+    ![Snímek obrazovky s vytvořením stránky role][19]
 
-    a. V části **Vybrat typ důvěryhodné entity**vyberte možnost **federace SAML 2,0** .
+    a. V části **Vybrat typ důvěryhodné entity**vyberte možnost **federace SAML 2,0**.
 
-    b. V části **zvolte poskytovatele saml 2,0**vyberte **poskytovatele SAML** , kterého jste předtím vytvořili (například: *WAAD*)
+    b. V části **zvolte poskytovatele saml 2,0**vyberte **poskytovatele SAML** , který jste předtím vytvořili (například: *WAAD*).
 
     c. Zaškrtněte políčko **povolí přístup k programovým a AWS Management Console**.
   
-    d. Klikněte **na další: Oprávnění**.
+    d. Vyberte **další: Oprávnění**.
 
-9. V dialogu **připojit zásady oprávnění** připojte ke své organizaci příslušné zásady. Klikněte **na další: Zkontrolujte**.  
+9. V dialogovém okně **připojit zásady oprávnění** Připojte příslušné zásady podle vaší organizace. Pak vyberte **další: Zkontrolujte**.  
 
-    ![Konfigurace zásady jednotného přihlašování][33]
+    ![Snímek obrazovky dialogového okna připojit zásadu oprávnění][33]
 
 10. V dialogovém okně **Kontrola** proveďte následující kroky:
 
-    ![Konfigurace kontroly jednotného přihlašování][34]
+    ![Snímek obrazovky s dialogovým oknem pro kontrolu][34]
 
-    a. Do textového pole **název role** zadejte název své role.
+    a. Do **název role**zadejte název své role.
 
-    b. Do textového pole **Popis role** zadejte popis.
+    b. Do pole **Popis role**zadejte popis.
 
-    c. Klikněte na **vytvořit roli**.
+    c. Vyberte **vytvořit roli**.
 
     d. Podle potřeby vytvořte tolik rolí a namapujte je na zprostředkovatele identity.
 
-11. Použijte přihlašovací údaje účtu služby AWS pro načtení rolí z účtu AWS při zřizování uživatelů Azure AD. V takovém případě otevřete domovskou stránku konzoly AWS.
+11. Použijte přihlašovací údaje účtu služby AWS pro načtení rolí z účtu AWS ve zřizování uživatelů Azure AD. V takovém případě otevřete domovskou stránku konzoly AWS.
 
-12. Klikněte na zabezpečení **služby** ->  **, identita & dodržování předpisů** -> **IAM**.
+12. Vyberte **služby**. V části **zabezpečení, identita & dodržování předpisů**vyberte **IAM**.
 
-    ![načítají se role z účtu AWS.](./media/amazon-web-service-tutorial/fetchingrole1.png)
+    ![Snímek obrazovky domovské stránky konzoly AWS se zvýrazněnými službami a nástrojem IAM](./media/amazon-web-service-tutorial/fetchingrole1.png)
 
-13. V části IAM vyberte kartu **zásady** .
+13. V části IAM vyberte **zásady**.
 
-    ![načítají se role z účtu AWS.](./media/amazon-web-service-tutorial/fetchingrole2.png)
+    ![Snímek obrazovky oddílu IAM se zvýrazněnými zásadami](./media/amazon-web-service-tutorial/fetchingrole2.png)
 
-14. Kliknutím na **vytvořit zásadu** pro načtení rolí z účtu AWS ve zřizování uživatelů Azure AD vytvořte novou zásadu.
+14. Vytvořte novou zásadu tak, že vyberete **vytvořit zásadu** pro načtení rolí z účtu AWS ve zřizování uživatelů Azure AD.
 
-    ![Vytváří se nová zásada.](./media/amazon-web-service-tutorial/fetchingrole3.png)
+    ![Snímek stránky pro vytvoření role se zvýrazněnou možností vytvořit zásadu](./media/amazon-web-service-tutorial/fetchingrole3.png)
 
-15. Vytvořte vlastní zásadu pro načtení všech rolí z účtů AWS provedením následujících kroků:
+15. Vytvořte vlastní zásadu pro načtení všech rolí z účtů AWS.
 
-    ![Vytváří se nová zásada.](./media/amazon-web-service-tutorial/policy1.png)
+    ![Snímek stránky pro vytvoření zásady se zvýrazněným kódem JSON](./media/amazon-web-service-tutorial/policy1.png)
 
-    a. V části **vytvořit zásadu** klikněte na kartu **JSON** .
+    a. V části **vytvořit zásadu**vyberte kartu **JSON** .
 
-    b. V dokumentu zásady přidejte následující JSON.
+    b. V dokumentu zásady přidejte následující kód JSON:
 
     ```json
     {
@@ -244,135 +244,135 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     }
     ```
 
-    c. Kliknutím na **tlačítko zkontrolovat zásadu** zásadu ověřte.
+    c. Vyberte možnost **zkontrolovat zásadu** a zásadu ověřte.
 
-    ![Definování nové zásady](./media/amazon-web-service-tutorial/policy5.png)
+    ![Snímek obrazovky s vytvořením stránky zásad](./media/amazon-web-service-tutorial/policy5.png)
 
-16. Pomocí následujících kroků definujte **nové zásady** :
+16. Definujte novou zásadu.
 
-    ![Definování nové zásady](./media/amazon-web-service-tutorial/policy2.png)
+    ![Snímek stránky pro vytvoření zásady se zvýrazněnými poli název a popis](./media/amazon-web-service-tutorial/policy2.png)
 
-    a. Zadejte **název zásady** jako **AzureAD_SSOUserRole_Policy**.
+    a. Jako **název**zadejte **AzureAD_SSOUserRole_Policy**.
 
-    b. Můžete zadat **Popis** zásady, protože **tyto zásady umožní načtení rolí z účtů AWS**.
+    b. Pro **Popis**zadejte **tuto zásadu, která umožní načtení rolí z účtů AWS**.
 
-    c. Klikněte na tlačítko **vytvořit zásadu** .
+    c. Vyberte **vytvořit zásadu**.
 
-17. Vytvořte nový uživatelský účet ve službě IAM AWS provedením následujících kroků:
+17. Ve službě AWS IAM vytvořte nový uživatelský účet.
 
-    a. V konzole AWS IAM klikněte na navigace **uživatelů** .
+    a. V konzole AWS IAM vyberte **Uživatelé**.
 
-    ![Definování nové zásady](./media/amazon-web-service-tutorial/policy3.png)
+    ![Snímek obrazovky konzoly AWS IAM se zvýrazněnými uživateli](./media/amazon-web-service-tutorial/policy3.png)
 
-    b. Kliknutím na tlačítko **Přidat uživatele** vytvoříte nového uživatele.
+    b. Chcete-li vytvořit nového uživatele, vyberte možnost **Přidat uživatele**.
 
-    ![Přidat uživatele](./media/amazon-web-service-tutorial/policy4.png)
+    ![Snímek obrazovky s tlačítkem Přidat uživatele](./media/amazon-web-service-tutorial/policy4.png)
 
-    c. V části **Přidat uživatele** proveďte následující kroky:
+    c. V části **Přidat uživatele** :
 
-    ![Přidat uživatele](./media/amazon-web-service-tutorial/adduser1.png)
+    ![Snímek obrazovky se stránkou přidat uživatele se zvýrazněným uživatelským jménem a typem přístupu](./media/amazon-web-service-tutorial/adduser1.png)
 
     * Zadejte uživatelské jméno jako **AzureADRoleManager**.
 
-    * V poli Typ přístupu vyberte možnost **programový přístup** . Tímto způsobem může uživatel vyvolávat rozhraní API a načíst role z účtu AWS.
+    * Jako typ přístupu vyberte programový **přístup**. Tímto způsobem může uživatel vyvolat rozhraní API a načíst role z účtu AWS.
 
-    * Klikněte na tlačítko **Další oprávnění** v pravém dolním rohu.
+    * Vyberte **Další oprávnění**.
 
-18. Nyní vytvořte novou zásadu pro tohoto uživatele provedením následujících kroků:
+18. Vytvoří novou zásadu pro tohoto uživatele.
 
-    ![Přidat uživatele](./media/amazon-web-service-tutorial/adduser2.png)
+    ![Snímek obrazovky s přidáním uživatele](./media/amazon-web-service-tutorial/adduser2.png)
 
-    a. Klikněte na tlačítko **připojit existující zásady přímo** .
+    a. Vyberte možnost **připojit existující zásady přímo**.
 
     b. V části Filter **AzureAD_SSOUserRole_Policy**(filtr) vyhledejte nově vytvořenou zásadu.
 
-    c. Vyberte **zásadu** a pak klikněte **na další: Tlačítko** revize.
+    c. Vyberte zásadu a potom vyberte **další: Zkontrolujte**.
 
-19. Projděte si zásadu k připojenému uživateli provedením následujících kroků:
+19. Zkontrolujte zásadu pro připojeného uživatele.
 
-    ![Přidat uživatele](./media/amazon-web-service-tutorial/adduser3.png)
+    ![Snímek obrazovky se stránkou přidat uživatele s zvýrazněným možností vytvořit uživatele](./media/amazon-web-service-tutorial/adduser3.png)
 
     a. Zkontrolujte uživatelské jméno, typ přístupu a zásadu namapované na uživatele.
 
-    b. Kliknutím na tlačítko **vytvořit uživatele** v pravém dolním rohu vytvořte uživatele.
+    b. Vyberte **vytvořit uživatele**.
 
-20. Pomocí následujících kroků stáhněte přihlašovací údaje uživatele uživatele:
+20. Stáhněte si přihlašovací údaje uživatele.
 
-    ![Přidat uživatele](./media/amazon-web-service-tutorial/adduser4.png)
+    ![Snímek obrazovky s přidáním uživatele](./media/amazon-web-service-tutorial/adduser4.png)
 
     a. Zkopírujte **ID přístupového klíče** uživatele a **tajný přístupový klíč**.
 
     b. Pokud chcete načíst role z konzoly AWS, zadejte tyto přihlašovací údaje do oddílu zřizování uživatelů Azure AD.
 
-    c. V dolní části klikněte na tlačítko **Zavřít** .
+    c. Vyberte **Zavřít**.
 
-21. Přejděte do části **zřizování uživatelů** v aplikaci Amazon Web Services ve službě Azure AD portál pro správu.
+21. Na portálu pro správu Azure AD, v aplikaci AWS, pokračujte na **zřizování**.
 
-    ![Přidat uživatele](./media/amazon-web-service-tutorial/provisioning.png)
+    ![Snímek obrazovky aplikace AWS se zvýrazněným zřizováním](./media/amazon-web-service-tutorial/provisioning.png)
 
-22. Do pole **tajný klíč klienta** a tajný **token** zadejte **přístupový klíč** a **tajný** klíč.
+22. Zadejte přístupový klíč a tajný klíč do polí **ClientSecret** a **tajného tokenu** v uvedeném pořadí.
 
-    ![Přidat uživatele](./media/amazon-web-service-tutorial/provisioning1.png)
+    ![Snímek obrazovky dialogového okna přihlašovací údaje správce](./media/amazon-web-service-tutorial/provisioning1.png)
 
     a. Do pole **ClientSecret** zadejte přístupový klíč uživatele AWS.
 
     b. Do pole **token tajného klíče** zadejte tajný klíč uživatele AWS.
 
-    c. Klikněte na tlačítko **Testovat připojení** a měli byste mít možnost toto připojení úspěšně otestovat.
+    c. Vyberte **Test připojení**.
 
-    d. Uložte nastavení kliknutím na tlačítko **Uložit** v horní části.
+    d. Uložte nastavení výběrem možnosti **Uložit**.
 
-23. Teď zkontrolujte, jestli jste v části nastavení povolili stav zřizování, a pak klikněte na tlačítko **Uložit** v horní části.
+23. V části **Nastavení** pro **stav zřizování**vyberte **zapnuto**. Potom vyberte **Uložit**.
 
-    ![Přidat uživatele](./media/amazon-web-service-tutorial/provisioning2.png)
+    ![Snímek obrazovky s oddílem nastavení se zvýrazněnou možností](./media/amazon-web-service-tutorial/provisioning2.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+V této části vytvoříte testovacího uživatele B. Simon ve Azure Portal.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
 1. Vyberte **nového uživatele** v horní části obrazovky.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   
+   a. Do pole **Název** zadejte `B.Simon`.  
+   b. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.   
+   c. Vyberte možnost **Zobrazit heslo**a zapište ho. Potom vyberte **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Amazon Web Services (AWS).
+V této části povolíte B. Simon používat jednotné přihlašování Azure tím, že udělíte přístup k AWS.
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **Amazon Web Services (AWS)** .
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Snímek obrazovky s oddílem spravovat se zvýrazněnými uživateli a skupinami](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+    ![Snímek obrazovky s přidáním uživatele](common/add-assign-user.png)
 
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte **B. Simon**. Pak zvolte **Vybrat**.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele. Pak zvolte **Vybrat**.
+1. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
 
-### <a name="create-amazon-web-services-aws-test-user"></a>Vytvořit testovacího uživatele Amazon Web Services (AWS)
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-Cílem této části je vytvořit uživatele s názvem B. Simon v Amazon Web Services (AWS). Amazon Web Services (AWS) nevyžaduje vytvoření uživatele v systému pro jednotné přihlašování, takže nemusíte nic dělat.
-
-### <a name="test-sso"></a>Test SSO
-
-Když na přístupovém panelu vyberete dlaždici Amazon Web Services (AWS), měli byste se automaticky přihlásili k Amazon Web Services (AWS), pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici AWS, měli byste se automaticky přihlásit k AWS, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="known-issues"></a>Známé problémy
 
- * V oddílu **zřizování** se v dílčí části **mapování** zobrazí zpráva "načítání...". zpráva a nikdy nezobrazuje mapování atributů. Jediným podporovaným pracovním postupem zřizování je import rolí z AWS do služby Azure AD pro výběr během přiřazování uživatelů nebo skupin. Mapování atributů pro tuto vlastnost jsou předem určena a nelze je konfigurovat.
+ * V části **zřizování** se v podčásti **mapování** zobrazuje "načítání...". zpráva a nikdy nezobrazuje mapování atributů. Jediným podporovaným pracovním postupem zřizování je import rolí z AWS do služby Azure AD pro výběr během přiřazení uživatele nebo skupiny. Mapování atributů pro tuto vlastnost jsou předem určena a nelze je konfigurovat.
  
- * Oddíl **zřizování** podporuje jenom zadání jedné sady přihlašovacích údajů pro jednoho klienta AWS ve chvíli. Všechny importované role se zapisují do vlastnosti appRoles objektu Azure AD [servicePrincipal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) pro tenanta AWS. Do služby Azure AD se dá přidat několik tenantů AWS (reprezentovaných servicePrincipals) z galerie pro účely zřizování, ale dojde k známému problému, který nedokáže automaticky zapisovat všechny importované role z několika AWS servicePrincipals používaných pro zřizování do jediného servicePrincipal používaného pro jednotné přihlašování Jako alternativní řešení můžete [Microsoft Graph rozhraní API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) použít k extrakci všech appRoles importovaných do každého AWS servicePrincipal, kde je zřizování nakonfigurované. Tyto řetězce role je možné následně přidat do AWS servicePrincipal, kde je nakonfigurované jednotné přihlašování.
+ * Oddíl **zřizování** podporuje jenom zadání jedné sady přihlašovacích údajů pro jednoho klienta AWS ve chvíli. Všechny importované role se zapisují do `appRoles` vlastnosti [ `servicePrincipal` objektu](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) Azure AD pro tenanta AWS. 
+ 
+   Do Azure AD se dá přidat víc `servicePrincipals`tenantů AWS (reprezentovaný) z galerie pro zřizování. K dispozici je ale známý problém s tím, že není možné automaticky zapisovat všechny importované role z několika AWS `servicePrincipals` používaných k zřizování do jediného `servicePrincipal` používaného pro jednotné přihlašování. 
+   
+   Jako alternativní řešení můžete použít [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) k extrakci všech `appRoles` importovaných do každého AWS `servicePrincipal` , kde je zřizování nakonfigurované. Následně můžete přidat tyto řetězce rolí do AWS `servicePrincipal` , kde je nakonfigurované jednotné přihlašování.
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

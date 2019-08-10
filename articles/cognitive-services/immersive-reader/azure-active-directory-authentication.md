@@ -1,21 +1,21 @@
 ---
 title: Ověřování Azure Active Directory (Azure AD)
 titleSuffix: Azure Cognitive Services
-description: Referenční dokumentace k sadě pro moderní čtečku
+description: V tomto článku se dozvíte, jak vytvořit nový prostředek moderního čtecího zařízení s vlastní subdoménou a potom nakonfigurovat Azure AD v tenantovi Azure.
 services: cognitive-services
 author: rwaller
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: de6a29e1c4c102aa7d4038185c1635544ba9dfe2
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5a03c377a275fff489f1fb8371f9905411b67960
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688798"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881545"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Použití ověřování pomocí Azure Active Directory (Azure AD) se službou moderního čtecího zařízení
 
@@ -132,7 +132,7 @@ V tomto příkladu se heslo používá k ověření instančního objektu pro z�
 
 Případně můžete instanční objekt ověřit pomocí certifikátu. Kromě instančního objektu jsou taky podporované uživatelské objekty a oprávnění delegovaná přes jinou aplikaci Azure AD. V tomto případě, místo hesel nebo certifikátů, se uživatelům při získávání tokenů zobrazí výzva k zadání dvou faktorů ověřování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Podívejte se na [kurz](./tutorial.md) , který vám umožní udělat si další informace, které můžete dělat v sadě moderní čtečky.
 * Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)

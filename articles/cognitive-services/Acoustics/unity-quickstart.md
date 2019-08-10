@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a36a16b6cb64c300647d16695edfbb73f4884104
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0ea020ca76381a4ae5d6b6e480c94e63f9aa2dab
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854865"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933127"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Projekty s akustickým rychlým startem Unity
 Použijte k experimentování s ovládacími prvky návrhu pro simulaci s vydanými simulací ukázkový obsah projektového obsahu pro Unity.
@@ -38,16 +38,35 @@ Importujte vzorový balíček do nového projektu Unity.
 
 * Vyberte **ProjectAcoustics. unitypackage**
 
+* Kliknutím na tlačítko **Import** integrujete balíček Unity do svého projektu.  
+  
+    ![Snímek obrazovky dialogového okna pro Import balíčku Unity](media/import-dialog.png)  
+
 Pokud balíček importujete do existujícího projektu, přečtěte si téma [integrace Unity](unity-integration.md) pro další kroky a poznámky.
+
+>[!NOTE] 
+>Po dokončení importu se v protokolu konzoly zobrazí několik chyb.  Pokračujte dalším krokem a restartujte Unity.
 
 ## <a name="restart-unity"></a>Restartovat Unity
 Zanesli část akustického množství Toolkit vyžaduje verzi modulu runtime skriptování .NET 4. x. Při importu balíčku se aktualizují nastavení přehrávače Unity. Restartujte Unity, aby se toto nastavení projevilo.
 
 Toto nastavení můžete ověřit tak, že otevřete **nastavení přehrávače**:
 
-![Snímek obrazovky s panelem nastavení přehrávače Unity](media/player-settings.png)
+![Snímek obrazovky s panelem nastavení přehrávače Unity](media/player-settings.png)  
 
-![Snímek obrazovky s panelem nastavení přehrávače Unity s vybraným .NET 4,5](media/net45.png)
+![Snímek obrazovky s panelem nastavení přehrávače Unity s vybraným .NET 4,5](media/net45.png)  
+
+>[!NOTE]
+>Snímek obrazovky je pořízen z Unity 2018. x. Novější verze Unity se mohou lišit.
+
+## <a name="open-the-project-acoustics-bake-window"></a>Otevřete okno akustické zanesli projektu.
+V nabídce Unity vyberte **okno > akustické** :
+
+![Snímek obrazovky s vybranými možnostmi nabídky okna s akustickými obrazovkami v editoru Unity](media/window-acoustics.png)
+
+Zobrazí se nové plovoucí okno s názvem akustické.  V tomto okně jsou nastaveny vlastnosti akustické simulace.
+
+![Snímek obrazovky editoru Unity s otevřeným oknem akustického množství](media/unity-editor-plugin-window.png)  
 
 ## <a name="experiment-with-design-controls"></a>Experiment s ovládacími prvky návrhu
 Otevřete ukázkovou scénu ve složce **ProjectAcousticsSample** a klikněte na tlačítko Přehrát v editoru Unity. Pro pohyb použijte W, A, S, D a myš. Chcete-li porovnat způsob, jakým je scéna zvuk, a to bez akustického navýšení, stiskněte tlačítko **R** , dokud se překryvný text neprojeví červeně a říká se Zakázáno. " Pokud zobrazit klávesové zkratky dalších možností ovládání, stiskněte klávesu **F1**. Ovládací prvky se také podporují kliknutím pravým tlačítkem a výběrem akce, která se má provést, a následným kliknutím na provést akci.
@@ -56,7 +75,7 @@ Skript **AcousticsAdjust** je připojen ke zdrojům zvuku v ukázkové scéně, 
 
 ![Snímek obrazovky s AcousticsAdjust skriptem Unity](media/acoustics-adjust.png)
 
-Následující seznam popisuje některé efekty, které lze vyrobit s poskytnutými ovládacími prvky. Podrobné informace o jednotlivých ovládacích prvkůch najdete v [kurzu návrhu Unity pro projekt](unreal-workflow.md).
+Následující seznam popisuje některé efekty, které lze vyrobit s poskytnutými ovládacími prvky. Podrobné informace o jednotlivých ovládacích prvkůch najdete v [kurzu návrhu Unity pro projekt](unity-workflow.md).
 
 ### <a name="modify-distance-based-attenuation"></a>Úprava zeslabení na základě vzdálenosti
 Zvukový procesor, který je poskytováný modulem plug-in Unity spatializer, dodržuje odkládání na dálku, které jsou součástí editoru Unity. Ovládací prvky pro odkládání na dálku jsou součástí **zdrojové zvukové** komponenty, která se nachází na panelu inspektora zvukových zdrojů, v části **Nastavení 3D zvuku**:

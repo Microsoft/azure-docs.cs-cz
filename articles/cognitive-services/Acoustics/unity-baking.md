@@ -11,18 +11,18 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: e26df58de08d0941b5e3165852ed0b26f8890f66
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b7249c3048ba3af3adbaac01f43770482a0d38ad
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854935"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933193"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Výukový kurz pro Zanesliu Unity v projektu
 Tento kurz popisuje akustické a pečení s využitím akustického projektu v Unity.
 
 Požadavky na software:
-* [Unity 2018.2 +](https://unity3d.com) pro Windows
+* [Unity 2018.2 +](https://unity3d.com) pro Windows nebo MacOS
 * [Modul plug-in s akustickými podprojekty integrovaný do vašeho projektu Unity](unity-integration.md) nebo v [projektu s akustickým obsahem Unity](unity-quickstart.md)
 * Volitelné: [Účet Azure Batch](create-azure-account.md) pro urychlení vytváří pomocí cloud computingu
 
@@ -179,6 +179,25 @@ Po spuštění zanesli můžete tuto Unity zavřít. V závislosti na projektu, 
 
 Přihlašovací údaje Azure se bezpečně ukládají na vašem místním počítači a jsou spojené s vaším editorem Unity. Používají se výhradně k navázání zabezpečeného připojení k Azure.
 
+## <a name="to-find-the-status-of-a-running-job-on-the-azure-portal"></a>Zjištění stavu spuštěné úlohy na Azure Portal
+
+1. Na kartě zanesli najdete ID úlohy zanesli:
+
+![Snímek obrazovky s ID úlohy Unity zanesli](media/unity-job-id.png)  
+
+2. Otevřete [Azure Portal](https://portal.azure.com), přejděte k účtu Batch použitému pro zanesli a vyberte **úlohy** .
+
+![Snímek obrazovky s odkazem na úlohy](media/azure-batch-jobs.png)  
+
+3. V seznamu úloh vyhledejte ID úlohy.
+
+![Snímek obrazovky se stavem úlohy zanesli](media/azure-bake-job-status.png)  
+
+4. Kliknutím na ID úlohy zobrazíte stav souvisejících úloh a celkového stavu úlohy.
+
+![Snímek obrazovky se stavem úlohy zanesli](media/azure-batch-task-state.png)  
+
+
 ### <a name="Estimating-bake-cost"></a>Odhad nákladů na Azure zanesli
 
 K odhadu toho, jaké zanesli budou náklady, vezměte hodnotu zobrazenou pro **Odhadované výpočetní náklady**, což je doba trvání, a vynásobte ji hodinovou sazbou v místní měně vybraného **typu uzlu virtuálního počítače** . Výsledek nebude zahrnovat čas uzlu potřebný k zprovoznění uzlů. Pokud například vyberete **Standard_F8s_v2** pro typ uzlu, který má cenu $0.40/hod, a odhadované náklady na výpočetní výkon jsou 3 hodiny a 57 minut, odhadované náklady na spuštění úlohy budou $0,40 × ~ 4 hodiny = ~ $1,60. Skutečné náklady budou pravděpodobně vyšší než vyšší čas na to, aby bylo možné uzly získat. Náklady na hodinové uzly najdete na stránce s [cenami za Azure Batch](https://azure.microsoft.com/pricing/details/virtual-machines/linux) (pro kategorii vyberte výpočetní optimalizované nebo vysoký výkon).
@@ -188,6 +207,7 @@ Své scény můžete zanesli na svém vlastním počítači. To může být uži
 
 ### <a name="minimum-hardware-requirements"></a>Minimální požadavky na hardware
 * Procesor X86-64 s aspoň 8 jádry a 32 GB paměti RAM
+* [Technologie Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) s povoleným spouštěním Docker
 
 Příklad: v našem testování na 8 základních počítačích s Intel Xeon E5-1660 @ 3 GHz a 32 GB RAM –
 * Malá scéna s 100 sondami může trvat přibližně 2 hodiny za hrubý zanesli nebo 32 hodin za zanesli.
@@ -195,13 +215,15 @@ Příklad: v našem testování na 8 základních počítačích s Intel Xeon E5
 
 ### <a name="setup-docker"></a>Nastavení Docker
 Instalace a konfigurace Docker na počítači, který bude zpracovávat simulaci –
-1. Nainstalujte [sadu nástrojů Docker](https://www.docker.com/products/docker-desktop).
-2. Spusťte nastavení Docker, přejděte na možnosti Upřesnit a nakonfigurujte prostředky tak, aby měly aspoň 8 GB paměti RAM. Čím více procesorů můžete přidělit Docker, tím rychleji se zanesli dokončí. ![Snímek obrazovky s ukázkovým nastavením Docker](media/docker-settings.png)
-3. Přejděte na sdílené jednotky a zapněte sdílení jednotky používané ke zpracování.![Snímek obrazovky s možnostmi sdíleného disku Docker](media/docker-shared-drives.png)
+1. Nainstalujte [plochu Docker](https://www.docker.com/products/docker-desktop).
+2. Spusťte nastavení Docker, přejděte na možnosti Upřesnit a nakonfigurujte prostředky tak, aby měly aspoň 8 GB paměti RAM. Čím více procesorů můžete přidělit Docker, tím rychleji se zanesli dokončí.  
+![Snímek obrazovky s ukázkovým nastavením Docker](media/docker-settings.png)
+1. Přejděte na sdílené jednotky a zapněte sdílení jednotky používané ke zpracování.  
+![Snímek obrazovky s možnostmi sdíleného disku Docker](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>Spustit místní zanesli
 1. Klikněte na tlačítko "připravit místní zanesli" na kartě **zanesli** a vyberte složku, do které se budou ukládat vstupní soubory a skripty spouštění. Pak můžete zanesli spustit na jakémkoli počítači, pokud splňuje minimální požadavky na hardware a máte nainstalovaný Docker zkopírováním složky do daného počítače.
-2. Spusťte simulaci pomocí skriptu "runlocalbake. bat". Tento skript načte obraz Docker s použitím sady nástrojů, který je nezbytný pro zpracování simulace, a spustí simulaci. 
+2. Spusťte simulaci pomocí skriptu "runlocalbake. bat" ve Windows nebo pomocí skriptu "runlocalbake.sh" na MacOS. Tento skript načte obraz Docker s použitím sady nástrojů, který je nezbytný pro zpracování simulace, a spustí simulaci. 
 3. Až se simulace dokončí, zkopírujte výsledný soubor. ACE zpátky do projektu Unity. Chcete-li zajistit, že Unity rozpozná toto jako binární soubor, přidejte do přípony souboru ". bytes" (například "scene1. ACE. bytes"). Podrobné protokoly pro simulaci jsou uloženy v "AcousticsLog. txt". Pokud narazíte na nějaké problémy, nasdílejte tento soubor pro pomoc s diagnostikou.
 
 ## <a name="Data-Files"></a>Datové soubory přidané procesem zanesli
@@ -227,7 +249,7 @@ Klikněte na objekt hry **ProjectAcoustics** a přejděte na jeho panel inspekto
 
 ![Snímek obrazovky s Prefab a správcem akustického vlastnictví v Unity](media/acoustics-manager.png)  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Prozkoumejte [ovládací prvky návrhu pro Unity](unity-workflow.md)
 * Prozkoumejte [Koncepty návrhu projektových](design-process.md) řešení
 

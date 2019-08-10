@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: f1d433dd7d919aa5d11f2f59b74a5e3f2dca0b59
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: b565ad8be1d8529d3650ec36fe7c4d61f6c5dc8f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500287"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879091"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Hledání videí pomocí rozhraní API Bingu pro vyhledávání videí
 
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Rozšíření dotazu
 
-Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Pokud například dotaz *čistí mezery*, rozšířené dotazy mohou být: Čisticí **nástroje**pro hřbet, čisticí mezery **z pozemního**a jednoduchého čištění na hřbetu.
+Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Pokud například dotaz *čistí mezery*, rozšířené dotazy mohou být: Čisticí **nástroje**pro hřbet, čisticí mezery **z pozemního**a jednoduchéhočištění na hřbetu.
 
 Následující příklad ukazuje rozšířené dotazy pro dotaz *čištění okapů*.
 

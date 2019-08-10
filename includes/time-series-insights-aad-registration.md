@@ -7,57 +7,66 @@ services: time-series-insights
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 07/02/2019
-ms.openlocfilehash: a463e3cf475909c34054717460dc10dbba4ad8f0
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.date: 08/08/2019
+ms.openlocfilehash: ed5cd9424630a90b989b8a4d76959961f82a53ec
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543967"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935257"
 ---
 > [!IMPORTANT]
-> * Nové **Azure Active Directory** > **registrace aplikací** okno nahrazuje starší **Azure Active Directory** > **aplikace registrace (starší verze)** okno. května 2019.
-> * Registrace aplikací vytvořili nebo zobrazí v okně starší verzi se automaticky zobrazí v novém okně.
-> * Úplné informace o migraci do nového prostředí registrace aplikace Azure, najdete v článku [registrace aplikace Azure, školení průvodce](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) a [Azure Active Directory pro rychlý Start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
+> * Nové okno **Azure Active Directory** > **Registrace aplikací** nahrazuje starší **Azure Active Directory** > **Registrace aplikací (starší verze)** . 2019. května.
+> * V novém okně se automaticky zobrazí Registrace aplikací vytvořené nebo zobrazené v okně starší verze.
+> * Podrobné informace o migraci na nové prostředí pro registraci aplikací Azure najdete v [Průvodci školením pro azure registrace aplikací](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) a v článku [rychlý Start Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
-1. V [webu Azure portal](https://ms.portal.azure.com/)vyberte **Azure Active Directory** > **registrace aplikací** > **registrace nové**.
+1. V [Azure Portal](https://ms.portal.azure.com/)vyberte **Azure Active Directory** > **Registrace aplikací** > **nové registrace**.
 
    [![Registrace nové aplikace v Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
 
    > [!TIP]
-   > Nový panel registrace aplikace Azure Active Directory vám umožní filtrovat zobrazené aplikace tak, že vyberete **ve vlastnictví aplikace**.
+   > Nový panel registrace aplikace Azure Active Directory umožňuje filtrovat zobrazené aplikace tak, že vyberete **vlastní aplikace**.
 
-    Vaše aplikace budou zde uvedené, až dokončíte registraci.
+    Vaše aplikace se tady zobrazí po registraci.
 
-1. Dejte aplikaci název a vyberte **účty v tomto adresáři organizace jenom** zadat **podporovaných typů účtu** , který může přistupovat k rozhraní API. Vyberte platný identifikátor URI pro přesměrování uživatelům po ověřují, pak **zaregistrovat**.
+1. Dejte aplikaci název a vyberte **účty v tomto organizačním adresáři jenom** k určení **podporovaných typů účtů** , které můžou mít přístup k rozhraní API. Zvolte platný identifikátor URI pro přesměrování uživatelů na ověření a pak zaregistrujte.
 
    [![Vytvoření aplikace v Azure Active Directory](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
-1. Důležité informace o aplikaci Azure Active Directory se zobrazí v seznamu aplikací **přehled** okno. Vyberte aplikaci v rámci **ve vlastnictví aplikace**, pak **přehled**.
+1. Důležité informace o Azure Active Directory aplikace se zobrazí v okně **Přehled** vaší aplikace v seznamu. Vyberte svou aplikaci v části **vlastněné aplikace**a pak klikněte na **Přehled**.
 
-   [![Zkopírujte ID aplikace](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
+   [![Kopírovat ID aplikace](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
 
-   Kopii vaší **ID aplikace (klient)** používat v klientské aplikaci.
+   Zkopírujte **ID aplikace (klienta)** pro použití v klientské aplikaci.
 
-1. **Ověřování** okno určuje nastavení konfigurace důležité ověřování. 
+1. Okno **ověřování** určuje nastavení konfigurace pro ověřování. 
 
-    1. **Identifikátory URI pro přesměrování** musí shodovat s adresou poskytl požadavek na ověření:
+    1. **Identifikátory URI pro přesměrování** se musí shodovat s adresou zadanou požadavkem ověřování:
 
-        * Aplikace hostované v místním vývojovém prostředí, vyberte **veřejným klientem (mobilních a desktopových)** . Nezapomeňte nastavit **výchozí typ klienta** na Ano.
-        * Jednostránkové aplikace hostované ve službě Azure App Service, vyberte **webové**.
+        * Pro aplikace hostované v místním vývojovém prostředí vyberte možnost **veřejný klient (mobilní & Desktop)** . Nezapomeňte nastavit **výchozí typ klienta** na Ano.
+        * V případě aplikací s jednou stránkou hostovaných v Azure App Service vyberte **Web**.
 
-    1. Povolit implicitní grant tok tak, že zkontrolujete **tokeny typu ID**.
+    1. Povolte tok implicitního udělení kontrolou **tokenů ID**.
 
-   [![Vytvořit nový tajný kód klienta](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+   [![Vytvoří nový tajný klíč klienta.](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 
    Klikněte na **Uložit**.
 
-1. Přidružte vaše aplikace Azure Active Directory Azure TIme Series Insights. Vyberte **oprávnění k rozhraní API** > **přidat oprávnění** > **naše organizace bude využívat rozhraní API**. 
+1. Vyberte **certifikáty & tajných klíčů** a **nový tajný klíč klienta** k vytvoření hesla aplikace, které klient může použít k prokázání jeho identity.
 
-    [![Rozhraní API přidružit k aplikaci Azure Active Directory](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
+   [![Vytvoří nový tajný klíč klienta.](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
 
-   Typ `Azure Time Series Insights` do vyhledávání panelu vyberte `Azure Time Series Insights`.
+   Zobrazí se vaše tajné heslo klienta. Zkopírujte klíč do svého oblíbeného textového editoru.
 
-1. Dále určete typ oprávnění rozhraní API, které vaše aplikace vyžaduje. Ve výchozím nastavení **delegovaná oprávnění** budou zvýrazněny. Pak zvolte typ oprávnění, vyberte **přidat oprávnění**.
+   > [!NOTE]
+   > Místo toho máte možnost importovat certifikát. Pro rozšířené zabezpečení se doporučuje certifikát. Chcete-li použít certifikát, vyberte **Odeslat certifikát**.
 
-    [![Zadejte typ oprávnění rozhraní API, které vaše aplikace vyžaduje](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
+1. Přidružte svoji aplikaci Azure Active Directory Azure TIme Series Insights.  > Vyberte **oprávnění rozhraní API** **Přidat oprávnění** > **API moje organizace používá**. 
+
+    [![Přidružení rozhraní API k aplikaci Azure Active Directory](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
+
+   Zadejte `Azure Time Series Insights` do panelu hledání a pak vyberte `Azure Time Series Insights`.
+
+1. Dále zadejte oprávnění API typu, které vaše aplikace vyžaduje. Ve výchozím nastavení se zvýrazní **delegovaná oprávnění** . Zvolte typ oprávnění a pak vyberte **Přidat oprávnění**.
+
+    [![Zadejte druh oprávnění API, které vaše aplikace vyžaduje.](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 0c50a321cbeb0d07a5039038ff796df00463ac8a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 964ecca015e440439885bbbd85cb720a3abd10a9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385665"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883519"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -43,7 +43,7 @@ Vlastník testovacího prostředí může přidat další uživatele do role **t
 2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft. 
 3. V okně **New Lab** (Nové testovací prostředí) proveďte následující akce: 
     1. Zadejte **název** testovacího prostředí. 
-    2. Zadejte maximální **počet virtuálních počítačů** v testovacím prostředí. Po vytvoření testovacího prostředí nebo v existujícím testovacím prostředí můžete počet virtuálních počítačů zvýšit nebo vytvořit. Další informace najdete v tématu [aktualizace počtu virtuálních počítačů v testovacím prostředí](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab) .
+    2. Zadejte maximální **počet virtuálních počítačů** v testovacím prostředí. Po vytvoření testovacího prostředí nebo v existujícím testovacím prostředí můžete počet virtuálních počítačů zvýšit nebo snížit. Další informace najdete v tématu [aktualizace počtu virtuálních počítačů v testovacím prostředí](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab) .
     6. Vyberte **Uložit**.
 
         ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)
@@ -92,7 +92,7 @@ Vlastník testovacího prostředí může přidat další uživatele do role **t
 1. Zobrazí se **řídicí panel** testovacího prostředí. 
     
     ![Řídicí panel testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
-4. Přepněte na stránku **virtuálních počítačů** výběrem možnosti virtuální počítače v nabídce vlevo nebo výběrem dlaždice virtuální počítače. Ověřte, že se zobrazují virtuální počítače, které  jsou v nepřiřazeném stavu. Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Virtuální počítače můžete spustit na této stránce nebo jejich spuštění můžete nechat na studentech. 
+4. Přepněte na stránku **virtuálních počítačů** výběrem možnosti virtuální počítače v nabídce vlevo nebo výběrem dlaždice virtuální počítače. Ověřte, že se zobrazují virtuální počítače, které jsou v nepřiřazeném stavu. Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Virtuální počítače můžete spustit na této stránce nebo jejich spuštění můžete nechat na studentech. 
 
     ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -132,7 +132,7 @@ Pokud jste nakonfigurovali nastavení kvóty na **0 hodin (jenom plán)** , mus�
 1. Přepněte na stránku **plány** a na panelu nástrojů vyberte **Přidat plán** . 
 
     ![Tlačítko Přidat plán na stránce plány](../media/how-to-create-schedules/add-schedule-button.png)
-2. Na stránce **Přidat plán** přepněte v horní části  na týdně. 
+2. Na stránce **Přidat plán** přepněte v horní části na týdně. 
 3. Pro **dny plánu (povinné)** vyberte dny, ve kterých se má plán projevit. V následujícím příkladu je vybrána možnost pondělí – pátek. 
 4. V poli **od** zadejte **Datum zahájení plánu** nebo vyberte datum výběrem tlačítka **Kalendář** . Toto pole je povinné. 
 5. Do pole **Datum ukončení plánu**zadejte nebo vyberte koncové datum, kdy se mají virtuální počítače vypnout. 
@@ -147,7 +147,7 @@ Pokud jste nakonfigurovali nastavení kvóty na **0 hodin (jenom plán)** , mus�
 ## <a name="send-an-email-with-the-registration-link"></a>Odeslání e-mailu s odkazem na registraci
 
 1. Pokud na stránce již nejste, přepněte do zobrazení **Uživatelé** . 
-2. Vyberte konkrétní nebo všechny uživatele ze seznamu. Chcete-li vybrat konkrétní uživatele, zaškrtněte políčka v prvním sloupci seznamu. Chcete-li vybrat možnost všichni uživatelé, zaškrtněte políčko před nadpisem prvního sloupce (**název**) nebo zaškrtněte všechna políčka pro všechny uživatele v seznamu. Stav pozvánky můžete zobrazit v tomto  seznamu.  Na následujícím obrázku je stav pozvánky pro všechny studenty nastavený na pozvánku Neodesláno. 
+2. Vyberte konkrétní nebo všechny uživatele ze seznamu. Chcete-li vybrat konkrétní uživatele, zaškrtněte políčka v prvním sloupci seznamu. Chcete-li vybrat možnost všichni uživatelé, zaškrtněte políčko před nadpisem prvního sloupce (**název**) nebo zaškrtněte všechna políčka pro všechny uživatele v seznamu. Stav pozvánky můžete zobrazit v tomto seznamu.  Na následujícím obrázku je stav pozvánky pro všechny studenty nastavený na pozvánkuNeodesláno. 
 
     ![Vybrat studenty](../media/tutorial-setup-classroom-lab/select-students.png)
 1. Vyberte **ikonu e-mailu (obálka)** v jednom z řádků (nebo) vyberte **Odeslat pozvánku** na panelu nástrojů. Chcete-li zobrazit ikonu e-mailu, můžete také umístit ukazatel myši na jméno studenta v seznamu. 
@@ -159,7 +159,7 @@ Pokud jste nakonfigurovali nastavení kvóty na **0 hodin (jenom plán)** , mus�
         
         ![Odeslané pozvánky](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste vytvořili testovací prostředí v učebně a nakonfigurovali ho. Pokud chcete získat informace o tom, jak může student přistupovat k virtuálnímu počítači v testovacím prostředí pomocí odkazu pro registraci, přejděte na další kurz:
 
 > [!div class="nextstepaction"]

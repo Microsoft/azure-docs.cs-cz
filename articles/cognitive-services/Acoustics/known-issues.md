@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a70d9ea1090f1c518f804dd28f3461918af965cd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 37084480423de90f50beced187eda202b39f8bf1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854288"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933065"
 ---
 # <a name="project-acoustics-known-issues"></a>Známé problémy v projektu
 Při použití náhledu návrháře pro akustické navýšení projektu může dojít k následujícím známým potížím.
@@ -24,10 +24,6 @@ Při použití náhledu návrháře pro akustické navýšení projektu může d
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>Při přejmenování scény se ztratí akustické parametry.
 
 Pokud přejmenujete scénu, všechny akustické parametry, které patří do této scény, se automaticky nepřesunou do nové scény. Stále existují v původním souboru prostředků. Vyhledejte soubor **SceneName_AcousticParameters. Asset** v adresáři **editoru** vedle souboru scény. Přejmenujte soubor tak, aby odrážel název nové scény.
-
-## <a name="unity-crashes-when-closing-project"></a>Chyby Unity při zavírání projektu
-
-V nejnovějších verzích Unity (2018.2 +) existuje známá chyba, kde při zavření projektu dojde k chybě Unity. Toto je sledováno tímto [problémem Unity](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project).
 
 ## <a name="deploying-to-android-from-some-unity-versions"></a>Nasazení na Android z některých verzí Unity
 

@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: c6f3d9c1605dc97b315550d8b7e3fdf08144c1bc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: af636deaafc05238c287d095e644588ed8c5f26d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561232"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880052"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>Definování a použití úloh moderování (REST)
 
@@ -38,7 +38,7 @@ Zadejte následující hodnoty pro sestavení volání REST:
 
 - **teamName**: ID týmu, které jste vytvořili při nastavování účtu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) (najdete ho v poli **ID** na obrazovce s přihlašovacími údaji nástroje pro kontrolu).
 - **ContentType**: Může to být "obrázek", "text" nebo "video".
-- ID **obsahu:** Vlastní řetězec identifikátoru. Tento řetězec je předán rozhraní API a vrácen prostřednictvím zpětného volání. Je vhodný pro přidružení interních identifikátorů nebo metadat k výsledkům úlohy moderování.
+- ID obsahu: Vlastní řetězec identifikátoru. Tento řetězec je předán rozhraní API a vrácen prostřednictvím zpětného volání. Je vhodný pro přidružení interních identifikátorů nebo metadat k výsledkům úlohy moderování.
 - **Pracovní postup**: Název pracovního postupu, který jste dříve vytvořili (nebo výchozí pro výchozí pracovní postup).
 - **CallbackEndpoint**: Volitelné Adresa URL pro příjem informací o zpětném volání po dokončení revize.
 - **Ocp-Apim-Subscription-Key**: Váš Content Moderator klíč. Najdete ho na kartě **Nastavení** [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com).

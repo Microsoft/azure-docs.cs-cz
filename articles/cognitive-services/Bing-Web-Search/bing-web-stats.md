@@ -7,16 +7,16 @@ author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 40a5e03f4149381f096f71243361eacbdc7c16c2
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667609"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882785"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Přidání analýzy do rozhraní API pro vyhledávání Bingu
 

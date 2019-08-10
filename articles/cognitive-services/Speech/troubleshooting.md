@@ -1,7 +1,7 @@
 ---
-title: Řešení potíží pro zpracování řeči Bingu | Dokumentace Microsoftu
+title: Řešení potíží s Zpracování řeči Bingu | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Jak řešit problémy při použití pro zpracování řeči Bingu.
+description: Řešení potíží při použití Zpracování řeči Bingu.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
@@ -11,49 +11,49 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e70e7b79be7dd4ea55c56898eaf8007d25732366
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f222d9d4cf6c56dea0832938dcb132cf711491bc
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60513990"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934060"
 ---
-# <a name="troubleshooting-bing-speech"></a>Řešení potíží pro zpracování řeči Bingu
+# <a name="troubleshooting-bing-speech"></a>Řešení potíží s Zpracování řeči Bingu
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-## <a name="error-http-403-forbidden"></a>Chyba `HTTP 403 Forbidden`
+## <a name="error-http-403-forbidden"></a>Chyba`HTTP 403 Forbidden`
 
-Při použití rozhraní API pro rozpoznávání řeči, vrátí `HTTP 403 Forbidden` chyby.
+Při použití rozhraní API pro rozpoznávání řeči se vrátí `HTTP 403 Forbidden` chyba.
 
 ### <a name="cause"></a>Příčina
 
-Tato chyba je často způsobeno problémy s ověřováním. Požadavky na připojení bez platné `Ocp-Apim-Subscription-Key` nebo `Authorization` záhlaví odmítnula této služby s využitím `HTTP 403 Forbidden` odpovědi.
+Tato chyba je často způsobena problémy s ověřováním. Služba s `Ocp-Apim-Subscription-Key` `Authorization` odpovědíodmítlapožadavkynapřipojeníbez`HTTP 403 Forbidden` platného nebo hlavičky.
 
-Pokud používáte klíč předplatného pro ověřování, může být důvod
+Pokud pro ověřování používáte klíč předplatného, důvod může být
 
-- klíč předplatného je chybějící nebo neplatný
-- překročení kvóty využití klíč předplatného
-- `Ocp-Apim-Subscription-Key` není nastavené pole v hlavičce žádosti při volání rozhraní REST API
+- klíč předplatného chybí nebo není platný.
+- překročila se kvóta využití klíče předplatného.
+- `Ocp-Apim-Subscription-Key` pole není nastavené v hlavičce požadavku, když se zavolá REST API.
 
-Pokud ověřovací token, který používáte pro ověřování, z následujících důvodů může způsobit chybu.
+Pokud pro ověřování používáte autorizační token, může to způsobit následující důvody.
 
-- `Authorization` chybí hlavička v požadavku při používání REST
+- v požadavku chybí záhlaví při použití REST. `Authorization`
 - autorizační token zadaný v autorizační hlavičce je neplatný.
-- ověřovací token, který je neplatný. Přístupový token má vypršení platnosti 10 minut
+- platnost autorizačního tokenu vypršela. Platnost přístupového tokenu vypršela 10 minut.
 
-Další informace o ověřování najdete v článku [ověřování](How-to/how-to-authentication.md) stránky.
+Další informace o ověřování najdete na stránce [ověřování](How-to/how-to-authentication.md) .
 
 ### <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-#### <a name="verify-that-your-subscription-key-is-valid"></a>Ověřte, zda je platný klíč předplatného.
+#### <a name="verify-that-your-subscription-key-is-valid"></a>Ověřte, jestli je klíč předplatného platný.
 
-Můžete spustit následující příkaz k ověření. Poznámka: Chcete-li nahradit *YOUR_SUBSCRIPTION_KEY* s klíči předplatného. Pokud váš klíč předplatného je platný, zobrazí se v odpovědi ověřovací token, který jako JSON Web Token (token JWT). V opačném případě dojde k chybě v odpovědi.
+Pro ověření můžete spustit následující příkaz. Poznámka: Nahraďte *YOUR_SUBSCRIPTION_KEY* vlastním klíčem předplatného. Pokud je klíč předplatného platný, dostanete v odpovědi autorizační token jako JSON Web Token (JWT). V opačném případě se zobrazí chyba v reakci.
 
 > [!NOTE]
-> Nahraďte `YOUR_SUBSCRIPTION_KEY` s klíči předplatného.
+> Nahraďte `YOUR_SUBSCRIPTION_KEY` vlastním klíčem předplatného.
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -69,27 +69,27 @@ $OAuthToken
 
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
-V příkladu používá curl v Linuxu pomocí prostředí bash. Pokud není dostupný na vaší platformě, budete muset nainstalovat curl. V příkladu by měl také pracovat na Cygwin ve Windows, Git Bash, zsh a jiné prostředí.
+V příkladu se používá oblé v systému Linux s bash. Pokud není na vaší platformě k dispozici, bude pravděpodobně nutné nainstalovat oblé. Příklad by měl fungovat taky na Cygwin ve Windows, Gitu bash, zsh a dalších prostředích.
 
 ```
 curl -v -X POST "https://api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 ---
 
-Ujistěte se, že používáte stejný klíč předplatného ve vaší aplikaci nebo v požadavku REST, který je použitý výše.
+Ujistěte se, že používáte stejný klíč předplatného v aplikaci nebo v žádosti REST, jak se používá výše.
 
-#### <a name="verify-the-authorization-token"></a>Ověřit token autorizace
+#### <a name="verify-the-authorization-token"></a>Ověření autorizačního tokenu
 
-Tento krok je nutný pouze, pokud používáte autorizační token pro ověření. Spusťte následující příkaz k ověření, že ověřovací token, který je stále platný. Příkaz odešle požadavek POST do služby a očekává, že odpověď ze služby. Pokud se stále zobrazí HTTP `403 Forbidden` chyba, zkontrolujte přístup k tokenu je správně nastavena ani s prošlou platností.
+Tento krok je potřeba jenom v případě, že pro ověřování používáte autorizační token. Spusťte následující příkaz a ověřte, zda je autorizační token stále platný. Příkaz odešle službě požadavek POST a očekává ze služby zprávu s odpovědí. Pokud se stále zobrazuje chyba `403 Forbidden` protokolu HTTP, dvakrát ověřte, že je přístupový token nastavený správně a že nevypršela jeho platnost.
 
 > [!IMPORTANT]
-> Token, který má vypršení platnosti 10 minut.
+> Platnost tokenu vypršela 10 minut.
 > [!NOTE]
-> Nahraďte `YOUR_AUDIO_FILE` cestou k souboru připraveného obsahu zvuku a `YOUR_ACCESS_TOKEN` autorizačním tokenem vrácené v předchozím kroku.
+> Nahraďte `YOUR_AUDIO_FILE` cestou k zadanému zvukovému souboru a `YOUR_ACCESS_TOKEN` pomocí autorizačního tokenu vráceného v předchozím kroku.
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 
@@ -113,7 +113,7 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
 ```
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
@@ -121,17 +121,17 @@ curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Chyba `HTTP 400 Bad Request`
+## <a name="error-http-400-bad-request"></a>Chyba`HTTP 400 Bad Request`
 
-Z tohoto důvodu je obvykle, že text požadavku obsahuje neplatnou zvuková data. Momentálně podporujeme pouze soubor WAV.
+Důvodem je obvykle to, že tělo žádosti obsahuje neplatná zvuková data. V současné době podporujeme jenom soubor WAV.
 
-## <a name="error-http-408-request-timeout"></a>Chyba `HTTP 408 Request Timeout`
+## <a name="error-http-408-request-timeout"></a>Chyba`HTTP 408 Request Timeout`
 
-Chyba je pravděpodobně vzhledem k tomu, že žádná zvuková data se odesílají službě a službě vrátí tuto chybu po vypršení časového limitu. Rozhraní REST API zvuková data měly být umístěny v textu požadavku.
+Tato chyba je pravděpodobně způsobena tím, že se službě neodesílají žádná zvuková data a služba vrátí tuto chybu po vypršení časového limitu. V případě REST API by se měla zvuková data umístit do textu žádosti.
 
-## <a name="the-recognitionstatus-in-the-response-is-initialsilencetimeout"></a>`RecognitionStatus` v odpovědi je `InitialSilenceTimeout`
+## <a name="the-recognitionstatus-in-the-response-is-initialsilencetimeout"></a>`RecognitionStatus` V odpovědi je`InitialSilenceTimeout`
 
-Zvukových dat je obvykle důvodem příčiny problému. Například:
+Zvuková data jsou obvykle příčinou problému. Například
 
-- Zvuk má čas nečinnosti dlouho na začátku. Služba se zastaví rozpoznávání po několika sekundách a vrátí `InitialSilenceTimeout`.
-- zvuk používá nepodporovaný kodek formátu, který umožňuje zvukových dat považovat za nečinnosti.
+- zvuk má na začátku dlouhou dobu ticha. Služba zastaví rozpoznávání po určitém počtu sekund a vrátí `InitialSilenceTimeout`.
+- zvuk používá nepodporovaný formát kodeku, což způsobuje, že zvuková data budou považována za netichá.

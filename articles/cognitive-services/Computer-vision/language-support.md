@@ -1,31 +1,31 @@
 ---
-title: Podpora jazyků – pro počítačové zpracování obrazu
+title: Jazyková podpora – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Seznam podporovaných funkcí pro počítačové zpracování obrazu přirozeného jazyka.
+description: Seznam přirozených jazyků podporovaných funkcemi Počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1a70d1b2ea504d0ccfba925810a2d19d0c7583cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 516d21bc69bbc20f924a3bdf39eda7245fc08a28
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759601"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882970"
 ---
-# <a name="language-support-for-computer-vision"></a>Podpora jazyků pro počítačové zpracování obrazu
+# <a name="language-support-for-computer-vision"></a>Jazyková podpora pro Počítačové zpracování obrazu
 
-Některé funkce pro počítačové zpracování obrazu podporu více jazyků; všechny funkce, které zde nejsou uvedeny podporují pouze angličtinu.
+Některé funkce Počítačové zpracování obrazu podporují více jazyků. všechny funkce, které tady nejsou uvedené, podporují jenom angličtinu.
 
 ## <a name="text-recognition"></a>Rozpoznávání textu
 
-Počítačové zpracování obrazu může rozpoznání textu v řadě jazyků. Konkrétně [OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) rozhraní API podporuje různé jazyky, že [čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) rozhraní API a [rozpoznat Text](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) rozhraní API podporují pouze angličtinu. Zobrazit [rozpoznat tištěné a rukou psaný text](concept-recognizing-text.md) pro další informace o této funkce a výhody každé rozhraní API.
+Počítačové zpracování obrazu umí rozpoznávat text v mnoha jazycích. Konkrétně rozhraní API pro [rozpoznávání OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) podporuje různé jazyky, zatímco rozhraní API [pro čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) a [rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) API podporují jenom angličtinu. Další informace o této funkci a výhodách jednotlivých rozhraní API najdete v tématu [rozpoznávání vytištěného a rukopisného textu](concept-recognizing-text.md) .
 
-OCR jazyk se detekuje automaticky vstupní materiálu, takže není nutné určit jazyk kódu v volání rozhraní API. Však se kódy vždy vrátí hodnotu `"language"` uzlu v odpovědi JSON.
+Optické rozpoznávání znaků automaticky detekuje jazyk vstupního materiálu, takže v volání rozhraní API není nutné zadávat kód jazyka. Kódy jazyka jsou však vždy vráceny jako hodnota `"language"` uzlu v odpovědi JSON.
 
 |Jazyk| Kód jazyka | OCR API |
 |:-----|:----:|:-----:|
@@ -58,9 +58,9 @@ OCR jazyk se detekuje automaticky vstupní materiálu, takže není nutné urči
 
 ## <a name="image-analysis"></a>Analýza obrázků
 
-Některé akce [analyzovat – obrázek](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API může vrátit výsledky v jiných jazycích, zadaný `language` parametr dotazu. Další akce vracejí výsledky v angličtině bez ohledu na to, jaký jazyk je zadán a ostatní vyvolat výjimku u nepodporovaných jazyků. Akce jsou určeny pomocí `visualFeatures` a `details` parametrů dotazu; viz [přehled](home.md) seznam všechny akce, které vám pomůžou s analýzu obrázku.
+Některé akce rozhraní API [analyzovat-image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) mohou vracet výsledky v jiných jazycích, které `language` jsou zadány pomocí parametru dotazu. Jiné akce vrátí výsledky v angličtině bez ohledu na to, jaký jazyk je zadán, a jiné vyvolají výjimku pro nepodporované jazyky. Akce jsou zadány s `visualFeatures` parametry `details` dotazu a. Další informace najdete v [přehledu](home.md) o všech akcích, které můžete provádět s analýzou obrázků.
 
-|Jazyk | Kód jazyka | Categories | Tags | Popis | Adult | Značky | Barva | Tváře | Typ obrázku | Objekty | Celebrity | Zajímavá |
+|Jazyk | Kód jazyka | Categories | Tags | Popis | Dospělý | Značky | Barva | Tváře | Typ obrázku | Objekty | Celebrity | Památek |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Čínština | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angličtina | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
@@ -70,7 +70,7 @@ Některé akce [analyzovat – obrázek](https://westus.dev.cognitive.microsoft.
 
 ## <a name="next-steps"></a>Další postup
 
-Začněte používat pro počítačové zpracování obrazu funkcích uvedených v této příručce.
+Začněte využívat Počítačové zpracování obrazu funkce, které jsou uvedené v této příručce.
 
-* [Analýza místní image (REST)](./quickstarts/csharp-analyze.md)
-* [Extrahovat tištěný text (REST)](./quickstarts/csharp-print-text.md)
+* [Analýza místní Image (REST)](./quickstarts/csharp-analyze.md)
+* [Extrahovat vytištěný text (REST)](./quickstarts/csharp-print-text.md)

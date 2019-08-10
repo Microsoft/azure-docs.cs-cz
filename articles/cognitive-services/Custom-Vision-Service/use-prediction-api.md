@@ -7,15 +7,15 @@ author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 8564095cc84a3f124ca41efd2e19787cd16902ab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 22955ba4b885b264210dc8788f2a410b785b28b4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564118"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883966"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Použití modelu s prediktivním rozhraním API
 
@@ -26,7 +26,7 @@ Po vytvoření výukového modelu můžete image testovat programově jejich ode
 
 ## <a name="publish-your-trained-iteration"></a>Publikování vyškolené iterace
 
-Na [webové stránce služby Custom Vision](https://customvision.ai) vyberte svůj projekt a pak vyberte kartu __Výkon__.
+Na [webové stránce služby Custom Vision](https://customvision.ai) vyberte svůj projekt a pak vyberte kartu __Výkon__ .
 
 Chcete-li odesílat obrázky do prediktivního rozhraní API, budete nejprve muset publikovat iteraci pro předpověď, což lze provést výběrem možnosti __publikovat__ a zadáním názvu publikované iterace. Díky tomu bude model dostupný pro předpovědi rozhraní API Custom Vision prostředku Azure.
 
@@ -38,7 +38,7 @@ Po úspěšném publikování modelu se vedle vaší iterace na levém bočním 
 
 ## <a name="get-the-url-and-prediction-key"></a>Získání adresy URL a klíče předpovědi
 
-Po publikování modelu můžete požadované informace načíst výběrem možnosti __Adresa URL předpovědi__. Tím se otevře dialogové okno s informacemi pro použití prediktivního rozhraní API, včetně __předpovědi URL__ a __předpovědi-Key__.
+Po publikování modelu můžete požadované informace načíst výběrem možnosti __Adresa URL předpovědi__ . Tím se otevře dialogové okno s informacemi pro použití prediktivního rozhraní API, včetně __předpovědi URL__ a __předpovědi-Key__ .
 
 ![Karta výkon se zobrazí s červeným obdélníkem obklopujícím tlačítko adresy URL předpovědi.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
@@ -53,7 +53,7 @@ V tomto průvodci použijete místní bitovou kopii, takže zkopírujte adresu U
 
 1. V aplikaci Visual Studio vytvořte novou C# konzolovou aplikaci.
 
-1. Použijte následující kód jako obsah souboru __Program.cs__.
+1. Použijte následující kód jako obsah souboru __Program.cs__ .
 
     ```csharp
     using System;

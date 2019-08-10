@@ -7,15 +7,15 @@ author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5b73436153427019a7d0d2c641f50592a385f19c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 065d3cd80f93753eb91571d4ada4fe7151258ec0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564554"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882656"
 ---
 # <a name="create-human-reviews"></a>Vytvořit recenze lidí
 
@@ -46,7 +46,7 @@ V této příručce se dozvíte, jak nastavit [recenze](../review-api.md#reviews
 
     ![Obrázek s podrobnostmi moderování, které jsou uvedeny v samostatném podokně](images/review-images-4.png)
 
-1. Po kontrole a aktualizaci přiřazení značek podle potřeby klikněte na tlačítko **Další** a odešlete své recenze. Po odeslání budete asi pět sekund, než se kliknutím na předchozí  obrazovku vraťte na předchozí obrazovku a znovu zkontrolujete image. V takovém případě obrázky již nejsou ve frontě pro odesílání a **Předchozí** tlačítko již není k dispozici.
+1. Po kontrole a aktualizaci přiřazení značek podle potřeby klikněte na tlačítko **Další** a odešlete své recenze. Po odeslání budete asi pět sekund, než se kliknutím na předchozí obrazovku vraťte na předchozí obrazovku a znovu zkontrolujete image. V takovém případě obrázky již nejsou ve frontě pro odesílání a **Předchozí** tlačítko již není k dispozici.
 
 ## <a name="text-reviews"></a>Recenze textu
 

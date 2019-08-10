@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.author: heidist
-ms.openlocfilehash: 5ad1708475200475669c5de8f4fbd316f04ebd04
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e3912e90762977bc801279fde481fc26516e51a6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840784"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882644"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Rychlý start: Vytvoření indexu Azure Search v části post pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ Provedete to po:
 
 1. Změňte operaci na **Put**.
 
-2. Kopírovat v této adrese `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`URL.
+2. Kopírovat v této adrese `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`URL.
 
 3. Zadejte definici indexu (kód připravený ke kopírování je uveden níže) v těle žádosti.
 
@@ -298,6 +298,7 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 
 ## <a name="next-steps"></a>Další kroky
 
-Klienti REST jsou neocenitelní při zkoumání bez přípravy, ale teď, když víte, jak fungují rozhraní REST API, můžete pokračovat s kódem. Další krok najdete na následujícím odkazu:
+Když teď víte, jak provádět základní úlohy, můžete přejít vpřed pomocí dalších REST API volání pro pokročilejší funkce, jako jsou indexery nebo [Nastavení kanálu pro hledání vnímání](cognitive-search-tutorial-blob.md). V dalším kroku doporučujeme následující odkaz:
 
-+ [Rychlé zprovoznění: Vytvoření indexu pomocí sady .NET SDK](search-get-started-dotnet.md)
+> [!div class="nextstepaction"]
+> [Kurz REST: Indexujte a prohledejte částečně strukturovaná data (bloby JSON) v Azure Search](search-semi-structured-data.md)

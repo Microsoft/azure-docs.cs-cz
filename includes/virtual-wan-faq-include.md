@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c46c11ead645b93d7710d1e11636037e4dcaf8e7
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 8a4bbe92cc1b34801abffa1e905d873d4382025a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444575"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912333"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaký je rozdíl mezi bránou virtuální sítě Azure (VPN Gateway) a Azure Virtual WAN vpngateway?
 
@@ -103,7 +103,7 @@ Jednoduchá konfigurace jedné virtuální sítě WAN s jedním rozbočovačem a
 
 Ano, možnosti připojení mezi jednotlivými pobočkami jsou dostupné v síti Virtual WAN u připojení VPN a u připojení VPN na ExpressRoute. Síť VPN typu Site-to-site je GA, ale ExpressRoute je aktuálně ve verzi Preview.
 
-### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Prochází přenos mezi pobočkami přes Azure Virtual WAN?
+### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Prochází provoz mezi větví přes Azure Virtual WAN?
 
 Ano.
 
@@ -122,6 +122,10 @@ Ne, Virtual WAN nevyžaduje ExpressRoute z každé lokality. Využívá standard
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Platí při použití Azure Virtual WAN nějaké omezení propustnosti sítě?
 
 Počet větví je omezený na 1000 připojení na střed a oblast a celkem 20 GB/s v centru.
+
+### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-the-portal-how-do-i-configure-that"></a>Na portálu se nezobrazuje nastavení 20 GB pro virtuální rozbočovač. Návody nakonfigurovat?
+
+V současné době můžete nakonfigurovat jednotky škálování brány na 20 GB/s pomocí rutiny [Update-AzVpnGateway](https://docs.microsoft.com/powershell/module/az.network/update-azvpngateway) . Toto nastavení je v plánu, který bude dostupný na portálu.
 
 ### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Kolik připojení k síti VPN podporuje virtuální centrum WAN?
 

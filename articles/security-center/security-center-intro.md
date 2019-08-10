@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7bd18ab0cedf94f0ecc08c3523a608a8d554e6b2
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 2ef207a14582e6ba0d9f8a25c0314c5ec639c7cb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827919"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882849"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -32,9 +32,9 @@ Azure Security Center řeší tři naléhavé problémy se zabezpečením:
 
 -   **Rychle se měnící úlohy** – jedná se o sílu i test cloudu. Na jedné straně je koncoví uživatelé k tomu oprávněni. V ostatních případech se můžete ujistit, že stále se měnící služby, které používají a které se vytvářejí, patří do standardů zabezpečení a dodržují osvědčené postupy zabezpečení?
 
--   **Stále sofistikované útoky** – bez ohledu na to, jak vaše úlohy spouštíte, jsou útoky mnohem důmyslnější. Musíte zabezpečit svoje úlohy veřejného cloudu, což jsou vlastněné internetové úlohy, které vám pomůžou ještě více zranitelnější, pokud nedodržujete osvědčené postupy zabezpečení.
+-   **Stále sofistikované útoky** – bez ohledu na to, jak vaše úlohy spouštíte, jsou útoky mnohem důmyslnější. Musíte zabezpečit svoje úlohy veřejného cloudu, což jsou vlastněné internetové úlohy, které vám pomůžou ještě více zranitelnější, pokud nedodržujete osvědčené postupy zabezpečení.
 
--   **Důležité informace o zabezpečení jsou v krátkém** vlastnictví – počet výstrah zabezpečení a systémů s výstrahami, které výrazně vycházejí z počtu správců, kteří potřebují zajistit, aby byla vaše prostředí chráněná. Udržování aktuálnosti díky nejnovějším útokům je stálou výzvou, takže není možné zůstat na místě, zatímco je svět zabezpečení neustále se měnícím frontou.
+-   Důležité informace o **zabezpečení jsou v krátkém** vlastnictví – počet výstrah zabezpečení a systémů s výstrahami, které výrazně vycházejí z počtu správců, kteří potřebují zajistit, aby byla vaše prostředí chráněná. Udržování aktuálnosti díky nejnovějším útokům je stálou výzvou, takže není možné zůstat na místě, zatímco je svět zabezpečení neustále se měnícím frontou.
 
 Abychom vám pomohli chránit před těmito výzvami, Security Center poskytuje nástroje pro:
 
@@ -60,15 +60,15 @@ Azure Security Center vám umožní posílit stav zabezpečení. To znamená, ž
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>Správa zásad zabezpečení a dodržování předpisů v organizaci
 
-Je to základní zabezpečení, které se dozvíte a zajistěte, aby byly vaše úlohy zabezpečené a že se spustí s přizpůsobenými zásadami zabezpečení. Vzhledem k tomu, že všechny zásady v Security Center jsou postavené nad ovládacími prvky zásad Azure, získáte celou škálu a flexibilitu **špičkového řešení zásad**. V Security Center můžete nastavit, aby se zásady spouštěly ve skupinách pro správu, mezi předplatnými a dokonce i pro celého tenanta.
+Je to základní zabezpečení, které se dozvíte a zajistěte, aby byly vaše úlohy zabezpečené a že se spustí s přizpůsobenými zásadami zabezpečení. Vzhledem k tomu, že všechny zásady v Security Center jsou postavené nad ovládacími prvky zásad Azure, získáte celou škálu a flexibilitu **špičkového řešení zásad**. V Security Center můžete nastavit, aby se zásady spouštěly ve skupinách pro správu, mezi předplatnými a dokonce i pro celého tenanta.
 
 ![Řídicí panel Security Center](media/security-center-intro/sc-dashboard.png)
 
-Security Center vám pomůže **identifikovat Stínová předplatná**. Zobrazením předplatných, která **nejsou** pokrytá na řídicím panelu, můžete okamžitě zjistit, jestli existují nově vytvořená předplatná, a že jsou pokryté vašimi zásadami a chráněny pomocí Azure Security Center.
+Security Center vám pomůže **identifikovat Stínová předplatná**. Zobrazením předplatných, která **nejsou** pokrytá na řídicím panelu, můžete okamžitě zjistit, jestli existují nově vytvořená předplatná, a že jsou pokryté vašimi zásadami a chráněny pomocí Azure Security Center.
 
 ![Řídicí panel zásad Security Center](media/security-center-intro/sc-policy-dashboard.png)
 
-Rozšířené možnosti monitorování v Security Center také umožňují **sledovat a spravovat dodržování předpisů a zásady správného řízení v průběhu času**.  **Celkové dodržování předpisů** poskytuje míru, kolik vašich předplatných vyhovuje zásadám přidruženým k vašim úlohám. 
+Rozšířené možnosti monitorování v Security Center také umožňují **sledovat a spravovat dodržování předpisů a zásady správného řízení v průběhu času**. **Celkové dodržování předpisů** poskytuje míru, kolik vašich předplatných vyhovuje zásadám přidruženým k vašim úlohám. 
 
 ![Zásady Security Center v průběhu času](media/security-center-intro/sc-policy-time.png)
 
@@ -76,11 +76,11 @@ Rozšířené možnosti monitorování v Security Center také umožňují **sl
 
 Security Center nepřetržitě zjišťuje nové prostředky, které jsou nasazené napříč vašimi úlohami, a vyhodnocuje, jestli jsou nakonfigurované v souladu s osvědčenými postupy zabezpečení, pokud ne, jsou označeny a vy získáte seznam doporučení pro co Chcete-li chránit počítače, je třeba ji opravit.
 
-Jedním z nejúčinnějších nástrojů, které Security Center nabízí nepřetržité monitorování stavu zabezpečení vaší sítě, je **Mapa sítě**. Mapa vám umožní zobrazit topologii vašich úloh, abyste viděli, jestli je každý uzel správně nakonfigurovaný. Vidíte, jak jsou uzly připojené, což vám pomůže zablokovat nechtěné připojení, která by mohla útočníkovi usnadnit nárůst vaší sítě.
+Jedním z nejúčinnějších nástrojů, které Security Center nabízí nepřetržité monitorování stavu zabezpečení vaší sítě, je **Mapa sítě**. Mapa vám umožní zobrazit topologii vašich úloh, abyste viděli, jestli je každý uzel správně nakonfigurovaný. Vidíte, jak jsou uzly připojené, což vám pomůže zablokovat nechtěné připojení, která by mohla útočníkovi usnadnit nárůst vaší sítě.
 
 ![Mapa Security Center sítě](media/security-center-intro/sc-net-map.png)
 
-Security Center zjednodušuje výstrahy zabezpečení o krokování v jednom kroku přidáním zabezpečeného **skóre**. Pro každé doporučení, které obdržíte, se teď přiřadí bezpečnostní skóre, které vám pomohou pochopit, jak důležité je, aby každé doporučení bylo stav zabezpečení. To je zásadní postup, který vám umožní **určit prioritu fungování zabezpečení**.
+Security Center zjednodušuje výstrahy zabezpečení o krokování v jednom kroku přidáním zabezpečeného **skóre**. Pro každé doporučení, které obdržíte, se teď přiřadí bezpečnostní skóre, které vám pomohou pochopit, jak důležité je, aby každé doporučení bylo stav zabezpečení. To je zásadní postup, který vám umožní **určit prioritu fungování zabezpečení**.
 
 ![Security Center zabezpečeného skóre](media/security-center-intro/sc-secure-score.png)
 

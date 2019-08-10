@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití Node. js k volání rozhraní API pro analýzu textu'
+title: 'Rychlý start: Analýza textu klientskou knihovnu pro Node. js | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Získejte informace a vzorové kódy, které vám pomůžou rychle začít používat rozhraní API pro analýzu textu.
 services: cognitive-services
@@ -10,86 +10,124 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/30/2019
 ms.author: shthowse
-ms.openlocfilehash: 9b8a713d58d5753e04de050e0bc961b5e8388123
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8590acbbd6001c1f214589298e454c1e75f93d67
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697482"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883533"
 ---
-# <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Node. js k volání služby pro rozpoznávání Analýza textu
+# <a name="quickstart-text-analytics-client-library-for-nodejs"></a>Rychlý start: Klientská knihovna pro analýzu textu pro Node. js
 <a name="HOLTop"></a>
 
-Pomocí tohoto rychlého startu můžete začít s analýzou jazyka s Analýza textu SDK pro Node. js. I když je REST API [Analýza textu](//go.microsoft.com/fwlink/?LinkID=759711) kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js)
+Začínáme s klientskou knihovnou Analýza textu pro. Node. js. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. 
 
-Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
+K provedení této akce použijte klientskou knihovnu Analýza textu pro Node. js:
+
+* Analýza mínění
+* Rozpoznávání jazyka
+* Rozpoznávání entit
+* Extrakce klíčových frází
+
+[](https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest) | [Ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/) balíčku | [zdrojového kódu](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | knihovny Referenční dokumentace[(npm)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Node.js](https://nodejs.org/)
-* Sada SDK Analýza textu [pro Node. js](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) : sadu SDK můžete nainstalovat pomocí nástroje:
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Aktuální verze [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core).
 
-    `npm install azure-cognitiveservices-textanalytics`
+## <a name="setting-up"></a>Nastavení
 
-[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+### <a name="create-a-text-analytics-azure-resource"></a>Vytvoření prostředku Azure Analýza textu
 
-Dále musíte mít [koncový bod a přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) vygenerovaný během registrace.
+Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro analýzu textu pomocí [Azure Portal](../../cognitive-services-apis-create-account.md) nebo rozhraní příkazového [řádku Azure CLI](../../cognitive-services-apis-create-account-cli.md) na místním počítači. Můžete také:
 
-## <a name="create-a-nodejs-application-and-install-the-sdk"></a>Vytvoření aplikace Node. js a instalace sady SDK
+* Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#decision) platný po dobu 7 dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
+* Zobrazení prostředku na [Azure Portal](https://portal.azure.com/)
 
-Po instalaci Node. js vytvořte projekt Node. Vytvořte pro svou aplikaci nový adresář a přejděte do jeho adresáře.
+Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte pro tento klíč [proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) s názvem `TEXTANALYTICS_SUBSCRIPTION_KEY`.
 
-```mkdir myapp && cd myapp```
+### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
-Spusťte ```npm init``` pro vytvoření aplikace uzlu se souborem Package. JSON. Nainstalujte balíčky `azure-cognitiveservices-textanalytics`anpm: `ms-rest-azure`
+V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
 
-```npm install azure-cognitiveservices-textanalytics ms-rest-azure```
+```console
+mkdir myapp && cd myapp
+```
 
-Soubor Package. JSON vaší aplikace se bude aktualizovat o závislosti.
+Spuštěním příkazu vytvořte aplikaci uzlu `package.json` se souborem. `npm init` 
 
-## <a name="authenticate-your-credentials"></a>Ověření přihlašovacích údajů
+```console
+npm init
+```
 
-Vytvoří nový soubor `index.js` v kořenovém adresáři projektu a naimportuje nainstalované knihovny.
+Vytvořte soubor s názvem `index.js` a importujte následující knihovny:
 
 ```javascript
 const CognitiveServicesCredentials = require("ms-rest-azure").CognitiveServicesCredentials;
 const TextAnalyticsAPIClient = require("azure-cognitiveservices-textanalytics");
 ```
 
-Vytvořte proměnnou pro klíč předplatného Analýza textu.
+Vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné.
+
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 ```javascript
+// replace this endpoint with the correct one for your Azure resource. 
+let endpoint = "https://westus.api.cognitive.microsoft.com/";
+// This sample assumes you have created an environment variable for your key
+let key = var apiKey = process.env.TEXTANALYTICS_SUBSCRIPTION_KEY;
 let credentials = new CognitiveServicesCredentials(
-    "enter-your-key-here"
+    key
 );
 ```
 
-> [!Tip]
-> Pro zabezpečené nasazení tajných kódů v produkčních systémech doporučujeme použít [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net).
->
+### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-## <a name="create-a-text-analytics-client"></a>Vytvoření klienta Analýza textu
+Nainstalujte balíčky `azure-cognitiveservices-textanalytics`anpm: `ms-rest-azure`
 
-Vytvoří nový `TextAnalyticsClient` objekt s `credentials` parametrem. Použijte pro předplatné Analýza textu správnou oblast Azure.
+```console
+npm install azure-cognitiveservices-textanalytics ms-rest-azure
+```
+
+`package.json` Soubor vaší aplikace bude aktualizován pomocí závislostí.
+
+## <a name="object-model"></a>Objektový model
+
+Klient Analýza textu je objekt [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest) , který se ověřuje v Azure pomocí vašeho klíče. Klient nabízí několik metod analýzy textu, jako jeden řetězec nebo dávku.
+
+Text se pošle do rozhraní API jako seznam `documents` `id`objektů, což jsou `dictionary` objekty obsahující kombinaci atributů, `text`a `language` v závislosti na použité metodě. Atribut ukládá text, který má být analyzován v původním `language`umístění, a `id` může být libovolná hodnota. `text` 
+
+Objekt Response je seznam obsahující informace o analýze pro každý dokument. 
+
+## <a name="code-examples"></a>Příklady kódu
+
+* [Ověření klienta](#authenticate-the-client)
+* [Analýza subjektivního hodnocení](#sentiment-analysis)
+* [Rozpoznávání jazyka](#language-detection)
+* [Rozpoznávání entit](#entity-recognition)
+* [Extrakce klíčových frází](#key-phrase-extraction)
+
+
+## <a name="authenticate-the-client"></a>Ověření klienta
+
+Vytvořte nový objekt [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest) s `credentials` parametrem `endpoint` a jako parametr.
 
 ```javascript
 //Replace 'westus' with the correct region for your Text Analytics subscription
 let client = new TextAnalyticsAPIClient(
     credentials,
-    "https://westus.api.cognitive.microsoft.com/"
+    endpoint
 );
 ```
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-Vytvořte seznam objektů obsahující dokumenty, které chcete analyzovat. Datová část do rozhraní API se `documents`skládá ze seznamu, který `id`obsahuje atribut, `language`a `text` . Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. `text` 
+Vytvořte seznam objektů obsahující dokumenty, které chcete analyzovat.
 
 ```javascript
 const inputDocuments = {documents:[
-    {language:"en", id:"1", text:"I had the best day of my life."},
-    {language:"en", id:"2", text:"This was a waste of my time. The speaker put me to sleep."},
-    {language:"es", id:"3", text:"No tengo dinero ni nada que dar..."},
-    {language:"it", id:"4", text:"L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."}
+    {language:"en", id:"1", text:"I had the best day of my life."}
 ]}
 ```
 
@@ -111,23 +149,18 @@ Spusťte kód `node index.js` v okně konzoly.
 ### <a name="output"></a>Výstup
 
 ```console
-[ { id: '1', score: 0.8723785877227783 },
-  { id: '2', score: 0.1059873104095459 },
-  { id: '3', score: 0.43635445833206177 },
-  { id: '4', score: 1 } ]
+[ { id: '1', score: 0.8723785877227783 } ]
 ```
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-Vytvořte seznam objektů, které obsahují vaše dokumenty. Datová část do rozhraní API se skládá ze seznamu `documents`, který `id` obsahuje atribut a `text` . Atribut ukládá text, který má být analyzován, `id` a může být libovolná hodnota. `text`
+Vytvořte seznam objektů, které obsahují vaše dokumenty.
 
 ```javascript
 // The documents to be submitted for language detection. The ID can be any value.
 const inputDocuments = {
     documents: [
-        { id: "1", text: "This is a document written in English." },
-        { id: "2", text: "Este es un document escrito en Español." },
-        { id: "3", text: "这是一个用中文写的文件" }
+        { id: "1", text: "This is a document written in English." }
     ]
     };
 ```
@@ -159,19 +192,16 @@ Spusťte kód `node index.js` v okně konzoly.
 ```console
 ===== LANGUAGE EXTRACTION ======
 ID: 1 Language English
-ID: 2 Language Spanish
-ID: 3 Language Chinese_Simplified
 ```
 
 ## <a name="entity-recognition"></a>Rozpoznávání entit
 
-Vytvořte seznam objektů, které obsahují vaše dokumenty. Datová část do rozhraní API se `documents`skládá ze seznamu, který `id`obsahuje atribut, `language`a `text` . Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. `text`
+Vytvořte seznam objektů, které obsahují vaše dokumenty.
 
 ```javascript
 
     const inputDocuments = {documents:[
-        {language:"en", id:"1", text:"Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800"},
-        {language:"es", id:"2", text:"La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."},
+        {language:"en", id:"1", text:"Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800"}
         ]}
 
 }
@@ -220,28 +250,16 @@ Document ID: 1
             Offset: 89 Length: 5 Score: 0.8
     Name: Altair 8800 Type: Other Sub Type: Other
             Offset: 116 Length: 11 Score: 0.8
-Document ID: 2
-    Name: Microsoft Type: Organization Sub Type: Organization
-            Offset: 21 Length: 9 Score: 0.999755859375
-    Name: Redmond (Washington) Type: Location Sub Type: Location
-            Offset: 60 Length: 7 Score: 0.9911284446716309
-    Name: 21 kilómetros Type: Quantity Sub Type: Quantity
-            Offset: 71 Length: 13 Score: 0.8
-    Name: Seattle Type: Location Sub Type: Location
-            Offset: 88 Length: 7 Score: 0.9998779296875
 ```
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-Vytvořte seznam objektů, které obsahují vaše dokumenty. Datová část do rozhraní API se `documents`skládá ze seznamu, který `id`obsahuje atribut, `language`a `text` . Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. `text`
+Vytvořte seznam objektů, které obsahují vaše dokumenty.
 
 ```javascript
     let inputLanguage = {
     documents: [
-        {language:"ja", id:"1", text:"猫は幸せ"},
-        {language:"de", id:"2", text:"Fahrt nach Stuttgart und dann zum Hotel zu Fu."},
-        {language:"en", id:"3", text:"My cat might need to see a veterinarian."},
-        {language:"es", id:"4", text:"A mi me encanta el fútbol!"}
+        {language:"en", id:"1", text:"My cat might need to see a veterinarian."}
     ]
     };
 ```
@@ -266,19 +284,35 @@ Spusťte kód `node index.js` v okně konzoly.
 ### <a name="output"></a>Výstup
 
 ```console
-[ 
-    { id: '1', keyPhrases: [ '幸せ' ] },
-    { id: '2', keyPhrases: [ 'Stuttgart', 'Hotel', 'Fahrt', 'Fu' ] },
-    { id: '3', keyPhrases: [ 'cat', 'veterinarian' ] },
-    { id: '4', keyPhrases: [ 'fútbol' ] } 
+[
+    { id: '1', keyPhrases: [ 'cat', 'veterinarian' ] }
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="run-the-application"></a>Spuštění aplikace
+
+Spusťte aplikaci pomocí `node` příkazu v souboru rychlého startu.
+
+```console
+node index.js
+```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
+
+* [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Viz také:
 
- [Přehled Analýza textu](../overview.md) Nejčastější dotazy – Nejčastější [dotazy](../text-analytics-resource-faq.md)
+* [Přehled rozhraní API pro analýzu textu](../overview.md)
+* [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Zjistit jazyk](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Rozpoznávání jazyka](../how-tos/text-analytics-how-to-language-detection.md)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js)

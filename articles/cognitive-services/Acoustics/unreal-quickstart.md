@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8809c80f2ecba4ea2b3e3d280be0c4ad81d78d37
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 927ce403130460c302f546038ff3a0c3a16e0368
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854852"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933014"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Projekt akustické Unreal/Wwise rychlý Start
 V tomto rychlém startu budete experimentovat s ovládacími prvky návrhu s akustickým obsahem projektu pomocí poskytnutého ukázkového obsahu pro modul Unreal a Wwise.
 
-Požadavky na software:
-* [Unreal Engine](https://www.unrealengine.com/) 4,21
-* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6
+Požadavky na software pro použití ukázkového obsahu:
+* [Unreal Engine](https://www.unrealengine.com/) 4,22
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2019.1.2
 
 ## <a name="download-the-sample-package"></a>Stažení ukázkového balíčku
 Stáhněte si [vzorový balíček Unreal + Wwise s akustickým projektem](https://www.microsoft.com/download/details.aspx?id=58090). Vzorový balíček obsahuje projekt Unreal Engine, projekt Wwise pro tento projekt Unreal a modul plug-in, který je v projektu akustický.
@@ -55,12 +55,16 @@ Modul plug-in Unrealů projektu vyžaduje dodatečné chování z rozhraní API 
 
     ![Snímek obrazovky editoru kódu zobrazující DXSDK s komentářem](media/directx-sdk-comment.png)
 
+* Pokud kompilujete pomocí sady Visual Studio 2019, chcete-li s Wwise pracovat s chybou propojení, ručně `VSVersion` upravte výchozí `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` hodnotu `vc150`v nástroji na:
+
+    ![Snímek obrazovky editoru kódu zobrazující VSVersion změněné na vc150](media/vsversion-comment.png)
+
 ### <a name="open-the-unreal-project"></a>Otevřete projekt Unreal. 
 Budete vyzváni k opětovnému sestavení modulů; klikněte na tlačítko Ano.
 
 >Pokud při selhání sestavení dojde k chybě při otevírání projektu, ověřte, že jste nainstalovali modul plug-in Wwise pro projekt na stejnou verzi Wwise použitou v projektu Ukázka akustického projektu.
 
->Pokud nepoužíváte [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6, budete muset znovu vygenerovat zvukové banky, než se zvuk přehraje v ukázkovém projektu.
+>Pokud používáte verzi [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) starší než 2019,1, nebudete moci generovat zvukové banky s ukázkovým projektem projektu s akustickými objemy.  Pro správné použití je nutná integrace Wwise verze 2019,1 do ukázkového projektu.
 
 ## <a name="experiment-with-project-acoustics-design-controls"></a>Experiment s ovládacími prvky návrhu projektů s akustickými vazbami
 Kliknutím na tlačítko Přehrát v editoru Unreal nahrajte, jak se scéna nachází. V desktopu můžete pohybovat pomocí W, A, S, D a myši. Pokud zobrazit klávesové zkratky dalších možností ovládání, stiskněte klávesu **F1**. Tady jsou některé aktivity návrhu, které byste mohli vyzkoušet:

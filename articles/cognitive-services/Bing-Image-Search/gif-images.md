@@ -1,63 +1,63 @@
 ---
-title: Hledání obrázků GIF pomocí rozhraní API Bingu pro vyhledávání obrázků
+title: Hledání imagí GIF pomocí rozhraní API Bingu pro vyhledávání obrázků
 titleSuffix: Azure Cognitive Services
-description: Pomocí rozhraní API pro vyhledávání obrázků Bingu pro vyhledávání obrázků GIF webu.
+description: Použijte rozhraní API Bingu pro vyhledávání obrázků k hledání imagí. gif na webu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 0a2040424aa70f30831e214ce0b05d21414ff45c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8c9afa618df468e038c80f72713b12c7f6ee226
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389394"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882296"
 ---
-# <a name="search-for-gif-images"></a>Vyhledávání obrázků GIF 
+# <a name="search-for-gif-images"></a>Hledání obrázků GIF 
 
-Rozhraní API Bingu pro vyhledávání obrázků můžete také prohledat napříč celým webovým nejrelevantnější obrázků GIF.  Vývojáři mohou integrovat poutavé GIF v různých scénářích konverzace. 
+Rozhraní API Bingu pro vyhledávání obrázků vám umožní vyhledávat také v celém webu pro nejrelevantnější image. gif.  Vývojáři mohou integrovat poutavé soubory GIF v různých scénářích konverzace. 
 
-Následující adresa URL je dotaz pro Image animovaný obrázek GIF.
+Následující adresa URL je dotaz pro animované obrázky. gif.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) parametr určuje hledaným výrazům.  Předchozí dotaz také určuje `animatedGif` pomocí [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) parametr filtru.
+Parametr [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) určuje hledané výrazy.  Předchozí dotaz také určuje `animatedGif` použití parametru filtru [ImageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) .
 
-Pokud chcete zobrazit příklady výsledků, použijte následující adresu URL pro hledání bing.com.
+Chcete-li zobrazit příklady výsledků, použijte následující adresu URL pro hledání bing.com.
 ```
 https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animatedgif
 
 ```
 ## <a name="query-parameters"></a>Parametry dotazu
 
-Další informace o možnostech a parametrech dotazů najdete v článku [odkaz API pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters). Následuje příklad pod záhlavím [příklad prohledávání pro animovaný obrázek gif pomocí Javy](#gifExample).
+Další informace o parametrech a parametrech dotazů naleznete v tématu [Reference k rozhraní vyhledávání obrázků API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters). V příkladu nadpisu se používá příklad, [kde můžete najít animovaný GIF pomocí jazyka Java](#gifExample).
 
 ## <a name="tips-and-suggestions"></a>Tipy a návrhy
 
-- Můžete zadat [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) a [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) parametry. Doporučujeme nastavit maxFileSize = 2000000, protože většina GIF v indexu je v části 2MB.  Také vám pomáhají řídit velikost dat, pokud šířka pásma je problém, jako třeba v mobilních situacích, mobilní.
-- Chcete-li zvýšit dosahovaný výkon, načtěte miniaturu nejprve před načítání zdrojová adresa url.  
-- Pro první spuštění nebo cílová stránka prostředí, kde uživatelský dotaz ještě nemáte, zkuste použít naše populární gif hledání umožňující z [vzroste zájem o Image API](trending-images.md).
-- Existují tři nastavení [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) parametru.  `strict` Zablokuje možnost obsahu pro dospělé.
-- Zobrazit [mkt](supported-countries-markets.md) úplný seznam jazyků podporovaných umístění.
-- *AnimatedGifHttps* pouze vrátí animovat obrázků gif, které jsou z adresy protokolu https. Mnoho aplikací pro zabezpečení, vyžadují připojení k externí webové odkazy přes protokol https. Například App Store společnosti Apple vyžaduje připojení k webovým službám přes protokol HTTPS, který šifruje zabezpečení v průběhu přenosu dat uživatele.
+- Můžete zadat parametry [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) a [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) . Doporučujeme nastavit maxFileSize = 2000000 jako většinu GIF v našem indexu pod 2 MB.  Také pomáhá řídit velikost dat v případě, že se jedná o problém, jako je například v mobilním mobilním scénáři.
+- Aby bylo možné zvýšit výkon, napřed načtením zdrojové adresy URL nejprve načtěte miniaturu.  
+- Pro prostředí pro první spuštění nebo cílovou stránku, kde ještě nemáte dotaz na uživatele, zkuste použít naše vývojové hledání ve formátu GIF a pomoci z [rozhraní API pro vývojové obrázky](trending-images.md).
+- Pro parametr [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) existují tři nastavení.  `strict` Možnost blokuje obsah pro dospělé.
+- Úplný seznam jazyků a umístění, která jsou podporovaná, najdete v tématu [MKT](supported-countries-markets.md) .
+- *AnimatedGifHttps* vrátí pouze animované obrázky GIF, které jsou z adresy https. V případě zabezpečení mnoho aplikací vyžaduje připojení k externím webovým odkazům přes protokol HTTPS. Například App Store společnosti Apple vyžaduje připojení k webovým službám přes protokol HTTPS, která šifruje data uživatelů během přenosu.
 
 <a name="gifExample" />
 
-## <a name="example-search-for-animated-gif-using-java"></a>Příklad prohledávání pro animovaný obrázek gif pomocí Javy
+## <a name="example-search-for-animated-gif-using-java"></a>Příklad hledání animovaného formátu GIF pomocí jazyka Java
 
-Na následující adrese URL vyhledává animovaný obrázek GIF imagí: `q=interesting`
+Následující adresa URL vyhledává animované obrázky GIF:`q=interesting`
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 
 ```
-Jak je znázorněno v následujícím příkladu, adresa URL dotazu vyžaduje [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers) záhlaví.
+Jak je znázorněno v následujícím příkladu, dotaz URL vyžaduje hlavičku [OCP-APIM-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers) .
 
-V následujícím příkladu Java se sestaví a odešle žádost.
+Následující příklad Java sestaví a odešle požadavek.
 
 ```
 package gifSearch;
@@ -209,4 +209,4 @@ Kód získá následující výsledky jako objekty JSON:
 
 ## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](quickstarts/csharp.md)
-- [Kurz pro vyhledávání obrázků jednostránková aplikace](tutorial-bing-image-search-single-page-app.md)
+- [Kurz Vyhledávání obrázků jednostránkové aplikace](tutorial-bing-image-search-single-page-app.md)

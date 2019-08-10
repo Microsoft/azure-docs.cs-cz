@@ -1,59 +1,59 @@
 ---
-title: Co jsou rozhraní API pro vyhledávání Bingu?
+title: Co je rozhraní API pro vyhledávání Bingu?
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto článku najdete informace o rozhraní API pro vyhledávání Bingu a jak můžete zajistit ve vašich aplikacích a službách cognitive hledání na Internetu.
+description: V tomto článku se dozvíte o rozhraní API pro vyhledávání Bingu a o tom, jak můžete povolit rozpoznávání internetových hledání ve vašich aplikacích a službách.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 5a883fcb3533374afbbf946281b6a4a1e9a2912e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e9a71e1e826569930cf593a7e264020617bdc3a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61431357"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883393"
 ---
-# <a name="what-are-the-bing-search-apis"></a>Co jsou rozhraní API pro vyhledávání Bingu?
+# <a name="what-are-the-bing-search-apis"></a>Co je rozhraní API pro vyhledávání Bingu?
 
-Rozhraní API pro vyhledávání Bingu umožňují vytvářet připojení webové aplikace a služby, které vyhledávat webových stránek, obrázků, zpráv, umístění a další bez oznámení o inzerovaných programech. Pomocí zasílání požadavků search pomocí REST API pro vyhledávání Bingu nebo sad SDK, můžete získat důležité informace a obsah pro hledání na webu. Pomocí tohoto článku najdete informace o různých vyhledávání Bingu rozhraní API a jak integrovat kognitivní vyhledávání do vašich aplikací a služeb. Omezení frekvence a ceny se mohou lišit mezi rozhraním API.
+Rozhraní API pro vyhledávání Bingu vám umožní vytvářet aplikace a služby připojené k webu, které hledají webové stránky, obrázky, novinky, umístění a další bez reklamy. Odesláním žádostí o hledání pomocí Vyhledávání Bingu rozhraní REST API nebo sad SDK získáte relevantní informace a obsah pro hledání na webu. V tomto článku se dozvíte o různých rozhraních API pro vyhledávání Bingu a o tom, jak můžete do svých aplikací a služeb integrovat vyhledávání rozpoznávání. Omezení cen a sazeb se můžou mezi rozhraními API lišit.
 
-## <a name="the-bing-web-search-api"></a>Rozhraní API webové vyhledávání Bingu
+## <a name="the-bing-web-search-api"></a>rozhraní API Bingu pro vyhledávání na webu
 
-[API vyhledávání na webu Bingu](../Bing-Web-Search/index.yml) vrátí webové stránky, obrázky, videa, zprávy a další. Můžete filtrovat vyhledávací dotazy odeslané k tomuto rozhraní API pro zahrnutí nebo vyloučení některých typů obsahu.
+[Rozhraní API Bingu pro vyhledávání na webu](../Bing-Web-Search/index.yml) vrátí webové stránky, obrázky, video, zprávy a další. Vyhledávací dotazy odeslané do tohoto rozhraní API můžete filtrovat, chcete-li zahrnout nebo vyloučit určité typy obsahu.
 
-Zvažte použití rozhraní API Bingu pro vyhledávání webu v aplikacích, které může potřebovat vyhledat všechny typy relevantní webového obsahu. Pokud vaše aplikace vyhledá konkrétní typ online obsahu, zvažte možnost hledání rozhraní API níže:
+Zvažte použití rozhraní API Bingu pro vyhledávání na webu v aplikacích, které mohou vyžadovat hledání všech typů relevantního webového obsahu. Pokud vaše aplikace vyhledává konkrétní typ online obsahu, zvažte jedno z následujících rozhraní API pro vyhledávání:
 
-## <a name="content-specific-bing-search-apis"></a>Vyhledávání Bingu obsahu konkrétní rozhraní API
+## <a name="content-specific-bing-search-apis"></a>Rozhraní API pro vyhledávání v Bingu specifickém pro obsah
 
-Následující vyhledávání Bingu rozhraní API vrátí konkrétní obsah z webu, jako jsou obrázky, zprávy, místních firmách a videa.
+Následující rozhraní API pro vyhledávání Bingu vrátí konkrétní obsah z webu, jako jsou obrázky, novinky, místní firmy a videa.
 
 | Rozhraní API Bingu | Popis |
 | -- | -- |
-| [Vyhledávání entit](../Bing-Entities-Search/index.yml) | Rozhraní API Bingu pro vyhledávání entit vrátí výsledky hledání obsahují entity, které mohou být lidé, místa nebo věcí. V závislosti na dotazu rozhraní API vrátí jeden nebo více entit, které odpovídají vyhledávacímu dotazu. Vyhledávací dotaz může obsahovat zajímavosti jednotlivce, místních firmách, památek, cíle a další. |
-| [Vyhledávání obrázků](../Bing-Image-Search/index.yml) | Rozhraní API Bingu pro vyhledávání obrázků vám umožňuje hledat a najít vysoce kvalitní statické i animované Image podobný [Bing.com/images](https://www.Bing.com/images). Můžete upřesnit hledání pro zahrnutí nebo vyloučení imagí atributem, včetně velikost, barvu, licence a aktuálnosti. Můžete také vyhledat populárních obrázků, nahrávání obrázků a získávat poznatky o nich a zobrazit náhledy. |
-| [Vyhledávání zpráv](../Bing-News-Search/index.yml) | Rozhraní API pro vyhledávání zpráv Bingu umožňuje najít podobný příběhy [Bing.com/news](https://www.Bing.com/news). Rozhraní API vrátí články o novinkách z více zdrojů nebo konkrétní domény. Můžete vyhledat v kategoriích získat vzroste zájem o články, hlavní zprávy a titulky. |
-| [Vyhledávání videí](../Bing-Video-Search/index.yml) | API pro vyhledávání videí Bingu umožňuje vyhledat videa na webu. Získejte miniaturami, populárních videí a související obsah. |
-| [Pro vizuální vyhledávání](../Bing-visual-search/index.yml) | Nahrajte obrázek nebo použijte adresu URL získat přehledné informace o tom, jako jsou vizuálně podobné produkty, obrázky a související hledání. |
- [Místní pracovní vyhledávání](../bing-local-business-search/index.yml) | Místní firmy API pro vyhledávání Bingu umožňuje najít kontaktní údaje a umístění informace o místních firmách na základě dotazů vyhledávání aplikací. |
+| [Vyhledávání entit](../Bing-Entities-Search/index.yml) | Rozhraní API Bingu pro vyhledávání entit vrátí výsledky hledání obsahující entity, které mohou být osoby, místa nebo věci. V závislosti na dotazu vrátí rozhraní API jednu nebo více entit, které budou vyhovovat vyhledávacímu dotazu. Vyhledávací dotaz může zahrnovat zajímavosti jednotlivce, místní firmy, orientačních bodů, cíle a další. |
+| [Vyhledávání obrázků](../Bing-Image-Search/index.yml) | Rozhraní API Bingu pro vyhledávání obrázků vám umožní vyhledat a najít vysoce kvalitní statické a animované obrázky podobné [Bing.com/images](https://www.Bing.com/images). Hledání můžete upřesnit tak, aby obsahovala nebo vyloučila obrázky podle atributu, včetně velikosti, barvy, licence a aktuálnosti. Můžete také Hledat vývojové obrázky, nahrávat obrázky, získat z nich přehledy a zobrazovat náhledy miniatur. |
+| [Vyhledávání zpráv](../Bing-News-Search/index.yml) | Rozhraní API Bingu pro vyhledávání zpráv vám umožní najít příběhy novinek, podobně jako [Bing.com/news](https://www.Bing.com/news). Rozhraní API vrátí články s příspěvky z několika zdrojů nebo konkrétních domén. Můžete hledat v různých kategoriích a získávat do nich články, hlavní příběhy a titulky. |
+| [Vyhledávání videí](../Bing-Video-Search/index.yml) | Rozhraní API Bingu pro vyhledávání videí vám umožní najít videa napříč webem. Získejte vývojové videa, související obsah a náhledy miniatur. |
+| [Vizuální vyhledávání](../Bing-visual-search/index.yml) | Nahrajte obrázek nebo použijte adresu URL, abyste získali přehledné informace, jako jsou vizuálně podobné produkty, obrázky a související hledání. |
+ [Hledání místních obchodních aplikací](../bing-local-business-search/index.yml) | Rozhraní API pro místní vyhledávání Bingu umožňuje vašim aplikacím najít kontaktní a umístění informací o místních firmách na základě vyhledávacích dotazů. |
 
-## <a name="the-bing-custom-search-api"></a>Rozhraní API pro vlastní vyhledávání Bingu
+## <a name="the-bing-custom-search-api"></a>rozhraní API pro vlastní vyhledávání Bingu
 
-Vytvoření instance vlastního vyhledávání s [vlastní vyhledávání Bingu](../Bing-Custom-Search/index.yml) rozhraní API umožňuje vytvářet možnosti vyhledávání, zaměřuje pouze na obsah a témata, které vás zajímají. Například po zadání domén, webů a konkrétní webové stránky, které budou pro vyhledávání Bingu, vlastní vyhledávání Bingu přizpůsobení výsledků pro tento konkrétní obsah. Můžete začlenit vlastní pro automatické návrhy Bingu, Image, a vyzkoušet rozhraní API pro Video Search můžete dále přizpůsobit hledání.
+Vytvořením vlastní instance hledání pomocí rozhraní [Vlastní vyhledávání Bingu](../Bing-Custom-Search/index.yml) API můžete vytvořit vyhledávání zaměřené na obsah a témata, která vás zajímají. Například po zadání domén, webů a konkrétních webových stránek, které Bing bude hledat, Vlastní vyhledávání Bingu přizpůsobí výsledky tomuto konkrétnímu obsahu. K dalšímu přizpůsobení možností vyhledávání můžete začlenit vlastní rozhraní API pro automatické návrhy, image a Vyhledávání videí Bingu.
 
-## <a name="additional-bing-search-apis"></a>Rozhraní API pro vyhledávání Bingu další
+## <a name="additional-bing-search-apis"></a>Další rozhraní API pro vyhledávání Bingu
 
-Následující API pro vyhledávání Bingu vám umožní zlepšit vaše možnosti vyhledávání je kombinací jiných rozhraní API pro vyhledávání Bingu.
+Následující rozhraní API pro vyhledávání Bingu vám umožní vylepšit možnosti vyhledávání jejich kombinováním s jinými rozhraními API pro vyhledávání Bingu.
 
-| Rozhraní API | Popis |
+| rozhraní API | Popis |
 | -- | -- |
-| [Automatické návrhy Bingu](../Bing-Autosuggest/index.yml) | Zlepšete možnosti vyhledávání vaší aplikace s rozhraním API pro automatické návrhy Bingu vrácením navrhované hledání v reálném čase.  |
-| [Statistika Bingu](bing-web-stats.md) | Statistika Bingu poskytuje analýzy pro rozhraní API pro vyhledávání Bingu vaše aplikace používá. K dispozici analytics patří objemy volání, řetězce dotazu top a geografické distribuce. |
+| [Automatické návrhy Bingu](../Bing-Autosuggest/index.yml) | Vylepšete možnosti prohledávání vaší aplikace pomocí rozhraní API pro automatické návrhy Bingu vrácením navrhovaných hledání v reálném čase.  |
+| [Statistika Bingu](bing-web-stats.md) | Statistika Bingu poskytuje analýzy pro rozhraní API pro vyhledávání Bingu, které vaše aplikace používá. Mezi dostupné analýzy patří objem volání, nejčastější řetězce dotazů a geografická distribuce. |
 
 ## <a name="next-steps"></a>Další postup
 
-* Rozhraní API Bingu pro vyhledávání [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+* [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) rozhraní vyhledávání Bingu API
 * [Požadavky Bingu na zobrazení a použití](./use-display-requirements.md) určují přijatelné způsoby použití obsahu a informací získaných prostřednictvím rozhraní API pro vyhledávání Bingu.

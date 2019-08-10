@@ -1,38 +1,38 @@
 ---
-title: Podpora jazyků – rozhraní API pro vyhledávání obrázků Bingu
+title: Jazyková podpora – rozhraní API Bingu pro vyhledávání obrázků
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, které země/oblasti a jazyky podporují rozhraní API Bingu pro vyhledávání obrázků.
+description: Zjistěte, které země nebo oblasti a jazyky podporuje rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 6f4c354c89fa00d5fc65c635f5f6315761be2f01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384149"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881926"
 ---
-# <a name="language-and-region-support-for-the-bing-image-search-api"></a>Podpora jazyka a oblasti pro rozhraní API Bingu pro vyhledávání obrázků
+# <a name="language-and-region-support-for-the-bing-image-search-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro vyhledávání obrázků
 
-Rozhraní API Bingu pro vyhledávání obrázků podporuje více než deseti tři zemích nebo oblastech, mnoho s více než jeden jazyk. Zadání země/oblasti s dotazem slouží především pro upřesnění výsledků hledání podle zájmů v zemi/oblast. Kromě toho výsledky mohou obsahovat odkazy na Bingu a těchto odkazů může lokalizace uživatelského rozhraní Bing podle země nebo oblasti zadaného nebo jazyk.
+Rozhraní API Bingu pro vyhledávání obrázků podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem. Zadání země nebo oblasti s dotazem slouží hlavně k upřesnění výsledků hledání na základě zájmů v dané zemi nebo oblasti. Kromě toho můžou výsledky obsahovat odkazy na Bing a tyto odkazy můžou lokalizovat uživatelské prostředí Bingu podle zadaných zemí nebo oblastí nebo jazyka.
 
-Chcete-li zadat zemi/oblast a jazyk, nastavte `mkt` parametr dotazu (trhu) pro kódování ze **trhy** následující tabulka. Určuje, na trhu země/oblast a jazyk. Pokud uživatel preferuje zobrazíte zobrazení textu v jiném jazyce, nastavte `setLang` parametr kódu příslušný jazyk dotazu.
+Pokud chcete zadat zemi nebo oblast a jazyk, nastavte `mkt` parametr dotazu (na trhu) na kód z tabulky **trhy** níže. Tento trh určuje zemi nebo oblast i jazyk. Pokud uživatel upřednostňuje zobrazení textu v jiném jazyce, nastavte `setLang` parametr dotazu na příslušný kód jazyka.
 
-Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud chcete zadat určitá země nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` hlavičky protokolu HTTP. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro každou zemi/oblast v tabulce trhy.
+Případně můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Pokud zadáte zemi nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` hlavičky HTTP. Podporované jazyky se liší podle země nebo oblasti; jsou uvedené pro každou zemi nebo oblast v tabulce trhy.
 
 > [!NOTE]
-> Rozhraní API pro obrázky vzroste zájem o aktuálně podporuje pouze následujících zemích:
-> - en US (angličtina, USA)
-> - cs CA (angličtina, Kanada)
-> - cs Austrálie (angličtina, Austrálie)
+> Rozhraní API pro vývojové obrázky aktuálně podporuje jenom tyto trhy:
+> - EN-US (angličtina, USA)
+> - en-CA (angličtina, Kanada)
+> - EN-AU (angličtina, Austrálie)
 > - zh-CN (čínština, Čína)
 
-## <a name="countriesregions"></a>Země/oblasti
+## <a name="countriesregions"></a>Země nebo oblasti
 
 |Země/oblast|Kód|
 |-------|----|
@@ -47,12 +47,12 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
-|Hongkong – zvláštní administrativní oblast|HK|
+|Hongkong – zvláštní správní oblast|HK|
 |Indie|IN|
-|Indonésie|ID|
-|Itálie|IT|
+|Indonésie|id|
+|Itálie|it|
 |Japonsko|JP|
-|Jižní Korea|KR|
+|Korejská republika|KR|
 |Malajsie|MY|
 |Mexiko|MX|
 |Nizozemsko|NL|
@@ -76,13 +76,13 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 
 ## <a name="markets"></a>Trhy
 
-|Země/oblast|Jazyk|Kód na trhu|
+|Země/oblast|Jazyk|Kód trhu|
 |-------|--------|-----------|
-|Argentina|Španělština|es-AR|
+|Argentina|Španělština|ES-AR|
 |Austrálie|Angličtina|cs AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Holandština|nl-BE|
-|Belgie|Francouzština|fr-BE|
+|Belgie|Francouzština|fr – bude|
 |Brazílie|Portugalština|pt-BR|
 |Kanada|Angličtina|cs CA|
 |Kanada|Francouzština|fr-CA|
@@ -91,23 +91,23 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh-HK|
+|Hongkong – zvláštní správní oblast|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
-|Indonésie|Angličtina|cs ID|
+|Indonésie|Angličtina|EN-ID|
 |Itálie|italština|IT-IT|
 |Japonsko|Japonština|ja-JP|
-|Jižní Korea|Korejština|ko-KR|
-|Malajsie|Angličtina|cs MY|
+|Korejská republika|Korejština|ko-KR|
+|Malajsie|Angličtina|EN – MY|
 |Mexiko|Španělština|es-MX|
 |Nizozemsko|Holandština|NL-NL|
 |Nový Zéland|Angličtina|cs NZ|
 |Čína|Čínština|zh-CN|
 |Polsko|polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
-|Filipíny|Angličtina|cs PH|
+|Filipíny|Angličtina|EN-PH|
 |Rusko|ruština|ru-RU|
 |Saúdská Arábie|arabština|ar-SA|
-|Jižní Afrika|Angličtina|en-ZA|
+|Jižní Afrika|Angličtina|EN-ZA|
 |Španělsko|Španělština|es-ES|
 |Švédsko|švédština|sv-SE|
 |Švýcarsko|Francouzština|FR-CH|
@@ -119,4 +119,4 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Spojené státy|Španělština|es-US|
 
 ## <a name="next-steps"></a>Další postup
-Další informace o koncových bodech Bingu pro vyhledávání zpráv najdete v tématu [zpráv API pro vyhledávání obrázků v7 odkaz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).
+Další informace o Vyhledávání zpráv Binguch koncových bodech najdete v referenčních informacích k [rozhraní API pro novinky vyhledávání obrázků v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

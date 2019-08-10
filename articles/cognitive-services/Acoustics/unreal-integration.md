@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3fe9a28a99ea8becbfc40e1e64d1f5b109caace3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 47f39e8dcd96ea3bdba564df348e9b89a6b036ba
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854375"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933156"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Projekt akustické Unreal a integrace Wwise
 Tento postup poskytuje podrobné kroky pro integraci balíčku modulu plug-in projekt akustického prostředí do stávajícího projektu hry Unreal a Wwise. 
 
 Požadavky na software:
-* [Unreal Engine](https://www.unrealengine.com/) 4,20 nebo 4,21
+* [Unreal Engine](https://www.unrealengine.com/) 4.20 +
 * [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018,1.\*
 * [Modul plug-in Wwise pro Unreal](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * Pokud používáte přímou integraci sady Wwise SDK namísto použití modulů plug-in Wwise Unreal, Projděte si modul plug-in Wwise akustické Unreal a upravte volání rozhraní API.
@@ -52,7 +52,7 @@ Existují tyto hlavní kroky pro instalaci balíčku a jeho nasazení ve hře.
 
 * `AcousticsWwisePlugin\ProjectAcoustics` Vyberte adresář, který byl zahrnut do balíčku, který jste stáhli. Obsahuje sadu prostředků modulu plug-in Wwise mixer.
 
-* Wwise bude modul plug-in nainstalovat. V seznamu nainstalovaných modulů plug-in v Wwise by se teď měly zobrazit akustické akustické projekty.
+* Wwise bude modul plug-in nainstalovat. V seznamu nainstalovaných modulů plug-in v Wwise by se teď měly zobrazit akustické akustické projekty.  
 ![Snímek obrazovky s nainstalovaným modulem plug-in Wwise po instalaci akustického projektu](media/unreal-integration-post-mixer-plugin-install.png)
 
 ## <a name="2-redeploy-wwise-into-your-game"></a>2. (Znovu) nasazení Wwise do hry
@@ -81,9 +81,13 @@ Znovu nasaďte Wwise do své hry i v případě, že jste už integraci Wwise. T
 
     ![Snímek obrazovky okna Průzkumníka Windows, který vyzvýrazňuje zadaný skript k opravě Wwise](media/patch-wwise-script.png)
 
-* Pokud sadu DirectX SDK nemáte nainstalovanou, budete muset komentovat řádek obsahující DXSDK_DIR.`[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* Pokud sadu DirectX SDK nemáte nainstalovanou, v závislosti na verzi Wwise, kterou používáte, může být potřeba odkomentovat řádek, který obsahuje `DXSDK_DIR`: `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
 
     ![Snímek obrazovky editoru kódu zobrazující DXSDK s komentářem](media/directx-sdk-comment.png)
+
+* Pokud kompilujete pomocí sady Visual Studio 2019, chcete-li s Wwise pracovat s chybou propojení, ručně `VSVersion` upravte výchozí `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` hodnotu `vc150`v nástroji na:
+
+    ![Snímek obrazovky editoru kódu zobrazující VSVersion změněné na vc150](media/vsversion-comment.png)
 
 ## <a name="5-build-game-and-check-python-is-enabled"></a>5. Sestavení hry a kontroly Pythonu je povolené
 
@@ -117,7 +121,7 @@ Ukázkový projekt Wwise je součástí stažení ukázek. Doporučujeme vám, a
 
 * Pak přejdete na kartu plug-in směšovače a přidejte do sběrnice modul plug-in směšovače projektu.
 
-    ![Screenshow sběrnice Wwise, která ukazuje, jak přidat modul plug-in směšovače akustického množství projektu](media/add-mixer-plugin.png)
+    ![Snímek obrazovky s Wwise sběrnicí, která ukazuje, jak přidat modul plug-in směšovače akustického projektu](media/add-mixer-plugin.png)
 
 ### <a name="actor-mixer-hierarchy-setup"></a>Objekt actor – nastavení hierarchie směšovače
 * Z důvodu výkonu akustické účinky projektu aplikují na všechny zdroje současně zvuk DSP. To vyžaduje, aby modul plug-in pracoval jako modul plug-in směšovače. Wwise vyžaduje, aby byly na výstupní sběrnici směšovací moduly plug-in, i když výstupní sběrnice obvykle dosahuje suchého výstupního signálu. Akustické projekty vyžadují, aby byl suchý signál směrován přes AUX busses, zatímco je na něm zajištěný `Project Acoustics Bus`signál za mokrého signálu. Následující postup podporuje postupnou migraci na tento tok signálu.
@@ -159,7 +163,7 @@ Některé moduly plug-in spatializer založené na objektech bohužel nejde v tu
 
 * Teď přiřadíte akustickou datovou Asset vloženými k datovým otvorům s akustickým místem v objektu actor. Vaše scéna teď obsahuje zvukové služby.
 
-    ![Snímek obrazovky s přiřazením prostředků howing v editoru Unreal](media/acoustics-asset-assign.png)
+    ![Snímek obrazovky s editorem Unreal zobrazující přiřazení prostředků s akustickým převodem](media/acoustics-asset-assign.png)
 
 * Nyní přidejte prázdný objekt actor a proveďte následující akce:
 
@@ -167,13 +171,13 @@ Některé moduly plug-in spatializer založené na objektech bohužel nejde v tu
 
 1. Přidejte do objektu actor akustickou zvukovou komponentu. Tato součást rozšiřuje zvukovou komponentu Wwise o funkce pro akustické projekty.
 2. Ve výchozím nastavení je zaškrtnuto políčko přehrát při startu, které aktivuje přidruženou událost Wwise při spuštění na úrovni.
-3. Pomocí zaškrtávacího políčka Zobrazit parametry akustického tisku můžete vytisknout informace o ladění zdroje na obrazovce.
+3. Pomocí zaškrtávacího políčka Zobrazit parametry akustického tisku můžete vytisknout informace o ladění zdroje na obrazovce.  
     ![Snímek obrazovky s Unreal Editor zvuku na zvukovém zdroji s povolenými hodnotami ladění](media/debug-values.png)
 4. Přiřazení události Wwise pro běžný pracovní postup Wwise
 5. Ujistěte se, že je vypnuté používání prostorového zvuku. V tuto chvíli, pokud pro konkrétní zvukovou komponentu používáte akustické projekty, nemůžete současně použít modul prostorového zvuku Wwise pro akustické práci.
 
 Nyní je vše připraveno. Pohybujte kolem scény a prozkoumejte akustické účinky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Kurz [návrhu](unreal-workflow.md) pro akustické a projektové akustické práce v Unreal/Wwise
 * [Přečtěte si, jak se vytváří](unreal-baking.md) na scény vaší hry. 

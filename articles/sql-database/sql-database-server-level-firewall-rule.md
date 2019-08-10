@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 7adced4088b1e155d6776f71e8f23a9eceae2297
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d13ee8c46df9433530df1d26a86978daab709a52
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566784"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883058"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Rychlý start: Vytvoření pravidla brány firewall na úrovni serveru pro databáze s jednou a ve fondu pomocí Azure Portal
 
@@ -37,7 +37,7 @@ Služba SQL Database vytvoří bránu firewall na úrovni databázového serveru
 > [!NOTE]
 > SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k serveru Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
 > [!IMPORTANT]
-> Pravidlo brány firewall s hodnotou 0.0.0.0 umožňuje všem službám Azure projít pravidlo brány firewall na úrovni serveru a pokusit se o připojení k jedné nebo sdružené databázi prostřednictvím serveru. Další informace o používání pravidel virtuální sítě najdete v tématu [pravidla virtuální sítě jako alternativy k pravidlům IP adres](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules).
+> Pravidlo brány firewall s hodnotou 0.0.0.0 umožňuje všem službám Azure projít pravidlo brány firewall na úrovni serveru a pokusit se o připojení k jedné nebo sdružené databázi prostřednictvím serveru. 
 
 Postupujte podle těchto kroků a vytvořte pravidlo brány firewall protokolu IP na úrovni serveru pro IP adresu vašeho klienta a povolte externí připojení přes bránu SQL Database firewall pouze pro vaši IP adresu.
 
@@ -70,7 +70,7 @@ Uložte tyto prostředky, pokud chcete přejít na [Další kroky](#next-steps) 
 1. V nabídce na levé straně Azure Portal vyberte **skupiny prostředků** a pak vyberte **myResourceGroup**.
 2. Na stránce skupiny prostředků vyberte **Odstranit**, do textového pole zadejte **myResourceGroup** a pak vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Když máte databázi, můžete se k ní [připojit a vytvářet dotazy](sql-database-connect-query.md) v některém z oblíbených nástrojů nebo jazyků, například:
   - [Připojení a dotazování pomocí SQL Server Management Studia](sql-database-connect-query-ssms.md)

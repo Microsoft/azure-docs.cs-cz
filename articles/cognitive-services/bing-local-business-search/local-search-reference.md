@@ -6,15 +6,15 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 36d87ee9db68c47ee96519cb6b04ff24478427d6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9030d85ff5bc83bb54f4a67a9f319a1670a6c2ad
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423403"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881850"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Referenční informace o rozhraní API pro vyhledávání místních obchodních v7 Bingu
 
@@ -140,7 +140,7 @@ Definuje vydavatele.
   
 Všimněte si, že Vydavatel může poskytnout svůj název nebo web nebo obojí.  
   
-|Name|Hodnota|type|  
+|Name|Value|type|  
 |----------|-----------|----------|  
 |name|Název vydavatele|Řetězec|  
 |url|Adresa URL webu vydavatele<br /><br /> Všimněte si, že vydavatel nemusí poskytovat Web.|Řetězec|  
@@ -188,7 +188,7 @@ Definuje skupinu výsledků hledání, jako je například hlavní.
 ### <a name="rankingitem"></a>RankingItem
 Definuje položku výsledku hledání, která se má zobrazit.
 
-|Name|Hodnota|type|  
+|Name|Value|type|  
 |-------------|-----------------|----------|
 |resultIndex|Index položky vycházející z nuly v odpovědi, která se má zobrazit Pokud tato položka neobsahuje toto pole, zobrazí všechny položky v odpovědi. Můžete například zobrazit všechny články v odpovědi na zprávy.|Integer|
 |answerType|Odpověď obsahující položku, která se má zobrazit Například zprávy.<br /><br />Pomocí typu vyhledejte odpověď v objektu SearchResponse. Typ je název pole SearchResponse.<br /><br /> Typ odpovědi však použijte pouze v případě, že tento objekt obsahuje pole hodnota. v opačném případě tuto chybu ignorujte.|Řetězec|
@@ -212,7 +212,7 @@ Všimněte si, že pokud by služba způsobila útok DoS (Denial of Service), po
 |Name|Value|type|  
 |----------|-----------|----------|  
 |_type|Zadejte pomocný parametr typu, který je nastavený na SearchResponse.|Řetězec|  
-|Zadá|Seznam entit, které jsou relevantní pro vyhledávací dotaz.|Objekt JSON|  
+|zadá|Seznam entit, které jsou relevantní pro vyhledávací dotaz.|Objekt JSON|  
 |queryContext|Objekt, který obsahuje řetězec dotazu, který Bing použil pro požadavek.<br /><br /> Tento objekt obsahuje řetězec dotazu zadaný uživatelem. Může také obsahovat změněný řetězec dotazu, který Bing použil pro dotaz, pokud řetězec dotazu obsahoval pravopisnou chybu.|[QueryContext](#querycontext)|  
 
 

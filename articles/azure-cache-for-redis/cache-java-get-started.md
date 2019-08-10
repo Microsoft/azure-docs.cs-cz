@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start, kde se dozvíte, jak používat Azure cache pro Redis s Java | Microsoft Docs
+title: 'Rychlý start: Použití Azure cache pro Redis s Java'
 description: V tomto rychlém startu vytvoříte novou aplikaci Java, která bude používat Azure cache pro Redis.
 services: cache
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: d1a90df07d1973272193f9d01b5d26aaf329166e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: mvc, seo-java-august2019
+ms.openlocfilehash: 230bd4c0d53404ca5ac8d7e1385e8b0533880ca7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849940"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881140"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Rychlý start: Použití Azure cache pro Redis s Java
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: dffef5062e89ef725abcfda187f5e6159c676b9c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 54bc98e0ddba0292c6a5dbb07f2bbdfce6a1cb45
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854321"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933148"
 ---
 # <a name="project-acoustics-unity-integration"></a>Integrace Unity v projektu
 Tento postup vysvětluje integraci modulu plug-in Unity v projektu do vašeho projektu Unity.
@@ -32,6 +32,10 @@ Importujte akustické UnityPackagey do projektu.
     ![Snímek nabídky balíčku importu Unity](media/import-package.png)  
 
 * Vyberte **ProjectAcoustics. unitypackage**
+
+* Kliknutím na tlačítko **Import** integrujete balíček Unity do svého projektu.  
+
+    ![Snímek obrazovky dialogového okna pro Import balíčku Unity](media/import-dialog.png)  
 
 Pokud importujete modul plug-in do existujícího projektu, projekt již může mít soubor **MCS. rsp** v kořenovém adresáři projektu, který určuje možnosti C# kompilátoru. Obsah tohoto souboru bude nutné sloučit se souborem MCS. rsp, který je součástí modulu plug-in s akustickými a projektovým modulem.
 

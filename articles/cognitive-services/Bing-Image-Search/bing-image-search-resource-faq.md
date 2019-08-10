@@ -1,47 +1,47 @@
 ---
-title: Nejčastější dotazy (FAQ) - API pro vyhledávání obrázků Bingu
+title: Nejčastější dotazy – rozhraní API Bingu pro vyhledávání obrázků
 titleSuffix: Azure Cognitive Services
-description: Najděte odpovědi na nejčastější dotazy o konceptech, kód a scénáře týkající se rozhraní API Bingu pro vyhledávání obrázků.
+description: Získejte odpovědi na nejčastější dotazy týkající se konceptů, kódu a scénářů souvisejících s rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 20b8dbcae36555baf3913ab160575a631e204dd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6841e573446103466e2719797da9e4161b70b5a6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60917801"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881702"
 ---
-# <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Nejčastější dotazy (FAQ) k rozhraní API Bingu pro vyhledávání obrázků
+# <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Nejčastější dotazy týkající se rozhraní API Bingu pro vyhledávání obrázků
 
-Najděte odpovědi na nejčastější dotazy o konceptech, kód a scénáře týkající se rozhraní API Bingu pro vyhledávání obrázků služeb Microsoft Cognitive Services v Azure.
+Získejte odpovědi na nejčastější dotazy týkající se konceptů, kódu a scénářů souvisejících s rozhraní API Bingu pro vyhledávání obrázků pro Microsoft Cognitive Services v Azure.
 
-## <a name="response-headers-in-javascript"></a>Hlavičky odpovědi v jazyce JavaScript
+## <a name="response-headers-in-javascript"></a>Hlavičky odpovědi v JavaScriptu
 
-Následující hlavičky mohou nastat v odpovědi rozhraní API Bingu pro vyhledávání obrázků.
+V odpovědích z rozhraní API Bingu pro vyhledávání obrázků mohou nastat následující hlavičky.
 
 | `Attribute`         | `Description` |
 | ------------------- | ------------- |
-| `X-MSEdge-ClientID` |Jedinečné ID, které Bing přiřazeno uživateli |
-| `BingAPIs-Market`   |Na trhu, který byl použit ke splnění žádosti |
-| `BingAPIs-TraceId`  |Záznam protokolu na serveru rozhraní API Bingu pro tuto žádost (podpora) |
+| `X-MSEdge-ClientID` |Jedinečné ID, které Bingu přiřadilo uživateli |
+| `BingAPIs-Market`   |Trh, který se použil ke splnění žádosti |
+| `BingAPIs-TraceId`  |Položka protokolu serveru rozhraní API Bingu pro tuto žádost (pro podporu) |
 
-To je zvláště důležité pro zachování ID klienta a vrátit ho s dalšími požadavky. Když toto provedete, bude hledání využívat dřívější kontext v pořadí výsledky hledání a také poskytovat konzistentní uživatelské prostředí.
+Je obzvláště důležité zachovat ID klienta a vrátit ho s následnými požadavky. Když to uděláte, bude hledání používat minulý kontext v rámci řazení výsledků hledání a zároveň poskytuje konzistentní uživatelské prostředí.
 
-Ale při volání rozhraní API Bingu pro vyhledávání obrázků z jazyka JavaScript, integrované bezpečnostní funkce v prohlížeči (CORS) může zabránit vám přístup k hodnoty z těchto záhlaví.
+Když však zavoláte rozhraní API Bingu pro vyhledávání obrázků z JavaScriptu, můžou vám integrované funkce zabezpečení (CORS) v prohlížeči bránit v přístupu k hodnotám těchto hlaviček.
 
-K získání přístupu k záhlaví, můžete provést požadavek na rozhraní API pro vyhledávání obrázků Bingu prostřednictvím proxy serveru CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
+Pokud chcete získat přístup k hlavičkám, můžete žádost o rozhraní API Bingu pro vyhledávání obrázků vytvořit prostřednictvím serveru proxy CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
 
-Je snadné k instalaci proxy CORS a povolit naše [ukázková aplikace](tutorial-bing-image-search-single-page-app.md) záhlaví volitelný klientský přístup. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Potom zadejte následující příkaz z příkazového řádku.
+Je snadné nainstalovat proxy CORS, aby mohla naše [aplikace](tutorial-bing-image-search-single-page-app.md) získat přístup k volitelným hlavičkám klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak na příkazovém řádku zadejte následující příkaz.
 
     npm install -g cors-proxy-server
 
-V dalším kroku změňte koncový bod rozhraní API pro vyhledávání obrázků Bingu v souboru HTML, aby:
+Dále změňte koncový bod rozhraní API Bingu pro vyhledávání obrázků v souboru HTML na:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
@@ -51,18 +51,18 @@ Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
 Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
 
-## <a name="response-headers-in-production"></a>Hlavičky odpovědi v produkčním prostředí
+## <a name="response-headers-in-production"></a>Hlavičky odpovědí v produkčním prostředí
 
-Přístup proxy CORS, je popsáno v předchozí odpověď je vhodný pro vývoj, testování a učení.
+Přístup k proxy CORS, který je popsaný v předchozí odpovědi, je vhodný pro vývoj, testování a učení.
 
-V produkčním prostředí ale byste neměli hostit skript na straně serveru ve stejné doméně jako webovou stránku, která používá rozhraní API webové vyhledávání Bingu. Tento skript by ve skutečnosti provádět volání rozhraní API na vyžádání z webové stránky JavaScript a předávat všechny výsledky, včetně záhlaví, zpět do klienta. Protože tyto dva prostředky (stránku a skript) sdílení původ, CORS nepřejde do hry a speciálními záhlavími jsou dostupné na JavaScript na webové stránce.
+V produkčním prostředí byste ale měli hostovat skript na straně serveru ve stejné doméně jako webová stránka, která používá rozhraní API Bingu pro vyhledávání na webu. Tento skript by měl ve skutečnosti dělat volání rozhraní API na vyžádání z webové stránky JavaScript a předat všem výsledkům, včetně hlaviček, zpátky klientovi. Vzhledem k tomu, že dva prostředky (stránka a skript) sdílí počátek, CORS nepřichází do hry a speciální hlavičky jsou přístupné pro JavaScript na webové stránce.
 
-Tento přístup taky chrání svůj klíč rozhraní API vystavení public, protože pouze pro skript na straně serveru potřebuje. Skript můžete použít jinou metodu (například odkazující HTTP) abyste měli jistotu, že je požadavek autorizován.
+Tento přístup také chrání klíč rozhraní API před expozicí veřejnosti, protože ho potřebuje jenom skript na straně serveru. Skript může použít jinou metodu (například odkazující na HTTP), aby se zajistilo, že bude požadavek autorizován.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Je vaše otázky týkající se chybějící funkce nebo funkce? Vezměte v úvahu požádat nebo pro ni hlasovat o našich [webu User Voice](https://cognitive.uservoice.com/forums/555907-bing-search).
+Máte dotaz ohledně chybějící funkce nebo funkce? Zvažte vyžádání nebo hlasování na webu našeho [uživatelského hlasu](https://cognitive.uservoice.com/forums/555907-bing-search).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
- [Přetečení zásobníku: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)
+ [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

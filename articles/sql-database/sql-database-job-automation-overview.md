@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 1b8d4965edb446235e28f47a0226c82b89c73e0b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f4d2afd65ec06c331498ce974e933fe08c8e67dd
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845056"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935193"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 
@@ -44,7 +44,7 @@ K dispozici je několik scénářů, kdy můžete použít automatizaci úloh:
 V Azure SQL Database jsou k dispozici následující technologie plánování úloh:
 
 - **Úlohy agenta SQL** jsou klasické a s prošlou dostupností SQL Server komponenty plánování úloh, která je k dispozici ve spravované instanci. Úlohy agenta SQL nejsou k dispozici v izolovaných databázích.
-- **Úlohy elastic Database** jsou služby plánování úloh, které spouštějí vlastní úlohy v jedné nebo mnoha databázích SQL Azure.
+- **Úlohy elastic Database (Preview)** jsou služby plánování úloh, které spouštějí vlastní úlohy v jedné nebo mnoha databázích SQL Azure.
 
 Je potřeba si vymezit několik rozdílů mezi agentem SQL (dostupnými místně a jako součást SQL Database spravované instance) a Agent elastické úlohy databáze (k dispozici pro izolované databáze ve službě Azure SQL Database a databáze v SQL Data Warehouse).
 
@@ -168,7 +168,7 @@ Některé funkce agenta SQL, které jsou k dispozici v SQL Server, nejsou ve spr
 
 Informace o agentovi SQL Server najdete v tématu [agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
-## <a name="elastic-database-jobs"></a>Úlohy elastické databáze
+## <a name="elastic-database-jobs-preview"></a>Úlohy Elastic Database (Preview)
 
 **Úlohy elastické databáze** poskytují možnost paralelně spouštět jeden nebo několik skriptů T-SQL nad velkým počtem databází, a to podle plánu nebo na vyžádání.
 

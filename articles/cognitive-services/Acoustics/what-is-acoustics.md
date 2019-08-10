@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 382d4febed98b53a469ac2788e6e8c8cbf064c23
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854815"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932982"
 ---
 # <a name="what-is-project-acoustics"></a>Co je Project Acoustics?
 Akustické navýšení projektu je akustický modul Wave pro 3D interaktivní prostředí. Modely IT se podobají efektům vln, jako je Diffraction, portáling a reverb, v komplexních scénách bez nutnosti ručního označování zóny. Zahrnuje také herní a audio modul pro integraci middlewaru. Akustické filozofiey projektu se podobají statickému osvětlení: zanesli podrobné fyzika offline k poskytování fyzických standardních hodnot a použití zjednodušeného modulu runtime s ovládacími prvky pro vyjádření návrhu pro uspokojení vašich uměleckéch cílů.
@@ -40,11 +40,17 @@ Cloudová [integrace Unity](unity-integration.md) je přetažena myší a obsahu
 * **Zanesli** Krok analýzy se spouští místně, který provádí voxelization a další geometrickou analýzu scény na základě výše uvedených výběrů. Výsledky jsou vizuální editory pro ověření nastavení scény. Při odesílání zanesli se data Voxel odesílají do Azure a Vy se dostanete ke zvukovému prostředku.
 * **Runtime** Načte Asset do vaší úrovně a Vy jste připraveni naslouchat akustickým hladinám na úrovni. Navrhněte akustické akustické využití v editoru pomocí podrobnějších ovládacích prvků pro zdroj. Ovládací prvky lze také řídit pomocí skriptování na úrovni.
 
-## <a name="platforms"></a>Platformy
+## <a name="runtime-platforms"></a>Běhové platformy
 Moduly plug-in pro modul runtime v projektu se teď dají nasadit na tyto platformy:
 * Windows
+* MacOS
 * Android
 * Xbox One
+
+## <a name="editor-platforms"></a>Platformy editoru
+Modul plug-in Editor akustického projektu je k dispozici pro následující platformy:
+* Windows
+* MacOS (jenom Unity)
 
 ## <a name="download"></a>Ke stažení
 * [Modul plug-in a ukázky pro projekt akustické Unity](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
@@ -55,7 +61,7 @@ Moduly plug-in pro modul runtime v projektu se teď dají nasadit na tyto platfo
 * [Diskuze o problémech v projektu a vytváření sestav problémů](https://github.com/microsoft/ProjectAcoustics/issues)
 * [Zaregistrujte se a dostanete aktualizace na akustické projekty.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Vyzkoušejte si [rychlý Start akustického projektu pro Unity](unity-quickstart.md) nebo [Unreal](unreal-quickstart.md)
 * Seznamte se s [návrhem zvuku filozofie akustického množství projektů](design-process.md)
 

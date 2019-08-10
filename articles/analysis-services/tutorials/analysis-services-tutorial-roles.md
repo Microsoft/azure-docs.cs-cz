@@ -1,6 +1,6 @@
 ---
-title: Kurz – konfigurace role správce a uživatele služby Azure Analysis Services | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat role Azure Analysis Services.
+title: Kurz – nakonfigurujte správce Azure Analysis Services a role uživatelů | Microsoft Docs
+description: Přečtěte si, jak nakonfigurovat role Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 4c1a3f52c37dcaad4bc2f84d6d2fa04b61376cf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b36541cde457b7faf8b3a020cdde01f049ceb652
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787920"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932217"
 ---
-# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace role serveru správce a uživatele
+# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
 
- V tomto kurzu se pomocí SQL Server Management Studia (SSMS) připojíte k serveru v Azure a nakonfigurujete správce serveru a role modelové databáze. Zároveň se seznámíte s jazykem [TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200). TMSL je skriptovací jazyk založený na JSON pro tabulkové modely na úrovni kompatibility 1200 a vyšších. Dá se použít k automatizaci mnoha úkolů při tabulkovém modelování. Jazyk TMSL se často používá s PowerShellem, v tomto kurzu ale použijete editor dotazů XMLA v SQL Server Management Studiu. V tomto kurzu dokončíte tyto úkoly: 
+ V tomto kurzu se pomocí SQL Server Management Studia (SSMS) připojíte k serveru v Azure a nakonfigurujete správce serveru a role modelové databáze. Zároveň se seznámíte s jazykem [TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200). TMSL je skriptovací jazyk založený na JSON pro tabulkové modely na úrovni kompatibility 1200 a vyšších. Dá se použít k automatizaci mnoha úkolů při tabulkovém modelování. Jazyk TMSL se často používá s PowerShellem, v tomto kurzu ale použijete editor dotazů XMLA v SQL Server Management Studiu. V tomto kurzu dokončíte tyto úkoly: 
   
 > [!div class="checklist"]
 > * Získání názvu serveru z portálu
@@ -53,7 +53,7 @@ Pro zbývající úkoly použijete SQL Server Management Studio, které umožňu
 
 1. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services**.
 
-    ![Připojení](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Připojit](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. Do pole **Název serveru** v dialogovém okně **Připojit k serveru** vložte název serveru zkopírovaný z portálu. V poli **Ověřování** zvolte **Active Directory Universal s podporou vícefaktorového ověřování**, zadejte svůj uživatelský účet a klikněte na **Připojit**.
    
@@ -83,7 +83,7 @@ V rámci tohoto úkolu přidáte do role správce serveru uživatelský nebo sku
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>Přidání uživatele do role správce modelové databáze
 
-V rámci tohoto úkolu přidáte do role Internet Sales Administrator, která už v modelu existuje, uživatelský nebo skupinový účet. Tato role má oprávnění k úplnému řízení (správce) ukázkové modelové databáze adventureworks. V tomto úkolu se používá příkaz [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) jazyka TMSL ve skriptu, který je pro vás vytvořený.
+V rámci tohoto úkolu přidáte do role Internet Sales Administrator, která už v modelu existuje, uživatelský nebo skupinový účet. Tato role má oprávnění k úplnému řízení (správce) ukázkové modelové databáze adventureworks. V tomto úkolu se používá příkaz [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) jazyka TMSL ve skriptu, který je pro vás vytvořený.
 
 1. V **Průzkumníku objektů** rozbalte **Databáze** > **adventureworks** > **Role**. 
 2. Klikněte pravým tlačítkem na **Internet Sales Administrator**, pak klikněte na **Skriptovat roli jako** > **VYTVOŘIT NEBO NAHRADIT pro** > **Nové okno editoru dotazů**.
@@ -99,7 +99,7 @@ V rámci tohoto úkolu přidáte do role Internet Sales Administrator, která u�
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>Přidání nové role modelové databáze a přidání uživatele nebo skupiny
 
-V rámci tohoto úkolu použijete příkaz [Create](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/create-command-tmsl?view=sql-analysis-services-2017) ve skriptu TMSL k vytvoření nové role Internet Sales Global, určíte této roli oprávnění ke *čtení* a přidáte uživatelský nebo skupinový účet ze služby Azure AD.
+V rámci tohoto úkolu použijete příkaz [Create](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl) ve skriptu TMSL k vytvoření nové role Internet Sales Global, určíte této roli oprávnění ke *čtení* a přidáte uživatelský nebo skupinový účet ze služby Azure AD.
 
 1. V **Průzkumníku objektů** klikněte pravým tlačítkem na **adventureworks** a pak klikněte na **Nový dotaz** > **XMLA**. 
 2. Zkopírujte a vložte do editoru dotazů následující skript TMSL:
@@ -144,5 +144,5 @@ Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete j
 V tomto kurzu jste zjistili, jak se připojit k serveru Azure AD a prozkoumat ukázkové modelové databáze adventureworks a vlastnosti v SQL Server Management Studiu. Zároveň jste se naučili přidat uživatele nebo skupiny do existujících a nových rolí pomocí SQL Server Management Studia a skriptů TMSL. Teď, když máte pro server a ukázkovou modelovou databázi nakonfigurovaná uživatelská oprávnění, můžete se k nim spolu s dalšími uživateli připojit pomocí klientských aplikací, jako je Power BI. Pokud chcete vědět víc, pokračujte dalším kurzem. 
 
 > [!div class="nextstepaction"]
-> [Kurz: Spojte se s Power BI Desktopu](analysis-services-tutorial-pbid.md)
+> [Kurz: Připojení pomocí Power BI Desktop](analysis-services-tutorial-pbid.md)
 
