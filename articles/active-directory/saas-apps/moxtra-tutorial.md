@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Moxtra | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Moxtra.
+title: 'Kurz: Azure Active Directory integrace s Moxtra | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Moxtra.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,49 +14,49 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: f22f70c587556793c2b02fc79fa6175584b0c5cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f64597d8da183a24bcf87543a448442052e5f77
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096641"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944266"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxtra"></a>Kurz: Integrace Azure Active Directory s Moxtra
 
 V tomto kurzu se dozvíte, jak integrovat Moxtra s Azure Active Directory (Azure AD).
-Moxtra integraci se službou Azure AD poskytuje následující výhody:
+Integrace Moxtra s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Moxtra.
-* Můžete povolit uživatelům být automaticky přihlášeni k Moxtra (Single Sign-On) s jejich účty Azure AD.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k Moxtra.
+* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Moxtra (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Moxtra, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s Moxtra potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Moxtra jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Předplatné s povoleným Moxtram jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje Moxtra **SP** jednotné přihlašování zahájené pomocí
+* Moxtra podporuje jednotné přihlašování iniciované v **SP**
 
 ## <a name="adding-moxtra-from-the-gallery"></a>Přidání Moxtra z Galerie
 
-Konfigurace integrace Moxtra do služby Azure AD, budete muset přidat Moxtra z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Moxtra do služby Azure AD, musíte přidat Moxtra z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Moxtra z galerie, postupujte následovně:**
+**Pokud chcete přidat Moxtra z Galerie, proveďte následující kroky:**
 
 1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
@@ -64,88 +64,88 @@ Konfigurace integrace Moxtra do služby Azure AD, budete muset přidat Moxtra z 
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Moxtra**vyberte **Moxtra** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Moxtra**, vyberte **Moxtra** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Moxtra v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Moxtra podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Moxtra.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Moxtra na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Moxtra.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Moxtra, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Moxtra, musíte dokončit tyto stavební bloky:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Moxtra Single Sign-On](#configure-moxtra-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Moxtra](#configure-moxtra-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Moxtra](#create-moxtra-test-user)**  – Pokud chcete mít protějšek Britta Simon Moxtra, který je propojený s Azure AD reprezentace uživatele.
+5. **[Vytvoření Moxtra Test User](#create-moxtra-test-user)** – pro Britta Simon v Moxtra, který je propojený s reprezentací uživatele Azure AD.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Moxtra, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Moxtra, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Moxtra** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Moxtra** vyberte **jednotné přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Moxtra domény a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)
+    ![Informace o jednotném přihlašování v doméně Moxtra a adresách URL](common/sp-signonurl.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://www.moxtra.com/service/#login`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://www.moxtra.com/service/#login`
 
-5. Moxtra aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
+5. Moxtra aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno **atributy uživatele** .
 
     ![image](common/edit-attribute.png)
 
-6. Kromě toho výše Moxtra aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka: 
+6. Kromě výše očekává aplikace Moxtra několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce: 
 
     | Name | Zdrojový atribut|
     | ------------------- | -------------------- |    
-    | jméno | user.givenname |
-    | Příjmení | user.surname |
-    | idpid    | < Identifikátor služby azure AD >
+    | FirstName | user.givenname |
+    | polím | user.surname |
+    | idpid    | < > Identifikátoru Azure AD
 
     > [!Note]
-    > Hodnota **idpid** atribut není skutečný. Můžete získat skutečnou hodnotu z **nastavení Moxtra** části v kroku č. 8. 
+    > Hodnota atributu **idpid** není reálné číslo. Aktuální hodnotu můžete získat z části **Nastavení Moxtra** z kroku č. 8. 
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Nechte **Namespace** prázdné.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. Vyberte zdroj jako **atribut**.
+    d. Jako **atribut**vyberte zdroj.
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
     f. Klikněte na tlačítko **Ok**
 
     g. Klikněte na **Uložit**.
 
-7. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-8. Na **nastavení Moxtra** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+8. V části **Nastavení Moxtra** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
@@ -153,34 +153,34 @@ Ke konfiguraci Azure AD jednotné přihlašování s Moxtra, proveďte následuj
 
     c. Adresa URL – odhlášení
 
-### <a name="configure-moxtra-single-sign-on"></a>Konfigurace Moxtra jednotné přihlašování
+### <a name="configure-moxtra-single-sign-on"></a>Konfigurace jednotného přihlašování Moxtra
 
-1. V jiném okně prohlížeče Přihlaste se k webu společnosti Moxtra jako správce.
+1. V jiném okně prohlížeče se přihlaste k webu Moxtra společnosti jako správce.
 
-2. Na panelu nástrojů na levé straně klikněte na tlačítko **konzoly pro správu > SAML jednotného přihlašování**a potom klikněte na tlačítko **nový**.
+2. Na panelu nástrojů na levé straně klikněte na **Konzola pro správu > jednotné přihlašování SAML**a potom klikněte na **Nový**.
    
     ![Konfigurace jednotného přihlašování](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
-3. Na **SAML** stránce, proveďte následující kroky:
+3. Na stránce **SAML** proveďte následující kroky:
    
     ![Konfigurace jednotného přihlašování](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
-    a. V **název** textového pole zadejte název pro vaši konfiguraci (například: *SAML*). 
+    a. Do textového pole **název** zadejte název vaší konfigurace (např.: *SAML*). 
   
-    b. V **IdP Entity ID** textového pole vložte hodnotu **Azure AD identifikátor** zkopírovanou z webu Azure portal. 
+    b. Do textového pole **ID entity IDP** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal. 
  
-    c. V **přihlašovací adresa URL** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal. 
+    c. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal. 
  
-    d. V **AuthnContextClassRef** textové pole, typ **urn: oasis: názvy: tc: SAML:2.0:ac:classes:Password**. 
+    d. Do textového pole **AuthnContextClassRef** zadejte **urn: Oasis: names: TC: SAML: 2.0: AC: Classes: Password**. 
  
-    e. V **formátem** textové pole, typ **urn: oasis: názvy: tc: SAML:1.1:nameid – formát: emailAddress**. 
+    e. Do textového pole **Formát NameId** zadejte **urn: Oasis: names: TC: SAML: 1.1: NameId-Format: EmailAddress**. 
  
-    f. Otevřete certifikát, který jste si stáhli z webu Azure portal v programu Poznámkový blok, zkopírujte obsah a vložte jej do **certifikát** textového pole.    
+    f. Otevřete certifikát, který jste si stáhli z Azure Portal v programu Poznámkový blok, zkopírujte obsah a vložte ho do textového pole **certifikátu** .    
  
-    g. V textovém poli SAML e-mailové doméně zadejte e-mailovou doménu vašeho SAML.    
+    g. Do textového pole e-mailová doména SAML zadejte svou e-mailovou doménu SAML.    
   
     >[!NOTE]
-    >Pokud chcete zobrazit postup pro ověření domény, klikněte "**můžu**" níže.
+    >Chcete-li zobrazit kroky pro ověření domény, klikněte na tlačítko "**i**" níže.
 
     h. Klikněte na tlačítko **aktualizace**.
 
@@ -194,80 +194,80 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
 3. Ve vlastnosti uživatele proveďte následující kroky.
 
     ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k Moxtra použití Azure jednotného přihlašování.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Moxtra.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Moxtra**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Moxtra**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Moxtra**.
+2. V seznamu aplikace vyberte **Moxtra**.
 
     ![Odkaz Moxtra v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
     ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
 5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-moxtra-test-user"></a>Vytvoření Moxtra testovacího uživatele
+### <a name="create-moxtra-test-user"></a>Vytvořit testovacího uživatele Moxtra
 
-Cílem této části je vytvořte uživatele Britta Simon v Moxtra.
+Cílem této části je vytvořit uživatele s názvem Britta Simon v Moxtra.
 
-**Vytvořte uživatele v Moxtra jako Britta Simon, proveďte následující kroky:**
+**Chcete-li vytvořit uživatele s názvem Britta Simon v Moxtra, proveďte následující kroky:**
 
-1. Přihlaste se k webu společnosti Moxtra jako správce.
+1. Přihlaste se k webu Moxtra společnosti jako správce.
 
-1. Na panelu nástrojů na levé straně klikněte na tlačítko **konzolu správce > Správa uživatelů**a potom **přidat uživatele**.
+1. Na panelu nástrojů na levé straně klikněte na **Konzola pro správu > Správa uživatelů**a pak na **Přidat uživatele**.
    
     ![Konfigurace jednotného přihlašování](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
-1. Na **přidat uživatele** dialogového okna, proveďte následující kroky:
+1. V dialogovém okně **Přidat uživatele** proveďte následující kroky:
   
-    a. V **křestní jméno** textové pole, typ **Britta**.
+    a. Do textového pole **jméno v prvním** poli zadejte **Britta**.
   
-    b. V **příjmení** textové pole, typ **Simon**.
+    b. Do textového pole **příjmení** zadejte **Simon**.
   
-    c. V **e-mailu** textové pole, typ Haniny e-mailová adresa stejné jako na portálu Azure portal.
+    c. Do textového pole **e-mail** zadejte e-mailovou adresu Britta stejné jako u Azure Portal.
   
-    d. V **dělení** textové pole, typ **Dev**.
+    d. Do textového pole **dělení** zadejte **dev**.
   
-    e. V **oddělení** textové pole, typ **IT**.
+    e. Do textového pole **oddělení** zadejte.
   
     f. Vyberte **správce**.
   
-    g. Klikněte na tlačítko **Add** (Přidat).
+    g. Klikněte na **Přidat**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Moxtra na přístupovém panelu, můžete by měl být automaticky přihlášeni k Moxtra, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Moxtra, měli byste se automaticky přihlásit k Moxtra, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

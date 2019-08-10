@@ -1,7 +1,7 @@
 ---
-title: Zjišťování barevná schémata - pro počítačové zpracování obrazu
+title: Detekce barevného schématu – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty související se zjišťováním barevné schéma v obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
+description: Koncepty související s detekcí barevného schématu v obrázcích pomocí rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ff7af2204f9e05a1ba4ef800c63c3ad462242350
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0fa85b8a90ea57d9b81bd2eeaa6d080b7582acd
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368557"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945280"
 ---
-# <a name="detect-color-schemes-in-images"></a>Zjištění barevná schémata v obrázcích
+# <a name="detect-color-schemes-in-images"></a>Detekce barevných schémat na obrázcích
 
-Počítačové zpracování obrazu analyzuje barvy obrázku poskytuje tři různé atributy: barvu popředí dominantní barva pozadí dominantní a sadu dominantní barvy pro bitovou kopii jako celek. Vrátí barvy patří do sady: černou, modrá, hnědá, šedá, zelená, orange, růžová, nachová, red, šedozelená, prázdné a žlutou barvou. 
+Počítačové zpracování obrazu analyzuje barvy v obrázku, aby poskytovaly tři různé atributy: dominantní barva popředí, dominantní barva pozadí a sada dominantních barev pro obrázek jako celek. Vrácené barvy patří do množiny: černá, modrá, hnědá, šedá, zelená, oranžová, růžová, fialová, červená, šedozelená, bílá a žlutá. 
 
-Počítačové zpracování obrazu extrahuje také barvu motivu, který představuje největší živý barvu na obrázku, založené na kombinaci dominantní barvy a sytosti. Barva motivu se vrátí jako šestnáctkový kód barvy HTML. 
+Počítačové zpracování obrazu také extrahuje zvýrazňující barvu, která představuje nejvíce zářivé barvy v obrázku na základě kombinace dominantních barev a sytosti. Barva zvýraznění se vrátí jako hexadecimální kód HTML barvy. 
 
-Počítačové zpracování obrazu také vrátí hodnotu typu boolean označující, jestli obrázek je černobílý.
+Počítačové zpracování obrazu také vrátí logickou hodnotu, která označuje, zda je obrázek černobílý.
 
-## <a name="color-scheme-detection-examples"></a>Barevné schéma detekce příklady
+## <a name="color-scheme-detection-examples"></a>Příklady detekce barevného schématu
 
-Následující příklad ukazuje odpověď JSON pro počítačové zpracování obrazu vrácený při zjišťování na barevném schématu na obrázku. V tomto případě na obrázku není černobílý bitové kopie, ale jsou černá dominantní popředí a pozadí a dominantní barvy pro bitovou kopii jako celek je černobílý.
+Následující příklad znázorňuje odpověď JSON vrácenou Počítačové zpracování obrazu při zjišťování barevného schématu ukázkového obrázku. V takovém případě se příklad obrázku nejedná o černý a bílý obrázek, ale dominantní barvy popředí a pozadí jsou černé a dominantní barvy obrázku jako celku jsou černá a bílá.
 
-![Horská oblast venku při západu slunce s obrysem osoby](./Images/mountain_vista.png)
+![Venkovní horská oblast na západce s silhouetteou osoby](./Images/mountain_vista.png)
 
 ```json
 {
@@ -50,34 +50,34 @@ Následující příklad ukazuje odpověď JSON pro počítačové zpracování 
 }
 ```
 
-### <a name="dominant-color-examples"></a>Dominantní barva příklady
+### <a name="dominant-color-examples"></a>Příklady převládajících barev
 
-V následující tabulce jsou uvedeny vrácené popředí, pozadí a barvy image pro každý Ukázkový obrázek.
+V následující tabulce jsou zobrazeny vrácené barvy popředí, pozadí a obrázku pro každý vzorový obrázek.
 
 | Image | Dominantní barvy |
 |-------|-----------------|
-|![Bílé květinu zeleným pozadím](./Images/flower.png)| Popředí: Black<br/>Na pozadí: White<br/>Barvy: Zelená černou, bílou|
-![Trénování s prostřednictvím stanice](./Images/train_station.png) | Popředí: Black<br/>Na pozadí: Black<br/>Barvy: Black |
+|![Bílá květina se zeleným pozadím](./Images/flower.png)| Zachovat Black<br/>Pozadí White<br/>Barvy Černá, bílá, zelená|
+![Vlak provozovaný přes stanici](./Images/train_station.png) | Zachovat Black<br/>Pozadí Black<br/>Barvy Black |
 
-### <a name="accent-color-examples"></a>Příklady Barva motivu
+### <a name="accent-color-examples"></a>Příklady barev zvýraznění
 
- Vrácené barva jako šestnáctkovou hodnotu barvy HTML, pro každý obrázek příkladu v následující tabulce.
+ Následující tabulka ukazuje vrácenou barvu zvýraznění jako hexadecimální hodnotu barvy HTML pro každý příklad obrázku.
 
 | Image | Doplňková barva |
 |-------|--------------|
-|![Osoba na rock Horská oblast, abyste se při západu slunce](./Images/mountain_vista.png) | #BB6D10 |
-|![Bílé květinu zeleným pozadím](./Images/flower.png) | #C6A205 |
-|![Trénování s prostřednictvím stanice](./Images/train_station.png) | #474A84 |
+|![Osoba, která stojí na horských rockech v slunce](./Images/mountain_vista.png) | #BB6D10 |
+|![Bílá květina se zeleným pozadím](./Images/flower.png) | #C6A205 |
+|![Vlak provozovaný přes stanici](./Images/train_station.png) | #474A84 |
 
-### <a name="black--white-detection-examples"></a>Černá a bílá detekce příklady
+### <a name="black--white-detection-examples"></a>Příklady detekce černého & bílé
 
-Následující tabulka uvádí černobílé vyhodnocení počítačové zpracování obrazu v ukázkové obrázky.
+Následující tabulka ukazuje Počítačové zpracování obrazu černé a bílé vyhodnocení v ukázkových obrázcích.
 
-| Image | Černá a bílá? |
+| Image | Černý & bílá? |
 |-------|----------------|
-|![Černá a bílá obrázek budovy v Manhattan](./Images/bw_buildings.png) | true (pravda) |
-|![Modré house a front-yard](./Images/house_yard.png) | false (nepravda) |
+|![Černý a bílý obrázek budov v Manhattan](./Images/bw_buildings.png) | true |
+|![Modrý dům a přední yard](./Images/house_yard.png) | false |
 
 ## <a name="next-steps"></a>Další postup
 
-Seznamte se s koncepty [zjišťování typy obrázků](concept-detecting-image-types.md).
+Přečtěte si o principech [detekce typů obrázků](concept-detecting-image-types.md).

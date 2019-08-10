@@ -1,25 +1,25 @@
 ---
-title: 'Rychlý start: Zjištění a rámečku tváří v obrázku pomocí sady Python SDK'
+title: 'Rychlý start: Detekce a orámování ploch v imagi pomocí sady Python SDK'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoříte skript Pythonu, který se používá ke zjišťování a snímků tváří v bitové kopii vzdálené rozhraní API pro rozpoznávání tváře.
+description: V tomto rychlém startu vytvoříte skript v jazyce Python, který používá Face API k detekci a orámování ploch ve vzdálené imagi.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: sbowles
-ms.openlocfilehash: 2f2245b4f6e4b38e0b071678ac0f3bddeb72f7ec
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 502523e3c62f993af4484c8ab922c36fa51a60f1
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277525"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945889"
 ---
-# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Rychlý start: Vytvoříte skript Pythonu ke zjišťování a snímků tváří v obrázku
+# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Rychlý start: Vytvoření skriptu v jazyce Python pro detekci a orámování ploch v obrázku
 
-V tomto rychlém startu vytvoříte skript Pythonu, který používá rozhraní API pro rozpoznávání tváře Azure pomocí sady Python SDK k detekci lidských tváří na vzdálené bitové kopie. Aplikace zobrazí vybrané bitové kopie a nakreslí rámeček kolek každou zjištěnou plochu.
+V tomto rychlém startu vytvoříte skript v jazyce Python, který používá Face API Azure prostřednictvím sady Python SDK k detekci lidských plošek ve vzdálené imagi. Aplikace zobrazí vybrané bitové kopie a nakreslí rámeček kolek každou zjištěnou plochu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
@@ -34,29 +34,29 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Nainstalujte Python SDK pro rozpoznávání tváře otevřením příkazového řádku a spuštěním následujícího příkazu:
 
 ```shell
-pip install cognitive_face
+pip install azure-cognitiveservices-vision-face
 ```
 
 ## <a name="detect-faces-in-an-image"></a>Rozpoznávání tváří v obrázku
 
-Vytvořit nový skript Pythonu s názvem _FaceQuickstart.py_ a přidejte následující kód. Tento kód zpracovává základní funkce rozpoznávání tváře. Budete muset nahradit `<Subscription Key>` s hodnotou klíče. Také může být nutné změnit hodnotu `BASE_URL` použít identifikátor oblasti správná pro váš klíč (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblasti). Bezplatné předplatné zkušební verze klíče jsou generovány v **westus** oblasti. Volitelně můžete nastavit `img_url` na adresu URL žádné image chcete použít.
+Vytvořit nový skript Pythonu s názvem _FaceQuickstart.py_ a přidejte následující kód. Tento kód zpracovává základní funkce detekce obličeje. Budete muset nahradit `<Subscription Key>` s hodnotou klíče. Také může být nutné změnit hodnotu `BASE_URL` použít identifikátor oblasti správná pro váš klíč (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblasti). Bezplatné předplatné zkušební verze klíče jsou generovány v **westus** oblasti. Volitelně můžete nastavit `img_url` na adresu URL žádné image chcete použít.
 
-Skript se rozpoznávání tváří voláním **cognitive_face.face.detect** metoda, která zabalí [rozpoznat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozhraní REST API a vrátí seznam tváří.
+Skript detekuje obličeje voláním metody **FaceClient. Face. detect_with_url** , která zabalí REST API [detekce](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) a vrátí seznam plošek.
 
 ```python
-import cognitive_face as CF
+from azure.cognitiveservices.vision.face import FaceClient
 
 # Replace with a valid subscription key (keeping the quotes in place).
 KEY = '<Subscription Key>'
-CF.Key.set(KEY)
 
 # Replace with your regional Base URL
-BASE_URL = 'https://westus.api.cognitive.microsoft.com/face/v1.0/'
-CF.BaseUrl.set(BASE_URL)
+BASE_URL = 'https://westus.api.cognitive.microsoft.com/'
+
+faceClient = FaceClient(BASE_URL, CognitiveServicesCredentials(KEY))
 
 # You can use this example JPG or replace the URL below with your own URL to a JPEG image.
 img_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
-faces = CF.face.detect(img_url)
+faces = faceClient.face.detect_with_url(img_url)
 print(faces)
 ```
 
@@ -68,7 +68,7 @@ Spusťte aplikaci příkazem `python FaceQuickstart.py`. Text odpovědi by měla
 [{'faceId': '26d8face-9714-4f3e-bfa1-f19a7a7aa240', 'faceRectangle': {'top': 124, 'left': 459, 'width': 227, 'height': 227}}]
 ```
 
-Ve výstupu představuje seznam zjištěných tváří. Každá položka v seznamu je **dict** instance where `faceId` je jedinečné ID pro zjištěné rozpoznávání tváře a `faceRectangle` popisuje pozice zjištěné rozpoznávání tváře. 
+Výstup představuje seznam zjištěných plošek. Každá položka v seznamu je **dict** instance where `faceId` je jedinečné ID pro zjištěné rozpoznávání tváře a `faceRectangle` popisuje pozice zjištěné rozpoznávání tváře. 
 
 > [!NOTE]
 > Face ID platnost vyprší po uplynutí 24 hodin je potřeba explicitně ukládání dat pro rozpoznávání tváře, pokud chcete zachovat dlouhodobé.
@@ -83,7 +83,7 @@ from io import BytesIO
 from PIL import Image, ImageDraw
 ```
 
-V dolní části skriptu přidejte následující kód. Tento kód vytvoří jednoduchou funkci k analýze souřadnic obdélník a používá Poduškový kreslení obdélníků v původní bitové kopie. Potom zobrazí obrázek ve výchozí prohlížeč obrázků.
+V dolní části skriptu přidejte následující kód. Tento kód vytvoří jednoduchou funkci pro analýzu souřadnic obdélníku a pomocí Pillow Nakreslí obdélníky na původní obrázek. Potom zobrazí obrázek ve výchozí prohlížeč obrázků.
 
 ```python
 # Convert width height to a point in a rectangle

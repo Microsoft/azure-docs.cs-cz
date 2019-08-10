@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s ZIVVER | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ZIVVER.
+title: 'Kurz: Azure Active Directory integrace s ZIVVER | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ZIVVER.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,49 +15,49 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: e18c5dfe3649f74a9f84c605785ca99748298bea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc78b08c25ada2bf1ed67f4c27246bc873823516
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086139"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Kurz: Integrace Azure Active Directory s ZIVVER
 
 V tomto kurzu se dozvíte, jak integrovat ZIVVER s Azure Active Directory (Azure AD).
-ZIVVER integraci se službou Azure AD poskytuje následující výhody:
+Integrace ZIVVER s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k ZIVVER.
-* Můžete povolit uživatelům být automaticky přihlášeni k ZIVVER (Single Sign-On) s jejich účty Azure AD.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k ZIVVER.
+* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k ZIVVER (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s ZIVVER, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s ZIVVER potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* ZIVVER jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
+* Předplatné s povoleným ZIVVERm jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje ZIVVER **IDP** jednotné přihlašování zahájené pomocí
+* ZIVVER podporuje jednotné přihlašování **IDP** .
 
 ## <a name="adding-zivver-from-the-gallery"></a>Přidání ZIVVER z Galerie
 
-Konfigurace integrace ZIVVER do služby Azure AD, budete muset přidat ZIVVER z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci ZIVVER do služby Azure AD, musíte přidat ZIVVER z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat ZIVVER z galerie, postupujte následovně:**
+**Pokud chcete přidat ZIVVER z Galerie, proveďte následující kroky:**
 
 1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
@@ -65,84 +65,84 @@ Konfigurace integrace ZIVVER do služby Azure AD, budete muset přidat ZIVVER z 
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **ZIVVER**vyberte **ZIVVER** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **ZIVVER**, vyberte **ZIVVER** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![ZIVVER v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí ZIVVER podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v ZIVVER.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí ZIVVER na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v ZIVVER.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ZIVVER, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ZIVVER, musíte dokončit tyto stavební bloky:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace ZIVVER Single Sign-On](#configure-zivver-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování ZIVVER](#configure-zivver-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele ZIVVER](#create-zivver-test-user)**  – Pokud chcete mít protějšek Britta Simon ZIVVER, který je propojený s Azure AD reprezentace uživatele.
+5. **[Vytvoření ZIVVER Test User](#create-zivver-test-user)** – pro Britta Simon v ZIVVER, který je propojený s reprezentací uživatele Azure AD.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s ZIVVER, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ZIVVER, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **ZIVVER** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **ZIVVER** vyberte **jednotné přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![ZIVVER domény a adresy URL jednotného přihlašování – informace](common/idp-identifier.png)
+    ![Informace o jednotném přihlašování v doméně ZIVVER a adresách URL](common/idp-identifier.png)
 
-    V **identifikátor** textové pole, zadejte adresu URL:  `https://app.zivver.com/SAML/Zivver`
+    Do textového pole **identifikátor** zadejte adresu URL:`https://app.zivver.com/SAML/Zivver`
 
-5. ZIVVER aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Očekává, že aplikace ZIVVER **nameidentifier** namapovat s **user.mail**, takže budete muset kliknout na Upravit mapování atributů **upravit**  ikonu a změnit mapování atributů.
+5. ZIVVER aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Aplikace ZIVVER očekává, že **NameIdentifier** budou mapovány pomocí **User. mail**, takže potřebujete upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
     ![image](common/edit-attribute.png)
 
-6. Kromě toho výše ZIVVER aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
+6. Kromě výše očekává aplikace ZIVVER několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
     | Name | Obor názvů | Zdrojový atribut|
     | ---------------| --------------- |
-    | ZivverAccountKey | protokol https:\//zivver.com/SAML/Attributes | user.objectid |
+    | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | user.objectid |
 
     >[!NOTE]
-    >Pokud používáte hybridní instalace služby Active Directory edice a nástroje Azure AD Connect, hodnota by měla být nastavena `user.objectGUID`
+    >Pokud používáte hybridní nastavení s místním a Azure AD Connectm nástrojem Active Directory, hodnota by měla být nastavená na`user.objectGUID`
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Nechte **Namespace** prázdné.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. Vyberte zdroj jako **atribut**.
+    d. Jako **atribut**vyberte zdroj.
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
     f. Klikněte na **Uložit**.
 
-7. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  a klikněte na tlačítko **kopírování** ikonu zkopírujte **adresa url federačních metadat aplikace** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** , abyste si stáhli **soubor XML** s metadaty federace a kliknutím na **Kopírovat** ikonu zkopírujete **adresu URL federačních metadat aplikace** z dané možnosti podle vašich požadavků a uložte je do vašeho počítače.
 
-    ![Adresa URL certifikátu odkaz ke stažení](./media/zivver-tutorial/metadataxmlurl.png)
+    ![Odkaz na stažení adresy URL certifikátu](./media/zivver-tutorial/metadataxmlurl.png)
 
-8. Na **nastavení ZIVVER** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+8. V části **Nastavení ZIVVER** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
@@ -150,17 +150,17 @@ Ke konfiguraci Azure AD jednotné přihlašování s ZIVVER, proveďte následuj
 
     c. Adresa URL – odhlášení
 
-### <a name="configure-zivver-single-sign-on"></a>Konfigurace ZIVVER jednotného přihlašování
+### <a name="configure-zivver-single-sign-on"></a>Konfigurace jednotného přihlašování ZIVVER
 
-1. V okně jiné webové prohlížeče, přihlaste se k vaší společnosti ZIVVER [lokality](https://app.zivver.com/login) jako správce.
+1. V jiném okně webového prohlížeče se přihlaste k [webu](https://app.zivver.com/login) ZIVVER společnosti jako správce.
 
-2. Klikněte na tlačítko **nastavení organizace** zbývající ikony v dolní části okna prohlížeče.
+2. Klikněte na ikonu **Nastavení organizace** v levém dolním rohu okna prohlížeče.
 
-3. Přejděte na **jednotného přihlašování**.
+3. Přejít na **jednotné přihlašování**
 
-4. Otevřete soubor XML metadat federace, který jste si stáhli z webu Azure portal.
+4. Otevřete soubor XML s federačními metadaty, který jste stáhli z Azure Portal.
 
-5. V **adresa URL zprostředkovatele Identity metadat** textového pole, Vložit **adresa URL federačních metadat aplikace** jste dříve uložili z webu Azure portal.
+5. Do textového pole **Adresa URL metadat poskytovatele identity** vložte **adresu URL federačních metadat aplikace** , kterou jste předtím uložili z Azure Portal.
 
 6. Zaškrtněte políčko **zapnout jednotné přihlašování**.
 
@@ -176,55 +176,55 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
 3. Ve vlastnosti uživatele proveďte následující kroky.
 
     ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k ZIVVER použití Azure jednotného přihlašování.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k ZIVVER.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **ZIVVER**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **ZIVVER**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **ZIVVER**.
+2. V seznamu aplikace vyberte **ZIVVER**.
 
     ![Odkaz ZIVVER v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
     ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
 5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-zivver-test-user"></a>Vytvoření ZIVVER testovacího uživatele
+### <a name="create-zivver-test-user"></a>Vytvořit testovacího uživatele ZIVVER
 
-V této části vytvoříte uživatele v ZIVVER jako Britta Simon. Práce s [tým podpory ZIVVER](https://support.zivver.com/) přidat uživatele na platformě ZIVVER. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v ZIVVER. Pokud chcete přidat uživatele na platformě ZIVVER, pracujte s [týmem podpory ZIVVER](https://support.zivver.com/) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici ZIVVER na přístupovém panelu, můžete by měl být automaticky přihlášeni k ZIVVER, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici ZIVVER, měli byste se automaticky přihlásit k ZIVVER, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

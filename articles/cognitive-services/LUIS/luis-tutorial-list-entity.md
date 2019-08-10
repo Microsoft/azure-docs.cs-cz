@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: da6e8e794520a737a96ba45f94459fb8c1a5ff18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 979cbe16653c09ea1b019310d820b070be4a5a91
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637828"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946053"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Zvyšte zjišťování entit pomocí seznamu entit 
 Tento kurz ukazuje použití [seznam entit](luis-concept-entity-types.md) zvýšit zjišťování entit. Seznam entit není nutné popisek, protože jde o přesnou shodu podmínek.  

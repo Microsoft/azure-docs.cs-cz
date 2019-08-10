@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0725988ff88baea2458f0a5e459440874e66088
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 579a553f151cf34215af3188cfddada6da42e691
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596440"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943635"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Kurz: Integrujte konzolu cloudové infrastruktury Oracle pomocí Azure Active Directory
 
@@ -42,7 +42,7 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Konzola cloudové infrastruktury Oracle **podporuje jednotné** přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Konzola cloudové infrastruktury Oracle podporuje jednotné přihlašování.
 
 ## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>Přidání konzoly cloudové infrastruktury Oracle z Galerie
 
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    1. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
 
-   1. Po úspěšném nahrání souboru metadat se hodnoty  **adresy URL** identifikátoru a odpovědi získají automaticky v **základním** textovém poli konfiguračního oddílu SAML.
+   1. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** identifikátoru a odpovědi získají automaticky v **základním** textovém poli konfiguračního oddílu SAML.
     
       > [!NOTE]
       > Pokud hodnoty **adresy URL** pro **identifikátor** a odpověď nezískají auto polulated, pak hodnoty ručně vyplníte podle vašich požadavků.
@@ -101,15 +101,15 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-1. Aplikace konzoly cloudové infrastruktury Oracle očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
+1. Aplikace konzoly cloudové infrastruktury Oracle očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
    ![image](common/edit-attribute.png)
 
-1. Kromě toho očekává aplikace konzoly cloudové infrastruktury Oracle u odpovědi SAML několik atributů, které se mají vrátit zpátky. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)**  proveďte následující kroky:
+1. Kromě toho očekává aplikace konzoly cloudové infrastruktury Oracle u odpovědi SAML několik atributů, které se mají vrátit zpátky. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)** proveďte následující kroky:
 
    1. Klikněte na **pero** vedle **názvu hodnota identifikátoru**.
 
-   1. Vyberte  možnost trvalá jako **Zvolte formát identifikátoru názvu**.
+   1. Vyberte možnost trvalá jako **Zvolte formát identifikátoru názvu**.
  
    1. Klikněte na **Uložit**.
 

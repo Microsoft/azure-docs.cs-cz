@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 25ee212bbcabb1697de1611cc67c5bfdf615c617
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 87c504fa936d89707020f1bf3ac9a0ccd4f81946
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561000"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946097"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>Rychlý start: Vytvoření projektu klasifikace imagí pomocí Custom Vision Python SDK
 
@@ -45,7 +45,7 @@ V upřednostňovaném adresáři projektu vytvořte nový soubor *sample.py*.
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
-Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného.
+Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Chcete-li určit další možnosti při vytváření projektu, viz metoda [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) (vysvětlení najdete v Průvodci vytvořením webového portálu [třídění](getting-started-build-a-classifier.md) ).   
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -79,7 +79,7 @@ cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 
 ### <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
 
-Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Budete muset zadat cestu adresy URL v závislosti na umístění, kam jste stáhli projekt Ukázky pro Cognitive Services v sadě Python SDK.
+Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Do jedné dávky můžete nahrát až 64 imagí.
 
 > [!NOTE]
 > Budete muset změnit cestu k obrázkům v závislosti na umístění, kam jste stáhli projekt Ukázky pro Cognitive Services v sadě Python SDK.
@@ -173,7 +173,7 @@ Pak můžete ověřit správné označení testovacího obrázku (ve složce v *
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Právě jste viděli, jak se dají jednotlivé kroky procesu klasifikace obrázků provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější.
 

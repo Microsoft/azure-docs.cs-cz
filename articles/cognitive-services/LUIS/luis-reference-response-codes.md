@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: c92bcf55b571c37efa308d9121ee4aee714e684a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 43fbca732bbd281ad980ae86e4a89f446fdb69bc
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560083"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945865"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>Běžné kódy odpovědí rozhraní API a jejich význam
 
@@ -40,6 +40,6 @@ V následující tabulce jsou uvedeny některé z nejběžnějších kódy stavu
 |414|Koncový bod|dotaz překračuje limit maximálního počtu znaků|
 |429|Vytváření koncového bodu|Překročení limitu přenosové rychlosti (počet požadavků za sekundu)|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Dokumentace k [vytváření](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) a [Endpoint](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) REST API

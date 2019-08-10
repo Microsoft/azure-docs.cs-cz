@@ -10,16 +10,16 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eda457747a6a3e374e7fdea571f64446e15ded21
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: a52b9ee26aac20d95356db6a280c5feb40023fed
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774181"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942789"
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory
 
-Azure Active Directory (Azure AD) je cloudová služba pro správu identit a přístupu od Microsoftu, která pomáhá přihlašování zaměstnanců a přístup k prostředkům v nástroji:
+Azure Active Directory (Azure AD) je cloudová služba pro správu identit a přístupu od Microsoftu, která pomáhá vašim zaměstnancům přihlašovat se a přistupovat k prostředkům v nástroji:
 
 - Externí prostředky, jako je například Microsoft Office 365, na webu Azure portal a tisícům dalších aplikací SaaS.
 
@@ -50,9 +50,9 @@ Pokud chcete zlepšit implementaci Azure AD, můžete také přidat placené mo�
 
 - **Azure Active Directory Free.** Poskytuje správu uživatelů a skupin, místní synchronizaci adresářů, základní sestavy, samoobslužnou změnu hesla pro cloudové uživatele a jednotné přihlašování v Azure, Office 365 a spoustě oblíbených aplikací SaaS.
 
-- **Azure Active Directory Premium P1.** Kromě Free a základními funkcemi P1 také umožňuje hybridním uživatelům, přístup k místním a cloudovým prostředkům. Podporuje také pokročilou správu, jako je například dynamických skupin, samoobslužné správy skupin, Microsoft Identity Manageru (místních identit a přístupu správy sady) a možností cloudu u zpětný zápis, které umožňují samoobslužné resetování hesla pro Místní uživatelé.
+- **Azure Active Directory Premium P1.** Kromě bezplatných funkcí umožňuje zařízení P1 také vašim hybridním uživatelům přístup k místním i cloudovým prostředkům. Podporuje také pokročilou správu, jako je například dynamických skupin, samoobslužné správy skupin, Microsoft Identity Manageru (místních identit a přístupu správy sady) a možností cloudu u zpětný zápis, které umožňují samoobslužné resetování hesla pro Místní uživatelé.
 
-- **Azure Active Directory Premium P2.** Kromě funkcí Free, Basic a P1 nabízí P2 také [Azure Active Directory Identity Protection](../identity-protection/enable.md) , které vám pomůžou zajistit podmíněný přístup na základě rizik pro vaše aplikace a kritická firemní data a [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) , aby mohli zjistit , omezte a monitorujte správce a jejich přístup k prostředkům a poskytněte v případě potřeby přístup za běhu.
+- **Azure Active Directory Premium P2.** Kromě funkcí Free a P1 nabízí P2 také [Azure Active Directory Identity Protection](../identity-protection/enable.md) , které vám pomůžou zajistit podmíněný přístup na základě rizik pro vaše aplikace a kritická firemní data a [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) k tomu, aby zjistili, Omezte a monitorujte správce a jejich přístup k prostředkům a poskytněte v případě potřeby přístup za běhu.
 
 - **Licence funkce "Platby".** Můžete také získat licence další funkce, jako je Azure Active Directory Business na zákazníka (B2C). B2C můžete poskytovat identitu a přístup k řešení pro správu vašich aplikací určených pro zákazníky. Další informace najdete v tématu [dokumentace ke službě Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 

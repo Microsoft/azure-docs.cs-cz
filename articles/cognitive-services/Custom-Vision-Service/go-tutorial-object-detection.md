@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: daauld
-ms.openlocfilehash: fd305c0fa9f046e6601f1d94ad4ebb1677f1787d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3831f89842f969ecce582c5b5d7a5f8a54c5e7a1
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561036"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946217"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Rychlý start: Vytvoření projektu pro detekci objektů pomocí sady Custom Vision jít SDK
 
@@ -48,7 +48,7 @@ Vytvořte nový soubor s názvem *Sample. přejít* do preferovaného adresáře
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
-Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Všimněte si, že rozdíl mezi vytvářením projektu detekce objektů a klasifikace obrázků je doména, která se zadává při volání metody **create_project**.
+Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Chcete-li určit další možnosti při vytváření projektu, viz metoda [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) (vysvětlení najdete v Průvodci vytvořením webového portálu [detektoru](get-started-build-detector.md) ).
 
 ```go
 import(
@@ -157,7 +157,7 @@ scissorsImageRegions := map[string][4]float64{
     "scissors_20.jpg": [4]float64{ 0.158088237, 0.04047389, 0.6691176, 0.843137264 },
 }
 ```
-Potom pomocí této mapy přidružení nahrajte jednotlivé ukázkové obrázky s odpovídajícími souřadnicemi oblasti. Přidejte následující kód.
+Pak použijte tuto mapu přidružení k nahrání jednotlivých ukázkových imagí s souřadnicemi oblastí (do jedné dávky můžete nahrát až 64 obrázků). Přidejte následující kód.
 
 > [!NOTE]
 > Budete muset změnit cestu k obrázkům na základě toho, kam jste dříve stáhli projekt ukázek sady Cognitive Services jít na sadu SDK.
@@ -277,7 +277,7 @@ V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné 
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Právě jste viděli, jak se dají jednotlivé kroky procesu detekce objektů provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 

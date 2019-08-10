@@ -8,15 +8,15 @@ ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 5122a5a88f5a0d67799930999236f2993bc43f8f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b80c32fea0d62bb5800a677ff30cb0787e83afa2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609761"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945845"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy Language Understanding
 
@@ -110,7 +110,7 @@ Systém by měl používat nejvyšší hodnocení záměr bez ohledu na jeho hod
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Proč nevidím moje přístupů koncový bod v řídicí panel Moje aplikace?
 Celkový počet koncových bodů přístupů na řídicím panelu vaší aplikace jsou pravidelně aktualizovány, ale metriky související s vaší klíče koncového bodu služby LUIS na webu Azure Portal se aktualizuje častěji.
 
-Pokud na řídicím panelu nevidíte aktualizované přístupy ke koncovému bodu, přihlaste se k Azure Portal a vyhledejte prostředek přidružený ke klíči koncového bodu  Luis a otevřete metriky pro výběr metriky **Celkový počet volání** . Pokud klíč koncového bodu se používá pro více než jednu aplikaci LUIS, metriky na webu Azure Portal zobrazí souhrnný počet volání ze všech aplikací LUIS, které ji používají.
+Pokud na řídicím panelu nevidíte aktualizované přístupy ke koncovému bodu, přihlaste se k Azure Portal a vyhledejte prostředek přidružený ke klíči koncového bodu Luis a otevřete metriky pro výběr metriky **Celkový počet volání** . Pokud klíč koncového bodu se používá pro více než jednu aplikaci LUIS, metriky na webu Azure Portal zobrazí souhrnný počet volání ze všech aplikací LUIS, které ji používají.
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Je k dispozici příkaz prostředí PowerShell k dosažení kvóty koncového bodu?
 

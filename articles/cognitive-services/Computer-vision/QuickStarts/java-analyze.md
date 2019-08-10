@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza vzdálené bitovou kopii - REST, Java'
+title: 'Rychlý start: Analýza vzdálené Image pomocí REST API a Java'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete analyzovat obrázek pomocí rozhraní API pro počítačové zpracování obrazu a Javy.
 services: cognitive-services
@@ -10,15 +10,15 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: eadf3aca848f1b8ad24cd387e1988cdf8ea55580
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.custom: seodec18, seo-java-august2019
+ms.openlocfilehash: 69d14b3ce84ddd1fbd54ab8a0f6f0c9e24ebac1e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604424"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946309"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Rychlý start: Analýza vzdálené image pomocí REST API pro počítačové zpracování obrazu a Java
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Rychlý start: Analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API a Java
 
 V tomto rychlém startu analyzujete obrázek uložený vzdáleně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
@@ -27,7 +27,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít nainstalovanou platformu [Java&trade;, Standard Edition Development Kit 7 nebo 8](https://aka.ms/azure-jdks) (JDK 7 nebo 8).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče.
 
 ## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 
@@ -129,7 +129,7 @@ public class Main {
 1. Uložte a sestavte projekt Java.
 1. Pokud používáte integrované vývojové prostředí, spusťte `Main`.
 
-Případně pokud máte spuštěný program z okna příkazového řádku, spusťte následující příkazy. Tyto příkazy předpokládají, že máte knihovny jsou ve složce s názvem `libs` , který je ve stejné složce jako `Main.java`; Pokud ne, budete muset nahradit `libs` cestu ke knihovně.
+Pokud chcete program spustit z okna příkazového řádku, spusťte následující příkazy. Tyto příkazy předpokládají, že vaše knihovny jsou ve složce `libs` s názvem, která je ve stejné `Main.java`složce jako. Pokud ne, bude nutné nahradit `libs` cestu k vašim knihovnám.
 
 1. Zkompilujte soubor `Main.java`.
 
@@ -137,7 +137,7 @@ Případně pokud máte spuštěný program z okna příkazového řádku, spus�
     javac -cp ".;libs/*" Main.java
     ```
 
-1. Spusťte program. Program pošle požadavek na vytvoření znalostní báze do rozhraní API služby QnA Maker a pak se bude dotazovat na výsledky každých 30 sekund. Každá odpověď je zobrazeny v okně příkazového řádku.
+1. Spusťte program. Program pošle požadavek na vytvoření znalostní báze do rozhraní API služby QnA Maker a pak se bude dotazovat na výsledky každých 30 sekund. Každá odpověď je vytištěna v okně příkazového řádku.
 
     ```bash
     java -cp ".;libs/*" Main

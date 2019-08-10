@@ -1,7 +1,7 @@
 ---
-title: Kategorizace obrázků – pro počítačové zpracování obrazu
+title: Kategorizace imagí – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Další koncepty související s funkcí kategorizace obrázků z rozhraní API pro počítačové zpracování obrazu.
+description: Přečtěte si o konceptech souvisejících s funkcí kategorizace imagí rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 257da397e11843ee96e93f7b3e9bc5ada29822cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2b9b8da550d80b027da919ba0834e43e2c83d4b4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203275"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945311"
 ---
-# <a name="categorize-images-by-subject-matter"></a>Kategorizace podle odborník na danou Image
+# <a name="categorize-images-by-subject-matter"></a>Kategorizace obrázků podle předmětu
 
-Kromě značek a popis pro počítačové zpracování obrazu vrací na základě taxonomie kategorií v obrázku. Na rozdíl od značky kategorie jsou uspořádány do hierarchie dědičného nadřazené a podřízené a jsou méně z nich (na rozdíl od tisíce značky 86). Všechny názvy kategorií jsou v angličtině. Kategorizace to provést, samostatně nebo společně s modelem novější značky.
+Kromě značek a popisu Počítačové zpracování obrazu vrátí kategorie založené na taxonomii zjištěné v obrázku. Na rozdíl od značek jsou kategorie uspořádány v nadřazené/podřízené Hereditary hierarchii a jich je méně (86, na rozdíl od tisíc značek). Všechny názvy kategorií jsou v angličtině. Kategorizace se dá provádět samostatně nebo spolu s novějším modelem značek.
 
 ## <a name="the-86-category-concept"></a>Systém 86 kategorií
 
-Počítačové zpracování obrazu můžete zařadit do kategorií bitovou kopii široce nebo konkrétně, pomocí seznamu 86 kategorií v následujícím diagramu. Celou taxonomii v textovém formátu najdete v článku o [taxonomických kategoriích](category-taxonomy.md).
+Počítačové zpracování obrazu může kategorizovat obrázek v podstatě nebo konkrétně pomocí seznamu kategorií 86 v následujícím diagramu. Celou taxonomii v textovém formátu najdete v článku o [taxonomických kategoriích](category-taxonomy.md).
 
-![seskupené seznam všech kategorií taxonomie kategorií](./Images/analyze_categories-v2.png)
+![Seskupené seznamy všech kategorií v taxonomii kategorie](./Images/analyze_categories-v2.png)
 
 ## <a name="image-categorization-examples"></a>Příklady kategorizace obrázků
 
-Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu vrací při zařazení na obrázku podle jeho vizuální funkce.
+Následující odpověď JSON ukazuje, co Počítačové zpracování obrazu vrátí při kategorizaci ukázkového obrázku na základě jeho vizuálních funkcí.
 
-![Žena stropu budovy objektu apartment](./Images/woman_roof.png)
+![Žena na střeše budovy typu Apartment](./Images/woman_roof.png)
 
 ```json
 {
@@ -51,15 +51,15 @@ Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu
 }
 ```
 
-Následující tabulka ukazuje typické bitové kopie sady a kategorie vrátil pro počítačové zpracování obrazu pro každé image.
+Následující tabulka ilustruje typickou sadu imagí a kategorii vrácenou Počítačové zpracování obrazu pro každý obrázek.
 
-| Image | Category |
+| Image | Kategorie |
 |-------|----------|
-| ![Čtyřmi lidmi kompenzaci společně jako skupina](./Images/family_photo.png) | people_group |
-| ![Štěněte chladniček na grassy pole](./Images/cute_dog.png) | animal_dog |
-| ![Osoba na rock Horská oblast, abyste se při západu slunce](./Images/mountain_vista.png) | outdoor_mountain |
-| ![Celé řady bread role na tabulku](./Images/bread.png) | food_bread |
+| ![Čtyři lidé představují dohromady jako rodinu](./Images/family_photo.png) | people_group |
+| ![Puppy se koná v poli travního řízení](./Images/cute_dog.png) | animal_dog |
+| ![Osoba, která stojí na horských rockech v slunce](./Images/mountain_vista.png) | outdoor_mountain |
+| ![Hromádka rolí chleba v tabulce](./Images/bread.png) | food_bread |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Seznamte se s koncepty [označování imagí](concept-tagging-images.md) a [imagí s popisem](concept-describing-images.md).
+Přečtěte si o konceptech [značek](concept-tagging-images.md) a [popisných obrázků](concept-describing-images.md).

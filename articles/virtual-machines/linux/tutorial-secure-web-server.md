@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 069a0310d1baca4f1be3b5cda0d1e75fbcdfa4c4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 74f0a3c9c2d93eda35a364c9bac9d3aff7115312
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703467"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947264"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuální počítač s Linuxem v Azure s využitím certifikátů SSL, které jsou uložené ve službě Key Vault
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači se systémem Linux v Azure s certifikáty SSL uloženými v Key Vault
 K zabezpečení webových serverů můžete použít certifikáty SSL (Secure Sockets Layer), které šifrují webový provoz. Tyto certifikáty SSL můžete ukládat do služby Azure Key Vault a umožnit zabezpečené nasazování certifikátů do virtuálních počítačů s Linuxem v Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
@@ -50,7 +50,7 @@ Než vytvoříte službu Key Vault a certifikáty, vytvořte skupinu prostředk�
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Dále vytvořte službu Key Vault pomocí příkazu [az keyvault create](/cli/azure/keyvault) a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte  *\<mykeyvault >* v následujícím příkladu nahraďte vlastním jedinečným názvem služby Key Vault:
+Dále vytvořte službu Key Vault pomocí příkazu [az keyvault create](/cli/azure/keyvault) a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. V následujícím příkladu nahraďte  *\<mykeyvault >* vlastním jedinečným Key Vaultm názvem:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -78,7 +78,7 @@ secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm secret format --secrets "$secret")
+vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroup --keyvault $keyvault_name)
 ```
 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>Vytvoření konfigurace cloud-init pro zabezpečení serveru NGINX
@@ -137,7 +137,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Testování zabezpečené webové aplikace
-Nyní můžete otevřít webový prohlížeč a zadejte *https:\/\/\<publicIpAddress >* do adresního řádku. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
+Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat *https:\/\/\<publicIpAddress >* . Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
 
 ![Přijetí upozornění zabezpečení ve webovém prohlížeči](./media/tutorial-secure-web-server/browser-warning.png)
 

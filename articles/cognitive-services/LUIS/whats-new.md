@@ -8,15 +8,15 @@ ms.custom: experiment-luis-0519
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: diberry
-ms.openlocfilehash: ab30e201dc5e4e9a226e23a37e8dbd63f17dd742
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a7f64a07378b5ef0085fe77018d6b202984bc1a3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717437"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945831"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 

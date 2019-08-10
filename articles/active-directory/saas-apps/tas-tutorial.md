@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s ú | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TAS.
+title: 'Kurz: Azure Active Directory integrace s ú | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ú.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,49 +15,49 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 279f6970c34acbfea645366f7e965c830873fdbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efd64830c0d9afa83838adef96cf1c103b4485e8
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089176"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943280"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tas"></a>Kurz: Integrace Azure Active Directory s úkoly
+# <a name="tutorial-azure-active-directory-integration-with-tas"></a>Kurz: Azure Active Directory integrace s ú
 
-V tomto kurzu se dozvíte, jak integrovat systému s Azure Active Directory (Azure AD).
-Integrace systému s Azure AD poskytuje následující výhody:
+V tomto kurzu se naučíte integrovat ú Azure Active Directory (Azure AD).
+Integrace ú se službou Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k TAS.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k systému (Single Sign-On) pomocí jejich účtů služby Azure AD.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k ú.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k pracovním postupům (jednotné přihlašování) s účty Azure AD.
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s úkoly, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s využitím ú potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Ú jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Předplatné s povoleným jednotným přihlašováním ú
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje ú **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
+* ÚKOL podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování
 
-## <a name="adding-tas-from-the-gallery"></a>Přidání úkolů z Galerie
+## <a name="adding-tas-from-the-gallery"></a>Přidání ú z Galerie
 
-Konfigurace integrace systému do služby Azure AD, budete muset přidat úkoly z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci ú až po Azure AD, musíte přidat ú z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat úkoly z galerie, postupujte následovně:**
+**Chcete-li přidat úkol z Galerie, proveďte následující kroky:**
 
 1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
@@ -65,66 +65,66 @@ Konfigurace integrace systému do služby Azure AD, budete muset přidat úkoly 
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **ú**vyberte **ú** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **ú**, vyberte možnost prohledat z panelu výsledek a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![ÚKOLY v seznamu výsledků](common/search-new-app.png)
+     ![ÚKOL v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, konfigurace a testování Azure AD jednotné přihlašování s úkoly podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelem v systému.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí služby ú na základě testovacího uživatele s názvem **Britta Simon**.
+Aby se jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v práci.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s úkoly, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD pomocí služby ú, musíte dokončit následující stavební bloky:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace systému Single Sign-On](#configure-tas-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování](#configure-tas-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele systému](#create-tas-test-user)**  – Pokud chcete mít protějšek Britta Simon v systému, který je propojený s Azure AD reprezentace uživatele.
+5. **[Vytvořte testovacího uživatele](#create-tas-test-user)** , abyste měli protějšek Britta Simon v rámci ú, který je propojený s reprezentací uživatele v Azure AD.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s úkoly, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ú, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **ú** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací pro **ú** vyberte **jednotné přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Ú domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Informace jednotného přihlašování k doménám a adresám URL ú](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://taseu.combtas.com/<DOMAIN>`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://taseu.combtas.com/<DOMAIN>`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://taseu.combtas.com/<ENVIRONMENTNAME>/AssertionService.aspx`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://taseu.combtas.com/<ENVIRONMENTNAME>/AssertionService.aspx`
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Ú domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
+    ![Informace jednotného přihlašování k doménám a adresám URL ú](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://taseu.combtas.com/<DOMAIN>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://taseu.combtas.com/<DOMAIN>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto skutečné URL identifikátor, adresa URL odpovědi a přihlašování, který je vysvětlen později v tomto kurzu. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujete je pomocí skutečného identifikátoru, adresy URL odpovědi a adresy URL pro přihlášení, které jsou vysvětleny dále v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-7. Na **nastavení systému** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V části **Nastavení ú** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
@@ -132,36 +132,36 @@ Ke konfiguraci Azure AD jednotné přihlašování s úkoly, proveďte následuj
 
     c. Adresa URL – odhlášení
 
-### <a name="configure-tas-single-sign-on"></a>Konfigurace systému jednotné přihlašování
+### <a name="configure-tas-single-sign-on"></a>Konfigurace jednotného přihlašování k ú
 
-1. V jiné okno webového prohlížeče, přihlaste se k systému jako správce.
+1. V jiném okně webového prohlížeče se přihlaste k objektu ú jako správce.
 
-2. V levé nabídce klikněte na **nastavení** a přejděte do **správce** a potom klikněte na **spravovat jednotné přihlašování**.
+2. V levé části nabídky klikněte na **Nastavení** , přejděte na **správce** a pak klikněte na **Spravovat jednotné přihlašování**.
 
-    ![Konfigurace systému](./media/tas-tutorial/configure01.png)
+    ![Konfigurace ú](./media/tas-tutorial/configure01.png)
 
-3. Na **spravovat jednotné přihlašování** stránku, proveďte následující kroky:
+3. Na stránce **Spravovat jednotné přihlašování** proveďte následující kroky:
 
-    ![Konfigurace systému](./media/tas-tutorial/configure02.png)
+    ![Konfigurace ú](./media/tas-tutorial/configure02.png)
 
-    a. V **název** textového pole zadejte název vašeho prostředí.
+    a. Do textového pole **název** zadejte název prostředí.
     
-    b. Vyberte **SAML2** jako **typ ověřování**.
+    b. Jako **typ ověřování**vyberte **typu Saml2** .
 
-    c. V **zadejte adresu URL** textového pole vložte hodnotu **přihlašovací adresa URL** který jste zkopírovali z portálu Azure portal.
+    c. Do textového pole **Zadejte adresu URL** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    d. V poznámkovém bloku otevřete base-64 kódovaných certifikát, který jste si stáhli z webu Azure portal, zkopírujte jeho obsah a vložte jej do **zadejte certifikační** pole.
+    d. V programu Poznámkový blok otevřete certifikát s kódováním Base-64, který jste stáhli z Azure Portal, zkopírujte jeho obsah a vložte ho do pole **Zadejte certifikaci** .
 
-    e. V **zadejte novou IP adresu** textového pole zadejte IP adresu.
+    e. Do textového pole **Zadejte nové IP** adresy zadejte IP adresu.
 
     >[!NOTE]
-    > Kontakt [tým podpory ú](mailto:support@combtas.com) k získání IP adresy.
+    > Obraťte se na [tým podpory ú](mailto:support@combtas.com) , aby získal IP adresu.
 
-    f. Kopírovat **Single Sign On** adresy url a vložte ho do **identifikátor (Entity ID)** a **přihlašovací adresa URL** textové pole z **základní konfiguraci SAML** v Azure portal. Mějte prosím na paměti, že adresa url je velká a malá písmena a musí končit lomítkem (/).
+    f. Zkopírujte adresu **URL jednotného přihlašování** a vložte ji do **identifikátoru (ID entity)** a pole pro přihlášení k **adrese url** **základní konfigurace SAML** v Azure Portal. Upozorňujeme, že adresa URL rozlišuje velká a malá písmena a musí končit lomítkem (/).
 
-    g. Kopírovat **služby Assertion** adresy url v nastavení stránku a vložte ho do **adresy URL odpovědi** textové pole z **základní konfiguraci SAML** na webu Azure portal.
+    g. Zkopírujte adresu URL **služby kontrolního výrazu** na stránce nastavení a vložte ji do textového pole **Adresa URL odpovědi** **základní konfigurace SAML** v Azure Portal.
 
-    h. Klikněte na tlačítko **jednotného přihlašování k vložení řádku**.
+    h. Klikněte na **Vložit řádek jednotného přihlašování**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -173,56 +173,56 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
 3. Ve vlastnosti uživatele proveďte následující kroky.
 
     ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. Do pole typ **uživatelského jména** **brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k TAS.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k ú.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **ú**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **ú**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **ú**.
+2. V seznamu aplikace vyberte možnost **ú**.
 
-    ![Propojení úkolů v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na ú v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
     ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
 5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-tas-test-user"></a>Vytvoření úkolů testovacího uživatele
+### <a name="create-tas-test-user"></a>Vytvořit testovacího uživatele pro úkol
 
-V této části vytvořte uživatele Britta Simon v TAS. Práce s [tým podpory ú](mailto:support@combtas.com) přidat uživatele na platformě systému. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v tématu ú. Pokud chcete přidat uživatele na platformě ú, pracujte s [týmem podpory úkolů](mailto:support@combtas.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici ú na přístupovém panelu, můžete by měl být automaticky přihlášeni k systému, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici ú na přístupovém panelu, měli byste se automaticky přihlásit k ú, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

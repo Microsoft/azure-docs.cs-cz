@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s GlobalOne | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GlobalOne.
+title: 'Kurz: Azure Active Directory integrace s GlobalOne | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GlobalOne.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,150 +16,150 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 193e76f79dd69eb10254ea72bda933e5b09630f3
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 14eac7240c183911fba763bf21c37077107cc275
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144631"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944923"
 ---
-# <a name="tutorial-integrate-globalone-with-azure-active-directory"></a>Kurz: GlobalOne integrovat s Azure Active Directory
+# <a name="tutorial-integrate-globalone-with-azure-active-directory"></a>Kurz: Integrace GlobalOne s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat GlobalOne s Azure Active Directory (Azure AD). Když integrujete GlobalOne s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k GlobalOne.
-* Aby uživatelé mohli být automaticky přihlášeni k GlobalOne pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k GlobalOne.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k GlobalOne svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* GlobalOne jednotné přihlašování (SSO) povolené předplatné.
+* GlobalOne odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje GlobalOne **SP a zprostředkovatele identity** iniciované jednotné přihlašování a podporuje **JIT** zřizování uživatelů.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. GlobalOne podporuje **aktualizace SP a IDP** , které iniciovaly jednotné přihlašování, a podporuje **pouze dobu** zřizování uživatelů.
 
 ## <a name="adding-globalone-from-the-gallery"></a>Přidání GlobalOne z Galerie
 
-Konfigurace integrace GlobalOne do služby Azure AD, budete muset přidat GlobalOne z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci GlobalOne do služby Azure AD, musíte přidat GlobalOne z Galerie do svého seznamu spravovaných aplikací SaaS.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **GlobalOne** do vyhledávacího pole.
-1. Vyberte **GlobalOne** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **GlobalOne** .
+1. Na panelu výsledků vyberte **GlobalOne** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s GlobalOne pomocí testovacího uživatele volá **B. Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v GlobalOne.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí GlobalOne pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v GlobalOne.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s GlobalOne, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí GlobalOne, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace GlobalOne](#configure-globalone)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s B. Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující B. Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele GlobalOne](#create-globalone-test-user)**  mít protějšek B. Simon GlobalOne, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
+2. **[Nakonfigurujte GlobalOne](#configure-globalone)** pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
+4. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, **[přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** .
+5. **[Vytvořte uživatele GlobalOne test](#create-globalone-test-user)** , který bude mít protějšek B. Simon v GlobalOne, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **GlobalOne** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **GlobalOne** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** části aplikace je předem nakonfigurovaný a potřebné adresy URL se už předem vyplní s Azure. Uživatel musí uložte konfiguraci kliknutím **Uložit** tlačítko.
+1. V **základní sekci konfigurace SAML** je aplikace předem nakonfigurovaná a potřebné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
 
-1. GlobalOne aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikonu otevřete dialogové okno atributy uživatele.
+1. GlobalOne aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
     ![image](common/edit-attribute.png)
 
-1. Kromě toho výše GlobalOne aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
+1. Kromě výše očekává aplikace GlobalOne několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
     | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
     | Email | user.mail |
-    | Společnost | `<YOUR COMPANY NAME>` |
+    | Společnosti | `<YOUR COMPANY NAME>` |
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Nechte **Namespace** prázdné.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. Vyberte zdroj jako **atribut**.
+    d. Jako **atribut**vyberte zdroj.
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
     f. Klikněte na tlačítko **Ok**
 
     g. Klikněte na **Uložit**.
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **certifikát (Raw)** a vyberte **Stáhnout**stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (RAW)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
    ![Odkaz ke stažení certifikátu](common/certificateraw.png)
 
-1. Na **nastavení GlobalOne** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
+1. V části **Nastavení GlobalOne** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+   ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="configure-globalone"></a>Konfigurace GlobalOne
 
-Ke konfiguraci jednotného přihlašování na **GlobalOne** straně, je nutné odeslat na stažený **certifikát (Raw)** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory GlobalOne](mailto:globalone.support@ey.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na straně **GlobalOne** je potřeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory GlobalOne](mailto:globalone.support@ey.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá B. Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B. Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `B. Simon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B. Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte B. Simon k udělení přístupu k GlobalOne použití Azure jednotného přihlašování.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k GlobalOne.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **GlobalOne**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **GlobalOne**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **B. Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-globalone-test-user"></a>Vytvoření GlobalOne testovacího uživatele
+### <a name="create-globalone-test-user"></a>Vytvořit testovacího uživatele GlobalOne
 
-V této části se vytvoří uživateli Britta Simon v GlobalOne. GlobalOne podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi GlobalOne, vytvoří se nový po ověření.
+V této části se v GlobalOne vytvoří uživatel s názvem Britta Simon. GlobalOne podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v GlobalOne neexistuje, vytvoří se po ověření nový.
 
 ### <a name="test-sso"></a>Test SSO
 
-Při výběru dlaždice GlobalOne na přístupovém panelu, můžete by měl být automaticky přihlášeni k GlobalOne, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici GlobalOne, měli byste se automaticky přihlásit k GlobalOne, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

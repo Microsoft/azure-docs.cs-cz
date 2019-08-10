@@ -1,98 +1,80 @@
 ---
-title: Značky detekce - pro počítačové zpracování obrazu
+title: Detekce značky – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty související s značky nebo loga detekce pomocí rozhraní API pro počítačové zpracování obrazu.
+description: Koncepty související se zjišťováním značky/loga pomocí rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: d32beaa51471ccab19804122bfbcb33a6b1a5e3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4bcd07cf7549029d09f5acd58fdf8f92fffed74
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203014"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945290"
 ---
-# <a name="detect-popular-brands-in-images"></a>Zjištění oblíbených značek na obrázcích
+# <a name="detect-popular-brands-in-images"></a>Detekce oblíbených značek na obrázcích
 
-Detekce značky je speciální režim [objektu zjišťování](concept-object-detection.md) , která používá databázi tisíce globální loga pro identifikaci obchodních značek v obrázcích nebo ve videích. Tuto funkci můžete použít třeba ke zjišťování, které značky jsou nejoblíbenější na sociálních sítích nebo nejrozšířenější v umístění média produktu.
+Rozpoznávání značek je specializovaný režim [detekce objektů](concept-object-detection.md) , který používá databázi tisíců globálních log k identifikaci komerčních značek na obrázcích nebo videu. Tuto funkci můžete použít například k tomu, abyste zjistili, které značky jsou nejoblíbenější na sociálních médiích nebo ve většině druhů v mediálním umístění.
 
-Službu pro počítačové zpracování obrazu zjistí, zda jsou v bitové kopii daného; značky loga Pokud ano, vrátí se název značky, skóre spolehlivosti a souřadnice ohraničujícího rámečku kolem loga.
+Služba Počítačové zpracování obrazu zjišťuje, zda v dané imagi existují logo značky; Pokud ano, vrátí název značky, hodnocení spolehlivosti a souřadnice ohraničujícího rámečku kolem loga.
 
-Logo integrované databáze se věnuje oblíbené značky v spotřební elektroniku, oblečení a další. Pokud zjistíte, že služba pro počítačové zpracování obrazu není zjištěna značku, kterou hledáte, můžete, může lépe vyhovovat vytvoření a trénování vlastních pomocí detektoru logo [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) služby.
+Integrovaná databáze loga zahrnuje oblíbené značky v zákaznické elektronikě, ošacení a dalších. Pokud zjistíte, že služba Počítačové zpracování obrazu nedetekuje značku, kterou hledáte, je možné, že bude lepší pracovat s vytvářením a školením vlastního detektoru loga pomocí služby [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) .
 
 ## <a name="brand-detection-example"></a>Příklad detekce značky
 
-Následující odpověďmi ve formátu JSON ukazuje, co pro počítačové zpracování obrazu vrací při zjišťování značky v příkladu imagí.
+Následující odpovědi JSON znázorňují, co Počítačové zpracování obrazu vrací při detekci značek v ukázkových obrázcích.
 
-![Šedé sweatshirt s Microsoft popisku a na něm logo](./Images/gray-shirt-logo.jpg)
+![Červená košile s popiskem a logem Microsoftu](./Images/red-shirt-logo.jpg)
 
 ```json
-{
-   "brands":[
-      {
-         "name":"Microsoft",
-         "confidence":0.706,
-         "rectangle":{
-            "x":470,
-            "y":862,
-            "w":338,
-            "h":327
-         }
+"brands":[  
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":20,
+         "y":97,
+         "w":62,
+         "h":52
       }
-   ],
-   "requestId":"5fda6b40-3f60-4584-bf23-911a0042aa13",
-   "metadata":{
-      "width":2286,
-      "height":1715,
-      "format":"Jpeg"
    }
-}
+]
 ```
-V některých případech detektor značky vyzvedne, až bude obrázek loga a stylizované název značky jako dva samostatné loga.
 
-![Azure red shirt s Microsoft popisku a na něm logo](./Images/red-shirt-logo.jpg)
+V některých případech značka detektoru zachová jak obrázek loga, tak název stylizované značky jako dvě samostatná loga.
+
+![Šedý Sweatshirt s popiskem a logem Microsoftu](./Images/gray-shirt-logo.jpg)
 
 ```json
-{
-   "brands":[
-      {
-         "name":"Microsoft",
-         "confidence":0.657,
-         "rectangle":{
-            "x":436,
-            "y":473,
-            "w":568,
-            "h":267
-         }
-      },
-      {
-         "name":"Microsoft",
-         "confidence":0.85,
-         "rectangle":{
-            "x":101,
-            "y":561,
-            "w":273,
-            "h":263
-         }
+"brands":[  
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":58,
+         "y":106,
+         "w":55,
+         "h":46
       }
-   ],
-   "requestId":"10dcd2d6-0cf6-4a5e-9733-dc2e4b08ac8d",
-   "metadata":{
-      "width":1286,
-      "height":1715,
-      "format":"Jpeg"
+   },
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":58,
+         "y":86,
+         "w":202,
+         "h":63
+      }
    }
-}
+]
 ```
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-Funkce detekce značky je součástí [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API. Můžete volat toto rozhraní API prostřednictvím nativní sadou SDK nebo volání REST. Zahrnout `Brands` v **visualFeatures** parametr dotazu. Potom, když dostanete úplnou odpověď JSON, jednoduše analýzu řetězce pro obsah `"brands"` oddílu.
+Funkce detekce značky je součástí rozhraní API pro [analýzu obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Toto rozhraní API můžete zavolat prostřednictvím nativní sady SDK nebo prostřednictvím volání REST. Do `Brands` parametru dotazu **visualFeatures** zahrňte. Až získáte úplnou odpověď ve formátu JSON, stačí analyzovat řetězec pro obsah `"brands"` oddílu.
 
-* [Rychlé zprovoznění: Analýza obrázku (sadu .NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [Rychlé zprovoznění: Analýza obrázku (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 * [Rychlé zprovoznění: Analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)

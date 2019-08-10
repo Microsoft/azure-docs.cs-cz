@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 08/08/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9bfe5f21da6418f82b2099a5da4ba8c3c32c25f3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2a4726357e35fa123355d9ba450f7c6d8624fe78
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564499"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946239"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Rychlý start: Analýza imagí pro nevhodný obsah v nástrojiC#
 
@@ -49,22 +49,22 @@ Dále zkopírováním kódu z této příručky a jeho vložením do svého proj
 
 Na začátek souboru *Program.cs* přidejte následující příkazy `using`.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-8)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-7)]
 
 ### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
 Do souboru *Program.cs* přidejte následující kód, který pro vaše předplatné vytvoří zprostředkovatele klienta Content Moderatoru. Přidejte kód společně s třídou **Program** do stejného oboru názvů. Budete muset aktualizovat pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=84-107)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=83-106)]
 
 
 ### <a name="set-up-input-and-output-targets"></a>Nastavení vstupních a výstupních cílů
 
 Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole určují soubory pro obsah vstupní bitové kopie a výstupní obsah JSON.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=48-52)]
 
-Budete muset vytvořit vstupní soubor *ImageFiles.txt* a odpovídajícím způsobem aktualizovat jeho cestu (relativní cesty jsou relativní vzhledem k adresáři provádění). Otevřete soubor _ImageFiles.txt_ a přidejte do něj adresy URL obrázků, které se mají moderovat. V tomto rychlém startu se jako ukázkový vstup používají následující adresy URL.
+Budete muset vytvořit vstupní soubor *ImageFiles. txt* a podle něj aktualizovat jeho cestu (relativní cesty jsou relativní vzhledem k adresáři spuštění). Otevřete soubor _ImageFiles.txt_ a přidejte do něj adresy URL obrázků, které se mají moderovat. V tomto rychlém startu se jako ukázkový vstup používají následující adresy URL.
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -75,24 +75,24 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Do souboru *Program.cs* přidejte následující kód společně s třídou **Program** do stejného oboru názvů. Instanci této třídy použijete k zaznamenávání výsledků moderování jednotlivých kontrolovaných obrázků.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=109-124)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=108-123)]
 
 
 ### <a name="define-the-image-evaluation-method"></a>Definování metody pro hodnocení obrázků
 
 Do třídy **Program** přidejte následující metodu. Tato metoda ohodnotí jeden obrázek třemi různými způsoby a vrátí výsledky hodnocení. Další informace o tom, co jednotlivé operace dělají, najdete na odkazu v části [Další kroky](#next-steps).
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=55-81)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=54-80)]
 
 ### <a name="load-the-input-images"></a>Načtení vstupních obrázků
 
 Do metody **Main** ve třídě **Program** přidejte následující kód. Tento kód nastaví program k načtení zkušebních dat pro každou adresu URL obrázku ve vstupním souboru. Tato data pak zapíše do jednoho výstupního souboru.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=16-45)]
 
 ## <a name="run-the-program"></a>Spuštění programu
 
-Program zapíše řetězcová data JSON do souboru _ModerationOutput.json_. Pro ukázkové obrázky použité v tomto rychlém startu bude výstup následující. Každý obrázek má různé oddíly pro `ImageModeration`, `FaceDetection`a `TextDetection`, které odpovídají třem voláním rozhraní API v metodě **EvaluateImage** .
+Program zapíše řetězcová data JSON do souboru _ModerationOutput.json_ . Pro ukázkové obrázky použité v tomto rychlém startu bude výstup následující. Každý obrázek má různé oddíly pro `ImageModeration`, `FaceDetection`a `TextDetection`, které odpovídají třem voláním rozhraní API v metodě **EvaluateImage** .
 
 ```json
 [{

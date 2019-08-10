@@ -1,7 +1,7 @@
 ---
-title: Generování miniatur - pro počítačové zpracování obrazu
+title: Miniatury s inteligentním oříznutím – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty týkající se vytváření miniatur obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
+description: Koncepty související s generováním miniatur pro obrázky pomocí rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: conceptual
 ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8bbc86f5c6fe0f30968a1ba5bd5fa28160ef6963
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372862"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945235"
 ---
-# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generuje se oříznou kolem smart miniatury s pro počítačové zpracování obrazu
+# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generování miniatur s inteligentním oříznutím pomocí Počítačové zpracování obrazu
 
-Miniatura je reprezentace snížit velikost obrázku. Miniatury se používá k reprezentování obrázky a další data úspornější a podporou rozložení způsobem. Rozhraní API pro počítačové zpracování obrazu používá inteligentní oříznutí, společně se změna velikosti obrázku, k vytvoření intuitivní miniatury pro danou image.
+Miniatura je reprezentace obrázku zmenšené velikosti. Miniatury slouží k reprezentaci obrázků a dalších dat v lépe úsporném a uživatelsky přívětivém způsobu. Rozhraní API pro počítačové zpracování obrazu používá inteligentní oříznutí spolu se změnou velikosti obrázku, aby bylo možné vytvořit intuitivní miniatury pro daný obrázek.
 
-Generování miniatur algoritmus počítačového zpracování obrazu funguje takto:
+Počítačové zpracování obrazu algoritmus pro generování miniatury funguje takto:
 
-1. Odeberte rušivé prvky z bitové kopie a identifikovat _oblast zájmu_&mdash;oblasti obrázku, ve kterém se zobrazí hlavní objekty.
-1. Oříznout okraje obrázku podle identifikovanou _oblast zájmu_.
-1. Změna poměru stran, aby odpovídala rozměrům cílového miniatur.
+1. Odstraňte rušivé elementy z obrázku a Identifikujte _oblast zájmu_ &mdash;v oblasti obrázku, ve kterém se zobrazují hlavní objekty.
+1. Ořízne obrázek na základě identifikované _oblasti zájmu_ .
+1. Změňte poměr stran tak, aby odpovídal rozměrům cílové miniatury.
 
 ## <a name="area-of-interest"></a>Oblast zájmu
 
-Když nahrajete image, rozhraní API pro počítačové zpracování obrazu analyzuje umožňuje určit, *oblast zájmu*. K určení způsobu Oříznout okraje obrázku, pak může použít této oblasti. Oříznutí operaci, ale bude vždy odpovídat požadovaný poměr stran Pokud je zadaná.
+Když nahrajete obrázek, rozhraní API pro počítačové zpracování obrazu ho analyzuje a určí *oblast zájmu*. Pak může pomocí této oblasti určit, jak se má obrázek oříznout. Operace oříznutí však bude vždy odpovídat požadovanému poměru stran, je-li zadána jedna.
 
-Můžete také získat nezpracovaný ohraničující souřadnice pole tohoto stejného *oblast zájmu* voláním **areaOfInterest** API místo. Tyto informace pak můžete upravit původní bitové kopie, ale chcete.
+Nezpracované Souřadnice ohraničovacího rámečku v této stejné *oblasti zájmu* můžete také načíst voláním rozhraní **areaOfInterest** API. Tyto informace pak můžete použít k úpravě původní image, kterou chcete.
 
 ## <a name="examples"></a>Příklady
 
-Vygenerované miniatury můžou výrazně lišit v závislosti na tom, zadejte pro výšku, šířku a inteligentní oříznutí, jak je znázorněno na následujícím obrázku.
+Vygenerovaná Miniatura se může velmi lišit v závislosti na tom, co zadáte pro výšku, šířku a inteligentní oříznutí, jak je znázorněno na následujícím obrázku.
 
-![Horská oblast obrázku vedle různých konfiguracích oříznutí](./Images/thumbnail-demo.png)
+![Horský obrázek vedle různých konfigurací oříznutí](./Images/thumbnail-demo.png)
 
-Následující tabulka ukazuje typické miniatury generovaných pro počítačové zpracování obrazu pro příklad Image. Miniatury byly vygenerovány pro zadanou cílovou výšku a šířku 50 pixelů a inteligentní oříznutí povolené.
+Následující tabulka ilustruje typické miniatury vygenerované Počítačové zpracování obrazu pro příklady imagí. Byly vygenerovány miniatury pro zadanou cílovou výšku a šířku 50 pixelů s povoleným inteligentním oříznutím.
 
 | Image | Miniatura |
 |-------|-----------|
-|![Horská oblast venku při západu slunce s obrysem osoby](./Images/mountain_vista.png) | ![Miniatura venku Mountain při západu slunce s obrysem osoby](./Images/mountain_vista_thumbnail.png) |
-|![Bílé květinu zeleným pozadím](./Images/flower.png) | ![Analýza květinu miniaturu pro zpracování obrazu](./Images/flower_thumbnail.png) |
-|![Žena stropu budovy objektu apartment](./Images/woman_roof.png) | ![miniaturu se ženou stropu budovy objektu apartment](./Images/woman_roof_thumbnail.png) |
+|![Venkovní horská oblast na západce s silhouetteou osoby](./Images/mountain_vista.png) | ![Miniatura venkovní horské hory na západce s silhouetteou osoby](./Images/mountain_vista_thumbnail.png) |
+|![Bílá květina se zeleným pozadím](./Images/flower.png) | ![Miniatura analýzy květin](./Images/flower_thumbnail.png) |
+|![Žena na střeše budovy typu Apartment](./Images/woman_roof.png) | ![Miniatura žena na střeše budovy typu Apartment](./Images/woman_roof_thumbnail.png) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [označování imagí](concept-tagging-images.md) a [kategorizace obrázků](concept-categorizing-images.md).
+Přečtěte si o [označování obrázků](concept-tagging-images.md) a [kategorizaci imagí](concept-categorizing-images.md).

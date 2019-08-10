@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd3719e63b19066d61647b90ccae03ed841f3c6c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b4f2f6e86ce076e7c0464609252b027499a8307
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561891"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942887"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -38,7 +38,7 @@ Než začnete, budete potřebovat:
 K webu [Azure Portal](https://portal.azure.com/) se musíte přihlásit pomocí účtu globálního správce daného adresáře.
 
 ## <a name="create-a-new-group"></a>Vytvoření nové skupiny 
-Vytvořte novou skupinu s názvem _MDM policy – West_. Další informace o vytvoření skupiny najdete v tématu [Jak vytvořit základní skupinu a přidat členy](active-directory-groups-create-azure-portal.md).
+Vytvořte novou skupinu s názvem _MDM policy – West_ . Další informace o vytvoření skupiny najdete v tématu [Jak vytvořit základní skupinu a přidat členy](active-directory-groups-create-azure-portal.md).
 
 1. Vyberte **Azure Active Directory**, **Skupiny** a pak vyberte **Nová skupina**.
 
@@ -53,20 +53,20 @@ Vytvořte novou skupinu s názvem _MDM policy – West_. Další informace o vyt
 3. Vyberte **Vytvořit**.
 
 ## <a name="create-a-new-user"></a>Vytvoření nového uživatele
-Vytvořte nového uživatele se jménem _Alain Charon_. Uživatel musí existovat, aby ho bylo možné přidat jako člena skupiny. Další informace o vytvoření uživatele najdete v článku o [přidání nebo odstranění uživatelů](add-users-azure-active-directory.md).
+Vytvořte nového uživatele se jménem _Alain Charon_ . Uživatel musí existovat, aby ho bylo možné přidat jako člena skupiny. Nejprve na kartě vlastní názvy domén načtěte ověřený název domény, ve kterém chcete vytvořit uživatele. Další informace o vytvoření uživatele najdete v článku o [přidání nebo odstranění uživatelů](add-users-azure-active-directory.md).
 
 1. Vyberte **Azure Active Directory**, **Uživatelé** a pak vyberte **Nový uživatel**.
 
 2. Vyplňte stránku **Uživatel**:
 
-    - **Jméno:** Zadejte _Alain Charon_.
+    - **Jméno:** Zadejte _Alain Charon_ .
 
     - **Uživatelské jméno:** Zadejte *Alain\@contoso.com*.
 
 3. Zkopírujte automaticky vygenerované heslo v poli **Heslo** a pak vyberte **Vytvořit**.
 
 ## <a name="add-a-group-member"></a>Přidání člena skupiny
-Teď, když máte skupinu a uživatele, můžete _Alaina Charona_ přidat jako člena do skupiny _MDM policy – West_. Další informace o přidání členů skupiny najdete v článku [Přidání nebo odebrání členů skupin](active-directory-groups-members-azure-portal.md).
+Teď, když máte skupinu a uživatele, můžete _Alaina Charona_ přidat jako člena do skupiny _MDM policy – West_ . Další informace o přidání členů skupiny najdete v článku [Přidání nebo odebrání členů skupin](active-directory-groups-members-azure-portal.md).
 
 1. Vyberte **Azure Active Directory** > **Skupiny**.
 
@@ -90,9 +90,9 @@ Všechny skupiny vaší organizace si můžete prohlédnout na stránce **Skupin
 ## <a name="search-for-the-group"></a>Vyhledání skupiny
 Prohledáním stránky **Skupiny – Všechny skupiny** najděte skupinu **MDM policy – West**.
 
-1. Na stránce **Skupiny – Všechny skupiny** zadejte do **vyhledávacího** pole text _MDM_.
+1. Na stránce **Skupiny – Všechny skupiny** zadejte do **vyhledávacího** pole text _MDM_ .
 
-    Pod **vyhledávacím** polem se zobrazí výsledky hledání včetně skupiny _MDM policy – West_.
+    Pod **vyhledávacím** polem se zobrazí výsledky hledání včetně skupiny _MDM policy – West_ .
 
     ![Stránka Skupiny – Všechny skupiny s vyplněným vyhledávacím polem](media/active-directory-groups-view-azure-portal/search-for-specific-group.png)
 
@@ -105,7 +105,7 @@ Prohledáním stránky **Skupiny – Všechny skupiny** najděte skupinu **MDM p
 ## <a name="view-group-members"></a>Zobrazení členů skupiny
 Teď, když jste tuto skupinu našli, můžete zobrazit všechny přiřazené členy.
 
-- V oblasti **Spravovat** vyberte **Členové** a prohlédněte si úplný seznam se jmény členů přiřazených k této konkrétní skupině včetně _Alaina Charona_.
+- V oblasti **Spravovat** vyberte **Členové** a prohlédněte si úplný seznam se jmény členů přiřazených k této konkrétní skupině včetně _Alaina Charona_ .
 
     ![Seznam členů přiřazených ke skupině MDM policy – West](media/active-directory-groups-view-azure-portal/groups-all-members.png)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 2994d696f463c32ed05fd42b694f29fa2035b9d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5de456cb4f5779cbef58ffaf0ccb89e9e9134e0
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564158"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946116"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Rychlý start: Vytvoření projektu pro detekci objektů pomocí Custom Vision Python SDK
 
@@ -46,7 +46,7 @@ V upřednostňovaném adresáři projektu vytvořte nový soubor *sample.py*.
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
-Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Rozdíl mezi vytvořením projektu detekce objektu a klasifikace obrázků je doména zadaná ve volání **create_project** .
+Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Chcete-li určit další možnosti při vytváření projektu, viz metoda [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) (vysvětlení najdete v Průvodci vytvořením webového portálu [detektoru](get-started-build-detector.md) ).  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -135,7 +135,7 @@ scissors_image_regions = {
 }
 ```
 
-Potom pomocí této mapy přidružení nahrajte jednotlivé ukázkové obrázky s odpovídajícími souřadnicemi oblasti. Přidejte následující kód.
+Pak použijte tuto mapu přidružení k nahrání jednotlivých ukázkových imagí s souřadnicemi oblastí (do jedné dávky můžete nahrát až 64 obrázků). Přidejte následující kód.
 
 ```Python
 # Update this with the path to where you downloaded the images.
@@ -218,7 +218,7 @@ V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné 
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Právě jste viděli, jak se dají jednotlivé kroky procesu detekce objektů provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 

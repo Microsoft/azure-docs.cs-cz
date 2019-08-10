@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0396cfadd4bae9b79cde3881e529677d9432a019
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2c4f7a84f30310eb711db1366825b030eb1c8257
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667049"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947188"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a vyberte **ENTER** pro spuštění.
 
 Pokud dáváte přednost místní instalaci a používání rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -49,7 +49,7 @@ az group create --name myResourceGroup --location eastus
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm).
 
-Následující příklad vytvoří virtuální počítač *myVM* a přidá uživatelský účet *azureuser*. `--generate-ssh-keys` Parametr se používá k automatickému generování klíče SSH a put ve výchozím umístění klíčů ( *~/.ssh*). Pokud místo toho chcete použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Následující příklad vytvoří virtuální počítač *myVM* a přidá uživatelský účet *azureuser*. Parametr slouží k automatickému generování klíče SSH a jeho vložení do výchozího umístění klíče ( *~/.ssh*). `--generate-ssh-keys` Pokud místo toho chcete použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \

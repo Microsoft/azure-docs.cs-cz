@@ -1,6 +1,6 @@
 ---
-title: Úvod do služby ML v Azure HDInsight
-description: Zjistěte, jak vytvářet aplikace pro analýzy velkých objemů dat pomocí služby ML na HDInsight.
+title: Seznámení se službami ML ve službě Azure HDInsight
+description: Naučte se používat služby ML v HDInsight k vytváření aplikací pro analýzu velkých objemů dat.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,42 +8,42 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: a5e4c7acd407cef1bb5fc43d7e40014a6b088a0a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5108424c4e39c1c47710c0e25e4e22c4474e68ad
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448894"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941691"
 ---
-# <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML v Azure HDInsight
+# <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML Services ve službě Azure HDInsight
 
-Microsoft Machine Learning Server je dostupná jako možnost nasazení, při vytváření clusterů HDInsight v Azure. Typ clusteru, který poskytuje tato možnost se nazývá **služby ML**. Tato funkce poskytuje datovým vědcům, statistikům a programátorům v R přístup na vyžádání ke škálovatelným, distribuovaným analytickým na HDInsight metodám služby.
+Microsoft Machine Learning Server je k dispozici jako možnost nasazení při vytváření clusterů HDInsight v Azure. Typ clusteru, který poskytuje tuto možnost, se nazývá **ml Services**. Tato funkce poskytuje odborníkům na data, statistiku a programátory R s přístupem na vyžádání ke škálovatelným distribuovaným metodám analýz v HDInsight.
 
-Služby ML v HDInsight poskytuje nejnovější funkce pro analýzy založené na jazyce R na datových sadách prakticky jakékoli velikosti, načteno do úložiště objektů Blob v Azure nebo Data Lake. Vzhledem k tomu, že cluster se službou ML Services je založená na open-source systému R, můžete využít aplikace založené na jazyce R, které vytváříte, některé balíčky R open source 8000 +. Rutiny v ScaleR balíček analýzy velkých objemů dat společnosti Microsoft jsou k dispozici.
+Služba ML Services v HDInsight poskytuje nejnovější funkce pro analýzy založené na jazyce R v datových sadách prakticky libovolné velikosti, načtené do úložiště objektů blob Azure nebo Data Lake. Vzhledem k tomu, že cluster služby ML Services je postaven na Open Source R, aplikace založené na jazyce R můžou využívat kterýkoli z balíčků 8000 a open-source R. K dispozici jsou také rutiny nástroje pro škálování a analýzu velkých objemů dat od Microsoftu.
 
-Hraničním uzlu clusteru poskytuje praktické místo k připojení ke clusteru a ke spuštění skriptů jazyka R. Díky hraniční uzel máte možnost spuštění paralelizované distribuované funkcí ScaleR mezi jádry hraničního uzlu serveru. Použít také na uzlech clusteru s využitím Hadoop Map Reduce nebo Apache Spark výpočetní kontext ScaleR společnosti.
+Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spouštění skriptů jazyka R. Pomocí hraničního uzlu máte možnost spouštět paralelní distribuované funkce nástroje pro horizontální navýšení kapacity napříč jádry serveru hraničního uzlu. Můžete je také spouštět v uzlech clusteru pomocí mapy Hadoop pro škálování zmenšení nebo Apache Spark výpočetních kontextů.
 
-Modely nebo předpovědi, které jsou výsledkem analýzy si můžete stáhnout pro místní použití. Jejich lze také se mají zprovoznit jinde v Azure, zejména prostřednictvím [Azure Machine Learning Studio](https://studio.azureml.net) [webová služba](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
+Modely nebo předpovědi, které vyplývají z analýzy, se dají stáhnout pro místní použití. Můžou být taky v Azure fungující jinde, zejména prostřednictvím [Azure Machine Learning Studio](https://studio.azureml.net) [webové služby](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
 
-## <a name="get-started-with-ml-services-on-hdinsight"></a>Začínáme se službou ML v HDInsight
+## <a name="get-started-with-ml-services-on-hdinsight"></a>Začínáme se službami ML v HDInsight
 
-K vytvoření clusteru služby ML ve službě Azure HDInsight, vyberte **služby ML** typ clusteru při vytváření clusteru HDInsight pomocí webu Azure portal. Typ clusteru služby ML obsahuje ML Server na data uzlů v clusteru a na hraničním uzlu, která slouží jako cílová zóna pro analýzy založené na služby ML. Zobrazit [vytvořit Apache Hadoop clusterů pomocí webu Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) návod, jak vytvořit cluster.
+Pokud chcete v Azure HDInsight vytvořit cluster služeb ML, vyberte typ clusteru **služby ml Services** při vytváření clusteru HDInsight pomocí Azure Portal. Typ clusteru služby ML obsahuje ML Server v datových uzlech clusteru a na hraničním uzlu, který slouží jako cílová zóna pro analýzu na základě služby ML. Návod, jak vytvořit cluster, najdete v tématu [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) .
 
 ## <a name="why-choose-ml-services-in-hdinsight"></a>Proč zvolit služby ML v HDInsight?
 
-Služba ML v HDInsight poskytuje následující výhody:
+Služby ML ve službě HDInsight přináší následující výhody:
 
-### <a name="ai-innovation-from-microsoft-and-open-source"></a>Inovace AI od Microsoftu i open source
+### <a name="ai-innovation-from-microsoft-and-open-source"></a>Inovace AI z Microsoftu a open source
 
-  Služby ML zahrnuje sadu vysoce škálovatelné a distribuované algoritmy, například [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package), a [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) , který může pracovat na velikosti dat větší než velikost fyzické paměti a spouštění na nejrůznějších platformách distribuovanému. Přečtěte si další informace o kolekci Microsoft's vlastní [balíčky R](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) a [balíčky Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) součástí produktu.
+  Služba ML Services zahrnuje vysoce škálovatelnou, distribuovanou sadu algoritmů, jako jsou [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)a [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) , které můžou pracovat na velikostech dat větších než velikost fyzické paměti a spouštět na nejrůznějších platformách. distribuovaný způsob. Přečtěte si další informace o shromažďování vlastních [balíčků R](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) a [balíčků Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) společnosti Microsoft, které jsou součástí produktu.
   
-  Služby ML přemosťuje tyto Microsoft inovace a příspěvky z open sourcové komunity (sady nástrojů R, Python a AI) všechny nad rámec jednoho podnikové platformy. Všechny balíčky R nebo Python s otevřeným zdrojem strojového učení můžou fungovat společně s žádné speciální inovace od Microsoftu.
+  Služby ML přemostění těchto inovací a příspěvků od společnosti Microsoft pocházejících z open source komunity (R, Python a AI) jsou zcela na jedné platformě na podnikové úrovni. Libovolný otevřený zdrojový balíček R nebo Python může fungovat vedle všech vlastnických inovací od Microsoftu.
 
-### <a name="simple-secure-and-high-scale-operationalization-and-administration"></a>Operacionalizace jednoduchý, zabezpečený a vysoce škálovatelné a Správa
+### <a name="simple-secure-and-high-scale-operationalization-and-administration"></a>Jednoduché, zabezpečené a vysoce škálovatelné zprovoznění a Správa
 
-  Podniky spoléhání se na prostředí a tradiční paradigmat investovat mnohem více času a směrem k operacionalizaci úsilí. Výsledkem zvýšeným náklady a zpoždění, včetně doby překladu pro modely, iterace Novoroční platný a aktuální, dodržování legislativních schválení a správu oprávnění prostřednictvím operacionalizace.
+  Podniky spoléhají na tradiční paradigma a prostředí, které investují mnohem dlouho a úsilí k provozuschopnosti. Výsledkem je neploché náklady a zpoždění, včetně doby překladu pro modely, iterace, aby byly platné a aktuální, zákonné schválení a Správa oprávnění prostřednictvím provozuschopnosti.
 
-  Nabízí podnikové služby ML [operacionalizace](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)v tomto po dokončení modelu strojového učení trvá jen několik kliknutí k vytváření webových služeb rozhraní API. Tyto [webových služeb](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) jsou hostované na serveru mřížky v cloudu a je možné integrovat se službou – obchodní aplikace. Možnost nasazení do elastického mřížky umožňuje, můžete bez problémů škálovat s potřebám vašeho podnikání, a to jak pro batch a hodnocení v reálném čase. Pokyny najdete v tématu [zprovoznění služby ML na HDInsight](r-server-operationalize.md).
+  Služba ML Services nabízí [provozuschopnost](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)na podnikové úrovni. v takovém případě je po dokončení modelu strojového učení několik kliknutí, které vygenerují rozhraní API webových služeb. Tyto [webové služby](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) jsou hostovány v serverové mřížce v cloudu a je možné je integrovat s podnikovými aplikacemi. Možnost nasazení do elastické mřížky vám umožní plynule škálovat požadavky vaší firmy, a to jak pro účely bodování dávky, tak i v reálném čase. Pokyny najdete v tématu [zprovoznění ml Services ve službě HDInsight](r-server-operationalize.md).
 
 <!---
 * **Deep ecosystem engagements to deliver customer success with optimal total cost of ownership**
@@ -53,95 +53,95 @@ Služba ML v HDInsight poskytuje následující výhody:
 
 ## <a name="key-features-of-ml-services-on-hdinsight"></a>Klíčové funkce služby ML v HDInsight
 
-Následující funkce jsou součástí služby ML v HDInsight.
+Následující funkce jsou součástí ML Services v HDInsight.
 
 | Kategorie funkce | Popis |
 |------------------|-------------|
-| Povolené R | [Balíčky R](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) pro řešeními napsanými v jazyce R, rozdělení opensourcového jazyka R a za běhu infrastruktury pro spuštění skriptu. |
-| Python-enabled | [Moduly Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) pro řešení, které jsou napsané v Pythonu, rozdělení opensourcových Pythonu a infrastrukturu run-time pro spuštění skriptu.
-| [Předem natrénovaných modelů](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Pro vizuální analýzu a analýza mínění v textu připravené ke stanovení skóre dat zadáte. |
-| [Nasazení a využití](r-server-operationalize.md) | Zprovoznění serveru a nasadit řešení jako webovou službu. |
-| [Vzdálené spuštění](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Spuštění vzdálené relace v clusteru služby ML ve vaší síti z pracovní stanice klienta. |
+| R – povoleno | [Balíčky r](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) pro řešení napsané v jazyce r s využitím open source distribuce r a běhové infrastruktury pro spuštění skriptu. |
+| Python-enabled | [Moduly Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) pro řešení napsané v Pythonu s využitím otevřené distribuce zdrojového kódu Pythonu a běhové infrastruktury pro provádění skriptu.
+| [Předem připravené modely](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Pro vizuální analýzu a analýzu textu mínění připravené k určení skóre dat, která zadáte. |
+| [Nasazení a využití](r-server-operationalize.md) | Zprovoznění svůj server a nasaďte řešení jako webovou službu. |
+| [Vzdálené spuštění](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Z pracovní stanice klienta spusťte vzdálené relace v clusteru služby ML Services ve vaší síti. |
 
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>Možnosti úložiště dat pro služby ML v HDInsight
 
-Výchozí úložiště pro systém souborů HDFS clusterů HDInsight může být přidružené k účtu služby Azure Storage nebo Azure Data Lake Storage. Toto přidružení se zajistí, že požadovaná data se nahraje do clusteru se provádí trvalého úložiště během analýzy a data jsou k dispozici i po odstranění clusteru. Existují různé nástroje pro přenosy dat, který vyberete, včetně zařízení nahrávání založené na portálu účtu úložiště, možnosti úložiště a [AzCopy](../../storage/common/storage-use-azcopy.md) nástroj.
+Výchozím úložištěm systému souborů HDFS v clusterech HDInsight je možné přidružit účet Azure Storage nebo Azure Data Lake Storage. Toto přidružení zajišťuje trvalé nahrávání všech dat do úložiště clusteru během analýzy a data jsou k dispozici i po odstranění clusteru. Existují různé nástroje pro zpracování přenosu dat do vybrané možnosti úložiště, včetně nahrávání na základě portálu účtu úložiště a nástroje [AzCopy](../../storage/common/storage-use-azcopy.md) .
 
-Máte možnost povolit přístup k další objektů Blob a ukládá Data lake během procesu bez ohledu na to možnost primární úložiště používá zřizování clusteru.  Zobrazit [možnosti služby Azure Storage pro služby ML v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) článku se dozvíte další informace o použití více účtů úložiště.
+Máte možnost povolit přístup k dalším objektům blob a datům Lake Store během procesu zřizování clusteru bez ohledu na použitou možnost primárního úložiště.  Další informace o používání více účtů úložiště najdete v článku [možnosti Azure Storage služby ml Services na HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) .
 
-Můžete také použít [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) jako řešením úložiště pro použití na hraničním uzlu. Služba soubory Azure umožňuje připojit sdílenou složku, která byla vytvořena ve službě Azure Storage k systému souborů v Linuxu. Další informace o těchto možnostech úložiště dat pro služby ML v clusteru HDInsight najdete v tématu [možnosti služby Azure Storage pro služby ML v HDInsight](r-server-storage.md).
+[Soubory Azure](../../storage/files/storage-how-to-use-files-linux.md) můžete použít také jako možnost úložiště pro použití na hraničním uzlu. Služba soubory Azure umožňuje připojit sdílenou složku, která byla vytvořena v Azure Storage do systému souborů Linux. Další informace o těchto možnostech úložiště dat pro služby ML Services na clusteru HDInsight najdete v tématu [možnosti Azure Storage pro služby ml Services v HDInsight](r-server-storage.md).
 
-## <a name="access-ml-services-edge-node"></a>Přístup služby ML hraniční uzel
+## <a name="access-ml-services-edge-node"></a>Hraniční uzel služeb Access ML
 
-Můžete se připojit k Microsoft ML Server na hraničním uzlu, pomocí prohlížeče. Ve výchozím nastavení se nainstaluje při vytváření clusteru.  Můžete také připojit k hraničnímu uzlu clusteru z příkazového řádku pomocí SSH nebo PuTTY pro přístup ke konzole R.
+Pomocí prohlížeče se můžete připojit k Microsoft ML Server na hraničním uzlu. Ve výchozím nastavení se instaluje při vytváření clusteru.  K přístupu ke konzole R se taky můžete připojit k hraničnímu uzlu clusteru z příkazového řádku pomocí SSH/výstupu.
 
-## <a name="develop-and-run-r-scripts"></a>Vývoj a spouštění skriptů jazyka R
+## <a name="develop-and-run-r-scripts"></a>Vývoj a spouštění skriptů R
 
-Vytváření a spouštění skriptů R můžete použít některou z 8000 + open sourcové balíčky R kromě rutiny paralelizované a distribuované, které jsou k dispozici v knihovně ScaleR. Obecně platí skript, který se spustí s služby ML na hraničním uzlu běží v rámci interpret R na tomto uzlu. Výjimky jsou tyto kroky, které je třeba zavolat funkci ScaleR s výpočetním kontextu, který je nastaven na Hadoop, Map Reduce (RxHadoopMR) nebo Spark (RxSpark). V takovém případě funkce spouští způsobem distribuovaných dat (úlohy) uzlů clusteru, které jsou spojeny s daty odkazuje. Další informace o možnosti různých výpočetního kontextu najdete v tématu [možnosti výpočetního kontextu pro služby ML na HDInsight](r-server-compute-contexts.md).
+Skripty jazyka R, které vytvoříte a spustíte, mohou kromě paralelních a distribuovaných rutin, které jsou k dispozici v knihovně škálování, použít libovolný z balíčků 8000 a open-source. Obecně platí, že skript, který se spouští se službami ML na hraničním uzlu, běží v překladači R na tomto uzlu. Výjimkou jsou kroky, které vyžadují volání funkce škálování s výpočetním kontextem, který je nastaven na RxHadoopMR (Hadoop map COMPUTE) nebo Spark (výpočetního rxspark). V takovém případě je funkce spouštěna v distribuovaném uzlu mezi těmito uzly dat (Task) clusteru, které jsou přidruženy k odkazovanému dat. Další informace o různých možnostech výpočetního kontextu najdete v tématu [Možnosti výpočetního kontextu pro služby ml v HDInsight](r-server-compute-contexts.md).
 
 ## <a name="operationalize-a-model"></a>Zprovoznění modelu
 
-Po dokončení modelování vašich dat je můžete model operacionalizovat za účelem provádění předpovědí pro nová data z Azure nebo v místním. Tento proces se označuje jako vyhodnocování. Hodnocení můžete udělat v HDInsight, Azure Machine Learning nebo místně.
+Po dokončení modelování dat můžete zprovoznění model a vytvořit předpovědi pro nová data z Azure nebo místního prostředí. Tento proces se označuje jako bodování. Bodování se dá udělat v HDInsight, Azure Machine Learning nebo v místním prostředí.
 
 ### <a name="score-in-hdinsight"></a>Skóre v HDInsight
 
-Ke stanovení skóre v HDInsight, zápis R funkce, která volá váš model k predikci pro nový soubor dat, která jste načetli do vašeho účtu úložiště. Uložte předpovědí zpátky do účtu úložiště. Spuštěním této rutiny na vyžádání na hraničním uzlu clusteru nebo pomocí naplánované úlohy.
+Pokud chcete dosáhnout skóre v HDInsight, napište funkci R, která volá váš model, aby předpovědi nový datový soubor, který jste načetli do svého účtu úložiště. Pak předpovědi uložte zpátky do účtu úložiště. Tuto rutinu můžete spustit na vyžádání na hraničním uzlu clusteru nebo pomocí naplánované úlohy.
 
 ### <a name="score-in-azure-machine-learning-aml"></a>Skóre v Azure Machine Learning (AML)
 
-Ke stanovení skóre pro používání Azure Machine Learning, používat balíček Azure Machine Learning R open source říká [AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) publikování modelu jako webová služba Azure. Pro usnadnění práce tento balíček je předem nainstalované na hraničním uzlu. Dále používat zařízení ve službě Azure Machine Learning k vytvoření uživatelského rozhraní pro webovou službu a pak volání webové služby podle potřeby pro vyhodnocení.
+Pokud chcete určit skóre pomocí Azure Machine Learning, použijte Open Source Azure Machine Learning R známý jako [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) k publikování modelu jako webové služby Azure. Pro usnadnění práce je tento balíček předem nainstalován na hraničním uzlu. Dále pomocí zařízení v Azure Machine Learning vytvořte uživatelské rozhraní webové služby a potom zavolejte webovou službu podle potřeby pro vyhodnocování.
 
-Pokud zvolíte tuto možnost, je nutné převést všechny objekty modelu ScaleR na objekty modelu ekvivalentní open source pro použití s webovou službou. Kromě funkcí ScaleR vynucení, použít například `as.randomForest()` pro modely na základě skupiny stromů, pro tento převod.
+Pokud zvolíte tuto možnost, musíte převést objekty modelu nástroje pro horizontální navýšení kapacity na ekvivalentní objekty Open Source modelu pro použití s webovou službou. Pro tento převod použijte funkce pro vynucení `as.randomForest()` škálování, například pro modely založené na kompletech.
 
-### <a name="score-on-premises"></a>Skóre v místním
+### <a name="score-on-premises"></a>Místní skóre
 
-Ke stanovení skóre v místním po vytvoření modelu, serializuje model v jazyce R, stáhněte ho, deserializovat ho a následně použít pro vyhodnocování nová data. Můžete stanovení skóre nových dat pomocí postupu popsaného v [skóre v HDInsight](#score-in-hdinsight) nebo s použitím [webových služeb](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
+Chcete-li po vytvoření modelu vyhodnotit místní skóre, můžete model serializovat v jazyce R, stáhnout jej, zrušit jeho serializaci a potom ho použít pro vyhodnocování nových dat. Můžete vyhodnotit nová data pomocí výše popsaného přístupu v tématu [skóre v HDInsight](#score-in-hdinsight) nebo pomocí [webových služeb](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
 
-## <a name="maintain-the-cluster"></a>Udržovat clusteru
+## <a name="maintain-the-cluster"></a>Údržba clusteru
 
-### <a name="install-and-maintain-r-packages"></a>Instalovat a udržovat balíčky jazyka R
+### <a name="install-and-maintain-r-packages"></a>Instalace a údržba balíčků R
 
-Většina balíčky R, které používáte povinnost na hraničním uzlu, od většinu kroků svoje skripty jazyka R spouštět existuje. Instalace dalších balíčků R na hraničním uzlu, můžete použít `install.packages()` metody v jazyce R.
+Většina balíčků R, které použijete, se na hraničním uzlu vyžaduje, protože tam běží většina kroků v skriptech jazyka R. Chcete-li nainstalovat další balíčky R na hraničním uzlu, můžete použít `install.packages()` metodu v jazyce R.
 
-Pokud právě používáte rutiny z knihovny ScaleR napříč clusterem, nepotřebujete obvykle k instalaci dalších balíčků R na datových uzlů. Však může být zapotřebí další balíčky pro podporu použití **rxExec** nebo **RxDataStep** spuštění na uzlech data.
+Pokud pouze používáte rutiny z knihovny škálování v clusteru, nemusíte většinou na datových uzlech instalovat další balíčky R. Je však možné, že budete potřebovat další balíčky pro podporu použití **rxExec** nebo **RxDataStep** provádění na datových uzlech.
 
-Po vytvoření clusteru, můžete v takových případech nainstalovat další balíčky pomocí akce skriptu. Další informace najdete v tématu [spravovat služby ML v clusteru HDInsight](r-server-hdinsight-manage.md).
+V takových případech lze další balíčky nainstalovat pomocí akce skriptu po vytvoření clusteru. Další informace najdete v tématu [Správa služeb ml v clusteru HDInsight](r-server-hdinsight-manage.md).
 
-### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Změňte nastavení paměti Apache Hadoop MapReduce
+### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Změnit nastavení Apache Hadoop paměti MapReduce
 
-Chcete-li změnit velikost paměti, která je k dispozici služby ML při spuštění úlohy MapReduce lze upravit clusteru. Pokud chcete upravit clusteru, použijte rozhraní Apache Ambari, která je k dispozici prostřednictvím okno Azure portal pro váš cluster. Pokyny ohledně toho, jak získat přístup k rozhraní Ambari, Uživatelskému pro váš cluster, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).
+Cluster se dá změnit tak, aby se změnila velikost paměti, která je dostupná pro služby ML při spuštění úlohy MapReduce. Pokud chcete upravit cluster, použijte uživatelské rozhraní Apache Ambari, které je dostupné v okně Azure Portal pro váš cluster. Pokyny k přístupu k uživatelskému rozhraní Ambari pro váš cluster najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).
 
-Je také možné změnit velikost paměti, která je k dispozici služby ML pomocí přepínače Hadoop ve volání **RxHadoopMR** následujícím způsobem:
+Velikost paměti, která je k dispozici pro služby ML, je také možné změnit pomocí přepínačů Hadoop ve volání **RxHadoopMR** následujícím způsobem:
 
     hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
 
 ### <a name="scale-your-cluster"></a>Škálování clusteru
 
-Existující cluster služby ML v HDInsight můžete vertikálně navýšit nebo snížit pomocí portálu. Vertikální navýšení kapacity, můžete získat další kapacitu, které byste mohli potřebovat pro větší úlohy související se zpracováním, nebo můžete vertikálně snížit kapacitu clusteru při nečinnosti. Pokyny o tom, jak škálovat cluster najdete v tématu [clusterů HDInsight spravovat](../hdinsight-administer-use-portal-linux.md).
+Existující cluster služeb ML v HDInsight se dá škálovat nahoru nebo dolů na portálu. Horizontálním škálováním můžete získat další kapacitu, kterou můžete potřebovat pro úlohy většího zpracování, nebo můžete škálovat cluster zpátky, pokud je nečinný. Pokyny, jak škálovat cluster, najdete v tématu [Správa clusterů HDInsight](../hdinsight-administer-use-portal-linux.md).
 
-### <a name="maintain-the-system"></a>Udržovat systému
+### <a name="maintain-the-system"></a>Údržba systému
 
-Základní virtuálních počítačů s Linuxem v clusteru služby HDInsight provádění údržby použít opravy operačního systému a dalších aktualizací špičku. Obvykle údržba se provádí na 3:30:00 (na základě místního času pro virtuální počítač) každé pondělí a čtvrtek. Aktualizace se provádějí v tak, že se nebudou mít vliv na více než čtvrtletí clusteru současně.
+Údržba pro použití oprav operačního systému a další aktualizace se provádí na základních virtuálních počítačích se systémem Linux v clusteru HDInsight mimo špičku. Údržba se obvykle provádí v 3:30 ráno (na základě místního času pro virtuální počítač) každé pondělí a čtvrtek. Aktualizace se provádí takovým způsobem, že neovlivňují více než čtvrtou dobu clusteru.
 
-Protože jsou redundantní hlavní uzly a všechny datové uzly se to týká, všechny úlohy, které jsou spuštěny během této doby může zpomalit. Ale měli stále spouštějí dokončení. Všechny vlastní software nebo místní data, která máte se zachovají v rámci těchto událostí údržby, pokud dojde k závažné chybě, která vyžaduje opětovné sestavení clusteru.
+Vzhledem k tomu, že hlavní uzly jsou redundantní a nejsou ovlivněny všechny datové uzly, mohou všechny úlohy, které jsou spuštěny během této doby, fungovat pomalu. Měli byste je ale pořád spouštět až po dokončení. Jakékoli vlastní software nebo místní data, která jste zachovali mezi tyto události údržby, pokud nedojde k závažné chybě, která vyžaduje opětovné sestavení clusteru.
 
-## <a name="ide-options-for-ml-services-on-hdinsight"></a>Možnosti integrovaného vývojového prostředí pro služby ML v HDInsight
+## <a name="ide-options-for-ml-services-on-hdinsight"></a>Možnosti IDE pro služby ML ve službě HDInsight
 
-Linux hraničnímu uzlu clusteru služby HDInsight je cílová zóna pro analýzy založené na jazyce R. Nejnovější verze HDInsight poskytují výchozí instalaci RStudio serveru na hraničním uzlu jako integrované vývojové prostředí založené na prohlížeči. Použití nástroje RStudio serveru jako integrované vývojové prostředí pro vývoj a spouštění skriptů R, může být výrazně zvýšit produktivitu práce než jen používání konzoly R.
+Hraniční uzel Linux clusteru HDInsight je cílová zóna pro analýzu založenou na jazyce R. Poslední verze HDInsight poskytují výchozí instalaci serveru RStudio na hraničním uzlu jako integrované vývojové prostředí (IDE) založené na prohlížeči. Použití serveru RStudio jako integrovaného vývojového prostředí (IDE) pro vývoj a spouštění skriptů R může výrazně zvýšit produktivitu, než jenom pomocí konzoly R.
 
-Kromě toho můžete nainstalovat desktopové prostředí IDE a používat ho pro přístup ke clusteru pomocí vzdálený výpočetní kontext MapReduce nebo Spark. Mezi možnosti patří společnosti Microsoft [nástroje R pro Visual Studio](https://www.visualstudio.com/features/rtvs-vs.aspx) (RTVS), RStudio a Walware uživatele založeného na zatmění [StatET](http://www.walware.de/goto/statet).
+Kromě toho můžete nainstalovat integrované vývojové prostředí (IDE) pro Desktop a použít ho pro přístup ke clusteru prostřednictvím použití vzdáleného výpočetního kontextu MapReduce nebo Sparku. Možnosti zahrnují [stav](http://www.walware.de/goto/statet)RTVS ( [nástroje R pro Visual Studio](https://www.visualstudio.com/features/rtvs-vs.aspx) Microsoft), RStudio a Walware na základě zatmění.
 
-Kromě toho můžete přístup ke konzole R na hraničním uzlu tak, že zadáte **R** příkazového řádku systému Linux po připojení přes SSH nebo PuTTY. Při použití rozhraní konzoly, je vhodné spustit textového editoru pro vývoj skriptů R v jiném okně a operace vyjmutí a vložení části skriptu do konzoly R podle potřeby.
+Kromě toho můžete ke konzole R na hraničním uzlu přejít zadáním **R** na příkazovém řádku systému Linux po připojení přes protokol SSH nebo výstup. Při použití rozhraní konzoly je vhodné spustit textový editor pro vývoj skriptů R v jiném okně a podle potřeby vyjímat a vkládat oddíly skriptu do konzoly jazyka R.
 
 ## <a name="pricing"></a>Ceny
 
-Ceny, které jsou spojeny s clusterem HDInsight služby ML jsou strukturovaná podobně jako na ceny pro další typy clusterů HDInsight. Název, data a hraničních uzlů, a uveďte zdvih hodinu jádra jsou založené na velikosti základních virtuálních počítačů. Další informace najdete v tématu [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+Ceny, které jsou přidružené k clusteru HDInsight služby ML Services, jsou strukturované podobně jako ceny pro ostatní typy clusterů HDInsight. Jsou založené na velikosti příslušných virtuálních počítačů v názvech, datech a hraničních uzlech, a to s přidáním oprotia na základě základní hodiny. Další informace najdete v tématu [ceny služby HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o tom, jak používat služby ML na clusterech HDInsight, naleznete v následujících tématech:
+Další informace o tom, jak používat služby ML v clusterech HDInsight, najdete v následujících tématech:
 
-* [Spustit skript R v clusteru služby ML v Azure HDInsight pomocí přihlašovací stránce RStudio serveru](machine-learning-services-quickstart-job-rstudio.md)
+* [Spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí serveru RStudio](machine-learning-services-quickstart-job-rstudio.md)
 * [Možnosti výpočetního kontextu pro cluster služby ML Services v HDInsight](r-server-compute-contexts.md)
-* [Možnosti úložiště pro cluster služby ML v HDInsight](r-server-storage.md)
+* [Možnosti úložiště pro cluster služeb ML v HDInsight](r-server-storage.md)

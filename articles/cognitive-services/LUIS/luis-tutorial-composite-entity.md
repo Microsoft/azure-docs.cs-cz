@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 610a7ee677771777c9bd88e5747ff766f284ae3e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 698635b3f216c556e1e36a033703b8786a028e38
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637913"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946130"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Kurz: Seskupení a extrakce souvisejících dat
 V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
@@ -198,7 +198,7 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 * [Testování na portálu LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu vytvořili složený entity k zapouzdření existující entity. To umožňuje klientské aplikaci najít skupinu souvisejících dat v různých datových typů, chcete-li pokračovat v konverzaci. Klientská aplikace pro tuto aplikaci lidských zdrojů může požádat, jaký den a čas přechodu musí začínat a končit. Může se také zeptat na další logistiku přesunutí, jako je třeba fyzický telefon. 
 

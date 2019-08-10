@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s cloudem Cisco | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Cisco cloudu.
+title: 'Kurz: Azure Active Directory integrace s Cisco cloudem | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Cisco Cloud.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,49 +15,49 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251d3738cb5b18cfe98878b857b91a3689fb81a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9aa77b539d91d328736dca2b0f7d040f6b4b5f5
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105622"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944754"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Kurz: Integrace Azure Active Directory s cloudem Cisco
+# <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Kurz: Azure Active Directory integrace s Cisco cloudem
 
-V tomto kurzu se dozvíte, jak integrovat Cisco cloudu s Azure Active Directory (Azure AD).
-Integrace Cisco cloudu s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat službu Cisco Cloud s Azure Active Directory (Azure AD).
+Integrování Cisco cloudu s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup do cloudu Cisco.
-* Uživatelům se automaticky přihlášeni ke cloudu Cisco (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k Cisco cloudu.
+* Uživatelům můžete povolit, aby se automaticky přihlásili ke službě Cisco Cloud (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Cisco cloudu, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s využitím cloudu Cisco budete potřebovat tyto položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Cisco cloudu jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Předplatné Cisco Cloud s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Cisco Cloud podporuje **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
+* Cisco Cloud podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 
-## <a name="adding-cisco-cloud-from-the-gallery"></a>Přidání Cisco Cloud z Galerie
+## <a name="adding-cisco-cloud-from-the-gallery"></a>Přidání cloudu Cisco z Galerie
 
-Ke konfiguraci integrace Cisco Cloud do služby Azure AD, budete muset přidat Cisco Cloud z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Cisco cloudu do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat Cisco Cloud z galerie.
 
-**Přidání Cisco Cloud z galerie, postupujte následovně:**
+**Pokud chcete přidat Cisco Cloud z Galerie, proveďte následující kroky:**
 
 1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
@@ -65,96 +65,96 @@ Ke konfiguraci integrace Cisco Cloud do služby Azure AD, budete muset přidat C
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Cisco cloudu**vyberte **Cisco cloudu** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Cisco Cloud**, vyberte **Cisco Cloud** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Cisco cloudu v seznamu výsledků](common/search-new-app.png)
+     ![Cloud Cisco v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, konfigurace a testování Azure AD jednotné přihlašování s Cisco cloudu založená na uživateli testu **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelů v cloudu Cisco.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Cisco cloudu na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v cloudu Cisco.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Cisco cloudu, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD pomocí Cisco cloudu, musíte dokončit tyto stavební bloky:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Cisco cloudu Single Sign-On](#configure-cisco-cloud-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Konfigurace jednotného přihlašování Cisco cloudu](#configure-cisco-cloud-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Cisco Cloud](#create-cisco-cloud-test-user)**  – Pokud chcete mít protějšek Britta Simon Cisco cloudu, který je propojený s Azure AD reprezentace uživatele.
+5. **[Vytvořte uživatele Cisco Cloud test](#create-cisco-cloud-test-user)** , abyste měli protějšek Britta Simon v rámci Cisco cloudu, který je propojený s reprezentací uživatele v Azure AD.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s využitím cloudu Cisco, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Cisco cloudu, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Cisco cloudu** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace s **cloudovou aplikací Cisco** vyberte jednotné přihlašování.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Cisco Cloudová doména a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Informace o jednotném přihlašování Cisco cloudové domény a adresy URL](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `<subdomain>.cisco.com`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`<subdomain>.cisco.com`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<subdomain>.cisco.com/sp/ACS.saml2`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.cisco.com/sp/ACS.saml2`
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Cisco Cloudová doména a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
+    ![Informace o jednotném přihlašování Cisco cloudové domény a adresy URL](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<subdomain>.cloudapps.cisco.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.cloudapps.cisco.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory cloudu klienta Cisco](mailto:cpr-ops@cisco.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro cloudové klienty Cisco](mailto:cpr-ops@cisco.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Cisco cloudové aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikonu otevřete dialogové okno atributy uživatele.
+6. Vaše cloudová aplikace Cisco očekává kontrolní výrazy SAML v konkrétním formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
     ![image](common/edit-attribute.png)
 
-7. Kromě toho výše Cisco cloudové aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
+7. Kromě výše očekává cloudová aplikace Cisco několik atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
     | Name | Zdrojový atribut|
     | -----------| ------------|
-    | Země    | user.country |
-    | Společnosti    | user.companyname |
+    | krajin    | user.country |
+    | Společnosti    | User. CompanyName |
     | | |
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Nechte **Namespace** prázdné.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. Vyberte zdroj jako **atribut**.
+    d. Jako **atribut**vyberte zdroj.
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
     f. Klikněte na tlačítko **Ok**
 
     g. Klikněte na **Uložit**.
 
-8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
+8. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-cisco-cloud-single-sign-on"></a>Konfigurace Cisco cloudu jednotného přihlašování
+### <a name="configure-cisco-cloud-single-sign-on"></a>Konfigurace jednotného přihlašování Cisco Cloud
 
-Ke konfiguraci jednotného přihlašování na **Cisco cloudu** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [tým podpory Cisco Cloud](mailto:cpr-ops@cisco.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **Cisco cloudu** , musíte poslat **adresu URL federačních metadat aplikace** [týmu podpory Cisco Cloud Support](mailto:cpr-ops@cisco.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -166,56 +166,56 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
 3. Ve vlastnosti uživatele proveďte následující kroky.
 
     ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že uděluje přístup do cloudu Cisco.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Cisco cloudu.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Cisco cloudu**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Cisco Cloud**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Cisco cloudu**.
+2. V seznamu aplikace vyberte **Cisco Cloud**.
 
-    ![Odkaz Cisco cloudu v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na Cloud Cisco v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
     ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
 5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-cisco-cloud-test-user"></a>Vytvoření cloudu Cisco testovacího uživatele
+### <a name="create-cisco-cloud-test-user"></a>Vytvořit uživatele Cisco Cloud test
 
-V této části vytvořte uživatele Britta Simon v cloudu Cisco. Práce s [tým podpory Cisco Cloud](mailto:cpr-ops@cisco.com) přidat uživatele na platformě Cisco cloudu. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v rámci Cisco cloudu. Pokud chcete přidat uživatele na cloudovou platformu Cisco, pracujte s [týmem podpory Cisco Cloud Support](mailto:cpr-ops@cisco.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Cisco Cloud na přístupovém panelu, můžete by měl být automaticky přihlášeni do cloudu Cisco, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Cloud Cisco, měli byste být automaticky přihlášení do cloudu Cisco, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

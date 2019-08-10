@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 08/08/2019
 ms.author: anroth
-ms.openlocfilehash: e79dcef1bdf415c13dafe31e925b08a4bd0f0cbf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ef5e1d7bb2c5b4404ce1a43bc719b7b5a242b1c7
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564255"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946249"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision .NET SDK
 
@@ -34,7 +34,7 @@ K napsání aplikace v .NET, která využívá službu Custom Vision, budete pot
 
 Naklonujte nebo si stáhněte projekt [Ukázky pro Cognitive Services v .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples). Přejděte do složky **CustomVision/ImageClassification** a otevřete soubor _ImageClassification.csproj_ v sadě Visual Studio.
 
-Tento projekt sady Visual Studio vytvoří nový projekt služby Custom Vision s názvem __My New Project__, který bude přístupný na [webu služby Custom Vision](https://customvision.ai/). Potom nahraje obrázky k trénování a testování klasifikátoru. V tomto projektu je účelem klasifikátoru určit, jestli je strom __jedlovec__ nebo __sakura__.
+Tento projekt sady Visual Studio vytvoří nový projekt služby Custom Vision s názvem __My New Project__ , který bude přístupný na [webu služby Custom Vision](https://customvision.ai/). Potom nahraje obrázky k trénování a testování klasifikátoru. V tomto projektu je účelem klasifikátoru určit, jestli je strom __jedlovec__ nebo __sakura__ .
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -52,7 +52,7 @@ Následující řádky kódu provádějí primární funkce projektu.
 
 ### <a name="create-a-new-custom-vision-service-project"></a>Vytvoření nového projektu služby Custom Vision
 
-Vytvořený projekt se zobrazí na [webu služby Custom Vision](https://customvision.ai/), který jste navštívili dříve. 
+Vytvořený projekt se zobrazí na [webu služby Custom Vision](https://customvision.ai/), který jste navštívili dříve. Chcete-li určit další možnosti při vytváření projektu, viz metoda [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) (vysvětlení najdete v Průvodci vytvořením webového portálu [třídění](getting-started-build-a-classifier.md) ).   
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=32-34)]
 
@@ -62,7 +62,7 @@ Vytvořený projekt se zobrazí na [webu služby Custom Vision](https://customvi
 
 ### <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
 
-Součástí tohoto projektu jsou i obrázky. Odkazuje se na ně v metodě **LoadImagesFromDisk** v souboru _Program.cs_.
+Součástí tohoto projektu jsou i obrázky. Odkazuje se na ně v metodě **LoadImagesFromDisk** v souboru _Program.cs_ . Do jedné dávky můžete nahrát až 64 imagí.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=40-55)]
 
@@ -136,7 +136,7 @@ Pak můžete ověřit správné označení testovacího obrázku (ve složce **I
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Právě jste viděli, jak se dají jednotlivé kroky procesu klasifikace obrázků provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější.
 

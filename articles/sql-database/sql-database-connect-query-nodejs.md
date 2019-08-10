@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.openlocfilehash: 4a99acaaae0c0efee61d97605a81d74549e02509
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 72e509a9a7f820c26895bdfac9216b0373729f6c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569210"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947099"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Rychlý start: Použití Node.js k dotazování databáze Azure SQL
 
@@ -56,13 +56,13 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Přejít na stránku **databáze SQL** nebo **spravované instance SQL** .
 
 3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro izolovanou databázi nebo plně kvalifikovaný název serveru vedle možnost **hostitel** pro spravovanou instanci. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** . 
 
 ## <a name="create-the-project"></a>Vytvoření projektu
 
-Otevřete příkazový řádek a vytvořte složku *sqltest*. Přejděte do složky, kterou jste vytvořili, a spusťte následující příkaz:
+Otevřete příkazový řádek a vytvořte složku *sqltest*. Otevřete složku, kterou jste vytvořili, a spusťte následující příkaz:
 
   ```bash
   npm init -y

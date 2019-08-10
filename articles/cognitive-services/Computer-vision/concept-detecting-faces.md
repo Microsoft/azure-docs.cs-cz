@@ -1,7 +1,7 @@
 ---
-title: Rozpoznání tváře - pro počítačové zpracování obrazu
+title: Detekce tváře – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Další koncepty související s funkce rozpoznávání tváře z rozhraní API pro počítačové zpracování obrazu.
+description: Přečtěte si o konceptech souvisejících s funkcí detekce obličeje rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 699192aba87bb009d7dbddddcc9579883bb71db9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3675acf59c6889dd00c8f26089f509bbcd3c724e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368105"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945248"
 ---
-# <a name="face-detection-with-computer-vision"></a>Rozpoznávání tváře se pro počítačové zpracování obrazu
+# <a name="face-detection-with-computer-vision"></a>Rozpoznávání tváře pomocí Počítačové zpracování obrazu
 
-Počítačové zpracování obrazu můžete detekovat lidské tváře v obrázku a generovat věk, pohlaví a rámeček pro každé zjištěné rozpoznávání tváře. 
+Počítačové zpracování obrazu dokáže detekovat lidské obličeje v rámci obrázku a generovat věk, pohlaví a obdélník pro každou zjištěnou plochu. 
 
 > [!NOTE]
-> Tato funkce také nabízí Azure [pro rozpoznávání tváře](/azure/cognitive-services/face/) služby. Zobrazit tuto alternativu pro podrobnější analýzu, včetně identifikace tváře pro rozpoznávání tváře a představovat zjišťování. 
+> Tuto funkci nabízí i služba Azure [Face](/azure/cognitive-services/face/) . Viz Tato alternativa pro podrobnější analýzu obličeje, včetně identifikace obličeje a detekce pozice. 
 
-## <a name="face-detection-examples"></a>Příklady rozpoznávání tváře
+## <a name="face-detection-examples"></a>Příklady detekce obličeje
 
-Následující příklad ukazuje odpověď JSON vrátil pro počítačové zpracování obrazu pro image obsahující jeden lidské tváře.
+Následující příklad ukazuje odpověď JSON vrácenou Počítačové zpracování obrazu pro obrázek obsahující jednu lidskou plochu.
 
 ![Vizuální analýza ženy na střeše](./Images/woman_roof_face.png)
 
@@ -54,9 +54,9 @@ Následující příklad ukazuje odpověď JSON vrátil pro počítačové zprac
 }
 ```
 
-Následující příklad ukazuje odpověď JSON pro image obsahující několik lidských tváří.
+Následující příklad ukazuje odpověď JSON vrácenou pro obrázek obsahující více lidských plošek.
 
-![Pro zpracování obrazu analyzovat rodinných fotografií pro rozpoznávání tváře](./Images/family_photo_face.png)
+![Fotografická analýza rodiny](./Images/family_photo_face.png)
 
 ```json
 {
@@ -113,4 +113,4 @@ Následující příklad ukazuje odpověď JSON pro image obsahující několik 
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [analyzovat Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) referenční dokumentaci se dozvíte další informace o tom, jak používat funkce rozpoznávání tváře.
+Další informace o tom, jak používat funkci detekce obličeje, najdete v referenční dokumentaci k [analýze obrázku](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .

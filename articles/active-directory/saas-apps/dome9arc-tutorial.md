@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s zkontrolujte bodu CloudGuard Dome9 oblouk | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a zkontrolujte bodu CloudGuard Dome9 oblouk.
+title: 'Kurz: Azure Active Directory integrace s Dome9em Check Point CloudGuard | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Check Point CloudGuard Dome9 ARC.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,212 +16,212 @@ ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdaaab8257d3a79130902e1ba0466f9cf15484f4
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 240d962d56e4a2dc0758f3170c51b343d22ef98d
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147141"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944579"
 ---
-# <a name="tutorial-integrate-check-point-cloudguard-dome9-arc-with-azure-active-directory"></a>Kurz: Kontrola bod CloudGuard Dome9 oblouk integrovat Azure Active Directory
+# <a name="tutorial-integrate-check-point-cloudguard-dome9-arc-with-azure-active-directory"></a>Kurz: Integrace kontrolního bodu CloudGuard Dome9 ARC s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat zkontrolujte bodu CloudGuard Dome9 oblouk s Azure Active Directory (Azure AD). Při integraci zkontrolujte bodu CloudGuard Dome9 oblouk s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat kontrolní bod CloudGuard Dome9 ARC pomocí Azure Active Directory (Azure AD). Když integrujete službu Check Point CloudGuard Dome9 ARC s Azure AD, můžete:
 
-* V Azure AD, který má přístup k zkontrolujte oblouk Dome9 CloudGuard bod ovládacím prvku.
-* Aby uživatelé mohli být automaticky přihlášeni zkontrolujte bodu CloudGuard Dome9 oblouk s jejich účty Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup ke kontrolnímu bodu CloudGuard Dome9 ARC.
+* Umožněte uživatelům, aby se automaticky přihlásili k kontrolnímu bodu CloudGuard Dome9 ARC pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Zkontrolujte, že bod CloudGuard Dome9 oblouk jednotné přihlašování (SSO) povolené předplatné.
+* Check Point CloudGuard Dome9 ARC pro jednotné přihlašování (SSO) s povoleným odběrem.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Zkontrolujte oblouk Dome9 CloudGuard bod podporuje **SP a zprostředkovatele identity** jednotné přihlašování zahájené.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Check Point CloudGuard Dome9 ARC podporuje **SP a IDP** iniciované jednotné přihlašování.
 
-## <a name="adding-check-point-cloudguard-dome9-arc-from-the-gallery"></a>Přidání zkontrolujte bodu CloudGuard Dome9 oblouk z Galerie
+## <a name="adding-check-point-cloudguard-dome9-arc-from-the-gallery"></a>Přidání CloudGuardu kontrolního bodu Dome9 ARC z Galerie
 
-Pokud chcete nakonfigurovat integraci zkontrolujte bodu CloudGuard Dome9 oblouku do služby Azure AD, budete muset přidat z Galerie zkontrolujte bodu CloudGuard Dome9 oblouk na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Check Point CloudGuard Dome9 ARC do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat z Galerie položku Check Point CloudGuard Dome9 ARC.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **zkontrolujte bodu CloudGuard Dome9 oblouk** do vyhledávacího pole.
-1. Vyberte **zkontrolujte bodu CloudGuard Dome9 oblouk** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte text **Check Point cloudguard Dome9 ARC** .
+1. Z panelu výsledků vyberte **příkaz Check Point cloudguard Dome9 ARC** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s zkontrolujte bodu CloudGuard Dome9 oblouk pomocí testovacího uživatele volá **B.Simon**. Pro jednotné přihlašování pro práci budete muset navázat vztah odkazu mezi uživatele služby Azure AD a související uživatel v zkontrolovat bodu CloudGuard Dome9 oblouk.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí služby Check Point CloudGuard Dome9 ARC pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v CloudGuard Dome9 ARC v kontrolním bodě.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s zkontrolujte bodu CloudGuard Dome9 oblouk, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s CloudGuard Dome9em Check Point, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace zkontrolujte bodu CloudGuard Dome9 oblouk](#configure-check-point-cloudguard-dome9-arc)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s B.Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující B.Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele zkontrolujte bodu CloudGuard Dome9 oblouk](#create-check-point-cloudguard-dome9-arc-test-user)**  mít protějšek B.Simon zkontrolujte bodu CloudGuard Dome9 Arc, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace Check Point cloudguard Dome9 ARC](#configure-check-point-cloudguard-dome9-arc)** ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
+4. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, **[přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** .
+5. **[Vytvořte testovacího uživatele cloudguard Dome9 ARC](#create-check-point-cloudguard-dome9-arc-test-user)** , aby měl protějšek B. Simon v rámci kontrolního bodu cloudguard Dome9, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **zkontrolujte bodu CloudGuard Dome9 oblouk** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování** .
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **Check Point cloudguard Dome9 ARC** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://secure.dome9.com/`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://secure.dome9.com/`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://secure.dome9.com/sso/saml/yourcompanyname`
-
-    > [!NOTE]
-    > Hodnota názvu vaší společnosti vybere v dome9 portál pro správu, který je vysvětlen později v tomto kurzu.
-
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
-
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://secure.dome9.com/sso/saml/<yourcompanyname>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://secure.dome9.com/sso/saml/yourcompanyname`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL adresy URL odpovědi a přihlašování. Kontakt [tým podpory zkontrolujte bodu CloudGuard Dome9 oblouk klienta](mailto:Dome9@checkpoint.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnotu názvu vaší společnosti vyberete na portálu pro správu Dome9, který je vysvětlen dále v tomto kurzu.
 
-6. Aplikace Check Point CloudGuard Dome9 oblouk očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikonu otevřete dialogové okno atributy uživatele.
+5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
+
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://secure.dome9.com/sso/saml/<yourcompanyname>`
+
+    > [!NOTE]
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL. Pro získání těchto hodnot se [tým podpory cloudguard Dome9 pro klienty podpory kontaktů Check Point](mailto:Dome9@checkpoint.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+
+6. Aplikace Check Point CloudGuard Dome9 ARC očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
     ![image](common/edit-attribute.png)
 
-7. Kromě toho výše zkontrolujte bodu CloudGuard Dome9 oblouk aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka: 
+7. Kromě výše je aplikace Check Point CloudGuard Dome9 ARC očekává, že se v odpovědi SAML vrátí několik atributů zpátky. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce: 
 
     | Name |  Zdrojový atribut|
     | ---------------| --------------- |
-    | memberof | user.assignedroles |
+    | memberOf | user.assignedroles |
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Nechte **Namespace** prázdné.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. Vyberte zdroj jako **atribut**.
+    d. Jako **atribut**vyberte zdroj.
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
     f. Klikněte na tlačítko **Ok**
 
     g. Klikněte na **Uložit**.
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **certifikát (Base64)** a vyberte **Stáhnout** stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-1. Na **nastavení zkontrolujte bodu CloudGuard Dome9 oblouk** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
+1. V části **Nastavení Dome9 ARC cloudguard kontrolního bodu** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+   ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-check-point-cloudguard-dome9-arc"></a>Nakonfigurovat zaškrtnutí bodu CloudGuard Dome9 oblouk
+### <a name="configure-check-point-cloudguard-dome9-arc"></a>Konfigurace CloudGuard Dome9 ARC kontrolního bodu
 
-1. V okně jiný webový prohlížeč přihlaste jako správce serveru vaší společnosti zkontrolujte bodu CloudGuard Dome9 oblouk.
+1. V jiném okně webového prohlížeče se přihlaste do vaší služby Check Point CloudGuard Dome9 ARC jako správce.
 
-2. Klikněte na **nastavení profilu** v pravém horním rohu a pak klikněte na tlačítko **nastavení účtu**. 
+2. Klikněte na **nastavení profilu** v pravém horním rohu a pak klikněte na **Nastavení účtu**. 
 
-    ![Zkontrolujte konfiguraci bodu CloudGuard Dome9 oblouk](./media/dome9arc-tutorial/configure1.png)
+    ![Konfigurace ARC kontrolního bodu CloudGuard Dome9](./media/dome9arc-tutorial/configure1.png)
 
-3. Přejděte do **jednotného přihlašování** a potom klikněte na tlačítko **povolit**.
+3. Přejděte na **jednotné přihlašování** a pak klikněte na **Povolit**.
 
-    ![Zkontrolujte konfiguraci bodu CloudGuard Dome9 oblouk](./media/dome9arc-tutorial/configure2.png)
+    ![Konfigurace ARC kontrolního bodu CloudGuard Dome9](./media/dome9arc-tutorial/configure2.png)
 
 4. V části Konfigurace jednotného přihlašování proveďte následující kroky:
 
-    ![Zkontrolujte konfiguraci bodu CloudGuard Dome9 oblouk](./media/dome9arc-tutorial/configure3.png)
+    ![Konfigurace ARC kontrolního bodu CloudGuard Dome9](./media/dome9arc-tutorial/configure3.png)
 
-    a. Zadejte název společnosti **ID účtu** textového pole. Tato hodnota má být použita v adrese URL odpovědi uvedených na webu Azure Portal **základní konfiguraci SAML** oddílu.
+    a. Do textového pole **ID účtu** zadejte název společnosti. Tato hodnota se použije v adrese URL odpovědi uvedené v sekci **Konfigurace SAML Azure Portal Basic** .
 
-    b. V **vystavitele** textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z webu Azure Portal.
+    b. Do textového pole vystavitele vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z formuláře Azure Portal.
 
-    c. V **adresu url koncového bodu Idp** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z webu Azure Portal.
+    c. Do textového pole **Adresa URL koncového bodu IDP** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali, a formu Azure Portal.
 
-    d. Otevřete váš stažený certifikát kódovaný v Base64 v poznámkovém bloku, zkopírujte obsah ho do schránky a a vložte ho do **certifikát X.509** textového pole.
+    d. Otevřete stažený certifikát kódovaný v kódování Base64 v programu Poznámkový blok, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikát X. 509** .
 
     e. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá B.Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte B.Simon používat jednotné přihlašování Azure díky udělení přístupu zkontrolujte bodu CloudGuard Dome9 oblouk.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k CloudGuard Dome9 ARC pro Check Point.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **zkontrolujte bodu CloudGuard Dome9 oblouk**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **Check Point cloudguard Dome9 ARC**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **B.Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-check-point-cloudguard-dome9-arc-test-user"></a>Vytvořit testovacího uživatele zkontrolujte bodu CloudGuard Dome9 oblouk
+### <a name="create-check-point-cloudguard-dome9-arc-test-user"></a>Vytvořit testovacího uživatele CloudGuard Dome9 ARC pro kontrolní bod
 
-Povolit Azure AD uživatelům umožní přihlásit zkontrolujte oblouk Dome9 CloudGuard bod, musí být poskytnuty do aplikace. Zkontrolujte oblouk Dome9 CloudGuard bod podporuje just-in-time zřizování, ale to fungovalo správně, uživatel muset vybrat konkrétní **Role** a přiřaďte jiný uživatel.
+Pokud chcete uživatelům Azure AD povolit, aby se přihlásili ke službě Check Point CloudGuard Dome9 ARC, musí se zřídit do aplikace. Kontrolní bod CloudGuard Dome9 ARC podporuje zřizování za běhu, ale aby fungovalo správně, musí uživatel vybrat konkrétní **roli** a přiřadit ji uživateli.
 
    >[!Note]
-   >Pro **Role** vytváření a další podrobnosti o kontaktu [tým podpory zkontrolujte bodu CloudGuard Dome9 oblouk klienta](mailto:Dome9@checkpoint.com).
+   >Pro vytváření **rolí** a další podrobnosti kontaktuje [tým podpory cloudguard Dome9 pro klienty podpory](mailto:Dome9@checkpoint.com).
 
-**Zřídit účet uživatele ručně, proveďte následující kroky:**
+**Chcete-li zřídit uživatelský účet ručně, proveďte následující kroky:**
 
-1. Přihlaste se k webu společnosti zkontrolujte bodu CloudGuard Dome9 oblouk jako správce.
+1. Přihlaste se ke svému CloudGuardmu webu společnosti Check Point jako správce.
 
-2. Klikněte na **uživatelů a rolí** a potom klikněte na tlačítko **uživatelé**.
+2. Klikněte na **role uživatelé &** a potom klikněte na **Uživatelé**.
 
     ![Přidat zaměstnance](./media/dome9arc-tutorial/user1.png)
 
-3. Klikněte na tlačítko **přidat uživatele**.
+3. Klikněte na **Přidat uživatele**.
 
     ![Přidat zaměstnance](./media/dome9arc-tutorial/user2.png)
 
-4. V **vytvořit uživatele** části, proveďte následující kroky:
+4. V části **vytvořit uživatele** proveďte následující kroky:
 
     ![Přidat zaměstnance](./media/dome9arc-tutorial/user3.png)
 
-    a. V **e-mailu** , jako je textové pole, typ e-mailu uživatele B.Simon@contoso.com.
+    a. Do textového pole **e-mailu** zadejte e-maily uživatele jako B.Simon@contoso.com.
 
-    b. V **křestní jméno** textového pole zadejte jméno uživatele, jako jsou služby serveru B.
+    b. Do textového pole **název** zadejte jméno uživatele jako B.
 
-    c. V **příjmení** textového pole zadejte příjmení uživatele, jako je Simon.
+    c. Do textového pole **příjmení** zadejte příjmení uživatele, jako je Simon.
 
-    d. Ujistěte se, **jednotného přihlašování uživatele** jako **na**.
+    d. Proveďte **uživatele jednotného přihlašování** .
 
-    e. Klikněte na tlačítko **vytvořit**.
+    e. Klikněte na **vytvořit**.
 
 ### <a name="test-sso"></a>Test SSO
 
-Při výběru dlaždice zkontrolujte bodu CloudGuard Dome9 oblouk na přístupovém panelu, vám by měl být automaticky přihlášeni ke zkontrolujte bodu CloudGuard Dome9 oblouku u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici CloudGuard (kontrolní bod) Dome9 ARC, měli byste se automaticky přihlásit k CloudGuard Dome9 ARC, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

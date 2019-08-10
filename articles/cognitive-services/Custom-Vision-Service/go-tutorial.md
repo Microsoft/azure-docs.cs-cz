@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: f21ab53b3beeead8cbd4ba781cd54b23420661f0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ed49d5763db4c9ffcb11d24dfa835c899d76aeec
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561006"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946189"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision jít SDK
 
@@ -48,7 +48,7 @@ Vytvořte nový soubor s názvem *Sample. přejít* do preferovaného adresáře
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
-Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného.
+Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Chcete-li určit další možnosti při vytváření projektu, viz metoda [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) (vysvětlení najdete v Průvodci vytvořením webového portálu [třídění](getting-started-build-a-classifier.md) ).
 
 ```go
 import(
@@ -98,7 +98,7 @@ cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese
 
 ### <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
 
-Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Na základě toho, kam jste stáhli projekt ukázek sady Cognitive Services jít na sadu SDK, budete muset zadat cestu k adrese URL základního obrázku.
+Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Do jedné dávky můžete nahrát až 64 imagí.
 
 > [!NOTE]
 > Budete muset změnit cestu k obrázkům na základě toho, kam jste dříve stáhli projekt ukázek sady Cognitive Services jít na sadu SDK.
@@ -194,7 +194,7 @@ Pak můžete ověřit správné označení testovacího obrázku (ve složce v *
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Právě jste viděli, jak se dají jednotlivé kroky procesu klasifikace obrázků provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Beta Zscalerem | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscalerem Beta.
+title: 'Kurz: Integrace s Azure Active Directory Zscaler Beta | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscaler Beta.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,296 +16,296 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07341c1ad30f1242bdff430826fdc82c45e09dac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086073"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943296"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Kurz: Integrace Azure Active Directory s Zscaler Beta
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Kurz: Integrace Azure Active Directory s Zscaler Beta verzí
 
-V tomto kurzu se dozvíte, jak integrovat Beta Zscalerem se službou Azure Active Directory (Azure AD).
-Při integraci Zscalerem Beta s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat Zscaler Beta s Azure Active Directory (Azure AD).
+Když integrujete Zscaler Beta s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k Zscalerem Beta.
-* Umožní uživatelům být automaticky přihlášeni k Zscalerem Beta pomocí jejich účtů služby Azure AD. Toto řízení přístupu se nazývá jednotné přihlašování (SSO).
-* Správa účtů na jednom místě pomocí webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k Zscaler Beta.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Zscaler Beta pomocí svých účtů Azure AD. Toto řízení přístupu se nazývá jednotné přihlašování (SSO).
+* Spravujte své účty v jednom centrálním umístění pomocí Azure Portal.
 
-Další informace o softwaru jako integraci služby (SaaS) aplikací s Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD se Zscalerem Beta, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s Zscaler Beta budete potřebovat následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Beta verze Zscalerem odběr, který používá jednotné přihlašování.
+* Předplatné Zscaler Beta, které používá jednotné přihlašování.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Beta Zscalerem podporuje jednotné přihlašování iniciovaného Zprostředkovatelem přihlašování.
-* Beta verze Zscalerem podporuje zřizování uživatelů just-in-time.
+* Zscaler Beta podporuje jednotné přihlašování iniciované v SP.
+* Zscaler Beta podporuje zřizování uživatelů za běhu.
 
-## <a name="add-zscaler-beta-from-the-azure-marketplace"></a>Přidat Zscalerem Beta na webu Azure Marketplace
+## <a name="add-zscaler-beta-from-the-azure-marketplace"></a>Přidat Zscaler Beta z Azure Marketplace
 
-Pokud chcete nakonfigurovat integraci Zscalerem Beta do služby Azure AD, přidejte Zscalerem Beta z Azure Marketplace si na seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Zscaler Beta na Azure AD, přidejte Zscaler Beta z Azure Marketplace do seznamu spravovaných aplikací SaaS.
 
-Chcete-li přidat Zscalerem Beta z Azure Marketplace, postupujte takto.
+Chcete-li přidat Zscaler Beta z Azure Marketplace, postupujte podle následujících kroků.
 
-1. V [webu Azure portal](https://portal.azure.com), v levém navigačním podokně vyberte **Azure Active Directory**.
+1. V [Azure Portal](https://portal.azure.com)v levém navigačním podokně vyberte **Azure Active Directory**.
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+    ![Azure Active Directory – tlačítko](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, **novou aplikaci** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, vyberte v horní části dialogového okna možnost **Nová aplikace** .
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Zscalerem Beta**. Vyberte **Zscalerem Beta** z panelu výsledek a pak vyberte **přidat**.
+4. Do vyhledávacího pole zadejte **Zscaler Beta**. Z panelu výsledek vyberte **Zscaler Beta** a pak vyberte **Přidat**.
 
-     ![Beta verze Zscalerem v seznamu výsledků](common/search-new-app.png)
+     ![Zscaler Beta v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurujete a test Azure AD jednotné přihlašování s Beta Zscalerem podle testovacího uživatele Britta Simon.
-Pro jednotné přihlašování pro práci vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatelské ve verzi Beta Zscalerem.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Zscaler Beta na základě testovacího uživatele Britta Simon.
+Pokud chcete jednotné přihlašování pracovat, vytvořte vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Zscaler Beta.
 
-Nakonfigurovat a otestovat Azure AD jednotného přihlašování se Zscalerem Beta, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Zscaler Beta, dokončete následující stavební bloky:
 
-- [Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on) aby uživatelé mohli tuto funkci používat.
-- [Konfigurace Zscalerem Beta jednotného přihlašování](#configure-zscaler-beta-single-sign-on) ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-- [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) k otestování služby Azure AD jednotné přihlašování s Britta Simon.
-- [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) umožňující Britta Simon používat Azure AD jednotného přihlašování.
-- [Vytvoření zkušebního uživatele Zscalerem Beta](#create-a-zscaler-beta-test-user) mít protějšek Britta Simon Zscalerem Beta, který je propojený s Azure AD zastoupení uživatele.
-- [Otestovat jednotné přihlašování](#test-single-sign-on) ověřit, jestli funguje v konfiguraci.
+- [Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on) , aby mohli vaši uživatelé používat tuto funkci.
+- [Nakonfigurujte jednotné přihlašování Zscaler Beta](#configure-zscaler-beta-single-sign-on) pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+- [Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user) pro testování jednotného přihlašování Azure AD pomocí Britta Simon.
+- [Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user) , aby mohl Britta Simon používat jednotné přihlašování Azure AD.
+- [Vytvořte uživatele Zscaler Beta test](#create-a-zscaler-beta-test-user) , který bude mít protějšek Britta Simon v Zscaler Beta, který je propojený s Předprezentací Azure AD.
+- [Otestujte jednotné přihlašování](#test-single-sign-on) a ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotného přihlašování se Zscalerem Beta, postupujte podle těchto kroků.
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zscaler Beta, postupujte podle těchto kroků.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Zscalerem Beta** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **Zscaler Beta** vyberte **jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **vybrat jedinou metodu přihlašování** dialogové okno, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS** , abyste mohli povolit jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** stránce **upravit** otevřít **základní konfiguraci SAML** dialogové okno.
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte **Upravit** a otevřete tak základní dialogové okno **Konfigurace SAML** .
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V **základní konfiguraci SAML** části, postupujte podle tohoto kroku:
+4. V části **základní konfigurace SAML** postupujte podle tohoto kroku:
 
-    ![Zscalerem beta verze domény a adresy URL jednotného přihlašování – informace](common/sp-intiated.png)
+    ![Informace o jednotném přihlašování v Zscaler Beta doméně a adresách URL](common/sp-intiated.png)
 
-    - V **přihlašovací adresa URL** zadejte adresu URL, které uživatelé používají k přihlášení do aplikace Zscalerem Beta.
+    - Do pole **přihlašovací adresa URL** zadejte adresu URL, kterou vaši uživatelé používají k přihlášení do aplikace Zscaler Beta.
 
     > [!NOTE]
-    > Hodnota není skutečný. Skutečné přihlašování byste použili hodnotu URL zaktualizujte příslušnou hodnotu. K získání hodnoty, obraťte se [tým podpory klienta Zscalerem Beta](https://www.zscaler.com/company/contact).
+    > Hodnota není skutečná. Aktualizujte hodnotu pomocí hodnoty skutečná adresa URL pro přihlášení. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Zscaler Beta](https://www.zscaler.com/company/contact).
 
-5. Aplikace Zscalerem Beta očekává, že kontrolní výrazy SAML v určitém formátu. Mapování vlastního atributu je nutné přidat do vaší konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Vyberte **upravit** otevřít **atributy uživatele** dialogové okno.
+5. Aplikace Zscaler Beta očekává kontrolní výrazy SAML v určitém formátu. Do konfigurace atributů tokenu SAML musíte přidat mapování vlastních atributů. Následující snímek obrazovky ukazuje seznam výchozích atributů. Výběrem **Upravit** otevřete dialogové okno **atributy uživatele** .
 
-    ![Dialogové okno atributů uživatele](common/edit-attribute.png)
+    ![Uživatelské atributy – dialogové okno](common/edit-attribute.png)
 
-6. Aplikace Zscalerem Beta očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** tématu **atributy uživatele** dialogové okno, postupujte podle těchto kroků přidejte atribut tokenu SAML, jak je znázorněno v následující tabulce.
+6. Aplikace Zscaler Beta očekává, že se v odpovědi SAML vrátí několik atributů zpátky. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** pomocí následujících kroků přidejte atribut tokenu SAML, jak je znázorněno v následující tabulce.
     
     | Name | Zdrojový atribut | 
     | ---------------| --------------- |
-    | MemberOf  | user.assignedroles |
+    | memberOf  | user.assignedroles |
 
-    a. Vyberte **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogové okno.
+    a. Výběrem možnosti **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
     ![Dialogové okno deklarace identity uživatele](common/new-save-attribute.png)
 
-    ![Správa dialogové okno deklarace identity uživatele](common/new-attribute-details.png)
+    ![Dialogové okno Spravovat deklarace identity uživatelů](common/new-attribute-details.png)
 
-    b. V **název** zadejte název atributu, který je zobrazený pro tento řádek.
+    b. Do pole **název** zadejte název atributu zobrazený pro tento řádek.
 
-    c. Nechte **Namespace** pole prázdné.
+    c. Pole **obor názvů** nechejte prázdné.
 
-    d. Pro **zdroj**vyberte **atribut**.
+    d. Jako **zdroj**vyberte **atribut**.
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
     f. Vyberte **OK**.
 
     g. Vyberte **Uložit**.
 
     > [!NOTE]
-    > Další informace o konfiguraci role ve službě Azure AD, najdete v článku [konfigurace deklarace role](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
+    > Informace o tom, jak nakonfigurovat role v Azure AD, najdete v tématu [konfigurace deklarace identity role](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
 
-7. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** vyberte **Stáhnout** ke stažení **certifikát (Base64)** . Uložte ho do počítače.
+7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** a stáhněte **certifikát (Base64)** . Uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-8. V **nastavení Zscalerem Beta** části, kopírování adresy URL je nutné pro vaše požadavky:
+8. V části **nastavení beta verze Zscaler** zkopírujte adresy URL, které potřebujete pro vaše požadavky:
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     - Přihlašovací adresa URL
     - Identifikátor Azure AD
     - Adresa URL – odhlášení
 
-### <a name="configure-zscaler-beta-single-sign-on"></a>Konfigurace Zscalerem Beta jednotného přihlašování
+### <a name="configure-zscaler-beta-single-sign-on"></a>Konfigurace jednotného přihlašování v Zscaler Beta verzi
 
-1. K automatizaci konfigurace v rámci Zscalerem Beta, nainstalujte **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** tak, že vyberete **nainstalovat rozšíření**.
+1. Pokud chcete automatizovat konfiguraci v rámci Zscaler Beta, nainstalujte pomocí možnosti **nainstalovat rozšíření**možnost **zabezpečení prohlížeče zabezpečené přihlašování pro aplikace** .
 
-    ![Moje aplikace rozšíření](common/install-myappssecure-extension.png)
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-2. Po přidání rozšíření do prohlížeče, že vyberete **nastavení Zscalerem Beta** vás přesměruje na Beta Zscalerem aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení k Zscalerem Beta. Rozšíření prohlížeče automaticky nakonfiguruje aplikaci za vás a automatizuje kroky 3 až 6.
+2. Po přidání rozšíření do prohlížeče vyberte **nastavit Zscaler Beta verze** přímo na aplikaci Zscaler Beta. Odtud zadejte přihlašovací údaje správce pro přihlášení ke službě Zscaler Beta. Rozšíření prohlížeče aplikaci automaticky nakonfiguruje za vás a automatizuje kroky 3 až 6.
 
-    ![Nastavení konfigurace](common/setup-sso.png)
+    ![Konfigurace instalace](common/setup-sso.png)
 
-3. Beta Zscalerem nastavit ručně, otevřete nové okno webového prohlížeče. Přihlaste se k webu Beta Zscalerem společnosti jako správce a postupujte podle těchto kroků.
+3. Pokud chcete nastavit Zscaler Beta ručně, otevřete nové okno webového prohlížeče. Přihlaste se k webu Zscaler Beta společnosti jako správce a postupujte podle těchto kroků.
 
-4. Přejděte na **správu** > **ověřování** > **nastavení ověřování**a postupujte podle těchto kroků.
+4. Přejděte na **Správa** > nastavení > **ověřování**ověřování a postupujte podle těchto kroků.
    
-    ![Správa](./media/zscaler-beta-tutorial/ic800206.png "správy")
+    ![Správa](./media/zscaler-beta-tutorial/ic800206.png "Správa")
 
     a. V části **typ ověřování**vyberte **SAML**.
 
-    b. Vyberte **konfigurace SAML**.
+    b. Vyberte **Konfigurovat SAML**.
 
-5. V **upravit SAML** okno, postupujte podle těchto kroků: 
+5. V okně **Upravit SAML** proveďte tyto kroky: 
             
-    ![Správa uživatelů a ověřování](./media/zscaler-beta-tutorial/ic800208.png "správu uživatelů a ověřování")
+    ![Správa uživatelů & ověřování](./media/zscaler-beta-tutorial/ic800208.png "Správa uživatelů & ověřování")
     
-    a. V **adresa URL portálu SAML** pole, vložte **přihlašovací adresa URL** , který jste zkopírovali z portálu Azure portal.
+    a. Do pole **Adresa URL portálu SAML** vložte **adresu URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    b. V **atribut Name přihlášení** zadejte **NameID**.
+    b. Do pole **atribut přihlašovací jméno** zadejte **NameId**.
 
-    c. V **veřejný certifikát SSL** vyberte **nahrát** k nahrání podpisového certifikátu Azure SAML, který jste stáhli z portálu Azure portal.
+    c. V poli **veřejný certifikát SSL** vyberte **Odeslat** a odešlete podpisový certifikát Azure SAML, který jste stáhli z Azure Portal.
 
-    d. Přepnout **povolení automatického zřizování SAML**.
+    d. Přepněte na **zapnout automatické zřizování SAML**.
 
-    e. V **atribut uživatelského jména. zobrazení** zadejte **displayName** Pokud chcete povolit autoprovisioning SAML pro atributy displayName.
+    e. Do pole **Zobrazovaný název uživatele** zadejte **DisplayName** , pokud chcete povolit autozřizování SAML pro atributy DisplayName.
 
-    f. V **atribut název skupiny** zadejte **memberOf** Pokud chcete povolit SAML autoprovisioning memberOf atributů.
+    f. Do pole **atribut název skupiny** zadejte **memberOf** , pokud chcete povolit autozřizování SAML pro atributy memberOf.
 
-    g. V **atributem název oddělení** zadejte **oddělení** Pokud chcete povolit autoprovisioning SAML pro oddělení atributy.
+    g. Do pole **atribut název oddělení** zadejte **oddělení** , pokud chcete povolit autozřizování SAML pro atributy oddělení.
 
     h. Vyberte **Uložit**.
 
-6. Na **konfiguraci ověření uživatele** dialogového okna stránky, postupujte podle těchto kroků:
+6. Na stránce **Konfigurovat ověřování uživatele** proveďte následující kroky:
 
-    ![Aktivace nabídky a tlačítko aktivovat](./media/zscaler-beta-tutorial/ic800207.png)
+    ![Nabídka aktivace a tlačítko aktivovat](./media/zscaler-beta-tutorial/ic800207.png)
 
-    a. Najeďte myší **aktivace** nabídky vlevo dole.
+    a. Najeďte myší na nabídku **Aktivace** v levém dolním rohu.
 
     b. Vyberte **aktivovat**.
 
 ## <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
-Konfigurace nastavení proxy serveru v aplikaci Internet Explorer, postupujte podle těchto kroků.
+Pokud chcete nakonfigurovat nastavení proxy serveru v Internet Exploreru, postupujte podle těchto kroků.
 
-1. Spustit **aplikace Internet Explorer**.
+1. Spusťte **aplikaci Internet Explorer**.
 
-2. Vyberte **Možnosti Internetu** z **nástroje** nabídce otevřete **Možnosti Internetu** dialogové okno. 
+2. V nabídce **nástroje** vyberte **Možnosti Internetu** a otevřete tak dialogové okno **Možnosti Internetu** . 
     
      ![Dialogové okno Možnosti Internetu](./media/zscaler-beta-tutorial/ic769492.png "Možnosti Internetu")
 
-3. Vyberte **připojení** kartu. 
+3. Vyberte kartu **připojení** . 
   
-     ![Karta připojení](./media/zscaler-beta-tutorial/ic769493.png "připojení")
+     ![Karta připojení](./media/zscaler-beta-tutorial/ic769493.png "Připojení")
 
-4. Vyberte **nastavení místní sítě** otevřít **nastavení místní sítě (LAN)** dialogové okno.
+4. Výběrem **Možnosti nastavení sítě LAN** otevřete dialogové okno **Nastavení místní sítě (LAN)** .
 
-5. V **Proxy server** , postupujte podle těchto kroků: 
+5. V části **proxy server** použijte následující postup: 
    
-    ![Proxy server části](./media/zscaler-beta-tutorial/ic769494.png "Proxy serveru")
+    ![Část proxy serveru](./media/zscaler-beta-tutorial/ic769494.png "Proxy server")
 
-    a. Vyberte **používat proxy server pro síť LAN** zaškrtávací políčko.
+    a. Zaškrtněte políčko **použít proxy server pro vaši síť LAN** .
 
-    b. V **adresu** zadejte **brány. Zscalerem Beta.net**.
+    b. Do pole **adresa** zadejte **Gateway. Zscaler Beta.net**.
 
-    c. V **Port** zadejte **80**.
+    c. Do pole **port** zadejte **80**.
 
-    d. Vyberte **obejít proxy server pro místní adresy** zaškrtávací políčko.
+    d. Zaškrtněte políčko **obejít proxy server pro místní adresy** .
 
-    e. Vyberte **OK** zavřete **nastavení místní sítě (LAN)** dialogové okno.
+    e. Kliknutím na **tlačítko OK** zavřete dialogové okno **Nastavení místní sítě (LAN)** .
 
-6. Vyberte **OK** zavřete **Možnosti Internetu** dialogové okno.
+6. Kliknutím na **tlačítko OK** zavřete dialogové okno **Možnosti Internetu** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
-Vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Vytvořte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory** > **uživatelé** > **všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
 
-    ![Uživatelé a všechna propojení uživatelů](common/users.png)
+    ![Odkazy uživatelů a všech uživatelů](common/users.png)
 
 2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. V **uživatele** dialogové okno pole, postupujte podle těchto kroků:
+3. V dialogovém okně **uživatel** proveďte následující kroky:
 
-    ![Dialogové okno uživatelského](common/user-properties.png)
+    ![Uživatel – dialogové okno](common/user-properties.png)
 
-    a. V **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Příklad: BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Příklad: BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtávací políčko. Zapište si hodnotu, která se zobrazí v **heslo** pole.
+    c. Zaškrtněte políčko **Zobrazit heslo** . Zapište hodnotu, která se zobrazí v poli **heslo** .
 
     d. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-Povolte Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Zscalerem Beta.
+Povolit Britta Simon pro použití jednotného přihlašování pomocí Azure udělením přístupu k Zscaler Beta verzi.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace** > **všechny aplikace** > **Zscalerem Beta**.
+1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace** > **Zscaler Beta verzi**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace zadejte a vyberte **Zscalerem Beta**.
+2. V seznamu aplikace zadejte a vyberte **Zscaler Beta**.
 
-    ![Beta verze Zscalerem odkaz v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na Zscaler Beta v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Propojení uživatelů a skupin](common/users-groups-blade.png)
+    ![Odkaz na uživatele a skupiny](common/users-groups-blade.png)
 
-4. Vyberte **přidat uživatele**. V **přidat přiřazení** dialogu **uživatelů a skupin**.
+4. Vyberte **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
-    ![Tlačítko Přidat uživatele](common/add-assign-user.png)
+    ![Tlačítko pro přidání uživatele](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogovém okně vyberte uživatele, jako jsou **Britta Simon** ze seznamu. Klikněte na tlačítko **vyberte** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatele, jako je například **Britta Simon** . Pak zvolte **Vybrat** v dolní části obrazovky.
 
-    ![Dialogové okno Uživatelé a skupiny](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_users.png)
+    ![Uživatelé a skupiny – dialogové okno](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_users.png)
 
-6. V **vybrat roli** dialogového okna, vyberte příslušné role uživatele v seznamu. Klikněte na tlačítko **vyberte** v dolní části obrazovky.
+6. V dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli uživatele. Pak zvolte **Vybrat** v dolní části obrazovky.
 
-    ![Dialogové okno Vybrat roli](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_roles.png)
+    ![Dialogové okno vybrat roli](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_roles.png)
 
-7. V **přidat přiřazení** dialogu **přiřadit**.
+7. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
 
-    ![Přidat přiřazení – dialogové okno](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_assign.png)
+    ![Dialogové okno Přidat přiřazení](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_assign.png)
 
-### <a name="create-a-zscaler-beta-test-user"></a>Vytvoření zkušebního uživatele Zscaler Beta
+### <a name="create-a-zscaler-beta-test-user"></a>Vytvořit testovacího uživatele Zscaler Beta
 
-V této části je uživatel Britta Simon vytvořené v betaverzi Zscalerem. Podporuje Zscalerem Beta **zřizování uživatelů just-in-time**, který je ve výchozím nastavení povolené. Není co musíte udělat v této části. Pokud uživatel již neexistuje mezi Zscalerem Beta, vytvoří se nový po ověření.
+V této části se uživatel Britta Simon vytvoří v Zscaler Beta. Zscaler Beta podporuje **zřizování uživatelů za běhu**, což je ve výchozím nastavení povolené. V této části nemusíte nic dělat. Pokud uživatel ještě v Zscaler Beta neexistuje, vytvoří se po ověření nový.
 
 >[!Note]
->Vytvořte uživatele ručně, obraťte se [tým podpory Zscalerem Beta](https://www.zscaler.com/company/contact).
+>Pokud chcete uživatele vytvořit ručně, obraťte se na [tým podpory Zscaler Beta](https://www.zscaler.com/company/contact).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-Testování Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+Otestujte konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když vyberete dlaždici Zscalerem Beta na přístupovém panelu, by měl být automaticky přihlásíte k Zscalerem Beta, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Zscaler Beta, měli byste být automaticky přihlášeni ke službě Zscaler Beta, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

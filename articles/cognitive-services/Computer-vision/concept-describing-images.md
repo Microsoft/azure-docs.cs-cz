@@ -1,7 +1,7 @@
 ---
-title: Popis Image - pro počítačové zpracování obrazu
+title: Popisy obrázků – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty související s funkcí Popis bitové kopie z rozhraní API pro počítačové zpracování obrazu.
+description: Koncepty související s funkcí Popis obrázku rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 91618b211fdd869daf74491b175d6359ffa3f30c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dcf61c642a9f8ad7aa68d72736ce8fdb0e9a6e3c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368373"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945267"
 ---
-# <a name="describe-images-with-human-readable-language"></a>Popis bitové kopie v lidsky čitelném jazyce
+# <a name="describe-images-with-human-readable-language"></a>Popište Image pomocí uživatelsky čitelného jazyka.
 
-Počítačové zpracování obrazu můžete analyzovat bitovou kopii a generovat čitelné věta popisující její obsah. Algoritmus ve skutečnosti retruns několika popisů na základě různých vizuální funkce a každý popis dostane skóre spolehlivosti. Poslední výstupem je seznam popisů seřazené od nejvyšší k nejnižší spolehlivosti.
+Počítačové zpracování obrazu může analyzovat obrázek a generovat větu umožňující čtení, která popisuje jeho obsah. Algoritmus ve skutečnosti vrátí několik popisů založených na různých vizuálních funkcích a každý popis je dán skóre spolehlivosti. Konečný výstup je seznam popisů seřazených od nejvyšších po nejnižší spolehlivost.
 
-## <a name="image-description-example"></a>Příklad popis obrázku
+## <a name="image-description-example"></a>Příklad popisu obrázku
 
-Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu vrací při popisu příklad image založenou na jeho vizuální funkce.
+Následující odpověď JSON ukazuje, co Počítačové zpracování obrazu vrátí, když popisují příklad obrázku na základě jeho vizuálních funkcí.
 
-![Černá a bílá obrázek budovy v Manhattan](./Images/bw_buildings.png)
+![Černý a bílý obrázek budov v Manhattan](./Images/bw_buildings.png)
 
 ```json
 {
@@ -56,6 +56,6 @@ Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Seznamte se s koncepty [označování imagí](concept-tagging-images.md) a [kategorizace obrázků](concept-categorizing-images.md).
+Naučte se koncepty [označování imagí](concept-tagging-images.md) a [kategorizace imagí](concept-categorizing-images.md).

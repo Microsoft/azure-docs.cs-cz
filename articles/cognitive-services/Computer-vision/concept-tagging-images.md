@@ -1,7 +1,7 @@
 ---
-title: Použití značek obsahu do Image - pro počítačové zpracování obrazu
+title: Značky obsahu – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Další koncepty související s imagí označení funkce rozhraní API pro počítačové zpracování obrazu.
+description: Přečtěte si o konceptech souvisejících s funkcí označování imagí v rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: aeb03566a650fe46286d77913e0d36dcbb19f436
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad01751f7f7c573352c8fd15cc0f8cc2ebbbe700
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759669"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945107"
 ---
 # <a name="applying-content-tags-to-images"></a>Používání značek obsahu pro obrázky
 
-Počítačové zpracování obrazu vrací značky na základě tisíce rozpoznatelných objektů, živých bytostí, krajin a akcí. Pokud jsou značky nejasné nebo nejsou obecně známé, nabídne API v odpovědi nápovědu, která objasní význam značky v kontextu známého prostředí. Značky nejsou uspořádané podle taxonomie a neexistují hierarchie dědění. Shromážděné značky obsahu tvoří základ „popisu“ obrázku, který se zobrazí v čitelném jazyce formátovaném do celých vět. V tuto chvíli je jediným podporovaným jazykem používaným k popisu obrázku angličtina.
+Počítačové zpracování obrazu vrací značky založené na tisících rozpoznatelných objektů, živých místech, krajin a akcí. Pokud jsou značky nejasné nebo nejsou obecně známé, nabídne API v odpovědi nápovědu, která objasní význam značky v kontextu známého prostředí. Značky nejsou uspořádané podle taxonomie a neexistují hierarchie dědění. Shromážděné značky obsahu tvoří základ „popisu“ obrázku, který se zobrazí v čitelném jazyce formátovaném do celých vět. V tuto chvíli je jediným podporovaným jazykem používaným k popisu obrázku angličtina.
 
-Po nahrání obrázku nebo zadáte adresu URL obrázku, výstupní algoritmy pro počítačové zpracování obrazu značky na základě objektů, živých bytostí a akcí identifikované v bitové kopii. Značky se neomezují na hlavní předmět, například postavu v popředí, ale zahrnují také prostředí (interiér nebo exteriér), nábytek, nástroje, rostliny, zvířata, příslušenství, pomůcky atd.
+Po nahrání obrázku nebo zadání adresy URL obrázku Počítačové zpracování obrazu výstupní značky algoritmů na základě objektů, živých a akcí identifikovaných v imagi. Značky se neomezují na hlavní předmět, například postavu v popředí, ale zahrnují také prostředí (interiér nebo exteriér), nábytek, nástroje, rostliny, zvířata, příslušenství, pomůcky atd.
 
-## <a name="image-tagging-example"></a>Příklad označení Image
+## <a name="image-tagging-example"></a>Příklad označení obrázku
 
-Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu vrací při označování vizuální funkce v na obrázku.
+Následující odpověď JSON ukazuje, co Počítačové zpracování obrazu vrátí při označování vizuálních funkcí zjištěných v příkladu obrázku.
 
-![Modré house a front-yard](./Images/house_yard.png).
+![Modrý dům a přední yard](./Images/house_yard.png).
 
 ```json
 {
@@ -85,4 +85,4 @@ Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu
 
 ## <a name="next-steps"></a>Další postup
 
-Seznamte se s koncepty [kategorizace obrázků](concept-categorizing-images.md) a [imagí s popisem](concept-describing-images.md).
+Přečtěte si o konceptech [kategorizace obrázků](concept-categorizing-images.md) a [popisů obrázků](concept-describing-images.md).

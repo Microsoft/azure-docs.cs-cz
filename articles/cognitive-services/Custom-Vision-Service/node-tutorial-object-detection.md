@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 306f812ab10c0ef247fdc1201e7df2a23b949a54
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7f43507566109a52b914f27e37e5392345ec2eaf
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564166"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946164"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Rychlý start: Vytvoření projektu pro detekci objektů pomocí Custom Vision Node. js SDK
 
@@ -87,7 +87,7 @@ Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující
 
 Při označování obrázků v projektech detekce obrázků je potřeba zadat oblast každého označeného objektu pomocí normalizovaných souřadnic.
 
-Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Všimněte si, že pro účely tohoto kurzu jsou oblasti pevně vloženy v kódu. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška.
+Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Všimněte si, že pro účely tohoto kurzu jsou oblasti pevně vloženy v kódu. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška. Do jedné dávky můžete nahrát až 64 imagí.
 
 ```javascript
 const forkImageRegions = {

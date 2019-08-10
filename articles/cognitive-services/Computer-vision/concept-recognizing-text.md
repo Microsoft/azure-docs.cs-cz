@@ -1,5 +1,5 @@
 ---
-title: Rozpoznat vytištěný nebo ručně psaný text, Počítačové zpracování obrazu
+title: Vytištěno, rozpoznávání rukopisu textu-Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
 description: Koncepty související s rozpoznáváním vytištěného a rukopisného textu v obrázcích pomocí rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cfbbd0b353699c4b04ede07df0450e66bd59612f
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: e37b4c02692575f76582e8f62c3aff00b57424ed
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311954"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946298"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Rozpoznávání tištěného a ručně psaného textu
 

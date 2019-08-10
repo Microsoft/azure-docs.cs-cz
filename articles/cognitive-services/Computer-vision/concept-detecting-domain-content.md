@@ -1,7 +1,7 @@
 ---
-title: Zjištění obsahu specifického pro doménu – pro počítačové zpracování obrazu
+title: Obsah specifický pro doménu – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak zadat doménu kategorizace obrázků vrací podrobné informace o obrázku.
+description: Přečtěte si, jak zadat doménu kategorizace imagí, která vrátí podrobnější informace o imagi.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e4b64e00f71768a8821c83a73b019f77089e1b3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368067"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946325"
 ---
 # <a name="detect-domain-specific-content"></a>Zjištění obsahu specifického pro doménu
 
-Kromě toho kategorizace značek a vysoké úrovně, pro počítačové zpracování obrazu podporuje také další specifického pro doménu analýza s využitím modelů, které jste se školení na specializované data.
+Kromě značek a kategorizace na vysoké úrovni Počítačové zpracování obrazu také podporuje další analýzu specifickou pro doménu pomocí modelů, které byly vyučeny na specializované údaje.
 
-Existují dva způsoby, jak použít doménově specifické modely: samostatně (s vymezeným oborem analýzy) nebo jako neboli podmínky vylepšují funkci kategorizaci.
+Existují dva způsoby, jak použít modely specifické pro doménu: samy o sebe (s vymezenou analýzou) nebo jako vylepšení funkce kategorizace.
 
-### <a name="scoped-analysis"></a>S vymezeným oborem analýzy
+### <a name="scoped-analysis"></a>Analýza s vymezeným oborem
 
-Můžete analyzovat image pomocí zvolený model specifického pro doménu voláním [modely /\<modelu\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) rozhraní API.
+Můžete analyzovat bitovou kopii pomocí pouze zvoleného modelu specifického pro doménu voláním rozhraní API [\<modelů\>/modelu/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) .
 
-Tady je ukázka JSON odpovědi vrácené **modely/celebrit/analyzovat** rozhraní API pro danou image:
+Následuje ukázková odpověď JSON, kterou vrátí rozhraní API **modelů/celebrit/analyzovat** pro danou Image:
 
-![Satya Nadella po ruce, usmívající se](./images/satya.jpeg)
+![Satya Nadella, usmívající se](./images/satya.jpeg)
 
 ```json
 {
@@ -55,13 +55,13 @@ Tady je ukázka JSON odpovědi vrácené **modely/celebrit/analyzovat** rozhran�
 }
 ```
 
-### <a name="enhanced-categorization-analysis"></a>Rozšířená kategorizace analýzy
+### <a name="enhanced-categorization-analysis"></a>Rozšířená analýza kategorizace
 
-Doménově specifické modely můžete použít také k doplnění analýzu obecné obrázku. Můžete to provést v rámci [vysoké úrovně kategorizace](concept-categorizing-images.md) zadáním doménově specifické modely v *podrobnosti* parametr [analyzovat](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) volání rozhraní API.
+Můžete také použít modely specifické pro doménu k doplnění obecné analýzy obrázků. Provedete to jako součást [vysoké úrovně kategorizace](concept-categorizing-images.md) zadáním modelů specifických pro doménu v parametru *Details* pro volání metody [analyzovat](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API.
 
-V takovém případě třídění taxonomie 86 kategorií jako první. Pokud zjištěné kategorií modelu odpovídající specifického pro doménu, image se předává přidaná i modelu a výsledky.
+V tomto případě se jako první volá klasifikátor taxonomie 86-Category. Pokud má kterákoli ze zjištěných kategorií odpovídající modelem specifického pro doménu, projde se tento model i tato image a přidají se výsledky.
 
-Následující odpověď JSON ukazuje, jak specifického pro doménu analýzy může být zahrnut jako `detail` uzel v širší kategorizaci analýzy.
+Následující odpověď JSON ukazuje, jak může být analýza specifická pro doménu zahrnutá jako `detail` uzel v širší analýze kategorizace.
 
 ```json
 "categories":[
@@ -96,16 +96,16 @@ Následující odpověď JSON ukazuje, jak specifického pro doménu analýzy m�
 ]
 ```
 
-## <a name="list-the-domain-specific-models"></a>Seznam doménově specifické modely
+## <a name="list-the-domain-specific-models"></a>Seznam modelů specifických pro doménu
 
-Počítačové zpracování obrazu v současné době podporuje následující doménově specifické modely:
+V současné době Počítačové zpracování obrazu podporuje následující modely specifické pro doménu:
 
-| Název | Popis |
+| Name | Popis |
 |------|-------------|
-| celebrit | Rozpoznávání celebrit, podporované pro klasifikaci obrázků v `people_` kategorie |
-| Zajímavá | Rozpoznávání památek, podporované pro klasifikaci obrázků v `outdoor_` nebo `building_` kategorie |
+| celebrit | Rozpoznávání celebrit, podporované pro obrázky klasifikované v `people_` kategorii |
+| památek | Rozpoznávání bodů podporované pro obrázky klasifikované v `outdoor_` kategoriích nebo `building_` |
 
-Volání [modely](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) rozhraní API vrátí tyto informace spolu s kategorií, na které můžete použít každý model:
+Volání [modelů](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) rozhraní API vrátí tyto informace spolu s kategoriemi, pro které lze použít každý model:
 
 ```json
 {
@@ -139,4 +139,4 @@ Volání [modely](https://westus.dev.cognitive.microsoft.com/docs/services/5adf9
 
 ## <a name="next-steps"></a>Další postup
 
-Seznamte se s koncepty [kategorizace obrázků](concept-categorizing-images.md).
+Přečtěte si o konceptech pro [kategorizaci imagí](concept-categorizing-images.md).
