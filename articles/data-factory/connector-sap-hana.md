@@ -140,7 +140,7 @@ Chcete-li kopírovat data z SAP HANA, jsou podporovány následující vlastnost
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **SapHanaTable** | Ano |
-| XSD | Název schématu v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "dotaz") |
+| schema | Název schématu v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "dotaz") |
 | table | Název tabulky v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad:**
