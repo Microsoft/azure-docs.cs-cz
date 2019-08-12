@@ -159,6 +159,8 @@
     - name: Řešení potíží
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
       items:
+        - name: Nedostatek domén selhání
+          href: ./kafka-troubleshoot-insufficient-domains.md
         - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Řešení potíží s Apache Hadoop HDFS

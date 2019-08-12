@@ -166,6 +166,8 @@
       items:
         - name: Vizuální vytváření datových továren
           href: author-visually.md
+        - name: Správa zdrojového kódu
+          href: source-control.md
         - name: Průběžná integrace a doručování
           href: continuous-integration-deployment.md
         - name: Iterativní vývoj a ladění

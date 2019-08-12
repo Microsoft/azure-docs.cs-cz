@@ -107,25 +107,25 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: Koncepty
   items:
-    - name: Označování obrázků značkami
+    - name: Značky obsahu
       href: concept-tagging-images.md
-    - name: Detekování objektů
+    - name: Detekce objektů
       href: concept-object-detection.md
     - name: Rozpoznávání značek
       href: concept-brand-detection.md
     - name: Kategorizace obrázků
       href: concept-categorizing-images.md
-    - name: Popisování obrázků
+    - name: Popisy obrázků
       href: concept-describing-images.md
-    - name: Rozpoznávání tváří
+    - name: Rozpoznávání tváře
       href: concept-detecting-faces.md
-    - name: Rozpoznávání typů obrázků
+    - name: Zjišťování typu obrázku
       href: concept-detecting-image-types.md
-    - name: Rozpoznávání obsahu specifického pro doménu
+    - name: Obsah specifický pro doménu
       href: concept-detecting-domain-content.md
-    - name: Rozpoznávání barevných schémat
+    - name: Detekce barevného schématu
       href: concept-detecting-color-schemes.md
-    - name: Generování miniatur
+    - name: Miniatury s inteligentním oříznutím
       href: concept-generating-thumbnails.md
     - name: Rozpoznávání tištěného a ručně psaného textu
       href: concept-recognizing-text.md

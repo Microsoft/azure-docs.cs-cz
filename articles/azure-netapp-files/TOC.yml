@@ -21,11 +21,11 @@
       href: azure-netapp-files-metrics.md
     - name: Výkon
       items:
-        - name: Srovnávací testy výkonu pro Azure NetApp Files
-          href: azure-netapp-files-performance-benchmarks.md
         - name: Aspekty výkonu pro Azure NetApp Files
           href: azure-netapp-files-performance-considerations.md
-        - name: Srovnávací testování pro metriky a výkon svazků s využitím Azure NetApp Files
+        - name: Výsledky srovnávacích testů výkonnosti pro Azure NetApp Files
+          href: azure-netapp-files-performance-benchmarks.md
+        - name: Doporučení srovnávacích testů výkonnosti pro Azure NetApp Files
           href: azure-netapp-files-performance-metrics-volumes.md
     - name: Model nákladů pro Azure NetApp Files
       href: azure-netapp-files-cost-model.md

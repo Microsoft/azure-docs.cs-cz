@@ -25,6 +25,10 @@
           href: sdk-csharp-quickstart-authoring-app.md
         - name: Koncový bod předpovědi dotazů
           href: sdk-csharp-quickstart-query-prediction-endpoint.md
+    - name: Použití sady Python SDK
+      items:
+        - name: Vytvoření a správa aplikace
+          href: sdk-python-quickstart-authoring-app.md
     - name: Použití rozhraní REST API
       items:
         - name: Získání záměru

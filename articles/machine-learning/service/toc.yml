@@ -6,7 +6,7 @@
     - name: Co je služba Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Jak služba funguje
+    - name: Architektura a podmínky
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: Kurzy
@@ -216,6 +216,8 @@
         - name: Kde a jak nasadit
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: Virtuální počítače poznámkového bloku
+          href: how-to-deploy-local-container-notebook-vm.md
         - name: Azure Container Instances
           href: how-to-deploy-azure-container-instance.md
         - name: Azure Kubernetes Service
@@ -256,9 +258,9 @@
     - name: Vytváření opakovaně použitelných pracovních postupů
       displayName: pipelines
       items:
-        - name: Vytvoření kanálu ML
+        - name: 'Kanály ML: dávky, výpočty, opakované využití, sdílení'
           href: how-to-create-your-first-pipeline.md
-        - name: CI/CD pracovních postupů ML s využitím Azure Pipelines
+        - name: Kanály Azure pro CI/CD
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Správa kvót prostředků

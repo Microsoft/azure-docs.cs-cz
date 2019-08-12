@@ -62,6 +62,8 @@
           items:
             - name: Zřizování uzlů
               href: create-nodes.md
+            - name: Odstranění uzlů
+              href: delete-nodes.md
         - name: Správa prostředků privátního cloudu
           items:
             - name: Vytvoření privátního cloudu
@@ -76,6 +78,8 @@
               href: azure-subscription-mapping.md
             - name: Zvýšení úrovně oprávnění
               href: escalate-private-cloud-privileges.md
+            - name: Odstranění privátního cloudu
+              href: delete-private-cloud.md
         - name: Monitorování aktivity CloudSimple
           href: 'https://docs.azure.cloudsimple.com/activity/'
         - name: Nastavení sítí privátního cloudu

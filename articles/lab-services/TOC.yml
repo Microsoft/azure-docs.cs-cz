@@ -247,11 +247,11 @@
               href: devtest-lab-mandatory-artifacts.md
         - name: Integrace s CI/CD
           items:
-            - name: Integrace testovacího prostředí do kanálu CI/CD Azure DevOps
-              href: devtest-lab-integrate-ci-cd-vsts.md
-            - name: Integrace prostředí do kanálu CI/CD Azure DevOps
+            - name: Integrace testovacího prostředí do kanálu CI/CD služby Azure Pipelines
+              href: devtest-lab-integrate-ci-cd.md
+            - name: Integrace prostředí do kanálu CI/CD služby Azure Pipelines
               href: integrate-environments-devops-pipeline.md
-            - name: Použití DevTest Labs v kanálech sestavování a vydávání verzí Azure DevOps
+            - name: Použití DevTest Labs v kanálech sestavování a vydávání verzí Azure Pipelines
               href: use-devtest-labs-build-release-pipelines.md
         - name: Hlášení využití testovacích prostředí
           href: report-usage-across-multiple-labs-subscriptions.md

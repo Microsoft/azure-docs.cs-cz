@@ -2,9 +2,9 @@
   href: index.yml
 - name: Služba SQL Database
   items:
-    - name: Co je SQL Database
+    - name: Co je SQL Database?
       href: sql-database-technical-overview.md
-    - name: Volba verze Azure SQL
+    - name: Kterou možnost SQL mám zvolit?
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: "Poznámky k\_verzi"
       href: sql-database-release-notes.md
@@ -280,14 +280,18 @@
               href: sql-vulnerability-assessment.md
             - name: Rozšířená ochrana před internetovými útoky
               href: sql-database-threat-detection-overview.md
-        - name: Pravidla firewallu protokolu IP na úrovni serveru
+        - name: Zabezpečení sítě
           items:
-            - name: Vytvoření a správa
+            - name: Přehled řízení přístupu k síti
+              href: sql-database-networkaccess-overview.md
+            - name: Brána firewall založená na protokolu IP
               href: sql-database-firewall-configure.md
-            - name: Koncové body virtuální sítě
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: Koncové body virtuální sítě – PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Pravidla brány firewall virtuální sítě
+              items:
+                - name: Koncové body virtuální sítě
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: Koncové body virtuální sítě – PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
         - name: Řízení přístupu
           items:
             - name: Řízení přístupu

@@ -25,14 +25,6 @@
       href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
-    - name: Řešení potíží
-      items:
-        - name: Apache HBase REST nereaguje
-          href: ./hbase-troubleshoot-rest-not-spending.md
-        - name: Plně vytížený procesor na serveru oblasti
-          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
-        - name: Časové limity s příkazem hbase hbck
-          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
 - name: Postup
   items:
     - name: Použití úložiště clusteru
@@ -167,8 +159,25 @@
         - name: Opravy operačního systému pro cluster HDInsight
           href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: Řešení potíží
-      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
       items:
+        - name: Řešení potíží s prostředky
+          href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: Žádná data v zobrazeních Apache Phoenixu
+          href: ./hbase-troubleshoot-phoenix-no-data.md
+        - name: BindException – adresa se používá
+          href: ./hbase-troubleshoot-bindexception-address-use.md
+        - name: Nejde spustit Apache HBA
+          href: ./hbase-troubleshoot-start-fails.md
+        - name: Problémy se servery oblastí
+          href: ./hbase-troubleshoot-unassigned-regions.md
+        - name: Problémy s připojením Apache Phoenixu
+          href: ./hbase-troubleshoot-phoenix-connectivity.md
+        - name: Apache HBase REST nereaguje
+          href: ./hbase-troubleshoot-rest-not-spending.md
+        - name: Plně vytížený procesor na serveru oblasti
+          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
+        - name: Časové limity s příkazem hbase hbck
+          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
         - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
         - name: Řešení potíží s Apache Hadoop HDFS

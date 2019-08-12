@@ -155,6 +155,8 @@
           items:
             - name: Příprava sítě pro zotavení po havárii virtuálního počítače Azure
               href: azure-to-azure-about-networking.md
+            - name: Přizpůsobení síťových konfigurací cílového virtuálního počítače Azure
+              href: azure-to-azure-customize-networking.md
             - name: Nastavení mapování sítě a zachování IP adres po převzetí služeb při selhání
               href: azure-to-azure-network-mapping.md
             - name: Příklady zachování IP adres po převzetí služeb při selhání
