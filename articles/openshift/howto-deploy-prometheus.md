@@ -182,7 +182,7 @@ Pokud chcete, aby Prometheus shromažďovat metriky, od sebe sama, přiřaďte o
 
 ## <a name="optional-deploy-example-application"></a>Volitelné: Nasazení ukázkové aplikace
 
-Všechno funguje, ale neexistují žádné metriky zdroje. Přejděte na adresu URL Prometheus (https://prom-prometheus-project.apps. *náhodné id*. *oblast*.azmosa.io/). Najdete ho s použitím následující příkaz:
+Všechno funguje, ale neexistují žádné metriky zdroje. Přejděte na adresu URL Prometheus (https://prom-prometheus-project.apps.*náhodné id*.*oblast*.azmosa.io/). Najdete ho s použitím následující příkaz:
 
 ```
 oc get route prom -n prometheus-project

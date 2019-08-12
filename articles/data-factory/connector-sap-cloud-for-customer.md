@@ -157,7 +157,7 @@ Pokud chcete zkopírovat data do SAP cloudu pro zákazníka, nastavte typ jímky
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na: **SapCloudForCustomerSink**  | Ano |
-| writeBehavior | Chování operace zápisu. Může být "Insert", "Update". | Ne. Výchozí hodnota "Insert". |
+| writeBehavior | Chování operace zápisu. Může být "vložení", "Update". | Ne. Výchozí hodnota "Insert". |
 | writeBatchSize | Velikost dávky operace zápisu. Velikost dávky, která má dosáhnout nejlepšího výkonu, se může lišit pro různé tabulky nebo servery. | Ne. Výchozí hodnota 10. |
 
 **Příklad:**
@@ -211,15 +211,16 @@ Při kopírování dat z cloudu SAP pro zákazníka se z cloudu SAP pro typy zá
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
-| Edm.Single | Single |
+| EDM. Single | Single |
 | Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | String |
-| Edm.Time | TimeSpan |
+| EDM. time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
+
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
