@@ -316,25 +316,25 @@ Při kopírování dat ze služby Salesforce se z datových typů Salesforce pou
 
 | Typ dat Salesforce | Data Factory dočasné datový typ |
 |:--- |:--- |
-| Auto Number |Řetězec |
-| Checkbox |Logická hodnota |
+| Auto Number |String |
+| Checkbox |Boolean |
 | Currency |Decimal |
-| Date |Datetime |
-| Date/Time |Datetime |
-| Email |Řetězec |
-| Id |Řetězec |
-| Lookup Relationship |Řetězec |
-| Multi-Select Picklist |Řetězec |
+| Date |DateTime |
+| Date/Time |DateTime |
+| Email |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Number |Decimal |
 | Percent |Decimal |
-| Phone |Řetězec |
-| Picklist |Řetězec |
-| Text |Řetězec |
-| Text Area |Řetězec |
-| Text Area (Long) |Řetězec |
-| Text Area (Rich) |Řetězec |
-| Text (Encrypted) |Řetězec |
-| URL |Řetězec |
+| Phone |String |
+| Picklist |String |
+| Text |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
+| URL |String |
 
 ## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
