@@ -66,7 +66,7 @@ Chcete-li použít základní ověřování, nastavte vlastnost "authenticationT
 | Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | userName | Uživatel, který má přístup k serveru SFTP. |Ano |
-| password | Heslo pro uživatele (uživatelské jméno). Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| password | Heslo pro uživatele (userName). Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 
 **Příklad:**
 
