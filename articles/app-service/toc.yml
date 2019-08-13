@@ -63,8 +63,6 @@
       href: samples-resource-manager-templates.md
 - name: Koncepty
   items:
-    - name: Jak funguje App Service
-      href: app-service-how-works-readme.md
     - name: Plány služby App Service
       href: overview-hosting-plans.md
     - name: Funkce operačního systému

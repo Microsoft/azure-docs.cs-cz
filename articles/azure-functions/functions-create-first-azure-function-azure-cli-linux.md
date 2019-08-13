@@ -11,26 +11,26 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 857646bb1b9b317f1e51218d258616e775056b43
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 84e05b7afa2746587f2ea5008d493730ccbfad7e
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442255"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950040"
 ---
 # <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Vytvoření první funkce hostované v Linuxu pomocí Core Tools a Azure CLI (Preview)
 
-Služba Azure Functions umožňuje spuštění kódu v [bezserverovém](https://azure.com/serverless) prostředí Linuxu, aniž byste nejprve museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. Hostování v Linuxu vyžaduje [modul runtime Functions 2.0](functions-versions.md). Podpora pro spuštění aplikace function app v Linuxu v bez serveru [plánu Consumption](functions-scale.md#consumption-plan) je aktuálně ve verzi preview. Další informace najdete v tématu [v tomto článku důležité informace o verzi preview](https://aka.ms/funclinux).
+Služba Azure Functions umožňuje spuštění kódu v [bezserverovém](https://azure.com/serverless) prostředí Linuxu, aniž byste nejprve museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. Linux – hostování vyžaduje modul [runtime functions 2,0](functions-versions.md). Podpora spuštění aplikace Function App v systému Linux v [plánu spotřeby](functions-scale.md#consumption-plan) bez serveru je aktuálně ve verzi Preview. Další informace najdete v [tomto článku s informacemi o verzi Preview](https://aka.ms/funclinux).
 
 Tento článek Rychlý start vás provede použitím Azure CLI k vytvoření první aplikace funkcí spuštěné v Linuxu. Kód funkce se vytvoří místně a pak se nasadí do Azure pomocí [Azure Functions Core Tools](functions-run-local.md).
 
-Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux. Tento článek popisuje, jak vytvářet funkce v JavaScriptu nebo jazyce C#. Informace o vytváření funkcí Pythonu najdete v tématu [vytvoření první funkce Pythonu pomocí základní nástroje a rozhraní příkazového řádku Azure (preview)](functions-create-first-function-python.md).
+Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux. Tento článek popisuje, jak vytvářet funkce v JavaScriptu nebo jazyce C#. Informace o tom, jak vytvářet funkce v Pythonu, najdete v tématu [Vytvoření první funkce Pythonu pomocí základních nástrojů a Azure CLI (Preview)](functions-create-first-function-python.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Před spuštěním této ukázky musíte mít následující:
 
-- Nainstalujte [nástrojů Azure Functions Core](./functions-run-local.md#v2) verze 2.6.666 nebo vyšší.
+- Nainstalujte [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo novější.
 
 + Nainstalujte [rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). Tento článek vyžaduje použití Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Můžete také použít [Azure Cloud Shell](https://shell.azure.com/bash).
 
@@ -38,36 +38,9 @@ Před spuštěním této ukázky musíte mít následující:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-local-function-app-project"></a>Vytvoření projektu funkce místní aplikace
+[!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-Spuštěním následujícího příkazu z příkazového řádku vytvoříte projekt aplikace funkcí ve složce `MyFunctionProj` aktuálního místního adresáře. Úložiště GitHub se také vytvoří v `MyFunctionProj`.
-
-```bash
-func init MyFunctionProj
-```
-
-Po zobrazení výzvy použijte klávesy se šipkami a vyberte modul runtime pracovního procesu z následujících možností jazyků:
-
-+ `dotnet`: vytvoří projekt knihovny třídy .NET (.csproj).
-+ `node`: vytvoří projekt jazyka JavaScript nebo TypeScript. Po zobrazení výzvy zvolte `JavaScript`.
-+ `python`: vytvoří projekt Python. Funkce Pythonu najdete v článku [rychlý start Python](functions-create-first-function-python.md).
-
-Při spuštění příkazu se zobrazí něco jako následující výstup:
-
-```output
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
-```
-
-Pomocí následujícího příkazu přejděte do složky nového projektu `MyFunctionProj`.
-
-```bash
-cd MyFunctionProj
-```
-
-## <a name="enable-extension-bundles"></a>Povolení rozšíření sady
+## <a name="enable-extension-bundles"></a>Povolit sady rozšíření
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -83,7 +56,7 @@ cd MyFunctionProj
 
 K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplikace funkcí poskytuje bezserverové prostředí pro provádění kódu funkcí. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Aplikaci funkcí spuštěnou v Linuxu vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp#az-functionapp-create).
 
-V následujícím příkazu nahraďte zástupný text `<app_name>` jedinečným názvem aplikace funkcí a `<storage_name>` názvem účtu úložiště. `<app_name>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure. Také byste měli nastavit `<language>` modul runtime pro aplikace function app, z `dotnet` (C#), `node` (JavaScript/TypeScript), nebo `python`.
+V následujícím příkazu nahraďte zástupný text `<app_name>` jedinečným názvem aplikace funkcí a `<storage_name>` názvem účtu úložiště. `<app_name>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure. `<language>` Měli byste také nastavit modul runtime pro aplikaci Function App, from `dotnet` (C#), `node` (JavaScript/TypeScript) nebo. `python`
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westus --os-type Linux \

@@ -1,38 +1,44 @@
 ---
-title: Přehled dvoustupňového ověřování – Azure Active Directory | Microsoft Docs
-description: Zjistěte, jak nastavit a používat dvoustupňové ověřování.
+title: Přehled dvou faktorů ověřování a pracovního nebo školního účtu – Azure Active Directory | Microsoft Docs
+description: Přečtěte si, jak nastavit metody ověřování zabezpečení pro použití dvojúrovňového ověřování u svého pracovního nebo školního účtu.
 services: active-directory
 author: eross-msft
 manager: daveba
-ms.reviewer: sahenry
-ms.service: active-directory
+ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
 ms.workload: identity
+ms.service: active-directory
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 07/30/2018
+ms.date: 08/05/2019
 ms.author: lizross
+ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d33a18aaca923bd49858671546ab053cf3fb21a3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 6145ccc67eedfdae8e9e1aa9245ff8d34101d387
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382142"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949556"
 ---
-# <a name="two-step-verification-overview"></a>Přehled dvoustupňového ověřování
+# <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>Přehled dvou faktorů ověřování a pracovního nebo školního účtu
 
-Od někoho z IT nebo od šéfa jste dostali e-mail s informací, že k vašemu účtu organizace přidala další ověřování zabezpečení. Co to tedy znamená? Znamená to, že vaše organizace podniká další kroky k zajištění, že jste tím, za koho se při přihlášení vydáváte. Toto dodatečné ověření, označované také jako dvoustupňové ověření, se provádí kombinací vašeho uživatelského jména, hesla a mobilního zařízení nebo telefonu.
+Od někoho z IT nebo od šéfa jste dostali e-mail s informací, že k vašemu účtu organizace přidala další ověřování zabezpečení. Co to tedy znamená? Znamená to, že vaše organizace podniká další kroky k zajištění, že jste tím, za koho se při přihlášení vydáváte. Toto dodatečné ověření, označované také jako dvojúrovňové ověřování, se provádí kombinací uživatelského jména, hesla a mobilního zařízení nebo telefonu.
 
-Dvoustupňové ověřování je bezpečnější než pouhé heslo, protože se spoléhá na dva způsoby ověření: něco, co znáte, a něco, co máte u sebe. Něco, co znáte, je vaše heslo. Něco, co máte u sebe, je telefon nebo zařízení, které běžně nosíte. Dvoustupňové ověřování pomáhá zamezit tomu, aby se za vás vydávali hackeři se zlými úmysly, protože i když znají vaše heslo, pravděpodobně nemají také vaše zařízení.
+Dvojúrovňové ověřování je bezpečnější než heslo, protože spoléhá na dvě formy ověřování: něco, co znáte, a něco, co s vámi máte. Něco, co znáte, je vaše heslo. Něco, co máte u sebe, je telefon nebo zařízení, které běžně nosíte. Dvojúrovňové ověřování může přispět k zastavení škodlivého hackera před tím, než budete mít v úmyslu, protože i když mají heslo, lichá, že nemají vaše zařízení.
 
 >[!Important]
 >Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+>
+>Tento obsah je taky určený jenom pro použití s vaším pracovním nebo školním účtem, který vám poskytla vaše organizace (například alain@contoso.com). Pokud máte problémy se dvojúrovňovém ověřováním a osobními účet Microsoft, účet, který jste si nastavili pro sebe (například danielle@outlook.com), najdete v tématu [Zapnutí nebo vypnutí dvojúrovňového ověřování pro účet Microsoft](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+
+## <a name="two-factor-verification-related-articles"></a>Články týkající se dvou faktorů ověřování
+
+Podrobné informace a pokyny k nastavení, používání a údržbě dvojúrovňového ověřování najdete v následujících článcích:
 
 |Článek |Popis |
 |------|------------|
-| [Prostředí pro nastavení](multi-factor-authentication-end-user-first-time.md) |Popisuje prvotní nastavení dvoustupňového ověřování.|
-| [Začínáme se dvěma kroky ověřování](multi-factor-authentication-end-user.md) ] Popisuje, co vám dvoustupňové ověřování znamená.| 
-| [Jak se přihlásit](user-help-sign-in.md) ] Popisuje, jak se přihlásit pomocí zadané metody ověřování.|
-| [Změny nastavení](multi-factor-authentication-end-user-manage-settings.md) |Popisuje, jak změnit nastavení, jako je telefonní číslo nebo upřednostňovaná metoda registrace.|
-| [Nápověda k dvoustupňovému ověřování](multi-factor-authentication-end-user-troubleshoot.md) |Popisuje řešení běžných problémů s dvoustupňovým ověřováním.|
-| [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md) |Popisuje vytváření a používání hesel aplikací.|
+| [Nastavení dvojúrovňového ověřování pro můj pracovní nebo školní účet](multi-factor-authentication-end-user-first-time.md) | V této části najdete popis postupu při prvním nastavení dvojúrovňového ověřování. |
+| [Změna nastavení metody ověřování zabezpečení](multi-factor-authentication-end-user-manage-settings.md) | Popisuje, jak změnit nastavení, jako je telefonní číslo nebo upřednostňovaná metoda registrace. |
+| [Jak se přihlásit pomocí metody ověření zabezpečení](user-help-sign-in.md) | Popisuje, jak se přihlásit pomocí určené metody ověřování. |
+| [Získat pomoc se dvojúrovňovém ověřováním](multi-factor-authentication-end-user-troubleshoot.md) | Popisuje, jak řešit běžné problémy Pomocí dvojúrovňového ověřování. |
+| [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md) | Popisuje vytváření a používání hesel aplikací. |

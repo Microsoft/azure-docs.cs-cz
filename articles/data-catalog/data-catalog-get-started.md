@@ -1,17 +1,17 @@
 ---
 title: Vytvoření Azure Data Catalogu
-description: Rychlý Start pro vytvoření Azure Data Catalog.
+description: V tomto rychlém startu se dozvíte, jak vytvořit Azure Data Catalog pomocí Azure Portal.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 08/01/2019
-ms.openlocfilehash: df2f536dc95dd74dbae1c8bda1a9934a73fd1fe0
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a834c3c20f11ee4dbf070ae7c836f302c82c9def
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736493"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950289"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Rychlý start: Vytvoření Azure Data Catalogu
 
@@ -100,7 +100,7 @@ Můžete zřídit pouze jeden katalog dat na organizaci (doména Azure Active Di
 
     ![Azure Data Catalog – cenová úroveň](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se naučili, jak vytvořit Azure Data Catalog pro vaši organizaci. Nyní můžete zaregistrovat zdroje dat v katalogu dat.
 

@@ -8,9 +8,12 @@
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
 - name: Šablony Rychlý start
   items:
-    - name: Vytvoření a použití smyčky zpětné vazby
+    - name: 'Pomocí C#'
       href: csharp-quickstart-commandline-feedback-loop.md
       displayName: 'code, sample, quickstart, c#'
+    - name: Pomocí Pythonu
+      href: python-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, python'
 - name: Koncepty
   items:
     - name: Jak služba Personalizace funguje

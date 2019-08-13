@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: 7b27637ca63ec69d7f4c33f05e7c037d67676b2d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828299"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952098"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Vyhodnoťte virtuální počítače VMware pomocí Azure Migrate: Hodnocení serverů
 
@@ -180,8 +180,39 @@ Spustí se zjišťování. Zobrazení metadat zjištěných virtuálních počí
 
 ### <a name="scoping-discovery"></a>Zjišťování rozsahu
 
-Zjišťování může být vymezeno omezením přístupu k účtu vCenter použitému pro zjišťování. Obor můžete nastavit tak, aby vCenter Server datová centra, clustery, složku clusterů, hostitele, složku hostitelů nebo jednotlivé virtuální počítače. 
+Zjišťování může být vymezeno omezením přístupu k účtu vCenter použitému pro zjišťování. Obor můžete nastavit tak, aby vCenter Server datová centra, clustery, složku clusterů, hostitele, složku hostitelů nebo jednotlivé virtuální počítače.
 
+Chcete-li nastavit obor, je nutné provést následující kroky:
+1.  Vytvořte uživatelský účet vCenter.
+2.  Definujte novou roli s požadovanými oprávněními. (<em>vyžaduje se pro migraci serveru bez agenta</em>)
+3.  Přiřaďte oprávnění k uživatelskému účtu na vCenter objektech.
+
+**Vytvoření uživatelského účtu vCenter**
+1.  Přihlaste se k webovému klientovi vSphere jako správce vCenter Server.
+2.  Klikněte na možnost **Správa** > **uživatele jednotného přihlašování a skupiny** > **Uživatelé** .
+3.  Klikněte na ikonu **nového uživatele** .
+4.  Zadejte požadované informace pro vytvoření nového uživatele a klikněte na tlačítko **OK**.
+
+**Definice nové role s požadovanými oprávněními** (<em>vyžaduje se pro migraci serveru bez agenta</em>)
+1.  Přihlaste se k webovému klientovi vSphere jako správce vCenter Server.
+2.  Přejděte do**správce role** **správy** > .
+3.  Z rozevírací nabídky vyberte svou vCenter Server.
+4.  Klikněte na akce **vytvořit roli** .
+5.  Zadejte název nové role. (například <em>Azure_Migrate</em>).
+6.  Přiřaďte tato [oprávnění](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) k nově definované roli.
+7.  Klikněte na **OK**.
+
+**Přiřazení oprávnění pro objekty vCenter**
+
+Existují dva přístupy k přiřazení oprávnění k objektům inventáře v vCenter k uživatelskému účtu vCenter s přiřazenou rolí.
+- Pro vyhodnocování serveru je třeba použít roli jen **pro čtení** pro uživatelský účet vCenter pro všechny nadřazené objekty, které jsou hostovány virtuálními počítači, které mají být zjištěny. Do datového centra se mají zahrnout všechny nadřazené objekty – hostitel, složka hostitelů, cluster, složka clusterů v hierarchii. Tato oprávnění mají být šířena do podřízených objektů v hierarchii. 
+
+    Podobně jako u migrace serveru může být uživatelsky definovaná role (s názvem <em>Azure _Migrate</em>), která má přiřazená tato [oprávnění](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) , použita u všech nadřazených objektů, u kterých jsou virtuální počítače, které mají být migrovány, hostovány na uživatelském účtu vCenter.
+
+![Přiřadit oprávnění](./media/tutorial-assess-vmware/assign-perms.png)
+
+- Alternativním přístupem je přiřadit uživatelský účet a roli na úrovni datového centra a rozšířit je na podřízené objekty. Pak mu udělte účet **bez role přístupu** pro každý objekt (například virtuální počítače), který nechcete zjišťovat nebo migrovat. Tato konfigurace je nenáročný. Zpřístupňuje nechtěné řízení přístupu, protože každému novému podřízenému objektu je také automaticky udělen přístup, který je zděděný z nadřazené položky. Proto doporučujeme použít první přístup.
+ 
 > [!NOTE]
 > Dnes, posouzení serveru nemůže zjistit virtuální počítače, pokud má účet vCenter udělen přístup na úrovni složky virtuálního počítače vCenter. Pokud chcete určit obor zjišťování pomocí složek virtuálních počítačů, můžete to provést tak, že účet vCenter má přiřazený přístup jen pro čtení na úrovni virtuálního počítače.  Postup najdete v následujících pokynech:
 >

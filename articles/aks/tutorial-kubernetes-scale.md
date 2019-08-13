@@ -9,32 +9,32 @@ ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 5a942aa10f36df55ac232defa610102700e3995b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67614199"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
 
-Pokud jste postupovali podle kurzů, máte funkční Kubernetes cluster ve službě AKS a nasadili ukázkovou aplikaci Azure Vote. V tomto kurzu, který je pátou částí sedmidílné série, budete škálovat pody v této aplikaci a vyzkoušíte si jejich automatické škálování. Naučíte se také, jak škálovat počet uzlů virtuálního počítače Azure, aby se změnila kapacita clusteru pro hostování úloh. Získáte informace o těchto tématech:
+Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes v AKS a nasadili jste ukázkovou hlasovací aplikaci Azure. V tomto kurzu, který je pátou částí sedmidílné série, budete škálovat pody v této aplikaci a vyzkoušíte si jejich automatické škálování. Naučíte se také, jak škálovat počet uzlů virtuálního počítače Azure, aby se změnila kapacita clusteru pro hostování úloh. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Škálování uzlů Kubernetes
 > * Ruční škálování podů Kubernetes, ve kterých se spouští vaše aplikace
 > * Konfigurace automatického škálování podů, ve kterých se spouští front-end aplikace
 
-V dalších kurzech se aktualizuje aplikace Azure Vote na novou verzi.
+V dalších kurzech se hlasová aplikace Azure aktualizuje na novou verzi.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-V předchozích kurzech se aplikace zabalila do image kontejneru. Tato image se odeslala do Azure Container Registry a vytvoření clusteru AKS. Aplikace se pak nasadí do clusteru AKS. Pokud jste tyto kroky neprovedli a chcete postupovat s námi, začněte tématem [kurzu 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
+V předchozích kurzech byla aplikace zabalena do image kontejneru. Tato image se nahrála do Azure Container Registry a vytvořili jste cluster AKS. Aplikace se pak nasadí do clusteru AKS. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte s kurzem [1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
-Tento kurz vyžaduje, že používáte Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento kurz vyžaduje, abyste spustili Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="manually-scale-pods"></a>Ruční škálování podů
 
-Při nasazení front-endu Azure Vote a instance Redis v předchozích kurzech se vytvořila jedna replika. Pokud chcete zobrazit číslo a stav podů v clusteru, použijte [kubectl get][kubectl-get] takto:
+Při nasazení front-endu Azure Vote a instance Redis v předchozích kurzech se vytvořila jedna replika. Chcete-li zobrazit počet a stav lusků ve vašem clusteru, použijte příkaz [kubectl Get][kubectl-get] následujícím způsobem:
 
 ```console
 kubectl get pods
@@ -48,13 +48,13 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Chcete-li ručně změňte počet podů v *azure-vote-front* nasazení, použijte [kubectl scale][kubectl-scale] příkazu. Následující příklad zvýší počet podů front-endu na *5*:
+Pokud chcete ručně změnit počet lusků v nasazení *Azure – hlasování* , použijte příkaz [kubectl Scale][kubectl-scale] . Následující příklad zvýší počet podů front-endu na *5*:
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Spustit [kubectl get pods][kubectl-get] znovu k ověření, že AKS vytvoří budou další pody. Asi za minutu budou další pody dostupné ve vašem clusteru:
+Spusťte [kubectl][kubectl-get] a znovu se zajistěte, aby AKS vytvořil další lusky. Asi za minutu budou další pody dostupné ve vašem clusteru:
 
 ```console
 $ kubectl get pods
@@ -70,20 +70,20 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Automatické škálování podů
 
-Kubernetes podporuje [horizontální automatické škálování podů][kubernetes-hpa] to adjust the number of pods in a deployment depending on CPU utilization or other select metrics. The [Metrics Server][metrics-server] slouží k poskytování využití prostředků na Kubernetes a automaticky je nasazen v clusteru AKS verze 1.10 a vyšší. Pokud chcete zobrazit verzi clusteru AKS, použijte [az aks zobrazit][az-aks-show] příkaz, jak je znázorněno v následujícím příkladu:
+Kubernetes podporuje [horizontální automatické škálování podů][kubernetes-hpa] pro úpravu počtu podů v nasazení v závislosti na využití procesoru nebo jiné vybrané metrice. [Server metriky][metrics-server] slouží k poskytování využití prostředků Kubernetes a je automaticky nasazen v clusterech AKS verze 1,10 a vyšší. Pokud chcete zobrazit verzi clusteru AKS, použijte příkaz [AZ AKS show][az-aks-show] , jak je znázorněno v následujícím příkladu:
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
 ```
 
-Pokud je verze vašeho clusteru AKS nižší než *1.10*, nainstalujte server metrik, jinak tento krok přeskočte. Pokud chcete nainstalovat, naklonujte `metrics-server` úložiště GitHub a nainstalovat definice prostředků příklad. Chcete-li zobrazit obsah tyto definice YAML, naleznete v tématu [Server metriky pro Kuberenetes 1.8 +][metrics-server-github].
+Pokud je verze vašeho clusteru AKS nižší než *1.10*, nainstalujte server metrik, jinak tento krok přeskočte. Pokud chcete nainstalovat, naklonujte `metrics-server` úložiště GitHub a nainstalujte ukázkové definice prostředků. Pokud si chcete zobrazit obsah těchto definicí YAML, přečtěte si téma [Server metrik pro Kuberenetes 1.8 +][metrics-server-github].
 
 ```console
 git clone https://github.com/kubernetes-incubator/metrics-server.git
 kubectl create -f metrics-server/deploy/1.8+/
 ```
 
-Použití automatického škálování, všechny kontejnery v pody a vaše pody musí mít definovaná omezení a požadavky na procesor. V `azure-vote-front` nasazení, kontejner front-endu již 0,25 CPU s limitem 0,5 CPU. Těchto omezení a požadavky na zdroje jsou definovány, jak je znázorněno v následujícím příklad fragmentu kódu:
+Chcete-li použít automatické škálování, všechny kontejnery v luskech a vaše lusky musí mít definované požadavky na procesor a omezení. `azure-vote-front` V nasazení má front-end kontejner již požadavky 0,25 procesor s limitem 0,5 CPU. Tyto požadavky na prostředky a omezení jsou definovány tak, jak je znázorněno v následujícím ukázkovém kódu:
 
 ```yaml
 resources:
@@ -93,7 +93,7 @@ resources:
      cpu: 500m
 ```
 
-V následujícím příkladu [kubectl autoscale][kubectl-autoscale] příkazu k automatickému škálování počtu podů v *azure-vote-front* nasazení. Pokud využití procesoru přesáhne 50 %, automatického škálování zvýší počet podů až do maximálního počtu *10* instancí. Minimálně *3* instancí je pak definované pro nasazení:
+Následující příklad používá příkaz [kubectl AutoScale][kubectl-autoscale] k automatickému škálování počtu lusků v nasazení v *Azure – hlasování* . Pokud využití procesoru překročí 50%, přidaný modul automatického škálování zvyšuje lusky až do maximálního počtu *10* instancí. Pro nasazení je pak definováno minimálně *3* instance:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
@@ -120,7 +120,7 @@ Následující příklad zvýší počet uzlů v clusteru Kubernetes s názvem *
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 ```
 
-Když má byla úspěšně změněna velikost clusteru, výstup je podobný následujícím příkladu:
+Po úspěšném škálování clusteru se výstup podobá následujícímu příkladu:
 
 ```
 "agentPoolProfiles": [

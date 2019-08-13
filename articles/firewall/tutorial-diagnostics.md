@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: 393441e7ff620f3795e42c2cb376f99f8763f25b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60193155"
 ---
-# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Kurz: Monitorujte metriky a protokoly brány Firewall Azure
+# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Kurz: Monitorovat protokoly Azure Firewall a metriky
 
 Bránu Azure Firewall můžete monitorovat pomocí protokolů brány firewall. K auditu operací na prostředcích brány Azure Firewall můžete také použít protokoly aktivit. Pomocí metrik můžete zobrazit čítače výkonu na portálu. 
 
-Některé z těchto protokolů jsou přístupné z webu Azure Portal. Je možné odeslat protokoly [protokoly Azure monitoru](../azure-monitor/insights/azure-networking-analytics.md), úložiště a centra událostí a analyzovat v protokolech Azure Monitor nebo prostřednictvím různých nástrojů, jako je Excel a Power BI.
+Některé z těchto protokolů jsou přístupné z webu Azure Portal. Protokoly je možné odeslat do [Azure monitor protokolů](../azure-monitor/insights/azure-networking-analytics.md), úložiště a Event Hubs a analyzovat v protokolech Azure monitor nebo pomocí různých nástrojů, jako je Excel a Power BI.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -44,7 +44,7 @@ Před zahájením tohoto kurzu si v tématu o [protokolech a metrikách brány F
 Než se data v protokolech po dokončení tohoto procesu zapnutí protokolování diagnostiky zobrazí, může to trvat několik minut. Pokud nic nevidíte, zkuste to znovu po několika minutách.
 
 1. Na webu Azure Portal otevřete skupinu prostředků brány firewall a klikněte na bránu firewall.
-2. V části **monitorování**, klikněte na tlačítko **nastavení diagnostiky**.
+2. V části **monitorování**klikněte na **nastavení diagnostiky**.
 
    Pro bránu Azure Firewall jsou k dispozici dva protokoly pro konkrétní služby:
 
@@ -53,7 +53,7 @@ Než se data v protokolech po dokončení tohoto procesu zapnutí protokolován�
 
 3. Pokud chcete začít shromažďovat data, klikněte na **Zapnout diagnostiku**.
 4. Stránka **Nastavení diagnostiky** obsahuje nastavení diagnostických protokolů. 
-5. V tomto příkladu protokoly Azure monitoru obchodů s aplikacemi v protokolech, proto zadejte **brány Firewall log analytics** pro název.
+5. V tomto příkladu protokoly Azure Monitor ukládá do protokolů, takže jako název zadáte **Log Analytics pro firewall** .
 6. Pracovní prostor nakonfigurujete kliknutím na **Poslat do Log Analytics**. Diagnostické protokoly můžete ukládat také pomocí služby center událostí a účtu úložiště.
 7. V části **Log Analytics** klikněte na **Konfigurovat**.
 8. Na stránce Pracovní prostory Log Analytics klikněte na **Vytvořit nový pracovní prostor**.
@@ -71,11 +71,11 @@ Protokolování aktivit je u každého prostředku Správce prostředků povolen
 
 Protokolování diagnostiky zapnete následovně:
 
-1. Poznamenejte si ID prostředku účtu úložiště, kam se data protokolu ukládají. Tato hodnota má formát: */subscriptions/\<ID předplatného\>/resourceGroups/\<název skupiny prostředků\>/providers/Microsoft.Storage/storageAccounts/\<název účtu úložiště\>*.
+1. Poznamenejte si ID prostředku účtu úložiště, kam se data protokolu ukládají. Tato hodnota má formát: */subscriptions/\<ID předplatného\>/resourceGroups/\<název skupiny prostředků\>/providers/Microsoft.Storage/storageAccounts/\<název účtu úložiště\>* .
 
    Můžete použít libovolný účet úložiště z vašeho předplatného. Tuto informaci najdete pomocí webu Azure Portal na stránce **vlastností** prostředku.
 
-2. Poznamenejte si ID prostředku brány Firewall, který má zapnuté protokolování. Tato hodnota má formát: */subscriptions/\<ID předplatného\>/resourceGroups/\<název skupiny prostředků\>/providers/Microsoft.Network/azureFirewalls/\<název brány firewall\>*.
+2. Poznamenejte si ID prostředku brány Firewall, který má zapnuté protokolování. Tato hodnota má formát: */subscriptions/\<ID předplatného\>/resourceGroups/\<název skupiny prostředků\>/providers/Microsoft.Network/azureFirewalls/\<název brány firewall\>* .
 
    Tuto informaci najdete pomocí webu Azure Portal.
 
@@ -94,14 +94,14 @@ Protokolování diagnostiky zapnete následovně:
 
 Data protokolu aktivit si můžete zobrazit použitím jedné z následujících metod:
 
-* **Nástroje Azure**: Načíst informace z protokolu aktivit pomocí Azure Powershellu, rozhraní příkazového řádku Azure, rozhraní REST API služby Azure nebo na webu Azure portal. Podrobné pokyny k jednotlivým metodám najdete v článku o [operacích s protokoly aktivit ve Správci prostředků](../azure-resource-manager/resource-group-audit.md).
-* **Power BI**: Pokud ještě nemáte [Power BI](https://powerbi.microsoft.com/pricing) účet, můžete zkusit ho zdarma. Díky [balíčku obsahu protokoly aktivit Azure pro Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) můžete svá data analyzovat pomocí předkonfigurovaných řídicích panelů, které můžete použít okamžitě nebo si je upravit.
+* **Nástroje Azure**: Načtěte informace z protokolu aktivit prostřednictvím Azure PowerShell, Azure CLI, Azure REST API nebo Azure Portal. Podrobné pokyny k jednotlivým metodám najdete v článku o [operacích s protokoly aktivit ve Správci prostředků](../azure-resource-manager/resource-group-audit.md).
+* **Power BI**: Pokud ještě nemáte účet [Power BI](https://powerbi.microsoft.com/pricing) , můžete si ho vyzkoušet zdarma. Díky [balíčku obsahu protokoly aktivit Azure pro Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) můžete svá data analyzovat pomocí předkonfigurovaných řídicích panelů, které můžete použít okamžitě nebo si je upravit.
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Zobrazení a analyzování protokolů pravidel sítě a aplikace
 
-[Protokoly Azure monitoru](../azure-monitor/insights/azure-networking-analytics.md) shromáždí soubory čítač a protokolu událostí. Zahrnuje vizualizace a výkonné vyhledávací funkce k analýze protokolů.
+[Protokoly Azure monitor](../azure-monitor/insights/azure-networking-analytics.md) shromáždí údaje o čítačích a souborech protokolu událostí. Zahrnuje vizualizace a výkonné vyhledávací funkce k analýze protokolů.
 
-Brána Firewall služby Azure log analytics ukázkové dotazy, naleznete v tématu [Brána Firewall služby Azure log analytics ukázky](log-analytics-samples.md).
+Ukázkové dotazy Azure Firewall Log Analytics najdete v tématu [Azure firewall ukázek Log Analytics](log-analytics-samples.md).
 
 Můžete se také připojit k účtu úložiště a načíst položky protokolu JSON s protokoly přístupu a výkonu. Po stažení souborů JSON je můžete převést do formátu CSV a zobrazit si je v Excelu, Power BI nebo jiném nástroji s vizualizací dat.
 
@@ -113,10 +113,10 @@ Přejděte k bráně Azure Firewall a v části **Sledování** klikněte na **M
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste nakonfigurovali bránu firewall, aby shromažďovat protokoly, si můžete projít protokoly Azure monitoru a umožňuje zobrazit vaše data.
+Teď, když jste nakonfigurovali bránu firewall pro shromažďování protokolů, můžete prozkoumat protokoly Azure Monitor a zobrazit vaše data.
 
 > [!div class="nextstepaction"]
-> [Monitorování řešení v Azure Monitor protokoly sítě](../azure-monitor/insights/azure-networking-analytics.md)
+> [Řešení monitorování sítě v protokolech Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

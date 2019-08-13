@@ -1,79 +1,79 @@
 ---
-title: Soubory Sharepointu – QnA Maker
+title: Soubory SharePointu – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Přidejte zabezpečenou zdroje dat služby SharePoint do znalostní báze rozšiřuje ve znalostní bázi s dotazy a odpovědi, které mohou být zabezpečené pomocí služby Active Directory.
+description: Přidejte do znalostní báze zabezpečené zdroje dat SharePointu, abyste mohli rozšířit znalostní bázi s dotazy a odpověďmi, které je možné zabezpečit pomocí služby Active Directory.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: ecb9777643296685d0dcc7cd5a177f2fe00d2580
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: da73f42c17a3688e7f1f464ec4a3bbe77cbc9229
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704637"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955198"
 ---
-# <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidejte zabezpečenou zdroje dat SharePoint do znalostní báze
+# <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidání zabezpečeného zdroje dat SharePointu do znalostní báze
 
-Přidejte zabezpečenou zdroje dat služby SharePoint do znalostní báze rozšiřuje ve znalostní bázi s dotazy a odpovědi, které mohou být zabezpečené pomocí služby Active Directory. 
+Přidejte do znalostní báze zabezpečené zdroje dat SharePointu, abyste mohli rozšířit znalostní bázi s dotazy a odpověďmi, které je možné zabezpečit pomocí služby Active Directory. 
 
-Když přidáte zabezpečené dokumentů služby SharePoint do znalostní báze, jako správce nástroje QnA Maker, musíte požádat o oprávnění služby Active Directory pro nástroj QnA Maker. Jakmile toto oprávnění je uveden ze Správce služby Active Directory pro nástroj QnA Maker pro přístup k Sharepointu, není třeba znovu zadat. Každé následné dokumentu přidání znalostní báze nebudete potřebovat autorizace, pokud má stejný prostředek služby SharePoint. 
+Když do znalostní báze přidáte zabezpečený dokument služby SharePoint, jako je třeba správce QnA Maker, musíte požádat o QnA Maker oprávnění služby Active Directory. Jakmile toto oprávnění udělí správce služby Active Directory, aby se QnA Maker pro přístup k SharePointu, nemusí se znovu nadávat. Každý následující dokument přidaný do znalostní báze nebude vyžadovat autorizaci, pokud se nachází ve stejném prostředku služby SharePoint. 
 
-Pokud správce nástroje QnA Maker znalostní báze knowledge base není správce služby Active Directory, musíte ke komunikaci se správcem služby Active Directory k dokončení tohoto procesu.
+Pokud správce znalostní báze QnA Maker Knowledge Base není správce služby Active Directory, bude nutné komunikovat se správcem služby Active Directory a dokončit tento proces.
 
-## <a name="add-supported-file-types-to-knowledge-base"></a>Přidat podporované typy souborů do znalostní báze
+## <a name="add-supported-file-types-to-knowledge-base"></a>Přidání podporovaných typů souborů do znalostní báze Knowledge Base
 
-Můžete přidat všechny podporované nástroje QnA Maker [typy souborů](../Concepts/data-sources-supported.md) z webu služby SharePoint do znalostní báze. Možná budete muset udělit [oprávnění](#permissions) Pokud soubor prostředků je zabezpečený.
+Z webu služby SharePoint do znalostní báze můžete přidat všechny [typy souborů](../Concepts/data-sources-supported.md) podporované QnA maker. Je možné, že budete muset udělit [oprávnění](#permissions) , pokud je prostředek souboru zabezpečený.
 
-1. V knihovně s webem služby SharePoint, vyberte tlačítko se třemi tečkami nabídku souboru, `...`.
-1. Zkopírujte adresu URL k souboru.
+1. Z knihovny s webem služby SharePoint vyberte nabídku `...`se třemi tečkami v souboru.
+1. Zkopírujte adresu URL souboru.
 
-   ![Získáte adresu URL souboru SharePoint tak, že vyberete tři tečky nabídky Soubor pak zkopírujete adresu URL.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
+   ![Adresu URL souboru SharePointu získáte tak, že vyberete nabídku se třemi tečkami souboru a pak zkopírujete adresu URL.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. Na portálu pro nástroj QnA Maker na **nastavení** stránce [přidejte adresu URL](edit-knowledge-base.md#add-datasource) znalostní báze. 
+1. Na portálu QnA Maker na stránce **Nastavení** [přidejte adresu URL](edit-knowledge-base.md#add-datasource) do znalostní báze. 
 
-### <a name="images-with-sharepoint-files"></a>Image se soubory služby SharePoint
+### <a name="images-with-sharepoint-files"></a>Obrázky se soubory SharePointu
 
-Pokud soubory obrázků, ty nejsou extrahována. Po na páry QnA je extrahován soubor, můžete přidat bitovou kopii, z portálu QnA Maker.
+Pokud soubory obsahují obrázky, nejsou extrahovány. Obrázek můžete přidat z portálu QnA Maker po extrakci souboru do párů QnA.
 
-Přidání bitové kopie s následující syntaxí markdownu: 
+Přidejte bitovou kopii s následující syntaxí Markdownu: 
 
 ```markdown
 ![Explanation or description of image](URL of public image)
 ```
 
-Text v hranatých závorkách a `[]`, vysvětluje bitovou kopii. Adresa URL v závorkách, `()`, je přímý odkaz na obrázek. 
+Text v hranatých závorkách `[]`, popis obrázku. Adresa URL v závorkách `()`je přímý odkaz na obrázek. 
 
-Při testování pár QnA v panelu interaktivní testu na portálu pro nástroj QnA Maker na obrázku zobrazí se místo text v markdownu. Tato operace ověří image je možné veřejně načíst z klientské aplikace.
+Při testování páru QnA na interaktivním panelu testu se zobrazí obrázek místo Markdownu textu v portálu QnA Maker. Tím se ověří, že image se dá veřejně načíst z klienta aplikace.
 
 ## <a name="permissions"></a>Oprávnění
 
-Udělení oprávnění se stane, když zabezpečené soubor ze serveru SharePoint je přidán do znalostní báze. V závislosti na tom, jak nastavit SharePoint nahoru a oprávnění uživatele přidání souboru, to může vyžadovat:
+K udělení oprávnění dojde, když se do znalostní báze přidá zabezpečený soubor ze SharePointového serveru. V závislosti na tom, jak je SharePoint nastavený, a oprávnění osoby, která tento soubor přidává, může to vyžadovat:
 
-* žádné další kroky – osoba přidávání souboru má všechna potřebná oprávnění.
-* kroky i [znalostní báze správce](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal) a [Správce služby Active Directory](#active-directory-manager-grant-file-read-access-to-qna-maker).
+* žádné další kroky – osoba, která soubor přidala, má všechna potřebná oprávnění.
+* kroky pro [správce znalostní báze](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal) i [Správce služby Active Directory](#active-directory-manager-grant-file-read-access-to-qna-maker).
 
-Viz následující postup. 
+Projděte si níže uvedené kroky. 
 
-### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>Správce znalostní báze Knowledge base: přidání zdroje dat služby SharePoint portálu QnA Maker
+### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>Správce znalostní báze: přidání zdroje dat SharePointu na portál QnA Maker
 
-Když **správce nástroje QnA Maker** přidá zabezpečené dokumentů služby SharePoint do znalostní báze, inicializuje Správce znalostní báze žádost o oprávnění, která správce služby Active Directory je potřeba dokončit.
+Když **správce QnA maker** přidá do znalostní báze zabezpečený dokument služby SharePoint, zahájí správce znalostní báze požadavek na oprávnění, které musí dokončit Správce služby Active Directory.
 
-Požadavku začíná automaticky otevírané okno pro ověření účtu služby Active Directory. 
+Požadavek začíná automaticky otevírané okno pro ověření účtu služby Active Directory. 
 
 ![Ověřit uživatelský účet](../media/add-sharepoint-datasources/authenticate-user-account.png)
 
-Jakmile správce nástroje QnA Maker vybere tento účet, správce Azure Active Directory obdrží oznámení o tom, že musí povolit nástroj QnA Maker aplikace (ne správce nástroje QnA Maker) přístup k prostředku služby SharePoint. Správce Azure Active Directory, bude nutné provést pro každý prostředek na Sharepointu, ale ne každý dokument v prostředku. 
+Jakmile nástroj QnA Maker Manager vybere účet, bude správce Azure Active Directory dostávat oznámení, že musí aplikaci QnA Maker (nikoli správce QnA Maker) přistupovat k prostředku služby SharePoint. Správce Azure Active Directory bude muset provést tento postup pro každý prostředek SharePointu, ale ne všechny dokumenty v tomto prostředku. 
 
-### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Správce služby Active directory: udělení oprávnění ke čtení souboru pro nástroj QnA Maker
+### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Správce služby Active Directory: Udělte oprávnění ke čtení souboru QnA Maker
 
-Správce služby Active Directory (ne správce nástroje QnA Maker) je potřeba udělit přístup ke QnA Maker pro přístup k prostředku služby SharePoint tak, že vyberete [tento odkaz](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) autorizovat aplikaci nástroje QnA Maker Portal SharePoint enterprise čtení souboru oprávnění. 
+Správce služby Active Directory (ne správce QnA Maker) musí pro přístup QnA Maker k prostředku služby SharePoint udělit přístup, a to tak, že vyberete [Tento odkaz](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) k autorizaci, QnA Maker má podniková aplikace SharePoint Portal oprávnění ke čtení souboru. 
 
-![Správce Azure Active Directory interaktivně uděluje oprávnění](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
+![Správce Azure Active Directory uděluje oprávnění interaktivně.](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 
 <!--
 The Active Directory manager must grant QnA Maker access either by application name, `QnAMakerPortalSharePoint`, or by application ID, `c2c11949-e9bb-4035-bda8-59542eb907a6`. 
@@ -111,19 +111,19 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
     ![Grant required permissions](../media/add-sharepoint-datasources/grant-required-permissions.png)
 -->
-### <a name="grant-access-from-the-azure-active-directory-admin-center"></a>Udělit přístup z centra pro správu Azure Active Directory
+### <a name="grant-access-from-the-azure-active-directory-admin-center"></a>Udělení přístupu z centra pro správu Azure Active Directory
 
-1. Správce služby Active Directory přihlásí k webu Azure portal a otevře  **[podnikové aplikace](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)** . 
+1. Správce služby Active Directory se přihlásí k Azure Portal a otevře **[podnikové aplikace](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)** . 
 
-1. Vyhledejte `QnAMakerPortalSharePoint` vyberte aplikaci nástroje QnA Maker. 
+1. `QnAMakerPortalSharePoint` Vyhledejte aplikaci QnA maker vyberte. 
 
-    [![Vyhledejte QnAMakerPortalSharePoint v seznamu podnikových aplikací](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
+    [![Hledat QnAMakerPortalSharePoint v seznamu podnikových aplikací](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
-1. V části **zabezpečení**, přejděte na stránku **oprávnění**. Vyberte **udělit souhlas správce služby pro organizaci**. 
+1. V části **zabezpečení**pokračujte na **oprávnění**. Vyberte **udělit souhlas správce pro organizaci**. 
 
-    [![Vyberte ověřeného uživatele pro správce Active Directory](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
+    [![Vybrat ověřeného uživatele pro správce služby Active Directory](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
-1. Vyberte účet přihlašování s oprávněním k udělování oprávnění pro službu Active Directory. 
+1. Vyberte účet pro přihlášení s oprávněním pro udělení oprávnění pro službu Active Directory. 
 
 
   
@@ -188,4 +188,4 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Spolupráce na znalostní báze](collaborate-knowledge-base.md)
+> [Spolupráce na znalostní bázi](collaborate-knowledge-base.md)

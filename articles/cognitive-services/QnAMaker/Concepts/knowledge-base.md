@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e40af9b2362ee52a1d00f29cdc112d3c2b9a842
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 022b16669791b9b9cce066b3dd17c70b33569cc0
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565851"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955239"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Co je znalostní bázi nástroje QnA Maker?
 
@@ -26,9 +26,9 @@ Znalostní báze QnA Maker se skládá ze sady páry otázek a odpovědí (QnA) 
 
 * **Dotazy** -dotaz obsahuje text, který nejlépe představuje uživatelský dotaz. 
 * **Odpovědi** – odpověď je tato odpověď, která je vrácena, pokud uživatelský dotaz je nalezena shoda s přidružené otázku.  
-* **Metadata** – Metadata jsou značky přiřazeny k pár QnA a jsou reprezentovány jako páry klíč hodnota. Metadata značky se používají k filtrování QnA páry a omezit tak skupinu, přes který dotaz se provádí porovnávání.
+* **Metadata** – Metadata jsou značky přiřazeny k pár QnA a jsou reprezentovány jako páry klíč hodnota. Značky metadat slouží k filtrování párů QnA a omezení sady, u které se provádí párování dotazů.
 
-Jeden QnA, reprezentovaný číselné ID QnA má několik variant otázky (alternativní dotazy), že všechny mapovat na jednu odpověď. Kromě toho každý takový pár může mít více polí metadat s ním spojená: jeden klíč a jednu hodnotu.
+Jeden QnA, reprezentovaný číselné ID QnA má několik variant otázky (alternativní dotazy), že všechny mapovat na jednu odpověď. Ke každému takové dvojici navíc může být přidruženo více polí metadat: jeden klíč a jedna hodnota.
 
 ![Nástroj QnA Maker znalostních bází](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
 
@@ -36,31 +36,31 @@ Jeden QnA, reprezentovaný číselné ID QnA má několik variant otázky (alter
 
 Při ingestování formátovaný obsah do znalostní báze, nástroj QnA Maker se pokusí převést obsah na markdown. Čtení [to](https://aka.ms/qnamaker-docs-markdown-support) blogu o markdownu formáty používaném většina klientů konverzace.
 
-Pole metadat se skládá z dvojice klíč hodnota oddělené dvojtečkou **(produktu: Shredder)** . Klíče a hodnoty musí být prostého textu. Klíč metadat nesmí obsahovat žádné mezery. Metadata podporuje pouze jednu hodnotu pro klíč.
+Pole metadat se skládá z dvojice klíč hodnota oddělené dvojtečkou **(produktu: Shredder)** . Klíče a hodnoty musí být prostého textu. Klíč metadat nesmí obsahovat žádné mezery. Metadata podporují pouze jednu hodnotu na klíč.
 
-## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Jak QnA Maker zpracovává uživatelské dotaz pro výběr nejlepší odpověď
+## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Jak QnA Maker zpracovává dotaz uživatele, aby mohl vybrat nejlepší odpověď
 
-Trénovaného a [publikované](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker znalostní báze obdrží dotaz uživatele, robota nebo jiné klientské aplikace na [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Následující obrázek znázorňuje proces, při přijetí uživatelský dotaz.
+Vyškolená [](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) a publikovaná QnA maker znalostní báze obdrží dotaz na uživatele z robota nebo jiné klientské aplikace v [rozhraní API pro GenerateAnswer](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Následující diagram znázorňuje proces, když je přijat dotaz uživatele.
 
-![Proces hodnocení pro uživatelský dotaz](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+![Proces řazení pro dotaz uživatele](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
 
-Proces je vysvětleno v následující tabulce:
+Postup je vysvětlen v následující tabulce:
 
 |Krok|Účel|
 |--|--|
-|1|Klientská aplikace odešle dotaz na uživatele [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
-|2|Nástroj QnA Maker předzpracování uživatelský dotaz se rozpoznávání jazyka, spellers a moduly pro dělení na slova.|
-|3|Tato předzpracování se používá ke změně uživatelský dotaz pro nejlepší výsledky hledání.|
-|4|Tento upravený dotaz odeslán do indexu Azure Search, přijetí `top` počet výsledků. Pokud správnou odpověď není v těchto výsledky, zvyšte hodnotu `top` mírně. Obecně hodnotu 10 pro `top` funguje v 90 % z dotazů.|
-|5|Nástroj QnA Maker se týká pokročilé snadné k určení správnost počet získaných výsledků vyhledávání Azure pro uživatelský dotaz. |
-|6|Klasifikátor trénovaného modelu používá funkci skóre, z kroku 5, chcete-li seřadit výsledky Azure Search.|
-|7|Nové výsledky se vrátí do klientské aplikace v seřazený pořadí.|
+|1|Klientská aplikace pošle dotaz uživatele do [rozhraní GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
+|2|QNA maker předzpracování dotazu uživatele pomocí rozpoznávání jazyka, pravopisu a dělení slov.|
+|3|K tomuto předběžnému zpracování se provádí Změna dotazu uživatele pro dosažení nejlepších výsledků hledání.|
+|4|Tento změněný dotaz se odešle do Azure Search indexu a přijímá `top` počet výsledků. Pokud v těchto výsledcích není správná odpověď, zvyšte hodnotu `top` mírně. Obecně platí, že hodnota 10 `top` pro funguje v 90% dotazů.|
+|5|QnA Maker použije rozšířená featurization k určení správnosti načtených Azure Searchch výsledků pro dotaz na uživatele. |
+|6|Vyškolený model hodnocení používá skóre funkcí z kroku 5 k zařazení výsledků Azure Search.|
+|7|Nové výsledky se vrátí do klientské aplikace v pořadí podle pořadí.|
 |||
 
-Funkce používá zahrnují ale nejsou omezeny na úrovni slovo sémantiku, Termín úrovně důležitosti souhrnu a hloubkové zjištěná sémantickým modelům určíte podobnosti a relevance mezi dva textové řetězce.
+Používané funkce zahrnují, ale nejsou omezeny na sémantiku na úrovni aplikace Word, důležitost na úrovni podmínky v Corpus a hloubkované sémantické modely, které určují podobnost a relevanci mezi dvěma textovými řetězci.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Životní cyklus vývoje znalostní báze](./development-lifecycle-knowledge-base.md)

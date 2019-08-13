@@ -3,18 +3,17 @@ title: Seznámení se službou Azure IoT Hub | Microsoft Docs
 description: Seznamte se se službou Azure IoT Hub. Tato služba IoT je určená ke škálovatelnému příjmu dat, správě zařízení a zajištění zabezpečení.
 author: nberdy
 ms.author: nberdy
-ms.date: 07/04/2018
+ms.date: 08/08/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-manager: briz
-ms.openlocfilehash: 6dadd746bccd028a2b81a980d99ab47ec9e6e2a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61320566"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950460"
 ---
 # <a name="what-is-azure-iot-hub"></a>Co je Azure IoT Hub?
 
@@ -26,7 +25,7 @@ Možnosti služby IoT Hub vám pomůžou vytvářet škálovatelná řešení Io
 
 ## <a name="scale-your-solution"></a>Škálování vlastního řešení
 
-IoT Hub zajišťuje podporu vašich úloh IoT díky škálování na miliony současně připojených zařízení a miliony událostí za sekundu. Služba IoT Hub nabízí několik úrovní služeb, aby co nejlépe vyhovovala vašim požadavkům na škálování. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
+IoT Hub zajišťuje podporu vašich úloh IoT díky škálování na miliony současně připojených zařízení a miliony událostí za sekundu. Další informace o škálování IoT Hub najdete v tématu [IoT Hub škálování](iot-hub-scaling.md?branch=release-iotbasic). Pokud chcete získat další informace o různých úrovních služby, které nabízí IoT Hub a co nejlépe vyhovuje vašim potřebám škálovatelnosti, podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Zabezpečení komunikace
 
@@ -50,7 +49,7 @@ IoT Hub poskytuje zabezpečený komunikační kanál, přes který vaše zaříz
 
 Integrovaná funkce směrování zpráv poskytuje flexibilitu umožňující nastavení automatického odesílání zpráv založeného na pravidlech:
 
-* Pomocí směrování zpráv můžete řídit, kam vaše centrum odesílá telemetrická data ze zařízení.
+* [Směrování zpráv](iot-hub-devguide-messages-d2c.md) slouží k určení, kam váš rozbočovač odesílá telemetrii zařízení.
 
 * Za směrování zpráv do více koncových bodů se neúčtují žádné další poplatky.
 
@@ -110,7 +109,7 @@ Pokud vaše řešení nemůže používat některý z podporovaných protokolů,
 
 ## <a name="quotas-and-limits"></a>Kvóty a omezení
 
-Pro každé předplatné Azure platí výchozí omezení kvót, která brání zneužití služeb, a tato omezení můžou ovlivnit dosah vašeho řešení IoT. Aktuální limit na bázi předplatného je 50 IoT hub na předplatné. O navýšení kvóty můžete požádat kontaktováním podpory. Další podrobnosti o limitech kvót:
+Pro každé předplatné Azure platí výchozí omezení kvót, která brání zneužití služeb, a tato omezení můžou ovlivnit dosah vašeho řešení IoT. Aktuální limit pro každé předplatné je 50 centra IoT na předplatné. O navýšení kvóty můžete požádat kontaktováním podpory. Další informace najdete v tématu [IoT Hub kvóty a omezování](iot-hub-devguide-quotas-throttling.md). Další podrobnosti o limitech kvót najdete v jednom z následujících článků:
 
 * [Omezení služeb v předplatném Azure](../azure-subscription-service-limits.md)
 
@@ -120,4 +119,4 @@ Pro každé předplatné Azure platí výchozí omezení kvót, která brání z
 
 Pokud chcete vyzkoušet komplexní řešení IoT, projděte si rychlé starty pro službu IoT Hub:
 
-* [Rychlé zprovoznění: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-node.md)
+* [Rychlé zprovoznění: Odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-node.md)

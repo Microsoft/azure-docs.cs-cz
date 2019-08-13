@@ -1,42 +1,41 @@
 ---
-title: (Django) Python s PostgreSQL v Linuxu – služba Azure App Service | Dokumentace Microsoftu
-description: Zjistěte, jak v Azure spustit aplikaci Python řízenou daty s připojením k databázi PostgreSQL. Django je v tomto kurzu použili.
+title: Webová aplikace Python (Django) s PostgreSQL v systému Linux – Azure App Service | Microsoft Docs
+description: Naučte se, jak spustit webovou aplikaci Python řízenou daty (Django) v Azure s připojením k databázi PostgreSQL.
 services: app-service\web
 documentationcenter: python
 author: cephalin
-manager: jeconnoc
+manager: gwallace
 ms.service: app-service-web
 ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.reviewer: beverst
 ms.custom: seodec18
-ms.openlocfilehash: 3fbc9429da393f4df14ade57d6bd20219b5fcfa2
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 1cb9cd72908dc88ef2890764bc8d3fad88a82707
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617524"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951910"
 ---
-# <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Vytvoření aplikace Python a PostgreSQL v Azure App Service
+# <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Vytvoření webové aplikace Python (Django) s PostgreSQL v Azure App Service
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz ukazuje, jak vytvářet datově řízené aplikace v Pythonu, pomocí PostgreSQL jako databáze back-endu. Jakmile budete hotovi, budete mít ve službě App Service v Linuxu spuštěnou aplikaci Django.
+[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci v Pythonu řízeném daty (Django) pomocí PostgreSQL jako back-endu databáze. Po dokončení budete mít webovou aplikaci Django běžící v Azure App Service v systému Linux.
 
-![Aplikaci Python Django ve službě App Service v Linuxu](./media/tutorial-python-postgresql-app/django-admin-azure.png)
+![Webová aplikace Python Django v App Service v systému Linux](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořit databázi PostgreSQL v Azure
-> * Připojit aplikaci Python k PostgreSQL
-> * Nasadit aplikaci do Azure
+> * Připojení webové aplikace v Pythonu k PostgreSQL
+> * Nasazení webové aplikace v Pythonu do Azure
 > * Zobrazit diagnostické protokoly
-> * Spravovat aplikaci na webu Azure Portal
+> * Správa webové aplikace v Pythonu v Azure Portal
 
 > [!NOTE]
-> Před vytvořením služby Azure Database for PostgreSQL, Zkontrolujte prosím [které generace výpočetních funkcí je k dispozici ve vaší oblasti](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores).
+> Než začnete vytvářet Azure Database for PostgreSQL, zkontrolujte, [Jaké výpočetní generace je ve vaší oblasti k dispozici](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores).
 
 Podle kroků v tomto článku můžete postupovat v systému macOS. Pokyny pro Linux a Windows jsou ve většině případů stejné, ale odlišnosti nejsou v tomto kurzu podrobně popsané.
 
@@ -44,7 +43,7 @@ Podle kroků v tomto článku můžete postupovat v systému macOS. Pokyny pro L
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalovat Python](https://www.python.org/downloads/).
@@ -66,7 +65,7 @@ psql postgres
 
 Pokud se úspěšně připojíte, vaše databáze PostgreSQL je spuštěná. Pokud ne, podle pokynů pro váš operační systém na stránce [Downloads – PostgreSQL Core Distribution](https://www.postgresql.org/download/) (Ke stažení – Distribuce jádra PostgreSQL) se ujistěte, že je vaše místní databáze PostgreSQL spuštěná.
 
-Vytvořit databázi s názvem *pollsdb* a nastavte samostatného uživatele databáze s názvem *správce* heslem *supersecretpass*.
+Vytvořte databázi s názvem *pollsdb* a nastavte samostatného uživatele databáze s názvem *správce* s heslem *supersecretpass*.
 
 ```sql
 CREATE DATABASE pollsdb;
@@ -93,11 +92,11 @@ git clone https://github.com/Azure-Samples/djangoapp.git
 cd djangoapp
 ```
 
-Toto ukázkové úložiště obsahuje [Django](https://www.djangoproject.com/) aplikace. Je stejná aplikace řízené daty by získáte pomocí následujících [úvodní kurz v dokumentaci k Django](https://docs.djangoproject.com/en/2.1/intro/tutorial01/). V tomto kurzu není naučit vás Django, ale popisuje, jak využít nasazení a spuštění aplikace Django (nebo jiné aplikace v Pythonu s daty) do služby App Service.
+Toto ukázkové úložiště obsahuje aplikaci [Django](https://www.djangoproject.com/) . Jedná se o stejnou aplikaci založenou na datech, kterou byste získali pomocí [kurzu Začínáme v dokumentaci k Django](https://docs.djangoproject.com/en/2.1/intro/tutorial01/). Tento kurz vám Django, ale ukáže vám, jak nasadit a spustit webovou aplikaci Django (nebo jinou aplikaci v Pythonu založené na datech) k Azure App Service.
 
 ### <a name="configure-environment"></a>Konfigurace prostředí
 
-Vytvořit virtuální prostředí Python a pro nastavení připojení databáze použít skript.
+Vytvořte virtuální prostředí Python a pomocí skriptu nastavte nastavení připojení k databázi.
 
 ```bash
 # Bash
@@ -111,11 +110,11 @@ venv\scripts\activate
 .\env.ps1
 ```
 
-Proměnné prostředí definované v *env.sh* a *env.ps1* se používají v _azuresite/settings.py_ k definování nastavení databáze.
+Proměnné prostředí definované v *env.sh* a *env. ps1* se používají v _azuresite/Settings. py_ k definování nastavení databáze.
 
 ### <a name="run-app-locally"></a>Místní spuštění aplikace
 
-Nainstalujte požadované balíčky [spusťte Django migrace](https://docs.djangoproject.com/en/2.1/topics/migrations/) a [vytvořit uživateli s právy](https://docs.djangoproject.com/en/2.1/intro/tutorial02/#creating-an-admin-user).
+Nainstalujte požadované balíčky, [Spusťte migrace Django](https://docs.djangoproject.com/en/2.1/topics/migrations/) a [Vytvořte uživatele s právy pro správu](https://docs.djangoproject.com/en/2.1/intro/tutorial02/#creating-an-admin-user).
 
 ```bash
 pip install -r requirements.txt
@@ -123,13 +122,13 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-Po vytvoření uživatele s rolí správce spusťte Django server.
+Po vytvoření uživatele s oprávněními správce spusťte server Django.
 
 ```bash
 python manage.py runserver
 ```
 
-Po úplném načtení aplikace se zobrazí zpráva podobná této:
+Po úplném načtení webové aplikace Django se zobrazí zpráva podobná této:
 
 ```bash
 Performing system checks...
@@ -141,17 +140,17 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-V prohlížeči přejděte na `http://localhost:8000`. Zobrazí se zpráva `No polls are available.`. 
+V prohlížeči přejděte na `http://localhost:8000`. Měla by se zobrazit zpráva `No polls are available.`. 
 
-Přejděte na `http://localhost:8000/admin` a přihlaste se pomocí uživatele s rolí správce jste vytvořili v předchozím kroku. Klikněte na tlačítko **přidat** vedle **dotazy** a vytvořit dotaz cyklického dotazování některé možnosti.
+Přejděte na `http://localhost:8000/admin` adresu a přihlaste se pomocí uživatele s rolí správce, kterého jste vytvořili v posledním kroku. Klikněte na tlačítko **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
 
 ![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-Přejděte na `http://localhost:8000` znovu a podívejte se zobrazí dotaz cyklického dotazování.
+Přejděte na `http://localhost:8000` adresu znovu a podívejte se na zobrazenou otázku dotazování.
 
-Ukázková aplikace Django ukládá uživatelská data v databázi. Pokud jste úspěšně přidat dotaz cyklického dotazování, vaše aplikace zapisuje data do místní databáze PostgreSQL.
+Ukázková aplikace Django ukládá uživatelská data do databáze. Pokud jste při přidávání otázky na dotazování úspěšně přidali otázku dotazování, aplikace zapisuje data do místní databáze PostgreSQL.
 
-Zastavit Django server kdykoli, zadáním kombinace kláves Ctrl + C v terminálu.
+Pokud chcete server Django kdykoli zastavit, zadejte v terminálu kombinaci kláves CTRL + C.
 
 ## <a name="create-a-production-postgresql-database"></a>Vytvoření produkční databáze PostgreSQL
 
@@ -167,7 +166,7 @@ V tomto kroku vytvoříte databázi PostgreSQL v Azure. Po nasazení do Azure bu
 
 Pomocí příkazu [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) ve službě Cloud Shell vytvořte server PostgreSQL.
 
-V následujícím ukázkovém příkazu nahraďte  *\<postgresql-name >* s jedinečným názvem serveru a nahradit  *\<uživatelské jméno správce >* a  *\<heslo správce >* požadované použití uživatelských přihlašovacích údajů. Přihlašovací údaje uživatele jsou přihlašovací údaje k účtu správce databáze. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<postgresql-name>.postgres.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure.
+V následujícím ukázkovém příkazu nahraďte  *\<PostgreSQL-Name >* jedinečným názvem serveru a nahraďte  *\<> Správce-username >* a  *\<admin-heslo* pomocí požadovaných přihlašovacích údajů uživatele. Přihlašovací údaje uživatele jsou přihlašovací údaje k účtu správce databáze. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<postgresql-name>.postgres.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure.
 
 ```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql-name> --location "West Europe" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
@@ -195,7 +194,7 @@ Po vytvoření serveru Azure Database for PostgreSQL se v Azure CLI zobrazí pod
 ```
 
 > [!NOTE]
-> Mějte na paměti \<uživatelské jméno správce > a \<heslo správce > na později. Budete je potřebovat, abyste se mohli přihlásit k serveru Postgre a jeho databázím.
+> Zapamatujte si \<správce – uživatelské \<jméno > a heslo správce > pro pozdější verzi. Budete je potřebovat, abyste se mohli přihlásit k serveru Postgre a jeho databázím.
 
 ### <a name="create-firewall-rules-for-the-postgresql-server"></a>Vytvoření pravidel brány firewall pro server PostgreSQL
 
@@ -208,7 +207,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > Toto nastavení umožňuje síťová připojení ze všech IP adres v síti Azure. Pro produkční prostředí zkuste nakonfigurovat co nejvíce omezující pravidla firewallu tak, že [použijete jen odchozí IP adresy, které používá vaše aplikace](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-Ve službě Cloud Shell pomocí příkazu znovu povolit přístup ze svého místního počítače tak, že nahradíte  *\<your-ip-address >* s [vaše místní IP adresa protokolu IPv4 adresa](https://www.whatsmyip.org/).
+V Cloud Shell znovu spusťte příkaz, aby se povolil přístup z místního počítače, a to tak, že nahradíte  *\<> adres IP-IP-Address* [vaší místní IP adresou IPv4](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
@@ -216,11 +215,11 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 
 ## <a name="connect-python-app-to-production-database"></a>Připojení aplikace v Pythonu k produkční databázi
 
-V tomto kroku připojíte k Azure Database for PostgreSQL, který jste vytvořili ukázkové aplikace Django.
+V tomto kroku připojíte webovou aplikaci v Django k serveru Azure Database for PostgreSQL, který jste vytvořili.
 
 ### <a name="create-empty-database-and-user-access"></a>Vytvoření prázdné databáze a přístupu uživatelů
 
-Ve službě Cloud Shell připojení k databázi spuštěním následujícího příkazu. Když se zobrazí výzva k zadání hesla správce, použijte stejné heslo, které jste zadali v části [Vytvoření serveru Azure Database for PostgreSQL](#create-an-azure-database-for-postgresql-server).
+V Cloud Shell se připojte k databázi spuštěním příkazu níže. Když se zobrazí výzva k zadání hesla správce, použijte stejné heslo, které jste zadali v části [Vytvoření serveru Azure Database for PostgreSQL](#create-an-azure-database-for-postgresql-server).
 
 ```bash
 psql -h <postgresql-name>.postgres.database.azure.com -U <admin-username>@<postgresql-name> postgres
@@ -241,7 +240,7 @@ Zadáním příkazu `\q` ukončete klienta PostgreSQL.
 
 ### <a name="test-app-connectivity-to-production-database"></a>Test připojení aplikace k provozní databázi
 
-V okně místního terminálu změnit proměnné prostředí databáze (které jste nakonfigurovali v předchozích krocích spuštěním *env.sh* nebo *env.ps1*):
+V okně místního terminálu změňte proměnné prostředí databáze (které jste předtím nakonfigurovali spuštěním *env.sh* nebo *env. ps1*):
 
 ```bash
 # Bash
@@ -257,26 +256,26 @@ $Env:DBNAME = "pollsdb"
 $Env:DBPASS = "supersecretpass"
 ```
 
-Spustit migraci Django do Azure databáze a vytvořit uživateli s právy.
+Spusťte migraci Django do databáze Azure a vytvořte uživatele s právy pro správu.
 
 ```bash
 python manage.py migrate
 python manage.py createsuperuser
 ```
 
-Po vytvoření uživatele s rolí správce spusťte Django server.
+Po vytvoření uživatele s oprávněními správce spusťte server Django.
 
 ```bash
 python manage.py runserver
 ```
 
-Přejděte na `http://localhost:8000` v akci. Zobrazí se zpráva `No polls are available.` znovu. 
+Znovu přejděte `http://localhost:8000` na. Měla by se zobrazit zpráva `No polls are available.` znovu. 
 
-Přejděte na `http://localhost:8000/admin` a přihlaste se pomocí vytvořeného uživatele s rolí správce a vytvořit dotaz cyklického dotazování stejně jako předtím.
+Přejděte na `http://localhost:8000/admin` adresu a přihlaste se pomocí vámi vytvořeného uživatele pro správu a vytvořte otázku dotazování, jako byste předtím.
 
 ![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-Přejděte na `http://localhost:8000` znovu a podívejte se zobrazí dotaz cyklického dotazování. Vaše aplikace je nyní zapisuje data do databáze v Azure.
+Přejděte na `http://localhost:8000` adresu znovu a podívejte se na zobrazenou otázku dotazování. Vaše aplikace teď zapisuje data do databáze v Azure.
 
 ## <a name="deploy-to-azure"></a>Nasazení do Azure
 
@@ -284,16 +283,15 @@ V tomto kroku nasadíte aplikaci Python připojenou k Postgre do služby Azure A
 
 ### <a name="configure-repository"></a>Konfigurace úložiště
 
-Ověří Django `HTTP_HOST` záhlaví v příchozí požadavky. Pro vaši aplikaci Django pro práci ve službě App Service budete muset přidat do povolených hostitele plně kvalifikovaný název domény aplikace. Otevřít _azuresite/settings.py_ a najít `ALLOWED_HOSTS` nastavení. Změňte řádek na:
+Django ověří `HTTP_HOST` hlavičku v příchozích požadavcích. Aby webová aplikace Django fungovala v App Service, musíte do povolených hostitelů přidat plně kvalifikovaný název domény aplikace. Otevřete _azuresite/Settings. py_ a vyhledejte `ALLOWED_HOSTS` nastavení. Změňte řádek na:
 
 ```python
-ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net',
-                 '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
+ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
-V dalším kroku Django nepodporuje [obsluhy statických souborů v produkčním prostředí](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), takže budete muset ručně povolit. V tomto kurzu použijete [WhiteNoise](https://whitenoise.evans.io/en/stable/). Balíček WhiteNoise je již součástí _souboru requirements.txt_. Potřebujete nakonfigurovat Django jeho použití. 
+V dalším kroku Django nepodporuje [obsluhu statických souborů v produkčním](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/)prostředí, takže je potřeba tuto možnost povolit ručně. V tomto kurzu použijete [WhiteNoise](https://whitenoise.evans.io/en/stable/). Balíček WhiteNoise je již součástí _požadavků. txt_. Stačí nakonfigurovat Django, abyste ho mohli používat. 
 
-V _azuresite/settings.py_, vyhledejte `MIDDLEWARE` nastavením a přidejte `whitenoise.middleware.WhiteNoiseMiddleware` middlewaru, který má v seznamu přímo pod `django.middleware.security.SecurityMiddleware` middlewaru. Vaše `MIDDLEWARE` nastavení by měl vypadat přibližně takto:
+V _azuresite/Settings. py_Najděte `MIDDLEWARE` nastavení a `django.middleware.security.SecurityMiddleware` do seznamu přidejte `whitenoise.middleware.WhiteNoiseMiddleware` middleware, a to hned pod middlewaru. `MIDDLEWARE` Nastavení by mělo vypadat takto:
 
 ```python
 MIDDLEWARE = [
@@ -303,7 +301,7 @@ MIDDLEWARE = [
 ]
 ```
 
-Na konci _azuresite/settings.py_, přidejte následující řádky.
+Na konci _azuresite/Settings. py_přidejte následující řádky.
 
 ```python
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -311,10 +309,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ```
 
-Další informace o konfiguraci WhiteNoise, najdete v článku [WhiteNoise dokumentaci](https://whitenoise.evans.io/en/stable/).
+Další informace o konfiguraci WhiteNoise najdete v [dokumentaci k WhiteNoise](https://whitenoise.evans.io/en/stable/).
 
 > [!IMPORTANT]
-> V části Nastavení databáze již následující doporučené postupy zabezpečení pomocí proměnné prostředí. Doporučení pro dokončení nasazení, najdete v části [Django dokumentaci: kontrolní seznam nasazení](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).
+> V části nastavení databáze již následuje postup zabezpečení při používání proměnných prostředí. Kompletní doporučení k nasazení najdete v [dokumentaci k Django: kontrolní seznam nasazení](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).
 
 Potvrďte změny do úložiště.
 
@@ -346,7 +344,7 @@ Následující příklad určí jako nastavení aplikace podrobnosti o připojen
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="manager@<postgresql-name>" DBPASS="supersecretpass" DBNAME="pollsdb"
 ```
 
-Informace o tom, jak jsou tato nastavení aplikace přístupné z kódu, naleznete v tématu [přístup k proměnným prostředí](how-to-configure-python.md#access-environment-variables).
+Informace o tom, jak jsou tato nastavení aplikace ve vašem kódu dostupná, najdete v tématu věnovaném [přístupu k proměnným prostředí](how-to-configure-python.md#access-environment-variables).
 
 ### <a name="push-to-azure-from-git"></a>Přenos z Gitu do Azure
 
@@ -374,39 +372,39 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
    06b6df4..6520eea  master -> master
 ```  
 
-Server nasazení služby App Service se zobrazí _souboru requirements.txt_ v kořenovém adresáři úložiště a správy balíčků Pythonu spustí automaticky po `git push`.
+Server pro nasazení App Service uvidí _požadavky. txt_ v kořenovém adresáři úložiště a spustí správu balíčků Pythonu `git push`automaticky po dokončení.
 
-### <a name="browse-to-the-azure-app"></a>Přejděte do aplikace Azure
+### <a name="browse-to-the-azure-app"></a>Přejít k aplikaci Azure
 
-Přejděte do nasazené aplikace. Když se o aplikaci žádá poprvé, spuštění nějakou dobu trvá, protože se musí stáhnout a spustit kontejner. Pokud stránce vyprší časový limit nebo se na ní zobrazí chybová zpráva, počkejte několik minut a stránku aktualizujte.
+Přejděte k nasazené aplikaci. Když se o aplikaci žádá poprvé, spuštění nějakou dobu trvá, protože se musí stáhnout a spustit kontejner. Pokud stránce vyprší časový limit nebo se na ní zobrazí chybová zpráva, počkejte několik minut a stránku aktualizujte.
 
 ```bash
 http://<app-name>.azurewebsites.net
 ```
 
-Měli byste vidět dotaz cyklického dotazování, který jste vytvořili dříve. 
+Měla by se zobrazit otázka pro dotazování, kterou jste vytvořili dříve. 
 
-App Service zjistí projektu Django ve vašem úložišti tím, že hledají _wsgi.py_ v každé podadresář, který je vytvořen `manage.py startproject` ve výchozím nastavení. Pokud se najde soubor, načte aplikaci Django. Další informace o tom, jak služby App Service načte aplikace v Pythonu najdete v tématu [konfigurovat integrované image Python](how-to-configure-python.md).
+App Service detekuje projekt Django v úložišti tím, že hledá _WSGI.py_ v každém podadresáři, který je vytvořen `manage.py startproject` ve výchozím nastavení. Když soubor najde, načte webovou aplikaci Django. Další informace o tom, jak App Service načítají aplikace v Pythonu, najdete v tématu [Konfigurace integrované image Pythonu](how-to-configure-python.md).
 
-Přejděte na `<app-name>.azurewebsites.net` a přihlaste se pomocí stejného uživatele správce jste vytvořili. Pokud chcete, můžete zkuste vytvořit některé další dotazy cyklického dotazování.
+Přejděte na `<app-name>.azurewebsites.net` a přihlaste se pomocí stejného vytvořeného uživatele správce, kterého jste vytvořili. Pokud chcete, zkuste vytvořit další otázky pro dotazování.
 
 ![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
-**Blahopřejeme!** Spustili jste pythonovou aplikaci ve službě App Service for Linux.
+**Blahopřejeme!** Spouštíte webovou aplikaci Python (Django) v Azure App Service pro Linux.
 
 ## <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="manage-your-app-in-the-azure-portal"></a>Správa aplikace na webu Azure Portal
+## <a name="manage-your-app-in-the-azure-portal"></a>Správa aplikace v Azure Portal
 
-Přejděte [webu Azure portal](https://portal.azure.com) a zobrazte aplikaci jste vytvořili.
+Pokud si chcete zobrazit aplikaci, kterou jste vytvořili, přejděte na [Azure Portal](https://portal.azure.com) .
 
-V levé nabídce klikněte na tlačítko **App Services**, pak klikněte na název aplikace Azure.
+V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/tutorial-python-postgresql-app/app-resource.png)
 
-Ve výchozím nastavení, na portálu se zobrazí vaše aplikace **přehled** stránky. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
+Ve výchozím nastavení se na portálu zobrazí stránka s **přehledem** vaší aplikace. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
 
 ![Stránka služby App Service na webu Azure Portal](./media/tutorial-python-postgresql-app/app-mgmt.png)
 
@@ -418,17 +416,17 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Vytvořit databázi PostgreSQL v Azure
-> * Připojit aplikaci Python k PostgreSQL
-> * Nasadit aplikaci do Azure
+> * Připojení webové aplikace v Pythonu k PostgreSQL
+> * Nasazení webové aplikace v Pythonu do Azure
 > * Zobrazit diagnostické protokoly
-> * Spravovat aplikaci na webu Azure Portal
+> * Správa webové aplikace v Pythonu v Azure Portal
 
-Přejděte k dalšímu kurzu, kde se naučíte, jak namapovat vlastní název DNS do vaší aplikace.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS na svou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Kurz: Mapování vlastního názvu DNS do vaší aplikace](../app-service-web-tutorial-custom-domain.md)
+> [Kurz: Mapování vlastního názvu DNS na aplikaci](../app-service-web-tutorial-custom-domain.md)
 
-Nebo, podívejte se na další prostředky:
+Nebo si prohlédněte další zdroje informací:
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace v Pythonu](how-to-configure-python.md)

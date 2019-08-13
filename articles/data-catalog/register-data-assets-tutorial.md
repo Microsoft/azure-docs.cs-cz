@@ -1,17 +1,17 @@
 ---
 title: Registrace datových prostředků v Azure Data Catalogu
-description: Postup registrace datových assetů ve vašem Azure Data Catalog
+description: V tomto kurzu se dozvíte, jak zaregistrovat datové assety v Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 6dcf29c1bb98d15daf652671f31ed1647d66a81b
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735202"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950237"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Kurz: Registrace datových prostředků v Azure Data Catalogu
 
@@ -316,7 +316,7 @@ Ve službě Azure Data Catalog je možné odstranit jednotlivý asset nebo více
 
 V tomto kurzu jste prozkoumali základní možnosti služby Azure Data Catalog včetně registrace, přidávání poznámek, zjišťování a správy datových assetů organizace. Nyní, když jste dokončili kurz, je čas začít. Začít můžete ještě dnes registrací zdrojů dat, na která spoléháte vy a váš tým, a pozváním kolegů k používání katalogu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Podporované zdroje dat](data-catalog-dsr.md)

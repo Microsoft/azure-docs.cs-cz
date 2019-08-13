@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: a4fbfeb96d2316ce6af100cb16fcbf0d13f230f2
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 526c60916854d4918607a1fd1b887ac9d27cd1c7
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737121"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950016"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co je služba Azure Backup?
 
@@ -55,7 +55,7 @@ Použijte body tabulky, které vám pomůžou BCDR potřeby.
 
 **Cíl** | **Podrobnosti** | **Porovnání**
 --- | --- | ---
-**Zálohování a uchovávání dat** | Záložní data se můžou uchovávat a ukládat po dnech, měsících nebo dokonce i rocích v perspektivě dodržování předpisů. | Řešení pro zálohování, jako je Azure Backup, umožňují přesně vybírat data, která chcete zálohovat, a jemně vyladit zásady zálohování a uchovávání informací.<br/><br/> Site Recovery neumožňuje stejné jemné ladění.
+**Zálohování a uchovávání dat** | Data zálohy můžete v případě potřeby uchovávat a ukládat do dnů, měsíců nebo dokonce i roků v perspektivě dodržování předpisů. | Řešení pro zálohování, jako je Azure Backup, umožňují přesně vybírat data, která chcete zálohovat, a jemně vyladit zásady zálohování a uchovávání informací.<br/><br/> Site Recovery neumožňuje stejné jemné ladění.
 **Cíl bodu obnovení (RPO)** | Přijatelná míra ztráty dat v případě potřeby provedení obnovení. | Zálohy mají více proměnných RPO.<br/><br/> Zálohy virtuálních počítačů mají obvykle plánovaný bod obnovení dne, zatímco zálohy databáze byly RPO po dobu 15 minut.<br/><br/> Site Recovery poskytuje nižší cíl bodu obnovení, protože replikace je nepřetržitá nebo častá, takže rozdíl mezi zdrojem a kopií repliky je malý.
 **Cíl doby obnovení (RTO)** |Množství času potřebného k dokončení obnovení nebo zotavení. | Z důvodu vyššího RPO je množství dat, které musí řešení zálohování zpracovat, typicky mnohem vyšší, což vede k delším RTO. Například obnovení dat z pásků může trvat i dny v závislosti na tom, jak dlouho trvá přenos pásku z odlehlého umístění.
 
@@ -66,7 +66,7 @@ Azure Backup můžou zálohovat místní počítače a virtuální počítače A
 **Počítačové** | **Scénář zálohování**
 --- | ---
 **Místní zálohování** |  1) spusťte agenta Azure Backup Microsoft Azure Recovery Services (MARS) na místních počítačích s Windows pro zálohování jednotlivých souborů a stavu systému. <br/><br/>2) Zálohujte místní počítače na záložní server (System Center Data Protection Manager (DPM) nebo server Microsoft Azure Backup (MABS)) a pak nakonfigurujte záložní server tak, aby byl v Azure zálohovaný na Azure Backup Recovery Servicesový trezor.
-**Virtuální počítače Azure** | 1) Povolte zálohování pro jednotlivé virtuální počítače Azure. Když zapnete zálohování, Azure Backup nainstaluje rozšíření agenta virtuálního počítače Azure, který běží na virtuálním počítači. Agent zálohuje celý virtuální počítač.<br/><br/> 2) spusťte agenta MARS na virtuálním počítači Azure. To je užitečné, pokud chcete zálohovat jednotlivé soubory a složky na virtuálním počítači.<br/><br/> 3) zálohujte virtuální počítač Azure na server DPM nebo MABS spuštěný v Azure. Pak zálohujte server DPM nebo MABS do trezoru pomocí Azure Backup.
+**Virtuální počítače Azure** | 1) Povolte zálohování pro jednotlivé virtuální počítače Azure. Když zapnete zálohování, Azure Backup nainstaluje rozšíření agenta virtuálního počítače Azure, který běží na virtuálním počítači. Agent zálohuje celý virtuální počítač.<br/><br/> 2) spusťte agenta MARS na virtuálním počítači Azure. To je užitečné, pokud chcete zálohovat jednotlivé soubory a složky na virtuálním počítači.<br/><br/> 
 
 
 ## <a name="why-use-a-backup-server"></a>Proč používat záložní server?
@@ -116,7 +116,7 @@ Azure Backup má limit 9999 bodů obnovení (označovaných také jako záložn�
 - Chráněná instance je počítač, server (fyzický nebo virtuální) nebo úloha nakonfigurovaná pro zálohování dat do Azure. Instance je chráněná, jakmile se uloží záložní kopie dat.
 - Ochranou je právě tato záložní kopie dat. Pokud dojde ke ztrátě nebo poškození zdrojových dat, je možné je obnovit ze záložní kopie.
 
-Následující tabulka uvádí maximální četnost zálohování pro jednotlivé komponenty. Vaše konfigurace zásad zálohování určuje, jak rychle budete využívat body obnovení. Pokud například vytváříte bod obnovení každý den, můžete zachovat body obnovení 27 let, teprve potom vám dojdou. Pokud vytváříte bod obnovení každý měsíc, můžete zachovat body obnovení 833 let, teprve potom vám dojdou. Služba Backup pro body obnovení nenastavuje omezení času vypršení platnosti.
+V následující tabulce jsou uvedené maximální frekvence zálohování pro jednotlivé komponenty. Konfigurace zásady zálohování určuje, jak rychle se spotřebovávají body obnovení. Pokud například vytváříte bod obnovení každý den, můžete zachovat body obnovení 27 let, teprve potom vám dojdou. Pokud vytváříte bod obnovení každý měsíc, můžete zachovat body obnovení 833 let, teprve potom vám dojdou. Služba Backup pro body obnovení nenastavuje omezení času vypršení platnosti.
 
 |  | Agent Azure Backup | System Center DPM | Server Azure Backup | Zálohování virtuálních počítačů Azure IaaS |
 | --- | --- | --- | --- | --- |
@@ -135,7 +135,7 @@ Následující tabulka uvádí maximální četnost zálohování pro jednotliv�
 Šifrování v klidovém stavu<br/> (Šifrování dat, kde se chovají/ukládají) | K šifrování dat se používá heslo zadané zákazníkem. | K šifrování dat uložených v trezoru se používá Azure [šifrování služby Storage (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) .<br/><br/> Zálohování automaticky šifruje data před jejich uložením. Před načtením Azure Storage data dešifruje. Použití klíčů spravovaných zákazníkem pro SSE není aktuálně podporováno.<br/><br/> Můžete zálohovat virtuální počítače, které používají [Azure Disk Encryption (ADE)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) k šifrování operačních systémů a datových disků. Azure Backup podporuje virtuální počítače zašifrované pouze klíče bek a klíče bek i [KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/). Zkontrolujte [omezení](backup-azure-vms-encryption.md#encryption-support). | Azure Backup podporuje zálohování databází SQL Server nebo serveru s povoleným [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) . Zálohování podporuje TDE pomocí klíčů spravovaných pomocí Azure nebo klíčů spravovaných zákazníkem (BYOK).<br/><br/> V rámci procesu zálohování neprovede zálohování žádné šifrování SQL.
 Šifrování při přenosu<br/> (Šifrování dat se přesouvá z jednoho umístění do druhého) | Data se šifrují pomocí AES256 a odesílají do trezoru v Azure přes HTTPS. | V rámci Azure je data mezi službou Azure Storage a trezorem chráněná protokolem HTTPS. Tato data zůstávají v páteřní síti Azure.<br/><br/> V případě obnovení souborů chrání iSCSI data přenášená mezi trezorem a virtuálním počítačem Azure. Zabezpečené tunelování chrání kanál iSCSI. | V rámci Azure je data mezi službou Azure Storage a trezorem chráněná protokolem HTTPS.<br/><br/> Obnovení souborů není relevantní pro SQL.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Projděte si](backup-architecture.md) architekturu a součásti pro různé scénáře zálohování.
 - [Ověřte](backup-support-matrix.md) požadavky na podporu a omezení pro zálohování a [zálohování virtuálních počítačů Azure](backup-support-matrix-iaas.md).

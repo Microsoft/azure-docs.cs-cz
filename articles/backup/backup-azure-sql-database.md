@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7312821320084c766f5b3357fe64c061df83673b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 647ab76760d0c5ce5315a60d0a671163b902be0f
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827647"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954539"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -58,7 +58,7 @@ Azure Backup nedávno oznámila podporu EOSch [SQL severs](https://docs.microsof
 2. Na virtuálním počítači musí být nainstalovaný .NET Framework 4.5.2 a novější.
 3. Zálohování pro FCI a zrcadlené databáze se nepodporuje.
 
-Uživatelům se tato funkce nebude účtovat až do doby, kdy je všeobecně dostupná. Všechny ostatní [požadavky a omezení funkcí](#feature-consideration-and-limitations) se vztahují také na tyto verze. Před konfigurací ochrany na SQL serverech 2008 a 2008 R2, které zahrnují nastavení [klíče registru](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) (Tento krok se nemusí vyžadovat, když je funkce všeobecně dostupná), si přečtěte [požadavky](backup-sql-server-database-azure-vms.md#prerequisites) .
+Uživatelům se tato funkce nebude účtovat až do doby, kdy je všeobecně dostupná. Všechny ostatní [požadavky a omezení funkcí](#feature-consideration-and-limitations) se vztahují také na tyto verze. Před konfigurací ochrany na SQL serverech 2008 a 2008 R2 odkazují na [požadavky](backup-sql-server-database-azure-vms.md#prerequisites) , které zahrnují nastavení [klíče registru](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) (Tento krok se nepožaduje, pokud je funkce všeobecně dostupná).
 
 
 ## <a name="feature-consideration-and-limitations"></a>Aspekty a omezení funkcí
@@ -75,7 +75,7 @@ Uživatelům se tato funkce nebude účtovat až do doby, kdy je všeobecně dos
 - V trezoru můžete zálohovat až **~ 2000** SQL Server databází. Pro případ, že máte větší počet databází, můžete vytvořit více trezorů.
 - Zálohu můžete nakonfigurovat až na **50** databází v jednom přechodu; Toto omezení pomáhá optimalizovat zatížení zálohování.
 - Podporujeme databáze o velikosti až **2 TB** . v případě větší velikosti se mohou vycházet problémy s výkonem.
-- Abychom měli smysl o tom, kolik databází je možné chránit na jeden server, musíme vzít v úvahu faktory, jako je šířka pásma, velikost virtuálního počítače, četnost zálohování, velikost databáze atd. [Stáhněte](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) si Plánovač prostředků, který poskytuje přibližný počet databází, které můžete mít na server na základě prostředků virtuálních počítačů a zásad zálohování.
+- Abychom měli smysl o tom, kolik databází je možné chránit na jeden server, musíme vzít v úvahu faktory, jako je šířka pásma, velikost virtuálního počítače, četnost zálohování, velikost databáze atd. [Stáhněte](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) si Plánovač prostředků, který poskytuje přibližný počet databází, které můžete mít na server na základě prostředků virtuálních počítačů a zásad zálohování.
 - V případě skupin dostupnosti jsou zálohy odebírány z různých uzlů na základě několika faktorů. Chování zálohování skupiny dostupnosti je shrnuto níže.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Chování při zálohování v případě skupin dostupnosti Always On
@@ -83,7 +83,7 @@ Uživatelům se tato funkce nebude účtovat až do doby, kdy je všeobecně dos
 Doporučuje se, aby záloha byla nakonfigurovaná jenom v jednom uzlu ovládacího prvku AG. Zálohování by se mělo vždycky nakonfigurovat ve stejné oblasti jako primární uzel. Jinými slovy, vždy potřebujete, aby byl primární uzel přítomen v oblasti, ve které konfigurujete zálohování. Pokud jsou všechny uzly AG ve stejné oblasti, ve které je nakonfigurované zálohování, nezáleží na tom.
 
 **Pro křížovou oblast AG**
-- Bez ohledu na předvolbu zálohování nedojde k zálohování z uzlů, které nejsou ve stejné oblasti, ve které je nakonfigurované zálohování. Důvodem je to, že zálohování mezi oblastmi není podporováno. Pokud máte pouze dva uzly a sekundární uzel je v druhé oblasti; v takovém případě budou zálohy i nadále provedeny z primárního uzlu (Pokud vaše preference zálohování není "sekundární").
+- Bez ohledu na předvolbu zálohování nedojde k zálohování z uzlů, které nejsou ve stejné oblasti, ve které je nakonfigurované zálohování. Důvodem je to, že zálohování mezi oblastmi není podporováno. Pokud máte pouze dva uzly a sekundární uzel je v jiné oblasti; v takovém případě budou zálohy i nadále provedeny z primárního uzlu (Pokud vaše preference zálohování není "sekundární").
 - Pokud se převzetí služeb při selhání stane jinou oblastí než ta, ve které je zálohování nakonfigurované, zálohování se nepovede na uzlech v oblasti převzetí služeb při selhání.
 
 V závislosti na předvolbách zálohování a typech zálohování (úplné/rozdílové/protokolované/kopie jsou úplné) se zálohují z konkrétního uzlu (primární/sekundární).
@@ -190,7 +190,7 @@ Přidejte do instance SQL Server přihlašovací údaje pro **NT AUTHORITY\SYSTE
 
 7. Klikněte na tlačítko OK.
 8. Zopakováním stejné posloupnosti kroků (1-7 výše) přidejte přihlášení NT Service\AzureWLBackupPluginSvc do instance SQL Server. Pokud přihlášení již existuje, ujistěte se, že má roli serveru sysadmin a v části stav uděluje oprávnění připojit se k databázovému stroji a přihlásit se jako povolené.
-9. Po udělení oprávnění **znovu zjišťovat databáze** na portálu: Zatížení **->** **infrastruktury->** zálohování trezoru na virtuálním počítači Azure:
+9. Po udělení oprávnění znovu **zjistit databáze** na portálu: Zatížení **->** **infrastruktury->** zálohování trezoru na virtuálním počítači Azure:
 
     ![Znovu zjišťovat databáze v Azure Portal](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 
@@ -230,7 +230,7 @@ catch
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Přečtěte si o](backup-sql-server-database-azure-vms.md) zálohování SQL Server databází.
 * [Přečtěte si informace o](restore-sql-database-azure-vm.md) obnovení zálohovaných SQL Server databází.

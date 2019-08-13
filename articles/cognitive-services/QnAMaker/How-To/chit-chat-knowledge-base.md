@@ -7,35 +7,35 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 60a17859fd74b1972e0905a830ba984838a94ffd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a8ebd0b36c6ee8bf6762a70af9f4a7c09f6b118d
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447497"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955156"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Přidat Chit chat znalostní báze
 
 Přidání chit chat pro svého robota díky konverzační a poutavé. Funkci chit konverzace v nástroje QnA maker umožňuje snadno přidat předvyplněný sadu nejvyšší chit konverzace, do znalostní báze (KB). To může být výchozím bodem pro posouzení vašich osobnostních svého robota, a to vám ušetří čas a náklady na jejich vytváření od začátku.  
 
-Tato datová sada obsahuje přibližně 100 scénáře chit chat v hlasových více osob, jako jsou Professional, zařízení a Witty. Vyberte osoby, která se nejvíce podobá hlasové svého robota. Zadaný uživatelský dotaz, nástroje QnA Maker se pokusí shodovat s nejbližší QnA známé chit chat.  
+Tato datová sada obsahuje přibližně 100 scénářů funkce CHITEST – chat v hlasu více osoby, jako je Professional, Friendly and Witty. Vyberte osoby, která se nejvíce podobá hlasové svého robota. Zadaný uživatelský dotaz, nástroje QnA Maker se pokusí shodovat s nejbližší QnA známé chit chat.  
 
-Níže jsou příklady různých osobnosti. Zobrazí se posouzení vašich osobnostních [datových sad](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) spolu s podrobnostmi o osobnosti.
+Níže jsou uvedeny některé příklady různých osobních druhů. Můžete zobrazit všechny [datové sady](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) osobnosti společně s podrobnostmi o osobních členech.
 
-Pro uživatele dotazu `When is your birthday?`, má každý posouzení vašich osobnostních upravený odpovědi:
+Pro dotaz `When is your birthday?`na uživatele má každá osobnost odpověď ve stylu:
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|Posouzení vašich osobnostních|Příklad:|
+|Osobní|Příklad|
 |--|--|
-|Professional|Stáří ve skutečnosti neplatí pro mě.|
-|Popisný|Nemám ve skutečnosti stáří.|
-|Witty|Já jsem stáří zdarma.|
-|Caring|Nemám stáří.|
-|Velmi se zajímám|Já jsem robota, takže nemám stáří.|
+|Professional|Stáří neplatí pro mě.|
+|Vhodná|Nejedná se opravdu o stáří.|
+|Witty|Jsem zdarma.|
+|Caring|Nemáte stáří.|
+|Dostáváme|Jsem robot, takže nemám věk.|
 ||
 
 > [!NOTE]
@@ -56,12 +56,12 @@ Při úpravě znalostní BÁZÍ, zobrazí se nový zdroj pro chit chat, založen
 
 ![Upravit maximálně chit chatu](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-Chcete-li zobrazit metadata, vyberte **možnosti zobrazení** na panelu nástrojů vyberte **zobrazit metadata**.
+Chcete-li zobrazit metadata, vyberte možnost **zobrazení možností** na panelu nástrojů a pak vyberte možnost **zobrazit metadata**.
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Přidat další chit chat otázek a odpovědí
 Můžete přidat nové QnA chit chatu, který ne v předdefinovaném nastaven. Ujistěte se, že nereplikujete QnA pár, který je již zahrnut v sadě chit konverzace. Když přidáte všechny nové nástroje QnA chit chatu, získá přidá do vašeho **redakční** zdroje. Aby klasifikátor rozumí, že se jedná o chit chatu, přidejte dvojici klíč/hodnota metadat "redakční: chit chat", jak je znázorněno na následujícím obrázku:
    
-![! [Přidat maximálně chit chat] (.. / media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+![! [Přidání funkce CHITEST-chat QnAs] (.. /media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Odstranit chit chat z existující KB
 Vyberte znalostní BÁZÍ a přejděte **nastavení** stránky. Váš konkrétní chit chat zdroj je uveden jako soubor s názvem vybrané posouzení vašich osobnostních. Odstranit tento jako zdrojový soubor.

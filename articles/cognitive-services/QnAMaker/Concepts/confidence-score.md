@@ -1,5 +1,5 @@
 ---
-title: Skóre spolehlivosti – QnA Maker
+title: Hodnocení spolehlivosti – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Skóre spolehlivosti označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele.
 services: cognitive-services
@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c14c607e4c563bbeeaff02b2c2478cc4b4d96ee5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: afc50a5adb591550f6e988a572d1ac9a8c4439cb
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165142"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955185"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Skóre spolehlivosti znalostní báze QnA Maker
 Když uživatelský dotaz je hledána znalostní báze, vrátí QnA Maker příslušné odpovědi, spolu s skóre spolehlivosti. Toto skóre označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele. 
@@ -38,7 +38,7 @@ Následující tabulka uvádí typické přidruženou skóre spolehlivosti.
 
 |Hodnota skóre|Význam skóre|Příklad dotazu|
 |--|--|--|
-|90 – 100|A téměř přesnou shodu uživatele dotazu a dotaz KB|"Provedené změny se neaktualizují v článku KB po publikování"|
+|90 – 100|A téměř přesnou shodu uživatele dotazu a dotaz KB|"Moje změny nejsou aktualizovány v KB po publikování"|
 |> 70|Vysokou spolehlivostí – obvykle dobrou odpověď, která úplně odpovědi na dotaz uživatele|"Jsem publikoval znalostní BÁZE, ale není prováděna"|
 |50 - 70|Střední jistotou – obvykle velmi dobrou odpověď, která by měla obsahovat odpovědi hlavním záměrem uživatelský dotaz|"Měli uložit Moje aktualizace před můžu publikovat znalostní BÁZE?"|
 |30 – 50|S nízkou spolehlivostí – obvykle související odpovědí, který odpovídá částečně záměru uživatele|"Co uložit a trénování dělá?"|
@@ -46,25 +46,25 @@ Následující tabulka uvádí typické přidruženou skóre spolehlivosti.
 |0|Žádná shoda, proto se vrátí odpověď.|"Kolik službu stojí"|
 
 ## <a name="choose-a-score-threshold"></a>Zvolte prahové hodnoty skóre
-V tabulce výše najdete skóre, které se očekává, že na většině znalostní báze. Ale protože každých KB se liší a má různé druhy slova, záměry a cíle –, doporučujeme test a zvolte prahová hodnota, které bude nejlépe vyhovuje. Ve výchozím nastavení prahová hodnota je nastavena na hodnotu 0, tak, aby všechny možné odpovědi jsou vráceny. Je doporučenou prahovou hodnotu, která by měla fungovat pro většinu znalostní báze **50**.
+V tabulce výše najdete skóre, které se očekává, že na většině znalostní báze. Vzhledem k tomu, že se každá KB liší a má různé typy slov, záměrů a cílů – doporučujeme, abyste otestovali a zvolili prahovou hodnotu, která pro vás nejlépe vyhovuje. Ve výchozím nastavení je prahová hodnota nastavena na 0, aby byly vráceny všechny možné odpovědi. Doporučená prahová hodnota, která by měla fungovat pro většinu aktualizací KB, je **50**.
 
 Pokud zvolíte, že vaše mezní hodnota, mějte na paměti rovnováhu mezi přesnost a pokrytí a upravit vaše mezní hodnota, na základě vašich požadavků.
 
 - Pokud **přesnost** (nebo přesnosti) je důležité pro váš scénář, pak zvýšit vaše mezní hodnota. Tímto způsobem pokaždé, když se vrátí odpověď, bude mnohem více důvěrné velikosti písmen a mnohem vyšší pravděpodobnost, že hledá odpověď uživatele. V takovém případě může skončit opuštění další nezodpovězené dotazy. *Příklad:* Pokud provedete prahovou hodnotu **70**, můžete přijít o některé příklady nejednoznačný lajků "co je uložte a trénování?".
 
-- Pokud **pokrytí** (nebo odvolání) je více důležité – a vy chcete odpovězte na tolik otázek, kolik nejvíce, i v případě částečné vztahu uživatele otázku – pak nižší prahová hodnota. To znamená, že může být více případů, kdy odpověď neodpovídá skutečné dotaz uživatele, ale poskytuje některé poněkud související odpovědí. *Příklad:* Pokud provedete prahovou hodnotu **30**, dáte odpovědi pro dotazy, jako jsou "Kde je možné upravovat znalostní BÁZE?"
+- Pokud **pokrytí** (nebo odvolání) je více důležité – a vy chcete odpovězte na tolik otázek, kolik nejvíce, i v případě částečné vztahu uživatele otázku – pak nižší prahová hodnota. To znamená, že může být více případů, kdy odpověď neodpovídá skutečné dotaz uživatele, ale poskytuje některé poněkud související odpovědí. *Příklad:* Pokud nastavíte prahovou hodnotu **30**, můžete poskytnout odpovědi na dotazy, jako je "kde můžu upravit svůj KB?"
 
 > [!NOTE]
 > Novější verze nástroje QnA Maker vylepšení bodovací logiku zahrnout a může mít vliv na vaše mezní hodnota. Kdykoli můžete aktualizovat službu, ujistěte se, že pro testování a upravit prahovou hodnotu v případě potřeby. Služba QnA verzi, můžete zjistit [tady](https://www.qnamaker.ai/UserSettings)a zjistit, jak získat nejnovější aktualizace [tady](../How-To/troubleshooting-runtime.md).
 
-## <a name="set-threshold"></a>Nastavenou prahovou hodnotu 
+## <a name="set-threshold"></a>Nastavit prahovou hodnotu 
 
-Nastavení prahové hodnoty skóre jako vlastnost [text GenerateAnswer API JSON](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). To znamená, že jste nastavili pro každé volání GenerateAnswer. 
+Nastavte skóre prahové hodnoty jako vlastnost [těla JSON GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). To znamená, že ji nastavíte pro každé volání GenerateAnswer. 
 
-Z rozhraní bot framework, nastavte jako součást možnosti objekt s skóre [ C# ](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) nebo [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
+Z rozhraní bot Framework nastavte skóre jako součást objektu Options v [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) nebo [Node. js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
 ## <a name="improve-confidence-scores"></a>Zvýšení skóre spolehlivosti
-Pro zvýšení skóre spolehlivosti konkrétní odpovědi na dotaz uživatele, můžete přidat uživatelský dotaz ve znalostní bázi jako alternativní dotaz na odpověď. Můžete také použít velkých a malých písmen [word rozšiřuje](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) synonyma přidáte klíčová slova v znalostní BÁZÍ.
+Pro zvýšení skóre spolehlivosti konkrétní odpovědi na dotaz uživatele, můžete přidat uživatelský dotaz ve znalostní bázi jako alternativní dotaz na odpověď. [Změnou](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) velikosti písmen bez rozlišení velkých a malých písmen můžete také přidat synonyma do klíčových slov ve vaší znalostní bázi.
 
 
 ## <a name="similar-confidence-scores"></a>Podobně jako skóre spolehlivosti
@@ -72,13 +72,13 @@ Když ukládat více odpovědí mají podobné skóre spolehlivosti, je pravděp
 
 
 ## <a name="confidence-score-differences"></a>Skóre rozdíly spolehlivosti
-Skóre spolehlivosti odpověď může změnit zanedbatelně mezi testu a publikovanou verzi znalostní báze i v případě, obsah je stejný. Je to proto, že obsah testu a publikované znalostní báze jsou umístěné v různých indexů Azure Search. Při publikování znalostní bázi otázek a odpovědí obsah znalostní báze přesune z index testu do produkčního prostředí indexu ve službě Azure search. V tématu Jak [publikovat](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) operace funguje.
+Skóre spolehlivosti odpověď může změnit zanedbatelně mezi testu a publikovanou verzi znalostní báze i v případě, obsah je stejný. Je to proto, že obsah testu a publikované znalostní báze jsou umístěné v různých indexů Azure Search. Když publikujete znalostní bázi, obsah otázky a odpovědi ve znalostní bázi se přesune z indexu testu do výrobního indexu ve službě Azure Search. Podívejte se, jak funguje operace [publikování](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) .
 
-Pokud máte znalostní báze v různých oblastech, každé oblasti používá vlastní index Azure Search. Protože se používají různé indexy, skóre nebudou shodovat. 
+Pokud máte znalostní bázi v různých oblastech, v každé oblasti se používá vlastní index Azure Search. Vzhledem k tomu, že se používají různé indexy, skóre se přesně neshodují. 
 
 
 ## <a name="no-match-found"></a>Nebyla nalezena žádná odpovídající
-Když dobré shoda nenajde ve klasifikátor, vrátí se skóre spolehlivosti 0,0 nebo "None" a výchozí odpověď je "Dobrá nebyla nalezena žádná odpovídající v KB". Toto můžete přepsat [výchozí odpověď](#change-default-answer) v kódu bot nebo aplikaci volání koncového bodu. Alternativně přepsání odpovědi můžete také nastavit v Azure a tím se změní na výchozí hodnoty pro všechny znalostních bází nasazených v konkrétní služba QnA Maker.
+Když dobré shoda nenajde ve klasifikátor, vrátí se skóre spolehlivosti 0,0 nebo "None" a výchozí odpověď je "Dobrá nebyla nalezena žádná odpovídající v KB". Tuto [výchozí odpověď](#change-default-answer) můžete přepsat v robotu nebo kódu aplikace, který volá koncový bod. Alternativně přepsání odpovědi můžete také nastavit v Azure a tím se změní na výchozí hodnoty pro všechny znalostních bází nasazených v konkrétní služba QnA Maker.
 
 ## <a name="change-default-answer"></a>Změnit výchozí odpověď
 

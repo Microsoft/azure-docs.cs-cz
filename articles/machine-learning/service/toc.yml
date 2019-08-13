@@ -258,7 +258,7 @@
     - name: Vytváření opakovaně použitelných pracovních postupů
       displayName: pipelines
       items:
-        - name: 'Kanály ML: dávky, výpočty, opakované využití, sdílení'
+        - name: Kanály ML
           href: how-to-create-your-first-pipeline.md
         - name: Kanály Azure pro CI/CD
           displayName: 'continuous, integration, delivery'
