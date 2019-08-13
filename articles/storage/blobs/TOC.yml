@@ -137,6 +137,8 @@
           items:
             - name: Úrovně přístupu
               href: storage-blob-storage-tiers.md
+            - name: Rehydratace data z Archivu služby Storage
+              href: storage-blob-rehydration.md
             - name: Správa životního cyklu Azure Blob Storage
               href: storage-lifecycle-management-concepts.md
         - name: Výkon a škálování

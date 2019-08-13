@@ -1,56 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace k Azure AD Identity Governance
+### YamlMime:Landing
+title: Dokumentace k Azure Active Directory Identity Governance
+summary: Azure Active Directory (Azure AD) Identity Governance pomáhá chránit, monitorovat a auditovat přístup k důležitým prostředkům a zároveň zajistit produktivitu zaměstnanců.
 metadata:
-  document_id: null
-  title: Dokumentace k Azure Active Directory Identity Governance | Microsoft Docs
-  description: 'Získejte další informace o zásadách správného řízení životního cyklu identit, životního cyklu přístup a správy zabezpečení pro zaměstnance a partnery.'
-  services: active-directory
   author: msaburnley
+  description: Zjistěte, jak chránit, monitorovat a auditovat přístup k důležitým prostředkům a zároveň zajistit produktivitu zaměstnanců.
   manager: daveba
-  ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 04/18/2019
   ms.author: ajburnle
-abstract:
-  description: 'Azure Active Directory (Azure AD) Identity Governance poskytuje organizacím možnost řízení životního cyklu identit, řízení životního cyklu přístupu a správy zabezpečení pro zaměstnance a partnery.'
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-identity-governance.png
-      width: 200
-    title: 'Řízení přístupu k prostředkům (1:17:24)'
-    href: 'https://www.youtube.com/embed/aY7A0Br8u5M'
-    width: 200
-sections:
-  - title: Zásady správného řízení identit
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/identity-governance-overview">Co jsou zásady správného řízení identit?</a>
-  - title: Správa nároků (Preview)
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/entitlement-management-overview">Co je správa nároků Azure AD?</a>
-          - html: <a href="/azure/active-directory/governance/entitlement-management-access-package-first">Kurz – Vytvoření prvního přístupového balíčku</a>
-          - html: <a href="/azure/active-directory/governance/entitlement-management-access-package-edit">Úprava a správa existujících přístupových balíčků</a>
-  - title: Kontroly přístupu
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/access-reviews-overview">Co jsou kontroly přístupu Azure AD?</a>
-          - html: <a href="/azure/active-directory/governance/create-access-review">Vytvoření kontroly přístupu skupin nebo aplikací</a>
-          - html: <a href="/azure/active-directory/governance/perform-access-review">Kontrola přístupu ke skupinám nebo aplikacím</a>
-  - title: Podmínky použití
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">Vyžadují se podmínky použití?</a>
+  ms.collection: na
+  ms.date: 08/08/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: fa7577ea7ef212242a903b20d44db80c22c55842
+  ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/12/2019
+  ms.locfileid: "68949536"
+landingContent:
+- title: Další informace o zásadách správného řízení identit
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure AD Identity Governance?
+      url: identity-governance-overview.md
+  - linkListType: learn
+    links:
+    - text: Řízení přístupu k prostředkům
+      url: https://www.youtube.com/watch?v=bFfowdpApu4&list=PLQXpv_NQsPIBg3op2xONM9KgwlayFDue6
+- title: Řízení životního cyklu přístupu ke skupinám, aplikacím a webům
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je správa nároků Azure AD? (Preview)
+      url: entitlement-management-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření prvního přístupového balíčku, který uživatelům pomůže požádat o potřebný přístup
+      url: entitlement-management-access-package-first.md
+  - linkListType: how-to-guide
+    links:
+    - text: Úprava a správa existujících přístupových balíčků
+      url: entitlement-management-access-package-edit.md
+- title: Opakovaná certifikace přístupu ke skupinám, aplikacím a privilegovaným rolím
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou kontroly přístupu Azure AD?
+      url: access-reviews-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření kontroly přístupu, aby si uživatelé nezachovali nadměrný přístup
+      url: create-access-review.md
+    - text: Kontrola přístupu ke skupinám nebo aplikacím
+      url: perform-access-review.md
+- title: Nastavení nároku uživatelů na privilegované role
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure AD Privileged Identity Management?
+      url: ../privileged-identity-management/pim-configure.md
+- title: Zajištění, že uživatelé uvidí právní omezení
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vyžádání souhlasu uživatelů s podmínkami použití při použití aplikace
+      url: ../conditional-access/terms-of-use.md

@@ -11,7 +11,7 @@
       href: search-create-service-portal.md
     - name: Portál
       items:
-        - name: Načtení a dotazování indexu
+        - name: Vytvoření a použití indexu
           href: search-get-started-portal.md
         - name: Obohacení s využitím umělé Inteligence (kognitivní vyhledávání)
           href: cognitive-search-quickstart-blob.md

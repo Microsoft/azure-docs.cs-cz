@@ -1,28 +1,33 @@
 - name: Dokumentace ke správě aplikací
   href: index.yml
-- name: Správa aplikací a jednotné přihlašování
+- name: Přehled
   expanded: true
   items:
-    - name: Přehled
-      expanded: true
-      items:
-        - name: Co je správa aplikací?
-          href: what-is-application-management.md
-    - name: Šablony Rychlý start
-      items:
-        - name: Přidání aplikace galerie – portál
-          href: add-application-portal.md
-        - name: Zobrazení aplikací klienta – portál
-          href: view-applications-portal.md
-    - name: Kurzy
-      items:
-        - name: Kurzy k aplikacím Saas
-          href: /azure/active-directory/saas-apps/
-    - name: Koncepty
+    - name: Co je správa cloudových aplikací a jednotné přihlašování?
+      href: what-is-application-management.md
+    - name: Co je automatické zřizování uživatelů?
+      href: user-provisioning.md
+    - name: Co je proxy aplikací pro místní aplikace?
+      href: what-is-application-proxy.md
+- name: Šablony Rychlý start
+  items:
+    - name: Přidání cloudové aplikace z galerie
+      href: add-application-portal.md
+    - name: Zobrazení podnikových aplikací
+      href: view-applications-portal.md
+- name: Kurzy
+  items:
+    - name: Kurzy aplikací SaaS
+      href: /azure/active-directory/saas-apps/
+    - name: Přidání místní aplikace prostřednictvím proxy aplikací
+      href: application-proxy-add-on-premises-application.md
+- name: Koncepty
+  items:
+    - name: Cloudové aplikace a jednotné přihlašování
       items:
         - name: Plánování integrace cloudových aplikací
           items:
-            - name: Co se stane po přidání aplikace
+            - name: Začínáme s integrací aplikací
               href: plan-an-application-integration.md
             - name: Pokyny pro vývojáře
               href: developer-guidance-for-integrating-applications.md
@@ -56,9 +61,34 @@
               href: tenant-restrictions.md
             - name: Konfigurace šifrování tokenu SAML (Preview)
               href: howto-saml-token-encryption.md
-        - name: Portály pro koncové uživatele
-          href: end-user-experiences.md
-    - name: Návody
+            - name: Portály pro koncové uživatele
+              href: end-user-experiences.md
+    - name: Automatické zřizování uživatelů
+      items:
+        - name: Automatizace zřizování pro aplikace s podporou SCIM
+          href: use-scim-to-provision-users-and-groups.md
+    - name: Proxy aplikací pro místní aplikace
+      items:
+        - name: Proxy aplikací
+          href: application-proxy.md
+        - name: Plánování nasazení proxy aplikací
+          href: application-proxy-deployment-plan.md
+        - name: Konektory
+          href: application-proxy-connectors.md
+        - name: Skupiny konektorů
+          href: application-proxy-connector-groups.md
+        - name: Zabezpečení
+          href: application-proxy-security.md
+        - name: Síťová topologie
+          href: application-proxy-network-topology.md
+        - name: Vysoká dostupnost a vyrovnávání zatížení
+          href: application-proxy-high-availability-load-balancing.md
+        - name: Porovnání řešení vzdáleného přístupu
+          href: application-proxy-migration.md
+- name: Návody
+  expanded: true
+  items:
+    - name: Cloudové aplikace a jednotné přihlašování
       items:
         - name: Přidání cloudové aplikace
           items:
@@ -182,36 +212,7 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Chyba při využívání samoobslužného přístupu k aplikacím
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Zdroje a prostředky
-      items:
-        - name: Fórum Azure pro názory
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: Fórum MSDN
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Ceny
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Aktualizace služeb
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videa
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: Automatické zřizování uživatelů
-  items:
-    - name: Přehled
-      expanded: true
-      items:
-        - name: Co je zřizování?
-          href: user-provisioning.md
-    - name: Kurzy
-      items:
-        - name: Kurzy k aplikacím Saas
-          href: /azure/active-directory/saas-apps/
-    - name: Koncepty
-      items:
-        - name: Automatizace zřizování pro aplikace s podporou SCIM
-          href: use-scim-to-provision-users-and-groups.md
-    - name: Návody
+    - name: Automatické zřizování uživatelů
       items:
         - name: Konfigurace zřizování uživatelů
           items:
@@ -223,8 +224,6 @@
               href: configure-automatic-user-provisioning-portal.md
             - name: Přizpůsobení atributů aplikací
               href: Customize-application-attributes.md
-            - name: Zápis výrazů pro mapování atributů
-              href: functions-for-customizing-application-data.md
             - name: Filtry oborů
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Kontrola stavu zřizování
@@ -245,50 +244,7 @@
               href: application-provisioning-config-problem-no-users-provisioned.md
             - name: Zřízení nesprávných uživatelů – aplikace v galerii
               href: application-provisioning-config-problem-wrong-users-provisioned.md
-    - name: Zdroje a prostředky
-      items:
-        - name: Fórum Azure pro názory
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: Fórum MSDN
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Ceny
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Aktualizace služeb
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videa
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: Proxy aplikací pro místní aplikace
-  items:
-    - name: Přehled
-      expanded: true
-      items:
-        - name: Co je proxy aplikací?
-          href: what-is-application-proxy.md
-    - name: Kurzy
-      items:
-        - name: Přidání místní aplikace – portál
-          href: application-proxy-add-on-premises-application.md
-    - name: Koncepty
-      items:
-        - name: Proxy aplikací
-          href: application-proxy.md
-        - name: Plánování nasazení proxy aplikací
-          href: application-proxy-deployment-plan.md
-        - name: Konektory
-          href: application-proxy-connectors.md
-        - name: Skupiny konektorů
-          href: application-proxy-connector-groups.md
-        - name: Zabezpečení
-          href: application-proxy-security.md
-        - name: Síťová topologie
-          href: application-proxy-network-topology.md
-        - name: Vysoká dostupnost a vyrovnávání zatížení
-          href: application-proxy-high-availability-load-balancing.md
-        - name: Porovnání řešení vzdáleného přístupu
-          href: application-proxy-migration.md
-    - name: Návody
+    - name: Proxy aplikací pro místní aplikace
       items:
         - name: Konfigurace konektorů
           items:
@@ -376,21 +332,27 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: Problémy s CORS v proxy aplikací
               href: application-proxy-understand-cors-issues.md
-    - name: Referenční informace
+- name: Referenční informace
+  items:
+    - name: Automatické zřizování uživatelů
+      items:
+        - name: Zápis výrazů pro mapování atributů
+          href: functions-for-customizing-application-data.md
+    - name: Proxy aplikací pro místní aplikace
       items:
         - name: Historie verzí Proxy aplikací
           href: application-proxy-release-version-history.md
-    - name: Zdroje a prostředky
-      items:
-        - name: Fórum Azure pro názory
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: Fórum MSDN
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Ceny
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Aktualizace služeb
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videa
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
+- name: Zdroje a prostředky
+  items:
+    - name: Fórum Azure pro názory
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

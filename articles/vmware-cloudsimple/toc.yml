@@ -58,6 +58,8 @@
           href: create-cloudsimple-service.md
         - name: Přístup k portálu CloudSimple
           href: access-cloudsimple-portal.md
+        - name: Místní konfigurace brány firewall
+          href: on-premises-firewall-configuration.md
         - name: Správa uzlů
           items:
             - name: Zřizování uzlů

@@ -9,10 +9,14 @@
   items:
     - name: 'Pomocí C#'
       href: Quickstart.md
+    - name: Použití Swiftu (iOS)
+      href: ios-quickstart.md
 - name: Kurzy
   items:
     - name: Spuštění Asistivní čtečky (Node.js)
       href: tutorial.md
+    - name: Obrázek do Asistivní čtečky (Swift)
+      href: ios-picture-immersive-reader-tutorial.md
 - name: Postupy
   items:
     - name: Ověřování pomocí Azure Active Directory
@@ -21,6 +25,8 @@
   items:
     - name: Referenční informace k sadě SDK
       href: reference.md
+    - name: Reference sady iOS SDK
+      href: ios-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

@@ -162,6 +162,8 @@
       items:
         - name: Řešení potíží s prostředky
           href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: Výjimka úložiště po resetování připojení
+          href: ./hbase-troubleshoot-storage-exception-reset.md
         - name: Žádná data v zobrazeních Apache Phoenixu
           href: ./hbase-troubleshoot-phoenix-no-data.md
         - name: BindException – adresa se používá

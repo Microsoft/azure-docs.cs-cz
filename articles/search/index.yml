@@ -11,10 +11,10 @@ metadata:
   ms.service: search
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/02/2019
+  ms.date: 08/12/2019
   ms.author: heidist
 abstract:
-  description: 'Naučte se vytvářet podniková řešení pro hledání nad privátním heterogenním obsahem s využitím Azure Search. Kurzy, reference k rozhraní API a další dokumenty ukazují, jak konsolidovat prohledávatelný obsah do jednoho rychlého indexu, pro který se dají vytvářet dotazy prostřednictvím jednoduché i složité syntaxe a který podporuje širokou škálu scénářů. <p/>Funkce <a href="/azure/search/cognitive-search-concept-intro"><b>Kognitivní hledání</b></a> je teď obecně dostupná. Pro produkční scénáře se podporují rozšíření s využitím AI.<p/>Funkce <a href="/azure/search/knowledge-store-concept-intro"><b>Knowledge Store (Preview)</b></a> rozšiřuje funkci kognitivního hledání. Využijte možnost ukládat rozšíření AI do úložiště, kde je můžete kromě služby Azure Search zobrazovat, upravovat a využívat i v dalších aplikacích. <a href="/azure/search/knowledge-store-howto"><b>Začněte</b></a> ještě dnes.'
+  description: 'Naučte se vytvářet podniková řešení pro hledání nad privátním heterogenním obsahem s využitím Azure Search. Kurzy, reference k rozhraní API a další dokumenty ukazují, jak konsolidovat prohledávatelný obsah do jednoho rychlého indexu, pro který se dají vytvářet dotazy prostřednictvím jednoduché i složité syntaxe a který podporuje širokou škálu scénářů. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Kognitivní hledání</b></a> je funkce Azure Search, která připojuje procesy AI k indexování, rozpoznávání textu a charakteristik v souborech obrázků a hledání vzorů ve velkých blocích nestrukturovaného textu.<p/>Funkce <a href="/azure/search/knowledge-store-concept-intro"><b>Knowledge Store (Preview)</b></a> rozšiřuje funkci kognitivního hledání. Využijte možnost ukládat rozšíření AI do úložiště, kde je můžete zobrazovat, upravovat a využívat v klientských aplikacích a podřízených procesech. <a href="/azure/search/knowledge-store-howto"><b>Začněte</b></a> ještě dnes.'
   aside:
     image:
       alt: null
