@@ -87,7 +87,7 @@ Pro kopírování dat z aplikace Spark, nastavte vlastnost typ datové sady na *
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type datové sady, musí být nastavená na: **SparkObject** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
