@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20d5131c773e2a9f7b6830725ccd934786d6dd67
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a5fff27094881ffbada2bda7937fa714ffc07133
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880957"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954352"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Nastavení informací o zabezpečení (Preview) pro použití ověřovací aplikace
 
@@ -78,7 +78,7 @@ V závislosti na nastaveních vaší organizace možná budete moct použít ov�
 
     Aplikace ověřovatele by měla úspěšně přidat svůj pracovní nebo školní účet bez nutnosti jakýchkoli dalších informací. Nicméně pokud čtecí modul QR Code nemůže přečíst kód, můžete vybrat **odkaz Nekontrolovat kód QR** a ručně zadat kód a adresu URL do aplikace Microsoft Authenticator. Další informace o ručním přidání kódu najdete v tématu [Ruční přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
-9. Vyberte možnost **Další** na stránce **skenování kódu QR** na vašem.
+9. V počítači vyberte **Další** na stránce **Kontrola kódu QR** .
 
     Do aplikace Microsoft Authenticator na vašem mobilním zařízení se pošle oznámení, aby se Váš účet otestoval.
 

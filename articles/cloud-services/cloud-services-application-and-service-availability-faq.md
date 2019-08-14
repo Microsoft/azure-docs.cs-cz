@@ -1,6 +1,6 @@
 ---
-title: Aplikace a problémy s dostupností služby pro Microsoft Azure Cloud Services – nejčastější dotazy | Dokumentace Microsoftu
-description: Tento článek obsahuje nejčastější dotazy o dostupnost aplikací a služeb pro Microsoft Azure Cloud Services.
+title: Problémy s dostupností aplikací a služeb pro Microsoft Azure Cloud Services nejčastější dotazy | Microsoft Docs
+description: V tomto článku jsou uvedeny nejčastější dotazy týkající se dostupnosti aplikací a služeb pro Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -11,39 +11,38 @@ ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: fb4b5dde63d8c7c75419d3202d9848cd6fde8b8a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0d70e52b77c7f34444ce12f84f17a5ed2d1afe46
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337540"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941782"
 ---
-# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Aplikace a problémy s dostupností služby pro Azure Cloud Services: Nejčastější dotazy (FAQ)
+# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s dostupností aplikací a služeb pro Azure Cloud Services: Nejčastější dotazy
 
-Tento článek obsahuje nejčastější dotazy o aplikaci a problémy s dostupností služby pro [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Můžete také najdete [cloudové služby virtuálních počítačů velikosti stránky](cloud-services-sizes-specs.md) pro informace o velikosti.
+Tento článek obsahuje nejčastější dotazy týkající se problémů s dostupností aplikací a služeb pro [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informace o velikosti najdete také na [stránce Cloud Services velikosti virtuálního počítače](cloud-services-sizes-specs.md) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="my-role-got-recycled-was-there-any-update-rolled-out-for-my-cloud-service"></a>Moje role je teď recyklován. Pokusil se žádné aktualizace zavádí pro svojí cloudové služby?
-Přibližně jednou za měsíc, společnost Microsoft vydává nové verze hostovaného operačního systému pro virtuální počítače s Windows Azure PaaS. Hostovaný operační systém je pouze jeden tyto aktualizace v kanálu. Verze může být ovlivněna řadu dalších faktorů. Kromě toho Azure běží na stovky tisíc počítačů. Proto není možné předpovědět přesné datum a čas, kdy se role restartuje. Aktualizujeme hostovaného operačního systému aktualizujte informační kanál RSS s nejnovějšími informacemi, který máme k dispozici, ale byste měli zvážit, který hlášena době přibližné hodnoty. Víme, že se jedná o problematické pro zákazníky a pracují na plán na omezení nebo přesně čas restartování.
+## <a name="my-role-got-recycled-was-there-any-update-rolled-out-for-my-cloud-service"></a>Moje role se recykluje. Aktualizovala se nějaká aktualizace pro cloudovou službu?
+Přibližně jednou za měsíc vydává společnost Microsoft novou verzi hostovaného operačního systému pro virtuální počítače s Windows Azure PaaS. Hostovaný operační systém je v kanálu jenom jedna aktualizace. Vydaná verze může být ovlivněna mnoha dalšími faktory. Azure se navíc spouští na stovkách tisíc počítačů. Proto není možné předpovědět přesné datum a čas, kdy se vaše role restartují. Informační kanál RSS aktualizace hostovaného operačního systému aktualizujeme nejnovějšími informacemi, ale měli byste zvážit, že nahlášený čas je přibližná hodnota. Upozorňujeme, že to je problematické pro zákazníky a pracuje na plánu, který se má omezit nebo přesně restartovat.
 
-Úplné podrobnosti o nedávných aktualizacích hostovaného operačního systému naleznete v tématu [SDK kompatibility přehled verzí hostovaného operačního systému Azure a](cloud-services-guestos-update-matrix.md).
+Podrobné informace o nejnovějších aktualizacích operačního systému hosta najdete v tématu [věnovaném vydání hostovaného operačního systému Azure a s maticí kompatibility SDK](cloud-services-guestos-update-matrix.md).
 
-Užitečné informace o restartování a odkazy na technické podrobnosti aktualizace hosta a hostitelským operačním systémem, najdete v příspěvku blogu MSDN [Role Instance se restartuje kvůli upgrady operačního systému](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).
+Další informace o restartech a ukazatelích na technické podrobnosti o aktualizacích hostovaného a hostitelského operačního systému najdete v tématu [restart instance role blogu MSDN z důvodu upgradů operačního systému](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).
 
-## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>Proč první požadavek na svojí cloudové služby až služby byl nečinný nechystáte nějakou dobu trvat déle než obvykle?
-První žádost o přijetí Webový Server nejprve znovu zkompiluje kód a poté zpracuje požadavek. To je důvod, proč první požadavek trvá déle, než ostatní. Ve výchozím nastavení získá fond aplikací v případě nečinnosti uživatele vypnout. Fond aplikací se také recyklaci ve výchozím nastavení každých 1,740 minut (29 hodin).
+## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>Proč je první požadavek na moji cloudovou službu po nějakou dobu nečinný, trvat déle než obvykle?
+Když webový server obdrží první požadavek, nejprve znovu zkompiluje kód a potom zpracuje požadavek. To je důvod, proč první požadavek trvá déle než ostatní. Ve výchozím nastavení se fond aplikací vypne v případech nečinnosti uživatele. Ve výchozím nastavení se fond aplikací recykluje každých 1 740 minut (29 hodin).
 
-Aplikace Internetové informační služby (IIS), které fondy mohou být pravidelně recyklovat, aby se zabránilo nestabilitě stavy, které můžou vést k aplikaci dojde k chybě, zablokování nebo nevracení paměti.
+Fondy aplikací Internetová informační služba (IIS) je možné pravidelně recyklovat, aby nedocházelo k nestabilním stavům, které mohou vést k chybám aplikace, zablokování nebo nevracení paměti.
 
-Následující dokumenty vám pomůžou pochopit a tento problém zmírnit:
-* [Oprava pomalé počátečním načtení pro službu IIS](https://stackoverflow.com/questions/13386471/fixing-slow-initial-load-for-iis)
-* [První požadavek službu IIS 7.5 webové aplikace po recyklaci fondu aplikací velmi pomalé.](https://stackoverflow.com/questions/13917205/iis-7-5-web-application-first-request-after-app-pool-recycle-very-slow)
+Následující dokumenty vám pomůžou pochopit a zmírnit tento problém:
+* [Opravuje se pomalé počáteční zatížení služby IIS.](https://stackoverflow.com/questions/13386471/fixing-slow-initial-load-for-iis)
+* [Webová aplikace IIS 7,5 – první požadavek po recyklaci fondu aplikací je velmi pomalý](https://stackoverflow.com/questions/13917205/iis-7-5-web-application-first-request-after-app-pool-recycle-very-slow)
 
-Pokud chcete změnit výchozí chování služby IIS, je potřeba pomocí úlohy po spuštění, protože pokud ručně aplikovat změny na instance webové Role, změny se nakonec ztratí.
+Pokud chcete změnit výchozí chování služby IIS, budete muset použít úlohy po spuštění, protože pokud ručně použijete změny instancí webové role, změny se nakonec ztratí.
 
-Další informace najdete v tématu [jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu](cloud-services-startup-tasks.md).
+Další informace najdete v tématu [Konfigurace a spouštění úloh po spuštění pro cloudovou službu](cloud-services-startup-tasks.md).

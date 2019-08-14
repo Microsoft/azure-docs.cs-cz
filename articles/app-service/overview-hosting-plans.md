@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fef509d705d0b904586a86b7dc58decc54e7023d
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716644"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932345"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu Azure App Service
 
@@ -32,14 +32,13 @@ Při vytváření plánu App Service v určité oblasti (například Západní E
 - Oblast (Západní USA, Východní USA atd.)
 - Počet instancí virtuálních počítačů
 - Velikost instancí virtuálních počítačů (malá, střední, Velká)
-- Cenová úroveň (Free, Shared, Basic, Standard, Premium, PremiumV2, Isolated, spotřeba)
+- Cenová úroveň (Free, Shared, Basic, Standard, Premium, PremiumV2, izolovaný režim)
 
 _Cenová úroveň_ plánu App Service určuje, jaké App Service funkce získáte a kolik platíte za plán. Existuje několik kategorií cenových úrovní:
 
 - **Sdílené výpočetní**prostředky: V obou základních vrstvách **Free** a **Shared**spouští aplikaci na stejném virtuálním počítači Azure jako jiné aplikace App Service, včetně aplikací jiných zákazníků. Tyto úrovně přidělují kvóty procesoru ke každé aplikaci, která běží na sdílených prostředcích a prostředky nelze škálovat.
 - **Vyhrazené výpočetní**prostředky: Úrovně **Basic**, **Standard**, **Premium**a **PremiumV2** spouštějí aplikace na vyhrazených virtuálních počítačích Azure. Stejné výpočetní prostředky mají jenom aplikace ve stejném App Service plánu. Čím vyšší je úroveň, tím více instancí virtuálních počítačů vám bude k dispozici pro horizontální navýšení kapacity.
-- **Izolované**: Tato úroveň spouští vyhrazené virtuální počítače Azure ve vyhrazených virtuálních sítích Azure, což zajišťuje izolaci sítě nad výpočetní izolací pro vaše aplikace. Poskytuje maximální možnosti škálování na více instancí.
-- **Spotřeba**: Tato úroveň je dostupná jenom pro [aplikace Function](../azure-functions/functions-overview.md)App. Tato funkce se dynamicky škáluje v závislosti na zatížení. Další informace najdete v tématu [Porovnání plánů hostování Azure Functions](../azure-functions/functions-scale.md).
+- **Izolované**: Tato úroveň spouští vyhrazené virtuální počítače Azure ve vyhrazených virtuálních sítích Azure. Poskytuje izolaci sítě nad výpočetní izolací pro vaše aplikace. Poskytuje maximální možnosti škálování na více instancí.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -80,8 +79,7 @@ S výjimkou **bezplatné** úrovně přináší plán App Service hodinovou sazb
 
 - Na **sdílené** úrovni každá aplikace obdrží kvótu pro procesorové minuty, takže se _každá aplikace_ účtuje každou hodinu za kvótu procesoru.
 - Ve vyhrazených výpočetních úrovních (**Basic**, **Standard**, **Premium**, **PremiumV2**) plán App Service definuje počet instancí virtuálních počítačů, na které se aplikace škálují, takže _každá instance virtuálního počítače_ v plánu App Service má hodinovou sazbu. Tyto instance virtuálních počítačů se účtují stejně bez ohledu na to, kolik aplikací je v nich spuštěné. Pokud se chcete vyhnout neočekávaným poplatkům, přečtěte si téma [vyčištění App Serviceho plánu](app-service-plan-manage.md#delete).
-- V **izolované** úrovni App Service Environment definuje počet izolovaných pracovních procesů, na kterých běží vaše aplikace, a _každý pracovní proces_ se účtuje každou hodinu. Navíc platí hodinový základní poplatek za spuštěný App Service Environment sám. 
-- (Jenom Azure Functions) Úroveň **spotřeby** dynamicky přiděluje instance virtuálních počítačů k provozu úlohy aplikace Function App a je v Azure účtována dynamicky za sekundu. Další informace najdete v tématu [ceny Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+- V **izolované** úrovni App Service Environment definuje počet izolovaných pracovních procesů, na kterých běží vaše aplikace, a _každý pracovní proces_ se účtuje každou hodinu. Navíc platí hodinový základní poplatek za spuštěný App Service Environment sám.
 
 Neúčtují se vám žádné poplatky za použití funkcí App Service, které jsou k dispozici (Konfigurace vlastních domén, certifikátů SSL, slotů nasazení, zálohování atd.). Výjimky jsou:
 

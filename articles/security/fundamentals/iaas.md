@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: 5e449ae33b19b27c3ea50d982ed84f681a0beb8f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727275"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927929"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
@@ -79,7 +79,7 @@ Měli byste nainstalovat ochranu proti malwaru, která vám usnadní identifikac
 
 Microsoft Antimalware obsahuje funkce, jako je ochrana v reálném čase, plánované prohledávání, náprava malwaru, aktualizace signatur, aktualizace modulu, vytváření sestav ukázek a shromažďování událostí vyloučení. Pro prostředí, která jsou hostovaná nezávisle na produkčním prostředí, můžete použít antimalwarové rozšíření, které vám pomůžou ochránit vaše virtuální počítače a cloudové služby.
 
-Pomocí [Azure Security Center](https://docs.microsoft.com/azure/security-center/) můžete integrovat řešení Microsoftu proti malwaru a partnerům, aby se usnadnilo nasazení a vestavěné detekce (výstrahy a incidenty).
+Pomocí [Azure Security Center](../../security-center/index.yml) můžete integrovat řešení Microsoftu proti malwaru a partnerům, aby se usnadnilo nasazení a vestavěné detekce (výstrahy a incidenty).
 
 **Osvědčené postupy**: Nainstalujte antimalwarové řešení pro ochranu před malwarem.   
 **Podrobnosti**: [Instalace partnerského řešení Microsoftu nebo antimalwarového programu Microsoftu](../../security-center/security-center-install-endpoint-protection.md)

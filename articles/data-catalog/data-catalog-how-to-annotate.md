@@ -6,15 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 708c62971a20a7071accf7591a4e2914f7dbd9f3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736355"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950262"
 ---
-# <a name="how-to-annotate-data-sources"></a>Postup přidání poznámek ke zdrojům dat
+# <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Postup přidání poznámek ke zdrojům dat v Azure Data Catalog
+
 ## <a name="introduction"></a>Úvod
+
 **Microsoft Azure Data Catalog** je plně spravovaná cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Jinými slovy Data Catalog je vše, co je potřeba k tomu, aby lidé mohli zjišťovat, pochopit a používat zdroje dat a pomáhat organizacím získat větší hodnotu z jejich stávajících dat. Pokud je zdroj dat zaregistrován ve Data Catalog, jeho metadata jsou zkopírována a indexována službou, ale tento scénář nekončí. Data Catalog umožňuje uživatelům poskytnout jejich vlastní popisné metadata, jako jsou popisy a značky – k doplnění metadat extrahovaných ze zdroje dat a k tomu, aby byl zdroj dat lépe srozumitelný pro více lidí.
 
 ## <a name="annotation-and-crowdsourcing"></a>Anotace a crowdsourcingový

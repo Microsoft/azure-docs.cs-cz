@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 0683c065285a6ddf8d966bbd3d22e88c39b34d5c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 640900458eccc36afe58cb148ffd7b94b43be879
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728802"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934918"
 ---
 # <a name="develop-a-secure-web-app"></a>Vývoj zabezpečené webové aplikace
 
@@ -52,16 +52,16 @@ Aplikace je typickou n-vrstvou aplikací se třemi úrovněmi. Rozhraní front-e
 
 Tato architektura se skládá z těchto součástí:
 
-- [Application Gateway Azure](https://docs.microsoft.com/azure/application-gateway/). Poskytuje bránu a bránu firewall pro naši aplikační architekturu.
-- [Azure Web Apps v systému Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro). Poskytuje modul runtime kontejneru pro spuštění aplikace v Pythonu v prostředí Linux.
-- [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/). Ukládá a šifruje tajné kódy naší aplikace a spravuje vytváření zásad přístupu.
+- [Application Gateway Azure](../../application-gateway/index.yml). Poskytuje bránu a bránu firewall pro naši aplikační architekturu.
+- [Azure Web Apps v systému Linux](../../app-service/containers/app-service-linux-intro.md). Poskytuje modul runtime kontejneru pro spuštění aplikace v Pythonu v prostředí Linux.
+- [Azure Key Vault](../../key-vault/index.yml). Ukládá a šifruje tajné kódy naší aplikace a spravuje vytváření zásad přístupu.
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/). Bezpečně ukládá data naší aplikace.
-- [Azure Security Center](https://docs.microsoft.com/azure/security-center/) a [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Poskytuje monitorování a výstrahy týkající se provozu naší aplikace.
+- [Azure Security Center](../../security-center/index.yml) a [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Poskytuje monitorování a výstrahy týkající se provozu naší aplikace.
 
 ## <a name="threat-model"></a>Model hrozeb
 Modelování hrozeb je proces identifikace potenciálních bezpečnostních hrozeb pro vaši firmu a aplikaci a následnému zajištění správného plánu zmírnění.
 
-Tato ukázka používá [Microsoft Threat Modeling Tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) k implementaci modelování hrozeb pro zabezpečenou ukázkovou aplikaci. Díky vytváření diagramů komponent a toků dat můžete identifikovat problémy a hrozby včas v procesu vývoje. Tím ušetříte čas i peníze později.
+Tato ukázka používá [Microsoft Threat Modeling Tool](threat-modeling-tool.md) k implementaci modelování hrozeb pro zabezpečenou ukázkovou aplikaci. Díky vytváření diagramů komponent a toků dat můžete identifikovat problémy a hrozby včas v procesu vývoje. Tím ušetříte čas i peníze později.
 
 Toto je model hrozeb pro ukázkovou aplikaci:
 
@@ -349,19 +349,19 @@ $$ LANGUAGE PLPGSQL;
 ```
 
 
-Další informace o tom, jak nastavit ověřování SSL a certifikační autority (CA) pro PostgreSQL, najdete v tématu [Konfigurace připojení SSL v Azure Database for PostgreSQL](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security).
+Další informace o tom, jak nastavit ověřování SSL a certifikační autority (CA) pro PostgreSQL, najdete v tématu [Konfigurace připojení SSL v Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
 
 V kontejneru je zahrnutý kořenový certifikát. Postup pro získání certifikátu:
 
 1. Stáhněte si soubor certifikátu od [certifikační autority](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt).
-2. [Stáhněte a nainstalujte si OpenSSL na svém počítači](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security).
+2. [Stáhněte a nainstalujte si OpenSSL na svém počítači](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
 3. Dekódování souboru certifikátu:
 
    ```powershell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-Další informace o tom, jak nakonfigurovat zabezpečení SSL pro PostgreSQL, najdete v tématu [Konfigurace zabezpečení připojení SSL](https://docs.microsoft.com/en-gb/azure/postgresql/concepts-ssl-connection-security).
+Další informace o tom, jak nakonfigurovat zabezpečení SSL pro PostgreSQL, najdete v tématu [Konfigurace zabezpečení připojení SSL](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Nasazení Azure Web Apps v systému Linux
 Služby pro Linux můžete snadno sestavit nad Azure App Service, protože Azure poskytuje sadu předem připravených kontejnerů a imagí pro široce používané jazyky, jako je Python, Ruby C#, a Java. Azure podporuje také vlastní kontejnery, které umožňují spouštět prakticky všechny programovací jazyky na platformě Azure App Service.
@@ -965,7 +965,7 @@ Bezpečnost je podobná aplikace, která kontroluje závislosti. Můžete ji naj
 
 *Bezpečnostních*
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Následující články vám pomůžou při návrhu, vývoji a nasazení zabezpečených aplikací.
 
 - [Vytvořit](secure-design.md)

@@ -1,6 +1,6 @@
 ---
-title: Odkazovat na vlastní image v šabloně Azure škálovací sada | Dokumentace Microsoftu
-description: Zjistěte, jak přidat vlastní image do stávající šablony Škálovací sady virtuálních počítačů Azure
+title: Odkazování na vlastní image v šabloně sady Azure Scale | Microsoft Docs
+description: Přečtěte si, jak přidat vlastní image do existující šablony sady škálování virtuálních počítačů Azure.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: manayar
-ms.openlocfilehash: 2415d0dc2b9a2c4229d9910b42eb8ec9309ac7a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ed75a72360253996471034b001e12e8190cf733
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869115"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935264"
 ---
-# <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Přidání vlastní image šablony Azure škálovací sady
+# <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Přidání vlastní image do šablony Azure Scale set
 
-Tento článek popisuje, jak změnit [šablonu základní škálovací sady](virtual-machine-scale-sets-mvss-start.md) nasadit z vlastní image.
+V tomto článku se dozvíte, jak upravit [šablonu základní sady škálování](virtual-machine-scale-sets-mvss-start.md) pro nasazení z vlastní image.
 
 ## <a name="change-the-template-definition"></a>Změna definice šablony
-V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvořili základní škálovací sadu šablony. Nyní budeme používat tento starší šablony a upravit tak, aby vytvořit šablonu, která nasadí škálovací sady z vlastní image.  
+V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvořili základní šablonu sady škálování. Nyní použijeme tuto předchozí šablonu a upravíte ji k vytvoření šablony, která nasadí sadu škálování z vlastní image.  
 
 ### <a name="creating-a-managed-disk-image"></a>Vytvoření image spravovaného disku
 
-Pokud už máte spravovaného disku vlastní image (prostředek typu `Microsoft.Compute/images`), pak můžete tuto část přeskočit.
+Pokud již máte vlastní image spravovaného disku (prostředek typu `Microsoft.Compute/images`), můžete tuto část přeskočit.
 
-Nejprve přidejte `sourceImageVhdUri` parametr, což je identifikátor URI pro generalizovaný objektů blob v Azure Storage, který obsahuje vlastní image k nasazení z.
+Nejdřív přidejte `sourceImageVhdUri` parametr, což je identifikátor URI pro zobecněný objekt BLOB v Azure Storage, který obsahuje vlastní image, ze které se má nasadit.
 
 
 ```diff
@@ -51,7 +51,7 @@ Nejprve přidejte `sourceImageVhdUri` parametr, což je identifikátor URI pro g
    "variables": {},
 ```
 
-Dále přidejte prostředek typu `Microsoft.Compute/images`, který je spravovaný disk image založenou na zobecněný objektů blob v identifikátoru URI `sourceImageVhdUri`. Tento obrázek musí být ve stejné oblasti jako škálovací sada, která ji používá. V okně Vlastnosti obrázku, zadejte typ operačního systému, umístění objektu blob (z `sourceImageVhdUri` parametr) a typ účtu úložiště:
+Dále přidejte prostředek typu `Microsoft.Compute/images`, což je bitová kopie spravovaného disku založená na zobecněném objektu BLOB umístěném v identifikátoru URI. `sourceImageVhdUri` Tento obrázek musí být ve stejné oblasti jako sada škálování, která ho používá. Ve vlastnostech image zadejte typ operačního systému, umístění objektu BLOB (z `sourceImageVhdUri` parametru) a typ účtu úložiště:
 
 ```diff
    "resources": [
@@ -78,7 +78,7 @@ Dále přidejte prostředek typu `Microsoft.Compute/images`, který je spravovan
 
 ```
 
-V škálovací sady prostředků, přidat `dependsOn` klauzule odkazující na vlastní image, ujistěte se, že image se vytvoří před škálovací sady se pokusí nasazení z této image:
+V prostředku sady škálování přidejte `dependsOn` klauzuli odkazující na vlastní image, abyste se ujistili, že se image vytvoří před tím, než se sada škálování pokusí o nasazení z této image:
 
 ```diff
        "location": "[resourceGroup().location]",
@@ -93,25 +93,21 @@ V škálovací sady prostředků, přidat `dependsOn` klauzule odkazující na v
 
 ```
 
-### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Změna měřítka nastavit vlastnosti, které chcete použít image spravovaného disku
+### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Změna vlastností sady škálování na použití image spravovaného disku
 
-V `imageReference` stupnice nastavit `storageProfile`, místo zadávání vydavatele, nabídky, sku, a zadejte verzi image platformy, `id` z `Microsoft.Compute/images` prostředků:
+V části sady `storageProfile`škálování místo určení vydavatele, nabídky, SKU a verze image `id` platformy zadejte `Microsoft.Compute/images` zdroj: `imageReference`
 
-```diff
+```json
          "virtualMachineProfile": {
            "storageProfile": {
              "imageReference": {
--              "publisher": "Canonical",
--              "offer": "UbuntuServer",
--              "sku": "16.04-LTS",
--              "version": "latest"
-+              "id": "[resourceId('Microsoft.Compute/images', 'myCustomImage')]"
+              "id": "[resourceId('Microsoft.Compute/images', 'myCustomImage')]"
              }
            },
            "osProfile": {
 ```
 
-V tomto příkladu použijte `resourceId` funkce získáte ID prostředku bitové kopie vytvořené ve stejné šabloně. Pokud jste vytvořili image spravovaného disku předem, byste měli poskytnout ID této bitové kopie. Toto ID musí být ve tvaru: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
+V tomto příkladu použijte `resourceId` funkci k získání ID prostředku obrázku vytvořeného ve stejné šabloně. Pokud jste vytvořili image spravovaného disku předem, měli byste místo toho zadat ID tohoto obrázku. Toto ID musí být ve tvaru: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,33 +1,44 @@
 ---
 title: Úvod do Azure Search-Azure Search
-description: Azure Search je plně spravovaná hostovaná cloudová vyhledávací služba od Microsoftu. Přečtěte si popisy funkcí, vývojový pracovní postup, jak Azure Search porovnává s ostatními produkty Microsoftu pro hledání a jak začít.
-manager: cgronlun
+description: Azure Search je plně spravovaná hostovaná cloudová vyhledávací služba od Microsoftu. Přečtěte si popisy funkcí, vývojový pracovní postup, porovnání s ostatními produkty Microsoftu pro hledání a jak začít.
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 08/13/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 7a12c9153332e9d6fc70512bc55fe0a53f7c78fc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a48e4026ee3d7108f3b8e77dcb482d9904891cd4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827150"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014462"
 ---
 # <a name="what-is-azure-search"></a>Co je Azure Search?
-Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání v soukromém heterogenním obsahu ve webových, mobilních a firemních aplikacích. Dotazování se provádí nad indexem definovaným uživatelem.
 
-+ Sestavte vyhledávací index obsahující pouze vaše data, která jsou zdrojová z několika typů obsahu a platforem. 
+Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání v soukromém heterogenním obsahu ve webových, mobilních a firemních aplikacích. Váš vlastní kód vyvolá příjem dat (indexování), vydává požadavky na dotazy a zpracovává odpovědi. Možnosti vyhledávání jsou definovány ve vašem klientském kódu pomocí funkce z Azure Search, při provádění dotazu prostřednictvím trvalého indexu, který vytvoříte a vlastníte. 
 
-+ Využijte rozšíření AI k extrakci textu a funkcí z obrazových souborů nebo entit a klíčových frází z nezpracovaného textu.
+![Architektura Azure Search](media/search-what-is-azure-search/azure-search-diagram.png "Architektura Azure Search")
 
-+ Vytvářejte intuitivní vyhledávací prostředí s možností navigace a filtry, synonyma, automatické dokončování a analýza textu pro "znamenali jste" automaticky opravené hledané podmínky. Získejte optimalizaci relevance prostřednictvím funkcí a zvyšování logiky.
-
-+ Vytváření vyhledávacích aplikací pro konkrétní případy použití Geografické hledání podporuje prostředí "najít blízko". Vícejazyčné vyhledávání je podporováno prostřednictvím analyzátorů jazyka pro fulltextové vyhledávání bez anglického textu.
+<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
++ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
++ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
++ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
 
 Funkce se zveřejňuje prostřednictvím jednoduchého rozhraní [REST API](/rest/api/searchservice/) nebo [.NET SDK](search-howto-dotnet-sdk.md), které zakrývá zákonitou složitost načítání informací. Kromě rozhraní API portál Azure poskytuje podporu správy a správy obsahu a nástroje pro vytváření prototypů a dotazů na indexy. Služba běží v cloudu, proto infrastrukturu a dostupnost spravuje Microsoft.
+
+## <a name="when-to-use-azure-search"></a>Kdy použít Azure Search
+
+Azure Search je vhodný pro následující scénáře aplikací:
+
++ Konsolidace heterogenních typů obsahu do privátního, jednoduchého indexu s možností prohledávání. Dotazy jsou vždycky na indexu, který vytvoříte a načtete s dokumenty, a index se vždycky nachází v cloudu na službě Azure Search. Index můžete naplnit pomocí datových proudů dokumentů JSON z libovolného zdroje nebo platformy. Pro obsah ve zdroji v Azure můžete také použít *indexer* , který načte data do indexu. Klíčovým důvodem pro použití Azure Search je definice indexu a Správa/vlastnictví.
+
++ Snadná implementace funkcí souvisejících s vyhledáváním Rozhraní API Azure Search zjednodušují vytváření dotazů, omezující navigaci, filtry (včetně geografického hledání), mapování synonym, dotazy typeahead a optimalizaci závažnosti. Pomocí integrovaných funkcí můžete vyhovět očekáváním koncových uživatelů při hledání podobného komerčním vyhledávacím webům.
+
++ Indexování nestrukturovaného textu nebo extrakce textu a informací ze souborů obrázků. Funkce pro vyhledávání rozpoznávání Azure Search přidává do kanálu indexování zpracování AI. Některé běžné případy použití zahrnují rozpoznávání OCR přes naskenovaný dokument, rozpoznávání entit a extrakci klíčových frází pro velké dokumenty, rozpoznávání jazyka a překlad textu a analýzu mínění.
+
++ Jazykové požadavky jsou splněné pomocí vlastních a jazykových analyzátorů Azure Search. Pokud máte obsah, který není v angličtině, Azure Search podporuje jak analyzátory Lucene, tak i procesory přirozeného jazyka společnosti Microsoft. Můžete také nakonfigurovat analyzátory, aby byly zajištěny specializované zpracování nezpracovaného obsahu, například filtrování diakritických znamének.
 
 <a name="feature-drilldown"></a>
 
@@ -101,6 +112,7 @@ Mezi hlavní silné stránky patří:
 + Integrace dat Azure (prohledávací moduly) ve vrstvě indexování
 + Portál Azure Portal pro centrální správu
 + Škálování kapacity, spolehlivost a špičková dostupnost Azure
++ Zpracování souborů AI z nezpracovaných dat, aby bylo možné je prohledávat, včetně textu z obrázků nebo hledání vzorců v nestrukturovaném obsahu.
 + Jazykové a vlastní analýzy s analyzátory pro výkonné fulltextové vyhledávání v 56 jazycích
 + [Základní funkce společné pro aplikace zaměřené na vyhledávání](#feature-drilldown): vyhodnocování (bodování), používání faset, návrhy, synonyma, geografické vyhledávání a další.
 

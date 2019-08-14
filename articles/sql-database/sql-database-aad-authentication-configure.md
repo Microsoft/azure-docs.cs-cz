@@ -12,10 +12,10 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: b6414ac41b1bb43e3fe1470a7ae2b1358126003a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68569677"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa ověřování Azure Active Directory pomocí SQL
@@ -167,7 +167,7 @@ Následující dva postupy vám ukážou, jak zřídit správce Azure Active Dir
     ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)
 
     >[!NOTE]
-    > Na této stránce před výběrem **SQL serveru**můžete vybrat hvězdičku vedle názvu, *abyste kategorii* mohli přidat a přidat **SQL servery** do levého navigačního panelu.
+    > Na této stránce před výběrem **SQL serveru**můžete vybrat **hvězdičku** vedle názvu, abyste kategorii mohli přidat a přidat **SQL servery** do levého navigačního panelu.
 
 3. Na stránce **SQL Server** vyberte možnost **Správce služby Active Directory**.
 4. Na stránce **Správce služby Active Directory** vyberte **nastavit správce**.  ![vybrat službu Active Directory](./media/sql-database-aad-authentication/select-active-directory.png)  

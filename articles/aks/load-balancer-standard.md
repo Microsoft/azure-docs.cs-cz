@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9cf3db3a15fab5a2f067a146950e02923a20379
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b5bbc2951e10e132b407e1651a2c146cf22184a5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "67476811"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949666"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verze Preview – použití nástroje pro vyrovnávání zatížení Standard SKU ve službě Azure Kubernetes (AKS)
 
@@ -92,6 +92,7 @@ Při vytváření a správě clusterů AKS, které podporují Nástroj pro vyrov
 
 * Při použití *standardní* SKU pro nástroj pro vyrovnávání zatížení musíte poskytnout veřejné adresy a vyhnout se vytváření Azure Policy, které zakazují vytváření IP adres. Cluster AKS automaticky vytvoří veřejnou IP adresu *Standard* SKU ve stejné skupině prostředků vytvořené pro cluster AKS, který se obvykle jmenuje s *MC_* na začátku. AKS přiřadí veřejnou IP adresu k nástroji pro vyrovnávání zatížení *Standard* SKU. Veřejná IP adresa je nutná pro povolení odchozího provozu z clusteru AKS. Tato veřejná IP adresa je také nutná k udržení připojení mezi řídicí rovinou a uzly agentů a k udržení kompatibility s předchozími verzemi AKS.
 * Při použití *standardní* skladové položky (SKU) pro nástroj pro vyrovnávání zatížení musíte použít Kubernetes verze 1.13.5 nebo vyšší.
+* Pokud používáte [funkci veřejné IP adresy uzlu](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool) se standardními nástroji pro vyrovnávání zatížení, můžete pro uzel nastavit buď odchozí pravidlo SLB, nebo veřejnou IP adresu. Musíte vybrat jednu nebo druhou, protože jeden virtuální počítač nejde současně připojit k odchozímu pravidlu SLB i k veřejné IP adrese.
 
 I když je tato funkce ve verzi Preview, platí následující další omezení:
 
@@ -318,7 +319,7 @@ kubectl delete -f sample.yaml
 kubectl delete -f standard-lb.yaml
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o službách Kubernetes Services najdete v [dokumentaci ke službám Kubernetes][kubernetes-services].
 

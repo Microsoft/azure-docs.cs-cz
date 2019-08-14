@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 4b66d015e8a182e305a36dacaa2e082288a3e19e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840538"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934279"
 ---
 # <a name="introduction-to-deep-learning-vs-machine-learning"></a>Seznámení s hloubkovým učením a strojovým učením
 
@@ -78,7 +78,7 @@ Jeden důležitý úkol, který může obsáhlý Learning provádět, je e-Disco
 
 ## <a name="what-are-artificial-neural-networks"></a>Co jsou umělé sítě neuronové?
 
-Umělá neuronové síť je model hloubkového učení nechte inspirovat způsobem, který v informacích o procesu lidského mozku slouží jako biologické neuronové sítě. Existuje více typů umělých neuronové sítí, které jsou právě používány. Nejoblíbenější umělá neuronové síť typologies je popsána níže.
+Umělé sítě neuronové se vytváří pomocí vrstev připojených uzlů. Modely hloubkového učení používají sítě neuronové s velkým množstvím vrstev. Nejoblíbenější umělá neuronové síť typologies je popsána níže.
 
 ### <a name="feedforward-neural-network"></a>Síť neuronové Feedforward
 
@@ -92,7 +92,7 @@ Opakující se neuronové sítě jsou široce používaný typ umělé neuronov�
 
 Síť neuronové konvoluční je obzvláště efektivní typ umělé neuronové sítě, která prezentuje jedinečnou architekturu. Nejprve jsou vrstvy uspořádány ve třech rozměrech: šířka, Výška a hloubka. Neurons v jedné vrstvě se navíc nepřipojí ke všem neurons v následující vrstvě, ale pouze do malých oblastí. Nakonec bude konečný výstup snížen na jeden vektor skóre pravděpodobnosti uspořádané podél rozměru hloubky. Tyto sítě neuronové byly použity v oblastech, jako je například rozpoznávání obrázku a klasifikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V následujících článcích se dozvíte, jak používat technologii pro hloubkové učení ve [službě Azure Machine Learning](/azure/machine-learning/service/):
 

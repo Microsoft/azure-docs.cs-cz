@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c6793581b797892c0bb468906d4f8ae72182618
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 78ddda8ff67cfdfebcf19f53c307c689884baf4d
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562123"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942899"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Jak: Správa zastaralých zařízení ve službě Azure AD
 
@@ -101,7 +101,7 @@ Službu Azure AD uklidíte takto:
 - **Windows 7/8** – nejdřív zakažte nebo odstraňte zařízení s Windows 7/8 v místní službě AD. K zakázání nebo odstranění zařízení s Windows 7/8 ve službě Azure AD nemůžete použít Azure AD Connect. Pokud provedete změnu v místním prostředí, musíte v Azure AD zakázat nebo odstranit.
 
 > [!NOTE]
->* Odstranění zařízení v místní službě AD nebo Azure AD se do klienta neregistruje. Znemožní přístup k prostředkům pomocí zařízení jako identity (např. podmíněný přístup). Přečtěte si další informace o tom, jak [Odebrat registraci na klientovi](faq.md#hybrid-azure-ad-join-faq).
+>* Při odstraňování zařízení v místní službě AD nebo Azure AD nedojde k odebrání registrace na klientovi. Znemožní přístup k prostředkům pomocí zařízení jako identity (např. podmíněný přístup). Přečtěte si další informace o tom, jak [Odebrat registraci na klientovi](faq.md#hybrid-azure-ad-join-faq).
 >* Odstranění zařízení s Windows 10 v Azure AD znovu synchronizuje zařízení z místního prostředí pomocí služby Azure AD Connect, ale jako nový objekt ve stavu čeká na vyřízení. V zařízení se vyžaduje nová registrace.
 >* Odebrání zařízení z oboru synchronizace pro zařízení s Windows 10/serverem 2016 odstraní zařízení Azure AD. Přidáním zpátky do oboru synchronizace dojde k umístění nového objektu do stavu čeká na vyřízení. Vyžaduje se opakovaná registrace zařízení.
 >* Pokud nepoužíváte Azure AD Connect pro synchronizaci zařízení s Windows 10 (například jenom pomocí AD FS k registraci), musíte pro správu životního cyklu podobně jako u zařízení s Windows 7/8.

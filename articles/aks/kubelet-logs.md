@@ -1,6 +1,6 @@
 ---
-title: Zobrazení kubelet protokolů ve službě Azure Kubernetes Service (AKS)
-description: Zjistěte, jak zobrazit informace o odstraňování potíží v protokolů kubelet z uzlů Azure Kubernetes Service (AKS)
+title: Zobrazení protokolů kubelet ve službě Azure Kubernetes Service (AKS)
+description: Přečtěte si, jak zobrazit informace o řešení potíží v protokolech kubelet z uzlů Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -8,35 +8,35 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: mlearned
 ms.openlocfilehash: 65b16b3ddc209ef5d2f6287a04cfe402c3b205c6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67615185"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Získání protokolů kubelet z uzlů clusteru Azure Kubernetes Service (AKS)
 
-Jako součást provozní AKS cluster můžete kontrolovat protokoly k vyřešení problému. Integrovaný v portálu Azure portal je možnost zobrazit protokoly pro [AKS hlavní komponenty][aks-master-logs] or [containers in an AKS cluster][azure-container-logs]. V některých případech budete muset získat *kubelet* protokoly z uzlu AKS pro účely odstraňování potíží.
+V rámci provozu clusteru AKS možná budete muset zkontrolovat protokoly a vyřešit problém. Integrovaná do Azure Portal je schopnost zobrazit protokoly pro [hlavní komponenty][aks-master-logs] a [kontejnery AKS v clusteru AKS][azure-container-logs]. V některých případech může být potřeba získat protokoly *kubelet* z uzlu AKS pro účely řešení potíží.
 
-Tento článek popisuje, jak můžete `journalctl` zobrazíte *kubelet* přihlásí do uzlu AKS.
+V tomto článku se dozvíte, jak `journalctl` můžete pomocí nástroje zobrazit protokoly *kubelet* v uzlu AKS.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-## <a name="create-an-ssh-connection"></a>Vytvořte připojení SSH
+## <a name="create-an-ssh-connection"></a>Vytvoření připojení SSH
 
-Nejprve vytvořte připojení SSH k uzlu, na kterém chcete zobrazit *kubelet* protokoly. Tato operace je podrobně popsaná v [SSH do uzlů clusteru Azure Kubernetes Service (AKS)][aks-ssh] dokumentu.
+Nejdřív vytvořte připojení SSH s uzlem, ke kterému potřebujete zobrazit protokoly *kubelet* . Tato operace je podrobně popsána v dokumentu pro [uzly clusteru Azure Kubernetes Service (AKS)][aks-ssh] .
 
 ## <a name="get-kubelet-logs"></a>Získání protokolů kubelet
 
-Po připojení k uzlu, spusťte následující příkaz, který o přijetí změn *kubelet* protokoly:
+Jakmile se připojíte k uzlu, spusťte následující příkaz, který načte protokoly *kubelet* :
 
 ```console
 sudo journalctl -u kubelet -o cat
 ```
 
-Následující příklad výstupu ukazuje *kubelet* můžete vytvářet protokoly dat:
+Následující vzorový výstup zobrazuje data protokolu *kubelet* :
 
 ```
 I0508 12:26:17.905042    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
@@ -64,7 +64,7 @@ I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname fr
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud potřebujete další informace o odstraňování potíží z hlavní větve Kubernetes, přečtěte si [zobrazit Kubernetes ve službě AKS protokoly hlavní uzel][aks-master-logs].
+Pokud potřebujete další informace pro řešení potíží z hlavní větve Kubernetes, přečtěte si téma [zobrazení protokolů hlavního uzlu Kubernetes v AKS][aks-master-logs].
 
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md

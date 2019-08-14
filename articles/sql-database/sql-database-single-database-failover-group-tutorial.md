@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: d11dd72c65ea32fb5a262f325bdcad0b5a8ab863
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6cf688750ac73763c7f0da4eea152cf6bf0c8285
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566658"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935029"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Kurz: Přidání samostatné databáze Azure SQL Database do skupiny převzetí služeb při selhání
 
@@ -29,20 +29,20 @@ Nakonfiguruje skupinu převzetí služeb při selhání pro Azure SQL Database i
 
 ## <a name="prerequisites"></a>Požadavky
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující: 
 
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) .
 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) .
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) .
@@ -57,7 +57,7 @@ K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 ## <a name="2---create-the-failover-group"></a>2 – Vytvoření skupiny převzetí služeb při selhání 
 V tomto kroku vytvoříte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) mezi existujícím serverem SQL Azure a novým serverem SQL Azure v jiné oblasti. Pak přidejte ukázkovou databázi do skupiny převzetí služeb při selhání. 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal. 
 
 
@@ -90,7 +90,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
     ![Přidat databázi SQL do skupiny převzetí služeb při selhání](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí PowerShellu. 
 
    > [!NOTE]
@@ -146,7 +146,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
    Write-host "Successfully added the database to the failover group..." 
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní samostatnou databázi pomocí AZ CLI. 
 
    > [!NOTE]
@@ -182,6 +182,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní samostatn
       --partner-server $drServerName \
       --resource-group $resourceGroupName \
       --server $serverName \
+      --add-db $databaseName
       --failover-policy Automatic
    ```
 
@@ -190,7 +191,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní samostatn
 ## <a name="3---test-failover"></a>3\. testování převzetí služeb při selhání 
 V tomto kroku dojde k selhání skupiny převzetí služeb při selhání pro sekundární server a následnému navrácení služeb po obnovení pomocí Azure Portal. 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Testovací převzetí služeb při selhání pomocí Azure Portal. 
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na server **SQL** Servers. 
@@ -207,7 +208,7 @@ Testovací převzetí služeb při selhání pomocí Azure Portal.
 1. Zkontrolujte, který server je teď primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně zdařilo, dva servery by měly mít zaměnitelné role. 
 1. Znovu vyberte **převzetí služeb při selhání** , aby se servery převedly zpátky na původní role. 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Testovací převzetí služeb při selhání pomocí PowerShellu 
 
 
@@ -262,7 +263,7 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
    Write-host "Failed failover group to successfully to back to" $serverName
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 Testovací převzetí služeb při selhání pomocí AZ CLI. 
 
 
@@ -319,7 +320,7 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 Vyčistěte prostředky odstraněním skupiny prostředků. 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Odstraňte skupinu prostředků pomocí Azure Portal. 
 
 
@@ -327,7 +328,7 @@ Odstraňte skupinu prostředků pomocí Azure Portal.
 1. Vyberte **Odstranit skupinu prostředků** a odstraňte všechny prostředky ve skupině a také samotnou skupinu prostředků. 
 1. Zadejte název skupiny `myResourceGroup`prostředků, v textovém poli a pak vyberte **Odstranit** a odstraňte skupinu prostředků.  
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Odstraňte skupinu prostředků pomocí PowerShellu. 
 
 
@@ -341,7 +342,7 @@ Odstraňte skupinu prostředků pomocí PowerShellu.
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 Odstraňte skupinu prostředků pomocí AZ CLI. 
 
 
@@ -361,15 +362,15 @@ Odstraňte skupinu prostředků pomocí AZ CLI.
 
 ## <a name="full-scripts"></a>Úplné skripty
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!code-azurecli-interactive[main](../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Create SQL Database")]
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Pro Azure Portal nejsou k dispozici žádné skripty.
  
 ---

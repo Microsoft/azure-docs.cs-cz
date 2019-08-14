@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c38b11ceda010c122e17a7fad3df1684e0a1cf42
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2a6c63c4ae58079c79a9d344f1e2550e4768088f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696273"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932243"
 ---
 # <a name="manage-database-roles-and-users"></a>Správa databázových rolí a uživatelů
 
@@ -26,7 +26,7 @@ Oprávnění role zahrnují:
 *  **Proces** – uživatelé se mohou k databázi připojit a provádět operace procesu a analyzovat data databáze modelu.
 *  **Čtení** – uživatelé můžou použít klientskou aplikaci pro připojení k datům databáze modelu a k jejich analýze.
 
-Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte uživatele nebo skupiny k těmto rolím pomocí Správce rolí v nástroji SQL Server Data Tools (SSDT). Při nasazení na server můžete k přidávání a odebírání rolí a uživatelských členů použít rutiny SQL Server Management Studio (SSMS), [Analysis Services rutiny prostředí PowerShell](/sql/analysis-services/powershell/analysis-services-powershell-reference)nebo TMSL ( [Tabular model Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) ).
+Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte uživatele nebo skupiny k těmto rolím pomocí Správce rolí v nástroji SQL Server Data Tools (SSDT). Při nasazení na server můžete k přidávání a odebírání rolí a uživatelských členů použít rutiny SQL Server Management Studio (SSMS), [Analysis Services rutiny prostředí PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)nebo TMSL ( [Tabular model Scripting Language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) ).
 
 **Skupiny zabezpečení** musí být [povoleny poštou](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) s `MailEnabled` vlastností nastavenou na `True`. Při určování skupiny podle e-mailové `obj:groupid@tenantid`adresy použijte.
 
@@ -86,7 +86,7 @@ Chcete-li přidat role a uživatele do nasazené databáze modelů, musíte být
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Přidání rolí a uživatelů pomocí skriptu TMSL
 
-Skript TMSL můžete spustit v okně XMLA v SSMS nebo pomocí PowerShellu. Použijte příkaz [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) a objekt [role](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) .
+Skript TMSL můžete spustit v okně XMLA v SSMS nebo pomocí PowerShellu. Použijte příkaz [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) a objekt [role](https://docs.microsoft.com/bi-reference/tmsl/roles-object-tmsl) .
 
 **Ukázkový skript TMSL**
 
@@ -120,13 +120,13 @@ V této ukázce je externí uživatel B2B a skupina přidaný do role analytika 
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Přidání rolí a uživatelů pomocí prostředí PowerShell
 
-Modul [SQLServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) poskytuje rutiny pro správu databáze specifické pro úlohu a rutinu Invoke ASCmd pro obecné účely, která přijímá dotaz nebo skript TMSL (Tabular model Scripting Language). Následující rutiny se používají ke správě databázových rolí a uživatelů.
+Modul [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) poskytuje rutiny pro správu databáze specifické pro úlohu a rutinu Invoke ASCmd pro obecné účely, která přijímá dotaz nebo skript TMSL (Tabular model Scripting Language). Následující rutiny se používají ke správě databázových rolí a uživatelů.
   
 |Rutiny|Popis|
 |------------|-----------------| 
-|[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Přidejte člena do databázové role.| 
-|[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Odebere člena z databázové role.|   
-|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Spusťte skript TMSL.|
+|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Přidejte člena do databázové role.| 
+|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Odebere člena z databázové role.|   
+|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Spusťte skript TMSL.|
 
 ## <a name="row-filters"></a>Filtry řádků  
 
@@ -148,9 +148,9 @@ Filtry řádků se použijí na zadané řádky a související řádky. Pokud m
   
  K odepření přístupu ke všem řádkům celé tabulky můžete použít filtr, *= false ()* .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
   [Správa správců serverů](analysis-services-server-admins.md)   
   [Správa Azure Analysis Services s využitím PowerShellu](analysis-services-powershell.md)  
-  [Referenční dokumentace jazyka TMSL (Tabular model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
+  [Referenční dokumentace jazyka TMSL (Tabular model Scripting Language)](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
 

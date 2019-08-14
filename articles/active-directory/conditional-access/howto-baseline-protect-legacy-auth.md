@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608072"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931935"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Základní zásady: Blokovat starší verze ověřování (Preview)
 
@@ -37,7 +37,7 @@ Než budete moct v adresáři zablokovat starší verze ověřování, musíte n
 
 1. Přejděte do **Azure Portal** > **Azure Active Directory** > **přihlášení**.
 1. Pokud není zobrazený, klikněte na **sloupce** > **klientská aplikace**a přidejte sloupec aplikace klienta.
-1. Filtrovat podle **klientských aplikací** > **ostatními klienty** a klikněte na **použít**.
+1. **Přidat filtry** > **klienta aplikace** > vyberte všechny možnosti pro **ostatní klienty** a klikněte na **použít**.
 
 Filtrování zobrazí jenom ty pokusy o přihlášení, které udělaly starší protokoly ověřování. Kliknutím na každý jednotlivý pokus o přihlášení zobrazíte další podrobnosti. V poli **klientská aplikace** na kartě **základní informace** se určí, který starší verze ověřovacího protokolu se použil.
 

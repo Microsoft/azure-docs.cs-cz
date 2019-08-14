@@ -1,6 +1,6 @@
 ---
-title: Vertikální škálování virtuálních počítačů Windows pomocí Azure Automation | Dokumentace Microsoftu
-description: Vertikální škálování virtuálního počítače s Windows v reakci na monitorování výstrahy se službou Azure Automation.
+title: Použití Azure Automation ke vertikálnímu škálování virtuálních počítačů s Windows | Microsoft Docs
+description: Vertikální škálování virtuálního počítače s Windows v reakci na monitorování výstrah pomocí Azure Automation
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -16,47 +16,48 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7cccd36c619e58b8dedb9a52e70c478dc7b857c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5d255662f7db12537365f57eb71355ca2e11cc51
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707926"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947256"
 ---
-# <a name="vertically-scale-windows-vms-with-azure-automation"></a>Vertikální škálování virtuálních počítačů s Windows pomocí Azure Automation.
+# <a name="vertically-scale-windows-vms-with-azure-automation"></a>Vertikální škálování virtuálních počítačů s Windows pomocí Azure Automation
 
-Vertikální škálování je proces zvýšením nebo snížením prostředky počítače v reakci na zatížení. V Azure to můžete provést tak, že změníte velikost virtuálního počítače. To může pomoct v těchto scénářích
+Vertikální škálování je proces zvýšení nebo snížení počtu prostředků počítače v reakci na zatížení. V Azure to můžete dosáhnout změnou velikosti virtuálního počítače. To může pomáhat v následujících scénářích:
 
-* Pokud virtuální počítač nepoužívá často, můžete změnit jeho velikost na menší velikost chcete snížit měsíční náklady
-* Pokud virtuální počítač se zobrazují zátěž ve špičce, můžete velikost na větší velikost, zvýšit jeho kapacity
+* Pokud se virtuální počítač nepoužívá často, můžete jeho velikost zmenšit na menší velikost, aby se snížily měsíční náklady.
+* Pokud se na virtuálním počítači zobrazuje zatížení ve špičce, můžete změnit jeho velikost na větší velikost, abyste zvýšili jeho kapacitu.
 
-Osnova – pokyny k tomu je jako níže
+Postup, jak to provést, je následující:
 
-1. Nastavení přístupu k virtuálním počítačům Azure Automation.
-2. Import runbooků Azure Automation vertikální škálování do vašeho předplatného
-3. Přidání webhooku do runbooku
-4. Přidání výstrahy pro váš virtuální počítač
+1. Nastavit Azure Automation pro přístup k Virtual Machines
+2. Import sad Runbook se Azure Automation vertikálním škálováním do předplatného
+3. Přidání Webhooku do Runbooku
+4. Přidání upozornění k virtuálnímu počítači
+
 
 ## <a name="scale-limitations"></a>Omezení škálování
 
-Kvůli velikosti první virtuální počítač, velikostí, které je možné škálovat, může být omezen z důvodu aktuální virtuální počítač nasazený v dostupnost dalších velikostí v clusteru. V runboocích publikované automation použité v tomto článku jsme postará o tento případ a pouze v rámci škálování následující dvojice velikost virtuálního počítače. To znamená, že virtuální počítač Standard_D1v2 není náhle být vertikálně kapacitu až na Standard_G5 úměrná Basic_A0. Také se nepodporuje omezené virtuální počítač velikosti škálovat směrem nahoru nebo dolů. 
+Vzhledem k velikosti prvního virtuálního počítače se můžou velikosti, na které se dá škálovat, omezit kvůli dostupnosti dalších velikostí v clusteru, na kterém je nasazený aktuální virtuální počítač. V publikovaných runbookůch Automation používaných v tomto článku se postará o tento případ a jenom škálovat v rámci dvojice velikostí virtuálních počítačů. To znamená, že virtuální počítač s Standard_D1v2 se do Standard_G5 nebude po horizontálním navýšení kapacity škálovat až na Basic_A0. Také omezené velikosti virtuálních počítačů se škálují nahoru/dolů nejsou podporované. 
 
-Je možné škálovat mezi následující páry velikosti:
+Můžete si vybrat, jestli chcete škálovat mezi následujícími páry velikostí:
 
-* [Řady A-Series](#a-series)
+* [Řada a-Series](#a-series)
 * [Řady B-Series](#b-series)
 * [Řady D-Series](#d-series)
-* [E-Series](#e-series)
+* [Řady E](#e-series)
 * [Řada F-Series](#f-series)
-* [Řada G-Series](#g-series)
+* [Řada G](#g-series)
 * [Řada H-Series](#h-series)
-* [Řada L-Series](#l-series)
+* [Řady L](#l-series)
 * [Řada M-Series](#m-series)
-* [N-Series](#n-series)
+* [Řada N-Series](#n-series)
 
 ### <a name="a-series"></a>A-Series
 
-| Počáteční velikost. | Vertikální navýšení kapacity velikosti | 
+| Počáteční velikost | Škálování velikosti | 
 | --- | --- |
 | Basic_A0 | Basic_A1 |
 | Basic_A1 | Basic_A2 |
@@ -78,7 +79,7 @@ Je možné škálovat mezi následující páry velikosti:
 
 ### <a name="b-series"></a>B-Series
 
-| Počáteční velikost. | Vertikální navýšení kapacity velikosti | 
+| Počáteční velikost | Škálování velikosti | 
 | --- | --- |
 | Standard_B1s | Standard_B2s |
 | Standard_B1ms | Standard_B2ms |
@@ -87,7 +88,7 @@ Je možné škálovat mezi následující páry velikosti:
 
 ### <a name="d-series"></a>D-Series
 
-| Počáteční velikost. | Vertikální navýšení kapacity velikosti | 
+| Počáteční velikost | Škálování velikosti | 
 | --- | --- |
 | Standard_D1 | Standard_D2 |
 | Standard_D2 | Standard_D3 |
@@ -129,7 +130,7 @@ Je možné škálovat mezi následující páry velikosti:
 
 ### <a name="e-series"></a>E-Series
 
-| Počáteční velikost. | Vertikální navýšení kapacity velikosti | 
+| Počáteční velikost | Škálování velikosti | 
 | --- | --- |
 | Standard_E2_v3 | Standard_E4_v3 |
 | Standard_E4_v3 | Standard_E8_v3 |
@@ -146,7 +147,7 @@ Je možné škálovat mezi následující páry velikosti:
 
 ### <a name="f-series"></a>Řada F
 
-| Počáteční velikost. | Vertikální navýšení kapacity velikosti | 
+| Počáteční velikost | Škálování velikosti | 
 | --- | --- |
 | Standard_F1 | Standard_F2 |
 | Standard_F2 | Standard_F4 |
@@ -165,7 +166,7 @@ Je možné škálovat mezi následující páry velikosti:
 
 ### <a name="g-series"></a>G-Series
 
-| Počáteční velikost. | Vertikální navýšení kapacity velikosti | 
+| Počáteční velikost | Škálování velikosti | 
 | --- | --- |
 | Standard_G1 | Standard_G2 |
 | Standard_G2 | Standard_G3 |
@@ -178,14 +179,14 @@ Je možné škálovat mezi následující páry velikosti:
 
 ### <a name="h-series"></a>H-Series
 
-| Počáteční velikost. | Vertikální navýšení kapacity velikosti | 
+| Počáteční velikost | Škálování velikosti | 
 | --- | --- |
 | Standard_H8 | Standard_H16 |
 | Standard_H8m | Standard_H16m |
 
 ### <a name="l-series"></a>L-Series
 
-| Počáteční velikost. | Vertikální navýšení kapacity velikosti | 
+| Počáteční velikost | Škálování velikosti | 
 | --- | --- |
 | Standard_L4s | Standard_L8s |
 | Standard_L8s | Standard_L16s |
@@ -197,7 +198,7 @@ Je možné škálovat mezi následující páry velikosti:
 
 ### <a name="m-series"></a>M-Series
 
-| Počáteční velikost. | Vertikální navýšení kapacity velikosti | 
+| Počáteční velikost | Škálování velikosti | 
 | --- | --- |
 | Standard_M8ms | Standard_M16ms |
 | Standard_M16ms | Standard_M32ms |
@@ -210,7 +211,7 @@ Je možné škálovat mezi následující páry velikosti:
 
 ### <a name="n-series"></a>N-Series
 
-| Počáteční velikost. | Vertikální navýšení kapacity velikosti | 
+| Počáteční velikost | Škálování velikosti | 
 | --- | --- |
 | Standard_NC6 | Standard_NC12 |
 | Standard_NC12 | Standard_NC24 |
@@ -224,39 +225,40 @@ Je možné škálovat mezi následující páry velikosti:
 | Standard_NV12 | Standard_NV24 |
 | Standard_NV6s_v2 | Standard_NV12s_v2 |
 | Standard_NV12s_v2 | Standard_NV24s_v2 |
+| Standard_NV12s_v3 |Standard_NV48s_v3 |
 
-## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Nastavení přístupu k virtuálním počítačům Azure Automation.
-První věc, kterou musíte udělat, je vytvořit účet Azure Automation, které budou hostovat runbooky používat ke škálování virtuálního počítače. Služba Automation nedávno zavedli funkci "Účet Spustit jako", takže nastavení nahoru instanční objekt pro automatické spouštění sady runbook jménem uživatele velmi snadné. Další informace najdete v článku níže:
+## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Nastavit Azure Automation pro přístup k Virtual Machines
+První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který bude hostovat Runbooky používané pro škálování virtuálního počítače. Nedávno Služba Automation zavedla funkci "účet Spustit jako", která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků v zastoupení uživatele velmi snadné. Další informace si můžete přečíst v článku níže:
 
 * [Ověření runbooků pomocí účtu Spustit v Azure jako](../../automation/automation-sec-configure-azure-runas-account.md)
 
-## <a name="import-the-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Import runbooků Azure Automation vertikální škálování do vašeho předplatného
-Sady runbook, které jsou potřeba pro vertikální škálování virtuálního počítače jsou již publikován v galerii Runbooků Azure Automation. Je potřeba importovat do vašeho předplatného. Můžete se dozvíte, jak importování sad runbook najdete v následujícím článku.
+## <a name="import-the-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Import sad Runbook se Azure Automation vertikálním škálováním do předplatného
+Runbooky, které jsou potřeba pro vertikální škálování virtuálního počítače, jsou už publikované v galerii sady Runbook Azure Automation. Budete je muset naimportovat do svého předplatného. Informace o tom, jak importovat Runbooky, najdete v následujícím článku.
 
 * [Galerie runbooků a modulů pro Azure Automation](../../automation/automation-runbook-gallery.md)
 
-Na obrázku níže jsou uvedeny sady runbook, které je potřeba importovat
+Sady Runbook, které je třeba importovat, jsou uvedeny na obrázku níže.
 
-![Import runbooků](./media/vertical-scaling-automation/scale-runbooks.png)
+![Importovat Runbooky](./media/vertical-scaling-automation/scale-runbooks.png)
 
-## <a name="add-a-webhook-to-your-runbook"></a>Přidání webhooku do runbooku
-Po importu sad runbook, které potřebujete k přidání webhooku do sady runbook, tak můžou být aktivované výstrahy z virtuálního počítače. Podrobnosti o vytvoření webhooku pro vaše sada Runbook můžete přečíst tady
+## <a name="add-a-webhook-to-your-runbook"></a>Přidání Webhooku do Runbooku
+Po importu runbooků budete muset přidat Webhook do Runbooku, aby se mohl aktivovat výstrahou z virtuálního počítače. Podrobnosti o tom, jak vytvořit Webhook pro Runbook, si můžete přečíst tady.
 
-* [Webhooky Azure Automation](../../automation/automation-webhooks.md)
+* [Azure Automation Webhooky](../../automation/automation-webhooks.md)
 
-Ujistěte se, že zkopírujete webhook před jeho zavřením dialogu webhooku, protože ji budete potřebovat v další části.
+Ujistěte se, že jste Webhook zkopírovali před zavřením dialogu Webhooku, protože ho budete potřebovat v další části.
 
-## <a name="add-an-alert-to-your-virtual-machine"></a>Přidání výstrahy pro váš virtuální počítač
-1. Vyberte nastavení virtuálního počítače
-2. Vyberte "Pravidla upozornění"
-3. Vyberte "Přidat upozornění"
-4. Vyberte metriku, která se aktivuje upozornění na
-5. Vyberte podmínku, která splněny se upozornění aktivuje
-6. V kroku 5 vyberte prahovou hodnotu pro podmínku. musí být splněny
-7. Vybrat takovou dobu nad tím, které bude služba monitorování zkontrolujte podmínku a prahovou hodnotu v kroky 5 a 6
-8. Vložte webhook, který jste zkopírovali v předchozí části.
+## <a name="add-an-alert-to-your-virtual-machine"></a>Přidání upozornění k virtuálnímu počítači
+1. Vybrat nastavení virtuálního počítače
+2. Vybrat pravidla pro upozornění
+3. Vyberte Přidat výstrahu.
+4. Vyberte metriku, na které se má výstraha aktivovat.
+5. Vyberte podmínku, která se po splnění vyvolá výstraha.
+6. Vyberte prahovou hodnotu pro podmínku v kroku 5. k splnění
+7. Vyberte dobu, po kterou služba monitorování zkontroluje podmínku a prahovou hodnotu v krocích 5 & 6.
+8. Vložte do Webhooku, který jste zkopírovali z předchozí části.
 
-![Přidání upozornění do virtuálního počítače 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
+![Přidat upozornění k virtuálnímu počítači 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
 
-![Přidání upozornění k virtuálnímu počítači 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
+![Přidat upozornění k virtuálnímu počítači 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
 

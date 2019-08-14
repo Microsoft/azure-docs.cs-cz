@@ -10,15 +10,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 85368e4e-a0db-4c02-8dbc-8e2928fa6091
 caps.latest.revision: 60
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: 0bb0946ea48a4c206d6bfe683da0835aca9b198b
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+author: georgewallace
+ms.author: gwallace
+manager: gwallace
+ms.openlocfilehash: bafc8780368f58a7076ae472636d852d698d276c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60613233"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941349"
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Definice schématu webrole v Azure Cloud Services
 Webová role Azure je role, která je přizpůsobená pro programování webových aplikací, jak je podporovaná službou IIS 7, jako je ASP.NET, PHP, Windows Communication Foundation a FastCGI.

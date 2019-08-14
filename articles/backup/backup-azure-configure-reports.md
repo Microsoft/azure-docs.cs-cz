@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 169ce73ead52d6a275f13f084c681e14c89ab606
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 293af600f4bd58efe8383d019ca3d17f724f242c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689357"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933336"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 V tomto článku se dozvíte, jak postupovat při konfiguraci sestav pro Azure Backup pomocí trezoru Recovery Services. Také ukazuje, jak přistupovat k sestavám pomocí Power BI. Po dokončení těchto kroků můžete přejít přímo na Power BI a zobrazit, přizpůsobit a vytvořit sestavy.
@@ -37,7 +37,7 @@ Pokud se chcete tomuto problému vyhnout, Stáhněte si prosím nejnovější ap
 - Zaregistrujte poskytovatele prostředků **Microsoft. Insights**, pokud už není zaregistrovaný. Použijte odběry pro účet úložiště a Recovery Services trezor, aby data vytváření sestav mohla být v účtu úložiště. Tento krok provedete tak, že přejdete na > Azure Portal, vyberete**poskytovatele prostředků**předplatného a zkontrolujete tohoto poskytovatele a zaregistrujete ho.
 
 ## <a name="configure-storage-account-for-reports"></a>Konfigurace účtu úložiště pro sestavy
-Postupujte podle těchto kroků a nakonfigurujte účet úložiště pro Recovery Services trezor pomocí Azure Portal. Jedná se o jednorázovou konfiguraci. Po nakonfigurování účtu úložiště můžete přejít přímo na Power BI a zobrazit balíček obsahu a použít sestavy.
+Postupujte podle těchto kroků a nakonfigurujte účet úložiště pro Recovery Services trezor pomocí Azure Portal. Jedná se o jednorázovou konfiguraci. Po nakonfigurování účtu úložiště můžete přejít přímo na Power BI a zobrazit tak aplikaci šablon a používat sestavy.
 
 1. Pokud už máte otevřený trezor Recovery Services, pokračujte na další krok. Pokud nemáte otevřený trezor Recovery Services, vyberte v Azure Portal možnost **všechny služby**.
 
@@ -80,11 +80,11 @@ Po nakonfigurování účtu úložiště pro sestavy pomocí Recovery Servicesho
 Pokud chcete sestavu přizpůsobit a sdílet, vytvořte pracovní prostor a proveďte následující kroky.
 
 1. [](https://powerbi.microsoft.com/landing/signin/) Přihlaste se k Power BI.
-2. Vyberte **Načíst data**. Ve **více způsobech vytvoření vlastního obsahu**vyberte **balíčky obsahu služby**. Postupujte podle kroků v [dokumentaci Power BI pro připojení ke službě](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
+2. Přejděte na **aplikace > získat další aplikace z Microsoft Appsource**. Postupujte podle kroků v [dokumentaci Power BI pro připojení ke službě](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
 
 3. Na panelu **hledání** zadejte **Azure Backup** a vyberte **získat**.
 
-      ![Získat balíček obsahu](./media/backup-azure-configure-reports/content-pack-get.png)
+      ![Získat aplikaci šablony](./media/backup-azure-configure-reports/template-app-get.png)
 4. Zadejte název účtu úložiště, který jste nakonfigurovali v předchozím kroku 5, a vyberte **Další**.
 
     ![Zadejte název účtu úložiště.](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
@@ -96,11 +96,11 @@ Pokud chcete sestavu přizpůsobit a sdílet, vytvořte pracovní prostor a prov
 
     ![Import balíčku obsahu](./media/backup-azure-configure-reports/content-pack-importing-data.png) <br/>
 
-    Po dokončení importu se zobrazí oznámení o **úspěchu** . Pokud je objem dat v účtu úložiště velký, může Import balíčku obsahu trvat trochu déle.
+    Po dokončení importu se zobrazí oznámení o **úspěchu** . Pokud je objem dat v účtu úložiště velký, může Import aplikace šablony trvat trochu déle.
 
     ![Balíček obsahu úspěšného importu](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
 
-7. Po úspěšném importu dat se **Azure Backup** balíček obsahu zobrazí v **aplikacích** v navigačním podokně. V části **řídicí panely**, **sestavy**a **datové sady**se teď v seznamu zobrazuje Azure Backup.
+7. Po úspěšném importu dat se v **aplikacích** v navigačním podokně zobrazí aplikace šablony **Azure Backup** . V části **řídicí panely**, **sestavy**a **datové sady**se teď v seznamu zobrazuje Azure Backup.
 
 8. V části **řídicí panely**vyberte **Azure Backup**, která zobrazuje sadu připnutých sestav klíčů.
 
@@ -117,10 +117,10 @@ Pokud chcete sestavu přizpůsobit a sdílet, vytvořte pracovní prostor a prov
 | Podrobnosti chyby | Řešení |
 | --- | --- |
 | Po nastavení účtu úložiště pro sestavy záloh se pořád zobrazuje, že **účet úložiště** **není nakonfigurovaný**. | Pokud jste úspěšně nakonfigurovali účet úložiště, data sestav natékají navzdory tomuto problému. Tento problém vyřešíte tak, že přejdete do Azure Portal a vyberete**Nastavení** > diagnostiky **všechny služby** > **Recovery Services** > **Upravit nastavení**trezoru. Odstraňte dříve nakonfigurované nastavení a vytvořte nové nastavení pro stejné okno. Tentokrát v poli **název** vyberte **Služba**. Nyní se zobrazí nakonfigurovaný účet úložiště. |
-|Po importu balíčku obsahu Azure Backup v Power BI se zobrazí chybová zpráva "404-Container se nenašlo". | Jak už bylo uvedeno výše, musíte po dokončení konfigurace sestav v Recovery Servicesovém trezoru počkat 24 hodin, aby byly správně zobrazeny v Power BI. Pokud se pokusíte o přístup k sestavám před 24 hodinami, zobrazí se tato chybová zpráva, protože pro zobrazení platných sestav ještě nejsou k dispozici úplná data. |
+|Po importu aplikace Azure Backup Template v Power BI se zobrazí chybová zpráva "404-Container se nenašlo". | Jak už bylo uvedeno výše, musíte po dokončení konfigurace sestav v Recovery Servicesovém trezoru počkat 24 hodin, aby byly správně zobrazeny v Power BI. Pokud se pokusíte o přístup k sestavám před 24 hodinami, zobrazí se tato chybová zpráva, protože pro zobrazení platných sestav ještě nejsou k dispozici úplná data. |
 
 ## <a name="next-steps"></a>Další postup
-Po nakonfigurování účtu úložiště a importu balíčku Azure Backup obsahu jsou další kroky k přizpůsobení sestav a použití datového modelu vytváření sestav k vytváření sestav. Další informace najdete v následujících článcích.
+Až nakonfigurujete účet úložiště a naimportujete Azure Backup App Template, další kroky jsou přizpůsobení sestav a použití datového modelu sestav k vytváření sestav. Další informace najdete v následujících článcích.
 
 * [Použití datového modelu Azure Backup sestavy](backup-azure-reports-data-model.md)
 * [Filtrovat sestavy v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)

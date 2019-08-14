@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 91c0ad260c16ac09fd764246d31f99d481f8f147
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: fd8168b5786f669de0c5c2109c9e02b43c62c582
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886829"
+ms.locfileid: "68933655"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 
@@ -68,7 +68,7 @@ Obě metody otevřou podokno konfigurace nastavení úložiště.
 
 Podokno konfigurace zobrazuje následující Azure Repos nastavení úložiště kódu:
 
-| Nastavení | Popis | Hodnota |
+| Nastavení | Popis | Value |
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště kódu Azure Repos.<br/> | Azure DevOps Git nebo GitHub |
 | **Azure Active Directory** | Název vašeho tenanta Azure AD. | `<your tenant name>` |
@@ -243,7 +243,7 @@ Použití Key Vault také usnadňuje průběžnou integraci a nasazování, prot
 
 Pokud větev publikování není synchronizovaná s hlavní větví a obsahuje zastaralé prostředky navzdory nedávnému publikování, zkuste provést následující kroky:
 
-1. Odebrat aktuální úložiště Git/
+1. Odebrat aktuální úložiště Git
 1. Překonfigurujte Git se stejnými nastaveními, ale ujistěte se, že je vybraná možnost **importovat existující data Factory prostředky do úložiště** , a zvolit **nové větve** .
 1. Odstranit všechny prostředky z vaší větve pro spolupráci
 1. Vytvoření žádosti o přijetí změn, která sloučí změny do větve pro spolupráci 
@@ -253,7 +253,7 @@ Vyberte **zpětnou vazbu** pro komentář k funkcím nebo upozorněte společnos
 
 ![Zpětná vazba](media/author-visually/provide-feedback.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o monitorování a správě kanálů najdete v tématu [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md).
 * Chcete-li implementovat průběžnou integraci a nasazování, přečtěte si téma [průběžná integrace a doručování (CI/CD) v Azure Data Factory](continuous-integration-deployment.md).

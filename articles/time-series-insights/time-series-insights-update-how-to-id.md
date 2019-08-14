@@ -1,6 +1,6 @@
 ---
 title: Osvědčené postupy pro výběr ID řady času v Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
-description: Pochopení osvědčených postupů při výběru ID řady času v Azure čas Series Insights ve verzi Preview.
+description: Porozumět osvědčeným postupům při výběru ID časové řady v Azure Time Series Insights Preview.
 author: ashannon7
 ms.author: dpalled
 ms.workload: big-data
@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: af540267e4afc1b248b66b1c6f4989b832c38b58
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7057ce27cbbba8d70835493fc91a88ad823369bb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237584"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947205"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Osvědčené postupy pro výběr ID řady času
 
@@ -42,13 +42,13 @@ Kromě toho můžete vybrat až *tři* (3) klíčové vlastnosti jako ID řady �
 
 Následující scénáře popisují výběr více než jednu klíčovou vlastnost jako vaše ID řady čas:  
 
-### <a name="scenario-one"></a>Scénář č. 1
+### <a name="scenario-one"></a>Scénář 1
 
 * Máte starší verzi flotily nebo prostředků, každá má jedinečný klíč.
 * Například jeden fleet jednoznačně identifikují podle vlastnosti *deviceId* a jiný jedinečný vlastností je *objectId*. Ani fleet obsahuje jiné flotily jedinečné vlastnosti. V tomto příkladu by dva klíče, ID zařízení a ID objektu, vyberte jako jedinečné klíče.
 * Můžeme přijmout hodnoty null a chybějící vlastnosti přítomnost v datové části události se započítává `null` hodnotu. Toto je také vhodný způsob pro odesílání dat do dvou zdrojů různých událostí, kde data v jednotlivých zdroj události má jedinečné ID řady čas zpracování
 
-### <a name="scenario-two"></a>Scénář č. 2
+### <a name="scenario-two"></a>Scénář 2
 
 * Budete potřebovat více vlastností být jedinečný v rámci stejného počtu prostředků. 
 * Například Řekněme, že jste výrobce inteligentní vytváření a nasazení senzorů v každé místnosti. V každé místnosti, obvykle mají stejné hodnoty *sensorId*, jako například *sensor1*, *sensor2*, a *sensor3*.

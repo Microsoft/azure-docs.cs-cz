@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/29/2019
+ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: bdf0fbfb2b40e932f9e3627c3bc0356eb0afb472
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 602623d48457498963cb5928081d24c1d1132ad4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677930"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935250"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní Azure Time Series Insights API
 
@@ -101,7 +101,7 @@ V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám
 
 1. Token se pak může předat v `Authorization` hlavičce, když aplikace volá rozhraní Time Series Insights API.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Vzorový kód, který volá rozhraní API GA Time Series Insights, najdete v tématu [dotazování dat pomocí C# ](./time-series-insights-query-data-csharp.md).
 

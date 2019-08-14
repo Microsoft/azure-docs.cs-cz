@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2b961b855c7a0bb08c31b4e7ea8deb7f82ebb77c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fb13cd65142214ccf852c591ae081e7e633e1a4d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846188"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935331"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Změna modelu licencí pro virtuální počítač s SQL Server v Azure
 Tento článek popisuje, jak změnit model licencí pro SQL Server virtuální počítač (VM) v Azure pomocí nového poskytovatele prostředků SQL VM, **Microsoft. SqlVirtualMachine**.
@@ -52,7 +52,7 @@ Použití poskytovatele prostředků virtuálního počítače SQL vyžaduje roz
 
 ## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>Změna licence pro virtuální počítače, které jsou už zaregistrované u poskytovatele prostředků 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -66,7 +66,7 @@ Licenční model můžete změnit přímo z portálu:
 ![Zvýhodněné hybridní využití Azure na portálu](media/virtual-machines-windows-sql-ahb/ahb-in-portal.png)
 
 
-# <a name="azure-clitabbash"></a>[Azure CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Ke změně modelu licence můžete použít rozhraní příkazového řádku Azure CLI.  
 
@@ -88,7 +88,7 @@ Následující fragment kódu přepíná model vlastní licence na průběžné 
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Pro změnu modelu licence můžete použít PowerShell.
 
 Následující fragment kódu převede svůj licenční model s průběžnými platbami na vlastní licenci (nebo pomocí Zvýhodněné hybridní využití Azure):
@@ -177,7 +177,7 @@ K ověření verze Azure PowerShell použijte následující kód:
   Get-Module -ListAvailable -Name Azure -Refresh
   ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace najdete v následujících článcích: 
 

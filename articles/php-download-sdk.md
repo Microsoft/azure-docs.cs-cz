@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: yaya
 ms.openlocfilehash: 9dd336ef973b603108aad62c90e4dab385d20317
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67873897"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>Stažení sady Azure SDK pro PHP
@@ -77,7 +77,7 @@ Informace o tom, jak používat Azure PowerShell, najdete v tématu [Jak použí
 
 Azure CLI je sada příkazů pro nasazení a správu služeb Azure, jako jsou Azure websites a Azure Virtual Machines. Informace o instalaci rozhraní příkazového řádku Azure CLI najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](cli-install-nodejs.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v tématu [středisko pro vývojáře PHP](https://azure.microsoft.com/develop/php/).
 

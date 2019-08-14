@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: cdc09973a192924c5b9a81cd4ed49b9f36fc0eb1
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67612298"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorování a správa úlohy Stream Analytics s rutinami Azure Powershellu
@@ -52,13 +52,13 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
 > [!NOTE]
-> Úlohy Stream Analytics vytvořené prostřednictvím kódu programu není nutné monitorování ve výchozím nastavení povolená.  Můžete ručně povolit monitorování na webu Azure Portal přejděte na stránku úlohy monitorování a kliknutím na tlačítko Povolit a můžete to provést prostřednictvím kódu programu pomocí následujících kroků v [Azure Stream Analytics – úlohy Stream Analytics monitorování Programově](stream-analytics-monitor-jobs.md).
+> Úlohy Stream Analytics vytvořené prostřednictvím kódu programu není nutné monitorování ve výchozím nastavení povolená.  Monitorování můžete na portálu Azure povolit ručně tak, že přejdete na stránku monitorování úlohy a kliknete na tlačítko Povolit, nebo to můžete provést programově pomocí kroků umístěných v [Azure Stream Analytics-Monitor Stream Analytics úlohy. Prostřednictvím kódu programu](stream-analytics-monitor-jobs.md).
 > 
 > 
 
 ## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>Rutiny Powershellu pro Stream Analytics pro Azure
 Následující rutiny prostředí Azure PowerShell slouží k monitorování a Správa úloh Azure Stream Analytics. Všimněte si, že prostředí Azure PowerShell má různé verze. 
-**V příklady uvedené první příkaz slouží pro prostředí Azure PowerShell 0.9.8, druhý příkaz je pro Azure PowerShell 1.0.** Příkazy příkazového řádku Azure PowerShell 1.0, bude mít vždy "Az" v příkazu.
+**V příklady uvedené první příkaz slouží pro prostředí Azure PowerShell 0.9.8, druhý příkaz je pro Azure PowerShell 1.0.** Příkazy Azure PowerShell 1,0 budou v příkazu vždy obsahovat "AZ".
 
 ### <a name="get-azurestreamanalyticsjob--get-azstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzStreamAnalyticsJob
 Obsahuje seznam všech úloh Stream Analytics, které jsou definované v zadané skupině prostředků nebo předplatného Azure nebo získá informace o úlohách o konkrétní úloze v rámci skupiny prostředků.
@@ -228,7 +228,7 @@ Pokud zadáte vstup, který již existuje a není zadán parametr-Force, rutina 
 
 Pokud zadáte – vynutí parametr a zadejte existující zadejte název, nahradí se vstup bez potvrzení.
 
-Podrobné informace jak struktura souboru JSON a obsahu [vytvořit vstup (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře a obsahu souborů JSON najdete v části věnované [Vytvoření vstupu (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] v [referenční knihovně REST API správy Stream Analytics][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -287,7 +287,7 @@ Pokud můžete zadat název úlohy, který již existuje a není zadán parametr
 
 Pokud zadáte – vynutí parametr a zadejte název stávající úlohy, nahradí se definice úlohy bez potvrzení.
 
-Podrobné informace jak struktura souboru JSON a obsahu [vytvoření úlohy Stream Analytics][msdn-rest-api-create-stream-analytics-job] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře a obsahu souborů JSON najdete v části [Stream Analytics úlohy][msdn-rest-api-create-stream-analytics-job] v [referenční knihovně REST API pro správu Stream Analytics][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -330,7 +330,7 @@ Pokud zadáte výstup, který již existuje a není zadán parametr-Force, rutin
 
 Pokud zadáte – vynutí parametr a zadejte existující název výstupu, nahradí se výstup bez potvrzení.
 
-Podrobné informace jak struktura souboru JSON a obsahu [vytvořit výstup (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře a obsahu souborů JSON najdete v části věnované [Vytvoření výstupu (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] v [referenční knihovně REST API správy Stream Analytics][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -373,7 +373,7 @@ Pokud zadáte transformace, která již existuje a není zadán parametr-Force, 
 
 Pokud zadáte – vynutí parametr a zadejte název existujícího transformace, nahradí se transformace bez potvrzení.
 
-Podrobné informace jak struktura souboru JSON a obsahu [vytvoření transformace (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře a obsahu souborů JSON najdete v části věnované [Vytvoření transformace (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] v [referenční knihovně REST API správy Stream Analytics][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -486,7 +486,7 @@ Start-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US
 
 Tento příkaz prostředí PowerShell spustí úlohu StreamingJob s časem zahájení vlastního výstupu nastavena na 12. prosince 2012, 12:12:12 UTC.
 
-### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzStreamAnalyticsJob
+### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop – AzureStreamAnalyticsJob | Stop – AzStreamAnalyticsJob
 Asynchronně zastaví úlohu Stream Analytics z běžící v Microsoft Azure a zruší prostředky, které byly, které byly používány. Definice úlohy a metadata zůstanou k dispozici v rámci vašeho předplatného prostřednictvím webu Azure portal a rozhraní API pro správu tak, aby úlohy lze upravit a restartovat. Vám nebude účtovat na úlohu v zastaveném stavu.
 
 **Příklad 1**

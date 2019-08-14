@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 13f80b42ef6dfd0c70067a3ecf5f3e172527a63f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846527"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947224"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
 
@@ -77,7 +77,7 @@ Od pořízení společnost Microsoft začala nahrazovat existující řešení u
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Integrace souborů Azure s doménovou službou Azure Active Directory
 
-Výkon a funkce kontejnerů profilů FSLogix využívají cloud. Od 7. srpna 2019 Microsoft Azure soubory oznámily obecnou dostupnost [ověřování souborů Azure pomocí služby Azure Active Directory Domain Service (služba AD DS)](/articles/storage/files/storage-files-active-directory-overview.md). Díky ověřování Azure se službou Azure služba AD DS ověřování je pro profily uživatelů ve službě Virtual Desktop systému Windows výhodnější řešení Azure Files.
+Výkon a funkce kontejnerů profilů FSLogix využívají cloud. Od 7. srpna 2019 Microsoft Azure soubory oznámily obecnou dostupnost [ověřování souborů Azure pomocí služby Azure Active Directory Domain Service (služba AD DS)](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview). Díky ověřování Azure se službou Azure služba AD DS ověřování je pro profily uživatelů ve službě Virtual Desktop systému Windows výhodnější řešení Azure Files.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Osvědčené postupy pro virtuální počítače s Windows
 

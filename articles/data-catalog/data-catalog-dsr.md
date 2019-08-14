@@ -1,17 +1,17 @@
 ---
 title: Podporované zdroje dat v Azure Data Catalog
-description: V tomto článku najdete seznam specifikací aktuálně podporovaných zdrojů dat.
+description: V tomto článku najdete seznam specifikací aktuálně podporovaných zdrojů dat pro Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6b5c75e928b62181f2ea2b51a11cd997a9942bca
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736435"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950273"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Podporované zdroje dat v Azure Data Catalog
 

@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 7/13/2019
+ms.date: 08/10/2019
 ms.author: victorh
-ms.openlocfilehash: 7d20ef750aa4556a73852982631423d3d08271f5
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4f9a42f3d054becfed0b0a6acbf92cdf1e421c16
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854113"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946947"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Webové aplikace Azure s vyrovnáváním zatížení hostitele ve vrcholu zóny
 
@@ -52,24 +52,24 @@ Vytvořte dva plány Web App Service ve skupině prostředků pomocí následuj�
 
 Vytvořte dvě webové aplikace, jednu v každém plánu App Service.
 
-1. V levém horním rohu stránky Azure Portal klikněte na **vytvořit prostředek**.
+1. V levém horním rohu stránky Azure Portal vyberte **vytvořit prostředek**.
 2. Do vyhledávacího panelu zadejte **Web App** a stiskněte klávesu ENTER.
-3. Klikněte na **Webová aplikace**.
-4. Klikněte na možnost **Vytvořit**.
+3. Vyberte **Webová aplikace**.
+4. Vyberte **Vytvořit**.
 5. Přijměte výchozí hodnoty a pomocí následující tabulky nakonfigurujte dvě webové aplikace:
 
-   |Name<br>(musí být jedinečné v rámci. azurewebsites.net)|Skupina prostředků |App Service plán/umístění
-   |---------|---------|---------|
-   |App – 01|Použít existující<br>Výběr skupiny prostředků|ASP-01(East US)|
-   |App-02|Použít existující<br>Výběr skupiny prostředků|ASP-02 (Střed USA)|
+   |Name<br>(musí být jedinečné v rámci. azurewebsites.net)|Skupina prostředků |Zásobník modulu runtime|Oblast|App Service plán/umístění
+   |---------|---------|-|-|-------|
+   |App – 01|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|East US|ASP-01 (D1)|
+   |App-02|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|Střed USA|ASP-02 (D1)|
 
 ### <a name="gather-some-details"></a>Shromáždit nějaké podrobnosti
 
-Teď je potřeba poznamenat si IP adresu a název hostitele pro aplikace.
+Teď je potřeba poznamenat IP adresu a název hostitele pro webové aplikace.
 
-1. Otevřete skupinu prostředků a v tomto příkladu klikněte na svou první aplikaci (**App-01** ).
-2. V levém sloupci klikněte na **vlastnosti**.
-3. Poznamenejte si adresu pod **adresou URL**a v části **odchozí IP adresy** si všimněte první IP adresy v seznamu. Tyto informace budete používat později při konfiguraci Traffic Manager koncových bodů.
+1. Otevřete skupinu prostředků a v tomto příkladu vyberte svou první webovou aplikaci (**App-01** ).
+2. V levém sloupci vyberte možnost **vlastnosti**.
+3. Poznamenejte si adresu pod **adresou URL**a v části **odchozí IP adresy** si všimněte první IP adresy v seznamu. Tyto informace použijete později při konfiguraci Traffic Manager koncových bodů.
 4. Opakujte pro **App-02**.
 
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
@@ -82,12 +82,12 @@ Informace o vytvoření profilu Traffic Manager najdete v tématu [rychlý Start
 
 Nyní můžete vytvořit koncové body pro tyto dvě webové aplikace.
 
-1. Otevřete skupinu prostředků a klikněte na profil Traffic Manager.
-2. V levém sloupci klikněte na **koncové body**.
-3. Klikněte na **Přidat**.
+1. Otevřete skupinu prostředků a vyberte profil Traffic Manager.
+2. V levém sloupci vyberte **koncové body**.
+3. Vyberte **Přidat**.
 4. Pro konfiguraci koncových bodů použijte následující tabulku:
 
-   |type  |Name  |Target  |Location  |Vlastní nastavení hlaviček|
+   |type  |Name  |Target  |Location  |Nastavení vlastní hlavičky|
    |---------|---------|---------|---------|---------|
    |Externí koncový bod     |Konec – 01|IP adresa, kterou jste si poznamenali pro App-01|East US|Hostitel:\<adresa URL, kterou jste si poznamenali pro App-01.\><br>Příklad: **Host: App-01.azurewebsites.NET**|
    |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|Střed USA|Hostitel:\<adresa URL, kterou jste si poznamenali pro App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
@@ -96,35 +96,50 @@ Nyní můžete vytvořit koncové body pro tyto dvě webové aplikace.
 
 Můžete použít buď existující zónu DNS pro testování, nebo můžete vytvořit novou zónu. Informace o vytvoření a delegování nové zóny DNS v Azure najdete v [tématu Kurz: Hostování vaší domény v Azure DNS](dns-delegate-domain-azure-dns.md).
 
-### <a name="add-the-alias-record-set"></a>Přidat sadu záznamů aliasů
+## <a name="add-a-txt-record-for-custom-domain-validation"></a>Přidat záznam TXT pro ověření vlastní domény
 
-Až bude vaše zóna DNS připravena, můžete přidat záznam aliasu pro vrchol zóny.
+Když do svých webových aplikací přidáte vlastní název hostitele, bude vyhledán konkrétní záznam TXT pro ověření vaší domény.
 
-1. Otevřete skupinu prostředků a klikněte na zónu DNS.
-2. Klikněte na **Sada záznamů**.
+1. Otevřete skupinu prostředků a vyberte zónu DNS.
+2. Vyberte **Sada záznamů**.
+3. Přidejte sadu záznamů pomocí následující tabulky. Pro tuto hodnotu použijte skutečnou adresu URL webové aplikace, kterou jste předtím nahráli:
+
+   |Name  |Typ  |Value|
+   |---------|---------|-|
+   |@     |TXT|App-01.azurewebsites.net|
+
+
+## <a name="add-a-custom-domain"></a>Přidat vlastní doménu
+
+Přidejte vlastní doménu pro obě webové aplikace.
+
+1. Otevřete skupinu prostředků a vyberte svou první webovou aplikaci.
+2. V levém sloupci vyberte **vlastní domény**.
+3. V části **vlastní domény**vyberte **Přidat vlastní doménu**.
+4. V části **vlastní doména**zadejte vlastní název domény. Například contoso.com.
+5. Vyberte **Ověřit**.
+
+   Vaše doména by měla projít ověřením a zobrazit zelenou značku zaškrtnutí u **názvu hostitele** a **doménového vlastnictví**.
+5. Vyberte **Přidat vlastní doménu**.
+6. Pokud chcete zobrazit nový název hostitele v části **názvy hostitele přiřazené k lokalitě**, aktualizujte si prohlížeč. Aktualizace na stránce vždy okamžitě nezobrazuje změny.
+7. Tento postup opakujte pro druhou webovou aplikaci.
+
+## <a name="add-the-alias-record-set"></a>Přidat sadu záznamů aliasů
+
+Nyní přidejte záznam aliasu pro vrchol zóny.
+
+1. Otevřete skupinu prostředků a vyberte zónu DNS.
+2. Vyberte **Sada záznamů**.
 3. Přidejte sadu záznamů pomocí následující tabulky:
 
    |Name  |type  |Sada záznamů aliasů  |Typ aliasu  |Prostředek Azure|
    |---------|---------|---------|---------|-----|
    |@     |A|Ano|Prostředek Azure|Traffic Manager – váš profil|
 
-## <a name="add-custom-hostnames"></a>Přidat vlastní názvy hostitelů
-
-Přidejte vlastní název hostitele do obou webových aplikací.
-
-1. Otevřete skupinu prostředků a klikněte na svou první webovou aplikaci.
-2. V levém sloupci klikněte na **vlastní domény**.
-3. Klikněte na **Přidat název hostitele**.
-4. Do pole název hostitele zadejte název domény. Například contoso.com.
-
-   Vaše doména by měla projít ověřením a zobrazit zelenou značku zaškrtnutí u **názvu hostitele** a **doménového vlastnictví**.
-5. Klikněte na **Přidat název hostitele**.
-6. Pokud chcete zobrazit nový název hostitele v části **názvy hostitele přiřazené k lokalitě**, aktualizujte si prohlížeč. Aktualizace na stránce vždy nezobrazuje změny hned.
-7. Tento postup opakujte pro druhou webovou aplikaci.
 
 ## <a name="test-your-web-apps"></a>Testování webových aplikací
 
-Nyní můžete provést test, abyste se ujistili, že máte přístup k webové aplikaci a že je vyrovnávání zatížení.
+Nyní můžete testovat, abyste se ujistili, že máte přístup k webové aplikaci a že je vyrovnávání zatížení.
 
 1. Otevřete webový prohlížeč a přejděte k doméně. Například contoso.com. Měla by se zobrazit stránka výchozí webová aplikace.
 2. Zastavte svou první webovou aplikaci.

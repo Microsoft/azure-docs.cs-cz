@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: d34c94ccca47d29afc4f3d83bec58db737be270c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840414"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934341"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba-služba pro Azure Key Vault pomocí .NET
 
@@ -270,21 +270,21 @@ Pomocí Azure CLI nastavte výchozí předplatné na jeden, který má účet, k
 
 #### <a name="unauthorized-access-access-denied-forbidden-etc-error"></a>Neoprávněný přístup, přístup odepřen, zakázáno atd. Chyba
  
-Použitý objekt zabezpečení nemá přístup k prostředku, ke kterému se pokouší získat přístup. Udělte vašemu uživatelskému účtu App Service nebo přispěvateli instalační služby MSI přístup k požadovanému prostředku, a to v závislosti na tom, jestli jste ukázku spustili na místním počítači pro vývoj nebo nasazení do Azure do vašeho App Service. Některé prostředky, jako jsou například trezory klíčů, mají také vlastní [zásady přístupu](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) , které můžete použít k udělení přístupu k objektům zabezpečení (uživatelům, aplikacím, skupinám atd.).
+Použitý objekt zabezpečení nemá přístup k prostředku, ke kterému se pokouší získat přístup. Udělte vašemu uživatelskému účtu App Service nebo přispěvateli instalační služby MSI přístup k požadovanému prostředku, a to v závislosti na tom, jestli jste ukázku spustili na místním počítači pro vývoj nebo nasazení do Azure do vašeho App Service. Některé prostředky, jako jsou například trezory klíčů, mají také vlastní [zásady přístupu](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) , které můžete použít k udělení přístupu k objektům zabezpečení (uživatelům, aplikacím, skupinám atd.).
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Běžné problémy při nasazení na Azure App Service
 
 #### <a name="managed-identity-is-not-setup-on-the-app-service"></a>Spravovaná identita není nastavená na App Service
  
-Ověřte, že proměnné prostředí MSI_ENDPOINT a MSI_SECRET existují pomocí [konzoly ladění Kudu](https://azure.microsoft.com/en-us/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/). Pokud tyto proměnné prostředí neexistují, spravovaná identita není na App Service povolena. 
+Ověřte, že proměnné prostředí MSI_ENDPOINT a MSI_SECRET existují pomocí [konzoly ladění Kudu](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/). Pokud tyto proměnné prostředí neexistují, spravovaná identita není na App Service povolena. 
  
 ### <a name="common-issues-when-deployed-locally-with-iis"></a>Běžné problémy při nasazení v místním prostředí se službou IIS
 
 #### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>Nejde načíst tokeny při ladění aplikace ve službě IIS.
 
 Ve výchozím nastavení AppAuth běží v jiném uživatelském kontextu ve službě IIS, takže nemá přístup k tomu, aby k získání přístupových tokenů použil vaši identitu vývojáře. Službu IIS můžete nakonfigurovat tak, aby běžela s vaším uživatelským kontextem, a to pomocí následujících dvou kroků:
-- Nakonfigurujte fond aplikací webové aplikace tak, aby běžel jako aktuální uživatelský účet. Další informace najdete [tady](https://docs.microsoft.com/en-us/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities) .
-- Nakonfigurujte "setProfileEnvironment" na "true". Další informace najdete [tady](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration). 
+- Nakonfigurujte fond aplikací webové aplikace tak, aby běžel jako aktuální uživatelský účet. Další informace najdete [tady](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities) .
+- Nakonfigurujte "setProfileEnvironment" na "true". Další informace najdete [tady](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration). 
 
     - Přejít na%windir%\System32\inetsrv\config\applicationHost.config
     - Vyhledejte "setProfileEnvironment". Pokud je nastavená na false, změňte ho na true (pravda). Pokud není k dispozici, přidejte jej jako atribut do elementu processModel (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) a nastavte jej na hodnotu "true".

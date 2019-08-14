@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: dd86e6bf571dd67da00aee63eadff031a1040ff7
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728741"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934874"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>Nasazení zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při nasazování aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba zvážit během fází vydávání verzí a odpovědí v oblasti [SDL (Microsoft Security Development Lifecycle)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k nasazení bezpečnější aplikace.
@@ -40,7 +40,7 @@ Před spuštěním nebo nasazením aktualizací do produkčního prostředí ov�
 
 Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tato zneužití patří mezi ně útoky prostřednictvím injektáže SQL a útoky skriptování napříč weby. Zabránění těmto útokům v kódu aplikace může být náročné. Může vyžadovat přísnou údržbu, opravy a monitorování v mnoha vrstvách topologie aplikace. Centralizované WAF pomáhá zjednodušit správu zabezpečení. Řešení WAF může také reagovat na bezpečnostní hrozbu tím, že opraví známou chybu zabezpečení v centrálním umístění a zabezpečí každou jednotlivou webovou aplikaci.
 
-[Azure Application Gateway WAF](https://docs.microsoft.com/azure/application-gateway/waf-overview) poskytuje centralizovanou ochranu webových aplikací před běžnými zneužitími a chybami zabezpečení. WAF je založen na pravidlech ze [sad pravidel OWASP core](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,0 nebo 2.2.9.
+[Azure Application Gateway WAF](../../application-gateway/waf-overview.md) poskytuje centralizovanou ochranu webových aplikací před běžnými zneužitími a chybami zabezpečení. WAF je založen na pravidlech ze [sad pravidel OWASP core](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,0 nebo 2.2.9.
 
 ### <a name="create-an-incident-response-plan"></a>Vytvoření plánu odpovědí na incidenty
 
@@ -71,13 +71,13 @@ Služby Azure, které pomáhají s monitorováním aplikací, jsou:
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) je rozšiřitelná služba správy výkonu aplikací (APM) pro webové vývojáře na různých platformách. Slouží k monitorování živé webové aplikace. Application Insights automaticky detekuje anomálie výkonu. Obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací skutečně dělají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) je rozšiřitelná služba správy výkonu aplikací (APM) pro webové vývojáře na různých platformách. Slouží k monitorování živé webové aplikace. Application Insights automaticky detekuje anomálie výkonu. Obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací skutečně dělají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure, včetně webových aplikací, a kontrolu nad nimi. Azure Security Center pomáhá detekovat hrozby, které by jinak neinformovaly. Funguje s různými řešeními zabezpečení.
+[Azure Security Center](../../security-center/security-center-intro.md) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure, včetně webových aplikací, a kontrolu nad nimi. Azure Security Center pomáhá detekovat hrozby, které by jinak neinformovaly. Funguje s různými řešeními zabezpečení.
 
-Úroveň Free Security Center nabízí jenom omezené zabezpečení pro vaše prostředky Azure. [Úroveň Standard Security Center](https://docs.microsoft.com/azure/security-center/security-center-onboarding) rozšiřuje tyto možnosti na místní prostředky a další cloudy.
+Úroveň Free Security Center nabízí jenom omezené zabezpečení pro vaše prostředky Azure. [Úroveň Standard Security Center](../../security-center/security-center-onboarding.md) rozšiřuje tyto možnosti na místní prostředky a další cloudy.
 Security Center Standard vám pomůže:
 
   - Najděte a opravte slabá místa zabezpečení.
@@ -85,7 +85,7 @@ Security Center Standard vám pomůže:
   - Detekuje hrozby pomocí analýz a inteligentních informací.
   - Rychlá reakce v případě útoku
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V následujících článcích doporučujeme kontrolu zabezpečení a aktivity, které vám pomůžou navrhovat a vyvíjet zabezpečené aplikace.
 
 - [Návrh zabezpečených aplikací](secure-design.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
 ms.openlocfilehash: d84525e869d47fc609ee8aac7feb7feda36a5f23
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68599950"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidání nebo odebrání certifikátů pro cluster Service Fabric v Azure
@@ -117,7 +117,7 @@ Pro snadné provedení následujících ukázek 5-VM-1-NodeTypes-Secure_Step2. J
          }
     ``` 
 
-4. Proveďte **změny v** definicích prostředků **Microsoft. COMPUTE/virtualMachineScaleSets** – vyhledejte definici prostředků Microsoft. COMPUTE/virtualMachineScaleSets. Posuňte se na vydavatele: "Microsoft. Azure. ServiceFabric", v části "virtualMachineProfile".
+4. Proveďte změny v definicích prostředků **Microsoft. COMPUTE/virtualMachineScaleSets** – vyhledejte definici prostředků Microsoft. COMPUTE/virtualMachineScaleSets. Posuňte se na vydavatele: "Microsoft. Azure. ServiceFabric", v části "virtualMachineProfile".
 
     V nastavení vydavatele Service Fabric by se mělo zobrazit něco podobného.
     
@@ -155,7 +155,7 @@ Pro snadné provedení následujících ukázek 5-VM-1-NodeTypes-Secure_Step2. J
     Vlastnosti by teď měly vypadat takto.    
     ![Json_Pub_Setting3][Json_Pub_Setting3]
 
-5. Proveďte **změny v** definicích prostředků **Microsoft. COMPUTE/virtualMachineScaleSets** – vyhledejte definici prostředků Microsoft. COMPUTE/virtualMachineScaleSets. Posuňte se do části "vaultCertificates": v části "OSProfile". mělo by to vypadat nějak takto.
+5. Proveďte změny v definicích prostředků **Microsoft. COMPUTE/virtualMachineScaleSets** – vyhledejte definici prostředků Microsoft. COMPUTE/virtualMachineScaleSets. Posuňte se do části "vaultCertificates": v části "OSProfile". mělo by to vypadat nějak takto.
 
     ![Json_Pub_Setting4][Json_Pub_Setting4]
     
@@ -288,7 +288,7 @@ můžete zadat libovolný počet klientských certifikátů. Každé přidání 
 
 Chcete-li odebrat sekundární certifikát ze systému, který se používá pro zabezpečení clusteru, přejděte do části zabezpečení a vyberte možnost odstranit z kontextové nabídky u konkrétního certifikátu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o správě clusterů najdete v těchto článcích:
 
 * [Service Fabric proces upgradu clusteru a očekávání od vás](service-fabric-cluster-upgrade.md)

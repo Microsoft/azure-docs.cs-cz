@@ -5,18 +5,21 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 72f34d9711e1ba4658288bfdeb847632d32d0fcf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e9b654fc49a953f8fdbc9125c6f12486e0ab7b13
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68478328"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949488"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Preview – vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
 Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny dohromady do *fondů uzlů*. Tyto fondy uzlů obsahují základní virtuální počítače, na kterých běží vaše aplikace. Počáteční počet uzlů a jejich velikost (SKU) jsou definovány při vytváření clusteru AKS, který vytváří *výchozí fond uzlů*. Aby bylo možné podporovat aplikace, které mají různé výpočetní požadavky nebo úložiště, můžete vytvořit další fondy uzlů. Tyto další fondy uzlů můžete například využít k poskytování GPU pro aplikace náročné na výpočetní výkon nebo přístup k vysoce výkonnému úložišti SSD.
+
+> [!NOTE]
+> Tato funkce umožňuje vyšší kontrolu nad tím, jak vytvořit a spravovat více fondů uzlů. V důsledku toho jsou pro vytvoření, aktualizaci nebo odstranění vyžadovány samostatné příkazy. Dříve clusterové operace `az aks create` prostřednictvím `az aks update` nebo používaly rozhraní managedCluster API a byly jedinou možností, jak změnit plochu ovládacího prvku a jeden fond uzlů. Tato funkce zpřístupňuje samostatnou sadu operací pro fondy agentů prostřednictvím rozhraní neznámá API a vyžaduje použití `az aks nodepool` sady příkazů ke spouštění operací ve fondu jednotlivých uzlů.
 
 V tomto článku se dozvíte, jak vytvořit a spravovat více fondů uzlů v clusteru AKS. Tato funkce je aktuálně ve verzi Preview.
 
@@ -113,14 +116,15 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="add-a-node-pool"></a>Přidat fond uzlů
 
-Cluster vytvořený v předchozím kroku má fond s jedním uzlem. Pomocí příkazu [AZ AKS Node Pool Add][az-aks-nodepool-add] přidejte druhý fond uzlů. Následující příklad vytvoří fond uzlů s názvem *mynodepool* , který spouští *3* uzly:
+Cluster vytvořený v předchozím kroku má fond s jedním uzlem. Přidejte druhý fond uzlů pomocí příkazu [AZ AKS nodepool Add][az-aks-nodepool-add] . Následující příklad vytvoří fond uzlů s názvem *mynodepool* , který spouští *3* uzly:
 
 ```azurecli-interactive
 az aks nodepool add \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --node-count 3
+    --node-count 3 \
+    --kubernetes-version 1.12.6
 ```
 
 Stav fondů uzlů zobrazíte pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] a zadáním vaší skupiny prostředků a názvu clusteru:
@@ -174,7 +178,7 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 
 Upgrade uzlů na zadanou verzi trvá několik minut.
 
-V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v clusteru AKS na stejnou verzi Kubernetes. Možnost upgradovat jednotlivé fondy uzlů vám umožní provést postupný upgrade a naplánovat mezi fondy uzlů, aby udržovaly dobu provozu aplikací.
+V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v clusteru AKS na stejnou verzi Kubernetes. Možnost upgradovat fondy jednotlivých uzlů vám umožní provést postupný upgrade a naplánovat mezi fondy uzlů, aby se zachovala doba provozu aplikace v rámci výše zmíněných omezení.
 
 > [!NOTE]
 > Kubernetes používá standardní [sémantickou](https://semver.org/) verzi schématu správy verzí. Číslo verze se vyjádří jako *x. y. z*, kde *x* je hlavní verze, *y* je podverze a *z* je verze opravy. Například ve verzi *1.12.6*je 1 hlavní verze, 12 je dílčí verze a 6 je verze opravy. Při vytváření clusteru je nastavená verze Kubernetes řídicí roviny i počáteční fond uzlů. Všechny další fondy uzlů mají svou verzi Kubernetes nastavenou při jejich přidání do clusteru. Verze Kubernetes se mohou lišit mezi fondy uzlů i mezi fondem uzlů a rovinou ovládacího prvku, ale platí následující omezení:
@@ -185,7 +189,7 @@ V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v cl
 > 
 > Chcete-li upgradovat verzi Kubernetes řídicí plochy, použijte `az aks upgrade`. Pokud má cluster pouze jeden fond uzlů, `az aks upgrade` příkaz bude také upgradovat verzi Kubernetes fondu uzlů.
 
-## <a name="scale-a-node-pool"></a>Škálování fondu uzlů
+## <a name="scale-a-node-pool-manually"></a>Ruční škálování fondu uzlů
 
 V případě změny požadavků na úlohy aplikace možná budete muset škálovat počet uzlů ve fondu uzlů. Počet uzlů lze škálovat směrem nahoru nebo dolů.
 
@@ -214,6 +218,10 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 ```
 
 Dokončení operace škálování trvá několik minut.
+
+## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Automatické škálování určitého fondu uzlů povolením automatického škálování clusteru
+
+AKS nabízí ve verzi Preview samostatnou funkci pro automatické škálování fondů uzlů pomocí komponenty s názvem [AutoScale clusteru](cluster-autoscaler.md). Tato součást je doplněk AKS, který lze povolit pro každý fond uzlů s jedinečným minimálním a maximálním počtem škálování na jeden fond uzlů. Naučte se [používat automatické škálování clusteru pro každý fond uzlů](cluster-autoscaler.md#enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools).
 
 ## <a name="delete-a-node-pool"></a>Odstranění fondu uzlů
 
@@ -438,6 +446,29 @@ az group deployment create \
 
 Aktualizace clusteru AKS může trvat několik minut v závislosti na nastaveních fondu uzlů a operacích, které definujete v šabloně Správce prostředků.
 
+## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Přiřazení veřejné IP adresy na uzel v rámci fondu uzlů
+
+AKS uzly nevyžadují pro komunikaci své vlastní veřejné IP adresy. Některé scénáře ale můžou vyžadovat, aby uzly ve fondu uzlů měly své vlastní veřejné IP adresy. Příkladem je hraní her, kde konzola potřebuje vytvořit přímé připojení k virtuálnímu počítači v cloudu, aby se minimalizovaly segmenty směrování. To je možné dosáhnout registrací pro samostatnou funkci verze Preview, veřejnou IP adresou uzlu (Preview).
+
+```azurecli-interactive
+az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
+```
+
+Po úspěšné registraci nasaďte šablonu Azure Resource Manager podle [výše](##manage-node-pools-using-a-resource-manager-template) uvedených pokynů a přidejte do agentPoolProfiles následující logickou hodnotu "enableNodePublicIP". Nastavte tuto hodnotu `true` na jako výchozí `false` nastavení, pokud není zadané. Toto je vlastnost pouze pro dobu vytváření a vyžaduje minimální verzi rozhraní API 2019-06-01. Tato možnost se dá použít pro fondy uzlů pro Linux i Windows.
+
+```
+"agentPoolProfiles":[  
+    {  
+      "maxPods": 30,
+      "osDiskSizeGB": 0,
+      "agentCount": 3,
+      "agentVmSize": "Standard_DS2_v2",
+      "osType": "Linux",
+      "vnetSubnetId": "[parameters('vnetSubnetId')]"
+      "enableNodePublicIP":true
+    }
+```
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 V tomto článku jste vytvořili cluster AKS, který obsahuje uzly založené na GPU. Pokud chcete snížit zbytečné náklady, můžete odstranit *gpunodepool*nebo celý cluster AKS.
@@ -454,7 +485,7 @@ Pokud chcete samotný cluster odstranit, odstraňte skupinu prostředků AKS pom
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak vytvořit a spravovat více fondů uzlů v clusteru AKS. Další informace o tom, jak ovládat lusky napříč fondy uzlů, najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][operator-best-practices-advanced-scheduler].
 

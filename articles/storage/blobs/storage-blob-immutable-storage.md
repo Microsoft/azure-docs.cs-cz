@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: c0b4a83b2c950683926be7fb3be3b0cbe977fef8
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618408"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941949"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Ukládání důležitých podnikových dat do služby Azure Blob Storage
 
@@ -175,7 +175,7 @@ Ano. Aby bylo možné dokumentovat dodržování předpisů, společnost Microso
 
 **Vztahuje se tato funkce jenom na objekty blob bloku nebo na stránky a doplňovací objekty blob?**
 
-Neměnné úložiště je možné použít s libovolným typem objektu blob, ale doporučujeme, abyste ho používali hlavně pro objekty blob bloku. Na rozdíl od objektů blob bloku je třeba objekty blob stránky a doplňovací objekty blob vytvořit vně kontejneru ČERVa a pak je zkopírovat do. Po zkopírování těchto objektů blob do kontejneru ČERVa nejsou povoleny žádné další *připojení* k doplňovacímu objektu BLOB nebo změnám objektu blob stránky.
+Neměnné úložiště lze použít s libovolným typem objektu blob, protože je nastaveno na úrovni kontejneru, ale doporučujeme použít ČERVa pro kontejnery, které hlavně ukládají objekty blob bloku. Na rozdíl od objektů blob bloku musí být všechny nové objekty blob stránky a doplňovací objekty blob vytvořené vně kontejneru WORM a pak se zkopírují do. Po zkopírování těchto objektů blob do kontejneru ČERVa nejsou povoleny žádné další *připojení* k doplňovacímu objektu BLOB nebo změnám objektu blob stránky. Proto nastavení zásad ČERVa na kontejneru, který ukládá virtuální pevné disky (objekty blob stránky) pro všechny aktivní Virtual Machines, se důrazně nedoporučuje, protože se zamkne disk virtuálního počítače.
 
 **Potřebuji vytvořit nový účet úložiště, abyste mohli tuto funkci používat?**
 

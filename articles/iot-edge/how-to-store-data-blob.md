@@ -1,21 +1,21 @@
 ---
 title: Store objekty BLOB bloku v zařízeních – Azure IoT Edge | Dokumentace Microsoftu
 description: Seznamte se s funkcemi pro zpracování vrstev a času na živé prostředí, najdete v tématu podporované operace služby Blob Storage a připojte se k účtu úložiště objektů BLOB.
-author: arduppal
+author: kgremban
 manager: mchad
-ms.author: arduppal
-ms.reviewer: arduppal
+ms.author: kgremban
+ms.reviewer: kgremban
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a40389ca378826aef1b6aa136f8f5d69783c638e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 861b5c3ee6d5661339788e7a27ba70557d0ea267
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881221"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947024"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Ukládání dat na hraničních zařízeních pomocí Azure Blob Storage v IoT Edge
 
@@ -28,7 +28,7 @@ Tento modul je užitečný ve scénářích:
 * Když chcete snížit náklady na šířku pásma a vyhnout se přenosu terabajtů dat do cloudu. Data můžete zpracovávat místně a odesílat do cloudu jenom zpracovaná data.
 
 Podívejte se na video s rychlým Úvodem
-> [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
+> [!VIDEO https://www.youtube.com/embed/xbwgMNGB_3Y]
 
 Tento modul se dodává s funkcemi **deviceToCloudUpload** a **deviceAutoDelete** .
 
@@ -62,7 +62,7 @@ Zařízení Azure IoT Edge:
 - Pomocí postupu v rychlém startu pro zařízení se systémem [Linux](quickstart-linux.md) nebo [Windows](quickstart.md)můžete použít vývojový počítač nebo virtuální počítač jako zařízení IoT Edge.
 
 - Seznam podporovaných operačních systémů a architektur najdete v tématu [Azure IoT Edge podporované systémy](support.md#operating-systems) . Modul Azure Blob Storage on IoT Edge podporuje následující architektury:
-    - Systém Windows AMD64
+    - Windows AMD64
     - Linux AMD64
     - Linux ARM32
     - Linux ARM64 (Preview)

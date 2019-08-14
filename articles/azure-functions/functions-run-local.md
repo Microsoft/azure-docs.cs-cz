@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: f0f00745f2f7781bda0e636167b1cf1a4045f7cd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 481e6c5f2271651627577af3d03f9dd4da725146
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881380"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949915"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -93,7 +93,7 @@ Následující kroky používají homebrew k instalaci základních nástrojů n
 
 Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci základních nástrojů na distribuci Ubuntu/Debian Linux. Další distribuce pro Linux najdete v [souboru Readme pro základní nástroje](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Zaregistrujte kód Product Key společnosti Microsoft jako důvěryhodný:
+1. Pokud chcete ověřit integritu balíčku, nainstalujte GPG klíč úložiště Microsoft Package.
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -135,15 +135,19 @@ func init MyFunctionProj
 ```
 
 Když zadáte název projektu, vytvoří se a inicializuje nová složka s tímto názvem. V opačném případě se aktuální složka inicializuje.  
-Pokud ve verzi 2. x spustíte příkaz, musíte zvolit modul runtime pro váš projekt. Pokud plánujete vývoj funkcí jazyka JavaScript, vyberte **uzel**:
+Pokud ve verzi 2. x spustíte příkaz, musíte zvolit modul runtime pro váš projekt. 
 
 ```output
 Select a worker runtime:
 dotnet
 node
+python (preview)
+powershell (preview)
 ```
 
-Pomocí kláves se šipkami nahoru/dolů vyberte jazyk a potom stiskněte klávesu ENTER. Výstup vypadá jako v následujícím příkladu pro projekt JavaScriptu:
+Pomocí kláves se šipkami nahoru/dolů vyberte jazyk a potom stiskněte klávesu ENTER. Pokud plánujete vývoj funkcí JavaScriptu nebo TypeScript, zvolte **uzel**a pak vyberte jazyk. TypeScript má [několik dalších požadavků](functions-reference-node.md#typescript). 
+
+Výstup vypadá jako v následujícím příkladu pro projekt JavaScriptu:
 
 ```output
 Select a worker runtime: node
@@ -269,15 +273,40 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 ## <a name="start"></a>Místní spuštění funkcí
 
-Chcete-li spustit projekt funkcí, spusťte hostitele Functions. Hostitel povolí triggery pro všechny funkce v projektu:
+Chcete-li spustit projekt funkcí, spusťte hostitele Functions. Hostitel povolí triggery pro všechny funkce v projektu. 
 
-```bash
+### <a name="version-2x"></a>Verze 2. x
+
+Ve verzi 2. x modulu runtime se spouštěcí příkaz liší v závislosti na jazyku projektu.
+
+#### <a name="c"></a>C\#
+
+```command
+func start --build
+```
+
+#### <a name="javascript"></a>JavaScript
+
+```command
+func start
+```
+
+#### <a name="typescript"></a>TypeScript
+
+```command
+npm install
+npm start     
+```
+
+### <a name="version-1x"></a>Verze 1. x
+
+Verze 1. x modulu runtime Functions vyžaduje `host` příkaz, jak je uvedeno v následujícím příkladu:
+
+```command
 func host start
 ```
 
-`host` Příkaz je vyžadován pouze ve verzi 1. x.
-
-`func host start`podporuje následující možnosti:
+`func start`podporuje následující možnosti:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
@@ -293,8 +322,6 @@ func host start
 | **`--script-root --prefix`** | Slouží k zadání cesty ke kořenu aplikace Function App, která má být spuštěna nebo nasazena. Používá se pro kompilované projekty, které generují soubory projektu do podsložky. Například při sestavování projektu knihovny C# tříd jsou soubory Host. JSON, Local. Settings. JSON a Function. JSON generovány v *kořenové* podsložce s cestou, jako je například `MyProject/bin/Debug/netstandard2.0`. V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0`. Toto je kořen aplikace Function App při spuštění v Azure. |
 | **`--timeout -t`** | Časový limit pro spuštění funkce Host v sekundách. Výchozí: 20 sekund.|
 | **`--useHttps`** | Vytvořte vazby `https://localhost:{port}` na místo pro `http://localhost:{port}`. Ve výchozím nastavení tato možnost vytvoří důvěryhodný certifikát na vašem počítači.|
-
-Pro projekt C# knihovny tříd (. csproj) musíte zahrnout `--build` možnost pro generování knihovny. dll.
 
 Když se hostitel funkce spustí, vypíše adresu URL funkcí aktivovaných protokolem HTTP:
 

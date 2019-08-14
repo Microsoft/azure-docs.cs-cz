@@ -1,6 +1,6 @@
 ---
-title: Jak vytvořit aplikaci, která může přihlášení jakéhokoli uživatele Azure AD
-description: Ukazuje, jak vytvářet aplikace s více tenanty, která dokáže přihlásit uživatele z žádného tenanta Azure Active Directory.
+title: Jak vytvořit aplikaci, která se může přihlásit k libovolnému uživateli Azure AD
+description: Ukazuje, jak vytvořit aplikaci s více klienty, která se může přihlásit uživatele z libovolného klienta Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -19,174 +19,174 @@ ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d53ed0c9a8ae63c2cb0ced635c6f0a8e8a3222fd
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67482746"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlášení jakéhokoli uživatele Azure Active Directory pomocí vzoru aplikace s více tenanty
+# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlaste se k libovolnému Azure Active Directory uživateli pomocí vzoru aplikace pro více tenantů
 
-Pokud nabízíte Software jako služba (SaaS) aplikací pro mnoho organizací, můžete nakonfigurovat aplikaci tak, aby přijímal přihlášení z žádného tenanta služby Azure Active Directory (Azure AD). Tato konfigurace se nazývá *provádění aplikace víceklientské*. Uživatelé v žádného tenanta Azure AD budou moct přihlásit do aplikace po vyjádření souhlasu s použít svůj účet s vaší aplikací.
+Pokud nabízíte aplikaci SaaS (software jako služba) pro mnoho organizací, můžete aplikaci nakonfigurovat tak, aby přijímala přihlášení z libovolného tenanta Azure Active Directory (Azure AD). Tato konfigurace se nazývá *Vytvoření víceklientské aplikace*. Uživatelé v tenantovi Azure AD se budou moci přihlásit ke své aplikaci po jejím souhlasu s používáním svého účtu s vaší aplikací.
 
-Pokud máte existující aplikaci, která má svůj vlastní účet systému nebo podporuje jiné druhy přihlášení z jiných poskytovatelů cloudových služeb, přidání služby Azure AD z žádného tenanta je jednoduché. Stačí svou aplikaci zaregistrovat, přidejte kód přihlášení přes OAuth2, OpenID Connect nebo SAML a vložit [tlačítko "Sign in with Microsoft"][AAD-App-Branding] ve vaší aplikaci.
+Pokud máte existující aplikaci, která má svůj vlastní systém účtů, nebo podporuje jiné typy přihlášení od jiných poskytovatelů cloudu, je přidání přihlášení k Azure AD ze všech klientů jednoduché. Stačí zaregistrovat aplikaci, přidat přihlašovací kód přes OAuth2, OpenID připojit nebo SAML a vložit do aplikace [tlačítko Přihlásit se účtem Microsoft][AAD-App-Branding] .
 
 > [!NOTE]
-> Tento článek předpokládá, že jste již obeznámeni s vytvářením aplikace pro jednoho tenanta pro službu Azure AD. Pokud si nejste, začněte s jedním z postupů rychlý start na [domovské stránce průvodce pro vývojáře][AAD-Dev-Guide].
+> V tomto článku se předpokládá, že jste už obeznámení s vytvářením jediné klientské aplikace pro Azure AD. Pokud nejste, začněte s některým z rychlých startů na [domovské stránce Příručky pro vývojáře][AAD-Dev-Guide].
 
-Existují čtyři jednoduché kroky k převedení vaší aplikace do aplikace více tenantů Azure AD:
+Existují čtyři jednoduché kroky k převedení aplikace na více tenantů aplikace Azure AD:
 
-1. [Aktualizace registrace vaší aplikace bude více tenantů](#update-registration-to-be-multi-tenant)
-2. [Aktualizujte svůj kód k odesílání požadavků / Common koncového bodu](#update-your-code-to-send-requests-to-common)
-3. [Aktualizujte svůj kód pro zpracování více hodnot vystavitele](#update-your-code-to-handle-multiple-issuer-values)
-4. [Principy souhlasu uživatele a správce a proveďte odpovídající kód změny](#understand-user-and-admin-consent)
+1. [Aktualizace registrace aplikace pro více tenantů](#update-registration-to-be-multi-tenant)
+2. [Aktualizace kódu pro odesílání požadavků do koncového bodu/běžné](#update-your-code-to-send-requests-to-common)
+3. [Aktualizace kódu pro zpracování více hodnot vystavitelů](#update-your-code-to-handle-multiple-issuer-values)
+4. [Pochopení souhlasu uživatele a správce a provádění správných změn kódu](#understand-user-and-admin-consent)
 
-Podívejme se na každý krok v podrobností. Můžete také přejít přímo na [tento seznam s více tenanty ukázky][AAD-Samples-MT].
+Pojďme se podrobněji podívat na jednotlivé kroky. Můžete také přejít přímo na [Tento seznam ukázek s více klienty][AAD-Samples-MT].
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Aktualizace registrace na více tenantů
 
-Registrace webové aplikace nebo rozhraní API ve službě Azure AD jsou ve výchozím nastavení jednoho tenanta. Můžete provést registraci více tenantů hledáním **podporovaných typů účtu** zapnout **ověřování** podokně Registrace vaší aplikace v [webuAzureportal][AZURE-portal] a nastavíte ho na **účty v libovolném adresáři organizace**.
+Ve výchozím nastavení jsou registrace webové aplikace nebo rozhraní API ve službě Azure AD jedním klientem. Registraci více tenantů můžete provést tak, že v podokně **ověřování** registrace vaší aplikace v [Azure Portal][AZURE-portal] zadáte přepínač **podporované typy účtů** a nakonfigurujete je na **účty v jakékoli organizaci. Adresář**.
 
-Dřív, než aplikace může být více tenantů, vyžaduje Azure AD aplikace být globálně jedinečný identifikátor URI ID aplikace. Identifikátor URI ID aplikace je jedním ze způsobů, kterými se může aplikace ve zprávách protokolu identifikovat. U aplikace s jedním tenantem stačí, když bude identifikátor URI ID aplikace jedinečný v rámci daného tenanta. U aplikace s více tenanty musí být globálně jedinečný, aby služba Azure AD aplikaci našla mezi všemi tenanty. Globální jedinečnost se vynucuje požadavkem, aby Identifikátor URI ID aplikace obsahoval název hostitele, který odpovídá ověřené doméně tenanta Azure AD.
+Předtím, než může být aplikace vytvořená pro více tenantů, vyžaduje Azure AD identifikátor URI ID aplikace, který má být globálně jedinečný. Identifikátor URI ID aplikace je jedním ze způsobů, kterými se může aplikace ve zprávách protokolu identifikovat. U aplikace s jedním tenantem stačí, když bude identifikátor URI ID aplikace jedinečný v rámci daného tenanta. U aplikace s více tenanty musí být globálně jedinečný, aby služba Azure AD aplikaci našla mezi všemi tenanty. Globální jedinečnost se vynucuje požadavkem, aby Identifikátor URI ID aplikace obsahoval název hostitele, který odpovídá ověřené doméně tenanta Azure AD.
 
-Ve výchozím nastavení aplikace vytvořené prostřednictvím webu Azure portal mají globálně jedinečný identifikátor ID URI aplikace nastavte na vytváření aplikací, ale tuto hodnotu můžete změnit. Například pokud byl název tenanta contoso.onmicrosoft.com pak platný identifikátor URI ID aplikace by `https://contoso.onmicrosoft.com/myapp`. Pokud váš tenant měl ověřené domény `contoso.com`, pak by také platný identifikátor URI ID aplikace `https://contoso.com/myapp`. Pokud identifikátor URI ID aplikace nepoužívá tento vzor, nastavení aplikace jako aplikace s více tenanty se nezdaří.
+Ve výchozím nastavení mají aplikace vytvořené prostřednictvím Azure Portal globálně jedinečný identifikátor URI ID aplikace nastavený při vytváření aplikace, ale tuto hodnotu můžete změnit. Například pokud je název vašeho tenanta contoso.onmicrosoft.com, pak bude `https://contoso.onmicrosoft.com/myapp`platný identifikátor URI ID aplikace. Pokud má tenant ověřenou doménu z `contoso.com`, bude `https://contoso.com/myapp`také platný identifikátor URI ID aplikace. Pokud identifikátor URI ID aplikace nepoužívá tento vzor, nastavení aplikace jako aplikace s více tenanty se nezdaří.
 
 > [!NOTE]
-> Registrace nativního klienta systému stejně jako [aplikace platformy Microsoft identity](./active-directory-appmodel-v2-overview.md) jsou ve výchozím nastavení s více tenanty. Není nutné provádět žádnou akci, aby tyto aplikace registrace více tenantů.
+> Registrace nativního klienta i [aplikace Microsoft Identity Platform](./active-directory-appmodel-v2-overview.md) jsou ve výchozím nastavení víceklientské. Není nutné provádět žádnou akci, aby tato aplikace mohla provést registraci více tenantů.
 
-## <a name="update-your-code-to-send-requests-to-common"></a>Aktualizujte svůj kód k odesílání požadavků/Common
+## <a name="update-your-code-to-send-requests-to-common"></a>Aktualizace kódu pro odesílání požadavků do/běžné
 
-Aplikace pro jednoho tenanta žádostí o přihlášení se odešlou do tenanta přihlášení koncový bod. Například contoso.onmicrosoft.com koncový bod by být: `https://login.microsoftonline.com/contoso.onmicrosoft.com`. Požadavky odeslané na koncový bod tenanta můžou přihlásit uživatele (nebo hostů) v tomto tenantovi pro aplikace v tomto tenantovi.
+V jediné aplikaci tenanta se žádosti o přihlášení odesílají do koncového bodu přihlášení klienta. Například pro contoso.onmicrosoft.com by koncový bod byl: `https://login.microsoftonline.com/contoso.onmicrosoft.com`. Požadavky odeslané na koncový bod tenanta se můžou přihlašovat uživatelům (nebo hostů) v tomto tenantovi k aplikacím v tomto tenantovi.
 
-Pomocí aplikace s více tenanty aplikace nebude vědět, ještě před zahájením jaké tenanta je uživatel, aby nemohli odesílat žádosti do koncových bodů klienta. Místo toho jsou odesílány požadavky na koncový bod, který spojuje napříč všechny klienty Azure AD: `https://login.microsoftonline.com/common`
+U víceklientské aplikace neví aplikace, ze které uživatele pochází, takže nemůžete odesílat žádosti do koncového bodu klienta. Místo toho se požadavky odesílají do koncového bodu, který je ve všech klientech Azure AD.`https://login.microsoftonline.com/common`
 
-Když platforma identit Microsoft obdrží požadavek na / Common koncového bodu, se uživatel přihlásí a, v důsledku toho zjišťuje kterého tenanta uživatel je z. / Společný koncový bod funguje se všemi ověřování protokolů podporovaných službou Azure AD:  OpenID Connect, OAuth 2.0, SAML 2.0 a WS-Federation.
+Když Microsoft Identity Platform dostane požadavek na koncový bod/běžné, podepíše uživatele v a. v důsledku toho zjistí, ze kterého tenanta uživatel pochází. Koncový bod/běžné funguje se všemi ověřovacími protokoly, které podporuje služba Azure AD:  OpenID Connect, OAuth 2,0, SAML 2,0 a WS-Federation.
 
-Odpověď přihlášení k aplikaci pak obsahuje token představující uživatele. Hodnotu issuer v tokenu říká jaké tenanta je uživatel z aplikace. Když se vrátí odpověď z / Common koncový bod, hodnota vystavitele v tokenu odpovídá tenanta uživatele.
+Přihlašovací odpověď na aplikaci pak obsahuje token představující uživatele. Hodnota vystavitele v tokenu oznamuje aplikaci, ze které se uživatel nachází. Když se odpověď vrátí z koncového bodu/běžné, hodnota vystavitele tokenu odpovídá tenantovi uživatele.
 
 > [!IMPORTANT]
-> / Společný koncový bod není klienta a není vystavitele, je právě multiplexor. Při použití/Common, je potřeba aktualizovat tak, aby vzít v úvahu logiky v aplikaci pro ověření tokenů.
+> Koncový bod/běžné není tenant a není vystavitelem, je to jenom multiplexor. Při použití/běžné je třeba aktualizovat logiku vaší aplikace na ověření tokenů, aby se tento účet zohlednil.
 
-## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Aktualizujte svůj kód pro zpracování více hodnot vystavitele
+## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Aktualizace kódu pro zpracování více hodnot vystavitelů
 
-Webové aplikace a webová rozhraní API přijímat a ověřovat tokeny z Microsoft identity platform.
+Webové aplikace a webová rozhraní API přijímají a ověřují tokeny z platformy Microsoft Identity Platform.
 
 > [!NOTE]
-> I když nativní klientské aplikace požadovat a přijímat tokeny z Microsoft identity platform, dělají a odeslat je do rozhraní API, ve kterém se ověří tak. Nativní aplikace nelze ověřit tokeny a nutné je považovat neprůhledné.
+> I když nativní klientské aplikace vyžadují a získávají tokeny od platformy Microsoft Identity Platform, jejich odeslání do rozhraní API, kde jsou ověřeny. Nativní aplikace neověřují tokeny a musí je zacházet jako neprůhledné.
 
-Pojďme se podívat na způsob, jakým aplikace ověřuje tokeny přijme z Microsoft identity platform. Aplikace pro jednoho tenanta obvykle trvá hodnotu koncového bodu, jako je:
+Pojďme se podívat, jak aplikace ověřuje tokeny, které obdrží od platformy Microsoft Identity Platform. Jediná aplikace tenanta má obvykle hodnotu koncového bodu, jako je:
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com
 
-a použije je k vytvoření adresu URL metadat (v tomto případě OpenID Connect) jako:
+a používá ho k vytvoření adresy URL metadat (v tomto případě OpenID Connect), jako je:
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
 
-Chcete-li stáhnout dvě důležité údaje, které se používají pro ověření tokenů: tenant podepisování klíče a hodnotu issuer. Každý tenant Azure AD má jedinečného vystavitele hodnotu ve formátu:
+stažení dvou důležitých informací, které se používají k ověření tokenů: podpisové klíče klienta a hodnota vystavitele. Každý tenant služby Azure AD má jedinečnou hodnotu vystavitele formuláře:
 
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
 
-kde je hodnota identifikátoru GUID verze bezpečná pro přejmenování tenant ID tenanta. Pokud jste vybrali na předchozí odkaz metadat `contoso.onmicrosoft.com`, zobrazí se tato hodnota issuer v dokumentu.
+kde hodnota identifikátoru GUID je verze s identifikátorem ID tenanta v tenantovi, která je bezpečná pro přejmenování. Pokud vyberete odkaz předchozí metadata pro `contoso.onmicrosoft.com`, můžete tuto hodnotu vystavitele zobrazit v dokumentu.
 
-Když aplikace jednoho tenanta ověří token, zkontroluje podpis tokenu proti podpisové klíče z dokumentu metadat. Tento test umožňuje zajistit, aby že hodnota issuer v token, který odpovídá ten, který byl nalezen v dokumentu metadat.
+Když jedna klientská aplikace ověří token, zkontroluje signaturu tokenu proti podpisovým klíčům z dokumentu metadat. Tento test umožňuje, aby se zajistilo, že hodnota vystavitele v tokenu odpovídá tomu, který byl nalezen v dokumentu metadat.
 
-Vzhledem k tomu, / společný koncový bod klienta neodpovídá a není vystavitele, při kontrole hodnotu issuer v metadatech pro/common má místo skutečnou hodnotu bez vizuálního vzhledu adresu URL:
+Vzhledem k tomu, že koncový bod/běžné neodpovídá tenantovi a není vystavitelem, při prohlédnutí hodnoty vystavitele v metadatech pro/běžné má místo skutečné hodnoty adresu URL šablony:
 
     https://sts.windows.net/{tenantid}/
 
-Proto nelze ověřit tokeny právě to provede spárováním odpovídajících hodnotu issuer v metadatech se aplikaci s více tenanty `issuer` hodnotu v tokenu. Aplikace s více tenanty musí logiku pro rozhodování vystavitele hodnot, které jsou platné a která nejsou založena na část hodnotu issuer pro ID tenanta. 
+Proto aplikace s více klienty nemůže ověřit tokeny jenom tak, že odpovídají hodnotě vystavitele v metadatech `issuer` s hodnotou v tokenu. Víceklientská aplikace potřebuje logiku k rozhodnutí, které hodnoty vystavitele jsou platné a které nejsou založené na části ID tenanta v hodnotě vystavitele. 
 
-Například pokud aplikace s více tenanty umožňuje pouze přihlášení od konkrétních klientů, kteří si zaregistrovali ke svým službám, se musí zkontrolujte hodnotu issuer nebo `tid` hodnoty v tokenu k zajištění tohoto tenanta do svého seznamu odběratelů deklarace identity. Pokud aplikaci s více tenanty pouze jednotlivce se zabývá a nevyužívá rozhodnutích přístup podle tenantů, pak ji můžete ignorovat hodnotu issuer úplně se vynechá.
+Pokud například aplikace s více klienty povolí pouze přihlášení ze specifických klientů, kteří se zaregistrovali ke své službě, musí ověřit buď hodnotu vystavitele, nebo `tid` hodnotu deklarace identity v tokenu, aby se zajistilo, že se tenant nachází v seznamu předplatitelů. Pokud se víceklientské aplikace týká jenom jednotlivců a neprovádí rozhodování o přístupu na základě tenantů, může hodnotu vystavitele zcela ignorovat.
 
-V [samples víceklientských][AAD-Samples-MT], ověření vystavitele je zakázané umožňující žádného tenanta Azure AD pro přihlášení.
+V [ukázkách s více klienty][AAD-Samples-MT]je ověřování vystavitele zakázané, aby se mohl přihlásit libovolný tenant služby Azure AD.
 
-## <a name="understand-user-and-admin-consent"></a>Principy souhlasu uživatele a správce
+## <a name="understand-user-and-admin-consent"></a>Vysvětlení souhlasu uživatele a správce
 
-Pro uživatele k přihlášení k aplikaci ve službě Azure AD musí být zastoupen aplikaci v tenantovi uživatele. To umožňuje organizaci třeba jedinečné zásady použít, když uživatelé z jejich tenanta přihlásí k aplikaci. Pro jednoho tenanta aplikaci tato registrace je jednoduché. To je ten, který se stane při registraci aplikace v [webu Azure portal][AZURE-portal].
+Aby se uživatel mohl přihlásit k aplikaci v Azure AD, musí být aplikace reprezentovaná v tenantovi uživatele. To umožňuje organizaci provádět akce, jako je použití jedinečných zásad, když se uživatelé z jejich tenanta přihlásí k aplikaci. U jediné klientské aplikace je tato registrace jednoduchá. je to ten, který se stane při registraci aplikace v [Azure Portal][AZURE-portal].
 
-Pro aplikaci s více tenanty počáteční registraci aplikace se nachází v tenantovi Azure AD použít vývojářem. Když do aplikace při prvním přihlášení uživatele z jiného tenanta, Azure AD je požádá o oprávnění požadovaná aplikací vyjádřit souhlas. Pokud se vyjádřit souhlas, pak reprezentace aplikace volá *instanční objekt služby* se vytvoří v tenantovi uživatele a přihlášení může pokračovat. Delegování se také vytvoří v adresáři, který zaznamenává souhlasu uživatele k aplikaci. Podrobnosti o vaší aplikace Application a ServicePrincipal objektů a jejich vzájemné vztahy mezi sebou, naleznete v tématu [objekty aplikací a instanční objekty][AAD-App-SP-Objects].
+Pro víceklientské aplikace, počáteční registrace aplikace v tenantovi Azure AD, kterou používá vývojář. Když se uživatel z jiného tenanta do aplikace poprvé přihlásí, služba Azure AD si vyžádá souhlas s oprávněními požadovanými aplikací. Pokud souhlasí, pak se v tenantovi uživatele vytvoří reprezentace aplikace označovaná jako *instanční objekt* a přihlášení může pokračovat. Delegování je také vytvořeno v adresáři, který zaznamenává vyjádření souhlasu uživatele s aplikací. Podrobnosti o aplikacích a objektech aplikace ServicePrincipal a o tom, jak se vzájemně vzájemně vztahují, najdete v tématu [objekty aplikace a instanční objekty služby][AAD-App-SP-Objects].
 
-![Ukazuje, vyjadřujete souhlas s jednovrstvou aplikaci][Consent-Single-Tier]
+![Ukazuje souhlas s jednou vrstvou aplikace.][Consent-Single-Tier]
 
-Toto prostředí pro vyjádření souhlasu je ovlivněna oprávnění požadovaná aplikací. Platforma identit Microsoft podporuje dva typy jen pro aplikace a delegovaná oprávnění.
+Toto používání souhlasu je ovlivněno oprávněními požadovanými aplikací. Platforma Microsoft Identity Platform podporuje dva druhy oprávnění, jenom aplikace a delegované.
 
-* Delegovaná oprávnění neuděluje aplikaci, kterou můžete provést možnost tak, aby fungoval jako přihlášený uživatel pro podmnožinu akcí uživatele. Můžete například udělit aplikaci delegovaná oprávnění ke čtení kalendáře přihlášeného uživatele.
-* Přímo k identifikaci aplikace je povoleno na oprávnění jen pro aplikace. Aplikace například můžete udělit oprávnění jen pro aplikace ke čtení seznamu uživatelů v tenantovi, bez ohledu na to, kdo je přihlášený k aplikaci.
+* Delegované oprávnění uděluje aplikaci možnost chovat se jako přihlášený uživatel pro podmnožinu věcí, kterou může uživatel provádět. Aplikaci můžete například udělit delegovanému oprávnění ke čtení kalendáře přihlášeného uživatele.
+* Oprávnění pouze pro aplikaci je uděleno přímo identitě aplikace. Aplikaci můžete například udělit jenom oprávnění ke čtení seznamu uživatelů v tenantovi bez ohledu na to, kdo je přihlášený k aplikaci.
 
-Některá oprávnění lze vyjádřit souhlas podle běžného uživatele, zatímco jiné vyžadují souhlas správce tenanta. 
+Některé oprávnění může zasílat běžný uživatel, zatímco jiné vyžadují souhlas správce tenanta. 
 
 ### <a name="admin-consent"></a>Souhlas správce
 
-Oprávnění jen pro aplikace vždy vyžadují souhlas správce tenanta. Pokud vaše aplikace požaduje na oprávnění jen pro aplikace a uživatel se pokusí přihlásit k aplikaci, zobrazí se chybová zpráva o tom, že uživatel není možné vyjádřit souhlas.
+Oprávnění pouze pro aplikace vždy vyžadují souhlas správce tenanta. Pokud vaše aplikace požaduje oprávnění pouze pro přístup k aplikacím a uživatel se pokusí přihlásit k aplikaci, zobrazí se chybová zpráva oznamující, že uživatel nemůže souhlasit.
 
-Také určité delegovaná oprávnění vyžadují souhlas správce tenanta. Například možnost ke zpětnému zápisu do služby Azure AD jako přihlášený uživatel vyžaduje souhlas správce tenanta. Jako oprávnění jen pro aplikace Pokud jako běžný uživatel se pokusí přihlásit k aplikaci, která požaduje delegovaná oprávnění, která vyžaduje souhlas správce, vaše aplikace obdrží chybu. Určuje, zda oprávnění vyžaduje souhlas správce je určená pro vývojáře, publikovat prostředek, který najdete v dokumentaci k prostředku. V dokumentaci oprávnění [Azure AD Graph API][AAD-Graph-Perm-Scopes] and [Microsoft Graph API][MSFT-Graph-permission-scopes] určit, jaká oprávnění vyžadují souhlas správce.
+Určitá delegovaná oprávnění také vyžadují souhlas správce tenanta. Například možnost vracet se zpátky do služby Azure AD, protože přihlášený uživatel vyžaduje souhlas správce tenanta. Stejně jako oprávnění pouze pro aplikace, pokud se běžný uživatel pokusí přihlásit k aplikaci, která žádá o delegované oprávnění, které vyžaduje souhlas správce, aplikace obdrží chybu. Bez ohledu na to, jestli oprávnění vyžaduje souhlas správce, se určí vývojář, který prostředek publikoval, a najdete ho v dokumentaci k prostředku. Dokumentace oprávnění pro [Graph API služby Azure AD][AAD-Graph-Perm-Scopes] a [rozhraní API Microsoft Graph][MSFT-Graph-permission-scopes] určují, která oprávnění vyžadují souhlas správce.
 
-Pokud vaše aplikace používá oprávnění, která vyžadují souhlas správce, musíte mít gesta jako tlačítko nebo odkaz, kde může správce zahájit akci. Žádosti o vaše aplikace odešle tato akce je obvykle autorizace požadavku OAuth2 nebo OpenID Connect, která zahrnuje i `prompt=admin_consent` parametr řetězce dotazu. Jakmile správce schválil a instanční objekt je vytvořen v tenantovi zákazníka, není nutné následných žádostí o přihlášení `prompt=admin_consent` parametru. Vzhledem k tomu, že správce rozhodl, že požadovaná oprávnění jsou přijatelné, žádní jiní uživatelé v tenantovi požádejte ho o souhlas od tohoto okamžiku.
+Pokud vaše aplikace používá oprávnění, která vyžadují souhlas správce, musíte mít gesto, jako je tlačítko nebo odkaz, kde může správce zahájit akci. Požadavek, který vaše aplikace posílá pro tuto akci, je obvyklým požadavkem na autorizaci OAuth2/OpenID `prompt=admin_consent` Connect, který také obsahuje parametr řetězce dotazu. Jakmile správce souhlasí a objekt služby se vytvoří v tenantovi zákazníka, následné žádosti o přihlášení nepotřebují `prompt=admin_consent` parametr. Vzhledem k tomu, že správce rozhodl, že požadovaná oprávnění jsou přijatelná, žádné další uživatele v tenantovi nebudou vyzváni k jejich souhlasu od tohoto okamžiku.
 
-Správce tenanta můžete zakázat možnost pro pravidelné uživatelům udělit souhlas s aplikací. Pokud tato možnost je zakázaná, je vždy vyžadována pro aplikace pro použití v tenantovi souhlas správce. Pokud chcete otestovat aplikaci s svolení koncového uživatele zakázaná, můžete najít konfigurační přepínač v [webu Azure portal][AZURE-portal] v **[uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** části **Podnikové aplikace**.
+Správce klienta může zakázat možnost pro běžné uživatele, aby jim souhlasili s aplikacemi. Pokud je tato možnost zakázaná, bude pro použití v tenantovi vždycky potřeba souhlas správce. Pokud chcete otestovat aplikaci pomocí souhlasu koncového uživatele, můžete najít přepínač konfigurace v části [Azure Portal][AZURE-portal] v části **[nastavení uživatele](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** v části **podnikové aplikace**.
 
-`prompt=admin_consent` Parametr je také možné aplikacemi, které požádat o oprávnění, které nevyžadují souhlas správce. Příkladem, kdy to bude používat je, pokud aplikace vyžaduje prostředí, kde správce tenanta "zaregistruje" jeden čas a žádné jiné uživatele požádejte ho o souhlas od této chvíle.
+Tento `prompt=admin_consent` parametr můžou používat i aplikace, které vyžadují oprávnění, které nevyžadují souhlas správce. V takovém případě je třeba použít například v případě, že aplikace vyžaduje prostředí, kde se správce klienta zaregistruje jednou, a žádné další uživatele nebudou vyzváni k souhlasu od tohoto okamžiku.
 
-Pokud aplikace vyžaduje souhlas správce a správce přihlášení bez `prompt=admin_consent` parametru odeslaného, když správce úspěšně souhlasí pro aplikaci, bude se vztahovat **pouze ke svému uživatelskému účtu**. Běžní uživatelé nebudou moct dál přihlášení nebo aplikaci vyjádřit souhlas. Tato funkce je užitečná, pokud chcete poskytnout možnost Procházet aplikace před povolením přístupu dalších uživatelů správce klienta.
+Pokud aplikace vyžaduje souhlas správce a správce se přihlásí bez `prompt=admin_consent` odeslání parametru, když správce úspěšně souhlasí s aplikací, bude platit **pouze pro svůj uživatelský účet**. Pravidelným uživatelům se stále nebude moci přihlásit ani vyjádřit souhlas s aplikací. Tato funkce je užitečná v případě, že chcete dát správci tenanta možnost prozkoumat vaši aplikaci předtím, než povolíte ostatním uživatelům přístup.
 
 > [!NOTE]
-> Některé aplikace mají prostředí, kde běžní uživatelé budou moct zpočátku souhlas, a později aplikace může zahrnovat oprávnění správce a požádejte, které vyžadují souhlas správce. Neexistuje žádný způsob, jak to udělat pomocí verze 1.0 registrace aplikace Azure AD v současné době; však pomocí koncového bodu Microsoft identity platform (verze 2.0) umožňuje aplikacím a požádat o oprávnění za běhu místo v době registrace, která umožňuje tento scénář. Další informace najdete v tématu [koncového bodu Microsoft identity platform][AAD-V2-Dev-Guide].
+> Některé aplikace chtějí mít prostředí, kde se na začátku můžou pravidelně odsouhlasit běžní uživatelé, a později může aplikace zahrnovat správce a požádat o oprávnění, která vyžadují souhlas správce. Neexistuje žádný způsob, jak to provést v registraci aplikace v 1.0 ve službě Azure AD ještě dnes; použití koncového bodu Microsoft Identity Platform (v 2.0) ale umožňuje aplikacím požádat o oprávnění za běhu místo v době registrace, což umožňuje tento scénář. Další informace najdete na [webu Microsoft Identity Platform Endpoint][AAD-V2-Dev-Guide].
 
-### <a name="consent-and-multi-tier-applications"></a>Vyjádření souhlasu a vícevrstvé aplikace
+### <a name="consent-and-multi-tier-applications"></a>Souhlas a vícevrstvé aplikace
 
-Vaše aplikace může mít několik vrstev, každou reprezentovanou vlastní registraci ve službě Azure AD. Například nativní aplikaci, která volá webové rozhraní API nebo webovou aplikaci, která volá webové rozhraní API. V obou těchto případech klient (nativní aplikace nebo webové aplikace) požaduje oprávnění pro volání prostředku (webové rozhraní API). Aby klient mohl být úspěšně odsouhlasený. do tenanta zákazníka všechny prostředky, u kterých požaduje oprávnění již musí existovat v tenantovi zákazníka. Pokud tato podmínka není splněna, Azure AD chybovou zprávu, že musíte prostředek nejprve přidat.
+Vaše aplikace může mít více vrstev, z nichž každý představuje vlastní registraci ve službě Azure AD. Například nativní aplikace, která volá webové rozhraní API, nebo webovou aplikaci, která volá webové rozhraní API. V obou těchto případech klient (nativní aplikace nebo webová aplikace) požaduje oprávnění k volání prostředku (webové rozhraní API). Aby bylo možné klienta úspěšně zaslat do tenanta zákazníka, musí již v tenantovi zákazníka existovat všechny prostředky, na které žádá oprávnění. Pokud tato podmínka není splněna, služba Azure AD vrátí chybu, kterou je třeba přidat do prostředku.
 
-#### <a name="multiple-tiers-in-a-single-tenant"></a>Několik vrstev v jednom tenantovi
+#### <a name="multiple-tiers-in-a-single-tenant"></a>Více vrstev v jednom tenantovi
 
-To může být problém, pokud vaše logické aplikace se skládá ze dvou nebo více registrace aplikací, například klienta a prostředků. Jak můžete získat prostředek do tenanta zákazníka první? Azure AD zahrnuje tento případ tím, že klient a zdroj souhlas v jediném kroku. Uživateli se zobrazí celkový součet oprávnění požadovaná klientem a prostředků na stránka pro odsouhlasení podmínek. Pokud chcete povolit toto chování, registrace aplikace prostředku musí obsahovat ID klienta aplikace jako `knownClientApplications` v jeho [manifest aplikace][AAD-App-Manifest]. Příklad:
+To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Příklad:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 
-To je patrné vícevrstvé nativního klienta volání v ukázkové webové rozhraní API [související obsah](#related-content) oddílu na konci tohoto článku. Následující diagram představuje přehled o souhlasu pro vícevrstvou aplikaci registrovány v jednom tenantovi.
+To je znázorněno ve vícevrstvém nativním klientovi, který volá ukázku webového rozhraní API v části [související obsah](#related-content) na konci tohoto článku. Následující diagram poskytuje přehled o souhlasu vícevrstvé aplikace zaregistrované v jednom tenantovi.
 
-![Ukazuje, vyjadřujete souhlas s známé klienta vícevrstvé aplikace][Consent-Multi-Tier-Known-Client]
+![Znázorňuje vyjádření souhlasu s více úrovněmi známé klientské aplikace.][Consent-Multi-Tier-Known-Client]
 
-#### <a name="multiple-tiers-in-multiple-tenants"></a>Několik vrstev v několika tenantech
+#### <a name="multiple-tiers-in-multiple-tenants"></a>Více vrstev ve více klientech
 
-Podobně jako případ se stane, když různé vrstvy aplikace jsou zaregistrované v různých tenantech. Představte si třeba v případě vytváření nativní klientskou aplikaci, která volá Online rozhraní API pro Office 365 Exchange. Pro vývoj nativních aplikací a dále nativní aplikaci, aby běžela v tenantovi zákazníka, musí být instanční objekt Exchange Online. V takovém případě se pro vývojáře a zákazník musíte koupit Exchange Online pro služby, které byly vytvořeny v svým klientům.
+K podobnému případu dojde, pokud jsou různé úrovně aplikace zaregistrované v různých klientech. Zvažte například případ sestavení nativní klientské aplikace, která volá rozhraní API systému Office 365 Exchange Online. Pro vývoj nativní aplikace a novější pro spuštění nativní aplikace v tenantovi zákazníka musí být k dispozici objekt zabezpečení Exchange Online. V takovém případě musí vývojář a zákazník koupit Exchange Online, aby se instanční objekt vytvořil ve svých klientech.
 
-Pokud se jedná o rozhraní API vytvořené organizací, než je Microsoft, musí vývojář rozhraní API umožňují zákazníkům souhlas aplikaci do klientů svým zákazníkům. Doporučený návrh je pro vývojáře třetích stran k vytvoření rozhraní API tak, že můžete také fungovat jako webový klient k provedení registrace. Použijte následující postup:
+Pokud se jedná o rozhraní API vytvořené organizací jinou než Microsoft, vývojář rozhraní API musí poskytnout způsob, jak zákazníkům udělit souhlas s tím, aby si tuto aplikaci mohli v tenantovi svých zákazníků vyjádřit. Doporučeným návrhem je vývojář třetí strany, který sestaví rozhraní API tak, aby mohl také fungovat jako webový klient pro implementaci registrace. Použijte následující postup:
 
-1. Postupujte podle předchozích částech k zajištění, že rozhraní API implementuje požadavky na registraci nebo kódu aplikace s více tenanty.
-2. Kromě zpřístupnění rozhraní API obory nebo role, ujistěte se, že obsahuje registraci "přihlášení a čtení profilu uživatele" oprávnění (k dispozici ve výchozím nastavení).
-3. Implementace sign v nebo odhlášením stránku ve webovém klientovi a postupujte podle [souhlas správce](#admin-consent) pokyny.
-4. Jakmile uživatel vyjádří souhlas aplikace, služby vazby delegování instanční objekt a vyjádření souhlasu se vytvoří v rámci jejich tenanta a nativní aplikace mohou získat tokeny pro rozhraní API.
+1. Postupujte podle předchozích částí a ujistěte se, že rozhraní API implementuje požadavky na registraci a kódování aplikace pro více tenantů.
+2. Kromě vystavení oborů a rolí rozhraní API se ujistěte, že registrace zahrnuje oprávnění "přihlašovat a číst profil uživatele" (ve výchozím nastavení je k dispozici).
+3. Implementujte přihlašovací nebo registrační stránku ve webovém klientovi a postupujte podle pokynů pro [vyjádření souhlasu správce](#admin-consent) .
+4. Jakmile uživatel souhlasí s aplikací, vytvoří se ve svém tenantovi odkazy na delegování objektu služby a souhlasu a nativní aplikace může získat tokeny pro toto rozhraní API.
 
-Následující diagram představuje přehled o souhlasu pro vícevrstvou aplikaci registrovány v různých tenantech.
+Následující diagram poskytuje přehled o souhlasu vícevrstvé aplikace zaregistrované v různých klientech.
 
-![Ukazuje, vyjadřujete souhlas s více stran vícevrstvé aplikace][Consent-Multi-Tier-Multi-Party]
+![Ukazuje souhlas s vícevrstvou aplikací pro více stran.][Consent-Multi-Tier-Multi-Party]
 
-### <a name="revoking-consent"></a>Odvolání souhlasu
+### <a name="revoking-consent"></a>Odvolávání souhlasu
 
-Uživatelé a správci můžou odvolání souhlasu pro vaši aplikaci v každém okamžiku:
+Uživatelé a správci můžou kdykoli odvolat svůj souhlas s vaší aplikací:
 
-* Uživatelé odvolat přístup k jednotlivým aplikacím tak, že odeberete z jejich [aplikace na přístupovém panelu][AAD-Access-Panel] seznamu.
-* Správci odvolat přístup k aplikacím tak, že je odeberete pomocí [podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) část [webu Azure portal][AZURE-portal].
+* Uživatelé odvolají přístup k jednotlivým aplikacím odebráním ze seznamu [aplikací na přístupovém panelu][AAD-Access-Panel] .
+* Správci odvolají přístup k aplikacím jejich odebráním pomocí oddílu [podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) v [Azure Portal][AZURE-portal].
 
-Pokud správce souhlasí pro aplikaci pro všechny uživatele v tenantovi, uživatelé nejde odvolat přístup jednotlivě. Pouze správce můžete odvolat přístup a pouze pro celou aplikaci.
+Pokud správce souhlasí s aplikací pro všechny uživatele v tenantovi, uživatelé nemůžou přístup odvolat individuálně. Jenom správce může odvolat přístup a jenom pro celou aplikaci.
 
-## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Aplikace s více tenanty a ukládání přístupových tokenů
+## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Víceklientské aplikace a přístupové tokeny pro ukládání do mezipaměti
 
-Aplikace s více tenanty můžete také získat přístupové tokeny pro volání rozhraní API, které jsou chráněné službou Azure AD. Běžnou chybou při použití Active Directory Authentication Library (ADAL) pomocí aplikace s více tenanty je zpočátku požádat o token pro uživatele s využitím/Common, neobdrží odpověď a požádat o další token pro tomuto uživateli také pomocí/Common. Protože odpověď ze služby Azure AD pochází z klienta, nikoli/common, ADAL ukládá do mezipaměti token jako pocházející z tenanta. Položka mezipaměti výpadky následných volání/Common získat přístupový token pro uživatele a uživatel je vyzván k znovu se přihlaste. Pokud chcete vyhnout se chybějícím mezipaměti, zkontroluje, že koncový bod vašeho tenanta se provedly následných volání již přihlášeného uživatele.
+Víceklientské aplikace mohou také získat přístupové tokeny pro volání rozhraní API, která jsou chráněna službou Azure AD. Běžnou chybou při použití Active Directory Authentication Library (ADAL) s více klienty aplikace je prvotní vyžádání tokenu pro uživatele pomocí/běžné, přijetí odpovědi a následnému vyžádání dalšího tokenu pro stejného uživatele pomocí/Common. Vzhledem k tomu, že odpověď z Azure AD přichází z tenanta, ne/běžné, ADAL uloží token jako z tenanta. Následné volání/běžné pro získání přístupového tokenu pro uživatele, který položku mezipaměti neobdrží, a uživatel je vyzván, aby se znovu přihlásil. Aby nedocházelo k chybějící mezipaměti, zajistěte, aby se v koncovém bodu klienta provedla další volání již přihlášeného uživatele.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, jak vytvořit aplikaci, která dokáže přihlásit uživatele z žádného tenanta Azure AD. Po povolení jednotné přihlašování (SSO) mezi vaší aplikací a službou Azure AD, můžete také aktualizovat aplikaci pro přístup k rozhraním API zpřístupněné nástrojem Microsoft prostředkům, jako je Office 365. Díky tomu můžete nabídnout individuální prostředí ve vaší aplikaci, jako je například zobrazující kontextové informace pro uživatele, jako je jejich profilový obrázek nebo jejich další událost z kalendáře. Další informace o tom, že rozhraní API volá do služby Azure AD a Office 365 služeb jako Exchange, SharePoint, OneDrive, OneNote a další, navštivte [Microsoft Graph API][MSFT-Graph-overview].
+V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihlásit uživatele z libovolného tenanta Azure AD. Po povolení jednotného přihlašování (SSO) mezi vaší aplikací a službou Azure AD můžete také aktualizovat aplikaci pro přístup k rozhraním API vystaveným prostředky Microsoftu, jako je třeba Office 365. To vám umožní nabízet v aplikaci přizpůsobené prostředí, například zobrazení kontextových informací uživatelům, jako je například profilový obrázek nebo jejich další schůzka v kalendáři. Další informace o vytváření volání rozhraní API pro služby Azure AD a Office 365, jako je Exchange, SharePoint, OneDrive, OneNote a další, najdete v [Microsoft Graph API][MSFT-Graph-overview].
 
 ## <a name="related-content"></a>Související obsah
 
-* [Ukázky aplikace s více tenanty][AAD-Samples-MT]
-* [Pokyny pro aplikace pro Branding][AAD-App-Branding]
-* [Objekty aplikací a instanční objekty][AAD-App-SP-Objects]
+* [Ukázky aplikací pro více tenantů][AAD-Samples-MT]
+* [Pokyny pro přizpůsobení aplikací][AAD-App-Branding]
+* [Aplikační objekty a instanční objekty služby][AAD-App-SP-Objects]
 * [Integrace aplikací se službou Azure Active Directory][AAD-Integrating-Apps]
-* [Přehled rozhraní pro udělování souhlasu][AAD-Consent-Overview]
-* [Obory oprávnění rozhraní Microsoft Graph API][MSFT-Graph-permission-scopes]
-* [Obory oprávnění Azure AD Graph API][AAD-Graph-Perm-Scopes]
+* [Přehled rozhraní pro vyjádření souhlasu][AAD-Consent-Overview]
+* [Microsoft Graph obory oprávnění rozhraní API][MSFT-Graph-permission-scopes]
+* [Obory oprávnění Graph API Azure AD][AAD-Graph-Perm-Scopes]
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com

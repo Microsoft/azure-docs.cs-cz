@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1fc5e83c2c46a7da2a4b56879a2d596405fd8bee
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8038b7bd60ac771c798a1a8645022b0bf9e142a9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718311"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934850"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 Máte otázky? Další informace najdete v nejčastějších dotazech dole.
@@ -137,12 +137,12 @@ Platná pravidla potlačení:
 
 #### <a name="what-are-recommended-secrets-management-guidelines"></a>Jaké jsou doporučené pokyny pro správu tajných kódů? 
 Při odhalování pevně kódovaných tajných klíčů včas a jejich zmírnění je užitečné, je ještě lepší, pokud by jedna mohla zabránit tomu, aby se tajná klíča úplně kontrolovala. V tomto ohledu společnost Microsoft vydala analyzátor kódu CredScan jako součást [rozšíření Microsoft DevLabs Extension](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) pro sadu Visual Studio. V předběžnou verzi Preview poskytuje vývojářům vložené prostředí pro zjišťování možných tajných kódů v kódu, takže jim dává možnost tyto problémy vyřešit v reálném čase. Další informace najdete v [tomto](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/) blogu o bezpečné správě tajných kódů v cloudu. Níže najdete pár dalších prostředků, které vám pomůžou spravovat tajné klíče a přistupovat k citlivým informacím z vašich aplikací zabezpečeným způsobem: 
- - [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)
- - [Azure Active Directory](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
+ - [Azure Key Vault](../../key-vault/index.yml)
+ - [Azure Active Directory](../../sql-database/sql-database-aad-authentication.md)
  - [Identita spravované služby Azure AD](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
- - [Identita spravované služby pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
- - [Identita spravované služby Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
- - [Knihovna AppAuthentication](https://docs.microsoft.com/azure/key-vault/service-to-service-authentication)
+ - [Identita spravované služby pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md)
+ - [Identita spravované služby Azure](../../app-service/overview-managed-identity.md)
+ - [Knihovna AppAuthentication](../../key-vault/service-to-service-authentication.md)
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Můžu psát vlastní vyhledávací vlastníky?
 

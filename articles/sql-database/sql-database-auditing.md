@@ -12,10 +12,10 @@ ms.author: arib
 ms.reviewer: vanto
 ms.date: 04/16/2019
 ms.openlocfilehash: 69fe3287083523a3a47975a3db51d7241681f5c4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68569505"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
@@ -46,9 +46,9 @@ Auditování SQL Database můžete použít k těmto akcím:
 >
 > - Podporují se všechny druhy úložišť (V1, v2, BLOB).
 > - Podporují se všechny konfigurace replikace úložiště.
-> - **Premium Storage** se v **tuto chvíli nepodporuje**.
-> - **Úložiště ve virtuální** síti se v **tuto chvíli nepodporuje**.
-> - **Úložiště za bránou firewall** se **momentálně nepodporuje** .
+> - **Premium Storage** se vtuto chvíli nepodporuje.
+> - **Úložiště ve virtuální** síti sev tuto chvíli nepodporuje.
+> - **Úložiště za bránou firewall** se momentálně nepodporuje.
 
 ## <a id="subheading-8"></a>Definování zásad auditování na úrovni serveru vs. databáze
 
@@ -58,7 +58,7 @@ Zásady auditu je možné definovat pro určitou databázi nebo jako výchozí z
 
 - Pokud *je povolené auditování objektů BLOB serveru*, bude se *vždycky vztahovat na databázi*. Databáze bude auditována bez ohledu na nastavení auditování databáze.
 
-- Povolení auditování objektů BLOB u databáze nebo datového skladu kromě jeho povolení na serveru *nepřepisuje ani* nemění žádné nastavení auditování objektů BLOB serveru. Oba audity budou existovat vedle sebe. Jinými slovy, databáze je auditována dvakrát; jednou zásadami serveru a jednou zásadami databáze.
+- Povolení auditování objektů BLOB u databáze nebo datového skladu kromě jeho povolení na serveru nepřepisuje ani nemění žádné nastavení auditování objektů BLOB serveru. Oba audity budou existovat vedle sebe. Jinými slovy, databáze je auditována dvakrát; jednou zásadami serveru a jednou zásadami databáze.
 
    > [!NOTE]
    > Měli byste se vyhnout vzájemnému povolení auditování objektů BLOB serveru i auditování objektů BLOB databáze, pokud:
@@ -215,7 +215,7 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
 
 - Protokoly auditu se píší pro **doplňovací objekty blob** v úložišti objektů BLOB v Azure ve vašem předplatném Azure:
   - **Premium Storage** aktuálně **nepodporuje** doplňovací objekty blob.
-  - **Úložiště ve virtuální** síti se v **tuto chvíli nepodporuje**.
+  - **Úložiště ve virtuální** síti sev tuto chvíli nepodporuje.
 
 - Výchozí zásada auditování zahrnuje všechny akce a následující sadu skupin akcí, které budou auditovat všechny dotazy a uložené procedury provedené proti databázi a také úspěšná a neúspěšná přihlášení:
 

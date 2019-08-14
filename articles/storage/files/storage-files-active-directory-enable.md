@@ -4,14 +4,14 @@ description: Naučte se povolit ověřování na základě identity přes protok
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 08/08/2019
 ms.author: rogarana
-ms.openlocfilehash: 060c47cc25d04bccc253bcebf6479d660621f6d2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2b5ebc9f35dd207e8e530b7d74acc5517125fbf4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855325"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935002"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>Povolení Azure Active Directory Domain Services ověřování pomocí protokolu SMB pro soubory Azure
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -142,7 +142,16 @@ Zavedli jsme dvě předdefinované role Azure pro udělení oprávnění na úro
 > [!IMPORTANT]
 > Úplná Správa sdílené složky, včetně možnosti přiřazení role k identitě, vyžaduje použití klíče účtu úložiště. Pro přihlašovací údaje Azure AD se nepodporuje administrativní řízení.
 
-Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure můžete přiřadit předdefinované role k identitě uživatele Azure AD pro udělení oprávnění na úrovni sdílené složky.
+Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete přiřadit předdefinované role k identitě uživatele Azure AD pro udělení oprávnění na úrovni sdílené složky.
+
+#### <a name="azure-portal"></a>portál Azure
+K přiřazení role RBAC k identitě Azure AD použijte [Azure Portal](https://portal.azure.com)použijte následující postup:
+
+1. V Azure Portal přejdete do sdílené složky nebo [vytvoříte sdílenou složku ve službě soubory Azure](storage-how-to-create-file-share.md).
+2. Vyberte **řízení přístupu (IAM)** .
+3. Vyberte **Přidat přiřazení role** .
+4. V okně **Přidat přiřazení role** vyberte příslušnou integrovanou roli (soubor úložiště, sdílenou složku SMB pro sdílení souborů úložiště, přispěvatel sdílené složky SMB) ze seznamu **rolí** . Ponechejte možnost **přiřadit přístup k** výchozímu nastavení: **Uživatel, skupina nebo instanční objekt služby Azure AD**. Vyberte cílovou identitu Azure AD podle jména nebo e-mailové adresy.
+5. Výběrem **Uložit** dokončete operaci přiřazení role.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -231,7 +240,7 @@ net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<
 
 Nyní jste úspěšně povolili ověřování Azure AD přes protokol SMB a přiřadili jste vlastní roli, která poskytuje přístup ke sdílené složce Azure pomocí identity Azure AD. Pokud chcete ostatním uživatelům udělit přístup ke sdílené složce, postupujte podle pokynů v části [přiřazení oprávnění k přístupu k identitě](#assign-access-permissions-to-an-identity) a [Konfigurace oprávnění NTFS](#configure-ntfs-permissions-over-smb) v oddílech SMB.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o službě soubory Azure a o tom, jak používat Azure AD přes SMB, najdete v těchto zdrojích:
 
