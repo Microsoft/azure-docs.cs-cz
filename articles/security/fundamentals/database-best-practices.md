@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: dd703420f6a02dba589d8e5ace20cbd1e384adfb
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727443"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927989"
 ---
 # <a name="azure-database-security-best-practices"></a>Osvědčené postupy zabezpečení databáze v Azure
 Tento článek popisuje osvědčené postupy pro zabezpečení databáze.
@@ -28,7 +28,7 @@ Tento článek popisuje osvědčené postupy pro zabezpečení databáze.
 Osvědčené postupy jsou založené na shodě na základě konsensu a pracují s funkcemi a sadami funkcí platformy Azure. Názory a technologie se v průběhu času mění a tento článek se pravidelně aktualizuje, aby odrážel tyto změny.
 
 ## <a name="secure-databases"></a>Zabezpečení databází
-Zabezpečení je nejdůležitějším problémem při správě databází a je vždycky prioritou pro [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Vaše databáze mohou být pevně zabezpečeny, aby bylo možné plnit většinu regulativních a bezpečnostních požadavků, včetně HIPAA, ISO 27001/27002 a PCI DSS úrovně 1. Aktuální seznam certifikace dodržování předpisů zabezpečení je k dispozici na [webu Centrum zabezpečení společnosti Microsoft](https://azure.microsoft.com/support/trust-center/services/). Své databáze můžete také umístit do konkrétních datových center Azure na základě regulativních požadavků.
+Zabezpečení je nejdůležitějším problémem při správě databází a je vždycky prioritou pro [Azure SQL Database](../../sql-database/index.yml). Vaše databáze mohou být pevně zabezpečeny, aby bylo možné plnit většinu regulativních a bezpečnostních požadavků, včetně HIPAA, ISO 27001/27002 a PCI DSS úrovně 1. Aktuální seznam certifikace dodržování předpisů zabezpečení je k dispozici na [webu Centrum zabezpečení společnosti Microsoft](https://azure.microsoft.com/support/trust-center/services/). Své databáze můžete také umístit do konkrétních datových center Azure na základě regulativních požadavků.
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>Omezení přístupu k databázi pomocí pravidel brány firewall
 Microsoft Azure SQL Database poskytuje službu relačních databází pro Azure a další internetové aplikace. Pro zajištění zabezpečení přístupu SQL Database řídí přístup pomocí:

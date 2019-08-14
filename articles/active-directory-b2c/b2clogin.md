@@ -1,6 +1,6 @@
 ---
-title: Sada přesměrovaly na b2clogin.com – Azure Active Directory B2C | Dokumentace Microsoftu
-description: Další informace o použití b2clogin.com do vaší přesměrovat adresy URL pro Azure Active Directory B2C.
+title: Nastavte adresy URL pro přesměrování na b2clogin.com-Azure Active Directory B2C | Microsoft Docs
+description: Přečtěte si o používání b2clogin.com v adresách URL pro přesměrování pro Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,43 +10,46 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d70fe3f3f19723cd37080ae09dce97bfd8f3d34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 080c1933f88d9e824969a42212de2eacd0f62e14
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511693"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927289"
 ---
-# <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Sada přesměrovaly na b2clogin.com pro Azure Active Directory B2C
+# <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Nastavte adresy URL pro přesměrování na b2clogin.com pro Azure Active Directory B2C
 
-Když nastavíte zprostředkovatele identity pro registraci a přihlašování v aplikaci Azure Active Directory (Azure AD) B2C, budete muset zadat adresu URL přesměrování. V minulosti bylo použito login.microsoftonline.com, teď by měl být použití b2clogin.com.
+Když nastavíte poskytovatele identity pro registraci a přihlášení do aplikace Azure Active Directory (Azure AD) B2C, musíte zadat adresu URL pro přesměrování. V minulosti jsme použili login.microsoftonline.com, teď byste měli používat b2clogin.com.
 
-Použití b2clogin.com poskytuje další výhody, jako například:
+> [!NOTE]
+> V b2clogin.com můžete použít JavaScriptový kód na straně klienta (v současnosti ve verzi Preview). Pokud používáte login.microsoftonline.com, váš kód JavaScriptu se odebere z vlastní stránky. Další omezení zabezpečení se také vztahují na login.microsoftonline.com, jako je například odebírání prvků formuláře HTML z vlastní stránky. 
 
-- Nezabírá místo v záhlaví souboru cookie používané služby Microsoftu.
-- Vaší adresy URL už nebude obsahovat odkaz na Microsoft. Například, `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
+Použití b2clogin.com přináší další výhody, jako například:
 
->[!NOTE]
-> Můžete název klienta a identifikátor GUID klienta následujícím způsobem:
-> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (stále odkazuje na `onmicrosoft.com`)
-> * `https://your-tenant-name.b2clogin.com/your-tenant-guid` (v takovém případě není žádná reference Microsoftu vůbec)
+- Místo spotřebované v hlavičce souboru cookie od služby společnosti Microsoft se sníží.
+- Vaše adresy URL už neobsahují odkaz na Microsoft. Například, `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
+
+> [!NOTE]
+> Název tenanta i identifikátor GUID tenanta můžete použít následujícím způsobem:
+> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`(která pořád odkazuje na `onmicrosoft.com`)
+> * `https://your-tenant-name.b2clogin.com/your-tenant-guid`(v takovém případě neexistuje žádný odkaz na společnost Microsoft.)
 >
-> Však nelze použít _vlastní doménu_ pro Azure Active Directory B2C tenanta, třeba `https://your-tenant-name.b2clogin.com/your-custom-domain-name` by _není_ fungovat.
+> Pro vašeho tenanta Azure Active Directory B2C ale nemůžete použít _vlastní doménu_ , třeba `https://your-tenant-name.b2clogin.com/your-custom-domain-name` by nefungovala.
 
-Vezměte v úvahu tato nastavení, které může být nutné změnit při použití b2clogin.com:
+Vezměte v úvahu tato nastavení, která se při použití b2clogin.com můžou potřebovat změnit:
 
-- Nastavení přesměrování adresy URL ve vašich aplikacích zprostředkovatele identity použití b2clogin.com. 
-- Nastavte aplikaci Azure AD B2C k použití b2clogin.com pro token koncových bodů a odkazy na tok uživatele. 
-- Pokud používáte MSAL, je nutné nastavit **ValidateAuthority** vlastnost `false`.
-- Ujistěte se, že změníte některá **povolené zdroje** , který jste definovali v nastavení CORS pro [přizpůsobení uživatelského rozhraní](active-directory-b2c-ui-customization-custom-dynamic.md).  
+- Nastavte adresy URL pro přesměrování v aplikacích zprostředkovatele identity tak, aby používaly b2clogin.com. 
+- Nastavte aplikaci Azure AD B2C tak, aby používala b2clogin.com pro odkazy na uživatelský tok a koncové body tokenu. 
+- Pokud používáte MSAL, musíte nastavit vlastnost **ValidateAuthority** na `false`.
+- Ujistěte se, že jste změnili všechny **Povolené zdroje** , které jste definovali v nastavení CORS pro [přizpůsobení uživatelského rozhraní](active-directory-b2c-ui-customization-custom-dynamic.md).  
 
-## <a name="change-redirect-urls"></a>Změna adresy URL pro přesměrování
+## <a name="change-redirect-urls"></a>Změnit adresy URL pro přesměrování
 
-Použití b2clogin.com, v nastavení pro vaši aplikaci zprostředkovatele identity, vyhledejte a změnit seznam důvěryhodných adres URL pro přesměrování zpět do Azure AD B2C.  V současné době máte pravděpodobně ji nastavit na přesměrovat zpět na některé login.microsoftonline.com lokality. 
+Chcete-li použít b2clogin.com, vyhledejte v nastavení aplikace zprostředkovatele identity a změňte seznam důvěryhodných adres URL pro přesměrování zpět na Azure AD B2C.  V současné době máte pravděpodobně nastavené přesměrování zpět na některé login.microsoftonline.com lokality. 
 
-Budete muset změnit adresu URL přesměrování tak, aby `your-tenant-name.b2clogin.com` autorizaci. Nezapomeňte nahradit `your-tenant-name` s názvem vaší Azure AD B2C tenanta a odeberte `/te` pokud existuje v adrese URL. Existují malé odchylky na tuto adresu URL pro každého zprostředkovatele identity proto zkontrolujte na odpovídající stránce zobrazíte přesnou adresu URL.
+Bude nutné změnit adresu URL pro přesměrování, `your-tenant-name.b2clogin.com` aby byla ověřena. Ujistěte se, že `your-tenant-name` jste nahradili názvem vašeho tenanta Azure AD B2C a odeberete `/te` , pokud existuje v adrese URL. Existují mírné variace této adresy URL pro každého zprostředkovatele identity, takže na příslušné stránce můžete získat přesnou adresu URL.
 
-Informace o nastavení pro zprostředkovatele identity najdete v následujících článcích:
+Informace o nastavení pro zprostředkovatele identity můžete najít v následujících článcích:
 
 - [Účet Microsoft](active-directory-b2c-setup-msa-app.md)
 - [Facebook](active-directory-b2c-setup-fb-app.md)
@@ -63,22 +66,22 @@ Informace o nastavení pro zprostředkovatele identity najdete v následujícíc
 
 ## <a name="update-your-application"></a>Aktualizace aplikace
 
-Aplikace Azure AD B2C pravděpodobně odkazuje na `login.microsoftonline.com` na několika místech, jako jsou odkazy na tok uživatele a token koncových bodů.  Ujistěte se, že koncový bod autorizace, koncový bod tokenu a vystavitele byla aktualizována, aby používat `your-tenant-name.b2clogin.com`.  
+Vaše aplikace Azure AD B2C pravděpodobně odkazuje na `login.microsoftonline.com` několik míst, jako jsou například odkazy na tok uživatele a koncové body tokenu.  Ujistěte se, že jste aktualizovali koncový bod autorizace, koncový bod tokenu a vystavitele pro použití `your-tenant-name.b2clogin.com`.  
 
-## <a name="set-the-validateauthority-property"></a>Nastavte vlastnost ValidateAuthority
+## <a name="set-the-validateauthority-property"></a>Nastavení vlastnosti ValidateAuthority
 
-Pokud používáte MSAL, nastavte **ValidateAuthority** vlastnost `false`. Když **ValidateAuthority** je nastavena na `false`, b2clogin.com je povoleno přesměrování. 
+Pokud používáte MSAL, nastavte vlastnost **ValidateAuthority** na `false`. Pokud je **ValidateAuthority** nastaveno na `false`, přesměrování mohou b2clogin.com. 
 
-Následující příklad ukazuje, jak může nastavit vlastnost:
+Následující příklad ukazuje, jak můžete nastavit vlastnost:
 
-V [MSAL pro .net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet):
+V [MSAL pro .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet):
 
 ```CSharp
  ConfidentialClientApplication client = new ConfidentialClientApplication(...); // can also be PublicClientApplication
  client.ValidateAuthority = false;
 ```
 
-A v [MSAL pro jazyk Javascript](https://github.com/AzureAD/microsoft-authentication-library-for-js):
+A v [MSAL pro JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js):
 
 ```Javascript
 this.clientApplication = new UserAgentApplication(

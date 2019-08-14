@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: a821ce5d9e545db2dee2adbe942eab5edcfdb01f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 09caffcfdad4b132858b6ec52b36fe037f488b3a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726959"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934713"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Osvědčené postupy pro Azure pro zabezpečení sítě
 Tento článek popisuje shromažďování osvědčených postupů Azure pro vylepšení zabezpečení sítě. Tyto osvědčené postupy se odvozují z našich zkušeností s používáním sítí Azure a zkušeností zákazníků, jako je sami.
@@ -35,7 +35,7 @@ U každého osvědčeného postupu Tento článek vysvětluje:
 Tyto osvědčené postupy jsou založené na konsensu a funkcemi a sadách funkcí platformy Azure, jak existují v době, kdy byl tento článek napsán. Názory a technologie se v průběhu času mění a tento článek se pravidelně aktualizuje, aby odrážel tyto změny.
 
 ## <a name="use-strong-network-controls"></a>Použití silných síťových ovládacích prvků
-[Virtuální počítače Azure](https://azure.microsoft.com/services/virtual-machines/) a zařízení můžete propojit s dalšími síťovými zařízeními tím, že je umístíte do služby [Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/). To znamená, že můžete připojit karty virtuální sítě k virtuální síti a povolit tak komunikaci založenou na protokolu TCP/IP mezi zařízeními s podporou sítě. Virtuální počítače připojené k virtuální síti Azure se můžou připojovat k zařízením ve stejné virtuální síti, různých virtuálních sítích, Internetu nebo vašich vlastních místních sítích.
+[Virtuální počítače Azure](https://azure.microsoft.com/services/virtual-machines/) a zařízení můžete propojit s dalšími síťovými zařízeními tím, že je umístíte do služby [Azure Virtual Networks](../../virtual-network/index.yml). To znamená, že můžete připojit karty virtuální sítě k virtuální síti a povolit tak komunikaci založenou na protokolu TCP/IP mezi zařízeními s podporou sítě. Virtuální počítače připojené k virtuální síti Azure se můžou připojovat k zařízením ve stejné virtuální síti, různých virtuálních sítích, Internetu nebo vašich vlastních místních sítích.
 
 Při plánování sítě a zabezpečení vaší sítě doporučujeme, abyste provedli centralizaci:
 
@@ -114,7 +114,7 @@ Zařízení zabezpečení sítě Azure můžou poskytovat lepší zabezpečení,
 K vyhledání dostupných zařízení zabezpečení virtuální sítě Azure použijte [Azure Marketplace](https://azure.microsoft.com/marketplace/) a vyhledejte "zabezpečení" a "zabezpečení sítě".
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>Nasazení hraničních sítí pro zóny zabezpečení
-[Hraniční síť](https://docs.microsoft.com/azure/best-practices-network-security) (označovaná také jako DMZ) je fyzický nebo logický segment sítě, který poskytuje další vrstvu zabezpečení mezi prostředky a internetem. Specializovaná zařízení pro řízení přístupu k síti na hraniční síti hraniční sítě umožňují pouze požadovaný provoz do vaší virtuální sítě.
+[Hraniční síť](./https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (označovaná také jako DMZ) je fyzický nebo logický segment sítě, který poskytuje další vrstvu zabezpečení mezi prostředky a internetem. Specializovaná zařízení pro řízení přístupu k síti na hraniční síti hraniční sítě umožňují pouze požadovaný provoz do vaší virtuální sítě.
 
 Hraniční sítě jsou užitečné, protože můžete zaměřit správu řízení přístupu k síti, monitorování, protokolování a vytváření sestav na zařízeních na hranici vaší virtuální sítě Azure. Hraniční síť je místo, kde obvykle povolíte možnost prevence distribuovaného odepření služeb (DDoS), zjišťování vniknutí/systémy prevence vniknutí (ID/IP adresy), pravidla a zásady brány firewall, filtrování webu, antimalwarový software a další. Zařízení zabezpečení sítě sedí mezi Internetem a vaší virtuální sítí Azure a mají rozhraní v obou sítích.
 
@@ -209,5 +209,5 @@ Koncové body služby poskytují následující výhody:
 
 Další informace o koncových bodech služby a službách a oblastech Azure, které jsou pro koncové body služby k dispozici pro, najdete v tématu [koncové body služby virtuální sítě](../../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and-patterns.md) najdete v tématu Doporučené postupy zabezpečení pro použití při navrhování, nasazování a správě cloudových řešení pomocí Azure.

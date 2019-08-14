@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 4b1a551ea2dd62d428fee6a7be475472235a3994
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569608"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935071"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
@@ -76,7 +76,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 > [!NOTE]
 > Pokud jsou v primární databázi aktualizace schématu, je opětovné přehrání protokolu zpožděno v sekundární databázi. Druhá z nich vyžaduje zámek schématu na sekundární databázi.
 > [!IMPORTANT]
-> Geografickou replikaci můžete použít k vytvoření sekundární databáze ve stejné oblasti jako primární. Tuto sekundární službu můžete použít k vyrovnávání zatížení úloh jen pro čtení ve stejné oblasti. Sekundární databáze ve stejné oblasti ale neposkytuje další odolnost proti chybám, a proto není vhodným cílem převzetí služeb při selhání pro zotavení po havárii. Tato akce také nezaručuje izolaci zóny avaialability. Pro zajištění izolace zóny avaialability použijte úroveň služby pro kritický podnik nebo Premium s [redundantní konfigurací zóny](sql-database-high-availability.md#zone-redundant-configuration) .   
+> Geografickou replikaci můžete použít k vytvoření sekundární databáze ve stejné oblasti jako primární. Tuto sekundární službu můžete použít k vyrovnávání zatížení úloh jen pro čtení ve stejné oblasti. Sekundární databáze ve stejné oblasti ale neposkytuje další odolnost proti chybám, a proto není vhodným cílem převzetí služeb při selhání pro zotavení po havárii. Nebude taky zaručit izolaci zóny dostupnosti. K dosažení izolace zóny dostupnosti použijte úroveň služby pro důležité nebo Premium pro podnik s [redundantní konfigurací zóny](sql-database-high-availability.md#zone-redundant-configuration) .   
 >
 
 - **Plánované převzetí služeb při selhání**

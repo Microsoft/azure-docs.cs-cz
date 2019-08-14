@@ -1,6 +1,6 @@
 ---
-title: Navrhování pro vysokou dostupnost s využitím Azure ExpressRoute | Dokumentace Microsoftu
-description: Tato stránka obsahuje architektury doporučení pro zajištění vysoké dostupnosti při používání Azure ExpressRoute.
+title: Návrh pro zajištění vysoké dostupnosti s využitím Azure ExpressRoute | Microsoft Docs
+description: Tato stránka poskytuje doporučení pro architekturu pro vysokou dostupnost při používání Azure ExpressRoute.
 documentationcenter: na
 services: networking
 author: rambk
@@ -11,85 +11,85 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
 ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67466653"
 ---
-# <a name="designing-for-high-availability-with-expressroute"></a>Navrhování pro vysokou dostupnost s využitím ExpressRoute
+# <a name="designing-for-high-availability-with-expressroute"></a>Návrh pro zajištění vysoké dostupnosti pomocí ExpressRoute
 
-ExpressRoute je navržené pro zajištění vysoké dostupnosti a tím zajistit dopravce připojení privátní sítě na podnikové úrovni k prostředkům společnosti Microsoft. Jinými slovy neexistuje žádný jediný bod selhání v cestě ExpressRoute v rámci sítě Microsoftu. Pokud chcete maximalizovat dostupnost, zákazníka a část váš okruh ExpressRoute pro poskytovatele služby by měl také být navržen pro zajištění vysoké dostupnosti. V tomto článku, nejdřív Pojďme prozkoumat aspekty architektury sítě pro vytváření robustních síťové připojení pomocí ExpressRoute a Podívejme se na upřesnění funkce, které vám umožní zlepšit vysokou dostupnost váš okruh ExpressRoute.
+ExpressRoute je navržená tak, aby poskytovala vysokou dostupnost k zajištění privátní síťové připojení k prostředkům Microsoftu. Jinými slovy, v ExpressRoute cestě v síti Microsoftu neexistuje jediný bod selhání. Pro maximalizaci dostupnosti by měl být pro zákazníky a segmenty poskytovatele služeb vašeho okruhu ExpressRoute také navržený pro vysokou dostupnost. V tomto článku se nejdřív podívejme na požadavky na architekturu sítě při vytváření robustního síťového připojení pomocí ExpressRoute a potom se podíváme na funkce s vyladěním, které vám pomůžou zlepšit vysokou dostupnost vašeho okruhu ExpressRoute.
 
 
-## <a name="architecture-considerations"></a>Důležité informace o architektuře
+## <a name="architecture-considerations"></a>Požadavky architektury
 
-Následující obrázek ukazuje doporučený postup pro připojení prostřednictvím okruhu ExpressRoute pro maximalizaci dostupnosti okruhu ExpressRoute.
+Následující obrázek znázorňuje doporučený způsob připojení pomocí okruhu ExpressRoute pro maximalizaci dostupnosti okruhu ExpressRoute.
 
  [![1]][1]
 
-Pro zajištění vysoké dostupnosti je zásadní zachovat redundance okruhu ExpressRoute přes síť začátku do konce. Jinými slovy nemusíte udržovat redundance ve vaší místní síti a by neměl ohrozit redundance ve vaší síti poskytovatele služeb. Zachování redundance minimálně znamená, jak se vyhnout jediný bod selhání sítě. S redundantní napájení a chlazení pro síť, kterou bude zařízení dále zlepšit vysokou dostupnost.
+Pro zajištění vysoké dostupnosti je nezbytné zachovat redundanci okruhu ExpressRoute napříč koncovou sítí. Jinými slovy, je třeba zachovat redundanci v rámci vaší místní sítě a neměli byste v síti poskytovatele služeb mít redundanci. Udržování redundance na minimum zahrnuje zamezení selhání v jednom bodě sítě. Díky redundantnímu napájení a chlazení síťových zařízení bude lépe vylepšit vysokou dostupnost.
 
-### <a name="first-mile-physical-layer-design-considerations"></a>První aspekty návrhu pro přepočet mílí fyzickou vrstvu
+### <a name="first-mile-physical-layer-design-considerations"></a>Faktory návrhu fyzické vrstvy první km
 
- Pokud je ukončit i připojení primárních a sekundárních okruhů ExpressRoute v stejné zákazníka místní zařízení CPE (), jste omezení vysoké dostupnosti ve vaší místní síti. Kromě toho Pokud konfigurujete oba primárních a sekundárních připojení přes stejný port CPE, (nebo ukončení dvě připojení v rámci různých podrozhraní sloučením dvě připojení uvnitř sítě partnera), vynutíte partnera k ohrožení v jejich segmentu sítě také vysokou dostupnost. Toto ohrožení zabezpečení je znázorněn na následujícím obrázku.
+ Pokud ukončíte primární i sekundární připojení okruhu ExpressRoute na stejné zákaznické zařízení (CPE), dojde k narušení vysoké dostupnosti v rámci vaší místní sítě. Navíc platí, že pokud nakonfigurujete primární i sekundární připojení přes stejný port CPE (buď ukončením těchto dvou připojení v různých podrozhraních, nebo sloučením dvou připojení v rámci partnerské sítě), vynutíte partnera. k ohrožení vysoké dostupnosti v jejich segmentu sítě. Toto ohrožení je znázorněno na následujícím obrázku.
 
 [![2]][2]
 
-Na druhé straně Pokud je ukončit primární a sekundární připojení okruhů ExpressRoute v různých geografických umístěních, pak vám může být tím bylo narušeno výkonu sítě za připojení. Pokud je provoz aktivně vyrovnávat zatížení napříč primární a sekundární připojení, které jsou v různých geografických umístěních byl ukončen, potenciální podstatný rozdíl v sítích s latencí mezi dvě cesty způsobí neoptimální sítě výkon. 
+Na druhé straně, pokud zrušíte primární a sekundární připojení okruhu ExpressRoute v různých geografických umístěních, může dojít k narušení výkonu sítě. Pokud je provoz aktivně vyrovnaný mezi primárním a sekundárním připojením, které se ukončí v různých geografických umístěních, může být případný podstatný rozdíl v latenci sítě mezi těmito dvěma cestami v důsledku optimální sítě. předepsané. 
 
-Aspekty návrhu geograficky redundantní, naleznete v tématu [návrhu zotavení po havárii s využitím ExpressRoute][DR].
+Informace o geograficky redundantním návrhu najdete v tématu [navrhování pro zotavení po havárii pomocí ExpressRoute][DR].
 
-### <a name="active-active-connections"></a>Připojení typu aktivní aktivní
+### <a name="active-active-connections"></a>Aktivní – aktivní připojení
 
-MSN je nakonfigurován na provoz připojení primárních a sekundárních okruhů ExpressRoute v režimu aktivní aktivní. Prostřednictvím vaší trasy oznámení o inzerovaných programech, ale můžete vynutit redundantní připojení okruhu ExpressRoute k provozu v režimu aktivní pasivní. Inzerování konkrétnější trasy a protokolu BGP jako předřazení path je běžná technika, aby se dává přednost před druhou jednu cestu.
+Síť Microsoft je nakonfigurována pro provoz primárních a sekundárních připojení okruhů ExpressRoute v režimu aktivní-aktivní. Nicméně prostřednictvím inzerce tras můžete vynutit redundantní připojení okruhu ExpressRoute, aby fungovala v režimu aktivní-pasivní. Vytváření inzerce konkrétnějších tras a protokolu BGP jako nedokončené cesty jsou běžné techniky, pomocí kterých je možné nastavit jednu cestu předností nad druhou.
 
-Pokud chcete zlepšit vysokou dostupnost, doporučuje se provoz připojení okruhu ExpressRoute v režimu aktivní aktivní. Pokud necháte připojení pracovat v režimu aktivní aktivní, MSN se zatížení můžete vyrovnávat provoz prostřednictvím připojení na základě jednotlivé toky.
+Pro zlepšení vysoké dostupnosti doporučujeme provozovat připojení okruhu ExpressRoute v režimu aktivní-aktivní. Pokud povolíte připojení v režimu aktivní-aktivní, bude síť Microsoftu vyrovnávat zatížení napříč připojeními na základě jednotlivých toků.
 
-Spuštění primární a sekundární připojení okruhu ExpressRoute v režimu aktivní pasivní tváře riziko připojení služeb při selhání po selhání v aktivní cesta. Nejčastější příčiny chyby při přepínání jsou chybějící aktivní správu pasivní připojení a pasivní připojení inzerování tras zastaralé.
+Při spuštění primárního a sekundárního připojení okruhu ExpressRoute v aktivním pasivním režimu čelí riziko, že připojení selže po selhání v aktivní cestě. Běžnými příčinami selhání při přepínání je neexistence aktivní správy pasivního připojení a pasivní připojení, které inzeruje zastaralé trasy.
 
-Spuštění primární a sekundární připojení okruhu ExpressRoute v režimu aktivní aktivní, případně výsledkem přibližně půl toky služeb při selhání a získávání přesměrovány následující chybu připojení ExpressRoute. Díky tomu se režim aktivní – aktivní se výrazně zvýšit průměrný čas potřebný k obnovení (MTTR).
+Další možností je spuštění primárního a sekundárního připojení okruhu ExpressRoute v režimu aktivní-aktivní. výsledkem bude jenom zhruba polovinu selhání toků a jejich přesměrování, a to po selhání připojení ExpressRoute. Proto režim aktivní – aktivní bude významně pomáhat zlepšit střední dobu obnovení (MTTR).
 
-### <a name="nat-for-microsoft-peering"></a>NAT pro partnerský vztah Microsoftu 
+### <a name="nat-for-microsoft-peering"></a>Překlad adres (NAT) pro partnerský vztah Microsoftu 
 
-Partnerský vztah Microsoftu je určená pro komunikaci mezi veřejné koncové body. Proto obvykle místní privátní koncové body jsou sítě přeložit adresy (NATed) s veřejnou IP adresu v zákazník nebo partner network před komunikují přes partnerský vztah Microsoftu. Za předpokladu, že používáte primárních a sekundárních připojení v režimu aktivní aktivní, kde a jak vám NAT má vliv na rychlost obnovení po selhání v jednom připojení ExpressRoute. Dvě různé možnosti NAT jsou znázorněné na následujícím obrázku:
+Partnerský vztah Microsoftu je určený pro komunikaci mezi veřejnými koncovými body. To znamená, že místní privátní koncové body jsou přeložené ze sítě (NATed) s veřejnou IP adresou v síti zákazníka nebo partnera předtím, než budou komunikovat s partnerským vztahem Microsoftu. Za předpokladu, že používáte primární i sekundární připojení v režimu aktivní-aktivní, kde a jak vaše NAT má vliv na to, jak rychle obnovujete po selhání jednoho z ExpressRoute připojení. Na následujícím obrázku jsou znázorněny dvě různé možnosti překladu adres (NAT):
 
 [![3]][3]
 
-V možnosti 1 NAT se použije po rozdělení přenos dat mezi primárních a sekundárních připojení ExpressRoute. Pro splnění požadavků stavové zařízení NAT, nezávislé fondy NAT se používají mezi primární a sekundární zařízení tak, že by návratový přenos dorazí na stejné hraniční zařízení, přes který egressed toku.
+V možnosti 1 se překlad adres (NAT) použije po rozdělení provozu mezi primárním a sekundárním připojením ExpressRoute. Aby bylo možné splnit stavové požadavky překladu adres (NAT), používají se nezávislé fondy NAT mezi primárním a sekundárním zařízením, takže návratová přenosová data přicházejí do stejného hraničního zařízení, přes které tok vzdává výstup.
 
-V možnosti 2 běžné fond NAT používá před rozdělením přenos dat mezi primárních a sekundárních připojení ExpressRoute. Je důležité rozlišovat běžné fond NAT před rozdělením provoz neznamená Úvod do jednoho místa selhání, a tím bylo narušeno vysokou dostupnost.
+V možnosti 2 se k rozdělení provozu mezi primárním a sekundárním připojením ExpressRoute používá společný fond NAT. Je důležité rozlišovat, že společný fond překladu adres (NAT) před rozdělením provozu neznamená velký počet selhání, což by ohrozilo vysokou dostupnost.
 
-Možnost 1, následující chybu připojení ExpressRoute umožňuje oslovit odpovídající fond NAT se přeruší. Proto všechny toky přerušeno musí být znovu navázat buď protokol TCP nebo aplikační vrstvy následující časový limit odpovídající okno. Pokud některý z fondy NAT se používá front-endu některý z místních serverů a pokud odpovídající připojení neúspěšné, místní servery z Azure není dostupný, dokud se nevyřeší připojení.
+U možnosti 1 se po selhání připojení ExpressRoute schopnost spojit s odpovídajícím fondem překladu adres (NAT). Proto musí být všechny přerušené toky znovu navázány pomocí protokolu TCP nebo aplikační vrstvy, a to za odpovídajícím časovým limitem okna. Pokud se některý z fondů NAT používá pro front-endové servery a v případě, že by odpovídající připojení nebylo úspěšné, nejdou z Azure získat místní servery, dokud nebude připojení vyřešené.
 
-Vzhledem k tomu možnost 2, překlad síťových adres je dostupný i po selhání primární nebo sekundární připojení. Proto samotné vrstvě sítě můžete přesměrovat paketů a pomáhají rychlejší obnovení po selhání. 
+V případě možnosti 2 je překlad adres (NAT) dosažitelný i po selhání primárního nebo sekundárního připojení. Proto může tato síťová vrstva znovu směrovat pakety a urychlit obnovení po selhání. 
 
 > [!NOTE]
-> Pokud používáte NAT možnost 1 (nezávislé fondy NAT pro primární a sekundární připojení ExpressRoute) a mapují port IP adresu z jednoho z fondu NAT na místním serveru, server nebude dostupný přes ExpressRoute okruhu, kdy k odpovídající položce připojení se nezdaří.
+> Pokud použijete možnost NAT 1 (nezávislé fondy NAT pro primární a sekundární připojení ExpressRoute) a namapujete port IP adresy z jednoho z fondů překladu adres na místní server, server nebude dostupný přes okruh ExpressRoute, pokud odpovídající připojení se nezdařilo.
 > 
 
-## <a name="fine-tuning-features-for-private-peering"></a>Upřesnění funkce pro soukromý partnerský vztah
+## <a name="fine-tuning-features-for-private-peering"></a>Vyladitelné funkce pro privátní partnerské vztahy
 
-V této části, dejte nám revize volitelné (v závislosti na nasazení vašeho řešení Azure a jak citlivá jste k MTTR) funkcí, které pomůžou vylepšit vysokou dostupnost váš okruh ExpressRoute. Konkrétně Pojďme se podívat na s ohledem na zónu nasazení brány virtuální sítě ExpressRoute a obousměrné předávání detekce (BFD).
+V této části si můžeme předejít volitelné (v závislosti na vašem nasazení Azure a MTTR) funkce, které pomáhají zlepšit vysokou dostupnost vašeho okruhu ExpressRoute. Konkrétně se podívejme na nasazení bran virtuální sítě ExpressRoute s ohledem na zóny a na detekci obousměrného přesměrování (BFD).
 
-### <a name="availability-zone-aware-expressroute-virtual-network-gateways"></a>Zóna dostupnosti clustery brány virtuální sítě ExpressRoute
+### <a name="availability-zone-aware-expressroute-virtual-network-gateways"></a>Brány virtuální sítě podporující zóny dostupnosti ExpressRoute
 
-Zónu dostupnosti, do oblasti Azure je kombinace doména selhání a aktualizační doména. Pokud se rozhodnete pro zónově redundantní nasazení Azure IaaS, můžete také nakonfigurovat brány zónově redundantní virtuální sítě, které ukončit privátního partnerského vztahu ExpressRoute. Další informace najdete v tématu [o branách zónově redundantní virtuálních sítí v zónách dostupnosti Azure][zone redundant vgw]. To configure zone-redundant virtual network gateway, see [Create a zone-redundant virtual network gateway in Azure Availability Zones][conf zone redundant vgw].
+Zóna dostupnosti v oblasti Azure je kombinací domény selhání a aktualizační domény. Pokud se rozhodnete pro nasazení služby Azure IaaS v zóně redundantní, můžete taky chtít nakonfigurovat brány redundantní virtuální sítě zóny, které budou koncovým partnerským vztahem ExpressRoute ukončovat. Další informace najdete v tématu [informace o branách virtuální sítě redundantních v zóně v zóny dostupnosti Azure][zone redundant vgw]. Postup konfigurace brány redundantní virtuální sítě v zóně najdete [v tématu Vytvoření brány redundantní virtuální sítě v zóny dostupnosti Azure][conf zone redundant vgw].
 
-### <a name="improving-failure-detection-time"></a>Zlepšení čas detekce selhání
+### <a name="improving-failure-detection-time"></a>Zlepšení doby detekce selhání
 
-ExpressRoute podporuje BFD přes privátní partnerský vztah. BFD snižuje čas detekce selhání v síti vrstvy 2 mezi Microsoft Edge Enterprise (Msee) a jeho okolím protokolu BGP na straně místní z přibližně 3 minut (výchozí) na menší než druhý. Rychlá selhání detekováním pomáhá hastening obnovení po selhání. Další informace najdete v tématu [konfigurace BFD přes ExpressRoute][BFD].
+ExpressRoute podporuje BFD prostřednictvím privátního partnerského vztahu. BFD snižuje dobu detekce selhání během sítě vrstvy 2 mezi sítí Microsoft Enterprise Edge (směrovači msee) a sousedními sousedi protokolu BGP na místní straně od přibližně 3 minut (výchozí) po méně než druhé. Čas rychlého zjištění selhání pomáhá při hastening obnovení. Další informace najdete v tématu [Configuring BFD over ExpressRoute][BFD].
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jsme probírali jak navrhovat pro zajištění vysoké dostupnosti připojením k okruhu ExpressRoute. Jako bod partnerského vztahu okruhu ExpressRoute je připnutá k zeměpisné umístění a proto může mít vliv závažnému selhání, který ovlivňuje celou umístění. 
+V tomto článku jsme probrali, jak navrhnout vysokou dostupnost připojení okruhu ExpressRoute. Bod partnerského vztahu okruhu ExpressRoute je připnutý k geografickému umístění, a proto by mohl být ovlivněn závažnou chybou, která ovlivňuje celé umístění. 
 
-Aspekty návrhu pro sestavení geograficky redundantní síťové připojení k páteřní infrastrukturu Microsoftu, který dokázal zvládnout situaci katastrofických selhání, které ovlivňuje celou oblast, najdete v části [návrhu zotavení po havárii sprosoukromýpartnerskývztahExpressRoute][DR].
+Pokyny k návrhu pro sestavení geograficky redundantního síťového připojení k páteřní síti Microsoftu, která může odolat závažným chybám, které ovlivňují celou oblast, najdete v tématu [navrhování pro zotavení po havárii s privátním partnerským vztahem ExpressRoute][DR].
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "doporučuje způsob připojení pomocí ExpressRoute"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "Suboptimal poslední míli připojení"
-[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "možností NAT"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png  "Doporučený způsob připojení pomocí ExpressRoute"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png .  "Neoptimální připojení poslední míle"
+[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png .  "Možnosti NAT"
 
 
 <!--Link References-->

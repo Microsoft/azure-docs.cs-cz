@@ -1,6 +1,6 @@
 ---
-title: Jak označit virtuálního počítače s Linuxem v Azure | Dokumentace Microsoftu
-description: Přečtěte si o označování virtuálního počítače s Linuxem Azure vytvořené v Azure s využitím modelu nasazení Resource Manager.
+title: Jak označit virtuální počítač se systémem Azure Linux | Microsoft Docs
+description: Přečtěte si informace o označení virtuálního počítače Azure Linux vytvořeného v Azure pomocí modelu nasazení Správce prostředků.
 services: virtual-machines-linux
 documentationcenter: ''
 author: mmccrory
@@ -16,28 +16,28 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
 ms.openlocfilehash: 290105b4e5e3ac3337b0be1b7d437601223bdf68
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67708732"
 ---
-# <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Jak označit virtuální počítač s Linuxem v Azure
-Tento článek popisuje různé způsoby, jak označit virtuální počítač s Linuxem v Azure prostřednictvím modelu nasazení Resource Manager. Značky jsou páry klíč/hodnota definovaná uživatelem, které je možné použít přímo na prostředek nebo skupinu prostředků. Azure v současné době podporuje až 15 značek na prostředek a skupinu prostředků. Značky může být umístěné na zdroje v době vytvoření nebo přidat do existujícího prostředku. Mějte prosím na paměti, značky jsou podporované pro prostředky vytvořené prostřednictvím modelu nasazení Resource Manager pouze.
+# <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Označení virtuálního počítače se systémem Linux v Azure
+Tento článek popisuje různé způsoby, jak označit virtuální počítač Linux v Azure pomocí modelu nasazení Správce prostředků. Značky jsou páry klíč/hodnota definované uživatelem, které lze umístit přímo do prostředku nebo skupiny prostředků. Azure v současné době podporuje až 15 značek na jeden prostředek a skupinu prostředků. Značky lze umístit na prostředek v době vytvoření nebo přidání do existujícího prostředku. Upozorňujeme, že značky se podporují jenom u prostředků vytvořených pomocí modelu nasazení Správce prostředků.
 
 [!INCLUDE [virtual-machines-common-tag](../../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-azure-cli"></a>Označování pomocí Azure CLI
 
-Pokud chcete začít, je třeba nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az-login).
+Chcete-li začít, potřebujete nainstalovat nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a přihlásit se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index#az-login).
 
-Zobrazit všechny vlastnosti pro daný virtuální počítač, včetně značky, pomocí tohoto příkazu:
+Všechny vlastnosti pro daný virtuální počítač, včetně značek, můžete zobrazit pomocí tohoto příkazu:
 
 ```azurecli
 az vm show --resource-group MyResourceGroup --name MyTestVM
 ```
 
-Chcete-li přidat novou značku virtuálních počítačů přes rozhraní příkazového řádku Azure, můžete použít `azure vm update` příkaz spolu s parametr tag **– nastavte**:
+Pokud chcete přidat novou značku virtuálního počítače přes rozhraní příkazového řádku Azure, můžete `azure vm update` použít příkaz spolu s parametrem značky **--set**:
 
 ```azurecli
 az vm update \
@@ -46,19 +46,19 @@ az vm update \
     --set tags.myNewTagName1=myNewTagValue1 tags.myNewTagName2=myNewTagValue2
 ```
 
-Chcete-li odebrat značky, můžete použít **– odebrat** parametr v `azure vm update` příkazu.
+Chcete-li odebrat značky, můžete použít parametr **--Remove** v `azure vm update` příkazu.
 
 ```azurecli
 az vm update --resource-group MyResourceGroup --name MyTestVM --remove tags.myNewTagName1
 ```
 
-Teď, když jsme použili značek k prostředkům, naše rozhraní příkazového řádku Azure a na portálu, Pojďme se podívat na podrobnosti o použití chcete zobrazit značky na fakturačním portálu.
+Teď, když jsme použili značky pro naše prostředky rozhraní příkazového řádku Azure CLI a portál, se podíváme na podrobnosti o využití a zobrazíme značky na fakturačním portálu.
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o označování prostředků Azure najdete v tématu [přehled Azure Resource Manageru][Azure Resource Manager Overview] and [Using Tags to organize your Azure Resources][Using Tags to organize your Azure Resources].
-* Jak značky vám pomůže se správou vašeho využití prostředků Azure najdete v tématu [vysvětlení vašeho vyúčtování Azure][Understanding your Azure Bill] and [Gain insights into your Microsoft Azure resource consumption][Gain insights into your Microsoft Azure resource consumption].
+* Další informace o označování vašich prostředků Azure najdete v tématu [přehled Azure Resource Manager přehledu][Azure Resource Manager Overview] a [použití značek k uspořádání prostředků Azure][Using Tags to organize your Azure Resources].
+* Pokud chcete zjistit, jak vám značky pomůžou spravovat vaše používání prostředků Azure, přečtěte si článek [Princip fakturace Azure][Understanding your Azure Bill] a [Získejte přehled o využití prostředků Microsoft Azure][Gain insights into your Microsoft Azure resource consumption].
 
 [Azure CLI environment]: ../../azure-resource-manager/xplat-cli-azure-resource-manager.md
 [Azure Resource Manager Overview]: ../../azure-resource-manager/resource-group-overview.md

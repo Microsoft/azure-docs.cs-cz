@@ -1,6 +1,6 @@
 ---
-title: Přidat firewall webových aplikací ve službě Azure Security Center | Dokumentace Microsoftu
-description: Tento dokument popisuje, jak implementovat doporučení Azure Security Center **přidat firewall webových aplikací** a **finalizace ochrany aplikací**.
+title: Přidání brány firewall webových aplikací v Azure Security Center | Microsoft Docs
+description: V tomto dokumentu se dozvíte, jak implementovat Azure Security Center doporučení **přidejte bránu firewall webových aplikací** a dokončete **ochranu aplikací**.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -15,72 +15,72 @@ ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
 ms.openlocfilehash: 63852ccab842f11f30bcbe695206fedf72931911
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60706172"
 ---
-# <a name="add-a-web-application-firewall-in-azure-security-center"></a>Přidat firewall webových aplikací ve službě Azure Security Center
-Azure Security Center může doporučit přidat firewall webových aplikací (WAF) od partnera Microsoftu pro zabezpečení webové aplikace. Tento dokument vás příklad toho, jak toto doporučení.
+# <a name="add-a-web-application-firewall-in-azure-security-center"></a>Přidání brány firewall webových aplikací v Azure Security Center
+Azure Security Center může doporučit, abyste přidali Firewall webových aplikací (WAF) od partnera Microsoftu k zabezpečení webových aplikací. Tento dokument vás provede příkladem použití tohoto doporučení.
 
-Doporučení WAF se zobrazí pro jakékoli veřejnou IP adresu (IP adresa na úrovni Instance nebo IP adresu s vyrovnáváním zatížení), který má skupinu zabezpečení sítě spojenou s otevřenými vstupními webovými porty (80,443).
+WAF doporučení se zobrazuje pro všechny veřejné IP adresy (buď IP adresa na úrovni instance nebo IP s vyrovnáváním zatížení), které mají přidruženou skupinu zabezpečení sítě s otevřenými vstupními webovými porty (80 443).
 
-Security Center doporučuje zřízení WAF, které pomáhají bránit útokům cílí na vaše webové aplikace na virtuálních počítačích a na externího prostředí App Service (ASE) nasazené v rámci [izolované](https://azure.microsoft.com/pricing/details/app-service/windows/) plán služby. Plán Isolated hostuje aplikace v privátním, vyhrazeném prostředí Azure a je ideální pro aplikace, které vyžadují zabezpečená připojení k místní síti nebo dodatečný výkon a škálování. Kromě vaší aplikace v izolovaném prostředí vaše aplikace musí mít externí IP adresu nástroje pro vyrovnávání zatížení. Další informace o službě ASE, najdete v článku [dokumentace pro App Service Environment](../app-service/environment/intro.md).
+Security Center doporučuje zřídit WAF, které vám pomůžou chránit před útoky, které cílí na vaše webové aplikace na virtuálních počítačích, a v externích App Servicech prostředích (přihlašovacích mechanismů) nasazených v rámci plánu [izolované](https://azure.microsoft.com/pricing/details/app-service/windows/) služby. Plán Isolated hostuje aplikace v privátním, vyhrazeném prostředí Azure a je ideální pro aplikace, které vyžadují zabezpečená připojení k místní síti nebo dodatečný výkon a škálování. Kromě vaší aplikace, která se nachází v izolovaném prostředí, musí mít aplikace vyrovnávání zatížení externí IP adresy. Další informace o pomocném mechanismu řízení najdete v [dokumentaci k App Service Environment](../app-service/environment/intro.md).
 
 > [!NOTE]
-> Tento dokument vám tuto službu představí formou ukázkového nasazení.  Tento dokument není podrobný průvodce.
+> Tento dokument vám tuto službu představí formou ukázkového nasazení.  Tento dokument není pokrokový průvodce.
 >
 >
 
 ## <a name="implement-the-recommendation"></a>Implementace doporučení
-1. V části **doporučení**vyberte **zabezpečit webovou aplikaci pomocí firewallu webových aplikací**.
-   ![Zabezpečené webové aplikace][1]
-2. V části **zabezpečení webových aplikací pomocí firewallu webových aplikací**, vyberte webovou aplikaci. **Přidat Firewall webových aplikací** otevře.
+1. V části **doporučení**vyberte **zabezpečená webová aplikace pomocí brány firewall webových aplikací**.
+   ![Zabezpečená webová aplikace][1]
+2. V části **zabezpečení webových aplikací pomocí brány firewall webových aplikací**vyberte webovou aplikaci. Otevře se okno **Přidat Firewall webových aplikací** .
    ![Přidání brány firewall webových aplikací][2]
-3. Můžete použít stávajícímu firewallu webových aplikací, pokud je k dispozici nebo vytvořit nové. V tomto příkladu k dispozici žádné stávajících řešení Waf, můžeme vytvořit brány WAF.
-4. Vytvoření brány WAF, vyberte ze seznamu partnerů integrované řešení. V tomto příkladu vybereme **Barracuda Web Application Firewall**.
-5. **Barracuda Web Application Firewall** otevře že poskytuje informace o partnerských řešení. Vyberte **Vytvořit**.
+3. Můžete použít existující bránu firewall webových aplikací, pokud je k dispozici, nebo můžete vytvořit novou. V tomto příkladu nejsou k dispozici žádná stávající WAF, takže vytvoříme WAF.
+4. Pokud chcete vytvořit WAF, vyberte řešení ze seznamu integrovaných partnerů. V tomto příkladu vybereme **Barracuda Firewall webových aplikací**.
+5. Otevře se **Brána Firewall webových aplikací Barracuda** , která vám poskytne informace o partnerském řešení. Vyberte **Vytvořit**.
 
-   ![Informace o okno Brána firewall][3]
+   ![Okno s informacemi o bráně firewall][3]
 
-6. **Nový Firewall webových aplikací** se otevře, kde můžete provádět **konfigurace virtuálního počítače** kroky a poskytují **informace o WAF**. Vyberte **konfigurace virtuálního počítače**.
-7. V části **konfigurace virtuálního počítače**, zadejte informace požadované pro zprovoznění virtuálního počítače, na kterém běží WAF.
+6. Otevře se **Nová brána firewall webových aplikací** , kde můžete provádět kroky **Konfigurace virtuálních počítačů** a poskytovat **WAF informace**. Vyberte **Konfigurace virtuálního počítače**.
+7. V části **Konfigurace virtuálního počítače**zadejte informace požadované k aktivaci virtuálního počítače, na kterém běží WAF.
 
    ![Konfigurace virtuálního počítače][4]
    
-8. Vraťte se na **nový Firewall webových aplikací** a vyberte **informace o WAF**. V části **informace o WAF**, nakonfigurujete WAF, samotného. Krok 7 umožňuje konfigurovat virtuální počítač, na kterém běží WAF a kroku 8 umožňuje zřízení WAF, samotného.
+8. Vraťte se k **novému firewallu webových aplikací** a vyberte **WAF informace**. V části **WAF informace**nakonfigurujete vlastní WAF. Krok 7 vám umožní nakonfigurovat virtuální počítač, na kterém běží WAF, a krok 8 vám umožní zřídit WAF sám sebe.
 
-## <a name="finalize-application-protection"></a>Finalizace ochrany aplikací
-1. Vraťte se na **doporučení**. Po vytvoření WAF, nazývá se vygeneroval nový záznam **finalizace ochrany aplikací**. Tato položka vám umožňuje vědět, které potřebujete k dokončení procesu ve skutečnosti Vyřešeno WAF v rámci virtuální sítě Azure tak, aby mohl chránit aplikace.
+## <a name="finalize-application-protection"></a>Ukončení ochrany aplikací
+1. Vraťte se k **doporučení**. Po vytvoření WAF se vygenerovala nová položka, která se nazývá **finalizace aplikace Protection**. Tato položka vám poskytne informace o tom, že je potřeba dokončit proces vlastního zapojení WAF v rámci Azure Virtual Network tak, aby mohla aplikace chránit.
 
-   ![Finalizace ochrany aplikací][5]
+   ![Ukončení ochrany aplikací][5]
 
-2. Vyberte **finalizace ochrany aplikací**. Otevře se nové okno. Uvidíte, že je webová aplikace, musí mít jeho provoz přesměruje.
-3. Vyberte webová aplikace. Otevře se okno, který obsahuje kroky k dokončení nastavení firewallu webových aplikací. Proveďte kroky a pak vyberte **omezení provozu**. Security Center pak provede její nahoru za vás.
+2. Vyberte **finalizace ochrany aplikací**. Otevře se nové okno. Uvidíte, že je k dispozici webová aplikace, která potřebuje přesměrovat provoz.
+3. Vyberte webovou aplikaci. Otevře se okno, které vám nabídne kroky pro dokončení instalace firewallu webových aplikací. Proveďte kroky a pak vyberte možnost **omezit přenos**. Security Center pak bude pro vás propojování.
 
-   ![Omezení provozu][6]
+   ![Omezit přenosy][6]
 
 > [!NOTE]
-> Přidáním těchto aplikací na vašich stávajících nasazení WAF může chránit několik webových aplikací ve službě Security Center.
+> Můžete chránit více webových aplikací v Security Center přidáním těchto aplikací do stávajících nasazení WAF.
 >
 >
 
-Nyní jsou plně integrované protokoly z této WAF. Security Center můžete spustit automaticky shromažďuje a analyzuje protokoly tak, aby jeho plochu na důležité výstrahy zabezpečení pro vás.
+Protokoly z tohoto WAF jsou teď plně integrované. Security Center může začít automaticky shromažďovat a analyzovat protokoly, aby mohli na vás naplochit důležité výstrahy zabezpečení.
 
-## <a name="next-steps"></a>Další postup
-Tento dokument vám ukázali, jak implementovat doporučení služby Security Center "Přidat webovou aplikaci." Další informace o konfiguraci brány firewall webových aplikací, naleznete v následujících tématech:
+## <a name="next-steps"></a>Další kroky
+V tomto dokumentu jste si ukázali, jak implementovat Security Center doporučení "Přidání webové aplikace". Další informace o konfiguraci firewallu webových aplikací najdete v následujících tématech:
 
 * [Konfigurace firewallu webových aplikací pro službu App Service Environment](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
+* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
+* [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – Přečtěte si, jak doporučení vám pomůžou chránit vaše prostředky Azure.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – přečtěte si blog příspěvky o zabezpečení Azure a dodržování předpisů.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si blogové příspěvky o zabezpečení Azure a dodržování předpisů.
 
 <!--Image references-->
 [1]: ./media/security-center-add-web-application-firewall/secure-web-application.png

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: dbe3526444bc35815dd4323a3a5290696619e3f9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 986bed758229d639bb40d0803f7be4a89a0f6e49
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728351"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934811"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Rámec zabezpečení: Správa konfigurace | Hrozeb 
 | Produkt nebo službu | Článek |
@@ -563,7 +563,7 @@ Chcete-li zakázat CORS pro kontroler nebo akci, použijte atribut [DisableCors]
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Volba brány – Azure IoT Hub |
-| **Odkazy**              | [Přehled správy zařízení IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [jak aktualizovat firmware zařízení](https://docs.microsoft.com/azure/iot-hub/tutorial-firmware-update) |
+| **Odkazy**              | [Přehled správy zařízení IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [jak aktualizovat firmware zařízení](../../iot-hub/tutorial-firmware-update.md) |
 | **Kroky** | LWM2M je protokol od Open Mobile Alliance pro správu zařízení IoT. Správa zařízení ve službě Azure IoT umožňuje pracovat s fyzickými zařízeními pomocí úloh zařízení. Zajistěte, aby cloudová brána implementovala proces pro rutinu, která pravidelně udržuje zařízení a další konfigurační data v aktuálním stavu pomocí správy zařízení Azure IoT Hub. |
 
 ## <a id="controls-policies"></a>Ujistěte se, že zařízení mají ovládací prvky zabezpečení koncového bodu nakonfigurované podle zásad pro organizace.

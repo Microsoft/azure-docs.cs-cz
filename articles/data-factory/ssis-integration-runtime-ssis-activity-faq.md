@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s spouštění balíčku v prostředí SSIS integration runtime | Dokumentace Microsoftu
-description: Tento článek obsahuje pokyny k odstraňování problémů pro spouštění balíčku služby SSIS v prostředí SSIS integration runtime
+title: Řešení potíží se spuštěním balíčku v modulu runtime integrace SSIS | Microsoft Docs
+description: Tento článek popisuje pokyny k odstraňování problémů s SSIS balíčkem v prostředí SSIS Integration runtime.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,143 +12,150 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 05723a90725992e6b955524a2d35c82d3378ee3d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a7ad0f3be754029c654b04d19750aab7bbcd210d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621841"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933638"
 ---
-# <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Řešení potíží s spouštění balíčku v prostředí SSIS integration runtime
+# <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Řešení potíží se spuštěním balíčku v prostředí SSIS Integration runtime
 
-Tento článek obsahuje většinu běžných chyb, které je možné, když provedete balíčky SQL Server Integration Services (SSIS) v prostředí SSIS integration runtime. Popisuje možných příčinách a akce k vyřešení chyby.
+Tento článek obsahuje nejběžnější chyby, se kterými se můžete setkat při provádění balíčků služba SSIS (SQL Server Integration Services) (SSIS) v prostředí SSIS Integration runtime. Popisuje možné příčiny a akce pro řešení chyb.
 
 ## <a name="where-to-find-logs-for-troubleshooting"></a>Kde najít protokoly pro řešení potíží
 
-Zkontrolujte výstup aktivity spouštění balíčku služby SSIS pomocí portálu Azure Data Factory. Výstup obsahuje výsledek spuštění, chybové zprávy a ID operace. Podrobnosti najdete v tématu [monitorování kanálu](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline).
+Pomocí portálu Azure Data Factory můžete kontrolovat výstup aktivity provádění balíčku SSIS. Výstup obsahuje výsledky spuštění, chybové zprávy a ID operace. Podrobnosti najdete v tématu [monitorování kanálu](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline).
 
-V protokolech podrobností pro provádění pomocí katalogu služby SSIS (SSISDB). Podrobnosti najdete v tématu [balíčky systémem monitorování a další operace](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
+Pomocí katalogu SSIS (SSISDB) si prohlédněte protokoly podrobností pro spuštění. Podrobnosti najdete v tématu [monitorování spuštěných balíčků a dalších operací](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
 
 ## <a name="common-errors-causes-and-solutions"></a>Běžné chyby, příčiny a řešení
 
-### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Chybová zpráva: "Vypršel časový limit připojení" nebo "služba zjistil chybu při zpracování vaší žádosti. Zkuste to prosím znovu."
+### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Chybová zpráva: Časový limit připojení vypršel nebo služba zjistila chybu při zpracování vaší žádosti. Zkuste to prosím znovu. "
 
 Tady jsou možné příčiny a doporučené akce:
-* Zdroj nebo cíl je přetížen. Zkontrolujte zatížení na zdroj nebo cíl a podívejte se, zda má dostatečnou kapacitu. Pokud jste použili Azure SQL Database, zvažte například vertikální navýšení kapacity, pokud je databáze pravděpodobně vypršení časového limitu.
-* Síť mezi prostředí SSIS integration runtime a zdroj nebo cíl není stabilní, zejména v případě, že je připojení mezi různými oblastmi nebo mezi místními a Azure. Použití modelu opakování v balíčku služby SSIS pomocí následujících kroků:
-  * Zajistěte, aby že balíčků služby SSIS, můžete znovu spustit při selhání bez vedlejších účinků (třeba ztrátu dat nebo duplicitních dat.).
-  * Konfigurace **opakujte** a **interval opakování** z **spuštění balíčku služby SSIS** aktivity **Obecné** kartu. ![Nastavte vlastnosti na kartě Obecné](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
-  * Pro technologii ADO.NET a technologie OLE DB zdroji nebo cíli komponentu, nastavte **ConnectRetryCount** a **ConnectRetryInterval** ve Správci připojení v balíčku služby SSIS nebo aktivity SSIS.
+* Zdroj dat nebo cíl je přetížený. Zkontrolujte zatížení zdroje dat nebo cíle a zjistěte, zda má dostatečnou kapacitu. Pokud jste například použili Azure SQL Database, zvažte horizontální navýšení kapacity databáze, pokud je pravděpodobně vyprší časový limit databáze.
+* Síť mezi integrací prostředí SSIS Integration runtime a zdrojem nebo cílem dat je nestabilní, zejména v případě, že je spojení mezi oblastmi nebo mezi místními a Azure. Použijte vzor opakování v balíčku SSIS pomocí následujících kroků:
+  * Ujistěte se, že vaše balíčky SSIS můžou znovu spustit při selhání bez vedlejších účinků (například ztráty dat nebo duplikace dat).
+  * Na kartě **Obecné** nakonfigurujte **akci opakovat** a **interval opakování** akce **SSIS balíčku pro spuštění** . ![Nastavení vlastností na kartě Obecné](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+  * U ADO.NET OLE DB a zdrojové nebo cílové součásti nastavte **atributu ConnectRetryCount** a **atributu ConnectRetryInterval** ve Správci připojení v části balíček SSIS nebo aktivita SSIS.
 
-### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>Chybová zpráva: "ADO NET zdroj se nepodařilo získat připojení '...'" s "při navazování připojení k serveru SQL Server došlo k chybě související se sítí nebo s instancí. Server nebyl nalezen nebo nebyl přístupný. "
+### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>Chybová zpráva: Rozhraní ADO NET Source nedokázalo získat připojení... Při navazování připojení k SQL Server došlo k chybě související se sítí nebo instancí. Server nebyl nalezen nebo nebyl přístupný. "
 
-Tento problém obvykle znamená, že zdroj dat nebo cíl je nedostupný z prostředí SSIS integration runtime. Důvody se může lišit. Vyzkoušejte tyto akce:
-* Ujistěte se, že jste předávání dat zdrojový nebo cílový název nebo IP správně.
-* Ujistěte se, že že brána firewall je nastavená správně.
-* Ujistěte se, že vaše virtuální síť je správně nakonfigurována, pokud je zdroj dat nebo cílové místní:
-  * Můžete ověřit, zda tento problém je z konfigurace virtuální sítě tím, že zajistíte Virtuálním počítači Azure ve stejné virtuální síti. Zkontrolujte, zda zdroj nebo cíl je přístupný z virtuálních počítačů Azure.
-  * Můžete najít další podrobnosti o použití virtuální sítě pomocí prostředí SSIS integration runtime v [připojit k prostředí Azure-SSIS integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
+Tento problém obvykle znamená, že prostředí SSIS Integration Runtime nemá přístup ke zdroji nebo cíli dat. Důvodů může být několik. Vyzkoušejte tyto akce:
+* Ujistěte se, že jste správně předali zdroj dat nebo cílový název nebo IP adresu.
+* Ujistěte se, že je brána firewall správně nastavená.
+* Ujistěte se, že je vaše virtuální síť správně nakonfigurovaná, pokud je zdroj dat nebo cíl místní:
+  * Vytvořením virtuálního počítače Azure ve stejné virtuální síti můžete ověřit, jestli se jedná o problém z konfigurace virtuální sítě. Pak zkontrolujte, jestli je k dispozici zdroj dat nebo cíl z virtuálního počítače Azure.
+  * Další podrobnosti o používání virtuální sítě s SSIS Integration runtime najdete v prostředí [Azure-SSIS Integration runtime do virtuální sítě](join-azure-ssis-integration-runtime-virtual-network.md).
 
-### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-could-not-create-a-managed-connection-manager"></a>Chybová zpráva: "ADO NET zdroj se nepodařilo získat připojení '...'" s "Nelze vytvořit spravovaného připojení správce."
+### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-could-not-create-a-managed-connection-manager"></a>Chybová zpráva: Rozhraní ADO NET Source nedokázalo získat připojení... pomocí příkazu se nepodařilo vytvořit spravovaného Správce připojení.
 
-Možnou příčinou je, že poskytovatele ADO.NET použité v balíku není nainstalován v prostředí SSIS integration runtime. Zprostředkovatel můžete nainstalovat pomocí vlastního nastavení. Můžete najít další podrobnosti o vlastním nastavením v [přizpůsobit nastavení pro prostředí Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
+Potenciální příčinou je to, že zprostředkovatel ADO.NET použitý v balíčku není nainstalovaný v prostředí SSIS Integration runtime. Zprostředkovatele můžete nainstalovat pomocí vlastní instalace. Další podrobnosti o vlastní instalaci najdete v [části Přizpůsobení nastavení pro prostředí Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-### <a name="error-message-the-connection--is-not-found"></a>Chybová zpráva: "Připojení"..." nebyl nalezen"
+### <a name="error-message-the-connection--is-not-found"></a>Chybová zpráva: "Připojení"... " nebyl nalezen "
 
-Tuto chybu může způsobovat známý problém ve starších verzích systému SQL Server Management Studio (SSMS). Pokud balíček obsahuje vlastní součásti (například součásti služby SSIS Azure Feature Pack nebo partnerem), která není nainstalovaná na počítači použití SSMS provedete nasazení, aplikace SSMS se odebrat komponentu a způsobit chybu. Upgrade [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) na nejnovější verzi, která má tento problém opravili.
+Tuto chybu může způsobit známý problém ve starších verzích aplikace SQL Server Management Studio (SSMS). Pokud balíček obsahuje vlastní komponentu (například Azure Feature Pack pro SSIS nebo komponenty partnerů), která není nainstalovaná na počítači, kde se provádí nasazení pomocí SSMS, SSMS komponentu odebere a způsobí chybu. Upgradujte [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) na nejnovější verzi s opraveným problémem.
 
-### <a name="error-messagessis-executor-exit-code--1073741819"></a>Chybová zpráva: "prováděcí modul služby SSIS ukončovací kód: -1073741819."
+### <a name="error-messagessis-executor-exit-code--1073741819"></a>Chybová zpráva: "ukončovací kód prováděcího modulu SSIS:-1073741819."
 
-* Možná příčina a doporučená akce:
-  * Tato chyba mohla vzniknout z důvodu omezení pro Excel zdrojových a cílových při více Excelové zdroje nebo cíle jsou spuštěny paralelně ve více vláken. Můžete vyřešit toto omezení podle změnit komponentami vaší aplikace Excel na spouštění v pořadí, nebo je rozdělit do různých balíčcích a aktivovat prostřednictvím "Úloha spuštění balíčku" ExecuteOutOfProcess vlastnost nastavena jako True.
+* Potenciální příčina & doporučené akce:
+  * Tato chyba může být způsobena omezením pro zdroj a cíl aplikace Excel, pokud je více zdrojů nebo cíle aplikace Excel prováděno paralelně ve více vláknech. Toto omezení můžete vyřešit tak, že změníte komponenty aplikace Excel tak, aby se spouštěly v pořadí, nebo je rozbalíte do různých balíčků a aktivujete je pomocí možnosti Spustit úlohu balíčku s vlastností ExecuteOutOfProcess nastavenou na hodnotu true.
 
-### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Chybová zpráva: "Není dostatek místa na disku"
+### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Chybová zpráva: "Na disku není dostatek místa"
 
-Tato chyba znamená, že v uzlu integration runtime služby SSIS je použít na místní disk. Zkontrolujte, zda balíček nebo vlastní nastavení spotřebovává velké množství místa na disku:
-* Pokud disk je využívána vašeho balíčku, ho uvolní po dokončení spouštění balíčku.
-* Pokud disk spotřebují vaše vlastní nastavení, je budete potřebovat zastavit prostředí SSIS integration runtime, váš skript upravit a znovu spusťte modul runtime integrace. Kontejner objektů blob v Azure celou, který jste zadali pro vlastní nastavení se zkopírují do uzlu integration runtime služby SSIS, tak zkontrolujte, jestli všechny nepotřebný obsah v tomto kontejneru.
+Tato chyba znamená, že se místní disk používá v uzlu SSIS Integration runtime. Ověřte, jestli váš balíček nebo vlastní instalační program spotřebovává spoustu místa na disku:
+* Pokud je disk spotřebován balíčkem, bude po dokončení spuštění balíčku uvolněn.
+* Pokud je disk spotřebován vlastním nastavením, budete muset zastavit SSIS Integration runtime, upravit skript a znovu spustit prostředí Integration runtime. Celý kontejner Azure Blob, který jste zadali pro vlastní instalaci, se zkopíruje do uzlu SSIS Integration runtime, takže ověřte, jestli je v tomto kontejneru nějaký nepotřebný obsah.
 
-### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>Chybová zpráva: "Nepovedlo se načíst prostředek z hlavní větve. Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException: Kód: 300004. Popis: načíst soubor "***" se nezdařilo. "
+### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>Chybová zpráva: "Nepovedlo se načíst prostředek z hlavní větve. Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException: Kód: 300004. Popis: načtení souboru "* * *" se nezdařilo. "
 
-* Možná příčina a doporučená akce:
-  * Pokud aktivita služby SSIS je spuštění balíčku ze systému souborů (soubor balíčku nebo souboru projektu), se tato chyba nastane, pokud projekt, balíček nebo konfigurační soubor není přístupný s pověřením přístup k balíčku, který jste zadali v rámci aktivity SSIS
-    * Pokud používáte Azure File:
-      * Cesta k souboru by měla začínat řetězcem \\ \\ \<název účtu úložiště\>. file.core.windows.net\\\<cesta sdílení souborů\>
-      * Doména by měl být "Azure"
-      * Uživatelské jméno by měly být \<název účtu úložiště\>
-      * Heslo by měl být \<přístupový klíč k úložišti\>
-    * Pokud se pomocí místního souboru, Zkontrolujte prosím, pokud virtuální síť, přihlašovací údaje pro přístup k balíčku a oprávnění jsou správně nakonfigurované tak, aby prostředí Azure-SSIS integration runtime můžete přístup k místní sdílené složce
+* Potenciální příčina & doporučené akce:
+  * Pokud aktivita SSIS spouští balíček ze systému souborů (soubor balíčku nebo soubor projektu), k této chybě dojde, pokud projekt, balíček nebo konfigurační soubor není přístupný s přihlašovacími údaji pro přístup k balíčku, které jste zadali v aktivitě SSIS
+    * Pokud používáte soubor Azure:
+      * Cesta k souboru by \\měla začínat \\ \<názvem\>účtu úložiště\\. cesta ke sdílené složce File.Core.Windows.NET\<\>
+      * Doména by měla být "Azure".
+      * Uživatelské jméno by mělo \<být název účtu úložiště.\>
+      * Heslo by mělo být \<přístupového klíče k úložišti.\>
+    * Pokud používáte místní soubor, zkontrolujte prosím, jestli je virtuální síť, přihlašovací údaje pro přístup k balíčku a oprávnění správně nakonfigurované, aby váš prostředí Azure-SSIS Integration runtime mělo přístup k místní sdílené složce.
 
-### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Chybová zpráva: "Název souboru '...' zadaný v připojení nebyla platná "
+### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Chybová zpráva: Název souboru... zadaný v připojení není platný.
 
-* Možná příčina a doporučená akce:
-  * Je zadaný neplatný název souboru
-  * Ujistěte se, že používáte plně kvalifikovaný název domény (plně kvalifikovaný název typu domény) místo krátkého formátu času v Správce připojení
+* Potenciální příčina & doporučené akce:
+  * Je zadaný neplatný název souboru.
+  * Ujistěte se, že používáte plně kvalifikovaný název domény (plně kvalifikovaný název domény) místo krátkého času ve Správci připojení.
 
-### <a name="error-message-cannot-open-file-"></a>Chybová zpráva: "Nelze otevřít soubor"..."
+### <a name="error-message-cannot-open-file-"></a>Chybová zpráva: Nejde otevřít soubor...
 
-Této chybě dochází při spuštění balíčku nemůže najít soubor na místní disk v prostředí SSIS integration runtime. Vyzkoušejte tyto akce:
-* Nepoužívejte absolutní cestu v balíčku, která je spouštěna v prostředí SSIS integration runtime. Použít aktuální pracovní adresář pro spuštění (.) nebo dočasné složky (% TEMP %) Místo toho.
-* Pokud potřebujete zachovat některé soubory na uzly integration runtime služby SSIS, připravte soubory podle postupu v [přizpůsobit nastavení](how-to-configure-azure-ssis-ir-custom-setup.md). Všechny soubory v pracovním adresáři se vyčistí po dokončení provádění.
-* Místo uložení souboru uzel prostředí SSIS integration runtime použijte soubory Azure. Podrobnosti najdete v tématu [sdílených složek Azure pomocí](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
+K této chybě dojde, když spuštění balíčku nemůže najít soubor na místním disku v prostředí SSIS Integration runtime. Vyzkoušejte tyto akce:
+* Nepoužívejte absolutní cestu v balíčku, který je spuštěn v prostředí SSIS Integration runtime. Použijte aktuální pracovní adresář spuštění (.) nebo složku Temp (% TEMP%). takové.
+* Pokud potřebujete zachovat některé soubory v uzlech SSIS Integration runtime, připravte soubory, jak je popsáno v tématu [přizpůsobení instalace](how-to-configure-azure-ssis-ir-custom-setup.md). Po dokončení spuštění budou všechny soubory v pracovním adresáři vyčištěny.
+* Místo uložení souboru v uzlu Integration runtime SSIS použijte soubory Azure. Podrobnosti najdete v tématu [použití sdílených složek Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
 
-### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Chybová zpráva: "" SSISDB"databáze dosáhla své kvóty velikosti"
+### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Chybová zpráva: "Databáze" SSISDB "dosáhla kvóty velikosti"
 
-Možnou příčinou je, že databáze SSISDB vytvořené v Azure SQL database nebo spravované instance při vytváření prostředí SSIS integration runtime dosáhla své kvóty. Vyzkoušejte tyto akce:
-* Zvažte zvýšení DTU databáze. Můžete najít podrobnosti v [limity prostředků SQL Database pro server Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
-* Zkontrolujte, zda váš balíček vygeneruje mnoho protokolů. Pokud ano, můžete nakonfigurovat elastické úlohy k vyčištění tyto protokoly. Podrobnosti najdete v tématu [vyčištění databáze SSISDB protokoly s úlohy elastické databáze Azure](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md).
+Možnou příčinou je, že databáze SSISDB vytvořená v databázi Azure SQL nebo ve spravované instanci, ve které vytváříte prostředí SSIS Integration Runtime, dosáhla své kvóty. Vyzkoušejte tyto akce:
+* Zvažte navýšení počtu DTU vaší databáze. Podrobnosti najdete v tématu [Omezení prostředků SQL Database pro server služby Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
+* Zkontrolujte, jestli váš balíček negeneruje velké množství protokolů. Pokud ano, můžete nakonfigurovat elastickou úlohu, která tyto protokoly vyčistí. Podrobnosti najdete v tématu [Vyčištění protokolů SSISDB s využitím úloh elastické databáze Azure](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md).
 
-### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>Chybová zpráva: "Požadavek limit pro databázi je... a bylo ho dosaženo."
+### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>Chybová zpráva: "Omezení požadavků pro databázi je... a byl dosažen. "
 
-Pokud mnoho balíčků běží paralelně v prostředí SSIS integration runtime, této chybě může dojít, protože databáze SSISDB dosáhl svého limitu požadavku. Zvažte zvýšení SSISDB DTC, chcete-li vyřešit tento problém. Můžete najít podrobnosti v [limity prostředků SQL Database pro server Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
+Pokud mnoho balíčků běží paralelně v prostředí SSIS Integration runtime, může dojít k této chybě, protože SSISDB dosáhla svého limitu žádosti. Pokud chcete tento problém vyřešit, zvažte zvýšení SSISDB DTC. Podrobnosti najdete v tématu [Omezení prostředků SQL Database pro server služby Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
 
-### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>Chybová zpráva: "SSIS operace se nezdařila se stavem neočekávaná operace:..."
+### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>Chybová zpráva: Operace SSIS se nezdařila, došlo k neočekávanému stavu operace:...
 
-Chyba je nejčastěji způsobeno o přechodný problém, to zkuste znovu spustit spouštění balíčku. Použití modelu opakování v balíčku služby SSIS pomocí následujících kroků:
+Tato chyba je většinou způsobena přechodným problémem, proto zkuste znovu spustit spuštění balíčku. Použijte vzor opakování v balíčku SSIS pomocí následujících kroků:
 
-* Zajistěte, aby že balíčků služby SSIS, můžete znovu spustit při selhání bez vedlejších účinků (třeba ztrátu dat nebo duplicitních dat.).
-* Konfigurace **opakujte** a **interval opakování** z **spuštění balíčku služby SSIS** aktivity **Obecné** kartu. ![Nastavte vlastnosti na kartě Obecné](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
-* Pro technologii ADO.NET a technologie OLE DB zdroji nebo cíli komponentu, nastavte **ConnectRetryCount** a **ConnectRetryInterval** ve Správci připojení v balíčku služby SSIS nebo aktivity SSIS.
+* Ujistěte se, že vaše balíčky SSIS můžou znovu spustit při selhání bez vedlejších účinků (například ztráty dat nebo duplikace dat).
+* Na kartě **Obecné** nakonfigurujte **akci opakovat** a **interval opakování** akce **SSIS balíčku pro spuštění** . ![Nastavení vlastností na kartě Obecné](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+* U ADO.NET OLE DB a zdrojové nebo cílové součásti nastavte **atributu ConnectRetryCount** a **atributu ConnectRetryInterval** ve Správci připojení v části balíček SSIS nebo aktivita SSIS.
 
-### <a name="error-message-there-is-no-active-worker"></a>Chybová zpráva: "Není žádná aktivní pracovní."
+### <a name="error-message-there-is-no-active-worker"></a>Chybová zpráva: "Není k dispozici žádný aktivní pracovní proces."
 
-Tato chyba obvykle znamená, že prostředí SSIS integration runtime se stavem není v pořádku. Zkontrolujte na webu Azure portal pro stav a podrobné chyby. Další informace najdete v tématu [prostředí Azure-SSIS integration runtime](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime).
+Tato chyba obvykle znamená, že modul runtime integrace SSIS nemá stav v pořádku. Stav a podrobné chyby najdete v Azure Portal. Další informace najdete v tématu [prostředí Azure-SSIS Integration runtime](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime).
 
-### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>Chybová zpráva: "Vašeho prostředí integration runtime nelze upgradovat a nakonec kód přestane fungovat, protože nemůže přistupovat k kontejneru objektů Blob v Azure, které jste zadali pro vlastní nastavení."
+### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>Chybová zpráva: "Modul runtime integrace se nedá upgradovat a nakonec přestane fungovat, protože nemůžeme získat přístup k kontejneru objektů blob Azure, který jste zadali pro vlastní instalaci."
 
-Tato chyba nastane, pokud prostředí SSIS integration runtime nelze získat přístup k úložišti nakonfigurované pro vlastní nastavení. Zkontrolujte, zda sdílený přístupový podpis (SAS) identifikátor URI, který jste zadali platné a že nevypršela platnost.
+K této chybě dojde, když prostředí Integration runtime SSIS nemá přístup k úložišti nakonfigurovanému pro vlastní instalaci. Ověřte, jestli zadaný identifikátor URI sdíleného přístupového podpisu (SAS) je platný a že nevypršela jeho platnost.
 
-### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Chybová zpráva: "Zprostředkovatel Microsoft OLE DB pro Analysis Services. ' Hresult: 0x80004005 Popis: " Chyba COM: Chyba COM: mscorlib; Došlo k výjimce způsobené cílem vyvolání"
+### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Chybová zpráva: "Poskytovatel Microsoft OLE DB pro Analysis Services. HRESULT Popis 0x80004005: ' Chyba COM: Chyba COM: mscorlib; Cíl vyvolání způsobil výjimku.
 
-Jednou z možných příčin je, že uživatelské jméno nebo heslo s povolené ověřování Azure Multi-Factor Authentication je nakonfigurován pro ověřování služby Azure Analysis Services. Toto ověřování není podporována v prostředí SSIS integration runtime. Zkuste použít instanční objekt služby pro ověřování služby Azure Analysis Services:
-1. Příprava instanční objekt služby, jak je popsáno v [automatizace pomocí instančních objektů](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal).
-2. Nakonfigurujte ve Správci připojení **použít konkrétní uživatelské jméno a heslo**: nastavte **AppID** jako uživatelské jméno a **clientSecret** jako heslo.
+Jednou z možných příčin je, že uživatelské jméno nebo heslo s povoleným ověřováním Azure Multi-Factor Authentication je nakonfigurované pro Azure Analysis Services ověřování. Toto ověřování není podporováno v prostředí SSIS Integration runtime. Zkuste použít instanční objekt pro Azure Analysis Services ověřování:
+1. Připravte instanční objekt, jak je popsáno v tématu [automatizace s instančními objekty](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal).
+2. V programu Správce připojení nakonfigurujte **použití konkrétního uživatelského jména a hesla**: jako uživatelské jméno nastavte **AppID** a jako heslo **clientSecret** .
 
-### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Chybová zpráva: "ADONET zdroj se nepodařilo získat připojení {GUID} chybová zpráva: Přihlášení uživatele "NT AUTHORITY\ANONYMOUS přihlásit" se nezdařilo "při použití spravované identity
+### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Chybová zpráva: "ADONET zdroji se nepovedlo získat připojení {GUID} pomocí této chybové zprávy: Přihlášení uživatele NT AUTHORITY\ANONYMOUS LOGON při použití spravované identity se nezdařilo.
 
-Ujistěte se, že není konfigurace metody ověření sady Správce připojení jako **ověřování hesla Active Directory** při parametr *ConnectUsingManagedIdentity* je **True** . Můžete je nakonfigurovat jako **ověřování SQL** místo toho, která se ignoruje, pokud *ConnectUsingManagedIdentity* nastavena.
+Pokud má parametr *ConnectUsingManagedIdentity* **hodnotu true**, ujistěte se, že jste nenakonfigurovali metodu ověřování Správce připojení jako **ověřování hesla služby Active Directory** . Místo toho ho můžete nakonfigurovat jako **ověřování SQL** , které se ignoruje, pokud je nastavená možnost *ConnectUsingManagedIdentity* .
 
-### <a name="package-execution-takes-too-long"></a>Spouštění balíčků trvá příliš dlouho
+### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Neočekávaně se spouští více spuštění balíčku.
+
+* Potenciální příčina & doporučené akce:
+  * Aktivita uložená procedura ADF se používá ke spuštění SSIS balíčku. Příkaz t-SQL může způsobit přechodný problém a aktivovat opětovné spuštění, které by způsobilo více spuštění balíčku.
+  * Místo toho použijte aktivitu ExecuteSSISPackage, která zajistí, že spuštění balíčku nebude znovu spuštěno, pokud uživatel nenastaví počet opakování v aktivitě. Podrobnosti najdete na adrese.[https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+
+### <a name="package-execution-takes-too-long"></a>Provádění balíčku trvá moc dlouho.
 
 Tady jsou možné příčiny a doporučené akce:
-* Příliš mnoho spuštění balíčku bylo naplánováno na prostředí SSIS integration runtime. Všechny tyto spuštění bude čekat ve frontě jejich zapnout.
-  * Určete maximální pomocí tohoto vzorce: 
-    
-    Maximální počet souběžných spuštění počet na prostředí IR = počet uzlů * maximální počet souběžných spuštění na uzel
-  * Zjistěte, jak nastavit počet uzlů a maximální paralelní provádění na jeden uzel, najdete v článku [vytvořit prostředí Azure-SSIS integration runtime ve službě Azure Data Factory](create-azure-ssis-integration-runtime.md).
-* Prostředí SSIS integration runtime se zastavil nebo má chybný stav. Zjistěte, jak zkontrolovat stav služby SSIS integration runtime a chyb, naleznete v tématu [prostředí Azure-SSIS integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
 
-Doporučujeme také, že nastavíte vypršení časového limitu pro **Obecné** kartu: ![Nastavte vlastnosti na kartě Obecné](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png).
+* V prostředí SSIS Integration runtime bylo naplánováno příliš mnoho spuštění balíčku. Všechna tato spuštění budou čekat ve frontě, aby ji vypnula.
+  * Určete maximum pomocí tohoto vzorce:
 
-### <a name="poor-performance-in-package-execution"></a>Nízký výkon při provádění balíčku
+    Maximální počet paralelních spuštění na hodnotu IR = počet uzlů * maximální paralelní spuštění na uzel
+  * Informace o tom, jak nastavit počet uzlů a maximální paralelní spouštění na uzel, najdete [v tématu Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory](create-azure-ssis-integration-runtime.md).
+* Prostředí SSIS Integration runtime je zastavené nebo má stav není v pořádku. Informace o tom, jak zjistit stav a chyby prostředí Integration runtime SSIS, najdete v tématu [prostředí Azure-SSIS Integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+
+Na kartě **Obecné** také doporučujeme nastavit časový limit: ![Nastavte vlastnosti na kartě](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)Obecné.
+
+### <a name="poor-performance-in-package-execution"></a>Nízký výkon při spuštění balíčku
 
 Vyzkoušejte tyto akce:
 
-* Ujistěte se, že prostředí SSIS integration runtime je ve stejné oblasti jako zdroj a cíl.
+* Ujistěte se, že SSIS Integration runtime je ve stejné oblasti jako zdroj dat a cíl.
 
-* Nastavení úrovně protokolování spuštění balíčku **výkonu** shromažďovat informace o době trvání pro jednotlivé komponenty za běhu. Podrobnosti najdete v tématu [Integration Services (SSIS) protokolování](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging).
+* Nastavte úroveň protokolování provedení balíčku na **výkon** , aby se shromáždily informace o době trvání každé součásti v provádění. Podrobnosti najdete v tématu [protokolování integračních služeb (SSIS)](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging).
 
-* Kontrola výkonu uzel reakcí na Incidenty v portálu Azure portal:
-  * Informace o tom, jak monitorovat prostředí SSIS integration runtime najdete v tématu [prostředí Azure-SSIS integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
-  * Historie využití procesoru/paměti pro prostředí SSIS integration runtime najdete zobrazením metriky služby data factory na webu Azure Portal.
-    ![Monitorování metrik prostředí SSIS integration runtime](media/ssis-integration-runtime-ssis-activity-faq/monitor-metrics-ssis-integration-runtime.png)
+* Ověřte výkon uzlu IR v Azure Portal:
+  * Informace o tom, jak monitorovat prostředí SSIS Integration runtime, najdete v tématu [prostředí Azure-SSIS Integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+  * Historii procesoru/paměti pro prostředí SSIS Integration runtime můžete najít zobrazením metriky datové továrny v Azure Portal.
+    ![Monitorování metrik prostředí SSIS Integration runtime](media/ssis-integration-runtime-ssis-activity-faq/monitor-metrics-ssis-integration-runtime.png)

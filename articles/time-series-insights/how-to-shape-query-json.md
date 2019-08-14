@@ -6,15 +6,15 @@ author: ashannon7
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 05/09/2019
+ms.date: 08/09/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 421e25570cd4c4495769530e4072cd8e0219f752
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 48e09a64812f7552bd79c529138db693df283790
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666262"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947151"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Formát JSON obrazce pro maximalizaci výkonu dotazů 
 
@@ -183,7 +183,7 @@ Poznámky k těmto dvěma tabulkám:
 
 - Sloupce **deviceId** a **Series. tagId** slouží jako záhlaví sloupců pro různá zařízení a značky v rámci loďstva. Použití každého vlastního atributu omezí dotaz na 594 (pro prostředí S1) nebo 794 (pro prostředí S2) celkem zařízení s ostatními šesti sloupci.
 - Z důvodu citovaného v prvním příkladu se zabránilo zbytečným vlastnostem.
-- Referenční data se používají ke snížení počtu bajtů přenesených přes síť, a to tak, že zavedeme do ID **zařízení, které**se používá pro jedinečnou dvojici **MessageID** a **deviceLocation**. Složená **série klíčů. tagId** se používá pro jedinečné páry **typu** a **jednotky**. Složený klíč umožňuje použít dvojici **deviceId** a **Series. tagId** k odkazování na čtyři hodnoty: **MessageID, deviceLocation, Type** a **Unit**. Tato data jsou spojená s daty telemetrie v čase vstupu. Pak je uložený v Time Series Insights pro dotazování.
+- Referenční data se používají ke snížení počtu bajtů přenesených přes síť, a totak, že zavedeme do ID zařízení, které se používá pro jedinečnou dvojici **MessageID** a **deviceLocation**. Složená **série klíčů. tagId** se používá pro jedinečné páry **typu** a **jednotky**. Složený klíč umožňuje použít dvojici **deviceId** a **Series. tagId** k odkazování na čtyři hodnoty: **MessageID, deviceLocation, Type** a **Unit**. Tato data jsou spojená s daty telemetrie v čase vstupu. Pak je uložený v Time Series Insights pro dotazování.
 - Používají se dvě vrstvy vnoření z důvodu citovaného v prvním příkladu.
 
 ### <a name="for-both-scenarios"></a>Pro oba scénáře

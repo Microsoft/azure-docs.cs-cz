@@ -1,6 +1,6 @@
 ---
-title: Povolení replikace pro disk přidat do virtuálního počítače Azure replikované pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak povolit replikaci pro disk přidat do virtuálního počítače Azure, který je povolený pro zotavení po havárii pomocí Azure Site Recovery
+title: Povolení replikace pro disk přidaný do virtuálního počítače Azure replikovaný Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak povolit replikaci pro disk přidaný do virtuálního počítače Azure, který je povolený pro zotavení po havárii pomocí Azure Site Recovery
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,48 +8,48 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: asgang
-ms.openlocfilehash: 4a262a3a0c32516988890a6afc6eef34d8655c89
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 068464b8a3919d833418c8f3916ccf5c54835c6f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671876"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934544"
 ---
-# <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Povolení replikace pro disk přidat do virtuálního počítače Azure
+# <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Povolení replikace pro disk přidaný do virtuálního počítače Azure
 
 
-Tento článek popisuje, jak povolit replikaci pro datové disky, které jsou přidány do virtuálního počítače Azure, který je již povolen pro zotavení po havárii do jiné oblasti Azure, pomocí [Azure Site Recovery](site-recovery-overview.md).
+Tento článek popisuje, jak povolit replikaci datových disků přidaných do virtuálního počítače Azure, který je už povolený pro zotavení po havárii do jiné oblasti Azure, pomocí [Azure Site Recovery](site-recovery-overview.md).
 
-Povolení replikace pro disk, které přidáte do virtuálního počítače je podporováno pro virtuální počítače Azure se spravovanými disky.
+Povolení replikace pro disk, který přidáte do virtuálního počítače, se podporuje pro virtuální počítače Azure se spravovanými disky.
 
-Když přidáte nový disk k virtuálnímu počítači Azure, které je replikovat do jiné oblasti Azure, dojde k následujícímu:
+Když přidáte nový disk do virtuálního počítače Azure, který se replikuje do jiné oblasti Azure, dojde k následujícímu:
 
--   Stav replikace pro virtuální počítač se zobrazí upozornění a poznámky na portálu pro vás informuje, že jedna nebo více disků jsou k dispozici pro ochranu.
--   Pokud povolíte ochranu pro přidané disky, upozornění zmizí po počáteční replikaci disku.
--   Pokud se rozhodnete povolit replikaci disku, můžete vybrat zavřete upozornění.
+-   Stav replikace pro virtuální počítač zobrazuje upozornění a Poznámka na portálu informuje o tom, že je k dispozici jeden nebo více disků pro ochranu.
+-   Pokud povolíte ochranu pro přidané disky, bude upozornění po počáteční replikaci disku zmizí.
+-   Pokud se rozhodnete Nepovolit replikaci pro disk, můžete vybrat možnost Zavřít upozornění.
 
-![Přidat nový disk](./media/azure-to-azure-enable-replication-added-disk/newdisk.png)
+![Byl přidán nový disk.](./media/azure-to-azure-enable-replication-added-disk/newdisk.png)
 
 
 
 ## <a name="before-you-start"></a>Než začnete
 
-Tento článek předpokládá, že jste již nastavili zotavení po havárii pro virtuální počítač, na který přidáváte na disku. Pokud jste tak dosud, postupujte [kurz pro zotavení po havárii Azure do Azure](azure-to-azure-tutorial-enable-replication.md). 
+V tomto článku se předpokládá, že jste už nastavili zotavení po havárii pro virtuální počítač, do kterého disk přidáváte. Pokud jste to neudělali, postupujte podle [kurzu Azure to Azure pro zotavení po havárii](azure-to-azure-tutorial-enable-replication.md). 
 
 ## <a name="enable-replication-for-an-added-disk"></a>Povolení replikace pro přidaný disk 
 
-Povolíte replikaci pro přidání disku, postupujte takto:
+Pokud chcete povolit replikaci pro přidaný disk, udělejte toto:
 
-1. V trezoru > **replikované položky**, klikněte na virtuální počítač, ke které jste přidali na disku.
-2. Klikněte na tlačítko **disky**a pak vyberte datový disk, pro které chcete povolit replikaci (tyto disky mají **nechrání** stav).
-3.  V **podrobných informací o discích**, klikněte na tlačítko **povolit replikaci**.
+1. V trezoru > **replikované položky**klikněte na virtuální počítač, ke kterému jste přidali disk.
+2. Klikněte na **disky**a potom vyberte datový disk, pro který chcete povolit replikaci (tyto disky mají stav Nechráněno).
+3.  V **podrobnostech o disku**klikněte na **Povolit replikaci**.
 
-    ![Povolení replikace pro přidání disku](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
+    ![Povolit replikaci pro přidaný disk](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
 
-Po spuštění úlohy povolit replikaci a dokončení počáteční replikace, upozornění stavu replikace pro problém, disk se odebere.
+Po spuštění úlohy povolit replikaci a dokončení počáteční replikace dojde k odebrání upozornění na stav replikace pro problém disku.
 
 
 
-# <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další postup
 
-[Další informace](site-recovery-test-failover-to-azure.md) o spuštění testovací převzetí služeb při selhání.
+[Přečtěte si další informace](site-recovery-test-failover-to-azure.md) o spuštění testovacího převzetí služeb při selhání.

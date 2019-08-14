@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 619a4de993f052f143e4117f0100ed1e0aa77b03
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: bde4572ec72286be7d845f4e83bf9c0fe3bff6f1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498596"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932401"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí zálohování a obnovení služby v Azure API Management
 
@@ -176,6 +176,7 @@ Při vytváření žádosti o zálohu Pamatujte na následující omezení:
 -   Zatímco probíhá zálohování, vyhněte se **změnám v řízení služeb** , jako je například upgrade SKU nebo downgrading, změna v názvu domény a další.
 -   Obnovení **zálohy je zaručeno pouze po dobu 30 dnů** od okamžiku jejího vytvoření.
 -   **Data o využití** používaná pro vytváření sestav Analytics **nejsou součástí** zálohy. Pomocí služby [Azure API Management REST API][azure api management rest api] pravidelně načítat analytické sestavy pro bezpečné používání.
+-   Kromě toho následující položky nejsou součástí zálohovaných dat: vlastní certifikáty SSL a všechny zprostředkující nebo kořenové certifikáty nahrané zákazníkem, obsahem portálu pro vývojáře a nastavením integrace virtuální sítě.
 -   Frekvence, se kterou provádíte zálohování služby, má vliv na cíl bodu obnovení. Pro minimalizaci doporučujeme, abyste implementovali pravidelné zálohování a prováděli zálohování na vyžádání po provedení změn ve službě API Management.
 -   **Změny** v konfiguraci služby, (například rozhraní API, zásady a vzhled portálu pro vývojáře) během procesu zálohování, **mohou být vyloučeny ze zálohy a budou ztraceny**.
 -   **Povolí** přístup z řídicí roviny na účet Azure Storage. Zákazník musí na svém účtu úložiště otevřít následující sadu příchozích IP adres pro zálohování. 

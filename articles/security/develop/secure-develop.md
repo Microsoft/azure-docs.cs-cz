@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1b2e6e0aa74c06afea09a67dbdf65ca47727b72e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780560"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928056"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
@@ -89,7 +89,7 @@ To znamená, že přístup k vašim skutečným datům má méně lidí, což sn
 
 Aby bylo možné chránit před hrubou silou a odhadem na základě slovníku, je nutné implementovat zásady silného hesla, aby uživatelé mohli vytvářet složitá hesla (například 12 znaků minimální délky a vyžadovat alfanumerické a speciální znaky).
 
-Rozhraní identity můžete použít k vytvoření a prosazování zásad hesel. Azure AD B2C vám pomůže se správou hesel tím, že poskytuje [předdefinované zásady](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow), [Samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)a další služby.
+Rozhraní identity můžete použít k vytvoření a prosazování zásad hesel. Azure AD B2C vám pomůže se správou hesel tím, že poskytuje [předdefinované zásady](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [Samoobslužné resetování hesla](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)a další služby.
 
 Aby se zabránilo útokům na výchozí účty, ověřte, že jsou všechny klíče a hesla nahraditelný a že jsou vygenerované nebo nahrazené po instalaci prostředků.
 
@@ -99,9 +99,9 @@ Pokud aplikace musí automaticky generovat hesla, ujistěte se, že vygenerovan�
 
 Pokud vaše aplikace umožňuje [nahrávání souborů](https://www.owasp.org/index.php/Unrestricted_File_Upload), zvažte opatření, která můžete pro tuto rizikové aktivity provést. Prvním krokem v mnoha útokech je získání škodlivého kódu do systému, který je napadený. K tomu může útočník využít nahrávání souboru. OWASP nabízí řešení pro ověřování souboru, aby se zajistilo, že soubor, který odesíláte, je bezpečný.
 
-Ochrana proti malwaru pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Můžete nainstalovat [Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) nebo řešení ochrany koncového bodu Microsoftu ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)a [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
+Ochrana proti malwaru pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Můžete nainstalovat [Microsoft Antimalware](../fundamentals/antimalware.md) nebo řešení ochrany koncového bodu Microsoftu ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)a [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) obsahuje funkce, jako je ochrana v reálném čase, plánované prohledávání, náprava malwaru, aktualizace signatur, aktualizace modulu, vytváření sestav ukázek a shromažďování událostí vyloučení. Pomocí [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) můžete integrovat řešení Microsoftu proti malwaru a partnerům, aby se usnadnilo nasazení a vestavěné detekce (výstrahy a incidenty).
+[Microsoft Antimalware](../fundamentals/antimalware.md) obsahuje funkce, jako je ochrana v reálném čase, plánované prohledávání, náprava malwaru, aktualizace signatur, aktualizace modulu, vytváření sestav ukázek a shromažďování událostí vyloučení. Pomocí [Azure Security Center](../../security-center/security-center-partner-integration.md) můžete integrovat řešení Microsoftu proti malwaru a partnerům, aby se usnadnilo nasazení a vestavěné detekce (výstrahy a incidenty).
 
 ### <a name="dont-cache-sensitive-content"></a>Neukládat citlivý obsah do mezipaměti
 
@@ -117,7 +117,7 @@ Provedete kontrolu aplikace a jejích závislých knihoven, abyste identifikoval
 Pro Azure App Service Web Apps je k dispozici kontrola ohrožení zabezpečení založená na [zabezpečení TINFOIL](https://www.tinfoilsecurity.com/) . [TINFOIL prověřování zabezpečení prostřednictvím App Service](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) nabízí vývojářům a správcům rychlý, integrovaný a ekonomický způsob zjišťování a řešení ohrožení zabezpečení předtím, než ho škodlivý objekt actor může využít.
 
 > [!NOTE]
-> [Zabezpečení TINFOIL můžete také integrovat s Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/tinfoil-security-tutorial). Integrace zabezpečení TINFOIL s Azure AD poskytuje následující výhody:
+> [Zabezpečení TINFOIL můžete také integrovat s Azure AD](../../active-directory/saas-apps/tinfoil-security-tutorial.md). Integrace zabezpečení TINFOIL s Azure AD poskytuje následující výhody:
 >  - V Azure AD můžete řídit, kdo má přístup k TINFOIL zabezpečení.
 >  - Uživatelé můžou být automaticky přihlášení k zabezpečení TINFOIL (jednotné přihlašování) pomocí svých účtů Azure AD.
 >  - Účty můžete spravovat v jednom centrálním umístění, Azure Portal.
@@ -128,7 +128,7 @@ Testování dynamického zabezpečení aplikací (DAST) je proces testování ap
 
 DAST se liší od statického testování zabezpečení aplikací (SAST). Nástroje SAST analyzují zdrojový kód nebo zkompilované verze kódu, když kód není spuštěn, aby bylo možné najít chyby zabezpečení.
 
-Proveďte DAST, nejlépe s asistencí odborníka na zabezpečení ( [Tester pro průnik](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) nebo posuzovatel ohrožení zabezpečení). Pokud není k dispozici specialista zabezpečení, můžete DAST sami provádět pomocí webového proxy serveru a některých školení. Připojte se k DAST skeneru na začátku, abyste se ujistili, že do kódu nepřinášíte zjevné problémy zabezpečení. Seznam skenerů ohrožení zabezpečení webových aplikací najdete na webu [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) .
+Proveďte DAST, nejlépe s asistencí odborníka na zabezpečení ( [Tester pro průnik](../fundamentals/pen-testing.md) nebo posuzovatel ohrožení zabezpečení). Pokud není k dispozici specialista zabezpečení, můžete DAST sami provádět pomocí webového proxy serveru a některých školení. Připojte se k DAST skeneru na začátku, abyste se ujistili, že do kódu nepřinášíte zjevné problémy zabezpečení. Seznam skenerů ohrožení zabezpečení webových aplikací najdete na webu [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) .
 
 ### <a name="perform-fuzz-testing"></a>Provést testování fuzzy
 
@@ -144,7 +144,7 @@ Pomocí prohledávání aplikace můžete vytvořit obrázek prostoru pro útoky
 
 ### <a name="perform-security-penetration-testing"></a>Provádění testování průniku zabezpečení
 
-Zajištění zabezpečení vaší aplikace je důležité jako testování jakékoli jiné funkce. Proveďte [testování průniku](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) standardní části procesu sestavení a nasazení. Naplánujte pravidelné testy zabezpečení a kontrolu ohrožení zabezpečení u nasazených aplikací a sledujte otevřené porty, koncové body a útoky.
+Zajištění zabezpečení vaší aplikace je důležité jako testování jakékoli jiné funkce. Proveďte [testování průniku](../fundamentals/pen-testing.md) standardní části procesu sestavení a nasazení. Naplánujte pravidelné testy zabezpečení a kontrolu ohrožení zabezpečení u nasazených aplikací a sledujte otevřené porty, koncové body a útoky.
 
 ### <a name="run-security-verification-tests"></a>Spustit ověřovací testy zabezpečení
 

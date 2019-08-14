@@ -6,18 +6,18 @@ author: JasonWHowell
 ms.author: jasonh
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: cdf90029d02680de4ce55e33b3ed0fe810d70b4c
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775245"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950157"
 ---
 # <a name="azure-data-catalog-developer-samples"></a>Ukázky pro vývojáře Azure Data Catalog
 
 Začněte s vývojem Azure Data Catalogch aplikací pomocí REST API Data Catalog. Data Catalog REST API je rozhraní API založené na REST, které poskytuje programový přístup k Data Catalog prostředkům k programovému registraci, přidávání poznámek a vyhledávání datových prostředků.
 
-Tady jsou ukázky, které máme na GitHubu:
+## <a name="samples-available-on-githubcom"></a>Ukázky dostupné na GitHub.com
 
 * [Začínáme s Azure Data Catalogem](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/)
   
@@ -47,5 +47,5 @@ Tady jsou ukázky, které máme na GitHubu:
 
    V této ukázce se dozvíte, jak mohou programově publikovat informace o relaci do katalogu dat.
    
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Odkaz na Azure Data Catalog REST API](/rest/api/datacatalog/)

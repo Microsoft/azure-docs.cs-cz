@@ -1,6 +1,6 @@
 ---
-title: Nastavení Azure Active Directory pro ověřování klientů Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit službu Azure Active Directory (Azure AD) k ověřování klientů pro clustery Service Fabric.
+title: Nastavit Azure Active Directory pro ověřování Service Fabric klientů | Microsoft Docs
+description: Přečtěte si, jak nastavit Azure Active Directory (Azure AD) pro ověřování klientů pro Service Fabric clustery.
 services: service-fabric
 documentationcenter: .net
 author: athinanthny
@@ -15,34 +15,34 @@ ms.workload: NA
 ms.date: 6/28/2019
 ms.author: atsenthi
 ms.openlocfilehash: 6c195357c4a037534307571a53589b2ae861d88b
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67486008"
 ---
-# <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavení Azure Active Directory pro ověřování klientů
+# <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavit Azure Active Directory pro ověřování klientů
 
-Pro clustery spuštěné v Azure Azure Active Directory (Azure AD) se doporučuje pro zabezpečení přístupu ke koncovým bodům správy.  Tento článek popisuje, jak se nastavení Azure AD k ověřování klientů pro cluster Service Fabric, které je třeba provést před [vytváření clusteru](service-fabric-cluster-creation-via-arm.md).  Azure AD umožňuje organizacím (označuje se jako tenantů) ke správě přístupu uživatelů k aplikacím. Aplikace se dělí na ty, které mají webové přihlašovacího uživatelského rozhraní a ty, které mají nativní klientské prostředí. 
+Pro clustery běžící v Azure se doporučuje Azure Active Directory (Azure AD) pro zabezpečení přístupu ke koncovým bodům správy.  Tento článek popisuje, jak nastavit Azure AD pro ověřování klientů pro cluster Service Fabric, který je potřeba provést před [vytvořením clusteru](service-fabric-cluster-creation-via-arm.md).  Azure AD umožňuje organizacím (označovaným jako klienti) spravovat přístup uživatelů k aplikacím. Aplikace jsou rozděleny na ty s webovým přihlašovacím uživatelským rozhraním a s nativním klientským prostředím. 
 
-Cluster Service Fabric nabízí několik vstupních bodů do jeho funkce správy, včetně webová [Service Fabric Explorer][service-fabric-visualizing-your-cluster] and [Visual Studio][service-fabric-manage-application-in-visual-studio]. Proto vytvoříte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jeden webové aplikace a jedné nativní aplikace.  Po vytvoření aplikace můžete přiřadit uživatele jen pro čtení a role správce.
+Cluster Service Fabric nabízí několik vstupních bodů ke svým funkcím správy, včetně webových [Service Fabric Explorer][service-fabric-visualizing-your-cluster] a sady [Visual Studio][service-fabric-manage-application-in-visual-studio]. V důsledku toho vytvoříte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci.  Po vytvoření aplikací přiřadíte uživatele k rolím jen pro čtení a správcům.
 
 > [!NOTE]
-> Před vytvořením clusteru, musíte dokončit následující kroky. Vzhledem k tomu, že skripty očekávají názvů clusterů a koncových bodů, hodnoty plánování byste měli využít a ne hodnoty, že jste již vytvořili.
+> Před vytvořením clusteru je nutné provést následující kroky. Vzhledem k tomu, že skripty očekávají názvy a koncové body clusteru, hodnoty by měly být plánované a ne hodnoty, které jste již vytvořili.
 
 ## <a name="prerequisites"></a>Požadavky
-V tomto článku předpokládáme, že jste již vytvořili tenanta. Pokud ne, začněte tím, že čtení [získání tenanta služby Azure Active Directory][active-directory-howto-tenant].
+V tomto článku předpokládáme, že jste už tenanta vytvořili. Pokud ne, začněte tím, že si přečtete, [Jak získat klienta Azure Active Directory][active-directory-howto-tenant].
 
-Pro zjednodušení některé kroky při konfiguraci Azure AD s clusterem Service Fabric, vytvořili jsme sadu skriptů prostředí Windows PowerShell.
+Abychom zjednodušili některé kroky týkající se konfigurace služby Azure AD pomocí Service Fabricho clusteru, vytvořili jsme sadu skriptů prostředí Windows PowerShell.
 
-1. [Naklonujte úložiště](https://github.com/Azure-Samples/service-fabric-aad-helpers) k vašemu počítači.
-2. [Ujistěte se, máte všechny požadavky](https://github.com/Azure-Samples/service-fabric-aad-helpers#getting-started) pro skripty, které jsou nainstalované.
+1. [Naklonujte úložiště](https://github.com/Azure-Samples/service-fabric-aad-helpers) do počítače.
+2. [Ujistěte se, že máte všechny požadavky](https://github.com/Azure-Samples/service-fabric-aad-helpers#getting-started) na nainstalované skripty.
 
-## <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Vytvoření aplikace Azure AD a přiřazení uživatelů k rolím
+## <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Vytváření aplikací Azure AD a přiřazení uživatelů k rolím
 
-Použijeme skripty vytvořit dvě aplikace Azure AD pro řízení přístupu ke clusteru: jeden webové aplikace a jedné nativní aplikace. Po vytvoření aplikace pro reprezentaci clusteru vytvoříte uživatelů [role podporuje Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
+Pomocí skriptů vytvoříme dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci. Po vytvoření aplikací, které reprezentují váš cluster, vytvoříte uživatele pro [role podporované Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
 
-Spustit `SetupApplications.ps1`a zadat tenanta jako parametry ID, název clusteru a adresy URL odpovědi webové aplikace.  Také zadejte uživatelská jména a hesla pro uživatele. Příklad:
+Spusťte `SetupApplications.ps1`příkaz a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace.  Zadejte také uživatelská jména a hesla pro uživatele. Příklad:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -51,22 +51,22 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 ```
 
 > [!NOTE]
-> Pro národní cloudy (například Azure Government, Azure China, Azure Germany), by měly také určit `-Location` parametru.
+> Pro národní cloudy (například Azure Government, Azure Čína, Azure Německo) byste měli zadat `-Location` i parametr.
 
-Můžete najít vaše *TenantId* spuštěním příkazu Powershellu `Get-AzureSubscription`. Spuštění tohoto příkazu se zobrazí ID Tenanta pro každé předplatné.
+*TenantId* můžete najít spuštěním příkazu `Get-AzureSubscription`PowerShellu. Spuštění tohoto příkazu zobrazí TenantId pro každé předplatné.
 
-*Název clusteru* používat jako předpona aplikací v Azure AD, které jsou vytvořeny skriptem. Nemusí přesně odpovídat skutečný název clusteru. Je určena pouze k usnadňují mapovat do clusteru Service Fabric, který se právě používají s artefakty Azure AD.
+*Název_clusteru* slouží k vytvoření předpony aplikací služby Azure AD, které jsou vytvořeny pomocí skriptu. Nemusí přesně odpovídat samotnému názvu clusteru. Je určena jenom k tomu, aby bylo snazší mapovat artefakty Azure AD na cluster Service Fabric, ve kterém se používají.
 
-*WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrací uživatelům po jejich dokončení přihlašování. Nastavte jako koncový bod Service Fabric Exploreru pro váš cluster, který ve výchozím nastavení je tento koncový bod:
+*WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrátí vašim uživatelům po dokončení přihlášení. Nastavte tento koncový bod jako koncový bod Service Fabric Explorer pro váš cluster, který je ve výchozím nastavení:
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
-Zobrazí se výzva k přihlášení k účtu, který má oprávnění správce pro tenanta Azure AD. Po přihlášení, skript vytvoří webové a nativní aplikace pro reprezentaci vašeho clusteru Service Fabric. Když se podíváte na aplikace vašeho tenanta v [webu Azure portal][azure-portal], měli byste vidět dvě nové položky:
+Zobrazí se výzva, abyste se přihlásili k účtu, který má oprávnění správce pro tenanta Azure AD. Po přihlášení vytvoří skript webové a nativní aplikace, které reprezentují váš Service Fabric cluster. Pokud se podíváte na aplikace klienta v [Azure Portal][azure-portal], měli byste vidět dvě nové položky:
 
-   * *Název clusteru*\_clusteru
-   * *Název clusteru*\_klienta
+   * *Cluster název_clusteru*\_
+   * *Klient název_clusteru*\_
 
-Skript vypíše soubor JSON potřebný pomocí šablony Azure Resource Manageru při vám [vytvořit cluster](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access), takže je vhodné ponechat otevřené okno Powershellu.
+Skript vytiskne JSON vyžadovaný šablonou Azure Resource Manager při [vytváření clusteru](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access), takže je vhodné ponechat okno PowerShellu otevřené.
 
 ```json
 "azureActiveDirectory": {
@@ -76,44 +76,44 @@ Skript vypíše soubor JSON potřebný pomocí šablony Azure Resource Manageru 
 },
 ```
 
-## <a name="troubleshooting-help-in-setting-up-azure-active-directory"></a>Poradce při potížích v nastavení Azure Active Directory
-Nastavení Azure AD a jeho použití může být náročné, takže tady je několik tipů, na co můžete dělat k ladění těchto potíží.
+## <a name="troubleshooting-help-in-setting-up-azure-active-directory"></a>Pomoc při nastavování Azure Active Directory
+Nastavení Azure AD a jeho používání může být náročné, takže tady je několik ukazatelů na to, co můžete udělat k ladění problému.
 
-### <a name="service-fabric-explorer-prompts-you-to-select-a-certificate"></a>Service Fabric Explorer vyzve k výběru certifikátu
+### <a name="service-fabric-explorer-prompts-you-to-select-a-certificate"></a>Service Fabric Explorer vás vyzve k výběru certifikátu.
 #### <a name="problem"></a>Problém
-Po přihlášení úspěšně do služby Azure AD v Service Fabric Explorer, prohlížeč se vrátí na domovskou stránku, ale zobrazí se výzva k výběru certifikátu.
+Po úspěšném přihlášení do Azure AD v Service Fabric Explorer se prohlížeč vrátí na domovskou stránku, ale zobrazí se zpráva s výzvou k výběru certifikátu.
 
-![Dialogové okno certifikát SFX][sfx-select-certificate-dialog]
+![Dialog certifikátu SFX][sfx-select-certificate-dialog]
 
 #### <a name="reason"></a>Reason
-Uživatel není přiřazena role v clusteru aplikaci Azure AD. Ověřování Azure AD díky tomu se nezdaří v clusteru Service Fabric. Service Fabric Explorer spadne zpět na ověření certifikátu.
+Uživatel nemá přiřazenou roli v Clusterové aplikaci Azure AD. Proto se ověřování Azure AD v clusteru Service Fabric nezdařilo. Service Fabric Explorer se vrátí k ověřování certifikátu.
 
 #### <a name="solution"></a>Řešení
-Postupujte podle pokynů pro nastavení služby Azure AD a přiřadit role uživatele. Taky doporučujeme zapnout "Přiřazení uživatelů povinné pro přístup k aplikaci," jako `SetupApplications.ps1` nepodporuje.
+Postupujte podle pokynů pro nastavení služby Azure AD a přiřaďte uživatelské role. Také doporučujeme, abyste zapnuli přiřazení uživatele vyžadované pro přístup k aplikaci, jak to `SetupApplications.ps1` dělá.
 
-### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>Připojení pomocí prostředí PowerShell se nezdaří s chybou: "Zadané přihlašovací údaje jsou neplatné."
+### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>Připojení k PowerShellu se nezdařilo s chybou: "Zadané přihlašovací údaje jsou neplatné."
 #### <a name="problem"></a>Problém
-Při použití prostředí PowerShell pro připojení ke clusteru pomocí "AzureActiveDirectory" režim zabezpečení, po přihlášení úspěšně do služby Azure AD, připojení se nezdaří s chybou: "Zadané přihlašovací údaje jsou neplatné."
+Když použijete PowerShell pro připojení ke clusteru pomocí režimu zabezpečení Azureactivedirectory selhala, po úspěšném přihlášení ke službě Azure AD se připojení nezdaří s chybou: "Zadané přihlašovací údaje jsou neplatné."
 
 #### <a name="solution"></a>Řešení
-Toto řešení je stejná jako ta předchozí.
+Toto řešení je stejné jako předchozí.
 
-### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer vrátí chybu při přihlášení: "AADSTS50011"
+### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer vrátí selhání při přihlášení: "AADSTS50011"
 #### <a name="problem"></a>Problém
-Při pokusu o přihlášení k Azure AD v Service Fabric Exploreru na stránce vrátí chybu: "AADSTS50011: Adresa pro odpovědi &lt;url&gt; neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci: &lt;guid&gt;. "
+Při pokusu o přihlášení ke službě Azure AD v Service Fabric Explorer vrátí stránka chybu: "AADSTS50011: &lt;Adresa URL&gt; adresy pro odpověď neodpovídá adresám odpovědí nakonfigurovaným pro aplikaci: &lt;GUID&gt;.
 
-![Adresa pro odpovědi SFX neodpovídá.][sfx-reply-address-not-match]
+![Adresa odpovědi SFX se neshoduje.][sfx-reply-address-not-match]
 
 #### <a name="reason"></a>Reason
-Aplikace clusteru (web), který představuje Service Fabric Exploreru pokusí ověřit ve službě Azure AD a jako součást požadavku poskytuje návratová adresa URL přesměrování. Adresa URL není uvedena v aplikaci Azure AD, ale **adresy URL odpovědi** seznamu.
+Aplikace clusteru (Web), která představuje Service Fabric Explorer se pokouší o ověření vůči službě Azure AD a jako součást požadavku, poskytuje návratovou adresu URL pro přesměrování. Adresa URL ale není uvedená v seznamu **adres URL odpovědi** aplikace Azure AD.
 
 #### <a name="solution"></a>Řešení
-Vyberte "Registrace aplikací" na stránce AAD, vyberte svou aplikaci clusteru a pak vyberte **adresy URL odpovědí** tlačítko. Na stránce "Adresy URL odpovědí" adresa URL nástroje Service Fabric Exploreru přidejte do seznamu nebo nahradit jednu z položek v seznamu. Jakmile budete hotovi, uložte změnu.
+Na stránce AAD vyberte Registrace aplikací, vyberte svou aplikaci clusteru a pak vyberte tlačítko **adresy URL odpovědi** . Na stránce odpovědi na adresy URL přidejte adresu URL Service Fabric Explorer do seznamu nebo nahraďte jednu z položek v seznamu. Po dokončení změny uložte.
 
-![Adresa url odpovědi webové aplikace][web-application-reply-url]
+![Adresa URL odpovědi webové aplikace][web-application-reply-url]
 
-### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>Připojení ke clusteru pomocí ověřování Azure AD prostřednictvím prostředí PowerShell
-Pro připojení ke clusteru Service Fabric, použijte následující ukázkový příkaz Powershellu:
+### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>Připojení clusteru pomocí ověřování Azure AD prostřednictvím PowerShellu
+Pokud chcete připojit Cluster Service Fabric, použijte následující příklad příkazu PowerShellu:
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
@@ -121,14 +121,14 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalIn
 
 Další informace najdete v tématu [rutina Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster).
 
-### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>Můžete znovu použít stejným tenantem Azure AD v několika clusterech?
-Ano. Ale nezapomeňte přidat adresu URL nástroje Service Fabric Exploreru pro vaši aplikaci clusteru (web). V opačném případě se Service Fabric Exploreru nefunguje.
+### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>Můžu znovu použít stejného tenanta služby Azure AD ve více clusterech?
+Ano. Nezapomeňte ale přidat adresu URL Service Fabric Explorer do vaší Clusterové (webové) aplikace. V opačném případě Service Fabric Explorer nefunguje.
 
-### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Proč musím i certifikát serveru služby Azure AD je povolen?
-FabricClient a FabricGateway provedeno vzájemné ověření. Během ověřování Azure AD integrace služby Azure AD poskytuje identitu klienta na server a server certifikát se používá k ověření identity serveru. Další informace o certifikátech pro Service Fabric najdete v tématu [certifikáty X.509 a Service Fabric][x509-certificates-and-service-fabric].
+### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Proč stále potřebuji certifikát serveru, když je povolená služba Azure AD?
+FabricClient a FabricGateway provádějí vzájemné ověřování. Při ověřování Azure AD poskytuje integrace služby Azure AD identitu klienta serveru a certifikát serveru se používá k ověření identity serveru. Další informace o Service Fabric certifikátů najdete v tématu [certifikáty X. 509 a Service Fabric][x509-certificates-and-service-fabric].
 
 ## <a name="next-steps"></a>Další postup
-Po nastavení aplikace Azure Active Directory a nastavení role pro uživatele, [nakonfigurujte a nasaďte cluster](service-fabric-cluster-creation-via-arm.md).
+Po nastavení Azure Active Directory aplikací a nastavení rolí pro uživatele, [konfiguraci a nasazení clusteru](service-fabric-cluster-creation-via-arm.md).
 
 
 <!-- Links -->

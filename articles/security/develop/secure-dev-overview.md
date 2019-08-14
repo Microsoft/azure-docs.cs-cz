@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4df8ff8abfeb7a6ba96ec3344407e95e0a9a3b3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728722"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934871"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Osvědčené postupy pro zabezpečení vývoje v Azure
 Tato série článků představuje bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o fázích služby SDL (Microsoft Security Development Lifecycle) a bezpečnostních otázek a konceptech, které je potřeba vzít v úvahu během každé fáze životního cyklu. Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete v jednotlivých fázích životního cyklu použít k návrhu, vývoji a nasazení bezpečnější aplikace.
@@ -69,7 +69,7 @@ Následující zdroje vám pomůžou získat další informace o vývoji zabezpe
 
 [Vložením doleva, jako je například vedoucí, získáte](https://code.likeagirl.io/pushing-left-like-a-boss-part-1-80f1f007da95?WT.mc_id=docs-blog-tajanca) řadu Online článků, které popisují různé typy aktivit zabezpečení aplikací, které vývojáři dokončí k vytváření bezpečnějšího kódu.
 
-[Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/) – Microsoft Identity Platform je vývoj služby identity a vývojářské platformy Azure AD. Je to plně vybavená platforma, která se skládá ze služby ověřování, open source knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Platforma Microsoft identity podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect.
+[Microsoft Identity Platform](../../active-directory/develop/index.yml) – Microsoft Identity Platform je vývoj služby identity a vývojářské platformy Azure AD. Je to plně vybavená platforma, která se skládá ze služby ověřování, open source knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Platforma Microsoft identity podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect.
 
 [Osvědčené postupy zabezpečení pro řešení Azure](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/) – kolekce osvědčených postupů zabezpečení pro použití při navrhování, nasazování a správě cloudových řešení pomocí Azure. Tento dokument je určený jako prostředek pro odborníky v oblasti IT. To může zahrnovat návrháře, architekty, vývojáře a testery, kteří sestavují a nasazují zabezpečená řešení Azure.
 

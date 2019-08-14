@@ -1,6 +1,6 @@
 ---
-title: Příprava infrastruktury Azure pro SAP HA pomocí Windows cluster převzetí služeb při selhání a sdíleného disku pro SAP ASCS/SCS | Dokumentace Microsoftu
-description: Zjistěte, jak připravit infrastrukturu Azure pro SAP HA pomocí Windows cluster převzetí služeb při selhání a sdíleného disku pro instanci SAP ASCS/SCS.
+title: Příprava infrastruktury Azure na systém SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS | Microsoft Docs
+description: Naučte se připravit infrastrukturu Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání Windows a sdíleného disku pro instanci SAP ASCS/SCS.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -18,13 +18,13 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b4e107da9d8e5019ba51769d283f3faa34839380
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67709243"
 ---
-# <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Připravit infrastrukturu Azure pro SAP HA pomocí Windows cluster převzetí služeb při selhání a sdíleného disku pro SAP ASCS/SCS
+# <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -75,7 +75,7 @@ ms.locfileid: "67709243"
 [sap-high-availability-infrastructure-wsfc-shared-disk-install-sios-both-nodes]:sap-high-availability-infrastructure-wsfc-shared-disk.md#dd41d5a2-8083-415b-9878-839652812102
 [sap-high-availability-infrastructure-wsfc-shared-disk-setup-sios]:sap-high-availability-infrastructure-wsfc-shared-disk.md#d9c1fc8e-8710-4dff-bec2-1f535db7b006
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfigurace vysoké dostupnosti SAP s několika SID)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfigurace s vysokou dostupností pro SAP multi-SID)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -163,84 +163,84 @@ ms.locfileid: "67709243"
 > ![Windows][Logo_Windows] Windows
 >
 
-Tento článek popisuje kroky, které můžete podniknout pro přípravu instalace a konfigurace vysoké dostupnosti systému SAP na převzetí služeb při selhání clusteru Windows s využitím infrastrukturu Azure *disk sdíleného clusteru* jako možnost pro clustering Instance SAP ASCS.
+Tento článek popisuje kroky, které můžete provést při přípravě infrastruktury Azure pro instalaci a konfiguraci systému SAP s vysokou dostupností na clusteru s podporou převzetí služeb při selhání s Windows pomocí *sdíleného disku clusteru* jako možnosti CLUSTERINGU instance SAP ASCS.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete s instalací, projděte si tento článek:
+Než začnete s instalací, přečtěte si tento článek:
 
-* [Průvodce architekturou: Instance SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdíleného disku clusteru][sap-high-availability-guide-wsfc-shared-disk]
+* [Průvodce architekturou: Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdíleného disku clusteru][sap-high-availability-guide-wsfc-shared-disk]
 
-## <a name="prepare-the-infrastructure-for-architectural-template-1"></a>Příprava infrastruktury pro architektury šablony 1
-Šablony Azure Resource Manageru pro SAP zjednodušit nasazení požadované prostředky.
+## <a name="prepare-the-infrastructure-for-architectural-template-1"></a>Příprava infrastruktury na šablonu architektury 1
+Šablony Azure Resource Manager pro SAP usnadňují nasazení požadovaných prostředků.
 
-Třívrstvé šablony v Azure Resource Manageru také podporuje scénáře vysoké dostupnosti. Například architektury 1 šablony má dva clustery. Každý cluster se SAP jediný bod selhání pro SAP ASCS/SCS a DBMS.
+Šablony tří vrstev v Azure Resource Manager také podporují scénáře s vysokou dostupností. Například šablona architektury 1 obsahuje dva clustery. Každý cluster představuje jediný bod SAP pro SAP ASCS/SCS a DBMS.
 
-Zde je, kde lze získat šablony Azure Resource Manageru ukázkový scénář, který popisujeme v tomto článku:
+Tady je postup, kde můžete získat šablony Azure Resource Manager pro ukázkový scénář, který popisujeme v tomto článku:
 
-* [Image z Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [Tržiště imagí Azure pomocí Azure Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
+* [Obrázek Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Azure Marketplace Image pomocí Azure Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
 * [Vlastní image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
 * [Vlastní image pomocí Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
 
-Příprava infrastruktury architektury šablona 1:
+Příprava infrastruktury pro architekturu šablony 1:
 
-- Na webu Azure Portal v **parametry** podokno v **SYSTEMAVAILABILITY** vyberte **HA**.
+- V Azure Portal v podokně **parametry** v poli **SYSTEMAVAILABILITY** vyberte **ha**.
 
-  ![Obrázek 1: Nastavení parametrů Azure Resource Manageru vysoké dostupnosti SAP][sap-ha-guide-figure-3000]
+  ![Obrázek 1: Nastavení Azure Resource Manager parametrů pro vysokou dostupnost SAP][sap-ha-guide-figure-3000]
 
-_**Obrázek 1:** Nastavení parametrů Azure Resource Manageru vysoké dostupnosti SAP_
+_**Obrázek 1:** Nastavení Azure Resource Manager parametrů pro vysokou dostupnost SAP_
 
 
-  Vytvoření šablony:
+  Šablony vytvoří:
 
   * **Virtuální počítače**:
     * Virtuální počítače aplikačního serveru SAP: \<SAPSystemSID\>-di-\<Number\>
-    * ASC/SCS clusteru virtuálních počítačů: \<SAPSystemSID\>-ascs-\<Number\>
-    * Systém DBMS clusteru: \<SAPSystemSID\>-db-\<Number\>
+    * Virtuální počítače clusteru ASCS/SCS: \<SAPSystemSID\>-ascs-\<Number\>
+    * Cluster DBMS: \<SAPSystemSID\>-db-\<Number\>
 
-  * **Síťové karty pro všechny virtuální počítače s přidružené IP adresy**:
+  * **Síťové karty pro všechny virtuální počítače s přidruženými IP adresami**:
     * \<SAPSystemSID\>-nic-di-\<Number\>
     * \<SAPSystemSID\>-nic-ascs-\<Number\>
     * \<SAPSystemSID\>-nic-db-\<Number\>
 
-  * **Účty úložiště Azure (pouze nespravovaných disků)** :
+  * **Účty služby Azure Storage (jenom nespravované disky)** :
 
   * **Skupiny dostupnosti** pro:
     * Virtuální počítače aplikačního serveru SAP: \<SAPSystemSID\>-avset-di
-    * SAP ASCS/SCS clusteru virtuálních počítačů: \<SAPSystemSID\>-avset-ascs
-    * Systém DBMS clusteru virtuálních počítačů: \<SAPSystemSID\>-avset-db
+    * Virtuální počítače s clustery SAP ASCS/SCS: \<SAPSystemSID\>-avset-ascs
+    * Virtuální počítače s clustery DBMS: \<SAPSystemSID\>-avset-db
 
-  * **Nástroje pro vyrovnávání zatížení Azure interní**:
-    * Se všemi porty pro instanci ASCS/SCS IP adresa \<SAPSystemSID\>ascs - lb
-    * Se všemi porty pro SQL Server DBMS a IP adresu \<SAPSystemSID\>- lb-db
+  * **Interní nástroj pro vyrovnávání zatížení Azure**:
+    * Se všemi porty pro instanci ASCS/SCS a IP adresa \<SAPSystemSID\>-9,1-ASCS
+    * Se všemi porty pro SQL Server DBMS a IP adresou \<SAPSystemSID\>-9,1-dB
 
   * **Skupina zabezpečení sítě**: \<SAPSystemSID\>-nsg-ascs-0  
-    * S otevřít externí protokolu RDP (Remote Desktop) port \<SAPSystemSID\>0 - ascs virtuálního počítače
+    * S otevřeným externím portem protokol RDP (Remote Desktop Protocol) (RDP) \<pro\>virtuální počítač SAPSystemSID-ASCS-0
 
 > [!NOTE]
-> Dynamické ve výchozím nastavení jsou všechny IP adresy síťových karet a Azure interní služby load balancer. Je změňte na statické IP adresy. Zjistíte, jak to udělat později v tomto článku.
+> Všechny IP adresy síťových karet a služeb interního nástroje pro vyrovnávání zatížení Azure jsou ve výchozím nastavení dynamické. Změňte je na statické IP adresy. Popisujeme, jak postupovat později v článku.
 >
 >
 
-## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a> Nasazení virtuálních počítačů s připojením k podnikové síti (mezi různými místy) pro použití v produkčním prostředí
-Pro produkční systémy SAP, nasaďte virtuální počítače Azure s [připojení k podnikové síti (mezi různými místy)][planning-guide-2.2] pomocí Azure VPN Gateway nebo Azure ExpressRoute.
+## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Nasazení virtuálních počítačů s připojením k podnikové síti (mezi místními) pro použití v produkčním prostředí
+V případě produkčních systémů SAP nasaďte virtuální počítače Azure s [připojením k podnikové síti (mezi místními)][planning-guide-2.2] pomocí Azure VPN Gateway nebo Azure ExpressRoute.
 
 > [!NOTE]
-> Vaše instance Azure Virtual Network můžete použít. Virtuální síť a podsíť již byly vytvořeny a připraveny.
+> Můžete použít instanci Azure Virtual Network. Virtuální síť a podsíť už jsou vytvořené a připravené.
 >
 >
 
-1. Na webu Azure Portal v **parametry** podokno v **NEWOREXISTINGSUBNET** vyberte **existující**.
-2. V **SUBNETID** přidejte úplný řetězec ID podsítě připravené síť Azure, jež chcete nasadit virtuální počítače Azure.
-3. Pokud chcete získat seznam všech podsítí síť Azure, spusťte tento příkaz Powershellu:
+1. V Azure Portal v podokně **parametry** v poli **NEWOREXISTINGSUBNET** vyberte **existující**.
+2. Do pole **SUBNETID** přidejte úplný řetězec připraveného ID podsítě sítě Azure, kde plánujete nasazení virtuálních počítačů Azure.
+3. Pokud chcete získat seznam všech podsítí sítě Azure, spusťte tento příkaz PowerShellu:
 
    ```powershell
    (Get-AzVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
-   **ID** pole zobrazí hodnotu pro ID podsítě.
-4. Pokud chcete získat seznam všech hodnot ID podsítě, spusťte tento příkaz Powershellu:
+   Pole **ID** zobrazuje hodnotu ID podsítě.
+4. Pokud chcete získat seznam všech hodnot ID podsítě, spusťte tento příkaz PowerShellu:
 
    ```powershell
    (Get-AzVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
@@ -252,594 +252,594 @@ Pro produkční systémy SAP, nasaďte virtuální počítače Azure s [připoje
    /subscriptions/<subscription ID>/resourceGroups/<VPN name>/providers/Microsoft.Network/virtualNetworks/azureVnet/subnets/<subnet name>
    ```
 
-## <a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a> Výhradně cloudový instance SAP pro testování a Ukázka nasazení
-Vysoká dostupnost systému SAP v čistě cloudové nasazení modelu můžete nasadit. Tento typ nasazení se především užitečné pro ukázky a testovací případy použití. Není vhodné pro případy použití v produkčním prostředí.
+## <a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a>Nasazení pouze cloudových instancí SAP pro test a ukázku
+Systém SAP s vysokou dostupností můžete nasadit do modelu nasazení pouze pro Cloud. Tento druh nasazení je vhodný hlavně pro ukázkové a testovací případy použití. Nehodí se pro případy použití v produkčním prostředí.
 
-- Na webu Azure Portal v **parametry** podokno v **NEWOREXISTINGSUBNET** vyberte **nové**. Nechte **SUBNETID** prázdné pole.
+- V Azure Portal v podokně **parametry** v poli **NEWOREXISTINGSUBNET** vyberte možnost **Nový**. Pole **SUBNETID** ponechte prázdné.
 
-  Šablony SAP Azure Resource Manageru automaticky vytvoří virtuální síť Azure a podsíť.
+  Šablona SAP Azure Resource Manager automaticky vytvoří virtuální síť a podsíť Azure.
 
 > [!NOTE]
-> Také je nutné nasadit alespoň jeden vyhrazený virtuální počítač pro službu Active Directory a DNS ve stejné instanci Azure Virtual Network. Šablona nevytváří tyto virtuální počítače.
+> Musíte taky nasadit aspoň jeden vyhrazený virtuální počítač pro službu Active Directory a službu DNS ve stejné instanci Azure Virtual Network. Šablona nevytváří tyto virtuální počítače.
 >
 >
 
 
-## <a name="prepare-the-infrastructure-for-architectural-template-2"></a>Příprava infrastruktury pro architektury šablony 2
+## <a name="prepare-the-infrastructure-for-architectural-template-2"></a>Příprava infrastruktury na šablonu architektury 2
 
-Můžete použít tuto šablonu Azure Resource Manageru pro SAP, která pomůže zjednodušit nasazování prostředků infrastruktury požadované pro SAP architektury šablonu 2.
+Tuto šablonu Azure Resource Manager pro SAP můžete použít k jednoduššímu nasazení požadovaných prostředků infrastruktury pro architekturu SAP architektonické šablony 2.
 
-Zde je, kde lze získat šablony Azure Resource Manageru pro tento scénář nasazení:
+Tady je místo, kde můžete získat Azure Resource Manager šablony pro tento scénář nasazení:
 
-* [Image z Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [Tržiště imagí Azure s použitím spravovaných disků](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
+* [Obrázek Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Azure Marketplace Image pomocí Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
 * [Vlastní image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
 * [Vlastní image pomocí Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
 
 
-## <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Příprava infrastruktury pro architektury šablony 3
+## <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Příprava infrastruktury na šablonu architektury 3
 
-Můžete připravit infrastrukturu a konfigurace SAP s několika SID. Například můžete přidat další instanci SAP ASCS/SCS do *existující* konfigurace clusteru. Další informace najdete v tématu [nakonfigurovat další instanci SAP ASCS/SCS pro existující konfigurace clusteru pro vytvoření konfigurace několika identifikátorů SID SAP v Azure Resource Manageru][sap-ha-multi-sid-guide].
+Můžete připravit infrastrukturu a nakonfigurovat SAP pro více identifikátorů SID. Do *existující* konfigurace clusteru můžete například přidat další instanci SAP ASCS/SCS. Další informace najdete v tématu [Konfigurace další instance SAP ASCS/SCS pro existující konfiguraci clusteru pro vytvoření konfigurace SAP multi-SID v Azure Resource Manager][sap-ha-multi-sid-guide].
 
-Pokud chcete vytvořit nový cluster s několika SID, můžete použít s několika SID [šablony quickstart na Githubu](https://github.com/Azure/azure-quickstart-templates).
+Pokud chcete vytvořit nový cluster s více identifikátory SID, můžete použít [šablony pro rychlý Start pro](https://github.com/Azure/azure-quickstart-templates)více SID na GitHubu.
 
-Chcete-li vytvořit nový cluster s několika SID, je nutné nasadit následující tři šablony:
+Chcete-li vytvořit nový cluster s více identifikátory SID, je nutné nasadit následující tři šablony:
 
 * [Šablona ASCS/SCS](#ASCS-SCS-template)
-* [Databázové šablony](#database-template)
-* [Šablona aplikace servery](#application-servers-template)
+* [Šablona databáze](#database-template)
+* [Šablona aplikačních serverů](#application-servers-template)
 
-Následující části obsahují více podrobností o šablonách a parametry, které je potřeba zadat v šablonách.
+Následující části obsahují další podrobnosti o šablonách a parametrech, které je třeba zadat v šablonách.
 
-### <a name="ASCS-SCS-template"></a> Šablona ASCS/SCS
+### <a name="ASCS-SCS-template"></a>Šablona ASCS/SCS
 
-Šablona ASCS/SCS nasadí dva virtuální počítače, které můžete použít k vytvoření clusteru převzetí služeb při selhání Windows serveru, který je hostitelem více instancí ASCS/SCS.
+Šablona ASCS/SCS nasadí dva virtuální počítače, které můžete použít k vytvoření clusteru s podporou převzetí služeb při selhání se systémem Windows Server, který je hostitelem více instancí ASCS/SCS.
 
-Nastavení v šabloně několika identifikátorů SID ASCS/SCS [šablony s několika SID ASCS/SCS][sap-templates-3-tier-multisid-xscs-marketplace-image] or [ASCS/SCS multi-SID template by using Managed Disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md], zadejte hodnoty následujících parametrů:
+Šablonu ASCS/SCS s více identifikátory SID nastavíte tak, že v šabloně [ASCS/SCS SID][sap-templates-3-tier-multisid-xscs-marketplace-image] nebo [ASCS/SCS multi-SID pomocí Managed disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md]zadáte hodnoty pro následující parametry:
 
-- **Předpona prostředků**:  Nastavte zdroj předpona, která se používá jako předpona všechny prostředky, které jsou vytvořeny během nasazení. Protože prostředky nepatří do jediného systému SAP, předpona prostředku není identifikátor SID jednoho systému SAP.  Předpona, která musí být mezi tři až šest znaků.
-- **Stack – typ**: Vyberte typ zásobníku systému SAP. V závislosti na typu zásobníku Azure Load Balancer má jeden (ABAP a Java pouze) nebo dvě (ABAP + Java) privátních IP adres na systému SAP.
-- **Typ operačního systému**: Vyberte operační systém z virtuálních počítačů.
-- **Počet systémů SAP**: Vyberte počet systémů SAP, které chcete nainstalovat v tomto clusteru.
-- **Dostupnost systému**: Vyberte **HA**.
-- **Uživatelské jméno Admin a heslo správce**: Vytvoření nového uživatele, který můžete použít k přihlášení k počítači.
-- **Nové nebo existující podsíti**: Nastavte, zda chcete vytvořit novou virtuální síť a podsíť nebo použijte existující podsíť. Pokud již máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-- **Id podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá takto:
+- **Předpona prostředku**:  Nastavte předponu prostředku, která se používá k vytvoření předpony všech prostředků, které se vytvoří během nasazení. Vzhledem k tomu, že prostředky nepatří pouze k jednomu systému SAP, předpona prostředku není identifikátor SID jednoho systému SAP.  Předpona musí mít tři až šest znaků.
+- **Typ zásobníku**: Vyberte typ zásobníku systému SAP. V závislosti na typu zásobníku Azure Load Balancer má jednu (jenom ABAP nebo Java) nebo dvě privátní IP adresy (ABAP + Java) na jeden systém SAP.
+- **Typ operačního systému**: Vyberte operační systém virtuálních počítačů.
+- **Počet systému SAP**: Vyberte počet systémů SAP, které chcete v tomto clusteru nainstalovat.
+- **Dostupnost systému**: Vyberte **ha**.
+- **Uživatelské jméno správce a heslo správce**: Vytvořte nového uživatele, který se dá použít k přihlášení k počítači.
+- **Nová nebo existující podsíť**: Nastavte, jestli se má vytvořit nová virtuální síť a podsíť, nebo použijte existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
+- **ID podsítě**: Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto:
 
-  /subscriptions/\<id předplatného\>/resourceGroups/\<název skupiny prostředků\>/providers/Microsoft.Network/virtualNetworks/\<název virtuální sítě\>/subnets/ \<název podsítě\>
+  ID\<\<\>\</Subscriptions/předplatného/resourceGroups/název skupiny prostředků/Providers/Microsoft.Network/virtualNetworks/název\>virtuální sítě/subnets/\> \<název podsítě\>
 
-Šablona nasadí jednu instanci Azure Load Balancer, která podporuje několik systémů SAP vyhrazené:
+Šablona nasadí jednu instanci Azure Load Balancer, která podporuje více systémů SAP:
 
-- Instance ASC se konfigurují pro číslo instance 00, 10, 20...
-- Instance SCS se konfigurují pro instanci číslo od 01, 11, 21...
-- Instance ASCS zařadit do fronty replikace serveru (Lajících) (pouze Linux) se konfigurují pro číslo instance 02, 12, 22...
-- Instance SCS Lajících (pouze Linux) se konfigurují pro číslo instance 03, 13, 23...
+- Instance ASCS jsou nakonfigurované pro instance číslo 00, 10, 20...
+- Instance SCS jsou nakonfigurované pro číslo instance 01, 11, 21...
+- Instance serveru pro replikaci ASCS ve frontě (jenom Linux) se konfigurují pro instance číslo 02, 12, 22...
+- Instance SCS OLAJÍCÍCH (pouze Linux) jsou nakonfigurované pro instance číslo 03, 13, 23...
 
-Nástroje pro vyrovnávání zatížení obsahuje 1 VIP(s) (2 pro Linux), 1 x virtuální IP adresu pro ASCS/SCS a 1 x virtuální IP adresu pro Lajících (pouze Linux).
+Vyrovnávání zátěže obsahuje 1 VIP (2 pro Linux), 1x VIP pro ASCS/SCS a 1x VIP pro OLAJÍCÍCH (jenom Linux).
 
-#### <a name="0f3ee255-b31e-4b8a-a95a-d9ed6200468b"></a> Porty SAP ASCS/SCS
-Následující seznam obsahuje všechna pravidla (kde x je počet systému SAP, například 1, 2, 3...) pro vyrovnávání zatížení:
-- Windows specifické porty protokolu pro každý systém SAP: 445, 5985
-- Porty ASCS (číslo instance x0): 32x0, 36x0, 39x0, 81x0, 5x013, 5x014, 5x016
-- Porty SCS (číslo instance x1): 32x1, 33x1, 39x1, 81x1, 5x113, 5x114, 5x116
-- Porty ASCS Lajících v Linuxu (číslo instance x2): 33x2, 5x213, 5x214, 5x216
-- Porty SCS Lajících v Linuxu (číslo instance x3): 33x3, 5x313, 5x314, 5x316
+#### <a name="0f3ee255-b31e-4b8a-a95a-d9ed6200468b"></a>Porty SAP ASCS/SCS
+Následující seznam obsahuje všechna pravidla vyrovnávání zatížení (kde x je číslo systému SAP, například 1, 2, 3...):
+- Porty specifické pro systém Windows pro každý systém SAP: 445, 5985
+- ASCS porty (číslo instance x0): 32x0, 36x0, 39x0, 81x0, 5x013, 5x014, 5x016
+- SCS porty (číslo instance x1): 32x1, 33x1, 39x1, 81x1, 5x113, 5x114, 5x116
+- Porty OLAJÍCÍCH ASCS v systému Linux (číslo instance X2): 33x2, 5x213, 5x214, 5x216
+- SCS OLAJÍCÍCH porty na platformě Linux (číslo instance X3): 33x3, 5x313, 5x314, 5x316
 
-Nástroje pro vyrovnávání zatížení je nakonfigurován na použití následující porty sondy (kde x je počet systému SAP, například 1, 2, 3...):
-- Portu sondy nástroje pro vyrovnávání zatížení interní ASCS/SCS: 620x0
-- Zatížení Lajících interní nástroje pro vyrovnávání portu sondy (pouze Linux): 621x2
+Nástroj pro vyrovnávání zatížení je nakonfigurován tak, aby používal následující zkušební porty (kde x je číslo systému SAP, například 1, 2, 3...):
+- Port testu interního nástroje pro vyrovnávání zatížení ASCS/SCS: 620x0
+- OLAJÍCÍCH interního nástroje pro vyrovnávání zatížení (jenom Linux): 621x2
 
-### <a name="database-template"></a> Databázové šablony
+### <a name="database-template"></a>Šablona databáze
 
-Databáze šablona nasadí jeden nebo dva virtuální počítače, které můžete použít k instalaci systému pro správu relačních databází (RDBMS) pro jeden systému SAP. Například pokud nasadíte šablonu ASCS/SCS pro pět systémů SAP, musíte nasadit tuto šablonu pětkrát.
+Šablona databáze nasadí jeden nebo dva virtuální počítače, které můžete použít k instalaci systému pro správu relačních databází (RDBMS) pro jeden systém SAP. Pokud například nasadíte šablonu ASCS/SCS pro pět systémů SAP, budete muset tuto šablonu nasadit pětkrát.
 
-V šabloně několika identifikátorů SID databázi nastavit [šablona databází s několika SID][sap-templates-3-tier-multisid-db-marketplace-image] or [database multi-SID template by using Managed Disks][sap-templates-3-tier-multisid-db-marketplace-image-md], zadejte hodnoty následujících parametrů:
+Pokud chcete nastavit šablonu pro více identifikátorů SID databáze, v šabloně [Database multi-SID][sap-templates-3-tier-multisid-db-marketplace-image] nebo [šabloně s více identifikátory sid databáze pomocí Managed disks][sap-templates-3-tier-multisid-db-marketplace-image-md]zadejte hodnoty pro následující parametry:
 
-- **Id systému SAP**: Zadejte ID systému SAP systému SAP, který chcete nainstalovat. ID se používá jako předpona pro prostředky, které jsou nasazené.
-- **Typ operačního systému**: Vyberte operační systém z virtuálních počítačů.
-- **Hodnota DbType**: Vyberte typ databáze, kterou chcete nainstalovat na clusteru. Vyberte **SQL** Pokud chcete nainstalovat Microsoft SQL Server. Vyberte **HANA** Pokud budete chtít nainstalovat SAP HANA na virtuálních počítačích. Ujistěte se, že vyberete typ správný operační systém. Vyberte **Windows** pro SQL a vyberte Linuxovou distribuci pro HANA. Nástroj Azure Load Balancer, která je připojená k virtuálním počítačům je nakonfigurována pro podporu typ vybrané databáze:
-  * **SQL**: Vyrovnávání zatížení nástroje pro vyrovnávání zatížení port 1433. Ujistěte se, že tento port použít pro nastavení technologie AlwaysOn systému SQL Server.
-  * **HANA**: Načítání nástroje pro vyrovnávání – nástroj pro vyrovnávání zatížení porty 35015 a 35017. Ujistěte se, že instalace SAP HANA s instancí číslo **50**.
-  Nástroje pro vyrovnávání zatížení používá port testu 62550.
-- **Velikost systému SAP**: Nastavte počet protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP bude systém vyžadovat, požádejte SAP technologické partnery nebo systémový integrátor.
-- **Dostupnost systému**: Vyberte **HA**.
-- **Uživatelské jméno Admin a heslo správce**: Vytvoření nového uživatele, který můžete použít k přihlášení k počítači.
-- **Id podsítě**: Zadejte ID podsítě, který jste použili při nasazení ASCS/SCS šablony nebo ID podsítě, který byl vytvořen jako součást nasazení šablony ASCS/SCS.
+- **ID systému SAP**: Zadejte ID systému SAP pro systém SAP, který chcete nainstalovat. ID se používá jako předpona pro nasazené prostředky.
+- **Typ operačního systému**: Vyberte operační systém virtuálních počítačů.
+- **DbType**: Vyberte typ databáze, kterou chcete na clusteru nainstalovat. Pokud chcete nainstalovat Microsoft SQL Server, vyberte **SQL** . Pokud plánujete instalaci SAP HANA na virtuálních počítačích, vyberte **Hana** . Ujistěte se, že jste vybrali správný typ operačního systému. Vyberte **Windows** for SQL a vyberte distribuci Linux pro Hana. Azure Load Balancer, která je připojená k virtuálním počítačům, je nakonfigurovaná tak, aby podporovala vybraný typ databáze:
+  * **SQL**: Port vyrovnávání zatížení nástroje pro vyrovnávání zatížení 1433. Nezapomeňte použít tento port pro instalaci SQL Server AlwaysOn.
+  * **HANA**: Porty vyrovnávání zátěže vyrovnávání zatížení 35015 a 35017. Nezapomeňte nainstalovat SAP HANA s číslem instance **50**.
+  Nástroj pro vyrovnávání zatížení používá port testu 62550.
+- **Velikost systému SAP**: Nastavte počet SAP, který nový systém poskytuje. Pokud si nejste jistí, kolik SAP systém vyžaduje, požádejte svého partnera technologie SAP nebo systémový integrátor.
+- **Dostupnost systému**: Vyberte **ha**.
+- **Uživatelské jméno správce a heslo správce**: Vytvořte nového uživatele, který se dá použít k přihlášení k počítači.
+- **ID podsítě**: Zadejte ID podsítě, kterou jste použili během nasazování šablony ASCS/SCS, nebo ID podsítě, která byla vytvořena jako součást nasazení šablony ASCS/SCS.
 
-### <a name="application-servers-template"></a> Šablona aplikace servery
+### <a name="application-servers-template"></a>Šablona aplikačních serverů
 
-Šablona servery aplikace nasadí dvě nebo více virtuálních počítačů, které může sloužit jako aplikační Server SAP instance systému SAP jeden. Například pokud nasadíte šablonu ASCS/SCS pro pět systémů SAP, musíte nasadit tuto šablonu pětkrát.
+Šablona aplikačních serverů nasadí dva nebo víc virtuálních počítačů, které se dají použít jako instance aplikačního serveru SAP pro jeden systém SAP. Pokud například nasadíte šablonu ASCS/SCS pro pět systémů SAP, budete muset tuto šablonu nasadit pětkrát.
 
-V šabloně několika identifikátorů SID servery aplikace nastavit [šablony s několika SID servery aplikace][sap-templates-3-tier-multisid-apps-marketplace-image] or [application servers multi-SID template  by using Managed Disks][sap-templates-3-tier-multisid-apps-marketplace-image-md], zadejte hodnoty následujících parametrů:
+Chcete-li nastavit šablonu multi-SID aplikačních serverů, v [][sap-templates-3-tier-multisid-apps-marketplace-image] šabloně multi-SID aplikačních serverů nebo [aplikačních serverů s více SID pomocí Managed disks][sap-templates-3-tier-multisid-apps-marketplace-image-md]zadejte hodnoty pro následující parametry:
 
-  -  **Id systému SAP**: Zadejte ID systému SAP systému SAP, který chcete nainstalovat. ID se používá jako předpona pro prostředky, které jsou nasazené.
-  -  **Typ operačního systému**: Vyberte operační systém z virtuálních počítačů.
-  -  **Velikost systému SAP**: Počet protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP bude systém vyžadovat, požádejte SAP technologické partnery nebo systémový integrátor.
-  -  **Dostupnost systému**: Vyberte **HA**.
-  -  **Uživatelské jméno Admin a heslo správce**: Vytvoření nového uživatele, který můžete použít k přihlášení k počítači.
-  -  **Id podsítě**: Zadejte ID podsítě, který jste použili při nasazení ASCS/SCS šablony nebo ID podsítě, který byl vytvořen jako součást nasazení šablony ASCS/SCS.
+  -  **ID systému SAP**: Zadejte ID systému SAP pro systém SAP, který chcete nainstalovat. ID se používá jako předpona pro nasazené prostředky.
+  -  **Typ operačního systému**: Vyberte operační systém virtuálních počítačů.
+  -  **Velikost systému SAP**: Počet SAP, který nový systém poskytuje. Pokud si nejste jistí, kolik SAP systém vyžaduje, požádejte svého partnera technologie SAP nebo systémový integrátor.
+  -  **Dostupnost systému**: Vyberte **ha**.
+  -  **Uživatelské jméno správce a heslo správce**: Vytvořte nového uživatele, který se dá použít k přihlášení k počítači.
+  -  **ID podsítě**: Zadejte ID podsítě, kterou jste použili během nasazování šablony ASCS/SCS, nebo ID podsítě, která byla vytvořena jako součást nasazení šablony ASCS/SCS.
 
 
-## <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a> Virtuální síť Azure
-V našem příkladu je instance Azure Virtual Network adresní prostor 10.0.0.0/16. Existuje jedna podsíť nazývanou podsíť, s rozsahem adres 10.0.0.0/24. Všechny virtuální počítače a interní služby load balancer, jsou nasazené v této virtuální síti.
+## <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a>Virtual Network Azure
+V našem příkladu je adresní prostor instance služby Azure Virtual Network 10.0.0.0/16. Existuje jedna podsíť s názvem podsíť s rozsahem adres 10.0.0.0/24. Všechny virtuální počítače a interní nástroje pro vyrovnávání zatížení se nasazují v této virtuální síti.
 
 > [!IMPORTANT]
-> Neprovádějte žádné změny k nastavení sítě v hostovaném operačním systému. To zahrnuje IP adresy serverů DNS a podsítě. Konfigurace nastavení sítě v Azure. Služba Dynamic Host Configuration Protocol (DHCP) rozšíří vaše nastavení.
+> V hostovaném operačním systému neprovádějte žádné změny nastavení sítě. Patří sem IP adresy, servery DNS a podsíť. Nakonfigurujte všechna nastavení sítě v Azure. Služba DHCP (Dynamic Host Configuration Protocol) rozšíří vaše nastavení.
 >
 >
 
-## <a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a> DNS IP addresses
+## <a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a>IP adresy DNS
 
-Chcete-li nastavit požadované DNS IP adresy, proveďte následující kroky:
+Chcete-li nastavit požadované IP adresy DNS, proveďte následující kroky:
 
-1. Na webu Azure Portal v **servery DNS** podokno, ujistěte se, že vaše virtuální síť **servery DNS** je možnost nastavená na **vlastního DNS**.
-2. Vyberte nastavení na základě typu sítě, které máte. Další informace naleznete v následujících materiálech:
-   * [Připojení k podnikové síti (mezi různými místy)][planning-guide-2.2]: Přidejte IP adresy na místních serverech DNS.  
-   Můžete rozšířit místní servery DNS pro virtuální počítače, na kterých běží v Azure. V tomto scénáři můžete přidat IP adresy virtuálních počítačů Azure na které spouštíte službu DNS.
-   * Pro nasazení virtuálních počítačů, které jsou izolovány v Azure: Nasaďte další virtuální počítač ve stejné virtuální síti instanci, která slouží jako DNS server. Přidání IP adresy virtuální počítače Azure, které jste nastavili až do spuštění služby DNS.
+1. V Azure Portal v podokně **servery DNS** se ujistěte, že je možnost **servery DNS** virtuální sítě nastavená na **vlastní DNS**.
+2. Vyberte nastavení podle typu sítě, kterou máte. Další informace naleznete v následujících materiálech:
+   * [Připojení k podnikové síti (mezi místními sítěmi)][planning-guide-2.2]: Přidejte IP adresy místních serverů DNS.  
+   Místní servery DNS můžete rozmístit do virtuálních počítačů, které běží v Azure. V takovém scénáři můžete přidat IP adresy virtuálních počítačů Azure, na kterých spouštíte službu DNS.
+   * Pro nasazení virtuálních počítačů, které jsou izolované v Azure: Nasaďte další virtuální počítač ve stejné instanci Virtual Network, která slouží jako server DNS. Přidejte IP adresy virtuálních počítačů Azure, které jste nastavili pro spuštění služby DNS.
 
    ![Obrázek 2: Konfigurace serverů DNS pro Azure Virtual Network][sap-ha-guide-figure-3001]
 
    _**Obrázek 2:** Konfigurace serverů DNS pro Azure Virtual Network_
 
    > [!NOTE]
-   > Pokud změníte IP adresy serverů DNS, budete muset restartovat virtuální počítače Azure na použití změny a šíření nových serverů DNS.
+   > Pokud změníte IP adresy serverů DNS, budete muset virtuální počítače Azure restartovat, aby se změna projevila a rozšířila nové servery DNS.
    >
    >
 
-V našem příkladu služba DNS nainstalovaná a nakonfigurovaná na těchto virtuálních počítačích Windows:
+V našem příkladu je služba DNS nainstalovaná a nakonfigurovaná na těchto virtuálních počítačích s Windows:
 
 | Role virtuálního počítače | Název hostitele virtuálního počítače | Název síťové karty | Statická IP adresa |
 | --- | --- | --- | --- |
 | První server DNS |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
 | Druhý server DNS |domcontr-1 |pr1-nic-domcontr-1 |10.0.0.11 |
 
-## <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a> Názvy hostitelů a statické IP adresy pro clusterovou instanci SAP ASCS/SCS a Clusterové instance DBMS
+## <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>Názvy hostitelů a statické IP adresy pro clusterované instance SAP ASCS/SCS a clusterované instance DBMS
 
-Pro místní nasazení je třeba tyto názvy vyhrazené hostitele a IP adresy:
+Pro místní nasazení potřebujete tyto rezervované názvy hostitelů a IP adresy:
 
-| Virtuální hostitel název role | Název virtuálního hostitele | Virtuální statická IP adresa |
+| Role názvu virtuálního hostitele | Název virtuálního hostitele | Virtuální statická IP adresa |
 | --- | --- | --- |
-| SAP ASCS/SCS první cluster virtuální název hostitele (Správa clusteru) |pr1-ascs-vir |10.0.0.42 |
-| Název virtuálního hostitele instanci SAP ASCS/SCS |pr1-ascs-sap |10.0.0.43 |
-| K SAP DBMS druhý cluster virtuálního hostitele název (Správa clusteru) |pr1-dbms-vir |10.0.0.32 |
+| Název virtuálního hostitele SAP ASCS/SCS prvního clusteru (pro správu clusteru) |pr1-ascs-vir |10.0.0.42 |
+| Název virtuálního hostitele pro instanci SAP ASCS/SCS |pr1-ascs-sap |10.0.0.43 |
+| SAP DBMS druhý název virtuálního hostitele clusteru (Správa clusteru) |pr1-dbms-vir |10.0.0.32 |
 
-Při vytváření clusteru vytvořte virtuálního hostitele názvy pr1-ascs-vir a pr1. dbms vir a přidružené IP adresy, které spravují samotného clusteru. Informace o tom, jak to provést, najdete v tématu [shromažďovat uzly clusteru v konfiguraci clusteru][sap-high-availability-infrastructure-wsfc-shared-disk-collect-cluster-config].
+Při vytváření clusteru vytvořte názvy virtuálních hostitelů PR1-ASCS-Vir a PR1-DBMS-Vir a přidružené IP adresy, které spravují samotný cluster. Informace o tom, jak to provést, najdete v tématu [shromáždění uzlů clusteru v konfiguraci clusteru][sap-high-availability-infrastructure-wsfc-shared-disk-collect-cluster-config].
 
-Další dva názvy virtuálních hostitelů, pr1 ascs sap a pr1 databázového systému sap a přidružené IP adresy, můžete ručně vytvořit na serveru DNS. Tyto prostředky používat Clusterované instance SAP ASCS/SCS a Clusterové instance DBMS. Informace o tom, jak to provést, najdete v tématu [vytvořte název virtuálního hostitele pro clusterovou instanci SAP ASCS/SCS][sap-ha-guide-9.1.1].
+Na serveru DNS můžete ručně vytvořit další dva názvy virtuálních hostitelů, PR1-ASCS-SAP a PR1-DBMS-SAP a přidružené IP adresy. Tyto prostředky používají clusterovaná instance SAP ASCS/SCS a instance clusterovaného systému DBMS. Informace o tom, jak to provést, najdete v tématu [Vytvoření virtuálního hostitele pro clusterovanou instanci SAP ASCS/SCS][sap-ha-guide-9.1.1].
 
-## <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> Nastavení statické IP adresy pro SAP virtual machines
-Po nasazení virtuálních počítačů pro použití v clusteru, je nutné nastavit statických IP adres pro všechny virtuální počítače. To udělat v konfiguraci Azure Virtual Network a ne v hostovaném operačním systému.
+## <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Nastavení statických IP adres pro virtuální počítače SAP
+Po nasazení virtuálních počítačů, které se mají použít v clusteru, je potřeba nastavit statické IP adresy pro všechny virtuální počítače. Provedete to v konfiguraci Azure Virtual Network, a ne v hostovaném operačním systému.
 
-1. Na webu Azure Portal, vyberte **skupiny prostředků** > **síťová karta** > **nastavení** > **IP adresu**.
-2. V **IP adresy** podokně v části **přiřazení**vyberte **statické**. V **IP adresu** zadejte IP adresu, kterou chcete použít.
+1. V Azure Portal vyberte možnost **Skupina** > prostředků**Síťová karta** > **Nastavení** > **IP adresa**.
+2. V podokně **IP adresy** v části **přiřazení**vyberte **static**. Do pole **IP adresa** zadejte IP adresu, kterou chcete použít.
 
    > [!NOTE]
-   > Pokud změníte IP adresu síťové karty, budete muset restartovat virtuální počítače Azure na použití změny.  
+   > Pokud změníte IP adresu síťové karty, budete muset virtuální počítače Azure restartovat, aby se změny projevily.  
    >
    >
 
-   ![Obrázek 3: Nastavení statické IP adresy pro síťové karty jednotlivých virtuálních počítačů][sap-ha-guide-figure-3002]
+   ![Obrázek 3: Nastavte statické IP adresy pro síťovou kartu každého virtuálního počítače.][sap-ha-guide-figure-3002]
 
-   _**Obrázek 3:** Nastavení statické IP adresy pro síťové karty jednotlivých virtuálních počítačů_
+   _**Obrázek 3:** Nastavte statické IP adresy pro síťovou kartu každého virtuálního počítače._
 
-   Tento krok opakujte pro všechna síťová rozhraní, které se pro všechny virtuální počítače, včetně virtuálních počítačů, které chcete použít pro vaši službu Active Directory a DNS.
+   Tento krok opakujte pro všechna síťová rozhraní, tedy pro všechny virtuální počítače, včetně virtuálních počítačů, které chcete použít pro službu Active Directory nebo DNS.
 
 V našem příkladu máme tyto virtuální počítače a statické IP adresy:
 
 | Role virtuálního počítače | Název hostitele virtuálního počítače | Název síťové karty | Statická IP adresa |
 | --- | --- | --- | --- |
-| První instanci aplikačního serveru SAP |pr1-di-0 |pr1-nic-di-0 |10.0.0.50 |
-| Druhou instanci aplikační Server SAP |pr1-di-1 |pr1-nic-di-1 |10.0.0.51 |
+| První instance aplikačního serveru SAP |pr1-di-0 |pr1-nic-di-0 |10.0.0.50 |
+| Druhá instance aplikačního serveru SAP |pr1-di-1 |pr1-nic-di-1 |10.0.0.51 |
 | ... |... |... |... |
-| Poslední instanci aplikačního serveru SAP |pr1-di-5 |pr1-nic-di-5 |10.0.0.55 |
-| Prvním uzlu clusteru pro instanci ASCS/SCS |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
+| Poslední instance aplikačního serveru SAP |pr1-di-5 |pr1-nic-di-5 |10.0.0.55 |
+| První uzel clusteru pro instanci ASCS/SCS |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
 | Druhý uzel clusteru pro instanci ASCS/SCS |pr1-ascs-1 |pr1-nic-ascs-1 |10.0.0.41 |
-| Prvním uzlu clusteru pro instanci DBMS |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
-| Druhý uzel clusteru pro instanci DBMS |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
+| První uzel clusteru pro instanci systému DBMS |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
+| Druhý uzel clusteru pro instanci systému DBMS |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
 
-## <a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a> Nastavit statickou IP adresu nástroje pro vyrovnávání zatížení Azure interní
+## <a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>Nastavte statickou IP adresu pro interní nástroj pro vyrovnávání zatížení Azure.
 
-Vytvoří šablona SAP Azure Resource Manageru Azure interní nástroj pro vyrovnávání zatížení, který se používá pro SAP ASCS/SCS instanci clusteru a clusteru DBMS.
+Šablona SAP Azure Resource Manager vytvoří interní nástroj pro vyrovnávání zatížení Azure, který se používá pro cluster instancí SAP ASCS/SCS a cluster DBMS.
 
 > [!IMPORTANT]
-> IP adresa SAP ASCS/SCS název virtuálního hostitele je stejný jako IP adresu interního nástroje SAP ASCS/SCS: pr1-lb ASC.
-> IP adresa virtuální název tohoto správce databáze je stejný jako IP adresu interního nástroje DBMS: pr1-lb-dbms.
+> IP adresa názvu virtuálního hostitele SAP ASCS/SCS je stejná jako IP adresa pro interní nástroj pro vyrovnávání zatížení SAP ASCS/SCS: PR1-9,1-ASCS.
+> IP adresa virtuálního názvu systému DBMS je stejná jako IP adresa interního nástroje pro vyrovnávání zatížení systému DBMS: PR1-9,1-DBMS.
 >
 >
 
-Nastavení statické IP adresy Azure interního nástroje load balancer:
+Nastavení statické IP adresy pro interní nástroj pro vyrovnávání zatížení Azure:
 
-1. Počáteční nasazení nastaví IP adresu interního nástroje pro vyrovnávání na **dynamické**. Na webu Azure Portal na **IP adresy** podokně v části **přiřazení**vyberte **statické**.
-2. Nastavit IP adresu interního nástroje **pr1-lb-ascs** IP adresu virtuálního hostitele název instance SAP ASCS/SCS.
-3. Nastavit IP adresu interního nástroje **pr1-lb-dbms** IP adresu virtuálního hostitele název instance databázového systému.
+1. Počáteční nasazení nastaví IP adresu interního nástroje pro vyrovnávánízatížení na dynamickou. V Azure Portal v podokně **IP adresy** v části **přiřazení**vyberte **statické**.
+2. Nastavte IP adresu interního nástroje pro vyrovnávání zatížení **PR1-9,1-ASCS** na IP adresu názvu virtuálního hostitele instance SAP ASCS/SCS.
+3. Nastavte IP adresu interního nástroje pro vyrovnávání zatížení **PR1-9,1-DBMS** na IP adresu názvu virtuálního hostitele instance systému DBMS.
 
-   ![Obrázek 4: Nastavení statické IP adresy pro interní služby load balancer pro instanci SAP ASCS/SCS][sap-ha-guide-figure-3003]
+   ![Obrázek 4: Nastavení statických IP adres pro interní nástroj pro vyrovnávání zatížení pro instanci SAP ASCS/SCS][sap-ha-guide-figure-3003]
 
-   _**Obrázek 4:** Nastavení statické IP adresy pro interní služby load balancer pro instanci SAP ASCS/SCS_
+   _**Obrázek 4:** Nastavení statických IP adres pro interní nástroj pro vyrovnávání zatížení pro instanci SAP ASCS/SCS_
 
-V našem příkladu máme dvě Azure interní služby load balancer, které mají tyto statické IP adresy:
+V našem příkladu máme dva interní nástroje pro vyrovnávání zatížení Azure, které mají tyto statické IP adresy:
 
-| Role Vyrovnávání zatížení Azure interní | Název nástroje pro vyrovnávání zatížení Azure interní | Statická IP adresa |
+| Role interního nástroje pro vyrovnávání zatížení Azure | Název interního nástroje pro vyrovnávání zatížení Azure | Statická IP adresa |
 | --- | --- | --- |
-| SAP ASCS/SCS instance interního nástroje load balancer |pr1-lb-ascs |10.0.0.43 |
-| K SAP DBMS interní nástroj pro vyrovnávání zatížení |pr1-lb-dbms |10.0.0.33 |
+| Interní nástroj pro vyrovnávání zatížení instance SAP ASCS/SCS |pr1-lb-ascs |10.0.0.43 |
+| Interní nástroj pro vyrovnávání zatížení SAP DBMS |pr1-lb-dbms |10.0.0.33 |
 
 
-## <a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a> Výchozí pravidla pro Azure interního nástroje pro vyrovnávání zatížení ASCS/SCS
+## <a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a>Výchozí pravidla vyrovnávání zatížení ASCS/SCS pro interní nástroj pro vyrovnávání zatížení Azure
 
-SAP Azure Resource Manageru šablony vytvoří porty, které potřebujete:
-* Instance ABAP ASCS pomocí výchozí instance číslo 00
-* Instanci Java SCS pomocí výchozí instance číslo 01
+Šablona SAP Azure Resource Manager vytvoří porty, které potřebujete:
+* Instance ABAP ASCS s výchozí instancí Number 00
+* Instance Java SCS s výchozím číslem instance 01
 
-Při instalaci instance SAP ASCS/SCS, musíte použít číslo výchozí instance 00 ABAP ASCS instance a číslo instance výchozí 01 pro vaši instanci Java SCS.
+Při instalaci instance SAP ASCS/SCS je nutné použít výchozí číslo instance 00 pro instanci ABAP ASCS a výchozí číslo instance 01 pro instanci Java SCS.
 
-Dále vytvořte požadované interní koncové body pro SAP NetWeaver porty Vyrovnávání zatížení.
+Dále vytvořte požadované koncové body interního vyrovnávání zatížení pro porty SAP NetWeaver.
 
-K vytvoření požadované interního vyrovnávání koncové body, nejdřív vytvořte tyto koncové body pro porty SAP NetWeaver ABAP ASCS pro vyrovnávání zatížení:
+Chcete-li vytvořit požadované koncové body interního vyrovnávání zatížení, vytvořte nejprve tyto koncové body vyrovnávání zatížení pro porty ASCS SAP NetWeaver ABAP:
 
-| Název pravidla Vyrovnávání zatížení/služby | Výchozí čísla portů | Konkrétní porty (ASCS instance s instancí číslo 00) (Lajících s 10) |
+| Název pravidla služby/Vyrovnávání zatížení | Výchozí čísla portů | Konkrétní porty pro (ASCS instance s číslem instance 00) (OLAJÍCÍCH s 10) |
 | --- | --- | --- |
-| Server zařadit do fronty / *lbrule3200* |32\<InstanceNumber\> |3200 |
-| Server ABAP zpráv / *lbrule3600* |36\<InstanceNumber\> |3600 |
-| Interní zpráva ABAP / *lbrule3900* |39\<InstanceNumber\> |3900 |
-| Server zpráv HTTP / *Lbrule8100* |81\<InstanceNumber\> |8100 |
-| SAP spustit službu ASCS HTTP / *Lbrule50013* |5\<InstanceNumber\>13 |50013 |
-| SAP spustit službu ASCS HTTPS / *Lbrule50014* |5\<InstanceNumber\>14 |50014 |
-| Zařazení do fronty replikace / *Lbrule50016* |5\<InstanceNumber\>16 |50016 |
-| SAP spustit službu HTTP Lajících *Lbrule51013* |5\<InstanceNumber\>13 |51013 |
-| SAP spustit službu HTTP Lajících *Lbrule51014* |5\<InstanceNumber\>14 |51014 |
-| Vzdálená správa Windows (WinRM) *Lbrule5985* | |5985 |
-| Sdílené složky *Lbrule445* | |445 |
+| Server/ *lbrule3200* fronty |32\<InstanceNumber\> |3200 |
+| Server zpráv ABAP/ *lbrule3600* |36\<InstanceNumber\> |3600 |
+| Interní zpráva ABAP/ *lbrule3900* |39\<InstanceNumber\> |3900 |
+| HTTP/ *Lbrule8100* serveru zpráv |81\<InstanceNumber\> |8100 |
+| Služba SAP Start Service ASCS HTTP/ *Lbrule50013* |5\<InstanceNumber\>13 |50013 |
+| Služba SAP Start Service ASCS HTTPS/ *Lbrule50014* |5\<InstanceNumber\>14 |50014 |
+| Replikace do fronty/ *Lbrule50016* |5\<InstanceNumber\>16 |50016 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51013* |5\<InstanceNumber\>13 |51013 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51014* |5\<InstanceNumber\>14 |51014 |
+| Vzdálená správa systému Windows (WinRM) *Lbrule5985* | |5985 |
+| *Lbrule445* sdílení souborů | |445 |
 
-**Tabulka 1:** Čísla portů instancí SAP NetWeaver ABAP ASCS
+**Tabulka 1:** Čísla portů instancí ASCS SAP NetWeaver ABAP
 
-Vytvořte tyto koncové body pro SAP NetWeaver Java SCS porty pro vyrovnávání zatížení:
+Pak vytvořte tyto koncové body vyrovnávání zatížení pro porty SAP NetWeaver Java SCS:
 
-| Název pravidla Vyrovnávání zatížení/služby | Výchozí čísla portů | Konkrétní porty (SCS instance s instancí číslo 01) (Lajících s 11) |
+| Název pravidla služby/Vyrovnávání zatížení | Výchozí čísla portů | Konkrétní porty pro (instance SCS s číslem instance 01) (OLAJÍCÍCH s 11) |
 | --- | --- | --- |
-| Server zařadit do fronty / *lbrule3201* |32\<InstanceNumber\> |3201 |
-| Server brány / *lbrule3301* |33\<InstanceNumber\> |3301 |
-| Server zpráv Java / *lbrule3900* |39\<InstanceNumber\> |3901 |
-| Server zpráv HTTP / *Lbrule8101* |81\<InstanceNumber\> |8101 |
-| SAP spustit službu SCS HTTP / *Lbrule50113* |5\<InstanceNumber\>13 |50113 |
-| SAP spustit službu SCS HTTPS / *Lbrule50114* |5\<InstanceNumber\>14 |50114 |
-| Zařazení do fronty replikace / *Lbrule50116* |5\<InstanceNumber\>16 |50116 |
-| SAP spustit službu HTTP Lajících *Lbrule51113* |5\<InstanceNumber\>13 |51113 |
-| SAP spustit službu HTTP Lajících *Lbrule51114* |5\<InstanceNumber\>14 |51114 |
-| Služba WinRM *Lbrule5985* | |5985 |
-| Sdílené složky *Lbrule445* | |445 |
+| Server/ *lbrule3201* fronty |32\<InstanceNumber\> |3201 |
+| Server brány/ *lbrule3301* |33\<InstanceNumber\> |3301 |
+| Server zpráv Java/ *lbrule3900* |39\<InstanceNumber\> |3901 |
+| HTTP/ *Lbrule8101* serveru zpráv |81\<InstanceNumber\> |8101 |
+| Služba SAP Start Service SCS HTTP/ *Lbrule50113* |5\<InstanceNumber\>13 |50113 |
+| Služba SAP Start Service SCS HTTPS/ *Lbrule50114* |5\<InstanceNumber\>14 |50114 |
+| Replikace do fronty/ *Lbrule50116* |5\<InstanceNumber\>16 |50116 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51113* |5\<InstanceNumber\>13 |51113 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51114* |5\<InstanceNumber\>14 |51114 |
+| *Lbrule5985* WinRM | |5985 |
+| *Lbrule445* sdílení souborů | |445 |
 
-**Tabulka 2:** Čísla portů instancí SAP NetWeaver Java SCS
+**Tabulka 2:** Čísla portů pro instance SAP NetWeaver Java SCS
 
-![Obrázek 5: Výchozí pravidla pro Azure interního nástroje pro vyrovnávání zatížení ASCS/SCS][sap-ha-guide-figure-3004]
+![Obrázek 5: Výchozí pravidla vyrovnávání zatížení ASCS/SCS pro interní nástroj pro vyrovnávání zatížení Azure][sap-ha-guide-figure-3004]
 
-_**Obrázek 5:** Výchozí pravidla pro Azure interního nástroje pro vyrovnávání zatížení ASCS/SCS_
+_**Obrázek 5:** Výchozí pravidla vyrovnávání zatížení ASCS/SCS pro interní nástroj pro vyrovnávání zatížení Azure_
 
-Nastavte IP adresu zatížení vyrovnávání pr1-lb-DBMS na IP adresu virtuálního hostitele název instance databázového systému.
+Nastavte IP adresu nástroje pro vyrovnávání zatížení PR1-9,1-DBMS na IP adresu názvu virtuálního hostitele instance systému DBMS.
 
-### <a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Změna pravidel nástroje pro vyrovnávání zatížení Azure interní Vyrovnávání zatížení výchozí ASC/SCS
+### <a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a>Změna výchozích pravidel vyrovnávání zatížení ASCS/SCS pro interní nástroj pro vyrovnávání zatížení Azure
 
-Pokud chcete použít různá čísla pro instance SAP ASCS nebo SCS, musíte změnit názvy a hodnoty jejich porty z výchozí hodnoty.
+Pokud chcete pro instance SAP ASCS nebo SCS používat odlišná čísla, musíte změnit názvy a hodnoty jejich portů z výchozích hodnot.
 
-1. Na webu Azure Portal, vyberte  **\<SID\>nástroj pro vyrovnávání zatížení -lb ascs** > **pravidla Vyrovnávání zatížení**.
-2. Pro všechny zátěže pravidla, která patří k instanci SAP ASCS nebo SCS změňte tyto hodnoty:
+1. V Azure Portal vyberte  **\<\>ASCS** **pravidla**vyrovnávání zatížení pro > vyrovnávání zatížení.
+2. Pro všechna pravidla vyrovnávání zatížení, která patří do instance SAP ASCS nebo SCS, změňte tyto hodnoty:
 
    * Name
    * Port
-   * Port back-end
+   * Back-end port
 
-   Například pokud chcete změnit výchozí číslo instance ASCS od 00 do 31, budete muset provést změny pro všechny porty uvedené v tabulce 1.
+   Například pokud chcete změnit výchozí číslo instance ASCS z 00 na 31, je nutné provést změny pro všechny porty uvedené v tabulce 1.
 
-   Tady je příklad příkazu update pro port *lbrule3200*.
+   Tady je příklad aktualizace pro port *lbrule3200*.
 
-   ![Obrázek 6: Změna pravidel nástroje pro vyrovnávání zatížení Azure interní Vyrovnávání zatížení výchozí ASC/SCS][sap-ha-guide-figure-3005]
+   ![Obrázek 6: Změna výchozích pravidel vyrovnávání zatížení ASCS/SCS pro interní nástroj pro vyrovnávání zatížení Azure][sap-ha-guide-figure-3005]
 
-   _**Obrázek 6:** Změna pravidel nástroje pro vyrovnávání zatížení Azure interní Vyrovnávání zatížení výchozí ASC/SCS_
+   _**Obrázek 6:** Změna výchozích pravidel vyrovnávání zatížení ASCS/SCS pro interní nástroj pro vyrovnávání zatížení Azure_
 
-## <a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a> Přidání Windows virtuálních počítačů k doméně
+## <a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a>Přidání virtuálních počítačů s Windows do domény
 
-Po přiřazení statické IP adresy k virtuálním počítačům, přidejte virtuální počítače k doméně.
+Po přiřazení statické IP adresy k virtuálním počítačům přidejte virtuální počítače do domény.
 
-![Obrázek 7: Přidat virtuální počítač k doméně][sap-ha-guide-figure-3006]
+![Obrázek 7: Přidání virtuálního počítače do domény][sap-ha-guide-figure-3006]
 
-_**Obrázek 7:** Přidat virtuální počítač k doméně_
+_**Obrázek 7:** Přidání virtuálního počítače do domény_
 
-## <a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a> Přidat položky registru v obou uzlů clusteru z instance SAP ASCS/SCS
+## <a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a>Přidání položek registru na obou uzlech clusteru instance SAP ASCS/SCS
 
-Nástroj Azure Load Balancer má interního nástroje load balancer, že čas zavře připojení po určitou dobu nastavit jsou nečinné připojení (časový limit nečinnosti). SAP pracovní procesy v dialogovém okně otevřená připojení instancí SAP zařadit do fronty zpracovat jako první zařadit do fronty/dequeue požadavku musí být odeslán. Tato připojení zůstanou obvykle zavedené až do pracovního procesu nebo restartování procesu zařazení do fronty. Ale pokud je připojení nastavte dobu nečinnosti, nástroje pro vyrovnávání zatížení Azure interní zavře připojení. To není problém, protože pracovní proces SAP obnoví připojení k procesu zařazení do fronty, pokud už existuje. Tyto aktivity jsou popsány v trasování pro vývojáře SAP procesů, ale vytvářet velké množství další obsah v těchto trasování. Je vhodné změnit TCP/IP `KeepAliveTime` a `KeepAliveInterval` na oba uzly clusteru. Sloučit tyto změny v protokolu TCP/IP parametry s parametry profilu SAP, je popsáno dále v tomto článku.
+Azure Load Balancer má interní nástroj pro vyrovnávání zatížení, který ukončí připojení v případě, že jsou připojení po nastaveném časovém intervalu nečinné (nečinný časový limit). Pracovní procesy SAP v instancích dialogů otevřou připojení k procesu zařazení do fronty SAP ihned po odeslání první žádosti o zařazení do fronty nebo vyřazení z fronty. Tato připojení obvykle zůstanou zavedena, dokud se nerestartuje pracovní proces nebo proces zařazování do fronty. Pokud je ale připojení nečinné v nastaveném časovém intervalu, ukončí interní nástroj pro vyrovnávání zatížení Azure připojení. Nejedná se o problém, protože pracovní proces SAP znovu naváže připojení k procesu zařazování, pokud již neexistuje. Tyto aktivity jsou popsány v části vývojář sleduje procesy SAP, ale v těchto trasování vytvářejí velký objem obsahu navíc. Je vhodné změnit protokol TCP/IP `KeepAliveTime` a `KeepAliveInterval` oba uzly clusteru. Zkombinujte tyto změny do parametrů protokolu TCP/IP s parametry profilu SAP, které jsou popsány dále v článku.
 
-Chcete-li přidat položky registru v obou uzlů clusteru z instance SAP ASCS/SCS, nejprve přidejte tyto položky registru Windows na oba uzly clusteru Windows pro SAP ASCS/SCS:
+Chcete-li přidat položky registru na oba uzly clusteru instance SAP ASCS/SCS, přidejte tyto položky registru Windows na obou uzlech clusteru Windows pro SAP ASCS/SCS:
 
 | `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Název proměnné |`KeepAliveTime` |
-| Typ proměnné |REG_DWORD (decimální) |
-| Hodnota |120000 |
+| Typ proměnné |REG_DWORD (desetinné číslo) |
+| Value |120000 |
 | Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
-**Tabulka 3:** Změnit první parametr protokolu TCP/IP
+**Tabulka 3:** Změna prvního parametru protokolu TCP/IP
 
-Pak přidejte tato položka registru Windows na oba uzly clusteru Windows pro SAP ASCS/SCS:
+Pak přidejte tuto položku registru Windows na uzlech clusteru Windows pro SAP ASCS/SCS:
 
 | `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Název proměnné |`KeepAliveInterval` |
-| Typ proměnné |REG_DWORD (decimální) |
+| Typ proměnné |REG_DWORD (desetinné číslo) |
 | Value |120000 |
 | Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
-**Tabulka 4:** Změňte druhý parametr protokolu TCP/IP
+**Tabulka 4:** Změna druhého parametru protokolu TCP/IP
 
-Aby se změny projevily, restartujte obou uzlů clusteru.
+Chcete-li změny použít, restartujte oba uzly clusteru.
 
-## <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a> Nastavení clusteru převzetí služeb při selhání Windows serveru pro instanci SAP ASCS/SCS
+## <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>Nastavení clusteru s podporou převzetí služeb při selhání Windows serveru pro instanci SAP ASCS/SCS
 
-Nastavení clusteru převzetí služeb při selhání Windows serveru pro instanci SAP ASCS/SCS zahrnuje tyto úlohy:
+Nastavení clusteru s podporou převzetí služeb při selhání Windows serveru pro instanci SAP ASCS/SCS zahrnuje tyto úlohy:
 
-- Shromážděte uzly clusteru v konfiguraci clusteru.
+- Shromáždění uzlů clusteru v konfiguraci clusteru.
 - Nakonfigurujte určující sdílenou složku clusteru.
 
-### <a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a> Shromažďovat uzly clusteru v konfiguraci clusteru
+### <a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a>Shromáždění uzlů clusteru v konfiguraci clusteru
 
-1. Přidat Role a funkce průvodce přidejte clusteringu obou uzlů clusteru převzetí služeb při selhání.
-2. Nastavení clusteru převzetí služeb při selhání pomocí Správce clusteru převzetí služeb při selhání. V modulu Správce clusteru převzetí služeb při selhání vyberte **vytvořit Cluster**a pak přidejte název první clusteru (uzly A). Bez přidání druhého uzlu ještě; Přidání druhého uzlu v pozdějším kroku.
+1. V Průvodci přidáním role a funkce přidejte Clustering s podporou převzetí služeb při selhání do obou uzlů clusteru.
+2. Cluster s podporou převzetí služeb při selhání nastavte pomocí Správce clusteru s podporou převzetí služeb při selhání. V Správce clusteru s podporou převzetí služeb při selhání vyberte **vytvořit cluster**a pak přidejte jenom název prvního clusteru (Node a). Ještě Nepřidávat druhý uzel; druhý uzel přidáte v pozdějším kroku.
 
-   ![Obrázek 8: Přidat název serveru nebo na virtuálním počítači na prvním uzlu clusteru][sap-ha-guide-figure-3007]
+   ![Obrázek 8: Přidejte název serveru nebo virtuálního počítače prvního uzlu clusteru.][sap-ha-guide-figure-3007]
 
-   _**Obrázek 8:** Přidat název serveru nebo na virtuálním počítači na prvním uzlu clusteru_
+   _**Obrázek 8:** Přidejte název serveru nebo virtuálního počítače prvního uzlu clusteru._
 
-3. Zadejte síťový název (název hostitele virtuálního) clusteru.
+3. Zadejte název sítě (název virtuálního hostitele) clusteru.
 
-   ![Obrázek 9: Zadejte název clusteru][sap-ha-guide-figure-3008]
+   ![Obrázek 9: Zadejte název clusteru.][sap-ha-guide-figure-3008]
 
-   _**Obrázek 9:** Zadejte název clusteru_
+   _**Obrázek 9:** Zadejte název clusteru._
 
-4. Po vytvoření clusteru, spusťte test ověření clusteru.
+4. Po vytvoření clusteru spusťte test ověření clusteru.
 
-   ![Obrázek 10: Spusťte kontrolu ověření clusteru][sap-ha-guide-figure-3009]
+   ![Obrázek 10: Spustit kontrolu ověření clusteru][sap-ha-guide-figure-3009]
 
-   _**Obrázek 10:** Spusťte kontrolu ověření clusteru_
+   _**Obrázek 10:** Spustit kontrolu ověření clusteru_
 
-   Můžete ignorovat jakékoli upozornění o discích v tuto chvíli v procesu. Přidáte určující sdílené složky a SIOS sdílené disky později. V této fázi se nemusíte obávat o kvorum.
+   V tomto okamžiku můžete v tomto okamžiku ignorovat všechna upozornění týkající se disků. Později přidáte určující sdílenou složku a sdílené disky s příponou. V této fázi si nemusíte dělat starosti s kvorem.
 
-   ![Obrázek 11: Nenajde žádný disk kvora][sap-ha-guide-figure-3010]
+   ![Obrázek 11: Nenašel se žádný disk kvora.][sap-ha-guide-figure-3010]
 
-   _**Obrázek 11:** Nenajde žádný disk kvora_
+   _**Obrázek 11:** Nenašel se žádný disk kvora._
 
-   ![Obrázek 12: Základní prostředky clusteru potřebuje novou IP adresu][sap-ha-guide-figure-3011]
+   ![Obrázek 12: Základní prostředek clusteru potřebuje novou IP adresu.][sap-ha-guide-figure-3011]
 
-   _**Obrázek 12:** Základní prostředky clusteru potřebuje novou IP adresu_
+   _**Obrázek 12:** Základní prostředek clusteru potřebuje novou IP adresu._
 
-5. Změna IP adresy clusteru služby jádra. Clusteru nelze spustit dokud nezměníte IP adresu clusteru služby jádra, protože IP adresa serveru odkazuje na jednom uzlu virtuálního počítače. To udělat na **vlastnosti** stránky Clusterová služba core IP prostředku.
+5. Změňte IP adresu základní Clusterové služby. Cluster se nemůže spustit, dokud nezměníte IP adresu základní Clusterové služby, protože IP adresa serveru odkazuje na jeden z uzlů virtuálních počítačů. Udělejte to na stránce **vlastností** prostředku IP základní Clusterové služby.
 
-   Potřebujeme například chcete přiřadit IP adresu (v našem příkladu 10.0.0.42) pro clusteru virtuální hostitel název pr1-ascs-vir.
+   Například potřebujeme přiřadit IP adresu (v našem příkladu 10.0.0.42) pro název virtuálního hostitele clusteru PR1-ASCS-vir.
 
-   ![Obrázek 13: V dialogovém okně Vlastnosti změňte IP adresu][sap-ha-guide-figure-3012]
+   ![Obrázek 13: V dialogovém okně Vlastnosti změňte IP adresu.][sap-ha-guide-figure-3012]
 
-   _**Obrázek 13:** V **vlastnosti** dialogové okno pole, změňte IP adresu_
+   _**Obrázek 13:** V dialogovém okně **vlastnosti** změňte IP adresu._
 
-   ![Obrázek 14: Přiřaďte IP adresu, která je vyhrazena pro cluster][sap-ha-guide-figure-3013]
+   ![Obrázek 14: Přiřaďte IP adresu rezervovanou pro cluster.][sap-ha-guide-figure-3013]
 
-   _**Obrázek 14:** Přiřaďte IP adresu, která je vyhrazena pro cluster_
+   _**Obrázek 14:** Přiřaďte IP adresu rezervovanou pro cluster._
 
-6. Přeneste virtuální hostitel název clusteru online.
+6. Přepněte název virtuálního hostitele clusteru do režimu online.
 
-   ![Obrázek 15: Clusterová služba core je spuštěný, správnou IP adresou][sap-ha-guide-figure-3014]
+   ![Obrázek 15: Služba Cluster Core je spuštěná a má správnou IP adresu.][sap-ha-guide-figure-3014]
 
-   _**Obrázek 15:** Clusterová služba core je spuštěný, správnou IP adresou_
+   _**Obrázek 15:** Služba Cluster Core je spuštěná a má správnou IP adresu._
 
-7. Přidání druhého uzlu clusteru.
+7. Přidejte druhý uzel clusteru.
 
-   Teď, když jádro Clusterová služba je spuštěná, můžete přidat druhý uzel clusteru.
+   Teď, když je základní Clusterová služba v provozu, můžete přidat druhý uzel clusteru.
 
-   ![Přidat obrázek 16 druhém uzlu clusteru][sap-ha-guide-figure-3015]
+   ![Obrázek 16 přidání druhého uzlu clusteru][sap-ha-guide-figure-3015]
 
-   _**Obrázek 16:** Přidání druhého uzlu clusteru_
+   _**Obrázek 16:** Přidat druhý uzel clusteru_
 
-8. Zadejte název druhého uzlu clusterů hostitelů.
+8. Zadejte název druhého hostitele uzlu clusteru.
 
-   ![Obrázek 17: Zadejte název hostitele druhý uzel clusteru][sap-ha-guide-figure-3016]
+   ![Obrázek 17: Zadejte název hostitele druhého uzlu clusteru.][sap-ha-guide-figure-3016]
 
-   _**Obrázek 17:** Zadejte název hostitele druhý uzel clusteru_
+   _**Obrázek 17:** Zadejte název hostitele druhého uzlu clusteru._
 
    > [!IMPORTANT]
-   > Ujistěte se, že **přidat do clusteru veškeré oprávněné úložiště** zaškrtávací políčko je *není* vybrané.  
+   > Ujistěte se, že není zaškrtnuté políčko **Přidat do clusteru veškeré oprávněné úložiště** .  
    >
    >
 
-   ![Obrázek 18: Nevybírejte zaškrtávací políčko][sap-ha-guide-figure-3017]
+   ![Obrázek 18: Nezaškrtávejte políčko][sap-ha-guide-figure-3017]
 
-   _**Obrázek 18:** Proveďte *není* vyberte zaškrtávací políčko_
+   _**Obrázek 18:** Nezaškrtávejte políčko_
 
-   Můžete ignorovat varování o kvora a disky. Můžete nastavit kvora a sdílet disk později, jak je popsáno v [nainstalovat SIOS DataKeeper Cluster Edition pro disk clusteru sdílená složka s SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios].
+   Můžete ignorovat upozornění týkající se kvora a disků. Pak nastavíte kvorum a později budete disk sdílet, jak je popsáno v tématu Installing s datakeeped [Cluster Edition pro disk sdílené složky clusteru SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios].
 
-   ![Obrázek 19: Ignorovat upozornění na disku kvora][sap-ha-guide-figure-3018]
+   ![Obrázek 19: Ignorovat upozornění týkající se kvora disku][sap-ha-guide-figure-3018]
 
-   _**Obrázek 19:** Ignorovat upozornění na disku kvora_
+   _**Obrázek 19:** Ignorovat upozornění týkající se kvora disku_
 
 
-#### <a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a> Konfigurovat určující sdílenou složku clusteru
+#### <a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a>Konfigurace určující sdílené složky clusteru
 
 Konfigurace určující sdílené složky clusteru zahrnuje tyto úlohy:
 
-- Vytvoření sdílené složky.
-- Nastavení kvora s kopií clusteru sdílené složky souboru v modulu Správce clusteru převzetí služeb při selhání.
+- Vytvořte sdílenou složku.
+- Nastavte kvorum určující sdílenou složku v Správce clusteru s podporou převzetí služeb při selhání.
 
-#### <a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a> Vytvoření sdílené složky
+#### <a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a>Vytvoření sdílené složky
 
-1. Vyberte určující sdílená složka místo disk kvora. SIOS DataKeeper podporuje tuto možnost.
+1. Vyberte místo na disku kvora určující sdílenou složku. S parametrem datakeeped je tato možnost podporována.
 
-   V příkladech v tomto článku se určující sdílená složka na serveru služby Active Directory nebo DNS, na kterém běží v Azure. Určující sdílená složka se nazývá domcontr 0. Vzhledem k tomu, že by jste nakonfigurovali připojení VPN k Azure (přes Azure ExpressRoute nebo VPN Gateway), služby Active Directory a DNS je místní a není vhodná pro spuštění určující sdílená složka.
+   V příkladech v tomto článku je určující sdílená složka ve službě Active Directory nebo DNS serveru, který běží v Azure. Určující sdílená složka se nazývá domcontr-0. Vzhledem k tomu, že jste nakonfigurovali připojení VPN k Azure (prostřednictvím VPN Gateway nebo Azure ExpressRoute), služba Active Directory nebo DNS je místní a není vhodná pro spuštění určující sdílené složky.
 
    > [!NOTE]
-   > Pokud vaše služba Active Directory nebo DNS používá pouze v místním, nekonfigurujte služby Active Directory nebo Windows DNS operačního systému, na kterém běží v místním vaše určující sdílenou složku. Latence sítě mezi uzly clusteru, které jsou spuštěné v Azure Active Directory nebo DNS v místním může být příliš velký a způsobit problémy s připojením. Je potřeba nakonfigurovat určující sdílenou složku na virtuálním počítači Azure, na kterém běží blízko uzlu clusteru.  
+   > Pokud služba Active Directory nebo služba DNS běží jenom v místním prostředí, nekonfigurujte určující sdílenou složku ve službě Active Directory nebo v operačním systému Windows DNS, který je místně spuštěný. Latence sítě mezi uzly clusteru běžícími v Azure a službou Active Directory nebo místním DNS může být moc velká a způsobit problémy s připojením. Nezapomeňte nakonfigurovat určující sdílenou složku na virtuálním počítači Azure, na kterém běží blízko uzlu clusteru.  
    >
    >
 
-   Disk kvora potřebuje aspoň 1 024 MB volného místa. Doporučujeme, abyste 2 048 MB volného místa pro disk kvora.
+   Jednotka kvora potřebuje alespoň 1 024 MB volného místa. Pro jednotku kvora doporučujeme 2 048 MB volného místa.
 
 2. Přidejte objekt názvu clusteru.
 
-   ![Obrázek 20: Přiřazení oprávnění pro sdílenou složku pro objekt názvu clusteru][sap-ha-guide-figure-3019]
+   ![Obrázek 20: Přiřaďte oprávnění ke sdílené složce pro objekt názvu clusteru.][sap-ha-guide-figure-3019]
 
-   _**Obrázek 20:** Přiřazení oprávnění pro sdílenou složku pro objekt názvu clusteru_
+   _**Obrázek 20:** Přiřaďte oprávnění ke sdílené složce pro objekt názvu clusteru._
 
-   Ujistěte se, že oprávnění zahrnují oprávnění ke změně dat ve sdílené složce pro objekt názvu clusteru (v našem příkladu pr1. ascs vir$).
+   Ujistěte se, že oprávnění zahrnují autoritu pro změnu dat ve sdílené složce pro objekt názvu clusteru (v našem příkladu PR1-ASCS-vir $).
 
-3. Chcete-li přidat objekt názvu clusteru do seznamu, **přidat**. Změňte filtr, aby se vyhledávat objekty počítačů, kromě těch uvedených v obrázek 22.
+3. Pokud chcete do seznamu přidat objekt názvu clusteru, vyberte **Přidat**. Změňte filtr tak, aby kontroloval objekty počítače (kromě těch, které jsou znázorněny na obrázku 22).
 
-   ![Obrázek 21: Změnit typy objektů, které chcete zahrnout počítače][sap-ha-guide-figure-3020]
+   ![Obrázek 21: Změna typů objektů na zahrnutí počítačů][sap-ha-guide-figure-3020]
 
-   _**Obrázek 21:** Změna **typy objektů** zahrnout počítače_
+   _**Obrázek 21:** Změna **typů objektů** na zahrnutí počítačů_
 
-   ![Obrázek 22: Zaškrtněte políčko počítače][sap-ha-guide-figure-3021]
+   ![Obrázek 22: Zaškrtněte políčko počítače.][sap-ha-guide-figure-3021]
 
-   _**Obrázek 22:** Vyberte **počítače** zaškrtávací políčko_
+   _**Obrázek 22:** Zaškrtněte políčko **počítače** ._
 
-4. Zadejte objekt názvu clusteru, jak ukazuje obrázek 21. Protože byl vytvořen záznam, můžete změnit oprávnění, jak je znázorněno na obrázku 20.
+4. Zadejte objekt názvu clusteru, jak je znázorněno na obrázku 21. Vzhledem k tomu, že tento záznam již byl vytvořen, můžete změnit oprávnění, jak je znázorněno na obrázku 20.
 
-5. Vyberte **zabezpečení** podrobnější kartu sdílené složky a pak nastavte oprávnění pro objekt názvu clusteru.
+5. Vyberte kartu **zabezpečení** sdílené složky a pak nastavte podrobnější oprávnění pro objekt názvu clusteru.
 
-   ![Obrázek 23: Nastavit atributy zabezpečení pro objekt názvu clusteru na sdílenou složku kvora souboru][sap-ha-guide-figure-3022]
+   ![Obrázek 23: Nastavení atributů zabezpečení pro objekt názvu clusteru v kvoru sdílení souborů][sap-ha-guide-figure-3022]
 
-   _**Obrázek 23:** Nastavit atributy zabezpečení pro objekt názvu clusteru na sdílenou složku kvora souboru_
+   _**Obrázek 23:** Nastavení atributů zabezpečení pro objekt názvu clusteru v kvoru sdílení souborů_
 
-#### <a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a> Nastavení kvora s kopií clusteru sdílené složky souboru v modulu Správce clusteru převzetí služeb při selhání
+#### <a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a>Nastavte kvorum určující sdílenou složku v Správce clusteru s podporou převzetí služeb při selhání
 
-1. Otevřít kvora nastavení Průvodce konfigurací.
+1. Otevřete Průvodce konfigurací nastavení kvora.
 
-   ![Obrázek 24: Spuštění Průvodce konfigurací kvora clusteru nastavení][sap-ha-guide-figure-3023]
+   ![Obrázek 24: Spuštění Průvodce konfigurací nastavení kvora clusteru][sap-ha-guide-figure-3023]
 
-   _**Obrázek 24:** Spuštění Průvodce konfigurací kvora clusteru nastavení_
+   _**Obrázek 24:** Spuštění Průvodce konfigurací nastavení kvora clusteru_
 
-2. Na **vybrat možnosti konfigurace kvora** stránce **vybrat určující disk kvora**.
+2. Na stránce **Vybrat možnosti konfigurace kvora** vyberte **Vybrat určující disk kvora**.
 
-   ![Obrázek 25: Konfigurace kvora, které si můžete vybrat z][sap-ha-guide-figure-3024]
+   ![Obrázek 25: Konfigurace kvora, ze kterých si můžete vybrat][sap-ha-guide-figure-3024]
 
-   _**Obrázek 25:** Konfigurace kvora, které si můžete vybrat z_
+   _**Obrázek 25:** Konfigurace kvora, ze kterých si můžete vybrat_
 
-3. Na **vybrat určující disk kvora** stránce **nakonfigurovat určující sdílenou složku souboru**.
+3. Na stránce **Vybrat určující disk kvora** vyberte **Konfigurovat určující sdílenou složku**.
 
    ![Obrázek 26: Vybrat určující sdílenou složku][sap-ha-guide-figure-3025]
 
    _**Obrázek 26:** Vybrat určující sdílenou složku_
 
-4. Zadejte cestu UNC ke sdílené složce (v našem příkladu \\domcontr 0\FSW). Pokud chcete zobrazit seznam změn, můžete provést, vyberte **Další**.
+4. Zadejte cestu UNC ke sdílené složce (v našem příkladu \\domcontr-0\FSW). Chcete-li zobrazit seznam změn, které lze provést, vyberte možnost **Další**.
 
-   ![Obrázek 27: Definovat umístění sdílené složky souboru pro sdílenou složku s kopií clusteru][sap-ha-guide-figure-3026]
+   ![Obrázek 27: Zadejte umístění sdílené složky pro sdílenou složku s kopií clusteru.][sap-ha-guide-figure-3026]
 
-   _**Obrázek 27:** Definovat umístění sdílené složky souboru pro sdílenou složku s kopií clusteru_
+   _**Obrázek 27:** Zadejte umístění sdílené složky pro sdílenou složku s kopií clusteru._
 
-5. Vyberte možnost změny a pak vyberte **Další**. Je třeba úspěšně znovu nakonfigurovat konfiguraci clusteru, jak ukazuje obrázek 28:  
+5. Vyberte požadované změny a pak klikněte na tlačítko **Další**. Musíte úspěšně znovu nakonfigurovat konfiguraci clusteru, jak je znázorněno na obrázku 28:  
 
-   ![Obrázek 28: Potvrzení, že jste změnili konfiguraci clusteru][sap-ha-guide-figure-3027]
+   ![Obrázek 28: Potvrzení, že jste cluster znovu nakonfigurovali][sap-ha-guide-figure-3027]
 
-   _**Obrázek 28:** Potvrzení, že jste změnili konfiguraci clusteru_
+   _**Obrázek 28:** Potvrzení, že jste cluster znovu nakonfigurovali_
 
-Po úspěšné instalaci clusteru převzetí služeb při selhání Windows, budete muset změnit některé prahové hodnoty tak, aby se přizpůsobit převzetí služeb při selhání detekce podmínky v Azure. Změnit parametry jsou dokumentovány v článku [ladění prahové hodnoty sítě clusteru převzetí služeb při selhání][tuning-failover-cluster-network-thresholds]. Za předpokladu, že dva virtuální počítače, které tvoří konfiguraci clusteru Windows pro ASCS/SCS jsou ve stejné podsíti, změňte následující parametry na tyto hodnoty:
+Po úspěšné instalaci clusteru s podporou převzetí služeb při selhání v systému Windows je třeba změnit některé prahové hodnoty, aby bylo zjišťování převzetí služeb při selhání v Azure možné. Parametry, které se mají změnit, jsou popsané v části [ladění prahových hodnot sítě clusteru s podporou převzetí služeb][tuning-failover-cluster-network-thresholds] Za předpokladu, že vaše dva virtuální počítače, které tvoří konfiguraci clusteru Windows pro ASCS/SCS, jsou ve stejné podsíti, změňte následující parametry na tyto hodnoty:
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
 - RoutingHistoryLength = 30
 
-Tato nastavení se testují se zákazníky a nabízejí dobrý ohrožení zabezpečení. Jsou dostatečně odolné, ale také poskytují převzetí služeb při selhání, který je dostatečně rychle, aby se ve skutečné chybové podmínky softwaru SAP nebo v uzlu nebo selhání virtuálního počítače.
+Tato nastavení byla testována se zákazníky a nabízejí dobré zabezpečení. Jsou dostatečně odolné, ale také poskytují převzetí služeb při selhání, které je dostatečně rychlé v reálných stavových chybách na softwaru SAP nebo v případě selhání uzlu nebo virtuálního počítače.
 
-### <a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a> Instalace SIOS DataKeeper Cluster Edition pro sdílenou složku disk clusteru SAP ASCS/SCS
+### <a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a>Instalace s tím, že Clusterová edice DataKeeper pro disk sdílené složky clusteru SAP ASCS/SCS
 
-Nyní máte funkční konfigurace clusteringu převzetí služeb při selhání Windows serveru v Azure. Pokud chcete nainstalovat instanci SAP ASCS/SCS, musíte prostředek sdíleného disku. Nelze vytvořit sdílené síťové prostředky, které potřebujete v Azure. SIOS DataKeeper Cluster Edition je řešení třetích stran, které můžete použít k vytvoření sdílené síťové prostředky.
+Teď máte v Azure fungující konfiguraci clusteringu s podporou převzetí služeb při selhání ve Windows serveru. K instalaci instance SAP ASCS/SCS potřebujete prostředek sdíleného disku. V Azure nemůžete vytvořit prostředky sdíleného disku, které potřebujete. V případě clusteru DataKeeper Edition je řešení třetí strany, které můžete použít k vytvoření prostředků sdíleného disku.
 
-Instalace pro sdílenou složku disk clusteru SAP ASCS/SCS SIOS DataKeeper Cluster Edition zahrnuje tyto úlohy:
+Instalace s tím, že Clusterová edice DataKeeper pro sdílený disk clusteru SAP ASCS/SCS zahrnuje tyto úlohy:
 
-- Přidáte rozhraní Microsoft .NET Framework 3.5.
-- Nainstalujte SIOS DataKeeper.
-- SIOS DataKeeper nastavení.
+- Přidejte Microsoft .NET Framework 3,5.
+- Nainstalujte s DataKeeper.
+- Nastavte s datakeep.
 
-### <a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a> Přidání rozhraní .NET Framework 3.5
-Rozhraní .NET framework 3.5 není automaticky aktivuje nebo nainstalovaný v systému Windows Server 2012 R2. Protože SIOS DataKeeper vyžaduje .NET na všech uzlech, ve kterém nainstalujete DataKeeper, je nutné nainstalovat rozhraní .NET Framework 3.5 na hostovaný operační systém všech virtuálních počítačů v clusteru.
+### <a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a>Přidat .NET Framework 3,5
+.NET Framework 3,5 není automaticky aktivován nebo nainstalován v systému Windows Server 2012 R2. Vzhledem k tomu, že s DataKeeper vyžaduje, aby rozhraní .NET bylo na všech uzlech, kde instalujete DataKeeper, musíte nainstalovat .NET Framework 3,5 v hostovaném operačním systému všech virtuálních počítačů v clusteru.
 
-Existují dva způsoby, jak přidat rozhraní .NET Framework 3.5:
+Existují dva způsoby, jak přidat .NET Framework 3,5:
 
-- Pomocí funkce Průvodce přidáním rolí a ve Windows, jak ukazuje obrázek 29:
+- Pomocí Průvodce přidáním rolí a funkcí v systému Windows, jak je znázorněno na obrázku 29:
 
-  ![Obrázek 29: Instalace rozhraní .NET Framework 3.5 pomocí funkce Průvodce přidáním rolí a][sap-ha-guide-figure-3028]
+  ![Obrázek 29: Instalace .NET Framework 3,5 pomocí Průvodce přidáním rolí a funkcí][sap-ha-guide-figure-3028]
 
-  _**Obrázek 29:** Instalace rozhraní .NET Framework 3.5 pomocí funkce Průvodce přidáním rolí a_
+  _**Obrázek 29:** Instalace .NET Framework 3,5 pomocí Průvodce přidáním rolí a funkcí_
 
-  ![Obrázek 30: Průběh instalace panelu při instalaci rozhraní .NET Framework 3.5 pomocí funkce Průvodce přidáním rolí a][sap-ha-guide-figure-3029]
+  ![Obrázek 30: Indikátor průběhu instalace při instalaci .NET Framework 3,5 pomocí Průvodce přidáním rolí a funkcí][sap-ha-guide-figure-3029]
 
-  _**Obrázek 30:** Průběh instalace panelu při instalaci rozhraní .NET Framework 3.5 pomocí funkce Průvodce přidáním rolí a_
+  _**Obrázek 30:** Indikátor průběhu instalace při instalaci .NET Framework 3,5 pomocí Průvodce přidáním rolí a funkcí_
 
-- Pomocí nástroje dism.exe příkazového řádku. Pro tento typ instalace potřebujete přístup k adresáři SxS na instalačním médiu nástroje Windows. Na příkazovém řádku se zvýšenými oprávněními zadejte tento příkaz:
+- Použijte nástroj příkazového řádku DISM. exe. Pro tento typ instalace budete potřebovat přístup k adresáři SxS na instalačním médiu Windows. Na příkazovém řádku se zvýšenými oprávněními zadejte tento příkaz:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess
   ```
 
-### <a name="dd41d5a2-8083-415b-9878-839652812102"></a> Nainstalujte SIOS DataKeeper
+### <a name="dd41d5a2-8083-415b-9878-839652812102"></a>Instalace s DataKeeper
 
-SIOS DataKeeper Cluster Edition nainstalujte na každý uzel v clusteru. Vytvořit virtuální sdílené úložiště se SIOS Datakeeperem, synchronizované zrcadlení a potom simulovat clusteru sdíleného úložiště.
+Nainstalujte cluster s DataKeeper Edition do každého uzlu v clusteru. Pokud chcete vytvořit virtuální sdílené úložiště s využitím DataKeeper, vytvořte synchronizovaný zrcadlový svazek a pak Simulujte sdílené úložiště clusteru.
 
-Před instalací softwaru SIOS vytvořte DataKeeperSvc doména uživatel.
+Než nainstalujete software s, vytvořte uživatele domény DataKeeperSvc.
 
 > [!NOTE]
-> Přidejte uživatele domény DataKeeperSvc do skupiny Local Administrator na obou uzlů clusteru.
+> Přidejte uživatele domény DataKeeperSvc do místní skupiny správců na obou uzlech clusteru.
 >
 >
 
-Chcete-li nainstalovat SIOS DataKeeper:
+Instalace s DataKeeper:
 
-1. Nainstalujte SIOS software na oba uzly clusteru.
+1. Nainstalujte software v obou uzlech clusteru.
 
-   ![SIOS instalačního programu][sap-ha-guide-figure-3030]
+   ![S instalačním programem][sap-ha-guide-figure-3030]
 
-   ![Obrázek 31: První stránka Instalace SIOS DataKeeper][sap-ha-guide-figure-3031]
+   ![Obrázek 31: První stránka Instalace s datakeeping][sap-ha-guide-figure-3031]
 
-   _**Obrázek 31:** První stránka Instalace SIOS DataKeeper_
+   _**Obrázek 31:** První stránka Instalace s datakeeping_
 
 2. V dialogovém okně vyberte **Ano**.
 
-   ![Obrázek 32: DataKeeper vás informuje, že služba se deaktivuje.][sap-ha-guide-figure-3032]
+   ![Obrázek 32: DataKeeper vás informuje, že služba bude zakázaná.][sap-ha-guide-figure-3032]
 
-   _**Obrázek 32:** DataKeeper vás informuje, že služba se deaktivuje._
+   _**Obrázek 32:** DataKeeper vás informuje, že služba bude zakázaná._
 
-3. V dialogovém okně, doporučujeme vám, že vyberete **účet domény nebo serveru**.
+3. V dialogovém okně doporučujeme vybrat možnost **účet domény nebo serveru**.
 
-   ![Obrázek 33: Výběr uživatele pro SIOS DataKeeper][sap-ha-guide-figure-3033]
+   ![Obrázek 33: Výběr uživatele pro s datakeeping][sap-ha-guide-figure-3033]
 
-   _**Obrázek 33:** Výběr uživatele pro SIOS DataKeeper_
+   _**Obrázek 33:** Výběr uživatele pro s datakeeping_
 
-4. Zadejte uživatelské jméno účtu domény a heslo, které jste vytvořili pro SIOS DataKeeper.
+4. Zadejte uživatelské jméno a heslo účtu domény, které jste vytvořili pro datakeeping.
 
-   ![Obrázek 34: Zadejte doménu uživatelské jméno a heslo pro instalaci SIOS DataKeeper][sap-ha-guide-figure-3034]
+   ![Obrázek 34: Zadejte uživatelské jméno a heslo domény pro instalaci s názvem s instalací.][sap-ha-guide-figure-3034]
 
-   _**Obrázek 34:** Zadejte doménu uživatelské jméno a heslo pro instalaci SIOS DataKeeper_
+   _**Obrázek 34:** Zadejte uživatelské jméno a heslo domény pro instalaci s názvem s instalací._
 
-5. Licenční klíč pro vaši instanci SIOS DataKeeper nainstalujte, jak ukazuje obrázek 35.
+5. Nainstalujte licenční klíč pro vaši instanci s tím, jak je znázorněno na obrázku 35.
 
-   ![Obrázek 35: Zadejte svůj SIOS DataKeeper licenční klíč][sap-ha-guide-figure-3035]
+   ![Obrázek 35: Zadejte svůj licenční klíč s klíčem datakeeping.][sap-ha-guide-figure-3035]
 
-   _**Obrázek 35:** Zadejte svůj SIOS DataKeeper licenční klíč_
+   _**Obrázek 35:** Zadejte svůj licenční klíč s klíčem datakeeping._
 
 6. Po zobrazení výzvy restartujte virtuální počítač.
 
-### <a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a> Nastavit SIOS DataKeeper
+### <a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a>Nastavení s s datakeeping
 
-Po instalaci SIOS DataKeeper na oba uzly spusťte konfiguraci. Cíl konfigurace je, aby synchronní replikaci dat mezi další disky, které jsou připojeny ke každému z virtuálních počítačů.
+Po instalaci s DataKeeper na oba uzly spusťte konfiguraci. Cílem konfigurace je synchronní replikace dat mezi dalšími disky, které jsou připojené ke každému virtuálnímu počítači.
 
-1. Spusťte nástroj Správa DataKeeper a konfigurace a pak vyberte **připojení serveru**.
+1. Spusťte nástroj pro správu a konfiguraci datakeep a pak vyberte **připojit server**.
 
-   ![Obrázek 36: SIOS DataKeeper Správa a konfigurace nástroje][sap-ha-guide-figure-3036]
+   ![Obrázek 36: Správa s nástrojem datakeeping a Configuration Tool][sap-ha-guide-figure-3036]
 
-   _**Obrázek 36:** SIOS DataKeeper Správa a konfigurace nástroje_
+   _**Obrázek 36:** Správa s nástrojem datakeeping a Configuration Tool_
 
-2. Zadejte název nebo adresu protokolu TCP/IP na prvním uzlu, Správa a konfigurace nástroje by měla připojit na a druhý krok, druhý uzel.
+2. Zadejte název nebo TCP/IP adresu prvního uzlu, ke kterému se má nástroj pro správu a konfiguraci připojit, a v druhém kroku druhý uzel.
 
-   ![Obrázek 37: Vložit název nebo adresa protokolu TCP/IP na prvním uzlu pro správu a konfigurační nástroj má připojit na a druhý krok, druhý uzel][sap-ha-guide-figure-3037]
+   ![Obrázek 37: Vložte název nebo TCP/IP adresu prvního uzlu, ke kterému se má nástroj pro správu a konfiguraci připojit, a v druhém kroku druhý uzel.][sap-ha-guide-figure-3037]
 
-   _**Obrázek 37:** Vložit název nebo adresa protokolu TCP/IP na prvním uzlu pro správu a konfigurační nástroj má připojit na a druhý krok, druhý uzel_
+   _**Obrázek 37:** Vložte název nebo TCP/IP adresu prvního uzlu, ke kterému se má nástroj pro správu a konfiguraci připojit, a v druhém kroku druhý uzel._
 
-3. Vytvoření úlohy replikace mezi dvěma uzly.
+3. Vytvořte úlohu replikace mezi dvěma uzly.
 
    ![Obrázek 38: Vytvoření úlohy replikace][sap-ha-guide-figure-3038]
 
@@ -847,48 +847,48 @@ Po instalaci SIOS DataKeeper na oba uzly spusťte konfiguraci. Cíl konfigurace 
 
    Průvodce vás provede procesem vytvoření úlohy replikace.
 
-4. Definujte název úlohy replikace.
+4. Zadejte název úlohy replikace.
 
-   ![Obrázek 39: Definujte název úlohy replikace][sap-ha-guide-figure-3039]
+   ![Obrázek 39: Zadejte název úlohy replikace.][sap-ha-guide-figure-3039]
 
-   _**Obrázek 39:** Definujte název úlohy replikace_
+   _**Obrázek 39:** Zadejte název úlohy replikace._
 
-   ![Obrázek 40: Definuje základní data pro uzel, který by měl být aktuální zdrojový uzel][sap-ha-guide-figure-3040]
+   ![Obrázek 40: Definujte základní data pro uzel, který by měl být aktuálním zdrojovým uzlem.][sap-ha-guide-figure-3040]
 
-   _**Obrázek 40:** Definuje základní data pro uzel, který by měl být aktuální zdrojový uzel_
+   _**Obrázek 40:** Definujte základní data pro uzel, který by měl být aktuálním zdrojovým uzlem._
 
-5. Zadejte název, adresa TCP/IP a diskový svazek cílový uzel.
+5. Zadejte název, TCP/IP adresu a diskový svazek cílového uzlu.
 
-   ![Obrázek 41: Zadejte název, adresa TCP/IP a diskový svazek aktuální cílový uzel][sap-ha-guide-figure-3041]
+   ![Obrázek 41: Zadejte název, TCP/IP adresu a diskový svazek aktuálního cílového uzlu.][sap-ha-guide-figure-3041]
 
-   _**Obrázek 41:** Zadejte název, adresa TCP/IP a diskový svazek aktuální cílový uzel_
+   _**Obrázek 41:** Zadejte název, TCP/IP adresu a diskový svazek aktuálního cílového uzlu._
 
-6. Definujte algoritmy komprese. V našem příkladu doporučujeme kompresi streamu replikace. Zejména v situacích, opětovné synchronizace komprese streamu replikace výrazně snižuje čas synchronizace. Komprese používá prostředky procesoru a paměť RAM virtuálního počítače. Jak se zvyšuje rychlost komprese zločinců se stejně objem prostředků procesoru, které se používají. Můžete upravit tato nastavení později.
+6. Definujte algoritmy komprese. V našem příkladu doporučujeme komprimovat datový proud replikace. Obzvláště v situacích opakované synchronizace se komprese streamu replikace výrazně zkracuje i doba opakované synchronizace. Komprese používá prostředky procesoru a paměti RAM virtuálního počítače. Jak se zvyšuje rychlost komprese, takže se použije svazek prostředků procesoru. Toto nastavení můžete upravit později.
 
-7. Další nastavení, které je potřeba zkontrolovat je, zda dojde k replikaci synchronně nebo asynchronně. Když chráníte konfigurace SAP ASCS/SCS, je nutné použít synchronní replikace.  
+7. Další nastavení, které je třeba ověřit, je, zda replikace probíhá asynchronně nebo synchronně. Při ochraně konfigurací SAP ASCS/SCS je nutné použít synchronní replikaci.  
 
-   ![Obrázek 42: Zadejte podrobnosti replikace][sap-ha-guide-figure-3042]
+   ![Obrázek 42: Definování podrobností replikace][sap-ha-guide-figure-3042]
 
-   _**Obrázek 42:** Zadejte podrobnosti replikace_
+   _**Obrázek 42:** Definování podrobností replikace_
 
-8. Definujte, jestli by měly být zastoupeny svazek, který se replikuje pomocí replikace úlohy ke konfiguraci clusteru převzetí služeb při selhání Windows serveru jako sdíleného disku. Konfigurace SAP ASCS/SCS, vyberte **Ano** tak, aby Windows cluster považuje replikovaného svazku sdíleného disku, který můžete použít jako svazek clusteru.
+8. Určete, zda má být svazek replikovaný úlohou replikace reprezentován konfigurací clusteru s podporou převzetí služeb při selhání systému Windows Server jako sdílený disk. Pro konfiguraci SAP ASCS/SCS vyberte **Ano** , aby se cluster Windows mohl replikovat replikovaný svazek jako sdílený disk, který může použít jako svazek clusteru.
 
-   ![Obrázek 43: Vyberte Ano. Pokud chcete nastavit replikovaného svazku jako svazek clusteru][sap-ha-guide-figure-3043]
+   ![Obrázek 43: Vyberte Ano a nastavte replikovaný svazek jako svazek clusteru.][sap-ha-guide-figure-3043]
 
-   _**Obrázek 43:** Vyberte **Ano** nastavení replikovaného svazku jako svazek clusteru_
+   _**Obrázek 43:** Vyberte **Ano** a nastavte replikovaný svazek jako svazek clusteru._
 
-   Po vytvoření svazku DataKeeper Správa a konfigurace nástroje ukazuje, že úloha replikace je aktivní.
+   Po vytvoření svazku se v nástroji pro správu a konfiguraci datakeepu zobrazí, že je úloha replikace aktivní.
 
-   ![Obrázek 44: Synchronní zrcadlení DataKeeper SAP ASCS/SCS sdílené složky disku je aktivní][sap-ha-guide-figure-3044]
+   ![Obrázek 44: Synchronní zrcadlení datakeeping pro disk sdílené složky SAP ASCS/SCS je aktivní.][sap-ha-guide-figure-3044]
 
-   _**Obrázek 44:** Synchronní zrcadlení DataKeeper SAP ASCS/SCS sdílené složky disku je aktivní_
+   _**Obrázek 44:** Synchronní zrcadlení datakeeping pro disk sdílené složky SAP ASCS/SCS je aktivní._
 
-   Správce clusteru převzetí služeb při selhání disku jako disku DataKeeper teď zobrazuje, jak ukazuje obrázek 45:
+   Správce clusteru s podporou převzetí služeb při selhání nyní zobrazuje disk jako datakeeping disk, jak je znázorněno na obrázku 45:
 
-   ![Obrázek 45: Správce clusteru převzetí služeb při selhání se zobrazí na disku, který DataKeeper replikovaná][sap-ha-guide-figure-3045]
+   ![Obrázek 45: Správce clusteru s podporou převzetí služeb při selhání zobrazuje disk, který replikuje datakeeping.][sap-ha-guide-figure-3045]
 
-   _**Obrázek 45:** Správce clusteru převzetí služeb při selhání se zobrazí na disku, který DataKeeper replikovaná_
+   _**Obrázek 45:** Správce clusteru s podporou převzetí služeb při selhání zobrazuje disk, který replikuje datakeeping._
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Instalace SAP NetWeaver HA pomocí Windows cluster převzetí služeb při selhání a sdíleného disku pro instanci SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk]
+* [Instalace SAP NetWeaver HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro instanci SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk]

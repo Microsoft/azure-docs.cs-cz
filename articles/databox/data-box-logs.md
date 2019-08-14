@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 309dc8e1fd15ae4088ed6ee87bdbb8aa4d636951
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848569"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934195"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy
 
@@ -197,7 +197,7 @@ Soubory kusovníku nebo manifestu se také zkopírují do účtu služby Azure S
 
 Během nahrávání dat do Azure se vytvoří protokol kopírování.
 
-### <a name="copylog"></a>Copylog
+### <a name="copy-log"></a>Kopírovat protokol
 
 Pro každé zpracovávané pořadí vytvoří služba Data Box v přidruženém účtu úložiště protokol kopírování. Protokol kopírování má celkový počet souborů, které byly odeslány, a počet souborů, které byly při kopírování dat z Data Box do vašeho účtu úložiště Azure vydány chybou.
 
@@ -252,6 +252,8 @@ Tady je příklad protokolu kopírování, ve kterém se nahrávání dokončilo
 ### <a name="upload-completed-with-warnings"></a>Nahrávání se dokončilo s upozorněními.
 
 Nahrávání do Azure se dokončí s upozorněními, pokud data obsahovala názvy kontejnerů, objektů BLOB nebo souborů, které nebyly v souladu se zásadami vytváření názvů Azure, a názvy se změnily, aby se nahrály do Azure
+
+![Cesta ke kopírování protokolu v okně s přehledem po dokončení s upozorněními](media/data-box-logs/copy-log-path-3.png)
 
 Tady je příklad protokolu kopírování, ve kterém se při nahrávání dat do Azure přejmenovaly kontejnery, které nesplňovaly zásady vytváření názvů Azure.
 
@@ -409,6 +411,6 @@ Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se [řešit problémy s data box a data box Heavy](data-box-troubleshoot.md).

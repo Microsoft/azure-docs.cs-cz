@@ -1,6 +1,6 @@
 ---
-title: Začínáme s automatickým Škálováním v Azure
-description: Zjistěte, jak škálovat prostředek webové aplikace, Cloudovou službu, virtuálního počítače nebo virtuálního počítače Škálovací sady v Azure.
+title: Začínáme s automatické škálování v Azure
+description: Naučte se škálovat webovou aplikaci prostředků, cloudovou službu, virtuální počítač nebo sadu škálování virtuálních počítačů v Azure.
 author: rajram
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,114 +9,114 @@ ms.date: 07/07/2017
 ms.author: rajram
 ms.subservice: autoscale
 ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60788492"
 ---
-# <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatickým Škálováním v Azure
-Tento článek popisuje, jak vytvořit nastavení automatického škálování pro váš prostředek na portálu Microsoft Azure.
+# <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatické škálování v Azure
+Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
 
-Automatické škálování služby Azure Monitor se týká pouze [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
-## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Zjištění nastavení automatického škálování v rámci vašeho předplatného
-Je možné vyhledat všechny prostředky, pro které se vztahuje ve službě Azure Monitor automatického škálování. Pomocí následujícího postupu podrobný názorný postup:
+## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Zjištění nastavení automatického škálování v předplatném
+Můžete zjistit všechny prostředky, pro které je možné automatické škálování použít v Azure Monitor. Podrobný návod k použití následujících kroků:
 
-1. Otevřít [webu Azure portal.][1]
-1. Klikněte na ikonu Azure Monitor v levém podokně.
-  ![Otevřete Azure Monitor][2]
-1. Klikněte na tlačítko **automatického škálování** zobrazit všechny prostředky, pro které se vztahuje, spolu s jejich aktuální stav automatického škálování automatického škálování.
-  ![Zjistit automatického škálování ve službě Azure Monitor][3]
+1. Otevřete [Azure Portal.][1]
+1. V levém podokně klikněte na ikonu Azure Monitor.
+  ![Otevřít Azure Monitor][2]
+1. Kliknutím na možnost **Automatické škálování** zobrazíte všechny prostředky, pro které je možné použít automatické škálování, spolu s jejich aktuálním stavem automatického škálování.
+  ![Zjišťovat automatické škálování v Azure Monitor][3]
 
-Můžete použít podokno filtru v horní části oboru dolů v seznamu vyberte prostředky v konkrétní skupině prostředků, konkrétní typy prostředků nebo konkrétní prostředek.
+Můžete použít podokno filtru v horní části k určení oboru v seznamu pro výběr prostředků v konkrétní skupině prostředků, konkrétní typy prostředků nebo konkrétní prostředek.
 
-Pro každý prostředek najdete aktuální počet instancí a stav automatického škálování. Stav automatického škálování může být:
+U každého prostředku se zjistí aktuální počet instancí a stav automatického škálování. Stav automatického škálování může být:
 
-- **Není nakonfigurováno**: Jste nepovolili automatické škálování zatím pro tento prostředek.
-- **Povolené**: Pro tento zdroj jste povolili automatické škálování.
-- **Zakázané**: Zakázání automatického škálování pro tento prostředek.
+- Nenakonfigurováno: Pro tento prostředek ještě nemáte povolené automatické škálování.
+- **Povoleno**: Pro tento prostředek jste povolili automatické škálování.
+- **Zakázáno**: Pro tento prostředek jste zakázali automatické škálování.
 
-## <a name="create-your-first-autoscale-setting"></a>Vytvoření vaší první zadané nastavení automatického škálování
+## <a name="create-your-first-autoscale-setting"></a>Vytvoření prvního nastavení automatického škálování
 
-Pojďme se teď projděte si jednoduchý podrobný postup k vytvoření vaší první zadané nastavení automatického škálování.
+Teď si projdeme jednoduchý podrobný návod k vytvoření vašeho prvního nastavení automatického škálování.
 
-1. Otevřít **automatického škálování** okno Azure Monitor a vyberte prostředek, který chcete škálovat. (Následující kroky používají plán služby App Service, který je spojený s webovou aplikací. Je možné [vytvoření vaší první webové aplikace ASP.NET v Azure během 5 minut.][4])
-1. Všimněte si, že je aktuální počet instancí 1. Klikněte na tlačítko **povolit automatické škálování**.
+1. Otevřete okno **Automatické škálování** v Azure monitor a vyberte prostředek, který chcete škálovat. (V následujících krocích se používá plán App Service přidružený k webové aplikaci. [Svou první webovou aplikaci v ASP.NET můžete v Azure vytvořit během 5 minut.][4])
+1. Všimněte si, že aktuální počet instancí je 1. Klikněte na **Povolit automatické škálování**.
   ![Nastavení škálování pro novou webovou aplikaci][5]
-1. Zadejte název pro nastavení škálování a potom klikněte na tlačítko **přidat pravidlo**. Všimněte si, že pravidla možností škálování, které se otevřou jako kontextovém podokně na pravé straně. Ve výchozím nastavení tím se nastaví možnost škálování vašeho počtu instancí o 1, pokud procento využití procesoru prostředku přesáhne 70 procent. Ponechte jejich výchozí hodnoty a klikněte na tlačítko **přidat**.
-  ![Vytvoření nastavení škálování webové aplikace][6]
-1. Právě jste vytvořili první škálovací pravidla. Mějte na paměti, že uživatelského rozhraní doporučuje osvědčené postupy a uvádí, že "se doporučuje mít alespoň jeden škálování v pravidle." Postup:
+1. Zadejte název nastavení škálování a pak klikněte na **Přidat pravidlo**. Všimněte si možností pravidla škálování, které se otevřou jako kontextové podokno na pravé straně. Ve výchozím nastavení tato možnost nastaví možnost škálování počtu instancí o 1, pokud procento prostředku procesoru překročí 70 procent. Ponechte jeho výchozí hodnoty a klikněte na **Přidat**.
+  ![Vytvoření nastavení škálování pro webovou aplikaci][6]
+1. Nyní jste vytvořili své první pravidlo škálování. Všimněte si, že UX doporučuje Doporučené postupy a uvádí, že "v pravidle" doporučujeme mít aspoň jedno škálování. " Postup:
 
-    a. Klikněte na tlačítko **přidat pravidlo**.
+    a. Klikněte na **Přidat pravidlo**.
 
-    b. Nastavte **operátor** k **menší než**.
+    b. Nastavte **operátor** na **míň než**.
 
-    c. Nastavte **prahová hodnota** k **20**.
+    c. Nastavte **práh** na **20**.
 
-    d. Nastavte **operace** k **snížit počet o**.
+    d. Nastavte **operaci** na **snížení počtu o**.
 
-   Teď byste měli mít nastavení škálování, škálování na více instancí/škálování v závislosti na využití procesoru.
-   ![Škálování podle využití procesoru][8]
+   Teď byste měli mít nastavení škálování, které se v závislosti na využití procesoru škáluje na škále.
+   ![Škálování na základě procesoru][8]
 1. Klikněte na **Uložit**.
 
-Blahopřejeme! Právě jste úspěšně vytvořili první nastavení škálování pro automatické škálování webové aplikace podle využití procesoru.
+Blahopřejeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
 
 > [!NOTE]
-> Stejný postup platí pro vám umožní začít škálovací sadu virtuálních počítačů nebo cloudových služeb role.
+> Stejné kroky jsou použitelné pro zahájení práce se sadou škálování virtuálních počítačů nebo s rolí cloudové služby.
 
 ## <a name="other-considerations"></a>Další důležité informace
-### <a name="scale-based-on-a-schedule"></a>Škálování na základě plánu
-Kromě se škálují podle procesoru můžete nastavit škálovací odlišně pro konkrétní dny v týdnu.
+### <a name="scale-based-on-a-schedule"></a>Škálování podle plánu
+Kromě škálování na základě procesoru můžete škálování nastavit jinak na konkrétní dny v týdnu.
 
-1. Klikněte na tlačítko **přidat podmínku škálování**.
-1. Nastavení režimu měřítka a pravidla je stejný jako výchozí podmínku.
-1. Vyberte **opakovat konkrétní dny** pro daný plán.
-1. Vyberte dny a počáteční/koncový čas, kdy by měla používat podmínka škálování.
+1. Klikněte na **Přidat podmínku škálování**.
+1. Nastavení režimu škálování a pravidla se shodují s výchozí podmínkou.
+1. Pro plán vyberte **Opakovat konkrétní dny** .
+1. Vyberte dny a počáteční/koncový čas, kdy se má podmínka škálování použít.
 
 ![Podmínka škálování podle plánu][9]
-### <a name="scale-differently-on-specific-dates"></a>Jinak škálovat na konkrétní kalendářní data
-Kromě se škálují podle procesoru můžete nastavit škálovací odlišně pro konkrétní kalendářní data.
+### <a name="scale-differently-on-specific-dates"></a>Jiné škálování pro konkrétní data
+Kromě škálování na základě procesoru můžete nastavit škálování odlišně pro konkrétní data.
 
-1. Klikněte na tlačítko **přidat podmínku škálování**.
-1. Nastavení režimu měřítka a pravidla je stejný jako výchozí podmínku.
-1. Vyberte **zadejte data začátku/konce** pro daný plán.
-1. Vyberte data začátku/konce a počáteční/koncový čas, kdy by měla používat podmínka škálování.
+1. Klikněte na **Přidat podmínku škálování**.
+1. Nastavení režimu škálování a pravidla se shodují s výchozí podmínkou.
+1. Vyberte **zadat počáteční a koncové datum** pro plán.
+1. Vyberte počáteční a koncové datum a počáteční/koncový čas, kdy se má podmínka škálování použít.
 
-![Podmínka škálování na základě dat][10]
+![Podmínka škálování založená na datech][10]
 
 ### <a name="view-the-scale-history-of-your-resource"></a>Zobrazit historii škálování prostředku
-Pokaždé, když se váš prostředek je vertikálně navýšit nebo snížit, zaprotokoluje událost, která v protokolu aktivit. Můžete zobrazit historii škálování prostředku za posledních 24 hodin při přechodu **historie spuštění** kartu.
+Při každém horizontálním navýšení nebo snížení kapacity prostředku se zaprotokoluje událost do protokolu aktivit. Historii škálování prostředku můžete zobrazit za posledních 24 hodin přepnutím na kartu **historie spuštění** .
 
-![Historie spuštění][11]
+![Historie běhů][11]
 
-Pokud chcete zobrazit historii kompletní škálování (po dobu 90 dnů), vyberte **kliknutím sem zobrazíte další podrobnosti**. Protokol aktivit se otevře s automatickým Škálováním předem vybraná zdroje a kategorie.
+Pokud chcete zobrazit celou historii škálování (po dobu až 90 dní), vyberte **kliknutím sem zobrazíte další podrobnosti**. Otevře se protokol aktivit s možnostmi automatického škálování předem vybraným pro váš prostředek a kategorii.
 
-### <a name="view-the-scale-definition-of-your-resource"></a>Zobrazit definici škálování prostředku
-Automatické škálování je prostředek Azure Resource Manageru. Definice škálovací můžete zobrazit ve formátu JSON při přechodu **JSON** kartu.
+### <a name="view-the-scale-definition-of-your-resource"></a>Zobrazení definice měřítka prostředku
+Automatické škálování je Azure Resource Manager prostředek. Definici měřítka ve formátu JSON můžete zobrazit přepnutím na kartu **JSON** .
 
 ![Definice škálování][12]
 
-Budete moct změnit ve formátu JSON přímo, podle potřeby. Tyto změny se projeví po uložení.
+V případě potřeby můžete provádět změny ve formátu JSON přímo. Tyto změny se projeví po jejich uložení.
 
-### <a name="disable-autoscale-and-manually-scale-your-instances"></a>Zakázat automatické škálování a ručně škálujte vaše instance
-Může nastat situace, kdy chcete zakázat aktuální nastavení škálování a ručně škálujte váš prostředek.
+### <a name="disable-autoscale-and-manually-scale-your-instances"></a>Zakažte automatické škálování a ručně Škálujte své instance.
+Může nastat situace, kdy budete chtít zakázat aktuální nastavení škálování a ručně škálovat prostředek.
 
-Klikněte na tlačítko **zakázat automatické škálování** tlačítko v horní části.
+Klikněte na tlačítko **Zakázat automatické škálování** v horní části.
 ![Zakázat automatické škálování][13]
 
 > [!NOTE]
-> Tato možnost zakáže vaší konfigurace. Však můžete vrátit k němu po znovu povolit automatické škálování.
+> Tato možnost zakáže vaši konfiguraci. Po opětovném zapnutí automatického škálování se ale můžete k němu vrátit.
 
-Teď můžete nastavit počet instancí, které chcete škálovat ručně.
+Nyní můžete nastavit počet instancí, které chcete ručně škálovat.
 
-![Ruční škálovací sady][14]
+![Nastavení ručního škálování][14]
 
-Můžete se kdykoli vrátit k automatickému škálování kliknutím **povolit automatické škálování** a potom **Uložit**.
+K automatickému škálování se můžete kdykoli vrátit kliknutím na **Povolit automatické škálování** a pak na **Uložit**.
 
-## <a name="next-steps"></a>Další postup
-- [Vytvoření aktivitu protokolu výstrahy monitorovat všechny operace modul automatického škálování v rámci předplatného](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Vytvoření aktivitu protokolu výstrahy monitorovat všechny neúspěšné operace škálování a Škálováním automatického škálování v rámci předplatného](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+## <a name="next-steps"></a>Další kroky
+- [Vytvoření upozornění protokolu aktivit pro monitorování všech operací modulu automatického škálování v předplatném](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Vytvoření upozornění protokolu aktivit pro monitorování všech neúspěšných operací automatického škálování na více instancích ve vašem předplatném](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 
 <!--Reference-->
 [1]:https://portal.azure.com

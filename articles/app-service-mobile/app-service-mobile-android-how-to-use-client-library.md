@@ -1,6 +1,6 @@
 ---
-title: Jak používat Azure Mobile Apps SDK pro Android | Dokumentace Microsoftu
-description: Jak používat Azure Mobile Apps SDK pro Android
+title: Jak používat sadu Azure Mobile Apps SDK pro Android | Microsoft Docs
+description: Jak používat sadu Azure Mobile Apps SDK pro Android
 services: app-service\mobile
 documentationcenter: android
 author: elamalani
@@ -14,50 +14,50 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
 ms.openlocfilehash: 6a6db136926a7f9d631c717f5cab6c025d97fb48
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67443541"
 ---
-# <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak používat Azure Mobile Apps SDK pro Android
+# <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak používat sadu Azure Mobile Apps SDK pro Android
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-how-to-use-client-library) ještě dnes.
+> Visual Studio App Center je investována v nových a integrovaných službách z centrálního vývoje mobilních aplikací. Vývojáři mohou pomocísestavování, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a diagnostických služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu. Podívejte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-how-to-use-client-library) ještě dnes.
 >
 
-Tato příručka ukazuje, jak používat s Androidem klientskou sadou SDK pro Mobile Apps k implementaci běžných scénářů, jako například:
+V této příručce se dozvíte, jak používat klientskou sadu SDK pro Android pro Mobile Apps k implementaci běžných scénářů, například:
 
-* Dotazování na data (vložení, aktualizace nebo odstranění).
-* ověřování.
+* Dotazování na data (vložení, aktualizace a odstranění).
+* Přihlašovací.
 * Zpracování chyb.
-* Vlastní nastavení klienta.
+* Přizpůsobení klienta.
 
-Tato příručka se zaměřuje na sady Android SDK na straně klienta.  Další informace o sadách SDK na straně serveru pro Mobile Apps, najdete v článku [pracovat s back-endem .NET SDK][10] or [How to use the Node.js backend SDK][11].
+Tato příručka se zaměřuje na Android SDK na straně klienta.  Další informace o sadách SDK na straně serveru pro Mobile Apps najdete v tématu [Working with .NET back-end SDK][10] nebo [Jak používat back-end SDK Node. js][11].
 
 ## <a name="reference-documentation"></a>Referenční dokumentace
 
-Můžete najít [reference k rozhraní API Javadocs][12] pro klientské knihovny Androidu na Githubu.
+[Referenční informace k rozhraní Javadocs API][12] pro klientskou knihovnu Android najdete na GitHubu.
 
 ## <a name="supported-platforms"></a>Podporované platformy
 
-Sada Azure Mobile Apps SDK pro Android podporuje rozhraní API úrovně 19 až 24 (KitKat prostřednictvím verzi Nougat) pro telefony a tablety provedení.  Ověřování, zejména využívá běžný postup webové rozhraní framework ke shromažďování přihlašovacích údajů.  Ověřování serveru toku nefunguje s malé formuláře faktor zařízení, jako jsou Watch.
+Sada Azure Mobile Apps SDK pro Android podporuje rozhraní API úrovně 19 až 24 (KitKat až nougat) pro faktory pro telefon a tabletový formulář.  Ověřování zejména využívá běžný přístup k webovému rozhraní pro shromažďování přihlašovacích údajů.  Ověřování pomocí toku serveru nefunguje u malých formulářových zařízení, jako jsou například kukátka.
 
-## <a name="setup-and-prerequisites"></a>Instalace a požadavky
+## <a name="setup-and-prerequisites"></a>Nastavení a předpoklady
 
-Dokončení [rychlý start Mobile Apps](app-service-mobile-android-get-started.md) kurzu.  Tato úloha se zajistí, že jsou splněné všechny požadavky pro Azure Mobile Apps pro vývoj.  Rychlý Start také vám pomůže nakonfigurovat svůj účet a vytvořte svůj první back-end mobilní aplikace.
+Dokončete kurz pro [rychlý start Mobile Apps](app-service-mobile-android-get-started.md) .  Tato úloha zajišťuje splnění všech předpokladů pro vývoj Mobile Apps Azure.  Rychlý Start vám také pomůže nakonfigurovat svůj účet a vytvořit první back-end mobilní aplikace.
 
-Pokud se rozhodnete není pro absolvování tohoto kurzu rychlý start, proveďte následující úkoly:
+Pokud se rozhodnete nedokončit rychlý úvodní kurz, proveďte následující úlohy:
 
-* [Vytvoření back-end mobilní aplikace][13] pomocí aplikace pro Android.
-* V nástroji Android Studio [soubory sestavení Gradle aktualizace](#gradle-build).
-* [Povolit oprávnění internet](#enable-internet).
+* [vytvořte back-end mobilní aplikace][13] pro použití s vaší aplikací pro Android.
+* V Android Studio [aktualizujte soubory sestavení Gradle](#gradle-build).
+* [Povolit internetové oprávnění](#enable-internet).
 
-### <a name="gradle-build"></a>Aktualizace souborem Gradle pro sestavení
+### <a name="gradle-build"></a>Aktualizace souboru buildu Gradle
 
-Obě tyto hodnoty změnit **build.gradle** soubory:
+Změňte oba soubory **Build. Gradle** :
 
-1. Přidejte tento kód *projektu* úroveň **build.gradle** souboru:
+1. Přidejte tento kód do souboru **Build. Gradle** na úrovni *projektu* :
 
     ```gradle
     buildscript {
@@ -75,32 +75,32 @@ Obě tyto hodnoty změnit **build.gradle** soubory:
     }
     ```
 
-2. Přidejte tento kód *modul app* úroveň **build.gradle** soubor uvnitř *závislosti* značky:
+2. Přidejte tento kód do souboru **Build. Gradle** na úrovni *aplikace modulu* v rámci značky *závislosti* :
 
     ```gradle
     implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
-    Nejnovější verze je aktuálně 3.4.0. Podporované verze jsou uvedeny [na panelu koše][14].
+    V současné době je nejnovější verze 3.4.0. Podporované verze jsou uvedené [na bintray][14].
 
-### <a name="enable-internet"></a>Povolit oprávnění internet
+### <a name="enable-internet"></a>Povolit internetové oprávnění
 
-Přístup k Azure, aplikace musí mít povolené oprávnění INTERNET. Pokud ještě není povolené, přidejte následující řádek kódu, který vaše **AndroidManifest.xml** souboru:
+Aby bylo možné získat přístup k Azure, musí mít aplikace povolené oprávnění pro INTERNET. Pokud ještě není povolené, přidejte do souboru **souboru AndroidManifest. XML** následující řádek kódu:
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-## <a name="create-a-client-connection"></a>Vytvořte připojení klienta
+## <a name="create-a-client-connection"></a>Vytvoření připojení klienta
 
-Azure Mobile Apps poskytuje čtyři funkce pro mobilní aplikace:
+Azure Mobile Apps poskytuje mobilní aplikaci čtyři funkce:
 
-* Přístup k datům a Offline synchronizaci s mobilní aplikací služby Azure.
-* Volání vlastních rozhraní API, napsané pomocí sady Azure Mobile Apps Server SDK.
-* Ověřování pomocí služby Azure App Service ověřování a autorizace.
-* Nabízená oznámení zaregistrovat pomocí Notification Hubs.
+* Přístup k datům a offline synchronizace pomocí služby Azure Mobile Apps.
+* Zavolejte vlastní rozhraní API vytvořená pomocí sady Azure Mobile Apps Server SDK.
+* Ověřování pomocí Azure App Service ověřování a autorizace.
+* Registrace nabízených oznámení pomocí Notification Hubs
 
-Každá z těchto funkcí nejprve potřeba, abyste vytvořili `MobileServiceClient` objektu.  Pouze jeden `MobileServiceClient` objekt by měl být vytvořen v rámci mobilního klienta (to znamená, že by měl být vzor s jedním prvkem).  Chcete-li vytvořit `MobileServiceClient` objektu:
+Každá z těchto funkcí nejprve vyžaduje vytvoření `MobileServiceClient` objektu.  V mobilním klientovi by se měl vytvořit jenom jeden `MobileServiceClient` objekt (to znamená, že by měl být vzor s jedním typem).  Vytvoření `MobileServiceClient` objektu:
 
 ```java
 MobileServiceClient mClient = new MobileServiceClient(
@@ -108,11 +108,11 @@ MobileServiceClient mClient = new MobileServiceClient(
     this);                  // Your application Context
 ```
 
-`<MobileAppUrl>` Je řetězec nebo objekt adresy URL, která odkazuje na vaše mobilní back-end.  Pokud používáte službu Azure App Service k hostování mobilních back-endu, zajistěte použijete zabezpečené `https://` verze adresy URL.
+`<MobileAppUrl>` Je buď řetězec, nebo objekt URL, který odkazuje na váš mobilní back-end.  Pokud používáte Azure App Service k hostování mobilního back-endu, ujistěte se, že používáte zabezpečenou `https://` verzi adresy URL.
 
-Klient také vyžaduje přístup k aktivitu nebo kontext - `this` parametr v příkladu.  Konstrukce MobileServiceClient se stane v rámci `onCreate()` metoda aktivity odkazuje `AndroidManifest.xml` souboru.
+Klient také vyžaduje přístup k aktivitě nebo kontextu – `this` parametr v příkladu.  Konstrukce MobileServiceClient by měla nastat v rámci `onCreate()` metody aktivity odkazované `AndroidManifest.xml` v souboru.
 
-Jako osvědčený postup by měl abstraktní komunikaci mezi serverem do své vlastní třídy (singleton vzor).  V takovém případě je třeba předat aktivity v rámci konstruktoru na odpovídajícím způsobem nakonfigurovat službu.  Příklad:
+V rámci osvědčeného postupu byste měli v rámci své vlastní třídy (singleton-vzoru) vytvořit abstraktní komunikaci serveru.  V takovém případě byste měli předat aktivitu v rámci konstruktoru a patřičně tak nakonfigurovat službu.  Příklad:
 
 ```java
 package com.example.appname.services;
@@ -154,21 +154,21 @@ public class AzureServiceAdapter {
 }
 ```
 
-Nyní můžete volat `AzureServiceAdapter.Initialize(this);` v `onCreate()` metoda hlavní činnost.  Všechny ostatní metody by potřebovali mít přístup k použití klienta `AzureServiceAdapter.getInstance();` k získání odkazu na adaptér služby.
+Nyní můžete zavolat `AzureServiceAdapter.Initialize(this);` `onCreate()` do metody hlavní aktivity.  Jakékoli jiné metody, které potřebují přístup k klientovi `AzureServiceAdapter.getInstance();` , získají odkaz na adaptér služby.
 
 ## <a name="data-operations"></a>Operace s daty
 
-Základní sady Azure Mobile Apps SDK je poskytnutí přístupu k datům uloženým v rámci SQL Azure na back-endu mobilní aplikace.  Můžete přístup k těmto datům pomocí silného typu třídy (upřednostňováno) nebo netypová dotazy (nedoporučuje se).  Hromadné Tato část se zabývá pomocí třídy silného typu.
+Základem sady Azure Mobile Apps SDK je poskytnout přístup k datům uloženým v SQL Azure back-endu mobilní aplikace.  K těmto datům můžete přistupovat pomocí tříd silného typu (preferované) nebo netypových dotazů (nedoporučujeme).  Hromadná část této části se zabývá používáním tříd silného typu.
 
-### <a name="define-client-data-classes"></a>Definování datových tříd klienta
+### <a name="define-client-data-classes"></a>Definovat klientské třídy dat
 
-Pro přístup k datům z tabulek SQL Azure, definujte klienta datových tříd, které odpovídají na tabulky v back-endu mobilní aplikace. Příklady v tomto tématu předpokládají tabulku s názvem **MyDataTable**, který má následující sloupce:
+Pokud chcete získat přístup k datům z SQL Azure tabulek, definujte klientské třídy dat, které odpovídají tabulkám v back-endu mobilní aplikace. Příklady v tomto tématu předpokládají tabulku s názvem **myDataTable**, která má následující sloupce:
 
 * id
 * text
-* Dokončení
+* Plňte
 
-Odpovídající zadaný objekt na straně klienta se nachází v souboru s názvem **MyDataTable.java**:
+Odpovídající typový objekt na straně klienta se nachází v souboru s názvem **myDataTable. Java**:
 
 ```java
 public class ToDoItem {
@@ -178,7 +178,7 @@ public class ToDoItem {
 }
 ```
 
-Přidání metody getter a setter pro každé pole, které přidáte.  Pokud tabulka SQL Azure obsahuje více sloupců, by se do této třídy přidat odpovídající pole.  Například pokud objekt DTO (objekt pro přenos dat), měla prioritu sloupec celých čísel a potom může přidat tato pole, spolu s jeho metody getter a setter:
+Přidejte metody getter a setter pro každé pole, které přidáte.  Pokud vaše SQL Azure tabulka obsahuje více sloupců, přidejte do této třídy odpovídající pole.  Například pokud má DTO (objekt pro přenos dat) sloupec priority s celými čísly, můžete přidat toto pole spolu s jeho metodami getter a setter:
 
 ```java
 private Integer priority;
@@ -201,17 +201,17 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Zjistěte, jak vytvořit další tabulky v back-endu Mobile Apps, najdete v článku [jak: Definování řadič tabulek][15] (.NET backend) or [Define Tables using a Dynamic Schema][16] (back-end Node.js).
+Další informace o tom, jak v Mobile Apps back-endu vytvořit další [tabulky, najdete v tématu How to: Definujte řadič][15] tabulky (back-end .NET) nebo [Definujte tabulky pomocí dynamického schématu][16] (back-end Node. js).
 
-Tabulku back-endu Azure Mobile Apps definuje pět zvláštní pole čtyři z nich jsou dostupné klientům:
+Tabulka back-endu Azure Mobile Apps definuje pět speciálních polí, z nichž čtyři jsou k dispozici pro klienty:
 
-* `String id`: Globálně jedinečný Identifikátor záznamu.  Jako osvědčený postup, ujistěte se, id řetězcové vyjádření [UUID][17] objektu.
-* `DateTimeOffset updatedAt`: Datum a čas poslední aktualizace.  Pole updatedAt nastavit server a by nikdy nastavit váš klientský kód.
-* `DateTimeOffset createdAt`: Datum/čas, který byl vytvořen objekt.  Pole createdAt nastavit server a by nikdy nastavit váš klientský kód.
-* `byte[] version`: Obvykle reprezentovaná jako řetězec, verze je také nastavena na serveru.
-* `boolean deleted`: Označuje, že má záznam odstranit ale ještě nebyl vymazán.  Nepoužívejte `deleted` jako vlastnost ve své třídě.
+* `String id`: Globálně jedinečné ID záznamu  V souladu s osvědčeným postupem nastavte ID řetězcové vyjádření objektu [UUID][17] .
+* `DateTimeOffset updatedAt`: Datum a čas poslední aktualizace.  Pole updatedAt je nastaveno serverem a nikdy by nemělo být nastaveno vaším klientským kódem.
+* `DateTimeOffset createdAt`: Datum a čas vytvoření objektu.  Pole createdAt je nastaveno serverem a nikdy by nemělo být nastaveno vaším klientským kódem.
+* `byte[] version`: Standardně reprezentovaný jako řetězec, verze je také nastavena serverem.
+* `boolean deleted`: Indikuje, že se záznam odstranil, ale ještě se nevymazal.  Nepoužívejte `deleted` jako vlastnost ve třídě.
 
-Pole `id` je povinné.  `updatedAt` Pole a `version` pole se používají pro offline synchronizaci (pro přírůstkové synchronizace a ke konfliktu rozlišení v uvedeném pořadí).  `createdAt` Pole je referenční pole a není použito klientem.  Názvy jsou "napříč přenosu" názvy vlastností a nejsou měnitelné.  Však můžete vytvořit mapování mezi objekt a názvy "napříč přenosu" pomocí [gson][3] knihovny.  Příklad:
+Pole `id` je povinné.  `updatedAt` Pole a`version` pole se používají pro offline synchronizaci (pro přírůstkové synchronizace a řešení konfliktů).  `createdAt` Pole je referenční pole a klient ho nepoužívá.  Názvy jsou "mezidrátové" názvy vlastností a nelze je upravit.  Pomocí knihovny [gson][3] ale můžete vytvořit mapování mezi vaším objektem a názvy "napříč" vodiči.  Příklad:
 
 ```java
 package com.example.zumoappname;
@@ -269,9 +269,9 @@ public class ToDoItem
 }
 ```
 
-### <a name="create-a-table-reference"></a>Vytvořit odkaz na tabulku
+### <a name="create-a-table-reference"></a>Vytvoření odkazu na tabulku
 
-Chcete-li získat přístup k tabulce, nejprve vytvořte [MobileServiceTable][8] objektu voláním **jít** metodu na [MobileServiceClient][9].  Tato metoda má dvě přetížení:
+Chcete-li získat přístup k tabulce, vytvořte nejprve objekt [MobileServiceTable][8] voláním metody GetTable na [MobileServiceClient][9].  Tato metoda má dvě přetížení:
 
 ```java
 public class MobileServiceClient {
@@ -280,32 +280,32 @@ public class MobileServiceClient {
 }
 ```
 
-V následujícím kódu **mClient** je odkaz na objekt MobileServiceClient.  První přetížení se používá název třídy a název tabulky jsou stejné, kde je použit v tomto rychlém startu:
+V následujícím kódu je **mClient** odkazem na váš objekt MobileServiceClient.  První přetížení se používá tam, kde název třídy a název tabulky jsou stejné a je ta, která se používá v rychlém startu:
 
 ```java
 MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable(ToDoItem.class);
 ```
 
-Druhé přetížení se používá, když se liší od názvu třídy název tabulky: první parametr je název tabulky.
+Druhé přetížení se použije, když se název tabulky liší od názvu třídy: první parametr je název tabulky.
 
 ```java
 MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 ```
 
-## <a name="query"></a>Dotaz na tabulku back-endu
+## <a name="query"></a>Dotaz na back-end tabulku
 
-Nejprve získejte odkaz na tabulku.  Pak spustí dotaz na odkaz na tabulku.  Dotaz, který je kombinací:
+Nejprve získejte odkaz na tabulku.  Pak spusťte dotaz na odkaz na tabulku.  Dotaz je libovolná kombinace:
 
-* A `.where()` [klauzuli filtru](#filtering).
-* `.orderBy()` [Klauzule ordering](#sorting).
-* A `.select()` [klauzuli výběru pole](#selection).
-* A `.skip()` a `.top()` pro [stránkovaných výsledků](#paging).
+* [Klauzule filtru](#filtering). `.where()`
+* [Klauzule řazení](#sorting). `.orderBy()`
+* [Klauzule výběru pole](#selection) `.select()`
+* A pro stránkované [výsledky](#paging). `.top()` `.skip()`
 
-Klauzule musí být seřazen podle předchozího.
+Klauzule musí být uvedeny v předchozím pořadí.
 
-### <a name="filter"></a> Filtrování výsledků
+### <a name="filter"></a>Filtrování výsledků
 
-Je obecný formulář dotazu:
+Obecná forma dotazu je:
 
 ```java
 List<MyDataTable> results = mDataTable
@@ -314,11 +314,11 @@ List<MyDataTable> results = mDataTable
     .get()              // Converts the async into a sync result
 ```
 
-V předchozím příkladu vrátí všechny výsledky (až do maximální velikost stránky nastavit server).  `.execute()` Metoda provede dotaz na back-endu.  Dotaz je převedena na [OData v3][19] Dotázat se před přenosem do back-endu Mobile Apps.  Po obdržení back-end Mobile Apps převede dotaz na příkazu SQL před spuštěním na instanci SQL Azure.  Protože nějakou dobu trvá síťové aktivity `.execute()` metoda vrátí hodnotu [ `ListenableFuture<E>` ][18].
+Předchozí příklad vrátí všechny výsledky (až do maximální velikosti stránky nastavené serverem).  `.execute()` Metoda spustí dotaz na back-endu.  Dotaz se před přenosem do back-endu Mobile Apps převede na dotaz [OData V3][19] .  Po přijetí Mobile Apps back-end převede dotaz na příkaz SQL před jeho spuštěním na instanci SQL Azure.  Vzhledem k tomu, že `.execute()` síťová aktivita nějakou dobu trvá, [`ListenableFuture<E>`][18]vrátí metoda.
 
-### <a name="filtering"></a>Filtr vrátil data
+### <a name="filtering"></a>Filtrovat vrácená data
 
-Spuštění následujícího dotazu vrátí všechny položky z **ToDoItem** tabulky where **kompletní** rovná **false**.
+Následující spuštění dotazu vrátí všechny položky z tabulky **ToDoItem** , kde **kompletní** **hodnota je false**.
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -328,11 +328,11 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-**mToDoTable** je odkaz na tabulku mobilních služeb, který jsme vytvořili dříve.
+**mToDoTable** je odkaz na tabulku mobilní služby, kterou jsme vytvořili dříve.
 
-Definujte filtr pomocí **kde** volání metody na odkaz na tabulku. **Kde** následuje metoda **pole** metoda následovaný metodu, která určuje logický predikátu. Je to možné predikátu metody patří **eq** (rovná se), **ne** (není rovno) **gt** (větší než) **ge** (větší než nebo rovna hodnotě), **lt** (menší než), **le** (menší než nebo rovno). Tyto metody umožňují porovnat pole číslo a řetězec k určitým hodnotám.
+Definujte filtr pomocí volání metody **WHERE** v odkazu na tabulku. Metoda **WHERE** následovaná metodou **pole** následovaný metodou, která určuje logický predikát. Mezi možné metody predikátu patří **EQ** (EQUAL), **ne** (není rovno), **gt** (větší než), **GE** (větší než nebo rovno), **lt** (menší než), **Le** (je menší než nebo rovno). Tyto metody umožňují porovnat čísla a řetězcová pole s konkrétními hodnotami.
 
-Můžete filtrovat podle data. Následující metody umožňují porovnání pole pro datum celého nebo části datum: **rok**, **měsíc**, **den**, **hodinu**,  **minuta**, a **druhý**. Následující příklad přidá filtr pro položky jehož *termín splnění* rovná 2013.
+Můžete filtrovat data. Následující metody umožňují porovnat celé pole data nebo části data: **rok**, **měsíc**, **den**, **hodina**, minuta a sekunda. Následující příklad přidá filtr pro položky, jejichž *Datum splatnosti* se rovná 2013.
 
 ```java
 List<ToDoItem> results = MToDoTable
@@ -342,7 +342,7 @@ List<ToDoItem> results = MToDoTable
     .get();
 ```
 
-Následující metody podporují složité filtry na pole řetězců: **startsWith**, **endsWith**, **concat**, **podřetězec**, **indexOf**, **nahradit**, **toLower**, **toUpper**, **trim**, a **délku** . Následující příklad filtry pro tabulku řádky, ve kterých *text* začíná "PRI0."
+Následující metody podporují složité filtry na pole řetězců: **StartsWith**, **endsWith**, **Concat**, Substring, **IndexOf**, Replace, **toLower**, **toUpper**, **Trim**a **length.** . Následující příklad filtruje řádky tabulky, kde sloupec *text* začíná řetězcem "PRI0".
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -352,7 +352,7 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-Jsou podporovány následující metody operátor na pole s počtem: **přidat**, **sub**, **mul**, **div**, **mod**, **floor**, **horní mez**, a **ZAOKROUHLIT**. Následující příklad filtry pro tabulku řádky, ve kterých **doba trvání** sudé číslo.
+Následující metody operátoru jsou podporovány v polích číslo: **Add**, **Sub**, **mul**, **div**, **mod**,mod, **ZAOKR**. a **Round**. Následující příklad filtruje řádky tabulky, jejichž **Doba trvání** je sudé číslo.
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -362,7 +362,7 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-Predikáty můžete kombinovat s těmito metodami logické: **a**, **nebo** a **není**. Následující příklad kombinuje dvě z předchozích příkladů.
+Predikáty lze kombinovat pomocí těchto logických metod: **a**, **nebo** . Následující příklad kombinuje dva z předchozích příkladů.
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -372,7 +372,7 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-Skupiny a vnořených logické operátory:
+Seskupení a vnořování logických operátorů:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -386,11 +386,11 @@ List<ToDoItem> results = mToDoTable
     .execute().get();
 ```
 
-Podrobnější informace a příklady, filtrování, najdete v článku [zkoumání bohatost model dotazování Android klienta][20].
+Podrobnější diskuzi a příklady filtrování najdete v tématu [prozkoumávání bohatosti modelu dotazů klientů pro Android][20].
 
-### <a name="sorting"></a>Řazení vrátil data
+### <a name="sorting"></a>Řazení vrácených dat
 
-Následující kód vrátí všechny položky z tabulky **ToDoItems** seřazeno vzestupně podle *text* pole. *mToDoTable* se odkaz na back-endovou tabulku, kterou jste vytvořili dříve:
+Následující kód vrátí všechny položky z tabulky **ToDoItems** seřazené vzestupně podle *textového* pole. *mToDoTable* je odkaz na tabulku back-end, kterou jste vytvořili dříve:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -399,11 +399,11 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-První parametr **orderBy** metodou je stejný jako název pole, na kterém se má seřadit řetězce. Druhý parametr používá **QueryOrder** výčet k určení, jestli se má seřadit vzestupně nebo sestupně.  Pokud provádíte filtrování pomocí ***kde*** metody ***kde*** před je nutné volat metodu ***orderBy*** – metoda.
+První parametr metody **OrderBy** je řetězec, který se rovná názvu pole, podle kterého se má řadit. Druhý parametr používá výčet **QueryOrder** k určení, zda se má seřadit vzestupně nebo sestupně.  Pokud filtrujete pomocí metody ***WHERE*** , metoda ***WHERE*** musí být vyvolána před metodou ***OrderBy*** .
 
-### <a name="selection"></a>Vyberte sloupce zaškrtnutím
+### <a name="selection"></a>Vybrat konkrétní sloupce
 
-Následující kód ukazuje, jak vrátit všechny položky z tabulky **ToDoItems**, ale zobrazuje jenom **kompletní** a **text** pole. **mToDoTable** se odkaz na back-endovou tabulku, kterou jsme vytvořili dříve.
+Následující kód ilustruje, jak vrátit všechny položky z tabulky **ToDoItems**, ale zobrazuje pouze pole **Complete** a **text** . **mToDoTable** je odkaz na tabulku back-end, kterou jsme vytvořili dříve.
 
 ```java
 List<ToDoItemNarrow> result = mToDoTable
@@ -412,13 +412,13 @@ List<ToDoItemNarrow> result = mToDoTable
     .get();
 ```
 
-Parametry vyberte funkce jsou řetězcové názvy sloupců v tabulce, které chcete vrátit.  **Vyberte** metoda musí postupovat podle metody, jako je **kde** a **orderBy**. Může být následován stránkovací metody, jako je **přeskočit** a **horní**.
+Parametry funkce Select jsou názvy řetězců sloupců tabulky, které chcete vrátit.  Metoda **Select** musí následovat za metodami, jako je například **WHERE** a **OrderBy**. Může následovat metody stránkování, jako je **Skip** a **Top**.
 
-### <a name="paging"></a>Vrácení dat na stránkách
+### <a name="paging"></a>Vrátit data na stránkách
 
-Data jsou **vždy** vráceny na stránkách.  Server je nastavena maximální počet vrácených záznamů.  Pokud klient požaduje více záznamů, server vrátí maximální počet záznamů.  Výchozí maximální velikost stránky na serveru je 50 záznamů.
+Data se **vždycky** vrátí na stránkách.  Maximální počet vrácených záznamů je nastaven serverem.  Pokud klient požaduje více záznamů, vrátí server maximální počet záznamů.  Ve výchozím nastavení je maximální velikost stránky na serveru 50 záznamů.
 
-První příklad ukazuje, jak vybrat prvních pět položek z tabulky. Dotaz vrátí položky z tabulky **ToDoItems**. **mToDoTable** se odkaz na back-endovou tabulku, kterou jste vytvořili dříve:
+První příklad ukazuje, jak vybrat horní pět položek z tabulky. Dotaz vrátí položky z tabulky **ToDoItems**. **mToDoTable** je odkaz na tabulku back-end, kterou jste vytvořili dříve:
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -427,7 +427,7 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-Tady je dotaz, který přeskočí prvních pět položek a potom vrátí další pěti:
+Zde je dotaz, který přeskočí prvních pět položek a potom vrátí další pět:
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -436,7 +436,7 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-Pokud chcete získat všechny záznamy v tabulce, implementujte kód a iterovat všechny stránky:
+Pokud chcete získat všechny záznamy v tabulce, implementujte kód pro iteraci na všech stránkách:
 
 ```java
 List<MyDataModel> results = new ArrayList<>();
@@ -453,14 +453,14 @@ do {
 } while (nResults > 0);
 ```
 
-Žádost o pro všechny záznamy pomocí této metody vytvoří minimálně dva požadavky do back-endu Mobile Apps.
+Požadavek na všechny záznamy pomocí této metody vytvoří minimálně dva požadavky na Mobile Apps back-end.
 
 > [!TIP]
-> Volba velikosti pravá stránka je rovnováhu mezi využití paměti při žádosti se děje, využití šířky pásma a zpoždění při přijímání dat úplně.  Výchozí hodnota (50 záznamů) je vhodný pro všechna zařízení.  Pokud provozujete výhradně na větší paměťová zařízení, zvýšit až 500.  Zjistili, který zvyšuje velikost stránky nad rámec 500 záznamů výsledků v zpožděním a velké paměti problémy.
+> Zvolíte-li velikost pravé stránky, bude zůstatek mezi využitím paměti během žádosti, využití šířky pásma a zpoždění při úplném příjmu dat.  Výchozí (záznamy 50) jsou vhodné pro všechna zařízení.  Pokud pracujete výhradně na větších paměťových zařízeních, zvyšte až 500.  Zjistili jsme, že zvětšení velikosti stránky přesahuje 500 záznamů má za následek nepřijatelné zpoždění a velké množství problémů s velkou pamětí.
 
-### <a name="chaining"></a>Jak: Metody zřetězení dotazů
+### <a name="chaining"></a>Jak: Zřetězení metod dotazů
 
-Metody používané v dotazy na back-endu tabulky mohou být spojeny. Řetězení metody dotazu, můžete vybrat konkrétní sloupcích filtrované řádky, které jsou seřazené a stránkovaného fondu. Můžete vytvořit komplexní logické filtry.  Každá metoda dotaz vrací objekt dotazu. Chcete-li ukončit řadu metod a skutečně spusťte dotaz, zavolejte **provést** metody. Příklad:
+Metody používané při dotazování na back-end tabulky můžou být zřetězené. Řetězení metod dotazů umožňuje vybrat konkrétní sloupce filtrovaných řádků, které jsou seřazené a stránkované. Můžete vytvářet složité logické filtry.  Každá metoda dotazu vrátí objekt dotazu. Chcete-li ukončit sérii metod a ve skutečnosti spustit dotaz, zavolejte metodu **Execute** . Příklad:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -476,26 +476,26 @@ List<ToDoItem> results = mToDoTable
         .get();
 ```
 
-Metody zřetězených dotazů musí být uspořádaná následujícím způsobem:
+Metody zřetězeného dotazu musí být seřazeny takto:
 
-1. Filtrování (**kde**) metody.
-2. Řazení (**orderBy**) metody.
-3. Výběr (**vyberte**) metody.
-4. stránkování (**přeskočit** a **horní**) metody.
+1. Filtrování (**WHERE**) metod.
+2. Metody řazení (**OrderBy**).
+3. Výběr (**Výběr**) metod.
+4. metody stránkování (**Skip** a **Top**).
 
-## <a name="binding"></a>Vytvoření vazby dat na uživatelské rozhraní
+## <a name="binding"></a>Svázání dat s uživatelským rozhraním
 
-Vytváření datových vazeb zahrnuje tři komponenty:
+Datová vazba zahrnuje tři komponenty:
 
 * Zdroj dat
 * Rozložení obrazovky
-* Adaptér, který spojuje dvě.
+* Adaptér, který spojuje oba dva.
 
-V našem ukázkovém kódu jsme vrátit data z tabulky SQL Azure Mobile Apps **ToDoItem** na pole. Tato aktivita je běžný vzor pro data aplikací.  Databázové dotazy často vrátit sadu řádků, které klient získá ze seznamu nebo pole. V tomto příkladu je pole zdroje dat.  Kód určuje rozložení obrazovky, která definuje zobrazení data, která se zobrazí na zařízení.  Dva jsou vázána spolu s adaptér, který tento kód je rozšířením sady **ArrayAdapter&lt;ToDoItem&gt;**  třídy.
+V našem ukázkovém kódu vrátíme data z Mobile Apps SQL Azure tabulce **ToDoItem** do pole. Tato aktivita je běžným vzorem pro datové aplikace.  Databázové dotazy často vracejí kolekci řádků, které klient získá v seznamu nebo poli. V této ukázce je pole zdrojem dat.  Kód určuje rozložení obrazovky, které definuje zobrazení dat zobrazených na zařízení.  Tyto dvě jsou vázány spolu s adaptérem, který v tomto kódu je rozšířením třídy **ArrayAdapter&lt;ToDoItem&gt;**  .
 
-#### <a name="layout"></a>Definování rozložení
+#### <a name="layout"></a>Definovat rozložení
 
-Rozložení je definováno více fragmentů kódu XML. Zadaný existující rozložení, následující kód představuje **ListView** chceme naplnit pomocí našich dat serveru.
+Rozložení je definováno několika fragmenty kódu XML. S ohledem na existující rozložení představuje následující kód **ListView** , který chceme naplnit daty serveru.
 
 ```xml
     <ListView
@@ -506,7 +506,7 @@ Rozložení je definováno více fragmentů kódu XML. Zadaný existující rozl
     </ListView>
 ```
 
-V předchozím kódu *listitem* atribut určuje id rozložení pro jednotlivé řádek v seznamu. Tento kód určuje zaškrtávací políčko a příslušný text a získá vytvořit jednou pro každou položku v seznamu. Toto rozložení nezobrazí **id** pole a složitější rozložení, zadejte další pole v zobrazení. Tento kód je v **row_list_to_do.xml** souboru.
+V předchozím kódu atribut *ListItem* Určuje ID rozložení pro jednotlivé řádky v seznamu. Tento kód určuje zaškrtávací políčko a jeho přidružený text a získá pro každou položku v seznamu instanci. Toto rozložení nezobrazuje pole **ID** a složitější rozložení by určovalo další pole v zobrazení. Tento kód je v souboru **row_list_to_do. XML** .
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -523,14 +523,14 @@ V předchozím kódu *listitem* atribut určuje id rozložení pro jednotlivé �
 ```
 
 #### <a name="adapter"></a>Definování adaptéru
-Vzhledem k tomu, že je zdroj dat naše zobrazení pole **ToDoItem**, jsme podtřídy naše adaptér ze **ArrayAdapter&lt;ToDoItem&gt;**  třídy. Tato podtřídy vytvoří zobrazení pro každý **ToDoItem** pomocí **row_list_to_do** rozložení.  V našem kódu definujeme následující třídy, která je rozšířením **ArrayAdapter&lt;E&gt;**  třídy:
+Vzhledem k tomu, že zdrojem dat našeho zobrazení je pole **ToDoItem**, podtřídou našeho adaptéru z třídy **ToDoItem&lt;&gt; ArrayAdapter** . Tato podtřída vytvoří zobrazení pro každou **ToDoItem** pomocí rozložení **row_list_to_do** .  V našem kódu definujeme následující třídu, která je rozšířením třídy **ArrayAdapter&lt;E&gt;**  :
 
 ```java
 public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 }
 ```
 
-Přepsat adaptéry **getView** metody. Příklad:
+Přepište metodu **GetView** adaptéru. Příklad:
 
 ```java
     @Override
@@ -566,23 +566,23 @@ Přepsat adaptéry **getView** metody. Příklad:
     }
 ```
 
-Vytvoření instance této třídy v naší činnosti následujícím způsobem:
+V naší aktivitě vytvoříme instanci této třídy následujícím způsobem:
 
 ```java
     ToDoItemAdapter mAdapter;
     mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
 ```
 
-Druhý parametr konstruktoru ToDoItemAdapter je odkaz na rozložení. Nyní jsme lze vytvořit instanci **ListView** a přiřaďte adaptér, který má **ListView**.
+Druhým parametrem konstruktoru ToDoItemAdapter je odkaz na rozložení. Nyní můžeme vytvořit instanci **ListView** a přiřadit adaptér k **objektu ListView**.
 
 ```java
     ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
     listViewToDo.setAdapter(mAdapter);
 ```
 
-#### <a name="use-adapter"></a>Použít adaptér, který má vazbu na uživatelské rozhraní
+#### <a name="use-adapter"></a>Vytvoření vazby k uživatelskému rozhraní pomocí adaptéru
 
-Nyní jste připraveni používat datové vazby. Následující kód ukazuje, jak získat položky v tabulce a vyplní místní adaptér vrácených položek.
+Nyní jste připraveni použít datovou vazbu. Následující kód ukazuje, jak získat položky v tabulce a vyplní místní adaptér položkami vrácenými položkami.
 
 ```java
     public void showAll(View view) {
@@ -611,13 +611,13 @@ Nyní jste připraveni používat datové vazby. Následující kód ukazuje, ja
     }
 ```
 
-Kdykoli upravíte volání **ToDoItem** tabulky. Protože změny mít na základě záznamu podle, zpracovávat jeden řádek místo kolekce. Při vložení položky volání **přidat** metodu na adaptér; při odstraňování, volání **odebrat** metoda.
+Zavolejte adaptér, kdykoli upravíte tabulku **ToDoItem** . Vzhledem k tomu, že se změny provádějí na záznamu podle záznamu, místo kolekce se zpracuje jeden řádek. Když vložíte položku, zavolejte na adaptér metodu **Add** ; Při odstraňování volejte metodu **Remove** .
 
-Kompletní příklad v lze najít [projekt rychlý start pro Android][21].
+Úplný příklad najdete v [projektu pro rychlý Start pro Android][21].
 
-## <a name="inserting"></a>Vložit data do back-endu
+## <a name="inserting"></a>Vložení dat do back-endu
 
-Vytvoření instance instance *ToDoItem* třídy a nastavit jeho vlastnosti.
+Vytvořte instanci instance třídy *ToDoItem* a nastavte její vlastnosti.
 
 ```java
 ToDoItem item = new ToDoItem();
@@ -625,7 +625,7 @@ item.text = "Test Program";
 item.complete = false;
 ```
 
-Pak pomocí **insert()** k vložení objektu:
+Pak použijte **Insert ()** pro vložení objektu:
 
 ```java
 ToDoItem entity = mToDoTable
@@ -633,21 +633,21 @@ ToDoItem entity = mToDoTable
     .get();
 ```
 
-Odpovídá vrácenou entitu data vložená do back-endovou tabulku zahrnuté ID a jiné hodnoty (například `createdAt`, `updatedAt`, a `version` pole) nastavena na back-endu.
+Vrácená entita odpovídá datům vloženým do tabulky back-end, včetně ID a dalších hodnot (například `createdAt`polí, `updatedAt`a `version` ) nastavených v back-endu.
 
-Mobile Apps tabulky vyžadují sloupec primárního klíče s názvem **id**. Tento sloupec musí být řetězec. Výchozí hodnota ve sloupci ID je identifikátor GUID.  Můžete zadat další jedinečné hodnoty, jako je například e-mailové adresy nebo uživatelských jmen. Když pro vložený záznam není zadaná řetězcová hodnota Identifikátor, back-endu vygeneruje nový identifikátor GUID.
+Mobile Apps tabulky vyžadují sloupec primárního klíče s názvem **ID**. Tento sloupec musí být řetězec. Výchozí hodnota sloupce ID je identifikátor GUID.  Můžete zadat jiné jedinečné hodnoty, například e-mailové adresy nebo uživatelská jména. Pokud pro vložený záznam není zadána hodnota ID řetězce, back-end vygeneruje nový identifikátor GUID.
 
-Hodnota ID řetězce poskytuje následující výhody:
+Hodnoty ID řetězce poskytují následující výhody:
 
-* ID je generovat přitom latence do databáze.
-* Záznamy se snadněji sloučení z různých tabulek nebo databází.
-* ID hodnoty lépe integrovat aplikace logiky.
+* ID lze generovat bez odeslání odezvy do databáze.
+* Záznamy je snazší sloučit z různých tabulek nebo databází.
+* Hodnoty ID se integrují lépe díky logice aplikace.
 
-Řetězec ID hodnoty jsou **povinné** pro podporu offline synchronizace.  Id nelze změnit, jakmile je uložená v databázi back-endu.
+Pro podporu offline synchronizace jsou vyžadovány hodnoty ID řetězce.  ID nelze změnit, jakmile je uloženo v back-end databázi.
 
 ## <a name="updating"></a>Aktualizace dat v mobilní aplikaci
 
-Pokud chcete aktualizovat data v tabulce, předejte nový objekt, který **update()** metoda.
+Chcete-li aktualizovat data v tabulce, předejte nový objekt metodě **Update ()** .
 
 ```java
 mToDoTable
@@ -655,18 +655,18 @@ mToDoTable
     .get();
 ```
 
-V tomto příkladu *položky* je odkaz na řádek v *ToDoItem* tabulku, která má určitá některé změny.  Řádek se stejným **id** se aktualizuje.
+V tomto příkladu je *položka* odkazem na řádek v tabulce *ToDoItem* , ve kterém se udělaly nějaké změny.  Řádek se stejným **ID** se aktualizuje.
 
-## <a name="deleting"></a>Odstranit data v mobilní aplikaci
+## <a name="deleting"></a>Odstranění dat v mobilní aplikaci
 
-Následující kód ukazuje, jak odstranit data z tabulky tak, že zadáte datový objekt.
+Následující kód ukazuje, jak odstranit data z tabulky zadáním datového objektu.
 
 ```java
 mToDoTable
     .delete(item);
 ```
 
-Položku můžete odstranit tak, že zadáte **id** pole řádku, který chcete odstranit.
+Položku můžete také odstranit zadáním pole **ID** řádku, který chcete odstranit.
 
 ```java
 String myRowId = "2FA404AB-E458-44CD-BC1B-3BC847EF0902";
@@ -674,9 +674,9 @@ mToDoTable
     .delete(myRowId);
 ```
 
-## <a name="lookup"></a>Vyhledat konkrétní položky podle Id
+## <a name="lookup"></a>Vyhledat konkrétní položku podle ID
 
-Vyhledat položku s určitým **id** pole **lookUp()** metody:
+Vyhledat položku s konkrétním polem **ID** pomocí metody **lookUp ()** :
 
 ```java
 ToDoItem result = mToDoTable
@@ -684,13 +684,13 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>Jak: Práce s daty bez typu
+## <a name="untyped"></a>Jak: Práce s netypovými daty
 
-Netypové programovací model poskytuje přesnou kontrolu nad serializace JSON.  Zde jsou uvedeny některé obvyklé scénáře, kde můžete chtít použít netypové programovací model. Například, pokud tabulka back-end obsahuje mnoho sloupců a potřebujete odkazovat na podmnožinu sloupců.  Zadaný model vyžaduje, abyste definujte všechny řádky, které jsou definovány v back-endu Mobile Apps ve své třídě data.  Většinu volání rozhraní API pro přístup k datům jsou podobné typy programovací volání. Hlavní rozdíl spočívá v tom, že v netypové modelu můžete vyvolávat metody v **MobileServiceJsonTable** objektu, nikoli **MobileServiceTable** objektu.
+Netypový programovací model poskytuje přesnou kontrolu pomocí serializace JSON.  Existují některé běžné scénáře, kde můžete chtít použít Netypový programovací model. Pokud například tabulka back-endu obsahuje mnoho sloupců a stačí pouze odkazovat na podmnožinu sloupců.  Typový model vyžaduje, abyste v datové třídě definovali všechny sloupce definované v Mobile Apps back-endu.  Většina volání rozhraní API pro přístup k datům je podobná typovým voláním programování. Hlavní rozdíl je v tom, že v netypovém modelu vyvoláte metody objektu **MobileServiceJsonTable** namísto objektu **MobileServiceTable** .
 
 ### <a name="json_instance"></a>Vytvoření instance netypové tabulky
 
-Podobně jako na zadaný model, je začít nastavením odkaz na tabulku, ale v tomto případě jde **MobileServicesJsonTable** objektu. Získat odkaz pomocí volání **jít** metodu na instanci klienta:
+Podobně jako u typového modelu začínáte získáním odkazu na tabulku, ale v tomto případě se jedná o objekt **MobileServicesJsonTable** . Získejte odkaz voláním metody **GetTable** v instanci klienta:
 
 ```java
 private MobileServiceJsonTable mJsonToDoTable;
@@ -698,10 +698,10 @@ private MobileServiceJsonTable mJsonToDoTable;
 mJsonToDoTable = mClient.getTable("ToDoItem");
 ```
 
-Po vytvoření instance **MobileServiceJsonTable**, má téměř stejné rozhraní API k dispozici jako s typem programovací model. V některých případech může trvat metody netypový parametr místo typu parametru.
+Po vytvoření instance **MobileServiceJsonTable**má prakticky stejné rozhraní API jako s typovým programovacím modelem. V některých případech metody přebírají Netypový parametr namísto typovaného parametru.
 
 ### <a name="json_insert"></a>Vložit do netypové tabulky
-Následující kód ukazuje, jak provést vložení. Prvním krokem je vytvoření [JsonObject][1] , which is part of the [gson][3] knihovny.
+Následující kód ukazuje, jak provést vložení. Prvním krokem je vytvoření [JsonObject][1], který je součástí knihovny [gson][3] .
 
 ```java
 JsonObject jsonItem = new JsonObject();
@@ -709,7 +709,7 @@ jsonItem.addProperty("text", "Wake up");
 jsonItem.addProperty("complete", false);
 ```
 
-Potom použijte **insert()** netypové objekt vložit do tabulky.
+Pak použijte **Insert ()** pro vložení netypového objektu do tabulky.
 
 ```java
 JsonObject insertedItem = mJsonToDoTable
@@ -717,27 +717,27 @@ JsonObject insertedItem = mJsonToDoTable
     .get();
 ```
 
-Pokud je potřeba získat ID vloženého objektu, použijte **getAsJsonPrimitive()** metody.
+Pokud potřebujete získat ID vloženého objektu, použijte metodu **getAsJsonPrimitive ()** .
 
 ```java
 String id = insertedItem.getAsJsonPrimitive("id").getAsString();
 ```
-### <a name="json_delete"></a>Odstranit z netypového tabulky.
-Následující kód ukazuje, jak odstranit instance, v tomto případě stejné instance **JsonObject** , který byl vytvořen v předchozího *vložit* příklad. Kód je stejný jako s typem případ, ale tato metoda má jiný podpis, protože odkazuje na **JsonObject**.
+### <a name="json_delete"></a>Odstranit z netypové tabulky
+Následující kód ukazuje, jak odstranit instanci, v tomto případě stejnou instanci **JsonObject** , která byla vytvořena v předchozím příkladu *vložení* . Kód je stejný jako u typového případu, ale metoda má jiný podpis, protože odkazuje na **JsonObject**.
 
 ```java
 mToDoTable
     .delete(insertedItem);
 ```
 
-Instance můžete odstranit také přímo pomocí jeho ID:
+Instanci můžete také odstranit přímo pomocí jejího ID:
 
 ```java
 mToDoTable.delete(ID);
 ```
 
-### <a name="json_get"></a>Vrátí všechny řádky z tabulky bez typu
-Následující kód ukazuje, jak načíst celou tabulku. Vzhledem k tomu, že používáte tabulku JSON, můžete selektivně načíst jenom některé sloupce v tabulce.
+### <a name="json_get"></a>Vrátí všechny řádky z netypové tabulky.
+Následující kód ukazuje, jak načíst celou tabulku. Vzhledem k tomu, že používáte tabulku JSON, můžete selektivně načíst jenom některé sloupce tabulky.
 
 ```java
 public void showAllUntyped(View view) {
@@ -773,20 +773,20 @@ public void showAllUntyped(View view) {
 }
 ```
 
-Stejnou sadu filtrování, filtrování a stránkování metody, které jsou k dispozici pro typy modelu jsou k dispozici pro netypový kód modelu.
+Pro Netypový model jsou k dispozici stejné sady metod filtrování, filtrování a stránkování, které jsou k dispozici pro typový model.
 
-## <a name="offline-sync"></a>Implementace Offline synchronizace
+## <a name="offline-sync"></a>Implementace offline synchronizace
 
-Azure Mobile Apps Client SDK také implementuje offline synchronizace dat s využitím databáze SQLite k uložení kopie dat serveru místně.  Operace provedené na offline tabulce nevyžadují, aby mobilní připojení k práci.  Offline synchronizace pomáhá při odolnost a výkon za cenu mnohem složitější logiku pro případ řešení konfliktů.  Azure Mobile Apps Client SDK implementuje následující funkce:
+Klientská sada SDK pro Azure Mobile Apps také implementuje offline synchronizaci dat pomocí databáze SQLite k uložení kopie dat serveru místně.  Operace prováděné v offline tabulce nevyžadují, aby mobilní připojení fungovalo.  Offline synchronizace pomáhá zajistit odolnost a výkon na úkor složitější logiky při řešení konfliktů.  Klientská sada SDK pro Azure Mobile Apps implementuje následující funkce:
 
-* Přírůstková synchronizace: Pouze budou staženy aktualizované a nové záznamy, ukládají se využití šířky pásma a paměti.
-* Optimistického řízení souběžnosti: Operace se předpokládá, že proběhla úspěšně.  Řešení konfliktů je odloženo, dokud se aktualizace prováděly na serveru.
-* Řešení konfliktů: Sada SDK rozpozná konfliktní změny byly provedeny na serveru a poskytuje zachytávání k upozornění uživatele.
-* Obnovitelné odstranění: Odstraněné záznamy jsou označeny odstraněné, což jiná zařízení k aktualizaci jejich offline mezipaměti.
+* Přírůstková synchronizace: Staženy jsou pouze aktualizované a nové záznamy, úspora šířky pásma a paměti.
+* Optimistická souběžnost: Operace se považují za úspěšné.  Řešení konfliktů je odloženo, dokud se na serveru neprovede aktualizace.
+* Řešení konfliktů: Sada SDK detekuje, kdy byla na serveru provedena kolidující změna, a poskytuje uživatelům upozornění.
+* Obnovitelné odstranění: Odstraněné záznamy jsou označené jako odstraněné a povolují ostatním zařízením aktualizovat jejich offline mezipaměť.
 
-### <a name="initialize-offline-sync"></a>Inicializovat Offline synchronizace
+### <a name="initialize-offline-sync"></a>Inicializovat offline synchronizaci
 
-Každá tabulka v režimu offline, musí být definován v offline mezipaměti před použitím.  Definice tabulky za normálních okolností se provádí ihned po vytvoření klienta:
+Před použitím musí být každá offline tabulka definovaná v offline mezipaměti.  Normálně se definice tabulky provádí hned po vytvoření klienta:
 
 ```java
 AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
@@ -829,19 +829,19 @@ AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
 }
 ```
 
-### <a name="obtain-a-reference-to-the-offline-cache-table"></a>Získání odkazu na tabulku mezipaměti v režimu Offline
+### <a name="obtain-a-reference-to-the-offline-cache-table"></a>Získání odkazu na tabulku offline mezipaměti
 
-Pro tabulku online používáte `.getTable()`.  Pro tabulku v režimu offline použijte `.getSyncTable()`:
+V případě online tabulky můžete použít `.getTable()`.  Pro offline tabulku použijte `.getSyncTable()`:
 
 ```java
 MobileServiceSyncTable<ToDoItem> mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
 ```
 
-Všechny metody, které jsou k dispozici pro online tabulky (včetně filtrování, řazení, stránkování, vkládání dat, aktualizace dat a odstranění dat) fungovat stejně dobře u tabulek se online i offline.
+Všechny metody, které jsou k dispozici pro online tabulky (včetně filtrování, řazení, stránkování, vkládání dat, aktualizace dat a odstraňování dat) fungují stejně dobře v online a offline tabulkách.
 
-### <a name="synchronize-the-local-offline-cache"></a>Synchronizovat místní mezipaměti v režimu Offline
+### <a name="synchronize-the-local-offline-cache"></a>Synchronizace místní offline mezipaměti
 
-Synchronizace se v ovládacím prvku vaší aplikace.  Tady je příklad metoda synchronizace:
+Synchronizace je v rámci řízení vaší aplikace.  Tady je příklad metody synchronizace:
 
 ```java
 private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
@@ -862,23 +862,23 @@ private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
 }
 ```
 
-Pokud název dotazu je k dispozici na `.pull(query, queryname)` metoda pak Přírůstková synchronizace slouží k vrátí pouze záznamy, které byly vytvořené nebo změněné od poslední úspěšně dokončit o přijetí změn.
+Pokud je `.pull(query, queryname)` metodě k dispozici název dotazu, pak se přírůstková synchronizace používá k vrácení pouze záznamů, které byly vytvořeny nebo změněny od posledního úspěšného přijetí operace Pull.
 
-### <a name="handle-conflicts-during-offline-synchronization"></a>Řešení konfliktů při Offline synchronizaci
+### <a name="handle-conflicts-during-offline-synchronization"></a>Zpracování konfliktů při offline synchronizaci
 
-Pokud dojde ke konfliktu během `.push()` operace, `MobileServiceConflictException` je vyvolána výjimka.   Server vydal položky se vloží do výjimky a je možné načíst podle `.getItem()` na výjimku.  Upravte nasdílení změn pomocí volání na objekt MobileServiceSyncContext následující položky:
+Dojde-li ke konfliktu během `.push()` operace `MobileServiceConflictException` , je vyvolána výjimka.   Položka vydaná serverem je vložena do výjimky a lze ji načíst pomocí `.getItem()` výjimky.  Upravte nabízený zápis voláním následujících položek objektu MobileServiceSyncContext:
 
 *  `.cancelAndDiscardItem()`
 *  `.cancelAndUpdateItem()`
 *  `.updateOperationAndItem()`
 
-Jakmile se všechny konflikty jsou označená podle potřeby, volání `.push()` znovu a vyřešit všechny konflikty.
+Jakmile budou všechny konflikty označeny jako požadované, zavolejte `.push()` znovu pro vyřešení všech konfliktů.
 
-## <a name="custom-api"></a>Volání vlastních rozhraní API
+## <a name="custom-api"></a>Volání vlastního rozhraní API
 
-Vlastní rozhraní API vám umožní definovat vlastní koncové body, které zveřejňují funkce serveru, které nejsou mapování pro vložení, aktualizaci, odstranění nebo operace čtení. Pomocí vlastního rozhraní API může mít větší kontrolu nad zasílání zpráv, včetně čtení a nastavení hlavičky HTTP zpráv a definování formátu těla zprávy kromě formátu JSON.
+Vlastní rozhraní API umožňuje definovat vlastní koncové body, které zveřejňují funkci serveru, která není namapována na operaci vložení, aktualizace, odstranění nebo čtení. Pomocí vlastního rozhraní API můžete mít větší kontrolu nad zasíláním zpráv, včetně čtení a nastavování hlaviček zpráv HTTP a definování formátu textu zprávy, který je jiný než JSON.
 
-Z Androidu klienta, můžete volat **invokeApi** metoda k volání vlastního koncového bodu rozhraní API. Následující příklad ukazuje, jak volat koncový bod rozhraní API s názvem **completeAll**, který vrátí třídu kolekce s názvem **MarkAllResult**.
+Z klienta pro Android zavoláte metodu **invokeApi** , která bude volat vlastní koncový bod rozhraní API. Následující příklad ukazuje, jak volat koncový bod rozhraní API s názvem **completeAll**, který vrací třídu kolekce s názvem **MarkAllResult**.
 
 ```java
 public void completeItem(View view) {
@@ -898,36 +898,36 @@ public void completeItem(View view) {
 }
 ```
 
-**InvokeApi** metoda je volána na straně klienta, který odešle požadavek POST do nové vlastní rozhraní API. Výsledek vrácený z vlastního rozhraní API se zobrazí v dialogovém okně zpráva, jako jsou nějaké chyby. Další verze **invokeApi** můžete volitelně objektu v textu požadavku, zadejte metodu HTTP a odesílají parametry dotazu s požadavkem. Netypová verzích **invokeApi** jsou k dispozici také.
+Metoda **invokeApi** je volána v klientovi, který odesílá požadavek post do nového vlastního rozhraní API. Výsledek vrácený vlastním rozhraním API se zobrazí v dialogovém okně zprávy, stejně jako všechny chyby. Jiné verze **invokeApi** umožňují volitelně odeslat objekt v textu žádosti, zadat metodu HTTP a odeslat parametry dotazu s požadavkem. K dispozici jsou také netypové verze **invokeApi** .
 
 ## <a name="authentication"></a>Přidání ověřování do aplikace
 
-Podrobné kurzy již popisují způsob přidání těchto funkcí.
+Podrobné kurzy již popisují, jak tyto funkce Přidat.
 
-App Service podporuje [ověřování uživatelů aplikace](app-service-mobile-android-get-started-users.md) pomocí různých externích zprostředkovatelů identity: Facebook, Google, účet Microsoft, Twitter a Azure Active Directory. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identity ověřeného uživatele můžete také použít k implementaci autorizační pravidla v back-endu.
+App Service podporuje [ověřování uživatelů aplikací](app-service-mobile-android-get-started-users.md) pomocí různých externích zprostředkovatelů identity: Facebook, Google, účet Microsoft, Twitter a Azure Active Directory. Můžete nastavit oprávnění pro tabulky a omezit tak přístup pro konkrétní operace jenom na ověřené uživatele. Identitu ověřených uživatelů můžete také použít k implementaci autorizačních pravidel v back-endu.
 
-Jsou podporovány dvě toky ověřování: **server** toku a **klienta** toku. Tok server poskytuje nejjednodušší prostředí pro ověřování, spoléhá na webové rozhraní poskytovatele identity.  Žádné další sady SDK je potřeba implementovat tok ověřování serveru. Tok ověřování serveru neposkytuje hluboká integrace do mobilních zařízení a doporučuje se jen pro testování konceptu scénáře.
+Podporují se dva toky ověřování: tok **serveru** a tok **klienta** . Tok serveru poskytuje nejjednodušší možnosti ověřování, protože spoléhá na webové rozhraní zprostředkovatele identity.  K implementaci ověřování toku serveru nejsou potřeba žádné další sady SDK. Ověřování pomocí toku serveru neposkytuje hloubkovou integraci do mobilního zařízení a doporučuje se pouze pro scénáře testování konceptu.
 
-Tok klienta umožňuje hlubší integraci s funkcemi konkrétní zařízení, jako je jednotné přihlašování se spoléhá na SDK od poskytovatele identity.  Například můžete integrovat sadu SDK Facebooku do vaší aplikace.  Mobilního klienta Zamění do aplikace pro Facebook a potvrdí vaše přihlašování před přechodem do mobilní aplikace.
+Tok klienta umožňuje hlubší integraci s funkcemi specifickými pro zařízení, jako je jednotné přihlašování, protože spoléhá na sady SDK poskytované poskytovatelem identity.  Sadu Facebook SDK můžete například integrovat do mobilní aplikace.  Mobilní klient se zahodí do aplikace Facebook a před odchodem zpět do mobilní aplikace potvrdí vaše přihlášení.
 
-Povolení ověřování v aplikaci je potřeba provést čtyři kroky:
+K povolení ověřování ve vaší aplikaci je potřeba čtyři kroky:
 
-* Registrace aplikace pro ověřování pomocí zprostředkovatele identity.
-* Konfigurace back-endu služby App Service.
-* Omezte oprávnění tabulky pro ověřeného uživatele pouze na back-endu služby App Service.
-* Ověřovací kód přidejte do své aplikace.
+* Zaregistrujte svoji aplikaci pro ověřování pomocí zprostředkovatele identity.
+* Nakonfigurujte App Service back-end.
+* Omezení oprávnění tabulky pro ověřené uživatele pouze v App Service back-endu.
+* Přidejte do své aplikace ověřovací kód.
 
-Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identifikátor SID ověřeného uživatele můžete použít také k úpravě požadavky.  Další informace najdete v tématu [Začínáme s ověřováním] a v dokumentaci k serveru SDK postupy.
+Můžete nastavit oprávnění pro tabulky a omezit tak přístup pro konkrétní operace jenom na ověřené uživatele. Pro úpravu požadavků můžete použít také identifikátor SID ověřeného uživatele.  Další informace najdete v části Začínáme [Začínáme s ověřováním] a v dokumentaci k sadě SDK serveru.
 
-### <a name="caching"></a>Ověřování: Server toku
+### <a name="caching"></a>Přihlašovací Tok serveru
 
-Následující kód spustí proces serveru toku přihlášení pomocí zprostředkovatele Google.  Další konfigurace se vyžaduje kvůli požadavkům na zabezpečení pro zprostředkovatele Google:
+Následující kód spustí proces přihlášení toku serveru pomocí poskytovatele Google.  Kvůli požadavkům na zabezpečení pro poskytovatele Google se vyžaduje další konfigurace:
 
 ```java
 MobileServiceUser user = mClient.login(MobileServiceAuthenticationProvider.Google, "{url_scheme_of_your_app}", GOOGLE_LOGIN_REQUEST_CODE);
 ```
 
-Kromě toho přidejte následující metodu do hlavní třída aktivit:
+Kromě toho přidejte následující metodu do hlavní třídy aktivity:
 
 ```java
 // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
@@ -954,9 +954,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-`GOOGLE_LOGIN_REQUEST_CODE` Podle vašeho hlavního aktivita se používá pro `login()` – metoda a v rámci `onActivityResult()` metody.  Můžete použít libovolné jedinečné číslo, tak dlouho, dokud se používá stejné číslo v rámci `login()` metoda a `onActivityResult()` metoda.  Pokud abstrahování kódu klienta do služby adaptér (jak je uvedeno výše), byste měli volat metody odpovídající na adaptéru služby.
+Definována v hlavní aktivitě se používá `login()` pro metodu a v rámci `onActivityResult()` metody. `GOOGLE_LOGIN_REQUEST_CODE`  Můžete zvolit libovolné jedinečné číslo, pokud je použito stejné číslo v rámci `login()` metody `onActivityResult()` a metody.  Pokud jste kód klienta exportovali na adaptér služby (jak je uvedeno výše), měli byste zavolat příslušné metody v adaptéru služby.
 
-Budete potřebovat ke konfiguraci projektu pro customtabs.  Nejprve zadejte adresu URL přesměrování.  Přidejte následující fragment kódu a `AndroidManifest.xml`:
+Také je nutné nakonfigurovat projekt pro customtabs.  Nejdřív zadejte adresu URL přesměrování.  Přidejte následující fragment kódu do `AndroidManifest.xml`:
 
 ```xml
 <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -969,7 +969,7 @@ Budete potřebovat ke konfiguraci projektu pro customtabs.  Nejprve zadejte adre
 </activity>
 ```
 
-Přidat **redirectUriScheme** k `build.gradle` souboru pro vaši aplikaci:
+Přidejte **redirectUriScheme** do `build.gradle` souboru pro vaši aplikaci:
 
 ```gradle
 android {
@@ -986,7 +986,7 @@ android {
 }
 ```
 
-Nakonec přidejte `com.android.support:customtabs:28.0.0` do seznamu závislosti `build.gradle` souboru:
+Nakonec přidejte `com.android.support:customtabs:28.0.0` do seznamu závislostí `build.gradle` v souboru:
 
 ```gradle
 dependencies {
@@ -1000,24 +1000,24 @@ dependencies {
 }
 ```
 
-Získat ID přihlášeného uživatele **MobileServiceUser** pomocí **getUserId** metoda. Příklad použití termínu k volání asynchronního rozhraní API pro přihlášení, naleznete v tématu [Začínáme s ověřováním].
+Získejte ID přihlášeného uživatele z **MobileServiceUser** pomocí metody GetUserID. Příklad použití termínů pro volání rozhraní API asynchronního přihlašování najdete v tématu Začínáme [Začínáme s ověřováním].
 
 > [!WARNING]
-> Schéma adresy URL uvedené rozlišuje velká a malá písmena.  Ujistěte se, že všechny výskyty `{url_scheme_of_you_app}` rozlišovat velikost písmen.
+> Uvedené schéma URL rozlišuje malá a velká písmena.  Zajistěte, aby všechny `{url_scheme_of_you_app}` výskyty případu shody.
 
 ### <a name="caching"></a>Tokeny ověřování mezipaměti
 
-Ukládání do mezipaměti ověřovacích tokenů vyžaduje, abyste pro uložení ID uživatele a ověřovací token místně na zařízení. Při příštím spuštění aplikace, zkontrolujte mezipaměti, a pokud tyto hodnoty jsou k dispozici, můžete přeskočit protokolu v postupu a dosazení klienta s těmito daty. Ale tato data jsou citlivá a by měla být uložena v případě, že telefon odcizen šifrována pro bezpečnost.  Zobrazí se kompletní příklad toho, jak do mezipaměti ověřovacích tokenů v [mezipaměti část ověřování tokenů][7].
+Pro ukládání ověřovacích tokenů do mezipaměti je potřeba, abyste místně na zařízení ukládali ID uživatele a ověřovací token. Při příštím spuštění aplikace zkontrolujete mezipaměť a pokud jsou tyto hodnoty k dispozici, můžete přeskočit postup přihlášení a pak klienta s těmito daty dehydratované. Tato data jsou však citlivá a měla by být ukládána k zabezpečení pro případ, že se telefon odcizen.  Můžete si prohlédnout kompletní příklad ukládání tokenů ověřování do mezipaměti v [části tokeny ověřování cache][7].
 
-Při pokusu o použití tokenu vypršela platnost, se zobrazí *zobrazuje chyba 401 Neautorizováno* odpovědi. Můžete zpracovávat chyby s ověřováním pomocí filtrů.  Filtry zachycení požadavků na back-endu služby App Service. Kód filtru testuje odpovědi na 401, spustí proces přihlašování a potom pokračuje v žádosti, která vygenerovala 401.
+Když se pokusíte použít token, jehož platnost vypršela, obdržíte neautorizovanou odpověď *401* . Chyby ověřování můžete zpracovávat pomocí filtrů.  Filtry zachycují požadavky do back-endu App Service. Kód filtru testuje odpověď pro 401, aktivuje proces přihlášení a pak obnoví požadavek, který vygeneroval 401.
 
-### <a name="refresh"></a>Použít obnovovací tokeny
+### <a name="refresh"></a>Použití aktualizačních tokenů
 
-Token vrácený ověřování pomocí služby Azure App Service a autorizace má definovaný životnosti jednu hodinu.  Po uplynutí této doby nutné donutit uživatele.  Pokud používáte s dlouhým poločasem rozpadu token, který jste obdrželi prostřednictvím ověřování toku na straně klienta a pak můžete donutit s Azure App Service ověřování a autorizace pomocí stejného tokenu.  Další služby Azure App Service token generuje s použitím nové životnosti.
+Token vrácený Azure App Service ověřování a autorizací má definovaný životní čas 1 hodinu.  Po uplynutí této doby je nutné znovu ověřit uživatele.  Pokud používáte dlouhotrvající token, který jste dostali přes ověřování pomocí klientského toku, můžete znovu ověřit pomocí Azure App Service ověřování a autorizace pomocí stejného tokenu.  Další Azure App Service token se vygeneruje s novou dobou platnosti.
 
-Budete taky moct registrovat poskytovatele za účelem použití aktualizace tokenů.  Aktualizovat Token není vždy k dispozici.  Je vyžadována další konfigurace:
+Můžete také zaregistrovat poskytovatele pro použití aktualizačních tokenů.  Obnovovací token není vždy k dispozici.  Vyžaduje se další konfigurace:
 
-* Pro **Azure Active Directory**, nakonfigurujte tajný kód klienta pro aplikaci Azure Active Directory.  Zadejte tajný kód klienta ve službě Azure App Service při konfiguraci ověřování služby Azure Active Directory.  Při volání metody `.login()`, předejte `response_type=code id_token` jako parametr:
+* Pro **Azure Active Directory**nakonfigurujte tajný klíč klienta pro aplikaci Azure Active Directory.  Určuje tajný klíč klienta v Azure App Service při konfiguraci ověřování Azure Active Directory.  Při volání `.login()`metody předat `response_type=code id_token` jako parametr:
 
     ```java
     HashMap<String, String> parameters = new HashMap<String, String>();
@@ -1029,7 +1029,7 @@ Budete taky moct registrovat poskytovatele za účelem použití aktualizace tok
         parameters);
     ```
 
-* Pro **Google**, předejte `access_type=offline` jako parametr:
+* Pro **Google**předejte `access_type=offline` jako parametr:
 
     ```java
     HashMap<String, String> parameters = new HashMap<String, String>();
@@ -1041,9 +1041,9 @@ Budete taky moct registrovat poskytovatele za účelem použití aktualizace tok
         parameters);
     ```
 
-* Pro **Account Microsoft**, vyberte `wl.offline_access` oboru.
+* Pro **účet Microsoft**vyberte `wl.offline_access` obor.
 
-Chcete-li aktualizovat token, zavolejte `.refreshUser()`:
+Chcete-li aktualizovat token, `.refreshUser()`zavolejte:
 
 ```java
 MobileServiceUser user = mClient
@@ -1051,15 +1051,15 @@ MobileServiceUser user = mClient
     .get();
 ```
 
-Jako nejlepší postup vytvořte filtr, který zjistí 401 odpověď ze serveru a pokusí se obnovovací token uživatele.
+Osvědčeným postupem je vytvořit filtr, který detekuje odpověď 401 ze serveru a pokusí se aktualizovat token uživatele.
 
-## <a name="log-in-with-client-flow-authentication"></a>Přihlaste se pomocí ověření toku na straně klienta
+## <a name="log-in-with-client-flow-authentication"></a>Přihlášení pomocí ověřování klientského toku
 
-Obecný proces přihlášení pomocí ověřování toku na straně klienta vypadá takto:
+Obecný postup pro přihlášení pomocí ověřování klientského toku je následující:
 
-* Konfigurace ověřování pomocí služby Azure App Service a autorizaci stejně jako server tok ověřování.
-* Integrace SDK k vytvoření přístupového tokenu pro ověření zprostředkovatele ověřování.
-* Volání `.login()` metodu následujícím způsobem (`result` by měla být `AuthenticationResult`):
+* Nakonfigurujte Azure App Service ověřování a autorizaci, jako by to bylo ověřování v toku serveru.
+* Integrujte sadu SDK poskytovatele ověřování pro ověřování a vytvořte přístupový token.
+* `.login()` Zavolejte metodu`result` takto :`AuthenticationResult`
 
     ```java
     JSONObject payload = new JSONObject();
@@ -1077,16 +1077,16 @@ Obecný proces přihlášení pomocí ověřování toku na straně klienta vypa
     });
     ```
 
-Podívejte se na příklad úplného kódu v další části.
+Viz kompletní příklad kódu v následující části.
 
-Nahradit `onSuccess()` metodu cokoli, co kód chcete použít na úspěšném přihlášení.  `{provider}` Řetězec je neplatný poskytovatel: **aad** (Azure Active Directory), **facebook**, **google**, **microsoftaccount**, nebo **twitter**.  Pokud jste implementovali vlastní ověřování, můžete také použít vlastní ověřovací značka zprostředkovatele.
+Nahraďte `onSuccess()` metodu jakýmkoli kódem, který chcete použít při úspěšném přihlášení.  Řetězec je platný Zprostředkovatel: AAD (Azure Active Directory), Facebook, Google, MicrosoftAccount nebo Twitter. `{provider}`  Pokud jste implementovali vlastní ověřování, můžete také použít značku vlastního zprostředkovatele ověřování.
 
 ### <a name="adal"></a>Ověřování uživatelů pomocí Active Directory Authentication Library (ADAL)
 
-Můžete používat Active Directory Authentication Library (ADAL) pro přihlášení uživatelů do vaší aplikace pomocí Azure Active Directory. Použití toku přihlášení klienta je často vhodnější než použít `loginAsync()` metody, protože obsahuje více přirozený chování uživatelského prostředí a umožňuje další přizpůsobení.
+K podepisování uživatelů do aplikace pomocí Azure Active Directory můžete použít Active Directory Authentication Library (ADAL). Použití přihlášení toku klienta je často vhodnější pro použití `loginAsync()` metod, protože poskytuje více nativního uživatelského prostředí a umožňuje další přizpůsobení.
 
-1. Konfigurace back-endu mobilní aplikace pro přihlášení k AAD pomocí následujících [konfigurace služby App Service pro přihlášení služby Active Directory][22] kurzu. Ujistěte se, že k dokončení volitelný krok registrace nativní klientské aplikace.
-2. Nainstalujte knihovnu ADAL pomocí úpravy souboru build.gradle zahrnout následující definice:
+1. Nakonfigurujte back-end mobilní aplikace pro přihlášení AAD pomocí [postupu konfigurace App Service v kurzu přihlášení ke službě Active Directory][22] . Ujistěte se, že jste dokončili volitelný krok registrace nativní klientské aplikace.
+2. Nainstalujte ADAL úpravou souboru Build. Gradle tak, aby zahrnoval následující definice:
 
     ```gradle
     repositories {
@@ -1111,12 +1111,12 @@ Můžete používat Active Directory Authentication Library (ADAL) pro přihlá�
     }
     ```
 
-3. Přidejte následující kód do vaší aplikace a nahrazení následující:
+3. Do aplikace přidejte následující kód, který provádí následující nahrazení:
 
-    * Nahraďte **INSERT-AUTORITY-KORENOVA** s názvem tenanta, ve kterém jste zřídili vaší aplikace. Formát by měl být https://login.microsoftonline.com/contoso.onmicrosoft.com.
-    * Nahraďte **INSERT-RESOURCE-ID – TADY** s ID klienta pro back-endu mobilní aplikace. Můžete získat ID klienta z **Upřesnit** kartu **nastavení služby Azure Active Directory** na portálu.
-    * Nahraďte **vložit klienta ID TADY** s ID klienta, který jste zkopírovali z nativní klientskou aplikaci.
-    * Nahraďte **vložení – PŘESMĚROVÁNÍ-URI-TADY** s vaší lokality */.auth/login/done* koncový bod, používat schéma HTTPS. Tato hodnota by měl být podobný *https://contoso.azurewebsites.net/.auth/login/done* .
+    * V části pro **vložení autority** nahraďte název tenanta, ve kterém jste aplikaci zřídili. Formát by měl být https://login.microsoftonline.com/contoso.onmicrosoft.com.
+    * Pro back-end mobilní aplikace nahraďte **INSERT-Resource-ID – tady** ID klienta. ID klienta můžete získat z karty **Upřesnit** v části **Nastavení Azure Active Directory** na portálu.
+    * Pomocí ID klienta, které jste zkopírovali z nativní klientské aplikace, nahraďte **INSERT-Client-ID** .
+    * Pomocí schématu HTTPS nahraďte **text INSERT-redirect-URI – tady** s koncovým bodem */.auth/Login/Done* vašeho webu. Tato hodnota by měla být podobná *https://contoso.azurewebsites.net/.auth/login/done* .
 
 ```java
 private AuthenticationContext mContext;
@@ -1181,19 +1181,19 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-## <a name="filters"></a>Upravit komunikaci klient Server
+## <a name="filters"></a>Úprava komunikace mezi klientem a serverem
 
-Připojení klienta je obvykle základní připojení protokolu HTTP pomocí základního HTTP knihovny součástí sady Android SDK.  Tady je několik důvodů, proč byste měli změnit:
+Připojení klienta je obvykle základní připojení HTTP pomocí základní knihovny HTTP dodávané s Android SDK.  Existuje několik důvodů, proč byste chtěli tuto změnu změnit:
 
-* Budete chtít použít alternativní knihovnu HTTP upravit vypršení časového limitu.
-* Chcete poskytovat indikátor průběhu.
-* Chcete přidat vlastní hlavičku pro podporu funkcí správy rozhraní API.
-* Chcete zachytit neúspěšnou odpověď, a proto, že můžete implementovat opětovné ověření.
-* Chcete protokolovat požadavky na back-endu do služby analýzy.
+* Chcete použít alternativní knihovnu HTTP pro úpravu časových limitů.
+* Chcete zadat indikátor průběhu.
+* Chcete přidat vlastní hlavičku pro podporu funkce API Management.
+* Chcete zachytit neúspěšnou odpověď, abyste mohli implementovat opakované ověřování.
+* Chcete protokolovat požadavky na back-end do služby Analytics Service.
 
 ### <a name="using-an-alternate-http-library"></a>Použití alternativní knihovny HTTP
 
-Volání `.setAndroidHttpClientFactory()` metoda ihned po vytvoření odkazu na klienta.  Chcete-li například nastavit časový limit připojení na 60 sekund (namísto výchozí hodnota 10 sekund):
+`.setAndroidHttpClientFactory()` Zavolejte metodu hned po vytvoření odkazu na klienta.  Pokud například chcete nastavit časový limit připojení na 60 sekund (místo výchozí hodnoty 10 sekund):
 
 ```java
 mClient = new MobileServiceClient("https://myappname.azurewebsites.net");
@@ -1208,9 +1208,9 @@ mClient.setAndroidHttpClientFactory(new OkHttpClientFactory() {
 });
 ```
 
-### <a name="implement-a-progress-filter"></a>Implementovat filtr průběh
+### <a name="implement-a-progress-filter"></a>Implementace filtru průběhu
 
-Zachycení každého požadavku můžete implementovat pomocí implementace `ServiceFilter`.  Následující příklad aktualizuje indikátor průběhu předem vytvořené:
+Můžete implementovat zachycení každé žádosti implementací `ServiceFilter`.  Například následující aktualizace probíhají předem vytvořeným indikátorem průběhu:
 
 ```java
 private class ProgressFilter implements ServiceFilter {
@@ -1247,15 +1247,15 @@ private class ProgressFilter implements ServiceFilter {
 }
 ```
 
-Tento filtr je možné připojit klienta následujícím způsobem:
+Tento filtr můžete připojit k klientovi následujícím způsobem:
 
 ```java
 mClient = new MobileServiceClient(applicationUrl).withFilter(new ProgressFilter());
 ```
 
-### <a name="customize-request-headers"></a>Přizpůsobení záhlaví požadavku
+### <a name="customize-request-headers"></a>Přizpůsobení hlaviček žádostí
 
-Pomocí následujících `ServiceFilter` a připojit filtr stejným způsobem jako `ProgressFilter`:
+Použijte následující `ServiceFilter` a připojte filtr stejným způsobem `ProgressFilter`jako:
 
 ```java
 private class CustomHeaderFilter implements ServiceFilter {
@@ -1278,9 +1278,9 @@ private class CustomHeaderFilter implements ServiceFilter {
 }
 ```
 
-### <a name="conversions"></a>Konfigurovat automatické serializace
+### <a name="conversions"></a>Konfigurovat automatickou serializaci
 
-Můžete určit, které platí pro každý sloupec s použitím strategie převodu [gson][3] rozhraní API. Klientské knihovny Androidu používá [gson][3] na pozadí a serializovat objekty Java do formátu JSON data předtím, než se odešlou do služby Azure App Service.  Následující kód používá **setFieldNamingStrategy()** metody nastavte strategie. Tento příklad odstraní počáteční znak ("m") a potom malé další znak, pro každý název pole. Například jej by proměnit "střední" "id".  Strategie převodu na tak snížit potřeba implementovat `SerializedName()` poznámky na většina polí.
+Můžete zadat strategii převodu, která se vztahuje na všechny sloupce pomocí rozhraní [gson][3] API. Klientská knihovna pro Android používá [gson][3] na pozadí k serializaci objektů Java do dat JSON předtím, než se data odešlou do Azure App Service.  Následující kód používá metodu **setFieldNamingStrategy ()** k nastavení strategie. Tento příklad odstraní počáteční znak ("m") a pak malý případ dalšího znaku pro každý název pole. Například by zapnul "mId" na "ID".  Implementujte strategii převodu pro omezení potřeby `SerializedName()` poznámek ve většině polí.
 
 ```java
 FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {
@@ -1297,7 +1297,7 @@ client.setGsonBuilder(
 );
 ```
 
-Tento kód je nutné provést před vytvořením odkazu mobilního klienta pomocí **MobileServiceClient**.
+Tento kód musí být proveden před vytvořením odkazu na mobilní klienta pomocí **MobileServiceClient**.
 
 <!-- URLs. -->
 [Get started with Azure Mobile Apps]: app-service-mobile-android-get-started.md

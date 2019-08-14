@@ -1,6 +1,6 @@
 ---
-title: Přírůstkové kopírování nových souborů pomocí služby Azure Data Factory pouze na základě času dělené názvu souboru | Dokumentace Microsoftu
-description: Vytvořte datovou továrnu Azure a pak pomocí nástroje kopírování dat pro přírůstkové kopírování nových souborů pouze na základě času dělené názvu souboru.
+title: Použití Azure Data Factory k přírůstkové kopírování nových souborů pouze na základě názvu souboru s oddíly | Microsoft Docs
+description: Vytvořte datovou továrnu Azure a pak použijte nástroj Kopírování dat pro přírůstkové načtení nových souborů jenom na základě názvu souboru s oddíly.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: c89764d746f07e6100b1f250d4c107bb700fe014
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8081d7112d67e3bb4e72c6f6e88d765a159e047f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61098485"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933915"
 ---
-# <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových souborů na základě času dělené názvu souboru s použitím nástroje pro kopírování dat
+# <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových souborů na základě času názvu souboru rozděleného do oddílů pomocí nástroje Kopírování dat
 
-V tomto kurzu pomocí webu Azure Portal vytvoříte datovou továrnu. Pak použijete nástroj pro kopírování dat vytvoříte kanál, který přírůstkově kopíruje nové soubory na základě názvu čas dělené souboru z úložiště objektů Blob Azure do úložiště objektů Blob v Azure. 
+V tomto kurzu pomocí webu Azure Portal vytvoříte datovou továrnu. Pak použijete nástroj Kopírování dat k vytvoření kanálu, který postupně kopíruje nové soubory na základě času názvu souboru děleného z Azure Blob Storage do úložiště objektů BLOB v Azure. 
 
 > [!NOTE]
 > Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](introduction.md).
@@ -37,34 +37,32 @@ V tomto kurzu budete provádět následující kroky:
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště Azure**: Použití služby Blob storage jako _zdroj_ a _jímky_ úložiště. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+* **Účet úložiště Azure**: Jako _zdroj_ dat a úložiště dat _jímky_ použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
 
-### <a name="create-two-containers-in-blob-storage"></a>Vytvoření dvou kontejnerů v úložišti objektů Blob
+### <a name="create-two-containers-in-blob-storage"></a>Vytvoření dvou kontejnerů v úložišti objektů BLOB
 
-Připravte úložiště objektů Blob pro tento kurz provedením následujících kroků.
+Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
-1. Vytvořte kontejner s názvem **zdroj**.  Vytvořit jako cestu ke složce **2019/02/26/14** ve vašem kontejneru. Vytvořte prázdný textový soubor a pojmenujte ji jako **file1.txt**. Nahrát file1.txt cesty ke složce **zdroj/2019/02/26/14** ve vašem účtu úložiště.  K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
+1. Vytvořte kontejner s názvem **source**.  Vytvořte v kontejneru cestu ke složce jako **2019/02/26/14** . Vytvořte prázdný textový soubor a pojmenujte ho jako **Soubor1. txt**. Nahrajte adresář Soubor1. txt do složky Path **source/2019/02/26/14** do svého účtu úložiště.  K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
     
-    ![Nahrání souborů](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
+    ![nahrání souborů](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
     
     > [!NOTE]
-    > Upravte prosím název složky pomocí času UTC.  Například pokud je aktuální čas UTC 14:03:00 26. února 2019 můžete vytvořit cestu ke složce jako **zdroj/2019/02/26/14/** pravidlem z **zdroj / {Year} / {Month} / {Day} / {Hour} /** .
+    > Upravte prosím název složky časem UTC.  Pokud je například aktuální čas UTC 2:03 ODP. 26 2019, můžete vytvořit cestu ke složce jako **source/2019/02/26/14/** podle pravidla **zdroje/{Year}/{Month}/{Day}/{Hour}/** .
 
-2. Vytvořte kontejner s názvem **cílové**. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
+2. Vytvořte kontejner s názvem **Destination**. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **Data a analýzy** > **služby Data Factory**: 
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**: 
    
-   ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 2. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**. 
-      
-    ![Nová datová továrna](./media/tutorial-copy-data-tool/new-azure-data-factory.png)
     
     Název datové továrny musí být _globálně jedinečný_. Možná se zobrazí následující chybová zpráva:
    
-   ![Nová datová továrna – chybová zpráva](./media/tutorial-copy-data-tool/name-not-available-error.png)
+   ![Nová datová továrna – chybová zpráva](./media/doc-common-process/name-not-available-error.png)
    
    Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. Použijte například název _**vaše_jméno**_ **ADFTutorialDataFactory**. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
 3. Vyberte **předplatné** Azure, v rámci kterého se má nová datová továrna vytvořit. 
@@ -85,24 +83,24 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
     ![Dlaždice Nasazování datové továrny](media/tutorial-copy-data-tool/deploying-data-factory.png)
 10. Po vytvoření se zobrazí domovská stránka **Datová továrna**.
    
-    ![Domovská stránka datové továrny](./media/tutorial-copy-data-tool/data-factory-home-page.png)
+    ![Domovská stránka datové továrny](./media/doc-common-process/data-factory-home-page.png)
 11. Pokud chcete na samostatné kartě otevřít uživatelské rozhraní služby Azure Data Factory, vyberte dlaždici **Vytvořit a monitorovat**. 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Vytvoření kanálu pomocí nástroje pro kopírování dat
 
-1. Na **pusťme se do práce** stránky, vyberte **kopírování dat** title ke spuštění nástroje pro kopírování dat. 
+1. Na stránce **Začínáme** vyberte **kopírování dat** název pro spuštění nástroje kopírování dat. 
 
-   ![Dlaždice nástroje pro kopírování dat](./media/tutorial-copy-data-tool/copy-data-tool-tile.png)
+   ![Dlaždice nástroje pro kopírování dat](./media/doc-common-process/get-started-page.png)
    
-2. Na **vlastnosti** stránce, proveďte následující kroky:
+2. Na stránce **vlastnosti** proveďte následující kroky:
 
-    a. V části **název úkolu**, zadejte **DeltaCopyFromBlobPipeline**.
+    a. V části **název úlohy**zadejte **DeltaCopyFromBlobPipeline**.
 
-    b. V části **tempo úkolu nebo plán úloh**vyberte **pravidelně spouštět podle plánu**.
+    b. V části **úkol tempo nebo plán úlohy**vyberte možnost **spouštět pravidelně podle plánu**.
 
-    c. V části **aktivujte typ**vyberte **Přeskakujícího okna**.
+    c. V části **typ triggeru**vyberte **okno bubnu**.
     
-    d. V části **opakování**, zadejte **1 h**. 
+    d. V části **opakování**zadejte **1 hodina (e)** . 
     
     e. Vyberte **Další**. 
     
@@ -111,48 +109,48 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
     ![Stránka Vlastnosti](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/copy-data-tool-properties-page.png)
 3. Na stránce **Source data store** (Zdrojové úložiště dat) proveďte následující kroky:
 
-    a. Klikněte na tlačítko **+ vytvořit nové připojení**, můžete přidat připojení.
+    a. Kliknutím na **+ vytvořit nové připojení**přidejte připojení.
 
     ![Stránka Zdrojové úložiště dat](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page.png)
     
-    b. Vyberte **Azure Blob Storage** z galerie a pak klikněte na tlačítko **pokračovat**.
+    b. Z Galerie vyberte **Azure Blob Storage** a potom klikněte na **pokračovat**.
 
     ![Stránka Zdrojové úložiště dat](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-blob.png)
     
-    c. Na **Nová propojená služba** stránky, vyberte svůj účet úložiště z **název účtu úložiště** seznamu a potom klikněte na tlačítko **Dokončit**.
+    c. Na stránce **Nová propojená služba** vyberte v seznamu **název účtu úložiště** svůj účet úložiště a pak klikněte na **Dokončit**.
     
     ![Stránka Zdrojové úložiště dat](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-linkedservice.png)
     
-    d. Vyberte nově vytvořený propojenou službu a pak klikněte na **Další**. 
+    d. Vyberte nově vytvořenou propojenou službu a pak klikněte na **Další**. 
     
    ![Stránka Zdrojové úložiště dat](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-linkedservice.png)
 4. Na stránce **Zvolte vstupní soubor nebo složku** proveďte následující kroky:
     
-    a. Procházet a vybrat **zdroj** kontejneru, pak vyberte **zvolit**.
+    a. Procházejte a vyberte **zdrojový** kontejner a pak vybertevybrat.
     
     ![Zvolte vstupní soubor nebo složku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
     
-    b. V části **chování načítání souboru**vyberte **přírůstkové načítání: názvy oddílů čas složka či soubor**.
+    b. V části **chování při načítání souborů**vyberte **přírůstkové načtení: čas-dělené složky nebo názvy souborů**.
     
     ![Zvolte vstupní soubor nebo složku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-loading-behavior.png)
     
-    c. Zápis cesty ke složce dynamické jako **zdroj / {year} / {month} / {day} / {hour} /** a změnit formát jako tady:
+    c. Zapište cestu k dynamické složce jako **zdroj/{Year}/{Month}/{Day}/{Hour}/** a změňte formát následujícím způsobem:
     
     ![Zvolte vstupní soubor nebo složku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name.png)
     
-    d. Zkontrolujte **binární kopie** a klikněte na tlačítko **Další**.
+    d. Ověřte **binární kopii** a klikněte na tlačítko **Další**.
     
     ![Zvolte vstupní soubor nebo složku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
-5. Na **cílového úložiště dat** stránky, vyberte **službě Azure BLOB Storage**, což je stejné úložiště účtu jako úložiště zdroje dat a klikněte na **Další**.
+5. Na stránce **cílové úložiště dat** vyberte **AzureBlobStorage**, což je stejný účet úložiště jako úložiště zdroje dat, a potom klikněte na **Další**.
 
     ![Stránka Cílové úložiště dat](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/destination-data-store-page-select-linkedservice.png) 
-6. Na **zvolte výstupní soubor nebo složku** stránce, proveďte následující kroky:
+6. Na stránce **zvolit výstupní soubor nebo složku** proveďte následující kroky:
     
-    a. Procházet a vybrat **cílové** složky, klikněte na **zvolit**.
+    a. Vyhledejte a vyberte **cílovou** složku a pak klikněte na **zvolit**.
     
     ![Zvolte výstupní soubor nebo složku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-output-file-folder.png)   
     
-    b. Zápis cesty ke složce dynamické jako **zdroj / {year} / {month} / {day} / {hour} /** a změnit formát jako tady:
+    b. Zapište cestu k dynamické složce jako **zdroj/{Year}/{Month}/{Day}/{Hour}/** a změňte formát následujícím způsobem:
     
     ![Zvolte výstupní soubor nebo složku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name2.png)    
     
@@ -169,36 +167,36 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
 9. Na stránce **Nasazení** vyberte **Monitorovat** a začněte monitorovat kanál (úlohu).
     ![Stránka nasazení](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
     
-10. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**.  Budete potřebovat, počkejte, když se automaticky aktivuje spuštění kanálu (o za hodinu).  Při spuštění, **akce** sloupec obsahuje odkazy, chcete-li zobrazit podrobnosti o spuštění aktivit a spustit kanál znovu. Vyberte **aktualizovat** aktualizujte seznam a vyberte **zobrazit spuštění aktivit** propojit **akce** sloupec. 
+10. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**.  Musíte počkat na spuštění kanálu, když se aktivuje automaticky (přibližně po jedné hodině).  Když se spustí, sloupec **Actions (akce** ) obsahuje odkazy na zobrazení podrobností o spuštění aktivit a opětovné spuštění kanálu. Vyberte **aktualizovat** a aktualizujte seznam a vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce** . 
 
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
-11. Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Můžete zobrazit zdrojový soubor (file1.txt) byl zkopírován z **zdroj/2019/02/26/14/** k **cílové/2019/02/26/14/** se stejným názvem souboru.  
+11. Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Můžete zobrazit zdrojový soubor (Soubor1. txt), který jste zkopírovali ze **zdrojového/2019/02/26/14/** do **cílového/2019/02/26/14/** se stejným názvem souboru.  
 
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
     
-    Stejné můžete také ověřit pomocí Průzkumníka služby Azure Storage (https://storageexplorer.com/) kontrolovala soubory.
+    Stejný postup můžete také ověřit pomocí Průzkumník služby Azure Storage (https://storageexplorer.com/) k prohledání souborů.
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
-12. Vytvořte jiný prázdný textový soubor s novým názvem jako **Soubor2.txt**. Nahrajte soubor Soubor2.txt cesty ke složce **zdroj/2019/02/26/15** ve vašem účtu úložiště.   K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).   
+12. Vytvořte další prázdný textový soubor s novým názvem jako **Soubor2. txt**. Nahrajte soubor Soubor2. txt do složky Path **source/2019/02/26/15** ve svém účtu úložiště.   K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).   
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs4.png)
     
     > [!NOTE]
-    > Možná budete vědět, že je potřeba vytvořit nová cesta ke složce. Upravte prosím název složky pomocí času UTC.  Například pokud je aktuální čas UTC 3:20 hodin 26. února 2019, můžete vytvořit cesta ke složce jako **zdroj/2019/02/26/15/** pravidlem z **{Year} / {Month} / {Day} / {Hour} /** .
+    > Možná víte, že je potřeba vytvořit novou cestu ke složce. Upravte prosím název složky časem UTC.  Pokud je například aktuální čas UTC 3:20 odp. 26 2019, můžete vytvořit cestu ke složce jako **source/2019/02/26/15/** podle pravidla **{Year}/{Month}/{Day}/{Hour}/** .
     
-13. Chcete přejít zpátky k **spuštění kanálu** zobrazit, vyberte možnost **všechna spuštění kanálů**a počkat na stejném kanálu znovu aktivuje automaticky po jiné jedné hodině.  
+13. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechny spuštěné kanály**a počkejte, až se znovu aktivuje stejný kanál, a to za jinou hodinu.  
 
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
 
-14. Vyberte **zobrazení spuštění aktivit** pro druhý kanál spouštět v případě pochází a proveďte stejné chcete podívat na podrobnosti.  
+14. Vyberte možnost **Zobrazit spuštění aktivit** pro druhý běh kanálu, pokud je k dispozici, a proveďte stejnou kontrolu podrobností.  
 
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs6.png)
     
-    Můžete zobrazit zdrojový soubor (Soubor2.txt) byl zkopírován z **zdroj/2019/02/26/15/** k **cílové/2019/02/26/15/** se stejným názvem souboru.
+    Zdrojový soubor (Soubor2. txt) si můžete prohlédnout ze **zdroje/2019/02/26/15/** do **cílového/2019/02/02/15/** se stejným názvem souboru.
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png) 
     
-    Stejné můžete také ověřit pomocí Průzkumníka služby Azure Storage (https://storageexplorer.com/) kontrolovala soubory v **cílové** kontejneru
+    Stejný postup můžete také ověřit pomocí Průzkumník služby Azure Storage (https://storageexplorer.com/) k prohledání souborů v **cílovém** kontejneru).
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
 
