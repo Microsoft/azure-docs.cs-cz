@@ -1,138 +1,138 @@
 ---
-title: Automatické škálování hostitelé systému Windows virtuální plochy Preview relace – Azure
-description: Popisuje, jak nastavit automatické škálování skriptu pro hostitele relace Windows virtuální plochy, ve verzi Preview.
+title: Automatické škálování hostitelů relací ve verzi Preview virtuálních počítačů s Windows – Azure
+description: Popisuje, jak nastavit skript automatického škálování pro hostitele relací ve verzi Preview pro virtuální počítače s Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 3b98db361a8ec888eb8bf9e1bf3658a7e38111c6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d7b91e3e74c65919a3afe80addfbd0fadd23b03c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620420"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931805"
 ---
 # <a name="automatically-scale-session-hosts"></a>Automatické škálování hostitelů relace
 
-Pro mnoho nasazení virtuální Preview Desktop Windows v Azure náklady na virtuální počítač představují významnou část celkové náklady na nasazení virtuální plochy Windows. Pokud chcete snížit náklady, je nejlepší vypnout a uvolnit relace hostování virtuálních počítačů (VM) během hodin mimo špičku využití a pak je restartujte během špičky využití.
+Pro mnoho nasazení ve verzi Preview virtuálních počítačů s Windows v Azure představuje náklady na virtuální počítač významnou část celkových nákladů na nasazení virtuálních počítačů s Windows. Aby se snížily náklady, je nejlepší vypnout a uvolnit virtuální počítače hostitele relace v době mimo špičku a pak je restartovat během špičky využití.
 
-Tento článek používá jednoduchý skript škálování pro automatické škálování relace hostování virtuálních počítačů v prostředí virtuálního klienta Windows. Další informace o tom, jak škálování skriptu funguje, najdete v článku [fungování škálování skriptu](#how-the-scaling-script-works) oddílu.
+V tomto článku se používá jednoduchý skript pro škálování pro automatické škálování virtuálních počítačů hostitele relací v prostředí virtuálních počítačů s Windows. Další informace o tom, jak skript škálování funguje, najdete v části [Jak funguje skript pro škálování](#how-the-scaling-script-works) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Prostředí, ve kterém jste spustili skript musíte mít následující věci:
+Prostředí, ve kterém spouštíte skript, musí mít následující věci:
 
-- Tenant virtuální plochy Windows a účet nebo instančního objektu s oprávněními k dotazu tohoto tenanta (třeba Přispěvatel vzdálené plochy).
-- Relace hostitele fondu virtuálních počítačů nakonfigurované a registrovaný ve službe virtuální plochy Windows.
-- Dalšího virtuálního počítače, který spustí naplánované úlohy pomocí plánovače úloh a má přístup k síti pro hostitele relace. To bude odkazovat později v dokumentu jako scaler virtuálního počítače.
-- [Modulu Powershellu pro Microsoft Azure Resource Manageru](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) nainstalovala do virtuálního počítače s naplánovanou úlohu.
-- [Modulu Powershellu pro virtuální plochy Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) nainstalovala do virtuálního počítače s naplánovanou úlohu.
+- Tenant a účet virtuálních klientů s Windows nebo instanční objekt s oprávněními pro dotazování tohoto tenanta (například Přispěvatel RDS).
+- Virtuální počítače fondu hostitele relace jsou nakonfigurované a zaregistrované ve službě Virtual Desktop systému Windows.
+- Další virtuální počítač, který spustí naplánovanou úlohu prostřednictvím Plánovač úloh a má síťový přístup k hostitelům relací. Bude se na něj později v dokumentu odkazovat jako na virtuální počítač pro horizontální navýšení kapacity.
+- Na virtuálním počítači, na kterém běží naplánovaná úloha, je nainstalovaný [modul Microsoft Azure správce prostředků PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) .
+- Na virtuálním počítači, na kterém běží naplánovaná úloha, je nainstalovaný [modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) .
 
 ## <a name="recommendations-and-limitations"></a>Doporučení a omezení
 
-Při škálování skriptu, vezměte v úvahu následující věci:
+Při spuštění skriptu škálování mějte na paměti následující věci:
 
-- Tento skript škálování může zpracovat pouze jeden fond hostitele na instanci naplánované úlohy, na kterém běží škálování skriptu.
-- Naplánované úlohy, na kterých běží škálování skripty musí být na virtuálním počítači, který je vždycky aktivní.
-- Vytvořte samostatnou složku pro každou instanci sady škálování skriptu a jeho konfigurace.
-- Tento skript nepodporuje přihlášení jako správce, aby virtuální plochy Windows s Azure AD uživatelské účty, které vyžadují ověřování službou Multi-Factor Authentication. Doporučujeme že použít instanční objekty pro přístup k virtuálnímu klientovi Windows service a Azure. Postupujte podle [v tomto kurzu](create-service-principal-role-powershell.md) vytvoření instančního objektu a přiřazení role pomocí prostředí PowerShell.
-- Azure SLA se zárukou platí jenom pro virtuální počítače ve skupině dostupnosti. Aktuální verzi dokumentu popisuje prostředí pro jeden virtuální počítač způsobem škálování, který nemusí splňovat požadavky na dostupnost.
+- Tento skript škálování může zpracovat pouze jeden fond hostitelů na instanci naplánované úlohy, která spouští skript škálování.
+- Naplánované úlohy, které spouštějí skripty škálování, musí být na virtuálním počítači, který je vždycky zapnutý.
+- Vytvořte samostatnou složku pro každou instanci skriptu škálování a jeho konfiguraci.
+- Tento skript nepodporuje přihlašování jako správce k virtuálním plochám Windows s uživatelskými účty Azure AD, které vyžadují službu Multi-Factor Authentication. Pro přístup ke službě Windows Virtual Desktop a Azure doporučujeme používat instanční objekty. Podle [tohoto kurzu](create-service-principal-role-powershell.md) vytvořte instanční objekt a přiřazení role pomocí PowerShellu.
+- Záruka SLA Azure platí jenom pro virtuální počítače ve skupině dostupnosti. Aktuální verze dokumentu popisuje prostředí s jedním virtuálním počítačem, které provádí škálování, což nemusí splňovat požadavky na dostupnost.
 
-## <a name="deploy-the-scaling-script"></a>Škálování skriptu nasazení
+## <a name="deploy-the-scaling-script"></a>Nasazení skriptu škálování
 
-Následující postupy vám sdělí škálování skriptu nasazení.
+Následující postupy vám posdělí, jak nasadit skript škálování.
 
-### <a name="prepare-your-environment-for-the-scaling-script"></a>Příprava prostředí pro škálování skriptu
+### <a name="prepare-your-environment-for-the-scaling-script"></a>Příprava prostředí pro skript škálování
 
-Nejprve připravte vaše prostředí na škálování skriptu:
+Nejprve Připravte prostředí pro skript škálování:
 
-1. Přihlaste se k virtuálnímu počítači (scaler virtuálního počítače), který se spustí naplánovanou úlohu pomocí účtu správce domény.
-2. Vytvořte složku na scaler virtuálního počítače pro uložení škálování skriptu a jeho konfigurace (například **C:\\škálování HostPool1**).
-3. Stáhněte si **basicScale.ps1**, **Config.xml**, a **funkce PSStoredCredentials.ps1** soubory a **PowershellModules** ze složky [škálování úložiště skriptů](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) a zkopírujte je do složky, kterou jste vytvořili v kroku 2. Existují dva základní způsoby, získat soubory před kopírováním do scaler virtuálního počítače:
-    - Naklonujte úložiště git do místního počítače.
-    - Zobrazení **Raw** verzi každého souboru zkopírujte a vložte obsah každého souboru, do textového editoru, pak uložte soubory s odpovídajícím názvem souboru a typu souboru. 
+1. Přihlaste se k virtuálnímu počítači (virtuální počítač pro horizontální navýšení kapacity), který spustí naplánovanou úlohu s účtem správce domény.
+2. Vytvořte složku na virtuálním počítači pro škálování, která bude obsahovat skript škálování a jeho konfiguraci (například **C\\: Scale-HostPool1**).
+3. Stažení souborů **basicScale. ps1**, **config. XML**a **Functions-PSStoredCredentials. ps1** a složky **PowershellModules** z [úložiště skriptu škálování](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) a jejich zkopírování do složky, kterou jste vytvořili v kroku 2. Existují dva základní způsoby, jak soubory získat před jejich zkopírováním do virtuálního počítače se škálováním na více počítačů:
+    - Naklonujte úložiště Git do místního počítače.
+    - Zobrazte **nezpracované** verze každého souboru, zkopírujte a vložte obsah každého souboru do textového editoru a pak soubory uložte s odpovídajícím názvem souboru a typem souboru. 
 
-### <a name="create-securely-stored-credentials"></a>Vytvořte bezpečně uložené přihlašovací údaje
+### <a name="create-securely-stored-credentials"></a>Vytvoření bezpečných uložených přihlašovacích údajů
 
 V dalším kroku budete muset vytvořit bezpečně uložené přihlašovací údaje:
 
-1. Otevřete prostředí PowerShell ISE jako správce.
-2. Naimportujte modul Powershellu RDS spuštěním následující rutiny:
+1. Otevřete PowerShell ISE jako správce.
+2. Importujte modul PowerShellu služby RDS spuštěním následující rutiny:
 
     ```powershell
     Install-Module Microsoft.RdInfra.RdPowershell
     ```
     
-3. Otevřete podokno úprav a zatížení **funkce PSStoredCredentials.ps1** souboru.
+3. Otevřete podokno úprav a načtěte soubor **Function-PSStoredCredentials. ps1** a pak spusťte celý skript (F5).
 4. Spusťte následující rutinu:
     
     ```powershell
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
     ```
     
-    Například **proměnná-sady - název KeyPath – globální obor – hodnota "c:\\škálování HostPool1"**
-5. Spustit **New StoredCredential - KeyPath \$KeyPath** rutiny. Po zobrazení výzvy zadejte svoje přihlašovací údaje Windows virtuálního klienta s oprávněními k dotazování fondu hostitele (hostitele fondu je zadán v **config.xml**).
-    - Pokud používáte jiný instančních objektů nebo standardního účtu, spusťte **New StoredCredential - KeyPath \$KeyPath** rutina jednou pro každý účet k vytvoření místního uložené přihlašovací údaje.
-6. Spustit **Get StoredCredential-seznamu** potvrďte přihlašovací údaje byly úspěšně vytvořeny.
+    Příklad **: set-Variable-Name cesta k nástroji – globální hodnota "c:\\škálování-HostPool1"**
+5. Spusťte rutinu **path New-StoredCredential- \$** Path. Po zobrazení výzvy zadejte přihlašovací údaje k virtuálnímu počítači s Windows s oprávněními pro dotazování fondu hostitelů (fond hostitelů je zadaný v **souboru config. XML**).
+    - Pokud používáte jiné instanční objekty nebo standardní účet, spusťte rutinu **New-StoredCredential- \$** path path jednou pro každý účet pro vytvoření místních uložených přihlašovacích údajů.
+6. Spuštěním rutiny **Get-StoredCredential-list** potvrďte, že se přihlašovací údaje úspěšně vytvořily.
 
-### <a name="configure-the-configxml-file"></a>Konfigurace v souboru config.xml
+### <a name="configure-the-configxml-file"></a>Konfigurace souboru config. XML
 
-Do následujících polí se aktualizovat nastavení škálování skript v souboru config.xml zadejte příslušné hodnoty:
+Zadejte příslušné hodnoty do následujících polí pro aktualizaci nastavení skriptu škálování v souboru config. XML:
 
 | Pole                     | Popis                    |
 |-------------------------------|------------------------------------|
-| AADTenantId                   | Spusťte Azure AD Tenant ID, které přidružuje předplatné, ve kterém relace hostování virtuálních počítačů     |
-| AADApplicationId              | ID aplikace instančního objektu služby                                                       |
-| AADServicePrincipalSecret     | To může uživatel zadat během fáze testování, ale je udržovat prázdné po vytvoření přihlašovacích údajů pomocí **PSStoredCredentials.ps1 – funkce**    |
-| currentAzureSubscriptionId    | ID předplatného Azure, kde spustit relaci hostitele virtuálních počítačů                        |
-| tenantName                    | Název tenanta virtuálního klienta Windows                                                    |
-| hostPoolName                  | Název fondu hostitele virtuálního klienta Windows                                                 |
-| RDBroker                      | Adresa URL ke službě WVD výchozí hodnotu https:\//rdbroker.wvd.microsoft.com             |
-| Uživatelské jméno                      | ID aplikace instančního objektu služby (je možné mít instanční objekt stejný jako v AADApplicationId) nebo standardního uživatele bez ověřování Multi-Factor Authentication |
-| isServicePrincipal            | Platné hodnoty jsou **true** nebo **false**. Určuje, zda je druhou sadu pověření používá objekt služby nebo standardní účet. |
-| BeginPeakTime                 | Kdy začíná špičky využití                                                            |
-| EndPeakTime                   | Po ukončení špičky využití                                                              |
-| TimeDifferenceInHours         | Časový rozdíl mezi místním časem a UTC, v hodinách                                   |
-| SessionThresholdPerCPU        | Maximální počet relací na prahová hodnota využití procesoru používá k určení, kdy nová relace hostitele virtuálního počítače je potřeba spustit během špičky.  |
-| MinimumNumberOfRDSH           | Minimální počet hostitelů fondu virtuálních počítačů běžela v době mimo špičku využití             |
-| LimitSecondsToForceLogOffUser | Počet sekund se má čekat, než se rozhodnete Vynutit odhlášení uživatele. Pokud je nastaveno na 0, uživatelé nejsou nuceni Odhlásit se.  |
-| LogOffMessageTitle            | Nadpis zprávy pro uživatele předtím, než budete muset odhlásit se                  |
-| LogOffMessageBody             | Tělo zprávy odeslané uživatelům předtím, než se odhlásili. Například "odpojí tento počítač dolů v X minut. Uložte svou práci a odhlásit se." |
+| AADTenantId                   | ID tenanta Azure AD, které přidruží předplatné, ve kterém se spouštějí virtuální počítače hostitele relace     |
+| AADApplicationId              | ID aplikace instančního objektu                                                       |
+| AADServicePrincipalSecret     | Tato možnost se dá zadat během zkušební fáze, ale po vytvoření přihlašovacích údajů pomocí **Functions-PSStoredCredentials. ps1** se musí uchovávat prázdná.    |
+| currentAzureSubscriptionId    | ID předplatného Azure, ve kterém se spouštějí virtuální počítače hostitele relace                        |
+| tenantName                    | Název tenanta virtuálních klientů Windows                                                    |
+| hostPoolName                  | Název fondu hostitelů virtuálních počítačů s Windows                                                 |
+| RDBroker                      | Adresa URL služby WVD, výchozí hodnota https:\//rdbroker.WVD.Microsoft.com             |
+| Uživatelské jméno                      | ID aplikace instančního objektu (je možné, že má stejný instanční objekt jako v AADApplicationId) nebo standardní uživatel bez služby Multi-Factor Authentication |
+| isServicePrincipal            | Přijaté hodnoty jsou **true** nebo **false**. Určuje, jestli druhá sada přihlašovacích údajů používá instanční objekt nebo standardní účet. |
+| BeginPeakTime                 | Čas zahájení špičky využití                                                            |
+| EndPeakTime                   | Doba špičky využití na konci                                                              |
+| TimeDifferenceInHours         | Časový rozdíl mezi místním časem a časem UTC v hodinách                                   |
+| SessionThresholdPerCPU        | Maximální počet relací na prahovou hodnotu procesoru, který se používá k určení, kdy je potřeba spustit nový virtuální počítač hostitele relace během špičky.  |
+| MinimumNumberOfRDSH           | Minimální počet virtuálních počítačů fondu hostitelů, které mají běžet v době mimo špičku             |
+| LimitSecondsToForceLogOffUser | Počet sekund, po který se má počkat, než se uživatelé vynutí odhlášení. Pokud je nastavená hodnota 0, uživatelé se nebudou muset odhlásit.  |
+| LogOffMessageTitle            | Název zprávy odeslané uživateli před jejich vynuceným odhlášením                  |
+| LogOffMessageBody             | Text zprávy s upozorněním, která se uživateli pošle předtím, než se odhlásí. Například "Tento počítač se vypne během X minut. Uložte prosím svoji práci a odhlaste se. |
 
-### <a name="configure-the-task-scheduler"></a>Konfigurace služby Plánovač úloh
+### <a name="configure-the-task-scheduler"></a>Nakonfigurovat Plánovač úloh
 
-Po nakonfigurování konfiguračního souboru .xml, budete potřebovat ke konfiguraci plánovače úloh ke spuštění souboru basicScaler.ps1 v pravidelných intervalech.
+Po konfiguraci souboru Configuration. XML bude nutné nakonfigurovat Plánovač úloh, aby se soubor basicScaler. ps1 spouštěl v pravidelných intervalech.
 
-1. Spustit **Plánovač úloh**.
-2. V **Plánovač úloh** okně **vytvořit úlohu...**
-3. V **vytvořit úlohu** dialogového okna, vyberte **Obecné** kartu, zadejte **název** (například "Dynamické RDSH"), vyberte **spouštění, jestli je uživatel přihlášen, nebo Ne** a **spustit s nejvyšším oprávněním**.
-4. Přejděte **triggery** kartu a potom vyberte **nový...**
-5. V **Nová aktivační událost** dialogového okna, v části **upřesňující nastavení**, zkontrolujte **opakování úlohy každý** a vyberte příslušnou období a doba trvání (například **15 minut** nebo **po neomezenou dobu**).
-6. Vyberte **akce** kartu a **nový...**
-7. V **novou akci** dialogové okno, zadejte **powershell.exe** do **programu nebo skriptu** pole, a pak zadejte **C:\\škálování\\ RDSScaler.ps1** do **argumenty (volitelné) přidejte** pole.
-8. Přejděte **podmínky** a **nastavení** karet a vyberte **OK** přijměte výchozí nastavení pro každý.
-9. Zadejte heslo pro účet správce, kde plánujete provozovat škálování skriptu.
+1. Spusťte **Plánovač úloh**.
+2. V okně **Plánovač úloh** vyberte **vytvořit úlohu...**
+3. V dialogovém okně **vytvořit úlohu** vyberte kartu **Obecné** , zadejte **název** (například "dynamický hostitel vzdálené relace"), vyberte možnost spustit bez **ohledu na to, zda je uživatel přihlášen nebo nikoli** a **Spusťte s nejvyššími oprávněními**.
+4. Otevřete kartu **triggery** a pak vyberte **nové...**
+5. V dialogovém okně **Nová aktivační událost** v **části Upřesnit nastavení**zaškrtněte políčko **Opakovat úlohu každých** a vyberte příslušné období a dobu trvání (například **15 minut** nebo neomezeně).
+6. Vyberte kartu **Akce** a **nové...**
+7. V dialogovém okně **Nová akce** zadejte do pole **program/skript** **PowerShell. exe** a **\\\\potom zadejte C: škálovat basicScale. ps1** do pole **Přidat argumenty (volitelné)** .
+8. Otevřete karty **podmínky** a **Nastavení** a výběrem **OK** potvrďte výchozí nastavení pro každou z nich.
+9. Zadejte heslo pro účet správce, ve kterém chcete spustit skript škálování.
 
-## <a name="how-the-scaling-script-works"></a>Jak funguje škálování skriptu
+## <a name="how-the-scaling-script-works"></a>Jak funguje skript škálování
 
-Tento skript škálování načte nastavení ze souboru config.xml, včetně počáteční a koncové období špičky využití během dne.
+Tento skript pro škálování čte nastavení ze souboru config. XML, včetně začátku a konce období špičky využití během dne.
 
-Během doby využití ve špičce tento skript zkontroluje aktuální počet relací a aktuální kapacita RDSH spuštěné pro každý fond hostitele. Vypočítá, pokud hostitel relace spuštěné virtuální počítače mají dostatečnou kapacitu pro podporu stávající relace na základě parametru SessionThresholdPerCPU definované v souboru config.xml. V opačném případě skript spustí další relace hostitele virtuálních počítačů ve fondu hostitele.
+Během špičky běhu skript zkontroluje aktuální počet relací a aktuálně spuštěnou kapacitu vzdálené plochy pro každý fond hostitelů. Počítá se v případě, že virtuální počítače hostitele spuštěné relace mají dostatečnou kapacitu pro podporu stávajících relací na základě parametru SessionThresholdPerCPU definovaného v souboru config. XML. V takovém případě se spustí skript s dalšími virtuálními počítači hostitele relace ve fondu hostitelů.
 
-Skript určí v době mimo špičku využití, které relace hostitelů virtuálních počítačů vypnutí na základě parametru MinimumNumberOfRDSH v souboru config.xml. Skript nastaví relace hostování virtuálních počítačů k vyprázdnění režim, který zabrání nové relace připojení k hostiteli. Pokud jste nastavili **LimitSecondsToForceLogOffUser** parametru v souboru config.xml kladná hodnota nulová, skript vás upozorní, všechny aktuálně přihlášení uživatele k ukládání, počkejte nakonfigurovaného množství času a pak vynutit Uživatelé se odhlásit. Po všechny uživatelské relace na hostiteli relace virtuálního počítače, bude skript vypnutí serveru.
+V době mimo špičku bude skript určovat, které virtuální počítače hostitele relace by se měly vypnout na základě parametru MinimumNumberOfRDSH v souboru config. XML. Skript nastaví virtuální počítače hostitele relace na režim vyprázdnění, aby se zabránilo novým relacím, které se připojují k hostitelům. Pokud nastavíte parametr **LimitSecondsToForceLogOffUser** v souboru config. XML na nenulovou kladnou hodnotu, skript upozorní všechny aktuálně přihlášené uživatele, aby ušetřili práci, počkali nakonfigurovanou dobu a pak vynutí, aby se uživatelé odhlásili. Jakmile se všechny uživatelské relace odhlásily na virtuálním počítači hostitele relace, skript vypne server.
 
-Pokud jste nastavili **LimitSecondsToForceLogOffUser** parametru v souboru config.xml na nulu, tento skript vám umožní nastavení konfigurace relace na hostiteli vlastnosti fondu pro zpracování přihlašování vypnout uživatelských relací. Pokud nejsou žádné relace na hostiteli relace virtuálního počítače, zůstanou relace hostitelskému virtuálnímu počítači spuštěná. Pokud nejsou k dispozici žádné relace, skript se vypne hostitele relace virtuálního počítače.
+Pokud v souboru config. xml nastavíte parametr **LimitSecondsToForceLogOffUser** na hodnotu nula, skript umožní, aby nastavení konfigurace relace ve vlastnostech fondu hostitelů zpracovával podepisování uživatelských relací. Pokud se na virtuálním počítači hostitele relace nacházejí nějaké relace, ponechá se virtuální počítač hostitele relace spuštěný. Pokud se nevyskytly žádné relace, skript vypne virtuální počítač hostitele relace.
 
-Skript je navržen pro spouštění pravidelně na serveru scaler virtuálního počítače pomocí plánovače úloh. Vyberte vhodný časový interval na základě velikosti vašeho prostředí služby Vzdálená plocha a mějte na paměti, že spouštění a vypínání virtuálních počítačů může nějakou dobu trvat. Doporučujeme spustit skript škálování každých 15 minut.
+Skript je navržený tak, aby pravidelně běžel na serveru virtuálních počítačů se škálováním na více systému pomocí Plánovač úloh. Vyberte odpovídající časový interval na základě velikosti prostředí vzdálené plochy a nezapomeňte, že spouštění a vypínání virtuálních počítačů může nějakou dobu trvat. Doporučujeme spouštět skript škálování každých 15 minut.
 
 ## <a name="log-files"></a>Soubory protokolu
 
-Škálování skript vytvoří dva soubory protokolu, **WVDTenantScale.log** a **WVDTenantUsage.log**. **WVDTenantScale.log** souboru se budou protokolovat události a chyby (pokud existuje) během každé spuštění skriptu škálování.
+Skript škálování vytvoří dva soubory protokolu **WVDTenantScale. log** a **WVDTenantUsage. log**. Soubor **WVDTenantScale. log** bude protokolovat události a chyby (pokud existují) během každého spuštění skriptu škálování.
 
-**WVDTenantUsage.log** souboru zaznamená aktivní počtu jader a počty aktivních virtuálních počítačů pokaždé, když provedete škálování skriptu. Tyto informace můžete použít k odhadu ze skutečného využití virtuálních počítačů Microsoft Azure a náklady. Soubor je formátován jako textový soubor s oddělovači, s každou položku, který obsahuje následující informace:
+V souboru **WVDTenantUsage. log** se zaznamená aktivní počet jader a aktivních počet virtuálních počítačů pokaždé, když spustíte skript škálování. Tyto informace můžete použít k odhadu skutečného využití Microsoft Azure virtuálních počítačů a nákladů. Soubor je formátován jako hodnoty oddělené čárkami. Každá položka obsahuje následující informace:
 
->čas, fondu hostitele, počet jader, virtuální počítače
+>čas, fond hostitelů, jádra, virtuální počítače
 
-Název souboru můžete upravit také mít příponu CSV, načte do aplikace Microsoft Excel a analyzovat.
+Název souboru se taky dá změnit tak, aby měl rozšíření CSV, načtený do Microsoft Excelu a analyzuje.

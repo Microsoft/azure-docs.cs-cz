@@ -1,7 +1,7 @@
 ---
-title: Správa plánu služby App Service – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak k provádění různých úloh ke správě plánu služby App Service.
-keywords: služby App service, služby azure app service, škálování, plán služby app service, změnit, vytvoření, správa, Správa
+title: Správa plánu App Service – Azure | Microsoft Docs
+description: Naučte se provádět různé úlohy pro správu plánu App Service.
+keywords: App Service, Azure App Service, škálování, plán služby App Service, změna, vytváření, Správa, Správa
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -13,102 +13,102 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 10/31/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 936abe80a66c1dbe99e7d8a255fe8995a2df0803
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c749f090cbb0aeb036a53a01e6cd516617c3186d
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60852252"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953875"
 ---
-# <a name="manage-an-app-service-plan-in-azure"></a>Správa plánu služby App Service v Azure
+# <a name="manage-an-app-service-plan-in-azure"></a>Správa plánu App Service v Azure
 
-[Plán služby App Service](overview-hosting-plans.md) poskytuje prostředky, které je potřeba spustit aplikaci služby App Service. Tato příručka ukazuje, jak spravovat plán služby App Service.
+[Plán Azure App Service](overview-hosting-plans.md) poskytuje prostředky, které aplikace App Service potřebuje ke spuštění. V této příručce se dozvíte, jak spravovat plán App Service.
 
 ## <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
 > [!TIP]
-> Pokud máte službu App Service Environment, přečtěte si [vytvořte plán služby App Service ve službě App Service Environment](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
+> Pokud máte App Service Environment, přečtěte si téma [Vytvoření plánu App Service v App Service Environment](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
 
-Můžete vytvořit prázdnou plán služby App Service, nebo jako součást vytváření aplikací můžete vytvořit plán.
+Můžete vytvořit prázdný plán App Service, nebo můžete vytvořit plán jako součást vytváření aplikací.
 
-1. V [webu Azure portal](https://portal.azure.com)vyberte **nový** > **Web + mobilní zařízení**a pak vyberte **webovou aplikaci** nebo jiný typ aplikace služby App Service.
+1. V [Azure Portal](https://portal.azure.com)vyberte **Nový** > **web a mobilní zařízení**a pak vyberte **Webová aplikace** nebo jiný typ aplikace App Service.
 
-2. Vyberte existující plán služby App Service nebo vytvořit plán pro novou aplikaci.
+2. Vyberte existující plán App Service nebo vytvořte plán pro novou aplikaci.
 
-   ![Vytvoření aplikace na webu Azure Portal.][createWebApp]
+   ![Vytvořte aplikaci v Azure Portal.][createWebApp]
 
-   Vytvoření plánu:
+   Postup vytvoření plánu:
 
-   a. Vyberte **[+] vytváření nových**.
+   a. Vyberte **[+] vytvořit nové**.
 
-      ![Vytvoření plánu služby App Service.][createASP] 
+      ![Vytvořte plán App Service.][createASP] 
 
-   b. Pro **plán služby App Service**, zadejte název plánu.
+   b. V části **plán App Service**zadejte název plánu.
 
-   c. Pro **umístění**, vyberte odpovídající umístění.
+   c. Jako **umístění**vyberte vhodné umístění.
 
-   d. Pro **cenová úroveň**, vyberte odpovídající cenové úrovně služby. Vyberte **zobrazit všechny** do zobrazení další cenové možnosti, jako například **Free** a **Shared**. Po výběru cenové úrovně, klikněte na tlačítko **vyberte** tlačítko.
+   d. Pro **cenovou úroveň**vyberte příslušnou cenovou úroveň pro službu. Výběrem **Zobrazit vše** zobrazíte další cenové možnosti, například **Free** a **Shared**. Po výběru cenové úrovně klikněte na tlačítko **Vybrat** .
 
 <a name="move"></a>
 
-## <a name="move-an-app-to-another-app-service-plan"></a>Přesun aplikace do jiného plánu služby App Service
+## <a name="move-an-app-to-another-app-service-plan"></a>Přesunutí aplikace do jiného plánu App Service
 
-Aplikaci můžete přesunout na jiný plán služby App Service, plán zdrojového a cílového plánu jsou v _stejnou skupinu prostředků a zeměpisné oblasti_.
+Aplikaci můžete přesunout do jiného plánu App Service, pokud se zdrojový a cílový plán nacházejí ve _stejné skupině prostředků a zeměpisné oblasti_.
 
 > [!NOTE]
-> Azure nasadí každý nový plán služby App Service do jednotku nasazení, a interně volá se, webový prostor. Každá oblast může mít mnoho webových prostorech, ale vaše aplikace můžete přesouvat jen mezi plány, které jsou vytvořeny ve stejném webový prostor. Služby App Service Environment je izolované webový prostor, takže aplikace lze přesunout mezi plány v stejné službě App Service Environment, ale není mezi plány v různých prostředích App Service.
+> Azure nasadí každý nový App Service plán do jednotky nasazení interně označované jako webspace. Každá oblast může mít mnoho webspaces, ale aplikaci lze přesouvat pouze mezi plány, které jsou vytvořeny ve stejném webovém prostoru. App Service Environment je izolovaný webový prostor, takže aplikace se dají přesouvat mezi plány ve stejné App Service Environment, ale ne mezi plány v různých App Service prostředích.
 >
-> Nelze zadat webový prostor, který chcete, aby při vytváření plánu, ale je možné k zajištění, že plán se vytvoří ve stejné webový prostor jako existující plán. Stručně řečeno všechny plány vytvořené pomocí stejné skupiny prostředků a oblasti kombinaci jsou nasazené do stejné webový prostor. Například pokud vytvoříte plán ve skupině prostředků A a B oblast, pak všechny plán, který následně vytvořit ve skupině prostředků A a B oblasti se nasadí do stejné webový prostor. Všimněte si plány nelze přesunout webových prostorech po vytvoření, takže plán nelze přesunout do "stejný webový prostor" jako jiný plán přesunutím do jiné skupiny prostředků.
+> Při vytváření plánu nemůžete zadat webový prostor, ale je možné zajistit, aby byl plán vytvořen ve stejném webovém prostoru jako stávající plán. V krátkém případě jsou všechny plány vytvořené se stejnou kombinací skupiny prostředků a oblastí nasazeny do stejného webspace. Pokud jste například vytvořili plán ve skupině prostředků a a v oblasti B, pak bude libovolný plán, který následně vytvoříte ve skupině prostředků a a oblast B, nasazen do stejného webspace. Všimněte si, že plány nemůžou po vytvoření přesunout webspaces, takže nemůžete přesunout plán do stejného webspaceu jako jiný plán, a to tak, že ho přesunete do jiné skupiny prostředků.
 > 
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte do aplikace, kterou chcete přesunout.
+1. V [Azure Portal](https://portal.azure.com)přejděte do aplikace, kterou chcete přesunout.
 
-1. V nabídce, vyhledejte **plán služby App Service** oddílu.
+1. V nabídce vyhledejte část **App Service plán** .
 
-1. Vyberte **plán služby App Service pro změnu** otevřít **plán služby App Service** selektor.
+1. Vyberte **změnit App Service plán** pro otevření app Serviceho selektoru **plánu** .
 
-   ![Selektor plán služby App Service.][change] 
+   ![Selektor App Serviceho plánu][change] 
 
-1. V **plán služby App Service** selektor, vyberte existující v úmyslu přesunout do této aplikace.   
+1. V selektoru **App Serviceho plánování** vyberte existující plán, do kterého chcete tuto aplikaci přesunout.   
 
-**Plán App Service vyberte** stránce se zobrazí pouze plány, které jsou ve stejné skupině prostředků a zeměpisné oblasti jako aktuální aplikaci plán služby App Service.
+Na stránce **Vybrat plán App Service** se zobrazují jenom plány, které jsou ve stejné skupině prostředků a zeměpisné oblasti jako plán App Service aktuální aplikace.
 
-Každý plán má vlastní cenovou úroveň. Například přesun na web z **Free** vrstvy k **standardní** umožňuje úroveň všechny aplikace přiřazené k němu chcete používat funkce a prostředky **standardní** úroveň. Ale přesun aplikace z plánu vyšší vrstvenou do plánu vrstvené malá znamená, že už máte přístup k některým funkcím. Pokud vaše aplikace používá funkce, která není k dispozici v rámci cílového plánu, dojde k chybě, která zobrazuje funkce, které se používá, který není k dispozici. 
+Každý plán má svou vlastní cenovou úroveň. Například přesunutí lokality z **bezplatné** úrovně na úroveň **Standard** umožňuje všem aplikacím, které jsou k ní přiřazeny, používat funkce a prostředky úrovně **Standard** . Přesun aplikace z vyšší vrstvy do plánu nižší úrovně znamená, že už nebudete mít přístup k určitým funkcím. Pokud vaše aplikace používá funkci, která není v cílovém plánu k dispozici, zobrazí se chyba s informacemi o tom, která funkce je používána, která není k dispozici. 
 
-Například pokud některé z aplikací používá certifikáty SSL, může se zobrazit tato chybová zpráva:
+Například pokud jedna z vašich aplikací používá certifikáty SSL, může se zobrazit tato chybová zpráva:
 
 `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 
-V takovém případě před aplikace lze přesunout do cílového plánu, musíte buď:
-- Vertikálně navýšit kapacitu cenovou úroveň plánu cíl, který se má **základní** nebo vyšší.
+V takovém případě, než budete moct aplikaci přesunout do cílového plánu, musíte mít jednu z těchto akcí:
+- Škálujte cenovou úroveň cílového plánu na **Basic** nebo vyšší.
 - Odeberte všechna připojení SSL k vaší aplikaci.
 
-## <a name="move-an-app-to-a-different-region"></a>Přesun aplikace do jiné oblasti
+## <a name="move-an-app-to-a-different-region"></a>Přesunutí aplikace do jiné oblasti
 
-Oblast, ve kterém běží vaše aplikace je plánu služby App Service, který je v oblasti. Nelze však změnit oblast plán služby App Service. Pokud chcete ke spouštění vaší aplikace v jiné oblasti, jeden alternativou je aplikace klonování. Klonování vytvoří kopii aplikace do nové nebo existující plán služby App Service v libovolné oblasti.
+Oblast, ve které vaše aplikace běží, je oblast plánu App Service. Nemůžete však změnit oblast plánu App Service. Pokud chcete aplikaci spustit v jiné oblasti, bude jedna alternativa klonování aplikací. Klonování vytvoří kopii vaší aplikace v novém nebo existujícím plánu App Service v jakékoli oblasti.
 
-Můžete najít **klonování aplikací** v **nástroje pro vývoj** části nabídky.
+**Klonování aplikace** můžete najít v části **vývojové nástroje** v nabídce.
 
 > [!IMPORTANT]
-> Klonování má určitá omezení. Si můžete přečíst o nich v [klonování aplikace služby Azure App Service](app-service-web-app-cloning.md).
+> Klonování má určitá omezení. Můžete si je přečíst v tématu [Azure App Service klonování aplikací](app-service-web-app-cloning.md).
 
-## <a name="scale-an-app-service-plan"></a>Škálování plánu služby App Service
+## <a name="scale-an-app-service-plan"></a>Škálování plánu App Service
 
-Škálování služby App Service je plán cenová úroveň, přečtěte si téma [vertikální navýšení kapacity aplikace v Azure](web-sites-scale.md).
+Postup horizontálního navýšení kapacity plánu App Service najdete v tématu věnovaném horizontálnímu navýšení [kapacity aplikace v Azure](web-sites-scale.md).
 
-Horizontální navýšení kapacity počtu instancí aplikace, najdete v článku [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md).
+Pokud chcete škálovat počet instancí aplikace, přečtěte si téma [Ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md).
 
 <a name="delete"></a>
 
-## <a name="delete-an-app-service-plan"></a>Odstranit plán služby App Service
+## <a name="delete-an-app-service-plan"></a>Odstranit plán App Service
 
-Chcete-li se vyhnout neočekávaným poplatkům, když odstraníte poslední aplikace v plánu služby App Service, služby App Service se odstraní také plánu ve výchozím nastavení. Pokud se rozhodnete zajistit plánem, měli byste změnit plán **Free** vrstvy, takže se vám neúčtují poplatky.
+Aby nedošlo k neočekávaným poplatkům, při odstranění poslední aplikace v plánu App Service App Service také ve výchozím nastavení odstraní plán. Pokud se rozhodnete plán zachovat, změňte plán na úroveň **Free** , abyste se vám neúčtovali.
 
 > [!IMPORTANT]
-> Plány služby App Service, které jste se k nim má přiřazené žádné aplikace pořád nabíhat poplatky, protože jsou nadále rezervovat nakonfigurovaných instancí virtuálních počítačů.
+> App Service plánů, ke kterým nejsou přidružené žádné aplikace, se budou účtovat poplatky, protože nadále vyhradí nakonfigurované instance virtuálních počítačů.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33704c3392726ccd12ca0fd74f26465a54697e11
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722135"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942848"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Ukládání dat identity Evropského zákazníků v Azure Active Directory
 Data identity ukládá služba Azure AD v geografickém umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru online služby Microsoftu, jako je třeba Office 365 a Azure. Informace o tom, kde jsou uložená data identity, můžete najít v části [umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v centru zabezpečení Microsoftu.
@@ -43,6 +43,15 @@ Azure AD B2B ukládá pozvánky s informacemi o uplatnění odkazu a adresy URL 
 ## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Služba Microsoft Azure Active Directory Domain Services (Azure služba AD DS)
 
 Azure AD DS uchovává data uživatelů ve stejném umístění jako virtuální síť Azure vybranou zákazníkem. Takže pokud se tato síť nachází mimo Evropu, data se replikují a uchovávají mimo Evropu.
+
+## <a name="federation-in-microsoft-exchange-server-2013"></a>Federace v systému Microsoft Exchange Server 2013
+    
+- Identifikátor aplikace (AppID) – jedinečné číslo vygenerované systémem ověřování Azure Active Directory k identifikaci organizací Exchange.
+- Seznam schválených federovaných domén pro aplikaci
+- Veřejný klíč pro podepsání tokenu aplikace 
+
+Další informace o federaci na serveru Microsoft Exchange najdete v části [federace: Článek o nápovědě](https://docs.microsoft.com/exchange/federation-exchange-2013-help) k Exchangi 2013.
+
 
 ## <a name="other-considerations"></a>Další důležité informace
 

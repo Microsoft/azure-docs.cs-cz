@@ -1,7 +1,7 @@
 ---
 title: Úvod do znalostní báze Knowledge Store (Preview) – Azure Search
 description: Posílat obohacené dokumenty do služby Azure Storage, kde můžete zobrazit, změnit tvar a využívat obohacené dokumenty v Azure Search i v jiných aplikacích.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: 107478f7e2d3c6726d3b8fb9c503ef13271c6571
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 8605a2c954eec2a57925557f8823a3614ebdc266
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840831"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013378"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Co je znalostní úložiště v Azure Search?
 
@@ -248,7 +248,7 @@ Pomocí REST `api-version=2019-05-06-Preview` můžete vytvořit kanál založen
 
 Znalostní báze Knowledge Store nabízí celou řadu výhod, včetně neomezeného využívání obohacených dokumentů ve scénářích jiných než hledání, řízení nákladů a Správa posunu v procesu rozšíření. Tyto funkce jsou k dispozici, stačí, když do dovednosti přidáte účet úložiště a použijete aktualizovaný jazyk výrazů, jak je popsáno v tématu [jak začít s úložištěm Knowledge Store](knowledge-store-howto.md). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nejjednodušším přístupem k vytváření obohacených dokumentů je průvodce **importem dat** .
 

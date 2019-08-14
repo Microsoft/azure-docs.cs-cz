@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: cd53e1386d9d6f2a38beb1661554c8cc9116169d
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494869"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950143"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Dotazování dat v Azure Data Lake pomocí Azure Průzkumník dat (Preview)
 
@@ -45,8 +45,11 @@ Azure Průzkumník dat se integruje s Azure Blob Storage a Azure Data Lake Stora
     dataformat=csv (h@'http://storageaccount.blob.core.windows.net/container1;secretKey') 
     with (compressed = true)  
     ```
-
-    Tento dotaz vytvoří denní oddíly *container1/rrrr/mm/dd/all_exported_blobs. csv*. Větší výkon se očekává s podrobnějším rozdělením na oddíly. Například dotazy nad externími tabulkami, které mají denní oddíly, jako je například výše, budou mít lepší výkon než dotazy s měsíčně rozdělenými tabulkami.
+    
+    > [!NOTE]
+    > * Větší výkon se očekává s podrobnějším rozdělením na oddíly. Například dotazy u externích tabulek s denními oddíly budou mít lepší výkon než dotazy s měsíčně rozdělenými tabulkami.
+    > * Při definování externí tabulky s oddíly se očekává, že struktura úložiště bude shodná.
+Pokud je tabulka definovaná například pomocí oddílu DateTime ve formátu RRRR/MM/DD (výchozí), cesta k souboru úložiště identifikátoru URI by měla být *container1/rrrr/mm/dd/all_exported_blobs*. 
 
 1. Externí tabulka se zobrazí v levém podokně webového uživatelského rozhraní.
 
@@ -56,7 +59,7 @@ Azure Průzkumník dat se integruje s Azure Blob Storage a Azure Data Lake Stora
 
 Externí tabulku můžete vytvořit ve formátu JSON. Další informace najdete v [](/azure/kusto/management/externaltables) tématu věnovaném externím tabulkovým příkazům
 
-1. Pomocí příkazu vytvořte tabulku s názvem ExternalTableJson:  `.create external table`
+1. Pomocí příkazu vytvořte tabulku s názvem ExternalTableJson: `.create external table`
 
     ```kusto
     .create external table ExternalTableJson (rownumber:int, rowguid:guid) 

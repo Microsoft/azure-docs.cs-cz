@@ -2,30 +2,30 @@
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 08/12/2019
 ms.author: cephalin
-ms.openlocfilehash: 7aa0d232cf53eef9bd28c36b66e8fdae22a28db9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4f3236c0a167a2b6f7586c6cb5fea8e30f55a86c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174809"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954062"
 ---
-## <a name="rest"></a>Nasazení souboru ZIP pomocí rozhraní REST API 
+## <a name="rest"></a>Nasazení souboru ZIP s rozhraními REST API 
 
-Můžete použít [nasazení služby rozhraní REST API](https://github.com/projectkudu/kudu/wiki/REST-API) k nasazení souboru ZIP do vaší aplikace v Azure. Pokud chcete nasadit, odešlete požadavek POST https://<app_name>.scm.azurewebsites.net/api/zipdeploy. Požadavek POST musí obsahovat soubor ZIP v textu zprávy. Přihlašovací údaje pro nasazení vaší aplikace jsou zahrnuté v požadavku s použitím HTTP BASIC Authentication. Další informace najdete v tématu [odkaz nabízené nasazení ZIP](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file). 
+K nasazení souboru. zip do aplikace v Azure můžete použít [rozhraní REST API služby nasazení](https://github.com/projectkudu/kudu/wiki/REST-API) . Pokud chcete nasadit, odešlete požadavek POST na https://< APP_NAME >. SCM. azurewebsites. NET/API/zipdeploy. Požadavek POST musí v těle zprávy obsahovat soubor. zip. Přihlašovací údaje pro nasazení vaší aplikace jsou zahrnuté v požadavku s použitím HTTP BASIC Authentication. Další informace najdete v referenčních informacích k [nasazení push. zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file). 
 
-HTTP BASIC authentication je nutné přihlašovací údaje pro nasazení služby App Service. Jak nastavit přihlašovací údaje pro nasazení najdete v tématu [nastavit a resetovat přihlašovací údaje na úrovni uživatele](../articles/app-service/deploy-configure-credentials.md#userscope).
+Pro základní ověřování HTTP budete potřebovat přihlašovací údaje pro nasazení App Service. Informace o nastavení přihlašovacích údajů pro nasazení najdete v tématu [nastavení a resetování přihlašovacích údajů na úrovni uživatele](../articles/app-service/deploy-configure-credentials.md#userscope).
 
-### <a name="with-curl"></a>Pomocí cURL
+### <a name="with-curl"></a>S kudrlinkou
 
-Následující příklad používá nástroj cURL k nasazení souboru ZIP. Nahraďte zástupné symboly `<username>`, `<password>`, `<zip_file_path>`, a `<app_name>`. Po zobrazení výzvy curl zadejte heslo.
+V následujícím příkladu je k nasazení souboru. zip použit nástroj kudrlinkou. Nahraďte zástupné `<password>`symboly `<zip_file_path>` `<username>`,, `<app_name>`a. Po zobrazení výzvy otočením zadejte heslo.
 
 ```bash
 curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
 ```
 
-Tuto žádost aktivuje nabízené nasazení z odeslaného souboru ZIP. Aktuálního i staršího nasazení můžete zkontrolovat pomocí `https://<app_name>.scm.azurewebsites.net/api/deployments` koncový bod, jak je znázorněno v následujícím příkladu cURL. Znovu nahraďte `<app_name>` s názvem vaší aplikace a `<deployment_user>` uživatelskému jménu přihlašovací údaje pro nasazení.
+Tento požadavek spustí nasazení push z nahraného souboru. zip. Aktuální a minulá nasazení můžete zkontrolovat pomocí `https://<app_name>.scm.azurewebsites.net/api/deployments` koncového bodu, jak je znázorněno v následujícím příkladu. Nahraďte `<app_name>` názvem vaší aplikace a `<deployment_user>` uživatelským jménem přihlašovacích údajů pro nasazení.
 
 ```bash
 curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deployments
@@ -33,22 +33,21 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 ### <a name="with-powershell"></a>S využitím PowerShellu
 
-Následující příklad používá [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) odeslat požadavek, který obsahuje soubor .zip. Nahraďte zástupné symboly `<deployment_user>`, `<deployment_password>`, `<zip_file_path>`, a `<app_name>`.
+Následující příklad používá [Publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) nahrání souboru. zip. Nahraďte zástupné `<app-name>`symboly `<group-name>`, `<zip-file-path>`a.
 
 ```powershell
-#PowerShell
-$username = "<deployment_user>"
-$password = "<deployment_password>"
-$filePath = "<zip_file_path>"
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/zipdeploy"
-$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
-$userAgent = "powershell/1.0"
-Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UserAgent $userAgent -Method POST -InFile $filePath -ContentType "multipart/form-data"
+Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <zip-file-path>
 ```
 
-Tuto žádost aktivuje nabízené nasazení z odeslaného souboru ZIP. Ke kontrole aktuálních a minulých nasazení, spusťte následující příkazy. Znovu nahraďte `<app_name>` zástupný symbol.
+Tento požadavek spustí nasazení push z nahraného souboru. zip. 
+
+Chcete-li zkontrolovat aktuální nasazení a předchozí, spusťte následující příkazy. Znovu nahraďte `<deployment-user>`zástupné symboly `<app-name>` , `<deployment-password>`a.
 
 ```bash
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/deployments"
+$username = "<deployment-user>"
+$password = "<deployment-password>"
+$apiUrl = "https://<app-name>.scm.azurewebsites.net/api/deployments"
+$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+$userAgent = "powershell/1.0"
 Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UserAgent $userAgent -Method GET
 ```

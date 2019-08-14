@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: dacurwin
-ms.openlocfilehash: 2c1890089bcb713d8ef80bca25b123b425d96607
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 2cd298323d8f455010978361078d474415e77dfa
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688671"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954526"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy, které používají Azure Backup
 Problémy se zabezpečením, jako je malware, ransomwarem a vniknutí, se zvyšují. Tyto problémy se zabezpečením můžou být nákladné, s ohledem na peníze i data. Z důvodu ochrany proti takovým útokům teď Azure Backup poskytuje funkce zabezpečení, které vám pomůžou chránit hybridní zálohy. Tento článek popisuje, jak povolit a používat tyto funkce pomocí agenta Azure Recovery Services a Azure Backup Server. Mezi tyto funkce patří:
@@ -112,7 +112,7 @@ Funkce zabezpečení, které jsou uvedené v tomto článku, poskytují mechanis
 | Změnit heslo |Zadaný bezpečnostní kód PIN je nesprávný. (ID: 100130) k dokončení této operace zadejte správný bezpečnostní kód PIN. |**Způsobit**<br/> K této chybě dojde v případě, že při provádění kritické operace (například heslo pro změnu) zadáte neplatný nebo vypršelý bezpečnostní kód PIN. <br/>**Doporučená akce:**<br/> K dokončení této operace je nutné zadat platný bezpečnostní kód PIN. Pokud chcete získat kód PIN, přihlaste se k Azure Portal a přejděte do nastavení > Recovery Services trezoru > Vlastnosti > vygenerovat bezpečnostní kód PIN. Pomocí tohoto kódu PIN můžete změnit heslo. |
 | Změnit heslo |Operace se nezdařila. ID: 120002 |**Způsobit**<br/>K této chybě dochází, když je povolené nastavení zabezpečení, pokusíte se změnit heslo a budete mít nepodporovanou verzi (platné verze jsou uvedené v prvním poznámce tohoto článku).<br/>**Doporučená akce:**<br/> Pokud chcete změnit přístupové heslo, musíte nejdřív aktualizovat agenta pro zálohování na minimální verzi 2.0.9052, Azure Backup Server na minimální aktualizaci 1 nebo DPM na minimální verzi DPM 2012 R2 UR12 nebo DPM 2016 UR2 (dole si můžete stáhnout) a pak zadat platný bezpečnostní PIN kód. Pokud chcete získat kód PIN, přihlaste se k Azure Portal a přejděte do nastavení > Recovery Services trezoru > Vlastnosti > vygenerovat bezpečnostní kód PIN. Pomocí tohoto kódu PIN můžete změnit heslo. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Pokud chcete tyto funkce povolit, začněte [používat službu Azure Recovery Services trezor](backup-azure-vms-first-look-arm.md) .
 * [Stáhněte si nejnovějšího agenta Azure Recovery Services](https://aka.ms/azurebackup_agent) , který vám umožní chránit počítače s Windows a chránit zálohovaná data proti útokům.
 * [Stáhněte si nejnovější Azure Backup Server](https://aka.ms/latest_azurebackupserver) , které vám pomůžou ochránit úlohy a chránit zálohovaná data proti útokům.

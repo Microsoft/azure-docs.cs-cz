@@ -6,17 +6,17 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/20/2019
-ms.openlocfilehash: a5d00c24531099e66afcb6ccf07cfdf99abd28d1
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 08/13/2019
+ms.openlocfilehash: 20f6ff518daae71856446415099ae4cb095ff728
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60846238"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013615"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Co je Azure Database for MariaDB?
 
-Azure Database for MariaDB je služba relačních databází v cloudu Microsoftu. Azure Database pro MariaDB vychází [edice community MariaDB](https://mariadb.org/download/) (k dispozici v rámci licence GPLv2) databázový stroj, verze 10.2.
+Azure Database for MariaDB je služba relačních databází v cloudu Microsoftu. Azure Database for MariaDB vychází z [MariaDB Community Edition](https://mariadb.org/download/) (k dispozici v rámci licence GPLv2) databázového stroje verze 10,2 a 10,3.
 
 Azure Database for MariaDB nabízí:
 
@@ -41,7 +41,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
 
-Azure Database pro MariaDB service nabízí několik úrovní služby: Basic, pro obecné účely a paměťově optimalizovaná. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost pomáhá databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Zobrazit [cenové úrovně](concepts-pricing-tiers.md) podrobnosti.
+Služba Azure Database for MariaDB nabízí několik úrovní služeb: Basic, Pro obecné účely a paměť optimalizované. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost pomáhá databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [cenové úrovně](concepts-pricing-tiers.md) .
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 
@@ -49,13 +49,13 @@ Jak se rozhodnout, kdy vertikálně navýšit nebo snížit kapacitu? Můžete v
 
 ## <a name="keep-your-app-and-business-running"></a>Udržujte své aplikace a podnikáni v chodu
 
-Smlouva SLA špičkovou 99,99 % dostupnost Azure využívá k tomu globální síti Datacenter řízených microsoftem. Tato síť pomáhá udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. S Azure Database for MariaDB získáte výhody integrovaného zabezpečení, odolnosti proti chybám a ochrany dat. S Azure Database for MariaDB můžete využít obnovení serveru do určitého bodu v čase, a to až 35 dnů zpět.
+Smlouva SLA o špičkové 99,99% dostupnosti v oboru Azure využívá globální síť datacenter spravovaných Microsoftem. Tato síť pomáhá udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. S Azure Database for MariaDB získáte výhody integrovaného zabezpečení, odolnosti proti chybám a ochrany dat. S Azure Database for MariaDB můžete využít obnovení serveru do určitého bodu v čase, a to až 35 dnů zpět.
 
 ## <a name="secure-your-data"></a>Zabezpečení dat
 
 Databázové služby Azure mají tradici zabezpečení dat, kterou služba Azure Database for MariaDB zachovává. Azure Database for MariaDB nabízí funkce, které omezují přístup, chrání přenášená i neaktivní uložená data a pomáhají s monitorováním aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/security).
 
-Azure Database pro MariaDB službu používá šifrování úložiště pro data v klidovém stavu a je kompatibilní s FIPS 140-2. Data včetně zálohovaných dat se šifrují na disku. (Dočasné soubory vytvořené databázovým strojem při spouštění dotazů se na disku nešifrují.) Služba používá 256bitové šifrování AES, které je součástí šifrování služby Azure Storage. Klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
+Služba Azure Database for MariaDB používá šifrování úložiště pro data v klidovém provozu a je kompatibilní se standardem FIPS 140-2. Data včetně zálohovaných dat se šifrují na disku. (Dočasné soubory vytvořené databázovým strojem při spouštění dotazů se na disku nešifrují.) Služba používá 256bitové šifrování AES, které je součástí šifrování služby Azure Storage. Klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
 Ve výchozím nastavení je ve službě Azure Database for MariaDB nakonfigurované vyžadování [zabezpečení připojení protokolem SSL](./concepts-ssl-connection-security.md) pro data přenášená přes síť. Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky. Volitelně můžete vyžadování SSL pro připojení k vaší databázové službě zakázat, pokud vaše klientská aplikace nepodporuje připojení SSL.
 
@@ -68,7 +68,7 @@ Můžete použít také následující kontaktní bod:
 - Pokud řešíte problém s účtem, vytvořte [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) na webu Azure Portal.
 - Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte [fóra Azure pro názory](https://feedback.azure.com/forums/915439-azure-database-for-mariadb).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečetli jste si úvod ke službě Azure Database for MariaDB a teď můžete pokračovat následovně:
 - Na stránce s [cenami](https://azure.microsoft.com/pricing/details/mariadb/) najdete porovnání nákladů a kalkulačky. 

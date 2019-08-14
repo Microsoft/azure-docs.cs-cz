@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: b6e9a340a1fdcbe3ee24b8c81d171ade04c63139
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 7c31520efd881e8e0b5ed309f62d273bac59c0e3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880040"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945016"
 ---
-# <a name="release-notes-for-azure-hdinsight"></a>Poznámky k verzi pro Azure HDInsight
+# <a name="release-notes"></a>Poznámky k verzi
 
 Tento článek poskytuje informace o nejnovějších aktualizacích vydaných verzí Azure HDInsight. Informace o dřívějších verzích najdete v tématu [archiv zpráv k vydání verze HDInsight](hdinsight-release-notes-archive.md).
 

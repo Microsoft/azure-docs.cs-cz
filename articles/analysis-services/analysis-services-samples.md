@@ -1,6 +1,6 @@
 ---
-title: Azure Analysis Services kódu, projektu a ukázky databáze | Dokumentace Microsoftu
-description: Další informace o kódu, projektu a databáze ukázky pro Azure Analysis Services.
+title: Ukázky Azure Analysis Services kódu, projektu a databáze | Microsoft Docs
+description: Seznamte se s ukázkami kódu, projektu a databáze pro Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
@@ -8,41 +8,41 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fccf7bb5abafe75017a8df91f1f88a98238c74b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d34da4e1b3d9c3131db1d9edd94f67a132dc564f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704177"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932366"
 ---
-# <a name="azure-analysis-services-samples"></a>Ukázky v Azure Analysis Services
+# <a name="azure-analysis-services-samples"></a>Ukázky Azure Analysis Services
 
-Pomocí následující ukázkové prostředky můžete další informace o a testování služby Analysis Services pro vaše prostředí.
+Následující ukázkové materiály vám pomůžou naučit se a testovat Analysis Services pro vaše prostředí.
 
 ## <a name="code-samples"></a>Ukázky kódů
 
-[Služby Analysis Services](https://github.com/Microsoft/Analysis-Services) úložišti na Githubu obsahuje ukázky kódu opensourcových a komunitních projektů. 
+[Analysis Services](https://github.com/Microsoft/Analysis-Services) úložiště na GitHubu obsahuje otevřené ukázky zdrojového kódu a komunitní projekty. 
 
-## <a name="tabular-model-project-and-database-samples"></a>Ukázky projektu a databázi tabulkového modelu
+## <a name="tabular-model-project-and-database-samples"></a>Ukázka projektu a databáze tabelárního modelu
 
-[Adventure Works pro službu Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) na Githubu je nejčastěji používanou ukázkového projektu tabulkového modelu. Můžete stáhnout VS projektu nebo úplnou vzorovou databázi tabulkového modelu.
-
-
-## <a name="sample-databases-on-github"></a>Ukázkové databáze na Githubu
-
-Tyto ukázkové databáze na Githubu je možné pro vytváření a testování vlastních modelů. 
-
-[Adventure Works ukázkové databáze](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014)
-
-[Wide World Importers ukázkové databáze](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
-
-## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Adventure Works Internet Sales ukázkový model na webu Azure portal
-
-Pokud máte server služby Analysis Services na webu Azure portal, můžete rychle a snadno vytvořit ukázkový model. Na stránce Přehled serveru na webu Azure portal, klikněte na **nový model**a potom v **vyberte zdroj dat**vyberte **ukázková data**.
+[Adventure Works pro Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) na GitHubu je nejčastěji používaný ukázkový projekt tabelárního modelu. Můžete si stáhnout projekt VS nebo dokončenou ukázkovou databázi modelu.
 
 
+## <a name="sample-databases-on-github"></a>Ukázkové databáze na GitHubu
 
-## <a name="next-steps"></a>Další postup
+Tyto ukázkové databáze na GitHubu je možné použít k vytváření a testování vlastních modelů. 
 
-[Kurz Adventure Works](https://docs.microsoft.com/sql/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
-[Azure na místní bránu dat](analysis-services-gateway.md)  
+[Ukázkové databáze Adventure Works](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014)
+
+[Ukázkové databáze World World dovozců](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
+
+## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Vzorový model Internet Sales pro Adventure Works v Azure Portal
+
+Pokud máte Server Analysis Services v Azure Portal, můžete rychle a snadno vytvořit ukázkový model. Na stránce s přehledem na serveru v Azure Portal klikněte na **Nový model**a potom v části **Zvolte zdroj dat**vyberte **ukázková data**.
+
+
+
+## <a name="next-steps"></a>Další kroky
+
+[Kurz Adventure Works](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
+[Místní brána dat Azure](analysis-services-gateway.md)  

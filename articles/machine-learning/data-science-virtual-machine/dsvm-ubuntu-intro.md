@@ -15,13 +15,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/16/2018
-ms.openlocfilehash: 8a19f414f31c307111edad876ed973ff4027d907
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.date: 08/13/2019
+ms.openlocfilehash: 6d79bfa8f390d145bfd963b40497030140a3d135
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591933"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013605"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače pro datové vědy pro Linux (Ubuntu)
 
@@ -86,32 +86,35 @@ Než vytvoříte virtuální počítač pro datové vědy pro Linux, musíte mí
 Tady jsou kroky pro vytvoření instance z virtuální počítač pro datové vědy pro Linux:
 
 1. Přejděte na virtuální počítač [webu Azure portal](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu). Může se zobrazit výzva, abyste se přihlásili ke svému účtu Azure, pokud ještě nejste přihlášení. 
-1. Klikněte na tlačítko **vytvořit** (dole) a zobrazte si průvodce.![ Konfigurace data vědy vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
-1. Vstupy pro každý z kroků v průvodci (uvedené na pravé straně na předchozím obrázku) použitý k vytvoření virtuálního počítače Microsoft datové vědy v následujících částech. Tady jsou vstupy potřebné ke konfiguraci každý z těchto kroků:
+1. Kliknutím na **vytvořit** otevřete průvodce.
+    ![Konfigurace – data-věda-VM](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
+1. V následujících částech jsou uvedeny vstupy pro každý z kroků v průvodci používané k vytvoření Data Science Virtual Machine Microsoft. Tady jsou vstupy potřebné ke konfiguraci každý z těchto kroků:
 
-   a. **Základy**:
-
-   * **Název**: Název vašeho serveru pro datové vědy, který vytváříte.
-   * **Typ disku virtuálního počítače**: Pokud dáváte přednost jednotce SSD (Solid-State Drive), vyberte **SSD úrovně Premium** . Jinak klikněte na tlačítko **standardní HDD**. 
-   * **Uživatelské jméno**: Přihlašovací jméno prvního účtu
-   * **Heslo**: První heslo účtu (místo hesla můžete použít veřejný klíč SSH).
-   * **Předplatné**: Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač. Toto předplatné musí mít oprávnění vytvářet prostředky.
-   * **Skupina prostředků**: Vytvořit nové nebo použijte existující skupinu.
-   * **Umístění**: Vyberte datové centrum, které je vhodné. Obvykle je většina vašich dat, nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra.
-
-   b. **Velikost**:
-
-   * Vyberte jeden z typů serveru, které splňuje požadavek na funkční a náklady na omezení. Vyberte virtuální počítač pro instance virtuálních počítačů založených na GPU nebo ND-Class. [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) stránka obsahuje seznam oblastí s grafickými procesory.
-
-   c. **Nastavení**:
-
-   * Ve většině případů můžete použít jenom výchozí hodnoty. Vzít v úvahu jiné než výchozí hodnoty, najeďte myší na informační odkaz nápovědy pro konkrétní pole.
-
-   d. **Souhrn**:
-
-   * Ověřte správnost všech informací, které jste zadali. Pomocí odkazu uvedeného na podmínky použití. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. Zřizování spusťte kliknutím na **vytvořit**. 
-
-Zřizování by měla trvat asi 5 minut. Stav zřizování se zobrazí na portálu Azure portal.
+    a. **Základy**:
+    
+    * **Předplatné**: Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač. Toto předplatné musí mít oprávnění vytvářet prostředky.
+    * **Skupina prostředků**: Vytvořit nové nebo použijte existující skupinu.
+    * **Název virtuálního počítače**: Název vašeho serveru pro datové vědy, který vytváříte.
+    * **Oblast**: Vyberte datové centrum, které je vhodné. Obvykle je většina vašich dat, nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra.
+    * **Možnosti dostupnosti**: Tuto hodnotu nastavte, pokud chcete tento virtuální počítač použít v sadách nebo zónách dostupnosti, jinak ponechte výchozí.
+    * **Obrázek**: Ponechte výchozí hodnotu.
+    * **Velikost**: Vyberte jeden z typů serveru, které splňuje požadavek na funkční a náklady na omezení. Vyberte virtuální počítač NC nebo ND-Series pro instance virtuálních počítačů na bázi GPU. 
+    * **Uživatelské jméno**: Uživatelské jméno správce
+    * **Veřejný klíč SSH**: Veřejný klíč RSA ve formátu single line (místo klíče SSH můžete použít heslo).
+    
+    b. **Disky**:
+    
+    * **Typ disku s operačním systémem**: Pokud dáváte přednost jednotce SSD (Solid-State Drive), vyberte **SSD úrovně Premium** . Jinak klikněte na tlačítko **standardní HDD**.
+    
+    c. Pro zbývající nastavení můžete použít jenom výchozí hodnoty. Vzít v úvahu jiné než výchozí hodnoty, najeďte myší na informační odkaz nápovědy pro konkrétní pole.
+    
+    Nakonec vyberte **zkontrolovat + vytvořit** .
+    
+    d. **Zkontrolovat + vytvořit**:
+    
+    * Po úspěšném ověření ověřte, zda jsou všechny informace, které jste zadali, správné. Pomocí odkazu uvedeného na podmínky použití. Pro velikost serveru, kterou jste zvolili ve vstupu velikosti, nemá tento virtuální počítač žádné další poplatky za výpočetní kapacitu. Zřizování spusťte kliknutím na **vytvořit**.
+    
+    Zřizování by měla trvat asi 5 minut. Stav zřizování se zobrazí na portálu Azure portal.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Jak získat přístup k virtuální počítač pro datové vědy pro Linux
 
