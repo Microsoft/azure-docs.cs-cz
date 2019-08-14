@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d7a039f25339d91d77d5b6924674ea36a16c15b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880816"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942930"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Přidání účtů jiných společností než Microsoft
 
@@ -33,6 +33,9 @@ Obecně platí, že u všech osobních účtů je třeba:
 1. Přihlaste se ke svému účtu a potom pomocí zařízení nebo počítače zapněte dvojúrovňové ověřování.
 
 2. Přidejte účet do aplikace Microsoft Authenticator. V rámci tohoto procesu se může zobrazit výzva k naskenování kódu QR.
+
+    >[!Note]
+    >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
 Tento proces poskytujeme pro vaše účty Facebook, Google, GitHub a Amazon, ale tento postup je stejný pro všechny ostatní aplikace, jako je Instagramu, Netflix nebo Adobe.
 
@@ -168,9 +171,6 @@ Přidejte svůj účet Amazon tím, že zapnete dvojúrovňové ověřování a 
     Stránka se změní, aby zobrazila kód QR. Nezavírejte tuto stránku.
 
 5. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** v ikoně **přizpůsobení a řízení** a pak vyberte **jiný účet (Google, Facebook atd.)** .
-
-    >[!Note]
-    >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
 6. Pomocí kamery zařízení Naskenujte kód QR ze stránky **zvolit způsob, jak obdržíte kódy** na vašem počítači.
 

@@ -1,6 +1,6 @@
 ---
-title: Asynchronní aktualizace pro modely služby Azure Analysis Services | Dokumentace Microsoftu
-description: Zjistěte, jak kód asynchronní aktualizace s použitím rozhraní REST API.
+title: Asynchronní aktualizace pro Azure Analysis Services modely | Microsoft Docs
+description: Naučte se, jak kódovat asynchronní aktualizace pomocí REST API.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
@@ -8,73 +8,73 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82e40f756e0d8e0b5627b7c8856bd25fa98adbcb
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506971"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932301"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
 
-S použitím programovací jazyk, který podporuje volání REST, můžete provádět operace asynchronní aktualizace dat na vašich tabulkových modelů služby Azure Analysis Services. To zahrnuje synchronizaci repliky jen pro čtení pro horizontální navýšení kapacity dotazu. 
+Pomocí libovolného programovacího jazyka, který podporuje volání REST, můžete provádět asynchronní operace aktualizace dat na vašich Azure Analysis Services tabelárních modelech. To zahrnuje synchronizaci replik jen pro čtení pro horizontální navýšení kapacity dotazů. 
 
-Operace aktualizace dat může chvíli trvat v závislosti na řadě faktorů včetně objem dat, úroveň optimalizace pomocí oddíly atd. Tyto operace tradičně vyvolání s existující metody, jako je třeba použití [Petr](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (tabulkový objektový Model), [PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) rutin, nebo [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) (tabulkový Model Skriptovací jazyk). Tyto metody však může vyžadovat často nespolehlivé, dlouhotrvajících připojení prostřednictvím protokolu HTTP.
+Operace aktualizace dat můžou určitou dobu trvat v závislosti na řadě faktorů, včetně objemu dat, úrovně optimalizace pomocí oddílů atd. Tyto operace byly tradičně vyvolány s existujícími metodami [](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) , jako je například použití modelu (tabelární objektový model), rutin [prostředí PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) nebo [TMSL](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (skriptovací jazyk tabelárního modelu). Tyto metody ale můžou vyžadovat často nespolehlivá, dlouhodobě běžící připojení HTTP.
 
-Rozhraní REST API pro Azure Analysis Services umožňuje operace aktualizace dat provádět asynchronně. Pomocí rozhraní REST API nejsou potřebné dlouhotrvajících připojení HTTP z klientských aplikací. Existují také jiné integrované funkce pro spolehlivost, jako je například automatické opakované pokusy a dávkové potvrzení změn.
+REST API pro Azure Analysis Services umožňuje asynchronní provádění operací aktualizace dat. Když použijete REST API, dlouhotrvající připojení HTTP z klientských aplikací není nutné. K dispozici jsou také další integrované funkce pro spolehlivost, například automatické opakování a dávková potvrzení.
 
 ## <a name="base-url"></a>Základní adresa URL
 
-Základní adresa URL tento formát:
+Základní adresa URL má následující formát:
 
 ```
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Představte si třeba modelu s názvem AdventureWorks na serveru s názvem myserver nachází v oblasti Azure USA – západ. Je název serveru:
+Představte si třeba model nazvaný AdventureWorks na serveru s názvem MyServer, který se nachází v oblasti Západní USA Azure. Název serveru:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
 ```
 
-Základní adresa URL pro tento název serveru je:
+Základní adresa URL tohoto názvu serveru je:
 
 ```
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/ 
 ```
 
-S použitím základní adresu URL, operace a prostředky lze připojit na základě následujících parametrů: 
+Pomocí základní adresy URL lze prostředky a operace připojit na základě následujících parametrů: 
 
 ![Asynchronní aktualizace](./media/analysis-services-async-refresh/aas-async-refresh-flow.png)
 
-- Cokoli, co končí **s** je kolekce.
+- Cokoli, co končí v **s** , je kolekce.
 - Cokoli, co končí **()** je funkce.
-- Cokoli, je prostředku nebo objekt.
+- Cokoli jiného je prostředek nebo objekt.
 
-Například můžete použít operaci POST na aktualizace kolekce k provedení operace aktualizace:
+Můžete například použít příkaz POST v kolekci reaktuálnosti k provedení operace aktualizace:
 
 ```
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
-Všechna volání musí být ověřené na platný token v hlavičce autorizace služby Azure Active Directory (OAuth 2) a musí splňovat následující požadavky:
+Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2) v autorizační hlavičce a musí splňovat následující požadavky:
 
-- Token musí být token uživatele nebo instančního objektu aplikace.
-- Token musí být nastavena na správnou cílovou skupinu `https://*.asazure.windows.net`.
-- Uživatel nebo aplikace musí mít dostatečná oprávnění na serveru nebo model pro požadovanou volání. Úroveň oprávnění se určuje podle rolí v rámci modelu nebo skupiny správce na serveru.
+- Token musí být buď token uživatele, nebo objekt služby aplikace.
+- Token musí mít nastavenou `https://*.asazure.windows.net`správnou cílovou skupinu.
+- Aby mohl uživatel nebo aplikace provést požadované volání, musí mít na serveru nebo v modelu dostatečná oprávnění. Úroveň oprávnění je určena rolemi v rámci modelu nebo skupiny pro správu na serveru.
 
     > [!IMPORTANT]
-    > V současné době **správce serveru** oprávnění role jsou nezbytné.
+    > V současné době jsou nutná oprávnění role **Správce serveru** .
 
-## <a name="post-refreshes"></a>/Refreshes příspěvku
+## <a name="post-refreshes"></a>PŘÍSPĚVEK/refreshes
 
-K provedení operace aktualizace, pomocí operací POST na kolekce /refreshes přidat novou položku aktualizace do kolekce. Hlavičky Location v odpovědi obsahuje ID aktualizace. Klientská aplikace můžete odpojit a zkontrolovat stav později, pokud je to nutné, protože je asynchronní.
+Chcete-li provést operaci aktualizace, přidejte do kolekce novou položku aktualizace pomocí příkazu POST v kolekci/refreshes. Hlavička umístění v odpovědi zahrnuje ID aktualizace. Klientská aplikace se může v případě potřeby odpojit a později ověřit stav, protože je asynchronní.
 
-Operace pouze jedné aktualizace je přijata po jednom modelu. Pokud je aktuální běžící operaci aktualizace a jiné se odešle, vrátí se stavový kód 409 konflikt HTTP.
+V jednom okamžiku se pro model přijme jenom jedna operace aktualizace. Pokud existuje aktuální spuštěná operace aktualizace a je odeslána jiná, vrátí se stavový kód HTTP v konfliktu 409.
 
-Text může vypadat takto:
+Tělo může vypadat takto:
 
 ```
 {
@@ -96,24 +96,24 @@ Text může vypadat takto:
 
 ### <a name="parameters"></a>Parametry
 
-Zadání parametrů se nevyžaduje. Výchozí hodnota je použita.
+Určení parametrů není vyžadováno. Použije se výchozí hodnota.
 
 | Name             | Typ  | Popis  |Výchozí  |
 |------------------|-------|--------------|---------|
-| `Type`           | Enum  | Typ zpracování, který má provést. Typy jsou v souladu s TMSL [aktualizovat příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) typy: full, clearValues, vypočítat, dataOnly, automaticky a defragmentaci. Přidáte typ není podporován.      |   automatic      |
-| `CommitMode`     | Enum  | Určuje, pokud objekty budou potvrzeny v dávkách, nebo pouze v případě, že je dokončeno. Režimy: výchozí, transakční, partialBatch.  |  transakční       |
-| `MaxParallelism` | Int   | Tato hodnota určuje maximální počet vláken, ve kterém se spustí paralelní zpracování příkazů. Tuto hodnotu v souladu s MaxParallelism vlastnost, která je možné nastavit v TMSL [pořadí příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) nebo pomocí jiné metody.       | 10        |
-| `RetryCount`     | Int   | Označuje počet pokusů, které se předtím, než oznámí opakování operace.      |     0    |
-| `Objects`        | Array | Pole objektů, které chcete zpracovat. Každý objekt obsahuje: "tabulky" při zpracování celé tabulky nebo "table" a "oddíl" při zpracování oddílu. Pokud nejsou zadány žádné objekty, se aktualizují celý model. |   Celý model procesu      |
+| `Type`           | Enum  | Typ zpracování, které má být provedeno. Typy jsou zarovnány s TMSL typy [příkazů pro obnovení](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) : Full, clearValues, vypočítat, dataonly, Automatic a defragmentovat. Typ přidání není podporován.      |   Automatické      |
+| `CommitMode`     | Enum  | Určuje, zda budou objekty potvrzeny v dávkách nebo pouze v případě, že jsou dokončeny. Mezi režimy patří: Default, Transaction, partialBatch.  |  doručen       |
+| `MaxParallelism` | Int   | Tato hodnota určuje maximální počet vláken, ve kterých se paralelně spouští příkazy zpracování. Tato hodnota je zarovnána s vlastností MaxParallelism, kterou lze nastavit v [příkazu](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) TMSL Sequence nebo pomocí jiných metod.       | 10        |
+| `RetryCount`     | Int   | Určuje počet pokusů, kolikrát operace proběhne znovu, než dojde k selhání.      |     0    |
+| `Objects`        | Array | Pole objektů, které mají být zpracovány. Každý objekt obsahuje: "Table" při zpracovávání celé tabulky nebo tabulky "a" partition "při zpracování oddílu. Nejsou-li zadány žádné objekty, je obnoven celý model. |   Zpracování celého modelu      |
 
-Je rovno partialBatch CommitMode. Používá se při provádění počátečním načtení rozsáhlých datových sad, které může trvat hodiny. Pokud operace aktualizace selže po úspěšně potvrzování jeden nebo více dávky, úspěšně potvrzeny dávky zůstanou potvrzené (nevrátí zpět úspěšně potvrzeny dávky).
+CommitMode se rovná partialBatch. Používá se při počátečním zatížení velkých datových sad, které mohou trvat hodiny. Pokud operace aktualizace selže po úspěšném potvrzení jedné nebo více dávek, všechny úspěšně potvrzené dávky zůstanou popsány (nevrátí úspěšně potvrzené dávky).
 
 > [!NOTE]
-> V době psaní velikost dávky je hodnota MaxParallelism, ale tato hodnota může změnit.
+> V okamžiku psaní je velikost dávky hodnota MaxParallelism, ale tato hodnota se může změnit.
 
-## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId >
+## <a name="get-refreshesrefreshid"></a>Získat/refreshes/\<refreshId >
 
-Chcete-li zkontrolovat stav operace aktualizace, použijte příkaz GET na ID aktualizace. Následuje příklad těla odpovědi. Pokud je operace probíhá, **inProgress** je vrácen stav.
+Chcete-li zjistit stav operace aktualizace, použijte příkaz GET v ID aktualizace. Tady je příklad těla odpovědi. Pokud operace probíhá, vrátí se stav při **zpracování** .
 
 ```
 {
@@ -137,12 +137,12 @@ Chcete-li zkontrolovat stav operace aktualizace, použijte příkaz GET na ID ak
 }
 ```
 
-## <a name="get-refreshes"></a>ZÍSKAT /refreshes
+## <a name="get-refreshes"></a>ZÍSKAT/refreshes
 
-Pokud chcete získat seznam operací historických aktualizace pro model, použijte příkaz GET na kolekci /refreshes. Následuje příklad těla odpovědi. 
+Chcete-li získat seznam historických operací aktualizace pro model, použijte příkaz GET v kolekci/refreshes. Tady je příklad těla odpovědi. 
 
 > [!NOTE]
-> V době psaní textu za posledních 30 dní operace aktualizace se ukládají a vrátí, ale toto číslo může změnit.
+> V době psaní se budou ukládat a vracet poslední 30 dní operací aktualizace, ale toto číslo se může změnit.
 
 ```
 [
@@ -161,17 +161,17 @@ Pokud chcete získat seznam operací historických aktualizace pro model, použi
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>Odstranit /refreshes/\<refreshId >
+## <a name="delete-refreshesrefreshid"></a>Odstranit/refreshes/\<refreshId >
 
-Zrušit operaci aktualizace probíhá, použijte příkaz DELETE na ID aktualizace.
+Chcete-li zrušit probíhající operaci aktualizace, použijte příkaz DELETE pro ID aktualizace.
 
-## <a name="post-sync"></a>/ POST Sync
+## <a name="post-sync"></a>PŘÍSPĚVEK/Sync
 
-Máte provést operace aktualizace, může být nutné synchronizovat nová data s replikami pro horizontální navýšení kapacity dotazu. K provedení operace synchronizace pro model, použijte operaci POST na funkci/Sync. Hlavičky Location v odpovědi obsahuje ID operace synchronizace.
+Po provedení operací aktualizace může být nutné synchronizovat nová data s replikami pro škálování dotazu. K provedení operace synchronizace pro model použijte příkaz POST ve funkci/Sync. Hlavička umístění v odpovědi zahrnuje ID operace synchronizace.
 
-## <a name="get-sync-status"></a>ZÍSKÁNÍ stavu/Sync
+## <a name="get-sync-status"></a>ZÍSKAT stav/Sync
 
-Pokud chcete zkontrolovat stav operace synchronizace, použijte příkaz GET ID operace předá jako parametr. Tady je příklad těla odpovědi:
+Chcete-li zjistit stav operace synchronizace, použijte příkaz GET s předáním ID operace jako parametru. Tady je příklad těla odpovědi:
 
 ```
 {
@@ -186,33 +186,33 @@ Pokud chcete zkontrolovat stav operace synchronizace, použijte příkaz GET ID 
 
 Hodnoty pro `syncstate`:
 
-- 0: Replikace. Databází se replikují do cílové složky.
-- 1: Rehydratace. Databáze se nedosadí data na počet instancí serveru jen pro čtení.
-- 2: Dokončit. Operace synchronizace byla úspěšně dokončena.
-- 3: Se nezdařilo. Operace synchronizace se nezdařila.
-- 4: Dokončování. Operace synchronizace byla dokončena, ale provádí vyčištění.
+- 0: Replikaci. Soubory databáze jsou replikovány do cílové složky.
+- 1: Dosazování dat. Probíhá rehydratované databáze na instancích serveru jen pro čtení.
+- 2: Dokončeno Operace synchronizace se úspěšně dokončila.
+- 3: Selhalo Operace synchronizace se nezdařila.
+- 4: Dokončuje. Operace synchronizace se dokončila, ale provádí kroky čištění.
 
 ## <a name="code-sample"></a>Ukázka kódu
 
-Tady je ukázka kódu C# vám pomůžou začít, [RestApiSample na Githubu](https://github.com/Microsoft/Analysis-Services/tree/master/RestApiSample).
+Zde je příklad C# kódu, který vám umožní začít [RestApiSample na GitHubu](https://github.com/Microsoft/Analysis-Services/tree/master/RestApiSample).
 
-### <a name="to-use-the-code-sample"></a>Chcete-li použít vzorový kód
+### <a name="to-use-the-code-sample"></a>Použití ukázky kódu
 
-1.  Klonovat nebo stáhnout úložiště. Otevřete řešení RestApiSample.
-2.  Vyhledejte řádek **klienta. Vlastnost BaseAddress =...** a poskytnout vaší [základní adresa URL](#base-url).
+1.  Naklonujte nebo Stáhněte úložiště. Otevřete řešení RestApiSample.
+2.  Najděte klienta line **. BaseAddress =...** a zadejte svou [základní adresu URL](#base-url).
 
-Vzorový kód používá [instanční objekt služby](#service-principal) ověřování.
+Ukázka kódu používá ověřování [instančního objektu](#service-principal) .
 
-### <a name="service-principal"></a>Instanční objekt služby
+### <a name="service-principal"></a>Instanční objekt
 
-Zobrazit [vytvoření instančního objektu – Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) a [přidání hlavního názvu služby k roli správce serveru](analysis-services-addservprinc-admins.md) pro další informace o tom, jak nastavení hlavního názvu služby a přidělení potřebných oprávnění v Azure jako . Po dokončení kroků, proveďte následující kroky:
+Další informace o tom, jak nastavit instanční objekt a přiřadit potřebná oprávnění v Azure jako, najdete v tématu [Vytvoření instančního objektu – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) a [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md) . Po dokončení kroků proveďte následující další kroky:
 
-1.  Ve vzorovém kódu najít **řetězec autority =...** , nahraďte **běžné** ve vaší organizaci tenanta ID.
-2.  Okomentovat/Odkomentujte tak clientcredential systému třída se používá k vytvoření instance objektu – stáhnout přihlašovací údaje. Zkontrolujte \<ID aplikace > a \<klíče aplikace > hodnoty jsou přístupné z bezpečný nebo použít ověřování pomocí certifikátů pro instanční objekty.
+1.  V ukázce kódu vyhledejte řetězcovou **autoritu =...** , nahraďte **Common** číslem ID tenanta vaší organizace.
+2.  Komentář/Odkomentujte, aby se třída ClientCredential použila k vytvoření instance objektu přihlašovacích údajů. Ujistěte se \<, že ID aplikace \<> a klíč aplikace > jsou dostupné zabezpečeným způsobem nebo používají ověřování pomocí certifikátů u instančních objektů.
 3.  Spusťte ukázku.
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 [Ukázky](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

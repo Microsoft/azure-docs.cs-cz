@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: d863edba17b3dc688624e7095ee09744ca07192d
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 31e59f913fa29c92bc1b97029d8712bbd9b68ab8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780532"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934664"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled služby Azure Operational Security
 
@@ -87,7 +87,7 @@ Díky Azure Active Directory mají všechny aplikace publikované pro vaše part
 - Ověření šifrování disku.
 - Síťové útoky.
 
-Security Center používá [Access Control na základě rolí (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC poskytuje [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) , které je možné přiřadit uživatelům, skupinám a službám v Azure.
+Security Center používá [Access Control na základě rolí (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC poskytuje [předdefinované role](../../role-based-access-control/built-in-roles.md) , které je možné přiřadit uživatelům, skupinám a službám v Azure.
 
 Security Center posuzuje konfiguraci vašich prostředků identifikovat problémy se zabezpečením a ohrožení zabezpečení. V Security Center se zobrazí informace týkající se prostředku pouze v případě, že máte přiřazenou roli vlastník, přispěvatel nebo čtenář pro předplatné nebo skupinu prostředků, do které prostředek patří.
 
@@ -185,7 +185,7 @@ Vyspělí DevOps lékaři přijímají několik z následujících postupů. Tyt
 - [Infrastruktura jako kód (IAC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) je postup, který umožňuje automatizaci a ověřování vytváření a rozboru sítí a virtuálních počítačů při poskytování zabezpečených a stabilních hostujících platforem aplikací.
 - [](https://www.visualstudio.com/learn/what-are-microservices/) Architektura mikroslužeb se používá k izolaci případů podnikového použití do malých opakovaně použitelných služeb.  Tato architektura umožňuje škálovatelnost a efektivitu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o řešení Security and Audit najdete v následujících článcích:
 

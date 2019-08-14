@@ -1,58 +1,58 @@
 ---
-title: Služba Azure Key Vault spravovat účet úložiště – verze prostředí PowerShell
-description: Funkce účtu spravovaného úložiště poskytuje seemless integrace mezi Azure Key Vault a účet úložiště Azure.
+title: Azure Key Vault spravovaného účtu úložiště – verze PowerShellu
+description: Funkce spravovaného účtu úložiště poskytuje bezchybnou integraci mezi Azure Key Vault a účtem služby Azure Storage.
 ms.topic: conceptual
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 9b6089aa828b5667f100c1a8cbff3e69345e4512
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 708c34347966eee7817ca04e0552dcba233765cb
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150431"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934503"
 ---
-# <a name="azure-key-vault-managed-storage-account---powershell"></a>Služba Azure Key Vault spravovat účet úložiště – PowerShell
+# <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault spravovaného účtu úložiště – PowerShell
 
 > [!NOTE]
-> [Integrace služby Azure storage s Azure Active Directory (Azure AD) je teď ve verzi preview](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Doporučujeme použít Azure AD pro ověřování a autorizaci, které poskytuje přístup na základě tokenu OAuth2 do úložiště Azure, stejně jako Azure Key Vault. To vám umožní:
-> - Ověření klientské aplikace pomocí identitou aplikace nebo uživatele místo přihlašovacích údajů účtu úložiště. 
-> - Použití [identita spravované služby Azure AD](/azure/active-directory/managed-identities-azure-resources/) při spouštění v Azure. Spravovat identity odebrat potřebné pro ověřování klientů všechno dohromady a ukládání přihlašovacích údajů v nebo s vaší aplikací.
-> - Používejte na základě řízení přístupu Role (RBAC) pro správu autorizace, která je také podporována službou Key Vault.
+> [Integrace služby Azure Storage s Azure Active Directory (Azure AD) je teď ve verzi Preview](../storage/common/storage-auth-aad.md). Pro ověřování a autorizaci doporučujeme používat Azure AD, který poskytuje přístup založený na tokenech OAuth2 k úložišti Azure, stejně jako Azure Key Vault. To vám umožní:
+> - Místo přihlašovacích údajů k účtu úložiště ověřte svoji klientskou aplikaci pomocí identity aplikace nebo uživatele. 
+> - Při provozu v Azure použijte [spravovanou identitu Azure AD](/azure/active-directory/managed-identities-azure-resources/) . Spravované identity odstraňují nutnost ověřování klientů společně a ukládají přihlašovací údaje do nebo do aplikace.
+> - Pro správu autorizací použijte Access Control na základě rolí (RBAC), kterou podporuje taky Key Vault.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Účtu služby Azure storage](/azure/storage/storage-create-storage-account) používá pověření, která se skládá z názvu účtu a klíč. Klíč se automaticky generuje a obsluhuje více jako "heslo" na rozdíl od kryptografický klíč. Key Vault, můžete spravovat tyto klíče účtu úložiště jako ukládání [tajných kódů služby Key Vault](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
+[Účet úložiště Azure](/azure/storage/storage-create-storage-account) používá přihlašovací údaje, které se skládají z názvu účtu a klíče. Klíč se vygeneruje automaticky a bude sloužit jako "heslo", a to na rozdíl od kryptografického klíče. Key Vault můžou tyto klíče účtu úložiště spravovat tak, že je uloží jako [Key Vault tajné klíče](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
 
 ## <a name="overview"></a>Přehled
 
-Účet úložiště, že funkce provádí několik funkcí správy vaším jménem spravované služby Key Vault:
+Funkce Key Vault spravovaného účtu úložiště provádí vaším jménem několik funkcí správy:
 
-- Seznamy (synchronizace) klíče účtu služby Azure storage.
-- Obnoví (obmění) klíče pravidelně.
-- Spravuje klíče pro účty úložiště a účty úložiště Classic.
-- Hodnoty klíče se nikdy vrátí odpověď na volajícího.
+- Zobrazí (synchronizuje) klíče s účtem služby Azure Storage.
+- Pravidelně generuje (otáčí) klíče.
+- Spravuje klíče pro účty úložiště i pro účty klasického úložiště.
+- Hodnoty klíče se nikdy nevrátí v reakci na volajícího.
 
-Při použití funkce klíče účtu spravovaného úložiště:
+Když použijete funkci klíče spravovaného účtu úložiště:
 
-- **Povolte pouze služby Key Vault ke správě vašeho klíče účtu úložiště.** Nepokoušejte se spravovat sami, jak budete rušit procesy služby Key Vault.
-- **Nepovolit klíče účtu úložiště lze spravovat pomocí více než jeden objekt služby Key Vault**.
-- **Klíče účtu úložiště ručně negenerovat**. Doporučujeme vám, můžete obnovit pomocí služby Key Vault.
+- **Povoluje Key Vault jenom spravovat klíče účtu úložiště.** Nepokoušejte se spravovat sami, protože budete rušit procesy Key Vault.
+- **Nepovolujte správu klíčů účtu úložiště více než jedním objektem Key Vault**.
+- **Neobnovujte ručně klíče účtu úložiště**. Doporučujeme je znovu vygenerovat prostřednictvím Key Vault.
 
-Následující příklad ukazuje, jak povolit služby Key Vault ke správě vašeho klíče účtu úložiště.
+Následující příklad ukazuje, jak Key Vault spravovat klíče účtu úložiště.
 
-## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Autorizace služby Key Vault pro přístup k účtu úložiště
+## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Autorizovat Key Vault k přístupu k vašemu účtu úložiště
 
 > [!IMPORTANT]
-> Tenanta služby Azure AD poskytuje každý registrované aplikaci  **[instanční objekt služby](/azure/active-directory/develop/developer-glossary#service-principal-object)** , který slouží jako identitu aplikace. ID aplikace instančního objektu se používá při zadání autorizaci pro přístup k další prostředky Azure prostřednictvím řízení přístupu na základě role (RBAC). Protože Key Vault je aplikace Microsoft, je předem registrovánu ve všech tenantů Azure AD v rámci stejné ID aplikace v rámci každé cloudu Azure:
-> - ID aplikace používat klienty Azure AD v cloudu Azure government `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.
-> - ID aplikace používat klienty Azure AD ve veřejném cloudu Azure a všechny ostatní `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`.
+> Tenant **[služby](/azure/active-directory/develop/developer-glossary#service-principal-object)** Azure AD poskytuje každou registrovanou aplikaci s instančním objektem, který slouží jako identita aplikace. ID aplikace instančního objektu se používá, když udělujete oprávnění pro přístup k jiným prostředkům Azure prostřednictvím řízení přístupu na základě role (RBAC). Vzhledem k tomu, že Key Vault je aplikace Microsoftu, je předregistrovaná ve všech klientech Azure AD pod stejným ID aplikace v rámci každého cloudu Azure:
+> - Klienti Azure AD v cloudu Azure pro státní správu používají `7e7c393b-45d0-48b1-a35e-2905ddf8183c`ID aplikace.
+> - Klienti Azure AD ve veřejném cloudu Azure a všichni ostatní používají ID `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`aplikace.
 
-Před služby Key Vault můžete přístup a spravovat své klíče účtu úložiště, musí povolit jeho přístup k účtu úložiště. Aplikace služby Key Vault vyžaduje oprávnění k *seznamu* a *znovu vygenerovat* klíče účtu úložiště. Tato oprávnění jsou povolené prostřednictvím předdefinované role RBAC [Role služby operátor klíč účtu úložiště](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role). 
+Předtím, než Key Vault mít přístup a spravovat klíče účtu úložiště, musíte autorizovat svůj přístup k vašemu účtu úložiště. Aplikace Key Vault vyžaduje oprávnění k vypsání a *obnovení* klíčů pro váš účet úložiště. Tato oprávnění se povolují prostřednictvím předdefinované role [služby klíčového operátoru klíče účtu úložiště](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)RBAC. 
 
-Přiřaďte tuto roli služby Key Vault instančnímu objektu služby, omezení rozsahu do vašeho účtu úložiště pomocí následujících kroků. Nezapomeňte aktualizovat `$resourceGroupName`, `$storageAccountName`, `$storageAccountKey`, a `$keyVaultName` proměnné před spuštěním skriptu:
+Přiřaďte tuto roli k Key Vault instančnímu objektu, čímž omezíte rozsah na svůj účet úložiště, a to pomocí následujících kroků. Nezapomeňte aktualizovat `$resourceGroupName`proměnné, `$storageAccountName`, `$storageAccountKey`a `$keyVaultName` před spuštěním skriptu:
 
 ```azurepowershell-interactive
 # TODO: Update with the resource group where your storage account resides, your storage account name, the name of your active storage account key, and your Key Vault instance name
@@ -72,7 +72,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 New-AzRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
 
-Po přiřazení role úspěšné byste měli vidět výstup podobný následujícímu příkladu:
+Po úspěšném přiřazení role by se měl zobrazit výstup podobný následujícímu příkladu:
 
 ```console
 RoleAssignmentId   : /subscriptions/03f0blll-ce69-483a-a092-d06ea46dfb8z/resourceGroups/rgContoso/providers/Microsoft.Storage/storageAccounts/sacontoso/providers/Microsoft.Authorization/roleAssignments/189cblll-12fb-406e-8699-4eef8b2b9ecz
@@ -86,14 +86,14 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-Pokud služby Key Vault je už přidaná do role v účtu úložiště, dostanete *"přiřazení role už existuje."* Došlo k chybě. Přiřazení role, můžete ověřit také pomocí webu Azure portal na stránce "Řízení přístupu (IAM)" účet úložiště.  
+Pokud se už Key Vault do role vašeho účtu úložiště přidalo, obdržíte, *že přiřazení role už existuje.* Chyba. Přiřazení role můžete také ověřit pomocí stránky účet úložiště "řízení přístupu (IAM)" v Azure Portal.  
 
-## <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Udělili oprávnění účtu uživatele k účtům úložiště spravované
+## <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Poskytnutí oprávnění ke spravovaným účtům úložiště vašemu uživatelskému účtu
 
 >[!TIP] 
-> Stejně jako nabízí Azure AD **instanční objekt služby** pro identitu aplikace **hlavní název uživatele** je k dispozici pro identitu uživatele. Uživatel instančního objektu můžete pak získat autorizaci pro přístup k trezoru klíčů, prostřednictvím oprávnění zásad přístupu trezoru klíčů.
+> Stejně jako služba Azure AD poskytuje **instanční objekt** pro identitu aplikace, je k dispozici **hlavní povinný uživatel** pro identitu uživatele. Objekt zabezpečení uživatele pak může udělit autorizaci pro přístup k Key Vault prostřednictvím oprávnění zásad přístupu Key Vault.
 
-Pomocí stejné relaci Powershellu, aktualizace zásad přístupu trezoru klíčů pro účty spravované úložiště. Tento krok platí oprávnění účtu úložiště pro váš uživatelský účet, zajištění, že může přístup k funkcím účtu spravovaného úložiště: 
+Pomocí stejné relace PowerShellu aktualizujte zásady přístupu Key Vault pro spravované účty úložiště. Tento krok aplikuje oprávnění účtu úložiště na váš uživatelský účet, což zajistí, že budete mít přístup ke spravovaným funkcím účtu úložiště: 
 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -101,18 +101,18 @@ Pomocí stejné relaci Powershellu, aktualizace zásad přístupu trezoru klíč
 Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azureProfile.Context.Account.Id -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
 ```
 
-Všimněte si, že oprávnění pro účty úložiště nejsou k dispozici na stránce "Zásady přístupu" účet úložiště na webu Azure Portal.
+Všimněte si, že oprávnění k účtům úložiště nejsou k dispozici na stránce zásady přístupu na účtu úložiště v Azure Portal.
 
-## <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Přidat spravovaný účet úložiště k vaší instanci služby Key Vault
+## <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Přidání spravovaného účtu úložiště do instance Key Vault
 
-Spravovaný účet úložiště pomocí stejné relaci Powershellu vytvořte ve vaší instanci služby Key Vault. `-DisableAutoRegenerateKey` Přepínač určuje nechcete obnovit klíče účtu úložiště.
+Pomocí stejné relace PowerShellu vytvořte v instanci Key Vault spravovaný účet úložiště. `-DisableAutoRegenerateKey` Přepínač určuje, že se klíče účtu úložiště znovu negenerují.
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -DisableAutoRegenerateKey
 ```
 
-Po úspěšné přidání účtu úložiště pomocí žádné opětovném generování přístupového klíče byste měli vidět výstup podobný následujícímu příkladu:
+Po úspěšném přidání účtu úložiště bez opětovného vygenerování klíče byste měli vidět výstup podobný následujícímu příkladu:
 
 ```console
 Id                  : https://kvcontoso.vault.azure.net:443/storage/sacontoso
@@ -128,16 +128,16 @@ Updated             : 11/19/2018 11:54:47 PM
 Tags                : 
 ```
 
-### <a name="enable-key-regeneration"></a>Povolit generování klíče
+### <a name="enable-key-regeneration"></a>Povolit opakované generování klíče
 
-Pokud chcete služby Key Vault se pravidelně znovu vygenerovat své klíče účtu úložiště, můžete nastavit dobu obnovení. V následujícím příkladu jsme nastavili období opětovné vygenerování tří dnů. Po třech dnech se služby Key Vault znovu vygenerovat "key1" a Prohodit aktivní klíč z "key2" k "key1".
+Pokud chcete, Key Vault pravidelně znovu vygenerovat klíče účtu úložiště, můžete nastavit dobu vygenerování. V následujícím příkladu nastavíme dobu obnovení tři dny. Po třech dnech Key Vault znovu vygeneruje "klíč1" a prohodí aktivní klíč z "key2" na "klíč1".
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -RegenerationPeriod $regenPeriod
 ```
 
-Po úspěšném přidání s opětovném generování přístupového klíče účtu úložiště byste měli vidět výstup podobný následujícímu příkladu:
+Po úspěšném přidání účtu úložiště s obnovením klíče byste měli vidět výstup podobný následujícímu příkladu:
 
 ```console
 Id                  : https://kvcontoso.vault.azure.net:443/storage/sacontoso
@@ -155,6 +155,6 @@ Tags                :
 
 ## <a name="next-steps"></a>Další postup
 
-- [Spravované ukázky klíče účtu úložiště](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
+- [Ukázky klíčů spravovaného účtu úložiště](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
 - [Informace o klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)
-- [Odkaz na Key Vault prostředí PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
+- [Reference k Key Vault PowerShellu](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

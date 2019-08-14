@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7011025a1d94a5c99bf2338d9f80c683c2fd7b35
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 12fd08fa301cb22857470e3c81d7f4f7c1f04de9
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514972"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68948873"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurace nastavení Azure Multi-Factor Authentication
 
@@ -305,7 +305,7 @@ Obejití důvěryhodných IP adres funguje pouze uvnitř intranetu společnosti.
 
 Pokud je funkce důvěryhodných IP adres zakázaná, pro toky v prohlížeči se vyžaduje dvoustupňové ověřování. Pro starší verze klientských aplikací jsou vyžadovány hesla aplikací.
 
-Pokud je povolená funkce důvěryhodných IP adres, pro toky v prohlížeči *se nevyžaduje* dvoustupňové ověřování. Hesla aplikací se pro starší aplikace s bohatou verzí klienta *nevyžadují,* Pokud uživatel nevytvořil heslo aplikace. Po použití hesla aplikace zůstane heslo povinné. 
+Pokud je povolená funkce důvěryhodných IP adres, pro toky v prohlížeči se nevyžaduje dvoustupňové ověřování. Hesla aplikací se pro starší aplikace s bohatou verzí klienta nevyžadují, pokud uživatel nevytvořil heslo aplikace. Po použití hesla aplikace zůstane heslo povinné. 
 
 ### <a name="end-user-experience-outside-corpnet"></a>Činnost koncového uživatele mimo Corpnet
 
@@ -389,8 +389,7 @@ Funkce _Zapamatovat službu Multi-Factor Authentication_ pro zařízení a prohl
 >[!IMPORTANT]
 >Pokud dojde k ohrožení bezpečnosti účtu nebo zařízení, může to mít vliv na zapamatování služby Multi-Factor Authentication pro důvěryhodná zařízení. Pokud dojde k ohrožení zabezpečení podnikového účtu nebo ztrátě nebo odcizení důvěryhodného zařízení, měli byste službu [Multi-Factor Authentication obnovit na všech zařízeních](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
 >
->Akce obnovit odvolá důvěryhodný stav ze všech zařízení a uživatel musí provést dvoustupňové ověřování znovu. Můžete taky dát uživatelům pokyn, aby obnovili vícefaktorové ověřování na svých vlastních zařízeních podle pokynů v tématu [Správa nastavení pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted).
->
+>Akce obnovit odvolá důvěryhodný stav ze všech zařízení a uživatel musí provést dvoustupňové ověřování znovu. Můžete taky dát uživatelům pokyn, aby obnovili vícefaktorové ověřování na svých vlastních zařízeních podle pokynů v tématu [Správa nastavení pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device).
 
 ### <a name="how-the-feature-works"></a>Jak funkce funguje
 
@@ -420,6 +419,6 @@ Tato funkce snižuje počet ověřování ve webových aplikacích, které se ob
 
 Po povolení funkce zapamatovat službu Multi-Factor Authentication mohou uživatelé označit zařízení jako důvěryhodné, když se přihlásí výběrem možnosti **příště**nezobrazovat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Úprava brandingu přihlašovací stránky služby Azure AD](../fundamentals/customize-branding.md)

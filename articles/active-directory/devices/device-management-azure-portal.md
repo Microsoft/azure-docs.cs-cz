@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f64beb80d1a11930fee74e669675b39087cade0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 03c9f0908d8b5290dc4585a330a7ea78a6577ab9
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562228"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942946"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení pomocí Azure Portal
 
@@ -116,7 +116,7 @@ V této části najdete informace o běžných úlohách správy identit zaříz
 
 ### <a name="manage-an-intune-device"></a>Správa zařízení v Intune
 
-Pokud jste správce Intune, můžete zařízení s označením **Microsoft Intune**spravovat.
+Pokud jste správce Intune, můžete zařízení s označením **Microsoft Intune**spravovat. Pokud zařízení není zaregistrované v Microsoft Intune možnost spravovat bude šedá.
 
 ![Správa zařízení v Intune](./media/device-management-azure-portal/31.png)
 
@@ -221,6 +221,6 @@ Kromě filtrů můžete vyhledat konkrétní položky.
 
 ![Protokoly auditu](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Jak spravovat zastaralá zařízení ve službě Azure AD](manage-stale-devices.md)

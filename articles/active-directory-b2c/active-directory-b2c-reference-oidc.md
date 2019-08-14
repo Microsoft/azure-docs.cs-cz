@@ -11,12 +11,12 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b5157a71ce15d4dfd199b6826be22235e61df97
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0e60bedcf1324b443d9b9cd34e8dc695fdb0b372
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848535"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931755"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webové přihlašování pomocí OpenID Connect v Azure Active Directory B2C
 
@@ -76,14 +76,14 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | Parametr | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | client_id | Ano | ID aplikace, které [Azure Portal](https://portal.azure.com/) přiřazena k vaší aplikaci. |
-| response_type | Ano | Musí zahrnovat token ID pro OpenID Connect. Pokud vaše webová aplikace také potřebuje tokeny pro volání webového rozhraní API, můžete použít `code+id_token`. |
-| redirect_uri | Ne | `redirect_uri` Parametr vaší aplikace, kde lze odesílat a přijímat odpovědi na ověřování vaší aplikací. Musí přesně odpovídat jednomu z `redirect_uri` parametrů, které jste zaregistrovali v Azure Portal, s tím rozdílem, že musí být kódovaný v adrese URL. |
-| scope | Ano | Mezerou oddělený seznam oborů. `openid` Rozsah označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě tokenů ID. `offline_access` Obor je volitelný pro webové aplikace. Indikuje, že vaše aplikace bude potřebovat *aktualizační token* pro rozšířený přístup k prostředkům. |
-| response_mode | Ne | Metoda, která slouží k odeslání výsledného autorizačního kódu zpátky do vaší aplikace. Může to být buď `query`, `form_post`nebo `fragment`.  Pro zajištění nejlepšího zabezpečení se doporučuje režim odezvy.`form_post` |
-| state | Ne | Hodnota obsažená v požadavku, která se také vrátila v odpovědi na token. Může to být řetězec libovolného obsahu, který chcete. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k prevenci útoků proti padělání požadavků mezi lokalitami. Stav se používá také ke kódování informací o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka, na které se nachází. |
 | nonce | Ano | Hodnota obsažená v žádosti (generovaná aplikací), která je součástí výsledného tokenu ID jako deklarace identity. Aplikace pak může tuto hodnotu ověřit a zmírnit tak útoky prostřednictvím opakovaného přehrání tokenu. Hodnota je obvykle náhodný jedinečný řetězec, který lze použít k identifikaci původu požadavku. |
 | p | Ano | Tok uživatele, který je spuštěn. Je název toku uživatele, který je vytvořený ve vašem tenantovi Azure AD B2C. Název toku uživatele by měl začínat `b2c\_1\_`na. |
+| response_type | Ano | Musí zahrnovat token ID pro OpenID Connect. Pokud vaše webová aplikace také potřebuje tokeny pro volání webového rozhraní API, můžete použít `code+id_token`. |
+| scope | Ano | Mezerou oddělený seznam oborů. `openid` Rozsah označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě tokenů ID. `offline_access` Obor je volitelný pro webové aplikace. Indikuje, že vaše aplikace bude potřebovat *aktualizační token* pro rozšířený přístup k prostředkům. |
 | výzv | Ne | Typ uživatelské interakce, která je povinná. Jediná platná hodnota je `login`v tomto okamžiku, která uživateli vynutí zadání přihlašovacích údajů k této žádosti. |
+| redirect_uri | Ne | `redirect_uri` Parametr vaší aplikace, kde lze odesílat a přijímat odpovědi na ověřování vaší aplikací. Musí přesně odpovídat jednomu z `redirect_uri` parametrů, které jste zaregistrovali v Azure Portal, s tím rozdílem, že musí být kódovaný v adrese URL. |
+| response_mode | Ne | Metoda, která slouží k odeslání výsledného autorizačního kódu zpátky do vaší aplikace. Může to být buď `query`, `form_post`nebo `fragment`.  Pro zajištění nejlepšího zabezpečení se doporučuje režim odezvy.`form_post` |
+| state | Ne | Hodnota obsažená v požadavku, která se také vrátila v odpovědi na token. Může to být řetězec libovolného obsahu, který chcete. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k prevenci útoků proti padělání požadavků mezi lokalitami. Stav se používá také ke kódování informací o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka, na které se nachází. |
 
 V tomto okamžiku se uživateli zobrazí výzva k dokončení pracovního postupu. Uživatel bude muset zadat své uživatelské jméno a heslo, přihlašovat se přes sociální identitu nebo si zaregistrovat adresář. V závislosti na tom, jakým způsobem je tok uživatele definovaný, se může jednat o libovolný jiný počet kroků.
 
@@ -169,13 +169,13 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Parametr | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| p | Ano | Tok uživatele, který se použil k získání autorizačního kódu. V této žádosti nemůžete použít jiný tok uživatele. Přidejte tento parametr do řetězce dotazu, nikoli do těla příspěvku. |
 | client_id | Ano | ID aplikace, které [Azure Portal](https://portal.azure.com/) přiřazena k vaší aplikaci. |
-| grant_type | Ano | Typ grantu, který musí být `authorization_code` pro tok autorizačního kódu. |
-| scope | Ne | Mezerou oddělený seznam oborů. `openid` Rozsah označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě parametrů id_token. Dá se použít k získání tokenů do vlastního webového rozhraní API back-endu vaší aplikace, které je reprezentováno stejným ID aplikace jako klient. `offline_access` Rozsah označuje, že vaše aplikace potřebuje aktualizační token pro rozšířený přístup k prostředkům. |
-| code | Ano | Autorizační kód, který jste získali na začátku toku uživatele. |
-| redirect_uri | Ano | `redirect_uri` Parametr aplikace, ve které jste obdrželi autorizační kód. |
 | client_secret | Ano | Tajný klíč aplikace, který byl vygenerován v [Azure Portal](https://portal.azure.com/). Tento tajný klíč aplikace je důležitým artefaktem zabezpečení. Měli byste ho bezpečně ukládat na váš server. Tento tajný klíč klienta pravidelně měňte. |
+| code | Ano | Autorizační kód, který jste získali na začátku toku uživatele. |
+| grant_type | Ano | Typ grantu, který musí být `authorization_code` pro tok autorizačního kódu. |
+| p | Ano | Tok uživatele, který se použil k získání autorizačního kódu. V této žádosti nemůžete použít jiný tok uživatele. Přidejte tento parametr do řetězce dotazu, nikoli do těla příspěvku. |
+| redirect_uri | Ano | `redirect_uri` Parametr aplikace, ve které jste obdrželi autorizační kód. |
+| scope | Ne | Mezerou oddělený seznam oborů. `openid` Rozsah označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě parametrů id_token. Dá se použít k získání tokenů do vlastního webového rozhraní API back-endu vaší aplikace, které je reprezentováno stejným ID aplikace jako klient. `offline_access` Rozsah označuje, že vaše aplikace potřebuje aktualizační token pro rozšířený přístup k prostředkům. |
 
 Úspěšná odpověď tokenu vypadá nějak takto:
 
@@ -236,13 +236,13 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 | Parametr | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| p | Ano | Tok uživatele, který se použil k získání původního obnovovacího tokenu. V této žádosti nemůžete použít jiný tok uživatele. Přidejte tento parametr do řetězce dotazu, nikoli do těla příspěvku. |
 | client_id | Ano | ID aplikace, které [Azure Portal](https://portal.azure.com/) přiřazena k vaší aplikaci. |
-| grant_type | Ano | Typ grantu, který musí být obnovovacím tokenem pro tuto část toku autorizačního kódu. |
-| scope | Ne | Mezerou oddělený seznam oborů. `openid` Rozsah označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě tokenů ID. Dá se použít k posílání tokenů do vlastního webového rozhraní API back-endu vaší aplikace, které je reprezentováno stejným ID aplikace jako klient. `offline_access` Rozsah označuje, že vaše aplikace potřebuje aktualizační token pro rozšířený přístup k prostředkům. |
-| redirect_uri | Ne | `redirect_uri` Parametr aplikace, ve které jste obdrželi autorizační kód. |
-| refresh_token | Ano | Původní obnovovací token, který byl získán v druhé části toku. `offline_access` Obor musí být použit jak v žádosti o autorizaci, tak na tokeny, aby mohl získat obnovovací token. |
 | client_secret | Ano | Tajný klíč aplikace, který byl vygenerován v [Azure Portal](https://portal.azure.com/). Tento tajný klíč aplikace je důležitým artefaktem zabezpečení. Měli byste ho bezpečně ukládat na váš server. Tento tajný klíč klienta pravidelně měňte. |
+| grant_type | Ano | Typ grantu, který musí být obnovovacím tokenem pro tuto část toku autorizačního kódu. |
+| refresh_token | Ano | Původní obnovovací token, který byl získán v druhé části toku. `offline_access` Obor musí být použit jak v žádosti o autorizaci, tak na tokeny, aby mohl získat obnovovací token. |
+| p | Ano | Tok uživatele, který se použil k získání původního obnovovacího tokenu. V této žádosti nemůžete použít jiný tok uživatele. Přidejte tento parametr do řetězce dotazu, nikoli do těla příspěvku. |
+| redirect_uri | Ne | `redirect_uri` Parametr aplikace, ve které jste obdrželi autorizační kód. |
+| scope | Ne | Mezerou oddělený seznam oborů. `openid` Rozsah označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě tokenů ID. Dá se použít k posílání tokenů do vlastního webového rozhraní API back-endu vaší aplikace, které je reprezentováno stejným ID aplikace jako klient. `offline_access` Rozsah označuje, že vaše aplikace potřebuje aktualizační token pro rozšířený přístup k prostředkům. |
 
 Úspěšná odpověď tokenu vypadá nějak takto:
 

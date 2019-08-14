@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: ca0067090924428a50ad2360f23a86576fff6cd3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5efd82a2cb0652f6dd2aab621c578ff90aca0111
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727027"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927852"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
 Předplatitelé služby Azure mohou svoje cloudová prostředí spravovat z více zařízení. Můžou k tomu využívat pracovní stanice, počítače vývojářů a dokonce i privilegovaná zařízení koncových uživatelů, která mají oprávnění ke konkrétním úlohám. V některých případech se funkce správy provádějí prostřednictvím webových konzol, například [portálu Azure](https://azure.microsoft.com/features/azure-portal/). V ostatních případech můžou existovat přímá připojení k Azure z místních systémů prostřednictvím virtuálních privátních sítí (VPN), terminálových služeb, protokolů klientských aplikací nebo (v kódu) rozhraní API pro správu služby Azure (SMAPI). Kromě toho můžou být koncové body klienta buď připojené k doménám nebo izolované a nespravované, jako například tablety nebo smartphony.
@@ -94,7 +94,7 @@ Na posílené pracovní stanici správce používá běžný uživatelský úče
 * Omezení spouštění. Povolení jenom jedné sady předdefinovaných spustitelných souborů, které jsou potřebné pro spuštění správy, (označované jako „výchozí odmítnutí“). Ve výchozím nastavení nesmíte dát uživatelům oprávnění ke spuštění libovolného programu, pokud není výslovně uveden v seznamu povolených položek.
 * Nejnižší oprávnění. Uživatelé pracovní stanice pro správu nesmí mít žádná oprávnění správce na samotném místním počítači. Tímto způsobem nemůžou změnit konfiguraci systému nebo systémové soubory, ať už úmyslně nebo náhodně.
 
-Všechno uvedené můžete vynutit pomocí [objektů zásad skupiny](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy) (GPO) ve službě Active Directory Domain Services (AD DS) a jejich použití prostřednictvím vaší (místní) domény pro správu na všechny účty pro správu.
+Všechno uvedené můžete vynutit pomocí [objektů zásad skupiny](../../active-directory-domain-services/manage-group-policy.md) (GPO) ve službě Active Directory Domain Services (AD DS) a jejich použití prostřednictvím vaší (místní) domény pro správu na všechny účty pro správu.
 
 ### <a name="managing-services-applications-and-data"></a>Správa služeb, aplikací a dat
 Konfigurace cloudových služeb Azure se provádí prostřednictvím portálu Azure nebo rozhraní SMAPI, prostřednictvím rozhraní příkazového řádku Windows PowerShell nebo uživatelské aplikace, která tato rozhraní RESTful využívá. Mezi služby, které tyto mechanismy využívají, patří Azure Active Directory (Azure AD), Azure Storage, weby Azure, Azure Virtual Network a další.
@@ -221,7 +221,7 @@ Minimalizace počtu úloh, které můžou správci provádět na posílené prac
 ## <a name="summary"></a>Souhrn
 Používání konfigurace posílené pracovní stanice ke správě cloudových služeb Azure, služby Virtual Machines a aplikací vám může pomoct s omezením řady rizik a hrozeb, které vyplývají ze vzdálené správy kritické infrastruktury IT. Azure i Windows poskytují mechanismy, které můžete použít k ochraně a řízení komunikace, ověřování a chování klienta.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Následující prostředky vám poskytnou další obecné informace o Azure a souvisejících službách Microsoftu jako doplnění ke konkrétním položkám, na které odkazujeme v tomto dokumentu:
 
 * [Zabezpečení privilegovaného přístupu](https://technet.microsoft.com/library/mt631194.aspx) – technické podrobnosti o navrhování a vytváření zabezpečených pracovních stanic pro správu v prostředí Azure

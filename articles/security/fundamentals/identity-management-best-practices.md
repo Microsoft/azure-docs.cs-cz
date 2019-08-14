@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 46850ad430aa5fb8ad25a71515bdd640855350c2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727264"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934689"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
 V tomto článku se podíváme na shromažďování osvědčených postupů zabezpečení Azure Identity Management a Access Control. Tyto osvědčené postupy se odvozují z našich zkušeností s [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) a zkušenostmi se zákazníky, jako je sami.
@@ -84,8 +84,8 @@ Další informace najdete v tématu [implementace synchronizace hodnot hash hese
 **Podrobnosti**: Použijte správné možnosti pro podporu ověřování:
 
   - Azure AD pro zaměstnance
-  - [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/) pro uživatele typu Host a externí partneři
-  - [Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/) řídit, jak se uživatelé registrují, přihlašovat a spravovat svoje profily při používání vašich aplikací
+  - [Azure AD B2B](../../active-directory/b2b/index.yml) pro uživatele typu Host a externí partneři
+  - [Azure AD B2C](../../active-directory-b2c/index.yml) řídit, jak se uživatelé registrují, přihlašovat a spravovat svoje profily při používání vašich aplikací
 
 Organizace, které neintegrují svou místní identitu s jejich cloudovou identitou, můžou mít větší režii při správě účtů. Tato režie zvyšuje pravděpodobnost chyb a porušení zabezpečení.
 

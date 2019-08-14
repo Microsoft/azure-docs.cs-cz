@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2019
+ms.date: 08/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7f253b71271787f7f2ef722134862ca72e0159df
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 22fa0ba52c346b8331fd6895cf87f3e15ee68ac6
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855749"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950093"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -99,7 +99,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Dubai** | Etisalat Spojené arabské emiráty | Spojené arabské emiráty – sever | Etisalat Spojené arabské emiráty |
 | **Dubai2** | du dataměna | Spojené arabské emiráty – sever | du dataměna, Orixcom |
 | **Dublin** | Equinix | Severní Evropa | Colt, eir, Equinix, Interxion, Megaport |
-| **Frankfurt** | Interxion | neuvedeno | DE-CIX, Interxion |
+| **Frankfurt** | Interxion | neuvedeno | DE-CIX, Interxion, oranžová |
 | **Hongkong – zvláštní správní oblast** | Equinix | Východní Asie | Aryaka Networks sítě, British Telecom, CenturyLink Cloud Connect, generální Telecom, Čína Telecom Global, Equinix, Megaport, NTT Communications, oranžová, PCCW Globaled, Tata Communications, Telia Carrier, Verizon |
 | **Johannesburg** | Teraco | Jižní Afrika – sever | British Telecom, Internet Solutions – Cloud Connect, Liquid Telecom, teraco |
 | **Kuala Lumpur** | TIME dotCom | neuvedeno | TIME dotCom |
@@ -110,7 +110,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Marseille** |Interxion | Francie – jih | DE-CIX, Interxion, Jaguar Network |
 | **Melbourne** | NextDC | Austrálie – jihovýchod | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | Equinix | neuvedeno | C3ntro+, Equinix, Megaport, Neutrona Networks |
-| **Montreal** | Cologix | neuvedeno | Bell Canada, Cologix, Telus, Zayo |
+| **Montreal** | Cologix | neuvedeno | Zvon Kanada, Cologix, Megaport, Telus, Zayo |
 | **Bombaj** | Tata Communications | Indie – západ | Global CloudXchange (GCX), Spoléhácí se na jio, Sify, Tata Communications, Verizon |
 | **Mumbai2** | Airtel | Indie – západ | Airtel, Sify, Vodafone Idea |
 | **New York** | Equinix | neuvedeno | CenturyLink Cloud Connect, Coresite, Equinix, InterCloud, Megaport, Packet, Zayo |
@@ -224,7 +224,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 | **Evropa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Severní Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |
 | **Jižní Amerika** |Avanade Inc., Venha Pra Nuvem |
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 * Zkontrolujte, že jsou splněné všechny požadavky. Viz [Požadavky služby ExpressRoute](expressroute-prerequisites.md).
 

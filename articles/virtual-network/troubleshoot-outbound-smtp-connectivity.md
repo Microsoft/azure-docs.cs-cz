@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s odchozí připojení SMTP v Azure | Dokumentace Microsoftu
-description: Informace o řešení potíží s odchozí připojení SMTP v Azure.
+title: Řešení potíží s odchozím připojením SMTP v Azure | Microsoft Docs
+description: Naučte se řešit potíže s odchozím připojením SMTP v Azure.
 services: virtual-network
 author: genlin
 manager: cshepard
@@ -12,46 +12,46 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 13ed2dc2b304368e468c433b5abf5d056c33e406
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: e21788dbf30b6fa3b37f84dd07d54b89bc91f17f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466484"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935375"
 ---
-# <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Řešení potíží s odchozí SMTP připojení v Azure
+# <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Řešení potíží s odchozím připojením SMTP v Azure
 
-Od 15. listopadu 2017, odchozích e-mailové zprávy, které se odesílají přímo k externím doménám (jako je outlook.com a gmail.com) z virtuálního počítače (VM) jsou k dispozici pouze na určité typy předplatného v Microsoft Azure. Odchozí připojení SMTP, které používají TCP přes port 25 se zablokoval. (Port 25 se používá především pro doručování neověřeného připojení e-mailů.)
+Od 15. listopadu 2017 se odchozí e-mailové zprávy, které se odesílají přímo do externích domén (například outlook.com a gmail.com) z virtuálního počítače, zpřístupňují jenom pro určité typy předplatného v Microsoft Azure. Odchozí připojení SMTP, která používají port TCP 25, byla zablokována. (Port 25 se primárně používá pro neověřené doručování e-mailů.)
 
-Tuto změnu v chování platí pouze pro nová předplatná a nová nasazení od 15. listopadu 2017.
+Tato změna chování se týká jenom nových předplatných a nových nasazení od 15. listopadu 2017.
 
-## <a name="recommended-method-of-sending-email"></a>Doporučujeme odeslat e-mailu
-Doporučujeme že použít předávací služby ověřený protokol SMTP, (, které obvykle připojení přes port TCP 587 nebo 443, ale podporují jiné porty příliš) k odesílání e-mailů z virtuálních počítačů Azure nebo ze služby Azure App Services. Tyto služby umožňují udržovat reputaci IP adresy nebo domény, aby se minimalizovala možnost poskytovateli e-mailu třetích stran, bude taková zpráva. Takové přenosové služby SMTP patří, ale nejsou omezené na [SendGrid](https://sendgrid.com/partners/azure/). Je také možné, že máte zabezpečené službu předávání přes SMTP, který je spuštěné místně, které můžete použít.
+## <a name="recommended-method-of-sending-email"></a>Doporučený způsob odesílání e-mailů
+Pro posílání e-mailů z virtuálních počítačů Azure nebo z Azure App Services doporučujeme použít ověřené služby SMTP relay (které se obvykle připojují prostřednictvím portu TCP 587 nebo 443, ale podporují jiné porty). Tyto služby se používají k údržbě IP nebo pověsti domény, aby se minimalizovala možnost, kterou poskytovatelé e-mailů od jiných výrobců odmítnou zprávu. Takové služby SMTP relay zahrnují, ale nejsou omezené na [SendGrid](https://sendgrid.com/partners/azure/). Je také možné, že máte zabezpečenou službu SMTP relay, která běží místně, kterou můžete použít.
 
-Pomocí těchto služeb doručování e-mailu není omezeno v Azure, bez ohledu na typ předplatného.
+Použití těchto služeb doručování e-mailů není v Azure omezené bez ohledu na typ předplatného.
 
 ## <a name="enterprise-agreement"></a>Smlouva Enterprise
-Pro uživatele Azure pro smlouvu Enterprise se nezměnila technické schopnost posílání e-mailu bez použití ověřeného relay. Doručení odchozích e-mailů z virtuálních počítačů Azure přímo poskytovatelům externího e-mailu bez jakýchkoli omezení platformy Azure můžete vyzkoušet nové i stávající uživatelé smlouvy Enterprise. I když není zaručeno, že poskytovateli e-mailu bude přijímat příchozí e-mailů z jakékoli daného uživatele, pokusy o doručení nebude blokovat platformy Azure pro virtuální počítače v rámci předplatných pro smlouvy Enterprise. Budete muset pracovat přímo s poskytovateli e-mailu a opravte jakékoli doručování zpráv nebo problémy, které se týkají konkrétní poskytovatele s filtrováním nevyžádané pošty.
+U smlouva Enterprise uživatelů Azure se nemění technická schopnost posílat e-maily bez použití ověřeného přenosu. Noví i stávající smlouva Enterprise uživatelé můžou zkusit odchozí e-mailové doručování z virtuálních počítačů Azure přímo externím poskytovatelům e-mailu bez jakýchkoli omezení platformy Azure. I když není zaručeno, že poskytovatelé e-mailů budou přijímat příchozí e-maily od kteréhokoli daného uživatele, nebudou pro virtuální počítače v rámci předplatných smlouva Enterprise zablokovány žádné pokusy o doručení. Budete muset pracovat přímo s poskytovateli e-mailu, aby opravili problémy s doručováním zpráv nebo filtrování SPAMu, které zahrnují konkrétní poskytovatele.
 
 ## <a name="pay-as-you-go"></a>Průběžné platby
-Pokud jste zaregistrovali před 15. listopadu 2017 s průběžnými platbami nebo předplatné Microsoft Partner Network nabízí, nebude žádná změna v technických možnost vyzkoušet doručení odchozích e-mailů. Můžete i nadále mít možnost vyzkoušet odchozí doručování e-mailů z virtuálních počítačů Azure v rámci těchto předplatných přímo poskytovatelům externího e-mailu bez jakýchkoli omezení platformy Azure. Znovu není zaručeno, že přijetí příchozích e-mailů od libovolného daného uživatele poskytovateli e-mailu a uživatelé budou muset pracovat přímo s poskytovateli e-mailu a opravte jakékoli doručování zpráv nebo problémy, které se týkají konkrétní poskytovatele s filtrováním nevyžádané pošty.
+Pokud jste se zaregistrovali do 15. listopadu 2017 pro nabídky předplatného s průběžnými platbami nebo Microsoft Partner Network, nebudete moct při pokusu o doručení odchozího e-mailu měnit technickou schopnost. V rámci těchto předplatných se budete moci pokusit odchozí e-maily z virtuálních počítačů Azure přímo k externím poskytovatelům e-mailů bez jakýchkoli omezení platformy Azure. Nezaručujeme, že poskytovatelé e-mailů budou přijímat příchozí e-maily od kteréhokoli daného uživatele a uživatelé budou muset pracovat přímo s poskytovateli e-mailu, aby opravili problémy s doručováním zpráv nebo filtrováním nevyžádané pošty, které zahrnují konkrétní poskytovatele
 
-Pro předplatné s průběžnými platbami nebo Microsoft Partner Network, které byly vytvořeny po 15. listopadu 2017 budou mít technická omezení, které blokovat e-mailu, která je odeslána přímo z virtuálních počítačů v rámci těchto předplatných. Pokud chcete mít možnost odesílat e-maily přímo poskytovatelům externího e-mailu (bez použití ověřeného serveru SMTP) z virtuálních počítačů Azure, můžete vytvořit žádost o odebrání tohoto omezení. Požadavky, bude zkontrolován a schválen na základě vlastního uvážení Microsoftu a budete mít udělena pouze po provedení dalších kontrol v souvislosti s možnými podvody. Pokud chcete vytvořit žádost, otevřete případ podpory s použitím následující typ problému: **Správa předplatného** typ problému: **Požadavek na zapnutí toku e-mailu Port 25**. Ujistěte se, že přidáte podrobnosti, proč k odesílání e-mailu přímo poskytovatelům e-mailu místo použití ověřeného relay má vaše nasazení.
+U předplatných s průběžnými platbami nebo Microsoft Partner Network předplatných vytvořených po 15. listopadu 2017 budou k dispozici technická omezení, která blokují e-mail, který se odesílá přímo z virtuálních počítačů v rámci těchto předplatných. Pokud chcete mít možnost odesílat e-maily z virtuálních počítačů Azure přímo externím poskytovatelům e-mailu (bez použití ověřovaného přenosu SMTP), můžete vytvořit žádost o odebrání tohoto omezení. Žádosti budou přezkoumány a schváleny na základě rozhodnutí společnosti Microsoft a budou uděleny až po provedení dalších kontrol boje proti podvodům. Pokud chcete vytvořit žádost, otevřete případ podpory pomocí následujícího typu problému: **Technické** > **Virtual Network**připojenínemůže > odesílat e-maily (SMTP/port 25). >  Ujistěte se, že jste přidali podrobnosti o tom, proč musí vaše nasazení odesílat e-maily přímo poskytovatelům pošty namísto použití ověřeného přenosu.
 
-Po předplatné s průběžnými platbami nebo Microsoft Partner Network a virtuální počítače byly "Stopped" & "spustit z webu Azure portal, všechny virtuální počítače v rámci tohoto předplatného vyloučené do budoucna. Výjimka platí pouze pro požadované předplatné.
+Po vyloučení nebo Microsoft Partner Network předplatného s průběžnými platbami a u virtuálních počítačů, u kterých je & spuštěný, se z Azure Portal vyloučí všechny virtuální počítače v tomto předplatném, budou předány dál. Výjimka se vztahuje pouze na požadované předplatné.
 
 > [!NOTE]
-> Společnost Microsoft si vyhrazuje právo odebrat tato výjimka, pokud je zjištěno, že došlo k porušení podmínek služby.
+> Společnost Microsoft si vyhrazuje právo tuto výjimku odvolat, pokud se zjistí, že došlo k porušení podmínek služby.
 
-## <a name="msdn-azure-pass-azure-in-open-education-bizspark-and-free-trial"></a>MSDN, Azure Pass, Azure v programu Open, vzdělávání, BizSpark a bezplatná zkušební verze
-Pokud jste vytvořili webu MSDN, Azure Pass, Azure v Open, vzdělávání, BizSpark, nabídky Azure Sponsorship, Azure Student, bezplatné zkušební verze nebo jakékoli předplatné sady Visual Studio po 15. listopadu 2017, budete mít technická omezení bloku e-mail odeslaný z virtuálních počítačů v rámci těchto předplatná přímo k e-mailu poskytovatelů. Zamezilo se provádějí omezení. Udělí se žádné žádosti o odebrání tohoto omezení.
+## <a name="msdn-azure-pass-azure-in-open-education-bizspark-and-free-trial"></a>MSDN, Azure Pass, Systém Azure v rámci licenčního programu Open, vzdělávání, BizSpark a bezplatná zkušební verze
+Pokud jste vytvořili MSDN, Azure Pass, Systém Azure v rámci licenčního programu Open, vzdělávání, BizSpark, Azure Sponsorship, Azure student, bezplatnou zkušební verzi nebo jakékoli předplatné sady Visual Studio po 15. listopadu 2017, budete mít technická omezení, která blokují e-mail odeslaný z virtuálních počítačů v rámci těchto odběry přímo poskytovatelům e-mailu. Omezení jsou prováděna za účelem zabránění zneužití. Nebudou uděleny žádné žádosti o odebrání tohoto omezení.
 
-Pokud používáte tyto typy předplatného, můžete dohlédněte na to, jak je uvedeno výše v tomto článku pomocí služby pro přenos přes SMTP, nebo změňte typ vašeho předplatného.
+Pokud používáte tyto typy předplatného, doporučujeme používat předávací služby SMTP, jak je uvedeno výše v tomto článku, nebo změnit typ předplatného.
 
-## <a name="cloud-service-provider-csp"></a>Poskytovatele cloudových služeb (CSP)
+## <a name="cloud-service-provider-csp"></a>Poskytovatel cloudových služeb (CSP)
 
-Pokud používáte prostředky Azure prostřednictvím zprostředkovatele kryptografických služeb, můžete požádat o poskytovateli CSP vytvoření žádosti o výjimky odblokovat s Microsoft vaším jménem, pokud se nedá použít zabezpečeného serveru SMTP.
+Pokud používáte prostředky Azure prostřednictvím CSP, můžete požádat poskytovatele CSP o vytvoření žádosti o výjimku odblokování u Microsoftu vaším jménem, pokud nelze použít zabezpečený přenos SMTP.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) zobrazíte pomocí následujícího typu problému rychlé vyřešení problému: **Správa předplatného** typ problému: **Požadavek na zapnutí toku e-mailu Port 25**.
+Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém pomocí následujícího typu problému: **Správa** předplatných Typ problému: **Požadavek na povolení toku e-mailu portu 25**

@@ -4,7 +4,7 @@ description: Koncepční referenční informace a Přehled funkce ověřování/
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: gwallace
 editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 53733774968f94ac95d9b3fea6d8fcb422b4e02c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 12ad82b0dda628c3a8cef7712322500c7a33517c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515176"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953829"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -119,29 +119,23 @@ Pro klientské prohlížeče App Service může automaticky směrovat všechny n
 
 ## <a name="authorization-behavior"></a>Chování autorizace
 
-V [Azure Portal](https://portal.azure.com)můžete nakonfigurovat App Service autorizaci s řadou chování.
+V [Azure Portal](https://portal.azure.com)můžete nakonfigurovat App Service autorizaci s řadou chování, když příchozí žádost není ověřena.
 
 ![](media/app-service-authentication-overview/authorization-flow.png)
 
 Tyto možnosti jsou popsány v následujících nadpisech.
 
-### <a name="allow-all-requests-default"></a>Povolení všech požadavků (výchozí)
+### <a name="allow-anonymous-requests-no-action"></a>Povolit anonymní požadavky (žádná akce)
 
-Ověřování a autorizace nejsou spravovány nástrojem App Service (vypnuté). 
+Tato možnost odloží autorizaci neověřeného provozu do kódu aplikace. U ověřených požadavků App Service také společně s ověřovacími informacemi v hlavičkách protokolu HTTP. 
 
-Tuto možnost vyberte, pokud nepotřebujete ověřování a autorizaci, nebo pokud chcete napsat vlastní kód pro ověřování a autorizaci.
+Tato možnost nabízí větší flexibilitu při zpracování anonymních požadavků. Například umožňuje uživatelům [prezentovat více poskytovatelů přihlášení](app-service-authentication-how-to.md#use-multiple-sign-in-providers) . Je však nutné napsat kód. 
 
 ### <a name="allow-only-authenticated-requests"></a>Povolení pouze ověřených požadavků
 
 Tato možnost se **přihlásí pomocí \<> zprostředkovatele**. App Service přesměruje všechny anonymní požadavky na `/.auth/login/<provider>` poskytovatele, kterého zvolíte. Pokud anonymní požadavek pochází z nativní mobilní aplikace, vrácená odpověď je `HTTP 401 Unauthorized`.
 
 Pomocí této možnosti nemusíte v aplikaci psát žádný ověřovací kód. Přesnější autorizaci, například autorizaci specifickou pro role, je možné zpracovat kontrolou deklarací identity uživatele (viz [přístup k deklaracím uživatelů](app-service-authentication-how-to.md#access-user-claims)).
-
-### <a name="allow-all-requests-but-validate-authenticated-requests"></a>Povoluje všechny požadavky, ale ověřuje ověřené požadavky.
-
-Možnost **povoluje anonymní požadavky**. Tato možnost zapne ověřování a autorizaci v App Service, ale odloží autorizační rozhodnutí do kódu aplikace. U ověřených požadavků App Service také společně s ověřovacími informacemi v hlavičkách protokolu HTTP. 
-
-Tato možnost nabízí větší flexibilitu při zpracování anonymních požadavků. Například umožňuje uživatelům [prezentovat více poskytovatelů přihlášení](app-service-authentication-how-to.md#use-multiple-sign-in-providers) . Je však nutné napsat kód. 
 
 ## <a name="more-resources"></a>Další materiály
 

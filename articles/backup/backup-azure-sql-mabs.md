@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 5e91d63f4479d0677c57342cb1b726e33a45bb86
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 72de5857786f284bfc4afda1db093d5343bd7a43
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689090"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954473"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Zálohování SQL Server do Azure s využitím Azure Backup Server
 Tento článek vás provede kroky konfigurace pro zálohování SQL Server databází pomocí serveru Microsoft Azure Backup (MABS).
@@ -44,7 +44,7 @@ Než začnete, ujistěte se, že jste [nainstalovali a připravili Azure Backup 
     ![Metoda ochrany dat – krátkodobý & disku online Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. Na obrazovce **zadat krátkodobé cíle** uveďte nezbytné vstupy pro vytváření záložních bodů na disku.
 
-    Tady vidíte, že **Rozsah uchování** je nastavený na *5 dní*, **Frekvence synchronizace** je nastavená na každých *15 minut* , což je frekvence, s jakou se provádí zálohování. **Expresní úplné zálohování** je nastaveno na *8:00 P. M*.
+    Tady vidíte, že **Rozsah uchování** je nastavený na *5 dní*, **Frekvence synchronizace** je nastavená na každých *15 minut*, což je frekvence, při které se provádí zálohování. **Expresní úplné zálohování** je nastaveno na *8:00 P. M*.
 
     ![Krátkodobé cíle](./media/backup-azure-backup-sql/pg-shortterm.png)
 

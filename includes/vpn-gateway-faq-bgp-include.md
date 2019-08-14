@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 23386139364a72b0275936cdc458c8cd2a5771c9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0e3f996ab2a42057198368759c75f10e911d5f54
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386843"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68936776"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Je protokol BGP podporován ve všech SKU služby Azure VPN Gateway?
 Ne, protokol BGP se podporuje v branách VPN Azure úrovně **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** a **HighPerformance**. Pro SKU **Basic** NENÍ podporován.
@@ -39,6 +39,13 @@ Tato ASN nelze zadat pro místní zařízení VPN při připojování k bránám
 Ano, následující ASN jsou [rezervovaná pro IANA](http://www.iana.org/assignments/iana-as-numbers-special-registry/iana-as-numbers-special-registry.xhtml) a není možné je nakonfigurovat ve vaší službě Azure VPN Gateway:
 
 23456, 64496–64511, 65535–65551 a 429496729
+
+### <a name="what-private-asns-can-i-use"></a>Jaké soukromé čísla ASN můžu použít?
+Rozsah použitelných privátních čísla ASN, které lze použít, jsou tyto:
+
+* 64512-65514, 65521-65534
+
+Tyto čísla ASN nejsou vyhrazené organizací IANA nebo Azure pro použití, a proto je můžete použít k přiřazení VPN Gateway k Azure.
 
 ### <a name="can-i-use-the-same-asn-for-both-on-premises-vpn-networks-and-azure-vnets"></a>Je možné používat stejné číslo ASN pro místní sítě VPN a sítě Azure VNet?
 Ne, pokud pomocí protokolu BGP vzájemně propojujete místní sítě a sítě Azure VNet, je nutné pro ně přiřadit různá čísla ASN. Službám Azure VPN Gateway je přiřazeno výchozí číslo ASN 65515, ať už je protokol BGP povolen pro připojení mezi místními sítěmi, či nikoliv. Toto výchozí nastavení můžete změnit přiřazením jiného čísla ASN při vytváření služby VPN Gateway nebo můžete číslo ASN změnit po vytvoření služby brány. Místní čísla ASN je nutné přiřadit odpovídajícím bránám místních sítí Azure.

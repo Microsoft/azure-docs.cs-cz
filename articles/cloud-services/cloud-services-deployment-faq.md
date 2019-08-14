@@ -1,6 +1,6 @@
 ---
-title: Problémy s nasazením pro Microsoft Azure Cloud Services – nejčastější dotazy | Dokumentace Microsoftu
-description: Tento článek obsahuje nejčastější dotazy o vývoji pro Microsoft Azure Cloud Services.
+title: Problémy s nasazením pro Microsoft Azure Cloud Services nejčastější dotazy | Microsoft Docs
+description: V tomto článku jsou uvedené Nejčastější dotazy týkající se nasazení pro Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -11,73 +11,72 @@ ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 08d74f866fe28a4c424ba504795b4a22f09785ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fff70cc0c80d26d5454e54e43a6ef6c0b39b5cac
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337319"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941727"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy při nasazení pro Azure Cloud Services: Nejčastější dotazy (FAQ)
+# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s nasazením pro Azure Cloud Services: Nejčastější dotazy
 
-Tento článek obsahuje nejčastější dotazy týkající se problémů s nasazením pro [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Můžete také najdete [cloudové služby virtuálních počítačů velikosti stránky](cloud-services-sizes-specs.md) pro informace o velikosti.
+Tento článek obsahuje nejčastější dotazy týkající se problémů s nasazením pro [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informace o velikosti najdete také na [stránce Cloud Services velikosti virtuálního počítače](cloud-services-sizes-specs.md) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="why-does-deploying-a-cloud-service-to-the-staging-slot-sometimes-fail-with-a-resource-allocation-error-if-there-is-already-an-existing-deployment-in-the-production-slot"></a>Proč nasazení cloudové služby do přípravného slotu někdy selže s chybou přidělení prostředků Pokud již existuje stávající nasazení v produkčním slotu?
-Pokud Cloudová služba má buď slot nasazení, cloudové služby je připnutá k konkrétní cluster. To znamená, že pokud nasazení již existuje v produkčním slotu, nové pracovní nasazení jde přidělit jenom ve stejném clusteru jako produkční slot.
+## <a name="why-does-deploying-a-cloud-service-to-the-staging-slot-sometimes-fail-with-a-resource-allocation-error-if-there-is-already-an-existing-deployment-in-the-production-slot"></a>Proč nasazení cloudové služby do přípravného slotu někdy selže s chybou přidělení prostředků v případě, že v produkčním slotu již existuje nějaké nasazení?
+Pokud má cloudová služba nasazení v obou slotech, je celá cloudová služba připnuté na konkrétní cluster. To znamená, že pokud nasazení již existuje v produkčním slotu, nové pracovní nasazení může být přiděleno pouze ve stejném clusteru jako produkční slot.
 
-Pokud cluster, kde se nachází vaše Cloudová služba nemá dostatek fyzické výpočetní prostředky, které by vyhovovaly žádosti o vaše nasazení dojde k selhání přidělení.
+K selháním přidělení dojde v případě, že cluster, ve kterém se nachází vaše cloudová služba, nemá dostatek fyzických výpočetních prostředků, které by vyhověly vaší žádosti o nasazení
 
-Nápovědu k minimalizaci takových chyby v přidělení najdete v tématu [Chyba přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Pro zvýšení rizika takového selhání přidělení se podívejte na [téma selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
 
-## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Proč vertikální navýšení nebo snížení mimo nasazení cloudové služby v některých případech dojít k selhání přidělení?
-Po nasazení cloudové služby je obvykle získá připnout na konkrétním clusteru. To znamená, že škálování nahoru vstupně-výstupní existující cloudovou službu, musíte přidělit nových instancí ve stejném clusteru. Pokud clusteru se už brzy kapacity nebo požadované velikosti a typu virtuálního počítače není k dispozici, žádost může selhat.
+## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Proč při navýšení kapacity nebo škálování nasazení cloudové služby dojde k selhání přidělení?
+Při nasazení cloudové služby se obvykle připnuté na konkrétní cluster. To znamená, že pro existující cloudovou službu musí být ve stejném clusteru přidělené nové instance. Pokud se cluster blíží kapacitě nebo není k dispozici požadovaná velikost/typ virtuálního počítače, může být požadavek neúspěšný.
 
-Nápovědu k minimalizaci takových chyby v přidělení najdete v tématu [Chyba přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Pro zvýšení rizika takového selhání přidělení se podívejte na [téma selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
 
-## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Proč někdy nasazení cloudové služby do skupiny vztahů za následek došlo k chybě přidělení?
-Nové nasazení do prázdné cloudové služby je možné přidělit podle prostředků infrastruktury v libovolný cluster. v dané oblasti, pokud je připnutý cloudové služby do skupiny vztahů. Nasazení do stejné skupiny vztahů se pokusí vytvořit na stejném clusteru. Pokud cluster se už brzy kapacitu, žádost může selhat.
+## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Proč nasazení cloudové služby do skupiny vztahů někdy způsobí selhání přidělení?
+Nové nasazení do prázdné cloudové služby může být přiděleno prostředky infrastruktury v jakémkoli clusteru v této oblasti, pokud není ke skupině vztahů připnuté cloudová služba. Nasazení do stejné skupiny vztahů se pokusí o stejný cluster. Pokud se cluster blíží kapacitě, požadavek může selhat.
 
-Nápovědu k minimalizaci takových chyby v přidělení najdete v tématu [Chyba přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Pro zvýšení rizika takového selhání přidělení se podívejte na [téma selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
 
-## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Proč Změna velikosti virtuálního počítače nebo přidávání nového virtuálního počítače do existující cloudovou službu v některých případech způsobit došlo k chybě přidělení?
-Clustery v datacentru může obsahovat různé konfigurace typy počítačů (například řady, řady Av2, řady D series, řada dv2, řady G, H series atd.). Ale ne všechny clustery byste chtěli nutně všechny typy virtuálních počítačů. Například pokud se pokusíte přidat do cloudové služby, který je již nasazen v clusteru A jen pro řadu virtuálních počítačů řady D series, dojde k selhání přidělení. Pokud se pokusíte změnit k tomu dochází také, že skladovou Položku virtuálního počítače o velikosti (například přechod z A series D series).
+## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Proč změna velikosti virtuálního počítače nebo přidání nového virtuálního počítače do existující cloudové služby někdy způsobí selhání přidělení?
+Clustery v datacentru můžou mít různé konfigurace typů počítačů (například série, Av2 řady, D Series, Dv2 Series, G series, H Series atd.). Ale ne všechny clustery by nutně měly všechny typy virtuálních počítačů. Například pokud se pokusíte přidat virtuální počítač D Series do cloudové služby, která je již nasazena v clusteru pouze s řadou, dojde k selhání přidělení. K tomu dojde také v případě, že se pokusíte změnit velikost SKU virtuálního počítače (například přepínání z řady na řady D).
 
-Nápovědu k minimalizaci takových chyby v přidělení najdete v tématu [Chyba přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Pro zvýšení rizika takového selhání přidělení se podívejte na [téma selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
 
-Dostupné velikosti ve vaší oblasti, najdete v části [Microsoft Azure: Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services).
+Pokud chcete zjistit dostupné velikosti v oblasti, přečtěte [si téma Microsoft Azure: Dostupné produkty v jednotlivých](https://azure.microsoft.com/regions/services)oblastech.
 
-## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Proč nějakou dobu nasazení cloudové služby selže z důvodu omezení/kvóty a omezení na své předplatné nebo služby?
-Nasazení cloudové služby může selhat, pokud prostředky, které je potřeba přidělit překročit výchozí nebo maximální kvóty povoleny pro vaši službu na úrovni oblasti nebo datového centra. Další informace najdete v tématu [Cloud Services omezuje](../azure-subscription-service-limits.md#azure-cloud-services-limits).
+## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Proč dojde k selhání nasazení cloudové služby z důvodu limitů, kvót a omezení na mém předplatném nebo službě?
+Nasazení cloudové služby může selhat, pokud prostředky, které se musí přidělit, překračují výchozí nebo maximální kvótu povolenou pro vaši službu na úrovni oblasti nebo datového centra. Další informace najdete v tématu [omezení Cloud Services](../azure-subscription-service-limits.md#azure-cloud-services-limits).
 
-Může také sledovat aktuální využití a kvóty pro vaše předplatné na portálu: Azure portal = > předplatná = > \<příslušné předplatné > = > "Využití a kvóty".
+Aktuální využití/kvótu pro vaše předplatné můžete také sledovat na portálu: Azure Portal = > Subscriptions = \<> odpovídající předplatné > = > využití + kvóta.
 
-Informací o souvisejícím s využití/spotřeby prostředků můžete získat také prostřednictvím rozhraní Azure API pro fakturaci. Zobrazit [rozhraní API (Preview) pro využití prostředků Azure](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Informace související s využitím prostředků/spotřebou se dají získat taky prostřednictvím rozhraní API pro fakturaci Azure. Viz [rozhraní API využití prostředků Azure (Preview)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
 
-## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Jak mohu změnit velikost nasazené cloudové službě virtuálního počítače bez jejího opětovného nasazení?
-Nelze změnit velikost virtuálního počítače nasazeného cloudové služby bez jejího opětovného nasazení. Velikost virtuálního počítače je integrovaná do CSDEF, které lze aktualizovat pouze opětovné nasazení.
+## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Jak můžu změnit velikost nasazeného virtuálního počítače cloudové služby bez opětovného nasazení?
+Velikost virtuálního počítače nasazené cloudové služby nemůžete změnit bez opětovného nasazení. Velikost virtuálního počítače je integrována do lokality CSDEF, kterou lze aktualizovat pouze pomocí opětovného nasazení.
 
-Další informace najdete v tématu [aktualizace cloudové služby](cloud-services-update-azure-service.md).
+Další informace najdete v tématu [Postup aktualizace cloudové služby](cloud-services-update-azure-service.md).
 
-## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Proč mi nejde nasadit cloudové služby Service Management API nebo Powershellu, při použití účtu úložiště Azure Resource Manageru? 
+## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Proč nemůžu při použití účtu úložiště Azure Resource Manager nasadit Cloud Services prostřednictvím rozhraní API pro správu služeb nebo PowerShellu? 
 
-Cloudové služby je klasický prostředek, který není přímo kompatibilní s modelem Azure Resource Manageru, nelze ho propojit s účty úložiště Azure Resource Manageru. Tady je několik možností: 
+Vzhledem k tomu, že cloudová služba je klasický prostředek, který není přímo kompatibilní s modelem Azure Resource Manager, nemůžete ho přidružit k účtům úložiště Azure Resource Manager. Tady je několik možností: 
  
-- Nasazení pomocí rozhraní REST API.
+- Nasazení prostřednictvím REST API.
 
-    Při nasazení pomocí REST API pro správu služeb, může získat kolem omezení tak, že zadáte adresu URL SAS úložiště objektů blob, který bude fungovat s účtem Classic a Azure Resource Manager Storage. Další informace o vlastnosti "PackageUrl" [tady](/previous-versions/azure/reference/ee460813(v=azure.100)).
+    Při nasazení prostřednictvím REST API Service Management můžete obejít omezení zadáním adresy URL SAS pro úložiště objektů blob, který bude fungovat s klasickým i Azure Resource Manager účtem úložiště. Přečtěte si další informace o vlastnosti ' [](/previous-versions/azure/reference/ee460813(v=azure.100))PackageUrl '.
   
-- Nasazení pomocí [webu Azure portal](https://portal.azure.com).
+- Nasazení prostřednictvím [Azure Portal](https://portal.azure.com).
 
-    Bude to fungovat z [webu Azure portal](https://portal.azure.com) jako volání prochází proxy/překrytí, který umožňuje komunikaci mezi prostředky Azure Resource Manager a Classic. 
+    To bude fungovat z [Azure Portal](https://portal.azure.com) jako volání prostřednictvím proxy/překrytí, které umožňuje komunikaci mezi Azure Resource Manager a klasickými prostředky. 
  
-## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Proč Azure portal vyžaduje me a použijte účet úložiště pro nasazení? 
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Proč Azure Portal vyžaduje, aby měl účet úložiště pro nasazení? 
 
-Na portálu classic balíček byl nahrán do vrstvy API management přímo a vrstvu rozhraní API by dočasně vložte balíček do interního úložiště účtu.  Tento proces způsobuje problémy, výkon a škálovatelnost, protože vrstvu rozhraní API nebyl navržen, aby se služba nahrávání souborů.  Na webu Azure Portal (model nasazení Resource Manager) jsme mají obejít dočasné krok nejdříve odeslat do rozhraní API vrstvy, výsledkem je rychlejší a spolehlivější nasazení. 
+Na klasickém portálu se balíček nahrál přímo do vrstvy rozhraní API pro správu a pak vrstva rozhraní API dočasně vloží balíček do interního účtu úložiště.  Tento proces způsobuje problémy s výkonem a škálovatelností, protože vrstva rozhraní API nebyla navržena jako služba pro nahrání souborů.  V Azure Portal (Správce prostředků modelu nasazení) jsme převedli dočasný krok prvního nahrání do vrstvy API, což vede k rychlejšímu a spolehlivější nasazení. 
 
-Jako u náklady je velmi malý a můžete znovu použít stejný účet úložiště ve všech nasazeních. Můžete použít [cenová Kalkulačka úložiště](https://azure.microsoft.com/pricing/calculator/#storage1) k určení nákladů pro nahrání balíčku service (CSPKG), stáhněte si CSPKG a pak odstraňte CSPKG. 
+Stejně jako u nákladů je velmi malé a stejný účet úložiště můžete použít ve všech nasazeních. Pomocí [kalkulačky nákladů na úložiště](https://azure.microsoft.com/pricing/calculator/#storage1) můžete určit náklady na nahrání balíčku služby (CSPKG), stáhnout CSPKG a pak odstranit CSPKG. 

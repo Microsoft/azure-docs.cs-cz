@@ -1,8 +1,7 @@
 ---
-title: Spravovat nastavení dvoustupňového ověřování – Azure Active Directory | Dokumentace Microsoftu
-description: Spravujte, jak pomocí Azure Multi-Factor Authentication, včetně změnu kontaktních informací nebo konfigurace zařízení.
+title: Spravovat nastavení dvou faktorů ověřování – Azure Active Directory | Microsoft Docs
+description: Přečtěte si, jak změnit podrobnosti metody ověření zabezpečení ve vztahu k ověřování dvou faktorů.
 services: active-directory
-keywords: vícefaktorové ověřování klienta, problém s ověřováním, ID korelace
 author: eross-msft
 manager: daveba
 ms.reviewer: richagi
@@ -11,72 +10,131 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 433c2d712ca4867a5ec59f86c333511070b6d507
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7acfa31434534eb3618b8a279ea6cff543fae076
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60334458"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949793"
 ---
-# <a name="manage-your-settings-for-two-step-verification"></a>Správa nastavení pro dvoustupňové ověřování.
-Tento článek obsahuje odpovědi na otázky o tom, jak aktualizovat nastavení pro dvoustupňové ověření nebo vícefaktorové ověřování. Pokud máte potíže s přihlášením k účtu, podívejte se na [potíže s dvoustupňovým ověřováním](multi-factor-authentication-end-user-troubleshoot.md) pomoc při řešení potíží.
+# <a name="manage-your-two-factor-verification-method-settings"></a>Správa nastavení dvojúrovňové metody ověřování
 
-## <a name="where-to-find-the-settings-page"></a>Kde najít na stránce nastavení
-V závislosti na tom, jak vaše společnost nastavení ověřování Azure Multi-Factor Authentication jsou na několika místech, kde můžete změnit nastavení, jako je vaše telefonní číslo.
+Po nastavení metod ověřování zabezpečení pro svůj pracovní nebo školní účet můžete aktualizovat libovolné související podrobnosti, včetně:
 
-Pokud firemní podpora poslala na konkrétní adresu URL nebo kroky, chcete-li spravovat dvoustupňové ověřování, postupujte podle těchto pokynů. V opačném případě postupujte podle následujících pokynů by měla fungovat pro všem ostatním. Pokud postupujte podle těchto kroků, ale nevidíte stejné možnosti, znamená to, že vaše firma nebo škola přizpůsobit svoje vlastní portálu. Požádejte správce o odkaz na portál Azure Multi-Factor Authentication.
+- Výběr výchozí metody ověřování zabezpečení.
 
-**Přejděte na stránku další bezpečnostní ověření**
+- Přidání nebo aktualizace podrobností metody ověření zabezpečení, jako je vaše telefonní číslo.
 
-- Přejděte do části https://aka.ms/MFASetup (Soubor > Nový > Jiné).
+- Nastavení nové ověřovací aplikace nebo odstranění zařízení z ověřovací aplikace.
 
-    ![Testovací](./media/multi-factor-authentication-end-user-manage-settings/proofup.png)
+## <a name="using-the-additional-security-verification-page"></a>Použití stránky další ověření zabezpečení
 
-Pokud kliknete na tento odkaz není vhodná, můžete také získat k **dalšího ověření zabezpečení** stránku pomocí následujících kroků:
+Pokud vám vaše organizace poskytne konkrétní postup, jak zapnout a spravovat dvojúrovňové ověřování, měli byste postupovat podle těchto pokynů. V opačném případě můžete k nastavení metody ověření zabezpečení získat přístup ze stránky [Další ověření zabezpečení](https://aka.ms/mfasetup) .
 
-1. Přihlaste se k [https://myapps.microsoft.com](https://myapps.microsoft.com)  
+>[!Note]
+>Pokud se vám to, co vidíte na obrazovce, neshoduje s tím, co je zahrnuté v tomto článku, znamená to, že správce zapnul možnosti zabezpečení (Preview) nebo že má vaše organizace vlastní portál. Další informace o možnosti informace o zabezpečení najdete v tématu [Přehled informací o zabezpečení (Preview)](user-help-security-info-overview.md). Pokud potřebujete další informace o vlastním portálu vaší organizace, obraťte se na oddělení technické podpory.
 
-2. Vyberte název svého účtu v pravém horním rohu a pak vyberte **profilu**.
+### <a name="to-get-to-the-additional-security-verification-page"></a>Získání na stránku dodatečného ověření zabezpečení
 
-3. Vyberte **dalšího ověření zabezpečení**.  
+- Přejděte do části https://aka.ms/mfasetup (Soubor > Nový > Jiné).
 
-    ![Myapps](./media/multi-factor-authentication-end-user-manage-settings/myapps1.png)
+    ![Další obrazovka ověření zabezpečení s dostupnými podrobnostmi metody ověření zabezpečení](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
-4. Načte stránku další bezpečnostní ověření s nastavením.
+    Pokud po kliknutí na tento odkaz nefunguje, můžete se také dostat na stránku **Další ověření zabezpečení** pomocí následujících kroků:
 
-    ![Testovací](./media/multi-factor-authentication-end-user-manage-settings/proofup.png)
+    1. Přihlaste se k webu [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
-## <a name="i-want-to-change-my-phone-number-or-add-a-secondary-number"></a>Chci změnit své telefonní číslo, nebo přidat sekundární číslo
-Je potřeba nakonfigurovat sekundární ověřovací telefonní číslo.  Protože primárního telefonního čísla a mobilní aplikace jsou pravděpodobně na stejné telefonu, záložní telefonní číslo je nejrychlejší způsob, jak vám bude schopen se rychle vrátit ke svému účtu, pokud dojde ke ztrátě nebo odcizení telefonu.
+    2. V pravém horním rohu vyberte název účtu a pak vyberte **profil**.
 
-> [!NOTE]
-> Pokud nemáte přístup pro primární telefonní číslo a potřebujete pomoc získávání ke svému účtu, najdete v článku [potíže s dvoustupňovým ověřováním](multi-factor-authentication-end-user-troubleshoot.md) článek o další pomoc.  
+    3. Vyberte **Další ověření zabezpečení**.  
 
-**Chcete-li změnit primární telefonní číslo:**  
+        ![Odkaz Moje aplikace na stránku dodatečného ověření zabezpečení](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
 
-1. Na **dalšího ověření zabezpečení** stránky, vyberte textové pole s vaší aktuální telefonní číslo a upravovat pomocí nové telefonní číslo.  
-2. Vyberte **Uložit**.  
-3. Pokud toto telefonní číslo je číslo, které používáte pro vaši preferovanou možnost ověření, musíte ověřit nové číslo předtím, než jste jej uložili.  
+>[!Note]
+>Informace o použití oddílu **hesla aplikace** na stránce **Další ověření zabezpečení** najdete v tématu [Správa hesel aplikací pro dvoustupňové ověřování](multi-factor-authentication-end-user-app-passwords.md). Hesla aplikací by se měla používat jenom pro aplikace, které ještě nepodporují dvojúrovňové ověřování.
 
-**Chcete-li přidat záložní telefonní číslo:**  
+## <a name="change-your-default-security-verification-method"></a>Změna výchozí metody ověření zabezpečení
 
-1. Na stránce další bezpečnostní ověřování, zaškrtněte políčko vedle položky **telefon pro alternativní ověření.**  
-2. Do textového pole zadejte záložní telefonní číslo.  
-3. Vyberte **Uložit** a dokončí všechny potřebné změny.  
+Po přihlášení ke svému pracovnímu nebo školnímu účtu pomocí uživatelského jména a hesla se automaticky zobrazí vaše zvolená metoda ověřování zabezpečení. V závislosti na požadavcích vaší organizace může to být oznámení nebo ověřovací kód prostřednictvím ověřovací aplikace, textové zprávy nebo telefonního hovoru.
 
-## <a name="require-two-step-verification-again-on-a-device-youve-marked-as-trusted"></a>Vyžadování dvoustupňového ověřování znovu na zařízení, které jste označili jako důvěryhodný
+Pokud se rozhodnete, že chcete změnit výchozí metodu ověření zabezpečení, kterou používáte, můžete to udělat tady.
 
-V závislosti na nastavení vaší organizace může mít zaškrtávací políčko s textem "nezobrazovat dotaz dalších **X** dní" při provádění dvoustupňové ověřování ve webovém prohlížeči. Pokud toto políčko zaškrtněte a potom ztráty zařízení nebo myslíte, že váš účet ohrožený, obnovíte dvoustupňové ověřování pro všechna vaše zařízení.
+### <a name="to-change-your-default-security-verification-method"></a>Změna výchozí metody ověřování zabezpečení
 
-1. Na stránce další bezpečnostní ověření vyberte **obnovení služby Multi-Factor authentication u dřív důvěryhodných zařízení**.
-2. Při příštím přihlášení na libovolném zařízení, budete vyzváni k provedení dvoustupňového ověření.
+1. Na stránce **Další ověření zabezpečení** vyberte metodu, která se má použít v rozevíracím seznamu **co je vaše upřednostňovaná možnost** . Zobrazí se všechny možnosti, ale budete moct vybrat jenom ty, které máte k dispozici ve vaší organizaci.
 
-## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>Jak vyčistit prostředky z původní zařízení aplikaci Microsoft Authenticator a přesunout do nového?
-Při odinstalaci aplikace ze zařízení nebo obnovení zařízení neodebere aktivace na back-endu. Další informace najdete v tématu [Microsoft Authenticator](user-help-auth-app-download-install.md).
+    - **Informujte mě prostřednictvím aplikace.** Budete upozorněni na vaši ověřovací aplikaci, že máte výzvu k ověření.
+
+    - **Zavolejte mi na telefon ověřování.** Na mobilním zařízení se zobrazí telefonní hovor, který vás vyzve k ověření vašich informací.
+
+    - **Textový kód na můj telefon pro ověření** Ověřovací kód získáte jako součást textové zprávy na vašem mobilním zařízení. Tento kód musíte zadat do výzvy k ověření pro svůj pracovní nebo školní účet.
+
+    - **Zavolejte mi na telefon do kanceláře.** Získáte telefonní hovor na telefonu do kanceláře a budete vyzváni k ověření vašich informací.
+
+    - **Použijte ověřovací kód z aplikace.** Pomocí aplikace ověřovatele získáte ověřovací kód, který zadáte do výzvy ze svého pracovního nebo školního účtu.
+
+2. Vyberte **Uložit**.
+
+## <a name="add-or-change-your-phone-number"></a>Přidání nebo změna telefonního čísla
+
+Na stránce **Další ověření zabezpečení** můžete přidat nová telefonní čísla nebo aktualizovat stávající čísla.
+
+>[!Important]
+>Důrazně doporučujeme, abyste přidali sekundární telefonní číslo, které vám umožní zabránit tomu, aby se zabránilo uzamknutí vašeho účtu, pokud dojde ke ztrátě nebo odcizení vašeho primárního telefonu nebo když obdržíte nový telefon a už nemáte původní primární telefonní číslo.
+
+### <a name="to-change-your-phone-numbers"></a>Změna telefonních čísel
+
+1. V části **jak chcete reagovat?** na stránce **Další ověření zabezpečení** aktualizujte informace o telefonním číslu pro váš **telefon pro ověření** (vaše primární mobilní zařízení) a **telefon do kanceláře**.
+
+2. Zaškrtněte políčko vedle možnosti **telefon alternativního ověřování** a potom zadejte sekundární telefonní číslo, kde můžete přijímat textové zprávy nebo telefonní hovory, pokud nemůžete získat přístup k primárnímu zařízení.
+
+3. Vyberte **Uložit**.
+
+## <a name="add-a-new-account-to-the-microsoft-authenticator-app"></a>Přidání nového účtu do aplikace Microsoft Authenticator
+
+Svůj pracovní nebo školní účet můžete nastavit v aplikaci Microsoft Authenticator pro [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) nebo [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458).
+
+Pokud jste v aplikaci Microsoft Authenticator vytvořili svůj pracovní nebo školní účet, nemusíte to dělat znovu.
+
+1. V části **jak chcete reagovat?** na stránce **Další ověření zabezpečení** vyberte tlačítko **nastavit aplikaci ověřovatele** .
+
+    ![Nastavení pracovního nebo školního účtu v aplikaci Microsoft Authenticator](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page-auth-app.png)
+
+2. Postupujte podle pokynů na obrazovce, včetně použití vašeho mobilního zařízení k naskenování kódu QR, a pak vyberte **Další**.
+
+    Budete požádáni, abyste schválili oznámení prostřednictvím aplikace Microsoft Authenticator, abyste ověřili vaše informace.
+
+3. Vyberte **Uložit**.
+
+## <a name="delete-your-account-or-device-from-the-microsoft-authenticator-app"></a>Odstranění účtu nebo zařízení z aplikace Microsoft Authenticator
+
+Účet můžete odstranit z aplikace Microsoft Authenticator a zařízení můžete odstranit ze svého pracovního nebo školního účtu. Obvykle odstraníte zařízení, aby se trvale odebralo ztracené, odcizené nebo staré zařízení z vašeho účtu, a odstraníte svůj účet, abyste se pokusili opravit některé problémy s připojením nebo vyřešit změnu účtu, jako je třeba nové uživatelské jméno.
+
+### <a name="to-delete-your-device-from-your-work-or-school-account"></a>Odstranění zařízení ze svého pracovního nebo školního účtu
+
+1. V části **jak chcete reagovat?** na stránce **Další ověření zabezpečení** vyberte tlačítko **nastavit aplikaci ověřovatele** .
+
+2. Vyberte **Uložit**.
+
+### <a name="to-delete-your-account-from-the-microsoft-authenticator-app"></a>Odstranění účtu z aplikace Microsoft Authenticator
+
+- Z aplikace Microsoft Authenticator vyberte tlačítko **Odstranit** vedle zařízení, které chcete odstranit.
+
+## <a name="turn-on-two-factor-verification-prompts-on-a-trusted-device"></a>Zapnutí dvojúrovňovéch výzev ověřování na důvěryhodném zařízení
+
+V závislosti na nastavení organizace se může zobrazit zaškrtávací políčko, které po **X dnech** po provedení dvojúrovňové ověřování v prohlížeči se znovu nedotazuje. Pokud jste toto políčko zaškrtli, aby se vám pozastavily dvoustupňové ověřování, a potom ztratíte vaše zařízení, nebo je možné, že vaše zařízení může ohrozit zabezpečení, měli byste pro ochranu svého účtu zapnout znovu výzvy pro ověření dvou faktorů. Bohužel nemůžete znovu zapnout výzvy pro jedno zařízení. Výzvy pro všechna vaše zařízení je třeba zapnout současně.
+
+### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>Postup zapnutí služby dvojúrovňového ověřování na zařízeních znovu
+
+- Na stránce **Další ověření zabezpečení** vyberte možnost **obnovit službu Multi-Factor Authentication u dříve důvěryhodných zařízení**.
+
+    Až se příště přihlásíte k jakémukoli zařízení, zobrazí se výzva k provedení dvojúrovňového ověřování.
 
 ## <a name="next-steps"></a>Další postup
-* Získejte tipy pro řešení potíží a Nápověda k [potíže s dvoustupňovým ověřováním](multi-factor-authentication-end-user-troubleshoot.md)
-* Nastavit [hesla aplikací](multi-factor-authentication-end-user-app-passwords.md) pro všechny aplikace, ve kterých se dvoustupňové ověřování.
+
+- Získejte tipy k odstraňování potíží a nápovědu k problémům [se dvěma faktory ověřování](multi-factor-authentication-end-user-troubleshoot.md) .
+
+- [Spravujte hesla aplikací pro dvoustupňové ověřování](multi-factor-authentication-end-user-app-passwords.md) pro všechny aplikace, které nepodporují dvojúrovňové ověřování.

@@ -4,14 +4,14 @@ description: Služba soubory Azure podporuje ověřování založené na identit
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 07/30/2019
+ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 604cf2bbe0cf8ab036c76ee9223d1ee34fd4bd3d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: addb97d71da1ceac8717ae77204c87a8197dac86
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854575"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935169"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Přehled podpory ověřování služby Azure Files Azure Active Directory Domain Service (Azure služba AD DS) pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]

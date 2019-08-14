@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 4df024f9ff37121df4d9be51ae1fa540028ddd3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727422"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934751"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Osvědčené postupy šifrování a zabezpečení dat v Azure
 Tento článek popisuje osvědčené postupy pro zabezpečení a šifrování dat.
@@ -97,7 +97,7 @@ Organizacím, které vynutily šifrování dat, jsou více vystaveny problémům
 
 Ochrana dat při přenosu by měla být důležitou součástí vaší strategie ochrany dat. Vzhledem k tomu, že se data pohybují zpátky a zpátky z mnoha míst, doporučujeme, abyste vždy používali protokoly SSL/TLS k výměně dat napříč různými umístěními. V některých případech možná budete chtít izolovat celý komunikační kanál mezi místními a cloudovou infrastrukturou pomocí sítě VPN.
 
-Pro pohyb dat mezi místní infrastrukturou a Azure zvažte vhodná ochranná opatření, jako je například HTTPS nebo VPN. Při posílání šifrovaného provozu mezi virtuální sítí Azure a místním umístěním přes veřejný Internet použijte [Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/).
+Pro pohyb dat mezi místní infrastrukturou a Azure zvažte vhodná ochranná opatření, jako je například HTTPS nebo VPN. Při posílání šifrovaného provozu mezi virtuální sítí Azure a místním umístěním přes veřejný Internet použijte [Azure VPN Gateway](../../vpn-gateway/index.yml).
 
 Níže jsou uvedené osvědčené postupy, které jsou specifické pro používání Azure VPN Gateway, SSL/TLS a HTTPS.
 

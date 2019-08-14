@@ -1,6 +1,6 @@
 ---
-title: Přírůstkové kopírování nové a změněné soubory, které jsou založené na LastModifiedDate pomocí nástroje pro kopírování dat | Dokumentace Microsoftu
-description: Vytvořte datovou továrnu Azure a pak pomocí nástroje kopírování dat pro přírůstkové kopírování nových souborů podle LastModifiedDate.
+title: Přírůstkové kopírování nových a změněných souborů na základě LastModifiedDate pomocí nástroje Kopírování dat | Microsoft Docs
+description: Vytvořte datovou továrnu Azure a pak pomocí nástroje Kopírování dat postupně načtěte nové soubory založené na LastModifiedDate.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 3865bb10346c4a55adbf94a7df225eacf2c11252
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f6fd57586603d0d987faa674d40a7e4678530a1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519131"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933853"
 ---
-# <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nové a změněné soubory, které jsou založené na LastModifiedDate pomocí nástroje pro kopírování dat
+# <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových a změněných souborů na základě LastModifiedDate pomocí nástroje Kopírování dat
 
-V tomto kurzu použijete Azure portal k vytvoření datové továrny. Pak použijete nástroj pro kopírování dat vytvoříte kanál, který přírůstkově kopíruje nové a změněné soubory, na základě jejich **LastModifiedDate** z úložiště objektů Blob Azure do Azure Blob storage.
+V tomto kurzu použijete Azure Portal k vytvoření datové továrny. Pak použijete nástroj Kopírování dat k vytvoření kanálu, který postupně kopíruje jenom nové a změněné soubory, a to na základě jejich **LastModifiedDate** ze služby Azure Blob Storage do úložiště objektů BLOB v Azure.
 
-Díky tomu bude ADF kontrolovat všechny soubory ze zdrojového úložiště, použijte filtr soubor podle jejich LastModifiedDate a zkopírovat soubor nových a aktualizovaných pouze od posledního do cílového úložiště.  Mějte prosím na paměti, že pokud nechat ADF kontroly obrovské množství souborů, ale pouze několik souborů zkopírovat do cíle, by stále očekáváte, že je dlouhá doba trvání kvůli skenování souboru časově náročné i.   
+Díky tomu ADF bude kontrolovat všechny soubory ze zdrojového úložiště, použít filtr souborů podle jejich LastModifiedDate a kopírovat nový a aktualizovaný soubor pouze od posledního času do cílového úložiště.  Počítejte s tím, že pokud povolíte ADF velké množství souborů, ale kopírujete jenom několik souborů do cíle, očekává se i delší doba, vzhledem k tomu, že kontrola souborů spotřebovává čas.   
 
 > [!NOTE]
 > Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](introduction.md).
@@ -39,32 +39,30 @@ V tomto kurzu budete provádět následující úlohy:
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště Azure**: Použití služby Blob storage jako _zdroj_ a _jímky_ úložiště. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+* **Účet úložiště Azure**: Jako _zdroj_ dat a úložiště dat _jímky_ použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
 
-### <a name="create-two-containers-in-blob-storage"></a>Vytvoření dvou kontejnerů v úložišti objektů Blob
+### <a name="create-two-containers-in-blob-storage"></a>Vytvoření dvou kontejnerů v úložišti objektů BLOB
 
-Připravte úložiště objektů Blob pro tento kurz provedením následujících kroků.
+Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
-1. Vytvořte kontejner s názvem **zdroj**. Můžete použít různé nástroje k provedení této úlohy, jako například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
+1. Vytvořte kontejner s názvem **source**. K provedení této úlohy můžete použít různé nástroje, například [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 
-2. Vytvořte kontejner s názvem **cílové**. 
+2. Vytvořte kontejner s názvem **Destination**. 
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **Data a analýzy** > **služby Data Factory**: 
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**: 
    
-   ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 2. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**. 
-      
-     ![Nová datová továrna](./media/tutorial-copy-data-tool/new-azure-data-factory.png)
  
    Název datové továrny musí být _globálně jedinečný_. Možná se zobrazí následující chybová zpráva:
    
-   ![Nová datová továrna – chybová zpráva](./media/tutorial-copy-data-tool/name-not-available-error.png)
+   ![Nová datová továrna – chybová zpráva](./media/doc-common-process/name-not-available-error.png)
 
    Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. Použijte například název _**vaše_jméno**_ **ADFTutorialDataFactory**. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
-3. Vyberte Azure **předplatné** ve kterém vytvoříte nové datové továrny. 
+3. Vyberte **předplatné** Azure, ve kterém vytvoříte novou datovou továrnu. 
 4. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
      
     * Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
@@ -73,33 +71,33 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
          
     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).
 
-5. V části **verze**vyberte **V2**.
-6. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou můžou být v jiných umístěních a oblastech.
+5. V části **verze**vyberte **v2**.
+6. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight), které vaše Datová továrna používá, můžou být v jiných umístěních a oblastech.
 7. Zaškrtněte **Připnout na řídicí panel**. 
 8. Vyberte **Vytvořit**.
-9. Na řídicím panelu najdete **nasazování datové továrny** dlaždici zobrazíte stav procesu.
+9. Na řídicím panelu se podívejte na dlaždici **nasazení Data Factory** , kde vidíte stav procesu.
 
-    ![Dlaždice nasazování datové továrny](media/tutorial-copy-data-tool/deploying-data-factory.png)
+    ![Nasazování dlaždice Data Factory](media/tutorial-copy-data-tool/deploying-data-factory.png)
 10. Po vytvoření se zobrazí domovská stránka **Datová továrna**.
    
-    ![Domovská stránka datové továrny](./media/tutorial-copy-data-tool/data-factory-home-page.png)
-11. Azure Data Factory uživatelské rozhraní (UI) na samostatné kartě otevřít, vyberte **vytvořit a monitorovat** dlaždici. 
+    ![Domovská stránka datové továrny](./media/doc-common-process/data-factory-home-page.png)
+11. Pokud chcete na samostatné kartě otevřít Azure Data Factory uživatelské rozhraní (UI), vyberte dlaždici **autora & monitorování** . 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Vytvoření kanálu pomocí nástroje pro kopírování dat
 
-1. Na **pusťme se do práce** stránky, vyberte **kopírování dat** nadpis můžete otevřít nástroj pro kopírování dat. 
+1. Na stránce **Začínáme** vyberte název **kopírování dat** pro otevření nástroje kopírování dat. 
 
-   ![Dlaždice nástroje pro kopírování dat](./media/tutorial-copy-data-tool/copy-data-tool-tile.png)
+   ![Dlaždice nástroje pro kopírování dat](./media/doc-common-process/get-started-page.png)
    
-2. Na **vlastnosti** stránce, proveďte následující kroky:
+2. Na stránce **vlastnosti** proveďte následující kroky:
 
-    a. V části **název úkolu**, zadejte **DeltaCopyFromBlobPipeline**.
+    a. V části **název úlohy**zadejte **DeltaCopyFromBlobPipeline**.
 
-    b. V části **tempo úkolu** nebo **plán úlohy**vyberte **pravidelně spouštět podle plánu**.
+    b. V části **úkol tempo** nebo **plán úlohy**vyberte možnost **spouštět pravidelně podle plánu**.
 
-    c. V části **typ aktivační události**vyberte **Přeskakujícího okna**.
+    c. V části **typ triggeru**vyberte **okno bubnu**.
     
-    d. V části **opakování**, zadejte **15 minut**. 
+    d. V části **opakování**zadejte **15 minut**. 
     
     e. Vyberte **Další**. 
     
@@ -109,43 +107,43 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
     
 3. Na stránce **Source data store** (Zdrojové úložiště dat) proveďte následující kroky:
 
-    a. Vyberte **+ vytvořit nové připojení**, můžete přidat připojení.
+    a. Chcete-li přidat připojení, vyberte **+ vytvořit nové připojení**.
     
     ![Stránka Zdrojové úložiště dat](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page.png)
 
-    b. Vyberte **Azure Blob Storage** z galerie a pak vyberte **pokračovat**.
+    b. Z Galerie vyberte **Azure Blob Storage** a pak vyberte **pokračovat**.
     
     ![Stránka Zdrojové úložiště dat](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
 
-    c. Na **Nová propojená služba** stránky, vyberte svůj účet úložiště z **název účtu úložiště** seznamu a pak vyberte **Dokončit**.
+    c. Na stránce **Nová propojená služba** vyberte v seznamu **název účtu úložiště** svůj účet úložiště a pak vyberte **Dokončit**.
     
     ![Stránka Zdrojové úložiště dat](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-linkedservice.png)
     
-    d. Vyberte nově vytvořený propojenou službu a pak vyberte **Další**. 
+    d. Vyberte nově vytvořenou propojenou službu a pak vyberte **Další**. 
     
    ![Stránka Zdrojové úložiště dat](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-linkedservice.png)
 
 4. Na stránce **Choose the input file or folder** (Zvolit vstupní soubor nebo složku) proveďte následující kroky:
     
-    a. Procházet a vybrat **zdroj** složku a pak vyberte **zvolit**.
+    a. Procházejte a vyberte **zdrojovou** složku a pak vyberte **zvolit**.
     
     ![Zvolte vstupní soubor nebo složku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
     
-    b. V části **chování načítání souboru**vyberte **přírůstkové načítání: LastModifiedDate**.
+    b. V části **chování při načítání souborů**vyberte **přírůstkové načtení: LastModifiedDate**.
     
     ![Zvolte vstupní soubor nebo složku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-loading-behavior.png)
     
-    c. Zkontrolujte **binární kopie** a vyberte **Další**.
+    c. Zaškrtněte **binární kopii** a vyberte **Další**.
     
      ![Zvolte vstupní soubor nebo složku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
      
-5. Na **cílového úložiště dat** stránce **službě Azure BLOB Storage**. Tento stejný účet úložiště jako zdrojové úložiště dat je. Pak vyberte **Další**.
+5. Na stránce **cílové úložiště dat** vyberte **AzureBlobStorage**. Toto je stejný účet úložiště jako zdrojové úložiště dat. Pak vyberte **Další**.
 
     ![Stránka Cílové úložiště dat](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/destination-data-store-page-select-linkedservice.png)
     
 6. Na stránce **Choose the output file or folder** (Zvolit výstupní soubor nebo složku) proveďte následující kroky:
     
-    a. Procházet a vybrat **cílové** složku a pak vyberte **zvolit**.
+    a. Vyhledejte a vyberte **cílovou** složku a pak vyberte **zvolit**.
     
     ![Zvolte výstupní soubor nebo složku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
     
@@ -157,7 +155,7 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
 
     ![Stránka Nastavení](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/settings-page.png)
     
-8. Na **Souhrn** stránky, zkontrolujte nastavení a pak vyberte **Další**.
+8. Na stránce **Souhrn** zkontrolujte nastavení a pak vyberte **Další**.
 
     ![Stránka souhrnu](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/summary-page.png)
     
@@ -165,47 +163,47 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
 
     ![Stránka Nasazení](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png)
     
-10. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Akce** obsahuje odkazy na zobrazení podrobností o spuštění aktivit a na opětovné spuštění kanálu. Vyberte **aktualizovat** aktualizujte seznam a vyberte **zobrazit spuštění aktivit** propojit **akce** sloupec. 
+10. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Akce** obsahuje odkazy na zobrazení podrobností o spuštění aktivit a na opětovné spuštění kanálu. Vyberte **aktualizovat** a aktualizujte seznam a vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce** . 
 
-    ![Aktualizujte seznam a vyberte Zobrazit spuštění aktivit](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
+    ![Aktualizovat seznam a vybrat zobrazení spuštění aktivit](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
 
-11. Existuje pouze jednu aktivitu (aktivita kopírování) v kanálu, takže se zobrazí pouze jedna položka. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. 
+11. Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. 
 
-    ![Aktivitu kopírování, která je v kanálu](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
+    ![Aktivita kopírování je v kanálu.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
     
-    Protože neexistuje žádný soubor v **zdroj** kontejneru v účtu Blob storage, se nezobrazí všechny soubory zkopírovány do **cílové** kontejneru v účtu Blob storage.
+    Vzhledem k tomu, že ve **zdrojovém** kontejneru účtu BLOB Storage není žádný soubor, nebude se do **cílového** kontejneru v účtu BLOB Storage kopírovat žádný soubor.
     
-    ![Žádný soubor v kontejneru zdrojový nebo cílový kontejner](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
+    ![Žádný soubor ve zdrojovém kontejneru nebo cílovém kontejneru](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
     
-12. Vytvořte prázdný textový soubor s názvem **file1.txt**. Tento textový soubor k nahrání **zdroj** kontejneru v účtu úložiště. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).   
+12. Vytvořte prázdný textový soubor a pojmenujte ho **Soubor1. txt**. Nahrajte tento textový soubor do **zdrojového** kontejneru v účtu úložiště. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).   
 
-    ![File1.txt vytvoříte a nahrajete do zdrojového kontejneru](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
+    ![Vytvoření souborů Soubor1. txt a nahrání do zdrojového kontejneru](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
     
-13. Chcete přejít zpátky k **spuštění kanálu** zobrazit, vyberte možnost **všechna spuštění kanálu**a počkejte, až se znovu automaticky spustí stejný kanálu.  
+13. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechna spuštění kanálu**a počkejte na automatické spuštění stejného kanálu.  
 
-    ![Vyberte všechna spuštění kanálu](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
+    ![Vybrat všechna spuštění kanálu](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
 
-14. Vyberte **zobrazení spuštění aktivit** pro druhý kanál spustí, když se zobrazí. Pak zkontrolujte podrobnosti stejným způsobem, který jste to udělali pro první spuštění kanálu.  
+14. Vyberte **Zobrazit spuštění aktivit** pro druhý běh kanálu po jeho zobrazení. Podrobnosti si pak Projděte stejným způsobem jako u prvního spuštění kanálu.  
 
-    ![Vyberte zobrazení spuštění aktivit zkontrolujte podrobnosti](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs5.png)
+    ![Vyberte Zobrazit spuštění aktivit a zkontrolovat podrobnosti.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs5.png)
 
-    Bude tématu jeden soubor (file1.txt) byl zkopírován z **zdroj** kontejneru **cílové** kontejneru účtu úložiště objektů Blob.
+    Uvidíte, že se ze **zdrojového** kontejneru zkopíroval jeden soubor (Soubor1. txt) do **cílového** kontejneru vašeho účtu služby Blob Storage.
     
-    ![File1.txt byl zkopírován z kontejneru zdroje k cílovému kontejneru](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
+    ![Soubor1. txt se zkopíroval ze zdrojového kontejneru do cílového kontejneru.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
     
-15. Vytvořte další prázdný textový soubor s názvem **Soubor2.txt**. Tento textový soubor k nahrání **zdroj** kontejneru v účtu Blob storage.   
+15. Vytvořte další prázdný textový soubor a pojmenujte ho **Soubor2. txt**. Nahrajte tento textový soubor do **zdrojového** kontejneru v účtu služby Blob Storage.   
     
-16. Opakujte kroky 13 a 14 pro tento druhý textový soubor. Uvidíte, že pouze nový soubor (Soubor2.txt) byl zkopírován z **zdroj** kontejneru **cílové** kontejneru účtu úložiště v další spuštění kanálu.  
+16. Opakujte kroky 13 a 14 pro tento druhý textový soubor. Uvidíte, že se ze **zdrojového** kontejneru zkopíroval jenom nový soubor (Soubor2. txt) do **cílového** kontejneru vašeho účtu úložiště v dalším spuštění kanálu.  
     
-    ![Soubor2.txt byl zkopírován z kontejneru zdroje k cílovému kontejneru](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs7.png)
+    ![Soubor2. txt byl zkopírován ze zdrojového kontejneru do cílového kontejneru.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs7.png)
 
-    Můžete to taky ověřit pomocí [Průzkumníka služby Azure Storage](https://storageexplorer.com/) kontrolovala soubory.
+    Můžete to také ověřit pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/) pro skenování souborů.
     
-    ![Kontrolovat soubory pomocí Průzkumníka služby Azure Storage](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
+    ![Kontrolovat soubory pomocí Průzkumník služby Azure Storage](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
 
     
 ## <a name="next-steps"></a>Další postup
-Přejděte k následujícímu kurzu se dozvíte o transformaci dat pomocí clusteru Apache Spark v Azure:
+Pokud se chcete dozvědět víc o transformaci dat pomocí Apache Spark clusteru v Azure, přejděte k následujícímu kurzu:
 
 > [!div class="nextstepaction"]
->[Transformace dat v cloudu s využitím clusteru Apache Spark](tutorial-transform-data-spark-portal.md)
+>[Transformace dat v cloudu pomocí Apache Sparkho clusteru](tutorial-transform-data-spark-portal.md)

@@ -1,176 +1,176 @@
 ---
-title: Průvodce odstraňováním potíží Azure Storage Exploreru | Dokumentace Microsoftu
-description: Přehled ladění techniky pro Průzkumníka služby Azure Storage
+title: Průvodce odstraňováním potíží s Průzkumník služby Azure Storage | Microsoft Docs
+description: Přehled technik ladění pro Průzkumník služby Azure Storage
 services: virtual-machines
 author: Deland-Han
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: fd34ab7cd899549962663e8cee8ee2121c39c49e
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 96a8eab57f1714eed4831bea01508e9140d1dfad
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840384"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934988"
 ---
-# <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro Azure Storage Exploreru
+# <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumník služby Azure Storage
 
-Microsoft Azure Storage Explorer je samostatná aplikace, která umožňuje jednoduchá práci s daty Azure Storage ve Windows, macOS a Linuxu. Aplikace může připojit k účtům úložiště hostované v Azure, národní Cloudy a Azure Stack.
+Průzkumník služby Microsoft Azure Storage je samostatná aplikace, která umožňuje snadnou práci s Azure Storagemi daty v systémech Windows, macOS a Linux. Aplikace se může připojit k účtům úložiště hostovaným v Azure, národním cloudům a Azure Stack.
 
-Tato příručka obsahuje souhrn řešení běžných problémů zobrazit v Průzkumníku služby Storage.
+Tato příručka shrnuje řešení běžných potíží, které se zobrazují v Průzkumník služby Storage.
 
-## <a name="role-based-access-control-permission-issues"></a>Problémy oprávnění řízení přístupu na základě role
+## <a name="role-based-access-control-permission-issues"></a>Problémy s oprávněním Access Control na základě rolí
 
-[Řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) poskytuje propracovanou správu přístupu prostředků Azure díky kombinaci sady oprávnění do _role_. Tady jsou některé návrhy, můžete postupovat podle zobrazíte RBAC práci v Průzkumníku služby Storage.
+[Řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) poskytuje jemně odstupňovanou správu přístupu k prostředkům Azure tím, že kombinuje sady oprávnění s _rolemi_. Tady jsou některé návrhy, které vám pomůžou při práci na Průzkumník služby Storage.
 
-### <a name="what-do-i-need-to-see-my-resources-in-storage-explorer"></a>Co je třeba zobrazit Moje prostředky v Průzkumníku služby Storage?
+### <a name="what-do-i-need-to-see-my-resources-in-storage-explorer"></a>Co potřebuji k zobrazení mých prostředků v Průzkumník služby Storage?
 
-Pokud máte potíže s přístupem k prostředkům úložiště pomocí RBAC, pravděpodobně nebyly byla přiřazena odpovídající role. Následující části popisují Průzkumníka služby Storage aktuálně vyžaduje pro přístup k prostředkům úložiště oprávnění.
+Pokud máte problémy s přístupem k prostředkům úložiště pomocí RBAC, může to být způsobeno tím, že jste nepřiřadili příslušné role. Následující části popisují oprávnění Průzkumník služby Storage aktuálně vyžadují přístup k prostředkům úložiště.
 
-Pokud si nejste jisti, že máte příslušné role nebo oprávnění, obraťte se na správce účtu Azure.
+Pokud si nejste jistí, že máte příslušné role nebo oprávnění, obraťte se na správce účtu Azure.
 
-#### <a name="read-listget-storage-accounts"></a>Čtení: Vypsat nebo získat účty úložiště
+#### <a name="read-listget-storage-accounts"></a>Oprávnění Vypsat nebo získat účty úložiště
 
-Musíte mít oprávnění k seznamu účtů úložiště. Tato oprávnění můžete získat podle přiřazení role "Čtenář".
+Musíte mít oprávnění k vypsání účtů úložiště. Toto oprávnění můžete získat tak, že přiřadíte roli Čtenář.
 
 #### <a name="list-storage-account-keys"></a>Vypsat klíče účtu úložiště
 
-Průzkumník služby Storage použít také klíče účtu k ověření požadavků. Můžete získat přístup ke klíčům výkonnější role, jako je například "Přispěvatel" role.
+Průzkumník služby Storage můžou k ověřování požadavků používat taky klíče účtu. Můžete získat přístup k klíčům s výkonnějšími rolemi, jako je například role Přispěvatel.
 
 > [!NOTE]
-> Přístupové klíče neomezená oprávnění udělit všem uživatelům, kteří je obsahuje. Proto se obecně nedoporučuje, možné předat pro účet uživatele. Pokud budete chtít odvolat přístupové klíče, můžete vygenerovat znovu z [webu Azure Portal](https://portal.azure.com/).
+> Přístupové klíče udělují neomezená oprávnění komukoli, kdo je drží. Proto se obecně nedoporučuje, aby byly předávány uživatelům účtu. Pokud potřebujete odvolat přístupové klíče, můžete je znovu vygenerovat z webu [Azure Portal](https://portal.azure.com/).
 
 #### <a name="data-roles"></a>Role dat
 
-Musí být přiřazen alespoň jednu roli, která uděluje přístup Číst data ze zdroje. Například pokud potřebujete zobrazit nebo stáhnout objekty BLOB, budete potřebovat minimálně role "Čtenář dat objektu Blob úložiště".
+Musíte mít přiřazenou aspoň jednu roli, která uděluje přístup ke čtení dat z prostředků. Pokud potřebujete například vypsat nebo stáhnout objekty blob, budete potřebovat alespoň roli "čtecí modul dat objektů BLOB úložiště".
 
-### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Proč potřebuji roli vrstva správy zobrazíte Moje prostředky v Průzkumníku služby Storage?
+### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Proč potřebuji roli vrstvy správy, aby se zobrazily moje prostředky v Průzkumník služby Storage?
 
-Azure Storage má dvě vrstvy přístupu: _správu_ a _data_. Předplatná a účty úložiště jsou přístupné prostřednictvím vrstva správy. Kontejnery objektů BLOB a dalších dat prostředků jsou přístupné prostřednictvím datové vrstvě. Například pokud chcete získat seznam účtů úložiště z Azure, můžete odeslat požadavek na koncový bod správy. Pokud chcete seznam kontejnerů objektů blob v účtu služby, odeslat požadavek na koncový bod příslušnou službu.
+Azure Storage má dvě vrstvy přístupu: _správu_ a _data_. K předplatným a účtům úložiště se dostanete prostřednictvím vrstvy správy. K kontejnerům, objektům blob a dalším datovým prostředkům se dostanete přes datovou vrstvu. Pokud například chcete získat seznam účtů úložiště z Azure, odešlete žádost do koncového bodu správy. Pokud chcete v účtu vytvořit seznam kontejnerů objektů blob, odešlete požadavek na příslušný koncový bod služby.
 
-Role RBAC může obsahovat oprávnění pro přístup k vrstvě správy nebo data. Role "Čtenář, například uděluje přístup jen pro čtení prostředků vrstvy správy.
+Role RBAC můžou obsahovat oprávnění pro správu nebo přístup k datové vrstvě. Role čtenář například uděluje prostředky vrstvy správy přístupu jen pro čtení.
 
-Přesněji řečeno role "Čtenář" poskytuje žádná oprávnění datové vrstvy a není nutné pro přístup k datové vrstvě.
+Výhradně řečeno, role čtenář neposkytuje žádná oprávnění k datové vrstvě a není nutná pro přístup k datové vrstvě.
 
-Průzkumník služby Storage usnadňuje přístup k vašim prostředkům shromáždit informace potřebné k připojení k prostředkům Azure za vás. Například pokud chcete zobrazit vaše kontejnery objektů blob, odešle Průzkumníka služby Storage žádost o seznam kontejnerů do koncového bodu služby objektů blob. Chcete-li získat tento koncový bod, Průzkumníka služby Storage vyhledá seznam předplatných a účtů úložiště, abyste měli přístup k. Ale předplatných a účtů úložiště najdete Průzkumníka služby Storage také potřebuje přístup k vrstvě správy.
+Průzkumník služby Storage usnadňuje přístup k prostředkům tím, že shromáždí potřebné informace pro připojení k prostředkům Azure za vás. Pokud například chcete zobrazit kontejnery objektů blob, Průzkumník služby Storage odešle požadavek na kontejnery seznamu do koncového bodu služby BLOB Service. Pokud chcete tento koncový bod získat, Průzkumník služby Storage prohledá seznam předplatných a účtů úložiště, ke kterým máte přístup. K vyhledání předplatných a účtů úložiště ale Průzkumník služby Storage také potřebovat přístup ke vrstvě správy.
 
-Pokud nemáte k dispozici role udělení žádné management oprávnění vrstvy, Průzkumníka služby Storage nelze získat informace, které potřebuje pro připojení k datové vrstvě.
+Pokud nemáte roli udělující žádná oprávnění vrstvy správy, Průzkumník služby Storage nemůže získat informace, které potřebuje pro připojení k datové vrstvě.
 
-### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Co když mám nelze získat rozhraní pro správu vrstvy oprávnění je třeba Moje správce?
+### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Co když mi nejde získat oprávnění pro vrstvu správy, které potřebuji od správce?
 
-Zatím nemáme řešení související RBAC v tuto chvíli. Jako alternativní řešení, můžete požádat o identifikátor URI SAS pro [připojit k prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
+V tuto chvíli zatím nepoužíváme řešení související s RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Chyba: Certifikát podepsaný svým držitelem v řetězu certifikátů (a podobné chyby)
 
-Chyby certifikátů jsou způsobeny jednu ze dvou následujících situací:
+Chyby certifikátu jsou způsobeny jednou ze dvou následujících situací:
 
-1. Aplikace je propojena prostřednictvím "transparentní proxy server", což znamená, že server (například serveru vaší společnosti) zachycuje přenosy HTTP, dešifruje je a pak je šifruje pomocí certifikátu podepsaného svým držitelem.
-2. Teď máte spuštěnou aplikaci, která je do zpráv protokolu HTTPS, které jste dostali vkládá certifikát SSL podepsaný svým držitelem. Příkladem aplikací, které vložení certifikátů obsahuje antivirový program a síťové přenosy kontroly software.
+1. Aplikace je připojená prostřednictvím transparentního proxy serveru, což znamená, že server (například server vaší společnosti) zachycuje provoz HTTPS, dešifruje ho a pak ho šifruje pomocí certifikátu podepsaného svým držitelem.
+2. Používáte aplikaci, která vkládá certifikát SSL podepsaný svým držitelem do zpráv HTTPS, které obdržíte. Příklady aplikací, které obsahují certifikáty, zahrnují software pro kontrolu proti virům a síťovým přenosům.
 
-Pokud Průzkumník služby Storage se zobrazí certifikát podepsaný svým držitelem nebo nedůvěryhodné, můžete už vědět, zda byla změněna přijatou zprávu protokolu HTTPS. Pokud máte kopii certifikátu podepsaného svým držitelem, můžete dát pokyn Průzkumníka služby Storage důvěřovat provedením následujících kroků:
+Když Průzkumník služby Storage uvidí certifikát podepsaný svým držitelem nebo nedůvěryhodným certifikátem, nemůže už zjistit, jestli se přijatá zpráva HTTPS nezměnila. Pokud máte kopii certifikátu podepsaného svým držitelem, můžete mu dát Průzkumník služby Storage důvěřovat pomocí následujících kroků:
 
-1. Získat s kódováním Base-64 X.509 (.cer) kopii certifikátu
-2. Klikněte na tlačítko **upravit** > **certifikáty SSL** > **importovat certifikáty**a pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubor .cer
+1. Získejte kopii certifikátu X. 509 (. cer) s kódováním Base-64.
+2. Klikněte na **Upravit** > **certifikáty** > SSL**importovat certifikáty**a pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubor. cer.
 
-Tento problém může být také výsledkem několik certifikátů (kořenové a zprostředkující). Oba certifikáty musí být přidaný do překonat chyby.
+Tento problém může být také výsledkem více certifikátů (root a Intermediate). K překonání chyby je nutné přidat oba certifikáty.
 
-Pokud si nejste jisti odkud certifikátu, můžete vyzkoušet následující postup vás bude:
+Pokud si nejste jistí, odkud certifikát pochází, můžete zkusit najít tento postup:
 
 1. Nainstalujte OpenSSL.
-    * [Windows](https://slproweb.com/products/Win32OpenSSL.html) (jakákoli z odlehčených verzí by měl být dostatečná)
-    * Mac a Linux: mělo by být součástí operačního systému
+    * [Systém Windows](https://slproweb.com/products/Win32OpenSSL.html) (všechny verze světla by měly být dostatečné)
+    * Mac a Linux: měla by být součástí vašeho operačního systému.
 2. Spusťte OpenSSL.
-    * Windows: otevřete instalační adresář, klikněte na tlačítko **/bin/** a potom dvakrát klikněte na panel **openssl.exe**.
-    * Mac a Linux: Spusťte **openssl** z terminálu.
+    * Windows: otevřete instalační adresář, klikněte na **/bin/** a potom poklikejte na **OpenSSL. exe**.
+    * Mac a Linux: Spusťte **OpenSSL** z terminálu.
 3. Spusťte příkaz `s_client -showcerts -connect microsoft.com:443`.
-4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jistí, jaké certifikáty jsou podepsané svým držitelem, hledejte kdekoli předmět `("s:")` a vystavitele `("i:")` jsou stejné.
-5. Po nalezení jakékoli certifikáty podepsané svým držitelem pro každé z nich, zkopírujte a vložte všechno z a to včetně **---BEGIN CERTIFICATE---** k **---END CERTIFICATE---** do nového souboru .cer.
-6. Otevřete Průzkumníka služby Storage, klikněte na tlačítko **upravit** > **certifikáty SSL** > **importovat certifikáty**a pak pomocí nástroje pro výběr souborů vyhledejte, vyberte, a Otevřete soubory .cer, které jste vytvořili.
+4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jistí, které certifikáty jsou podepsané svým držitelem, hledejte všude, `("s:")` kde je `("i:")` váš předmět a vydavatel stejné.
+5. Po nalezení libovolných certifikátů podepsaných svým držitelem si pro každý z nich zkopírujte a vložte všechno z a včetně **-----Spustit certifikát-----** , aby se **-----koncovým certifikátem-----** do nového souboru. cer.
+6. Otevřete Průzkumník služby Storage, klikněte na **Upravit** > **certifikáty** > SSL**importovat certifikáty**a pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory. CER, které jste vytvořili.
 
-Pokud nemůžete najít žádné certifikáty podepsané svým držitelem podle předchozích kroků, kontaktujte nás prostřednictvím nástroje pro zpětnou vazbu o další pomoc. Můžete také spustit z příkazového řádku pomocí Průzkumníka služby Storage `--ignore-certificate-errors` příznak. Při spuštění s tímto příznakem, Průzkumníka služby Storage se bude ignorovat chyby certifikátů.
+Pokud nemůžete najít žádné certifikáty podepsané svým držitelem pomocí předchozích kroků, kontaktujte nás prostřednictvím nástroje pro zpětnou vazbu, kde najdete další informace. Můžete také zvolit spuštění Průzkumník služby Storage z příkazového řádku s `--ignore-certificate-errors` příznakem. Při spuštění s tímto příznakem Průzkumník služby Storage bude ignorovat chyby certifikátu.
 
 ## <a name="sign-in-issues"></a>Problémy s přihlašováním
 
-### <a name="blank-sign-in-dialog"></a>Prázdné přihlašovacího dialogového okna
+### <a name="blank-sign-in-dialog"></a>Dialog prázdné přihlášení
 
-Prázdný znak v dialogových oknech jsou často způsobeny služby AD FS s dotazem, Průzkumníka služby Storage provádět přesměrování, který nepodporuje elektronovým. Chcete-li tento problém obejít, pokuste se použít tok kódu zařízení pro přihlášení. Uděláte to tak, proveďte následující kroky:
+Nepodporovaná dialogová okna jsou nejčastěji způsobená tím, že služba ADFS žádá Průzkumník služby Storage, aby provedla přesměrování, která není elektronicky podporovaná. Pokud chcete tento problém obejít, můžete se pokusit použít tok kódu zařízení pro přihlášení. Provedete to provedením následujících kroků:
 
-1. Nabídka: Ve verzi Preview -> "Pomocí přihlášení zařízení kód".
-2. Otevřete dialogové okno připojit, (buď prostřednictvím moduly ikonu na levé straně svislá čára, nebo "Přidat účet" na panel účtu).
-3. Vyberte prostředí, jaké chcete k přihlášení k.
-4. Klikněte na tlačítko "Sign In".
-5. Postupujte podle pokynů na další panel.
+1. Nabídce Preview – > použít přihlášení ke kódu zařízení.
+2. Otevřete dialogové okno připojit (buď prostřednictvím ikony plug-in na levé straně panelu, nebo "Přidat účet" na panelu účet).
+3. Vyberte prostředí, ke kterému se chcete přihlásit.
+4. Klikněte na tlačítko Přihlásit se.
+5. Postupujte podle pokynů na dalším panelu.
 
-Pokud se potíže při přihlašování k účtu, který chcete použít, protože váš výchozí prohlížeč se už přihlásili do jiného účtu, můžete buď:
+Pokud zjistíte, že máte potíže s přihlášením k účtu, který chcete použít, protože váš výchozí prohlížeč je už přihlášený k jinému účtu, můžete použít tyto kroky:
 
 1. Ručně zkopírujte odkaz a kód do privátní relace prohlížeče.
 2. Ručně zkopírujte odkaz a kód do jiného prohlížeče.
 
-### <a name="reauthentication-loop-or-upn-change"></a>Opětovné ověření smyčky nebo změnit hlavní název uživatele
+### <a name="reauthentication-loop-or-upn-change"></a>Smyčka opakovaného ověřování nebo změna hlavního názvu uživatele
 
-Pokud jste ve smyčce opětovné ověření, nebo se změnily (UPN) jednoho z vašich účtů, vyzkoušejte následující kroky:
+Pokud jste ve smyčce opakovaného ověřování nebo jste změnili hlavní název uživatele (UPN) jednoho z vašich účtů, zkuste provést následující kroky:
 
-1. Odeberte všechny účty a potom zavřete Průzkumníka služby Storage
-2. Odstranit. IdentityService složky z vašeho počítače. Na Windows, se nachází ve složce `C:\users\<username>\AppData\Local`. Pro Mac a Linux můžete najít složku v kořenovém adresáři uživatele.
-3. Pokud jste v systému Mac nebo Linux, musíte také odstranit položku Microsoft.Developer.IdentityService z úložiště klíčů pro váš operační systém. Na počítači Mac je úložiště klíčů aplikace "Gnome Keychain". Pro Linux aplikace obvykle nazývá "Klíčů", ale název mohou lišit v závislosti na vaší distribuci.
+1. Odeberte všechny účty a potom zavřete Průzkumník služby Storage
+2. Odstraňte. IdentityService složku z počítače. Ve Windows se složka nachází na adrese `C:\users\<username>\AppData\Local`. V případě systémů Mac a Linux můžete složku najít v kořenovém adresáři adresáře uživatele.
+3. Pokud pracujete v systému Mac nebo Linux, budete také muset odstranit položku Microsoft. Developer. IdentityService z úložiště klíčů operačního systému. V systému Mac je úložiště klíčů aplikace "GNOME řetězce klíčů". Pro Linux se aplikace obvykle nazývá "Ring", ale název se může lišit v závislosti na vaší distribuci.
 
 ### <a name="conditional-access"></a>Podmíněný přístup
 
-Podmíněný přístup není podporovaný, když Průzkumníka služby Storage se používá v systému Windows 10, Linuxu nebo macOS. Toto je kvůli omezení v knihovně AAD používané Průzkumníka služby Storage.
+Podmíněný přístup není podporován, pokud je Průzkumník služby Storage používáno ve Windows 10, Linux nebo macOS. Důvodem je omezení knihovny AAD, kterou používá Průzkumník služby Storage.
 
-## <a name="mac-keychain-errors"></a>Chyby klíčenku Mac.
+## <a name="mac-keychain-errors"></a>Chyby řetězce klíčů Mac
 
-MacOS řetězce klíčů můžete získat někdy do stavu, která způsobuje problémy pro knihovnu ověřování Průzkumník úložišť. Získat řetězec klíčů z tohoto stavu, zkuste následující kroky:
+MacOS řetězec klíčů se někdy může dostat do stavu, který způsobuje problémy pro knihovnu ověřování Průzkumník služby Storage. Pokud chcete z tohoto stavu získat řetězce klíčů, vyzkoušejte následující kroky:
 
-1. Zavřete Průzkumníka služby Storage.
-2. Otevřít řetězce klíčů (**cmd + MEZERNÍK**, zadejte do řetězce klíčů, stiskněte enter).
-3. Vyberte keychain "login".
-4. Klepněte na ikonu zámku uzamknout řetězce klíčů (visacího zámku nezobrazuje se animace k poloze po jeho dokončení že může trvat několik sekund, v závislosti na tom, co aplikace, které je nutné otevřít).
+1. Zavřete Průzkumník služby Storage.
+2. Otevřete řetězec klíčů (**cmd + Space**, zadejte řetězec klíčů, stiskněte ENTER).
+3. Vyberte řetězec "login".
+4. Kliknutím na ikonu visacího zámku nezobrazuje uzamknete řetězec klíčů (visacího zámku nezobrazuje se po dokončení animuje na uzamčenou pozici, může to trvat několik sekund v závislosti na tom, jaké aplikace jste otevřeli).
 
     ![image](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
-5. Spusťte Průzkumníka služby Storage.
-6. Automaticky otevírané okno by se zobrazit o tom, že něco jako "centra služeb požaduje přístup řetězce klíčů". Když ho, zadejte své heslo účtu správce Mac a klikněte na tlačítko **vždy povolit** (nebo **povolit** Pokud **vždy povolit** není k dispozici).
+5. Spusťte Průzkumník služby Storage.
+6. Zobrazí se automaticky otevírané okno s informací, že centrum služeb chce získat přístup k řetězci klíčů. V takovém případě zadejte heslo účtu správce Mac a klikněte na možnost **vždy povoleno** (nebo **Povolte** možnost **vždy** zakázat, pokud není k dispozici).
 7. Zkuste se přihlásit.
 
-### <a name="general-sign-in-troubleshooting-steps"></a>Obecné přihlášení kroky řešení potíží
+### <a name="general-sign-in-troubleshooting-steps"></a>Obecné kroky při řešení potíží s přihlašováním
 
-* Pokud jste v systému macOS a selhání "čeká se na ověřování..." se nikdy objeví okno přihlášení Dialogové okno, opakujte [tyto kroky](#mac-keychain-errors)
-* Restartování Storage Exploreru
-* Pokud je prázdné okno ověřování, počkejte aspoň jednu minutu před jeho zavřením dialogu ověřování.
-* Ujistěte se, že nastavení proxy serveru a certifikátů pro počítače a Průzkumníka služby Storage jsou správně nakonfigurované nastavení.
-* Pokud jste na Windows a mají přístup k Visual Studio 2019 na stejném počítači a přihlášení, zkuste se přihlásit k aplikaci Visual Studio 2019. Po úspěšné přihlašování ve službě Visual Studio 2019 můžete otevřít Průzkumníka služby Storage a zobrazí váš účet v panel účtu.
+* Pokud jste na macOS, a přihlašovací okno se nikdy nezobrazuje přes "čekání na ověření"... a potom zkuste provést [tyto kroky](#mac-keychain-errors) .
+* Restartovat Průzkumník služby Storage
+* Pokud je okno ověřování prázdné, před zavřením dialogového okna ověřování počkejte alespoň jednu minutu.
+* Ujistěte se, že je nastavení proxy serveru a certifikátu správně nakonfigurované pro váš počítač i Průzkumník služby Storage.
+* Pokud pracujete v systému Windows a máte přístup k aplikaci Visual Studio 2019 ve stejném počítači a přihlašování, zkuste se přihlásit do sady Visual Studio 2019. Po úspěšném přihlášení do sady Visual Studio 2019 můžete otevřít Průzkumník služby Storage a zobrazit účet na panelu účet.
 
-Pokud nefunguje žádný z těchto metod [otevřete problém na Githubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
+Pokud žádná z těchto metod nefunguje, [otevřete problém na GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
-### <a name="missing-subscriptions-and-broken-tenants"></a>Chybějící předplatná a nefunkční tenantů
+### <a name="missing-subscriptions-and-broken-tenants"></a>Chybějící předplatná a poškození klienti
 
-Pokud nemůžete načíst vaše předplatná po úspěšném přihlášení, zkuste následující metody pro řešení potíží:
+Pokud nemůžete načíst vaše předplatná po úspěšném přihlášení, zkuste následující metody řešení potíží:
 
-* Ověřte, že váš účet má přístup k předplatným, které očekáváte. Můžete ověřit váš přístup při přihlášení k portálu pro prostředí Azure, které zkoušíte použít.
-* Ujistěte se, že jste přihlášení pomocí Azure správné prostředí (Azure, Azure China 21Vianet, Azure Germany, Azure US Government nebo vlastní prostředí).
-* Pokud jste za proxy serverem, ujistěte se, že jste jste správně nakonfigurovali proxy Průzkumníka služby Storage.
-* Zkuste odebrat a znovu přidat účet.
-* Pokud je odkaz "Další informace", podívejte se a naleznete v tématu co chybové zprávy jsou hlášena pro klienty, které se nedaří. Pokud you'ren't opravdu co dělat s chybou můžete zprávy, najdete v tématu a potom bez obav [otevřete problém na Githubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
+* Ověřte, že váš účet má přístup k předplatným, která očekáváte. Přístup můžete ověřit tak, že se přihlásíte k portálu pro prostředí Azure, které se pokoušíte použít.
+* Ujistěte se, že jste se přihlásili pomocí správného prostředí Azure (Azure, Azure Čína 21Vianet, Azure Německo, Azure US státní správa a vlastní prostředí).
+* Pokud jste za proxy serverem, ujistěte se, že jste správně nakonfigurovali Průzkumník služby Storage proxy.
+* Zkuste účet odebrat a znovu přidat.
+* Pokud je k dispozici odkaz Další informace, podívejte se a podívejte se, jaké chybové zprávy jsou hlášeny pro klienty, kteří selžou. Pokud si you'ren'ti, co dělat s chybovými zprávami, které vidíte, můžete si klidně [otevřít problém na GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
-## <a name="cant-remove-attached-account-or-storage-resource"></a>Nelze odebrat připojený účet nebo úložiště prostředků
+## <a name="cant-remove-attached-account-or-storage-resource"></a>Nejde odebrat připojený účet nebo prostředek úložiště.
 
-Pokud nemůžete odebrat účet připojené nebo prostředek úložiště přes uživatelské rozhraní, můžete ručně odstranit všechny připojené prostředky tak, že odstraníte následující složky:
+Pokud se vám v uživatelském rozhraní nedaří odebrat připojený účet nebo prostředek úložiště, můžete ručně odstranit všechny připojené prostředky tak, že odstraníte následující složky:
 
 * Windows: `%AppData%/StorageExplorer`
 * macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
 * Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]
-> Zavřete Průzkumníka služby Storage před odstraněním výše uvedených složek.
+> Před odstraněním výše uvedených složek zavřete Průzkumník služby Storage.
 
 > [!NOTE]
-> Pokud jste dříve naimportovali jakékoli certifikáty SSL pak zálohovat obsah `certs` adresáře. Později můžete použít zálohování opětovné importování certifikátů SSL.
+> Pokud jste někdy importovali všechny certifikáty SSL, zazálohujte obsah `certs` adresáře. Později můžete pomocí zálohy znovu naimportovat své certifikáty SSL.
 
-## <a name="proxy-issues"></a>Problémy s proxy
+## <a name="proxy-issues"></a>Problémy s proxy serverem
 
-Nejprve se ujistěte, že jsou správně následující informace, které jste zadali:
+Nejprve se ujistěte, že jsou správné následující informace, které jste zadali:
 
 * Adresa URL proxy serveru a číslo portu
 * Uživatelské jméno a heslo v případě potřeby proxy serverem
@@ -180,58 +180,58 @@ Nejprve se ujistěte, že jsou správně následující informace, které jste z
 
 ### <a name="common-solutions"></a>Běžná řešení
 
-Pokud máte pořád problémy, zkuste následující metody pro řešení potíží:
+Pokud stále dochází k problémům, zkuste následující metody řešení potíží:
 
-* Pokud se můžete připojit k Internetu bez použití vašeho proxy serveru, ověřte, zda Průzkumníka služby Storage funguje bez nastavení proxy serveru povolené. Pokud je to tento případ, může být problém se vaše nastavení proxy serveru. Práce se správcem vaší proxy serveru a identifikovat problémy.
-* Ověřte, že dalších aplikací se proxy server fungovat podle očekávání.
-* Ověřte, že se můžete připojit k portálu pro prostředí Azure, které se snažíte použít
-* Ověřte, zda se zobrazila odpovědi z vašich koncových bodů služby. Zadejte jednu z vašeho koncového bodu adresy URL do prohlížeče. Pokud se můžete připojit, byste měli obdržet k InvalidQueryParameterValue nebo podobné odpovědi ve formátu XML.
-* Pokud někdo jiný používá také Průzkumníka služby Storage s proxy serverem, ověřte, že se můžou připojit. Pokud se mohou připojit, bude pravděpodobně nutné kontaktovat správce proxy serveru.
+* Pokud se můžete připojit k Internetu bez použití proxy serveru, ověřte, že Průzkumník služby Storage funguje bez povoleného nastavení proxy serveru. V takovém případě může dojít k potížím s nastavením proxy serveru. Pro identifikaci problémů Spolupracujte se správcem proxy serveru.
+* Ověřte, že další aplikace, které používají proxy server, fungují podle očekávání.
+* Ověřte, že se můžete připojit k portálu pro prostředí Azure, které se pokoušíte použít.
+* Ověřte, že můžete přijímat odpovědi z koncových bodů služby. Do prohlížeče zadejte jednu z adres URL koncového bodu. Pokud se můžete připojit, měli byste obdržet InvalidQueryParameterValue nebo podobnou odpověď XML.
+* Pokud Průzkumník služby Storage s proxy server používá i někdo jiný, ověřte, že se můžou připojit. Pokud se mohou připojit, bude pravděpodobně nutné kontaktovat správce proxy server.
 
 ### <a name="tools-for-diagnosing-issues"></a>Nástroje pro diagnostiku problémů
 
-Pokud máte síťové nástroje, jako je například Fiddleru pro Windows, můžete diagnostikovat problémy následujícím způsobem:
+Pokud máte síťové nástroje, například Fiddler pro Windows, můžete problémy diagnostikovat následujícím způsobem:
 
-* Pokud máte pro seznámení se základními váš proxy server, budete muset nakonfigurovat nástroj síťové připojení přes proxy server.
-* Zkontrolujte číslo portu používané nástrojem vaší sítě.
-* Zadejte adresu URL místního hostitele a číslo portu sítě nástroje jako nastavení proxy serveru v Průzkumníku služby Storage. Pokud jsou správně provedené, síťové nástroj spustí protokolování síťových požadavků provedených Průzkumníka služby Storage pro správu a koncových bodů služby. Zadejte například https://cawablobgrs.blob.core.windows.net/ pro koncový bod služby blob, a to v prohlížeči kde se zobrazí odpověď vypadá podobně jako následující text, který naznačuje, že prostředky existují, i když jste nejde získat přístup.
+* Pokud potřebujete pracovat přes proxy server, bude pravděpodobně nutné nakonfigurovat síťový nástroj pro připojení prostřednictvím proxy serveru.
+* Ověřte číslo portu používaného síťovým nástrojem.
+* Zadejte adresu URL místního hostitele a číslo portu nástroje sítě jako nastavení proxy serveru v Průzkumník služby Storage. Po správné práci nástroj sítě spustí protokolování požadavků sítě, které provedly Průzkumník služby Storage ke správě a koncovým bodům služby. Například zadejte https://cawablobgrs.blob.core.windows.net/ pro koncový bod objektu BLOB v prohlížeči a obdržíte odpověď podobnou následující, která naznačuje, že prostředek existuje, i když k němu nemáte přístup.
 
 ![Ukázka kódu](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
-### <a name="contact-proxy-server-admin"></a>Obraťte se na správce serveru proxy
+### <a name="contact-proxy-server-admin"></a>Kontaktujte správce proxy server
 
-Pokud vaše nastavení proxy serveru jsou správné, bude pravděpodobně nutné obraťte se na správce serveru proxy, a
+Pokud je vaše nastavení proxy serveru správné, možná budete muset kontaktovat správce proxy server a
 
-* Ujistěte se, že váš proxy server nebrání v provozu do koncových bodů Azure management nebo prostředek.
-* Zkontrolujte protokol ověřování používá proxy server. Průzkumník služby Storage v současné době nepodporuje proxy servery protokolu NTLM.
+* Ujistěte se, že proxy neblokuje provoz do koncových bodů prostředků nebo správy Azure.
+* Ověřte protokol ověřování používaný vaším proxy server. Průzkumník služby Storage v současné době nepodporuje proxy NTLM.
 
-## <a name="unable-to-retrieve-children-error-message"></a>Chybová zpráva "Nelze načíst podřízené položky"
+## <a name="unable-to-retrieve-children-error-message"></a>Chybová zpráva Nelze načíst podřízené položky.
 
-Pokud jste připojeni k Azure prostřednictvím proxy serveru, ověřte správnost nastavení serveru proxy. Pokud jste udělen přístup k prostředku od vlastníka předplatného nebo účtu, zkontrolujte, zda si přečetl(a) nebo seznamu oprávnění pro daný prostředek.
+Pokud jste připojení k Azure prostřednictvím proxy serveru, ověřte správnost nastavení proxy serveru. Pokud jste udělili přístup k prostředku z vlastníka předplatného nebo účtu, ověřte, že máte oprávnění číst nebo zobrazit seznam pro daný prostředek.
 
-## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>Připojovací řetězec nebude mít úplný nastavení konfigurace
+## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>Připojovací řetězec nemá kompletní konfigurační nastavení.
 
-Pokud se zobrazí tato chybová zpráva, je možné, že nemáte potřebná oprávnění k získání klíčů účtu úložiště. Pokud chcete potvrdit, pokud se jedná o tento případ, přejděte na portál a vyhledejte svůj účet úložiště. Můžete rychle to provedete kliknutím pravým tlačítkem na uzel účtu úložiště a kliknutím na "Otevřít v portál". Až to uděláte, přejděte do okna "Přístupových klíčů". Pokud nemáte oprávnění k zobrazení klíče, pak se zobrazí stránka se zprávou "Nemáte přístupová oprávnění". Chcete-li tento problém obejít, můžete získat klíče účtu z někdo jiný a připojit se název a klíč, nebo můžete požádat jiného pro SAS účtu úložiště a použít ho k připojení k účtu úložiště.
+Pokud se zobrazí tato chybová zpráva, je možné, že nemáte potřebná oprávnění k získání klíčů pro váš účet úložiště. Pokud se chcete ujistit, jestli se jedná o tento případ, přejděte na portál a vyhledejte svůj účet úložiště. To můžete rychle provést tak, že kliknete pravým tlačítkem na uzel svého účtu úložiště a kliknete na otevřít na portálu. Až to uděláte, přejděte do okna přístupové klíče. Pokud nemáte oprávnění k zobrazení klíčů, zobrazí se stránka se zprávou "nemáte přístup". Pokud chcete tento problém obejít, můžete buď získat klíč účtu od někoho jiného a připojit se s jeho jménem a klíčem, nebo můžete požádat někoho o SAS k účtu úložiště a použít ho k připojení účtu úložiště.
 
-Pokud se zobrazí klíče účtu, založte problém na Githubu, abychom mohli pomoct problém vyřešit.
+Pokud se zobrazí klíče účtu, založte problém na GitHubu, abychom vám mohli pomohli tento problém vyřešit.
 
 ## <a name="issues-with-sas-url"></a>Problémy s adresou URL SAS
 
 Pokud se připojujete ke službě pomocí adresy URL SAS a dochází k této chybě:
 
-* Ověřte, že adresa URL obsahuje potřebná oprávnění ke čtení nebo Vypíše prostředky.
-* Ověřte, že nevypršela platnost adresy URL.
-* Pokud zásadu přístupu podle adres URL SAS, ověřte nebyl odvolaný zásady přístupu.
+* Ověřte, že adresa URL poskytuje potřebná oprávnění ke čtení nebo vypsání prostředků.
+* Ověřte, že platnost adresy URL nevypršela.
+* Pokud je adresa URL SAS založená na zásadách přístupu, ověřte, že zásady přístupu nebyly odvolány.
 
-Pokud jste omylem připojen pomocí neplatné adresy URL SAS a nelze odpojit, postupujte podle těchto kroků:
+Pokud omylem připojíte neplatnou adresu URL SAS a nemůžete se odpojit, postupujte podle těchto kroků:
 
-1. Když spustíte Průzkumníka služby Storage, stisknutím klávesy F12 otevřete okno vývojářských nástrojů.
-2. Klikněte na kartě aplikace a pak klikněte na místní úložiště > file:// ve stromu na levé straně.
-3. Najdete klíč přidružený k typu služby problematické identifikátoru URI SAS. Například pokud chybný identifikátor URI SAS pro kontejner objektů blob, vyhledejte klíč s názvem `StorageExplorer_AddStorageServiceSAS_v1_blob`.
-4. Hodnota klíče musí být pole JSON. Najít objekt přidružený k chybný identifikátor URI a jeho odebrání.
-5. Stisknutím klávesy Ctrl + R znovu načíst Průzkumníka služby Storage.
+1. Při spuštění Průzkumník služby Storage otevřete okno vývojářské nástroje stisknutím klávesy F12.
+2. Klikněte na kartu aplikace a potom ve stromu vlevo klikněte na místní úložiště > file://.
+3. Vyhledejte klíč přidružený k typu služby problematického identifikátoru URI SAS. Pokud je například špatný identifikátor URI SAS pro kontejner objektů blob, vyhledejte klíč s názvem `StorageExplorer_AddStorageServiceSAS_v1_blob`.
+4. Hodnota klíče by měla být pole JSON. Najděte objekt přidružený ke špatnému identifikátoru URI a odeberte ho.
+5. Stisknutím kombinace kláves CTRL + R znovu načtěte Průzkumník služby Storage.
 
-## <a name="linux-dependencies"></a>Závislosti pro Linux
+## <a name="linux-dependencies"></a>Závislosti Linux
 
 <!-- Storage Explorer 1.9.0 and later is available as a snap from the Snap Store. The Storage Explorer snap installs all of its dependencies with no extra hassle.
 
@@ -244,31 +244,31 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 You can also download the application .tar.gz file, but you'll have to install dependencies manually. -->
 
 > [!IMPORTANT]
-> Jak je uvedeno v Průzkumníku služby Storage. tar.gz stažení je podporována pouze pro Ubuntu distribuce. Ostatní distribuce nebyly ověřeny a můžou vyžadovat alternativní nebo další balíčky.
+> Průzkumník služby Storage, jak je uvedeno v souborech. tar. gz, jsou podporovány pouze pro distribuce Ubuntu. Jiné distribuce nebyly ověřeny a mohou vyžadovat alternativní nebo další balíčky.
 
-Tyto balíčky jsou nejčastějších požadavků pro Průzkumníka služby Storage v Linuxu:
+Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storage v systému Linux:
 
-* [.NET Core 2.0 Runtime](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [Modul runtime .NET Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
 * `libgconf-2-4`
 * `libgnome-keyring0` Nebo `libgnome-keyring-dev`
 * `libgnome-keyring-common`
 
 > [!NOTE]
-> Průzkumník služby Storage verze 1.7.0 a dříve vyžadují rozhraní .NET Core 2.0. Pokud máte novější verzi .NET Core, nainstalovat a pak budete muset [oprava Průzkumníka služby Storage](#patching-storage-explorer-for-newer-versions-of-net-core). Pokud používáte Průzkumníka služby Storage 1.8.0 nebo větší potom byste měli moct využít .NET Core 2.2. Systémy novější než 2.2 nebyly ověřeny pro práci v tuto chvíli.
+> Průzkumník služby Storage verze 1.7.0 a starší vyžadují .NET Core 2,0. Pokud máte nainstalovanou novější verzi .NET Core, budete muset [Průzkumník služby Storage opravit](#patching-storage-explorer-for-newer-versions-of-net-core). Pokud používáte Průzkumník služby Storage 1.8.0 nebo novější, měli byste být schopni použít až .NET Core 2,2. Verze nad rámec 2,2 se neověřily, aby v tuto chvíli fungovaly.
 
 # <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
 
-1. Stáhněte si Průzkumníka služby Storage.
-2. Nainstalujte [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
+1. Stáhněte si Průzkumník služby Storage.
+2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
 3. Spusťte následující příkaz:
    ```bash
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
 
-# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18,04](#tab/1804)
 
-1. Stáhněte si Průzkumníka služby Storage.
-2. Nainstalujte [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
+1. Stáhněte si Průzkumník služby Storage.
+2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
 3. Spusťte následující příkaz:
    ```bash
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
@@ -276,8 +276,8 @@ Tyto balíčky jsou nejčastějších požadavků pro Průzkumníka služby Stor
 
 # <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
 
-1. Stáhněte si Průzkumníka služby Storage
-2. Nainstalujte [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
+1. Stáhnout Průzkumník služby Storage
+2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
 3. Spusťte následující příkaz:
    ```bash
    sudo apt install libgnome-keyring-dev
@@ -285,28 +285,29 @@ Tyto balíčky jsou nejčastějších požadavků pro Průzkumníka služby Stor
 
 # <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
 
-1. Stáhněte si Průzkumníka služby Storage
-2. Nainstalujte [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
+1. Stáhnout Průzkumník služby Storage
+2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
 3. Spusťte následující příkaz:
    ```bash
    sudo apt install libgnome-keyring-dev
    ```
+---
 
-### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Opravy Průzkumníka služby Storage pro .NET Core novější verze
+### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Oprava Průzkumník služby Storage pro novější verze .NET Core
 
-Storage Explorer 1.7.0 nebo starší, možná budete muset opravit verzi .NET Core používat Průzkumníka služby Storage.
+Pro Průzkumník služby Storage 1.7.0 nebo starší možná budete muset opravit verzi rozhraní .NET Core, kterou používá Průzkumník služby Storage.
 
-1. Stáhněte si verzi 1.5.43 StreamJsonRpc [z nugetu](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Vyhledejte "Stáhnout" odkaz na pravé straně stránky.
-2. Po stažení balíčku, změňte jeho příponu souboru z `.nupkg` k `.zip`.
-3. Rozbalte balíček.
+1. Stáhněte si 1.5.43 verze StreamJsonRpc [z NuGet](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Vyhledejte odkaz Stáhnout balíček na pravé straně stránky.
+2. Po stažení balíčku změňte jeho příponu z `.nupkg` na. `.zip`
+3. Rozbalíte balíček.
 4. Otevřít `streamjsonrpc.1.5.43/lib/netstandard1.1/` složky.
-5. Kopírování `StreamJsonRpc.dll` do následujícího umístění, ve složce Průzkumníka služby Storage:
+5. Zkopírujte `StreamJsonRpc.dll` do následujících umístění ve složce Průzkumník služby Storage:
    * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
    * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
-## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>Otevřít v Průzkumníku z webu Azure portal nebude fungovat.
+## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>Otevření v Průzkumníkovi z Azure Portal nefunguje
 
-Pokud pro vás nebude fungovat na tlačítko "Otevřít v Průzkumníku" na webu Azure portal, ujistěte se, že používáte kompatibilní prohlížeče. Následující prohlížeče byly testovány z hlediska kompatibility.
+Pokud na Azure Portal nefunguje tlačítko otevřít v Průzkumníkovi, ujistěte se, že používáte kompatibilní prohlížeč. Následující prohlížeče byly testovány na kompatibilitu.
 * Microsoft Edge
 * Mozilla Firefox
 * Google Chrome
@@ -314,6 +315,6 @@ Pokud pro vás nebude fungovat na tlačítko "Otevřít v Průzkumníku" na webu
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud žádná z řešení pro vás nejvhodnější, pak [otevřete problém na Githubu](https://github.com/Microsoft/AzureStorageExplorer/issues). Také rychle na GitHub, můžete získat pomocí tlačítka "Nahlásit problém do Githubu" v levém dolním rohu.
+Pokud žádná z řešení nefunguje za vás, [otevřete problém na GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues). K GitHubu se můžete také rychle dostat pomocí tlačítka "nahlásit problém do GitHubu" v levém dolním rohu.
 
 ![Zpětná vazba](./media/storage-explorer-troubleshooting/feedback-button.PNG)

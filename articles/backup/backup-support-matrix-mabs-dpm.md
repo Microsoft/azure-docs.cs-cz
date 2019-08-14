@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: c4d01c3c72669f7fbfd5b2d8df0678cc0675ccde
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7f890ddf7aff63189a720f3d604b00610af7a933
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639572"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949850"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 
@@ -55,7 +55,7 @@ Další informace:
 **Scénář** | **Agent** | **Location**
 --- | --- | ---
 **Zálohování místních počítačů a úloh** | DPM/MABS Protection Agent běží na počítačích, které chcete zálohovat.<br/><br/> Agent MARS na serveru DPM nebo MABS.<br/> Minimální verze agenta Microsoft Azure Recovery Services nebo agenta Azure Backup, který je vyžadován pro povolení této funkce, je 2.0.8719.0.  | DPM/MABS musí běžet místně.
-**Zálohování virtuálních počítačů a úloh Azure** | DPM/MABS Protection Agent na chráněném počítači.<br/><br/> Agent MARS na serveru DPM nebo MABS. | DPM/MABS musí běžet na virtuálním počítači Azure.
+
 
 ## <a name="supported-deployments"></a>Podporovaná nasazení
 
@@ -166,9 +166,9 @@ Následující tabulka shrnuje, co se dá zálohovat na MABS z místních počí
 **Windows Server 2012 R2 (Datacenter a Standard)**<br/><br/> 64/32 bitů | MABS v3, v2 | Místní/virtuální počítač Azure. | **Místní ochrana**: Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **VMprotection Azure**: Svazek, sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit. |
 **Windows Server 2012 s aktualizací SP1 (Datacenter a Standard)**<br/><br/> 64/32 bitů | MABS v3, v2 <br/><br/> Je třeba nainstalovat [rozhraní Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) . | Místní/virtuální počítač Azure. | **Místní ochrana**: Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálního počítače Azure**: Svazek, sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit. |
 **Windows 2008 R2 s aktualizací SP1 (Standard a Enterprise)**<br/><br/> 64/32 bitů | Podporováno systémem MABS v3, v2.<br/><br/> Je třeba nainstalovat [rozhraní Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) . | Místní/virtuální počítač Azure. |   **Místní ochrana**: Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálního počítače Azure**: Svazek, sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit. |
-**Windows 2008 R2 (Standard a Enterprise)**<br/><br/> 64/32 bitů | V případě MABS v2/V3 musí mít operační systém verzi SP1. | Místní/virtuální počítač Azure. | **Místní ochrana**: Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálního počítače Azure**: Svazek, sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit. |
-**Windows Server 2008 s aktualizací SP2**<br/><br/> 64/32 bitů | MABS v2, v3 | MABS v2 je podporováno, pokud je MABS nasazen jako virtuální počítač VMware.<br/><br/> Nepodporuje se pro MABS běžící na virtuálním počítači Azure. | Svazek, sdílená složka/složka/soubor; stav systému/holý počítač. |
-**Windows Storage Server 2008** | MABS v2, v3 | MABS jako místní fyzický server nebo virtuální počítač Hyper-V. <br/><br/> Nepodporuje se pro MABS běžící na virtuálním počítači Azure. | Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.
+**Windows 2008 R2 (Standard a Enterprise)**<br/><br/> 64/32 bitů | V případě MABS V3 musí v operačním systému běžet verze SP1. | Místní/virtuální počítač Azure. | **Místní ochrana**: Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálního počítače Azure**: Svazek, sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit. |
+**Windows Server 2008 s aktualizací SP2**<br/><br/> 64/32 bitů | MABS v3, v2 | MABS v2 je podporováno, pokud je MABS nasazen jako virtuální počítač VMware.<br/><br/> Nepodporuje se pro MABS běžící na virtuálním počítači Azure. | Svazek, sdílená složka/složka/soubor; stav systému/holý počítač. |
+**Windows Storage Server 2008** | MABS v3, v2 | MABS jako místní fyzický server nebo virtuální počítač Hyper-V. <br/><br/> Nepodporuje se pro MABS běžící na virtuálním počítači Azure. | Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.
 **SQL Server 2017** | MABS v3 | Místní/virtuální počítač Azure.| Zálohování databáze SQL Server.<br/><br/> Je podporováno zálohování clusteru SQL Server.<br/><br/>Databáze uložené v CSV nejsou podporovány. |
 **SQL Server 2016/2016 s aktualizací SP1** | MABS v3, v2 | Místní/virtuální počítač Azure.| Zálohování databáze SQL Server.<br/><br/> Je podporováno zálohování clusteru SQL Server.<br/><br/>Databáze uložené v CSV nejsou podporovány. |
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | MABS v3, v2 | Místní/virtuální počítač Azure.| Zálohování databáze SQL Server.<br/><br/> Je podporováno zálohování clusteru SQL Server.<br/><br/>Databáze uložené v CSV nejsou podporovány. |
@@ -210,7 +210,7 @@ Následující tabulka shrnuje, co je možné zálohovat do DPM z místních po�
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Další informace](backup-architecture.md#architecture-back-up-to-dpmmabs) o architektuře MABS
 - [Přečtěte si](backup-support-matrix-mars-agent.md) , co je podporováno pro agenta Mars.

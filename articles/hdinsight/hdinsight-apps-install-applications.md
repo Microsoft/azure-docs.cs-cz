@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9d25996db9c13a12781d369327f2b43a41fb4115
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 38b37b45964dd724b18f22a478be0d85a7036ce7
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786521"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946968"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací třetích stran Apache Hadoop v Azure HDInsight
 
@@ -25,22 +25,21 @@ Následující seznam uvádí publikované aplikace:
 
 |Aplikace |Typy clusteru | Popis |
 |---|---|---|
-|[Platforma AtScale informací](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/atscale.atscale) |Hadoop |AtScale se změní váš cluster HDInsight do serveru OLAP horizontální navýšení kapacity, umožňují dotazu miliard řádků dat interaktivně pomocí nástrojů BI, které už znáte, vlastní a máte rádi – a to z Microsoft Excelu, Power BI, Tableau Software QlikView. |
-|[CDAP pro HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP je první jednotnou integrační platformu pro velké objemy dat, které zrychluje času na hodnotu pro Hadoop a umožňuje IT k poskytování samoobslužných služeb data. Opensourcový a rozšiřitelné, CDAP odstraňuje bariéry inovace. Požadavky: 4 uzly oblasti, min D3 v2. |
-|[Datameer](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/datameer.datameer) |Hadoop |Datameer pro samoobslužné škálovatelností pro přípravu, zkoumat a kterými se řídí vaše data pro analýzu zrychluje zapnutí komplexní s více zdroji dat do cenné informace připravené pro potřeby doručování rychlejší a chytřejší vytváření přehledy v podnikovém měřítku. |
-|[Dataiku DSS v HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Dataiku DSS v enterprise platforma pro datovou vědu, která umožňuje datoví vědci a analytiky dat. spolupráce pro návrh a účinnějšímu nových dat produktů a služeb, zapnutí nezpracovaná data do zvládat předpovědi. |
-|[WANdisco Fusion HDI aplikace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop, Spark, HBase, Storm, Kafka |Konzistenci dat. v distribuovaném prostředí výzvou je i velké objemy dat operace. WANdisco Fusion, softwarové podnikové platformy tento problém řeší tím, že konzistence nestrukturovaných dat v jakémkoli prostředí. |
-|[H2O SparklingWater pro HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O Sparkling Water podporuje následující distribuované algoritmy: GLM, Naive Bayes, distribuované Random doménové struktury, přechod počítače zvýšení skóre, hluboké Neuronové sítě, obsáhlý learning K-means, PCA, zobecněný modely řazení s nízkou, detekce anomálií, Autoencoders. |
-|[Striim pro integraci dat v reálném čase pro HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/striim.hdinsightintegration) |Hadoop, HBase, Storm, Spark, Kafka |Striim (čteno "stream") je ukončení až do konce streamování integrace dat + platforma informací, povolení průběžného příjem, zpracování a analýzy různorodé datové proudy. |
-|[Zrychlení podnikových Jumbune BigData, Analytics](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Na vysoké úrovni Jumbune pomáhá podnikům o 1. Urychlení Tez, modul MapReduce a Spark na základě Hive, Java, Scala výkon úloh. 2. Proaktivní Cluster Hadoop, monitorování, 3. Vytvářejí se řízení kvality dat v systému souborů DFS. |
-|[Kyligence Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kyligence.kyligence) |Hadoop,HBase,Spark |Používá technologii analytické jádro Apache Kylin, umožňuje Kyligence Enterprise BI velkých objemů dat. Jako organizace modul OLAP v Hadoop Kyligence Enterprise dává obchodní analytička se navrhovat BI na systému Hadoop pomocí standardní datový sklad a metodologie BI. |
-|[Server úloh Spart pro prováděcí modul KNIME Spark](https://azuremarketplace.microsoft.com/marketplace/apps/knime.spark-job-server-for-knime-spark-executor) |Spark |Server úloh Spart pro prováděcí modul KNIME Spark se používá pro připojení ke clusterům HDInsight KNIME analytická platforma. |
-|[Hvězdice Presto pro Azure HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto je rychlé a škálovatelné distribuované modul dotazů SQL. Navržen k oddělení úložiště a výpočetního výkonu, je ideální pro dotazování na data v Azure Data Lake Storage, Azure Blob Storage, SQL a NoSQL databáze a další zdroje dat Presto. |
-|[Kolekce dat StreamSets pro HDInsight Cloud](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hdinsight Hadoop, HBase, Spark, Kafka |StreamSets Data Collector je jednoduchý, výkonný stroj, který datové proudy dat v reálném čase. Pomocí kolekcí dat trasy a zpracování dat v datových proudů. Obsahuje 30denní zkušební licenci. |
-|[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifacta.tr01) |Hadoop, Spark,HBase |Trifacta Wrangler Enterprise pro HDInsight podporuje tahání pro libovolné škálování dat dat na podnikové úrovni. Náklady na provozování Trifacta v Azure je kombinací Trifacta předplatné náklady a náklady na infrastrukturu Azure pro virtuální počítače. |
-|[Unifi datová platforma](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/unifi-software.unifi-data-catalog) |Hadoop, HBase, Storm, Spark |Datová platforma Unifi je bezproblémově integrovaná sada samoobslužné dat nástrojů pro posílení produktivity uživatelů business řešit problémy dat přírůstkové výnosy tuto jednotku, snížit náklady a složitost. |
-|[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |Unravel Data aplikace pro cluster HDInsight Spark. |
-|[Vodoryskou řízené AI Data Catalog](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/waterline_data.waterline_data) |Spark |Vodoryskou katalogů slouží k uspořádání a řídí data auto-tag dat s podmínkami podnikání pomocí AI. Vodoryskou vaší firmy chtějí katalogu je zásadní, součástí úspěch pro samoobslužné analýzy, dodržování předpisů a zásad správného řízení a iniciativy správy IT. |
+|[Platforma AtScale Intelligence](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/atscale.atscale) |Hadoop |AtScale zapíná cluster HDInsight do serveru OLAP se škálováním na více instancí, což vám umožní interaktivně dotazovat se na miliardy řádků dat pomocí nástrojů BI, které už znáte, vlastníte a máte rádi – od Microsoft Excelu, Power BI, Tableau software až QlikView. |
+|[CDAP pro HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP je první sjednocená integrační platforma pro velké objemy dat, která zrychluje dobu na hodnotu Hadoop a umožňuje IT oddělení poskytovat data samoobslužných služeb. Open Source a rozšiřitelné CDAP odstraňují překážky při inovacích. Požadavky: 4 uzly oblasti, min D3 v2. |
+|[Datameer](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/datameer.datameer) |Hadoop |Datameerá škálovatelná platforma pro přípravu, prozkoumávání a řízení vašich dat pro účely analýzy urychluje převádění složitých zdrojů dat na cenné informace připravené pro firmy. díky rychlejšímu poskytování lepších informací na podnikové úrovni. |
+|[Dataiku DSS ve službě HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Dataiku DSS pro podnikovou datovou vědeckou platformu, která umožňuje odborníkům přes data a analytikům v oblasti IT efektivněji navrhovat a spouštět nové datové produkty a služby a přepínat nezpracovaná data na ovlivněné předpovědi. |
+|[Aplikace HDI pro WANdisco Fusion](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop, Spark, HBA, více Kafka |Udržování dat konzistentních v distribuovaném prostředí je náročné na zpracování datových operací. WANdisco fúze, softwarová platforma na podnikové úrovni, řeší tento problém tím, že umožňuje nestrukturovaná konzistenci dat napříč jakýmkoli prostředím. |
+|[SparklingWater pro HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |Sparková voda podporuje následující distribuované algoritmy: GLM, Naive Bayes, distribuovaná náhodná doménová struktura, počítač pro vyvýšení přechodu, hluboké neuronové sítě, obsáhlý Learning, K-znamená, DPS, všeobecně nízké modely hodnocení anomálií, detekce anomálií, automatického kodéru. |
+|[Striim pro integraci dat v reálném čase do HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/striim.hdinsightintegration) |Hadoop, HBA, Kafka, Spark, |Striim ("Stream") je ucelená platforma pro integraci dat a datovou sadu, která umožňuje průběžné přijímání, zpracování a analýzu různorodých datových proudů. |
+|[Jumbune Enterprise – zrychlení BigData Analytics](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Jumbune pomáhá podnikům na vysoké úrovni – 1. Urychlení tez, MapReduce &ý podregistr založená na modulech Spark, Java a Scala úlohy. 2. Proaktivní monitorování clusteru Hadoop, 3. Vytváření správy kvality dat v systému souborů DFS. |
+|[Kyligence Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kyligence.kyligence) |Hadoop, HBA, Spark |Kyligence Enterprise, který využívá Apache Kylin, umožňuje BI na velkých objemech dat. Jako podnikový modul OLAP v systému Hadoop Kyligence Enterprise umožňuje obchodním analytikům architekt BI v systému Hadoop pomocí standardních datových skladů a metodologie BI. |
+|[Hvězdicový Presto pro Azure HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto je rychlý a Škálovatelný modul SQL pro distribuované dotazy. Navržen k oddělení úložiště a výpočetního výkonu, je ideální pro dotazování na data v Azure Data Lake Storage, Azure Blob Storage, SQL a NoSQL databáze a další zdroje dat Presto. |
+|[Kolekce dat StreamSets pro Cloud HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop, HBA, Spark, Kafka |StreamSets data collector je jednoduchý, výkonný modul, který streamuje data v reálném čase. Pomocí kolekce dat můžete směrovat a zpracovávat data v datových proudech. Obsahuje 30denní licenci na zkušební verzi. |
+|[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifacta.tr01) |Hadoop, Spark, HBA |Trifacta Wrangler Enterprise pro HDInsight podporuje datové tahání v podnikové síti pro libovolná škálování dat. Cena za provozování Trifacta v Azure je kombinací nákladů na předplatné Trifacta a náklady na infrastrukturu Azure pro virtuální počítače. |
+|[Datová platforma sjednocuje](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/unifi-software.unifi-data-catalog) |Hadoop, HBA, vyplavení, Spark |Datová platforma sjednocuje je bezproblémově integrovaná sada nástrojů samoobslužných dat, která slouží k tomu, aby firemnímu uživateli bylo možné řešit výzvy k datům, které jsou zaměřeny na přírůstkové výnosy, snižovat náklady nebo provozní složitost. |
+|[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |Unravel data App pro cluster HDInsight Spark. |
+|[Ponorová Data Catalog řízená v AI](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/waterline_data.waterline_data) |Spark |Vyčíslení katalogů, uspořádání a řízení dat pomocí AI k automatickému označení dat pomocí obchodních podmínek. Vodoryskou vaší firmy chtějí katalogu je zásadní, součástí úspěch pro samoobslužné analýzy, dodržování předpisů a zásad správného řízení a iniciativy správy IT. |
 
 Pokyny uvedené v tomto článku se týkají webu Azure Portal. Můžete také exportovat šablonu Azure Resource Manageru z portálu nebo získejte kopii souboru šablony Resource Manageru od dodavatelů a pomocí Azure Powershellu a rozhraní příkazového řádku Azure Classic k nasazení šablony.  Zobrazit [vytvořit Apache Hadoop clusterů v HDInsight pomocí šablon Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
@@ -54,19 +53,19 @@ Následující postup ukazuje, jak můžete instalovat aplikace HDInsight do exi
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo přejděte na **všechny služby** > **Analytics** > **clustery HDInsight**.
-3. Ze seznamu vyberte HDInsight cluster.  Pokud ho ještě nemáte, vytvořte ho.  Viz článek [Vytvoření clusterů](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
-4. V části **nastavení** vyberte **aplikací**. Zobrazí se seznam nainstalovaných aplikací v hlavním okně. 
+3. Ze seznamu vyberte cluster HDInsight.  Pokud ho ještě nemáte, vytvořte ho.  Viz článek [Vytvoření clusterů](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 
    
     ![Nabídka portálu pro aplikace HDInsight](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
-5. Vyberte **+ přidat** z nabídky. Zobrazí se seznam dostupných aplikací.  Pokud **+ přidat** zašedlé, že znamená, že se žádné aplikace pro tuto verzi clusteru HDInsight.
+5. V nabídce vyberte **+ Přidat** . Můžete zobrazit seznam dostupných aplikací.  Pokud je pole **+ Přidat** šedé, znamená to, že pro tuto verzi clusteru HDInsight nejsou k dispozici žádné aplikace.
    
     ![Dostupné aplikace aplikací HDInsight](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
-6. Vyberte jednu z dostupných aplikací a pak postupujte podle pokynů přijměte právní podmínky.
+6. Vyberte jednu z dostupných aplikací a podle pokynů přijměte právní podmínky.
 
-Zobrazí se stav instalace v oznámeních portálu (vyberte ikonu zvonku v horní části portálu). Po instalaci aplikace aplikace se zobrazí v seznamu nainstalované aplikace.
+Stav instalace můžete zobrazit z oznámení na portálu (vyberte ikonu zvonku v horní části portálu). Po instalaci aplikace aplikace se zobrazí v seznamu nainstalované aplikace.
 
 ## <a name="install-applications-during-cluster-creation"></a>Instalace aplikací při vytváření clusteru
-Během vytváření clusteru máte možnost instalace aplikací HDInsight. Během tohoto procesu se aplikace HDInsight instalují po vytvoření clusteru a jeho přechodu do spuštěného stavu. Instalace aplikací při vytváření clusteru pomocí webu Azure portal, můžete použít **vlastní** možnost místo výchozího **rychlé vytvoření** možnost.
+Během vytváření clusteru máte možnost instalace aplikací HDInsight. Během tohoto procesu se aplikace HDInsight instalují po vytvoření clusteru a jeho přechodu do spuštěného stavu. Chcete-li instalovat aplikace během vytváření clusteru pomocí Azure Portal, použijte místo výchozí možnosti **rychlé vytvoření** **vlastní** možnost.
 
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>Zobrazení seznamu nainstalovaných aplikací HDInsight a jejich vlastností
 Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlastnosti jednotlivých nainstalovaných aplikací.
@@ -75,19 +74,19 @@ Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlas
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo přejděte na **všechny služby** > **Analytics** > **clustery HDInsight**.
-3. Ze seznamu vyberte HDInsight cluster.
-4. V části **nastavení** vyberte **aplikací**. Zobrazí se seznam nainstalovaných aplikací v hlavním okně. 
+3. Ze seznamu vyberte cluster HDInsight.
+4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 
    
     ![Nainstalované aplikace aplikací HDInsight](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
-5. Vyberte jednu z nainstalovaných aplikací zobrazíte její vlastnosti. Seznamy vlastností:
+5. Vyberte jednu z nainstalovaných aplikací pro zobrazení vlastnosti. Seznamy vlastností:
 
     |Vlastnost | Popis |
     |---|---|
-    |App name (Název aplikace) |Název aplikace. |
-    |Stav |Stav aplikace. |
-    |Webová stránka |Adresa URL webové aplikace, kterou jste nasadili do hraničního uzlu. Přihlašovací údaje jsou stejné jako přihlašovací údaje uživatele protokolu HTTP, které jste nakonfigurovali pro cluster. |
-    |Koncový bod SSH |SSH můžete použít pro připojení k hraničnímu uzlu. Přihlašovací údaje SSH jsou stejné jako přihlašovací údaje uživatele SSH, které jste nakonfigurovali pro cluster. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
-    |Popis | Popis aplikace. |
+    |App name (Název aplikace) |Název aplikace |
+    |Stav |Stav aplikace |
+    |Webová stránka |Adresa URL webové aplikace, kterou jste nasadili na hraničním uzlu. Přihlašovací údaje jsou stejné jako přihlašovací údaje uživatele protokolu HTTP, které jste nakonfigurovali pro cluster. |
+    |Koncový bod SSH |Pomocí SSH se můžete připojit k hraničnímu uzlu. Přihlašovací údaje SSH jsou stejné jako přihlašovací údaje uživatele SSH, které jste nakonfigurovali pro cluster. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
+    |Popis | Popis aplikace |
 
 6. Pokud chcete odstranit aplikaci, klikněte pravým tlačítkem na aplikaci a pak klikněte na **odstranit** v místní nabídce.
 
@@ -101,8 +100,8 @@ Viz článek [Řešení potíží instalace](hdinsight-apps-install-custom-appli
 
 ## <a name="next-steps"></a>Další postup
 * [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se nasazovat nepublikované aplikace HDInsight do HDInsight.
-* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do Azure Marketplace.
-* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Zjistěte, jak definovat aplikace HDInsight.
+* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Přečtěte si, jak publikovat vlastní aplikace HDInsight do Azure Marketplace.
+* [MSDN: Instalace aplikace](https://msdn.microsoft.com/library/mt706515.aspx)HDInsight: Naučte se definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight v systému Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): další informace o použití akce skriptu k instalaci dalších aplikací.
 * [Vytvářet clustery založené na Linuxu Apache Hadoop v HDInsight pomocí šablon Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Zjistěte, jak voláním šablon Resource Manageru vytvoříte clustery HDInsight.
 * [Použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md): Zjistěte, jak lze pomocí prázdných hraničních uzlů přistupovat ke clusteru HDInsight, testovat aplikace HDInsight a hostovat aplikace HDInsight.
