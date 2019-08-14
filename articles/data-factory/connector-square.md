@@ -44,7 +44,7 @@ Následující části obsahují podrobnosti o vlastnostech, které se používa
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Čtvercové** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Square** | Ano |
 | host | Adresa URL instance čtvereček. (to znamená mystore.mysquare.com)  | Ano |
 | clientId | ID klienta přidružené k aplikaci čtvereček.  | Ano |
 | clientSecret | Tajný kód klienta přidružené k aplikaci čtvereček. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
