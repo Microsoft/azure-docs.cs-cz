@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 08/12/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: ca42532fe6ba954180ce06ed0e3561e42f1fb447
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9e3159a083d21e4a7a81df2fcf7a7d5db882b757
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424232"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976915"
 ---
 ::: zone target="docs"
 
@@ -109,12 +109,9 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
 1. Jako informace o odesílateli napište název vaší společnosti a uveďte informace na zásilce.
 2. Odešlete e-mailem Quantium řešení pomocí následující e-mailové šablony.
 
-    - V případě, že se v tomto e-mailu nezahrnula Poznámka k odeslání do Japonska nebo Chakubarai, Poznámka: Quantium Solutions Japonsko bude požádat o zveřejnění příspěvku za účelem uvedení poznámky k expedici na vyzvednutí.
-    - Pokud máte více objednávek, e-mailem zajistěte individuální vyzvednutí.
-
     ```
     To: Customerservice.JP@quantiumsolutions.com
-    Subject: Pickup request for Azure Data Box Disk｜Job Name： 
+    Subject: Pickup request for Microsoft Azure Data Box Disk｜Job Name： 
     Body: 
     - Japan Post Yu-Pack tracking number (reference number)：
     - Requested pickup date：mmdd (Select a requested time slot from below).
@@ -123,6 +120,9 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
         c. 15：00-17：00 
         d. 17：00-19：00 
     ```
+    - **Pokud vybíráte v rámci aplikace Ósaka**, upravte předmět v e-mailové šabloně na `Pickup request for Microsoft Azure OSA`:.
+    - V případě, že se v tomto e-mailu nezahrnula Poznámka k odeslání do Japonska nebo Chakubarai, Poznámka: Quantium Solutions Japonsko bude požádat o zveřejnění příspěvku za účelem uvedení poznámky k expedici na vyzvednutí.
+    - Pokud máte více objednávek, e-mailem zajistěte individuální vyzvednutí.
 
 3. Po zapsání vyzvednutí obdržíte e-mailové potvrzení z řešení Quantium. Potvrzení e-mailu obsahuje také informace o Chakubarai zásilce.
 

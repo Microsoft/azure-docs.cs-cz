@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: be6a402673fd2d3ba01451c6ea04e723cbdfa292
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 5b2e2c51eaa878ba0ce8bc31c001575acebe6919
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597502"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967551"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Úvod do služby Azure Cosmos DB: Rozhraní Table API
 
@@ -58,8 +58,8 @@ Tady jsou odkazy na informace, které vám pomůžou začít:
 * [Vývoj pomocí rozhraní API tabulky v .NET](tutorial-develop-table-dotnet.md)
 * [Dotazování tabulkových dat pomocí rozhraní API tabulky](tutorial-query-table.md)
 * [Informace o nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní API tabulky](tutorial-global-distribution-table.md)
-* [Rozhraní .NET API tabulky Azure Cosmos DB](table-sdk-dotnet.md)
-* [Rozhraní Java API tabulky Azure Cosmos DB](table-sdk-java.md)
-* [Rozhraní Node.js API tabulky Azure Cosmos DB](table-sdk-nodejs.md)
+* [Sada SDK pro .NET Standard Azure Cosmos DB Table](table-sdk-dotnet-standard.md)
+* [Azure Cosmos DB tabulka .NET SDK](table-sdk-dotnet.md)
+* [Azure Cosmos DB tabulka Java SDK](table-sdk-java.md)
+* [Sada SDK pro Node. js Azure Cosmos DB tabulce](table-sdk-nodejs.md)
 * [Sada SDK tabulky Azure Cosmos DB pro Python](table-sdk-python.md)
-

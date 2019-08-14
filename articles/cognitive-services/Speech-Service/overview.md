@@ -1,7 +1,7 @@
 ---
-title: Co je služba Speech?
+title: Co jsou služby Speech?
 titleSuffix: Azure Cognitive Services
-description: Služba rozpoznávání řeči je sjednocení převodu řeči na text, převod textu na řeč a rozpoznávání řeči do jednoho předplatného Azure. Pomocí sady Speech SDK, zařízení Speech SDK nebo rozhraní REST API můžete snadno přidat řeč aplikací, nástrojů a zařízení. Přidejte funkci rozpoznávání řeči do existujícího robota chatu, převeďte převod textu na řeč v aplikaci pro překlad nebo přepisovat velké objemy dat z centra volání.
+description: Služba Speech Services představuje sjednocení převodu řeči na text, převod textu na řeč a rozpoznávání řeči do jednoho předplatného Azure. Pomocí sady Speech SDK, zařízení Speech SDK nebo rozhraní REST API můžete snadno přidat řeč aplikací, nástrojů a zařízení. Přidejte funkci rozpoznávání řeči do existujícího robota chatu, převeďte převod textu na řeč v aplikaci pro překlad nebo přepisovat velké objemy dat z centra volání.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d722d7e2886008aa5aa3acff8095fcf35ac38d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4ea6f04dbfd18a6e561a255988ba0465b9e017be
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554184"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967608"
 ---
 # <a name="what-are-the-speech-services"></a>Co jsou služby Speech?
 
-Služba Azure Speech Services představuje sjednocení převodu řeči na text, převod textu na řeč a převod řeči do jednoho předplatného Azure. Rozpoznávání řeči umožňuje používat aplikace, nástroje a zařízení pomocí [sady Speech SDK](speech-sdk-reference.md), [zařízení Speech SDK](https://aka.ms/sdsdk-quickstart)nebo [rozhraní REST API](rest-apis.md).
+Služba Speech Services představuje sjednocení převodu řeči na text, převod textu na řeč a rozpoznávání řeči do jednoho předplatného Azure. Rozpoznávání řeči umožňuje používat aplikace, nástroje a zařízení pomocí [sady Speech SDK](speech-sdk-reference.md), [zařízení Speech SDK](https://aka.ms/sdsdk-quickstart)nebo [rozhraní REST API](rest-apis.md).
 
 > [!IMPORTANT]
 > Služba Speech Services nahradila rozhraní API pro zpracování řeči Bingu, Translator Speech a Custom Speech. Pokyny k migraci najdete v tématu *Průvodce postupy > migrace* .
@@ -41,14 +41,14 @@ Tyto funkce tvoří službu Azure Speech Services. Pomocí odkazů v této tabul
 
 Zjistěte, co je nového ve službě Azure Speech Services.
 
+* Srpen 2019
+  * **Nový kurz**: [Hlasový vstup vám umožní pomocí sady Speech SDK,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 * Červeně 2019
-    * Vydaná sada Speech SDK 1.6.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v poznámkách k [verzi](releasenotes.md).
+  * Vydaná sada Speech SDK 1.6.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v poznámkách k [verzi](releasenotes.md).
 * Květen 2019 – dokumentace je nyní k dispozici pro [přepis konverzace](conversation-transcription-service.md), [přepisy centra volání](call-center-transcription.md)a pro [virtuální asistenty hlasu First](voice-first-virtual-assistants.md).
 * Květen 2019
-    * Vydaná sada Speech SDK 1.5.1. Úplný seznam aktualizací, vylepšení a známých problémů najdete v poznámkách k [verzi](releasenotes.md).
-    * Vydaná sada Speech SDK 1.5.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v poznámkách k [verzi](releasenotes.md).
-* Duben 2019 – vydává sadu Speech SDK 1.4.0 s podporou pro převod textu na řeč (beta) C++pro C#, a Java v systémech Windows a Linux. Sada SDK teď navíc podporuje zvukové formáty MP3 a Opus/Ogg pro C++ systémy a C# na platformě Linux. Úplný seznam aktualizací, vylepšení a známých problémů najdete v poznámkách k [verzi](releasenotes.md).
-* Března 2019 – k dispozici je nový koncový bod pro převod textu na řeč (TTS), který vrátí úplný seznam hlasů dostupných v konkrétní oblasti. Kromě toho se teď pro TTS podporují nové oblasti. Další informace najdete v referenčních informacích [k rozhraní API pro převod textu na řeč (REST)](rest-text-to-speech.md).
+  * Vydaná sada Speech SDK 1.5.1. Úplný seznam aktualizací, vylepšení a známých problémů najdete v poznámkách k [verzi](releasenotes.md).
+  * Vydaná sada Speech SDK 1.5.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v poznámkách k [verzi](releasenotes.md).
 
 ## <a name="try-speech-services"></a>Vyzkoušejte hlasové služby
 
@@ -67,6 +67,7 @@ Nabízíme rychlé zprovoznění v nejoblíbenějších programovacích jazycíc
 Až budete mít možnost používat služby pro rozpoznávání řeči, vyzkoušejte náš kurz, který vás učí, jak rozpoznávat záměry pomocí sady Speech SDK a LUIS.
 
 * [Kurz: Rozpoznávání záměrů od řeči pomocí sady Speech SDK a LUIS,C#](how-to-recognize-intents-from-speech-csharp.md)
+* [Kurz: Hlasový vstup vám umožní pomocí sady Speech SDK,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 * [Kurz: Sestavte aplikaci v baňce pro překlad textu, analyzujte mínění a syntetizujte přeložený text na řeč, REST](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
 ## <a name="get-sample-code"></a>Získání vzorového kódu
@@ -76,6 +77,7 @@ Vzorový kód je k dispozici na GitHubu pro každou službu Azure Speech Service
 * [Ukázky převodu řeči na text, převod textu na řeč a rozpoznávání řeči (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [Ukázky pro dávková přepisy (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 * [Ukázky převodu textu na řeč (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+* [Ukázka hlasu prvního virtuálního pomocníka (SDK)](https://aka.ms/csspeech/samples)
 
 ## <a name="customize-your-speech-experience"></a>Přizpůsobení prostředí pro rozpoznávání řeči
 
@@ -96,7 +98,7 @@ Služba Azure Speech Services dobře funguje s integrovanými modely, ale možn�
 * [REST API: Převod textu na řeč](rest-text-to-speech.md)
 * [REST API: Přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Získat klíč předplatného služby Speech Services zdarma](get-started.md)

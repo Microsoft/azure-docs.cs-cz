@@ -1,9 +1,9 @@
 ---
-title: Kurz – protokoluje archivu Azure Active Directory do účtu úložiště | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit Azure Diagnostics tak, aby nabízel protokoly služby Azure Active Directory do účtu úložiště
+title: Kurz – archivace Azure Active Directory protokolů do účtu úložiště | Microsoft Docs
+description: Přečtěte si, jak nastavit Azure Diagnostics pro odesílání Azure Active Directory protokolů do účtu úložiště.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0198fe1ce61c8f78e315d1166a7ea03aae20d592
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d98fb0677b864fccfb5abd2b08381db1bd1c9c8f
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437515"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989741"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Kurz: Archivovat protokoly služby Azure AD pro účet úložiště Azure
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Kurz: Archivace protokolů služby Azure AD do účtu služby Azure Storage
 
 V tomto kurzu se dozvíte, jak nastavit diagnostiku ve službě Azure Monitor na směrování protokolů Azure Active Directory (Azure AD) do účtu úložiště Azure.
 
@@ -49,7 +49,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
    * Pokud chcete přidat nové nastavení, vyberte **Přidat nastavení diagnostiky**.  
      Můžete mít až tři nastavení. 
 
-     ![Export nastavení](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
+     ![Exportovat nastavení](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
 
 5. Zadejte pro nastavení popisný název, který vám bude připomínat jeho účel (například *Odeslání do účtu úložiště Azure*). 
 
@@ -73,7 +73,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
     ![Účet úložiště](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Interpretace schématu protokolů auditu ve službě Azure Monitor](reference-azure-monitor-audit-log-schema.md)
 * [Interpretace schématu protokolů přihlášení ve službě Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md)

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace Java na platformě Service Fabric v Azure | Microsoft Docs
+title: 'Kurz: Vytvoření aplikace Java v Azure Service Fabric'
 description: V tomto kurzu se dozvíte, jak vytvořit aplikaci spolehlivé služby v Javě s front-endem a stavovým back-endem spolehlivé služby a jak tuto aplikaci nasadit do clusteru.
 services: service-fabric
 documentationcenter: java
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 0a937fcb3b603a6bed97ba12533ebc965c2c8089
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: mvc, seo-java-august2019
+ms.openlocfilehash: 3601bcfbb812dc9f8ee893cc1c88eb8eebce485f
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847642"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963963"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Kurz: Vytvoření aplikace s front-end službou Java Web API a stavovou back-end službou v Service Fabric
 
@@ -914,7 +914,7 @@ V tuto chvíli je aplikace připravená k nasazení do místního clusteru Servi
 5. V okně **publikovat aplikaci** vyberte v rozevíracím seznamu **místní. JSON** a vyberte **publikovat**.
 6. Přejděte do webového prohlížeče a přihlaste se\/k http:/localhost: 8080 pro zobrazení spuštěné aplikace v místním clusteru Service Fabric. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této části kurzu jste se naučili:
 

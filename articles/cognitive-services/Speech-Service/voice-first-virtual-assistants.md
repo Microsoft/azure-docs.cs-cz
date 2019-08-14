@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 8a12c9e5d569092440552958554681c0b1d79590
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f77a95af1edcd37043ea1e067560577140a81a04
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552545"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967591"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>O vlastních hlasech pro virtuální asistenty ve verzi Preview
 
@@ -36,14 +36,25 @@ Přímý line Speech a jeho přidružená funkce pro vlastní virtuální asiste
 |[Převod textu na řeč](text-to-speech.md) | Textové odpovědi z robota se budou syntetizovat pomocí převodu [textu na řeč](text-to-speech.md) z Azure Speech Services. Tato syntéza pak bude zpřístupněna klientské aplikaci jako zvukový datový proud. Microsoft nabízí možnost vytvářet vlastní a vysoce kvalitní hlas neuronové TTS, který poskytuje hlas k vaší značce, a dozví se, jak [nás kontaktovat](mailto:mstts@microsoft.com).
 |[Přímý line – řeč](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | V rámci kanálu v rámci rozhraní bot je přímým vstupem na řeč umožněno hladké a bezproblémové propojení mezi klientskou aplikací, kompatibilní robotem a možnostmi služby Azure Speech Services. Další informace o konfiguraci robota pro použití kanálu přímým line Speech najdete na [stránce v dokumentaci k rozhraní bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
+## <a name="get-started-with-virtual-assistants"></a>Začínáme s virtuálními asistenty
+
+Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za méně než 10 minut. Tato tabulka obsahuje seznam rychlých startů pro virtuální asistenty, které jsou uspořádány podle jazyka.
+
+| Rychlý start | Platforma | API – referenční informace |
+|------------|----------|---------------|
+| C#, UWP | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Procházet](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Procházet](https://aka.ms/csspeech/javaref) |
+
 ## <a name="sample-code"></a>Ukázka kódu
 
 Vzorový kód pro vytvoření virtuálního asistenta prvního hlasu je k dispozici na GitHubu. Tyto ukázky zahrnují klientskou aplikaci pro připojení k robotovi v několika oblíbených programovacích jazycích.
 
 * [Ukázka hlasu prvního virtuálního pomocníka (SDK)](https://aka.ms/csspeech/samples)
-* [Rychlý Start: virtuální asistenti prvního hlasuC#()](quickstart-virtual-assistant-csharp-uwp.md)
-* [Rychlý Start: virtuální asistenti, kteří jsou první hlas (Java)](quickstart-virtual-assistant-java-jre.md)
-* [Klient Direct line Speech (C#, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
+* [Kurz: Hlasový vstup vám umožní pomocí sady Speech SDK,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+
+## <a name="tutorial"></a>Kurz
+V tomto kurzu se naučíte, jak pomocí hlasových sad pro [rozpoznávání řeči a přímého kanálu s přímým přístupem ke svým robotům zapnout hlas](tutorial-voice-enable-your-bot-speech-sdk.md).
 
 ## <a name="customization"></a>Přizpůsobení
 
@@ -57,7 +68,7 @@ Pomocí služby Azure Speech Services můžete využít celou řadu možností p
 * [Speech SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
 * [Získat sadu Speech SDK](speech-sdk.md)

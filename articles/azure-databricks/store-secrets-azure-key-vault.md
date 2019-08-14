@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 4d80755cdf49246a8772cca82e2a71c6cccbf13a
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 45c5be8b203daf21697f3cb6dad4ecadb6449339
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371212"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976512"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Kurz: Přístup k Azure Blob Storage z Azure Databricks pomocí Azure Key Vault
 
@@ -32,7 +32,11 @@ V tomto kurzu se naučíte:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Tento kurz se nedá provést pomocí předplatného bezplatné zkušební verze Azure. Před vytvořením clusteru přejděte do svého profilu a změňte předplatné na průběžné **platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+
+> [!Note]
+> Tento kurz se nedá provést pomocí předplatného **Azure free zkušební verze**.
+> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na průběžné **platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)a požádejte o [zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Vytvoření účtu úložiště a kontejneru objektů BLOB
 
@@ -87,7 +91,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Tento kurz se ne
 
 5. Na stránce **vytvořit tajný kód** zadejte následující informace a u zbývajících polí nechte výchozí hodnoty:
 
-   |Vlastnost|Hodnota|
+   |Vlastnost|Value|
    |--------|-----------|
    |Možnosti nahrání|Ručně|
    |Name|Popisný název klíče účtu úložiště|

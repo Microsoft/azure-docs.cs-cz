@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.author: t-meroa
-ms.openlocfilehash: 4b2bdc1a2babadbe5cb7f12135de0eaef8557a97
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
-ms.translationtype: HT
+ms.openlocfilehash: 64b3cab857a541d0bede88e7fdf21c00526b9a43
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950797"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965143"
 ---
 # <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>Rychlý start: Vytvořte aplikaci pro iOS, která spustí moderní čtečku (SWIFT).
 
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
-V tomto rychlém startu vytvoříte aplikaci pro iOS od začátku a integrujete moderní čtečku pomocí sady moderního čtecího zařízení. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/iOS/samples/quickstart-swift).
+V tomto rychlém startu vytvoříte aplikaci pro iOS od začátku a integrujete moderní čtečku pomocí sady moderního čtecího zařízení. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/quickstart-swift).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -43,7 +43,7 @@ Vyberte **aplikaci s jedním zobrazením**.
 Nejjednodušší způsob, jak použít sadu moderního čtecího zařízení sady SDK, je prostřednictvím CocoaPods. Instalace prostřednictvím Cocoapods:
 1. [Instalace Cocoapods](http://guides.cocoapods.org/using/getting-started.html) – postupujte podle příručky Začínáme a nainstalujte Cocoapods.
 2. Vytvořte souboru podfile spuštěním `pod init` v kořenovém adresáři vašeho projektu Xcode.
-3.  Přidejte CocoaPod do svého souboru podfile `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/iOS/immersive-reader-sdk'`přidáním. Váš Pofile by měl vypadat jako v následujícím seznamu s názvem vašeho cíle, který nahrazuje rychlé spuštění-SWIFT:
+3.  Přidejte CocoaPod do svého souboru podfile `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'`přidáním. Váš Pofile by měl vypadat jako v následujícím seznamu s názvem vašeho cíle, který nahrazuje rychlé spuštění-SWIFT:
  ```ruby
   platform :ios, '9.0'
 
@@ -102,4 +102,4 @@ Po kliknutí na tlačítko "moderní čtenář" se zobrazí moderní čtečka, k
 
 ## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte [sadu moderního čtecího zařízení pro iOS SDK](https://github.com/microsoft/immersive-reader-sdk/iOS) a [referenční informace pro moderní ČTEČKu iOS SDK](./ios-reference.md)
+* Prozkoumejte [sadu moderního čtecího zařízení pro iOS SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) a [referenční informace pro moderní ČTEČKu iOS SDK](./ios-reference.md)

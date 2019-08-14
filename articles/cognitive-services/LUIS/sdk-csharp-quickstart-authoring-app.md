@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/17/2019
+ms.date: 08/12/2019
 ms.author: diberry
-ms.openlocfilehash: 19eeb396536925d9667c8dddb09bea779de79555
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 11f40d99a36493272cb6cd51e4a339c19cd0358b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707184"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966734"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Rychlý start: Klientská knihovna pro vytváření Language Understanding (LUIS) pro .NET
 
@@ -75,7 +75,7 @@ Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovan
 V adresáři aplikace nainstalujte Language Understanding (LUIS) pro vytváření klientských knihoven pro .NET pomocí následujícího příkazu:
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring -Version 3.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring --version 3.0.0
 ```
 
 Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio, je knihovna klienta k dispozici jako balíček NuGet ke stažení.
@@ -206,4 +206,4 @@ Pokud chcete vyčistit, můžete aplikaci LUIS odstranit. Odstranění aplikace 
 * [Co je rozhraní API pro Language Understanding (LUIS)?](what-is-luis.md)
 * [Co je nového?](whats-new.md)
 * [Záměry](luis-concept-intent.md), [entity](luis-concept-entity-types.md)a [Příklady projevy](luis-concept-utterance.md)a [předem připravených entit](luis-reference-prebuilt-entities.md)
-* Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: c38a3e21b9533307d8cac9d467972831080c1a48
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 117b6d53a3392e8a4f75d5d1966e3f48fb66d5ce
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946981"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966414"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn 
 V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načítá rozdílová data na základě **sledování změn** ve zdrojové databázi Azure SQL do úložiště objektů blob Azure.  
@@ -370,7 +370,7 @@ V tomto kroku vytvoříte datovou sadu pro uložení verze sledování změn.
     ```
 
     Jako součást požadavků vytvoříte tabulku table_store_ChangeTracking_version.
-2.  Spuštěním rutiny Set-AzDataFactoryV2Dataset Vytvořte datovou sadu: WatermarkDataset
+2.  Spuštěním rutiny Set-AzDataFactoryV2Dataset Vytvořte datovou sadu: ChangeTrackingDataset
     
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"

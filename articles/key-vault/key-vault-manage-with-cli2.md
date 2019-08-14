@@ -1,86 +1,85 @@
 ---
-title: Správa služby Azure Key Vault pomocí rozhraní příkazového řádku – Azure Key Vault | Dokumentace Microsoftu
-description: V tomto článku použijte k automatizaci běžných úkolů ve službě Key Vault pomocí rozhraní příkazového řádku Azure
+title: Správa Azure Key Vault pomocí rozhraní příkazového řádku Azure Key Vault | Microsoft Docs
+description: Tento článek slouží k automatizaci běžných úloh v Key Vault pomocí rozhraní příkazového řádku Azure.
 services: key-vault
-author: barclayn
-manager: barbkess
-tags: azure-resource-manager
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: barclayn
-ms.openlocfilehash: d7d76458601b2afecafc1313e334215bf08b6545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: tutorial
+ms.date: 08/12/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 952126b76b00ff472181c72b1fd7b1a0e1b14e40
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713848"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976351"
 ---
-# <a name="manage-key-vault-using-the-azure-cli"></a>Správa služby Key Vault pomocí rozhraní příkazového řádku Azure 
+# <a name="manage-key-vault-using-the-azure-cli"></a>Správa Key Vault pomocí Azure CLI 
 
-Tento článek popisuje, jak začít pracovat se službou Azure Key Vault pomocí rozhraní příkazového řádku Azure.  Můžete zobrazit informace na:
+Tento článek popisuje, jak začít pracovat s Azure Key Vault pomocí Azure CLI.  Můžete si prohlédnout následující informace:
 
 - Jak v Azure vytvořit zesílený kontejner (trezor)
-- Přidání klíče, tajné nebo certifikát do služby key vault
-- Registrace aplikace v Azure Active Directory
+- Přidání klíče, tajného klíče nebo certifikátu do trezoru klíčů
+- Registrace aplikace pomocí Azure Active Directory
 - Autorizace aplikace pro použití klíče nebo tajného klíče
-- Nastavení trezoru klíčů pokročilé zásady přístupu
+- Nastavují se zásady rozšířeného přístupu trezoru klíčů.
 - Práce s moduly hardwarového zabezpečení (HSM)
-- Odstraňuje se trezor klíčů, přidružených klíčů a tajných kódů
-- Příkazy různé rozhraní příkazového řádku Azure Cross-Platform
+- Odstranění trezoru klíčů a přidružených klíčů a tajných klíčů
+- Různé příkazy rozhraní příkazového řádku pro více platforem Azure
 
 
 Azure Key Vault je dostupný ve většině oblastí. Další informace najdete na [stránce s cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
 
 > [!NOTE]
-> Tento článek neobsahuje pokyny, jak psát aplikace Azure, jedním z kroků obsahuje, který ukazuje, jak autorizovat aplikaci pro použití klíče nebo tajného klíče v trezoru klíčů.
+> Tento článek neobsahuje pokyny, jak napsat aplikaci Azure, kterou zahrnuje některý z kroků, který ukazuje, jak autorizovat aplikaci pro použití klíče nebo tajného klíče v trezoru klíčů.
 >
 
-Přehled služby Azure Key Vault najdete v tématu [co je Azure Key Vault?](key-vault-whatis.md)
+Přehled Azure Key Vault najdete v tématu [co je Azure Key Vault?](key-vault-whatis.md)
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Použití příkazů rozhraní příkazového řádku Azure v tomto článku, musíte mít následující položky:
+Pokud chcete používat příkazy rozhraní příkazového řádku Azure CLI v tomto článku, musíte mít následující položky:
 
 * Předplatné Microsoft Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial).
-* Rozhraní příkazového řádku Azure verze 2.0 nebo novější. Pokud chcete nainstalovat nejnovější verzi, najdete v článku [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
-* Aplikace, která nakonfigurujete pro použití klíče nebo hesla, které vytvoříte v tomto článku. Vzorová aplikace je k dispozici ve službě [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45343). Pokyny najdete v tématu zahrnutý soubor Readme.
+* Rozhraní příkazového řádku Azure verze 2,0 nebo novější. Informace o instalaci nejnovější verze najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+* Aplikace, která bude nakonfigurována pro použití klíče nebo hesla, které vytvoříte v tomto článku. Vzorová aplikace je k dispozici ve službě [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45343). Pokyny najdete v zahrnutém souboru Readme.
 
-### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Získání nápovědy pomocí rozhraní příkazového řádku Azure Cross-Platform
+### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Získání nápovědě k rozhraní příkazového řádku pro více platforem Azure
 
-Tento článek předpokládá, že jste obeznámeni s rozhraním příkazového řádku (Bash, terminálu, příkazový řádek).
+V tomto článku se předpokládá, že jste obeznámeni s rozhraním příkazového řádku (bash, terminál, příkazový řádek).
 
---Pomoc nebo -h parametr je možné zobrazit nápovědu k určité příkazy. Alternativně Azure help [příkaz] [možnosti] formátu lze použít také příliš. Pokud máte pochybnosti o parametry vyžadované příkazu, najdete v nápovědě. Například následující příkazy, které se všechny vrátí stejné informace:
+Parametr--help nebo-h lze použít k zobrazení nápovědu pro konkrétní příkazy. Alternativně lze také použít formát Azure Help [příkaz] [možnosti]. Pokud si nejste jistí, jaké parametry potřebuje příkaz, podívejte se na nápovědu. Například následující příkazy vrátí stejné informace:
 
 ```azurecli
 az account set --help
 az account set -h
 ```
 
-Také si můžete přečíst následující články a seznamte se s Azure Resource Managerem v rozhraní příkazového řádku Azure Cross-Platform:
+Můžete si také přečíst následující články, které vám pomůžou seznámit se s Azure Resource Manager v rozhraní příkazového řádku pro více platforem Azure:
 
 * [Instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli)
 * [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli)
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Jak v Azure vytvořit zesílený kontejner (trezor)
 
-Trezory služby jsou zabezpečené kontejnery se opírá o modulech hardwarového zabezpečení. Trezory pomáhají snížit riziko nechtěné ztráty informací o zabezpečení tím, že centralizují ukládání tajných klíčů aplikací. Trezory klíčů také řídí a protokolují přístup ke všem položkám, které jsou v nich uložené. Azure Key Vault může zpracovávat žádosti o certifikáty TLS (Transport Layer Security) a jejich obnovování a poskytuje funkce potřebné pro robustní řešení správy životního cyklu certifikátů. V dalších krocích vytvoříte trezor.
+Trezory jsou zabezpečené kontejnery zajištěné moduly hardwarového zabezpečení. Trezory pomáhají snížit riziko nechtěné ztráty informací o zabezpečení tím, že centralizují ukládání tajných klíčů aplikací. Trezory klíčů také řídí a protokolují přístup ke všem položkám, které jsou v nich uložené. Azure Key Vault může zpracovávat žádosti o certifikáty TLS (Transport Layer Security) a jejich obnovování a poskytuje funkce potřebné pro robustní řešení správy životního cyklu certifikátů. V dalších krocích vytvoříte trezor.
 
 ### <a name="connect-to-your-subscriptions"></a>Připojte se ke svým předplatným
 
-Interaktivní přihlášení, použijte následující příkaz:
+Pokud se chcete interaktivně přihlásit, použijte následující příkaz:
 
 ```azurecli
 az login
 ```
-K přihlášení pomocí účtu organizace, můžete předat uživatelské jméno a heslo.
+Pokud se chcete přihlásit pomocí účtu organizace, můžete předat svoje uživatelské jméno a heslo.
 
 ```azurecli
 az login -u username@domain.com -p password
 ```
 
-Pokud máte více než jedno předplatné a je nutné zadat, které se má použít, zadejte následující příkaz k zobrazení předplatných pro váš účet:
+Pokud máte více než jedno předplatné a potřebujete určit, která z nich se má použít, zadejte následující příkaz pro zobrazení předplatných pro váš účet:
 
 ```azurecli
 az account list
@@ -92,25 +91,25 @@ Zadejte předplatné s parametrem předplatného.
 az account set --subscription <subscription name or ID>
 ```
 
-Další informace o konfiguraci rozhraní příkazového řádku pro různé platformy Azure najdete v tématu [instalace Azure CLI](/cli/azure/install-azure-cli).
+Další informace o konfiguraci rozhraní příkazového řádku pro více platforem Azure najdete v tématu [instalace Azure CLI](/cli/azure/install-azure-cli).
 
-### <a name="create-a-new-resource-group"></a>Vytvoření nové skupiny prostředků
+### <a name="create-a-new-resource-group"></a>Vytvořit novou skupinu prostředků
 
-Pokud používáte Azure Resource Manageru, všechny související prostředky vytváří v uvnitř skupiny prostředků. Vytvoření trezoru klíčů v existující skupinu prostředků. Pokud chcete použít novou skupinu prostředků, můžete vytvořit nový.
+Při použití Azure Resource Manager se všechny související prostředky vytvoří v rámci skupiny prostředků. Trezor klíčů můžete vytvořit v existující skupině prostředků. Pokud chcete použít novou skupinu prostředků, můžete vytvořit novou.
 
 ```azurecli
 az group create -n "ContosoResourceGroup" -l "East Asia"
 ```
 
-První parametr je název skupiny prostředků a druhý parametr je umístění. Chcete-li získat seznam všech možných zadejte umístění:
+Prvním parametrem je název skupiny prostředků a druhý parametr je umístění. Pokud chcete získat seznam všech možných umístění, zadejte:
 
 ```azurecli
 az account list-locations
 ``` 
 
-### <a name="register-the-key-vault-resource-provider"></a>Registrace poskytovatele prostředků služby Key Vault
+### <a name="register-the-key-vault-resource-provider"></a>Registrace poskytovatele prostředků Key Vault
 
- Může zobrazit chyba "předplatné není zaregistrované používání oboru názvů"Microsoft.KeyVault"" při pokusu o vytvoření nového trezoru klíčů. Pokud se tato chyba zobrazí, ujistěte se, že je ve vašem předplatném zaregistrovaný poskytovatel prostředků této služby Key Vault. Jedná se o jednorázovou operaci u každého odběru.
+ Při pokusu o vytvoření nového trezoru klíčů se může zobrazit chyba "předplatné není zaregistrované pro používání oboru názvů" Microsoft. Key trezor "". Pokud se zobrazí tato zpráva, ujistěte se, že je ve vašem předplatném zaregistrovaný Key Vault poskytovatel prostředků. Jedná se o jednorázovou operaci u každého odběru.
 
 ```azurecli
 az provider register -n Microsoft.KeyVault
@@ -118,85 +117,85 @@ az provider register -n Microsoft.KeyVault
 
 ### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
 
-Použití `az keyvault create` příkaz pro vytvoření trezoru klíčů. Tento skript má tři povinné parametry: název skupiny prostředků, název trezoru klíčů a zeměpisná poloha.
+`az keyvault create` Pomocí příkazu vytvořte Trezor klíčů. Tento skript má tři povinné parametry: název skupiny prostředků, název trezoru klíčů a zeměpisnou polohu.
 
-Chcete-li vytvořit nový trezor s názvem **ContosoKeyVault**, ve skupině prostředků **ContosoResourceGroup**, nacházejícím se v **východní Asie** umístění, zadejte: 
+Pokud chcete vytvořit nový trezor s názvem **ContosoKeyVault**, zadejte do skupiny prostředků **ContosoResourceGroup**, která je umístěná v umístění **východní Asie** : 
 
 ```azurecli
 az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East Asia"
 ```
 
-Výstup tohoto příkazu zobrazuje vlastnosti trezoru klíčů, kterou jste vytvořili. Dvě nejdůležitější vlastnosti jsou:
+Výstup tohoto příkazu zobrazuje vlastnosti trezoru klíčů, který jste vytvořili. Dvě nejdůležitější vlastnosti jsou:
 
-* **Název**: V tomto příkladu je název ContosoKeyVault. Budete používat tento název pro další příkazy Key Vault.
-* **vaultUri**: V tomto příkladu je identifikátor URI https://contosokeyvault.vault.azure.net. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
+* **název**: V tomto příkladu je název ContosoKeyVault. Tento název použijete pro jiné Key Vault příkazy.
+* **vaultUri**: V tomto příkladu je https://contosokeyvault.vault.azure.net identifikátor URI. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
-Váš účet Azure je nyní oprávněn provádět nad tímto trezorem klíčů všechny operace. Ještě není oprávněn nikdo jiný.
+Váš účet Azure je nyní oprávněn provádět nad tímto trezorem klíčů všechny operace. Od tohoto konce je nikdo jiný autorizovaný.
 
-## <a name="adding-a-key-secret-or-certificate-to-the-key-vault"></a>Přidání klíče, tajné nebo certifikát do služby key vault
+## <a name="adding-a-key-secret-or-certificate-to-the-key-vault"></a>Přidání klíče, tajného klíče nebo certifikátu do trezoru klíčů
 
-Pokud chcete Azure Key Vault vytvořila softwarově chráněný klíč pro vás, použijte `az key create` příkazu.
+Pokud chcete, Azure Key Vault pro vás vytvořit klíč chráněný softwarem, použijte `az key create` příkaz.
 
 ```azurecli
 az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --protection software
 ```
 
-Pokud máte existující klíč v souboru .pem, nahrajte ho do služby Azure Key Vault. Můžete k ochraně klíče se software nebo modulu hardwarového zabezpečení. Tento příklad importuje klíč ze souboru .pem a chránit pomocí softwaru pomocí hesla, které "hVFkk965BuUv":
+Pokud máte existující klíč v souboru. pem, můžete ho nahrát na Azure Key Vault. Můžete se rozhodnout chránit klíč pomocí softwaru nebo HSM. Tento příklad importuje klíč ze souboru. pem a chrání ho pomocí softwaru pomocí hesla "hVFkk965BuUv":
 
 ```azurecli
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Teď můžete odkazovat na klíč, který vytvoříte nebo nahrajete do služby Azure Key Vault pomocí jeho identifikátoru URI. Použití **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** vždy získáte aktuální verzi. Použití https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] získat tuto konkrétní verzi. Příklad: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** . 
+Nyní můžete odkazovat na klíč, který jste vytvořili nebo nahráli do Azure Key Vault, pomocí jeho identifikátoru URI. K **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** získání aktuální verze vždycky použijte. K získání této konkrétní verze použijte protokol https://[název trezoru klíčů]. trezor. Azure. NET/Keys/[KeyName]/[klíč-Unique-ID]. Příklad: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** . 
 
-Přidání tajného klíče do trezoru, což je hesla s názvem SQLPassword a hodnotou "hVFkk965BuUv" do Azure Key Vault. 
+Přidejte do trezoru tajný klíč, což je heslo s názvem SQLPassword, které má hodnotu "hVFkk965BuUv" pro trezory klíčů Azure. 
 
 ```azurecli
 az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
-Na toto heslo odkazujete pomocí jeho identifikátoru URI. Použití **https://ContosoVault.vault.azure.net/secrets/SQLPassword** vždy získáte aktuální verzi a https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] získat tuto konkrétní verzi. Příklad: **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
+Odkažte na toto heslo pomocí jeho identifikátoru URI. Pokud **https://ContosoVault.vault.azure.net/secrets/SQLPassword** chcete získat konkrétní verzi, použijte k tomu vždycky získat aktuální verzi a https://[název trezoru]. trezor. Azure. NET/Secret/[tajný klíč-název]/[tajný kód-jedinečné ID]. Příklad: **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
 
-Importujte certifikát do trezoru pomocí .pem nebo .pfx.
+Importujte certifikát do trezoru pomocí souboru. pem nebo. pfx.
 
 ```azurecli
 az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "hVFkk965BuUv"
 ```
 
-Podívejme se klíč, tajný klíč nebo certifikát, který jste vytvořili:
+Pojďme si prohlédnout klíč, tajný klíč nebo certifikát, který jste vytvořili:
 
-* Chcete-li zobrazit vaše klíče, zadejte: 
+* Chcete-li zobrazit klíče, zadejte: 
 
 ```azurecli
 az keyvault key list --vault-name "ContosoKeyVault"
 ```
 
-* Chcete-li zobrazit tajné klíče, zadejte: 
+* K zobrazení tajných kódů zadejte: 
 
 ```azurecli
 az keyvault secret list --vault-name "ContosoKeyVault"
 ```
 
-* Pokud chcete zobrazit certifikáty, zadejte: 
+* Chcete-li zobrazit certifikáty, zadejte: 
 
 ```azurecli
 az keyvault certificate list --vault-name "ContosoKeyVault"
 ```
 
-## <a name="registering-an-application-with-azure-active-directory"></a>Registrace aplikace v Azure Active Directory
+## <a name="registering-an-application-with-azure-active-directory"></a>Registrace aplikace pomocí Azure Active Directory
 
-Tento krok obvykle provádí vývojář na samostatném počítači. Není specifická pro Azure Key Vault, ale je zde uveden, sledování. K dokončení registrace aplikace, váš účet, trezor a aplikace musí být ve stejném adresáři Azure.
+Tento krok obvykle provádí vývojář na samostatném počítači. Nejedná se o Azure Key Vault, ale je zde k dispozici pro povědomí. K dokončení registrace aplikace musí být váš účet, trezor a aplikace ve stejném adresáři Azure.
 
-Aplikace, které používají trezor klíčů, se musí ověřit pomocí tokenu z Azure Active Directory.  Vlastník aplikace ji musíte zaregistrovat v Azure Active Directory nejprve. Na konci registrace obdrží majitel aplikace následující hodnoty:
+Aplikace, které používají trezor klíčů, se musí ověřit pomocí tokenu z Azure Active Directory.  Vlastník aplikace musí nejprve zaregistrovat v Azure Active Directory. Na konci registrace obdrží majitel aplikace následující hodnoty:
 
-- **ID aplikace** (také označované jako ID klienta AAD nebo ID aplikace)
+- **ID aplikace** (označované také jako ID klienta AAD nebo AppID)
 - **Ověřovací klíč** (také označovaný jako sdílený tajný kód) 
 
-Pro získání tokenu musí aplikace obě tyto hodnoty poskytnout do Azure Active Directory. Konfigurace aplikace získá token bude záviset na aplikaci. Pro [ukázkovou aplikaci Key Vault](https://www.microsoft.com/download/details.aspx?id=45343) nastavuje majitel tyto hodnoty v souboru app.config.
+Pro získání tokenu musí aplikace obě tyto hodnoty poskytnout do Azure Active Directory. Způsob, jakým je aplikace nakonfigurovaná tak, aby získala token, bude záviset na aplikaci. Pro [ukázkovou aplikaci Key Vault](https://www.microsoft.com/download/details.aspx?id=45343) nastavuje majitel tyto hodnoty v souboru app.config.
 
-Podrobné pokyny k registraci aplikace v Azure Active Directory si můžete projít v článcích [integrace aplikací s Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md), [použití portálu k vytvoření Azure Active Adresář aplikace a instanční objekt, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md), a [vytvoření instančního objektu Azure pomocí rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
+Podrobné pokyny k registraci aplikace v Azure Active Directory najdete v článcích [s názvem integrování aplikací pomocí Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md), [použití portálu k vytvoření Azure Active Directory aplikace a služby. objekt zabezpečení, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md), a [vytvoří instanční objekt Azure pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli).
 
-Pro registraci aplikace ve službě Azure Active Directory:
+Registrace aplikace v Azure Active Directory:
 
 ```azurecli
 az ad sp create-for-rbac -n "MyApp" --password "hVFkk965BuUv" --skip-assignment
@@ -205,37 +204,37 @@ az ad sp create-for-rbac -n "MyApp" --password "hVFkk965BuUv" --skip-assignment
 
 ## <a name="authorizing-an-application-to-use-a-key-or-secret"></a>Autorizace aplikace pro použití klíče nebo tajného klíče
 
-Chcete-li autorizovat aplikaci přístup k klíče nebo tajného klíče v trezoru, použijte `az keyvault set-policy` příkazu.
+K autorizaci aplikace pro přístup ke klíči nebo tajnému klíči v trezoru použijte `az keyvault set-policy` příkaz.
 
-Například pokud je trezor s názvem ContosoKeyVault, má aplikace appID hodnotu 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed a chcete autorizovat aplikaci k dešifrování a podepisování pomocí klíčů v trezoru, použijte následující příkaz:
+Například pokud je název trezoru ContosoKeyVault, aplikace má appID 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed a vy chcete autorizovat aplikaci k dešifrování a podepsání klíčů v trezoru, použijte následující příkaz:
 
 ```azurecli
 az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --key-permissions decrypt sign
 ```
 
-Pro stejnou aplikaci autorizujte pro čtení tajných klíčů v trezoru, zadejte následující příkaz:
+Chcete-li autorizovat stejnou aplikaci pro čtení tajných klíčů v trezoru, zadejte následující příkaz:
 
 ```azurecli
 az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
 
-## <a name="bkmk_KVperCLI"></a> Nastavení trezoru klíčů pokročilé zásady přístupu
+## <a name="bkmk_KVperCLI"></a>Nastavují se zásady rozšířeného přístupu trezoru klíčů.
 
-Použití [az keyvault update](/cli/azure/keyvault#az-keyvault-update) povolit pokročilé zásady pro trezor klíčů.
+Pokud chcete povolit pokročilé zásady pro Trezor klíčů, použijte [AZ Key trezor Update](/cli/azure/keyvault#az-keyvault-update) .
 
- Povolení služby Key Vault pro nasazení: Umožňuje virtuálních počítačů k načítání certifikátů uložených jako tajné kódy z trezoru.
+ Povolit Key Vault pro nasazení: Umožňuje virtuálním počítačům načíst certifikáty uložené jako tajné klíče z trezoru.
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
  ```
 
-Povolení služby Key Vault pro šifrování disku: Požaduje se při použití trezoru pro Azure Disk encryption.
+Povolit Key Vault pro šifrování disku: Vyžaduje se při použití trezoru pro Azure Disk Encryption.
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-disk-encryption "true"
  ```  
 
-Povolení služby Key Vault pro šablonu nasazení: Umožňuje Resource Manageru k načítání tajných kódů z trezoru.
+Povolit Key Vault pro nasazení šablony: Umožňuje Správce prostředků načíst tajné kódy z trezoru.
 
 ```azurecli 
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
@@ -243,23 +242,23 @@ Povolení služby Key Vault pro šablonu nasazení: Umožňuje Resource Manageru
 
 ## <a name="working-with-hardware-security-modules-hsms"></a>Práce s moduly hardwarového zabezpečení (HSM)
 
-Jistotu importujte nebo generujte klíče v modulech hardwarového zabezpečení (HSM), které nikdy neopustí hranice modulu hardwarového zabezpečení. Moduly hardwarového zabezpečení jsou ověřené podle standardu FIPS 140-2 Level 2. Pokud tento požadavek neplatí pro vás, přeskočte tuto část a přejděte k odstranění trezoru klíčů, přidružených klíčů a tajných kódů.
+Pro zvýšení zabezpečení můžete importovat nebo generovat klíče z modulů hardwarového zabezpečení (HSM), které nikdy nezanechají hranici HSM. Moduly hardwarového zabezpečení jsou ověřené podle standardu FIPS 140-2 Level 2. Pokud se vám tento požadavek netýká, přeskočte tuto část a přejděte k části odstranění trezoru klíčů a přidružených klíčů a tajných kódů.
 
-Chcete-li vytvořit těchto klíčů chráněných pomocí HSM, musíte mít předplatné trezoru, který podporuje klíče chráněné HSM.
+Chcete-li vytvořit tyto klíče chráněné HSM, musíte mít předplatné trezoru, které podporuje klíče chráněné HSM.
 
-Když vytvoříte trezor klíčů, přidejte parametr "sku":
+Při vytváření trezoru klíčů přidejte parametr SKU:
 
 ```azurecli
 az keyvault create --name "ContosoKeyVaultHSM" --resource-group "ContosoResourceGroup" --location "East Asia" --sku "Premium"
 ```
 
-Do tohoto trezoru můžete přidat klíče chráněné softwarem (jak jsme ukázali výše) a klíče chráněné pomocí HSM. Pokud chcete vytvořit klíč chráněný HSM, nastavte parametr Destination roven na "HSM":
+Do tohoto trezoru můžete přidat klíče chráněné softwarem (jak jsme ukázali výše) a klíče chráněné pomocí HSM. Pokud chcete vytvořit klíč chráněný HSM, nastavte parametr Destination na ' HSM ':
 
 ```azurecli
 az keyvault key create --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --protection "hsm"
 ```
 
-Následující příkaz můžete použít pro import klíče ze souboru .pem ve vašem počítači. Tento příkaz importuje klíč do HSM ve službě Key Vault:
+Pomocí následujícího příkazu můžete importovat klíč ze souboru. pem na vašem počítači. Tento příkaz importuje klíč do HSM ve službě Key Vault:
 
 ```azurecli
 az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --pem-file "/.softkey.pem" --protection "hsm" --pem-password "PaSSWORD"
@@ -271,11 +270,11 @@ Další příkaz importuje balíček „přineste si vlastní klíč“ (BYOK). 
 az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --byok-file "./ITByok.byok" --protection "hsm"
 ```
 
-Podrobnější pokyny o tom, jak generovat tento balíček BYOK naleznete v tématu [použití HSM-Protected klíčů se službou Azure Key Vault](key-vault-hsm-protected-keys.md).
+Podrobnější pokyny o tom, jak tento balíček BYOK vygenerovat, najdete v článku [Jak používat klíče chráněné HSM s Azure Key Vault](key-vault-hsm-protected-keys.md).
 
-## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>Odstraňuje se trezor klíčů, přidružených klíčů a tajných kódů
+## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>Odstranění trezoru klíčů a přidružených klíčů a tajných klíčů
 
-Pokud již nepotřebujete trezor klíčů a jeho klíče nebo tajné kódy, můžete odstranit trezor klíčů s použitím `az keyvault delete` příkaz:
+Pokud už Trezor klíčů a jeho klíče nebo tajné klíče nepotřebujete, můžete Trezor klíčů odstranit pomocí `az keyvault delete` příkazu:
 
 ```azurecli
 az keyvault delete --name "ContosoKeyVault"
@@ -287,11 +286,11 @@ Nebo můžete odstranit celou skupinu prostředků Azure, která zahrnuje trezor
 az group delete --name "ContosoResourceGroup"
 ```
 
-## <a name="miscellaneous-azure-cross-platform-command-line-interface-commands"></a>Příkazy různé rozhraní příkazového řádku Azure Cross-Platform
+## <a name="miscellaneous-azure-cross-platform-command-line-interface-commands"></a>Různé příkazy rozhraní příkazového řádku pro více platforem Azure
 
-Další příkazy, které můžou být užitečné pro správu služby Azure Key Vault.
+Další příkazy, které můžete najít užitečné při správě Azure Key Vault.
 
-Tento příkaz vypíše tabelární zobrazení všech klíčů a vybraných vlastností:
+Tento příkaz vypíše seznam všech klíčů a vybraných vlastností v tabulkovém zobrazení:
 
 ```azurecli
 az keyvault key list --vault-name "ContosoKeyVault"
@@ -303,19 +302,19 @@ Tento příkaz zobrazí úplný seznam vlastností pro zadaný klíč:
 az keyvault key show --vault-name "ContosoKeyVault" --name "ContosoFirstKey"
 ```
 
-Tento příkaz vypíše tabelární zobrazení všech názvů tajných klíčů a vybraných vlastností:
+Tento příkaz vypíše tabulkové zobrazení všech tajných názvů a vybraných vlastností:
 
 ```azurecli
 az keyvault secret list --vault-name "ContosoKeyVault"
 ```
 
-Tady je příklad odebrání určitého klíče:
+Tady je příklad, jak odebrat konkrétní klíč:
 
 ```azurecli
 az keyvault key delete --vault-name "ContosoKeyVault" --name "ContosoFirstKey"
 ```
 
-Tady je příklad odebrání určitého tajného klíče:
+Tady je příklad, jak odebrat konkrétní tajný klíč:
 
 ```azurecli
 az keyvault secret delete --vault-name "ContosoKeyVault" --name "SQLPassword"
@@ -323,8 +322,8 @@ az keyvault secret delete --vault-name "ContosoKeyVault" --name "SQLPassword"
 
 ## <a name="next-steps"></a>Další postup
 
-- Kompletní rozhraní příkazového řádku Azure reference pro příkazy služby key vault najdete v části [odkaz na rozhraní příkazového řádku Key Vault](/cli/azure/keyvault).
+- Kompletní Reference k rozhraní příkazového řádku Azure CLI pro příkazy trezoru klíčů najdete v tématu [Key Vault reference CLI](/cli/azure/keyvault).
 
-- Programátorské reference najdete v části [– Příručka pro vývojáře Azure Key Vault](key-vault-developers-guide.md)
+- Odkazy na programování najdete [v tématu Azure Key Vault příručka pro vývojáře](key-vault-developers-guide.md) .
 
-- Informace o Azure Key Vault a modulů hardwarového zabezpečení, najdete v části [použití HSM-Protected klíčů se službou Azure Key Vault](key-vault-hsm-protected-keys.md).
+- Informace o Azure Key Vault a HSM najdete v tématu [použití klíčů chráněných HSM pomocí Azure Key Vault](key-vault-hsm-protected-keys.md).

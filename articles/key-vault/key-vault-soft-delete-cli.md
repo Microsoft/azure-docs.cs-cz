@@ -1,54 +1,55 @@
 ---
-title: Služba Azure Key Vault – jak používat obnovitelné odstranění s využitím rozhraní příkazového řádku
-description: Příklady případu použití obnovitelného odstranění s využitím rozhraní příkazového řádku výstřižky kódu
+title: Azure Key Vault – použití obnovitelného odstranění pomocí rozhraní příkazového řádku
+description: Příklady případů použití obnovitelného odstranění s výstřižky kódu CLI
+services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 02/01/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aa9b89b9afec069e97236b7652e0f1d37644f5cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640476"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976297"
 ---
-# <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat obnovitelné odstranění Key Vault pomocí rozhraní příkazového řádku
+# <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat Key Vault obnovitelné odstranění pomocí rozhraní příkazového řádku
 
-Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstraněných trezorů a objektů trezoru. Konkrétně obnovitelného odstranění adresy následující scénáře:
+Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstraněných trezorů a objektů trezoru. Konkrétně obnovitelné odstranění řeší následující scénáře:
 
-- Podpora pro obnovitelné odstranění trezoru klíčů.
-- Podpora pro obnovitelné odstranění key vaultu objektů; klíče, tajné kódy a certifikáty
+- Podpora obnovitelného odstranění trezoru klíčů
+- Podpora obnovitelného mazání objektů trezoru klíčů; klíče, tajné klíče a certifikáty
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Azure CLI – Pokud nemáte k dispozici tato nastavení pro vaše prostředí, najdete v článku [Správa služby Key Vault pomocí rozhraní příkazového řádku Azure](key-vault-manage-with-cli2.md).
+- Azure CLI – Pokud nemáte toto nastavení pro vaše prostředí, přečtěte si téma [správa Key Vault pomocí Azure CLI](key-vault-manage-with-cli2.md).
 
-Key Vault konkrétní referenční informace pro rozhraní příkazového řádku, naleznete v tématu [odkaz na Azure CLI Key Vault](https://docs.microsoft.com/cli/azure/keyvault).
+Informace o Key Vault specifických referenčních informacích pro rozhraní příkazového řádku najdete v tématu [Azure CLI Key Vault reference](https://docs.microsoft.com/cli/azure/keyvault).
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-Operace služby Key Vault jsou řízeny odděleně prostřednictvím přístupu na základě role (RBAC) ovládací prvek oprávnění následujícím způsobem:
+Operace Key Vault se samostatně spravují prostřednictvím oprávnění řízení přístupu na základě role (RBAC) následujícím způsobem:
 
 | Operace | Popis | Oprávnění uživatele |
 |:--|:--|:--|
-|Seznam|Seznamy odstraňovat trezory klíčů.|Microsoft.KeyVault/deletedVaults/read|
-|Zotavit|Obnoví odstraněný trezor klíčů.|Microsoft.KeyVault/vaults/write|
-|Vyprázdnit|Odstraní trvale odstraněný trezor klíčů a veškerý jeho obsah.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
+|List|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft.KeyVault/deletedVaults/read|
+|Obnovit|Obnoví odstraněný Trezor klíčů.|Microsoft.KeyVault/vaults/write|
+|Vyprázdnit|Trvale odstraní odstraněný Trezor klíčů a veškerý jeho obsah.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
 Další informace o oprávněních a řízení přístupu najdete v tématu [zabezpečení trezoru klíčů](key-vault-secure-your-key-vault.md).
 
 ## <a name="enabling-soft-delete"></a>Povolení obnovitelného odstranění
 
-Povolíte "obnovitelného odstranění" aby bylo možné obnovit odstraněný trezor klíčů, nebo objekty uložené ve službě key vault.
+Pokud chcete povolit obnovení odstraněného trezoru klíčů nebo objektů uložených v trezoru klíčů, povolte možnost obnovitelné odstranění.
 
 > [!IMPORTANT]
-> Povolit obnovitelné odstranění v trezoru klíčů je nevratná akce. Jakmile je nastavená vlastnost obnovitelného odstranění "PRAVDA", nelze změnit ani odebrat.  
+> Povolení možnosti obnovitelné odstranění u trezoru klíčů je nevratná akce. Když je vlastnost obnovitelného odstranění nastavená na hodnotu true, nedá se změnit ani odebrat.  
 
-### <a name="existing-key-vault"></a>Existujícího trezoru klíčů
+### <a name="existing-key-vault"></a>Existující Trezor klíčů
 
-U existujícího trezoru klíčů s názvem ContosoVault povolte obnovitelné odstranění následujícím způsobem. 
+Pro existující Trezor klíčů s názvem ContosoVault povolte obnovitelné odstranění následujícím způsobem. 
 
 ```azurecli
 az resource update --id $(az keyvault show --name ContosoVault -o tsv | awk '{print $1}') --set properties.enableSoftDelete=true
@@ -56,186 +57,186 @@ az resource update --id $(az keyvault show --name ContosoVault -o tsv | awk '{pr
 
 ### <a name="new-key-vault"></a>Nový trezor klíčů
 
-Povolení obnovitelného odstranění pro nový trezor klíčů se provádí v okamžiku vytvoření přidáním příznak povolení obnovitelného odstranění pro vaše vytvořit příkaz.
+Povolení obnovitelného odstranění nového trezoru klíčů se provádí v době vytváření přidáním příznaku pro povolení slabého odstranění do příkazu pro vytvoření.
 
 ```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
 ```
 
-### <a name="verify-soft-delete-enablement"></a>Ověření povolení obnovitelného odstranění
+### <a name="verify-soft-delete-enablement"></a>Ověřit povolení pro obnovitelné odstranění
 
-Chcete-li zkontrolovat, jestli má trezor klíčů povolené obnovitelné odstranění, *zobrazit* příkaz a vyhledejte "Obnovitelné odstranění povolené?" Atribut:
+Pokud chcete ověřit, jestli je Trezor klíčů povolený pomocí obnovitelného odstranění, spusťte příkaz *Zobrazit* a vyhledejte možnost obnovitelné odstranění povoleno?. přidělen
 
 ```azurecli
 az keyvault show --name ContosoVault
 ```
 
-## <a name="deleting-a-soft-delete-protected-key-vault"></a>Odstraňuje se obnovitelného odstranění chráněné služby key vault
+## <a name="deleting-a-soft-delete-protected-key-vault"></a>Odstranění trezoru chráněného klíče, který je k odstranění obnovitelné
 
-Příkaz pro odstranění trezoru klíčů změny v chování v závislosti na tom, zda je povoleno obnovitelného odstranění.
+Příkaz pro odstranění trezoru klíčů v chování v závislosti na tom, jestli je povolené obnovitelné odstranění.
 
 > [!IMPORTANT]
->Pokud spustíte následující příkaz pro trezor klíčů, který nemá povolené obnovitelné odstranění, trvale odstraníte tento trezor klíčů a veškerý jeho obsah bez použití možností pro obnovení!
+>Pokud pro Trezor klíčů, který nemá povolené obnovitelné odstranění, spustíte následující příkaz, trvale odstraníte tento trezor klíčů a veškerý jeho obsah bez možností obnovení.
 
 ```azurecli
 az keyvault delete --name ContosoVault
 ```
 
-### <a name="how-soft-delete-protects-your-key-vaults"></a>Jak se obnovitelného odstranění chrání vaše trezory klíčů
+### <a name="how-soft-delete-protects-your-key-vaults"></a>Jak obnovitelné odstranění chrání vaše trezory klíčů
 
-S obnovitelným odstraněním povoleno:
+S povolenou možnost obnovitelného odstranění:
 
-- Odstraněný trezor klíčů je odebrán ze skupiny prostředků a je umístěn v vyhrazený obor názvů, přidružený k místu, kde se vytvořila. 
-- Odstraněné objekty, jako jsou klíče, tajné kódy a certifikáty, jsou nedostupná, dokud jejich obsahující trezor klíčů není ve stavu odstraněno. 
-- Je vyhrazený název DNS pro odstraněný trezor klíčů, brání vytváří nový trezor klíčů se stejným názvem.  
+- Odstraněný Trezor klíčů se odebere ze skupiny prostředků a umístí do rezervovaného oboru názvů přidruženého k umístění, kde se vytvořil. 
+- Odstraněné objekty, jako jsou klíče, tajné klíče a certifikáty, jsou nedostupné, pokud jsou ve stavu odstraněno, dokud je jejich nadřazený Trezor klíčů. 
+- Název DNS odstraněného trezoru klíčů je rezervovaný a brání vytvoření nového trezoru klíčů se stejným názvem.  
 
-Trezory klíčů stavu odstraněno, přidružených k vašemu předplatnému, mohou zobrazit pomocí následujícího příkazu:
+Odstraněné trezory klíčů stavů, které jsou přidružené k vašemu předplatnému, můžete zobrazit pomocí následujícího příkazu:
 
 ```azurecli
 az keyvault list-deleted
 ```
-- *ID* slouží k identifikaci prostředku při obnovení nebo vyprazdňování. 
-- *ID prostředku* je původní ID prostředku trezoru. Vzhledem k tomu, že tento trezor klíčů je teď ve stavu odstraněno, neexistuje žádný prostředek s ID tohoto prostředku. 
-- *Naplánované datum vyprázdnit* je při trezoru se trvale odstraní, pokud nebyla provedena žádná akce. Výchozí dobu uchování, používá k výpočtu *naplánované datum vyprázdnit*, je 90 dní.
+- *ID* se dá použít k identifikaci prostředku při obnovování nebo vyprazdňování. 
+- *ID prostředku* je původní ID prostředku tohoto trezoru. Vzhledem k tomu, že tento trezor klíčů je teď v odstraněném stavu, neexistuje žádný prostředek s tímto ID prostředku. 
+- *Naplánované datum vyprázdnění* je v případě, že se trezor trvale odstraní, pokud se neprovede žádná akce. Výchozí doba uchování, která se používá k výpočtu *naplánovaného data vyprázdnění*, je 90 dní.
 
-## <a name="recovering-a-key-vault"></a>Obnovení služby key vault
+## <a name="recovering-a-key-vault"></a>Obnovování trezoru klíčů
 
-Obnovení služby key vault, zadejte název služby key vault, skupinu prostředků a umístění. Poznamenejte si umístění a skupině prostředků odstraněného trezoru klíčů, podle potřeby pro proces obnovení.
+Chcete-li obnovit Trezor klíčů, zadejte název trezoru klíčů, skupinu prostředků a umístění. Poznamenejte si umístění a skupinu prostředků odstraněného trezoru klíčů, jak je budete potřebovat pro proces obnovení.
 
 ```azurecli
 az keyvault recover --location westus --resource-group ContosoRG --name ContosoVault
 ```
 
-Při obnovení služby key vault je vytvořen nový prostředek s ID služby key vault původního zdroje. Pokud je odebrán původní skupiny prostředků, jeden je nutné vytvořit se stejným názvem před pokusem o obnovení.
+Po obnovení trezoru klíčů se vytvoří nový prostředek s původním ID prostředku trezoru klíčů. Pokud je původní skupina prostředků odebrána, musí se před pokusem o obnovení vytvořit jedna se stejným názvem.
 
-## <a name="deleting-and-purging-key-vault-objects"></a>Odstranění a odstraňování objektů trezoru klíčů
+## <a name="deleting-and-purging-key-vault-objects"></a>Odstraňování a vyprazdňování objektů trezoru klíčů
 
-Následující příkaz odstraní klíči "ContosoFirstKey" v trezoru klíčů s názvem "ContosoVault", který má povolené obnovitelné odstranění:
+Následující příkaz odstraní klíč "ContosoFirstKey" v trezoru klíčů s názvem "ContosoVault", který má povolené obnovitelné odstranění:
 
 ```azurecli
 az keyvault key delete --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-Pomocí trezoru klíčů povolená pro obnovitelné odstranění odstranil klíč stále zobrazena, jako je odstraníme s výjimkou, že při explicitně vypsat nebo získat odstraněné klíče. Většinu operací s klíči ve stavu odstraněno selže s výjimkou výpis odstraněné klíče, obnovení nebo odstraňovat zařízení nepřipojená k ho. 
+V případě, že je váš Trezor klíčů povolený pro obnovitelné odstranění, se odstraněný klíč stále zobrazuje jako odstraněný s výjimkou případů, kdy výslovně vypíšete nebo načtete odstraněné klíče. Většina operací s klíčem ve stavu odstraněno selže, s výjimkou výpisu odstraněného klíče, obnovení nebo jeho vyprázdnění. 
 
-Například požadavek na seznamu odstraněn klíče v trezoru klíčů, použijte následující příkaz:
+Pokud například chcete požádat o výpis odstraněných klíčů v trezoru klíčů, použijte následující příkaz:
 
 ```azurecli
 az keyvault key list-deleted --vault-name ContosoVault
 ```
 
-### <a name="transition-state"></a>Přechod stavu 
+### <a name="transition-state"></a>Stav přechodu 
 
-Při odstranění klíče ve službě key vault s obnovitelným odstraněním povolené, může trvat několik sekund na přechod na dokončení. Během tohoto přechodu je může zdát, že klíč není v aktivním stavu nebo stavu odstraněno. 
+Když odstraníte klíč v trezoru klíčů s povoleným obnovitelném odstraněním, může trvat několik sekund, než se přechod dokončí. Během tohoto přechodu se může zdát, že klíč není v aktivním stavu nebo odstraněném stavu. 
 
-### <a name="using-soft-delete-with-key-vault-objects"></a>Použití obnovitelného odstranění s využitím objektů trezoru klíčů
+### <a name="using-soft-delete-with-key-vault-objects"></a>Použití obnovitelného odstranění s objekty trezoru klíčů
 
-Stejně jako trezorů klíčů odstraněné klíče, tajné nebo certifikát, zůstane ve stavu odstraněno až 90 dnů, pokud ji obnovit nebo ho vymazat.
+Stejně jako trezory klíčů, odstraněný klíč, tajný klíč nebo certifikát zůstávají v odstraněném stavu po dobu až 90 dnů, pokud je neobnovíte nebo nevymažete.
 
 #### <a name="keys"></a>Klíče
 
-Obnovit klíč obnovitelně odstraněný:
+Obnovení klíče odstraněného přípravné:
 
 ```azurecli
 az keyvault key recover --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-Trvale odstranit, (označované také jako vyprazdňování) obnovitelně odstraněný klíč:
+K trvalému odstranění (označované také jako vyprazdňování) klíč odstraněný:
 
 > [!IMPORTANT]
-> Odstranění klíče ho trvale odstraníte a nesmí být obnovitelná! 
+> Vyprázdněním klíče se trvale odstraní a nebude možné ho obnovit. 
 
 ```azurecli
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-**Obnovit** a **vyprázdnit** akce mají své vlastní oprávnění přidružené zásady přístupu trezoru klíčů. Pro uživatele nebo instanční objekt, který bude moci být prováděny **obnovit** nebo **vyprázdnit** akce, musí mít odpovídající oprávnění pro tento klíč nebo tajný klíč. Ve výchozím nastavení **vyprázdnit** není přidán do zásady přístupu trezoru klíčů, když místní 'vše' se používá k udělení oprávnění. Konkrétně je nutné udělit **vyprázdnit** oprávnění. 
+Akce **obnovit** a **Odstranit** mají svá vlastní oprávnění přidružená do zásad přístupu trezoru klíčů. Aby mohl uživatel nebo instanční objekt spustit akci **obnovení** nebo vyprázdnění, musí mít příslušná oprávnění pro tento klíč nebo tajný klíč. Ve výchozím nastavení se k zásadám přístupu trezoru klíčů při použití zkratky All pro udělení všech oprávnění nepřidá vyprázdnění. Musíte výslovně udělit oprávnění k vyprázdnění. 
 
-#### <a name="set-a-key-vault-access-policy"></a>Nastavit zásady přístupu trezoru klíčů
+#### <a name="set-a-key-vault-access-policy"></a>Nastavení zásad přístupu trezoru klíčů
 
-Zadáním následujícího příkazu uděluje user@contoso.com oprávnění používat několik operací s klíči v *ContosoVault* včetně **vyprázdnit**:
+Následující příkaz udělí user@contoso.com oprávnění k použití několika operací na klíčích v *ContosoVault* včetně **mazání**:
 
 ```azurecli
 az keyvault set-policy --name ContosoVault --key-permissions get create delete list update import backup restore recover purge
 ```
 
 >[!NOTE] 
-> Pokud máte existujícího trezoru klíčů, pro který byla pouze povolené obnovitelné odstranění, pravděpodobně nemáte **obnovit** a **vyprázdnit** oprávnění.
+> Máte-li existující Trezor klíčů, který má k dispozici pouze obnovitelné odstranění, pravděpodobně nemáte oprávnění k **obnovení** a **vyprázdnění** .
 
 #### <a name="secrets"></a>Tajné kódy
 
-Podobně jako klíče tajné kódy se spravují pomocí vlastních příkazů:
+Podobně jako klíče jsou tajné klíče spravované s vlastními příkazy:
 
-- Odstranění tajného kódu s názvem SQLPassword: 
+- Odstraňte tajný kód s názvem SQLPassword: 
   ```azurecli
   az keyvault secret delete --vault-name ContosoVault -name SQLPassword
   ```
 
-- Vypište všechny odstraněné tajné kódy ve službě key vault: 
+- Vypíše všechny odstraněné tajné klíče v trezoru klíčů: 
   ```azurecli
   az keyvault secret list-deleted --vault-name ContosoVault
   ```
 
-- Obnovte tajný klíč ve stavu odstraněno: 
+- Obnovte tajný klíč v odstraněném stavu: 
   ```azurecli
   az keyvault secret recover --name SQLPassword --vault-name ContosoVault
   ```
 
-- Odstranění tajného kódu ve stavu odstraněno: 
+- Vyprázdnit tajný klíč v odstraněném stavu: 
 
   > [!IMPORTANT]
-  > Odstranění tajného kódu ho trvale odstraníte a nesmí být obnovitelná! 
+  > Vyprázdnění tajného klíče se trvale odstraní a nebude možné ho obnovit. 
 
   ```azurecli
   az keyvault secret purge --name SQLPAssword --vault-name ContosoVault
   ```
 
-## <a name="purging-a-soft-delete-protected-key-vault"></a>Odstraňovat zařízení nepřipojená k obnovitelné odstranění chráněné služby key vault
+## <a name="purging-a-soft-delete-protected-key-vault"></a>Vyprazdňování chráněného trezoru klíčů pro obnovitelné odstranění
 
 > [!IMPORTANT]
-> Odstraňovat zařízení nepřipojená k trezoru klíčů nebo jeden z jeho obsažené objekty, ho trvale odstraníte, což znamená, že ho nepůjde obnovit.
+> Vymazáním trezoru klíčů nebo některého z jeho obsažených objektů ho trvale odstraníte, což znamená, že nebude možné ho obnovit!
 
-Funkce vyprázdnění se používá pro trvalé odstranění trezoru klíčů objektu nebo celý trezoru klíčů, který byl dříve dočasně odstraněné. Jak je uvedeno v předchozí části, objekty uložené ve službě key vault se funkce obnovitelného odstranění povolená, můžete přejít přes více stavů:
+Funkce vyprázdnění se používá k trvalému odstranění objektu trezoru klíčů nebo celého trezoru klíčů, který se dřív odstranil. Jak je znázorněno v předchozí části, objekty uložené v trezoru klíčů s povolenou funkcí obnovitelného odstranění můžou projít více stavy:
 
-- **Aktivní**: před odstraněním.
-- **Obnovitelně odstraněný**: po jejím odstranění uvedené a obnovovat zpět do stavu aktivní.
-- **Trvale odstraní**: Po vymazání, není možné obnovit.
+- **Aktivní**: před odstraněním
+- **Obnovitelné – odstraněno**: po odstranění bude možné ho uvést a obnovit zpátky do stavu aktivní.
+- **Trvale odstraněno**: po vymazání nelze obnovení provést.
 
-Totéž platí pro trezor klíčů. Chcete-li trvale odstranit obnovitelně odstraněný trezor klíčů a její obsah, je nutné odstranit na samotný trezor klíčů.
+Totéž platí pro Trezor klíčů. Aby bylo možné trvale odstranit dočasně odstraněný Trezor klíčů a jeho obsah, je nutné Trezor klíčů vyprázdnit.
 
-### <a name="purging-a-key-vault"></a>Odstraňovat zařízení nepřipojená k trezoru klíčů
+### <a name="purging-a-key-vault"></a>Vyprazdňování trezoru klíčů
 
-Při vymazání se trezor klíčů, jeho celý obsah se trvale odstraní, včetně klíče, tajné kódy a certifikáty. Chcete-li vymazat obnovitelně odstraněný trezor klíčů, použijte `az keyvault purge` příkazu. Můžete najít umístění vašeho předplatného odstraněných trezorů klíčů pomocí příkazu `az keyvault list-deleted`.
+Když se odstraní Trezor klíčů, veškerý obsah se trvale odstraní, včetně klíčů, tajných klíčů a certifikátů. K vymazání trezoru klíčů odstraněného pomocí `az keyvault purge` příkazu použijte příkaz. Umístění trezoru klíčů, které vaše předplatné odstranilo, můžete najít pomocí příkazu `az keyvault list-deleted`.
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault
 ```
 
-### <a name="purge-permissions-required"></a>Vyprázdnit oprávněních
-- Vymazání odstraněný trezor klíčů, uživatel potřebuje oprávnění RBAC *Microsoft.KeyVault/locations/deletedVaults/purge/action* operace. 
-- Pro zobrazení seznamu odstraněného trezoru klíčů, uživatel potřebuje oprávnění RBAC *Microsoft.KeyVault/deletedVaults/read* operace. 
-- Ve výchozím nastavení tato oprávnění má jenom správce předplatného. 
+### <a name="purge-permissions-required"></a>Vyžadovaná oprávnění pro vyprázdnění
+- K vymazání odstraněného trezoru klíčů uživatel potřebuje oprávnění RBAC pro operaci *Microsoft. Key trezor/Locations/deletedVaults/vyprázdnění/Action* . 
+- K vypsání odstraněného trezoru klíčů uživatel potřebuje oprávnění RBAC pro operaci *Microsoft. Key trezor/deletedVaults/Read* . 
+- Ve výchozím nastavení má tato oprávnění pouze správce předplatného. 
 
-### <a name="scheduled-purge"></a>Naplánované odstranění
+### <a name="scheduled-purge"></a>Naplánované vyprázdnění
 
-Seznam objektů odstraněného trezoru klíčů. také ukazuje, kdy jsou naplánované vymazat službou Key Vault. *Naplánované datum vyprázdnit* označuje, kdy objekt služby key vault se trvale odstraní, pokud nebyla provedena žádná akce. Ve výchozím nastavení Doba uchování pro objekt odstraněného trezoru klíčů je 90 dní.
+Výpis odstraněných objektů trezoru klíčů se zobrazí také v případě, že je naplánováno jejich vymazání Key Vault. *Naplánované datum mazání* indikuje, že se objekt trezoru klíčů trvale odstraní, pokud se neprovede žádná akce. Ve výchozím nastavení je doba uchování odstraněného objektu trezoru klíčů 90 dní.
 
 >[!IMPORTANT]
->Objekt odstraněný trezor, aktivuje její *naplánované datum vyprázdnit* pole, se trvale odstraní. Se nedá vrátit zpátky!
+>Vyčištěný objekt trezoru aktivovaný v poli *plánovaného data* vyprázdnit se trvale odstraní. Nedá se obnovit.
 
-## <a name="enabling-purge-protection"></a>Povolení ochrany
+## <a name="enabling-purge-protection"></a>Povoluje se ochrana vyprázdnění.
 
-Pokud ochrany je zapnuté, trezor nebo objektu v odstraněné stavu nelze vyprázdnit až do uplynutí doby uchovávání těchto 90 dnů. Takové trezor nebo objektu je stále možné obnovit. Tato funkce poskytuje jistotu, které trezor nebo objekt může nikdy být trvale odstranit, dokud je předán období uchovávání.
+Pokud je zapnutá ochrana vyprázdnění, trezor nebo objekt v odstraněném stavu nelze odstranit, dokud neuplyne doba uchování 90 dnů. Tento trezor nebo objekt je stále možné obnovit. Tato funkce poskytuje přidanou jistotu, že trezor nebo objekt nikdy nebude možné trvale odstranit, dokud neuplyne doba uchování.
 
-Ochrany můžete povolit jenom v případě, že je taky povolené obnovitelné odstranění. 
+Ochranu vyprázdnění můžete povolit jenom v případě, že je povolené i obnovitelné odstranění. 
 
-Chcete-li zapnout v obou obnovitelného odstranění a mazání ochrany při vytváření trezoru, použijte [az keyvault vytvořit](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) příkaz:
+Pokud chcete při vytváření trezoru zapnout ochranu pomocí obnovitelného odstranění i vyprázdnění, použijte příkaz [AZ datatrezor Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) :
 
 ```
 az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
 ```
 
-Přidání ochrany pro existující trezor (který už má povolené obnovitelné odstranění), použijte [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) příkaz:
+Pokud chcete přidat ochranu vyprázdnit do existujícího trezoru (který už má povolené obnovitelné odstranění), použijte příkaz [AZ klíčů trezor Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) :
 
 ```
 az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -243,6 +244,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>Další prostředky
 
-- Přehled funkce obnovitelného odstranění služby Key Vault najdete v tématu [přehled obnovitelného odstranění služby Azure Key Vault](key-vault-ovw-soft-delete.md).
-- Obecný přehled o využití služby Azure Key Vault najdete v části [co je Azure Key Vault?](key-vault-overview.md).
+- Přehled funkce obnovitelného odstranění Key Vault najdete v článku [přehled Azure Key Vault obnovitelného odstranění](key-vault-ovw-soft-delete.md).
+- Obecný přehled využití Azure Key Vault najdete v tématu [co je Azure Key Vault?](key-vault-overview.md).
 

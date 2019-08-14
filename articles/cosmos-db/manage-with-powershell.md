@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 79302fc0f9addc70461d21c03b02416d15a6fa6c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814939"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965092"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní SQL API Azure Cosmos DB pomocí PowerShellu
 
@@ -116,16 +116,15 @@ Tento příkaz umožňuje aktualizovat vlastnosti svého účtu databáze Azure 
 
 * Přidávání nebo odebírání oblastí
 * Mění se výchozí zásada konzistence.
-* Mění se zásada převzetí služeb při selhání
 * Změna filtru rozsahu IP adres
 * Změna konfigurace Virtual Network
 * Povolení více hlavních serverů
 
 > [!NOTE]
-> Tento příkaz umožňuje přidávat a odebírat oblastech, ale neumožňuje úpravy priorit převzetí služeb při selhání. Postup úpravy priority převzetí služeb při selhání najdete v tématu [Úprava priority převzetí služeb při selhání pro účet Azure Cosmos](#modify-failover-priority).
+> Tento příkaz umožňuje přidat a odebrat oblasti, ale neumožňuje měnit priority převzetí služeb při selhání nebo měnit oblast pomocí `failoverPriority=0`. Postup úpravy priority převzetí služeb při selhání najdete v tématu [Úprava priority převzetí služeb při selhání pro účet Azure Cosmos](#modify-failover-priority).
 
 ```azurepowershell-interactive
-# Update an Azure Cosmos Account and set Consistency level to Session
+# Get an Azure Cosmos Account (assume it has two regions currently West US 2 and East US 2) and add a third region
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "myaccountname"
@@ -133,9 +132,13 @@ $accountName = "myaccountname"
 $account = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $accountName
 
-$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
+$locations = @(
+    @{ "locationName"="West US 2"; "failoverPriority"=0 },
+    @{ "locationName"="East US 2"; "failoverPriority"=1 },
+    @{ "locationName"="South Central US"; "failoverPriority"=2 }
+)
 
-$account.Properties.consistencyPolicy = $consistencyPolicy
+$account.Properties.locations = $locations
 $CosmosDBProperties = $account.Properties
 
 Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
@@ -235,9 +238,9 @@ Select-Object $keys
 
 ### <a id="modify-failover-priority"></a>Úprava priority převzetí služeb při selhání
 
-Pro účty databáze ve více oblastech můžete změnit pořadí, ve kterém bude účet Cosmos propagovat sekundární repliky pro čtení, pokud dojde k místnímu převzetí služeb při selhání v primární replice pro zápis. Když se upraví `failoverPriority=0` oblast s tímto příkazem, dá se použít taky k inicializaci postupu zotavení po havárii při plánování testování zotavení po havárii.
+Pro účty databáze ve více oblastech můžete změnit pořadí, ve kterém bude účet Cosmos propagovat sekundární repliky pro čtení, pokud dojde k místnímu převzetí služeb při selhání v primární replice pro zápis. Změny `failoverPriority=0` lze také použít k zahájení plánování zotavení po havárii.
 
-V následujícím příkladu Předpokládejme, že účet má aktuální prioritu převzetí služeb při selhání westus = 0 a eastus = 1 a překlopit oblasti.
+V následujícím příkladu Předpokládejme, že účet má aktuální prioritu `West US 2 = 0` převzetí služeb při selhání pro a `East US 2 = 1` a překlopit oblasti.
 
 > [!CAUTION]
 > Změna `locationName` pro`failoverPriority=0` spustí ruční převzetí služeb při selhání pro účet Azure Cosmos. Jakékoli další změny priority nebudou aktivovat převzetí služeb při selhání.
@@ -248,10 +251,14 @@ V následujícím příkladu Předpokládejme, že účet má aktuální priorit
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 
-$failoverPolicies = @(
-    @{ "locationName"="East US"; "failoverPriority"=0 },
-    @{ "locationName"="West US"; "failoverPriority"=1 }
+$failoverRegions = @(
+    @{ "locationName"="East US 2"; "failoverPriority"=0 },
+    @{ "locationName"="West US 2"; "failoverPriority"=1 }
 )
+
+$failoverPolicies = @{
+    "failoverPolicies"= $failoverRegions
+}
 
 Invoke-AzResourceAction -Action failoverPriorityChange `
     -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
@@ -651,7 +658,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $resourceName
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Všechny ukázky PowerShellu](powershell-samples.md)
 * [Jak spravovat účet Azure Cosmos](how-to-manage-database-account.md)

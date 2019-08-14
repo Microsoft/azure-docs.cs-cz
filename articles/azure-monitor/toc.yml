@@ -16,8 +16,6 @@
           href: learn/dotnetcore-quick-start.md
         - name: Aplikace v Node.js
           href: learn/nodejs-quick-start.md
-        - name: Aplikace v Javě
-          href: learn/java-quick-start.md
         - name: Mobilní aplikace
           href: learn/mobile-center-quickstart.md
         - name: Webová aplikace

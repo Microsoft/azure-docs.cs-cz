@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: t-meroa
-ms.openlocfilehash: 47c2d772a3428594c84d3fe5e18262b5e5ab86f4
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
-ms.translationtype: HT
+ms.openlocfilehash: acdaaf0bf08644053e86343ae4b002002fee6a84
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951010"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966601"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Referenční dokumentace sady pro moderní čtečku
 
@@ -100,7 +100,7 @@ struct Error {
 
 Sada moderní čtečky iOS SDK je podporovaná pro iOS 9,0 nebo novější, na iPadu a na iPhonu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte [sadu iOS SDK pro moderní čtečku na GitHubu](https://github.com/microsoft/immersive-reader-sdk/iOS)
+* Prozkoumejte [sadu iOS SDK pro moderní čtečku na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS)
 * [Rychlé zprovoznění: Vytvořte aplikaci pro iOS, která spustí moderní čtečku (SWIFT).](./ios-quickstart.md)

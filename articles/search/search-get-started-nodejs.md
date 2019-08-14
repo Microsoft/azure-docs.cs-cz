@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 07/30/2019
 ms.author: laobri
-ms.openlocfilehash: 3a0b5706b41bdc51a4fe6e49b20296d3824b717c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 41ad5aed975f30250d53d746e7590f88e375b6e9
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947115"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977225"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Rychlý start: Vytvoření indexu Azure Search v Node. js
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "68947115"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Vytvořte aplikaci Node. js, která vytvoří, načte a dotazuje index Azure Search. Tento článek ukazuje, jak vytvořit aplikaci krok za krokem. Alternativně můžete [stáhnout zdrojový kód a data](https://github.com/Azure-Samples/azure-search-javascript-samples/quickstart/) a spustit aplikaci z příkazového řádku.
+Vytvořte aplikaci Node. js, která vytvoří, načte a dotazuje index Azure Search. Tento článek ukazuje, jak vytvořit aplikaci krok za krokem. Alternativně můžete [stáhnout zdrojový kód a data](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) a spustit aplikaci z příkazového řádku.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -36,7 +36,7 @@ V tomto rychlém startu se používají následující služby, nástroje a data
 
 + [Node.js](https://nodejs.org).
 + [Npm](https://www.npmjs.com) by měl nainstalovat Node. js.
-+ V tomto článku nebo v [úložišti](https://github.com/Azure-Samples/azure-search-javascript-samples/quickstart/)se uvádí ukázková struktura indexu a vyhovující dokumenty.
++ V tomto článku je uvedena ukázková struktura indexu a vyhovující dokumenty, nebo v adresáři [ **rychlého** startu úložiště](https://github.com/Azure-Samples/azure-search-javascript-samples/).
 + [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu.
 
 Doporučil
@@ -126,7 +126,7 @@ Nahraďte `[SERVICE_NAME]` hodnotu názvem vaší vyhledávací služby. Hodnoty
 
 Vytvořte soubor **hotels_quickstart_index. JSON**.  Tento soubor definuje, jak Azure Search pracuje s dokumenty, které budete načítat v dalším kroku. Jednotlivá pole budou identifikována `name` a zadána. `type` Každé pole má také řadu atributů indexu, které určují, zda Azure Search mohou hledat, filtrovat, třídit a omezující vlastnosti na poli. Většina polí je jednoduchý datový typ, ale některé, jako `AddressType` jsou komplexní typy, které umožňují vytvářet struktury s bohatou datovou strukturou v indexu.  Můžete si přečíst další informace o [podporovaných datových typech](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a [atributech indexu](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes). 
 
-Do souboru **hotels_quickstart_index. JSON** přidejte následující a [Stáhněte soubor](https://github.com/Azure-Samples/azure-search-javascript-samples/quickstart/blob/master/hotels_quickstart_index.json). 
+Do souboru **hotels_quickstart_index. JSON** přidejte následující a [Stáhněte soubor](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
 
 ```json
 {
@@ -286,14 +286,14 @@ module.exports = AzureSearchClient;
 
 První odpovědností třídy je zjistit, jak vytvořit adresy URL, na které se mají odesílat různé požadavky. Sestavujte tyto adresy URL pomocí metod instance, které používají konfigurační data předaná konstruktoru třídy. Všimněte si, že adresa URL, kterou vytvoří, je specifická pro verzi rozhraní API a musí mít Argument určující tuto verzi (v `2019-05-06`této aplikaci). 
 
-Do těla třídy přidejte následující metodu:
+První z těchto metod vrátí adresu URL pro samotný index. Do těla třídy přidejte následující metodu:
 
 ```javascript
-    getIndexUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
+getIndexUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
 
 ```
 
-Další zodpovědností je asynchronní požadavek pomocí rozhraní API pro načtení. Asynchronní statická metoda `request` přijímá adresu URL, řetězec, který určuje metodu HTTP ("Get", "Put", "post", "Delete"), klíč, který se má použít v žádosti, a volitelný objekt JSON. `headers` Proměnná`queryKey` mapuje (zda klíč správce nebo klíč dotazu jen pro čtení) do hlavičky požadavku HTTP API-Key. Možnosti žádosti vždycky obsahují, `method` které se mají použít `headers`, a. Pokud `bodyJson` `bodyJson`není `null`, tělo požadavku HTTP je nastaveno na řetězcové vyjádření. `request` Vrátí příslib načteného rozhraní API pro spuštění požadavku HTTP.
+Další zodpovědnost za `AzureSearchClient` provádí asynchronní požadavek s rozhraním API pro načtení. Asynchronní statická metoda `request` přijímá adresu URL, řetězec, který určuje metodu HTTP ("Get", "Put", "post", "Delete"), klíč, který se má použít v žádosti, a volitelný objekt JSON. `headers` Proměnná`queryKey` mapuje (zda klíč správce nebo klíč dotazu jen pro čtení) do hlavičky požadavku HTTP API-Key. Možnosti žádosti vždycky obsahují, `method` které se mají použít `headers`, a. Pokud `bodyJson` `bodyJson`není `null`, tělo požadavku HTTP je nastaveno na řetězcové vyjádření. `request` Metoda vrátí příslib rozhraní API pro načtení a provede požadavek HTTP.
 
 ```javascript
 static async request(url, method, apiKey, bodyJson = null) {
@@ -325,51 +325,51 @@ static async request(url, method, apiKey, bodyJson = null) {
 }
 ```
 
-Pro demonstrační účely budeme vyvolávat výjimku, pokud požadavek HTTP není úspěšný. V reálné aplikaci byste pravděpodobně proznamenali protokolování a diagnostiku stavového kódu http v rámci `response` žádosti o vyhledávací službu. 
+V případě demonstračních účely stačí vyvolat výjimku, pokud požadavek HTTP není úspěšný. V reálné aplikaci byste pravděpodobně proznamenali protokolování a diagnostiku stavového kódu http v rámci `response` žádosti o vyhledávací službu. 
     
 ```javascript
-    static throwOnHttpError(response) {
+static throwOnHttpError(response) {
     const statusCode = response.status;
     if (statusCode >= 300){
         console.log(`Request failed: ${JSON.stringify(response, null, 4)}`);
         throw new Error(`Failure in request. HTTP Status was ${statusCode}`);
     }
-    }
+}
 ```
 
-Nakonec přidejte metody, které zjišťují, odstraňují a vytvoří index Azure Search. Všechny tyto metody mají stejnou strukturu:
+Nakonec přidejte metody pro detekci, odstranění a vytvoření indexu Azure Search. Všechny tyto metody mají stejnou strukturu:
 
 * Získejte koncový bod, na který bude požadavek proveden.
-* Vygenerujte požadavek s příslušným koncovým bodem, příkazem HTTP, klíčem rozhraní API a textem. `queryAsync()`použije klíč dotazu, jinak se použije klíč správce.
+* Vygenerujte požadavek s příslušným koncovým bodem, příkazem HTTP, klíčem rozhraní API a v případě potřeby text JSON. `indexExistsAsync()`a `deleteIndexAsync()` neobsahují tělo JSON, ale `createIndexAsync(definition)` má.
 * `await`odpověď na požadavek.  
 * Pracovat s kódem stavu odpovědi.
 * Vrátí příslib nějaké vhodné hodnoty (logická hodnota, `this`nebo výsledky dotazu). 
 
 ```javascript
-    async indexExistsAsync() { 
-        console.log("\n Checking if index exists...");
-        const endpoint = this.getIndexUrl();
-        const response = await AzureSearchClient.request(endpoint, "GET", this.queryKey);
-        // Success has a few likely status codes: 200 or 204 (No Content), but accept all in 200 range...
-        const exists = response.status >= 200 && response.status < 300;
-        return exists;
-    }
-    
-    async deleteIndexAsync() {
-        console.log("\n Deleting existing index...");
-        const endpoint = this.getIndexUrl();
-        const response = await AzureSearchClient.request(endpoint, "DELETE", this.adminKey);
-        AzureSearchClient.throwOnHttpError(response);
-        return this;
-    }
-    
-    async createIndexAsync(definition) {
-        console.log("\n Creating index...");
-        const endpoint = this.getIndexUrl();
-        const response = await AzureSearchClient.request(endpoint, "PUT", this.adminKey, definition);
-        AzureSearchClient.throwOnHttpError(response);
-        return this;
-    }
+async indexExistsAsync() { 
+    console.log("\n Checking if index exists...");
+    const endpoint = this.getIndexUrl();
+    const response = await AzureSearchClient.request(endpoint, "GET", this.adminKey);
+    // Success has a few likely status codes: 200 or 204 (No Content), but accept all in 200 range...
+    const exists = response.status >= 200 && response.status < 300;
+    return exists;
+}
+
+async deleteIndexAsync() {
+    console.log("\n Deleting existing index...");
+    const endpoint = this.getIndexUrl();
+    const response = await AzureSearchClient.request(endpoint, "DELETE", this.adminKey);
+    AzureSearchClient.throwOnHttpError(response);
+    return this;
+}
+
+async createIndexAsync(definition) {
+    console.log("\n Creating index...");
+    const endpoint = this.getIndexUrl();
+    const response = await AzureSearchClient.request(endpoint, "PUT", this.adminKey, definition);
+    AzureSearchClient.throwOnHttpError(response);
+    return this;
+}
 ```
 
 Potvrďte, že vaše metody jsou uvnitř třídy a že tuto třídu exportujete. Nejvzdálenější rozsah **AzureSearchClient. js** by měl být:
@@ -384,7 +384,7 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-Objektově orientovaná třída byla dobrou volbou pro potenciálně opakovaně použitelný modul **AzureSearchClient. js** , ale není nutná pro hlavní program, který zadáte do souboru s názvem **index. js**. 
+Objektově orientovaná třída byla dobrou volbou pro potenciálně opakovaně použitelný modul **AzureSearchClient. js** , ale není nutná pro hlavní program, který byste měli umístit do souboru s názvem **index. js**. 
 
 Vytvořte **index. js** a začněte tím, že navážete:
 
@@ -399,13 +399,13 @@ const indexDefinition = require('./hotels_quickstart_index.json');
 const AzureSearchClient = require('./AzureSearchClient.js');
 ```
 
-Balíček [ **NConf** ](https://github.com/indexzero/nconf) umožňuje zadat konfigurační data v nejrůznějších formátech, jako jsou například proměnné prostředí nebo příkazový řádek. **NConf** použijeme pro základní způsob čtení souboru **azure_search_config. JSON** a vrátí obsah tohoto souboru jako slovník. Pomocí `get(key)` funkce NConf můžeme rychlou kontrolu, že informace o konfiguraci byly správně přizpůsobené. Nakonec vrátíme konfiguraci:
+Balíček [ **NConf** ](https://github.com/indexzero/nconf) umožňuje zadat konfigurační data v nejrůznějších formátech, jako jsou například proměnné prostředí nebo příkazový řádek. Tato ukázka používá **NConf** základního způsobu pro čtení souboru **azure_search_config. JSON** a vrácení obsahu tohoto souboru jako slovníku. Pomocí `get(key)` funkce NConf můžete rychle ověřit, zda byly informace o konfiguraci správně přizpůsobené. Nakonec funkce vrátí konfiguraci:
 
 ```javascript
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
     if (config.get('serviceName') === '[SEARCH_SERVICE_NAME' ) {
-    throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
+        throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
     }
     return config;
 }
@@ -414,11 +414,9 @@ function getAzureConfiguration() {
 Funkce vytvoří objekt `Promise` , který se vyřeší po zadaném časovém intervalu. `sleep` Pomocí této funkce lze aplikaci pozastavit při čekání na dokončení a zpřístupnění asynchronních operací indexu. Přidání takového zpoždění je obvykle nutné pouze v ukázkách, testech a ukázkových aplikacích.
 
 ```javascript
-function sleep(ms)
-{
+function sleep(ms) {
     return(
-        new Promise(function(resolve, reject)
-        {
+        new Promise(function(resolve, reject) {
             setTimeout(function() { resolve(); }, ms);
         })
     );
@@ -431,8 +429,6 @@ Nakonec zadejte a zavolejte hlavní asynchronní `run` funkci. Tato funkce volá
 * Vytvoří novou `AzureSearchClient` instanci, která předává hodnoty z vaší konfigurace.
 * Ověřte, zda index existuje, a pokud ano, odstraňte jej
 * Vytvoření indexu pomocí `indexDefinition` načteného z **hotels_quickstart_index. JSON**
-* Přidejte dokumenty o hotely, které jste načetli z **hotelů. JSON.**
-* Dotazování indexu Azure Search pomocí `doQueriesAsync()` vámi zapsané metody
 
 ```javascript
 const run = async () => {
@@ -444,7 +440,6 @@ const run = async () => {
         await exists ? client.deleteIndexAsync() : Promise.resolve();
         // Deleting index can take a few seconds
         await sleep(2000);
-        const indexDefinition = require('./hotels_quickstart_index.json');
         await client.createIndexAsync(indexDefinition);
     } catch (x) {
         console.log(x);
@@ -468,13 +463,13 @@ Pro následující příkazy použijte okno terminálu.
 1. Nainstalujte balíčky pro ukázku pomocí `npm install`.  Tento příkaz stáhne balíčky, na kterých závisí kód.
 1. Spusťte program pomocí `node index.js`programu.
 
-Měli byste vidět řadu zpráv popisujících akce prováděné programem. Pokud chcete zobrazit více podrobností o požadavcích, můžete odkomentovat [řádky na začátku `AzureSearchClient.request()` metody](https://github.com/Azure-Samples/azure-search-javascript-samples/quickstart/blob/master/AzureSearchClient.js#LL20-LL26) v **AzureSearchClient. js**. 
+Měli byste vidět řadu zpráv popisujících akce prováděné programem. Pokud chcete zobrazit podrobnější informace o požadavcích, můžete zrušit komentář na [řádky na začátku `AzureSearchClient.request()` metody]https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/AzureSearchClient.js#L21-L27) v **AzureSearchClient. js**. 
 
 Otevřete **Přehled** služby vyhledávání v Azure Portal. Vyberte kartu **indexy** . Mělo by se zobrazit něco podobného:
 
 ![Snímek obrazovky Azure Portal, Search Service přehled, karta indexy](media/search-get-started-nodejs/create-index-no-data.png)
 
-V dalším kroku přidáme data do indexu. 
+V dalším kroku přidáte data do indexu. 
 
 ## <a name="2---load-documents"></a>2\. načtení dokumentů 
 
@@ -496,7 +491,7 @@ async postDataAsync(hotelsData) {
 }
 ```
 
- Vstupy dokumentů můžou být řádky v databázi, objekty BLOB v úložišti objektů BLOB nebo, jako v této ukázce, dokumenty JSON na disku. Můžete buď stáhnout soubor [hotelů. JSON](https://github.com/Azure-Samples/azure-search-javascript-samples/quickstart/blob/master/hotels.json) , nebo vytvořit vlastní soubor **hotelů. JSON** s následujícím obsahem:
+ Vstupy dokumentů můžou být řádky v databázi, objekty BLOB v úložišti objektů BLOB nebo, jako v této ukázce, dokumenty JSON na disku. Můžete buď stáhnout soubor [hotelů. JSON](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels.json) , nebo vytvořit vlastní soubor **hotelů. JSON** s následujícím obsahem:
 
 ```json
 {
@@ -605,7 +600,7 @@ const run = async () => {
 }
 ```
 
-Spusťte program znovu s `node index.js`. Měla by se zobrazit trochu odlišná sada zpráv z těch, které jste viděli v kroku 1. Tentokrát index existuje a měla by se zobrazit zpráva o jeho odstranění předtím, než aplikace vytvoří nový index a odešle do něj data. 
+Spusťte program znovu s `node index.js`. Měla by se zobrazit trochu odlišná sada zpráv z těch, které jste viděli v kroku 1. Tentokrát index existuje a měla by se vám zobrazit zpráva o jeho odstranění, než aplikace vytvoří nový index a odešle do něj data. 
 
 ## <a name="3---search-an-index"></a>3\. Prohledání indexu
 
@@ -620,7 +615,7 @@ const queries = [
 ];
 ```
 
-Ve stejném souboru **index. js** napište `doQueries()` funkci zobrazenou níže. Tato funkce přebírá `AzureSearchClient` objekt a `AzureSearchClient.queryAsync` aplikuje metodu na každou hodnotu v `queries` poli. Používá `Promise.all()` funkci k vrácení jediného `Promise` , který se vyřeší pouze v případě, že byly vyřešeny všechny dotazy. Volání pro `JSON.stringify(body, null, 4)` formátování výsledku dotazu bude čitelnější.
+Ve stejném souboru **index. js** napište `doQueriesAsync()` funkci zobrazenou níže. Tato funkce přebírá `AzureSearchClient` objekt a `AzureSearchClient.queryAsync` aplikuje metodu na každou hodnotu v `queries` poli. Používá `Promise.all()` funkci k vrácení jediného `Promise` , který se vyřeší pouze v případě, že byly vyřešeny všechny dotazy. Volání pro `JSON.stringify(body, null, 4)` formátování výsledku dotazu bude čitelnější.
 
 ```javascript
 async function doQueriesAsync(client) {
@@ -660,7 +655,7 @@ const run = async () => {
 }
 ```
 
-Chcete- `AzureSearchClient.queryAsync(query)`li implementovat, upravte soubor **AzureSearchClient. js**. Hledání vyžaduje jiný koncový bod, proto Přidejte funkci `getSearchUrl(searchTerm)` spolu s `getIndexUrl()` již zapsanými metodami a `getPostDataUrl()` .
+Chcete- `AzureSearchClient.queryAsync(query)`li implementovat, upravte soubor **AzureSearchClient. js**. Hledání vyžaduje jiný koncový bod a hledané výrazy se stanou argumenty adresy URL, takže přidejte funkci `getSearchUrl(searchTerm)` spolu s `getIndexUrl()` již zapsanými metodami a `getPostDataUrl()` .
 
 ```javascript
 getSearchUrl(searchTerm) { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
@@ -678,7 +673,7 @@ async queryAsync(searchTerm) {
 }
 ```
 
-Hledání se provádí pomocí příkazu GET a bez těla, protože hledaný termín je součástí adresy URL. Všimněte si, že na rozdíl od jiných funkcí, `this.adminKey`které `queryAsync(searchTerm)` používají `this.queryKey`, používá. Klíče dotazů, jak název implikuje, lze použít pouze pro dotazování indexu a nelze je použít k žádným způsobem pro úpravu indexu. Klíče dotazů jsou proto bezpečnější pro distribuci klientských aplikací.
+Hledání se provádí pomocí příkazu GET a bez těla, protože hledaný termín je součástí adresy URL. Všimněte si `queryAsync(searchTerm)` , `this.queryKey`že na rozdíl od ostatních funkcí, které používaly klíč správce, se na rozdílovém používání. Klíče dotazů, jak název implikuje, lze použít pouze pro dotazování indexu a nelze je použít k žádným způsobem pro úpravu indexu. Klíče dotazů jsou proto bezpečnější pro distribuci klientských aplikací.
 
 Spusťte program pomocí `node index.js`nástroje. Nyní se dotazy odesílají spolu s předchozími kroky a výsledky se zapisují do konzoly.
 

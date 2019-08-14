@@ -83,7 +83,7 @@
             - name: Odstranění privátního cloudu
               href: delete-private-cloud.md
         - name: Monitorování aktivity CloudSimple
-          href: 'https://docs.azure.cloudsimple.com/activity/'
+          href: monitor-activity.md
         - name: Nastavení sítí privátního cloudu
           items:
             - name: Vytváření a správa sítí VLAN a podsítí

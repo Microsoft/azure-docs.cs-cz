@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s SAP NetWeaver | Microsoft Docs'
+title: 'Kurz: Kurz: Azure Active Directory integrace jednotného přihlašování s SAP NetWeaver | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP NetWeaver.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/08/2019
+ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6cce23194025a68eec055fe45b806c3d28434a1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b002a9d5385d6cee3f22da7a1ddcf1f0864311ec
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880521"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989038"
 ---
-# <a name="tutorial-integrate-sap-netweaver-with-azure-active-directory"></a>Kurz: Integrace SAP NetWeaver s Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Kurz: Azure Active Directory integrace jednotného přihlašování pomocí SAP NetWeaver
 
 V tomto kurzu se dozvíte, jak integrovat SAP NetWeaver s Azure Active Directory (Azure AD). Když integrujete SAP NetWeaver s Azure AD, můžete:
 
@@ -81,9 +81,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP NetW
 
 1. Otevřete nové okno webového prohlížeče a přihlaste se k firemnímu webu SAP NetWeaver jako správce.
 
-2. Ujistěte se, že jsou služby **http** a **https** aktivní a že se k nim přiřadí příslušné porty **SMICM** T-Code.
+1. Ujistěte se, že jsou služby **http** a **https** aktivní a že se k nim přiřadí příslušné porty **SMICM** T-Code.
 
-3. Přihlaste se k firemnímu klientovi se systémem SAP (T01), kde je vyžadováno jednotné přihlašování a aktivujte správu relace zabezpečení HTTP.
+1. Přihlaste se k firemnímu klientovi se systémem SAP (T01), kde je vyžadováno jednotné přihlašování a aktivujte správu relace zabezpečení HTTP.
 
     a. Přejít na kód transakce **SICF_SESSIONS**. Zobrazí všechny relevantní parametry profilu s aktuálními hodnotami. Vypadají jako v následujícím příkladu:-
     ```
@@ -113,22 +113,22 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP NetW
     /sap/bc/webdynpro/sap/saml2
     /sap/bc/webdynpro/sap/sec_diag_tool (This is only to enable / disable trace)
     ```
-4. Přejít na kód transakce **typu Saml2** v obchodním klientovi systému SAP [T01/122]. Otevře se uživatelské rozhraní v prohlížeči. V tomto příkladu jsme předpokládali 122 jako obchodní klient SAP.
+1. Přejít na kód transakce **typu Saml2** v obchodním klientovi systému SAP [T01/122]. Otevře se uživatelské rozhraní v prohlížeči. V tomto příkladu jsme předpokládali 122 jako obchodní klient SAP.
 
     ![Odkaz ke stažení certifikátu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_sapbusinessclient.png)
 
-5. Zadejte uživatelské jméno a heslo, které chcete zadat v uživatelském rozhraní, a klikněte na **Upravit**.
+1. Zadejte uživatelské jméno a heslo, které chcete zadat v uživatelském rozhraní, a klikněte na **Upravit**.
 
     ![Odkaz ke stažení certifikátu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
 
-6. Nahraďte **název poskytovatele** z T01122 `http://T01122` na a klikněte na **Uložit**.
+1. Nahraďte **název poskytovatele** z T01122 `http://T01122` na a klikněte na **Uložit**.
 
     > [!NOTE]
     > Ve výchozím nastavení se název poskytovatele `<sid><client>` používá jako formát `<protocol>://<name>`, ale Azure AD očekává název ve formátu. doporučuje `https://<sid><client>` se zachovat název poskytovatele, aby bylo možné nakonfigurovat více modulů SAP NetWeaver ABAP v Azure AD.
 
     ![Odkaz ke stažení certifikátu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 
-7. **Generují se metadata poskytovatele služby**: – Jakmile se dokončí konfigurace nastavení **místní zprostředkovatel** a **důvěryhodní zprostředkovatelé** na uživatelském rozhraní SAML 2,0, bude dalším krokem vygenerování souboru metadat poskytovatele služeb (který by obsahovalo všechna nastavení, kontexty ověřování a další konfigurace v SAP. Po vygenerování tohoto souboru je potřeba ho nahrát do Azure AD.
+1. **Generují se metadata poskytovatele služby**: – Jakmile se dokončí konfigurace nastavení **místní zprostředkovatel** a **důvěryhodní zprostředkovatelé** na uživatelském rozhraní SAML 2,0, bude dalším krokem vygenerování souboru metadat poskytovatele služeb (který by obsahovalo všechna nastavení, kontexty ověřování a další konfigurace v SAP. Po vygenerování tohoto souboru je potřeba ho nahrát do Azure AD.
 
     ![Odkaz ke stažení certifikátu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
 
@@ -146,7 +146,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující krok:
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující krok:
 
     a. Klikněte na **nahrát soubor metadat** a nahrajte **soubor metadat poskytovatele služeb**, který jste získali dříve.
 
@@ -167,7 +167,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![image](common/edit-attribute.png)
 
-13. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
+1. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
     a. Kliknutím na **ikonu Upravit** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
@@ -384,10 +384,12 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 5. Klikněte na tlačítko **Dokončit**.
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte SAP NetWeaver s Azure AD](https://aad.portal.azure.com/)

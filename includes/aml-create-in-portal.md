@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 07/31/2019
-ms.openlocfilehash: 0a497ce506e1aa3b0f9afc47bf1ab8382c9c0405
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
-ms.translationtype: HT
+ms.openlocfilehash: e571c65e64fad73c646aa05366cab685aa745caa
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951417"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968844"
 ---
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure, které používáte. 
 
@@ -45,10 +45,13 @@ ms.locfileid: "68951417"
 
    ![Stav vytvoření pracovního prostoru](./media/aml-create-in-portal/notifications.png)
 
-1. Pokud váš kód odkazuje na tento pracovní prostor z místního prostředí, vyberte **Stáhnout soubor config. JSON** v části **Přehled** pracovního prostoru.  
+1. Pokud budete z portálu používat možnost bez kódu, jako je například vizuální rozhraní nebo automatizované experimenty ML, jste hotovi nyní. Pokud budete vytvářet [virtuální počítač poznámkového bloku](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md#azure) , budete také hotovi. 
+
+1. Pokud plánujete použít kód v místním prostředí, které odkazuje na tento pracovní prostor, vyberte **Stáhnout soubor config. JSON** v části **Přehled** pracovního prostoru.  
 
    ![Stažení souboru config. JSON](./media/aml-create-in-portal/configure.png)
+   
+   Soubor umístěte do struktury adresáře pomocí skriptů Pythonu nebo poznámkových bloků Jupyter. Může být ve stejném adresáři, v podadresáři s názvem *. AzureML*nebo v nadřazeném adresáři. Když vytváříte virtuální počítač poznámkového bloku, tento soubor se přidá do správného adresáře na VIRTUÁLNÍm počítači za vás.
 
-    Tento soubor JSON umístěte do struktury adresáře, která obsahuje vaše skripty Pythonu nebo Jupyter poznámkové bloky. Může být ve stejném adresáři, v podadresáři s názvem *. AzureML*nebo v nadřazeném adresáři.
+    
 
-   Pokud budete používat [virtuální počítač poznámkového bloku](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md#azure) , nemusíte tento soubor stahovat, ale přidá se do správného adresáře na virtuálním počítači.

@@ -19,10 +19,6 @@
 - name: Koncepty
   expanded: false
   items:
-    - name: Využití podmíněného přístupu
-      href: howto-conditional-access-adoption-kit.md
-    - name: Zásady základní ochrany
-      href: concept-baseline-protection.md
     - name: Podmínky
       href: conditions.md
     - name: Podmínky umístění
@@ -33,6 +29,8 @@
       href: service-dependencies.md
     - name: Nástroj What If
       href: what-if-tool.md
+    - name: Zásady základní ochrany
+      href: concept-baseline-protection.md
 - name: Návody
   expanded: true
   items:
@@ -40,16 +38,6 @@
       href: plan-conditional-access.md
     - name: Osvědčené postupy
       href: best-practices.md
-    - name: Základní zásady
-      items:
-        - name: Vyžadování MFA pro správce
-          href: howto-baseline-protect-administrators.md
-        - name: Ochrana koncových uživatelů
-          href: howto-baseline-protect-end-users.md
-        - name: Blokování starší verze ověřování
-          href: howto-baseline-protect-legacy-auth.md
-        - name: Vyžadování MFA pro správu služeb
-          href: howto-baseline-protect-azure.md
     - name: Blokování starší verze ověřování
       href: block-legacy-authentication.md
     - name: Podmíněný přístup pro registrace MFA
@@ -68,6 +56,18 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Migrace klasických zásad
       href: policy-migration.md
+    - name: Základní zásady
+      items:
+        - name: Vyžadování MFA pro správce
+          href: howto-baseline-protect-administrators.md
+        - name: Ochrana koncových uživatelů
+          href: howto-baseline-protect-end-users.md
+        - name: Blokování starší verze ověřování
+          href: howto-baseline-protect-legacy-auth.md
+        - name: Vyžadování MFA pro správu služeb
+          href: howto-baseline-protect-azure.md
+    - name: Využití podmíněného přístupu
+      href: howto-conditional-access-adoption-kit.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží pomocí nástroje What If

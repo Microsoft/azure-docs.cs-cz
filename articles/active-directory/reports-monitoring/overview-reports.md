@@ -3,7 +3,7 @@ title: Co jsou sestavy Azure Active Directory? | Dokumenty Microsoft
 description: Poskytuje obecný přehled sestav Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ccf8014938e813676e9338e9bfc4eaa18f63f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8cf5770cf052a478ea56f906efc19698554a1cd0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60286488"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989726"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Co jsou sestavy Azure Active Directory?
 
-Azure Active Directory (Azure AD) sestavy poskytují komplexní přehled aktivit ve vašem prostředí. Poskytnutá data vám umožní:
+Sestavy Azure Active Directory (Azure AD) poskytují ucelený přehled o aktivitě ve vašem prostředí. Poskytnutá data vám umožní:
 
 - Určit, jak uživatelé využívají vaše aplikace a služby.
 - Rozpoznat potenciální rizika ovlivňující stav vašeho prostředí.
@@ -42,7 +42,7 @@ Architektura generování sestav se spoléhá na dva hlavní pilíře:
 
 ## <a name="security-reports"></a>Sestavy zabezpečení
 
-Zprávy o zabezpečení pomáhají chránit identity vaší organizace. Existují dva typy sestav zabezpečení:
+Sestavy zabezpečení vám pomůžou chránit identity vaší organizace. Existují dva typy sestav zabezpečení:
 
 - **Uživatelé označení příznakem rizika** – Ze [sestavy zabezpečení uživatelů označených příznakem rizika](concept-user-at-risk.md) získáte přehled o uživatelských účtech, u kterých mohlo dojít k ohrožení zabezpečení.
 
@@ -50,9 +50,9 @@ Zprávy o zabezpečení pomáhají chránit identity vaší organizace. Existuj�
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Jaká licence Azure AD je potřeba pro přístup k sestavě zabezpečení?  
 
-Nabízí všechny edice Azure AD uživatelů označených příznakem rizika a rizikových přihlášení sestavy. Úroveň podrobností sestav se však mezi jednotlivými edicemi liší: 
+Všechny edice služby Azure AD poskytují uživatelům příznakem rizika pro rizikové a rizikové přihlašovací zprávy. Úroveň podrobností sestav se však mezi jednotlivými edicemi liší: 
 
-- V **edice Azure Active Directory Free a Basic**, získat seznam uživatelů označených příznakem rizika a rizikových přihlášení. 
+- V **edicích Azure Active Directory Free a Basic**se zobrazí seznam uživatelů označených příznakem rizika a rizikových přihlášení. 
 
 - Edice **Azure Active Directory Premium 1** tento model rozšiřuje tím, že umožňuje také prozkoumávat některé ze základních rizikových událostí, které byly v každé sestavě rozpoznány. 
 
@@ -61,7 +61,7 @@ Nabízí všechny edice Azure AD uživatelů označených příznakem rizika a r
 
 ## <a name="activity-reports"></a>Sestavy aktivit
 
-Sestavy aktivit vám pomůže porozumět chování uživatelů ve vaší organizaci. Existují dva typy sestav aktivit ve službě Azure AD:
+Sestavy aktivit vám pomohou pochopit chování uživatelů ve vaší organizaci. V Azure AD existují dva typy sestav aktivit:
 
 - **Protokoly auditu** – [Sestava aktivit protokolů auditu](concept-audit-logs.md) poskytuje přístup k historii každé úlohy provedené ve vašem tenantovi.
 
@@ -79,25 +79,25 @@ Sestavy aktivit vám pomůže porozumět chování uživatelů ve vaší organiz
 - Chcete vědět, ke kolika resetováním hesla ve vašem tenantovi dochází.
 
 
-#### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Jaká licence Azure AD je potřeba pro přístup k sestavě protokolů auditu?  
+#### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Jaká licence Azure AD potřebujete pro přístup k sestavě protokoly auditu?  
 
-Sestava protokolů auditu je dostupná pro funkce, ke kterým máte licence. Pokud máte licenci ke konkrétní funkci, máte u ní také přístup k informacím protokolu auditu. Další podrobnosti najdete v tématu [funkce Azure Active Directory a možnosti](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
+Sestava protokolů auditu je dostupná pro funkce, ke kterým máte licence. Pokud máte licenci ke konkrétní funkci, máte u ní také přístup k informacím protokolu auditu. Další podrobnosti najdete v tématu [Azure Active Directory funkce a možnosti](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
 
 ### <a name="sign-ins-report"></a>Sestava přihlášení
 
-[Sestavy přihlášení](concept-sign-ins.md) můžete nalézt odpovědi na otázky jako:
+[Sestava přihlášení](concept-sign-ins.md) vám umožní najít odpovědi na otázky, jako například:
 
 - Jaký je vzorec přihlašování uživatele?
 - Kolik uživatelů se přihlásilo za týden?
 - Jaký je stav těchto přihlášení?
 
-#### <a name="what-azure-ad-license-do-you-need-to-access-the-sign-ins-activity-report"></a>Jaká licence Azure AD je potřeba pro přístup k sestavě aktivit přihlašování?  
+#### <a name="what-azure-ad-license-do-you-need-to-access-the-sign-ins-activity-report"></a>Jaká licence Azure AD potřebujete pro přístup k sestavě aktivit přihlášení?  
 
 Pro přístup k sestavě aktivit přihlašování musí mít váš tenant přiřazenou licenci Azure AD Premium.
 
 ## <a name="programmatic-access"></a>Programový přístup
 
-Kromě uživatelského rozhraní služby Azure AD také poskytuje [programový přístup](concept-reporting-api.md) k datům sestav pomocí sady založené na protokolu REST API. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů. 
+Kromě uživatelského rozhraní poskytuje Azure AD také [programový přístup](concept-reporting-api.md) k datům sestav prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů. 
 
 ## <a name="next-steps"></a>Další postup
 

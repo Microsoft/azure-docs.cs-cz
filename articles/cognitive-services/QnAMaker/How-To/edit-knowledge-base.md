@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 006170b2030b6511ba732a1b12aa5b5b811d8900
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1342616a0d32d8ac68965bc04f1fd3ca60146369
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447481"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966771"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Úprava znalostní báze v nástroje QnA Maker
 
@@ -54,7 +54,7 @@ Nástroj QnA Maker umožňuje spravovat obsah znalostní báze tím, že poskytu
 
 ## <a name="add-a-qna-pair"></a>Přidání páru otázky a odpovědi
 
-Na **nastavení** stránce **QnA přidat pár** přidáte nový řádek do tabulky znalostní báze knowledge base.
+Na stránce **Nastavení** vyberte **Přidat dvojici QnA** a přidejte nový řádek do tabulky znalostní báze.
 
 ![Přidat dvojici QnA](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
@@ -72,7 +72,7 @@ Přidáte alternativní dotazy na existující dvojice QnA ke zlepšení pravdě
 
 ## <a name="add-metadata"></a>Přidání metadat
 
-Přidat páry metadata tak, že vyberete první **zobrazit možnosti**, pak vyberete **zobrazit metadata**. Zobrazí se sloupec metadat. V dalším kroku vyberte **+** přihlášení pro přidání páru metadat. Tento pár se skládá z jednoho klíče a jedna hodnota.
+Přidejte páry metadat tak, že nejprve vyberete **Možnosti zobrazení**a pak vyberete **zobrazit metadata**. Tím se zobrazí sloupec metadata. Pak vyberte **+** znaménko a přidejte dvojici metadat. Tento pár se skládá z jednoho klíče a jedné hodnoty.
 
 ![Přidání metadat](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -81,17 +81,17 @@ Přidat páry metadata tak, že vyberete první **zobrazit možnosti**, pak vybe
 
 ## <a name="manage-large-knowledge-bases"></a>Správa velkých znalostních bází
 
-* **Zdroj dat skupiny**: Maximálně jsou seskupené ve zdroji dat, ze kterého byly extrahovány. Můžete rozbalit nebo sbalit zdroj dat.
+* **Skupiny zdrojů dat**: QnAs jsou seskupeny podle zdroje dat, ze kterého byly extrahovány. Můžete rozbalit nebo sbalit zdroj dat.
 
-    ![Použít panel zdroj dat nástroje QnA Maker k rozbalení a sbalení datový zdroj otázky a odpovědi](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+    ![Pro sbalení a rozbalení otázek a odpovědí zdrojů dat použijte panel zdroje dat QnA Maker.](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Znalostní bázi knowledge base**: Hledat ve znalostní bázi zadáním do textového pole v horní části tabulce znalostní báze Knowledge Base. Chcete-li vyhledat obsah dotaz, odpověď nebo metadata, klikněte na enter. Klikněte na ikonu X odebrat vyhledávací filtr.
+* **Vyhledat znalostní bázi Knowledge Base**: Znalostní bázi můžete vyhledat zadáním do textového pole v horní části tabulky znalostní báze. Chcete-li vyhledat obsah dotaz, odpověď nebo metadata, klikněte na enter. Klikněte na ikonu X odebrat vyhledávací filtr.
 
-    ![Pomocí vyhledávacího pole QnA Maker nad otázek a odpovědí pro snížení zobrazení na pouze položky odpovídající filtr](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Pomocí vyhledávacího pole QnA Maker nad dotazy a odpovědi zmenšíte zobrazení jenom na položky, které odpovídají filtrům.](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **Stránkování**: Rychle procházet zdroje dat ke správě velkých znalostních bází
+* **Stránkování**: Rychlé procházení zdrojů dat pro správu rozsáhlých znalostní báze
 
-    ![Použijte výše uvedené otázky a odpovědi stránkování funkce nástroje QnA Maker pro přesun mezi stránkami otázek a odpovědí](../media/qnamaker-how-to-edit-kb/pagination.png)
+    ![Procházení stránek otázek a odpovědí pomocí funkcí QnA Maker stránkování nad rámec otázek a odpovědí](../media/qnamaker-how-to-edit-kb/pagination.png)
 
 ## <a name="delete-knowledge-bases"></a>Odstranit znalostních bází
 

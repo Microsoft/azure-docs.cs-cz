@@ -1,27 +1,24 @@
 ---
-title: Azure CLI ukázkový skript – nasazení stacku lamp do Škálovací sady s vyrovnáváním zatížení virtuálních počítačů | Dokumentace Microsoftu
+title: Ukázkový skript Azure CLI – nasazení zásobníku LAMP do sady škálování virtuálních počítačů s vyrovnáváním zatížení | Microsoft Docs
 description: Pomocí rozšíření vlastních skriptů nasadíte stack LAMP do škálovací sady virtuálních počítačů v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: allclark
-manager: douge
-editor: tysonn
+author: cynthn
+ms.author: cynthn
 tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/05/2017
-ms.author: douge
 ms.custom: mvc
-ms.openlocfilehash: d5506d9e9e6b3d9410944a83723d7b718ea061ae
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.date: 04/05/2017
+ms.openlocfilehash: ffbece620ae038307d30ae3b330854280f09bd28
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871853"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963250"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>Nasazení stacku LAMP do škálovací sady virtuálních počítačů s vyrovnáváním zatížení
 
@@ -33,7 +30,7 @@ Tento příklad vytvoří škálovací sadu virtuálních počítačů a použij
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/build-stack.sh "Create virtual machine scale set with LAMP stack")]
 
-## <a name="connect"></a>Připojení
+## <a name="connect"></a>Připojit
 
 Pomocí tohoto kódu zobrazíte pokyny pro připojení k virtuálním počítačům a škálovací sadě.
 
@@ -62,7 +59,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | Získá IP adresy virtuálních počítačů, které se vytvořily v rámci ukázky. |
 | [az network lb show](https://docs.microsoft.com/cli/azure/network/lb) | Získá front-endové a back-endové porty, které používá nástroj pro vyrovnávání zatížení. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

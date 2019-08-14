@@ -1,41 +1,41 @@
 ---
-title: Udělení oprávnění k velkému počtu aplikací pro přístup k Azure key vaultu - Azure Key Vault | Dokumentace Microsoftu
-description: Zjistěte, jak udělit oprávnění k velkému počtu aplikací pro přístup k trezoru klíčů
+title: Udělení oprávnění mnoha aplikacím pro přístup k trezoru klíčů Azure – Azure Key Vault | Microsoft Docs
+description: Zjistěte, jak udělit oprávnění k mnoha aplikacím pro přístup k trezoru klíčů.
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/07/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: b1d0b0948e089d41f460ac2a54150ee51333f87c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 07ee544057ffeb0a5859cc771b124523ec79c9c0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64721991"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976404"
 ---
-# <a name="grant-several-applications-access-to-a-key-vault"></a>Udělit několik aplikací přístup k trezoru klíčů
+# <a name="grant-several-applications-access-to-a-key-vault"></a>Udělení přístupu k trezoru klíčů několika aplikacím
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Zásada řízení přístupu je možné udělit několik aplikací přístup k trezoru klíčů. Zásady řízení přístupu může podporovat až 1024 aplikace a je konfigurován takto:
+Zásady řízení přístupu se dají použít k udělení přístupu k trezoru klíčů několika aplikacím. Zásady řízení přístupu můžou podporovat až 1024 aplikací a nakonfigurují se takto:
 
-1. Vytvoření skupiny zabezpečení služby Azure Active Directory. 
-2. Přidejte všechny aplikace přiřazené instanční objekty do skupiny zabezpečení.
-3. Udělte přístup skupiny zabezpečení ke službě Key Vault.
+1. Vytvořte Azure Active Directory skupinu zabezpečení. 
+2. Do skupiny zabezpečení přidejte všechny objekty přidružené k aplikacím.
+3. Udělte skupině zabezpečení přístup k vašemu Key Vault.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Tady jsou požadavky:
 * [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
-* [Instalace modulu Azure Active Directory V2 PowerShell](https://www.powershellgallery.com/packages/AzureAD).
-* Oprávnění k vytvoření nebo úpravě skupiny v tenantovi Azure Active Directory. Pokud nemáte příslušná oprávnění, budete muset kontaktovat svého správce Azure Active Directory. Zobrazit [o službě Azure Key Vault klíče, tajné kódy a certifikáty](about-keys-secrets-and-certificates.md) podrobnosti o službě Key Vault přístup k oprávnění zásad.
+* [Nainstalujte modul Azure Active Directory v2 PowerShell](https://www.powershellgallery.com/packages/AzureAD).
+* Oprávnění k vytváření a úpravám skupin v tenantovi Azure Active Directory. Pokud nemáte oprávnění, možná budete muset kontaktovat správce Azure Active Directory. Podrobnosti o oprávněních zásad přístupu Key Vault najdete v tématu [informace o Azure Key Vault klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md) .
 
-## <a name="granting-key-vault-access-to-applications"></a>Udělení přístupu službě Key Vault do aplikací
+## <a name="granting-key-vault-access-to-applications"></a>Udělení přístupu Key Vault k aplikacím
 
-Spusťte následující příkazy v prostředí PowerShell:
+V prostředí PowerShell spusťte následující příkazy:
 
 ```powershell
 # Connect to Azure AD 
@@ -60,8 +60,8 @@ Set-AzKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.Objec
 # Of course you can adjust the permissions as required 
 ```
 
-Pokud je potřeba udělit jinou sadu oprávnění pro skupinu aplikací, vytvořte samostatnou skupinu zabezpečení Azure Active Directory pro takové aplikace.
+Pokud potřebujete pro skupinu aplikací udělit jinou sadu oprávnění, vytvořte pro takové aplikace samostatnou skupinu zabezpečení Azure Active Directory.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o tom, jak [zabezpečení trezoru klíčů](key-vault-secure-your-key-vault.md).
+Přečtěte si další informace o tom, jak [Trezor klíčů zabezpečit](key-vault-secure-your-key-vault.md).

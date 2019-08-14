@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: 1960856ce2f15945d1b1bfa093f349771d481ffc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663847"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989085"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
 
@@ -25,7 +25,7 @@ Přizpůsobení používá **funkce**, které jsou informace o **aktuálním kon
 
 Můžete mít například **funkci** o:
 
-* _Uživatel_ , jako je `UserID`například. 
+* _Uživatel_ , jako je `Sports_Shopper`například. Nemělo by to být individuální ID uživatele. 
 * _Obsah_ , jako je `Documentary` `Movie`například, pokud se jedná o, a, nebo zda je položka maloobchodního prodeje v obchodě k dispozici. `TV Series`
 * _Aktuální_ časové období, jako je například den v týdnu.
 
@@ -150,7 +150,7 @@ Můžete použít několik dalších [Cognitive Services Azure](https://www.micr
 
 Každá akce:
 
-* Má ID.
+* Má ID _události_ . Pokud již máte ID události, měli byste je odeslat. Pokud nemáte ID události, neodešlete ho, přizpůsobování ho pro vás vytvoří a vrátí ho v reakci na požadavek Rank. ID je přidruženo k události pořadí, nikoli k uživateli. Vytvoříte-li ID, bude nejlépe fungovat GUID. 
 * Obsahuje seznam funkcí.
 * Seznam funkcí může být velký (stovky), ale doporučujeme vyhodnotit efektivitu funkcí a odebrat funkce, které nepřispívají k získání neprospěchu. 
 * Funkce v akcích mohou nebo nemusí mít žádnou korelaci s funkcemi v **kontextu** , který používá přizpůsobený modul.

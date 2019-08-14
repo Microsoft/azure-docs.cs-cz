@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 978b56f5c38a154c79544c7deb5d49396b1deff9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0d67385975db13539c28745eede4fb288a0daedd
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688867"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989144"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Rychlý start: Vytvoření webové aplikace, která spustí moderní čtečku (C#)
 
@@ -223,5 +223,7 @@ Po kliknutí na tlačítko "moderní čtečka" se zobrazí moderní čtečka, kt
 
 ## <a name="next-steps"></a>Další postup
 
-* Podívejte se na [kurz](./tutorial.md) , který vám umožní udělat si další informace, které můžete dělat v sadě moderní čtečky.
+* Podívejte se na [kurz Node. js](./tutorial-nodejs.md) , kde se můžete podívat, co se dá dělat se sadou moderní čtečky pomocí Node. js.
+* Podívejte se na [kurz Pythonu](./tutorial-python.md) , abyste viděli, co dalšího můžete dělat se sadou moderní čtečky pomocí Pythonu.
+* Podívejte se na [kurz pro iOS](./tutorial-ios-picture-immersive-reader.md) , abyste viděli, co dalšího můžete dělat se sadou pro moderní čtečku pomocí SWIFT.
 * Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)

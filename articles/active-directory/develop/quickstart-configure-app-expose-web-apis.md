@@ -1,5 +1,5 @@
 ---
-title: Konfigurace aplikace k vystavení webové rozhraní API – platforma identit Microsoft
+title: Konfigurace aplikace k vystavení webových rozhraní API – platforma Microsoftu identity
 description: Zjistěte, jak nakonfigurovat aplikaci pro zveřejnění nového oprávnění nebo oboru a role a tím ji zpřístupnit klientským aplikacím.
 services: active-directory
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f770539e2f60a960a52a877dd4eaa79c60a1af4a
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482678"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989273"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Rychlý start: Konfigurace aplikace k vystavení webové rozhraní API
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Rychlý start: Konfigurace aplikace k vystavení webových rozhraní API
 
 Můžete vyvinout webové rozhraní API a zpřístupnit ho klientským aplikacím zveřejněním [oprávnění nebo oborů](developer-glossary.md#scopes) a [rolí](developer-glossary.md#roles). Správně nakonfigurované webové rozhraní API bude k dispozici stejně jako ostatní webová rozhraní API Microsoftu, včetně rozhraní Graph API a rozhraní API pro Office 365.
 
@@ -44,7 +44,7 @@ Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby a potom vyberte **registrace aplikací**.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
 1. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** neboli hlavní stránka registrace dané aplikace.
 1. Zvolte metodu, kterou chcete ke zveřejnění nového oboru použít – uživatelské rozhraní nebo manifest aplikace:
     * [Zveřejnění nového oboru prostřednictvím uživatelského rozhraní](#expose-a-new-scope-through-the-ui)
@@ -52,7 +52,7 @@ Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Zveřejnění nového oboru prostřednictvím uživatelského rozhraní
 
-[![Ukazuje, jak vystavit rozhraní API pomocí uživatelského rozhraní](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![Ukazuje, jak vystavit rozhraní API pomocí uživatelského rozhraní.](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Zveřejnění nového oboru prostřednictvím uživatelského rozhraní:
 
@@ -116,8 +116,9 @@ Zveřejnění nového oboru prostřednictvím manifestu aplikace:
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Ověření, že je webové rozhraní API zveřejněné ostatním aplikacím
 
 1. Vraťte se do svého tenanta Azure AD, vyberte **Registrace aplikací** a vyhledejte a vyberte klientskou aplikaci, kterou chcete nakonfigurovat.
-1. Opakujte že kroky popsané v konfigurovat klientskou aplikaci pro přístup k webovým rozhraním API.
-1. Když se dostanete ke kroku **Výběr rozhraní API**, vyberte váš prostředek. Měl by se zobrazit nový obor, který je k dispozici pro žádosti o oprávnění klientů.
+1. Zopakujte postup popsaný v části [Konfigurace klientské aplikace pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md).
+1. Když se dostanete k kroku [výběru rozhraní API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
+), vyberte prostředek. Měl by se zobrazit nový obor, který je k dispozici pro žádosti o oprávnění klientů.
 
 ## <a name="more-on-the-application-manifest"></a>Další informace o manifestu aplikace
 

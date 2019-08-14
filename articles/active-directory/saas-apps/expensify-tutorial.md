@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/29/2019
+ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37eb989f49593570aa9fcc2ee6f2e5863b59fbc1
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: fe57c0655cf01f8dfa0f9cd0d75584fd4f130c0a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637766"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976108"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>Kurz: Integrace Expensify s Azure Active Directory
 
@@ -36,7 +36,7 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 
 Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * Expensify odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -56,20 +56,20 @@ Pokud chcete nakonfigurovat integraci Expensify do služby Azure AD, musíte př
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Expensify** .
 1. Na panelu výsledků vyberte **Expensify** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on-for-expensify"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Expensify
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Expensify pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Expensify.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Expensify, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 2. **[Nakonfigurujte EXPENSIFY SSO](#configure-expensify-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-5. **[Vytvořte Expensify Test User](#create-expensify-test-user)** -to, abyste měli protějšek B. Simon v Expensify, která je propojená s reprezentací uživatele v Azure AD.
+    1. **[Vytvořte Expensify Test User](#create-expensify-test-user)** -to, abyste měli protějšek B. Simon v Expensify, která je propojená s reprezentací uživatele v Azure AD.
 6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -83,10 +83,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://www.expensify.com/authentication/saml/login`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://www.<companyname>.expensify.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`https://www.expensify.com`
+
+    c. b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>`
 
     > [!NOTE]
-    > Hodnota identifikátoru není skutečný. Aktualizuje tuto hodnotu skutečným identifikátorem. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory klienta Expensify](mailto:help@expensify.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota adresy URL odpovědi není reálné číslo. Aktualizujte tuto hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory klienta Expensify](mailto:help@expensify.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -95,20 +97,6 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. V části **Nastavení Expensify** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
-
-### <a name="configure-expensify-sso"></a>Konfigurace jednotného přihlašování Expensify
-
-Pokud chcete povolit jednotné přihlašování v Expensify, musíte nejdřív v aplikaci povolit **řízení z domény** . V aplikaci můžete povolit ovládací prvek doména prostřednictvím kroků uvedených [tady](https://help.expensify.com/domain-control). Pro další podporu Pracujte s [týmem podpory klienta Expensify](mailto:help@expensify.com). Jakmile je povoleno řízení domény, postupujte podle těchto kroků:
-
-![Konfigurace jednotného přihlašování](./media/expensify-tutorial/tutorial_expensify_51.png)
-
-1. Přihlaste se k aplikaci Expensify.
-
-2. Na levém panelu klikněte na **Nastavení** a přejděte na **SAML**.
-
-3. Přepněte možnost **přihlášení SAML** jako **povolenou**.
-
-4. Otevřete stažená federační metadata ze služby Azure AD v programu Poznámkový blok, zkopírujte obsah a vložte ho do textového pole **metadata poskytovatele identity** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -140,11 +128,25 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
+## <a name="configure-expensify-sso"></a>Konfigurace jednotného přihlašování Expensify
+
+Pokud chcete povolit jednotné přihlašování v Expensify, musíte nejdřív v aplikaci povolit **řízení z domény** . V aplikaci můžete povolit ovládací prvek doména prostřednictvím kroků uvedených [tady](https://help.expensify.com/domain-control). Pro další podporu Pracujte s [týmem podpory klienta Expensify](mailto:help@expensify.com). Jakmile je povoleno řízení domény, postupujte podle těchto kroků:
+
+![Konfigurace jednotného přihlašování](./media/expensify-tutorial/tutorial_expensify_51.png)
+
+1. Přihlaste se k aplikaci Expensify.
+
+2. Na levém panelu klikněte na **Nastavení** a přejděte na **SAML**.
+
+3. Přepněte možnost **přihlášení SAML** jako **povolenou**.
+
+4. Otevřete stažená federační metadata ze služby Azure AD v programu Poznámkový blok, zkopírujte obsah a vložte ho do textového pole **metadata poskytovatele identity** .
+
 ### <a name="create-expensify-test-user"></a>Vytvořit testovacího uživatele Expensify
 
 V této části vytvoříte uživatele s názvem B. Simon v Expensify. Pokud chcete přidat uživatele na platformě Expensify, pracujte s [týmem podpory klienta Expensify](mailto:help@expensify.com) .
 
-### <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
