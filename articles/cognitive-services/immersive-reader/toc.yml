@@ -14,9 +14,11 @@
 - name: Kurzy
   items:
     - name: Spuštění Asistivní čtečky (Node.js)
-      href: tutorial.md
+      href: tutorial-nodejs.md
+    - name: Spuštění Asistivní čtečky (Python)
+      href: tutorial-python.md
     - name: Obrázek do Asistivní čtečky (Swift)
-      href: ios-picture-immersive-reader-tutorial.md
+      href: tutorial-ios-picture-immersive-reader.md
 - name: Postupy
   items:
     - name: Ověřování pomocí Azure Active Directory

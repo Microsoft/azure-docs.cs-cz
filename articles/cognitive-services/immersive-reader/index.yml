@@ -51,7 +51,9 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial.md">Spuštění Asistivní čtečky s využitím Node.js</a>
+          - html: <a href="tutorial-nodejs.md">Spuštění Asistivní čtečky s využitím Node.js</a>
+          - html: <a href="tutorial-python.md">Spuštění Asistivní čtečky s využitím Pythonu</a>
+          - html: <a href="tutorial-ios-picture-immersive-reader.md">Spuštění Asistivní čtečky s využitím Swiftu</a>
   - title: Referenční informace
     items:
       - type: list

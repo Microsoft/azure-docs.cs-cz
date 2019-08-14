@@ -191,6 +191,12 @@
     - name: Řešení potíží
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
       items:
+        - name: Aplikace Apache Tez se zablokuje
+          href: ./interactive-query-troubleshoot-tez-hangs.md
+        - name: Výkon dotazů Apache Hive LLAP
+          href: ./interactive-query-troubleshoot-query-performance.md
+        - name: Pomalá redukční funkce
+          href: ./interactive-query-troubleshoot-slow-reducer.md
         - name: Vypršení časového limitu zobrazení Apache Hivu
           href: ./interactive-query-troubleshoot-view-time-out.md
         - name: Chyba oprávnění při vytváření tabulky

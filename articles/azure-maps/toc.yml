@@ -91,23 +91,27 @@
               href: choose-map-style.md
             - name: Přidání ovládacích prvků do mapy
               href: map-add-controls.md
+            - name: Vytvoření zdroje dat
+              href: create-data-source-web-sdk.md
             - name: Přidání vrstvy symbolů
               href: map-add-pin.md
-            - name: Přidání místního okna
-              href: map-add-popup.md
             - name: Přidání vrstvy bublin
               href: map-add-bubble-layer.md
-            - name: Přidání tvarů
+            - name: Přidání řádkové vrstvy
+              href: map-add-line-layer.md
+            - name: Přidání mnohoúhelníkové vrstvy
               href: map-add-shape.md
             - name: Přidání vrstvy heat mapy
               href: map-add-heat-map-layer.md
+            - name: Přidání místního okna
+              href: map-add-popup.md
             - name: Data bodů clusteru
               href: clustering-point-data-web-sdk.md
             - name: Použití výrazů pro styly založené na datech
               href: data-driven-style-expressions-web-sdk.md
             - name: Používání šablon obrázků
               href: how-to-use-image-templates-web-sdk.md
-            - name: Překryv obrázku
+            - name: Přidání vrstvy obrázků
               href: map-add-image-layer.md
             - name: Přidání vrstev dlaždic
               href: map-add-tile-layer.md
@@ -139,6 +143,8 @@
           href: how-to-add-symbol-to-android-map.md
         - name: Přidání tvarů
           href: how-to-add-shapes-to-android-map.md
+        - name: Zobrazení informací o funkci
+          href: display-feature-information-android.md
         - name: Přidání vrstvy dlaždic
           href: how-to-add-tile-layer-android-map.md
 - name: Referenční informace

@@ -98,9 +98,6 @@
     - name: Interpretovatelnost modelů
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: FPGA vs. CPU GPU ASIC
-      displayName: 'field, programmable, arrays'
-      href: concept-accelerate-with-fpgas.md
     - name: ONNX
       href: concept-onnx.md
     - name: Zabezpečení
@@ -260,7 +257,7 @@
       items:
         - name: Kanály ML
           href: how-to-create-your-first-pipeline.md
-        - name: Kanály Azure pro CI/CD
+        - name: Azure Pipelines pro CI/CD
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Správa kvót prostředků

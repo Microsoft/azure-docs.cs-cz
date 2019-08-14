@@ -45,7 +45,7 @@ sections:
     items:
       - type: paragraph
         text: |
-          Speech SDK (<a href="releasenotes.md">poznámky k verzi</a>) můžete využít k přidání následujících (i dalších) funkcí do vašich aplikací&colon; 
+          Speech SDK (<a href="releasenotes.md">poznámky k verzi</a>) můžete využít k přidání následujících (i dalších) funkcí do vašich aplikací&colon;
           <div class="row"><div class="column"><ul>
           <li><b><a href="speech-to-text.md">Převod řeči na text</a></b> (speech-recognition/SR)</li>
           <li><b><a href="speech-devices-sdk-create-kws.md">Vlastní aktivační slovo</a></b> (keyword-spotter/KWS)</li>
@@ -253,10 +253,9 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="speech-to-text-sample.md">Převod řeči na text (rozpoznávání řeči)</a><br/>
-          - html: <a href="intent.md">Rozpoznávání záměru</a><br/>
-          - html: <a href="translation.md">Překlad</a>
-          - html: <a href="quickstart-text-to-speech-dotnet-windows.md">Převod textu na řeč</a><br/>
+          - html: '<a href="how-to-recognize-intents-from-speech-csharp.md">Rozpoznávání záměru řeči s využitím LUIS, C#</a><br/>'
+          - html: '<a href="tutorial-voice-enable-your-bot-speech-sdk.md">Hlasová podpora robota s využitím Speech SDK, C#</a><br/>'
+          - html: '<a href="../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json">Sestavení aplikace Flask pro překlad textu a syntetizaci řeči, REST</a><br/>'
   - title: Ukázky
     items:
       - type: paragraph
