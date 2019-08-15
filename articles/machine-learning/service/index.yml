@@ -56,10 +56,10 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '<a href="https://aka.ms/aml-sdk">Hlavní sada Python SDK:</a>: Základní funkce, automatizované strojové učení, kanály a další'
-          - html: '<a href="https://aka.ms/aml-monitoring-sdk">Sada Monitoring</a> Python SDK: Shromažďování dat z nasazených webových služeb'
-          - html: <a href="../algorithm-module-reference/module-reference.md">referenční informace k modulům a algoritmům</a> pro vizuální rozhraní
-          - html: '<a href="https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest">Azure ML CLI:</a>: Rozšíření rozhraní příkazového řádku služby Machine Learning'
+          - html: 'Dokumentace k <a href="https://aka.ms/aml-sdk">hlavní sadě Python SDK:</a>: další informace o základních funkcích, automatizovaném ML, kanálech a dalších možnostech'
+          - html: 'Dokumentace k sadě <a href="https://aka.ms/aml-monitoring-sdk">Monitoring</a> Python SDK: další informace o shromažďování dat z nasazených webových služeb'
+          - html: Dokumentace k <a href="../algorithm-module-reference/module-reference.md">referencím k modulům a algoritmům</a> pro moduly vizuálního rozhraní
+          - html: '<a href="https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest">Azure ML CLI:</a> další informace o rozšíření rozhraní příkazového řádku ML'
   - title: Další technologie Azure Machine Learning
     items:
       - type: list

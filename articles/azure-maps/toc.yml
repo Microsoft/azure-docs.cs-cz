@@ -25,6 +25,8 @@
       items:
         - name: Nastavení geografické zóny
           href: tutorial-geofence.md
+        - name: Prostorová analýza
+          href: tutorial-iot-hub-maps.md
 - name: Koncepty
   items:
     - name: Ověřování s využitím Azure Maps

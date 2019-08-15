@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1cbd0f649bd5e89c1ed424604697afa179964175
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 23492133035f27aa3e1217269022565e0ff217a9
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689007"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018759"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -340,7 +340,7 @@ V2VM              Backup              InProgress          4/23/2016             
 
 ### <a name="change-policy-for-backup-items"></a>Změnit zásady pro zálohované položky
 
-Uživatel může buď upravit existující zásady, nebo změnit zásadu zálohované položky z Policy1 na Policy2. Chcete-li přepnout zásady pro zálohovanou položku, jednoduše načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) s položkou Backup jako parametr.
+Uživatel může buď upravit existující zásady, nebo změnit zásadu zálohované položky z Policy1 na Policy2. Chcete-li přepnout zásady pro zálohovanou položku, načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) s položkou Backup jako parametr.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -511,7 +511,7 @@ Po obnovení disků pomocí následujících kroků vytvořte a nakonfigurujte v
 > [!NOTE]
 > Po obnovení disků teď můžete získat šablonu nasazení, kterou můžete použít přímo k vytvoření nového virtuálního počítače. Žádné další rutiny PS pro vytváření spravovaných a nespravovaných virtuálních počítačů, které jsou šifrované/nešifrované.
 
-Podrobnosti výsledné úlohy poskytují identifikátor URI šablony, který lze dotazovat a nasadit.
+Výsledné Podrobnosti úlohy poskytují identifikátor URI šablony, který lze dotazovat a nasadit.
 
 ```powershell
    $properties = $details.properties
@@ -720,7 +720,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
 
    * **Pro virtuální počítač bez Azure AD** – pomocí následujícího příkazu ručně povolte šifrování datových disků.
 
-     Pokud v případě, že se při provádění příkazu požádá o AADClientID, bude potřeba aktualizovat Azure PowerShell.
+     Pokud během provádění příkazu žádá o AADClientID, je potřeba aktualizovat Azure PowerShell.
 
      **Jenom klíče bek**
 

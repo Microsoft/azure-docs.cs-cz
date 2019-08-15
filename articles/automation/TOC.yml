@@ -20,10 +20,14 @@
       displayName: RBAC
     - name: Přesun účtu Automation do jiného předplatného
       href: how-to/move-account.md
+    - name: Automatizace onboardingu služeb automatizace
+      href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
 - name: Automatizace procesů
   items:
     - name: Přehled funkce Hybrid Runbook Worker
       href: automation-hybrid-runbook-worker.md
+    - name: Galerie runbooků
+      href: automation-runbook-gallery.md
     - name: Koncepty
       items:
         - name: Typy runbooků
@@ -297,8 +301,6 @@
   items:
     - name: Odeslání e-mailu z runbooku pomocí SendGridu
       href: automation-send-email.md
-    - name: Galerie runbooků
-      href: automation-runbook-gallery.md
     - name: Monitorování runbooků s upozorněními metrik
       href: automation-alert-metric.md
     - name: Spuštění runbooku z výstrah Azure

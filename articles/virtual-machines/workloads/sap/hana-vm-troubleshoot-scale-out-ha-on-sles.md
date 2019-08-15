@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s instalací na HSR Pacemaker škálování na více instancí SAP HANA 2.0 s aktualizací SP3 SLES 12 ve službě Azure virtual machines | Dokumentace Microsoftu
-description: Příručka ke kontrole a řešení potíží komplexní SAP HANA horizontální navýšení kapacity konfigurace s vysokou dostupností na základě SAP HANA System Replication (HSR) a Pacemaker na SLES 12 SP3 spuštěný na Azure virtual machines
+title: Řešení potíží s SAP HANA 2,0 škálování na více instancí HSR-Pacemaker nastavení s SLES 12 SP3 na virtuálních počítačích Azure | Microsoft Docs
+description: Průvodce pro kontrolu a odstraňování problémů komplexního SAP HANA konfigurace s vysokou dostupností škálované na základě SAP HANA systémové replikace (HSR) a Pacemaker v SLES 12 SP3 běžící na virtuálních počítačích Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermannd
@@ -14,13 +14,13 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: b794b045efa4be20a63e9996425d69f0212ae0d7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67707240"
 ---
-# <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Ověřte a řešení potíží s nastavením vysoké dostupnosti SAP HANA horizontální navýšení kapacity na SLES 12 SP3 
+# <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Ověření a řešení potíží SAP HANA nastavení vysoké dostupnosti škálování na SLES 12 SP3 
 
 [sles-pacemaker-ha-guide]:high-availability-guide-suse-pacemaker.md
 [sles-hana-scale-out-ha-paper]:https://www.suse.com/documentation/suse-best-practices/singlehtml/SLES4SAP-hana-scaleOut-PerfOpt-12/SLES4SAP-hana-scaleOut-PerfOpt-12.html
@@ -35,75 +35,75 @@ ms.locfileid: "67707240"
 [sles-12-for-sap]:https://www.suse.com/media/white-paper/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
 
 
-Tento článek pomůže zkontrolovat konfiguraci clusteru Pacemaker pro SAP HANA horizontální navýšení kapacity, na kterém běží na Azure virtual machines (VM). Nastavení clusteru bylo dosaženo v kombinaci s SAP HANA System Replication (HSR) a balíček SUSE RPM SAPHanaSR horizontálním navýšením kapacity. Všechny testy byly provést pouze na SUSE SLES 12 SP3. Oddíly v článku zahrnují různé oblasti a zahrnout ukázkové příkazy a výňatky ze konfigurační soubory. Doporučujeme, abyste tyto ukázky jako metodu ověření a zkontrolujte nastavení celého clusteru.
+Tento článek vám pomůže s kontrolou konfigurace clusteru Pacemaker pro SAP HANA škálování na více instancí, které běží na virtuálních počítačích Azure (VM). Instalace clusteru byla zajištěna v kombinaci s SAP HANA systémová replikace (HSR) a balíček SUSE pro SAPHanaSR – škálování. Všechny testy byly provedeny pouze v SUSE SLES 12 SP3. Oddíly článku zahrnují různé oblasti a obsahují vzorové příkazy a výňatky z konfiguračních souborů. Tyto ukázky doporučujeme jako metodu ověření a kontroly celého nastavení clusteru.
 
 
 
 ## <a name="important-notes"></a>Důležité poznámky
 
-Všechny testy pro úpravy rozsahu SAP HANA v kombinaci s systémové replikace SAP HANA a Pacemaker bylo provedeno pomocí SAP HANA 2.0 pouze. Verze operačního systému SUSE Linux Enterprise Server 12 SP3 byla pro aplikace SAP. Nejnovější balíček RPM SAPHanaSR škálování od společnosti SUSE, se použil k vytvoření clusteru Pacemaker.
-SUSE publikovaná [podrobný popis tohoto instalačního programu optimalizováno pro výkon][sles-hana-scale-out-ha-paper].
+Všechny testy pro SAP HANA škálování v kombinaci s SAP HANA systémové replikace a Pacemaker byly provedeny pouze SAP HANA 2,0. Verze operačního systému byla SUSE Linux Enterprise Server 12 SP3 pro aplikace SAP. K nastavení clusteru Pacemaker se použil poslední balíček ot./min. SAPHanaSR z SUSE.
+SUSE publikoval [podrobný popis tohoto nastavení optimalizovaného pro výkon][sles-hana-scale-out-ha-paper].
 
-Typy virtuálních počítačů, které jsou podporovány pro horizontální navýšení kapacity SAP HANA, zkontrolujte [IaaS directory s certifikací SAP HANA][sap-hana-iaas-list].
+U typů virtuálních počítačů, které jsou podporované pro SAP HANA škálování na více instancí, se podívejte na [SAP HANA certifikovaný adresář IaaS][sap-hana-iaas-list].
 
-Došlo technického problému s Škálováním SAP HANA v kombinaci s více podsítí a virtuální síťové adaptéry a nastavení HSR. Je nutné použít nejnovější opravy SAP HANA 2.0, ve kterém se tento problém vyřešen. Jsou podporovány následující verze SAP HANA: 
+V kombinaci s více podsítěmi a virtuální síťové adaptéry a nastavením HSR došlo k technickým potížím se škálováním na více instancí SAP HANA. Je nutné použít nejnovější opravy SAP HANA 2,0, kde byl tento problém vyřešen. Podporovány jsou následující verze SAP HANA: 
 
-* rev2.00.024.04 nebo vyšší 
-* rev2.00.032 nebo vyšší
+* REV 2.00.024.04 nebo vyšší 
+* REV 2.00.032 nebo vyšší
 
-Pokud potřebujete podporu od společnosti SUSE, proveďte to [průvodce][suse-pacemaker-support-log-files]. Shromáždí všechny informace o SAP HANA vysokou dostupnost (HA) clusteru, jak je popsáno v článku. Podpora SUSE potřebuje tyto informace k další analýze.
+Pokud potřebujete podporu od SUSE, postupujte podle pokynů v tomto [Průvodci][suse-pacemaker-support-log-files]. Shromážděte všechny informace o SAP HANA clusteru s vysokou dostupností (HA), jak je popsáno v článku. Podpora SUSE potřebuje tyto informace k další analýze.
 
-Při interním testování nastavení clusteru máte nerozumíte normální řádné vypnutí virtuálního počítače prostřednictvím webu Azure portal. Proto doporučujeme, testování převzetí služeb při selhání clusteru pomocí jiných metod. Používá metody, například vynucení poplachu jádra, nebo vypnout sítě nebo migrovat **msl** prostředků. Podrobnosti najdete v následujících částech. Předpokladem je, že standardní vypnutí se stane s záměr. Nejlepším příkladem úmyslné vypnutí je kvůli údržbě. Podrobnosti najdete v [plánované údržby](#planned-maintenance).
+Během interního testování bylo instalace clusteru zaměňována z normálního bezproblémového vypínání virtuálního počítače prostřednictvím Azure Portal. Proto doporučujeme, abyste provedli testování převzetí služeb při selhání clusteru jinými metodami. Použijte metody, jako je vynucení nouzového jádra nebo vypnutí sítí nebo migrace prostředku **MSL** . Podívejte se na podrobnosti v následujících oddílech. Předpokladem je, že standardní vypínání proběhne s úmyslem. Nejlepším příkladem úmyslného vypnutí je údržba. Podrobnosti najdete v části [plánovaná údržba](#planned-maintenance).
 
-Navíc při interním testování nastavení clusteru máte zaměňovat po ruční převzetí SAP HANA při clusteru do režimu údržby. Doporučujeme vám, že můžete přepnout zpět znovu ručně před ukončení režimu údržby clusteru. Další možností je k aktivaci převzetí služeb při selhání před převést cluster do režimu údržby. Další informace najdete v tématu [plánované údržby](#planned-maintenance). V dokumentaci od společnosti SUSE popisuje, jak cluster tímto způsobem můžete obnovit pomocí **crm** příkazu. Ale přístup uvedené dříve byla při interním testování robustní a nikdy jsme si ukázali, žádné neočekávané vedlejší účinky.
+Během interního testování se instalace clusteru po manuální SAP HANA převzetí změnila, ale cluster byl v režimu údržby. Doporučujeme, abyste ho znovu přepnuli předtím, než ukončíte režim údržby clusteru. Další možností je aktivovat převzetí služeb při selhání předtím, než přepnete cluster do režimu údržby. Další informace najdete v tématu [plánovaná údržba](#planned-maintenance). Dokumentace z SUSE popisuje, jak můžete cluster obnovit tímto způsobem pomocí příkazu **CRM** . Výše zmíněný postup byl ale robustní během interního testování a nikdy nevykazoval žádné neočekávané vedlejší účinky.
 
-Při použití **crm migrovat** příkaz, ujistěte se, že pro vyčištění konfigurace clusteru. Přidá omezení umístění, které nemusíte být vědomi. Tato omezení ovlivnit chování clusteru. Další podrobnosti najdete v [plánované údržby](#planned-maintenance).
+Když použijete příkaz pro **migraci CRM** , nezapomeňte vyčistit konfiguraci clusteru. Přidává omezení umístění, o kterých nemusíte vědět. Tato omezení ovlivňují chování clusteru. Další podrobnosti najdete v části [plánovaná údržba](#planned-maintenance).
 
 
 
-## <a name="test-system-description"></a>Popis systému testu.
+## <a name="test-system-description"></a>Popis testovacího systému
 
- Pro ověření HA škálování na více instancí SAP HANA a certifikace se použil nastavení. To se skládal z obou systémů se třemi SAP HANA uzly každý: jeden hlavní server a dva pracovní procesy. Následující názvy virtuálních počítačů seznamy tabulek a interních IP adres. Na tyto virtuální počítače byly dokončeny všechny ukázky ověřování, které následují. Pomocí těchto názvy virtuálních počítačů a IP adresy v příkazu ukázky můžete lépe pochopili příkazy a jejich výstupy:
+ Pro SAP HANA ověřování a certifikace HA se škálováním na více instancí se použila instalace. Skládá se ze dvou systémů se třemi SAP HANA uzly: jeden hlavní a dva pracovní procesy. V následující tabulce jsou uvedeny názvy virtuálních počítačů a interní IP adresy. Všechny kontrolní vzory, které následují, byly na těchto virtuálních počítačích provedeny. Pomocí těchto názvů virtuálních počítačů a IP adres v ukázkách příkazů můžete lépe pochopit příkazy a jejich výstupy:
 
 
 | Typ uzlu | název virtuálního počítače | IP adresa |
 | --- | --- | --- |
-| Hlavní uzel na webu 1 | hso-hana-vm-s1-0 | 10.0.0.30 |
-| Pracovní uzel 1 na webu 1 | hso-hana-vm-s1-1 | 10.0.0.31 |
-| Pracovní uzel 2 na webu 1 | hso-hana-vm-s1-2 | 10.0.0.32 |
+| Hlavní uzel v lokalitě 1 | hso-hana-vm-s1-0 | 10.0.0.30 |
+| Pracovní uzel 1 v lokalitě 1 | hso-hana-vm-s1-1 | 10.0.0.31 |
+| Pracovní uzel 2 v lokalitě 1 | hso-hana-vm-s1-2 | 10.0.0.32 |
 | | | |
-| Hlavní uzel na webu 2 | hso-hana-vm-s2-0 | 10.0.0.40 |
-| Pracovní uzel 1 na webu 2 | hso-hana-vm-s2-1 | 10.0.0.41 |
-| Pracovní uzel 2 na webu 2 | hso-hana-vm-s2-2  | 10.0.0.42 |
+| Hlavní uzel v lokalitě 2 | hso-hana-vm-s2-0 | 10.0.0.40 |
+| Pracovní uzel 1 v lokalitě 2 | hso-hana-vm-s2-1 | 10.0.0.41 |
+| Pracovní uzel 2 v lokalitě 2 | hso-hana-vm-s2-2  | 10.0.0.42 |
 | | | |
-| Majoritní maker | hso-hana-dm | 10.0.0.13 |
-| Server SBD zařízení | hso-hana-sbd | 10.0.0.19 |
+| Majoritní uzel maker | hso-hana-dm | 10.0.0.13 |
+| Server zařízení SBD | hso-hana-sbd | 10.0.0.19 |
 | | | |
-| Server systému souborů NFS 1 | hso-nfs-vm-0 | 10.0.0.15 |
-| Server systému souborů NFS 2 | hso-nfs-vm-1 | 10.0.0.14 |
+| Server NFS 1 | hso-nfs-vm-0 | 10.0.0.15 |
+| Server NFS 2 | hso-nfs-vm-1 | 10.0.0.14 |
 
 
 
-## <a name="multiple-subnets-and-vnics"></a>Více podsítí a virtuální síťové adaptéry
+## <a name="multiple-subnets-and-vnics"></a>Několik podsítí a virtuální síťové adaptéry
 
-Následující doporučení pro síť SAP HANA byly vytvořeny tři podsítě v rámci jedné virtuální sítě Azure. Úpravy rozsahu SAP HANA v Azure musí být nainstalovaná ve sdíleném režimu. To znamená, že každý uzel používá místní diskové svazky pro **/hana/data** a **/hana/log**. Vzhledem k tomu, že uzly používat pouze místní diskové svazky, není nutné definovat samostatnou podsíť pro úložiště:
+Po SAP HANA doporučení k síti se v jedné virtuální síti Azure vytvořily tři podsítě. SAP HANA horizontálního navýšení kapacity v Azure musí být nainstalované v nesdíleném režimu. To znamená, že každý uzel používá pro **/Hana/data** a **/Hana/log**svazky na místních discích. Vzhledem k tomu, že uzly používají pouze svazky na místních discích, není nutné definovat samostatnou podsíť pro úložiště:
 
-- 10.0.2.0/24 pro komunikaci mezi uzly SAP HANA
-- 10.0.1.0/24 pro SAP HANA System Replication (HSR)
+- 10.0.2.0/24 pro SAP HANA komunikaci mezi uzly
+- 10.0.1.0/24 pro replikaci systému SAP HANA (HSR)
 - 10.0.0.0/24 pro všechno ostatní
 
-Informace o SAP HANA konfigurace související s používáním více sítí najdete v tématu [SAP HANA global.ini](#sap-hana-globalini).
+Informace o konfiguraci SAP HANA souvisejících s používáním více sítí najdete v tématu [SAP HANA Global. ini](#sap-hana-globalini).
 
-Každý virtuální počítač v clusteru má tři virtuální síťové adaptéry, které odpovídají počtu podsítí. [Jak vytvořit virtuální počítač s Linuxem v Azure s několika síťových karet][azure-linux-multiple-nics] describes a potential routing issue on Azure when deploying a Linux VM. This specific routing article applies only for use of multiple vNICs. The problem is solved by SUSE per default in SLES 12 SP3. For more information, see [Multi-NIC with cloud-netconfig in EC2 and Azure][suse-cloud-netconfig].
+Každý virtuální počítač v clusteru má tři virtuální síťové AdaptéryY, které odpovídají počtu podsítí. [Postup vytvoření virtuálního počítače se systémem Linux v Azure s několika síťovými kartami][azure-linux-multiple-nics] popisuje potenciální problém s směrováním v Azure při nasazení virtuálního počítače se systémem Linux. Tento konkrétní článek směrování platí jenom pro použití víc virtuální síťové adaptéry. Problém je vyřešen SUSE na výchozí hodnotu v SLES 12 SP3. Další informace najdete v tématu [s více síťovými kartami s cloudovým netconfig v EC2 a Azure][suse-cloud-netconfig].
 
 
-Pokud chcete ověřit, že SAP HANA je správně nakonfigurován na používání více sítí, spusťte následující příkazy. Nejprve zkontrolujte na úrovni operačního systému, že všechny tři interních IP adres pro všechny tři podsítě jsou aktivní. Pokud jste definovali podsítě pomocí různých rozsahů IP adres, je nutné přizpůsobit příkazy:
+Pokud chcete ověřit, jestli je SAP HANA správně nakonfigurovaná tak, aby používala více sítí, spusťte následující příkazy. Nejdřív na úrovni operačního systému ověřte, že všechny tři interní IP adresy pro všechny tři podsítě jsou aktivní. Pokud jste definovali podsítě s různými rozsahy IP adres, je nutné upravit příkazy:
 
 <pre><code>
 ifconfig | grep "inet addr:10\."
 </code></pre>
 
-Následující ukázkový výstup je z druhého uzlu pracovního procesu na webu 2. Zobrazí se tří různých interních IP adres z eth0 eth1 a eth2:
+Následující vzorový výstup pochází z druhého pracovního uzlu v lokalitě 2. V eth0, eth1 a ETH2 se můžete podívat na tři různé interní IP adresy:
 
 <pre><code>
 inet addr:10.0.0.42  Bcast:10.0.0.255  Mask:255.255.255.0
@@ -112,25 +112,25 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 </code></pre>
 
 
-V dalším kroku ověření portů SAP HANA pro název serveru a funkce HSR. SAP HANA naslouchat požadavkům na odpovídající podsítě. V závislosti na číslo instance SAP HANA budete muset přizpůsobit příkazy. U testovacího systému číslo instance byla **00**. Existují různé způsoby, jak zjistit, jaké porty se používají. 
+V dalším kroku ověřte SAP HANA porty názvového serveru a HSR. SAP HANA by měl naslouchat na odpovídajících podsítích. V závislosti na čísle instance SAP HANA je třeba upravit příkazy. V testovacím systému byl číslo instance **00**. Existují různé způsoby, jak zjistit, jaké porty se používají. 
 
-Následující příkaz SQL vrátí instance ID, číslo instance a další informace:
+Následující příkaz jazyka SQL vrátí ID instance, číslo instance a další informace:
 
 <pre><code>
 select * from "SYS"."M_SYSTEM_OVERVIEW"
 </code></pre>
 
-Najít správný port čísla, můžete se podívat, například, HANA Studio v části **konfigurace** nebo prostřednictvím příkazu SQL:
+Správná čísla portů najdete například v HANA studiu v části **Konfigurace** nebo pomocí příkazu SQL:
 
 <pre><code>
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
 </code></pre>
 
-Budete chtít najít každý port, který se používá v zásobníku softwaru SAP, včetně SAP HANA, vyhledat [portů TCP/IP, které všechny produkty SAP][sap-list-port-numbers].
+Pokud chcete najít každý port, který se používá v softwarovém zásobníku SAP, včetně SAP HANA, prohledejte [porty TCP/IP všech produktů SAP][sap-list-port-numbers].
 
-Zadané číslo instance **00** v testovacím systému SAP HANA 2.0, je číslo portu pro názvový server **30001**. Číslo portu pro komunikaci metadat HSR **40002**. K přihlášení do pracovního uzlu a pak zkontrolujte služeb hlavního uzlu je jednou z možností. Pro účely tohoto článku jsme kontroluje pracovního uzlu 2 na webu 2 pokusu o připojení k hlavnímu uzlu na webu 2.
+Pro číslo instance **00** v testovacím systému SAP HANA 2,0 je číslo portu pro názvový server **30001**. Číslo portu pro komunikaci s HSR metadaty je **40002**. Jednou z možností je přihlásit se k pracovnímu uzlu a potom kontrolovat služby hlavního uzlu. V tomto článku jsme kontrolovali pracovní uzel 2 v lokalitě 2, který se pokouší připojit k hlavnímu uzlu v lokalitě 2.
 
-Zkontrolujte název serveru port:
+Ověřte port názvového serveru:
 
 <pre><code>
 nc -vz 10.0.0.40 30001
@@ -138,8 +138,8 @@ nc -vz 10.0.1.40 30001
 nc -vz 10.0.2.40 30001
 </code></pre>
 
-K prokázání, že komunikace mezi uzly používá podsíť **10.0.2.0/24**, výsledkem by měl vypadat jako následující ukázkový výstup.
-Pouze připojení přes podsítě **10.0.2.0/24** uspěli:
+Aby bylo možné prokázat, že komunikace mezi uzly používá podsíť **10.0.2.0/24**, výsledek by měl vypadat jako následující vzorový výstup.
+Úspěšné je jenom připojení přes podsíť **10.0.2.0/24** :
 
 <pre><code>
 nc: connect to 10.0.0.40 port 30001 (tcp) failed: Connection refused
@@ -147,7 +147,7 @@ nc: connect to 10.0.1.40 port 30001 (tcp) failed: Connection refused
 Connection to 10.0.2.40 30001 port [tcp/pago-services1] succeeded!
 </code></pre>
 
-Teď zkontrolujte HSR port **40002**:
+Teď vyhledejte port HSR **40002**:
 
 <pre><code>
 nc -vz 10.0.0.40 40002
@@ -155,8 +155,8 @@ nc -vz 10.0.1.40 40002
 nc -vz 10.0.2.40 40002
 </code></pre>
 
-K prokázání, že komunikace HSR používá podsíť **10.0.1.0/24**, výsledkem by měl vypadat jako následující ukázkový výstup.
-Pouze připojení přes podsítě **10.0.1.0/24** uspěli:
+Aby HSR komunikace používala podsíť **10.0.1.0/24**, výsledek by měl vypadat jako následující vzorový výstup.
+Úspěšné je jenom připojení přes podsíť **10.0.1.0/24** :
 
 <pre><code>
 nc: connect to 10.0.0.40 port 40002 (tcp) failed: Connection refused
@@ -169,11 +169,11 @@ nc: connect to 10.0.2.40 port 40002 (tcp) failed: Connection refused
 ## <a name="corosync"></a>Corosync
 
 
-**Corosync** konfigurační soubor musí být na všech uzlech v clusteru, včetně maker majoritní správné. Pokud připojení clusteru uzel nebude fungovat podle očekávání, vytvořit nebo zkopírovat **/etc/corosync/corosync.conf** ručně na všech uzlech a restartovat službu. 
+Konfigurační soubor **Corosync** musí být správný na každém uzlu v clusteru, včetně uzlu většina maker. Pokud připojení clusteru uzlu nefunguje podle očekávání, vytvořte nebo zkopírujte **/etc/Corosync/Corosync.conf** ručně na všechny uzly a restartujte službu. 
 
-Obsah **corosync.conf** z testovacího systému je příklad.
+Příkladem je obsah **Corosync. conf** z testovacího systému.
 
-První část je **totem**, jak je popsáno v [clusteru instalace](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), kroku 11. Hodnota, můžete ignorovat **mcastaddr**. Právě ponechte existující položku. Položky pro **token** a **caiq** musí být nastavena podle [dokumentace ke službě Microsoft Azure SAP HANA][sles-pacemaker-ha-guide].
+První část je **Totem**, jak je popsáno v tématu [instalace clusteru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), krok 11. Hodnotu **mcastaddr**můžete ignorovat. Stačí zachovat existující položku. Položky pro **token** a **konsensu** musí být nastaveny podle [Microsoft Azure SAP HANA dokumentaci][sles-pacemaker-ha-guide].
 
 <pre><code>
 totem {
@@ -203,7 +203,7 @@ totem {
 }
 </code></pre>
 
-Druhá část **protokolování**, nebylo změněno z dané hodnoty výchozích hodnot:
+Druhá část, **protokolování**se nezměnila z daných výchozích hodnot:
 
 <pre><code>
 logging {
@@ -221,7 +221,7 @@ logging {
 }
 </code></pre>
 
-Třetí část ukazuje **seznamu**. Všechny uzly clusteru mají zobrazení s jejich **nodeid**:
+Třetí část ukazuje **seznam uzlů.** . Všechny uzly clusteru se musí zobrazit s jejich **NodeId**:
 
 <pre><code>
 nodelist {
@@ -256,7 +256,7 @@ nodelist {
 }
 </code></pre>
 
-V poslední části **kvora**, je potřeba nastavit hodnotu pro **expected_votes** správně. Musí být počet uzlů, včetně maker majoritní. A hodnota **two_node** musí být **0**. Není úplně odeberte položku. Stačí nastavit hodnotu na **0**.
+V poslední části kvoraje důležité nastavit hodnotu pro **expected_votes** správně. Musí to být počet uzlů, včetně uzlu většina maker. A hodnota **two_node** musí být **0**. Položku úplně neodstraňujte. Stačí nastavit hodnotu na **0**.
 
 <pre><code>
 quorum {
@@ -278,11 +278,11 @@ systemctl restart corosync
 
 
 
-## <a name="sbd-device"></a>SBD zařízení
+## <a name="sbd-device"></a>Zařízení SBD
 
-Jak nastavit zařízení s SBD na Virtuálním počítači Azure je popsán v [monitorování geografických zón SBD](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing).
+Postup nastavení zařízení SBD na virtuálním počítači Azure je popsané v tématu SBDing ( [oplocening](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing)).
 
-Nejdřív zkontrolujte na serveru SBD virtuálního počítače, pokud existují položky seznamů ACL pro každý uzel v clusteru. Na serveru SBD virtuálního počítače, spusťte následující příkaz:
+Nejdřív na virtuálním počítači SBD serveru ověřte, jestli existují položky seznamu ACL pro každý uzel v clusteru. Na virtuálním počítači s SBD serverem spusťte následující příkaz:
 
 
 <pre><code>
@@ -290,7 +290,7 @@ targetcli ls
 </code></pre>
 
 
-V testovacím systému výstup příkazu by měl vypadat jako v následující ukázce. Seznam ACL názvy jako **iqn.2006-04.hso-db-0.local:hso-db-0** musí být zadán jako iniciátor názvům na virtuálních počítačích. Každému virtuálnímu počítači potřebuje jinou.
+V testovacím systému výstup příkazu vypadá jako v následujícím příkladu. Názvy ACL, jako je například **IQN. 2006-04. hSo-DB-0. local: hSo-DB-0** , musí být zadány jako odpovídající názvy iniciátorů na virtuálních počítačích. Každý virtuální počítač potřebuje nějaký jiný.
 
 <pre><code>
  | | o- sbddbhso ................................................................... [/sbd/sbddbhso (50.0MiB) write-thru activated]
@@ -317,13 +317,13 @@ V testovacím systému výstup příkazu by měl vypadat jako v následující u
   |     | o- iqn.2006-04.hso-db-6.local:hso-db-6 .................................................................. [Mapped LUNs: 1]
 </code></pre>
 
-Zkontrolujte, že názvy iniciátoru do všech virtuálních počítačů se liší a odpovídají dříve zobrazených položek. Tento příklad je z uzlu pracovního procesu 1 na webu 1:
+Potom zkontrolujte, že se názvy iniciátorů na všech virtuálních počítačích liší a odpovídají dříve zobrazeným položkám. Tento příklad je z pracovního uzlu 1 v lokalitě 1:
 
 <pre><code>
 cat /etc/iscsi/initiatorname.iscsi
 </code></pre>
 
-Výstup bude vypadat takto:
+Výstup vypadá jako v následujícím příkladu:
 
 <pre><code>
 ##
@@ -339,7 +339,7 @@ Výstup bude vypadat takto:
 InitiatorName=iqn.2006-04.hso-db-1.local:hso-db-1
 </code></pre>
 
-Dále ověřte, že **zjišťování** funguje správně. Spusťte následující příkaz na všech uzlech clusteru s použitím IP adresy serveru SBD virtuálního počítače:
+Pak ověřte, že **zjišťování** funguje správně. Spusťte následující příkaz na každém uzlu clusteru s použitím IP adresy virtuálního počítače SBD serveru:
 
 <pre><code>
 iscsiadm -m discovery --type=st --portal=10.0.0.19:3260
@@ -351,19 +351,19 @@ Výstup by měl vypadat jako v následující ukázce:
 10.0.0.19:3260,1 iqn.2006-04.dbhso.local:dbhso
 </code></pre>
 
-Další důkazu bod je k ověření, že se uzel zobrazí SDB zařízení. Na všech uzlech, včetně maker majoritní zkontrolujte ho:
+Dalším bodem ověření je ověřit, že uzel vidí zařízení SDB. Podívejte se na všechny uzly, včetně uzlu většina maker:
 
 <pre><code>
 lsscsi | grep dbhso
 </code></pre>
 
-Výstup by měl vypadat jako v následující ukázce. Názvy však mohou lišit. Po restartování virtuálního počítače může také změnit název zařízení:
+Výstup by měl vypadat jako v následujícím příkladu. Názvy se ale můžou lišit. Název zařízení se může také po restartování virtuálního počítače změnit:
 
 <pre><code>
 [6:0:0:0]    disk    LIO-ORG  sbddbhso         4.0   /dev/sdm
 </code></pre>
 
-V závislosti na stavu systému někdy pomáhá restartujte služby iSCSI při řešení problémů. Potom spusťte následující příkazy:
+V závislosti na stavu systému se někdy pomůže restartovat služby iSCSI a vyřešit problémy. Potom spusťte následující příkazy:
 
 <pre><code>
 systemctl restart iscsi
@@ -371,13 +371,13 @@ systemctl restart iscsid
 </code></pre>
 
 
-Z libovolného uzlu, můžete zkontrolovat, jestli jsou všechny uzly **vymazat**. Ujistěte se, že používáte správný název zařízení v konkrétním uzlu:
+Z libovolného uzlu můžete zjistit, zda jsou všechny uzly **jasné**. Ujistěte se, že používáte správný název zařízení v určitém uzlu:
 
 <pre><code>
 sbd -d /dev/sdm list
 </code></pre>
 
-Výstup by měl zobrazit **vymazat** pro každý uzel v clusteru:
+Výstup by měl pro každý uzel v clusteru zobrazovat nejasný název:
 
 <pre><code>
 0       hso-hana-vm-s1-0        clear
@@ -390,13 +390,13 @@ Výstup by měl zobrazit **vymazat** pro každý uzel v clusteru:
 </code></pre>
 
 
-Zkontrolujte další SBD **s výpisem paměti** možnost **sbd** příkazu. Tento ukázkový příkaz a výstup z uzlu majority maker, název zařízení jste **sdd**, nikoli **sdm**:
+Další kontrolou SBD je možnost **výpisu** z příkazu **SBD** . V tomto ukázkovém příkazu a výstupu z uzlu většina maker byl název zařízení **SDD**, nikoli **SDM**:
 
 <pre><code>
 sbd -d /dev/sdd dump
 </code></pre>
 
-Výstup, kromě název zařízení by měl vypadat stejné ve všech uzlech:
+Výstup od názvu zařízení by měl vypadat stejně jako na všech uzlech:
 
 <pre><code>
 ==Dumping header on disk /dev/sdd
@@ -411,21 +411,21 @@ Timeout (msgwait)  : 120
 ==Header on disk /dev/sdd is dumped
 </code></pre>
 
-Jeden další kontrolu SBD je možné odeslat zprávu do jiného uzlu. Odeslat zprávu na pracovním uzlu 2 na webu 2, spusťte následující příkaz na pracovním uzlu 1 na webu 2:
+Jedna další kontrolu pro SBD je možnost odeslání zprávy do jiného uzlu. Chcete-li odeslat zprávu do pracovního uzlu 2 v lokalitě 2, spusťte následující příkaz v pracovním uzlu 1 v lokalitě 2:
 
 <pre><code>
 sbd -d /dev/sdm message hso-hana-vm-s2-2 test
 </code></pre>
 
-Na cílové straně virtuálního počítače **hso-hana-vm-s2-2** v tomto příkladu můžete najít následující položku v **/var/log/messages**:
+Na straně cílového virtuálního počítače **hSo-Hana-VM-S2-2** v tomto příkladu můžete najít následující položku v **/var/log/messages**:
 
 <pre><code>
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-Zkontrolujte, že položky v **/etc/sysconfig/sbd** odpovídají ve [nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing). Ověřte, že nastavení spuštění **/etc/iscsi/iscsid.conf** byla nastavena na automatické.
+Ověřte, že položky v **/etc/sysconfig/SBD** odpovídají popisu v části [nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing). Ověřte, zda je nastavení spouštění v **/etc/iSCSI/iscsid.conf** nastaveno na hodnotu automaticky.
 
-Následující položky jsou důležité pro **/etc/sysconfig/sbd**. Přizpůsobit **id** hodnota v případě potřeby:
+Následující položky jsou důležité v **/etc/sysconfig/SBD**. V případě potřeby upravit hodnotu **ID** :
 
 <pre><code>
 SBD_DEVICE="/dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68;"
@@ -435,7 +435,7 @@ SBD_WATCHDOG=yes
 </code></pre>
 
 
-Zkontrolujte nastavení spouštění v **/etc/iscsi/iscsid.conf**. Povinné nastavení mělo stát u následujících **iscsiadm** popsaného v dokumentaci k příkazu. Ověřte a přizpůsobit jej ručně pomocí **vi** Pokud se liší.
+Ověřte nastavení spuštění v **/etc/iSCSI/iscsid.conf**. K požadovanému nastavení by došlo s následujícím příkazem **iscsiadm** , který je popsaný v dokumentaci. Pokud se liší, ověřte je a přizpůsobte ji ručně pomocí **VI** .
 
 Tento příkaz nastaví chování při spuštění:
 
@@ -443,37 +443,37 @@ Tento příkaz nastaví chování při spuštění:
 iscsiadm -m node --op=update --name=node.startup --value=automatic
 </code></pre>
 
-Ujistěte se, tato položka se v **/etc/iscsi/iscsid.conf**:
+Tuto položku nastavte v **/etc/iSCSI/iscsid.conf**:
 
 <pre><code>
 node.startup = automatic
 </code></pre>
 
-Během testování a ověřování po restartování virtuálního počítače se už v některých případech SBD zařízení. Došlo k neshodě mezi nastavení spouštění a co YaST2 jsme si ukázali. Pokud chcete zkontrolovat nastavení, proveďte tyto kroky:
+Během testování a ověřování se po restartování virtuálního počítače už v některých případech nezobrazuje zařízení SBD. Mezi nastavením spuštění a obsahem zobrazeným v YaST2 došlo k nesouladu. Chcete-li zjistit nastavení, proveďte následující kroky:
 
-1. Začněte YaST2.
-2. Vyberte **síťové služby** na levé straně.
-3. Posuňte se dolů na pravé straně **iniciátor iSCSI** a vyberte ji.
-4. Na další obrazovce pod **služby** kartu, se zobrazí název jedinečný iniciátor pro uzel.
-5. Nad název iniciátoru, ujistěte se, že **spustit službu** nastavena na hodnotu **při spouštění**.
-6. Pokud není, nastavte ho na **při spouštění** místo **ručně**.
-7. V dalším kroku přepnout na horní kartě **připojené cíle**.
-8. Na **připojené cíle** obrazovky, měli byste vidět položku pro zařízení SBD podobně jako tento příklad: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
-9. Zkontrolujte, zda **spuštění** nastavena na hodnotu **při spuštění**.
-10. Pokud ne, zvolte **upravit** a změňte ho.
-11. Uložte změny a zavřete YaST2.
+1. Spusťte YaST2.
+2. Na levé straně vyberte **Network Services** .
+3. Posuňte se na pravé straně k **iniciátoru iSCSI** a vyberte ho.
+4. Na další obrazovce na kartě **Služba** vidíte jedinečný název iniciátoru pro uzel.
+5. Nad názvem iniciátoru zajistěte, aby byla **počáteční hodnota služby** nastavena **při spuštění**.
+6. Pokud není, nastavte ji na, pokud se **spouští** místo ručního spuštění.
+7. Dále přepněte horní kartu na **propojené cíle**.
+8. Na obrazovce **připojené cíle** by se měla zobrazit položka pro zařízení SBD, jako je tato ukázka: **10.0.0.19:3260 IQN. 2006-04. dbhso. local: dbhso**.
+9. Ověřte, zda je **počáteční** hodnota nastavena **na hodnotu při spuštění**.
+10. Pokud ne, klikněte na **Upravit** a změňte ho.
+11. Uložte změny a ukončete YaST2.
 
 
 
 ## <a name="pacemaker"></a>Pacemaker
 
-Poté, co všechno je správně nastavené, můžete na všech uzlech, chcete-li zkontrolovat stav služby Pacemaker spusťte následující příkaz:
+Až se všechno nastaví správně, můžete na každém uzlu spustit následující příkaz, abyste zkontrolovali stav služby Pacemaker:
 
 <pre><code>
 systemctl status pacemaker
 </code></pre>
 
-Horní části výstup by měl vypadat jako v následující ukázce. Je důležité, stav po **aktivní** se zobrazuje jako **načíst** a **aktivní (spuštěno)** . Stav po **Loaded** musí zobrazit jako **povolené**.
+Horní část výstupu by měla vypadat jako v následujícím příkladu. Je důležité, aby byl stav po **aktivním** stavu zobrazen jako načtený a **aktivní (spuštěný)** . Po **načtení** musí být stav zobrazený jako **povolený**.
 
 <pre><code>
   pacemaker.service - Pacemaker High Availability Cluster Manager
@@ -493,7 +493,7 @@ Horní části výstup by měl vypadat jako v následující ukázce. Je důlež
            └─4504 /usr/lib/pacemaker/crmd
 </code></pre>
 
-Pokud je stále v nastavení **zakázané**, spusťte následující příkaz:
+Pokud je nastavení stále zakázané, spusťte následující příkaz:
 
 <pre><code>
 systemctl enable pacemaker
@@ -505,7 +505,7 @@ Pokud chcete zobrazit všechny nakonfigurované prostředky v Pacemaker, spusťt
 crm status
 </code></pre>
 
-Výstup by měl vypadat jako v následující ukázce. Má doladit, který **cln** a **msl** prostředky jsou uvedeny jako zastavení Tvůrce virtuálního počítače, většinou **hso-hana-dm**. Neexistuje žádná instalace SAP HANA na uzel majority maker. Proto **cln** a **msl** prostředky jsou uvedeny jako zastavena. Je důležité, zobrazuje správné celkový počet virtuálních počítačů, **7**. Všechny virtuální počítače, které jsou součástí clusteru, musí být uvedené se stavem **Online**. Aktuální primární hlavní uzel musí správně rozpoznány. V tomto příkladu má **hso-hana-vm-s1-0**:
+Výstup by měl vypadat jako v následujícím příkladu. Je dobré, aby se prostředky **CLN** a **MSL** zobrazovaly jako zastavené na virtuálním počítači většiny maker, **hSo-Hana-DM**. V uzlu většina Maker není SAP HANA instalace. Prostředky **CLN** a **MSL** se tak zobrazují jako zastavené. Je důležité, aby se zobrazil správný celkový počet virtuálních počítačů, **7**. Všechny virtuální počítače, které jsou součástí clusteru, musí být uvedené s stavem **online**. Aktuální primární hlavní uzel musí být správně rozpoznán. V tomto příkladu je to **hSo-Hana-VM-S1-0**:
 
 <pre><code>
 Stack: corosync
@@ -533,14 +533,14 @@ Full list of resources:
      rsc_nc_HSO_HDB00   (ocf::heartbeat:anything):      Started hso-hana-vm-s1-0
 </code></pre>
 
-O důležitou funkci Pacemaker je režim údržby. V tomto režimu můžete provádět změny bez webinářem akce okamžité clusteru. Příkladem je virtuální počítač restartovat. Typické použití případů by plánované údržbě infrastruktury operačního systému nebo v Azure. Zobrazit [plánované údržby](#planned-maintenance). Pacemaker převést do režimu údržby, použijte následující příkaz:
+Důležitou funkcí Pacemaker je režim údržby. V tomto režimu můžete provádět úpravy bez provoking okamžité akce clusteru. Příkladem je restartování virtuálního počítače. Typický případ použití by byl plánovaným operačním systémem nebo údržbou infrastruktury Azure. Viz [plánovaná údržba](#planned-maintenance). Pomocí následujícího příkazu vložte Pacemaker do režimu údržby:
 
 <pre><code>
 crm configure property maintenance-mode=true
 </code></pre>
 
-Když zaškrtnete s **crm stav**, si všimnete ve výstupu, který všechny prostředky se označí jako **nespravované**. V tomto stavu není clusteru reagovat na změny, jako je spouštění nebo zastavování SAP HANA.
-Následující příklad ukazuje výstup **crm stav** příkaz spuštěného clusteru v režimu údržby:
+Když zkontrolujete **stav CRM**, všimnete si, že se zobrazí výstup všech prostředků, které jsouoznačené jako nespravované. V tomto stavu cluster nereaguje na žádné změny, jako je spuštění nebo zastavení SAP HANA.
+Následující příklad ukazuje výstup příkazu pro **stav CRM** , když je cluster v režimu údržby:
 
 <pre><code>
 Stack: corosync
@@ -580,20 +580,20 @@ Full list of resources:
 </code></pre>
 
 
-Tento ukázkový příkaz ukazuje, jak do konce režimu údržby clusteru:
+Tato ukázka příkazu ukazuje, jak ukončit režim údržby clusteru:
 
 <pre><code>
 crm configure property maintenance-mode=false
 </code></pre>
 
 
-Jiné **crm** příkazu je získán úplná konfigurace clusteru do editoru, takže ho můžete upravit. Uloží změny, cluster se spustí po příslušné akce:
+Jiný příkaz **CRM** načte úplnou konfiguraci clusteru do editoru, takže ho můžete upravit. Po uložení změn cluster spustí příslušné akce:
 
 <pre><code>
 crm configure edit
 </code></pre>
 
-Podívejte se na úplná konfigurace clusteru, použijte **crm zobrazit** možnost:
+Pokud se chcete podívat na úplnou konfiguraci clusteru, použijte možnost **Zobrazit v aplikaci CRM** :
 
 <pre><code>
 crm configure show
@@ -601,7 +601,7 @@ crm configure show
 
 
 
-Po selhání prostředky clusteru **crm stav** příkaz zobrazí seznam **akce se nezdařilo**. Viz následující ukázka tento výstup:
+Po selhání prostředků clusteru se v příkazu pro **stav CRM** zobrazuje seznam neúspěšných **akcí**. Podívejte se na následující ukázku tohoto výstupu:
 
 
 <pre><code>
@@ -634,13 +634,13 @@ Failed Actions:
     last-rc-change='Wed Sep 12 17:01:28 2018', queued=0ms, exec=277663ms
 </code></pre>
 
-Je potřeba provést čištění cluster po selhání. Použít **crm** příkaz znovu a použijte příkaz Možnosti **vyčištění** zbavit těchto nepovedlo akce položky. Název odpovídající prostředku clusteru takto:
+Po selhání je nutné provést vyčištění clusteru. Znovu použijte příkaz **CRM** a k odstranění těchto položek neúspěšných akcí použijte příkaz **Vyčištění** . Pojmenujte odpovídající prostředek clusteru následujícím způsobem:
 
 <pre><code>
 crm resource cleanup rsc_SAPHanaCon_HSO_HDB00
 </code></pre>
 
-Příkaz by měl vrátit výstup jako v následující ukázce:
+Příkaz by měl vracet výstup podobný následující ukázce:
 
 <pre><code>
 Cleaned up rsc_SAPHanaCon_HSO_HDB00:0 on hso-hana-dm
@@ -657,9 +657,9 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>Převzetí služeb při selhání nebo převzetí
 
-Jak je popsáno v [důležité poznámky](#important-notes), neměli byste používat standardní řádné vypnutí testování clusteru převzetí služeb při selhání nebo převzetí SAP HANA HSR. Namísto toho doporučujeme aktivovat poplachu jádra, vynutit migrace prostředků nebo může být vypnout všechny sítě na úrovni operačního systému virtuálního počítače. Další metodou, je **crm \<uzel\> pohotovostní** příkazu. Zobrazit [SUSE dokumentu][sles-12-ha-paper]. 
+Jak je popsáno v části [Důležité poznámky](#important-notes), neměli byste používat standardní bezproblémové vypnutí k otestování převzetí služeb při selhání clusteru nebo převzetí SAP HANA HSR. Místo toho doporučujeme, abyste aktivovali nouzové jádro, vynutili migraci prostředků nebo případně vypnuli všechny sítě na úrovni operačního systému virtuálního počítače. Další metodou je příkaz **v \<pohotovostním režimu uzlu\> CRM** . Podívejte se na [dokument SUSE][sles-12-ha-paper]. 
 
-Následující tři ukázkové příkazy můžete vynutit převzetí služeb clusteru při:
+Následující tři ukázkové příkazy můžou vynutit převzetí služeb při selhání clusteru:
 
 <pre><code>
 echo c &gt /proc/sysrq-trigger
@@ -673,24 +673,24 @@ wicked ifdown eth2
 wicked ifdown eth&ltn&gt
 </code></pre>
 
-Jak je popsáno v [plánované údržby](#planned-maintenance), je dobrým způsobem, jak monitorovat aktivity clusteru spustit **SAPHanaSR showAttr** s **watch** příkaz:
+Jak je popsáno v části [plánovaná údržba](#planned-maintenance), dobrým způsobem, jak monitorovat aktivity clusteru, je spuštění **SAPHanaSR-showAttr** pomocí příkazu **Watch** :
 
 <pre><code>
 watch SAPHanaSR-showAttr
 </code></pre>
 
-Pomáhá také podívat na stav prostředí SAP HANA pocházející ze skriptu Pythonu SAP. Nastavení clusteru hledá tuto hodnotu stavu. Jasně pochopí berete při rozhodování o selhání uzlu pracovního procesu. Pokud pracovní uzel ocitne mimo provoz, SAP HANA nevrací okamžitě chybu pro stav systému zcela horizontální navýšení kapacity. 
+Také pomáhá se zobrazením stavu SAP HANA na šířku ze skriptu SAP Python. Instalační program clusteru hledá tuto hodnotu stavu. Pokud se domníváte, že dojde k selhání pracovního uzlu, je to jasné. Pokud dojde k výpadku pracovního uzlu, SAP HANA okamžitě nevrátí chybu pro stav celého systému s možností horizontálního rozšíření kapacity. 
 
-Existují některé opakování, aby se zabránilo zbytečným převzetí služeb při selhání. Cluster reaguje pouze v případě, že stav se změní z **Ok**, návratová hodnota **4**do **chyba**, návratová hodnota **1**. Tak, aby byl správné Pokud výstup z **SAPHanaSR showAttr** ukazuje virtuálního počítače se stavem **offline**. Ale neexistuje žádná aktivita ještě chcete přepnout primární a sekundární. Žádná aktivita clusteru získá aktivované tak dlouho, dokud nebude SAP HANA vrátí chybu.
+Dojde k několika opakovaným pokusům, aby nedocházelo k nepotřebným selháním. Cluster se chová jenom v případě, že se stav změní z **OK**, vrátí hodnotu **4**na **chybu**a vrátí hodnotu **1**. Takže je správné, pokud výstup z **SAPHanaSR-showAttr** zobrazuje virtuální počítač se stavem **offline**. Zatím ale neexistuje žádná aktivita pro přepnutí primárního a sekundárního. Žádná aktivita clusteru se neaktivuje, dokud SAP HANA nevrátí chybu.
 
-Můžete monitorovat stav prostředí SAP HANA jako uživatel  **\<HANA SID\>adm** voláním skript Pythonu SAP. Možná budete muset přizpůsobit cesta:
+Můžete monitorovat stav SAP HANA na šířku jako formát  **\<SID\>uživatele Hana** pomocí volání skriptu SAP Python, a to následujícím způsobem. Možná budete muset přizpůsobit cestu:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
 </code></pre>
 
-Výstup tohoto příkazu by měl vypadat jako v následující ukázce. **Stav hostitele** sloupce a **celkový stav hostitele** jsou důležité. Aktuální výstup je širší s další sloupce.
-Chcete-li výstupní tabulce lépe čitelný v tomto dokumentu, byly odebrány většina sloupce na pravé straně:
+Výstup tohoto příkazu by měl vypadat jako v následujícím příkladu. Sloupec **stav hostitele** a **Celkový stav hostitele** jsou důležité. Skutečný výstup je širší a další sloupce.
+Aby byla v tomto dokumentu čitelnější výstupní tabulka, většina sloupců na pravé straně byla odstraněna:
 
 <pre><code>
 | Host             | Host   | Host   | Failover | Remove | 
@@ -705,7 +705,7 @@ overall host status: ok
 </code></pre>
 
 
-Existuje jiný příkaz a zkontrolujte aktuální aktivity clusteru. Viz následující příkaz a výstupní tail po hlavní uzel primárního webu byl ukončen. Zobrazí seznam přechod akce, jako je **zvyšuje se úroveň** bývalé sekundární hlavní uzel **hso-hana-vm-s2-0**, na nový primární hlavní server. Pokud všechno, co je v pořádku, a všechny aktivity jsou dokončené, to **přechod Souhrn** seznamu musí být prázdná.
+K dispozici je jiný příkaz pro kontrolu aktuálních aktivit clusteru. Podívejte se na následující příkaz a výstup dolů po ukončení hlavního uzlu primární lokality. Můžete se podívat na seznam akcí přechodu, jako je například **zvýšení úrovně** bývalého sekundárního hlavního uzlu, **hSo-Hana-VM-S2-0**, jako nového primárního hlavního serveru. Pokud je vše v pořádku a všechny aktivity jsou dokončeny, musí být tento **souhrnný** seznam přechodů prázdný.
 
 <pre><code>
  crm_simulate -Ls
@@ -725,36 +725,36 @@ Transition Summary:
 
 ## <a name="planned-maintenance"></a>Plánovaná údržba 
 
-Při rozhodování o plánované údržbě existují různé případy použití. Jedna otázka je, zda je právě údržbu infrastruktury jako změny na úrovni operačního systému a konfigurace disku nebo upgradu HANA.
-Další informace najdete v dokumentech od společnosti SUSE jako [směrem k nule výpadek][sles-zero-downtime-paper] or [SAP HANA SR Performance Optimized Scenario][sles-12-for-sap]. Tyto dokumenty také obsahovat ukázky, které ukazují, jak ručně provést migraci primární.
+Existují různé případy použití při plánované údržbě. Jednou otázkou je to, jestli jde jenom o údržbu infrastruktury, jako je třeba změna na úrovni operačního systému a disku nebo upgradu na HANA.
+Další informace můžete najít v dokumentech z SUSE, jako [][sles-zero-downtime-paper] je například bezvýpadek nebo [SAP HANA scénář optimalizovaného pro výkon SR][sles-12-for-sap]. Tyto dokumenty obsahují také ukázky, které ukazují, jak ručně migrovat primární.
 
-Velký interní testování bylo provedeno ověření případ použití údržbu infrastruktury. Aby se zabránilo veškeré problémy související s primární migrací, jsme se rozhodli vždy migrovat primární před přepnutím clusteru do režimu údržby. Díky tomu není nutné provádět clusteru, nemusíte zabývat bývalé situaci: které straně byl primární a která byla sekundární.
+Při ověřování případu použití údržby infrastruktury bylo provedeno výrazné interní testování. Abyste se vyhnuli jakýmkoli problémům souvisejícím s migrací primární služby, rozhodli jsme se nejprve migrovat primární, než do režimu údržby vložíte cluster. Tímto způsobem není nutné cluster zapomenout na předchozí situaci: která strana byla primární a která byla sekundární.
 
-Existují dva různé situace v tomto ohledu:
+V tomto ohledu existují dvě různé situace:
 
-- **Plánovaná údržba aktuální sekundární**. V takovém případě vám stačí převést cluster do režimu údržby a práci na sekundárním, aniž by to ovlivnilo clusteru.
+- **Plánovaná údržba aktuálního sekundárního**. V takovém případě můžete cluster jednoduše vložit do režimu údržby a provést práci na sekundárním počítači, aniž by to ovlivnilo cluster.
 
-- **Plánovaná údržba aktuální primární**. Tak, aby uživatelé můžou dál fungovat během údržby, budete muset vynutit převzetí služeb při selhání. S tímto přístupem musí spustit clusteru převzetí služeb při selhání Pacemaker a nikoli pouze na úrovni SAP HANA HSR. Pacemaker instalační program automaticky aktivuje převzetí SAP HANA. Také budete muset provést převzetí služeb při selhání před převést cluster do režimu údržby.
+- **Plánovaná údržba aktuálně primárního**. Aby uživatelé mohli i nadále pracovat během údržby, je nutné vynutit převzetí služeb při selhání. S tímto přístupem musíte aktivovat převzetí služeb při selhání clusteru Pacemaker, a ne jenom na úrovni SAP HANA HSR. Instalační program Pacemaker automaticky aktivuje převzetí SAP HANA. Je také nutné provést převzetí služeb při selhání, než přepnete cluster do režimu údržby.
 
-Postup údržby na aktuální sekundární lokalitě je následujícím způsobem:
+Postup údržby aktuální sekundární lokality je následující:
 
-1. Umístění clusteru do režimu údržby.
-2. Provedení práce v sekundární lokalitě. 
-3. Ukončit režim údržby clusteru.
+1. Přepněte cluster do režimu údržby.
+2. Proveďte práci na sekundární lokalitě. 
+3. Ukončete režim údržby clusteru.
 
-Postup údržby na stávající primární lokality je složitější:
+Postup údržby aktuální primární lokality je složitější:
 
-1. Ručně aktivujete převzetí služeb při selhání nebo převzetí SAP HANA přes Pacemaker migrace prostředků. Zobrazte podrobnosti, které následují.
-2. SAP HANA v původní primární lokality získá vypnout pomocí nastavení clusteru.
-3. Umístění clusteru do režimu údržby.
-4. Po dokončení údržbových prací zaregistrujte původní primární jako nové sekundární lokality.
-5. Vyčištění konfigurace clusteru. Zobrazte podrobnosti, které následují.
-6. Ukončit režim údržby clusteru.
+1. Ručně Aktivujte převzetí služeb při selhání nebo SAP HANA převzetí prostřednictvím migrace prostředků Pacemaker. Podívejte se na podrobnosti, které následují.
+2. Instalační program clusteru ukončí činnost SAP HANA v bývalé primární lokalitě.
+3. Přepněte cluster do režimu údržby.
+4. Po dokončení práce s údržbou Zaregistrujte předchozí primární lokalitu jako novou sekundární lokalitu.
+5. Vyčistěte konfiguraci clusteru. Podívejte se na podrobnosti, které následují.
+6. Ukončete režim údržby clusteru.
 
 
-Migraci prostředku přidá položku do konfigurace clusteru. Příkladem je vynucení převzetí služeb při selhání. Budete muset před ukončení režimu údržby vyčistit tyto položky. Najdete v následující ukázce.
+Migrace prostředku přidá položku do konfigurace clusteru. Příkladem je vynucené převzetí služeb při selhání. Před ukončením režimu údržby musíte tyto položky vyčistit. Podívejte se na následující ukázku.
 
-Nejprve vynutit převzetí služeb clusteru při migraci **msl** prostředků na aktuální sekundární hlavní uzel. Tento příkaz zobrazí upozornění, která **přesunout omezení** byl vytvořen:
+Nejdřív vynuťte převzetí služeb při selhání clusteru migrací prostředku **MSL** do aktuálního sekundárního hlavního uzlu. Tento příkaz zobrazí upozornění, že bylo vytvořeno **omezení přesunu** :
 
 <pre><code>
 crm resource migrate msl_SAPHanaCon_HSO_HDB00 force
@@ -763,13 +763,13 @@ INFO: Move constraint created for msl_SAPHanaCon_HSO_HDB00
 </code></pre>
 
 
-Zkontrolujte proces převzetí služeb při selhání prostřednictvím příkazu **SAPHanaSR showAttr**. Pokud chcete monitorovat stav clusteru, otevřete okno vyhrazené prostředí a spuštění příkazu s **watch**:
+Projděte si proces převzetí služeb při selhání pomocí příkazu **SAPHanaSR-showAttr**. Pokud chcete monitorovat stav clusteru, otevřete vyhrazené okno prostředí a spusťte příkaz s **kukátkem**:
 
 <pre><code>
 watch SAPHanaSR-showAttr
 </code></pre>
 
-Výstup by měl zobrazit ruční převzetí služeb při selhání. Máte bývalé sekundární hlavní uzel **povýšen**, v této ukázce **hso-hana-vm-s2-0**. Původní primární server byl zastaven, **lss** hodnotu **1** pro původní primární hlavní uzel **hso-hana-vm-s1-0**: 
+Výstup by měl ukazovat na ruční převzetí služeb při selhání. Byl **povýšen**předchozí sekundární hlavní uzel v této ukázce, **hSo-Hana-VM-S2-0**. Bývalá primární lokalita se zastavila, **LSS** hodnota **1** pro bývalé primární hlavní uzel **hSo-Hana-VM-S1-0**: 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -794,21 +794,21 @@ hso-hana-vm-s2-1 DEMOTED     online     slave:slave:worker:slave     -10000 HSOS
 hso-hana-vm-s2-2 DEMOTED     online     slave:slave:worker:slave     -10000 HSOS2
 </code></pre>
 
-Po převzetí služeb při selhání clusteru a SAP HANA převzetí, umístěte clusteru do režimu údržby a jak je popsáno v [Pacemaker](#pacemaker).
+Po převzetí služeb při selhání clusteru a převzetí SAP HANA vložte cluster do režimu údržby, jak je popsáno v tématu [Pacemaker](#pacemaker).
 
-Příkazy **SAPHanaSR showAttr** a **crm stav** neindikují nic o omezení vytvořené migrace prostředků. Jednou z možností a aktivujte těchto omezení je zobrazíte úplná prostředek konfigurace clusteru pomocí následujícího příkazu:
+V příkazech **SAPHanaSR-showAttr** a **CRM** se neuvádějí žádné informace o omezeních vytvořených migrací prostředků. Jednu z možností, jak tato omezení zobrazit, je zobrazit úplnou konfiguraci prostředků clusteru pomocí následujícího příkazu:
 
 <pre><code>
 crm configure show
 </code></pre>
 
-V rámci konfigurace clusteru pro vás nová omezení umístění způsobené původní prostředek ruční migrace. Tento příklad položky začíná **umístění rozhraní příkazového řádku -** :
+V konfiguraci clusteru najdete nové omezení umístění způsobené předchozí ruční migrací prostředků. Tato ukázková položka začíná v **umístění CLI –** :
 
 <pre><code>
 location cli-ban-msl_SAPHanaCon_HSO_HDB00-on-hso-hana-vm-s1-0 msl_SAPHanaCon_HSO_HDB00 role=Started -inf: hso-hana-vm-s1-0
 </code></pre>
 
-Bohužel těchto omezení může mít vliv na celkové chování clusteru. Proto je nutné je před spuštěním zálohování v celém systému znovu odebrat. S **unmigrate** příkaz, je možné k vyčištění omezení umístění, které byly vytvořeny před. Pojmenování může být trochu matoucí. Není zkuste ho migrovat prostředek zpět do původního virtuálního počítače, ze kterého byla migrována. Pouze odstraní omezení, umístění a také vrátí hodnotu odpovídající informace, když spustíte příkaz:
+Tato omezení bohužel můžou ovlivnit celkové chování clusteru. Proto je nutné je znovu odebrat předtím, než přepnete celý systém. Pomocí příkazu **unmigrovat** je možné vyčistit omezení umístění, která byla vytvořena před. Pojmenování může být trochu matoucí. Nepokouší se migrovat prostředek zpátky na původní virtuální počítač, ze kterého se migruje. Pouze odebere omezení umístění a také vrátí odpovídající informace při spuštění příkazu:
 
 
 <pre><code>
@@ -817,32 +817,32 @@ crm resource unmigrate msl_SAPHanaCon_HSO_HDB00
 INFO: Removed migration constraints for msl_SAPHanaCon_HSO_HDB00
 </code></pre>
 
-Na konci údržbových prací, můžete zastavit režim údržby clusteru jak je znázorněno v [Pacemaker](#pacemaker).
+Na konci práce údržby zastavíte režim údržby clusteru, jak je znázorněno v [Pacemaker](#pacemaker).
 
 
 
-## <a name="hbreport-to-collect-log-files"></a>hb_report shromažďovat soubory protokolů
+## <a name="hb_report-to-collect-log-files"></a>hb_report ke shromáždění souborů protokolu
 
-Pokud chcete analyzovat problémy Pacemaker clusteru, je užitečné a také požadovaný podpora SUSE ke spuštění **hb_report** nástroj. Shromáždí všechny soubory důležité protokolů, které potřebujete k analýze, co se stalo. Toto volání Ukázka používá počáteční a koncový čas, kde došlo k konkrétním incidentu. Viz také [důležité poznámky](#important-notes):
+Aby bylo možné analyzovat problémy clusteru Pacemaker, je užitečné a také si ji vyžádala podpora SUSE pro spuštění nástroje **hb_report** . Shromažďuje všechny důležité soubory protokolů, které potřebujete k analýze toho, co se stalo. Toto ukázkové volání používá počáteční a koncový čas, kdy došlo k určitému incidentu. Viz také [Důležité poznámky](#important-notes):
 
 <pre><code>
 hb_report -f "2018/09/13 07:36" -t "2018/09/13 08:00" /tmp/hb_report_log
 </code></pre>
 
-Příkaz sděluje, kam umístit komprimované protokolové soubory:
+Příkaz oznamuje, kam umístí komprimované soubory protokolu:
 
 <pre><code>
 The report is saved in /tmp/hb_report_log.tar.bz2
 Report timespan: 09/13/18 07:36:00 - 09/13/18 08:00:00
 </code></pre>
 
-Potom můžete extrahovat jednotlivé soubory pomocí standardu **cíl** příkaz:
+Jednotlivé soubory pak můžete extrahovat pomocí standardního příkazu **tar** :
 
 <pre><code>
 tar -xvf hb_report_log.tar.bz2
 </code></pre>
 
-Při pohledu na extrahované soubory najít všechny soubory protokolů. Většina z nich byly umístit do samostatných adresáře pro každý uzel v clusteru:
+Když se podíváte na extrahované soubory, najdete všechny soubory protokolů. Většina z nich byla vložena do samostatných adresářů pro každý uzel v clusteru:
 
 <pre><code>
 -rw-r--r-- 1 root root  13655 Sep 13 09:01 analysis.txt
@@ -861,7 +861,7 @@ drwxr-xr-x 3 root root   4096 Sep 13 09:01 hso-hana-vm-s2-2
 </code></pre>
 
 
-V rámci časového rozsahu, který byl zadán, aktuální hlavní uzel **hso-hana-vm-s1-0** byl ukončen. Můžete najít položky související s touto událostí v **journal.log**:
+V zadaném časovém rozsahu byl ukončen aktuální hlavní uzel **hSo-Hana-VM-S1-0** . Položky související s touto událostí najdete v **deníku Journal. log**:
 
 <pre><code>
 2018-09-13T07:38:01+0000 hso-hana-vm-s2-1 su[93494]: (to hsoadm) root on none
@@ -883,7 +883,7 @@ V rámci časového rozsahu, který byl zadán, aktuální hlavní uzel **hso-ha
 2018-09-13T07:38:03+0000 hso-hana-vm-s2-1 su[93494]: pam_unix(su-l:session): session closed for user hsoadm
 </code></pre>
 
-Dalším příkladem je soubor protokolu Pacemaker na sekundární hlavní server, kde byl program nové primární hlavní server. Tento výpis ukazuje, že byl nastaven stav ukončil. primární hlavní uzel **offline**:
+Dalším příkladem je soubor protokolu Pacemaker v sekundární hlavní databázi, který se stal novým primárním hlavním serverem. V tomto výpisu se dozvíte, že stav ukončeného primárního hlavního uzlu byl nastaven na hodnotu **offline**:
 
 <pre><code>
 Sep 13 07:38:02 [4178] hso-hana-vm-s2-0 stonith-ng:     info: pcmk_cpg_membership:      Node 3 still member of group stonith-ng (peer=hso-hana-vm-s1-2, counter=5.1)
@@ -901,10 +901,10 @@ Sep 13 07:38:02 [4184] hso-hana-vm-s2-0       crmd:     info: pcmk_cpg_membershi
 
 
 
-## <a name="sap-hana-globalini"></a>Global.ini SAP HANA
+## <a name="sap-hana-globalini"></a>SAP HANA Global. ini
 
 
-Následující ukázky jsou ze SAP HANA **global.ini** soubor na web clusteru 2. Tento příklad ukazuje záznamy překladů IP adres pro používání různých sítí pro komunikaci mezi uzly SAP HANA a funkce HSR název hostitele:
+Následující výňatky jsou ze souboru **Global. ini** SAP HANA v clusteru Server 2. Tento příklad ukazuje položky překladu názvů hostitelů pro používání různých sítí pro SAP HANA komunikaci mezi uzly a HSR:
 
 <pre><code>
 [communication]
@@ -943,41 +943,41 @@ listeninterface = .internal
 
 
 
-## <a name="hawk"></a>HAWK
+## <a name="hawk"></a>Hawk
 
-Řešení clusteru poskytuje rozhraní prohlížeče, který nabízí grafické uživatelské rozhraní pro uživatele, kteří dávají přednost nabídky a grafiku s tím, že všechny příkazy na úrovni prostředí.
-Abyste mohli použít rozhraní prohlížeče, nahraďte **\<uzel\>** skutečné uzlu SAP HANA v následující adrese URL. Pak zadejte přihlašovací údaje clusteru (uživatel **clusteru**):
+Řešení clusteru poskytuje rozhraní prohlížeče, které nabízí uživatelské rozhraní pro uživatele, kteří upřednostňují nabídky a grafiku pro všechny příkazy na úrovni prostředí.
+Chcete-li použít rozhraní prohlížeče, nahraďte **\<uzel\>** skutečným SAP HANAm uzlem v následující adrese URL. Pak zadejte přihlašovací údaje clusteru (uživatelský **cluster**):
 
 <pre><code>
 https://&ltnode&gt:7630
 </code></pre>
 
-Tento snímek obrazovky znázorňuje řídicí panel clusteru:
+Na tomto snímku obrazovky se zobrazuje řídicí panel clusteru:
 
 
-![Řídicí panel clusteru HAWK](media/hana-vm-scale-out-HA-troubleshooting/hawk-1.png)
+![Řídicí panel clusteru Hawk](media/hana-vm-scale-out-HA-troubleshooting/hawk-1.png)
 
 
-Tento příklad ukazuje způsobené migrace prostředků clusteru, jak je vysvětleno v omezení umístění [plánované údržby](#planned-maintenance):
+Tento příklad ukazuje omezení umístění způsobená migrací prostředků clusteru, jak je vysvětleno v části [plánovaná údržba](#planned-maintenance):
 
 
-![HAWK seznamu omezení](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
+![Omezení seznamu Hawk](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-Můžete také nahrát **hb_report** výstup v Hawk pod **historie**, jak je znázorněno následujícím způsobem. Zobrazit hb_report shromažďovat soubory protokolů: 
+Výstup **hb_report** můžete také nahrát do Hawk v části **Historie**, jak je znázorněno níže. Shromažďování souborů protokolu najdete v tématu hb_report: 
 
-![Výstup hb_report HAWK nahrávání](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
+![Hawk nahrát výstup hb_report](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
-S **historie Explorer**, potom projděte všechny přechody clusteru součástí **hb_report** výstup:
+Pomocí **Průzkumníka historie**pak můžete projít všechny přechody clusteru zahrnuté do výstupu **hb_report** :
 
-![Přechody HAWK ve výstupu hb_report](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
+![Hawk přechody ve výstupu hb_report](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 
-Tento poslední snímek obrazovky ukazuje **podrobnosti** část jeden přechod. Cluster reagovalo na selhání primární hlavní uzel uzlu **hso-hana-vm-s1-0**. Nyní zvýšení úrovně sekundárního uzlu na novou hlavní server **hso-hana-vm-s2-0**:
+Tento konečný snímek obrazovky ukazuje část s podrobnostmi o jednom přechodu. Cluster se reagoval v primárním selhání hlavního uzlu, node **hSo-Hana-VM-S1-0**. Teď podporuje sekundární uzel jako nový hlavní server **hSo-Hana-VM-S2-0**:
 
-![Jeden přechod HAWK](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
+![Hawk jeden přechod](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Tento průvodce odstraňováním potíží popisuje vysokou dostupnost pro SAP HANA v konfiguraci horizontální navýšení kapacity. Kromě databázi je jiné důležité součásti v prostředí SAP SAP NetWeaver zásobníku. Další informace o [vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích s Azure, které používají operačního systému SUSE Enterprise Linux Server][sap-nw-ha-guide-sles].
+Tato příručka pro řešení potíží popisuje vysokou dostupnost pro SAP HANA v konfiguraci s možností horizontálního rozšíření kapacity. Kromě databáze je další důležitou součástí systému SAP NetWeaver Stack. Přečtěte si o [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure, které používají server SUSE Enterprise Linux][sap-nw-ha-guide-sles].
 

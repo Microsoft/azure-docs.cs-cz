@@ -461,6 +461,8 @@
               href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
             - name: Rozhraní API pro naplnění SaaS – nejčastější dotazy
               href: ./partner-center-portal/saas-fulfillment-apis-faq.md
+        - name: Otestování nabídky
+          href: ./partner-center-portal/test-drive.md
     - name: Stav publikování
       href: ./partner-center-portal/publishing-status.md
     - name: Aktualizace stávajících nabídek
