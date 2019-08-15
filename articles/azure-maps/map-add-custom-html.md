@@ -1,6 +1,6 @@
 ---
 title: Přidat značku HTML pro Azure Maps | Microsoft Docs
-description: Postup přidání značky HTML do mapy JavaScriptu
+description: Postup přidání značky HTML do Azure Maps webové sady SDK
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f8777a3d0eb9b97fff6f492f181a432d98d9341c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ff18b8646a3845d029e9826c0895b9d3eb16bdde
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849306"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976204"
 ---
 # <a name="add-html-markers-to-the-map"></a>Přidání značek HTML do mapy
 
@@ -28,16 +28,36 @@ V tomto článku se dozvíte, jak přidat vlastní kód HTML, jako je napříkla
 
 ## <a name="add-an-html-marker"></a>Přidat značku HTML
 
-Třída HtmlMarker má výchozí styl. Značku lze přizpůsobit nastavením možnosti barva a text značky. Výchozím stylem třídy HtmlMarker je šablona SVG, která má zástupný text Color a text. Nastavte vlastnosti Color a text v možnostech HtmlMarker pro rychlé přizpůsobení. 
+Třída [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) má výchozí styl. Značku lze přizpůsobit nastavením možnosti barva a text značky. Výchozí styl třídy značek HTML je šablona SVG, která má `{color}` zástupný symbol a. `{text}` Nastavte vlastnosti barva a text v možnostech značek HTML pro rychlé přizpůsobení. 
+
+Následující kód vytvoří značku HTML a nastaví vlastnost Color na "DodgerBlue" a vlastnost text na "10". Automaticky otevíraná okna jsou připojena k této značce `click` a událost slouží k přepnutí viditelnosti místní nabídky.
+
+```javascript
+//Create a HTML marker and add it to the map.
+var marker = new atlas.HtmlMarker({
+    color: 'DodgerBlue',
+    text: '10',
+    position: [0, 0],
+    popup: new atlas.Popup({
+        content: '<div style="padding:10px">Hello World</div>',
+        pixelOffset: [0, -30]
+    })
+});
+
+map.markers.add(marker);
+
+//Add a click event to toggle the popup.
+map.events.add('click',marker, () => {
+    marker.togglePopup();
+});
+```
+
+Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Přidání značky HTML do mapy' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, <a href='https://codepen.io/azuremaps/pen/MVoeVw/'>jak pero Přidá značku HTML na mapu</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
-
-Druhý blok kódu přidá k mapě [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) pomocí vlastnosti [Marks](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) třídy [map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) . HtmlMarker se přidá k mapě v rámci funkce [naslouchacího procesu události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , aby se zajistilo, že se zobrazí po úplném načtení mapy.
 
 ## <a name="create-svg-templated-html-marker"></a>Vytvořit značku HTML šablony SVG
 
@@ -62,7 +82,7 @@ Jednou z výhod značek HTML je, že existuje mnoho skvělých přizpůsobení, 
 
 ## <a name="draggable-html-markers"></a>Přetažené značky HTML
 
-Tento příklad ukazuje, jak nastavit přetáhnutí značky HTML. Podpora `drag` značekHTML`dragend`audálosti. `dragstart`
+Tento příklad ukazuje, jak nastavit přetáhnutí značky HTML. Podpora `drag`značek HTML, `dragstart`události a `dragend` .
 
 <br/>
 
@@ -78,7 +98,7 @@ Tyto ukázky ukazují, jak přidat události myší a přetáhnout je do značky
 <iframe height='500' scrolling='no' title='Přidávání událostí myši do značek HTML' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>přidávání událostí myši do značek HTML</a> podle Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 5fde581f322504c7e329da7fa153671b8a91183d
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: bae05e890ef76ada9f775293c673cb8baa82c8bf
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688360"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954586"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -87,6 +87,9 @@ Po vyvolání výstrahy budou uživatelé upozorněni. Azure Backup poskytuje in
 
 ![E-mailové oznámení trezoru RS](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
 
+> [!NOTE]
+> Výstrahy pro zálohy SQL budou konsolidovány a e-mail bude odeslán pouze pro první výskyt. Pokud se ale výstraha neaktivuje uživatelem, další výskyt spustí další e-mail.
+
 Po nakonfigurování oznámení obdržíte uvítací nebo úvodní e-mail. Tím se potvrdí, že při vyvolání výstrahy Azure Backup může posílat e-maily na tyto adresy.<br>
 
 Pokud byla frekvence nastavena na hodinový výtah a výstraha byla vyvolána a vyřešena během hodiny, nebude součástí nadcházející hodinové mineralizace.
@@ -95,6 +98,14 @@ Pokud byla frekvence nastavena na hodinový výtah a výstraha byla vyvolána a 
 >
 > * Pokud se provede destruktivní operace, jako je **zastavení ochrany pomocí odstranit data** , vygeneruje se výstraha a vlastníkům předplatného, správcům a spolupracovníkům se pošle e-mail, i když pro trezor služby RECOVERy není nakonfigurované oznámení.
 > * K nakonfigurování oznámení pro úspěšné úlohy použijte [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
+
+## <a name="inactivating-alerts"></a>Deaktivace výstrah
+
+Pokud chcete deaktivovat nebo vyřešit aktivní výstrahu, můžete kliknout na položku seznamu, která odpovídá výstraze, kterou chcete deaktivovat. Otevře se obrazovka, která zobrazí podrobné informace o výstraze s tlačítkem "deaktivovat" v horní části. Po kliknutí na toto tlačítko se změní stav výstrahy na neaktivní. Výstrahu můžete také deaktivovat pouhým kliknutím pravým tlačítkem myši na položku seznamu, která odpovídá dané výstraze, a výběrem možnosti deaktivovat.
+
+![Deaktivace výstrah trezoru RS](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+
 
 ## <a name="next-steps"></a>Další postup
 

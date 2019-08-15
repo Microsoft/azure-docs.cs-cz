@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: e43b8c951d8c7d5d60904fe49d8639efaba5c89f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 529a8b6136a5d9c69b044df2614644bdbd4fd4f4
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775857"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012078"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem spravovaných imagí. Galerie sdílených imagí poskytují:
 
@@ -73,7 +73,7 @@ Níže jsou uvedené další parametry, které je možné nastavit v definici im
 
 ## <a name="regional-support"></a>Místní podpora
 
-Zdrojové oblasti jsou uvedené v následující tabulce. Všechny veřejné oblasti můžou být cílové oblasti, ale pokud je chcete replikovat do Austrálie Central a Austrálie – střed 2, musíte mít své předplatné na seznamu povolených. Pokud chcete požádat o seznam povolených, navštivte: https://azure.microsoft.com/en-au/global-infrastructure/australia/contact/
+Zdrojové oblasti jsou uvedené v následující tabulce. Všechny veřejné oblasti můžou být cílové oblasti, ale pokud je chcete replikovat do Austrálie Central a Austrálie – střed 2, musíte mít své předplatné na seznamu povolených. Pokud chcete požádat o seznam povolených, navštivte: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 
 | Zdrojové oblasti |
@@ -179,7 +179,7 @@ Následující sady SDK podporují vytváření galerií sdílených imagí:
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
 - [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Go](https://docs.microsoft.com/go/azure/)
+- [Go](https://docs.microsoft.com/azure/go/)
 
 ## <a name="templates"></a>Šablony
 

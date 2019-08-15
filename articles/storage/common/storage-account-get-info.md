@@ -8,12 +8,12 @@ ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 21ecaae679ad4a5f21107ef53d3899cf03593c9d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 0008d8fa9a33db95b0695ce998d4fc267d6222da
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829200"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985352"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>Získání typu účtu úložiště a názvu SKU pomocí .NET
 
@@ -57,7 +57,7 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 }
 ```
 
-[!INCLUDE [storage-blob-dotnet-resources](../../../includes/storage-blob-dotnet-resources.md)]
+[!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,18 +8,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: a0a7a413d6c3344ccf5c3f7e4d14dd3d82715034
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1882e994c5d062d3ca841025edb61965f7eb0aa0
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840319"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967061"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
-Azure Data Lake Storage Gen2 je sada funkcí vyhrazených pro analýzy velkých objemů dat integrované do [úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md). Můžete ji použít k rozhraní s daty pomocí paradigma systému souborů i úložiště objektů.
+Azure Data Lake Storage Gen2 (ADLS Gen2) je sada funkcí vyhrazených pro analýzy velkých objemů dat integrované do [úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md). Můžete ji použít k rozhraní s daty pomocí paradigma systému souborů i úložiště objektů.
 
 Tento článek popisuje, jak kopírovat data do a z Azure Data Lake Storage Gen2. Další informace o Azure Data Factory najdete v článku [úvodní článek](introduction.md).
 
@@ -73,6 +73,9 @@ Pokud chcete použít ověřování pomocí klíče účtu úložiště, jsou po
 | url | Koncový bod pro Data Lake Storage Gen2 se vzorem `https://<accountname>.dfs.core.windows.net`. | Ano |
 | accountKey | Klíč účtu pro Data Lake Storage Gen2. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud je vaše úložiště dat v privátní síti, můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime. Pokud tato vlastnost není zadaná, použije se výchozí prostředí Azure Integration runtime. |Ne |
+
+>[!NOTE]
+>Sekundární koncový bod ADLS systému souborů není při ověřování pomocí klíče účtu podporován. Můžete použít jiné typy ověřování.
 
 **Příklad:**
 

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5571f84de5c6dd4f5dffea5869c744b7e5c02e24
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6f35bf82e1c3275772bc9f5ccdcaceed024bd7d9
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875286"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967793"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -76,7 +76,6 @@ ms.locfileid: "67875286"
                                                             <a href="./learn/quick-monitor-portal.md">ASP.NET</a><br>
                                                             <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
-                                                            <a href="./learn/java-quick-start.md">Java</a><br>
                                                             <a href="./learn/mobile-center-quickstart.md">Telefon</a><br>
                                                             <a href="./app/website-monitoring.md">Monitorování v prohlížeči nebo na straně klienta</a>
                                                         </p>

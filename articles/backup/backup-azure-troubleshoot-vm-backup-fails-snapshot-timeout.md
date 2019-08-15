@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7fc288ad9e33088b1b5248c1b61ed439ac95a9c4
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f47afd450350226aa944287e756b73f61b15b32d
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688983"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952044"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backupm: Problémy s agentem nebo rozšířením
 
@@ -29,12 +29,10 @@ Tento článek popisuje kroky pro řešení potíží, které vám pomohou vyře
 **Kód chyby**: UserErrorGuestAgentStatusUnavailable <br>
 **Chybová zpráva**: Agent virtuálního počítače nemůže komunikovat s Azure Backup.<br>
 
-Po registraci a naplánování virtuálního počítače pro službu zálohování inicializuje zálohování úlohu pomocí komunikace s agentem virtuálního počítače, aby pomohlo vytvořit snímek v čase. Některé z následujících podmínek mohou zabránit spuštění snímku. Pokud snímek není aktivovaný, zálohování může selhat. Proveďte následující kroky pro řešení potíží v uvedeném pořadí a opakujte operaci:<br>
-**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale nereaguje (pro virtuální počítače s Windows).](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
-**2. příčina: [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače se systémem Linux).](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Příčina 3: [Stav snímku nelze načíst nebo nelze vytvořit snímek.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
-**Příčina 4: [Rozšíření zálohování se nepodařilo aktualizovat nebo načíst.](#the-backup-extension-fails-to-update-or-load)**  
-**Příčina 5: [Virtuální počítač nemá přístup k Internetu.](#the-vm-has-no-internet-access)**
+Agent virtuálního počítače Azure se může zastavit, zastaralá, je v nekonzistentním stavu nebo není nainstalovaný a zabránit tomu, aby služba Azure Backup spustila snímky.  
+    
+- Pokud je agent virtuálního počítače zastavený nebo je v nekonzistentním stavu, **restartujte agenta** a zkuste operaci zálohování zopakovat (zkuste použít zálohu ad-hoc). Postup pro restartování agenta najdete v tématu [virtuální počítače s Windows](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) nebo [virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)se systémem Linux. 
+- Pokud není agent virtuálního počítače nainstalovaný nebo je zastaralý, nainstalujte nebo aktualizujte agenta virtuálního počítače a zkuste operaci zálohování zopakovat. Postup instalace nebo aktualizace agenta najdete v tématu [virtuální počítače s Windows](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) nebo [virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)se systémem Linux.  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – nepovedlo se komunikovat s agentem virtuálního počítače pro stav snímku.
 
@@ -44,7 +42,8 @@ Po registraci a naplánování virtuálního počítače pro službu zálohován
 Po registraci a naplánování virtuálního počítače pro službu Azure Backup služba Backup inicializuje úlohu prostřednictvím komunikace s rozšířením zálohy virtuálního počítače, aby se pomohlo vytvořit snímek v daném časovém okamžiku. Některé z následujících podmínek mohou zabránit spuštění snímku. Pokud se snímek neaktivuje, může dojít k selhání zálohování. Proveďte následující kroky pro řešení potíží v uvedeném pořadí a opakujte operaci:  
 **1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale nereaguje (pro virtuální počítače s Windows).](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 **2. příčina: [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače se systémem Linux).](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Příčina 3: [Virtuální počítač nemá přístup k Internetu.](#the-vm-has-no-internet-access)**
+**Příčina 3: [Stav snímku nelze načíst nebo nelze vytvořit snímek.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
+**Příčina 4: [Rozšíření zálohování se nepodařilo aktualizovat nebo načíst.](#the-backup-extension-fails-to-update-or-load)** 
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached – dosáhlo se maximálního limitu kolekce bodů obnovení.
 
@@ -107,7 +106,7 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **Kód chyby**: UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: V současné době Azure Backup nepodporuje velikosti disků větší než 4095 GB. <br>
 
-Operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 4095 GB. Pokud se chcete zaregistrovat k privátní verzi Preview Azure Backup podpora velkých disků pro disky větší než 4 TB až 30TB, zapište zpátky do nás AskAzureBackupTeam@microsoft.com.
+Operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 4 095 GB. Pokud si chcete zaregistrovat omezené veřejné verze Preview služby Azure Backup velkých disků pro disky větší než 4 TB a velikost až 30 TB, přečtěte si téma [Přehled zálohování virtuálních počítačů Azure](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nepovedlo se inicializovat zálohování, protože v tuto chvíli probíhá jiná operace zálohování.
 

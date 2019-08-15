@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8e2a98748f4fef69b4fd6e3b32d15560641a6336
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737057"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976814"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Uložení hledání a připnutí datových assetů v Azure Data Catalog
 ## <a name="introduction"></a>Úvod
@@ -37,7 +37,7 @@ Pokud chcete vytvořit uložené hledání, udělejte toto:
 ### <a name="manage-saved-searches"></a>Spravovat uložená hledání
 Po uložení jednoho nebo více hledání se zobrazí možnost **uložená** hledání pod **aktuálním vyhledávacím** polem. Po rozbalení seznamu se zobrazí všechna uložená hledání.
 
- ![Seznam uložených hledání](./media/data-catalog-how-to-save-pin/03-list.png)
+ ![Data Catalog – seznam uložených hledání](./media/data-catalog-how-to-save-pin/03-list.png)
 
 Proveďte některou z následujících akcí:
 
@@ -56,18 +56,18 @@ Proveďte některou z následujících akcí:
 ### <a name="organizational-saved-searches"></a>Hledání uložených v organizaci
 Všichni uživatelé ve vaší organizaci můžou ukládat hledání vlastního použití. Správci Data Catalog můžou také ukládat hledání všech uživatelů v rámci organizace. Když správci uloží hledání, zobrazí se jim **v rámci možnosti společnosti sdílená složka** . Když vyberete tuto možnost, nasdílí se uložené hledání pro všechny uživatele v organizaci.
 
- ![Hledání uložených v organizaci](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
+ ![Data Catalog – uložená hledání v organizaci](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 
 ## <a name="pinned-data-assets"></a>Připnuté datové prostředky
 Pomocí uložených hledání můžete vyhledávací definice Uložit a znovu použít. Datové assety, které jsou vraceny hledáními, se můžou v průběhu času v průběhu změny v katalogu měnit. Když přidáváte datové prostředky, můžete explicitně identifikovat konkrétní datové assety, které jim usnadní přístup, aniž byste museli používat hledání.
 
 Připnutí datového assetu je jednoduché. Chcete-li přidat datový Asset do připnutého seznamu, stačí kliknout na ikonu připnutí. Ikona se zobrazí v rohu dlaždice Asset v zobrazení dlaždice a ve sloupci nejvíce vlevo v zobrazení seznamu na portálu Azure Data Catalog.
 
-![Ikona kódu PIN datového prostředku](./media/data-catalog-how-to-save-pin/05-pinning.png)
+![Data Catalog – ikona pinu (data-Asset)](./media/data-catalog-how-to-save-pin/05-pinning.png)
 
 Odpnutí datového assetu je stejně jasné. Jednoduše klikněte na ikonu **odepnout** a přepněte nastavení vybraného assetu.
 
-![Ikona data-Asset odepnout](./media/data-catalog-how-to-save-pin/06-unpinning.png)
+![Data Catalog – ikona odepnout datový Asset – ikona](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
 ## <a name="the-my-assets-section"></a>Oddíl moje Assety
 Na domovské stránce portálu Data Catalog se nachází oddíl **Moje assety** , ve kterém se zobrazují prostředky důležité pro aktuálního uživatele. Tato část obsahuje připnuté prostředky i uložená hledání.

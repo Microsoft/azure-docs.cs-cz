@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace ServiceNow pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD k ServiceNow.
+title: 'Kurz: Konfigurace ServiceNow pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Přečtěte si, jak automaticky zřídit a zrušit zřízení uživatelských účtů z Azure AD až po ServiceNow.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,30 +13,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b3e4cc5ba4bc0173721947bd1e1a680ca7b3a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85783339c7d1348f598f924f14d9b40cd0c8cd22
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60869832"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967171"
 ---
-# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Kurz: Konfigurace ServiceNow pro automatické zřizování uživatelů pomocí Azure Active Directory
+# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Kurz: Konfigurace ServiceNow pro Automatické zřizování uživatelů pomocí Azure Active Directory
 
-Cílem tohoto kurzu je zobrazit kroky, které je potřeba provést ServiceNow a Azure AD a automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD k ServiceNow.
+Cílem tohoto kurzu je Ukázat kroky, které musíte v ServiceNow a Azure AD použít k automatickému zřízení a zrušení zřízení uživatelských účtů z Azure AD až ServiceNow.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s použitím ServiceNow, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s ServiceNow potřebujete následující položky:
 
 - Předplatné Azure AD
-- Pro ServiceNow, instanci nebo tenanta ServiceNow, Calgary verze nebo novější
-- Pro ServiceNow Express, instance ServiceNow Express, Helsinki verze nebo novější
+- Pro ServiceNow, instanci nebo tenant ServiceNow, verze Calgary nebo vyšší
+- Pro ServiceNow Express je to instance ServiceNow Express, Helsinky verze nebo vyšší.
 
 > [!NOTE]
 > Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
@@ -44,66 +44,66 @@ Konfigurace integrace Azure AD s použitím ServiceNow, potřebujete následují
 Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-
+- Pokud nemáte zkušební prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="assigning-users-to-servicenow"></a>Přiřazování uživatelů k ServiceNow
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V rámci zřizování automatické uživatelských účtů je synchronizovat jenom uživatelé a skupiny, které se "přiřadily" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD.
 
-Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jaké uživatele a/nebo skupiny ve službě Azure AD představují, kteří potřebují přístup k vaší aplikaci ServiceNow. Jakmile se rozhodli, můžete přiřadit tito uživatelé aplikaci ServiceNow podle zde uvedených pokynů: [Přiřadit uživatele nebo skupiny k podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co uživatelé a skupiny ve službě Azure AD reprezentují uživatelé, kteří potřebují přístup k aplikaci ServiceNow. Po rozhodnutí můžete tyto uživatele přiřadit do aplikace ServiceNow podle pokynů uvedených tady: [Přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 
 > [!IMPORTANT]
->*   Dále je doporučeno jednoho uživatele Azure AD je přiřazen k ServiceNow k otestování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
->*   Při přiřazení uživatele k ServiceNow, musíte vybrat platné uživatelské role. Tuto roli "Výchozí přístupu" nefunguje pro zřizování.
+>*   Doporučuje se, abyste k testování konfigurace zřizování přiřadili jednoho uživatele Azure AD ServiceNow. Další uživatele a skupiny můžete přiřadit později.
+>*   Při přiřazování uživatele k ServiceNow je nutné vybrat platnou roli uživatele. Role výchozí přístup nefunguje pro zřizování.
+>*   Další informace o tom, jak vytvořit a nakonfigurovat role v Azure AD, najdete na tomto [odkazu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) .
 
-## <a name="enable-automated-user-provisioning"></a>Povolit zřizování automatizované uživatelů
+## <a name="enable-automated-user-provisioning"></a>Povolit automatizované zřizování uživatelů
 
-Tato část vás provede připojením služby Azure AD k uživatelskému účtu ServiceNow na rozhraní API zřizování a konfigurace služby zřizování, pokud chcete vytvořit, aktualizovat a zakázat přiřazené uživatelské účty v ServiceNow podle přiřazení uživatelů a skupin ve službě Azure AD.
+V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů ve službě Azure AD a konfigurací služby zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v ServiceNow na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
->Můžete také povolena založené na SAML jednotného přihlašování pro ServiceNow, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
+>Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro ServiceNow, a to podle pokynů uvedených v tématu [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
-### <a name="configure-automatic-user-account-provisioning"></a>Konfigurovat automatické účet zřizování uživatelů
+### <a name="configure-automatic-user-account-provisioning"></a>Konfigurace automatického zřizování uživatelských účtů
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
 
-1. Pokud jste už nakonfigurovali ServiceNow pro jednotné přihlašování, vyhledávání pro vaši instanci ServiceNow pomocí vyhledávacího pole. V opačném případě vyberte **přidat** a vyhledejte **ServiceNow** v galerii aplikací. Ve výsledcích hledání vyberte ServiceNow a přidat do seznamu aplikací.
+1. Pokud jste už nakonfigurovali ServiceNow pro jednotné přihlašování, vyhledejte vaši instanci ServiceNow pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **ServiceNow** v galerii aplikací. Ve výsledcích hledání vyberte ServiceNow a přidejte je do seznamu aplikací.
 
-1. Vyberte instanci ServiceNow a potom **zřizování** kartu.
+1. Vyberte svou instanci ServiceNow a pak vyberte kartu **zřizování** .
 
-1. Nastavte **zřizování** režimu **automatické**. 
+1. Nastavte režim **zřizování** na **automaticky**. 
 
-    ![Zřizování](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![zřizování](./media/servicenow-provisioning-tutorial/provisioning.png)
 
-1. V části přihlašovací údaje správce proveďte následující kroky:
+1. V části pověření správce proveďte následující kroky:
    
-    a. V **název Instance ServiceNow** textového pole zadejte název instance ServiceNow.
+    a. Do textového pole **název instance ServiceNow** zadejte název instance ServiceNow.
 
-    b. V **uživatelské jméno správce ServiceNow** textového pole zadejte uživatelské jméno správce.
+    b. Do textového pole **uživatelské jméno správce ServiceNow** zadejte uživatelské jméno správce.
 
-    c. V **heslo správce ServiceNow** textového pole hesla správce.
+    c. V textovém poli **heslo správce ServiceNow** je heslo správce.
 
-1. Na webu Azure Portal, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k aplikaci ServiceNow. Pokud se nepovede, zajistěte svému účtu ServiceNow má oprávnění správce týmu a **"Přihlašovací údaje správce"** krok znovu.
+1. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci ServiceNow. Pokud se připojení nepovede, ujistěte se, že má váš účet ServiceNow oprávnění správce týmu, a zkuste znovu spustit krok **"přihlašovací údaje správce"** .
 
-1. Zadejte e-mailovou adresu osoby nebo skupiny, která má obdržet oznámení zřizování chyby v **e-mailové oznámení** pole a zaškrtněte políčko.
+1. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail** s oznámením, a zaškrtněte políčko.
 
-1. Klikněte na tlačítko **uložit.**
+1. Klikněte na **Uložit.**
 
-1. V oddílu mapování, vyberte **synchronizace Azure Active Directory uživatelů k ServiceNow.**
+1. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé ServiceNow.**
 
-1. V **mapování atributů** , projděte si atributy uživatele, které se synchronizují ze služby Azure AD k ServiceNow. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v ServiceNow pro operace update. Vyberte tlačítko Uložit potvrďte změny.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do ServiceNow. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v ServiceNow pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
 
-1. Chcete-li povolit služba pro ServiceNow zřizování Azure AD, změňte **stavu zřizování** k **na** v sekci nastavení
+1. Pokud chcete povolit službu Azure AD Provisioning pro ServiceNow, změňte **stav zřizování** na **zapnuto** v části nastavení.
 
-1. Klikněte na tlačítko **uložit.**
+1. Klikněte na **Uložit.**
 
-Spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k ServiceNow v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce provedené v aplikaci ServiceNow zřizovací služba.
+Spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazených ServiceNow v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Pomocí části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování ve vaší aplikaci ServiceNow.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

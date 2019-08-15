@@ -1,56 +1,56 @@
 ---
-title: Vytvoření uživatelem definovaných funkcí v Azure digitální dvojče | Dokumentace Microsoftu
-description: Jak vytvořit uživatelem definované funkce, procesy pro hledání shody a přiřazení rolí v digitální dvojče Azure.
+title: Vytvoření uživatelsky definovaných funkcí v Azure Digital revláken | Microsoft Docs
+description: Jak vytvořit uživatelsky definované funkce, párování a přiřazení rolí v Azure Digital autovlákna.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: b5e230f45fd5889e216f2993f58adf6940ef7679
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6853ebf16c1a9d6b0d363277b22c7dd2583d37e5
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072912"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013970"
 ---
-# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Vytvoření uživatelem definovaných funkcí v Azure digitální dvojče
+# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Jak vytvořit uživatelsky definované funkce v digitálních prostředníkech Azure
 
-[Uživatelem definované funkce](./concepts-user-defined-functions.md) povolit uživatelům konfigurovat vlastní logiku, který se spustí z příchozí zprávy telemetrii a metadata prostorový graf. Uživatelé můžou také posílat události předdefinované [koncové body](./how-to-egress-endpoints.md).
+[Uživatelsky definované funkce](./concepts-user-defined-functions.md) umožňují uživatelům nakonfigurovat vlastní logiku, aby se spustila ze příchozích zpráv telemetrie a metadat prostorového grafu. Uživatelé mohou také odesílat události do předdefinovaných [koncových bodů](./how-to-egress-endpoints.md).
 
-Tento průvodce vás provede příkladem představením toho, jak detekovat a upozornění na jakékoli materiály, které překračuje teplota z teploty přijatých událostí.
+Tato příručka vás seznámí s příkladem, který demonstruje, jak detekovat a upozorňovat na všechny čtení, která překročí určitou teplotu od přijatých událostí teploty.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-## <a name="client-library-reference"></a>Klientská knihovna – referenční informace
+## <a name="client-library-reference"></a>Reference klientské knihovny
 
-Funkce k dispozici jako pomocné metody v modulu runtime uživatelem definovaných funkcích jsou uvedené v [Klientská knihovna – referenční informace](./reference-user-defined-functions-client-library.md) dokumentu.
+Funkce, které jsou k dispozici jako pomocné metody v modulu runtime uživatelsky definované funkce, jsou uvedeny v referenčním dokumentu [klientské knihovny](./reference-user-defined-functions-client-library.md) .
 
-## <a name="create-a-matcher"></a>Vytvoření předávaný
+## <a name="create-a-matcher"></a>Vytvoření shody
 
-Procesy pro hledání shody jsou objektů grafu, které určují, uživatelem definované funkce spuštění pro danou telemetrické zprávy.
+Shody jsou objekty grafu, které určují, jaké uživatelsky definované funkce se spouštějí pro danou zprávu telemetrie.
 
-- Platný předávaný podmínka porovnání:
+- Platné porovnání podmínky shody:
 
   - `Equals`
   - `NotEquals`
   - `Contains`
 
-- Platný předávaný podmínku cíle:
+- Platné cíle podmínky shody:
 
   - `Sensor`
   - `SensorDevice`
   - `SensorSpace`
 
-Následující příklad předávaný vyhodnotí jako true na libovolnou událost telemetrická data ze senzorů s `"Temperature"` jako hodnotu datového typu. Můžete vytvořit více procesy pro hledání shody na uživatelem definovanou funkci tak, že ověřeného požadavku HTTP POST do:
+Následující příklad porovnávání vyhodnotí hodnotu true u jakékoli události telemetrie snímače s `"Temperature"` jako hodnotou datového typu. Pomocí ověřené žádosti HTTP POST můžete vytvořit více shod na uživatelsky definované funkci:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/matchers
 ```
 
-S text JSON:
+S textem JSON:
 
 ```JSON
 {
@@ -67,17 +67,17 @@ S text JSON:
 }
 ```
 
-| Hodnota | Nahradit hodnotou |
+| Value | Nahradit hodnotou |
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | Jaké oblasti serveru vaší instance je hostován aplikací |
 
 ## <a name="create-a-user-defined-function"></a>Vytvoření uživatelem definované funkce
 
-Vytvoření uživatelem definované funkce zahrnuje provádí s více částmi. požadavek HTTP do rozhraní API Správce Dvojčat digitální Azure.
+Vytvoření uživatelsky definované funkce zahrnuje vytvoření požadavku HTTP s více částmi rozhraní API pro správu digitálních vláken Azure.
 
 [!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
-Po vytvoření procesy pro hledání shody nahrajte fragment funkce s následující ověřeného vícedílné zprávy standardu odeslání požadavku HTTP POST do:
+Po vytvoření porovnávání nahrajte tento fragment funkce s následujícím ověřeným požadavkem HTTP POST po částech.
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
@@ -107,24 +107,24 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Hodnota | Nahradit hodnotou |
+| Value | Nahradit hodnotou |
 | --- | --- |
-| USER_DEFINED_BOUNDARY | Název obsahu hranic s více částmi. |
-| YOUR_SPACE_IDENTIFIER | Identifikátor místa  |
-| YOUR_MATCHER_IDENTIFIER | ID předávaný kterou chcete použít |
+| USER_DEFINED_BOUNDARY | Název hranice obsahu s více částmi |
+| YOUR_SPACE_IDENTIFIER | Identifikátor prostoru  |
+| YOUR_MATCHER_IDENTIFIER | ID shody, kterou chcete použít |
 
-1. Ověřte, že hlavičky zahrnují: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-1. Ověřte, zda je textu vícedílné zprávy standardu:
+1. Ověřte, že hlavičky obsahují: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Ověřte, zda se jedná o část těla:
 
-   - První část obsahuje metadata požadované uživatelem definované funkce.
-   - Druhá část obsahuje logiku výpočetní jazyka JavaScript.
+   - První část obsahuje požadovaná uživatelsky definovaná metadata funkce.
+   - Druhá část obsahuje výpočetní logiku JavaScriptu.
 
-1. V **USER_DEFINED_BOUNDARY** části, nahraďte **spaceId** (`YOUR_SPACE_IDENTIFIER`) a **procesy pro hledání shody** (`YOUR_MATCHER_IDENTIFIER`) hodnoty.
-1. Ověřte, že je jako zadaný uživatelem definované funkce jazyka JavaScript `Content-Type: text/javascript`.
+1. V části **USER_DEFINED_BOUNDARY** nahraďte hodnoty **spaceId** `YOUR_SPACE_IDENTIFIER`() a **matchs** (`YOUR_MATCHER_IDENTIFIER`).
+1. Ověřte, zda je uživatelem definovaná funkce jazyka JavaScript dodávána `Content-Type: text/javascript`jako.
 
-### <a name="example-functions"></a>Příklad funkce
+### <a name="example-functions"></a>Ukázkové funkce
 
-Nastavte telemetrická data ze senzorů čtení přímo pro senzoru s datovým typem **teploty**, což je `sensor.DataType`:
+Nastavte telemetrii senzorů přímo pro senzor s použitím **teploty**datového typu, což je `sensor.DataType`:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -140,7 +140,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-**Telemetrie** zpřístupňuje parametr **SensorId** a **zpráva** atributy odpovídající zpráva odeslaná senzoru. **Kontextu executionContext** parametr zveřejňuje následující atributy:
+Parametr **telemetrie** zpřístupňuje atributy **SensorId** a **Message** odpovídající zprávě odesílané senzorem. Parametr **ExecutionContext** zpřístupňuje následující atributy:
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -152,7 +152,7 @@ var executionContext = new UdfExecutionContext
 };
 ```
 
-V následujícím příkladu jsme zaznamenat zprávu, pokud čtení telemetrických dat ze senzorů převyšuje předdefinované prahovou hodnotu. Pokud nastavení diagnostiky se na instanci Azure digitální dvojče povolí, předávají také protokoly z uživatelem definovaných funkcí:
+V dalším příkladu se zaznamená zpráva, pokud se při čtení telemetrie senzorů překročí předdefinovaná prahová hodnota. Pokud jsou v instanci digitálních vláken Azure povolené vaše nastavení diagnostiky, předají se také protokoly z uživatelsky definovaných funkcí:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -167,7 +167,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Následující kód spustí oznámení, pokud úroveň teplota překročí předdefinovanou konstantu:
+Následující kód vyvolá oznámení, pokud se hladina teploty zvyšuje nad předdefinovanou konstantou:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -191,37 +191,37 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Složitější ukázku kódu uživatelem definované funkce, najdete v článku [rychlý start obsazení](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
+Složitější ukázku kódu uživatelsky definované funkce naleznete v rychlém startu. [](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)
 
-## <a name="create-a-role-assignment"></a>Vytvořit přiřazení role
+## <a name="create-a-role-assignment"></a>Vytvoření přiřazení role
 
-Vytvořte přiřazení role pro uživatelem definované funkce ke spuštění v rámci. Pokud pro uživatelem definované funkce neexistuje žádná přiřazení role, nemá potřebná oprávnění k interakci s rozhraním API pro správu nebo nebude mít přístup k provádění akcí v grafu objektů. Akce, které může provádět uživatelem definované funkce jsou zadány a prostřednictvím řízení přístupu na základě rolí v rámci Azure digitální dvojče Management API. Uživatelem definované funkce může omezit v oboru, například tak, že zadáte určité role nebo určité cesty řízení přístupu. Další informace najdete v tématu [řízení přístupu na základě rolí](./security-role-based-access-control.md) dokumentaci.
+Vytvořte přiřazení role pro funkci definovanou uživatelem, která se má spustit. Pokud pro uživatelsky definovanou funkci neexistuje žádné přiřazení role, nebude mít správná oprávnění k interakci s rozhraním API pro správu nebo musí mít přístup k provádění akcí v objektech grafu. Akce, které může uživatelsky definovaná funkce provádět, jsou určené a definované prostřednictvím řízení přístupu na základě role v rámci rozhraní API pro správu digitálních vláken Azure. Například uživatelsky definované funkce mohou být omezeny oborem zadáním určitých rolí nebo určitých cest řízení přístupu. Další informace najdete v dokumentaci [řízení přístupu na základě rolí](./security-role-based-access-control.md) .
 
-1. [Dotazování do rozhraní API systému](./security-create-manage-role-assignments.md#all) u všech rolí k získání ID role, kterou chcete přiřadit do uživatelem definované funkce. Udělat tak, že ověřeného požadavku HTTP GET na:
+1. [Dotaz na systémové rozhraní API](./security-create-manage-role-assignments.md#all) pro všechny role, abyste získali ID role, kterou chcete přiřadit k uživatelsky definované funkci. Provedete to tak, že vytvoříte ověřený požadavek HTTP GET na:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   Zachovat ID požadované role. Se předá jako atribut textu JSON **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) níže.
+   Ponechte ID požadované role. Bude předán jako atribut těla JSON **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) níže.
 
-1. **ID objektu** (`YOUR_USER_DEFINED_FUNCTION_ID`) bude uživatelem definovanou funkci ID, které jste vytvořili dříve.
-1. Vrátí hodnotu **cesta** (`YOUR_ACCESS_CONTROL_PATH`) dotazováním prostory vaší s `fullpath`.
-1. Zkopírujte vráceného `spacePaths` hodnotu. Který budete používat níže. Proveďte ověřené požadavek HTTP GET na:
+1. **identifikátor objectID** (`YOUR_USER_DEFINED_FUNCTION_ID`) bude uživatelsky definované ID funkce, které bylo vytvořeno dříve.
+1. Vyhledejte hodnotu **path** (`YOUR_ACCESS_CONTROL_PATH`) dotazem na mezery pomocí `fullpath`.
+1. Zkopírujte vrácenou `spacePaths` hodnotu. Použijete níže. Nastavte ověřený požadavek HTTP GET na:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Hodnota | Nahradit hodnotou |
+    | Value | Nahradit hodnotou |
     | --- | --- |
-    | YOUR_SPACE_NAME | Název pole, které chcete použít |
+    | YOUR_SPACE_NAME | Název místa, které se má použít |
 
-1. Vložte vrácený `spacePaths` hodnoty do **cesta** k vytvoření přiřazení role uživatelem definovanou funkci tak, že ověřeného požadavku HTTP POST do:
+1. Vložte vrácenou `spacePaths` hodnotu do **cesty** , abyste vytvořili uživatelem definovanou funkci přiřazení role, a to provedením ověřené žádosti HTTP post:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments
     ```
-    S text JSON:
+    S textem JSON:
 
     ```JSON
     {
@@ -232,28 +232,28 @@ Vytvořte přiřazení role pro uživatelem definované funkce ke spuštění v 
     }
     ```
 
-    | Hodnota | Nahradit hodnotou |
+    | Value | Nahradit hodnotou |
     | --- | --- |
-    | YOUR_DESIRED_ROLE_IDENTIFIER | Identifikátor pro požadovanou roli |
-    | YOUR_USER_DEFINED_FUNCTION_ID | ID pro uživatelem definované funkce, kterou chcete použít |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | ID určení typu uživatelem definované funkce |
-    | YOUR_ACCESS_CONTROL_PATH | Cesta správy přístupu |
+    | YOUR_DESIRED_ROLE_IDENTIFIER | Identifikátor požadované role |
+    | YOUR_USER_DEFINED_FUNCTION_ID | ID uživatelsky definované funkce, kterou chcete použít |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | ID určující typ funkce definované uživatelem |
+    | YOUR_ACCESS_CONTROL_PATH | Cesta k řízení přístupu |
 
 >[!TIP]
-> Přečtěte si článek [jak vytvořit a spravovat přiřazení rolí](./security-create-manage-role-assignments.md) Další informace o operacích rozhraní API pro správu uživatelem definované funkce a koncových bodů.
+> Další informace o operacích a koncových bodech rozhraní API pro správu funkcí definovaných uživatelem najdete v článku [jak vytvořit a spravovat přiřazení rolí](./security-create-manage-role-assignments.md) .
 
-## <a name="send-telemetry-to-be-processed"></a>Odesílání telemetrických dat ke zpracování
+## <a name="send-telemetry-to-be-processed"></a>Odeslat telemetrii, která se má zpracovat
 
-Senzor definované v grafu prostorových intelligence odesílá telemetrická data. Telemetrická data zase aktivuje spuštění uživatelem definované funkce, který byl nahrán. Procesor dat převezme telemetrická data. Pak je vytvořen plán provádění volání uživatelem definované funkce.
+Senzor definovaný v grafu prostorové Intelligence posílá telemetrii. Telemetrie pak aktivuje spuštění uživatelsky definované funkce, která se nahrála. Procesor dat vybere telemetrii. Pak se vytvoří plán spuštění pro vyvolání uživatelsky definované funkce.
 
-1. Načte procesy pro hledání shody vygenerování čtení ze senzoru.
-1. V závislosti na tom, jaké procesy pro hledání shody byla úspěšně vyhodnocena načtěte související uživatelem definované funkce.
-1. Spuštění každý uživatelem definované funkce.
+1. Načíst shody pro senzor, ze kterého byl vygenerováno čtení.
+1. V závislosti na tom, které shody byly úspěšně vyhodnoceny, načtěte přidružené uživatelsky definované funkce.
+1. Spusťte každou uživatelsky definovanou funkci.
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [vytvoření koncových bodů Azure digitální dvojče](./how-to-egress-endpoints.md) k odesílání událostí do.
+- Naučte se [vytvářet koncové body digitálních vláken Azure](./how-to-egress-endpoints.md) pro odesílání událostí do.
 
-- Další podrobnosti o směrování v Azure digitální dvojče [směrování události a zprávy](./concepts-events-routing.md).
+- Další podrobnosti o směrování v digitálních událostech Azure najdete v tématu [Směrování událostí a zpráv](./concepts-events-routing.md).
 
-- Zkontrolujte [klientské knihovny referenční dokumentaci](./reference-user-defined-functions-client-library.md).
+- Projděte si [referenční dokumentaci ke klientské knihovně](./reference-user-defined-functions-client-library.md).

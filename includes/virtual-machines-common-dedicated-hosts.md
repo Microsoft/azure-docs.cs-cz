@@ -8,26 +8,13 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 438f450efe207999947795878a9815fca64f45ca
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68702925"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976620"
 ---
-Vyhrazený hostitel Azure je služba, která poskytuje fyzické servery – schopné hostovat jeden nebo víc virtuálních počítačů, které jsou vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé jsou stejné fyzické servery, které se používají v našich datových centrech, které jsou poskytované jako prostředek. Můžete zřídit vyhrazené hostitele v rámci oblasti, zóny dostupnosti a domény selhání. Pak můžete virtuální počítače umístit přímo do zřízených hostitelů, v libovolné konfiguraci nejlépe vyhovuje vašim potřebám.
-
-> [!IMPORTANT]
-> Vyhrazené hostitele Azure jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Známá omezení verze Preview**
-> - Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
-> - Počáteční verze Preview podporuje následující řadu virtuálních počítačů: DSv3 a ESv3. 
-> - Ve verzi Preview nebudete moct změnit velikost virtuálního počítače nasazeného na vyhrazeného hostitele.
-> - Řízení funkcí údržby je ve verzi omezené verze Preview. Začněte tím, že provedete tento [průzkum jmenování](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u) a zkusíte si je vyzkoušet.  
-> V rámci verze Preview se nenabídne možnost rezervované kapacity. 
-
 ## <a name="benefits"></a>Výhody 
 
 Udržování celého hostitele přináší následující výhody:

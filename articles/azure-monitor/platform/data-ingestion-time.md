@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: cdd1c8348acac37acbe8ad15199f3953bfe95a8e
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: e07a436ee18a216bab569d299e534e729996db19
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370658"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990161"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Doba přijímání dat protokolu v Azure Monitor
 Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. K dispozici jsou často dotazy týkající se času, po který se data protokolu budou k dispozici po shromáždění. Tento článek vysvětluje různé faktory, které mají vliv na tuto latenci.
@@ -90,7 +90,7 @@ Doba příjmu se může u různých prostředků v různých případech lišit.
 ### <a name="ingestion-latency-delays"></a>Zpoždění latence přijímání
 Můžete změřit latenci konkrétního záznamu porovnáním výsledku funkce [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) s vlastností _TimeGenerated_ . Tato data je možné použít s různými agregacemi k nalezení, jak se latence příjmu chová. Prověřte si určitý percentil doby příjmu, abyste získali přehled o velkém množství dat. 
 
-Například následující dotaz vám ukáže, které počítače měly nejvyšší čas příjmu v průběhu aktuálního dne: 
+Následující dotaz například zobrazí, které počítače měly nejvyšší čas příjmu za předchozích 8 hodin: 
 
 ``` Kusto
 Heartbeat
@@ -101,7 +101,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
  
-Chcete-li přejít k podrobnostem o době příjmu určitého počítače v časovém intervalu, použijte následující dotaz, který také vizualizuje data v grafu: 
+Chcete-li přejít k podrobnostem o době příjmu určitého počítače v časovém intervalu, použijte následující dotaz, který také vizualizuje data z minulého dne v grafu: 
 
 ``` Kusto
 Heartbeat 
@@ -144,6 +144,6 @@ Heartbeat
 | top 20 by NoHeartbeatPeriod desc 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si [smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) pro Azure monitor.
 

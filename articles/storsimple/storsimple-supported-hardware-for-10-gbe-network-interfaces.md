@@ -1,6 +1,6 @@
 ---
-title: Hardware pro StorSimple 10 GbE rozhraní | Dokumentace Microsoftu
-description: Popisuje podporované malé uspořádání formuláře modulární vysílače (SFP), kabely a přepínače pro rozhraní sítí 10 GbE pro zařízení StorSimple.
+title: Hardware pro rozhraní StorSimple 10 GbE | Microsoft Docs
+description: V této části najdete popis podporovaného malého přijímače, kabelů a přepínačů pro síťová rozhraní 10 GbE na zařízení StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,19 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 8303195f0f3228ee145cbba9e322ea4e5e4c1264
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726960"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965019"
 ---
-# <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Podporované hardware pro rozhraní sítí 10 GbE na zařízení StorSimple
-## <a name="overview"></a>Přehled
-Tento článek obsahuje informace o doplňkových hardwaru, který spolupracuje s Microsoft Azure StorSimple zařízení.
+# <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Podporovaný hardware pro síťová rozhraní 10 GbE na zařízení StorSimple
 
-## <a name="list-of-devices-tested-by-microsoft"></a>Seznam zařízení otestované microsoftem
-Společnost Microsoft testovala následující (SFP) vysílače modulární malé provedení, kabely a přepínače k zajištění, že fungují optimálně se zařízeními. (V následujících tabulkách se aktualizovat, protože je testován nový hardware.)
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
+## <a name="overview"></a>Přehled
+Tento článek poskytuje informace o doplňkovém hardwaru, který spolupracuje se zařízením s Microsoft Azure StorSimple.
+
+## <a name="list-of-devices-tested-by-microsoft"></a>Seznam zařízení testovaných společností Microsoft
+Společnost Microsoft testovala následující malé vysílače, kabely a přepínače, a zajišťuje tak optimální fungování zařízení pomocí malých Form, kabelů a přepínačů. (Následující tabulky budou aktualizovány při testování nového hardwaru.)
 
 ### <a name="sfp-transceivers"></a>SFP + vysílače
 | Vytvoření | Model |
@@ -39,7 +42,7 @@ Společnost Microsoft testovala následující (SFP) vysílače modulární mal�
 | 1. |Cisco |SFP-H10GB-CU1M |
 | 2. |Cisco |SFP-H10GB-CU2M |
 | 3. |Cisco |SFP-H10GB-CU3M |
-| 4. |Tripp Lite |N820-05M (OM3) |
+| 4. |Tripp – Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>Přepínače
 | Sér. Ne. | Vytvoření | Model |
@@ -48,79 +51,79 @@ Společnost Microsoft testovala následující (SFP) vysílače modulární mal�
 | 2. |Cisco |N3K-C3048-ZM-F |
 | 3. |Cisco |N5K-C5596UP-FA |
 
-## <a name="list-of-devices-tested-in-the-field"></a>Seznam zařízení testovány v poli
-Tato část obsahuje seznam zařízení, které byly úspěšně nasazeny v poli zákazníky StorSimple. Nebyly testovány od Microsoftu, ale jsou pravděpodobně fungovat s vaším zařízením StorSimple.
+## <a name="list-of-devices-tested-in-the-field"></a>Seznam zařízení testovaných v poli
+Tato část obsahuje seznam zařízení, která byla úspěšně nasazena v poli StorSimple zákazníky. Tyto testy nebyly testovány společností Microsoft, ale pravděpodobně budou pracovat se zařízením StorSimple.
 
-| Parametr | Hodnota |
+| Parametr | Value |
 | --- | --- |
-| Ujistěte se, přepínače |Juniper |
-| Přepínač modelu |ex4550-32F |
-| Verze operačního systému přepínač |JunOS 12.3R9.4 |
-| Okno modelu |Připojit porty (PIC 0) |
-| Zkontrolujte vysílač |Juniper |
-| Vysílač modelu |Výrobní číslo 740 021308 <br></br> Výrobní číslo 740 030658 |
-| Vysílač verze firmwaru |REV 01 verze 0,0 (uvedené) |
-| Kabel modelu |Duplexní můstek LC/LC 50/125µ, OM3, LSZH |
-| StorSimple modelu |8600 |
-| Verze softwaru StorSimple |6.3.9600.17491 |
+| Přepnout |Juniper |
+| Přepnout model |ex4550-32F |
+| Přepnout verzi operačního systému |JunOS 12.3 R 9.4 |
+| Model okna |Zprovoznění portů (PIC 0) |
+| Vytvořit vysílač |Juniper |
+| Model vysílače |Číslo součásti 740-021308 <br></br> Číslo součásti 740-030658 |
+| Verze firmwaru vysílače |Rev 01 verze 0,0 (oznámeno) |
+| Model kabelu |Duplexní můstek LC/LC 50/125μ, OM3, LSZH |
+| Model StorSimple |8600 |
+| Verze StorSimple softwaru |6.3.9600.17491 |
 
-## <a name="list-of-devices-tested-by-oem-provider-mellanox"></a>Seznam zařízení testovat poskytovatelem OEM (Mellanox)
-Mellanox testovala následující (SFP) vysílače modulární malé provedení, kabely a přepínače k zajištění, že fungují optimálně Mellanox síťových rozhraní, jako je například rozhraní sítí 10 GbE na zařízení StorSimple.
+## <a name="list-of-devices-tested-by-oem-provider-mellanox"></a>Seznam zařízení testovaných poskytovatelem OEM (Mellanox)
+Mellanox testoval následující malé přijímače, kabely a přepínače, aby fungovaly optimálně s Mellanox síťovými rozhraními, jako jsou například Síťová rozhraní 10 GbE na zařízení StorSimple.
 
-### <a name="cables-and-modules-supported-by-mellanox"></a>Moduly nepodporuje Mellanox a kabely
-V následující tabulce jsou uvedeny kabely a moduly nepodporuje Mellanox. Nebyly testovány od Microsoftu, ale jsou pravděpodobně fungovat s vaším zařízením StorSimple.
-
-| Sér. Ne. | Rychlost | Model | Popis | Vytvoření |
-| --- | --- | --- | --- | --- |
-| 1. |10 GbE |CAB-SFP-SFP-1M |pasivní měděného kabelu SFP + 10 Gb/s 1 min |Arista |
-| 2. |10 GbE |CAB-SFP-SFP-2M |pasivní měděného kabelu SFP + 10 Gb/s 2 min |Arista |
-| 3. |10 GbE |CAB-SFP-SFP-3M |pasivní měděného kabelu SFP + 10 Gb/s 3m |Arista |
-| 4. |10 GbE |CAB-SFP-SFP-5M |pasivní měděného kabelu SFP + 10 Gb/s 5 min |Arista |
-| 5. |10 GbE |Cisco SFP-H10GBCU1M |Cisco SFP + kabel |Cisco |
-| 6. |10 GbE |Cisco SFP-H10GBCU3M |Cisco SFP + kabel |Cisco |
-| 7. |10 GbE |Cisco SFP-H10GBCU5M |Cisco SFP + kabel |Cisco |
-| 8. |10 GbE |J9281B HP X242 10G |SFP + SFP + 1 milion měděného kabelu s přímým přístupem |HP |
-| 9. |10 GbE |455883-B21 HP BLc |10Gb SR SFP + Opt |HP |
-| 10. |10 GbE |455886-B21 HP BLc |10Gb LR SFP + Opt |HP |
-| 11. |10 GbE |487649-B21 HP BLc |SFP + 0,5 m 10GbE Cu kabel |HP |
-| 12. |10 GbE |487652-B21 HP BLc |1 milion 10GbE SFP + Cu kabel |HP |
-| 13. |10 GbE |487655-B21 HP BLc |3m 10GbE SFP + Cu kabel |HP |
-| 14. |10 GbE |487658-B21 HP BLc |SFP + 7 min 10GbE Cu kabel |HP |
-| 15. |10 GbE |537963-B21 HP BLc |SFP + 5 min 10GbE Cu kabel |HP |
-| 16. |10 GbE |AP784A HP |3m C-series pasivní mědi SFP + kabel |HP |
-| 17. |10 GbE |AP785A HP |5 min C-series pasivní mědi SFP + kabel |HP |
-| 18. |10 GbE |AP818A HP |1 milion řady B-series aktivní mědi SFP + kabel |HP |
-| 19. |10 GbE |AP819A HP |3m řady B-series aktivní mědi SFP + kabel |HP |
-| 20. |10 GbE |J9150A HP |X132 10 G SFP + LC SR vysílač |HP |
-| 21. |10 GbE |J9151A HP |X132 10 G SFP + LC LR vysílač |HP |
-| 22. |10 GbE |J9283B HP |X242 10 G SFP + SFP + 3 m DAC kabel |HP |
-| 23. |10 GbE |J9285B HP |X242 10 G SFP + SFP + 7 min DAC kabel |HP |
-| 24. |10 GbE |JD095B HP |X240 10 G SFP + SFP + 0.65 m DAC kabel |HP |
-| 25. |10 GbE |JD096B HP |X240 10 G SFP + SFP + 1.2 m DAC kabel |HP |
-| 26. |10 GbE |JD097B HP |X240 10 G SFP + SFP + 3 m TÁTA kabel |HP |
-| 27. |10 GbE |MAM1Q00A-QSA Mellanox |QSFP SFP + adaptéru |Mellanox technologie |
-| 28. |10 GbE |MC2309124-006 Mt |X SFP+ pasivní měděného kabelu 1 do 10 Gb/s 24awg QSFP 7 min |Mellanox technologie |
-| 29. |10 GbE |MC2309124-007 Mt |X SFP+ pasivní měděného kabelu 1 do 10 Gb/s 24awg QSFP 7 min |Mellanox technologie |
-| 30. |10 GbE |MC2309130-003 Mt |X SFP+ pasivní měděného kabelu 1 do 10 Gb/s 30awg QSFP 3 m |Mellanox technologie |
-| 31. |10 GbE |MC2309130-00A Mt |X SFP+ pasivní měděného kabelu 1 do 10 Gb/s 30awg QSFP 0,5 m |Mellanox technologie |
-| 32. |10 GbE |MC3309124-005 Mt |Pasivní mědi zapojení 1 24awg x SFP+ 10 Gb/s 5 min |Mellanox technologie |
-| 33. |10 GbE |MC3309124-007 Mt |Pasivní mědi zapojení 24awg 10 Gb/s 1 x SFP+ 7 min |Mellanox technologie |
-| 34. |10 GbE |MC3309130-003 Mt |Pasivní mědi zapojení 30awg 10 Gb/s 1 x SFP+ 3 m |Mellanox technologie |
-| 35. |10 GbE |MC3309130-00A Mt |Pasivní mědi zapojení 30awg 10 Gb/s 1 x SFP+ 0,5 m |Mellanox technologie |
-
-### <a name="switches-supported-by-mellanox"></a>Podporuje Mellanox přepínače
-V následující tabulce jsou uvedeny přepínačů podporuje Mellanox. Nebyly testovány od Microsoftu, ale jsou pravděpodobně fungovat s vaším zařízením StorSimple.
+### <a name="cables-and-modules-supported-by-mellanox"></a>Kabely a moduly podporované Mellanox
+V následující tabulce jsou uvedeny kabely a moduly, které podporuje Mellanox. Tyto testy nebyly testovány společností Microsoft, ale pravděpodobně budou pracovat se zařízením StorSimple.
 
 | Sér. Ne. | Rychlost | Model | Popis | Vytvoření |
 | --- | --- | --- | --- | --- |
-| 1. |10GbE |516733-B21 |Přepínač okno HP ProCurve 6120XG 10GbE Ethernet |HP |
-| 2. |10GbE |538113-B21 |HP 10GbE předávací modulu (druh) |HP |
-| 3. |10GbE |EN4093 |Škálovatelné přepínač modulu EN4093 10 gigabitů IBM PureFlex systému prostředků infrastruktury |IBM |
-| 4. |1GbE |3020 |Cisco zprostředkující 3020 1GbE přepínač okno |Cisco |
-| 5. |1GbE |3020X |Okno přepínač zprostředkující 3020 X 1GbE Cisco |Cisco |
-| 6. |1GbE |438030-B21 |Modul přepínače 1GbE HP - Blade Ethernet vrstvy 2 nebo 3 GbE2c Switch |HP |
-| 7. |1GbE |6120G |HP ProCurve 6120G/XG 1GbE přepínač okno |HP |
+| 1. |10 GbE |CAB-SFP-SFP-1M |pasivní dráty Copper – kabel + 10 GB/s 1m |Arista |
+| 2. |10 GbE |CAB-SFP-SFP-2M |pasivní kabel Copper kabelové SFP + 10 GB/s 2 min |Arista |
+| 3. |10 GbE |CAB-SFP-SFP-3M |pasivní kabel Copper kabelové SFP + 10 GB/s 3m |Arista |
+| 4. |10 GbE |CAB-SFP-SFP-5M |pasivní kabel Copper kabelové SFP + 10 GB/s 5 min |Arista |
+| 5. |10 GbE |Cisco SFP-H10GBCU1M |Cisco SFP + – kabel |Cisco |
+| 6. |10 GbE |Cisco SFP-H10GBCU3M |Cisco SFP + – kabel |Cisco |
+| 7. |10 GbE |Cisco SFP-H10GBCU5M |Cisco SFP + – kabel |Cisco |
+| 8. |10 GbE |J9281B HP X242 10G |SFP + až SFP + 1m připojit měděný kabel |EMULEX |
+| 9. |10 GbE |455883-B21 HP BLc |10Gb SR SFP + opt |EMULEX |
+| 10. |10 GbE |455886-B21 HP BLc |10Gb LR SFP + opt |EMULEX |
+| 11. |10 GbE |487649-B21 HP BLc |10GbE Copper kabel SFP + 0,5 m |EMULEX |
+| 12. |10 GbE |487652-B21 HP BLc |SFP + 1 milion 10GbE Copper kabel |EMULEX |
+| 13. |10 GbE |487655-B21 HP BLc |3m 10GbE SFP + Copper kabel |EMULEX |
+| 14. |10 GbE |487658-B21 HP BLc |7 min 10GbE SFP + Copper kabel |EMULEX |
+| 15. |10 GbE |537963-B21 HP BLc |5 min 10GbE SFP + Copper kabel |EMULEX |
+| 16. |10 GbE |AP784A HP |3m-Series pasivní Copper SFP + kabel |EMULEX |
+| 17. |10 GbE |AP785A HP |5 min-Series pasivní Copper SFP + kabel |EMULEX |
+| 18. |10 GbE |AP818A HP |1 milion B-Series aktivní Copper SFP + kabel |EMULEX |
+| 19. |10 GbE |AP819A HP |3m B-Series aktivní Copper SFP + kabel |EMULEX |
+| 20. |10 GbE |J9150A HP |X132 10G SFP + LC SR vysílač |EMULEX |
+| 21. |10 GbE |J9151A HP |X132 10G SFP + LC LR vysílač |EMULEX |
+| 22. |10 GbE |J9283B HP |X242 10G SFP + SFP + 3m DAC Cable |EMULEX |
+| 23. |10 GbE |J9285B HP |X242 10G SFP + SFP + 7 min DAC Cable |EMULEX |
+| 24. |10 GbE |JD095B HP |X240 10G SFP + SFP + 0.65 m DAC Cable |EMULEX |
+| 25. |10 GbE |JD096B HP |X240 10G SFP + SFP + 1,2 m – kabel DAC |EMULEX |
+| 26. |10 GbE |JD097B HP |X240 10G SFP + SFP + 3m, kabel DÁD |EMULEX |
+| 27. |10 GbE |MAM1Q00A-QSA Mellanox |QSFP na SFP + Adapter |Mellanox technologie |
+| 28. |10 GbE |MC2309124-006 Mt |Pasivní kabel Copper pro 1x SFP + až QSFP 10 GB/s 24AWG 7 min |Mellanox technologie |
+| 29. |10 GbE |MC2309124-007 Mt |Pasivní kabel Copper pro 1x SFP + až QSFP 10 GB/s 24AWG 7 min |Mellanox technologie |
+| 30. |10 GbE |MC2309130-003 Mt |Pasivní kabel Copper pro 1x SFP + až QSFP 10 GB/s 30AWG 3m |Mellanox technologie |
+| 31. |10 GbE |MC2309130-00A Mt |Pasivní kabel Copper pro 1x SFP + až QSFP 10Gb/s 30AWG 0.5 m |Mellanox technologie |
+| 32. |10 GbE |MC3309124-005 Mt |Pasivní kabel Copper pro 1x SFP + 10 GB/s 24AWG 5 min |Mellanox technologie |
+| 33. |10 GbE |MC3309124-007 Mt |Pasivní kabel Copper pro 1x SFP + 10 GB/s 24AWG 7 min |Mellanox technologie |
+| 34. |10 GbE |MC3309130-003 Mt |Pasivní kabel Copper pro 1x SFP + 10 GB/s 30AWG 3m |Mellanox technologie |
+| 35. |10 GbE |MC3309130-00A Mt |Pasivní kabel mědi s číslem 1x + 10 GB/s 30AWG 0.5 m |Mellanox technologie |
 
-## <a name="next-steps"></a>Další postup
-[Další informace o StorSimple hardwarové součásti a stav](storsimple-monitor-hardware-status.md).
+### <a name="switches-supported-by-mellanox"></a>Přepínače podporované Mellanox
+V následující tabulce jsou uvedeny přepínače podporované nástrojem Mellanox. Tyto testy nebyly testovány společností Microsoft, ale pravděpodobně budou pracovat se zařízením StorSimple.
+
+| Sér. Ne. | Rychlost | Model | Popis | Vytvoření |
+| --- | --- | --- | --- | --- |
+| 1. |10GbE |516733-B21 |Přepínač HP prozatáčka 6120XG 10GbE Ethernet Switch |EMULEX |
+| 2. |10GbE |538113-B21 |Modul Pass-through HP 10GbE (PTM) |EMULEX |
+| 3. |10GbE |EN4093 |Modul IBM PureFlex System Fabric EN4093 10 Gigabit-Scalable Switch Module |IBM |
+| 4. |10 GbE LOM |3020 |Okno přepínače Cisco Catalyst 3020 10 GbE LOM |Cisco |
+| 5. |10 GbE LOM |3020X |Okno přepínače Cisco Catalyst 3020X 10 GbE LOM |Cisco |
+| 6. |10 GbE LOM |438030-B21 |Modul HP 10 GbE LOM Switch – přepínač GbE2c vrstvy 2/3 Ethernet |EMULEX |
+| 7. |10 GbE LOM |6120G |Okno 6120G spínače HP prokřivení/XG 10 GbE LOM |EMULEX |
+
+## <a name="next-steps"></a>Další kroky
+[Přečtěte si další informace o StorSimple hardwarových komponentách a stavu](storsimple-monitor-hardware-status.md).
 

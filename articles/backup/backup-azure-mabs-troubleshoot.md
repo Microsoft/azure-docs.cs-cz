@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: c08acaf65cd42abd9db97fab1267ce5628595b78
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0f9c2d1d2081ec22898ed3a4fbc73305ff0995e3
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689274"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954672"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -25,7 +25,7 @@ Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporu
 
 - [Zajistěte, aby byl agent Microsoft Azure Recovery Services (MARS) aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Ujistěte se, že existuje síťové propojení mezi agentem MARS a Azure.](https://aka.ms/AB-A4dp50)
-- Ujistěte se, že je spuštěná služba Microsoft Azure Recovery Services (v konzole služby). V případě potřeby restartujte počítač a operaci opakujte.
+- Ujistěte se, že je spuštěná služba Microsoft Azure Recovery Services (v konzole služby). V případě potřeby restartujte operaci a operaci opakujte.
 - [Ujistěte se, že je v umístění pomocné složky k dispozici 5 až 10 % volného místa.](https://aka.ms/AB-AA4dwtt)
 - Pokud se registrace nedaří, ujistěte se, že server, na který se pokoušíte nainstalovat Azure Backup Server, ještě není zaregistrovaný v jiném trezoru.
 - Pokud nabízená instalace selže, zkontrolujte, jestli už agent DPM neexistuje. Pokud agent existuje, odinstalujte ho a pak instalaci opakujte.
@@ -55,13 +55,13 @@ Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporu
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Obnovit | **Kód chyby**: Chyba přihlašovacích údajů k CBPServerRegisteredVaultDontMatchWithCurrent nebo trezoru: 100110 <br/> <br/>**Chybová zpráva**: Zadané přihlašovací údaje trezoru se liší od trezoru, na který je server zaregistrován. | **Příčina:** K tomuto problému dochází při pokusu o obnovení souborů na alternativním serveru z původního serveru pomocí možnosti externí obnovení DPM a v případě, že se server, který se právě obnovuje, a původní server, ze kterého se zálohují data, nevztahují ke stejnému Trezor služby Recovery Services.<br/> <br/>**Alternativní řešení** Chcete-li tento problém vyřešit, zajistěte, aby byl původní i alternativní server zaregistrován do stejného trezoru.|
+| Obnovit | **Kód chyby**: Chyba přihlašovacích údajů k CBPServerRegisteredVaultDontMatchWithCurrent nebo trezoru: 100110 <br/> <br/>**Chybová zpráva**: Zadané přihlašovací údaje trezoru se liší od trezoru, na který je server zaregistrován. | **Příčina:** K tomuto problému dochází při pokusu o obnovení souborů na alternativním serveru z původního serveru pomocí možnosti externí obnovení DPM a v případě, že je obnoven server a původní server, ze kterého jsou data zálohována, nejsou přidružena ke stejnému Trezor služby Recovery Services.<br/> <br/>**Alternativní řešení** Chcete-li tento problém vyřešit, zajistěte, aby byl původní i alternativní server zaregistrován do stejného trezoru.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Úlohy Vytvoření bodu obnovení online pro virtuální počítač VMware selžou
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Zálohovat | Úlohy Vytvoření bodu obnovení online pro virtuální počítač VMware selžou. Aplikace DPM narazila při pokusu o získání informací sledování změn ve na chybu od VMware. ErrorCode-FileFaultFault (ID 33621) |  <ol><li> Resetujte CTK na VMware pro ovlivněné virtuální počítače.</li> <li>Ověřte, že se na VMware nepoužívá nezávislý disk.</li> <li>Zastavte ochranu pro ovlivněné virtuální počítače a znovu proveďte ochranu pomocí tlačítka **aktualizovat** . </li><li>Spusťte kopii pro ovlivněné virtuální počítače.</li></ol>|
+| Zálohovat | Úlohy Vytvoření bodu obnovení online pro virtuální počítač VMware selžou. Aplikace DPM narazila při pokusu o získání informací sledování změn ve na chybu od VMware. ErrorCode-FileFaultFault (ID 33621) |  <ol><li> Resetujte CTK na VMware pro ovlivněné virtuální počítače.</li> <li>Ověřte, že se na VMware nepoužívá nezávislý disk.</li> <li>Zastavte ochranu pro ovlivněné virtuální počítače a znovu **proveďte** ochranu pomocí tlačítka aktualizovat. </li><li>Spusťte kopii pro ovlivněné virtuální počítače.</li></ol>|
 
 
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Operace agenta se nezdařila, protože došlo k chybě komunikace se službou DPM Agent Coordinator na serveru.
@@ -102,7 +102,7 @@ Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporu
 | Zálohovat | Při běhu úlohy došlo k neočekávané chybě. Zařízení není připravené. | **Pokud Doporučená akce, která je zobrazená v produktu, nefunguje, proveďte následující kroky:** <br> <ul><li>Nastavte prostor úložiště stínové kopie na neomezený pro položky ve skupině ochrany a poté spusťte kontrolu konzistence.<br></li> ANI <li>Zkuste odstranit existující skupinu ochrany a vytvořit několik nových skupin. Každá nová skupina ochrany by měla obsahovat jednotlivou položku.</li></ul> |
 | Zálohovat | Pokud zálohujete pouze stav systému, ověřte, zda je v chráněném počítači dostatek volného místa pro uložení zálohy stavu systému. | <ol><li>Ověřte, že je na chráněném počítači nainstalovaná Zálohování Windows Serveru.</li><li>Ověřte, zda je v chráněném počítači dostatek místa pro stav systému. Nejjednodušší způsob, jak to ověřit, je přejít na chráněný počítač, otevřít Zálohování Windows Serveru, kliknout na výběr a pak vybrat BMR. Uživatelské rozhraní pak oznamuje, kolik místa je potřeba. Otevřete > možnost > **plán zálohování místních** **záloh**WSB**Vybrat nastavení** zálohování úplný Server (velikost se zobrazí). >  >  Tuto velikost použijte k ověření.</li></ol>
 | Zálohovat | Selhání zálohování pro BMR | Pokud je velikost BMR velká, přesuňte některé soubory aplikace na jednotku operačního systému a zkuste to znovu. |
-| Zálohovat | Možnost znovu nastavit ochranu virtuálního počítače VMware na novém serveru Microsoft Azure Backup nezobrazuje, jak je možné přidat. | Vlastnosti VMware jsou odkazovaly na starou a vyřazenou instanci serveru Microsoft Azure Backup. K vyřešení tohoto problému:<br><ol><li>V VCenter (ekvivalent SC-VMM), přejít na kartu **Souhrn** a pak na **vlastní atributy**.</li>  <li>Odstraňte starý název Microsoft Azure Backup serveru z hodnoty **DPMServer** .</li>  <li>Vraťte se na nový server Microsoft Azure Backup a upravte PG.  Po výběru tlačítka **aktualizovat** se virtuální počítač zobrazí se zaškrtávacím políčkem, jako je k dispozici pro přidání do ochrany.</li></ol> |
+| Zálohovat | Možnost znovu zapnout ochranu virtuálního počítače VMware na novém serveru Microsoft Azure Backup nezobrazuje, jak je možné přidat. | Vlastnosti VMware jsou odkazovaly na starou a vyřazenou instanci serveru Microsoft Azure Backup. K vyřešení tohoto problému:<br><ol><li>V VCenter (ekvivalent SC-VMM), přejít na kartu **Souhrn** a pak na **vlastní atributy**.</li>  <li>Odstraňte starý název Microsoft Azure Backup serveru z hodnoty **DPMServer** .</li>  <li>Vraťte se na nový server Microsoft Azure Backup a upravte PG.  Po výběru tlačítka **aktualizovat** se virtuální počítač zobrazí se zaškrtávacím políčkem, jako je k dispozici pro přidání do ochrany.</li></ol> |
 | Zálohovat | Při přístupu k souborům nebo sdíleným složkám došlo k chybě. | Zkuste upravit nastavení antivirového programu podle návrhu v článku na webu TechNet [Spusťte antivirový software na serveru DPM](https://technet.microsoft.com/library/hh757911.aspx).|
 
 
@@ -148,4 +148,4 @@ Snímek zdrojového svazku selhal kvůli nekonzistentní replice zdroje dat. | S
 
 Chybová zpráva | Doporučená akce |
 -- | --
-Zálohování nebylo úspěšné, protože se nepovedlo naklonovat repliku zálohy disku.| Zajistěte, aby všechny předchozí soubory replik zálohování disku (. vhdx) byly odpojené a během online zálohování neprobíhal žádný disk k zálohování na disk.
+Zálohování selhalo, protože se nepodařilo naklonovat repliku zálohy disku.| Zajistěte, aby všechny předchozí soubory replik zálohování disku (. vhdx) byly odpojené a během online zálohování neprobíhal žádný disk k zálohování na disk.

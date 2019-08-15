@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 653355af7dcb0b30c3deb444fcfe4b4ff76e7e77
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6c8f9c98d645f60ea9281d1ca2aa15731c9c1e80
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424113"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954997"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Shromažďovat data protokolu pomocí agenta Log Analytics
 
@@ -34,13 +34,21 @@ Před analýzou a působením shromážděných dat je nejprve nutné nainstalov
 
 Agent pro Linux a Windows komunikuje odchozí komunikaci s Azure Monitorovou službou přes port TCP 443 a pokud se počítač připojí přes Internet přes bránu firewall nebo proxy server a komunikuje přes Internet, prostudujte si níže uvedené požadavky, abyste pochopili konfiguraci sítě. požadovanou. Pokud vaše zásady zabezpečení IT neumožňují, aby se počítače v síti připojovaly k Internetu, můžete nastavit [bránu Log Analytics](gateway.md) a potom nakonfigurovat agenta tak, aby se připojil přes bránu k Azure monitor protokolů. Agent pak může získat informace o konfiguraci a odesílat shromážděná data v závislosti na tom, jaká pravidla shromažďování dat a řešení pro monitorování jste povolili v pracovním prostoru. 
 
-Pokud sledujete počítač s System Center Operations Manager 2012 R2 nebo novějším, může být u služby Azure Monitor více domácích, aby bylo možné shromažďovat data a přecházet ke službě a nadále je sledovat pomocí [Operations Manager](../../azure-monitor/platform/om-agents.md). U počítačů se systémem Linux agent nezahrnuje komponentu služby Health Service, protože má agenta pro Windows, a informace se shromažďují a zpracovává management server jejím jménem. Vzhledem k tomu, že se počítače se systémem Linux monitorují různě pomocí Operations Manager, nezískávají data ani shromažďují data přímo a předají se přes skupinu pro správu, jako je systém spravovaný agentem Windows. V důsledku toho tento scénář není podporován u počítačů se systémem Linux, které jsou součástí Operations Manager a je třeba nakonfigurovat počítač se systémem Linux tak, aby [hlásil do Operations Manager skupinu pro správu](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) a Log Analytics pracovní prostor ve dvou krocích.
+Při použití agentů Log Analytics ke shromažďování dat je potřeba pochopit následující informace, aby bylo možné naplánovat nasazení agenta:
 
-Windows agent může hlásit až čtyři pracovních prostorů Log Analytics, zatímco agenta pro Linux podporuje jenom sestavy do jednoho pracovního prostoru.  
+* Chcete-li shromažďovat data z agentů systému Windows, můžete [nakonfigurovat každého agenta tak, aby se nahlásily do jednoho nebo více pracovních prostorů](agent-windows.md), a to i v případě, že se hlásí do skupiny pro správu System Center Operations Manager Agent pro Windows může hlásit až čtyři pracovní prostory.
+* Agent pro Linux nepodporuje více domovských stránek a může nahlásit pouze jeden pracovní prostor.
+
+Pokud používáte System Center Operations Manager 2012 R2 nebo novější:
+
+* Každá skupina pro správu Operations Manager může být [připojená pouze k jednomu pracovnímu prostoru](om-agents.md).
+* Počítače se systémem Linux vykazující skupinu pro správu musí být nakonfigurovány tak, aby nahlásily přímo do Log Analytics pracovního prostoru. Pokud již počítače se systémem Linux hlásí přímo do pracovního prostoru a chcete je monitorovat pomocí Operations Manager, postupujte podle těchto kroků a nahlaste se [skupině pro správu Operations Manager](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group).
+* Log Analytics agenta pro Windows můžete nainstalovat do počítače s Windows a podávat ho do obou Operations Manager integrovaných v pracovním prostoru a v jiném pracovním prostoru.
 
 Agent pro Linux a Windows není dostupný jenom pro připojení k Azure Monitor, podporuje taky Azure Automation pro hostování role Hybrid Runbook Worker a dalších služeb, jako je [Change Tracking](../../automation/change-tracking.md), [Update Management](../../automation/automation-update-management.md)a [Azure Security Center ](../../security-center/security-center-intro.md). Další informace o roli pracovního procesu Hybrid Runbook Worker, naleznete v tématu [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
+
 Pro agenta Windows se oficiálně podporuje následující verze operačního systému Windows:
 
 * Windows Server. 2019

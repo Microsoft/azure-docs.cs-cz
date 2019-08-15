@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: gwallace
 ms.openlocfilehash: d6b16b859b29ef835bca75c5fca0ea1a9d35a306
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68358946"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Shromažďování čítačů výkonu pro cloudovou službu Azure
@@ -115,7 +115,7 @@ Další informace najdete v tématu [čítače výkonu systému v Application In
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
 > [!IMPORTANT]
-> I když jsou všechna tato data agregována do účtu úložiště, portál **neposkytuje nativní** způsob, jak data graficky vytvořit. Důrazně doporučujeme integrovat do své aplikace další diagnostické služby, například Application Insights.
+> I když jsou všechna tato data agregována do účtu úložiště, portál neposkytuje nativní způsob, jak data graficky vytvořit. Důrazně doporučujeme integrovat do své aplikace další diagnostické služby, například Application Insights.
 
 Azure Diagnostics rozšíření pro Cloud Services umožňuje určit čítače výkonu, které chcete shromáždit. Pokud chcete nastavit Azure Diagnostics, přečtěte si téma [Přehled monitorování cloudové služby](cloud-services-how-to-monitor.md#setup-diagnostics-extension).
 

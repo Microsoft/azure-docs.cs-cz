@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 07faf03ee9b12d1bf4a200de47d6df714c2248d9
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737147"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951847"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
@@ -138,6 +138,50 @@ Datový disk 1 | 4095 GB | 30 GB
 Datový disk 2 | 4095 GB | 0 GB
 
 Skutečná velikost virtuálního počítače v tomto případě je 17 GB + 30 GB + 0 GB = 47 GB. Tato chráněná velikost instance (47 GB) se bude základem pro měsíční faktura. Vzhledem k nárůstu množství dat ve virtuálním počítači se velikost chráněné instance, která se používá pro fakturaci, změní na odpovídající.
+
+<a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
+## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Omezené Public Preview: Zálohování virtuálního počítače s velikostí disků až do 30 TB
+
+Azure Backup teď podporuje omezené veřejné verze Public Preview větší a výkonnější [Azure Managed disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) o velikosti až 30 TB. Tato verze Preview poskytuje podporu pro spravované virtuální počítače na úrovni produkce.
+
+Bez jakéhokoli dopadu na probíhající zálohování se můžete bezproblémově zaregistrovat ve verzi Preview. Po registraci předplatného ve verzi Preview musí být všechny virtuální počítače s velikostí disků až 30 TB úspěšně zálohovány. Pro registraci ve verzi Preview:
+ 
+Z terminálu PowerShellu se zvýšenými oprávněními spusťte následující rutiny:
+
+1. Přihlaste se ke svému účtu Azure.
+
+    ```powershell
+    PS C:> Login-AzureRmAccount
+    ```
+
+2. Vyberte předplatné, které chcete zaregistrovat pro upgrade:
+
+    ```powershell
+    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    ```
+3. Zaregistrovat toto předplatné v programu Preview: 
+
+    ```powershell
+    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
+    ```
+
+    Počkejte 30 minut, než se předplatné zaregistruje ve verzi Preview. 
+
+ 4. Chcete-li zjistit stav, spusťte následující rutiny:
+
+    ```powershell
+    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
+    ```
+5. Když se odběr zobrazí jako zaregistrované, spusťte následující příkaz:
+    
+    ```powershell
+    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+    ```
+
+> [!NOTE]
+> V této verzi Preview se nepodporují šifrované virtuální počítače s disky většími než 4 TB.
+
+
 
 ## <a name="next-steps"></a>Další postup
 

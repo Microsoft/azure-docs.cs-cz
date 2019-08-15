@@ -3,7 +3,7 @@ title: Azure Active Directory schématu přihlašovacího protokolu v Azure Moni
 description: Popište schéma protokolu přihlášení Azure AD pro použití v Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e7ae7e90642a6adfd35e71765e2753334660c56
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7a82cc4da3b9f4f0c654c95b9889a8bf73fd8ec5
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261868"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989608"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretujte schéma přihlašovacích protokolů služby Azure AD v Azure Monitor
 
-Tento článek popisuje schéma protokolu přihlašování Azure Active Directory (Azure AD) v Azure Monitor. Většina informací, které se vztahují k přihlašování, je k dispozici v  atributu `records` Properties objektu.
+Tento článek popisuje schéma protokolu přihlašování Azure Active Directory (Azure AD) v Azure Monitor. Většina informací, které se vztahují k přihlašování, je k dispozici v atributu `records` Properties objektu.
 
 
 ```json
@@ -149,7 +149,7 @@ Tento článek popisuje schéma protokolu přihlašování Azure Active Director
 | Prostředku | Tato hodnota není mapována a můžete toto pole bezpečně ignorovat.  |
 | OperationName | Pro přihlášení je tato hodnota vždy *aktivita přihlášení*. |
 | OperationVersion | Verze REST API, kterou klient požaduje. |
-| Kategorie | U přihlášení se tato *hodnota vždy*přihlašuje. | 
+| Kategorie | U přihlášení se tato hodnota vždy přihlašuje. | 
 | TenantId | Identifikátor GUID tenanta, který je přidružený k protokolům. |
 | ResultType | Výsledkem operace přihlášení může být *úspěch* nebo neúspěch. | 
 | ResultSignature | Obsahuje kód chyby, pokud existuje, pro operaci přihlášení. |
@@ -167,7 +167,7 @@ Tento článek popisuje schéma protokolu přihlašování Azure Active Director
 | Location | Poskytuje umístění přihlašovací aktivity. |
 | Vlastnosti | Zobrazí seznam všech vlastností, které jsou spojeny s přihlášeními. Další informace najdete v tématu [Microsoft Graph Reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Toto schéma používá pro účely čitelnosti stejné názvy atributů jako přihlašovací prostředek.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Interpretace schématu protokolů auditu ve službě Azure Monitor](reference-azure-monitor-audit-log-schema.md)
 * [Další informace o diagnostických protokolech Azure](../../azure-monitor/platform/diagnostic-logs-overview.md)

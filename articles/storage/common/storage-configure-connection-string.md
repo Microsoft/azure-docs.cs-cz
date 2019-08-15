@@ -1,6 +1,6 @@
 ---
-title: Konfigurace připojovacího řetězce pro službu Azure Storage
-description: Nakonfigurujte připojovací řetězec pro účet úložiště Azure. Připojovací řetězec obsahuje informace potřebné k autorizaci přístupu k účtu úložiště z aplikace za běhu pomocí sdíleného klíče autorizace.
+title: Konfigurace připojovacího řetězce pro Azure Storage
+description: Konfigurace připojovacího řetězce pro účet služby Azure Storage. Připojovací řetězec obsahuje informace potřebné k autorizaci přístupu k účtu úložiště z vaší aplikace za běhu s použitím autorizace pomocí sdíleného klíče.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,20 +9,20 @@ ms.date: 06/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7c83b382f8aca3d8fda1c0de4785c51f3f3b1fc5
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 0f73871d8248b2f52bab5934eef03d883c72ed79
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302535"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985384"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Nakonfigurování připojovacích řetězců Azure Storage
 
-Připojovací řetězec obsahuje ověřovací informace požadované pro vaší aplikaci přístup k datům v účtu služby Azure Storage za běhu pomocí sdíleného klíče autorizace. Můžete nakonfigurovat připojovací řetězce:
+Připojovací řetězec zahrnuje informace o ověřování vyžadované pro vaši aplikaci pro přístup k datům v účtu Azure Storage za běhu s použitím autorizace pomocí sdíleného klíče. Připojovací řetězce můžete nakonfigurovat na:
 
-* Připojte k emulátoru úložiště Azure.
+* Připojte se k emulátoru úložiště Azure.
 * Přístup k účtu úložiště v Azure.
-* Přístup k zadaným prostředkům v Azure pomocí sdíleného přístupového podpisu (SAS).
+* Přístup k určeným prostředkům v Azure získáte prostřednictvím sdíleného přístupového podpisu (SAS).
 
 [!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
@@ -32,47 +32,47 @@ Připojovací řetězec obsahuje ověřovací informace požadované pro vaší 
 
 [!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
-## <a name="store-a-connection-string"></a>Store připojovací řetězec
+## <a name="store-a-connection-string"></a>Uložení připojovacího řetězce
 
-Vaše aplikace potřebuje pro přístup k připojovací řetězec za běhu k autorizaci požadavků na služby Azure Storage. Máte několik možností pro uložení připojovacího řetězce:
+Vaše aplikace potřebuje přístup k připojovacímu řetězci za běhu, aby bylo možné autorizovat požadavky na Azure Storage. Máte několik možností pro uložení připojovacího řetězce:
 
 * Připojovací řetězec můžete uložit do proměnné prostředí.
-* Je spuštěna aplikace na ploše nebo na zařízení můžete uložit připojovací řetězec **app.config** nebo **web.config** souboru. Přidat připojovací řetězec k **AppSettings** části v těchto souborech.
-* Aplikace běžící v rámci cloudové služby Azure můžete uložit připojovací řetězec [soubor schématu (.cscfg) konfigurace služby Azure](https://msdn.microsoft.com/library/ee758710.aspx). Přidat připojovací řetězec k **ConfigurationSettings** oddílu služby konfiguračního souboru.
+* Aplikace spuštěná na ploše nebo v zařízení může uložit připojovací řetězec do souboru **App. config** nebo **Web. config** . Přidejte připojovací řetězec do oddílu **appSettings** v těchto souborech.
+* Aplikace, která běží v cloudové službě Azure, může uložit připojovací řetězec do [souboru schématu konfigurace služby Azure (. cscfg)](https://msdn.microsoft.com/library/ee758710.aspx). Přidejte připojovací řetězec do části **ConfigurationSettings** konfiguračního souboru služby.
 
-Uložení připojovacího řetězce v konfiguračním souboru umožňuje snadno aktualizovat připojovací řetězec přepnutí mezi emulátorem úložiště a účtu služby Azure storage v cloudu. Stačí upravit připojovací řetězec tak, aby odkazoval na vaše cílové prostředí.
+Uložení připojovacího řetězce do konfiguračního souboru usnadňuje aktualizaci připojovacího řetězce pro přepínání mezi emulátorem úložiště a účtem služby Azure Storage v cloudu. Musíte upravit připojovací řetězec tak, aby odkazoval na cílové prostředí.
 
-Můžete použít [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) pro přístup k připojovacího řetězce za běhu bez ohledu na to, kde je aplikace spuštěná.
+Můžete použít [Configuration Manager Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) pro přístup k připojovacímu řetězci za běhu bez ohledu na to, kde je aplikace spuštěná.
 
-## <a name="configure-a-connection-string-for-the-storage-emulator"></a>Nakonfigurovat připojovací řetězec pro emulátor úložiště
+## <a name="configure-a-connection-string-for-the-storage-emulator"></a>Konfigurace připojovacího řetězce pro emulátor úložiště
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-Další informace o emulátoru úložiště najdete v tématu [použití emulátoru úložiště Azure pro vývoj a testování](storage-use-emulator.md).
+Další informace o emulátoru úložiště najdete v článku [použití emulátoru úložiště Azure pro vývoj a testování](storage-use-emulator.md).
 
-## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Nakonfigurovat připojovací řetězec pro účet úložiště Azure
+## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Konfigurace připojovacího řetězce pro účet služby Azure Storage
 
-Vytvoření připojovacího řetězce pro váš účet úložiště Azure, použijte následující formát. Označuje, zda chcete připojit k účtu úložiště prostřednictvím protokolu HTTPS (doporučeno) nebo HTTP, nahraďte `myAccountName` s názvem účtu úložiště, a nahraďte `myAccountKey` přístupovým klíčem vašeho účtu:
+Pro vytvoření připojovacího řetězce pro účet úložiště Azure použijte následující formát. Určete, jestli se chcete k účtu úložiště připojit prostřednictvím protokolu HTTPS (doporučeno) nebo http, nahraďte `myAccountName` názvem svého účtu úložiště a nahraďte `myAccountKey` ho klíčem pro přístup k účtu:
 
 `DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey`
 
-Připojovací řetězec může například vypadat podobně jako:
+Například váš připojovací řetězec může vypadat podobně jako:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-I když Azure Storage podporuje protokol HTTP i HTTPS v připojovacím řetězci *HTTPS se důrazně doporučuje*.
+I když Azure Storage podporuje HTTP i HTTPS v připojovacím řetězci, *důrazně se doporučuje protokol HTTPS*.
 
 > [!TIP]
-> Můžete najít účet úložiště připojovací řetězce v [webu Azure portal](https://portal.azure.com). Přejděte do **nastavení** > **přístupové klíče** v nabídce okno účet úložiště a zobrazte si připojovací řetězce pro obě primární a sekundární přístupové klíče.
+> Připojovací řetězce účtu úložiště najdete v [Azure Portal](https://portal.azure.com). V okně nabídky účtu úložiště přejděte na **Nastavení** > **přístupové klíče** a zobrazte připojovací řetězce pro primární i sekundární přístupový klíč.
 >
 
-## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Vytvoření připojovacího řetězce, pomocí sdíleného přístupového podpisu
+## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Vytvoření připojovacího řetězce pomocí sdíleného přístupového podpisu
 
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
-## <a name="create-a-connection-string-for-an-explicit-storage-endpoint"></a>Vytvoření připojovacího řetězce pro koncový bod explicitního úložiště
+## <a name="create-a-connection-string-for-an-explicit-storage-endpoint"></a>Vytvoření připojovacího řetězce pro explicitní koncový bod úložiště
 
-Můžete zadat koncové body služby explicitní v připojovacím řetězci namísto použití výchozí koncové body. Vytvoření připojovacího řetězce, který určuje explicitní koncový bod, zadejte koncový bod dokončení služby pro jednotlivé služby včetně specifikace protokolu (HTTPS (doporučeno) nebo HTTP), v následujícím formátu:
+Místo používání výchozích koncových bodů můžete v připojovacím řetězci zadat explicitní koncové body služby. Chcete-li vytvořit připojovací řetězec, který určuje explicitní koncový bod, zadejte úplný koncový bod služby pro každou službu, včetně specifikace protokolu (HTTPS (doporučeno) nebo HTTP) v následujícím formátu:
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -84,9 +84,9 @@ AccountName=myAccountName;
 AccountKey=myAccountKey
 ```
 
-Jeden scénář, kde budete chtít zadat explicitní koncový bod je, když jste změnili koncový bod služby Blob storage do [vlastní doménu](../blobs/storage-custom-domain-name.md). V takovém případě můžete zadat vlastní koncový bod pro úložiště objektů Blob v připojovacím řetězci. Volitelně můžete zadat výchozí koncové body pro ostatní služby, pokud je vaše aplikace používá.
+Jedním z situací, kdy byste měli chtít zadat explicitní koncový bod, je, že jste namapovali koncový bod služby Blob Storage na [vlastní doménu](../blobs/storage-custom-domain-name.md). V takovém případě můžete v připojovacím řetězci zadat vlastní koncový bod pro úložiště objektů BLOB. Volitelně můžete zadat výchozí koncové body pro ostatní služby, pokud je vaše aplikace používá.
 
-Tady je příklad připojovacího řetězce, který určuje explicitní koncový bod služby Blob service pro:
+Tady je příklad připojovacího řetězce, který určuje explicitní koncový bod pro Blob service:
 
 ```
 # Blob endpoint only
@@ -96,7 +96,7 @@ AccountName=storagesample;
 AccountKey=<account-key>
 ```
 
-Tento příklad určuje explicitní koncových bodů pro všechny služby, včetně vlastní domény pro službu Blob service:
+Tento příklad určuje explicitní koncové body pro všechny služby, včetně vlastní domény pro Blob service:
 
 ```
 # All service endpoints
@@ -109,17 +109,17 @@ AccountName=storagesample;
 AccountKey=<account-key>
 ```
 
-Hodnoty koncového bodu v připojovacím řetězci slouží k vytvoření žádosti o identifikátory URI ke službám úložiště a určovat formu všechny identifikátory URI, které jsou vráceny do vašeho kódu.
+Hodnoty koncového bodu v připojovacím řetězci slouží k vytvoření identifikátorů URI žádosti pro služby úložiště a k diktování formuláře všech identifikátorů URI, které jsou vráceny do kódu.
 
-Pokud jste změnili koncový bod úložiště na vlastní doménu a vynechat možnost tohoto koncového bodu z připojovacího řetězce, pak nebudete moci použít tento připojovací řetězec pro přístup k datům v dané služby v kódu.
+Pokud jste namapovali koncový bod úložiště na vlastní doménu a tento koncový bod vynecháte z připojovacího řetězce, nebudete moct tento připojovací řetězec použít pro přístup k datům v této službě z vašeho kódu.
 
 > [!IMPORTANT]
-> Hodnoty koncového bodu služby v připojovacích řetězců musí být ve správném formátu identifikátorů URI, včetně `https://` (doporučeno) nebo `http://`. Vzhledem k tomu, že úložiště Azure zatím nepodporuje protokol HTTPS pro vlastní domény, které *musí* zadejte `http://` pro libovolný identifikátor URI, který odkazuje na vlastní doménu pro koncový bod.
+> Hodnoty koncového bodu služby v připojovacích řetězcích musí být identifikátory URI ve `https://` správném formátu, včetně `http://`(doporučeno) nebo. Vzhledem k tomu, že Azure Storage ještě nepodporuje https pro vlastní domény , musíte `http://` zadat pro jakýkoliv identifikátor URI koncového bodu, který odkazuje na vlastní doménu.
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Vytvoření připojovacího řetězce s příponou koncového bodu
 
-Vytvoření připojovacího řetězce pro službu storage v oblasti nebo instance s přípony jiný koncový bod jako pro Azure China 21Vianet nebo Azure Government, použijte následující formát připojovacího řetězce. Označuje, zda chcete připojit k účtu úložiště prostřednictvím protokolu HTTPS (doporučeno) nebo HTTP, nahraďte `myAccountName` s názvem účtu úložiště, nahraďte `myAccountKey` se přístupový klíč účtu a nahradit `mySuffix` s příponou identifikátor URI:
+K vytvoření připojovacího řetězce pro službu úložiště v oblastech nebo instancích s různými příponami koncových bodů, například pro Azure Čína 21Vianet nebo Azure Government, použijte následující formát připojovacího řetězce. Určete, jestli se chcete k účtu úložiště připojit prostřednictvím protokolu HTTPS (doporučeno) nebo http, nahraďte `myAccountName` názvem svého účtu úložiště, nahraďte `myAccountKey` klíčem pro přístup k účtu a nahraďte `mySuffix` příponou URI:
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -128,7 +128,7 @@ AccountKey=myAccountKey;
 EndpointSuffix=mySuffix;
 ```
 
-Tady je příklad připojovacího řetězce pro služby storage v Azure China 21Vianet:
+Tady je příklad připojovacího řetězce pro služby úložiště v Azure Čína 21Vianet:
 
 ```
 DefaultEndpointsProtocol=https;
@@ -141,9 +141,8 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Použití emulátoru úložiště Azure pro vývoj a testování](storage-use-emulator.md)
-* [Průzkumníci služby Azure Storage](storage-explorers.md)
-* [Použití sdílených přístupových podpisů (SAS)](storage-dotnet-shared-access-signature-part-1.md)
-
+* [Azure Storage Explorer](storage-explorers.md)
+* [Použití sdílených přístupových podpisů (SAS)](storage-sas-overview.md)

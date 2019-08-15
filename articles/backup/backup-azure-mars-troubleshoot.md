@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: dacurwin
-ms.openlocfilehash: 12cc584b27134c5c109f1a95eb4ccf8a7b2f0c64
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 2ff5d760579c31c4bd11252e09da1cbb94576229
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689223"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954663"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -181,7 +181,7 @@ Aby operace agenta MARS uspěly ve složce mezipaměti, musí splňovat následu
 - [Zajistěte, aby nedocházelo k žádným jiným procesům (např. antivirový software), který omezuje přístup ke složce mezipaměti.](#another-process-or-antivirus-software-blocking-access-to-cache-folder)
 
 ### <a name="increase-shadow-copy-storage"></a>Zvýšení úložiště stínové kopie
-Pokud není dostatečný prostor úložiště stínové kopie potřebný k ochraně zdroje dat, může dojít k selhání operací zálohování. Tento problém vyřešíte tak, že v chráněném svazku vyměníte místo úložiště stínové kopie pomocí programu vssadmin, jak je znázorněno níže
+Pokud není dostatečný prostor úložiště stínové kopie potřebný k ochraně zdroje dat, může dojít k selhání operací zálohování. Chcete-li tento problém vyřešit, zvyšte velikost úložiště stínové kopie na chráněném svazku pomocí nástroje vssadmin, jak je znázorněno níže:
 - Ověřte aktuální prostor stínového úložiště z příkazového řádku se zvýšenými oprávněními:<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
 - Zvětšete prostor pro stín úložiště pomocí příkazu níže:<br/>

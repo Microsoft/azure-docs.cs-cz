@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: de13518173f21a0a802c37eb7be3cd6c4926d884
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ffc245402965cdcd62bb210d79bd95db5444f964
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689193"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954628"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure Monitor
 
 Azure Backup poskytuje [integrované funkce monitorování a upozorňování](backup-azure-monitoring-built-in-monitor.md) v trezoru Recovery Services. Tyto možnosti jsou k dispozici bez další infrastruktury pro správu. Tato integrovaná služba je však omezená v následujících situacích:
 
 - Pokud budete monitorovat data z několika trezorů Recovery Services napříč předplatnými
-- Pokud preferovaný kanál oznámení není *e-* mailem
+- Pokud preferovaný kanál oznámení není e-mailem
 - Pokud uživatelé chtějí výstrahy pro více scénářů
 - Pokud chcete zobrazit informace z místní komponenty, jako je například System Center Data Protection Manager v Azure, který portál není zobrazený v [**úlohách zálohování**](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault) nebo výstrahách [**zálohování**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)
 
@@ -212,7 +212,7 @@ Diagnostická data z trezoru se do Log Analyticsho pracovního prostoru napumpa 
 - V rámci všech řešení se úlohy zálohování ad hoc a obnovované úlohy hned po *dokončení*dostanou.
 - Pro všechna řešení kromě zálohování SQL se naplánované úlohy zálohování odešlou hned po *dokončení*.
 - U služby SQL Backup, protože k zálohování protokolů může docházet každých 15 minut, informace o všech dokončených úlohách plánovaného zálohování, včetně protokolů, jsou dávkové a vložené každých 6 hodin.
-- V rámci všech řešení jsou další informace, jako je například zálohovaná položka, zásada, body obnovení, úložiště a tak dále, vloženy alespoň *jednou denně.*
+- V rámci všech řešení se pro všechny ostatní informace, jako je například zálohovaná položka, zásada, body obnovení, úložiště a tak dále, je alespoň *jednou denně* nabízena.
 - Změna v konfiguraci zálohování (například změna zásady nebo zásady úprav) aktivuje vložení všech souvisejících informací o zálohování.
 
 ## <a name="using-the-recovery-services-vaults-activity-logs"></a>Použití protokolů aktivit trezoru Recovery Services
@@ -238,7 +238,7 @@ Chcete-li identifikovat příslušný protokol a vytvořit výstrahu:
 
    ![Nové pravidlo upozornění](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-Zde je prostředek Recovery Services samotným trezorem. Stejný postup je třeba opakovat u všech trezorů, ve kterých chcete být upozorňováni prostřednictvím protokolů aktivit. Podmínka nebude mít prahovou hodnotu, tečku nebo frekvenci, protože tato výstraha je založena na událostech. Jakmile se vygeneruje relevantní protokol aktivit, vyvolá se výstraha.
+Zde je prostředek Recovery Services samotným trezorem. Opakujte stejný postup u všech trezorů, ve kterých chcete být upozorňováni prostřednictvím protokolů aktivit. Podmínka nebude mít prahovou hodnotu, tečku nebo frekvenci, protože tato výstraha je založena na událostech. Jakmile se vygeneruje relevantní protokol aktivit, vyvolá se výstraha.
 
 ## <a name="using-log-analytics-to-monitor-at-scale"></a>Monitorování ve velkém měřítku pomocí Log Analytics
 

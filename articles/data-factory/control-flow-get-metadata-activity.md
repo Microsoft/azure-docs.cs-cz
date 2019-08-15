@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b819a990b9f607aaf70bf2e16a5857de3f7306cc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 320e92e45f319e394b5a38b3f1e8ef3f314920b8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827494"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966349"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získat aktivitu metadat v Azure Data Factory
 
@@ -138,8 +138,8 @@ Vlastnost | Popis | Požadováno
 -------- | ----------- | --------
 fieldList | Zobrazuje seznam typů požadovaných informací. Další informace najdete v části [Možnosti metadat](#metadata-options) na podporovaných metadatech. | Ano 
 integrován | Referenční datová sada, jejíž aktivitu metadat má být načtena aktivitou GetMetadata. Další informace najdete v části [podporované možnosti](#supported-capabilities) na podporovaných konektorech a v tématu konektoru informace o syntaxi datové sady. | Ano
-formatSettings | Použijte při použití datové sady typu Format (Parquet, DelimitedText). | Ne
-storeSettings | Použijte při použití datové sady typu Format (Parquet, DelimitedText). | Ne
+formatSettings | Použijte při použití typu DataSet typu Format. | Ne
+storeSettings | Použijte při použití typu DataSet typu Format. | Ne
 
 ## <a name="sample-output"></a>Ukázkový výstup
 
@@ -192,7 +192,7 @@ Výsledek GetMetadata se zobrazí ve výstupu aktivity. Níže jsou uvedeny dva 
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)

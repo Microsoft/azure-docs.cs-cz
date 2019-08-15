@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 7a69fc7c9077fa10ddf808f1cd953f6739eabe20
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 701972c32f3e80682e2a20d04b02bcd555532e08
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688728"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954979"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
 
-Tento článek popisuje, jak spravovat zálohy pro virtuální počítač Azure pomocí Azure Backup přes REST API. Nakonfigurujte ochranu poprvé pro dříve nechráněný virtuální počítač Azure, aktivujte zálohování na vyžádání pro chráněný virtuální počítač Azure a upravte vlastnosti zálohy zálohovaného virtuálního počítače pomocí REST API, jak je popsáno zde.
+Tento článek popisuje, jak spravovat zálohy pro virtuální počítač Azure pomocí Azure Backup přes REST API. Nakonfigurujte ochranu poprvé u dříve nechráněného virtuálního počítače Azure, aktivujte zálohování na vyžádání pro chráněný virtuální počítač Azure a upravte vlastnosti zálohy zálohovaného virtuálního počítače prostřednictvím REST API, jak je popsáno zde.
 
 V tématu [Vytvoření trezoru](backup-azure-arm-userestapi-createorupdatevault.md) a [Vytvoření zásad](backup-azure-arm-userestapi-createorupdatepolicy.md) REST API výukových kurzů pro vytváření nových trezorů a zásad.
 
@@ -98,7 +98,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>Výběr relevantního virtuálního počítače Azure
 
- Můžete potvrdit, že se ukládá do mezipaměti výpisem [všech chráněných položek](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) v rámci předplatného a vyhledat požadovaný virtuální počítač v odpovědi. [Odezva této operace](#example-responses-1) také poskytuje informace o tom, jak služby obnovení IDENTIFIKUJÍ virtuální počítač.  Až budete s vzorem obeznámeni, můžete tento krok přeskočit a přímo přejít na [Povolení ochrany](#enabling-protection-for-the-azure-vm).
+ Můžete potvrdit, že se ukládá do mezipaměti výpisem [všech chráněných položek](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) v rámci předplatného a vyhledat požadovaný virtuální počítač v odpovědi. [Odezva této operace](#example-responses-1) také poskytuje informace o tom, jak Recovery Services identifikuje virtuální počítač.  Až budete s vzorem obeznámeni, můžete tento krok přeskočit a přímo přejít na [Povolení ochrany](#enabling-protection-for-the-azure-vm).
 
 Tato operace je operace *Get* .
 
@@ -393,7 +393,7 @@ Vzhledem k tomu, že úloha zálohování je dlouhodobě spuštěná operace, je
 
 ### <a name="changing-the-policy-of-protection"></a>Změna zásad ochrany
 
-Pokud chcete změnit zásadu, se kterou je virtuální počítač chráněný, můžete použít stejný formát jako [Povolení ochrany](#enabling-protection-for-the-azure-vm). V [textu žádosti](#example-request-body) jenom zadejte nové ID zásady a odešlete žádost. Pro například: Pokud chcete změnit zásady testVM z ' DefaultPolicy ' na ' ProdPolicy ', zadejte v textu žádosti ID ' ProdPolicy '.
+Pokud chcete změnit zásadu, se kterou je virtuální počítač chráněný, můžete použít stejný formát jako [Povolení ochrany](#enabling-protection-for-the-azure-vm). V [textu žádosti](#example-request-body) jenom zadejte nové ID zásady a odešlete žádost. Příklad: Pokud chcete změnit zásady testVM z ' DefaultPolicy ' na ' ProdPolicy ', zadejte v textu žádosti ID ' ProdPolicy '.
 
 ```http
 {
@@ -450,7 +450,7 @@ Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokon
 |204. obsah     |         |  Obsah       |
 |202 přijato     |         |     Přijato    |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Obnovte data ze zálohy virtuálního počítače Azure](backup-azure-arm-userestapi-restoreazurevms.md).
 

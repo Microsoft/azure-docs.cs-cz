@@ -1,5 +1,5 @@
 ---
-title: Povolit transparentní šifrování dat pro Stretch Database – Azure | Dokumentace Microsoftu
+title: Povolit transparentní šifrování dat pro Stretch Database – Azure | Microsoft Docs
 description: Povolit transparentní šifrování dat (TDE) pro SQL Server Stretch Database v Azure
 services: sql-server-stretch-database
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: 61f556476958484b78b9c3dff2583eb6db043637
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "66003043"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Povolit transparentní šifrování dat (TDE) pro Stretch Database v Azure
@@ -27,26 +27,26 @@ ms.locfileid: "66003043"
 >
 >
 
-Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivých aktivit pomocí provádí v reálném čase šifrování a dešifrování databáze, přidružené zálohy a soubory protokolů transakcí v klidovém stavu bez nutnosti změny aplikace.
+Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivých aktivit tím, že provádí šifrování a dešifrování databáze, přidružených záloh a souborů protokolu transakcí v reálném čase bez nutnosti změny aplikace.
 
-Transparentní šifrování dat šifruje úložiště celou databázi pomocí symetrický klíč s názvem šifrovací klíč databáze. Šifrovací klíč databáze je chráněno certifikátem integrovaného serveru. Certifikát integrovaného serveru je jedinečný pro každý server Azure. Microsoft automaticky otočí tyto certifikáty nejméně každých 90 dní. Obecný popis transparentní šifrování dat, naleznete v tématu [Transparentní šifrování dat].
+TDE šifruje úložiště celé databáze pomocí symetrického klíče, který se nazývá šifrovací klíč databáze. Šifrovací klíč databáze je chráněn integrovaným certifikátem serveru. Integrovaný certifikát serveru je pro každý server Azure jedinečný. Microsoft tyto certifikáty automaticky přetočí nejméně každých 90 dnů. Obecný popis TDE naleznete v tématu [Transparentní šifrování dat].
 
 ## <a name="enabling-encryption"></a>Povolení šifrování
-Povolit transparentní šifrování dat pro Azure migrovat databázi, která ukládá data z databáze povolenou funkcí Stretch SQL serveru, proveďte následující akce:
+Pokud chcete povolit TDE pro databázi Azure, která ukládá data migrovaná z databáze SQL Server s povolenou funkcí Stretch, proveďte následující akce:
 
-1. Otevřít v databázi [webu Azure portal](https://portal.azure.com)
-2. V okně databáze klikněte na tlačítko **nastavení** tlačítko
-3. Vyberte **transparentní šifrování dat** možnost ![][1]
-4. Vyberte **na** nastavení a pak vyberte **uložit**
+1. Otevřete databázi v [Azure Portal](https://portal.azure.com)
+2. V okně databáze klikněte na tlačítko **Nastavení** .
+3. Vybrat možnost **transparentní šifrování dat**![][1]
+4. Vyberte nastavení **zapnuto** a pak vyberte **Uložit** .
    ![][2]
 
-## <a name="disabling-encryption"></a>Zakázáním šifrování
-Zakázat transparentní šifrování dat pro Azure migrovat databázi, která ukládá data z databáze povolenou funkcí Stretch SQL serveru, proveďte následující akce:
+## <a name="disabling-encryption"></a>Zakázání šifrování
+Pokud chcete zakázat TDE pro databázi Azure, která ukládá data migrovaná z databáze SQL Server s povolenou funkcí Stretch, proveďte následující akce:
 
-1. Otevřít v databázi [webu Azure portal](https://portal.azure.com)
-2. V okně databáze klikněte na tlačítko **nastavení** tlačítko
-3. Vyberte **transparentní šifrování dat** možnost
-4. Vyberte **vypnout** nastavení a pak vyberte **uložit**
+1. Otevřete databázi v [Azure Portal](https://portal.azure.com)
+2. V okně databáze klikněte na tlačítko **Nastavení** .
+3. Vybrat možnost **transparentní šifrování dat**
+4. Vyberte nastavení **vypnuto** a pak vyberte **Uložit** .
 
 <!--Anchors-->
 [Transparentní šifrování dat]: https://msdn.microsoft.com/library/bb934049.aspx

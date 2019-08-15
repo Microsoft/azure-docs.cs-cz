@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 07/05/2019
-ms.openlocfilehash: 33c844374d6d2b8e64cde6c7c9633e54a292d95f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/12/2019
+ms.openlocfilehash: 515e971214244cdd14955cc269a5f005cb93734f
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567288"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967928"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Časová pásma ve Azure SQL Database Managed instance
 
@@ -83,10 +83,7 @@ Můžete obnovit záložní soubor nebo importovat data do spravované instance 
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
-<del>Když provedete obnovení k určitému bodu v čase, doba obnovení do je interpretována jako čas UTC. Toto nastavení zabrání jakékoli nejednoznačnosti v důsledku letního času a jeho potenciálních změn.<del>
-
- >[!WARNING]
-  > Aktuální chování není na řádku s výše uvedeným příkazem a doba obnovení do je interpretována jako časové pásmo zdrojové spravované instance, kde jsou automaticky zálohy databáze odebírány. Pracujeme na tom, aby se toto chování povedlo k interpretaci daného bodu v čase, jako je čas UTC. Další podrobnosti najdete v tématu [známé problémy](sql-database-managed-instance-timezone.md#known-issues) .
+Když provedete obnovení k určitému bodu v čase, doba obnovení do je interpretována jako čas UTC. Tímto způsobem se vyhnete nejasnostem způsobeným letním časem a jeho potenciálním změnám.
 
 ### <a name="auto-failover-groups"></a>Skupiny automatického převzetí služeb při selhání
 

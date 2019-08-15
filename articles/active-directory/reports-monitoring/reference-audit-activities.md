@@ -3,7 +3,7 @@ title: Referenční informace k aktivitám auditování Azure Active Directory (
 description: Získejte přehled o aktivitách auditování, které můžete protokolovat v protokolech auditu v Azure Active Directory (Azure AD).
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/24/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66dd017e8f78f1e93c96262b42dc084c165cdef7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a687823d1344ca11864523cb9187f48d7373fd41
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60285488"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989636"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 
-Pomocí sestav Azure Active Directory (Azure AD) můžete získat informace, které potřebujete ke zjištění stavu vašeho prostředí.
+Pomocí sestav Azure Active Directory (Azure AD) můžete získat informace, které potřebujete k určení toho, jak vaše prostředí dělá.
 
 Architektura generování sestav v Azure AD se skládá z následujících komponent:
 
 - **Sestavy aktivit** 
-    - [Přihlášení](concept-sign-ins.md) – poskytuje informace o využití spravovaných aplikací a uživatel aktivit přihlašování
+    - [Přihlášení](concept-sign-ins.md) – poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
     - [Protokoly auditu](concept-audit-logs.md) – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. 
     
 - **Sestavy zabezpečení** 
@@ -47,30 +47,30 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Kontroly přístupu|Ukončení kontroly přístupu|
 |Kontroly přístupu|Přidání schvalovatele k žádosti o schválení|
 |Kontroly přístupu|Přidání revidujícího ke kontrole přístupu|
-|Kontroly přístupu|Použití kontroly přístupu|
-|Kontroly přístupu|Vytvoření kontroly přístupu|
+|Kontroly přístupu|Použít kontrolu přístupu|
+|Kontroly přístupu|Vytvořit kontrolu přístupu|
 |Kontroly přístupu|Vytvoření programu|
 |Kontroly přístupu|Vytvoření žádosti o schválení|
-|Kontroly přístupu|Odstranění kontroly přístupu|
+|Kontroly přístupu|Odstranit kontrolu přístupu|
 |Kontroly přístupu|Odstranění programu|
 |Kontroly přístupu|Připojení k řízení aplikací|
 |Kontroly přístupu|Registrace ke kontrolám přístupu Azure AD|
 |Kontroly přístupu|Odebrání revidujícího z kontroly přístupu|
 |Kontroly přístupu|Žádost a zastavení kontroly|
-|Kontroly přístupu|Žádost o použití výsledku kontroly|
+|Kontroly přístupu|Požádat o použití výsledků kontroly|
 |Kontroly přístupu|Kontrola členství v rolích RBAC|
 |Kontroly přístupu|Kontrola přiřazení aplikace|
 |Kontroly přístupu|Kontrola členství ve skupinách|
 |Kontroly přístupu|Kontrola žádosti o schválení žádosti|
 |Kontroly přístupu|Zrušení připojení k řízení aplikací|
 |Kontroly přístupu|Aktualizace kontroly přístupu|
-|Kontroly přístupu|Aktualizovat stav registrace kontrol přístupu Azure AD|
-|Kontroly přístupu|Aktualizace nastavení e-mailového oznámení o kontrole přístupu|
-|Kontroly přístupu|Aktualizace přístupu k revizi počet opakování nastavení|
-|Kontroly přístupu|Doba trvání opakování kontroly přístupu ve dnech nastavení aktualizace|
-|Kontroly přístupu|Aktualizace opakování end nastavení typu kontroly přístupu|
-|Kontroly přístupu|Aktualizace opakování nastavení typu kontroly přístupu|
-|Kontroly přístupu|Aktualizace nastavení připomenutí kontroly přístupu|
+|Kontroly přístupu|Aktualizovat stav zprovoznění kontrol přístupu Azure AD|
+|Kontroly přístupu|Aktualizovat nastavení doby trvání e-mailového oznámení přístupu k revizi|
+|Kontroly přístupu|Nastavení aktualizace počtu opakování kontrol přístupu|
+|Kontroly přístupu|Nastavení aktualizace doby trvání opakování kontrol přístupu ve dnech|
+|Kontroly přístupu|Nastavení aktualizace typu konce opakování kontrol přístupu|
+|Kontroly přístupu|Nastavení aktualizace typu opakování kontrol přístupu|
+|Kontroly přístupu|Aktualizovat nastavení připomenutí přístupu k revizi|
 |Kontroly přístupu|Aktualizace programu|
 |Kontroly přístupu|Aktualizace žádosti o schválení|
 |Kontroly přístupu|Uživatel zakázán|
@@ -91,14 +91,14 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 
 |Kategorie auditu|Aktivita|
 |---|---|
-|Správa aplikací|Přidání aplikace|
+|Správa aplikací|Přidat aplikaci|
 |Správa aplikací|Přidání vlastníka do aplikace|
 |Správa aplikací|Přidání vlastníka k instančnímu objektu|
 |Správa aplikací|Přidání zásad k instančnímu objektu|
 |Správa adresářů|Přidání instančního objektu|
 |Správa adresářů|Přidání přihlašovacích údajů instančního objektu|
 |Správa adresářů|Souhlas s aplikací|
-|Správa adresářů|Odstranění aplikace|
+|Správa adresářů|Odstranit aplikaci|
 |Správa adresářů|Trvalé odstranění aplikace|
 |Správa adresářů|Odebrání OAuth2PermissionGrant|
 |Správa adresářů|Odebrání přiřazení role aplikace z instančního objektu|
@@ -135,119 +135,119 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa aplikací|AdminPolicyDatas-SetResources|
 |Správa aplikací|AdminUserJourneys-GetResources|
 |Správa aplikací|AdminUserJourneys-RemoveResources|
-|Authentication|AdminUserJourneys-SetResources|
-|Authentication|Create IdentityProvider|
-|Authentication|Vytvoření aplikace V1|
-|Authentication|Vytvoření aplikace V2|
-|Authentication|Vytvoření vlastních domén v tenantovi|
-|Autorizace|Vytvoření nového objektu AdminUserJourney|
-|Autorizace|Vytvoření kódu JSON lokalizovaného prostředku|
-|Autorizace|Vytvoření nového vlastního zprostředkovatele identity|
-|Autorizace|Vytvoření nového zprostředkovatele identity|
-|Autorizace|Vytvoření nebo aktualizace prostředku adresáře B2C|
-|Autorizace|Vytvoření zásad|
-|Autorizace|Vytvoření zásad trustFramework|
-|Autorizace|Vytvoření zásad trustFramework s konfigurovatelnou předponou|
-|Autorizace|Vytvoření atributu uživatele|
-|Autorizace|CreateTrustFrameworkPolicy|
-|Autorizace|Vytvoří nebo aktualizuje nový objekt AdminUserJourney|
-|Autorizace|Odstranění zprostředkovatele identity|
-|Autorizace|Vytvoření objektu IdentityProvider|
-|Autorizace|Odstranění aplikace V1|
-|Autorizace|Odstranění aplikace V2|
-|Autorizace|Odstranění udělení oprávnění aplikací V2|
-|Autorizace|Odstranění prostředku adresáře B2C|
-|Autorizace|Odstranění kontejneru klíčů CPIM|
-|Autorizace|Odstranění zásad trustFramework|
-|Autorizace|Odstranění atributu uživatele|
-|Autorizace|Povolení funkce B2C|
-|Autorizace|Získání prostředků adresáře B2C v předplatném|
-|Autorizace|Získání vlastního zprostředkovatele identity|
-|Autorizace|Získání zprostředkovatele identity|
-|Autorizace|Získání aplikací V1 a V2|
-|Autorizace|Získání aplikace V1|
-|Autorizace|Získání aplikací V1|
-|Autorizace|Získání aplikace V2|
-|Autorizace|Získání aplikací V2|
-|Autorizace|Získání prostředku adresáře B2C|
-|Autorizace|Získání seznamu vlastních domén v tenantovi|
-|Autorizace|Získání cesty uživatele|
-|Autorizace|Získání povolených deklarací identity aplikace pro cestu uživatele|
-|Autorizace|Získání povolených deklarací identity s vlastním potvrzením pro cestu uživatele|
-|Autorizace|Získání povolených deklarací identity s vlastním potvrzením pro zásady|
-|Autorizace|Získání seznamu dostupných výstupních deklarací identity|
-|Autorizace|Získání definic obsahu pro cestu uživatele|
-|Autorizace|Získání zprostředkovatelů identity pro konkrétní tok správy|
-|Autorizace|Získání metadat aktivního klíče kontejneru klíčů ve formátu JWK|
-|Autorizace|Získání seznamu všech toků správy|
-|Autorizace|Získání seznamu značek pro všechny toky správy všech uživatelů|
-|Autorizace|Získání seznamu tenantů pro uživatele|
-|Autorizace|Získání deklarací identity s vlastním potvrzením pro místní účty|
-|Autorizace|Získání kódu JSON lokalizovaného prostředku|
-|Autorizace|Získání operací poskytovatele prostředků Microsoft.AzureActiveDirectory|
-|Autorizace|Získání zásad|
-|Autorizace|Získání zásady|
-|Autorizace|Získání vlastností prostředku tenanta|
-|Autorizace|Získání seznamu podporovaných zprostředkovatelů identity|
-|Autorizace|Získání seznamu podporovaných zprostředkovatelů identity cesty uživatele|
-|Autorizace|Získání informací o tenantovi|
-|Autorizace|Získání povolených funkcí tenanta|
-|Autorizace|Získání seznamu vlastních zprostředkovatelů identity definovaných v tenantovi|
-|Autorizace|Získání seznamu zprostředkovatelů identity definovaných v tenantovi|
-|Autorizace|Získání seznamu místních zprostředkovatelů identity definovaných v tenantovi|
-|Autorizace|Získání podrobností o tenantovi pro uživatele pro vytvoření prostředku|
-|Autorizace|Získání seznamu tenantů|
-|Autorizace|Získání objektu tenantDomains|
-|Autorizace|Získání výchozí podporované kultury pro CPIM|
-|Autorizace|Získání podrobností o toku správy|
-|Autorizace|Získání seznamu objektů UserJourney pro tohoto tenanta|
-|Autorizace|Získání sady dostupných podporovaných kultur pro CPIM|
-|Autorizace|Získání zásad trustFramework|
-|Autorizace|Získání zásad trustFramework ve formátu XML|
-|Autorizace|Získání atributu uživatele|
-|Autorizace|Získání atributů uživatele|
-|Autorizace|Získání seznamu cest uživatele|
-|Autorizace|GetIEFPolicies|
-|Autorizace|GetIdentityProviders|
-|Autorizace|GetTrustFrameworkPolicy|
-|Autorizace|Získá kontejner klíčů CPIM ve formátu JWK|
-|Autorizace|Získá seznam kontejnerů klíčů v tenantovi|
-|Autorizace|Získá typ tenanta|
-|Autorizace|MigrateTenantMetadata|
-|Autorizace|Oprava objektu IdentityProvider|
-|Autorizace|PutTrustFrameworkPolicy|
-|Autorizace|PutTrustFrameworkpolicy|
-|Autorizace|Odebrání cesty uživatele|
-|Autorizace|Obnovení zálohy kontejneru klíčů CPIM|
-|Autorizace|Načtení udělení oprávnění aplikace V2|
-|Autorizace|Načtení instančních objektů aplikace V2 v aktuálním tenantovi|
-|Autorizace|Aktualizace vlastního zprostředkovatele identity|
-|Autorizace|Aktualizace zprostředkovatele identity|
-|Autorizace|Aktualizace místního zprostředkovatele identity|
-|Autorizace|Aktualizace aplikace V1|
-|Autorizace|Aktualizace aplikace V2|
-|Autorizace|Aktualizace udělení oprávnění aplikace V2|
-|Autorizace|Aktualizace zásad|
-|Autorizace|Aktualizace atributu uživatele|
-|Autorizace|Nahrání šifrovaného klíče CPIM|
-|Autorizace|Autorizace uživatele: Rozhraní API je zakázané pro tenanta|
-|Autorizace|Autorizace uživatele: Uživatel má udělený přístup jako "správce Tenanta.|
-|Autorizace|Autorizace uživatele: Uživatel má udělená přístupová práva 'Ověřené uživatele'|
-|Autorizace|Ověření povolení funkce B2C|
-|Autorizace|Ověřte, jestli je povolené funkce|
-|Autorizace|Vytvoření programu|
-|Autorizace|Odstranění programu|
-|Autorizace|Připojení k řízení aplikací|
-|Autorizace|Registrace ke kontrolám přístupu Azure AD|
-|Autorizace|Zrušení připojení k řízení aplikací|
-|Autorizace|Aktualizace programu|
-|Autorizace|Zákaz jednotného přihlašování na počítači|
-|Autorizace|Zákaz jednotného přihlašování na počítači pro konkrétní doménu|
-|Autorizace|Zákaz proxy aplikací|
-|Autorizace|Zákaz předávacího ověřování|
-|Autorizace|Povolení jednotného přihlašování na počítači|
+|Ověřování|AdminUserJourneys-SetResources|
+|Ověřování|Create IdentityProvider|
+|Ověřování|Vytvoření aplikace V1|
+|Ověřování|Vytvoření aplikace V2|
+|Ověřování|Vytvoření vlastních domén v tenantovi|
+|Authorization|Vytvoření nového objektu AdminUserJourney|
+|Authorization|Vytvoření kódu JSON lokalizovaného prostředku|
+|Authorization|Vytvoření nového vlastního zprostředkovatele identity|
+|Authorization|Vytvoření nového zprostředkovatele identity|
+|Authorization|Vytvoření nebo aktualizace prostředku adresáře B2C|
+|Authorization|Vytvořit zásadu|
+|Authorization|Vytvoření zásad trustFramework|
+|Authorization|Vytvoření zásad trustFramework s konfigurovatelnou předponou|
+|Authorization|Vytvoření atributu uživatele|
+|Authorization|CreateTrustFrameworkPolicy|
+|Authorization|Vytvoří nebo aktualizuje nový objekt AdminUserJourney|
+|Authorization|Odstranění zprostředkovatele identity|
+|Authorization|Vytvoření objektu IdentityProvider|
+|Authorization|Odstranění aplikace V1|
+|Authorization|Odstranění aplikace V2|
+|Authorization|Odstranění udělení oprávnění aplikací V2|
+|Authorization|Odstranění prostředku adresáře B2C|
+|Authorization|Odstranění kontejneru klíčů CPIM|
+|Authorization|Odstranění zásad trustFramework|
+|Authorization|Odstranění atributu uživatele|
+|Authorization|Povolení funkce B2C|
+|Authorization|Získání prostředků adresáře B2C v předplatném|
+|Authorization|Získání vlastního zprostředkovatele identity|
+|Authorization|Získání zprostředkovatele identity|
+|Authorization|Získání aplikací V1 a V2|
+|Authorization|Získání aplikace V1|
+|Authorization|Získání aplikací V1|
+|Authorization|Získání aplikace V2|
+|Authorization|Získání aplikací V2|
+|Authorization|Získat prostředek adresáře B2C|
+|Authorization|Získání seznamu vlastních domén v tenantovi|
+|Authorization|Získání cesty uživatele|
+|Authorization|Získání povolených deklarací identity aplikace pro cestu uživatele|
+|Authorization|Získání povolených deklarací identity s vlastním potvrzením pro cestu uživatele|
+|Authorization|Získání povolených deklarací identity s vlastním potvrzením pro zásady|
+|Authorization|Získání seznamu dostupných výstupních deklarací identity|
+|Authorization|Získání definic obsahu pro cestu uživatele|
+|Authorization|Získání zprostředkovatelů identity pro konkrétní tok správy|
+|Authorization|Získání metadat aktivního klíče kontejneru klíčů ve formátu JWK|
+|Authorization|Získání seznamu všech toků správy|
+|Authorization|Získání seznamu značek pro všechny toky správy všech uživatelů|
+|Authorization|Získání seznamu tenantů pro uživatele|
+|Authorization|Získání deklarací identity s vlastním potvrzením pro místní účty|
+|Authorization|Získání kódu JSON lokalizovaného prostředku|
+|Authorization|Získání operací poskytovatele prostředků Microsoft.AzureActiveDirectory|
+|Authorization|Získání zásad|
+|Authorization|Získání zásady|
+|Authorization|Získání vlastností prostředku tenanta|
+|Authorization|Získání seznamu podporovaných zprostředkovatelů identity|
+|Authorization|Získání seznamu podporovaných zprostředkovatelů identity cesty uživatele|
+|Authorization|Získání informací o tenantovi|
+|Authorization|Získání povolených funkcí tenanta|
+|Authorization|Získání seznamu vlastních zprostředkovatelů identity definovaných v tenantovi|
+|Authorization|Získání seznamu zprostředkovatelů identity definovaných v tenantovi|
+|Authorization|Získání seznamu místních zprostředkovatelů identity definovaných v tenantovi|
+|Authorization|Získání podrobností o tenantovi pro uživatele pro vytvoření prostředku|
+|Authorization|Získání seznamu tenantů|
+|Authorization|Získání objektu tenantDomains|
+|Authorization|Získání výchozí podporované kultury pro CPIM|
+|Authorization|Získání podrobností o toku správy|
+|Authorization|Získání seznamu objektů UserJourney pro tohoto tenanta|
+|Authorization|Získání sady dostupných podporovaných kultur pro CPIM|
+|Authorization|Získání zásad trustFramework|
+|Authorization|Získání zásad trustFramework ve formátu XML|
+|Authorization|Získání atributu uživatele|
+|Authorization|Získání atributů uživatele|
+|Authorization|Získání seznamu cest uživatele|
+|Authorization|GetIEFPolicies|
+|Authorization|GetIdentityProviders|
+|Authorization|GetTrustFrameworkPolicy|
+|Authorization|Získá kontejner klíčů CPIM ve formátu JWK|
+|Authorization|Získá seznam kontejnerů klíčů v tenantovi|
+|Authorization|Získá typ tenanta|
+|Authorization|MigrateTenantMetadata|
+|Authorization|Oprava objektu IdentityProvider|
+|Authorization|PutTrustFrameworkPolicy|
+|Authorization|PutTrustFrameworkpolicy|
+|Authorization|Odebrání cesty uživatele|
+|Authorization|Obnovení zálohy kontejneru klíčů CPIM|
+|Authorization|Načtení udělení oprávnění aplikace V2|
+|Authorization|Načtení instančních objektů aplikace V2 v aktuálním tenantovi|
+|Authorization|Aktualizace vlastního zprostředkovatele identity|
+|Authorization|Aktualizace zprostředkovatele identity|
+|Authorization|Aktualizovat místní IDP|
+|Authorization|Aktualizace aplikace V1|
+|Authorization|Aktualizace aplikace V2|
+|Authorization|Aktualizace udělení oprávnění aplikace V2|
+|Authorization|Aktualizace zásady|
+|Authorization|Aktualizace atributu uživatele|
+|Authorization|Nahrání šifrovaného klíče CPIM|
+|Authorization|Autorizace uživatele: Rozhraní API je pro tenanta tenanta zakázané.|
+|Authorization|Autorizace uživatele: Uživateli byl udělen přístup jako oprávnění tenant admin.|
+|Authorization|Autorizace uživatele: Uživateli byla udělena přístupová práva ověřeného uživatele.|
+|Authorization|Ověření povolení funkce B2C|
+|Authorization|Ověřte, jestli je funkce povolená.|
+|Authorization|Vytvoření programu|
+|Authorization|Odstranění programu|
+|Authorization|Připojení k řízení aplikací|
+|Authorization|Registrace ke kontrolám přístupu Azure AD|
+|Authorization|Zrušení připojení k řízení aplikací|
+|Authorization|Aktualizace programu|
+|Authorization|Zákaz jednotného přihlašování na počítači|
+|Authorization|Zákaz jednotného přihlašování na počítači pro konkrétní doménu|
+|Authorization|Zakázat Proxy aplikací|
+|Authorization|Zákaz předávacího ověřování|
+|Authorization|Povolení jednotného přihlašování na počítači|
 |Správa adresářů|Povolení jednotného přihlašování na počítači pro konkrétní doménu|
-|Správa adresářů|Povolení proxy aplikací|
+|Správa adresářů|Povolit Proxy aplikací|
 |Správa adresářů|Povolení předávacího ověřování|
 |Správa adresářů|Vytvoření vlastních domén v tenantovi|
 |Správa adresářů|Povolení funkce B2C|
@@ -258,7 +258,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Získání objektu tenantDomains|
 |Klíč|Získá typ tenanta|
 |Klíč|Ověření povolení funkce B2C|
-|Klíč|Ověřte, jestli je povolené funkce|
+|Klíč|Ověřte, jestli je funkce povolená.|
 |Klíč|Přidání partnera ke společnosti|
 |Klíč|Přidání neověřené domény|
 |Klíč|Přidání ověřené domény|
@@ -288,25 +288,25 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Resource|Nastavení vlastností Rights Management|
 |Resource|Aktualizace společnosti|
 |Resource|Aktualizace nastavení společnosti|
-|Resource|Aktualizace domény|
-|Resource|Ověření domény|
+|Resource|Aktualizovat doménu|
+|Resource|Ověřit doménu|
 |Resource|Ověření domény s e-mailovým ověřením|
-|Resource|Onboarding|
-|Resource|Aktualizace nastavení výstrah|
+|Resource|Připojování|
+|Resource|Aktualizovat nastavení výstrah|
 |Resource|Aktualizace nastavení týdenního přehledu|
 |Resource|Zákaz zpětného zápisu hesel pro adresář|
 |Resource|Povolení zpětného zápisu hesel pro adresář|
 |Resource|Přidání přiřazení role aplikace ke skupině|
-|Resource|Přidání skupiny|
-|Resource|Přidání člena do skupiny|
+|Resource|Přidat skupinu|
+|Resource|Přidá člena do skupiny|
 |Resource|Přidání vlastníka do skupiny|
 |Resource|Vytvoření nastavení skupin|
-|Resource|Odstranění skupiny|
+|Resource|Odstranit skupinu|
 |Resource|Odstranění nastavení skupin|
 |Resource|Ukončení použití skupinové licence pro uživatele|
 |Resource|Trvalé odstranění skupiny|
 |Resource|Odebrání přiřazení role aplikace ze skupiny|
-|Resource|Odebrání člena ze skupiny|
+|Resource|Odebrat člena ze skupiny|
 |Resource|Odebrání vlastníka ze skupiny|
 |Resource|Obnovení skupiny|
 |Resource|Nastavení skupinové licence|
@@ -315,17 +315,17 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Resource|Aktivace přepočtu skupinové licence|
 |Resource|Aktualizace skupiny|
 |Resource|Aktualizace nastavení skupin|
-|Resource|Přidání člena|
+|Resource|Přidat člena|
 |Resource|Vytvořit skupinu|
 |Resource|Odstranit skupinu|
-|Resource|Odebrání člena|
-|Resource|Aktualizace skupiny|
+|Resource|Odebrat člena|
+|Resource|Aktualizovat skupinu|
 |Resource|Schválení čekající žádosti o připojení ke skupině|
 |Resource|Zrušení čekající žádosti o připojení ke skupině|
 |Resource|Vytvoření zásad správy životního cyklu|
 |Resource|Odstranění čekající žádosti o připojení ke skupině|
 |Resource|Odmítnutí čekající žádosti o připojení ke skupině|
-|Resource|Obnovení skupiny|
+|Resource|Prodloužit platnost skupiny|
 |Resource|Žádost o připojení ke skupině|
 |Resource|Nastavení vlastností dynamických skupin|
 |Resource|Aktualizace zásad správy životního cyklu|
@@ -356,10 +356,10 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa aplikací|Zpracované hromadné pozvánky|
 |Správa aplikací|Odeslané hromadné pozvánky|
 |Správa aplikací|Přidání vlastníka k zásadám|
-|Správa aplikací|Přidání zásad|
-|Správa aplikací|Odstranění zásad|
+|Správa aplikací|Přidat zásady|
+|Správa aplikací|Odstranit zásadu|
 |Správa aplikací|Odebrání přihlašovacích údajů zásad|
-|Správa aplikací|Aktualizace zásad|
+|Správa aplikací|Aktualizace zásady|
 |Správa aplikací|Nastavení zásad registrace MFA|
 |Správa aplikací|Nastavení zásad rizika přihlašování|
 |Správa aplikací|Nastavení zásad rizika uživatele|
@@ -384,7 +384,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Vytvoření nového vlastního zprostředkovatele identity|
 |Správa adresářů|Vytvoření nového zprostředkovatele identity|
 |Správa adresářů|Vytvoření nebo aktualizace prostředku adresáře B2C|
-|Správa adresářů|Vytvoření zásad|
+|Správa adresářů|Vytvořit zásadu|
 |Správa adresářů|Vytvoření zásad trustFramework|
 |Správa adresářů|Vytvoření zásad trustFramework s konfigurovatelnou předponou|
 |Správa adresářů|Vytvoření atributu uživatele|
@@ -398,7 +398,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Získání prostředků adresáře B2C v předplatném|
 |Správa adresářů|Získání vlastního zprostředkovatele identity|
 |Správa adresářů|Získání zprostředkovatele identity|
-|Správa adresářů|Získání prostředku adresáře B2C|
+|Správa adresářů|Získat prostředek adresáře B2C|
 |Správa adresářů|Získání cesty uživatele|
 |Správa adresářů|Získání povolených deklarací identity aplikace pro cestu uživatele|
 |Správa adresářů|Získání povolených deklarací identity s vlastním potvrzením pro cestu uživatele|
@@ -433,16 +433,16 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa zásad|GetIdentityProviders|
 |Správa zásad|GetTrustFrameworkPolicy|
 |Resource|MigrateTenantMetadata|
-|Resource|Přesunutí prostředků|
+|Resource|Přesunout prostředky|
 |Resource|Oprava objektu IdentityProvider|
 |Resource|PutTrustFrameworkPolicy|
 |Resource|PutTrustFrameworkpolicy|
 |Resource|Odebrání cesty uživatele|
 |Resource|Aktualizace vlastního zprostředkovatele identity|
 |Resource|Aktualizace zprostředkovatele identity|
-|Resource|Aktualizace místního zprostředkovatele identity|
+|Resource|Aktualizovat místní IDP|
 |Resource|Aktualizace prostředku adresáře B2C|
-|Resource|Aktualizace zásad|
+|Resource|Aktualizace zásady|
 |Resource|Aktualizace stavu předplatného|
 |Správa rolí|Aktualizace atributu uživatele|
 |Správa rolí|Ověření přesunu prostředků|
@@ -450,13 +450,13 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa rolí|Přidání konfigurace zařízení|
 |Správa rolí|Přidání registrovaného vlastníka zařízení|
 |Správa rolí|Přidání registrovaných uživatelů zařízení|
-|Správa rolí|Odstranění zařízení|
+|Správa rolí|Odstranit zařízení|
 |Správa rolí|Odstranění konfigurace zařízení|
 |Správa rolí|Zařízení už nevyhovuje předpisům|
 |Správa rolí|Zařízení už není spravované|
 |Správa uživatelů|Odebrání registrovaného vlastníka ze zařízení|
 |Správa uživatelů|Odebrání registrovaných uživatelů ze zařízení|
-|Správa uživatelů|Aktualizace zařízení|
+|Správa uživatelů|Aktualizovat zařízení|
 |Správa uživatelů|Aktualizace konfigurace zařízení|
 |Správa uživatelů|Přidání oprávněného člena do role|
 |Správa uživatelů|Přidání člena do role|
@@ -464,7 +464,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa uživatelů|Přidání role ze šablony|
 |Správa uživatelů|Přidání vymezeného člena do role|
 |Správa uživatelů|Odebrání oprávněného člena z role|
-|Správa uživatelů|Odebrání člena z role|
+|Správa uživatelů|Odebrat člena z role|
 |Správa uživatelů|Odebrání přiřazení role z definice role|
 |Správa uživatelů|Odebrání vymezeného člena z role|
 |Správa uživatelů|Aktualizace role|
@@ -475,14 +475,14 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa uživatelů|ActivationCanceled|
 |Správa uživatelů|ActivationRequested|
 |Správa uživatelů|Přidáno|
-|Správa uživatelů|Přiřazení|
+|Správa uživatelů|Přiřadit|
 
 
 ## <a name="identity-protection"></a>Ochrana identit
 
 |Kategorie auditu|Aktivita|
 |---|---|
-|Správa adresářů|Zvýšení oprávnění|
+|Správa adresářů|Zvýšit|
 |Správa adresářů|Odebráno|
 |Správa adresářů|Změny nastavení role|
 |Ostatní|ScanAlertsNow|
@@ -493,8 +493,8 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa zásad|Ukončení kontroly přístupu|
 |Správa zásad|Přidání schvalovatele k žádosti o schválení|
 |Správa zásad|Přidání revidujícího ke kontrole přístupu|
-|Správa uživatelů|Použití kontroly přístupu|
-|Správa uživatelů|Vytvoření kontroly přístupu|
+|Správa uživatelů|Použít kontrolu přístupu|
+|Správa uživatelů|Vytvořit kontrolu přístupu|
 
 
 ## <a name="invited-users"></a>Pozvaní uživatelé
@@ -502,9 +502,9 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Kategorie auditu|Aktivita|
 |---|---|
 |Ostatní|Vytvoření žádosti o schválení|
-|Ostatní|Odstranění kontroly přístupu|
+|Ostatní|Odstranit kontrolu přístupu|
 |Správa uživatelů|Odebrání revidujícího z kontroly přístupu|
-|Správa uživatelů|Žádost o použití výsledku kontroly|
+|Správa uživatelů|Požádat o použití výsledků kontroly|
 |Správa uživatelů|Žádost a zastavení kontroly|
 |Správa uživatelů|Kontrola přiřazení aplikace|
 |Správa uživatelů|Kontrola členství ve skupinách|
@@ -517,11 +517,11 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |---|---|
 |Správa skupin|Kontrola žádosti o schválení žádosti|
 |Správa skupin|Aktualizace kontroly přístupu|
-|Správa skupin|Aktualizace nastavení e-mailového oznámení o kontrole přístupu|
-|Správa skupin|Aktualizace přístupu k revizi počet opakování nastavení|
-|Správa skupin|Doba trvání opakování kontroly přístupu ve dnech nastavení aktualizace|
-|Správa uživatelů|Aktualizace opakování end nastavení typu kontroly přístupu|
-|Správa uživatelů|Aktualizace opakování nastavení typu kontroly přístupu|
+|Správa skupin|Aktualizovat nastavení doby trvání e-mailového oznámení přístupu k revizi|
+|Správa skupin|Nastavení aktualizace počtu opakování kontrol přístupu|
+|Správa skupin|Nastavení aktualizace doby trvání opakování kontrol přístupu ve dnech|
+|Správa uživatelů|Nastavení aktualizace typu konce opakování kontrol přístupu|
+|Správa uživatelů|Nastavení aktualizace typu opakování kontrol přístupu|
 
 
 
@@ -536,9 +536,9 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |PIM|ActivationRequested|
 |PIM|Přidáno|
 |PIM|AddedOutsidePIM|
-|PIM|Přiřazení|
+|PIM|Přiřadit|
 |PIM|DismissAlert|
-|PIM|Zvýšení oprávnění|
+|PIM|Zvýšit|
 |PIM|ReactivateAlert|
 |PIM|Odebráno|
 |PIM|RemovedOutsidePIM|
@@ -557,13 +557,13 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Kategorie auditu|Aktivita|
 |---|---|
 |Správa skupin|Resetování hesla uživatele|
-|Správa skupin|Obnovení uživatele|
+|Správa skupin|Obnovit uživatele|
 |Správa skupin|Nastavení vynucené změny hesla uživatele|
 |Správa skupin|Nastavení správce uživatelů|
 |Správa skupin|Nastavení povolení metadat tokenu OAuth uživatele|
 |Správa skupin|Aktualizace časového razítka StsRefreshTokenValidFrom|
 |Správa skupin|Aktualizace externích tajných klíčů|
-|Správa skupin|Aktualizace uživatele|
+|Správa skupin|Aktualizuje uživatele|
 |Správa skupin|Správce generuje dočasné heslo|
 
 
@@ -593,13 +593,13 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Podmínky použití|Odstranit souhlas|
 |Podmínky použití|Odstranění podmínek použití|
 |Podmínky použití|Úprava podmínky použití|
-|Podmínky použití|Vypršení platnosti podmínky použití|
+|Podmínky použití|Vypršení podmínek použití|
 |Podmínky použití|Pevné odstranění podmínek použití|
 |Podmínky použití|Publikování podmínek použití|
 |Podmínky použití|Zrušení publikování podmínek použití|
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přehled sestav Azure AD](overview-reports.md).
 - [Sestava protokolů auditu](concept-audit-logs.md). 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 70107311b189e1692b902812c4ccbbd91c3695a1
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828280"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952119"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci VMware
 
@@ -90,8 +90,8 @@ Zařízení Azure Migrate potřebuje připojení k Internetu.
 **Adresa URL** | **Podrobnosti**  
 --- | --- |
 *.portal.azure.com  | V Azure Portal přejděte na Azure Migrate.
-*.windows.net | Přihlaste se ke svému předplatnému Azure.
-*.microsoftonline.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Přihlaste se ke svému předplatnému Azure.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
 management.azure.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
 dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
 *.vault.azure.net | Správa tajných kódů v Azure Key Vault.
@@ -104,7 +104,7 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 
 **zařízení** | **připojení**
 --- | ---
-Zařízení | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:```https://<appliance-ip-or-name>:44368``` <br/><br/>Odchozí připojení na portu 443, která odesílají metadata zjišťování a výkonu Azure Migrate.
+Zařízení | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:```https://<appliance-ip-or-name>:44368``` <br/><br/>Odchozí připojení na portu 443, 5671 a 5672 pro odeslání metadat zjišťování a výkonu pro Azure Migrate.
 Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohla shromažďovat metadata o konfiguraci a výkonu pro posouzení. <br/><br/> Ve výchozím nastavení se zařízení připojuje ke vCenter na portu 443. Pokud Server vCenter naslouchá na jiném portu, můžete změnit port při nastavení zjišťování.
 
 
@@ -175,8 +175,8 @@ Zařízení Azure Migrate potřebuje připojení k Internetu.
 **Adresa URL** | **Podrobnosti**  
 --- | ---
 *.portal.azure.com | V Azure Portal přejděte na Azure Migrate.
-*.windows.net | Přihlaste se ke svému předplatnému Azure.
-*.microsoftonline.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Přihlaste se ke svému předplatnému Azure.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
 management.azure.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
 dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
 *.vault.azure.net | Správa tajných kódů v Azure Key Vault.
@@ -349,6 +349,6 @@ Připojit po migraci – Windows | Připojení k virtuálním počítačům Azur
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený. Kromě toho přidejte veřejnou IP adresu pro virtuální počítač. |  
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Připravte se na](tutorial-prepare-vmware.md) vyhodnocení a migraci VMware.

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 8d4a7a1b176a0c232c4461c7a8cfc2b1e3faddd6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 08/12/2019
+ms.openlocfilehash: a01f6cbb20d084864d3a7f64aa8c90d2bc3405f2
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638377"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977076"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Čtení replik v Azure Database for MariaDB
 
@@ -34,7 +34,33 @@ Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují přímo na hlavn�
 
 Funkce replika čtení používá asynchronní replikaci. Tato funkce není určena pro scénáře synchronní replikace. Mezi hlavním serverem a replikou bude měřitelné zpoždění. Data v replice nakonec budou konzistentní s daty v hlavní databázi. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit.
 
-Čtení replik může zlepšit váš plán zotavení po havárii. Pokud dojde k regionální havárii a váš hlavní server není dostupný, můžete svoji úlohu nasměrovat na repliku v jiné oblasti. Chcete-li to provést, umožněte, aby replika přijímala zápisy pomocí funkce zastavit replikaci. Pak můžete svou aplikaci přesměrovat pomocí aktualizace připojovacího řetězce. Další informace najdete v části [zastavení replikace](#stop-replication) .
+
+## <a name="cross-region-replication"></a>Replikace mezi oblastmi
+Z hlavního serveru můžete vytvořit repliku pro čtení v jiné oblasti. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii, nebo pro uživatele přiblížit data.
+
+> [!IMPORTANT]
+> Replikace mezi oblastmi je aktuálně ve verzi Public Preview.
+
+Hlavní server můžete mít v libovolné [Azure Database for MariaDB oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb).  Hlavní server může mít repliku ve své spárované oblasti nebo oblastech univerzální repliky.
+
+### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
+Repliku pro čtení můžete vždy vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází váš hlavní server. Jedná se o oblasti univerzální repliky:
+
+Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, západní Evropa, Západní USA, západní USA 2.
+
+
+### <a name="paired-regions"></a>Spárované oblasti
+Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení ve spárované oblasti Azure vašeho hlavního serveru. Pokud neznáte pár vaší oblasti, můžete získat další informace v [článku spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+
+Pokud používáte repliky mezi jednotlivými oblastmi pro plánování zotavení po havárii, doporučujeme vytvořit repliku v spárované oblasti namísto jedné z ostatních oblastí. Spárované oblasti zabraňují souběžným aktualizacím a přiřazují fyzickou izolaci a zasídlí dat.  
+
+Je však třeba vzít v úvahu omezení: 
+
+* Dostupnost podle oblastí: Azure Database for MariaDB je k dispozici v Západní USA 2, Francii Central, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
+    
+* Jednosměrné páry: Některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih a US Gov – Virginie. 
+   To znamená, že hlavní server v Západní Indie může vytvořit repliku v Jižní Indie. Hlavní server v Jižní Indie ale nemůže vytvořit repliku v Západní Indie. Důvodem je to, že sekundární oblast Západní Indie je Jižní Indie, ale sekundární oblast Jižní Indie není Západní Indie.
+
 
 ## <a name="create-a-replica"></a>Vytvoření repliky
 
@@ -130,7 +156,7 @@ Následující parametry serveru jsou uzamčené na hlavním serveru i na server
 - Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie MariaDB pro replikaci.
 - Zajistěte, aby tabulky hlavního serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi hlavními a replikami.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure Portal](howto-read-replicas-portal.md)
 - Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure CLI](howto-read-replicas-cli.md) .

@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 3ad599182191e41ea43d38260692a7ab46e1af6f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f3386d04cd3316b38a094524d0d5d4f3c5ab36bb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844997"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986843"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Použití Azure CDN pro přístup k objektům blob s vlastními doménami přes HTTPS
 
@@ -40,7 +40,7 @@ Pokud chcete povolit protokol HTTPS pro svůj vlastní koncový bod služby Blob
 
 ## <a name="shared-access-signatures"></a>Sdílené přístupové podpisy
 
-Ve výchozím nastavení zakazují koncovým bodům služby Blob Storage anonymní přístup pro čtení. Pokud je váš koncový bod služby Blob Storage nakonfigurovaný tak, aby zakázal anonymní přístup pro čtení, poskytněte v každé žádosti do vaší vlastní domény token [sdíleného přístupového podpisu](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) . Další informace najdete v tématu [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](storage-manage-access-to-resources.md).
+Ve výchozím nastavení zakazují koncovým bodům služby Blob Storage anonymní přístup pro čtení. Pokud je váš koncový bod služby Blob Storage nakonfigurovaný tak, aby zakázal anonymní přístup pro čtení, poskytněte v každé žádosti do vaší vlastní domény token [sdíleného přístupového podpisu](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) . Další informace najdete v tématu [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](storage-manage-access-to-resources.md).
 
 Azure CDN nerespektují žádná omezení přidaná do tokenu sdíleného přístupového podpisu. Například platnost všech tokenů sdíleného přístupového podpisu vyprší. Přístup k obsahu s podpisem sdíleného přístupu s vypršenou platností můžete i nadále používat, dokud nebude obsah vymazán z Azure CDN hraničních uzlů. To, jak dlouho budou data uložena v mezipaměti Azure CDN, můžete řídit nastavením hlavičky odpovědi mezipaměti. Další informace najdete v tématu [Správa vypršení platnosti objektů blob Azure Storage v Azure CDN](../../cdn/cdn-manage-expiration-of-blob-content.md).
 

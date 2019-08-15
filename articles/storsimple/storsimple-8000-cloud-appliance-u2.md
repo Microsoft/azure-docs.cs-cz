@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62117320"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965733"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Nasazení a správa řešení StorSimple Cloud Appliance v Azure (s aktualizací Update 3 a novější)
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -124,7 +126,7 @@ Provedením následujících kroků nakonfigurujte a zaregistrujte řešení Sto
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Krok 3: (Volitelné) Upravit nastavení konfigurace zařízení
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Krok 3: Volitelné Úprava nastavení konfigurace zařízení
 
 Následující část popisuje nastavení konfigurace zařízení potřebná pro řešení StorSimple Cloud Appliance, pokud chcete použít protokol CHAP nebo StorSimple Snapshot Manager nebo změnit heslo správce zařízení.
 
@@ -166,7 +168,7 @@ Provedením následujících kroků nakonfigurujte vzdálenou správu řešení 
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-the-cloud-appliance"></a>Krok 2: Vzdálený přístup ke cloudovému zařízení
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>Krok 2: Vzdálený přístup ke cloudovým zařízením
 
 Po povolení vzdálené správy na cloudovém zařízení se pomocí vzdálené komunikace Windows PowerShellu připojte k zařízení z jiného virtuálního počítače ve stejné virtuální síti. Můžete se připojit například z hostitelského virtuálního počítače, který jste nakonfigurovali a použili pro připojení k iSCSI. Ve většině nasazení otevřete veřejný koncový bod pro přístup k hostitelskému virtuálnímu počítači, který můžete použít pro přístup ke cloudovému zařízení.
 

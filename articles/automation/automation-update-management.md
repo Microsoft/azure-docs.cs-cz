@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1bb437511ed89de626489516ce5b06664ace6fba
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 51ef55247d3262d8707403ed09cc8643403dda23
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741843"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952969"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -84,6 +84,7 @@ V následující tabulce je uveden seznam podporovaných operačních systémů:
 
 > [!NOTE]
 > Sady škálování virtuálních počítačů Azure je možné spravovat pomocí Update Management. Update Management pracuje na samotných instancích a ne na základní imagi. Aktualizace budete muset naplánovat přírůstkově, protože neaktualizujete všechny instance virtuálních počítačů najednou.
+> Uzly VMSS se dají přidat pomocí následujících kroků v části [onbaord a non-Azure Machine](automation-tutorial-installed-software.md#onboard-a-non-azure-machine).
 
 ### <a name="unsupported-client-types"></a>Nepodporované klientské typy
 
@@ -93,6 +94,7 @@ Následující tabulka uvádí operační systémy, které nejsou podporovány:
 |---------|---------|
 |Klient Windows     | Klientské operační systémy (například Windows 7 a Windows 10) nejsou podporovány.        |
 |Windows Server 2016 Nano Server     | Nepodporuje se.       |
+|Uzly služby Azure Kubernetes | Nepodporuje se. Použijte postup opravy podrobně popsaný v části [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md) .|
 
 ### <a name="client-requirements"></a>Požadavky na klienta
 
@@ -359,6 +361,10 @@ Následující adresy jsou vyžadovány konkrétně pro Update Management. Komun
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
+
+U počítačů s Windows musíte taky u všech koncových bodů vyžadovaných nástrojem web Windows Update umožňovat provoz.  Aktualizovaný seznam požadovaných koncových bodů můžete najít v [problémech souvisejících s HTTP/proxy serverem](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Pokud máte místní [web Windows Update Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musíte taky na serveru, který určíte v [klíči služby WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry), povolený provoz.
+
+U počítačů se systémem Red Hat Linux uveďte požadované koncové body na [IP adresách pro servery RHUI Content Delivery](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) . Další distribuce pro Linux najdete v dokumentaci pro poskytovatele.
 
 Další informace o portech, které Hybrid Runbook Worker vyžaduje, najdete v tématu [porty rolí Hybrid Worker](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 

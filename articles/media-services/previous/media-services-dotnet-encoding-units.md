@@ -1,6 +1,6 @@
 ---
-title: Škálovat přidáním jednotek pro kódování – Azure zpracování médií |  Dokumentace Microsoftu
-description: Přečtěte si postup pro přidání jednotky kódování s využitím .NET
+title: Škálování zpracování médií přidáním jednotek kódování – Azure |  Microsoft Docs
+description: Naučte se, jak přidat jednotky kódování pomocí .NET
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;milangada;
-ms.openlocfilehash: 65b647a375ecbe70f7f29af5b09827f1c34dcd6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: milangada
+ms.openlocfilehash: 9d393e07008d981834d9deb48ded73995366d7e4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217155"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016569"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>Jak škálovat kódování pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -33,11 +34,11 @@ ms.locfileid: "61217155"
 
 ## <a name="overview"></a>Přehled
 > [!IMPORTANT]
-> Přečtěte si [přehled](media-services-scale-media-processing-overview.md) zobrazíte další informace o škálování zpracování médií.
+> Nezapomeňte si projít [Přehled](media-services-scale-media-processing-overview.md) a získat další informace o škálování zpracování multimédií.
 > 
 > 
 
-Změna typu rezervované jednotky a počet pomocí sady .NET SDK jednotky rezervované pro kódování, postupujte takto:
+Pokud chcete změnit typ rezervované jednotky a počet jednotek rezervovaných pro kódování pomocí sady .NET SDK, udělejte toto:
 
     IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
     encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
@@ -51,7 +52,7 @@ Změna typu rezervované jednotky a počet pomocí sady .NET SDK jednotky rezerv
 
 ## <a name="opening-a-support-ticket"></a>Otevření lístku podpory
 
-Ve výchozím nastavení každý účet Media Services můžete škálovat až 10 S2 nebo rezervované jednotky médií S3 (použité položky) nebo 25 použité položky S1 a 5 na vyžádání jednotky rezervované pro streamování. Vyšší limit můžete požádat tak, že otevřete lístek podpory.
+Ve výchozím nastavení se každý účet Media Services může škálovat až na 10 jednotek nebo jednotek rezervovaných pro média (MRUs) nebo na 25 S1 MRUs a na jednotky rezervované pro streamování na vyžádání. Vyšší limit si můžete vyžádat otevřením lístku podpory.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: d81d8aa299333890de61cf0c8ee75be76ca31bf2
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 8b812ea053cb8e9da7cd3ef021ab6b74196d36ca
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688747"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954965"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásad služby Azure Recovery Services Backup pomocí REST API
 
@@ -36,7 +36,7 @@ Postup vytvoření zásady zálohování pro trezor služby Azure Recovery Servi
 - Uchovávání informací lze definovat pro "denní", "týdenní", "měsíční", "roční" body zálohování.
 - "týdenní" odkazuje na zálohu v určitý den v týdnu, "měsíční" znamená zálohování v určitý den v měsíci a "roční" odkazuje na zálohu v určitý den v roce.
 - Doba uchovávání "měsíčně", "ročních" bodů zálohy se označuje jako "LongTermRetention".
-- Při vytvoření trezoru se vytvoří taky zásada pro zálohování virtuálních počítačů Azure označované jako DefaultPolicy a dá se použít k zálohování virtuálních počítačů Azure.
+- Při vytvoření trezoru se vytvoří taky zásada pro zálohování virtuálních počítačů Azure označované jako "DefaultPolicy" a dá se použít k zálohování virtuálních počítačů Azure.
 
 Pokud chcete vytvořit nebo aktualizovat zásady Azure Backup, použijte následující operaci *vložení* .
 

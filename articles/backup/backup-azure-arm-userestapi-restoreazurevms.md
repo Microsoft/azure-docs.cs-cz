@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 6525be97d9317791f39cb51a8fa819d38bd49c73
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: bdbceec2f1d0a900ffdb392d8a0505ce11419036
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689435"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954890"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení virtuálních počítačů Azure pomocí REST API
 
@@ -177,7 +177,7 @@ Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokon
 
 #### <a name="example-responses"></a>Příklady odpovědí
 
-Jakmile odešlete identifikátor *URI* pro aktivaci disků pro obnovení, počáteční odpověď je 202 (přijato) s hlavičkou umístění nebo Azure-Async-Header.
+Jakmile odešlete identifikátor URI pro aktivaci disků pro obnovení, počáteční odpověď je 202 (přijato) s hlavičkou umístění nebo Azure-Async-Header.
 
 ```http
 HTTP/1.1 202 Accepted

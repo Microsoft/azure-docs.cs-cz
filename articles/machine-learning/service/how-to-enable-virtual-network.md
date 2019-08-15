@@ -1,7 +1,7 @@
 ---
 title: Spouštění experimentů a odvození ve virtuální síti
 titleSuffix: Azure Machine Learning service
-description: Spouštění experimentů Machine Learning a odvození zabezpečení v rámci služby Azure Virtual Network. Naučte se vytvářet výpočetní cíle pro školení modelů a postup při odvozování v rámci virtuální sítě. Seznamte se s požadavky na zabezpečené virtuální sítě, třeba na vyžádání příchozích a odchozích portů.
+description: Spusťte experimenty strojového učení a odvození zabezpečení v rámci služby Azure Virtual Network. Naučte se, jak vytvořit výpočetní cíle pro školení modelů a jak spustit odvození v rámci virtuální sítě. Přečtěte si o požadavcích na zabezpečené virtuální sítě, jako je třeba vyžadování příchozích a odchozích portů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,89 +10,106 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: 9bd56984f088ab16fc5d80c588afce2cdc31240b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bd70957671c11137465225aa3bbb046b12a2c650
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848119"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966903"
 ---
-# <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Zabezpečené spouštění experimentů a odvození v rámci virtuální sítě Azure
+# <a name="run-experiments-and-inference-securely-within-an-azure-virtual-network"></a>Zabezpečené spouštění experimentů a odvození v rámci virtuální sítě Azure
 
-V tomto článku se dozvíte, jak spouštět experimenty a odvozování ve virtuální síti. Virtuální síť funguje jako hranice zabezpečení a izoluje prostředky Azure od veřejného Internetu. Virtuální síť Azure se taky můžete připojit k místní síti. Umožňuje bezpečně vyškolit modely a přistupovat k nasazeným modelům pro odvození. Odvození modelu nebo Bodové hodnocení je fáze, ve které se nasazený model používá pro předpověď, nejčastěji pro produkční data.
+V tomto článku se dozvíte, jak spouštět experimenty a odvozování modelů v rámci virtuální sítě. Virtuální síť funguje jako hranice zabezpečení a izoluje prostředky Azure od veřejného Internetu. Virtuální síť Azure se taky můžete připojit k místní síti. Připojením sítí můžete bezpečně prosazovat modely a přistupovat k nasazeným modelům pro odvození. Odvození nebo model bodování je fáze, během které se nasazený model používá pro předpověď, nejčastěji pro produkční data.
 
-Služba Azure Machine Learning spoléhá na další služby Azure pro výpočetní prostředky. Výpočetní prostředky (cíle výpočtů) se používají ke školení a nasazení modelů. Tyto výpočetní cíle je možné vytvořit ve virtuální síti. Například můžete použít Microsoft Data Science Virtual Machine pro výuku modelu a pak model nasadit do služby Azure Kubernetes Service (AKS). Další informace o virtuálních sítích najdete v tématu [Přehled Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+Služba Azure Machine Learning spoléhá na další služby Azure pro výpočetní prostředky. Výpočetní prostředky nebo výpočetní cíle se používají ke školení a nasazení modelů. Cíle lze vytvořit v rámci virtuální sítě. Můžete například použít Microsoft Data Science Virtual Machine k učení modelu a nasazení modelu do služby Azure Kubernetes Service (AKS). Další informace o virtuálních sítích najdete v tématu [Přehled služby Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
-Tento článek poskytuje podrobné informace o **pokročilém nastavení zabezpečení**a není nutný pro základní nebo experimentální případy použití. Oddíly v tomto článku obsahují informace o konfiguraci různých scénářů, ale nemusí být dokončeny v daném pořadí nebo v celém rozsahu.
+Tento článek poskytuje podrobné informace o *pokročilých nastaveních zabezpečení*, informace, které nejsou nutné pro základní nebo experimentální případy použití. Některé části tohoto článku obsahují informace o konfiguraci různých scénářů. Nemusíte doplňovat pokyny v daném pořadí nebo v celém rozsahu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Vytvořte [pracovní prostor](how-to-manage-workspace.md) služby Azure Machine Learning, pokud ho ještě nemáte. V tomto dokumentu se předpokládá, že máte zkušenosti s virtuálními sítěmi Azure a obecně se jedná o sítě IP. Tento dokument také předpokládá, že jste vytvořili virtuální síť a podsíť pro použití s výpočetními prostředky. Pokud nejste obeznámeni s Azure Virtual Networks, přečtěte si následující články, které vám pomohou o této službě:
+Vytvořte [pracovní prostor](how-to-manage-workspace.md) služby Azure Machine Learning, pokud ho ještě nemáte. V tomto článku se předpokládá, že obecně znáte službu Azure Virtual Network i síť IP. Článek také předpokládá, že jste vytvořili virtuální síť a podsíť pro použití s výpočetními prostředky. Pokud nejste obeznámeni se službou Azure Virtual Network, můžete se o ní dozvědět v následujících článcích:
 
 * [Přidělování IP adres](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
 * [Skupiny zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview)
 * [Rychlé zprovoznění: Vytvoření virtuální sítě](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 * [Filtrování provozu sítě](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
-## <a name="storage-account-for-your-workspace"></a>Účet úložiště pro váš pracovní prostor
+## <a name="use-a-storage-account-for-your-workspace"></a>Použití účtu úložiště pro váš pracovní prostor
 
-Pokud chcete použít účet Azure Storage pro pracovní prostor ve virtuální síti, použijte následující postup:
+Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuální síti, udělejte toto:
 
-1. Vytvořte si výpočet experimentu ex. Výpočetní prostředky služby Machine Learning za virtuální sítí nebo připojte k pracovnímu prostoru výpočetní výkon v ex. Cluster HDInsight nebo virtuální počítač. Další informace najdete v tématu [použití výpočetní prostředky služby Machine Learning](#use-machine-learning-compute) a [použití oddílů virtuálního počítače nebo clusteru HDInsight](#use-a-virtual-machine-or-hdinsight-cluster) v tomto dokumentu.
-2. Přejít do úložiště připojeného k pracovnímu prostoru. ![Obrázek Azure Portal se zobrazením Azure Storage připojeného k pracovnímu prostoru služby Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)
-3. Na stránce Azure Storage vyberte možnost __brány firewall a virtuální sítě__. ![Obrázek Azure Portal, na kterém se zobrazuje oddíl brány firewall a virtuální sítě na stránce Azure Storage](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
-4. Na stránce __brány firewall a virtuální sítě__ vyberte následující položky:
+1. Vytvořte instanci COMPUTE experimentování (například instanci Výpočetní prostředky služby Machine Learning) za virtuální sítí nebo připojte výpočetní instanci experimentování k pracovnímu prostoru (například cluster HDInsight nebo virtuální počítač). 
+
+   Další informace najdete v části "použití instance Výpočetní prostředky služby Machine Learning a" použití virtuálního počítače nebo clusteru HDInsight "v tomto článku.
+
+1. V Azure Portal přejdete do úložiště, které je připojené k vašemu pracovnímu prostoru. 
+
+   ![Úložiště, které je připojené k pracovnímu prostoru služby Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)
+
+1. Na stránce **Azure Storage** vyberte možnost __brány firewall a virtuální sítě__. 
+
+   ![Oblast brány firewall a virtuální sítě na stránce Azure Storage v Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+
+1. Na stránce __brány firewall a virtuální sítě__ proveďte tyto kroky:
     - Vyberte __Vybrané sítě__.
-    - V části __virtuální sítě__vyberte __Přidat existující virtuální síť__ a přidejte tak virtuální síť, ve které se nachází vaše výpočetní experimenty. (Viz krok 1.)
-    - Vyberte možnost __dovolit přístup k tomuto účtu úložiště důvěryhodným službám Microsoftu__.
-![Obrázek Azure Portal zobrazení stránky brány firewall a virtuální sítě v části Azure Storage](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)
+    - V části __virtuální sítě__vyberte odkaz __Přidat existující virtuální síť__ . Tato akce přidá virtuální síť, ve které se nachází vaše výpočetní instance experimentování (viz krok 1).
+    - Zaškrtněte políčko __pro přístup k tomuto účtu úložiště udělit důvěryhodné služby Microsoftu__ .
 
-5. Při spouštění experimentu v kódu experimentování změňte spuštění konfigurace tak, aby používalo úložiště objektů BLOB:
+   ![Podokno brány firewall a virtuální sítě v Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)
+
+1. Po spuštění experimentu v kódu experimentování změňte spuštění konfigurace tak, aby používalo úložiště objektů BLOB v Azure:
+
     ```python
     run_config.source_directory_data_store = "workspaceblobstore"
     ```
 
 > [!IMPORTANT]
-> __Výchozí účet úložiště__ pro vaši službu Azure Machine Learning můžete umístit do virtuální sítě __jenom při experimentování__.
+> _Výchozí účet úložiště_ pro službu Azure Machine Learning ve virtuální síti můžete umístit _jenom na experimentování_.
 >
-> __Účty úložiště, které nejsou výchozí__ , se dají umístit taky do virtuální sítě, ale __jenom pro experimentování__.
+> _Nevýchozí účty úložiště_ ve virtuální síti můžete umístit _jenom_do experimentů.
 >
-> Výchozí nebo jiné účty úložiště, které se používají pro odvození, musí mít __neomezený přístup k účtu úložiště__.
+> Výchozí i jiné účty úložiště, které se používají pro odvození, musí mít neomezený _přístup k účtu úložiště_.
 >
-> Pokud si nejste jistí, jestli jste tato nastavení změnili, nebo ne, přečtěte si téma __Změna výchozího pravidla přístupu k síti__ v tématu [konfigurace Azure Storagech bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security). Použijte postup povolení přístupu ze všech sítí během odvození nebo vyhodnocování modelu.
+> Pokud si nejste jistí, jestli jste nastavení změnili, přečtěte si část Změna výchozího pravidla přístupu k síti v tématu [konfigurace Azure Storagech bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security). Postupujte podle pokynů a povolte přístup ze všech sítí během odvození nebo model bodování.
 
-## <a name="key-vault-for-your-workspace"></a>Trezor klíčů pro váš pracovní prostor
+## <a name="use-a-key-vault-instance-with-your-workspace"></a>Použití instance trezoru klíčů s vaším pracovním prostorem
 
-Instance Key Vault přidružená k pracovnímu prostoru je používána službou Azure Machine Learning k ukládání přihlašovacích údajů různých druhů:
+Instance trezoru klíčů, která je přidružená k pracovnímu prostoru, je používána službou Azure Machine Learning k uložení následujících přihlašovacích údajů:
 * Přidružený připojovací řetězec účtu úložiště
 * Hesla k instancím služby Azure Container úložiště
 * Připojovací řetězce k úložištím dat
 
-Pokud chcete používat Azure Machine Learning možnosti experimentování s Key Vault za virtuální sítí, použijte následující postup:
-1. Přejít na Key Vault přidružené k pracovnímu prostoru. ![Obrázek Azure Portal se zobrazením Key Vault přidruženého k pracovnímu prostoru služby Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-key-vault.png)
-2. Na stránce Key Vault vyberte možnost __brány firewall a virtuální sítě__ . ![Obrázek Azure Portal, na kterém se zobrazuje oddíl brány firewall a virtuální sítě na stránce Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
-3. Na stránce __brány firewall a virtuální sítě__ vyberte následující položky:
-    - Vyberte __Vybrané sítě__.
-    - V části __virtuální sítě__vyberte __Přidat existující virtuální sítě__ a přidejte tak virtuální síť, ve které se nachází vaše výpočetní experimenty.
-    - Pokud __Chcete tuto bránu firewall obejít, vyberte možnost dovolit důvěryhodným službám Microsoftu__.
-![Obrázek Azure Portal zobrazení stránky brány firewall a virtuální sítě v části Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)
+Pokud chcete používat Azure Machine Learning možnosti experimentování s Azure Key Vault za virtuální sítí, udělejte toto:
+1. Přejít do trezoru klíčů, který je přidružený k pracovnímu prostoru. 
 
+   ![Trezor klíčů, který je přidružený k pracovnímu prostoru služby Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-key-vault.png)
 
-## <a name="use-machine-learning-compute"></a>Použít Výpočetní prostředky služby Machine Learning
+1. Na stránce **Key Vault** v levém podokně vyberte možnost __brány firewall a virtuální sítě__. 
 
-Pokud chcete ve virtuální síti použít výpočetní prostředky Azure Machine Learning, vezměte v úvahu následující informace o požadavcích sítě:
+   ![Část "brány firewall a virtuální sítě" v podokně Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
+
+1. Na stránce __brány firewall a virtuální sítě__ proveďte tyto kroky:
+    - V části __Povolení přístupu z__vyberte __vybrané sítě__.
+    - V části __virtuální sítě__vyberte __Přidat existující virtuální sítě__ a přidejte tak virtuální síť, ve které se nachází vaše výpočetní instance experimentování.
+    - V části __umožňuje důvěryhodným službám Microsoftu obejít tuto bránu firewall__, vyberte __Ano__.
+
+   ![Část "brány firewall a virtuální sítě" v podokně Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)
+
+## <a name="use-a-machine-learning-compute-instance"></a>Použití instance Výpočetní prostředky služby Machine Learning
+
+Pokud chcete ve virtuální síti použít výpočetní instanci Azure Machine Learning, vezměte v úvahu následující požadavky na síť:
 
 - Virtuální síť musí být ve stejném předplatném a oblasti jako pracovní prostor služby Azure Machine Learning.
 
-- Podsíť zadaná pro výpočetní cluster musí mít k dispozici dostatek nepřiřazených IP adres pro přizpůsobení počtu virtuálních počítačů, které jsou pro cluster cílené. Pokud podsíť nemá dostatek nepřiřazených IP adres, cluster se částečně přidělí.
+- Podsíť určená pro výpočetní cluster musí mít k dispozici dostatek nepřiřazených IP adres pro přizpůsobení počtu virtuálních počítačů, které jsou pro cluster cílené. Pokud podsíť nemá dostatek nepřiřazených IP adres, cluster se částečně přidělí.
 
-- Pokud máte v úmyslu zabezpečit virtuální síť omezením provozu, nechte některé porty pro výpočetní službu otevřené. Další informace najdete v tématu [požadované porty](#mlcports).
+- Pokud máte v úmyslu zabezpečit virtuální síť omezením provozu, nechte některé porty pro výpočetní službu otevřené. Další informace najdete v části [požadované porty](#mlcports) .
 
-- Ověřte, jestli zásady zabezpečení nebo zámky v předplatném virtuální sítě nebo skupině prostředků omezují oprávnění ke správě virtuální sítě.
+- Zkontrolujte, jestli zásady zabezpečení nebo zámky v předplatném virtuální sítě nebo skupině prostředků omezují oprávnění ke správě virtuální sítě.
 
-- Pokud budete chtít do jedné virtuální sítě umístit několik výpočetních clusterů, možná budete muset požádat o zvýšení kvóty pro jeden nebo více vašich prostředků.
+- Pokud hodláte do jedné virtuální sítě umístit víc výpočetních clusterů, možná budete muset požádat o zvýšení kvóty pro jeden nebo víc vašich prostředků.
 
-    Azure Machine Learning COMPUTE automaticky přiděluje další síťové prostředky ve skupině prostředků, která obsahuje virtuální síť. Pro každý výpočetní cluster přiděluje služba následující prostředky:
+    Instance Výpočetní prostředky služby Machine Learning automaticky přiděluje další síťové prostředky ve skupině prostředků, která obsahuje virtuální síť. Pro každý výpočetní cluster přiděluje služba následující prostředky:
 
     - Jedna skupina zabezpečení sítě
 
@@ -104,73 +121,76 @@ Pokud chcete ve virtuální síti použít výpočetní prostředky Azure Machin
 
 ### <a id="mlcports"></a>Požadované porty
 
-Výpočetní prostředky služby Machine Learning aktuálně používá službu Azure Batch k zřizování virtuálních počítačů v zadané virtuální síti. Podsíť musí umožňovat příchozí komunikaci ze služby Batch. Tato komunikace se používá k naplánování spuštění na Výpočetní prostředky služby Machine Learningch uzlech a ke komunikaci s Azure Storage a dalšími prostředky. Batch přidá skupiny zabezpečení sítě (**NSG**) na úrovni síťových rozhraní (**nic**) připojených k virtuálním počítačům. Tyto skupiny zabezpečení sítě automaticky konfigurují pravidla příchozích a odchozích přenosů, která povolují následující provoz:
+Výpočetní prostředky služby Machine Learning aktuálně používá službu Azure Batch k zřizování virtuálních počítačů v zadané virtuální síti. Podsíť musí umožňovat příchozí komunikaci ze služby Batch. Tato komunikace se používá k naplánování spuštění na Výpočetní prostředky služby Machine Learningch uzlech a ke komunikaci s Azure Storage a dalšími prostředky. Služba Batch přidá skupiny zabezpečení sítě (skupin zabezpečení sítě) na úrovni síťových rozhraní (nic) připojených k virtuálním počítačům. Tyto skupiny zabezpečení sítě automaticky konfigurují pravidla příchozích a odchozích přenosů, která povolují následující provoz:
 
 - Příchozí provoz TCP na portech 29876 a 29877 ze __značky služby__ __BatchNodeManagement__.
 
-    ![Obrázek Azure Portal zobrazující příchozí pravidlo pomocí značky služby BatchNodeManagement](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
+    ![Příchozí pravidlo, které používá značku služby BatchNodeManagement](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
 
-- volitelné Příchozí provoz TCP na portu 22 pro povolení vzdáleného přístupu. Tento port je potřeba jenom v případě, že se chcete připojit pomocí SSH na veřejné IP adrese.
+- Volitelné Příchozí provoz TCP na portu 22 pro povolení vzdáleného přístupu. Tento port použijte pouze v případě, že se chcete připojit pomocí SSH na veřejné IP adrese.
 
 - Odchozí provoz do virtuální sítě na jakémkoli portu.
 
 - Odchozí provoz do internetu na jakémkoli portu.
 
-Pokud upravíte nebo přidáte pravidla příchozí/odchozí komunikace v skupin zabezpečení sítě s nakonfigurovaným dávkou, vyzkoušejte opatrnost. Pokud NSG blokuje komunikaci s výpočetními uzly, služba COMPUTE služby nastaví stav výpočetních uzlů na nepoužitelné.
+Pokud potřebujete upravit nebo přidat pravidla příchozích nebo odchozích přenosů ve skupinách zabezpečení sítě nakonfigurovaných službou Batch, postupujte obezřetně. Pokud NSG blokuje komunikaci s výpočetními uzly, služba COMPUTE nastaví stav výpočetních uzlů na nepoužitelné.
 
-Nemusíte zadávat skupin zabezpečení sítě na úrovni podsítě, protože služba Azure Batch konfiguruje vlastní skupin zabezpečení sítě. Pokud však Zadaná podsíť má přidruženou skupin zabezpečení sítě a/nebo bránu firewall, nakonfigurujte příchozí a odchozí pravidla zabezpečení, jak je uvedeno výše.
+Nemusíte zadávat skupin zabezpečení sítě na úrovni podsítě, protože služba Azure Batch konfiguruje vlastní skupin zabezpečení sítě. Pokud však Zadaná podsíť má přidruženou skupin zabezpečení sítě nebo bránu firewall, nakonfigurujte příchozí a odchozí pravidla zabezpečení, jak je uvedeno výše.
 
-Následující snímek obrazovky ukazuje, jak konfigurace pravidla NSG vypadá v Azure Portal:
+Konfigurace pravidla NSG se v Azure Portal zobrazuje na následujících obrázcích:
 
-![Snímek obrazovky příchozích pravidel NSG pro Výpočetní prostředky služby Machine Learning](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png)
+![Příchozí NSG pravidla pro Výpočetní prostředky služby Machine Learning](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png)
 
-![Snímek obrazovky s odchozími NSG pravidly pro Výpočetní prostředky služby Machine Learning](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
+![Odchozí NSG pravidla pro Výpočetní prostředky služby Machine Learning](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
 
 ### <a id="limiting-outbound-from-vnet"></a>Omezení odchozího připojení z virtuální sítě
 
-Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí přístup k virtuální síti, použijte následující postup:
+Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí přístup k virtuální síti, udělejte toto:
 
-- Odepřít odchozí připojení k Internetu pomocí pravidel NSG
+- Odmítne odchozí připojení k Internetu pomocí pravidel NSG.
 
-- Omezte odchozí provoz na Azure Storage (pomocí __označení služby__ __Storage. Region_Name__ ex. Storage. EastUS) Azure Container Registry (použití __značky služby__ __AzureContainerRegistry. Region_Name__ ex. AzureContainerRegistry. EastUS) a služba Azure Machine Learning (s použitím __značky služby__ __AzureMachineLearning__)
+- Omezte odchozí provoz na následující:
+   - Azure Storage pomocí __označení služby__ __Storage. Region_Name__ (například Storage. EastUS)
+   - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry. Region_Name__ (například AzureContainerRegistry. EastUS)
+   - Služba Azure Machine Learning pomocí __označení služby__ __AzureMachineLearning__
 
-Následující snímek obrazovky ukazuje, jak konfigurace pravidla NSG vypadá v Azure Portal:
+Konfigurace pravidla NSG se v Azure Portal zobrazuje na následujícím obrázku:
 
-![Snímek obrazovky s odchozími NSG pravidly pro Výpočetní prostředky služby Machine Learning](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)
+![Odchozí NSG pravidla pro Výpočetní prostředky služby Machine Learning](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)
 
 ### <a name="user-defined-routes-for-forced-tunneling"></a>Uživatelem definované trasy pro vynucené tunelování
 
-Pokud používáte vynucené tunelování s Azure Machine Learning COMPUTE, musíte přidat [trasy definované uživatelem (udr)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) do podsítě, která obsahuje výpočetní prostředky.
+Pokud používáte vynucené tunelování pomocí Výpočetní prostředky služby Machine Learning, přidejte [uživatelsky definované trasy (udr)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) do podsítě, která obsahuje výpočetní prostředky.
 
-* Pro každou IP adresu, kterou používá služba Azure Batch, se musí vytvořit trasa definovaná uživatelem v oblasti, kde existují vaše prostředky. Tyto udr umožňují, aby služba Batch komunikovala s výpočetními uzly pro plánování úloh. Pokud chcete získat seznam IP adres služby Batch, obraťte se na podporu Azure.
+* Vytvořte UDR pro každou IP adresu, kterou používá služba Azure Batch, v oblasti, kde existují vaše prostředky. Tyto udr umožňují, aby služba Batch komunikovala s výpočetními uzly pro plánování úloh. Pokud chcete získat seznam IP adres služby Batch, obraťte se na podporu Azure.
 
-* Odchozí provoz do Azure Storage (konkrétně adresy URL formuláře `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`a `<account>.blob.core.windows.net`) nesmí být zablokován vaším místním síťovým zařízením.
+* Odchozí provoz do Azure Storage se nesmí blokovat v místním síťovém zařízení. Konkrétně adresy URL jsou ve formátu `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`a `<account>.blob.core.windows.net`.
 
-Když přidáte trasy definované uživatelem, definujte trasu pro každou související předponu IP adresy dávky a nastavte __typ dalšího segmentu směrování__ na hodnotu __Internet__. Následující obrázek ukazuje příklad tohoto UDR v Azure Portal:
+Když přidáte udr, definujte trasu pro každou související předponu IP adresy dávky a nastavte __typ dalšího segmentu směrování__ na __Internet__. Následující obrázek ukazuje příklad tohoto UDR v Azure Portal:
 
-![Příklad uživatelsky definované trasy pro předponu adresy](./media/how-to-enable-virtual-network/user-defined-route.png)
+![Příklad UDR pro předponu adresy](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-Další informace najdete v článku [Vytvoření fondu Azure Batch ve virtuální síti](../../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling) .
+Další informace najdete v tématu [Vytvoření fondu Azure Batch ve virtuální síti](../../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
 
-### <a name="create-machine-learning-compute-in-a-virtual-network"></a>Vytvoření Výpočetní prostředky služby Machine Learning ve virtuální síti
+### <a name="create-a-machine-learning-compute-cluster-in-a-virtual-network"></a>Vytvoření clusteru Výpočetní prostředky služby Machine Learning ve virtuální síti
 
-Pokud chcete vytvořit Azure Machine Learning výpočetní cluster pomocí Azure Portal, použijte následující postup:
+Pokud chcete vytvořit cluster Výpočetní prostředky služby Machine Learning, udělejte toto:
 
 1. V [Azure Portal](https://portal.azure.com)vyberte pracovní prostor služby Azure Machine Learning.
 
-1. V části __aplikace__ vyberte __COMPUTE__. Pak vyberte __Přidat výpočetní__prostředky.
+1. V části __aplikace__ vyberte __COMPUTE__a pak vyberte __Přidat výpočetní__prostředky.
 
-1. Pokud chcete tento výpočetní prostředek nakonfigurovat tak, aby používal virtuální síť, použijte tyto možnosti:
+1. Pokud chcete tento výpočetní prostředek nakonfigurovat tak, aby používal virtuální síť, postupujte takto:
 
-    - __Konfigurace sítě__: Vyberte __Upřesnit__.
+    a. V případě __Konfigurace sítě__vyberte __Upřesnit__.
 
-    - __Skupina prostředků__: Vyberte skupinu prostředků, která obsahuje virtuální síť.
+    b. V rozevíracím seznamu __Skupina prostředků__ vyberte skupinu prostředků, která obsahuje virtuální síť.
 
-    - __Virtuální síť__: Vyberte virtuální síť, která obsahuje podsíť.
+    c. V rozevíracím seznamu __virtuální síť__ vyberte virtuální síť, která obsahuje podsíť.
 
-    - __Podsíť__: Vyberte podsíť, která se má použít.
+    d. V rozevíracím seznamu __podsíť__ vyberte podsíť, která se má použít.
 
-   ![Snímek obrazovky, který ukazuje nastavení virtuální sítě pro výpočetní prostředky machine learningu](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
+   ![Nastavení virtuální sítě pro Výpočetní prostředky služby Machine Learning](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
 Cluster Výpočetní prostředky služby Machine Learning můžete vytvořit také pomocí sady Azure Machine Learning SDK. Následující kód vytvoří nový cluster výpočetní prostředky služby Machine Learning v `default` podsíti virtuální sítě s názvem: `mynetwork`
 
@@ -204,7 +224,7 @@ except ComputeTargetException:
     # Create the cluster with the specified name and configuration
     cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
 
-    # Wait for the cluster to complete, show the output log
+    # Wait for the cluster to be completed, show the output log
     cpu_cluster.wait_for_completion(show_output=True)
 ```
 
@@ -212,86 +232,85 @@ Po dokončení procesu vytváření můžete model pomocí clusteru v experiment
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Použití virtuálního počítače nebo clusteru HDInsight
 
-Pokud chcete použít virtuální počítač nebo cluster Azure HDInsight ve virtuální síti s vaším pracovním prostorem, použijte následující postup:
+Pokud chcete použít virtuální počítač nebo cluster Azure HDInsight ve virtuální síti s vaším pracovním prostorem, udělejte toto:
 
-1. Vytvořte virtuální počítač nebo cluster HDInsight pomocí Azure Portal nebo Azure CLI a vložte ho do služby Azure Virtual Network. Další informace najdete v následujících dokumentech:
+1. Vytvořte virtuální počítač nebo cluster HDInsight pomocí Azure Portal nebo Azure CLI a vložte cluster do virtuální sítě Azure. Další informace najdete v následujících článcích:
     * [Vytváření a správa virtuálních sítí Azure pro virtuální počítače se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [Rozšiřování HDInsight pomocí virtuální sítě Azure](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
 
-1. Pokud chcete službě Azure Machine Learning umožňovat komunikaci s portem SSH na virtuálním počítači nebo clusteru, musíte nakonfigurovat položku zdroje pro skupinu zabezpečení sítě. Port SSH je obvykle port 22. K povolení provozu z tohoto zdroje použijte následující postup:
+1. Pokud chcete službě Azure Machine Learning umožňovat komunikaci s portem SSH na virtuálním počítači nebo clusteru, nakonfigurujte položku zdroje pro skupinu zabezpečení sítě. Port SSH je obvykle port 22. Pokud chcete povolit přenos z tohoto zdroje, postupujte takto:
 
-    * __Zdroj__: Vyberte __značku služby__.
+    * V rozevíracím seznamu __zdroj__ vyberte možnost __značka služby__.
 
-    * __Značka zdrojové služby__: Vyberte __AzureMachineLearning__.
+    * V rozevíracím seznamu __značka zdrojové služby__ vyberte možnost __AzureMachineLearning__.
 
-    * __Rozsahy zdrojových portů__: Vyberte __*__ .
+    * V rozevíracím seznamu __rozsahy zdrojových portů__ vyberte __*__ .
 
-    * __Cíl__: Vyberte __libovolný__.
+    * V rozevíracím seznamu __cíl__ vyberte možnost __libovolný__.
 
-    * __Rozsahy cílových portů__: Vyberte __22__.
+    * V rozevíracím seznamu __rozsahy cílových portů__ vyberte __22__.
 
-    * __Protokol__: Vyberte __libovolný__.
+    * V části __protokol__vyberte __libovolný__.
 
-    * __Akce__: Vyberte možnost __udělit__.
+    * V části __Akce__vyberte možnost __povoleno__.
 
-   ![Snímek obrazovky příchozích pravidel pro účely experimentování na virtuálním počítači nebo clusteru HDInsight ve virtuální síti](./media/how-to-enable-virtual-network/experimentation-virtual-network-inbound.png)
+   ![Příchozí pravidla pro experimentování na virtuálním počítači nebo clusteru HDInsight ve virtuální síti](./media/how-to-enable-virtual-network/experimentation-virtual-network-inbound.png)
 
     Ponechte výchozí odchozí pravidla pro skupinu zabezpečení sítě. Další informace najdete v tématu výchozí pravidla zabezpečení ve [skupinách zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
 
-    Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí přístup k virtuální síti, přečtěte si téma [omezení odchozího připojení z virtuální sítě](#limiting-outbound-from-vnet) .
+    Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí přístup k virtuální síti, přečtěte si část [omezení odchozího připojení z virtuální sítě](#limiting-outbound-from-vnet) .
 
 1. Připojte virtuální počítač nebo cluster HDInsight k vašemu pracovnímu prostoru služby Azure Machine Learning. Další informace najdete v tématu [Nastavení výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md).
 
 > [!IMPORTANT]
 > Služba Azure Machine Learning podporuje pouze virtuální počítače se systémem Ubuntu.
 
-## <a name="use-azure-kubernetes-service"></a>Použití služby Azure Kubernetes
+## <a name="use-azure-kubernetes-service-aks"></a>Použití služby Azure Kubernetes Service (AKS)
 
-Pokud chcete přidat službu Azure Kubernetes ve virtuální síti do svého pracovního prostoru, postupujte podle následujících kroků v Azure Portal:
+Pokud chcete do svého pracovního prostoru přidat AKS ve virtuální síti, udělejte toto:
 
-1. Ujistěte se, že skupina zabezpečení sítě (NSG), která řídí virtuální síť, má povolené příchozí pravidlo pro Azure Machine Learning službu pomocí __AzureMachineLearning__ jako **zdroje**.
+> [!IMPORTANT]
+> Než začnete s tímto postupem, Projděte si požadavky a naplánujte IP adresování pro váš cluster. Další informace najdete v tématu [Konfigurace pokročilé sítě ve službě Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-advanced-networking).
+>
+> Ponechte výchozí odchozí pravidla pro NSG. Další informace najdete v tématu výchozí pravidla zabezpečení ve [skupinách zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
+>
+> Instance AKS a virtuální síť Azure by měly být ve stejné oblasti.
 
-    ![Postup přidání výpočetní služby ve službě Azure Machine Learning](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)
+1. V [Azure Portal](https://portal.azure.com)se ujistěte, že NSG, který řídí virtuální síť, má příchozí pravidlo, které je povolené pro službu Azure Machine Learning pomocí __AzureMachineLearning__ jako **zdroje**.
 
-1. V [Azure Portal](https://portal.azure.com)vyberte pracovní prostor služby Azure Machine Learning.
+    ![Služba Azure Machine Learning – přidat výpočetní podokno](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)
 
-1. V části __aplikace__ vyberte __COMPUTE__. Pak vyberte __Přidat výpočetní__prostředky.
+1. Vyberte pracovní prostor služby Azure Machine Learning.
 
-1. Pokud chcete tento výpočetní prostředek nakonfigurovat tak, aby používal virtuální síť, použijte tyto možnosti:
+1. V části __aplikace__ vyberte __COMPUTE__a pak vyberte __Přidat výpočetní__prostředky.
 
-    - __Konfigurace sítě__: Vyberte __Upřesnit__.
+1. Pokud chcete tento výpočetní prostředek nakonfigurovat tak, aby používal virtuální síť, postupujte takto:
 
-    - __Skupina prostředků__: Vyberte skupinu prostředků, která obsahuje virtuální síť.
+    - V případě __Konfigurace sítě__vyberte __Upřesnit__.
 
-    - __Virtuální síť__: Vyberte virtuální síť, která obsahuje podsíť.
+    - V rozevíracím seznamu __Skupina prostředků__ vyberte skupinu prostředků, která obsahuje virtuální síť.
 
-    - __Podsíť__: Vyberte podsíť.
+    - V rozevíracím seznamu __virtuální síť__ vyberte virtuální síť, která obsahuje podsíť.
 
-    - __Rozsah adres služby Kubernetes__: Vyberte rozsah adres služby Kubernetes. Tento rozsah adres používá rozsah IP adres zápisu CIDR k definování IP adres, které jsou k dispozici pro cluster. Nesmí se překrývat s žádnými rozsahy IP adres podsítě. Příklad: 10.0.0.0/16.
+    - V rozevíracím seznamu __podsíť__ vyberte podsíť.
 
-    - __IP adresa služby KUBERNETES DNS__: Vyberte IP adresu služby Kubernetes DNS. Tato IP adresa se přiřadí službě DNS Kubernetes. Musí se nacházet v rozsahu adres služby Kubernetes. Příklad: 10.0.0.10.
+    - Do pole __Rozsah adres služby Kubernetes__ zadejte rozsah adres služby Kubernetes. Tento rozsah adres používá pro definování IP adres, které jsou k dispozici pro cluster, rozsah IP adres zápisu CIDR (Classless Inter-Domain Routing). Nesmí se překrývat s žádnými rozsahy IP adres podsítě (například 10.0.0.0/16).
 
-    - __Adresa mostu Docker__: Vyberte adresu mostu Docker. Tato IP adresa je přiřazená k mostu Docker. Nesmí se jednat o žádné rozsahy IP adres podsítě ani rozsah adres služby Kubernetes. Příklad: 172.17.0.1/16.
+    - Do pole __IP adresa služby KUBERNETES DNS__ zadejte IP adresu služby DNS Kubernetes. Tato IP adresa se přiřadí službě DNS Kubernetes. Musí se nacházet v rozsahu adres služby Kubernetes (například 10.0.0.10).
+
+    - Do pole __adresa mostu Docker__ zadejte adresu mostu Docker. Tato IP adresa je přiřazená k mostu Docker. Nesmí se jednat o žádné rozsahy IP adres podsítě ani rozsah adres služby Kubernetes (například 172.17.0.1/16).
 
    ![Služba Azure Machine Learning: Nastavení Výpočetní prostředky služby Machine Learning virtuální sítě](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
-1. Ujistěte se, že skupina NSG, která řídí virtuální síť, má povolené příchozí pravidlo zabezpečení pro koncový bod bodování, aby ho bylo možné volat mimo virtuální síť.
+1. Ujistěte se, že skupina NSG, která řídí virtuální síť, má pro koncový bod bodování povolené příchozí pravidlo zabezpečení, aby se mohlo volat mimo virtuální síť.
 
-    ![Postup přidání výpočetní služby ve službě Azure Machine Learning](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
+    ![Příchozí pravidlo zabezpečení](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
 
     > [!TIP]
     > Pokud už máte cluster AKS ve virtuální síti, můžete ho připojit k pracovnímu prostoru. Další informace najdete v tématu [Jak nasadit do AKS](how-to-deploy-to-aks.md).
 
-> [!IMPORTANT]
-> Než budete pokračovat s výše uvedeným postupem, ověřte požadavky a naplánujte IP adresování pro svůj cluster. Další informace najdete v tématu [Konfigurace pokročilé sítě ve službě Azure Kubernetes](https://docs.microsoft.com/azure/aks/configure-advanced-networking).
->
->
-> Ponechte výchozí odchozí pravidla pro NSG. Další informace najdete v tématu výchozí pravidla zabezpečení ve [skupinách zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
->
-> Služba Azure Kubernetes a virtuální síť Azure by měly být ve stejné oblasti.
-
-Pomocí **sady Azure Machine Learning SDK** můžete také přidat službu Azure Kubernetes ve virtuální síti. Následující kód vytvoří novou instanci služby Azure Kubernetes v `default` podsíti virtuální sítě s názvem: `mynetwork`
+K přidání AKS do virtuální sítě můžete také použít sadu SDK Azure Machine Learning. Následující kód vytvoří novou instanci AKS v `default` podsíti virtuální sítě s názvem: `mynetwork`
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute
@@ -311,9 +330,9 @@ aks_target = ComputeTarget.create(workspace=ws,
                                   provisioning_configuration=config)
 ```
 
-Po dokončení procesu vytváření můžete pro cluster AKS za virtuální sítí vytvořit odvození/skóre. Další informace najdete v tématu [Jak nasadit do AKS](how-to-deploy-to-aks.md).
+Po dokončení procesu vytváření můžete spustit odvození nebo model bodování v clusteru AKS za virtuální sítí. Další informace najdete v tématu [Jak nasadit do AKS](how-to-deploy-to-aks.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nastavení školicích prostředí](how-to-set-up-training-targets.md)
 * [Kam chcete nasazovat modely](how-to-deploy-and-where.md)

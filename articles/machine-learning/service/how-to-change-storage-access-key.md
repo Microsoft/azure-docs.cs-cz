@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/08/2019
-ms.openlocfilehash: bc9b6053e6e2f920b826b3c14c6820b71e129aef
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 7c6b85bd1f5935fb3722f82efcdfc921fc9cb2ec
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882823"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990543"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 
@@ -84,17 +84,13 @@ Chcete-li aktualizovat službu Azure Machine Learning, aby používala nový kl�
         az login
         ```
 
-    1. Chcete-li nainstalovat rozšíření Azure Machine Learning, použijte následující příkaz:
-
-        ```azurecli-interactive
-        az extension add -n azure-cli-ml 
-        ```
-
     1. Pokud chcete pracovní prostor aktualizovat tak, aby používal nový klíč, použijte následující příkaz. Nahraďte `myworkspace` názvem svého pracovního prostoru Azure Machine Learning a nahraďte `myresourcegroup` názvem skupiny prostředků Azure, která obsahuje pracovní prostor.
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
         ```
+
+        [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
 
         Tento příkaz automaticky synchronizuje nové klíče pro účet služby Azure Storage, který používá pracovní prostor.
 
@@ -111,6 +107,6 @@ Chcete-li aktualizovat službu Azure Machine Learning, aby používala nový kl�
 
     Protože `overwrite=True` je zadán, tento kód přepíše existující registraci a aktualizuje ji, aby používala nový klíč.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o registraci úložišť dat najdete v odkazu na [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) třídu.

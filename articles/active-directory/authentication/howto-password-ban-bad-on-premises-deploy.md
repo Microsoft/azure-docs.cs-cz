@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a745648f1b7abac7267d51cac9e1fe642ae13d8
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853691"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953015"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -60,6 +60,7 @@ Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete
     |`https://login.microsoftonline.com`|Žádosti o ověření|
     |`https://enterpriseregistration.windows.net`|Funkce ochrany heslem Azure AD|
 
+* Všechny počítače, které hostují proxy službu pro ochranu heslem, musí být nakonfigurované tak, aby řadičům domény udělily možnost přihlásit se k proxy službě. Tato možnost se řídí pomocí přiřazení oprávnění "přístup k tomuto počítači ze sítě".
 * Všechny počítače, které hostují proxy službu pro ochranu heslem, musí být nakonfigurované tak, aby umožňovaly odchozí přenosy TLS 1,2 HTTP.
 * Účet globálního správce pro registraci proxy služby pro ochranu heslem a doménovou strukturu s Azure AD.
 * Účet, který má oprávnění správce domény služby Active Directory v kořenové doméně doménové struktury k registraci doménové struktury služby Active Directory Windows serveru v Azure AD.
@@ -324,7 +325,7 @@ Hlavním problémem při dostupnosti ochrany heslem je dostupnost proxy serverů
 
 Návrh softwaru agenta DC snižuje běžné problémy, které jsou spojené s vysokou dostupností. Agent řadiče domény uchovává místní mezipaměť naposledy stažených zásad hesel. I když jsou všechny registrované proxy servery nedostupné, budou agenti řadiče domény nadále vysazovat zásady hesel v mezipaměti. Přiměřená frekvence aktualizace zásad hesel ve velkém nasazení je obvykle dny, ne hodiny nebo méně. To znamená, že krátké výpadky proxy serverů významně neovlivňují ochranu heslem Azure AD.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste nainstalovali služby, které potřebujete pro ochranu heslem Azure AD na místních serverech, [proveďte konfiguraci po instalaci a shromážděte informace pro vytváření sestav](howto-password-ban-bad-on-premises-operations.md) , abyste mohli nasazení dokončit.
 

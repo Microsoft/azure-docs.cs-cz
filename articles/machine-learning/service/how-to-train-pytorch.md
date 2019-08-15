@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2fe3e222da265614ff64e3d913f6514398abf32b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847672"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966788"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Naučte se škálovat modely Pytorch hloubkového učení s využitím Azure Machine Learning
 
@@ -229,3 +229,4 @@ V tomto článku jste si naučili a zaregistrovali neuronové síť s hloubkový
 * [Sledovat spustit metriky během cvičení](how-to-track-experiments.md)
 * [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
 * [Nasazení trénovaného modelu](how-to-deploy-and-where.md)
+* [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 51e0379607c49019590a99c9fb7304f28be2afe5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305741"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985324"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Iniciovat převzetí služeb při selhání účtu úložiště (Preview)
 
@@ -68,12 +68,13 @@ Pokud chcete pomocí PowerShellu iniciovat převzetí služeb při selhání, mu
 
     - Odeberte všechny předchozí instalace Azure PowerShell z Windows pomocí nastavení **funkce & aplikace** v části **Nastavení**.
     - Odeberte všechny moduly **Azure** z `%Program Files%\WindowsPowerShell\Modules`.
-    
+
 1. Ujistěte se, že máte nainstalovanou nejnovější verzi PowerShellGet. Otevřete okno prostředí Windows PowerShell a spuštěním následujícího příkazu nainstalujte nejnovější verzi:
- 
+
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+
 1. Po instalaci PowerShellGet zavřete a znovu otevřete okno PowerShellu. 
 
 1. Nainstalujte nejnovější verzi Azure PowerShell:
@@ -82,14 +83,14 @@ Pokud chcete pomocí PowerShellu iniciovat převzetí služeb při selhání, mu
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Nainstalujte modul Azure Storage Preview, který podporuje Azure AD:
-   
+1. Nainstalujte modul Azure Storage Preview, který podporuje převzetí služeb při selhání účtu:
+
     ```powershell
     Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
     ```
+
 1. Zavřete a znovu otevřete okno PowerShellu.
  
-
 Pokud chcete iniciovat převzetí služeb při selhání z PowerShellu, spusťte následující příkaz:
 
 ```powershell
@@ -105,7 +106,7 @@ az storage account show \ --name accountName \ --expand geoReplicationStats
 az storage account failover \ --name accountName
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Zotavení po havárii a převzetí služeb při selhání účtu (Preview) v Azure Storage](storage-disaster-recovery-guidance.md)
 - [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)

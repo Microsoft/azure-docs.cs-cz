@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 18b5b941716fd2c6664c37f9e7c1ab2a37d07a88
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: da7dbdee4a376d88219a7a621ed7e3867873a37c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720646"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967387"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -201,7 +201,7 @@ Chcete-li kopírovat data z a do propojené služby SAP BW Open hub, jsou podpor
 
 Úplný seznam oddílů a vlastností pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md). V následující části najdete seznam vlastností podporovaných zdrojem tabulky SAP.
 
-### <a name="sap-table-as-a-source"></a>Tabulka SAP jako zdroj
+### <a name="sap-table-as-source"></a>Tabulka SAP jako zdroj
 
 Chcete-li kopírovat data z tabulky SAP, jsou podporovány následující vlastnosti:
 
@@ -223,7 +223,7 @@ Chcete-li kopírovat data z tabulky SAP, jsou podporovány následující vlastn
 <br/>
 >`maxPartitionsNumber` `partitionLowerBound` `partitionUpperBound` Jako příklad se počet řádků v jednotlivých oddílech vypočte pomocí tohoto vzorce: (celkový počet řádků mezi a)/. `partitionOnInt` `partitionOption`<br/>
 <br/>
->Aby bylo možné spouštět oddíly paralelně, abyste urychlili kopírování, důrazně doporučujeme `maxPartitionsNumber` vytvořit násobek hodnoty `parallelCopies` vlastnosti. Další informace najdete v tématu [paralelní kopírování](copy-activity-performance.md#parallel-copy).
+>Chcete-li načíst datové oddíly paralelně a urychlit kopírování, je paralelní úroveň řízena [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavením aktivity kopírování. Pokud jste například nastavili `parallelCopies` čtyři, Data Factory souběžně vygeneruje a spustí čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z tabulky SAP. Důrazně doporučujeme `maxPartitionsNumber` , abyste si vynásobení hodnoty `parallelCopies` vlastnosti.
 
 V `rfcTableOptions`nástroji můžete použít následující běžné operátory dotazů SAP k filtrování řádků:
 
@@ -269,7 +269,8 @@ V `rfcTableOptions`nástroji můžete použít následující běžné operátor
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]
@@ -290,6 +291,6 @@ Když kopírujete data z tabulky SAP, v datových typech tabulky SAP se použij�
 | `N`Číselné | `String` |
 | `X`(Binární a nezpracované) | `String` |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

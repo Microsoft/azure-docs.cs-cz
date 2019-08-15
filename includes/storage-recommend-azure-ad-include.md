@@ -8,14 +8,16 @@ ms.topic: include
 ms.date: 06/20/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 44d4078fa5f48531a660f6d2ed981407fb1f230f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 825a9f5668cc80f1306d74623db2ea54614ba4a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302325"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985389"
 ---
 > [!TIP]
-> Azure Storage podporuje autorizaci přístupu k prostředkům úložiště objektů Blob a fronty pomocí Azure Active Directory (Azure AD). Autorizace uživatelů nebo aplikací pomocí tokenu OAuth 2.0, která je vrácena službou Azure AD poskytuje nejvyšší zabezpečení a snadné použití přes sdílený klíč autorizace a sdílené přístupové podpisy (SAS). S Azure AD není nutné ukládat přístupový klíč účtu se váš kód a riziko potenciální ohrožení zabezpečení.
+> Azure Storage podporuje autorizaci požadavků do úložiště objektů BLOB a front pomocí Azure Active Directory (Azure AD). Ověřování uživatelů nebo aplikací pomocí tokenu OAuth 2,0 vráceného službou Azure AD zajišťuje zajištění vysokého zabezpečení a snadného použití při autorizaci pomocí sdíleného klíče. S Azure AD není nutné ukládat přístupový klíč účtu k vašemu kódu a rizikovým potenciálním hrozbám zabezpečení.
 >
-> Microsoft doporučuje používat Azure AD s vašimi aplikacemi Azure Storage, pokud je to možné. Další informace najdete v tématu [autorizovat přístup k Azure, objekty BLOB a fronty pomocí Azure Active Directory](../articles/storage/common/storage-auth-aad.md).
+> Kromě toho Azure Storage podporuje sdílený přístupový podpis (SAS) uživatele pro úložiště objektů BLOB. Delegování uživatele je podepsané přihlašovacími údaji Azure AD. Když návrh vaší aplikace vyžaduje pro přístup k úložišti objektů BLOB sdílené přístupové podpisy, použijte přihlašovací údaje Azure AD k vytvoření SAS delegování uživatelů pro vynikající zabezpečení.
+>
+> Microsoft doporučuje používat Azure AD s aplikacemi Azure Storage, pokud je to možné. Další informace najdete v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../articles/storage/common/storage-auth-aad.md).

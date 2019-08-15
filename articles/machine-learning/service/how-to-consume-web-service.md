@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a007e3adb72148cfde1590e996f7df9082159445
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 873f45a6cce85669581037c4c398a52b1ebd6d68
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840498"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966846"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 
@@ -80,6 +80,7 @@ Azure Machine Learning poskytuje dva způsoby, jak řídit přístup k webovým 
 |---|---|---|
 |Klíč|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povoleno|
 |Podpisový| Není dostupné| Zakázáno ve výchozím nastavení |
+
 #### <a name="authentication-with-keys"></a>Ověřování pomocí klíčů
 
 Pokud povolíte ověřování pro nasazení, automaticky se vytvoří ověřovací klíče.
@@ -98,7 +99,6 @@ print(primary)
 
 > [!IMPORTANT]
 > Pokud je potřeba znovu vygenerovat klíč, použijte [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
-
 
 #### <a name="authentication-with-tokens"></a>Ověřování pomocí tokenů
 
@@ -155,50 +155,17 @@ Například modelu v [trénování v rámci poznámkového bloku](https://github
             ]
         ]
 }
-``` 
+```
 
 Webová služba může přijmout víc kopií dat v jedné žádosti. Vrátí dokument JSON obsahující pole s odpovědí.
 
 ### <a name="binary-data"></a>Binární data
 
-Pokud váš model přijímá binárních dat, jako je například image, musíte změnit `score.py` soubor se používá pro své nasazení tak, aby přijímal nezpracovaná požadavky HTTP. Tady je příklad `score.py` , který přijímá binární data:
+Informace o tom, jak povolit podporu binárních dat ve službě, najdete v tématu [binární data](how-to-deploy-and-where.md#binary).
 
-```python
-from azureml.contrib.services.aml_request import AMLRequest, rawhttp
-from azureml.contrib.services.aml_response import AMLResponse
+### <a name="cross-origin-resource-sharing-cors"></a>Sdílení prostředků mezi zdroji (CORS)
 
-
-def init():
-    print("This is init()")
-
-
-@rawhttp
-def run(request):
-    print("This is run()")
-    print("Request: [{0}]".format(request))
-    if request.method == 'GET':
-        # For this example, just return the URL for GETs
-        respBody = str.encode(request.full_path)
-        return AMLResponse(respBody, 200)
-    elif request.method == 'POST':
-        reqBody = request.get_data(False)
-        # For a real world solution, you would load the data from reqBody
-        # and send to the model. Then return the response.
-
-        # For demonstration purposes, this example just returns the posted data as the response.
-        return AMLResponse(reqBody, 200)
-    else:
-        return AMLResponse("bad request", 500)
-```
-
-> [!IMPORTANT]
-> `azureml.contrib` Obor názvů se často mění, protože budeme pracovat na vylepšení služby. V takovém případě by se cokoli v tomto oboru názvů měly považovat za verzi Preview a společnost Microsoft je plně Nepodporovaná.
->
-> Pokud potřebujete tuto možnost otestovat v místním vývojovém prostředí, můžete komponenty nainstalovat do `contrib` oboru názvů pomocí následujícího příkazu:
-> 
-> ```shell
-> pip install azureml-contrib-services
-> ```
+Informace o povolení podpory CORS ve službě najdete v tématu [sdílení prostředků mezi zdroji](how-to-deploy-and-where.md#cors).
 
 ## <a name="call-the-service-c"></a>Volání služby (C#)
 
@@ -528,3 +495,7 @@ Power BI podporuje využití webových služeb Azure Machine Learning k rozší�
 Pro vygenerování webové služby, která je podporována pro použití v Power BI, musí schéma podporovat formát vyžadovaný Power BI. [Naučte se vytvořit schéma podporované Power BI](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi).
 
 Po nasazení webové služby je tato služba příchodná z Power BIch toků dat. [Naučte se využívat Azure Machine Learning webové služby od Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+
+## <a name="next-steps"></a>Další postup
+
+Pokud chcete zobrazit referenční architekturu pro bodování modelů Pythonu a hloubkového učení v reálném čase, jděte do [centra architektury Azure](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

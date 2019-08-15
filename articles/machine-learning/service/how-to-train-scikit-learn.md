@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: e76a747f7e1d7ca7056edf5b69df0677aeff96a1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5c44f4ed5cd6488520bf6dd99f502f33049b9b17
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855998"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963003"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Sestavování scikitch modelů s využitím škálování pomocí služby Azure Machine Learning
 
@@ -192,12 +192,12 @@ model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste si vynaučili a zaregistrovali službu Machine Learning, model klasifikace pomocí scikit – informace o službě Azure Machine Learning.
 
-* Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek [nasazení modelu](how-to-deploy-and-where.md) .
+V tomto článku jste si vyškole a zaregistrovali model Keras ve službě Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek nasazení modelu.
 
-* [Ladit parametry](how-to-tune-hyperparameters.md).
-
-* [Sledovat metriky spuštění během školení](how-to-track-experiments.md).
-
-* Přečtěte si další informace o službě [hloubkového učení vs Machine Learning](concept-deep-learning-vs-machine-learning.md).
+> [!div class="nextstepaction"]
+> [Jak a kde nasadit modely](how-to-deploy-and-where.md)
+* [Sledovat spustit metriky během cvičení](how-to-track-experiments.md)
+* [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
+* [Nasazení trénovaného modelu](how-to-deploy-and-where.md)
+* [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

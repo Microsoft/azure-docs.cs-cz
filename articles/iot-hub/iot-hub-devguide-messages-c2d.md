@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 4b8df538110f6c0b17a1ed37a2a6063a5b89a6e4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880984"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68964128"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Posílání zpráv z cloudu na zařízení ze služby IoT Hub
 
@@ -82,10 +82,6 @@ Když odešlete zprávu typu cloud-zařízení, může služba požádat o doru�
 
 Pokud je hodnota **ACK** *plná*a neobdržíte zprávu o zpětné vazbě, znamená to, že vypršela platnost zprávy zpětné vazby. Služba nemůže zjistit, co se stalo s původní zprávou. V praxi by služba měla zajistit, aby mohla zpracovat zpětnou vazbu před vypršením platnosti. Maximální doba vypršení platnosti je dva dny, což ponechá čas k opětovnému spuštění služby, pokud dojde k selhání.
 
-> [!NOTE]
-> Po odstranění zařízení se odstraní také všechny nedokončené názory.
->
-
 Jak je vysvětleno v [koncových bodech](iot-hub-devguide-endpoints.md), služba IoT Hub poskytuje zpětnou vazbu prostřednictvím koncového bodu s přístupem ke službě, */Messages/servicebound/Feedback*jako zprávy. Sémantika pro příjem zpětné vazby je stejná jako u zpráv z cloudu na zařízení. Kdykoli je to možné, zpětná vazba je dávkovaná v jedné zprávě s následujícím formátem:
 
 | Vlastnost     | Popis |
@@ -126,6 +122,12 @@ Text zprávy zpětné vazby je zobrazen v následujícím kódu:
 ]
 ```
 
+**Nedokončená zpětná vazba pro Odstraněná zařízení**
+
+Při odstranění zařízení se odstraní také všechny nedokončené názory. Zpětná vazba ze zařízení se posílá v dávkách. Pokud se zařízení odstraní v úzkém okně (často méně než 1 sekunda) mezi tím, kdy zařízení potvrdí příjem zprávy a když se dokončí dávka dalšího názoru, zpětná vazba se neuskuteční.
+
+Toto chování můžete vyřešit tak, že před odstraněním svého zařízení počkáte na dobu, po kterou přijdete o zpětnou vazbu. Po odstranění zařízení by se měla v související zpětné vazbě zprávy předpokládat prohra.
+
 ## <a name="cloud-to-device-configuration-options"></a>Možnosti konfigurace z cloudu na zařízení
 
 Každá služba IoT Hub zpřístupňuje následující možnosti konfigurace pro zasílání zpráv z cloudu na zařízení:
@@ -139,7 +141,7 @@ Každá služba IoT Hub zpřístupňuje následující možnosti konfigurace pro
 
 Další informace o tom, jak tyto možnosti konfigurace nastavit, najdete v tématu [vytvoření centra IoT](iot-hub-create-through-portal.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o sadách SDK, které můžete použít pro příjem zpráv z cloudu na zařízení, najdete v tématu sady [SDK služby Azure IoT](iot-hub-devguide-sdks.md).
 

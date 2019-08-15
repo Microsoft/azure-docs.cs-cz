@@ -1,5 +1,5 @@
 ---
-title: Mazal Předpověď úvěrového rizika (citlivé na náklady)
+title: 'Ukázka vizuálního rozhraní #4: Klasifikace pro předpověď úvěrového rizika (citlivé na náklady)'
 titleSuffix: Azure Machine Learning service
 description: V tomto článku se dozvíte, jak vytvořit složitý experiment strojového učení pomocí vizuálního rozhraní. Naučíte se, jak implementovat vlastní skripty v Pythonu a porovnat více modelů a vybrat nejlepší možnost.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 942d6fa6db7ee2fc07fd11d3448ac7ec96c3bd43
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ee4b67c82ef2bf5a1ef9c060687cc1c937328e66
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845974"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990430"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Ukázka 4 – klasifikace: Předpověď úvěrového rizika (citlivé na náklady)
 

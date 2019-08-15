@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric sítě osvědčené postupy | Dokumentace Microsoftu
-description: Doporučené postupy pro správu sítě Service Fabric.
+title: Osvědčené postupy pro Azure Service Fabric Networking | Microsoft Docs
+description: Osvědčené postupy pro správu Service Fabric sítě
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
@@ -15,20 +15,20 @@ ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "66237326"
 ---
 # <a name="networking"></a>Sítě
 
-Jak vytvořit a spravovat clustery Azure Service Fabric, tím připojení k síti pro uzly a aplikace. Síťové prostředky patří rozsahy adres IP, virtuální sítě, nástroje pro vyrovnávání zatížení a skupiny zabezpečení sítě. V tomto článku se dozvíte, osvědčené postupy pro tyto prostředky.
+Při vytváření a správě clusterů Azure Service Fabric zajišťujete připojení k síti pro vaše uzly a aplikace. Síťové prostředky zahrnují rozsahy IP adres, virtuální sítě, nástroje pro vyrovnávání zatížení a skupiny zabezpečení sítě. V tomto článku se seznámíte s osvědčenými postupy pro tyto prostředky.
 
-Projděte si Azure [Service Fabric sítě vzory](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking) se naučíte vytvářet clustery, které používají následující funkce: Existující virtuální síť nebo podsíť, statickou veřejnou IP adresu, nástroje pro vyrovnávání zatížení jenom pro interní, nebo interní a externí nástroj pro vyrovnávání zatížení.
+Přečtěte si o [vzorcích sítě Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking) a Naučte se vytvářet clustery, které používají následující funkce: Existující virtuální síť nebo podsíť, statická veřejná IP adresa, nástroj pro vyrovnávání zatížení, interní a externí nástroj pro vyrovnávání zatížení.
 
-## <a name="infrastructure-networking"></a>Síťové infrastruktury
-Maximalizovat výkon virtuálního počítače s Akcelerovanými síťovými službami, deklarováním enableAcceleratedNetworking vlastnosti v šabloně Resource Manageru následující fragment kódu je virtuálního počítače Škálovací nastavení NetworkInterfaceConfigurations, který Umožňuje Akcelerovanými síťovými službami:
+## <a name="infrastructure-networking"></a>Sítě infrastruktury
+Díky deklaraci vlastnosti enableAcceleratedNetworking ve vaší Správce prostředků šabloně maximalizujete výkon svého virtuálního počítače pomocí akcelerované sítě. Tento fragment kódu je NetworkInterfaceConfigurations sady virtuálních počítačů. povoluje akcelerované síťové služby:
 
 ```json
 "networkInterfaceConfigurations": [
@@ -46,38 +46,38 @@ Maximalizovat výkon virtuálního počítače s Akcelerovanými síťovými slu
   }
 ]
 ```
-Cluster Service Fabric je možné zřídit na [Linux s Akcelerovanými síťovými službami](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli), a [Windows s Akcelerovanými síťovými službami](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
+Cluster Service Fabric můžete zřídit v systému [Linux s akcelerovanými síťovými](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)službami a [s](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)využitím akcelerovaných sítí.
 
-Akcelerované síťové služby se podporuje pro skladové položky řady virtuálních počítačů Azure: D/DSv2, D/DSv3, E nebo ESv3, F/FS, FSv2 a Ms a Mms. Akcelerované síťové služby byl testován úspěšně Standard_DS8_v3 SKU 1/23/2019 pro Service Fabric Windows Cluster a pomocí Standard_DS12_v2 01/29 nebo 2019 pro Linux clusteru Service Fabric.
+Pro SKU řady virtuálních počítačů Azure se podporují akcelerované síťové služby: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 a MS/MMS. Akcelerované síťové služby byly úspěšně testovány pomocí Standard_DS8_v3 SKU na 1/23/2019 pro cluster s Service Fabric Windows a použití Standard_DS12_v2 na 01/29/2019 pro cluster Service Fabric Linux.
 
-Povolit Akcelerovanými síťovými službami v existujícím clusteru Service Fabric, musíte si nejdřív [škálovat cluster Service Fabric out tak, že přidáte Škálovací sady virtuálních počítačů](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), proveďte následující kroky:
-1. Zřízení NodeType s Akcelerovanými síťovými službami povoleno
-2. Migrace služeb a jejich stav na zřízené NodeType s Akcelerovanými síťovými službami povoleno
+Pokud chcete povolit akcelerované síťové služby v existujícím clusteru Service Fabric, musíte nejdřív [škálovat Service Fabric clusteru tím, že přidáte sadu škálování virtuálního počítače](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), abyste provedli následující akce:
+1. Zřízení NodeType s povolenými akcelerovanými síťovými službami
+2. Migrujte své služby a jejich stav na zřízený NodeType s povolenými akcelerovanými síťovými službami.
 
-Horizontální navýšení kapacity infrastruktury je potřeba povolit Akcelerovanými síťovými službami v existujícím clusteru, protože povoluje Akcelerovanými síťovými službami v místě by způsobilo výpadky, protože se všechny virtuální počítače ve skupině dostupnosti vyžaduje [zastavit a uvolnit před zapnutím akcelerovaných síťových službách na jakékoli existující síťovou kartu](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
+Aby bylo možné povolit urychlené síťové služby v existujícím clusteru, je potřeba škálovat infrastrukturu, protože povolení akcelerovaných síťových služeb by způsobilo výpadky, protože vyžaduje, aby všechny virtuální počítače ve skupině dostupnosti byly [zastaveny a navráceny před povolení akcelerovaných sítí na jakémkoli existujícím síťovém adaptéru](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
 
-## <a name="cluster-networking"></a>Síť s clustery
+## <a name="cluster-networking"></a>Sítě clusteru
 
-* Clustery Service Fabric je možné nasadit do existující virtuální sítě pomocí kroků uvedených v [Service Fabric sítě vzory](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking).
+* Clustery Service Fabric můžete nasadit do existující virtuální sítě podle postupu popsaného v článku [vzory Service Fabric sítě](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking).
 
-* Skupiny zabezpečení sítě (Nsg) se doporučují pro typy uzlů, které omezují příchozí a odchozí provoz do svého clusteru. Ujistěte se, že jsou otevřené nezbytné porty v této skupině. Příklad: ![Pravidla NSG Service Fabric][NSGSetup]
+* Skupiny zabezpečení sítě (skupin zabezpečení sítě) se doporučují pro typy uzlů, které omezují příchozí a odchozí provoz do jejich clusteru. Ujistěte se, že jsou v NSG otevřené potřebné porty. Příklad: ![Service Fabric NSG pravidla][NSGSetup]
 
-* Primární typ uzlu, který obsahuje systémové služby Service Fabric není potřeba zpřístupnit prostřednictvím nástroje pro vyrovnávání zatížení externí a můžou být vystavené [interního nástroje load balancer](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer)
+* Typ primárního uzlu, který obsahuje Service Fabric systémové služby, nemusí být vystavený přes externí nástroj pro vyrovnávání zatížení a může být vystavený interním nástrojem [pro vyrovnávání zatížení](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer) .
 
-* Použití [statickou veřejnou IP adresu](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#static-public-ip-address-1) pro váš cluster.
+* Použijte pro svůj cluster [statickou veřejnou IP adresu](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#static-public-ip-address-1) .
 
-## <a name="application-networking"></a>Aplikace sítě
+## <a name="application-networking"></a>Aplikační síť
 
-* Ke spuštění úlohy kontejneru Windows, použijte [otevřete síťové režim](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) usnadnění komunikace service-to-service.
+* Pokud chcete spouštět úlohy kontejnerů Windows, použijte [režim otevřené sítě](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) a usnadněte si tak komunikaci mezi službami.
 
-* Použít reverzní proxy server, jako [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) nebo [Service Fabric reverzní proxy server](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) vystavit běžné porty aplikací, například 80 nebo 443.
+* K vystavování běžných aplikačních portů, jako je například 80 nebo 443, použijte reverzní proxy server, jako je [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) nebo [reverzní proxy Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) .
 
-* Pro kontejnery Windows hostované na kruhová s mezerou air počítače, které není možné si vyžádat základní vrstvy z cloudu Azure storage, přepsat chování cizí vrstvy pomocí [– povolit artefakty nondistributable](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) příznak v démona Dockeru.
+* Pro kontejnery Windows hostované na vzduchem gapped počítače, které nemůžou získat základní vrstvy z cloudového úložiště Azure, přepište chování cizí vrstvy pomocí příznaku [--Allow-undistribuovatelný-artefakts](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) v Docker démon.
 
 ## <a name="next-steps"></a>Další postup
 
-* Vytvoření clusteru na virtuální počítače nebo počítače se systémem Windows Server: [Vytvoření clusteru Service Fabric pro Windows Server](service-fabric-cluster-creation-for-windows-server.md)
-* Vytvoření clusteru na počítače s Linuxem nebo virtuální počítače: [Vytvoření clusteru s Linuxem](service-fabric-cluster-creation-via-portal.md)
+* Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Windows Server: [Vytvoření clusteru Service Fabric pro Windows Server](service-fabric-cluster-creation-for-windows-server.md)
+* Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Linux: [Vytvoření clusteru se systémem Linux](service-fabric-cluster-creation-via-portal.md)
 * Informace o [možnostech podpory pro Service Fabric](service-fabric-support.md)
 
 [NSGSetup]: ./media/service-fabric-best-practices/service-fabric-nsg-rules.png

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 524d0854e8691428738cee321e394f572ea80112
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 67ba9ba9bc85213ec479a90d205ed9570c62bf8c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689180"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954611"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -257,11 +257,11 @@ Vygenerovaný skript je podepsaný oficiálním certifikátem Microsoftu pro slu
 
 Pouze správce může spustit skript a spustit ho v režimu zvýšeného oprávnění. Skript spustí pouze předem vygenerovanou sadu kroků a nepřijímá vstup z externího zdroje.
 
-Pro spuštění skriptu jeden vyžaduje heslo, které se zobrazí pouze oprávněnému uživateli v době generování skriptu v Azure Portal nebo PowerShellu/CLI. K tomu je potřeba zajistit, že ověřený uživatel, který stáhne skript, zodpovídá také za spuštění skriptu.
+Pro spuštění skriptu jedna vyžaduje heslo, které se zobrazí pouze oprávněnému uživateli v době generování skriptu v Azure Portal nebo PowerShellu/CLI. K tomu je potřeba zajistit, že ověřený uživatel, který stáhne skript, zodpovídá také za spuštění skriptu.
 
 #### <a name="browse-files-and-folders"></a>Procházet soubory a složky
 
-K procházení souborů a složek skript používá iniciátor iSCSI v počítači a připojuje se k bodu obnovení, který je nakonfigurovaný jako cíl iSCSI. V takovém případě se může předpokládat, že se jedna z nich pokouší napodobovat/všem součástem.
+Pokud chcete procházet soubory a složky, používá skript iniciátor iSCSI v počítači a připojuje se k bodu obnovení, který je nakonfigurovaný jako cíl iSCSI. V takovém případě se může předpokládat, že se jedna z nich pokouší napodobovat/všem součástem.
 
 Používáme mechanismus vzájemného ověřování CHAP, aby každá součást ověřovala druhou. To znamená, že je mimořádně obtížné se přihlásit k cíli iSCSI a falešnému cíli připojit se k počítači, na kterém se skript spouští.
 

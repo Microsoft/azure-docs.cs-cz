@@ -6,15 +6,15 @@ author: seguler
 ms.service: storage
 ms.devlang: Java
 ms.topic: article
-ms.date: 02/28/2017
+ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 54e91d4df1109b9ece1150f8b44665789e4dfce1
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 10bfc3ce4666ee1653110099a3c8d22a58d80f35
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875886"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985303"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Použití Azure Storage s řešením Hudson Continuous Integration
 ## <a name="overview"></a>Přehled
@@ -73,11 +73,11 @@ Pokud chcete použít Blob service s Hudson, budete muset nainstalovat modul plu
 2. Na stránce **Spravovat Hudson** klikněte na **Konfigurovat systém**.
 3. V části **Konfigurace účtu Microsoft Azure Storage** :
    
-    a. Zadejte název svého účtu úložiště, který můžete získat z webu [Azure Portal](https://portal.azure.com).
+    a. Zadejte název svého účtu úložiště, který můžete získat z [Azure Portal](https://portal.azure.com).
    
-    b. Zadejte svůj klíč účtu úložiště, který se taky získá z webu [Azure Portal](https://portal.azure.com).
+    b. Zadejte svůj klíč účtu úložiště, který je také možné získat z [Azure Portal](https://portal.azure.com).
    
-    c. Pokud používáte veřejný cloud Azure, použijte výchozí hodnotu pro **adresu URL koncového bodu služby BLOB Service** . Pokud používáte jiný cloud Azure, použijte koncový bod zadaný na webu [Azure Portal](https://portal.azure.com) pro váš účet úložiště.
+    c. Pokud používáte globální cloud Azure, použijte výchozí hodnotu pro **adresu URL koncového bodu služby BLOB Service** . Pokud používáte jiný cloud Azure, použijte koncový bod zadaný v [Azure Portal](https://portal.azure.com) pro váš účet úložiště.
    
     d. Kliknutím na **ověřit přihlašovací údaje úložiště** ověřte účet úložiště.
    
@@ -107,8 +107,8 @@ Pro účely instrukcí nejdřív budeme muset vytvořit úlohu, která vytvoří
    
     **Tip**
    
-    Pod oddílem **příkazu** , kde jste zadali skript pro **příkaz Spustit dávku Windows** , je odkaz na proměnné prostředí rozpoznané nástrojem Hudson. Kliknutím na tento odkaz získáte informace o názvech a popisech proměnných prostředí. Všimněte si, že proměnné prostředí, které obsahují speciální znaky, jako je například proměnná prostředí **BUILD_URL** , nejsou povoleny jako název kontejneru nebo běžná virtuální cesta.
-8. V tomto příkladu klikněte na **nastavit nový kontejner jako Public** . (Pokud chcete použít privátní kontejner, budete muset pro povolení přístupu vytvořit sdílený přístupový podpis. Mimo rámec tohoto článku. Další informace o podpisech sdíleného přístupu najdete v [používání sdílených přístupových podpisů (SAS)](../storage-dotnet-shared-access-signature-part-1.md).)
+    Pod oddílem **příkazu** , kde jste zadali skript pro **příkaz Spustit dávku Windows** , je odkaz na proměnné prostředí rozpoznané nástrojem Hudson. Kliknutím na tento odkaz získáte informace o názvech a popisech proměnných prostředí. Proměnné prostředí, které obsahují speciální znaky, jako je například proměnná prostředí **BUILD_URL** , nejsou povoleny jako název kontejneru nebo běžná virtuální cesta.
+8. V tomto příkladu klikněte na **nastavit nový kontejner jako Public** . (Pokud chcete použít privátní kontejner, budete muset pro povolení přístupu vytvořit sdílený přístupový podpis. Mimo rámec tohoto článku. Další informace o podpisech sdíleného přístupu najdete v [používání sdílených přístupových podpisů (SAS)](storage-sas-overview.md).)
 9. Volitelné Klikněte na tlačítko **vyčistit kontejner před odesláním** , pokud chcete, aby kontejner vymazal obsah před odesláním artefaktů sestavení (nechte nezaškrtnuté, pokud nechcete vyčistit obsah kontejneru).
 10. **Seznam artefaktů, které se mají nahrát**, získáte zadáním **textu/*. txt**.
 11. Pro **společnou virtuální cestu pro**nahrané artefakty zadejte **$ {\_ID buildu}/$\_{číslo sestavení}** .
@@ -116,7 +116,7 @@ Pro účely instrukcí nejdřív budeme muset vytvořit úlohu, která vytvoří
 13. V řídicím panelu Hudson klikněte na **sestavit** a spusťte **MyJob**. Projděte si výstup konzoly pro stav. Stavové zprávy pro Azure Storage budou zahrnuty do výstupu konzoly, když akce po sestavení začne nahrávat artefakty sestavení.
 14. Po úspěšném dokončení úlohy můžete artefakty sestavení prošetřit otevřením veřejného objektu BLOB.
     
-    a. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+    a. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
     
     b. Klikněte na **úložiště**.
     
@@ -126,7 +126,7 @@ Pro účely instrukcí nejdřív budeme muset vytvořit úlohu, která vytvoří
     
     e. Klikněte na kontejner s názvem **MYJOB**, což je malá nebo Velká verze názvu úlohy, kterou jste přiřadili při vytváření úlohy Hudson. Názvy kontejnerů a názvy objektů BLOB jsou malými písmeny (a rozlišuje velká a malá písmena) v Azure Storage. V seznamu objektů BLOB pro kontejner s názvem **MYJOB** byste měli vidět **Hello. txt** a **Date. txt**. Zkopírujte adresu URL některé z těchto položek a otevřete ji v prohlížeči. Zobrazí se textový soubor, který byl nahrán jako artefakt sestavení.
 
-Pro každou úlohu se dá vytvořit jenom jedna akce po sestavení, která nahrává artefakty do úložiště objektů BLOB v Azure. Všimněte si, že jedna akce po sestavení pro nahrání artefaktů do úložiště objektů BLOB v Azure může určovat různé soubory (včetně zástupných znaků) a cesty k souborům v **seznamu artefaktů, které se budou nahrávat** středníkem jako oddělovač. Například pokud vaše sestavení Hudson vytváří soubory. txt a soubory TXT ve složce **sestavení** pracovního prostoru a chcete je nahrát do úložiště objektů BLOB v Azure, použijte následující **seznam artefaktů** pro nahrání hodnoty: **Build/\*. jar; Build/\*. txt**. K určení cesty k použití v názvu objektu blob můžete použít také syntaxi typu Double-dvojtečka. Například pokud chcete, aby se jar nahrál pomocí binárních  souborů v cestě objektů BLOB a souborů txt, aby se nahrály pomocí **oznámení** v cestě objektu blob, použijte následující **seznam artefaktů** pro nahrání hodnoty: **Build/\*. jar: : binární soubory; Build/\*. txt:: oznámení**.
+Pro každou úlohu se dá vytvořit jenom jedna akce po sestavení, která nahrává artefakty do úložiště objektů BLOB v Azure. Jedna akce po sestavení pro nahrání artefaktů do úložiště objektů BLOB v Azure může určovat různé soubory (včetně zástupných znaků) a cesty k souborům v **seznamu artefaktů, které se budou nahrávat** středníkem jako oddělovač. Například pokud vaše sestavení Hudson vytváří soubory. txt a soubory TXT ve složce **sestavení** pracovního prostoru a chcete je nahrát do úložiště objektů BLOB v Azure, použijte následující **seznam artefaktů** pro nahrání hodnoty: **Build/\*. jar; Build/\*. txt**. K určení cesty k použití v názvu objektu blob můžete použít také syntaxi typu Double-dvojtečka. Například pokud chcete, aby se jar nahrál pomocí binárních souborů v cestě objektů BLOB a souborů txt, aby se nahrály pomocí **oznámení** v cestě objektu blob, použijte následující **seznam artefaktů** pro nahrání hodnoty: **Build/\*. jar: : binární soubory; Build/\*. txt:: oznámení**.
 
 ## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Postup vytvoření kroku sestavení, který se stáhne ze služby Azure Blob Storage
 Následující kroky ukazují, jak nakonfigurovat krok sestavení ke stažení položek z úložiště objektů BLOB v Azure. To je užitečné, pokud chcete zahrnout položky do sestavení, například jar, které zachováte v úložišti objektů BLOB v Azure.
@@ -151,13 +151,13 @@ V následující části najdete přehled komponent Blob service.
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
-    (Výše uvedený formát platí pro veřejný cloud Azure. Pokud používáte jiný cloud Azure, určete koncový bod adresy URL pomocí koncového bodu na webu [Azure Portal](https://portal.azure.com) .)
+    (Výše uvedený formát se vztahuje na globální cloud Azure. Pokud používáte jiný cloud Azure, určete koncový bod adresy URL pomocí koncového bodu v rámci [Azure Portal](https://portal.azure.com) .)
   
     Ve výše uvedeném `storageaccount` formátu představuje název vašeho účtu úložiště, `container_name` představuje název vašeho kontejneru a `blob_name` představuje název vašeho objektu BLOB v uvedeném pořadí. V rámci názvu kontejneru můžete mít více cest oddělených lomítkem, **/** . Vzorový název kontejneru v tomto kurzu byl **MyJob**a pro běžnou virtuální cestu se použilo **\_$ {Build ID\_}/$ {Number}** . Výsledkem je, že objekt BLOB má adresu URL následujícího formátu:
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Meet Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Azure Storage SDK pro jazyk Java](https://github.com/azure/azure-storage-java)
 * [Referenční informace ke klientské sadě SDK služby Azure Storage](http://dl.windowsazure.com/storage/javadoc/)

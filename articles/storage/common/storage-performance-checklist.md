@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ee216bd4d6994179e347465c30039f2f8e293c85
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 48a5484e2b2b663d0046fc628c02e656c5bd7a25
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233021"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985167"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage
 
@@ -172,7 +172,7 @@ Obě tyto technologie vám pomohou vyhnout se zbytečnému zatížení vaší we
 
 #### <a name="useful-resources"></a>Užitečné materiály
 
-Další informace o SAS najdete v tématu [signatury sdíleného přístupu, část 1: Princip modelu](../storage-dotnet-shared-access-signature-part-1.md)SAS.  
+Další informace o SAS najdete v tématu [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](storage-sas-overview.md).  
 
 Další informace o CORS najdete v tématu [Podpora sdílení prostředků mezi zdroji (CORS) pro služby Azure Storage](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 

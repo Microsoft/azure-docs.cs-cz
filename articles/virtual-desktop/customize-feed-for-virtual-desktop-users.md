@@ -1,64 +1,64 @@
 ---
-title: Přizpůsobení kanálu pro uživatele virtuální plochy Windows – Azure
-description: Přizpůsobení kanálu pro uživatele Windows virtuální plochy pomocí rutin prostředí PowerShell.
+title: Přizpůsobení informačního kanálu pro uživatele virtuálních ploch Windows – Azure
+description: Postup přizpůsobení kanálu pro uživatele virtuálních počítačů s Windows pomocí rutin PowerShellu
 services: virtual-desktop
-author: v-hevem
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: v-hevem
-ms.openlocfilehash: 5fe2a8b8ee5870ff7986ca2d91739f82a5128882
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.author: helohr
+ms.openlocfilehash: 40fd863d9ad92b91b8e691fbb7be233e16b82c17
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618984"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950754"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Přizpůsobení kanálu pro uživatele Windows Virtual Desktopu
 
-Informační kanál můžete přizpůsobit tak, že vzdálené aplikace RemoteApp a vzdálené ploše prostředky objevit rozpoznatelných způsobem pro vaše uživatele.
+Informační kanál můžete přizpůsobit tak, aby se prostředky RemoteApp a Vzdálená plocha zobrazovaly rozpoznatelným způsobem pro vaše uživatele.
 
-Nejprve je potřeba [stáhněte a naimportujte modul Powershellu virtuální plochy Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) použít v relaci Powershellu, pokud jste tak již neučinili.
+Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
 
-## <a name="customize-the-display-name-for-a-remoteapp"></a>Přizpůsobení zobrazovaný název vzdálené aplikace RemoteApp
+## <a name="customize-the-display-name-for-a-remoteapp"></a>Přizpůsobení zobrazovaného názvu pro aplikaci RemoteApp
 
-Zobrazovaný název publikované aplikace RemoteApp můžete změnit nastavením popisný název. Ve výchozím nastavení popisný název je stejný jako název programu RemoteApp.
+Zobrazované jméno publikované aplikace RemoteApp můžete změnit nastavením popisného názvu. Ve výchozím nastavení je popisný název stejný jako název aplikace RemoteApp.
 
-Pokud chcete načíst seznam publikované aplikace RemoteApp pro skupinu aplikací, spusťte následující rutinu Powershellu:
+Pokud chcete načíst seznam publikovaných vzdálených aplikací RemoteApp pro skupinu aplikací, spusťte následující rutinu PowerShellu:
 
 ```powershell
 Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Snímek obrazovky rutiny Powershellu Get-RDSRemoteApp s názvem a FriendlyName zvýrazní.](media/get-rdsremoteapp.png)
+![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](media/get-rdsremoteapp.png)
 
-Přiřadit popisný název vzdálené aplikace RemoteApp, spusťte následující rutinu Powershellu:
+Chcete-li přiřadit popisný název k vzdálené aplikaci RemoteApp, spusťte následující rutinu prostředí PowerShell:
 
 ```powershell
 Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
 ```
-![Snímek obrazovky s rutiny prostředí PowerShell Set-RDSRemoteApp s názvem a nové FriendlyName zvýrazní.](media/set-rdsremoteapp.png)
+![Snímek obrazovky rutiny PowerShellu set-RDSRemoteApp s názvem a novým výrazem FriendlyName](media/set-rdsremoteapp.png)
 
-## <a name="customize-the-display-name-for-a-remote-desktop"></a>Přizpůsobení zobrazovaný název pro vzdálenou plochu
+## <a name="customize-the-display-name-for-a-remote-desktop"></a>Přizpůsobení zobrazovaného názvu pro vzdálenou plochu
 
-Zobrazovaný název pro publikovaná Vzdálená plocha můžete změnit nastavením popisný název. Pokud jste ručně vytvořili hostitele fondu a desktopové aplikace skupiny prostřednictvím prostředí PowerShell, je výchozí popisný název "Desktop relace." Pokud jste vytvořili hostitele fondu a skupiny desktopovou aplikaci pomocí šablony GitHub Azure Resource Manageru nebo webu Azure Marketplace nabízí, popisný název výchozí je stejný jako název hostitele fondu.
+Zobrazované jméno publikované vzdálené plochy můžete změnit nastavením popisného názvu. Pokud jste ručně vytvořili fond hostitelů a skupinu aplikací klasické pracovní plochy prostřednictvím PowerShellu, výchozí popisný název je "session Desktop". Pokud jste vytvořili fond hostitelů a skupinu aplikací klasické pracovní plochy pomocí šablony Azure Resource Manager GitHubu nebo nabídky Azure Marketplace, výchozí popisný název je stejný jako název fondu hostitelů.
 
-Pokud chcete načíst vzdáleného prostředku klasické pracovní plochy, spusťte následující rutiny Powershellu:
+Pokud chcete načíst prostředek vzdálené plochy, spusťte následující rutinu PowerShellu:
 
 ```powershell
 Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Snímek obrazovky rutiny Powershellu Get-RDSRemoteApp s názvem a FriendlyName zvýrazní.](media/get-rdsremotedesktop.png)
+![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](media/get-rdsremotedesktop.png)
 
-Přiřadit popisný název vzdáleného prostředku klasické pracovní plochy, spusťte následující rutinu Powershellu:
+Chcete-li přiřadit popisný název k prostředku vzdálené plochy, spusťte následující rutinu prostředí PowerShell:
 
 ```powershell
 Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
 ```
-![Snímek obrazovky s rutiny prostředí PowerShell Set-RDSRemoteApp s názvem a nové FriendlyName zvýrazní.](media/set-rdsremotedesktop.png)
+![Snímek obrazovky rutiny PowerShellu set-RDSRemoteApp s názvem a novým výrazem FriendlyName](media/set-rdsremotedesktop.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste přizpůsobili informačního kanálu pro uživatele, můžete přihlásit ke klientovi virtuální plochy Windows na otestování. Uděláte to tak, i nadále připojit k virtuální ploše postupy Windows:
+Teď, když jste přizpůsobili informační kanál pro uživatele, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat ho. Provedete to tak, že přejdete do části s postupy pro připojení k virtuálnímu počítači s Windows:
     
- * [Připojení z Windows 10 nebo Windows 7](connect-windows-7-and-10.md)
- * [Připojte se z webového prohlížeče](connect-web.md) 
+ * [Připojení ze systému Windows 10 nebo Windows 7](connect-windows-7-and-10.md)
+ * [Připojení z webového prohlížeče](connect-web.md) 

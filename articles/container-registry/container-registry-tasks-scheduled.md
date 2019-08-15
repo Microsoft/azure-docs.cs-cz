@@ -8,16 +8,16 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 680f0268e85d41f8061dc96db1779ab6c22b944a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310544"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967582"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Spuštění úlohy ACR podle definovaného plánu
 
-V tomto článku se dozvíte, jak spustit [úlohu ACR](container-registry-tasks-overview.md) podle plánu. Naplánování úlohy nastavením jedné nebo více *aktivačních událostí časovače*. 
+V tomto článku se dozvíte, jak spustit [úlohu ACR](container-registry-tasks-overview.md) podle plánu. Naplánování úlohy nastavením jedné nebo více *aktivačních událostí časovače*.
 
 Plánování úlohy je užitečné pro následující scénáře:
 
@@ -29,18 +29,18 @@ Příklady v tomto článku můžete spustit pomocí Azure Cloud Shell nebo mís
 
 ## <a name="about-scheduling-a-task"></a>Plánování úlohy
 
-* **Aktivační událost s výrazem cron** – aktivační událost časovače pro úlohu používá *výraz cron*. Výraz je řetězec s pěti poli, které určují minuty, hodinu, den, měsíc a den v týdnu, kdy se má úkol aktivovat. Frekvence se podporuje až jednou za minutu. 
+* **Aktivační událost s výrazem cron** – aktivační událost časovače pro úlohu používá *výraz cron*. Výraz je řetězec s pěti poli, které určují minuty, hodinu, den, měsíc a den v týdnu, kdy se má úkol aktivovat. Frekvence se podporuje až jednou za minutu.
 
-  Výraz `"0 12 * * Mon-Fri"` například aktivuje úlohu v poledne standardu UTC každého dne v týdnu. Další informace najdete [v části dále](#cron-expressions) v tomto článku.
-* **Více triggerů časovače** – přidávání více časovačů k úkolu je povoleno, pokud se plány liší. 
+  Výraz `"0 12 * * Mon-Fri"` například aktivuje úlohu v poledne standardu UTC každého dne v týdnu. Další [](#cron-expressions) informace najdete v části dále v tomto článku.
+* **Více triggerů časovače** – přidávání více časovačů k úkolu je povoleno, pokud se plány liší.
     * Při vytváření úlohy zadejte více triggerů časovače nebo je přidejte později.
     * Volitelně můžete pojmenovat triggery pro snadnější správu, jinak budou ACR úlohy poskytovat výchozí názvy aktivačních událostí.
-    * Pokud se plány časovače překrývají v čase, úlohy ACR aktivují úlohu v naplánovaném čase každého časovače. 
+    * Pokud se plány časovače překrývají v čase, úlohy ACR aktivují úlohu v naplánovaném čase každého časovače.
 * **Další triggery úloh** – v úloze aktivované časovačem můžete také povolit triggery na základě [potvrzení zdrojového kódu](container-registry-tutorial-build-task.md) nebo [aktualizací Base image](container-registry-tutorial-base-image-update.md). Stejně jako jiné úlohy ACR můžete také [ručně aktivovat][az-acr-task-run] naplánovanou úlohu.
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Vytvoření úlohy pomocí triggeru časovače
 
-Při vytváření úlohy pomocí příkazu [AZ ACR Task Create][az-acr-task-create] můžete volitelně přidat Trigger časovače. `--schedule` Přidejte parametr a předejte výraz cron pro časovač. 
+Při vytváření úlohy pomocí příkazu [AZ ACR Task Create][az-acr-task-create] můžete volitelně přidat Trigger časovače. `--schedule` Přidejte parametr a předejte výraz cron pro časovač.
 
 Jednoduchým příkladem je následující příkaz `hello-world` , který spouští image z Docker Hub každý den v 21:00 UTC. Úloha se spustí bez kontextu zdrojového kódu.
 
@@ -86,8 +86,8 @@ This message shows that your installation appears to be working correctly.
 Po naplánovaném čase spusťte příkaz [AZ ACR Task list-][az-acr-task-list-runs] runs a ověřte, že časovač aktivoval úlohu podle očekávání:
 
 ```azurecli
-az acr task list runs --name mytask --registry myregistry --output table
-``` 
+az acr task list-runs --name mytask --registry myregistry --output table
+```
 
 Po úspěšném časovači je výstup podobný následujícímu:
 
@@ -98,7 +98,7 @@ RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURAT
 cf2b      mytask   linux       Succeeded  Timer      2019-06-28T21:00:23Z  00:00:06
 cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00:06
 ```
-            
+
 ## <a name="manage-timer-triggers"></a>Správa aktivačních událostí časovače
 
 Pomocí příkazů [AZ ACR Task Timer][az-acr-task-timer] můžete spravovat triggery časovače pro úlohu ACR.
@@ -150,7 +150,7 @@ Příklad výstupu:
 ]
 ```
 
-### <a name="remove-a-timer-trigger"></a>Odebrání triggeru časovače 
+### <a name="remove-a-timer-trigger"></a>Odebrání triggeru časovače
 
 Pomocí příkazu [AZ ACR Task Timer Remove][az-acr-task-timer-remove] odeberte aktivační událost časovače z úlohy. Následující příklad odebere aktivační událost *timer2* z *MyTask*:
 
@@ -178,7 +178,7 @@ Každé pole může mít jeden z následujících typů hodnot:
 |---------|---------|---------|
 |Konkrétní hodnota |<nobr>"5 * * * *"</nobr>|každou hodinu 5 minut po hodině|
 |Všechny hodnoty (`*`)|<nobr>"* 5 * * *"</nobr>|každou minutu hodiny začínající 5:00 UTC (60 krát den)|
-|Rozsah (`-` operátor)|<nobr>"0 1-3 * * *"</nobr>|3 časy za den, v 1:00, 2:00 a 3:00 UTC|  
+|Rozsah (`-` operátor)|<nobr>"0 1-3 * * *"</nobr>|3 časy za den, v 1:00, 2:00 a 3:00 UTC|
 |Sada hodnot (`,` operator)|<nobr>"20,30,40 * * * *"</nobr>|3 časy za hodinu, 20 minut, 30 minut a 40 minut po hodině|
 |Hodnota intervalu (`/` operátor)|<nobr>"*/10 * * * *"</nobr>|6 časů za hodinu, 10 minut, 20 minut atd., po celou hodinu
 

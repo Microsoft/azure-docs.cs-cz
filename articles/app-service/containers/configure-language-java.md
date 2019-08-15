@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 1488dbdcc042b29880560e7255de96b8d0409779
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 825379c04c22b3f13e651455c490a58ad47169d8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498508"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967159"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
@@ -243,9 +243,6 @@ Pro vložení těchto tajných kódů do konfiguračního souboru jarní nebo To
 
 V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App Service v systému Linux pomocí platforem APM (Application Performance Monitoring) pro NewRelic a AppDynamics.
 
-[Konfigurace nového Relic](#configure-new-relic)
-[Konfigurace AppDynamics](#configure-appdynamics)
-
 ### <a name="configure-new-relic"></a>Konfigurovat nové Relic
 
 1. Vytvoření účtu NewRelic na [NewRelic.com](https://newrelic.com/signup)
@@ -257,8 +254,7 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 7. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
     - Pokud vaše aplikace používá **Java se**, vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou. `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`
     - Pokud používáte **Tomcat**, vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou. `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`
-    - Pokud používáte **WildFly**, přečtěte si [novou dokumentaci k](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java) Relic, kde najdete pokyny k instalaci agenta Java a konfiguraci JBoss.
-    - Pokud již máte proměnnou prostředí pro `JAVA_OPTS` nebo `CATALINA_OPTS`, přidejte `javaagent` možnost na konec aktuální hodnoty.
+    - Pokud používáte **WildFly**, přečtěte si novou dokumentaci k Relic [](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java) , kde najdete pokyny k instalaci agenta Java a konfiguraci JBoss.
 
 ### <a name="configure-appdynamics"></a>Konfigurace AppDynamics
 
@@ -269,7 +265,9 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 5. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
     - Pokud používáte **Java se**systémem, vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , kde `<app-name>` je váš App Service název.
     - Pokud používáte **Tomcat**, vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , kde `<app-name>` je váš App Service název.
-    - Pokud používáte **WildFly**, přečtěte si dokumentaci k AppDynamics [, kde najdete](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) pokyny k instalaci agenta Java a konfiguraci JBoss.
+    - Pokud používáte **WildFly**, přečtěte si dokumentaci k AppDynamics [](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) , kde najdete pokyny k instalaci agenta Java a konfiguraci JBoss.
+
+>  Pokud již máte proměnnou prostředí pro `JAVA_OPTS` nebo `CATALINA_OPTS`, přidejte `-javaagent:/...` možnost na konec aktuální hodnoty.
 
 ## <a name="configure-jar-applications"></a>Konfigurovat aplikace JAR
 
@@ -425,7 +423,7 @@ Další informace o tomto tématu najdete v [dokumentaci ke jarnímu spuštění
 ## <a name="configure-java-ee-wildfly"></a>Konfigurace jazyka Java EE (WildFly)
 
 > [!NOTE]
-> Java Enterprise Edition v systému App Service Linux je momentálně ve verzi Preview. Tento zásobník se **nedoporučuje pro** práci na produkčním prostředí. informace o našich zásobnících Java SE a Tomcat.
+> Java Enterprise Edition v systému App Service Linux je momentálně ve verzi Preview. Tento zásobník se nedoporučuje pro práci na produkčním prostředí. informace o našich zásobnících Java SE a Tomcat.
 
 Azure App Service v systému Linux umožňuje vývojářům v jazyce Java sestavovat, nasazovat a škálovat aplikace Java Enterprise (Java EE) na plně spravovanou službu se systémem Linux.  Základní běhové prostředí Java Enterprise je open source aplikační server [WildFly](https://wildfly.org/) .
 

@@ -1,29 +1,29 @@
 ---
-title: Výuka a registrace modelů TensorFlow
+title: Školení neuronové sítě s hloubkovým učením pomocí TensorFlow
 titleSuffix: Azure Machine Learning service
-description: V tomto článku se dozvíte, jak pomocí Azure Machine Learning služby vyškolit a registrovat model TensorFlow.
+description: Naučte se, jak spouštět školicí skripty TensorFlow ve velkém měřítku pomocí služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
-ms.date: 06/10/2019
+ms.date: 08/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5d281598bc905914b71f40d556cfa0b16a46485
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 41ebca7bd4ea299bda7e2d7a95edced583866527
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847659"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966797"
 ---
-# <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Analýza a registrace modelů TensorFlow ve velkém měřítku pomocí Azure Machine Learning služby
+# <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Vytvářejte TensorFlow model hloubkového učení ve velkém měřítku pomocí Azure Machine Learning
 
-V tomto článku se dozvíte, jak pomocí Azure Machine Learning služby vyškolit a registrovat model TensorFlow. Používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí hluboké neuronové sítě vytvořené pomocí [knihovny Pythonu TensorFlow](https://www.tensorflow.org/overview).
+V tomto článku se dozvíte, jak spustit školicí skripty [TensorFlow](https://www.tensorflow.org/overview) ve velkém měřítku pomocí třídy [estimator TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) v Azure Machine Learning. V tomto příkladu se navlacích a registruje TensorFlow model pro klasifikaci psaných číslic pomocí neuronové sítě (DNN).
 
-TensorFlow je open source výpočetní rozhraní, které se běžně používá k vytváření neuronové sítí (DNN). Pomocí služby Azure Machine Learning můžete rychle škálovat Open Source školicí úlohy pomocí výpočetních prostředků elastického cloudu. Můžete také sledovat vaše školicí běhy, modely verzí, nasazovat modely a mnohem víc.
+Bez ohledu na to, jestli vyvíjíte model TensorFlow z provozu nebo přenášíte [existující model](how-to-deploy-existing-model.md) do cloudu, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh pro sestavování, nasazování, správu a monitorování modelů produkčních prostředků. .
 
-Bez ohledu na to, jestli vyvíjíte model TensorFlow z provozu nebo přenášíte [stávající model](how-to-deploy-existing-model.md) do cloudu, Azure Machine Learning služba vám může pomáhat při sestavování modelů připravených pro produkční prostředí.
+Přečtěte si další informace o službě [hloubkového učení vs Machine Learning](concept-deep-learning-vs-machine-learning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,7 +32,7 @@ Spusťte tento kód v jednom z těchto prostředí:
  - Virtuální počítač s poznámkovým blokem Azure Machine Learning – nemusíte stahovat nebo instalovat
 
      - Dokončete [kurz: Nastavte prostředí a pracovní](tutorial-1st-experiment-sdk-setup.md) prostor pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného pomocí sady SDK a ukázkového úložiště.
-    - Ve složce Samples na serveru poznámkového bloku najděte dokončený a rozbalený Poznámkový blok tak, že přejdete na tento adresář: **postupy-použití-azureml > školení – with-learning > výuka-tensorflow** . 
+    - Ve složce ukázek pro hloubkové učení na serveru poznámkového bloku najděte dokončený a rozbalený Poznámkový blok tak, že přejdete do tohoto adresáře: **postupy-použití-azureml > školení – s hloubkovým učením > výukový-tensorflow-Tune-Deploy-with-** složky. 
  
  - Váš vlastní server Jupyter Notebook
 
@@ -73,7 +73,7 @@ Vytvořte objekt pracovního prostoru ze `config.json` souboru vytvořeného v [
 ws = Workspace.from_config()
 ```
 
-### <a name="create-an-experiment"></a>Vytvoření experimentu
+### <a name="create-a-deep-learning-experiment"></a>Vytvoření experimentu s hloubkovým učením
 
 Vytvořte experiment a složku, do které se budou ukládat skripty pro školení. V tomto příkladu vytvořte experiment s názvem TF-mnist ručně zapsaných.
 
@@ -288,9 +288,13 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste si vyškole a zaregistrovali model TensorFlow. Pokud chcete zjistit, jak nasadit model do clusteru s podporou GPU, pokračujte na náš článek nasazení modelu GPU.
 
-[Postup nasazení pro Inferencing s](how-to-deploy-inferencing-gpus.md)
-grafickým procesorem (GPU)[jak monitorovat pomocí Tensorboard](how-to-monitor-tensorboard.md)
+> [!div class="nextstepaction"]
+> [Jak a kde nasadit modely](how-to-deploy-and-where.md)
+* [Sledovat spustit metriky během cvičení](how-to-track-experiments.md)
+* [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
+* [Nasazení trénovaného modelu](how-to-deploy-and-where.md)
+* [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

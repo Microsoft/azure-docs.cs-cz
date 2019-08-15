@@ -4,22 +4,22 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: b8585b62b0728d1ba6e010e42b44840903c46833
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ee368b58195d61a1c6792a3a3655122af7104d58
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175475"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012080"
 ---
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-**Propojenou službu Azure Storage** umožňuje propojit účet úložiště Azure do služby Azure data factory pomocí **klíč účtu**, který nabízí služby data factory a globální přístup ke službě Azure Storage. Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro propojenou službu Azure Storage.
+**Propojená služba Azure Storage** umožňuje propojit účet Azure Storage s objektem pro vytváření dat Azure pomocí **klíče účtu**, který poskytuje datovou továrnu s globálním přístupem k Azure Storage. Následující tabulka uvádí popis pro prvky JSON specifické pro Azure Storage propojenou službu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type |Vlastnost type musí být nastavená na: **AzureStorage** |Ano |
-| connectionString |Zadejte informace potřebné pro připojení k Azure storage pro vlastnost připojovací řetězec. |Ano |
+| type |Vlastnost Type musí být nastavená na: **AzureStorage** |Ano |
+| connectionString |Zadejte informace potřebné pro připojení k úložišti Azure pro vlastnost connectionString. |Ano |
 
-Najdete v následující části najdete postup zobrazení nebo kopírování klíč účtu pro službu Azure Storage: [Přístupové klíče](../articles/storage/common/storage-account-manage.md#access-keys).
+V následující části najdete postup, jak zobrazit/zkopírovat klíč účtu pro Azure Storage: [Přístupové klíče](../articles/storage/common/storage-account-manage.md#access-keys).
 
 **Příklad:**  
 
@@ -35,22 +35,22 @@ Najdete v následující části najdete postup zobrazení nebo kopírování kl
 }
 ```
 
-### <a name="azure-storage-sas-linked-service"></a>Propojená služba Azure Storage Sas
-Sdílený přístupový podpis (SAS) poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Umožňuje udělit že klienta omezená oprávnění k objektům v účtu úložiště na dobu určitou dobu a s konkrétní sadou oprávnění, aniž byste museli sdílet přístupové klíče vašeho účtu. PODPIS je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště pomocí sdíleného přístupového podpisu, musí klient pouze a zajistěte tak předání SAS odpovídajícího konstruktoru nebo metody. Podrobné informace o SAS najdete v tématu [sdílené přístupové podpisy: Vysvětlení modelu SAS](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
+### <a name="azure-storage-sas-linked-service"></a>Azure Storage propojená služba SAS
+Sdílený přístupový podpis (SAS) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. Umožňuje klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po určitou dobu a se zadanou sadou oprávnění bez nutnosti sdílení přístupových klíčů k účtu. SAS je identifikátor URI, který v parametrech dotazu zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště. Chcete-li získat přístup k prostředkům úložiště pomocí SAS, klient musí předat SAS pouze příslušnému konstruktoru nebo metodě. Další informace o SAS najdete v tématu [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](../articles/storage/common/storage-sas-overview.md).
 
 > [!IMPORTANT]
-> Azure Data Factory podporuje nyní pouze **SAS služby** , ale ne SAS účtu. V tématu [typy z sdílené přístupové podpisy](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) podrobné informace o těchto dvou typů a jak sestavit. Poznámka: adresa URL SAS generable z webu Azure portal nebo Průzkumníka služby Storage je SAS účtu, který není podporován.
+> Azure Data Factory teď podporuje jenom **SAS služby** , ale ne účet SAS. Všimněte si, že adresa URL SAS generable z Azure Portal nebo Průzkumník služby Storage je SAS účtu, který není podporovaný.
 
 > [!TIP]
-> Spuštěním následujících příkazů prostředí PowerShell k vygenerování SAS služby pro účet úložiště (nahrazení zástupné znaky a udělit příslušná oprávnění): `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> Můžete provést následující příkazy prostředí PowerShell a vygenerovat pro svůj účet úložiště SAS služby (nahradíte držitele místa a udělí potřebné oprávnění):`$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-Služby Azure Storage SAS propojené umožňuje propojit účet úložiště Azure do služby Azure data factory pomocí sdílený přístupový podpis (SAS). Poskytuje objekt pro vytváření dat s omezením pomocí specifikátoru/časově omezenou přístup k prostředkům all/konkrétní (objektu blob nebo kontejneru) ve službě storage. Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro SAS úložiště Azure, propojené služby. 
+Propojená služba Azure Storage SAS umožňuje propojit účet Azure Storage s datovou továrnou Azure pomocí sdíleného přístupového podpisu (SAS). Poskytuje datovou továrnu s omezeným/časově vázaným přístupem ke všem/konkrétním prostředkům (objektům blob nebo kontejneru) v úložišti. Následující tabulka uvádí popis pro prvky JSON specifické pro Azure Storage propojenou službu SAS. 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type |Vlastnost type musí být nastavená na: **AzureStorageSas** |Ano |
-| sasUri |Zadejte identifikátor URI podpis sdíleného přístupu k prostředkům služby Azure Storage jako objekt blob, kontejneru nebo tabulky.  |Ano |
+| type |Vlastnost Type musí být nastavená na: **AzureStorageSas** |Ano |
+| sasUri |Zadejte identifikátor URI sdíleného přístupového podpisu k prostředkům Azure Storage, jako je například objekt blob, kontejner nebo tabulka.  |Ano |
 
 **Příklad:**
 
@@ -66,9 +66,9 @@ Služby Azure Storage SAS propojené umožňuje propojit účet úložiště Azu
 }
 ```
 
-Při vytváření **identifikátor URI SAS**, vzhledem k tomu následující:  
+Při vytváření **identifikátoru URI SAS**zvažte následující:  
 
-* Nastavte odpovídající čtení/zápis **oprávnění** na objekty podle použití propojené služby (čtení, zápisu, čtení a zápis) ve službě data factory.
-* Nastavte **čas vypršení platnosti** odpovídajícím způsobem. Ujistěte se, že přístup k objektům služby Azure Storage, nemá prošlou platnost do aktivního období kanálu.
-* Identifikátor URI musí být vytvořené na správný kontejner nebo objekt blob nebo Table úrovni podle potřeby. Identifikátor Uri SAS do objektu blob Azure umožňuje službě Data Factory pro přístup k této konkrétní objekt blob. Identifikátor Uri SAS pro kontejner objektů blob v Azure umožňuje službě Data Factory k iteraci v rámci objektů BLOB v tomto kontejneru. Pokud potřebujete k zajištění přístupu více nebo méně objektů později nebo aktualizujte identifikátor URI SAS, nezapomeňte aktualizovat propojenou službu s nový identifikátor URI.   
+* Nastavte vhodná **oprávnění** ke čtení a zápisu pro objekty na základě způsobu, jakým se ve vaší datové továrně používá propojená služba (čtení, zápis, čtení a zápis).
+* Nastavte **čas vypršení platnosti** odpovídajícím způsobem. Ujistěte se, že v aktivním období kanálu není vypršet přístup k Azure Storage objektům.
+* Identifikátor URI by měl být vytvořen na pravé úrovni kontejneru nebo objektu BLOB nebo tabulky podle potřeby. Identifikátor URI SAS pro objekt blob Azure umožňuje službě Data Factory získat přístup k tomuto konkrétnímu objektu BLOB. Identifikátor URI SAS pro kontejner objektů BLOB v Azure umožňuje službě Data Factory iterovat objekty BLOB v tomto kontejneru. Pokud potřebujete poskytnout přístup více nebo méně objektů později nebo aktualizovat identifikátor URI SAS, nezapomeňte aktualizovat propojenou službu novým identifikátorem URI.   
 

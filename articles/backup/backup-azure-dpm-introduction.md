@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0c762054ed0df3a3781dda7057ff8793dbf82565
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 71070a778e54e51cdb528041f746489bb64e979c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689309"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954714"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -97,7 +97,7 @@ Pokud chcete získat přihlašovací údaje, Stáhněte si soubor s přihlašova
 - Je vaše zodpovědnost za to, že soubor s přihlašovacími údaji trezoru je bezpečný a neohrožuje.
     - Pokud se kontrola přihlašovacích údajů ztratí, můžou se přihlašovací údaje k trezoru použít k registraci dalších počítačů do trezoru.
     - Záložní data se ale šifrují pomocí přístupového hesla, který patří zákazníkovi, takže stávající zálohovaná data nejdou ohrozit.
-- Ujistěte se, že je soubor uložený v umístění, ke kterému se dá dostat ze serveru DPM. Pokud je soubor uložený ve sdílené složce nebo v protokolu SMB, vyhledejte přístupová oprávnění.
+- Zajistěte, aby byl soubor uložen v umístění, ke kterému lze přistupovat ze serveru aplikace DPM. Pokud je soubor uložený ve sdílené složce nebo v protokolu SMB, vyhledejte přístupová oprávnění.
 - Platnost přihlašovacích údajů trezoru vyprší po 48 hodinách. Nové přihlašovací údaje trezoru můžete stáhnout tolikrát, kolikrát potřebujete. Během pracovního postupu registrace se ale dá použít jenom nejnovější soubor s přihlašovacími údaji k trezoru.
 - Služba Azure Backup neznáte s privátním klíčem certifikátu a privátní klíč není k dispozici na portálu ani v této službě.
 
@@ -183,7 +183,7 @@ Soubor s přihlašovacími údaji trezoru je platný jenom pro 48 hodiny (po sta
 
 ### <a name="access-error"></a>Chyba přístupu
 
-Zajistěte, aby byl soubor s přihlašovacími údaji trezoru dostupný v umístění, ke kterému má přístup instalační aplikace. Pokud narazíte na chyby související s přístupem, zkopírujte soubor s přihlašovacími údaji trezoru do dočasného umístění v tomto počítači a zkuste operaci zopakovat.
+Zajistěte, aby byl soubor s přihlašovacími údaji úložiště k dispozici v umístění, ke kterému může instalační aplikace získat přístup. Pokud narazíte na chyby související s přístupem, zkopírujte soubor s přihlašovacími údaji trezoru do dočasného umístění v tomto počítači a zkuste operaci zopakovat.
 
 ### <a name="invalid-credentials-error"></a>Chyba neplatných přihlašovacích údajů
 

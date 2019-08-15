@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: d7fb9fadcfac0b57fb98dc54f40ff0d2f07c6827
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: eb4f0e26d1795abc3392e9736e71093fab79aae2
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728399"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967931"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Rámec zabezpečení: Ověřování | Hrozeb 
 
@@ -435,7 +435,7 @@ Počítejte s tím, že pokud chcete otestovat efektivitu této konfigurace, př
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
-| **Kroky** | <p>Knihovna Azure AD Authentication Library (ADAL) umožňuje vývojářům klientských aplikací snadno ověřovat uživatele v cloudu nebo místní službě Active Directory (AD) a pak získat přístupové tokeny pro zabezpečení volání rozhraní API.</p><p>ADAL má mnoho funkcí, které usnadňují ověřování pro vývojáře, jako je například asynchronní podpora, konfigurovatelný mezipaměť tokenu, která ukládá přístupové tokeny a aktualizuje tokeny, automatickou aktualizaci tokenu, když vyprší platnost přístupového tokenu a je k dispozici aktualizační token. aktuálnější.</p><p>S využitím většiny složitosti může ADAL pomáhat vývojářům ve své aplikaci soustředit se na obchodní logiku a snadno zabezpečit prostředky, aniž by byl odborník na zabezpečení. K dispozici jsou samostatné knihovny pro .NET, JavaScript (klient a Node. js), iOS, Android a Java.</p>|
+| **Kroky** | <p>Knihovna Azure AD Authentication Library (ADAL) umožňuje vývojářům klientských aplikací snadno ověřovat uživatele v cloudu nebo místní službě Active Directory (AD) a pak získat přístupové tokeny pro zabezpečení volání rozhraní API.</p><p>ADAL má mnoho funkcí, které usnadňují ověřování pro vývojáře, jako je například asynchronní podpora, konfigurovatelný mezipaměť tokenu, která ukládá přístupové tokeny a aktualizuje tokeny, automatickou aktualizaci tokenu, když vyprší platnost přístupového tokenu a je k dispozici aktualizační token. aktuálnější.</p><p>S využitím většiny složitosti může ADAL pomáhat vývojářům ve své aplikaci soustředit se na obchodní logiku a snadno zabezpečit prostředky, aniž by byl odborník na zabezpečení. K dispozici jsou samostatné knihovny pro .NET, JavaScript (klient a Node. js), Python, iOS, Android a Java.</p>|
 
 ## <a id="authn-devices-field"></a>Ověřování zařízení připojujících se k bráně pole
 

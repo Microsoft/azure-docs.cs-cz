@@ -1,96 +1,96 @@
 ---
-title: Klientské knihovny požadované pro připojení ke službě Azure Analysis Services | Dokumentace Microsoftu
-description: Popisuje klientské knihovny požadované pro klientské aplikace a nástroje pro připojení k Azure Analysis Services
+title: Klientské knihovny vyžadované pro připojení k Azure Analysis Services | Microsoft Docs
+description: Popisuje klientské knihovny vyžadované pro připojení klientských aplikací a nástrojů Azure Analysis Services
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 08/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: db2557bd34cace220b1c9e5f7e6932dd63d9f89c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7f90c5ecb3c53792ca819eeba98b5f21f548473
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734536"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987484"
 ---
-# <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Klientské knihovny pro připojení ke službě Azure Analysis Services
+# <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Klientské knihovny pro připojení k Azure Analysis Services
 
-Klientské knihovny jsou nezbytné pro klientské aplikace a nástroje pro připojení k serverům služby Analysis Services. Klientské aplikace Microsoftu, jako jsou Power BI Desktopu, Excelu, SQL Server Management Studio (SSMS) a SQL Server Data Tools (SSDT) nainstalujte všechny tři klientské knihovny a provede jejich aktualizaci spolu s aktualizací regulární aplikace. V některých případech budete muset nainstalovat novější verze klientské knihovny. Vlastní klientské aplikace vyžadovat také, že jsou nainstalované knihovny klienta.
+Klientské knihovny jsou nezbytné pro připojení klientských aplikací a nástrojů k Analysis Servicesovým serverům. Klientské aplikace Microsoftu, jako jsou Power BI Desktop, Excel, SQL Server Management Studio (SSMS) a SQL Server Data Tools (SSDT), instalují všechny tři klientské knihovny a aktualizují je spolu s pravidelnými aktualizacemi aplikací. V některých případech může být nutné nainstalovat novější verze klientských knihoven. Vlastní klientské aplikace také vyžadují instalaci klientských knihoven.
 
-## <a name="download-the-latest-client-libraries-windows-installer"></a>Stáhněte si nejnovější klientské knihovny (Instalační program Windows)  
+## <a name="download-the-latest-client-libraries-windows-installer"></a>Stažení nejnovějších klientských knihoven (Instalační služba systému Windows)  
 
 |Ke stažení  |Verze produktu  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.24.20    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.24.20      |
-|[SADA AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   16.3.0.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    16.3.0.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.33.23    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.33.23      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.2.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.2.0     |
 
-## <a name="amo-and-adomd-nuget-packages"></a>Sada AMO a ADOMD (balíčky NuGet)
+## <a name="amo-and-adomd-nuget-packages"></a>AMO a ADOMD (balíčky NuGet)
 
-Analysis Services Management Objects (AMO) a ADOMD klientské knihovny jsou k dispozici jako instalovat balíčky ze [NuGet.org](https://www.nuget.org/). Doporučujeme že migraci na NuGet odkazů místo pomocí Instalační služby systému Windows. 
+ADOMDs Management Objects (AMO) a klientské knihovny jsou k dispozici jako Instalovatelné balíčky z [NuGet.org](https://www.nuget.org/). Analysis Services Místo použití Instalační služba systému Windows doporučujeme migrovat na reference NuGet. 
 
 |Balíček  | Verze produktu  | 
 |---------|---------|
-|[SADA AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    16.3.0     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   16.3.0      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.2     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.2      |
 
-Sestavení balíčků NuGet AssemblyVersion podle sémantické správy verzí: HLAVNÍ. PODVERZE. OPRAVA. Odkazy na NuGet načíst očekávaná verze i v případě, že je k dispozici různé verze v mezipaměti GAC (vyplývající z instalace MSI). Oprava se zvýší, pro každou vydanou verzí. Synchronizace jsou zachovány AMO a ADOMD verze.
+Sestavení balíčků NuGet AssemblyVersion sledují sémantické verze: NEJDŮLEŽITĚJŠÍ. MOLL. POUŽITA. Odkazy na NuGet načítají očekávanou verzi i v případě, že v mezipaměti GAC je odlišná verze (výsledná z instalace MSI). Oprava se zvyšuje pro každou verzi. Verze AMO a ADOMD jsou udržovány v synchronizaci.
 
-## <a name="understanding-client-libraries"></a>Principy klientské knihovny
+## <a name="understanding-client-libraries"></a>Principy klientských knihoven
 
-Analysis Services využívají tři klientské knihovny, označované také jako poskytovatelé data. Spravované klientské knihovny jsou ADOMD.NET a Analysis Services Management Objects (AMO). Zprostředkovatele Analysis Services OLE DB (MSOLAP knihovny DLL) je nativní klientské knihovny. Všechny tři jsou obvykle nainstalovány ve stejnou dobu. **Služba Azure Analysis Services vyžaduje nejnovější verze knihoven všechny tři**. 
+Analysis Services využívat tři klientské knihovny, označované také jako poskytovatelé dat. ADOMD.NET a Analysis Services Management Objects (AMO) jsou spravované klientské knihovny. Zprostředkovatel Analysis Services OLE DB (knihovna DLL MSOLAP) je nativní Klientská knihovna. Obvykle jsou všechny tři nainstalovány ve stejnou dobu. **Azure Analysis Services vyžaduje nejnovější verze všech tří knihoven**. 
 
-Klientské aplikace Microsoftu jako Power BI Desktopem a Excelem nainstalujte všechny tři klientské knihovny a aktualizovat je, když jsou k dispozici nová verze. V závislosti na verzi nebo četnosti aktualizací nemusí některé klientské knihovny být nejnovější verze, kterou vyžaduje služba Azure Analysis Services. To samé platí pro vlastní aplikace a další rozhraní, jako jsou AsCmd, Tom nebo ADOMD.NET. Tyto aplikace vyžadují, ručně nebo programově instalaci těchto knihoven. Tyto klientské knihovny pro ruční instalaci jsou součástí sad SQL Server feature Pack jako distribuovatelným balíčkům. Ale tyto klientské knihovny jsou vázané na verzi SQL serveru a nemusí být na nejnovější verzi.  
+Klientské aplikace Microsoftu jako Power BI Desktop a Excel instalují všechny tři klientské knihovny a aktualizují je, když jsou k dispozici nové verze. V závislosti na verzi nebo četnosti aktualizací nemusí některé klientské knihovny být nejnovější verze, které vyžaduje Azure Analysis Services. To samé platí pro vlastní aplikace a další rozhraní, jako jsou AsCmd, Tom nebo ADOMD.NET. Tyto aplikace vyžadují ruční nebo programově instalované knihovny. Klientské knihovny pro ruční instalaci jsou součástí SQL Server balíčků funkcí jako Distribuovatelný balíčky. Tyto klientské knihovny jsou ale vázané na verzi SQL Server a nemusí být nejnovější.  
 
-Klientské knihovny pro připojení klientů se liší od zprostředkovatele dat nejde připojit ke zdroji dat ze serveru Azure Analysis Services. Další informace o připojení zdrojů dat, naleznete v tématu [připojení zdrojů dat](analysis-services-datasource.md).
+Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat požadovaných pro připojení ze serveru Azure Analysis Services ke zdroji dat. Další informace o připojeních DataSource najdete v tématu [připojení DataSource](analysis-services-datasource.md).
 
-## <a name="client-library-types"></a>Klientské knihovny typů
+## <a name="client-library-types"></a>Typy klientské knihovny
 
-### <a name="analysis-services-ole-db-provider-msolap"></a>Zprostředkovatele Analysis Services OLE DB (MSOLAP) 
+### <a name="analysis-services-ole-db-provider-msolap"></a>Zprostředkovatel Analysis Services OLE DB (MSOLAP) 
 
- Analysis Services OLE DB poskytovatele (MSOLAP) je nativní klientské knihovny pro připojení k databázi služby Analysis Services. Používá se nepřímo ADOMD.NET a AMO, delegování žádosti o připojení k poskytovateli data. Zprostředkovatel OLE DB můžete také volat přímo z kódu aplikace.  
+ Zprostředkovatel Analysis Services OLE DB (MSOLAP) je nativní Klientská knihovna pro Analysis Services databázová připojení. Používá se nepřímo jak pro ADOMD.NET, tak pro zpracování požadavků na připojení ke zprostředkovateli dat. Můžete také volat poskytovatele OLE DB přímo z kódu aplikace.  
   
- Zprostředkovatele Analysis Services OLE DB se nainstaluje automaticky tak, že většina nástrojů a klientské aplikace používají pro přístup k databází služby Analysis Services. Musí být nainstalován v počítačích se používá pro přístup k datům Analysis Services.  
+ Zprostředkovatel Analysis Services OLE DB se automaticky nainstaluje pomocí většiny nástrojů a klientských aplikací používaných pro přístup k databázím Analysis Services. Musí být nainstalovaný na počítačích, které se používají pro přístup k Analysis Services dat.  
   
- OLE DB – zprostředkovatelé jsou často určené v připojovacích řetězcích. Připojovací řetězec služby Analysis Services používá k odkazování na zprostředkovatele OLE DB různé klasifikace: MSOLAP. \<verze > .dll.
+ Poskytovatelé OLE DB jsou často určení v připojovacích řetězcích. Připojovací řetězec Analysis Services používá k odkazování na poskytovatele OLE DB jinou klasifikaci: MSOLAP. \<verze >. dll.
 
 ### <a name="amo"></a>AMO  
 
- Sada AMO je knihovna spravovaných klientů používá pro zajištění správy serverů a definice dat. Má nainstalovat a používat nástroje a klientské aplikace. Například SQL Server Management Studio (SSMS) používá AMO pro připojení ke službě Analysis Services. Připojení pomocí sady AMO je obvykle minimální, který se skládá z `"data source=\<servername>"`. Po vytvoření připojení, je použít rozhraní API pro práci s kolekcí databází a hlavní objekty. Rozšíření SSDT a aplikace SSMS připojit k instanci služby Analysis Services pomocí sady AMO.  
+ AMO je spravovaná Klientská knihovna, která se používá pro správu serveru a definici dat. Je nainstalována a používána nástroji a klientskými aplikacemi. Například SQL Server Management Studio (SSMS) používá nástroj AMO pro připojení k Analysis Services. Připojení pomocí AMO má obvykle minimální hodnotu, která se `"data source=\<servername>"`skládá z. Po navázání připojení použijete rozhraní API pro práci s kolekcemi databáze a hlavními objekty. SSDT i SSMS používají pro připojení k instanci Analysis Services AMO.  
 
   
 ### <a name="adomd"></a>ADOMD
 
- Rozhraní ADOMD.NET je klientská knihovna spravovaných dat používá pro dotazování na data služby Analysis Services. Má nainstalovat a používat nástroje a klientské aplikace. 
+ ADOMD.NET je klientská Knihovna spravovaných dat, která se používá pro dotazování Analysis Services dat. Je nainstalována a používána nástroji a klientskými aplikacemi. 
   
- Při připojování k databázi, jsou podobné vlastnosti připojovacího řetězce pro všechny tři knihovny. Téměř všechny připojovací řetězec pro rozhraní ADOMD.NET definujete pomocí [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) funguje i pro AMO a Analysis Services OLE DB poskytovatele (MSOLAP). Další informace najdete v tématu [vlastnosti připojovacího řetězce &#40;služby Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services).  
+ Při připojování k databázi jsou vlastnosti připojovacího řetězce pro všechny tři knihovny podobné. Skoro jakýkoli připojovací řetězec, který definujete pro ADOMD.NET pomocí [Microsoft. AnalysisServices. klienta AdomdClient. AdomdConnection. ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) , funguje také pro AMO a zprostředkovatel Analysis Services OLE DB (MSOLAP). Další informace najdete v tématu [vlastnosti &#40;připojovacího řetězce&#41;Analysis Services](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-servicess).  
 
   
-##  <a name="bkmk_LibUpdate"></a> Jak určit verzi knihovny klienta   
+##  <a name="bkmk_LibUpdate"></a>Jak určit verzi klientské knihovny   
   
 ### <a name="oleddb-msolap"></a>OLEDDB (MSOLAP)  
   
-1.  Přejděte do části `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku a zvolte vyšší číslo.
+1.  Přejděte do části `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku, vyberte vyšší číslo.
   
-2.  Klikněte pravým tlačítkem na **msolap.dll** > **vlastnosti** > **podrobnosti**. Pokud je název souboru msolap140.dll, je starší než nejnovější verzi a by měl být upgradovány.
+2.  Klikněte pravým tlačítkem na**Podrobnosti** **vlastností** >  **MSOLAP. dll** > . Pokud název souboru je msolap140. dll, je starší než nejnovější verze a měl by být upgradován.
     
-    ![Podrobnosti ke knihovně klienta](media/analysis-services-data-providers/aas-msolap-details.png)
+    ![Podrobnosti klientské knihovny](media/analysis-services-data-providers/aas-msolap-details.png)
     
   
 ### <a name="amo"></a>AMO
 
-1. Přejděte do části `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku a zvolte vyšší číslo.
-2. Klikněte pravým tlačítkem na **Microsoft.AnalysisServices** > **vlastnosti** > **podrobnosti**.  
+1. Přejděte do části `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku, vyberte vyšší číslo.
+2. Klikněte pravým tlačítkem na**Podrobnosti** **vlastností** >  **Microsoft. AnalysisServices** > .  
 
 ### <a name="adomd"></a>ADOMD
 
-1. Přejděte do části `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku a zvolte vyšší číslo.
-2. Klikněte pravým tlačítkem na **Microsoft.AnalysisServices.AdomdClient** > **vlastnosti** > **podrobnosti**.  
+1. Přejděte do části `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku, vyberte vyšší číslo.
+2. Klikněte pravým tlačítkem na**Podrobnosti** **vlastností** >  **Microsoft. AnalysisServices. klienta AdomdClient** > .  
 
 
 ## <a name="next-steps"></a>Další postup
-[Propojení s Excelem](analysis-services-connect-excel.md)    
+[Připojení pomocí Excelu](analysis-services-connect-excel.md)    
 [Propojení s Power BI](analysis-services-connect-pbi.md)

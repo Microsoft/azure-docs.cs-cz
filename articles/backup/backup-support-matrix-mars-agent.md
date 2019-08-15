@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 6d05b6ac49b372caff1bdc2f03358598fcc1afba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737092"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951982"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -72,8 +72,8 @@ Omezení sítě | Není k dispozici pro zálohované počítače se systémem Wi
 
 Agenta MARS můžete použít k zálohování přímo do Azure v některých operačních systémech, které běží na místních počítačích a virtuálních počítačích Azure. Operační systémy musí být 64 bitů a měly by být spuštěny nejnovější aktualizace a aktualizace Service Pack. Následující tabulka shrnuje tyto operační systémy:
 
-**Operační systém** | **Soubory/složky** | **Stav systému**
---- | --- | ---
+**Operační systém** | **Soubory/složky** | **Stav systému** 
+--- | --- | --- 
 Windows 10 (Enterprise, pro, Home) | Ano | Ne
 Windows 8.1 (Enterprise, pro)| Ano |Ne
 Windows 8 (Enterprise, Pro) | Ano | Ne

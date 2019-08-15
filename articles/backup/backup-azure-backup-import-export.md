@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: dacurwin
-ms.openlocfilehash: a59cff3b2edc4d5b94cc0a44472665c95652f868
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 1d3dc50d141a4e1d2864a56aff5c3adb3d2ca0b1
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736673"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954861"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování ve službě Azure Backup
 Azure Backup má několik předdefinovaných efektivit, které při počátečním úplném zálohování dat do Azure šetří náklady na síť a úložiště. Počáteční úplné zálohování obvykle přenáší velké objemy dat a vyžaduje více šířky pásma sítě ve srovnání s dalšími zálohami, které přenášejí pouze rozdíly a přírůstkové. V průběhu režimu offline osazení Azure Backup můžou použít disky k nahrání offline zálohovaných dat do Azure.
@@ -93,7 +93,7 @@ Tato část popisuje pracovní postup offline zálohování, aby bylo možné do
 
 4. Na stránce potvrzení v průvodci klikněte na **zálohovat**. Počáteční záloha je zapsána do pracovní oblasti jako součást instalace.
 
-   ![Potvrďte, že jste připraveni zálohovat nyní.](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
+   ![Potvrďte, že jste připravení zálohovat nyní](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
     Po dokončení operace je pracovní umístění připravené k použití pro přípravu disku.
 

@@ -1,6 +1,6 @@
 ---
-title: Transparentní šifrování dat ve službě SQL Data Warehouse (portál) | Dokumentace Microsoftu
-description: Transparentní šifrování dat (TDE) ve službě SQL Data Warehouse
+title: Transparentní šifrování dat v SQL Data Warehouse (portál) | Microsoft Docs
+description: Transparentní šifrování dat (TDE) v SQL Data Warehouse
 services: sql-data-warehouse
 author: KavithaJonnakuti
 manager: craigg
@@ -11,46 +11,46 @@ ms.date: 04/30/2019
 ms.author: kavithaj
 ms.reviewer: rortloff
 ms.openlocfilehash: e756049110f7d4a81950abf6ebbe73edb3e3ca0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "65143161"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Začínáme s transparentní šifrování dat (TDE) ve službě SQL Data Warehouse
+# <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Začínáme s transparentní šifrování dat (TDE) v SQL Data Warehouse
 > [!div class="op_single_selector"]
 > * [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md)
-> * [Ověřování](sql-data-warehouse-authentication.md)
+> * [Autentizace](sql-data-warehouse-authentication.md)
 > * [Šifrování (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Šifrování (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
 > 
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
-Pokud chcete povolit transparentní šifrování dat (TDE), musíte být správce nebo členem dbmanager role.
+Pokud chcete povolit transparentní šifrování dat (TDE), musíte být správcem nebo členem role dbmanager.
 
 ## <a name="enabling-encryption"></a>Povolení šifrování
-Pokud chcete povolit transparentní šifrování dat pro SQL Data Warehouse, postupujte podle následujících kroků:
+Pokud chcete povolit TDE SQL Data Warehouse, postupujte podle následujících kroků:
 
-1. Otevřít v databázi [webu Azure portal](https://portal.azure.com)
-2. V okně databáze klikněte na tlačítko **nastavení** tlačítko
-3. Vyberte **transparentní šifrování dat** možnost ![][1]
-4. Vyberte **na** nastavení ![][2]
-5. Vyberte **uložit**
+1. Otevřete databázi v [Azure Portal](https://portal.azure.com)
+2. V okně databáze klikněte na tlačítko **Nastavení** .
+3. Vybrat možnost **transparentní šifrování dat**![][1]
+4. Vyberte nastavení **zapnuto** .![][2]
+5. Vybrat **Uložit**
    ![][3]  
 
-## <a name="disabling-encryption"></a>Zakázáním šifrování
-Chcete-li zakázat transparentní šifrování dat pro SQL Data Warehouse, použijte následující postup:
+## <a name="disabling-encryption"></a>Zakázání šifrování
+Pokud chcete zakázat TDE SQL Data Warehouse, postupujte podle následujících kroků:
 
-1. Otevřít v databázi [webu Azure portal](https://portal.azure.com)
-2. V okně databáze klikněte na tlačítko **nastavení** tlačítko
-3. Vyberte **transparentní šifrování dat** možnost ![][1]
-4. Vyberte **vypnout** nastavení ![][4]
-5. Vyberte **uložit**
+1. Otevřete databázi v [Azure Portal](https://portal.azure.com)
+2. V okně databáze klikněte na tlačítko **Nastavení** .
+3. Vybrat možnost **transparentní šifrování dat**![][1]
+4. Vyberte nastavení **vypnuto** .![][4]
+5. Vybrat **Uložit**
    ![][5]  
 
-## <a name="encryption-dmvs"></a>Šifrování zobrazení dynamické správy
-Šifrování může být potvrzen pomocí následující zobrazení dynamické správy:
+## <a name="encryption-dmvs"></a>Zobrazení dynamické správy šifrování
+Šifrování lze potvrdit pomocí následujících zobrazení dynamické správy:
 
 * [sys.databases]
 * [sys.dm_pdw_nodes_database_encryption_keys]

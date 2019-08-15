@@ -1,6 +1,6 @@
 ---
-title: Vytváření úlohy sledovacího procesu v účtu Azure Automation.
-description: Zjistěte, jak vytvořit úlohu sledovacího procesu v účtu Azure Automation, který chcete sledovat dostupnost nových souborů ve složce.
+title: Vytvoření úlohy sledovacího procesu v účtu Azure Automation
+description: Naučte se, jak vytvořit úlohu sledovacího procesu v účtu Azure Automation ke sledování nových souborů vytvořených ve složce.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -8,109 +8,123 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: bee414ada61e2cfcf7609b02ef1da7323a0fe0e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61304584"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989238"
 ---
-# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Vytvoření Azure Automation watcher úkolů ke sledování změn souborů na místním počítači
+# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Vytvoření úloh sledovacího procesu Azure Automation ke sledování změn souborů v místním počítači
 
-Azure Automation používá sledovat události a akce s Powershellovými runbooky aktivovat úlohy sledovacího procesu služby. Tento kurz vás provede vytvořením úlohy sledovacího procesu chcete sledovat, když se přidá nový soubor do adresáře.
+Azure Automation využívá úlohy sledovacích procesů ke sledování událostí a akcí triggerů pomocí PowerShellových runbooků. V tomto kurzu se seznámíte s vytvořením úlohy sledovacího procesu, který se bude monitorovat při přidání nového souboru do adresáře.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Importovat runbook sledovacích procesů
-> * Vytvoření proměnné Automation
-> * Vytvoření runbooku akce
-> * Vytvoření úlohy sledovacího procesu
-> * Aktivační události sledování
-> * Zkontrolujte výstup
+> * Import Runbooku sledovacího procesu
+> * Vytvoření proměnné automatizace
+> * Vytvoření Runbooku akce
+> * Vytvořit úlohu sledovacího procesu
+> * Aktivace sledovacího procesu
+> * Kontrola výstupu
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující:
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Účet Automation](automation-offering-get-started.md) pro uložení sledovací proces, runbooky akcí a úlohu sledovacího procesu.
-* A [procesu hybrid runbook worker](automation-hybrid-runbook-worker.md) kde běží úlohy sledovacího procesu.
+* [Účet služby Automation](automation-offering-get-started.md) , který bude obsahovat sledovací proces a runbooky akcí a úlohu sledovacího procesu.
+* [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) , ve kterém je spuštěna úloha sledovacího procesu.
 
 > [!NOTE]
-> Úlohy sledovacího procesu služby nejsou podporovány v Azure China.
+> Úlohy sledovacího procesu se v Azure Čína nepodporují.
 
-## <a name="import-a-watcher-runbook"></a>Importovat runbook sledovacích procesů
+## <a name="import-a-watcher-runbook"></a>Import Runbooku sledovacího procesu
 
-Tento kurz používá runbook sledovacích procesů s názvem **Watch NewFile** nových souborů v adresáři. Runbook sledovacích procesů načte čas poslední známé zápis do souborů ve složce a zobrazuje všechny soubory, které jsou novější než tuto mez. V tomto kroku importujete této sady runbook do účtu automation.
+V tomto kurzu se k vyhledání nových souborů v adresáři používá Runbook sledovacího procesu s názvem **Watch-NewFile** . Sada Runbook sledovacích procesů načte poslední známou dobu zápisu do souborů ve složce a podívá se na všechny soubory, které jsou novější než tento vodoznak.
 
-1. Otevřete svůj účet Automation a klikněte **sady Runbook** stránky.
-2. Klikněte na **procházet galerii** tlačítko.
-3. Vyhledejte "Runbook sledovacích procesů", vyberte **runbook sledovacích procesů, která hledá nové soubory v adresáři** a vyberte **Import**.
-  ![Importovat automation runbook z uživatelského rozhraní](media/automation-watchers-tutorial/importsourcewatcher.png)
-1. Dejte runbooku název a popis a vyberte **OK** a importujte runbook do účtu Automation.
-1. Vyberte **upravit** a potom klikněte na tlačítko **publikovat**. Při zobrazení výzvy vyberte **Ano** Publikovat sadu runbook.
+Tento proces importu lze provést prostřednictvím [Galerie prostředí PowerShell](https://www.powershellgallery.com).
 
-## <a name="create-an-automation-variable"></a>Vytvoření proměnné Automation
+1. Přejděte na stránku galerie pro [Watch-NewFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd).
+2. Na kartě **Azure Automation** klikněte na **nasadit a Azure Automation**.
 
-[Proměnná služby automation](automation-variables.md) se používá k ukládání časová razítka, která čte předchozí sadu runbook a ukládá z každého souboru.
+Tento Runbook můžete také naimportovat do účtu Automation z portálu pomocí následujících kroků.
 
-1. Vyberte **proměnné** pod **SDÍLENÉ prostředky** a vyberte **+ přidat proměnnou**.
-1. Jako název zadejte "Watch-NewFileTimestamp"
-1. Vyberte pro typ DateTime.
-1. Klikněte na **vytvořit** tlačítko. Tím se vytvoří proměnná služby automation.
+1. Otevřete svůj účet Automation a klikněte na stránku sady **Runbook** .
+2. Klikněte na tlačítko **Procházet galerii** .
+3. Vyhledejte "Runbook sledovacího procesu", vyberte **Runbook sledovacího procesu, který vyhledá nové soubory v adresáři** a vyberte **importovat**.
+  ![Import Runbooku Automation z uživatelského rozhraní](media/automation-watchers-tutorial/importsourcewatcher.png)
+1. Dejte Runbooku název a popis a vyberte **OK** , aby se Runbook naimportoval do svého účtu Automation.
+1. Vyberte **Upravit** a pak klikněte na **publikovat**. Po zobrazení výzvy vyberte **Ano** pro publikování Runbooku.
 
-## <a name="create-an-action-runbook"></a>Vytvoření runbooku akce
+## <a name="create-an-automation-variable"></a>Vytvoření proměnné automatizace
 
-Runbook služby akce slouží k práci s daty do něho předaný ze sady runbook sledovacích procesů v úlohy sledovacího procesu. Runbooky pracovních postupů Powershellu nepodporuje úlohy sledovacího procesu služby, je nutné použít Powershellové runbooky. V tomto kroku aktualizujete importovat runbook předem definované akce s názvem "Proces NewFile".
+[Proměnná automatizace](automation-variables.md) slouží k ukládání časových razítek, která předchozí sada Runbook čte a ukládá z každého souboru.
 
-1. Přejděte do účtu automation a vyberte **sady Runbook** pod **AUTOMATIZACE PROCESŮ** kategorie.
-1. Klikněte na **procházet galerii** tlačítko.
-1. Vyhledejte "Akce sledovacího procesu" a vyberte **akce sledovacího procesu, který zpracovává události aktivované runbook sledovacích procesů** a vyberte **Import**.
-  ![Importovat runbook akce z uživatelského rozhraní](media/automation-watchers-tutorial/importsourceaction.png)
-1. Dejte runbooku název a popis a vyberte **OK** a importujte runbook do účtu Automation.
-1. Vyberte **upravit** a potom klikněte na tlačítko **publikovat**. Při zobrazení výzvy vyberte **Ano** Publikovat sadu runbook.
+1. V části **sdílené prostředky** vyberte **proměnné** a vyberte **+ přidat proměnnou**.
+1. Jako název zadejte Watch-NewFileTimestamp.
+1. Pro typ vyberte datum a čas.
+1. Klikněte na tlačítko **vytvořit** . Tím se vytvoří proměnná automatizace.
 
-## <a name="create-a-watcher-task"></a>Vytvoření úlohy sledovacího procesu
+## <a name="create-an-action-runbook"></a>Vytvoření Runbooku akce
 
-Úloha sledovacího procesu obsahuje dvě části. Sledovací proces a akce. Sledovací proces se spustí v intervalu definovaném v úlohy sledovacího procesu. Data ze sady runbook sledovacích procesů se předaly akci sady runbook. V tomto kroku nakonfigurujete úlohy sledovacího procesu odkazující na runbook sledovacích procesů a akce definované v předchozích krocích.
+V úloze sledovacího procesu se používá Runbook akce, který slouží k tomu, aby se data předala ze sady Runbook sledovacích procesů. Runbooky pracovních postupů PowerShellu nejsou podporovány úlohami sledovacích procesů, a proto je nutné použít PowerShellové Runbooky. Je nutné importovat předem definovaný Runbook sady s názvem **Process-NewFile**.
 
-1. Přejděte do účtu automation a vyberte **úlohy sledovacího procesu služby** pod **AUTOMATIZACE PROCESŮ** kategorie.
-1. Vyberte na stránce úlohy sledovacího procesu a klikněte na **+ přidat úlohu sledovacího procesu** tlačítko.
+Tento proces importu lze provést prostřednictvím [Galerie prostředí PowerShell](https://www.powershellgallery.com).
+
+1. Přejděte na stránku galerie pro [Process-NewFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf).
+2. Na kartě **Azure Automation** klikněte na **nasadit a Azure Automation**.
+
+Tento Runbook můžete také naimportovat do účtu Automation z portálu pomocí následujících kroků.
+
+1. Přejděte do svého účtu Automation a v kategorii **Automatizace procesu** vyberte **Runbooky** .
+1. Klikněte na tlačítko **Procházet galerii** .
+1. Vyhledejte "akce sledovacího procesu" a vyberte **akci sledovacího procesu, která zpracovává události aktivované sadou sledovacích procesů,** a vyberte **importovat**.
+  ![Importovat Runbook akce z uživatelského rozhraní](media/automation-watchers-tutorial/importsourceaction.png)
+1. Dejte Runbooku název a popis a vyberte **OK** , aby se Runbook naimportoval do svého účtu Automation.
+1. Vyberte **Upravit** a pak klikněte na **publikovat**. Po zobrazení výzvy vyberte **Ano** pro publikování Runbooku.
+
+## <a name="create-a-watcher-task"></a>Vytvořit úlohu sledovacího procesu
+
+Úloha sledovacího procesu obsahuje dvě části. Sledovací proces a akce. Sledovací proces se spouští v intervalu definovaném v úloze sledovacího procesu. Data z Runbooku sledovacího procesu se předávají do sady Runbook akcí. V tomto kroku nakonfigurujete úlohu sledovacího procesu odkazující na sledovací proces a sady Runbook, které jsou definovány v předchozích krocích.
+
+1. Přejděte do svého účtu Automation a v kategorii **Automatizace procesu** vyberte **úlohy sledovacích** procesů.
+1. Vyberte stránku úlohy sledovacího procesu a klikněte na tlačítko **+ Přidat úlohu sledovacího** procesu.
 1. Jako název zadejte "WatchMyFolder".
 
-1. Vyberte **sledovacího procesu konfigurace** a vyberte **Watch NewFile** sady runbook.
+1. Vyberte **Konfigurovat sledovací** proces a vyberte Runbook **Watch-NewFile** .
 
-1. Zadejte následující hodnoty pro parametry:
+1. Zadejte následující hodnoty parametrů:
 
-   * **FOLDERPATH** – kde nové soubory vytvořené složky v procesu hybrid worker. d:\examplefiles
-   * **ROZŠÍŘENÍ** – ponechte prázdné, pokud chcete zpracovat všechny přípony souborů.
-   * **RECURSE** – ponechte tuto hodnotu jako výchozí.
-   * **Parametry běhu** -vybrat hybridní pracovní proces.
+   * **FOLDERPATH** – složka hybridního pracovního procesu, kde se vytvoří nové soubory. d:\examplefiles
+   * **Rozšíření** – ponechte prázdné pro zpracování všech přípon souborů.
+   * Rekurze – ponechte tuto hodnotu jako výchozí.
+   * **Nastavení spuštění** – vyberte hybridní pracovní proces.
 
-1. Klikněte na tlačítko OK a pak vyberte se vrátíte na stránku sledovacích procesů.
-1. Vyberte **konfigurace akce** a vyberte sadu runbook "Proces NewFile".
-1. Zadejte následující hodnoty pro parametry:
+1. Klikněte na OK a pak vyberte, abyste se vrátili na stránku sledovacího procesu.
+1. Vyberte **Konfigurovat akci** a vyberte Runbook "proces-NewFile".
+1. Zadejte následující hodnoty parametrů:
 
-   * **EVENTDATA** – ponechte prázdné. Data je předáno ze sady runbook sledovacích procesů.  
-   * **Nastavení spuštění** – Azure, ponechte tato sada runbook běží ve službě Automation.
+   * **EventData** – ponechte prázdné. Data se předávají ze sady Runbook sledovacích procesů.
+   * **Nastavení spuštění** – ponechte jako Azure, protože tato sada Runbook běží ve službě Automation.
 
-1. Klikněte na tlačítko **OK**a pak vyberte se vrátíte na stránku sledovacích procesů.
-1. Klikněte na tlačítko **OK** k vytvoření úlohy sledovacího procesu.
+1. Klikněte na **OK**a pak vyberte, abyste se vrátili na stránku sledovacího procesu.
+1. Kliknutím na **OK** vytvořte úlohu sledovacího procesu.
 
 ![Konfigurace akce sledovacího procesu z uživatelského rozhraní](media/automation-watchers-tutorial/watchertaskcreation.png)
 
-## <a name="trigger-a-watcher"></a>Aktivační události sledování
+## <a name="trigger-a-watcher"></a>Aktivace sledovacího procesu
 
-K otestování sledovací proces funguje podle očekávání, je potřeba vytvořit testovací soubor.
+Chcete-li otestovat sledovací proces, který pracuje podle očekávání, je nutné vytvořit testovací soubor.
 
-Vzdáleně se připojte k procesu hybrid worker. Otevřít **Powershellu** a vytvořit testovací soubor ve složce.
-  
+Vzdáleně do hybridního pracovního procesu. Otevřete **PowerShell** a vytvořte testovací soubor ve složce.
+
 ```azurepowerShell-interactive
 New-Item -Name ExampleFile1.txt
 ```
 
-Následující příklad zobrazuje očekávaný výstup.
+Následující příklad ukazuje očekávaný výstup.
 
 ```output
     Directory: D:\examplefiles
@@ -121,16 +135,16 @@ Mode                LastWriteTime         Length Name
 -a----       12/11/2017   9:05 PM              0 ExampleFile1.txt
 ```
 
-## <a name="inspect-the-output"></a>Zkontrolujte výstup
+## <a name="inspect-the-output"></a>Kontrola výstupu
 
-1. Přejděte do účtu automation a vyberte **úlohy sledovacího procesu služby** pod **AUTOMATIZACE PROCESŮ** kategorie.
-1. Vyberte úlohy sledovacího procesu "WatchMyFolder".
-1. Klikněte na **zobrazit streamy sledovacího procesu** pod **datové proudy** zobrazíte, že sledovací proces služby byl nalezen nový soubor a spuštění runbooku akce.
-1. Chcete-li zobrazit akce úlohy runbooku, klikněte na **zobrazit úlohy akce sledovacího procesu**. Každá úloha může být vybrána v zobrazení Podrobnosti o úloze.
+1. Přejděte do svého účtu Automation a v kategorii **Automatizace procesu** vyberte **úlohy sledovacích** procesů.
+1. Vyberte úlohu sledovacího procesu "WatchMyFolder".
+1. Kliknutím na **Zobrazit streamy sledovacího** procesu v části **streamy** zjistíte, že sledovací proces našel nový soubor a spustil Runbook akce.
+1. Chcete-li zobrazit úlohy sady Runbook akce, klikněte na **úlohy zobrazení akce sledovacího**procesu. Každou úlohu můžete vybrat zobrazení podrobností o úloze.
 
    ![Úlohy akce sledovacího procesu z uživatelského rozhraní](media/automation-watchers-tutorial/WatcherActionJobs.png)
 
-Očekávaný výstup, když se najde nový soubor můžete vidět v následujícím příkladu:
+Očekávaný výstup, když je nalezen nový soubor, lze zobrazit v následujícím příkladu:
 
 ```output
 Message is Process new file...
@@ -145,15 +159,15 @@ Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Importovat runbook sledovacích procesů
-> * Vytvoření proměnné Automation
-> * Vytvoření runbooku akce
-> * Vytvoření úlohy sledovacího procesu
-> * Aktivační události sledování
-> * Zkontrolujte výstup
+> * Import Runbooku sledovacího procesu
+> * Vytvoření proměnné automatizace
+> * Vytvoření Runbooku akce
+> * Vytvořit úlohu sledovacího procesu
+> * Aktivace sledovacího procesu
+> * Kontrola výstupu
 
-Na tomto odkazu Další informace o vytváření vlastního runbooku.
+Pomocí tohoto odkazu se dozvíte více o vytváření vlastních sad Runbook.
 
 > [!div class="nextstepaction"]
-> [Můj první Powershellový runbook](automation-first-runbook-textual-powershell.md).
+> [Můj první powershellový Runbook](automation-first-runbook-textual-powershell.md)
 

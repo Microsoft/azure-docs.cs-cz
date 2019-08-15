@@ -1,6 +1,6 @@
 ---
-title: Povolit aktivaci prostřednictvím služby správy KLÍČŮ u vynuceného tunelování pomocí Azure vlastní trasy | Dokumentace Microsoftu
-description: Ukazuje, jak použít Azure vlastní trasy k povolení aktivace prostřednictvím služby správy KLÍČŮ při použití vynuceného tunelování v Azure.
+title: Použití vlastních tras Azure k povolení aktivace prostřednictvím služby správy klíčů s vynuceným tunelovým propojením | Microsoft Docs
+description: Ukazuje, jak pomocí vlastních tras Azure povolit aktivaci pomocí služby správy klíčů při vynuceném tunelování v Azure.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -14,46 +14,49 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 6557649eb1b97ad4d88876906737f8249e18b958
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877fae66584ec24fb6e62b20d66ded36157b824
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399792"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990341"
 ---
-# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktivace Windows selže v případě vynuceného tunelování
+# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktivace systému Windows ve scénáři vynuceného tunelování se nezdařila
 
-Tento článek popisuje, jak vyřešit problém aktivace služby správy KLÍČŮ, se kterým může docházet při povolení vynuceného tunelování v připojení VPN typu site-to-site nebo ExpressRoute scénáře.
+Tento článek popisuje, jak vyřešit potíže s aktivací služby správy klíčů, ke kterým může dojít při povolování vynuceného tunelového propojení v rámci připojení VPN typu Site-to-site nebo v ExpressRoute scénářích.
 
 ## <a name="symptom"></a>Příznak
 
-Povolíte [vynucené tunelování](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) v Azure podsítí virtuální sítě směrovat všechen provoz směřující na Internet zpět do místní sítě. V tomto scénáři Azure virtuální počítače (VM), na kterých běží Windows Server 2012 R2 (nebo novější verze systému Windows) úspěšně aktivace Windows. Virtuální počítače, na kterých běží starší verze Windows ale selhala aktivace Windows.
+V podsítích Azure Virtual Network povolíte [vynucené tunelování](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) , které směruje veškerý internetový provoz zpátky do vaší místní sítě. V tomto scénáři můžou virtuální počítače Azure s Windows Serverem 2012 R2 (nebo novějšími verzemi Windows) úspěšně aktivovat Windows. Virtuální počítače, na kterých běží starší verze Windows, ale neaktivují Windows.
 
 ## <a name="cause"></a>Příčina
 
-Virtuální počítače Windows Azure je nutné se připojit k serveru Azure prostřednictvím služby správy KLÍČŮ pro aktivaci Windows. Aktivace vyžaduje, že žádost o aktivaci pocházejí z Azure veřejné IP adresy. Vynucené tunelování scénář tato aktivace selže, protože požadavek na aktivaci přichází z místní sítě, místo z Azure veřejné IP adresy.
+Virtuální počítače Azure s Windows se musí připojit k serveru služby správy klíčů Azure pro aktivaci Windows. Aktivace vyžaduje, aby žádost o aktivaci pocházela z veřejné IP adresy Azure. Ve scénáři vynucené tunelování se aktivace nezdařila, protože požadavek na aktivaci pochází z místní sítě, nikoli z veřejné IP adresy Azure.
 
 ## <a name="solution"></a>Řešení
 
-Chcete-li tento problém vyřešit, použijte Azure aktivace vlastní trasy pro směrování provozu na server služby správy KLÍČŮ Azure.
+Pokud chcete tento problém vyřešit, použijte vlastní trasu Azure pro směrování aktivačních dat do serveru služby Azure KMS.
 
-IP adresa serveru služby správy KLÍČŮ pro Azure globální cloud je 23.102.135.246. Názvu DNS je kms.core.windows.net. Pokud používáte jiné platformy Azure jako Azure Germany, je nutné použít IP adresu odpovídající serveru služby správy KLÍČŮ. Další informace najdete v tématu v následující tabulce:
+IP adresa serveru služby správy klíčů pro globální cloud Azure je 23.102.135.246. Název DNS je kms.core.windows.net. Pokud používáte jiné platformy Azure, jako je Azure Německo, musíte použít IP adresu odpovídajícího serveru služby správy klíčů. Další informace najdete v následující tabulce:
 
-|Platforma| KMS DNS|KMS IP|
+|Platforma| KMS DNS|IP ADRESA SLUŽBY SPRÁVY KLÍČŮ|
 |------|-------|-------|
-|Azure Global|kms.core.windows.net|23.102.135.246|
+|Globální Azure|kms.core.windows.net|23.102.135.246|
 |Azure Germany|kms.core.cloudapi.de|51.4.143.248|
 |Azure US Government|kms.core.usgovcloudapi.net|23.97.0.13|
 |Azure China 21Vianet|kms.core.chinacloudapi.cn|42.159.7.249|
 
 
-Chcete-li přidat vlastní trasy, postupujte takto:
+K přidání vlastní trasy použijte následující postup:
 
-### <a name="for-resource-manager-vms"></a>Pro virtuální počítače Resource Manageru
+### <a name="for-resource-manager-vms"></a>Pro Správce prostředků virtuální počítače
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-1. Otevřete prostředí Azure PowerShell a potom [přihlásit ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+> [!NOTE] 
+> Aktivace používá veřejné IP adresy a bude mít vliv na standardní SKU Load Balancer konfiguraci. Zkontrolujte pečlivě [odchozí připojení v Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , abyste se dozvěděli o požadavcích.
+
+1. Otevřete Azure PowerShell a přihlaste [se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Spusťte následující příkazy:
 
     ```powershell
@@ -75,15 +78,15 @@ Chcete-li přidat vlastní trasy, postupujte takto:
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. Přejděte k virtuálnímu počítači, který má problémy s aktivací. Použití [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) chcete otestovat, jestli se můžete připojit k serveru služby správy KLÍČŮ:
+3. Přejít na virtuální počítač, který obsahuje problémy s aktivací. Použijte [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) k otestování, jestli se může připojit k serveru služby správy klíčů:
 
         psping kms.core.windows.net:1688
 
-4. Pokusu o aktivaci Windows a zobrazit, pokud se problém vyřeší.
+4. Zkuste aktivovat Windows a podívejte se, jestli se problém vyřeší.
 
 ### <a name="for-classic-vms"></a>Pro klasické virtuální počítače
 
-1. Otevřete prostředí Azure PowerShell a potom [přihlásit ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Otevřete Azure PowerShell a přihlaste [se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Spusťte následující příkazy:
 
     ```powershell
@@ -101,15 +104,15 @@ Chcete-li přidat vlastní trasy, postupujte takto:
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Přejděte k virtuálnímu počítači, který má problémy s aktivací. Použití [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) chcete otestovat, jestli se můžete připojit k serveru služby správy KLÍČŮ:
+3. Přejít na virtuální počítač, který obsahuje problémy s aktivací. Použijte [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) k otestování, jestli se může připojit k serveru služby správy klíčů:
 
         psping kms.core.windows.net:1688
 
-4. Pokusu o aktivaci Windows a zobrazit, pokud se problém vyřeší.
+4. Zkuste aktivovat Windows a podívejte se, jestli se problém vyřeší.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Instalační klíče klienta služby správy KLÍČŮ klíčů](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
+- [Instalační klíče klienta služby správy klíčů](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
 )
-- [Kontrola a vyberte možnost aktivace metody](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
+- [Kontrola a výběr metod aktivace](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
 )

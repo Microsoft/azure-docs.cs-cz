@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 6e425eba3159f8840e1a7960f6a6c3171b1ba163
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 9409beea3f22fd7ff09fe49838a37d9ff0b485f6
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850415"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975912"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -46,10 +46,10 @@ Podsíť musí být delegovaná na Azure NetApp Files.
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
     |    ICMPv4             |    Není k dispozici       |    Odpověď na ozvěnu    |
-    |    Sdílené           |    464       |    TCP           |
-    |    Sdílené           |    464       |    UDP           |
-    |    Sdílené           |    88        |    TCP           |
-    |    Sdílené           |    88        |    UDP           |
+    |    Kerberos           |    464       |    TCP           |
+    |    Kerberos           |    464       |    UDP           |
+    |    Kerberos           |    88        |    TCP           |
+    |    Kerberos           |    88        |    UDP           |
     |    LDAP               |    389       |    TCP           |
     |    LDAP               |    389       |    UDP           |
     |    LDAP               |    3268      |    TCP           |
@@ -85,7 +85,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
         Jedná se o cestu protokolu LDAP pro organizační jednotku (OU), kde budou vytvořeny účty počítačů serveru SMB. To znamená OU = druhá úroveň, OU = First Level. 
     * Přihlašovací údaje, včetně **uživatelského jména** a **hesla**
 
-    ![Připojit ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Připojit k Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. Klikněte na **Připojit**.  
 
@@ -127,7 +127,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
         
         Pokud jste nedelegovanou podsíť, můžete na stránce vytvořit svazek kliknout na **vytvořit novou** . Pak na stránce vytvořit podsíť zadejte informace o podsíti a vyberte možnost **Microsoft. NetApp/** Volumes pro delegování podsítě pro Azure NetApp Files. V každé virtuální síti je možné delegovat jenom jednu podsíť na Azure NetApp Files.   
  
-        ![Vytvoření svazku](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Vytvořit svazek](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
@@ -148,4 +148,6 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
 * [Připojení nebo odpojení svazku pro virtuální počítače se systémem Windows nebo Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Nejčastější dotazy k protokolu SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
 * [Informace o integraci virtuální sítě pro služby Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [Instalace nové doménové struktury služby Active Directory pomocí Azure CLI](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

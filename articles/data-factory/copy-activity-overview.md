@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ae8b2bb7cce545ab9c0aa0c9d4d682089cc482ab
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a8265496c475566ec7a87a19eab6d975838e9da4
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827478"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966390"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování ve službě Azure Data Factory
 
@@ -33,7 +33,7 @@ Ve službě Azure Data Factory můžete použít aktivitu kopírování ke kopí
 
 Aktivita kopírování se provádí na [prostředí Integration Runtime](concepts-integration-runtime.md). U různých scénářů kopírování dat je možné využít různé typy Integration Runtime:
 
-* Při kopírování dat mezi daty ukládá, obě jsou veřejně dostupné, aktivita kopírování může zdokonalujte své schopnosti podle **prostředí Azure Integration Runtime**, což je zabezpečená, spolehlivá a škálovatelná, a [globálně dostupné](concepts-integration-runtime.md#integration-runtime-location).
+* Při kopírování dat mezi úložišti dat, která jsou veřejně přístupná prostřednictvím Internetu z jakékoli IP adresy, může být aktivita kopírování oprávněná **Azure Integration runtime**, která je zabezpečená, spolehlivá, škálovatelná a [globálně dostupná](concepts-integration-runtime.md#integration-runtime-location).
 * Při kopírování dat z/do úložiště dat umístěné v místním nebo v síti pomocí řízení přístupu (například Azure Virtual Network), budete muset nastavit **integrované modulu Runtime v místním prostředí** pro kopírování dat.
 
 Prostředí Integration Runtime musí být spojen s každou úložiště dat zdroje a jímky. Další podrobnosti o aktivitě kopírování [Určuje, které prostředí IR používat](concepts-integration-runtime.md#determining-which-ir-to-use).
@@ -193,7 +193,7 @@ V části výsledek spuštění aktivity kopírování – > výstup se vrátí 
 | usedDataIntegrationUnits | Efektivní jednotky integrace dat během kopírování. | Hodnota Int32 |
 | usedParallelCopies | Efektivní parallelCopies během kopírování. | Hodnota Int32 |
 | redirectRowPath | Cesta k protokolu přeskočené nekompatibilních řádků v úložišti objektů blob, které jste nakonfigurovali v části "redirectIncompatibleRowSettings". Najdete v následujícím příkladu. | Text (řetězec) |
-| executionDetails | Další informace o fázích prochází aktivitu kopírování, a příslušné postupy, doba trvání, používaných konfigurací, atd. Není doporučuje se v této části analyzovat, jak může změnit.<br/><br/>ADF také hlásí podrobné doby trvání (v sekundách) strávené podle příslušných kroků v `detailedDurations`části:<br/>- **Doba** zařazení do fronty (`queuingDuration`): Čas, kdy se aktivita kopírování skutečně spustí v prostředí Integration runtime. Pokud používáte prostředí IR v místním prostředí a tato hodnota je velká, navrhněte, zda chcete zjistit kapacitu a využití infračerveného přenosu, a podle vašich úloh nahorizontální navýšení nebo zmenšení kapacity. <br/>- **Doba trvání skriptu před kopírováním** (`preCopyScriptDuration`): Čas strávený spouštěním skriptu před kopírováním v úložišti dat jímky. Použijte při konfiguraci skriptu před kopírováním. <br/>- **Čas do prvního bajtu** (`timeToFirstByte`): Čas, kdy prostředí Integration runtime přijímá první bajt ze zdrojového úložiště dat. Použít pro zdroj nezaložen na souborech. Pokud je tato hodnota velká, navrhněte kontrolu a optimalizaci dotazu nebo serveru.<br/>- **Doba trvání přenosu** (`transferDuration`): Čas, po který modul runtime integrace přenese všechna data ze zdroje do jímky po získání prvního bajtu. | Array |
+| executionDetails | Další informace o fázích prochází aktivitu kopírování, a příslušné postupy, doba trvání, používaných konfigurací, atd. Není doporučuje se v této části analyzovat, jak může změnit.<br/><br/>ADF také hlásí podrobné doby trvání (v sekundách) strávené podle příslušných kroků v `detailedDurations`části. Doba trvání těchto kroků je exkluzivní a zobrazí se jenom ty, které se vztahují k danému spuštění aktivity kopírování:<br/>- **Doba** zařazení do fronty (`queuingDuration`): Uplynulý čas do chvíle, kdy se aktivita kopírování ve skutečnosti spustí v prostředí Integration runtime. Pokud používáte prostředí IR v místním prostředí a tato hodnota je velká, navrhněte, zda chcete zjistit kapacitu a využití infračerveného přenosu, a podle vašich úloh nahorizontální navýšení nebo zmenšení kapacity. <br/>- **Doba trvání skriptu před kopírováním** (`preCopyScriptDuration`): Uplynulý čas mezi aktivitou kopírování začínající v rámci aktivity IR a kopírování dokončuje provádění skriptu před kopírováním v úložišti dat jímky. Použijte při konfiguraci skriptu před kopírováním. <br/>- **Čas do prvního bajtu** (`timeToFirstByte`): Uplynulý čas mezi koncem předchozího kroku a infračervený příjem prvního bajtu ze zdrojového úložiště dat. Použít pro zdroj nezaložen na souborech. Pokud je tato hodnota velká, navrhněte kontrolu a optimalizaci dotazu nebo serveru.<br/>- **Doba trvání přenosu** (`transferDuration`): Uplynulý čas mezi koncem předchozího kroku a IR, který přenáší všechna data ze zdroje do jímky. | Array |
 | perfRecommendation | Kopírování tipů pro ladění výkonu. Podrobnosti najdete v části o [výkonu a ladění](#performance-and-tuning) . | Array |
 
 ```json

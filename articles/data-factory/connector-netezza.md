@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9bf90c9d3ce593ba5bf6339cd9cec31bb49f14f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3c179cfbf86c2dddfb34b46540aba8898038751
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61399923"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966490"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí služby Azure Data Factory
 
@@ -28,6 +28,10 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 Kopírování dat z Netezza do jakékoli podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Azure Data Factory poskytuje integrovaný ovladač umožňující připojení. Není nutné ručně nainstalovat všechny ovladače, které chcete použít tento konektor.
+
+## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>Začínáme
 
@@ -42,14 +46,14 @@ Netezza propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **Netezza**. | Ano |
-| connectionString | ODBC připojovací řetězec služby pro připojení k Netezza. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Heslo můžete také vložit do služby Azure Key Vault a o přijetí změn `pwd` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Můžete vybrat v místním prostředí Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
+| connectionString | ODBC připojovací řetězec služby pro připojení k Netezza. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit heslo a načíst `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Následující tabulka popisuje další vlastnosti, které můžete nastavit:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| SecurityLevel | Úroveň zabezpečení (SSL/TLS), který používá ovladač pro připojení k úložišti. Příklad: `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>- **Only unsecured** (**onlyUnSecured**): Ovladač nebude používat protokol SSL.<br/>- **Upřednostňovaný nezabezpečené (preferredUnSecured) (výchozí)** : Pokud server poskytuje možnost volby, ovladač nebude používat protokol SSL. <br/>- **Upřednostňovaný zabezpečené (preferredSecured)** : Pokud server poskytuje možnost volby, ovladač používá protokol SSL. <br/>- **Pouze zabezpečené (onlySecured)** : Ovladač nelze připojit, dokud je k dispozici připojení SSL. | Ne |
+| SecurityLevel | Úroveň zabezpečení (SSL/TLS), který používá ovladač pro připojení k úložišti. Příklad: `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>- **Jenom nezabezpečené** (**onlyUnSecured**): Ovladač nepoužívá protokol SSL.<br/>- **Upřednostňované nezabezpečené (preferredUnSecured) (výchozí)** : Pokud server nabízí možnost výběru, ovladač nepoužívá protokol SSL. <br/>- **Upřednostňované zabezpečené (preferredSecured)** : Pokud server nabízí možnost výběru, použije ovladač protokol SSL. <br/>- **Pouze zabezpečené (onlySecured)** : Ovladač se nepřipojí, pokud není k dispozici připojení SSL. | Ne |
 | CaCertFile | Úplná cesta k certifikátu SSL, který se používá serverem. Příklad: `CaCertFile=<cert path>;`| Ano, pokud je povolen protokol SSL |
 
 **Příklad**
@@ -73,7 +77,7 @@ Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=
 }
 ```
 
-**Příklad: ukládání hesel ve službě Azure Key Vault**
+**Příklad: uložení hesla v Azure Key Vault**
 
 ```json
 {
@@ -112,7 +116,7 @@ Chcete-li kopírovat data z Netezza, nastavte **typ** vlastnosti datové sady na
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **NetezzaTable** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **NetezzaTable** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 91ac8b596373963aeba00c1932dfde5d76f27bd0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bc14ba2bcaa80236717c062abd1dc8a63b58305c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856027"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966837"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Škálujte a Registrujte modely zřetězení ve velkém měřítku pomocí Azure Machine Learning služby
 
@@ -207,10 +207,12 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste si naučili a zaregistrovali obsáhlý Learning, neuronové síť pomocí chainer ve službě Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek [nasazení modelu](how-to-deploy-and-where.md) .
 
 * [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
 
 * [Sledovat spustit metriky během cvičení](how-to-track-experiments.md)
+
+* [Podívejte se na naši referenční architekturu distribuovaného školení pro hloubkové učení v Azure.](/azure/architecture/reference-architectures/ai/training-deep-learning)

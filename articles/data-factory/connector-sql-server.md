@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 5dcbb2c25511277eaf46d6c9f4afc007a180f8a6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: f5ddd9928194c477d8f8b6f4c9569a8fe58f39d3
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827875"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967385"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopírování dat do a z SQL Server pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
@@ -44,7 +44,7 @@ Konkrétně tento konektor SQL Server podporuje:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít kopírování dat z databáze SQL Server, která není veřejně přístupná, je nutné nastavit prostředí Integration runtime v místním prostředí. Další informace najdete v tématu [Integration runtime](create-self-hosted-integration-runtime.md)v místním prostředí. Prostředí Integration runtime poskytuje integrovaný SQL Server ovladač databáze. Při kopírování dat z nebo do databáze SQL Server nemusíte ručně instalovat žádné ovladače.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>Začínáme
 
@@ -60,9 +60,9 @@ Pro propojenou službu SQL Server jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na **SQLServer**. | Ano |
 | connectionString |Zadejte informace **připojovacího řetězce** potřebné pro připojení k databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. Přečtěte si následující ukázky.<br/>Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si `password` z připojovacího řetězce konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| userName |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příkladem je **domainname\\username**. |Ne |
+| userName |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příkladem je **Doména\\\ uživatelské jméno**. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Nebo můžete [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ne |
-| connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. V místním prostředí Integration runtime nebo prostředí Azure Integration runtime můžete v případě, že je vaše úložiště dat veřejně přístupné, použít. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Ne |
+| connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Ne |
 
 >[!TIP]
 >Pokud dojde k chybě s kódem chyby "UserErrorFailedToConnectToSqlServer" a zprávou, jako je "omezení relace pro databázi je xxx a bylo dosaženo," přidejte `Pooling=false` do připojovacího řetězce a zkuste to znovu.

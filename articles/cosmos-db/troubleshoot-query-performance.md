@@ -1,6 +1,6 @@
 ---
-title: Diagnostika a řešení potíží s dotazů při použití služby Azure Cosmos DB
-description: Zjistěte, jak k identifikaci, diagnostice a řešení potíží s Azure Cosmos DB SQL dotazu.
+title: Diagnostika a řešení potíží s dotazy při použití Azure Cosmos DB
+description: Naučte se identifikovat, diagnostikovat a řešit potíže s Azure Cosmos DB problémy s dotazy SQL.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: troubleshooting
@@ -8,62 +8,66 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 079e8677febfe6683d4f0e60a0e7ba6b06ea549d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835841"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986169"
 ---
-# <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Řešení potíží s výkonem dotazů pro službu Azure Cosmos DB
-Tento článek popisuje, jak k identifikaci, diagnostice a řešení potíží s Azure Cosmos DB SQL dotazu. Pokud chcete dosáhnout optimálního výkonu za dotazy na službu Azure Cosmos DB, použijte následující postup řešení potíží. 
+# <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Řešení potíží s výkonem dotazů pro Azure Cosmos DB
+Tento článek popisuje, jak identifikovat, diagnostikovat a řešit potíže s Azure Cosmos DB problémy s dotazy SQL. Chcete-li dosáhnout optimálního výkonu pro Azure Cosmos DB dotazy, postupujte podle následujících kroků pro řešení potíží. 
 
-## <a name="collocate-clients-in-same-azure-region"></a>Společné umístění klienty ve stejné oblasti Azure 
-Nejnižší možnou latenci se dosahuje tím, že zajišťuje, že je volající aplikace umístěné ve stejné oblasti Azure jako koncový bod zřízené služby Azure Cosmos DB. Seznam dostupných oblastí naleznete v tématu [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/#services) článku.
+## <a name="collocate-clients-in-same-azure-region"></a>Společné umístění klienti ve stejné oblasti Azure 
+Nejnižší možná latence se dosahuje tím, že se zaručí, že se volající aplikace nachází ve stejné oblasti Azure jako koncový bod zřízené Azure Cosmos DB. Seznam oblastí, které jsou k dispozici, najdete v článku [oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/#services) .
 
-## <a name="check-consistency-level"></a>Zkontrolujte úroveň konzistence
-[Úroveň konzistence](consistency-levels.md) může mít vliv na výkon a náklady. Zajistěte, aby že úroveň konzistence je vhodný pro daný scénář. Další podrobnosti najdete v tématu [Volba úrovně konzistence](consistency-levels-choosing.md).
+## <a name="check-consistency-level"></a>Kontrola úrovně konzistence
+[Úroveň konzistence](consistency-levels.md) může mít vliv na výkon a poplatky. Ujistěte se, že vaše úroveň konzistence je pro daný scénář vhodná. Další podrobnosti najdete v tématu [Výběr úrovně konzistence](consistency-levels-choosing.md).
 
-## <a name="log-query-metrics"></a>Protokolujte metriky dotazu
-Použití `QueryMetrics` řešení potíží s dotazy pomalé nebo nákladné. 
+## <a name="log-sql-query-in-storage-account"></a>Dotaz protokolu SQL v účtu úložiště
+[Protokoly dotazů rozhraní SQL API prostřednictvím diagnostických protokolů](logging.md#turn-on-logging-in-the-azure-portal) umožňují protokolovat zavedený dotaz do účtu úložiště podle vašeho výběru. To vám umožní podívat se na diagnostické protokoly a najít dotaz pomocí dalších ru a použít ID aktivity, které se bude shodovat s QueryRuntimeStatistics. 
 
-  * Nastavte `FeedOptions.PopulateQueryMetrics = true` mít `QueryMetrics` v odpovědi.
-  * `QueryMetrics` Třída má přetížený `.ToString()` funkce, která může být vyvolána k získání řetězcové vyjádření `QueryMetrics`. 
-  * Metriky můžete využít k odvození tyto přehledy, mimo jiné: 
+
+## <a name="log-query-metrics"></a>Metriky dotazů protokolu
+Slouží `QueryMetrics` k řešení potíží s pomalými nebo nákladnými dotazy. 
+
+  * Nastavte `FeedOptions.PopulateQueryMetrics = true`vodpovědi. `QueryMetrics`
+  * `QueryMetrics`Třída má přetíženou `.ToString()` funkci, kterou lze vyvolat pro získání řetězcové `QueryMetrics`reprezentace. 
+  * Metriky je možné využít k odvození následujících přehledů, mimo jiné: 
   
-      * Určuje, zda všechny konkrétní součást kanálu dotazu neobvyklým způsobem dokončení trvalo dlouho (v pořadí od stovek milisekund nebo více). 
+      * Zda některé konkrétní součásti kanálu dotazů trvaly neobvykle dlouho (v pořadí stovek milisekund nebo více). 
 
-          * Podívejte se na `TotalExecutionTime`.
-          * Pokud `TotalExecutionTime` dotazu je menší než čas spuštění kompletního a pak je právě doba trvání na straně klienta nebo sítě. Pečlivě zkontrolujte, že jsou seřazena klienta a oblastí Azure.
+          * Podívejte se `TotalExecutionTime`na.
+          * `TotalExecutionTime` V případě, že je dotaz menší než čas posledního spuštění, je čas strávený na straně klienta nebo v síti. Překontrolujte, jestli se společně umístěného klient a oblast Azure.
       
-      * Zda byly v dokumentech počet falešně pozitivních výsledků analyzovat (Pokud počet dokumentů výstup je mnohem menší než počet dokumentů načíst).  
+      * Zda v analyzovaných dokumentech byly falešně pozitivní (Pokud je počet výstupních dokumentů mnohem menší než počet načtených dokumentů).  
 
-          * Podívejte se na `Index Utilization`.
-          * `Index Utilization` = (Počet vrácených dokumentů / bylo načteno množství dokumenty)
-          * Pokud počet vrácených dokumentů je mnohem menší než počet načtení, jsou probíhá analýza počet falešně pozitivních výsledků.
-          * Omezte počet dokumentů, které načítají s užší filtry.  
+          * Podívejte se `Index Utilization`na.
+          * `Index Utilization`= (Počet vrácených dokumentů/počet načtených dokumentů)
+          * Pokud je počet vrácených dokumentů mnohem menší než počet načtený, bude analyzováno falešně pozitivních hodnot.
+          * Omezte počet dokumentů, které jsou načítány pomocí užších filtrů.  
 
-      * Využití jednotlivých opakované fared (najdete v článku `Partition Execution Timeline` z řetězcové reprezentace `QueryMetrics`). 
-      * Určuje, zda dotaz spotřebované zátěž vysokou žádostí. 
+      * Jak jednotlivé zpáteční cesty fared (viz `Partition Execution Timeline` z řetězcové `QueryMetrics`reprezentace). 
+      * Určuje, zda dotaz využil požadavek na vysokou žádost. 
 
-Další podrobnosti najdete v tématu [získání metriky spouštění dotazů SQL](profile-sql-api-query.md) článku.
+Další podrobnosti najdete v článku [o tom, jak získat metriky spouštění dotazů SQL](profile-sql-api-query.md) .
       
-## <a name="tune-query-feed-options-parameters"></a>Vyladění parametry kanálu možnosti dotazu 
-Výkon dotazů můžete ladit prostřednictvím požadavku [možnosti datového kanálu](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet) parametry. Zkuste níže uvedených možností:
+## <a name="tune-query-feed-options-parameters"></a>Ladění parametrů možností kanálu dotazů 
+Výkon dotazů je možné ladit přes parametry [možností kanálu](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet) požadavku. Zkuste nastavit následující možnosti:
 
-  * Nastavte `MaxDegreeOfParallelism` na hodnotu-1 první a potom porovnejte výkon napříč různými hodnotami. 
-  * Nastavte `MaxBufferedItemCount` na hodnotu-1 první a potom porovnejte výkon napříč různými hodnotami. 
-  * Nastavte `MaxItemCount` na hodnotu -1.
+  * Nejprve `MaxDegreeOfParallelism` nastavte hodnotu-1 a potom porovnejte výkon napříč různými hodnotami. 
+  * Nejprve `MaxBufferedItemCount` nastavte hodnotu-1 a potom porovnejte výkon napříč různými hodnotami. 
+  * Nastavte `MaxItemCount` na hodnotu-1.
 
-Při porovnání výkonu různých hodnot, zkuste hodnoty, jako je 2, 4, 8, 16 a dalších.
+Při porovnávání výkonu pro různé hodnoty zkuste například hodnoty 2, 4, 8, 16 atd.
  
-## <a name="read-all-results-from-continuations"></a>Číst všechny výsledky z pokračování
-Pokud se domníváte, že se že vám nedaří získat všechny výsledky, ujistěte se, že plně vyprázdnit pokračování. Jinými slovy zachovejte čtení výsledků, zatímco token pro pokračování má více dokumentů výnosu.
+## <a name="read-all-results-from-continuations"></a>Čtení všech výsledků z pokračování
+Pokud si myslíte, že se vám nezobrazují všechny výsledky, ujistěte se, že jste úplně vyprázdnili pokračování. Jinými slovy, pokračujete ve čtení výsledků, dokud token pro pokračování poskytuje další dokumenty.
 
-Plně vyprazdňování lze nastavit pomocí některé z následujících vzorů:
+Úplného vyprázdnění je možné dosáhnout jedním z následujících způsobů:
 
-  * Pokračujte zpracování výsledků při pokračování není prázdný.
-  * Pokračujte ve zpracovávání, když má dotaz víc výsledků. 
+  * Pokračovat ve zpracování výsledků při pokračování není prázdné.
+  * Pokračovat ve zpracování, zatímco dotaz má více výsledků. 
 
     ```csharp
     // using AsDocumentQuery you get access to whether or not the query HasMoreResults
@@ -79,16 +83,16 @@ Plně vyprazdňování lze nastavit pomocí některé z následujících vzorů:
     }
     ```
 
-## <a name="choose-system-functions-that-utilize-index"></a>Zvolte systémové funkce, které využívají indexu
-Pokud výraz lze přeložit do rozsahu hodnot řetězce, pak jej mohou využívat index; v opačném případě ji nelze. 
+## <a name="choose-system-functions-that-utilize-index"></a>Zvolte systémové funkce využívající index.
+Pokud je výraz možné přeložit na rozsah řetězcových hodnot, znamená to, že může využívat index, jinak ne. 
 
-Tady je seznam funkce řetězce, které mohou využívat index: 
+Tady je seznam řetězcových hodnot, které můžou využívat index: 
     
-  * STARTSWITH (str_expr, str_expr) 
-  * LEFT (str_expr, num_expr) = str_expr 
-  * Dílčí řetězec (str_expr, num_expr num_expr.) = str_expr, ale pouze pokud je první num_expr 0 
+  * STARTSWITH(str_expr, str_expr) 
+  * LEFT(str_expr, num_expr) = str_expr 
+  * SUBSTRING(str_expr, num_expr, num_expr) = str_expr, ale pouze pokud má první parametr num_expr hodnotu 0 
     
-    Tady je několik příkladů dotazu: 
+    Tady je několik příkladů dotazů: 
     
     ```sql
 
@@ -108,9 +112,9 @@ Tady je seznam funkce řetězce, které mohou využívat index:
 
     ```
 
-  * Vyhněte se funkce systému ve filtru (ani v klauzuli WHERE), která nejsou obsluhovány podle indexu. Mezi příklady těchto funkcí systému patří obsahuje, horní, dolní.
+  * Vyhněte se systémovým funkcím v filtru (nebo v klauzuli WHERE), které nejsou obsluhovány indexem. Mezi příklady takových systémových funkcí patří například obsahuje, Velká a malá písmena.
   * Pokud je to možné, pište dotazy tak, aby používaly filtr klíče oddílu.
-  * K dosažení výkonné dotazy Vyhněte se volání velká a malá ve filtru. Místo toho normalizujte malá a velká písmena hodnot při vložení. Pro jednotlivé hodnoty vložit hodnotu s požadovanou velikostí písmen nebo vložit původní hodnota a hodnota se požadované velká a malá písmena. 
+  * Chcete-li dosáhnout provádění dotazů, vyhněte se volání hodnoty horní/nižší ve filtru. Místo toho Normalizujte velká a malá písmena hodnot při vložení. Pro každou z hodnot vložte hodnotu s požadovaným písmenem nebo vložte původní hodnotu a hodnotu s požadovaným velikostí písmen. 
 
     Příklad:
     
@@ -120,9 +124,9 @@ Tady je seznam funkce řetězce, které mohou využívat index:
 
     ```
     
-    V takovém případě v úložišti "Jan" velkými písmeny nebo uložit původní hodnotu "Jan" a "Jan". 
+    V tomto případě uložte "Jana" velkými písmeny nebo uložte obě "Jana" původní hodnotu a "Jana". 
     
-    Normalizovaná JSON data velká a malá písmena stane dotazu:
+    Pokud jsou data v datovém formátu JSON normalizována, bude dotaz:
     
     ```sql
 
@@ -130,45 +134,45 @@ Tady je seznam funkce řetězce, které mohou využívat index:
 
     ```
 
-    Druhý dotaz bude výkonnější jako nevyžaduje provádění transformací na všechny hodnoty, aby bylo možné porovnat hodnoty, které mají "Jan".
+    Druhý dotaz bude více proveden, protože nevyžaduje transformaci každé hodnoty za účelem porovnání hodnot s názvem "Jana".
 
-Další funkce systému podrobnosti najdete v tématu [systémové funkce](sql-query-system-functions.md) článku.
+Další podrobnosti o systémové funkci najdete v článku [systémové funkce](sql-query-system-functions.md) .
 
-## <a name="check-indexing-policy"></a>Zkontrolujte zásady indexování
-Chcete-li ověřit, zda aktuální [zásady indexování](index-policy.md) optimální:
+## <a name="check-indexing-policy"></a>Vyhledat zásady indexování
+Pokud chcete ověřit, že aktuální [zásady indexování](index-policy.md) jsou optimální:
 
-  * Ujistěte se, že jsou všechny cesty JSON v dotazech použít pro rychlejší čtení součástí zásady indexování.
-  * Vylučte cesty není možné použít v dotazech u další zápisy výkonné.
+  * Zajistěte, aby všechny cesty JSON použité v dotazech byly zahrnuty v zásadách indexování pro rychlejší čtení.
+  * Vylučte cesty nepoužívané v dotazech pro provádění dalších operací zápisu.
 
-Další podrobnosti najdete v tématu [jak chcete spravovat zásady indexování](how-to-manage-indexing-policy.md) článku.
+Další podrobnosti najdete v článku [Správa zásad indexování](how-to-manage-indexing-policy.md) .
 
-## <a name="spatial-data-check-ordering-of-points"></a>Prostorová data: Zkontrolujte řazení bodů
+## <a name="spatial-data-check-ordering-of-points"></a>Prostorová data: Kontrolovat řazení bodů
 Body v rámci mnohoúhelníku musí zadat v pořadí proti směru hodinových ručiček. Mnohoúhelník zadat v pořadí po směru hodinových ručiček představuje inverzní oblasti v rámci něj.
 
-## <a name="optimize-join-expressions"></a>Optimalizace spojení výrazů
-`JOIN` výrazy můžete rozšířit do velké mezi produkty. Při nejbližším dotazu na menší hledání prostoru prostřednictvím užším filtru.
+## <a name="optimize-join-expressions"></a>Optimalizovat výrazy JOIN
+`JOIN`výrazy se můžou rozšířit na velké mezi produkty. Pokud je to možné, dotazování na menší místo pro hledání prostřednictvím užšího filtru.
 
-Poddotazy s více hodnotami lze optimalizovat `JOIN` výrazy formou predikáty po každý výraz select: n, nikoli po všechny křížové spojení v `WHERE` klauzuli. Podrobný příklad naleznete v tématu [optimalizaci spojení výrazů](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions) článku.
+Podhodnoty poddotazů mohou optimalizovat `JOIN` výrazy vložením predikátů za každým výrazem Select-many, nikoli po všech křížových spojeních `WHERE` v klauzuli. Podrobný příklad najdete v článku věnovaném [optimalizaci výrazů spojení](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions) .
 
-## <a name="optimize-order-by-expressions"></a>Optimalizace výrazy ORDER BY 
-`ORDER BY` výkon dotazů může být velmi krátká, pokud jsou tato pole zhuštěných nebo není součástí zásad indexu.
+## <a name="optimize-order-by-expressions"></a>Optimalizovat pořadí podle výrazů 
+`ORDER BY`Pokud jsou pole zhuštěná nebo nejsou zahrnutá v zásadách indexu, může dojít k výkonu dotazů.
 
-  * Pro sadu zhuštěných pole například čas snížit co nejvíc prostoru pro hledání s filtry. 
-  * Pro jednu vlastnost `ORDER BY`, patří vlastnost v zásadách indexu. 
-  * Pro více vlastnost `ORDER BY` výrazy, definovat [složeném indexu](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes) polí seřazený.  
+  * Pro zhuštěná pole, jako je například čas, zmenšete hledaný prostor co nejvíce s filtry. 
+  * V případě jedné `ORDER BY`vlastnosti uveďte vlastnost include v zásadách indexování. 
+  * Pro více výrazů `ORDER BY` vlastností definujte [složený index](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes) pro pole, která jsou seřazená.  
 
-## <a name="many-large-documents-being-loaded-and-processed"></a>Načítání a zpracování velkého objemu dokumentů
-Čas a rezervovaných jednotek, které jsou vyžadované dotaz pouze nejsou závislé na velikost odpovědi, jsou také závisí na práci, která probíhá v kanálu zpracování dotazu. Čas a ru proporcionálně zvýšit množství práce provedené celý dotaz zpracování kanálu. Více práce se provádí pro velké dokumenty, takže budou muset načíst a zpracovat velké dokumenty více času a RU.
+## <a name="many-large-documents-being-loaded-and-processed"></a>Načítá a zpracovává se mnoho velkých dokumentů.
+Čas a ru, které jsou vyžadovány dotazem, nejsou závislé na velikosti odpovědi, jsou také závislé na práci, kterou provádí kanál zpracování dotazů. Čas a ru se proporcionálně zvyšují s množstvím práce, kterou provádí celý kanál zpracování dotazů. U rozsáhlých dokumentů je prováděno více práce, což znamená více času a ru se vyžaduje pro načtení a zpracování velkých dokumentů.
 
-## <a name="low-provisioned-throughput"></a>Nízká zřízená propustnost
-Zkontrolujte, že zřízená propustnost může zpracovávat úlohy. Zvyšte rozpočtu RU pro ovlivněné kolekce.
+## <a name="low-provisioned-throughput"></a>Nízká zajištěná propustnost
+Zajistěte, aby zajištěná propustnost mohla zpracovávat úlohy. Zvyšte rozpočet RU pro ovlivněné kolekce.
 
-## <a name="try-upgrading-to-the-latest-sdk-version"></a>Zkuste ho upgradovat na nejnovější verzi sady SDK
-Chcete-li zjistit nejnovější sady SDK najdete [stažení sady SDK a release notes](sql-api-sdk-dotnet.md) článku.
+## <a name="try-upgrading-to-the-latest-sdk-version"></a>Zkuste upgradovat na nejnovější verzi sady SDK.
+Informace o tom, jak zjistit nejnovější sadu SDK, najdete v článku [Stažení sady SDK a poznámky k verzi](sql-api-sdk-dotnet.md) .
 
-## <a name="next-steps"></a>Další postup
-Podívejte se na tom, jak měřit ru každý dotaz, získat statistiky provádění vyladit vaše dotazy a další dokumenty:
+## <a name="next-steps"></a>Další kroky
+Další informace o tom, jak měřit ru na dotaz, získat statistiku spouštění a vyladit dotazy a další informace:
 
-* [Získat metriky spouštění dotazů SQL pomocí sady .NET SDK](profile-sql-api-query.md)
+* [Získání metrik spouštění dotazů SQL pomocí sady .NET SDK](profile-sql-api-query.md)
 * [Ladění výkonu dotazů pomocí služby Azure Cosmos DB](sql-api-sql-query-metrics.md)
 * [Tipy ke zvýšení výkonu pro sadu .NET SDK](performance-tips.md)

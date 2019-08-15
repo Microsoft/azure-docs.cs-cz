@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 1af6ed2743807f75e96bed0ae67d0070aa55c0ef
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 0122b76592ce9e1179a3d65f7db681679bda6f37
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677453"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988609"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Instalace modulu runtime Azure IoT Edge ve Windows
 
@@ -202,7 +202,7 @@ Zkontrolujte protokoly služby z posledních 5 minut. Pokud jste právě dokonč
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Seznam s moduly. Jediným modulem, který by měl být spuštěný, se po nové instalaci zobrazí **edgeAgent**. Po [nasazení IoT Edge moduly](how-to-deploy-modules-portal.md)se zobrazí ostatní. 
+Seznam s moduly. Jediným modulem, který by měl být spuštěný, se po nové instalaci zobrazí **edgeAgent**. Po prvním [nasazení IoT Edge moduly](how-to-deploy-modules-portal.md) se na zařízení spustí i druhý systémový modul **edgeHub**. 
 
 ```powershell
 iotedge list
@@ -262,6 +262,7 @@ Další informace o těchto možnostech aktualizace získáte pomocí příkazu 
 Pokud chcete odebrat instalaci IoT Edge ze zařízení s Windows, použijte následující příkaz z okna pro správu prostředí PowerShell. Tento příkaz odebere modul runtime IoT Edge společně se stávající konfigurací a daty modulu Moby. 
 
 ```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
 

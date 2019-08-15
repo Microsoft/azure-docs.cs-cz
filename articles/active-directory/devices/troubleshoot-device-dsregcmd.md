@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189e4f280e8aba28c4d1af449aa8a3428e303911
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 4aa8f9a7c6807a2f9505559ea13fb0b4f410346d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298409"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987169"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Řešení potíží se zařízeními pomocí příkazu dsregcmd
 
@@ -28,7 +28,7 @@ V této části jsou uvedené parametry stavu připojení zařízení. V násled
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Stav zařízení |
 | ---   | ---   | ---   | ---   |
-| ANO | NO | NO | Připojeno k Azure AD |
+| ANO | NO | NO | Připojené k Azure AD |
 | NO | NO | ANO | Připojeno k doméně |
 | ANO | NO | ANO | Připojeno k hybridní službě AD |
 | NO | ANO | ANO | Připojené k místnímu DRS |
@@ -54,7 +54,7 @@ V této části jsou uvedené parametry stavu připojení zařízení. V násled
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>Podrobnosti o zařízení
+## <a name="device-details"></a>Detaily zařízení
 
 Zobrazuje se jenom v případě, že je zařízení připojené k Azure AD nebo je připojené k hybridní službě Azure AD (není zaregistrované Azure AD). V této části jsou uvedené informace o identifikaci zařízení, které jsou uložené v cloudu.
 
@@ -295,6 +295,9 @@ Tato část zobrazuje výstup kontrol správnosti provedených v zařízení př
 ## <a name="ngc-prerequisite-check"></a>Kontrola požadavků služby NGC
 
 Tato část provádí předpokladech kontroly zřízení klíče NGC. 
+
+> [!NOTE]
+> Pokud už uživatel úspěšně nakonfiguroval přihlašovací údaje služby NGC, nesmíte v dsregcmd/status zobrazit podrobnosti o kontrole požadavků na NGC.
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>Ukázka výstupu kontroly požadavků služby NGC
 

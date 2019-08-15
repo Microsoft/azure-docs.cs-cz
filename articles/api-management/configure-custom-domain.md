@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 45e1ad6bd757ec5acaf784c94e4cfb5e487ce9ba
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736262"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975742"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
@@ -34,7 +34,8 @@ K provedení kroků popsaných v tomto článku musíte mít:
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 -   Instance API Management. Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
--   Vlastní název domény, který vlastníte. Vlastní název domény, který chcete použít, je nutné samostatně vyřídit a hostovat na serveru DNS. Toto téma neposkytuje pokyny k hostování vlastního názvu domény.
+-   Vlastní název domény, který vlastníte vy nebo vaše organizace. Toto téma neposkytuje pokyny k získání vlastního názvu domény.
+-   Záznam CNAME hostovaný na serveru DNS, který mapuje název vlastní domény na výchozí název domény vaší instance API Management. Toto téma neposkytuje pokyny k hostování záznamu CNAME.
 -   Musíte mít platný certifikát s veřejným i privátním klíčem (. PFX). Alternativní název předmětu nebo subjektu (SAN) musí odpovídat názvu domény (to umožňuje API Management instance bezpečně vystavit adresy URL přes SSL).
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Použijte Azure Portal k nastavení vlastního názvu domény.
@@ -52,13 +53,17 @@ K provedení kroků popsaných v tomto článku musíte mít:
     > [!NOTE]
     > Pro konfiguraci v úrovni spotřeby je dostupný jenom koncový bod **brány** .
     > Můžete aktualizovat všechny koncové body nebo některé z nich. Zákazníci aktualizují **bránu** (Tato adresa URL se běžně používá k volání rozhraní API vystaveného prostřednictvím API Management) a **portálu** (adresa URL portálu pro vývojáře).
-    > Koncové body **správy** a **SCM** se používají interně pouze vlastníky instance API Management, takže se jim pro vlastní název domény často přiřazují méně často. Úroveň **Premium** podporuje nastavení více názvů hostitelů pro koncový bod **brány** .
+    > Koncové body **správy** a **SCM** se používají interně pouze vlastníky instance API Management, takže se jim pro vlastní název domény často přiřazují méně často.
+    > Úroveň **Premium** podporuje nastavení více názvů hostitelů pro koncový bod **brány** .
 
 1. Vyberte koncový bod, který chcete aktualizovat.
 1. V okně na pravé straně klikněte na **vlastní**.
 
-    - Do pole **vlastní název domény**zadejte název, který chcete použít. Například, `api.contoso.com`. Podporují se i názvy domén se zástupnými znaky (například \*. domain.com).
+    - Do pole **vlastní název domény**zadejte název, který chcete použít. Například, `api.contoso.com`.
     - V části **certifikát**vyberte certifikát z Key Vault. Můžete také nahrát platnou hodnotu. Soubor PFX a zadejte **heslo**, pokud je certifikát chráněn heslem.
+
+    > [!NOTE]
+    > Názvy domén se zástupnými `*.contoso.com` znaky, např., jsou podporovány ve všech úrovních s výjimkou úrovně spotřeby.
 
     > [!TIP]
     > Doporučujeme použít Azure Key Vault pro správu certifikátů a jejich nastavení na automatické střídání.
@@ -71,7 +76,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
 1. Klikněte na použít.
 
     > [!NOTE]
-    > Proces přiřazení certifikátu může v závislosti na velikosti nasazení trvat 15 minut nebo déle. SKU pro vývojáře má výpadek, základní a vyšší SKU nevýpadek.
+    > Proces přiřazení certifikátu může v závislosti na velikosti nasazení trvat 15 minut nebo déle. SKU pro vývojáře má výpadky, základní a vyšší skladové jednotky nevýpadek.
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 
@@ -79,12 +84,12 @@ K provedení kroků popsaných v tomto článku musíte mít:
 
 Při konfiguraci DNS pro vlastní název domény máte dvě možnosti:
 
-- Nakonfigurujte záznam CNAME, který odkazuje na koncový bod vašeho nakonfigurovaného vlastního názvu domény.
-- Nakonfigurujte záznam A, který odkazuje na IP adresu brány API Management.
+-   Nakonfigurujte záznam CNAME, který odkazuje na koncový bod vašeho nakonfigurovaného vlastního názvu domény.
+-   Nakonfigurujte záznam A, který odkazuje na IP adresu brány API Management.
 
 > [!NOTE]
 > I když je IP adresa instance pro správu rozhraní API statická, může se v několika scénářích změnit. Z tohoto důvodu doporučujeme při konfiguraci vlastní domény použít CNAME. Při volbě metody konfigurace DNS Vezměte v úvahu. Další informace najdete v tématu [Nejčastější dotazy k rozhraní API Mananagement](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Upgrade a škálování služby](upgrade-and-scale.md)

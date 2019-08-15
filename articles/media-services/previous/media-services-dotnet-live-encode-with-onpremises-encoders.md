@@ -1,6 +1,6 @@
 ---
-title: Jak provést živé streamování pomocí místních kodérů pomocí .NET | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak provádět živé kódování pomocí místních kodérů pomocí .NET.
+title: Jak provádět živé streamování s místními kodéry pomocí .NET | Microsoft Docs
+description: V tomto tématu se dozvíte, jak používat rozhraní .NET k provádění kódování v reálném čase pomocí místních kodérů.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: cenkdin;juliako
-ms.openlocfilehash: 8baff356e1a4916bcc21b28f422a6e98342c0d34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: bc7c8a059e1e17b7b280a7061206b10ed6c530aa
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869448"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69015844"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak provést živé streamování pomocí místních kodérů pomocí .NET
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak provádět živé streamování s místními kodéry pomocí .NET
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -29,9 +29,9 @@ ms.locfileid: "64869448"
 > 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Tento kurz vás provede kroky pro použití Azure Media Services .NET SDK k vytvoření **kanálu** , který je nakonfigurován pro průchozí doručování. 
+Tento kurz vás provede jednotlivými kroky použití sady Azure Media Services .NET SDK k vytvoření **kanálu** , který je nakonfigurovaný pro předávací doručování. 
 
 ## <a name="prerequisites"></a>Požadavky
 K dokončení kurzu potřebujete následující:
@@ -39,10 +39,10 @@ K dokončení kurzu potřebujete následující:
 * Účet Azure.
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**. 
-* Nastavení vývojového prostředí. Další informace najdete v tématu [nastavení prostředí](media-services-set-up-computer.md).
+* Nastavte své vývojové prostředí. Další informace najdete v tématu [nastavení prostředí](media-services-set-up-computer.md).
 * Webová kamera. Například [kodér Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm).
 
-Doporučujeme přečtení následujících článků:
+Doporučujeme, abyste si přečtěte následující články:
 
 * [Podpora RTMP ve službě Azure Media Services a kodéry služby Live Encoding](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi](media-services-live-streaming-with-onprem-encoders.md)
@@ -51,25 +51,25 @@ Doporučujeme přečtení následujících článků:
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
-Následující příklad kódu ukazuje, jak dokončit následující úlohy:
+Následující příklad kódu ukazuje, jak dosáhnout následujících úloh:
 
 * Připojení ke službě Media Services
 * Vytvoření kanálu
 * Aktualizace kanálu
-* Načte vstupní koncový bod kanálu. Vstupní koncový bod musí být zadána do místní kodér služby live Encoding. Převede signály kodér služby live Encoding z fotoaparátu/kamery do datových proudů, které se odesílají na vstup z kanálu (ingestování) koncového bodu.
-* Načíst koncový bod kanálu ve verzi preview
+* Načte vstupní koncový bod kanálu. Vstupní koncový bod by měl být k dispozici pro místní kodér Live Encoder. Živý kodér převede signály z kamery na datové proudy, které jsou odeslány do koncového bodu vstupu kanálu.
+* Načíst koncový bod náhledu kanálu
 * Vytvoření a spuštění programu
-* Vytvoření lokátoru potřebné pro přístup k programu
+* Vytvořit Lokátor potřebný k přístupu k programu
 * Vytvoření a spuštění StreamingEndpoint
 * Aktualizace koncového bodu streamování
-* Vypnout prostředky
+* Vypnutí prostředků
     
 >[!NOTE]
 >Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
-Informace o tom, jak nakonfigurovat kodér služby live Encoding najdete v tématu [podpora RTMP ve službě aplikace Azure Media Services a kodéry](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
+Informace o tom, jak nakonfigurovat živý kodér, najdete v tématu [Azure Media Services podpoře RTMP a živých kodérů](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
 
 ```csharp
 using System;
@@ -399,8 +399,8 @@ namespace AMSLiveTest
 }
 ```
 
-## <a name="next-step"></a>Dalším krokem
-Projděte si mapy kurzů k Media Services
+## <a name="next-step"></a>Další krok
+Kontrola cest Media Services výuky
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

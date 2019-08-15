@@ -1,6 +1,6 @@
 ---
-title: Oříznutí videa pomocí kodéru Media Encoder Standard – Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, jak chcete provést oříznutí videa pomocí kodéru Media Encoder Standard.
+title: Jak oříznout videa pomocí Media Encoder Standard – Azure | Microsoft Docs
+description: Tento článek ukazuje, jak oříznout videa pomocí Media Encoder Standard.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -12,34 +12,35 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: anilmur;juliako;
-ms.openlocfilehash: 9a81050fca935f688f2ff58cb04a148bf676f04b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: anilmur
+ms.reviewer: juliako
+ms.openlocfilehash: 03d68cc3a60abba8b7189a9d03fbc21d7606f736
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217174"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69016615"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Oříznutí videa pomocí kodéru Media Encoder Standard  
 
-Media Encoder Standard (MES) slouží k oříznutí váš vstup videa. Oříznutí je proces výběru obdélníkové okna nejvyšší úrovně v rámci video a kódování pixely v rámci tohoto okna. Následující diagram pomůže ukazují proces.
+K oříznutí vstupního videa můžete použít Media Encoder Standard (status národního prostředí). Oříznutí je proces výběru obdélníkového okna v rámci videa a kódování pouze pixelů v rámci tohoto okna. Následující diagram vám pomůže tento proces znázornit.
 
-![Oříznutí videa](./media/media-services-crop-video/media-services-crop-video01.png)
+![Oříznout video](./media/media-services-crop-video/media-services-crop-video01.png)
 
-Předpokládejme, že máte jako vstup videa, která má rozlišení 1920 × 1080 pixelů (poměr 16:9), ale má černé pruhy (pillar polí) na levé a pravé, aby pouze časové období 4:3 nebo 1440 × 1080 pixelů obsahuje aktivní video. Můžete použití MES k oříznutí nebo upravit černé pruhy a kódování 1440 × 1080 oblasti.
+Předpokládejme, že jako vstupní video máte rozlišení 1080 pixelů (poměr stran 16:9), ale v levé a pravé straně mají černé pruhy (pole pilíře), takže aktivní video obsahuje pouze 4:3 Window nebo 1440x1080 pixelů. Pomocí nástroje pro úpravy pozadí můžete oříznout nebo upravit černé pruhy a zakódovat oblast 1440x1080.
 
-Oříznutí v MES je předběžného zpracování fáze, takže oříznutí parametry v předvolba kódování platí pro původní vstupního videa. Kódování je další fází a použít nastavení šířky a výšky *předem zpracovaných* videa a ne do původního videa. Při navrhování předvolbu musíte udělat následující: (a) vyberte parametry Oříznout podle původního vstupního videa a (b) vyberte váš kódování nastavení podle oříznutý videa. Pokud se neshodují vašeho kódování nastavení oříznutý videa, výstup se tak, jak očekáváte.
+Oříznutí v části národního odinstalování je předzpracovaná fáze, takže parametry oříznutí v předplatném kódování se vztahují na původní vstupní video. Kódování je následná fáze a nastavení šířky a výšky se vztahuje na *předem zpracované* video, nikoli na původní video. Při navrhování přednastavených možností je třeba provést následující: (a) vybrat parametry oříznutí na základě původního vstupního videa a (b) vybrat nastavení kódování na základě oříznutého videa. Pokud nesouhlasíte s nastavením kódování na oříznuté video, nebude výstup odpovídat vašemu očekávání.
 
-[Následující](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) téma ukazuje, jak vytvořit úlohu kódování pomocí MES a zadat vlastní předvolbu pro úlohu kódování. 
+[Následující](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) téma ukazuje, jak vytvořit úlohu kódování pomocí nástroje pro vytváření a určení vlastní předvolby pro úlohu kódování. 
 
-## <a name="creating-a-custom-preset"></a>Vytváří se vlastní předvolba
-V tomto příkladu je vidět na obrázku:
+## <a name="creating-a-custom-preset"></a>Vytvoření vlastní předvolby
+V příkladu zobrazeném v diagramu:
 
-1. Původní vstup je 1920 × 1080
-2. Je potřeba se ořízne na výstup 1440 × 1080, který je v rámci vstupní zarovnaný na střed
-3. To znamená, že X posun (1920 – 1440) / 2 = 240 a Y posunutí nula
-4. Šířku a výšku obdélníku oříznutí jsou 1440 a 1080, respektive
-5. Ve fázi kódovat zadání se vytvoří tři vrstvy, jsou řešení 1440 × 1080, 960 × 720 a 480 x 360, respektive
+1. Původní vstup je 1080
+2. Je nutné ji oříznout na výstup 1440x1080, který je zarovnán na střed vstupního rámce.
+3. To znamená, že posun X je (1920 – 1440)/2 = 240 a posun Y nula.
+4. Šířka a výška obdélníku oříznutí jsou 1440 a 1080, v uvedeném pořadí.
+5. Ve fázi kódování se požádá o vyprodukování tří vrstev, jedná se o řešení 1440x1080, 960x720 a 480x360, v uvedeném pořadí.
 
 ### <a name="json-preset"></a>Přednastavení JSON
     {
@@ -126,20 +127,20 @@ V tomto příkladu je vidět na obrázku:
     }
 
 
-## <a name="restrictions-on-cropping"></a>Omezení pro oříznutí
-Oříznutí funkce je určená na ruční. Je třeba načíst vaše vstupní video do vhodné úpravy nástroj, který umožňuje vybrat snímků, které vás zajímají, umístěte kurzor myši k určení posunutí pro obdélník oříznutí, určit použitá předvolba kódování, který je vyladěný pro tohoto konkrétního videa, atd. Tato funkce není určena k povolení věci, jako je: automatické rozpoznání a odstranění černé letterbox/pillarbox ohraničení v vaše vstupní video.
+## <a name="restrictions-on-cropping"></a>Omezení pro ořezávání
+Funkce oříznutí by měla být ruční. Měli byste načíst vstupní video do vhodného nástroje pro úpravy, který vám umožní vybrat snímky zájmu, umístit kurzor k určení posunutí pro obdélník oříznutí, aby se určilo přednastavení kódování, které se pro konkrétní video vyladěno atd. Tato funkce není určená k tomu, aby umožňovala například: automatické zjišťování a odstraňování černých Letterbox/pillarbox ohraničení ve vstupním videu.
 
-Tato omezení platí pro funkci oříznutí. Pokud se nesplní tyto, můžete kódovat úloh selhat nebo neočekávaný výstup.
+Následující omezení platí pro funkci oříznutí. Pokud nejsou splněny, úloha kódování může selhat nebo získat Neočekávaný výstup.
 
-1. Souřadnice a velikost obdélník oříznutí se musí vejít do vstupního videa
-2. Jak je uvedeno výše, šířku a výšku v kódovat nastavení musí odpovídat oříznutý videa
-3. Oříznutí platí pro videa zaznamenat v režimu na šířku (to znamená nevztahuje se na videa, které jsou zaznamenány s smartphone uchovávány svisle nebo v režimu na výšku)
-4. Funguje nejlépe s progresivní video zachytit pomocí Čtvereček pixelů
+1. Souřadnice a velikost obdélníku oříznutí se musí vejít do vstupního videa.
+2. Jak je uvedeno výše, Šířka & Výška v nastavení kódování musí odpovídat oříznutému videu.
+3. Oříznutí se vztahuje na videa zachycená v režimu na šířku (tj. neplatí pro videa zaznamenaná přes smartphone, která se podrží svisle nebo v režimu na výšku).
+4. Funguje nejlépe s progresivním videem zachyceným čtvercovým pixelem.
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Další krok
-Podívejte se na Azure Media Services postupy výuky vám pomůžou získat informace o skvělých funkcí, které nabízí AMS.  
+Informace o skvělých funkcích, které nabízí AMS, najdete v tématu Azure Media Services výukové cesty.  
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

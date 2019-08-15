@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2019
+ms.date: 07/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2d0697567bfd2fcf95a1fe6ebf246646af5650c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0f1c66126a1aa9a6ebf6f78ac6fb1ba37ba41829
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564890"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985409"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure
 
@@ -50,17 +50,7 @@ Další informace o přiřazování rolí RBAC najdete v jednom z následující
 
 Příklad kódu ukazuje, jak získat token OAuth 2,0 z Azure AD a použít ho k autorizaci žádosti o vytvoření objektu blob bloku. Chcete-li získat tento příklad práce, postupujte podle kroků popsaných v předchozích částech.
 
-Klientská knihovna pro [ověřování aplikací Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) pro .NET (Preview) zjednodušuje proces získávání a obnovování tokenu z vašeho kódu. Klientská knihovna pro ověřování aplikací spravuje ověřování automaticky. Knihovna používá pověření vývojáře k ověřování během místního vývoje. Použití přihlašovacích údajů pro vývojáře během místního vývoje je bezpečnější, protože nemusíte vytvářet přihlašovací údaje Azure AD nebo sdílet přihlašovací údaje mezi vývojáři. Po nasazení řešení do Azure se knihovna automaticky přepne na použití přihlašovacích údajů aplikace.
-
-### <a name="install-packages"></a>Instalace balíčků
-
-Pokud chcete použít knihovnu ověřování aplikací v aplikaci Azure Storage, nainstalujte si nejnovější balíček verze Preview z [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)a také nejnovější verzi [Azure Storage Common Client Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/) a [klientskou knihovnu Azure Blob Storage. pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/). Do kódu přidejte následující příkazy **using** :
-
-```csharp
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Azure.Storage.Auth;
-using Microsoft.Azure.Storage.Blob;
-```
+[!INCLUDE [storage-app-auth-lib-include](../../../includes/storage-app-auth-lib-include.md)]
 
 ### <a name="add-the-callback-method"></a>Přidat metodu zpětného volání
 
@@ -139,7 +129,7 @@ Další informace o tom, jak získat přístupový token, najdete v tématu [Jak
 > [!NOTE]
 > Pokud chcete autorizovat požadavky na data objektů BLOB nebo front pomocí Azure AD, musíte pro tyto požadavky použít protokol HTTPS.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o rolích RBAC pro Azure Storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
 - Informace o tom, jak autorizovat přístup k kontejnerům a frontám v rámci aplikací úložiště, najdete v tématu [použití Azure AD s aplikacemi úložiště](storage-auth-aad-app.md).

@@ -2,7 +2,7 @@
 title: Jak používat balíček obsahu Azure Active Directory Power BI Content Pack | Dokumentace Microsoftu
 description: Naučte se používat balíček obsahu Azure Active Directory Power BI Content Pack.
 services: active-directory
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,135 +12,135 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 934562147fedcc81b16fd1ad2534af5662ef4b78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4d56802e96028b6b01b6be749405c56df2648161
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437599"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988239"
 ---
-# <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Jak používat balíček obsahu Azure Active Directory Power BI
+# <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Použití balíčku obsahu Azure Active Directory Power BI
 
 |  |
 |--|
 |V současné době balíček obsahu Azure AD Power BI používá rozhraní Azure AD Graph API k načtení dat z vašeho tenanta Azure AD. V důsledku toho můžete zaznamenat určitý nesoulad mezi daty, která jsou k dispozici v balíčku obsahu, a daty načtenými pomocí [rozhraní Microsoft Graph API pro generování sestav](concept-reporting-api.md). |
 |  |
 
-Power BI content pack pro službu Azure Active Directory (Azure AD) obsahuje předdefinované sestavy, které vám pomohou pochopit, jakým způsobem uživatelé přijímají a používat funkce služby Azure AD. To umožňuje získat přehled o všech aktivitách v adresáři, pomocí prostředí bohatých funkcí vizualizace v Power BI. Můžete také vytvořit vlastní řídicí panel a sdílet ho s kýmkoli ve vaší organizaci. 
+Power BI balíček obsahu pro Azure Active Directory (Azure AD) obsahuje předem připravené sestavy, které vám pomůžou pochopit, jak uživatelé přijímají a používají funkce služby Azure AD. Díky tomu můžete získat přehled o všech aktivitách v adresáři pomocí prostředí s bohatou vizualizací v Power BI. Můžete také vytvořit vlastní řídicí panel a sdílet ho s kýmkoli ve vaší organizaci. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Potřebujete licenci Azure AD premium (P1/P2) pro použití balíčku obsahu. Zobrazit [Začínáme se službou Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) upgradovat edici Azure Active Directory.
+K používání balíčku obsahu potřebujete licenci Azure AD Premium (P1/P2). Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) .
 
-## <a name="install-the-content-pack"></a>Nainstalujte balíček obsahu
+## <a name="install-the-content-pack"></a>Instalace balíčku obsahu
 
-Podívejte se [rychlý Start](quickstart-install-power-bi-content-pack.md) k instalaci balíčku obsahu Azure AD Power BI.
+Projděte si [rychlý Start](quickstart-install-power-bi-content-pack.md) a nainstalujte balíček obsahu Power BI Azure AD.
 
-### <a name="reports-included-in-this-version-of-azure-ad-logs-content-pack"></a>Balíčku obsahu protokolů sestavy zahrnuté v této verzi služby Azure AD
+### <a name="reports-included-in-this-version-of-azure-ad-logs-content-pack"></a>Sestavy zahrnuté v této verzi balíčku obsahu protokolů služby Azure AD
 
-Tyto sestavy jsou součástí balíčku obsahu Azure AD Power BI. Sestavy obsahují data z **posledních 30 dní**.
+Do balíčku obsahu Power BI služby Azure AD jsou zahrnuty následující sestavy. Sestavy obsahují data za **posledních 30 dní**.
 
-**Sestava využití aplikace a trendy**:  Tato sestava poskytuje informace o aplikacích používaných ve vaší organizaci. Můžete získat seznam nejoblíbenějších aplikací nebo pochopit, jak se používá aplikace, které se nedávno zavedli ve vaší organizaci. To umožňuje sledovat a vylepšit využití v průběhu času.
+**Sestava o využití a trendech aplikací**:  Tato sestava poskytuje přehled o aplikacích používaných ve vaší organizaci. Můžete získat seznam nejoblíbenějších aplikací nebo zjistit, jak se používá aplikace, kterou jste nedávno zavedli ve vaší organizaci. Díky tomu můžete sledovat a zdokonalovat využití v průběhu času.
 
-**Přihlášení podle umístění a uživatelů**: Tato sestava poskytuje data o všech přihlášeních provedených pomocí Azure Identity. U této sestavy může se ponořit až individuální přihlášení a odpovězte na otázky jako:
+**Přihlášení podle umístění a uživatelů**: Tato sestava poskytuje data o všech přihlášeních provedených pomocí Azure identity. Pomocí této sestavy můžete přejít k jednotlivým přihlašovacím údajům a odpovědím na otázky, jako jsou:
 
-- Kde tento uživatel přihlásit z?
+- Kam se uživatel přihlásil?
 - Který uživatel má nejvíce přihlášení a odkud se přihlašuje? 
 - Bylo přihlášení úspěšné?  
  
-Výsledky můžete také filtrovat tak, že vyberete konkrétní datum nebo umístění.
+Výsledky můžete filtrovat také výběrem konkrétního data nebo umístění.
 
-**Jedineční uživatelé na aplikaci**:  Tato sestava poskytuje přehled všech jedinečných uživatelů, kteří danou aplikaci. Zahrnuje pouze uživatelé, kteří mají "*úspěšně*" přihlášení do aplikace.
+**Jedineční uživatelé na aplikaci**:  Tato sestava poskytuje zobrazení všech jedinečných uživatelů, kteří používají danou aplikaci. Zahrnuje jenom uživatele, kteří mají*úspěšně*přihlášení do aplikace.
 
-**Přihlášení zařízení**: Tato sestava vám pomůže pochopit různé profily zařízení používané ve vaší organizaci a určit zásady zařízení na základě využití. Poskytuje daty o typ operačního systému a používaných pro přihlášení k aplikacím, spolu s podrobnými informacemi o uživatelích, včetně prohlížečů:
+**Přihlášení zařízení**: Tato sestava vám pomůže pochopit různé profily zařízení používané ve vaší organizaci a určovat zásady zařízení na základě využití. Poskytuje data kolem typu operačního systému a prohlížečů používaných k přihlašování k aplikacím spolu s podrobnými informacemi o uživatelích, včetně:
 
 - Uživatelské jméno
 - IP adresa
 - Location 
 - Stav přihlášení 
 
-**Trychtýř SSPR**: Tato sestava pomáhá pochopit, jak se používá nástroj pro samoobslužné resetování HESLA ve vaší organizaci. Můžete zobrazit, kolik o resetování hesla bylo prostřednictvím nástroje SSPR a kolik z nich byly úspěšné. Můžete také podrobnější informace o selhání resetování hesel a pochopit, proč k některým chybám došlo. 
+**SSPR trychtýř**: Tato sestava vám pomůže pochopit, jak se nástroj SSPR používá v rámci vaší organizace. Pomocí nástroje SSPR můžete zobrazit, kolik z nich bylo pokusy o obnovení hesla, a kolik z nich bylo úspěšné. Můžete se také dig hlouběji na chyby resetování hesla a pochopit, proč došlo k určitým chybám. 
 
-## <a name="customize-azure-ad-activity-content-pack"></a>Přizpůsobení balíčku obsahu aktivit služby Azure AD
+## <a name="customize-azure-ad-activity-content-pack"></a>Přizpůsobení balíčku obsahu aktivit Azure AD
 
-**Změna vizualizace**:  Vizualizaci sestavy můžete změnit kliknutím **upravit sestavu** a vyberte požadované vizualizace.
+**Změna vizualizace**:  Vizualizaci sestavy můžete změnit kliknutím na **Upravit sestavu** a výběrem požadované vizualizace.
  
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/09.png) 
  
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/10.png) 
 
-**Zahrnutí dalších polí**:  Můžete přidat pole do sestavy nebo z ní odebrat výběrem vizuálu, do které chcete přidat nebo odebrat pole. Můžete například přidat pole "stav přihlášení" do zobrazení tabulky, jak je znázorněno níže. 
+**Zahrnout další pole**:  Do sestavy můžete přidat pole nebo je odebrat výběrem vizuálu, ke kterému chcete pole Přidat nebo odebrat. Můžete například přidat pole "stav přihlášení" do zobrazení tabulky, jak je znázorněno níže. 
  
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/11.png) 
 
-**Připnutí vizualizace na řídicí panel**:  Řídicí panel můžete přizpůsobit tak, že včetně vaší vlastní vizualizace do sestavy a Připnutí na řídicí panel. 
+**Připnout vizualizace na řídicí panel**:  Řídicí panel můžete přizpůsobit tak, že zahrnete do sestavy vlastní vizualizace a připnete ji na řídicí panel. 
 
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/13.png) 
  
-**Sdílení řídicího panelu**: Řídicí panel můžete také sdílet s uživateli ve vaší organizaci. Jakmile sestavu sdílíte, uživatelé mohou vidět vybraných v sestavě polí.
+**Sdílení řídicího panelu**: Řídicí panel můžete sdílet také s uživateli ve vaší organizaci. Po sdílení sestavy uživatelé uvidí pole, která jste vybrali v sestavě.
  
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/14.png) 
 
-## <a name="schedule-a-daily-refresh-of-your-power-bi-report"></a>Naplánovat každodenní aktualizaci sestavy Power BI
+## <a name="schedule-a-daily-refresh-of-your-power-bi-report"></a>Naplánování denní aktualizace sestavy Power BI
 
-Pokud chcete naplánovat každodenní aktualizaci sestavy Power BI, přejděte na **datových sad** > **nastavení** > **naplánovat aktualizaci** a nastavte ji podle příkladu níže.
+Chcete-li naplánovat každodenní aktualizaci sestavy Power BI, použijte**Nastavení** > **naplánovat aktualizaci** **sady datových sad** > a nastavte ji tak, jak je uvedeno níže.
  
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/15.png) 
 
-## <a name="update-to-newer-version-of-content-pack"></a>Aktualizovat na novější verzi balíčku obsahu
+## <a name="update-to-newer-version-of-content-pack"></a>Aktualizace na novější verzi balíčku obsahu
 
-Pokud chcete aktualizovat svůj balíček obsahu na novější verzi:
+Pokud chcete balíček obsahu aktualizovat na novější verzi:
 
-- Stáhněte si nový balíček obsahu a nastavení podle pokynů v tomto článku.
+- Stáhněte si nový balíček obsahu a nastavte ho podle pokynů v tomto článku.
 
-- Jakmile nastavíte ho, přejděte na **zdroj dat** > **nastavení** > **přihlašovací údaje ke zdroji dat** a znovu zadejte svoje přihlašovací údaje.
+- Po nastavení přejděte na**Nastavení** >  **zdroje** > dat**přihlašovací údaje ke zdroji dat** a znovu zadejte svoje přihlašovací údaje.
 
     ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/16.png) 
 
-Jakmile ověříte, že nová verze balíčku obsahu funguje podle očekávání, můžete odebrat starou verzi v případě potřeby odstraněním podkladových sestav a datové sady přidružené k tomuto balíčku obsahu.
+Jakmile ověříte, že nová verze balíčku obsahu funguje podle očekávání, můžete v případě potřeby odebrat starou verzi tím, že odstraníte základní sestavy a datové sady spojené s tímto balíčkem obsahu.
 
-## <a name="troubleshoot-content-pack-errors"></a>Řešení potíží s chybami balíčku obsahu
+## <a name="troubleshoot-content-pack-errors"></a>Řešení chyb balíčku obsahu
 
-Při práci s balíčkem obsahu, je možné, že narazíte na následující chyby: 
+Při práci s balíčkem obsahu je možné spustit následující chyby: 
 
-- [Aktualizace se nezdařila.](#refresh-failed) 
-- [Nepovedlo se aktualizovat přihlašovací údaje ke zdroji dat](#failed-to-update-data-source-credentials) 
-- [Import dat trvá moc dlouho](#data-import-is-too-slow) 
+- [Neúspěšná aktualizace](#refresh-failed) 
+- [Nepovedlo se aktualizovat přihlašovací údaje zdroje dat.](#failed-to-update-data-source-credentials) 
+- [Import dat trvá příliš dlouho.](#data-import-is-too-slow) 
 
 Obecnou nápovědu k Power BI najdete v těchto [článcích nápovědy](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 
-### <a name="refresh-failed"></a>Aktualizace se nezdařila. 
+### <a name="refresh-failed"></a>Aktualizace se nezdařila 
  
-**Jak se zobrazí tato chyba**: E-mailu z Power BI nebo stavu selhání v historii aktualizace. 
+**Jak je tato chyba Surface**: Odeslání e-mailu z Power BI nebo neúspěšného stavu v historii aktualizace. 
 
 
-| Příčina | K vyřešení |
+| Příčina | Jak opravit |
 | ---   | ---        |
-| Aktualizujte chyby, které chyby může být způsobena přihlašovacích údajů uživatele, připojení k balíčku obsahu byly obnovit, ale není aktualizovaná. v nastavení připojení balíčku obsahu. | V Power BI, vyhledejte sadu dat odpovídající panel protokolů aktivity služby Azure AD (**protokoly aktivit Azure Active Directory**), zvolte naplánovat aktualizaci a pak zadejte svoje přihlašovací údaje Azure AD. |
-| Obnovení může selhat kvůli problémům s daty v základní balíčku obsahu. | [Lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| Chyby při selhání aktualizace se můžou způsobovat při resetování přihlašovacích údajů uživatelů, kteří se připojili k balíčku obsahu, ale ne aktualizovat v nastavení připojení balíčku obsahu. | V Power BI Najděte datovou sadu odpovídající řídicímu panelu protokoly aktivit Azure AD (**protokoly aktivit Azure Active Directory**), zvolte naplánovat aktualizaci a zadejte svoje přihlašovací údaje služby Azure AD. |
+| Aktualizace může selhat kvůli problémům s daty v podkladovém balíčku obsahu. | [Soubor a lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
  
-### <a name="failed-to-update-data-source-credentials"></a>Nepovedlo se aktualizovat přihlašovací údaje ke zdroji dat 
+### <a name="failed-to-update-data-source-credentials"></a>Nepovedlo se aktualizovat přihlašovací údaje zdroje dat. 
  
-**Jak se zobrazí tato chyba**: V Power BI, když se připojíte k balíčku obsahu protokolů aktivit Azure AD. 
+**Jak je tato chyba Surface**: Když se v Power BI připojíte k balíčku obsahu protokol aktivit služby Azure AD. 
 
-| Příčina | K vyřešení |
+| Příčina | Jak opravit |
 | ---   | ---        |
-| Je připojující se uživatel není globální správce nebo čtenáře zabezpečení nebo správce zabezpečení. | Použijte účet, který je globálním správcem nebo Čtenář zabezpečení nebo správce zabezpečení pro přístup k obsahu sady. |
-| Váš tenant není Premium tenanta nebo nemá alespoň jeden uživatel s licencí Premium souboru. | [Lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| Připojující se uživatel není globálním správcem nebo čtenářem zabezpečení nebo správcem zabezpečení. | Pro přístup k balíčkům obsahu použijte účet, který je buď globálním správcem, nebo čtenářem zabezpečení, nebo správcem zabezpečení. |
+| Váš tenant není tenant úrovně Premium nebo nemá aspoň jednoho uživatele se souborem licence Premium. | [Soubor a lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
-### <a name="data-import-is-too-slow"></a>Import dat je pomalý 
+### <a name="data-import-is-too-slow"></a>Import dat je příliš pomalý. 
  
-**Jak se zobrazí tato chyba**: V Power BI připojíte balíček obsahu, proces importu dat spustí Příprava řídicí panel aktivit Azure AD protokoly. Zobrazí se tato zpráva: **Importují se data...**  bez jakékoli další krok.  
+**Jak je tato chyba Surface**: Po připojení balíčku obsahu v Power BI začne proces importu dat připravovat váš řídicí panel pro protokoly aktivit služby Azure AD. Zobrazí se tato zpráva: **Importují se data...** bez dalšího postupu.  
 
-| Příčina | K vyřešení |
+| Příčina | Jak opravit |
 | ---   | ---        |
-| V závislosti na velikosti tenanta tento krok může trvat pár minut až 30 minut. | Pokud zprávu nezmění na zobrazení řídicího panelu do jedné hodiny, [lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| V závislosti na velikosti vašeho tenanta může tento krok trvat několik minut až 30 minut. | Pokud se zpráva nezměnila tak, aby zobrazovala řídicí panel během celé hodiny, požádejte [o pomoc lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
   
 ## <a name="next-steps"></a>Další postup
 
 * [Nainstalujte balíček obsahu Power BI](quickstart-install-power-bi-content-pack.md).
-* [Co jsou sestavy Azure AD? ](overview-reports.md).
+* [Co jsou sestavy Azure AD?](overview-reports.md).

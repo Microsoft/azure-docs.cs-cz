@@ -1,41 +1,43 @@
 ---
-title: Možnosti pro data přenést do Azure s využitím zařízení | Dokumentace Microsoftu
-description: Zjistěte, jak vybrat správné zařízení pro přenos dat do Azure
+title: Možnosti přenosu dat do Azure pomocí zařízení | Microsoft Docs
+description: Naučte se, jak zvolit správné zařízení pro přenos dat do Azure.
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: d727ed62f5a869f6eb67400281d2660607756abf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9456d975ffb6d7726166f9badbcb8fe0ccbe5256
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60637497"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965360"
 ---
-# <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Porovnat s Azure File Sync a okraj pole Data možnosti přenosu dat StorSimple 
- 
-Tento dokument obsahuje přehled možností pro přenos místních dat do Azure, porovnání: Data Box Edge vs. Azure File Sync vs. StorSimple řady 8000.
+# <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Porovnat StorSimple s Azure File Sync a Data Box Edge možností přenosu dat 
 
-- **[Data Box Edge](/azure/databox-online/data-box-edge-overview)**  – okraj pole dat je zařízení místní sítě, který přesouvá data do a z Azure a má povolené AI hraniční výpočetní předběžně zpracovat data při nahrávání. Brána pole dat je virtuální verzi zařízení pomocí stejné funkce přenosu dat.
-- **[Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide)**  – Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Obecná dostupnost služby Azure File Sync jsme představili dříve v roce 2018.
-- **[StorSimple](/azure/storsimple/storsimple-overview)**  – StorSimple je hybridní zařízení, která pomáhá podnikům, že se úzce integruje konsolidovat svou infrastrukturu úložiště pro primární úložiště, ochranu dat, archivaci a zotavení po havárii v jediném řešení Úložiště Azure. Životní cyklus produktu pro StorSimple najdete [tady](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+ 
+Tento dokument poskytuje přehled možností pro přenos místních dat do Azure. tyto možnosti jsou porovnávány: Data Box Edge vs. Azure File Sync vs. Řady StorSimple 8000.
+
+- **[Data box Edge](/azure/databox-online/data-box-edge-overview)** – data box Edge je místní síťové zařízení, které přesouvá data do a z Azure a má k předběžnému zpracování dat s povoleným AI. Data Box Gateway je virtuální verze zařízení se stejnými možnostmi přenosu dat.
+- **[Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide)** – Azure File Sync můžete použít k centralizaci sdílených složek ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Azure File Sync transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Obecná dostupnost Azure File Sync byla oznámena dříve v 2018.
+- **[StorSimple](/azure/storsimple/storsimple-overview)** – StorSimple je hybridní zařízení, které pomáhá podnikům konsolidovat svou infrastrukturu úložiště pro primární úložiště, ochranu dat, archivaci a zotavení po havárii v jednom řešení, a to těsně integrací se službou Azure Storage. Životní cyklus produktu pro StorSimple najdete [tady](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
 
 ## <a name="comparison-summary"></a>Souhrn porovnání
 
 |                           |StorSimple 8000   |Synchronizace souborů Azure   |Data Box Edge           |
 |---------------------------|----------------------------------------|-------------------------------|-----------------------------------------|
-|Přehled         |Vrstvené úložiště hybridní a archivace|Obecné sdílené úložiště serveru se synchronizací více webů a vrstvení cloudu.  |Řešení úložiště pro předzpracování dat a jejich odesílání přes síť do Azure.        |
-|Scénáře        |Souborový server, archivace, záložní cíl |Souborový server, archivace (Multi-Site)   |Přenos dat, data předběžného zpracování včetně ML odvozování, IoT, archivace    |
-|Výpočetní funkce Edge     |Není k dispozici. |Není k dispozici. |Podporuje spouštění kontejnerů pomocí Azure IoT Edge    |
-|Uspořádání formuláře      |Fyzické zařízení   |Agent nainstalovaný v systému Windows Server |Fyzické zařízení   |
-|Hardware         |Fyzické zařízení od Microsoftu k dispozici jako součást služby | Zajišťované zákazníkem |Fyzické zařízení od Microsoftu k dispozici jako součást služby  |
-|Formát dat      |Vlastní formát   |Soubory         |Objekty BLOB nebo souborů    |
-|Podpora protokolu |iSCSI          |SMB, NFS    | SMB nebo NFS      |
+|Přehled         |Vrstvené hybridní úložiště a archivace|Obecné úložiště souborového serveru s využitím vrstev cloudu a synchronizace více lokalit.  |Řešení úložiště pro předběžné zpracování dat a jejich odesílání přes síť do Azure        |
+|Scénáře        |Souborový server, archivace, cíl zálohování |Souborový server, archivace (více lokalit)   |Přenos dat, předběžné zpracování dat, včetně ML Inferencing, IoT, archivace    |
+|Výpočetní funkce Edge     |Není dostupné |Není dostupné |Podporuje spuštěné kontejnery pomocí Azure IoT Edge    |
+|Formulářový faktor      |Fyzické zařízení   |Agent nainstalovaný na Windows serveru |Fyzické zařízení   |
+|Hardware         |Fyzické zařízení poskytované od Microsoftu jako součást služby | Poskytnutý zákazník |Fyzické zařízení poskytované od Microsoftu jako součást služby  |
+|Formát dat      |Vlastní formát   |Soubory         |Objekty blob nebo soubory    |
+|Podpora protokolů |iSCSI          |SMB, NFS    | SMB nebo NFS      |
 |Ceny          |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure File Sync](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [Azure Data Box Edge](/azure/databox-online/data-box-edge-overview) a [Azure Data Box brány](/azure/databox-online/data-box-gateway-overview)
-- Další informace o [Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide)
+- Informace o [Azure Data box Edge](/azure/databox-online/data-box-edge-overview) a [Azure Data box Gateway](/azure/databox-online/data-box-gateway-overview)
+- Informace o [Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide)

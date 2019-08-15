@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z PostgreSQL pomocí Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data z for postgresql – úložiště dat jímky podporované s využitím aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z PostgreSQL pomocí Azure Data Factory | Microsoft Docs
+description: Naučte se, jak kopírovat data z PostgreSQL do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,49 +10,49 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 0cad0895b63e8c201183284e9d754a482669c48d
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 0efb884de9deaa2784e160785c26d78179da6567
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312005"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966893"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopírování dat z PostgreSQL pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-onprem-postgresql-connector.md)
 > * [Aktuální verze](connector-postgresql.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z databáze PostgreSQL. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z databáze PostgreSQL. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Kopírování dat z databáze PostgreSQL do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data z databáze PostgreSQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Konkrétně tento konektor PostgreSQL podporuje PostgreSQL **verze 7.4 a vyšší**.
+Konkrétně tento konektor PostgreSQL podporuje PostgreSQL **verze 7,4 a vyšší**.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud vaše databáze PostgreSQL není veřejně přístupná, budete muset nastavit modul Integration Runtime. Další informace o prostředí v místním prostředí integration Runtime najdete v tématu [modul Integration Runtime](create-self-hosted-integration-runtime.md) článku. Prostředí Integration Runtime poskytuje integrované PostgreSQL ovladačů počínaje od verze 3.7, proto není nutné ručně nainstalovat všechny ovladače.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-Pro místní prostředí IR verze nižší než 3.7, je potřeba nainstalovat [Ngpsql zprostředkovatel dat pro PostgreSQL](https://go.microsoft.com/fwlink/?linkid=282716) verze 2.0.12 až 3.1.9 na počítači prostředí Integration Runtime.
+V případě, že je místní verze IR nižší než 3,7, je nutné nainstalovat [poskytovatele dat Ngpsql pro PostgreSQL](https://go.microsoft.com/fwlink/?linkid=282716) s verzí mezi 2.0.12 a 3.1.9 na Integration runtime počítači.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor PostgreSQL.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro konektor PostgreSQL.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro PostgreSQL propojené služby jsou podporovány následující vlastnosti:
+Pro propojenou službu PostgreSQL jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **PostgreSql** | Ano |
-| connectionString | ODBC připojovací řetězec služby pro připojení ke službě Azure Database for PostgreSQL. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Heslo můžete také vložit do služby Azure Key Vault a o přijetí změn `password` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+| type | Vlastnost Type musí být nastavená na: **PostgreSql** | Ano |
+| connectionString | ODBC připojovací řetězec služby pro připojení ke službě Azure Database for PostgreSQL. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit heslo a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 Připojovací řetězec je `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Další vlastnosti, které můžete nastavit na váš případ:
 
@@ -82,7 +82,7 @@ Připojovací řetězec je `Server=<server>;Database=<database>;Port=<port>;UID=
 }
 ```
 
-**Příklad: ukládání hesel ve službě Azure Key Vault**
+**Příklad: uložení hesla v Azure Key Vault**
 
 ```json
 {
@@ -111,9 +111,9 @@ Připojovací řetězec je `Server=<server>;Database=<database>;Port=<port>;UID=
 }
 ```
 
-Pokud jste používali služba PostgreSQL propojené s následující datová část, je stále podporovány jako-se, když byly navrženy používat novou do budoucna.
+Pokud jste používali propojenou službu PostgreSQL s následující datovou částí, je stále podporovaná tak, jak je, a až budete chtít začít používat novinku dál.
 
-**Předchozí datové části:**
+**Předchozí datová část:**
 
 ```json
 {
@@ -139,14 +139,14 @@ Pokud jste používali služba PostgreSQL propojené s následující datová č
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností, které podporuje PostgreSQL datové sady.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných PostgreSQL DataSet.
 
-Ke zkopírování dat z PostgreSQL, nastavte vlastnost typ datové sady na **RelationalTable**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z PostgreSQL, nastavte vlastnost Type datové sady na **relační**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **RelationalTable** | Ano |
-| tableName | Název tabulky v databázi PostgreSQL. | Ne (když je zadán zdroj aktivity "dotaz") |
+| type | Vlastnost Type datové sady musí být nastavená na: **Relační objekt** | Ano |
+| tableName | Název tabulky v databázi PostgreSQL | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -167,19 +167,19 @@ Ke zkopírování dat z PostgreSQL, nastavte vlastnost typ datové sady na **Rel
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem PostgreSQL.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností podporovaných PostgreSQL zdrojem.
 
-### <a name="postgresql-as-source"></a>PostgreSQL jako zdroj
+### <a name="postgresql-as-source"></a>PostgreSQL as source
 
-Ke zkopírování dat z PostgreSQL, nastavte typ zdroje v aktivitě kopírování do **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data z PostgreSQL, nastavte typ zdroje v aktivitě kopírování na **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **RelationalSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **RelationalSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Ne (když je "tableName" v datové sadě zadán) |
 
 > [!NOTE]
-> Schéma a tabulku názvy jsou malá a velká písmena. Vložte je do `""` (dvojité uvozovky) v dotazu.
+> V názvech schémat a tabulek se rozlišují velká a malá písmena. Uzavřete je do `""` dotazu (dvojité uvozovky).
 
 **Příklad:**
 

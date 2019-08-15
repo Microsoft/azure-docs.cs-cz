@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver na Red Hat Enterprise Linux s Azure NetApp Files | Dokumentace Microsoftu
-description: Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver na Red Hat Enterprise Linux
+title: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files | Microsoft Docs
+description: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/14/2019
 ms.author: radeltch
-ms.openlocfilehash: 8679cfe54c8fb2c88b312f67ea9b2d7115cc479e
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 5aaeda39869985da1b499916ff6f977c91f6a756
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503575"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014132"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver na Red Hat Enterprise Linux s Azure Files NetApp pro aplikace SAP
+# <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -50,66 +50,66 @@ ms.locfileid: "67503575"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 [glusterfs-ha]:high-availability-guide-rhel-glusterfs.md
 
-Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů, instalaci rozhraní clusteru a instalace s vysokou dostupností systému SAP NetWeaver 7.50, pomocí [souborů NetApp Azure](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
-V ukázkové konfigurace příkazy instalace atd. ASCS instance je číslo 00, Lajících instance je číslo 01, instance primární aplikace (Pa adresy) je 02 a instanci aplikace (AAS) je 03. Se používá QAS ID systému SAP. 
+Tento článek popisuje, jak nasadit virtuální počítače, nakonfigurovat virtuální počítače, nainstalovat architekturu clusteru a nainstalovat vysoce dostupný systém SAP NetWeaver 7,50 pomocí [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
+V ukázkových konfiguracích instalační příkazy atd. Instance ASCS je číslo 00, instance OLAJÍCÍCH je číslo 01, primární instance aplikace (PAS) je 02 a instance aplikace (AAS) je 03. Používá se ID systému SAP QAS. 
 
-V tomto článku se podrobně databázové vrstvě.  
+Tato vrstva databáze není podrobněji popsána v tomto článku.  
 
-Přečtěte si následující poznámky SAP a Paper nejprve:
+Nejprve si přečtěte následující poznámky a dokumenty SAP:
 
-* [Dokumentace ke službě Azure souborů NetApp][anf-azure-doc] 
-* Poznámka SAP [1928533], který obsahuje:
-  * Seznam velikostí virtuálních počítačů Azure, které jsou podporovány pro nasazení softwaru SAP
-  * Informace o kapacitě důležité pro velikosti virtuálních počítačů Azure
-  * Podporované SAP software a operační systém (OS) a kombinace databáze
+* [Dokumentace k Azure NetApp Files][anf-azure-doc] 
+* Poznámka [1928533]pro SAP obsahuje:
+  * Seznam velikostí virtuálních počítačů Azure, které jsou podporované pro nasazení softwaru SAP
+  * Důležité informace o kapacitě pro velikosti virtuálních počítačů Azure
+  * Podporovaný software SAP a kombinace operačního systému (OS) a databáze
   * Požadovaná verze jádra SAP pro Windows a Linux v Microsoft Azure
 
-* Poznámka SAP [2015553] uvádí předpoklady pro nasazení softwaru SAP nepodporuje SAP v Azure.
-* Poznámka SAP [2002167] má doporučené nastavení operačního systému pro Red Hat Enterprise Linux
-* Poznámka SAP [2009879] obsahuje pokyny pro SAP HANA pro Red Hat Enterprise Linux
-* Poznámka SAP [2178632] podrobné informace o všech monitorování metrik pro SAP v Azure.
-* Poznámka SAP [2191498] má požadovaná verze SAP hostitele agenta pro Linux v Azure.
-* Poznámka SAP [2243692] obsahuje informace o SAP programech v Linuxu v Azure.
-* Poznámka SAP [1999351] obsahuje další informace o odstraňování potíží pro rozšířené monitorování rozšíření Azure pro SAP.
-* [WIKI komunity SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
-* [Azure Virtual Machines, plánování a implementace SAP na platformě Linux][planning-guide]
-* [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux][deployment-guide]
-* [Nasazení Azure Virtual Machines DBMS pro SAP na platformě Linux][dbms-guide]
-* [SAP Netweaver v pacemaker clusteru](https://access.redhat.com/articles/3150081)
-* Dokumentace ke službě obecné RHEL
-  * [Přehled doplňků vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+* SAP Note [2015553] uvádí požadavky na nasazení softwaru SAP podporovaná službou SAP v Azure.
+* Poznámka SAP Poznámka [2002167] obsahuje doporučená nastavení operačního systému pro Red Hat Enterprise Linux
+* Poznámka SAP Poznámka [2009879] obsahuje pokyny pro SAP HANA Red Hat Enterprise Linux
+* Pro SAP Note [2178632] najdete podrobné informace o všech metrikách monitorování hlášených pro SAP v Azure.
+* V případě SAP Poznámka [2191498] je požadovaná verze agenta hostitele SAP pro Linux v Azure.
+* Poznámka SAP Poznámka [2243692] obsahuje informace o LICENCOVÁNí SAP v systému Linux v Azure.
+* V části SAP Note [1999351] najdete další informace o odstraňování potíží pro rozšíření Azure Enhanced Monitoring pro SAP.
+* [Komunitní komunita SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
+* [Plánování a implementace služby Azure Virtual Machines pro SAP v systému Linux][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP v systému Linux][deployment-guide]
+* [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
+* [SAP NetWeaver v clusteru Pacemaker](https://access.redhat.com/articles/3150081)
+* Obecná dokumentace k RHEL
+  * [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
   * [Správa doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Odkaz na doplněk vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-  * [Konfigurace ASCS/Lajících pro SAP Netweaver pomocí samostatné prostředky v RHEL 7.5](https://access.redhat.com/articles/3569681)
-  * [SAP S/4HANA ASCS/Lajících nakonfigurovat zařazování samostatný Server 2 (ENSA2) v Pacemaker na RHEL ](https://access.redhat.com/articles/3974941)
-* Konkrétní RHEL dokumentace k Azure:
-  * [Zásady podpory pro clustery s vysokou dostupností RHEL – Microsoft Azure Virtual Machines jako členů clusteru](https://access.redhat.com/articles/3131341)
-  * [Instalace a konfigurace Red Hat Enterprise Linux 7.4 (a novější) vysokou dostupnost clusteru v Microsoft Azure](https://access.redhat.com/articles/3252491)
-* [NetApp aplikace SAP v Microsoft Azure pomocí služby soubory Azure NetApp][anf-sap-applications-azure]
+  * [Referenční informace k doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Konfigurace ASCS/OLAJÍCÍCH pro SAP NetWeaver se samostatnými prostředky v RHEL 7,5](https://access.redhat.com/articles/3569681)
+  * [Konfigurace SAP S/4HANA ASCS/OLAJÍCÍCH se samostatným serverem fronty 2 (ENSA2) v Pacemaker v RHEL](https://access.redhat.com/articles/3974941)
+* Dokumentace k RHEL specifické pro Azure:
+  * [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru](https://access.redhat.com/articles/3131341)
+  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure](https://access.redhat.com/articles/3252491)
+* [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files][anf-sap-applications-azure]
 
 ## <a name="overview"></a>Přehled
 
-Vysoká availability(HA) pro centrální služby SAP Netweaver vyžaduje sdílené úložiště.
-Abychom toho dosáhli v prostředí Red Hat Linux se zatím potřebné k vytvoření samostatného clusteru s vysokou dostupností GlusterFS. 
+Vysoká dostupnost (HA) pro služby SAP NetWeaver Central Services vyžaduje sdílené úložiště.
+Aby bylo možné v systému Red Hat Linux vytvořit samostatný cluster GlusterFS s vysokou dostupností, byl proto nezbytný. 
 
-Nyní je možné dosáhnout SAP Netweaver HA pomocí sdíleného úložiště, které jsou nasazené v Azure NetApp soubory. Použití služby soubory Azure NetApp pro sdílené úložiště se eliminují potřebu další [GlusterFS clusteru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs). Pacemaker stále se vyžaduje pro vysokou dostupnost z centrální services(ASCS/SCS) SAP Netweaveru.
+Nyní je možné dosáhnout dostupnosti SAP NetWeaver HA pomocí sdíleného úložiště nasazeného v Azure NetApp Files. Použití Azure NetApp Files pro sdílené úložiště eliminuje nutnost dalšího [clusteru GlusterFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs). Pacemaker je stále potřeba pro vysokou dostupnost centrálních služeb SAP NetWeaver (ASCS/SCS).
 
-![Přehled SAP NetWeaver vysoké dostupnosti](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
+![Přehled vysoké dostupnosti SAP NetWeaver](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Lajících a databáze SAP HANA pomocí virtuální název hostitele a virtuální IP adresy. V Azure je potřeba nástroj pro vyrovnávání zatížení pomocí virtuální IP adresu. Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatížení pomocí samostatných přední IP adresy (A) SCS a Lajících.
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP HANA používají virtuální název hostitele a virtuální IP adresy. V Azure se nástroj pro vyrovnávání zatížení vyžaduje k použití virtuální IP adresy. Následující seznam uvádí konfiguraci nástroje pro vyrovnávání zatížení s oddělenými předními IP adresami pro (A) SCS a OLAJÍCÍCH.
 
 > [!IMPORTANT]
-> S několika SID clusteringu SAP ASCS/Lajících s Red Hat Linux jako hostovaný operační systém na virtuálních počítačích Azure je **nepodporuje**. Clustering s několika SID popisuje instalaci více instancí SAP ASCS/Lajících s různé identifikátory SID v jednom clusteru Pacemaker.
+> Clustering s více identifikátory SID pro SAP ASCS/OLAJÍCÍCH s Red Hat Linux jako hostovaný operační systém ve virtuálních počítačích Azure se **nepodporuje**. Clustering s více SID popisuje instalaci více instancí SAP ASCS/OLAJÍCÍCH s různými identifikátory SID v jednom clusteru Pacemaker.
 
 ### <a name="ascs"></a>(A)SCS
 
-* Konfiguraci front-endu
-  * IP adresa 192.168.14.9
+* Konfigurace front-endu
+  * 192.168.14.9 IP adres
 * Konfigurace back-endu
-  * Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí (A) SCS/Lajících clusteru
-* Port testu
-  * Port 620<strong>&lt;nr&gt;</strong>
-* Pravidla Vyrovnávání zatížení
+  * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
+* Port testu paměti
+  * Port 620<strong>&lt;Nr&gt;</strong>
+* Pravidla vyrovnávání zatížení
   * 32<strong>&lt;nr&gt;</strong> TCP
   * 36<strong>&lt;nr&gt;</strong> TCP
   * 39<strong>&lt;nr&gt;</strong> TCP
@@ -118,124 +118,124 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Lajících a databáze SAP 
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-### <a name="ers"></a>ERS
+### <a name="ers"></a>OLAJÍCÍCH
 
-* Konfiguraci front-endu
-  * IP adresa 192.168.14.10
+* Konfigurace front-endu
+  * 192.168.14.10 IP adres
 * Konfigurace back-endu
-  * Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí (A) SCS/Lajících clusteru
-* Port testu
-  * Port 621<strong>&lt;nr&gt;</strong>
-* Pravidla Vyrovnávání zatížení
+  * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
+* Port testu paměti
+  * Port 621<strong>&lt;Nr&gt;</strong>
+* Pravidla vyrovnávání zatížení
   * 32<strong>&lt;nr&gt;</strong> TCP
   * 33<strong>&lt;nr&gt;</strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Nastavení infrastruktury Azure souborů NetApp 
+## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Nastavení infrastruktury Azure NetApp Files 
 
-SAP NetWeaver vyžaduje sdílené úložiště pro přenos a profil adresář.  Než budete pokračovat v instalaci pro infrastrukturu souborů Azure NetApp, seznamte se s [dokumentace ke službě soubory Azure NetApp][anf-azure-doc]. Zaškrtněte, pokud vybrané oblasti Azure nabízí NetApp soubory Azure. Následující odkaz zobrazí dostupnost souborů NetApp Azure podle oblasti Azure: [Soubory Azure NetApp dostupnost podle oblasti Azure][anf-avail-matrix].
+SAP NetWeaver vyžaduje pro přenos a profilový adresář sdílené úložiště.  Než budete pokračovat s nastavením infrastruktury souborů Azure NetApp, Seznamte se s [dokumentaci Azure NetApp Files][anf-azure-doc]. Ověřte, jestli vybraná oblast Azure nabízí Azure NetApp Files. Následující odkaz ukazuje dostupnost Azure NetApp Files podle oblasti Azure: [Azure NetApp Files dostupnost podle oblasti Azure][anf-avail-matrix].
 
-Služba soubory Azure NetApp je k dispozici v několika [oblastí Azure](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Před nasazením Azure NetApp Files, žádost o připojení ke službě Azure Files NetApp, následující [registrace pro Azure NetApp soubory pokynů][anf-register]. 
+Soubory Azure NetApp jsou k dispozici v několika [oblastech Azure](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Před nasazením Azure NetApp Files požádat o registraci do Azure NetApp Files podle [pokynů pro soubory služby Azure NetApp][anf-register]. 
 
-### <a name="deploy-azure-netapp-files-resources"></a>Nasazení prostředků Azure souborů NetApp  
+### <a name="deploy-azure-netapp-files-resources"></a>Nasazení prostředků Azure NetApp Files  
 
-V krocích se předpokládá, že jste už nasadili [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Prostředky souborů NetApp Azure a virtuální počítače, ve kterém se připojí prostředky Azure NetApp soubory musí být nasazeny ve stejné virtuální síti Azure nebo v partnerských virtuálních sítích Azure.  
+Tento postup předpokládá, že jste už nasadili [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Prostředky Azure NetApp Files a virtuální počítače, kde budou připojené prostředky Azure NetApp Files, musí být nasazené ve stejné službě Azure Virtual Network nebo ve virtuálních sítích Azure s partnerským vztahem.  
 
-1. Pokud jste dosud neučinili, který, požádat o [registrace do služby soubory Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
-2. Ve vybrané oblasti Azure, po vytvoření účtu NetApp [pokyny k vytvoření účtu NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
-3. Nastavení kapacity fondu souborů NetApp Azure, po [pokyny, jak nastavit službu Azure NetApp Files kapacity fondu](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
-Architektura SAP Netweaver uvedené v tomto článku využívá jeden souborů NetApp Azure kapacitu fondu, SKU úrovně Premium. Doporučujeme, abyste SKU úrovně Premium souborů NetApp Azure pro úlohy aplikací SAP Netweaver v Azure.  
-4. Podsíť, která se soubory Azure NetApp delegovat, jak je popsáno v [pokyny delegovat podsítě do služby soubory Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
+1. Pokud jste to ještě neudělali, požádejte o [registraci Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
+2. Vytvořte účet NetApp ve vybrané oblasti Azure a postupujte podle [pokynů k vytvoření účtu NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
+3. Nastavte Azure NetApp Files fond kapacit podle [pokynů, jak nastavit fond kapacit Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
+Architektura SAP NetWeaver uvedená v tomto článku používá fond kapacit s jednou Azure NetApp Files, SKU úrovně Premium. Pro úlohy aplikace SAP NetWeaver v Azure doporučujeme Azure NetApp Files Premium SKU.  
+4. Přenesete podsíť do souborů Azure NetApp, jak je popsáno v [pokynech delegování podsítě na Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
-5. Svazky souborů Azure NetApp, následující nasadit [pokyny pro vytvoření svazku pro soubory Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Svazky v určené soubory NetApp Azure nasadit [podsítě](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Mějte na paměti, že Azure NetApp soubory prostředků a virtuální počítače Azure musí být ve stejné virtuální síti Azure nebo v partnerských virtuálních sítích Azure. V tomto příkladu používáme dva svazky souborů Azure NetApp: sap<b>QAS</b> a transSAP. Cesty k souborům, které jsou připojené k odpovídající přípojné body jsou /usrsap<b>qas</b>/sapmnt<b>QAS</b>, /usrsap<b>qas</b>/usrsap<b>QAS</b>sys, atd.  
+5. Nasaďte Azure NetApp Files svazky podle [pokynů pro vytvoření svazku pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Nasaďte svazky v určené Azure NetApp Files [podsíti](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Mějte na paměti, že Azure NetApp Files prostředky a virtuální počítače Azure musí být ve stejném Virtual Network Azure nebo ve virtuálních sítích Azure s partnerským vztahem. V tomto příkladu používáme dva Azure NetApp Files svazky: SAP<b>QAS</b> a transSAP. Cesty k souborům, které jsou připojené k odpovídajícím přípojným bodům, jsou/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys atd.  
 
-   1. svazek sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/sapmnt<b>QAS</b>)
-   2. svazek sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs)
-   3. svazek sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>sys)
-   4. svazek sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>lajících)
-   5. svazek transSAP (nfs://192.168.24.4/transSAP)
-   6. svazek sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>Pa adresy)
-   7. svazek sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>aas)
+   1. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/sapmnt<b>QAS</b>)
+   2. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ASCS)
+   3. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys)
+   4. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>olajících)
+   5. Volume transSAP (nfs://192.168.24.4/transSAP)
+   6. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>pas)
+   7. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>AAS)
   
-V tomto příkladu jsme použili souborů NetApp Azure pro všechny systémy souborů SAP Netweaver ukazují, jak je možné NetApp soubory Azure. Je také možné nasadit systémy SAP souborů, které nemusíte připojit prostřednictvím systému souborů NFS jako [Azure disk storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) . V tomto příkladu <b>-e</b> musí být souborů NetApp Azure a <b>f-g</b> (to znamená, / USR/sap/<b>QAS</b>/D<b>02</b>, /USR/sap/<b>QAS </b>/D<b>03</b>) může být nasazený jako Azure disk storage. 
+V tomto příkladu jsme použili Azure NetApp Files pro všechny systémy souborů SAP NetWeaver k předvedení toho, jak se dá Azure NetApp Files použít. Systémy souborů SAP, které není nutné připojit přes systém souborů NFS, se dají nasadit taky jako [Azure Disk Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) . V tomto příkladu musí být a <b>-e</b> Azure NetApp Files a <b>f-g</b> (tj./usr/SAP/<b>QAS</b>/d<b>02</b>,/usr/SAP/<b>QAS</b>/d<b>03</b>) se dají nasadit jako Azure Disk Storage. 
 
 ### <a name="important-considerations"></a>Důležité informace
 
-Při zvažování souborů NetApp Azure pro SAP Netweaver na architektuře operačního systému SUSE vysokou dostupnost, mějte na paměti následující důležité aspekty:
+Při zvažování Azure NetApp Files pro SAP NetWeaver v architektuře SUSE pro vysokou dostupnost mějte na paměti následující důležité informace:
 
-- Minimální kapacitu fondu je 4 TB. Velikost kapacity fondu musí být v násobcích po 4 TB.
-- Minimální objem je 100 GB
-- Služba soubory Azure NetApp a všechny virtuální počítače, kde se svazky souborů NetApp Azure připojí, musí být ve stejné virtuální síti Azure nebo v [partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) ve stejné oblasti. Nyní se podporuje Azure souborů NetApp přístup přes VNET peering ve stejné oblasti. Přístup ke službě Azure NetApp přes globální partnerský vztah se ještě nepodporuje.
-- Vybranou virtuální síť musí mít podsíť delegovat do služby soubory Azure NetApp.
-- Služba soubory Azure NetApp v současné době podporuje pouze NFSv3 
-- Služba soubory Azure NetApp nabízí [exportovat zásady](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): povolených klientů, můžete řídit přístup typu (čtení a zápis, jen pro čtení, atd.). 
-- Funkce Azure souborů NetApp ještě není zóny. Funkce souborů NetApp Azure není momentálně ve všech zónách dostupnosti v oblasti Azure. Mějte na paměti možné důsledků latence v některých oblastech Azure. 
+- Minimální fond kapacit je 4 TiB. Velikost fondu kapacity musí být násobkem 4 TiB.
+- Minimální objem je 100 GiB.
+- Azure NetApp Files a všech virtuálních počítačů, kde se Azure NetApp Files svazky připojí, musí být ve stejné oblasti jako Azure Virtual Network nebo ve [virtuálních sítích](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) s partnerským vztahem. V současné době se podporuje Azure NetApp Files přístup přes partnerský vztah virtuálních sítí ve stejné oblasti. Přístup k Azure NetApp přes globální partnerský vztah ještě není podporovaný.
+- Vybraná virtuální síť musí mít podsíť, delegovanou na Azure NetApp Files.
+- Azure NetApp Files aktuálně podporuje pouze NFSv3 
+- Azure NetApp Files nabízí [zásady exportu](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): můžete řídit povolené klienty, typ přístupu (čtení & zápisu, jen pro čtení atd.). 
+- Azure NetApp Files funkce zatím nereaguje na zóny. Aktuálně Azure NetApp Files funkce není nasazená ve všech zónách dostupnosti v oblasti Azure. Mějte na paměti, že v některých oblastech Azure máte vliv na potenciální latenci. 
 
 ## <a name="setting-up-ascs"></a>Nastavení (A) SCS
 
-V tomto příkladu byly ručně nasadili prostředky prostřednictvím [webu Azure portal](https://portal.azure.com/#home).
+V tomto příkladu byly prostředky nasazeny ručně prostřednictvím [Azure Portal](https://portal.azure.com/#home).
 
-### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linuxu prostřednictvím webu Azure portal
+### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
-Nejprve musíte vytvořit svazky NetApp soubory Azure. Nasazení virtuálních počítačů. Potom vytvořte nástroj pro vyrovnávání zatížení a použijte virtuální počítače v back-endové fondy.
+Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální počítače. Následně vytvoříte Nástroj pro vyrovnávání zatížení a použijete virtuální počítače ve fondech back-endu.
 
-1. Vytvořte nástroj pro vyrovnávání zatížení (interní)  
-   1. Vytvoření front-endové IP adresy
-      1. IP adresa 192.168.14.9 ASC
-         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-endový fond IP adres a klikněte na tlačítko Přidat
-         1. Zadejte název nové front-endový fond IP (například **front-endu. QAS. ASCS**)
-         1. Nastavení přiřazení do statické a zadejte IP adresu (například **192.168.14.9**)
-         1. Klikněte na tlačítko OK
-      1. IP adresa 192.168.14.10 ASCS Lajících
-         * Opakujte předchozí kroky v části "a" k vytvoření IP adresy pro Lajících (například **192.168.14.10** a **front-endu. QAS. Lajících**)
-   1. Vytvoření back-endové fondy
-      1. Vytvoření back-endový fond pro ASC
-         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte back-endové fondy a klikněte na tlačítko Přidat
-         1. Zadejte název nového back-endového fondu (například **back-endu. QAS**)
-         1. Klikněte na tlačítko Přidat virtuální počítač.
-         1. Vyberte skupinu dostupnosti jste vytvořili dříve pro ASC 
-         1. Vyberte virtuální počítače (A) SCS clusteru
-         1. Klikněte na tlačítko OK
-   1. Vytvoření sondy stavu
-      1. Port 620**00** pro ASC
-         1. Otevřete nástroj pro vyrovnávání zatížení vyberte testy stavu a klikněte na tlačítko Přidat
-         1. Zadejte název nového stavu testu (například **stavu. QAS. ASCS**)
-         1. Jako protokol, port 620 vyberte TCP**00**, Interval 5 a prahová hodnota špatného stavu 2
-         1. Klikněte na tlačítko OK
-      1. Port 621**01** pro ASCS Lajících
-            * Opakujte předchozí kroky v části "c" k vytvoření sondy stavu pro Lajících (například 621**01** a **stavu. QAS. Lajících**)
-   1. Pravidla Vyrovnávání zatížení
-      1. 32**00** TCP pro ASC
-         1. Otevřete nástroj pro vyrovnávání zatížení, pravidla Vyrovnávání zatížení vyberte a klikněte na tlačítko Přidat
-         1. Zadejte název nového pravidla služby load balancer (například **lb. QAS. ASCS.3200**)
-         1. Vyberte IP adresu front-endu pro ASCS, back-endového fondu a sondu stavu, které jste vytvořili dříve (například **front-endu. QAS. ASCS**)
-         1. Zachovat protokol **TCP**, zadejte port **3200**
-         1. Zvyšte časový limit nečinnosti až 30 minut.
-         1. **Ujistěte se, že chcete povolit plovoucí IP adresy**
-         1. Klikněte na tlačítko OK
-      1. Další porty pro ASC
-         * Opakujte předchozí kroky v části "d" pro porty 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASC
-      1. Další porty pro ASCS Lajících
-         * Opakujte předchozí kroky v části "d" pro porty 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 a TCP pro ASCS Lajících
+1. Vytvořit Load Balancer (interní)  
+   1. Vytvoření IP adresy front-endu
+      1. IP adresa 192.168.14.9 pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
+         1. Zadejte název nového fondu IP adres front-endu (například **front-end. QAS. ASCS**)
+         1. Nastavte přiřazení na statické a zadejte IP adresu (například **192.168.14.9**).
+         1. Klikněte na OK.
+      1. 192.168.14.10 IP adres pro ASCS OLAJÍCÍCH
+         * Opakujte výše uvedené kroky v části a a vytvořte tak IP adresu pro OLAJÍCÍCH (například **192.168.14.10** a **front-end. QAS. OLAJÍCÍCH**)
+   1. Vytvoření back-end fondů
+      1. Vytvoření fondu back-endu pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte fondy back-endu a klikněte na Přidat.
+         1. Zadejte název nového back-end fondu (například **back-end. QAS**)
+         1. Klikněte na Přidat virtuální počítač.
+         1. Vyberte skupinu dostupnosti, kterou jste vytvořili dříve pro ASCS. 
+         1. Vyberte virtuální počítače v clusteru (A) SCS.
+         1. Klikněte na OK.
+   1. Vytvoření sond stavu
+      1. Port 620**00** pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
+         1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
+         1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
+         1. Klikněte na OK.
+      1. Port 621**01** pro ASCS olajících
+            * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
+   1. Pravidla vyrovnávání zatížení
+      1. 32**00** TCP pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
+         1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **kg. QAS. ASCS. 3200**)
+         1. Vyberte front-end IP adresu pro ASCS, fond back-endu a test stavu, který jste vytvořili dříve (například **front-end. QAS. ASCS**)
+         1. Zachovejte protokol **TCP**, zadejte port **3200**
+         1. Prodloužit časový limit nečinnosti na 30 minut
+         1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
+         1. Klikněte na OK.
+      1. Další porty pro ASCS
+         * Opakujte výše uvedené kroky v části "d" pro porty**36 00**,**39 00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASCS
+      1. Další porty pro ASCS OLAJÍCÍCH
+         * Opakujte výše uvedené kroky v části "d" pro porty 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 a TCP pro ASCS olajících
 
 
 > [!IMPORTANT]
-> Nepovolujte TCP časová razítka na virtuálních počítačích Azure umístěných za nástrojem pro vyrovnávání zatížení Azure. Povolení protokolu TCP časová razítka způsobí, že sond stavu selhání. Nastavte parametr **net.ipv4.tcp_timestamps** k **0**. Podrobnosti najdete v tématu [sondy stavu nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. TCP _timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
-Postupujte podle kroků v [nastavení Pacemaker na Red Hat Enterprise Linux v Azure](high-availability-guide-rhel-pacemaker.md) pro vytvoření základní Pacemaker clusteru pro tento server (A) SCS.
+Postupujte podle kroků v části [Nastavení Pacemaker na Red Hat Enterprise Linux v Azure](high-availability-guide-rhel-pacemaker.md) a vytvořte pro tento server (a) SCS základní cluster Pacemaker.
 
-### <a name="prepare-for-sap-netweaver-installation"></a>Příprava instalace SAP NetWeaver
+### <a name="prepare-for-sap-netweaver-installation"></a>Příprava na instalaci SAP NetWeaver
 
 Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
 
 1. **[A]**  Nastavit rozlišení názvu hostitele
 
    Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
-   Nahraďte IP adresu a název hostitele v následujících příkazech
+   V následujících příkazech nahraďte IP adresu a název hostitele.
 
     ```
     sudo vi /etc/hosts
@@ -254,8 +254,8 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
     192.168.14.10    anftstsapers
     ```
 
-1. **[1]**  SAP vytvoření adresáře ve svazku souborů NetApp Azure.  
-   Připojit dočasně svazek souborů NetApp Azure na jednom z virtuálních počítačů a vytvořit SAP adresáře (cesty k souborům).  
+1. **[1]** vytvořte adresáře SAP ve svazku Azure NetApp Files.  
+   Dočasně připojte Azure NetApp Files svazek na jeden z virtuálních počítačů a vytvořte adresáře SAP (cesty k souborům).  
 
     ```
      #mount temporarily the volume
@@ -273,658 +273,842 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
      sudo cd ..
      sudo umount /saptmp
      sudo rmdir /saptmp
+    ``` 
 
-1. **[A]** Create the shared directories
+1. **[A]** vytvoření sdílených adresářů
 
    ```
-   sudo mkdir -p/sapmnt/QAS sudo mkdir -p /usr/sap/trans sudo mkdir -p /usr/sap/QAS/SYS sudo mkdir -p /usr/sap/QAS/ASCS00 sudo mkdir -p /usr/sap/QAS/ERS01
+   sudo mkdir -p /sapmnt/QAS
+   sudo mkdir -p /usr/sap/trans
+   sudo mkdir -p /usr/sap/QAS/SYS
+   sudo mkdir -p /usr/sap/QAS/ASCS00
+   sudo mkdir -p /usr/sap/QAS/ERS01
    
-   sudo chattr + můžu/sapmnt/QAS sudo chattr + můžu /usr/sap/trans sudo chattr + můžu /usr/sap/QAS/SYS sudo chattr + můžu /usr/sap/QAS/ASCS00 sudo chattr + můžu /usr/sap/QAS/ERS01
+   sudo chattr +i /sapmnt/QAS
+   sudo chattr +i /usr/sap/trans
+   sudo chattr +i /usr/sap/QAS/SYS
+   sudo chattr +i /usr/sap/QAS/ASCS00
+   sudo chattr +i /usr/sap/QAS/ERS01
    ```
 
-1. **[A]** Install NFS client and other requirements
+1. **[A]** nainstalovat klienta systému souborů NFS a další požadavky
 
    ```
-   sudo yumu -y instalace systému souborů nfs utils prostředků agentů prostředků – agentů sap
+   sudo yum -y install nfs-utils resource-agents resource-agents-sap
    ```
 
-1. **[A]** Check version of resource-agents-sap
+1. **[A]** Podívejte se na verzi prostředků-Agents-SAP
 
-   Make sure that the version of the installed resource-agents-sap package is at least 3.9.5-124.el7
+   Zajistěte, aby byla verze nainstalovaného balíčku Resource-Agents-SAP aspoň 3.9.5 -124. el7
    ```
-   sudo yumu informace o prostředku – agentů sap
+   sudo yum info resource-agents-sap
    
-   # <a name="loaded-plugins-langpacks-product-id-search-disabled-repos"></a>Načíst moduly plug-in: langpacks, id produktu, hledání – zakázáno úložiště
-   # <a name="repodata-is-over-2-weeks-old-install-yum-cron-or-run-yum-makecache-fast"></a>Repodata je více než 2 týdny. Nainstalovat yumu cron? Nebo spusťte: rychlé makecache yum
-   # <a name="installed-packages"></a>Nainstalované balíčky
-   # <a name="name---------resource-agents-sap"></a>Název: prostředků agentů sap
-   # <a name="arch---------x8664"></a>Arch: x86_64
-   # <a name="version------395"></a>Verze: 3.9.5
-   # <a name="release------124el7"></a>Verze: 124.el7
-   # <a name="size---------100-k"></a>Velikost: 100 k
-   # <a name="repo---------installed"></a>Úložiště: nainstalovaná
-   # <a name="from-repo----rhel-sap-for-rhel-7-server-rpms"></a>Z úložiště: rhel-sap-for-rhel-7-server-rpms
-   # <a name="summary------sap-cluster-resource-agents-and-connector-script"></a>Shrnutí: SAP agentů prostředků clusteru a konektor skriptu
-   # <a name="url----------httpsgithubcomclusterlabsresource-agents"></a>ADRESA URL: https://github.com/ClusterLabs/resource-agents
-   # <a name="license------gplv2"></a>Licence: GPLv2+
-   # <a name="description--the-sap-resource-agents-and-connector-script-interface-with"></a>Popis: Agenti prostředků SAP a rozhraní connector skript s
-   #          <a name="-pacemaker-to-allow-sap-instances-to-be-managed-in-a-cluster"></a>: Pacemaker umožňující instance SAP pro správu v clusteru
-   #          <a name="-environment"></a>: prostředí.
+   # Loaded plugins: langpacks, product-id, search-disabled-repos
+   # Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast
+   # Installed Packages
+   # Name        : resource-agents-sap
+   # Arch        : x86_64
+   # Version     : 3.9.5
+   # Release     : 124.el7
+   # Size        : 100 k
+   # Repo        : installed
+   # From repo   : rhel-sap-for-rhel-7-server-rpms
+   # Summary     : SAP cluster resource agents and connector script
+   # URL         : https://github.com/ClusterLabs/resource-agents
+   # License     : GPLv2+
+   # Description : The SAP resource agents and connector script interface with
+   #          : Pacemaker to allow SAP instances to be managed in a cluster
+   #          : environment.
    ```
 
 
-1. **[A]** Add mount entries
+1. **[A]** přidat položky připojení
 
    ```
    sudo vi /etc/fstab
    
-   # <a name="add-the-following-lines-to-fstab-save-and-exit"></a>Přidejte následující řádky do fstab, uložit a ukončit
-    192.168.24.5:/sapQAS/sapmntQAS/sapmnt/QAS systému souborů nfs rw, pevný, parametru rsize = 65536 wsize = 65536, vers = 3 192.168.24.5:/sapQAS/usrsapQASsys /usr/sap/QAS/SYS systému souborů nfs rw, pevný, parametru rsize = 65536 wsize = 65536, vers = 3 192.168.24.4:/transSAP /usr/sap/trans systému souborů nfs rw, pevný, parametru rsize = 65536, wsize = 65536, vers = 3
+   # Add the following lines to fstab, save and exit
+    192.168.24.5:/sapQAS/sapmntQAS /sapmnt/QAS nfs rw,hard,rsize=65536,wsize=65536,vers=3
+    192.168.24.5:/sapQAS/usrsapQASsys /usr/sap/QAS/SYS nfs rw,hard,rsize=65536,wsize=65536,vers=3
+    192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
    ```
 
-   Mount the new shares
+   Připojit nové sdílené složky
 
    ```
-   sudo připojení - a  
+   sudo mount -a  
    ```
 
-1. **[A]** Configure SWAP file
+1. **[A]** konfigurace odkládacího souboru
 
    ```
    sudo vi /etc/waagent.conf
    
-   # <a name="set-the-property-resourcediskenableswap-to-y"></a>Nastavte vlastnost ResourceDisk.EnableSwap y
-   # <a name="create-and-use-swapfile-on-resource-disk"></a>Vytvoření a použití stránkovacího souboru na disk prostředků.
+   # Set the property ResourceDisk.EnableSwap to y
+   # Create and use swapfile on resource disk.
    ResourceDisk.EnableSwap=y
    
-   # <a name="set-the-size-of-the-swap-file-with-property-resourcediskswapsizemb"></a>Nastavení velikosti ODKLÁDACÍHO souboru s vlastností ResourceDisk.SwapSizeMB
-   # <a name="the-free-space-of-resource-disk-varies-by-virtual-machine-size-make-sure-that-you-do-not-set-a-value-that-is-too-big-you-can-check-the-swap-space-with-command-swapon"></a>Volné místo disk počítačových prostředků se liší podle velikosti virtuálního počítače. Ujistěte se, že nenastavujte hodnotu, která je příliš velký. Můžete zkontrolovat velikosti odkládacího souboru se příkaz swapon
-   # <a name="size-of-the-swapfile"></a>Velikost stránkovacího souboru.
+   # Set the size of the SWAP file with property ResourceDisk.SwapSizeMB
+   # The free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check the SWAP space with command swapon
+   # Size of the swapfile.
    ResourceDisk.SwapSizeMB=2000
    ```
 
-   Restart the Agent to activate the change
+   Restartujte agenta, aby se změna aktivovala.
 
    ```
-   restart waagent služby sudo
+   sudo service waagent restart
    ```
 
-1. **[A]** RHEL configuration
+1. **[A]** konfigurace RHEL
 
-   Configure RHEL as described in SAP Note [2002167]
+   Nakonfigurujte RHEL podle popisu v tématu SAP Note [2002167]
 
-### Installing SAP NetWeaver ASCS/ERS
+### <a name="installing-sap-netweaver-ascsers"></a>Instalace SAP NetWeaver ASCS/OLAJÍCÍCH
 
-1. **[1]** Create a virtual IP resource and health-probe for the ASCS instance
+1. **[1]** vytvoření prostředku virtuální IP adresy a stavu – sonda pro instanci ASCS
 
    ```
-   pohotovostní anftstsapcl2 sudo počítače uzlu
+   sudo pcs node standby anftstsapcl2
    
-   Vytvoření zdroje počítače sudo fs_QAS_ASCS device='192.168.24.5:/sapQAS/usrsapQASascs systému souborů \
-     adresáře = "/ usr/sap/QAS/ASCS00" fstype = 'systému souborů nfs' \
+   sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' \
      --group g-QAS_ASCS
    
-   Vytvoření zdroje počítače sudo vip_QAS_ASCS IPaddr2 \
-     IP = 192.168.14.9 cidr_netmask = 24 \
+   sudo pcs resource create vip_QAS_ASCS IPaddr2 \
+     ip=192.168.14.9 cidr_netmask=24 \
      --group g-QAS_ASCS
    
-   Vytvoření zdroje počítače sudo nc_QAS_ASCS azure lb port = 62000 \
+   sudo pcs resource create nc_QAS_ASCS azure-lb port=62000 \
      --group g-QAS_ASCS
    ```
 
-   Make sure that the cluster status is ok and that all resources are started. It is not important on which node the resources are running.
+   Ujistěte se, že stav clusteru je OK a že všechny prostředky jsou spuštěné. Není důležité, na kterém uzlu jsou prostředky spuštěné.
 
    ```
-   stav počítače sudo
+   sudo pcs status
    
-   # <a name="node-anftstsapcl2-standby"></a>Uzel anftstsapcl2: pohotovostním režimu
-   # <a name="online--anftstsapcl1-"></a>Online: [anftstsapcl1]
+   # Node anftstsapcl2: standby
+   # Online: [ anftstsapcl1 ]
    #
-   # <a name="full-list-of-resources"></a>Úplný seznam zdrojů:
+   # Full list of resources:
    #
-   # <a name="rscstazure----stonithfenceazurearm------started-anftstsapcl1"></a>rsc_st_azure    (stonith:fence_azure_arm):      Začínáme anftstsapcl1
-   #  <a name="resource-group-g-qasascs"></a>Skupina prostředků: g-QAS_ASCS
-   #      <a name="fsqasascs--------ocfheartbeatfilesystem----started-anftstsapcl1"></a>fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Začínáme anftstsapcl1
-   #      <a name="ncqasascs--------ocfheartbeatazure-lb------started-anftstsapcl1"></a>nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1
-   #      <a name="vipqasascs-------ocfheartbeatipaddr2-------started-anftstsapcl1"></a>vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Začínáme anftstsapcl1
+   # rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+   #  Resource Group: g-QAS_ASCS
+   #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+   #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
    ```
 
-1. **[1]** Install SAP NetWeaver ASCS  
+1. **[1]** instalace SAP NetWeaver ASCS  
 
-   Install SAP NetWeaver ASCS as root on the first node using a virtual hostname that maps to the IP address of the load balancer frontend configuration for the ASCS, for example <b>anftstsapvh</b>, <b>192.168.14.9</b> and the instance number that you used for the probe of the load balancer, for example <b>00</b>.
+   Nainstalujte SAP NetWeaver ASCS jako kořen v prvním uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS, například <b>anftstsapvh</b>, <b>192.168.14.9</b> a číslo instance, kterou jste použili pro sonda nástroje pro vyrovnávání zatížení, například <b>00</b>.
 
-   You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
+   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst.
 
    ```
-   # <a name="allow-access-to-swpm-this-rule-is-not-permanent-if-you-reboot-the-machine-you-have-to-run-the-command-again"></a>Povolte přístup k SWPM. Toto pravidlo není trvalá. Pokud restartujete počítač, budete muset spustit příkaz znovu.
-   Brána firewall sudo-cmd--zóny = veřejné - přidat port = 4237/tcp
+   # Allow access to SWPM. This rule is not permanent. If you reboot the machine, you have to run the command again.
+   sudo firewall-cmd --zone=public  --add-port=4237/tcp
    
-   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER = sapadmin SAPINST_USE_HOSTNAME = < virtual_hostname >
+   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=<virtual_hostname>
    ```
 
-   If the installation fails to create a subfolder in /usr/sap/**QAS**/ASCS**00**, try setting the owner and group of the ASCS**00** folder and retry.
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**QAS**/ASCS**00**, zkuste nastavit vlastníka a skupinu složky ASCS**00** a zkuste to znovu.
 
    ```
-   sudo změnit vlastníka qasadm /usr/sap/QAS/ASCS00 sudo chgrp sapsys /usr/sap/QAS/ASCS00
+   sudo chown qasadm /usr/sap/QAS/ASCS00
+   sudo chgrp sapsys /usr/sap/QAS/ASCS00
    ```
 
-1. **[1]** Create a virtual IP resource and health-probe for the ERS instance
+1. **[1]** vytvoření prostředku virtuální IP adresy a stavu – sonda pro instanci olajících
 
    ```
-   sudo počítače uzlu unstandby anftstsapcl2 sudo počítače uzlu pohotovostní anftstsapcl1
+   sudo pcs node unstandby anftstsapcl2
+   sudo pcs node standby anftstsapcl1
    
-   Vytvoření zdroje počítače sudo fs_QAS_AERS device='192.168.24.5:/sapQAS/usrsapQASers systému souborů \
-     adresáře = "/ usr/sap/QAS/ERS01" fstype = 'systému souborů nfs' \
-    --skupině g QAS_AERS
+   sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' \
+    --group g-QAS_AERS
 
-   Vytvoření zdroje počítače sudo vip_QAS_AERS IPaddr2 \
+   sudo pcs resource create vip_QAS_AERS IPaddr2 \
      ip=192.168.14.10 cidr_netmask=24 \
-    --skupině g QAS_AERS
+    --group g-QAS_AERS
    
    sudo pcs resource create nc_QAS_AERS azure-lb port=62101 \
-    --skupině g QAS_AERS
+    --group g-QAS_AERS
    ```
  
-   Make sure that the cluster status is ok and that all resources are started. It is not important on which node the resources are running.
+   Ujistěte se, že stav clusteru je OK a že všechny prostředky jsou spuštěné. Není důležité, na kterém uzlu jsou prostředky spuštěné.
 
    ```
-   stav počítače sudo
+   sudo pcs status
    
-   # <a name="node-anftstsapcl1-standby"></a>Uzel anftstsapcl1: pohotovostním režimu
-   # <a name="online--anftstsapcl2-"></a>Online: [anftstsapcl2]
+   # Node anftstsapcl1: standby
+   # Online: [ anftstsapcl2 ]
    #
-   # <a name="full-list-of-resources"></a>Úplný seznam zdrojů:
+   # Full list of resources:
    #
-   # <a name="rscstazure----stonithfenceazurearm------started-anftstsapcl2"></a>rsc_st_azure    (stonith:fence_azure_arm):      Začínáme anftstsapcl2
-   #  <a name="resource-group-g-qasascs"></a>Skupina prostředků: g-QAS_ASCS
-   #      <a name="fsqasascs--------ocfheartbeatfilesystem----started-anftstsapcl2"></a>fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Začínáme anftstsapcl2
-   #      <a name="ncqasascs--------ocfheartbeatazure-lb------started-anftstsapcl2"></a>nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Spuštění anftstsapcl2 <
-   #      <a name="vipqasascs-------ocfheartbeatipaddr2-------started-anftstsapcl2"></a>vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Začínáme anftstsapcl2
-   #  <a name="resource-group-g-qasaers"></a>Skupina prostředků: g-QAS_AERS
-   #      <a name="fsqasaers--------ocfheartbeatfilesystem----started-anftstsapcl2"></a>fs_QAS_AERS (ocf::heartbeat:Filesystem):    Začínáme anftstsapcl2
-   #      <a name="ncqasaers--------ocfheartbeatazure-lb------started-anftstsapcl2"></a>nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2
-   #      <a name="vipqasaers-------ocfheartbeatipaddr2-------started-anftstsapcl2"></a>vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Začínáme anftstsapcl2
+   # rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl2
+   #  Resource Group: g-QAS_ASCS
+   #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2<
+   #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+   #  Resource Group: g-QAS_AERS
+   #      fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+   #      nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+   #      vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
    ```
 
-1. **[2]** Install SAP NetWeaver ERS  
+1. **[2]** instalace SAP NetWeaver olajících  
 
-   Install SAP NetWeaver ERS as root on the second node using a virtual hostname that maps to the IP address of the load balancer frontend configuration for the ERS, for example <b>anftstsapers</b>, <b>192.168.14.10</b> and the instance number that you used for the probe of the load balancer, for example <b>01</b>.
+   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako kořenovou složku na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro OLAJÍCÍCH, například <b>anftstsapers</b>, <b>192.168.14.10</b> a číslo instance, kterou jste použili pro sonda nástroje pro vyrovnávání zatížení, například <b>01</b>.
 
-   You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
-
-   ```
-   # <a name="allow-access-to-swpm-this-rule-is-not-permanent-if-you-reboot-the-machine-you-have-to-run-the-command-again"></a>Povolte přístup k SWPM. Toto pravidlo není trvalá. Pokud restartujete počítač, budete muset spustit příkaz znovu.
-   Brána firewall sudo-cmd--zóny = veřejné - přidat port = 4237/tcp
-
-   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER = sapadmin SAPINST_USE_HOSTNAME = < virtual_hostname >
-   ```
-
-   If the installation fails to create a subfolder in /usr/sap/**QAS**/ERS**01**, try setting the owner and group of the ERS**01** folder and retry.
+   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst.
 
    ```
-   sudo změnit vlastníka qaadm /usr/sap/QAS/ERS01 sudo chgrp sapsys /usr/sap/QAS/ERS01
+   # Allow access to SWPM. This rule is not permanent. If you reboot the machine, you have to run the command again.
+   sudo firewall-cmd --zone=public  --add-port=4237/tcp
+
+   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=<virtual_hostname>
    ```
 
-1. **[1]** Adapt the ASCS/SCS and ERS instance profiles
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**QAS**/ERS**01**, zkuste nastavit vlastníka a skupinu složky olajících**01** a zkuste to znovu.
 
-   * ASCS/SCS profile
+   ```
+   sudo chown qaadm /usr/sap/QAS/ERS01
+   sudo chgrp sapsys /usr/sap/QAS/ERS01
+   ```
+
+1. **[1]** přizpůsobení profilů instancí ASCS/SCS a olajících
+
+   * Profil ASCS/SCS
 
    ```
    sudo vi /sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh
    
-   # <a name="change-the-restart-command-to-a-start-command"></a>Změňte příkaz restart příkazu start.
-   #<a name="restartprogram01--local-en-pfpf"></a>Restart_Program_01 = local $(_EN) pf=$(_PF)
+   # Change the restart command to a start command
+   #Restart_Program_01 = local $(_EN) pf=$(_PF)
    Start_Program_01 = local $(_EN) pf=$(_PF)
    
-   # <a name="add-the-keep-alive-parameter"></a>Přidejte parametr keep alive
-   modul/encni/set_so_keepalive = true
+   # Add the keep alive parameter
+   enque/encni/set_so_keepalive = true
    ```
 
-   * ERS profile
+   * Profil OLAJÍCÍCH
 
    ```
    sudo vi /sapmnt/QAS/profile/QAS_ERS01_anftstsapers
    
-   # <a name="change-the-restart-command-to-a-start-command"></a>Změňte příkaz restart příkazu start.
-   #<a name="restartprogram00--local-er-pfpfl-nrscsid"></a>Restart_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID)
+   # Change the restart command to a start command
+   #Restart_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID)
    Start_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID)
    
-   # <a name="remove-autostart-from-ers-profile"></a>Odebrání profilu Lajících automatické spuštění
-   # <a name="autostart--1"></a>Autostart = 1
+   # remove Autostart from ERS profile
+   # Autostart = 1
    ```
 
 
-1. **[A]** Configure Keep Alive
+1. **[A]** konfigurace Keep Alive
 
-   The communication between the SAP NetWeaver application server and the ASCS/SCS is routed through a software load balancer. The load balancer disconnects inactive connections after a configurable timeout. To prevent this, you need to set a parameter in the SAP NetWeaver ASCS/SCS profile and change the Linux system settings. Read [SAP Note 1410736][1410736] for more information.
+   Komunikace mezi aplikačním serverem SAP NetWeaver a ASCS/SCS je směrována prostřednictvím nástroje pro vyrovnávání zatížení softwaru. Nástroj pro vyrovnávání zatížení odpojí neaktivní připojení po konfigurovatelném časovém limitu. Abyste tomu předešli, musíte nastavit parametr v profilu SAP NetWeaver ASCS/SCS a změnit nastavení systému Linux. Další informace najdete v tématu [SAP Note 1410736][1410736] .
 
-   The ASCS/SCS profile parameter enque/encni/set_so_keepalive was already added in the last step.
+   Parametr profilu ASCS/SCS enque/encni/set_so_keepalive byl již přidán v posledním kroku.
 
    ```
-   # <a name="change-the-linux-system-configuration"></a>Měnit konfiguraci systému Linux
+   # Change the Linux system configuration
    sudo sysctl net.ipv4.tcp_keepalive_time=120
    ```
 
-1. **[A]** Update the /usr/sap/sapservices file
+1. **[A]** aktualizace souboru/usr/SAP/sapservices
 
-   To prevent the start of the instances by the sapinit startup script, all instances managed by Pacemaker must be commented out from /usr/sap/sapservices file. Do not comment out the SAP HANA instance if it will be used with HANA SR.
+   Aby se zabránilo spuštění instancí pomocí spouštěcího skriptu sapinit, musí být všechny instance spravované pomocí Pacemaker odkomentovatelné ze souboru/usr/SAP/sapservices. Nekomentovat instanci SAP HANA, pokud se použije s HANA SR.
 
    ```
    sudo vi /usr/sap/sapservices
    
-   # <a name="on-the-node-where-you-installed-the-ascs-comment-out-the-following-line"></a>Na uzlu, kde jste nainstalovali ASCS okomentujte následující řádek
-   # <a name="ldlibrarypathusrsapqasascs00exeldlibrarypath-export-ldlibrarypath-usrsapqasascs00exesapstartsrv-pfusrsapqassysprofileqasascs00anftstsapvh--d--u-qasadm"></a>LD_LIBRARY_PATH = / usr/sap/QAS/ASCS00/exe: $LD_LIBRARY_PATH; Export LD_LIBRARY_PATH; /USR/SAP/QAS/ASCS00/exe/sapstartsrv pf = / usr/sap/QAS/SYS/profil/QAS_ASCS00_anftstsapvh - D -u qasadm
+   # On the node where you installed the ASCS, comment out the following line
+   # LD_LIBRARY_PATH=/usr/sap/QAS/ASCS00/exe:$LD_LIBRARY_PATH; export LD_LIBRARY_PATH; /usr/sap/QAS/ASCS00/exe/sapstartsrv pf=/usr/sap/QAS/SYS/profile/QAS_ASCS00_anftstsapvh -D -u qasadm
    
-   # <a name="on-the-node-where-you-installed-the-ers-comment-out-the-following-line"></a>Na uzlu, kde jste nainstalovali Lajících okomentujte následující řádek
-   # <a name="ldlibrarypathusrsapqasers01exeldlibrarypath-export-ldlibrarypath-usrsapqasers01exesapstartsrv-pfusrsapqasers01profileqasers01anftstsapers--d--u-qasadm"></a>LD_LIBRARY_PATH = / usr/sap/QAS/ERS01/exe: $LD_LIBRARY_PATH; Export LD_LIBRARY_PATH; /USR/SAP/QAS/ERS01/exe/sapstartsrv pf = / usr/sap/QAS/ERS01/profil/QAS_ERS01_anftstsapers - D -u qasadm
+   # On the node where you installed the ERS, comment out the following line
+   # LD_LIBRARY_PATH=/usr/sap/QAS/ERS01/exe:$LD_LIBRARY_PATH; export LD_LIBRARY_PATH; /usr/sap/QAS/ERS01/exe/sapstartsrv pf=/usr/sap/QAS/ERS01/profile/QAS_ERS01_anftstsapers -D -u qasadm
    ```
 
-1. **[1]** Create the SAP cluster resources
+1. **[1]** vytvoření prostředků clusteru SAP
 
-   If using enqueue server 1 architecture (ENSA1), define the resources as follows:
+   Pokud používáte architekturu serveru front Server 1 (ENSA1), definujte prostředky následujícím způsobem:
 
    ```
-   Vlastnosti počítače sudo nastavit režim údržby = true
+   sudo pcs property set maintenance-mode=true
    
-    Vytvoření zdroje počítače sudo rsc_sap_QAS_ASCS00 SAPInstance \
-    InstanceName = QAS_ASCS00_anftstsapvh START_PROFILE = "/ sapmnt/QAS/profil/QAS_ASCS00_anftstsapvh" \
-    AUTOMATIC_RECOVER = false \
-    prostředek meta-věrnosti = 5000 migrace – prahová hodnota = 1 \
+    sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
+    InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000 migration-threshold=1 \
     --group g-QAS_ASCS
    
-    Vytvoření zdroje počítače sudo rsc_sap_QAS_ERS01 SAPInstance \
-    InstanceName = QAS_ERS01_anftstsapers START_PROFILE = "/ sapmnt/QAS/profil/QAS_ERS01_anftstsapers" \
-    AUTOMATIC_RECOVER = false IS_ERS = true \
-    --skupině g QAS_AERS
+    sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
+    InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
+    AUTOMATIC_RECOVER=false IS_ERS=true \
+    --group g-QAS_AERS
       
-    společné umístění omezení počítače sudo přidat g-QAS_AERS s g-QAS_ASCS-5000 sudo počítače omezení umístění rsc_sap_QAS_ASCS00 pravidlo skóre = 2000 runs_ers_QAS eq 1 sudo počítače omezení pořadí g-QAS_ASCS pak g-QAS_AERS druh = volitelné symetrické = false
+    sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
+    sudo pcs constraint location rsc_sap_QAS_ASCS00 rule score=2000 runs_ers_QAS eq 1
+    sudo pcs constraint order g-QAS_ASCS then g-QAS_AERS kind=Optional symmetrical=false
     
-    sudo počítače uzlu unstandby anftstsapcl1 sudo počítače vlastnost nastavit režim údržby = false
+    sudo pcs node unstandby anftstsapcl1
+    sudo pcs property set maintenance-mode=false
     ```
 
-   SAP introduced support for enqueue server 2, including replication, as of SAP NW 7.52. Starting with ABAP Platform 1809, enqueue server 2 is installed by default. See SAP note [2630416](https://launchpad.support.sap.com/#/notes/2630416) for enqueue server 2 support.
-   If using enqueue server 2 architecture ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), install resource agent resource-agents-sap-4.1.1-12.el7.x86_64 or newer and define the resources as follows:
+   SAP představilo podporu pro front-Server 2, včetně replikace, od SAP NW 7,52. Počínaje platformou ABAP 1809 se ve výchozím nastavení nainstaluje služba fronty serveru 2. Podporu služby zařazení serveru 2 pro frontu najdete v tématu SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) .
+   Pokud používáte architekturu serveru fronty 2 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), nainstalujte agenta prostředků Resource-Agents-SAP-4.1.1 -12. el7. x86_64 nebo novější a definujte prostředky následujícím způsobem:
 
     ```
-    Vlastnosti počítače sudo nastavit režim údržby = true
+    sudo pcs property set maintenance-mode=true
     
-    Vytvoření zdroje počítače sudo rsc_sap_QAS_ASCS00 SAPInstance \
-    InstanceName = QAS_ASCS00_anftstsapvh START_PROFILE = "/ sapmnt/QAS/profil/QAS_ASCS00_anftstsapvh" \
-    AUTOMATIC_RECOVER = false \
-    prostředek meta-věrnosti = 5000 \
+    sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
+    InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000 \
     --group g-QAS_ASCS
    
-    Vytvoření zdroje počítače sudo rsc_sap_QAS_ERS01 SAPInstance \
-    InstanceName = QAS_ERS01_anftstsapers START_PROFILE = "/ sapmnt/QAS/profil/QAS_ERS01_anftstsapers" \
-    AUTOMATIC_RECOVER = false IS_ERS = true \
-    --skupině g QAS_AERS
+    sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
+    InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
+    AUTOMATIC_RECOVER=false IS_ERS=true \
+    --group g-QAS_AERS
       
-    společné umístění omezení počítače sudo přidat g-QAS_AERS s g-QAS_ASCS-5000 sudo počítače omezení pořadí g-QAS_ASCS pak g-QAS_AERS druh = volitelné symetrické = false
+    sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
+    sudo pcs constraint order g-QAS_ASCS then g-QAS_AERS kind=Optional symmetrical=false
    
-    sudo počítače uzlu unstandby anftstsapcl1 sudo počítače vlastnost nastavit režim údržby = false
+    sudo pcs node unstandby anftstsapcl1
+    sudo pcs property set maintenance-mode=false
     ```
 
-   If you are upgrading from an older version and switching to enqueue server 2, see SAP note [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+   Pokud provádíte upgrade ze starší verze a přejdete na server fronty 2, přečtěte si článek SAP Note [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
 
-   Make sure that the cluster status is ok and that all resources are started. It is not important on which node the resources are running.
+   Ujistěte se, že stav clusteru je OK a že všechny prostředky jsou spuštěné. Není důležité, na kterém uzlu jsou prostředky spuštěné.
 
     ```
-    stav počítače sudo
+    sudo pcs status
     
-    # <a name="online--anftstsapcl1-anftstsapcl2-"></a>Online: [anftstsapcl1 anftstsapcl2]
+    # Online: [ anftstsapcl1 anftstsapcl2 ]
     #
-    # <a name="full-list-of-resources"></a>Úplný seznam zdrojů:
+    # Full list of resources:
     #
-    # <a name="rscstazure----stonithfenceazurearm------started-anftstsapcl2"></a>rsc_st_azure    (stonith:fence_azure_arm):      Začínáme anftstsapcl2
-    #  <a name="resource-group-g-qasascs"></a>Skupina prostředků: g-QAS_ASCS
-    #      <a name="fsqasascs--------ocfheartbeatfilesystem----started-anftstsapcl2"></a>fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Začínáme anftstsapcl2
-    #      <a name="ncqasascs--------ocfheartbeatazure-lb------started-anftstsapcl2"></a>nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2
-    #      <a name="vipqasascs-------ocfheartbeatipaddr2-------started-anftstsapcl2"></a>vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Začínáme anftstsapcl2
-    #      <a name="rscsapqasascs00-ocfheartbeatsapinstance---started-anftstsapcl2"></a>rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl2
-    #  <a name="resource-group-g-qasaers"></a>Skupina prostředků: g-QAS_AERS
-    #      <a name="fsqasaers--------ocfheartbeatfilesystem----started-anftstsapcl1"></a>fs_QAS_AERS (ocf::heartbeat:Filesystem):    Začínáme anftstsapcl1
-    #      <a name="ncqasaers--------ocfheartbeatazure-lb------started-anftstsapcl1"></a>nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1
-    #      <a name="vipqasaers-------ocfheartbeatipaddr2-------started-anftstsapcl1"></a>vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Začínáme anftstsapcl1
-    #      <a name="rscsapqasers01--ocfheartbeatsapinstance---started-anftstsapcl1"></a>rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl1
+    # rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl2
+    #  Resource Group: g-QAS_ASCS
+    #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+    #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+    #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+    #      rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+    #  Resource Group: g-QAS_AERS
+    #      fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+    #      nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+    #      vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+    #      rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-1. **[A]** Add firewall rules for ASCS and ERS on both nodes
-   Add the firewall rules for ASCS and ERS on both nodes.
+1. **[A]** přidejte pravidla brány firewall pro ASCS a olajících v obou uzlech přidejte pravidla brány firewall pro ASCS a olajících na obou uzlech.
    ```
-   # <a name="probe-port-of-ascs"></a>Port testu ascs
-   brány firewall sudo-cmd – zóny = veřejného – přidání portu = 62000/tcp – brány firewall trvalé sudo-cmd – zóny = veřejné - přidat port = brány firewall 62000/tcp sudo-cmd – zóny = veřejné - přidat port = 3200/tcp – brány firewall trvalé sudo-cmd – zóny = veřejné - přidat port = sudo 3200/tcp brány firewall cmd – zóny = veřejné - přidat port = 3600/tcp – brány firewall trvalé sudo-cmd – zóny = veřejné - přidat port = 3600/tcp sudo firewallu cmd – zóny = veřejného – přidání portu = 3900/tcp – brány firewall trvalé sudo-cmd – zóny = veřejného – přidání portu = sudo 3900/tcp brány firewall cmd – zóny = veřejné - přidat port = 8100/tcp – brány firewall trvalé sudo-cmd – zóny = veřejné - přidat port = brány firewall sudo 8100/tcp-cmd – zóny = veřejného – přidání portu = 50013/tcp – brány firewall trvalé sudo-cmd – zóny = veřejného – přidání portu = sudo 50013/tcp brány firewall cmd – zóny = veřejného – přidání portu = 50014/tcp – brány firewall trvalé sudo-cmd – zóny = veřejné - přidat port = brány firewall 50014/tcp sudo-cmd – zóny = veřejného – přidání portu = 50016/tcp – brány firewall trvalé sudo-cmd – zóny = veřejné - přidat port = 50016/tcp
-   # <a name="probe-port-of-ers"></a>Port testu z Lajících
-   brány firewall sudo-cmd – zóny = veřejného – přidání portu = 62101/tcp – brány firewall trvalé sudo-cmd – zóny = veřejné - přidat port = brány firewall 62101/tcp sudo-cmd – zóny = veřejné - přidat port = 3301/tcp – brány firewall trvalé sudo-cmd – zóny = veřejné - přidat port = sudo 3301/tcp brány firewall cmd – zóny = veřejného – přidání portu = 50113/tcp – brány firewall trvalé sudo-cmd – zóny = veřejné - přidat port = brány firewall 50113/tcp sudo-cmd – zóny = veřejné - přidat port = 50114/tcp – brány firewall trvalé sudo-cmd – zóny = veřejného – přidání portu = sudo 50114/tcp brány firewall cmd – zóny = veřejné - přidat port = 50116/tcp – brány firewall trvalé sudo-cmd – zóny = veřejné - přidat port = 50116/tcp
+   # Probe Port of ASCS
+   sudo firewall-cmd --zone=public --add-port=62000/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=62000/tcp
+   sudo firewall-cmd --zone=public --add-port=3200/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=3200/tcp
+   sudo firewall-cmd --zone=public --add-port=3600/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=3600/tcp
+   sudo firewall-cmd --zone=public --add-port=3900/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=3900/tcp
+   sudo firewall-cmd --zone=public --add-port=8100/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=8100/tcp
+   sudo firewall-cmd --zone=public --add-port=50013/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50013/tcp
+   sudo firewall-cmd --zone=public --add-port=50014/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50014/tcp
+   sudo firewall-cmd --zone=public --add-port=50016/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50016/tcp
+   # Probe Port of ERS
+   sudo firewall-cmd --zone=public --add-port=62101/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=62101/tcp
+   sudo firewall-cmd --zone=public --add-port=3301/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=3301/tcp
+   sudo firewall-cmd --zone=public --add-port=50113/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50113/tcp
+   sudo firewall-cmd --zone=public --add-port=50114/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50114/tcp
+   sudo firewall-cmd --zone=public --add-port=50116/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50116/tcp
    ```
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver application server preparation
+## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Příprava aplikačního serveru SAP NetWeaver
 
-   Some databases require that the database instance installation is executed on an application server. Prepare the application server virtual machines to be able to use them in these cases.  
+   Některé databáze vyžadují, aby se instalace instance databáze spustila na aplikačním serveru. Příprava virtuálních počítačů aplikačního serveru, aby je bylo možné používat v těchto případech.  
 
-   The steps bellow assume that you install the application server on a server different from the ASCS/SCS and HANA servers. Otherwise some of the steps below (like configuring host name resolution) are not needed.  
+   Postup níže předpokládá, že instalujete aplikační server na jiný server než servery ASCS/SCS a HANA. Jinak se některé z následujících kroků (třeba konfigurace překladu názvů hostitelů) nevyžadují.  
 
-   The following items are prefixed with either **[A]** - applicable to both PAS and AAS, **[P]** - only applicable to PAS or **[S]** - only applicable to AAS.  
+   Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS, **[P]** – platí jenom pro pas nebo **[S]** – platí jenom pro AAS.  
 
-1. **[A]** Setup host name resolution
-   You can either use a DNS server or modify the /etc/hosts on all nodes. This example shows how to use the /etc/hosts file.
-   Replace the IP address and the hostname in the following commands:  
-
-   ```
-   sudo vi/etc/hosts
-   ```
-
-   Insert the following lines to /etc/hosts. Change the IP address and hostname to match your environment.
+1. **[A]** nastavení rozlišení názvu hostitele můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
+   V následujících příkazech nahraďte IP adresu a název hostitele:  
 
    ```
-   # <a name="ip-address-of-the-load-balancer-frontend-configuration-for-sap-netweaver-ascs"></a>Adresa IP konfigurace front-endu nástroje pro vyrovnávání zatížení pro SAP NetWeaver ASCS
+   sudo vi /etc/hosts
+   ```
+
+   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí.
+
+   ```
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
    192.168.14.9 anftstsapvh
-   # <a name="ip-address-of-the-load-balancer-frontend-configuration-for-sap-netweaver-ascs-ers"></a>Adresa IP konfigurace front-endu nástroje pro vyrovnávání zatížení pro SAP NetWeaver ASCS Lajících
-   192.168.14.10 anftstsapers 192.168.14.7 anftstsapa01 192.168.14.8 anftstsapa02
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS ERS
+   192.168.14.10 anftstsapers
+   192.168.14.7 anftstsapa01
+   192.168.14.8 anftstsapa02
    ```
 
-1. **[A]** Create the sapmnt directory
-   Create the sapmnt directory.
+1. **[A]** vytvoření adresáře sapmnt vytvořte adresář sapmnt.
    ```
-   sudo mkdir -p/sapmnt/QAS sudo mkdir -p /usr/sap/trans
+   sudo mkdir -p /sapmnt/QAS
+   sudo mkdir -p /usr/sap/trans
 
-   sudo chattr + můžu/sapmnt/QAS sudo chattr + můžu /usr/sap/trans
-   ```
-
-1. **[A]** Install NFS client and other requirements  
-
-   ```
-   instalace systému souborů nfs utils uuidd sudo yumu -y
+   sudo chattr +i /sapmnt/QAS
+   sudo chattr +i /usr/sap/trans
    ```
 
-1. **[A]** Add mount entries  
+1. **[A]** nainstalovat klienta systému souborů NFS a další požadavky  
+
+   ```
+   sudo yum -y install nfs-utils uuidd
+   ```
+
+1. **[A]** přidat položky připojení  
 
    ```
    sudo vi /etc/fstab
    
-   # <a name="add-the-following-lines-to-fstab-save-and-exit"></a>Přidejte následující řádky do fstab, uložit a ukončit
-   192.168.24.5:/sapQAS/sapmntQAS/sapmnt/QAS systému souborů nfs rw, pevný, parametru rsize = 65536 wsize = 65536, vers = 3 192.168.24.4:/transSAP /usr/sap/trans systému souborů nfs rw, pevný, parametru rsize = 65536 wsize = 65536, vers = 3
+   # Add the following lines to fstab, save and exit
+   192.168.24.5:/sapQAS/sapmntQAS /sapmnt/QAS nfs rw,hard,rsize=65536,wsize=65536,vers=3
+   192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
    ```
 
-   Mount the new shares
+   Připojit nové sdílené složky
 
    ```
-   sudo připojení - a
+   sudo mount -a
    ```
 
-1. **[P]** Create and mount the PAS directory  
+1. **[P]** vytvoření a připojení adresáře pas  
 
    ```
-   sudo mkdir -p /usr/sap/QAS/D02 sudo chattr +i /usr/sap/QAS/D02
+   sudo mkdir -p /usr/sap/QAS/D02
+   sudo chattr +i /usr/sap/QAS/D02
    
    sudo vi /etc/fstab
-   # <a name="add-the-following-line-to-fstab"></a>Přidejte následující řádek fstab
-   92.168.24.5:/sapQAS/usrsapQASpas /usr/sap/QAS/D02 parametru systému souborů nfs pevný, rsize rw = 65536 wsize = 65536, vers = 3
+   # Add the following line to fstab
+   92.168.24.5:/sapQAS/usrsapQASpas /usr/sap/QAS/D02 nfs rw,hard,rsize=65536,wsize=65536,vers=3
    
-   # <a name="mount"></a>Připojení
-   sudo připojení - a
+   # Mount
+   sudo mount -a
    ```
 
-1. **[S]** Create and mount the AAS directory  
+1. **[S]** vytvořte a připojte adresář AAS  
 
    ```
-   sudo mkdir -p /usr/sap/QAS/D03 sudo chattr +i /usr/sap/QAS/D03
+   sudo mkdir -p /usr/sap/QAS/D03
+   sudo chattr +i /usr/sap/QAS/D03
    
    sudo vi /etc/fstab
-   # <a name="add-the-following-line-to-fstab"></a>Přidejte následující řádek fstab
-   92.168.24.5:/sapQAS/usrsapQASaas /usr/sap/QAS/D03 parametru systému souborů nfs pevný, rsize rw = 65536 wsize = 65536, vers = 3
+   # Add the following line to fstab
+   92.168.24.5:/sapQAS/usrsapQASaas /usr/sap/QAS/D03 nfs rw,hard,rsize=65536,wsize=65536,vers=3
    
-   # <a name="mount"></a>Připojení
-   sudo připojení - a
+   # Mount
+   sudo mount -a
    ```
 
 
-1. **[A]** Configure SWAP file
+1. **[A]** konfigurace odkládacího souboru
  
    ```
    sudo vi /etc/waagent.conf
    
-   # <a name="set-the-property-resourcediskenableswap-to-y"></a>Nastavte vlastnost ResourceDisk.EnableSwap y
-   # <a name="create-and-use-swapfile-on-resource-disk"></a>Vytvoření a použití stránkovacího souboru na disk prostředků.
+   # Set the property ResourceDisk.EnableSwap to y
+   # Create and use swapfile on resource disk.
    ResourceDisk.EnableSwap=y
    
-   # <a name="set-the-size-of-the-swap-file-with-property-resourcediskswapsizemb"></a>Nastavení velikosti ODKLÁDACÍHO souboru s vlastností ResourceDisk.SwapSizeMB
-   # <a name="the-free-space-of-resource-disk-varies-by-virtual-machine-size-make-sure-that-you-do-not-set-a-value-that-is-too-big-you-can-check-the-swap-space-with-command-swapon"></a>Volné místo disk počítačových prostředků se liší podle velikosti virtuálního počítače. Ujistěte se, že nenastavujte hodnotu, která je příliš velký. Můžete zkontrolovat velikosti odkládacího souboru se příkaz swapon
-   # <a name="size-of-the-swapfile"></a>Velikost stránkovacího souboru.
+   # Set the size of the SWAP file with property ResourceDisk.SwapSizeMB
+   # The free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check the SWAP space with command swapon
+   # Size of the swapfile.
    ResourceDisk.SwapSizeMB=2000
    ```
 
-   Restart the Agent to activate the change
+   Restartujte agenta, aby se změna aktivovala.
 
    ```
-   restart waagent služby sudo
+   sudo service waagent restart
    ```
 
-## Install database
+## <a name="install-database"></a>Instalace databáze
 
-In this example, SAP NetWeaver is installed on SAP HANA. You can use every supported database for this installation. For more information on how to install SAP HANA in Azure, see [High availability of SAP HANA on Azure VMs on Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+V tomto příkladu je SAP NetWeaver nainstalovaný na SAP HANA. Pro tuto instalaci můžete použít každou podporovanou databázi. Další informace o tom, jak nainstalovat SAP HANA v Azure, najdete v tématu [Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
-1. Run the SAP database instance installation
+1. Spusťte instalaci instance databáze SAP.
 
-   Install the SAP NetWeaver database instance as root using a virtual hostname that maps to the IP address of the load balancer frontend configuration for the database.
+   Nainstalujte instanci databáze SAP NetWeaver jako kořenovou složku pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro databázi.
 
-   You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
-
-   ```
-   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER = sapadmin
-   ```
-
-## SAP NetWeaver application server installation
-
-Follow these steps to install an SAP application server.
-
-1. Prepare application server
-
-   Follow the steps in the chapter [SAP NetWeaver application server preparation](high-availability-guide-rhel.md#2d6008b0-685d-426c-b59e-6cd281fd45d7) above to prepare the application server.
-
-1. Install SAP NetWeaver application server
-
-   Install a primary or additional SAP NetWeaver applications server.
-
-   You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
+   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst.
 
    ```
-   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER = sapadmin
+   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
    ```
 
-1. Update SAP HANA secure store
+## <a name="sap-netweaver-application-server-installation"></a>Instalace aplikačního serveru SAP NetWeaver
 
-   Update the SAP HANA secure store to point to the virtual name of the SAP HANA System Replication setup.
+Pomocí těchto kroků nainstalujete aplikační Server SAP.
 
-   Run the following command to list the entries as \<sapsid>adm
+1. Příprava aplikačního serveru
+
+   K přípravě aplikačního serveru použijte postup v části [Příprava aplikačního serveru SAP NetWeaver](high-availability-guide-rhel.md#2d6008b0-685d-426c-b59e-6cd281fd45d7) .
+
+1. Instalace aplikačního serveru SAP NetWeaver
+
+   Nainstalujte primární nebo další server aplikace SAP NetWeaver.
+
+   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst.
 
    ```
-   hdbuserstore seznamu
+   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
    ```
 
-   This should list all entries and should look similar to
+1. Aktualizace zabezpečeného úložiště SAP HANA
+
+   Aktualizujte SAP HANA zabezpečené úložiště tak, aby odkazovalo na virtuální název nastavení replikace SAP HANA systému.
+
+   Spuštěním následujícího příkazu vypíšete položky jako \<sapsid > ADM.
+
    ```
-   DATOVÝ soubor: /home/qasadm/.hdb/anftstsapa01/SSFS_HDB. SOUBOR klíče DAT: /home/qasadm/.hdb/anftstsapa01/SSFS_HDB. KLÍČ
+   hdbuserstore List
+   ```
+
+   Mělo by se zobrazit seznam všech položek, které by měly vypadat podobně jako
+   ```
+   DATA FILE       : /home/qasadm/.hdb/anftstsapa01/SSFS_HDB.DAT
+   KEY FILE        : /home/qasadm/.hdb/anftstsapa01/SSFS_HDB.KEY
    
-   VÝCHOZÍ KLÍČE ENV: 192.168.14.4:30313 UŽIVATELE: SAPABAP1 DATABÁZE: QAS
+   KEY DEFAULT
+     ENV : 192.168.14.4:30313
+     USER: SAPABAP1
+     DATABASE: QAS
    ```
 
-   The output shows that the IP address of the default entry is pointing to the virtual machine and not to the load balancer's IP address. This entry needs to be changed to point to the virtual hostname of the load balancer. Make sure to use the same port (**30313** in the output above) and database name (**QAS** in the output above)!
+   Výstup ukazuje, že IP adresa výchozí položky odkazuje na virtuální počítač, a ne na IP adresu nástroje pro vyrovnávání zatížení. Tato položka musí být změněna tak, aby odkazovala na virtuální název hostitele nástroje pro vyrovnávání zatížení. Nezapomeňte použít stejný port (**30313** ve výstupu výše) a název databáze (**QAS** ve výstupu výše).
 
    ```
-   su – qasadm hdbuserstore nastavit výchozí qasdb:30313@QAS SAPABAP1 <password of ABAP schema>
+   su - qasadm
+   hdbuserstore SET DEFAULT qasdb:30313@QAS SAPABAP1 <password of ABAP schema>
    ```
 
-## Test the cluster setup
+## <a name="test-the-cluster-setup"></a>Otestování instalace clusteru
 
-1. Manually migrate the ASCS instance
+1. Ruční migrace instance ASCS
 
-   Resource state before starting the test:
-
-   ```
-    rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl1: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl2
-   ```
-
-   Run the following commands as root to migrate the ASCS instance.
+   Stav prostředku před spuštěním testu:
 
    ```
-   [root@anftstsapcl1 ~] přesunutí prostředku počítače # rsc_sap_QAS_ASCS00
+    rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+   ```
+
+   Pro migraci instance ASCS spusťte následující příkazy jako kořen.
+
+   ```
+   [root@anftstsapcl1 ~]# pcs resource move rsc_sap_QAS_ASCS00
    
-   [root@anftstsapcl1 ~] prostředků počítače # zrušte rsc_sap_QAS_ASCS00
+   [root@anftstsapcl1 ~]# pcs resource clear rsc_sap_QAS_ASCS00
    
-   # <a name="remove-failed-actions-for-the-ers-that-occurred-as-part-of-the-migration"></a>Odebrat nezdařené akce pro Lajících, ke které došlo v rámci migrace
-   [root@anftstsapcl1 ~] rsc_sap_QAS_ERS01 vyčištění prostředků počítače #
+   # Remove failed actions for the ERS that occurred as part of the migration
+   [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
    ```
 
-   Resource state after the test:
+   Stav prostředku po testu:
 
    ```
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl2: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl1
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-1. Simulate node crash
+1. Simulace havárie uzlu
 
-   Resource state before starting the test:
+   Stav prostředku před spuštěním testu:
 
    ```
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl2: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl1
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-   Run the following command as root on the node where the ASCS instance is running
+   Spusťte následující příkaz jako kořen v uzlu, ve kterém je spuštěná instance ASCS.
 
    ```
    [root@anftstsapcl2 ~]# echo b > /proc/sysrq-trigger
    ```
 
-   The status after the node is started again should look like this.
+   Stav po spuštění uzlu by měl vypadat takto.
 
    ```
-   Online: [anftstsapcl1 anftstsapcl2]
+   Online: [ anftstsapcl1 anftstsapcl2 ]
    
-   Úplný seznam zdrojů:
+   Full list of resources:
    
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl1: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    
-   Nezdařené akce:
-   * rsc_sap_QAS_ERS01_monitor_11000 na anftstsapcl1 "neběží" (7): volání = 45, stav = dokončeno, exitreason = ",
+   Failed Actions:
+   * rsc_sap_QAS_ERS01_monitor_11000 on anftstsapcl1 'not running' (7): call=45, status=complete, exitreason='',
    ```
 
-   Use the following command to clean the failed resources.
+   K vyčištění neúspěšných prostředků použijte následující příkaz.
 
    ```
-   [root@anftstsapcl1 ~] rsc_sap_QAS_ERS01 vyčištění prostředků počítače #
+   [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
    ```
 
-   Resource state after the test:
+   Stav prostředku po testu:
 
    ```
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl1: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-1. Kill message server process
+1. Ukončit proces serveru zprávy
 
-   Resource state before starting the test:
+   Stav prostředku před spuštěním testu:
 
    ```
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl1: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
    
-   Run the following commands as root to identify the process of the message server and kill it.
+   Spuštěním následujících příkazů jako kořenového adresáře Identifikujte proces serveru a potom ho ukončete.
 
    ```
-   [root@anftstsapcl1 ~] # pgrep ms.sapQAS | xargs kill hodnotu -9
+   [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   If you only kill the message server once, it will be restarted by `sapstart`. If you kill it often enough, Pacemaker will eventually move the ASCS instance to the other node. Run the following commands as root to clean up the resource state of the ASCS and ERS instance after the test.
+   Pokud server pouze jednou zadáte, bude restartován nástrojem `sapstart`. Pokud jste ho ASCS dostatečně přesunuli, Pacemaker se nakonec přesune instance na jiný uzel. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
 
    ```
-   [root@anftstsapcl1 ~] rsc_sap_QAS_ASCS00 vyčištění prostředků počítače # [root@anftstsapcl1 ~] rsc_sap_QAS_ERS01 vyčištění prostředků počítače #
+   [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
+   [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
    ```
 
-   Resource state after the test:
+   Stav prostředku po testu:
 
    ```
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl2: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl1
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-1. Kill enqueue server process
+1. Proces serveru dezaktivačního zařazení do fronty
 
-   Resource state before starting the test:
-
-   ```
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl2: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl1
-   ```
-
-   Run the following commands as root on the node where the ASCS instance is running to kill the enqueue server.
+   Stav prostředku před spuštěním testu:
 
    ```
-   [root@anftstsapcl2 ~] # pgrep en.sapQAS | xargs kill hodnotu -9
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-   The ASCS instance should immediately fail over to the other node. The ERS instance should also fail over after the ASCS instance is started. Run the following commands as root to clean up the resource state of the ASCS and ERS instance after the test.
+   Spusťte následující příkazy jako kořen v uzlu, ve kterém je spuštěná instance ASCS, aby se mohl ukončit server fronty.
 
    ```
-   [root@anftstsapcl2 ~] rsc_sap_QAS_ASCS00 vyčištění prostředků počítače # [root@anftstsapcl2 ~] rsc_sap_QAS_ERS01 vyčištění prostředků počítače #
+   [root@anftstsapcl2 ~]# pgrep en.sapQAS | xargs kill -9
    ```
 
-   Resource state after the test:
+   Instance ASCS by měla okamžitě převzít služby na jiný uzel. Instance OLAJÍCÍCH by také měla převzít služby při selhání po spuštění instance ASCS. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
 
    ```
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl1: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl2
+   [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
+   [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
    ```
 
-1. Kill enqueue replication server process
-
-   Resource state before starting the test:
+   Stav prostředku po testu:
 
    ```
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl1: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-   Run the following command as root on the node where the ERS instance is running to kill the enqueue replication server process.
+1. Proces replikace replikačního serveru do fronty
+
+   Stav prostředku před spuštěním testu:
 
    ```
-   [root@anftstsapcl2 ~] # pgrep er.sapQAS | xargs kill hodnotu -9
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-   If you only run the command once, `sapstart` will restart the process. If you run it often enough, `sapstart` will not restart the process and the resource will be in a stopped state. Run the following commands as root to clean up the resource state of the ERS instance after the test.
+   Spusťte následující příkaz jako kořenový adresář v uzlu, ve kterém je spuštěná instance OLAJÍCÍCH, čímž se ukončí proces serveru replikace ve frontě.
 
    ```
-   [root@anftstsapcl2 ~] rsc_sap_QAS_ERS01 vyčištění prostředků počítače #
+   [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
    ```
 
-   Resource state after the test:
+   Pokud příkaz spouštíte pouze jednou, `sapstart` proces se restartuje. Pokud je spuštěno dostatečně často, `sapstart` proces nebude restartován a prostředek bude zastaven. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředku instance OLAJÍCÍCH po testu.
 
    ```
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl1: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl2
+   [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
    ```
 
-1. Kill enqueue sapstartsrv process
-
-   Resource state before starting the test:
+   Stav prostředku po testu:
 
    ```
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl1: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-   Run the following commands as root on the node where the ASCS is running.
+1. Ukončit proces sapstartsrv zařazování do fronty
+
+   Stav prostředku před spuštěním testu:
 
    ```
-   [root@anftstsapcl1 ~] # pgrep -fl ASCS00.*sapstartsrv
-   # <a name="59545-sapstartsrv"></a>59545 sapstartsrv
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+   ```
+
+   Spusťte následující příkazy jako kořen v uzlu, kde je spuštěný ASCS.
+
+   ```
+   [root@anftstsapcl1 ~]# pgrep -fl ASCS00.*sapstartsrv
+   # 59545 sapstartsrv
    
    [root@anftstsapcl1 ~]# kill -9 59545
    ```
 
-   The sapstartsrv process should always be restarted by the Pacemaker resource agent as part of the monitoring. Resource state after the test:
+   Proces sapstartsrv by měl být v rámci monitorování vždy restartován agentem prostředků Pacemaker. Stav prostředku po testu:
 
    ```
-   rsc_st_azure    (stonith:fence_azure_arm):      Spuštění skupiny prostředků anftstsapcl1: fs_QAS_ASCS g QAS_ASCS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Spuštění skupiny prostředků anftstsapcl1: fs_QAS_AERS g QAS_AERS (ocf::heartbeat:Filesystem):    Spuštění anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Začínáme anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Spuštění anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Začínáme anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-## Next steps
+## <a name="next-steps"></a>Další postup
 
-* [Azure Virtual Machines planning and implementation for SAP][planning-guide]
-* [Azure Virtual Machines deployment for SAP][deployment-guide]
-* [Azure Virtual Machines DBMS deployment for SAP][dbms-guide]
-* To learn how to establish high availability and plan for disaster recovery of SAP HANA on Azure (large instances), see [SAP HANA (large instances) high availability and disaster recovery on Azure](hana-overview-high-availability-disaster-recovery.md).
-* To learn how to establish high availability and plan for disaster recovery of SAP HANA on Azure VMs, see [High Availability of SAP HANA on Azure Virtual Machines (VMs)][sap-hana-ha]
+* [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
+* [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]
+* Informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA v Azure (velké instance), najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
+* Další informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA na virtuálních počítačích Azure, najdete v tématu [Vysoká dostupnost SAP HANA na azure Virtual Machines (virtuální počítače)][sap-hana-ha] .

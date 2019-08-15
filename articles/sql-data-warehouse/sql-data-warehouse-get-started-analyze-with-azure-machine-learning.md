@@ -11,10 +11,10 @@ ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: cae2acf98f39030f4ff340d32f1911bb2b5763ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "65860829"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analýza dat pomocí Azure Machine Learning
@@ -42,9 +42,9 @@ Pro jednotlivé kroky v tomto kurzu budete potřebovat:
 Data jsou v zobrazení dbo.vTargetMail v databázi AdventureWorksDW. Postup načtení těchto dat:
 
 1. Přihlaste se k [Azure Machine Learning Studio][Azure Machine Learning studio] a klikněte na Moje experimenty.
-2. Klikněte na tlačítko **+ nová** v levé dolní části obrazovky a vyberte **prázdný Experiment**.
-3. Zadejte název svého experimentu: Cíleného marketingu.
-4. Přetáhněte **importovat data** modul v rámci **datový vstup a výstup** z podokna modulů na plátno.
+2. V levé dolní části obrazovky klikněte na **+ Nový** a vyberte **prázdný experiment**.
+3. Zadejte název experimentu: Cílený marketing.
+4. Přetáhněte modul **Import dat** do pole **vstup a výstup dat** z podokna moduly na plátno.
 5. V podokně vlastností zadejte podrobné informace o vaší databázi SQL Data Warehouse.
 6. Zadejte databázový **dotaz** pro načtení data, která vás zajímají.
 
@@ -77,20 +77,20 @@ Po úspěšném dokončení experimentu klikněte v dolní části modulu Reader
 ## <a name="2-clean-the-data"></a>2. Vymazání dat
 Pro vymazání dat odstraňte některé sloupce, které nejsou pro model důležité. Použijte následující postup:
 
-1. Přetáhněte **výběr sloupců v datové sadě** modul v rámci **transformace dat. < manipulaci s** na plátno. Připojení tohoto modulu **Import dat** modulu.
+1. Přetáhněte modul **Výběr sloupců v datové sadě** pod **transformaci dat < manipulaci** s plátnem. Připojte tento modul k modulu **Import dat** .
 2. V podokně vlastností klikněte na **Launch column selector** (Spustit selektor sloupců) a určete sloupce, které se mají odstranit.
    ![Project Columns][4]
 3. Vylučte dva sloupce: CustomerAlternateKey a GeographyKey.
    ![Odebrání nepotřebných sloupců][5]
 
 ## <a name="3-build-the-model"></a>3. Sestavení modelu
-Rozdělíme data 80 – 20: 80 % pro trénování modelu strojového učení a 20 % pro otestování modelu. Pro tento problém binární klasifikace budeme používat algoritmy Two-Class.
+Data 80-20 budeme rozdělit: 80% pro výuku modelu strojového učení a 20% pro otestování modelu. Pro tento problém binární klasifikace budeme používat algoritmy Two-Class.
 
 1. Přetáhněte na plátno modul **Split**.
-2. V podokně vlastností 0,8 řádků v první výstupní datovou sadu.
+2. V podokně Vlastnosti zadejte 0,8 pro zlomek řádků v první výstupní sadě dat.
    ![Rozdělení dat na sadu učení a testovací sadu][6]
 3. Přetáhněte na plátno modul **Two-Class Boosted Decision Tree**.
-4. Přetáhněte **trénování modelu** na plátno modul a určete vstupy díky připojení k **Two-Class Boosted Decision Tree** (algoritmus strojového učení) a **rozdělení** (data pro učení moduly algoritmus na). 
+4. Přetáhněte modul **vlakového modelu** na plátno a určete vstupy tím, že je propojíte s posíleným rozhodovacím stromum se **dvěma třídami** (ml Algorithm) a rozdělíte (data pro výuku algoritmu v) moduly. 
      ![Připojení modulu Train Model][7]
 5. V podokně vlastností pak klikněte na **Launch column selector** (Spustit selektor sloupců). Jako sloupec pro předpověď vyberte sloupec **BikeBuyer**.
    ![Vyberte sloupec pro předpověď][8]
@@ -98,8 +98,8 @@ Rozdělíme data 80 – 20: 80 % pro trénování modelu strojového učení a 2
 ## <a name="4-score-the-model"></a>4. Ohodnocení modelu
 Teď otestujeme, jaký je výkon modelu při použití testovacích dat. Porovnáme námi zvolený algoritmus s jiným algoritmem, abychom zjistili, který z nich vrací lepší výsledky.
 
-1. Přetáhněte **Score Model** na plátno modul a propojte jej s **Train Model** a **rozdělení dat** moduly.
-   ![Modul score model][9]
+1. Přetáhněte na plátno modul **bodového modelu** a připojte ho ke **výukovým modelům** a rozděleným **datovým** modulům.
+   ![Určení skóre modelu][9]
 2. Na plátno experimentu přetáhněte **Two-Class Bayes Point Machine**. Porovnáme výsledky tohoto algoritmu s rozhodovacím stromem Two-Class Boosted Decision Tree.
 3. Zkopírujte na plátno moduly Train Model a Score Model.
 4. Přetáhněte modul **Evaluate Model** na plátno pro porovnání obou algoritmů.

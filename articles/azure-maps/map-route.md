@@ -1,6 +1,6 @@
 ---
 title: Zobrazit pokyny s Azure Maps | Microsoft Docs
-description: Jak zobrazit směry mezi dvěma umístěními na mapě JavaScriptu
+description: Jak zobrazit směry mezi dvěma místy na mapě pomocí Azure Maps Web SDK.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 65f8337585e0a4d1077897274fd07505024af22c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cf997d4ae120f3e9309892b112f9954bde97bc76
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638958"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976494"
 ---
 # <a name="show-directions-from-a-to-b"></a>Zobrazení pokynů pro trasu z A do B
 
@@ -39,7 +39,7 @@ Třetí blok kódu vytvoří a přidá objekt [DataSource](https://docs.microsof
 
 [Symbolová vrstva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá text nebo ikony pro vykreslení dat na základě bodu zabalených ve [zdroji dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě. Pátý blok kódu vytvoří a přidá na mapu vrstvu symbolů.
 
-Šestý blok kódu se dotazuje směrovací služby Azure Maps, která je součástí [modulu služby](how-to-use-services-module.md). Metoda [CalculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) RouteUrl se používá k získání trasy mezi počátečním a koncovým bodem. Kolekce funkcí pro injson z odpovědi je pak extrahována pomocí `geojson.getFeatures()` metody a přidána do zdroje dat. Následně vykreslí odpověď jako trasu na mapě. Další informace o přidání čáry na mapu najdete v tématu [Přidání čáry na mapě](./map-add-shape.md#addALine).
+Šestý blok kódu se dotazuje směrovací služby Azure Maps, která je součástí [modulu služby](how-to-use-services-module.md). Metoda [CalculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) RouteUrl se používá k získání trasy mezi počátečním a koncovým bodem. Kolekce funkcí pro injson z odpovědi je pak extrahována pomocí `geojson.getFeatures()` metody a přidána do zdroje dat. Následně vykreslí odpověď jako trasu na mapě. Další informace o přidání čáry na mapu najdete v tématu [Přidání čáry na mapě](map-add-line-layer.md).
 
 Poslední blok kódu nastaví meze mapy pomocí vlastnosti [SetCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
 
@@ -62,7 +62,7 @@ Třetí blok kódu vytvoří počáteční a cílový bod pro trasu a přidá je
 
 Další blok kódu vytvoří `SouthWest` `NorthEast` body od počátečního a cílového bodu a nastaví meze mapy pomocí vlastnosti [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
 
-Poslední blok kódu používá [rozhraní Fetch API](https://fetch.spec.whatwg.org/) k vytvoření žádosti o vyhledávání na [rozhraní API pro Azure Maps tras](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Odpověď se pak analyzuje. Pokud byla odpověď úspěšná, informace o zeměpisné šířce a délce se použijí k vytvoření řádku a propojení těchto bodů. Data řádku se pak přidají do zdroje dat, aby se vygenerovala trasa na mapě. Pokyny najdete [na stránce Přidání čáry na mapě](./map-add-shape.md#addALine) .
+Poslední blok kódu používá [rozhraní Fetch API](https://fetch.spec.whatwg.org/) k vytvoření žádosti o vyhledávání na [rozhraní API pro Azure Maps tras](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Odpověď se pak analyzuje. Pokud byla odpověď úspěšná, informace o zeměpisné šířce a délce se použijí k vytvoření řádku a propojení těchto bodů. Data řádku se pak přidají do zdroje dat, aby se vygenerovala trasa na mapě. Pokyny najdete [na stránce Přidání čáry na mapě](map-add-line-layer.md) .
 
 Dotaz směrování, zdroj dat, symbol a vrstvy čáry a hranice kamery jsou vytvořeny a nastaveny v rámci [naslouchacího procesu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) v mapě, aby se zajistilo, že se výsledky zobrazí po úplném načtení mapy.
 

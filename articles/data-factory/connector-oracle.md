@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 079a0721e77174215c7256eecbe9bc522256f0b8
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 142c99b2471a9010a00bf9b5d50549c5e84548f1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881483"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966462"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do Oracle pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -33,11 +33,13 @@ Data z databáze Oracle můžete kopírovat do libovolného podporovaného úlo�
 Konkrétně tento konektor Oracle podporuje:
 
 - Následující verze databáze Oracle:
-  - Oracle 12c R1 (12,1)
-  - Oracle 11g R1, R2 (11,1, 11,2)
-  - Oracle 10g R1, R2 (10,1, 10,2)
-  - Oracle 9i R1, R2 (9.0.1, 9,2)
-  - Oracle 8i R3 (8.1.7)
+    - Oracle 18c R1 (18,1) a vyšší
+    - Oracle 12c R1 (12,1) a vyšší
+    - Oracle 11g R1 (11,1) a vyšší
+    - Oracle 10g R1 (10,1) a vyšší
+    - Oracle 9i R2 (9,2) a vyšší
+    - Oracle 8i R3 (8.1.7) a vyšší
+    - Služba Oracle Database Cloud Exadata
 - Kopírování dat pomocí ověřování Basic nebo OID.
 - Paralelní kopírování ze zdroje Oracle. Podrobnosti najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) .
 
@@ -46,7 +48,9 @@ Konkrétně tento konektor Oracle podporuje:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li kopírovat data z a do databáze Oracle, která není veřejně přístupná, je nutné nastavit [prostředí Integration runtime](create-self-hosted-integration-runtime.md)v místním prostředí. Modul runtime integrace poskytuje integrovaný ovladač Oracle. Proto nemusíte při kopírování dat z a do Oracle ručně instalovat ovladač.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
+
+Modul runtime integrace poskytuje integrovaný ovladač Oracle. Proto nemusíte při kopírování dat z a do Oracle ručně instalovat ovladač.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -62,7 +66,7 @@ Propojená služba Oracle podporuje následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavena na hodnotu **Oracle**. | Ano |
 | connectionString | Určuje informace potřebné pro připojení k instanci Oracle Database. <br/>Označte toto pole jako `SecureString` pro bezpečné uložení v Data Factory. Můžete také vložit heslo do Azure Key Vault a z připojovacího řetězce si `password` vyžádat konfiguraci. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje uložené v Azure Key Vault](store-credentials-in-key-vault.md) . <br><br>**Podporovaný typ připojení**: K identifikaci vaší databáze můžete použít název **Oracle SID** nebo **Oracle Service** :<br>– Pokud používáte identifikátor SID:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud použijete název služby:`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ano |
-| connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít místní prostředí Integration runtime nebo prostředí Azure Integration runtime (Pokud je úložiště dat veřejně přístupné). Pokud tento parametr nezadáte, použije tato vlastnost výchozí prostředí Azure Integration runtime. |Ne |
+| connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!TIP]
 >Pokud se zobrazí chyba, "ORA-01025: Parametr UPI je mimo rozsah a vaše verze Oracle je 8i, přidejte `WireProtocolMode=1` ho do svého připojovacího řetězce. Pak to zkuste znovu.
@@ -191,11 +195,10 @@ Chcete-li kopírovat data z a do Oracle, nastavte vlastnost typ datové sady na 
 
 V této části najdete seznam vlastností podporovaných zdrojem a jímkou Oracle. Úplný seznam oddílů a vlastností dostupných pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md). 
 
-### <a name="oracle-as-a-source-type"></a>Oracle jako typ zdroje
+### <a name="oracle-as-source"></a>Oracle as source
 
-> [!TIP]
->
-> Pokud chcete data z Oracle načítat efektivně pomocí dělení dat, přečtěte si téma [paralelní kopírování od Oracle](#parallel-copy-from-oracle).
+>[!TIP]
+>Pokud chcete data z Oracle načítat efektivně pomocí dělení dat, přečtěte si téma [paralelní kopírování od Oracle](#parallel-copy-from-oracle).
 
 Chcete-li kopírovat data z Oracle, nastavte typ zdroje v aktivitě kopírování `OracleSource`na. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** oddílu.
 
@@ -242,7 +245,7 @@ Chcete-li kopírovat data z Oracle, nastavte typ zdroje v aktivitě kopírován�
 ]
 ```
 
-### <a name="oracle-as-a-sink-type"></a>Oracle jako typ jímky
+### <a name="oracle-as-sink"></a>Oracle jako jímka
 
 Chcete-li kopírovat data do Oracle, nastavte typ jímky v aktivitě kopírování `OracleSink`na. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti.
 
@@ -342,7 +345,7 @@ Při kopírování dat z a do Oracle platí následující mapování. Další i
 | PŘÍZNAKY |Byte[]<br/>(podporuje se jenom v Oracle 10g a vyšších verzích) |
 | CHAR |Řetězec |
 | CLOB |Řetězec |
-| DATE |Datetime |
+| DATE |DateTime |
 | FLOAT |Decimal, String (Pokud přesnost > 28) |
 | INTEGER |Decimal, String (Pokud přesnost > 28) |
 | DLOUHOU |Řetězec |
@@ -353,7 +356,7 @@ Při kopírování dat z a do Oracle platí následující mapování. Další i
 | NVARCHAR2 |Řetězec |
 | ZÍSKÁNÍ |Byte[] |
 | ROWID |Řetězec |
-| TIMESTAMP |Datetime |
+| TIMESTAMP |DateTime |
 | TIMESTAMP WITH LOCAL TIME ZONE |Řetězec |
 | TIMESTAMP WITH TIME ZONE |Řetězec |
 | UNSIGNED INTEGER |Number |
@@ -364,5 +367,5 @@ Při kopírování dat z a do Oracle platí následující mapování. Další i
 > Datový typ INTERVAL v roce do měsíce a druhý den v sekundách se nepodporuje.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

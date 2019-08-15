@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 369be73e2884594171419a66b94db64184582e58
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9b0cbe8126a01a64e35b2fcfeca400aed5aef0cc
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813822"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952036"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 [Službu Azure Backup](backup-overview.md) můžete použít k zálohování místních počítačů a úloh a virtuálních počítačů Azure. Tento článek shrnuje nastavení a omezení podpory při zálohování virtuálních počítačů Azure pomocí Azure Backup.
@@ -157,8 +157,8 @@ Obnovení virtuálních počítačů připojených k zóně | Podporováno (pro 
 
 **Komponenta** | **Podpora**
 --- | ---
-Datové disky virtuálních počítačů Azure | Zálohujte virtuální počítač s 16 nebo méně datovými disky. <br/><br/> Podporuje velikosti disků až do 4 TB.
-Velikost datového disku | Jednotlivý disk může mít až 4095 GB.<br/><br/>Pokud se chcete zaregistrovat k privátní verzi Preview Azure Backup podpora velkých disků pro disky větší než 4 TB až 30TB, zapište zpátky do nás AskAzureBackupTeam@microsoft.com.  
+Datové disky virtuálních počítačů Azure | Zálohujte virtuální počítač s 16 nebo méně datovými disky. <br/><br/> Podporuje velikosti disků až do 4 TB.<br/><br/>Pokud si chcete zaregistrovat omezené veřejné verze Preview služby Azure Backup velkých disků pro disky větší než 4 TB a velikost až 30 TB, přečtěte si téma [Přehled zálohování virtuálních počítačů Azure](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Velikost datového disku | Jednotlivý disk může mít až 4095 GB.<br/><br/>Pokud se chcete zaregistrovat k omezené veřejné verzi Preview Azure Backup podpora velkých disků pro disky větší než 4 TB až 30TB velikosti, přečtěte si tento [článek](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 Typ úložiště | HDD úrovně Standard, SSD úrovně Standard SSD úrovně Premium.
 Spravované disky | Podporuje se.
 Šifrované disky | Podporuje se.<br/><br/> Virtuální počítače Azure s povoleným Azure Disk Encryption můžou být zálohované (s aplikací Azure AD nebo bez ní).<br/><br/> Šifrované virtuální počítače nelze obnovit na úrovni souboru nebo složky. Musíte obnovit celý virtuální počítač.<br/><br/> Můžete povolit šifrování u virtuálních počítačů, které už jsou chráněné pomocí Azure Backup.
