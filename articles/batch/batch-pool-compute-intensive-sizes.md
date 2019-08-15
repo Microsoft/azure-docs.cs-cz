@@ -140,8 +140,8 @@ Chcete-li spouštět aplikace CUDA ve fondu uzlů systému Linux NC, je nutné n
 Pokud chcete spouštět aplikace Windows MPI ve fondu uzlů virtuálních počítačů Azure H16r, musíte nakonfigurovat rozšíření HpcVmDrivers a nainstalovat [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi). Tady je ukázkový postup nasazení vlastní image Windows serveru 2016 s potřebnými ovladači a softwarem:
 
 1. Nasaďte virtuální počítač Azure H16r s Windows serverem 2016. Vytvořte například virtuální počítač v oblasti USA – západ. 
-2. Pomocí příkazu [](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances
-) Azure PowerShell z klientského počítače, který se připojuje k vašemu předplatnému Azure nebo pomocí Azure Cloud Shell, přidejte do virtuálního počítače rozšíření HpcVmDrivers. 
+2. Pomocí příkazu Azure Cloud Shell, přidejte do virtuálního počítače rozšíření HpcVmDrivers [Azure PowerShell z klientského počítače, který se připojuje k vašemu předplatnému Azure nebo pomocí Azure Cloud Shell](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances
+) přidejte do virtuálního počítače rozšíření HpcVmDrivers. 
 1. Vytvořte připojení ke vzdálené ploše virtuálního počítače.
 1. Stáhněte [instalační balíček](https://www.microsoft.com/download/details.aspx?id=57467) (MSMpiSetup. exe) pro nejnovější verzi Microsoft MPI a nainstalujte Microsoft MPI.
 1. Použijte postup vytvoření [snímku a vlastní image virtuálního počítače s Windows](batch-custom-images.md) pro službu Batch.

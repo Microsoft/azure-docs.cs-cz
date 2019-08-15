@@ -38,7 +38,7 @@ Hierarchie objektů je shrnuta v následujícím diagramu.
 
 ![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) v knihovně Azure.
+Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet reference](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) v knihovně Azure.
 
 ## <a name="set-up-and-register"></a>Nastavení a registrace
 
