@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: assafi
-ms.openlocfilehash: 4373cd8da8d302722c5edbe3ee716eec96e6419f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: deb8c742161d59c8926c1ec139978d15b891bd4a
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881053"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019474"
 ---
 # <a name="quickstart-text-analytics-client-library-for-net"></a>Rychlý start: Klientská knihovna pro analýzu textu pro .NET
 <a name="HOLTop"></a>
 
 Začněte s klientskou knihovnou Analýza textu pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. 
 
-Pomocí klientské knihovny Analýza textu pro Python proveďte následující:
+Pomocí klientské knihovny Analýza textu pro .NET proveďte tyto akce:
 
 * Analýza mínění
 * Rozpoznávání jazyka
@@ -97,10 +97,16 @@ V `Main` metodě aplikace vytvořte proměnné pro koncový bod a klíč Azure p
 static void Main(string[] args)
 {
     // replace this endpoint with the correct one for your Azure resource. 
-    string endpoint = $"https://westus2.api.cognitive.microsoft.com";
+    string endpoint = $"https://westus.api.cognitive.microsoft.com";
     //This sample assumes you have created an environment variable for your key
     string key = Environment.GetEnvironmentVariable("TEXT_ANALYTICS_SUBSCRIPTION_KEY");
-    ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials(key));
+
+    var credentials = new ApiKeyServiceClientCredentials(key);
+    TextAnalyticsClient client = new TextAnalyticsClient(credentials)
+    {
+        Endpoint = endpoint
+    };
+
     Console.OutputEncoding = System.Text.Encoding.UTF8;
     SentimentAnalysisExample(client);
     // languageDetectionExample(client);
@@ -159,10 +165,14 @@ class ApiKeyServiceClientCredentials : ServiceClientCredentials
 }
 ```
 
-`main()` V metodě vytvořte instanci klienta.
+`main()` V metodě vytvořte instanci klienta s klíčem a koncovým bodem.
 
 ```csharp
-ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials(key));
+var credentials = new ApiKeyServiceClientCredentials(key);
+TextAnalyticsClient client = new TextAnalyticsClient(credentials)
+{
+    Endpoint = endpoint
+};
 ```
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
@@ -172,7 +182,7 @@ Vytvořte novou funkci s názvem `SentimentAnalysisExample()` , která převezme
 Skóre, které je blízko 0, označuje negativní mínění, zatímco skóre, které je blíže 1, značí kladné mínění.
 
 ```csharp
-static void SentimentAnalysisExample(ITextAnalyticsClient client){
+static void SentimentAnalysisExample(TextAnalyticsClient client){
     var result = client.Sentiment("I had the best day of my life.", "en");
     Console.WriteLine($"Sentiment Score: {result.Score:0.00}");
 }
@@ -192,7 +202,7 @@ Vytvořte novou funkci s názvem `languageDetectionExample()` , která převezme
 > V některých případech může být obtížné nejednoznačnost jazyků na základě vstupu. Pomocí `countryHint` parametru můžete zadat kód země se dvěma písmeny. Rozhraní API ve výchozím nastavení používá "US" jako výchozí countryHint. Chcete-li toto chování odebrat, můžete tento parametr obnovit nastavením této hodnoty na prázdný řetězec `countryHint = ""` .
 
 ```csharp
-static void languageDetectionExample(ITextAnalyticsClient client){
+static void languageDetectionExample(TextAnalyticsClient client){
     var result = client.DetectLanguage("This is a document written in English.");
     Console.WriteLine($"Language: {result.DetectedLanguages[0].Name}");
 }
@@ -212,7 +222,7 @@ Language: English
 Vytvořte novou funkci s názvem `RecognizeEntitiesExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho funkce [Entities ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) . Iterujte výsledky. Vrácený objekt [EntitiesResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult?view=azure-dotnet) bude obsahovat seznam zjištěných entit v případě `Entities` `errorMessage` úspěchu a v případě potřeby. Pro každou zjištěnou entitu vytiskněte svůj typ, dílčí typ, Wikipedii název (pokud existují) a také umístění v původním textu.
 
 ```csharp
-static void entityRecognitionExample(ITextAnalyticsClient client){
+static void entityRecognitionExample(TextAnalyticsClient client){
 
     var result = client.Entities("Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800.");
     Console.WriteLine("Entities:");
@@ -279,7 +289,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

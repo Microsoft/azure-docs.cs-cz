@@ -1,6 +1,6 @@
 ---
-title: Nastavení registrace a přihlášení s účtem QQ pomocí Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zaregistrujte se a přihlaste se poskytují zákazníkům s účty QQ ve svých aplikacích pomocí služby Azure Active Directory B2C.
+title: Nastavte si registraci a přihlaste se pomocí účtu QQ pomocí Azure Active Directory B2C | Microsoft Docs
+description: Poskytněte zákazníkům registraci a přihlášení k účtům QQ ve vašich aplikacích pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,42 +10,42 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7744d99bb97d11b7702c8ee388cf27bc0cc087cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9679e3216184c0dc5b8dee241c30fc69d5423aeb
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508347"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963761"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s účtem QQ pomocí Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu QQ pomocí Azure Active Directory B2C
 
 > [!NOTE]
 > Tato funkce je ve verzi Preview.
 > 
 
-## <a name="create-a-qq-application"></a>Vytvoření aplikace QQ
+## <a name="create-a-qq-application"></a>Vytvoření aplikace v QQ
 
-Použít účet QQ jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, budete muset vytvořit aplikaci ve vašem tenantovi, který ho zastupuje. Pokud ještě nemáte účet QQ, získáte ji na [ https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033 ](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033).
+Pokud chcete v Azure Active Directory (Azure AD) B2C použít účet QQ jako zprostředkovatele identity, musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet QQ, můžete ho získat na adrese [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033).
 
-### <a name="register-for-the-qq-developer-program"></a>Zaregistrujte se na programu pro vývojáře QQ
+### <a name="register-for-the-qq-developer-program"></a>Zaregistrujte se do programu QQ Developer program
 
-1. Přihlaste se k [portál pro vývojáře QQ](http://open.qq.com) pomocí svých přihlašovacích údajů účtu QQ.
-2. Po přihlášení, přejděte na [ http://open.qq.com/reg ](http://open.qq.com/reg) sami zaregistrovat jako vývojář.
-3. Vyberte**个人**(samostatný Vývojář).
-4. Zadejte požadované informace a vyberte**下一步**(dál).
-5. Abyste prošli procesem ověření e-mailu. Budete muset počkat několik dní, po registraci jako vývojář schválení. 
+1. Přihlaste se k [portálu pro vývojáře QQ](http://open.qq.com) pomocí přihlašovacích údajů k účtu QQ.
+2. Až se přihlásíte, [https://open.qq.com/reg](https://open.qq.com/reg) pokračujte v registraci jako vývojář.
+3. Vyberte**个人**(individuální vývojář).
+4. Zadejte požadované informace a vyberte**下一步**(další krok).
+5. Dokončete proces ověření e-mailu. Až se zaregistrujete jako vývojář, budete muset počkat několik dní. 
 
 ### <a name="register-a-qq-application"></a>Registrace aplikace QQ
 
 1. Přejděte do [ (Nastavení)https://connect.qq.com/index.html](https://connect.qq.com/index.html) (Integrace a služby).
 2. Vyberte**应用管理**(Správa aplikací).
-5. Vyberte**创建应用**(Vytvoření aplikace) a zadejte požadované informace.
-7. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` v**授权回调域**(adresu URL zpětného volání). Například pokud vaše `tenant_name` je contoso, nastavte adresu URL bude `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+5. Vyberte**创建应用**(vytvořit aplikaci) a zadejte požadované informace.
+7. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` v**授权回调域**(adresa URL zpětného volání). Pokud máte `tenant_name` například contoso, nastavte adresu URL `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`na.
 8. Vyberte**创建应用**(vytvořit aplikaci).
-9. Na stránce potvrzení vyberte**应用管理**(Správa aplikací) se vrátíte na stránku řízení aplikací.
-10. Vyberte**查看**(Zobrazit) vedle aplikace, které jste vytvořili.
+9. Na stránce potvrzení vyberte**应用管理**(Správa aplikací) a vraťte se na stránku správy aplikací.
+10. U aplikace, kterou jste vytvořili, vyberte**查看**(Zobrazit).
 11. Vyberte**修改**(Upravit).
-12. Kopírovat **ID aplikace** a **klíče aplikace**. Oba tyto hodnoty pro přidání poskytovatele identity do svého tenanta potřebujete.
+12. Zkopírujte **ID aplikace** a **klíč App**. Obě tyto hodnoty budete potřebovat k přidání poskytovatele identity k vašemu tenantovi.
 
 ## <a name="configure-qq-as-an-identity-provider"></a>Konfigurace QQ jako zprostředkovatele identity
 
@@ -54,7 +54,7 @@ Použít účet QQ jako zprostředkovatele identity v Azure Active Directory (Az
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
 5. Zadejte **název**. Zadejte například *QQ*.
-6. Vyberte **typ zprostředkovatele identit**vyberte **QQ (Preview)** a klikněte na tlačítko **OK**.
-7. Vyberte **nastavit tohoto zprostředkovatele identity** a zadejte ID aplikace, které jste si poznamenali dříve, jako **ID klienta** a zadejte klíč aplikace, který jste si poznamenali jako **tajný kód klienta** z QQ aplikace, která jste vytvořili dříve.
-8. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **vytvořit** uložte konfiguraci QQ.
+6. Vyberte **typ zprostředkovatele identity**, vyberte **QQ (Preview)** a klikněte na **OK**.
+7. Vyberte **nastavit tohoto zprostředkovatele identity** a zadejte ID aplikace, které jste si dříve poznamenali jako **ID klienta** , a zadejte klíč aplikace, který jste si poznamenali jako **tajný klíč klienta** aplikace QQ, kterou jste vytvořili dříve.
+8. Klikněte na **OK** a potom kliknutím na **vytvořit** uložte konfiguraci QQ.
 

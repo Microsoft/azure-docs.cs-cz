@@ -1,48 +1,48 @@
 ---
-title: Konfigurace aplikací pro ASP.NET Core – služba Azure App Service | Dokumentace Microsoftu
-description: Další informace o konfiguraci aplikace ASP.NET Core pro práci ve službě Azure App Service
+title: Konfigurace aplikací ASP.NET Core – Azure App Service | Microsoft Docs
+description: Naučte se konfigurovat aplikace ASP.NET Core pro práci v Azure App Service
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: jpconnock
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 08/13/2019
 ms.author: cephalin
-ms.openlocfilehash: f2781e3cc2433f73ba7ff33e5c452e29de746adf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b05120148d3b82829c465effbcdc948da950aaf0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956198"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990265"
 ---
-# <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurace s Linuxem aplikace ASP.NET Core pro službu Azure App Service
+# <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurace aplikace ASP.NET Core pro Linux pro Azure App Service
 
-Aplikace ASP.NET Core se musí nasadit jako kompilované binární soubory. Publikování nástroje Visual Studio sestaví řešení a pak nasadí kompilované binární soubory přímo, že modul pro nasazení služby App Service nejprve nasadí úložiště kódu a následně zkompiluje binární soubory.
+ASP.NET Core aplikace musí být nasazeny jako zkompilované binární soubory. Nástroj pro publikování sady Visual Studio sestaví řešení a potom nasadí zkompilované binární soubory přímo, zatímco modul nasazení App Service nasadí úložiště kódu jako první a potom zkompiluje binární soubory.
 
-Tato příručka obsahuje klíčové koncepty a pokyny k ASP.NET Core, vývojáře, kteří používají předdefinované kontejneru Linuxu ve službě App Service. Pokud jste nikdy použili službu Azure App Service, postupujte [rychlý start ASP.NET Core](quickstart-dotnetcore.md) a [ASP.NET Core s kurz k SQL Database](tutorial-dotnetcore-sqldb-app.md) první.
+Tato příručka poskytuje klíčové koncepty a pokyny pro ASP.NET Core vývojářů, kteří používají integrovaný kontejner Linux v App Service. Pokud jste Azure App Service nikdy nepoužili, postupujte jako první v kurzu [ASP.NET Core rychlý Start](quickstart-dotnetcore.md) a [ASP.NET Core SQL Database](tutorial-dotnetcore-sqldb-app.md) .
 
 ## <a name="show-net-core-version"></a>Zobrazit verzi .NET Core
 
-Chcete-li zobrazit aktuální verzi .NET Core, spusťte následující příkaz [Cloud Shell](https://shell.azure.com):
+Chcete-li zobrazit aktuální verzi rozhraní .NET Core, spusťte následující příkaz v [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-Chcete-li zobrazit všechny podporované verze rozhraní .NET Core, spusťte následující příkaz [Cloud Shell](https://shell.azure.com):
+Pokud chcete zobrazit všechny podporované verze .NET Core, spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep DOTNETCORE
 ```
 
-## <a name="set-net-core-version"></a>Verze sady .NET Core
+## <a name="set-net-core-version"></a>Nastavit verzi .NET Core
 
-Spuštěním následujícího příkazu [Cloud Shell](https://shell.azure.com) nastavit verzi rozhraní .NET Core 2.1:
+Spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com) nastavte verzi .NET Core na 2,1:
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
@@ -50,35 +50,52 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
-Ve službě App Service můžete [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Potom se můžete dostat pomocí standardní vzor ASP.NET:
+V App Service můžete [nastavit nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat v libovolné třídě pomocí vzoru pro vkládání závislostí Standard ASP.NET Core:
 
 ```csharp
 include Microsoft.Extensions.Configuration;
-// retrieve App Service app setting
-System.Configuration.ConfigurationManager.AppSettings["MySetting"]
-// retrieve App Service connection string
-Configuration.GetConnectionString("MyDbConnection")
+
+namespace SomeNamespace 
+{
+    public class SomeClass
+    {
+        private IConfiguration _configuration;
+    
+        public SomeClass(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+    
+        public SomeMethod()
+        {
+            // retrieve App Service app setting
+            var myAppSetting = _configuration["MySetting"];
+            // retrieve App Service connection string
+            var myConnString = _configuration.GetConnectionString("MyDbConnection");
+        }
+    }
+}
 ```
 
-Pokud nakonfigurujete nastavení aplikace se stejným názvem ve službě App Service a v *Web.config*, hodnota služby App Service má přednost před hodnotu Web.config. Hodnota Web.config umožňuje ladit aplikaci místně, ale hodnota služby App Service umožňuje spuštění aplikace v produktu s produkčním prostředí. Připojovací řetězce fungovat stejným způsobem. Tímto způsobem můžete zachovat vaše tajných klíčů aplikací mimo váš kód úložiště a přístup k příslušné hodnoty beze změny kódu.
+Pokud nakonfigurujete nastavení aplikace se stejným názvem v App Service a v souboru *appSettings. JSON*, má například hodnota App Service přednost před hodnotou *appSettings. JSON* . Lokální hodnota *appSettings. JSON* vám umožní místní ladění aplikace, ale hodnota App Service umožňuje spustit aplikaci v produktu s nastavením produkčního prostředí. Připojovací řetězce fungují stejným způsobem. Tímto způsobem můžete zachovat tajné klíče aplikace mimo vaše úložiště kódu a přistupovat k odpovídajícím hodnotám beze změny kódu.
 
-## <a name="get-detailed-exceptions-page"></a>Zobrazí podrobné výjimky
+## <a name="get-detailed-exceptions-page"></a>Získat podrobné stránky výjimek
 
-Aplikace ASP.NET v ladicím programu sady Visual Studio vygeneruje výjimku, prohlížeč zobrazí stránku podrobné výjimky, ale ve službě App Service se tuto stránku nahrazuje obecný **HTTP 500** chyba nebo **k chybě došlo zpracování vaší žádosti.** zpráva. Chcete-li zobrazit podrobné výjimky stránku ve službě App Service, přidejte `ASPNETCORE_ENVIRONMENT` aplikace spuštěním následujícího příkazu v nastavení aplikace nastavte <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+Když aplikace ASP.NET vygeneruje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradila Obecná chyba **HTTP 500** nebo při **zpracování vaší žádosti došlo k chybě.** Zpráva. Pokud chcete zobrazit stránku podrobností o výjimce v App Service, `ASPNETCORE_ENVIRONMENT` přidejte do aplikace nastavení aplikace spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
 ```
 
-## <a name="detect-https-session"></a>Zjistit relace HTTPS
+## <a name="detect-https-session"></a>Zjistit relaci HTTPS
 
-Ve službě App Service [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) se odehrává na nástroje pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS kontaktovat vaši aplikaci jako nešifrované požadavky HTTP. Pokud vaše aplikace logiky potřebuje vědět, pokud uživatel požaduje se nebo není zašifrované, nakonfigurujte záhlaví Middleware předané v *Startup.cs*:
+V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje zjistit, jestli jsou požadavky uživatele zašifrované, nebo ne, nakonfigurujte v *Startup.cs*middleware pro předávané hlavičky:
 
-- Nakonfigurujte middleware s [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) předávat `X-Forwarded-For` a `X-Forwarded-Proto` záhlaví v `Startup.ConfigureServices`.
-- Přidáte rozsahy privátních IP adres do známé sítě tak, aby mohli spolehnout, middleware nástroje pro vyrovnávání zatížení služby App Service.
-- Vyvolat [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) metoda `Startup.Configure` před voláním metody jiné middlewares.
+- Nakonfigurujte middleware pomocí [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) k `X-Forwarded-For` přeposílání `X-Forwarded-Proto` hlaviček a `Startup.ConfigureServices`v.
+- Přidejte do známých sítí rozsahy privátních IP adres, aby middleware mohl důvěřovat nástroji pro vyrovnávání zatížení App Service.
+- Vyvolat metodu [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) v v `Startup.Configure` před voláním jiných middlewarů.
 
-Sestavení všechny tři prvky, váš kód bude vypadat jako v následujícím příkladu:
+Vložení všech tří prvků dohromady, váš kód vypadá jako v následujícím příkladu:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -107,24 +124,24 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Další informace najdete v tématu [konfigurace ASP.NET Core práci se servery proxy a nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
 
-## <a name="deploy-multi-project-solutions"></a>Nasazení řešení vícenásobného projektu
+## <a name="deploy-multi-project-solutions"></a>Nasazení řešení s více projekty
 
-Při nasazení je úložiště na ASP.NET do modulu nasazení *.csproj* souboru v kořenovém adresáři modulu nasadí projekt. Když nasadíte úložiště ASP.NET pomocí *.sln* souboru v kořenovém adresáři, modul se vybere první web nebo projekt webové aplikace, které nalezne jako aplikace služby App Service. Je možné pro tento motor nechcete vyberte projekt, který chcete.
+Při nasazení úložiště ASP.NET do modulu nasazení se souborem *. csproj* v kořenovém adresáři modul nasadí projekt. Když nasadíte úložiště ASP.NET se souborem *. sln* v kořenovém adresáři, modul vybere první web nebo projekt webové aplikace, který se najde jako aplikace App Service. Je možné, že stroj nechce vybrat požadovaný projekt.
 
-Pokud chcete nasadit řešení pro více projektů, můžete zadat projekt pro použití ve službě App Service dvěma různými způsoby:
+Chcete-li nasadit řešení pro více projektů, můžete určit projekt, který se má použít v App Service dvěma různými způsoby:
 
-### <a name="using-deployment-file"></a>Soubor .deployment pomocí
+### <a name="using-deployment-file"></a>Použití souboru. Deployment
 
-Přidat *.deployment* do kořenového adresáře úložiště a přidejte následující kód:
+Přidejte soubor *. Deployment* do kořenového adresáře úložiště a přidejte následující kód:
 
 ```
 [config]
 project = <project-name>/<project-name>.csproj
 ```
 
-### <a name="using-app-settings"></a>Pomocí nastavení aplikace
+### <a name="using-app-settings"></a>Použití nastavení aplikace
 
-V <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>, přidání nastavení aplikace do aplikace služby App Service spuštěním následujícího příkazu rozhraní příkazového řádku. Nahraďte  *\<název aplikace >* ,  *\<resource-group-name >* , a  *\<název projektu >* příslušnými hodnotami .
+V <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>přidejte do aplikace App Service nastavení aplikace spuštěním následujícího příkazu CLI. Nahraďte  *\<> název aplikace*,  *\<název skupiny prostředků >* a  *\<> název projektu* příslušnými hodnotami.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -138,10 +155,10 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: Aplikace ASP.NET Core s SQL Database](tutorial-dotnetcore-sqldb-app.md)
+> [Kurz: ASP.NET Core aplikace s SQL Database](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [App Service Linuxu – nejčastější dotazy](app-service-linux-faq.md)
+> [Nejčastější dotazy k App Service Linux](app-service-linux-faq.md)

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 301ad4f940e6bd4eedb3a4df64e4740d29effe03
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5836dda186c7bd9baeafa193052b0b75d63e291b
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406226"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019605"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Správa clusterů HDInsight pomocí REST API Apache Ambari
 
@@ -42,6 +42,8 @@ Naučte se používat REST API Apache Ambari ke správě a monitorování cluste
 ## <a name="authentication"></a>Ověřování
 
 Připojení k Ambari v HDInsight vyžaduje protokol HTTPS. Použijte název účtu správce (výchozí nastavení je **admin**) a heslo, které jste zadali při vytváření clusteru.
+
+V případě balíček zabezpečení podniku clusterů místo `admin`použijte plně kvalifikované uživatelské jméno, jako `username@domain.onmicrosoft.com`je.
 
 ## <a name="examples"></a>Příklady
 

@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 series systémové požadavky | Dokumentace Microsoftu
-description: Popisuje softwaru, sítě a požadavky na vysokou dostupnost a osvědčené postupy pro řešení Microsoft Azure StorSimple.
+title: Požadavky na systém řady StorSimple 8000 | Microsoft Docs
+description: Popisuje požadavky na software, sítě a vysokou dostupnost a osvědčené postupy pro řešení Microsoft Azure StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,120 +14,122 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: f05e3e85d36ffc23a193a6771a0271c71b2f8544
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631902"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963323"
 ---
-# <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Software řady StorSimple 8000, vysokou dostupnost a požadavky na síť
+# <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 series software, vysoká dostupnost a síťové požadavky
 
 ## <a name="overview"></a>Přehled
 
-Vítá vás Microsoft Azure StorSimple. Tento článek popisuje důležité systémové požadavky a osvědčené postupy pro zařízení StorSimple a úložiště klientům přístup k zařízení. Doporučujeme, abyste si informace o pečlivě před nasazení systému StorSimple a pak zpátky na ni odkazovat podle potřeby během nasazení a následná operace.
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-Systémové požadavky:
+Vítá vás Microsoft Azure StorSimple. Tento článek popisuje důležité požadavky na systém a osvědčené postupy pro zařízení StorSimple a pro klienty úložiště, kteří přistupují k zařízení. Doporučujeme, abyste pečlivě prostudovali informace před nasazením systému StorSimple a pak se na něj v průběhu nasazení a následné operace znovu odkazovali.
 
-* **Požadavky na software pro klienty úložiště** -popisuje podporované operační systémy a veškeré další požadavky pro tyto operační systémy.
-* **Požadavky na síť pro zařízení StorSimple** – poskytuje informace o portech, které musí být otevřené v bráně firewall povolit pro přenosy iSCSI, cloud nebo správy.
-* **Požadavky na vysokou dostupnost pro StorSimple** – popisuje požadavky na vysokou dostupnost a osvědčených postupech pro StorSimple zařízení a hostitelského počítače.
+Požadavky na systém zahrnují:
+
+* **Požadavky na software pro klienty úložiště** – popisuje podporované operační systémy a všechny další požadavky pro tyto operační systémy.
+* **Požadavky na síť pro zařízení StorSimple** – poskytuje informace o portech, které je potřeba v bráně firewall otevřít, aby se povolily přenosy z iSCSI, cloudu nebo správy.
+* **Požadavky na vysokou dostupnost pro StorSimple** – popisuje požadavky na vysokou dostupnost a osvědčené postupy pro vaše zařízení StorSimple a hostitelský počítač.
 
 ## <a name="software-requirements-for-storage-clients"></a>Požadavky na software pro klienty úložiště
 
-Následující softwarové požadavky jsou pro klienty úložiště, které přistupují k zařízení StorSimple.
+Následující požadavky na software jsou pro klienty úložiště, kteří přistupují k vašemu zařízení StorSimple.
 
-| Podporované operační systémy | Požadovaná verze | Další požadavky a poznámky |
+| Podporované operační systémy | Vyžaduje se verze | Další požadavky/poznámky |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |ISCSI svazky zařízení StorSimple se podporují pro použití na pouze následující typy disků Windows:<ul><li>Jednoduchý svazek na základním disku</li><li>Jednoduchých a zrcadlených svazek na dynamickém disku</li></ul>Jsou podporovány pouze software iniciátory iSCSI nativně v operačním systému k dispozici. Nepodporují se iniciátory iSCSI hardwaru.<br></br>Pokud používáte iSCSI svazek StorSimple, jsou podporovány systému Windows Server 2012 a 2016 dynamické zajišťování a funkce ODX.<br><br>StorSimple můžete vytvářet dynamicky zajištěné a zcela zřizované svazky. Ho nelze vytvářet částečně zřizované svazky.<br><br>Přeformátování dynamicky zajištěné svazku může trvat dlouhou dobu. Doporučujeme odstranění svazku a pak vytvořit nový místo přeformátování. Pokud stále však preferovat u vydavatelských svazku:<ul><li>Spusťte následující příkaz před přeformátovat, aby se vyhnuli prodlevám recyklace místa: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Po dokončení formátování opětovné povolení recyklace místa použijte následující příkaz:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Použít opravu hotfix systému Windows Server 2012, jak je popsáno v [KB 2878635](https://support.microsoft.com/kb/2870270) do počítače serveru systému Windows.</li></ul></li></ul></ul> Pokud konfigurujete StorSimple Snapshot Manageru nebo StorSimple Adapter pro SharePoint, přejděte na [softwarové požadavky pro volitelné součásti](#software-requirements-for-optional-components). |
-| VMware ESX |5.5 a 6.0 |Podporované s VMware vSphere jako klient iSCSI. VAAI bloku funkce je podporovaná s VMware vSphere na zařízení StorSimple. |
-| Linux RHEL nebo CentOS |5, 6 a 7 |Podpora pro Linux iSCSI klienty s verzemi iniciátoru open iSCSI 5, 6 a 7. |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple svazky iSCSI se podporují jenom na následujících typech disků Windows:<ul><li>Jednoduchý svazek na základním disku</li><li>Jednoduchý a zrcadlený svazek na dynamickém disku</li></ul>Podporují se jenom ty iniciátory iSCSI softwaru, které jsou v operačním systému nativně přítomné. Nejsou podporovány hardwarové iniciátory iSCSI.<br></br>Pokud používáte svazek iSCSI StorSimple, podporují se dynamické zřizování a funkce ODX pro Windows Server 2012 a 2016.<br><br>StorSimple může vytvářet dynamicky zřízené a plně zřízené svazky. Nemůže vytvořit částečně zřízené svazky.<br><br>Přeformátování dynamicky zajištěného svazku může trvat dlouhou dobu. Doporučujeme odstranit svazek a pak vytvořit nové místo přeformátování. Pokud však stále chcete přeformátovat svazek:<ul><li>Než budete přeformátovat, spusťte následující příkaz, aby nedocházelo ke zpožděním při zpětnému získávání místa: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Až se formátování dokončí, pomocí následujícího příkazu znovu povolte opětovné získávání místa:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Použijte Windows Server 2012 hotfix, jak je popsáno v [článku KB 2878635](https://support.microsoft.com/kb/2870270) pro počítač se systémem Windows Server.</li></ul></li></ul></ul> Pokud konfigurujete StorSimple Snapshot Manager nebo adaptér StorSimple pro službu SharePoint, pokračujte na [požadavky na software u volitelných součástí](#software-requirements-for-optional-components). |
+| VMware ESX |5,5 a 6,0 |Podporováno u VMware vSphere jako klienta iSCSI. Funkce VAAI-Block je podporovaná u VMware vSphere na zařízeních StorSimple. |
+| Linux RHEL/CentOS |5, 6 a 7 |Podpora klientů iSCSI pro Linux s verzemi verze 5, 6 a 7 pro Linux. |
 | Linux |SUSE Linux 11 | |
 
 > [!NOTE]
-> Storsimple se aktuálně nepodporuje IBM AIX.
+> IBM AIX se v tuto chvíli v StorSimple nepodporuje.
 
 
 ## <a name="software-requirements-for-optional-components"></a>Požadavky na software pro volitelné součásti
 
-Jsou následující softwarové požadavky pro volitelné součásti StorSimple (Snapshot Manageru zařízení StorSimple a StorSimple Adapter pro SharePoint).
+Následující požadavky na software jsou pro volitelné součásti StorSimple (StorSimple Snapshot Manager a adaptér StorSimple pro SharePoint).
 
-| Komponenta | Hostitelskou platformu | Další požadavky a poznámky |
+| Komponenta | Platforma hostitele | Další požadavky/poznámky |
 | --- | --- | --- |
-| StorSimple Snapshot Manager |Windows Server 2008 R2 SP1, 2012, 2012 R2 |Použití nástroje Snapshot Manageru zařízení StorSimple ve Windows serveru se vyžaduje pro zálohování a obnovení zrcadlené dynamických disků a pro jakékoli zálohy konzistentní s aplikací.<br> StorSimple Snapshot Manageru je podporován pouze v systému Windows Server 2008 R2 SP1 (64-bit), Windows Server 2012 R2 a Windows Server 2012.<ul><li>Pokud používáte okno Server 2012, je nutné nainstalovat rozhraní .NET 3.5 – 4.5 před instalací StorSimple Snapshot Manageru.</li><li>Pokud používáte Windows Server 2008 R2 SP1, je nutné nainstalovat Windows Management Framework 3.0 před instalací StorSimple Snapshot Manageru.</li></ul> |
-| StorSimple Adapter pro SharePoint |Windows Server 2008 R2 SP1, 2012, 2012 R2 |<ul><li>StorSimple Adapter pro SharePoint je podporován pouze na SharePoint 2010 a SharePoint 2013.</li><li>RBS vyžaduje SQL Server Enterprise Edition, verze 2008 R2 nebo 2012.</li></ul> |
+| StorSimple Snapshot Manager |Windows Server 2008 R2 SP1, 2012, 2012 R2 |Pro zálohování a obnovení zrcadlených dynamických disků a pro všechny zálohy konzistentní s aplikacemi se vyžaduje použití Snapshot Manager StorSimple na Windows serveru.<br> StorSimple Snapshot Manager se podporuje jenom v systému Windows Server 2008 R2 SP1 (64), Windows Server 2012 R2 a Windows Server 2012.<ul><li>Pokud používáte systém Windows Server 2012, je nutné před instalací StorSimple Snapshot Manager nainstalovat rozhraní .NET 3.5 – 4.5.</li><li>Pokud používáte systém Windows Server 2008 R2 SP1, je nutné před instalací StorSimple Snapshot Manager nainstalovat rozhraní Windows Management Framework 3,0.</li></ul> |
+| StorSimple Adapter pro SharePoint |Windows Server 2008 R2 SP1, 2012, 2012 R2 |<ul><li>Adaptér StorSimple pro SharePoint je podporován pouze na SharePointu 2010 a SharePoint 2013.</li><li>KÓD RBS vyžaduje edici SQL Server Enterprise, verze 2008 R2 nebo 2012.</li></ul> |
 
 ## <a name="networking-requirements-for-your-storsimple-device"></a>Požadavky na síť pro zařízení StorSimple
 
-Zařízení StorSimple je zařízení uzamknuté. Porty je však nutné otevřít v bráně firewall povolit pro iSCSI, cloud a správy provozu. Následující tabulka uvádí porty, které je potřeba otevřít v bráně firewall. V této tabulce *v* nebo *příchozí* odkazuje na směru, ze kterého příchozí požadavky klientů, přístup k vašemu zařízení. *Navýšení kapacity* nebo *odchozí* odkazuje na směru, ve kterém zařízení StorSimple, odesílá data externě, nad rámec nasazení: pro příklad, odchozí k Internetu.
+Zařízení StorSimple je uzamčené. Porty ale musí být v bráně firewall otevřené, aby bylo možné provozovat přenosy z iSCSI, cloudu a správy. Následující tabulka uvádí porty, které je třeba otevřít v bráně firewall. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. Výstupní nebo *odchozí* odkazuje na směr, ve kterém vaše zařízení StorSimple odesílá data externě, mimo nasazení: například odchozí na Internet.
 
-| Číslo portu<sup>1,2</sup> | Snížení nebo navýšení kapacity | Rozsah portů | Požaduje se | Poznámky |
+| Číslo portu.<sup>1, 2</sup> | V nebo ven | Rozsah portů | Požadováno | Poznámky |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |navýšení kapacity |WAN |Ne |<ul><li>Odchozí port se používá pro přístup k Internetu pro načtení aktualizací.</li><li>Odchozí webový proxy server je konfigurovatelná uživatelem.</li><li>Povolit aktualizace systému, musí být tento port taky otevřený pro pevné IP adresy kontroleru.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |navýšení kapacity |WAN |Ano |<ul><li>Odchozí port se používá pro přístup k datům v cloudu.</li><li>Odchozí webový proxy server je konfigurovatelná uživatelem.</li><li>Povolit aktualizace systému, musí být tento port taky otevřený pro pevné IP adresy kontroleru.</li><li>Tento port se také používá na obou řadičích pro uvolnění paměti.</li></ul> |
-| UDP 53 (DNS) |navýšení kapacity |WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová DNS. |
-| UDP 123 (NTP) |navýšení kapacity |WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová NTP. |
-| TCP 9354 |navýšení kapacity |WAN |Ano |Odchozí port používá ke komunikaci se službou StorSimple Device Manager zařízení StorSimple. |
+| TCP 80 (HTTP)<sup>3</sup> |Výstup |Síť WAN |Ne |<ul><li>Odchozí port se používá pro přístup k Internetu k načtení aktualizací.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |Výstup |Síť WAN |Ano |<ul><li>Odchozí port se používá pro přístup k datům v cloudu.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li><li>Tento port se používá také na obou řadičích pro uvolňování paměti.</li></ul> |
+| UDP 53 (DNS) |Výstup |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server DNS. |
+| UDP 123 (NTP) |Výstup |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server NTP. |
+| TCP 9354 |Výstup |Síť WAN |Ano |Odchozí port používá zařízení StorSimple ke komunikaci se službou StorSimple Device Manager. |
 | 3260 (iSCSI) |V |LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
-| 5985 |V |LAN |Ne |Příchozí port slouží ke komunikaci se zařízením StorSimple ve StorSimple Snapshot Manageru.<br>Tento port se používá také při vzdálené připojení k prostředí Windows PowerShell pro StorSimple přes protokol HTTP. |
-| 5986 |V |LAN |Ne |Tento port se používá při vzdálené připojení k prostředí Windows PowerShell pro StorSimple přes protokol HTTPS. |
+| 5985 |V |LAN |Ne |Port pro příchozí spojení StorSimple Snapshot Manager slouží ke komunikaci se zařízením StorSimple.<br>Tento port se používá také při vzdáleném připojení k Windows PowerShell pro StorSimple přes protokol HTTP. |
+| 5986 |V |LAN |Ne |Tento port se používá, když se vzdáleně připojujete k Windows PowerShell pro StorSimple přes protokol HTTPS. |
 
-<sup>1</sup> žádné příchozí porty je potřeba otevřít na veřejném Internetu.
+<sup>1</sup> na veřejném Internetu není třeba otevřít žádné příchozí porty.
 
-<sup>2</sup> Pokud více portů provést konfiguraci brány, odchozí provoz směrovaný pořadí se určí podle pořadí port směrování podle [Port směrování](#routing-metric)níže.
+<sup>2</sup> Pokud konfigurace brány přenáší několik portů, určí se pořadí odchozího přenosu směrování na základě pořadí směrování portů popsaného v tématu [směrování portů](#routing-metric)níže.
 
-<sup>3</sup> pevné IP adresy na vašem zařízení StorSimple kontroleru musí být směrovatelné a schopné připojení k Internetu přímo nebo prostřednictvím proxy serveru nakonfigurovaný web. Pevné IP adresy se používají k doručování aktualizací do zařízení a pro uvolňování paměti. Pokud řadiče zařízení nemůže připojit k Internetu prostřednictvím pevné IP adresy, nebude moci aktualizace zařízení StorSimple a uvolňování paměti nebude správně fungovat.
+<sup>3</sup> pevné IP adresy řadiče na zařízení StorSimple musí být směrovatelné a schopné se připojit k Internetu přímo nebo prostřednictvím nakonfigurovaného webového proxy serveru. Pevné IP adresy se používají pro obsluhu aktualizací zařízení a pro uvolňování paměti. Pokud se řadiče zařízení nemůžou připojit k internetu přes pevné IP adresy, nebudete moct aktualizovat zařízení StorSimple a uvolňování paměti nebude správně fungovat.
 
 > [!IMPORTANT]
-> Ujistěte se, že brána firewall neupravuje nebo dešifrovat veškerý provoz protokolu SSL mezi zařízení StorSimple a Azure.
+> Ujistěte se, že brána firewall nemění ani nešifruje žádný přenos SSL mezi zařízením StorSimple a Azure.
 
 
 ### <a name="url-patterns-for-firewall-rules"></a>Vzory adres URL pro pravidla brány firewall
 
-Správci sítě můžou často konfigurace pravidla brány firewall na Upřesnit na základě vzory adres URL pro filtrování příchozího a odchozího provozu. Zařízení StorSimple a služby Správce zařízení StorSimple závisí na jiné aplikace od Microsoftu, jako je Azure Service Bus, Azure Active Directory Access Control, účty úložiště a serverům Microsoft Update. Vzory adres URL, které jsou přidružené k těmto aplikacím je možné nakonfigurovat pravidla brány firewall. Je důležité pochopit, že můžete změnit vzory adres URL, které jsou přidružené k těmto aplikacím. To zase vyžaduje správce sítě, monitorovat a aktualizovat pravidla brány firewall pro StorSimple jako a v případě potřeby.
+Správci sítě mohou často konfigurovat Rozšířená pravidla brány firewall na základě vzorů adres URL pro filtrování příchozího a odchozího provozu. Vaše zařízení StorSimple a Služba StorSimple Device Manager jsou závislé na dalších aplikacích Microsoftu, jako jsou Azure Service Bus, Azure Active Directory Access Control, účty úložiště a Microsoft Update servery. Ke konfiguraci pravidel brány firewall lze použít vzory adres URL přidružené k těmto aplikacím. Je důležité pochopit, že se vzory adres URL přidružené k těmto aplikacím můžou změnit. To zase vyžaduje, aby správce sítě sledoval a aktualizoval pravidla brány firewall pro StorSimple jako a v případě potřeby.
 
-Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, podle StorSimple liberally pevné IP adresy, ve většině případů. Ale můžete použít následující informace pro nastavení pravidla brány firewall na pokročilé, které budete potřebovat pro vytvoření zabezpečeného prostředí.
+Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy na základě pevných IP adres StorSimple, a to ve většině případů. Pomocí níže uvedených informací ale můžete nastavit Rozšířená pravidla brány firewall, která jsou potřeba k vytváření zabezpečených prostředí.
 
 > [!NOTE]
-> Zařízení (zdroj) IP adresy musí být vždy nastavená na všechny povolené síťové rozhraní. Cílové IP adresy musí být nastavená na [rozsahy IP adres datacentra Azure](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653).
+> Zařízení (zdrojové) IP adresy musí být vždycky nastavená na všechna povolená síťová rozhraní. Cílové IP adresy by měly být nastavené na [rozsahy IP adres datacentra Azure](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653).
 
 
-#### <a name="url-patterns-for-azure-portal"></a>Vzory adres URL pro web Azure portal
+#### <a name="url-patterns-for-azure-portal"></a>Vzory adres URL pro Azure Portal
 
-| Vzor adresy URL | Komponenta nebo funkce | IP adresy zařízení |
+| Vzor adresy URL | Součást/funkce | IP adresy zařízení |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací službu |Povolenou podporu cloudu síťová rozhraní |
-| `https://*.backup.windowsazure.com` |Registrace zařízení |Pouze DATA 0 |
-| `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odvolání certifikátu |Povolenou podporu cloudu síťová rozhraní |
-| `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Účty úložiště Azure a monitorování |Povolenou podporu cloudu síťová rozhraní |
-| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Servery Microsoft Update<br> |Pevné IP adresy jenom kontroleru |
-| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Pevné IP adresy jenom kontroleru |
-| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Balíček pro podporu. |Povolenou podporu cloudu síťová rozhraní |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací služba |Síťová rozhraní s povoleným cloudem |
+| `https://*.backup.windowsazure.com` |Registrace zařízení |Jenom DATA 0 |
+| `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odvolání certifikátu |Síťová rozhraní s povoleným cloudem |
+| `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Účty a monitorování Azure Storage |Síťová rozhraní s povoleným cloudem |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update servery<br> |Pouze pevné IP adresy řadiče |
+| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Pouze pevné IP adresy řadiče |
+| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Balíček pro podporu |Síťová rozhraní s povoleným cloudem |
 
 #### <a name="url-patterns-for-azure-government-portal"></a>Vzory adres URL pro portál Azure Government
 
-| Vzor adresy URL | Komponenta nebo funkce | IP adresy zařízení |
+| Vzor adresy URL | Součást/funkce | IP adresy zařízení |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací službu |Povolenou podporu cloudu síťová rozhraní |
-| `https://*.backup.windowsazure.us` |Registrace zařízení |Pouze DATA 0 |
-| `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odvolání certifikátu |Povolenou podporu cloudu síťová rozhraní |
-| `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Účty úložiště Azure a monitorování |Povolenou podporu cloudu síťová rozhraní |
-| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Servery Microsoft Update<br> |Pevné IP adresy jenom kontroleru |
-| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Pevné IP adresy jenom kontroleru |
-| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Balíček pro podporu. |Povolenou podporu cloudu síťová rozhraní |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací služba |Síťová rozhraní s povoleným cloudem |
+| `https://*.backup.windowsazure.us` |Registrace zařízení |Jenom DATA 0 |
+| `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odvolání certifikátu |Síťová rozhraní s povoleným cloudem |
+| `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Účty a monitorování Azure Storage |Síťová rozhraní s povoleným cloudem |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update servery<br> |Pouze pevné IP adresy řadiče |
+| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Pouze pevné IP adresy řadiče |
+| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Balíček pro podporu |Síťová rozhraní s povoleným cloudem |
 
-### <a name="routing-metric"></a>Metriky
+### <a name="routing-metric"></a>Metrika směrování
 
-Metriky směrování je přidružen rozhraní a brána, který směrovat data do vybraných sítích. Metriky se používá směrovací protokol k výpočtu nejlepší cestu do určitého cíle, pokud zjistí, že existuje více cest do stejného cíle. Nižší metriky, tím vyšší priorita.
+Metrika směrování je přidružená k rozhraním a bráně, která směruje data do zadaných sítí. Metriky směrování používá směrovací protokol k výpočtu nejlepší cesty k danému cíli, pokud se zjistí, že existuje více cest ke stejnému cíli. Čím nižší je metrika směrování, tím vyšší je priorita.
 
-V rámci StorSimple Pokud více síťových rozhraní a brány jsou nakonfigurované k provozu kanál, směrování metriky přijde do hry pro určení relativního pořadí, ve kterém se získat rozhraní používat. Směrování metriky nelze změnit tímto uživatelem. Můžete ale použít `Get-HcsRoutingTable` rutiny vytiskne směrovací tabulka (a metriky) na zařízení StorSimple. Další informace o rutině Get-HcsRoutingTable v [nasazení řešení potíží s StorSimple](storsimple-troubleshoot-deployment.md).
+Pokud je v kontextu StorSimple více síťových rozhraní a bran pro přenos provozu, budou metriky směrování odesílány do hry, aby určily relativní pořadí, ve kterém se rozhraní budou používat. Metriky směrování nemůže změnit uživatel. K vytištění směrovací tabulky `Get-HcsRoutingTable` (a metrik) na zařízení StorSimple ale můžete použít rutinu. Další informace o rutině Get-HcsRoutingTable najdete v [řešení potíží s nasazením StorSimple](storsimple-troubleshoot-deployment.md).
 
-Takto lze vysvětlit směrování metriky algoritmus použitý pro aktualizaci Update 2 a novějších verzích.
+Algoritmus metriky směrování použitý pro aktualizaci 2 a novější verze se dá vysvětlit následujícím způsobem.
 
-* Sada předdefinovaných hodnot se přiřadily síťová rozhraní.
-* Vezměte v úvahu tabulku příkladu níže se hodnoty přiřazené k různým síťovým rozhraním, pokud je cloud – povolen nebo cloudových – zakázáno, ale s nakonfigurovanou bránu. Mějte na paměti, že hodnoty přiřazené Zde jsou pouze ukázkové hodnoty.
+* K síťovým rozhraním byla přiřazena sada předem určených hodnot.
+* Vezměte níže uvedenou ukázkovou tabulku s hodnotami přiřazenými různým síťovým rozhraním v případě, že jsou povolené cloudové nebo cloudové zakázané, ale s nakonfigurovanou bránou. Všimněte si, že zde přiřazené hodnoty jsou pouze příklady hodnot.
 
-    | Síťové rozhraní | Cloud-enabled | Cloud – zakázáno s bránou |
+    | Síťové rozhraní | Cloud – povoleno | Cloud – zakázaný s bránou |
     |-----|---------------|---------------------------|
     | Data 0  | 1            | -                        |
     | Data 1  | 2            | 20                       |
@@ -137,115 +139,115 @@ Takto lze vysvětlit směrování metriky algoritmus použitý pro aktualizaci U
     | Data 5  | 6            | 60                       |
 
 
-* Pořadí, ve kterém se budou směrovat přenosy v cloudu přes síťová rozhraní, je:
+* Pořadí, ve kterém se cloudové přenosy budou směrovat přes síťová rozhraní:
   
-    *Data 0 > Data 1 > datum 2 > Data 3 > Data 4 > Data 5*
+    *Data 0 > data 1 > datum 2 > data 3 > data 4 > data 5*
   
-    To lze vysvětlit v následujícím příkladu.
+    To může být vysvětleno v následujícím příkladu.
   
-    Vezměte v úvahu zařízení StorSimple se dvěma povolenou podporu cloudu síťovými rozhraními, Data 0 a Data 5. Data 1 až Data 4 jsou cloudu – zakázáno, ale mít nakonfigurovanou bránu. Pořadí, ve kterém se budou směrovat provoz pro toto zařízení bude:
+    Vezměte v úvahu zařízení StorSimple se dvěma síťovými rozhraními s podporou cloudu, daty 0 a daty 5. Data 1 až data 4 jsou zakázaná v cloudu, ale mají nakonfigurovanou bránu. Pořadí, ve kterém budou přenosy směrovány pro toto zařízení, bude:
   
-    *Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
+    *Data 0 (1) > data 5 (6) > data 1 (20) > data 2 (30) > data 3 (40) > data 4 (50)*
   
-    *Čísla v závorkách označují příslušných směrování metriky.*
+    *Čísla v závorkách označují odpovídající metriky směrování.*
   
-    Pokud se Data 0 nezdaří, bude získat cloud provoz směrován přes Data 5. Vzhledem k tomu, že brána je nakonfigurovaná na jinou síť, Data 0 a Data 5 byly selhání, provoz cloudové projdou Data 1.
-* Pokud povolenou podporu cloudu síťové rozhraní se nezdaří, pak jsou 3 opakování pomocí 30 druhý zpoždění pro připojení k rozhraní. Pokud selžou i všechny pokusy, provoz je směrován na další dostupný povolenou podporu cloudu rozhraní určenému do směrovací tabulky. Pokud všechny povolenou podporu cloudu síťová rozhraní selhání, pak zařízení převezme druhý kontroler (bez restartování v tomto případě).
-* Pokud dojde k selhání virtuální IP adresu pro rozhraní sítě iSCSI povolený, nebudou 3 pokusy s prodlevou 2 sekundy. Toto chování má nechali stejné z předchozích verzí. Pokud selžou i všechna síťová rozhraní iSCSI, převzetí služeb kontroleru při dojde (připojí restartování).
-* Výstrahu se také vyvolá zařízení StorSimple, když dojde k selhání virtuální IP adresy. Další informace najdete v části [upozornění Stručná referenční příručka](storsimple-8000-manage-alerts.md).
-* Z hlediska opakovaných pokusů iSCSI bude mít přednost přes cloud.
+    Pokud data 0 selže, cloudový provoz se bude směrovat přes data 5. Vzhledem k tomu, že je brána nakonfigurovaná na všech ostatních sítích, v případě, že data 0 i data 5 selžou, přenos dat do cloudu prochází daty 1.
+* Pokud se síťové rozhraní s povoleným cloudem nezdařilo, pak se pro připojení k rozhraní dokončí tři pokusy s prodlevou 30 sekund. Pokud se všechny opakované pokusy nezdaří, provoz se směruje do dalšího dostupného cloudového rozhraní, které je určeno směrovací tabulkou. Pokud všechna síťová rozhraní s povoleným cloudem selžou, zařízení převezme služby při selhání na jiný kontroler (v tomto případě se nerestartuje).
+* Pokud u síťového rozhraní s podporou iSCSI dojde k selhání virtuální IP adresy, dojde k 3 opakovaným pokusům o zpoždění 2 sekund. Toto chování se nechalio stejně jako v předchozích verzích. Pokud všechna síťová rozhraní iSCSI selžou, dojde k převzetí služeb při selhání řadiče (doplněné restartováním).
+* Když dojde k selhání virtuální IP adresy, na zařízení StorSimple se taky vygeneruje výstraha. Další informace najdete v rychlém [odkazu](storsimple-8000-manage-alerts.md)na výstrahu.
+* V rámci opakovaných pokusů bude mít iSCSI přednost před cloudem.
   
-    Vezměte v úvahu v následujícím příkladu: Má dvě síťová rozhraní povolená zařízení StorSimple, Data 0 a Data 1. Rozhraní data 0 má povolenou podporu cloudu že Data 1 je cloud určený pro obě a podporou iSCSI. Žádná další síťová rozhraní na tomto zařízení jsou povolené pro cloud nebo iSCSI.
+    Vezměte v úvahu v následujícím příkladu: Zařízení StorSimple má dvě síťová rozhraní povolena, data 0 a data 1. Data 0 jsou zapnutá v cloudu, zatímco data 1 jsou Cloud i s povoleným iSCSI. V cloudu nebo iSCSI nejsou povolena žádná další síťová rozhraní v tomto zařízení.
   
-    Pokud Data 1 selže, je uveden je poslední síťové rozhraní iSCSI, výsledkem bude převzetí služeb kontroleru při 1 dat na druhý kontroler.
+    Pokud se data 1 nezdaří, protože se jedná o poslední síťové rozhraní iSCSI, způsobí to, že dojde k převzetí služeb při selhání řadiče na data 1 na druhém řadiči.
 
-### <a name="networking-best-practices"></a>Doporučené postupy sítě
+### <a name="networking-best-practices"></a>Osvědčené postupy pro sítě
 
-Kromě výše uvedených požadavků sítě pro zajištění optimálního výkonu řešení StorSimple dodržujte následující osvědčené postupy:
+Kromě výše uvedených požadavků na síť pro optimální výkon řešení StorSimple prosím dodržujte následující osvědčené postupy:
 
-* Zajistěte, aby zařízení StorSimple vyhrazené šířky pásma 40 MB/s (nebo více) vždy k dispozici. Tuto šířku pásma by se neměly sdílet (nebo přidělení by měl být zaručeno, že prostřednictvím zásad QoS) s ostatními aplikacemi.
-* Zajistěte, aby za všech okolností je k dispozici síťové připojení k Internetu. Výskyt občasný, nebo nespolehlivé internetové připojení k zařízení, včetně jakýmkoli způsobem, bez připojení k Internetu bude mít za následek má nepodporovanou konfiguraci.
-* Vyhrazené síťové rozhraní na zařízení pro přístup k iSCSI a cloudu izolujte přenosy iSCSI a cloudu. Další informace najdete v tématu Jak [změnit síťová rozhraní](storsimple-8000-modify-device-config.md#modify-network-interfaces) zařízení StorSimple.
-* Nepoužívejte konfiguraci Protokol LACP (Link Aggregation ovládací prvek Protocol) pro síťová rozhraní. Toto je Nepodporovaná konfigurace.
+* Ujistěte se, že vaše zařízení StorSimple má po celou dobu vyhrazenou šířku pásma 40 MB/s (nebo více). Tato šířka pásma by se neměla sdílet (nebo by mělo být přidělování zaručeno prostřednictvím použití zásad QoS) pro všechny ostatní aplikace.
+* Ujistěte se, že síťové připojení k Internetu je dostupné kdykoli. Občasná nebo nespolehlivá připojení k Internetu zařízením, včetně žádného připojení k Internetu, budou mít za následek nepodporovanou konfiguraci.
+* Izolujte provoz iSCSI a cloudu tím, že ve svém zařízení máte vyhrazená síťová rozhraní pro iSCSI a cloudový přístup. Další informace najdete v tématu Postup [Úpravy síťových rozhraní](storsimple-8000-modify-device-config.md#modify-network-interfaces) na zařízení StorSimple.
+* Nepoužívejte pro vaše síťová rozhraní konfiguraci LACP (Link Control Protocol). Jedná se o nepodporovanou konfiguraci.
 
 ## <a name="high-availability-requirements-for-storsimple"></a>Požadavky na vysokou dostupnost pro StorSimple
 
-Hardwarová platforma, která je součástí řešení StorSimple se dostupnost a spolehlivost funkce, které poskytují základ pro vysoce dostupné a odolné úložiště infrastruktury ve vašem datovém centru. Existují však požadavky a osvědčené postupy, které by měly splňovat k zajištění dostupnosti vašeho řešení StorSimple. Před nasazením StorSimple, pečlivě si prostudujte následující požadavky a osvědčené postupy pro zařízení StorSimple a počítač připojený hostitel.
+Hardwarová platforma, která je součástí řešení StorSimple, má funkce dostupnosti a spolehlivosti, které poskytují základ pro vysoce dostupnou a odolnou infrastrukturu úložiště ve vašem datovém centru. Existují však požadavky a osvědčené postupy, které byste měli dodržovat, abyste zajistili dostupnost vašeho řešení StorSimple. Před nasazením StorSimple pečlivě zkontrolujte následující požadavky a osvědčené postupy pro zařízení StorSimple a připojené hostitelské počítače.
 
-Další informace o sledování a údržbu hardwarové součásti zařízení StorSimple, přejděte na [použít službu Správce zařízení StorSimple pro monitorování hardwarových součástí a stav](storsimple-8000-monitor-hardware-status.md) a [StorSimple výměna hardwaru součástí](storsimple-8000-hardware-component-replacement.md).
+Další informace o monitorování a údržbě hardwarových komponent zařízení StorSimple najdete v části [použití služby StorSimple Device Manager k monitorování hardwarových komponent a stavu](storsimple-8000-monitor-hardware-status.md) [StorSimple hardwarové součásti. ](storsimple-8000-hardware-component-replacement.md).
 
-### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>Požadavky na vysokou dostupnost a postupy pro zařízení StorSimple
+### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>Požadavky a postupy vysoké dostupnosti pro zařízení StorSimple
 
-Přečtěte si následující informace pečlivě k zajištění vysoké dostupnosti vašeho zařízení StorSimple.
+Pečlivě si přečtěte následující informace, abyste zajistili vysokou dostupnost zařízení StorSimple.
 
 #### <a name="pcms"></a>PCMs
 
-Zařízení StorSimple zahrnují za provozu, redundantní napájení, chlazení moduly (PCMs). Každý PCM má dostatečnou kapacitu k zajištění služeb pro celý skříně. K zajištění vysoké dostupnosti, musí být obě PCMs nainstalován.
+Mezi zařízení StorSimple patří redundantní, Hot-swapové moduly napájení a chlazení (PCMs). Každý PCM má dostatečnou kapacitu pro poskytování služby pro celý skříň. Aby se zajistila vysoká dostupnost, musí být nainstalovaná obě PCMs.
 
-* Vaše PCMs se připojte k různým zdrojům napájení pro zajištění dostupnosti, pokud se nezdaří zdroji napájení.
-* Pokud se nezdaří PCM, požádat o výměnu okamžitě.
-* Neúspěšné PCM odeberte pouze v případě, že máte nahrazení a je připraveno k jeho instalaci.
-* Souběžně neodebírejte obou PCMs. Modul PCM zahrnuje modul záložní baterie. Odebírá se i PCMs způsobí vypnutí bez ochrany baterie a stav zařízení se neuloží. Další informace o baterie, přejděte na [udržovat modulu záložní baterie](storsimple-8000-battery-replacement.md#maintain-the-backup-battery-module).
+* Připojte své PCMs k různým zdrojům napájení, abyste zajistili dostupnost, pokud se zdroj napájení nepovede.
+* Pokud se PCM nezdařil, vyžádejte ihned náhradu.
+* Odebrání neúspěšného PCM jenom v případě, že máte náhradu a máte připravenou ji nainstalovat.
+* Neodstraňujte oba současně PCMs současně. Modul PCM obsahuje modul pro záložní baterii. Odebrání obou PCMs bude mít za následek vypnutí bez ochrany baterií a stav zařízení nebude uloženo. Další informace o baterii získáte tak, že přejdete na [udržovat modul záložní baterie](storsimple-8000-battery-replacement.md#maintain-the-backup-battery-module).
 
 #### <a name="controller-modules"></a>Moduly kontroleru
 
-Zařízení StorSimple zahrnují moduly kontroleru redundantní, za provozu. Moduly kontroleru pracovat způsobem aktivní/pasivní vysokou dostupnost. V daném okamžiku jeden modul kontroleru je aktivní a poskytuje službu, zatímco ostatní řadiče modul je pasivní. Pasivní kontroler modul zapne a stane provozní, pokud modul aktivní kontroler selže nebo je odebrat. Každý kontroler modul nemá dostatečnou kapacitu k zajištění služeb pro celý skříně. Oba řadiče moduly musí být nainstalovaná a zajistit tak vysokou dostupnost.
+Zařízení StorSimple obsahují nadbytečné a horké moduly odkládacího zařízení. Moduly řadiče pracují aktivním/pasivním způsobem. V jednom okamžiku je aktivní jeden modul kontroleru a poskytuje službu, zatímco druhý modul kontroleru je pasivní. Modul pasivního kontroleru je zapnutý a přestane fungovat, pokud dojde k chybě aktivního modulu řadiče nebo odebrání. Každý modul kontroleru má dostatečnou kapacitu pro poskytování služby pro celý skříň. Aby se zajistila vysoká dostupnost, musí se nainstalovat oba moduly řadiče.
 
-* Ujistěte se, že oba řadiče moduly nainstalují za všech okolností.
-* Pokud modul řadiče selže, požádat o náhradu okamžitě.
-* Odebrání modulu kontroleru, který selhal, jenom Pokud jste nahrazení a je připraveno k jeho instalaci. Odebrání modulu pro delší dobu bude mít vliv na vzduchu a chlazení systému.
-* Ujistěte se, že síťová připojení k modulům oba řadiče jsou identické a připojená síťová rozhraní mají konfiguraci služby stejné sítě.
-* Pokud modul řadiče selže nebo je nutné vyměnit, ujistěte se, že jiné řadiče modul je v aktivním stavu před nahrazením modulu kontroleru, který selhal. Pokud chcete ověřit, že je aktivní kontroler, přejděte na [identifikace aktivního kontroleru na vašem zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
-* Neodebírejte oba moduly řadiče ve stejnou dobu. Pokud probíhá převzetí služeb kontroleru při vypnutí modulu kontroler v pohotovostním režimu nebo ji odeberte z skříni.
-* Po převzetí služeb kontroleru při počkejte alespoň pět minut před odebráním buď modul řadiče.
+* Ujistěte se, že jsou oba moduly řadiče nainstalovány současně.
+* Pokud dojde k chybě modulu kontroleru, vyžádejte si okamžitě náhradu.
+* Odeberte modul neúspěšného kontroleru pouze v případě, že máte náhradu a jste připraveni ho nainstalovat. Odebráním modulu pro rozšířené tečky se ovlivní tok a tím se dokončí chlazení systému.
+* Ujistěte se, že síťová připojení k oběma modulům kontroléru jsou shodná a že připojená síťová rozhraní mají stejnou konfiguraci sítě.
+* Pokud modul kontroléru selhává nebo vyžaduje náhradu, ujistěte se, že je modul druhého kontroleru v aktivním stavu před nahrazením modulu neúspěšného kontroléru. Pokud chcete ověřit, jestli je kontroler aktivní, použijte k [identifikaci aktivního řadiče na zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
+* Neodstraňujte současně oba moduly řadiče. Pokud probíhá převzetí služeb při selhání, nevypněte modul pohotovostního kontroleru ani ho odeberte ze skříně.
+* Po převzetí služeb při selhání řadiče počkejte aspoň pět minut, než odeberte kterýkoli modul kontroleru.
 
 #### <a name="network-interfaces"></a>Síťová rozhraní
 
-StorSimple zařízení řadič modulů každý se čtyřmi 1 Gigabit a dvě 10 gigabitová ethernetová síťová rozhraní.
+Moduly řadiče zařízení StorSimple mají čtyři 1 gigabitová síťová rozhraní ethernetová a 2 10 gigabitová.
 
-* Ujistěte se, že síťová připojení k modulům oba řadiče jsou identické a síťová rozhraní, že kontroler rozhraní modulů připojeni k identických síťových nastavení.
-* Pokud je to možné, nasaďte připojení k síti přes různé přepínače k zajištění dostupnosti služby selhání některé síťové zařízení.
-* Při odpojování pouze nebo poslední zbývající rozhraní iSCSI povolený (pomocí IP adresy přiřazené), nejprve zakázat rozhraní a potom odpojte kabely. Pokud rozhraní je odpojen, poté způsobí aktivním řadiči – tím převzetí služeb při selhání na pasivním kontroleru. Pokud pasivní kontroler má také jeho odpovídající rozhraní odpojit, pak oba kontrolery se restartuje více než jednou před spuštěním na jeden kontroler.
-* Aspoň dvě rozhraní datového připojení k síti z každého modulu kontroleru.
-* Pokud jste povolili dvě rozhraní 10 GbE, nasadit napříč různým přepínačům.
-* Pokud je to možné, ujistěte se, že servery budou tolerovat chyby odkaz, sítě nebo selhání rozhraní pomocí funkce MPIO na serverech.
+* Ujistěte se, že síťová připojení k oběma modulům kontroleru jsou shodná a že síťová rozhraní, ke kterým jsou připojena rozhraní modulů řadiče, mají stejnou konfiguraci sítě.
+* Pokud je to možné, nasaďte síťová připojení mezi různými přepínači, aby se zajistila dostupnost služby v případě selhání síťového zařízení.
+* Pokud odpojíte pouze nebo poslední zbývající rozhraní podporující technologii iSCSI (s přiřazenými IP adresami), zakažte nejprve rozhraní a potom kabely odpojte. Pokud se nejdřív odpojí rozhraní, pak dojde k převzetí služeb aktivního řadiče při selhání v pasivním kontroleru. Pokud má pasivní kontroler taky svá odpovídající rozhraní odpojená, pak se oba řadiče restartují několikrát, než se na jednom řadiči vyrovnává.
+* Připojte alespoň dvě datová rozhraní k síti z každého modulu řadiče.
+* Pokud jste povolili rozhraní 2 10 GbE, nasaďte je napříč různými přepínači.
+* Pokud je to možné, použijte funkci MPIO na serverech, abyste zajistili, že servery můžou tolerovat selhání propojení, sítě nebo rozhraní.
 
-Další informace o zařízení pro vysokou dostupnost a výkon sítě, přejděte na [instalaci zařízení StorSimple 8100](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) nebo [instalaci zařízení StorSimple 8600](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
+Další informace o tom, jak vaše zařízení má vysokou dostupnost a výkon, najdete v článku [instalace zařízení StorSimple 8100](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) nebo [instalace zařízení StorSimple 8600](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
 
-#### <a name="ssds-and-hdds"></a>Vlastnosti jednotek SSD a pevných disků
+#### <a name="ssds-and-hdds"></a>SSD a HDD
 
-Zařízení StorSimple obsahovat disky SSD (Solid-State Drive) a pevných disků (HDD), které jsou chráněné pomocí zrcadlit mezery. Použití zrcadlených prostorech zajišťuje, že zařízení je schopné tolerovat selhání jednoho nebo více disků SSD nebo HDD.
+Zařízení StorSimple obsahují disky Solid State (SSD) a jednotky pevného disku (HDD), které jsou chráněné pomocí zrcadlených prostorů. Použití zrcadlených prostorů zajišťuje, že zařízení dokáže tolerovat selhání jednoho nebo více SSD nebo HDD.
 
 * Ujistěte se, že jsou nainstalované všechny moduly SSD a HDD.
-* Pokud SSD nebo pevný disk selže, žádost o náhradu okamžitě.
-* Pokud SSD nebo pevný disk selže nebo vyžaduje nahrazení, ujistěte se, že odeberete jenom SSD nebo pevný disk, který vyžaduje nahrazení.
-* Neodebírejte více než jeden SSD nebo pevný disk ze systému v libovolném bodě v čase.
-  Selhání 2 nebo více disků určitého typu (HDD, SSD) nebo po sobě jdoucích selhání v rámci krátkého formátu času může dojít ke ztrátě dat systému selhání a možnosti. Pokud k tomu dojde, [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) žádostí o pomoc.
-* Při nahrazení, monitorovat **sdílené komponenty** v **stav hardwaru** okno jednotek SSD a HDD. Stav zelená značka zaškrtnutí označuje, že disky jsou v pořádku nebo OK, zatímco bodu červený vykřičník označuje neúspěšné SSD nebo pevný disk.
-* Doporučujeme, abyste nakonfigurovali cloudové snímky pro všechny svazky, které potřebujete k ochraně v případě selhání systému.
+* Pokud jednotka SSD nebo HDD selhává, požádejte o náhradu hned.
+* Pokud jednotka SSD nebo HDD selhává nebo vyžaduje náhradu, ujistěte se, že jste odebrali jenom jednotku SSD nebo HDD, která vyžaduje nahrazení.
+* Neodstraňujte více než jednu jednotku SSD nebo HDD ze systému v jakémkoli bodě v čase.
+  Selhání při 2 nebo více discích určitého typu (HDD, SSD) nebo po sobě jdoucích selhání v krátkém časovém rámci může způsobit selhání systému a potenciální ztrátu dat. Pokud k tomu dojde, požádejte o pomoc [Podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) .
+* Během nahrazování monitorujte **sdílené komponenty** v okně **stav hardwaru** pro jednotky v SSD a HDD. Zelený stav kontroly znamená, že jsou disky v pořádku nebo v pořádku, zatímco červený vykřičník indikuje, že se nezdařila jednotka SSD nebo HDD.
+* Doporučujeme, abyste nakonfigurovali cloudové snímky pro všechny svazky, které potřebujete chránit v případě selhání systému.
 
-#### <a name="ebod-enclosure"></a>Skříň EBOD
+#### <a name="ebod-enclosure"></a>EBOD skříň
 
-Model zařízení StorSimple 8600 obsahuje přílohu rozšířené Bunch disky (EBOD) kromě primární skříň. EBOD obsahuje řadiče EBOD a pevných disků (HDD), které jsou chráněné pomocí zrcadlit mezery. Použití zrcadlených prostorech zajišťuje, že zařízení je schopné tolerovat selhání jednoho nebo více pevných disků. Skříň EBOD je připojen k primární skříň prostřednictvím redundantní SAS kabely.
+StorSimple Device model 8600 obsahuje kromě primárního skříňku i skříň EBOD (Extended of disks). EBOD obsahuje řadiče EBOD a jednotky pevného disku (HDD), které jsou chráněny pomocí zrcadlených prostorů. Používání zrcadlených prostorů zajišťuje, že zařízení dokáže tolerovat selhání jednoho nebo více HDD. EBOD skříň je připojená k primární skříni prostřednictvím redundantních kabelů SAS.
 
-* Ujistěte se, že oba moduly řadiče EBOD skříň SAS kabely i všechny pevné disky jsou nainstalovány za všech okolností.
-* Pokud modul řadiče EBOD skříň selže, žádost o náhradu okamžitě.
-* Pokud se modul řadiče EBOD skříň nezdaří, ujistěte se, že ostatní moduly kontroleru je aktivní, před nahrazením modulu se nezdařilo. Pokud chcete ověřit, že je aktivní kontroler, přejděte na [identifikace aktivního kontroleru na vašem zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
-* Během nahrazení modulu řadiče EBOD neustále monitorovat stav komponenty ve službě Správce zařízení StorSimple díky přístupu do **monitorování** > **stav hardwaru**.
-* Pokud kabelu SAS selže nebo vyžaduje nahrazení (Microsoft Support by měl zapojí aby toto rozhodnutí), ujistěte se, že odeberete pouze kabel SAS, který vyžaduje nahrazení.
-* Neodebírejte současně i SAS kabely ze systému v libovolném bodě v čase.
+* Zajistěte, aby byly současně nainstalovány oba moduly EBOD skříně, jak kabely SAS, tak i všechny jednotky pevného disku.
+* Pokud dojde k chybě modulu EBOD skříni, vyžádejte ihned náhradu.
+* Pokud dojde k selhání modulu EBOD skříni, ujistěte se, že je modul druhého kontroleru aktivní, než nahradíte neúspěšný modul. Pokud chcete ověřit, jestli je kontroler aktivní, použijte k [identifikaci aktivního řadiče na zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
+* Při nahrazení modulu eBOD Controller nepřetržitě Sledujte stav součásti ve službě StorSimple Device Manager, a to tak, že se přihlásíte ke **sledování** > **stavu hardwaru**.
+* Pokud kabel SAS dojde k chybě nebo pokud vyžaduje nahrazení (podpora Microsoftu by se mělo zapojit do takového rozhodnutí), nezapomeňte odebrat jenom kabel SAS, který vyžaduje nahrazení.
+* Neprovádějte souběžné odebrání obou kabelů SAS ze systému v libovolném časovém okamžiku.
 
-### <a name="high-availability-recommendations-for-your-host-computers"></a>Doporučení k vysoké dostupnosti pro hostitelské počítače
+### <a name="high-availability-recommendations-for-your-host-computers"></a>Doporučení pro vysokou dostupnost vašich hostitelských počítačů
 
-Pečlivě si prostudujte tyto osvědčené postupy k zajištění vysoké dostupnosti hostitelů připojených k zařízení StorSimple.
+Pečlivě si prostudujte tyto osvědčené postupy, abyste zajistili vysokou dostupnost hostitelů připojených k vašemu zařízení StorSimple.
 
-* Konfigurace StorSimple s [konfigurace clusteru dva uzly souborového serveru][1]. Odebráním jediné body selhání a sestavování v redundance na straně hostitele, bude celé řešení s vysokou dostupností.
-* Použijte nepřetržitě dostupné složky (CA) k dispozici v systému Windows Server 2012 (protokolu SMB 3.0) pro zajištění vysoké dostupnosti během převzetí služeb při selhání řadičů úložiště. Další informace o konfiguraci clusterů souborových serverů a nepřetržitě dostupné sdílené složky v systému Windows Server 2012, najdete to [Videoukázka](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares).
+* Nakonfigurujte StorSimple s [konfiguracemi clusteru souborových serverů se dvěma uzly][1]. Když odeberete jednotlivé body selhání a sestavíte redundanci na straně hostitele, bude celé řešení vysoce dostupné.
+* Používejte nepřetržitě dostupné sdílené složky (CA) dostupné s Windows Serverem 2012 (SMB 3,0) pro zajištění vysoké dostupnosti při převzetí služeb při selhání řadičů úložiště. Další informace o tom, jak nakonfigurovat clustery souborových serverů a nepřetržitě dostupné sdílené složky s Windows Serverem 2012, najdete v této [ukázce videa](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Další informace o omezení systému StorSimple](storsimple-8000-limits.md).
-* [Informace o nasazení řešení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
+* [Přečtěte si o omezeních systému StorSimple](storsimple-8000-limits.md).
+* [Přečtěte si, jak nasadit řešení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx

@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7cd0125de886eed4b3e5c31503fdd4b7cbb76dd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847821"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946390"
 ---
-# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Metriky protokolu během školicích běhů v Azure Machine Learning
+# <a name="log-metrics-during-training-runs"></a>Metriky protokolu během školicích běhů
 
 Vylepšete proces vytváření modelů sledováním experimentů a metrik monitorování. V tomto článku se dozvíte, jak přidat protokolování do školicího skriptu, jak odeslat experiment, monitorovat běh a zobrazit výsledky spuštění ve službě Azure Machine Learning.
+
+> [!NOTE]
+> Služba Azure Machine Learning může také protokolovat informace z jiných zdrojů během školení, jako je AutoML nebo kontejner Docker, který spouští školicí úlohu. Tyto protokoly nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
 
 ## <a name="list-of-training-metrics"></a>Seznam metrik školení 
 
@@ -221,7 +224,7 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
 
 ## <a name="manage-a-run"></a>Správa běhu
 
-Články týkající se [spuštění, sledování a zrušení školení](how-to-manage-runs.md) popisují konkrétní Azure Machine Learning pracovní postupy pro správu experimentů.
+Články týkající se [spuštění, sledování a zrušení školicích programů](how-to-manage-runs.md) zvýrazňují konkrétní Azure Machine Learning pracovní postupy pro správu experimentů.
 
 ## <a name="view-run-details"></a>Zobrazení podrobností o spuštění
 

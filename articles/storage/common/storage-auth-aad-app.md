@@ -1,21 +1,21 @@
 ---
-title: Ověřování pomocí Azure Active Directory pro přístup k datům objektů BLOB a front z klientské aplikace
+title: Autorizovat přístup k objektům blob a frontám pomocí Azure Active Directory z klientské aplikace – Azure Storage
 description: Použijte Azure Active Directory k ověření v rámci klientské aplikace, získání tokenu OAuth 2,0 a autorizaci požadavků do úložiště objektů BLOB v Azure a do fronty.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2019
+ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ffae7467e9f94c68cf004b74c9791f2d9cda3171
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5138fb6338f4ade322414619f8785d77550a91d1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249995"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986789"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Ověřování pomocí Azure Active Directory z aplikace pro přístup k objektům blob a frontám
+# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory z klientské aplikace
 
 Klíčovou výhodou použití Azure Active Directory (Azure AD) se službou Azure Blob Storage nebo Queue Storage je, že vaše přihlašovací údaje už nemusíte ukládat do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform (dřív Azure AD). Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak pomocí přístupového tokenu autorizuje žádosti do úložiště objektů BLOB v Azure nebo do úložiště fronty.
 

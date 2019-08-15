@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: c53e2c383739b717a5ce94c872b4616bbd1b3f26
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9ae21e2bf71789d0b0dd19e3dd7a65ad10fae241
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639933"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018974"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 
@@ -38,7 +38,7 @@ Ve výchozím nastavení Azure Backup Server komunikuje se servery VMware pomoc�
 
 ### <a name="before-you-start"></a>Než začnete
 
-- Pokud nechcete používat HTTPS, můžete [zakázat ověřování certifikátů pomocí protokolu HTTPS pro všechny servery VMware](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
+- Pokud nechcete používat protokol HTTPS, můžete [zakázat ověřování certifikátu HTTPS pro všechny servery VMware](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
 - Obvykle se připojujete z prohlížeče na Azure Backup Server počítači k serveru vCenter/ESXi pomocí webového klienta vSphere. Když to uděláte poprvé, připojení se nebezpečí a zobrazí se následující.
 - Je důležité pochopit, jak Azure Backup Server zpracovává zálohy.
     - V prvním kroku Azure Backup Server zálohují data na místní diskové úložiště. Azure Backup Server používá fond úložiště, sadu disků a svazků, na kterých Azure Backup Server ukládá body obnovení disku pro chráněná data. Fond úložiště může být přímo připojený k úložišti (DAS), síti SAN s technologií Fibre Channel nebo úložnému zařízení iSCSI nebo SAN. Je důležité zajistit, abyste měli dostatečné úložiště pro místní zálohování dat virtuálních počítačů VMware.
@@ -102,10 +102,10 @@ Zabezpečený kanál nastavte následujícím způsobem:
 
 ### <a name="disable-https-certificate-validation"></a>Zakázat ověřování certifikátu HTTPS
 
-Pokud máte v rámci vaší organizace zabezpečený rozsah a nechcete používat protokol HTTPS mezi servery VMware a Azure Backup Serverm počítačem, zakažte protokol HTTPS následujícím způsobem: u
+Pokud máte v rámci vaší organizace zabezpečený rozsah a nechcete používat protokol HTTPS mezi servery VMware a Azure Backup Serverm počítačem, zakažte protokol HTTPS následujícím způsobem: 
 1. Zkopírujte následující text do souboru. txt a vložte ho do něj.
 
-      ```
+      ```text
       Windows Registry Editor Version 5.00
       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
       "IgnoreCertificateValidation"=dword:00000001
@@ -221,7 +221,7 @@ Na kartě **Spravovat** na panelu **globální oprávnění** se v seznamu zobra
 
     ![Dialogové okno Azure Backup Server Správa přihlašovacích údajů](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
-4. V části **Přidat pověření** zadejte název a popis nového přihlašovacího údaje a zadejte uživatelské jméno a heslo, které jste definovali na serveru VMware. V tomto postupu se k identifikaci přihlašovacích údajů používá název *Contoso vCenter přihlašovací údaje* . Pokud server VMware a Azure Backup Server nejsou ve stejné doméně, zadejte v uživatelském jménu doménu.
+4. V části **Přidat pověření**zadejte název a popis nového přihlašovacího údaje a zadejte uživatelské jméno a heslo, které jste definovali na serveru VMware. V tomto postupu se k identifikaci přihlašovacích údajů používá název *Contoso vCenter přihlašovací údaje* . Pokud server VMware a Azure Backup Server nejsou ve stejné doméně, zadejte v uživatelském jménu doménu.
 
     ![Dialogové okno Azure Backup Server přidat pověření](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
@@ -286,10 +286,10 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
 
 1. Na stránce **Vybrat typ skupiny ochrany** vyberte **servery** a potom klikněte na **Další**. Zobrazí se stránka **Vybrat členy skupiny** .
 
-1. V části **Vybrat členy skupiny** > vyberte virtuální počítače (nebo složky VM), které chcete zálohovat. Pak klikněte na tlačítko **Další**.
+1. V části **Vybrat členy skupiny**vyberte virtuální počítače (nebo složky VM), které chcete zálohovat. Pak klikněte na tlačítko **Další**.
 
     - Když vyberete složku nebo virtuální počítače nebo složky v této složce jsou také vybrány pro zálohování. Můžete zrušit kontrolu složek nebo virtuálních počítačů, které nechcete zálohovat.
-1. Pokud je už virtuální počítač nebo složka zálohovaný, nemůžete ho vybrat. Tím se zajistí, že pro virtuální počítač nejsou vytvořeny duplicitní body obnovení. .
+1. Pokud je už virtuální počítač nebo složka zálohovaný, nemůžete ho vybrat. Tím je zajištěno, že pro virtuální počítač nejsou vytvořeny duplicitní body obnovení.
 
      ![Vybrat členy skupiny](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
@@ -301,7 +301,7 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
 1. V **nastavení zadat krátkodobé cíle**určete, jak dlouho chcete uchovávat data zálohovaná na disk.
    - V **oblasti uchovávání**zadejte počet dní, po které mají být udržovány body obnovení disku.
    - V poli **četnost synchronizací**určete, jak často se mají vymezit body obnovení disku.
-       - Pokud nechcete nastavit interval zálohování, můžete kontrolovat **těsně před bodem obnovení** , aby záloha běžela těsně před každým naplánovaným bodem obnovení.
+       - Pokud nechcete nastavit interval zálohování, můžete zaškrtnout možnost **těsně před bodem obnovení** , aby záloha běžela těsně před každým naplánovaným bodem obnovení.
        - Krátkodobé zálohy jsou úplné zálohy a nejsou přírůstkově.
        - Klikněte na **Upravit** a změňte časy a data, kdy dojde k krátkodobému zálohování.
 
@@ -354,7 +354,7 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6,7
 
-K zálohování vSphere 6,7 postupujte takto:
+Pokud chcete zálohovat vSphere 6,7, udělejte toto:
 
 - Povolit TLS 1,2 na serveru DPM
   >[!Note]

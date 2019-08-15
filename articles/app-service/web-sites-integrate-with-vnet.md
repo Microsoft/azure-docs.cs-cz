@@ -15,10 +15,10 @@ ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68740895"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s Virtual Network Azure

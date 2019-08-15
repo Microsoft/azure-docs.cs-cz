@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 22fa0ba52c346b8331fd6895cf87f3e15ee68ac6
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: bd0ed971b84baae3b85badfcc669bbad657d1551
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950093"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018954"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -123,7 +123,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Sao Paulo** | Equinix | Brazílie – jih | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
 | **Seattle** | Equinix | USA – západ 2 | Aryaka Networks, Equinix, Level 3 Communications, Megaport, Telus, Zayo |
 | **Soul** | KINX | Jižní Korea – střed | KINX, LG CNS, Sejong Telecom |
-| **Silicon Valley** | Equinix | USA – západ | Aryaka Networks sítě, v & T NetBond, British Telecom, CenturyLink Cloud Connect, Comcastu, Coresite, Equinix, spolucloud, IX dosažitelný, Packet, PacketFabric, Level 3 Communications, Megaport, pomeranče, Sprint, Tata Communications, Telia, Verizon, Zayo |
+| **Silicon Valley** | Equinix | USA – západ | Aryaka Networks sítě, v & T NetBond, British Telecom, CenturyLink Cloud Connect, Comcastu, Coresite, Equinix, spolucloud, Internet2, IX dosažitelný, Packet, PacketFabric, Level 3 Communications, Megaport, pomeranče, Sprint, Tata Communications, Telia Carrier, Verizon, Zayo |
 | **Silicon Valley2** | Coresite | USA – západ | Coresite | 
 | **Singapur** | Equinix | Jihovýchodní Asie | Aryaka Networks, AT&T NetBond, British Telecom, Epsilon Global Communications, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, SingTel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
 | **Singapur2** | Globální přepínač | Jihovýchodní Asie | Colt, Epsilon Global Communications, Megaport, SingTel |
@@ -224,7 +224,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 | **Evropa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Severní Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |
 | **Jižní Amerika** |Avanade Inc., Venha Pra Nuvem |
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 * Zkontrolujte, že jsou splněné všechny požadavky. Viz [Požadavky služby ExpressRoute](expressroute-prerequisites.md).
 

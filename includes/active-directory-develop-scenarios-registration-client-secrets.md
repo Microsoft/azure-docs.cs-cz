@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: cd37880be6d518105e880b93a0bd748f7c729d88
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f98808aa0f8a2c32e2117447824114747091a82
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286247"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912327"
 ---
 ## <a name="registration-of-secrets-or-certificates"></a>Registrace tajných klíčů nebo certifikátů
 
@@ -29,7 +29,7 @@ Podobně jako u libovolné důvěrné klientské aplikace musíte zaregistrovat 
 
 Správa přihlašovacích údajů klienta se stane na stránce **certifikáty & tajných** kódů pro aplikaci:
 
-![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png)
+![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
 - Při registraci důvěrné klientské aplikace vygeneruje služba Azure AD tajný klíč aplikace (také nazvaný tajný klíč klienta). K této generaci dojde, když vyberete **nový tajný klíč klienta**. V tomto okamžiku musíte před výběrem možnosti **Uložit**zkopírovat tajný řetězec ve schránce pro použití ve vaší aplikaci. Tento řetězec se už nebude prezentovat.
 - certifikát se nahraje v registraci aplikace pomocí tlačítka **Odeslat certifikát** . Azure AD podporuje jenom certifikáty, které jsou v aplikaci registrované přímo, a nedodržují řetězy certifikátů.

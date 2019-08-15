@@ -1,6 +1,6 @@
 ---
 title: Přidat vrstvu dlaždice do Azure Maps | Microsoft Docs
-description: Postup přidání vrstvy dlaždic do mapy JavaScriptu
+description: Postup přidání vrstvy dlaždic do Azure Maps webové sady SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d872cd78b3fd04512fcaee706e54bffa1cf9fcc1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 3f047ec1aced55038384cbe29bd3a4b8a948dce9
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882087"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976457"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Přidání vrstvy dlaždic do mapy
 
@@ -40,16 +40,24 @@ Adresa URL dlaždice předaná do vrstvy dlaždice musí být adresa URL protoko
 
 ## <a name="add-a-tile-layer"></a>Přidání vrstvy dlaždic
 
- Tento příklad ukazuje, jak vytvořit dlaždici vrstvy, která odkazuje na sadu dlaždic, které používají systém x, y a zoom dláždění. Zdrojem této vrstvy dlaždic je překrytí paprsky v podobě počasí z [mesonetu Iowa v oblasti životního prostředí Iowa státní školy](https://mesonet.agron.iastate.edu/ogc/). 
+ Tento příklad ukazuje, jak vytvořit dlaždici vrstvy, která odkazuje na sadu dlaždic, které používají systém x, y a zoom dláždění. Zdrojem této vrstvy dlaždic je překrytí paprsky v podobě počasí z [mesonetu Iowa v oblasti životního prostředí Iowa státní školy](https://mesonet.agron.iastate.edu/ogc/). Při prohlížení dat paprsků by uživatelé mohli jasně zobrazit popisky měst při navigaci na mapě, které lze provést vložením vrstvy dlaždice pod `labels` vrstvou.
+
+```javascript
+//Create a tile layer and add it to the map below the label layer.
+//Weather radar tiles from Iowa Environmental Mesonet of Iowa State University.
+map.layers.add(new atlas.layer.TileLayer({
+    tileUrl: 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png',
+    opacity: 0.8,
+    tileSize: 256
+}), 'labels');
+```
+
+Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Dlaždice vrstev pomocí X, Y a Z' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/BGEQjG/'>Pomocí X, Y a Z</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>se podívejte na vrstvu dlaždice pera.
 </iframe>
-
-Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
-
-V druhém bloku kódu je [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) vytvořen předáním FORMÁTOVANÉ adresy URL do služby dlaždic, velikosti dlaždice a průhlednosti, která je částečně transparentní. Kromě toho při přidávání vrstvy dlaždic na mapu je přidána pod `labels` vrstvu tak, aby popisky byly stále jasně viditelné.
 
 ## <a name="customize-a-tile-layer"></a>Přizpůsobení vrstvy dlaždice
 
@@ -60,7 +68,7 @@ Třída vrstvy dlaždice má mnoho možností stylů. Tady je nástroj pro jejic
 <iframe height='700' scrolling='no' title='Možnosti vrstvy dlaždic' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Viz <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>Možnosti vrstvy dlaždice</a> pera podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 

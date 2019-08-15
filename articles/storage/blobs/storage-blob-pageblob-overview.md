@@ -1,6 +1,6 @@
 ---
-title: Přehled objektů BLOB stránky Azure | Dokumentace Microsoftu
-description: Přehled o objekty BLOB stránky Azure a jejich výhod, včetně případů použití se skripty.
+title: Přehled objektů blob stránky Azure | Microsoft Docs
+description: Přehled objektů blob stránky Azure a jejich výhod, včetně případů použití s ukázkovými skripty.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,44 @@ ms.date: 05/13/2019
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 88bf81852a4501f4fc5807d865214d57dbc0aab3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 060e1d01e5f078bad9852ae35d0af9142192a7b6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65794500"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985621"
 ---
-# <a name="overview-of-azure-page-blobs"></a>Přehled objektů BLOB stránky Azure
+# <a name="overview-of-azure-page-blobs"></a>Přehled objektů blob stránky Azure
 
-Azure Storage nabízí tři typy úložiště objektů blob: Objekty BLOB bloku a doplňovacích objektů BLOB stránky objekty BLOB. Objekty BLOB bloku se skládají z bloků a jsou ideální pro ukládání textových nebo binárních souborů a pro nahrávání velkých souborů efektivně. Doplňovací objekty BLOB jsou také tvoří bloky, ale jsou optimalizované pro doplňovací operace. Díky tomu je ideální pro scénáře protokolování. Objekty BLOB stránky jsou tvořené 512 bajtů stránky do 8 TB, v celkové velikosti a jsou navržené pro operace časté náhodné čtení a zápisu. Objekty BLOB stránky jsou základem pro disky Azure IaaS. Tento článek se týká s vysvětlením, funkce a výhody objekty BLOB stránky.
+Azure Storage nabízí tři typy úložiště objektů BLOB: Objekty blob bloku, doplňovací objekty BLOB a objekty blob stránky. Objekty blob bloku se skládají z bloků a jsou ideální pro ukládání textových nebo binárních souborů a pro efektivní nahrávání velkých souborů. Doplňovací objekty BLOB se také skládají z bloků, ale jsou optimalizované pro operace připojení, které jsou ideální pro scénáře protokolování. Objekty blob stránky se skládají z 512 bajtů stránek o velikosti až 8 TB a jsou navržené pro časté operace náhodného čtení a zápisu. Objekty blob stránky jsou základem disků Azure IaaS. Tento článek se zaměřuje na vysvětlení funkcí a výhod objektů blob stránky.
 
-Objekty BLOB stránky jsou kolekce stránek 512 bajtů, které poskytují možnost čtení/zápis libovolný rozsah bajtů. Objekty BLOB stránky jsou proto ideální pro ukládání indexu a zhuštěné datové struktury, jako je operační systém a datové disky pro virtuální počítače a databáze. Databáze SQL Azure například používá objekty BLOB stránky jako základní trvalého úložiště pro své databáze. Kromě toho objekty BLOB stránky se také často používají pro soubory s aktualizacemi založený na rozsahu.  
+Objekty blob stránky jsou kolekcí 512 stránek, které poskytují možnost číst a zapisovat libovolné rozsahy bajtů. Objekty blob stránky jsou proto ideální pro ukládání indexových a zhuštěných datových struktur, jako jsou operační systémy a datové disky pro Virtual Machines a databáze. Azure SQL DB například používá objekty blob stránky jako základní trvalé úložiště pro své databáze. Kromě toho jsou objekty blob stránky často používány pro soubory s aktualizacemi založenými na rozsahu.  
 
-Klíčové funkce objektů BLOB stránky Azure jsou jeho rozhraní REST, odolnosti základního úložiště a možností zajistí tak bezproblémovou migraci do Azure. Tyto funkce jsou podrobněji popsány v následující části. Kromě toho jsou objekty BLOB stránky Azure aktuálně podporovány na dva typy úložiště: Storage úrovně Standard a Premium Storage. Storage úrovně Premium je určený speciálně pro úlohy vyžadující konzistentní vysoký výkon a nízkou latencí, díky tomu ideální pro vysoce výkonné úložiště scénáře objekty BLOB stránky úrovně premium. Účty úložiště úrovně Standard je nákladově efektivní pro spouštění úloh v kterému latence nevadí.
+Klíčové funkce objektů blob stránky Azure jsou rozhraní REST, odolnost základního úložiště a možnosti bezproblémové migrace do Azure. Tyto funkce jsou podrobněji popsány v následující části. Kromě toho se objekty blob stránky Azure v současné době podporují na dvou typech úložiště: Úložiště Premium Storage a Standard. Premium Storage je navržená speciálně pro úlohy, které vyžadují konzistentní vysoký výkon a nízkou latenci vytváření objektů blob stránky úrovně Premium, které jsou ideální pro scénáře úložiště s vysokým výkonem. Účty úložiště úrovně Standard jsou cenově efektivnější pro spouštění úloh necitlivých na latenci.
 
-## <a name="sample-use-cases"></a>Ukázka případy použití
+## <a name="sample-use-cases"></a>Příklady případů použití
 
-Pojďme se podívat do ní několik případů použití pro objekty BLOB stránky, počínaje disky Azure IaaS. Objekty BLOB stránky Azure je páteří zajištění provozu virtuálních disků platform pro Azure IaaS. Operační systém Azure a datové disky jsou implementovány jako virtuální disky se data trvale zachována na platformě Azure Storage a pak doručí na virtuální počítače pro maximální výkon. Disky Azure jsou zachované v Hyper-V [Formát virtuálního pevného disku](https://technet.microsoft.com/library/dd979539.aspx) a uložené jako [objektů blob stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) ve službě Azure Storage. Kromě používání virtuální disky pro virtuální počítače Azure IaaS, objekty BLOB stránky také povolit PaaS a DBaaS scénářů, jako je služba Azure SQL DB, která momentálně používá objekty BLOB stránky pro ukládání dat SQL, povolení vysoká rychlost náhodného čtení a zápis operace pro databázi. Dalším příkladem může být, pokud máte službu PaaS sdílená média přístup pro úpravy aplikace pro spolupráci videa, objekty BLOB stránky Dal rychle získat přístup do náhodných umístění na médiu. Umožňuje také rychlé a efektivní úpravy a slučování stejná média víc uživatelů. 
+Pojďme si projednávat několik případů použití pro objekty blob stránky počínaje IaaS disky Azure. Objekty blob stránky Azure jsou páteřní platformou platformy virtuálních disků pro Azure IaaS. Operační systémy a datové disky Azure se implementují jako virtuální disky, kde se data trvale trvale na platformě Azure Storage a pak se doručí virtuálním počítačům pro maximální výkon. Disky Azure se ukládají ve [formátu virtuálního pevného disku](https://technet.microsoft.com/library/dd979539.aspx) Hyper-V a ukládají se jako [objekt blob stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) v Azure Storage. Kromě používání virtuálních disků pro virtuální počítače Azure s IaaS můžou objekty blob stránky také povolit scénáře PaaS a DBaaS, jako je například služba Azure SQL DB, která aktuálně používá objekty blob stránky k ukládání dat SQL a umožňuje rychlé náhodné operace čtení a zápisu pro databázi. Dalším příkladem může být, že máte službu PaaS pro přístup ke sdílenému médiu pro aplikace pro úpravy videa pro spolupracovníky. objekty blob stránky umožňují rychlý přístup k náhodným umístěním v médiu. Umožňuje také rychlé a efektivní úpravy a sloučení stejného média více uživateli. 
 
-První strany službám Microsoftu, jako je Azure Site Recovery, Azure Backup, stejně jako mnoho vývojáři třetích stran jste implementovali špičkové inovace pomocí rozhraní REST pro objekt blob stránky. Zde jsou některé jedinečné scénáře implementovat v Azure: 
+Služby společnosti Microsoft, jako je například Azure Site Recovery, Azure Backup, i řada vývojářů třetích stran implementovala špičkové inovace pomocí rozhraní REST objektu BLOB. Následuje několik jedinečných scénářů implementovaných v Azure: 
 
-* Správa aplikace řízené přírůstkový snímek: Aplikace můžou využívat snímky objektů blob stránky a rozhraní REST API pro ukládání kontrolní body aplikace bez dalších nákladů na nákladné duplikaci dat. Azure Storage podporuje místních snímků pro objekty BLOB stránky, které nevyžadují celý objekt blob kopírování. Tyto veřejné snímku rozhraní API také umožňují přístup a kopírování rozdíly mezi snímky.
-* Migrace za provozu aplikací a dat z místního cloudu: Kopírování dat v místním prostředí a zapisovat přímo do objektu blob stránky Azure při v místním prostředí, které virtuální počítač zůstane spuštěný pomocí rozhraní REST API. Jakmile cíl zachytila, můžete rychle převzetí služeb při selhání virtuálního počítače Azure pomocí tato data. Tímto způsobem můžete migrovat virtuální počítače a virtuálních disků ze v místním prostředí do cloudu s minimálními výpadky, protože migrace dat probíhá na pozadí, zatímco budete nadále používat tento virtuální počítač a výpadků potřebné pro převzetí služeb při selhání bude krátký (v minutách).
-* [Na základě SAS](../common/storage-dotnet-shared-access-signature-part-1.md) sdílený přístup, která umožňuje scénáře, jako je několik čtenářů a jednoho zapisovače s podporou pro řízení souběžnosti.
+* Správa přírůstkového snímku aplikace řízená aplikací: Aplikace můžou využívat snímky objektů blob stránky a rozhraní REST API pro ukládání kontrolních bodů aplikace bez toho, aby se nemusely nákladný duplikovat data. Azure Storage podporuje místní snímky pro objekty blob stránky, které nevyžadují kopírování celého objektu BLOB. Tato rozhraní API pro veřejné snímky také umožňují přístup k rozdílům mezi snímky a jejich kopírování.
+* Migrace aplikací a dat z místního prostředí do cloudu za provozu: Zkopírujte místní data a pomocí rozhraní REST API zapište přímo do objektu blob stránky Azure, zatímco místní virtuální počítač pokračuje v běhu. Jakmile se cíl zachytí, můžete rychle převzít služby při selhání virtuálního počítače Azure pomocí těchto dat. Tímto způsobem můžete migrovat virtuální počítače a virtuální disky z místního prostředí do cloudu s minimálními výpadky, protože migrace dat probíhá na pozadí, zatímco budete nadále používat virtuální počítač a výpadky potřebné pro převzetí služeb při selhání budou krátké (v minutách).
+* Sdílený přístup [na základě SAS](../common/storage-sas-overview.md) , který umožňuje scénáře jako více čtenářů a jeden zapisovač s podporou pro řízení souběžnosti.
 
 ## <a name="page-blob-features"></a>Funkce objektů blob stránky
 
 ### <a name="rest-api"></a>REST API
 
-Si přečtěte následující dokument, abyste mohli začít s [vývoj pomocí objekty BLOB stránky](storage-dotnet-how-to-use-blobs.md). Jako příklad podívejte se na tom, jak přístup k objektům BLOB stránky pomocí klientské knihovny pro úložiště pro .NET. 
+Pokud chcete začít s [vývojem pomocí objektů blob stránky](storage-dotnet-how-to-use-blobs.md), přečtěte si následující dokument. Příklad najdete v tématu Jak získat přístup k objektům blob stránky pomocí klientské knihovny pro úložiště pro .NET. 
 
-Následující diagram popisuje celkový vztahy mezi účtem, kontejnery a objekty BLOB stránky.
+Následující diagram popisuje celkové vztahy mezi účtem, kontejnery a objekty blob stránky.
 
-![Snímek obrazovky znázorňující vztahy mezi účtem, kontejnery a objekty BLOB stránky](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure1.png)
+![Snímek obrazovky znázorňující vztahy mezi účtem, kontejnery a objekty blob stránky](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure1.png)
 
-#### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>Vytvoření objektu blob prázdná stránka zadané velikosti
+#### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>Vytvoření prázdného objektu blob stránky zadané velikosti
 
-Chcete-li vytvořit objekt blob stránky, nejdřív vytvoříme **CloudBlobClient** objekt s základní identifikátor URI pro přístup k úložišti objektů blob pro účet úložiště (*pbaccount* obrázek 1) spolu s  **StorageCredentialsAccountAndKey** objektu, jak je znázorněno v následujícím příkladu. Příklad poté ukazuje vytvoření odkazu na **CloudBlobContainer** objektu a následného vytvoření kontejneru (*testvhds*) Pokud ještě neexistuje. Pak pomocí **CloudBlobContainer** objektu, vytvořit odkaz na **CloudPageBlob** objektu tak, že zadáte název objektu blob stránky (os4.vhd) přístup. Chcete-li vytvořit objekt blob stránky, zavolejte [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)a předejte maximální velikost pro tento objekt blob k vytvoření. *BlobSize* musí být násobkem 512 bajtů.
+Pokud chcete vytvořit objekt blob stránky, nejdřív vytvoříme objekt **CloudBlobClient** se základním identifikátorem URI pro přístup k úložišti objektů BLOB pro váš účet úložiště (*pbaccount* na obrázku 1) společně s objektem **StorageCredentialsAccountAndKey** , jak je znázorněno na Následující příklad: Příklad následně ukazuje vytvoření odkazu na objekt **CloudBlobContainer** a pak vytvoření kontejneru (*testvhds*), pokud ještě neexistuje. Pak pomocí objektu **CloudBlobContainer** vytvořte odkaz na objekt **CloudPageBlob** zadáním názvu objektu blob stránky (OS4. VHD) k přístupu. Chcete-li vytvořit objekt blob stránky, zavolejte [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)a předejte maximální velikost objektu blob, který se má vytvořit. *BlobSize* musí být násobkem 512 bajtů.
 
 ```csharp
 using Microsoft.Azure;
@@ -71,45 +71,45 @@ CloudPageBlob pageBlob = container.GetPageBlobReference("os4.vhd");
 pageBlob.Create(16 * OneGigabyteAsBytes);
 ```
 
-#### <a name="resizing-a-page-blob"></a>Změna velikosti objekt blob stránky
+#### <a name="resizing-a-page-blob"></a>Změna velikosti objektu blob stránky
 
-Chcete-li po vytvoření změnit velikost objektů blob stránky, použijte [změnit velikost](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize) metody. Požadovaná velikost by měla být násobkem 512 bajtů.
+Chcete-li po vytvoření změnit velikost objektu blob stránky, použijte metodu [Resize](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize) . Požadovaná velikost by měla být násobkem 512 bajtů.
 
 ```csharp
 pageBlob.Resize(32 * OneGigabyteAsBytes);
 ```
 
-#### <a name="writing-pages-to-a-page-blob"></a>Vytvoření stránek pro objekt blob stránky
+#### <a name="writing-pages-to-a-page-blob"></a>Zápis stránek do objektu blob stránky
 
-Chcete-li zapsat stránky, použijte [CloudPageBlob.WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages) metody.  To umožňuje zapisovat sekvenční sadu stránek až 4MBs. Posun do musí začínat na hranici 512 bajtů (startingOffset % 512 == 0) a ukončí se na hranici 512 - 1.  Následující příklad kódu ukazuje, jak volat **WritePages** pro objekt blob:
+Chcete-li zapisovat stránky, použijte metodu [CloudPageBlob. WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages) .  To vám umožní napsat sekvenční sadu stránek až do 4MBs. Posunutí do zápisu musí být začínat na hranici 512 bajtů (startingOffset% 512 = = 0) a končit na hranici 512-1.  Následující příklad kódu ukazuje, jak volat **WritePages** pro objekt BLOB:
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
 ```
 
-Jakmile požadavek na zápis pro sekvenční sadu stránek úspěšný ve službě blob service a je odolnost proti chybám a odolnosti replikuje, byla potvrzena zápisu a úspěchu se vrátí zpět do klienta.  
+Jakmile je žádost o zápis pro sekvenční sadu stránek ve službě BLOB Service úspěšná a replikuje se na odolnost a odolnost, zápis se potvrdí a úspěch se vrátí zpátky klientovi.  
 
-Následující diagram ukazuje 2 samostatné operace zápisu:
+V níže uvedeném diagramu vidíte dvě samostatné operace zápisu:
 
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
-1.  Operace zápisu začínající na posunu 0 délky 1024 bajtů 
-2.  Operace zápisu začínající na posunu 4096 délky 1 024 
+1.  Operace zápisu začínající na posunu 0 o délce 1024 bajtů 
+2.  Operace zápisu začínající na posunu 4096 o délce 1024 
 
-#### <a name="reading-pages-from-a-page-blob"></a>Čtení stránek z objektů blob stránky
+#### <a name="reading-pages-from-a-page-blob"></a>Čtení stránek z objektu blob stránky
 
-Chcete-li číst stránky, použijte [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray) metodu za účelem čtení rozsah bajtů z objektů blob stránky. To umožňuje stáhnout úplnou objektu blob nebo velikost v bajtech od posunu v objektu blob. Při čtení, není potřeba spustit na více 512 posun. Při čtení bajtů ze stránky NUL, služba vrátí nula bajtů.
+Chcete-li číst stránky, použijte metodu [CloudPageBlob. DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray) pro čtení rozsahu bajtů z objektu blob stránky. Díky tomu můžete stáhnout celý objekt BLOB nebo rozsah bajtů od libovolného posunu v objektu BLOB. Při čtení se posun nemusí spouštět na násobku 512. Při čtení bajtů ze stránky NUL vrátí služba nenulové bajty.
 
 ```csharp
 byte[] buffer = new byte[rangeSize];
 pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSize); 
 ```
 
-Následující obrázek znázorňuje operaci čtení s posunem 256 a velikost rozsahu 4352. Data vrácená je zvýrazněn oranžově. Nuly jsou vráceny na stránkách NUL.
+Následující obrázek znázorňuje operaci čtení s posunem 256 a velikostí rozsahu 4352. Vrácená data jsou zvýrazněna oranžová. Pro stránky NUL jsou vraceny nuly.
 
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
-Pokud máte řídce naplněných objektů blob můžete stáhnout pouze oblasti platný stránky, abyste neplatili za egressing nula bajtů a snižuje latenci stahování.  Chcete-li zjistit, které stránky se zálohují na data, použijte [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges). Potom můžete vytvořit výčet vrácené rozsahy a stáhnout data v každé oblasti. 
+Pokud máte zhuštěný objekt blob, můžete chtít jenom stáhnout platné oblasti stránky, abyste se vyhnuli zaplacení na nenulové bajty a aby se snížila latence stahování.  Chcete-li určit, které stránky jsou zálohovány daty, použijte [CloudPageBlob. GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges). Pak můžete zobrazit výčet vrácených rozsahů a stáhnout data v jednotlivých oblastech. 
 
 ```csharp
 IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges();
@@ -131,24 +131,24 @@ foreach (PageRange range in pageRanges)
 
 #### <a name="leasing-a-page-blob"></a>Zapůjčení objektu blob stránky
 
-Operace zapůjčení objektu Blob vytváří a spravuje zámek na objekt blob pro zápis a operace odstranění. Tato operace je užitečná v situacích, kde objekt blob stránky je přistupováno z několika klientů k zajištění, že pouze jednoho klienta může zapisovat do objektu blob v čase. Disky Azure, například využívá to zapůjčení mechanismus Ujistěte se, že disk spravuje jenom jeden virtuální počítač. Doba trvání uzamknutí může být 15 až 60 sekund, nebo může být nekonečné. Naleznete v dokumentaci k [tady](/rest/api/storageservices/lease-blob) další podrobnosti.
+Operace zapůjčení objektu BLOB vytvoří a spravuje zámek objektu BLOB pro operace zápisu a odstranění. Tato operace je užitečná ve scénářích, kde je objekt blob stránky přistupný z více klientů, aby bylo možné současně zapisovat do objektu BLOB pouze jednoho klienta. Disky Azure například využívají tento mechanismus leasingu k tomu, aby se zajistilo, že se disk spravuje jenom pomocí jediného virtuálního počítače. Doba trvání zámku může být 15 až 60 sekund nebo může být nekonečná. Další podrobnosti najdete [](/rest/api/storageservices/lease-blob) v dokumentaci.
 
-Kromě bohatá rozhraní API REST objekty BLOB stránky také nabízejí sdílený přístup, odolnost a zvýšené zabezpečení. Obsahuje tyto výhody podrobněji další odstavcích. 
+Kromě bohatých rozhraní REST API poskytují objekty blob stránky také sdílený přístup, odolnost a zvýšené zabezpečení. Tyto výhody budeme podrobněji pokrývat v dalších odstavcích. 
 
 ### <a name="concurrent-access"></a>Souběžný přístup
 
-Na stránce objekty BLOB rozhraní REST API a jeho koordinovala mechanismus umožňuje aplikacím přistupovat ke objekty blob stránky z několika klientů. Řekněme například, že budete muset sestavit distribuované cloudové služby, který sdílí úložiště objektů s více uživateli. Může to být webová aplikace obsluhující velkou kolekci imagí několika uživatelům. Jednou z možností pro implementaci to je použití virtuálního počítače s připojenými disky. Nevýhody tohoto stavu (i) omezení, že disk může být připojen pouze na jeden virtuální počítač proto omezit škálovatelnost, flexibilitu a zvýšení rizika. Pokud dojde k potížím s virtuálního počítače nebo služby spuštěné na virtuálním počítači, pak z důvodu zapůjčení, bitová kopie je nedostupné až do vypršení platnosti zapůjčení nebo dojde k přerušení; a (ii) další náklady s Virtuálním počítači IaaS. 
+Objekty blob stránky REST API a její Leasingový mechanismus umožňují aplikacím přístup k objektu blob stránky z více klientů. Řekněme například, že potřebujete vytvořit distribuovanou cloudovou službu, která sdílí objekty úložiště s více uživateli. Může to být webová aplikace obsluhující velkou kolekci imagí několika uživatelům. Jednou z možností implementace této možnosti je použití virtuálního počítače s připojenými disky. Downsides to (i) omezení, že disk lze připojit pouze k jednomu virtuálnímu počítači a tím omezit škálovatelnost, flexibilitu a zvýšení rizik. Pokud dojde k potížím s virtuálním počítačem nebo službou běžící na virtuálním počítači, pak je bitová kopie nepřístupná, dokud nevyprší doba zapůjčení nebo dojde k přerušení. a (II) další náklady na virtuální počítač s IaaS. 
 
-Alternativní možností je použít objekty BLOB stránky přímo prostřednictvím REST API služby Azure Storage. Tato možnost eliminuje potřebu nákladných virtuálních počítačů IaaS, nabízí úplnou flexibilitu přímý přístup z více klientů, zjednodušuje modelu nasazení classic tím, že tím eliminuje nutnost připojení a odpojení disků a odstraňuje riziko problémů ve virtuálním počítači. A nabízí stejnou úroveň výkonu pro operace náhodného čtení a zápisu jako disk
+Alternativním parametrem je použití objektů blob stránky přímo přes Azure Storage rozhraní REST API. Tato možnost eliminuje potřebu nákladných virtuálních počítačů s IaaS, nabízí plnou flexibilitu přímého přístupu od více klientů, zjednodušuje model nasazení Classic tím, že eliminuje nutnost připojení a odpojení disků a eliminuje riziko problémů na virtuálním počítači. A poskytuje stejnou úroveň výkonu pro operace náhodného čtení a zápisu jako disk.
 
 ### <a name="durability-and-high-availability"></a>Odolnost a vysoká dostupnost
 
-Standard a premium storage jsou odolných úložišť, ve kterém se vždy replikují zajistila stálost a vysoká dostupnost dat objektů blob stránky. Další informace o redundance úložiště Azure, najdete v tomto [dokumentaci](../common/storage-redundancy.md). Azure má konzistentně doručit odolnost na podnikové úrovni pro disky IaaS a objekty BLOB, se špičkovou stránky nula procent [s hodinovou chybovost](https://en.wikipedia.org/wiki/Annualized_failure_rate).
+Úložiště úrovně Standard a Premium jsou odolné úložiště, ve kterém jsou data objektů blob stránky vždycky replikovaná, aby se zajistila odolnost a vysoká dostupnost. Další informace o Azure Storage redundanci najdete v této [dokumentaci](../common/storage-redundancy.md). Azure má konzistentně doručovat trvanlivost na podnikové úrovni pro disky IaaS a objekty blob stránky s špičkovou [roční mírou neúspěšného selhání](https://en.wikipedia.org/wiki/Annualized_failure_rate)v oboru.
 
-### <a name="seamless-migration-to-azure"></a>Bezproblémová migrace do Azure
+### <a name="seamless-migration-to-azure"></a>Bezproblémové migrace do Azure
 
-Pro zákazníky a vývojáře, kteří mají zájem o implementaci vlastní přizpůsobené řešení pro zálohování Azure také nabízí přírůstkových snímků, které obsahují pouze rozdíly. Tato funkce se vyhnete náklady na počáteční úplné kopie, což značně snižuje náklady na zálohování. Spolu se schopností efektivní čtení a zkopírujte rozdílová data Toto je další výkonné funkce, která umožňuje ještě větší inovace od vývojářů, což vede do řešení ve své třídě nejlepší zálohování a po havárii (DR) pro obnovení v Azure. Můžete nastavit vlastní zálohování a řešení zotavení po Havárii pro virtuální počítače v Azure s využitím [snímek objektu Blob](/rest/api/storageservices/snapshot-blob) spolu s [získání rozsahů stránek](/rest/api/storageservices/get-page-ranges) rozhraní API a [přírůstkové kopírování objektů Blob](/rest/api/storageservices/incremental-copy-blob) rozhraní API, které je možné pomocí snadno kopírovat přírůstkových dat pro zotavení po Havárii. 
+Zákazníkům a vývojářům, kteří mají zájem o implementaci vlastního vlastního řešení zálohování, nabízí Azure také přírůstkové snímky, které podrží jenom rozdíly. Tato funkce vylučuje náklady na počáteční úplnou kopii, která významně snižuje náklady na zálohování. Společně s možností efektivně číst a kopírovat rozdílová data je to další výkonná funkce, která umožňuje ještě více inovací od vývojářů, což vede k nejlepšímu prostředí pro zálohování a zotavení po havárii (DR) v Azure. Můžete nastavit vlastní řešení zálohování nebo zotavení po havárii pro virtuální počítače v Azure pomocí [snímku objektů BLOB](/rest/api/storageservices/snapshot-blob) spolu s rozhraním API [získat rozsahy stránek](/rest/api/storageservices/get-page-ranges) a [přírůstkové kopírování objektů BLOB](/rest/api/storageservices/incremental-copy-blob) , které můžete použít ke snadnému kopírování přírůstkových dat pro Dr. 
 
-Navíc mnoho podniků má důležité úlohy už běží v místních datových centrech. Pro úlohy migrace do cloudu, jeden z hlavních cílů by doba výpadku potřebné pro kopírování dat a rizika neočekávaných problémů po přepnutí. V mnoha případech může být výpadek showstopper pro migraci do cloudu. Na stránce rozhraní REST API pro objekty BLOB, Azure tento problém řeší tím, že migrace do cloudu s minimálním dopadem na nejdůležitější úlohy. 
+Mnoho podniků navíc má důležité úlohy, které už běží v místních datových centrech. Pro migraci zatížení do cloudu by jedno z hlavních otázek představovalo množství prostojů potřebných ke kopírování dat a riziko neočekávaných problémů po přepnutí. V mnoha případech může být výpadkem showstopper migrace do cloudu. Při použití REST API objektů blob stránky Azure tento problém řeší povolením migrace do cloudu s minimálním přerušením pro kritické úlohy. 
 
-Příklady na pořízení snímku a ze snímku obnovit objekt blob stránky, najdete [nastavení procesu zálohování pomocí přírůstkových snímků](../../virtual-machines/windows/incremental-snapshots.md) článku.
+Příklady, jak pořídit snímek a jak obnovit objekt blob stránky ze snímku, najdete v článku [nastavení procesu zálohování pomocí přírůstkových snímků](../../virtual-machines/windows/incremental-snapshots.md) .

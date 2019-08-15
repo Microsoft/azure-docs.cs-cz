@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: dacurwin
-ms.openlocfilehash: 6dc478f569b94450921e56c05b148bae357fef8e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 83c4d8a90bf9ae348026c14beaec4975636b29b5
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689134"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018789"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -124,9 +124,9 @@ Jakmile obnovíte Stav systému jako soubory pomocí služby Azure Recovery Serv
 
 1. Následující příkazy použijte k restartování serveru v *režimu opravy adresářových služeb*. Na příkazovém řádku se zvýšenými oprávněními:
 
-    ```
-    PS C:\> Bcdedit /set safeboot dsrepair
-    PS C:\> Shutdown /r /t 0
+    ```cmd
+    Bcdedit /set safeboot dsrepair
+    Shutdown /r /t 0
     ```
 
 2. Po restartování otevřete modul snap-in Zálohování Windows Serveru. Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **zálohování Windows serveru**v počítači nebo na serveru.
@@ -166,7 +166,7 @@ Jakmile obnovíte Stav systému jako soubory pomocí služby Azure Recovery Serv
 Zálohování stavu systému zahrnuje data služby Active Directory. Pomocí následujících kroků obnovte Doména služby Active Directory služby (služba AD DS) z aktuálního stavu do předchozího stavu.
 
 1. Restartujte řadič domény v režimu obnovení adresářových služeb (DSRM).
-2. Použijte [následující postup k](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) obnovení služba AD DS pomocí rutin zálohování Windows serveru.
+2. Použijte následující postup [](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) k obnovení služba AD DS pomocí rutin zálohování Windows serveru.
 
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Řešení potíží s nezdařeným obnovením stavu systému
@@ -189,14 +189,14 @@ Pokud se předchozí proces použití stavu systému úspěšně nedokončí, po
 
 5. Když otevřete příkazový řádek v režimu správce, spusťte následující příkaz, který získá verzi zálohy stavu systému.
 
-    ```
+    ```cmd
     Wbadmin get versions -backuptarget:<Volume where WindowsImageBackup folder is copied>:
     ```
     ![získat verze zálohy stavu systému](./media/backup-azure-restore-system-state/winre-4.png)
 
 6. Spusťte následující příkaz, který načte všechny svazky, které jsou k dispozici v záloze.
 
-    ```
+    ```cmd
     Wbadmin get items -version:<copy version from above step> -backuptarget:<Backup volume>
     ```
 
@@ -204,12 +204,12 @@ Pokud se předchozí proces použití stavu systému úspěšně nedokončí, po
 
 7. Následující příkaz obnoví všechny svazky, které jsou součástí zálohy stavu systému. Všimněte si, že tento krok obnovuje jenom důležité svazky, které jsou součástí stavu systému. Všechna data, která nejsou v systému, se vymažou.
 
-    ```
+    ```cmd
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
      ![získat verze zálohy stavu systému](./media/backup-azure-restore-system-state/winre-6.png)
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Teď, když jste obnovili své soubory a složky, můžete [Spravovat zálohy](backup-azure-manage-windows-server.md).

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: c91c09da31e4ecf42257b8f9c86f25c6ec39b9df
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734644"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976774"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Jak se připojit ke zdrojům dat
 ## <a name="introduction"></a>Úvod
@@ -28,7 +28,7 @@ Při použití výchozího zobrazení dlaždice je tato nabídka k dispozici na 
 
 Při použití zobrazení seznamu je nabídka k dispozici na panelu hledání v horní části okna portálu.
 
- ![Otevření sestavy SQL Server Reporting Services ve Správci sestav z panelu hledání](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![Otevření sestavy SQL Server Reporting Services ve Správci sestav](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>Podporované klientské aplikace
 Při použití možnosti otevřít v... v nabídce zdrojů dat na portálu Azure Data Catalog musí být na klientském počítači nainstalovaná správná klientská aplikace.

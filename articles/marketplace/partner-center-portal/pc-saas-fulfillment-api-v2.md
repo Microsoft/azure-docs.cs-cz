@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: a8196370a93a6ce8eed83002397c2f09efbc777f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358578"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016045"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>Rozhraní API pro splnění SaaS verze 2 
 
@@ -153,7 +153,7 @@ Vnitřní chyba serveru
 
 ### <a name="subscription-api"></a>Rozhraní API pro předplatné
 
-Rozhraní API pro předplatné podporuje následující operace HTTPS: **Získat**, vystavit, **opravit**a **Odstranit**.
+Rozhraní API pro předplatné podporuje následující operace HTTPS: **Získat**,vystavit, **opravit**a **Odstranit**.
 
 
 #### <a name="list-subscriptions"></a>Seznam předplatných
@@ -282,7 +282,7 @@ Response Body:
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
             "endDate": "2019-06-29",
-            "termUnit": "P1M"
+            "termUnit": "P1M" //where P1M: Monthly, P1Y: Yearly 
         },
 }
 ```
@@ -573,7 +573,7 @@ Kód: 202<br>
 Partner inicioval volání odhlášení odběru předplatného SaaS.<br>
 
 Kód: 400<br>
-Odstraní se v rámci předplatného **, které není** v `allowedCustomerOperations`.
+Odstraní se v rámci předplatného, `allowedCustomerOperations`které není v.
 
 Kód: 403<br>
 Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
@@ -789,6 +789,8 @@ Kód: 500<br> Vnitřní chyba serveru
 ## <a name="implementing-a-webhook-on-the-saas-service"></a>Implementace Webhooku ve službě SaaS
 
 Vydavatel musí implementovat Webhook v této službě SaaS, aby proaktivně upozornil uživatele na změny ve své službě. Očekává se, že služba SaaS před provedením akce v oznámení Webhooku zavolá rozhraní API operací k ověření a autorizaci.
+
+Aby bylo zajištěno zabezpečení komunikace, společnost Microsoft jako součást volání zahrnuje token Azure Active Directory JWT v autorizační hlavičce. Poskytovatelé SaaS jsou doporučováni k ověření tokenu JWT, jak je popsáno v článku [Microsoft Identity Platform Access tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) , aby bylo zajištěno, že budou přijímána pouze platná volání.
 
 ```json
 {

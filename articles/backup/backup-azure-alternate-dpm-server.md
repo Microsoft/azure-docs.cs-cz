@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: e3d38e9b5e1b9b9f827476acf7e2e2ecab632424
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0a6d1fd73d99cf15137e937dbfe2336d49a63d90
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688812"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955043"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Obnovení dat z Azure Backup Serveru
 Pomocí Azure Backup Server můžete obnovit data, která jste zálohovali do trezoru Recovery Services. Tento postup je integrovaný do konzoly pro správu Azure Backup Server a je podobný jako pracovní postup obnovení pro jiné součásti Azure Backup.
@@ -45,7 +45,7 @@ Postup obnovení dat z Azure Backup Server:
     V dolním podokně se zobrazí seznam souborů a složek, které se dají Procházet a obnovovat do libovolného umístění.
 
     ![Body obnovení externího serveru DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Klikněte pravým tlačítkem myši na příslušnou položku a klikněte na tlačítko **obnovit**.
+5. Pravým tlačítkem myši klikněte na příslušnou položku a klikněte na tlačítko **obnovit**.
 
     ![Externí obnovení DPM](./media/backup-azure-alternate-dpm-server/recover.png)
 6. Zkontrolujte **Výběr obnovení**. Ověřte data a čas obnovení záložní kopie a také zdroj, ze kterého byla vytvořena záložní kopie. Pokud je výběr nesprávný, kliknutím na tlačítko **Storno** přejděte zpět na kartu obnovení a vyberte příslušný bod obnovení. Pokud je výběr správný, klikněte na tlačítko **Další**.
@@ -57,7 +57,7 @@ Postup obnovení dat z Azure Backup Server:
 8. Vyberte možnost související s **vytvořením kopie**, **přeskočení**nebo **přepsání**.
 
    * **Vytvořit kopii** – vytvoří kopii souboru, pokud dojde ke kolizi názvů.
-   * **Přeskočit** – Pokud dojde ke kolizi názvů, neobnoví soubor, který ponechá původní soubor.
+   * **Přeskočit** – Pokud dojde ke kolizi názvů, neobnovuje soubor, což ponechá původní soubor.
    * **Přepsat** – Pokud dojde ke kolizi názvů, přepíše existující kopii souboru.
 
      Vyberte odpovídající možnost pro **obnovení zabezpečení**. Můžete použít nastavení zabezpečení cílového počítače, ve kterém se data obnovují, nebo nastavení zabezpečení, která byla platná pro produkt v době vytvoření bodu obnovení.

@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
-ms.date: 07/07/2019
+ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 822b8bd1d0f5be854b6d345d68fcdb680b2ef1c4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1581a62f0999cf502feaad31d2c884f4d171e770
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882564"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019656"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database rozdílů v jazyce T-SQL spravované instance od SQL Server
 
@@ -309,12 +309,12 @@ Informace o agentovi SQL Server najdete v tématu [agent SQL Server](https://doc
 
 ### <a name="tables"></a>Tabulky
 
-Následující tabulky nejsou podporovány:
+Následující typy tabulek nejsou podporovány:
 
-- `FILESTREAM`
-- `FILETABLE`
-- `EXTERNAL TABLE`
-- `MEMORY_OPTIMIZED` 
+- [SOUBOREM](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server)
+- [OBJEKTU FILETABLE](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server)
+- [externí tabulka](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) PolyBase
+- [MEMORY_OPTIMIZED](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (Nepodporováno pouze v Pro obecné účely vrstvě)
 
 Informace o tom, jak vytvářet a měnit tabulky, najdete v tématu [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) a [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
 
@@ -468,10 +468,13 @@ Následující možnosti databáze jsou nastaveny nebo přepsány a nelze je zm�
 
 Určitá 
 
+- Zálohování poškozených databází může být obnoveno v závislosti na typu poškození, ale automatizované zálohování nebude provedeno, dokud nebude poškození opraveno. Zajistěte, aby `DBCC CHECKDB` byl spuštěn na instanci zdroje a aby `WITH CHECKSUM` se zabránilo tomuto problému, použijte zálohování.
+- Obnovení souboru databáze, která obsahuje jakákoli omezení popsaná v tomto dokumentu ( `FILESTREAM` například nebo `FILETABLE` objekty), nelze obnovit ve spravované instanci. `.BAK`
 - `.BAK`soubory, které obsahují víc zálohovacích skladů, se nedají obnovit. 
 - `.BAK`soubory, které obsahují více souborů protokolu, nelze obnovit.
-- Obnovení se nezdařilo, pokud `FILESTREAM` . bak obsahuje data.
-- Zálohy obsahující databáze, které mají aktivní objekty v paměti, nelze obnovit v instanci Pro obecné účely. Informace o příkazech Restore naleznete [](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)v tématu Restore restatements.
+- Zálohy obsahující databáze větší než 8TB, aktivní objekty OLTP v paměti nebo více než 280 souborů nemohou být obnoveny v instanci Pro obecné účely. 
+- Zálohy, které obsahují databáze větší než 4 TB nebo objekty OLTP v paměti s celkovou velikostí větší, než je velikost popsaná v části [omezení prostředků](sql-database-managed-instance-resource-limits.md) , nelze obnovit v instanci pro důležité obchodní informace.
+Informace o příkazech Restore naleznete [](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)v tématu Restore restatements.
 
 ### <a name="service-broker"></a>Služba Service Broker
 
@@ -548,11 +551,6 @@ V tomto příkladu existující databáze fungují i nadále a můžou růst bez
 
 [Počet zbývajících souborů můžete identifikovat](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) pomocí systémových zobrazení. Pokud dosáhnete tohoto limitu, zkuste [vyprázdnit a odstranit některé menší soubory pomocí příkazu DBCC SHRINKFILE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) nebo přepněte na [pro důležité obchodní informaceovou vrstvu, která nemá toto omezení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
-### <a name="incorrect-configuration-of-the-sas-key-during-database-restore"></a>Nesprávná konfigurace klíče SAS během obnovování databáze
-
-`RESTORE DATABASE`to `CREDENTIAL` znamená, že soubor. bak se neustále znovu pokusí přečíst soubor. bak a po dlouhou dobu vrátí chybu, pokud je nesprávný sdílený přístupový podpis. Před obnovením databáze spusťte příkaz RESTORE HEADERONLY získáte, abyste se ujistili, že klíč SAS je správný.
-Ujistěte se, že jste odebrali `?` úvodní z klíče SAS, který je generován pomocí Azure Portal.
-
 ### <a name="tooling"></a>Nástroje
 
 Datové nástroje SQL Server Management Studio a SQL Server mohou mít při přístupu ke spravované instanci problémy.
@@ -624,11 +622,6 @@ Moduly CLR umístění do spravované instance a propojené servery nebo distrib
 Nemůžete `BACKUP DATABASE ... WITH COPY_ONLY` provést na databázi, která je zašifrovaná pomocí transparentní šifrování dat pro správu spravovaných službou (TDE). TDE spravované službou vynutí šifrování záloh pomocí interního TDE klíče. Klíč nelze exportovat, takže nelze obnovit zálohu.
 
 **Odstraníte** Použijte automatické zálohování a obnovení k bodu v čase nebo použijte místo toho [TDE spravované zákazníkem (BYOK)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . Šifrování můžete také zakázat v databázi.
-
-### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>Obnovení bodu v čase podle časového pásma nastaveného na zdrojové instanci
-
-Obnovení k bodu v čase aktuálně interpretuje čas k obnovení do v následujícím časovém pásmu zdrojové instance, a to pomocí následujícího času UTC.
-Další podrobnosti najdete v podrobnostech o [známých problémech v časovém pásmu spravované instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues) .
 
 ## <a name="next-steps"></a>Další postup
 

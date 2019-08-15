@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 012057c7d01924ab1998a010b6ea0c7d83651a4d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 01f764d96eacdc94fd90b4f695c4b774a6ded5c5
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405916"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967450"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopírování dat z Phoenixu s využitím Azure Data Factory 
 
@@ -28,6 +28,10 @@ Tento článek ukazuje, jak použít aktivitu kopírování ke zkopírování da
 Kopírování dat z Phoenix do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
+
+## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -41,7 +45,7 @@ Phoenix propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Phoenix** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Phoenix** | Ano |
 | host | IP adresu nebo název hostitele serveru Phoenix. (to znamená 192.168.222.160)  | Ano |
 | port | Port TCP, který Phoenix server používá k naslouchání pro připojení klientů. Výchozí hodnota je 8765. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ne |
 | httpPath | Částečné adresa URL odpovídající Phoenix serveru. (to znamená /gateway/sandbox/phoenix/version). Zadejte `/hbasephoenix0` při použití HDInsights clusteru.  | Ne |
@@ -53,7 +57,7 @@ Phoenix propojené služby jsou podporovány následující vlastnosti:
 | useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační Autority ze systémového úložiště důvěryhodnosti nebo ze zadaného souboru PEM. Výchozí hodnota je false.  | Ne |
 | allowHostNameCNMismatch | Určuje, jestli se vyžaduje název certifikátu SSL vydaný certifikační Autority tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je false.  | Ne |
 | allowSelfSignedServerCert | Určuje, jestli se má povolit certifikáty podepsané svým držitelem ze serveru. Výchozí hodnota je false.  | Ne |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!NOTE]
 >Pokud váš cluster nepodporuje rychlé relace například HDInsight, explicitně přidat index uzlu na konci nastavení cesty k protokolu http, zadejte třeba znak `/hbasephoenix0` místo `/hbasephoenix`.
@@ -88,7 +92,7 @@ Ke zkopírování dat z Phoenix, nastavte vlastnost typ datové sady na **Phoeni
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **PhoenixObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **PhoenixObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -117,7 +121,7 @@ Ke zkopírování dat z Phoenix, nastavte typ zdroje v aktivitě kopírování d
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **PhoenixSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PhoenixSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: d4a77fc1756b0fa9decb6d3a84760beb1e700863
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 46e44804ddbabd8bf5620ad9516f1ca2d5017bfa
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614898"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019312"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení clusteru a inovace ve službě Azure Kubernetes Service (AKS)
 
@@ -188,7 +188,7 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 Následně můžete upgradovat cluster AKS pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Proces upgradu bezpečně cordons pozastavuje jednoho uzlu současně, naplánuje podů na zbývající uzly a pak nasadí nový uzel s nejnovější verzí OS a Kubernetes.
 
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.8
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION
 ```
 
 Další informace o upgradech v AKS najdete v tématu [podporované verze Kubernetes v AKS][aks-supported-versions] a [upgrade clusteru AKS][aks-upgrade].
@@ -207,7 +207,7 @@ Pokud chcete lepší kontrolu intervalem přes při restartování dochází, `k
 
 Další informace o tom, jak zpracovat restartování uzlu, najdete v tématu [použití aktualizací zabezpečení a jádra na uzlech v AKS][aks-kured].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tento článek se zaměřuje na tom, jak zabezpečit AKS cluster. K provedení některých z těchto oblastí, naleznete v následujících článcích:
 

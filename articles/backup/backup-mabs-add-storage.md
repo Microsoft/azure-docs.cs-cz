@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 38d86d55be119dab3645fb4bedb9ba4bf910bcab
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 48d58ac303a843c627067c9a0287628c35b65f66
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688968"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019066"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
 
@@ -81,7 +81,7 @@ Syntaktick
 
 `Parameter Set: Volume`
 
-```
+```powershell
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
 Následující snímek obrazovky ukazuje rutinu Update-DPMDiskStorage v okně PowerShellu.

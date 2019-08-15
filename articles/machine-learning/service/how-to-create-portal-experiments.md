@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: a5db2c1c40c9c6f5c05205b9b2c652d2e23cf229
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2f6d45613120d02dd96a9fe0a14ce388d20cf0c6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848241"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990575"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytváření, zkoumání a nasazení automatických experimentů strojového učení v Azure Portal (Preview)
 
@@ -66,6 +66,10 @@ Vyberte **vytvořit experiment** a naplňte na nový formulář pro **Automatick
 1. Vyberte kontejner úložiště.
 
 1. Vyberte datový soubor z kontejneru úložiště nebo nahrajte soubor z místního počítače do kontejneru. Verze Public Preview podporuje jenom místní nahrávání souborů a účty Azure Blob Storage.
+    >[!Important]
+    > Požadavky na školicí data:
+    >* Data musí být v tabulkovém formátu.
+    >* Hodnota, kterou chcete odhadnout (cílový sloupec), musí být k dispozici v datech.
 
     [![Vybrat datový soubor](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
 
@@ -173,7 +177,7 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
     + Možnost 2: Chcete-li nasadit konkrétní model iterace z tohoto experimentu, přejděte k podrobnostem v modelu a otevřete stránku s podrobnostmi o spuštění a vyberte nasadit model.
 1. Naplnit podokno **nasazení modelu**
 
-    Pole| Hodnota
+    Pole| Value
     ----|----
     Název nasazení| Zadejte jedinečný název pro vaše nasazení.
     Popis nasazení| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.

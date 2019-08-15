@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 8e24489ad2909879b035a08316e66788034e99bc
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 5ef1749217dd8980892d7bf933cbe1412929fbbd
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377194"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976982"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Rozšíření zpráv pro zprávy ze zařízení na Cloud IoT Hub (Preview)
 
-*Rozšiřování zpráv* je schopnost IoT Hub k razítku zpráv s  dalšími informacemi, než se zprávy odešlou do určeného koncového bodu. Jedním z důvodů použití rozšíření zpráv je zahrnutí dat, která je možné použít ke zjednodušení zpracování po směru. Například obohacení zpráv telemetrie zařízení pomocí značky s dvojitou silou zařízení může snížit zatížení zákazníky, aby pro tyto informace volalo volání rozhraní API zařízení.
+*Rozšiřování zpráv* je schopnost IoT Hub k razítku zpráv s dalšími informacemi, než se zprávy odešlou do určeného koncového bodu. Jedním z důvodů použití rozšíření zpráv je zahrnutí dat, která je možné použít ke zjednodušení zpracování po směru. Například obohacení zpráv telemetrie zařízení pomocí značky s dvojitou silou zařízení může snížit zatížení zákazníky, aby pro tyto informace volalo volání rozhraní API zařízení.
 
 ![Tok rozšíření zpráv](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
@@ -29,9 +29,9 @@ Rozšíření zprávy má tři klíčové prvky:
 
 * Jeden nebo více [koncových bodů](iot-hub-devguide-endpoints.md) , pro které by mělo být rozšíření použito.
 
-Klíčem může být libovolný řetězec.
+**Klíč** je řetězec. Klíč může obsahovat jenom alfanumerické znaky nebo tyto speciální znaky: spojovník (`-`), podtržítko (`_`) a perioda (`.`).
 
-Hodnota může být libovolná z následujících příkladů:
+**Hodnota** může být libovolná z následujících příkladů:
 
 * Libovolný statický řetězec. Dynamické hodnoty, jako jsou podmínky, logika, operace a funkce, nejsou povoleny. Pokud například vyvíjíte aplikaci SaaS, kterou používá několik zákazníků, můžete každému zákazníkovi přiřadit identifikátor a tento identifikátor zpřístupnit v aplikaci. Po spuštění aplikace IoT Hub označí zprávy telemetrie zařízení pomocí identifikátoru zákazníka, aby bylo možné zpracovat zprávy jinak pro každého zákazníka.
 

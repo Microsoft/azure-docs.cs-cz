@@ -1,6 +1,6 @@
 ---
-title: Průběžná integrace a doručování ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Další informace o použití průběžnou integraci a doručování kanálů Data Factory přesunout z jednoho prostředí (vývojové, testovací, produkční) do jiného.
+title: Průběžná integrace a doručování v Azure Data Factory | Microsoft Docs
+description: Naučte se používat průběžnou integraci a doručování k přesunu Data Factory kanálů z jednoho prostředí (vývoj, testování, produkce) do jiného.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,133 +8,145 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 76962975705ff53a292f41a0a54e42c5f2991a2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c090d9a864bfb5218836627a5579cd3089387af8
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002559"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013892"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
-Průběžná integrace spočívá v testování každé změny udělat, aby vašeho základu kódu automaticky a co nejdříve. Průběžné doručování se řídí testování, který se stane během průběžnou integraci a nasdílí změny do pracovní nebo produkční systém.
+## <a name="overview"></a>Přehled
 
-Pro službu Azure Data Factory průběžná integrace a doručování znamená přesun kanálů Data Factory z jednoho prostředí (vývojové, testovací, produkční) do jiného. Průběžná integrace a doručování proveďte můžete integrace uživatelské rozhraní služby Data Factory pomocí šablony Azure Resource Manageru. Uživatelské rozhraní služby Data Factory můžete vygenerovat šablonu Resource Manageru, když vyberete **šablony ARM** možnosti. Když vyberete **šablony ARM exportovat**, portálu vygeneruje šablony Resource Manageru pro vytváření dat a konfigurační soubor, který zahrnuje všechny řetězce připojení a další parametry. Pak budete muset vytvořit jeden konfigurační soubor pro každé prostředí (vývojové, testovací, produkčním prostředí). Hlavní soubor šablony Resource Manageru zůstává stejná pro všechna prostředí.
+Nepřetržitá integrace je postup testování každé změny v základu kódu, a to co nejdříve. Průběžné doručování se řídí testováním, které se provádí během nepřetržité integrace a vkládání změn do pracovního nebo produkčního systému.
 
-Pro zavedení devět po minutách a ukázku této funkce z následujícího videa:
+V Azure Data Factory průběžná integrace & doručována znamená přesunutí Data Factory kanálů z jednoho prostředí (vývoj, testování, produkce) do jiného. Pokud chcete průběžnou integraci & doručování, můžete použít integraci Data Factory UX s Azure Resource Managermi šablonami. Data Factory UX může vytvořit šablonu Správce prostředků z rozevírací nabídky **šablony ARM** . Když vyberete **Exportovat šablonu ARM**, portál vygeneruje šablonu správce prostředků pro objekt pro vytváření dat a konfigurační soubor, který obsahuje všechny řetězce připojení a další parametry. Pak můžete vytvořit jeden konfigurační soubor pro každé prostředí (vývoj, testování, produkce). Hlavní soubor šablony Správce prostředků zůstává stejný pro všechna prostředí.
+
+Po devět minut Úvod a ukázku této funkce se podívejte na toto video:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="create-a-resource-manager-template-for-each-environment"></a>Vytvoření šablony Resource Manageru pro jednotlivá prostředí
-Vyberte **šablony ARM exportovat** pro export šablony Resource Manageru pro vaši službu data factory ve vývojovém prostředí.
+## <a name="continuous-integration-lifecycle"></a>Životní cyklus nepřetržité integrace
+
+Níže je ukázkový Přehled životního cyklu průběžná integrace a doručování v datové továrně Azure nakonfigurované pomocí Azure Repos Git. Další informace o tom, jak nakonfigurovat úložiště Git, najdete [v tématu Správa zdrojového kódu v Azure Data Factory](source-control.md).
+
+1.  Vývojovou datovou továrnu vytvoří a nakonfiguruje s Azure Repos Git, kde všichni vývojáři mají oprávnění vytvářet Data Factory prostředky, jako jsou kanály a datové sady.
+
+1.  Vzhledem k tomu, že vývojáři provádějí změny ve své větvi funkčních větví, ladí jejich kanál s nejnovějšími změnami. Další informace o tom, jak ladit spuštění kanálu, najdete v tématu [iterativní vývoj a ladění pomocí Azure Data Factory](iterative-development-debugging.md).
+
+1.  Jakmile se vývojářům splní jejich změny, vytvoří žádost o přijetí změn ze své větve funkce do hlavní větve nebo do větve pro spolupráci, aby bylo možné jejich změny zkontrolovat v partnerských vztazích.
+
+1.  Po schválení žádosti o přijetí změn a jejich sloučení do hlavní větve se můžou publikovat do továrny pro vývoj.
+
+1.  Když je tým připraven k nasazení změn do testovací továrny a následně do produkční továrny, exportujte šablonu Správce prostředků z hlavní větve.
+
+1.  Exportovaná šablona Správce prostředků bude nasazena s různými soubory parametrů do testovací továrny a produkční továrny.
+
+## <a name="create-a-resource-manager-template-for-each-environment"></a>Vytvoření šablony Správce prostředků pro každé prostředí
+
+V rozevíracím seznamu **šablon ARM** vyberte **Exportovat šablonu ARM** a exportujte šablonu správce prostředků pro vaši datovou továrnu ve vývojovém prostředí.
 
 ![](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-Potom přejděte na objekt pro vytváření dat testovací a produkční data factory a vyberte **šablony ARM Import**.
+V továrnách testovacích a produkčních dat vyberte **Importovat šablonu ARM**. Tato akce přejde do Azure Portal, kde můžete importovat exportovanou šablonu. Vyberte **vytvořit vlastní šablonu v editoru** a otevřete tak editor šablon Správce prostředků.
 
-![](media/continuous-integration-deployment/continuous-integration-image2.png)
+![](media/continuous-integration-deployment/continuous-integration-image3.png) 
 
-Tím přejdete na webu Azure portal, kde můžete importovat vyexportované šablony. Vyberte **vytvořit vlastní šablonu v editoru** a potom **načíst soubor** a vyberte vygenerované šablony Resource Manageru. Zadejte nastavení a data factory a celý kanál se importují v produkčním prostředí.
-
-![](media/continuous-integration-deployment/continuous-integration-image3.png)
+Klikněte na **načíst soubor** a vyberte vygenerovanou šablonu správce prostředků.
 
 ![](media/continuous-integration-deployment/continuous-integration-image4.png)
 
-Vyberte **načíst soubor** vyberte vyexportované šablony Resource Manageru a zadejte všechny hodnoty konfigurace (například propojené služby).
+V podokně nastavení zadejte hodnoty konfigurace, například přihlašovací údaje k propojeným službám. Až budete hotovi, kliknutím na **koupit** nasaďte šablonu správce prostředků.
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
 
-**Připojovací řetězce**. Můžete najít informace potřebné k vytvoření připojovací řetězce v článcích o jednotlivých konektorech. Například pro službu Azure SQL Database, najdete v článku [kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory](connector-azure-sql-database.md). Chcete-li ověřit správný připojovací řetězec – pro propojenou službu, například – můžete také otevřít zobrazení kódu pro prostředek v Uživatelském rozhraní služby Data Factory. V zobrazení kódu ale heslo nebo účet klíč připojovacího řetězce se odstraní. Chcete-li otevřít zobrazení kódu, vyberte ikonu zvýrazněný na následujícím snímku obrazovky.
+### <a name="connection-strings"></a>Připojovací řetězce
 
-![Otevřete zobrazení kódu zobrazíte připojovací řetězec](media/continuous-integration-deployment/continuous-integration-codeview.png)
+Informace o tom, jak nakonfigurovat připojovací řetězce, najdete v článku o jednotlivých konektorech. Například pro Azure SQL Database, přečtěte si téma [kopírování dat do nebo z Azure SQL Database pomocí Azure Data Factory](connector-azure-sql-database.md). Chcete-li ověřit připojovací řetězec, můžete otevřít zobrazení kódu pro prostředek v prostředí Data Factoryho uživatelského rozhraní. V zobrazení kódu je odstraněna část hesla nebo klíč účtu v připojovacím řetězci. Chcete-li otevřít zobrazení kódu, vyberte ikonu zvýrazněnou na následujícím snímku obrazovky.
 
-## <a name="continuous-integration-lifecycle"></a>Životní cyklus kontinuální integrace
-Tady je celý životní cyklus pro průběžnou integraci a doručování, které můžete použít po povolení integrace Azure úložiště Git v Uživatelském rozhraní služby Data Factory:
+![Otevřete zobrazení kódu a podívejte se na připojovací řetězec.](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
-1.  Nastavte si vývojové datové továrny pomocí úložiště Azure, ve kterém všichni vývojáři mohou vytvářet prostředky Data Factory jako kanály, datové sady a tak dále.
+## <a name="automate-continuous-integration-with-azure-pipelines-releases"></a>Automatizace kontinuální integrace s Azure Pipelinesmi verzemi
 
-1.  Vývojáři pak lze změnit prostředky, například kanály. Jak získávají své změny, můžete vybrat **ladění** na tom, jak se kanál poběží s nejnovější změny.
+Níže je uvedený Průvodce nastavením verze Azure Pipelines, která automatizuje nasazení datové továrny do více prostředí.
 
-1.  Poté, co vývojáři spokojeni s jejich změny, může vytvořit žádost o přijetí změn ze své větve v hlavní větvi (nebo větve spolupráci) zobrazíte jejich změny zkontroloval partnerských uzlů.
-
-1.  Jakmile jsou změny v hlavní větvi, můžete publikovat k objektu pro vytváření vývoje tak, že vyberete **publikovat**.
-
-1.  Když tým je připraven k podpoře změny objekt pro vytváření testovací a produkční objekt pro vytváření, se můžete exportovat šablonu Resource Manageru z hlavní větve nebo z jiné větve v případě, že jejich hlavní větev zálohuje živé vývoje služby Data Factory.
-
-1.  Exportovaná šablona Resource Manageru můžete nasadit s různými soubory parametrů pro objekt pro vytváření testovací a produkční objekt pro vytváření.
-
-## <a name="automate-continuous-integration-with-azure-pipelines-releases"></a>Automatizovat průběžné integrace s Azure kanály vydané verze
-
-Tady je postup nastavení vydání verze Azure kanály, abyste mohli automatizovat nasazení služby data factory do různých prostředí.
-
-![Diagram průběžnou integraci s kanály Azure](media/continuous-integration-deployment/continuous-integration-image12.png)
+![Diagram kontinuální integrace s Azure Pipelines](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Požadavky
 
--   Předplatné Azure propojené s Team Foundation Server nebo úložiště Azure pomocí [*koncový bod služby Azure Resource Manageru*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
+-   Předplatné Azure propojené s Team Foundation Server nebo Azure Repos pomocí koncového [bodu služby Azure Resource Manager](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
--   Objekt pro vytváření dat s nakonfigurovanou integraci s Azure úložiště Git.
+-   Data Factory nakonfigurovaná s Azure Repos Integration Git.
 
--    [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) obsahující tajné klíče.
+-    [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) obsahující tajná klíčová pole pro každé prostředí.
 
-### <a name="set-up-an-azure-pipelines-release"></a>Nastavte si o Azure kanály verzi
+### <a name="set-up-an-azure-pipelines-release"></a>Nastavení verze Azure Pipelines
 
-1.  Přejděte na stránku úložiště Azure ve stejném projektu, jako je nakonfigurovaný pomocí služby Data Factory.
+1.  V [uživatelském prostředí Azure DevOps](https://dev.azure.com/)otevřete projekt nakonfigurovaný s vaším Data Factory.
 
-1.  Klikněte na tlačítko v horní nabídce **kanály Azure** &gt; **verze** &gt; **definice vydané verze vytvořit**.
+1.  Na levé straně stránky klikněte na **kanály** a pak vyberte **vydání**.
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-1.  Vyberte **prázdný proces** šablony.
+1.  Vyberte **Nový kanál** , nebo pokud máte kanály, **nové**a pak **Nový kanál verze**.
 
-1.  Zadejte název nového prostředí.
+1.  Vyberte **prázdnou šablonu úlohy** .
 
-1.  Přidání artefaktu Git a vyberte stejné úložiště nakonfigurovat pomocí služby Data Factory. Zvolte `adf_publish` jako výchozí větev s nejnovější verzí výchozí.
+    ![](media/continuous-integration-deployment/continuous-integration-image13.png)
+
+1.  Do pole **název fáze** zadejte název vašeho prostředí.
+
+1.  Vyberte **Přidat artefakt**a vyberte stejné úložiště nakonfigurované s vaším Data Factory. Vyberte `adf_publish` výchozí větev s nejnovější výchozí verzí.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
-1.  Přidáte úkol nasazení Azure Resource Manageru:
+1.  Přidat úlohu nasazení Azure Resource Manager:
 
-    a.  Vytvořit nový úkol, vyhledejte **nasazení skupiny prostředků Azure**a přidejte ji.
+    a.  V zobrazení fáze klikněte na odkaz **Zobrazit úlohy fáze** .
 
-    b.  V úloze nasazení zvolte předplatné, skupinu prostředků a umístění pro cílový objekt pro vytváření dat a v případě potřeby zadejte přihlašovací údaje.
+    ![](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    c.  Vyberte **vytvořit nebo aktualizovat skupinu prostředků** akce.
+    b.  Vytvoří nový úkol. Vyhledejte **nasazení skupiny prostředků Azure**a klikněte na **Přidat**.
 
-    d.  Vyberte **...** v **šablony** pole. Procházet šablony Resource Manageru (*ARMTemplateForFactory.json*), který vytvořil akci publikovat na portálu. Vyhledejte tento soubor ve složce `<FactoryName>` z `adf_publish` větve.
+    c.  V úloze nasazení vyberte předplatné, skupinu prostředků a umístění pro cílový Data Factory a v případě potřeby zadejte přihlašovací údaje.
 
-    e.  To samé udělá pro soubor parametrů. Zvolte správný soubor v závislosti na tom, jestli jste vytvořili kopii nebo používáte výchozí soubor *ARMTemplateParametersForFactory.json*.
+    d.  V rozevíracím seznamu akce vyberte **vytvořit nebo aktualizovat skupinu prostředků**.
 
-    f.  Vyberte **...** vedle položky **přepsání parametrů šablony** pole a zadejte informace pro cílové služby Data Factory. Pro přihlašovací údaje, které pocházejí ze služby key vault, použijte stejný název pro tajný kód v následujícím formátu: název tajného klíče za předpokladu, že je `cred1`, zadejte `"$(cred1)"` (mezi uvozovky).
+    e.  Vybrat **...** v poli **Šablona** . Vyhledejte šablonu Azure Resource Manager vytvořením pomocí kroku **Import šablony ARM** v části [Vytvoření šablony Resource Manageru pro každé prostředí](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment). Vyhledejte tento soubor ve složce `<FactoryName>` `adf_publish` větve.
+
+    f.  Vybrat **...** v **poli parametry šablony.** pro výběr souboru parametrů. V závislosti na tom, zda jste vytvořili kopii nebo jste použili výchozí soubor *ARMTemplateParametersForFactory. JSON*, vyberte správný soubor.
+
+    g.  Vybrat **...** vedle pole **přepsat parametry šablony** a vyplňte informace pro cílový Data Factory. Pro přihlašovací údaje, které pocházejí z trezoru klíčů, zadejte název tajného kódu mezi dvojité uvozovky. Například pokud je `cred1`název tajného klíče, zadejte `"$(cred1)"`pro jeho hodnotu.
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-    g. Vyberte **přírůstkové** režimu nasazení.
+    h. Vyberte režim **přírůstkového** nasazení.
 
     > [!WARNING]
-    > Pokud vyberete **Complete** režimu nasazení existující prostředky budou odstraněny, včetně všech prostředků v cílové skupině prostředků, které nejsou definovány v šabloně Resource Manageru.
+    > Pokud vyberete **kompletní** režim nasazení, můžou se odstranit existující prostředky, včetně všech prostředků v cílové skupině prostředků, které nejsou definované v šabloně správce prostředků.
 
 1.  Uložte kanál pro vydávání verzí.
 
-1.  Vytvořte nové vydání z tohoto kanálu pro vydávání verzí.
+1. Pokud chcete aktivovat vydanou verzi, klikněte na **vytvořit vydání** .
 
-    ![](media/continuous-integration-deployment/continuous-integration-image10.png)
+![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
-### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Volitelné – získání tajné klíče z Azure Key Vault
+### <a name="get-secrets-from-azure-key-vault"></a>Získání tajných kódů z Azure Key Vault
 
-Pokud máte tajných kódů a zajistěte tak předání šablony Azure Resource Manageru, doporučujeme používat Azure Key Vault s verzí Azure kanály.
+Pokud máte tajné kódy, které byste měli předat do šablony Azure Resource Manager, doporučujeme používat Azure Key Vault s Azure Pipelinesou verzí.
 
-Existují dva způsoby, jak zpracovat tajné klíče:
+Existují dva způsoby, jak pokládat s tajnými kódy:
 
-1.  Přidejte do souboru parametrů tajné klíče. Další informace najdete v tématu [použití Azure Key Vault k předání zabezpečený parametr. hodnoty během nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+1.  Přidejte tajné klíče do souboru Parameters. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
-    -   Vytvoření kopie souboru parametrů, který se nahraje do publikovat větve a nastavte hodnoty parametrů, které chcete načíst ze služby key vault v následujícím formátu:
+    -   Vytvořte kopii souboru parametrů, který se nahraje do větve publikování, a nastavte hodnoty parametrů, které chcete získat z trezoru klíčů, v následujícím formátu:
 
     ```json
     {
@@ -151,29 +163,31 @@ Existují dva způsoby, jak zpracovat tajné klíče:
     }
     ```
 
-    -   Při použití této metody je tajný kód automaticky získaných ze služby key vault.
+    -   Když použijete tuto metodu, tajný kód se automaticky načte z trezoru klíčů.
 
-    -   Soubor parametrů musí být ve větvi publikovat.
+    -   Soubor parametrů musí být také ve větvi publikování.
 
-1.  Přidat [úloh služby Azure Key Vault](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) před nasazením Azure Resource Manageru, je popsáno v předchozí části:
+1.  Přidejte [úlohu Azure Key Vault](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) před nasazení Azure Resource Manager popsané v předchozí části:
 
-    -   Vyberte **úlohy** kartu, vytvoří se nový úkol, vyhledejte **Azure Key Vault** a přidejte ji.
+    -   Vyberte kartu **úlohy** , vytvořte novou úlohu, vyhledejte **Azure Key Vault** a přidejte ji.
 
-    -   V úloze služby Key Vault, vyberte předplatné, ve které jste vytvořili trezor klíčů, zadejte přihlašovací údaje v případě potřeby a klikněte na tlačítko trezoru klíčů.
+    -   V úloze Key Vault vyberte předplatné, ve kterém jste vytvořili Trezor klíčů, v případě potřeby zadejte přihlašovací údaje a pak zvolte Trezor klíčů.
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Udělit oprávnění k agentovi Azure kanály
-Úloha služby Azure Key Vault může selhat čas fIntegration modulu Runtime s chybou přístup byl odepřen. Stažení protokolů pro vydání a vyhledejte `.ps1` soubor pomocí příkazu udělit oprávnění k agentovi Azure kanály. Příkaz můžete spustit přímo, nebo můžete zkopírovat ID objektu zabezpečení ze souboru a ručně přidat zásady přístupu na webu Azure Portal. (*Získat* a *seznamu* je minimálním předpokladem).
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Udělit oprávnění agentovi Azure Pipelines
 
-### <a name="update-active-triggers"></a>Aktualizace active aktivační události
-Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační události. K aktualizaci aktivního aktivačních událostí, budete muset ručně zastavit a spustit po nasazení. K tomuto účelu můžete přidat úkol prostředí Azure Powershell, jak je znázorněno v následujícím příkladu:
+Pokud nejsou k dispozici správná oprávnění, úloha Azure Key Vault může selhat s chybou odepření přístupu. Stáhněte si protokoly pro vydání a vyhledejte `.ps1` soubor s příkazem pro udělení oprávnění agentovi Azure Pipelines. Můžete spustit příkaz přímo nebo můžete ze souboru zkopírovat ID objektu zabezpečení a zásadu přístupu přidat ručně v Azure Portal. Minimální požadovaná oprávnění jsou **Get** a **list** .
 
-1.  Na kartě úlohy vydané verze, vyhledejte **prostředí Azure Powershell** a přidejte ji.
+### <a name="update-active-triggers"></a>Aktualizovat aktivní aktivační události
 
-1.  Zvolte **Azure Resource Manageru** jako připojení zadejte a vyberte své předplatné.
+Pokud se pokusíte aktualizovat aktivní aktivační události, může nasazení selhat. Chcete-li aktualizovat aktivní aktivační události, je nutné je ručně zastavit a spustit po nasazení. Můžete to provést prostřednictvím úlohy Azure PowerShellu.
 
-1.  Zvolte **zpracování vloženého skriptu** skript zadejte a potom poskytnutí ověřovacího kódu. Následující příklad zastaví aktivačních událostí:
+1.  Na kartě úlohy ve vydané verzi přidejte úlohu **Azure PowerShellu** .
+
+1.  Jako typ připojení zvolte **Azure Resource Manager** a vyberte své předplatné.
+
+1.  Zvolte **vložený skript** jako typ skriptu a pak zadejte svůj kód. Následující příklad zastaví triggery:
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -183,554 +197,14 @@ Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační udá
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-Můžete podobným způsobem a použijte podobně jako kód (s `Start-AzDataFactoryV2Trigger` funkce) po nasazení restartovat aktivační události.
+Můžete postupovat podle podobných kroků (s `Start-AzDataFactoryV2Trigger` funkcí) a restartovat triggery po nasazení.
 
 > [!IMPORTANT]
-> Scénáře nasazení a průběžnou integraci typ modulu Runtime integrace napříč různými prostředími musí být stejné. Pokud máte například *v místním prostředí* stejné prostředí IR Integration Runtime (IR) ve vývojovém prostředí, musí být typu *v místním prostředí* v jiných prostředích, jako je například testovací a produkční také. Podobně pokud sdílíte prostředí integration Runtime v několika fázích, budete muset nakonfigurovat prostředí Integration runtime jako *propojené v místním prostředí* ve všech prostředích, jako je vývoj, testování a produkce.
+> Ve scénářích kontinuální integrace a nasazování musí být typ Integration Runtime v různých prostředích stejný. Například pokud máte v prostředí pro vývoj v místním prostředí Integration runtime (IR), musí být stejný IR typu v jiném prostředí, jako je třeba test a produkce. Podobně pokud sdílíte prostředí Integration runtime v několika fázích, je nutné nakonfigurovat prostředí Integration runtime jako *propojená* místně ve všech prostředích, jako je vývoj, testování a produkce.
 
-## <a name="sample-deployment-template"></a>Ukázková šablona nasazení
+#### <a name="sample-prepostdeployment-script"></a>Ukázka skriptu před/po nasazení
 
-Tady je ukázka šablony nasazení, který můžete importovat v kanálech Azure.
-
-```json
-{
-    "source": 2,
-    "id": 1,
-    "revision": 51,
-    "name": "Data Factory Prod Deployment",
-    "description": null,
-    "createdBy": {
-        "displayName": "Sample User",
-        "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "uniqueName": "sampleuser@microsoft.com",
-        "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-    },
-    "createdOn": "2018-03-01T22:57:25.660Z",
-    "modifiedBy": {
-        "displayName": "Sample User",
-        "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "uniqueName": "sampleuser@microsoft.com",
-        "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-    },
-    "modifiedOn": "2018-03-14T17:58:11.643Z",
-    "isDeleted": false,
-    "path": "\\",
-    "variables": {},
-    "variableGroups": [],
-    "environments": [{
-        "id": 1,
-        "name": "Prod",
-        "rank": 1,
-        "owner": {
-            "displayName": "Sample User",
-            "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "uniqueName": "sampleuser@microsoft.com",
-            "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-        },
-        "variables": {
-            "factoryName": {
-                "value": "sampleuserprod"
-            }
-        },
-        "variableGroups": [],
-        "preDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 1
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 1
-            }
-        },
-        "deployStep": {
-            "id": 2
-        },
-        "postDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 3
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 2
-            }
-        },
-        "deployPhases": [{
-            "deploymentInput": {
-                "parallelExecution": {
-                    "parallelExecutionType": "none"
-                },
-                "skipArtifactsDownload": false,
-                "artifactsDownloadInput": {
-                    "downloadInputs": []
-                },
-                "queueId": 19,
-                "demands": [],
-                "enableAccessToken": false,
-                "timeoutInMinutes": 0,
-                "jobCancelTimeoutInMinutes": 1,
-                "condition": "succeeded()",
-                "overrideInputs": {}
-            },
-            "rank": 1,
-            "phaseType": 1,
-            "name": "Run on agent",
-            "workflowTasks": [{
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "param\n(\n    [parameter(Mandatory = $false)] [String] $rootFolder=\"C:\\Users\\sampleuser\\Downloads\\arm_template\",\n    [parameter(Mandatory = $false)] [String] $armTemplate=\"$rootFolder\\arm_template.json\",\n    [parameter(Mandatory = $false)] [String] $armTemplateParameters=\"$rootFolder\\arm_template_parameters.json\",\n    [parameter(Mandatory = $false)] [String] $domain=\"microsoft.onmicrosoft.com\",\n    [parameter(Mandatory = $false)] [String] $TenantId=\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\n    [parame",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $true",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": "5.*"
-                }
-            }, {
-                "taskId": "1e244d32-2dd4-4165-96fb-b7441ca9331e",
-                "version": "1.*",
-                "name": "Azure Key Vault: sampleuservault",
-                "refName": "secret1",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "KeyVaultName": "sampleuservault",
-                    "SecretsFilter": "*"
-                }
-            }, {
-                "taskId": "94a74903-f93f-4075-884f-dc11f34058b4",
-                "version": "2.*",
-                "name": "Azure Deployment:Create Or Update Resource Group action on sampleuser-datafactory",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "action": "Create Or Update Resource Group",
-                    "resourceGroupName": "sampleuser-datafactory",
-                    "location": "East US",
-                    "templateLocation": "Linked artifact",
-                    "csmFileLink": "",
-                    "csmParametersFileLink": "",
-                    "csmFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json",
-                    "csmParametersFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateParametersForFactory.json",
-                    "overrideParameters": "-factoryName \"$(factoryName)\" -linkedService1_connectionString \"$(linkedService1-connectionString)\" -linkedService2_connectionString \"$(linkedService2-connectionString)\"",
-                    "deploymentMode": "Incremental",
-                    "enableDeploymentPrerequisites": "None",
-                    "deploymentGroupEndpoint": "",
-                    "project": "",
-                    "deploymentGroupName": "",
-                    "copyAzureVMTags": "true",
-                    "outputVariable": "",
-                    "deploymentOutputs": ""
-                }
-            }, {
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "# You can write your azure powershell scripts inline here. \n# You can also pass predefined and custom variables to this script using arguments",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $false",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": ""
-                }
-            }]
-        }],
-        "environmentOptions": {
-            "emailNotificationType": "OnlyOnFailure",
-            "emailRecipients": "release.environment.owner;release.creator",
-            "skipArtifactsDownload": false,
-            "timeoutInMinutes": 0,
-            "enableAccessToken": false,
-            "publishDeploymentStatus": true,
-            "badgeEnabled": false,
-            "autoLinkWorkItems": false
-        },
-        "demands": [],
-        "conditions": [{
-            "name": "ReleaseStarted",
-            "conditionType": 1,
-            "value": ""
-        }],
-        "executionPolicy": {
-            "concurrencyCount": 1,
-            "queueDepthCount": 0
-        },
-        "schedules": [],
-        "retentionPolicy": {
-            "daysToKeep": 30,
-            "releasesToKeep": 3,
-            "retainBuild": true
-        },
-        "processParameters": {
-            "dataSourceBindings": [{
-                "dataSourceName": "AzureRMWebAppNamesByType",
-                "parameters": {
-                    "WebAppKind": "$(WebAppKind)"
-                },
-                "endpointId": "$(ConnectedServiceName)",
-                "target": "WebAppName"
-            }]
-        },
-        "properties": {},
-        "preDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "postDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "badgeUrl": "https://sampleuser.vsrm.visualstudio.com/_apis/public/Release/badge/19749ef3-2f42-49b5-9696-f28b49faebcb/1/1"
-    }, {
-        "id": 2,
-        "name": "Staging",
-        "rank": 2,
-        "owner": {
-            "displayName": "Sample User",
-            "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "uniqueName": "sampleuser@microsoft.com",
-            "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-        },
-        "variables": {
-            "factoryName": {
-                "value": "sampleuserstaging"
-            }
-        },
-        "variableGroups": [],
-        "preDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 4
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 1
-            }
-        },
-        "deployStep": {
-            "id": 5
-        },
-        "postDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 6
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 2
-            }
-        },
-        "deployPhases": [{
-            "deploymentInput": {
-                "parallelExecution": {
-                    "parallelExecutionType": "none"
-                },
-                "skipArtifactsDownload": false,
-                "artifactsDownloadInput": {
-                    "downloadInputs": []
-                },
-                "queueId": 19,
-                "demands": [],
-                "enableAccessToken": false,
-                "timeoutInMinutes": 0,
-                "jobCancelTimeoutInMinutes": 1,
-                "condition": "succeeded()",
-                "overrideInputs": {}
-            },
-            "rank": 1,
-            "phaseType": 1,
-            "name": "Run on agent",
-            "workflowTasks": [{
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "# You can write your azure powershell scripts inline here. \n# You can also pass predefined and custom variables to this script using arguments",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $true",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": ""
-                }
-            }, {
-                "taskId": "1e244d32-2dd4-4165-96fb-b7441ca9331e",
-                "version": "1.*",
-                "name": "Azure Key Vault: sampleuservault",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "KeyVaultName": "sampleuservault",
-                    "SecretsFilter": "*"
-                }
-            }, {
-                "taskId": "94a74903-f93f-4075-884f-dc11f34058b4",
-                "version": "2.*",
-                "name": "Azure Deployment:Create Or Update Resource Group action on sampleuser-datafactory",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "action": "Create Or Update Resource Group",
-                    "resourceGroupName": "sampleuser-datafactory",
-                    "location": "East US",
-                    "templateLocation": "Linked artifact",
-                    "csmFileLink": "",
-                    "csmParametersFileLink": "",
-                    "csmFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json",
-                    "csmParametersFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateParametersForFactory.json",
-                    "overrideParameters": "-factoryName \"$(factoryName)\" -linkedService1_connectionString \"$(linkedService1-connectionString)\" -linkedService2_connectionString \"$(linkedService2-connectionString)\"",
-                    "deploymentMode": "Incremental",
-                    "enableDeploymentPrerequisites": "None",
-                    "deploymentGroupEndpoint": "",
-                    "project": "",
-                    "deploymentGroupName": "",
-                    "copyAzureVMTags": "true",
-                    "outputVariable": "",
-                    "deploymentOutputs": ""
-                }
-            }, {
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "16a37943-8b58-4c2f-a3d6-052d6f032a07",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "param(\n$x,\n$y,\n$z)\nwrite-host \"----------\"\nwrite-host $x\nwrite-host $y\nwrite-host $z | ConvertTo-SecureString\nwrite-host \"----------\"",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $false",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": ""
-                }
-            }]
-        }],
-        "environmentOptions": {
-            "emailNotificationType": "OnlyOnFailure",
-            "emailRecipients": "release.environment.owner;release.creator",
-            "skipArtifactsDownload": false,
-            "timeoutInMinutes": 0,
-            "enableAccessToken": false,
-            "publishDeploymentStatus": true,
-            "badgeEnabled": false,
-            "autoLinkWorkItems": false
-        },
-        "demands": [],
-        "conditions": [{
-            "name": "ReleaseStarted",
-            "conditionType": 1,
-            "value": ""
-        }],
-        "executionPolicy": {
-            "concurrencyCount": 1,
-            "queueDepthCount": 0
-        },
-        "schedules": [],
-        "retentionPolicy": {
-            "daysToKeep": 30,
-            "releasesToKeep": 3,
-            "retainBuild": true
-        },
-        "processParameters": {
-            "dataSourceBindings": [{
-                "dataSourceName": "AzureRMWebAppNamesByType",
-                "parameters": {
-                    "WebAppKind": "$(WebAppKind)"
-                },
-                "endpointId": "$(ConnectedServiceName)",
-                "target": "WebAppName"
-            }]
-        },
-        "properties": {},
-        "preDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "postDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "badgeUrl": "https://sampleuser.vsrm.visualstudio.com/_apis/public/Release/badge/19749ef3-2f42-49b5-9696-f28b49faebcb/1/2"
-    }],
-    "artifacts": [{
-        "sourceId": "19749ef3-2f42-49b5-9696-f28b49faebcb:a6c88f30-5e1f-4de8-b24d-279bb209d85f",
-        "type": "Git",
-        "alias": "Dev",
-        "definitionReference": {
-            "branches": {
-                "id": "adf_publish",
-                "name": "adf_publish"
-            },
-            "checkoutSubmodules": {
-                "id": "",
-                "name": ""
-            },
-            "defaultVersionSpecific": {
-                "id": "",
-                "name": ""
-            },
-            "defaultVersionType": {
-                "id": "latestFromBranchType",
-                "name": "Latest from default branch"
-            },
-            "definition": {
-                "id": "a6c88f30-5e1f-4de8-b24d-279bb209d85f",
-                "name": "Dev"
-            },
-            "fetchDepth": {
-                "id": "",
-                "name": ""
-            },
-            "gitLfsSupport": {
-                "id": "",
-                "name": ""
-            },
-            "project": {
-                "id": "19749ef3-2f42-49b5-9696-f28b49faebcb",
-                "name": "Prod"
-            }
-        },
-        "isPrimary": true
-    }],
-    "triggers": [{
-        "schedule": {
-            "jobId": "b5ef09b6-8dfd-4b91-8b48-0709e3e67b2d",
-            "timeZoneId": "UTC",
-            "startHours": 3,
-            "startMinutes": 0,
-            "daysToRelease": 31
-        },
-        "triggerType": 2
-    }],
-    "releaseNameFormat": "Release-$(rev:r)",
-    "url": "https://sampleuser.vsrm.visualstudio.com/19749ef3-2f42-49b5-9696-f28b49faebcb/_apis/Release/definitions/1",
-    "_links": {
-        "self": {
-            "href": "https://sampleuser.vsrm.visualstudio.com/19749ef3-2f42-49b5-9696-f28b49faebcb/_apis/Release/definitions/1"
-        },
-        "web": {
-            "href": "https://sampleuser.visualstudio.com/19749ef3-2f42-49b5-9696-f28b49faebcb/_release?definitionId=1"
-        }
-    },
-    "tags": [],
-    "properties": {
-        "DefinitionCreationSource": {
-            "$type": "System.String",
-            "$value": "ReleaseNew"
-        }
-    }
-}
-```
-
-## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>Ukázkový skript k zastavení a restartování aktivační události a vyčištění
-
-Tady je ukázkový skript zastavit aktivačních událostí před nasazením a později restartuje aktivační události. Skript také zahrnuje kód odstraňte prostředky, které byly odebrány. Pokud chcete nainstalovat nejnovější verzi Azure Powershellu, najdete v článku [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Níže je ukázkový skript, který před nasazením zastaví triggery a znovu spustí triggery. Skript také obsahuje kód pro odstranění odebraných prostředků. Pokud chcete nainstalovat nejnovější verzi Azure PowerShell, přečtěte si téma [instalace Azure PowerShell ve Windows pomocí PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 ```powershell
 param
@@ -848,33 +322,35 @@ else {
 }
 ```
 
-## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Pomocí vlastních parametrů šablony Resource Manageru
+## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Použití vlastních parametrů se šablonou Správce prostředků
 
-Pokud jste v režimu GIT, můžete v šabloně Resource Manageru můžete nastavit vlastnosti, které jsou parametrizovány v šabloně a vlastnosti, které jsou pevně zakódované přepsat výchozí vlastnosti. Můžete chtít přepsat výchozí šablona Parametrizace v těchto scénářích:
+Pokud jste v režimu GIT, můžete přepsat výchozí vlastnosti v šabloně Správce prostředků, abyste nastavili vlastnosti, které jsou parametrizované v šabloně, a vlastnosti, které jsou pevně kódované. V těchto scénářích možná budete chtít přepsat výchozí šablonu Parametrizace:
 
-* Použít automatizované CI/CD a chcete změnit některé vlastnosti během nasazení podle modelu Resource Manager, ale nejsou ve výchozím nastavení parametrizované vlastnosti.
-* Se svým objektem pro vytváření velmi velké, výchozí šablony Resource Manageru je neplatný, protože má více než maximální povolená parametry (256).
+* Používáte automatizované CI/CD a chcete změnit některé vlastnosti během nasazení Správce prostředků, ale vlastnosti nejsou ve výchozím nastavení parametrizované.
+* Vaše továrna je tak velká, že výchozí šablona Správce prostředků je neplatná, protože má více než maximální povolený počet parametrů (256).
 
-Za těchto podmínek Pokud chcete přepsat výchozí šablona Parametrizace, vytvořte soubor s názvem *arm šablonu parametry definition.json* v kořenové složce úložiště. Název souboru musí přesně shodovat. Data Factory se pokusí načíst tento soubor z větve, podle toho, která je momentálně na portálu Azure Data Factory, ne jenom z větve spolupráci. Můžete vytvořit nebo upravit soubor z soukromé větve, kde můžete testovat změny pomocí **šablony ARM exportovat** v uživatelském rozhraní. Soubor pak, můžete sloučit do větve spolupráci. Pokud se nenajde žádný soubor, je použita výchozí šablona.
+V rámci těchto podmínek můžete přepsat výchozí šablonu Parametrizace vytvořením souboru s názvem *ARM-Template-Parameters-definition. JSON* v kořenové složce úložiště. Název souboru se musí přesně shodovat. Data Factory se pokusí přečíst tento soubor z jakékoli větve, na které jste právě na portálu Azure Data Factory, nikoli jenom z větve pro spolupráci. Můžete vytvořit nebo upravit soubor z privátní větve, kde můžete testovat své změny pomocí **šablony pro export ARM** v uživatelském rozhraní. Pak můžete soubor sloučit do větve pro spolupráci. Pokud se nenajde žádný soubor, použije se výchozí šablona.
 
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Syntaxe souboru vlastních parametrů
 
-Zde jsou uvedeny pokyny pro použití při vytváření souboru vlastních parametrů. Soubor se skládá z část pro každý typ entity: aktivační událost, kanál, propojené služby, datové sady, integrationruntime a tak dále.
-* Zadejte cestu vlastnosti v části Typ relevantní entity.
-* Pokud nastavíte vlastnost název na "\*", určujete, že chcete parametrizovat všechny vlastnosti v něm (pouze až na úroveň rekurzivní). Můžete také zadat jakékoli výjimky.
-* Když nastavíte hodnotu vlastnosti jako řetězec, určujete, že chcete parametrizovat vlastnost. Použijte formát `<action>:<name>:<stype>`.
-   *  `<action>` může být jedna z následujících znaků:
-      * `=` prostředky zachovat aktuální hodnoty jako výchozí hodnota pro parametr.
-      * `-` znamená, že není ponechte výchozí hodnotu pro parametr.
-      * `|` je zvláštní případ pro tajné klíče z Azure Key Vault pro připojovací řetězce nebo klíče.
-   * `<name>` je název parametru. Pokud není zadán, přebírá název vlastnosti. Pokud hodnota začíná `-` znak, název zkrácen. Například `AzureStorage1_properties_typeProperties_connectionString` bude zkrátila na `AzureStorage1_connectionString`.
-   * `<stype>` je typ parametru. Pokud `<stype>` je prázdný, je výchozí typ `string`. Podporované hodnoty: `string`, `bool`, `number`, `object`, a `securestring`.
-* Když zadáte pole v definičním souboru, určujete, že odpovídající vlastnost v šabloně je pole. Data Factory Iteruje přes všechny objekty v poli s použitím definice určený v modulu Runtime integrace objektu array. Druhý objekt, řetězec, se stane názvem vlastnosti, která se používá jako název parametru pro každou iteraci.
-* Není možné mít definici, která je specifická pro instance prostředku. Libovolná definice se vztahuje na všechny prostředky daného typu.
-* Standardně jsou všechny zabezpečené řetězce, jako je například tajných kódů služby Key Vault a zabezpečené řetězce, jako je například připojovací řetězce, klávesy a tokeny, parametrizovány.
+Tady jsou některé pokyny, jak použít při vytváření souboru vlastních parametrů. Soubor se skládá z oddílu pro každý typ entity: aktivační událost, kanál, propojená služba, datová sada, prostředí Integration runtime atd.
+* Zadejte cestu k vlastnosti pod odpovídajícím typem entity.
+* Pokud nastavíte název vlastnosti na\*' ' ', označíte, že chcete parametrizovat všechny vlastnosti (pouze na první úrovni, ne rekurzivně). Můžete také zadat případné výjimky.
+* Pokud nastavíte hodnotu vlastnosti jako řetězec, označíte, že chcete vlastnost parametrizovat. Použijte formát `<action>:<name>:<stype>`.
+   *  `<action>` může to být jeden z následujících znaků:
+      * `=` znamená, že aktuální hodnota je nastavená jako výchozí hodnota pro parametr.
+      * `-` znamená, že neuchovává výchozí hodnotu parametru.
+      * `|` je speciální případ pro tajné klíče z Azure Key Vault pro připojovací řetězce nebo klíče.
+   * `<name>` je název parametru. Pokud je prázdný, převezme název vlastnosti. Pokud hodnota začíná `-` znakem, název se zkrátí. Například `AzureStorage1_properties_typeProperties_connectionString` by byl zkrácen na `AzureStorage1_connectionString`.
+   * `<stype>` je typ parametru. `string`Pokud `<stype>`jeprázdné, výchozí typ je. Podporované hodnoty: `string`, `bool`, `number`, `object`a .`securestring`
+* Když zadáte pole v definičním souboru, označíte, že vlastnost Matching v šabloně je pole. Data Factory projde všemi objekty v poli pomocí definice, která je zadána v objektu Integration Runtime pole. Druhý objekt, řetězec, se zobrazí jako název vlastnosti, která se používá jako název parametru pro každou iteraci.
+* Není možné mít definici specifickou pro instanci prostředku. Každá definice se vztahuje na všechny prostředky daného typu.
+* Ve výchozím nastavení jsou všechny zabezpečené řetězce, například Key Vault tajné klíče a zabezpečené řetězce, jako jsou například připojovací řetězce, klíče a tokeny, parametrizované.
  
-## <a name="sample-parameterization-template"></a>Ukázková šablona Parametrizace
+### <a name="sample-parameterization-template"></a>Ukázková šablona Parametrizace
+
+Tady je příklad toho, co může šablona Parametrizace vypadat:
 
 ```json
 {
@@ -935,35 +411,35 @@ Zde jsou uvedeny pokyny pro použití při vytváření souboru vlastních param
     }
 }
 ```
-
-### <a name="explanation"></a>Vysvětlení:
+Níže je uveden popis způsobu konstrukce výše uvedené šablony, rozepsaný podle typu prostředku.
 
 #### <a name="pipelines"></a>Kanály
     
-* Žádné vlastnosti v cestě aktivity/typeProperties/waitTimeInSeconds je s parametry. To znamená, že všechny aktivity v kanálu, který má úroveň kódu vlastnost s názvem `waitTimeInSeconds` (například `Wait` aktivity) parametrizované jako číslo s výchozím názvem. Ale nebude mít výchozí hodnotu v šabloně Resource Manageru. Povinný vstup bude během nasazení Resource Manageru.
-* Podobně vlastnost s názvem `headers` (například v `Web` aktivity) je opatřena parametry typu `object` (JObject). Má výchozí hodnotu, která má stejnou hodnotu jako zdrojový objekt pro vytváření.
+* Jakákoli vlastnost v aktivitách Path/typeProperties/waitTimeInSeconds je parametrizovaná. Všechny aktivity v kanálu, které mají vlastnost na úrovni kódu s názvem `waitTimeInSeconds` (například `Wait` aktivita), jsou parametrizované jako číslo s výchozím názvem. V šabloně Správce prostředků ale nebude mít výchozí hodnotu. Během nasazení Správce prostředků se bude jednat o povinný vstup.
+* Podobně je vlastnost s názvem `headers` (například `Web` v aktivitě) Parametrizovaná s typem `object` (JObject). Má výchozí hodnotu, což je stejná hodnota jako ve zdrojové továrně.
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* Pouze vlastnosti a všechny vlastnosti v cestě `typeProperties` jsou parametrizovány s jejich odpovídajících výchozích hodnot. Například od verze schématu dnešní existují dvě vlastnosti v části **IntegrationRuntimes** vlastnosti typu: `computeProperties` a `ssisProperties`. Oba typy vlastností se vytvoří s jejich odpovídajících výchozích hodnot a typy (Object).
+* Všechny vlastnosti v cestě `typeProperties` jsou parametrizované s příslušnými výchozími hodnotami. Například existují dvě vlastnosti ve vlastnostech typu **IntegrationRuntimes** : `computeProperties` a `ssisProperties`. Oba typy vlastností jsou vytvořeny s příslušnými výchozími hodnotami a typy (Object).
 
 #### <a name="triggers"></a>Aktivační procedury
 
-* V části `typeProperties`, dvě vlastnosti jsou parametrizovány. První z nich je `maxConcurrency`, který je zadán s výchozí hodnotou a typ by `string`. Má výchozí název parametru `<entityName>_properties_typeProperties_maxConcurrency`.
-* `recurrence` Také parametrizované vlastnosti. V části, nejsou zadány všechny vlastnosti na této úrovni k parametrizovat jako řetězce, výchozí hodnoty a názvy parametrů. Výjimka je `interval` vlastnost, která je jako typ Číslo s parametry a s názvem parametru doplněny `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Podobně platí `freq` vlastnosti je řetězec a parametrizované jako řetězec. Ale `freq` Parametrizovaná vlastnost bez výchozí hodnoty. Název je zkráceno a příponou. Například, `<entityName>_freq`.
+* V `typeProperties`rámci jsou parametrizované dvě vlastnosti. První z nich je `maxConcurrency`, který má mít výchozí hodnotu a je typu.`string` Má výchozí název `<entityName>_properties_typeProperties_maxConcurrency`parametru.
+* `recurrence` Vlastnost také je parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimka je `interval` vlastnost, která je parametrizovaná jako typ Number a s názvem parametru s příponou `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Podobně tato `freq` vlastnost je řetězec a je parametrizovaná jako řetězec. `freq` Vlastnost je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. Například, `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
-* Propojené služby je jedinečný. Protože z několika typů může být potenciálně propojené služby a datové sady, můžete zadat konkrétní typ vlastního nastavení. Vám může Dejme tomu, že pro všechny propojené služby typu `AzureDataLakeStore`, konkrétní šablonu. bude používat a všech ostatních případech (prostřednictvím \*) se použijí jiné šablony.
-* V předchozím příkladu `connectionString` vlastnost bude parametrizované jako `securestring` hodnotu, nebude mít výchozí hodnotu a bude mít parametr zkrácený název, který je přidán s `connectionString`.
-* Vlastnost `secretAccessKey`, ale se stane, chcete-li být `AzureKeyVaultSecret` (například `AmazonS3` propojenou službu). Proto je automaticky parametrizované jako tajný klíč Azure Key Vault, a načte se z trezoru klíčů, který má nakonfigurovanou v objektu pro vytváření zdroje. Můžete také parametrizovat trezoru klíčů, samotného.
+* Propojené služby jsou jedinečné. Vzhledem k tomu, že propojené služby a datové sady mají široké rozsahy typů, můžete zadat vlastní nastavení pro konkrétní typ. V tomto příkladu budou aplikovány všechny propojené služby `AzureDataLakeStore`typu, uplatní se konkrétní šablona a pro všechny ostatní (prostřednictvím \*) se použije jiná šablona.
+* Vlastnost bude parametrizovaná `securestring` jako hodnota, nebude mít výchozí hodnotu a bude mít zkrácený název parametru, který je s `connectionString`příponou. `connectionString`
+* Tato vlastnost `secretAccessKey` se stane `AzureKeyVaultSecret` (například v `AmazonS3` propojené službě). Je automaticky Parametrizovaná jako Azure Key Vault tajný klíč a načítá se z nakonfigurovaného trezoru klíčů. Můžete také parametrizovat samotný Trezor klíčů.
 
 #### <a name="datasets"></a>Datové sady
 
-* I když přizpůsobení specifické pro typ. je k dispozici pro datové sady, konfigurace je možné poskytnout bez nutnosti explicitně \*-úrovni konfigurace. V předchozím příkladu všechny vlastnosti datové sady v rámci `typeProperties` jsou parametrizovány.
+* I když je k dispozici přizpůsobení specifické pro datové sady, může být konfigurace poskytnuta bez explicitního \*nastavení na úrovni. Ve výše uvedeném příkladu jsou všechny vlastnosti datové sady `typeProperties` pod parametrem parametrizované.
 
-Můžete změnit výchozí parametrizaci šablony, ale toto je aktuální šablony. To bude hodit, pokud potřebujete pouze přidat další jednu vlastnost jako parametr, ale i pokud nechcete přijít o existující parameterizations a muset znovu vytvořit.
+### <a name="default-parameterization-template"></a>Výchozí šablona Parametrizace
 
+Níže je uvedená aktuální výchozí šablona Parametrizace. Pokud potřebujete přidat jenom jeden nebo několik parametrů, může být vhodné přímo upravit tuto úpravu, protože neztratíte stávající strukturu Parametrizace.
 
 ```json
 {
@@ -1070,9 +546,9 @@ Můžete změnit výchozí parametrizaci šablony, ale toto je aktuální šablo
 }
 ```
 
-**Příklad**: Přidejte interaktivní Databricks ID clusteru (z propojené služby Databricks) k souboru parametrů:
+Níže je uveden příklad, jak přidat jednu hodnotu do výchozí šablony Parametrizace. Chceme pro propojenou službu datacihly do souboru parametrů přidat jenom existující interaktivní ID clusteru datacihly. Všimněte si, že níže uvedený soubor je stejný jako u výše uvedeného `existingClusterId` souboru s výjimkou zahrnutého `Microsoft.DataFactory/factories/linkedServices`v poli Properties (vlastnosti).
 
-```
+```json
 {
     "Microsoft.DataFactory/factories/pipelines": {
     },
@@ -1178,37 +654,60 @@ Můžete změnit výchozí parametrizaci šablony, ale toto je aktuální šablo
 }
 ```
 
+## <a name="linked-resource-manager-templates"></a>Propojené šablony Správce prostředků
 
-## <a name="linked-resource-manager-templates"></a>Propojené šablony Resource Manageru
+Pokud jste pro své datové továrny nastavili průběžnou integraci a nasazování (CI/CD), můžete se setkat s omezeními Azure Resource Manager šablony, když továrna roste. Příkladem omezení je maximální počet prostředků v šabloně Správce prostředků. V souvislosti s vytvářením úplného Správce prostředků šablony pro objekt pro vytváření nyní Data Factory vygeneruje propojené šablony Správce prostředků. Pomocí této funkce je celá datová část továrny rozdělena do několika souborů, takže nebudete spouštět omezení.
 
-Pokud jste nastavili průběžnou integraci a nasazování (CI/CD) pro datové továrny, a podívat se, jak narůstá svým objektem pro vytváření, narazíte na omezení šablony Resource Manageru, jako je maximální počet prostředků nebo maximální velikost datové části v prostředku Šablona správce. Pro scénáře, jako jsou ty, spolu s kompletní šablonou Resource Manageru pro objekt pro vytváření, generování služby Data Factory také nyní generuje šablon propojené Resource Manageru. V důsledku toho máte datové části celý objekt pro vytváření rozdělit do několika souborů tak, aby při spuštění do uvedené limity.
+Pokud jste nakonfigurovali Git, propojené šablony se generují a ukládají společně s úplnými správce prostředků šablonami ve `adf_publish` větvi pod novou složku s názvem `linkedTemplates`.
 
-Pokud máte nakonfigurovaný Git, propojené šablony jsou generovány a uložen spolu s plnou šablon Resource Manageru v `adf_publish` větve pod novou složku s názvem `linkedTemplates`.
+![Složka propojených šablon Správce prostředků](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-![Propojená složka vedoucí šablony Resource Manageru](media/continuous-integration-deployment/linked-resource-manager-templates.png)
+Propojené šablony Správce prostředků obvykle mají hlavní šablonu a sadu podřízených šablon, které jsou propojeny s hlavní. Je volána `ArmTemplate_master.json`nadřazená šablona a podřízené šablony jsou pojmenovány se vzorem `ArmTemplate_1.json` `ArmTemplate_0.json`, a tak dále. Pokud chcete místo úplné Správce prostředků šablony použít propojené šablony, aktualizujte úlohu CI/CD tak, aby odkazovala `ArmTemplate_master.json` na `ArmTemplateForFactory.json` místo (Úplná správce prostředků šablona). Správce prostředků také vyžaduje, abyste nahráli propojené šablony do účtu úložiště tak, aby k nim měli během nasazení k dispozici Azure. Další informace najdete v tématu [nasazení propojených šablon ARM pomocí VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
 
-Propojené Resource Manageru šablony mají obvykle hlavní šablonu a sadu šablon podřízené propojený na hlavní server. Je volána nadřazené šabloně `ArmTemplate_master.json`, a podřízené šablony jsou pojmenovány se vzorem `ArmTemplate_0.json`, `ArmTemplate_1.json`, a tak dále. Chcete-li přejít z úplnou šablonu Resource Manageru pro použití propojených šablon, aktualizujte úlohy CI/CD přejděte na `ArmTemplate_master.json` místo odkazující na `ArmTemplateForFactory.json` (to znamená úplný šablony Resource Manageru). Resource Manageru také vyžaduje, abyste propojenými šablonami nahrát do účtu úložiště, tak, aby k nim může přistupovat v Azure během nasazení. Další informace najdete v tématu [nasazení propojených šablon ARM pomocí VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+Nezapomeňte přidat skripty Data Factory do kanálu CI/CD před a po úloze nasazení.
 
-Nezapomeňte přidat skripty služby Data Factory v kanálu CI/CD před a po nasazení úloh.
+Pokud nemáte nakonfigurovaný Git, propojené šablony jsou přístupné prostřednictvím gesta pro **Export šablony ARM** .
 
-Pokud nemáte nakonfigurované Git, jsou přístupné přes propojenými šablonami **šablony ARM exportovat** gest.
+## <a name="hot-fix-production-branch"></a>Produkční větev Hot Fix
+
+Pokud nasadíte továrnu do produkčního prostředí a zjistíte chybu, kterou je potřeba opravit hned, ale nemůžete nasadit aktuální větev pro spolupráci, možná budete muset nasadit opravu Hot.
+
+1.  Ve službě Azure DevOps se podívejte na verzi, která byla nasazená do produkčního prostředí, a najděte poslední přivedený zápis.
+
+2.  Ze zprávy potvrzení Získejte ID potvrzení větve pro spolupráci.
+
+3.  Vytvořte novou větev Hot-Fix z tohoto potvrzení.
+
+4.  Přejděte do uživatelského rozhraní Azure Data Factory a přepněte do této větve.
+
+5.  Vyřešte chybu pomocí Azure Data Factoryho uživatelského rozhraní. Otestujte provedené změny.
+
+6.  Po ověření opravy klikněte na **Exportovat šablonu ARM** a stáhněte šablonu Hot-Fix správce prostředků.
+
+7.  Ruční vrácení tohoto sestavení se změnami do větve adf_publish
+
+8.  Pokud jste nakonfigurovali svůj kanál pro vydávání verzí, který se automaticky aktivuje na základě vrácení se změnami adf_publish, automaticky se spustí nová verze. V opačném případě ručně vyřadí vydanou verzi.
+
+9.  Nasaďte do testovacího a produkčního továrny vydání Hot-Fix. Tato verze obsahuje předchozí provozní datovou část a opravu provedenou v kroku 5.
+
+10. Přidejte změny z rutiny Hot-Fix do vývojové větve, aby pozdější verze neběžely ve stejné chybě.
 
 ## <a name="best-practices-for-cicd"></a>Osvědčené postupy pro CI/CD
 
-Pokud používáte integrace Gitu pomocí služby data factory a máte kanál CI/CD, který přesouvá změny z vývojového do testu a pak do produkčního prostředí, doporučujeme následující osvědčené postupy:
+Pokud používáte integraci Gitu s datovou továrnou a máte kanál CI/CD, který přesouvá vaše změny z vývoje do testu a následně do produkčního prostředí, doporučujeme následující osvědčené postupy:
 
--   **Integrace Gitu**. Jenom je potřeba nakonfigurovat svou datovou továrnu vývoj integrace Gitu. Změny v provozním i testovacím prostředí jsou nasazené prostřednictvím CI/CD a nepotřebují mít integrace Gitu.
+-   **Integrace Gitu**. Ke konfiguraci vašeho vývojového objektu pro vytváření dat se používá integrace Gitu. Změny v testovacích a produkčních prostředích se nasazují prostřednictvím CI/CD a nepotřebují integraci Git.
 
--   **Data Factory CI/CD skript**. Před krokem nasazení Resource Manageru v CI/CD musí postará o věci, jako je zastavení aktivační události a jiný druh vyčištění objekt pro vytváření. Doporučujeme používat [tento skript](#sample-script-to-stop-and-restart-triggers-and-clean-up) jako postará těchto věcí. Spuštění skriptu před nasazení jednou a jednou po použití příslušnými příznaky.
+-   **Data Factory skript CI/CD**. Před krokem nasazení Správce prostředků v CI/CD se vyžadují určité úkoly, jako je zastavení nebo spuštění triggerů a vyčištění. Před nasazením a po něm doporučujeme používat skripty prostředí PowerShell. Další informace najdete v tématu [aktualizace aktivních aktivačních událostí](#update-active-triggers). 
 
--   **Prostředí Integration runtime a sdílení**. Prostředí Integration runtime jsou jedním z infrastruktury komponenty ve službě data factory, které ke změnám méně často a jsou podobné ve všech fázích v CI/CD. V důsledku toho objekt pro vytváření dat očekává, že budete mít stejný název a stejného typu prostředí Integration runtime ve všech fázích CI/CD. Pokud chcete sdílet prostředí Integration runtime ve všech fázích – například místním prostředí Integration runtime – jedním ze způsobů sdílení je hostování místní prostředí IR v objekt Ternární pouze pro obsahující sdílený prostředí Integration runtime. Potom můžete je v Dev/testovací/produkční jako typ propojené reakcí na Incidenty.
+-   **Prostředí Integration runtime a sdílení**. Prostředí Integration runtime se často nemění a jsou ve všech fázích CI/CD stejné. V důsledku toho Data Factory očekává, že budete mít stejný název a stejný typ prostředí Integration runtime ve všech fázích CI/CD. Pokud chcete sdílet prostředí Integration runtime ve všech fázích, zvažte použití Ternární továrny jenom pro obsahující sdílené prostředí Integration runtime. Tuto sdílenou továrnu můžete použít ve všech prostředích jako typ propojeného prostředí Integration runtime.
 
--   **Trezor klíčů**. Pokud používáte doporučenou propojené služby založené na službě Azure Key Vault, můžete zvolit, jeho výhody úroveň další potenciálně udržováním samostatné trezorům klíčů pro vývoj/testovací/produkční. Můžete také nakonfigurovat samostatnou oprávnění úrovně pro každý z nich. Možná nebudete chtít členům týmu, má oprávnění k tajným kódům produkčního prostředí. Doporučujeme také udržovat stejnou názvů tajných klíčů ve všech fázích. Pokud uchováváte stejné názvy, nemusíte změnit své šablony Resource Manageru přes CI/CD, protože jediné, co je třeba změnit název trezoru klíčů, což je jeden z parametrů šablony Resource Manageru.
+-   **Key Vault**. Při použití propojených služeb založených na Azure Key Vault můžete další výhody využít tak, že v různých prostředích zachováte samostatné trezory klíčů. Pro každý z nich můžete nakonfigurovat také samostatné úrovně oprávnění. Například nebudete chtít, aby členové týmu měli oprávnění k produkčním tajným klíčům. Pokud budete postupovat podle tohoto přístupu, doporučujeme, abyste zachovali stejné tajné názvy ve všech fázích. Pokud zachováte stejné názvy, nemusíte měnit šablony Správce prostředků napříč prostředími CI/CD, protože jediná věc, kterou mění, je název trezoru klíčů, což je jeden z parametrů Správce prostředků šablony.
 
 ## <a name="unsupported-features"></a>Nepodporované funkce
 
--   Vybrané prostředky, nelze publikovat, protože jsou na sobě navzájem závislé entit datové továrny. Například aktivační procedury závisí na kanály, kanály, závisí na datové sady a další kanály, atd. Sledování závislosti měnící je obtížné. Pokud bylo možné vybrat prostředky pro publikování ručně, by bylo možné vybrat jenom podmnožinu celá sada změn, které by mohlo dojít k neočekávanému chování věci po publikování.
+-   Nemůžete publikovat jednotlivé prostředky. Entity datové továrny závisejí na sobě navzájem a sledování měnících se závislostí může být obtížné a vede k neočekávanému chování. Například triggery závisejí na kanálech, kanály závisejí na datových sadách a dalších kanálech, a tak dále. Pokud bylo možné publikovat pouze podmnožinu celé sady změn, může dojít k určitým neočekávaným chybám.
 
--   Nejde publikovat z soukromé větve.
+-   Nemůžete publikovat z privátních větví.
 
--   Projekty v Bitbucketu nelze hostovat.
+-   Nemůžete hostovat projekty na Bitbucket.

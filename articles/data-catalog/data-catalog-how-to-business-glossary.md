@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6ecb481245484332221e45b8f27c776291ea532d
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736411"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976795"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>Nastavení podnikového glosáře pro řízení označování
 
@@ -36,11 +36,11 @@ Obchodní Glosář je k dispozici pouze v edici Standard Azure Data Catalog. Bez
 
 K obchodnímu glosáři získáte přístup pomocí možnosti **Glosář** v navigační nabídce portálu Data Catalog.  
 
-![Přístup k obchodnímu glosáři](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![Data Catalog – přístup k obchodnímu glosáři](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
 Data Catalog správci a členové role Správci glosáře můžou vytvořit, upravit a odstranit glosářové výrazy v obchodním glosáři. Všichni Data Catalog uživatelé mohou zobrazit definice termínů a assetů značek s termíny glosáře.
 
-![Přidání nového glosářového výrazu](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![Data Catalog – přidat nový termín glosáře](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>Vytváření termínů glosáře
 
@@ -80,6 +80,6 @@ Značky glosáře a uživatelské značky jsou prohledávatelné a můžete je p
 
 Používáním podnikového glosáře v Azure Data Catalog a se správou označení, které umožňuje, můžete identifikovat, spravovat a vyhledávat datové assety konzistentním způsobem. Obchodní Glosář může propagovat učení podnikového slovníku podle členů organizace. Glosář také podporuje zachytávání smysluplných metadat, což zjednodušuje zjišťování a porozumění prostředků.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Dokumentace REST API pro operace glosáře pro firmy](/rest/api/datacatalog/data-catalog-glossary)

@@ -1,6 +1,6 @@
 ---
-title: Ukázka - v3.2.1 PCI-DSS podrobného plánu - kroky nasazení
-description: Kroky Standard odvětví platebních karet Data zabezpečení vzorku v3.2.1 podrobného plánu nasazení.
+title: Ukázka-PCI-DSS v 3.2.1 plán – nasazení kroků
+description: Nasaďte kroky v ukázce podrobného plánu zabezpečení dat v odvětví platebních karet.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,109 +8,109 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b4e9435e5f569a076fc5beb6441b9da935b87f3a
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 237444cde6e9ccd709f61d13669da03094e5be10
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561366"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019428"
 ---
-# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Nasazení ukázkové PCI-DSS v3.2.1 podrobného plánu
+# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Nasazení ukázky pro PCI-DSS v 3.2.1 podrobný plán
 
-Pokud chcete nasadit ukázková plány Azure PCI-DSS v3.2.1 podrobného plánu, třeba takto:
+Pokud chcete nasadit ukázkovou ukázku pro Azure modrotisky PCI-DSS v 3.2.1, je potřeba provést tyto kroky:
 
 > [!div class="checklist"]
-> - Vytvořit nový plán, podle kterého z ukázky
-> - Označte si kopii ukázky jako **publikováno**
-> - Přiřazení kopie podrobný plán k existujícímu předplatnému
+> - Vytvořit nový podrobný plán z ukázky
+> - Označení kopie ukázky jako **publikované**
+> - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
 ## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
-První tak, že vytvoříte nový plán ve vašem prostředí pomocí ukázky jako starter implementaci vzorku podrobného plánu.
+Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako Starter.
 
-1. Vyberte **všechny služby** a vyhledejte a vyberte **zásady** v levém podokně. Na **zásady** stránce **plány**.
+1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
 
-1. Z **Začínáme** stránky na levé straně, vyberte **vytvořit** tlačítko _vytvořit podrobný plán_.
+1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
-1. Najít **PCI-DSS v3.2.1** podrobného plánu ukázky v části _Další ukázky_ a vyberte **fungování této ukázky**.
+1. V části _Další ukázky_ Najděte ukázkový plán **PCI-DSS v 3.2.1** a vyberte **použít tuto ukázku**.
 
-1. Zadejte _Základy_ vzorku podrobného plánu:
+1. Zadejte _základy_ ukázky podrobného plánu:
 
-   - **Název podrobného plánu**: Zadejte název pro vaši kopii ukázky PCI-DSS v3.2.1 podrobného plánu.
-   - **Umístění definice**: Použít na tři tečky a vyberte skupiny pro správu k uložení kopie vzorku.
+   - **Název**podrobného plánu: Zadejte název pro kopii ukázkového plánu PCI-DSS v 3.2.1.
+   - **Umístění definice**: Použijte tři tečky a vyberte skupinu pro správu, do které chcete kopii ukázky Uložit.
 
-1. Vyberte _artefakty_ kartě v horní části stránky nebo **Další: Artefakty** v dolní části stránky.
+1. Vyberte kartu _artefakty_ v horní části stránky nebo **další: Artefakty** v dolní části stránky.
 
-1. Projděte si seznam artefakty, které tvoří vzorku podrobného plánu. Řada artefakty, které má parametry, které budeme definovat později. Vyberte **uložit koncept** až dokončíte revize vzorku podrobného plánu.
+1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Mnohé z artefaktů mají parametry, které budeme definovat později. Po dokončení kontroly ukázkového plánu vyberte **Uložit koncept** .
 
-## <a name="publish-the-sample-copy"></a>Publikování ukázkové kopírování
+## <a name="publish-the-sample-copy"></a>Publikovat ukázkovou kopii
 
-Vaši kopii ukázky podrobného plánu byla vytvořena ve vašem prostředí. Vytvoří se v **koncept** režimu a musí být **publikováno** předtím, než může být přiřazena a nasadit. Kopii ukázky podrobný plán lze přizpůsobit, aby vaše prostředí a požadavky, ale tato změna může přesunout mimo standard PCI-DSS v3.2.1.
+Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu konceptu a musí být publikována před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard PCI-DSS v 3.2.1.
 
-1. Vyberte **všechny služby** a vyhledejte a vyberte **zásady** v levém podokně. Na **zásady** stránce **plány**.
+1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
 
-1. Vyberte **podrobný plán definice** na levé straně stránky. Pomocí filtru vyhledejte vaši kopii ukázky podrobného plánu a vyberte ji.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. Vyberte **publikovat podrobný plán** v horní části stránky. Nová stránka na pravé straně, zadejte **verze** vaši kopii ukázky podrobného plánu. Tato vlastnost je užitečná pro, pokud provedete změny později. Zadejte **změnit poznámky** jako "první verze publikování z ukázky PCI-DSS v3.2.1 podrobného plánu." Potom vyberte **publikovat** v dolní části stránky.
+1. V horní části stránky vyberte **publikovat podrobný plán** . Na stránce Nová na pravé straně zadejte **verzi** pro kopii ukázky podrobného plánu. Tato vlastnost je užitečná, pokud uděláte změnu později. Zadejte **poznámky ke změnám** , jako je například "první verze publikovaná z: PCI-DSS v 3.2.1 podrobný plán ukázka". Potom v dolní části stránky vyberte **publikovat** .
 
-## <a name="assign-the-sample-copy"></a>Přiřazení kopie vzorku
+## <a name="assign-the-sample-copy"></a>Přiřadit ukázkovou kopii
 
-Jakmile kopii ukázky podrobný plán byl úspěšně **publikováno**, je možné přiřadit na předplatné v rámci se uložila do skupiny pro správu. Tento krok je, kde jsou k dispozici parametry aby každého nasazení kopii ukázky podrobného plánu jedinečný.
+Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. Vyberte **všechny služby** a vyhledejte a vyberte **zásady** v levém podokně. Na **zásady** stránce **plány**.
+1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
 
-1. Vyberte **podrobný plán definice** na levé straně stránky. Pomocí filtru vyhledejte vaši kopii ukázky podrobného plánu a vyberte ji.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. Vyberte **přiřazení podrobného plánu** v horní části stránky definice podrobného plánu.
+1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
-   - Základy
+   - Základní informace
 
-     - **Předplatná:** Vyberte jednu nebo několik předplatných, které jsou ve skupině pro správu můžete uložit kopii ukázku podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení**: Název je předem vyplněna za vás na základě názvu podrobný plán.
-       Nechte, jak je změnit podle potřeby.
-     - **Umístění**: Vyberte oblast pro spravovanou identitu, která má být vytvořen v. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice podrobného plánu**: Vyberte **publikováno** verzi vaší kopii ukázky podrobného plánu.
+     - **Předplatná:** Vyberte jedno nebo více předplatných, které jsou ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení**: Název je předem vyplněný pro vás na základě názvu podrobného plánu.
+       Změňte podle potřeby nebo ponechte tak, jak je.
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Verze definice**podrobného plánu: Vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
-   - Přiřazení zámku
+   - Uzamknout přiřazení
 
-     Vyberte nastavení pro vaše prostředí zámek podrobného plánu. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
+     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
 
    - Spravovaná identita
 
-     Ponechte výchozí nastavení _přiřazenou systémem_ spravované identity možnost.
+     Ponechte výchozí _systém přiřazenou_ možnost spravovaná identita.
 
-   - Parametry artefaktu
+   - Parametry artefaktů
 
-     Parametry definované v této části se vztahují na artefakt, pod kterým je definována. Tyto parametry jsou [dynamických parametrů](../../concepts/parameters.md#dynamic-parameters) protože máte definovaný během přiřazování podrobný plán. Úplný seznam nebo artefaktů parametry a jejich popis najdete v tématu [artefaktů parametry tabulky](#artifact-parameters-table).
+     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Úplný seznam nebo parametry artefaktu a jejich popis najdete v tématu [tabulka parametrů artefaktů](#artifact-parameters-table).
 
-1. Po zadání všech parametrů se vyberte **přiřadit** v dolní části stránky. Přiřazení podrobného plánu se vytvoří a začne artefaktů nasazení. Nasazení trvá přibližně hodinu. Chcete-li zkontrolovat stav nasazení, otevřete přiřazení podrobného plánu.
+1. Po zadání všech parametrů vyberte v dolní části stránky **přiřadit** . Vytvoří se přiřazení podrobného plánu a spustí se nasazení artefaktu. Nasazení trvá zhruba hodinu. Chcete-li zjistit stav nasazení, otevřete přiřazení podrobného plánu.
 
 > [!WARNING]
-> Služba Azure plány a ukázky předdefinovaných podrobného plánu **zdarma**. Jsou prostředky Azure [ceny podle produktu](https://azure.microsoft.com/pricing/). Použití [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) odhadnout náklady na provozování prostředky nasazené v tomto příkladu podrobného plánu.
+> Služba Azure modrotisky a předdefinované ukázky podrobného plánu jsou **zdarma**. Ceny prostředků Azure se účtují [podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na provozované prostředky nasazené touto ukázkou podrobného plánu.
 
-## <a name="artifact-parameters-table"></a>Parametry tabulky artefaktu
+## <a name="artifact-parameters-table"></a>Tabulka parametrů artefaktů
 
-Následující tabulka obsahuje seznam podrobný plán artefaktů parametry:
+Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
 |Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|[Preview]: Auditovat PCI v3.2.1:2018 ovládací prvky a nasadit konkrétní rozšíření virtuálního počítače pro podporu požadavků na auditování|Přiřazení zásad|Seznam typů prostředků | Auditování nastavení diagnostiky pro vybrané typy prostředků. Výchozí hodnota je, že jsou vybrané všechny prostředky| 
-|Povolená umístění|Přiřazení zásad|Seznam povolených umístění|Seznam datacentrum v umístění povolené pro libovolné prostředky nasazované do. Tento seznam je přizpůsobitelný tak, aby požadované umístění Azure globálně. Vyberte umístění, které chcete povolit.| 
-|Povolená umístění pro skupiny prostředků|Přiřazení zásad |Povolená umístění |Tato zásada umožňuje omezit umístění, které vaší organizaci můžou vytvářet skupiny prostředků v. Slouží k vynucení požadavků na dodržování geografických předpisů.| 
-|Nasazení auditování na serverech SQL|Přiřazení zásad|Počet dnů uchování informací|Data rentention za počet dnů. Výchozí hodnota je 180, ale PCI vyžaduje 365.| 
-|Nasazení auditování na serverech SQL|Přiřazení zásad|Název skupiny prostředků pro účet úložiště|Auditování zapisuje databáze k auditu protokolu ve vašem účtu úložiště Azure (účet úložiště se vytvoří v každé oblasti, ve kterém je vytvořena serveru SQL Server, který budou sdílet všechny servery v této oblasti).| 
+|\[Preview\] auditovat PCI v 3.2.1:2018 řídí a nasazují specifická rozšíření virtuálních počítačů pro podporu požadavků na audit.|Přiřazení zásady|Seznam typů prostředků | Auditování nastavení diagnostiky pro vybrané typy prostředků. Výchozí hodnota jsou vybrané všechny prostředky.| 
+|Povolené lokality|Přiřazení zásady|Seznam povolených umístění|Seznam umístění datových center povolených pro všechny prostředky, které se mají nasadit do. Tento seznam je globálně přizpůsobitelný pro požadovaná umístění Azure. Vyberte umístění, která chcete přidělit.| 
+|Povolená umístění pro skupiny prostředků|Přiřazení zásady |Povolené umístění |Tato zásada vám umožní omezit umístění, ve kterých může organizace vytvářet skupiny prostředků. Použijte k vymáhání vašich požadavků na geografické dodržování předpisů.| 
+|Nasazení auditování na serverech SQL|Přiřazení zásady|Dny uchování|Uchovávání dat za počet dní Výchozí hodnota je 180, ale sběrnice PCI vyžaduje 365.| 
+|Nasazení auditování na serverech SQL|Přiřazení zásady|Název skupiny prostředků pro účet úložiště|Audit zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který bude sdílen všemi servery v této oblasti).| 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když si kroky pro nasazení ukázky PCI-DSS v3.2.1 podrobného plánu, naleznete v následujících článcích se dozvíte o přehled a mapování ovládacích prvků:
+Teď, když jste si prohlédli postup nasazení ukázky pro PCI-DSS v 3.2.1 podrobný plán, najdete v následujících článcích informace o přehledu a mapování ovládacích prvků:
 
 > [!div class="nextstepaction"]
-> [Podrobný plán v3.2.1 PCI-DSS – přehled](./index.md)
-> [podrobného plánu v3.2.1 PCI-DSS – mapování ovládacích prvků](./control-mapping.md)
+> [PCI-DSS v 3.2.1 podrobný plán – přehled](./index.md)
+> [Sběrnice PCI-DSS v 3.2.1 – mapování ovládacích prvků](./control-mapping.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

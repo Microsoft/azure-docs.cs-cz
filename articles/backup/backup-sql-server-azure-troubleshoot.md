@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 323470adfe56ee20fe0fb64aeba38b6af4330351
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827595"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018987"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -163,7 +163,7 @@ V předchozích scénářích doporučujeme, abyste na virtuálním počítači 
 
 Celková velikost řetězce souborů závisí nejen na počtu souborů, ale také na jejich názvech a cestách. Pro každý soubor databáze Získejte logický název souboru a fyzickou cestu. Tento dotaz SQL můžete použít:
 
-```
+```sql
 SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files mf
                INNER JOIN sys.databases db ON db.database_id = mf.database_id
                WHERE db.name = N'<Database Name>'"
@@ -171,13 +171,13 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 Nyní je uspořádejte v následujícím formátu:
 
-```
+```json
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
 Tady je příklad:
 
-```
+```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
 ```
 
@@ -188,7 +188,7 @@ Pokud velikost řetězce obsahu překračuje 20 000 bajtů, soubory databáze bu
 Cílovou cestu k souboru obnovení můžete během operace obnovení přepsat umístěním souboru JSON, který obsahuje mapování souboru databáze na cílovou cestu pro obnovení. Vytvořte soubor a umístěte ho do umístění *C:\Program Files\Azure úlohy Backup\bin\plugins\SQL.* `database_name.json`
 
 Obsah souboru by měl být v tomto formátu:
-```
+```json
 [
   {
     "Path": "<Restore_Path>",
@@ -205,7 +205,7 @@ Obsah souboru by měl být v tomto formátu:
 
 Tady je příklad:
 
-```
+```json
 [
   {
    "Path": "F:\\Data\\testdb2_1546408741449456.mdf",
@@ -222,7 +222,7 @@ Tady je příklad:
 
 V předchozím obsahu můžete získat logický název databázového souboru pomocí následujícího dotazu SQL:
 
-```
+```sql
 SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"

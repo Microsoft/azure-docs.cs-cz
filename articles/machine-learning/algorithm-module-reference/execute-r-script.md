@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 710d64b445953ae3124830931c8cbb9315d32b83
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 3594d9670e8fb94b053479352fb88997caa16db6
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875715"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016479"
 ---
 # <a name="execute-r-script"></a>Spouštění skriptů R
 
@@ -76,8 +76,7 @@ Datové sady uložené ve vizuálním rozhraní se při načtení s tímto modul
 
 1.  Přidejte do experimentu modul **spuštění skriptu jazyka R** .
 
-    > [!NOTE]
-    > Všechna data předaná do modulu **spouštěného skriptu jazyka r** jsou převedena `data.frame` do formátu R.
+  
 
 1. Připojte libovolné vstupy, které skript potřebuje. Vstupy jsou volitelné a můžou obsahovat data a další kód R.
 
@@ -90,10 +89,33 @@ Datové sady uložené ve vizuálním rozhraní se při načtení s tímto modul
 1. Do textového pole **skript jazyka r** zadejte nebo vložte platný skript r.
 
     Abychom vám pomohli začít, textové pole **skriptu jazyka R** je předem vyplněno ukázkovým kódem, který můžete upravit nebo nahradit.
+    
+```R
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
 
-    * Skript musí obsahovat funkci s názvem `azureml_main`, která je vstupním bodem pro tento modul.
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
 
-    * Funkce vstupního bodu může obsahovat až dva vstupní argumenty: `Param<dataframe1>` a`Param<dataframe2>`
+  # If a zip file is connected to the third input port, it is
+  # unzipped under "./Script Bundle". This directory is added
+  # to sys.path.
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+ * Skript musí obsahovat funkci s názvem `azureml_main`, která je vstupním bodem pro tento modul.
+
+ * Funkce vstupního bodu může obsahovat až dva vstupní argumenty: `Param<dataframe1>` a`Param<dataframe2>`
+ 
+   > [!NOTE]
+    > Data předaná do modulu **spuštění skriptu jazyka R** jsou odkazována `dataframe1` jako `dataframe2`a, která se liší od Azure Machine Learning Studio (odkaz na `dataset1`Studio `dataset2`jako,). Zkontrolujte prosím, jestli se vstupní data ve skriptu referneced správně.  
  
     > [!NOTE]
     >  Existující kód R může vyžadovat drobné změny ke spuštění v experimentu vizuálního rozhraní. Například vstupní data, která zadáte ve formátu CSV, by měla být explicitně převedena na datovou sadu, aby ji bylo možné použít ve svém kódu. Typy dat a sloupců používané v jazyce R se také liší v různých způsobech z dat a typů sloupců používaných ve vizuálním rozhraní.
@@ -243,7 +265,7 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | pořadač        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
 | bitops       | 1,0 – 6      | 
-| startování         | 1.3-22     | 
+| spouštění         | 1.3-22     | 
 | broom        | 0.5.2      | 
 | volající        | 3.2.0      | 
 | něj        | 6.0 – 84     | 
@@ -252,10 +274,10 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | třída        | 7.3-15     | 
 | CLI          | 1.1.0      | 
 | Galerie        | 0.6.0      | 
-| Služby      | 2.0.7-1    | 
+| Cluster      | 2.0.7-1    | 
 | codetools    | 0,2 – 16     | 
 | colorspace   | 1.4-1      | 
-| Přepínač     | 3.5.1      | 
+| přepínač     | 3.5.1      | 
 | pastel       | 1.3.4      | 
 | Curl         | 3.3        | 
 | data. tabulka   | 1.12.2     | 
@@ -280,7 +302,7 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | gplots       | 3.0.1.1    | 
 | prvky     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| mřížky         | 3.5.1      | 
+| grid         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | Některé        | 2.1.0      | 
@@ -302,7 +324,7 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | Markdownu     | 1          | 
 | HROMADNÉ         | 7.3-51.4   | 
 | Službu       | 1.2-17     | 
-| Způsobů      | 3.5.1      | 
+| způsobů      | 3.5.1      | 
 | mgcv         | 1.8 – 28     | 
 | typů         | 0,7        | 
 | ModelMetrics | 1.2.2      | 
@@ -320,7 +342,7 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | prettyunits  | 1.0.2      | 
 | processx     | 3.3.1      | 
 | prodlim      | 2018.04.18 | 
-| Přejde     | 1.2.2      | 
+| přejde     | 1.2.2      | 
 | PS           | 1.3.0      | 
 | purrr        | 0.3.2      | 
 | quadprog     | 1.5-7      | 

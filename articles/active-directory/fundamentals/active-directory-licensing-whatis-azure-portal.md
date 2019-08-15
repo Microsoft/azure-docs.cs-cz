@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a89443062f7d5cc697e83cc4039d0f3a47ad3077
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561848"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987148"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co je skupina založená na licencování v Azure Active Directory?
 
@@ -32,7 +32,7 @@ Aby se tyto problémy odstranily, umožňuje teď Azure AD licencování na zák
 ## <a name="licensing-requirements"></a>Licenční požadavky
 K používání licencování na základě skupin musíte mít jednu z následujících licencí:
 
-- Placené nebo zkušební předplatné pro Azure AD Basic a vyšší
+- Placené nebo zkušební předplatné pro Azure AD Premium P1 a vyšší
 
 - Placená nebo zkušební edice Office 365 Enterprise E3 nebo Office 365 a3 nebo Office 365 RSZ G3 a vyšší
 
@@ -61,7 +61,7 @@ Toto jsou hlavní znaky licencování na základě skupin:
 
 Pokud máte vaše připomínky nebo žádosti o funkce, sdílejte je s námi pomocí [fóra správce Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o jiných scénářích pro správu licencí pomocí licencování na základě skupin najdete v tématech:
 

@@ -1,26 +1,26 @@
 ---
-title: Vytvořit účet úložiště – Azure Storage
-description: V tomto článku s postupy zjistíte, jak vytvořit účet úložiště pomocí webu Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure. Účet úložiště Azure poskytuje v Microsoft Azure jedinečný obor názvů pro ukládání a přístup k datovým objektům, které vytvoříte ve službě Azure Storage.
+title: Vytvoření účtu úložiště – Azure Storage
+description: V tomto článku se dozvíte, jak vytvořit účet úložiště pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure. Účet úložiště Azure poskytuje v Microsoft Azure jedinečný obor názvů pro ukládání a přístup k datovým objektům, které vytvoříte ve službě Azure Storage.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/28/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8375f4c54dc436ecf0694ec5f629c81d3591594d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72f8c3ed0658765827c4a9b0669c08fefd9044f
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234178"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016330"
 ---
 # <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Účet úložiště Azure obsahuje všechny datových objektů Azure Storage: objekty BLOB, soubory, fronty, tabulky a disky. Účet úložiště poskytuje jedinečný obor názvů pro vaše data služby Azure Storage, která je přístupná odkudkoli na světě prostřednictvím protokolu HTTP nebo HTTPS. Data ve vašem účtu úložiště Azure je odolné a vysoce dostupné, zabezpečené a široce škálovatelné.
+Účet úložiště Azure obsahuje všechny vaše Azure Storage datové objekty: objekty blob, soubory, fronty, tabulky a disky. Účet úložiště poskytuje jedinečný obor názvů pro data Azure Storage, která jsou přístupná odkudkoli na světě přes protokol HTTP nebo HTTPS. Data v účtu úložiště Azure jsou trvalá a vysoce dostupná, zabezpečená a rozsáhlá.
 
-V tomto článku s postupy, zjistíte, jak vytvořit účet úložiště pomocí [webu Azure portal](https://portal.azure.com/), [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), nebo [Azure Resource Manageru Šablona](../../azure-resource-manager/resource-group-overview.md).  
+V tomto článku se dozvíte, jak vytvořit účet úložiště pomocí [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/overview), [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)nebo [šablony pro Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -30,40 +30,40 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-Žádné
+Žádné.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Tento článek vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Aktuální verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 0,7 nebo novější. Aktuální verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Přihlásit do Azure a spouštět příkazy rozhraní příkazového řádku Azure v jednom ze dvou způsobů:
+Můžete se přihlásit k Azure a spustit příkazy rozhraní příkazového řádku Azure CLI jedním ze dvou způsobů:
 
-- Ve službě Azure Cloud Shell můžete spouštět příkazy rozhraní příkazového řádku z webu Azure portal.
-- Můžete nainstalovat rozhraní příkazového řádku a spouštění místních příkazů rozhraní příkazového řádku.
+- Příkazy rozhraní příkazového řádku můžete spustit z Azure Portal v Azure Cloud Shell.
+- Můžete nainstalovat rozhraní příkazového řádku a spustit příkazy rozhraní příkazového řádku místně.
 
 ### <a name="use-azure-cloud-shell"></a>Použití služby Azure Cloud Shell
 
-Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z webu Azure Portal. Rozhraní příkazového řádku Azure je předem nainstalovaný a nakonfigurovaný pro použití s vaším účtem. Klikněte na tlačítko **Cloud Shell** tlačítko v nabídce v pravé horní části webu Azure Portal:
+Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z webu Azure Portal. Rozhraní příkazového řádku Azure je předem nainstalované a nakonfigurované pro použití s vaším účtem. V nabídce v pravé horní části Azure Portal klikněte na tlačítko **Cloud Shell** :
 
 [![Cloud Shell](./media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
-Toto tlačítko spustí interaktivní prostředí, můžete použít k provedení kroků uvedených v tomto článku s postupy:
+Tlačítko spustí interaktivní prostředí, které můžete použít ke spuštění kroků popsaných v tomto článku s návody:
 
 [![Snímek obrazovky okna služby Cloud Shell na portálu](./media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>Místní instalace rozhraní příkazového řádku
 
-Azure CLI můžete také nainstalovat a používat místně. Tento článek vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+Azure CLI můžete také nainstalovat a používat místně. Tento článek s návody vyžaduje, abyste spustili Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
 
 # <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 
-Žádné
+Žádné.
 
 ---
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -79,9 +79,9 @@ Connect-AzAccount
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete spustit Azure Cloud Shell, přihlaste se k [webu Azure portal](https://portal.azure.com).
+Pokud chcete spustit Azure Cloud Shell, přihlaste se k [Azure Portal](https://portal.azure.com).
 
-Přihlaste se k místní instalaci rozhraní příkazového řádku, spusťte [az login](/cli/azure/reference-index#az-login) příkaz:
+K místní instalaci rozhraní příkazového řádku se přihlaste spuštěním příkazu [AZ Login](/cli/azure/reference-index#az-login) :
 
 ```cli
 az login
@@ -89,7 +89,7 @@ az login
 
 # <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 
-neuvedeno
+Není k dispozici
 
 ---
 
@@ -97,9 +97,9 @@ neuvedeno
 
 Teď jste připraveni k vytvoření účtu úložiště.
 
-Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Při vytváření účtu úložiště máte možnost buď vytvořit novou skupinu prostředků, nebo použít některou existující skupinu prostředků. Tento článek ukazuje, jak vytvořit novou skupinu prostředků.
+Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Při vytváření účtu úložiště máte možnost buď vytvořit novou skupinu prostředků, nebo použít některou existující skupinu prostředků. V tomto článku se dozvíte, jak vytvořit novou skupinu prostředků.
 
-Účet úložiště **Univerzální v2** poskytuje přístup ke všem službám Azure Storage: objektům blob, souborům, frontám, tabulkám a diskům. Níže uvedené kroky vytvoření účtu úložiště pro obecné účely v2, ale jsou podobné kroky k vytvoření libovolného typu účtu úložiště.
+Účet úložiště **Univerzální v2** poskytuje přístup ke všem službám Azure Storage: objektům blob, souborům, frontám, tabulkám a diskům. Zde popsané kroky vytvoří účet úložiště pro obecné účely v2, ale postup vytvoření libovolného typu účtu úložiště je podobný.
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -107,7 +107,7 @@ Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Nejprve vytvořte novou skupinu prostředků s použitím prostředí PowerShell [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) příkaz:
+Nejdřív pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) vytvořte novou skupinu prostředků s PowerShellem:
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -116,14 +116,14 @@ $resourceGroup = "storage-resource-group"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-Pokud si nejste jisti, jakou oblast pro `-Location` parametr, můžete načíst seznam podporovaných oblastí pro vaše předplatné se [Get-AzLocation](/powershell/module/az.resources/get-azlocation) příkaz:
+Pokud si nejste jistí, kterou oblast pro `-Location` parametr určíte, můžete získat seznam podporovaných oblastí pro vaše předplatné pomocí příkazu [Get-AzLocation](/powershell/module/az.resources/get-azlocation) :
 
 ```powershell
 Get-AzLocation | select Location
 $location = "westus"
 ```
 
-Dále vytvořte účet úložiště pro obecné účely verze 2 s geograficky redundantní úložiště jen pro čtení (RA-GRS) pomocí [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) příkazu. Mějte na paměti, že název účtu úložiště musí být jedinečný v rámci Azure, tak hodnotu zástupného symbolu v závorkách nahraďte vlastní jedinečnou hodnotu:
+Dále vytvořte účet úložiště pro obecné účely v2 s geograficky redundantním úložištěm s přístupem pro čtení (RA-GRS) pomocí příkazu [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) . Mějte na paměti, že název účtu úložiště musí být v rámci Azure jedinečný, proto nahraďte hodnotu zástupný symbol v závorkách vlastní jedinečnou hodnotou:
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName $resourceGroup `
@@ -133,7 +133,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2 
 ```
 
-Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s možností jiné replikační, nahraďte požadovanou hodnotu v následující tabulce **SkuName** parametru.
+Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možností replikace, nahraďte požadovanou hodnotu v následující tabulce pro parametr **SkuName** .
 
 |Možnost replikace  |Parametr SkuName  |
 |---------|---------|
@@ -141,6 +141,8 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s možnos
 |Zónově redundantní úložiště (ZRS)     |Standard_ZRS         |
 |Geograficky redundantní úložiště (GRS)     |Standard_GRS         |
 |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)     |Standard_RAGRS         |
+|Geografická zóna – redundantní úložiště (GZRS) (Preview)    |Standard_GZRS         |
+|Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS) (ve verzi Preview)    |Standard_RAGZRS         |
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -160,7 +162,7 @@ az account list-locations \
     --out table
 ```
 
-Dále vytvořte účet úložiště pro obecné účely verze 2 s geograficky redundantní úložiště jen pro čtení pomocí [vytvořit účet úložiště az](/cli/azure/storage/account#az_storage_account_create) příkazu. Mějte na paměti, že název účtu úložiště musí být jedinečný v rámci Azure, tak hodnotu zástupného symbolu v závorkách nahraďte vlastní jedinečnou hodnotu:
+V dalším kroku vytvořte účet úložiště pro obecné účely v2 s geograficky redundantním úložištěm s přístupem pro čtení pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) . Mějte na paměti, že název účtu úložiště musí být v rámci Azure jedinečný, proto nahraďte hodnotu zástupný symbol v závorkách vlastní jedinečnou hodnotou:
 
 ```azurecli-interactive
 az storage account create \
@@ -171,7 +173,7 @@ az storage account create \
     --kind StorageV2
 ```
 
-Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s možností jiné replikační, nahraďte požadovanou hodnotu v následující tabulce **sku** parametru.
+Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možností replikace, nahraďte požadovanou hodnotu v následující tabulce pro parametr **SKU** .
 
 |Možnost replikace  |Parametr sku  |
 |---------|---------|
@@ -179,10 +181,12 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s možnos
 |Zónově redundantní úložiště (ZRS)     |Standard_ZRS         |
 |Geograficky redundantní úložiště (GRS)     |Standard_GRS         |
 |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)     |Standard_RAGRS         |
+|Geografická zóna – redundantní úložiště (GZRS) (Preview)    |Standard_GZRS         |
+|Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS) (ve verzi Preview)    |Standard_RAGZRS         |
 
 # <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 
-Prostředí Azure Powershell nebo rozhraní příkazového řádku Azure můžete použít k nasazení šablony Resource Manageru k vytvoření účtu úložiště. Šablona použitá v tomto článku postup je z [šablon Azure Resource Manageru pro rychlý Start](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Chcete-li spustit skripty, vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**.
+Pomocí Azure PowerShellu nebo rozhraní příkazového řádku Azure můžete nasadit šablonu Správce prostředků a vytvořit účet úložiště. Šablona použitá v tomto článku s návody je od [Azure Resource Manager šablon pro rychlý Start](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Pokud chcete skripty spustit, vyberte **zkusit** na to, aby se otevřelo Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -201,11 +205,11 @@ az group create --name $resourceGroupName --location "$location" &&
 az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
-Další informace o vytváření šablon najdete v tématu:
+Informace o tom, jak vytvořit šablony, najdete v těchto tématech:
 
-- [Dokumentace ke službě Azure Resource Manageru](/azure/azure-resource-manager/).
-- [Odkaz na šablonu účtu úložiště](/azure/templates/microsoft.storage/allversions).
-- [Ukázkové šablony účtu úložiště](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
+- [Azure Resource Manager dokumentaci](/azure/azure-resource-manager/).
+- [Odkaz na šablonu účtu úložiště](/azure/templates/microsoft.storage/allversions)
+- [Další ukázky šablon účtu úložiště](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)
 
 ---
 
@@ -213,7 +217,7 @@ Další informace o dostupných možnostech replikace najdete v tématu věnovan
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit prostředky vytvořené v rámci tohoto článku s postupy, můžete odstranit skupinu prostředků. Odstraněním skupiny prostředků odstraníte také přidružený účet úložiště a všechny další prostředky, které jsou k příslušné skupině prostředků přidružené.
+Pokud chcete vyčistit prostředky vytvořené tímto článkem s postupem, můžete odstranit skupinu prostředků. Odstraněním skupiny prostředků odstraníte také přidružený účet úložiště a všechny další prostředky, které jsou k příslušné skupině prostředků přidružené.
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -225,7 +229,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Chcete-li odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkaz:
+Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) :
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
@@ -241,7 +245,7 @@ az group delete --name storage-resource-group
 
 # <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 
-Chcete-li odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure.
+Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte buď Azure PowerShell, nebo rozhraní příkazového řádku Azure CLI.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -256,9 +260,9 @@ az group delete --name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku s postupy vytvořili jste účet úložiště úrovně standard pro obecné účely v2. Zjistěte, jak nahrávat a stahovat objekty BLOB z účtu úložiště, pokračujte jeden z úložiště objektů Blob, šablony rychlý start.
+V tomto článku s postupem jste vytvořili účet úložiště úrovně Standard pro obecné účely v2. Pokud se chcete dozvědět, jak nahrávat a stahovat objekty blob do a z účtu úložiště, pokračujte jedním z rychlých startů pro úložiště objektů BLOB.
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -273,7 +277,7 @@ V tomto článku s postupy vytvořili jste účet úložiště úrovně standard
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
-> [Práce s objekty BLOB pomocí Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
+> [Práce s objekty BLOB pomocí rozhraní příkazového řádku Azure](../blobs/storage-quickstart-blobs-cli.md)
 
 # <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 

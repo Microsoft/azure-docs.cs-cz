@@ -1,6 +1,6 @@
 ---
-title: Po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) – služby Azure Storage
-description: Azure Storage podporuje účet převzetí služeb při selhání (preview) pro účty geograficky redundantní úložiště. Pomocí účtu převzetí služeb při selhání můžete zahájit procesu převzetí služeb při selhání pro váš účet úložiště, pokud primární koncový bod nebude dostupný.
+title: Zotavení po havárii a převzetí služeb při selhání účtu úložiště (Preview) – Azure Storage
+description: Azure Storage podporuje převzetí služeb při selhání účtu (Preview) u geograficky redundantních účtů úložiště. S převzetím služeb při selhání můžete zahájit proces převzetí služeb při selhání pro váš účet úložiště, pokud primární koncový bod nebude k dispozici.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,128 +9,131 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f9d68af12f6b2e98c77d0bd1b65a82c69588f203
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147619"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015645"
 ---
-# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) ve službě Azure Storage
+# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště (Preview) v Azure Storage
 
-Cílem Microsoftu je zasloužit ujistit, že služby Azure jsou vždy k dispozici. Však může dojít, neplánované výpadky. Pokud vaše aplikace vyžaduje odolnost proti chybám, Microsoft doporučuje používat geograficky redundantní úložiště, aby vaše data se replikují do druhé oblasti. Kromě toho Zákazníci by měli připravený pro zpracování výpadku oblasti služeb plán zotavení po havárii. Důležitou součástí plánu zotavení po havárii se připravuje na převzetí služeb při selhání do sekundárního koncového bodu v případě, že primární koncový bod nebude dostupný. 
+Microsoft usiluje o to, aby byly služby Azure vždycky dostupné. Může ale dojít k neplánovaným výpadkům služby. Pokud vaše aplikace vyžaduje odolnost, společnost Microsoft doporučuje používat geograficky redundantní úložiště, aby se vaše data mohla replikovat do druhé oblasti. Kromě toho by zákazníci měli mít k dispozici plán zotavení po havárii pro zpracování oblasti výpadku regionální služby. Důležitou součástí plánu zotavení po havárii je příprava na převzetí služeb při selhání sekundárním koncovým bodem v případě, že primární koncový bod nebude k dispozici. 
 
-Azure Storage podporuje účet převzetí služeb při selhání (preview) pro účty geograficky redundantní úložiště. Pomocí účtu převzetí služeb při selhání můžete zahájit procesu převzetí služeb při selhání pro váš účet úložiště, pokud primární koncový bod nebude dostupný. Aktualizuje převzetí služeb při selhání sekundární koncový bod pro stát primární koncový bod vašeho účtu úložiště. Po dokončení převzetí služeb klientům můžete začít psát na novou primární koncový bod.
+Azure Storage podporuje převzetí služeb při selhání účtu (Preview) u geograficky redundantních účtů úložiště. S převzetím služeb při selhání můžete zahájit proces převzetí služeb při selhání pro váš účet úložiště, pokud primární koncový bod nebude k dispozici. Převzetí služeb při selhání aktualizuje sekundární koncový bod tak, aby se stal primárním koncovým bodem pro váš účet úložiště. Až se převzetí služeb při selhání dokončí, můžou klienti začít zapisovat do nového primárního koncového bodu.
 
-Tento článek popisuje koncepty a proces se účtu převzetí služeb při selhání a popisuje, jak můžete připravit obnovení s minimální množství dopad pro zákazníka v účtu úložiště. Další spuštění účet převzetí služeb při selhání webu Azure portal nebo Powershellu najdete v tématu [zahájit účtu převzetí služeb při selhání (preview)](storage-initiate-account-failover.md).
+Tento článek popisuje koncepty a procesy spojené s převzetím služeb při selhání a popisuje, jak připravit účet úložiště k obnovení s minimálním dopadem na zákazníky. Informace o tom, jak iniciovat převzetí služeb při selhání účtu v Azure Portal nebo PowerShellu, najdete v tématu o [inicializaci převzetí služeb při selhání (Preview)](storage-initiate-account-failover.md).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="choose-the-right-redundancy-option"></a>Zvolte možnost správné redundance
+## <a name="choose-the-right-redundancy-option"></a>Zvolit správnou možnost redundance
 
-Všechny účty úložiště se replikují pro zajištění redundance. Zvolené možnosti redundance, zvolte pro svůj účet, závisí na úroveň odolnosti, které potřebujete. Pro ochranu před regionální výpadky zvolte geograficky redundantní úložiště s nebo bez možnosti čtení ze sekundární oblasti:  
+Všechny účty úložiště se replikují pro redundanci. Jakou možnost redundance zvolíte pro svůj účet závisí na stupni odolnosti, kterou potřebujete. Z důvodu ochrany před místními výpadky vyberte geograficky redundantní úložiště s možností přístupu pro čtení ze sekundární oblasti nebo bez něj:  
 
-**Geograficky redundantní úložiště (GRS)** replikuje data asynchronně ve dvou geografických oblastí, které jsou alespoň stovky mil. Pokud primární oblast odkážete výpadku, sekundární oblasti slouží jako záložní zdroj pro vaše data. Můžete spustit převzetí služeb při selhání do sekundárního koncového bodu transformovat na primární koncový bod.
+**Geograficky redundantní úložiště (GRS)** replikuje vaše data asynchronně ve dvou geografických oblastech, které mají od sebe aspoň stovky kilometrů. Pokud primární oblast zpomaluje výpadek, pak sekundární oblast slouží jako redundantní zdroj dat. Můžete iniciovat převzetí služeb při selhání a transformovat sekundární koncový bod do primárního koncového bodu.
 
-**Geograficky redundantní úložiště jen pro čtení (RA-GRS)** poskytuje další výhody přístup pro čtení na sekundární koncový bod geograficky redundantní úložiště. V případě výpadku primární koncový bod aplikace nakonfigurována pro RA-GRS a navržené pro zajištění vysoké dostupnosti můžete nadále číst ze sekundárního koncového bodu. Společnost Microsoft doporučuje pro maximální odolnost proti chybám pro vaše aplikace RA-GRS.
+**Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)** poskytuje geograficky redundantní úložiště s dodatečnou výhodou přístupu pro čtení sekundárního koncového bodu. Pokud v primárním koncovém bodě dojde k výpadku, můžou aplikace nakonfigurované pro RA-GRS a určené pro vysokou dostupnost pokračovat v čtení ze sekundárního koncového bodu. Microsoft doporučuje RA-GRS pro maximální odolnost vašich aplikací.
 
-Další možnosti redundance Azure Storage zahrnují zónově redundantní úložiště (ZRS), která replikuje vaše data napříč zónami dostupnosti v jedné oblasti a místně redundantní úložiště (LRS), která replikuje vaše data do jednoho datového centra v jedné oblasti. Pokud váš účet úložiště je nakonfigurovaný pro ZRS nebo LRS, můžete převést tento účet se má použít GRS nebo RA-GRS. Konfigurace účtu pro geograficky redundantní úložiště s sebou nese náklady spojené další náklady. Další informace najdete v tématu [replikace Azure Storage](storage-redundancy.md).
+Mezi další Azure Storage možnosti redundance patří úložiště redundantní v zóně (ZRS), které replikuje vaše data napříč zónami dostupnosti v jedné oblasti a místně redundantní úložiště (LRS), které replikuje vaše data v jednom datovém centru v jedné oblasti. Pokud je váš účet úložiště nakonfigurovaný pro ZRS nebo LRS, můžete tento účet převést na použití GRS nebo RA-GRS. Konfigurace účtu pro geograficky redundantní úložiště má za následek další náklady. Další informace najdete v tématu [replikace Azure Storage](storage-redundancy.md).
+
+> [!NOTE]
+> Geograficky redundantní úložiště (GZRS) a geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS) jsou momentálně ve verzi Preview, ale ještě nejsou dostupné ve stejných oblastech jako převzetí služeb při selhání účtů spravovaných zákazníkem. Z tohoto důvodu zákazníci momentálně nemůžou spravovat události převzetí služeb při selhání účtu s GZRS a RA-GZRS účty. V průběhu verze Preview bude společnost Microsoft spravovat všechny události převzetí služeb při selhání, které mají vliv na účty GZRS/RA-GZRS.
 
 > [!WARNING]
-> Geograficky redundantní úložiště s sebou nese riziko ztráty. Data se replikují do sekundární oblasti asynchronně, což znamená, že dochází ke zpoždění mezi při zápisu dat zapsaných do primární oblasti do sekundární oblasti. V případě výpadku zápisu na primární koncový bod operací, které nebyly dosud replikovány na sekundární koncový bod se ztratí. 
+> Geograficky redundantní úložiště přináší riziko ztráty dat. Data se replikují do sekundární oblasti asynchronně, což znamená, že mezi daty zapsanými do primární oblasti dojde k zápisu do sekundární oblasti. V případě výpadku dojde ke ztrátě operací zápisu do primárního koncového bodu, které ještě nebyly replikovány do sekundárního koncového bodu.
 
-## <a name="design-for-high-availability"></a>Návrh pro zajištění vysoké dostupnosti
+## <a name="design-for-high-availability"></a>Návrh pro vysokou dostupnost
 
-Je důležité při návrhu vaší aplikace pro zajištění vysoké dostupnosti od začátku. Přečtěte si na tyto prostředky Azure, kde najdete pokyny k návrhu vaší aplikace a plánování zotavení po havárii:
+Je důležité navrhnout aplikaci pro zajištění vysoké dostupnosti od začátku. Pokyny pro návrh aplikace a plánování zotavení po havárii najdete v těchto prostředcích Azure:
 
-* [Návrh odolných aplikací pro Azure](https://docs.microsoft.com/azure/architecture/resiliency/): Přehled klíčových konceptů pro navrhování aplikací s vysokou dostupností v Azure.
-* [Kontrolní seznam k dostupnosti](https://docs.microsoft.com/azure/architecture/checklist/availability): Kontrolní seznam pro ověření, že vaše aplikace implementuje osvědčené postupy pro navrhování pro vysokou dostupnost.
-* [Navrhování aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md): Návrh pokyny pro vytváření aplikací, abyste mohli využívat RA-GRS.
-* [Kurz: Sestavení aplikace s vysokou dostupností s úložištěm objektů Blob](../blobs/storage-create-geo-redundant-storage.md): Kurz, který ukazuje, jak vytvářet aplikace s vysokou dostupností, která automaticky přepne mezi koncovými body jako selhání a obnovení jsou simulované. 
+* [Navrhování odolných aplikací pro Azure](https://docs.microsoft.com/azure/architecture/resiliency/): Přehled klíčových konceptů pro navrhování vysoce dostupných aplikací v Azure.
+* [Kontrolní seznam dostupnosti](https://docs.microsoft.com/azure/architecture/checklist/availability): Kontrolní seznam pro ověření, že vaše aplikace implementuje osvědčené postupy návrhu pro vysokou dostupnost.
+* [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md): Pokyny k návrhu pro vytváření aplikací, které využívají výhod RA-GRS.
+* [Kurz: Vytvoření vysoce dostupné aplikace s úložištěm](../blobs/storage-create-geo-redundant-storage.md)objektů BLOB: Kurz, ve kterém se dozvíte, jak vytvořit vysoce dostupnou aplikaci, která automaticky přepíná mezi koncovými body v podobě selhání a jsou simulovaná obnovení. 
 
-Kromě toho mějte na paměti tyto osvědčené postupy pro zachování vysoké dostupnosti pro vaše data služby Azure Storage:
+Kromě toho mějte na paměti tyto osvědčené postupy pro udržení vysoké dostupnosti dat Azure Storage:
 
-* **Disky:** Použití [Azure Backup](https://azure.microsoft.com/services/backup/) zálohování disků virtuálních počítačů používají virtuální počítače Azure. Také zvážit použití [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) k ochraně vašich virtuálních počítačů v případě regionálního.
-* **Objekty BLOB bloku:** Zapnout [obnovitelné odstranění](../blobs/storage-blob-soft-delete.md) k ochraně proti odstranění na úrovni objektů a přepíše nebo zkopírovat objekty BLOB bloku do jiného účtu úložiště v jiné oblasti pomocí [AzCopy](storage-use-azcopy.md), [prostředí Azure PowerShell ](storage-powershell-guide-full.md), nebo [knihovna pro přesun dat Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
-* **Soubory:** Použití [AzCopy](storage-use-azcopy.md) nebo [prostředí Azure PowerShell](storage-powershell-guide-full.md) kopírování souborů do jiného účtu úložiště v jiné oblasti.
-* **Tabulky:** použít [AzCopy](storage-use-azcopy.md) exportovat data tabulky do jiného účtu úložiště v jiné oblasti.
+* **Disků** Použijte [Azure Backup](https://azure.microsoft.com/services/backup/) k zálohování disků virtuálních počítačů využívaných virtuálními počítači Azure. Zvažte také použití [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) k ochraně vašich virtuálních počítačů v případě regionálních havárií.
+* **Objekty blob bloku:** Zapněte [obnovitelné odstranění](../blobs/storage-blob-soft-delete.md) pro ochranu proti odstranění na úrovni objektu a přepsání nebo zkopírujte objekty blob bloku do jiného účtu úložiště v jiné oblasti pomocí [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)nebo [knihovny pro přesun dat Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
+* **Spis** Pomocí [AzCopy](storage-use-azcopy.md) nebo [Azure PowerShell](storage-powershell-guide-full.md) zkopírujte soubory do jiného účtu úložiště v jiné oblasti.
+* **Tabulky:** pomocí [AzCopy](storage-use-azcopy.md) můžete exportovat data tabulky do jiného účtu úložiště v jiné oblasti.
 
-## <a name="track-outages"></a>Sledovat výpadků
+## <a name="track-outages"></a>Sledovat výpadky
 
-Zákazníci mohou přihlásit k odběru [řídicí panel stavu služby Azure](https://azure.microsoft.com/status/) ke sledování stavu a stavu služby Azure Storage a dalšími službami Azure.
+Zákazníci se můžou přihlásit k odběru [řídicího panelu Azure Service Health](https://azure.microsoft.com/status/) , aby mohli sledovat stav a stav Azure Storage a dalších služeb Azure.
 
-Microsoft také doporučuje navrhnout aplikaci Příprava možnost chyby zápisu. Vaše aplikace by měly vystavit chyby zápisu tak, aby vás upozorní na možnost výpadku v primární oblasti.
+Microsoft také doporučuje navrhovat aplikace, aby se připravila možnost selhání zápisu. Vaše aplikace by měla vystavovat chyby při psaní způsobem, který vás upozorní na možnost výpadku v primární oblasti.
 
-## <a name="understand-the-account-failover-process"></a>Účet procesu převzetí služeb při selhání
+## <a name="understand-the-account-failover-process"></a>Pochopení procesu převzetí služeb při selhání účtu
 
-Převzetí služeb při selhání účtu spravovaného zákazníkem (preview) umožňuje převzít vaše celý účet úložiště do sekundární oblasti, pokud z nějakého důvodu nedostupný primární. Při vynucení převzetí služeb při selhání do sekundární oblasti, můžete začít klienti zápis dat do sekundárního koncového bodu po dokončení převzetí služeb. Převzetí služeb při selhání trvá obvykle zhruba do hodiny.
+Převzetí služeb při selhání účtu spravovaného zákazníkem (ve verzi Preview) vám umožní převzít služby při selhání celého účtu úložiště do sekundární oblasti, pokud primární z nějakého důvodu nebude k dispozici. Když vynutíte převzetí služeb při selhání sekundární oblastí, můžou klienti po dokončení převzetí služeb při selhání začít zapisovat data do sekundárního koncového bodu. Převzetí služeb při selhání obvykle trvá přibližně hodinu.
 
-### <a name="how-an-account-failover-works"></a>Jak funguje účtem převzetí služeb při selhání
+### <a name="how-an-account-failover-works"></a>Jak funguje převzetí služeb při selhání účtu
 
-Za normálních okolností klient zapisuje data do účtu služby Azure Storage v primární oblasti a tato data se asynchronně replikuje do sekundární oblasti. Následující obrázek ukazuje scénář, když primární oblast je k dispozici:
+Za normálních okolností klient zapisuje data do účtu Azure Storage v primární oblasti a tato data se replikují asynchronně do sekundární oblasti. Následující obrázek znázorňuje situaci, kdy je primární oblast k dispozici:
 
-![Klienti zapisovat data do účtu úložiště v primární oblasti](media/storage-disaster-recovery-guidance/primary-available.png)
+![Klienti zapisují data do účtu úložiště v primární oblasti.](media/storage-disaster-recovery-guidance/primary-available.png)
 
-Pokud z nějakého důvodu nedostupný primární koncový bod, klient je již nemůže zapisovat do účtu úložiště. Následující obrázek ukazuje scénář, kdy primární má k dispozici, ale bez obnovení ještě nedošlo k:
+Pokud z nějakého důvodu nebude primární koncový bod k dispozici, klient už nebude moct zapisovat do účtu úložiště. Na následujícím obrázku je znázorněn scénář, ve kterém primární událost není k dispozici, ale ještě neproběhlo žádné obnovení:
 
-![Primární není k dispozici, aby klienti nelze zapisovat data](media/storage-disaster-recovery-guidance/primary-unavailable-before-failover.png)
+![Primární není k dispozici, takže klienti nemůžou zapisovat data.](media/storage-disaster-recovery-guidance/primary-unavailable-before-failover.png)
 
-Zákazník zahájí účet převzetí služeb při selhání do sekundárního koncového bodu. Proces převzetí služeb při selhání aktualizuje položku DNS poskytuje Azure Storage tak, aby sekundární koncový bod se stane nová primární koncový bod vašeho účtu úložiště, jak je znázorněno na následujícím obrázku:
+Zákazník zahájí převzetí služeb při selhání účtu sekundárním koncovým bodem. Proces převzetí služeb při selhání aktualizuje položku DNS, kterou poskytuje Azure Storage, aby se sekundární koncový bod stal novým primárním koncovým bodem pro váš účet úložiště, jak je znázorněno na následujícím obrázku:
 
-![Zákazník iniciuje účet převzetí služeb při selhání do sekundárního koncového bodu](media/storage-disaster-recovery-guidance/failover-to-secondary.png)
+![Zákazník iniciuje převzetí služeb při selhání účtem sekundárního koncového bodu.](media/storage-disaster-recovery-guidance/failover-to-secondary.png)
 
-Přístup pro zápis se obnoví pro účty GRS a RA-GRS, jakmile byla aktualizována položka DNS a požadavky jsou nasměrování na nový primární koncový bod. Koncovými body existující úložiště pro objekty BLOB, tabulky, fronty a soubory nebudou měnit převzetí služeb při selhání.
+Jakmile se položka DNS aktualizuje a požadavky se přesměrují do nového primárního koncového bodu, pro účty GRS a RA-GRS se obnoví přístup pro zápis. Stávající koncové body služby úložiště pro objekty blob, tabulky, fronty a soubory zůstávají po převzetí služeb při selhání stejné.
 
 > [!IMPORTANT]
-> Po dokončení převzetí služeb při selhání je místně redundantní v nové primární koncový bod nakonfigurovaný účet úložiště. Obnovit na nový sekundární replikace, nakonfigurujte účet, který chcete použít geograficky redundantní úložiště znovu (RA-GRS nebo GRS).
+> Po dokončení převzetí služeb při selhání se účet úložiště nakonfiguruje na místně redundantní v novém primárním koncovém bodu. Pokud chcete obnovit replikaci do nového sekundárního počítače, nakonfigurujte účet tak, aby znovu používal geograficky redundantní úložiště (buď RA-GRS nebo GRS).
 >
-> Mějte na paměti, že převod účet LRS a GRS RA-GRS, má náklady. Tyto náklady se vztahuje na aktualizace účtu úložiště v nové primární oblasti po převzetí služeb při použití RA-GRS nebo GRS.  
+> Mějte na paměti, že převod účtu LRS na RA-GRS nebo GRS stojí za cenu. Tato cena se vztahuje na aktualizaci účtu úložiště v nové primární oblasti tak, aby po převzetí služeb při selhání používala RA-GRS nebo GRS.  
 
-### <a name="anticipate-data-loss"></a>Příprava na vyčerpání ztráty dat
+### <a name="anticipate-data-loss"></a>Předvídání ztráty dat
 
 > [!CAUTION]
-> Převzetí služeb při selhání účet obvykle zahrnuje ztrátu některých dat. Je důležité si uvědomit důsledky inicializaci účtu převzetí služeb při selhání.  
+> Převzetí služeb při selhání účtu obvykle zahrnuje určitou ztrátu dat. Je důležité pochopit důsledky zahájení převzetí služeb při selhání účtu.  
 
-Protože data se zapisují asynchronně z primární oblasti do sekundární oblasti, je vždy zpoždění před zápis do primární oblasti se replikují do sekundární oblasti. Pokud primární oblast stane nedostupnou, nejnovější zápisy nemusí ještě replikovaly do sekundární oblasti.
+Vzhledem k tomu, že data jsou zapsána asynchronně z primární oblasti do sekundární oblasti, je vždy zpoždění před tím, než je zápis do primární oblasti replikován do sekundární oblasti. Pokud primární oblast nebude k dispozici, nejaktuálnější zápisy ještě nemusí být replikovány do sekundární oblasti.
 
-Při vynucení převzetí služeb při selhání dojde ke ztrátě všech dat v primární oblasti, sekundární oblast stane nová primární oblast a účet úložiště je nakonfigurovaný jako místně redundantní. Všechna data již replikovány na sekundární se nepoužije, když se stane, převzetí služeb při selhání. Však žádná data zapsána do primární, která nebyla replikována také do sekundární dojde ke ztrátě trvale. 
+Když vynutíte převzetí služeb při selhání, všechna data v primární oblasti se ztratí, protože se sekundární oblast stala novou primární oblastí a účet úložiště se nakonfiguruje jako místně redundantní. Všechna data, která se už replikují do sekundárního, se při převzetí služeb při selhání uchovávají. Veškerá data zapsaná na primární, která nebyla také replikována do sekundárního, se však trvale ztratí. 
 
-**Čas poslední synchronizace** vlastnost označuje nejvíce času poslední, že data z primární oblasti je zaručeno, že byl zapsán do sekundární oblasti. Všechna data zapsaná před čas poslední synchronizace je k dispozici na sekundárním při data zapsaná po čas poslední synchronizace pravděpodobně byl zapsán do sekundární a mohou být ztraceny. Odhad množství ztráty dat, kterou případně utrpíte pomocí inicializace účtu převzetí služeb při selhání pomocí této vlastnosti v případě výpadku. 
+Vlastnost **čas poslední synchronizace** označuje poslední čas, po který je zaručeno, že data z primární oblasti budou zapsána do sekundární oblasti. Všechna data zapsaná před časem poslední synchronizace jsou k dispozici na sekundárním počítači, zatímco data zapsaná po poslední synchronizaci nemusí být zapsána do sekundárního a mohou být ztracena. Tuto vlastnost použijte v případě výpadku k odhadu množství ztráty dat, která se může vyvolávat při převzetí služeb při selhání účtu. 
 
-Jako osvědčený postup Navrhněte svou aplikaci tak, aby čas poslední synchronizace můžete použít k vyhodnocení ztráty očekávaná data. Například pokud všechny operace zápisu se přihlašujete, pak ho můžete porovnat čas poslední operací zápisu na poslední synchronizaci času k určení, která se zapisuje nebyly synchronizovány do sekundární.
+Osvědčeným postupem je navrhnout aplikaci tak, aby bylo možné použít čas poslední synchronizace k vyhodnocení očekávané ztráty dat. Pokud například protokoluje všechny operace zápisu, můžete porovnat čas poslední operace zápisu s časem poslední synchronizace a určit, které zápisy nebyly synchronizovány do sekundárního.
 
-### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Buďte opatrní při selhání zpátky do původní databáze
+### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Při navrácení služeb po obnovení původní primární služby postupujte opatrně.
 
-Poté, co jste převzetí služeb při selhání z primární do sekundární oblasti, je na místně redundantní v nové primární oblasti nakonfigurovaný účet úložiště. Můžete nakonfigurovat účet pro geografickou redundancí znovu aktualizací používal GRS nebo RA-GRS. Pokud účet nakonfigurován pro geografickou redundancí znovu po převzetí služeb, začne nové primární oblasti okamžitě replikuje data do nové sekundární oblasti, která byla před původní převzetí služeb při selhání primární. Však může trvat určitou dobu před existujících dat v primárním je plně replikovat do nové sekundární lokality.
+Po převzetí služeb při selhání z primárního umístění do sekundární oblasti je váš účet úložiště nakonfigurovaný místně redundantní v nové primární oblasti. Účet pro geografickou redundanci můžete znovu nakonfigurovat tak, že ho aktualizujete tak, aby používal GRS nebo RA-GRS. Když je účet nakonfigurovaný pro geografickou redundanci znovu po převzetí služeb při selhání, nová primární oblast okamžitě zahájí replikaci dat do nové sekundární oblasti, která byla primární před původní převzetí služeb při selhání. Může ale nějakou dobu trvat, než se stávající data v primárním čase replikují do nového sekundárního.
 
-Po účet úložiště se zálohou pro geografickou redundanci, je možné zahájit jiného převzetí služeb při selhání nový primární zpět do nové sekundární lokality. V tomto případě původní primární oblast před převzetí služeb při selhání primární oblast opět a byl nakonfigurován jako místně redundantní. Všechna data v primární oblasti (původní sekundární) – příspěvek převzetí služeb při selhání pak ztratí. Pokud se většina dat v účtu úložiště nebyla replikována do nové sekundární lokality před navrácení služeb po obnovení, může být negativně ztrátu hlavní data. 
+Po překonfigurování účtu úložiště pro geografickou redundanci je možné zahájit jiné převzetí služeb při selhání z nové primární služby zpátky do nového sekundárního objektu. V takovém případě se původní primární oblast před převzetím služeb při selhání znovu vytvoří v primární oblasti a nakonfiguruje se tak, aby byla místně redundantní. Všechna data v primární oblasti po převzetí služeb při selhání (původní sekundární) se pak ztratí. Pokud před navrácením služeb po obnovení není většina dat v účtu úložiště replikována do nového sekundárního, může dojít k výrazné ztrátě dat. 
 
-Aby nedošlo ke ztrátě hlavní data, zkontrolujte hodnotu **čas poslední synchronizace** vlastnost před navrácením služby po obnovení. Porovnat čas poslední synchronizace s posledním časy tato data byla zapsána do nové primární vyhodnotit ztráty očekávaná data. 
+Chcete-li se vyhnout zásadní ztrátě dat, před navrácením služeb po obnovení ověřte hodnotu vlastnosti **čas poslední synchronizace** . Porovnejte čas poslední synchronizace s časem, kdy byla data zapsána do nové primární pro vyhodnocení očekávané ztráty dat. 
 
 ## <a name="initiate-an-account-failover"></a>Zahájení převzetí služeb při selhání účtu
 
-Můžete spustit účtu převzetí služeb při selhání z webu Azure portal, Powershellu, rozhraní příkazového řádku Azure nebo rozhraní API poskytovatele prostředků služby Azure Storage. Další informace o tom, jak spustit převzetí služeb při selhání najdete v části [zahájit účtu převzetí služeb při selhání (preview)](storage-initiate-account-failover.md).
+Převzetí služeb při selhání účtu můžete iniciovat z rozhraní API Azure Portal, PowerShellu, Azure CLI nebo poskytovatele prostředků Azure Storage. Další informace o tom, jak iniciovat převzetí služeb při selhání, najdete v tématu o inicializaci převzetí služeb při [selhání (Preview)](storage-initiate-account-failover.md).
 
-## <a name="about-the-preview"></a>Informace o verzi preview
+## <a name="about-the-preview"></a>O verzi Preview
 
-účet převzetí služeb při selhání je dostupná ve verzi preview pro všechny zákazníky využívající GRS nebo RA-GRS se nasazení Azure Resource Manageru. Jsou podporovány pro obecné účely v1, v2 pro obecné účely a typech účtů úložiště Blob. účet převzetí služeb při selhání je teď dostupná v těchto oblastech:
+Převzetí služeb při selhání účtu je dostupné ve verzi Preview pro všechny zákazníky, kteří používají GRS nebo RA-GRS s nasazeními Azure Resource Manager. Podporují se typy účtů pro obecné účely V1, obecné účely v2 a BLOB Storage. převzetí služeb při selhání účtu je aktuálně dostupné v těchto oblastech:
 
 - USA – západ 2
 - USA – středozápad
 
-Verzi preview je určeno pouze pro nevýrobní prostředí. Produkční smlouvy o úrovni služeb (SLA) nejsou aktuálně k dispozici.
+Verze Preview je určena pouze pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
 
-### <a name="register-for-the-preview"></a>Registr ve verzi Preview
+### <a name="register-for-the-preview"></a>Zaregistrovat se pro verzi Preview
 
-Chcete-li zaregistrovat verzi preview, spusťte následující příkazy v prostředí PowerShell. Ujistěte se, zda jste zástupný symbol v závorkách nahraďte vlastním ID předplatného:
+Pokud se chcete zaregistrovat ve verzi Preview, spusťte v PowerShellu následující příkazy. Zástupný symbol v závorkách nahraďte vlastním ID předplatného:
 
 ```powershell
 Connect-AzAccount -SubscriptionId <subscription-id>
 Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
-To může trvat 1 – 2 dnů, která získala schválení pro verzi preview. K ověření, že vaše registrace byla schválena, spusťte následující příkaz:
+Získání schválení pro verzi Preview může trvat 1-2 dní. Chcete-li ověřit, zda byla registrace schválena, spusťte následující příkaz:
 
 ```powershell
 Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
@@ -138,48 +141,48 @@ Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace
 
 ### <a name="additional-considerations"></a>Další aspekty 
 
-Přečtěte si další důležité informace, které jsou popsané v této části, abyste pochopili, jak vaše aplikace a služby mohou být ovlivněny vynutit převzetí služeb při selhání během období preview.
+Další informace popsané v této části vám pomohou pochopit, jak můžou být vaše aplikace a služby ovlivněné při vynucení převzetí služeb při selhání během období Preview.
 
 #### <a name="azure-virtual-machines"></a>Virtuální počítače Azure
 
-Virtuální počítače Azure (VM) není převzetí služeb při selhání jako součást účet převzetí služeb při selhání. Pokud primární oblast stane nedostupnou a převzetí služeb při selhání do sekundární oblasti, budete muset znovu vytvořit všechny virtuální počítače po převzetí služeb. 
+Virtuální počítače Azure při převzetí služeb při selhání v rámci účtu převezmou služby při selhání. Pokud primární region přestane být k dispozici a převezmete služby při selhání do sekundární oblasti, budete muset po převzetí služeb při selhání znovu vytvořit všechny virtuální počítače. 
 
 #### <a name="azure-unmanaged-disks"></a>Nespravované disky Azure
 
-Jako osvědčený postup společnost Microsoft doporučuje převod nespravovaných disků na managed disks. Ale pokud je potřeba převzetí služeb při selhání účtu, který obsahuje nespravované disky připojené k virtuálním počítačům Azure, musíte vypnout virtuální počítač před inicializací převzetí služeb při selhání.
+Osvědčeným postupem je, že společnost Microsoft doporučuje převést nespravované disky na spravované disky. Pokud ale potřebujete převzít služby při selhání účtu, který obsahuje nespravované disky připojené k virtuálním počítačům Azure, budete muset před zahájením převzetí služeb při selhání vypnout virtuální počítač.
 
-Nespravované disky jsou uložené jako objekty BLOB stránky ve službě Azure Storage. Když na virtuálním počítači běží v Azure, jsou zapůjčeny jakékoli nespravované disky připojené k virtuálnímu počítači. Účtu převzetí služeb při selhání nemůže pokračovat, když existuje zapůjčení objektu BLOB. Pokud chcete provést převzetí služeb při selhání, postupujte takto:
+Nespravované disky se ukládají jako objekty blob stránky v Azure Storage. Když je virtuální počítač spuštěný v Azure, všechny nespravované disky připojené k virtuálnímu počítači se zapůjčují. Převzetí služeb při selhání účtu nemůže pokračovat, pokud je u objektu BLOB zapůjčení. K provedení převzetí služeb při selhání použijte následující postup:
 
-1. Než začnete, poznamenejte si názvy jakékoli nespravované disky, jejich logickým jednotkám (LUN) a virtuálních počítačů, ke kterému jsou připojené. To vám usnadní opětovné připojení disků po převzetí služeb. 
+1. Než začnete, poznamenejte si názvy všech nespravovaných disků, jejich logické jednotky (LUN) a virtuální počítač, ke kterému jsou připojené. Díky tomu bude snazší znovu připojit disky po převzetí služeb při selhání. 
 2. Vypněte virtuální počítač.
-3. Odstranění virtuálního počítače, ale zachovat soubory virtuálního pevného disku pro nespravované disky. Poznámka: čas, kdy odstraníte virtuální počítač.
-4. Počkejte, dokud **čas poslední synchronizace** byl aktualizován a je pozdější než čas, kdy odstraníte virtuální počítač. Tento krok je důležitý, protože pokud sekundární koncový bod nebyl aktualizován plně se soubory virtuálního pevného disku dojde převzetí služeb při selhání, pak virtuální počítač možná nebude fungovat správně v nové primární oblasti.
-5. Zahájení převzetí služeb při selhání účtu.
-6. Počkejte na dokončení převzetí služeb při selhání účtu a sekundární oblasti jsou nové primární oblasti.
-7. Vytvoření virtuálního počítače v nové primární oblasti a znovu ho připojte virtuální pevné disky.
-8. Spuštění nového virtuálního počítače.
+3. Odstraňte virtuální počítač, ale zachovejte soubory VHD pro nespravované disky. Poznamenejte si čas, kdy jste virtuální počítač odstranili.
+4. Počkejte, až se aktualizuje **čas poslední synchronizace** , a pozdější dobu než čas, kdy jste virtuální počítač odstranili. Tento krok je důležitý, protože pokud se sekundární koncový bod v případě převzetí služeb při selhání plně neaktualizoval pomocí souborů VHD, nemusí virtuální počítač fungovat správně v nové primární oblasti.
+5. Zahajte převzetí služeb při selhání účtu.
+6. Počkejte, než se dokončí převzetí služeb při selhání účtu a sekundární oblast se stane novou primární oblastí.
+7. Vytvořte virtuální počítač v nové primární oblasti a znovu připojte virtuální pevné disky.
+8. Spusťte nový virtuální počítač.
 
-Uvědomte si, že všechna data uložená v dočasný disk je ztraceny, pokud je virtuální počítač vypnutý.
+Mějte na paměti, že při vypnutí virtuálního počítače dojde ke ztrátě všech dat uložených na dočasném disku.
 
 ### <a name="unsupported-features-or-services"></a>Nepodporované funkce nebo služby
-Následující funkce nebo služby se nepodporují u účtu převzetí služeb při selhání pro verzi preview:
+Pro převzetí služeb při selhání účtu verze Preview nejsou podporované tyto funkce nebo služby:
 
-- Azure File Sync nepodporuje úložiště účtu převzetí služeb při selhání. Účty úložiště obsahující sdílených složek Azure používá jako koncové body cloudu v Azure File Sync by neměl být převzetí služeb při selhání. To způsobí neočekávané ztráty dat v případě nově vrstvené soubory příčina synchronizaci zastavit pracovní a může také.  
-- Účty úložiště pomocí Azure Data Lake Storage Gen2 hierarchického oboru názvů nemůže být převzetí služeb při selhání.
-- Účet úložiště obsahující archivované objekty BLOB nemůže být převzetí služeb při selhání. Udržujte archivované objektů BLOB v účtu samostatného úložiště, který nemáte v plánu převzít služby při selhání.
-- Účet úložiště obsahující objekty BLOB bloku premium nejde převzít. Účty úložiště, které podporují objekty BLOB bloku premium aktuálně nepodporují geografickou redundancí.
-- Po dokončení převzetí služeb následující funkce přestanou fungovat, pokud původně povolené: [Odběry událostí](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [zásady životního cyklu](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Storage Analytics protokolování](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- Azure File Sync nepodporuje převzetí služeb při selhání účtu úložiště. Účty úložiště obsahující sdílené složky Azure, které se používají jako koncové body cloudu v Azure File Sync by neměly přenášet služby při selhání. Tím dojde k tomu, že synchronizace přestane fungovat a může také způsobit neočekávanou ztrátu dat v případě nově vrstvených souborů.  
+- Účty úložiště používající Azure Data Lake Storage Gen2 hierarchickém oborem názvů nejde převzít služby při selhání.
+- Účet úložiště obsahující archivované objekty blob nejde převzít služby při selhání. Udržujte archivované objekty BLOB v samostatném účtu úložiště, u kterých neplánujete převzít služby při selhání.
+- Nepovedlo se převzít služby účtů úložiště obsahující objekty blob bloku Premium. Účty úložiště, které podporují objekty blob bloku Premium, v současné době nepodporují geografickou redundanci.
+- Po dokončení převzetí služeb při selhání přestane následující funkce fungovat, pokud jsou původně povolené: [Odběry událostí](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Zásady životního cyklu](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)a [protokolování analýza úložiště](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopírování dat jako alternativu k převzetí služeb při selhání
 
-Pokud je nakonfigurovaný účet úložiště za RA-GRS, pak máte přístup pro čtení k datům pomocí sekundárního koncového bodu. Pokud nechcete převzetí služeb při selhání v případě výpadku v primární oblasti, můžete pomocí nástrojů, jako [AzCopy](storage-use-azcopy.md), [prostředí Azure PowerShell](storage-powershell-guide-full.md), nebo [knihovna pro přesun dat Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) do kopírování dat z vašeho účtu úložiště v sekundární oblasti do jiného účtu úložiště v oblasti to neovlivní. Potom můžete odkazovat vaše aplikace na tento účet úložiště pro čtení a zápis dostupnosti.
+Pokud je váš účet úložiště nakonfigurovaný pro RA-GRS, máte k datům přístup pro čtení pomocí sekundárního koncového bodu. Pokud v případě výpadku v primární oblasti nechcete převzít služby při selhání, můžete pomocí nástrojů, jako jsou [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)nebo [knihovny pro přesun dat Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) , kopírovat data z účtu úložiště v sekundární oblasti do jiné. účet úložiště v neovlivněné oblasti. Pak můžete své aplikace nasměrovat na tento účet úložiště pro čtení i zápis.
 
-## <a name="microsoft-managed-failover"></a>Spravovaná Microsoftem převzetí služeb při selhání
+## <a name="microsoft-managed-failover"></a>Převzetí služeb při selhání spravované Microsoftem
 
-V extrémních případech kde oblast je ztraceno v důsledku významné po havárii může Microsoft zahájit regionální převzetí služeb při selhání. V takovém případě nemusíte vaší nic dělat. Až do dokončení převzetí služeb spravovaných microsoftem, nebudete mít přístup pro zápis do účtu úložiště. Vaše aplikace může číst ze sekundární oblasti, pokud je nakonfigurovaný účet úložiště za RA-GRS. 
+V extrémních situacích, kdy dojde ke ztrátě oblasti z důvodu významné havárie, může společnost Microsoft zahájit místní převzetí služeb při selhání. V takovém případě není nutná žádná akce s vaší částí. Dokud neproběhne převzetí služeb při selhání spravované Microsoftem, nebudete mít k účtu úložiště přístup pro zápis. Vaše aplikace se můžou číst ze sekundární oblasti, pokud je váš účet úložiště nakonfigurovaný pro RA-GRS. 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-* [Zahájit účtu převzetí služeb při selhání (preview)](storage-initiate-account-failover.md)
+* [Iniciovat převzetí služeb při selhání účtu (Preview)](storage-initiate-account-failover.md)
 * [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)
-* [Kurz: Sestavení aplikace s vysokou dostupností s úložištěm objektů Blob](../blobs/storage-create-geo-redundant-storage.md) 
+* [Kurz: Vytvoření vysoce dostupné aplikace s úložištěm objektů BLOB](../blobs/storage-create-geo-redundant-storage.md) 

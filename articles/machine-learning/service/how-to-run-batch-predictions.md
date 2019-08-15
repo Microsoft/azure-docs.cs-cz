@@ -1,5 +1,5 @@
 ---
-title: Spustit dávky předpovědí na velkých objemů dat
+title: Spuštění dávkového předpovědiu pro velké objemy dat s kanály
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak k vytvoření predikcí dávky asynchronně velkých objemů dat pomocí služby Azure Machine Learning.
 services: machine-learning
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 689ee003e0923a65d3ca3f2d13c1a2d05c299dbd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 97b66bff0e6413b7774a054a01a0dc73649c9cce
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358722"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68962983"
 ---
-# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Predikce služby batch spouštět rozsáhlé datové sady se službou Azure Machine Learning
+# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Spuštění dávkového předpovědiu pro velké datové sady s kanály Azure Machine Learning
 
-V tomto článku se naučíte, jak pomocí Azure Machine Learning služby provádět asynchronní práci s velkými objemy dat.
+V tomto článku se dozvíte, jak pomocí Azure Machine Learning služby provádět asynchronní zpracování velkých objemů dat pomocí kanálů ML.
 
 Předpovědi dávky (nebo vyhodnocování dávek) poskytuje nákladově efektivní odvození s využitím neparalelní propustnosti pro asynchronní aplikace. Kanály predikcí služby batch můžete škálovat provádět odvození na terabajty dat v produkčním prostředí. Předpověď dávky je optimalizovaná pro vysokou propustnost, předpovědi s požárem a zapomenout pro velkou kolekci dat.
 
@@ -358,7 +358,4 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud se chcete podívat, jak to bude fungovat, vyzkoušejte si Poznámkový blok [](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)pro dávkové vyhodnocování v GitHubu.
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
-
+Pokud chcete tento pracovní postup zobrazit, vyzkoušejte si Poznámkový blok pro dávkové vyhodnocování na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)nebo přejděte do [centra architektury Azure](/azure/architecture/reference-architectures/ai/batch-scoring-python) , kde se zobrazí ukázková Architektura řešení.

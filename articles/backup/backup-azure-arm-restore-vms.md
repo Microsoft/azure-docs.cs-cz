@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 126e33d4bedb56eb479361f16c02e7e167e49392
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 41e01531535fe41fa894f8de3181a56885ab3bcf
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736693"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955074"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -45,8 +45,8 @@ Některé podrobnosti o účtech úložiště:
 - **Vytvořit virtuální počítač**: Když vytváříte nový virtuální počítač, virtuální počítač se umístí do účtu úložiště, který zadáte.
 - **Obnovit disk**: Po obnovení disku se disk zkopíruje do účtu úložiště, který zadáte. Úloha obnovení vygeneruje šablonu, kterou můžete stáhnout a použít k určení vlastního nastavení virtuálního počítače. Tato šablona je umístěná v zadaném účtu úložiště.
 - **Nahradit disk**: Když nahradíte disk na existujícím virtuálním počítači, Azure Backup před nahrazením disku vybere snímek existujícího virtuálního počítače. Snímek je uložený v pracovním umístění (účet úložiště), které zadáte. Tento účet úložiště se používá k dočasnému uložení snímku během procesu obnovení a doporučujeme vám vytvořit nový účet, který pak bude možné snadno odebrat.
-- **Umístění účtu úložiště** : Účet úložiště musí být ve stejné oblasti jako trezor. Zobrazí se pouze tyto účty. Pokud v tomto umístění nejsou žádné účty úložiště, budete ho muset vytvořit.
-- **Typ úložiště** : Úložiště objektů BLOB se nepodporuje.
+- **Umístění účtu úložiště**: Účet úložiště musí být ve stejné oblasti jako trezor. Zobrazí se pouze tyto účty. Pokud v tomto umístění nejsou žádné účty úložiště, budete ho muset vytvořit.
+- **Typ úložiště**: Úložiště objektů BLOB se nepodporuje.
 - **Redundance úložiště**: Redundantní úložiště zóny (ZRS) se nepodporuje. Informace o replikaci a redundanci účtu se zobrazí v závorkách za názvem účtu. 
 - **Premium Storage**:
     - Při obnovování virtuálních počítačů, které nejsou Premium, se nepodporuje účty úložiště úrovně Premium.
@@ -55,7 +55,7 @@ Některé podrobnosti o účtech úložiště:
 
 ## <a name="before-you-start"></a>Než začnete
 
-K obnovení virtuálního počítače (vytvoření nového virtuálního počítače) se ujistěte, že máte správná [oprávnění](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) řízení přístupu na základě role (RBAC) pro operaci obnovení virtuálního počítače.
+Pokud chcete obnovit virtuální počítač (vytvořte nový virtuální počítač), ujistěte se, že máte správná [oprávnění](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) řízení přístupu na základě role (RBAC) pro operaci obnovení virtuálního počítače.
 
 Pokud nemáte oprávnění, můžete [disk obnovit](#restore-disks)a po obnovení disku můžete [použít šablonu](#use-templates-to-customize-a-restored-vm) , která byla vygenerována jako součást operace obnovení, a vytvořit tak nový virtuální počítač.
 

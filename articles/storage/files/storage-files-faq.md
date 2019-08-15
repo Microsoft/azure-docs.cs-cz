@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: e14fcbd81a562b8d6451bb89a479c6675569403a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0fe893ae95b31b1b676a982a60166041a0ad964d
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854542"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015906"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy týkající se souborů Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -68,7 +68,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="redundancy-options"></a>
   **Jaké možnosti redundance úložiště podporují soubory Azure?**  
-    Soubory Azure v současné době podporují místně redundantní úložiště (LRS), zónu redundantní úložiště (ZRS) a geograficky redundantní úložiště (GRS). V budoucnu plánujeme podporovat geograficky redundantní úložiště s přístupem pro čtení (RA-GRS), ale v tuto chvíli nemáte časové osy ke sdílení.
+    Soubory Azure v současné době podporují místně redundantní úložiště (LRS), zónu redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky-Zone redundantní úložiště (GZRS) (Preview). V budoucnu plánujeme podporovat geograficky redundantní úložiště s přístupem pro čtení (RA-GRS), ale v tuto chvíli nemáte časové osy ke sdílení.
 
 * <a id="tier-options"></a>
   **Jaké úrovně úložiště jsou podporované ve službě soubory Azure?**  

@@ -11,12 +11,12 @@ ms.date: 10/18/2018
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: bf4dc55d0ec17daf4c611563dd7aee3a06aa192b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 32edacb7dd66274757359c4eb0e8c169995026ce
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384747"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019531"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření triggeru, který spustí kanál v reakci na událost
 
@@ -38,7 +38,7 @@ V této části se dozvíte, jak vytvořit aktivační událost události v uži
 
 1. Přejít na plátno pro **vytváření obsahu**
 
-2. V levém dolním rohu klikněte na tlačítko triggery  .
+2. V levém dolním rohu klikněte na tlačítko triggery .
 
 3. Klikněte na **+ Nový** . otevře se navigace vytvořit Trigger na straně.
 
@@ -49,10 +49,7 @@ V této části se dozvíte, jak vytvořit aktivační událost události v uži
 5. V rozevíracím seznamu předplatného Azure vyberte svůj účet úložiště nebo ručně použijte jeho ID prostředku účtu úložiště. Vyberte kontejner, ve kterém chcete události provést. Výběr kontejneru je nepovinný, ale nezapomeňte, že výběr všech kontejnerů může vést k velkému počtu událostí.
 
    > [!NOTE]
-   > Aktivační událost aktuálně podporuje jenom účty úložiště verze 2 (pro obecné účely).
-
-   > [!NOTE]
-   > Z důvodu omezení Azure Event Grid Azure Data Factory podporuje maximálně 500 triggerů událostí na účet úložiště.
+   > Aktivační událost aktuálně podporuje pouze účty úložiště Azure Data Lake Storage Gen2 a obecné účely verze 2. Z důvodu omezení Azure Event Grid Azure Data Factory podporuje maximálně 500 triggerů událostí na účet úložiště.
 
 6. **Cesta k objektu BLOB začíná** a **cesta k objektu BLOB končí** vlastností umožňuje zadat kontejnery, složky a názvy objektů blob, pro které chcete události přijímat. Aktivační událost události vyžaduje, aby byla definována alespoň jedna z těchto vlastností. Můžete použít celou řadu vzorů pro **cestu objektu BLOB** , která začíná a má **cestu k objektu BLOB končící** vlastností, jak je znázorněno v příkladech dále v tomto článku.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: cad2568702909274030d3c7c6469a7e4cbf670c4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779460"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989262"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -101,7 +101,7 @@ Organizace můžou chtít provést řízené ověřování pro připojení k hyb
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Vyberte svůj scénář na základě vaší infrastruktury identity
 
-Připojení k hybridní službě Azure AD funguje s oběma spravovanými i federovaným prostředími.  
+Připojení k hybridní službě Azure AD funguje s oběma spravovanými i federovaným prostředími v závislosti na tom, jestli je hlavní název uživatele směrovatelný nebo není směrovatelný. V podporovaných scénářích se podívejte na dolní část stránky pro tabulku.  
 
 ### <a name="managed-environment"></a>Spravované prostředí
 
@@ -150,7 +150,7 @@ V následující tabulce najdete podrobné informace o podpoře místních UPN s
 | Balíček | Spravovaní | Nepodporuje se | |
 | Bez směrování | Spravovaní | Nepodporuje se | |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Konfigurace hybridního Azure Active Directory JOIN pro federované prostředí](hybrid-azuread-join-federated-domains.md)

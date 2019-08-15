@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 2434507ac89d631bb96ae9633403075801879a37
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277401"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019652"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -250,7 +250,7 @@ Co je potřeba udělat:
 Můžete najít na příklad https://github.com/sgreenmsft/buildcontextsample
 
 ## <a name="microsoftdevspacesregisteraction-authorization-error"></a>Chyba autorizace "Microsoft.DevSpaces/register/action.
-Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Tato chyba se může zobrazit, pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo přispěvatele  k přidruženému předplatnému Azure.
+Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Tato chyba se může zobrazit, pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo přispěvatele k přidruženému předplatnému Azure.
 `The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.`
 
 ### <a name="reason"></a>Reason
@@ -359,9 +359,9 @@ az aks get-credentials --resource-group <resource group name> --name <cluster na
 kubectl delete InitializerConfiguration azds
 ```
 
-Po odebrání *azds InitializerConfiguration* z kontroleru Azure dev Spaces použijte `kubectl delete` k odebrání všech lusků ve stavu čekání na vyřízení  . Po odebrání všech probíhajících lusků znovu nasaďte své lusky.
+Po odebrání *azds InitializerConfiguration* z kontroleru Azure dev Spaces použijte `kubectl delete` k odebrání všech lusků ve stavu čekání na vyřízení . Po odebrání všech probíhajících lusků znovu nasaďte své lusky.
 
-Pokud se nové lusky po opětovném  nasazení stále zablokují ve stavu čekání `kubectl delete` , použijte k odebrání všech lusků ve stavu *čekání* na vyřízení. Po odebrání všech probíhajících lusků odstraňte řadič z clusteru a znovu ho nainstalujte:
+Pokud se nové lusky po opětovném nasazení stále zablokují ve stavu čekání `kubectl delete` , použijte k odebrání všech lusků ve stavu *čekání* na vyřízení. Po odebrání všech probíhajících lusků odstraňte řadič z clusteru a znovu ho nainstalujte:
 
 ```bash
 azds remove -g <resource group name> -n <cluster name>
@@ -373,7 +373,7 @@ Po opětovné instalaci kontroleru znovu nasaďte své lusky.
 ## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Nesprávná oprávnění RBAC pro volání řadiče pro vývoj prostorů a rozhraní API
 
 ### <a name="reason"></a>Reason
-Uživatel, který přistupuje k řadiči Azure Dev Spaces, musí mít přístup, aby mohl číst *kubeconfig* správce v clusteru AKS. Toto oprávnění je například k dispozici v [předdefinované roli Správce clusteru služby Azure Kubernetes](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Uživatel, který přistupuje k řadiči Azure Dev Spaces, musí mít  také roli přispěvatele nebo *vlastníka* RBAC pro kontroler.
+Uživatel, který přistupuje k řadiči Azure Dev Spaces, musí mít přístup, aby mohl číst *kubeconfig* správce v clusteru AKS. Toto oprávnění je například k dispozici v [předdefinované roli Správce clusteru služby Azure Kubernetes](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Uživatel, který přistupuje k řadiči Azure Dev Spaces, musí mít také roli přispěvatele nebo *vlastníka* RBAC pro kontroler.
 
 ### <a name="try"></a>Vyzkoušení
 Další podrobnosti o aktualizaci oprávnění uživatele pro cluster AKS jsou k dispozici [zde](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group).
@@ -419,7 +419,7 @@ V současné době je Azure Dev Spaces určen ke spouštění pouze v systémech
 
 ### <a name="reason"></a>Reason
 
-Azure Dev Spaces ve vašem clusteru AKS nešlo vytvořit kontroler, protože v připraveném stavu nemohlo najít uzel, který  by byl v připraveném stavu, aby bylo možné naplánovat lusky. Azure Dev Spaces vyžaduje aspoň jeden uzel Linux v připraveném  stavu, který umožňuje plánování lusků bez určení tolerování.
+Azure Dev Spaces ve vašem clusteru AKS nešlo vytvořit kontroler, protože v připraveném stavu nemohlo najít uzel, který by byl v připraveném stavu, aby bylo možné naplánovat lusky. Azure Dev Spaces vyžaduje aspoň jeden uzel Linux v připraveném stavu, který umožňuje plánování lusků bez určení tolerování.
 
 ### <a name="try"></a>Vyzkoušení
 [Aktualizujte konfiguraci chuti](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) v clusteru AKS, abyste zajistili, že alespoň jeden uzel pro Linux umožňuje plánování lusků bez určení jejich tolerovánosti. Také se ujistěte, že alespoň jeden uzel pro Linux, který umožňuje plánování v luskech bez určení tolerování, je ve stavu *připraveno* . Pokud bude mít váš uzel dlouhou dobu, než se dorazí na stav *připraveno* , můžete zkusit restartovat uzel.
@@ -445,7 +445,14 @@ Aktualizujte instalaci [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-l
 
 ### <a name="reason"></a>Reason
 
-Když službu spustíte ve vývojovém prostoru, tato služba je [vložená s dalšími kontejnery pro instrumentaci](how-dev-spaces-works.md#prepare-your-aks-cluster). Tyto kontejnery nemají požadavky na prostředky nebo definované limity, což způsobí, že je v poli pod vypnuto automatické horizontální navýšení.
+Když službu spustíte ve vývojovém prostoru, je tato služba [vložená s dalšími kontejnery pro instrumentaci](how-dev-spaces-works.md#prepare-your-aks-cluster) a všechny kontejnery v rámci musí mít omezení prostředků a požadavky nastavené na automatické škálování vodorovně pod. 
+
+
+Požadavky na prostředky a omezení lze použít pro vložený kontejner (devspaces-proxy) přidáním `azds.io/proxy-resources` poznámky k specifikaci pod. Hodnota by měla být nastavena na objekt JSON, který představuje oddíl prostředků specifikace kontejneru pro proxy server.
 
 ### <a name="try"></a>Vyzkoušení
-Spustí automatické horizontální navýšení kapacity v oboru názvů, na kterém nejsou povolené vývojové prostory.
+
+Níže je uveden příklad anotace prostředků proxy, která se má použít pro specifikaci pod.
+```
+azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
+```

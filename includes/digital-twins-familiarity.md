@@ -5,17 +5,17 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/09/2019
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 0d5f483f074f90c51f500e8f8142bb54f9f6bb1e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3531d00825cfd866c81039ce9d97522a2088f5f7
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175650"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012087"
 ---
-Tento článek předpokládá, některé znalosti ověřování pomocí vašeho Azure digitální dvojče rozhraní API pro správu.
+Tento článek předpokládá několik znalostí ověřování pomocí rozhraní API pro správu digitálních vláken Azure.
 
-* Další informace o ověřování pomocí rozhraní API pro správu, najdete v článku [ověřování pomocí Azure digitální dvojče API](../articles/digital-twins/security-authenticating-apis.md).
-* Ověřování pomocí vašeho rozhraní API pro správu pomocí klienta Postman REST, přečtěte si téma [konfigurace nástroje Postman](../articles/digital-twins/how-to-configure-postman.md).
+* Další informace o ověřování pomocí rozhraní API pro správu najdete v tématu [ověřování pomocí rozhraní API pro digitální vlákna Azure](../articles/digital-twins/security-authenticating-apis.md).
+* K ověření pomocí rozhraní API pro správu pomocí klienta post REST si přečtěte, [jak nakonfigurovat post](../articles/digital-twins/how-to-configure-postman.md).

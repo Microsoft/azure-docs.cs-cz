@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3a49681c5c5fa081157e1264f3e9f757c3ee0e6c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: dfe27878f018dfbf5f4bdcb52d711c8727c436e0
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516963"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950690"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
@@ -357,6 +357,7 @@ Pokud povolíte **Povolit důvěryhodné služby Microsoftu...**  výjimky, tyto
 | Azure Event Hubs         | Microsoft.EventHub         | Archivace dat s Event Hubs Capture. [Další informace](/azure/event-hubs/event-hubs-capture-overview).                                                                                                                                                                                                                           |
 | Synchronizace souborů Azure          | Microsoft.StorageSync      | Umožňuje transformovat souborový server Prem na mezipaměť pro sdílené složky Azure. Povoluje se synchronizace více webů, rychlé zotavení po havárii a zálohování na straně cloudu. [Víc se uč](../files/storage-sync-files-planning.md)                                                                                                       |
 | Azure HDInsight          | Microsoft.HDInsight        | Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/).                                                                                                                                    |
+| Azure Machine Learning Service | Microsoft.MachineLearningServices | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB experiment. [Další informace](/azure/machine-learning/service/how-to-enable-virtual-network#storage-account-for-your-workspace).                                                               
 | Azure Monitor            | Microsoft.Insights         | Umožňuje zápis dat do účtu úložiště zabezpečené monitorování [Další](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).                                                                                                                                                                        |
 | Sítě Azure         | Microsoft.Network          | Store a analyzovat protokoly přenosů sítě. [Další informace](/azure/network-watcher/network-watcher-packet-capture-overview).                                                                                                                                                                                                        |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Konfigurace zotavení po havárii tím, že replikace pro virtuální počítače Azure IaaS. Toto je nezbytné, pokud používáte účet úložiště povolenou bránu firewall mezipaměti nebo zdrojový účet úložiště nebo cílový účet úložiště.  [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |

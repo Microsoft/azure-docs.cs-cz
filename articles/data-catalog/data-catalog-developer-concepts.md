@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 21b7c4e17d976a0a4099a926823f51eab1dba98d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 80adc98255cfc9145d583ac775bbc490d599234e
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879077"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976833"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog koncepce pro vývojáře
 Microsoft **Azure Data Catalog** je plně spravovaná cloudová služba, která poskytuje možnosti pro zjišťování zdrojů dat a pro metadata crowdsourcingový zdrojů dat. Vývojáři můžou službu používat přes rozhraní REST API. Porozumění konceptům implementovaným ve službě je důležité, aby se vývojáři mohli úspěšně integrovat s **Azure Data Catalog**.
@@ -19,7 +19,7 @@ Microsoft **Azure Data Catalog** je plně spravovaná cloudová služba, která 
 ## <a name="key-concepts"></a>Klíčové koncepty
 **Azure Data Catalog** koncepční model je založen na čtyřech klíčových konceptech: **Katalog**, **Uživatelé**, **prostředky**a **poznámky**.
 
-![Data Catalog koncepty](./media/data-catalog-developer-concepts/concept2.png)
+![Ilustrace Azure Data Catalog koncepčního modelu](./media/data-catalog-developer-concepts/concept2.png)
 
 *Obrázek 1 – Azure Data Catalog zjednodušený koncepční model*
 
@@ -76,7 +76,7 @@ UŽIVATELSKÉ prostředí pak může zvolit, jak se má kombinace zobrazit. Exis
 Jak je uvedeno v části klíčové koncepty, model **Azure Data Catalogho** objektu obsahuje položky, které mohou být prostředky nebo anotace. Položky mají vlastnosti, které mohou být volitelné nebo povinné. Některé vlastnosti se vztahují na všechny položky. Některé vlastnosti se vztahují na všechny prostředky. Některé vlastnosti se vztahují pouze na konkrétní typy prostředků.
 
 ### <a name="system-properties"></a>Systémové vlastnosti
-<table><tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentář</b></td></tr><tr><td>timestamp</td><td>Datetime</td><td>Čas poslední změny položky Toto pole je generováno serverem při vložení položky a pokaždé, když je položka aktualizována. Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>id</td><td>Uri</td><td>Absolutní adresa URL položky (jen pro čtení) Jedná se o jedinečný adresovatelný identifikátor URI pro položku.  Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>type</td><td>Řetězec</td><td>Typ prostředku (jen pro čtení).</td></tr><tr><td>etag</td><td>Řetězec</td><td>Řetězec odpovídající verzi položky, kterou lze použít pro optimistické řízení souběžnosti při provádění operací, které aktualizují položky v katalogu. "*" lze použít k vyhledání libovolné hodnoty.</td></tr></table>
+<table><tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentář</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Čas poslední změny položky Toto pole je generováno serverem při vložení položky a pokaždé, když je položka aktualizována. Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>id</td><td>Uri</td><td>Absolutní adresa URL položky (jen pro čtení) Jedná se o jedinečný adresovatelný identifikátor URI pro položku.  Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>type</td><td>Řetězec</td><td>Typ prostředku (jen pro čtení).</td></tr><tr><td>etag</td><td>Řetězec</td><td>Řetězec odpovídající verzi položky, kterou lze použít pro optimistické řízení souběžnosti při provádění operací, které aktualizují položky v katalogu. "*" lze použít k vyhledání libovolné hodnoty.</td></tr></table>
 
 ### <a name="common-properties"></a>Společné vlastnosti
 Tyto vlastnosti se vztahují na všechny typy kořenového prostředku a všechny typy poznámek.

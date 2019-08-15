@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ef739a7053fffdd45c6d5e144ae736429597a4f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5daa1cf04e04507174fa480c785bd15b656541a1
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850501"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019111"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie runbooků a modulů pro Azure Automation
 
@@ -99,6 +99,15 @@ Runbooky Python jsou k dispozici v [galerii centra skriptů](https://gallery.tec
 ## <a name="requesting-a-runbook-or-module"></a>Vyžádání Runbooku nebo modulu
 
 Můžete odesílat požadavky na [uživatelský hlas](https://feedback.azure.com/forums/246290-azure-automation/).  Pokud potřebujete nápovědu k zápisu Runbooku nebo máte dotaz týkající se PowerShellu, odešlete na náš [Fórum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)otázku.
+
+## <a name="common-solutions-available-in-the-runbook-gallery"></a>Společná řešení dostupná v galerii runbooků
+
+Níže uvedený seznam obsahuje několik sad Runbook, které poskytují řešení pro běžné scénáře. Úplný seznam runbooků vytvořených Azure Automation týmem naleznete v tématu [profil AzureAutomationTeam](https://www.powershellgallery.com/profiles/AzureAutomationTeam).
+
+* [Update-ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) – importuje nejnovější verzi na galerie prostředí PowerShell všech modulů v účtu Automation.
+* [Enable-AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) – tento skript nakonfiguruje Azure Diagnostics a Log Analytics příjem protokolů Azure Automation obsahujících stav úlohy a proudy úloh.
+* [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) -Tato sada Runbook kopíruje vzdálený soubor z virtuálního počítače Windows Azure.
+* [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) -Tato sada Runbook kopíruje místní soubor do virtuálního počítače Azure.
 
 ## <a name="next-steps"></a>Další postup
 

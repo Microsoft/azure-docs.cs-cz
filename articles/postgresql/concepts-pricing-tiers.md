@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 376620459a0ab2f0f170b0743c0ab51a51bca9c4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2f6be256801983924cc794d6c8b8fa31e39959e1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698955"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967855"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Cenové úrovně v Azure Database for PostgreSQL – jeden server
 
@@ -107,6 +107,9 @@ Služba automaticky provede zálohování vašeho serveru. Minimální doba ucho
 ## <a name="scale-resources"></a>Škálování prostředků
 
 Po vytvoření serveru můžete nezávisle změnit virtuální jádra, generaci hardwaru, cenovou úroveň (s výjimkou a od úrovně Basic), velikost úložiště a dobu uchování zálohy. Po vytvoření serveru nejde typ úložiště zálohy změnit. Počet virtuální jádra se dá škálovat nahoru nebo dolů. Doba uchovávání záloh se dá škálovat nahoru nebo dolů od 7 do 35 dnů. Velikost úložiště se dá zvýšit jenom. Škálování prostředků se dá provést buď prostřednictvím portálu, nebo pomocí Azure CLI. Příklad škálování pomocí rozhraní příkazového řádku Azure najdete v tématu [monitorování a škálování Azure Database for PostgreSQL serveru pomocí Azure CLI](scripts/sample-scale-server-up-or-down.md).
+
+> [!NOTE] 
+> Velikost úložiště se dá zvýšit jenom. Po zvýšení se nemůžete vrátit k menší velikosti úložiště.
 
 Když změníte počet virtuální jádra, generování hardwaru nebo cenovou úroveň, vytvoří se kopie původního serveru s novým přidělením výpočtů. Po zprovoznění nového serveru se připojení přepnou na nový server. Během přepínání systému na nový server není možné navazovat nová připojení a všechny nepotvrzené transakce se vrátí zpět. Tento časový interval je různý, ale ve většině případů je kratší než minuta.
 

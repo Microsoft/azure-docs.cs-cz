@@ -1,6 +1,6 @@
 ---
 title: Poznámky k verzi pro Microsoft Azure Backup Server V3
-description: Tento článek poskytuje informace o známých problémech a alternativním řešení pro MABS v3.
+description: Tento článek poskytuje informace o známých problémech a alternativním řešení pro Microsoft Azure Backup Server (MABS) v3.
 ms.reviewer: v-jysur
 author: dcurwin
 manager: carmonm
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/22/2018
 ms.author: dacurwin
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: a80a5ac64b58d93bb0d4e4b799cb7424805c9baa
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5ca3305dd96ad9f14f028c88520368ae5a49016c
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698378"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019024"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Poznámky k verzi pro Microsoft Azure Backup Server
 V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure Backup Server (MABS) v3.
@@ -25,7 +25,7 @@ V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure
 
 **Alternativní řešení:** Chcete-li tomu zabránit, otevřete SQL Server Management Studio (SSMS)) a spusťte následující skript SQL v databázi aplikace DPM:
 
-
+```sql
     IF EXISTS (SELECT * FROM dbo.sysobjects
         WHERE id = OBJECT_ID(N'[dbo].[tbl_PRM_DatasourceLastActiveServerMap]')
         AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -50,6 +50,7 @@ V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure
             0
         ) FOR [IsGCed]
     GO
+```
 
 
 ##  <a name="upgrade-to-mabs-v3-fails-in-russian-locale"></a>Upgrade na MABS V3 se nezdařil v ruštině národním prostředí.
@@ -66,15 +67,15 @@ V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure
 6.  [Nainstalovat](backup-azure-microsoft-azure-backup.md) MABS V3.
 7. [Obnovit](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL pomocí SSMS a spusťte nástroj DPM-Sync, jak je popsáno [zde](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10)).
 8.  Aktualizujte vlastnost ' verze databáze ' v tabulce dbo. tbl _DLS_GlobalSetting pomocí následujícího příkazu:
-
+```sql
         UPDATE dbo.tbl_DLS_GlobalSetting
         set PropertyValue = '13.0.415.0'
         where PropertyName = 'DatabaseVersion'
-
+```
 
 9.  Spusťte službu MSDPM.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Co je nového v MABS V3](backup-mabs-whats-new-mabs.md)

@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80a04333260b7aa710c1598b64a414ce53a1037a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1dea5e174c66685f889595ab15b3edf57dd02493
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883315"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018228"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co je služba Azure Machine Learning?
 
@@ -49,15 +49,15 @@ Spusťte na svém místním počítači školení pomocí <a href="https://aka.m
 
 Můžete také [automatizovat školicí a optimalizační model](tutorial-auto-train-models.md) pomocí sady SDK.
 
-### <a name="code-free--low-code-experience"></a>Prostředí pro kód bez kódu a nízké úrovně
+### <a name="ui-based-low-code-experience"></a>Prostředí s nízkým kódem na základě uživatelského rozhraní
 
 V případě školení bez kódu zkuste:
 
-+ Vizuální rozhraní pro experimentování a nasazování přetažení
++ Vytváření [automatizovaných experimentů ml](tutorial-first-experiment-automated-ml.md) v snadno použitelném rozhraní.
++ Experimentování s přetahováním [přetažení do vizuálního rozhraní](ui-tutorial-automobile-price-train-score.md).
+  ![Visual interface pro službu Azure Machine Learning](media/overview-what-is-azure-ml/visual-interface.png)
 
-    ![Visual interface pro službu Azure Machine Learning](media/overview-what-is-azure-ml/visual-interface.png)
 
-+ Možnost Azure Portal pro automatizované experimenty ML
 
 ### <a name="operationalization-mlops"></a>Provozní operace (MLOps)
 
@@ -69,9 +69,9 @@ Tyto modely lze spotřebovat a vracet předpovědi v [reálném čase](how-to-co
 
 A díky pokročilým [kanálům strojového učení](concept-ml-pipelines.md)můžete v rámci přípravy dat, školení a vyhodnocení modelu spolupracovat na všech krocích prostřednictvím nasazení. Kanály umožňují:
 
-* automatizace kompletního procesu strojového učení v cloudu
-* znovu použít komponenty a pouze kroky znovu spustit, pokud potřebujete
-* použití různých výpočetních prostředků v každém kroku
+* Automatizace kompletního procesu strojového učení v cloudu
+* Znovu použít komponenty a v případě potřeby znovu spustit pouze kroky
+* Použití různých výpočetních prostředků v každém kroku
 * Spustit úlohy dávkového vyhodnocování
 
 Pokud chcete začít používat službu Azure Machine Learning, přečtěte si [Další kroky](#next-steps).

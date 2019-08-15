@@ -1,5 +1,5 @@
 ---
-title: 'Kanály: optimalizace pracovních postupů strojového učení'
+title: Co jsou kanály ML
 titleSuffix: Azure Machine Learning service
 description: V tomto článku najdete informace o machine learningu kanály, které můžete sestavit s využitím Azure Machine Learning SDK for Python a výhody použití kanály. Machine learning (ML) kanály využívají odborníci přes data sestavení, optimalizovat a spravovat jejich strojového učení pracovních postupů.
 services: machine-learning
@@ -11,18 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9965dbbca939f566048312af921061a188ee50d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 22d1da4c194b392993b37b16ab20673120c3362e
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884237"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951801"
 ---
-# <a name="build-reusable-ml-pipelines-in-azure-machine-learning-service"></a>Sestavení opakovaně použitelných kanálů ML ve službě Azure Machine Learning Service
+# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Co jsou kanály ML ve službě Azure Machine Learning Service?
 
-V tomto článku se dozvíte o kanálech strojového učení, které můžete sestavit pomocí sady Azure Machine Learning SDK pro Python, a výhod používání kanálů.
-
-## <a name="what-are-machine-learning-pipelines"></a>Co jsou kanály machine learning?
+Přečtěte si, jak můžete vytvářet a spravovat kanály strojového učení pomocí služby Azure Machine Learning. 
 
 Pomocí machine learning (ML) kanály, odborníci přes data, datovými architekty a odborníky v oblasti můžete spolupracovat na kroky:
 + Příprava dat, jako je například normalizations a transformace
@@ -30,7 +28,7 @@ Pomocí machine learning (ML) kanály, odborníci přes data, datovými architek
 + Vyhodnocení modelu
 + Nasazení
 
-Následující diagram znázorňuje příklad procesu kanálu:
+Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md).
 
 ![Kanály strojového učení ve službě Azure Machine Learning Service](./media/concept-ml-pipelines/pipeline-flow.png)
 
@@ -47,9 +45,7 @@ Cloud Azure nabízí několik dalších kanálů, z nichž každý má jiný ú�
 
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Proč vytvářet kanály pomocí služby Azure Machine Learning?
 
-[Azure Machine Learning SDK pro Python](#the-python-sdk-for-pipelines) můžete použít k vytvoření kanálů ml a také k odesílání a sledování jednotlivých spuštění kanálu.
-
-S kanály můžete optimalizovat pracovní postup s jednoduchost, rychlost, přenositelnost a opakované použití. Při sestavování kanálů pomocí Azure Machine Learning se můžete soustředit na vaše odbornosti, strojové učení, nikoli na infrastrukturu a automatizaci.
+Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, abyste se mohli soustředit na vaše odbornosti, strojové učení, nikoli na infrastrukturu a automatizaci.
 
 Kanály jsou vytvořené z více **kroků**, které jsou v kanálu odlišné výpočetní jednotky. Každý krok může běžet nezávisle a používat izolované výpočetní prostředky. Díky tomu může více pracovníků dat pracovat na stejném kanálu současně bez navýšení výpočetních prostředků a také usnadňuje používání různých výpočetních typů/velikostí pro jednotlivé kroky.
 
@@ -73,20 +69,20 @@ Mezi klíčové výhody použití kanálů pro pracovní postupy machine learnin
 
 ## <a name="the-python-sdk-for-pipelines"></a>Python SDK pro kanály
 
-Použití Pythonu k vytvoření kanálů ML. Sada SDK Azure Machine Learning nabízí imperativní konstrukce pro pořadí úloh a paralelní provádění kroků ve vašich kanálů, když je k dispozici žádná data závislost. Můžete s ní pracovat v poznámkových blocích Jupyter nebo v jiném upřednostňovaném integrovaném vývojovém prostředí (IDE).
+[Pomocí sady Python SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) můžete vytvářet kanály ml v preferovaných poznámkách IDE nebo Jupyter. Sada SDK Azure Machine Learning nabízí imperativní konstrukce pro pořadí úloh a paralelní provádění kroků ve vašich kanálů, když je k dispozici žádná data závislost. 
 
-Použití závislostí deklarativní data, můžete optimalizovat vaše úkoly. Sada SDK obsahuje architekturu předem připravených modulů pro běžné úlohy, jako je například přenos dat a publikování modelu. Rozhraní můžete roztáhnout tak, aby modeloval vlastní konvence, implementací vlastních kroků, které jsou opakovaně použitelné napříč kanály. Výpočetní cíle a prostředky úložiště můžete spravovat také přímo ze sady SDK.
+Použití závislostí deklarativní data, můžete optimalizovat vaše úkoly. Sada SDK obsahuje architekturu předem připravených modulů pro běžné úlohy, jako je například přenos dat a publikování modelu. Rozhraní můžete roztáhnout tak, aby modeloval vlastní konvence implementací vlastních kroků opakovaně použitelných napříč kanály. Výpočetní cíle a prostředky úložiště můžete spravovat také přímo ze sady SDK.
 
-Kanály můžete ukládat jako šablony a nasazovat je do koncového bodu REST, abyste mohli naplánovat úlohy dávkového vyhodnocování nebo opětovného školení.
+Uložte kanály jako šablony a nasaďte je do koncového bodu REST pro úlohy dávkového vyhodnocování nebo přeškolení.
 
-Informace o tom, jak sestavit vlastní, najdete v [referenční dokumentaci sady Python SDK pro kanály](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) a Poznámkový blok v další části.
+K dispozici jsou dva balíčky Pythonu pro kanály s Azure Machine Learning: [AzureML-Pipelines – Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) a [AzureML-Pipeline-Steps](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/?view=azure-ml-py).
 
-## <a name="example-notebooks"></a>Příklad poznámkové bloky
+## <a name="next-steps"></a>Další kroky
 
-Tyto poznámkové bloky ukazují kanálů pomocí služby Azure Machine Learning: [how-to-use-azureml/machine-learning-pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines).
++ Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md).
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
++ Naučte se [spouštět Batch předpovědi pro velké objemy dat](how-to-run-batch-predictions.md).
 
-## <a name="next-steps"></a>Další postup
++ Přečtěte si [Referenční dokumentace k sadě SDK pro kanály](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)
 
-Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md).
++ Vyzkoušejte si příklady Jupyter poznámkových bloků předvádí [Azure Machine Learning kanálů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines). Přečtěte si, jak [Spustit poznámkové bloky a prozkoumat tuto službu](samples-notebooks.md).

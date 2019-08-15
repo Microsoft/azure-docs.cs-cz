@@ -5,34 +5,34 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/11/2019
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: ac6b008597b6d6e557a0cc412c00c2202231bc3d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f9b1b32775393196a77bef3aa2257f6fb66afdcb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175647"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012084"
 ---
 > [!NOTE]
-> Požadavky na vícedílné zprávy standardu obvykle vyžadují tři údaje:
-> * A **Content-Type** hlavičky:
+> Požadavky na více částí obvykle vyžadují tři části:
+> * Hlavička **Content-Type** :
 >   * `application/json; charset=utf-8`
 >   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * A **Content-Disposition**:
+> * **Dispoziční obsah**:
 >   * `form-data; name="metadata"`
-> * Obsah souboru k odeslání
+> * Obsah souboru, který se má nahrát
 >
-> **Content-Type** a **Content-Disposition** budou lišit v závislosti na scénáři použití.
+> **Typ obsahu** a **dispoziční obsah** se budou lišit v závislosti na scénáři použití.
 
-S více částmi. požadavky můžete provést prostřednictvím kódu programu (prostřednictvím C#), pomocí klienta REST nebo nástroj, jako [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi). Nástroje klienta REST může mít různé úrovně podpory pro složité požadavky s více částmi. Nastavení konfigurace může nástroj mírně lišit. Ověřte, který nástroj nejlépe vyhovuje vašim potřebám.
+Požadavky na více částí lze provádět programově ( C#prostřednictvím) prostřednictvím klienta REST nebo nástroje, jako je například [post](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi). Nástroje klienta REST mohou mít různé úrovně podpory pro komplexní požadavky na více součástí. Nastavení konfigurace se může mírně lišit od nástrojů k nástroji. Ověřte, který nástroj nejlépe vyhovuje vašim potřebám.
 
 > [!IMPORTANT]
-> S více částmi. požadavky na rozhraní API Správce Dvojčat digitální Azure obvykle mít dvě části:
-> * Metadata objektu BLOB (například přidružený typ MIME), která je deklarována pomocí **Content-Type** a/nebo **Content-Disposition**
-> * Obsah objektu BLOB, které zahrnují nestrukturovaný obsah souboru k odeslání
+> Požadavky na součásti, které jsou součástí rozhraní API pro správu digitálních vláken Azure, mají obvykle dvě části:
+> * Metadata objektu BLOB (například přidruženého typu MIME) deklarovaná pomocí **Content-Type** nebo **Content-Disposition**
+> * Obsah objektu blob, který zahrnuje nestrukturovaný obsah souboru, který se má nahrát
 >
-> Ani jeden ze dvou částí, je třeba **oprava** požadavky. Jsou potřeba pro **příspěvek** nebo operace vytvoření.
+> Pro žádosti o **opravu** nejsou nutné žádné ze dvou částí. Oba jsou vyžadovány pro operace **post** nebo Create.
 
-[Zdrojový kód tohoto rychlého startu obsazení](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) obsahuje kompletní C# příklady demonstrující, jak je nechat vícedílné zprávy standardu žádosti na rozhraní API Správce Dvojčat digitální Azure.
+[Zdrojový kód pro rychlý Start obsazení](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) obsahuje kompletní C# příklady, které demonstrují, jak provádět požadavky na více než více požadavků na rozhraní API pro správu digitálních vláken Azure.

@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: 3a59e276c3ec9717634c8f0f3634b7337ebc47d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9dae1e3864f5f1cf745bfe9b0872f15f61471a1c
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567714"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014504"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělení přístupu k databázi SQL Database a SQL Data Warehouse
 
@@ -45,12 +45,12 @@ Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce
 
   Jako správce je možné nakonfigurovat jeden účet Azure Active Directory, a to buď individuální účet, nebo účet skupiny zabezpečení. Je volitelné nakonfigurovat správce Azure AD, ale pokud chcete použít účty Azure AD pro připojení k SQL Database, **musí** být nakonfigurovaný správce Azure AD. Další informace o konfigurování přístupu v Azure Active Directory najdete v tématech [Připojení ke službě SQL Database nebo SQL Data Warehouse pomocí ověřování služby Azure Active Directory](sql-database-aad-authentication.md) a [Podpora nástroje SSMS pro ověřování Azure AD MFA ve službě SQL Database a SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).
 
-Účty **Správce serveru** a **Správce Azure AD** mají tyto charakteristiky:
+Účty správců **serveru** a správce **Azure AD** mají následující vlastnosti:
 
 - Jsou jedinými účty, které se můžou automaticky připojit k jakémukoli SQL Database na serveru. (Pro připojení k uživatelské databázi ostatní účty musí buď být vlastníkem databáze, nebo musí v uživatelské databázi mít uživatelský účet.)
 - Tyto účty přistupují k uživatelským databázím jako uživatel `dbo` a mají pro ně veškerá oprávnění. (Vlastník databáze také k databázi přistupuje jako uživatel `dbo`.) 
 - Nezadávejte `dbo` databázi jako uživatele a mít v hlavní databázi omezená oprávnění. `master` 
-- Nejsou **členy standardní** role serveru SQL Server `sysadmin` pevné, což není k dispozici ve službě SQL Database.  
+- Nejsou členy standardní role serveru SQL Server `sysadmin` pevné, což není k dispozici ve službě SQL Database.  
 - Může vytvářet, měnit a odstraňovat databáze, přihlášení, uživatele v hlavní databázi a pravidla brány firewall na úrovni serveru.
 - Může přidat nebo odebrat členy do `dbmanager` rolí a. `loginmanager`
 - Může zobrazit `sys.sql_logins` systémovou tabulku.

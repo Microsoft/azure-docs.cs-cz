@@ -1,5 +1,5 @@
 ---
-title: Ověřování a autorizaci uživatelů end až do konce – Azure App Service | Dokumentace Microsoftu
+title: Ověřování a autorizace uživatelů koncová Azure App Service | Microsoft Docs
 description: Zjistěte, jak pomocí ověřování a autorizace pomocí služby App Service zabezpečit aplikace App Service, včetně přístupu ke vzdáleným rozhraním API.
 keywords: app service, azure app service, authN, authZ, secure, security, multi-tiered, azure active directory, azure ad
 services: app-service\web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/07/2018
+ms.date: 08/14/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fff2469269d8f60f837f0af444e16928a9212bb0
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ad0c510244c78fa3bdba41690c2284d0650c4b55
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67866568"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019360"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service
 
@@ -90,7 +90,7 @@ V tomto kroku nasadíte projekt do dvou aplikací App Service. Jedna je front-en
 
 ### <a name="create-azure-resources"></a>Vytvoření prostředků Azure
 
-Ve službě Cloud Shell spuštěním následujících příkazů vytvořte dvě webové aplikace. Nahraďte  _\<front-end-koncových-app-name >_ a  _\<back-end-app-name >_ s dvěma globálně jedinečnými názvy aplikací (platné znaky jsou `a-z`, `0-9`, a `-`). Další informace o jednotlivých příkazech najdete v tématu [Rozhraní RESTful API s CORS v Azure App Service](app-service-web-tutorial-rest-api.md).
+Ve službě Cloud Shell spuštěním následujících příkazů vytvořte dvě webové aplikace. Nahraďte  _\<název front-end-App-Name >_ a  _\<back-end-App-Name >_ dvěma globálně jedinečnými názvy aplikací (platné `a-z`znaky `0-9`jsou, `-`a). Další informace o jednotlivých příkazech najdete v tématu [Rozhraní RESTful API s CORS v Azure App Service](app-service-web-tutorial-rest-api.md).
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
@@ -100,12 +100,12 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 ```
 
 > [!NOTE]
-> Uložte si adresy URL vzdálených úložišť Git pro vaši front-endu a back endu aplikací, které se zobrazí ve výstupu `az webapp create`.
+> Uložte adresy URL vzdálených úložišť Git pro aplikace front-end a back-endové aplikace, které jsou uvedené ve výstupu z `az webapp create`.
 >
 
 ### <a name="push-to-azure-from-git"></a>Přenos z Gitu do Azure
 
-Po návratu do _okna místního terminálu_ spuštěním následujících příkazů Git proveďte nasazení do back-endové aplikace. Nahraďte _\<deploymentLocalGitUrl-of-back-end-app>_ adresou URL vzdáleného úložiště Git, kterou jste uložili v části [Vytvoření prostředků Azure](#create-azure-resources). Když se zobrazí výzva k zadání přihlašovacích údajů ve Správci přihlašovacích údajů Git, ujistěte se, abyste zadali [přihlašovací údaje pro nasazení](deploy-configure-credentials.md), ne přihlašovací údaje použijete pro přihlášení k webu Azure portal.
+Po návratu do _okna místního terminálu_ spuštěním následujících příkazů Git proveďte nasazení do back-endové aplikace. Nahraďte _\<deploymentLocalGitUrl-of-back-end-app>_ adresou URL vzdáleného úložiště Git, kterou jste uložili v části [Vytvoření prostředků Azure](#create-azure-resources). Po zobrazení výzvy k zadání přihlašovacích údajů správcem pověření Git Nezapomeňte zadat [přihlašovací údaje pro nasazení](deploy-configure-credentials.md), ne přihlašovací údaje, které používáte k přihlášení do Azure Portal.
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>
@@ -119,7 +119,7 @@ git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
 git push frontend master
 ```
 
-### <a name="browse-to-the-apps"></a>Přejděte do aplikace
+### <a name="browse-to-the-apps"></a>Vyhledat aplikace
 
 V prohlížeči přejděte na následující adresy URL, kde se zobrazí dvě funkční aplikace.
 
@@ -141,7 +141,7 @@ V tomto kroku odkážete kód serveru front-endové aplikace na přístup k back
 
 ### <a name="modify-front-end-code"></a>Úprava front-endového kódu
 
-V místním úložišti otevřete soubor _Controllers/TodoController.cs_. Na začátku `TodoController` třídy, přidejte následující řádky a nahraďte  _\<back-end-app-name >_ s názvem vaší back endové aplikace:
+V místním úložišti otevřete soubor _Controllers/TodoController.cs_. Na začátku `TodoController` třídy přidejte následující řádky a nahraďte  _\<back-end-App-Name >_ názvem vaší back-endové aplikace:
 
 ```cs
 private static readonly HttpClient _client = new HttpClient();
@@ -218,7 +218,7 @@ Jako zprostředkovatele identity použijete Azure Active Directory. Další info
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Povolení ověřování a autorizace pro back-endovou aplikaci
 
-V [webu Azure portal](https://portal.azure.com), otevřete stránku správy vaší back endové aplikace klikněte v levé nabídce na: **Resource groups** > **myAuthResourceGroup** >  _\<back-end-app-name>_ .
+V [Azure Portal](https://portal.azure.com)otevřete stránku správy back-end aplikace kliknutím na nabídku vlevo:Skupiny > prostředkůmyAuthResourceGroupback > - **_End-App-Name >.\<_**
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
 
@@ -236,15 +236,15 @@ Na stránce **Ověřování / autorizace** klikněte na **Uložit**.
 
 Jakmile se zobrazí oznámení se zprávou `Successfully saved the Auth Settings for <back-end-app-name> App`, aktualizujte stránku.
 
-Znovu klikněte na **Azure Active Directory** a pak klikněte na **Spravovat aplikaci**.
+Znovu klikněte **Azure Active Directory** a potom klikněte na **aplikace Azure AD**.
 
-Ze stránky správy aplikace AD zkopírujte **ID aplikace** do Poznámkového bloku. Tuto hodnotu budete potřebovat později.
+Zkopírujte **ID klienta** aplikace Azure AD do poznámkového bloku. Tuto hodnotu budete potřebovat později.
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-auth-aad/get-application-id-back-end.png)
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>Povolení ověřování a autorizace pro front-endovou aplikaci
 
-Použijte stejný postup i u front-endové aplikace, ale poslední krok přeskočte. Pro front-endovou aplikaci nepotřebujete **ID aplikace**. Stránku **Nastavení služby Azure Active Directory** nechte otevřenou.
+Použijte stejný postup i u front-endové aplikace, ale poslední krok přeskočte. Pro front-end aplikaci nepotřebujete ID klienta.
 
 Pokud chcete, přejděte na adresu `http://<front-end-app-name>.azurewebsites.net`. Měla by vás teď přesměrovat na zabezpečenou přihlašovací stránku. Po přihlášení pořád nemáte přístup k datům z back-endové aplikace, protože je stále potřeba provést tři věci:
 
@@ -259,32 +259,30 @@ Pokud chcete, přejděte na adresu `http://<front-end-app-name>.azurewebsites.ne
 
 Teď, když jste povolili ověřování a autorizaci pro obě své aplikace, využívají obě aplikaci AD. V tomto kroku udělíte front-endové aplikaci oprávnění k přístupu k back-endu jménem uživatele. (Technicky vzato udělíte _aplikaci AD_ front-endu oprávnění k přístupu k _aplikaci_ AD back-endu jménem uživatele.)
 
-V tuto chvíli byste měli být na stránce **Nastavení služby Azure Active Directory** pro front-endovou aplikaci. Pokud ne, vraťte se na tuto stránku. 
-
-Klikněte na **Spravovat oprávnění** > **Přidat** > **Výběr rozhraní API**.
+V nabídce vlevo na portálu vyberte **Azure Active Directory** > **Registrace aplikací** > **vlastněné aplikace** >  **\<s názvem front-end-App-Name >**  >   **Oprávnění rozhraní API**.
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
 
-Na stránce **Výběr rozhraní API** zadejte název aplikace AD vaší back-endové aplikace, který je ve výchozím nastavení stejný jako název vaší back-endové aplikace. Vyberte název v seznamu a klikněte na **Vybrat**.
+Vyberte **Přidat oprávnění**a pak vyberte **Moje rozhraní API** >  **\<back-end-App-Name >** .
 
-Zaškrtněte políčko vedle položky **přístup  _\<název aplikace AD >_** . Klikněte na **Vybrat** > **Hotovo**.
+Na stránce **oprávnění rozhraní API** pro back-endové aplikace vyberte **delegovaná oprávnění** a **user_impersonation**a pak vyberte **Přidat oprávnění**.
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>Konfigurace služby App Service tak, aby vracela použitelný přístupový token
 
-Front-endová aplikace má teď požadovaná oprávnění. V tomto kroku nakonfigurujete ověřování a autorizaci pomocí služby App Service tak, abyste získali použitelná přístupový token pro přístup k back-endu. V tomto kroku potřebujete ID back-endové aplikace, které jste zkopírovali v kroku [Povolení ověřování a autorizace pro back-endovou aplikaci](#enable-authentication-and-authorization-for-back-end-app).
+Aplikace front-end má teď požadovaná oprávnění pro přístup k back-endové aplikaci jako přihlášený uživatel. V tomto kroku nakonfigurujete ověřování a autorizaci pomocí služby App Service tak, abyste získali použitelná přístupový token pro přístup k back-endu. Pro tento krok potřebujete ID klienta back-endu, které jste zkopírovali z části [Povolení ověřování a autorizace pro back-endové aplikace](#enable-authentication-and-authorization-for-back-end-app).
 
 Přihlaste se k [Azure Resource Exploreru](https://resources.azure.com). V horní části stránky klikněte na **Čtení / zápis** a povolte úpravy vašich prostředků Azure.
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-V levém prohlížeče, klikněte na tlačítko **předplatná** >  **_\<your-subscription >_**  > **resourceGroups**   >  **myAuthResourceGroup** > **poskytovatelé** > **Microsoft.Web**  >  **lokality** >  **_\<front-end-koncových-app-name >_**  > **config**  >  **authsettings**.
+V levém prohlížeči klikněte na předplatná >  **_\<>_**  > **resourceGroups** > myAuthResourceGroupposkytovatelé >   >  > Webovéservery > Microsoft.web **_front-end-App-Name > config authsettings.\<_**  >   > 
 
-V zobrazení **authsettings** (nastavení ověřování) klikněte na **Edit** (Upravit). Nastavte `additionalLoginParams` na následující řetězec JSON s použitím ID aplikace, které jste zkopírovali. 
+V zobrazení **authsettings** (nastavení ověřování) klikněte na **Edit** (Upravit). Nastavte `additionalLoginParams` na následující řetězec JSON pomocí ID klienta, které jste zkopírovali. 
 
 ```json
-"additionalLoginParams": ["response_type=code id_token","resource=<back_end_application_id>"],
+"additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-auth-aad/additional-login-params-front-end.png)
@@ -293,13 +291,13 @@ Uložte nastavení kliknutím na **PUT**.
 
 Vaše aplikace jsou teď nakonfigurované. Front-end je teď připravený na přístup do back-endu se správným přístupovým tokenem.
 
-Informace o tom, jak nastavit tuto konfiguraci pro jiné zprostředkovatele najdete v tématu [obnovovacích tokenů zprostředkovatele identity](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
+Informace o tom, jak nakonfigurovat přístupový token pro jiné poskytovatele, najdete v tématu [aktualizace tokenů zprostředkovatele identity](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
 ## <a name="call-api-securely-from-server-code"></a>Zabezpečené volání rozhraní API z kódu serveru
 
 V tomto kroku povolíte dříve upravený kód serveru tak, aby prováděl ověřená volání do back-endového rozhraní API.
 
-Vaše front-endová aplikace teď má požadovaná oprávnění a také k parametrům přihlášení přidává ID back-endové aplikace. Proto může získat přístupový token k ověření v back-endové aplikaci. App Service poskytuje tento token vašemu kódu serveru tím, že do každého ověřeného požadavku vkládá hlavičku `X-MS-TOKEN-AAD-ACCESS-TOKEN` (viz [Načítání tokenů v kódu aplikace](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)).
+Aplikace front-end má nyní požadovaná oprávnění a také přidá ID klienta back-endu do parametrů přihlášení. Proto může získat přístupový token k ověření v back-endové aplikaci. App Service poskytuje tento token vašemu kódu serveru tím, že do každého ověřeného požadavku vkládá hlavičku `X-MS-TOKEN-AAD-ACCESS-TOKEN` (viz [Načítání tokenů v kódu aplikace](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)).
 
 > [!NOTE]
 > Tyto hlavičky se vkládají pro všechny podporované jazyky. V jednotlivých jazycích k nim můžete přistupovat standardním způsobem.
@@ -317,7 +315,7 @@ public override void OnActionExecuting(ActionExecutingContext context)
 }
 ```
 
-Tento kód do všech volání vzdáleného rozhraní API přidá standardní hlavičku HTTP `Authorization: Bearer <access_token>`. V kanálu provádění požadavků ASP.NET Core MVC se `OnActionExecuting` provede těsně před provedením metody odpovídající akce (například `GetAll()`), takže se v každém z vašich odchozích volání rozhraní API teď uvádí přístupový token.
+Tento kód do všech volání vzdáleného rozhraní API přidá standardní hlavičku HTTP `Authorization: Bearer <access-token>`. V kanálu provádění požadavků ASP.NET Core MVC se `OnActionExecuting` provede těsně před provedením metody odpovídající akce (například `GetAll()`), takže se v každém z vašich odchozích volání rozhraní API teď uvádí přístupový token.
 
 Uložte všechny provedené změny. V okně místního terminálu nasaďte provedené změny do front-endové aplikace pomocí následujících příkazů Git:
 
@@ -345,7 +343,7 @@ Zatímco kód serveru má přístup k hlavičkám požadavků, klientský kód m
 
 ### <a name="configure-cors"></a>Konfigurace CORS
 
-Ve službě Cloud Shell povolte CORS pro adresu URL vašeho klienta pomocí příkazu [`az resource update`](/cli/azure/resource#az-resource-update). Nahradit  _\<back-end-app-name >_ a  _\<front-end-koncových-app-name >_ zástupné symboly.
+Ve službě Cloud Shell povolte CORS pro adresu URL vašeho klienta pomocí příkazu [`az resource update`](/cli/azure/resource#az-resource-update). Nahraďte text  _back-end-App-Name>afront-end-App-Name>zástupnésymboly.\<_  _\<_
 
 ```azurecli-interactive
 az resource update --name web --resource-group myAuthResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<back-end-app-name> --set properties.cors.allowedOrigins="['https://<front-end-app-name>.azurewebsites.net']" --api-version 2015-06-01
@@ -357,7 +355,7 @@ Tento krok nesouvisí s ověřováním a autorizací. Je však potřeba ho prov�
 
 V místním úložišti otevřete soubor _wwwroot/index.html_.
 
-Na řádku 51 nastavte proměnnou `apiEndpoint` na adresu URL vaší back-endové aplikace (`https://<back-end-app-name>.azurewebsites.net`). Nahraďte  _\<back-end-app-name >_ názvem vaší aplikace ve službě App Service.
+Na řádku 51 nastavte proměnnou `apiEndpoint` na adresu URL vaší back-endové aplikace (`https://<back-end-app-name>.azurewebsites.net`). V App Service nahraďte  _\<název back-end-App->_ názvem vaší aplikace.
 
 V místním úložišti otevřete soubor _wwwroot/app/scripts/todoListSvc.js_ a všimněte si, že před všechna volání rozhraní API je připojený koncový bod rozhraní API `apiEndpoint`. Vaše aplikace Angular.js teď volá back-endová rozhraní API. 
 
@@ -417,7 +415,7 @@ Blahopřejeme! Váš klientský kód teď přistupuje k back-endovým datům jm�
 
 ## <a name="when-access-tokens-expire"></a>Vypršení platnosti přístupových tokenů
 
-Platnost vašich přístupových tokenů po určité době vyprší. Informace o tom, jak aktualizovat přístupové tokeny, aniž by uživatelé museli donutit s vaší aplikací naleznete v tématu [obnovovacích tokenů zprostředkovatele identity](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
+Platnost vašich přístupových tokenů po určité době vyprší. Informace o tom, jak aktualizovat přístupové tokeny, aniž by se uživatelé museli znovu ověřit u vaší aplikace, najdete v tématu [aktualizace tokenů zprostředkovatele identity](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -430,7 +428,7 @@ az group delete --name myAuthResourceGroup
 Spuštění tohoto příkazu může trvat přibližně minut.
 
 <a name="next"></a>
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučili jste se:
 
@@ -446,4 +444,4 @@ Naučili jste se:
 V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS do služby Azure App Service](app-service-web-tutorial-custom-domain.md)
+> [Mapování existujícího vlastního názvu DNS na Azure App Service](app-service-web-tutorial-custom-domain.md)

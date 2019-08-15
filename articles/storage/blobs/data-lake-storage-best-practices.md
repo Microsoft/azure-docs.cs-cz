@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 630d8f64b39888533aff4847dec64fa50fc43d7e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a5bfc664c412c93bbf3e522b01528e8247be3291
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855585"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016059"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen2
 
@@ -49,7 +49,7 @@ Při navrhování systému pomocí Data Lake Storage Gen2 nebo libovolné cloudo
 
 ### <a name="high-availability-and-disaster-recovery"></a>Vysoká dostupnost a zotavení po havárii
 
-Vysoká dostupnost (HA) a zotavení po havárii (DR) se někdy můžou kombinovat dohromady, i když každá z nich má mírně odlišnou strategii, zejména pokud se data nacházejí. Data Lake Storage Gen2 už v digestoři zpracovává replikaci 3x, která chrání před selháním lokalizovaných hardwarových zařízení. Kromě toho další možnosti replikace, jako je ZRS, zlepšují HA během GRS & RA – GRS vylepšit DR. Při sestavování plánu pro HA potřebuje v případě přerušení služby přístup k nejnovějším datům co nejrychleji, a to tak, že přepnete na samostatnou replikovanou instanci lokálně nebo v nové oblasti.
+Vysoká dostupnost (HA) a zotavení po havárii (DR) se někdy můžou kombinovat dohromady, i když každá z nich má mírně odlišnou strategii, zejména pokud se data nacházejí. Data Lake Storage Gen2 už v digestoři zpracovává replikaci 3x, která chrání před selháním lokalizovaných hardwarových zařízení. Kromě toho další možnosti replikace, jako je ZRS nebo GZRS (Preview), zlepšují HA, zatímco GRS & RA-GRS vylepšit DR. Při sestavování plánu pro HA potřebuje v případě přerušení služby přístup k nejnovějším datům co nejrychleji, a to tak, že přepnete na samostatnou replikovanou instanci lokálně nebo v nové oblasti.
 
 V strategii zotavení po havárii se můžete připravit na nepravděpodobné události závažného selhání oblasti. je taky důležité replikovat data do jiné oblasti pomocí replikace GRS nebo RA-GRS. Také je nutné vzít v úvahu požadavky na hraniční případy, jako je například poškození dat, kde můžete chtít vytvořit periodické snímky, na které se bude vracet. V závislosti na důležitosti a velikosti dat zvažte použití rozdílových snímků s 1, 6 a 24 hodinovou odchylkou v závislosti na tolerancích rizik.
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/12/2018
 ms.author: dacurwin
-ms.openlocfilehash: dae2268abc3771e43d717c65c19eed37b9f48e8e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: bb764cfa14b4bc8e53f25629961a1baecd6a6c1f
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689258"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954695"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Zálohování virtuálních počítačů Azure Linux konzistentní vzhledem k aplikacím
 
@@ -24,7 +24,7 @@ Při pořizování záložních snímků virtuálních počítačů to znamená,
 
 Rozhraní poskytuje možnost spustit vlastní předzálohovací skripty a následné skripty při přebírání snímků virtuálních počítačů. Před spuštěním snímku virtuálního počítače se spustí předzálohovací skript a po provedení snímku virtuálního počítače se spustí následné skripty. Předzálohovací a pozálohovací skripty poskytují flexibilitu při řízení aplikace a prostředí při přebírání snímků virtuálních počítačů.
 
-Předběžné skripty vyvolávají nativní aplikační rozhraní API, které neobsahují operační systém IOs a vyprázdní obsah v paměti na disk. Tyto akce zajišťují, že je snímek konzistentní vzhledem k aplikacím. Následné skripty používají rozhraní API nativních aplikací k odblokování IOs, což umožňuje aplikaci obnovit běžné operace po snímku virtuálního počítače.
+Předběžné skripty vyvolávají nativní aplikační rozhraní API, které neobsahují operační systém IOs a vyprázdní obsah v paměti na disk. Tyto akce zajišťují, že je snímek konzistentní vzhledem k aplikacím. Následné skripty používají rozhraní API nativních aplikací k odblokování IOs, které umožní aplikaci obnovit normální provoz po snímku virtuálního počítače.
 
 ## <a name="steps-to-configure-pre-script-and-post-script"></a>Postup konfigurace předzálohovacího skriptu a následného skriptu
 

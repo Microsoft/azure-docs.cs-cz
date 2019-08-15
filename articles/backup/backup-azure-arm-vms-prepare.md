@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9a6ea961f7433f511ef22a6ac9aaefa51b5df8aa
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 1f8086580d60d13251052636d4d771855e9605a5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663693"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954956"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -138,7 +138,7 @@ Po povolení zálohování:
 Pokud jste vybrali vytvoření nové zásady zálohování, vyplňte nastavení zásad.
 
 1. Do **název zásady**zadejte smysluplný název.
-2. V **plánu zálohování** zadejte, kdy se mají považovat zálohy. Pro virtuální počítače Azure můžete provádět denní nebo týdenní zálohy.
+2. V **plánu zálohování**určete, kdy se mají považovat zálohy. Pro virtuální počítače Azure můžete provádět denní nebo týdenní zálohy.
 2. V **rychlém obnovení**zadejte, jak dlouho chcete snímky uchovávat místně pro okamžité obnovení.
     - Při obnovení se zálohované disky virtuálních počítačů zkopírují z úložiště napříč sítí do umístění úložiště pro obnovení. Při okamžitém obnovení můžete využít místně uložené snímky, které se provedou během úlohy zálohování, aniž byste čekali na přenos zálohovaných dat do trezoru.
     - Snímky pro okamžité obnovení můžete uchovávat po dobu mezi 1 a pěti dny. Výchozím nastavením je dva dny.
@@ -160,16 +160,16 @@ Počáteční zálohování se spustí podle plánu, ale můžete ho spustit hne
 3. V seznamu **zálohované položky** klikněte na tři tečky (...).
 4. Klikněte na **Zálohovat nyní**.
 5. V části **Zálohovat nyní**pomocí ovládacího prvku kalendáře vyberte poslední den, kdy se má bod obnovení zachovat. Pak klikněte na **OK**.
-6. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy** > zálohování **.** V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
+6. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy** > zálohování. V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
 
 ## <a name="verify-backup-job-status"></a>Ověřit stav úlohy zálohování
 
-Podrobnosti úlohy zálohování pro každou zálohu virtuálního počítače se skládají ze 2 fází, fáze **snímků** následovaná fází **přenosu dat do trezoru** .<br/>
-Fáze snímkování zaručuje dostupnost bodu obnovení uloženého spolu s disky pro **okamžité obnovení** a jsou k dispozici po dobu maximálně 5 dní v závislosti na uchování snímku nakonfigurovaného uživatelem. Při přenosu dat do trezoru se vytvoří bod obnovení v trezoru pro dlouhodobou dobu uchovávání. Přenos dat do trezoru se spustí až po dokončení fáze snímku.
+Podrobnosti úlohy zálohování pro každou zálohu virtuálního počítače se skládají ze dvou fází, fáze **snímků** následovaná fází **přenosu dat do trezoru** .<br/>
+Fáze snímkování zaručuje dostupnost bodu obnovení uloženého spolu s disky pro **okamžité obnovení** a jsou k dispozici po dobu maximálně pět dní v závislosti na uchování snímku nakonfigurovaného uživatelem. Při přenosu dat do trezoru se vytvoří bod obnovení v trezoru pro dlouhodobou dobu uchovávání. Přenos dat do trezoru se spustí až po dokončení fáze snímku.
 
   ![Stav úlohy zálohování](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
 
-Existují dva **dílčí úkoly** spuštěné v back-endu, jednu pro úlohu zálohování front-end, kterou je možné zkontrolovat v okně Podrobnosti **úlohy zálohování** , jak je uvedeno níže:
+Existují dva **dílčí úkoly** spuštěné v back-endu, jednu pro úlohu front-end zálohování, kterou je možné zkontrolovat v okně Podrobnosti **úlohy zálohování** , jak je uvedeno níže:
 
   ![Stav úlohy zálohování](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 

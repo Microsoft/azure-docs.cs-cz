@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: c56b979bf5a4f1e0868dd0542cb71c2da6a85df7
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 17ad99d372bbca1d82c5c3701751da1b009764ee
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494472"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967830"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project-250-beta"></a>Začínáme s Application Insights ve webovém projektu Java (2.5.0-BETA verze)
 
@@ -305,7 +305,7 @@ Application Insights může otestovat váš web v pravidelných intervalech a zk
 ## <a name="questions-problems"></a>Otázky? Problémy?
 [Řešení potíží s Javou](java-troubleshoot.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Monitorování volání závislostí](java-agent.md)
 * [Monitorování čítačů výkonu Unix](java-collectd.md)
 * Přidejte [na svoje webové stránky monitorování](javascript.md) a sledujte dobu načítání stránek, volání AJAX nebo výjimky prohlížeče.
@@ -319,7 +319,6 @@ Application Insights může otestovat váš web v pravidelných intervalech a zk
 [apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[eclipse]: ../../azure-monitor/learn/java-quick-start.md
 [javalogs]: java-trace-logs-25-beta.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
 [usage]: javascript.md

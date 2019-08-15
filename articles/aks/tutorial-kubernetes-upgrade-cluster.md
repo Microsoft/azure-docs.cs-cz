@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 90c5a4e18f72d9a8b048ef0f40a5c0b405a584f2
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0986da64fda659b949d5d1e6cfae03df2daded19
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614148"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019160"
 ---
-# <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Kurz: Upgrade Kubernetes ve službě Azure Kubernetes Service (AKS)
+# <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Kurz: Upgrade Kubernetes ve službě Azure Kubernetes (AKS)
 
 V rámci životního cyklu aplikace a clusteru možná budete chtít provést upgrade na nejnovější dostupnou verzi Kubernetes a využívat nové funkce. Cluster Azure Kubernetes Service (AKS) je možné upgradovat pomocí Azure CLI.
 
@@ -26,11 +26,11 @@ V tomto kurzu, který je sedmou částí sedmidílné série, se upgraduje clust
 > * Upgrade uzlů Kubernetes
 > * Ověření úspěšného upgradu
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-V předchozích kurzech se aplikace zabalila do image kontejneru. Tato image se odeslala do Azure Container Registry a vytvoření clusteru AKS. Aplikace se pak nasadí do clusteru AKS. Pokud jste tyto kroky neprovedli a chcete postupovat s námi, začněte tématem [kurzu 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
+V předchozích kurzech byla aplikace zabalena do image kontejneru. Tato image se nahrála do Azure Container Registry a vytvořili jste cluster AKS. Aplikace se pak nasadí do clusteru AKS. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte s [kurzem 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
-Tento kurz vyžaduje použití Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento kurz vyžaduje, abyste spustili Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="get-available-cluster-versions"></a>Získání dostupných verzí clusteru
 
@@ -40,34 +40,34 @@ Před upgradem clusteru pomocí příkazu [az aks get-upgrades][] zkontrolujte, 
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-V následujícím příkladu je aktuální verze *1.9.11*, a dostupným verzím jsou uvedeny v části *upgrady* sloupce.
+V následujícím příkladu je aktuální verze *1.13.9*a dostupné verze se zobrazí ve sloupci *upgrady* .
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 -------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.9.11           1.9.11             1.10.8, 1.10.9
+default  myResourceGroup  1.13.9           1.13.9             1.14.5
 ```
 
 ## <a name="upgrade-a-cluster"></a>Upgrade clusteru
 
-Aby se minimalizovalo přerušení spuštěných aplikací, jsou uzlů AKS pečlivě uzavřené a Vyprázdněné. V tomto procesu jsou prováděny následovně:
+Aby se minimalizovalo přerušení spuštěných aplikací, uzly AKS pečlivě uzavřené a vyprázdní. V tomto procesu jsou provedeny následující kroky:
 
-1. Plánovač Kubernetes zabrání další pody naplánované na uzel, který je potřeba upgradovat.
-1. Pody spuštěné na uzlu jsou naplánovány na jiných uzlech v clusteru.
-1. Uzel je vytvořen, na kterém běží nejnovější komponenty Kubernetes.
-1. Po novém uzlu bude připravena a připojené k doméně do clusteru, Plánovač Kubernetes začne běžet podů.
-1. Odstranit staré uzlu a další uzel v clusteru spustí proces cordon a vyprazdňování.
+1. Scheduler Kubernetes zabrání v naplánování dalších lusků v uzlu, který se má upgradovat.
+1. Běžící lusky na uzlu jsou plánovány na jiných uzlech v clusteru.
+1. Vytvoří se uzel, který spustí nejnovější součásti Kubernetes.
+1. Když je nový uzel připravený a připojený ke clusteru, začne Plánovač Kubernetes v něm spouštět lusky.
+1. Starý uzel se odstraní a další uzel v clusteru zahájí proces Cordon a vyprázdnění.
 
-Cluster AKS můžete upgradovat pomocí příkazu [az aks upgrade][]. Následující příklad provede clusteru upgrade na Kubernetes verze *1.10.9*.
+Cluster AKS můžete upgradovat pomocí příkazu [az aks upgrade][]. Následující příklad upgraduje cluster na Kubernetes verze *1.14.5*.
 
 > [!NOTE]
-> Najednou můžete upgradovat pouze jednu dílčí verzi. Například můžete upgradovat z *1.9.11* k *1.10.9*, ale nemohu upgradovat z *otázku 1.9.6* k *1.11.x* přímo. Upgrade z *1.9.11* k *1.11.x*, první upgrade z *1.9.11* k *1.10.x*, proveďte další upgrade z *1.10.x* k *1.11.x*.
+> Najednou můžete upgradovat pouze jednu dílčí verzi. Můžete například upgradovat z *1.12. x* na *1.13. x*, ale nelze upgradovat z *1.12.8* na *1.14. x* přímo. Pokud chcete upgradovat z *1.12. x* na *otázku 1.14. x*, nejdřív upgradujte z *1.12. x* na *1.13. x*a pak proveďte jiný upgrade z *1.13. x* na *otázku 1.14. x*.
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.10.9
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.5
 ```
 
-Následujícímu zhuštěnému příkladu výstup ukazuje *kubernetesVersion* nyní hlásí *1.10.9*:
+Následující zhuštěný příklad výstupu ukazuje *kubernetesVersion* nyní sestavy *1.14.5*:
 
 ```json
 {
@@ -85,7 +85,7 @@ Následujícímu zhuštěnému příkladu výstup ukazuje *kubernetesVersion* ny
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.10.9",
+  "kubernetesVersion": "1.14.5",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -100,24 +100,24 @@ Následujícím způsobem ověřte úspěšné provedení upgradu pomocí přík
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Následující příklad výstupu ukazuje spuštění clusteru AKS *KubernetesVersion 1.10.9*:
+Následující příklad výstupu ukazuje, že cluster AKS spouští *KubernetesVersion 1.14.5*:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.10.9               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.14.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
-V tomto kurzu je poslední části série, můžete odstranit AKS cluster. Jelikož uzly prostředí Kubernetes běží na virtuálních počítačích v Azure, účtují se za ně poplatky, i když cluster nevyužíváte. Použití [odstranění skupiny az][az-group-delete] příkazu k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků.
+Vzhledem k tomu, že se jedná o poslední část této série, možná budete chtít odstranit cluster AKS. Jelikož uzly prostředí Kubernetes běží na virtuálních počítačích v Azure, účtují se za ně poplatky, i když cluster nevyužíváte. Pomocí příkazu [AZ Group Delete][az-group-delete] odeberte skupinu prostředků, službu kontejneru a všechny související prostředky.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Pokyny o tom, jak odebrat instanční objekt služby, najdete v článku [hlavní aspekty a odstranění služby AKS][sp-delete].
+> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu [AKS a informace o instančním objektu a jejich odstranění][sp-delete].
 
 ## <a name="next-steps"></a>Další postup
 
@@ -131,7 +131,7 @@ V tomto kurzu jste upgradovali Kubernetes v clusteru AKS. Naučili jste se tyto 
 Další informace o službě AKS najdete na následujícím odkazu.
 
 > [!div class="nextstepaction"]
-> [Přehled služby AKS][aks-intro]
+> [AKS – přehled][aks-intro]
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

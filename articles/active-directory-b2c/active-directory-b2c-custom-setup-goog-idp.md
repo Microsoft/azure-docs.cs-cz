@@ -1,6 +1,6 @@
 ---
-title: Nastavení přihlášení pomocí účtu Google v Azure Active Directory B2C pomocí vlastních zásad | Dokumentace Microsoftu
-description: Nastavení přihlášení pomocí účtu Google v Azure Active Directory B2C pomocí vlastních zásad.
+title: Nastavte přihlášení pomocí účtu Google v Azure Active Directory B2C pomocí vlastních zásad | Microsoft Docs
+description: Nastavte přihlášení pomocí účtu Google v Azure Active Directory B2C pomocí vlastních zásad.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,63 +10,63 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 498fe63964e44de8f9e1bc06c1740f1a9ef9b392
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: a5b0d236424803056530eed81d9821fbafa14309
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654174"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952846"
 ---
-# <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavit přihlašování pomocí účtu Google pomocí vlastních zásad v Azure Active Directory B2C
+# <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavte přihlášení pomocí účtu Google pomocí vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V tomto článku se dozvíte, jak povolit přihlášení pro uživatele z účtu Google pomocí [vlastní zásady](active-directory-b2c-overview-custom.md) v Azure Active Directory (Azure AD) B2C.
+V tomto článku se dozvíte, jak povolit přihlášení uživatelům z účtu Google pomocí [vlastních zásad](active-directory-b2c-overview-custom.md) v Azure Active Directory (Azure AD) B2C.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Proveďte kroky v [začít pracovat s vlastními zásadami v Active Directory B2C](active-directory-b2c-get-started-custom.md).
-- Pokud ještě nemáte účet Google, vytvořte si ho na [vytvořit váš účet Google](https://accounts.google.com/SignUp).
+- Dokončete kroky v části [Začínáme s vlastními zásadami v Active Directory B2C](active-directory-b2c-get-started-custom.md).
+- Pokud ještě nemáte účet Google, vytvořte si ho vytvořením [účtu Google](https://accounts.google.com/SignUp).
 
 ## <a name="register-the-application"></a>Zaregistrovat aplikaci
 
-Pokud chcete povolit přihlášení pro uživatele z účtu Google, je potřeba vytvořit projekt aplikace služby Google.
+Pokud chcete povolit přihlášení uživatelům z účtu Google, musíte vytvořit projekt aplikace Google.
 
-1. Přihlaste se k [konzole pro vývojáře Google](https://console.developers.google.com/) pomocí svých přihlašovacích údajů účtu.
-2. Zadejte **název projektu**, klikněte na tlačítko **vytvořit**a zkontrolujte, že používáte nový projekt.
-3. Vyberte **pověření** v nabídce vlevo a pak vyberte **Vytvořte přihlašovací údaje > ID klienta Oauth**.
-4. Vyberte **obrazovkami pro vyjádření souhlasu konfigurovat**.
-5. Vyberte nebo zadejte platný **e-mailová adresa**, zadejte **název produktu** zobrazovat uživatelům, zadejte `b2clogin.com` v **oprávnění domény**a potom klikněte na tlačítko  **Uložit**.
-6. V části **typ aplikace**vyberte **webovou aplikaci**.
-7. Zadejte **název** pro vaši aplikaci.
-8. V **oprávnění JavaScript zdroje**, zadejte `https://your-tenant-name.b2clogin.com` a **identifikátory URI pro přesměrování autorizovaní**, zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Nahraďte názvem vašeho tenanta svůj název tenanta. Budete muset použít jenom malá písmena. Pokud zadáte název vašeho klienta i v případě, že klient je definována s velká písmena v Azure AD B2C.
+1. Přihlaste se ke [konzole pro vývojáře Google](https://console.developers.google.com/) pomocí svých přihlašovacích údajů k účtu.
+2. Zadejte **název projektu**, klikněte na **vytvořit**a potom se ujistěte, že používáte nový projekt.
+3. V nabídce vlevo vyberte **přihlašovací údaje** a potom vyberte **vytvořit přihlašovací údaje > ID klienta OAuth**.
+4. Vyberte možnost **Konfigurovat obrazovku pro vyjádření souhlasu**.
+5. Vyberte nebo zadejte platnou **e-mailovou adresu**, zadejte **název produktu** , který se zobrazí `b2clogin.com` uživatelům, zadejte v **autorizovaných doménách**a pak klikněte na **Uložit**.
+6. V části **Typ aplikace**vyberte **Webová aplikace**.
+7. Zadejte **název** vaší aplikace.
+8. V **autorizovaných zdrojích JavaScriptu**zadejte `https://your-tenant-name.b2clogin.com` a v **autorizovaných identifikátorech URI pro přesměrování**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Nahraďte název-tenanta názvem vašeho tenanta. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
 8. Klikněte na možnost **Vytvořit**.
-9. Zkopírujte hodnoty **ID klienta** a **tajný kód klienta**. Budete potřebovat oba poskytovatelé konfigurace Google jako zprostředkovatele identity ve vašem tenantovi. Tajný kód klienta je důležitým bezpečnostním pověřením.
+9. Zkopírujte hodnoty **ID klienta** a **tajný klíč klienta**. Obě tyto služby budete potřebovat ke konfiguraci Google jako poskytovatele identity ve vašem tenantovi. Tajný kód klienta je důležité bezpečnostní pověření.
 
 ## <a name="create-a-policy-key"></a>Vytvoření klíče zásad
 
-Potřebujete ukládat tajný kód klienta, který jste si dříve poznamenali ve vašem tenantovi Azure AD B2C.
+Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve svém tenantovi Azure AD B2C.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
-3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-4. Na stránce s přehledem, vyberte **architekturu rozhraní identit**.
-5. Vyberte **klíče zásad** a pak vyberte **přidat**.
-6. Pro **možnosti**, zvolte `Manual`.
-7. Zadejte **název** klíče zásad. Například, `GoogleSecret`. Předpona, která `B2C_1A_` je automaticky přidán do názvu klíče.
-8. V **tajný kód**, zadejte váš tajný klíč klienta, který jste si předtím poznamenali.
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte **adresář a filtr** předplatného a zvolte adresář, který obsahuje vašeho tenanta.
+3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
+5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+6. Pro **Možnosti**vyberte `Manual`možnost.
+7. Zadejte **název** klíče zásad. Například, `GoogleSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+8. Do **tajného klíče**zadejte tajný klíč klienta, který jste předtím nahráli.
 9. Pro **použití klíče**vyberte `Signature`.
 10. Klikněte na možnost **Vytvořit**.
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
-Pokud chcete uživatelům umožní přihlásit pomocí účtu Google, musíte definovat účtu jako zprostředkovatele deklarací identity, který Azure AD B2C můžou klienti komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací identity, které používají Azure AD B2C k ověření, že se ověřil konkrétního uživatele.
+Pokud chcete, aby se uživatelé přihlásili pomocí účtu Google, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C můžou komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
 
-Účet Google jako poskytovatele deklarací identity můžete definovat tak, že ji přidáte **ClaimsProviders** prvku v souboru rozšíření vašich zásad.
+Účet Google můžete definovat jako zprostředkovatele deklarací, a to tak, že ho přidáte do prvku **ClaimsProviders** v souboru rozšíření zásady.
 
-1. Otevřít *TrustFrameworkExtensions.xml*.
-2. Najít **ClaimsProviders** elementu. Pokud neexistuje, přidejte jej pod kořenovým elementem.
-3. Přidat nový **ClaimsProvider** následujícím způsobem:
+1. Otevřete *soubor TrustFrameworkExtensions. XML*.
+2. Vyhledejte element **ClaimsProviders** . Pokud neexistuje, přidejte jej pod kořenový element.
+3. Přidejte nový **ClaimsProvider** následujícím způsobem:
 
     ```xml
     <ClaimsProvider>
@@ -81,7 +81,7 @@ Pokud chcete uživatelům umožní přihlásit pomocí účtu Google, musíte de
             <Item Key="authorization_endpoint">https://accounts.google.com/o/oauth2/auth</Item>
             <Item Key="AccessTokenEndpoint">https://accounts.google.com/o/oauth2/token</Item>
             <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
-            <Item Key="scope">email</Item>
+            <Item Key="scope">email profile</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="UsePolicyInRedirectUri">0</Item>
             <Item Key="client_id">Your Google application ID</Item>
@@ -110,72 +110,72 @@ Pokud chcete uživatelům umožní přihlásit pomocí účtu Google, musíte de
     </ClaimsProvider>
     ```
 
-4. Nastavte **client_id** do ID aplikace z registrace aplikace.
+4. Nastavte **client_id** na ID aplikace z registrace aplikace.
 5. Uložte soubor.
 
-### <a name="upload-the-extension-file-for-verification"></a>Nahrát soubor rozšíření pro ověřování
+### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
 
-Nyní jste nakonfigurovali zásady tak, aby Azure AD B2C ví, jak komunikovat s adresářem Azure AD. Zkuste nahrát soubor rozšíření zásady jenom k potvrzení, že všechny problémy nemusí zatím.
+Teď jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat s adresářem služby Azure AD. Zkuste nahrát soubor s příponou zásady jenom tak, aby se ověřilo, že zatím nemá žádné problémy.
 
-1. Na **vlastní zásady** stránky ve vašem tenantovi Azure AD B2C, vyberte **nahrát zásady**.
-2. Povolit **přepsat zásady, pokud existuje**a poté vyhledejte a vyberte *TrustFrameworkExtensions.xml* souboru.
+1. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
+2. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions. XML* .
 3. Klikněte na **Odeslat**.
 
 ## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
 
-V tomto okamžiku je nastavený zprostředkovatele identity, ale není k dispozici v některém z obrazovky přihlášení-registrace/přihlášení. Chcete-li k dispozici, vytvoření duplicitní cesty existující uživatele šablony a upravte ho tak, aby má také zprostředkovatele identity Azure AD.
+V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na žádném z obrazovek pro registraci a přihlašování. Aby byl k dispozici, vytvořte duplikát existující cesty uživatele šablony a pak ji upravte, aby měl také poskytovatele identity služby Azure AD.
 
-1. Otevřít *TrustFrameworkBase.xml* soubor z starter pack.
-2. Vyhledejte a zkopírujte celý obsah **UserJourney** element, který zahrnuje `Id="SignUpOrSignIn"`.
-3. Otevřít *TrustFrameworkExtensions.xml* a najít **Userjourney** elementu. Pokud element neexistuje, přidejte jeden.
-4. Vložte celý obsah **UserJourney** element, který jste zkopírovali jako podřízený objekt **Userjourney** elementu.
-5. Přejmenujte ID cesty uživatele. Například, `SignUpSignInGoogle`.
+1. Otevřete soubor *TrustFrameworkBase. XML* z úvodní sady.
+2. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"`.
+3. Otevřete *soubor TrustFrameworkExtensions. XML* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
+4. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
+5. Přejmenujte ID cesty pro uživatele. Například, `SignUpSignInGoogle`.
 
 ### <a name="display-the-button"></a>Zobrazit tlačítko
 
-**ClaimsProviderSelection** element je obdobou k tlačítku na obrazovce přihlášení-registrace/přihlášení zprostředkovatele identity. Pokud chcete přidat **ClaimsProviderSelection** – element pro účet Google, nové tlačítko se zobrazí při uživatel umístil na stránce.
+Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci a přihlašování. Pokud přidáte element **claimsproviderselection.** pro účet Google, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
 
-1. Najít **OrchestrationStep** element, který zahrnuje `Order="1"` v cestě uživatele, který jste vytvořili.
-2. V části **ClaimsProviderSelects**, přidejte následující prvek. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `GoogleExchange`:
+1. Vyhledejte element **OrchestrationStep** , který obsahuje `Order="1"` cestu k uživateli, kterou jste vytvořili.
+2. Pod **ClaimsProviderSelects**přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `GoogleExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
     ```
 
-### <a name="link-the-button-to-an-action"></a>Tlačítko s odkazem na akci
+### <a name="link-the-button-to-an-action"></a>Propojit tlačítko s akcí
 
-Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Akce v tomto případě je pro Azure AD B2C ke komunikaci s účtem Google k získání tokenu.
+Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce je v tomto případě určena pro Azure AD B2C ke komunikaci s účtem Google pro příjem tokenu.
 
-1. Najít **OrchestrationStep** , který obsahuje `Order="2"` v cestě uživatele.
-2. Přidejte následující **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro element **TargetClaimsExchangeId**:
+1. Najděte **OrchestrationStep** , který obsahuje `Order="2"` cestu k uživateli.
+2. Přidejte následující prvek **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro **TargetClaimsExchangeId**:
 
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
     ```
 
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** ID technického profilu, který jste vytvořili dříve. Například, `Google-OAuth`.
+    Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. Například, `Google-OAuth`.
 
-3. Uložit *TrustFrameworkExtensions.xml* souboru a nahrajte ji znovu pro ověření.
+3. Uložte soubor *TrustFrameworkExtensions. XML* a znovu ho nahrajte k ověření.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
-Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
+Komunikace se službou Azure AD B2C probíhá prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. V této části jsou uvedeny volitelné kroky, které můžete provést, chcete-li vytvořit testovací aplikaci, pokud jste tak již neučinili.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
-3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **aplikací**a pak vyberte **přidat**.
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte **adresář a filtr** předplatného a zvolte adresář, který obsahuje vašeho tenanta.
+3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **aplikace**a pak vyberte **Přidat**.
 5. Zadejte název aplikace, například *testapp1*.
-6. Pro **webová aplikace / webové rozhraní API**vyberte `Yes`a pak zadejte `https://jwt.ms` pro **adresy URL odpovědi**.
+6. Pro **webovou aplikaci nebo webové rozhraní API**vyberte `Yes`a zadejte `https://jwt.ms` **adresu URL odpovědi**.
 7. Klikněte na možnost **Vytvořit**.
 
-## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a předávající strany soubor testu
+## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a testování souboru předávající strany
 
-Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, který jste vytvořili.
+Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
 
-1. Vytvořte kopii *SignUpOrSignIn.xml* ve svém pracovním adresáři a přejmenujte jej. Například přejmenujte ho na *SignUpSignInGoogle.xml*.
-2. Otevřete nový soubor a aktualizujte hodnotu **PolicyId** atributu **TrustFrameworkPolicy** s jedinečnou hodnotu. Například, `SignUpSignInGoogle`.
-3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například`http://contoso.com/B2C_1A_signup_signin_google`
-4. Aktualizujte hodnotu **ReferenceId** atribut **DefaultUserJourney** tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpSignGoogle).
-5. Uložte provedené změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
-6. Ujistěte se, že je vybraná aplikaci Azure AD B2C, kterou jste vytvořili v **vyberte aplikaci** pole a pak ho otestujte kliknutím **spustit nyní**.
+1. Vytvořte kopii *SignUpOrSignIn. XML* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInGoogle. XML*.
+2. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například, `SignUpSignInGoogle`.
+3. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_google`
+4. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID nové cesty uživatele, kterou jste vytvořili (SignUpSignGoogle).
+5. Uložte změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
+6. Ujistěte se, že je vybrána možnost Azure AD B2C aplikace, kterou jste vytvořili v poli **Vybrat aplikaci** , a poté ji otestujte kliknutím na tlačítko **Spustit nyní**.

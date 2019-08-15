@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: 16ed52aa2b56a97469ae8fc47299f09593b19c45
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: d6a0fec6e2efbd943a9b240df0db2c270a1b7e45
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668348"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955574"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
@@ -71,7 +71,7 @@ Děkujeme, že jste si vytvořili účet na partnerském centru. Teď přejdete 
 
 Pokud jste svůj účet migrovali z [portál partnerů cloudu (CPP)](https://cloudpartner.azure.com), nemusíte vytvářet nový účet partnerského centra, ale přizpůsobili jste mu přizpůsobený odkaz na nový účet partnerského centra prostřednictvím e-mailu a v oznámení banneru zobrazené po Přihlaste se ke stávajícímu účtu CPP.
 
-Po povolení nového účtu partnerského centra na základě tohoto přizpůsobeného odkazu se můžete vrátit ke svému účtu na [řídicím panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/) v partnerském centru.
+Po povolení nového účtu partnerského centra na základě tohoto přizpůsobeného odkazu se můžete vrátit ke svému účtu na [řídicím panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) v partnerském centru.
 
 Informace o smlouvě o publikování a profilu společnosti budou migrovány na nový účet partnerského centra spolu s dříve nastavenými informacemi o profilu výběr účtu, uživatelskými účty a oprávněními a aktivními nabídkami přidruženými k vašemu účtu CPP. 
 

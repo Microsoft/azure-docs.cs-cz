@@ -4,17 +4,17 @@ description: Souhrn Azure Time Series Insights funkcí žádosti o zákaznická 
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.date: 05/08/2019
+ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: a67e716300254b7ae73cf5c608e4ab9177638456
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3437634ff70371f9679423149b6996a099c044b5
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677902"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950731"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
 

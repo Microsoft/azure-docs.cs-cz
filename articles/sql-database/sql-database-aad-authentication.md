@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: eb49649e9c92416fc674c032b9dc6a613a34dd77
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b99dbd403de0de948527fbe74b7e1205316822c0
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569667"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019683"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Pro ověřování pomocí SQL použít Azure Active Directory ověřování
 
@@ -98,7 +98,7 @@ Chcete-li vytvořit uživatele databáze s omezením v Azure SQL Database, sprav
   - `SUSER_ID(<admin name>)`
   - `SUSER_SID(<admin name>)`
 
-### <a name="manage-instances"></a>Spravovat instance
+### <a name="managed-instances"></a>Spravované instance
 
 - Objekty zabezpečení serveru Azure AD (přihlášení) a uživatelé se podporují jako funkce verze Preview pro [spravované instance](sql-database-managed-instance.md).
 - Nastavení objektů zabezpečení serveru Azure AD (přihlášení) mapovaných na skupinu Azure AD, protože vlastník databáze není ve spravovaných [instancích](sql-database-managed-instance.md)podporován.

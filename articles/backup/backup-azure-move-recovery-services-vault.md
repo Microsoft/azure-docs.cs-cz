@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: c78a0a001e617b4db50f717fdf58f91a53d7fe10
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6ca07a6ba96aa271241271dcba264c1ea2ceefbb
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735530"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018810"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -112,7 +112,7 @@ Můžete přesunout Recovery Services trezor a jeho přidružené prostředky do
 
 Pokud chcete přesunout Recovery Services trezor do jiné skupiny prostředků, použijte `Move-AzureRMResource` rutinu. `Move-AzureRMResource`vyžaduje název prostředku a typ prostředku. Z `Get-AzureRmRecoveryServicesVault` rutiny můžete získat obojí.
 
-```
+```powershell
 $destinationRG = "<destinationResourceGroupName>"
 $vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
 Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
@@ -120,7 +120,7 @@ Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $v
 
 Chcete-li přesunout prostředky do jiného předplatného `-DestinationSubscriptionId` , zahrňte parametr.
 
-```
+```powershell
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
@@ -130,7 +130,7 @@ Po provedení výše uvedených rutin budete požádáni o potvrzení, že chcet
 
 Pokud chcete přesunout Recovery Services trezor do jiné skupiny prostředků, použijte tuto rutinu:
 
-```
+```azurecli
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 62f73f17d598cb2a22ef57d3ec0bcf91b8852298
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 77f04b9688be2a7b7343bac05b24a3fcd4e0fcde
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728794"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019706"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informace o sítích Azure pro síťové služby MSP
 
@@ -24,9 +24,11 @@ Azure Networking účastníci programu MSP jsou specializovaná sada poskytovate
 
 Zákazníci si můžou koupit služby spravované MSP v Azure Marketplace nebo přímo z MSP. Účastníci programu MSP může nasadit a spravovat síťové prostředky Azure v předplatných zákazníků a skupinách prostředků pomocí Azure Lighthouse.
 
-## <a name="msp"></a>Partneři MSP
+## <a name="msp"></a>Partneři Azure Networking MSP
 
 Odkazy v této části použijte, pokud chcete získat další informace o službách spravovaného cloudu, které nabízejí partneři Azure sítě MSP. Pokud Váš partner cloudových síťových služeb není uveden v níže uvedené části, obraťte se na nás poskytovatele. Můžou nás kontaktovat odesláním e-mailu ManagedVirtualWAN@microsoft.comna adresu. 
+
+[Skupina ANS UK](https://www.ans.co.uk/)
 
 [Aryaka Networks sítě](https://www.aryaka.com/)
 
@@ -43,6 +45,8 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 [ixreach](https://www.ixreach.com/)
 
 [Megaport](https://www.megaport.com/)
+
+[Cloud Services v jádru]( https://www.oncore.cloud/services/ue-for-expressroute/)
 
 [Tata komunikace](https://www.tatacommunications.com/)
 

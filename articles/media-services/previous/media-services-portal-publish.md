@@ -1,6 +1,6 @@
 ---
-title: Publikovat obsah na webu Azure Portal | Dokumentace Microsoftu
-description: Tento kurz vás provede kroky k publikování obsahu na webu Azure Portal.
+title: Publikování obsahu v Azure Portal | Microsoft Docs
+description: Tento kurz vás provede jednotlivými kroky publikování obsahu v Azure Portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 2639d47a6c9d8da53c9d6bccde0d317698d5d9fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f242018abfb15cea1b76cbcaad00942ec25d78d
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61127843"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69015065"
 ---
-# <a name="publish-content-in-the-azure-portal"></a>Publikovat obsah na webu Azure Portal  
+# <a name="publish-content-in-the-azure-portal"></a>Publikování obsahu v Azure Portal  
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -35,9 +35,9 @@ ms.locfileid: "61127843"
 > 
 > 
 
-Pokud chcete uživatelům poskytnout adresu URL, kterou můžou použít ke streamování nebo stažení vašeho obsahu, musíte prostředek nejprve publikovat vytvořením lokátoru. Lokátory zajišťují přístup k souborů prostředků. Služba Azure Media Services podporuje dva typy lokátorů: 
+Pokud chcete uživatelům poskytnout adresu URL, kterou můžou použít ke streamování nebo stažení vašeho obsahu, musíte prostředek nejprve publikovat vytvořením lokátoru. Lokátory poskytují přístup k souborům assetů. Služba Azure Media Services podporuje dva typy lokátorů: 
 
-* **Lokátory streamování (OnDemandOrigin)** . Lokátory streamování se používají pro adaptivní streamování. Mezi příklady adaptivního streamování patří Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming a dynamické adaptivní streamování přes protokol HTTP (DASH, také nazývané MPEG-DASH). Pokud chcete vytvořit lokátor streamování, váš prostředek musí obsahovat soubor .ism. Například, http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
+* **Lokátory streamování (OnDemandOrigin)** . Lokátory streamování se používají pro adaptivní streamování. Mezi příklady adaptivního streamování patří Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming a dynamické adaptivní streamování přes protokol HTTP (POMLČKa, označovaná také jako MPEG-POMLČKa). Pokud chcete vytvořit lokátor streamování, váš prostředek musí obsahovat soubor .ism. Například, http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
 * **Progresivní lokátory (sdílený přístupový podpis)** . Progresivní lokátory se používají k doručování videa přes progresivní stahování.
 
 Pokud chcete vytvořit adresu URL streamování HLS, připojte na konec adresy *(format=m3u8-aapl)* :
@@ -56,14 +56,14 @@ Adresa URL sdíleného přístupového podpisu má následující formát:
 
     {blob container name}/{asset name}/{file name}/{shared access signature}
 
-Další informace najdete v tématu [doručování obsahu – přehled](media-services-deliver-content-overview.md).
+Další informace najdete v tématu [Přehled doručování obsahu](media-services-deliver-content-overview.md).
 
 > [!NOTE]
 > Lokátory vytvořené na webu Azure Portal před březnem 2015 mají datum vypršení platnosti dva roky.  
 > 
 > 
 
-Chcete-li aktualizovat datum vypršení platnosti lokátoru, použijte použít [rozhraní REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) nebo [rozhraní .NET API](https://go.microsoft.com/fwlink/?LinkID=533259). 
+Chcete-li aktualizovat datum vypršení platnosti lokátoru, použijte možnost použít [REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) nebo rozhraní [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259). 
 
 > [!NOTE]
 > Při aktualizaci data vypršení platnosti lokátoru sdíleného přístupového podpisu se změní adresa URL.
@@ -89,8 +89,8 @@ Vyberte video a pak vyberte tlačítko **Přehrát**.
 Musí být splněny určité předpoklady:
 
 * Zkontrolujte, že bylo video publikováno.
-* Přehrávač médií na webu Azure Portal přehrává z výchozího koncového bodu streamování. Pokud chcete přehrávat z jiného než výchozího koncového bodu streamování, vyberte a zkopírujte adresu URL a vložte ji do jiného přehrávače. Video můžete otestovat například v [Přehrávači médií Azure](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
-* Koncový bod streamování, ze kterého jsou datové proudy musí být spuštěna.  
+* Přehrávač médií na webu Azure Portal přehrává z výchozího koncového bodu streamování. Pokud chcete přehrávat z jiného než výchozího koncového bodu streamování, vyberte a zkopírujte adresu URL a vložte ji do jiného přehrávače. Video můžete otestovat například v [Přehrávači médií Azure](https://aka.ms/azuremediaplayer).
+* Koncový bod streamování, ze kterého se streamuje, musí být spuštěný.  
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

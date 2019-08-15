@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: d1ad89943f6acfec6e42199ef399643be12e2b8b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856216"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946394"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Enterprise Security for Azure Machine Learning Service
 
 V tomto článku se dozvíte o funkcích zabezpečení dostupných ve službě Azure Machine Learning.
 
-Při použití cloudové služby je osvědčeným postupem omezit přístup jenom na uživatele, kteří ho potřebují. Tím se zahájí porozumění modelu ověřování a autorizace používaného službou. Můžete taky chtít omezit přístup k síti nebo bezpečně spojit prostředky v místní síti s nástroji v cloudu. Šifrování dat je také důležité v klidovém režimu i při přesunu dat mezi službami. Nakonec musíte být schopni sledovat službu a vystavit protokol auditu pro všechny aktivity.
+Při použití cloudové služby je osvědčeným postupem omezit přístup jenom na uživatele, kteří ho potřebují. Tím se zahájí porozumění modelu ověřování a autorizace používaného službou. Můžete taky chtít omezit přístup k síti nebo bezpečně spojit prostředky v místní síti s cloudem. Šifrování dat je také důležité v klidovém režimu i při přesunu dat mezi službami. Nakonec musíte být schopni sledovat službu a vystavit protokol auditu pro všechny aktivity.
 
 ## <a name="authentication"></a>Ověřování
 
@@ -29,7 +29,7 @@ Multi-Factor Authentication se podporuje, pokud je Azure Active Directory (Azure
 
 * Klient se do Azure AD přihlásí a získá token Azure Resource Manager.  Uživatelé a instanční objekty jsou plně podporované.
 * Klient prezentuje token Azure Resource Manager & všechny Azure Machine Learning služby.
-* Služba Azure Machine Learning poskytuje výpočetnímu prostředí pro uživatele Azure Machine Learning token. Například Výpočetní prostředky služby Machine Learning. Tento Azure Machine Learning token používá výpočetní výkon pro volání zpět do služby Azure Machine Learning (omezení oboru do pracovního prostoru) po dokončení spuštění.
+* Služba Azure Machine Learning poskytuje výpočetnímu prostředí pro uživatele Azure Machine Learning token. Například Výpočetní prostředky služby Machine Learning. Tento token používá výpočetní uživatel k volání služby Azure Machine Learning (omezení oboru do pracovního prostoru) po dokončení spuštění.
 
 ![Snímek obrazovky ukazující, jak ověřování funguje ve službě Azure Machine Learning](./media/enterprise-readiness/authentication.png)
 
@@ -151,7 +151,7 @@ Informace o opětovném generování přístupových klíčů pro účty úloži
 
 #### <a name="cosmos-db"></a>Databáze Cosmos
 
-Služba Azure Machine Learning ukládá metriky a metadata do Cosmos DB, která bydlí v předplatném Microsoftu spravovaném službou Azure Machine Learning. Všechna data uložená v Cosmos DB jsou v klidovém stavu zašifrovaná pomocí spravovaných klíčů Microsoftu.
+Služba Azure Machine Learning ukládá metriky a metadata do Cosmos DB, která bydlí v předplatném Microsoftu spravovaném službou Azure Machine Learning. Všechna data uložená v Cosmos DB jsou v klidovém stavu zašifrovaná pomocí klíčů spravovaných Microsoftem.
 
 #### <a name="azure-container-registry-acr"></a>Azure Container Registry (ACR)
 
@@ -159,8 +159,8 @@ Všechny Image kontejneru v registru (ACR) jsou v klidovém stavu šifrované. A
 
 #### <a name="machine-learning-compute"></a>Výpočetní prostředky služby Machine Learning
 
-Disk s operačním systémem pro každý výpočetní uzel je uložený v Azure Storage je zašifrovaný pomocí spravovaných klíčů Microsoftu v Azure Machine Learning účty úložiště služby. Toto výpočetní prostředí je dočasné a clustery se obvykle škálují, když nejsou ve frontě žádné běhy. Základní virtuální počítač je nezřízený a disk s operačním systémem se odstranil. Pro disk s operačním systémem se nepodporuje Azure Disk Encryption.
-Každý virtuální počítač má také místní dočasný disk pro operace s operačním systémem. Tento disk můžete také volitelně použít k přípravě školicích dat. Tento disk není zašifrovaný.
+Disk s operačním systémem pro každý výpočetní uzel je uložený v Azure Storage je šifrovaný pomocí klíčů spravovaných Microsoftem v účtech úložiště služby Azure Machine Learning. Tento cílový výpočetní výkon je dočasný a clustery se obvykle škálují, když nejsou ve frontě žádné běhy. Základní virtuální počítač je nezřízený a disk s operačním systémem se odstranil. Pro disk s operačním systémem se nepodporuje Azure Disk Encryption.
+Každý virtuální počítač má také místní dočasný disk pro operace s operačním systémem. Disk můžete také volitelně použít k přípravě školicích dat. Disk není zašifrovaný.
 Další informace o tom, jak šifrování v klidovém umístění funguje v Azure, najdete v tématu [šifrování dat Azure v klidovém umístění](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 ### <a name="encryption-in-transit"></a>Šifrování při přenosu
@@ -199,7 +199,12 @@ Na následujícím snímku obrazovky vidíte protokol aktivit pro pracovní pros
 
 ![Snímek obrazovky zobrazující protokol aktivit v pracovním prostoru](./media/enterprise-readiness/workspace-activity-log.png)
 
-Podrobnosti žádosti o bodování se ukládají do AppInsights, který se vytvoří v předplatném uživatele při vytváření pracovního prostoru. To zahrnuje pole jako HTTPMethod, UserAgent, ComputeType, RequestUrl, StatusCode, RequestId, Duration atd.
+Podrobnosti žádosti o vyhodnocování jsou uložené v Application Insights, který se vytvoří v předplatném uživatele při vytváření pracovního prostoru. Protokolované informace obsahují pole jako HTTPMethod, UserAgent, ComputeType, RequestUrl, StatusCode, RequestId, Duration atd.
+
+> [!IMPORTANT]
+> Některé akce v pracovním prostoru Azure Machine Learning neprotokolují informace do protokolu aktivit. Například spuštění školení nebo registrace modelu.
+>
+> Některé z těchto akcí se zobrazí v oblasti __aktivity__ pracovního prostoru, ale nenaznačují, kdo aktivitu inicioval.
 
 ## <a name="data-flow-diagram"></a>Diagram toku dat
 
@@ -220,7 +225,7 @@ Další výpočetní prostředky připojené k pracovnímu prostoru (služba Azu
 ### <a name="save-source-code-training-scripts"></a>Uložit zdrojový kód (školicí skripty)
 
 Následující diagram znázorňuje pracovní postup snímku kódu.
-Přidruženo k pracovnímu prostoru služby Azure Machine Learning jsou adresáře (experimenty), které obsahují zdrojový kód (školicí skripty).  Jsou uložené v místním počítači zákazníka a v cloudu (v Azure Blob Storage v rámci předplatného zákazníka). Tyto snímky kódu se používají ke spuštění nebo kontrole historických auditů.
+Přidruženo k pracovnímu prostoru služby Azure Machine Learning jsou adresáře (experimenty), které obsahují zdrojový kód (školicí skripty).  Tyto skripty se ukládají v místním počítači zákazníka a v cloudu (v Azure Blob Storage v rámci předplatného zákazníka). Snímky kódu se používají ke spuštění nebo kontrole historických auditů.
 
 ![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/code-snapshot.png)
 
@@ -233,12 +238,12 @@ Následující diagram znázorňuje pracovní postup školení.
 * Můžete vybrat buď spravovaný výpočetní výkon (např. Výpočetní prostředky služby Machine Learning) nebo nespravovaný výpočetní výkon (např. VM) pro spuštění školicích úloh. Tok dat je vysvětlen pro následující scénáře:
 * (Virtuální počítač/HDInsight – přístup pomocí přihlašovacích údajů SSH v Key Vault v předplatném Microsoftu) Služba Azure Machine Learning spouští kód pro správu na výpočetním cíli, který:
 
-   1. Připraví prostředí. (Docker je také možnost pro virtuální počítače a místní. Pokud chcete zjistit, jak funguje experiment na kontejneru Docker, přečtěte si následující postup Výpočetní prostředky služby Machine Learning.)
+   1. Připraví prostředí. (Docker je možnost pro virtuální počítače i místní. Pokud chcete zjistit, jak funguje experiment na kontejneru Docker, přečtěte si následující postup Výpočetní prostředky služby Machine Learning.)
    1. Stáhne kód.
    1. Nastaví proměnné prostředí a konfigurace.
    1. Spustí skript uživatele (výše uvedený snímek kódu).
 
-* (Výpočetní prostředky služby Machine Learning – k němuž se přistupovalo pomocí spravované identity v pracovním prostoru) Vzhledem k tomu, že Výpočetní prostředky služby Machine Learning je spravovaný výpočetní výkon, je spravován Microsoftem v důsledku toho, že se spustí v rámci předplatného společnosti Microsoft.
+* (Výpočetní prostředky služby Machine Learning – k dispozici pomocí identity spravované v pracovním prostoru) Vzhledem k tomu, že Výpočetní prostředky služby Machine Learning je spravovaný výpočetní výkon, je spravovaný Microsoftem v důsledku toho, že se spustí v rámci předplatného společnosti Microsoft.
 
    1. V případě potřeby se spustí konstrukce vzdáleného Docker.
    1. Zapisuje kód správy do uživatelské sdílené složky Azure.
@@ -259,12 +264,12 @@ Podívejte se na podrobnosti níže:
 * Uživatel vytvoří obrázek pomocí modelu, souboru skóre a dalších závislostí modelu.
 * Image Docker se vytvoří a uloží v ACR.
 * Služba WebService je nasazená do cíle služby COMPUTE (ACI/AKS) pomocí image vytvořené výše.
-* Podrobnosti žádosti o vyhodnocování se ukládají do AppInsights, který je v předplatném uživatele.
+* Podrobnosti žádosti o vyhodnocování jsou uložené v Application Insights, který je v předplatném uživatele.
 * Telemetrie se taky vloží do předplatného Microsoft/Azure.
 
 ![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/inferencing.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
 * [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)

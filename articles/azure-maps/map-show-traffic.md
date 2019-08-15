@@ -1,6 +1,6 @@
 ---
 title: Zobrazit provoz s Azure Maps | Microsoft Docs
-description: Jak zobrazit data o přenosech na mapě JavaScriptu
+description: Jak zobrazit data o provozu na Azure Maps webové sadě SDK.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,42 +9,67 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 55bfc434082b2d5b7de193e969fc34f710657cdb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 145e2246703441a08868c8aae311573e95d4de42
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638627"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976436"
 ---
 # <a name="show-traffic-on-the-map"></a>Zobrazit provoz na mapě
 
-V tomto článku se dozvíte, jak zobrazit informace o provozu a incidentech na mapě.
+V Azure Maps jsou k dispozici dva typy dat přenosů:
 
-## <a name="understand-the-code"></a>Vysvětlení kódu
+- Data o incidentech – skládají se z bodů a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody.
+- Data toku – poskytuje metriky toku provozu na cestách. Data toku přenosů se často používají k obarvení cest na základě toho, kolik přenosů zpomaluje tok vzhledem k limitu rychlosti nebo jiné metriky. Data toku provozu v Azure Maps mají tři různé metriky měření:
+    - `relative`– je relativní vzhledem k rychlosti volného toku provozu.
+    - `absolute`– je absolutní rychlost všech vozidel na cestách.
+    - `relative-delay`-Zobrazí oblasti, které jsou pomalejší než průměrná očekávaná prodleva.
 
-<iframe height='456' scrolling='no' title='Zobrazení provozu na mapě' src='//codepen.io/azuremaps/embed/WMLRPw/?height=456&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Zobrazit provoz na mapě</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+Následující kód ukazuje, jak zobrazit data o přenosech na mapě.
+
+```javascript
+//Show traffic on the map using the traffic options.
+map.setTraffic({
+    incidents: true,
+    flow: 'relative'
+});
+```
+
+Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Zobrazení provozu na mapě' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Zobrazit provoz na mapě</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy. Pokyny najdete v tématu [vytvoření mapy](map-create.md) .
+## <a name="traffic-overlay-options"></a>Možnosti překrytí provozu
 
-Druhý blok kódu používá funkci [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) v rámci funkce [naslouchacího procesu naslouchacího](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) prvku mapy k vykreslování přenosových toků a incidentů na mapě.
+Následující nástroj umožňuje přepínat mezi různými nastaveními překryvu provozu, abyste viděli, jak se vykreslování mění. 
+
+<br/>
+
+<iframe height="700" style="width: 100%;" scrolling="no" title="Možnosti překrytí provozu" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Projděte si <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>Možnosti překrytí provozu</a> perem<a href='https://codepen.io/azuremaps'>@azuremaps</a>podle Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-
-Úplné ukázky kódu najdete v následujících článcích:
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Stránka ukázka kódu](https://aka.ms/AzureMapsSamples)
+> [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)
 
 Vylepšete uživatelské prostředí:
 
 > [!div class="nextstepaction"]
-> [Mapování interakce s událostmi myši](./map-events.md)
+> [Mapování interakce s událostmi myši](map-events.md)
 
 > [!div class="nextstepaction"]
-> [Sestavení přístupné mapy](./map-accessibility.md)
+> [Sestavení přístupné mapy](map-accessibility.md)
+
+> [!div class="nextstepaction"]
+> [Stránka ukázka kódu](https://aka.ms/AzureMapsSamples)

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4d002a82e3968e0462e5f6e775ec147669c01b0d
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 448d416ce4915aeae048639f6021197ed8c1d334
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147953"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967879"
 ---
 # <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
 
@@ -41,9 +41,9 @@ Pro přípravu pevných disků pomocí nástroje WAImportExport následující *
 
 Služba Import/Export Azure podporuje následující typy účtů úložiště:
 
-- Účty úložiště standard pro obecné účely v2 (doporučeno pro většinu scénářů)
+- Účty úložiště Standard Pro obecné účely v2 (doporučeno pro většinu scénářů)
 - Účty služby Blob Storage
-- Obecné účely v1 úložiště účtů (nasazení Classic nebo Azure Resource Manageru), 
+- Účty úložiště Pro obecné účely V1 (nasazení Classic nebo Azure Resource Manager), 
 
 Další informace o účtech úložiště najdete v tématu [účtů úložiště Azure, přehled](storage-account-overview.md).
 
@@ -72,11 +72,15 @@ Pro službu Azure Import/Export potřebujete podporované disky kopírovat data.
 Následující seznam disků se podporuje pro použití se službou Import/Export.
 
 
-|Typ disku  |Velikost  |Podporováno |Nepodporuje se  |
-|---------|---------|---------|---------|
-|SSD    |   2,5"      |SATA III          |  USB       |
-|HDD     |  2,5"<br>3,5"       |II SATA, SATA III         |Externí pevný disk s integrovanou adaptéru USB <br> Disk v použití malých a velkých externí pevný disk         |
+|Typ disku  |Velikost  |Podporováno |
+|---------|---------|---------|
+|SSD    |   2,5"      |SATA III          | 
+|HDD     |  2,5"<br>3,5"       |II SATA, SATA III         |
 
+Následující typy disků nejsou podporovány:
+- USBs.
+- Externí HDD s integrovaným adaptérem USB
+- Disky, které se nacházejí v malých a velkých jednotkách externího pevného disku.
 
 Úloha importu/exportu jedné může mít:
 - Maximálně 10 pevný disk nebo disky SSD.

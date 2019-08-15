@@ -1,6 +1,6 @@
 ---
-title: Monitorování řešení ve službě Azure Monitor | Dokumentace Microsoftu
-description: Monitorování řešení ve službě Azure Monitor jsou kolekce logiku, vizualizaci, pravidel a získávání dat, které poskytují metriky zaměřené na oblast konkrétního problému.  Tento článek obsahuje informace o instalaci a používání řešení monitorování.
+title: Monitorování řešení v Azure Monitor | Microsoft Docs
+description: Řešení monitorování v Azure Monitor jsou kolekce pravidel pro logiku, vizualizaci a získávání dat, která poskytují metriky v určité oblasti problému.  Tento článek poskytuje informace o instalaci a používání řešení monitorování.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,29 +11,29 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: b66d9cf15aaeaca975b60f24601b8ad7f555f458
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6932f9f302bf1816842d78a662f01ebaafed8686
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110153"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989212"
 ---
-# <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení ve službě Azure Monitor
-Řešení monitorování využití služeb v Azure a poskytuje další informace o provozu určitá aplikace nebo služby. Tento článek poskytuje stručný přehled monitorování řešení v Azure a podrobnosti o používání a jejich instalace.
+# <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení v Azure Monitor
+Monitorování řešení využívajících služby v Azure poskytují další přehled o provozu konkrétní aplikace nebo služby. Tento článek poskytuje stručný přehled řešení monitorování v Azure a podrobnosti o jejich používání a instalaci.
 
 > [!NOTE]
-> Řešení monitorování bylo dříve označované jako řešení pro správu.
+> Řešení monitorování se dřív odkazovala na řešení správy.
 
-Monitorování řešení obvykle shromažďovat data protokolu a poskytují dotazů a zobrazení pro analýzy shromážděných dat. Může využít i jiné služby, jako je Azure Automation k provedení akce související s aplikací nebo službou.
+Řešení monitorování obvykle shromažďují data protokolu a poskytují dotazy a zobrazení k analýze shromážděných dat. Může využít i jiné služby, jako je Azure Automation k provedení akce související s aplikací nebo službou.
 
-Monitorování řešení můžete přidat do Azure monitoru pro všechny aplikace a služby, které používáte. Jsou obvykle dostupné v žádné náklady, ale shromažďovat data, která může vyvolat poplatky za využívání. Kromě řešení od Microsoftu, partneři a zákazníci můžou [vytvořte řešení pro správu](solutions-creating.md) k použití ve svém vlastním prostředí nebo k dispozici zákazníkům prostřednictvím komunity.
+Můžete přidat řešení monitorování Azure Monitor pro všechny aplikace a služby, které používáte. Jsou obvykle dostupné v žádné náklady, ale shromažďovat data, která může vyvolat poplatky za využívání. Kromě řešení od Microsoftu, partneři a zákazníci můžou [vytvořte řešení pro správu](solutions-creating.md) k použití ve svém vlastním prostředí nebo k dispozici zákazníkům prostřednictvím komunity.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="use-monitoring-solutions"></a>Použití řešení monitorování
-Otevřít **přehled** stránky ve službě Azure Monitor k zobrazení dlaždice pro každé řešení v pracovním prostoru nainstalovaná. 
+Otevřete stránku **Přehled** v Azure monitor pro zobrazení dlaždice pro každé nainstalované řešení v pracovním prostoru. 
 
 1. Přihlaste se k webu Azure Portal.
 1. Otevřít **všechny služby** a vyhledejte **monitorování**.
@@ -43,14 +43,14 @@ Otevřít **přehled** stránky ve službě Azure Monitor k zobrazení dlaždice
 
 ![Přehled](media/solutions/overview.png)
 
-Monitorování řešení může obsahovat více typů prostředků Azure a můžete zobrazit všechny prostředky získané s řešením, stejně jako jiný prostředek. Například všechny dotazy log zahrnutý v řešení jsou uvedeny v části **řešení dotazy** v [Průzkumníka dotazů](../log-query/get-started-portal.md#load-queries) tyto dotazy můžete použít při provádění analýz ad hoc s [protokolu dotazy ](../log-query/log-query-overview.md).
+Řešení monitorování mohou obsahovat více typů prostředků Azure a můžete si Zobrazit všechny prostředky, které jsou součástí řešení, stejně jako všechny ostatní prostředky. Například všechny dotazy protokolu zahrnuté v řešení jsou uvedeny v části **dotazy řešení** v [Průzkumníku dotazů](../log-query/get-started-portal.md#load-queries) . Tyto dotazy můžete použít při provádění analýzy ad hoc pomocí [dotazů protokolu](../log-query/log-query-overview.md).
 
-## <a name="list-installed-monitoring-solutions"></a>Vypsání seznamu instalovaných řešení monitorování 
-Seznam řešení monitorování, které jsou nainstalovány ve vašem předplatném pomocí následujícího postupu.
+## <a name="list-installed-monitoring-solutions"></a>Výpis nainstalovaných řešení monitorování 
+Pomocí následujícího postupu můžete zobrazit seznam řešení monitorování nainstalovaných ve vašem předplatném.
 
 1. Přihlaste se k webu Azure Portal.
 1. Otevřít **všechny služby** a vyhledejte **řešení**.
-4. Řešení, které jsou nainstalovány ve všech pracovních prostorů jsou uvedeny. Název řešení následuje název pracovního prostoru, který je nainstalován ve.
+4. Řešení, které jsou nainstalovány ve všech pracovních prostorů jsou uvedeny. Za názvem řešení následuje název pracovního prostoru, ve kterém je nainstalovaný.
 1. Pomocí pole rozevíracího seznamu v horní části obrazovky můžete filtrovat podle předplatného nebo skupiny prostředků.
 
 
@@ -62,14 +62,14 @@ Klikněte na název řešení, otevřete její souhrnnou stránku. Tato stránka
 
 
 
-## <a name="install-a-monitoring-solution"></a>Nainstalujte řešení monitorování
-Monitorování řešení od Microsoftu a partnerů, jsou k dispozici [Azure Marketplace](https://azuremarketplace.microsoft.com). Můžete vyhledat dostupná řešení a nainstalujte je pomocí následujícího postupu. Při instalaci řešení, musíte vybrat [pracovní prostor Log Analytics](../platform/manage-access.md) nainstalovanou řešení a kde budou shromažďovány svá data.
+## <a name="install-a-monitoring-solution"></a>Instalace řešení monitorování
+Řešení monitorování od Microsoftu a partnerů jsou k dispozici na [Azure Marketplace](https://azuremarketplace.microsoft.com). Můžete vyhledat dostupná řešení a nainstalujte je pomocí následujícího postupu. Při instalaci řešení, musíte vybrat [pracovní prostor Log Analytics](../platform/manage-access.md) nainstalovanou řešení a kde budou shromažďovány svá data.
 
-1. Z [seznam řešení pro vaše předplatné](#list-installed-monitoring-solutions), klikněte na tlačítko **přidat**. 
-1. Napravo od **řešení pro správu**, klikněte na tlačítko **Další**. 
-1. Vyhledejte řešení monitorování vám vyhovuje a přečtěte si její popis.
+1. Z [seznam řešení pro vaše předplatné](#list-installed-monitoring-solutions), klikněte na tlačítko **přidat**.
+1. Vyhledejte řešení nebo ho vyhledejte. Řešení můžete také procházet pomocí [tohoto odkazu pro hledání](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions).
+1. Vyhledejte řešení monitorování, které chcete, a přečtěte si jeho popis.
 1. Klikněte na tlačítko **vytvořit** spustit proces instalace.
-1. Při spuštění procesu instalace budete vyzváni k poskytnutí požadované konfigurace, které se liší pro každé řešení.
+1. Po spuštění procesu instalace budete vyzváni k zadání pracovního prostoru Log Analytics a k poskytnutí požadované konfigurace pro řešení.
 
 ![Instalace řešení](media/solutions/install-solution.png)
 
@@ -86,7 +86,7 @@ Monitorování řešení od Microsoftu a partnerů, jsou k dispozici [Azure Mark
 
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Pracovní prostor log Analytics a účet služby Automation
-Všechna řešení pro monitorování vyžadovat [pracovní prostor Log Analytics](../platform/manage-access.md) ukládat data shromážděná tímto řešením a k hostování jeho prohledávání protokolů a zobrazení. Některá řešení také vyžadovat [účtu Automation](../../automation/automation-security-overview.md#automation-account-overview) tak, aby obsahovala sady runbook a související prostředky. Pracovní prostor a účet, musí splňovat následující požadavky.
+Všechna řešení monitorování vyžadují [Log Analytics pracovní prostor](../platform/manage-access.md) k ukládání dat shromažďovaných řešením a k hostování jeho prohledávání a zobrazení protokolů. Některá řešení také vyžadovat [účtu Automation](../../automation/automation-security-overview.md#automation-account-overview) tak, aby obsahovala sady runbook a související prostředky. Pracovní prostor a účet, musí splňovat následující požadavky.
 
 * Každou instalaci řešení lze použít pouze jeden pracovní prostor Log Analytics a jeden účet služby Automation. Řešení můžete nainstalovat samostatně do několika pracovních prostorů.
 * Pokud řešení vyžaduje účet Automation, pak pracovní prostor Log Analytics a účet Automation musí být vzájemně propojený. Pracovní prostor Log Analytics může propojit jen do jednoho účtu Automation a účet Automation, které můžou být propojené jenom k jednomu pracovnímu prostoru Log Analytics.
@@ -105,11 +105,11 @@ Propojení pracovního prostoru Log Analytics a účet Automation pomocí násle
 1. Přejděte **související prostředky** části nabídky.
 1. Pokud **pracovní prostor** nastavení povolené, pak tento účet je propojený s pracovním prostorem Log Analytics. Můžete kliknout na **pracovní prostor** zobrazíte podrobnosti o pracovním prostoru.
 
-## <a name="remove-a-monitoring-solution"></a>Odebrat řešení monitorování
+## <a name="remove-a-monitoring-solution"></a>Odebrání řešení monitorování
 Odebrání nainstalované řešení, vyhledejte ho [seznam nainstalovaných řešení](#list-installed-monitoring-solutions). Klikněte na název řešení, otevřete jeho souhrnnou stránku a potom klikněte na **odstranit**.
 
 
 ## <a name="next-steps"></a>Další postup
-* Získání [seznam sledování řešení od Microsoftu](solutions-inventory.md).
-* Zjistěte, jak [vytvářet dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná službou sledování řešení.
+* Získejte [seznam řešení monitorování od Microsoftu](solutions-inventory.md).
+* Naučte se [vytvářet dotazy](../log-query/log-query-overview.md) k analýze dat shromažďovaných monitorovacími řešeními.
 

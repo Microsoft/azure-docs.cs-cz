@@ -2,18 +2,17 @@
 title: Vysvětlení kvót a omezení pro Azure IoT Hub | Microsoft Docs
 description: Příručka pro vývojáře – popis kvót, které platí pro IoT Hub a očekávané chování omezení.
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/17/2019
-ms.openlocfilehash: 1c19696b10584bc55989b9270978486d7f5aa157
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 08/08/2019
+ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326726"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950527"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -96,7 +95,8 @@ IoT Hub vynutila jiné provozní limity:
 | Nahrání souborů | 10 souběžných nahrávání souborů na zařízení. |
 | Úlohy<sup>1</sup> | Maximální počet souběžných úloh je 1 (pro Free a S1), 5 (pro S2) a 10 (pro S3). Maximální počet souběžných [úloh importu/exportu zařízení](iot-hub-bulk-identity-mgmt.md) je ale 1 pro všechny úrovně. <br/>Historie úlohy se uchovává až po dobu 30 dnů. |
 | Další koncové body | Placené rozbočovače SKU můžou mít 10 dalších koncových bodů. Rozbočovače volných SKU můžou mít jeden další koncový bod. |
-| Pravidla směrování zpráv | Placené rozbočovače SKU můžou mít 100 pravidla směrování. Rozbočovače volných SKU můžou mít pět pravidel směrování. |
+| Dotazy směrování zpráv | Placené rozbočovače SKU můžou mít 100 dotazů na směrování. Rozbočovače volných SKU můžou mít pět dotazů směrování. |
+| Obohacení zpráv | Placené rozbočovače SKU můžou mít až 10 rozšíření zpráv. Bezplatné rozbočovače SKU můžou mít až 2 rozšíření zpráv.|
 | Zasílání zpráv ze zařízení do cloudu | Maximální velikost zprávy 256 KB |
 | Zasílání zpráv z cloudu na zařízení<sup>1</sup> | Maximální velikost zprávy 64 KB. Maximální počet nevyřízených zpráv pro doručení je 50 na jedno zařízení. |
 | Přímá metoda<sup>1</sup> | Maximální velikost datové části přímé metody je 128 KB. |
@@ -122,7 +122,7 @@ Více jednotek IoT Hub ovlivňuje omezení popsané dříve, ale neposkytuje ž�
 
 Pokud se zobrazí neočekávaná zvýšení latence operace, obraťte se na [Podpora Microsoftu](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podrobné informace o chování omezení IoT Hub najdete v příspěvku na blogu [IoT Hub omezování a vás](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
 

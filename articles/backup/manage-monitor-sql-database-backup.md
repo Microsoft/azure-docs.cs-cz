@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827559"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019040"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a sledování zálohovaných SQL Server databází
 
@@ -92,9 +92,9 @@ Zastavení ochrany databáze:
 
 > [!NOTE]
 >
-Další informace o možnosti odstranit data najdete v následujících nejčastějších dotazech:
-* [Když odstraním databázi z autoprotected instance, co se stane se zálohami?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
-* [Když zabráním operaci zálohování funkce autoprotected Database, která bude její chování?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>Další informace o možnosti odstranit data najdete v následujících nejčastějších dotazech:
+>* [Když odstraním databázi z autoprotected instance, co se stane se zálohami?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>* [Když zabráním operaci zálohování funkce autoprotected Database, která bude její chování?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
 
@@ -145,7 +145,7 @@ Zrušení registrace instance SQL Server po zakázání ochrany, ale před odstr
 
 V některých případech může mít rozšíření úlohy na virtuálním počítači vliv na jeden důvod nebo na druhý. V takových případech se začnou zdařit všechny operace aktivované na virtuálním počítači. Pak možná budete muset znovu zaregistrovat rozšíření na virtuálním počítači. Operace **opětovného registrace znovu** nainstaluje rozšíření zálohování úlohy na virtuálním počítači, aby operace pokračovaly.  <br>
 
-Doporučuje se tuto možnost používat opatrně. Pokud se aktivuje na virtuálním počítači s již nedobrým rozšířením, tato operace způsobí restartování rozšíření. To může vést k selhání všech probíhajících úloh. Před aktivací operace opětovného registrace zkontrolujte, zda [](backup-sql-server-azure-troubleshoot.md#re-registration-failures) některé z těchto symptomů existuje.
+Tuto možnost používejte opatrně. Pokud se aktivuje na virtuálním počítači s již nedobrým rozšířením, tato operace způsobí restartování rozšíření. To může vést k selhání všech probíhajících úloh. Před aktivací operace opětovného registrace zkontrolujte, zda [](backup-sql-server-azure-troubleshoot.md#re-registration-failures) některé z těchto symptomů existuje.
 
 ## <a name="next-steps"></a>Další postup
 

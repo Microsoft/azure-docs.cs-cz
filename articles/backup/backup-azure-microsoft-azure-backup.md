@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: d815b471b0a1d7842118c7ac0b5e1665b8fb3c1e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: eb9908fc7b2d4ecd8af8c2b4a65ab43352035ec5
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879939"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018901"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 > [!div class="op_single_selector"]
@@ -173,9 +173,9 @@ Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu 
 
     **Konfigurace SSRS s SQL 2017**
 
-    Pokud používáte vlastní instanci SQL 2017, budete muset SSRS nakonfigurovat ručně. Po konfiguraci služby SSRS zajistěte, aby byla vlastnost- *inicializovaná* u služby SSRS nastavena na *hodnotu true*. Pokud je tato hodnota nastavená na true, MABS předpokládá, že služba SSRS je už nakonfigurovaná, a přeskočí konfiguraci služby SSRS.
+    Pokud používáte svou vlastní instanci SQL 2017, musíte SSRS nakonfigurovat ručně. Po konfiguraci služby SSRS zajistěte, aby byla vlastnost- *inicializovaná* u služby SSRS nastavena na *hodnotu true*. Pokud je tato hodnota nastavená na true, MABS předpokládá, že služba SSRS je už nakonfigurovaná, a přeskočí konfiguraci služby SSRS.
 
-    Pro konfiguraci služby SSRS použijte následující hodnoty:
+    Pro konfiguraci služby SSRS použijte následující hodnoty: 
 
         - Service Account: ‘Use built-in account’ should be Network Service
         - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 05e2375998b3bce4320b2d66ab7fce44cd911dcc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 6767644e037c6abb3e3044c8707e923a9137a01c
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479133"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019548"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Správa AWSch nákladů a využití v Azure
 
@@ -138,7 +138,7 @@ Existují dva způsoby, jak získat oprávnění pro přístup k nákladům na A
 
 Ve výchozím nastavení je autor konektoru AWS vlastníkem všech objektů, které konektor vytvořil. Včetně, konsolidovaného účtu AWS a propojeného účtu AWS.
 
-Aby bylo možné ověřit nastavení konektoru, budete potřebovat aspoň roli přispěvatele. Čtenář nemůže ověřit nastavení konektoru.
+Aby bylo možné ověřit nastavení konektoru, budete potřebovat alespoň roli přispěvatel, čtenář nemůže ověřit nastavení konektoru.
 
 ### <a name="collection-failed-with-assumerole"></a>Kolekce selhala s AssumeRole
 
