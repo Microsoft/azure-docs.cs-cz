@@ -1,31 +1,31 @@
 ---
-title: Výchozí přenos dat a koncové body v digitální dvojče Azure | Dokumentace Microsoftu
-description: Pokyny k vytvoření koncových bodů s Dvojčaty digitální Azure.
+title: Odchozí a koncové body v Azure Digital provlákna | Microsoft Docs
+description: Pokyny pro vytváření koncových bodů pomocí digitálních vláken Azure
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 08/12/2019
 ms.author: alinast
-ms.openlocfilehash: 478fe1859dd9067e8097df0384657793602c1378
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071463"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013944"
 ---
-# <a name="egress-and-endpoints"></a>Koncové body a výchozí přenos dat
+# <a name="egress-and-endpoints"></a>Odchozí a koncové body
 
-Azure digitální dvojče *koncové body* představují zprostředkovatele zpráv nebo událostí v rámci předplatného Azure uživatele. Události a zprávy může být zaslána tématech týkajících se služby Azure Event Hubs, Azure Event Grid a Azure Service Bus.
+*Koncové body* digitálních vláken Azure reprezentují zprávu nebo zprostředkovatele událostí v rámci předplatného Azure uživatele. Události a zprávy je možné odesílat do Event Hubs Azure, Azure Event Grid a Azure Service Bus témata.
 
-Události jsou směrovány do koncových bodů podle předdefinovaného směrování požadavků. Uživatelé určení *typy událostí* se může zobrazit každý koncový bod.
+Události jsou směrovány do koncových bodů podle předdefinovaných předvoleb směrování. Uživatelé určují, které *typy událostí* může každý koncový bod obdržet.
 
-Další informace o událostech, směrování a typy událostí, najdete v tématu [směrování události a zprávy v Azure digitální dvojče](./concepts-events-routing.md).
+Další informace o událostech, směrování a typech událostí najdete [v tématu Směrování událostí a zpráv v Azure Digital revláken](./concepts-events-routing.md).
 
-## <a name="events"></a>Události
+## <a name="events"></a>Duration
 
-Události jsou odesílány IoT objektů (například zařízení a senzorů) pro zpracování službou Azure zprostředkovatele zprávu a události. Události jsou definovány následující [referenční dokumentace schématu událostí služby Azure Event Grid](../event-grid/event-schema.md).
+Události se odesílají pomocí objektů IoT (jako jsou zařízení a senzory) pro zpracování pomocí zpráv a zprostředkovatelů událostí Azure. Události jsou definovány následujícím odkazem [schématu události Azure Event Grid](../event-grid/event-schema.md).
 
 ```JSON
 {
@@ -47,25 +47,25 @@ Události jsou odesílány IoT objektů (například zařízení a senzorů) pro
 }
 ```
 
-| Atribut | Type | Popis |
+| Atribut | type | Popis |
 | --- | --- | --- |
-| id | string | Jedinečný identifikátor pro událost. |
-| subject | string | Vydavatel definované cesta předmět události. |
-| data | objekt | Data události specifické pro poskytovatele prostředků. |
-| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
-| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
-| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| id | řetězec | Jedinečný identifikátor události |
+| subject | řetězec | Cesta definovaná vydavatelem k předmětu události |
+| data | objekt | Data události specifická pro poskytovatele prostředků. |
+| eventType | řetězec | Jeden z registrovaných typů událostí pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel definuje verzi schématu. |
+| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
+| topic | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
 
-Další informace o schématu událostí služby Event Grid:
+Další informace o schématu Event Grid události:
 
-- Zkontrolujte [referenční dokumentace schématu událostí služby Azure Event Grid](../event-grid/event-schema.md).
-- Přečtěte si [Azure EventGrid Node.js SDK EventGridEvent odkaz](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
+- Přečtěte si [referenční informace o schématu Azure Event Grid události](../event-grid/event-schema.md).
+- Přečtěte si [referenční materiály k EVENTGRIDEVENT SDK pro Node. js pro Azure EventGrid](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
 
 ## <a name="event-types"></a>Typy událostí
 
-Typy událostí klasifikovat povaze události a jsou nastaveny **eventType** pole. V následujícím seznamu jsou uvedeny typy událostí k dispozici:
+Typy událostí klasifikují povahu události a jsou nastaveny v poli **EventType** . Dostupné typy událostí jsou uvedeny v následujícím seznamu:
 
 - TopologyOperation
 - UdfCustom
@@ -73,11 +73,11 @@ Typy událostí klasifikovat povaze události a jsou nastaveny **eventType** pol
 - SpaceChange
 - DeviceMessage
 
-Formát událostí pro každý typ události jsou podrobně popsány v následujících podsekcí.
+Formáty událostí pro každý typ události jsou dále popsány v následujících pododdílech.
 
 ### <a name="topologyoperation"></a>TopologyOperation
 
-**TopologyOperation** se vztahuje na změn grafu. **Subjektu** vlastnost určuje typ objektu vliv. Tato událost může aktivovat následující typy objektů:
+**TopologyOperation** se vztahuje na změny v grafu. Vlastnost **Subject** určuje typ ovlivněného objektu. Následující typy objektů mohou aktivovat tuto událost:
 
 - Zařízení
 - DeviceBlobMetadata
@@ -85,22 +85,22 @@ Formát událostí pro každý typ události jsou podrobně popsány v následuj
 - ExtendedPropertyKey
 - ExtendedType
 - KeyStore
-- Sestava
-- Rutiny RoleDefinition
+- Zpráva
+- Rutiny roledefinition
 - Senzor
 - SensorBlobMetadata
 - SensorExtendedProperty
-- Kosmické aktivity
+- Mezera
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
 - SpaceRoleAssignment
-- Systémový
+- Systém
 - Uživatel
 - UserBlobMetadata
 - UserExtendedProperty
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```JSON
 {
@@ -122,18 +122,18 @@ Formát událostí pro každý typ události jsou podrobně popsány v následuj
 }
 ```
 
-| Hodnota | Nahradit hodnotou |
+| Value | Nahradit hodnotou |
 | --- | --- |
-| YOUR_TOPIC_NAME | Název vlastní téma |
+| YOUR_TOPIC_NAME | Název vlastního tématu |
 
 ### <a name="udfcustom"></a>UdfCustom
 
-**UdfCustom** události odeslané uživatelem definované funkce (UDF).
+**UdfCustom** je událost odesílaná uživatelsky definovanou funkcí (UDF).
   
 > [!IMPORTANT]  
-> Tato událost musí být explicitně odeslána z UDF, samotného.
+> Tato událost musí být explicitně odeslána ze samotného formátu UDF.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```JSON
 {
@@ -153,15 +153,15 @@ Formát událostí pro každý typ události jsou podrobně popsány v následuj
 }
 ```
 
-| Hodnota | Nahradit hodnotou |
+| Value | Nahradit hodnotou |
 | --- | --- |
-| YOUR_TOPIC_NAME | Název vlastní téma |
+| YOUR_TOPIC_NAME | Název vlastního tématu |
 
 ### <a name="sensorchange"></a>SensorChange
 
-**SensorChange** je aktualizace na základě telemetrických dat změn stavu senzoru.
+**SensorChange** je aktualizace stavu snímače na základě změn telemetrie.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```JSON
 {
@@ -188,15 +188,15 @@ Formát událostí pro každý typ události jsou podrobně popsány v následuj
 }
 ```
 
-| Hodnota | Nahradit hodnotou |
+| Value | Nahradit hodnotou |
 | --- | --- |
-| YOUR_TOPIC_NAME | Název vlastní téma |
+| YOUR_TOPIC_NAME | Název vlastního tématu |
 
 ### <a name="spacechange"></a>SpaceChange
 
-**SpaceChange** je aktualizace na základě telemetrických dat změn stavu místo.
+**SpaceChange** je aktualizace stavu prostoru na základě změn telemetrie.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```JSON
 {
@@ -223,36 +223,36 @@ Formát událostí pro každý typ události jsou podrobně popsány v následuj
 }
 ```
 
-| Hodnota | Nahradit hodnotou |
+| Value | Nahradit hodnotou |
 | --- | --- |
-| YOUR_TOPIC_NAME | Název vlastní téma |
+| YOUR_TOPIC_NAME | Název vlastního tématu |
 
 ### <a name="devicemessage"></a>DeviceMessage
 
-S použitím **DeviceMessage**, můžete zadat **EventHub** připojení, ke kterému nezpracovaná telemetrická data událostí je možné směrovat i z Azure digitální dvojče.
+Pomocí **DeviceMessage**můžete určit připojení **EventHub** , ke kterému se mají směrovat události nezpracovaných telemetrie, i z digitálních vláken Azure.
 
 > [!NOTE]
-> - **DeviceMessage** je kombinovatelných pouze s **EventHub**. Nelze kombinovat **DeviceMessage** s některým z jiných typů událostí.
-> - Můžete zadat pouze jeden koncový bod z kombinace typu **EventHub** nebo **DeviceMessage**.
+> - **DeviceMessage** lze kombinovat pouze s **EventHub**. **DeviceMessage** nelze kombinovat s žádným z ostatních typů událostí.
+> - Můžete zadat pouze jeden koncový bod kombinace typu **EventHub** nebo **DeviceMessage**.
 
 ## <a name="configure-endpoints"></a>Konfigurace koncových bodů
 
-Koncový bod správy se provede prostřednictvím koncových bodů rozhraní API.
+Správa koncových bodů je vykonávána prostřednictvím rozhraní API koncových bodů.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Následující příklady ukazují, jak nakonfigurovat podporovaných koncových bodů.
+Následující příklady ukazují, jak nakonfigurovat podporované koncové body.
 
 >[!IMPORTANT]
-> Věnujte pozornost pozor **eventTypes** atribut. Definuje která událost typy jsou zpracovány bodem a tím určit směrování.
+> Věnujte pečlivou pozornost atributu **EventTypes** . Definuje, které typy událostí jsou zpracovávány koncovým bodem, a tím určí jeho směrování.
 
-Požadavek HTTP POST ověřený proti
+Ověřený požadavek HTTP POST s:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
-- Trasy, která má typy událostí služby Service Bus **SensorChange**, **SpaceChange**, a **TopologyOperation**:
+- Trasa k Service Bus typů událostí **SensorChange**, **SpaceChange**a **TopologyOperation**:
 
   ```JSON
   {
@@ -268,14 +268,14 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Hodnota | Nahradit hodnotou |
+    | Value | Nahradit hodnotou |
     | --- | --- |
     | YOUR_NAMESPACE | Obor názvů vašeho koncového bodu |
     | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření |
     | YOUR_SECONDARY_KEY | Sekundární připojovací řetězec použitý k ověření |
-    | YOUR_TOPIC_NAME | Název vlastní téma |
+    | YOUR_TOPIC_NAME | Název vlastního tématu |
 
-- Trasy, která má typy událostí služby Event Grid **SensorChange**, **SpaceChange**, a **TopologyOperation**:
+- Trasa k Event Grid typů událostí **SensorChange**, **SpaceChange**a **TopologyOperation**:
 
   ```JSON
   {
@@ -291,13 +291,13 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Hodnota | Nahradit hodnotou |
+    | Value | Nahradit hodnotou |
     | --- | --- |
     | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření|
     | YOUR_SECONDARY_KEY | Sekundární připojovací řetězec použitý k ověření |
-    | YOUR_TOPIC_NAME | Název vlastní téma |
+    | YOUR_TOPIC_NAME | Název vlastního tématu |
 
-- Trasy, která má typy událostí služby Event Hubs **SensorChange**, **SpaceChange**, a **TopologyOperation**:
+- Trasa k Event Hubs typů událostí **SensorChange**, **SpaceChange**a **TopologyOperation**:
 
   ```JSON
   {
@@ -313,14 +313,14 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Hodnota | Nahradit hodnotou |
+    | Value | Nahradit hodnotou |
     | --- | --- |
     | YOUR_NAMESPACE | Obor názvů vašeho koncového bodu |
     | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření |
     | YOUR_SECONDARY_KEY | Sekundární připojovací řetězec použitý k ověření |
-    | YOUR_EVENT_HUB_NAME | Název vašeho centra událostí |
+    | YOUR_EVENT_HUB_NAME | Název centra událostí |
 
-- Trasy, která má typ událostí služby Event Hubs **DeviceMessage**. Zahrnutí `EntityPath` v **connectionString** je povinné:
+- Trasa k Event Hubs typ události **DeviceMessage**. Zahrnutí `EntityPath` v **připojovacím řetězci** je povinné:
 
   ```JSON
   {
@@ -334,30 +334,30 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Hodnota | Nahradit hodnotou |
+    | Value | Nahradit hodnotou |
     | --- | --- |
     | YOUR_NAMESPACE | Obor názvů vašeho koncového bodu |
     | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření |
     | YOUR_SECONDARY_KEY | Sekundární připojovací řetězec použitý k ověření |
-    | YOUR_EVENT_HUB_NAME | Název vašeho centra událostí |
+    | YOUR_EVENT_HUB_NAME | Název centra událostí |
 
 > [!NOTE]  
-> Při vytvoření nového koncového bodu může trvat 5 až 10 minut, než se začít přijímat události v koncovém bodě.
+> Při vytváření nového koncového bodu může trvat až 5 až 10 minut, než se začnou přijímat události na koncovém bodu.
 
-## <a name="primary-and-secondary-connection-keys"></a>Připojení primární a sekundární klíče
+## <a name="primary-and-secondary-connection-keys"></a>Primární a sekundární klíče připojení
 
-Jakmile je klíč primární připojení neoprávněným, systém automaticky pokusí připojení sekundární klíč. Který obsahuje zálohy a umožňuje možnost řádné ověření a aktualizovat primární klíč prostřednictvím koncových bodů rozhraní API.
+Když se primární připojovací klíč neautorizovaný, systém se automaticky pokusí o sekundární klíč připojení. Který poskytuje zálohu a umožňuje, aby byl primární klíč řádně ověřen a aktualizován prostřednictvím rozhraní API koncových bodů.
 
-Pokud připojení primární a sekundární klíče chybí oprávnění, systém přejde exponenciální regresní čekat až 30 minut. Události jsou vynechány na pokaždé, když aktivovaných regresní čekání.
+Pokud primární a sekundární klíče připojení jsou neautorizované, systém vstoupí do exponenciální čekací doby v intervalu až 30 minut. Události jsou vyřazeny v každé aktivované době čekání na vypnutí.
 
-Pokaždé, když je systém v back-off počkejte stavu, aktualizaci klíčů připojení prostřednictvím koncových bodů rozhraní API může trvat až 30 minut, než se projeví.
+Pokaždé, když je systém v neaktivním stavu čekání, může trvat až 30 minut, než se dokončí aktualizace klíčů připojení prostřednictvím rozhraní API koncových bodů.
 
-## <a name="unreachable-endpoints"></a>Nedosažitelný koncových bodů
+## <a name="unreachable-endpoints"></a>Nedosažitelné koncové body
 
-Až koncový bod bude nedostupná, systém přejde exponenciální regresní čekat až 30 minut. Události jsou vynechány na pokaždé, když aktivovaných regresní čekání.
+Když se koncový bod stane nedostupným, systém vstoupí do exponenciální čekací doby v intervalu až 30 minut. Události jsou vyřazeny v každé aktivované době čekání na vypnutí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [jak používat Azure digitální dvojče Swagger](how-to-use-swagger.md).
+- Naučte [se používat Swagger Azure Digital](how-to-use-swagger.md)Forms.
 
-- Další informace o [směrování události a zprávy](concepts-events-routing.md) v digitální dvojče Azure.
+- Přečtěte si další informace o [událostech směrování a zprávách](concepts-events-routing.md) v digitálních prozdvojeních Azure.

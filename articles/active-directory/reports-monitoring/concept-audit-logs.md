@@ -3,7 +3,7 @@ title: Sestavy aktivit auditu na portálu Azure Active Directory | Dokumentace M
 description: Seznámení se sestavami aktivit auditu na portálu Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 07/17/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c872d5151ac0b7bb650e2de68b9e631e8254ba94
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a0a31fab8dd1490b58e743c149e4a54cae11bed1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618888"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988343"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -208,7 +208,7 @@ Protokoly aktivit Office 365 můžete zobrazit v centru pro [správu Microsoft 3
 
 Přístup k protokolům aktivit Office 365 můžete také programově pomocí [rozhraní API pro správu sady office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Referenční informace o aktivitě auditu Azure AD](reference-audit-activities.md)
 - [Referenční informace o uchovávání sestav Azure AD](reference-reports-data-retention.md)

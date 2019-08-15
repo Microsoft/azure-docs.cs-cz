@@ -1,9 +1,9 @@
 ---
-title: Jak dlouho Azure AD ukládat údaje o chybách? | Dokumenty Microsoft
-description: Zjistěte, jak dlouho Azure ukládá data pro generování sestav různé typy.
+title: Jak dlouho jsou data sestav služby Azure AD Store? | Dokumenty Microsoft
+description: Přečtěte si, jak dlouho Azure ukládá různé typy dat generování sestav.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
@@ -14,71 +14,71 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41fa12c9d79d14a6602d995ed93b5d1a23be8a4d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c52f8873527d92e621ef032f5bc3e82d3364a691
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65781046"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989588"
 ---
-# <a name="how-long-does-azure-ad-store-reporting-data"></a>Jak dlouho Azure AD ukládat údaje o chybách?
+# <a name="how-long-does-azure-ad-store-reporting-data"></a>Jak dlouho jsou data sestav služby Azure AD Store?
 
-V tomto článku se dozvíte o zásad uchovávání dat pro různé aktivity sestavy ve službě Azure Active Directory. 
+V tomto článku se dozvíte o zásadách uchovávání dat pro různé sestavy aktivit v Azure Active Directory. 
 
-### <a name="when-does-azure-ad-start-collecting-data"></a>Pokud Azure AD spusťte shromažďování dat?
+### <a name="when-does-azure-ad-start-collecting-data"></a>Kdy Azure AD začne shromažďovat data?
 
-| Azure AD Edition | Počáteční kolekce |
+| Edice Azure AD | Začátek shromažďování |
 | :--              | :--   |
-| Azure AD Premium P1 <br /> Azure AD Premium P2 | Když se zaregistrujete k předplatnému |
-| Azure AD Free <br /> Azure AD Basic | Při prvním otevření [okno Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nebo použijte [rozhraní API pro generování sestav](https://aka.ms/aadreports)  |
+| Azure AD Premium P1 <br /> Azure AD Premium P2 | Když se přihlásíte k předplatnému |
+| Azure AD Free <br /> Azure AD Basic | Při prvním otevření okna [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nebo použití [rozhraní API pro vytváření sestav](https://aka.ms/aadreports)  |
 
 ---
 
-### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Když se data aktivit k dispozici na webu Azure Portal
+### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Kdy jsou data aktivity k dispozici v Azure Portal?
 
-- **Okamžitě** – Pokud již pracujete se sestavami na webu Azure Portal.
-- **Do 2 hodin** – Pokud jste nezapnuli generování sestav na webu Azure Portal.
-
----
-
-### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Jak rychle můžete zobrazit data aktivity po získání licence premium?
-
-Pokud již máte data aktivity s bezplatnou licencí, pak uvidíte ho okamžitě při upgradu. Pokud nemáte k dispozici žádná data, bude to trvat jeden nebo dva dny pro daná data zobrazit v sestavách po upgradu na licenci premium.
+- **Okamžitě** – Pokud jste již pracovali se sestavami v Azure Portal.
+- **Do 2 hodin** – Pokud jste neaktivovali vytváření sestav v Azure Portal.
 
 ---
 
-### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Můžete zobrazit data poslední měsíc po získání licenci Azure AD premium?
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Jak brzy můžu zobrazit data o aktivitách po získání licence na prémii?
 
-Pokud nedávno přešli na verzi premium (včetně zkušební verze), uvidíte data až na 7 dní původně. Když se data hromadí, se zobrazí data za posledních 30 dnů.
-
----
-
-### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Pokud Azure AD začít signál shromažďování dat o zabezpečení?  
-
-Pro zabezpečení signály, proces shromažďování začíná můžete vyjádřit výslovný souhlas pro použití **centrum Identity Protection**. 
+Pokud již máte data o aktivitách s bezplatnou licencí, můžete ji okamžitě zobrazit při upgradu. Pokud nemáte žádná data, bude trvat jeden nebo dva dny, než se data zobrazí v sestavách po upgradu na licenci Premium.
 
 ---
 
-### <a name="how-long-does-azure-ad-store-the-data"></a>Jak dlouho Azure AD ukládat data?
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Můžu zobrazit data z posledního měsíce po získání licence Azure AD Premium?
+
+Pokud jste nedávno přešli na verzi Premium (včetně zkušební verze), můžete nejdřív zobrazit data až 7 dní. Po shromáždění dat můžete zobrazit data za posledních 30 dní.
+
+---
+
+### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Kdy Azure AD začne shromažďovat data bezpečnostních signálů?  
+
+Pro bezpečnostní signály se proces shromažďování spustí, když se přihlásíte k používání **centra ochrany identit**. 
+
+---
+
+### <a name="how-long-does-azure-ad-store-the-data"></a>Jak dlouho Azure AD ukládá data?
 
 **Sestavy aktivit**    
 
-| Sestava                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| Zpráva                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
 | Protokoly auditu             | 7 dní        |  7 dní        | 30 dní             | 30 dní             |
-| Přihlášení               | neuvedeno           |  neuvedeno           | 30 dní             | 30 dní             |
+| Přihlášení               | Není k dispozici           |  Není k dispozici           | 30 dní             | 30 dní             |
 | Využití Azure MFA        | 30 dní       |  30 dní       | 30 dní             | 30 dní             |
 
-Můžete zachovat data aktivit auditu a přihlaste se po dobu delší než výchozí dobu uchování uvedených výše přesměrováním do účtu služby Azure storage pomocí Azure monitoru. Další informace najdete v tématu [archiv služby Azure AD se zaznamená do účtu služby Azure storage](quickstart-azure-monitor-route-logs-to-storage-account.md).
+Data aktivity auditu a přihlašování můžete uchovávat déle než výchozí doba uchování, která je uvedená výše, směrováním do účtu služby Azure Storage pomocí Azure Monitor. Další informace najdete v tématu [archivace protokolů služby Azure AD do účtu služby Azure Storage](quickstart-azure-monitor-route-logs-to-storage-account.md).
 
 **Signály zabezpečení**
 
-| Sestava         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| Zpráva         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--            | :--           | :--            | :--                 | :--                 |
-| Ohrožení uživatelé  | 7 dní        | 7 dní         | 30 dní             | 90 dnů             |
-| Riziková přihlášení | 7 dní        | 7 dní         |  30 dní            | 90 dnů             |
+| Ohrožení uživatelé  | 7 dní        | 7 dní         | 30 dní             | 90 dní             |
+| Riziková přihlášení | 7 dní        | 7 dní         |  30 dní            | 90 dní             |
 
 ---

@@ -1,6 +1,6 @@
 ---
-title: Zjištění tváří a Emocí pomocí Azure Media Analytics | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak detekovat tváří a emocí pomocí Azure Media Analytics.
+title: Rozpoznávání obličeje a emoce s Azure Media Analyticsem | Microsoft Docs
+description: Toto téma ukazuje, jak detekovat obličeje a emoce pomocí Azure Media Analytics.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,57 +13,58 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: milanga;juliako;
-ms.openlocfilehash: 46e60583da79006c133c8d9fac63e27f28bd699f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: milanga
+ms.openlocfilehash: 3ae2e49b812e7a9515cef81b328ceb87e1a7f017
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217202"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69015460"
 ---
-# <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Zjištění tváří a Emocí pomocí Azure Media Analytics
+# <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Detekce obličeje a emoce pomocí Azure Media Analytics
 ## <a name="overview"></a>Přehled
-**Azure Media Face Detectoru** procesor médií (PP) umožňuje počet, sledování pohybu a dokonce i vyhodnocovat zapojení cílové skupiny a reakce na ně prostřednictvím výrazu tváře. Tato služba obsahuje dvě funkce: 
+Procesor **Azure Media Face Detector** Media (MP) umožňuje počítat, sledovat pohyby a dokonce i vyhodnocovat podíl a reakci v cílové skupině prostřednictvím výrazů obličeje. Tato služba obsahuje dvě funkce: 
 
 * **Rozpoznávání tváře**
   
-    Rozpoznávání tváře najde a sleduje lidské tváře ve videu. Více ploch lze zjistit a následně sledovat při přechodu, čas a umístění metadat vrátil v souboru JSON. Během sledování, pokusí se poskytnout konzistentní ID na stejný typ písma zatímco je osoba přesouvat na obrazovce, i když bráněno nebo stručně ponechejte rámce.
+    Detekce tváře vyhledává a sleduje lidské obličeje ve videu. Je možné detekovat více plošek a následně je sledovat při jejich přesunu s metadaty pro čas a umístění vrácenými v souboru JSON. Během sledování se pokusí dát stejnému vzhledu stejnou plošku, zatímco se osoba pohybuje na obrazovce, a to i v případě, že jsou zablokované nebo stručně opouští rámeček.
   
   > [!NOTE]
-  > Tato služba neprovádí rozpoznávání obličeje. Osoba, která zůstanou rámce nebo bude bránit pro příliš dlouho dostanou nové ID když se vrátí.
+  > Tato služba neprovádí rozpoznávání obličeje. Jednotlivá osoba, která opustí rámec nebo se může zablokovat příliš dlouho, bude při návratu na ni předána novému ID.
   > 
   > 
-* **Rozpoznávání emocí z výrazu**
+* **Detekce emoce**
   
-    Rozpoznávání emocí z výrazu je volitelná součást pro rozpoznávání tváře detekce mediálním procesorem, který vrátí analýzy na více citové atributů z plochy zjistí, včetně štěstí, smutek, strach, hněv a další. 
+    Detekce emoce je volitelná součást procesoru Rozpoznávání tvářech médií, která vrací analýzu více atributů emocionálních ze zjištěných ploch, včetně štěstí, smutek, obav, hněv a dalších. 
 
-**Azure Media Face Detectoru** sady Management Pack je aktuálně ve verzi Preview.
+Sada **Azure Media Face Detector** MP je momentálně ve verzi Preview.
 
-Tento článek obsahuje podrobnosti o **Azure Media Face Detectoru** a ukazuje, jak používat ve službě Media Services SDK pro .NET.
+Tento článek obsahuje podrobné informace o **Azure Media Face Detector** a ukazuje, jak ho používat s Media Services SDK pro .NET.
 
-## <a name="face-detector-input-files"></a>Face Detectoru vstupních souborů
-Video soubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
+## <a name="face-detector-input-files"></a>Vstupní soubory pro rozpoznávání tváře
+Videosoubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
 
-## <a name="face-detector-output-files"></a>Face Detectoru výstupní soubory
-Rozhraní API pro zjišťování a sledování tváří poskytuje velmi přesné rozpoznávání tváře detekce a sledování pozice, který vyhledá ve videu až 64 lidských tváří. Přední tváří poskytují nejlepší výsledky, při straně tváří a malé tváří (menší než nebo roven 24 × 24 pixelů) nemusí být tak přesné.
+## <a name="face-detector-output-files"></a>Výstupní soubory pro rozpoznávání tváře
+Rozhraní API pro detekci a sledování tváře poskytuje vysokou přesnost detekce a sledování polohy, která dokáže detekovat až 64 lidských plošek ve videu. Přední obličeje poskytují nejlepší výsledky, zatímco strany a malé plošky (méně než nebo rovnající se 24x24 pixelů) nemusí být přesné.
 
-Zjištěné a sleduje tváře se vrátí se souřadnicemi (vlevo, horní, šířku a výšku) určující umístění tváří v obrázku v pixelech, jakož i face ID číslo označující sledování tohoto jednotlivce. Face ID čísla jsou náchylné k obnovit okolností, když dojde ke ztrátě nebo překrývajících se v rámci, přední rozpoznávání tváře výsledkem několika jednotlivcům získávání přiřadit víc ID.
+Zjištěné a sledované plošky se vrátí pomocí souřadnic (doleva, nahoru, Šířka a výška), které označují umístění ploch v obrazových bodech v pixelech, a také číslo ID obličeje, které indikuje sledování daného jednotlivce. Pokud dojde ke ztrátě nebo překrytí čelní plochy v rámci tohoto rámce, je pro ně možné resetovat čísla ID obličeje. Výsledkem je, že někteří jednotlivci mají přiřazené více ID.
 
 ## <a id="output_elements"></a>Prvky výstupního souboru JSON
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 
-Detektor tváří využívá i metody pro fragmentaci (metadata, můžete se rozdělit podle času bloků dat a můžete si stáhnout vše, co potřebujete) a segmentace (kde události jsou rozdělit v případě, že vývojáři získají příliš velké). S transformací dat vám pomůže několik jednoduchých výpočtů. Například, pokud událost začalo 6300 (takty), s časovou 2997 (počet taktů za sekundu) a snímkovou 29,97 (snímků za sekundu), pak:
+Obličejový detektor používá techniky fragmentace (kde se metadata můžou rozdělit do bloků dat založených na čase) a můžete si stáhnout jenom to, co potřebujete, a segmentace (kde se události rozdělují v případě příliš velkého množství). S transformací dat vám pomůže několik jednoduchých výpočtů. Pokud například událost spuštěná v 6300 (taktech), s časovou osou 2997 (takty/s) a snímkem 29,97 (rámce/s), pak:
 
 * Zahájení / časová osa = 2,1 sekund
-* Sekundy x Framerate = 63 snímků
+* Sekund × snímková frekvence = 63 snímků
 
-## <a name="face-detection-input-and-output-example"></a>Detekce vstup pro rozpoznávání tváře a příklad výstupu
-### <a name="input-video"></a>Vstupního videa
-[Vstupního videa](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+## <a name="face-detection-input-and-output-example"></a>Příklad vstupu a výstupu detekce obličeje
+### <a name="input-video"></a>Vstupní video
+[Vstupní video](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-preset"></a>Konfigurace úlohy (nastavení)
-Při vytváření úlohy s **Azure Media Face Detectoru**, je nutné zadat nastavení konfigurace. Následující nastavení konfigurace je jen pro rozpoznávání tváře.
+### <a name="task-configuration-preset"></a>Konfigurace úlohy (předvolba)
+Při vytváření úlohy s **Azure Media Face Detector**je nutné zadat předvolby konfigurace. Následující předvolba konfigurace je jenom pro rozpoznávání tváře.
 
 ```json
     {
@@ -74,12 +75,12 @@ Při vytváření úlohy s **Azure Media Face Detectoru**, je nutné zadat nasta
     }
 ```
 
-#### <a name="attribute-descriptions"></a>Popis atributu
+#### <a name="attribute-descriptions"></a>Popisy atributů
 | Název atributu | Popis |
 | --- | --- |
-| Režim |Rychle – se rychlé zpracování rychlost, ale méně přesné (výchozí).|
+| Režim |Rychlost rychlého zpracování, ale méně přesná (výchozí).|
 
-### <a name="json-output"></a>Výstup ve formátu JSON
+### <a name="json-output"></a>Výstup JSON
 Následující příklad výstupu JSON byl zkrácen.
 
 ```json
@@ -130,12 +131,12 @@ Následující příklad výstupu JSON byl zkrácen.
 ```
 
 
-## <a name="emotion-detection-input-and-output-example"></a>Rozpoznávání emocí z výrazu vstup a výstup příkladu
-### <a name="input-video"></a>Vstupního videa
-[Vstupního videa](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+## <a name="emotion-detection-input-and-output-example"></a>Příklad vstupu a výstupu detekce podle emoce
+### <a name="input-video"></a>Vstupní video
+[Vstupní video](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-preset"></a>Konfigurace úlohy (nastavení)
-Při vytváření úlohy s **Azure Media Face Detectoru**, je nutné zadat nastavení konfigurace. Následující nastavení konfigurace určuje vytvoření JSON založené na rozpoznávání emocí z výrazu.
+### <a name="task-configuration-preset"></a>Konfigurace úlohy (předvolba)
+Při vytváření úlohy s **Azure Media Face Detector**je nutné zadat předvolby konfigurace. Následující předvolba konfigurace určuje, že se má vytvořit JSON na základě zjištění emoce.
 
 ```json
     {
@@ -149,23 +150,23 @@ Při vytváření úlohy s **Azure Media Face Detectoru**, je nutné zadat nasta
 ```
 
 
-#### <a name="attribute-descriptions"></a>Popis atributu
+#### <a name="attribute-descriptions"></a>Popisy atributů
 | Název atributu | Popis |
 | --- | --- |
-| Režim |Tváří: Pouze rozpoznávání tváře.<br/>PerFaceEmotion: Vrátí pro rozpoznávání emocí nezávisle pro každý rozpoznávání tváře.<br/>AggregateEmotion: Návratové hodnoty průměrné pro rozpoznávání emocí pro všechny tváří v rámci. |
-| AggregateEmotionWindowMs |Použijte, pokud vybraný režim AggregateEmotion. Určuje délku videa použit k vytvoření každé agregace výsledků v milisekundách. |
-| AggregateEmotionIntervalMs |Použijte, pokud vybraný režim AggregateEmotion. Určuje, jak často k vytvoření agregované výsledky. |
+| Režim |Emotikon Jenom rozpoznávání tváře.<br/>PerFaceEmotion: Vracet emoce nezávisle pro každou detekci obličeje.<br/>AggregateEmotion: Vrátí průměrné hodnoty emoce pro všechny plošky v rámci rámečku. |
+| AggregateEmotionWindowMs |Použijte, pokud je vybraný režim AggregateEmotion. Určuje délku videa, která se používá k získání každého agregovaného výsledku v milisekundách. |
+| AggregateEmotionIntervalMs |Použijte, pokud je vybraný režim AggregateEmotion. Určuje, jakou četnost mají být výsledkem agregované výsledky. |
 
 #### <a name="aggregate-defaults"></a>Agregační výchozí hodnoty
-Níže jsou doporučené hodnoty pro nastavení okna a interval agregace. AggregateEmotionWindowMs by měl být delší než AggregateEmotionIntervalMs.
+Níže jsou doporučené hodnoty pro agregované nastavení okna a intervalu. AggregateEmotionWindowMs by měla být delší než AggregateEmotionIntervalMs.
 
-|| Výchozí hodnoty (s) | Max(s) | Min |
+|| Výchozí hodnoty: | Maximální počet (s) | Minimum (s) |
 |--- | --- | --- | --- |
 | AggregateEmotionWindowMs |0,5 |2 |0.25|
 | AggregateEmotionIntervalMs |0,5 |1 |0.25|
 
-### <a name="json-output"></a>Výstup ve formátu JSON
-Výstup pro agregace pro rozpoznávání emocí (zkrácená) ve formátu JSON:
+### <a name="json-output"></a>Výstup JSON
+Výstup JSON pro agregovaná emoce (zkrácený):
 
 ```json
     {
@@ -321,30 +322,30 @@ Výstup pro agregace pro rozpoznávání emocí (zkrácená) ve formátu JSON:
 ```
 
 ## <a name="limitations"></a>Omezení
-* Podporované formáty vstupního videa zahrnout MP4, MOV a WMV.
-* Rozsah velikosti zjistitelné pro rozpoznávání tváře je 24 × 24 na 2 048 x 2048 pixelů. Tváří mimo tento rozsah nerozpozná.
-* Maximální počet tváří vrátil pro každé video je 64.
-* Z důvodu technické komplikace; nemusí být detekována některé tváří například velké pro rozpoznávání tváře úhlů (hlavní póza) a velké uzavření. Přední a téměř čelní strany mají nejlepších výsledků.
+* Mezi podporované vstupní formáty videa patří MP4, MOV a WMV.
+* Zjistitelný rozsah velikosti obličeje je 24x24 na 2048x2048 pixelů. Plošky z tohoto rozsahu nebudou zjištěny.
+* Pro každé video je maximální počet vrácených ploch 64.
+* Některé plošky nemusejí být zjištěny kvůli technickým výzvám; například hodně velkých úhlů obličeje (pozice) a velké překrytíy. Nejlepší výsledky jsou přední a blízko čelních ploch.
 
 ## <a name="net-sample-code"></a>Vzorový kód .NET
 
-Následující program ukazuje postup:
+Následující program ukazuje, jak:
 
-1. Vytvoření assetu a uložit do assetu soubor média.
-2. Vytvořte úlohu s úkolem pro rozpoznávání tváře detekce založené na konfigurační soubor, který obsahuje následující přednastavený kontext json: 
+1. Vytvořte Asset a nahrajte do něj mediální soubor.
+2. Vytvořte úlohu s úkolem detekce obličeje na základě konfiguračního souboru, který obsahuje následující předvolbu JSON: 
 
     ```json
             {
                 "version": "1.0"
             }
     ```
-3. Stažení výstupních souborů JSON. 
+3. Stáhněte si výstupní soubory JSON. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```csharp
 using System;
@@ -520,7 +521,7 @@ namespace FaceDetection
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Azure Media Services Analytics Overview](media-services-analytics-overview.md)
+[Přehled analýzy Azure Media Services](media-services-analytics-overview.md)
 
-[Azure Media Analytics demos](https://amslabs.azurewebsites.net/demos/Analytics.html)
+[Ukázky Azure Media Analytics](https://amslabs.azurewebsites.net/demos/Analytics.html)
 

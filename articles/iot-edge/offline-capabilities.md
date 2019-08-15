@@ -2,19 +2,18 @@
 title: PROVOZUJTE zařízení offline – Azure IoT Edge | Dokumentace Microsoftu
 description: Zjistěte, jak moduly a zařízení IoT Edge může fungovat i bez připojení k Internetu pro dlouhou dobu a jak IoT Edge můžete povolit běžná zařízení IoT příliš pracovat offline.
 author: kgremban
-manager: philmea
 ms.author: kgremban
-ms.date: 06/04/2019
+ms.date: 08/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4a46128d3b0e77ff7921e1f4875c318a95309769
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6d82b353f8b485b4441853b7ff8e70e7d69f4d6a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598604"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986987"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Vysvětlení rozšířených funkcí offline pro IoT Edge zařízení, moduly a podřízená zařízení
 
@@ -137,43 +136,71 @@ Toto nastavení je požadovaná vlastnost centra IoT Edge, která je uložená v
 }
 ```
 
-### <a name="additional-offline-storage"></a>Další úložiště v režimu offline
+### <a name="host-storage-for-system-modules"></a>Úložiště hostitele pro systémové moduly
 
-Zprávy jsou ve výchozím nastavení uloženy v systému souborů kontejnerů centra IoT Edge. Pokud toto množství úložiště není dostatečná pro vaše potřeby v režimu offline, který vyhradíte místní úložiště na zařízení IoT Edge. Vytvořte proměnnou prostředí pro IoT Edge centrum, která odkazuje na složku úložiště v kontejneru. Pak použijte možnosti vytvořit pro přiřazení této složky úložiště do složky na hostitelském počítači. 
+Zprávy a informace o stavu modulů se ve výchozím nastavení ukládají do místního systému souborů výchozího kontejneru IoT Edgeového centra. Pro lepší spolehlivost, zejména při provozu v režimu offline, můžete také vyhradit úložiště v hostitelském IoT Edgem zařízení.
 
-Můžete nakonfigurovat proměnné prostředí a možnosti vytváření pro modul IoT Edge hub v Azure Portal v části **Konfigurace pokročilého nastavení modulu runtime** . Nebo můžete vytvořit přímo v manifestu nasazení. 
+Pokud chcete nastavit úložiště v hostitelském systému, vytvořte proměnné prostředí pro IoT Edge centrum a IoT Edge agenta, který odkazuje na složku úložiště v kontejneru. Pak použijte možnosti vytvořit pro přiřazení této složky úložiště do složky na hostitelském počítači. 
+
+Můžete nakonfigurovat proměnné prostředí a možnosti vytváření pro modul IoT Edge hub v Azure Portal v části **Konfigurace pokročilého nastavení modulu runtime** . 
+
+1. U IoT Edgeového centra i agenta IoT Edge přidejte proměnnou prostředí s názvem **storageFolder** , která odkazuje na adresář v modulu.
+1. U IoT Edgeového centra i agenta IoT Edge přidejte vazby pro připojení místního adresáře na hostitelském počítači k adresáři v modulu. Příklad: 
+
+   ![Přidání možností vytvoření a proměnných prostředí pro místní úložiště](./media/offline-capabilities/offline-storage.png)
+
+Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení. Příklad: 
 
 ```json
-"edgeHub": {
-    "type": "docker",
-    "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": {
-            "HostConfig": {
-                "Binds": ["<HostStoragePath>:<ModuleStoragePath>"],
-                "PortBindings": {
-                    "8883/tcp": [{"HostPort":"8883"}],
-                    "443/tcp": [{"HostPort":"443"}],
-                    "5671/tcp": [{"HostPort":"5671"}]
+"systemModules": {
+    "edgeAgent": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath>"]
                 }
+            }
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
             }
         }
     },
-    "env": {
-        "storageFolder": {
-            "value": "<ModuleStoragePath>"
-        }
-    },
-    "status": "running",
-    "restartPolicy": "always"
+    "edgeHub": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath"],
+                    "PortBindings":{"5671/tcp":[{"HostPort":"5671"}],"8883/tcp":[{"HostPort":"8883"}],"443/tcp":[{"HostPort":"443"}]}}}
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
+            }
+        },
+        "status": "running",
+        "restartPolicy": "always"
+    }
 }
 ```
 
-Nahraďte `<HostStoragePath>` a `<ModuleStoragePath>` cesta k úložišti cestu; hostitele i modul úložiště hostitele a modul musí být absolutní cesta. V možnostech vytvoření navažte cesty úložiště hostitele a modulu společně. Pak vytvořte proměnnou prostředí, která odkazuje na cestu úložiště modulu.  
+`<HostStoragePath>` Nahraďte `<ModuleStoragePath>` a cestou k úložišti hostitele a modulu; obě hodnoty musí být absolutní cesta. 
 
 Například znamená, `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` že adresář **/etc/iotedge/Storage** v hostitelském systému je namapován na adresář **/iotedge/Storage/** na kontejneru. Nebo jiný příklad pro systémy Windows znamená `"Binds":["C:\\temp:C:\\contemp"]` , že adresář **c:\\Temp** v hostitelském systému je namapovaný na adresář **c:\\pro dočasné** umístění na kontejneru. 
 
-Můžete také najít další podrobnosti o možnostech vytváření z [Docker docs](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+V zařízeních se systémem Linux se ujistěte, že uživatelský profil centra IoT Edge, UID 1000, má oprávnění ke čtení, zápisu a spouštění pro adresář hostitelského systému. Tato oprávnění jsou nezbytná, aby Centrum IoT Edge mohl ukládat zprávy v adresáři a později je načíst. (Agent IoT Edge funguje jako kořenový, takže nepotřebuje další oprávnění.) K dispozici je několik způsobů, jak spravovat oprávnění adresářů v systémech Linux `chown` , včetně použití ke změně vlastníka adresáře `chmod` a změně oprávnění. Příklad:
+
+```bash
+sudo chown 1000 <HostStoragePath>
+sudo chmod 700 <HostStoragePath>
+```
+
+Další podrobnosti o možnostech vytváření najdete v dokumentaci k [Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
-title: Zákona o svobodném přístupu tváře s názorným postupem Azure Media Analytics | Dokumentace Microsoftu
-description: Toto téma ukazuje podrobné pokyny o tom, jak spouštět úplné redigování pracovního postupu pomocí Azure Media Services Explorer (AMSE) a Azure Media Redactor Visualizer (open source nástroj).
+title: Seredigování obličeje pomocí Azure Media Analyticsho návodu | Microsoft Docs
+description: V tomto tématu se dozvíte, jak spustit plný pracovní postup redigování pomocí Azure Media Services Exploreru (AMSE) a Azure Media Redactor Vizualizér (Open Source Tool).
 services: media-services
 documentationcenter: ''
 author: Lichard
@@ -13,114 +13,115 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: rli; juliako;
-ms.openlocfilehash: 3e4844c3174e41ca7f6f5667a2777aba11f70f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: ril
+ms.reviewer: juliako
+ms.openlocfilehash: 3f40c69900b0d7f1c3bf446c1153e21dd7fd4d1b
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60874870"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69014939"
 ---
-# <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Zákona o svobodném přístupu tváře s názorným postupem Azure Media Analytics
+# <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics návodu k redigování
 
 ## <a name="overview"></a>Přehled
 
-**Azure Media Redactor** je [Azure Media Analytics](media-services-analytics-overview.md) procesor médií (PP), která nabízí škálovatelné face redactoru v cloudu. Rozmazání obličejů umožňuje upravovat vaše video, aby bylo možné rozostření tváří vybraných jedinců. Můžete chtít použít službu rozmazání tváří v veřejného scénáře a sdělovací. Pár minut záběrů, který obsahuje více ploch může trvat hodiny zákona o svobodném přístupu ručně, ale s touto službou procesu rozmazání tváří vyžaduje jenom pár jednoduchých kroků. Další informace najdete v tématu [to](https://azure.microsoft.com/blog/azure-media-redactor/) blogu.
+**Azure Media redactor** je [Azure Media Analytics](media-services-analytics-overview.md) multimediální procesor (MP), který nabízí škálovatelné redigování tváře v cloudu. Naredigování obličeje umožňuje upravit vaše video, aby se rozostří plošky vybraných jednotlivců. Je možné, že budete chtít použít službu redigování obličeje ve scénářích veřejného zabezpečení a média pro příspěvky. Několik minut záběrů, které obsahují více plošek, může trvat hodiny na redigování ručně, ale v rámci této služby bude proces redigování obličeje vyžadovat jenom několik jednoduchých kroků. Další informace najdete v [tomto](https://azure.microsoft.com/blog/azure-media-redactor/) blogu.
 
-Podrobnosti o **Azure Media Redactor**, najdete v článku [přehled rozmazání tváří](media-services-face-redaction.md) tématu.
+Podrobnosti o **Azure Media redactor**najdete v tématu [Přehled redigování obličeje](media-services-face-redaction.md) .
 
-Toto téma ukazuje podrobné pokyny o tom, jak spouštět úplné redigování pracovního postupu pomocí Azure Media Services Explorer (AMSE) a Azure Media Redactor Visualizer (open source nástroj).
+V tomto tématu se dozvíte, jak spustit plný pracovní postup redigování pomocí Azure Media Services Exploreru (AMSE) a Azure Media Redactor Vizualizér (Open Source Tool).
 
-Další informace najdete v tématu [to](https://azure.microsoft.com/blog/redaction-preview-available-globally) blogu.
+Další informace najdete v [tomto](https://azure.microsoft.com/blog/redaction-preview-available-globally) blogu.
 
-## <a name="azure-media-services-explorer-workflow"></a>Azure Media Services Explorer pracovního postupu
+## <a name="azure-media-services-explorer-workflow"></a>Pracovní postup Průzkumníka Azure Media Services
 
-Nejjednodušší způsob, jak začít pracovat s Redactor se má používat open source nástroj AMSE na Githubu. Můžete spustit zjednodušený pracovní postup prostřednictvím **kombinovat** režim, pokud už nepotřebujete přístup k json poznámky nebo jpg obrázků pro rozpoznávání tváře.
+Nejjednodušší způsob, jak začít používat redigování, je použití nástroje Open Source AMSE na GitHubu. Zjednodušený pracovní postup můžete spustit pomocí **kombinovaného** režimu, pokud nepotřebujete přístup k obrázkům JSON poznámky nebo obličeje.
 
-### <a name="download-and-setup"></a>Stažení a instalace
+### <a name="download-and-setup"></a>Stažení a nastavení
 
-1. Stáhněte si nástroj AMSE z [tady](https://github.com/Azure/Azure-Media-Services-Explorer).
-1. Přihlaste se k účtu Media Services pomocí klíče služby.
+1. Stáhněte si nástroj AMSE z [tohoto místa](https://github.com/Azure/Azure-Media-Services-Explorer).
+1. Přihlaste se ke svému účtu Media Services pomocí klíče služby.
 
-    Pokud chcete získat název účtu a informace o klíči, přejděte na [Azure Portal](https://portal.azure.com/) a vyberte svůj účet AMS. Vyberte nastavení > klíče. Zobrazí se okno Správa klíčů, které ukazuje název účtu a primární a sekundární klíče. Zkopírujte hodnoty názvu účtu a primárního klíče.
+    Pokud chcete získat název účtu a informace o klíči, přejděte na [Azure Portal](https://portal.azure.com/) a vyberte svůj účet AMS. Pak vyberte Nastavení > klíče. Zobrazí se okno Správa klíčů, které ukazuje název účtu a primární a sekundární klíče. Zkopírujte hodnoty názvu účtu a primárního klíče.
 
 ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
 
-### <a name="first-pass--analyze-mode"></a>První předání – analýza režimu
+### <a name="first-pass--analyze-mode"></a>První Pass – režim analýzy
 
-1. Nahrávání souborů médií prostřednictvím Asset –> nahrávat, nebo pomocí přetažení. 
-1. Klikněte pravým tlačítkem myši a zpracování souboru média pomocí Media Analytics –> Azure Media Redactor –> analyzovat režimu. 
+1. Nahrání souboru médií prostřednictvím Assetu – > nahrávání nebo přetažení. 
+1. Klikněte pravým tlačítkem a zpracujte soubor média pomocí Media Analytics – > Azure Media Redactor – > režimu analýzy. 
 
 
 ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
 
 ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
 
-Výstup bude obsahovat soubor json poznámky s daty umístění pro rozpoznávání tváře, jakož i jpg pro každou zjištěnou plochu. 
+Výstup bude obsahovat soubor JSON poznámky s daty o poloze obličeje a také jpg každého zjištěného obličeje. 
 
 ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
-### <a name="second-pass--redact-mode"></a>Za druhé předat – zákona o svobodném přístupu režimu
+### <a name="second-pass--redact-mode"></a>Druhý průchod – režim redigování
 
-1. Nahrát asset videa původní do výstupu z první fáze a nastavit jako primární asset. 
+1. Nahrajte původní video na výstup z první fáze a nastavte ho jako primární Asset. 
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
-2. (Volitelné) Odešlete soubor "Dance_idlist.txt", která zahrnuje nového řádku oddělený seznam identifikátorů chcete zákona o svobodném přístupu. 
+2. Volitelné Nahrajte soubor Dance_idlist. txt, který obsahuje seznam identifikátorů ID, které chcete redigování, s odděleným novým řádkem. 
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
-3. (Volitelné) Proveďte veškeré úpravy k souboru annotations.json například zvýšení ohraničující hranice pole. 
-4. Klikněte pravým tlačítkem myši klikněte na výstupní asset z první fáze, vyberte Redactor a spustit s **Redact** režimu. 
+3. Volitelné Proveďte jakékoli úpravy souboru poznámky. JSON, jako je například zvětšení hranic ohraničovacího rámečku. 
+4. Klikněte pravým tlačítkem myši na výstupní prostředek od prvního průchodu, vyberte redigování a spusťte s režimem redigování. 
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
-5. Stáhnout nebo sdílet konečné zrevidovaně výstupního prostředku. 
+5. Stáhněte nebo sdílejte finální prostředek redigování výstupu. 
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
-## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor Vizualizéru open source nástroj
+## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Open source nástroj Vizualizér Azure Media Redactor
 
-Open source [nástroj vizualizátor](https://github.com/Microsoft/azure-media-redactor-visualizer) je navržené pro pomoc vývojářům jenom od verze formátu poznámky se analýza kódu a pomocí výstupu.
+Nástroj open source [Vizualizér](https://github.com/Microsoft/azure-media-redactor-visualizer) je navržený tak, aby usnadnil vývojářům jednoduše začít s analýzou a používáním výstupu pomocí formátu poznámek.
 
-Po naklonování úložiště, chcete-li spustit projekt, budete muset stáhnout aplikaci FFMPEG z jejich [oficiální web](https://ffmpeg.org/download.html).
+Po klonování úložiště bude nutné stáhnout FFMPEG ze své [oficiální lokality](https://ffmpeg.org/download.html), aby bylo možné projekt spustit.
 
-Pokud jste vývojář pokusu o analýzu dat JSON poznámky, vyhledejte uvnitř Models.MetaData příklady kódu pro vzorku.
+Pokud jste vývojář, který se pokouší analyzovat data anotace JSON, podívejte se do části modely. MetaData pro ukázkové příklady kódu.
 
 ### <a name="set-up-the-tool"></a>Nastavení nástroje
 
-1.  Stáhněte si a sestavte celé řešení. 
+1.  Stáhněte si celé řešení a sestavte ho. 
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
-2.  Stáhněte si aplikaci FFMPEG z [tady](https://ffmpeg.org/download.html). Tento projekt, byla původně vyvinuta be1d324 verze (2016-10-04) s statické propojování. 
-3.  Zkopírujte ffmpeg.exe a ffprobe.exe do stejné složky jako AzureMediaRedactor.exe výstup. 
+2.  Stáhněte si FFMPEG [](https://ffmpeg.org/download.html)odsud. Tento projekt byl původně vyvinut s verzí be1d324 (2016-10-04) se statickým propojením. 
+3.  Zkopírujte ffmpeg. exe a ffprobe. exe do stejné výstupní složky jako AzureMediaRedactor. exe. 
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
-4. Spusťte AzureMediaRedactor.exe. 
+4. Spusťte AzureMediaRedactor. exe. 
 
-### <a name="use-the-tool"></a>Pomocí nástroje
+### <a name="use-the-tool"></a>Použití nástroje
 
-1. Zpracování videa ve vašem účtu Azure Media Services s redactor ve verzi sady Management Pack režim analyzovat. 
-2. Stažení původního videa souboru a výstup redigování – analýza úlohy. 
-3. Spusťte aplikaci vizualizéru a vyberte výše uvedené soubory. 
+1. Zpracujte své video v účtu Azure Media Services pomocí nástroje pro naZobrazení redigování v režimu analýzy. 
+2. Stáhněte si původní videosoubor i výstup úlohy redigování-Analyze. 
+3. Spusťte aplikaci Vizualizér a vyberte soubory výše. 
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
 
-4. Zobrazit náhled souboru. Vyberte tváří, které byste chtěli rozostření prostřednictvím na bočním panelu na pravé straně. 
+4. Zobrazte náhled souboru. Vyberte, které plošky chcete Rozostřit přes postranní panel na pravé straně. 
     
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
-5.  Dolní části textového pole se aktualizuje face ID. Vytvořte soubor s názvem "idlist.txt" se tyto identifikátory jako seznam oddělený znaku nového řádku. 
+5.  Dolní textové pole se aktualizuje s ID tváře. Vytvořte soubor s názvem "idlist. txt" s těmito ID jako seznam s odděleným novým řádkem. 
 
     >[!NOTE]
-    > Idlist.txt uložit v ANSI. Můžete použít Poznámkový blok uložte v ANSI.
+    > Idlist. txt by se měl uložit ve standardu ANSI. Pomocí poznámkového bloku můžete ušetřit v ANSI.
     
-6.  Tento soubor nahrajte do prostředku výstupu z kroku 1. Nahrání původního videa do tohoto prostředku i a nastavit jako primární asset. 
-7.  Spustit úlohu redigování na tento prostředek s režimem "Redact" získat poslední redigovaný videa. 
+6.  Nahrajte tento soubor do výstupního prostředku z kroku 1. Nahrajte také původní video do tohoto assetu a nastavte ho jako primární Asset. 
+7.  Spusťte úlohu redigování na tomto assetu pomocí režimu "redigování", abyste získali konečné navýšení videa. 
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
@@ -128,8 +129,8 @@ Pokud jste vývojář pokusu o analýzu dat JSON poznámky, vyhledejte uvnitř M
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Azure Media Services Analytics Overview](media-services-analytics-overview.md)
+[Přehled analýzy Azure Media Services](media-services-analytics-overview.md)
 
-[Azure Media Analytics demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Ukázky Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-[Oznamujeme vydání rozmazání Obličejů pro Azure Media Analytics](https://azure.microsoft.com/blog/azure-media-redactor/)
+[Oznamujeme, že se redigování obličeje pro Azure Media Analytics](https://azure.microsoft.com/blog/azure-media-redactor/)

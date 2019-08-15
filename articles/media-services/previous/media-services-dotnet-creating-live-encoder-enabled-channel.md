@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: b2ff6caa4c1b3626e4be1684976441be6ecbfe30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: anilmur
+ms.reviewer: juliako
+ms.openlocfilehash: 37969986b1d015ed08113da42a309eef42df569c
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61231399"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69015506"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Postup živého streamování využívajícího službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí rozhraní .NET
 > [!div class="op_single_selector"]
@@ -28,7 +29,7 @@ ms.locfileid: "61231399"
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v tématu [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
 > 
 > 
 
@@ -41,9 +42,9 @@ Další koncepční informace o kanálech s povoleným kódováním v reálném 
 Následující kroky popisují úlohy, které jsou běžně součásti procesu vytváření aplikací pro živé streamování.
 
 > [!NOTE]
-> V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amslived@microsoft.com.
+> V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amshelp@microsoft.com.
 
-1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér služby live Encoding, který umí produkovat datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).
+1. Připojte k počítači videokameru. Spusťte a nakonfigurujte on-premises Live Encoder, který může nastavovat jeden datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).
 
     Tento krok můžete provést i po vytvoření kanálu.
 
@@ -89,14 +90,14 @@ Tento článek vás seznámí s následujícími postupy:
 ## <a name="prerequisites"></a>Požadavky
 K dokončení kurzu potřebujete následující:
 
-* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Získáte kredity, které můžete použít k vyzkoušení placených služeb Azure. Až kredity vyčerpáte, můžete si účet ponechat a stále používat bezplatné služby a funkce Azure, například funkci Web Apps ve službě Azure App Service.
+* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Získáte kredity, které můžete použít k vyzkoušení placených služeb Azure. Až kredity vyčerpáte, můžete si účet ponechat a stále používat bezplatné služby a funkce Azure, například funkci Web Apps ve službě Azure App Service.
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Vytvoření účtu](media-services-portal-create-account.md).
 * Visual Studio 2010 SP1 (Professional, Premium, Ultimate nebo Express) nebo novější verze.
 * Musíte používat sadu Media Services .NET SDK verze 3.2.0.0 nebo novější.
 * Webová kamera a kodér, který dokáže odesílat živý datový proud s jednou přenosovou rychlostí.
 
 ## <a name="considerations"></a>Požadavky
-* V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amslived@Microsoft.com.
+* V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amshelp@microsoft.com.
 * Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
 ## <a name="download-sample"></a>Stažení ukázky

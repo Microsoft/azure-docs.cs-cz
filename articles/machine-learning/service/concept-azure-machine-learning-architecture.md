@@ -1,7 +1,7 @@
 ---
 title: Klíčové koncepty & architektury
 titleSuffix: Azure Machine Learning service
-description: Přečtěte si o architektuře, pojmech, konceptech a pracovním postupu, které tvoří službu Azure Machine Learning.
+description: Přečtěte si o architektuře, pojmech, konceptech a pracovních postupech, které tvoří službu Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6f6c41e5de4f4a053748dfb08dc57e8acac32e5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ea5e476680b07a6a7ba2b57e94f1f0b99cc10987
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848229"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990084"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak služba Azure Machine Learning funguje: Architektura a koncepty
 
@@ -49,12 +49,16 @@ Použijte tyto nástroje pro Azure Machine Learning:
 + Psaní kódu v Visual Studio Code s [rozšířením Azure Machine Learning vs Code](how-to-vscode-tools.md)
 + Použijte [rozhraní Visual Interface (Preview) pro službu Azure Machine Learning](ui-concept-visual-interface.md) k provedení kroků pracovního postupu bez psaní kódu.
 
-## <a name="glossary-of-concepts"></a>Glosář konceptů
+> [!NOTE]
+> I když tento článek popisuje pojmy a koncepty, které používá služba Azure Machine Learning, nedefinuje pro platformu Azure pojmy a koncepty. Další informace o terminologii platforem Azure najdete v tématu [Microsoft Azure Glosář](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
+
+## <a name="glossary"></a>Glosář
 
 + <a href="#workspaces">Stejných</a>
 + <a href="#experiments">Experimenty</a>
 + <a href="#models">Vzor</a>
 + <a href="#run-configurations">Konfigurace spuštění</a>
++ [Odhady](#estimators)
 + <a href="#datasets-and-datastores">Datová sada & úložiště dat</a>
 + <a href="#compute-targets">Cíle výpočtů</a>
 + <a href="#training-scripts">Školicí skript</a>
@@ -69,19 +73,9 @@ Použijte tyto nástroje pro Azure Machine Learning:
 + <a href="#ml-pipelines">Kanály ML</a>
 + <a href="#logging">Logging</a>
 
-> [!NOTE]
-> I když tento článek popisuje pojmy a koncepty, které používá služba Azure Machine Learning, nedefinuje pro platformu Azure pojmy a koncepty. Další informace o terminologii platforem Azure najdete v tématu [Microsoft Azure Glosář](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
-
-
 ### <a name="workspaces"></a>Pracovní prostory
 
-[Pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu Azure Machine Learning. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte při použití Azure Machine Learning služby.
-
-Taxonomie pracovního prostoru je znázorněna v následujícím diagramu:
-
-[![Taxonomie pracovního prostoru](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
-
-Další informace o pracovních prostorech najdete v tématu [co je Azure Machine Learning pracovní prostor?](concept-workspace.md).
+[Pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu Azure Machine Learning. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte při použití Azure Machine Learning služby. Pracovní prostor můžete sdílet s ostatními. Podrobný popis pracovních prostorů najdete v tématu [co je Azure Machine Learning pracovní prostor?](concept-workspace.md).
 
 ### <a name="experiments"></a>Experimenty
 
@@ -97,7 +91,7 @@ Model je produkovaný spustit ve službě Azure Machine Learning. Můžete také
 
 Služba Azure Machine Learning je nezávislá Framework. Při vytváření modelu můžete použít jakoukoli oblíbenou architekturu strojového učení, jako je Scikit-Learning, XGBoost, PyTorch, TensorFlow a chainer.
 
-Příklad školení modelu najdete v tématu [kurz: Školení modelu klasifikace obrázků pomocí služby](tutorial-train-models-with-aml.md)Azure Machine Learning.
+Příklad školení modelu pomocí Scikit-učení a Estimator najdete v [kurzu: Školení modelu klasifikace obrázků pomocí služby](tutorial-train-models-with-aml.md)Azure Machine Learning.
 
 **Registr modelu** udržuje přehled o všech modelech v pracovním prostoru služby Azure Machine Learning.
 
@@ -119,6 +113,19 @@ Konfigurace spuštění je sada instrukcí, které definují, jak by měl skript
 Konfiguraci spuštění lze zachovat do souboru v adresáři, který obsahuje školicí skript, nebo může být vytvořen jako objekt v paměti a použit k odeslání běhu.
 
 Například konfigurace spuštění najdete v tématu [Výběr a použití výpočetní cíle ke školení modelu](how-to-set-up-training-targets.md).
+
+### <a name="estimators"></a>Odhady
+
+Pro usnadnění školení modelů s oblíbenými rozhraními vám třída Estimator umožňuje snadno sestavit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odesílání školicích skriptů, které používají všechny vámi zvolené vzdělávací architektury (například scikit-učení).
+
+Pro úlohy PyTorch, TensorFlow a řetězení Azure Machine Learning poskytuje také příslušné [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)a [Chain](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) odhady pro zjednodušení používání těchto rozhraní.
+
+Další informace najdete v následujících článcích:
+
+* [Modely vlakových ml pomocí odhady](how-to-train-ml-models.md).
+* [Pytorch se škálují modely hloubkového učení s](how-to-train-pytorch.md)využitím Azure Machine Learning.
+* [Pomocí Azure Machine Learning služby je škálovatelná a zaregistrujte modely TensorFlow ve](how-to-train-tensorflow.md)velkém měřítku.
+* [Škálujte a Registrujte modely zřetězení ve velkém měřítku pomocí Azure Machine Learning služby](how-to-train-chainer.md).
 
 ### <a name="datasets-and-datastores"></a>Datové sady a úložiště dat
 
@@ -152,7 +159,6 @@ Spuštění je záznam, který obsahuje následující informace:
 * Snímek adresáře, který obsahuje vaše skripty před spuštění
 
 Spuštění vytvoříte při odeslání skriptu pro výuku modelu. Spuštění může mít nula nebo více podřízených spuštění. Například spuštění na nejvyšší úrovni může mít dvě podřízená spuštění, z nichž každá může mít vlastní podřízený běh.
-
 
 ### <a name="github-tracking-and-integration"></a>Sledování a integrace GitHubu
 

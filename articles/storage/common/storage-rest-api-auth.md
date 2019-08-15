@@ -1,6 +1,6 @@
 ---
-title: Volání operace služby Azure Storage Services REST API, včetně ověřování | Dokumentace Microsoftu
-description: Volání operace služby Azure Storage Services REST API, včetně ověřování
+title: Volání služeb Azure Storage Services REST API operací, včetně ověřování | Microsoft Docs
+description: Volání služeb Azure Storage Services REST API operací, včetně ověřování
 services: storage
 author: tamram
 ms.service: storage
@@ -9,33 +9,33 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 38a120747734cbe4af8804a3e7596fc11a2c2eb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2149bfb68697129680c45f15c6cce359863fbc59
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306664"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989946"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Použití rozhraní REST API pro službu Azure Storage
 
-V tomto článku se dozvíte, jak používat rozhraní REST API služby Storage Blob a jak ověřovat volání služby. Zápisem z pohledu vývojáře neví nic o REST a představu o volání REST. Doporučujeme podívat se na referenční dokumentaci pro volání REST a zjistit, jak přeloží ji do skutečný volání REST – pole, která přejít where? Po získání nastavení volání REST, můžete využít tyto znalosti k používání některé z jiných rozhraní API REST služby úložiště.
+V tomto článku se dozvíte, jak používat rozhraní REST API služby Blob Storage a jak ověřit volání služby. Je napsaný z pohledu vývojáře, který neví nic o REST a neobsahuje žádné informace o tom, jak provést volání REST. Podíváme se na referenční dokumentaci pro volání REST a podívejte se, jak ji přeložit do skutečného volání REST – která pole se nacházejí? Až se naučíte, jak nastavit volání REST, můžete toto znalosti využít k používání kterékoli jiné rozhraní REST API služby Storage.
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Aplikace vypíše kontejnery v úložišti objektů blob pro účet úložiště. Vyzkoušet kód v tomto článku, budete potřebovat následující položky: 
+Aplikace zobrazí seznam kontejnerů v úložišti objektů BLOB pro účet úložiště. K tomu, abyste si vyzkoušeli kód v tomto článku, potřebujete následující položky: 
 
-* Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) s následující sadou funkcí:
+* Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) s následujícími úlohami:
     - Vývoj pro Azure
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Účet úložiště pro obecné účely. Pokud ještě nemáte účet úložiště, přečtěte si téma [vytvořit účet úložiště](storage-quickstart-create-account.md).
+* Účet úložiště pro obecné účely. Pokud ještě nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
 
-* V příkladu v tomto článku ukazuje, jak vypsat kontejnery v účtu úložiště. Chcete-li zobrazit výstup, přidejte některé kontejnery úložiště objektů blob v účtu úložiště než začnete.
+* V příkladu v tomto článku se dozvíte, jak vytvořit seznam kontejnerů v účtu úložiště. Pokud chcete zobrazit výstup, přidejte do úložiště objektů BLOB v účtu úložiště nějaké kontejnery, než začnete.
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
-Ukázková aplikace je konzolové aplikace napsané v jazyce C#.
+Ukázková aplikace je vytvořená Konzolová aplikace C#.
 
 Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojového prostředí. 
 
@@ -43,73 +43,73 @@ Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojo
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 ```
 
-Tento příkaz naklonuje úložiště do vaší místní složky gitu. Otevřít řešení sady Visual Studio, vyhledejte storage-dotnet-rest-api-with-auth složku, otevřete ji a dvakrát klikněte na StorageRestApiAuth.sln. 
+Tento příkaz naklonuje úložiště do vaší místní složky gitu. Chcete-li otevřít řešení sady Visual Studio, vyhledejte složku Storage-dotnet-REST-API-with-auth, otevřete ji a dvakrát klikněte na StorageRestApiAuth. sln. 
 
 ## <a name="what-is-rest"></a>Co je REST?
 
-ZBÝVAJÍCÍ prostředky *přenosu representational stavu*. Pro konkrétní definici, projděte si [Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer).
+REST znamená *převádění přenosů stavu*. Konkrétní definici najdete v [Wikipedii](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
-V podstatě REST architektura je taková, lze použít při volání rozhraní API nebo zajištěním, k dispozici k volání rozhraní API. Je nezávislý na co se děje na obou stranách a jaký software se používá při odesílání nebo přijímání ZBÝVAJÍCÍ volá. Můžete napsat aplikace, která běží na Macu, Windows, Linux, telefon s Androidem nebo tabletu, iPhone, iPod nebo webové stránky a použijte stejné rozhraní REST API pro všechny tyto platformy. Data mohou být předána v a/nebo si při volání rozhraní REST API. Rozhraní REST API není pro vás z jaké platformy je volána – co je důležité je informací předaných v požadavku a data zadaná v odpovědi.
+V podstatě je to architektura, kterou můžete použít při volání rozhraní API nebo k volání rozhraní API. Je nezávisle na tom, co se děje na obou stranách a jaký další software se používá při odesílání nebo přijímání volání REST. Můžete napsat aplikaci, která běží na Macu, Windows, Linux, telefonu s Androidem nebo tabletu, iPhonu, iPod nebo na webu a používat stejný REST API pro všechny tyto platformy. Data je možné předat nebo oddálit při volání REST API. REST API nezáleží na tom, jakou platformu se říká – důležité jsou informace předané v žádosti a data poskytnutá v odpovědi.
 
-Vědět, jak použít REST je užitečné dovedností. Produktovému týmu Azure často vydává nové funkce. V mnoha případech nové funkce jsou přístupné prostřednictvím rozhraní REST. V některých případech, ale nebyly funkce prezentované prostřednictvím **všechny** klientských knihoven pro úložiště nebo uživatelského rozhraní (třeba na webu Azure portal). Pokud chcete vždy použít nejnovější a nejlepší, učení REST je povinné. Navíc pokud chcete zadat vlastní knihovnu pro interakci s Azure Storage, nebo chcete pro přístup k úložišti Azure pomocí programovacího jazyka, který nemá klientské knihovny SDK nebo úložiště, můžete použít rozhraní REST API.
+Znalost toho, jak používat REST, je užitečnou dovedností. Produktový tým Azure často uvolňuje nové funkce. V mnoha případech jsou nové funkce přístupné prostřednictvím rozhraní REST. Někdy se ale tyto funkce nedostaly prostřednictvím **všech** klientských knihoven pro úložiště nebo uživatelského rozhraní (například Azure Portal). Pokud chcete vždy používat nejnovější a nejlepší, je nutné, abyste si poučení. Chcete-li také napsat vlastní knihovnu pro interakci s Azure Storage nebo chcete získat přístup k Azure Storage pomocí programovacího jazyka, který nemá sadu SDK nebo klientskou knihovnu pro úložiště, můžete použít REST API.
 
-## <a name="about-the-sample-application"></a>O ukázkové aplikace
+## <a name="about-the-sample-application"></a>O ukázkové aplikaci
 
-Ukázková aplikace vypíše kontejnery v účtu úložiště. Jakmile pochopíte, jak souvisí informace v dokumentaci k rozhraní REST API pro skutečný kód, se snadněji zjistit, ostatní volání REST. 
+Ukázková aplikace vypíše kontejnery v účtu úložiště. Jakmile pochopíte, jak jsou informace v dokumentaci REST API v korelaci s vaším skutečným kódem, je snazší zjistit další volání REST. 
 
-Když se podíváte na [rozhraní REST API služby Blob](/rest/api/storageservices/Blob-Service-REST-API), uvidíte všechny operace můžete provádět na úložiště objektů blob. Klientské knihovny úložiště jsou obálky kolem rozhraní REST API – jejich usnadňují za vás do úložiště bez přímo pomocí rozhraní REST API. Jak bylo uvedeno výše, někdy ale chcete používat rozhraní REST API namísto Klientská knihovna pro úložiště.
+Pokud se podíváte na [REST API služby BLOB Service](/rest/api/storageservices/Blob-Service-REST-API), zobrazí se všechny operace, které můžete provádět v úložišti objektů BLOB. Klientské knihovny pro úložiště jsou obálkami rozhraní REST API – usnadňují přístup k úložišti bez použití rozhraní REST API přímo. Ale jak je uvedeno výše, někdy chcete místo klientské knihovny pro úložiště použít REST API.
 
-## <a name="rest-api-reference-list-containers-api"></a>Reference k rozhraní REST API: Vypsat kontejnery rozhraní API
+## <a name="rest-api-reference-list-containers-api"></a>Odkaz na REST API: Vypsat rozhraní API kontejnerů
 
-Podívejme se na stránce v referenci rozhraní REST API pro [ListContainers](/rest/api/storageservices/List-Containers2) operace. Tyto informace vám pomůže pochopit, kde některá pole pocházejí z požadavku a odpovědi.
+Pojďme se podívat na stránku v referenci REST API pro operaci [ListContainers](/rest/api/storageservices/List-Containers2) . Tyto informace vám pomůžou pochopit, kde některá pole pocházejí z v žádosti a odpovědi.
 
-**Metoda požadavku**: GET. Tento příkaz je metoda HTTP, který zadáte jako vlastnost objektu požadavku. Ostatní hodnoty pro tuto operaci zahrnují HEAD, PUT a DELETE, v závislosti na rozhraní API, se označuje jako volání.
+**Metoda požadavku**: ČTĚTE. Tato operace je metoda HTTP, kterou zadáte jako vlastnost objektu Request. Mezi další hodnoty tohoto příkazu patří HEADers, PUT a DELETE v závislosti na rozhraní API, které voláte.
 
-**Identifikátor URI žádosti**: https://myaccount.blob.core.windows.net/?comp=list   Tím se vytvoří z koncového bodu účtu úložiště objektů blob `http://myaccount.blob.core.windows.net` a řetězec prostředku `/?comp=list`.
+**Identifikátor URI žádosti**: https://myaccount.blob.core.windows.net/?comp=list Tato služba se vytvoří z koncového bodu `http://myaccount.blob.core.windows.net` účtu úložiště BLOB a řetězce `/?comp=list` prostředků.
 
-[Parametry identifikátoru URI](/rest/api/storageservices/List-Containers2#uri-parameters): Existují další parametry dotazu, které můžete použít při volání metody ListContainers. Několik z těchto parametrů se *vypršení časového limitu* volání (v sekundách) a *předponu*, který se používá k filtrování.
+[Parametry identifikátoru URI](/rest/api/storageservices/List-Containers2#uri-parameters): K dispozici jsou další parametry dotazů, které můžete použít při volání ListContainers. Několik z těchto parametrů je *časovým limitem* pro volání (v sekundách) a *předponou*, která se používá pro filtrování.
 
-Další užitečné parametr *maxresults:* Pokud než tato hodnota jsou k dispozici více kontejnerů, budou obsahovat tělo odpovědi *NextMarker* element, který označuje dalšího kontejneru se vraťte na další požadavek. Pokud chcete tuto funkci používat, je zadat *NextMarker* hodnoty jako *značky* parametr v identifikátoru URI při příští žádosti o. Při použití této funkce je obdobou stránkování přes výsledky. 
+Dalším užitečným parametrem je *MaxResults:* Pokud je k dispozici více kontejnerů než tato hodnota, text odpovědi bude obsahovat element *NextMarker* , který indikuje další kontejner, který se má vrátit na další požadavek. Chcete-li použít tuto funkci, zadejte hodnotu *NextMarker* jako parametr *značky* v identifikátoru URI při provedení dalšího požadavku. Při použití této funkce je podobná stránkování prostřednictvím výsledků. 
 
-Chcete-li použít další parametry, přidejte je na řetězec prostředku s hodnotou, jako v tomto příkladu:
+Chcete-li použít další parametry, přidejte je k řetězci prostředku s hodnotou, například v tomto příkladu:
 
 ```
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[Hlavičky požadavku](/rest/api/storageservices/List-Containers2#request-headers) **:** Tato část obsahuje seznam hlaviček žádostí požadované a volitelné. Tři hlavičky jsou povinné: *autorizace* záhlaví, *x-ms-date* (čas UTC požadavku obsahuje), a *x-ms-version* (určuje verzi modulu REST Rozhraní API pro použití). Včetně *x-ms klienta request-id* v hlavičkách je nepovinný – můžete nastavit hodnotu pro toto pole k ničemu; jsou zapsána do úložiště analýzy protokolů, pokud je povoleno protokolování.
+[Hlavičky požadavku](/rest/api/storageservices/List-Containers2#request-headers) **:** Tato část obsahuje seznam požadovaných a volitelných hlaviček požadavků. Jsou požadovány tři hlavičky: *autorizační* hlavička, *x-MS-Date* (obsahuje čas UTC pro požadavek) a *x-MS-Version* (určuje verzi REST API, která se má použít). Zahrnutí *x-MS-Client-Request-ID* do hlaviček je volitelné – můžete nastavit hodnotu pro toto pole na cokoli. Když je povolené protokolování, zapisuje se do protokolů analýzy úložiště.
 
-[Text žádosti](/rest/api/storageservices/List-Containers2#request-body) **:** Není k dispozici není datová část požadavku pro ListContainers. Text požadavku se používá ve všech operacích PUT při odesílání objektů BLOB, stejně jako SetContainerAccessPolicy, který umožňuje odeslat XML seznam uložené zásady přístupu k použití. Uložené zásady přístupu jsou popsány v následujícím článku [použití sdílených přístupových podpisů (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+[Text žádosti](/rest/api/storageservices/List-Containers2#request-body) **:** Pro ListContainers není k dispozici žádný text žádosti. Text žádosti se používá na všech operacích PUT při nahrávání objektů BLOB a také na SetContainerAccessPolicy, což umožňuje, aby se odesílaly v seznamu XML uložených zásad přístupu, které se mají použít. Zásady uloženého přístupu jsou popsány v článku [Používání podpisů sdíleného přístupu (SAS)](storage-sas-overview.md).
 
-[Stavový kód odpovědi](/rest/api/storageservices/List-Containers2#status-code) **:** Říká jakékoli stavové kódy, které potřebujete znát. V tomto příkladu je stavový kód HTTP 200 ok. Úplný seznam stavových kódů HTTP, projděte si [definice stavových kódů](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Kódy chyb, které jsou specifické pro rozhraní REST API služby Storage najdete v tématu [kódy chyb společné rozhraní REST API](/rest/api/storageservices/common-rest-api-error-codes)
+[Stavový kód odpovědi](/rest/api/storageservices/List-Containers2#status-code) **:** Oznamuje všechny stavové kódy, které potřebujete znát. V tomto příkladu je stavový kód HTTP 200 OK. Úplný seznam stavových kódů HTTP najdete v části [definice stavového kódu](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Kódy chyb specifické pro rozhraní REST API pro úložiště najdete v tématu [běžné kódy chyb REST API](/rest/api/storageservices/common-rest-api-error-codes)
 
-[Hlavičky odpovědi](/rest/api/storageservices/List-Containers2#response-headers) **:** Patří mezi ně *typ obsahu*; *x-ms-request-id*, který je předaný; id požadavku *x-ms-version*, který určuje verzi modulu služby Blob service použít; a *datum*, který je ve standardu UTC a dává pokyn doba požadavku byla provedena.
+[Hlavičky odpovědi](/rest/api/storageservices/List-Containers2#response-headers) **:** Patří sem *typ obsahu*; *x-MS-Request-ID*, což je ID žádosti, kterou jste předali. *x-MS-Version*, která označuje verzi používaného BLOB Service; a *Datum*, které je ve standardu UTC, a informuje o tom, jaká doba byla vytvořena.
 
-[Text odpovědi](/rest/api/storageservices/List-Containers2#response-body): Toto pole je struktury XML poskytuje požadovaná data. V tomto příkladu je odpověď na seznam kontejnery a jejich vlastnosti.
+[Tělo odpovědi](/rest/api/storageservices/List-Containers2#response-body): Toto pole je struktura XML poskytující požadovaná data. V tomto příkladu je odpověď seznamem kontejnerů a jejich vlastností.
 
-## <a name="creating-the-rest-request"></a>Vytvoření požadavku REST
+## <a name="creating-the-rest-request"></a>Vytváření žádosti REST
 
-Několik poznámek k před zahájením – zabezpečení při spuštění v produkčním prostředí vždy používejte protokol HTTPS, nikoli protokol HTTP. Pro účely tohoto cvičení měli byste použít HTTP, můžete zobrazit data požadavku a odpovědi. Chcete-li zobrazit informace o požadavku a odpovědi ve skutečné volání REST, si můžete stáhnout [Fiddler](https://www.telerik.com/fiddler) nebo podobné aplikace. V sadě Visual Studio řešení, název účtu úložiště a klíč jsou pevně zakódované v třídě. Metoda ListContainersAsyncREST název účtu úložiště a klíč účtu úložiště předá metody, které se používají k vytváření různých součástí požadavku REST. V reálné aplikaci název účtu úložiště a klíč by se nacházejí v konfiguračním souboru, proměnné prostředí, nebo ze služby Azure Key Vault načíst.
+Několik poznámek před začátkem – z důvodu zabezpečení při provozu v produkčním prostředí vždycky místo protokolu HTTP používat protokol HTTPS. Pro účely tohoto cvičení byste měli použít protokol HTTP, abyste mohli zobrazit data žádosti a odpovědi. Pokud chcete zobrazit informace o žádosti a odpovědi ve skutečných voláních REST, můžete si stáhnout [Fiddler](https://www.telerik.com/fiddler) nebo podobnou aplikaci. V řešení sady Visual Studio se název a klíč účtu úložiště pevně zakódované ve třídě. Metoda ListContainersAsyncREST předá do metod, které slouží k vytvoření různých součástí žádosti REST, název účtu úložiště a klíč účtu úložiště. V reálné aplikaci se název a klíč účtu úložiště nacházejí v konfiguračním souboru, proměnných prostředí nebo je možné je načíst z Azure Key Vault.
 
-Náš ukázkový projekt je kód pro vytvoření autorizační hlavičky v samostatné třídě. Cílem je, že může trvat celé jedné třídy a přidejte ho do vašeho vlastního řešení a použije "tak jak jsou." Autorizační hlavička kód funguje pro většinu volání rozhraní REST API do služby Azure Storage.
+V našem ukázkovém projektu je kód pro vytvoření autorizační hlavičky v samostatné třídě. Nápad je, že můžete použít celou třídu a přidat ji do vlastního řešení a použít ji "tak, jak je". Kód autorizační hlavičky funguje pro většinu REST API volání Azure Storage.
 
-Chcete-li vytvářet žádosti, které je objekt HttpRequestMessage, přejděte na ListContainersAsyncREST v souboru Program.cs. Tady jsou kroky pro vytvoření žádosti: 
+Chcete-li vytvořit požadavek, který je objektem zprávy HttpRequestMessage, v Program.cs použijte ListContainersAsyncREST. Postup pro sestavování žádosti: 
 
-* Vytvořte identifikátor URI, který má být použit pro volání služby. 
-* Vytvoření objektu HttpRequestMessage a nastavení datové části. Datová část má hodnotu null pro ListContainersAsyncREST, protože jsme nepředáváme cokoli.
-* Přidáte záhlaví požadavku pro x-ms-date a x-ms-version.
-* Získat autorizační hlavičku a přidejte ji.
+* Vytvořte identifikátor URI, který se má použít pro volání služby. 
+* Vytvořte objekt zprávy HttpRequestMessage a nastavte datovou část. Datová část má pro ListContainersAsyncREST hodnotu null, protože neprovádíme žádnou možnost.
+* Přidejte hlavičky žádosti pro x-MS-Date a x-MS-Version.
+* Získejte autorizační hlavičku a přidejte ji.
 
-Některé základní informace, které budete potřebovat: 
+Některé základní informace, které potřebujete: 
 
-*  Pro ListContainers **metoda** je `GET`. Tato hodnota nastavena, při vytváření instance požadavku. 
-*  **Prostředků** je část dotazu identifikátoru URI, která určuje, které rozhraní API je volána, takže hodnota je `/?comp=list`. Jak bylo uvedeno dříve, prostředek je na stránce dokumentace ke službě odkaz s informacemi o [ListContainers API](/rest/api/storageservices/List-Containers2).
-*  Identifikátor URI je vytvořený tak, že vytváří se koncový bod služby Blob service pro daný účet úložiště a zřetězení prostředku. Hodnota pro **identifikátor URI žádosti** končí nebuďte `http://contosorest.blob.core.windows.net/?comp=list`.
-*  Pro ListContainers **includesearchresults: true** má hodnotu null a neexistují žádné doplňující **záhlaví**.
+*  Pro ListContainers je `GET` **Metoda** . Tato hodnota je nastavena při vytváření instance žádosti. 
+*  **Prostředek** je DOTAZOVACÍ část identifikátoru URI, která určuje, které rozhraní API se zavolá, takže hodnota je `/?comp=list`. Jak bylo uvedeno výše, prostředek se nachází na stránce Referenční dokumentace, která zobrazuje informace o [rozhraní ListContainers API](/rest/api/storageservices/List-Containers2).
+*  Identifikátor URI je vytvořený vytvořením koncového bodu Blob service pro tento účet úložiště a zřetězením prostředku. Hodnota identifikátoru **URI žádosti** končí `http://contosorest.blob.core.windows.net/?comp=list`.
+*  V případě ListContainers má **částmi** hodnotu null a nejsou k dispozici žádné další **hlavičky**.
 
-Různých rozhraní API může mít jiné parametry a zajistěte tak předání jako *ifMatch*. Příklad, ve kterém může pomocí ifMatch je při volání metody PutBlob. V takovém případě nastavte ifMatch na značku eTag a zároveň pouze aktualizuje objekt blob, pokud aktuální značku eTag na objektu blob odpovídá značce eTag zadané. Pokud někdo jiný se aktualizovala objekt blob od načítání eTag, jejich změny nebudou přepsány. 
+Různá rozhraní API mohou mít další parametry, které budou předávat například *ifMatch*. Příklad, kde můžete použít ifMatch, je při volání PutBlob. V takovém případě nastavíte ifMatch na eTag a aktualizuje jenom objekt blob, pokud se značka eTag, kterou zadáte, shoduje s aktuálním eTag objektu BLOB. Pokud někdo jiný aktualizoval objekt BLOB od načtení značky eTag, jejich změna se nepřepisuje. 
 
-Nejprve nastavte `uri` a `payload`. 
+Nejprve nastavte `uri` `payload`a. 
 
 ```csharp
 // Construct the URI. This will look like this:
@@ -121,7 +121,7 @@ String uri = string.Format("http://{0}.blob.core.windows.net?comp=list", storage
 Byte[] requestPayload = null;
 ```
 
-V dalším kroku vytvoření instance žádosti, nastavení metodu na `GET` a poskytnutí identifikátoru URI.
+Dále vytvořte instanci požadavku a nastavte metodu na `GET` a poskytněte identifikátor URI.
 
 ```csharp 
 //Instantiate the request message with a null payload.
@@ -130,7 +130,7 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 {
 ```
 
-Přidáte záhlaví požadavku pro x-ms-date a x-ms-version. Toto místo v kódu je také kde můžete přidávat žádné další hlavičky žádosti volání. V tomto příkladu nejsou žádná další záhlaví. Příklad rozhraní API, které se předává v dodatečné hlavičky je SetContainerACL. Pro úložiště objektů Blob přidá hlavičku nazývá "x-ms-blob veřejný přístup" a hodnotou pro úroveň přístupu.
+Přidejte hlavičky žádosti pro x-MS-Date a x-MS-Version. Toto místo v kódu je také tam, kde přidáte další hlavičky požadavků vyžadované pro volání. V tomto příkladu nejsou k dispozici žádné další hlavičky. Příkladem rozhraní API, které projde do dodatečných hlaviček, je SetContainerACL. Pro úložiště objektů BLOB přidá hlavičku s názvem "x-MS-BLOB-Public-Access" a hodnotou úrovně přístupu.
 
 ```csharp
     // Add the request headers for x-ms-date and x-ms-version.
@@ -141,7 +141,7 @@ Přidáte záhlaví požadavku pro x-ms-date a x-ms-version. Toto místo v kódu
     //   the authorization header. 
 ```
 
-Volání metody, která vytvoří autorizační hlavičky a přidejte ho do hlavičky žádosti. Uvidíte jak vytvoření autorizační hlavičky později v tomto článku. Název metody rozlišuje GetAuthorizationHeader, který se zobrazí v tomto fragmentu kódu:
+Zavolejte metodu, která vytvoří autorizační hlavičku a přidá ji do hlaviček požadavku. Později v článku se dozvíte, jak vytvořit autorizační hlavičku. Název metody je GetAuthorizationHeader, který vidíte v tomto fragmentu kódu:
 
 ```csharp
     // Get the authorization header and add it.
@@ -149,11 +149,11 @@ Volání metody, která vytvoří autorizační hlavičky a přidejte ho do hlav
         storageAccountName, storageAccountKey, now, httpRequestMessage);
 ```
 
-V tomto okamžiku `httpRequestMessage` obsahuje kompletní autorizační hlavičky požadavku REST. 
+V tomto okamžiku `httpRequestMessage` obsahuje žádost REST úplnou hlavičkou autorizace. 
 
-## <a name="call-the-rest-api-with-the-request"></a>Volání rozhraní REST API s požadavkem
+## <a name="call-the-rest-api-with-the-request"></a>Volání REST API s požadavkem
 
-Teď, když máte požadavek, můžete volat SendAsync odeslání požadavku REST. SendAsync volá rozhraní API a získá zpět odpověď. Zkontrolujte odpovědi StatusCode (200 je v pořádku), pak analyzovat odpověď. V tomto případě získáte seznam XML kontejnerů. Podívejme se na kód pro volání metody GetRESTRequest vytvořit požadavek, proveďte požadavek a pak zkontrolujte odpovědi pro seznam kontejnerů.
+Teď, když máte žádost, můžete zavolat SendAsync a poslat žádost REST. SendAsync volá rozhraní API a získá odpověď zpátky. Projděte si odpověď StatusCode (200 je OK) a pak Analyzujte odpověď. V takovém případě získáte seznam XML kontejnerů. Pojďme se podívat na kód pro volání metody GetRESTRequest k vytvoření žádosti, provedení žádosti a následné kontrole odpovědi na seznam kontejnerů.
 
 ```csharp 
     // Send the request.
@@ -175,9 +175,9 @@ Teď, když máte požadavek, můžete volat SendAsync odeslání požadavku RES
 }
 ```
 
-Při spuštění jiného programu pro sítě, jako [Fiddler](https://www.telerik.com/fiddler) při provádění volání SendAsync, zobrazí se informace o požadavku a odpovědi. Podívejme se na to. Název účtu úložiště je *contosorest*.
+Pokud při volání SendAsync spustíte síťový Sniffer, jako je třeba [Fiddler](https://www.telerik.com/fiddler) , můžete zobrazit informace o žádosti a odpovědi. Pojďme se na to podívat. Název účtu úložiště je *contosorest*.
 
-**Žádost:**
+**Request**
 
 ```
 GET /?comp=list HTTP/1.1
@@ -193,7 +193,7 @@ Host: contosorest.blob.core.windows.net
 Connection: Keep-Alive
 ```
 
-**Stavový kód a hlavičky odpovědi se vrátí po spuštění:**
+**Stavový kód a hlavičky odpovědi vrácené po provedení:**
 
 ```
 HTTP/1.1 200 OK
@@ -205,7 +205,7 @@ Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
 
-**Text odpovědi (XML):** Pro ListContainers to zobrazuje seznam kontejnery a jejich vlastnosti.
+**Tělo odpovědi (XML):** V případě ListContainers se zobrazí seznam kontejnerů a jejich vlastností.
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -262,25 +262,25 @@ Content-Length: 1511
 </EnumerationResults>
 ```
 
-Teď, když je pochopit, jak vytvořit žádost, zavolá službu a analyzovat výsledky, Podívejme se na tom, jak vytvořit autorizační hlavičky. Vytvoření této hlavičky je složité, ale dobrou zprávou je, že až budete mít kód funguje, funguje u všech rozhraní REST API služby Storage.
+Teď, když rozumíte tomu, jak vytvořit žádost, zavolat službu a analyzovat výsledky, Pojďme se podívat, jak vytvořit autorizační hlavičku. Vytvoření tohoto záhlaví je složité, ale dobrá zpráva je, že jakmile kód funguje, funguje pro všechna rozhraní REST API služby Storage.
 
-## <a name="creating-the-authorization-header"></a>Vytváří se autorizační hlavičky.
+## <a name="creating-the-authorization-header"></a>Vytváření autorizační hlavičky
 
 > [!TIP]
-> Azure Storage teď podporuje integraci služby Azure Active Directory (Azure AD) pro objekty BLOB a fronty. Azure AD nabízí mnohem jednodušší prostředí pro autorizaci žádost do služby Azure Storage. Další informace o používání služby Azure AD k autorizaci operace REST, naleznete v tématu [ověřování pomocí Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Přehled integrace služby Azure AD pomocí služby Azure Storage najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).
+> Azure Storage teď podporuje integraci Azure Active Directory (Azure AD) pro objekty BLOB a fronty. Azure AD nabízí mnohem jednodušší prostředí pro autorizaci žádosti o Azure Storage. Další informace o používání služby Azure AD k autorizaci operací REST najdete v tématu [ověřování pomocí Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Přehled integrace služby Azure AD s Azure Storage najdete v tématu [ověření přístupu k Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).
 
-Existuje článek, který vysvětluje, koncepčně (žádný kód) provádění [ověřování pro služby Azure Storage](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services).
-Pojďme přesně zjištění využitelných dolů k tomuto článku je potřeba a zobrazit kód.
+K dispozici je článek, který vysvětluje koncepční princip (žádný kód), jak provádět [ověřování pro služby Azure Storage Services](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services).
+Pojďme na to, aby tento článek byl co nejpřesněji, a zobrazil kód.
 
-Nejprve použijte ověření sdíleným klíčem. Formát hlavičky autorizace vypadá takto:
+Nejprve použijte ověřování pomocí sdíleného klíče. Formát autorizační hlavičky vypadá takto:
 
 ```  
 Authorization="SharedKey <storage account name>:<signature>"  
 ```
 
-Podpis pole je Hash-based Message ověřování kódu metoda HMAC () vytvořené z požadavku a počítané algoritmem SHA256 a kódované pomocí kódování Base64. Který je teď? (Tady přestane reagovat, dokonce ještě slyšeli slovo *ho kanonizovat* ještě.)
+Pole signatura je ověřovací kód zprávy založený na hodnotě hash (HMAC) vytvořený z požadavku a vypočítaný pomocí algoritmu SHA256 a pak je kódovaný pomocí kódování Base64. Dostali jste to? (V takovém případě jste si ještě neslyšeli slovo v kanonickém formátu.)
 
-Tento fragment kódu ukazuje formát řetězce podpis sdíleného klíče:
+Tento fragment kódu ukazuje formát řetězce podpisu sdíleného klíče:
 
 ```csharp  
 StringToSign = VERB + "\n" +  
@@ -299,21 +299,21 @@ StringToSign = VERB + "\n" +
                CanonicalizedResource;  
 ```
 
-Většina z těchto polí jsou zřídka se používá. Pro úložiště objektů Blob zadejte příkaz, md5, délka obsahu, ho Kanonizovat záhlaví a ho Kanonizovat prostředků. Ostatní můžete nechat prázdné (ale put v `\n` aby věděl, že jsou prázdné).
+Většina těchto polí se používá zřídka. Pro úložiště objektů BLOB zadáte příkazy, MD5, délku obsahu, kanonické hlavičky a kanonický prostředek. Ostatní můžete nechat prázdné (ale umístit je do `\n` , aby znali, že jsou prázdné).
 
-Co jsou CanonicalizedHeaders a CanonicalizedResource? Funkční dotaz. Ve skutečnosti co dělá ho kanonizovat průměr? Aplikace Microsoft Word i nerozpoznal ho jako slovo. Tady je co [Wikipedia říká o převodu do kanonického tvaru](https://en.wikipedia.org/wiki/Canonicalization): *Z počítačových věd převodu do kanonického tvaru (někdy normalizaci nebo normalizace) je proces převodu dat, která má více než jednu možnou reprezentaci do "standard", "Normální (normal) nebo kanonickém tvaru.* V normální mluvit, to znamená, že seznam položek (například záhlaví, v případě ho Kanonizovat záhlaví) a standardizovat do požadovanému formátu. V podstatě Microsoft jste se rozhodli formátu a budete muset spárujte ji.
+Co jsou CanonicalizedHeaders a CanonicalizedResource? Dobrá otázka. Co je ve skutečnosti kanonický význam? Microsoft Word ho ani nerozpozná jako slovo. Tady je popis [Wikipedii](https://en.wikipedia.org/wiki/Canonicalization)pro kanonikalizaci: *V počítačové vědy, kanonikalizaci (někdy normalizace nebo normalizace) je proces převodu dat, která mají více než jednu možnou reprezentaci do "Standard", "normálního" nebo kanonického tvaru.* V normálním diktování to znamená převzít seznam položek (například hlavičky v případě kanonických hlaviček) a sjednotit je v požadovaném formátu. V podstatě se společnost Microsoft rozhodla o formátu a je nutné ji přiřadit.
 
-Začněme s tyto dvě kanonizovaného pole, protože jsou vyžadovány pro vytvoření autorizační hlavičky.
+Pojďme začít s těmito dvěma kanonickými poli, protože jsou nutné k vytvoření autorizační hlavičky.
 
-**Kanonizovaného záhlaví**
+**Kanonické hlavičky**
 
-Pro vytvoření této hodnoty, načtení hlaviček, které začínají řetězcem "x - ms-" a je můžete seřadit, pak je naformátovat do řetězce `[key:value\n]` instancí, které jsou spojeny do jednoho řetězce. V tomto příkladu kanonizovaného záhlaví vypadat nějak takto: 
+Chcete-li vytvořit tuto hodnotu, načtěte hlavičky začínající řetězcem "x-MS-" a seřaďte je a naformátujte je `[key:value\n]` do řetězce instancí, zřetězené do jednoho řetězce. V tomto příkladu budou kanonické hlavičky vypadat takto: 
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
-Tady je kód používaný k vytvoření výstupu:
+Zde je kód, který slouží k vytvoření tohoto výstupu:
 
 ```csharp 
 private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMessage)
@@ -350,15 +350,15 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
 }
 ```
 
-**Kanonizovaného prostředků**
+**Kanonický prostředek**
 
-Tato část řetězce podpis představuje cílový požadavek na účet úložiště. Mějte na paměti, že je identifikátor URI požadavku `<http://contosorest.blob.core.windows.net/?comp=list>`, s skutečný název účtu (`contosorest` v tomto případě). V tomto příkladu se vrátí:
+Tato část řetězce podpisu představuje účet úložiště, který cílí na požadavek. Mějte na paměti, že identifikátor `<http://contosorest.blob.core.windows.net/?comp=list>`URI žádosti je s skutečným názvem`contosorest` účtu (v tomto případě). V tomto příkladu se vrátí:
 
 ```
 /contosorest/\ncomp:list
 ```
 
-Pokud máte parametry dotazu, v tomto příkladu obsahuje také tyto parametry. Tady je kód také zpracovává další parametry dotazu a dotaz parametrů s více hodnotami. Mějte na paměti, že vytváříte tento kód pro všechna rozhraní REST API. Chcete zahrnout všechny možnosti, i v případě, že metoda ListContainers nemusí všechny z nich.
+Pokud máte parametry dotazu, tento příklad obsahuje také tyto parametry. Zde je kód, který také zpracovává další parametry dotazu a parametry dotazu s více hodnotami. Nezapomeňte, že vytváříte tento kód, který bude fungovat pro všechna rozhraní REST API. Chcete zahrnout všechny možnosti, a to i v případě, že metoda ListContainers je nepotřebuje.
 
 ```csharp 
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
@@ -380,7 +380,7 @@ private static string GetCanonicalizedResource(Uri address, string storageAccoun
 }
 ```
 
-Teď, když kanonizovaného řetězců jsou nastaveny, Podívejme se na tom, jak vytvořit vlastní autorizační hlavičky. Začněte vytvořením řetězec podpis zprávy ve formátu StringToSign dříve zobrazí v tomto článku. Tento koncept je snazší k vysvětlení, používání komentáře v kódu, takže tady je, poslední metodu, která vrátí autorizační hlavičky:
+Teď, když jsou kanonické řetězce nastavené, Podívejme se na to, jak vytvořit vlastní hlavičku autorizace. Začnete vytvořením řetězce podpisu zprávy ve formátu StringToSign dříve zobrazeném v tomto článku. Tento koncept je snazší vysvětlit pomocí komentářů v kódu, takže tady je poslední metoda, která vrátí hlavičku autorizace:
 
 ```csharp
 internal static AuthenticationHeaderValue GetAuthorizationHeader(
@@ -414,33 +414,33 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 }
 ```
 
-Při spuštění tohoto kódu je výsledný MessageSignature vypadá jako v tomto příkladu:
+Po spuštění tohoto kódu vypadá výsledný MessageSignature jako v tomto příkladu:
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-07-29\n/contosorest/\ncomp:list
 ```
 
-Tady je konečná hodnota pro AuthorizationHeader:
+Tady je poslední hodnota pro AuthorizationHeader:
 
 ```
 SharedKey contosorest:Ms5sfwkA8nqTRw7Uury4MPHqM6Rj2nfgbYNvUKOa67w=
 ```
 
-AuthorizationHeader je poslední záhlaví umístěn v záhlaví požadavku před publikováním odpovědi.
+AuthorizationHeader je poslední hlavička umístěná v hlavičce požadavku před odesláním odpovědi.
 
-Který zahrnuje všechno, co potřebujete vědět o dohromady třídy, pomocí kterého můžete vytvořit žádost o volání rozhraní REST API služby Storage.
+To pokrývá všechno, co potřebujete znát, abyste mohli spojit třídu, pomocí které můžete vytvořit žádost o volání rozhraní REST API služby Storage.
 
-## <a name="how-about-another-example"></a>A co další příklad? 
+## <a name="how-about-another-example"></a>Další příklad 
 
-Podívejme se na tom, jak změnit kód pro kontejner volání ListBlobs *kontejner 1*. Tento kód je téměř stejný jako kód pro zobrazení seznamu kontejnerů, pouze rozdíly se identifikátor URI a jak analyzovat odpověď. 
+Pojďme se podívat, jak změnit kód pro volání ListBlobs pro kontejner kontejneru *-1*. Tento kód je téměř totožný s kódem pro výpisy kontejnerů, jedinými rozdíly jsou identifikátory URI a způsob analýzy odpovědi. 
 
-Když se podíváte na referenční dokumentaci pro [ListBlobs](/rest/api/storageservices/List-Blobs), zjistíte, že metoda je *získat* a je RequestURI:
+Pokud se podíváte na referenční dokumentaci pro [ListBlobs](/rest/api/storageservices/List-Blobs), zjistíte, že je metoda *Get* , a RequestURI je:
 
 ```
 https://myaccount.blob.core.windows.net/container-1?restype=container&comp=list
 ```
 
-V ListContainersAsyncREST změňte kód, který nastaví identifikátor URI pro rozhraní API pro ListBlobs. Název kontejneru je **kontejner 1**.
+V ListContainersAsyncREST změňte kód, který nastaví identifikátor URI na rozhraní API pro ListBlobs. Název kontejneru je **kontejner-1**.
 
 ```csharp
 String uri = 
@@ -449,7 +449,7 @@ String uri =
 
 ```
 
-Kde zpracovat odpověď, změňte kód Hledat objekty BLOB místo kontejnery.
+Poté, kde odpověď zpracováváte, změňte kód tak, aby místo kontejnerů hledal objekty blob.
 
 ```csharp
 foreach (XElement container in x.Element("Blobs").Elements("Blob"))
@@ -458,15 +458,15 @@ foreach (XElement container in x.Element("Blobs").Elements("Blob"))
 }
 ```
 
-Pokud tuto ukázku spustit, získáte výsledky, jako jsou následující:
+Při spuštění této ukázky získáte výsledky, jako jsou tyto:
 
-**Kanonizovaného hlavičky:**
+**Kanonické hlavičky:**
 
 ```
 x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
-**Kanonizovaného prostředků:**
+**Kanonický prostředek:**
 
 ```
 /contosorest/container-1\ncomp:list\nrestype:container
@@ -485,9 +485,9 @@ GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
 SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 ```
 
-Následující hodnoty jsou od [Fiddler](https://www.telerik.com/fiddler):
+Následující hodnoty jsou z [Fiddler](https://www.telerik.com/fiddler):
 
-**Žádost:**
+**Request**
 
 ```
 GET http://contosorest.blob.core.windows.net/container-1?restype=container&comp=list HTTP/1.1
@@ -503,7 +503,7 @@ Host: contosorest.blob.core.windows.net
 Connection: Keep-Alive
 ```
 
-**Stavový kód a hlavičky odpovědi se vrátí po spuštění:**
+**Stavový kód a hlavičky odpovědi vrácené po provedení:**
 
 ```
 HTTP/1.1 200 OK
@@ -515,7 +515,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Text odpovědi (XML):** Tato odpověď XML obsahuje seznam objektů BLOB a jejich vlastnosti. 
+**Tělo odpovědi (XML):** Tato odpověď XML zobrazuje seznam objektů BLOB a jejich vlastností. 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -564,10 +564,10 @@ Content-Length: 1135
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili, jak chcete vytvořit žádost do úložiště objektů blob rozhraní REST API. V požadavku můžete načíst seznam kontejnerů a seznam objektů BLOB v kontejneru. Jste se dozvěděli, jak vytvořit podpis autorizace pro volání rozhraní REST API a jak ji používat v požadavku REST. Nakonec jste zjistili, jak prozkoumat odpovědi.
+V tomto článku jste zjistili, jak vytvořit požadavek na úložiště objektů BLOB REST API. S požadavkem můžete načíst seznam kontejnerů nebo seznam objektů BLOB v kontejneru. Zjistili jste, jak vytvořit autorizační podpis pro volání REST API a jak ho použít v žádosti REST. Nakonec jste zjistili, jak můžete odpověď prostudovat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [BLOB Service REST API](/rest/api/storageservices/blob-service-rest-api)
-* [Souborové rozhraní REST API služby](/rest/api/storageservices/file-service-rest-api)
-* [Rozhraní REST API služby front](/rest/api/storageservices/queue-service-rest-api)
+* [REST API služby BLOB Service](/rest/api/storageservices/blob-service-rest-api)
+* [REST API souborové služby](/rest/api/storageservices/file-service-rest-api)
+* [REST API služby fronty](/rest/api/storageservices/queue-service-rest-api)

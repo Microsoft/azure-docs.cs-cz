@@ -1,6 +1,6 @@
 ---
-title: Komunitní Přehled služby Azure Media Services | Dokumentace Microsoftu
-description: Tato stránka komunity Azure Media Services Tento článek popisuje různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
+title: Přehled komunity Azure Media Services | Microsoft Docs
+description: Tato Azure Media Servicesová stránka komunity popisuje různé způsoby, jak můžete klást otázky, poskytovat zpětnou vazbu a získávat aktualizace Media Services.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -11,54 +11,45 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6a3c02c1f14c37317a03cb6ebe63bcddc92f3253
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8d3a26d015c129a04e54ba9633aa5d1ccfcacf8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710164"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "69016112"
 ---
 # <a name="azure-media-services-community"></a>Komunita Azure Media Services  
 
-Tato stránka komunity Azure Media Services Tento článek popisuje různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
+Tato Azure Media Servicesová stránka komunity popisuje různé způsoby, jak můžete klást otázky, poskytovat zpětnou vazbu a získávat aktualizace Media Services.
 
-## <a name="provide-feedback-and-make-suggestions"></a>Poskytnout zpětnou vazbu a zaslat návrhy
+## <a name="provide-feedback-and-make-suggestions"></a>Poskytněte zpětnou vazbu a udělejte návrhy.
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Diskuse
+## <a name="discussion"></a>Diskuze
 
 ### <a name="twitter"></a>Twitter
 
-Můžete použít [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) popisovač twitteru a kontaktujte nás sledujte aktualizace na Twitteru. Použití [ @AzureSupport ](https://twitter.com/azuresupport) popisovač twitteru, jak požádat o podporu na Twitteru.  
+Můžete použít [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) popisovač Twitteru a kontaktovat nás nebo sledovat aktualizace na Twitteru. Použijte popisovač [@AzureSupport](https://twitter.com/azuresupport) Twitteru k vyžádání podpory na Twitteru.  
 
 ### <a name="online-forums"></a>Online fóra
 
-Následující fóra je možné pro kladení otázek o aktuální produktech a funkcích.
+Následující fóra se dají použít k dotazování otázek týkajících se aktuálních produktů a funkcí.
 
-V současné době MSDN je team Media Services primární komunitním fóru.
+V současné době je MSDN Media Servicesm hlavním komunitním fóru týmu.
 
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
-Tým také sleduje otázek na Stack Overflow označené "azure media services".
+Tým také sleduje otázky označené Stack Overflow pomocí Azure-Media-Services.
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>Kontaktovat tým
 
-Azure Media Services je podpora primární e-mailu: **amshelp\@microsoft.com**.
-
-V následující tabulce jsou uvedeny e-mailu týmů dílčí funkce:
-
-| Funkce | Email |
-| --- | --- |
-| Přehrávač médií Azure |ampinfo@microsoft.com |
-| Průzkumník médií Azure |amse@microsoft.com |
-| Návrhář postupu provádění |mepd@microsoft.com |
-| Živé streamování a balení |amslived@microsoft.com |
+E-mailová adresa pro Azure Media Services primární podpory je: **amshelp\@Microsoft.com**.
 
 ## <a name="next-steps"></a>Další postup
 
-[Přehled služby Azure Media Services](media-services-overview.md)
+[Přehled Azure Media Services](media-services-overview.md)

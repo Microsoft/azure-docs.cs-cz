@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 53bc9f14b91bafd69d3c67745f6b981f4faea991
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c8e3f16b939d05a4c055fba3a9f1ab5e47e54070
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881666"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976600"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Přidání obrazce na mapu pomocí Azure Maps Android SDK
 
@@ -353,9 +353,15 @@ Pokud teď aplikaci spustíte, měli byste vidět mnohoúhelník na mapě, jak v
 ![Android – mnohoúhelník mapy](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o tom, jak nastavit styly mapy, najdete v následujícím článku.
+Přidání dalších dat do mapy:
+
+> [!div class="nextstepaction"]
+> [Přidat vrstvu symbolů](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [Přidat dlaždicovou vrstvu](how-to-add-tile-layer-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Zobrazit informace o funkci](display-feature-information-android.md)

@@ -1,6 +1,6 @@
 ---
-title: Nasazení služby Azure API Management do několika oblastí Azure | Dokumentace Microsoftu
-description: Zjistěte, jak můžete nasadit instanci služby Azure API Management do několika oblastí Azure.
+title: Nasazení služby Azure API Management Services do několika oblastí Azure | Microsoft Docs
+description: Naučte se, jak nasadit instanci služby Azure API Management Service do několika oblastí Azure.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,72 +11,72 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: d22da92355616c208c7616b4b0e8c26b7f9e7006
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a37df18d91f77dbeb306fd8b028cb14eded812e7
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658155"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975754"
 ---
-# <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Jak nasadit instanci služby Azure API Management do několika oblastí Azure
+# <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Nasazení instance služby Azure API Management Service do několika oblastí Azure
 
-Azure API Management podporuje nasazení v různých oblastech, která umožňuje vydavatelé rozhraní API k distribuci jeden služba Azure API management napříč libovolným počtem požadované oblasti Azure. To pomáhá snížit žádost latence vnímané geograficky distribuovanou zákazníky a také zlepšuje dostupnost služeb, pokud jedna oblast přejde do režimu offline.
+Azure API Management podporuje nasazení ve více oblastech, což umožňuje vydavatelům rozhraní API distribuovat jednu službu Azure API Management napříč libovolným počtem podporovaných oblastí Azure. Funkce více oblastí pomáhá snižovat latenci požadavku vnímanou uživateli geograficky distribuovaného rozhraní API a vylepšuje dostupnost služby v případě, že jedna oblast přejde do režimu offline.
 
-Nová služba Azure API Management zpočátku obsahuje pouze jeden [jednotky] [ unit] v jedné oblasti Azure, primární oblasti. Na webu Azure portal můžete snadno přidány další oblasti. Server brány služby API Management je nasazené do každé oblasti a volání provoz se směruje do nejbližší brány z hlediska latence. Pokud oblast přejde do režimu offline, provoz automaticky přesměruje na další bránu co nejblíž koncovým.
+Nová služba Azure API Management zpočátku obsahuje jenom jednu [jednotku][unit] v jedné oblasti Azure, primární oblasti. Do primárních nebo sekundárních oblastí lze přidat další oblasti. Komponenta API Management Gateway je nasazená do všech vybraných primárních a sekundárních oblastí. Příchozí požadavky rozhraní API se automaticky přesměrují do nejbližší oblasti. Pokud se oblast přepne do režimu offline, požadavky rozhraní API se automaticky přesměrují kolem neúspěšné oblasti do nejbližší nejbližší brány.
 
 > [!NOTE]
-> Azure API Management replikuje pouze komponenty brány rozhraní API napříč oblastmi. Součást služby správy hostuje jenom v primární oblasti. I v případě výpadku v primární oblasti provádění změn konfigurace do instance služby Azure API Management se nedá – včetně nastavení nebo aktualizace zásady.
+> Do všech oblastí je nasazená jenom součást brány API Management. Komponenta správy služby a portál pro vývojáře se hostují jenom v primární oblasti. Proto se v případě výpadku primární oblasti přístup k portálu pro vývojáře a možnosti změny konfigurace (např. Přidání rozhraní API, použití zásad) ztratí, dokud se primární oblast znovu nevrátí do režimu online. I když je primární oblast offline dostupná, sekundární oblasti budou dál obsluhovat přenosy rozhraní API, a to pomocí nejnovější konfigurace, která je pro ně dostupná.
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="add-region"> </a>Nasaďte instanci služby API Management do nové oblasti
+## <a name="add-region"> </a>Nasazení instance služby API Management do nové oblasti
 
 > [!NOTE]
-> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance služby API Management][Create an API Management service instance].
+> Pokud jste ještě nevytvořili instanci služby API Management, přečtěte si téma [vytvoření instance služby API Management][create an api management service instance].
 
-Na webu Azure Portal, přejděte **škálování a ceny** stránky vaší instance služby API Management. 
+V Azure Portal přejděte na stránku **škálování a ceny** pro vaši instanci služby API Management.
 
 ![Karta škálování][api-management-scale-service]
 
-Pokud chcete nasadit do nové oblasti, klikněte na **+ přidat oblast** z panelu nástrojů.
+Pokud chcete nasadit do nové oblasti, klikněte na **+ Přidat oblast** z panelu nástrojů.
 
 ![Přidat oblast][api-management-add-region]
 
-Z rozevíracího seznamu vyberte umístění a nastavit počet jednotek pomocí posuvníku.
+V rozevíracím seznamu vyberte umístění a nastavte počet jednotek pro posuvník.
 
-![Zadejte jednotky][api-management-select-location-units]
+![Zadat jednotky][api-management-select-location-units]
 
-Klikněte na tlačítko **přidat** umístit svůj výběr v tabulce umístění. 
+Kliknutím na tlačítko **Přidat** umístěte výběr do tabulky umístění.
 
-Tento postup opakujte, dokud nebudete mít všechny umístění nakonfigurovaná a klikněte na tlačítko **Uložit** z panelu nástrojů k zahájení procesu nasazení.
+Tento postup opakujte, dokud nebudete mít všechna umístění nakonfigurovaná a pokud chcete spustit proces nasazení, klikněte na **Uložit** na panelu nástrojů.
 
-## <a name="remove-region"> </a>Odstranit z umístění instance služby API Management
+## <a name="remove-region"> </a>Odstranění instance služby API Management z umístění
 
-Na webu Azure Portal, přejděte **škálování a ceny** stránky vaší instance služby API Management. 
+V Azure Portal přejděte na stránku **škálování a ceny** pro vaši instanci služby API Management.
 
 ![Karta škálování][api-management-scale-service]
 
-Pro umístění, které chcete odebrat, otevřete pomocí místní nabídky **...**  tlačítko na pravém konci tabulky. Vyberte **odstranit** možnost.
+Pro umístění, které chcete odebrat, otevřete místní nabídku pomocí tlačítka **...** na pravé straně tabulky. Vyberte možnost **Odstranit** .
 
-Potvrzení odstranění a klikněte na tlačítko **Uložit** změny se projeví.
+Potvrďte odstranění a klikněte na **Uložit** , aby se změny projevily.
 
-## <a name="route-backend"> </a>Trasy rozhraní API volání služeb místní back-endu
+## <a name="route-backend"> </a>Směrování volání rozhraní API do regionálních back-end služeb
 
-Azure API Management obsahuje pouze jednu adresu URL back-end služby. I když jsou instance Azure API Management v různých oblastech, brána rozhraní API bude stále směrovala požadavky do stejného back-end službu, která je nasazena v pouze jedna oblast. V tomto případě se výkonový zisk plynoucí pocházejí pouze z odpovědí do mezipaměti v rámci Azure API Management v oblasti specifické pro žádosti, ale kontaktování back-endu po celém světě může stále způsobovat tak vysokou latenci.
+Azure API Management nabízí jenom jednu adresu URL back-end služby. I když v různých oblastech existují instance Azure API Management, brána API dál předává požadavky do stejné back-endové služby, která je nasazená jenom v jedné oblasti. V takovém případě se zisk výkonu dostane jenom z odpovědí uložených v mezipaměti v rámci Azure API Management v oblasti specifické pro požadavek, ale při kontaktování back-endu na celém světě může stále dojít k vysoké latenci.
 
-Plně využívat geografické distribuce systému, měli byste mít back-endových služeb, které jsou nasazené ve stejné oblasti jako instance Azure API Management. Potom pomocí zásad a `@(context.Deployment.Region)` vlastnost, můžete směrovat provoz do místní instance back-endu.
+Aby bylo možné plně využít geografickou distribuci vašeho systému, měli byste mít nasazené back-end služby ve stejných oblastech jako instance Azure API Management. Potom můžete pomocí zásad a `@(context.Deployment.Region)` vlastností směrovat provoz do místních instancí vašeho back-endu.
 
-1. Přejděte k vaší instanci Azure API Management a klikněte na **rozhraní API** v levé nabídce.
+1. Přejděte do instance Azure API Management a v nabídce vlevo klikněte na **rozhraní API** .
 2. Vyberte požadované rozhraní API.
-3. Klikněte na tlačítko **editor kódu** z šipku rozevíracího seznamu v **zpracování příchozích**.
+3. V rozevíracím seznamu šipky v **příchozím zpracování**klikněte na **Editor kódu** .
 
     ![Editor kódu rozhraní API](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
 
-4. Použití `set-backend` v kombinaci s podmíněné `choose` zásady k sestavení kompletních správné zásady směrování v `<inbound> </inbound>` část souboru.
+4. Použijte kombinaci s podmíněnými `choose` zásadami k vytvoření `<inbound> </inbound>` správné zásady směrování v části souboru. `set-backend`
 
-    Například níže XML soubor bude fungovat pro oblasti západní USA a východní Asie:
+    Například následující soubor XML by fungoval pro Západní USA a Východní Asie oblasti:
 
     ```xml
     <policies>
@@ -107,31 +107,26 @@ Plně využívat geografické distribuce systému, měli byste mít back-endový
     ```
 
 > [!TIP]
-> Může také přední vaší back-endových služeb s [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)přímá volání rozhraní API do Traffic Manageru a ten směrování automaticky vyřešit.
+> Back-endové služby můžete také napředt pomocí [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nasměrovat volání rozhraní API do Traffic Manager a nechat ho automaticky vyřešit.
 
-## <a name="custom-routing"> </a>Použít vlastní směrování místní brány API Management
+## <a name="custom-routing"> </a>Použití vlastního směrování k API Management regionálních bran
 
-API Management směruje požadavky na místní *brány* na základě [nejnižší latenci](../traffic-manager/traffic-manager-routing-methods.md#performance). Ačkoli to není možné přepsat toto nastavení ve službě API Management, můžete pomocí vlastního pravidla směrování Traffic Manager.
+API Management směruje požadavky na místní bránu na základě [nejnižší latence](../traffic-manager/traffic-manager-routing-methods.md#performance). I když není možné toto nastavení v API Management přepsat, můžete použít vlastní Traffic Manager s vlastními pravidly směrování.
 
-1. Vytvořte svoje vlastní [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/).
-1. Pokud používáte vlastní doménu, [ho použít s Traffic Managerem](../traffic-manager/traffic-manager-point-internet-domain.md) místo služby API Management.
-1. [Konfigurace regionální koncových bodů rozhraní API Management ve službě Traffic Manager](../traffic-manager/traffic-manager-manage-endpoints.md). Místní koncové body mají tvar URL `https://<service-name>-<region>-01.regional.azure-api.net`, například `https://contoso-westus2-01.regional.azure-api.net`.
-1. [Konfigurace koncových bodů regionální stav API Management ve službě Traffic Manager](../traffic-manager/traffic-manager-monitoring.md). Stav místní koncové body mají tvar URL `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`, například `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`.
-1. Zadejte [metodu směrování](../traffic-manager/traffic-manager-routing-methods.md) Traffic Manageru.
-
+1. Vytvořte si vlastní [Traffic Manager Azure](https://azure.microsoft.com/services/traffic-manager/).
+1. Pokud používáte vlastní doménu, [použijte ji s Traffic Manager](../traffic-manager/traffic-manager-point-internet-domain.md) namísto služby API Management.
+1. [Nakonfigurujte API Management místní koncové body v Traffic Manager](../traffic-manager/traffic-manager-manage-endpoints.md). Regionální koncové body následují jako vzor `https://<service-name>-<region>-01.regional.azure-api.net`adresy URL, `https://contoso-westus2-01.regional.azure-api.net`například.
+1. [Konfigurace API Managementch koncových bodů regionálního stavu v Traffic Manager](../traffic-manager/traffic-manager-monitoring.md). Místní koncové body stavu se řídí vzorem `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`adresy URL, `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`například.
+1. Zadejte [metodu směrování](../traffic-manager/traffic-manager-routing-methods.md) Traffic Manager.
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
-
 [api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png
 [api-management-add-region]: ./media/api-management-howto-deploy-multi-region/api-management-add-region.png
 [api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
 [api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
-
-[Create an API Management service instance]: get-started-create-service-instance.md
-[Get started with Azure API Management]: get-started-create-service-instance.md
-
-[Deploy an API Management service instance to a new region]: #add-region
-[Delete an API Management service instance from a region]: #remove-region
-
+[create an api management service instance]: get-started-create-service-instance.md
+[get started with azure api management]: get-started-create-service-instance.md
+[deploy an api management service instance to a new region]: #add-region
+[delete an api management service instance from a region]: #remove-region
 [unit]: https://azure.microsoft.com/pricing/details/api-management/
-[Premium]: https://azure.microsoft.com/pricing/details/api-management/
+[premium]: https://azure.microsoft.com/pricing/details/api-management/

@@ -1,5 +1,5 @@
 ---
-title: Mazal Predikce úvěrového rizika
+title: 'Ukázka vizuálního rozhraní #3: Klasifikace pro předpověď úvěrového rizika'
 titleSuffix: Azure Machine Learning service
 description: Naučte se sestavovat třídění strojového učení bez nutnosti psát jediný řádek kódu pomocí vizuálního rozhraní.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d1b3b8fa61492f3cf18e44e3e3046f32ea9c9b03
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855982"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990053"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Ukázka 3 – klasifikace: Predikce úvěrového rizika
 

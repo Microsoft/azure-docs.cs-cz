@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 54bf4512785941ae1d09ae1436deefc032ec0037
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c0163b5280de942491f2174aa371fa7cc83d5984
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780655"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946524"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Podrobný plán zabezpečení a dodržování předpisů Azure: PaaS hostování webových aplikací pro Velkou Británii pro oficiální úlohy
 
@@ -27,7 +27,7 @@ Tato Podrobný plán zabezpečení a dodržování předpisů Azure poskytuje po
 
 Tento podrobný plán byl přezkoumán národním internetovým centrem zabezpečení (NCSC) a je v souladu se zásadami cloudového zabezpečení NCSC 14.
 
-Architektura používá platformu Azure [jako součásti služby](https://azure.microsoft.com/overview/what-is-paas/) k dodávání prostředí, které zákazníkům umožňuje vyhnout se nákladům a složitosti nákupů softwarových licencí a spravovat základní aplikační infrastrukturu a middleware. vývojové nástroje a další prostředky. Zákazníci spravují aplikace a služby, které vyvíjí, zaměřené na poskytování obchodních hodnot, zatímco Microsoft Azure spravují další prostředky Azure, jako jsou virtuální počítače, úložiště a sítě, a přináší tak další část [ zodpovědnost](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) za správu infrastruktury na platformě Azure. [Azure App Services](https://azure.microsoft.com/services/app-service/) nabízí automatické škálování, vysokou dostupnost, podporuje Windows a Linux a umožňuje automatizované nasazení z GitHubu, Azure DevOps nebo libovolného úložiště Git jako výchozí služby. Pomocí App Services se můžou vývojáři soustředit na poskytování obchodních hodnot bez režie správy infrastruktury. Je možné vytvářet bezserverová nové jazyky Java, PHP, Node. js, Python, HTML nebo C# webové aplikace nebo taky migrovat existující cloudové nebo místní webové aplikace do Azure App Services (i když důkladná opatrnost a testování pro potvrzení výkonu). požadováno).
+Architektura používá platformu Azure [jako součásti služby](https://azure.microsoft.com/overview/what-is-paas/) k dodávání prostředí, které zákazníkům umožňuje vyhnout se nákladům a složitosti nákupů softwarových licencí a spravovat základní aplikační infrastrukturu a middleware. vývojové nástroje a další prostředky. Zákazníci spravují aplikace a služby, které vyvíjí, zaměřené na poskytování obchodních hodnot, zatímco Microsoft Azure spravují další prostředky Azure, jako jsou virtuální počítače, úložiště a sítě, a přináší tak další část [ zodpovědnost](../fundamentals/paas-deployments.md) za správu infrastruktury na platformě Azure. [Azure App Services](https://azure.microsoft.com/services/app-service/) nabízí automatické škálování, vysokou dostupnost, podporuje Windows a Linux a umožňuje automatizované nasazení z GitHubu, Azure DevOps nebo libovolného úložiště Git jako výchozí služby. Pomocí App Services se můžou vývojáři soustředit na poskytování obchodních hodnot bez režie správy infrastruktury. Je možné vytvářet bezserverová nové jazyky Java, PHP, Node. js, Python, HTML nebo C# webové aplikace nebo taky migrovat existující cloudové nebo místní webové aplikace do Azure App Services (i když důkladná opatrnost a testování pro potvrzení výkonu). požadováno).
 
 Tento podrobný plán se zaměřuje na zřizování zabezpečené základní [platformy jako](https://azure.microsoft.com/overview/what-is-paas/) webového rozhraní pro veřejné a také uživatele Back-Office. Tento scénář návrhu podrobného plánu bere v úvahu použití webových služeb hostovaných v Azure, kde může veřejný uživatel bezpečně odesílat, zobrazovat a spravovat citlivá data. také, že záložní úřad nebo pracovník pro státní správu může bezpečně zpracovat citlivá data, která odeslal veřejný uživatel. Případy použití pro tento scénář můžou zahrnovat:
 
@@ -72,18 +72,18 @@ Následující část podrobně popisuje prvky nasazení a implementace.
 
 #### <a name="identity-and-authentication"></a>Identita a ověřování
 
-Tento podrobný plán zajišťuje, aby byl přístup k prostředkům chráněný prostřednictvím služby Directory and Identity Management Services. Tato architektura umožňuje plné využití [identity jako hraničního obvodu](https://docs.microsoft.com/azure/security/security-paas-deployments). 
+Tento podrobný plán zajišťuje, aby byl přístup k prostředkům chráněný prostřednictvím služby Directory and Identity Management Services. Tato architektura umožňuje plné využití [identity jako hraničního obvodu](../fundamentals/paas-deployments.md). 
 
 Následující technologie poskytují možnosti správy identit v prostředí Azure:
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) je víceklientské cloudové služby Microsoftu a služba pro správu identit založené na víceklientské architektuře. Všichni uživatelé pro toto řešení byli vytvořeni v Azure Active Directory, včetně uživatelů, kteří přistupují k SQL Database.
-- Ověřování pro webovou aplikaci s přístupem k operátoru a přístup pro správu prostředků Azure se provádí pomocí Azure AD. Další informace najdete v tématu [Integrace aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+- Ověřování pro webovou aplikaci s přístupem k operátoru a přístup pro správu prostředků Azure se provádí pomocí Azure AD. Další informace najdete v tématu [Integrace aplikací s Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 - Šifrování sloupce databáze používá Azure AD k ověření aplikace pro Azure SQL Database. Další informace najdete v tématu [Always Encrypted: Chraňte citlivá data v](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)SQL Database.
 - Webová aplikace pro občany je nakonfigurována pro veřejný přístup. Aby bylo umožněno vytváření a ověřování účtů prostřednictvím služby Active Directory nebo zprostředkovatele identity sociální sítě [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) možné v případě potřeby integrovat.
-- [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) detekuje potenciální slabá místa a rizikové účty a poskytuje doporučení k vylepšení stav zabezpečení identit vaší organizace. konfiguruje automatizované odpovědi na zjištěné podezřelé. akce související s identitami vaší organizace a prošetří podezřelé incidenty a provádí vhodná opatření k jejich vyřešení.
+- [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) detekuje potenciální slabá místa a rizikové účty a poskytuje doporučení k vylepšení stav zabezpečení identit vaší organizace. konfiguruje automatizované odpovědi na zjištěné podezřelé. akce související s identitami vaší organizace a prošetří podezřelé incidenty a provádí vhodná opatření k jejich vyřešení.
 - Správa [Access Control na základě rolí v Azure (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) umožňuje přesné řízení přístupu pro Azure. Přístup k předplatnému je omezený na správce předplatného a přístup Azure Key Vault je omezený jenom na uživatele, kteří vyžadují přístup ke správě klíčů.
-- Díky využití [Azure Active Directory zákazníci podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) můžou vyhovět dalším kontrolním mechanismům zabezpečení při přístupu k aplikacím nebo uživatelům ve svém prostředí na základě konkrétních podmínek, jako je umístění, zařízení, stav a riziko při přihlašování.
-- [Azure DDoS Protection](https://docs.microsoft.com/azure/security/security-paas-deployments#security-advantages-of-a-paas-cloud-service-model) v kombinaci s osvědčenými postupy pro návrh aplikace zajišťuje ochranu před útoky DDoS a nepřetržitým monitorováním provozu a zmírnění běžných útoků na úrovni sítě v reálném čase. S architekturou PaaS je ochrana DDoS na úrovni platformy pro zákazníka transparentní a integrovaná do platformy, ale je důležité si uvědomit, že odpovědnost za návrh zabezpečení aplikací je u zákazníka.
+- Díky využití [Azure Active Directory zákazníci podmíněného přístupu](../../active-directory/active-directory-conditional-access-azure-portal.md) můžou vyhovět dalším kontrolním mechanismům zabezpečení při přístupu k aplikacím nebo uživatelům ve svém prostředí na základě konkrétních podmínek, jako je umístění, zařízení, stav a riziko při přihlašování.
+- [Azure DDoS Protection](../fundamentals/paas-deployments.md#security-advantages-of-a-paas-cloud-service-model) v kombinaci s osvědčenými postupy pro návrh aplikace zajišťuje ochranu před útoky DDoS a nepřetržitým monitorováním provozu a zmírnění běžných útoků na úrovni sítě v reálném čase. S architekturou PaaS je ochrana DDoS na úrovni platformy pro zákazníka transparentní a integrovaná do platformy, ale je důležité si uvědomit, že odpovědnost za návrh zabezpečení aplikací je u zákazníka.
 
 #### <a name="data-in-transit"></a>Přenášená data
 
@@ -112,14 +112,14 @@ Tato šablona nasadí následující funkce App Service:
 - [Standardní](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) App Service – úroveň plánu
 - Více App Servicech [slotů nasazení](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Vývoj, verze Preview, QA, UAT a těžba kurzů (výchozí slot).
 - [Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity) , které se připojují k [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (můžete také použít k poskytnutí přístupu k [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
-- Integrace s [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) pro monitorování výkonu
-- [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
-- [Výstrahy](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) metriky 
+- Integrace s [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md) pro monitorování výkonu
+- [Diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) 
+- [Výstrahy](../../azure-monitor/app/alerts.md) metriky 
 - [Azure API Apps](https://azure.microsoft.com/services/app-service/api/) 
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
-SQL Database je spravovaná služba relačních databází pro obecné účely v Microsoft Azure, která podporuje struktury, jako jsou relační data, JSON, prostorová data a XML. SQL Database nabízí spravované samostatné databáze SQL, spravované databáze SQL v [elastickém fondu](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)a [spravované instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) SQL (ve verzi Public Preview). Zajišťuje [dynamicky škálovatelný výkon](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers) a nabízí možnosti jako [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) pro extrémní analytické analýzy a generování sestav nebo [OLTP v paměti](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) pro extrémní zpracování transakcí. Microsoft zajišťuje bezproblémové opravy a aktualizace základního kódu SQL a odděluje veškerou správu základní infrastruktury.
+SQL Database je spravovaná služba relačních databází pro obecné účely v Microsoft Azure, která podporuje struktury, jako jsou relační data, JSON, prostorová data a XML. SQL Database nabízí spravované samostatné databáze SQL, spravované databáze SQL v [elastickém fondu](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)a [spravované instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) SQL (ve verzi Public Preview). Zajišťuje [dynamicky škálovatelný výkon](../../sql-database/sql-database-purchase-models.md) a nabízí možnosti jako [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) pro extrémní analytické analýzy a generování sestav nebo [OLTP v paměti](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) pro extrémní zpracování transakcí. Microsoft zajišťuje bezproblémové opravy a aktualizace základního kódu SQL a odděluje veškerou správu základní infrastruktury.
 
 Azure SQL Database v tomto podrobném plánu
 
@@ -130,7 +130,7 @@ Instance Azure SQL Database používá následující bezpečnostní opatření 
 - [Ověřování Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění. Centrální správa ID poskytuje jediné místo pro správu uživatelů databáze a zjednodušuje správu oprávnění.
 - Použití Azure Active Directory pro správu databáze
 - [Protokoly auditu](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) do účtů úložiště
-- [Výstrahy](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) metrik pro neúspěšná připojení DB
+- [Výstrahy](../../azure-monitor/app/alerts.md) metrik pro neúspěšná připojení DB
 - [Detekce hrozeb SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)
 - [Always Encrypted sloupce](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)
 
@@ -147,7 +147,7 @@ Tato šablona používá následující součásti Azure Storage:
 
 #### <a name="data-at-rest"></a>Neaktivní uložená data
 
-Prostřednictvím [šifrování služby Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) všechna data zapsaná do Azure Storage šifrovaná pomocí 256 šifrování AES, což je jedno z nejúčinnějších šifr, které jsou k dispozici. Můžete použít šifrovací klíče spravované Microsoftem s SSE nebo můžete použít [vlastní šifrovací klíče](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
+Prostřednictvím [šifrování služby Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) všechna data zapsaná do Azure Storage šifrovaná pomocí 256 šifrování AES, což je jedno z nejúčinnějších šifr, které jsou k dispozici. Můžete použít šifrovací klíče spravované Microsoftem s SSE nebo můžete použít [vlastní šifrovací klíče](../../storage/common/storage-encryption-keys-portal.md).
 
 Účty úložiště je možné zabezpečit prostřednictvím [Virtual Network koncových bodů služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) pomocí [pravidel virtuální sítě](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
@@ -181,7 +181,7 @@ Podrobné informace o zabezpečení Azure Storage najdete v [příručce zabezpe
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) je rozšiřitelná služba správy výkonu aplikací (APM) pro webové vývojáře na různých platformách. Slouží k monitorování živých webových aplikací, které automaticky zjišťují anomálie v výkonu, analyzují výkon, diagnostikují problémy a porozuměli tomu, jak uživatelé pracují s aplikací. Application Insights můžete nasadit na platformy, včetně .NET, Node. js a Java EE, hostované místně nebo v cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) je rozšiřitelná služba správy výkonu aplikací (APM) pro webové vývojáře na různých platformách. Slouží k monitorování živých webových aplikací, které automaticky zjišťují anomálie v výkonu, analyzují výkon, diagnostikují problémy a porozuměli tomu, jak uživatelé pracují s aplikací. Application Insights můžete nasadit na platformy, včetně .NET, Node. js a Java EE, hostované místně nebo v cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů.
 
 #### <a name="application-insights-in-this-blueprint"></a>Application Insights v tomto podrobném plánu
 
@@ -195,7 +195,7 @@ Auditování [protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-mo
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) umožňuje základní monitorování služeb Azure tím, že umožňuje shromažďování metrik, protokolů aktivit a diagnostických protokolů. Azure Monitor poskytuje metriky a protokoly základní infrastruktury pro většinu služeb v Microsoft Azure.
+[Azure monitor](../../azure-monitor/overview.md) umožňuje základní monitorování služeb Azure tím, že umožňuje shromažďování metrik, protokolů aktivit a diagnostických protokolů. Azure Monitor poskytuje metriky a protokoly základní infrastruktury pro většinu služeb v Microsoft Azure.
 
 ## <a name="threat-model"></a>Model hrozeb
 

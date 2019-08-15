@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 8aaaa6465b501cee83f4c2d8cb60729282651967
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: e44acfc66a8faf76068af9c31233e89c45ee02f7
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384847"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953169"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -53,7 +53,7 @@ _<sup>**1**</sup> pro data před 1. května 2014 navštivte [portál Azure Enter
 
 _<sup>**2**</sup> pro data do 2. října 2018 navštivte [centrum účtů Azure](https://account.azure.com/subscriptions)._
 
-_<sup>**3**</sup> smlouvy o zákaznících Microsoftu zahájené v březen 2019 a neobsahují historická data před tímto bodem._
+_<sup>**3**</sup> smlouvy o zákaznících Microsoftu zahájené v březnu 2019 a neobsahují historická data před tímto bodem._
 
 _<sup>**4**</sup> historická data pro předplatná založená na kreditech a platbách předem nemusí odpovídat vaší faktuře. Zobrazit [historická data nemusí odpovídat](#historical-data-might-not-match-invoice) níže uvedené faktuře._
 

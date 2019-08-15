@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d1bce7575272b7df185c4e261685d989f49436c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 4e7b3905295e619c5a9500f80b5c43126b919e2f
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716536"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946461"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
 
@@ -71,7 +71,7 @@ Služba tensor Flow automatizovaného strojového učení v současné době nep
 
 ### <a name="experiment-charts"></a>Grafy experimentů
 
-Binární klasifikační grafy (přesnost-odvolání, ROC, křivka získání atd.) zobrazené v automatizovaných iteracích experimentu se nevykresluje v uživatelském rozhraní, od 4/12. V grafu jsou v současné době zobrazeny inverzní výsledky, kde je lepší provádět modely s nižšími výsledky. Řešení je v šetření.
+Binární klasifikační grafy (přesnost-odvolání, ROC, křivka získání atd.) zobrazené v automatizovaných iteracích experimentu se v uživatelském rozhraní nevykreslují správně, od 4/12. V grafu jsou v současné době zobrazeny inverzní výsledky, kde je lepší provádět modely s nižšími výsledky. Řešení je v šetření.
 
 ## <a name="databricks"></a>Databricks
 
@@ -134,6 +134,15 @@ Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK n
 
 V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Pokud chcete zobrazit některé protokoly, navštivte [Azure Portal](https://portal.azure.com) a přejděte do svého pracovního prostoru a vyberte **pracovní prostor > Experiment > Run > log**.
 
+> [!NOTE]
+> Služba Azure Machine Learning Service protokoluje informace z nejrůznějších zdrojů během školení, jako je AutoML nebo kontejner Docker, který spouští školicí úlohu. Mnohé z těchto protokolů nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
+
+## <a name="activity-logs"></a>Protokoly aktivit
+
+Některé akce v pracovním prostoru Azure Machine Learning neprotokolují informace do __protokolu aktivit__. Například spuštění školení nebo registrace modelu.
+
+Některé z těchto akcí se zobrazí v oblasti __aktivity__ pracovního prostoru, ale nenaznačují, kdo aktivitu inicioval.
+
 ## <a name="resource-quotas"></a>Kvóty prostředků
 
 Další informace o [kvóty prostředků](how-to-manage-quotas.md) můžete setkat při práci se službou Azure Machine Learning.
@@ -154,6 +163,6 @@ Například se zobrazí chyba, pokud se pokusíte vytvořit nebo připojit výpo
 
 ## <a name="overloaded-azurefile-storage"></a>Přetížené úložiště AzureFile
 
-Pokud se zobrazí chyba "nepovedlo se odeslat soubory projektu do pracovního adresáře v AzureFile, protože úložiště je přetížené", použijte následující alternativní řešení.
+Pokud se zobrazí chybová `Unable to upload project files to working directory in AzureFile because the storage is overloaded`zpráva, použijte následující alternativní řešení.
 
 Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos dat, doporučuje se použít objekty blob, aby bylo možné používat pro odeslání spuštění sdílení souborů. Úlohy můžete rozdělit také mezi dva různé pracovní prostory.

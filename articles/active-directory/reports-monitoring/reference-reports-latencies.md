@@ -1,9 +1,9 @@
 ---
-title: Latence generování sestav Azure Active Directory | Dokumentace Microsoftu
-description: Další informace o dobu, za jakou události vytváření sestav se zobrazí na portálu Azure
+title: Azure Active Directory latencí hlášení | Microsoft Docs
+description: Přečtěte si, jak dlouho trvá generování sestav událostí v Azure Portal
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4d02f9e99acb68db126ccde465f73cc2294e06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f57f09f146e542768c83fa034f0b4e65bc6b2ae
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65594018"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987940"
 ---
-# <a name="azure-active-directory-reporting-latencies"></a>Latence generování sestav Azure Active Directory.
+# <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory latencí hlášení
 
-Latence je doba je potřebná pro Azure Active Directory (Azure AD) data pro generování sestav se zobrazí v [webu Azure portal](https://portal.azure.com). Tento článek uvádí očekávaná latence pro různé typy sestav. 
+Latence představuje dobu potřebnou k tomu, aby se data sestav Azure Active Directory (Azure AD) zobrazovala v [Azure Portal](https://portal.azure.com). V tomto článku jsou uvedeny očekávané latence pro různé typy sestav. 
 
 ## <a name="activity-reports"></a>Sestavy aktivit
 
 Existují dva typy sestav aktivit:
 
-- [Přihlášení](concept-sign-ins.md) – poskytuje informace o využití spravovaných aplikací a uživatel aktivit přihlašování
-- [Protokoly auditu](concept-audit-logs.md) – poskytuje informace aktivit systému o uživatelů a skupin, spravovaných aplikacích a aktivitách adresářů
+- [Přihlášení](concept-sign-ins.md) – poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
+- [Protokoly auditu](concept-audit-logs.md) – poskytuje informace o činnosti systému týkající se uživatelů a skupin, spravovaných aplikací a aktivit adresáře.
 
 V následující tabulce jsou uvedeny informace o latenci pro sestavy aktivit. 
 
 > [!NOTE]
-> **Latence (95. percentil)** odkazuje na čas, podle kterého se ohlásí 95 % protokolů, a **latenci (99. percentilu)** odkazuje na čas, podle kterého se ohlásí 99 % protokoly. 
+> **Latence (95. percentil)** odkazuje na čas, podle kterého budou hlášeny 95% protokolů, a **latence (99 percentil)** odkazuje na čas, který bude hlášen 99% protokolů. 
 >
 
-| Sestava | Latence (95. percentil) |Latenci (99. percentilu)|
+| Zpráva | Latence (95. percentil) |Latence (99 percentil)|
 | :-- | --- | --- |
 | Protokoly auditu | 2 minuty  | 5 minut  |
 | Přihlášení | 2 minuty  | 5 minut |
 
-### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Jak rychle můžete zobrazit data aktivity po získání licence premium?
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Jak brzy můžu zobrazit data o aktivitách po získání licence na prémii?
 
-Pokud již máte data aktivity s bezplatnou licencí, pak uvidíte ho okamžitě při upgradu. Pokud nemáte k dispozici žádná data, bude to trvat jeden nebo dva dny pro daná data zobrazit v sestavách po upgradu na licenci premium.
+Pokud již máte data o aktivitách s bezplatnou licencí, můžete ji okamžitě zobrazit při upgradu. Pokud nemáte žádná data, bude trvat jeden nebo dva dny, než se data zobrazí v sestavách po upgradu na licenci Premium.
 
 ## <a name="security-reports"></a>Sestavy zabezpečení
 
@@ -57,20 +57,20 @@ Existují dva typy sestav zabezpečení:
 - [Riziková přihlášení](concept-risky-sign-ins.md) –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
 - [Uživatelé označení příznakem rizika](concept-user-at-risk.md) – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
 
-V následující tabulce jsou uvedeny informace o latenci pro zprávy o zabezpečení.
+V následující tabulce jsou uvedeny informace o latenci pro sestavy zabezpečení.
 
-| Sestava | Minimální | Průměr | Maximum |
+| Zpráva | Minimální | Average | Maximum |
 | :-- | --- | --- | --- |
 | Ohrožení uživatelé          | 5 minut   | 15 minut  | 2 hodiny  |
 | Riziková přihlášení         | 5 minut   | 15 minut  | 2 hodiny  |
 
 ## <a name="risk-events"></a>Rizikové události
 
-Azure AD používá adaptivní algoritmy strojového učení a heuristik ke zjištění podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každou zjištěnou podezřelé akce, které jsou uloženy v záznam nazvaný **riziková událost**.
+Azure AD pomocí adaptivních algoritmů strojového učení a heuristiky detekuje podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každá zjištěná podezřelá akce je uložená v záznamu s názvem **riziková událost**.
 
 V následující tabulce jsou uvedeny informace o latenci pro rizikové události.
 
-| Sestava | Minimální | Průměr | Maximum |
+| Zpráva | Minimální | Average | Maximum |
 | :-- | --- | --- | --- |
 | Přihlášení z anonymních IP adres |5 minut |15 minut |2 hodiny |
 | Přihlášení z neznámých míst |5 minut |15 minut |2 hodiny |

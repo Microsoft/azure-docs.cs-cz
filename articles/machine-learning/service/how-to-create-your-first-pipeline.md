@@ -1,7 +1,7 @@
 ---
 title: Vytváření, spouštění, & sledování kanálů ML
 titleSuffix: Azure Machine Learning service
-description: Vytvoření a spuštění služby machine learning kanálu s využitím Azure Machine Learning SDK pro Python. Pomocí kanálů můžete vytvářet a spravovat pracovní postupy, které spojí dohromady fáze strojového učení (ML). Tyto fáze zahrnují přípravu dat, školení modelů, nasazení modelu a odvození nebo bodování.
+description: Vytvoření a spuštění služby machine learning kanálu s využitím Azure Machine Learning SDK pro Python. Pomocí kanálů ML můžete vytvářet a spravovat pracovní postupy, které spojí dohromady fáze strojového učení (ML). Tyto fáze zahrnují přípravu dat, školení modelů, nasazení modelu a odvození nebo bodování.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,49 +9,48 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 05/02/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 497c4d9708a7b67bf0b5433c455d90dd277297d7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1e68f60880e09dfeb46641f40eca12e1fc0560bc
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68873606"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950429"
 ---
-# <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálu strojového učení pomocí Azure Machine Learning SDK
+# <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
-V tomto článku se naučíte, jak pomocí [sady Azure Machine Learning SDK](https://aka.ms/aml-sdk)vytvořit, publikovat, spouštět a sledovat [kanál strojového učení](concept-ml-pipelines.md) .  Pomocí **kanálů ml** můžete vytvořit pracovní postup, který spojuje různé fáze ml, a pak tento kanál publikovat do svého pracovního prostoru Azure Machine Learning pro pozdější přístup nebo sdílení s jinými.  
+V tomto článku se naučíte, jak pomocí [sady Azure Machine Learning SDK](https://aka.ms/aml-sdk)vytvořit, publikovat, spouštět a sledovat [kanál strojového učení](concept-ml-pipelines.md) .  Pomocí **kanálů ml** můžete vytvořit pracovní postup, který spojuje různé fáze ml, a pak tento kanál publikovat do svého pracovního prostoru Azure Machine Learning pro pozdější přístup nebo sdílení s jinými.  Kanály ML jsou ideální pro scénáře dávkového vyhodnocování, které používají různé výpočetní prostředky, místo jejich spouštění a sdílení pracovních postupů ML s ostatními. 
 
-I když můžete použít k automatizaci (CI/CD) ml také [kanál Azure](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml) , ale tento typ kanálu není uložený v pracovním prostoru. [Porovnejte tyto typy kanálů](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use).
+I když můžete použít jiný typ kanálu, který se nazývá [kanál Azure](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml) pro automatizaci úloh v ml/CD pro CI, tento typ kanálu se nikdy neuloží do vašeho pracovního prostoru. [Porovnejte tyto různé kanály](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use).
 
-Každá fáze kanálu, jako je například přípravy dat a trénování modelu může zahrnovat jeden nebo více kroků.
+Každá fáze kanálu ML, jako je třeba Příprava dat a školení k modelu, může zahrnovat jeden nebo více kroků.
 
-Kanály, které vytvoříte jsou viditelná pro členy vaší služby Azure Machine Learning [pracovní prostor](how-to-manage-workspace.md). 
+Kanály ML, které vytvoříte, jsou viditelné pro členy [pracovního prostoru](how-to-manage-workspace.md)služby Azure Machine Learning. 
 
-Kanály pomocí cílových výpočetních prostředí vzdálené pro výpočetní výkon a úložný pomocných a konečného data související s příslušný kanál. Kanály můžou číst a zapisovat data do a z podporovaných [Azure Storage](https://docs.microsoft.com/azure/storage/) umístění.
+Kanály ML používají vzdálené výpočetní cíle pro výpočet a úložiště mezia konečných dat přidružených k tomuto kanálu. Můžou číst a zapisovat data do a z podporovaných [Azure Storage](https://docs.microsoft.com/azure/storage/) umístění.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušejte [bezplatnou nebo placená verzi služby Azure Machine Learning](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Konfigurace vývojového prostředí](how-to-configure-environment.md) nainstalovat sadu SDK Azure Machine Learning.
+* Vytvoření [pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech vašich prostředků kanálu.
 
-* Vytvoření [pracovního prostoru Azure Machine Learning](how-to-configure-environment.md#workspace) pro uložení všech vašich prostředků kanálu. 
+* [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [virtuální počítač Poznámkový blok](tutorial-1st-experiment-sdk-setup.md#azure) s již nainstalovanou sadou SDK.
 
-  ```python
-  from azureml.core import Workspace
-  
-  ws = Workspace.create(
-     name = '<workspace-name>',
-     subscription_id = '<subscription-id>',
-     resource_group = '<resource-group>',
-     location = '<workspace_region>',
-     exist_ok = True)
-  ```
+Začněte připojením pracovního prostoru:
+
+```Python
+import azureml.core
+from azureml.core import Workspace, Datastore
+
+ws = Workspace.from_config()
+```
+
 
 ## <a name="set-up-machine-learning-resources"></a>Nastavení prostředků machine learning
 
-Vytvoření prostředků potřebných ke spuštění kanálu:
+Vytvoření prostředků potřebných ke spuštění kanálu ML:
 
 * Nastavení úložiště dat používá pro přístup k datům, je potřeba v kanálu kroky.
 
@@ -60,22 +59,24 @@ Vytvoření prostředků potřebných ke spuštění kanálu:
 * Nastavit [cílových výpočetních prostředí](concept-azure-machine-learning-architecture.md#compute-targets) podle postupu k kanál se spouští.
 
 ### <a name="set-up-a-datastore"></a>Nastavení úložiště dat
+
 Úložiště dat ukládá data pro kanál tak, aby přístup. Každý pracovní prostor má výchozí úložiště. Můžete zaregistrovat další úložiště. 
 
 Při vytváření pracovního prostoru jsou [soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) a [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) připojené k pracovnímu prostoru. Pro připojení k úložišti objektů BLOB v Azure je zaregistrované výchozí úložiště dat. Další informace najdete v tématu [rozhodování, kdy používat soubory Azure, objekty blob Azure nebo disky Azure](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
 
 ```python
-# Default datastore (Azure blob storage)
+# Default datastore 
 def_data_store = ws.get_default_datastore()
 
-# The above call is equivalent to this
-def_data_store = Datastore(ws, "workspaceblobstore")
+# Get the blob storage associated with the workspace
+def_blob_store = Datastore(ws, "workspaceblobstore")
 
 # Get file storage associated with the workspace
 def_file_store = Datastore(ws, "workspacefilestore")
+
 ```
 
-Nahrajte datové soubory nebo adresáře do úložiště dat, aby byla přístupná z vašich kanálů. V tomto příkladu se používá verze úložiště dat BLOB Storage:
+Nahrajte datové soubory nebo adresáře do úložiště dat, aby byla přístupná z vašich kanálů. V tomto příkladu se jako úložiště dat používá úložiště objektů BLOB:
 
 ```python
 def_blob_store.upload_files(
@@ -119,7 +120,7 @@ Níže jsou uvedeny příklady vytváření a připojování výpočetních cíl
 * Azure Databricks 
 * Azure Data Lake Analytics
 
-### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning compute
 
 Pro spuštění kroků můžete vytvořit Azure Machine Learning Compute.
 
@@ -337,19 +338,21 @@ Při prvním spuštění kanálu Azure Machine Learning:
 
 Další informace najdete v referenčních informacích ke [třídě experimentu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) .
 
+
+
 ## <a name="github-tracking-and-integration"></a>Sledování a integrace GitHubu
 
 Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Například aktuální ID potvrzení pro úložiště je protokolováno jako součást historie.
 
 ## <a name="publish-a-pipeline"></a>Publikování kanálu
 
-Můžete publikovat v kanálu ho později spustit s různými vstupy. Pro koncový bod REST již publikovaného kanálu pro příjem parametrů je před publikováním nutné tento kanál parametrizovat. 
+Můžete publikovat v kanálu ho později spustit s různými vstupy. Pro koncový bod REST již publikovaného kanálu pro příjem parametrů je před publikováním nutné tento kanál parametrizovat.
 
 1. Chcete-li vytvořit kanál parametr, použijte [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) objektu s výchozí hodnotou.
 
    ```python
    pipeline_param = PipelineParameter(
-     name="pipeline_arg", 
+     name="pipeline_arg",
      default_value=10)
    ```
 
@@ -360,20 +363,21 @@ Můžete publikovat v kanálu ho později spustit s různými vstupy. Pro koncov
      script_name="compare.py",
      arguments=["--comp_data1", comp_data1, "--comp_data2", comp_data2, "--output_data", out_data3, "--param1", pipeline_param],
      inputs=[ comp_data1, comp_data2],
-     outputs=[out_data3],    
-     target=compute_target, 
+     outputs=[out_data3],
+     target=compute_target,
      source_directory=project_folder)
    ```
 
 3. Publikujte tento kanál, který přijme parametr při vyvolání.
 
    ```python
-   published_pipeline1 = pipeline1.publish(
-       name="My_Published_Pipeline", 
-       description="My Published Pipeline Description")
+   published_pipeline1 = pipeline_run1.publish_pipeline(
+        name="My_Published_Pipeline",
+        description="My Published Pipeline Description",
+        version="1.0")
    ```
 
-## <a name="run-a-published-pipeline"></a>Spuštění publikované kanálu
+### <a name="run-a-published-pipeline"></a>Spuštění publikované kanálu
 
 Všechny publikované kanály mají koncový bod REST. Tento koncový bod vyvolá spuštění kanálu z externích systémů, například klientů mimo Python. Tento koncový bod povoluje ve scénářích dávkového vyhodnocování a přeškolení možnost spravovaná opakovatelnost.
 
@@ -386,15 +390,28 @@ response = requests.post(published_pipeline1.endpoint,
                                "ParameterAssignments": {"pipeline_arg": 20}})
 ```
 
-## <a name="view-results"></a>Zobrazení výsledků
+### <a name="view-results-of-a-published-pipeline"></a>Zobrazení výsledků publikovaného kanálu
 
-Zobrazit seznam všech vašich kanálů a jejich podrobnosti o spuštění:
+Podívejte se na seznam všech publikovaných kanálů a jejich podrobnosti o spuštění:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  
 
 1. [Zobrazení pracovního prostoru](how-to-manage-workspace.md#view) k nalezení seznamu kanálů.
  ![seznam kanálů strojového učení](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Vyberte konkrétní kanálu pro zobrazení výsledků spuštění.
+
+### <a name="disable-a-published-pipeline"></a>Zakázání publikovaného kanálu
+
+Pokud chcete kanál ze seznamu publikovaných kanálů skrýt, můžete ho zakázat:
+
+```
+# Get the pipeline by using its ID in the Azure portal
+p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
+p.disable()
+```
+
+Můžete ho znovu povolit pomocí `p.enable()`.
+
 
 ## <a name="caching--reuse"></a>Ukládání do mezipaměti & opakované použití  
 
@@ -416,6 +433,7 @@ step = PythonScriptStep(name="Hello World",
  
 
 ## <a name="next-steps"></a>Další postup
+
 - Použití [tyto poznámkové bloky Jupyter v Githubu](https://aka.ms/aml-pipeline-readme) prozkoumat machine learning další kanály.
 - Přečtěte si nápovědu odkazu sady SDK pro [azureml. kanály core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) balíčku a [azureml. kanály kroky](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) balíčku.
 

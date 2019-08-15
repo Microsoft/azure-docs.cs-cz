@@ -1,9 +1,9 @@
 ---
-title: Řešení potíží s Azure Active Directory aktivity chyby balíčku obsahu protokolů | Dokumentace Microsoftu
-description: Poskytuje seznam chybových zpráv balíčku obsahu aktivit Azure Active Directory a kroky a opravte je.
+title: Řešení potíží s chybami balíčku obsahu v protokolu aktivit Azure Active Directory | Microsoft Docs
+description: Poskytuje seznam chybových zpráv balíčku obsahu Azure Active Directory aktivity a postup jejich opravy.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 06/07/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ee49ae56122fe596a4490914677d91d2f0348f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54a0a5b5306414eb50a1928ec8a1854f56055681
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807522"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987898"
 ---
-# <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Řešení potíží s Azure Active Directory aktivity chyby balíčku obsahu protokolů 
+# <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Řešení potíží s chybami balíčku obsahu v protokolu aktivit Azure Active Directory 
 
 |  |
 |--|
 |V současné době balíček obsahu Azure AD Power BI používá rozhraní Azure AD Graph API k načtení dat z vašeho tenanta Azure AD. V důsledku toho můžete zaznamenat určitý nesoulad mezi daty, která jsou k dispozici v balíčku obsahu, a daty načtenými pomocí [rozhraní Microsoft Graph API pro generování sestav](concept-reporting-api.md). |
 |  |
 
-Při práci s balíčkem obsahu Power BI pro Azure Active Directory (Azure AD), je možné, že narazíte na následující chyby: 
+Při práci s balíčkem obsahu Power BI pro Azure Active Directory (Azure AD) je možné spustit následující chyby: 
 
-- [Aktualizace se nezdařila.](troubleshoot-content-pack.md#refresh-failed) 
-- [Nepovedlo se aktualizovat přihlašovací údaje ke zdroji dat](troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
-- [Import dat trvá moc dlouho](#data-import-is-too-slow) 
+- [Neúspěšná aktualizace](troubleshoot-content-pack.md#refresh-failed) 
+- [Nepovedlo se aktualizovat přihlašovací údaje zdroje dat.](troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
+- [Import dat trvá příliš dlouho.](#data-import-is-too-slow) 
 
-Tento článek obsahuje informace o možných příčinách a jak tyto chyby opravit.
+V tomto článku najdete informace o možných příčinách a o tom, jak tyto chyby opravit.
  
-## <a name="refresh-failed"></a>Aktualizace se nezdařila. 
+## <a name="refresh-failed"></a>Aktualizace se nezdařila 
  
-**Jak se zobrazí tato chyba**: E-mailu z Power BI nebo stavu selhání v historii aktualizace. 
+**Jak je tato chyba Surface**: Odeslání e-mailu z Power BI nebo neúspěšného stavu v historii aktualizace. 
 
 
-| Příčina | K vyřešení |
+| Příčina | Jak opravit |
 | ---   | ---        |
-| Aktualizujte chyby, které chyby může být způsobena přihlašovacích údajů uživatele, připojení k balíčku obsahu byly obnovit, ale není aktualizovaná. v nastavení připojení balíčku obsahu. | V Power BI, vyhledejte sadu dat odpovídající panel protokolů aktivity služby Azure AD (**protokoly aktivit Azure Active Directory**), zvolte naplánovat aktualizaci a pak zadejte svoje přihlašovací údaje Azure AD. |
-| Obnovení může selhat kvůli velké datové sady. | V současné době balíčku obsahu Azure AD s Power BI podporuje jenom malé datové sady (méně než 500,00 řádků) z důvodu určitých omezení po vypršení časového limitu pro v rámci služby Power BI. Pokud dojde k chybám omezování, nebo pokud se aktualizace nezdaří z důvodu vypršení časového limitu, může se pokouší o načtení velkou datovou sadu. Zkrácením časového období v dotazu a zkuste to znovu.|
+| Chyby při selhání aktualizace se můžou způsobovat při resetování přihlašovacích údajů uživatelů, kteří se připojili k balíčku obsahu, ale ne aktualizovat v nastavení připojení balíčku obsahu. | V Power BI Najděte datovou sadu odpovídající řídicímu panelu protokoly aktivit Azure AD (**protokoly aktivit Azure Active Directory**), zvolte naplánovat aktualizaci a zadejte svoje přihlašovací údaje služby Azure AD. |
+| Aktualizace může selhat kvůli rozsáhlým datovým sadám. | Balíček obsahu Azure AD s Power BI v současné době podporuje pouze malé datové sady (méně než 500, 00 řádků) kvůli omezením týkajícím se časových limitů v rámci služby Power BI. Pokud dojde k chybám při omezování nebo pokud se aktualizace nepovede kvůli problémům s časovým limitem, může to být způsobeno tím, že se pokoušíte načíst velkou datovou sadu. Zkraťte časové období v dotazu a zkuste to znovu.|
  
  
-## <a name="failed-to-update-data-source-credentials"></a>Nepovedlo se aktualizovat přihlašovací údaje ke zdroji dat 
+## <a name="failed-to-update-data-source-credentials"></a>Nepovedlo se aktualizovat přihlašovací údaje zdroje dat. 
  
-**Jak se zobrazí tato chyba**: V Power BI, když se připojíte k balíčku obsahu protokolů aktivit Azure AD. 
+**Jak je tato chyba Surface**: Když se v Power BI připojíte k balíčku obsahu protokol aktivit služby Azure AD. 
 
-| Příčina | K vyřešení |
+| Příčina | Jak opravit |
 | ---   | ---        |
-| Je připojující se uživatel není globální správce nebo čtenáře zabezpečení nebo správce zabezpečení. | Použijte účet, který je globálním správcem nebo Čtenář zabezpečení nebo správce zabezpečení pro přístup k obsahu sady. |
-| Váš tenant není Premium tenanta nebo nemá alespoň jeden uživatel s licencí Premium souboru. | [Lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| Připojující se uživatel není globálním správcem nebo čtenářem zabezpečení nebo správcem zabezpečení. | Pro přístup k balíčkům obsahu použijte účet, který je buď globálním správcem, nebo čtenářem zabezpečení, nebo správcem zabezpečení. |
+| Váš tenant není tenant úrovně Premium nebo nemá aspoň jednoho uživatele se souborem licence Premium. | [Soubor a lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
 
 
-## <a name="data-import-is-too-slow"></a>Import dat je pomalý 
+## <a name="data-import-is-too-slow"></a>Import dat je příliš pomalý. 
  
-**Jak se zobrazí tato chyba**: V Power BI připojíte balíček obsahu, proces importu dat spustí Příprava řídicí panel aktivit Azure AD protokoly. Zobrazí se tato zpráva: **Importují se data...**  bez jakékoli další krok.  
+**Jak je tato chyba Surface**: Po připojení balíčku obsahu v Power BI začne proces importu dat připravovat váš řídicí panel pro protokoly aktivit služby Azure AD. Zobrazí se tato zpráva: **Importují se data...** bez dalšího postupu.  
 
-| Příčina | K vyřešení |
+| Příčina | Jak opravit |
 | ---   | ---        |
-| V závislosti na velikosti tenanta tento krok může trvat pár minut až 30 minut. | Pokud zprávu nezmění na zobrazení řídicího panelu do jedné hodiny, [lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| V závislosti na velikosti vašeho tenanta může tento krok trvat několik minut až 30 minut. | Pokud se zpráva nezměnila tak, aby zobrazovala řídicí panel během celé hodiny, požádejte [o pomoc lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
 
 ## <a name="next-steps"></a>Další postup
 
-* [Nainstalujte balíček obsahu Power BI pro sestavy Azure AD](quickstart-install-power-bi-content-pack.md).
-* [Použití Power BI content pack pro službu Azure AD zprávy k vizualizaci dat](howto-power-bi-content-pack.md)
+* [Nainstalujte Power BI balíčku obsahu pro sestavy služby Azure AD](quickstart-install-power-bi-content-pack.md).
+* [Použití Power BI balíčku obsahu pro sestavy služby Azure AD k vizualizaci dat](howto-power-bi-content-pack.md)
 * [Získání podpory pro Azure Active Directory](../fundamentals/active-directory-troubleshooting-support-howto.md)

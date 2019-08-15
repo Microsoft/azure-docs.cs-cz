@@ -5,21 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5fefe469bfac4816a67c6ceb344f12c1e52de60c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550454"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016440"
 ---
-# <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Redundantní úložiště zóny (ZRS): Vysoce dostupné Azure Storage aplikace
+# <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zóna – redundantní úložiště (ZRS) pro vytváření vysoce dostupných Azure Storagech aplikací
+
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 
 ## <a name="support-coverage-and-regional-availability"></a>Pokrytí podpory a regionální dostupnost
+
 ZRS aktuálně podporuje standardní typy účtů pro obecné účely verze 2. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md).
 
 ZRS je k dispozici pro objekty blob bloku, objekty blob stránky mimo disk, soubory, tabulky a fronty.
@@ -45,6 +47,7 @@ Microsoft nadále povoluje ZRS v dalších oblastech Azure. Další informace o 
 - Spravované disky nepodporují ZRS. Můžete ukládat snímky a obrázky pro SSD úrovně Standard Managed Disks na HDD úrovně Standard úložiště a [volit mezi možnostmi LRS a ZRS](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ## <a name="what-happens-when-a-zone-becomes-unavailable"></a>Co se stane, když se zóna stane nedostupnou?
+
 Vaše data jsou stále přístupná pro operace čtení i zápisu i v případě, že zóna nebude k dispozici. Společnost Microsoft doporučuje, abyste dál dodržovali postupy pro zpracování přechodných chyb. Tyto postupy zahrnují implementaci zásad opakování pomocí exponenciálního zálohování.
 
 Když je zóna nedostupná, Azure si převezme síťové aktualizace, jako je třeba nasměrování DNS. Tyto aktualizace můžou ovlivnit vaši aplikaci, pokud k datům přistupujete ještě před dokončením aktualizací.
@@ -52,6 +55,7 @@ Když je zóna nedostupná, Azure si převezme síťové aktualizace, jako je t�
 ZRS nemusí chránit vaše data před regionální havárií, při které je trvale ovlivněno více zón. Místo toho ZRS nabízí odolnost za vaše data, pokud bude dočasně nedostupná. Microsoft doporučuje používat geograficky redundantní úložiště (GRS), aby se mohla chránit před místními katastrofami. Další informace o GRS najdete v tématu [geograficky redundantní úložiště (GRS): Replikace mezi různými oblastmi pro](storage-redundancy-grs.md)Azure Storage.
 
 ## <a name="converting-to-zrs-replication"></a>Převádění na replikaci ZRS
+
 Migrace na LRS, GRS a RA-GRS je jednoduchá. Pro změnu typu redundance účtu použijte rozhraní API pro Azure Portal nebo poskytovatele prostředků úložiště. Azure následně replikuje vaše data. 
 
 Migrace dat do ZRS vyžaduje jinou strategii. Migrace ZRS zahrnuje fyzické přesuny dat z jediného úložného razítka do několika razítek v rámci oblasti.
@@ -61,14 +65,14 @@ Existují dvě primární možnosti migrace na ZRS:
 - Ručně zkopírujte nebo přesuňte data do nového účtu ZRS z existujícího účtu.
 - Požádejte o migraci za provozu.
 
-Microsoft důrazně doporučuje provést ruční migraci. Ruční migrace poskytuje větší flexibilitu než migrace za provozu. Při ruční migraci budete řídit časování.
+Pokud potřebujete, aby migrace dokončila určité datum, zvažte provedení ruční migrace. Ruční migrace poskytuje větší flexibilitu než migrace za provozu. Při ruční migraci budete řídit časování.
 
 K provedení ruční migrace máte tyto možnosti:
 - Používejte existující nástroje, jako je AzCopy, jednu z Azure Storage klientských knihoven nebo spolehlivé nástroje třetích stran.
 - Pokud jste obeznámeni se systémem Hadoop nebo HDInsight, připojte zdrojový a cílový účet (ZRS) k vašemu clusteru. Pak paralelizovat proces kopírování dat pomocí nástroje, jako je DistCp.
 - Vytvářejte vlastní nástroje pomocí jedné z Azure Storage klientských knihoven.
 
-Ruční migrace může vést k výpadkům aplikací. Pokud vaše aplikace vyžaduje vysokou dostupnost, nabízí Microsoft taky možnost migrace za provozu. Migrace za provozu je místní migrace. 
+Ruční migrace může vést k výpadkům aplikací. Pokud vaše aplikace vyžaduje vysokou dostupnost, nabízí Microsoft taky možnost migrace za provozu. Migrace za provozu je místní migrace bez výpadků. 
 
 Během migrace za provozu můžete použít svůj účet úložiště, zatímco vaše data jsou migrována mezi zdrojovým a cílovým úložným razítkem. Během procesu migrace máte k dispozici stejnou úroveň platnosti smlouvy SLA a dostupnost.
 
@@ -137,9 +141,9 @@ ZRS Classic je k dispozici pouze pro **objekty blob bloku** v účtech úložiš
 
 Pokud chcete data účtu ZRS ručně migrovat do nebo z účtu LRS, ZRS Classic, GRS nebo RA-GRS, použijte jeden z následujících nástrojů: AzCopy, Průzkumník služby Azure Storage, Azure PowerShell nebo Azure CLI. Můžete také vytvořit vlastní řešení migrace pomocí jedné z Azure Storage klientských knihoven.
 
-Můžete také upgradovat účty ZRS Classic na ZRS na portálu nebo pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure v oblastech, kde je ZRS k dispozici.
+Můžete také upgradovat účty ZRS Classic na ZRS na portálu nebo pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure v oblastech, kde je ZRS k dispozici. Pokud chcete upgradovat na ZRS v Azure Portal, přejděte do části **Konfigurace** účtu a vyberte upgradovat:
 
-Pokud chcete upgradovat na ZRS na portálu, přejít do části Konfigurace účtu a vyberte upgradovat:![Upgrade ZRS Classic na ZRS na portálu](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.jpg)
+![Upgrade ZRS Classic na ZRS na portálu](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.png)
 
 Pokud chcete upgradovat na ZRS pomocí prostředí PowerShell, použijte následující příkaz:
 ```powershell

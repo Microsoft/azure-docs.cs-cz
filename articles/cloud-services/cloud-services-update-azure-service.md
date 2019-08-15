@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 10d919b21e05195e8a7b6b351a742a4f9a57ee2b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360700"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945350"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Jak aktualizovat cloudovou službu
 
@@ -21,12 +21,12 @@ Aktualizace cloudové služby včetně jejích rolí a hostovaného operačního
 ## <a name="update-an-azure-service"></a>Aktualizace služby Azure
 Azure uspořádá instance rolí do logických seskupení označovaných jako upgradovací domény (UD). Upgradovací domény (UD) jsou logické sady instancí rolí, které se aktualizují jako skupina.  Azure aktualizuje cloudovou službu po jednom UD, což umožňuje instancím v jiné UDs dál obsluhovat provoz.
 
-Výchozí počet domén upgradu je 5. Můžete zadat jiný počet domén upgradu zahrnutím atributu upgradeDomainCount do souboru definice služby (. csdef). Další informace o atributu upgradeDomainCount najdete v tématu schéma [webrole](/previous-versions/azure/reference/gg557553(v=azure.100)) nebo [schéma role pracovního procesu](/previous-versions/azure/reference/gg557552(v=azure.100)).
+Výchozí počet domén upgradu je 5. Můžete zadat jiný počet domén upgradu zahrnutím atributu upgradeDomainCount do souboru definice služby (. csdef). Další informace o atributu upgradeDomainCount naleznete v tématu [schéma definice Azure Cloud Services (soubor. csdef)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file).
 
 Při provádění místní aktualizace jedné nebo více rolí ve službě Azure aktualizuje sady instancí rolí v závislosti na upgradovací doméně, do které patří. Azure aktualizuje všechny instance v dané upgradovací doméně – zastavuje je, aktualizuje je, přenáší je online a pak se přesune na další doménu. Když zastavíte jenom instance spuštěné v aktuální upgradovací doméně, Azure zajistí, že dojde k aktualizaci s nejmenším možným dopadem na běžící službu. Další informace najdete v tématu [jak aktualizace pokračuje](#howanupgradeproceeds) dále v tomto článku.
 
 > [!NOTE]
-> I když se  tyto výrazy aktualizují a **upgradují** mírně odlišným významem v kontextu Azure, dají se pro procesy a popisy funkcí v tomto dokumentu použít zaměnitelné.
+> I když se tyto výrazy aktualizují a **upgradují** mírně odlišným významem v kontextu Azure, dají se pro procesy a popisy funkcí v tomto dokumentu použít zaměnitelné.
 >
 >
 
@@ -114,7 +114,7 @@ Abyste minimalizovali prostoje při upgradování jedné instance služby, nasa�
 <a name="RollbackofanUpdate"></a>
 
 ## <a name="rollback-of-an-update"></a>Vrácení aktualizace zpět
-Azure poskytuje flexibilitu při správě služeb během aktualizace tím, že vám umožní zahájit u služby další operace až po přijetí počáteční žádosti o aktualizaci řadičem prostředků infrastruktury Azure. Vrácení zpět se dá provést jenom v případě, že se aktualizace (Změna konfigurace) nebo upgrade  nachází v probíhajícím stavu nasazení. Aktualizace nebo upgrade se považuje za probíhající, pokud existuje aspoň jedna instance služby, která ještě není aktualizovaná na novou verzi. Pokud chcete otestovat, jestli je vrácení zpět povolené, zkontrolujte hodnotu příznaku RollbackAllowed, který vrátí operace [získat nasazení](/previous-versions/azure/reference/ee460804(v=azure.100)) a [získat vlastnosti cloudové služby](/previous-versions/azure/reference/ee460806(v=azure.100)) , na hodnotu true.
+Azure poskytuje flexibilitu při správě služeb během aktualizace tím, že vám umožní zahájit u služby další operace až po přijetí počáteční žádosti o aktualizaci řadičem prostředků infrastruktury Azure. Vrácení zpět se dá provést jenom v případě, že se aktualizace (Změna konfigurace) nebo upgrade nachází v probíhajícím stavu nasazení. Aktualizace nebo upgrade se považuje za probíhající, pokud existuje aspoň jedna instance služby, která ještě není aktualizovaná na novou verzi. Pokud chcete otestovat, jestli je vrácení zpět povolené, zkontrolujte hodnotu příznaku RollbackAllowed, který vrátí operace [získat nasazení](/previous-versions/azure/reference/ee460804(v=azure.100)) a [získat vlastnosti cloudové služby](/previous-versions/azure/reference/ee460806(v=azure.100)) , na hodnotu true.
 
 > [!NOTE]
 > Je vhodné volat vrácení zpět v rámci **místní** aktualizace nebo upgradu, protože virtuální IP adresy prohození zahrnují nahrazení jedné spuštěné instance služby jinou instancí.
@@ -179,7 +179,7 @@ Následující diagram znázorňuje, jak je služba, která obsahuje dvě role, 
 >
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Jak spravovat Cloud Services](cloud-services-how-to-manage-portal.md)  
 [Jak monitorovat Cloud Services](cloud-services-how-to-monitor.md)  
 [Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)  

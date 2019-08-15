@@ -1,9 +1,9 @@
 ---
-title: Sestava využití a insights na portálu Azure Active Directory | Dokumentace Microsoftu
-description: Úvod do sestavy využití a insights na portálu Azure Active Directory
+title: Sestava využití a přehledů na portálu Azure Active Directory | Microsoft Docs
+description: Seznámení se sestavou využití a přehledů na portálu Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 3fba300d-18fc-4355-9924-d8662f563a1f
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3fe1e72d277bffd4bc9b38ac377e33b341967e17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c6723c28bf6ab8af112763a6485bc89b46409c6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65806353"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989858"
 ---
-# <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Sestava využití a insights na portálu Azure Active Directory
+# <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Sestava využití a přehledů na portálu Azure Active Directory
 
-Sestava využití a insights umožňuje získat aplikace zaměřené zobrazení dat přihlašování. Můžete najít odpovědi na následující otázky:
+Pomocí sestavy využití a přehled můžete získat pohled na přihlašovací údaje zaměřené na aplikaci. Můžete najít odpovědi na následující otázky:
 
-*   Co jsou horní používané aplikace v mé organizaci?
-*   Jaké aplikace mají největší neúspěšných přihlášení? 
-*   Co jsou se hlavní chyby přihlášení pro každou aplikaci?
+*   Jaké jsou nejčastěji používané aplikace v mé organizaci?
+*   U kterých aplikací se neúspěšná přihlášení? 
+*   Jaké jsou nejčastější chyby při přihlašování u každé aplikace?
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Pro přístup k datům ze sestavy využití a přehledy, budete potřebovat:
+Pro přístup k datům ze sestavy využití a přehled potřebujete:
 
-* Klient služby Azure AD
-* Licenci Azure AD premium (P1/P2) Chcete-li zobrazit data přihlášení
-* Uživatel v globální správce, správce zabezpečení, čtenář zabezpečení nebo role čtenáře sestav. Kdokoli (bez oprávnění správce) navíc můžete použít vlastní přihlášení. 
+* Tenant Azure AD
+* Licence Azure AD Premium (P1/P2) k zobrazení přihlašovacích údajů
+* Uživatel v rolích Globální správce, správce zabezpečení, čtenář zabezpečení nebo čtenář sestav. Kromě toho může mít každý uživatel (bez oprávnění správce) přístup ke svým vlastním přihlášením. 
 
-## <a name="access-the-usage-and-insights-report"></a>Přístup k sestavě využití a přehledy
+## <a name="access-the-usage-and-insights-report"></a>Přístup k sestavě využití a přehled
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-2. Vyberte adresář, vpravo a pak vyberte **Azure Active Directory** a zvolte **podnikové aplikace**.
-3. Z **aktivity** vyberte **dat o využití a insights** a otevřete tak sestavu. 
+2. Vyberte správný adresář a pak vyberte **Azure Active Directory** a zvolte **podnikové aplikace**.
+3. V části **aktivita** vyberte **využití & přehledy** k otevření sestavy. 
 
 ![Sestava přehledů a využití](./media/concept-usage-insights-report/main-menu.png)
                                      
 
-## <a name="use-the-report"></a>Pomocí sestavy
+## <a name="use-the-report"></a>Použití sestavy
 
-Sestavy využití a insights zobrazí seznam aplikací s minimálně jeden znak na pokus o a umožňuje řazení podle počtu úspěšných přihlášeních, neúspěšných přihlášení a míra úspěšnosti.
+Sestava využití a přehledů zobrazuje seznam aplikací s jedním nebo více pokusy o přihlášení a umožňuje řadit podle počtu úspěšných přihlášení, neúspěšných přihlášení a míry úspěšnosti.
 
-Kliknutím na zatížení více v dolní části seznamu můžete zobrazit další aplikace na stránce. Můžete vybrat rozsah, chcete-li zobrazit všechny aplikace, které se používají v rámci rozsahu.
+Kliknutím na načíst další v dolní části seznamu můžete zobrazit další aplikace na stránce. Můžete vybrat rozsah kalendářních dat a zobrazit všechny aplikace, které byly v daném rozsahu použity.
 
-Můžete také nastavit fokus na konkrétní aplikaci. Vyberte **zobrazení aktivit přihlašování** zobrazíte přihlašovací aktivity v čase pro aplikace, stejně jako se hlavní chyby.  
+Můžete také nastavit fokus na konkrétní aplikaci. Vyberte **Zobrazit aktivitu přihlašování** , abyste viděli aktivitu přihlášení v průběhu času pro aplikaci i hlavní chyby.  
 
-Když vyberete jeden den v grafu využití aplikace, získejte podrobný seznam aktivit přihlašování pro aplikaci.  
+Když vyberete den v grafu využití aplikací, zobrazí se podrobný seznam aktivit přihlašování pro aplikaci.  
 
 ![Sestava přehledů a využití](./media/concept-usage-insights-report/usage-and-insights-report.png)
 

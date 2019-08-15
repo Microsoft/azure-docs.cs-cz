@@ -7,24 +7,23 @@ author: raiye
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/26/2019
 ms.author: raiye
-ms.openlocfilehash: 9f796d4fe0edd1b6a944fc96e8045b1434d939f0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 63c0502cb7b5abf6b6005683cc97d3229ec90e47
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592410"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945430"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze hostovaného operačního systému Azure a tabulka kompatibility SDK
 Poskytuje aktuální informace o nejnovějších vydáních hostovaného operačního systému Azure pro Cloud Services. Tyto informace vám pomohou naplánovat cestu upgradu před zakázáním hostovaného operačního systému. Pokud vaše role nakonfigurujete tak, aby používaly *Automatické* aktualizace HOSTOVANÉHO operačního systému, jak je popsáno v tématu [aktualizace nastavení operačního systému hosta v Azure][Azure Guest OS Update Settings], není důležité tuto stránku číst.
 
 > [!IMPORTANT]
-> Tato stránka se vztahuje na Cloud Services webové a pracovní role, které se spouštějí nad hostovaným operačním systémem. Nevztahuje se **na IaaS** Virtual Machines.
+> Tato stránka se vztahuje na Cloud Services webové a pracovní role, které se spouštějí nad hostovaným operačním systémem. Nevztahuje se na IaaS Virtual Machines.
 >
 >
 

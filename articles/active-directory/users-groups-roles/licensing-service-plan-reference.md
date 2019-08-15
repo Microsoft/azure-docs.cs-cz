@@ -12,16 +12,16 @@ ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 04/15/2019
-ms.author: curtand
-ms.reviewer: ajayanti1
+ms.author: arjay
+ms.reviewer: arjay
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a624920a6763be54735f7cc470d0ae4a3c97d2e3
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 02319bbbe9eb2ddeda463fb09620dad46020b623
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740856"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987530"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Názvy produktů a identifikátory plánu služby pro licencování
 
@@ -211,7 +211,7 @@ Následující plány služeb se nedají přiřadit dohromady:
 | YAMMER_EDU    | 2078e8df-cff6-4290-98cb-5408261a760a |
 | YAMMER_MIDSIZE    | 41bf139a-4e60-409f-9346-a1361efc6dfb |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o sadě funkcí pro správu licencí prostřednictvím skupin najdete v následujících tématech:
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 3f991d90dfdd5d31d1a7cf7119356f40458e7614
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7e5c33577a2d926266ae45057509b112dc27ce7b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568242"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985727"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database versus SQL Server
 
@@ -84,7 +84,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [Fulltextové vyhledávání (ft)](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Ano, ale nejsou podporované moduly pro dělení na slova třetích stran. | Ano, ale nejsou [podporované moduly pro dělení na slova třetích stran](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) . |
 | [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | Většina – viz jednotlivé funkce | Ano – viz [uložené procedury, funkce, rozdíly ve triggerech](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
 | [Zpracování grafu](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Ano | Ano |
-| [Optimalizace v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | [Pouze vrstvy na úrovni Premium a pro důležité obchodní informace](sql-database-in-memory.md) | [Pouze pro důležité obchodní informace úroveň](sql-database-managed-instance.md) Ano |
+| [Optimalizace v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Úroveň Ano – [Premium a pro důležité obchodní informace podporuje jenom](sql-database-in-memory.md) omezené podpory pro netrvalé objekty v paměti, jako jsou typy tabulek. | [Pouze pro důležité obchodní informace úroveň](sql-database-managed-instance.md) Ano |
 | [Podpora dat JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Ano](sql-database-json-features.md) | [Ano](sql-database-json-features.md) |
 | [Jazykové prvky](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Většina – viz jednotlivé prvky |  Ano – viz [rozdíly v T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Propojené servery](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne – viz [elastický dotaz](sql-database-elastic-query-horizontal-partitioning.md) | Ano. Pouze [SQL Server a SQL Database](sql-database-managed-instance-transact-sql-information.md#linked-servers) bez distribuovaných transakcí. |
@@ -183,7 +183,7 @@ Azure SQL Database podporuje různé datové nástroje, které vám pomůžou se
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Ne – viz [Rozšířené události](sql-database-xevent-db-diff-from-svr.md) | Ano |
 | [System Center Operations Manager – SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Ano](https://www.microsoft.com/download/details.aspx?id=38829) | Ne |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o službě Azure SQL Database najdete v tématu [Co je SQL Database?](sql-database-technical-overview.md)
 - Informace o spravované instanci naleznete v tématu [co je spravovaná instance?](sql-database-managed-instance.md).

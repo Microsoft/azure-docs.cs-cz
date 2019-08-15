@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 07/23/2019
-ms.openlocfilehash: 1d2a0c9e1531ace16335ea57acaccedfe2c1a3c8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7ef19db472b30d82f14a5dd650cb8f4cb1f3ed3a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815896"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990075"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-train-and-deploy-your-first-classification-model-preview"></a>Kurz: Použití automatizovaného strojového učení ke školení a nasazení prvního klasifikačního modelu (Preview)
 
@@ -54,7 +54,7 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 
 1. Vyberte **vytvořit nový výpočetní** výkon a nakonfigurujte pro tento experiment výpočetní kontext.
 
-    Pole| Hodnota
+    Pole| Value
     ---|---
     Název výpočetních prostředků služby Machine Learning| Zadejte jedinečný název, který identifikuje váš výpočetní kontext. V tomto příkladu používáme **automl-COMPUTE**.
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon. Používáme **Standard_DS12_V2**.
@@ -95,7 +95,7 @@ V tomto kurzu se seznámíte s následujícími úlohami:
     Souběžnost| U maximálního počtu souběžných iterací vyberte **5** .
 
    >[!NOTE]
-   > Pro tento experiment nenastavíme prahovou hodnotu metriky nebo maximální hodnoty iterací. Neblokuje se také testování algoritmů.
+   > Pro tento experiment nenastavíme prahovou hodnotu metriky nebo maximální počet jader na iterace. Neblokuje se také testování algoritmů.
 
 1. Pokud chcete experiment spustit, vyberte **Spustit** .
 

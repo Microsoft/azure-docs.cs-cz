@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 154d71c9cbc109834a5854b46c3e6584dcefa7eb
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817207"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968845"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Zásady: Pro uživatele ve vašem adresáři
 
@@ -35,7 +35,7 @@ Postupujte podle těchto kroků, pokud chcete, aby byly zásady pro uživatele v
 
 ### <a name="policy-for-users-not-in-your-directory"></a>Zásady: Pro uživatele, kteří nejsou ve vašem adresáři
 
-Postupujte podle těchto kroků, pokud chcete, aby byly zásady pro uživatele, kteří nejsou ve vašem adresáři, který může vyžadovat tento balíček přístupu. Uživatelé, kteří **nejsou ve vašem adresáři** , odkazují na uživatele, kteří jsou v jiném adresáři služby Azure AD, a nemusí být do vašeho adresáře pozváni.  V nastavení **omezení spolupráce organizačních vztahů** se musí adresáře nakonfigurovat tak, aby byly povolené.
+Postupujte podle těchto kroků, pokud chcete, aby byly zásady pro uživatele, kteří nejsou ve vašem adresáři, který může vyžadovat tento balíček přístupu. Uživatelé, kteří **nejsou ve vašem adresáři** , odkazují na uživatele, kteří jsou v jiném adresáři služby Azure AD, a nemusí být do vašeho adresáře pozváni. V současné době můžete přidat pouze uživatele z organizací, které mají službu Azure AD. V nastavení **omezení spolupráce organizačních vztahů** se musí adresáře nakonfigurovat tak, aby byly povolené.
 
 > [!NOTE]
 > Pro uživatele, který ještě není ve vašem adresáři, jehož požadavek je schválen nebo automaticky schválen, se vytvoří účet externího uživatele hosta. Host bude pozván, ale neobdrží e-mail s pozvánkou. Místo toho obdrží e-mail po doručení jejich přiřazení balíčku přístupu. Ve výchozím nastavení platí, že pokud už uživatel typu host již nemá žádná přiřazení balíčku přístupu, protože jejich poslední přiřazení vypršela nebo byla zrušena, bude tento uživatelský účet hosta zablokován a následně odstraněn. Pokud chcete, aby uživatelé typu Host zůstali ve vašem adresáři po neomezenou dobu, a to i v případě, že nemají žádná přiřazení balíčků přístupu, můžete změnit nastavení pro konfiguraci správy nároků.

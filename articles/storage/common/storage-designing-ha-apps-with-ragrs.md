@@ -1,154 +1,154 @@
 ---
-title: Navrhování aplikací s vysokou dostupností pomocí geograficky redundantního úložiště jen pro čtení (RA-GRS) | Dokumentace Microsoftu
-description: Jak používat úložiště Azure RA-GRS se navrhovat vysoce dostupné aplikace dostatečně flexibilní, aby zpracování výpadků.
+title: Návrh vysoce dostupných aplikací s využitím geograficky redundantního úložiště s přístupem pro čtení (RA-GZRS nebo RA-GRS) | Microsoft Docs
+description: Jak používat úložiště Azure RA-GZRS nebo RA-GRS k navržení vysoce dostupné aplikace, která je dostatečně flexibilní, aby mohla zvládnout výpadky.
 services: storage
 author: tamram
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 16f38f6aae11f7bf806b7bad76db8f739fb2823d
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 79d00d39903b6fb3891ee7c0ccc4743763043568
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357080"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015616"
 ---
-# <a name="designing-highly-available-applications-using-ra-grs"></a>Navrhování aplikací s vysokou dostupností pomocí RA-GRS
+# <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Návrh vysoce dostupných aplikací s využitím geograficky redundantního úložiště s přístupem pro čtení
 
-To běžná funkce cloudové infrastruktury jako služby Azure Storage je, že poskytuje vysoce dostupnou platformu pro hostování aplikací. Vývojáři cloudové aplikace, třeba důkladně zvážit, jak využít této platformy k zajištění vysoce dostupných aplikací na svoje uživatele. Tento článek se týká jak mohou vývojáři pro čtení geograficky redundantní úložiště s přístupem (pro čtení RA-GRS) ujistěte se, které jsou jejich aplikace služby Azure Storage s vysokou dostupností.
+Běžnou funkcí cloudových infrastruktur, jako je Azure Storage, je, že poskytují vysoce dostupnou platformu pro hostování aplikací. Vývojáři cloudových aplikací musí pečlivě zvážit, jak tuto platformu využít k doručování vysoce dostupných aplikací svým uživatelům. Tento článek se zaměřuje na to, jak můžou vývojáři používat jednu z geograficky redundantních možností replikace Azure a zajistit, aby jejich aplikace Azure Storage byly vysoce dostupné.
 
-[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
+Účty úložiště nakonfigurované pro geograficky redundantní replikaci se synchronně replikují v primární oblasti a pak se asynchronně replikují do sekundární oblasti, která je od sebe stovky kilometrů. Azure Storage nabízí dva typy geograficky redundantní replikace:
 
-Tento článek se zaměřuje na GRS a RA-GRS. S GRS jsou tři kopie dat uchovávány v primární oblasti, kterou jste vybrali při nastavování účtu úložiště. Další tři kopie se zachovají asynchronně v sekundární oblasti definované v Azure. RA-GRS nabízí geograficky redundantní úložiště s přístupem pro čtení na sekundární kopii.
+* [Geografická zóna – redundantní úložiště (GZRS) (Preview)](storage-redundancy-gzrs.md) poskytuje replikaci pro scénáře vyžadující vysokou dostupnost a maximální odolnost. Data se replikují synchronně v rámci tří zón dostupnosti Azure v primární oblasti pomocí redundantního úložiště (ZRS) zóny a pak se asynchronně replikují do sekundární oblasti. Pro přístup pro čtení dat v sekundární oblasti povolte přístup pro čtení Geo-Zone-redundantní úložiště (RA-GZRS).
+* [Geograficky redundantní úložiště (GRS)](storage-redundancy-grs.md) zajišťuje meziregionální replikaci pro ochranu před místními výpadky. Data se replikují synchronně třikrát v primární oblasti pomocí místně redundantního úložiště (LRS) a pak se asynchronně replikují do sekundární oblasti. Pro přístup pro čtení dat v sekundární oblasti povolte geograficky redundantní úložiště s přístupem pro čtení (RA-GRS).
 
-Informace o tom, které jsou primární oblasti souřadnicí které sekundární oblasti naleznete v tématu [obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): Spárovaných oblastech Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+V tomto článku se dozvíte, jak navrhnout aplikaci pro zpracování výpadku v primární oblasti. Pokud primární oblast nebude k dispozici, může být aplikace přizpůsobena provádění operací čtení v sekundární oblasti. Než začnete, ujistěte se, že je váš účet úložiště nakonfigurovaný pro RA-GRS nebo RA-GZRS.
 
-Nejsou zahrnuty v tomto článku a odkaz na kompletní příklad na konci, kterou můžete stáhnout a spustit fragmenty kódu.
+Informace o tom, které primární oblasti jsou spárovány se sekundárními oblastmi [, najdete v tématu provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+
+V tomto článku jsou uvedené fragmenty kódu a odkaz na úplnou ukázku na konci, kterou si můžete stáhnout a spustit.
+
+## <a name="application-design-considerations-when-reading-from-the-secondary"></a>Požadavky na návrh aplikace při čtení ze sekundárního
+
+Účelem tohoto článku je Ukázat, jak navrhnout aplikaci, která bude i nadále fungovat (i když v omezené kapacitě) i v případě závažné havárie v primárním datovém centru. Aplikaci můžete navrhnout tak, aby zpracovávala přechodné nebo dlouhodobé problémy čtením ze sekundární oblasti, když dojde k problému, který je v konfliktu se čtením z primární oblasti. Když je primární oblast opět k dispozici, vaše aplikace se může vrátit ke čtení z primární oblasti.
+
+Při návrhu aplikace pro RA-GRS nebo RA-GZRS mějte na paměti tyto klíčové body:
+
+* Azure Storage uchovává kopii dat, která ukládáte do primární oblasti v sekundární oblasti, jen pro čtení. Jak je uvedeno výše, služba úložiště Určuje umístění sekundární oblasti.
+
+* Kopie, která je jen pro čtení, je [nakonec konzistentní](https://en.wikipedia.org/wiki/Eventual_consistency) s daty v primární oblasti.
+
+* U objektů blob, tabulek a front můžete zadat dotaz na sekundární oblast pro hodnotu *čas poslední synchronizace* , která oznamuje, že došlo k poslední replikaci z primární do sekundární oblasti. (To není podporováno u souborů Azure, které v tuto chvíli nemají redundanci RA-GRS.)
+
+* Pomocí klientské knihovny pro úložiště můžete číst a zapisovat data buď v primární nebo sekundární oblasti. Pokud vyprší časový limit žádosti o čtení do primární oblasti, můžete také automaticky přesměrovat požadavky na čtení do sekundární oblasti.
+
+* Pokud primární oblast nebude k dispozici, můžete iniciovat převzetí služeb při selhání účtu. Při převzetí služeb při selhání do sekundární oblasti se položky DNS odkazující na primární oblast změní tak, aby odkazovaly na sekundární oblast. Po dokončení převzetí služeb při selhání bude pro účty GRS a RA-GRS obnovený přístup pro zápis. Další informace najdete v tématu [obnovení po havárii a převzetí služeb při selhání účtu úložiště (Preview) v Azure Storage](storage-disaster-recovery-guidance.md).
 
 > [!NOTE]
-> Azure Storage teď podporuje zónově redundantní úložiště (ZRS) pro vytváření vysoce dostupných aplikací. ZRS poskytuje jednoduché řešení pro spoustu aplikací na potřeby redundance. ZRS poskytuje ochranu proti selhání hardwaru nebo katastrofickými jiného problému ovlivňujícího by to mělo dopad jednom datacentru. Další informace najdete v tématu [zónově redundantní úložiště (ZRS): Vysoce dostupné aplikace služby Azure Storage](storage-redundancy-zrs.md).
+> Převzetí služeb při selhání účtu spravovaného zákazníkem (Preview) ještě není dostupné v oblastech podporujících GZRS/RA-GZRS, takže zákazníci momentálně nemůžou spravovat události převzetí služeb při selhání účtu s GZRS a RA-GZRS účty. V průběhu verze Preview bude společnost Microsoft spravovat všechny události převzetí služeb při selhání, které mají vliv na účty GZRS/RA-GZRS.
 
-## <a name="key-features-of-ra-grs"></a>Klíčové funkce služby RA-GRS
+### <a name="using-eventually-consistent-data"></a>Použití nakonec konzistentních dat
 
-Při navrhování aplikace za RA-GRS, mějte na paměti tyto klíčové body:
+Navrhované řešení předpokládá, že je přijatelné vracet potenciálně zastaralá data do volající aplikace. Vzhledem k tomu, že data v sekundární oblasti jsou nakonec konzistentní, je možné, že primární oblast nebude přístupná, než se dokončí aktualizace sekundární oblasti.
 
-* Azure Storage uchovává kopii dat, které ukládáte ve vaší primární oblasti do sekundární oblasti jen pro čtení. Jak bylo uvedeno výše, službu úložiště určuje umístění sekundární oblasti.
+Předpokládejme například, že zákazník úspěšně odeslal aktualizaci, ale primární region se nezdaří před tím, než se aktualizace rozšíří do sekundární oblasti. Když zákazník požádá o čtení dat zpět, obdrží ze sekundární oblasti místo aktualizovaných dat zastaralá data. Při návrhu aplikace se musíte rozhodnout, jestli je to přijatelné, a pokud ano, jak se bude zákazník považovat za zprávu. 
 
-* Kopírování jen pro čtení je [konzistentní](https://en.wikipedia.org/wiki/Eventual_consistency) s daty v primární oblasti.
+Později v tomto článku ukážeme, jak kontrolovat čas poslední synchronizace pro sekundární data a ověřit, jestli je sekundární je aktuální.
 
-* Pro objekty BLOB, tabulky a fronty, můžete dát dotaz na sekundární oblastí pro *čas poslední synchronizace* hodnotu, která určuje, kdy došlo k poslední replikace z primární do sekundární oblasti. (To se nepodporuje pro soubory Azure, které v tuto chvíli nemá redundance RA-GRS).
+### <a name="handling-services-separately-or-all-together"></a>Zpracování služeb samostatně nebo dohromady
 
-* Můžete použít klientskou knihovnu pro úložiště pro interakci s daty v primární nebo sekundární oblast. Můžete také vytvořit přesměrování čtení požadavky automaticky do sekundární oblasti, pokud vyprší časový limit čtení žádosti do primární oblasti.
+V nepravděpodobném případě je možné, že jedna služba nebude k dispozici, zatímco ostatní služby jsou pořád plně funkční. Můžete zpracovávat opakované pokusy a režim jen pro čtení pro každou službu samostatně (objekty blob, fronty, tabulky) nebo můžete pokusy pokaždé pro všechny služby úložiště společně zpracovávat současně.
 
-* Pokud primární oblast stane nedostupnou, můžete spustit účtu převzetí služeb při selhání. Při převzetí služeb při selhání do sekundární oblasti, jsou položky DNS, odkazuje na primární oblast změnit tak, aby odkazoval na sekundární oblasti. Po dokončení převzetí služeb se obnoví oprávnění k zápisu pro účty GRS a RA-GRS. Další informace najdete v tématu [po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) ve službě Azure Storage](storage-disaster-recovery-guidance.md).
+Pokud například používáte ve své aplikaci fronty a objekty blob, můžete se rozhodnout do samostatného kódu pro zpracování opakovaných chyb pro každé z nich. Pokud se pak znovu pokusíte ze služby BLOB Service, ale i nadále funguje, bude to mít vliv jenom na součást aplikace, která zpracovává objekty blob. Pokud se rozhodnete všechny opakované pokusy o službu úložiště zpracovat obecně a volání služby BLOB Service vrátí chybu s opakováním, bude to mít vliv na požadavky na službu BLOB Service i na službu front.
 
-## <a name="application-design-considerations-when-using-ra-grs"></a>Aspekty návrhu aplikace při používání RA-GRS
-
-Účelem tohoto článku je ukazují, jak navrhovat aplikace, která bude v dále fungovat (byť jen omezená kapacita) i v případě větší havárie v primárním datovém centru. Můžete navrhnout vaši aplikaci obsluhování krátkodobé nebo dlouhodobé problémy, přečtěte si téma ze sekundární oblasti, když dojde k nějakému problému, který brání systému čtení z primární oblasti. Až primární oblast opět k dispozici, vaše aplikace může vrátit na čtení z primární oblasti.
-
-### <a name="using-eventually-consistent-data"></a>Pomocí konečnou konzistenci dat.
-
-Navržené řešení se předpokládá, že je přijatelné vrácení potenciálně zastaralých dat volající aplikace. Vzhledem k tomu, že data v sekundární oblasti jsou nakonec konzistentní, je možné, že může být primární oblasti nedostupný, před dokončením příkazu se aktualizace do sekundární oblasti, které se replikují.
-
-Předpokládejme například, zákazník odešle aktualizaci úspěšně, ale selže primární oblast předtím, než se šíří aktualizace do sekundární oblasti. Když zákazník požádá o načtení dat zpět, obdrží tento uživatel zastaralá data ze sekundární oblasti místo aktualizovaná data. Při návrhu aplikace, musíte rozhodnout, jestli je to přijatelné a pokud ano, jak bude zpráva zákazníka. 
-
-Dále v tomto článku vám ukážeme, jak zkontrolovat poslední čas synchronizace pro sekundární data ke kontrole, jestli je aktuální sekundární.
-
-### <a name="handling-services-separately-or-all-together"></a>Zpracování služby samostatně nebo společně
-
-Zatímco je nepravděpodobné, je možné, jedna služba dostupná, zatímco ostatní služby jsou stále plně funkční. Dokáže zpracovat opakovaných pokusů a režimu jen pro čtení pro každou službu zvlášť (objekty BLOB, fronty, tabulky), nebo opakování obecně pro všechny služby storage dokáže zpracovat společně.
-
-Pokud používáte fronty a objekty BLOB ve vaší aplikaci, můžete rozhodnout umístit do samostatného kódu pro zpracování chyb, které vyvolaly pro každou z nich. Pokud získáte ze služby blob service zkuste to znovu, ale stále funguje služba front, pak bude mít vliv pouze část aplikace, která zpracovává objekty BLOB. Pokud se rozhodnete obecně zpracovat všechny opakování služby storage a volání služby blob service vrátí Opakovatelná chyba, bude mít vliv požadavků na službu blob service a službu front.
-
-Nakonec záleží na složitosti aplikace. Můžete rozhodnout zpracovávat selhání služby, ale místo pro přesměrování požadavků pro všechny služby storage do sekundární oblasti na čtení a spuštění aplikace v režimu jen pro čtení, při zjištění problému se všemi službami úložiště v primární oblasti.
+Nakonec závisí na složitosti vaší aplikace. Můžete se rozhodnout Nezpracovávat selhání podle služby, ale místo toho přesměrovat požadavky na čtení pro všechny služby úložiště do sekundární oblasti a spustit aplikaci v režimu jen pro čtení při detekci problému se službou úložiště v primární oblasti.
 
 ### <a name="other-considerations"></a>Další důležité informace
 
-Jedná se o opatření, které se budeme zabývat ve zbývající části tohoto článku.
+Toto jsou další okolnosti, které budeme projednávat ve zbývající části tohoto článku.
 
-*   Zpracování opakování požadavků na čtení pomocí vzoru Circuit Breaker
+* Zpracování opakovaných pokusů žádostí o čtení pomocí vzoru pro přerušení okruhu
 
-*   Nakonec konzistentní data a čas poslední synchronizace
+* Nakonec konzistentní data a čas poslední synchronizace
 
-*   Testování
+* Testování
 
 ## <a name="running-your-application-in-read-only-mode"></a>Spuštění aplikace v režimu jen pro čtení
 
-Pokud chcete používat úložiště RA-GRS, musí být schopná zpracovat i neúspěšné požadavky na čtení a nebyl úspěšný, požadavků na aktualizace (aktualizace v tomto případě to znamená vložení, aktualizace a odstranění). Pokud primární datové centrum selže, přečtěte si požadavky můžete přesměrovat do sekundárního datového centra. Žádosti o aktualizaci nelze však přesměrovat na sekundární, protože slouží jen pro čtení. Z tohoto důvodu potřebujete pro návrh aplikace na spouštění v režimu jen pro čtení.
+Aby bylo možné efektivně připravovat výpadek v primární oblasti, je nutné, abyste mohli zpracovávat žádosti o neúspěšné čtení i neúspěšné žádosti o aktualizaci (s aktualizací v tomto případě to znamená vložení, aktualizace a odstranění). Pokud dojde k chybě primární oblasti, žádosti o čtení je možné přesměrovat do sekundární oblasti. Žádosti o aktualizaci ale nelze přesměrovat na sekundární, protože sekundární je jen pro čtení. Z tohoto důvodu je nutné navrhnout aplikaci tak, aby běžela v režimu jen pro čtení.
 
-Můžete například nastavit příznak, který je vrácen před všechny žádosti o aktualizaci se odešlou do služby Azure Storage. Když prochází jedné žádosti o aktualizaci můžete přeskočit ho a vrací odpovídající odpověď na zákazníka. Můžete dokonce i zakázat některé funkce zcela, dokud se problém vyřeší a upozornit uživatele, že tyto funkce jsou dočasně nedostupné.
+Můžete například nastavit příznak, který je zkontrolován před odesláním žádostí o aktualizaci do Azure Storage. Pokud jeden z požadavků na aktualizaci přichází prostřednictvím, můžete ho přeskočit a vrátit se k příslušné reakci na zákazníka. Některé funkce můžete dokonce chtít zcela vypnout, dokud se problém nevyřeší a upozorní uživatele, že tyto funkce jsou dočasně nedostupné.
 
-Pokud se rozhodnete pro zpracování chyb pro každou službu zvlášť, je také potřeba zpracovat možnost spouštět vaše aplikace v režimu jen pro čtení službou. Například může mít jen pro čtení příznaky pro každou službu, která mohou být povolené a zakázané. Potom můžete zpracovávat příznak na příslušných místech ve vašem kódu.
+Pokud se rozhodnete zpracovávat chyby každé služby samostatně, budete také muset zpracovat možnost spuštění aplikace v režimu jen pro čtení podle služby. Například můžete mít příznaky jen pro čtení pro každou službu, kterou lze povolit a zakázat. Pak můžete příznak zpracovat na příslušných místech v kódu.
 
-Možnost spuštění aplikace v režimu jen pro čtení má další výhodu na straně – to vám dává možnost zajistit omezené funkce během upgradu hlavní aplikace. Aplikace pro spouštění v režimu jen pro čtení a přejděte do sekundárního datového centra, můžete aktivovat zajistit, že nikdo přistupuje k datům v primární oblasti, zatímco provádíte upgrade.
+Možnost spuštění vaší aplikace v režimu jen pro čtení má další výhodu na straně druhé. díky tomu máte možnost zajistit během upgradu hlavní aplikace omezené funkce. Svou aplikaci můžete aktivovat tak, aby běžela v režimu jen pro čtení, odkazovala na sekundární datové centrum, takže nikdo nepřistupuje k datům v primární oblasti, když provádíte upgrade.
 
 ## <a name="handling-updates-when-running-in-read-only-mode"></a>Zpracování aktualizací při spuštění v režimu jen pro čtení
 
-Existuje mnoho způsobů zpracování požadavků na aktualizace při spuštění v režimu jen pro čtení. Jsme nebudeme se zabývat tím komplexně, ale obecně platí, máte několik vzorů, které považujete za.
+Existuje mnoho způsobů, jak zpracovávat žádosti o aktualizaci při spuštění v režimu jen pro čtení. Nebudeme se k tomu zabývat komplexně, ale obecně existuje několik vzorů, které považujete za vhodné.
 
-1.  Můžete reagovat na uživatele a sdělte jim, že nejsou aktuálně přijímat aktualizace. Například systém správy kontaktů umožňuje zákazníkům přístup ke kontaktní údaje, ale ne provádět aktualizace.
+1. Můžete reagovat na uživatele a sdělit jim, že v současné době nepřijímáte aktualizace. Systém pro správu kontaktů by například mohl zákazníkům umožnit přístup k kontaktním údajům, ale nemůže dělat aktualizace.
 
-2.  Můžete aktualizace v jiné oblasti. V takovém případě by vaše čekající aktualizace požadavků na zápis do fronty v jiné oblasti a pak je mít způsob, jak po primární datové centrum vrátí do režimu online znovu zpracování těchto požadavků. V tomto scénáři byste pak měli nechat zákazníky vědět, že aktualizace požadované zařazeno do fronty pro pozdější zpracování.
+2. Aktualizace můžete zařadit do fronty v jiné oblasti. V takovém případě zapíšete čekající žádosti o aktualizaci do fronty v jiné oblasti a potom budete mít možnost tyto požadavky zpracovat po opětovném přepnutí primárního datového centra do online režimu. V tomto scénáři byste měli dát zákazníkovi jistotu, že požadovaná aktualizace je zařazená do fronty pro pozdější zpracování.
 
-3.  Aktualizace lze zapisovat do účtu úložiště v jiné oblasti. Když primární datové centrum vrátí do režimu online, můžete mít způsob, jak sloučit tyto aktualizace na primární data, v závislosti na struktuře dat. Například pokud vytváříte samostatné soubory pomocí razítka data a času v názvu, můžete zkopírovat tyto soubory zpět do primární oblasti. Tento postup funguje pro některé úlohy, jako jsou data protokolování a iOT.
+3. Aktualizace můžete zapsat do účtu úložiště v jiné oblasti. Až se primární datové centrum vrátí do režimu online, můžete mít možnost tyto aktualizace sloučit do primárních dat v závislosti na struktuře dat. Pokud například vytváříte samostatné soubory s razítkem data a času v názvu, můžete tyto soubory zkopírovat zpátky do primární oblasti. To funguje pro některé úlohy, jako je protokolování a data iOT.
 
 ## <a name="handling-retries"></a>Zpracování opakovaných pokusů
 
-Jak budete vědět, které chyby jsou opakovatelná? Toto je určeno klientskou knihovnu pro úložiště. Například chybu 404 (prostředek se nenašel) není opakovatelná, protože ho opakování není nejspíš úspěch. Na druhé straně je opakovatelná 500 chyb, protože se jedná o chybu serveru a může být přechodný problém. Další podrobnosti, projděte si [otevřete zdrojový kód pro třídu ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) v klientské knihovně .NET úložiště. (Hledejte metodu ShouldRetry.)
+Klientská knihovna Azure Storage vám pomůže určit, které chyby se můžou opakovat. Například Chyba 404 (prostředek se nepovedlo najít) se může opakovat, protože opakování nebude pravděpodobně mít za následek úspěch. Na druhé straně se chyba 500 nedá opakovat, protože se jedná o chybu serveru a může se jednat jenom o přechodný problém. Další podrobnosti najdete v [kódu open source pro třídu ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) v klientské knihovně úložiště .NET. (Vyhledejte metodu ShouldRetry.)
 
 ### <a name="read-requests"></a>Požadavky na čtení
 
-Žádosti o čtení je možné přesměrovat do sekundárního úložiště, pokud dojde k nějakému problému s primární úložiště. Co jsou uvedené výše v [pomocí nakonec konzistentní Data](#using-eventually-consistent-data), musí být přijatelné pro vaši aplikaci ke čtení potenciálně zastaralá data. Pokud používáte klientskou knihovnu pro úložiště pro přístup k datům RA-GRS, můžete určit chování opakování žádosti o čtení tak, že nastavíte hodnotu **LocationMode** vlastnost na jednu z následujících akcí:
+Pokud dojde k potížím s primárním úložištěm, můžou se požadavky na čtení přesměrovat do sekundárního úložiště. Jak bylo uvedeno výše v [používání trvalých dat](#using-eventually-consistent-data), musí být přijatelné, aby vaše aplikace mohla číst zastaralá data. Pokud používáte klientskou knihovnu pro úložiště pro přístup k datům ze sekundární verze, můžete určit chování opakování žádosti o čtení nastavením hodnoty vlastnosti **LocationMode** na jednu z následujících možností:
 
-*   **PrimaryOnly** (výchozí)
+* **PrimaryOnly** (výchozí)
 
-*   **PrimaryThenSecondary**
+* **PrimaryThenSecondary**
 
-*   **SecondaryOnly**
+* **SecondaryOnly**
 
-*   **SecondaryThenPrimary**
+* **SecondaryThenPrimary**
 
-Při nastavení **LocationMode** k **PrimaryThenSecondary**, pokud původní čtení žádost na primární koncový bod selže došlo k opakovatelné chybě, klient automaticky provede další požadavky na čtení sekundární koncový bod. Pokud je chyba vypršení časového limitu serveru, bude mít klient čekání na časový limit vyprší před přijme Opakovatelná chyba služby.
+Pokud nastavíte **LocationMode** na **PrimaryThenSecondary**, pokud počáteční žádost o čtení na primární koncový bod dojde k chybě s chybou, která se dá opakovat, klient automaticky provede další požadavek na čtení sekundárního koncového bodu. Pokud je chyba časovým limitem serveru, bude muset klient počkat na vypršení časového limitu, než obdrží chybu, která bude možné znovu spustit ze služby.
 
-V podstatě existují dva scénáře, které je třeba zvážit, pokud se rozhodujete, jak reagovat na Opakovatelná chyba:
+Při rozhodování, jak reagovat na opakovanou chybu, je třeba zvážit v podstatě dva scénáře:
 
-*   Toto je problém s izolované a následné žádosti na primární koncový bod nevrátí Opakovatelná chyba. Příkladem, kdy k tomu může dojít, je po přechodných síťových chyb.
+* Jedná se o izolovaný problém a následné požadavky na primární koncový bod nevrátí opakovanou chybu. K tomu může dojít například v případě přechodné chyby sítě.
 
-    V tomto scénáři není žádné snížení výkonu tím, že **LocationMode** nastavena na **PrimaryThenSecondary** jako tato situace nastane pouze zřídka.
+    V tomto scénáři nedochází k výraznému snížení výkonu ve **LocationMode** nastaveném na **PrimaryThenSecondary** , protože k tomu dochází jenom zřídka.
 
-*   Toto je problém s nejméně jedné služby úložiště v primární oblasti a všechny následné požadavky na tuto službu v primární oblasti se pravděpodobně vrátit opakovatelná chyby pro určitou dobu. Příkladem tohoto je, pokud primární oblast úplně nedostupná.
+* Jedná se o problém s aspoň jednou ze služeb úložiště v primární oblasti a všechny následné požadavky na tuto službu v primární oblasti budou nejspíš vracet opakované chyby po určitou dobu. Příkladem je, že primární oblast je zcela nepřístupná.
 
-    V tomto scénáři je snížení výkonu vzhledem k tomu, že všechny vaše požadavky na čtení se nejprve zkuste primární koncový bod, čekat vypršení časového limitu vyprší, potom přepněte do sekundárního koncového bodu.
+    V tomto scénáři dochází ke snížení výkonu, protože všechny žádosti o čtení nejprve vyzkouší primární koncový bod, počkejte na vypršení časového limitu a pak přepněte do sekundárního koncového bodu.
 
-Pro tyto scénáře, měli byste identifikovat, který existuje probíhající problému s primární koncový bod a odeslat všechny číst požadavků přímo do sekundárního koncového bodu tak, že nastavíte **LocationMode** vlastnost **SecondaryOnly** . V současné době je nutné změnit také aplikace na spouštění v režimu jen pro čtení. Tento postup se označuje jako [vzoru Circuit Breaker](/azure/architecture/patterns/circuit-breaker).
+V těchto scénářích byste měli zjistit, jestli existuje průběžný problém s primárním koncovým bodem a poslat všechny požadavky na čtení přímo do sekundárního koncového bodu nastavením vlastnosti **LocationMode** na **SecondaryOnly**. V tuto chvíli byste měli aplikaci změnit také tak, aby běžela pouze v režimu jen pro čtení. Tento přístup je známý jako [vzorek přerušení okruhu](/azure/architecture/patterns/circuit-breaker).
 
 ### <a name="update-requests"></a>Žádosti o aktualizaci
 
-Model jistič lze použít také k aktualizaci žádosti. Žádosti o aktualizaci však nelze přesměrovat do sekundárního úložiště, která je jen pro čtení. Tyto žádosti byste měli nechat **LocationMode** vlastnost nastavena na hodnotu **PrimaryOnly** (výchozí). Zpracování těchto chyb, můžete použít metriky na tyto žádosti – například 10 selhání za sebou – a když se splní vaše mezní hodnota, přepínat aplikace do režimu jen pro čtení. Můžete použít stejné metody pro vrácení aktualizace režimu jako těch popsaných níže v části Další informace o modelu jistič.
+Pro požadavky na aktualizaci lze také použít vzor pro přerušení okruhu. Žádosti o aktualizaci se ale nedají přesměrovat do sekundárního úložiště, které je jen pro čtení. Pro tyto požadavky byste měli ponechat vlastnost **LocationMode** nastavenou na **PrimaryOnly** (výchozí). Chcete-li tyto chyby zpracovat, můžete použít metriku na tyto požadavky – například 10 chyb na řádku – a když je prahová hodnota splněna, přepněte aplikaci do režimu jen pro čtení. Stejné metody můžete použít pro návrat do režimu aktualizace, jak je popsáno níže v další části o vzoru pro přerušení okruhu.
 
 ## <a name="circuit-breaker-pattern"></a>Model Jistič (Circuit Breaker)
 
-Použití vzoru Circuit Breaker v aplikaci, můžete zabránit opakování operace, která pravděpodobně selže opakovaně. Umožňuje aplikaci, aby kontinuálně běžely, spíše než zabíraly čas při operaci opakovat exponenciálně zvyšuje. Navíc rozpozná, pokud byla opravena chyba, kdy může aplikace zkusit operaci zopakovat.
+Použití vzoru pro přerušení okruhů ve vaší aplikaci může zabránit tomu, aby se znovu pokusilo o operaci, která pravděpodobně selže opakovaně. Umožňuje, aby aplikace pokračovala v běhu, a ne čas, kdy se operace opakuje exponenciálně. Také zjistí, kdy byla chyba opravena, v jakém čase aplikace může operaci opakovat.
 
-### <a name="how-to-implement-the-circuit-breaker-pattern"></a>Implementace vzoru circuit breaker
+### <a name="how-to-implement-the-circuit-breaker-pattern"></a>Postup implementace vzoru pro přerušení okruhu
 
-Pokud chcete zjistit, že se k aktuálnímu problému s primární koncový bod, můžete sledovat, jak často klient zaznamená opakovatelná chyby. Protože každý případ je rozdílný, budete muset při rozhodování o prahovou hodnotu, kterou chcete použít pro rozhodnutí si přepnout na sekundární koncový bod a spusťte aplikaci v režimu jen pro čtení. Například může rozhodnout provádět přepínač v případě, že nedochází k chybám 10 po sobě s žádné úspěchy. Dalším příkladem je přepnout, pokud selžou i 90 % požadavků v období 2 minuty.
+Chcete-li zjistit, zda se jedná o průběžný problém s primárním koncovým bodem, můžete sledovat, jak často v klientovi dojde k opakovaným chybám. Vzhledem k tomu, že se každý případ liší, musíte se rozhodnout na prahové hodnotě, kterou chcete použít pro rozhodnutí přepnout na sekundární koncový bod a spustit aplikaci v režimu jen pro čtení. Například se můžete rozhodnout provést přepínač, pokud dojde k 10 selháním v řádku bez úspěchů. Dalším příkladem je přepnutí, pokud selže 90% žádostí v období 2 minut.
 
-Pro prvního scénáře můžete jednoduše udržovat přehled o počtu chyb a pokud není úspěšné před dosažením maximálního, nastaví počet zpět na nulu. Jedním ze způsobů na jeho implementaci pro druhý scénář, je použití objektu MemoryCache (v rozhraní .NET). Pro každý požadavek přidejte CacheItem do mezipaměti, nastavte hodnotu na úspěšné provedení (1) nebo selhání (0) a nastavte čas vypršení platnosti až 2 minut od teď (nebo cokoli, co je vaše omezení času). Když je dosaženo času vypršení platnosti položky, položka se automaticky odebere. Tím získáte postupné okno 2 minuty. Pokaždé, když zadáte požadavek na službu storage, je nejprve použít dotaz Linq napříč objektu MemoryCache pro výpočet Procento úspěšných pokusů sečte hodnoty a vydělením o daný počet. Pokud klesne Procento úspěšných pokusů pod některé prahové hodnoty (například 10 %), nastavit **LocationMode** vlastnost pro čtení žádostí o **SecondaryOnly** a přepínat aplikace do režimu jen pro čtení, než budete pokračovat.
+V prvním scénáři můžete jednoduše zachovat počet selhání a v případě úspěchu až do maximální doby nastavit počet zpět na nulu. V druhém scénáři je jedním ze způsobů, jak implementovat, je použít objekt MemoryCache (v rozhraní .NET). Pro každý požadavek přidejte do mezipaměti CacheItem., nastavte hodnotu na Success (1) nebo neúspěšná (0) a nastavte čas vypršení platnosti na 2 minuty od tohoto okamžiku (nebo podle toho, co vaše časové omezení je). Po dosažení doby vypršení platnosti položky je položka automaticky odebrána. Tím získáte souhrnné okno se dvěma minutami. Pokaždé, když vytvoříte požadavek na službu úložiště, nejprve použijete dotaz LINQ v rámci objektu MemoryCache k výpočtu procenta úspěšnosti sečtením hodnot a vydělením podle počtu. Pokud procento úspěšnosti klesne pod určitou prahovou hodnotu (například 10%), nastavte vlastnost **LocationMode** pro požadavky na čtení na **SecondaryOnly** a před pokračováním přepněte aplikaci do režimu jen pro čtení.
 
-Prahová hodnota chyb používá k určení toho, kdy přechod usnadní může lišit od služby ve vaší aplikaci, proto byste měli zvážit, díky kterým jsou konfigurovatelné parametry. Toto je také pokud jste se rozhodli zpracovávat opakovatelná chyby z každé služby samostatně nebo jako jednu, jak je popsáno výše.
+Prahová hodnota chyb, která se používá k určení, kdy se má přepínač lišit od služby ke službě ve vaší aplikaci, proto byste měli zvážit, že tyto parametry jsou konfigurovatelné. V takovém případě se také rozhodnete, že bude možné zpracovávat opakované chyby z každé služby samostatně nebo jako jednu, jak je popsáno výše.
 
-Dalším aspektem je způsob zpracování více instancí aplikace a co dělat, když zjistíte opakovatelná chyby v každé instanci. Například může mít 20 virtuálních počítačů s tu samou aplikaci načíst. Samostatně každá instance zpracování? Pokud jedna instance spuštění dochází k problémům, chcete omezit odpověď jenom jednu instanci nebo chcete akci mít všechny instance nereaguje stejně jako jedna instance má problém? Zpracování instance samostatně je mnohem jednodušší, než se pokoušet o koordinaci mezi ně odpovědi, ale postup závisí na architektuře vaší aplikace.
+Dalším aspektem je postup, jak zpracovat více instancí aplikace a co dělat při detekci opakovaných chyb v každé instanci. Můžete mít například 20 virtuálních počítačů spuštěných se stejnou aplikací. Každou instanci zpracujete samostatně? Pokud se u jedné instance spustí problémy, přejete si omezit reakci jenom na jednu instanci, nebo chcete zkusit, aby všechny instance odpovídaly stejným způsobem, když má jedna instance nějaký problém? Zpracovávání instancí samostatně je mnohem jednodušší než pokus o koordinaci odezvy napříč nimi, ale jak to uděláte, záleží na architektuře vaší aplikace.
 
-### <a name="options-for-monitoring-the-error-frequency"></a>Možnosti sledování frekvence chyb
+### <a name="options-for-monitoring-the-error-frequency"></a>Možnosti monitorování četnosti chyb
 
-Budete mít tři hlavní možnosti monitorování četnost opakování v primární oblasti, aby bylo možné zjistit, kdy se má přejít do sekundární oblasti a změňte aplikace na spouštění v režimu jen pro čtení.
+Máte tři hlavní možnosti monitorování četnosti opakování v primární oblasti, aby bylo možné určit, kdy přepnout do sekundární oblasti a změnit aplikaci tak, aby běžela v režimu jen pro čtení.
 
-*   Přidání obslužné rutiny [ **opakování** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) událostí na [ **OperationContext** ](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) požaduje objekt posílají do úložiště – metoda zobrazí v tomto článku a používá se v průvodní ukázce. Tyto události se aktivuje vždy, když klient pokus obnovuje žádost, vám umožní sledovat, jak často klient zaznamená opakovatelná chyby na primární koncový bod.
+* Přidejte obslužnou rutinu pro událost [**opakování**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) události na objekt [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) , který předáte vašim požadavkům na úložiště – toto je metoda zobrazená v tomto článku a používaná v doprovodné ukázce. Tyto události se aktivují pokaždé, když klient opakuje požadavek, což vám umožní sledovat, jak často má klient v primárním koncovém bodě narazit opakované chyby.
 
     ```csharp 
     operationContext.Retrying += (sender, arguments) =>
@@ -159,7 +159,7 @@ Budete mít tři hlavní možnosti monitorování četnost opakování v primár
     };
     ```
 
-*   V [ **vyhodnotit** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) metoda ve vlastní zásady opakování, můžete spustit vlastní kód pokaždé, když probíhá opakování. Kromě zápisu při opakování proběhne, tím také získáte možnost změnit chování opakování.
+* V metodě [**Evaluate**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) ve vlastních zásadách opakování můžete spustit vlastní kód vždy, když dojde k opakování. Kromě nahrávání, když dojde k opakování, vám to také umožní změnit chování při opakování.
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -187,39 +187,39 @@ Budete mít tři hlavní možnosti monitorování četnost opakování v primár
     }
     ```
 
-*   Třetí přístup je pro implementaci vlastní monitorovací komponentu ve vaší aplikaci, nepřetržitě testuje příkazem ping váš primární koncový bod úložiště s dummy číst požadavků (jako je čtení malých objektů blob) k určení jeho stavu. Bude to trvat až několik zdrojů informací, ale ne značné množství. Při zjištění problému, která dosáhne vaše mezní hodnota by pak provést přepínač tak, aby **SecondaryOnly** a režimu jen pro čtení.
+* Třetím přístupem je implementace vlastní součásti monitorování ve vaší aplikaci, která nepřetržitě otestuje pomocí testu koncového bodu primárního úložiště (například čtení malého objektu BLOB) a určí jeho stav. Tím se zabere několik prostředků, ale ne značná částka. Po zjištění problému, který dosáhne vaší prahové hodnoty, byste měli přepnout do režimu **SecondaryOnly** a jen pro čtení.
 
-V určitém okamžiku se chcete přepnout zpět na primární koncový bod pomocí a umožňuje aktualizace. Pokud používáte jednu z prvních dvou metod uvedených výše, může jednoduše přepnete zpět do primárního koncového bodu a povolit režim aktualizace po provedení libovolně vybrané množství času nebo počet operací. Pak můžete nechat ji znovu projít logika opakovaných pokusů. Pokud problém byl vyřešen, bude pokračovat primárního koncového bodu a povolit aktualizace. Pokud problém přetrvává, ho ještě jednou přepne zpět do sekundárního koncového bodu a režimu jen pro čtení po selhání kritéria, která jste nastavili.
+V určitém okamžiku budete chtít přejít zpátky k použití primárního koncového bodu a povolení aktualizací. Pokud používáte jednu z prvních dvou metod uvedených výše, můžete jednoduše přejít zpátky k primárnímu koncovému bodu a povolit režim aktualizace po libovolné době zvolené doby nebo počtu operací. Pak můžete znovu projít logiku opakování. Pokud byl problém vyřešen, bude nadále používat primární koncový bod a povoluje aktualizace. Pokud dojde k problému, bude po neúspěšném nastavování nastavených kritérií přepnut do sekundárního koncového bodu a režimu jen pro čtení.
 
-Třetí scénář, při použití příkazu ping primární koncový bod úložiště opět úspěšné, můžete aktivovat přepínač zpět **PrimaryOnly** a pokračovat v povolení aktualizací.
+V případě třetího scénáře se při opakovaném pokusu o ověření platnosti koncového bodu primárního úložiště v případě, že dojde k úspěšnému dokončení aktualizace, můžete aktivovat přepínač zpět na **PrimaryOnly** a pokračovat v povolování aktualizací
 
-## <a name="handling-eventually-consistent-data"></a>Konzistentní zpracování dat
+## <a name="handling-eventually-consistent-data"></a>Zpracování nakonec konzistentních dat
 
-Geograficky redundantní účet úložiště jen pro čtení funguje tak, že replikuje transakce z primární oblasti do sekundární. Tento proces replikace zaručuje, že data v sekundární oblasti jsou *konzistentní*. To znamená, že všechny transakce v primární oblasti se server zobrazí v sekundární oblasti, ale, že možná s menší prodlevou před zobrazením a, že neexistuje žádná záruka transakce jsou doručeny do sekundární oblasti ve stejném pořadí, ve kterém jsou původně byly použity v primární oblasti. Pokud vaše transakce jsou doručeny do sekundární oblasti mimo pořadí, můžete *může* vezměte v úvahu vaše data v sekundární oblasti, kterou chcete být v nekonzistentním stavu, dokud služba zachytává.
+Geograficky redundantní úložiště funguje replikací transakcí z primární do sekundární oblasti. Tento proces replikace zaručuje, že data v sekundární oblasti jsou *nakonec konzistentní*. To znamená, že se všechny transakce v primární oblasti budou nakonec zobrazovat v sekundární oblasti, ale může se stát, že se objeví prodleva předtím, než se objeví, a nezaručujeme, že transakce přicházejí do sekundární oblasti ve stejném pořadí, v jakém jsou byly původně aplikovány v primární oblasti. Pokud vaše transakce dorazí do sekundární oblasti mimo pořadí, můžete zvážit , že vaše data v sekundární oblasti budou v nekonzistentním stavu, dokud se služba nedostane.
 
-Následující tabulka znázorňuje příklad co může nastat při aktualizaci podrobnosti zaměstnance, aby se daly členem *správci* role. Pro účely tohoto příkladu, k tomu je potřeba je aktualizovat **zaměstnance** entity a aktualizovat **role správce** entity s počtem celkový počet správců. Všimněte si, jak aktualizace jsou použity mimo pořadí v sekundární oblasti.
+Následující tabulka ukazuje příklad toho, co se může stát, když aktualizujete podrobnosti o zaměstnanci, abyste je mohli udělat jako členové role *správců* . V tomto příkladu je potřeba aktualizovat entitu **Zaměstnanec** a aktualizovat entitu **role správce** s počtem celkového počtu správců. Všimněte si, jak se aktualizace aplikují v sekundární oblasti mimo pořadí.
 
 | **čas** | **Transakce**                                            | **Replikace**                       | **Čas poslední synchronizace** | **výsledek** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
-| T0       | Transakce A: <br> Vložit zaměstnance <br> entity ve primárního |                                   |                    | Transakce A vložit do primární,<br> nejsou ještě nereplikovaly. |
-| T1       |                                                            | Transakce A <br> replikují do<br> Sekundární | T1 | Transakce A replikují do sekundární. <br>Čas poslední synchronizace aktualizovat.    |
-| T2       | Transakce B:<br>Aktualizace<br> Zaměstnanec entity<br> v primární  |                                | T1                 | Transakci zapsán do primární, B<br> nejsou ještě nereplikovaly.  |
-| T3       | Transakce C:<br> Aktualizace <br>Správce<br>Entita role v<br>Primární |                    | T1                 | Transakci zapsán do primární, C<br> nejsou ještě nereplikovaly.  |
-| *T4*     |                                                       | Transakce C <br>replikují do<br> Sekundární | T1         | Transakce C replikují do sekundární.<br>Nelze aktualizovat, protože LastSyncTime <br>ještě nebyla replikována transakce B.|
-| *T5*     | Ke čtení entit <br>ze sekundární                           |                                  | T1                 | Získat hodnotu zastaralé pro zaměstnance <br> entity vzhledem k tomu, že nebyla transakce B <br> ještě nereplikovaly. Získat novou hodnotu<br> Entita role správce vzhledem k tomu, že má C<br> replikovat. Stále ještě čas poslední synchronizace<br> byla aktualizována, protože transakce B<br> nebyl replikován. Poznáte,<br>Entita role správce je nekonzistentní <br>protože entity data a času je po <br>Čas poslední synchronizace. |
-| *T6*     |                                                      | Transakce B<br> replikují do<br> Sekundární | T6                 | *T6* – mít všechny transakce pomocí jazyka C <br>se replikují, čas poslední synchronizace<br> se aktualizuje. |
+| T0       | Transakce A: <br> Vložit zaměstnance <br> entita v primárním objektu |                                   |                    | Transakce A vložená na primární,<br> ještě není replikované. |
+| T1       |                                                            | Transakce A <br> replikováno do<br> sekundární | T1 | Transakce byla replikována do sekundárního. <br>Čas poslední synchronizace se aktualizoval.    |
+| T2       | Transakce B:<br>Aktualizace<br> entita zaměstnance<br> v primárním  |                                | T1                 | Transakce B se zapsala do primárního,<br> ještě není replikované.  |
+| T3       | Transakce C:<br> Aktualizace <br>správce<br>entita role v<br>primární |                    | T1                 | Transakce C byla zapsána do primárního,<br> ještě není replikované.  |
+| *T4*     |                                                       | Transakce C <br>replikováno do<br> sekundární | T1         | Transakce C byla replikována do sekundárního.<br>LastSyncTime se neaktualizovala, protože <br>transakce B se ještě nereplikoval.|
+| *T5*     | Čtení entit <br>ze sekundární                           |                                  | T1                 | Získáte zastaralou hodnotu pro zaměstnance. <br> entita, protože transakce B nebyla <br> replika ještě proběhla. Získáte novou hodnotu pro<br> entita role správce, protože C má<br> replikovateln. Čas poslední synchronizace ještě není.<br> Aktualizováno, protože transakce B<br> nereplikuje se. Můžete říct, že<br>entita role správce je nekonzistentní. <br>protože je datum/čas entity po <br>Čas poslední synchronizace |
+| *T6*     |                                                      | Transakce B<br> replikováno do<br> sekundární | T6                 | *T6* – všechny transakce prostřednictvím C <br>replikováno, čas poslední synchronizace<br> je aktualizovaný. |
 
-V tomto příkladu se předpokládá, že klient přepíná na čtení ze sekundární oblasti v T5. Můžou číst **role správce** entity v tuto chvíli entity však obsahuje hodnotu pro počet správců, která není konzistentní s počtem **zaměstnance** entity, které jsou v tuto chvíli je označena jako správci v sekundární oblasti. Váš klient může jednoduše zobrazit tuto hodnotu, se riziko, že je nekonzistentní informace. Alternativně může pokusit určit, který klient **role správce** je ve stavu potenciálně konzistentní vzhledem k tomu dojít mimo pořadí aktualizací a potom informovat uživatele o této skutečnosti.
+V tomto příkladu Předpokládejme, že klient přepne na čtení ze sekundární oblasti v T5. V tuto chvíli může úspěšně číst entitu **role správce** , ale entita obsahuje hodnotu pro počet správců, kteří nejsou konzistentní s počtem entit **zaměstnanců** označených jako správci v sekundárním umístění. oblast v tomto okamžiku. Váš klient může jednoduše zobrazit tuto hodnotu s rizikem, že se jedná o nekonzistentní informace. Klient se případně může pokusit určit, že **role správce** je v potenciálně nekonzistentním stavu, protože aktualizace nastaly mimo pořadí, a pak uživatele informovat o této skutečnosti.
 
-Rozpoznat, že má potenciálně nekonzistentní data, může klient použít hodnotu *čas poslední synchronizace* , můžete kdykoli získat dotazováním služby úložiště. Znamená to čas, kdy byla poslední data v sekundární oblasti konzistentní vzhledem k aplikacím a pokud služba použili všechny transakce před tento bod v čase. V příkladu výše, po vloží službu **zaměstnance** entity v sekundární oblasti, čas poslední synchronizace je nastavena na *T1*. Zůstane v *T1* až do aktualizace služby **zaměstnance** entity v sekundární oblasti, pokud je nastavena na *T6*. Pokud klient získá čas poslední synchronizace, když načte entity na *T5*, ho můžete porovnat s časovým razítkem v entitě. Pokud časové razítko u entity je pozdější než čas poslední synchronizace, pak tato entita je v potenciálně nekonzistentním stavu a můžete provést cokoli, co je vhodnou pro vaši aplikaci. Použití tohoto pole vyžaduje vědět, kdy byla dokončena poslední aktualizace na primární.
+Aby bylo možné rozpoznat, že má potenciálně nekonzistentní data, může klient použít hodnotu *času poslední synchronizace* , kterou můžete kdykoli získat pomocí dotazu na službu úložiště. Tím se dozvíte čas, kdy byla data v sekundární oblasti naposledy konzistentní a kdy služba použila všechny transakce před tímto bodem v čase. V příkladu uvedeném výše služba vloží entitu **Zaměstnanec** do sekundární oblasti, čas poslední synchronizace se nastaví na *T1*. Zůstane v *T1* , dokud služba neaktualizuje entitu **Zaměstnanec** v sekundární oblasti, když je nastavená na *T6*. Pokud klient načte čas poslední synchronizace při čtení entity v *T5*, může ji porovnat s časovým razítkem v entitě. Pokud je časové razítko v entitě pozdější než čas poslední synchronizace, pak je entita v potenciálně nekonzistentním stavu a můžete to provést, pokud je pro vaši aplikaci vhodná akce. Použití tohoto pole vyžaduje, abyste věděli, kdy byla poslední aktualizace k primárnímu dokončení dokončena.
 
-## <a name="getting-the-last-sync-time"></a>Získávání čas poslední synchronizace
+## <a name="getting-the-last-sync-time"></a>Načítá se čas poslední synchronizace.
 
-Prostředí PowerShell nebo rozhraní příkazového řádku Azure můžete použít k načtení čas poslední synchronizace k určení, kdy posledního zápisu dat do sekundární.
+Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete načíst čas poslední synchronizace a určit, kdy byla data naposledy zapsána do sekundárního.
 
 ### <a name="powershell"></a>PowerShell
 
-Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí prostředí PowerShell, podívejte se účet úložiště **GeoReplicationStats.LastSyncTime** vlastnost. Nezapomeňte nahradit zástupné hodnoty vlastními hodnotami:
+Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí PowerShellu, podívejte se na vlastnost **GeoReplicationStats. LastSyncTime** účtu úložiště. Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami:
 
 ```powershell
 $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -229,7 +229,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí Azure CLI, podívejte se účet úložiště **geoReplicationStats.lastSyncTime** vlastnost. Použití `--expand` parametr návratové hodnoty pro vlastnosti vnořen v souladu s **geoReplicationStats**. Nezapomeňte nahradit zástupné hodnoty vlastními hodnotami:
+Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí rozhraní příkazového řádku Azure, podívejte se na vlastnost **geoReplicationStats. lastSyncTime** účtu úložiště. Použijte parametr pro návrat hodnoty vlastností vnořených do geoReplicationStats. `--expand` Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami:
 
 ```azurecli
 $lastSyncTime=$(az storage account show \
@@ -242,9 +242,9 @@ $lastSyncTime=$(az storage account show \
 
 ## <a name="testing"></a>Testování
 
-Je důležité, otestovat, že vaše aplikace chová podle očekávání, pokud se setká s opakovatelnou chyby. Například je potřeba testovat, že aplikace přepínače na sekundární a do režimu jen pro čtení, když zjistí problém a přepne zpět při primární oblast opět k dispozici. K tomuto účelu, budete potřebovat způsob, jak simulovat opakovatelná chyby a řízení, jak často k nim dojde.
+Je důležité, abyste otestovali, že se vaše aplikace chová podle očekávání, když nalezne chyby s opakováním. Například je třeba otestovat, že se aplikace přepne do sekundárního a do režimu jen pro čtení, když zjistí problém, a přepne zpět, jakmile bude primární region opět k dispozici. K tomu potřebujete způsob, jak simulovat opakované chyby a určit, jak často k nim dochází.
 
-Můžete použít [Fiddler](https://www.telerik.com/fiddler) zachytí a upravit odpovědi protokolu HTTP ve skriptu. Tento skript můžete identifikovat odpovědi, které pocházejí z primárního koncového bodu a změnit stavový kód protokolu HTTP, který rozpozná klientskou knihovnu pro úložiště jako Opakovatelná chyba. Tento fragment kódu ukazuje jednoduchý příklad Fiddleru skript, který zachycuje odpovědí na požadavky na čtení **employeedata** tabulky vrátit 502 stav:
+Pomocí [Fiddler](https://www.telerik.com/fiddler) můžete zachytit a upravit odpovědi HTTP ve skriptu. Tento skript může identifikovat odpovědi, které pocházejí z primárního koncového bodu, a změnit stavový kód HTTP na ten, který Klientská knihovna pro úložiště rozpozná jako opakovanou chybu. Tento fragment kódu ukazuje jednoduchý příklad skriptu Fiddler, který zachycuje odpovědi na požadavky na čtení v tabulce **EmployeeData** , aby vrátil stav 502:
 
 ```java
 static function OnBeforeResponse(oSession: Session) {
@@ -256,12 +256,12 @@ static function OnBeforeResponse(oSession: Session) {
 }
 ```
 
-Můžete rozšířit a zachytit používání nástroje většímu počtu požadavků a změnit pouze v tomto příkladu **responseCode** na některé z nich pro lepší simulaci reálné scénáře. Další informace o přizpůsobení Fiddleru skriptů, najdete v části [změna požadavku nebo odpovědi](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) v dokumentaci k aplikaci Fiddler.
+Tento příklad můžete rozšířit tak, aby zachytil širší rozsah požadavků a **ResponseCode** jenom na některých z nich, aby lépe simuloval scénář reálného světa. Další informace o přizpůsobení skriptů Fiddler najdete v tématu [Úprava žádosti nebo odpovědi](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) v dokumentaci k Fiddler.
 
-Pokud jste provedli prahové hodnoty pro přepnutí do režimu jen pro čtení konfigurovat aplikace, ji bude snazší testování chování se svazky-li se o neprodukční transakce.
+Pokud jste provedli prahové hodnoty pro přepínání aplikace na režim jen pro čtení, bude snazší otestovat chování pomocí svazků neprodukčních transakcí.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o oprávnění ke čtení geografickou redundanci, včetně další příklad, jak je nastavit LastSyncTime, najdete v tématu [možnosti redundance úložiště Windows Azure a geograficky redundantní úložiště s přístupem pro čtení](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
+* Další informace o tom, jak číst ze sekundární oblasti, včetně dalšího příkladu, jak je nastavena vlastnost čas poslední synchronizace, najdete v tématu [Azure Storage možnosti redundance a geograficky redundantní úložiště s přístupem pro čtení](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
-* Kompletní příklad ukazuje, jak přepínat mezi primárními a sekundárními koncových bodů a ujistěte se, najdete v tématu [ukázky pro Azure – s použitím vzoru Circuit Breaker s využitím úložiště RA-GRS](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs).
+* Kompletní vzorek, který ukazuje, jak přepnout zpátky mezi primárním a sekundárním koncovým body, najdete v tématu [ukázky Azure – použití vzoru pro přerušení okruhu s úložištěm RA-GRS](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs).

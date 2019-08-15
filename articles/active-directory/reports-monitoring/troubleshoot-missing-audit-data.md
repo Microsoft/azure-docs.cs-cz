@@ -3,7 +3,7 @@ title: Řešení potíží s chybějícími daty v protokolech aktivit Azure Act
 description: Nabízí řešení pro chybějící data v protokolech aktivit Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b25c09b140102c0788a939c48f48300242fc6ee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a04de319a17255e3b61378cbd716828a237317b3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60285058"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989517"
 ---
-# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Řešení potíží: Chybějící data v protokolech aktivit Azure Active Directory 
+# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Poradce Chybějící data v protokolech aktivit Azure Active Directory 
 
 ## <a name="i-cant-find-audit-logs-for-recent-actions-in-the-azure-portal"></a>Nemůžu na webu Azure Portal najít protokoly aktivit pro nedávné akce
 
@@ -38,7 +38,7 @@ Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce 
 
 Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce jsou uvedené naše latence u protokolů aktivit. 
 
-| Sestava | &nbsp; | Latence (P95) | Latence (P99) |
+| Zpráva | &nbsp; | Latence (P95) | Latence (P99) |
 |--------|--------|---------------|---------------|
 | Audit adresáře | &nbsp; | 2 minuty | 5 minut |
 | Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 
@@ -59,7 +59,7 @@ Nedávno jsem se přihlásil/a k webu Azure Portal a očekával/a jsem, že se p
 
 Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce jsou uvedené naše latence u protokolů aktivit. 
 
-| Sestava | &nbsp; | Latence (P95) | Latence (P99) |
+| Zpráva | &nbsp; | Latence (P95) | Latence (P99) |
 |--------|--------|---------------|---------------|
 | Audit adresáře | &nbsp; | 2 minuty | 5 minut |
 | Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 

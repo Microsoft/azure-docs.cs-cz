@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 04/19/2019
-ms.openlocfilehash: 1d5baf4b7f8a28638c5dbd50fb407035a5b9ea89
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/12/2019
+ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566133"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967902"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a datový sklad
 
@@ -37,7 +37,7 @@ V Azure je výchozím nastavením transparentního šifrování dat, že šifrov
 Microsoft také bez problémů přesouvá a spravuje klíče podle potřeby pro geografickou replikaci a obnovení.
 
 > [!IMPORTANT]
-> Všechny nově vytvořené databáze SQL se standardně šifrují pomocí transparentního šifrování dat spravovaného službou. Databáze spravované instance Azure SQL, existující databáze SQL vytvořené před 2017 a databáze SQL vytvořené prostřednictvím obnovení, geografické replikace a kopie databáze nejsou ve výchozím nastavení šifrované.
+> Všechny nově vytvořené databáze SQL a databáze spravované instance jsou ve výchozím nastavení šifrované pomocí transparentního šifrování dat spravovaného službou. Existující databáze SQL vytvořené před 2017 a databáze SQL vytvořené prostřednictvím obnovení, geografické replikace a kopie databáze nejsou ve výchozím nastavení šifrované. Existující databáze spravované instance vytvořené před únorem 2019 nejsou ve výchozím nastavení šifrované. Databáze spravované instance vytvořené prostřednictvím obnovení dědí stav šifrování ze zdroje.
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Transparentní šifrování dat spravované zákazníkem – Bring Your Own Key
 
@@ -139,7 +139,7 @@ Pro Azure SQL Database a datový sklad použijte následující sadu příkazů:
 |[Získat konfiguraci transparentní šifrování dat](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|Získá transparentní konfiguraci šifrování dat pro databázi.|
 |[Zobrazit seznam výsledků konfigurace transparentní šifrování dat](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Získá výsledek šifrování pro databázi.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Obecný popis transparentního šifrování dat najdete v tématu [transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Další informace o transparentním šifrování dat s podporou Bring Your Own Key Azure SQL Database, spravované instance Azure SQL a datového skladu najdete v tématu [transparentní šifrování dat s podporou Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md).

@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 554a77b65b1baab980d765c69a5bffaeacb483d9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855401"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016374"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Upgradujte řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2
 
@@ -82,7 +82,7 @@ Tato část popisuje, jaké schopnosti platformy Gen1 úložiště Data Lake, kt
 | |Optimalizaci výkonu pro paralelní analýzy úloh. Vysoká propustnost a vstupně-výstupních operací. | Optimalizaci výkonu pro paralelní analýzy úloh. Vysoká propustnost a vstupně-výstupních operací. | *Teď k dispozici* |
 | Podpora Virtual Network (VNet)  | [Použití integrace Virtual Network](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-network-security)  | [Použití koncového bodu služby pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | *Teď k dispozici* |
 | Omezení velikosti | Žádná omezení velikosti účtů, velikosti souborů nebo počet souborů | Žádná omezení velikosti účtu nebo počet souborů. Soubor velikosti omezen na 5TB. | *Teď k dispozici*|
-| Geografická redundance| Místně redundantní (LRS) | Místně redundantní (LRS) Zónově redundantní (ZRS) globálně redundantní (GRS) Read-access globálně redundantní (RA-GRS) najdete v tématu [tady](https://docs.microsoft.com/azure/storage/common/storage-redundancy) Další informace| *Teď k dispozici* |
+| Geografická redundance| Místně redundantní (LRS) | Místně redundantní (LRS) zóna redundantní (ZRS) geograficky redundantní (GRS) s přístupem pro čtení (RA-GRS). Další informace najdete [tady](https://docs.microsoft.com/azure/storage/common/storage-redundancy) .| *Teď k dispozici* |
 | Regionální dostupnost | Zobrazit [zde](https://azure.microsoft.com/regions/) | Všechny [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/)                                                                                                                                                                                                                                                                                                                                       | *Teď k dispozici*                                                                                                                           |
 | Cena                                       | Zobrazit [ceny](https://azure.microsoft.com/pricing/details/data-lake-store/)                                                                            | Zobrazit [ceny](https://azure.microsoft.com/pricing/details/storage/data-lake/)                                                                                                                                                                                                                                                                                                                                         |                                                                                                                                           |
 | SLA o dostupnosti                            | [Zobrazit smlouvu SLA](https://azure.microsoft.com/support/legal/sla/data-lake-store/v1_0/)                                                                   | [Zobrazit smlouvu SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_3/)                                                                                                                                                                                                                                                                                                                                                | *Teď k dispozici*                                                                                                                           |

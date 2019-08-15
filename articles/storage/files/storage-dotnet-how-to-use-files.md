@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da8e82652b5406cb4e5fe6438f721e3394a4cd96
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b79086298983e807cbfe0f4413d1fde54969cc6c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854596"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986373"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -221,7 +221,7 @@ if (share.Exists())
 }
 ```
 
-Další informace o vytváření a používání sdílených přístupových podpisů najdete v tématu [použití sdílených přístupových podpisů (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+Další informace o vytváření a používání sdílených přístupových podpisů najdete v tématu [použití sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="copy-files"></a>Kopírování souborů
 Klientská knihovna pro úložiště Azure od verze 5.x umožňuje kopírovat soubor do jiného souboru, soubor do objektu nebo objekt blob do souboru. V dalších kapitolách ukážeme, jak se operace kopírovaní dají provést programově.

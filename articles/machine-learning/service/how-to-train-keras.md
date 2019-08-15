@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4f2bf5c762b6f93c2d23714d860e8261f6756d1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e7646330d9d89d5257a991b5095b7b6814aa3ba9
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847691"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966823"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Školení a registrace modelu klasifikace Keras pomocí služby Azure Machine Learning
 
@@ -201,9 +201,13 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste si vyškole a zaregistrovali model Keras ve službě Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek nasazení modelu.
 
 > [!div class="nextstepaction"]
 > [Jak a kde nasadit modely](how-to-deploy-and-where.md)
+* [Sledovat spustit metriky během cvičení](how-to-track-experiments.md)
+* [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
+* [Nasazení trénovaného modelu](how-to-deploy-and-where.md)
+* [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

@@ -12,16 +12,20 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 1e55d1878b1a5616d467f2fa27b1b20132d5e77c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 51f67667caa9e0e564709de40c145b107c619b59
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516990"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016012"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolení ověřování Azure Active Directory pro Azure-SSIS Integration Runtime
 
-V tomto článku se dozvíte, jak povolit ověřování pomocí Azure Active Directory (Azure AD) se spravovanou identitou pro Azure Data Factory (ADF) a použít ji místo ověřování SQL k vytvoření Integration Runtime Azure-SSIS (IR), která se pak bude zajišťovat. SSIS Catalog Database (SSISDB) v Azure SQL Database Server/Managed instance vaším jménem.
+V tomto článku se dozvíte, jak povolit ověřování Azure Active Directory (Azure AD) se spravovanou identitou pro váš Azure Data Factory (ADF) a použít místo běžných metod ověřování (jako je ověřování SQL) pro:
+
+- Vytvořte Azure-SSIS Integration Runtime (IR), která bude v zastoupení SSIS Catalog Database (SSISDB) v rámci služby Azure SQL Database Server/Managed instance.
+
+- Připojte se k různým prostředkům Azure při spouštění balíčků SSIS v Azure-SSIS IR.
 
 Další informace o spravované identitě pro ADF najdete v tématu [spravovaná Identiy pro Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
@@ -214,4 +218,14 @@ Pokud chcete zřídit Azure-SSIS IR pomocí PowerShellu, udělejte tyto věci:
     Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                                  -DataFactoryName $DataFactoryName `
                                                  -Name $AzureSSISName
-   ```
+    ```
+
+## <a name="run-ssis-packages-with-managed-identity-authentication"></a>Spouštění balíčků SSIS pomocí spravovaného ověřování identity
+
+Když v Azure-SSIS IR spustíte balíčky SSIS, můžete se pomocí spravovaného ověřování identity připojit k různým prostředkům Azure. V následujících správcích připojení už v současné době podporujeme ověřování spravované identity.
+
+- [Správce připojení OLE DB](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [Správce připojení ADO.NET](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [Správce připojení Azure Storage](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)

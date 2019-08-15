@@ -1,5 +1,5 @@
 ---
-title: Nasazení modelů s vlastní imagí Docker
+title: Nasazení modelů pomocí vlastní image Docker
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat vlastní image Docker při nasazení modelů služby Azure Machine Learning. Při nasazování proučeného modelu se vytvoří image Docker pro hostování image, webového serveru a dalších součástí potřebných ke spuštění služby. I když služba Azure Machine Learning poskytuje pro vás výchozí image, můžete také použít vlastní image.
 services: machine-learning
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: 0025f488f6a9b0af4e05a8bdf3ddf36c089d4d9f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856117"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990530"
 ---
-# <a name="deploy-a-model-using-a-custom-docker-image"></a>Nasazení modelu pomocí vlastní image Docker
+# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>Nasazení modelu pomocí vlastní image Docker
 
-Naučte se používat vlastní image Docker při nasazování vycvičených modelů pomocí služby Azure Machine Learning.
+Naučte se používat vlastní image Docker při nasazení vycvičených modelů pomocí služby Azure Machine Learning.
 
 Když nasadíte školený model do webové služby nebo IoT Edge zařízení, vytvoří se image Docker. Tato image obsahuje model, prostředí conda a assety potřebné k používání modelu. Obsahuje taky webový server, který zpracovává příchozí požadavky při nasazení jako webovou službu a součásti potřebné pro práci s Azure IoT Hub.
 
@@ -28,7 +28,7 @@ Služba Azure Machine Learning poskytuje výchozí snímek Docker, takže se o j
 Obvykle vytvoříte vlastní bitovou kopii, když chcete řídit verze součástí nebo ušetřit čas během nasazování. Například můžete chtít standardizovat konkrétní verzi Pythonu, conda nebo jiné součásti. Možná budete chtít nainstalovat i software vyžadovaný modelem, kdy proces instalace trvá dlouho. Instalace softwaru při vytváření základní image znamená, že ji nemusíte instalovat pro každé nasazení.
 
 > [!IMPORTANT]
-> Při nasazování modelu nelze přepsat základní komponenty, jako jsou například webové servery nebo součásti IoT Edge. Tyto komponenty poskytují známé pracovní prostředí, které Microsoft testuje a podporuje.
+> Při nasazení modelu nelze přepsat základní komponenty, jako jsou například webové servery nebo součásti IoT Edge. Tyto komponenty poskytují známé pracovní prostředí, které Microsoft testuje a podporuje.
 
 > [!WARNING]
 > Společnost Microsoft možná nebude schopna pomoct řešit problémy způsobené vlastní imagí. Pokud narazíte na problémy, můžete být požádáni, abyste použili výchozí Image nebo jednu z imagí, které Microsoft poskytuje, abyste zjistili, jestli je problém specifický pro vaši image.
@@ -98,6 +98,8 @@ Pokud jste už provedli vyškolené nebo nasazené modely pomocí služby Azure 
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
     ```
+
+    [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
 
     Vrácené informace se podobají následujícímu textu:
 
@@ -251,7 +253,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc depl
 
 Další informace o nasazení modelu pomocí rozhraní příkazového řádku najdete v části "registrace modelů, profilace a nasazení" v článku [rozšíření CLI pro službu Azure Machine Learning](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [tom, kde nasadit a jak](how-to-deploy-and-where.md).
 * Naučte se [, jak pomocí Azure Pipelines naučit a nasazovat modely strojového učení](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops).

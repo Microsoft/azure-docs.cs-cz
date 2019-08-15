@@ -1,9 +1,9 @@
 ---
-title: Řešení potíží s chybami přihlášení pomocí Azure Active Directory sestavy | Dokumentace Microsoftu
-description: Zjistěte, jak řešit chyby přihlášení pomocí Azure Active Directory sestavy na webu Azure Portal
+title: Řešení chyb při přihlašování pomocí sestav Azure Active Directory | Microsoft Docs
+description: Přečtěte si, jak řešit chyby při přihlašování pomocí sestav Azure Active Directory v Azure Portal
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db68ad2a29dcaa53d219b679b9e0f24a50a6f576
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c901395436c8ed660c50b7342a804143d57db3c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60286539"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988169"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Postup: Řešení potíží s chybami přihlášení pomocí sestav Azure Active Directory
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Postup: Řešení chyb při přihlašování pomocí sestav Azure Active Directory
 
-[Sestavy přihlášení](concept-sign-ins.md) v Azure Active Directory (Azure AD) můžete najít odpovědi na otázky týkající se správy přístupu k aplikacím ve vaší organizaci, včetně:
+[Sestava přihlášení](concept-sign-ins.md) v Azure Active Directory (Azure AD) umožňuje najít odpovědi na otázky týkající se správy přístupu k aplikacím ve vaší organizaci, včetně těchto:
 
 - Jaký je vzorec přihlašování uživatele?
 - Kolik uživatelů se přihlásilo za týden?
 - Jaký je stav těchto přihlášení?
 
 
-Kromě toho sestavy přihlášení také můžete řešení potíží se selháním přihlášení pro uživatele ve vaší organizaci. V této příručce se dozvíte, jak k izolaci selhání přihlášení v sestavě přihlášení a použít ho k najdete hlavní příčinu selhání.
+Kromě toho sestava přihlášení také může pomoct při odstraňování potíží s přihlášením pro uživatele ve vaší organizaci. V této příručce se dozvíte, jak v sestavě přihlášení izolovat selhání při přihlašování a jak je použít k pochopení hlavní příčiny selhání.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
 
-* Klient služby Azure AD s licenci úrovně premium (P1/P2). Zobrazit [Začínáme se službou Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) upgradovat edici Azure Active Directory.
-* Uživatel, který je v **globálního správce**, **správce zabezpečení**, **Čtenář zabezpečení**, nebo **čtečky sestav** role pro příslušného tenanta. Každý uživatel můžete navíc použít vlastní přihlášení. 
+* Tenant Azure AD s licencí Premium (P1/P2). Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) .
+* Uživatel, který je v roli **globální správce**, **Správce zabezpečení**, **Čtenář zabezpečení**nebo **Čtenář sestav** pro tenanta. Každý uživatel má navíc přístup ke svým vlastním přihlášením. 
 
-## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Řešení potíží s chybami přihlášení pomocí sestavy přihlášení
+## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Řešení chyb při přihlašování pomocí sestavy přihlášení
 
-1. Přejděte [webu Azure portal](https://portal.azure.com) a vyberte svůj adresář.
-2. Vyberte **Azure Active Directory** a vyberte **přihlášení** z **monitorování** oddílu. 
-3. Pomocí zadaného filtru zúžit selhání tak, že uživatelské jméno nebo identifikátor objektu, název aplikace nebo data. Kromě toho vyberte **selhání** z **stav** rozevíracího seznamu zobrazí pouze neúspěšných přihlášení. 
+1. Přejděte do [Azure Portal](https://portal.azure.com) a vyberte svůj adresář.
+2. Vyberte **Azure Active Directory** a v části **monitorování** vyberte **přihlášení** . 
+3. Použijte poskytnuté filtry k zúžení selhání, a to buď pomocí uživatelského jména nebo identifikátoru objektu, názvu aplikace nebo data. Kromě toho vyberte v rozevíracím seznamu **stav** možnost **selhání** , aby se zobrazila pouze neúspěšná přihlášení. 
 
     ![Filtrování výsledků](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
-4. Určení neúspěšných přihlášení, které chcete prozkoumat. Vyberte ji a otevřete okno Podrobnosti s dalšími informacemi o neúspěšných přihlášení. Poznamenejte si **přihlášení kód chyby:** a **důvod selhání**. 
+4. Identifikujte neúspěšné přihlášení, které chcete prozkoumat. Vyberte ho a otevřete tak další okno podrobností s dalšími informacemi o neúspěšném přihlášení. Poznamenejte si **kód chyby přihlášení** a **důvod selhání**. 
 
-    ![Výběr záznamu](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
+    ![Vybrat záznam](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
         
-5. Můžete také najít tyto informace **řešení potíží a podpora** karty v okně podrobností.
+5. Tyto informace můžete najít také v okně podrobností v kartě **Poradce při potížích a podpoře** .
 
     ![Řešení potíží a podpora](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. Důvod selhání popisuje chybu. Například ve výše popsaném scénáři, příčina selhání je **neplatné uživatelské jméno nebo heslo nebo neplatné místní uživatelské jméno nebo heslo**. Oprava je jednoduše přihlásit znovu s správné uživatelské jméno a heslo.
+6. Důvod selhání popisuje chybu. Ve výše uvedeném scénáři je například příčinou selhání **neplatné uživatelské jméno nebo heslo nebo neplatné místní uživatelské jméno nebo heslo**. Oprava se jednoduše přihlásí znovu se správným uživatelským jménem a heslem.
 
-7. Můžete získat další informace, včetně návrhů na odstranění problému, tak, že kód chyby: **50126** v tomto příkladu v [kódy chyb přihlášení odkaz](reference-sign-ins-error-codes.md). 
+7. Další informace, včetně nápadů na nápravu, získáte tak, že v tomto příkladu vyhledáte kód chyby, **50126** v tomto příkladu, a to v [referenčních kódech chyb přihlášení](reference-sign-ins-error-codes.md). 
 
-8. Pokud všechno ostatní selže, nebo problém nevyřeší, bez ohledu na převzetí kurzu doporučené akce, [vytvořit lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) podle kroků v **řešení potíží a podpora** kartu. 
+8. Pokud všechny ostatní selžou nebo problém přetrvává navzdory doporučenému postupu, [otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) podle kroků na kartě **Poradce při potížích a podpoře** . 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Odkazovat na kódy chyb přihlášení](reference-sign-ins-error-codes.md)
-* [Přehled sestavy přihlášení](concept-sign-ins.md)
+* [Odkazy na kódy chyb přihlášení](reference-sign-ins-error-codes.md)
+* [Přehled sestav přihlášení](concept-sign-ins.md)

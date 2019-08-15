@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: d3edfa1ca63560f447d2c9ea3da3588e069b7af1
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 27610280bafa6d8e9e33f84af2d3e9f6c2c9ea5c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226825"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967822"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
@@ -91,7 +91,7 @@ Pak obnovte závislosti projektu k získání stažených binárních souborů.
 ```
 
 #### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Pokud k vytvoření dynamického webového projektu používáte Eclipse...
-Použijte [sadu SDK Application Insights pro modul plug-in Java][eclipse]. Poznámka: I když se použitím tohoto modulu plug-in zrychlí zprovoznění Application Insights (za předpokladu, že nepoužíváte Maven nebo Gradle), nejedná se o systém správy závislostí. Při aktualizaci modulu plug-in proto nedojde k automatické aktualizaci knihoven Application Insights ve vašem projektu.
+Použijte sadu SDK Application Insights pro modul plug-in Java. Poznámka: I když se použitím tohoto modulu plug-in zrychlí zprovoznění Application Insights (za předpokladu, že nepoužíváte Maven nebo Gradle), nejedná se o systém správy závislostí. Při aktualizaci modulu plug-in proto nedojde k automatické aktualizaci knihoven Application Insights ve vašem projektu.
 
 * *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `version:'2.0.n'`. Nejnovější verzi najdete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v [artefaktech Maven](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
 * *Aktualizace na novou sadu SDK* Aktualizujte závislosti svého projektu.
@@ -456,10 +456,10 @@ Application Insights může otestovat váš web v pravidelných intervalech a zk
 
 [Přečtěte si další informace o tom, jak nastavit webové testy dostupnosti.][availability]
 
-## <a name="questions-problems"></a>Máte dotazy? Problémy?
+## <a name="questions-problems"></a>Otázky? Problémy?
 [Řešení potíží s Javou](java-troubleshoot.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Monitorování volání závislostí](java-agent.md)
 * [Monitorování čítačů výkonu Unix](java-collectd.md)
 * Přidejte [na svoje webové stránky monitorování](javascript.md) a sledujte dobu načítání stránek, volání AJAX nebo výjimky prohlížeče.
@@ -473,7 +473,6 @@ Application Insights může otestovat váš web v pravidelných intervalech a zk
 [apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[eclipse]: ../../azure-monitor/learn/java-quick-start.md
 [javalogs]: java-trace-logs.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
 [usage]: javascript.md

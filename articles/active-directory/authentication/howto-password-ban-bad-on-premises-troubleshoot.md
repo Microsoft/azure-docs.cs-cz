@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cb4d3e35ae743dbae4c049f515d61b3042e7efe
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779630"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952804"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Řešení potíží s ochranou hesel Azure AD
 
@@ -41,6 +41,8 @@ Hlavním příznakem tohoto problému jsou 30018 události v protokolu událost�
 1. Hostitelský počítač proxy blokuje přístup ke koncovému bodu RPC (dynamický nebo statický), na kterém naslouchá služba proxy.
 
    Instalační program proxy ochrany heslem služby Azure AD automaticky vytvoří příchozí pravidlo brány Windows Firewall, které umožňuje přístup k jakýmkoli vstupním portům, na které naslouchá služba Azure AD Password Protection proxy. Pokud je toto pravidlo později odstraněno nebo zakázáno, agenti řadiče domény nebudou moci komunikovat se službou proxy. Pokud byla předdefinovaná brána Windows Firewall zakázaná místo jiného produktu firewallu, musíte bránu firewall nakonfigurovat tak, aby povolovala přístup k jakýmkoli vstupním portům, na které naslouchá služba Azure AD Password Protection proxy. Tato konfigurace může být konkrétnější, pokud byla proxy služba nakonfigurovaná tak, aby naslouchala konkrétnímu statickému portu RPC (pomocí `Set-AzureADPasswordProtectionProxyConfiguration` rutiny).
+
+1. Hostitelský počítač proxy není nakonfigurovaný tak, aby umožňoval řadičům domény možnost přihlásit se k počítači. Toto chování se řídí pomocí přiřazování uživatelských oprávnění "přístup k tomuto počítači ze sítě". Toto oprávnění musí být uděleno všem řadičům domény ve všech doménách v doménové struktuře. Toto nastavení se často omezuje jako součást většího úsilí při posílení zabezpečení sítě.
 
 ## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>Proxy služba nemůže komunikovat s Azure
 

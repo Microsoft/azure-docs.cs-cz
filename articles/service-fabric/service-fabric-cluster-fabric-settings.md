@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/12/2019
 ms.author: atsenthi
-ms.openlocfilehash: c20e782423c60985adb9e18e275fde59e57e00a2
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599883"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014427"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení Service Fabricho nastavení clusteru
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). U samostatných clusterů můžete upravit nastavení aktualizací souboru *ClusterConfig. JSON* a provést upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -411,6 +411,11 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |WriteBufferMemoryPoolMaximumInKB | Int, výchozí hodnota je 0 |Dynamické|Počet KB, který umožňuje, aby fond paměti vyrovnávací paměti pro zápis vzrostl. Hodnotu 0 použijte k označení bez omezení. |
 |WriteBufferMemoryPoolMinimumInKB |Int, výchozí hodnota je 8388608 |Dynamické|Počet KB, které se mají zpočátku přidělit fondu paměti pro vyrovnávací paměť zápisu. Hodnota 0 značí, že výchozí omezení nesmí odpovídat SharedLogSizeInMB níže. |
 
+## <a name="managedidentitytokenservice"></a>ManagedIdentityTokenService
+| **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
+| --- | --- | --- | --- |
+|hodnotu isEnabled|logická hodnota, výchozí hodnota je FALSE.|Static|Příznak řízení přítomnosti a stavu služby spravovaného tokenu identity v clusteru, je předpokladem pro použití funkce spravované identity Service Fabric aplikací.|
+
 ## <a name="management"></a>Správa
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -610,7 +615,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |RunAsAccountType|řetězec, výchozí hodnota je "" |Dynamické|Označuje typ účtu RunAs. To je potřeba pro všechny platné hodnoty oddílu RunAs jsou "DomainUser/NetworkService/ManagedServiceAccount/LocalSystem".|
 |RunAsPassword|řetězec, výchozí hodnota je "" |Dynamické|Označuje heslo účtu RunAs. To je potřeba jenom pro typ účtu "DomainUser". |
 
-## <a name="runasdca"></a>RunAs_DCA
+## <a name="runas_dca"></a>RunAs_DCA
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
@@ -618,7 +623,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |RunAsAccountType|řetězec, výchozí hodnota je "" |Dynamické|Označuje typ účtu RunAs. To je potřeba pro všechny platné hodnoty oddílu RunAs jsou "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|řetězec, výchozí hodnota je "" |Dynamické|Označuje heslo účtu RunAs. To je potřeba jenom pro typ účtu "DomainUser". |
 
-## <a name="runasfabric"></a>RunAs_Fabric
+## <a name="runas_fabric"></a>RunAs_Fabric
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
@@ -626,7 +631,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |RunAsAccountType|řetězec, výchozí hodnota je "" |Dynamické|Označuje typ účtu RunAs. To je potřeba pro všechny platné hodnoty oddílu RunAs jsou "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|řetězec, výchozí hodnota je "" |Dynamické|Označuje heslo účtu RunAs. To je potřeba jenom pro typ účtu "DomainUser". |
 
-## <a name="runashttpgateway"></a>RunAs_HttpGateway
+## <a name="runas_httpgateway"></a>RunAs_HttpGateway
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |

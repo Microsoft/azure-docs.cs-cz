@@ -1,6 +1,6 @@
 ---
-title: Přehled účtu úložiště Azure | Dokumentace Microsoftu
-description: Vysvětlení možností pro vytváření a používání účtu služby Azure Storage.
+title: Přehled účtu Azure Storage | Microsoft Docs
+description: Seznamte se s možnostmi pro vytvoření a použití účtu Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 157a421ce2cb4442597bfb0f75ae042a10a8ee03
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2adb2928772f97c2dc14b8ebe9eb2072cbc4a36d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443759"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985372"
 ---
-# <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
+# <a name="azure-storage-account-overview"></a>Přehled účtu Azure Storage
 
-Účet úložiště Azure obsahuje všechny datových objektů Azure Storage: objekty BLOB, soubory, fronty, tabulky a disky. Účet úložiště poskytuje jedinečný obor názvů pro vaše data služby Azure Storage, která je přístupná odkudkoli na světě prostřednictvím protokolu HTTP nebo HTTPS. Data ve vašem účtu úložiště Azure je odolné a vysoce dostupné, zabezpečené a široce škálovatelné.
+Účet úložiště Azure obsahuje všechny vaše Azure Storage datové objekty: objekty blob, soubory, fronty, tabulky a disky. Účet úložiště poskytuje jedinečný obor názvů pro data Azure Storage, která jsou přístupná odkudkoli na světě přes protokol HTTP nebo HTTPS. Data v účtu úložiště Azure jsou trvalá a vysoce dostupná, zabezpečená a rozsáhlá.
 
-Zjistěte, jak vytvořit účet úložiště Azure, najdete v článku [vytvořit účet úložiště](storage-quickstart-create-account.md).
+Informace o tom, jak vytvořit účet úložiště Azure, najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
 
 ## <a name="types-of-storage-accounts"></a>Typy účtů úložiště
 
@@ -27,24 +27,24 @@ Zjistěte, jak vytvořit účet úložiště Azure, najdete v článku [vytvoři
 
 ### <a name="general-purpose-v2-accounts"></a>Účty úložiště pro obecné účely verze 2
 
-Účty úložiště pro obecné účely v2 podporuje nejnovější funkce služby Azure Storage a zapracovali všechny funkce pro obecné účely v1 a účty Blob storage. Účty pro obecné účely v2 doručování nejnižší podle sazby za gigabajt kapacity ceny pro Azure Storage, jakož i průmysl konkurenceschopných cen za transakce. Účty úložiště pro obecné účely v2 podporují tyto služby Azure Storage:
+Účty úložiště pro obecné účely v2 podporují nejnovější funkce Azure Storage a zahrnují všechny funkce účtů pro obecné účely V1 a BLOB Storage. Účty pro obecné účely v2 poskytují nejnižší cenu za GB pro Azure Storage a také ceny za transakce z odvětví konkurenčních produktů. Účty úložiště pro obecné účely v2 podporují tyto služby Azure Storage:
 
-- Objekty BLOB (všechny typy: Blokovat, připojení, stránky)
+- Objekty BLOB (všechny typy: Blokovat, připojit, stránku)
 - Soubory
 - Disky
 - Fronty
 - Tabulky
 
 > [!NOTE]
-> Microsoft doporučuje používat účet úložiště pro obecné účely verze 2 pro většinu scénářů. Pro obecné účely v1 nebo účtu služby Blob storage můžete snadno upgradovat na účet pro obecné účely v2 došlo k výpadku a bez nutnosti kopírovat data.
+> Microsoft doporučuje pro většinu scénářů používat účet úložiště pro obecné účely v2. Účet úložiště pro obecné účely v1 nebo blob můžete snadno upgradovat na účet pro obecné účely v2 bez výpadků a bez nutnosti kopírovat data.
 >
-> Další informace o upgradu na účet pro obecné účely v2 najdete v tématu [upgradovat na účet úložiště pro obecné účely v2](storage-account-upgrade.md).
+> Další informace o tom, jak upgradovat na účet pro obecné účely v2, najdete v tématu [upgrade na účet úložiště pro obecné účely v2](storage-account-upgrade.md).
 
-Účty úložiště pro obecné účely verze 2 nabízí několik úrovní přístupu pro ukládání dat na základě vaší způsobů využití. Další informace najdete v tématu [data v objektech blob úrovně přístupu pro blok](#access-tiers-for-block-blob-data).
+Účty úložiště pro obecné účely v2 nabízejí více úrovní přístupu pro ukládání dat na základě vašich způsobů použití. Další informace najdete v tématu [úrovně přístupu pro data objektů blob bloku](#access-tiers-for-block-blob-data).
 
 ### <a name="general-purpose-v1-accounts"></a>Účty pro obecné účely verze 1
 
-Účty pro obecné účely v1 umožňují přístup ke všem službám Azure Storage, ale nemusí zahrnovat nejnovější funkce nebo nejnižší ceny za gigabajt. Účty úložiště pro obecné účely v1 podporují tyto služby Azure Storage:
+Účty pro obecné účely v1 poskytují přístup ke všem službám Azure Storage, ale nemusí mít nejnovější funkce nebo nejnižší ceny za gigabajt. Účty úložiště pro obecné účely v1 podporují tyto služby Azure Storage:
 
 - Objekty BLOB (všechny typy)
 - Soubory
@@ -52,25 +52,25 @@ Zjistěte, jak vytvořit účet úložiště Azure, najdete v článku [vytvoři
 - Fronty
 - Tabulky
 
-Ve většině případů se doporučuje účty pro obecné účely v2, účty pro obecné účely v1 jsou nejvhodnější pro tyto scénáře:
+I když jsou ve většině případů doporučovány účty pro obecné účely verze 2, účty pro obecné účely V1 se nejlépe hodí pro tyto scénáře:
 
-* Vaše aplikace vyžadují model nasazení Azure classic. Účty pro obecné účely v2 a účty úložiště Blob podporují jenom modelu nasazení Azure Resource Manageru.
+* Vaše aplikace vyžadují model nasazení Azure Classic. Účty pro obecné účely v2 a účty BLOB Storage podporují jenom model nasazení Azure Resource Manager.
 
-* Vaše aplikace jsou náročné na transakci nebo využívat šířku pásma významné geografickou replikaci, ale nevyžadují velké kapacity. Pro obecné účely v1 v takovém případě může být nejhospodárnějším volbou.
+* Vaše aplikace jsou náročné na transakce nebo využívají značnou šířku pásma geografické replikace, ale nevyžadují velkou kapacitu. V tomto případě může být obecným účelem v1 největší ekonomická volba.
 
 * Používáte verzi rozhraní [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx), která je starší než 14.2.2014, nebo klientskou knihovnu verze nižší než 4.x a nemůžete svoji aplikaci upgradovat.
 
-### <a name="block-blob-storage-accounts"></a>Účty úložiště objektů blob bloku
+### <a name="block-blob-storage-accounts"></a>Zablokovat účty úložiště objektů BLOB
 
-Účet úložiště objektů blob bloku je specializovaný účet úložiště pro ukládání nestrukturovaných dat objektů jako objekty BLOB bloku. Tento účet úložiště zadejte podporuje objekty BLOB bloku a doplňovací objekty BLOB, ale ne objekty BLOB stránky, tabulky nebo fronty.
+Účet úložiště objektů blob bloku je specializovaný účet úložiště pro ukládání nestrukturovaných dat objektu jako objektů blob bloku. Tento typ účtu úložiště podporuje objekty blob bloku a doplňovací objekty blob, ale ne objekty blob stránky, tabulky nebo fronty.
 
-Účty blob storage bloku ve srovnání s pro obecné účely v2 a účty úložiště blob, poskytují konzistentní vzhledem k aplikacím a nízkou latenci a vyšší rychlost transakcí.
+V porovnání s účty úložiště pro obecné účely v2 a BLOB Storage zablokuje účty úložiště objektů BLOB zajišťují nízkou a konzistentní latenci a vyšší sazby za transakce.
 
-Účty blob storage bloku aktuálně nepodporují výběr vrstvy na horkou, studenou nebo archivní úroveň přístupu.
+Účty úložiště blob bloku v současné době nepodporují vrstvení na horkou, studenou nebo archivní úroveň přístupu.
 
-### <a name="filestorage-storage-accounts"></a>Účty úložiště pro úložiště souborů
+### <a name="filestorage-storage-accounts"></a>Účty úložiště úložiště
 
-Účet úložiště úložiště souborů je specializovaný účet úložiště používá k ukládání a vytvoření sdílených složek premium. Účty úložiště pro úložiště souborů nabízí jedinečné výkonu vyhrazené vlastnosti například shlukování vstupně-výstupních operací. Další informace o těchto vlastnostech najdete v článku [úrovně výkonu sdílené složky souboru](../files/storage-files-planning.md#file-share-performance-tiers) části souborů Průvodce plánováním.
+Účet úložiště souborů je specializovaný účet úložiště, který se používá k ukládání a vytváření sdílených složek Premium. Účty úložiště úložiště obsahují jedinečné vyhrazené charakteristiky výkonu, jako je například shlukování IOPS. Další informace o těchto vlastnostech najdete v části [výkonnostní vrstvy sdílení souborů](../files/storage-files-planning.md#file-share-performance-tiers) v příručce pro plánování souborů.
 
 ## <a name="naming-storage-accounts"></a>Pojmenování účtů úložiště
 
@@ -81,29 +81,29 @@ Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
 ## <a name="performance-tiers"></a>Úrovně výkonu
 
-Účty úložiště pro obecné účely lze nakonfigurovat pro některý z následujících úrovní výkonu:
+Účty úložiště pro obecné účely můžou být nakonfigurované pro jednu z následujících úrovní výkonu:
 
-* Úroveň výkonu standard pro ukládání objektů BLOB, soubory, tabulky, fronty a disky virtuálních počítačů Azure.
-* Úroveň výkonu premium pro ukládání pouze disky nespravovaného virtuálního počítače.
+* Standardní úroveň výkonu pro ukládání objektů blob, souborů, tabulek, front a disků virtuálních počítačů Azure.
+* Úroveň výkonu Premium pro ukládání pouze nespravovaných disků virtuálního počítače.
 
-Účty blob storage bloku poskytují výkon úrovně premium pro ukládání objektů BLOB bloku a doplňovacích objektů BLOB.
+Účty úložiště blob bloku poskytují úroveň výkonu Premium pro ukládání objektů blob bloku a doplňovacích objektů BLOB.
 
-Účty úložiště souborů úložiště poskytují výkon úrovně premium pro sdílené složky Azure.
+Účty úložiště úložiště obsahují úroveň výkonu Premium pro sdílené složky Azure.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Úrovně přístupu pro data objektů blob bloku
 
-Azure Storage nabízí různé možnosti pro přístup k datům objektu blob bloku na základě způsobů využití. Každá úroveň přístupu ve službě Azure Storage je optimalizovaná pro konkrétní vzor data využití. Vyberte úroveň přístupu pro vaše potřeby, můžete ukládat data objektů blob bloku cenově nejvýhodnější způsobem.
+Azure Storage poskytuje různé možnosti pro přístup k datům objektů blob bloku založených na vzorech použití. Každá úroveň přístupu v Azure Storage je optimalizovaná pro konkrétní vzor využití dat. Výběrem správné úrovně přístupu pro vaše potřeby můžete ukládat data objektů blob bloku v nejefektivnějším úsporném režimu.
 
-K dispozici přístup úrovně jsou:
+Dostupné úrovně přístupu jsou:
 
-* **Hot** úrovně přístupu, která je optimalizovaná pro časté přístup k objektům v účtu úložiště. Přístup k datům v horké úrovni je cenově nejvýhodnější, zatímco jsou vyšší náklady na úložiště. Nové účty úložiště jsou ve výchozím nastavení vytvoří v horké úrovni.
-* **Cool** úrovně přístupu, která je optimalizovaná pro ukládání velkých objemů dat, která se nevyužívají často a ukládají nejméně na 30 dnů. Ukládání dat do studené vrstvy začne být cenově výhodnější, ale přístup k těmto datům může být dražší než přístup k datům v horké úrovni.
-* **Archivu** úroveň, která je dostupná jenom pro objekty BLOB bloku jednotlivé. Archivní úroveň je optimalizovaná pro data, která se toleruje latence načtení několik hodin a zůstanou v archivní úrovni po dobu nejméně na 180 dnů. Archivní úroveň je cenově nejvýhodnější možnost pro ukládání dat, ale přístup k těmto datům je nákladnější než přístup k datům v horké nebo studené úrovni služeb.
+* Vrstva **Hot** Access, která je optimalizována pro častější přístup k objektům v účtu úložiště. Přístup k datům v Hot úrovně je největší nákladově efektivní, zatímco náklady na úložiště jsou vyšší. Ve výchozím nastavení se v aktivní úrovni vytvoří nové účty úložiště.
+* **Studená** úroveň přístupu, která je optimalizovaná pro ukládání velkých objemů dat, která se zřídka používají a ukládají se aspoň na 30 dní. Ukládání dat ve studené vrstvě je cenově výhodnější, ale přístup k nim může být dražší než přístup k datům v horké vrstvě.
+* **Archivní** vrstva, která je k dispozici pouze pro jednotlivé objekty blob bloku. Archivní úroveň je optimalizovaná pro data, která můžou tolerovat několik hodin latence načítání a zůstane v archivní úrovni aspoň 180 dní. Archivní úroveň je nejefektivnější možností pro ukládání dat, ale přístup k těmto datům je dražší než přístup k datům na horké nebo studené úrovni.
 
-Pokud dojde ke změně vzoru využití vašich dat, můžete přepínat mezi úrovněmi přístupu kdykoli. Další informace o úrovních přístupu najdete v části [Azure Blob storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
+Pokud dojde ke změně ve vzoru používání vašich dat, můžete kdykoli přepínat mezi těmito úrovněmi přístupu. Další informace o úrovních přístupu najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
 
 > [!IMPORTANT]
-> Změna úrovně přístupu pro existující účet úložiště nebo objekt blob může mít za následek další poplatky. Další informace najdete v tématu [účtu úložiště fakturační části](#storage-account-billing).
+> Změna úrovně přístupu pro existující účet úložiště nebo objekt BLOB může mít za následek další poplatky. Další informace najdete v [části fakturace účtu úložiště](#storage-account-billing).
 
 ## <a name="replication"></a>Replikace
 
@@ -113,52 +113,52 @@ Další informace o replikaci úložiště najdete v tématu [replikace Azure St
 
 ## <a name="encryption"></a>Šifrování
 
-Všechna data ve vašem účtu úložiště se šifrují na straně služby. Další informace o šifrování najdete v tématu [šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md).
+Všechna data v účtu úložiště se šifrují na straně služby. Další informace o šifrování najdete v tématu [šifrování služby Azure Storage pro](storage-service-encryption.md)neaktivní neaktivní data.
 
 ## <a name="storage-account-endpoints"></a>Koncové body účtu úložiště
 
-Účet úložiště poskytuje jedinečný obor názvů v Azure pro vaše data. Každý objekt, ve kterém je uložený ve službě Azure Storage má adresu, která obsahuje název vaší jedinečný účet. Kombinace názvu účtu a koncový bod služby Azure Storage tvoří koncové body účtu úložiště.
+Účet úložiště poskytuje jedinečný obor názvů v Azure pro vaše data. Každý objekt, který je uložen v Azure Storage má adresu, která obsahuje jedinečný název účtu. Kombinace názvu účtu a koncového bodu služby Azure Storage tvoří koncové body pro váš účet úložiště.
 
-Například, pokud je název vašeho účtu úložiště pro obecné účely *mystorageaccount*, pak jsou výchozí koncové body pro tento účet:
+Pokud má například účet úložiště pro obecné účely název *mystorageaccount*, výchozí koncové body tohoto účtu jsou následující:
 
-* Úložiště objektů blob: http://*mystorageaccount*. blob.core.windows.net
-* Table storage: http://*mystorageaccount*. table.core.windows.net
-* Fronty úložiště: http://*mystorageaccount*. queue.core.windows.net
-* Služba soubory Azure: http://*mystorageaccount*. file.core.windows.net
+* BLOB Storage: http://*mystorageaccount*. blob.Core.Windows.NET
+* Table Storage: http://*mystorageaccount*. Table.Core.Windows.NET
+* Queue Storage: http://*mystorageaccount*. Queue.Core.Windows.NET
+* Soubory Azure: http://*mystorageaccount*. File.Core.Windows.NET
 
 > [!NOTE]
-> Objekt blob bloku a účty blob storage zveřejňují jenom objektů blob koncový bod služby.
+> Účty objektů blob bloku a BLOB Storage zpřístupňují jenom koncový bod služby BLOB Service.
 
 Adresa URL pro přístup k objektu v účtu úložiště je vytvořená připojením umístění objektu v účtu úložiště ke koncovému bodu. Například adresa účtu pro objekty blob může mít tento formát: http://*můj_účet_úložiště*.blob.core.windows.net/*můj_kontejner*/*můj_objekt_blob*.
 
-Můžete také nakonfigurovat účtu úložiště používat vlastní doménu pro objekty BLOB. Další informace najdete v tématu [konfigurace vlastního názvu domény pro váš účet Azure Storage](../blobs/storage-custom-domain-name.md).  
+Svůj účet úložiště můžete také nakonfigurovat tak, aby používal vlastní doménu pro objekty blob. Další informace najdete v tématu [Konfigurace vlastního názvu domény pro účet Azure Storage](../blobs/storage-custom-domain-name.md).  
 
-## <a name="control-access-to-account-data"></a>Řízení přístupu k datům v účtu
+## <a name="control-access-to-account-data"></a>Řízení přístupu k datům účtu
 
-Ve výchozím nastavení jsou data ve vašem účtu dostupná pouze pro vás, vlastníka účtu. Budete mít kontrolu nad kdo může přistupovat k datům a jaká oprávnění máte.
+Ve výchozím nastavení jsou data ve vašem účtu dostupná pouze pro vás, vlastníka účtu. Máte kontrolu nad tím, kdo může mít přístup k vašim datům a jaká oprávnění mají.
 
-Každý požadavek směřovaný vašeho účtu úložiště musí být autorizován. Na úrovni služby, musí obsahovat platný požadavek *autorizace* hlavičky, která obsahuje všechny informace potřebné pro službu pro ověření žádosti před jeho provedením.
+Každý požadavek vytvořený na váš účet úložiště musí být autorizovaný. Na úrovni služby musí požadavek zahrnovat platnou *autorizační* hlavičku, která obsahuje všechny informace potřebné k tomu, aby služba před spuštěním ověřila požadavek.
 
-Můžete udělit přístup k datům v účtu úložiště pomocí kteréhokoli z následujících postupů:
+Přístup k datům ve vašem účtu úložiště můžete udělit pomocí některého z následujících přístupů:
 
-- **Azure Active Directory:** Ověření uživatele, skupiny nebo jinou identitu pro přístup k datům objektu blob a fronty pomocí přihlašovacích údajů Azure Active Directory (Azure AD). Pokud je úspěšné ověření identity, Azure AD vrátí token používané k autorizaci žádost o Azure Blob storage nebo Queue storage. Další informace najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).
-- **Sdílený klíč autorizace:** Přístupový klíč účtu úložiště můžete vytvořit připojovací řetězec, který vaše aplikace používá pro přístup k Azure Storage za běhu. Hodnoty v připojovacím řetězci se používají k vytvoření *autorizace* záhlaví, který je předán do služby Azure Storage. Další informace najdete v tématu [připojovacích řetězců Azure Storage konfigurace](storage-configure-connection-string.md).
-- **Sdílený přístupový podpis:** Použijte sdílený přístupový podpis pro delegování přístupu k prostředkům ve vašem účtu úložiště, pokud nepoužíváte ověřování Azure AD. Sdílený přístupový podpis je token, který zapouzdřuje všechny informace potřebné k autorizaci žádost do služby Azure Storage na adresu URL. Můžete zadat úložiště prostředků, oprávnění udělená a interval, přes která oprávnění jsou platné jako součást sdílený přístupový podpis. Další informace najdete v tématu [použití sdílených přístupových podpisů (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- **Azure Active Directory:** Použijte přihlašovací údaje pro Azure Active Directory (Azure AD) k ověření uživatele, skupiny nebo jiné identity pro přístup k datům objektů BLOB a front. Pokud je ověření identity úspěšné, pak Azure AD vrátí token, který se použije při autorizaci žádosti do úložiště objektů BLOB v Azure nebo ve frontě. Další informace najdete v tématu [ověření přístupu k Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).
+- **Autorizace sdíleného klíče:** Použijte přístupový klíč účtu úložiště k vytvoření připojovacího řetězce, který vaše aplikace používá za běhu pro přístup k Azure Storage. Hodnoty v připojovacím řetězci slouží k vytvoření hlavičky *autorizace* , která je předána Azure Storage. Další informace najdete v tématu [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md).
+- **Sdílený přístupový podpis:** Pomocí sdíleného přístupového podpisu můžete delegovat přístup k prostředkům v účtu úložiště, pokud nepoužíváte ověřování Azure AD. Sdílený přístupový podpis je token, který zapouzdřuje všechny informace potřebné k autorizaci žádosti o Azure Storage na adrese URL. Můžete zadat prostředek úložiště, udělená oprávnění a interval, ve kterém jsou oprávnění platná, jako součást sdíleného přístupového podpisu. Další informace najdete v tématu [použití sdílených přístupových podpisů (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
-> Ověřování uživatelů a aplikací s použitím přihlašovacích údajů Azure AD poskytuje nejvyšší zabezpečení a snadné použití přes jiným způsobem autorizace. Když můžete nadále používat povolení sdíleného klíče s vašimi aplikacemi, používání služby Azure AD obchází potřebou ukládání přístupový klíč k účtu s vaším kódem. Můžete taky dál používat sdílené přístupové podpisy (SAS) k udělení velice přesně kontrolovat přístup k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné funkce bez nutnosti spravovat tokeny SAS nebo si dělat starosti o odvolání SAS ohrožení zabezpečení. 
+> Ověřování uživatelů nebo aplikací pomocí přihlašovacích údajů Azure AD zajišťuje zabezpečení a jednoduchost použití prostřednictvím jiných způsobů autorizace. I když můžete nadále používat autorizaci pomocí sdíleného klíče u svých aplikací, použití Azure AD obchází nutnost uložení přístupového klíče účtu k vašemu kódu. Můžete taky dál používat sdílené přístupové podpisy (SAS) pro udělení jemně odstupňovaného přístupu k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné možnosti, aniž by bylo potřeba spravovat tokeny SAS nebo se starat o odvolání napadeného SAS. 
 >
-> Microsoft doporučuje používat ověřování Azure AD pro Azure Storage blob a fronty aplikace Pokud je to možné.
+> Pokud je to možné, Microsoft doporučuje používat ověřování Azure AD pro vaše Azure Storage objekty BLOB a fronty aplikací.
 
 ## <a name="copying-data-into-a-storage-account"></a>Kopírování dat do účtu úložiště
 
-Společnost Microsoft poskytuje nástroje a knihovny pro import dat z místních úložných zařízení nebo poskytovatelé cloudu jiného dodavatele úložiště. Řešení, které použijete, závisí na množství dat, která jsou přenosu. 
+Microsoft poskytuje nástroje a knihovny pro import dat z místních úložných zařízení nebo poskytovatelů cloudového úložiště třetích stran. Které řešení použijete, závisí na množství přenášených dat. 
 
-Při upgradu na účet pro obecné účely v2 pro obecné účely v1 nebo účtu služby Blob storage, vaše data jsou migrována automaticky. Společnost Microsoft doporučuje tuto cestu k upgradu vašeho účtu. Ale pokud se rozhodnete pro přesun dat z účtu pro obecné účely v1 do účtu úložiště Blob, pak budete muset ručně migrovat data, pomocí nástrojů a knihoven, které jsou popsané níže. 
+Při upgradu na účet pro obecné účely v2 z obecného účtu úložiště v1 nebo BLOB se data automaticky migrují. Microsoft doporučuje tuto stáži k upgradu vašeho účtu. Pokud se ale rozhodnete přesunout data z účtu pro obecné účely V1 do účtu úložiště BLOB, budete muset data migrovat ručně pomocí nástrojů a knihoven popsaných níže. 
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy je nástroj Windows, který se spouští z příkazového řádku a který je určený pro vysoce výkonné kopírování dat do Azure Storage a z Azure Storage. Pomocí AzCopy můžete kopírovat data do účtu úložiště Blob z existující účet úložiště pro obecné účely nebo nahrávat data z místních úložných zařízení. Další informace najdete v tématu [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+AzCopy je nástroj Windows, který se spouští z příkazového řádku a který je určený pro vysoce výkonné kopírování dat do Azure Storage a z Azure Storage. Pomocí AzCopy můžete kopírovat data do účtu BLOB Storage z existujícího účtu úložiště pro obecné účely nebo nahrávat data z místních úložných zařízení. Další informace najdete v tématu [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="data-movement-library"></a>Knihovna pro přesun dat
 
@@ -168,23 +168,23 @@ Knihovna pro přesun dat v Azure Storage pro .NET je založená na základní pl
 
 Pomocí některé z knihoven klienta Azure nebo rozhraní REST API služeb úložiště Azure můžete vytvořit vlastní aplikaci pro migraci dat do účtu úložiště Blob. Azure Storage poskytuje množství knihoven klienta pro různé jazyky a platformy, jako například .NET, Java, C++, Node.JS, PHP, Ruby nebo Python. Knihovny klienta nabízí pokročilé možnosti a funkce, jako je například logika opakovaných pokusů, protokolování a paralelní ukládání. Můžete také psát aplikace přímo na rozhraní REST API, které může zavolat jakýkoli jazyk schopný vytvářet požadavky přes HTTP/HTTPS.
 
-Další informace o REST API služby Azure Storage najdete v tématu [referenčních informacích k Azure Storage Services REST API](https://docs.microsoft.com/rest/api/storageservices/). 
+Další informace o REST API Azure Storage najdete v tématu informace o [REST API služby Azure Storage Services](https://docs.microsoft.com/rest/api/storageservices/). 
 
 > [!IMPORTANT]
 > Objekty blob šifrované na straně klienta ukládají metadata šifrování s objektem blob. Pokud kopírujete objekt blob šifrovaný na straně klienta, ujistěte se, že operace kopírování zachová metadata objektu blob, zejména metadata šifrování. Pokud objekt blob zkopírujete bez metadat šifrování, obsah objektu blob bude nenávratně ztracený. Další informace o metadatech šifrování najdete v tématu [Azure Storage a šifrování na straně klienta](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="azure-importexport-service"></a>Služba Azure Import/Export
 
-Pokud máte velké množství dat pro import do vašeho účtu úložiště, zvažte službu Azure Import/Export. Službu Import/Export je bezpečně Import velkých objemů dat do úložiště objektů Blob v Azure a službou soubory Azure používá přesouvání disků do datacentra Azure. 
+Pokud pro import do svého účtu úložiště máte velké množství dat, zvažte službu Azure import/export. Služba import/export slouží k bezpečnému importování velkých objemů dat do služby Azure Blob Storage a souborů Azure prostřednictvím přenosů diskových jednotek do datacentra Azure. 
 
-Služba Import/Export lze použít také k přenosu dat z úložiště objektů Blob v Azure diskových jednotek a odešlete ji do vašich místních lokalit. Můžete importovat data z jedné nebo víc diskových jednotek, buď do Azure Blob storage nebo Azure Files. Další informace najdete v tématu [co je služba Azure Import/Export?](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
+Služba import/export se dá použít taky k přenosu dat z úložiště objektů BLOB v Azure na diskové jednotky a k odeslání do vašich místních webů. Data z jedné nebo více diskových jednotek můžete importovat buď do služby Azure Blob Storage, nebo do souborů Azure. Další informace najdete v tématu [co je služba Azure import/export?](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
 
 ## <a name="storage-account-billing"></a>Fakturace účtu úložiště
 
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak vytvořit účet úložiště Azure pro obecné účely, najdete v článku [vytvořit účet úložiště](storage-quickstart-create-account.md).
-* Zjistěte, jak vytvořit účet úložiště objektů blob bloku, najdete v článku [vytvoření účtu úložiště objektů blob bloku](../blobs/storage-blob-create-account-block-blob.md).
-* Pokud chcete spravovat nebo odstranit existující účet úložiště, přečtěte si téma [spravovat Azure storage účty](storage-account-manage.md).
+* Informace o tom, jak vytvořit účet úložiště Azure pro obecné účely, najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
+* Informace o tom, jak vytvořit účet úložiště objektů blob bloku, najdete v tématu [Vytvoření účtu bloku BLOB Storage](../blobs/storage-blob-create-account-block-blob.md).
+* Pokud chcete spravovat nebo odstranit existující účet úložiště, přečtěte si téma [Správa účtů Azure Storage](storage-account-manage.md).

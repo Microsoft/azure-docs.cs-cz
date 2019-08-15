@@ -1,6 +1,6 @@
 ---
-title: Konfigurovat kodér NewTek tricaster odesílat živý datový proud s jednou přenosovou rychlostí | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak nakonfigurovat Tricaster kodér služby live Encoding Odeslat datový proud s jednou přenosovou rychlostí do AMS kanálů, které jsou povolené kódování v reálném čase.
+title: Konfigurace kodéru NewTek transkodéry pro odesílání živého streamu s jednou přenosovou rychlostí | Microsoft Docs
+description: V tomto tématu se dozvíte, jak nakonfigurovat kodér transkodéry Live pro odeslání datového proudu s jednou přenosovou rychlostí do kanálů AMS, které mají povolené kódování v reálném čase.
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -13,29 +13,30 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;cenkd;anilmur
-ms.openlocfilehash: 6e09ce83296fccfbcb4a04913d55961e0da4de79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: 0e793a5aa7d619b0bb7a1d3efcdf665ea400c555
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720797"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69016744"
 ---
-# <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>Kodér NewTek tricaster můžete odesílat živý datový proud s jednou přenosovou rychlostí  
+# <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru NewTek transkodéry k odeslání živého datového proudu s jednou přenosovou rychlostí  
 > [!div class="op_single_selector"]
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
-> * [Elemental Live](media-services-configure-elemental-live-encoder.md)
+> * [Aktivní element](media-services-configure-elemental-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
 
-Tento článek popisuje, jak nakonfigurovat [kodér NewTek TriCaster](https://newtek.com/products/tricaster-40.html) kodér služby live Encoding Odeslat datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase. Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+Tento článek ukazuje, jak nakonfigurovat kodér [NewTek transkodéry](https://newtek.com/products/tricaster-40.html) Live pro odeslání datového proudu s jednou přenosovou rychlostí do kanálů AMS, které mají povolené kódování v reálném čase. Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
 Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítač s Windows. Pokud jste v systému Mac nebo Linux, pomocí webu Azure portal k vytvoření [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
 > [!NOTE]
-> Při použití Tricaster k odeslání příspěvku do AMS kanály, které jsou povolené kódování v reálném čase, může být video nebo zvuk potížím s vykreslováním v svoji živou událost použití určitých funkcí Tricaster, jako je rychlé cutting mezi informační kanály nebo přechod z slaty. AMS tým pracuje na řešení těchto problémů, dokud to neuděláte, nedoporučujeme používat tyto funkce.
+> Při použití transkodéry pro odesílání v informačním kanálu o příspěvcích do kanálů AMS, které mají povolené kódování v reálném čase, může být video/audio histogramu v živé události, pokud používáte určité funkce transkodéry, jako je rychlé rozřezání mezi informačními kanály nebo přechod na/z SLAT. Tým AMS pracuje na řešení těchto problémů, a to až do té doby, nedoporučujeme tyto funkce používat.
 >
 >
 
@@ -56,7 +57,7 @@ Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure 
 
 1. Nástroj AMSE, přejděte na **Live** kartu a klikněte pravým tlačítkem v rámci oblasti kanálu. Vyberte **vytvořit kanál...** v nabídce.
 
-    ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
+    ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
 
 2. Zadejte název kanálu, do pole Popis je volitelný. V části nastavení kanálu, vyberte **standardní** pro možnost Live Encoding s protokolem vstupu, nastavte na **RTMP**. Všechna ostatní nastavení je můžete nechat.
 
@@ -64,7 +65,7 @@ Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure 
 
 3. Klikněte na tlačítko **vytvořit kanál**.
 
-   ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster2.png)
+   ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster2.png)
 
 > [!NOTE]
 > Kanál může trvat až 20 minut.
@@ -78,56 +79,56 @@ Při spuštění kanálu můžete [nakonfigurovat kodér](media-services-configu
 >
 >
 
-## <a name="a-idconfiguretricasterrtmpconfigure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>Konfigurovat kodér NewTek tricaster
+## <a name="a-idconfigure_tricaster_rtmpconfigure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>Konfigurace kodéru transkodéry NewTek
 
 V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto oddílu popisuje jednotlivé kroky konfigurace v podrobněji.
 
 **Video**:
 
-* Kodek: H.264
-* Profil: Vysoká (úroveň 4.0)
-* S přenosovou rychlostí: 5000 kb/s
-* Klíčový snímek: 2 sekundy (60 sekund)
+* Kodek H. 264
+* Profilu Vysoká (úroveň 4,0)
+* Rychlostí 5000 KB/s
+* Klíč 2 sekundy (60 sekund)
 * Snímková frekvence: 30
 
 **Zvuk**:
 
-* Kodek: AAC (LC)
-* S přenosovou rychlostí: 192 kb/s
+* Kodek AAC (LC)
+* Rychlostí 192 KB/s
 * Vzorkovací frekvence: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Postup konfigurace
 
-1. Vytvořte nový **kodér NewTek TriCaster** projektu v závislosti na tom, jaké vstupní zdroj videa se používá.
-2. Jednou v rámci projektu, vyhledejte **Stream** tlačítko a klikněte na ikonu ozubeného kola vedle mu umožní přístup k nabídce konfiguraci datového proudu.
+1. Vytvořte nový projekt **transkodéry NewTek** v závislosti na tom, jaký zdroj vstupu videa se používá.
+2. V rámci tohoto projektu najděte tlačítko **Stream** a kliknutím na ikonu ozubeného kolečka vedle něho přejděte do nabídky konfigurace streamu.
 
-    ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster3.png)
-3. Po otevření nabídky, klikněte na tlačítko **nový** pod záhlavím připojení. Po zobrazení výzvy pro typ připojení, vyberte **Adobe Flash**.
+    ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster3.png)
+3. Po otevření nabídky klikněte na **Nový** pod nadpisem připojení. Po zobrazení výzvy k zadání typu připojení vyberte **Adobe Flash**.
 
-    ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster4.png)
+    ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster4.png)
 4. Klikněte na **OK**.
-5. Kliknutím šipku rozevíracího seznamu v části lze nyní importovat profil FMLE **streamování profilu** a přejdete do **Procházet**.
+5. Profil FMLE se teď dá importovat tak, že kliknete na šipku rozevíracího seznamu v části **profil streamování** a přejdete na **Procházet**.
 
-    ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster5.png)
-6. Přejděte k uložení nakonfigurovaný profil FMLE.
-7. Vyberte ji a stiskněte klávesu **OK**.
+    ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster5.png)
+6. Přejděte do umístění, kde byl uložen nakonfigurovaný profil FMLE.
+7. Vyberte ji a stiskněte **OK**.
 
-    Po nahrání profilu pokračujte k dalšímu kroku.
-8. Get kanál se uživatelovo zadání adresy URL, abyste mohli přiřadit k Tricaster **koncový bod RTMP**.
+    Po nahrání profilu přejděte k dalšímu kroku.
+8. Získejte vstupní adresu URL kanálu, aby ji bylo možné přiřadit ke koncovému **bodu transkodéry RTMP**.
 
     Přejděte zpět na nástroj AMSE a zkontrolovat stav dokončení kanálu. Jakmile stav změnil ze **počáteční** k **systémem**, vstupní adresu URL můžete získat.
 
-    Při spuštění kanálu, klikněte pravým tlačítkem na název kanálu, přejděte dolů při najetí myší nad **adresa URL vstupu kopírování do schránky** a pak vyberte **primární adresy URL vstupu**.  
+    Když je kanál spuštěný, klikněte pravým tlačítkem myši na název kanálu, přejděte dolů na **Kopírovat vstupní adresu URL do schránky** a pak vyberte **primární vstupní adresu URL**.  
 
-    ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster6.png)
-9. Vložte tyto informace **umístění** pole **serveru Flash** v rámci projektu Tricaster. Také přiřadit název do datového proudu **Stream ID** pole.
+    ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster6.png)
+9. Tyto informace vložte do pole **umístění** v rámci projektu transkodéry v části **Server Flash** . Také v poli **ID streamu** přiřaďte název datového proudu.
 
-    Informace o streamu přidal do profilu FMLE, ji můžete také importovat do této části kliknutím **nastavení importu**, že přejdete na uloženého profilu FMLE a kliknutím na **OK**. Do příslušných polí serveru Flash by měl vyplnit informacemi z FMLE.
+    Pokud se informace o datovém proudu přidaly do profilu FMLE, můžete je do této části naimportovat i tak, že kliknete na **importovat nastavení**, přejdete na uložený profil FMLE a kliknete na **OK**. Odpovídající pole serveru Flash by se měla naplnit informacemi z FMLE.
 
-    ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster7.png)
-10. Až budete hotovi, klikněte na tlačítko **OK** v dolní části obrazovky. Jakmile jsou připravené video a audiostreamů vstupy do Tricaster, začít Streamovat do AMS po kliknutí **Stream** tlačítko.
+    ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster7.png)
+10. Po dokončení klikněte na **OK** v dolní části obrazovky. Až budou video a zvukové vstupy do transkodéry připravené, začněte streamovat do AMS kliknutím na tlačítko **Stream** .
 
-     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster11.png)
+     ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster11.png)
 
 > [!IMPORTANT]
 > Před kliknutím na **Stream**, můžete **musí** Ujistěte se, že kanál je připravený.
@@ -143,13 +144,13 @@ Přejděte na nástroj AMSE a klikněte pravým tlačítkem na kanál, který m�
 
 Pokud datový proud se zobrazí v přehrávači, pak kodér správně nakonfigurovaný pro připojení k AMS.
 
-Pokud k chybě, kanál muset obnovit a upravit nastavení kodéru. Najdete v článku [řešení potíží s](media-services-troubleshooting-live-streaming.md) článku pokyny.  
+Pokud dojde k chybě, kanál se bude muset resetovat a nastavení kodéru se upraví. Najdete v článku [řešení potíží s](media-services-troubleshooting-live-streaming.md) článku pokyny.  
 
 ## <a name="create-a-program"></a>Vytvoření programu
 
 1. Jakmile přehrávání kanálu je potvrzen, vytvořte program. V části **Live** kartu nástroj AMSE klikněte pravým tlačítkem v rámci oblasti program a vyberte **vytvořit nový Program**.  
 
-    ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
+    ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
 2. Název programu a v případě potřeby upravit **délka okna archivu** (která má výchozí hodnotu čtyři hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.  
 3. Zkontrolujte **spustit Program nyní** pole.
 4. Klikněte na tlačítko **vytvořit Program**.  
