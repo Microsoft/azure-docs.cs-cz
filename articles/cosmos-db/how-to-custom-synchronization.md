@@ -1,33 +1,33 @@
 ---
-title: Jak implementovat vlastní synchronizaci pro optimalizaci pro vyšší dostupnost a výkon ve službě Azure Cosmos DB
-description: Zjistěte, jak implementovat vlastní synchronizaci pro optimalizaci pro vyšší dostupnost a výkon ve službě Azure Cosmos DB.
+title: Implementace vlastní synchronizace pro optimalizaci pro zajištění vyšší dostupnosti a výkonu v Azure Cosmos DB
+description: Naučte se implementovat vlastní synchronizaci k optimalizaci pro zajištění vyšší dostupnosti a výkonu v Azure Cosmos DB.
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: de66149a2ea3e01e62aa8e33ea5a99121a21524f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 0f630c2139d1d7d391d6c5578e5e7f378e56dcb4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986087"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013790"
 ---
-# <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Implementace vlastního synchronizace pro optimalizaci pro vyšší dostupnost a výkon
+# <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Implementace vlastní synchronizace pro optimalizaci pro zajištění vyšší dostupnosti a výkonu
 
-Azure Cosmos DB nabízí [pět jasně definovaných úrovní konzistence](consistency-levels.md) můžete zvolit z vyvážit kompromis mezi konzistencí, výkonu a dostupnosti. Silná konzistence pomáhá zajistit, že data synchronně replikuje a trvale uchovávaných v každé oblasti, kde je k dispozici účet Azure Cosmos. Tato konfigurace poskytuje nejvyšší úroveň odolnosti, ale je za cenu výkonu a dostupnosti. Pokud chcete, aby vaše aplikace řídit nebo uvolnit delší trvanlivost dat tak, aby odpovídala aplikace potřebuje bez narušení dostupnosti, můžete použít *vlastní synchronizaci* v aplikační vrstvě pro dosažení úroveň odolnosti je Chcete.
+Azure Cosmos DB nabízí [pět jasně definovaných úrovní konzistence](consistency-levels.md) , ze kterých si můžete vybrat, abyste si vyrovnali kompromisy mezi konzistencí, výkonem a dostupností. Silná konzistence pomáhá zajistit, aby data byla synchronně replikována a trvale trvalá v každé oblasti, kde je dostupný účet Azure Cosmos. Tato konfigurace poskytuje nejvyšší úroveň trvanlivosti, ale přináší náklady na výkon a dostupnost. Pokud chcete, aby vaše aplikace měla kontrolu nebo zmírnit odolnost dat, aby vyhovovala potřebám aplikace bez narušení dostupnosti, můžete použít *vlastní synchronizaci* na vrstvě aplikace, abyste dosáhli úrovně trvanlivosti, kterou požadujete.
 
-Následující obrázek znázorňuje vizuálně vlastní synchronizační model:
+Následující obrázek vizuálně znázorňuje vlastní synchronizační model:
 
 ![Vlastní synchronizace](./media/how-to-custom-synchronization/custom-synchronization.png)
 
-V tomto scénáři je kontejner služby Azure Cosmos globálně replikovat napříč několika oblastmi na více kontinentech. Pomocí silnou konzistenci pro všechny oblasti v tomto scénáři má vliv na výkon. K zajištění vyšší úroveň odolnosti dat, bez negativního vlivu latence zápisu, může aplikace použít dva klienti, které sdílejí stejný [tokenu relace](how-to-manage-consistency.md#utilize-session-tokens).
+V tomto scénáři se kontejner Azure Cosmos replikuje globálně napříč několika oblastmi na více kontinentech. Použití silné konzistence pro všechny oblasti v tomto scénáři má vliv na výkon. Aby se zajistila vyšší úroveň odolnosti dat bez narušení latence zápisu, může aplikace použít dva klienty, kteří sdílejí stejný [token relace](how-to-manage-consistency.md#utilize-session-tokens).
 
-První klient může zapisovat data do místní oblast (například USA – západ). Čtení klienta, který se používá k zajištění synchronizace je druhý klient (například v oblasti USA – východ). O toku tokenu relace ze zápisu odpovědi na následující čtení, čtení zajišťuje synchronizaci zápisy do oblasti USA – východ. Azure Cosmos DB zajišťuje, že zápisy jsou vidět alespoň jedné oblasti. Jejich zaručeno, že k oblastnímu výpadku zvládnout situaci, kdy původní oblast pro zápis ocitne mimo provoz. V tomto scénáři při každém zápisu synchronizované do oblasti USA – východ, snižuje tak latenci využívající silnou konzistenci napříč všemi oblastmi. V případě několika hlavními databázemi, kde se objeví zápisy v každé oblasti, můžete rozšířit tento model se synchronizovat do více oblastí současně.
+První klient může zapisovat data do místní oblasti (například USA – západ). Druhý klient (například v USA – východ) je klient pro čtení, který se používá k zajištění synchronizace. Výsledkem přetečení tokenu relace z odpovědi zápisu na následující čtení zajišťuje synchronizaci zápisů do USA – východ. Azure Cosmos DB zajišťuje, aby se zápisy zobrazily alespoň v jedné oblasti. Je zaručeno, že dojde k místnímu výpadku, pokud se původní oblast zápisu neukončí. V tomto scénáři je každý zápis synchronizovaný USA – východ, což snižuje latenci využívání silné konzistence napříč všemi oblastmi. V případě více hlavních scénářů, kde se zápisy vyskytují v každé oblasti, můžete tento model roztáhnout tak, aby paralelně synchronizoval více oblastí.
 
 ## <a name="configure-the-clients"></a>Konfigurace klientů
 
-Následující příklad ukazuje vrstvy přístupu k datům, který vytvoří instanci dvěma klienty pro vlastní synchronizaci:
+Následující příklad ukazuje vrstvu přístupu k datům, která vytváří instance dvou klientů pro vlastní synchronizaci:
 
 ### <a name="net-v2-sdk"></a>.Net V2 SDK
 ```csharp
@@ -84,14 +84,14 @@ class MyDataAccessLayer
 
 
         writeClient = new CosmosClient(accountEndpoint, key, writeConnectionOptions);
-        writeClient = new CosmosClient(accountEndpoint, key, writeConnectionOptions);
+        readClient = new CosmosClient(accountEndpoint, key, readConnectionOptions);
     }
 }
 ```
 
 ## <a name="implement-custom-synchronization"></a>Implementace vlastní synchronizace
 
-Po inicializaci klienti jsou aplikace můžete provádět zápisy do místní oblast (oblasti USA – západ) a vynucení synchronizace zápisy do oblasti USA – východ následujícím způsobem.
+Po inicializaci klientů aplikace může provádět zápisy do místní oblasti (USA – západ) a vynuceně-synchronizovat zápisy do USA – východ následujícím způsobem.
 
 ### <a name="net-v2-sdk"></a>.Net V2 SDK
 ```csharp
@@ -127,13 +127,13 @@ class MyDataAccessLayer
 }
 ```
 
-Můžete rozšířit modelu synchronizovat do více oblastí současně.
+Model můžete roztáhnout tak, aby se souběžně synchronizoval s více oblastmi.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o globální distribuci a konzistence ve službě Azure Cosmos DB, přečtěte si tyto články:
+Pokud chcete získat další informace o globální distribuci a konzistenci v Azure Cosmos DB, přečtěte si tyto články:
 
-* [Vyberte úroveň správné konzistence ve službě Azure Cosmos DB](consistency-levels-choosing.md)
-* [Kompromisy konzistencí, dostupností a výkonem ve službě Azure Cosmos DB](consistency-levels-tradeoffs.md)
-* [Správa konzistence ve službě Azure Cosmos DB](how-to-manage-consistency.md)
-* [Distribuce dělení a data ve službě Azure Cosmos DB](partition-data.md)
+* [Vyberte správnou úroveň konzistence v Azure Cosmos DB](consistency-levels-choosing.md)
+* [Kompromisy konzistence, dostupnosti a výkonu v Azure Cosmos DB](consistency-levels-tradeoffs.md)
+* [Správa konzistence v Azure Cosmos DB](how-to-manage-consistency.md)
+* [Dělení a distribuce dat v Azure Cosmos DB](partition-data.md)

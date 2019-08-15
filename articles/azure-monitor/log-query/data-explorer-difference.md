@@ -1,6 +1,6 @@
 ---
-title: Monitorování protokolu dotazu jazyka rozdíly ve službě Azure | Dokumentace Microsoftu
-description: Referenční informace pro jazyk dotaz Kusto používaný službou Azure Monitor. Zahrnuje další elementy, které jsou specifické pro Azure Monitor a prvky není podporována v dotazech protokolu Azure Monitor.
+title: Rozdíly v jazyce pro dotazování protokolu Azure Monitor | Microsoft Docs
+description: Referenční informace k dotazovacímu jazyku Kusto, který používá Azure Monitor. Obsahuje další prvky specifické pro Azure Monitor a elementy, které nejsou podporovány v dotazech protokolu Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,30 +11,30 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: 1185f3f96fd39f168d138d7dbf66e7780884b1fa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9892b8884d901033a80fae4168f25da97edb5a68
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589259"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990180"
 ---
-# <a name="azure-monitor-log-query-language-differences"></a>Monitorování protokolu dotazu jazyka rozdíly ve službě Azure
+# <a name="azure-monitor-log-query-language-differences"></a>Rozdíly v jazyce dotazů protokolu Azure Monitor
 
-Zatímco [protokolů ve službě Azure Monitor](log-query-overview.md) je postavená na [Průzkumník dat Azure](/azure/data-explorer) a používá stejná [Kusto dotazovací jazyk](/azure/kusto/query), verzi jazyka mají určité odlišnosti. Tento článek identifikuje elementy, které se liší mezi verzí jazyk používaný pro Průzkumníka dat a je verze použitá pro dotazů na protokoly Azure monitoru.
+I když jsou [protokoly v Azure monitor](log-query-overview.md) postaveny na [Azure Průzkumník dat](/azure/data-explorer) a používají stejný [dotazovací jazyk Kusto](/azure/kusto/query), verze jazyka obsahuje několik rozdílů. Tento článek identifikuje prvky, které se liší v rámci verze jazyka používaného pro Průzkumník dat a verze používané pro dotazy protokolu Azure Monitor.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="kql-elements-not-supported-in-azure-monitor"></a>KQL elementů nejsou podporovány ve službě Azure Monitor
-Následující části popisují elementy Kusto dotazovacího jazyka, které nejsou podporovány službou Azure Monitor.
+## <a name="kql-elements-not-supported-in-azure-monitor"></a>Prvky KQL nejsou podporované v Azure Monitor
+Následující části popisují prvky dotazovacího jazyka Kusto, které nejsou podporovány nástrojem Azure Monitor.
 
-### <a name="statements-not-supported-in-azure-monitor"></a>Příkazy nejsou podporovány ve službě Azure Monitor
+### <a name="statements-not-supported-in-azure-monitor"></a>Příkazy nejsou podporované v Azure Monitor
 
 * [Alias](/azure/kusto/query/aliasstatement)
-* [Parametry dotazu.](/azure/kusto/query/queryparametersstatement)
+* [Parametry dotazu](/azure/kusto/query/queryparametersstatement)
 
-### <a name="functions-not-supported-in-azure-monitor"></a>Funkce není podporována ve službě Azure Monitor
+### <a name="functions-not-supported-in-azure-monitor"></a>Funkce, které nejsou podporované v Azure Monitor
 
 * [cluster()](/azure/kusto/query/clusterfunction)
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
@@ -45,23 +45,24 @@ Následující části popisují elementy Kusto dotazovacího jazyka, které nej
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
 
-### <a name="operators-not-supported-in-azure-monitor"></a>Ve službě Azure Monitor nejsou podporovány operátory
+### <a name="operators-not-supported-in-azure-monitor"></a>Operátory nejsou podporované v Azure Monitor
 
-* [Spojení mezi clusterem](/azure/kusto/query/joincrosscluster)
+* [Spojení mezi clustery](/azure/kusto/query/joincrosscluster)
 * [externaldata – operátor](/azure/kusto/query/externaldata-operator)
 
-### <a name="plugins-not-supported-in-azure-monitor"></a>Moduly plug-in není podporován ve službě Azure Monitor
+### <a name="plugins-not-supported-in-azure-monitor"></a>Moduly plug-in nejsou v Azure Monitor podporované
 
-* [sql_request plugin](/azure/kusto/query/sqlrequestplugin)
+* [Modul plug-in Python](/azure/kusto/query/pythonplugin)
+* [modul plug-in sql_request](/azure/kusto/query/sqlrequestplugin)
 
 
-## <a name="additional-operators-in-azure-monitor"></a>Další operátory ve službě Azure Monitor
-Následující operátory podporoval konkrétní funkce Azure monitoru a nejsou k dispozici mimo Azure Monitor.
+## <a name="additional-operators-in-azure-monitor"></a>Další operátory v Azure Monitor
+Následující operátory podporují konkrétní Azure Monitor funkce a nejsou k dispozici mimo Azure Monitor.
 
 * [app()](app-expression.md)
 * [workspace()](workspace-expression.md)
 
 ## <a name="next-steps"></a>Další postup
 
-- Získání odkazů na jiné [prostředky pro psaní Azure Monitor protokolu dotazy](query-language.md).
-- Přístup ke kompletní [referenční dokumentaci jazyka dotaz Kusto](/azure/kusto/query/).
+- Získejte odkazy na různé [prostředky pro zápis Azure Monitorch dotazů protokolu](query-language.md).
+- Přístup k kompletní [referenční dokumentaci pro dotazovací jazyk Kusto](/azure/kusto/query/).

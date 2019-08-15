@@ -1,6 +1,6 @@
 ---
-title: Upgrade Azure MFA serveru – Azure Active Directory
-description: Postupy a pokyny, jak upgradovat na novější verzi serveru Azure Multi-Factor Authentication.
+title: Upgrade serveru Azure MFA – Azure Active Directory
+description: Kroky a pokyny k upgradu serveru Azure Multi-Factor Authentication na novější verzi.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,109 +11,109 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcafa3e2f2665e84856b80cc0911d2e83df1aa65
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19ca6d82b80a9ed77a842b638ff8e9ff346342e8
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057343"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988545"
 ---
-# <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade na Azure Multi-Factor Authentication Server nejnovější verzi
+# <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade na nejnovější Server Azure Multi-Factor Authentication
 
-Tento článek vás provedete upgrade Azure Multi-Factor Authentication (MFA) Server verze 6.0 nebo vyšší. Pokud je třeba upgradovat stará verze agenta PhoneFactor, podívejte se na [Upgrade agenta PhoneFactor na Server Azure Multi-Factor Authentication](howto-mfaserver-deploy-upgrade-pf.md).
+Tento článek vás provede procesem upgradu serveru Azure Multi-Factor Authentication (MFA) Server verze 6.0 nebo vyšší. Pokud potřebujete upgradovat starou verzi agenta PhoneFactor, přečtěte si téma [Upgrade agenta PhoneFactor na Azure Multi-Factor Authentication Server](howto-mfaserver-deploy-upgrade-pf.md).
 
-Při upgradu z verze 6.x nebo starší na v7.x nebo novější, změňte všechny součásti z rozhraní .NET 2.0 na .NET 4.5. Všechny součásti také vyžaduje Microsoft Visual C++ 2015 Redistributable Update 1 nebo novější. Instalační program MFA Server nainstaluje x86 a x64 verze těchto komponent, pokud ještě nejsou nainstalovány. Pokud portál User Portal a webová služba mobilní aplikace běží na samostatných serverech, musíte nainstalovat tyto balíčky před provedením upgradu těchto součástí. Můžete vyhledat nejnovější aktualizace Microsoft Visual C++ 2015 Redistributable na [Microsoft Download Center](https://www.microsoft.com/download/). 
+Pokud upgradujete z verze 6. x nebo starší na v7. x nebo novější, změní se všechny komponenty z .NET 2,0 na .NET 4,5. Všechny součásti vyžadují také Microsoft Visual C++ 2015 Redistributable Update 1 nebo novější. Instalační program serveru MFA nainstaluje verze x86 i x64 těchto komponent, pokud ještě nejsou nainstalované. Pokud se portál User Portal a webová služba mobilní aplikace spouští na samostatných serverech, musíte tyto balíčky nainstalovat ještě před upgradem těchto součástí. Nejnovější aktualizaci Microsoft Visual C++ 2015 Redistributable můžete vyhledat na [webu Microsoft Download Center](https://www.microsoft.com/download/). 
 
 > [!IMPORTANT]
-> Od 1. července 2019 společnost Microsoft již nabízí MFA Server pro nová nasazení. Noví zákazníci, kteří by chtěli požadovat použití vícefaktorového ověřování od jejich uživatelů by měla používat cloudové ověřování Azure Multi-Factor Authentication. Stávající zákazníci, kteří si aktivovali MFA Server před 1. července budou moct stáhnout nejnovější verzi aktualizace budoucí a vygenerovat aktivační přihlašovací údaje jako obvykle.
+> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové ověřování Azure Multi-Factor Authentication. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 Postup upgradu na první pohled:
 
-* Upgradujte Azure MFA servery (podřízené a hlavní)
-* Upgrade na portál User Portal instance
-* Upgrade adaptéru služby AD FS instancí
+* Upgrade serverů Azure MFA (podřízené potom hlavní)
+* Upgrade instancí portálu User Portal
+* Upgrade instancí adaptérů AD FS
 
 ## <a name="upgrade-azure-mfa-server"></a>Upgrade serveru Azure MFA
 
-1. Postupujte podle pokynů v [stažení serveru Azure Multi-Factor Authentication](howto-mfaserver-deploy.md#download-the-mfa-server) získat nejnovější verzi instalačního programu Azure MFA serveru.
-2. Vytvořte záložní kopii souboru dat MFA serveru v umístění C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (za předpokladu, že výchozí umístění instalace) na hlavním serveru MFA.
-3. Pokud spustíte více serverů pro zajištění vysoké dostupnosti, změňte klientské systémy, které se ověřují pro MFA Server, takže vyhodnocování se zastaví odesílání provozu do serverů, které provádíte upgrade. Pokud používáte nástroj pro vyrovnávání zatížení, z nástroje pro vyrovnávání zatížení odebrat podřízený Server MFA, proveďte upgrade a pak server přidáte do farmy.
-4. Spusťte v novém instalačním programu na každém serveru MFA. Nejdříve upgradujte podřízené servery, protože může číst starý soubor dat se replikuje hlavní.
+1. Použijte pokyny v tématu [stažení serveru Azure Multi-Factor Authentication](howto-mfaserver-deploy.md#download-the-mfa-server) , abyste získali nejnovější verzi instalačního programu serveru Azure MFA.
+2. Vytvořte zálohu datového souboru MFA serveru, který se nachází ve složce C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (za předpokladu, že výchozí umístění instalace) na vašem hlavním serveru MFA.
+3. Pokud spouštíte více serverů pro zajištění vysoké dostupnosti, změňte klientské systémy, které se ověřují na MFA serveru, aby zastavily odesílání provozu na servery, které provádí upgrade. Pokud použijete nástroj pro vyrovnávání zatížení, odeberte podřízený server MFA z nástroje pro vyrovnávání zatížení, proveďte upgrade a pak přidejte server zpátky do farmy.
+4. Spusťte nový instalační program na každém serveru MFA. Nejprve upgradujte podřízené servery, protože mohou číst starý datový soubor, který je replikován hlavním serverem.
 
    > [!NOTE]
-   > Při upgradu serveru byste měli odebrat z vyrovnávání zatížení nebo provoz sdílení s ostatními servery vícefaktorového ověřování.
+   > Při upgradu serveru by se měl odebrat z libovolného LoadBalancing nebo sdílení provozu s jinými MFA servery.
    >
-   > Není nutné odinstalovat aktuální MFA Server před spuštěním instalačního programu. Instalační program provádí upgrade v místě. Cesta instalace je převzata z registru z předchozí instalace, takže se nainstaluje ve stejném umístění (například C:\Program Files\Multi-Factor Authentication Server).
+   > Před spuštěním instalačního programu nemusíte odinstalovat aktuální MFA Server. Instalační program provede místní upgrade. Instalační cesta je převzata z registru z předchozí instalace, takže se nainstaluje do stejného umístění (například C:\Program Files\Multi-Factor Authentication Server).
   
-5. Pokud budete vyzváni k instalaci balíčku Microsoft Visual C++ 2015 Redistributable aktualizaci, přijmout výzvu. Instalují se x86 a x64 verze balíčku.
-6. Pokud používáte sadu SDK webové služby, zobrazí se výzva k instalaci nové sady SDK webové služby. Při instalaci nové sady SDK webové služby, ujistěte se, že název virtuálního adresáře odpovídá dříve nainstalované virtuální adresář (třeba MultiFactorAuthWebServiceSdk).
-7. Opakujte kroky na všechny podřízené servery. Zvyšte úroveň jednoho z podřízených uzlů bude nový hlavní server a pak upgradujte starého hlavního serveru.
+5. Pokud se zobrazí výzva k instalaci balíčku aktualizace Microsoft C++ Visual 2015 Redistributable, Přijměte výzvu. Jsou nainstalovány verze x86 i x64 balíčku.
+6. Pokud používáte sadu SDK webové služby, zobrazí se výzva k instalaci nové sady SDK webové služby. Při instalaci nové sady SDK webové služby se ujistěte, že název virtuálního adresáře odpovídá dříve nainstalovanému virtuálnímu adresáři (například MultiFactorAuthWebServiceSdk).
+7. Opakujte kroky na všech podřízených serverech. Zvyšte úroveň jednoho z podřízených na nový hlavní server a pak upgradujte starý hlavní server.
 
-## <a name="upgrade-the-user-portal"></a>Upgrade portál User Portal
+## <a name="upgrade-the-user-portal"></a>Upgrade portálu User Portal
 
-Dokončení upgradu serverů MFA ještě před přesunem do této části.
+Před přechodem do této části dokončete upgrade serverů MFA.
 
-1. Vytvořte záložní kopii souboru web.config, který je ve virtuálním adresáři umístění instalace portálu User Portal (například C:\inetpub\wwwroot\MultiFactorAuth). Pokud výchozí motiv nebyly provedeny žádné změny, vytvořte zálohu na App_Themes\Default složku. Je lepší vytvořit kopii výchozí složce a vytvořit nový motiv než změňte výchozí motiv.
-2. Pokud portál User Portal běží na stejném serveru jako ostatní součásti serveru MFA, instalace MFA Server vás vyzve k aktualizovat rozhraní User Portal. Přijmout výzvu aktualizaci a nainstalovat portál User Portal. Zkontrolujte, že název virtuálního adresáře odpovídá dříve nainstalované virtuální adresář (třeba MultiFactorAuth).
-3. Pokud je portál User Portal na vlastním serveru, zkopírujte soubor MultiFactorAuthenticationUserPortalSetup64.msi z umístění instalace služby některý server MFA a umístěny na webovém serveru portálu User Portal. Spusťte instalační program.
+1. Vytvořte zálohu souboru Web. config, který je ve virtuálním adresáři umístění instalace portálu User Portal (například C:\inetpub\wwwroot\MultiFactorAuth). Pokud byly ve výchozím motivu provedeny nějaké změny, vytvořte také zálohu složky App_Themes\Default. Je lepší vytvořit kopii výchozí složky a vytvořit nový motiv, než aby bylo možné změnit výchozí motiv.
+2. Pokud je uživatelský portál spuštěn na stejném serveru jako ostatní komponenty MFA serveru, zobrazí se při instalaci MFA serveru výzva k aktualizaci portálu User Portal. Potvrďte výzvu a nainstalujte aktualizaci portálu User Portal. Ověřte, že název virtuálního adresáře odpovídá dříve nainstalovanému virtuálnímu adresáři (například MultiFactorAuth).
+3. Pokud je uživatelský portál na vlastním serveru, zkopírujte soubor MultiFactorAuthenticationUserPortalSetup64. msi z umístění instalace jednoho ze serverů MFA a umístěte jej na webový server portálu User Portal. Spusťte instalační program.
 
-   Pokud dojde k chybě s, "Microsoft Visual C++ 2015 Redistributable Update 1 nebo novější je nutné," stáhněte a nainstalujte nejnovější balíček aktualizace z [Microsoft Download Center](https://www.microsoft.com/download/). Nainstalujte x86 a x64 verze.
+   Pokud dojde k chybě, je třeba zadat "Microsoft C++ Visual 2015 Redistributable Update 1 nebo vyšší", stáhnout a nainstalovat nejnovější balíček aktualizace z [webu Microsoft Download Center](https://www.microsoft.com/download/). Nainstalujte verze x86 i x64.
 
-4. Po instalaci aktualizace softwaru portálu User Portal, porovnejte web.config zálohu, kterou jste zadali v kroku 1 pomocí nového souboru web.config. Pokud neexistují žádné nové atributy do nového souboru Web.config, zkopírujte do virtuálního adresáře přepsat novým zálohování web.config. Další možností je kopírování/vkládání hodnoty appSettings a adresu URL sady SDK webové služby ze záložního souboru do nového souboru web.config.
+4. Po instalaci aktualizovaného softwaru uživatelského portálu Porovnejte zálohu Web. config, kterou jste provedli v kroku 1 s novým souborem Web. config. Pokud v novém souboru Web. config neexistují žádné nové atributy, zkopírujte soubor Web. config do virtuálního adresáře a přepište ho. Další možností je zkopírovat/vložit hodnoty appSettings a adresu URL sady SDK webové služby ze záložního souboru do nového souboru Web. config.
 
-Pokud máte na portálu User Portal na více serverech, opakujte instalaci na všechny z nich.
+Pokud máte portál User Portal na více serverech, opakujte instalaci na všech těchto serverech.
 
-## <a name="upgrade-the-mobile-app-web-service"></a>Upgradovat službu Mobile App Web Service
+## <a name="upgrade-the-mobile-app-web-service"></a>Upgrade webové služby mobilní aplikace
 
 > [!NOTE]
-> Pokud upgradujete ze starší verze Azure MFA Serveru než 8.0 na verzi 8.0 nebo novější, po upgradu je možné odinstalovat webovou službu mobilní aplikace.
+> Při upgradu z verze Azure MFA serveru starší než 8,0 na 8.0 + se může po upgradu odinstalovat webová služba mobilní aplikace.
 
-## <a name="upgrade-the-ad-fs-adapters"></a>Upgrade adaptéry AD FS
+## <a name="upgrade-the-ad-fs-adapters"></a>Upgrade AD FSch adaptérů
 
-Dokončení upgradu serverů MFA a portál User Portal ještě před přesunem do této části.
+Než přejdete do této části, dokončete upgrade serverů MFA a portálu User Portal.
 
-### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Pokud vícefaktorové ověřování běží na různých serverech než služba AD FS
+### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Pokud MFA běží na různých serverech než AD FS
 
-Tyto pokyny platí pouze pokud Multi-Factor Authentication Server samostatně z vašich serverů služby AD FS. Pokud obě služby běží stejných serverů, přeskočte tuto část a přejděte na instalační postup, který. 
+Tyto pokyny platí pouze v případě, že používáte Multi-Factor Authentication Server odděleně od serverů AD FS. Pokud obě služby běží na stejných serverech, přeskočte tuto část a přejděte k instalačním postupům. 
 
-1. Uložit kopii souboru MultiFactorAuthenticationAdfsAdapter.config, který byl zaregistrován ve službě AD FS nebo exportovat konfiguraci pomocí následujícího příkazu Powershellu: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]`. V závislosti na dříve nainstalovanou verzi je název adaptéru "WindowsAzureMultiFactorAuthentication" nebo "AzureMfaServerAuthentication".
-2. Zkopírujte následující soubory z umístění instalace serveru MFA na servery služby AD FS:
+1. Uložte kopii souboru souboru MultiFactorAuthenticationAdfsAdapter. config, který byl zaregistrován v AD FS, nebo exportujte konfiguraci pomocí následujícího příkazu prostředí PowerShell: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]`. Název adaptéru je buď "WindowsAzureMultiFactorAuthentication" nebo "AzureMfaServerAuthentication" v závislosti na dříve nainstalované verzi.
+2. Zkopírujte následující soubory z umístění instalace MFA serveru na servery AD FS:
 
    * MultiFactorAuthenticationAdfsAdapterSetup64.msi
    * Register-MultiFactorAuthenticationAdfsAdapter.ps1
    * Unregister-MultiFactorAuthenticationAdfsAdapter.ps1
    * MultiFactorAuthenticationAdfsAdapter.config
 
-3. Upravte skript Register-MultiFactorAuthenticationAdfsAdapter.ps1 tak, že přidáte `-ConfigurationFilePath [path]` na konec objektu `Register-AdfsAuthenticationProvider` příkazu. Nahraďte *[cesta]* s úplnou cestou k MultiFactorAuthenticationAdfsAdapter.config souboru nebo konfigurace exportovali v předchozím kroku.
+3. Úpravou skriptu skript Register-MultiFactorAuthenticationAdfsAdapter. ps1 přidejte `-ConfigurationFilePath [path]` na konec `Register-AdfsAuthenticationProvider` příkazu. Nahraďte *[cesta]* úplnou cestou k souboru souboru MultiFactorAuthenticationAdfsAdapter. config nebo konfiguračním souborem exportovaným v předchozím kroku.
 
-   Zkontrolujte atributy v nové MultiFactorAuthenticationAdfsAdapter.config zobrazíte, pokud se shodují starý konfigurační soubor. Pokud všechny atributy se přidaly nebo odebraly v nové verzi, zkopírujte hodnoty atributů z starý konfigurační soubor do nové nebo úprava starý konfigurační soubor tak, aby odpovídaly.
+   Zkontrolujte atributy v novém souboru souboru MultiFactorAuthenticationAdfsAdapter. config, abyste viděli, zda odpovídají starému konfiguračnímu souboru. Pokud byly v nové verzi přidány nebo odebrány nějaké atributy, zkopírujte hodnoty atributů ze starého konfiguračního souboru do nového nebo upravte starý konfigurační soubor tak, aby odpovídal.
 
-### <a name="install-new-ad-fs-adapters"></a>Instalace nové adaptéry služby AD FS
+### <a name="install-new-ad-fs-adapters"></a>Nainstalovat nové adaptéry AD FS
 
 > [!IMPORTANT]
-> Vaši uživatelé nebudou muset dvoustupňové ověřování během kroků 3-8 v této části. Pokud máte službu AD FS nakonfigurovaný v několika clusterech, můžete odebrat, upgrade a obnovení každý cluster ve farmě nezávisle na jiných clusterů, aby se zabránilo výpadkům.
+> Během kroků 3-8 tohoto oddílu nebudou vaši uživatelé muset provádět dvoustupňové ověřování. Pokud jste AD FS nakonfigurovali v několika clusterech, můžete v jednotlivých clusterech odebrat, upgradovat a obnovovat jednotlivé clustery nezávisle na ostatních clusterech, abyste se vyhnuli výpadkům.
 
-1. Odeberte některé servery služby AD FS z farmy. Aktualizace těchto serverů, zatímco ostatní jsou pořád spuštěné.
-2. Nainstalujte nový adaptér služby AD FS na každém serveru odstraněny z farmy služby AD FS. Pokud MFA Server nainstalovaný na každém serveru služby AD FS, můžete aktualizovat pomocí Správce serveru MFA uživatelské prostředí V opačném případě aktualizujte spuštěním MultiFactorAuthenticationAdfsAdapterSetup64.msi.
+1. Odeberte z farmy některé AD FS servery. Aktualizujte tyto servery, zatímco ostatní stále běží.
+2. Nainstalujte nový AD FS adaptér na každém serveru odebraném z farmy AD FS. Pokud je server MFA nainstalovaný na každém serveru AD FS, můžete ho aktualizovat prostřednictvím uživatelského rozhraní pro správu MFA serveru. V opačném případě aktualizujte spuštěním souboru MultiFactorAuthenticationAdfsAdapterSetup64. msi.
 
-   Pokud dojde k chybě s, "Microsoft Visual C++ 2015 Redistributable Update 1 nebo novější je nutné," stáhněte a nainstalujte nejnovější balíček aktualizace z [Microsoft Download Center](https://www.microsoft.com/download/). Nainstalujte x86 a x64 verze.
+   Pokud dojde k chybě, je třeba zadat "Microsoft C++ Visual 2015 Redistributable Update 1 nebo vyšší", stáhnout a nainstalovat nejnovější balíček aktualizace z [webu Microsoft Download Center](https://www.microsoft.com/download/). Nainstalujte verze x86 i x64.
 
-3. Přejděte na **služby AD FS** > **zásady ověřování** > **upravte zásady globální Vícefaktorové ověřování**. Zrušte zaškrtnutí políčka **WindowsAzureMultiFactorAuthentication** nebo **AzureMFAServerAuthentication** (v závislosti na aktuální verzi nainstalovanou).
+3. Přejít na **AD FS** > **zásady** > ověřování**Upravit globální zásady vícefaktorového ověřování**. Zrušte kontrolu **WindowsAzureMultiFactorAuthentication** nebo **AzureMFAServerAuthentication** (v závislosti na nainstalované aktuální verzi).
 
-   Po dokončení tohoto kroku se dvoustupňové ověřování přes MFA Server není k dispozici v tomto clusteru služby AD FS, dokud nedokončíte krok 8.
+   Po dokončení tohoto kroku není v tomto AD FS clusteru k dispozici dvoustupňové ověřování prostřednictvím MFA serveru, dokud nedokončíte krok 8.
 
-4. Zrušit registraci starší verzi adaptéru služby AD FS pomocí skriptu prostředí PowerShell Unregister-MultiFactorAuthenticationAdfsAdapter.ps1. Ujistěte se, že *– název* parametr ("WindowsAzureMultiFactorAuthentication" nebo "AzureMFAServerAuthentication") odpovídá názvu, který se zobrazí v kroku 3. To platí pro všechny servery ve stejném clusteru služby AD FS, protože centrální konfigurace.
-5. Zaregistrujte nový adaptér služby AD FS pomocí skriptu prostředí PowerShell Register-MultiFactorAuthenticationAdfsAdapter.ps1. To platí pro všechny servery ve stejném clusteru služby AD FS, protože centrální konfigurace.
-6. Restartujte službu AD FS na každém serveru odstraněny z farmy služby AD FS.
-7. Přidejte aktualizované serverů zpět do farmy služby AD FS a odebrat ostatní servery z farmy.
-8. Přejděte na **služby AD FS** > **zásady ověřování** > **upravte zásady globální Vícefaktorové ověřování**. Zkontrolujte **AzureMfaServerAuthentication**.
-9. Opakujte krok 2: aktualizace serverů nyní odstraněny z farmy služby AD FS a restartujte službu AD FS na těchto serverech.
-10. Tyto servery přidáte zpátky do farmy služby AD FS.
+4. Zrušte registraci starší verze AD FS adaptéru spuštěním skriptu PowerShellu Unregister-MultiFactorAuthenticationAdfsAdapter. ps1. Zajistěte, aby se parametr *-Name* (buď WindowsAzureMultiFactorAuthentication nebo "AzureMFAServerAuthentication") shodoval s názvem, který byl zobrazen v kroku 3. To platí pro všechny servery ve stejném AD FS clusteru, protože existuje centrální konfigurace.
+5. Zaregistrujte nový AD FS adaptér spuštěním skriptu PowerShellu skript Register-MultiFactorAuthenticationAdfsAdapter. ps1. To platí pro všechny servery ve stejném AD FS clusteru, protože existuje centrální konfigurace.
+6. Restartujte službu AD FS na každém serveru odebraném z farmy AD FS.
+7. Přidejte aktualizované servery zpět do farmy AD FS a odeberte ostatní servery z farmy.
+8. Přejít na **AD FS** > **zásady** > ověřování**Upravit globální zásady vícefaktorového ověřování**. Podívejte se na **AzureMfaServerAuthentication**.
+9. Opakujte krok 2 a aktualizujte servery, které jsou nyní odebrány z AD FS farmy a restartujte službu AD FS na těchto serverech.
+10. Přidejte tyto servery zpátky do farmy AD FS.
 
 ## <a name="next-steps"></a>Další postup
 
-* Získání příkladů z [pokročilé scénáře se službou Azure Multi-Factor Authentication a sítěmi VPN třetích stran](howto-mfaserver-nps-vpn.md)
+* Získejte příklady [pokročilých scénářů se službou Azure Multi-Factor Authentication a sítěmi VPN třetích stran](howto-mfaserver-nps-vpn.md) .
 
 * [Synchronizace MFA serveru s Windows Server Active Directory](howto-mfaserver-dir-ad.md)
 
-* [Konfigurace ověřování Windows](howto-mfaserver-windows.md) pro vaše aplikace
+* [Konfigurace ověřování systému Windows](howto-mfaserver-windows.md) pro vaše aplikace

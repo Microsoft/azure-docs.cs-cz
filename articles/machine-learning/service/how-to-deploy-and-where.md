@@ -11,21 +11,21 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7e88b99cf0ecede64d75b36eafdcc88798e2e4a4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a92cb0f3da5058e7ffeee6f47e8cfa26ae291005
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840458"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990563"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
-Naučte se, jak nasadit model strojového učení jako webovou službu v cloudu Azure nebo IoT Edge zařízení. 
+Naučte se, jak nasadit model strojového učení jako webovou službu v cloudu Azure nebo IoT Edge zařízení.
 
 Pracovní postup je podobný bez ohledu na [to, kam](#target) model nasazujete:
 
 1. Zaregistrujte model.
-1. Příprava na nasazení (určení prostředků, využití, cíl výpočtů)
+1. Příprava na nasazení (určení prostředků, využití, výpočetního cíle).
 1. Model nasaďte do cílového výpočetního prostředí.
 1. Otestujte nasazený model, označovaný také jako webová služba.
 
@@ -33,26 +33,57 @@ Další informace o konceptech, které jsou součástí pracovního postupu nasa
 
 ## <a name="prerequisites"></a>Požadavky
 
+- Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru služby Azure Machine Learning](how-to-manage-workspace.md).
+
 - Model. Pokud nemáte školený model, můžete použít soubory závislostí & modelu, které jsou k dispozici v [tomto kurzu](https://aka.ms/azml-deploy-cloud).
 
 - [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://aka.ms/aml-sdk)nebo [rozšíření Azure Machine Learning Visual Studio Code](how-to-vscode-tools.md).
 
+## <a name="connect-to-your-workspace"></a>Připojení k vašemu pracovnímu prostoru
+
+Následující kód ukazuje, jak se připojit k pracovnímu prostoru služby Azure Machine Learning pomocí informací uložených v mezipaměti do místního vývojového prostředí:
+
+**Používání sady SDK**
+
+```python
+from azureml.core import Workspace
+ws = Workspace.from_config(path=".file-path/ws_config.json")
+```
+
+Další informace o tom, jak se pomocí sady SDK připojit k pracovnímu prostoru, najdete v tématu [sada sdk Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace).
+
+**Použití rozhraní příkazového řádku**
+
+Při použití rozhraní příkazového řádku použijte `-w` parametr `--workspace-name` nebo k určení pracovního prostoru pro příkaz.
+
+**Použití VS Code**
+
+Při použití VS Code se pracovní prostor vybere pomocí grafického rozhraní. Další informace najdete v tématu [nasazení a Správa modelů](how-to-vscode-tools.md#deploy-and-manage-models) v dokumentaci k rozšíření vs Code.
+
 ## <a id="registermodel"></a>Registrace modelu
 
-Registrovaný logický kontejner modelu pro jeden nebo více souborů, které tvoří model. Například pokud máte model, který je uložený ve více souborech, můžete ho zaregistrovat jako jeden model v pracovním prostoru. Po registraci můžete zaregistrovaný model stáhnout nebo nasadit a získat všechny soubory, které byly zaregistrovány.
+Registrovaný model je logický kontejner pro jeden nebo více souborů, které tvoří model. Například pokud máte model, který je uložený ve více souborech, můžete ho zaregistrovat jako jeden model v pracovním prostoru. Po registraci můžete zaregistrovaný model stáhnout nebo nasadit a získat všechny soubory, které byly zaregistrovány.
 
-Modely strojového učení jsou zaregistrované ve vašem pracovním prostoru Azure Machine Learning. Model může pocházet z Azure Machine Learning nebo může pocházet z někde jinde. Následující příklady ukazují, jak registrovat model ze souboru:
+> [!TIP]
+> Při registraci modelu zadáte buď cestu k umístění v cloudu (z školicích běhů), nebo místní adresář. Tato cesta je určena pouze k vyhledání souborů pro nahrání v rámci procesu registrace; nemusí odpovídat cestě použité ve skriptu pro zadávání. Další informace najdete v tématu [co je get_model_path](#what-is-get_model_path).
+
+Modely strojového učení jsou zaregistrované ve vašem pracovním prostoru Azure Machine Learning. Model může pocházet z Azure Machine Learning nebo může pocházet z někde jinde. Následující příklady ukazují, jak registrovat model:
 
 ### <a name="register-a-model-from-an-experiment-run"></a>Registrace modelu z Experimentového běhu
 
-+ **Scikit – příklad použití sady SDK**
+Fragmenty kódu v této části ukazují, jak registrovat model z školicího běhu:
+
+> [!IMPORTANT]
+> Tyto fragmenty kódu předpokládají, že jste dříve provedli školicí běh a máte přístup `run` k objektu (příklad sady SDK) nebo hodnotě ID běhu (příklad CLI). Další informace o školicích modelech najdete v tématu [Vytvoření a použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md).
+
++ **Používání sady SDK**
+
   ```python
   model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
   print(model.name, model.id, model.version, sep='\t')
   ```
 
-  > [!TIP]
-  > Pokud chcete do registrace modelu zahrnout více souborů, nastavte `model_path` na adresář, který obsahuje soubory.
+  `model_path` Odkazuje na cloudové umístění modelu. V tomto příkladu je použita cesta k jednomu souboru. Pokud chcete do registrace modelu zahrnout více souborů, nastavte `model_path` na adresář, který obsahuje soubory.
 
 + **Použití rozhraní příkazového řádku**
 
@@ -60,42 +91,47 @@ Modely strojového učení jsou zaregistrované ve vašem pracovním prostoru Az
   az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid
   ```
 
-  > [!TIP]
-  > Pokud chcete do registrace modelu zahrnout více souborů, nastavte `--asset-path` na adresář, který obsahuje soubory.
+  [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
+
+  `--asset-path` Odkazuje na cloudové umístění modelu. V tomto příkladu je použita cesta k jednomu souboru. Pokud chcete do registrace modelu zahrnout více souborů, nastavte `--asset-path` na adresář, který obsahuje soubory.
 
 + **Použití VS Code**
 
   Zaregistrujte modely pomocí všech souborů modelů nebo složek s rozšířením [vs Code](how-to-vscode-tools.md#deploy-and-manage-models) .
 
-### <a name="register-an-externally-created-model"></a>Registrace externě vytvořeného modelu
+### <a name="register-a-model-from-a-local-file"></a>Registrace modelu z místního souboru
+
+Model můžete zaregistrovat zadáním **místní cesty** k modelu. Můžete zadat buď složku, nebo jeden soubor. Tuto metodu můžete použít k registraci obou modelů, které jsou vyškolené pomocí služby Azure Machine Learning Service a poté staženy, nebo v modelech vyškolených mimo Azure Machine Learning.
 
 [!INCLUDE [trusted models](../../../includes/machine-learning-service-trusted-model.md)]
 
-Externě vytvořený model můžete zaregistrovat zadáním **místní cesty** k modelu. Můžete zadat buď složku, nebo jeden soubor.
-
 + **ONNX příklad se sadou Python SDK:**
-  ```python
-  onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
-  urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
-  !tar xvzf mnist.tar.gz
-  
-  model = Model.register(workspace = ws,
-                         model_path ="mnist/model.onnx",
-                         model_name = "onnx_mnist",
-                         tags = {"onnx": "demo"},
-                         description = "MNIST image classification CNN from ONNX Model Zoo",)
-  ```
 
-  > [!TIP]
-  > Pokud chcete do registrace modelu zahrnout více souborů, nastavte `model_path` na adresář, který obsahuje soubory.
+    ```python
+    import os
+    import urllib.request
+    from azureml.core import Model
+    # Download model
+    onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
+    urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
+    os.system('tar xvzf mnist.tar.gz')
+    # Register model
+    model = Model.register(workspace = ws,
+                            model_path ="mnist/model.onnx",
+                            model_name = "onnx_mnist",
+                            tags = {"onnx": "demo"},
+                            description = "MNIST image classification CNN from ONNX Model Zoo",)
+    ```
+
+  Pokud chcete do registrace modelu zahrnout více souborů, nastavte `model_path` na adresář, který obsahuje soubory.
 
 + **Použití rozhraní příkazového řádku**
+
   ```azurecli-interactive
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
 
-  > [!TIP]
-  > Pokud chcete do registrace modelu zahrnout více souborů, nastavte `-p` na adresář, který obsahuje soubory.
+  Pokud chcete do registrace modelu zahrnout více souborů, nastavte `-p` na adresář, který obsahuje soubory.
 
 **Časový odhad**: Přibližně 10 sekund.
 
@@ -157,7 +193,7 @@ Chcete-li použít generování schématu, `inference-schema` zahrňte balíček
 
 ##### <a name="example-dependencies-file"></a>Příklad souboru závislostí
 
-Následující YAML je příkladem souboru závislostí conda pro odvození.
+Následující YAML je příkladem souboru závislostí conda pro odvození:
 
 ```YAML
 name: project_environment
@@ -214,7 +250,7 @@ def run(data):
         return error
 ```
 
-Následující příklad ukazuje, jak definovat vstupní data jako `<key: value>` slovník pomocí datového rámce. Tato metoda je podporovaná pro využívání nasazené webové služby od Power BI (další[informace o tom, jak používat webovou službu z Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
+Následující příklad ukazuje, jak definovat vstupní data jako `<key: value>` slovník pomocí datového rámce. Tato metoda je podporovaná pro využívání nasazené webové služby od Power BI ([Další informace o tom, jak webovou službu využívat z Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
 
 ```python
 import json
@@ -269,7 +305,97 @@ Další ukázkové skripty najdete v následujících příkladech:
 * TensorFlow[https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
 * Keras[https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * ONNX: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
-* Bodování proti binárním datům: [Jak využívat webovou službu](how-to-consume-web-service.md)
+
+<a id="binary"></a>
+
+#### <a name="binary-data"></a>Binární data
+
+Pokud váš model přijímá binárních dat, jako je například image, musíte změnit `score.py` soubor se používá pro své nasazení tak, aby přijímal nezpracovaná požadavky HTTP. K přijetí nezpracovaných dat použijte `AMLRequest` třídu ve vašem vstupním skriptu a `@rawhttp` přidejte dekoratér do `run()` funkce.
+
+Tady je příklad `score.py` , který přijímá binární data:
+
+```python
+from azureml.contrib.services.aml_request import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+
+def init():
+    print("This is init()")
+
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real world solution, you would load the data from reqBody
+        # and send to the model. Then return the response.
+
+        # For demonstration purposes, this example just returns the posted data as the response.
+        return AMLResponse(reqBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> `AMLRequest` Třída je`azureml.contrib` v oboru názvů. Věci v tomto oboru názvů se často mění při práci na vylepšení služby. V takovém případě by se cokoli v tomto oboru názvů měly považovat za verzi Preview a společnost Microsoft je plně Nepodporovaná.
+>
+> Pokud potřebujete tuto možnost otestovat v místním vývojovém prostředí, můžete komponenty nainstalovat pomocí následujícího příkazu:
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
+<a id="cors"></a>
+
+#### <a name="cross-origin-resource-sharing-cors"></a>Sdílení prostředků mezi zdroji (CORS)
+
+Sdílení prostředků mezi zdroji je způsob, jak povolí vyžádání prostředků na webové stránce z jiné domény. CORS funguje na základě hlaviček protokolu HTTP odeslaných s požadavkem klienta a vrácených s odpovědí služby. Další informace o CORS a platných hlavičkách najdete v tématu [sdílení prostředků mezi zdroji](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) v Wikipedii.
+
+Pokud chcete nakonfigurovat nasazení modelu tak, aby podporovalo CORS `AMLResponse` , použijte ve svém vstupním skriptu třídu. Tato třída umožňuje nastavit záhlaví objektu Response.
+
+Následující příklad nastaví `Access-Control-Allow-Origin` hlavičku odpovědi z vstupního skriptu:
+
+```python
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real world solution, you would load the data from reqBody
+        # and send to the model. Then return the response.
+
+        # For demonstration purposes, this example
+        # adds a header and returns the request body
+        resp = AMLResponse(reqBody, 200)
+        resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
+        return resp
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> `AMLResponse` Třída je`azureml.contrib` v oboru názvů. Věci v tomto oboru názvů se často mění při práci na vylepšení služby. V takovém případě by se cokoli v tomto oboru názvů měly považovat za verzi Preview a společnost Microsoft je plně Nepodporovaná.
+>
+> Pokud potřebujete tuto možnost otestovat v místním vývojovém prostředí, můžete komponenty nainstalovat pomocí následujícího příkazu:
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
 
 ### <a name="2-define-your-inferenceconfig"></a>2. Definování InferenceConfig
 
@@ -324,11 +450,11 @@ Následující tabulka uvádí příklad vytvoření konfigurace nasazení pro k
 
 ## <a name="deploy-to-target"></a>Nasadit do cíle
 
-Nasazení používá odvozenou konfiguraci nasazení konfigurace k nasazení modelů. Proces nasazení je podobný bez ohledu na cíl výpočtů. Nasazení na AKS se mírně liší, protože musíte poskytnout odkaz na cluster AKS.
+Nasazení používá k nasazení modelů konfiguraci nasazení nasazení konfigurace. Proces nasazení je podobný bez ohledu na cíl výpočtů. Nasazení na AKS se mírně liší, protože musíte poskytnout odkaz na cluster AKS.
 
 ### <a id="local"></a>Místní nasazení
 
-K místnímu nasazení musíte mít v místním počítači **nainstalovaný Docker** .
+K místnímu nasazení musíte mít v místním počítači nainstalovaný Docker.
 
 #### <a name="using-the-sdk"></a>Použití sady SDK
 
@@ -352,6 +478,10 @@ az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.js
 [!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
 
 Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
+
+### <a id="notebookvm"></a>Webová služba NotebookVM (DEVTEST)
+
+Viz [nasazení modelu na virtuální počítače poznámkového bloku](how-to-deploy-local-container-notebook-vm.md).
 
 ### <a id="aci"></a>Azure Container Instances (DEVTEST)
 
@@ -580,7 +710,10 @@ Modely můžete průběžně nasazovat pomocí rozšíření Machine Learning pr
 
     ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
 
-Ukázkové projekty a příklady najdete [v úložišti MLOps](https://github.com/Microsoft/MLOps) .
+Další ukázkové projekty a příklady najdete v následujících ukázkových úložištích:
+
+* [https://github.com/Microsoft/MLOps](https://github.com/Microsoft/MLOps)
+* [https://github.com/Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()`.
@@ -588,7 +721,7 @@ Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 
 Další informace naleznete v referenční dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)

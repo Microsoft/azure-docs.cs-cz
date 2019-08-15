@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: b3ebd8b6f65ec86d338932579f5d4ccec6a90be3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e92c2e58122556f90b25f070fff9e6e6616b0257
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704738"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976849"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Rozhraní API pro Azure Cosmos DB .NET Standard tabulky: Poznámky ke stažení a verzi
 > [!div class="op_single_selector"]
@@ -31,8 +31,13 @@ ms.locfileid: "68704738"
 |**Rychlý start**|[Rychlý start](create-table-dotnet.md)|
 |**Kurz**|[Kurz](tutorial-develop-table-dotnet.md)|
 |**Aktuální podporované architektury**|[Microsoft .NET Standard 2,0](https://www.nuget.org/packages/NETStandard.Library)|
+|**Nahlásit problém**|[Nahlásit problém](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
+* Opravy chyb
+* Poskytněte možnost HttpClientTimeout pro RestExecutorConfiguration.
 
 ### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4 – Preview
 * Opravy chyb
@@ -71,6 +76,7 @@ Tato knihovna .NET Standard knihovně [Microsoft. Azure. Cosmos. Table](https://
 
 | Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
 | [1.0.4 – Preview](#1.0.4-preview) |26. července 2019 |--- |
 | 1.0.2-preview |2\. května 2019 |--- |
 | [1.0.1](#1.0.1) |19. dubna 2019 |--- |
@@ -86,4 +92,4 @@ Tato knihovna .NET Standard knihovně [Microsoft. Azure. Cosmos. Table](https://
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také:
-Další informace o rozhraní API pro tabulky Azure Cosmos DB najdete v tématu [Úvod do Azure Cosmos DB rozhraní API pro tabulky](table-introduction.md). 
+Další informace o rozhraní API pro tabulky Azure Cosmos DB najdete v tématu [Úvod do Azure Cosmos DB rozhraní API pro tabulky](table-introduction.md).

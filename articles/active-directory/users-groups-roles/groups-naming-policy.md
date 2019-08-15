@@ -1,6 +1,6 @@
 ---
-title: Vynutit zásady pojmenování skupin ze skupin Office 365 – Azure Active Directory | Dokumentace Microsoftu
-description: Nastavení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory
+title: Vynutili zásady pojmenování skupin pro skupiny Office 365 – Azure Active Directory | Microsoft Docs
+description: Jak nastavit zásady pojmenování pro skupiny Office 365 v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,90 +15,90 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c13b95028975c5463217455c940bb84c3867899
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12bb01abadaf5bc9e7e1b221763ae38890922145
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734786"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013415"
 ---
-# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Vynucení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory
+# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Vynutili zásady pojmenování skupin Office 365 v Azure Active Directory
 
-K vynucení konzistentní zásady vytváření názvů pro skupiny Office 365 vytvořených nebo upravených uživatele, nastavte skupinu zásad pojmenování pro své tenanty ve službě Azure Active Directory (Azure AD). Například můžete použít zásady vytváření názvů pro komunikaci funkce skupiny, členství, geografické oblasti nebo kteří vytvořili skupinu. Můžete také použít zásady pojmenování můžete uspořádat skupiny v adresáři. Zásady můžete použít k blokování konkrétních slov z používán ve skupině názvy a aliasy.
+Pokud chcete vyhodnotit konzistentní konvence pojmenování pro skupiny Office 365 vytvořené nebo upravované uživateli, nastavte zásady pro pojmenování skupin pro klienty v Azure Active Directory (Azure AD). Zásady pojmenování můžete použít například ke komunikaci funkce skupiny, členství, geografické oblasti nebo osoby, která skupinu vytvořila. Můžete také použít zásady pojmenování, které vám pomohou kategorizovat skupiny v adresáři. Pomocí zásad můžete blokovat použití určitých slov v názvech skupin a aliasech.
 
 > [!IMPORTANT]
-> Použití zásad vytváření názvů Azure AD pro skupiny Office 365 vyžaduje mít ale nemusí nutně jít přiřadit Azure Active Directory Premium P1 licence nebo licence Azure AD Basic EDU pro každý jedinečný uživatel, který je členem jedné nebo víc skupin Office 365.
+> Použití zásad vytváření názvů pro Azure AD pro skupiny Office 365 vyžaduje, abyste měli k disAzure Active Directory Premium licenci P1 nebo Azure AD Basic EDU pro každého jedinečného uživatele, který je členem jedné nebo více skupin Office 365.
 
-Pojmenování zásady se použijí k vytvoření nebo úpravu skupiny vytvořené napříč úlohami (například Outlook, Microsoft Teams, SharePoint, Exchange nebo plánovač). Použije se název skupiny a alias skupiny. Pokud nastavíte zásady vytváření názvů v Azure AD a máte existující skupinu Exchange zásad pojmenování, pojmenování zásady služby Azure AD je vynutit ve vaší organizaci.
+Zásady pojmenování se aplikují na vytváření nebo úpravy skupin vytvořených napříč úlohami (například Outlook, Microsoft teams, SharePoint, Exchange nebo Planner). Aplikuje se na název skupiny i alias skupiny. Pokud nastavíte zásady pro pojmenování ve službě Azure AD a máte stávající zásady pojmenování skupin Exchange, ve vaší organizaci se vynutila zásada pro pojmenování Azure AD.
 
-## <a name="naming-policy-features"></a>Pojmenování funkce zásad
+## <a name="naming-policy-features"></a>Funkce zásad pojmenovávání
 
-Můžete vynutit zásady pojmenování skupin dvěma různými způsoby:
+Zásady pro pojmenování skupin můžete vynutili dvěma různými způsoby:
 
-- **Zásady pojmenování předponu příponu** můžete definovat předpon a přípon, které se poté přidají automaticky k vynucení zásad vytváření názvů u skupin (například v názvu skupiny "GRP\_Japonsko\_Moje skupina\_ Technikům", GRP\_Japonsko\_ je předpona a \_inženýrství je přípona). 
+- **Zásady pojmenování přípon předpon** Můžete definovat předpony nebo přípony, které se pak automaticky přidají, aby se vynutila konvence pojmenování pro vaše skupiny (například v názvu\_skupiny\_"GRP\_Japonsko The Group Engineering\_", GRP Japonsko\_ je předpona a \_strojírenství je přípona). 
 
-- **Vlastní blokované slova** nahrajete sadu blokované slova specifické pro vaši organizaci se zablokuje ve skupinách vytvořených uživatelem (například "generální ředitel, výplatních pásek, HR").
+- **Vlastní blokovaná slova** Můžete nahrát sadu blokovaných slov, která jsou specifická pro vaši organizaci, aby byla blokovaná ve skupinách vytvořených uživateli (například generální ředitel, mzdy, HR).
 
-### <a name="prefix-suffix-naming-policy"></a>Zásady pojmenování předponu příponu
+### <a name="prefix-suffix-naming-policy"></a>Zásady pojmenování přípon předpon
 
-Obecná struktura zásad vytváření názvů je "Předpona [GroupName] přípona". Přestože můžete definovat více předpony a přípony, může mít jednu instanci [GroupName] pouze v nastavení. Předpon a přípon může být oprava řetězců nebo uživatelských atributů, jako \[oddělení\] , které jsou nahrazeny podle uživatele, který vytváří skupiny. Celkový počet povolený počet znaků pro vaše předpony a přípony řetězce kombinované je 53 znaků. 
+Obecnou strukturou konvence pojmenování je prefix [název_skupiny] přípona. I když můžete definovat více předpon a přípon, v nastavení může být pouze jedna instance [název_skupiny]. Předpony nebo přípony mohou být buď pevné řetězce, nebo atributy uživatele, například \[oddělení\] , které je nahrazeno v závislosti na uživateli, který vytváří skupinu. Celkový povolený počet znaků pro předponu a řetězce přípony jsou 53 znaků. 
 
-Předpon a přípon mohou obsahovat speciální znaky, které jsou podporovány v název skupiny a alias skupiny. Všechny znaky v prefix nebo sufix, které nejsou podporované v alias skupiny jsou stále použít v názvu skupiny, ale odebrána z alias skupiny. Kvůli tomuto omezení předpon a přípon u názvu skupiny může lišit od těch, které jsou použity na alias skupiny. 
+Předpony a přípony mohou obsahovat speciální znaky, které jsou podporovány v názvu skupiny a aliasu skupiny. Všechny znaky v předponě nebo příponě, které nejsou podporované v aliasu skupiny, se pořád aplikují v názvu skupiny, ale odeberou se z aliasu skupiny. Z důvodu tohoto omezení se můžou předpony a přípony použité na název skupiny lišit od těch, které se použijí pro alias skupiny. 
 
-#### <a name="fixed-strings"></a>Oprava řetězců
+#### <a name="fixed-strings"></a>Pevné řetězce
 
-Aby bylo snazší kontrolovat a odlišují jej od skupiny v seznamu globálního adresáře a v levém navigační odkazy skupiny úloh můžete použít řetězce. Některé z běžných předpon klíčových slov, jako jsou "Grp\_název", "\#název","\_název.
+Pomocí řetězců můžete snáze kontrolovat a rozlišovat skupiny v globálním seznamu adres a v levém navigačním propojení úloh skupin. Některými běžnými předponami jsou klíčová slova\_\#, jako je název GRP, název\_a název.
 
 #### <a name="user-attributes"></a>Atributy uživatele
 
-Můžete použít atributy, které vám pomůžou a vaši uživatelé identifikovat, které oddělení, office nebo geografické oblasti, pro kterou byla skupina vytvořena. Například pokud definujete zásadami vytváření názvů jako `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"`, a `User’s department = Engineering`, názvu vynucené skupiny může být "Skupiny Moje skupiny inženýrství." Nepodporuje Azure AD jsou \[oddělení\], \[společnosti\], \[Office\], \[StátNeboKraj\], \[CountryOrRegion \], \[Title\]. Nepodporovaná uživatelské atributy jsou považovány za pevnou řetězce; například "\[PSČ\]". Atributy rozšíření a vlastní atributy nejsou podporovány.
+Můžete použít atributy, které vám a vašim uživatelům pomůžou zjistit, které oddělení, kancelář nebo geografické oblasti, pro které se skupina vytvořila. Pokud například definujete zásady pojmenování jako `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"`a `User’s department = Engineering`, pak název vynutilé skupiny může být "GRP my Group Engineering". Podporované atributy služby Azure AD \[jsou\]oddělení \[,\]společnost \[,\]Office ,\[StateOrProvince\], CountryorRegion\[ \] ,\[Title.\] Nepodporované atributy uživatele jsou považovány za pevné řetězce; například "\[PSČ\]". Atributy rozšíření a vlastní atributy nejsou podporovány.
 
-Doporučujeme použít atributy, které se mají hodnoty pro všechny uživatele ve vaší organizaci a používat atributy, které mají dlouhé hodnoty.
+Doporučujeme použít atributy, které mají hodnoty vyplněné pro všechny uživatele ve vaší organizaci, a nepoužívejte atributy, které mají dlouhé hodnoty.
 
-### <a name="custom-blocked-words"></a>Zadejte vlastní slova blokované
+### <a name="custom-blocked-words"></a>Vlastní blokovaná slova
 
-Zablokované slovo seznamu je čárkou oddělený seznam slovní spojení, která se zablokuje ve skupině názvy a aliasy. Žádné hledání dílčího řetězce probíhají. Přesná shoda mezi název skupiny a jedním nebo více vlastních blokované slova se vyžaduje k aktivaci selhání. Hledání dílčího řetězce se neprovádí, takže uživatelé můžou používat běžná slova jako 'Class', i když je zablokované slovo 'třídy'.
+Seznam blokovaných slov je čárkami oddělený seznam frází, které je třeba zablokovat v názvech skupin a aliasech. Neprovádí se žádná hledání dílčích řetězců. K aktivaci chyby se vyžaduje přesná shoda mezi názvem skupiny a jedním nebo více blokovanými slovy. Hledání dílčích řetězců se neprovádí, takže uživatelé můžou použít běžná slova, jako je "Class", a to i v případě, že ' třídy ' je blokované slovo.
 
-Zablokované slovo seznam pravidel:
+Blokovaná pravidla pro seznam slov:
 
-- Blokované slova se nerozlišují malá a velká písmena.
-- Když uživatel zadá zablokované slovo jako součást názvu skupiny, se zobrazí chybová zpráva s zablokované slovo.
-- Neexistují žádná omezení znaků na blokovaných slova.
-- Je maximální limit je 5000 fráze, které se dá nakonfigurovat v seznamu blokovaných slova. 
+- Blokovaná slova nerozlišují velká a malá písmena.
+- Když uživatel zadá blokované slovo jako součást názvu skupiny, zobrazí se mu chybová zpráva s blokovaným slovem.
+- Neexistují žádná omezení znaků u blokovaných slov.
+- V seznamu blokovaných slov se dá nakonfigurovat horní limit 5000 frází. 
 
-### <a name="administrator-override"></a>Správce přepsání
+### <a name="administrator-override"></a>Přepsání správce
 
-Vybraný správce můžete vyloučené z těchto zásad ve všech skupin úloh a koncových bodů, tak, aby se můžou vytvářet skupiny pomocí blokované slova a s jejich vlastní zásady vytváření názvů. Následuje seznam rolí správce vyloučené ze skupiny zásad pojmenování.
+Vybraní Správci mohou být z těchto zásad vyloučeni napříč všemi úlohami skupin a koncovými body, aby mohli vytvářet skupiny pomocí blokovaných slov a jejich vlastních zásad vytváření názvů. Níže jsou uvedeny role správců, které jsou vyňaté ze zásady pojmenování skupin.
 
 - Globální správce
-- Podpora partnerů úrovně 1
-- Podpora partnerů úrovně 2
+- Podpora partnerské vrstvy 1
+- Podpora partnerské úrovně 2
 - Správce uživatelů
-- Uživatelé zapisující do adresáře
+- Uživatelé s oprávněním k zápisu do adresářů
 
-## <a name="configure-naming-policy-in-azure-portal"></a>Na webu Azure portal nakonfigurovat zásady pojmenování
+## <a name="configure-naming-policy-in-azure-portal"></a>Konfigurace zásady pojmenování v Azure Portal
 
-1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí uživatelského účtu správce.
-1. Vyberte **skupiny**a pak vyberte **zásad pojmenování** otevřete stránku zásad pojmenování.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu globálního správce.
+1. Vyberte **skupiny**a pak výběrem **zásady** pojmenování otevřete stránku zásady pojmenování.
 
-    ![Otevřete stránku zásad pojmenování v Centru pro správu](./media/groups-naming-policy/policy.png)
+    ![Otevřete stránku zásady pojmenování v centru pro správu.](./media/groups-naming-policy/policy.png)
 
-### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Umožňuje zobrazit nebo upravit zásady vytváření názvů předponu příponu
+### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Zobrazit nebo upravit zásady pojmenování přípon předpon
 
-1. Na **zásad pojmenování** stránce **pojmenování zásady skupiny**.
-1. Můžete zobrazit nebo upravit aktuální předpona nebo přípona jednotlivě pojmenování zásady tak, že vyberete atributy nebo řetězce, které chcete vynutit jako součást zásady pojmenování.
-1. Prefix nebo sufix odebrat ze seznamu, vyberte, jakou předponu nebo příponu a potom vyberte **odstranit**. Více položek lze odstranit ve stejnou dobu.
-1. Uložte provedené změny pro nové zásady k cenám tak, že vyberete **Uložit**.
+1. Na stránce **zásady** pojmenování vyberte **zásady pojmenování skupin**.
+1. Aktuální předponu nebo zásady pojmenování přípon můžete zobrazit nebo upravit jednotlivě tak, že vyberete atributy nebo řetězce, které chcete vykonat jako součást zásad pojmenování.
+1. Pokud chcete ze seznamu odebrat předponu nebo příponu, vyberte předponu nebo příponu a pak vyberte **Odstranit**. Současně lze odstranit více položek.
+1. Uložte změny pro nové zásady, aby se projevily, a to tak, že vyberete **Uložit**.
 
-### <a name="edit-custom-blocked-words"></a>Upravit vlastní blokované slova
+### <a name="edit-custom-blocked-words"></a>Upravit vlastní blokovaná slova
 
-1. Na **zásad pojmenování** stránce **blokované slova**.
+1. Na stránce **zásady** pojmenování vyberte **blokovaná slova**.
 
-    ![Upravit a uložit seznam blokovaných slova pro pojmenování zásady](./media/groups-naming-policy/blockedwords.png)
+    ![seznam blokovaných slov pro úpravy a nahrání pro zásady pojmenování](./media/groups-naming-policy/blockedwords.png)
 
-1. Umožňuje zobrazit nebo upravit tak, že vyberete aktuální seznam blokovaných zadejte vlastní slova **Stáhnout**.
-1. Nahrajte nový seznam blokovaných zadejte vlastní slova tak, že vyberete ikonu souboru.
-1. Uložte provedené změny pro nové zásady k cenám tak, že vyberete **Uložit**.
+1. Výběrem položky **Stáhnout**zobrazíte nebo upravíte aktuální seznam vlastních blokovaných slov.
+1. Kliknutím na ikonu souboru Nahrajte nový seznam vlastních blokovaných slov.
+1. Uložte změny pro nové zásady, aby se projevily, a to tak, že vyberete **Uložit**.
 
 ## <a name="install-powershell-cmdlets"></a>Instalace rutin PowerShellu
 
@@ -117,11 +117,11 @@ Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny st
    Install-Module AzureADPreview
    ```
 
-   Pokud se zobrazí výzva o přístupu k nedůvěryhodné úložiště, zadejte **Y**. Instalace nového modulu může trvat několik minut.
+   Pokud se zobrazí výzva k přístupu k nedůvěryhodnému úložišti, zadejte **Y**. Instalace nového modulu může trvat několik minut.
 
-## <a name="configure-naming-policy-in-powershell"></a>Konfigurace zásady pojmenování v prostředí PowerShell
+## <a name="configure-naming-policy-in-powershell"></a>Konfigurace zásady pojmenování v PowerShellu
 
-1. Otevřete okno Windows Powershellu ve vašem počítači. Můžete ji otevřít bez zvýšených oprávnění.
+1. Otevřete v počítači okno prostředí Windows PowerShell. Můžete ho otevřít bez zvýšených oprávnění.
 
 1. Spuštěním následujících příkazů se připravte na spouštění rutin.
   
@@ -136,7 +136,7 @@ Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny st
 
 ### <a name="view-the-current-settings"></a>Zobrazit aktuální nastavení
 
-1. Načte aktuální zásady pojmenování, chcete-li zobrazit aktuální nastavení.
+1. Načte aktuální zásady pojmenování a zobrazí aktuální nastavení.
   
    ``` PowerShell
    $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
@@ -148,9 +148,9 @@ Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny st
    $Setting.Values
    ```
   
-### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Nastavte zásady pojmenování a zadejte vlastní slova blokované
+### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Nastavení zásad pro pojmenování a vlastních blokovaných slov
 
-1. Nastavte předpony a přípony názvů skupin v Azure AD PowerShellu. Pro funkci tak, aby fungovala správně [GroupName] musí být součástí nastavení.
+1. Nastavte předpony a přípony názvů skupin v Azure AD PowerShellu. Aby funkce fungovala správně, musí být v nastavení zahrnutá [název_skupiny].
   
    ``` PowerShell
    $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
@@ -162,26 +162,26 @@ Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny st
    $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
    ```
   
-1. Uložte nastavení pro novou zásadu cenám, jako v následujícím příkladu.
+1. Uložte nastavení, aby se nová zásada projevila, jako v následujícím příkladu.
   
    ``` PowerShell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
   
-A to je vše. Jste nastavit pojmenování zásady a přidá blokované slova.
+A to je vše. Nastavili jste zásady pro pojmenování a Přidali jste blokovaná slova.
 
-## <a name="export-or-import-custom-blocked-words"></a>Export nebo import vlastních blokované slova
+## <a name="export-or-import-custom-blocked-words"></a>Export nebo import vlastních blokovaných slov
 
-Další informace najdete v článku [rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md).
+Další informace najdete v článku rutiny [Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md).
 
-Tady je příklad skriptu prostředí PowerShell pro export více blokované slov:
+Tady je příklad skriptu PowerShellu pro export více blokovaných slov:
 
 ``` PowerShell
 $Words = (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value CustomBlockedWordsList -EQ 
 Add-Content "c:\work\currentblockedwordslist.txt" -Value $words.value.Split(",").Replace("`"","")  
 ```
 
-Tady je příklad skriptu PowerShell k importu více blokované slov:
+Tady je příklad skriptu PowerShellu pro import více blokovaných slov:
 
 ``` PowerShell
 $BadWords = Get-Content "C:\work\currentblockedwordslist.txt"
@@ -196,22 +196,22 @@ $Settings["CustomBlockedWordsList"] = $BadWords
 Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings 
 ```
 
-## <a name="remove-the-naming-policy"></a>Odebrat zásady pojmenování
+## <a name="remove-the-naming-policy"></a>Odebrání zásady pojmenování
 
-### <a name="remove-the-naming-policy-using-azure-portal"></a>Odebrat zásady pojmenování pomocí webu Azure portal
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Odeberte zásady pojmenování pomocí Azure Portal
 
-1. Na **zásad pojmenování** stránce **odstranit zásadu**.
-1. Jakmile potvrdíte odstranění, zásady pojmenování Odebereme, včetně všech předpon přípon pojmenování zásady a jakékoli vlastní blokované slova.
+1. Na stránce **zásady** pojmenování vyberte **Odstranit zásadu**.
+1. Po potvrzení odstranění se odeberou zásady pojmenování, včetně všech zásad pojmenování přípon předpon a všech blokovaných slov.
 
-### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>Odebrat zásady pojmenování pomocí Azure AD Powershellu
+### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>Odebrání zásady pojmenování pomocí Azure AD PowerShellu
 
-1. Prázdná skupina název předpon a přípon v Azure AD PowerShell.
+1. Ve službě Azure AD PowerShell vyprázdněte předpony a přípony názvu skupiny.
   
    ``` PowerShell
    $Setting["PrefixSuffixNamingRequirement"] =""
    ```
   
-1. Prázdný vlastní blokované slova.
+1. Vyprázdněte vlastní blokovaná slova.
   
    ``` PowerShell
    $Setting["CustomBlockedWordsList"]=""
@@ -225,35 +225,35 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ## <a name="experience-across-office-365-apps"></a>Prostředí v aplikacích Office 365
 
-Jakmile nastavíte zásady pojmenování skupin ve službě Azure AD, když uživatel vytvoří skupinu v aplikaci Office 365, zobrazí se jim:
+Po nastavení zásady pojmenování skupin ve službě Azure AD, když uživatel vytvoří skupinu v aplikaci Office 365, uvidí tyto informace:
 
-- Náhled A názvu souladu s vašimi zásadami vytváření názvů (u předpony a přípony) jakmile uživatel zadá název skupiny
-- Pokud uživatel zadá blokované slova, zobrazí proto jsou blokované slova odebrat chybovou zprávu.
+- Náhled názvu v závislosti na vašich zásadách pro pojmenování (s předponami a příponami), jakmile uživatel zadá název skupiny
+- Pokud uživatel zadá blokovaná slova, uvidí chybovou zprávu, aby mohla odebrat blokovaná slova.
 
 Úloha | Dodržování předpisů
 ----------- | -------------------------------
-Azure Portal služby Active Directory | Na portálu Azure AD a na přístupovém panelu portálu zobrazí název názvového vynucená zásada když uživatel zadá název skupiny při vytváření nebo úpravách skupiny. Když uživatel zadá vlastní zablokované slovo, zobrazí se chybová zpráva s zablokované slovo tak, aby uživatel jej může odebrat.
-Outlook Web Access (OWA) | Aplikace Outlook Web Access zobrazují pojmenování zásady vynucují název, když uživatel zadá název skupiny nebo alias skupiny. Když uživatel zadá vlastní zablokované slovo, chybová zpráva se zobrazí v uživatelském rozhraní spolu s zablokované slovo tak, aby uživatel může odstranit ji.
-Desktopová verze aplikace Outlook | Jsou kompatibilní s pojmenování nastavení zásad skupiny vytvořené v desktopová verze aplikace Outlook. Desktopová aplikace Outlook nezobrazí zatím ve verzi preview je název skupiny vynucené a nevrací chyby vlastní zablokované slovo, když uživatel zadá název skupiny. Ale zásady pojmenování je automaticky použijí, když vytváříte nebo upravujete skupinu a uživatelé zobrazit chybové zprávy, když jsou k dispozici vlastní blokované slova v názvu skupiny nebo alias.
-Microsoft Teams | Microsoft Teams ukazuje názvy název zásady vynucovat, když uživatel zadá název týmu skupin. Když uživatel zadá vlastní zablokované slovo, chybová zpráva se zobrazí spolu s zablokované slovo tak, aby uživatel může odstranit ji.
-SharePoint  |  SharePoint zobrazí název pojmenování zásady vynucují při uživatelské typy a lokality jméno nebo e-mailovou adresu skupiny. Když uživatel zadá vlastní zablokované slovo, chybová zpráva se zobrazí, spolu s zablokované slovo tak, aby uživatel může odstranit ji.
-Microsoft Stream | Microsoft Stream ukazuje názvy název zásady vynucovat, když uživatel zadá název skupiny nebo skupiny e-mailový alias skupin. Když uživatel zadá vlastní zablokované slovo, chybová zpráva se zobrazí s zablokované slovo, můžete ho odebrat uživatele.
-Zařízení s iOS aplikace Outlook a aplikace pro Android | Skupiny vytvořené v aplikace Outlook jsou kompatibilní s nakonfigurovanou zásadou vytváření názvů. Mobilní aplikace Outlook nezobrazí zatím ve verzi preview název názvového vynucená zásada a nevrací vlastní zablokované slovo chyby, když uživatel zadá název skupiny. Ale zásady pojmenování se automaticky využije na kliknutí na vytvořit či upravit a uživatelé zobrazit chybové zprávy, když jsou k dispozici vlastní blokované slova v názvu skupiny nebo alias.
-Skupiny mobilní aplikace | Skupiny vytvořené v mobilní aplikaci skupiny jsou kompatibilní se zásadami vytváření názvů. Skupiny mobilní aplikace není uveden ve verzi preview zásady pojmenování a nevrací vlastní zablokované slovo chyby, když uživatel zadá název skupiny. Ale zásady pojmenování je automaticky použijí, když vytváříte nebo upravujete skupinu a uživateli se zobrazí s příslušné chyby, pokud jsou k dispozici vlastní blokované slova v názvu skupiny nebo alias.
-Planner | Plánovač vyhovuje zásadám vytváření názvů. Planneru zobrazuje pojmenování zásady, ve verzi preview, když zadáte název plánu. Když uživatel zadá vlastní zablokované slovo, je při vytváření plánu zobrazí chybová zpráva.
-Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagement je v souladu se zásadami vytváření názvů. Dynamics 365 zobrazuje název názvového vynucená zásada, když uživatel zadá název skupiny nebo skupiny e-mailový alias. Když uživatel zadá vlastní zablokované slovo, chybová zpráva se zobrazí s zablokované slovo, můžete ho odebrat uživatele.
-School Data Sync (SDS) | Skupiny vytvořené pomocí SDS v souladu s pojmenování zásady, ale zásady pojmenování se nepoužije automaticky. Správci SDS muset připojí k názvy tříd, u kterých skupin je potřeba vytvořit a pak nahrají do SDS předpon a přípon. Vytvoření skupiny nebo úpravy jinak selže.
-Outlook Customer Managerem (OCM) | Outlook Customer Managerem je kompatibilní s pojmenování zásady, které se automaticky využije na skupiny vytvořené v aplikaci Outlook Customer Managerem. Pokud se zjistí vlastní zablokované slovo, vytvoření skupiny v OCM blokovaný a uživatel je blokován pomocí OCM aplikace.
-Aplikace Classroom | Skupiny vytvořené v aplikaci Classroom v souladu se zásadami vytváření názvů, ale zásady pojmenování se použijí automaticky a pojmenování zásady, ve verzi preview není zobrazen uživatelům při zadávání názvu skupiny učebnu. Uživatelé musíte zadat název skupiny vynucené učebny s předpon a přípon. Pokud ne, classroom skupiny vytvořte nebo upravte operace se nezdaří s chybami.
-Power BI | Pracovní prostory Power BI jsou kompatibilní se zásadami vytváření názvů.    
-Yammer | Když uživatel přihlášení na Yammer se svým účtem Azure Active Directory vytvoří skupinu nebo upraví název skupiny, název skupiny dodržovat zásady pojmenování. To platí i pro skupiny Office 365 připojené a všechny ostatní skupiny Yammeru.<br>Pokud připojené skupiny Office 365 byl vytvořen před zásady pojmenování je na místě, nebude podle názvu skupiny automaticky zásady vytváření názvů. Když uživatel upraví název skupiny, jsou vyzváni k přidání předpon a přípon.
-StaffHub  | Týmy Staffhubu nepostupujte podle zásady pojmenování, ale základní skupina Office 365. Název týmu Staffhubu doporučení se netýká předpon a přípon a nekontroluje blokované zadejte vlastní slova. Ale Staffhubu použít předpon a přípon a odebere blokované slova ze základní skupiny Office 365.
-Exchange PowerShell | Rutiny Powershellu v Exchangi vyhovují zásadám vytváření názvů. Uživatelé dostanou odpovídající chybové zprávy se navrhované předpony a přípony a pro blokované zadejte vlastní slova, pokud není řídí zásady pojmenování v název skupiny a alias skupiny (mailNickname).
-Rutiny Azure Powershellu pro Active Directory | Rutiny Azure Powershellu pro Active Directory jsou kompatibilní s zásad pojmenování. Uživatelé dostanou odpovídající chybové zprávy se navrhované předpony a přípony a pro blokované zadejte vlastní slova, pokud není řídí zásady vytváření názvů v názvech skupin a alias skupiny.
-Centra pro správu Exchange | Centra pro správu Exchange je kompatibilní s zásad pojmenování. Uživatelé dostanou odpovídající chybové zprávy se navrhované předpony a přípony a pro blokované zadejte vlastní slova, pokud není řídí zásady vytváření názvů v název skupiny a alias skupiny.
-Centrum pro správu služeb Microsoft 365 | Centrum pro správu služeb Microsoft 365 je kompatibilní s zásad pojmenování. Když uživatel vytvoří nebo názvy skupin úpravy, bude automaticky použito zásad vytváření názvů a uživatelé obdrží příslušné chyby při zadávání blokované zadejte vlastní slova. Centrum pro správu služeb Microsoft 365 nezobrazí zatím ve verzi preview zásady pojmenování a nevrací vlastní zablokované slovo chyby, když uživatel zadá název skupiny.
+Portály Azure Active Directory | Na portálu Azure AD a na portálu přístupového panelu se při vytváření nebo úpravách skupiny zobrazují názvy vytvářené v zásadách pojmenování při zadání názvu skupiny. Když uživatel zadá vlastní blokované slovo, zobrazí se chybová zpráva s blokovaným slovem, aby ho uživatel mohl odebrat.
+Outlook Web Access (OWA) | Pokud uživatel zadá název skupiny nebo alias skupiny, Web Access aplikace Outlook zobrazí název vynucované zásady pojmenování. Když uživatel zadá vlastní blokované slovo, zobrazí se v uživatelském rozhraní spolu s blokovaným slovem chybová zpráva, aby ho uživatel mohl odebrat.
+Aplikace Outlook Desktop | Skupiny vytvořené v aplikaci Outlook Desktop jsou kompatibilní s nastavením zásad pojmenování. Desktopová aplikace pro Outlook zatím nezobrazuje náhled vynutilého názvu skupiny a nevrátí vlastní blokované chyby Wordu, když uživatel zadá název skupiny. Zásady pojmenování se ale automaticky aplikují při vytváření nebo úpravách skupiny a uživatelé uvidí chybové zprávy, pokud se v názvu skupiny nebo aliasu nacházejí vlastní blokovaná slova.
+Microsoft Teams | Pokud uživatel zadá název týmu, zobrazí se v Microsoft Teams název vynutilí zásady pojmenování skupin. Když uživatel zadá vlastní blokované slovo, zobrazí se chybová zpráva spolu s blokovaným slovem, aby ho uživatel mohl odebrat.
+SharePoint  |  Pokud uživatel zadá název webu nebo e-mailovou adresu skupiny, SharePoint zobrazí název vynutilí zásady pojmenování. Když uživatel zadá vlastní blokované slovo, zobrazí se chybová zpráva spolu s blokovaným slovem, aby ho uživatel mohl odebrat.
+Microsoft Stream | Pokud uživatel zadá název skupiny nebo e-mailový alias skupiny, Microsoft Stream zobrazí název vykonatelné zásady pojmenování skupin. Když uživatel zadá vlastní blokované slovo, zobrazí se chybová zpráva s blokovaným slovem, aby ho uživatel mohl odebrat.
+Aplikace Outlook pro iOS a Android | Skupiny vytvořené v aplikacích Outlook jsou kompatibilní se zásadami konfigurovaných pojmenování. Mobilní aplikace Outlook zatím nezobrazuje náhled vydaného názvu zásady pojmenování a nevrátí vlastní blokované chyby Wordu, když uživatel zadá název skupiny. Zásady pojmenování se ale automaticky aplikují při kliknutí na vytvořit nebo upravit a uživatelé uvidí chybové zprávy, pokud se v názvu skupiny nebo aliasu nacházejí vlastní blokovaná slova.
+Mobilní aplikace skupiny | Skupiny vytvořené v mobilní aplikaci skupiny jsou kompatibilní se zásadami pojmenování. V mobilní aplikaci skupiny se nezobrazuje náhled zásady pojmenování a nevrátí vlastní blokované chyby Wordu, když uživatel zadá název skupiny. Zásady pojmenování se ale při vytváření nebo úpravách skupiny automaticky aplikují a uživatelům se zobrazí příslušné chyby, pokud se v názvu skupiny nebo aliasu nacházejí vlastní blokovaná slova.
+Planner | Plánovač je kompatibilní se zásadami pojmenování. V Planneru se při zadávání názvu plánu zobrazí náhled zásady pojmenování. Když uživatel zadá vlastní blokované slovo, při vytváření plánu se zobrazí chybová zpráva.
+Dynamics 365 for Customer Engagement | Dynamics 365 pro zapojení zákazníka je v souladu se zásadami pojmenování. V případě, že uživatel zadá název skupiny nebo e-mailový alias skupiny, zobrazí se v Dynamics 365 název vykonatelné zásady pojmenování. Když uživatel zadá vlastní blokované slovo, zobrazí se chybová zpráva s blokovaným slovem, aby ho uživatel mohl odebrat.
+Synchronizace školních dat (SDS) | Skupiny vytvořené prostřednictvím SDS dodržují zásady pojmenování, ale zásady pojmenování se neaplikují automaticky. Správci SDS musí připojit předpony a přípony k názvům tříd, pro které se musí vytvořit skupiny a pak se nahrají do SDS. Vytvoření nebo úprava skupiny by jinak nedošlo k chybě.
+Správce zákaznických aplikací Outlook (OCM) | Správce zákaznických aplikací Outlook je kompatibilní se zásadami pojmenování, které se automaticky aplikují na skupinu vytvořenou v aplikaci Outlook Customer Manager. Pokud se zjistí vlastní blokované slovo, bude vytvoření skupiny v OCM zablokované a uživatel je zablokovaný v používání aplikace OCM.
+Aplikace učeben | Skupiny vytvořené v aplikaci učeben vyhovují zásadám pojmenování, ale zásady pojmenování se neaplikují automaticky a verze Preview se uživatelům při zadávání názvu skupiny učeben nezobrazuje. Uživatelé musí zadat název skupiny vynutilého učebny s předponami a příponami. V takovém případě se operace vytvoření nebo úpravy skupiny učeben nepovede s chybami.
+Power BI | Power BI pracovní prostory jsou kompatibilní se zásadami pojmenování.    
+Yammer | Když se uživatel přihlásil ke službě Yammer pomocí svého Azure Active Directory účtu vytvoří skupinu nebo upraví název skupiny, bude název skupiny odpovídat zásadám pojmenování. To platí jak pro připojené skupiny Office 365, tak pro všechny ostatní skupiny Yammeru.<br>Pokud byla před vytvořením zásady pojmenování vytvořena připojená skupina sady Office 365, název skupiny nebude automaticky odpovídat zásadám pojmenování. Když uživatel upraví název skupiny, zobrazí se výzva k přidání předpony a přípony.
+StaffHub  | Směn staffhubu týmy nedodržují zásady pojmenování, ale základní skupina Office 365. Název týmu směn staffhubu nepoužívá předpony a přípony a nekontroluje vlastní blokovaná slova. Ale směn staffhubu použije předpony a přípony a odebere blokovaná slova z podkladové skupiny Office 365.
+Prostředí Exchange PowerShell | Rutiny prostředí Exchange PowerShell jsou kompatibilní se zásadami pojmenování. Uživatelé dostanou vhodné chybové zprávy s navrhovanými předponami a příponami a u vlastních blokovaných slov, pokud nedodržují zásady pojmenování v názvu skupiny a aliasu skupiny (mailNickname).
+Rutiny Azure Active Directory PowerShellu | Rutiny Azure Active Directory PowerShellu jsou kompatibilní se zásadami pojmenování. Uživatelé dostanou příslušné chybové zprávy s navrhovanými předponami a příponami a vlastní blokovaná slova, pokud nedodržují zásady vytváření názvů v názvech skupin a aliasu skupiny.
+Centrum pro správu Exchange | Centrum pro správu Exchange je kompatibilní se zásadami vytváření názvů. Uživatelé dostanou vhodné chybové zprávy s navrhovanými předponami a příponami a vlastní blokovaná slova, pokud nedodržují zásady vytváření názvů v názvu skupiny a aliasu skupiny.
+Centrum pro správu Microsoft 365 | Centrum pro správu Microsoft 365 je kompatibilní se zásadami vytváření názvů. Když uživatel vytvoří nebo upraví názvy skupin, automaticky se použije zásada pro pojmenování a uživatelé dostanou při zadávání vlastních blokovaných slov příslušné chyby. Centrum pro správu Microsoft 365 ještě nezobrazuje náhled zásad pojmenování a nevrátí vlastní blokované chyby Wordu, když uživatel zadá název skupiny.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tyto články poskytují další informace o skupinách Azure AD.
 

@@ -1,60 +1,84 @@
 ---
-title: Azure Data Factory mapování režim ladění toku dat
-description: Spusťte relaci interaktivní ladění při vytváření datové toky
+title: Azure Data Factory režim ladění toku dat
+description: Spustit interaktivní ladicí relaci při sestavování toků dat
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: d86725718217caf7fd1d9dd6d5d67362e5de7270
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 945d123c0901722a527e7cc8181c91f09e4e95ec
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147371"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014511"
 ---
-# <a name="mapping-data-flow-debug-mode"></a>Mapování režim ladění toku dat
+# <a name="mapping-data-flow-debug-mode"></a>Mapování režimu ladění toku dat
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Azure Data Factory mapování toku dat v režimu ladění lze zapnout pomocí tlačítka "Tok ladění" v horní části návrhové plochy. Při návrhu datové toky, zapnutí režimu ladění vám umožní interaktivně sledovat data tvarovat transformace při sestavení a ladění datové toky. V toku dat seminářů zaměřených na návrh i při spuštění ladění kanálů toků dat je možné relace ladění.
-
-![Ladění tlačítko](media/data-flow/debugbutton.png "tlačítko ladit.")
-
 ## <a name="overview"></a>Přehled
-Po zapnutí režimu ladění vytvoříte interaktivně váš tok dat s aktivním clusteru Spark. Relace se zavře, jakmile vypnete ladění ve službě Azure Data Factory. Měli byste vědět hodinové poplatky vzniklé během doby, kterou máte zapnuté relaci ladění v Azure Databricks.
 
-Ve většině případů je vhodné vytvořit vaše toky dat v režimu ladění, mohli ověřit vaši obchodní logiku a zobrazit transformaci dat před publikováním svou práci ve službě Azure Data Factory. Testování toku dat v rámci kanálu pomocí tlačítka "Ladění" na panelu kanálu.
+V horní části návrhové plochy se dá přepnout do režimu ladění toku dat Azure Data Factory pomocí tlačítka ladění toku dat. Při navrhování toků dat umožňuje zapnutí režimu ladění interaktivně sledovat transformaci datových tvarů při sestavování a ladění toků dat. Ladicí relaci lze použít jak v relacích návrhu toku dat, tak i při provádění ladění toků při ladění kanálu.
+
+![Tlačítko ladit](media/data-flow/debugbutton.png "Tlačítko ladit")
+
+Když je režim ladění zapnutý, budete interaktivně vytvářet tok dat s aktivním clusterem Spark. Po vypnutí ladění v Azure Data Factory dojde k ukončení relace. Měli byste si uvědomit, že hodinové poplatky vzniklé Azure Databricks v době, kdy máte zapnutou relaci ladění.
+
+Ve většině případů je vhodné sestavovat toky dat v režimu ladění, abyste před publikováním práce v Azure Data Factory mohli ověřit svou obchodní logiku a zobrazit transformace dat. K otestování toku dat v kanálu použijte tlačítko ladit na panelu kanálů.
 
 > [!NOTE]
-> Světlý režim ladění je zelené na panelu nástrojů služby Data Factory, se vám účtovat sazbou toku dat ladění 8 jader/hod obecné výpočetní s 60 minut time-to-live 
-
-> [!NOTE]
->Při spuštění v režimu ladění v toku dat, vaše data nebudou zapsány do jímky transformace. Ladicí relaci má sloužit jako testovací prostředí pro transformaci. Jímky nejsou vyžadovány během ladění a jsou ignorovány ve svém toku data. Pokud chcete otestovat, zápis dat v jímku, spuštění toku dat z kanálu služby Azure Data Factory a používejte spuštění ladění z kanálu.
-
-## <a name="debug-settings"></a>Nastavení ladění
-Ladit nastavení můžete upravit kliknutím na "Nastavení ladění" na plátně nástrojů se předávají Data. Omezení a/nebo zdrojový soubor pro použití u každého zdroje transformace Tady můžete vybrat. Omezení řádků v tomto nastavení platí pouze pro aktuální relaci ladění. Můžete také vybrat přípravná propojená služba má být použit pro SQL data Warehouse zdroje. 
-
-![Nastavení ladění](media/data-flow/debug-settings.png "nastavení ladění")
+> I když je světlo režimu ladění na panelu nástrojů Data Factory zelený, bude se vám účtovat rychlost ladění toku dat 8 jader/HR obecného COMPUTE s 60 minutou až do živého času. 
 
 ## <a name="cluster-status"></a>Stav clusteru
-Je indikátor stavu clusteru v horní části návrhové plochy, která se změní na zelenou při bude cluster připravený pro ladění. Pokud váš cluster již je teplo, se prakticky okamžitě zobrazí zelený ukazatel. Pokud váš cluster nebyla spuštěna při zadání režimu ladění, pak budete muset počkejte 5-7 minut pro cluster, abyste mohli spustit. Dokud je připraven bude aktivovat indikátoru.
 
-Až skončíte s vaší ladění, vypněte ladění přepínač tak, aby váš cluster Azure Databricks můžete ukončit a je již nebude se účtovat aktivity ladění.
+Indikátor stavu clusteru v horní části návrhové plochy se po přípravě clusteru na ladění změní na zelený. Pokud je váš cluster již zateplný, bude zelený indikátor zobrazen téměř okamžitě. Pokud váš cluster ještě nebyl spuštěný, když jste zadali režim ladění, budete muset počkat 5-7 minut, než se cluster vytočí. Indikátor bude dokončen až do jeho připravenosti.
+
+Až skončíte s laděním, vypněte přepínač ladění, aby se cluster Azure Databricks mohl ukončit a že se už nebudete účtovat za aktivitu ladění.
+
+## <a name="debug-settings"></a>Nastavení ladění
+
+Nastavení ladění můžete upravit kliknutím na nastavení ladění na panelu nástrojů plátna toku dat. Tady můžete vybrat omezení počtu řádků nebo zdroj souborů, které se mají použít pro každou transformaci vašich zdrojů. Omezení řádků v tomto nastavení platí pouze pro aktuální relaci ladění. Můžete také vybrat pracovní propojenou službu, která se má použít pro zdroj dat SQL DW. 
+
+![Nastavení ladění](media/data-flow/debug-settings.png "Nastavení ladění")
+
+Pokud máte v toku dat nebo kterékoli z jeho odkazovaných datových sad parametry, můžete určit, které hodnoty se mají použít během ladění, a to tak, že vyberete kartu **parametry** .
+
+![Parametry nastavení ladění](media/data-flow/debug-settings2.png "Parametry nastavení ladění")
 
 ## <a name="data-preview"></a>Náhled dat
-Ladicí program na kartě Náhled dat bude světla nahoru na dolním panelu. Bez režimu ladění na toku dat zobrazí pouze aktuální metadata do a z transformace na kartě zkontrolujte, jestli se. Náhled dat bude pouze dotaz na počet řádků, které jste nastavili jako svůj limit v nastavení ladění. Budete možná muset kliknout na "Načíst data" aktualizace dat ve verzi preview.
 
-![Náhled dat](media/data-flow/datapreview.png "dat ve verzi preview")
+S laděním na se na spodním panelu na kartě náhled dat zobrazí světlo. Bez režimu ladění zapnutý tok dat zobrazí na kartě zkontrolovat pouze aktuální metadata v a z každé transformace. Náhled dat bude dotazovat jenom na počet řádků, které jste v nastavení ladění nastavili jako limit. Kliknutím na **aktualizovat** načtete náhled dat.
 
-## <a name="data-profiles"></a>Data profilů
-Výběrem jednotlivých sloupců v kartě náhledu dat objeví grafu na vaší datové mřížce se podrobné statistikami o jednotlivých polích úplně vpravo. Azure Data Factory způsobí, že zjišťování na základě dat vzorkování, který typ grafu pro zobrazení. Zatímco zařazené do kategorií a číselná data, která má nízkou Kardinalita se zobrazí pruhové grafy znázorňující frekvenci hodnotu data, je výchozí nastavení vysokou kardinalitou pole hodnotu NULL nebo NOT NULL grafy. Uvidíte také maximální počet/délka délka pole řetězců, minimální/maximální hodnoty v číselné pole, standardní dev, percentily, počty a průměr. 
+![Náhled dat](media/data-flow/datapreview.png "Náhled dat")
 
-![Statistiky sloupce](media/data-flow/stats.png "statistiky sloupce")
+Při spuštění v režimu ladění v toku dat nebudou data zapsána do transformace jímky. Ladicí relace má sloužit jako testovací kabel pro vaše transformace. Během ladění nejsou požadovány jímky a jsou ignorovány v toku dat. Pokud chcete testovat zápisy dat do jímky, spusťte tok dat z kanálu Azure Data Factory a použijte ladění z kanálu.
+
+### <a name="quick-actions"></a>Rychlé akce
+
+Jakmile se zobrazí náhled dat, můžete vygenerovat rychlou transformaci pro přetypovat, odebrání nebo provedení úprav sloupce. Klikněte na záhlaví sloupce a pak na panelu nástrojů Náhled dat vyberte jednu z možností.
+
+![Rychlé akce](media/data-flow/quick-actions1.png "Rychlé akce")
+
+Jakmile vyberete úpravu, náhled dat se okamžitě aktualizuje. Kliknutím na **Potvrdit** v pravém horním rohu Vygenerujte novou transformaci.
+
+![Rychlé akce](media/data-flow/quick-actions2.png "Rychlé akce")
+
+**Přetypovat** a **Modify** vygenerují odvozenou transformaci sloupce a **Odebrání** vytvoří transformaci SELECT.
+
+![Rychlé akce](media/data-flow/quick-actions3.png "Rychlé akce")
+
+> [!NOTE]
+> Pokud upravíte tok dat, budete muset před přidáním rychlé transformace znovu načíst náhled dat.
+
+### <a name="data-profiling"></a>Profilace dat
+
+Výběr sloupců na kartě náhledu dat a kliknutí na **Statistika** na panelu nástrojů Náhled dat zobrazí graf na pravém okraji datové mřížky s podrobnými údaji o jednotlivých polích. Azure Data Factory se určí na základě vzorkování dat, který typ grafu se má zobrazit. Pole s vysokou mohutnou hodnotou budou mít jako výchozí hodnotu NULL nebo ne grafy, zatímco kategorií a číselná data s nízkou mohutnost budou zobrazovat pruhové grafy zobrazující frekvenci hodnot dat. Zobrazí se také hodnota Max/len pro pole řetězců, minimální/maximální hodnoty v číselném poli, standardní dev, percentily, počty a průměr.
+
+![Statistiky sloupců](media/data-flow/stats.png "Statistiky sloupců")
 
 ## <a name="next-steps"></a>Další postup
 
-Jakmile budete hotovi, sestavování a ladění váš tok dat [spustit ho v kanálu.](control-flow-execute-data-flow-activity.md)
-
-Při testování svůj kanál s tokem dat, použití kanálu [provádění možnost Spustit ladění.](iterative-development-debugging.md)
+* Až dokončíte sestavování a ladění toku dat, [Spusťte ho z kanálu.](control-flow-execute-data-flow-activity.md)
+* Při testování kanálu pomocí toku dat použijte [možnost spuštění ladění kanálu.](iterative-development-debugging.md)

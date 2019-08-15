@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: cenkdin;anilmur
+ms.openlocfilehash: be3c75680599c07a3cebe3dcf0436884958e1706
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61232036"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016662"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Kodér Wirecast můžete odesílat živý datový proud s jednou přenosovou rychlostí 
 > [!div class="op_single_selector"]
@@ -69,21 +70,21 @@ Při spuštění kanálu můžete [nakonfigurovat kodér](media-services-configu
 >
 >
 
-## <a name="a-idconfigurewirecastrtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Konfigurovat kodér Telestream Wirecast
+## <a name="a-idconfigure_wirecast_rtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Konfigurovat kodér Telestream Wirecast
 V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto oddílu popisuje jednotlivé kroky konfigurace v podrobněji.
 
 **Video**:
 
-* Kodek: H.264
-* Profil: Vysoká (úroveň 4.0)
-* S přenosovou rychlostí: 5000 kb/s
-* Klíčový snímek: 2 sekundy (60 sekund)
+* Kodek H. 264
+* Profilu Vysoká (úroveň 4,0)
+* Rychlostí 5000 KB/s
+* Klíč 2 sekundy (60 sekund)
 * Snímková frekvence: 30
 
 **Zvuk**:
 
-* Kodek: AAC (LC)
-* S přenosovou rychlostí: 192 kb/s
+* Kodek AAC (LC)
+* Rychlostí 192 KB/s
 * Vzorkovací frekvence: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Postup konfigurace
@@ -103,16 +104,16 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
 
     **Video**
 
-   * Kodér: Mainconceptu H.264
-   * Snímků za sekundu: 30
-   * Průměrná přenosová rychlost: 5000 kbits za sekundu (můžete třeba nastavit podle omezení sítě)
-   * Profil: Hlavní
+   * Kodér MainConcept H. 264
+   * Počet snímků za sekundu: 30
+   * Průměrná přenosová rychlost: 5000 kbit/s (dá se upravit na základě omezení sítě)
+   * Profilu Hlavní
    * Klíčový snímek každých: 60 snímků
 
      **Zvuk**
 
-   * Cíl přenosová rychlost: 192 kbits za sekundu
-   * Vzorkovací frekvence: 44 100 kHz
+   * Cílová přenosová rychlost: 192 kbit/s
+   * Vzorkovací frekvence: 44,100 kHz
 
      ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. Stiskněte **Uložit**.

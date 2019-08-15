@@ -1,6 +1,6 @@
 ---
-title: Správa cloudových služeb Azure pomocí Azure Automation | Dokumentace Microsoftu
-description: Další informace o používání služby Azure Automation ke správě cloudových služeb Azure ve velkém měřítku.
+title: Správa Azure Cloud Services pomocí Azure Automation | Microsoft Docs
+description: Přečtěte si, jak se služba Azure Automation dá použít ke správě cloudových služeb Azure ve velkém měřítku.
 services: cloud-services, automation
 documentationcenter: ''
 author: jodoglevy
@@ -10,38 +10,37 @@ ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: b3660901c86dd644369e6d1913e825cbd5ea316b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1fc1ac9668454578ee137a2ddd1b85319fea0a28
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623200"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945504"
 ---
-# <a name="managing-azure-cloud-services-using-azure-automation"></a>Správa cloudové služby Azure pomocí Azure Automation
-Tato příručka vás seznámí s služby Azure Automation a jak ji můžete použít k zjednodušení správy cloudových službách Azure.
+# <a name="managing-azure-cloud-services-using-azure-automation"></a>Správa Azure Cloud Services pomocí Azure Automation
+Tato příručka vás seznámí s Azure Automationovou službou a jejím použitím ke zjednodušení správy cloudových služeb Azure.
 
 ## <a name="what-is-azure-automation"></a>Co je Azure Automation?
-[Azure Automation](https://azure.microsoft.com/services/automation/) je služba Azure pro zjednodušení správu cloudu díky automatizaci procesu. Pomocí Azure Automation, je možné automatizovat časově náročné, ruční, problematických a často opakovaných úloh zvýšit spolehlivost, efektivitu a času na hodnotu pro vaši organizaci.
+[Azure Automation](https://azure.microsoft.com/services/automation/) je služba Azure, která zjednodušuje správu cloudu prostřednictvím automatizace procesů. Použití Azure Automation, dlouhotrvající, ruční, náchylné k chybám a často opakovaných úloh, může být automatizované, aby se zvýšila spolehlivost, efektivita a doba, jakou má vaše organizace hodnotu.
 
-Azure Automation poskytuje s vysoce spolehlivé a vysoce dostupného prováděcího modulu, která se škáluje podle vašich potřeb podle růstu vaší organizace. Ve službě Azure Automation procesy můžete má zahájit ručně, 3. stran systémy, nebo v naplánovaných intervalech, aby úlohy stát přesně v případě potřeby.
+Azure Automation poskytuje vysoce spolehlivý a vysoce dostupný prováděcí modul pracovních postupů, který se škáluje podle vašich potřeb, jak vaše organizace roste. V Azure Automation můžou procesy aktivovat ručně, systémy třetích stran nebo v plánovaných intervalech tak, aby úkoly v případě potřeby byly přesně provedeny.
 
-Snižte operační režii a uvolnit tak IT / pracovníci DevOps a zaměřte se na práci, která vytváří obchodní hodnota přesunutím úkoly správy cloudu ke spuštění automaticky službou Azure Automation.
+Snížení provozní režie a uvolnění zaměstnanců IT/DevOps, aby se mohli soustředit na práci, která zvyšuje obchodní hodnotu, a to tak, že přesouvá úlohy správy cloudu tak, aby se automaticky spouštěly pomocí Azure Automation.
 
-## <a name="how-can-azure-automation-help-manage-azure-cloud-services"></a>Jak Azure Automation pomáhá spravovat cloudové služby Azure?
-Cloudové služby Azure můžete spravovat ve službě Azure Automation prostřednictvím rutin prostředí PowerShell, které jsou k dispozici v [prostředí Azure PowerShell nástroje](/powershell/). Tak, aby bylo možné provádět všechny vaše úkoly správy cloudových služeb v rámci služby Azure Automation obsahuje tyto cloudové služby rutinách prostředí PowerShell dostupných hned po spuštění. Můžete také spárovat tyto rutiny ve službě Azure Automation s rutinami pro dalšími službami Azure, automatizují komplexní úlohy napříč službami Azure a systémech 3. stran.
+## <a name="how-can-azure-automation-help-manage-azure-cloud-services"></a>Jak může Azure Automation pomáhat s správou cloudových služeb Azure?
+Cloudové služby Azure je možné spravovat v Azure Automation pomocí rutin prostředí PowerShell, které jsou k dispozici v [nástrojích Azure PowerShell](/powershell/). Azure Automation mají tyto rutiny prostředí PowerShell služby Cloud Service dostupné, takže můžete provádět všechny úlohy správy cloudových služeb v rámci služby. Tyto rutiny můžete také spárovat v Azure Automation s rutinami pro další služby Azure, a automatizovat tak složité úlohy napříč službami Azure a systémy třetích stran.
 
-Mezi příklad použití Azure Automation pro správu Azure Cloud Services patří:
+Příklady použití Azure Automation ke správě Azure Cloud Services zahrnují:
 
-* [Průběžné nasazování z cloudové služby, jakmile dojde k aktualizaci cscfg nebo cspkg ve službě Azure Blob storage](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
-* [Restartování instance cloudové služby paralelně jednu upgradovací doménu najednou](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
+* [Průběžné nasazování cloudové služby vždy, když se v úložišti objektů BLOB v Azure aktualizuje cscfg nebo cspkg](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
+* [Současné restartování instancí cloudových služeb paralelně s jednou upgradovací doménou](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základy služby Azure Automation a jak ho lze použít ke správě cloudových služeb Azure, použijte tyto odkazy na další informace o službě Azure Automation.
+Teď, když jste se naučili základy Azure Automation a jak se dají použít ke správě cloudových služeb Azure, použijte následující odkazy, kde najdete další informace o Azure Automation.
 
 * [Přehled Azure Automation](../automation/automation-intro.md)
 * [Můj první runbook](../automation/automation-first-runbook-graphical.md)
-* [Mapa kurzů Azure Automation](https://azure.microsoft.com/documentation/learning-paths/automation/)
+* [Azure Automation Výuková mapa](https://azure.microsoft.com/documentation/learning-paths/automation/)

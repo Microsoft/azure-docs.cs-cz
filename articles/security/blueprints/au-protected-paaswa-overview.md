@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 294716052869dac03db42feea9ade15d610551e6
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: d1857d0cb1b45be5b6ce4e1dd34e8398786f54fb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781127"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946903"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Webová aplikace Podrobný plán zabezpečení a dodržování předpisů Azure-PaaS pro Austrálii CHRÁNĚNou
 
@@ -79,8 +79,8 @@ Následující část podrobně popisuje prvky nasazení a implementace.
 
 Toto řešení vytvoří virtuální počítač jako hostitele bastionu připojeného k doméně s následujícími konfiguracemi:
 -   [Antimalwarové rozšíření](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
--   [Rozšíření Azure Diagnostics](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
--   [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) pomocí Azure Key Vault
+-   [Rozšíření Azure Diagnostics](../../virtual-machines/windows/extensions-diagnostics-template.md)
+-   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) pomocí Azure Key Vault
 -   [Zásady automatického](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) vypínání, které snižují spotřebu prostředků virtuálních počítačů, pokud se nepoužívají
 
 **App Service Environment v2**: [Azure App Service Environment](https://docs.microsoft.com/azure/app-service/environment/intro) je funkce App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění App Service aplikací ve velkém měřítku.
@@ -93,19 +93,19 @@ Použití prostředí App Service pro tuto architekturu umožňuje tyto ovládac
     - Konfigurace různých App Service prostředí pro aplikace v různých klasifikacích
 - Hostování v zabezpečené virtuální síti Azure a pravidlech zabezpečení sítě
 - App Service prostředí konfigurovaná s certifikátem interního nástroje pro vyrovnávání zatížení pro komunikaci pomocí protokolu HTTPS. Osvědčeným postupem je, že společnost Microsoft doporučuje používat pro rozšířené zabezpečení používání důvěryhodné certifikační autority.
-- [Režim interního vyrovnávání zatížení](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer) (režim 3)
-- Zakázat [TLS v 1.0 a v 1.1](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
-- Změnit [šifru TLS](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
-- Řízení [příchozího provozu za sekundu porty](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic)
-- [Firewall webových aplikací – omezení dat](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
-- Povolení [Azure SQL Database provozu](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
+- [Režim interního vyrovnávání zatížení](../../app-service/environment/app-service-environment-with-internal-load-balancer.md) (režim 3)
+- Zakázat [TLS v 1.0 a v 1.1](../../app-service/environment/app-service-app-service-environment-custom-settings.md)
+- Změnit [šifru TLS](../../app-service/environment/app-service-app-service-environment-custom-settings.md)
+- Řízení [příchozího provozu za sekundu porty](../../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)
+- [Firewall webových aplikací – omezení dat](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md)
+- Povolení [Azure SQL Database provozu](../../app-service/environment/app-service-app-service-environment-network-architecture-overview.md)
 
 **Webová aplikace Azure**: [Azure App Service](https://docs.microsoft.com/azure/app-service/) umožňuje zákazníkům vytvářet a hostovat webové aplikace v programovacím jazyce podle svého výběru bez nutnosti spravovat infrastrukturu. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Azure DevOps Services nebo libovolného úložiště Git.
 
 ### <a name="virtual-network"></a>Virtuální sítě
 Architektura definuje privátní virtuální síť s adresním prostorem 10.200.0.0/16.
 
-**Skupiny zabezpečení sítě**: [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) obsahují seznamy řízení přístupu, které povolují nebo zakazují provoz v rámci virtuální sítě. Skupiny zabezpečení sítě se dají použít k zabezpečení provozu na úrovni podsítě nebo jednotlivých virtuálních počítačů. Existují následující skupiny zabezpečení sítě:
+**Skupiny zabezpečení sítě**: [Skupiny zabezpečení sítě](../../virtual-network/virtual-network-vnet-plan-design-arm.md) obsahují seznamy řízení přístupu, které povolují nebo zakazují provoz v rámci virtuální sítě. Skupiny zabezpečení sítě se dají použít k zabezpečení provozu na úrovni podsítě nebo jednotlivých virtuálních počítačů. Existují následující skupiny zabezpečení sítě:
 - 1 skupina zabezpečení sítě pro Application Gateway
 - 1 skupina zabezpečení sítě pro App Service Environment
 - 1 skupina zabezpečení sítě pro Azure SQL Database
@@ -132,27 +132,27 @@ Všechny transakce do Azure prostřednictvím portálu pro správu Azure nastáv
 ### <a name="data-at-rest"></a>Neaktivní uložená data
 Architektura chrání data v klidovém měřítku prostřednictvím šifrování, auditování databáze a dalších měr.
 
-**Azure Storage**: Aby bylo možné vyhovět šifrovaným datům v požadavcích REST, používá všechny [Azure Storage](https://azure.microsoft.com/services/storage/) [šifrování služby Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Tato ochrana pomáhá chránit a chránit data při podpoře závazků zabezpečení organizace a požadavků na dodržování předpisů, které definují australské vlády ISM.
+**Azure Storage**: Aby bylo možné vyhovět šifrovaným datům v požadavcích REST, používá všechny [Azure Storage](https://azure.microsoft.com/services/storage/) [šifrování služby Storage](../../storage/common/storage-service-encryption.md). Tato ochrana pomáhá chránit a chránit data při podpoře závazků zabezpečení organizace a požadavků na dodržování předpisů, které definují australské vlády ISM.
 
-**Azure Disk Encryption**: [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) využívá funkci nástroje BitLocker systému Windows k poskytování šifrování svazku pro datové disky. Řešení se integruje s Azure Key Vault, které vám pomůžou řídit a spravovat šifrovací klíče disku.
+**Azure Disk Encryption**: [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) využívá funkci nástroje BitLocker systému Windows k poskytování šifrování svazku pro datové disky. Řešení se integruje s Azure Key Vault, které vám pomůžou řídit a spravovat šifrovací klíče disku.
 
 **Azure SQL Database**: Instance Azure SQL Database používá následující bezpečnostní opatření databáze:
 -   [Ověřování a autorizace služby Active Directory](https://docs.microsoft.com/azure/sql-database/sql-database-AAD-authentication) umožňují správu identit uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění.
--   [Auditování služby SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) sleduje události databáze a zapisuje je do protokolu auditu v účtu úložiště Azure.
+-   [Auditování služby SQL Database](../../sql-database/sql-database-auditing.md) sleduje události databáze a zapisuje je do protokolu auditu v účtu úložiště Azure.
 -   Azure SQL Database je nakonfigurované pro použití [transparentního šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), které provádí šifrování a dešifrování databáze, přidružených záloh a souborů protokolů transakcí v reálném čase, aby chránila informace v klidovém znění. Transparentní šifrování dat poskytuje záruku, že uložená data nepodléhají neoprávněnému přístupu.
 -   [Pravidla brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) zabraňují všem přístupům k databázovým serverům, dokud nebudou udělena příslušná oprávnění. Brána firewall uděluje přístup k databázím v závislosti na zdrojové IP adrese každého požadavku.
--   [Detekce hrozeb SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) umožňuje detekci a reakci na potenciální hrozby při jejich výskytu tím, že poskytuje výstrahy zabezpečení pro podezřelé databázové aktivity, potenciální ohrožení zabezpečení, útoky prostřednictvím injektáže SQL a neobvyklé vzory přístupu k databázi. Detekce hrozeb SQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/), které obsahují podrobnosti o podezřelé aktivitě a doporučené akce týkající se toho, jak tuto hrozbu prozkoumat a zmírnit.
+-   [Detekce hrozeb SQL](../../sql-database/sql-database-threat-detection.md) umožňuje detekci a reakci na potenciální hrozby při jejich výskytu tím, že poskytuje výstrahy zabezpečení pro podezřelé databázové aktivity, potenciální ohrožení zabezpečení, útoky prostřednictvím injektáže SQL a neobvyklé vzory přístupu k databázi. Detekce hrozeb SQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/), které obsahují podrobnosti o podezřelé aktivitě a doporučené akce týkající se toho, jak tuto hrozbu prozkoumat a zmírnit.
 -   [Always Encrypted sloupců](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) zajistí, že se citlivá data v databázovém systému nikdy neobjeví jako prostý text. Po povolení šifrování dat budou mít přístup k datům ve formátu prostého textu jenom klientské aplikace nebo aplikační servery s přístupem ke klíčům.
 - [SQL Database dynamické maskování dat](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) omezuje vystavení citlivých dat tím, že se data maskují na uživatele nebo aplikace bez oprávnění. Dynamické maskování dat může automaticky zjišťovat potenciálně citlivá data a navrhovat vhodné masky pro použití. To pomáhá snižovat přístup tak, že citlivá data neukončí databázi prostřednictvím neoprávněného přístupu. Zákazníci budou muset upravit nastavení dynamického maskování dat tak, aby odpovídalo schématu databáze.
 
 ### <a name="identity-management"></a>Správa identit
-Zákazníci můžou využívat místní federované služby Active Directory pro federovat s [Azure Active Directory](https://azure.microsoft.com/services/active-directory/), což je víceklientské cloudové adresáře a služba pro správu identit od Microsoftu. [Azure Active Directory Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) integruje místní adresáře s Azure Active Directory. Všichni uživatelé v tomto řešení vyžadují účty Azure Active Directory, včetně uživatelů, kteří přistupují k Azure SQL Database. S přihlašováním pomocí federace se uživatelé můžou přihlašovat k Azure Active Directory a provádět ověřování v prostředcích Azure pomocí místních přihlašovacích údajů.
+Zákazníci můžou využívat místní federované služby Active Directory pro federovat s [Azure Active Directory](https://azure.microsoft.com/services/active-directory/), což je víceklientské cloudové adresáře a služba pro správu identit od Microsoftu. [Azure Active Directory Connect](../../active-directory/hybrid/whatis-hybrid-identity.md) integruje místní adresáře s Azure Active Directory. Všichni uživatelé v tomto řešení vyžadují účty Azure Active Directory, včetně uživatelů, kteří přistupují k Azure SQL Database. S přihlašováním pomocí federace se uživatelé můžou přihlašovat k Azure Active Directory a provádět ověřování v prostředcích Azure pomocí místních přihlašovacích údajů.
 
 Kromě toho následující Azure Active Directory možnosti pomůžou spravovat přístup k datům v prostředí Azure:
-- Ověřování pro aplikaci se provádí pomocí Azure Active Directory. Další informace najdete v tématu [Integrace aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Kromě toho šifrování sloupce databáze používá Azure Active Directory k ověření aplikace pro Azure SQL Database. Další informace najdete v tématu Jak [chránit citlivá data v Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
-- [Řízení přístupu na základě role v Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) umožňuje správcům definovat jemně odstupňovaná přístupová oprávnění, která jim umožňují udělit jenom přístup, který uživatelé potřebují k provádění svých úloh. Místo udělení oprávnění pro všechny uživatele bez omezení pro prostředky Azure můžou správci pro přístup k datům dovolit jenom určité akce. Přístup k předplatnému je omezený na správce předplatného.
-- [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) zákazníkům umožňuje minimalizovat počet uživatelů, kteří mají přístup k určitým informacím. Správci můžou pomocí Azure Active Directory Privileged Identity Management zjišťovat, omezovat a monitorovat privilegované identity a jejich přístup k prostředkům. Tato funkce se dá v případě potřeby použít taky k prosazování přístupu pro správu za běhu na vyžádání.
-- [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) detekuje potenciální ohrožení zabezpečení, která mají vliv na identity organizace, nakonfigurují automatizované odpovědi na zjištěné podezřelé akce související s identitami organizace a prošetří podezřelé incidenty, které přijmou vhodná opatření k jejich vyřešení.
+- Ověřování pro aplikaci se provádí pomocí Azure Active Directory. Další informace najdete v tématu [Integrace aplikací s Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md). Kromě toho šifrování sloupce databáze používá Azure Active Directory k ověření aplikace pro Azure SQL Database. Další informace najdete v tématu Jak [chránit citlivá data v Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+- [Řízení přístupu na základě role v Azure](../../role-based-access-control/role-assignments-portal.md) umožňuje správcům definovat jemně odstupňovaná přístupová oprávnění, která jim umožňují udělit jenom přístup, který uživatelé potřebují k provádění svých úloh. Místo udělení oprávnění pro všechny uživatele bez omezení pro prostředky Azure můžou správci pro přístup k datům dovolit jenom určité akce. Přístup k předplatnému je omezený na správce předplatného.
+- [Azure Active Directory Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) zákazníkům umožňuje minimalizovat počet uživatelů, kteří mají přístup k určitým informacím. Správci můžou pomocí Azure Active Directory Privileged Identity Management zjišťovat, omezovat a monitorovat privilegované identity a jejich přístup k prostředkům. Tato funkce se dá v případě potřeby použít taky k prosazování přístupu pro správu za běhu na vyžádání.
+- [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) detekuje potenciální ohrožení zabezpečení, která mají vliv na identity organizace, nakonfigurují automatizované odpovědi na zjištěné podezřelé akce související s identitami organizace a prošetří podezřelé incidenty, které přijmou vhodná opatření k jejich vyřešení.
 
 **Ověřování Azure Multi-Factor Authentication**: K ochraně identit by měla být implementována aplikace Multi-Factor Authentication. [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) je snadné použití, škálovatelné a spolehlivé řešení, které poskytuje druhou metodu ověřování pro ochranu uživatelů. Azure Multi-Factor Authentication využívá sílu cloudu a integruje se s místními službami Active Directory a vlastními aplikacemi. Tato ochrana je rozšířená na nejdůležitější scénáře.
 
@@ -175,29 +175,29 @@ Azure Security Center poskytuje prioritní výstrahy zabezpečení a incidenty, 
 **Application Gateway**: Architektura snižuje riziko ohrožení zabezpečení pomocí Application Gateway s bránou firewall webových aplikací a povoleným rulesetem OWASP. Mezi další možnosti patří:
 
 - [End-to-end-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
-- Povolit [přesměrování zpracování SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)
+- Povolit [přesměrování zpracování SSL](../../application-gateway/create-ssl-portal.md)
 - Zakázat [TLS v 1.0 a v 1.1](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
-- [Firewall webových aplikací](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) (režim prevence)
+- [Firewall webových aplikací](../../application-gateway/waf-overview.md) (režim prevence)
 - [Režim prevence](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) s OWASP 3,0 RuleSet
 - Povolit [protokolování diagnostiky](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)
-- [Vlastní sondy stavu](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-gateway-portal)
+- [Vlastní sondy stavu](../../application-gateway/quick-create-portal.md)
 - [Azure Security Center](https://azure.microsoft.com/services/security-center) a [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) poskytují dodatečnou ochranu a oznámení. Azure Security Center také nabízí systém reputace.
 
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 
 Služba Azure výrazně zaznamenává činnost systému a uživatele a také stav systému:
-- **Protokoly aktivit**: [Protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytují přehled o operacích provedených u prostředků v rámci předplatného. Protokoly aktivit můžou přispět k určení iniciátoru operace, času výskytu a stavu.
-- **Diagnostické protokoly**: [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly Azure Storage, Key Vault protokoly auditu a protokoly Application Gateway přístupu a brány firewall. Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage pro účely archivace. Uchovávání dat je uživatelsky konfigurovatelné, až 730 dní, aby se splnily požadavky na uchovávání specifické pro konkrétní organizaci.
+- **Protokoly aktivit**: [Protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md) poskytují přehled o operacích provedených u prostředků v rámci předplatného. Protokoly aktivit můžou přispět k určení iniciátoru operace, času výskytu a stavu.
+- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly Azure Storage, Key Vault protokoly auditu a protokoly Application Gateway přístupu a brány firewall. Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage pro účely archivace. Uchovávání dat je uživatelsky konfigurovatelné, až 730 dní, aby se splnily požadavky na uchovávání specifické pro konkrétní organizaci.
 
 **Protokoly Azure monitor**: Tyto protokoly jsou konsolidovány v [protokolech Azure monitor](https://azure.microsoft.com/services/log-analytics/) pro zpracování, ukládání a vytváření sestav řídicích panelů. Po shromáždění se data organizují do samostatných tabulek pro jednotlivé datové typy, což umožňuje společnou analýzu všech dat bez ohledu na jejich původní zdroj. Kromě toho Azure Security Center integruje s protokoly Azure Monitor a umožňuje zákazníkům používat dotazy Kusto pro přístup k datům událostí zabezpečení a kombinovat je s daty z jiných služeb.
 
-Součástí této architektury jsou tato [řešení monitorování](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) Azure:
--   [Active Directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Řešení kontroly stavu služby Active Directory posuzuje rizika a stav serverových prostředí v pravidelných intervalech a nabízí seznam doporučení specifických pro nasazenou serverovou infrastrukturu.
-- [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Řešení pro kontrolu stavu SQL posuzuje rizika a stav serverových prostředí v pravidelných intervalech a zákazníkům nabízí seznam doporučení specifických pro nasazenou serverovou infrastrukturu.
-- [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Agent Health řešení oznamuje, kolik agentů je nasazeno a jejich geografickou distribuci, a také počet nereagujících agentů a počet agentů, kteří odesílají provozní data.
--   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Řešení Activity Log Analytics pomáhá s analýzou protokolů aktivit Azure napříč všemi předplatnými Azure pro zákazníka.
+Součástí této architektury jsou tato [řešení monitorování](../../monitoring/monitoring-solutions.md) Azure:
+-   [Active Directory Assessment](../../azure-monitor/insights/ad-assessment.md): Řešení kontroly stavu služby Active Directory posuzuje rizika a stav serverových prostředí v pravidelných intervalech a nabízí seznam doporučení specifických pro nasazenou serverovou infrastrukturu.
+- [SQL Assessment](../../azure-monitor/insights/sql-assessment.md): Řešení pro kontrolu stavu SQL posuzuje rizika a stav serverových prostředí v pravidelných intervalech a zákazníkům nabízí seznam doporučení specifických pro nasazenou serverovou infrastrukturu.
+- [Agent Health](../../monitoring/monitoring-solution-agenthealth.md): Agent Health řešení oznamuje, kolik agentů je nasazeno a jejich geografickou distribuci, a také počet nereagujících agentů a počet agentů, kteří odesílají provozní data.
+-   [Activity Log Analytics](../../azure-monitor/platform/collect-activity-logs.md): Řešení Activity Log Analytics pomáhá s analýzou protokolů aktivit Azure napříč všemi předplatnými Azure pro zákazníka.
 
-**Azure Automation**: [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) ukládá, spouští a spravuje Runbooky. V tomto řešení můžou sady Runbook shromažďovat protokoly z Azure SQL Database. Řešení automatizace [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking) zákazníkům umožňuje snadno identifikovat změny v prostředí.
+**Azure Automation**: [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) ukládá, spouští a spravuje Runbooky. V tomto řešení můžou sady Runbook shromažďovat protokoly z Azure SQL Database. Řešení automatizace [Change Tracking](../../automation/change-tracking.md) zákazníkům umožňuje snadno identifikovat změny v prostředí.
 
 **Azure Monitor**: [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) pomáhá uživatelům sledovat výkon, udržovat zabezpečení a identifikovat trendy tím, že umožňují organizacím auditovat, vytvářet výstrahy a archivovat data, včetně sledovacích volání rozhraní API ve svých prostředcích Azure.
 
@@ -237,17 +237,17 @@ Aby bylo možné lépe chránit klasifikovaná data, ať už používáte Intern
 Možnosti konfigurace pro zařízení VPN a parametry protokolu IPSec/IKE jsou [k dispozici](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices) ke kontrole.
 
 ### <a name="azure-active-directory-setup"></a>Instalace Azure Active Directory
-[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) je zásadní pro správu nasazení a zřizování přístupu k pracovníkům, kteří pracují s prostředím. Existující služba Windows Server Active Directory se dá integrovat s Azure Active Directory [čtyřmi kliknutími](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express).
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) je zásadní pro správu nasazení a zřizování přístupu k pracovníkům, kteří pracují s prostředím. Existující služba Windows Server Active Directory se dá integrovat s Azure Active Directory [čtyřmi kliknutími](../../active-directory/hybrid/how-to-connect-install-express.md).
 
-Kromě toho [Azure Active Directory Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) zákazníkům umožňuje nakonfigurovat federaci s místními [Active Directory Federation Services (AD FS)]( https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-azure-adfs) a Azure Active Directory. Pomocí federačního přihlášení můžou zákazníci uživatelům povolit, aby se přihlásili k Azure Active Directory službám pomocí jejich místních hesel a nemuseli zadávat hesla znovu v podnikové síti. Pomocí možnosti federace s Active Directory Federation Services (AD FS) můžete nasadit novou instalaci Active Directory Federation Services (AD FS) nebo můžete zadat existující instalaci v serverové farmě Windows Serveru 2012 R2.
+Kromě toho [Azure Active Directory Connect](../../active-directory/hybrid/whatis-hybrid-identity.md) zákazníkům umožňuje nakonfigurovat federaci s místními [Active Directory Federation Services (AD FS)]( ../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) a Azure Active Directory. Pomocí federačního přihlášení můžou zákazníci uživatelům povolit, aby se přihlásili k Azure Active Directory službám pomocí jejich místních hesel a nemuseli zadávat hesla znovu v podnikové síti. Pomocí možnosti federace s Active Directory Federation Services (AD FS) můžete nasadit novou instalaci Active Directory Federation Services (AD FS) nebo můžete zadat existující instalaci v serverové farmě Windows Serveru 2012 R2.
 
 Aby bylo možné zabránit tomu, aby se klasifikovaná data synchronizovaná s Azure Active Directory, můžou zákazníci omezit atributy, které se replikují do Azure Active Directory pomocí následujících nastavení v Azure Active Directory Connect:
 
-- [Povolit filtrování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-configure-filtering)
-- [Zakázat synchronizaci hodnot hash hesel](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)
+- [Povolit filtrování](../../active-directory/hybrid/how-to-connect-sync-configure-filtering.md)
+- [Zakázat synchronizaci hodnot hash hesel](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)
 -   [Zakázat zpětný zápis hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
--   [Zakázat zpětný zápis zařízení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-feature-device-writeback)
--   Ponechte výchozí nastavení, [](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-prevent-accidental-deletes) aby nedocházelo k náhodným odstraněním a [automatickému upgradu](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-feature-automatic-upgrade) .
+-   [Zakázat zpětný zápis zařízení](../../active-directory/hybrid/how-to-connect-device-writeback.md)
+-   Ponechte výchozí nastavení, [](../../active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes.md) aby nedocházelo k náhodným odstraněním a [automatickému upgradu](../../active-directory/hybrid/how-to-connect-install-automatic-upgrade.md) .
 
 
 ## <a name="disclaimer"></a>Zřeknutí se práv

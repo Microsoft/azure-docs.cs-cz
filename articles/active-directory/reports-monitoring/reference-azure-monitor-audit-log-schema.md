@@ -1,9 +1,9 @@
 ---
-title: Interpretace schéma protokolů auditu Azure Active Directory ve službě Azure Monitor | Dokumentace Microsoftu
-description: Popisují schéma protokolů auditu Azure AD pro použití ve službě Azure Monitor
+title: Interpretace schématu protokolu auditu Azure Active Directory v Azure Monitor | Microsoft Docs
+description: Popis schématu protokolu auditu Azure AD pro použití v Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f75af14e388626a9ebbb54d43079f30dcfdd98a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437069"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987943"
 ---
-# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretace schéma protokolů auditu Azure AD ve službě Azure Monitor (preview)
+# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretace schématu protokolů auditu Azure AD v Azure Monitor (Preview)
 
-Tento článek popisuje schéma protokolů auditu Azure Active Directory (Azure AD) ve službě Azure Monitor. Každý záznam protokolu jednotlivé je uložená jako text a formátovaný jako objekt blob JSON, jak je znázorněno v následující dva příklady: 
+Tento článek popisuje schéma protokolu auditu Azure Active Directory (Azure AD) v Azure Monitor. Jednotlivé položky protokolu se ukládají jako text a naformátují jako objekt BLOB JSON, jak je znázorněno v následujících dvou příkladech: 
 
 ```json
 { 
@@ -151,30 +151,30 @@ Tento článek popisuje schéma protokolů auditu Azure Active Directory (Azure 
 |------------|-------------|
 | time       | Datum a čas (UTC). |
 | operationName | Název operace. |
-| operationVersion | Verze rozhraní REST API, které jsou požadovány klientem. |
-| category | V současné době *auditu* je jediná podporovaná hodnota. |
-| tenantId | Klient identifikátor GUID, který je spojen s protokoly. |
-| resultType | Výsledek operace. Výsledkem může být *úspěch* nebo *selhání*. |
-| resultSignature |  Toto pole není mapován a můžete ho bezpečně ignorovat. | 
+| operationVersion | Verze REST API, kterou klient požaduje. |
+| category | V současné době je jedinou podporovanou hodnotou *audit* . |
+| tenantId | Identifikátor GUID tenanta, který je přidružený k protokolům. |
+| resultType | Výsledek operace. Výsledkem může být *úspěch* nebo neúspěch. |
+| resultSignature |  Toto pole není mapováno a můžete ho bezpečně ignorovat. | 
 | resultDescription | Další popis výsledku, pokud je k dispozici. | 
-| durationMs |  Toto pole není mapován a můžete ho bezpečně ignorovat. |
-| callerIpAddress | IP adresa klienta, který vytvořil požadavek. | 
-| correlationId | Volitelný GUID, který je předán klientem. Může být snazší korelovat operací na straně klienta s operací na straně serveru, a to je užitečné, když sledujete protokoly, které jsou rozmístěny služby. |
-| identity | Identita z tokenu, který byl předložený při provedení žádosti. Identita může být uživatelský účet, účet system nebo instanční objekt služby. |
-| level | Typ zprávy. K protokolům auditu na úrovni je vždy *informativní*. |
-| location | Umístění datového centra. |
-| properties | Obsahuje seznam podporovaných vlastností, které se vztahují k protokolu auditu. Další informace najdete v následující tabulce. | 
+| durationMs |  Toto pole není mapováno a můžete ho bezpečně ignorovat. |
+| callerIpAddress | IP adresa klienta, který odeslal požadavek. | 
+| correlationId | Volitelný identifikátor GUID, který je předán klientem. Může pomoct sladit operace na straně klienta s operacemi na straně serveru, které jsou užitečné při sledování protokolů, které zahrnují služby. |
+| identity | Identita z tokenu, který byl předložen při podání žádosti. Identitou může být uživatelský účet, systémový účet nebo instanční objekt. |
+| level | Typ zprávy Pro protokoly auditu je úroveň vždy *informativní*. |
+| location | Umístění datacentra. |
+| properties | Zobrazuje seznam podporovaných vlastností, které se vztahují k protokolu auditu. Další informace najdete v další tabulce. | 
 
 <br>
 
 | Název vlastnosti | Popis |
 |---------------|-------------|
-| AuditEventCategory | Typ události auditu. Může to být *Správa uživatelů*, *správy aplikací*, nebo jiného typu.|
-| Typ identity | Typ může být *aplikace* nebo *uživatele*. |
-| Typ operace | Typ může být *přidat*, *aktualizace*, *odstranit*. nebo *jiných*. |
-| Typ cílového prostředku | Určuje cílového typu prostředku, který byl v operaci provést. Typ může být *aplikace*, *uživatele*, *Role*, *zásad* | 
-| Název cílového prostředku | Název cílového prostředku. Může být název aplikace, název role, hlavní uživatelské jméno nebo hlavní název služby. |
-| additionalTargets | Uvádí další vlastnosti pro konkrétní operace. Například pro operaci aktualizace staré hodnoty a nové hodnoty patří *targetUpdatedProperties*. | 
+| AuditEventCategory | Typ události auditu. Může to být *Správa uživatelů*, *Správa aplikací*nebo jiný typ.|
+| Typ identity | Typ může být *aplikace* nebo *uživatel*. |
+| Typ operace | Typ lze *Přidat*, *aktualizovat*, *Odstranit*. nebo *jiné*. |
+| Typ cílového prostředku | Určuje cílový typ prostředku, na kterém byla operace provedena. Typem může být *aplikace*, *uživatel*, *role*, *zásady* . | 
+| Název cílového prostředku | Název cílového prostředku. Může to být název aplikace, název role, hlavní název uživatele nebo hlavní název služby. |
+| additionalTargets | Zobrazí seznam všech dalších vlastností pro konkrétní operace. Například pro operaci aktualizace jsou staré hodnoty a nové hodnoty uvedeny v části *targetUpdatedProperties*. | 
 
 ## <a name="next-steps"></a>Další postup
 

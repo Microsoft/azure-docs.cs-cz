@@ -1,6 +1,6 @@
 ---
-title: Vytváření pokročilých pracovních postupů kódování pomocí návrháře postupu provádění | Dokumentace Microsoftu
-description: Další informace o vytváření pokročilých pracovních postupů kódování pomocí návrháře postupu provádění.
+title: Vytváření pokročilých pracovních postupů kódování pomocí Návrhář postupu provádění | Microsoft Docs
+description: Přečtěte si, jak vytvořit pokročilé pracovní postupy kódování pomocí Návrhář postupu provádění.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -13,65 +13,66 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 0ade52d3ae9714f2b370308253e455bcde7ac7a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: anilmur
+ms.reviewer: juliako;johndeu
+ms.openlocfilehash: 246a1461973dba129a5b1d12be8a09703eb99267
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825128"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015975"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění  
 ## <a name="overview"></a>Přehled
-**Návrháře postupu provádění** je nástroj klasické pracovní plochy Windows, který umožňuje navrhovat a vytvářet vlastní pracovní postupy pro kódování pomocí **pracovní postup kodéru Media Encoder Premium**.
-Pomocí power tool Návrháře pracovního postupu můžete navrhovat a vytvářet komplexní pracovní postupy, které se spustí v **Media Encoder Premium**.  
+**Návrhář postupu provádění** je desktopový Nástroj pro Windows, který se používá k návrhu a vytváření vlastních pracovních postupů pro kódování pomocí **Media Encoder Premium Workflow**.
+Pomocí výkonného nástroje pro návrháře pracovních postupů můžete navrhovat a vytvářet komplexní pracovní postupy, které se spustí v **Media Encoderu Premium**.  
 
-Pracovní postupy mohou zahrnovat logiku pro rozhodování o zákazníka a větvení podle vlastnosti vstupní zdrojový soubor. Můžete vytvářet pracovní postupy pomocí přepisovatelné vlastnosti a dynamické hodnoty, které usnadňují opakujte a přizpůsobit v cloudu i nejsložitější kódovacích úloh.
+Pracovní postupy mohou zahrnovat logiku rozhodování o zákaznících a větvení na základě vlastností vstupního zdrojového souboru. Můžete vytvářet pracovní postupy s přepisovatelnými vlastnostmi a dynamickými hodnotami, aby bylo možné i nejsložitější úlohy kódování snadno opakovat a přizpůsobit v cloudu.
 
-Příklady pracovních postupů, které můžete vytvořit patří:
+Mezi ukázkové pracovní postupy, které můžete vytvořit, patří:
 
-* Rozhodování na základě pracovních postupů, které kontrola zdrojový obsah pro řešení a kódování pouze sleduje požadovaný výstup.  To je užitečné odstraněním nevyužité sleduje, které by být generovány neúmyslně upscaling zdrojový obsah.
-* Více vstupních souborů lze použít pro podporu popisků, překrytí a více společně obsah. 
+* Pracovní postupy založené na rozhodnutích, které kontrolují zdrojový obsah pro rozlišení a zakódovat pouze požadované stopy výstupu.  To je užitečné, pokud chcete odstranit odpadní stopy, které by byly vygenerovány při neúmyslném škálování zdrojového obsahu.
+* K podpoře titulků, překryvů a spojování obsahu lze použít více vstupních souborů. 
 
-Tento nástroj lze také změnit libovolné z našich [publikování pracovních postupů](media-services-workflow-designer.md#existing_workflows). 
+Tento nástroj lze také použít k úpravě kteréhokoli z našich [publikovaných pracovních postupů](media-services-workflow-designer.md#existing_workflows). 
 
 > [!NOTE]
-> Pokud chcete získat kopii nástroje Návrhář postupu provádění, obraťte se prosím na mepd@microsoft.com.
+> Pokud chcete získat kopii Návrhář postupu prováděního nástroje, kontaktujte mepd@microsoft.comprosím.
 
-Jakmile se vytvoří soubor pracovního postupu, se dají nahrát, jako prostředek a potom použije pro kódování mediálních souborů. Informace o tom, jak kódovat s **pracovní postup kodéru Media Encoder Premium** pomocí **.NET**, naleznete v tématu [Pokročilé kódování pomocí Media Encoderu Premium Workflow](media-services-encode-with-premium-workflow.md).
+Po vytvoření je soubor pracovního postupu možné ho nahrát jako Asset a pak ho použít k Kódování mediálních souborů. Informace o tom, jak kódovat pomocí **Media Encoder Premium Workflow** pomocí **rozhraní .NET**, najdete v tématu [Rozšířené kódování pomocí Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md).
 
-## <a id="existing_workflows"></a>Úprava stávajících pracovních postupů
-Výchozí hodnota [publikování pracovních postupů](media-services-workflow-designer.md#existing_workflows) může být upraveno pomocí návrháře nástroj. Můžete získat výchozí soubory pracovního postupu [tady](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Složka také obsahuje popis těchto souborů.
+## <a id="existing_workflows"></a>Upravit existující pracovní postupy
+Výchozí [publikované pracovní postupy](media-services-workflow-designer.md#existing_workflows) lze upravit pomocí nástroje návrháře. Výchozí soubory pracovního postupu můžete získat [tady](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Složka obsahuje také popis těchto souborů.
 
-Následující video předvádí způsob použití návrháře.
+Následující videa ukazují, jak používat návrháře.
 
-### <a name="day-1--getting-started"></a>Dne 1 – Začínáme
-1\. den video obsahuje:
+### <a name="day-1--getting-started"></a>Den 1 – Začínáme
+1\. den pokrývá video:
 
-* Přehled Návrháře
+* Přehled návrháře
 * Základní pracovní postupy – "Hello World"
-* Vytvoření několika výstupních souborů MP4 pro použití se službou Azure Media Services streamování
+* Vytváření více výstupních souborů MP4 pro použití s Azure Media Servicesm streamování
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]
 > 
 > 
 
 ### <a name="day-2"></a>2\. den
-2\. den video obsahuje:
+1\. den pokrývá video:
 
-* Různé scénáře zdroje souborů – zpracování zvuku
+* Různé scénáře zdrojového souboru – manipulace se zvukem
 * Pracovní postupy s pokročilou logikou
-* Graf fází
+* Fáze grafu
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-2/player]
 > 
 > 
 
 ### <a name="day-3"></a>Den 3
-Den 3 video obsahuje:
+Video o dni 3 se zabývá:
 
-* Skriptování v rámci služby pracovních postupů a plány
-* Omezení s aktuální kodér
+* Skriptování v rámci pracovních postupů/modrotisky
+* Omezení s aktuálním kodérem
 * FUNKCE Q &AMP; A
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
@@ -86,8 +87,8 @@ Prohlédněte si mapy kurzů k Media Services.
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-Pokud potřebujete podporu, nebo máte otázky k vytváření vlastních pracovních postupů v nástroji Návrhář pracovního postupu, pošlete prosím e-mail na mepd@microsoft.com.
+Pokud potřebujete podporu nebo máte dotazy týkající se vytváření vlastních pracovních postupů v nástroji návrháře pracovních postupů, odešlete e-mail mepd@microsoft.comna adresu.
 
 ## <a name="see-also"></a>Viz také
-[Azure Premium Encoder pracovního postupu návrháře Školicí videa](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
+[Výuková videa pro Azure Premium Encoder Návrhář postupu provádění](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 

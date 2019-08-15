@@ -1,5 +1,5 @@
 ---
-title: Nevýhody Předpověď cen a porovnávání algoritmů
+title: 'Příklad vizuálního rozhraní #3: regrese na ceny a porovnávání algoritmů'
 titleSuffix: Azure Machine Learning service
 description: V tomto článku se dozvíte, jak vytvořit složitý experiment strojového učení bez nutnosti psát jediný řádek kódu pomocí vizuálního rozhraní. Naučte se, jak vytvořit a porovnat více regresních modelů a předpovídat cenu automobilu na základě technických funkcí.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 28af7b814a8d214c3529ecb12ffe25ede78b1cb6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d05a601196ec4a5349a0acb4763098d9716c17f5
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855939"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990008"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Ukázka 2 – regrese: Předpověď cen a porovnávání algoritmů
 
@@ -88,7 +88,7 @@ Oba algoritmy mají v datové sadě školení nižší chybu než v datové sad�
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 315e225eafc4fededcaa998560f4cdf703123aca
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6ef739b61c07dae1631a704a70a3a5543d9d8a3d
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958680"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015602"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Kurz: Vytvoření vlastní image a spuštění v App Service z privátního registru
 
@@ -292,20 +292,20 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Pokud chcet
 
 * [Skript pro zadávání](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/init.sh#L5) SPUSTÍ Server SSH.
 
-      ```bash
-      #!/bin/bash
-      service ssh start
+    ```bash
+    #!/bin/bash
+    service ssh start
     ```
 
-### Open SSH connection to container
+### <a name="open-ssh-connection-to-container"></a>Otevření připojení SSH ke kontejneru
 
-SSH connection is available only through the Kudu site, which is accessible at `https://<app-name>.scm.azurewebsites.net`.
+Připojení SSH je k dispozici pouze prostřednictvím webu Kudu, který je dostupný `https://<app-name>.scm.azurewebsites.net`na adrese.
 
-To connect, browse to `https://<app-name>.scm.azurewebsites.net/webssh/host` and sign in with your Azure account.
+Pokud se chcete připojit, přejděte na adresu `https://<app-name>.scm.azurewebsites.net/webssh/host` a přihlaste se pomocí svého účtu Azure.
 
-You are then redirected to a page displaying an interactive console.
+Pak budete přesměrováni na stránku s interaktivní konzolou.
 
-You may wish to verify that certain applications are running in the container. To inspect the container and verify running processes, issue the `top` command at the prompt.
+Možná budete chtít ověřit, že se v kontejneru spouštějí určité aplikace. Pokud chcete zkontrolovat kontejner a ověřit spuštěné procesy, zadejte na příkazovém řádku příkaz `top`.
 
 ```bash
 top

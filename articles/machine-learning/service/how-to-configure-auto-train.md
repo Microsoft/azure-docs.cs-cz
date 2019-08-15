@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: adca67152c33f4c6a3ec272b63c4c8157a777f36
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856193"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013646"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 
@@ -72,6 +72,11 @@ automl_config = AutoMLConfig(task="classification")
 Automatizované machine learning podporuje data, která se nachází v místním počítači nebo v cloudu, jako je Azure Blob Storage. Data lze načíst do scikit-informace podporovaných datových formátů. Můžete číst data do:
 * Pole Numpy X (funkce) a y (Cílová proměnná nebo také popis)
 * Pandas dataframe
+
+>[!Important]
+> Požadavky na školicí data:
+>* Data musí být v tabulkovém formátu.
+>* Hodnota, kterou chcete odhadnout (cílový sloupec), musí být k dispozici v datech.
 
 Příklady:
 
@@ -563,7 +568,7 @@ RunDetails(automl_run).show()
 
 Další informace o tom, jak je možné povolit vysvětlení modelu a důležitost funkcí v jiných oblastech sady SDK mimo automatizované strojové učení, najdete v [](machine-learning-interpretability-explainability.md) článku konceptu o výkladu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o [jak a kde nasadit model](how-to-deploy-and-where.md).
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: d0e8881607fe4dc84a7d533855dc2b9c48e5366d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: b42313a83be413a9c34a45fca946ea165f8fc9a3
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726192"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967042"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopírování dat z Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -40,7 +40,9 @@ Konkrétně tento konektor Cassandra podporuje:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li kopírovat data z databáze Cassandra, která není veřejně přístupná, je nutné nastavit Integration Runtime v místním prostředí. Další informace najdete v článku [Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí. Integration Runtime poskytuje integrovaný ovladač Cassandra, takže nemusíte při kopírování dat z/do Cassandra ručně instalovat žádné ovladače.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+Integration Runtime poskytuje integrovaný ovladač Cassandra, takže nemusíte při kopírování dat z/do Cassandra ručně instalovat žádné ovladače.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -60,7 +62,7 @@ Pro propojenou službu Cassandra jsou podporovány následující vlastnosti:
 | authenticationType | Typ ověřování, který se používá pro připojení k databázi Cassandra.<br/>Povolené hodnoty jsou: **Basic**a **Anonymous**. |Ano |
 | username |Zadejte uživatelské jméno pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
 | password |Zadejte heslo pro uživatelský účet. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano, pokud je authenticationType nastaveno na Basic. |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!NOTE]
 >V současné době se připojení k Cassandra pomocí protokolu SSL nepodporuje.
@@ -184,7 +186,7 @@ Při kopírování dat z Cassandra se v datových typech Cassandra používají 
 | INET |Řetězec |
 | INT |Int32 |
 | TEXT |Řetězec |
-| TIMESTAMP |Datetime |
+| TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |Řetězec |
@@ -259,5 +261,5 @@ V následujících tabulkách jsou uvedeny virtuální tabulky, které znovu nor
 | 3 |A |
 | 3 |E |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08be09f7bee3aa17ff9d1baae4271e994fa235cb
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248881"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963451"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -50,9 +50,10 @@ Při přístupu ke cloudové aplikaci se můžou použít víc než jedna zásad
 Všechny zásady se vynutily ve dvou fázích:
 
 - V **první** fázi jsou vyhodnoceny všechny zásady a shromažďují se všechny kontroly přístupu, které ještě nejsou splněné. 
-- Ve **druhé** fázi se zobrazí výzva, abyste splnili požadavky, které jste nevyhověli. Pokud některá z těchto zásad blokuje přístup, zablokují se a nezobrazí se výzva k navýšení jiných ovládacích prvků zásad. Pokud vás zablokují zásady, budete vyzváni, abyste naplnili jiné ovládací prvky zásad v tomto pořadí:
 
-   ![Objednání](./media/best-practices/06.png)
+- Ve **druhé** fázi se zobrazí výzva, abyste splnili požadavky, které jste nevyhověli. Pokud některá z těchto zásad blokuje přístup, zablokují se a nezobrazí se výzva k navýšení jiných ovládacích prvků zásad. Pokud vám žádná z těchto zásad neblokuje, budete vyzváni k tomu, abyste naplnili jiné ovládací prvky zásad v tomto pořadí:
+
+   ![Pořadí](./media/best-practices/06.png)
     
    Další poskytovatelé MFA a podmínek použití jsou další.
 

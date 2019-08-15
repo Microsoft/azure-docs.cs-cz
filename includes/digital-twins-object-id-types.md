@@ -5,25 +5,25 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/20/2018
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 40ab53c941a7ac619ebb09d381a4ae0450f26e8b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 94baeb3d459b700cc95d88fb82f995957640aab6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175640"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012089"
 ---
-`objectIdType` (Nebo **identifikátor typu objektu**) odkazuje na typ identity, který je přiřazen k roli. Kromě `DeviceId` a `UserDefinedFunctionId` typy, typy identifikátorů objektu odpovídají vlastnostem objektů v Azure Active Directory.
+(Nebo **typ identifikátoru objektu**) odkazuje na typ identity, který je přidělen roli. `objectIdType` Kromě typů `UserDefinedFunctionId` a typy identifikátorů objektů odpovídají vlastnostem objektů Azure Active Directory. `DeviceId`
 
-Následující tabulka obsahuje typy podporovaných objektů identifikátor v digitální dvojče Azure:
+Následující tabulka obsahuje podporované typy identifikátorů objektů v digitálních autovlákench Azure:
 
-| Type | Popis |
+| type | Popis |
 | --- | --- |
-| UserId | Přiřadí roli uživatele. |
-| DeviceId | Role se přiřadí k zařízení. |
-| DomainName | Přiřadí roli na název domény. Přístupová práva odpovídající roli má každý uživatel pomocí zadaného názvu domény. |
-| TenantId | Přiřadí role tenanta. Každý uživatel, který patří do zadané ID tenanta Azure AD má přístupová práva odpovídající roli. |
-| ServicePrincipalId | Přiřadí identifikátor instanční objekt služby role |
-| UserDefinedFunctionId | Přiřadí roli uživatelem definované funkce (UDF). |
+| UserId | Přiřadí uživateli roli. |
+| DeviceId | Přiřadí k zařízení roli. |
+| DomainName | Přiřadí roli názvu domény. Každý uživatel se zadaným názvem domény má přístupová práva k odpovídající roli. |
+| TenantId | Přiřadí klientovi roli. Každý uživatel, který patří do zadaného ID tenanta služby Azure AD, má přístupová práva odpovídající role. |
+| ServicePrincipalId | Přiřadí roli k ID instančního objektu služby. |
+| UserDefinedFunctionId | Přiřadí roli k uživatelsky definované funkci (UDF). |

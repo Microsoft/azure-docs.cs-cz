@@ -1,26 +1,26 @@
 ---
-title: Doporučení k výkonu ve službě Azure Database pro MariaDB
-description: Tento článek popisuje funkce výkonu doporučení ve službě Azure Database pro MariaDB
+title: Doporučení týkající se výkonu v Azure Database for MariaDB
+description: Tento článek popisuje funkci doporučení výkonu v Azure Database for MariaDB
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a2f9b7597022822272692d20976e1da654b9d524
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: b363a994024b4a53703b6107ef4190129e900547
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462058"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950655"
 ---
-# <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Doporučení k výkonu ve službě Azure Database pro MariaDB
+# <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Doporučení týkající se výkonu v Azure Database for MariaDB
 
-**Platí pro:** Azure Database pro MariaDB 10.2
+**Platí pro:** Azure Database for MariaDB 10,2
 
-> [!NOTE]
-> Doporučení k výkonu je ve verzi preview.
+> [!IMPORTANT]
+> Doporučení k výkonu jsou ve verzi Preview.
 
-Doporučení k výkonu funkce analyzuje vaše databáze pro vytvoření přizpůsobené návrhy pro zlepšení výkonu. K vytvoření doporučení, analýza zjistí různé vlastnosti databáze, včetně schémat. Povolit [Query Store](concepts-query-store.md) na serveru plně využívat funkci doporučení k výkonu. Pokud schéma výkonu je vypnuto, zapnutí Query Store umožňuje performance_schema a podmnožinu výkonu schématu nástroje potřebné pro funkci. Po implementaci jakékoli výkonu doporučení, měli byste otestovat výkon a vyhodnotit její dopad tyto změny.
+Funkce doporučení pro výkon analyzuje vaše databáze a vytváří přizpůsobené návrhy pro zlepšení výkonu. Při vytváření doporučení analyzuje tato analýza různé charakteristiky databáze, včetně schématu. Povolením [úložiště dotazů](concepts-query-store.md) na serveru můžete plně využít funkci doporučení pro výkon. Pokud je schéma výkonu VYPNUTé, zapnutí úložiště dotazů umožní performance_schema a podmnožinu nástrojů schématu výkonu potřebných pro danou funkci. Po implementaci jakéhokoli doporučení výkonu byste měli testovat výkon a vyhodnotit dopad těchto změn.
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -30,26 +30,26 @@ Pro spuštění funkce analýzy za použití funkce Doporučení k výkonu potř
 
 Funkce [Doporučení k výkonu](concepts-performance-recommendations.md) analyzuje úlohy na serveru, aby identifikoval indexy a případně zlepšil výkon.
 
-Otevřít **doporučení k výkonu** z **inteligentní výkonu** části řádku nabídek na stránce portálu Azure pro váš server MariaDB.
+Otevřete **doporučení pro výkon** z části **inteligentní výkon** na panelu nabídek na stránce Azure Portal pro server MariaDB.
 
 ![Úvodní stránka Doporučení k výkonu](./media/concepts-performance-recommendations/performance-recommendations-page.png)
 
-Vyberte **analyzovat** a zvolte databázi, která začne analýza. V závislosti na velikosti pracovní zátěže analýza může trvat několik minut. Po dokončení analýzy se zobrazí oznámení na portálu. Analýza provádí podrobné zkoumání vaší databáze. Doporučujeme že provádět analýzy obdobích mimo špičku.
+Vyberte možnost **analyzovat** a zvolte databázi, která bude začínat analýzou. V závislosti na vašich úlohách může trvat několik minut, než se dokončí analýza. Po dokončení analýzy se zobrazí oznámení na portálu. Analýza provede důkladné přezkoumání vaší databáze. Doporučujeme, abyste provedli analýzu v době mimo špičku.
 
-**Doporučení** okna se zobrazí seznam doporučení, pokud některá a ID související dotaz, který vygeneroval toto doporučení. ID dotazu, můžete použít [mysql.query_store](concepts-query-store.md#mysqlquery_store) zobrazení získat další informace o dotazu.
+V okně **doporučení** se zobrazí seznam doporučení, pokud byla nalezena nějaká a související ID dotazu, které vygenerovalo toto doporučení. S ID dotazu můžete pomocí zobrazení [MySQL. query_store](concepts-query-store.md#mysqlquery_store) získat další informace o dotazu.
 
-![Nová stránka doporučení výkonu](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+![Nová stránka s doporučeními pro výkon](./media/concepts-performance-recommendations/performance-recommendations-result.png)
 
-Doporučení se automaticky nepoužijí. Na jednotlivá doporučení použít, zkopírujte text dotazu a spusťte ze svého klienta podle výběru. Nezapomeňte otestovat a monitorování pro vyhodnocení doporučení.
+Doporučení se nepoužívají automaticky. Pokud chcete doporučení použít, zkopírujte text dotazu a spusťte ho z vašeho klienta podle vlastního výběru. Nezapomeňte otestovat a monitorovat, abyste vyhodnotili doporučení.
 
-## <a name="recommendation-types"></a>Doporučení typy
+## <a name="recommendation-types"></a>Typy doporučení
 
-V současné době pouze *Create Index* doporučení jsou podporovány.
+V současné době se podporují jenom doporučení *Create index* .
 
-### <a name="create-index-recommendations"></a>Vytvoření doporučení indexu
+### <a name="create-index-recommendations"></a>Vytvořit doporučení indexu
 
-*Vytvořit Index* doporučení navrhnout novou indexy pro urychlení nejčastěji spuštění nebo časově náročné dotazů v úloze. Tento typ doporučení vyžaduje [Query Store](concepts-query-store.md) povolit. Query Store shromažďuje informace o dotazu a poskytuje podrobné dotazů modulu runtime a četnost statistické údaje, které využívá analýzy, aby doporučení.
+Doporučení *vytvořit index* návrhy nových indexů vám umožní zrychlit nejčastěji spouštěné nebo časově náročné dotazy v zatížení. Tento typ doporučení vyžaduje, aby [úložiště dotazů](concepts-query-store.md) bylo povolené. Úložiště dotazů shromažďuje informace o dotazech a poskytuje podrobné běhové dotazy a statistické údaje o četnosti, které analýza používá, aby provedla doporučení.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [monitorování a optimalizace](concepts-monitoring.md) ve službě Azure Database pro MariaDB.
+- Přečtěte si další informace o [monitorování a ladění](concepts-monitoring.md) v Azure Database for MariaDB.

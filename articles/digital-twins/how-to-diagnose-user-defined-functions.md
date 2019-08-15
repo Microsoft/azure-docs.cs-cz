@@ -6,15 +6,15 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 08/12/2019
 ms.author: stegaw
 ms.custom: seodec18
-ms.openlocfilehash: 577467a6322b7f6d3cd7f199d80963f2f1a98ed6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 61c3f033fbe3febe7b0d048b247cc1fe8d597698
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849330"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014174"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak ladit uživatelsky definované funkce v digitálních prostředníkech Azure
 
@@ -45,7 +45,7 @@ Chcete-li trasovat telemetrii senzorů, ověřte, zda jsou pro instanci digitál
 
 Pokud chcete, aby se zpráva telemetrie senzorů shodovala s příslušnými protokoly, můžete pro odesílaná data události zadat ID korelace. Provedete to tak, `x-ms-client-request-id` že nastavíte vlastnost na identifikátor GUID.
 
-Po odeslání telemetrie otevřete Log Analytics pro dotaz na protokoly pomocí nastavení ID korelace:
+Po odeslání telemetrie otevřete Azure Monitor Log Analytics a Dotazujte se na protokoly pomocí nastavení ID korelace:
 
 ```Kusto
 AzureDiagnostics

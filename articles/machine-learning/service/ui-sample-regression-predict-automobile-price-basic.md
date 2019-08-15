@@ -1,5 +1,5 @@
 ---
-title: Nevýhody Predikce ceny
+title: 'Příklad vizuálního rozhraní #1: regrese pro předpověď ceny'
 titleSuffix: Azure Machine Learning service
 description: Naučte se vytvářet model strojového učení pro předpověď ceny automobilu bez nutnosti psát jediný řádek kódu.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 95373bdd58332f49307004067cdd04b9c313b935
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0c86955e0b10111bf9b6db0d884b73867a4467c5
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845939"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990411"
 ---
 # <a name="sample-1---regression-predict-price"></a>Ukázka 1 – regrese: Predikce ceny
 

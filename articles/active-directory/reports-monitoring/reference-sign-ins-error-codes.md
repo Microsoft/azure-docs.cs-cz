@@ -3,7 +3,7 @@ title: Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active D
 description: Referenční informace ke kódům chyb v sestavě aktivit přihlašování.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 08/08/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbaa8f22335da083506a76ad1a791576b109a00
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4c5f7e45a1e1daa5d8504db2506a79e88c28bcc1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879774"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989596"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestav aktivit přihlašování 
 
@@ -188,7 +188,7 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |7000218|Tělo žádosti musí obsahovat následující parametr: ' client_assertion ' nebo ' client_secret '.|
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přehled sestav přihlášení](concept-sign-ins.md)
 * [Programový přístup k sestavám Azure AD](concept-reporting-api.md)

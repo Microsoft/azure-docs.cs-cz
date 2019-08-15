@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: eece1520a4b7e3bf37e1d209c58b5019921fdb98
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 7591cefddd6e7217c885293a2f5c878d7a82e158
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884382"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015929"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -155,7 +155,7 @@ Nové sdílené složky začínají úplným počtem kreditů v rámci svého sh
 
 ## <a name="file-share-redundancy"></a>Redundance sdílení souborů
 
-Služba soubory Azure standard pro sdílení podporuje tři možnosti redundance dat: místně redundantní úložiště (LRS), zónu redundantního úložiště (ZRS) a geograficky redundantní úložiště (GRS).
+Standardní sdílené složky Azure Files podporují tři možnosti redundance dat: místně redundantní úložiště (LRS), zóna redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště (GZRS) (Preview).
 
 Sdílené složky Azure Files Premium podporují jenom místně redundantní úložiště (LRS).
 
@@ -186,6 +186,7 @@ Primární i sekundární oblasti spravují repliky v různých doménách selh�
 
 Při rozhodování o tom, kterou možnost replikace použít, pamatujte na tyto body:
 
+* Geografická zóna – redundantní úložiště (GZRS) (Preview) poskytuje vysokou dostupnost společně s maximální odolností tím, že replikuje data synchronně na třech zónách dostupnosti Azure a pak asynchronně replikuje data do sekundární oblasti. Můžete také povolit přístup pro čtení do sekundární oblasti. GZRS je navržený tak, aby poskytoval alespoň 99.99999999999999% (16 9) odolnosti objektů v průběhu daného roku. Další informace o GZRS najdete v článku [geograficky redundantní úložiště pro vysokou dostupnost a maximální trvanlivost (Preview)](../common/storage-redundancy-gzrs.md).
 * Zóna – redundantní úložiště (ZRS) poskytuje vysokou dostupnost díky synchronní replikaci a může být lepší volbou pro některé scénáře než GRS. Další informace o ZRS najdete v tématu [ZRS](../common/storage-redundancy-zrs.md).
 * Asynchronní replikace zahrnuje zpoždění od okamžiku, kdy jsou data zapsána do primární oblasti, při replikaci do sekundární oblasti. V případě regionálních havárií může dojít ke ztrátě změn, které ještě nebyly replikovány do sekundární oblasti, pokud tato data nebude možné obnovit z primární oblasti.
 * V GRS není tato replika k dispozici pro přístup pro čtení nebo zápis, pokud společnost Microsoft neinicializuje převzetí služeb při selhání sekundární oblastí. V případě převzetí služeb při selhání budete mít k datům přístup pro čtení a zápis po dokončení převzetí služeb při selhání. Další informace najdete v tématu [pokyny pro zotavení po havárii](../common/storage-disaster-recovery-guidance.md).
@@ -198,7 +199,7 @@ Tato část se vztahuje pouze na standardní sdílené složky. Všechny soubory
 
 - [Podmínky](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Azure Preview platí pro velké sdílené složky ve verzi Preview, včetně při použití s nasazeními Azure File Sync.
 - Vyžaduje vytvoření nového účtu úložiště pro obecné účely (nemůže rozbalit existující účty úložiště).
-- Převod účtů LRS/ZRS na GRS nebude možné provést na žádném novém účtu úložiště vytvořeném po přijetí předplatného ve větší verzi Preview sdílení souborů.
+- Převod účtu LRS/ZRS na GRS/GZRS nebude možné na žádném novém účtu úložiště vytvořeném po přijetí předplatného ve větším počtu sdílených složek ve verzi Preview.
 
 
 ### <a name="regional-availability"></a>Regionální dostupnost
@@ -214,7 +215,7 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB.
 |Západní Evropa     |LRS, ZRS|Ne    |Ano|
 |USA – západ 2       |LRS, ZRS|Ne    |Ano|
 
-\* Pro oblasti bez podpory portálu můžete i nadále používat PowerShell nebo rozhraní příkazového řádku Azure (CLI) k vytvoření většího než 5 TiB sdílených složek. Altenatively vytvořte novou sdílenou složku prostřednictvím portálu bez určení kvóty. Tím se vytvoří sdílená složka s výchozí velikostí 100 TiB, která se dá později aktualizovat prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI.
+\* Pro oblasti bez podpory portálu můžete i nadále používat PowerShell nebo rozhraní příkazového řádku Azure (CLI) k vytvoření většího než 5 TiB sdílených složek. Případně můžete vytvořit novou sdílenou složku prostřednictvím portálu bez určení kvóty. Tím se vytvoří sdílená složka s výchozí velikostí 100 TiB, která se dá později aktualizovat prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
 Abychom vám pomohli upřednostnit nové oblasti a funkce, vyplňte prosím tento [průzkum](https://aka.ms/azurefilesatscalesurvey).
 
