@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI sfctl uzly | Dokumentace Microsoftu
-description: Popisuje příkazy Service Fabric CLI sfctl uzlu.
+title: Azure Service Fabric CLI – uzel sfctl | Microsoft Docs
+description: Popisuje příkazy Service Fabric CLI sfctl Node.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 1e5b5876fa6277d1bad0989c543de667f75a066c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d41f978dd6a87287d8743e321acf35ff4909544
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258732"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034976"
 ---
 # <a name="sfctl-node"></a>sfctl node
 Spravujte uzly, které tvoří cluster.
@@ -28,85 +27,85 @@ Spravujte uzly, které tvoří cluster.
 
 |Příkaz|Popis|
 | --- | --- |
-| Zakázat | Deaktivujte uzel clusteru Service Fabric se zadaným deaktivaci záměr. |
-| Povolit | Aktivujte uzel clusteru Service Fabric, která je právě deaktivována. |
-| health | Získá stav uzlu Service Fabricu. |
+| zakázat | Deaktivuje uzel clusteru Service Fabric se zadaným záměrem deaktivace. |
+| povolit | Aktivujte uzel clusteru Service Fabric, který je v tuto chvíli deaktivovaný. |
+| health | Získá stav uzlu Service Fabric. |
 | info | Získá informace o konkrétním uzlu v clusteru Service Fabric. |
-| list | Získá seznam uzlů v clusteru Service Fabric. |
+| list | Načte seznam uzlů v clusteru Service Fabric. |
 | load | Získá informace o načtení uzlu Service Fabric. |
-| remove-state | Service Fabric oznámí, že trvalého stavu na uzlu trvale odstraněn nebo ztráty. |
+| odebrat – stav | Upozorňuje Service Fabric, že trvalý stav na uzlu se trvale odebral nebo ztratil. |
 | report-health | Odešle zprávu o stavu na uzlu Service Fabric. |
-| restart | Restartování uzlu clusteru Service Fabric. |
-| Přechod | Spuštění nebo zastavení uzlu clusteru. |
-| transition-status | Získá průběh operace začít používat StartNodeTransition. |
+| restart | Restartuje uzel clusteru Service Fabric. |
+| Přejít | Spustí nebo zastaví uzel clusteru. |
+| přechod – stav | Získá průběh operace zahájené s použitím StartNodeTransition. |
 
-## <a name="sfctl-node-disable"></a>zakázat uzel sfctl
-Deaktivujte uzel clusteru Service Fabric se zadaným deaktivaci záměr.
+## <a name="sfctl-node-disable"></a>zakázaný uzel sfctl
+Deaktivuje uzel clusteru Service Fabric se zadaným záměrem deaktivace.
 
-Deaktivujte uzel clusteru Service Fabric se zadaným deaktivaci záměr. Po deaktivaci právě probíhá, záměrem deaktivovat lze zvýšit, ale ne snížit (například uzel, který je deaktivováno se záměrem pozastavit může být dále deaktivované Restart, ale ne naopak. Uzly mohou znovu aktivovat pomocí aktivovat uzel operace kdykoli po se deaktivuje. Pokud deaktivaci není kompletní, tato akce zruší deaktivaci. Uzel, který ocitne mimo provoz a uvede do provozu při deaktivaci se stále potřeba znovu aktivovat před služby budou umístěny na tomto uzlu.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --[povinný] název uzlu | Název uzlu. |
-| --deactivation-intent | Popisuje záměr nebo důvod deaktivace uzlu. Možné hodnoty jsou následující. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
-
-## <a name="sfctl-node-enable"></a>sfctl uzlu povolit
-Aktivujte uzel clusteru Service Fabric, která je právě deaktivována.
-
-Aktivuje uzel clusteru Service Fabric, která je právě deaktivována. Po aktivaci uzlu se znovu stane přijatelné cíl pro uvedení nové repliky a případné deaktivované repliky zbývající na uzlu se znovu aktivovat.
+Deaktivuje uzel clusteru Service Fabric se zadaným záměrem deaktivace. Po deaktivaci lze záměr deaktivace zvýšit, ale ne snížit (například uzel, který je deaktivován s cílem pozastavit, může být dále po restartu dezaktivován, ale nikoli jiným způsobem. Uzly mohou být znovu aktivovány pomocí operace aktivovat uzel kdykoli po jejich deaktivaci. Pokud se deaktivace nedokončí, zrušení deaktivace se zruší. Uzel, který se rozpíná a v rámci kterého se má vrátit, se před tím, než se služby umístí na tento uzel, bude stále potřeba znovu aktivovat.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --[povinný] název uzlu | Název uzlu. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Node-Name [povinné] | Název uzlu. |
+| --deaktivace – záměr | Popisuje záměr nebo důvod deaktivace uzlu. Možné hodnoty jsou následující. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-node-enable"></a>Povolit uzel sfctl
+Aktivujte uzel clusteru Service Fabric, který je v tuto chvíli deaktivovaný.
+
+Aktivuje uzel clusteru Service Fabric, který je v tuto chvíli deaktivovaný. Po aktivaci se uzel znovu stane životaschopným cílem pro umístění nových replik a všechny deaktivované repliky na uzlu se znovu aktivují.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --Node-Name [povinné] | Název uzlu. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-node-health"></a>stav uzlu sfctl
-Získá stav uzlu Service Fabricu.
+Získá stav uzlu Service Fabric.
 
-Získá stav uzlu Service Fabricu. EventsHealthStateFilter použijte k filtrování kolekce událostí stavu hlášené pro uzel podle stavu. Pokud uzel, který určíte podle názvu v health store neexistuje, vrátí chybu.
+Získá stav uzlu Service Fabric. Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlášených na uzlu na základě stavu. Pokud uzel, který určíte podle názvu, v Health Store neexistuje, vrátí se chyba.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --[povinný] název uzlu | Název uzlu. |
-| --events-health-state-filter | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Node-Name [povinné] | Název uzlu. |
+| --events-health-state-filter | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-node-info"></a>informace o uzlu sfctl
 Získá informace o konkrétním uzlu v clusteru Service Fabric.
@@ -117,21 +116,21 @@ Odpověď obsahuje název, stav, ID, stav, dobu provozu a další podrobnosti o 
 
 |Argument|Popis|
 | --- | --- |
-| --[povinný] název uzlu | Název uzlu. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Node-Name [povinné] | Název uzlu. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-node-list"></a>seznam uzlů sfctl
-Získá seznam uzlů v clusteru Service Fabric.
+Načte seznam uzlů v clusteru Service Fabric.
 
 Odpověď obsahuje název, stav, ID, stav, dobu provozu a další podrobnosti o uzlech.
 
@@ -139,171 +138,171 @@ Odpověď obsahuje název, stav, ID, stav, dobu provozu a další podrobnosti o 
 
 |Argument|Popis|
 | --- | --- |
-| --token pro pokračování | Parametr tokenu pokračování slouží k získání další sadu výsledků. Token pro pokračování se neprázdná hodnota je zahrnutý v odpovědi rozhraní API, když výsledky ze systému se nevejdou do odpověď o jedné. Když je tato hodnota předána na další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak pokračovací token neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódování URL. |
-| --max-results | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
-| --node-status-filter | Umožňuje filtrování podle NodeStatus uzly. Vrátí se pouze uzly, které se odpovídající hodnota zadaného filtru. Hodnota filtru může být jedna z následujících akcí.  Výchozí\: výchozí. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
+| --Max – výsledky | Maximální počet výsledků, které mají být vráceny v rámci stránkovaných dotazů. Tento parametr definuje horní mez počtu vrácených výsledků. Vrácené výsledky mohou být menší než zadané maximální výsledky, pokud se nevejdou do zprávy podle maximální velikosti omezení velikosti zprávy definované v konfiguraci. Pokud je tento parametr nula nebo není zadán, dotaz stránkovaného obsahu obsahuje tolik výsledků, kolik jich bylo možné do návratové zprávy. |
+| --Node-status-Filter | Umožňuje filtrovat uzly na základě NodeStatus. Vrátí se pouze uzly, které odpovídají zadané hodnotě filtru. Hodnota filtru může být jedna z následujících.  Výchozí\: výchozí hodnota. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-node-load"></a>sfctl uzlu zatížení
+## <a name="sfctl-node-load"></a>zatížení uzlu sfctl
 Získá informace o načtení uzlu Service Fabric.
 
-Načte informace o načtení uzlu Service Fabric pro všechny metriky, které mají zatížení nebo definované kapacity.
+Načte informace o načtení uzlu Service Fabric pro všechny metriky, které mají definovanou zátěž nebo kapacitu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --[povinný] název uzlu | Název uzlu. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Node-Name [povinné] | Název uzlu. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-node-remove-state"></a>sfctl remove stav uzlu
-Service Fabric oznámí, že trvalého stavu na uzlu trvale odstraněn nebo ztráty.
+## <a name="sfctl-node-remove-state"></a>sfctl uzel-stav odebrání
+Upozorňuje Service Fabric, že trvalý stav na uzlu se trvale odebral nebo ztratil.
 
-Z toho vyplývá, že není možné obnovit trvalý stav tohoto uzlu. Obvykle k tomu dojde, pokud pevném disku bylo vymazáno čistý, nebo pokud dojde k chybě na pevný disk. Uzel musí být mimo provoz pro tuto operaci k dosažení úspěchu. Tato operace umožňuje vědět, že repliky v daném uzlu už neexistuje a v daných prostředcích služby by se měla zastavit čeká na tyto repliky k téhle akci vrátit Service Fabric. Tato rutina nespustí, pokud není odebraná stavu na uzlu a uzel můžete přijít zpět beze změny stavu.
+To znamená, že není možné obnovit trvalý stav tohoto uzlu. K tomu obvykle dochází v případě, že byl pevný disk vymazán nebo pokud dojde k chybě pevného disku. Aby tato operace proběhla úspěšně, musí být uzel vypnutý. Tato operace umožňuje Service Fabric zjistit, že repliky na tomto uzlu již neexistují a že Service Fabric by se měla zastavit, aby se tyto repliky staly zálohovat. Nespouštějte tuto rutinu, pokud se stav uzlu neodebral a uzel se může vrátit se stavem beze změny.
 
-Počínaje Service Fabric 6.5, aby bylo možné tuto rutinu použít pro počáteční uzly. Zadejte prosím počáteční uzly regulární uzly (mimo počáteční hodnota) a pak vyvolejte Tato rutina pro odebrání stav uzlu. Pokud cluster běží v Azure, po počáteční uzel ocitne mimo provoz, Service Fabric se pokusí automaticky ho změnit na uzlu – počáteční hodnota. Aby to chcete udělat, ujistěte se, zkontrolujte počet uzlů – počáteční hodnota v primární typ uzlu je menší než počet dolů počáteční uzly. V případě potřeby přidejte více uzlů do primární typ uzlu dosáhnout. Samostatný cluster, pokud uzel počáteční hodnoty seznamu se neočekává a navrhněte zpět beze změny stavu, prosím odebrat uzel z clusteru najdete v tématu [odebrat uzly ze samostatného clusteru Service Fabric](/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes) 
+Od Service Fabric 6,5, aby bylo možné použít tuto rutinu pro uzly počáteční hodnoty, změňte počáteční uzly na běžné (nepočáteční) uzly a poté tuto rutinu vyvolejte k odebrání stavu uzlu. Pokud je cluster spuštěn v Azure, poté, co se dokončí uzel počáteční hodnoty, Service Fabric se pokusí ho změnit na nepočáteční uzel automaticky. Aby k tomu docházelo, ujistěte se, že počet nepočátečních uzlů v primárním uzlu je nižší než počet počátečních uzlů. V případě potřeby přidejte k primárnímu typu uzlu další uzly, abyste to dosáhli. U samostatného clusteru platí, že pokud se neočekává, že se uzel dokončí s nezměněným stavem, odeberte prosím uzel z clusteru. Další informace najdete v tématu [Odebrání uzlů z Service Fabric samostatného clusteru](/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes) . 
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --[povinný] název uzlu | Název uzlu. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Node-Name [povinné] | Název uzlu. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-node-report-health"></a>Stav sestavy uzlu sfctl
+## <a name="sfctl-node-report-health"></a>Sestava uzlu sfctl – stav
 Odešle zprávu o stavu na uzlu Service Fabric.
 
-Sestavy stav určeného uzlu Service Fabric. Sestava může obsahovat informace o zdroji sestava stavu a na kterém je uvedena vlastnost. Sestava je odeslána do Service Fabric uzel brány, která je směruje k úložišti stavů. Sestava může být přijal brány, ale odmítnuté úložiště stavu po další ověření. Úložiště stavu může třeba odmítnout sestavy z důvodu neplatného parametru, jako jsou zastaralé pořadové číslo. Pokud chcete zobrazit, zda byla použita sestava v health store, zkontrolujte, že sestava se zobrazí v části HealthEvents.
+Hlásí stav zadaného uzlu Service Fabric. Sestava musí obsahovat informace o zdroji sestavy stavu a vlastnosti, na které je hlášena. Sestava se odešle do uzlu Service Fabric brány, který se přepošle na Health Store. Tuto sestavu může přijmout brána, ale Health Store po dodatečném ověření odmítnuta. Health Store například může zprávu odmítat z důvodu neplatného parametru, jako je například zastaralé pořadové číslo. Chcete-li zjistit, zda byla sestava použita v Health Store, zkontrolujte, zda se sestava zobrazuje v části HealthEvents.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – Stav – vlastnost [povinné] | Vlastnost s informacemi o stavu. <br><br> Entita může mít sestav o stavu pro různé vlastnosti. Vlastnost je řetězec a oprava výčet umožňují flexibilní reportérka ke kategorizaci podmínku stavu, který spouští sestavu. Například reportérka s ID zdroje "LocalWatchdog" můžete monitorovat stav disku v uzlu, tak ho může hlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné reportérka můžete monitorovat připojení uzlu, takže ho může hlásit vlastnost "Připojení" ve stejném uzlu. V health store tyto sestavy jsou považovány za události samostatné stavu pro zadaný uzel. Spolu s ID zdroje vlastnost jednoznačně identifikuje informací o stavu. |
-| – Stav [povinné] | Možné hodnoty zahrnují\: "Neplatný", "Ok", "Upozorňující", "Chyba", "Neznámý". |
-| --[povinný] název uzlu | Název uzlu. |
-| – id zdroje [povinné] | Název zdroje, který identifikuje klienta/sledovacího zařízení/systémové součásti, které vygenerovalo informací o stavu. |
-| – Popis | Popis informací o stavu. <br><br> Představuje libovolný text pro přidání lidské čitelné informace o sestavě. Maximální délka řetězce popis je 4096 znaků. Pokud zadaný řetězec je delší, bude automaticky zkrácen. Při zkráceno, poslední znaky popis obsahovat značky "[zkrátila]" a celkový počet řetězec velikost je 4 096 znaků. Výskyt značky určuje uživatelům této zkrácení došlo k chybě. Všimněte si, že při zkráceno, popis má menší než 4096 znaků z původního řetězce. |
-| --okamžité | Příznak, který udává, zda sestavy by měl být odesílány okamžitě. <br><br> Sestava stavu posílá do Service Fabric gateway aplikace, který se předává k úložišti stavů. Pokud okamžité nastavená na hodnotu true, zpráva se odešle okamžitě ze brána protokolu HTTP k úložišti stavů, bez ohledu na nastavení klienta fabric, které používá brána aplikace HTTP. To je užitečné pro kritické zprávy, které by měly být odeslány co nejdříve. V závislosti na načasování a jiných podmínek odesílat sestavy může stále nezdaří, pokud bránu HTTP je uzavřený nebo zprávy nelze navázat spojení s bránou. Okamžité je nastavený na hodnotu false, sestava se odesílá podle nastavení stavu klienta ze brána protokolu HTTP. Proto bude možné dávce závislosti na konfiguraci HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje stavu klienta k optimalizaci zdraví, vytváření sestav zprávy k úložišti stavů, stejně jako zpracování sestavy stavu. Ve výchozím nastavení nejsou odesílány sestavy okamžitě. |
-| – vypršela platnost odebrat v případě | Hodnota, která označuje, zda sestava se odebere z health store, když jeho platnost vyprší. <br><br> Je-li nastavena hodnota true, sestava se odebere z health store po vypršení její platnosti. Pokud je nastaven na hodnotu false, sestava je považováno za chybu, pokud vypršela platnost. Hodnota této vlastnosti je ve výchozím nastavení hodnotu false. Když klienti pravidelně hlásit, nastavují by měl RemoveWhenExpired false (výchozí). Tímto způsobem je osoby podávající hlášení dochází k problémům (například zablokování) a nemůže oznamovat entity je vyhodnocena v chybě, když vyprší platnost sestava stavu. Označí entitu jako patřící do chybového stavu. |
-| --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Pořadové číslo sestav se používá v úložišti stavů ke zjišťování zastaralých sestavy. Pokud není zadán, je číslo sekvence automaticky generované klientem stavu při přidání sestavy. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
+| --Health-vlastnost [required] | Vlastnost informací o stavu. <br><br> Entita může mít sestavy o stavu pro různé vlastnosti. Vlastnost je řetězec, nikoli pevný výčet, který umožňuje, aby se v zpravodaji mohla pružně roztřídit stav stavu, který aktivuje sestavu. Například zpravodaj s SourceId "LocalWatchdog" může monitorovat stav dostupného disku v uzlu, takže může ohlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné zpravodajky můžou monitorovat připojení uzlu, takže může nahlásit vlastnost "připojení" na stejném uzlu. V Health Store jsou tyto sestavy zpracovány jako samostatné události stavu pro zadaný uzel. Společně s ID zdroje (SourceId) vlastnost jednoznačně identifikuje informace o stavu. |
+| --Health-State [povinné] | Možné hodnoty zahrnují\: "Invalid", "OK", "Warning", "Error", "unknown". |
+| --Node-Name [povinné] | Název uzlu. |
+| --Source-ID [povinné] | Název zdroje, který identifikuje součást klienta/sledovacího zařízení/systému, která vygenerovala informace o stavu. |
+| --Description | Popis informací o stavu. <br><br> Představuje bezplatný text, který se používá k přidání lidských čitelných informací o sestavě. Maximální délka řetězce pro popis je 4096 znaků. Pokud je zadaný řetězec delší, automaticky se zkrátí. Při zkrácení obsahují poslední znaky popisu značku "[zkrácené]" a celková velikost řetězce je 4096 znaků. Přítomnost značky indikuje uživatelům, kterým došlo ke zkrácení. Všimněte si, že při zkrácení má popis méně než 4096 znaků z původního řetězce. |
+| --Immediate | Příznak, který označuje, zda má být sestava odeslána okamžitě. <br><br> Do aplikace Service Fabric Gateway se pošle zpráva o stavu, která se přepošle na Health Store. Pokud je vlastnost Immediate nastavená na hodnotu true, pošle se z brány HTTP na Health Store zprávu hned, a to bez ohledu na nastavení klienta prostředků infrastruktury, které používá aplikace brány HTTP. To je užitečné pro kritické sestavy, které by se měly odesílat co nejdříve. V závislosti na časování a dalších podmínkách může odeslání sestavy dál selhat, například pokud je brána HTTP uzavřená nebo zpráva nemá přístup k bráně. Pokud je vlastnost Immediate nastavená na false, pošle se sestava na základě nastavení klienta stavu z brány HTTP. Proto se bude provádět dávkování podle konfigurace HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje klientovi stavu optimalizovat zprávy o stavu, které se mají Health Store, i zpracování sestavy o stavu. Ve výchozím nastavení se zprávy neodesílají okamžitě. |
+| --Remove-when-vypršela platnost | Hodnota, která označuje, zda je sestava odebrána z Health Store v případě jejího platnosti. <br><br> Pokud je nastavená hodnota true, sestava se po vypršení platnosti odebere z Health Store. Pokud je nastavena hodnota false, bude sestava považována za chybu, pokud vypršela její platnost. Hodnota této vlastnosti je ve výchozím nastavení false. Při pravidelné sestavě klientů by měly být nastavené RemoveWhenExpired na hodnotu false (výchozí). Tímto způsobem má zpravodaj problémy (například zablokování) a nemůže hlásit, entita je vyhodnocena při vypršení platnosti sestavy stavu. Tím se označí entita jako v chybovém stavu. |
+| --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Číslo sekvence sestavy používá Health Store ke zjišťování zastaralých sestav. Není-li tento parametr zadán, je číslo sekvence automaticky generováno klientem stavu při přidání sestavy. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --ttl | Doba, po kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 k zadání doby trvání. <br><br> Při pravidelné sestavě klientů by měly odesílat sestavy s vyšší frekvencí, než je čas do provozu. Pokud klienti hlásí přechod, můžou nastavit čas na živého na nekonečné. Po vypršení časového limitu životnosti události stavu, která obsahuje informace o stavu, se buď odeberou z Health Store, pokud je RemoveWhenExpired true, nebo se vyhodnotí při chybě, pokud RemoveWhenExpired false. Pokud není zadaný, hodnota TTL (Time to Live) nastaví nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-node-restart"></a>sfctl restartování uzlu
-Restartování uzlu clusteru Service Fabric.
+## <a name="sfctl-node-restart"></a>restart uzlu sfctl
+Restartuje uzel clusteru Service Fabric.
 
-Restartování uzlu clusteru Service Fabric, která je již spuštěna.
+Restartuje uzel neService Fabricho clusteru, který je už spuštěný.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --[povinný] název uzlu | Název uzlu. |
-| --create-fabric-dump | Zadejte hodnotu PRAVDA, chcete-li vytvořit výpis procesu uzel fabric. Toto je velká a malá písmena.  Výchozí\: hodnotu False. |
-| – id instance uzlu | ID instance cílový uzel. Pokud je zadané instance ID uzel se restartuje jenom v případě, že se shoduje s aktuální instancí uzlu. Výchozí hodnotu "0" odpovídají žádné ID instance. Instance ID lze zjistit pomocí dotazu get uzlu.  Výchozí\: 0. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Node-Name [povinné] | Název uzlu. |
+| --create-fabric-dump | Pokud chcete vytvořit výpis procesu uzlu Fabric, zadejte hodnotu true. Rozlišují se malá a velká písmena.  Výchozí\: hodnota je false. |
+| --Node-instance-ID | ID instance cílového uzlu Je-li zadán parametr ID instance, bude uzel restartován pouze v případě, že odpovídá aktuální instanci uzlu. Výchozí hodnota "0" by odpovídala jakémukoli ID instance. ID instance se dá získat pomocí dotazu Get Node.  Výchozí\: hodnota 0. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-node-transition"></a>sfctl pro přechod uzlů
-Spuštění nebo zastavení uzlu clusteru.
+## <a name="sfctl-node-transition"></a>přechod uzlu sfctl
+Spustí nebo zastaví uzel clusteru.
 
-Spuštění nebo zastavení uzlu clusteru.  Uzel clusteru je proces, ne samotné instanci operačního systému.  Pro spuštění uzlu, předejte pro parametr NodeTransitionType v "Start". Zastavit uzel, předejte "Stop" pro parametr NodeTransitionType. Toto rozhraní API začíná operace – rozhraní API vrátí že uzlu nemusí dokončení ještě přechod. Volání GetNodeTransitionProgress s stejným OperationId zobrazíte průběh operace.
+Spustí nebo zastaví uzel clusteru.  Uzel clusteru je proces, nikoli samotná instance operačního systému.  Chcete-li spustit uzel, předejte "Start" parametru NodeTransitionType. Chcete-li zastavit uzel, předejte "Stop" parametru NodeTransitionType. Toto rozhraní API spustí operaci – když rozhraní API vrátí uzel, možná se ještě nedokončil přechod. K získání průběhu operace zavolejte GetNodeTransitionProgress se stejným OperationId.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| ---instance-id uzlu [povinné] | ID instance uzlu cílový uzel. To se dá určit pomocí GetNodeInfo rozhraní API. |
-| --[povinný] název uzlu | Název uzlu. |
-| --uzlu přechodu – typ [povinné] | Určuje typ přechodu k provedení.  NodeTransitionType.Start Spustí zastavené uzlu. NodeTransitionType.Stop přestane uzel, který je v provozu. |
-| – id operace [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  To je předán do odpovídajícího GetProgress rozhraní API. |
-| --stop-doba trvání v sekund [povinné] | Doba trvání v sekundách, aby uzel zastavena.  Minimální hodnota 600, maximální délka je 14400.  Po tuto dobu vypršení platnosti, uzel se automaticky vytvoří zpět. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Node-instance-ID [povinné] | ID instance uzlu cílového uzlu. To lze určit prostřednictvím rozhraní GetNodeInfo API. |
+| --Node-Name [povinné] | Název uzlu. |
+| --Node-přechod-typ [povinné] | Určuje typ přechodu, který má být proveden.  NodeTransitionType. Start spustí zastavený uzel. NodeTransitionType. stop zastaví uzel, který je nahoru. |
+| --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
+| --stop-doba trvání-sekund [požadováno] | Doba v sekundách, po kterou se uzel zastavil.  Minimální hodnota je 600, maximální hodnota je 14400.  Po uplynutí této doby bude uzel automaticky zálohován. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-node-transition-status"></a>sfctl uzlu přechod stavu
-Získá průběh operace začít používat StartNodeTransition.
+## <a name="sfctl-node-transition-status"></a>přechod uzlu sfctl – stav
+Získá průběh operace zahájené s použitím StartNodeTransition.
 
-Získá průběh operace začít StartNodeTransition pomocí zadané ID operace.
+Získá průběh operace zahájené s StartNodeTransition pomocí poskytnutého OperationId.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --[povinný] název uzlu | Název uzlu. |
-| – id operace [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  To je předán do odpovídajícího GetProgress rozhraní API. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Node-Name [povinné] | Název uzlu. |
+| --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další postup
-- [Instalační program](service-fabric-cli.md) příkazového řádku Service Fabric.
-- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

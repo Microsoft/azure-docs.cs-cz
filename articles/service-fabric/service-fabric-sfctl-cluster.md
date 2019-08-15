@@ -1,6 +1,6 @@
 ---
-title: Cluster Azure Service Fabric CLI - sfctl | Dokumentace Microsoftu
-description: Popisuje příkazy Service Fabric CLI sfctl clusteru.
+title: Azure Service Fabric CLI – cluster sfctl | Microsoft Docs
+description: Popisuje příkazy clusteru Service Fabric CLI sfctl.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,464 +8,463 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 7bb399472d7e0ab14e6399fc8652d2eb132a866a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 305b1e11841dd2da4aa6c0bdeb3df2c76addad87
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837308"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036506"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
-Vyberte, spravovat a provozovat clustery Service Fabric.
+Umožňuje vybrat, spravovat a provozovat clustery Service Fabric.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
-| Kód verze | Získá seznam prostředků infrastruktury verze kódu, které jsou zřízené v clusteru Service Fabric. |
-| verze konfigurace | Získá seznam fabric config verze, které jsou zřízené v clusteru Service Fabric. |
+| verze kódu | Načte seznam verzí kódu prostředků infrastruktury, které jsou zřízené ve Service Fabricm clusteru. |
+| konfigurace – verze | Načte seznam verzí konfigurace prostředků infrastruktury, které jsou zřízené v clusteru Service Fabric. |
 | health | Získá stav clusteru Service Fabric. |
-| manifest | Získejte manifestu clusteru Service Fabric. |
-| zrušit operaci | Chyby vyvolané uživatel operaci zruší. |
-| seznam operací | Získá seznam operací chybu způsobenou uživatele filtrované podle zadaného vstupu. |
-| provision | Zřízení balíčky kódu nebo konfigurace clusteru Service Fabric. |
-| obnovení systému | Do clusteru Service Fabric označuje, že by měl pokusí o zotavení systému služby, které jsou aktuálně zablokované ve ztrátě kvora. |
+| manifest | Získejte manifest Service Fabricho clusteru. |
+| operace – zrušení | Zruší operaci s chybou, která byla vyvolaný uživatelem. |
+| operace – seznam | Získá seznam uživatelem vyvolaných operací selhání filtrovaných pomocí poskytnutého vstupu. |
+| provision | Zřídit kód nebo konfigurační balíčky Service Fabricho clusteru. |
+| obnovení systému | Určuje Cluster Service Fabric, který by se měl pokusit obnovit systémové služby, které jsou aktuálně zablokované ve ztrátě kvora. |
 | report-health | Odešle zprávu o stavu v clusteru Service Fabric. |
-| Vyberte | Se připojí ke koncovému bodu clusteru Service Fabric. |
-| show-connection | Zobrazit clusteru Service Fabric, které tato instance sfctl je připojen k. |
-| unprovision | Zrušení zřízení balíčky kódu nebo konfigurace clusteru Service Fabric. |
-| upgrade | Spuštění upgradu verze kódu nebo konfigurace clusteru Service Fabric. |
-| upgrade-resume | Ujistěte se, přejít k další upgradovací doméně upgradu clusteru. |
-| upgrade-rollback | Upgrade clusteru Service Fabric se vrátit zpět. |
-| upgrade-status | Získá průběh aktuální upgradu clusteru. |
-| upgrade-update | Aktualizujte parametry upgradu upgrade clusteru Service Fabric. |
+| vybrat | Připojí se ke koncovému bodu Service Fabric clusteru. |
+| Zobrazit připojení | Zobrazit, ke kterému Service Fabric clusteru je tato instance sfctl připojena. |
+| unprovision | Zrušení zřízení kódu nebo konfiguračních balíčků Service Fabricho clusteru. |
+| upgrade | Spusťte upgrade kódu nebo konfigurační verze Service Fabricho clusteru. |
+| upgrade – obnovení | Proveďte upgrade clusteru na další upgradovací doménu. |
+| upgrade – vrácení zpět | Vraťte zpět upgrade Service Fabricho clusteru. |
+| upgrade-status | Získá průběh aktuálního upgradu clusteru. |
+| upgrade-update | Aktualizujte parametry upgradu Service Fabric upgradu clusteru. |
 
-## <a name="sfctl-cluster-code-versions"></a>sfctl cluster code-versions
-Získá seznam prostředků infrastruktury verze kódu, které jsou zřízené v clusteru Service Fabric.
+## <a name="sfctl-cluster-code-versions"></a>sfctl kódu clusteru – verze
+Načte seznam verzí kódu prostředků infrastruktury, které jsou zřízené ve Service Fabricm clusteru.
 
-Získá seznam informací o prostředcích infrastruktury, které verze kódu, které jsou zřízené v clusteru. Parametr CodeVersion je možné volitelně filtruje výstup na tuto konkrétní verzi.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --code-version | Verze produktu Service Fabric. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
-
-## <a name="sfctl-cluster-config-versions"></a>sfctl cluster config-versions
-Získá seznam fabric config verze, které jsou zřízené v clusteru Service Fabric.
-
-Získá seznam informací o prostředcích infrastruktury, které verze konfigurace, které jsou zřízené v clusteru. Parametr ConfigVersion je možné volitelně filtruje výstup na tuto konkrétní verzi.
+Načte seznam informací o verzích kódů prostředků infrastruktury, které jsou zřízené v clusteru. Parametr CodeVersion lze použít k volitelnému filtrování výstupu pouze na konkrétní verzi.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --config-version | Konfigurace verze platformy Service Fabric. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Code-Version | Verze produktu Service Fabric. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-cluster-health"></a>sfctl stavu clusteru
+## <a name="sfctl-cluster-config-versions"></a>sfctl konfigurace clusteru – verze
+Načte seznam verzí konfigurace prostředků infrastruktury, které jsou zřízené v clusteru Service Fabric.
+
+Načte seznam informací o verzích konfigurace prostředků infrastruktury, které jsou zřízené v clusteru. Parametr ConfigVersion lze použít k volitelnému filtrování výstupu pouze na konkrétní verzi.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --config-Version | Konfigurační verze Service Fabric. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-cluster-health"></a>stav clusteru sfctl
 Získá stav clusteru Service Fabric.
 
-EventsHealthStateFilter použijte k filtrování kolekce událostí stavu hlášené pro cluster podle stavu. Podobně, použít NodesHealthStateFilter a ApplicationsHealthStateFilter k filtrování kolekce uzlů a aplikace, které jsou vráceny na základě jejich agregované stavu.
+Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlášených v clusteru na základě stavu. Podobně použijte NodesHealthStateFilter a ApplicationsHealthStateFilter k filtrování kolekce uzlů a aplikací vrácených na základě jejich agregovaného stavu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --applications-health-state-filter | Umožňuje filtrování objekty stavu stavu aplikací vrácené ve výsledku dotazu stav clusteru na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu od členů nebo bitové operace u členů výčtu HealthStateFilter. Jsou vráceny pouze aplikace, které odpovídají filtru. Všechny aplikace se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 stav aplikací s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --events-health-state-filter | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --exclude statistiky stavu | Určuje, zda má být vrácen statistik stavu jako součást výsledků dotazu. Ve výchozím nastavení False. Statistiky ukazují počet podřízených entit ve stavu Ok, upozornění a chyby. |
-| --include-system-application-health-statistics | Určuje, zda by měl obsahovat statistik stavu prostředků infrastruktury \: /System statistik stavu aplikace. Ve výchozím nastavení False. Pokud IncludeSystemApplicationHealthStatistics je nastavena na hodnotu true, stav statistické údaje obsahují entity, které patří do prostředků infrastruktury \: /System aplikace. V opačném případě výsledek dotazu obsahuje statistik stavu pouze pro uživatele aplikace. Statistika stavu musí být součástí výsledku dotazu pro tento parametr má být použita. |
-| --nodes-health-state-filter | Umožňuje filtrování uzlu stavu stavu objektů vrácené ve výsledku dotazu stav clusteru na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Jsou vráceny pouze uzly, které odpovídají filtru. Všechny uzly se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 stav uzlů s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --applications-health-state-filter | Umožňuje filtrování objektů stavu aplikace vrácených ve výsledku dotazu na stav clusteru na základě jejich stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu získanou ze členů nebo bitové operace na členech výčtu HealthStateFilter. Vrátí se pouze aplikace, které odpovídají filtru. Všechny aplikace se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčty založené na příznak, takže hodnota by mohla být kombinací těchto hodnot získaných pomocí bitového operátoru OR. Například pokud je zadaná hodnota 6, pak se vrátí stav aplikací s hodnotou OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
+| --events-health-state-filter | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
+| --Exclude-Health-Statistics | Určuje, zda mají být v rámci výsledku dotazu vráceny statistiky stavu. Výchozí hodnota je false. Statistika zobrazuje počet podřízených entit ve stavu OK, varování a chyba. |
+| --include-System-Application-Health-Statistics | Určuje, jestli má Statistika stavu zahrnovat statistiku\:stavu aplikace prostředků infrastruktury/. Výchozí hodnota je false. Pokud je IncludeSystemApplicationHealthStatistics nastavené na true, Statistika stavu zahrnuje entity, které patří do aplikace Fabric\:/. V opačném případě výsledek dotazu zahrnuje statistiky stavu pouze pro uživatelské aplikace. Aby se tento parametr mohl použít, musí být do výsledku dotazu zahrnuté statistiky stavu. |
+| --nodes-health-state-filter | Umožňuje filtrování objektů stavu uzlu vrácených ve výsledku dotazu na stav clusteru na základě jejich stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze uzly, které odpovídají filtru. Všechny uzly slouží k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčty založené na příznak, takže hodnota by mohla být kombinací těchto hodnot získaných pomocí bitového operátoru OR. Například pokud je zadaná hodnota 6, potom se vrátí stav uzlů s hodnotou OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-cluster-manifest"></a>sfctl manifestu clusteru
-Získejte manifestu clusteru Service Fabric.
+## <a name="sfctl-cluster-manifest"></a>manifest clusteru sfctl
+Získejte manifest Service Fabricho clusteru.
 
-Získejte manifestu clusteru Service Fabric. Manifest clusteru obsahuje vlastnosti clusteru, které obsahují různé typy uzlů v clusteru, konfigurace zabezpečení, odolnost a upgradovací doména topologie atd. Tyto vlastnosti jsou určeny jako součást souboru ClusterConfig.JSON při nasazení samostatného clusteru. Ale většinu informací v manifestu clusteru je generované interně službou service fabric během nasazování clusteru v jiných scénářích nasazení (například při použití webu Azure portal). Obsah manifestu clusteru, jsou pouze k informačním účelům a uživatelé se nepředpokládá zavést závislost na formát obsah souboru nebo jeho interpretace.
+Získejte manifest Service Fabricho clusteru. Manifest clusteru obsahuje vlastnosti clusteru, které zahrnují různé typy uzlů v clusteru, konfigurace zabezpečení, selhání a upgrady doménových topologií atd. Tyto vlastnosti jsou při nasazení samostatného clusteru zadány jako součást souboru ClusterConfig. JSON. Většina informací v manifestu clusteru se ale generuje interně Service Fabric během nasazování clusteru v jiných scénářích nasazení (například při použití Azure Portal). Obsah manifestu clusteru slouží pouze k informativním účelům a uživatelé neočekávají závislost na formátu obsahu souboru nebo jeho výkladu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-cluster-operation-cancel"></a>zrušení operace clusteru sfctl
-Chyby vyvolané uživatel operaci zruší.
+## <a name="sfctl-cluster-operation-cancel"></a>operace clusteru sfctl – zrušit
+Zruší operaci s chybou, která byla vyvolaný uživatelem.
 
-Následující rozhraní API spustit selhání operací, které může být zrušen pomocí CancelOperation\: StartDataLoss StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Pokud platnost hodnotu false, pak zadané uživatele vyvolané operace se elegantně zastaví a vyčištění.  Pokud platnost má hodnotu true, příkaz se přeruší a mohou být zanechány některé vnitřní stav.  Platnost zadáte jako hodnotu true by měla být používána opatrně. Volající toto rozhraní API s platnost nastavenou na hodnotu true není povolena, dokud toto rozhraní API již byla volána na stejný příkaz test s platnost nastavenou na hodnotu false první, nebo pokud příkaz test už má OperationState OperationState.RollingBack. 
+Následující rozhraní API spustí operace selhání, které mohou být zrušeny pomocí\: CancelOperation StartDataLoss, StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Pokud je hodnota Force false, zavedená operace vyvolaný uživatelem se řádně zastaví a vyčistí.  Pokud je hodnota true, příkaz se zruší a některé interní stavy můžou zůstat na pozadí.  Je třeba zadat vynutit jako true, aby se opatrně používala. Volání tohoto rozhraní API s vynucenou nastavenou na hodnotu true není povoleno, dokud toto rozhraní API již není voláno na stejném příkazu testu s vynuceným nastavením na hodnotu false, nebo pokud již testovací příkaz nemá OperationState OperationState. RollingBack. 
 
-Vysvětlení\: OperationState.RollingBack prostředky, které systém bude/čistí interního systému stavu způsobené provádění příkazu.  Pokud byl příkaz test způsobit ztrátu dat ho nebudou data obnovit.  Například pokud volání StartDataLoss pak volat toto rozhraní API, systém bude pouze vyčistit vnitřní stav spuštění příkazu. Ji nebude možné obnovit cílový oddíl dat, pokud příkaz provedení určité dostatečně daleko způsobit ztrátu dat. 
+Vyjasnění\: OperationState. RollingBack znamená, že systém bude nebo bude vyčistit vnitřní stav systému způsobený provedením příkazu.  Nebude data obnovovat, pokud by testovací příkaz způsobil ztrátu dat.  Například pokud voláte StartDataLoss a pak zavoláte toto rozhraní API, systém vyčistí pouze vnitřní stav ze spuštění příkazu. Neobnoví data cílového oddílu, pokud příkaz provedl dostatečně daleko, aby způsobil ztrátu dat. 
 
 > [!NOTE]
-> Pokud toto rozhraní API se vyvolala s platnost == true, vnitřní stav mohou být zanechány.
+> Pokud je toto rozhraní API vyvoláno s silou = = true, může být vnitřní stav ponechán na pozadí.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id operace [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  To je předán do odpovídajícího GetProgress rozhraní API. |
-| --force | Označuje, zda řádně vrátit zpět a vyčištění stav vnitřní systému upravit spuštěním operace vyvolané uživatele. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
+| --Force | Označuje, jestli se má řádně vrátit a vyčistit stav interního systému, který se změnil spuštěním operace vyvolané uživatelem. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-cluster-operation-list"></a>operace clusteru sfctl-list
-Získá seznam operací chybu způsobenou uživatele filtrované podle zadaného vstupu.
+## <a name="sfctl-cluster-operation-list"></a>operace clusteru sfctl – seznam
+Získá seznam uživatelem vyvolaných operací selhání filtrovaných pomocí poskytnutého vstupu.
 
-Získá seznam operací chybu způsobenou uživatele filtrované podle zadaného vstupu.
+Získá seznam uživatelem vyvolaných operací selhání filtrovaných pomocí poskytnutého vstupu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --Filtr stavu | Používají k filtrování podle OperationState pro operace vyvolané uživatele. <br> 65535 - Vybrat vše <br> 1 - vybrat spuštění <br> 2 – Výběr vrácení <br>8 – vyberte dokončeno <br>16 – vyberte Faulted <br>32 - vybrat zrušeno <br>64 - vyberte ForceCancelled.  <br>Výchozí\: 65535. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --Filtr typu | Použít k filtrování na typ operace pro uživatele vyvolané operace. <br> 65535 - Vybrat vše <br> 1 - vyberte PartitionDataLoss. <br> 2 – Výběr PartitionQuorumLoss. <br> 4 – vyberte PartitionRestart. <br> 8 – vyberte NodeTransition.  <br> Výchozí\: 65535. |
+| --State-Filter | Používá se k filtrování OperationState pro operace, které byly získány uživatelem. <br> 65535 – vybrat vše <br> 1\. Vyberte spuštěno. <br> 2\. Vyberte RollingBack <br>8 – výběr dokončených <br>16. Vyberte chybnou chybu. <br>32 – výběr zrušen <br>64 – vyberte ForceCancelled.  <br>Výchozí\: hodnota je 65535. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --Type-Filter | Slouží k filtrování typem operace OperationType pro operace, které byly získány uživatelem. <br> 65535 – vybrat vše <br> 1\. Vyberte PartitionDataLoss. <br> 2\. Vyberte PartitionQuorumLoss. <br> 4\. Vyberte PartitionRestart. <br> 8\. Vyberte NodeTransition.  <br> Výchozí\: hodnota je 65535. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-cluster-provision"></a>zřízení clusteru sfctl
-Zřízení balíčky kódu nebo konfigurace clusteru Service Fabric.
+Zřídit kód nebo konfigurační balíčky Service Fabricho clusteru.
 
-Ověření a zřiďte balíčky kódu nebo konfigurace clusteru Service Fabric.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --cluster-manifest-file-path | Cesta k souboru manifestu clusteru. |
-| --code-file-path | Cluster kód cesta k souboru balíčku. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
-
-## <a name="sfctl-cluster-recover-system"></a>sfctl cluster pro obnovení systému
-Do clusteru Service Fabric označuje, že by měl pokusí o zotavení systému služby, které jsou aktuálně zablokované ve ztrátě kvora.
-
-Do clusteru Service Fabric označuje, že by měl pokusí o zotavení systému služby, které jsou aktuálně zablokované ve ztrátě kvora. Tato operace by měla provést pouze v případě je známo, že není možné obnovit repliky, které jsou vypnuté. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat.
+Ověří a zřídí balíčky kódu nebo konfigurace Service Fabricho clusteru.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --cluster-manifest-file-path | Cesta k souboru manifestu clusteru |
+| --code-file-path | Cesta k souboru balíčku kódu clusteru |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-cluster-report-health"></a>Stav sestavy clusteru sfctl
+## <a name="sfctl-cluster-recover-system"></a>sfctl cluster Recovery-System
+Určuje Cluster Service Fabric, který by se měl pokusit obnovit systémové služby, které jsou aktuálně zablokované ve ztrátě kvora.
+
+Určuje Cluster Service Fabric, který by se měl pokusit obnovit systémové služby, které jsou aktuálně zablokované ve ztrátě kvora. Tato operace by měla být provedena pouze v případě, že je známo, že nelze obnovit repliky, které jsou mimo provoz. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-cluster-report-health"></a>Sestava clusteru sfctl – stav
 Odešle zprávu o stavu v clusteru Service Fabric.
 
-Sestava může obsahovat informace o zdroji sestava stavu a na kterém je uvedena vlastnost. Sestava je odeslána do Service Fabric uzel brány, která je směruje k úložišti stavů. Sestava může být přijal brány, ale odmítnuté úložiště stavu po další ověření. Úložiště stavu může třeba odmítnout sestavy z důvodu neplatného parametru, jako jsou zastaralé pořadové číslo. Pokud chcete zjistit, zda byla použita sestava v health store, zkontrolujte, zda je sestava zobrazena v HealthEvents clusteru.
+Sestava musí obsahovat informace o zdroji sestavy stavu a vlastnosti, na které je hlášena. Sestava se odešle do uzlu Service Fabric brány, který se přepošle na Health Store. Tuto sestavu může přijmout brána, ale Health Store po dodatečném ověření odmítnuta. Health Store například může zprávu odmítat z důvodu neplatného parametru, jako je například zastaralé pořadové číslo. Chcete-li zjistit, zda byla sestava použita v Health Store, zkontrolujte, zda se sestava zobrazuje v HealthEvents clusteru.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – Stav – vlastnost [povinné] | Vlastnost s informacemi o stavu. <br><br> Entita může mít sestav o stavu pro různé vlastnosti. Vlastnost je řetězec a oprava výčet umožňují flexibilní reportérka ke kategorizaci podmínku stavu, který spouští sestavu. Například reportérka s ID zdroje "LocalWatchdog" můžete monitorovat stav disku v uzlu, tak ho může hlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné reportérka můžete monitorovat připojení uzlu, takže ho může hlásit vlastnost "Připojení" ve stejném uzlu. V health store tyto sestavy jsou považovány za události samostatné stavu pro zadaný uzel. Spolu s ID zdroje vlastnost jednoznačně identifikuje informací o stavu. |
-| – Stav [povinné] | Možné hodnoty zahrnují\: "Neplatný", "Ok", "Upozorňující", "Chyba", "Neznámý". |
-| – id zdroje [povinné] | Název zdroje, který identifikuje klienta/sledovacího zařízení/systémové součásti, které vygenerovalo informací o stavu. |
-| – Popis | Popis informací o stavu. <br><br> Představuje libovolný text pro přidání lidské čitelné informace o sestavě. Maximální délka řetězce popis je 4096 znaků. Pokud zadaný řetězec je delší, bude automaticky zkrácen. Při zkráceno, poslední znaky popis obsahovat značky "[zkrátila]" a celkový počet řetězec velikost je 4 096 znaků. Výskyt značky určuje uživatelům této zkrácení došlo k chybě. Všimněte si, že při zkráceno, popis má menší než 4096 znaků z původního řetězce. |
-| --okamžité | Příznak, který udává, zda sestavy by měl být odesílány okamžitě. <br><br> Sestava stavu posílá do Service Fabric gateway aplikace, který se předává k úložišti stavů. Pokud okamžité nastavená na hodnotu true, zpráva se odešle okamžitě ze brána protokolu HTTP k úložišti stavů, bez ohledu na nastavení klienta fabric, které používá brána aplikace HTTP. To je užitečné pro kritické zprávy, které by měly být odeslány co nejdříve. V závislosti na načasování a jiných podmínek odesílat sestavy může stále nezdaří, pokud bránu HTTP je uzavřený nebo zprávy nelze navázat spojení s bránou. Okamžité je nastavený na hodnotu false, sestava se odesílá podle nastavení stavu klienta ze brána protokolu HTTP. Proto bude možné dávce závislosti na konfiguraci HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje stavu klienta k optimalizaci zdraví, vytváření sestav zprávy k úložišti stavů, stejně jako zpracování sestavy stavu. Ve výchozím nastavení nejsou odesílány sestavy okamžitě. |
-| – vypršela platnost odebrat v případě | Hodnota, která označuje, zda sestava se odebere z health store, když jeho platnost vyprší. <br><br> Je-li nastavena hodnota true, sestava se odebere z health store po vypršení její platnosti. Pokud je nastaven na hodnotu false, sestava je považováno za chybu, pokud vypršela platnost. Hodnota této vlastnosti je ve výchozím nastavení hodnotu false. Když klienti pravidelně hlásit, nastavují by měl RemoveWhenExpired false (výchozí). Tímto způsobem je osoby podávající hlášení dochází k problémům (například zablokování) a nemůže oznamovat entity je vyhodnocena v chybě, když vyprší platnost sestava stavu. Označí entitu jako patřící do chybového stavu. |
-| --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Pořadové číslo sestav se používá v úložišti stavů ke zjišťování zastaralých sestavy. Pokud není zadán, je číslo sekvence automaticky generované klientem stavu při přidání sestavy. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
+| --Health-vlastnost [required] | Vlastnost informací o stavu. <br><br> Entita může mít sestavy o stavu pro různé vlastnosti. Vlastnost je řetězec, nikoli pevný výčet, který umožňuje, aby se v zpravodaji mohla pružně roztřídit stav stavu, který aktivuje sestavu. Například zpravodaj s SourceId "LocalWatchdog" může monitorovat stav dostupného disku v uzlu, takže může ohlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné zpravodajky můžou monitorovat připojení uzlu, takže může nahlásit vlastnost "připojení" na stejném uzlu. V Health Store jsou tyto sestavy zpracovány jako samostatné události stavu pro zadaný uzel. Společně s ID zdroje (SourceId) vlastnost jednoznačně identifikuje informace o stavu. |
+| --Health-State [povinné] | Možné hodnoty zahrnují\: "Invalid", "OK", "Warning", "Error", "unknown". |
+| --Source-ID [povinné] | Název zdroje, který identifikuje součást klienta/sledovacího zařízení/systému, která vygenerovala informace o stavu. |
+| --Description | Popis informací o stavu. <br><br> Představuje bezplatný text, který se používá k přidání lidských čitelných informací o sestavě. Maximální délka řetězce pro popis je 4096 znaků. Pokud je zadaný řetězec delší, automaticky se zkrátí. Při zkrácení obsahují poslední znaky popisu značku "[zkrácené]" a celková velikost řetězce je 4096 znaků. Přítomnost značky indikuje uživatelům, kterým došlo ke zkrácení. Všimněte si, že při zkrácení má popis méně než 4096 znaků z původního řetězce. |
+| --Immediate | Příznak, který označuje, zda má být sestava odeslána okamžitě. <br><br> Do aplikace Service Fabric Gateway se pošle zpráva o stavu, která se přepošle na Health Store. Pokud je vlastnost Immediate nastavená na hodnotu true, pošle se z brány HTTP na Health Store zprávu hned, a to bez ohledu na nastavení klienta prostředků infrastruktury, které používá aplikace brány HTTP. To je užitečné pro kritické sestavy, které by se měly odesílat co nejdříve. V závislosti na časování a dalších podmínkách může odeslání sestavy dál selhat, například pokud je brána HTTP uzavřená nebo zpráva nemá přístup k bráně. Pokud je vlastnost Immediate nastavená na false, pošle se sestava na základě nastavení klienta stavu z brány HTTP. Proto se bude provádět dávkování podle konfigurace HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje klientovi stavu optimalizovat zprávy o stavu, které se mají Health Store, i zpracování sestavy o stavu. Ve výchozím nastavení se zprávy neodesílají okamžitě. |
+| --Remove-when-vypršela platnost | Hodnota, která označuje, zda je sestava odebrána z Health Store v případě jejího platnosti. <br><br> Pokud je nastavená hodnota true, sestava se po vypršení platnosti odebere z Health Store. Pokud je nastavena hodnota false, bude sestava považována za chybu, pokud vypršela její platnost. Hodnota této vlastnosti je ve výchozím nastavení false. Při pravidelné sestavě klientů by měly být nastavené RemoveWhenExpired na hodnotu false (výchozí). Tímto způsobem má zpravodaj problémy (například zablokování) a nemůže hlásit, entita je vyhodnocena při vypršení platnosti sestavy stavu. Tím se označí entita jako v chybovém stavu. |
+| --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Číslo sekvence sestavy používá Health Store ke zjišťování zastaralých sestav. Není-li tento parametr zadán, je číslo sekvence automaticky generováno klientem stavu při přidání sestavy. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --ttl | Doba, po kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 k zadání doby trvání. <br><br> Při pravidelné sestavě klientů by měly odesílat sestavy s vyšší frekvencí, než je čas do provozu. Pokud klienti hlásí přechod, můžou nastavit čas na živého na nekonečné. Po vypršení časového limitu životnosti události stavu, která obsahuje informace o stavu, se buď odeberou z Health Store, pokud je RemoveWhenExpired true, nebo se vyhodnotí při chybě, pokud RemoveWhenExpired false. Pokud není zadaný, hodnota TTL (Time to Live) nastaví nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-cluster-select"></a>Vyberte cluster sfctl
-Se připojí ke koncovému bodu clusteru Service Fabric.
+## <a name="sfctl-cluster-select"></a>Výběr clusteru sfctl
+Připojí se ke koncovému bodu Service Fabric clusteru.
 
-Pokud připojení k zabezpečenému clusteru, zadejte absolutní cestu k certifikátu (CRT) a soubor klíče (.key) nebo jeden soubor s oběma (.pem). Nezadávejte oba. Volitelně Pokud připojení k zabezpečenému clusteru se také zadejte absolutní cestu k souboru sady certifikační Autority nebo adresář certifikátů důvěryhodné certifikační Autority. Pokud používáte adresář certifikáty CA certs `c_rehash <directory>` poskytované OpenSSL musí být nejprve spustit k výpočtu hodnoty hash certifikátu a vytvořit odpovídající symbolické odkazy.
+Pokud se připojujete k zabezpečenému clusteru, zadejte absolutní cestu k certifikátu (. CRT) a soubor klíče (. Key) nebo jeden soubor s oběma (. pem). Nezadávejte obojí. Pokud budete chtít připojení k zabezpečenému clusteru, můžete taky zadat absolutní cestu k souboru nebo adresáři certifikačního úřadu CA. Pokud používáte adresář certifikátů CA, které poskytuje `c_rehash <directory>` OpenSSL, musí se nejdřív spustit, aby se vypočítaly hodnoty hash certifikátů a vytvořily příslušné symbolické odkazy.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --koncových bodů [povinné] | Adresa URL koncového bodu, včetně portu a protokolu HTTP nebo HTTPS předpony clusteru. |
-| --aad | Použití Azure Active Directory pro ověřování. |
-| --ca | Absolutní cesta k adresáři certifikáty certifikační Autority bude považovat za platné nebo soubor kompletu certifikační Autority. |
-| -cert | Absolutní cesta k souboru klientského certifikátu. |
-| --klíč | Absolutní cesta k souboru klíče certifikátu klienta. |
-| --no – ověření stavu | Zakázat ověřování certifikátů při použití protokolu HTTPS, mějte na paměti\: to nezabezpečené možnost by se neměl používat pro produkční prostředí. |
-| --pem | Absolutní cesta na klientský certifikát jako soubor .pem. |
+| --koncový bod [povinné] | Adresa URL koncového bodu clusteru, včetně předpony port a HTTP nebo HTTPS. |
+| --AAD | Pro ověřování použijte Azure Active Directory. |
+| --ca | Absolutní cesta k adresáři certifikátů certifikační autority, která bude považovat za platný nebo soubor sady prostředků CA. |
+| --CERT | Absolutní cesta k souboru klientského certifikátu. |
+| --klíč | Absolutní cesta k souboru klíče klientského certifikátu. |
+| --bez ověřování | Zakázat ověřování pro certifikáty při použití protokolu HTTPS.\: Upozorňujeme, že se jedná o nezabezpečenou možnost a neměla by se používat pro produkční prostředí. |
+| --PEM | Absolutní cesta ke klientskému certifikátu, jako soubor. pem. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-cluster-show-connection"></a>sfctl cluster show-connection
-Zobrazit clusteru Service Fabric, které tato instance sfctl je připojen k.
+## <a name="sfctl-cluster-show-connection"></a>zobrazení clusteru sfctl – připojení
+Zobrazit, ke kterému Service Fabric clusteru je tato instance sfctl připojena.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-cluster-unprovision"></a>sfctl unprovision clusteru
-Zrušení zřízení balíčky kódu nebo konfigurace clusteru Service Fabric.
+## <a name="sfctl-cluster-unprovision"></a>zrušení zřízení clusteru sfctl
+Zrušení zřízení kódu nebo konfiguračních balíčků Service Fabricho clusteru.
 
-Podporuje se zrušit zřízení kódu a konfigurace samostatně.
+Je podporováno zrušení zajišťování kódu a konfigurace samostatně.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --code-version | Balíček verze kódu clusteru. |
-| --config-version | Verze manifestu clusteru. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Code-Version | Verze balíčku kódu clusteru |
+| --config-Version | Verze manifestu clusteru |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-cluster-upgrade"></a>upgrade clusteru sfctl
-Spuštění upgradu verze kódu nebo konfigurace clusteru Service Fabric.
+Spusťte upgrade kódu nebo konfigurační verze Service Fabricho clusteru.
 
-Ověření upgradu zadaných parametrů a spusťte upgradu verze kódu nebo konfigurace clusteru Service Fabric, pokud jsou platné parametry.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --app-health-map | JSON kódovaný slovník párů název aplikace a maximální procento před vyvoláním chyby není v pořádku. |
-| --app-type-health-map | JSON kódovaný slovník párů název typu aplikace a maximální procento před vyvoláním chyby není v pořádku. |
-| --code-version | Verze kódu clusteru. |
-| --config-version | Verze konfigurace clusteru. |
-| --delta-health-evaluation | Umožňuje vyhodnocování stavu rozdílové namísto vyhodnocování absolutní stavu po dokončení každého upgradovací doméně. |
-| --delta poškozené uzly | Maximální povolené procento uzlů snížení stav povoleno během upgradu clusteru.  Výchozí\: 10. <br><br> Delta měří stav uzlů na začátku upgradu a stav uzlů v době vyhodnocení stavu. Kontrola se provádí po dokončení upgradu každý upgradovací doména k Ujistěte se, že globální stav clusteru je v mezích limitů přípustný. |
-| --selhání akce | Možné hodnoty zahrnují\: "Neplatný", "Vrácení zpět", "Ruční". |
-| --force restartování | Procesy se během upgradu vynuceně restartují, i v případě, že nedošlo ke změně verze kódu. <br><br> Upgrade pouze změny konfigurace nebo data. |
-| --health-check-retry | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku. |
-| --stabilní verze stavu zaškrtnutí | Množství času, aplikace nebo clusteru musí zůstane v dobrém stavu před provedením upgradu k další upgradovací doméně. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --health-check-wait | Doba čekání po dokončení upgradu domény před zahájením stavu kontroluje procesu. |
-| --replica-set-check-timeout | Maximální množství času blokování zpracování logických sítí a zabránit ztrátě dostupnosti, když dochází k neočekávaným problémům. <br><br> Když tento časový limit vyprší platnost, zpracování upgradovací doména bude pokračovat bez ohledu na problémy s dostupností ztráty. Časový limit se resetuje na začátku každé upgradovací doméně. Platné hodnoty jsou 0 až 42949672925 (včetně). |
-| --rolling-upgrade-mode | Možné hodnoty zahrnují\: "Neplatný", "UnmonitoredAuto", "UnmonitoredManual", "Sledované".  Výchozí\: UnmonitoredAuto. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --unhealthy-applications | Maximální povolené procento žádostí, není v pořádku, před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % aplikací v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento aplikací, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje alespoň jedna aplikace není v pořádku, stav se vyhodnotí jako upozornění. To se vypočítá jako podíl počtu poškozené aplikace přes celkový počet instancí aplikace v clusteru, s výjimkou aplikací typy aplikací, které jsou součástí ApplicationTypeHealthPolicyMap. Výpočet zaokrouhlí tento údaj tolerovat selhání jednoho na malý počet aplikací. |
-| --poškozené uzly | Maximální povolené procento poškozené uzly před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % uzly v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento uzlů, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje nejméně jeden uzel není v pořádku, stav se vyhodnotí jako upozornění. Procentuální se vypočítá jako podíl počtu uzlů v pořádku za celkový počet uzlů v clusteru. Výpočet zaokrouhlí tento údaj tolerovat selhání jednoho na malý počet uzlů. Ve velkých clusterech některé uzly bude vždy dolů nebo navýšení kapacity pro opravy, tak tolerovat, který by měl být nakonfigurovaný toto procento. |
-| --upgrade-domain-delta-unhealthy-nodes | Maximální povolené procento uzlů upgradovací domény snížení stav povoleno během upgradu clusteru.  Výchozí\: 15. <br><br> Delta měří stav uzlů upgradovací domény na začátku upgradu a stav uzlů upgradovací doména v době vyhodnocení stavu. Kontrola se provádí po dokončení upgradu všech upgradovací doména pro všechny dokončení upgradovacích domén, abyste měli jistotu, že je stav upgradovacích domén v rámci přípustný omezení. |
-| --upgrade-domain-timeout | Množství času každé domény upgradu musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --upgrade-timeout | Množství času celkové upgrade musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --warning-as-error | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
-
-## <a name="sfctl-cluster-upgrade-resume"></a>upgrade clusteru sfctl-obnovit
-Ujistěte se, přejít k další upgradovací doméně upgradu clusteru.
-
-Přechodem clusteru kódu nebo konfigurace upgradu na k další upgradovací doméně v případě potřeby.
+Ověřte zadané parametry upgradu a v případě, že jsou parametry platné, spusťte upgrade kódu nebo konfigurační verze Service Fabricho clusteru.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --upgrade domény [povinné] | Další upgradovací doméně pro tento upgrade clusteru. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --app-health-map | Slovník kódovaný v kódování JSON párů názvů aplikací a maximální procento není v pořádku před vyvoláním chyby. |
+| --app-type-health-map | Slovník kódovaný ve formátu JSON páry názvu typu aplikace a maximální procento není v pořádku před vyvoláním chyby. |
+| --Code-Version | Verze kódu clusteru |
+| --config-Version | Verze konfigurace clusteru |
+| --Delta – vyhodnocení stavu | Povolí rozdílové vyhodnocení stavu místo absolutního vyhodnocení stavu po dokončení jednotlivých upgradovacích domén. |
+| --Delta-není v pořádku – uzly | Maximální povolené procento povoleného snížení stavu uzlů během upgradů clusteru.  Výchozí\: hodnota 10. <br><br> Rozdíl je měřen mezi stavem uzlů na začátku upgradu a stavem uzlů v době hodnocení stavu. Tato kontrolu proběhne po dokončení upgradu každé domény upgradu, aby se zajistilo, že globální stav clusteru je v rámci povolených limitů. |
+| --Chyba – akce | Možné hodnoty zahrnují\: "neplatné", "Rollback", "Manual". |
+| --Force-restart | Procesy jsou během upgradu vynuceně restartovány i v případě, že se verze kódu nezměnila. <br><br> Upgrade pouze změní konfiguraci nebo data. |
+| --health-check-retry | Doba mezi pokusy o provedení kontrol stavu, pokud aplikace nebo cluster není v pořádku. |
+| --Health-Check-stabilní | Doba, po kterou musí aplikace nebo cluster zůstat v pořádku, než bude upgrade pokračovat na další upgradovací doménu. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
+| --health-check-wait | Doba, po kterou se má po dokončení upgradu domény počkat, než se spustí proces kontroly stavu. |
+| --replica-set-check-timeout | Maximální doba, po kterou se má blokovat zpracování upgradovací domény a zabránit ztrátě dostupnosti, pokud dojde k neočekávaným problémům. <br><br> Po vypršení časového limitu bude zpracování upgradovací domény pokračovat bez ohledu na problémy se ztrátou dostupnosti. Časový limit se resetuje na začátku každé upgradovací domény. Platné hodnoty jsou mezi 0 a 42949672925 včetně. |
+| --Kumulovaný-upgrade – režim | Možné hodnoty zahrnují\: "Invalid", "UnmonitoredAuto", "UnmonitoredManual", "Monitored".  Výchozí\: UnmonitoredAuto. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --není v pořádku – aplikace | Maximální povolené procento nezdravých aplikací před Nahlášením chyby. <br><br> Například pokud chcete, aby 10% aplikací bylo ve špatném stavu, bude tato hodnota 10. Procento představuje maximální povolený procentuální podíl aplikací, které mohou být chybné, než se cluster bude považovat za chybu. Pokud je dodrženo procento, ale existuje aspoň jedna poškozená aplikace, stav se vyhodnotí jako varování. To se počítá vydělením počtu nezdravých aplikací nad celkovým počtem instancí aplikace v clusteru, kromě aplikací typů aplikací, které jsou součástí ApplicationTypeHealthPolicyMap. Výpočet se zaokrouhlí na jednu neúspěch u malého počtu aplikací. |
+| – není v pořádku – uzly | Maximální povolené procento uzlů, které nejsou v pořádku, před odesláním chyby. <br><br> Pokud například chcete, aby 10% uzlů bylo v nesprávném stavu, bude tato hodnota 10. Procento představuje maximální povolený procentuální podíl uzlů, které mohou být chybné, než se cluster bude považovat za chybu. Pokud je dodrženo procento, ale existuje alespoň jeden uzel, který není v pořádku, je stav vyhodnocen jako upozornění. Procentuální hodnota se vypočítá vydělením počtu uzlů, které nejsou v pořádku, na celkový počet uzlů v clusteru. Výpočet se zaokrouhlí na jednu neúspěch na malých číslech uzlů. Ve velkých clusterech se u některých uzlů vždycky odeberou nebo odeberou opravy, takže toto procento by mělo být nakonfigurované na tolerování. |
+| --upgrade-domain-delta-unhealthy-nodes | Maximální povolené procento nesprávného snížení stavu uzlů domény upgradu během upgradů clusteru.  Výchozí\: hodnota je 15. <br><br> Rozdíl se měří mezi stavem uzlů upgradovací domény na začátku upgradu a stavu uzlů upgradovací domény v době hodnocení stavu. Tato kontrolu proběhne po dokončení upgradu každé domény upgradu pro všechny dokončené domény upgradu, aby se zajistilo, že stav domén upgradu spadá do dovolených omezení. |
+| --upgrade-domain-timeout | Doba, po kterou musí být každá upgradovací doména dokončena před provedením FailureAction. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
+| --upgrade – časový limit | Doba, po kterou musí být celkový upgrade dokončen před provedením FailureAction. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
+| --warning-as-error | Označuje, zda jsou upozornění zpracována se stejnou závažností jako chyby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-cluster-upgrade-rollback"></a>upgrade clusteru sfctl – vrácení
-Upgrade clusteru Service Fabric se vrátit zpět.
+## <a name="sfctl-cluster-upgrade-resume"></a>upgrade clusteru sfctl – obnovení
+Proveďte upgrade clusteru na další upgradovací doménu.
 
-Vrácení kódu nebo konfigurace upgrade clusteru Service Fabric.
+Pokud je to vhodné, změňte kód clusteru nebo upgradujte na další upgradovací doménu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --upgrade-doména [požadováno] | Další upgradovací doména pro tento upgrade clusteru. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-cluster-upgrade-status"></a>upgrade clusteru sfctl-status
-Získá průběh aktuální upgradu clusteru.
+## <a name="sfctl-cluster-upgrade-rollback"></a>upgrade clusteru sfctl – vrácení zpět
+Vraťte zpět upgrade Service Fabricho clusteru.
 
-Získá aktuální průběh upgradu probíhající clusteru. Pokud právě probíhá žádný upgrade, získáte poslední stav předchozí upgradu clusteru.
+Vraťte zpět upgrade kódu nebo konfigurace Service Fabricho clusteru.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-cluster-upgrade-status"></a>upgrade clusteru sfctl – stav
+Získá průběh aktuálního upgradu clusteru.
+
+Získá aktuální průběh probíhajícího upgradu clusteru. Pokud v tuto chvíli neprobíhá upgrade, získejte poslední stav předchozího upgradu clusteru.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-cluster-upgrade-update"></a>upgrade clusteru sfctl – aktualizace
-Aktualizujte parametry upgradu upgrade clusteru Service Fabric.
+Aktualizujte parametry upgradu Service Fabric upgradu clusteru.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --app-health-map | JSON kódovaný slovník párů název aplikace a maximální procento před vyvoláním chyby není v pořádku. |
-| --app-type-health-map | JSON kódovaný slovník párů název typu aplikace a maximální procento před vyvoláním chyby není v pořádku. |
-| --delta-health-evaluation | Umožňuje vyhodnocování stavu rozdílové namísto vyhodnocování absolutní stavu po dokončení každého upgradovací doméně. |
-| --delta poškozené uzly | Maximální povolené procento uzlů snížení stav povoleno během upgradu clusteru.  Výchozí\: 10. <br><br> Delta měří stav uzlů na začátku upgradu a stav uzlů v době vyhodnocení stavu. Kontrola se provádí po dokončení upgradu každý upgradovací doména k Ujistěte se, že globální stav clusteru je v mezích limitů přípustný. |
-| --selhání akce | Možné hodnoty zahrnují\: "Neplatný", "Vrácení zpět", "Ruční". |
-| --force restartování | Procesy se během upgradu vynuceně restartují, i v případě, že nedošlo ke změně verze kódu. <br><br> Upgrade pouze změny konfigurace nebo data. |
-| --health-check-retry | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku. |
-| --stabilní verze stavu zaškrtnutí | Množství času, aplikace nebo clusteru musí zůstane v dobrém stavu před provedením upgradu k další upgradovací doméně. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --health-check-wait | Doba čekání po dokončení upgradu domény před zahájením stavu kontroluje procesu. |
-| --replica-set-check-timeout | Maximální množství času blokování zpracování logických sítí a zabránit ztrátě dostupnosti, když dochází k neočekávaným problémům. <br><br> Když tento časový limit vyprší platnost, zpracování upgradovací doména bude pokračovat bez ohledu na problémy s dostupností ztráty. Časový limit se resetuje na začátku každé upgradovací doméně. Platné hodnoty jsou 0 až 42949672925 (včetně). |
-| --rolling-upgrade-mode | Možné hodnoty zahrnují\: "Neplatný", "UnmonitoredAuto", "UnmonitoredManual", "Sledované".  Výchozí\: UnmonitoredAuto. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --unhealthy-applications | Maximální povolené procento žádostí, není v pořádku, před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % aplikací v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento aplikací, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje alespoň jedna aplikace není v pořádku, stav se vyhodnotí jako upozornění. To se vypočítá jako podíl počtu poškozené aplikace přes celkový počet instancí aplikace v clusteru, s výjimkou aplikací typy aplikací, které jsou součástí ApplicationTypeHealthPolicyMap. Výpočet zaokrouhlí tento údaj tolerovat selhání jednoho na malý počet aplikací. |
-| --poškozené uzly | Maximální povolené procento poškozené uzly před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % uzly v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento uzlů, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje nejméně jeden uzel není v pořádku, stav se vyhodnotí jako upozornění. Procentuální se vypočítá jako podíl počtu uzlů v pořádku za celkový počet uzlů v clusteru. Výpočet zaokrouhlí tento údaj tolerovat selhání jednoho na malý počet uzlů. Ve velkých clusterech některé uzly bude vždy dolů nebo navýšení kapacity pro opravy, tak tolerovat, který by měl být nakonfigurovaný toto procento. |
-| --upgrade-domain-delta-unhealthy-nodes | Maximální povolené procento uzlů upgradovací domény snížení stav povoleno během upgradu clusteru.  Výchozí\: 15. <br><br> Delta měří stav uzlů upgradovací domény na začátku upgradu a stav uzlů upgradovací doména v době vyhodnocení stavu. Kontrola se provádí po dokončení upgradu všech upgradovací doména pro všechny dokončení upgradovacích domén, abyste měli jistotu, že je stav upgradovacích domén v rámci přípustný omezení. |
-| --upgrade-domain-timeout | Množství času každé domény upgradu musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --upgrade – typ | Možné hodnoty zahrnují\: "Neplatný", "Se zajištěním provozu", "Rolling_ForceRestart".  Výchozí\: se zajištěním provozu. |
-| --upgrade-timeout | Množství času celkové upgrade musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --warning-as-error | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
+| --app-health-map | Slovník kódovaný v kódování JSON párů názvů aplikací a maximální procento není v pořádku před vyvoláním chyby. |
+| --app-type-health-map | Slovník kódovaný ve formátu JSON páry názvu typu aplikace a maximální procento není v pořádku před vyvoláním chyby. |
+| --Delta – vyhodnocení stavu | Povolí rozdílové vyhodnocení stavu místo absolutního vyhodnocení stavu po dokončení jednotlivých upgradovacích domén. |
+| --Delta-není v pořádku – uzly | Maximální povolené procento povoleného snížení stavu uzlů během upgradů clusteru.  Výchozí\: hodnota 10. <br><br> Rozdíl je měřen mezi stavem uzlů na začátku upgradu a stavem uzlů v době hodnocení stavu. Tato kontrolu proběhne po dokončení upgradu každé domény upgradu, aby se zajistilo, že globální stav clusteru je v rámci povolených limitů. |
+| --Chyba – akce | Možné hodnoty zahrnují\: "neplatné", "Rollback", "Manual". |
+| --Force-restart | Procesy jsou během upgradu vynuceně restartovány i v případě, že se verze kódu nezměnila. <br><br> Upgrade pouze změní konfiguraci nebo data. |
+| --health-check-retry | Doba mezi pokusy o provedení kontrol stavu, pokud aplikace nebo cluster není v pořádku. |
+| --Health-Check-stabilní | Doba, po kterou musí aplikace nebo cluster zůstat v pořádku, než bude upgrade pokračovat na další upgradovací doménu. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
+| --health-check-wait | Doba, po kterou se má po dokončení upgradu domény počkat, než se spustí proces kontroly stavu. |
+| --replica-set-check-timeout | Maximální doba, po kterou se má blokovat zpracování upgradovací domény a zabránit ztrátě dostupnosti, pokud dojde k neočekávaným problémům. <br><br> Po vypršení časového limitu bude zpracování upgradovací domény pokračovat bez ohledu na problémy se ztrátou dostupnosti. Časový limit se resetuje na začátku každé upgradovací domény. Platné hodnoty jsou mezi 0 a 42949672925 včetně. |
+| --Kumulovaný-upgrade – režim | Možné hodnoty zahrnují\: "Invalid", "UnmonitoredAuto", "UnmonitoredManual", "Monitored".  Výchozí\: UnmonitoredAuto. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --není v pořádku – aplikace | Maximální povolené procento nezdravých aplikací před Nahlášením chyby. <br><br> Například pokud chcete, aby 10% aplikací bylo ve špatném stavu, bude tato hodnota 10. Procento představuje maximální povolený procentuální podíl aplikací, které mohou být chybné, než se cluster bude považovat za chybu. Pokud je dodrženo procento, ale existuje aspoň jedna poškozená aplikace, stav se vyhodnotí jako varování. To se počítá vydělením počtu nezdravých aplikací nad celkovým počtem instancí aplikace v clusteru, kromě aplikací typů aplikací, které jsou součástí ApplicationTypeHealthPolicyMap. Výpočet se zaokrouhlí na jednu neúspěch u malého počtu aplikací. |
+| – není v pořádku – uzly | Maximální povolené procento uzlů, které nejsou v pořádku, před odesláním chyby. <br><br> Pokud například chcete, aby 10% uzlů bylo v nesprávném stavu, bude tato hodnota 10. Procento představuje maximální povolený procentuální podíl uzlů, které mohou být chybné, než se cluster bude považovat za chybu. Pokud je dodrženo procento, ale existuje alespoň jeden uzel, který není v pořádku, je stav vyhodnocen jako upozornění. Procentuální hodnota se vypočítá vydělením počtu uzlů, které nejsou v pořádku, na celkový počet uzlů v clusteru. Výpočet se zaokrouhlí na jednu neúspěch na malých číslech uzlů. Ve velkých clusterech se u některých uzlů vždycky odeberou nebo odeberou opravy, takže toto procento by mělo být nakonfigurované na tolerování. |
+| --upgrade-domain-delta-unhealthy-nodes | Maximální povolené procento nesprávného snížení stavu uzlů domény upgradu během upgradů clusteru.  Výchozí\: hodnota je 15. <br><br> Rozdíl se měří mezi stavem uzlů upgradovací domény na začátku upgradu a stavu uzlů upgradovací domény v době hodnocení stavu. Tato kontrolu proběhne po dokončení upgradu každé domény upgradu pro všechny dokončené domény upgradu, aby se zajistilo, že stav domén upgradu spadá do dovolených omezení. |
+| --upgrade-domain-timeout | Doba, po kterou musí být každá upgradovací doména dokončena před provedením FailureAction. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
+| --upgrade-druh | Možné hodnoty zahrnují\: ' invalid ', ' válcování ', ' Rolling_ForceRestart '.  Výchozí\: vracení. |
+| --upgrade – časový limit | Doba, po kterou musí být celkový upgrade dokončen před provedením FailureAction. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
+| --warning-as-error | Označuje, zda jsou upozornění zpracována se stejnou závažností jako chyby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další postup
-- [Instalační program](service-fabric-cli.md) příkazového řádku Service Fabric.
-- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

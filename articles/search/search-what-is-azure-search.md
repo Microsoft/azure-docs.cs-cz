@@ -8,16 +8,16 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/13/2019
 ms.author: heidist
-ms.openlocfilehash: a48e4026ee3d7108f3b8e77dcb482d9904891cd4
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: eefa0eb5d1e15df34089d7baa3241cbbed4724c2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014462"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034848"
 ---
 # <a name="what-is-azure-search"></a>Co je Azure Search?
 
-Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání v soukromém heterogenním obsahu ve webových, mobilních a firemních aplikacích. Váš vlastní kód vyvolá příjem dat (indexování), vydává požadavky na dotazy a zpracovává odpovědi. Možnosti vyhledávání jsou definovány ve vašem klientském kódu pomocí funkce z Azure Search, při provádění dotazu prostřednictvím trvalého indexu, který vytvoříte a vlastníte. 
+Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání v soukromém heterogenním obsahu ve webových, mobilních a firemních aplikacích. Váš vlastní kód vyvolá příjem dat (indexování), vydává požadavky na dotazy a zpracovává odpovědi. Možnosti vyhledávání jsou definovány ve vašem klientském kódu pomocí funkce z Azure Search, při provádění dotazů prostřednictvím trvalého indexu, který vytváříte, vlastníte a ukládáte na Azure Search.
 
 ![Architektura Azure Search](media/search-what-is-azure-search/azure-search-diagram.png "Architektura Azure Search")
 

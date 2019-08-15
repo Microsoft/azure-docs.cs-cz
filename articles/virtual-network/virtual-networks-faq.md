@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: b088b4d0e21819411c7329f3cb1e6ca9761665fd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610200"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035343"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Virtual Networku (FAQ)
 
@@ -67,9 +67,11 @@ Ano. Další informace o rozsahech veřejných IP adres najdete v tématu [vytvo
 Ano. Podrobnosti najdete v tématu [omezení Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Adresní prostory podsítě nemůžou překrývat sebe.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Existují nějaká omezení používání IP adres v těchto podsítích?
-Ano. Azure si v každé podsíti vyhrazuje 5 IP adres. Jedná se o x. x. x. 0-x. x. x. 3 a poslední adresu podsítě.    
-- x. x. x. 0 a poslední adresa podsítě jsou vyhrazené pro shodu protokolu.
-- x. x. x. 1-x. x. x. 3 je v každé podsíti pro služby Azure rezervované.
+Ano. Azure si v každé podsíti vyhrazuje 5 IP adres. Jedná se o x. x. x. 0-x. x. x. 3 a poslední adresu podsítě. x. x. x. 1-x. x. x. 3 je v každé podsíti pro služby Azure rezervované.   
+- x. x. x. 0: Síťová adresa
+- x. x. x. 1: Vyhrazeno službou Azure pro výchozí bránu
+- x. x. x. 2, x. x. x. 3: Vyhrazeno službou Azure pro mapování Azure DNSch IP adres na prostor virtuální sítě
+- x. x. x. 255: Adresa všesměrového vysílání sítě
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Jak malý a jak velké můžou virtuální sítě a podsítě?
 Nejnižší podporovaná podsíť je/29 a největší je/8 (pomocí definice podsítě CIDR).

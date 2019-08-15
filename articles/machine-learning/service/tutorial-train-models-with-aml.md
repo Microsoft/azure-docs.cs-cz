@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 97e3fcb732e85f8c190a0d6607d85a6ffc8d36a7
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 6725bbc1978109d2b690a98e2cf98cc8c8c25141
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370743"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033004"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Kurz: Analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – Naučte se pomocí Azure Machine Learning
 
@@ -100,7 +100,7 @@ Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. `Wo
 ```python
 # load workspace configuration from the config.json file in the current folder.
 ws = Workspace.from_config()
-print(ws.name, ws.location, ws.resource_group, ws.location, sep='\t')
+print(ws.name, ws.location, ws.resource_group, sep='\t')
 ```
 
 ### <a name="create-an-experiment"></a>Vytvoření experimentu
@@ -321,7 +321,7 @@ Všimněte si, jak skript získává data a ukládá modely:
 
 + Školicí skript čte argument pro vyhledání adresáře, který obsahuje data. Když později odešlete úlohu, bude odkázána na úložiště dat pro tento argument: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ Školicí skript uloží model do adresáře s názvem výstupy . Vše, co je v tomto adresáři zapsáno, se automaticky nahraje do vašeho pracovního prostoru. K vašemu modelu přistupujete z tohoto adresáře později v tomto kurzu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
++ Školicí skript uloží model do adresáře s názvem výstupy. Vše, co je v tomto adresáři zapsáno, se automaticky nahraje do vašeho pracovního prostoru. K vašemu modelu přistupujete z tohoto adresáře později v tomto kurzu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
 + Školicí skript vyžaduje, aby soubor `utils.py` správně načetl datovou sadu. Následující kód zkopíruje `utils.py` do, `script_folder` aby k souboru bylo možné přihlédnout společně se školicím skriptem na vzdáleném prostředku.
 

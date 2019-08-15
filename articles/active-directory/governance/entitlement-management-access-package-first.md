@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1688651466ba6748e1254c9d33bb24435602868b
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 76ba284ec1a30322a24c762a1829b399f2583c6c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489173"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032930"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Kurz: Vytvoření prvního balíčku přístupu ve správě nároků ve službě Azure AD (Preview)
 
@@ -44,7 +44,9 @@ V tomto kurzu se naučíte:
 > * Ukázka, jak může interní uživatel požádat o přístup k balíčku
 > * Schválit žádost o přístup
 
-Pokud nemáte licenci Azure AD Premium P2 nebo Enterprise Mobility + Security E5, vytvořte bezplatnou [zkušební verzi Enterprise mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
+Podrobný příklad procesu nasazení správy opravňujících Azure Active Directory, včetně vytvoření prvního balíčku pro přístup, najdete v následujícím videu:
+
+>[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -52,6 +54,8 @@ Pokud chcete používat správu nároků na Azure AD (Preview), musíte mít jed
 
 - Azure AD Premium P2
 - Licence pro Enterprise Mobility + Security (EMS) E5
+
+Pokud nemáte licenci Azure AD Premium P2 nebo Enterprise Mobility + Security E5, vytvořte bezplatnou [zkušební verzi Enterprise mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
 
 ## <a name="step-1-set-up-users-and-group"></a>Krok 1: Nastavení uživatelů a skupin
 
@@ -74,13 +78,13 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
     Pro účely tohoto kurzu jsou správcem a schvalovatelem stejná osoba, ale obvykle je jeden nebo více uživatelů, kteří mají být schvalovateli.
 
-1. Vytvořte skupinu zabezpečení Azure AD s názvem **Engineering Group** s přiřazeným typem členství .
+1. Vytvořte skupinu zabezpečení Azure AD s názvem **Engineering Group** s přiřazeným typem členství.
 
     Tato skupina bude cílovým prostředkem pro správu nároků. Skupina by měla být prázdná pro členy, kteří mají být spuštěni.
 
 ## <a name="step-2-create-an-access-package"></a>Krok 2: Vytvoření balíčku pro přístup
 
-*Balíček pro přístup* je sada všech prostředků, které uživatel potřebuje k práci na projektu nebo k provedení jejich práce. Balíčky přístupu jsou definované v kontejnerech nazývaných katalogy. V tomto kroku vytvoříte **balíček přístupu k webovému projektu** v katalogu **Obecné** .
+*Balíček pro přístup* je sada všech prostředků, které uživatel potřebuje k práci na projektu nebo k provedení jejich práce. Balíčky přístupu jsou definované v kontejnerechnazývaných katalogy. V tomto kroku vytvoříte **balíček přístupu k webovému projektu** v katalogu **Obecné** .
 
 **Požadovaná role:** Globální správce nebo Správce uživatelů
 

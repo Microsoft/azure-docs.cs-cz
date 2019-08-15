@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 7d3586c571c2d70034f10cb3e1efd9242d6a1023
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986965"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034204"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Použití IoT Edge ve Windows ke spouštění kontejnerů Linux
 
@@ -30,9 +30,7 @@ Pomocí této části můžete zkontrolovat, jestli zařízení s Windows podpor
 
 ### <a name="supported-windows-versions"></a>Podporované verze Windows
 
-Azure IoT Edge s kontejnery pro Linux lze spustit v následujících verzích systému Windows: 
-* Aktualizace pro Windows 10 – výročí (Build 14393) nebo novější
-* Windows Server 2016 nebo novější
+Azure IoT Edge s kontejnery pro Linux se dají spustit na libovolné verzi Windows, která splňuje [požadavky pro Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) .
 
 Další informace o tom, co je součástí nejnovější verze IoT Edge, najdete v článku [Azure IoT Edge verze](https://github.com/Azure/azure-iotedge/releases).
 

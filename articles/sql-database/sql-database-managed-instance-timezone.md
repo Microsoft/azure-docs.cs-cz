@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 08/12/2019
-ms.openlocfilehash: 515e971214244cdd14955cc269a5f005cb93734f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/14/2019
+ms.openlocfilehash: a02709ffde144e7bd5e4d05fcd0e07c5d84a15fb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967928"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035835"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Časová pásma ve Azure SQL Database Managed instance
 
@@ -83,7 +83,10 @@ Můžete obnovit záložní soubor nebo importovat data do spravované instance 
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
-Když provedete obnovení k určitému bodu v čase, doba obnovení do je interpretována jako čas UTC. Tímto způsobem se vyhnete nejasnostem způsobeným letním časem a jeho potenciálním změnám.
+<del>Když provedete obnovení k určitému bodu v čase, doba obnovení do je interpretována jako čas UTC. Tímto způsobem se vyhnete nejasnostem způsobeným letním časem a jeho potenciálním změnám.<del>
+
+ >[!WARNING]
+  > Aktuální chování není na řádku s výše uvedeným příkazem a doba obnovení do je interpretována jako časové pásmo zdrojové spravované instance, kde jsou automaticky zálohy databáze odebírány. Pracujeme na tom, aby se toto chování povedlo k interpretaci daného bodu v čase, jako je čas UTC.
 
 ### <a name="auto-failover-groups"></a>Skupiny automatického převzetí služeb při selhání
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI - sfctl | Dokumentace Microsoftu
-description: Popisuje sfctl příkazy Service Fabric CLI.
+title: Azure Service Fabric CLI – sfctl | Microsoft Docs
+description: Popisuje příkazy Service Fabric CLI sfctl.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,44 +8,43 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: c195d0c4250022102e735cf584370278e354bc41
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 35b881268ca21a840836c96388a4562a54d17d3b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60545040"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035815"
 ---
 # <a name="sfctl"></a>sfctl
-Příkazy pro správu clusterů Service Fabric a entity. Tato verze není kompatibilní s modulem runtime Service Fabric 6.4.
+Příkazy pro správu Service Fabric clusterů a entit Tato verze je kompatibilní s modulem runtime Service Fabric 6,4.
 
-Příkazy mají tvar sloveso-podstatné jméno. Zobrazit podskupiny pro další informace.
+Příkazy se řídí vzorem slovesa substantivum. Další informace najdete v tématu podskupiny.
 
 ## <a name="subgroups"></a>Podskupiny
 |Podskupina|Popis|
 | --- | --- |
-| [Aplikace](service-fabric-sfctl-application.md) | Vytvářet, odstraňovat a spravovat aplikace a typy aplikací. |
-| [chaos](service-fabric-sfctl-chaos.md) | Spuštění, zastavení a vytváření sestav o tento Chaos se dá testovat službu. |
-| [cluster](service-fabric-sfctl-cluster.md) | Vyberte, spravovat a provozovat clustery Service Fabric. |
-| [compose](service-fabric-sfctl-compose.md) | Vytvářet, odstraňovat a spravovat aplikace Docker Compose. |
-| [container](service-fabric-sfctl-container.md) | Spuštění kontejneru související s příkazy v uzlu clusteru. |
-| [je](service-fabric-sfctl-is.md) | Dotazování a posílání příkazů do služeb infrastruktury. |
-| [mesh](service-fabric-sfctl-mesh.md) | Odstraňte a Správa aplikací Service Fabric mřížky. |
-| [Uzel](service-fabric-sfctl-node.md) | Spravujte uzly, které tvoří cluster. |
-| [partition](service-fabric-sfctl-partition.md) | Dotazování a správu oddílů pro libovolnou službu. |
-| [Vlastnost](service-fabric-sfctl-property.md) | Vlastnosti v Service Fabric názvy Store a dotazu. |
-| [replica](service-fabric-sfctl-replica.md) | Spravujte repliky, které patří do oddílů služby. |
-| [ot. / min](service-fabric-sfctl-rpm.md) | Dotazování a posílání příkazů do service Manageru opravit. |
-| [sa-cluster](service-fabric-sfctl-sa-cluster.md) | Správa samostatné clustery Service Fabric. |
-| [Služba](service-fabric-sfctl-service.md) | Vytvářet, odstraňovat a spravovat služby, typů služeb a balíčky služeb. |
-| [settings](service-fabric-sfctl-settings.md) | Konfigurace nastavení pro tuto instanci sfctl místní. |
-| [store](service-fabric-sfctl-store.md) | Provedení operace na úrovni základní soubor na úložiště imagí clusteru. |
+| [použití](service-fabric-sfctl-application.md) | Vytvářejte, odstraňujte a spravujte aplikace a typy aplikací. |
+| [chaos](service-fabric-sfctl-chaos.md) | Spuštění, zastavení a hlášení služby chaos test Service. |
+| [cluster](service-fabric-sfctl-cluster.md) | Umožňuje vybrat, spravovat a provozovat clustery Service Fabric. |
+| [sestavit](service-fabric-sfctl-compose.md) | Vytvářejte, odstraňujte a spravujte aplikace Docker Compose. |
+| [container](service-fabric-sfctl-container.md) | Spusťte příkazy související s kontejnerem na uzlu clusteru. |
+| [dojde](service-fabric-sfctl-is.md) | Dotazování a posílání příkazů do služby infrastruktury |
+| [mesh](service-fabric-sfctl-mesh.md) | Umožňuje odstraňovat a spravovat aplikace Service Fabric sítě. |
+| [uzlu](service-fabric-sfctl-node.md) | Spravujte uzly, které tvoří cluster. |
+| [rozdělován](service-fabric-sfctl-partition.md) | Dotazování a Správa oddílů pro libovolnou službu. |
+| [majetek](service-fabric-sfctl-property.md) | Uložení a dotazování vlastností pod názvy Service Fabric. |
+| [změněno](service-fabric-sfctl-replica.md) | Spravovat repliky patřící k oddílům služeb. |
+| [/min](service-fabric-sfctl-rpm.md) | Dotazování a posílání příkazů do služby správce oprav. |
+| [sa-cluster](service-fabric-sfctl-sa-cluster.md) | Spravujte samostatné Service Fabric clustery. |
+| [službám](service-fabric-sfctl-service.md) | Umožňuje vytvářet, odstraňovat a spravovat služby, typy služeb a balíčky služeb. |
+| [možnost](service-fabric-sfctl-settings.md) | Nakonfigurujte nastavení místní pro tuto instanci sfctl. |
+| [store](service-fabric-sfctl-store.md) | Proveďte základní operace na úrovni souborů v úložišti imagí clusteru. |
 
 ## <a name="next-steps"></a>Další postup
-- [Nastavit](service-fabric-cli.md) Service Fabric CLI.
-- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

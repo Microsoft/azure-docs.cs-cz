@@ -1,116 +1,116 @@
 ---
-title: Omezení provozu odchozího přenosu dat ve službě Azure Kubernetes Service (AKS)
-description: Zjistěte, jaké porty a adresy jsou potřeba ovládací prvek výchozí přenos ve službě Azure Kubernetes Service (AKS)
+title: Omezení odchozího provozu ve službě Azure Kubernetes (AKS)
+description: Informace o tom, jaké porty a adresy se vyžadují k řízení odchozího provozu ve službě Azure Kubernetes (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 12922496bc97ad51d1cc96f7ffe8df05c1fd66ea
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: cf9dc304efea8874d16953f74bf88a4317760819
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614961"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031841"
 ---
-# <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Ve verzi Preview - omezení odchozí provoz pro uzly clusteru a řízení přístupu k požadované porty a služby ve službě Azure Kubernetes Service (AKS)
+# <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Preview – omezení odchozího provozu pro uzly clusteru a řízení přístupu k požadovaným portům a službám ve službě Azure Kubernetes Service (AKS)
 
-Ve výchozím nastavení clustery AKS mít stejně neomezený přístup k Internetu odchozí (odchozí). Tato úroveň přístupu k síti umožňuje uzly a služeb, které můžete spustit pro přístup k externím prostředkům podle potřeby. Pokud chcete omezit výchozí přenos, musí být omezený počet portů a adres přístupné Udržovat úlohy údržby v dobrém stavu clusteru. Cluster se pak nakonfiguruje k použít pouze základní systém Image kontejneru z registru kontejneru Microsoft (MCR) nebo Azure Container Registry (ACR), není externí veřejných úložištích. Je nutné nakonfigurovat upřednostňované pravidla brány firewall a zabezpečení na tyto požadované porty a adresy.
+Ve výchozím nastavení mají clustery AKS neomezený odchozí (výstupní) přístup k Internetu. Tato úroveň přístupu k síti umožňuje uzlům a službám, které spouštíte pro přístup k externím prostředkům, podle potřeby. Pokud chcete omezit výstupní přenos dat, musí být k dispozici omezený počet portů a adres, aby bylo možné udržovat v pořádku úlohy údržby clusteru. Cluster se pak nakonfiguruje tak, aby používal image kontejnerů základního systému z Microsoft Container Registry (MCR) nebo Azure Container Registry (ACR), ne z externích veřejných úložišť. Je nutné nakonfigurovat upřednostňovanou bránu firewall a pravidla zabezpečení, aby bylo možné tyto požadované porty a adresy.
 
-Tento článek podrobně popisuje, jaké síťové porty a plně kvalifikované názvy domény (FQDN) jsou povinné a nepovinné-li omezit výchozí přenos v clusteru AKS.  Tato funkce je aktuálně ve verzi Preview.
+Tento článek podrobně popisuje, které síťové porty a plně kvalifikované názvy domény (FQDN) jsou povinné a volitelné, pokud omezíte odchozí přenosy v clusteru AKS.  Tato funkce je aktuálně ve verzi Preview.
 
 > [!IMPORTANT]
-> Funkce AKS ve verzi preview jsou samoobslužných služeb, vyjádřit výslovný souhlas. Jsou poskytovány shromažďovat zpětnou vazbu a chyb z naší komunitě. Ve verzi preview nejsou tyto funkce určené k použití v produkčním prostředí. Funkce ve verzi public preview spadají pod "co možná nejlepší" podporu. Pomoc od týmů AKS technická podpora je k dispozici během pracovní doby tichomořské časové pásmo (PST) pouze. Další informace najdete v tématu následující články o podpoře:
+> Funkce služby AKS ve verzi Preview jsou samoobslužné přihlašovací. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepšího úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace o tom, jak se zaregistrují, najdete v následujících článcích podpory:
 >
 > * [Zásady podpory AKS][aks-support-policies]
 > * [Nejčastější dotazy k podpoře Azure][aks-faq]
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Musí mít Azure CLI verze 2.0.66 nebo později nainstalována a nakonfigurována. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.66 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
-K vytvoření clusteru AKS, které omezuje výchozí přenos, nejprve povolte příznak funkce v rámci předplatného. Tato funkce registrace nakonfiguruje jakémkoli AKS vytvoříte pomocí systému základní Image kontejneru z MCR nebo služby ACR. K registraci *AKSLockingDownEgressPreview* příznak funkce, použijte [az funkce register][az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+Pokud chcete vytvořit cluster AKS, který může omezit odchozí přenos, nejdřív u vašeho předplatného povolte příznak funkce. Tato registrace funkce nakonfiguruje všechny AKS clustery, které vytvoříte pro použití imagí kontejnerů základního systému z MCR nebo ACR. Chcete-li zaregistrovat příznak funkce *AKSLockingDownEgressPreview* , použijte příkaz [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
 
 > [!CAUTION]
-> Při registraci funkce v rámci předplatného nelze nyní zrušit registraci této funkce. Po povolení některé funkce ve verzi preview se výchozí hodnoty lze pro všechny clustery AKS, pak jste vytvořili v rámci předplatného. Nepovolí funkce ve verzi preview na předplatná pro produkční prostředí. Testování funkce ve verzi preview a shromažďování zpětné vazby pomocí samostatné předplatné.
+> Když zaregistrujete funkci v rámci předplatného, nemůžete tuto funkci v tuto chvíli zrušit. Po povolení některých funkcí verze Preview se můžou použít výchozí hodnoty pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Použijte samostatné předplatné k testování funkcí ve verzi Preview a získejte zpětnou vazbu.
 
 ```azurecli-interactive
 az feature register --name AKSLockingDownEgressPreview --namespace Microsoft.ContainerService
 ```
 
-Trvá několik minut, než se stav zobrazíte *registrované*. Můžete zkontrolovat stav registrace pomocí [seznam funkcí az][az-feature-list] příkaz:
+Zobrazení stavu v *registraci*trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSLockingDownEgressPreview')].{Name:name,State:properties.state}"
 ```
 
-Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskytovatele prostředků pomocí [az provider register][az-provider-register] příkaz:
+Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-## <a name="egress-traffic-overview"></a>Přehled provozu odchozího přenosu dat
+## <a name="egress-traffic-overview"></a>Přehled odchozího provozu
 
-Pro účely provozní a správy uzly v clusteru AKS potřebují přístup k určité porty a plně kvalifikované názvy domény (FQDN). Tato akce může být ke komunikaci se serverem rozhraní API nebo stáhněte a nainstalujte základní součásti clusteru Kubernetes a aktualizace zabezpečení uzlu. Ve výchozím nastavení se výchozí přenos dat (odchozí) internetový provoz neomezuje pro uzly v clusteru AKS. Cluster může přetáhněte základní systém Image kontejneru z externích úložišť.
+Pro účely správy a provozu musí uzly v clusteru AKS přistupovat k určitým portům a plně kvalifikovaným názvům domén (FQDN). Tyto akce můžou být pro komunikaci se serverem rozhraní API nebo ke stažení a instalaci základních součástí clusteru Kubernetes a aktualizací zabezpečení uzlů. Ve výchozím nastavení není odchozí (odchozí) internetový provoz omezený pro uzly v clusteru AKS. Cluster může z externích úložišť získat základní image kontejneru systému.
 
-Pokud chcete zvýšit zabezpečení vašeho clusteru AKS, můžete chtít omezit výchozí přenos. Cluster je nakonfigurovaný k přetahování imagí kontejneru z MCR nebo ACR základního systému. Pokud uzamknout výchozí přenos tímto způsobem, je nutné definovat konkrétní porty a plně kvalifikovaných názvů domén povolit uzlů AKS správně komunikovat s vyžaduje externí služby. Bez těchto oprávnění portů a plně kvalifikované názvy domény nelze uzly AKS komunikaci se serverem pro rozhraní API nebo nainstalujte základní součásti.
+Chcete-li zvýšit zabezpečení clusteru AKS, můžete chtít omezit odchozí přenosy. Cluster je nakonfigurovaný tak, aby vyčetl základní image kontejneru systému z MCR nebo ACR. Pokud tímto způsobem zamknete výstupní přenos, je nutné definovat konkrétní porty a plně kvalifikované názvy domény, aby uzly AKS správně komunikovaly s požadovanými externími službami. Bez těchto autorizovaných portů a plně kvalifikovaných názvů domény nemůžou uzly AKS komunikovat se serverem rozhraní API nebo instalovat součásti jádra.
 
-Můžete použít [Brána Firewall služby Azure][azure-firewall] nebo zařízení brány firewall 3. stran k zabezpečení provozu odchozího přenosu dat a definovat tyto požadované porty a adresy. AKS neprovádí automatické vytváření těchto pravidel pro vás. Následující porty a adresy jsou pro referenci při vytváření příslušných pravidel brány firewall vaší sítě.
+K zabezpečení odchozího provozu a definování potřebných portů a adres můžete použít [Azure firewall][azure-firewall] nebo zařízení brány firewall jiného výrobce. AKS automaticky nevytváří tato pravidla. Při vytváření vhodných pravidel v bráně firewall sítě jsou k disadrese následující porty a adresy.
 
-Ve službě AKS existují dvě sady porty a adresy:
+V AKS existují dvě sady portů a adres:
 
-* [Požadované porty a adresy pro AKS clustery](#required-ports-and-addresses-for-aks-clusters) podrobně popisuje minimální požadavky na oprávnění výchozí přenos.
-* [Volitelné doporučené adresy a porty pro AKS clustery](#optional-recommended-addresses-and-ports-for-aks-clusters) se nevyžadují pro všechny scénáře, ale integrace s dalšími službami, jako je Azure Monitor nebude fungovat správně. Projděte si seznam volitelné porty a plně kvalifikované názvy domény a povolit všechny služby a komponenty použité ve vašem clusteru AKS.
+* [Požadované porty a adresy pro clustery AKS podrobně vyžadují](#required-ports-and-addresses-for-aks-clusters) minimální požadavky pro ověřený odchozí přenos.
+* [Volitelné Doporučené adresy a porty pro clustery AKS](#optional-recommended-addresses-and-ports-for-aks-clusters) se nevyžadují pro všechny scénáře, ale integrace s jinými službami, jako je Azure monitor, nebudou správně fungovat. Zkontrolujte tento seznam volitelných portů a plně kvalifikovaných názvů domény a autorizujte všechny služby a součásti používané v clusteru AKS.
 
 > [!NOTE]
-> Omezení výchozí přenos funguje pouze na nové AKS clustery, které jsou vytvořené po povolení registrace příznak funkce. Pro existující clustery [provést operaci upgradu clusteru][aks-upgrade] pomocí `az aks upgrade` příkazu před omezit výchozí přenos.
+> Omezení odchozího provozu funguje jenom na nových clusterech AKS vytvořených po povolení registrace příznaků funkcí. U existujících clusterů [proveďte operaci upgradu clusteru][aks-upgrade] pomocí `az aks upgrade` příkazu před omezením odchozího provozu.
 
 ## <a name="required-ports-and-addresses-for-aks-clusters"></a>Požadované porty a adresy pro clustery AKS
 
-Těchto odchozích portech / pravidla sítě jsou požadovány pro AKS cluster:
+Pro cluster AKS se vyžadují následující Odchozí porty nebo Síťová pravidla:
 
-* TCP port *443*
-* TCP port *9000* a TCP port *22* pro front-pod tunel ke komunikaci s koncovým tunelového propojení na serveru rozhraní API.
-    * Chcete-li si to trochu přiblížit, přečtěte si téma * *.hcp.\< umístění\>. azmk8s.io* a * *. tun.\< umístění\>. azmk8s.io* adresy v následující tabulce.
+* Port TCP *443*
+* Port TCP *9000* a TCP port *22* pro front-endu tunelu pro komunikaci s koncovým tunelem na serveru rozhraní API.
+    * Pokud chcete získat konkrétnější informace, podívejte se na * *.\< HCP. Location\>. azmk8s.IO* a * *. tun.\< Location\>. azmk8s.IO* adresy v následující tabulce.
 
-Následující plně kvalifikovaný název domény / pravidla aplikací jsou požadovány:
+Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla použití:
 
 | PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                       | Port      | Použití      |
 |----------------------------|-----------|----------|
-| *.hcp.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod rozhraní API serveru. Nahraďte *\<umístění\>* s oblastí, které se nasadí AKS cluster. |
-| *. tun. \<umístění\>. azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod rozhraní API serveru. Nahraďte *\<umístění\>* s oblastí, které se nasadí AKS cluster. |
-| aksrepos.azurecr.io        | HTTPS:443 | Tato adresa je potřeba přístup imagí v Azure Container Registry (ACR). |
-| *.blob.core.windows.net    | HTTPS:443 | Tato adresa je back-endu úložiště pro imagí uložených v ACR. |
-| mcr.microsoft.com          | HTTPS:443 | Tato adresa je potřeba přístup imagí v Microsoft Container Registry (MCR). |
-| *.cdn.mscr.io              | HTTPS:443 | Tato adresa je povinná pro MCR úložiště zajišťuje podporu Azure content delivery network (CDN). |
-| management.azure.com       | HTTPS:443 | Tato adresa je povinná pro Kubernetes GET/PUT operace. |
-| login.microsoftonline.com  | HTTPS:443 | Tato adresa je povinná pro ověřování Azure Active Directory. |
-| api.snapcraft.io           | HTTPS:443, HTTP:80 | Tato adresa je potřeba nainstalovat balíčky Snap na uzly s Linuxem. |
-| ntp.ubuntu.com             | UDP:123   | Tato adresa je povinná pro synchronizaci času NTP na uzly s Linuxem. |
-| *.docker.io                | HTTPS:443 | Tato adresa je potřeba o přijetí změn imagí kontejnerů požadované pro tunelové propojení front. |
+| *.hcp.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod serveru rozhraní API. Umístění nahraďte *\<oblastí, ve které je nasazený cluster AKS.\>* |
+| *.tun. \<Location\>. azmk8s.IO | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod serveru rozhraní API. Umístění nahraďte *\<oblastí, ve které je nasazený cluster AKS.\>* |
+| aksrepos.azurecr.io        | HTTPS:443 | Tato adresa je vyžadována pro přístup k obrázkům v Azure Container Registry (ACR). |
+| *.blob.core.windows.net    | HTTPS:443 | Tato adresa je back-end úložiště imagí uložených v ACR. |
+| mcr.microsoft.com          | HTTPS:443 | Tato adresa je nutná pro přístup k obrázkům v Microsoft Container Registry (MCR). |
+| *.cdn.mscr.io              | HTTPS:443 | Tato adresa je vyžadována pro MCR úložiště zajištěné službou Azure Content Delivery Network (CDN). |
+| management.azure.com       | HTTPS:443 | Tato adresa je vyžadována pro Kubernetes operace GET/PUT. |
+| login.microsoftonline.com  | HTTPS:443 | Tato adresa je vyžadována pro Azure Active Directory ověřování. |
+| api.snapcraft.io           | HTTPS:443, HTTP:80 | Tato adresa se vyžaduje pro instalaci balíčků snap na uzlech se systémem Linux. |
+| ntp.ubuntu.com             | UDP:123   | Tato adresa se vyžaduje pro synchronizaci času NTP na uzlech se systémem Linux. |
+| *.docker.io                | HTTPS:443 | Tato adresa je nutná k vyžádání požadovaných imagí kontejneru pro front-Tunnel. |
 
-## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Volitelné doporučené adresy a porty pro clustery AKS
+## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Volitelné Doporučené adresy a porty pro clustery AKS
 
-* UDP port *53* pro DNS
+* Port UDP *53* pro DNS
 
-Následující plně kvalifikovaný název domény / pravidla aplikací se doporučují pro AKS clustery fungoval správně:
+Pro správné fungování clusterů AKS se doporučuje následující plně kvalifikovaný název domény nebo pravidla použití:
 
 | PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
-| *.ubuntu.com                            | HTTP:80   | Tato adresa umožňuje stáhnout požadované zabezpečení oprav a aktualizací uzlech clusteru s Linuxem. |
-| packages.microsoft.com                  | HTTPS:443 | Tato adresa se používá úložiště balíčky společnosti Microsoft pro uložené v mezipaměti *apt-get* operace. |
-| dc.services.visualstudio.com            | HTTPS:443 | Doporučeno pro správné metriky a monitorování pomocí Azure monitoru. |
-| *.opinsights.azure.com                  | HTTPS:443 | Doporučeno pro správné metriky a monitorování pomocí Azure monitoru. |
-| *.monitoring.azure.com                  | HTTPS:443 | Doporučeno pro správné metriky a monitorování pomocí Azure monitoru. |
-| gov-prod-policy-data.trafficmanager.net | HTTPS:443 | Tato adresa se používá pro správné fungování Azure Policy (aktuálně ve verzi preview ve službě AKS). |
-| apt.dockerproject.org                   | HTTPS:443 | Tato adresa se používá k instalaci správné ovladače a operace na uzlech založený na grafickém procesoru. |
-| nvidia.github.io                        | HTTPS:443 | Tato adresa se používá k instalaci správné ovladače a operace na uzlech založený na grafickém procesoru. |
+| *. ubuntu.com                            | HTTP:80   | Tato adresa umožní uzlům clusteru se systémem Linux stáhnout požadované opravy a aktualizace zabezpečení. |
+| packages.microsoft.com                  | HTTPS:443 | Tato adresa je úložiště balíčků Microsoftu používané pro operace *apt-get* uložené v mezipaměti. |
+| dc.services.visualstudio.com            | HTTPS:443 | Doporučuje se pro správné metriky a monitorování pomocí Azure Monitor. |
+| *.opinsights.azure.com                  | HTTPS:443 | Doporučuje se pro správné metriky a monitorování pomocí Azure Monitor. |
+| *.monitoring.azure.com                  | HTTPS:443 | Doporučuje se pro správné metriky a monitorování pomocí Azure Monitor. |
+| gov-prod-policy-data.trafficmanager.net | HTTPS:443 | Tato adresa se používá pro správnou operaci Azure Policy (aktuálně ve verzi Preview v AKS). |
+| apt.dockerproject.org                   | HTTPS:443 | Tato adresa se používá pro správnou instalaci ovladače a operaci na uzlech založených na GPU. |
+| nvidia.github.io                        | HTTPS:443 | Tato adresa se používá pro správnou instalaci ovladače a operaci na uzlech založených na GPU. |
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, jaké porty a adresy, které povolí, pokud omezíte výchozí přenos pro cluster. Můžete také definovat, jak můžete sami podů komunikovat a jaká omezení mají v rámci clusteru. Další informace najdete v tématu [zabezpečení přenosu mezi pody pomocí zásady sítě ve službě AKS][network-policy].
+V tomto článku jste zjistili, jaké porty a adresy se mají povolit, pokud omezíte odchozí přenosy clusteru. Můžete také definovat, jak můžou částice a jaká omezení v clusteru komunikovat. Další informace najdete v tématu [zabezpečení provozu mezi lusky pomocí zásad sítě v AKS][network-policy].
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

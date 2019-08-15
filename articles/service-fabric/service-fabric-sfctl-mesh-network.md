@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI - sfctl síť network | Dokumentace Microsoftu
-description: Popisuje příkazy Service Fabric CLI sfctl síť sítě.
+title: Azure Service Fabric CLI – síť sítě sfctl | Microsoft Docs
+description: Popisuje příkazy Service Fabric CLI sfctl Network.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,88 +8,87 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: feec5c4796c025c1707b4eb93bfe34b8d384ef3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e92fbc3856bba69db11aba6ad5d85e814bf30a81
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60694517"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035054"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh network
-Získání a odstranění síť síťovým prostředkům.
+Získat a odstranit síťové prostředky sítě.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
-| delete | Odstraní prostředek sítě. |
-| list | Uvádí všechny síťové prostředky. |
-| zobrazit | Získá síťový prostředek se zadaným názvem. |
+| odstraňovat | Odstraní síťový prostředek. |
+| list | Zobrazí seznam všech síťových prostředků. |
+| zobrazit | Získá síťový prostředek s daným názvem. |
 
-## <a name="sfctl-mesh-network-delete"></a>sfctl síť sítě delete
-Odstraní prostředek sítě.
+## <a name="sfctl-mesh-network-delete"></a>odstranění sítě v síti sfctl
+Odstraní síťový prostředek.
 
-Odstraní síťový prostředek určený podle názvu.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Popis|
-| --- | --- |
-| -Název -n [povinné] | Název sítě. |
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
-
-## <a name="sfctl-mesh-network-list"></a>seznam sítí sfctl sítě
-Uvádí všechny síťové prostředky.
-
-Získá informace o všech síťových prostředků v dané skupiny prostředků. Informace obsahují popis a další vlastnosti sítě.
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
-
-## <a name="sfctl-mesh-network-show"></a>sfctl síť sítě show
-Získá síťový prostředek se zadaným názvem.
-
-Získá informace o síťových prostředků se zadaným názvem. Informace obsahují popis a další vlastnosti sítě.
+Odstraní síťový prostředek identifikovaný názvem.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| -Název -n [povinné] | Název sítě. |
+| --Name-n [povinné] | Název sítě. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-mesh-network-list"></a>seznam sítí sítě sfctl
+Zobrazí seznam všech síťových prostředků.
+
+Načte informace o všech síťových prostředcích v dané skupině prostředků. Tyto informace zahrnují popis a další vlastnosti sítě.
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-mesh-network-show"></a>sfctl síť sítě – zobrazení
+Získá síťový prostředek s daným názvem.
+
+Načte informace o síťovém prostředku s daným názvem. Tyto informace zahrnují popis a další vlastnosti sítě.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --Name-n [povinné] | Název sítě. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další postup
-- [Nastavit](service-fabric-cli.md) Service Fabric CLI.
-- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

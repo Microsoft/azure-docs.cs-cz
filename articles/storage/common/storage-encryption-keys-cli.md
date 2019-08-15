@@ -1,6 +1,6 @@
 ---
-title: Konfigurovat klíče spravované zákazníkem pro šifrování Azure Storage z příkazového řádku Azure
-description: Zjistěte, jak nakonfigurovat spravované zákazníkem klíče pro šifrování Azure Storage pomocí Azure CLI. Klíče spravované zákazníkem umožňují vytvořit, otáčení, zakázat a odvolat přístup k ovládacím prvkům.
+title: Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure CLI
+description: Naučte se používat rozhraní příkazového řádku Azure ke konfiguraci klíčů spravovaných zákazníkem pro Azure Storage šifrování. Klíče spravované zákazníkem umožňují vytvářet, otáčet, zakazovat a odvolávat řízení přístupu.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,24 +9,28 @@ ms.date: 06/24/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 925b69e064e260a78a102a068f052ad7d396c380
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 837e3be209da1fe42ced9e4a23a75c46612cebd2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357060"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036619"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Konfigurovat klíče spravované zákazníkem pro šifrování Azure Storage z příkazového řádku Azure
+# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure CLI
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Tento článek ukazuje, jak konfigurovat službu key vault pomocí klíčů spravovaných zákazníkem pomocí Azure CLI.
+V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí Azure CLI.
 
-## <a name="assign-an-identity-to-the-storage-account"></a>Přiřaďte identitu do účtu úložiště
+> [!IMPORTANT]
+> Použití klíčů spravovaných zákazníkem se šifrováním Azure Storage vyžaduje, aby Trezor klíčů měl nakonfigurované dvě požadované vlastnosti, **obnovitelné odstranění** a Nemazat. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
+> Podporují se jenom klíče RSA a velikost klíče 2048.
 
-Pokud chcete povolit klíče spravované zákazníkem pro váš účet úložiště, mu nejdřív přiřadíte systém přiřadil spravovanou identitu do účtu úložiště. Tuto spravovanou identitu budete používat k udělení oprávnění účtu úložiště pro přístup k trezoru klíčů.
+## <a name="assign-an-identity-to-the-storage-account"></a>Přiřazení identity k účtu úložiště
 
-Chcete-li přiřadit spravovanou identitu pomocí Azure CLI, zavolejte [aktualizace účtu úložiště az](/cli/azure/storage/account#az-storage-account-update). Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami.
+Pokud chcete pro svůj účet úložiště povolit klíče spravované zákazníkem, nejdřív přiřaďte k účtu úložiště spravovanou identitu přiřazenou systémem. Pomocí této spravované identity udělíte účtu úložiště oprávnění k přístupu k trezoru klíčů.
+
+K přiřazení spravované identity pomocí Azure CLI volejte volání [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
 ```azurecli-interactive
 az account set --subscription <subscription-id>
@@ -37,13 +41,13 @@ az storage account update \
     --assign-identity
 ```
 
-Další informace o konfiguraci systém přiřadil spravovaných identit pomocí Azure CLI najdete v tématu [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md).
+Další informace o konfiguraci spravovaných identit přiřazených systémem pomocí Azure CLI najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md).
 
-## <a name="create-a-new-key-vault"></a>Vytvoření nové služby key vault
+## <a name="create-a-new-key-vault"></a>Vytvořit nový trezor klíčů
 
-Trezor klíčů, který použijete k uložení klíče spravované zákazníkem pro šifrování Azure Storage, musí mít dvě nastavení ochrany klíčů povolená, **obnovitelné odstranění** a **proveďte není vyprázdnit**. Chcete-li vytvořit nový trezor klíčů pomocí Powershellu nebo rozhraní příkazového řádku Azure povolena tato nastavení, spusťte následující příkazy. Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami. 
+Trezor klíčů, který použijete k uložení klíčů spravovaných zákazníkem pro Azure Storage šifrování, musí mít povolené dvě nastavení ochrany klíčů, **obnovitelné odstranění** a nemazatelné. Pokud chcete vytvořit nový trezor klíčů pomocí PowerShellu nebo Azure CLI s povoleným nastavením, spusťte následující příkazy. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami. 
 
-Chcete-li vytvořit nový trezor klíčů pomocí Azure CLI, zavolejte [az keyvault vytvořit](/cli/azure/keyvault#az-keyvault-create). Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami.
+Chcete-li vytvořit nový trezor klíčů pomocí rozhraní příkazového řádku Azure, zavolejte volání [AZ datatrezor Create](/cli/azure/keyvault#az-keyvault-create). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
 ```azurecli-interactive
 az keyvault create \
@@ -54,11 +58,11 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-## <a name="configure-the-key-vault-access-policy"></a>Konfigurace zásady přístupu trezoru klíčů
+## <a name="configure-the-key-vault-access-policy"></a>Konfigurace zásad přístupu trezoru klíčů
 
-V dalším kroku nakonfigurujte zásady přístupu pro trezor klíčů tak, aby účet úložiště má oprávnění k přístupu. V tomto kroku budete pomocí spravované identity, který jste dříve přiřadili k účtu úložiště.
+Dále nakonfigurujte zásady přístupu pro Trezor klíčů, aby měl účet úložiště oprávnění k přístupu. V tomto kroku použijete spravovanou identitu, kterou jste dříve přiřadili k účtu úložiště.
 
-Chcete-li nastavit zásady přístupu pro trezor klíčů, zavolejte [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy). Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami.
+Pokud chcete nastavit zásady přístupu pro Trezor klíčů, volejte volání [AZ webtrezor set-Policy](/cli/azure/keyvault#az-keyvault-set-policy). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
 ```azurecli-interactive
 storage_account_principal=$(az storage account show \
@@ -75,7 +79,7 @@ az keyvault set-policy \
 
 ## <a name="create-a-new-key"></a>Vytvořit nový klíč
 
-V dalším kroku vytvoření klíče v trezoru klíčů. Chcete-li vytvořit klíč, zavolejte [az keyvault key vytvořit](/cli/azure/keyvault/key#az-keyvault-key-create). Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami.
+V dalším kroku vytvořte klíč v trezoru klíčů. Chcete-li vytvořit klíč, zavolejte volání [AZ klíčů trezor Key Create](/cli/azure/keyvault/key#az-keyvault-key-create). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
 ```azurecli-interactive
 az keyvault key create
@@ -85,9 +89,9 @@ az keyvault key create
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem
 
-Ve výchozím nastavení používá šifrování služby Azure Storage klíčů spravovaných microsoftem. Konfigurace účtu služby Azure Storage pro klíče spravované zákazníkem a zadejte klíč, který chcete přidružit k účtu úložiště.
+Ve výchozím nastavení používá Azure Storage šifrování klíče spravované společností Microsoft. Nakonfigurujte účet Azure Storage pro klíče spravované zákazníkem a zadejte klíč, který chcete přidružit k účtu úložiště.
 
-Chcete-li aktualizovat nastavení šifrování účtu úložiště, zavolejte [aktualizace účtu úložiště az](/cli/azure/storage/account#az-storage-account-update). Tento příklad také dotazy pro identifikátor URI služby key vault a verzi klíče, obě hodnoty, které jsou potřeba k přidružení klíč účtu úložiště. Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami.
+Pokud chcete aktualizovat nastavení šifrování účtu úložiště, zavolejte [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update). Tento příklad také dotazuje se na identifikátor URI a verzi klíče trezoru klíčů, které hodnoty jsou potřeba k přidružení klíče k účtu úložiště. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -111,9 +115,9 @@ az storage account update
 
 ## <a name="update-the-key-version"></a>Aktualizace verze klíče
 
-Když vytvoříte novou verzi klíče, musíte aktualizovat účet úložiště na použití nové verze. Nejprve dotazování pro službu key vault URI voláním [az keyvault show](/cli/azure/keyvault#az-keyvault-show)a pro verzi klíče voláním [az keyvault key seznam verzí](/cli/azure/keyvault/key#az-keyvault-key-list-versions). Poté zavolejte [aktualizace účtu úložiště az](/cli/azure/storage/account#az-storage-account-update) aktualizace nastavení šifrování účtu úložiště používat novou verzi klíče, jak je znázorněno v předchozí části.
+Když vytváříte novou verzi klíče, budete muset aktualizovat účet úložiště, aby používal novou verzi. Nejdřív dotaz na identifikátor URI trezoru klíčů zavoláním [AZ klíčů show](/cli/azure/keyvault#az-keyvault-show)a pro verzi klíče zavoláním [AZ Key trezor Key list-versionss](/cli/azure/keyvault/key#az-keyvault-key-list-versions). Pak zavolejte [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update) a aktualizujte nastavení šifrování účtu úložiště tak, aby používala novou verzi klíče, jak je znázorněno v předchozí části.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md) 
+- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md) 
 - [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?

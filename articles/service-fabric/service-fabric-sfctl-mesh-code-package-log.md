@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI - sfctl mřížky protokol balíček kódu | Dokumentace Microsoftu
-description: Popisuje příkazy Service Fabric CLI sfctl síť protokol balíček kódu.
+title: Azure Service Fabric CLI – sfctl pro záznam o síti – balíček – protokol | Microsoft Docs
+description: Popisuje příkazy Service Fabric CLI sfctl pro rozhraní příkazového řádku-Package-log.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,54 +8,53 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e7bc8491071946eaa2e322517e5d36d681a49130
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1949f87dcdb1e3d9fe8e7fd08d8d8ba3b8203a0
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837636"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036444"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
-Získáte protokoly pro kontejner balíček zadaný kód pro repliku dané služby.
+Načte protokoly pro kontejner zadaného balíčku kódu pro danou repliku služby.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
-| získat | Získá protokoly z kontejneru. |
+| získat | Načte protokoly z kontejneru. |
 
-## <a name="sfctl-mesh-code-package-log-get"></a>sfctl síť protokol balíček kódu get
-Získá protokoly z kontejneru.
+## <a name="sfctl-mesh-code-package-log-get"></a>sfctl – kód sítě – balíček – načíst protokol
+Načte protokoly z kontejneru.
 
-Získá protokoly pro kontejner balíček zadaný kód repliku služby.
+Načte protokoly pro kontejner zadaného balíčku kódu repliky služby.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – název aplikace – název aplikace [povinné] | Název aplikace. |
-| – Kód balíčku název-[povinné] | Název balíčku pro kód služby. |
-| --[povinný] název repliky | Název repliky Service Fabric. |
-| --[povinný] název služby | Název služby. |
-| --Funkce tail | Počet řádků k zobrazení od konce protokoly. Výchozí hodnota je 100. 'všechny zobrazíte kompletní protokoly. |
+| --App-Name--název aplikace [povinné] | Název aplikace |
+| --Code-Package-Name [povinné] | Název balíčku kódu služby. |
+| --název repliky [povinné] | Název repliky Service Fabric. |
+| --Service-Name [povinné] | Název služby. |
+| --konec | Počet řádků, které se mají zobrazit na konci protokolů Výchozí hodnota je 100. All pro zobrazení úplných protokolů. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další postup
-- [Nastavit](service-fabric-cli.md) Service Fabric CLI.
-- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

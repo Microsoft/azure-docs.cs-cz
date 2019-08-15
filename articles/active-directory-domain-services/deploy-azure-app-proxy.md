@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: b3fb5d665380bc15b61d3b4b7913a992915f9afb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853838"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031035"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Nasazení Azure Proxy aplikací služby AD ve spravované doméně Azure AD Domain Services
 Proxy aplikace Azure Active Directory (AD) pomáhá podporovat vzdálené pracovní procesy publikováním místních aplikací, které jsou k dispozici prostřednictvím Internetu. S Azure AD Domain Services teď můžete nasouvat starší verze aplikací, které běží místně, do služby infrastruktury Azure. Tyto aplikace pak můžete publikovat pomocí Proxy aplikací služby AD Azure, abyste uživatelům ve vaší organizaci zajistili zabezpečený vzdálený přístup.
@@ -34,7 +34,7 @@ K provedení úkolů uvedených v tomto článku budete potřebovat:
 
 1. Platné **předplatné Azure**.
 2. **Adresář služby Azure AD** – buď synchronizovaný s místním adresářem, nebo s adresářem jenom pro Cloud.
-3. K použití Proxy aplikací služby AD Azure se vyžaduje **licence Azure AD Basic nebo Premium** .
+3. K použití Proxy aplikací služby AD Azure je nutná **licence Azure AD Premium** .
 4. **Azure AD Domain Services** musí být povolený pro adresář služby Azure AD. Pokud jste to ještě neudělali, postupujte podle všech úkolů popsaných v [průvodci Začínáme](create-instance.md).
 
 <br>

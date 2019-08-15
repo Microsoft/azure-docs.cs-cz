@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/18/2019
-ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 05e16a67e6b01ce3bd1f03f0649baa1358414ea7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640087"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035057"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -133,9 +133,13 @@ Pokud chcete převzít služby při selhání skupiny převzetí služeb při se
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Osvědčené postupy použití skupin převzetí služeb při selhání s izolovanými databázemi a elastickými fondy
 
-Skupina automatického převzetí služeb při selhání musí být nakonfigurovaná na primárním SQL Databasem serveru a bude připojena k sekundárnímu SQL Database serveru v jiné oblasti Azure.  Skupiny mohou obsahovat všechny nebo některé databáze na těchto serverech. Následující diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace s využitím více databází a skupiny s automatickým převzetím služeb při selhání.
+Skupina automatického převzetí služeb při selhání musí být nakonfigurovaná na primárním SQL Databasem serveru a bude připojena k sekundárnímu SQL Database serveru v jiné oblasti Azure. Skupiny mohou obsahovat všechny nebo některé databáze na těchto serverech. Následující diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace s využitím více databází a skupiny s automatickým převzetím služeb při selhání.
 
 ![automatické převzetí služeb při selhání](./media/sql-database-auto-failover-group/auto-failover-group.png)
+
+> [!NOTE]
+> Podrobný kurz přidání izolované databáze do skupiny převzetí služeb při selhání najdete v tématu [Přidání izolované databáze do skupiny převzetí služeb při selhání](sql-database-single-database-failover-group-tutorial.md) . 
+
 
 Při navrhování služby s ohledem na provozní kontinuitu se řiďte těmito obecnými pokyny:
 
@@ -167,12 +171,17 @@ Při navrhování služby s ohledem na provozní kontinuitu se řiďte těmito o
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Osvědčené postupy použití skupin převzetí služeb při selhání se spravovanými instancemi
 
-Skupina automatického převzetí služeb při selhání musí být nakonfigurovaná na primární instanci a bude připojena k sekundární instanci v jiné oblasti Azure.  Všechny databáze v instanci budou replikovány do sekundární instance. Následující diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace pomocí spravované instance a skupiny automatického převzetí služeb při selhání.
+> [!IMPORTANT]
+> Skupiny automatického převzetí služeb při selhání pro spravovanou instanci jsou ve verzi Public Preview.
+
+Skupina automatického převzetí služeb při selhání musí být nakonfigurovaná na primární instanci a bude připojena k sekundární instanci v jiné oblasti Azure.  Všechny databáze v instanci budou replikovány do sekundární instance. 
+
+Následující diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace pomocí spravované instance a skupiny automatického převzetí služeb při selhání.
 
 ![automatické převzetí služeb při selhání](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
-> [!IMPORTANT]
-> Skupiny automatického převzetí služeb při selhání pro spravovanou instanci jsou ve verzi Public Preview.
+> [!NOTE]
+> Podrobný kurz přidávání spravované instance do skupiny převzetí služeb při selhání najdete v tématu [Přidání spravované instance](sql-database-managed-instance-failover-group-tutorial.md) pro použití skupiny převzetí služeb při selhání. 
 
 Pokud vaše aplikace používá spravovanou instanci jako datovou vrstvu, postupujte při navrhování provozní kontinuity podle těchto obecných pokynů:
 
@@ -365,8 +374,12 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 | [Získat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Načte skupinu převzetí služeb při selhání. |
 | [Seznam skupin převzetí služeb při selhání – seznam podle umístění](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Vypíše skupiny převzetí služeb při selhání v umístění. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
+- Podrobné pokyny najdete v tématu.
+    - [Přidání jedné databáze do skupiny převzetí služeb při selhání](sql-database-single-database-failover-group-tutorial.md)
+    - [Přidat elastický fond do skupiny převzetí služeb při selhání](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [Přidání spravované instance do skupiny převzetí služeb při selhání](sql-database-managed-instance-failover-group-tutorial.md)
 - Ukázkové skripty najdete v těchto tématech:
   - [Konfigurace aktivní geografické replikace pro izolovanou databázi v Azure SQL Database pomocí PowerShellu](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [Použití PowerShellu ke konfiguraci aktivní geografické replikace pro databázi ve fondu v Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)

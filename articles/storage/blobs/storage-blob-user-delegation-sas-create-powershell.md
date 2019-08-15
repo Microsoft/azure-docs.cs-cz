@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5412b83d8dfe92c6a24e717fb371c8963b808566
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 86b5e4b6bcf65c2174fa3d3743551813ce2f8b1b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990790"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034737"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí PowerShellu (Preview)
 
@@ -32,11 +32,6 @@ Pokud chcete k vytvoření SAS delegování uživatele použít PowerShell, mus�
 
     - Odeberte všechny předchozí instalace Azure PowerShell z Windows pomocí nastavení **funkce & aplikace** v části **Nastavení**.
     - Odeberte všechny moduly **Azure** z `%Program Files%\WindowsPowerShell\Modules`.
-    - Vzhledem k tomu, že PowerShell načítá nejnovější modul AZ. Storage ve výchozím nastavení, může být při spuštění konzoly nutné explicitně načíst modul 1.3.1-Preview. Chcete-li explicitně načíst modul verze Preview, spusťte příkaz [Import-Module](/powershell/module/microsoft.powershell.core/import-module) :
-
-        ```powershell
-        Import-Module Az.Storage -RequiredVersion 1.3.1
-        ```
 
 1. Ujistěte se, že máte nainstalovanou nejnovější verzi PowerShellGet. Otevřete okno prostředí Windows PowerShell a spuštěním následujícího příkazu nainstalujte nejnovější verzi:
 
@@ -55,10 +50,21 @@ Pokud chcete k vytvoření SAS delegování uživatele použít PowerShell, mus�
 1. Nainstalujte modul Azure Storage Preview, který podporuje SAS delegování uživatele:
 
     ```powershell
-    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.3.1-preview –AllowPrerelease –AllowClobber –Force
+    Install-Module Az.Storage `
+        –Repository PSGallery `
+        -RequiredVersion 1.3.1-preview `
+        –AllowPrerelease `
+        –AllowClobber `
+        –Force
     ```
 
 1. Zavřete a znovu otevřete okno PowerShellu.
+
+Vzhledem k tomu, že PowerShell načítá nejnovější modul AZ. Storage ve výchozím nastavení, může být při spuštění konzoly nutné explicitně načíst modul 1.3.1-Preview. Chcete-li explicitně načíst modul verze Preview, spusťte příkaz [Import-Module](/powershell/module/microsoft.powershell.core/import-module) :
+
+```powershell
+Import-Module Az.Storage -RequiredVersion 1.3.1
+```
 
 Další informace o instalaci Azure PowerShell najdete v tématu [instalace Azure PowerShell pomocí PowerShellGet](/powershell/azure/install-az-ps).
 
@@ -142,8 +148,7 @@ New-AzStorageBlobSASToken -Context $ctx `
 Vrácený identifikátor URI SAS pro delegování uživatele bude vypadat přibližně takto:
 
 ```
-https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=4f6QzTteEZmrEMXWn7iEeI27vHrX13zVmL6rk2MbiyA%3D&skoid=e5981635-dcf0-4279-ab7b-ca1cbdf4a5c7&sktid=72f988bf-86f1-41af-91ab
--2d7cd011db47&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
+https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
 ```
 
 > [!NOTE]
@@ -160,7 +165,7 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
     -StorageAccountName <storage-account>
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="next-steps"></a>Další postup
 
 - [Vytvoření SAS delegování uživatele (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
 - [Získat operaci klíče delegování uživatele](/rest/api/storageservices/get-user-delegation-key)

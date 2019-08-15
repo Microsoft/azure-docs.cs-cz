@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 312f6746cb02aa66b0e7f8b47cb10e52558fa542
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 118a36587667c815489ddad03426b5cfcfee7382
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323160"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036687"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -67,9 +67,10 @@ Další omezení nastavená službou Batch. Na rozdíl od [kvót prostředků](#
 | --- | --- |
 | [Souběžné úkoly](batch-parallel-node-tasks.md) na výpočetní uzel | 4 x počet jader uzlů |
 | Počet [aplikací](batch-application-packages.md) na účet Batch | 20 |
-| Balíčky aplikací na aplikaci | 40 |
+| Balíčky aplikací na jednu aplikaci | 40 |
 | Balíčky aplikací na fond | 10 |
 | Maximální doba života úlohy | 180 dnů<sup>1</sup> |
+| Počet [připojení](virtual-file-mount.md) na výpočetní uzel | 10 |
 
 <sup>1</sup> maximální doba života úkolu, od kdy se přidá do úlohy po jeho dokončení, je 180 dní. Dokončené úlohy trvají po dobu sedmi dnů; data pro úlohy, které nejsou dokončená v rámci maximální doby života, nejsou dostupná.
 

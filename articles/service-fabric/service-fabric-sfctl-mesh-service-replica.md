@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI - sfctl mřížky repliku služby | Dokumentace Microsoftu
-description: Popisuje příkazy Service Fabric CLI sfctl síť repliku služby.
+title: Azure Service Fabric CLI – služba sítě sfctl – replika | Microsoft Docs
+description: Popisuje příkazy Service Fabric CLI sfctl sítě – repliky.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,75 +8,74 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 1e0955ef2a52a6313f0449b956229e03f0a5b5e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6819bb32eecf8477e2c0727b50641858db21c784
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038444"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035911"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
-Získáte podrobnosti repliky a seznam replik dané služby v prostředek aplikace.
+Získá podrobnosti o replice a vypíše repliky dané služby v prostředku aplikace.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
 | list | Zobrazí seznam všech replik služby. |
-| zobrazit | Získá dané repliky služby aplikace. |
+| zobrazit | Získá danou repliku služby aplikace. |
 
-## <a name="sfctl-mesh-service-replica-list"></a>sfctl síť repliku služby seznamu
+## <a name="sfctl-mesh-service-replica-list"></a>Služba sítě sfctl – seznam replik
 Zobrazí seznam všech replik služby.
 
-Získá informace o všech replik služby. Informace obsahují popis a další vlastnosti repliku služby.
+Získá informace o všech replikách služby. Tyto informace zahrnují popis a další vlastnosti repliky služby.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – název aplikace – název aplikace [povinné] | Název aplikace. |
-| --[povinný] název služby | Název služby. |
+| --App-Name--název aplikace [povinné] | Název aplikace |
+| --Service-Name [povinné] | Název služby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-mesh-service-replica-show"></a>sfctl síť repliku služby show
-Získá dané repliky služby aplikace.
+## <a name="sfctl-mesh-service-replica-show"></a>Služba sítě sfctl – zobrazení repliky
+Získá danou repliku služby aplikace.
 
-Získá informace o repliku služby se zadaným názvem. Informace obsahují popis a další vlastnosti repliku služby.
+Načte informace o replice služby se zadaným názvem. Tyto informace zahrnují popis a další vlastnosti repliky služby.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – název aplikace – název aplikace [povinné] | Název aplikace. |
-| -Název -n [povinné] | Název repliku služby. |
-| --[povinný] název služby | Název služby. |
+| --App-Name--název aplikace [povinné] | Název aplikace |
+| --Name-n [povinné] | Název repliky služby. |
+| --Service-Name [povinné] | Název služby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další postup
-- [Nastavit](service-fabric-cli.md) Service Fabric CLI.
-- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

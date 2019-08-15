@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI - sfctl je | Dokumentace Microsoftu
-description: Popisuje, Service Fabric CLI sfctl je příkazy.
+title: Azure Service Fabric CLI – sfctl je | Microsoft Docs
+description: Popisuje příkazy Service Fabric CLI sfctl jsou příkazy.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,76 +8,75 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 2039dd9222809d2c05aaeaf01f9d38c51f3b3797
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 998a94350250402d4face64f64e12f32cf5b2a36
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837302"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036498"
 ---
 # <a name="sfctl-is"></a>sfctl is
-Dotazování a posílání příkazů do služeb infrastruktury.
+Dotazování a posílání příkazů do služby infrastruktury
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
 | Příkaz | Vyvolá příkaz pro správu v dané instanci služby infrastruktury. |
-| query | Vyvolá dotazu jen pro čtení na instanci služby dané infrastruktury. |
+| query | Vyvolá dotaz jen pro čtení v dané instanci služby infrastruktury. |
 
 ## <a name="sfctl-is-command"></a>sfctl je příkaz
 Vyvolá příkaz pro správu v dané instanci služby infrastruktury.
 
-Pro clustery, které mají jednu nebo více instancí služby infrastruktury nakonfigurované toto rozhraní API poskytuje způsob, jak odesílat příkazy specifické pro infrastrukturu k určité instanci služby infrastruktury. Dostupné příkazy a jejich odpovídající odpověď formáty lišit v závislosti na infrastrukturu, na kterém je spuštěný cluster. Toto rozhraní API podporuje platformy Service Fabric; není určena pro použití přímo v kódu.
+V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí služby infrastruktury, poskytuje toto rozhraní API způsob, jak do konkrétní instance služby infrastruktury odeslat příkazy specifické pro infrastrukturu. Dostupné příkazy a jejich odpovídající formáty odpovědi se liší v závislosti na infrastruktuře, na které je cluster spuštěný. Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použití přímo v kódu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – příkaz [povinné] | Text příkazu, který má být volána. Obsah příkazu je specifické pro infrastrukturu. |
-| --service-id | Identita služeb infrastruktury. <br><br> Toto je úplný název služeb infrastruktury bez "fabric\:' schéma identifikátoru URI. Tento parametr se vyžaduje jenom pro cluster, který má více než jednu instanci služby infrastruktury, které jsou spuštěné. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --příkaz [povinné] | Text příkazu, který má být vyvolán. Obsah příkazu je závislý na infrastruktuře. |
+| --service-id | Identita služby infrastruktury <br><br> Toto je úplný název služby infrastruktury bez schématu identifikátoru URI Fabric\:. Tento parametr je vyžadován pouze pro cluster, který má spuštěnu více než jednu instanci služby infrastruktury. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-is-query"></a>sfctl je dotaz
-Vyvolá dotazu jen pro čtení na instanci služby dané infrastruktury.
+Vyvolá dotaz jen pro čtení v dané instanci služby infrastruktury.
 
-Toto rozhraní API poskytuje pro clustery, které mají jednu nebo více instancí služeb infrastruktury, které jsou nakonfigurované tak, aby odesílal specifické pro infrastrukturu dotazy na konkrétní instanci služby infrastruktury. Dostupné příkazy a jejich odpovídající odpověď formáty lišit v závislosti na infrastrukturu, na kterém je spuštěný cluster. Toto rozhraní API podporuje platformy Service Fabric; není určena pro použití přímo v kódu.
+V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí služby infrastruktury, poskytuje toto rozhraní API způsob, jak odesílat dotazy specifické pro infrastrukturu do konkrétní instance služby infrastruktury. Dostupné příkazy a jejich odpovídající formáty odpovědi se liší v závislosti na infrastruktuře, na které je cluster spuštěný. Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použití přímo v kódu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – příkaz [povinné] | Text příkazu, který má být volána. Obsah příkazu je specifické pro infrastrukturu. |
-| --service-id | Identita služeb infrastruktury. <br><br> Toto je úplný název služeb infrastruktury bez "fabric\:' schéma identifikátoru URI. Tento parametr se vyžaduje jenom pro cluster, který má více než jednu instanci služby infrastruktury, které jsou spuštěné. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --příkaz [povinné] | Text příkazu, který má být vyvolán. Obsah příkazu je závislý na infrastruktuře. |
+| --service-id | Identita služby infrastruktury <br><br> Toto je úplný název služby infrastruktury bez schématu identifikátoru URI Fabric\:. Tento parametr je vyžadován pouze pro cluster, který má spuštěnu více než jednu instanci služby infrastruktury. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
-## <a name="next-steps"></a>Další postup
-- [Nastavit](service-fabric-cli.md) Service Fabric CLI.
-- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+## <a name="next-steps"></a>Další kroky
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

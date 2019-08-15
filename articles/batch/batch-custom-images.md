@@ -1,21 +1,21 @@
 ---
-title: Zřídit fond Azure Batch z vlastní image | Microsoft Docs
-description: Vytvořte fond služby Batch z vlastní image a zřídíte tak výpočetní uzly, které obsahují software a data potřebná pro vaši aplikaci. Vlastní image představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
+title: Vytvoření Azure Batch fondu pomocí Galerie sdílených imagí | Microsoft Docs
+description: Vytvořte fond služby Batch pomocí Galerie sdílených imagí a zřiďte vlastní image pro výpočetní uzly, které obsahují software a data, která pro vaši aplikaci potřebujete. Vlastní image představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
 services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 08/14/2019
 ms.author: lahugh
-ms.openlocfilehash: d8bda817231ec0a5a733d5e586e49639c62ea177
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882831"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036703"
 ---
-# <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Použití vlastní image k vytvoření fondu virtuálních počítačů
+# <a name="use-the-shared-image-gallery-to-create-a-pool"></a>Vytvoření fondu pomocí Galerie sdílených imagí
 
 Když vytváříte fond Azure Batch s použitím konfigurace virtuálního počítače, zadáte image virtuálního počítače, která poskytuje operační systém pro každý výpočetní uzel ve fondu. Můžete vytvořit fond virtuálních počítačů s podporovaným Azure Marketplace imagí nebo vytvořit vlastní image pomocí [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md).
 

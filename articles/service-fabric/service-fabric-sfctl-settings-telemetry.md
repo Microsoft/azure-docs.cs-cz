@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI sfctl nastavení telemetrie | Dokumentace Microsoftu
-description: Popisuje příkazy Service Fabric CLI sfctl nastavení telemetrie.
+title: Azure Service Fabric CLI – telemetrie nastavení sfctl | Microsoft Docs
+description: Popisuje příkazy telemetrie Service Fabric CLI sfctl Settings.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,49 +8,48 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 42a82ab0be37f260a48a1da6cecab5120c24d293
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf5ebbeb4d9b4757e0c55eeb1a9268065efb2c7c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556334"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035206"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
-Konfigurace nastavení telemetrie pro tuto instanci sfctl místní.
+Nakonfigurujte nastavení telemetrie jako místní pro tuto instanci sfctl.
 
-Shromažďuje telemetrická data Sfctl název příkazu bez parametrů, které jsou k dispozici nebo jejich hodnoty sfctl verze, typ operačního systému, verze pythonu, úspěch nebo neúspěch příkazu, který vrátí chybovou zprávu.
+Telemetrie Sfctl shromažďuje název příkazu bez zadaných parametrů nebo jejich hodnot, verze Sfctl, typ operačního systému, verze Pythonu, úspěch nebo neúspěch příkazu, vrácená chybová zpráva.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
-| nastavení telemetrie | Zapnout nebo vypnout telemetrii. |
+| sada-telemetrie | Zapnutí nebo vypnutí telemetrie. |
 
-## <a name="sfctl-settings-telemetry-set-telemetry"></a>sfctl nastavení telemetrie set telemetrie
-Zapnout nebo vypnout telemetrii.
+## <a name="sfctl-settings-telemetry-set-telemetry"></a>sada telemetrie nastavení sfctl – telemetrie
+Zapnutí nebo vypnutí telemetrie.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
 | --vypnuto | Vypněte telemetrii. |
-| – na | Zapněte telemetrii. Toto je výchozí hodnota. |
+| --zapnuto | Zapnout telemetrii. Toto je výchozí hodnota. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ### <a name="examples"></a>Příklady
 
@@ -60,7 +59,7 @@ Vypněte telemetrii.
 sfctl settings telemetry set_telemetry --off
 ```
 
-Zapněte telemetrii.
+Zapnout telemetrii.
 
 ```
 sfctl settings telemetry set_telemetry --on
@@ -68,5 +67,5 @@ sfctl settings telemetry set_telemetry --on
 
 
 ## <a name="next-steps"></a>Další postup
-- [Nastavit](service-fabric-cli.md) Service Fabric CLI.
-- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI sfctl oddílem | Dokumentace Microsoftu
-description: Popisuje příkazy Service Fabric CLI sfctl oddílu.
+title: Azure Service Fabric CLI – oddíl sfctl | Microsoft Docs
+description: Popisuje příkazy Service Fabric CLI sfctl na oddíly.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,403 +8,402 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: f7c9bcc51757100cb1fc957dee12213bc8bf2eec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 54cf0a60c86e82880573dd18dcb80ece8e1e51f2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556597"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035005"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
-Dotazování a správu oddílů pro libovolnou službu.
+Dotazování a Správa oddílů pro libovolnou službu.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
-| data-loss | Toto rozhraní API způsobí ztrátu dat pro zadaný oddíl. |
-| data-loss-status | Získá průběh operace ztráty dat oddílu začít používat rozhraní API StartDataLoss. |
-| health | Získá stav zadaný oddíl Service Fabric. |
+| ztráta dat | Toto rozhraní API bude mít za následek ztrátu dat pro zadaný oddíl. |
+| data-loss-status | Získá průběh operace ztráty dat oddílu zahájeného pomocí rozhraní StartDataLoss API. |
+| health | Získá stav zadaného oddílu Service Fabric. |
 | info | Získá informace o oddílu Service Fabric. |
-| list | Získá seznam oddílů služby Service Fabric. |
+| list | Načte seznam oddílů Service Fabric služby. |
 | load | Získá informace o načtení zadaného oddílu Service Fabric. |
-| načíst obnovit | Obnoví aktuální zatížení oddílů Service Fabric. |
-| ztráty kvora | Indukuje ztráty kvora pro daný stavové služby oddíl. |
-| quorum-loss-status | Získá průběh operace ztrátou kvora v oddílu pomocí rozhraní API StartQuorumLoss spuštěna. |
-| Obnovit | Do clusteru Service Fabric označuje, že by měl pokusí o zotavení konkrétního oddílu, který je aktuálně zablokované ve ztrátě kvora. |
-| obnovení – to všechno | Do clusteru Service Fabric označuje, že by měl pokusí o zotavení veškeré služby (včetně systémových služeb), které jsou aktuálně zablokované ve ztrátě kvora. |
-| report-health | Odešle zprávu o stavu v Service Fabric oddílu. |
-| restart | Toto rozhraní API se restartuje, některé nebo všechny replik nebo instancí zadaný oddíl. |
-| restart-status | Získá průběh operace PartitionRestart začít používat StartPartitionRestart. |
+| Load-Reset | Obnoví aktuální zatížení oddílu Service Fabric. |
+| výpadek kvora | Vystaví ztrátu kvora pro daný oddíl stavové služby. |
+| kvorum – stav ztráty | Získá průběh operace ztráty kvora u oddílu zahájeného pomocí rozhraní StartQuorumLoss API. |
+| opravitelné | Určuje Cluster Service Fabric, který by se měl pokusit obnovit konkrétní oddíl, který je aktuálně zablokovaný ve ztrátě kvora. |
+| Obnovit – vše | Určuje Cluster Service Fabric, který by se měl pokusit obnovit jakékoli služby (včetně systémových služeb), které jsou aktuálně zablokované ve ztrátě kvora. |
+| report-health | Odešle zprávu o stavu Service Fabric oddíl. |
+| restart | Toto rozhraní API bude restartovat některé nebo všechny repliky nebo instance zadaného oddílu. |
+| restart-status | Získá průběh operace PartitionRestart spuštěné pomocí StartPartitionRestart. |
 | svc-name | Získá název služby Service Fabric pro oddíl. |
 
-## <a name="sfctl-partition-data-loss"></a>sfctl oddílu-ztráty dat
-Toto rozhraní API způsobí ztrátu dat pro zadaný oddíl.
+## <a name="sfctl-partition-data-loss"></a>data oddílu sfctl – ztráta
+Toto rozhraní API bude mít za následek ztrátu dat pro zadaný oddíl.
 
-Aktivuje volání rozhraní API OnDataLossAsync oddílu.  Toto rozhraní API způsobí ztrátu dat pro zadaný oddíl. Aktivuje volání rozhraní API OnDataLoss oddílu. Skutečná data ztráty bude záviset na zadané DataLossMode.  <br> -PartialDataLoss – pouze kvorum replik se odeberou a OnDataLoss se aktivuje pro oddíl, ale skutečná data ztráty závisí na přítomnosti vydávaných za pochodu replikace.  <br> -FullDataLoss – všechny repliky se odeberou. proto dojde ke ztrátě všech dat a OnDataLoss se aktivuje. Toto rozhraní API by měla volat pouze se stavovou službou jako cíl. Volající toto rozhraní API s využitím služby systému jako cíl se nedoporučuje.
+Spustí volání rozhraní API OnDataLossAsync oddílu.  Toto rozhraní API bude mít za následek ztrátu dat pro zadaný oddíl. Spustí volání rozhraní API OnDataLoss oddílu. Skutečná ztráta dat bude záviset na zadané režim datalossmode.  <br> -PartialDataLoss – odeberou se jenom kvorum replik a pro oddíl se aktivuje OnDataLoss, ale skutečná ztráta dat závisí na přítomnosti replikace v letadle.  <br> -FullDataLoss – všechny repliky se odeberou, takže se ztratí všechna data a aktivuje se OnDataLoss. Toto rozhraní API by mělo být jako cíl voláno pouze se stavovou službou. Volání tohoto rozhraní API se systémovou službou, protože cíl není doporučeno.
 
 > [!NOTE] 
-> Po zavolání tohoto rozhraní API nelze vrátit. Volání CancelOperation pouze zastavit provádění a vyčistit stav vnitřní systému. Pokud příkaz posunula dostatečně daleko způsobit ztrátu dat ho nebudou data obnovit. Volání rozhraní API GetDataLossProgress s stejným OperationId k vrácení informací o operaci spustit pomocí tohoto rozhraní API.
+> Po zavolání tohoto rozhraní API ho nejde vrátit zpět. Volání CancelOperation zastaví provádění a vyčistí stav interního systému. Nebude data obnovovat, pokud příkaz pokračoval dostatečně daleko, aby způsobil ztrátu dat. Zavolejte rozhraní API GetDataLossProgress se stejným OperationId a vraťte informace o operaci spuštěnou s tímto rozhraním API.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --– ztráta režim dat [povinné] | Tento výčet je předán do rozhraní API StartDataLoss označíte, jaký typ ztrátě dat. Chcete-li zahájit. |
-| – id operace [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  To je předán do odpovídajícího GetProgress rozhraní API. |
-| – id oddílu [povinné] | Identita oddílu. |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --data-ztráta-Mode [povinné] | Tento výčet je předán rozhraní StartDataLoss API, které určuje, jaký typ ztráty dat má způsobit podnět. |
+| --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-data-loss-status"></a>sfctl oddílu – ztráta stav dat
-Získá průběh operace ztráty dat oddílu začít používat rozhraní API StartDataLoss.
+## <a name="sfctl-partition-data-loss-status"></a>data oddílu sfctl – ztráta stavu
+Získá průběh operace ztráty dat oddílu zahájeného pomocí rozhraní StartDataLoss API.
 
-Získá průběh operace s daty ke ztrátě StartDataLoss pomocí OperationId můžete začít.
+Získá průběh operace ztráty dat zahájené s StartDataLoss pomocí OperationId.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id operace [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  To je předán do odpovídajícího GetProgress rozhraní API. |
-| – id oddílu [povinné] | Identita oddílu. |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-health"></a>sfctl partition health
-Získá stav zadaný oddíl Service Fabric.
+## <a name="sfctl-partition-health"></a>stav sfctl oddílu
+Získá stav zadaného oddílu Service Fabric.
 
-EventsHealthStateFilter použijte k filtrování kolekce událostí stavu hlášené pro službu založenou na stav v pořádku. ReplicasHealthStateFilter použijte k filtrování kolekce objektů ReplicaHealthState v oddílu. Pokud chcete zadat oddíl, který neexistuje v health store, tento požadavek vrátí chybu.
+Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlášených ve službě na základě stavu. Pomocí ReplicasHealthStateFilter můžete filtrovat kolekci objektů ReplicaHealthState v oddílu. Pokud zadáte oddíl, který v Health Store neexistuje, vrátí tato žádost chybu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id oddílu [povinné] | Identita oddílu. |
-| --events-health-state-filter | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --exclude statistiky stavu | Určuje, zda má být vrácen statistik stavu jako součást výsledků dotazu. Ve výchozím nastavení False. Statistiky ukazují počet podřízených entit ve stavu Ok, upozornění a chyby. |
-| --replicas-health-state-filter | Umožňuje filtrování kolekce objektů ReplicaHealthState v oddílu. Nejde získat hodnotu z členů nebo bitové operace u členů HealthStateFilter. Vrátí se pouze repliky, které odpovídají filtru. Všechny repliky se použije k vyhodnocení agregovaný stav v pořádku. Pokud se nezadá, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 pak všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4) vrátí se. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --events-health-state-filter | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
+| --Exclude-Health-Statistics | Určuje, zda mají být v rámci výsledku dotazu vráceny statistiky stavu. Výchozí hodnota je false. Statistika zobrazuje počet podřízených entit ve stavu OK, varování a chyba. |
+| --replicas-health-state-filter | Umožňuje filtrovat kolekci objektů ReplicaHealthState v oddílu. Hodnotu lze získat z členů nebo bitových operací na členech HealthStateFilter. Vrátí se jenom repliky, které odpovídají filtru. Všechny repliky budou použity k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčty založené na příznak, takže hodnota by mohla být kombinací těchto hodnot získaných pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4). Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů.  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-partition-info"></a>informace o oddílu sfctl
 Získá informace o oddílu Service Fabric.
 
-Získá informace o zadaný oddíl. Odpověď obsahuje ID oddílu, informace o dělení schéma, klíče nepodporuje oddílu, stav, stav a další podrobnosti o oddílu.
+Načte informace o zadaném oddílu. Odpověď zahrnuje ID oddílu, informace o schématu dělení a klíče podporované oddílem, stavem, stavem a dalšími podrobnostmi o oddílu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id oddílu [povinné] | Identita oddílu. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-list"></a>sfctl seznam oddílů
-Získá seznam oddílů služby Service Fabric.
+## <a name="sfctl-partition-list"></a>Seznam oddílů sfctl
+Načte seznam oddílů Service Fabric služby.
 
-Odpověď obsahuje ID oddílu, informace o dělení schéma, klíče nepodporuje oddílu, stav, stav a další podrobnosti o oddílu.
+Odpověď zahrnuje ID oddílu, informace o schématu dělení a klíče podporované oddílem, stavem, stavem a dalšími podrobnostmi o oddílu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --token pro pokračování | Parametr tokenu pokračování slouží k získání další sadu výsledků. Token pro pokračování se neprázdná hodnota je zahrnutý v odpovědi rozhraní API, když výsledky ze systému se nevejdou do odpověď o jedné. Když je tato hodnota předána na další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak pokračovací token neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódování URL. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-load"></a>sfctl zatížení oddílu
+## <a name="sfctl-partition-load"></a>zatížení oddílu sfctl
 Získá informace o načtení zadaného oddílu Service Fabric.
 
-Vrátí informace o načtení zadaný oddíl. Odpověď obsahuje seznam sestav zatížení pro oddíl Service Fabric. Každá sestava obsahuje zatížení metriky název, hodnotu a poslední vykazovaného časového ve standardu UTC.
+Vrátí informace o zatížení zadaného oddílu. Odpověď obsahuje seznam sestav načtení pro Service Fabric oddíl. Každá sestava obsahuje název a hodnotu metriky zatížení a poslední nahlášený čas ve standardu UTC.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id oddílu [povinné] | Identita oddílu. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-load-reset"></a>sfctl oddílu načíst obnovit
-Obnoví aktuální zatížení oddílů Service Fabric.
+## <a name="sfctl-partition-load-reset"></a>zátěžové obnovení oddílu sfctl
+Obnoví aktuální zatížení oddílu Service Fabric.
 
-Obnoví aktuální zatížení oddílů Service Fabric zatížení výchozí služby.
+Obnoví aktuální zatížení Service Fabricho oddílu na výchozí zatížení služby.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id oddílu [povinné] | Identita oddílu. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-quorum-loss"></a>sfctl oddílu-ztráty kvora
-Indukuje ztráty kvora pro daný stavové služby oddíl.
+## <a name="sfctl-partition-quorum-loss"></a>kvorum oddílu sfctl – ztráta
+Vystaví ztrátu kvora pro daný oddíl stavové služby.
 
-Toto rozhraní API je vhodný pro situace ke ztrátě dočasné kvora pro vaši službu. Volání rozhraní API GetQuorumLossProgress s stejným OperationId k vrácení informací o operaci spustit pomocí tohoto rozhraní API. Lze volat pouze pro stavové trvalé (HasPersistedState == true) služby.  Nepoužívejte toto rozhraní API na služby bezstavové nebo stavové služby pouze v paměti.
+Toto rozhraní API je užitečné pro situaci s dočasnou ztrátou kvora ve vaší službě. Zavolejte rozhraní API GetQuorumLossProgress se stejným OperationId a vraťte informace o operaci spuštěnou s tímto rozhraním API. Tato možnost se dá volat jenom u stavových trvale trvalých služeb (HasPersistedState = = true).  Nepoužívejte toto rozhraní API pro bezstavové služby nebo stavové služby pouze v paměti.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id operace [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  To je předán do odpovídajícího GetProgress rozhraní API. |
-| – id oddílu [povinné] | Identita oddílu. |
-| --kvora – ztráta – doba trvání [povinné] | Množství času, pro kterou se uchovají oddílu ve ztrátě kvora.  To je třeba zadat v řádu sekund. |
-| --– ztráta Režim kvora [povinné] | Tento výčet je předán rozhraní API StartQuorumLoss označíte, jaký typ vyvolávat ke ztrátě kvora. |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --kvorum – ztráta – doba trvání [požadováno] | Doba, po kterou se bude oddíl uchovávat při ztrátě kvora.  Tento parametr je nutné zadat v sekundách. |
+| --kvorum – režim ztráty [povinné] | Tento výčet je předán rozhraní StartQuorumLoss API, které určuje, jaký typ ztráty kvora má způsobit. |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-quorum-loss-status"></a>sfctl oddílu kvora ztrátu status
-Získá průběh operace ztrátou kvora v oddílu pomocí rozhraní API StartQuorumLoss spuštěna.
+## <a name="sfctl-partition-quorum-loss-status"></a>kvorum oddílu sfctl – ztráta – stav
+Získá průběh operace ztráty kvora u oddílu zahájeného pomocí rozhraní StartQuorumLoss API.
 
-Získá průběh operace ztrátě kvora můžete začít StartQuorumLoss, pomocí zadané ID operace.
+Načte průběh operace ztráty kvora zahájené s StartQuorumLoss pomocí poskytnutého OperationId.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id operace [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  To je předán do odpovídajícího GetProgress rozhraní API. |
-| – id oddílu [povinné] | Identita oddílu. |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-recover"></a>Obnovit oddíl sfctl
-Do clusteru Service Fabric označuje, že by měl pokusí o zotavení konkrétního oddílu, který je aktuálně zablokované ve ztrátě kvora.
+## <a name="sfctl-partition-recover"></a>obnovení oddílu sfctl
+Určuje Cluster Service Fabric, který by se měl pokusit obnovit konkrétní oddíl, který je aktuálně zablokovaný ve ztrátě kvora.
 
-Tato operace by měla provést pouze v případě je známo, že není možné obnovit repliky, které jsou vypnuté. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat.
+Tato operace by měla být provedena pouze v případě, že je známo, že nelze obnovit repliky, které jsou mimo provoz. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id oddílu [povinné] | Identita oddílu. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-recover-all"></a>sfctl oddílu recover-all
-Do clusteru Service Fabric označuje, že by měl pokusí o zotavení veškeré služby (včetně systémových služeb), které jsou aktuálně zablokované ve ztrátě kvora.
+## <a name="sfctl-partition-recover-all"></a>sfctl oddílu Recovery – vše
+Určuje Cluster Service Fabric, který by se měl pokusit obnovit jakékoli služby (včetně systémových služeb), které jsou aktuálně zablokované ve ztrátě kvora.
 
-Tato operace by měla provést pouze v případě je známo, že není možné obnovit repliky, které jsou vypnuté. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat.
+Tato operace by měla být provedena pouze v případě, že je známo, že nelze obnovit repliky, které jsou mimo provoz. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-report-health"></a>Stav sestavy oddílu sfctl
-Odešle zprávu o stavu v Service Fabric oddílu.
+## <a name="sfctl-partition-report-health"></a>Sestava sfctl oddílu – stav
+Odešle zprávu o stavu Service Fabric oddíl.
 
-Sestavy stav zadaný oddíl Service Fabric. Sestava může obsahovat informace o zdroji sestava stavu a na kterém je uvedena vlastnost. Sestava je odeslána do Service Fabric gateway oddíl, který se předává k úložišti stavů. Sestava může být přijal brány, ale odmítnuté úložiště stavu po další ověření. Úložiště stavu může třeba odmítnout sestavy z důvodu neplatného parametru, jako jsou zastaralé pořadové číslo. Pokud chcete zobrazit, zda byla použita sestava v health store, zkontrolujte, že sestava se zobrazí v části události.
+Hlásí stav zadaného oddílu Service Fabric. Sestava musí obsahovat informace o zdroji sestavy stavu a vlastnosti, na které je hlášena. Sestava se odešle do oddílu Service Fabric brány, který se přepošle na Health Store. Tuto sestavu může přijmout brána, ale Health Store po dodatečném ověření odmítnuta. Health Store například může zprávu odmítat z důvodu neplatného parametru, jako je například zastaralé pořadové číslo. Chcete-li zjistit, zda byla sestava použita v Health Store, zkontrolujte, zda se sestava zobrazí v části události.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – Stav – vlastnost [povinné] | Vlastnost s informacemi o stavu. <br><br> Entita může mít sestav o stavu pro různé vlastnosti. Vlastnost je řetězec a oprava výčet umožňují flexibilní reportérka ke kategorizaci podmínku stavu, který spouští sestavu. Například reportérka s ID zdroje "LocalWatchdog" můžete monitorovat stav disku v uzlu, tak ho může hlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné reportérka můžete monitorovat připojení uzlu, takže ho může hlásit vlastnost "Připojení" ve stejném uzlu. V health store tyto sestavy jsou považovány za události samostatné stavu pro zadaný uzel. Spolu s ID zdroje vlastnost jednoznačně identifikuje informací o stavu. |
-| – Stav [povinné] | Možné hodnoty zahrnují\: "Neplatný", "Ok", "Upozorňující", "Chyba", "Neznámý". |
-| – id oddílu [povinné] | Identita oddílu. |
-| – id zdroje [povinné] | Název zdroje, který identifikuje klienta/sledovacího zařízení/systémové součásti, které vygenerovalo informací o stavu. |
-| – Popis | Popis informací o stavu. <br><br> Představuje libovolný text pro přidání lidské čitelné informace o sestavě. Maximální délka řetězce popis je 4096 znaků. Pokud zadaný řetězec je delší, bude automaticky zkrácen. Při zkráceno, poslední znaky popis obsahovat značky "[zkrátila]" a celkový počet řetězec velikost je 4 096 znaků. Výskyt značky určuje uživatelům této zkrácení došlo k chybě. Všimněte si, že při zkráceno, popis má menší než 4096 znaků z původního řetězce. |
-| --okamžité | Příznak, který udává, zda sestavy by měl být odesílány okamžitě. <br><br> Sestava stavu posílá do Service Fabric gateway aplikace, který se předává k úložišti stavů. Pokud okamžité nastavená na hodnotu true, zpráva se odešle okamžitě ze brána protokolu HTTP k úložišti stavů, bez ohledu na nastavení klienta fabric, které používá brána aplikace HTTP. To je užitečné pro kritické zprávy, které by měly být odeslány co nejdříve. V závislosti na načasování a jiných podmínek odesílat sestavy může stále nezdaří, pokud bránu HTTP je uzavřený nebo zprávy nelze navázat spojení s bránou. Okamžité je nastavený na hodnotu false, sestava se odesílá podle nastavení stavu klienta ze brána protokolu HTTP. Proto bude možné dávce závislosti na konfiguraci HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje stavu klienta k optimalizaci zdraví, vytváření sestav zprávy k úložišti stavů, stejně jako zpracování sestavy stavu. Ve výchozím nastavení nejsou odesílány sestavy okamžitě. |
-| – vypršela platnost odebrat v případě | Hodnota, která označuje, zda sestava se odebere z health store, když jeho platnost vyprší. <br><br> Je-li nastavena hodnota true, sestava se odebere z health store po vypršení její platnosti. Pokud je nastaven na hodnotu false, sestava je považováno za chybu, pokud vypršela platnost. Hodnota této vlastnosti je ve výchozím nastavení hodnotu false. Když klienti pravidelně hlásit, nastavují by měl RemoveWhenExpired false (výchozí). Tímto způsobem je osoby podávající hlášení dochází k problémům (například zablokování) a nemůže oznamovat entity je vyhodnocena v chybě, když vyprší platnost sestava stavu. Označí entitu jako patřící do chybového stavu. |
-| --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Pořadové číslo sestav se používá v úložišti stavů ke zjišťování zastaralých sestavy. Pokud není zadán, je číslo sekvence automaticky generované klientem stavu při přidání sestavy. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
+| --Health-vlastnost [required] | Vlastnost informací o stavu. <br><br> Entita může mít sestavy o stavu pro různé vlastnosti. Vlastnost je řetězec, nikoli pevný výčet, který umožňuje, aby se v zpravodaji mohla pružně roztřídit stav stavu, který aktivuje sestavu. Například zpravodaj s SourceId "LocalWatchdog" může monitorovat stav dostupného disku v uzlu, takže může ohlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné zpravodajky můžou monitorovat připojení uzlu, takže může nahlásit vlastnost "připojení" na stejném uzlu. V Health Store jsou tyto sestavy zpracovány jako samostatné události stavu pro zadaný uzel. Společně s ID zdroje (SourceId) vlastnost jednoznačně identifikuje informace o stavu. |
+| --Health-State [povinné] | Možné hodnoty zahrnují\: "Invalid", "OK", "Warning", "Error", "unknown". |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Source-ID [povinné] | Název zdroje, který identifikuje součást klienta/sledovacího zařízení/systému, která vygenerovala informace o stavu. |
+| --Description | Popis informací o stavu. <br><br> Představuje bezplatný text, který se používá k přidání lidských čitelných informací o sestavě. Maximální délka řetězce pro popis je 4096 znaků. Pokud je zadaný řetězec delší, automaticky se zkrátí. Při zkrácení obsahují poslední znaky popisu značku "[zkrácené]" a celková velikost řetězce je 4096 znaků. Přítomnost značky indikuje uživatelům, kterým došlo ke zkrácení. Všimněte si, že při zkrácení má popis méně než 4096 znaků z původního řetězce. |
+| --Immediate | Příznak, který označuje, zda má být sestava odeslána okamžitě. <br><br> Do aplikace Service Fabric Gateway se pošle zpráva o stavu, která se přepošle na Health Store. Pokud je vlastnost Immediate nastavená na hodnotu true, pošle se z brány HTTP na Health Store zprávu hned, a to bez ohledu na nastavení klienta prostředků infrastruktury, které používá aplikace brány HTTP. To je užitečné pro kritické sestavy, které by se měly odesílat co nejdříve. V závislosti na časování a dalších podmínkách může odeslání sestavy dál selhat, například pokud je brána HTTP uzavřená nebo zpráva nemá přístup k bráně. Pokud je vlastnost Immediate nastavená na false, pošle se sestava na základě nastavení klienta stavu z brány HTTP. Proto se bude provádět dávkování podle konfigurace HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje klientovi stavu optimalizovat zprávy o stavu, které se mají Health Store, i zpracování sestavy o stavu. Ve výchozím nastavení se zprávy neodesílají okamžitě. |
+| --Remove-when-vypršela platnost | Hodnota, která označuje, zda je sestava odebrána z Health Store v případě jejího platnosti. <br><br> Pokud je nastavená hodnota true, sestava se po vypršení platnosti odebere z Health Store. Pokud je nastavena hodnota false, bude sestava považována za chybu, pokud vypršela její platnost. Hodnota této vlastnosti je ve výchozím nastavení false. Při pravidelné sestavě klientů by měly být nastavené RemoveWhenExpired na hodnotu false (výchozí). Tímto způsobem má zpravodaj problémy (například zablokování) a nemůže hlásit, entita je vyhodnocena při vypršení platnosti sestavy stavu. Tím se označí entita jako v chybovém stavu. |
+| --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Číslo sekvence sestavy používá Health Store ke zjišťování zastaralých sestav. Není-li tento parametr zadán, je číslo sekvence automaticky generováno klientem stavu při přidání sestavy. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --ttl | Doba, po kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 k zadání doby trvání. <br><br> Při pravidelné sestavě klientů by měly odesílat sestavy s vyšší frekvencí, než je čas do provozu. Pokud klienti hlásí přechod, můžou nastavit čas na živého na nekonečné. Po vypršení časového limitu životnosti události stavu, která obsahuje informace o stavu, se buď odeberou z Health Store, pokud je RemoveWhenExpired true, nebo se vyhodnotí při chybě, pokud RemoveWhenExpired false. Pokud není zadaný, hodnota TTL (Time to Live) nastaví nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-restart"></a>sfctl oddílu restartování
-Toto rozhraní API se restartuje, některé nebo všechny replik nebo instancí zadaný oddíl.
+## <a name="sfctl-partition-restart"></a>restart oddílu sfctl
+Toto rozhraní API bude restartovat některé nebo všechny repliky nebo instance zadaného oddílu.
 
-Toto rozhraní API je užitečné pro testovací převzetí služeb při selhání. Pokud se používají k zaměření Bezstavová služba v oddílu, musí být RestartPartitionMode AllReplicasOrInstances. Volání rozhraní API GetPartitionRestartProgress pomocí stejným OperationId zobrazíte průběh.
+Toto rozhraní API je užitečné při testování převzetí služeb při selhání. Pokud se používá k cílení na bezstavový oddíl služby, režim restartpartitionmode musí být AllReplicasOrInstances. K získání pokroku volejte rozhraní API GetPartitionRestartProgress pomocí stejného OperationId.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id operace [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  To je předán do odpovídajícího GetProgress rozhraní API. |
-| – id oddílu [povinné] | Identita oddílu. |
-| --restartování oddílu režimu [povinné] | Popište oddíly, které chcete restartovat. |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --restart-partition-Mode [required] | Popište, které oddíly se mají restartovat. |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-restart-status"></a>sfctl oddílu restart-status
-Získá průběh operace PartitionRestart začít používat StartPartitionRestart.
+## <a name="sfctl-partition-restart-status"></a>restart oddílu sfctl-stav
+Získá průběh operace PartitionRestart spuštěné pomocí StartPartitionRestart.
 
-Získá průběh PartitionRestart začít StartPartitionRestart pomocí zadané ID operace.
+Získá průběh PartitionRestart Začínáme s StartPartitionRestart pomocí poskytnutého OperationId.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id operace [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  To je předán do odpovídajícího GetProgress rozhraní API. |
-| – id oddílu [povinné] | Identita oddílu. |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-partition-svc-name"></a>sfctl svc název oddílu
+## <a name="sfctl-partition-svc-name"></a>sfctl oddíl svc – název
 Získá název služby Service Fabric pro oddíl.
 
-Získá název služby pro zadaný oddíl. 404 chyba je vrácena, pokud ID oddílu neexistuje v clusteru.
+Získá název služby pro zadaný oddíl. Pokud ID oddílu v clusteru neexistuje, vrátí se chyba 404.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id oddílu [povinné] | Identita oddílu. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další postup
-- [Instalační program](service-fabric-cli.md) příkazového řádku Service Fabric.
-- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 39d6090b14a16f505413154df2a78d42b3fb3f3c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5b451378fcc14106cb8731a89bcf6ccf415d0a92
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333709"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035460"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager Zobrazení přenosů
 
@@ -44,6 +44,8 @@ Frekvence aktualizace dat zobrazení provozu závisí na několika interních pr
 ## <a name="visual-overview"></a>Vizuální přehled
 
 Když přejdete na **zobrazení přenosů** část stránky Traffic Manager, zobrazí se geografická mapa s překrytím zobrazení přenosů Insights. Mapa poskytuje informace o uživatelské základu a koncových bodech pro váš profil Traffic Manager.
+
+![Geografické zobrazení Traffic Manager Zobrazení přenosů][1]
 
 ### <a name="user-base-information"></a>Základní informace o uživateli
 
@@ -88,9 +90,11 @@ Při použití Zobrazení přenosů se fakturuje na základě počtu datových b
 
 * [Jak funguje Zobrazení přenosů fakturace?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace [o tom, jak Traffic Manager funguje](traffic-manager-overview.md)
 - Další informace o [metodách směrování provozu](traffic-manager-routing-methods.md) , které podporuje Traffic Manager
 - Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
 
+<!--Image references-->
+[1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

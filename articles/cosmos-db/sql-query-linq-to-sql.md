@@ -1,29 +1,29 @@
 ---
-title: Technologie LINQ to SQL překlad ve službě Azure Cosmos DB
-description: Mapování LINQ dotazy na dotazy SQL služby Azure Cosmos DB.
+title: Překlad LINQ to SQL v Azure Cosmos DB
+description: Mapování dotazů LINQ na Azure Cosmos DB dotazů SQL.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 057614da8fd29e1208c2788049c5d6d1a985eed5
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: ce9d96a90a2463d1ab8e1a9774a019e38ca681f4
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342805"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036040"
 ---
 # <a name="linq-to-sql-translation"></a>Technologie LINQ to SQL překladu
 
-Poskytovatele služby Azure Cosmos DB dotazů provede nejlepší úsilí mapování z dotazu LINQ do dotazu Cosmos DB SQL. Následující popis předpokládá základní znalost LINQ.
+Zprostředkovatel dotazů Azure Cosmos DB provádí nejlepší mapování úsilí z dotazu LINQ na dotaz typu Cosmos DB SQL. Následující popis předpokládá základní znalost pomocí LINQ.
 
-Systém typů poskytovatele dotazů podporuje pouze primitivní typy JSON: číselná nebo logická hodnota, řetězec a s hodnotou null.
+Typ zprostředkovatele dotazu systém podporuje pouze primitivní typy JSON: číselná, logická hodnota, řetězec a hodnota null.
 
-Poskytovatele dotazů podporuje následující skalární výrazy:
+Zprostředkovatel dotazů podporuje následující skalární výrazy:
 
-- Konstantní hodnoty, včetně konstantní hodnoty primitivních datových typů v době vyhodnocení dotazu.
+- Konstantní hodnoty, včetně konstantních hodnot primitivních datových typů v době vyhodnocení dotazu.
   
-- Vlastnost nebo pole indexové výrazy, které odkazují na vlastnosti objektu nebo k elementu pole. Příklad:
+- Výrazy indexů vlastností nebo pole, které odkazují na vlastnost objektu nebo prvku pole. Příklad:
   
   ```
     family.Id;
@@ -32,21 +32,21 @@ Poskytovatele dotazů podporuje následující skalární výrazy:
     family.children[n].grade; //n is an int variable
   ```
   
-- Aritmetických výrazů, včetně aritmetických výrazů běžné u číselných a logických hodnot. Úplný seznam najdete v článku [SQL služby Azure Cosmos DB specifikace](https://go.microsoft.com/fwlink/p/?LinkID=510612).
+- Aritmetické výrazy, včetně běžných aritmetických výrazů pro numerické a logické hodnoty. Úplný seznam najdete v tématu [Azure Cosmos DB specifikace SQL](https://go.microsoft.com/fwlink/p/?LinkID=510612).
   
   ```
     2 * family.children[0].grade;
     x + y;
   ```
   
-- Výrazy porovnání řetězce, mezi které patří porovnání řetězcovou hodnotu na hodnotu konstanty typu řetězec.  
+- Výrazy porovnání řetězců, které zahrnují porovnání řetězcové hodnoty s určitou konstantní řetězcovou hodnotou.  
   
   ```
     mother.familyName == "Wakefield";
     child.givenName == s; //s is a string variable
   ```
   
-- Objekt nebo pole vytváření výrazů, které vracejí objekt složené hodnotový typ nebo anonymního typu nebo polem tyto objekty. Tyto hodnoty můžete vnořit.
+- Výrazy vytvoření objektu nebo pole, které vracejí objekt složeného typu hodnoty nebo anonymního typu, nebo pole takových objektů. Tyto hodnoty můžete vnořit.
   
   ```
     new Parent { familyName = "Wakefield", givenName = "Robin" };
@@ -56,25 +56,25 @@ Poskytovatele dotazů podporuje následující skalární výrazy:
 
 ## <a id="SupportedLinqOperators"></a>Podporované operátory LINQ
 
-Poskytovatel LINQ součástí SQL SDK pro .NET podporuje následující operátory:
+Zprostředkovatel LINQ zahrnutý v sadě SQL .NET SDK podporuje následující operátory:
 
-- **Vyberte**: Projekce přeložit a vyberte SQL, včetně konstrukce objektu.
-- **Kde**: Filtry přeloží do WHERE příkazu SQL a podporovat překlad mezi `&&`, `||`, a `!` SQL operátorů
-- **Operátor SelectMany**: Umožňuje uvolnění polí do klauzule SQL JOIN. Pomocí řetězení nebo vnořené výrazy k filtrování prvků pole.
-- **Řadit podle** a **OrderByDescending**: Převede uzel do ORDER BY s ASC nebo DESC.
+- **Vyberte**: Projekce se převádějí na výběr SQL, včetně konstrukce objektu.
+- **Kde**: Filtry se převádějí do SQL, kde a podporují `&&`překlad `||`mezi, `!` a operátory SQL.
+- **Operátor SelectMany**: Umožňuje převinutí polí do klauzule SQL JOIN. Použijte k řetězení nebo vnořování výrazů k filtrování prvků pole.
+- **OrderBy** a **OrderByDescending**: Přeloží na pořadí pomocí ASC nebo DESC.
 - **Počet**, **součet**, **Min**, **maximální**, a **průměrné** operátory pro agregaci a jejich ekvivalenty asynchronní **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, a **AverageAsync**.
-- **CompareTo**: Přeloží na porovnání rozsahu. Běžně používá pro řetězce, protože nejsou porovnatelné v rozhraní .NET.
-- **Využijte**: Přeloží nahoru SQL pro omezení výsledků z dotazu.
-- **Matematické funkce**: Podporuje překlad z .NET `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan`, a `Truncate` na ekvivalentní funkce integrované v SQL.
-- **Řetězec funkce**: Podporuje překlad z .NET `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd`, a `TrimStart` na ekvivalentní funkce integrované v SQL.
-- **Array – funkce**: Podporuje překlad z .NET `Concat`, `Contains`, a `Count` na ekvivalentní funkce integrované v SQL.
-- **Rozšíření geoprostorové funkce**: Podporuje překlad z metody zástupných procedur `Distance`, `IsValid`, `IsValidDetailed`, a `Within` na ekvivalentní funkce integrované v SQL.
-- **Uživatelem definované funkce rozšíření funkce**: Podporuje překlad z zástupná metoda `UserDefinedFunctionProvider.Invoke` odpovídající uživatelem definované funkce.
-- **Různé**: Podporuje překlad `Coalesce` a podmíněných operátorů. Jsou dobře převeditelné `Contains` řetězec obsahuje, ARRAY_CONTAINS nebo v SQL, v závislosti na kontextu.
+- **CompareTo**: Přeloží porovnávání rozsahů. Běžně se používá pro řetězce, protože nejsou srovnatelné v rozhraní .NET.
+- **Vezměte v úvahu**: Přeloží na horní část SQL pro omezení výsledků dotazu.
+- **Matematické funkce**: Podporuje překlad z rozhraní `Abs`.NET `Acos`, `Asin` `Atan` `Ceiling` ,`Floor`, ,,`Log`,,, ,`Log10`, ,`Pow` `Cos` `Exp` `Round`, `Sign`, ,,`Sin`a kekvivalentnímintegrovaným`Truncate`funkcímSQL. `Sqrt` `Tan`
+- **Řetězcové funkce**: Podporuje překlad z rozhraní `Concat`.NET `Contains`, `Count` `EndsWith``IndexOf` ,`StartsWith`, ,,`SubString`,,, ,`ToLower`, ,`ToUpper` `Replace` `Reverse` `TrimEnd` a`TrimStart` ekvivalentními integrovanými funkcemi SQL.
+- **Funkce pole**: Podporuje překlad z rozhraní `Concat`.NET `Contains`, a `Count` na ekvivalentní integrované funkce SQL.
+- **Funkce geoprostorového rozšíření**: Podporuje překlad ze zástupných `IsValid`metod `IsValidDetailed` `Distance`,, `Within` a na ekvivalentní integrované funkce SQL.
+- **Funkce rozšíření uživatelsky definované funkce**: Podporuje převod z metody `UserDefinedFunctionProvider.Invoke` zástupné procedury na odpovídající uživatelsky definovanou funkci.
+- **Různé**: Podporuje překlad `Coalesce` a podmíněných operátorů. Lze překládat `Contains` na řetězec obsahuje, ARRAY_CONTAINS nebo SQL v, v závislosti na kontextu.
 
 ## <a name="examples"></a>Příklady
 
-Následující příklady znázorňují, jak některé standardní operátory dotazu LINQ přeložit do služby Cosmos DB dotazů.
+Následující příklady ilustrují, jak se některé standardní operátory dotazů LINQ převádějí na Cosmos DB dotazy.
 
 ### <a name="select-operator"></a>Vyberte operátor
 
@@ -151,7 +151,7 @@ Syntaxe je `input.SelectMany(x => f(x))`, kde `f` je skalární výraz, který v
 
 Syntaxe je `input.Where(x => f(x))`, kde `f` je skalární výraz, který vrací logickou hodnotu.
 
-**Pokud operátor, příklad 1:**
+**Operátor WHERE, příklad 1:**
 
 - **Lambda výraz LINQ**
   
@@ -167,7 +167,7 @@ Syntaxe je `input.Where(x => f(x))`, kde `f` je skalární výraz, který vrací
       WHERE f.parents[0].familyName = "Wakefield"
   ```
   
-**Pokud operátor, příklad 2:**
+**Operátor WHERE, příklad 2:**
 
 - **Lambda výraz LINQ**
   
@@ -188,19 +188,19 @@ Syntaxe je `input.Where(x => f(x))`, kde `f` je skalární výraz, který vrací
 
 ## <a name="composite-sql-queries"></a>Složený dotazy SQL
 
-Můžete vytvořit předchozí operátorům tvoří výkonnějších dotazů. Protože Cosmos DB podporuje vnořené kontejnery, lze zřetězit nebo vnořené složení.
+Můžete sestavovat předchozí operátory a vytvořit tak výkonnější dotazy. Vzhledem k tomu, že Cosmos DB podporuje vnořené kontejnery, můžete kompozici zřetězit nebo vnořovat.
 
 ### <a name="concatenation"></a>Zřetězení
 
-Syntaxe je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězených dotazů můžete začít s volitelným `SelectMany` dotazu, za nímž následuje více `Select` nebo `Where` operátory.
+Syntaxe je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězený dotaz může začít s volitelným `SelectMany` dotazem následovaným více `Select` operátory OR `Where` .
 
 **Zřetězení, příklad 1:**
 
 - **Lambda výraz LINQ**
   
   ```csharp
-      input.Select(family=>family.parents[0])
-          .Where(familyName == "Wakefield");
+      input.Select(family => family.parents[0])
+          .Where(parent => parent.familyName == "Wakefield");
   ```
 
 - **SQL**
@@ -264,9 +264,9 @@ Syntaxe je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězených dotazů
 
 ### <a name="nesting"></a>Vnoření
 
-Syntaxe je `input.SelectMany(x=>x.Q())` kde `Q` je `Select`, `SelectMany`, nebo `Where` operátor.
+Syntaxe `input.SelectMany(x=>x.Q())` je tam `Select`, `Q` kde je operátor `SelectMany`, nebo `Where` .
 
-Vnořený dotaz použije vnitřní dotaz na každý prvek vnější kontejneru. Jednu důležitou funkci je, že vnitřní dotaz mohou odkazovat na pole prvků v vnější kontejneru, jako jsou spojení sama.
+Vnořený dotaz aplikuje vnitřní dotaz na každý element vnějšího kontejneru. Jednou z důležitých funkcí je, že vnitřní dotaz může odkazovat na pole prvků ve vnějším kontejneru, jako je například připojovat se k sobě.
 
 **Vnoření, příklad 1:**
 
@@ -303,7 +303,7 @@ Vnořený dotaz použije vnitřní dotaz na každý prvek vnější kontejneru. 
       WHERE c.familyName = "Jeff"
   ```
 
-**Vnoření, příklad 3:**
+**Vnořování, příklad 3:**
 
 - **Lambda výraz LINQ**
   
@@ -325,4 +325,4 @@ Vnořený dotaz použije vnitřní dotaz na každý prvek vnější kontejneru. 
 ## <a name="next-steps"></a>Další postup
 
 - [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Modelování dat dokumentů](modeling-data.md)
+- [Data modelu dokumentu](modeling-data.md)

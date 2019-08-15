@@ -1,21 +1,21 @@
 ---
 title: Odstranit prostředky obrázku v Azure Container Registry
-description: Podrobnosti o tom, jak efektivně spravovat velikost registru odstraněním dat imagí kontejneru.
+description: Podrobné informace o tom, jak efektivně spravovat velikost registru pomocí příkazů rozhraní příkazového řádku Azure
 services: container-registry
 author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 06/17/2019
+ms.date: 07/31/2019
 ms.author: danlep
-ms.openlocfilehash: eaf3b3e591ca2ddbd29fd5547d334ef90b24fc5e
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 12c1b5f9fa9620622b31f22c701d58ae237bcbf2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309648"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035156"
 ---
-# <a name="delete-container-images-in-azure-container-registry"></a>Odstranění imagí kontejneru v Azure Container Registry
+# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Odstranění imagí kontejneru v Azure Container Registry pomocí rozhraní příkazového řádku Azure
 
 Pokud chcete zachovat velikost služby Azure Container Registry, měli byste pravidelně odstraňovat zastaralá data imagí. I když některé image kontejnerů nasazené do produkčního prostředí můžou vyžadovat dlouhodobé ukládání, můžou se obvykle odstranit i další. Například ve scénáři automatizovaného sestavení a testování může registr rychle vyplnit image, které nikdy nebudou nasazeny, a lze je vymazat krátce po dokončení sestavení a průchodu testu.
 
@@ -113,7 +113,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 Po identifikaci zastaralých výtahů manifestů můžete spuštěním následujícího skriptu bash odstranit výtahy manifestu starší než zadané časové razítko. Vyžaduje rozhraní příkazového řádku Azure a **xargs**. Ve výchozím nastavení skript neprovede žádné odstranění. Pokud chcete povolit odstranění `true` obrázku, změňte hodnotuna.`ENABLE_DELETE`
 
 > [!WARNING]
-> Použijte následující vzorový skript s varováním – data odstraněná v obrazech je možné obnovit. Pokud máte systémy, které vyžádají image podle výtahu manifestu (na rozdíl od názvu bitové kopie), neměli byste tyto skripty spouštět. Odstraněním výtahů manifestu zabráníte těmto systémům v navrácení imagí z registru. Místo toho, aby se vybral manifest, zvažte přijetí jedinečného schématu *označování* , což je doporučený osvědčený [postup][tagging-best-practices]. 
+> Použijte následující vzorový skript s varováním – data odstraněná v obrazech je možné obnovit. Pokud máte systémy, které vyžádají image podle výtahu manifestu (na rozdíl od názvu bitové kopie), neměli byste tyto skripty spouštět. Odstraněním výtahů manifestu zabráníte těmto systémům v navrácení imagí z registru. Místo toho, aby se vybral manifest, zvažte přijetí jedinečného schématu *označování* , což je doporučený osvědčený [postup](container-registry-image-tag-version.md). 
 
 ```bash
 #!/bin/bash
@@ -201,7 +201,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 Pomocí tohoto příkazu ve skriptu můžete odstranit všechny neoznačené obrázky v úložišti.
 
 > [!WARNING]
-> Použití následujících ukázkových skriptů s opatrností – data odstraněných obrázků je možné obnovit. Pokud máte systémy, které vyžádají image podle výtahu manifestu (na rozdíl od názvu bitové kopie), neměli byste tyto skripty spouštět. Odstraněním netagovaných imagí znemožníte těmto systémům navrácení imagí z registru. Místo toho, aby se vybral manifest, zvažte přijetí jedinečného schématu *označování* , což je doporučený osvědčený [postup][tagging-best-practices].
+> Použití následujících ukázkových skriptů s opatrností – data odstraněných obrázků je možné obnovit. Pokud máte systémy, které vyžádají image podle výtahu manifestu (na rozdíl od názvu bitové kopie), neměli byste tyto skripty spouštět. Odstraněním netagovaných imagí znemožníte těmto systémům navrácení imagí z registru. Místo toho, aby se vybral manifest, zvažte přijetí jedinečného schématu *označování* , což je doporučený osvědčený [postup](container-registry-image-tag-version.md).
 
 **Rozhraní příkazového řádku Azure v bash**
 
@@ -260,6 +260,10 @@ if ($enableDelete) {
 }
 ```
 
+## <a name="automatically-purge-tags-and-manifests-preview"></a>Automatické vymazání značek a manifestů (Preview)
+
+Jako alternativu ke skriptování příkazů rozhraní příkazového řádku Azure můžete spuštěním úlohy na vyžádání nebo naplánované ACR odstranit všechny značky, které jsou starší než určitá doba trvání nebo odpovídají zadanému filtru názvů. Další informace najdete v tématu [Automatické mazání imagí z Azure Container Registry](container-registry-auto-purge.md).
+
 ## <a name="next-steps"></a>Další postup
 
 Další informace o úložišti imagí v Azure Container Registry najdete [v části úložiště imagí kontejneru v Azure Container Registry](container-registry-storage.md).
@@ -270,7 +274,6 @@ Další informace o úložišti imagí v Azure Container Registry najdete [v č�
 <!-- LINKS - External -->
 [docker-manifest-inspect]: https://docs.docker.com/edge/engine/reference/commandline/manifest/#manifest-inspect
 [portal]: https://portal.azure.com
-[tagging-best-practices]: https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/
 
 <!-- LINKS - Internal -->
 [az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete

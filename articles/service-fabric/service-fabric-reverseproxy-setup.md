@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: chackdan
-ms.openlocfilehash: df25c52e7a3f35355eb52bd95a39f55852adfcae
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 826e7e953bd713bb623ec469b45c56012601490b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876581"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030810"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Nastavení a konfigurace reverzního proxy serveru v Azure Service Fabric
 Reverzní proxy je volitelná služba Azure Service Fabric, která pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http. Další informace najdete v tématu [reverzní proxy v Azure Service Fabric](service-fabric-reverseproxy.md). V tomto článku se dozvíte, jak nastavit a nakonfigurovat reverzní proxy server v clusteru. 
@@ -310,7 +309,7 @@ Následující JSON odkazuje na stejnou šablonu, která se používá v [Povole
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>Přizpůsobení chování reverzního proxy serveru pomocí nastavení prostředků infrastruktury
 
-Můžete přizpůsobit chování reverzního proxy serveru prostřednictvím nastavení prostředků infrastruktury v šabloně Správce prostředků pro clustery hostované v Azure nebo v souboru ClusterConfig. JSON pro samostatné clustery. Nastavení, které řídí chování reverzního proxy serveru, se nachází v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) v části **fabricSettings** v  části věnované vlastnostem clusteru. 
+Můžete přizpůsobit chování reverzního proxy serveru prostřednictvím nastavení prostředků infrastruktury v šabloně Správce prostředků pro clustery hostované v Azure nebo v souboru ClusterConfig. JSON pro samostatné clustery. Nastavení, které řídí chování reverzního proxy serveru, se nachází v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) v části **fabricSettings** v části věnované vlastnostem clusteru. 
 
 Například můžete nastavit hodnotu **DefaultHttpRequestTimeout** , abyste nastavili časový limit pro požadavky na reverzní proxy na 180 sekund, jak je uvedeno v následujícím formátu JSON:
 
@@ -336,6 +335,6 @@ Další informace o aktualizaci nastavení prostředků infrastruktury pro clust
 
 K navázání zabezpečené komunikace mezi reverzním proxy serverem a službami se používá několik nastavení prostředků infrastruktury. Podrobné informace o těchto nastaveních najdete v tématu [připojení k zabezpečené službě pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Nastavení přesměrování na zabezpečenou službu HTTP pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md)
 * Možnosti konfigurace reverzního proxy serveru najdete [v části ApplicationGateway/http tématu přizpůsobení Service Fabricho nastavení clusteru](service-fabric-cluster-fabric-settings.md#applicationgatewayhttp).

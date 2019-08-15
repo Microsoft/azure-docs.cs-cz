@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
-ms.devlang: linux
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 84d1f52b5fb8f18d3578bad28930f74534b1409f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ce8d944e7334b071a4a48f38f8c4fafaeff4c47
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60947584"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035284"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Nastavení vývojového prostředí v Mac OS X
 > [!div class="op_single_selector"]
@@ -53,11 +52,11 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Toto nastavení můžete aktualizovat přímo v souboru daemon.json v instalační cestě Dockeru. Můžete přímo upravit nastavení konfigurace démona v Dockeru. Vyberte **ikonu Docker** a potom vyberte **Předvolby** > **Démon** > **Upřesnit**.
+    Toto nastavení můžete aktualizovat přímo v souboru daemon.json v instalační cestě Dockeru. Nastavení konfigurace démona můžete přímo upravit v Docker. Vyberte **ikonu Docker** a potom vyberte **Předvolby** > **Démon** > **Upřesnit**.
     
     >[!NOTE]
     >
-    >Úprava démona v Dockeru přímo je doporučené, protože umístění souboru daemon.json se může lišit počítač od počítače. Například ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >Změna démona přímo v Docker je doporučené, protože umístění souboru daemon. JSON se může v počítači lišit. Například ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]
@@ -110,7 +109,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. Clusteru bude chvíli spustit. Když je spuštěn, můžete zobrazit protokoly pomocí následujícího příkazu nebo přejít na řídicí panel, aby stav clusteru [ http://localhost:19080 ](http://localhost:19080):
+5. Spuštění clusteru bude chvíli trvat. Když je spuštěný, můžete zobrazit protokoly pomocí následujícího příkazu nebo přejít na řídicí panel a zobrazit stav [http://localhost:19080](http://localhost:19080)clusterů:
 
     ```bash 
     docker logs sftestcluster
@@ -118,7 +117,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
 
 
 
-6. Chcete-li zastavit a vyčistit kontejneru použijte následující příkaz. Ale použijeme tento kontejner v dalším kroku.
+6. Chcete-li zastavit a vyčistit kontejner, použijte následující příkaz. Tento kontejner ale použijeme v dalším kroku.
 
     ```bash 
     docker rm -f sftestcluster
@@ -174,8 +173,9 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
     brew install gradle
     ```
 
-    >[!TIP]
-    > Nezapomeňte si ověřit, že máte správnou verzi sady JDK nainstalovaná. 
+    > [!IMPORTANT]
+    > Aktuální verze `brew cask install java` nástroje mohou instalovat novější verzi JDK.
+    > Nezapomeňte nainstalovat JDK 8.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Nasazení aplikace na počítači Mac z terminálu
 

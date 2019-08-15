@@ -1,6 +1,6 @@
 ---
-title: Konfigurovat klíče spravované zákazníkem pro šifrování Azure Storage z prostředí PowerShell
-description: Další informace o použití Powershellu ke konfiguraci klíče spravované zákazníkem pro šifrování Azure Storage. Klíče spravované zákazníkem umožňují vytvořit, otáčení, zakázat a odvolat přístup k ovládacím prvkům.
+title: Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z PowerShellu
+description: Naučte se používat PowerShell ke konfiguraci klíčů spravovaných zákazníkem pro Azure Storage šifrování. Klíče spravované zákazníkem umožňují vytvářet, otáčet, zakazovat a odvolávat řízení přístupu.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,24 +9,28 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: be876b370cd476bee2af7d90a9f0433fd80de3b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c9adf1c00503ec7f1cbf4a3405c303eea2d2292
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233692"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034884"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Konfigurovat klíče spravované zákazníkem pro šifrování Azure Storage z prostředí PowerShell
+# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z PowerShellu
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Tento článek ukazuje, jak konfigurovat službu key vault pomocí klíčů spravovaných zákazníkem pomocí Powershellu.
+V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí PowerShellu.
 
-## <a name="assign-an-identity-to-the-storage-account"></a>Přiřaďte identitu do účtu úložiště
+> [!IMPORTANT]
+> Použití klíčů spravovaných zákazníkem se šifrováním Azure Storage vyžaduje, aby Trezor klíčů měl nakonfigurované dvě požadované vlastnosti, **obnovitelné odstranění** a Nemazat. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
+> Podporují se jenom klíče RSA a velikost klíče 2048.
 
-Pokud chcete povolit klíče spravované zákazníkem pro váš účet úložiště, mu nejdřív přiřadíte systém přiřadil spravovanou identitu do účtu úložiště. Tuto spravovanou identitu budete používat k udělení oprávnění účtu úložiště pro přístup k trezoru klíčů.
+## <a name="assign-an-identity-to-the-storage-account"></a>Přiřazení identity k účtu úložiště
 
-Chcete-li přiřadit spravovanou identitu pomocí prostředí PowerShell, zavolejte [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount). Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami.
+Pokud chcete pro svůj účet úložiště povolit klíče spravované zákazníkem, nejdřív přiřaďte k účtu úložiště spravovanou identitu přiřazenou systémem. Pomocí této spravované identity udělíte účtu úložiště oprávnění k přístupu k trezoru klíčů.
+
+Chcete-li přiřadit spravovanou identitu pomocí prostředí PowerShell, zavolejte rutinu [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
 ```powershell
 $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -34,13 +38,13 @@ $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
     -AssignIdentity
 ```
 
-Další informace o konfiguraci systému uživatelsky přiřazené identity spravované pomocí prostředí PowerShell najdete v tématu [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Powershellu](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md).
+Další informace o konfiguraci spravovaných identit přiřazených systémem pomocí PowerShellu najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md).
 
-## <a name="create-a-new-key-vault"></a>Vytvoření nové služby key vault
+## <a name="create-a-new-key-vault"></a>Vytvořit nový trezor klíčů
 
-Chcete-li vytvořit nový trezor klíčů pomocí Powershellu, zavolejte [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Trezor klíčů, který použijete k uložení klíče spravované zákazníkem pro šifrování Azure Storage, musí mít dvě nastavení ochrany klíčů povolená, **obnovitelné odstranění** a **proveďte není vyprázdnit**. 
+Pokud chcete vytvořit nový trezor klíčů pomocí PowerShellu, volejte rutinu [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Trezor klíčů, který použijete k uložení klíčů spravovaných zákazníkem pro Azure Storage šifrování, musí mít povolené dvě nastavení ochrany klíčů, **obnovitelné odstranění** a nemazatelné. 
 
-Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami. 
+Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami. 
 
 ```powershell
 $keyVault = New-AzKeyVault -Name <key-vault> `
@@ -50,11 +54,11 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-## <a name="configure-the-key-vault-access-policy"></a>Konfigurace zásady přístupu trezoru klíčů
+## <a name="configure-the-key-vault-access-policy"></a>Konfigurace zásad přístupu trezoru klíčů
 
-V dalším kroku nakonfigurujte zásady přístupu pro trezor klíčů tak, aby účet úložiště má oprávnění k přístupu. V tomto kroku budete pomocí spravované identity, který jste dříve přiřadili k účtu úložiště.
+Dále nakonfigurujte zásady přístupu pro Trezor klíčů, aby měl účet úložiště oprávnění k přístupu. V tomto kroku použijete spravovanou identitu, kterou jste dříve přiřadili k účtu úložiště.
 
-Chcete-li nastavit zásady přístupu pro trezor klíčů, zavolejte [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Mějte na paměti a zástupné hodnoty v závorkách nahraďte vlastními hodnotami pomocí proměnné definované v předchozích příkladech.
+Pro nastavení zásad přístupu pro Trezor klíčů volejte [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy `
@@ -65,7 +69,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ## <a name="create-a-new-key"></a>Vytvořit nový klíč
 
-Dále vytvořte nový klíč v trezoru klíčů. Chcete-li vytvořit nový klíč, zavolejte [přidat AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey). Mějte na paměti a zástupné hodnoty v závorkách nahraďte vlastními hodnotami pomocí proměnné definované v předchozích příkladech.
+V dalším kroku vytvořte nový klíč v trezoru klíčů. Chcete-li vytvořit nový klíč, zavolejte [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
 
 ```powershell
 $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
@@ -73,9 +77,9 @@ $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem
 
-Ve výchozím nastavení používá šifrování služby Azure Storage klíčů spravovaných microsoftem. V tomto kroku nakonfigurujte svůj účet úložiště Azure používat klíče spravované zákazníkem a zadejte klíč, který chcete přidružit k účtu úložiště.
+Ve výchozím nastavení používá Azure Storage šifrování klíče spravované společností Microsoft. V tomto kroku nakonfigurujte Azure Storage účet pro použití klíčů spravovaných zákazníkem a zadejte klíč, který chcete přidružit k účtu úložiště.
 
-Volání [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aktualizace nastavení šifrování účtu úložiště. Mějte na paměti a zástupné hodnoty v závorkách nahraďte vlastními hodnotami pomocí proměnné definované v předchozích příkladech.
+Voláním [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aktualizujte nastavení šifrování účtu úložiště. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -88,9 +92,9 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="update-the-key-version"></a>Aktualizace verze klíče
 
-Když vytvoříte novou verzi klíče, musíte aktualizovat účet úložiště na použití nové verze. Nejprve volat [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) získat nejnovější verzi klíče. Poté zavolejte [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aktualizace nastavení šifrování účtu úložiště používat novou verzi klíče, jak je znázorněno v předchozí části.
+Když vytváříte novou verzi klíče, budete muset aktualizovat účet úložiště, aby používal novou verzi. Nejdřív zavolejte [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) , abyste získali nejnovější verzi klíče. Pak zavolejte [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) a aktualizujte nastavení šifrování účtu úložiště tak, aby používala novou verzi klíče, jak je znázorněno v předchozí části.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md) 
+- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md) 
 - [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?

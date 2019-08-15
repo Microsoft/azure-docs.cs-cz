@@ -1,39 +1,39 @@
 ---
-title: Správa tajných klíčů aplikací Azure Service Fabric sítě | Dokumentace Microsoftu
-description: Správa tajných klíčů aplikací vám umožní bezpečně vytvoření a nasazení aplikace Service Fabric mřížky.
+title: Správa tajných klíčů aplikací pro síť Azure Service Fabric Microsoft Docs
+description: Spravujte tajné klíče aplikace, abyste mohli bezpečně vytvořit a nasadit aplikaci Service Fabric sítě.
 services: service-fabric-mesh
-keywords: Tajné kódy
-author: aljo-microsoft
-ms.author: aljo
+keywords: tajné kódy
+author: athinanthny
+ms.author: atsenthi
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: c2548ea3cf892ebe1a56cbb0909bfa5d5e805acf
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: ef3f04437aca7b6ad9aab8806d54e65d00159d87
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503313"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036167"
 ---
-# <a name="manage-service-fabric-mesh-application-secrets"></a>Správa tajných klíčů aplikací Service Fabric sítě
-Sítě pro Service Fabric podporuje tajné kódy jako prostředky Azure. Tajný klíč služby prostředků infrastruktury sítě může být libovolné citlivé textové informace, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které mají být uloženy a bezpečně přenášet. Tento článek ukazuje, jak pomocí Service Fabric Secure Store Service můžete nasadit a spravovat tajné kódy.
+# <a name="manage-service-fabric-mesh-application-secrets"></a>Správa tajných klíčů pro aplikace Service Fabric sítě
+Service Fabricová síť podporuje tajné klíče jako prostředky Azure. Service Fabric se může jednat o informace o citlivých textech, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by se měly bezpečně ukládat a přenášet. V tomto článku se dozvíte, jak používat Service Fabric Zabezpečené úložiště přihlašovacích údajů k nasazení a údržbě tajných kódů.
 
-Aplikace sítě tajný kód se skládá ze:
-* A **tajných kódů** prostředků, což je kontejner, který uchovává tajné kódy text. Tajné kódy obsažené **tajných kódů** prostředků jsou uloženy a bezpečně přenášet.
-* Jeden nebo více **tajné klíče/hodnoty** prostředky, které jsou uloženy v **tajných kódů** kontejner prostředků. Každý **tajné klíče/hodnoty** prostředků se liší podle čísla verze. Nelze změnit verzi **tajné klíče/hodnoty** prostředků, jenom přidat novou verzi.
+Tajný kód aplikace sítě se skládá z těchto součástí:
+* Prostředek **tajných** kódů, což je kontejner, který ukládá text tajných kódů. Tajné kódy obsažené v prostředku tajných kódů se ukládají a bezpečně odesílají.
+* Jeden nebo více prostředků **tajných klíčů a hodnot** , které jsou uloženy v kontejneru prostředků **tajných** kódů. Jednotlivé zdroje tajných kódů **a hodnot** jsou rozlišené číslem verze. Nemůžete změnit verzi prostředku tajných kódů a **hodnot** , připojit pouze novou verzi.
 
 Správa tajných klíčů se skládá z následujících kroků:
-1. Deklarovat sítě **tajných kódů** prostředek v souboru YAML Model prostředků Azure nebo formátu JSON pomocí inlinedValue druh a definice SecretsStoreRef contentType.
-2. Deklarovat síť **tajné klíče/hodnoty** prostředky v Azure Resource modelu YAML nebo JSON souboru, který se uloží do **tajných kódů** prostředků (z kroku 1).
-3. Upravte aplikaci sítě tak, aby odkazovaly hodnoty tajných kódů sítě.
-4. Nasazení nebo postupného upgradu aplikací síť pro používání hodnoty tajných kódů.
-5. Použití Azure "az" CLI příkazy pro správu životního cyklu Secure Store Service.
+1. Deklarujete prostředek sítě pro YAML nebo soubor JSON s použitím inlinedValue druhu a definice SecretsStoreRef ContentType.
+2. Deklarujete prostředky sítě **/hodnoty** prostředků v YAML nebo souboru JSON modelu prostředku Azure, který bude uložený v prostředku tajných kódů (z kroku 1).
+3. Upravte mřížkovou aplikaci tak, aby odkazovala na hodnoty tajného klíče sítě.
+4. Nasaďte nebo proveďte upgrade aplikace sítě, aby se využívaly tajné hodnoty.
+5. Pro správu životního cyklu Zabezpečené úložiště přihlašovacích údajů použijte příkazy rozhraní příkazového řádku Azure "AZ".
 
-## <a name="declare-a-mesh-secrets-resource"></a>Deklarujte prostředek mřížky tajných kódů
-Prostředek mřížky tajné kódy je deklarována v kódu JSON modelu prostředku Azure nebo soubor YAML použitím inlinedValue druh definice. Prostředek mřížky tajných kódů podporuje tajných kódů služby Secure Store zdrojem. 
+## <a name="declare-a-mesh-secrets-resource"></a>Deklarace prostředku sítě s tajnými klíči
+Prostředek sítě s tajnými klíči je deklarovaný v souboru JSON nebo YAML v modelu prostředků Azure pomocí definice druhu inlinedValue. Prostředek sítě s tajnými klíči podporuje Zabezpečené úložiště přihlašovacích údajů zdroj tajných kódů. 
 >
-Následuje příklad toho, jak deklarovat prostředky sítě tajných kódů v souboru JSON:
+Následuje příklad deklarace prostředků tajného klíče sítě v souboru JSON:
 
 ```json
 {
@@ -70,7 +70,7 @@ Následuje příklad toho, jak deklarovat prostředky sítě tajných kódů v s
   ]
 }
 ```
-Následuje příklad toho, jak deklarovat prostředků sítě tajných kódů v souboru YAML:
+Následuje příklad, jak deklarovat prostředky pro tajné klíče sítě v souboru YAML:
 ```yaml
     services:
       - name: helloWorldService
@@ -98,13 +98,13 @@ Následuje příklad toho, jak deklarovat prostředků sítě tajných kódů v 
       - name: mynetwork
 ```
 
-## <a name="declare-mesh-secretsvalues-resources"></a>Deklarovat mřížky tajné klíče a hodnoty prostředků
-Tajné klíče a hodnoty prostředků sítě jsou závislá na prostředky sítě tajné kódy definované v předchozím kroku.
+## <a name="declare-mesh-secretsvalues-resources"></a>Deklarovat informace o prostředcích a hodnotách sítě
+Zdroje informací o prostředcích a hodnotách sítě mají závislost na prostředcích tajných klíčů definovaných v předchozím kroku.
 
-Pokud jde o vztah mezi část "resources" "hodnota:" a "název:" pole: Druhá část "název:" řetězců oddělených středníkem je číslo verze před dvojtečkou musí odpovídat tajná hodnota sítě, pro kterou má použít pro tajný klíč a název závislost. Například pro element ```name: mysecret:1.0```, je číslo verze 1.0 a název ```mysecret``` musí odpovídat dříve definované ```"value": "mysecret"```.
+Informace o vztahu mezi "prostředky" v části "hodnota" a "název:" pole: Druhá část řetězce "název:", která je oddělena dvojtečkou, je číslo verze používané pro tajný kód a název před dvojtečkou musí odpovídat hodnotě v tajnosti sítě, pro kterou má závislosti. Například pro element ```name: mysecret:1.0```je číslo verze 1,0 a název ```mysecret``` musí odpovídat dříve definovanému ```"value": "mysecret"```.
 
 >
-Následuje příklad toho, jak deklarovat prostředky sítě tajné klíče/hodnoty v souboru JSON:
+Následuje příklad, jak deklarovat informace o prostředcích a hodnotách sítě v souboru JSON:
 
 ```json
 {
@@ -153,7 +153,7 @@ Následuje příklad toho, jak deklarovat prostředky sítě tajné klíče/hodn
   ],
 }
 ```
-Následuje příklad toho, jak deklarovat prostředků sítě tajné klíče/hodnoty v souboru YAML:
+Následuje příklad, jak deklarovat informace o prostředcích a hodnotách sítě v souboru YAML:
 ```yaml
     services:
       - name: helloWorldService
@@ -186,67 +186,67 @@ Následuje příklad toho, jak deklarovat prostředků sítě tajné klíče/hod
       - name: mynetwork
 ```
 
-## <a name="modify-mesh-application-to-reference-mesh-secret-values"></a>Upravit aplikaci sítě tak, aby odkazovaly hodnoty mřížky tajný klíč
-Aplikace Service Fabric sítě je potřeba mít na paměti následující dva řetězce. aby bylo možné využívat tajný klíč služby Secure Store hodnoty:
-1. Microsoft.ServiceFabricMesh/Secrets.name obsahuje název souboru a bude obsahovat hodnoty tajných kódů jako prostý text.
-2. Windows nebo Linuxem proměnnou prostředí "Fabric_SettingPath" obsahuje cestu k adresáři pro soubory, které obsahují hodnoty tajných kódů služby Secure Store kde budou přístupné. Toto je "C:\Settings" pro hostované Windows "/ var/nastavení a" pro aplikace hostované v systému Linux sítě v uvedeném pořadí.
+## <a name="modify-mesh-application-to-reference-mesh-secret-values"></a>Úprava aplikace v síti pro odkazování na hodnoty v tajnosti
+Aby bylo možné využívat hodnoty Zabezpečené úložiště přihlašovacích údajů tajného klíče, musí aplikace Service Fabric sítě obsahovat informace o následujících dvou řetězcích:
+1. Microsoft. ServiceFabricMesh/tajných kódů. název obsahuje název souboru a bude obsahovat hodnotu tajných kódů ve formátu prostého textu.
+2. Proměnná prostředí systému Windows nebo Linux "Fabric_SettingPath" obsahuje cestu k adresáři, do kterého budou přístupné soubory obsahující Zabezpečené úložiště přihlašovacích údajů hodnoty tajných klíčů. Toto je "C:\Settings" pro aplikace sítě s operačním systémem Linux a "/var/Settings" v uvedeném pořadí.
 
-## <a name="deploy-or-use-a-rolling-upgrade-for-mesh-application-to-consume-secret-values"></a>Nasazení nebo využívají hodnoty tajných kódů pomocí upgradu se zajištěním provozu pro aplikace sítě
-Vytváření tajné kódy a/nebo verze tajné klíče/hodnoty je omezená na modelu prostředků, které jsou deklarovány nasazení. Jediný způsob, jak vytvořit tyto prostředky je předáním prostředků modelu JSON nebo YAML soubor pomocí **nasazení sítě az** takto:
+## <a name="deploy-or-use-a-rolling-upgrade-for-mesh-application-to-consume-secret-values"></a>Nasazení nebo použití postupného upgradu pro aplikace sítě pro využívání tajných hodnot
+Vytváření tajných klíčů a hodnot tajných kódů a hodnot je omezené na modelem deklarovaného nasazení v modelu prostředků. Jediným způsobem, jak tyto prostředky vytvořit, je předání souboru JSON nebo souboru YAML modelu prostředku pomocí příkazu **AZ oky Deployment** následujícím způsobem:
 
 ```azurecli-interactive
 az mesh deployment create –-<template-file> or --<template-uri>
 ```
 
-## <a name="azure-cli-commands-for-secure-store-service-lifecycle-management"></a>Příkazy Azure CLI pro správu životního cyklu Secure Store Service
+## <a name="azure-cli-commands-for-secure-store-service-lifecycle-management"></a>Příkazy rozhraní příkazového řádku Azure pro správu životního cyklu Zabezpečené úložiště přihlašovacích údajů
 
 ### <a name="create-a-new-secrets-resource"></a>Vytvořit nový prostředek tajných kódů
 ```azurecli-interactive
 az mesh deployment create –-<template-file> or --<template-uri>
 ```
-Předat buď **soubor šablony** nebo **šablona identifikátoru uri** (ale ne obojí).
+Předejte buď **Template-File** , nebo **template-URI** (ale ne obojí).
 
 Příklad:
-- nasazení sítě az vytvořit--c:\MyMeshTemplates\SecretTemplate1.txt
-- vytvořit nasazení sítě az--https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- AZ Mesh Deployment create--c:\MyMeshTemplates\SecretTemplate1.txt
+- AZ Mesh Deployment Create--https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
-### <a name="show-a-secret"></a>Zobrazit tajný kód.
-Vrací popis tajný kód (ale nikoli hodnotu).
+### <a name="show-a-secret"></a>Zobrazit tajný kód
+Vrátí popis tajného kódu (ale ne hodnoty).
 ```azurecli-interactive
 az mesh secret show --Resource-group <myResourceGroup> --secret-name <mySecret>
 ```
 
-### <a name="delete-a-secret"></a>Odstranění tajného kódu
+### <a name="delete-a-secret"></a>Odstranění tajného klíče
 
-- Tajný kód. nelze odstranit, pokud je odkazuje aplikace sítě.
-- Odstraňuje se prostředek tajných kódů odstraní všechny tajné kódy prostředků nebo verze.
+- Tajný kód nelze odstranit, pokud na něj odkazuje aplikace sítě.
+- Odstraněním prostředku tajných kódů dojde k odstranění všech tajných kódů a verzí prostředků.
   ```azurecli-interactive
   az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
   ```
 
-### <a name="list-secrets-in-subscription"></a>Výpis tajných kódů v rámci předplatného
+### <a name="list-secrets-in-subscription"></a>Výpis tajných kódů v předplatném
 ```azurecli-interactive
 az mesh secret list
 ```
-### <a name="list-secrets-in-resource-group"></a>Výpis tajných klíčů ve skupině prostředků
+### <a name="list-secrets-in-resource-group"></a>Výpis tajných kódů ve skupině prostředků
 ```azurecli-interactive
 az mesh secret list -g <myResourceGroup>
 ```
-### <a name="list-all-versions-of-a-secret"></a>Zobrazí seznam všech verzí tajného kódu
+### <a name="list-all-versions-of-a-secret"></a>Vypíše všechny verze tajného kódu.
 ```azurecli-interactive
 az mesh secretvalue list --Resource-group <myResourceGroup> --secret-name <mySecret>
 ```
 
-### <a name="show-secret-version-value"></a>Zobrazit hodnotu verzi tajného klíče
+### <a name="show-secret-version-value"></a>Zobrazit hodnotu tajné verze
 ```azurecli-interactive
 az mesh secretvalue show --Resource-group <myResourceGroup> --secret-name <mySecret> --version <N>
 ```
 
-### <a name="delete-secret-version-value"></a>Odstranit hodnotu verzi tajného klíče
+### <a name="delete-secret-version-value"></a>Odstranit hodnotu tajné verze
 ```azurecli-interactive
 az mesh secretvalue delete --Resource-group <myResourceGroup> --secret-name <mySecret> --version <N>
 ```
 
 ## <a name="next-steps"></a>Další postup 
-Další informace o Service Fabric sítě, naleznete v přehledu:
-- [Přehled Service Fabric mřížky](service-fabric-mesh-overview.md)
+Další informace o Service Fabric sítě najdete v článku Přehled:
+- [Přehled Service Fabric sítě](service-fabric-mesh-overview.md)

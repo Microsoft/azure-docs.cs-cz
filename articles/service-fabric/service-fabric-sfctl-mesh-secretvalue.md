@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI - sfctl síť secretvalue | Dokumentace Microsoftu
-description: Popisuje secretvalue příkazy Service Fabric CLI sfctl sítě.
+title: Azure Service Fabric CLI – sfctl sítě secretvalue | Microsoft Docs
+description: Popisuje příkazy Service Fabric sfctl CLI secretvalue.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,95 +8,94 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 3f8e46f063d3e725e2174fd907169f3e0167586a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5200c40afe62ce3a236a3a16b59b64deb8d24ced
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836940"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035933"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
-Získání a odstraňte prostředky secretvalue sítě.
+Získejte a odstraňte secretvalue prostředky sítě.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
-| delete | Odstraní zadanou hodnotu tajného kódu s názvem prostředku. |
-| list | Vypsat názvy všech hodnot zadaný prostředek tajného kódu. |
-| zobrazit | Načte hodnotu určenou verzi tajného kódu prostředků. |
+| odstraňovat | Odstraní zadanou hodnotu pojmenovaného tajného prostředku. |
+| list | Vypíše názvy všech hodnot zadaného tajného prostředku. |
+| zobrazit | Načte hodnotu zadané verze tajného prostředku. |
 
-## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl síť secretvalue delete
-Odstraní zadanou hodnotu tajného kódu s názvem prostředku.
+## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl sítě secretvalue odstranit
+Odstraní zadanou hodnotu pojmenovaného tajného prostředku.
 
-Odstraní určený podle názvu prostředku tajná hodnota. Název prostředku je obvykle spojené s touto hodnotou verze. Odstranění se nezdaří, pokud zadaná hodnota je používán.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Popis|
-| --- | --- |
-| – Název tajného kódu - n [povinné] | Název tajného kódu prostředku. |
-| – verze - v [povinné] | Název tajného kódu verze. |
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
-
-## <a name="sfctl-mesh-secretvalue-list"></a>sfctl síť secretvalue seznamu
-Vypsat názvy všech hodnot zadaný prostředek tajného kódu.
-
-Získá informace o všech prostředků tajná hodnota zadaného tajného kódu prostředku. Tyto informace zahrnují názvy tajná hodnota prostředky, ale nikoli skutečné hodnoty.
+Odstraní prostředek tajné hodnoty identifikovaný názvem. Název prostředku je obvykle verze přidružená k této hodnotě. Pokud je zadaná hodnota používána, odstranění se nezdaří.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – Název tajného kódu - n [povinné] | Název tajného kódu prostředku. |
+| --tajný klíč-name-n [povinné] | Název tajného prostředku |
+| --Version-v [povinné] | Název tajné verze |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-mesh-secretvalue-show"></a>sfctl síť secretvalue show
-Načte hodnotu určenou verzi tajného kódu prostředků.
+## <a name="sfctl-mesh-secretvalue-list"></a>seznam secretvalue mřížky sfctl
+Vypíše názvy všech hodnot zadaného tajného prostředku.
+
+Načte informace o všech prostředcích tajných hodnot zadaného tajného prostředku. Tyto informace zahrnují názvy prostředků tajné hodnoty, ale ne skutečné hodnoty.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – Název tajného kódu - n [povinné] | Název tajného kódu prostředku. |
-| – verze - v [povinné] | Název tajného kódu verze. |
-| --show hodnota | Zobrazit skutečnou hodnotu verzi tajného klíče. |
+| --tajný klíč-name-n [povinné] | Název tajného prostředku |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-mesh-secretvalue-show"></a>sfctl ok secretvalue zobrazit
+Načte hodnotu zadané verze tajného prostředku.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --tajný klíč-name-n [povinné] | Název tajného prostředku |
+| --Version-v [povinné] | Název tajné verze |
+| --show-Value | Zobrazit skutečnou hodnotu tajné verze |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další postup
-- [Nastavit](service-fabric-cli.md) Service Fabric CLI.
-- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

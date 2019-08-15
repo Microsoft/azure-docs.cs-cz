@@ -1,18 +1,18 @@
 ---
 title: Vytvoření nové nabídky SaaS na komerčním webu Marketplace
 description: Postup vytvoření nové nabídky software jako služba (SaaS) pro výpis nebo prodej v Azure Marketplace, AppSource nebo prostřednictvím programu poskytovatel cloudového řešení (CSP) pomocí portálu pro komerční tržiště na partnerském centru Microsoftu.
-author: mattwojo
+author: qianw211
 manager: evansma
-ms.author: mattwoj
+ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: 6bf22bce28972e1f3a43efea3b33446ab2a81761
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.date: 08/14/2019
+ms.openlocfilehash: 3d3fc1541fb99d8d1219392158c3b87cd6ff99aa
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019604"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033530"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvořit novou nabídku SaaS
 
@@ -22,7 +22,7 @@ Pokud chcete začít vytvářet nabídky software jako služba (SaaS), ujistěte
 
 Vyberte nabídku + **Nová...** a potom vyberte položku nabídky **software jako služba** . 
 
-Pokud vyberete jeden z ostatních typů nabídek, budete přesměrováni na starší [portál partnerů cloudu](https://cloudpartner.azure.com/).  V tomto okamžiku jsou k dispozici pouze nabídky SaaS na portálu pro komerční tržišti v partnerském centru. 
+Pokud vyberete jiný typ nabídky, budete možná přesměrováni na starší [portál partnerů cloudu](https://cloudpartner.azure.com/). V tomto okamžiku jsou na portálu pro komerční tržiště k dispozici pouze nabídky SaaS a Dynamics 365 v partnerském centru.
 
 ![Vytvořit okno nabídky na partnerském centru](./media/new-offer-click.png)
 

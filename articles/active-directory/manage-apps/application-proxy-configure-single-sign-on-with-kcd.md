@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 08/13/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 545906af882be6e53297bf7a9ff2cd12e86d55f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab378fe1e06de49df0fe6481a1aa475d426648dc
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859628"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032559"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování do aplikací pomocí Proxy aplikace
 
@@ -30,15 +30,15 @@ Můžete poskytnout jednotné přihlašování pro místní aplikace publikovan�
 Můžete povolit jednotné přihlašování pro vaše aplikace pomocí integrovaného ověřování Windows (IWA) tak, že udělíte oprávnění konektory Proxy aplikací ve službě Active Directory zosobňovalo. Konektory použít toto oprávnění odesílat a přijímat tokeny jejich jménem.
 
 ## <a name="how-single-sign-on-with-kcd-works"></a>Jak jednotné přihlašování s KCD funguje
-Tento diagram popisuje tok, když se uživatel pokusí získat přístup na místní aplikace, která používá IWA.
+Tento diagram vysvětluje tok, když se uživatel pokusí o přístup k místní aplikaci, která používá IWA.
 
 ![Vývojový diagram ověřování Microsoft AAD](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-1. Uživatel zadá adresu URL pro přístup na místní aplikace prostřednictvím Proxy aplikací.
+1. Uživatel zadá adresu URL pro přístup k místní aplikaci prostřednictvím proxy aplikace.
 2. Proxy aplikace přesměruje požadavek preauthenticate ověřování služby Azure AD. V tuto chvíli Azure AD použije všechny příslušné ověřování a zásady autorizace, jako je například vícefaktorové ověřování. Pokud uživatel je ověřen, Azure AD vytvoří token a odešle se uživateli.
 3. Uživatel se předá token Proxy aplikací.
-4. Proxy aplikace ověří token a načte z něj hlavní název uživatele (UPN), a pak konektor si vyžádá hlavní název uživatele a hlavní název služby (SPN) prostřednictvím obousměrně ověřeného zabezpečeného kanálu.
-5. Konektor provede vyjednávání protokolu Kerberos omezené delegování (KCD) s místní AD zosobňování uživatele získá token protokolu Kerberos k aplikaci.
+4. Proxy aplikace ověří token a načte z něj hlavní název uživatele (UPN) a pak konektor vyžádá hlavní název uživatele (UPN) a hlavní název služby (SPN) prostřednictvím dvojího ověřeného zabezpečeného kanálu.
+5. Konektor provádí vyjednávání omezeného delegování protokolu Kerberos (KCD) s místní službou AD a zosobňuje uživatele k získání tokenu protokolu Kerberos do aplikace.
 6. Služby Active Directory odešle token protokolu Kerberos pro použití konektoru.
 7. Konektor odesílá původní požadavek na server aplikace pomocí token protokolu Kerberos, které získala ze služby AD.
 8. Aplikace odešle odpověď na konektoru, který je pak vrácen do Proxy aplikace služby a nakonec na uživatele.
@@ -59,7 +59,7 @@ Konfigurace služby Active Directory se liší v závislosti na tom, zda váš k
 2. Vyberte server se službou konektoru.
 3. Klikněte pravým tlačítkem a vyberte **vlastnosti** > **delegování**.
 4. Vyberte **důvěřovat tomuto počítači pro delegování pouze určeným službám**. 
-5. Vyberte **použití libovolného protokolu pro ověřování**.
+5. Vyberte možnost **použít libovolný protokol pro ověřování**.
 6. V části **služby, ke kterým může tento účet předložit delegovaná pověření** přidejte hodnotu hlavního názvu služby identity aplikačního serveru. To umožňuje konektoru Proxy aplikace k zosobnění uživatelů ve službě AD aplikací definované v seznamu.
 
    ![Snímek obrazovky okna Vlastnosti Connector 1JÁDROVÉ](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
@@ -76,7 +76,7 @@ Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateTo
 Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
 ```
 
-`sharepointserviceaccount` může být účet počítače aktualizace Service PACKU nebo účet služby, pod kterým běží fond aplikací aktualizace Service PACKU.
+`sharepointserviceaccount`může se jednat o účet počítače SPS nebo účet služby, pod kterým je spuštěný fond aplikací služby SPS.
 
 ## <a name="configure-single-sign-on"></a>Konfigurace jednotného přihlašování 
 1. Publikování aplikace podle pokynů v tématu [publikování aplikací pomocí Proxy aplikace](application-proxy-add-on-premises-application.md). Je nutné vybrat **Azure Active Directory** jako **metoda předběžného ověření**.
@@ -112,14 +112,14 @@ Další informace o protokolu Kerberos najdete v tématu [všechny potřebujete 
 Aplikace Windows bez obvykle uživatelská jména uživatele nebo názvy účtů SAM místo domény e-mailové adresy. Pokud se tato situace se vztahuje na aplikace, musíte nakonfigurovat pole identity delegované přihlašovací jméno pro připojení cloudové identity pro vaše aplikace identity. 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>Práce s různé místní a cloudové identity
-Proxy aplikací se předpokládá, že uživatelé mají přesně stejnou identitu v cloudu i lokálně. Pokud to není tento případ, můžete stále použít KCD pro jednotné přihlašování. Konfigurace **delegovaná identita přihlášení** pro každou aplikaci, aby zadat, která identita se má použít při provádění jednotného přihlašování.  
+Proxy aplikací se předpokládá, že uživatelé mají přesně stejnou identitu v cloudu i lokálně. V některých prostředích se ale v důsledku podnikových zásad nebo závislostí aplikací můžou organizace pro přihlášení použít alternativní ID. V takových případech můžete i nadále používat KCD pro jednotné přihlašování. Konfigurace **delegovaná identita přihlášení** pro každou aplikaci, aby zadat, která identita se má použít při provádění jednotného přihlašování.  
 
 Tato možnost umožňuje mnoho organizací, které mají různé místní a cloudové identity mít jednotné přihlašování z cloudu k místním aplikacím, aniž by uživatelé museli zadat různá uživatelská jména a hesla. Jedná se o organizace, který:
 
 * Interně mají několik domén (joe@us.contoso.com, joe@eu.contoso.com) a jednu doménu v cloudu (joe@contoso.com).
 * Mít název domény nesměrovatelných interně (joe@contoso.usa) a právní jeden v cloudu.
 * Nepoužívejte názvy domén interně (Jan)
-* Použijte různé aliasy v místním prostředí i v cloudu. Například joe-johns@contoso.com vs. joej@contoso.com  
+* Používejte jiné aliasy místně a v cloudu. Například joe-johns@contoso.com vs. joej@contoso.com  
 
 Pomocí Proxy aplikace můžete zvolit, která identita se má použít k získání lístku protokolu Kerberos. Toto nastavení je na aplikaci. Některé z těchto možností jsou vhodné pro systémy, které nepřijímá formát e-mailové adresy, ostatní jsou navrženy pro alternativní přihlašovací jméno.
 

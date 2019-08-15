@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: c5484c37d89cc9ae880bbe17987bb47f3114b8a4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9593a5802300da8baa1e518f14885637db2068f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847899"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036189"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Detekce posunu dat (Preview) na modelech nasazených do služby Azure Kubernetes Service (AKS)
 
@@ -162,9 +162,9 @@ Konfigurace detektoru posunu dat se může zobrazit na stránce s podrobnostmi m
 
 ![Azure Portal konfigurace pro posun dat](media/how-to-monitor-data-drift/drift_config.png)
 
-## <a name="view-results-in-azure-ml-workspace-ui"></a>Zobrazit výsledky v uživatelském rozhraní Azure pracovní prostor ML
+## <a name="view-results-in-azure-portal"></a>Zobrazit výsledky v Azure Portal
 
-Pokud chcete zobrazit výsledky v uživatelském rozhraní pracovní prostor ML Azure, přejděte na stránku modelu. Na kartě Podrobnosti modelu se zobrazí konfigurace posunování dat. Karta posun dat (Preview) je teď dostupná pro vizualizaci metriky posunu dat. 
+Pokud chcete zobrazit výsledky v pracovním prostoru v [Azure Portal](https://portal.azure.com), přejděte na stránku modelu. Na kartě Podrobnosti modelu se zobrazí konfigurace posunování dat. Karta posun dat (Preview) je teď dostupná pro vizualizaci metriky posunu dat. 
 
 ![Azure Portal posun dat](media/how-to-monitor-data-drift/drift_ui.png)
 

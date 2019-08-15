@@ -1,6 +1,6 @@
 ---
-title: Konfigurovat klíče spravované zákazníkem pro šifrování Azure Storage na webu Azure Portal
-description: Zjistěte, jak nakonfigurovat spravované zákazníkem klíče pro šifrování Azure Storage pomocí webu Azure portal. Klíče spravované zákazníkem umožňují vytvořit, otáčení, zakázat a odvolat přístup k ovládacím prvkům.
+title: Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure Portal
+description: Naučte se používat Azure Portal ke konfiguraci klíčů spravovaných zákazníkem pro Azure Storage šifrování. Klíče spravované zákazníkem umožňují vytvářet, otáčet, zakazovat a odvolávat řízení přístupu.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,67 +9,68 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: baabc5a8e1d063cb51a3edea3a7218591e85aa1a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8ec6b1e90eb6638c99ca43715c5e8bea6e48c22
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154155"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030951"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-the-azure-portal"></a>Konfigurovat klíče spravované zákazníkem pro šifrování Azure Storage na webu Azure Portal
+# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure Portal
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Tento článek ukazuje, jak konfigurovat službu key vault s použitím klíčů spravovaných zákazníkem [webu Azure portal](https://portal.azure.com/). Zjistěte, jak vytvořit trezor klíčů pomocí webu Azure portal, najdete v článku [rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure portal](../../key-vault/quick-create-portal.md). 
+V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí [Azure Portal](https://portal.azure.com/). Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v [tématu rychlý Start: Pomocí Azure Portal](../../key-vault/quick-create-portal.md)nastavte a načtěte tajný klíč z Azure Key Vault. 
 
 
 > [!IMPORTANT]
-> Pomocí klíčů spravovaných zákazníkem pomocí šifrování úložiště Azure vyžaduje, že trezor klíčů má dvě požadované vlastnosti nakonfigurovat, **obnovitelné odstranění** a **proveďte není vyprázdnit**. Tyto vlastnosti jsou ve výchozím nastavení povolena, když vytvoříte nový trezor klíčů na webu Azure Portal. Ale pokud je potřeba povolit tyto vlastnosti existujícího trezoru klíčů, musíte použít PowerShell nebo rozhraní příkazového řádku Azure.
+> Použití klíčů spravovaných zákazníkem se šifrováním Azure Storage vyžaduje, aby Trezor klíčů měl nakonfigurované dvě požadované vlastnosti, **obnovitelné odstranění** a Nemazat. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
+> Podporují se jenom klíče RSA a velikost klíče 2048.
 
-## <a name="enable-customer-managed-keys"></a>Povolení klíče spravované zákazníkem
+## <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
 
-Pokud chcete povolit klíče spravované zákazníkem na webu Azure Portal, postupujte takto:
+Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupujte následovně:
 
 1. Přejděte na svůj účet úložiště.
-1. Na **nastavení** okno pro účet úložiště, klikněte na tlačítko **šifrování**. Vyberte **použít vlastní klíč** možnosti, jak je znázorněno na následujícím obrázku.
+1. V okně **Nastavení** pro účet úložiště klikněte na **šifrování**. Vyberte možnost **použít vlastní klíč** , jak je znázorněno na následujícím obrázku.
 
-    ![Možnost šifrování portálu snímek obrazovky znázorňující](./media/storage-encryption-keys-portal/ssecmk1.png)
+    ![Snímek obrazovky portálu ukazující možnost šifrování](./media/storage-encryption-keys-portal/ssecmk1.png)
 
-## <a name="specify-a-key"></a>Zadejte klíč
+## <a name="specify-a-key"></a>Zadat klíč
 
-Když povolíte klíče spravované zákazníkem, budete mít příležitost k určení klíče pro přidružení k účtu úložiště.
+Po povolení klíčů spravovaných zákazníkem budete mít možnost zadat klíč, který chcete přidružit k účtu úložiště.
 
-### <a name="specify-a-key-as-a-uri"></a>Zadejte klíč jako identifikátor URI
+### <a name="specify-a-key-as-a-uri"></a>Zadat klíč jako identifikátor URI
 
-Zadejte klíč jako identifikátor URI, postupujte podle těchto kroků:
+Pokud chcete zadat klíč jako identifikátor URI, použijte následující postup:
 
-1. Najít identifikátor URI klíče na webu Azure Portal, přejděte do trezoru klíčů a vyberte **klíče** nastavení. Vyberte požadovaný klíč a potom klikněte na klíč a zobrazte její nastavení. Zkopírujte hodnotu **identifikátor klíče** pole, která obsahuje identifikátor URI.
+1. Pokud chcete najít identifikátor URI klíče v Azure Portal, přejděte do trezoru klíčů a vyberte nastavení **klíče** . Vyberte požadovaný klíč a potom kliknutím na klíč zobrazte jeho nastavení. Zkopírujte hodnotu pole **identifikátor klíče** , které poskytuje identifikátor URI.
 
-    ![Snímek obrazovky znázorňující služby key vault klíč identifikátoru URI](media/storage-encryption-keys-portal/key-uri-portal.png)
+    ![Snímek obrazovky s identifikátorem URI klíče trezoru klíčů](media/storage-encryption-keys-portal/key-uri-portal.png)
 
-1. V **šifrování** zvolte nastavení pro váš účet úložiště **zadejte identifikátor URI klíče** možnost.
-1. V **URI klíče** zadejte identifikátor URI.
+1. V nastavení **šifrování** pro účet úložiště klikněte na možnost **zadat identifikátor URI klíče** .
+1. Do pole **identifikátor URI klíče** zadejte identifikátor URI.
 
    ![Snímek obrazovky ukazující, jak zadat identifikátor URI klíče](./media/storage-encryption-keys-portal/ssecmk2.png)
 
-### <a name="specify-a-key-from-a-key-vault"></a>Zadejte klíč ze služby key vault
+### <a name="specify-a-key-from-a-key-vault"></a>Zadat klíč z trezoru klíčů
 
-K určení klíče ze služby key vault, první Ujistěte se, že máte trezor klíčů, který obsahuje klíč. K určení klíče ze služby key vault, postupujte podle těchto kroků:
+Pokud chcete zadat klíč z trezoru klíčů, nejdřív se ujistěte, že máte Trezor klíčů, který obsahuje klíč. Pokud chcete zadat klíč z trezoru klíčů, použijte následující postup:
 
-1. Zvolte **vyberte ze služby Key Vault** možnost.
-2. Vyberte trezor klíčů, který obsahuje klíč, který chcete použít.
-3. Zvolte klíče z trezoru klíčů.
+1. Zvolte možnost **vybrat z Key Vault** .
+2. Vyberte Trezor klíčů obsahující klíč, který chcete použít.
+3. Vyberte klíč z trezoru klíčů.
 
-   ![Snímek obrazovky zobrazující možnost klíče spravované zákazníkem](./media/storage-encryption-keys-portal/ssecmk3.png)
+   ![Snímek obrazovky s možností klíče spravovaného zákazníkem](./media/storage-encryption-keys-portal/ssecmk3.png)
 
 ## <a name="update-the-key-version"></a>Aktualizace verze klíče
 
-Když vytvoříte novou verzi klíče, musíte aktualizovat účet úložiště na použití nové verze. Postupujte následovně:
+Když vytváříte novou verzi klíče, budete muset aktualizovat účet úložiště, aby používal novou verzi. Postupujte následovně:
 
-1. Přejděte do svého účtu úložiště a zobrazí **šifrování** nastavení.
-1. Zadejte identifikátor URI pro novou verzi klíče. Alternativně můžete vybrat trezor klíčů a klíč znovu a aktualizujte na verzi.
+1. Přejděte k účtu úložiště a zobrazte nastavení **šifrování** .
+1. Zadejte identifikátor URI pro novou verzi klíče. Alternativně můžete vybrat Trezor klíčů a klíč znovu pro aktualizaci verze.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md)
+- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md)
 - [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?

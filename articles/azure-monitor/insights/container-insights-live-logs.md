@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 968ee4c8bb5d7e09ef3c345c46f6c7b839e0e25a
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2eab6fa75e4adbbde7bcf20f18301a1e516235c2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990040"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035352"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Postup zobrazení protokolů a událostí v reálném čase (Preview)
 Azure Monitor for containers obsahuje funkci, která je aktuálně ve verzi Preview, která poskytuje živé zobrazení do protokolů kontejnerů služby Azure Kubernetes (stdout/stderr) a událostí bez nutnosti spouštět příkazy kubectl. Když vyberete jednu z možností, pod tabulkou data o výkonu na **uzlech**, řadičích av zobrazení **kontejnerů** se zobrazí nové podokno. Zobrazuje dynamické protokolování a události generované modulem kontejnerů, které vám pomůžou při řešení problémů v reálném čase.
@@ -72,7 +72,7 @@ Pokud jste povolili Kubernetes RBAC se podařilo autorizovat, je potřeba použ�
 
 AKS je nakonfigurovat pro ověřování uživatelů pomocí Azure Active Directory (AD). Pokud konfigurujete poprvé, přečtěte si téma [integrace Azure Active Directory se službou Azure Kubernetes](../../aks/azure-ad-integration.md). Během postupu vytvoření [klientské aplikace](../../aks/azure-ad-integration.md#create-the-client-application)zadejte následující:
 
-- **Identifikátor URI přesměrování (volitelné)** : Toto je typ **webové** aplikace a hodnota základní adresy URL by měla být `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
+-  **Identifikátor URI pro přesměrování**: Je třeba vytvořit dva typy **webových** aplikací. První základní hodnota URL by měla být `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a druhá základní hodnota URL by měla být `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
 - Po registraci aplikace na stránce **Přehled** vyberte **ověřování** v levém podokně. V části **Upřesnit nastavení** na stránce **ověřování** se implicitně udělí **přístupové tokeny** a **tokeny ID** a změny se uloží.
 
 >[!NOTE]

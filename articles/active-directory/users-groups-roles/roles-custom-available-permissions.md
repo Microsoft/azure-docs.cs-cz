@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ff6755f1391ff19e65df669fb51967a904f4f
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 99f31c5928273973a9089ae9ef1fd184cdb78bbb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707562"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033338"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Podtypy registrace aplikace a oprávnění v Azure Active Directory
 
@@ -46,12 +46,12 @@ Podrobnosti o následujících oprávněních pro vlastní role Preview jsou uve
 
 ### <a name="create-and-delete"></a>Vytvořit a odstranit
 
-Existují dvě oprávnění, která jsou k dispozici pro udělení možnosti vytvářet registrace aplikací:
+Existují dvě oprávnění, která jsou k dispozici pro udělení možnosti vytvářet registrace aplikací, z nichž každá má jiné chování:
 
-- **Microsoft. Directory/Applications/createAsOwner**
-- **Microsoft. Directory/aplikace/vytvořit**
+- **Microsoft. Directory/Applications/createAsOwner**: Když se tato oprávnění přiřadí, přiřadí se autor jako první vlastník vytvořené registrace aplikace a registrace vytvořené aplikace se bude počítat s kvótou vytvořených objektů tvůrce 250.
+- **Microsoft. Directory/applicationPolicies/Create**: Když se tato oprávnění přiřadí, nepřidá se tvůrce jako první vlastník vytvořené registrace aplikace a registrace vytvořené aplikace se nebude počítat s kvótou vytvořených objektů tvůrce 250. Toto oprávnění používejte opatrně, protože nebrání žádnému neoprávněnému nabyvateli v vytváření registrací aplikací, dokud se nedosáhne kvóty na úrovni adresáře. Pokud jsou přiřazena obě oprávnění, má tato oprávnění přednost.
 
-Pokud jsou přiřazena obě oprávnění, bude mít oprávnění vytvořit přednost. I když oprávnění createAsOwner nepřidá tvůrce automaticky jako prvního vlastníka, můžou se vlastníci zadat během vytváření registrace aplikace při použití rozhraní Graph API nebo rutin PowerShellu.
+Pokud jsou přiřazena obě oprávnění, bude mít přednost oprávnění/CREATE. I když oprávnění/createAsOwner nepřidá tvůrce automaticky jako prvního vlastníka, můžou se vlastníci zadat během vytváření registrace aplikace při použití rozhraní Graph API nebo rutin PowerShellu.
 
 Oprávnění CREATE udělte přístup k příkazu **New Registration** .
 

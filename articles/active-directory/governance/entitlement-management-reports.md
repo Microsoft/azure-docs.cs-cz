@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d33b4751b421f5af1536af9a88d15e060ab59bdb
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 2420fc25795ec74939649fb8a17ead7c8cfdd1df
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489064"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032446"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>Zobrazení sestav a protokolů ve správě nároků ve službě Azure AD (Preview)
 
@@ -29,6 +29,12 @@ ms.locfileid: "68489064"
 > Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Sestavy přiřazení uživatelů a protokol auditu Azure Active Directory poskytují další podrobnosti o uživatelích v adresáři. Jako správce můžete zobrazit prostředky, ke kterým má uživatel přístup, a zobrazit protokoly žádostí pro účely auditování nebo určit stav požadavku uživatele. Tento článek popisuje, jak používat sestavu přiřazení uživatelů a protokoly auditu Azure AD.
+
+Podívejte se na následující video, kde se dozvíte, jak používat správu nároků ke správě přístupu pro uživatele v Azure Active Directory:
+
+>[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
 ## <a name="view-resources-a-user-has-access-to"></a>Zobrazit prostředky, ke kterým má uživatel přístup
 
@@ -76,7 +82,7 @@ Pokud se přístup nepřiřadil, služba `EntitlementManagement` Azure AD zapí�
 
 Když platnost přiřazení balíčku přístupu uživatele vyprší, zruší ho uživatel nebo ho odebral správce a pak Azure AD zapíše záznam auditu pro `EntitlementManagement` kategorii s **aktivitou** . `Remove access package assignment`
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Řešení potíží se správou nároků Azure AD](entitlement-management-troubleshoot.md)
 - [Obvyklé scénáře](entitlement-management-scenarios.md)

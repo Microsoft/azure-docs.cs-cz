@@ -1,6 +1,6 @@
 ---
-title: Konfigurace ověřování Google - službě Azure App Service
-description: Zjistěte, jak nakonfigurovat ověřování Google pro aplikaci App Services.
+title: Konfigurace ověřování Google – Azure App Service
+description: Naučte se konfigurovat ověřování Google pro vaši aplikaci App Services.
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -15,47 +15,51 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 50905b86924e0f564eaf4867c2906ad8740ddbaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b56d4e8d179e4ff073e74b4bc5242f936dc983e
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60851170"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033739"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Konfigurace aplikace App Service pro použití přihlášení k Google
+# <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Jak nakonfigurovat aplikaci App Service, aby používala přihlášení Google
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-V tomto tématu se dozvíte, jak nakonfigurovat služby Azure App Service, který se použije jako zprostředkovatel ověřování Google.
+V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service pro použití Google jako poskytovatele ověřování.
 
-K dokončení postupu v tomto tématu, musíte mít účet Google s ověřenou e-mailovou adresou. Nový účet Google si můžete vytvořit na stránce [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
+Chcete-li dokončit postup v tomto tématu, musíte mít účet Google, který má ověřenou e-mailovou adresu. Nový účet Google si můžete vytvořit na stránce [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
 
-## <a name="register"> </a>Registrace vaší aplikace pomocí Googlu
-1. Přihlaste se k [Azure Portal]a přejděte k vaší aplikaci. Kopii vaší **URL**, které použijete později ke konfiguraci vaší aplikace Google.
-2. Přejděte na [rozhraní Google API](https://go.microsoft.com/fwlink/p/?LinkId=268303) klikněte na webu, přihlaste se pomocí svých přihlašovacích údajů účtu Google **vytvořit projekt**, zadejte **název projektu**, klikněte na  **Vytvoření**.
-3. Jakmile se vytvoří projekt, vyberte ji. Na řídicím panelu projektu klikněte na tlačítko **přejít na přehled rozhraní API**.
-4. Vyberte **povolit rozhraní API a služby**. Vyhledejte **rozhraní API Google +** a vyberte ji. Pak klikněte na tlačítko **povolit**.
-5. V levém navigačním panelu **pověření** > **obrazovku se souhlasem OAuth**a pak vyberte vaši **e-mailová adresa**, zadejte **název produktu**a klikněte na tlačítko **Uložit**.
-6. V **pověření** klikněte na tlačítko **Vytvořte přihlašovací údaje** > **ID klienta OAuth**.
-7. Na obrazovce "Vytvořit ID klienta" vyberte **webovou aplikaci**.
-8. Vložte služby App Service **URL** jste dříve zkopírovali do **oprávnění zdroje jazyka JavaScript**, vložte váš přesměrování URI do **oprávnění identifikátor URI pro přesměrování**. Přesměrování identifikátoru URI je adresa URL vaší aplikace s cestu, */.auth/login/google/callback*. Například, `https://contoso.azurewebsites.net/.auth/login/google/callback`. Ujistěte se, že budou používat schéma HTTPS. Poté klikněte na **Vytvořit**.
-9. Poznamenejte si hodnoty ID klienta a tajný kód klienta na další obrazovce.
+## <a name="register"> </a>Registrace aplikace pomocí Google
+1. Přihlaste se k [Azure Portal]a přejděte do aplikace. Zkopírujte **adresu URL**, kterou použijete později ke konfiguraci aplikace Google.
+2. Přejděte na web [Google API](https://go.microsoft.com/fwlink/p/?LinkId=268303) , přihlaste se pomocí přihlašovacích údajů k účtu Google, klikněte na **vytvořit projekt**, zadejte **název projektu**a pak klikněte na **vytvořit**.
+3. Po vytvoření projektu ho vyberte. V řídicím panelu Projekt klikněte na možnost **Přejít na rozhraní API přehled**.
+4. Vyberte možnost **Povolit rozhraní API a služby**. Vyhledejte **Google + API**a vyberte ji. Pak klikněte na **Povolit**.
+5. V levém navigačním panelu klikněte na**obrazovku pro vyjádření souhlasu OAuth**s **přihlašovacími údaji** > a pak vyberte svou **e-mailovou adresu**, zadejte **název produktu**a klikněte na **Uložit**.
+6. Na kartě **přihlašovací údaje** klikněte na **vytvořit přihlašovací údaje** > **ID klienta OAuth**.
+7. Na obrazovce vytvořit ID klienta vyberte možnost **Webová aplikace**.
+8. Vložte **adresu URL** App Service, kterou jste zkopírovali dříve do **autorizovaných zdrojů JavaScriptu**, a pak vložte identifikátor URI přesměrování do **autorizovaného identifikátoru URI přesměrování**. Identifikátor URI přesměrování je adresa URL vaší aplikace připojené s cestou, */.auth/Login/Google/callback*. Například, `https://contoso.azurewebsites.net/.auth/login/google/callback`. Ujistěte se, že používáte schéma HTTPS. Poté klikněte na **Vytvořit**.
+9. Na další obrazovce si poznamenejte hodnoty ID klienta a tajný klíč klienta.
 
     > [!IMPORTANT]
-    > Tajný kód klienta je důležitým bezpečnostním pověřením. S kýmkoli sdílet tento tajný kód nebo distribuovat v rámci klientské aplikace.
+    > Tajný kód klienta je důležité bezpečnostní pověření. Nesdílejte tento tajný klíč s kýmkoli ani ho distribuujte v klientské aplikaci.
 
 
-## <a name="secrets"> </a>Přidat do vaší aplikace Google informace
-1. Zpátky [Azure Portal], přejděte k vaší aplikaci. Klikněte na tlačítko **nastavení**a potom **ověřování / autorizace**.
-2. Pokud ověřování / autorizace funkce není povolená, přepněte přepínač **na**.
-3. Klikněte na tlačítko **Google**. Vložením hodnoty ID aplikace a tajný kód aplikace, které jste získali dříve a volitelně povolit všechny obory, které vaše aplikace vyžaduje. Pak klikněte na **OK**.
+## <a name="secrets"> </a>Přidání informací Google do aplikace
+1. Zpátky v [Azure Portal]přejděte do aplikace. Klikněte na **Nastavení**a pak na **ověřování nebo autorizaci**.
+2. Pokud není povolená funkce ověřování/autorizace, zapněte přepínač na **zapnuto**.
+3. Klikněte na **Google**. Vložte do ID aplikace a hodnoty tajného klíče aplikace, které jste získali dříve, a volitelně povolte libovolné rozsahy, které vaše aplikace vyžaduje. Pak klikněte na **OK**.
    
    ![][1]
    
-   Ve výchozím nastavení služby App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu webu a rozhraní API. V kódu vaší aplikace musí uživateli uživatele autorizovat.
-4. (Volitelné) Chcete-li omezit přístup k webu pouze uživatele ověřené Google, nastavte **akce má být provedena, když požadavek nebude ověřený** k **Google**. K tomu je potřeba ověřit, že všechny požadavky, a všechny neověřené požadavky jsou přesměrovány do Googlu pro ověřování.
+   Ve výchozím nastavení App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace.
+4. Volitelné Pokud chcete omezit přístup k vašemu webu jenom na uživatele ověřené Google, nastavte **akci, která se má provést, když se žádost neověřuje** na **Google**. To vyžaduje, aby všechny požadavky byly ověřené a všechny neověřené požadavky se přesměrovaly na Google pro ověřování.
+
+> [!CAUTION]
+> Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. U takových aplikací může být upřednostňována možnost **povolení anonymních požadavků (bez akce)** , pokud se aplikace ručně spouští samotné přihlášení, jak je popsáno [zde](overview-authentication-authorization.md#authentication-flow).
+
 5. Klikněte na **Uložit**.
 
-Nyní jste připraveni používat Google pro ověřování ve vaší aplikaci.
+Teď jste připravení použít Google pro ověřování ve vaší aplikaci.
 
 ## <a name="related-content"> </a>Související obsah
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]

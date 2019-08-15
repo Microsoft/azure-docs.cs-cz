@@ -1,6 +1,6 @@
 ---
-title: Služba Azure Service Fabric CLI - sfctl | Dokumentace Microsoftu
-description: Popisuje příkazy Service Fabric CLI sfctl služby.
+title: Azure Service Fabric CLI – služba sfctl | Microsoft Docs
+description: Popisuje příkazy služby Service Fabric CLI sfctl.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,591 +8,590 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e0454d0124efba04434884fbac9056c5e324710d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e215ab6d3ee56f2cccdd5887c240d9046327f110
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556368"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035219"
 ---
 # <a name="sfctl-service"></a>sfctl service
-Vytvářet, odstraňovat a spravovat služby, typů služeb a balíčky služeb.
+Umožňuje vytvářet, odstraňovat a spravovat služby, typy služeb a balíčky služeb.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
 | název aplikace | Získá název aplikace Service Fabric pro službu. |
-| seznam balíčků kódu | Získá seznam balíčky kódu, které jsou nasazené na uzlu Service Fabricu. |
-| create | Vytvoří zadané služby Service Fabric. |
-| delete | Odstraní existující službu Service Fabric. |
-| Typ nasazení | Získá informace o zadané služby typu aplikace nasazená na uzlu v clusteru Service Fabric. |
-| nasadit seznam typů | Získá seznam obsahující informace o typech služeb z aplikace nasazené na uzly v clusteru Service Fabric. |
-| description | Získá popis existující službu Service Fabric. |
-| get-container-logs | Získá protokoly kontejneru pro nasazení v uzlu Service Fabric container. |
+| sada Code-Package-list | Získá seznam balíčků kódu nasazených na Service Fabric uzlu. |
+| create | Vytvoří zadanou službu Service Fabric. |
+| odstraňovat | Odstraní existující službu Service Fabric. |
+| nasazený typ | Získá informace o zadaném typu služby aplikace nasazené na uzlu v clusteru Service Fabric. |
+| nasazený typ – seznam | Získá seznam obsahující informace o typech služeb z aplikací nasazených na uzlu v clusteru Service Fabric. |
+| description | Získá popis existující služby Service Fabric. |
+| get-container-logs | Získá protokoly kontejneru pro kontejner nasazený na uzlu Service Fabric. |
 | health | Získá stav zadané služby Service Fabric. |
-| info | Získá informace o konkrétní služby, které patří k aplikaci Service Fabric. |
-| list | Získá informace o všech služeb, které patří k aplikaci podle ID aplikace. |
-| manifest | Získá manifest popisující typ služby. |
-| package-deploy | Soubory ke stažení balíčků přidružených k zadané služby manifestu do bitové kopie mezipaměti na zadaný uzel. |
-| package-health | Získá informace o stavu balíčku služby pro konkrétní aplikace nasazená pro uzel Service Fabric a aplikace. |
-| package-info | Získá seznam balíčků služeb nasazených na odpovídající zadanému názvu uzlu Service Fabricu. |
-| seznam balíčků | Získá seznam balíčků služeb nasazených na uzlu Service Fabricu. |
-| Obnovit | Do clusteru Service Fabric označuje, že by měl pokusí o zotavení zadanou službu, která je aktuálně zablokované ve ztrátě kvora. |
-| report-health | Odešle zprávu o stavu ve službě Service Fabric. |
-| řešení | Přeložit oddíl Service Fabric. |
-| type-list | Získá seznam obsahující informace o typech služeb, které jsou podporovány podle typu aplikací zřízených v clusteru Service Fabric. |
-| update | Aktualizuje zadaný služby pomocí popis pro danou aktualizaci. |
+| info | Získá informace o konkrétní službě, která patří do aplikace Service Fabric. |
+| list | Získá informace o všech službách, které patří do aplikace určené ID aplikace. |
+| manifest | Načte manifest popisující typ služby. |
+| balíček – nasazení | Stáhne balíčky přidružené k zadanému manifestu služby do mezipaměti imagí v zadaném uzlu. |
+| package-health | Získá informace o stavu balíčku služby pro konkrétní aplikaci nasazenou pro Service Fabric uzel a aplikaci. |
+| package-info | Načte seznam balíčků služeb nasazených na Service Fabric uzlu, které odpovídají přesně zadanému názvu. |
+| seznam balíčků | Načte seznam balíčků služeb nasazených na Service Fabric uzlu. |
+| opravitelné | Určuje Cluster Service Fabric, který by se měl pokusit obnovit zadanou službu, která je aktuálně zablokovaná ve ztrátě kvora. |
+| report-health | Odešle zprávu o stavu služby Service Fabric. |
+| vyřešit | Vyřešte Service Fabric oddíl. |
+| type-list | Získá seznam obsahující informace o typech služeb, které jsou podporované typem zřízené aplikace v clusteru Service Fabric. |
+| aktualizovat | Aktualizuje zadanou službu pomocí zadaného popisu aktualizace. |
 
-## <a name="sfctl-service-app-name"></a>sfctl služba aplikace name
+## <a name="sfctl-service-app-name"></a>název aplikace služby sfctl
 Získá název aplikace Service Fabric pro službu.
 
-Získá název aplikace pro zadaná služba. 404 FABRIC_E_SERVICE_DOES_NOT_EXIST chyba je vrácena, pokud služba s ID poskytnutá služba neexistuje.
+Získá název aplikace pro určenou službu. Pokud služba s uvedeným ID služby neexistuje, bude vrácena chyba 404 FABRIC_E_SERVICE_DOES_NOT_EXIST.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-code-package-list"></a>sfctl služby code-package-list
-Získá seznam balíčky kódu, které jsou nasazené na uzlu Service Fabricu.
+## <a name="sfctl-service-code-package-list"></a>sfctl Service Code-Package-list
+Získá seznam balíčků kódu nasazených na Service Fabric uzlu.
 
-Získá seznam balíčků kódu, které jsou nasazené na uzlu Service Fabricu pro danou aplikaci.
+Získá seznam balíčků kódu nasazených na Service Fabric uzlu pro danou aplikaci.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| --[povinný] název uzlu | Název uzlu. |
-| --code-package-name | Název zadaný v manifestu služby, které jsou zapsaní v rámci typu aplikace v clusteru Service Fabric balíček kódu. |
-| --service-manifest-name | Název manifestu služby zapsaní v rámci typu aplikace v clusteru Service Fabric. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
+| --Node-Name [povinné] | Název uzlu. |
+| --Code-Package-Name | Název balíčku kódu zadaný v manifestu služby zaregistrovaný jako součást typu aplikace v clusteru Service Fabric. |
+| --service-manifest-name | Název manifestu služby registrovaného jako součást typu aplikace v clusteru Service Fabric. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-create"></a>vytvoření služby sfctl
-Vytvoří zadané služby Service Fabric.
+## <a name="sfctl-service-create"></a>Vytvoření služby sfctl
+Vytvoří zadanou službu Service Fabric.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| [povinné] id – aplikace | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "prostředků infrastruktury\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| --[povinný] název | Název služby. To by měl být podřízeným id aplikace. Toto je úplný název včetně `fabric\:` identifikátoru URI. Například služba `fabric\:/A/B` je podřízeným prvkem aplikace `fabric\:/A`. |
-| – Typ služby [povinné] | Název typu služby. |
-| --Aktivace režimu | Aktivace režimu pro balíček služby. |
-| – omezení | Omezení umístění jako řetězec. Omezení umístění jsou logické výrazy na vlastnosti uzlu a umožňují omezení služby pro konkrétní uzly podle požadavků na službu. Například k umístění služby na uzlech, kde je modrá NodeType zadat následující\:"NodeColor == blue". |
-| --correlated-service | Název cílové služby pro korelaci s. |
-| --korelace | Je možné korelovat služby pomocí existující služby pomocí spřažení zarovnání. |
-| --dns-name | Název DNS služby, který se má vytvořit. Systémová služba Service Fabric DNS musí být povolena pro toto nastavení. |
-| --počet instancí | Počet instancí. To platí pro pouze bezstavové služby. |
-| --int-scheme | Označuje, že služba by měly být rovnoměrně rozdělené mezi širokou škálou celých čísel bez znaménka. |
-| --int-scheme-count | Počet oddílů uvnitř klíče rozsah celých čísel k vytvoření, pokud používáte schéma oddílu jednotného celého čísla. |
-| int – schéma vysoké | Koncový rozsah klíčů celých čísel, pokud používáte schéma oddílu jednotného celého čísla. |
-| --int-scheme-low | Počáteční rozsah klíčů celých čísel, pokud používáte schéma oddílu jednotného celého čísla. |
-| --zatížení metrics | JSON kódovaný seznam metrik při vyrovnávání zatížení služeb mezi uzly. |
-| --min-replica-set-size | Minimální repliky nastavit velikost jako číslo. To platí pro pouze stavové služby. |
-| --náklady na přesunutí | Určuje, náklady na přesunutí pro službu. Možné hodnoty jsou\: "Nula", "Nízká", "Střední", "Vysoká". |
-| --named-scheme | Označuje, že služba by měla mít několik pojmenovaných oddílů. |
-| --named-scheme-list | JSON kódovaný seznam názvů při vytváření oddílů service, pokud používáte schéma s názvem oddílu. |
-| --no trvalý stav | Při hodnotě true označuje služba nemá trvalý stav uložené na místním disku, nebo pouze ukládá stav v paměti. |
-| – Seznam umístění zásad | JSON kódovaný v seznamu zásad umístění pro službu a všechna přidružená názvy domén. Zásady je možné jednu nebo více\: `NonPartiallyPlaceService`, `PreferPrimaryDomain`, `RequireDomain`, `RequireDomainDistribution`. |
-| --quorum-loss-wait | Maximální doba trvání v sekundách, pro který oddíl se může být ve stavu ztrátě kvora. To platí pro pouze stavové služby. |
-| --replica-restart-wait | Doba v sekundách mezi Pokud replika přestane fungovat a když se vytvoří novou repliku. To platí pro pouze stavové služby. |
-| – zásady škálování | JSON kódovaný seznam škálování zásady pro tuto službu. |
-| --singleton-scheme | Určuje službu má mít jeden oddíl nebo službu bez oddílů. |
-| --stand-by-replica-keep | Maximální doba trvání v sekundách, pro které pohotovostní režim repliky bude udržovat než jsou odstraněny. To platí pro pouze stavové služby. |
-| --Stavová | Označuje, že služba je do stavové služby. |
-| --Bezstavové | Označuje, že služba je Bezstavová služba. |
-| --target-replica-set-size | Velikost sady replik cíl jako číslo. To platí pro pouze stavové služby. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --App-ID [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny\~znakem. Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
+| --Name [povinné] | Název služby. Tato položka by měla být podřízená ID aplikace. Toto je úplný název, včetně `fabric\:` identifikátoru URI. Například služba `fabric\:/A/B` je podřízenou položkou aplikace `fabric\:/A`. |
+| --Service-Type [povinné] | Název typu služby |
+| --Aktivace-režim | Režim aktivace balíčku služby |
+| --omezení | Omezení umístění jako řetězec. Omezení umístění jsou logické výrazy ve vlastnostech uzlu a umožňují omezení služby na konkrétní uzly na základě požadavků služby. Pokud například chcete umístit službu na uzly, kde je typ uzlu NodeType modrý, zadejte\:následující "NodeColor = = Blue". |
+| --korelujed-Service | Název cílové služby, ke které se má korelovat. |
+| --korelační | Proveďte korelaci služby s existující službou pomocí spřažení zarovnání. |
+| --dns-name | Název DNS služby, která se má vytvořit Pro toto nastavení musí být povolena Service Fabric systémová služba DNS. |
+| --instance-počet | Počet instancí. To platí jenom pro bezstavové služby. |
+| --int-scheme | Indikuje, že by služba měla být rovnoměrně rozdělená mezi rozsah celých čísel bez znaménka. |
+| --int-schéma-počet | Počet oddílů uvnitř rozsahu celočíselného klíče, který se má vytvořit, pokud se používá jednotné celé číslo schématu oddílu |
+| --int-schéma-vysoká | Konec rozsahu celého čísla klíče, pokud používáte jednotné celočíselné schéma oddílu. |
+| --int-scheme-low | Začátek rozsahu celého čísla klíče, pokud používáte jednotné celočíselné schéma oddílu. |
+| --Load-metriky | Seznam metrik kódovaný ve formátu JSON, který se používá při vyrovnávání zatížení služeb napříč uzly. |
+| --min-replica-set-size | Minimální velikost sady replik jako číslo. To platí jenom pro stavové služby. |
+| --Přesun-cost | Určuje náklady na přesun služby. Možné hodnoty jsou\: "Zero", "low", "Medium", "High". |
+| --named-scheme | Indikuje, že služba by měla mít více pojmenovaných oddílů. |
+| --named-scheme-list | Seznam názvů kódovaných ve formátu JSON, které se mají rozdělit do oddílů, pokud se používá schéma pojmenovaného oddílu |
+| --bez trvalého stavu | Pokud je hodnota true, znamená to, že služba nemá trvalý stav uložený na místním disku, nebo ukládá pouze stav paměti. |
+| --umístění-Zásady-seznam | Seznam zásad umístění pro službu a všechny přidružené názvy domén v kódování JSON Zásady můžou být jedna nebo víc z\: `NonPartiallyPlaceService`, `PreferPrimaryDomain`, `RequireDomain`, `RequireDomainDistribution`. |
+| --quorum-loss-wait | Maximální doba trvání v sekundách, po kterou může být oddíl ve stavu ztráty kvora. To platí jenom pro stavové služby. |
+| --replica-restart-wait | Doba trvání v sekundách mezi tím, kdy replika vychází a kdy se vytvoří nová replika. To platí jenom pro stavové služby. |
+| --škálování – zásady | Seznam zásad škálování v kódování JSON pro tuto službu. |
+| --singleton-scheme | Indikuje, že služba by měla mít jeden oddíl nebo být služba, která není rozdělená na oddíly. |
+| --rereplice – udržování | Maximální doba trvání v sekundách, po kterou budou pohotovostní repliky před odebráním zachovány. To platí jenom pro stavové služby. |
+| --Stavová | Označuje, že služba je stavová služba. |
+| – bez stavu | Indikuje, že služba je Bezstavová služba. |
+| --target-replica-set-size | Velikost cílové sady replik jako číslo. To platí jenom pro stavové služby. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-delete"></a>Odstranění služby sfctl
+## <a name="sfctl-service-delete"></a>odstranění služby sfctl
 Odstraní existující službu Service Fabric.
 
-Služby musí být vytvořeny, aby se Dal odstranit. Ve výchozím nastavení Service Fabric se pokusí zavřete repliky služby řádné způsobem a pak odstraňte službu. Ale pokud služba je potíže řádně zavření repliky, operace odstranění může trvat dlouhou dobu nebo zablokuje. Použijte volitelný příznak ForceRemove vynuceně odstranit službu a přeskočit řádné zavření sekvence.
+Aby bylo možné službu odstranit, je nutné ji vytvořit. Ve výchozím nastavení se Service Fabric pokusí zavřít repliky služby řádným způsobem a pak tuto službu odstranit. Pokud ale dojde k řádnému zavření repliky služby, operace odstranění může trvat dlouhou dobu nebo se zablokuje. Pomocí volitelného příznaku ForceRemove přeskočíte plynulé ukončení sekvence a vynuceně odstraníte službu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --force odebrat | Odebrání aplikace Service Fabric nebo služby vynuceně bez nutnosti kontaktovat řádné vypnutí pořadí. Tento parametr lze použít k vynuceně odstranění aplikace nebo služby, pro které delete je bezproblémové vypršení časového limitu z důvodu problémů v kódu služby, které brání zavřít replik. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Force-Remove | Odeberte Service Fabric aplikaci nebo službu vynuceně, aniž byste museli projít sekvenci řádného vypnutí. Tento parametr lze použít k vynucenému odstranění aplikace nebo služby, pro kterou odstranění probíhá časování z důvodu problémů v kódu služby, který brání řádnému zavření replik. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-deployed-type"></a>sfctl služby nasazené – typ
-Získá informace o zadané služby typu aplikace nasazená na uzlu v clusteru Service Fabric.
+## <a name="sfctl-service-deployed-type"></a>nasazený typ služby sfctl
+Získá informace o zadaném typu služby aplikace nasazené na uzlu v clusteru Service Fabric.
 
-Získá seznam obsahující informace o konkrétní služby typu z aplikace nasazené na uzly v clusteru Service Fabric. Odpověď obsahuje název typu služby, jeho stav registrace, balíček kódu, který zaregistrované a aktivace ID balíčku služby. Každý záznam představuje jeden aktivace typu služby rozlišené pomocí ID aktivace.
+Získá seznam obsahující informace o konkrétním typu služby z aplikací nasazených na uzlu v clusteru Service Fabric. Odpověď obsahuje název typu služby, jeho stav registrace, balíček kódu, který zaregistroval a ID aktivace balíčku služby. Každá položka představuje jednu aktivaci typu služby odlišnou od ID aktivace.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| --[povinný] název uzlu | Název uzlu. |
-| --service-type-name [povinné] | Určuje název typu služby Service Fabric. |
-| --service-manifest-name | Název manifestu služby, chcete-li filtrovat seznam informací o typu nasazené služby. Pokud zadaná, odpověď bude obsahovat pouze informace o typech služeb, které jsou definovány v manifestu služby. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
+| --Node-Name [povinné] | Název uzlu. |
+| --Service-Type-Name [povinné] | Určuje název typu Service Fabric služby. |
+| --service-manifest-name | Název manifestu služby pro filtrování seznamu nasazených informací o typu služby. Je-li tento parametr zadán, bude odpověď obsahovat pouze informace o typech služeb, které jsou definovány v tomto manifestu služby. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-deployed-type-list"></a>sfctl služby nasazené type-list
-Získá seznam obsahující informace o typech služeb z aplikace nasazené na uzly v clusteru Service Fabric.
+## <a name="sfctl-service-deployed-type-list"></a>nasazený typ služby sfctl – seznam
+Získá seznam obsahující informace o typech služeb z aplikací nasazených na uzlu v clusteru Service Fabric.
 
-Získá seznam obsahující informace o typech služeb z aplikace nasazené na uzly v clusteru Service Fabric. Odpověď obsahuje název typu služby, jeho stav registrace, balíček kódu, který zaregistrované a aktivace ID balíčku služby.
+Získá seznam obsahující informace o typech služeb z aplikací nasazených na uzlu v clusteru Service Fabric. Odpověď obsahuje název typu služby, jeho stav registrace, balíček kódu, který zaregistroval a ID aktivace balíčku služby.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| --[povinný] název uzlu | Název uzlu. |
-| --service-manifest-name | Název manifestu služby, chcete-li filtrovat seznam informací o typu nasazené služby. Pokud zadaná, odpověď bude obsahovat pouze informace o typech služeb, které jsou definovány v manifestu služby. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
+| --Node-Name [povinné] | Název uzlu. |
+| --service-manifest-name | Název manifestu služby pro filtrování seznamu nasazených informací o typu služby. Je-li tento parametr zadán, bude odpověď obsahovat pouze informace o typech služeb, které jsou definovány v tomto manifestu služby. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-service-description"></a>Popis služby sfctl
-Získá popis existující službu Service Fabric.
+Získá popis existující služby Service Fabric.
 
-Získá popis existující službu Service Fabric. Služba musí být vytvořeny, předtím, než je možné získat jeho popis.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Popis|
-| --- | --- |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
-
-## <a name="sfctl-service-get-container-logs"></a>sfctl služba get-container-logs
-Získá protokoly kontejneru pro nasazení v uzlu Service Fabric container.
-
-Získá kontejner protokoly pro kontejner nasadit na uzlu Service Fabricu pro balíček daného kódu.
+Získá popis existující služby Service Fabric. Aby bylo možné získat jeho popis, musí být služba vytvořena.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| – Kód balíčku název-[povinné] | Název zadaný v manifestu služby, které jsou zapsaní v rámci typu aplikace v clusteru Service Fabric balíček kódu. |
-| --[povinný] název uzlu | Název uzlu. |
-| --service-manifest-name [povinné] | Název manifestu služby zapsaní v rámci typu aplikace v clusteru Service Fabric. |
-| --předchozí | Určuje, jestli se má získat protokoly kontejneru z kontejnerů byl ukončen/dead instance balíček kódu. |
-| --Funkce tail | Počet řádků k zobrazení od konce protokoly. Výchozí hodnota je 100. 'všechny zobrazíte kompletní protokoly. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-health"></a>sfctl service health
+## <a name="sfctl-service-get-container-logs"></a>protokoly sfctl služby Get-Container
+Získá protokoly kontejneru pro kontejner nasazený na uzlu Service Fabric.
+
+Získá protokoly kontejneru pro kontejner nasazený na uzlu Service Fabric pro daný balíček kódu.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
+| --Code-Package-Name [povinné] | Název balíčku kódu zadaný v manifestu služby zaregistrovaný jako součást typu aplikace v clusteru Service Fabric. |
+| --Node-Name [povinné] | Název uzlu. |
+| --Service-manifest-název [povinné] | Název manifestu služby registrovaného jako součást typu aplikace v clusteru Service Fabric. |
+| --předchozí | Určuje, jestli se mají získat protokoly kontejneru z ukončených/mrtvých kontejnerů instance balíčku kódu. |
+| --konec | Počet řádků, které se mají zobrazit na konci protokolů Výchozí hodnota je 100. All pro zobrazení úplných protokolů. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-service-health"></a>stav služby sfctl
 Získá stav zadané služby Service Fabric.
 
-Získá informace o stavu zadané služby. EventsHealthStateFilter použijte k filtrování kolekce událostí stavu hlášené pro službu založenou na stav v pořádku. Použití PartitionsHealthStateFilter k filtrování kolekce oddíly vrátila. Pokud chcete zadat službu, která neexistuje v health store, tento požadavek vrátí chybu.
+Načte informace o stavu zadané služby. Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlášených ve službě na základě stavu. Pomocí PartitionsHealthStateFilter můžete filtrovat kolekci vrácených oddílů. Pokud zadáte službu, která v Health Store neexistuje, vrátí tato žádost chybu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --events-health-state-filter | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --exclude statistiky stavu | Určuje, zda má být vrácen statistik stavu jako součást výsledků dotazu. Ve výchozím nastavení False. Statistiky ukazují počet podřízených entit ve stavu Ok, upozornění a chyby. |
-| --partitions-health-state-filter | Umožňuje filtrování oddílů stavu stavu objektů vrácené ve výsledku dotazu service health na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Jsou vráceny pouze oddíly, které odpovídají filtru. Všechny oddíly se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu se výčet založený na příznak, tak hodnota může být kombinací těchto hodnota získaná pomocí bitového operátoru 'OR'. Například pokud zadaná hodnota je 6 pak stav oddílů s hodnotou elementu HealthState OK (2) a upozorněním (4) vrátí se.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --events-health-state-filter | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
+| --Exclude-Health-Statistics | Určuje, zda mají být v rámci výsledku dotazu vráceny statistiky stavu. Výchozí hodnota je false. Statistika zobrazuje počet podřízených entit ve stavu OK, varování a chyba. |
+| --partitions-health-state-filter | Umožňuje filtrování objektů stavu oddílů vrácených v důsledku dotazu na stav služby na základě jejich stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se jenom oddíly, které odpovídají filtru. Všechny oddíly slouží k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčty založené na příznak, takže hodnota by mohla být kombinací hodnot získaných pomocí bitového operátoru OR. Například pokud je zadaná hodnota 6, pak se vrátí stav oddílů s hodnotou OK (2) a upozorněním (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-service-info"></a>informace o službě sfctl
-Získá informace o konkrétní služby, které patří k aplikaci Service Fabric.
+Získá informace o konkrétní službě, která patří do aplikace Service Fabric.
 
-Vrátí informace o zadané služby, které patří do zadané aplikace Service Fabric.
+Vrátí informace o zadané službě patřící do určené aplikace Service Fabric.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-service-list"></a>seznam služeb sfctl
-Získá informace o všech služeb, které patří k aplikaci podle ID aplikace.
+Získá informace o všech službách, které patří do aplikace určené ID aplikace.
 
-Vrátí informace o všech služeb, které patří k aplikaci podle ID aplikace.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Popis|
-| --- | --- |
-| – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| --token pro pokračování | Parametr tokenu pokračování slouží k získání další sadu výsledků. Token pro pokračování se neprázdná hodnota je zahrnutý v odpovědi rozhraní API, když výsledky ze systému se nevejdou do odpověď o jedné. Když je tato hodnota předána na další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak pokračovací token neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódování URL. |
-| --service-type-name | Název typu služby použít k filtrování služby dotázat. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
-
-## <a name="sfctl-service-manifest"></a>sfctl manifestu služby
-Získá manifest popisující typ služby.
-
-Získá manifest popisující typ služby. Odpověď obsahuje XML manifestu služby jako řetězec.
+Vrátí informace o všech službách, které patří do aplikace určené ID aplikace.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – aplikace type-name [povinné] | Název typu aplikace. |
-| --– verzi typu aplikace – [povinné] | Verze typu aplikace. |
-| --service-manifest-name [povinné] | Název manifestu služby zapsaní v rámci typu aplikace v clusteru Service Fabric. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
+| --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
+| --service-type-name | Název typu služby, který slouží k filtrování služeb pro dotazování. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-package-deploy"></a>sfctl služby. nasazení balíčku
-Soubory ke stažení balíčků přidružených k zadané služby manifestu do bitové kopie mezipaměti na zadaný uzel.
+## <a name="sfctl-service-manifest"></a>manifest služby sfctl
+Načte manifest popisující typ služby.
+
+Načte manifest popisující typ služby. Odpověď obsahuje XML manifestu služby jako řetězec.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – aplikace-type-name [povinné] | Název manifestu aplikace pro manifest odpovídající požadovanou službu. |
-| ---Typ verze aplikace [povinné] | Verze manifestu aplikace pro manifest odpovídající požadovanou službu. |
-| --[povinný] název uzlu | Název uzlu. |
-| --service-manifest-name [povinné] | Název manifestu služby, které jsou přidružené k balíčkům, které budou staženy. |
-| – zásady sdílené složky | Seznam kódování JSON zásady sdílení. Každý prvek sdílení zásad se skládá z "name" a "obor". Název odpovídá názvu balíčku kódu, konfigurace nebo dat, která je sdílet. Rozsahem může být buď 'None', 'Vše', 'Kód', 'Config' nebo 'Data'. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Typ aplikace-název [povinné] | Název typu aplikace |
+| --Typ aplikace-verze [požadováno] | Verze typu aplikace |
+| --Service-manifest-název [povinné] | Název manifestu služby registrovaného jako součást typu aplikace v clusteru Service Fabric. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-package-health"></a>sfctl balíčku stav služby
-Získá informace o stavu balíčku služby pro konkrétní aplikace nasazená pro uzel Service Fabric a aplikace.
-
-Získá informace o stavu balíčku služby pro konkrétní aplikace nasazená na uzlu Service Fabric. Pomocí EventsHealthStateFilter volitelně filtruje pro kolekci objektů HealthEvent hlášené pro balíček nasazené služby na základě stavu.
+## <a name="sfctl-service-package-deploy"></a>balíček služby sfctl – nasazení
+Stáhne balíčky přidružené k zadanému manifestu služby do mezipaměti imagí v zadaném uzlu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| --[povinný] název uzlu | Název uzlu. |
-| --service-package-name [povinné] | Název balíčku služby. |
-| --events-health-state-filter | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --App-type-name [povinné] | Název manifestu aplikace pro odpovídající požadovaný manifest služby. |
+| --Typ aplikace-verze [požadováno] | Verze manifestu aplikace pro odpovídající požadovaný manifest služby. |
+| --Node-Name [povinné] | Název uzlu. |
+| --Service-manifest-název [povinné] | Název manifestu služby přidruženého k balíčkům, které budou staženy. |
+| --Share-Policy | Seznam zásad sdílení kódovaných pomocí JSON. Každý element zásad sdílení se skládá z názvu a rozsahu. Název odpovídá názvu kódu, konfigurace nebo balíčku dat, který má být sdílen. Rozsah může být "none", "All", "Code", "config" nebo "data". |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-package-info"></a>sfctl služby-informace o balíčku
-Získá seznam balíčků služeb nasazených na odpovídající zadanému názvu uzlu Service Fabricu.
+## <a name="sfctl-service-package-health"></a>balíček služby sfctl – stav
+Získá informace o stavu balíčku služby pro konkrétní aplikaci nasazenou pro Service Fabric uzel a aplikaci.
 
-Vrátí informace o balíčcích služby nasazené na uzlu Service Fabricu pro danou aplikaci. Tyto výsledky jsou balíčky služeb, jejichž název odpovídá přesně název balíčku služby uvedené jako parametr.
+Získá informace o stavu balíčku služby pro konkrétní aplikaci nasazenou na uzlu Service Fabric. EventsHealthStateFilter můžete použít k volitelnému filtrování kolekce objektů HealthEvent hlášených na nasazeném balíčku služby na základě stavu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| --[povinný] název uzlu | Název uzlu. |
-| --service-package-name [povinné] | Název balíčku služby. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
+| --Node-Name [povinné] | Název uzlu. |
+| --Service-Package-Name [povinné] | Název balíčku služby. |
+| --events-health-state-filter | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-package-list"></a>seznam balíčků služby sfctl
-Získá seznam balíčků služeb nasazených na uzlu Service Fabricu.
+## <a name="sfctl-service-package-info"></a>balíček služby sfctl – informace
+Načte seznam balíčků služeb nasazených na Service Fabric uzlu, které odpovídají přesně zadanému názvu.
 
-Vrátí informace o balíčcích služby nasazené na uzlu Service Fabricu pro danou aplikaci.
+Vrátí informace o balíčcích služeb nasazených na Service Fabric uzlu pro danou aplikaci. Tyto výsledky jsou balíčky služeb, jejichž název odpovídá přesně názvu balíčku služby zadanému jako parametr.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| --[povinný] název uzlu | Název uzlu. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
+| --Node-Name [povinné] | Název uzlu. |
+| --Service-Package-Name [povinné] | Název balíčku služby. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-recover"></a>sfctl obnovení služby
-Do clusteru Service Fabric označuje, že by měl pokusí o zotavení zadanou službu, která je aktuálně zablokované ve ztrátě kvora.
+## <a name="sfctl-service-package-list"></a>balíček služby sfctl – seznam
+Načte seznam balíčků služeb nasazených na Service Fabric uzlu.
 
-Do clusteru Service Fabric označuje, že by měl pokusí o zotavení zadanou službu, která je aktuálně zablokované ve ztrátě kvora. Tato operace by měla provést pouze v případě je známo, že není možné obnovit repliky, které jsou vypnuté. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat.
+Vrátí informace o balíčcích služeb nasazených na Service Fabric uzlu pro danou aplikaci.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
+| --Node-Name [povinné] | Název uzlu. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-report-health"></a>Stav sestavy služby sfctl
-Odešle zprávu o stavu ve službě Service Fabric.
+## <a name="sfctl-service-recover"></a>obnovení služby sfctl
+Určuje Cluster Service Fabric, který by se měl pokusit obnovit zadanou službu, která je aktuálně zablokovaná ve ztrátě kvora.
 
-Sestavy stavu zadané služby Service Fabric. Sestava může obsahovat informace o zdroji sestava stavu a na kterém je uvedena vlastnost. Sestava je odeslána do Service Fabric gateway službu, která předává k úložišti stavů. Sestava může být přijal brány, ale odmítnuté úložiště stavu po další ověření. Úložiště stavu může třeba odmítnout sestavy z důvodu neplatného parametru, jako jsou zastaralé pořadové číslo. Pokud chcete zjistit, zda byla použita sestava v health store, zkontrolujte, zda je sestava zobrazena v události stavu služby.
+Určuje Cluster Service Fabric, který by se měl pokusit obnovit zadanou službu, která je aktuálně zablokovaná ve ztrátě kvora. Tato operace by měla být provedena pouze v případě, že je známo, že nelze obnovit repliky, které jsou mimo provoz. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – Stav – vlastnost [povinné] | Vlastnost s informacemi o stavu. <br><br> Entita může mít sestav o stavu pro různé vlastnosti. Vlastnost je řetězec a oprava výčet umožňují flexibilní reportérka ke kategorizaci podmínku stavu, který spouští sestavu. Například reportérka s ID zdroje "LocalWatchdog" můžete monitorovat stav disku v uzlu, tak ho může hlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné reportérka můžete monitorovat připojení uzlu, takže ho může hlásit vlastnost "Připojení" ve stejném uzlu. V health store tyto sestavy jsou považovány za události samostatné stavu pro zadaný uzel. Spolu s ID zdroje vlastnost jednoznačně identifikuje informací o stavu. |
-| – Stav [povinné] | Možné hodnoty zahrnují\: "Neplatný", "Ok", "Upozorňující", "Chyba", "Neznámý". |
-| – id služby [povinné] | Identita služby. <br><br> Toto je obvykle celý název služby bez "prostředky infrastruktury\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "prostředků infrastruktury\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| – id zdroje [povinné] | Název zdroje, který identifikuje klienta/sledovacího zařízení/systémové součásti, které vygenerovalo informací o stavu. |
-| – Popis | Popis informací o stavu. <br><br> Představuje libovolný text pro přidání lidské čitelné informace o sestavě. Maximální délka řetězce popis je 4096 znaků. Pokud zadaný řetězec je delší, bude automaticky zkrácen. Při zkráceno, poslední znaky popis obsahovat značky "[zkrátila]" a celkový počet řetězec velikost je 4 096 znaků. Výskyt značky určuje uživatelům této zkrácení došlo k chybě. Všimněte si, že při zkráceno, popis má menší než 4096 znaků z původního řetězce. |
-| --okamžité | Příznak, který udává, zda sestavy by měl být odesílány okamžitě. <br><br> Sestava stavu posílá do Service Fabric gateway aplikace, který se předává k úložišti stavů. Pokud okamžité nastavená na hodnotu true, zpráva se odešle okamžitě ze brána protokolu HTTP k úložišti stavů, bez ohledu na nastavení klienta fabric, které používá brána aplikace HTTP. To je užitečné pro kritické zprávy, které by měly být odeslány co nejdříve. V závislosti na načasování a jiných podmínek odesílat sestavy může stále nezdaří, pokud bránu HTTP je uzavřený nebo zprávy nelze navázat spojení s bránou. Okamžité je nastavený na hodnotu false, sestava se odesílá podle nastavení stavu klienta ze brána protokolu HTTP. Proto bude možné dávce závislosti na konfiguraci HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje stavu klienta k optimalizaci zdraví, vytváření sestav zprávy k úložišti stavů, stejně jako zpracování sestavy stavu. Ve výchozím nastavení nejsou odesílány sestavy okamžitě. |
-| – vypršela platnost odebrat v případě | Hodnota, která označuje, zda sestava se odebere z health store, když jeho platnost vyprší. <br><br> Je-li nastavena hodnota true, sestava se odebere z health store po vypršení její platnosti. Pokud je nastaven na hodnotu false, sestava je považováno za chybu, pokud vypršela platnost. Hodnota této vlastnosti je ve výchozím nastavení hodnotu false. Když klienti pravidelně hlásit, nastavují by měl RemoveWhenExpired false (výchozí). Tímto způsobem je osoby podávající hlášení dochází k problémům (například zablokování) a nemůže oznamovat entity je vyhodnocena v chybě, když vyprší platnost sestava stavu. Označí entitu jako patřící do chybového stavu. |
-| --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Pořadové číslo sestav se používá v úložišti stavů ke zjišťování zastaralých sestavy. Pokud není zadán, je číslo sekvence automaticky generované klientem stavu při přidání sestavy. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-resolve"></a>sfctl service resolve
-Přeložit oddíl Service Fabric.
+## <a name="sfctl-service-report-health"></a>Sestava služby sfctl – stav
+Odešle zprávu o stavu služby Service Fabric.
 
-Přeložit oddíl služby Service Fabric a získání koncových bodů služby replik.
+Hlásí stav zadané Service Fabric služby. Sestava musí obsahovat informace o zdroji sestavy stavu a vlastnosti, na které je hlášena. Zpráva se odešle do služby Service Fabric Gateway, která se přepošle na Health Store. Tuto sestavu může přijmout brána, ale Health Store po dodatečném ověření odmítnuta. Health Store například může zprávu odmítat z důvodu neplatného parametru, jako je například zastaralé pořadové číslo. Chcete-li zjistit, zda byla sestava použita v Health Store, zkontrolujte, zda se sestava zobrazí ve stavu události služby.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| --typu klíče oddílu | Typ klíče oddílu. Tento parametr je povinný, pokud je schéma oddílu služby Int64Range nebo název. Možné hodnoty jsou následující. -Žádný (1) – označuje, že není zadán parametr PartitionKeyValue. Toto je platná pro oddíly s dělením schéma jako Singleton. Toto je výchozí hodnota. Hodnota je 1. -Int64Range (2) – označuje, že je parametr PartitionKeyValue klíčem oddílu int64. Toto je platná pro dělení schéma jako Int64Range oddíly. Hodnota je 2. -S názvem (3) – označuje, že je parametr PartitionKeyValue název oddílu. Toto je platná pro oddíly s jako pojmenované schéma vytváření oddílů. Hodnota je 3. |
-| --hodnotu klíče oddílu | Klíč oddílu. To je potřeba, pokud je schéma oddílu služby Int64Range nebo název. Toto není ID oddílu, ale místo toho klíče buď celé číslo hodnoty, nebo v názvu identifikátor oddílu. Například pokud vaše služba používá rozsahové oddíly 0 až 10, pak PartitionKeyValue by celé číslo v daném rozsahu. Popis služby, chcete-li zobrazit oblast nebo název dotazu. |
-| --previous-rsp-version | Hodnota v poli verze, která dříve byla přijata odpověď. Toto je nezbytné, pokud uživatel ví, že výsledek, který byl zadán dříve je zastaralá. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Health-vlastnost [required] | Vlastnost informací o stavu. <br><br> Entita může mít sestavy o stavu pro různé vlastnosti. Vlastnost je řetězec, nikoli pevný výčet, který umožňuje, aby se v zpravodaji mohla pružně roztřídit stav stavu, který aktivuje sestavu. Například zpravodaj s SourceId "LocalWatchdog" může monitorovat stav dostupného disku v uzlu, takže může ohlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné zpravodajky můžou monitorovat připojení uzlu, takže může nahlásit vlastnost "připojení" na stejném uzlu. V Health Store jsou tyto sestavy zpracovány jako samostatné události stavu pro zadaný uzel. Společně s ID zdroje (SourceId) vlastnost jednoznačně identifikuje informace o stavu. |
+| --Health-State [povinné] | Možné hodnoty zahrnují\: "Invalid", "OK", "Warning", "Error", "unknown". |
+| --Service-ID [povinné] | Identita služby. <br><br> Většinou se jedná o úplný název služby bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny\~znakem. Například pokud je název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" v 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Source-ID [povinné] | Název zdroje, který identifikuje součást klienta/sledovacího zařízení/systému, která vygenerovala informace o stavu. |
+| --Description | Popis informací o stavu. <br><br> Představuje bezplatný text, který se používá k přidání lidských čitelných informací o sestavě. Maximální délka řetězce pro popis je 4096 znaků. Pokud je zadaný řetězec delší, automaticky se zkrátí. Při zkrácení obsahují poslední znaky popisu značku "[zkrácené]" a celková velikost řetězce je 4096 znaků. Přítomnost značky indikuje uživatelům, kterým došlo ke zkrácení. Všimněte si, že při zkrácení má popis méně než 4096 znaků z původního řetězce. |
+| --Immediate | Příznak, který označuje, zda má být sestava odeslána okamžitě. <br><br> Do aplikace Service Fabric Gateway se pošle zpráva o stavu, která se přepošle na Health Store. Pokud je vlastnost Immediate nastavená na hodnotu true, pošle se z brány HTTP na Health Store zprávu hned, a to bez ohledu na nastavení klienta prostředků infrastruktury, které používá aplikace brány HTTP. To je užitečné pro kritické sestavy, které by se měly odesílat co nejdříve. V závislosti na časování a dalších podmínkách může odeslání sestavy dál selhat, například pokud je brána HTTP uzavřená nebo zpráva nemá přístup k bráně. Pokud je vlastnost Immediate nastavená na false, pošle se sestava na základě nastavení klienta stavu z brány HTTP. Proto se bude provádět dávkování podle konfigurace HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje klientovi stavu optimalizovat zprávy o stavu, které se mají Health Store, i zpracování sestavy o stavu. Ve výchozím nastavení se zprávy neodesílají okamžitě. |
+| --Remove-when-vypršela platnost | Hodnota, která označuje, zda je sestava odebrána z Health Store v případě jejího platnosti. <br><br> Pokud je nastavená hodnota true, sestava se po vypršení platnosti odebere z Health Store. Pokud je nastavena hodnota false, bude sestava považována za chybu, pokud vypršela její platnost. Hodnota této vlastnosti je ve výchozím nastavení false. Při pravidelné sestavě klientů by měly být nastavené RemoveWhenExpired na hodnotu false (výchozí). Tímto způsobem má zpravodaj problémy (například zablokování) a nemůže hlásit, entita je vyhodnocena při vypršení platnosti sestavy stavu. Tím se označí entita jako v chybovém stavu. |
+| --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Číslo sekvence sestavy používá Health Store ke zjišťování zastaralých sestav. Není-li tento parametr zadán, je číslo sekvence automaticky generováno klientem stavu při přidání sestavy. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --ttl | Doba, po kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 k zadání doby trvání. <br><br> Při pravidelné sestavě klientů by měly odesílat sestavy s vyšší frekvencí, než je čas do provozu. Pokud klienti hlásí přechod, můžou nastavit čas na živého na nekonečné. Po vypršení časového limitu životnosti události stavu, která obsahuje informace o stavu, se buď odeberou z Health Store, pokud je RemoveWhenExpired true, nebo se vyhodnotí při chybě, pokud RemoveWhenExpired false. Pokud není zadaný, hodnota TTL (Time to Live) nastaví nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-service-type-list"></a>sfctl služby – seznam typů
-Získá seznam obsahující informace o typech služeb, které jsou podporovány podle typu aplikací zřízených v clusteru Service Fabric.
+## <a name="sfctl-service-resolve"></a>řešení služby sfctl
+Vyřešte Service Fabric oddíl.
 
-Získá seznam obsahující informace o typech služeb, které jsou podporovány podle typu aplikací zřízených v clusteru Service Fabric. Zadaná aplikace typu, musí existovat. Jinak se vrátí stav 404.
+Chcete-li získat koncové body replik služby, přečtěte si oddíl služby Service Fabric.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – aplikace type-name [povinné] | Název typu aplikace. |
-| --– verzi typu aplikace – [povinné] | Verze typu aplikace. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Partition-typ klíče | Typ klíče pro oddíl Tento parametr je vyžadován, pokud je schéma oddílu pro službu Int64Range nebo pojmenované. Možné hodnoty jsou následující. -None (1) – označuje, že není zadán parametr PartitionKeyValue. To platí pro oddíly se schématy dělení na typ singleton. Toto je výchozí hodnota. Hodnota je 1. -Int64Range (2) – určuje, že parametr PartitionKeyValue je klíč oddílu Int64. To platí pro oddíly, které mají schéma dělení jako Int64Range. Hodnota je 2. -Name (3) – určuje, že parametr PartitionKeyValue je název oddílu. To je platné pro oddíly se schématem dělení jako pojmenované. Hodnota je 3. |
+| --Partition-klíč-hodnota | Klíč oddílu. To je vyžadováno, pokud je schéma oddílu pro službu Int64Range nebo pojmenované. Toto není ID oddílu, ale místo toho buď hodnota celočíselného klíče, nebo název ID oddílu. Pokud například vaše služba používá oddíly s rozsahy od 0 do 10, pak by PartitionKeyValue jako celé číslo v tomto rozsahu. Popis služby dotazů pro zobrazení rozsahu nebo názvu |
+| --previous-rsp-version | Hodnota v poli verze odpovědi, která byla dříve přijata. Tento údaj je nutný, pokud uživatel ví, že byl dříve zastaralý výsledek. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-service-type-list"></a>typ služby sfctl – seznam
+Získá seznam obsahující informace o typech služeb, které jsou podporované typem zřízené aplikace v clusteru Service Fabric.
+
+Získá seznam obsahující informace o typech služeb, které jsou podporované typem zřízené aplikace v clusteru Service Fabric. Zadaný typ aplikace musí existovat. V opačném případě se vrátí stav 404.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --Typ aplikace-název [povinné] | Název typu aplikace |
+| --Typ aplikace-verze [požadováno] | Verze typu aplikace |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-service-update"></a>aktualizace služby sfctl
-Aktualizuje zadaný služby pomocí popis pro danou aktualizaci.
+Aktualizuje zadanou službu pomocí zadaného popisu aktualizace.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id služby [povinné] | Identita služby. Toto je obvykle celý název služby bez "prostředky infrastruktury\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "prostředků infrastruktury\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| – omezení | Omezení umístění jako řetězec. Omezení umístění jsou logické výrazy na vlastnosti uzlu a umožňují omezení služby pro konkrétní uzly podle požadavků na službu. Například k umístění služby na uzlech, kde je modrá NodeType zadat následující\: "NodeColor == blue". |
-| --correlated-service | Název cílové služby pro korelaci s. |
-| --korelace | Je možné korelovat služby pomocí existující služby pomocí spřažení zarovnání. |
-| --počet instancí | Počet instancí. To platí pro pouze bezstavové služby. |
-| --zatížení metrics | JSON kódovaný seznam metrik nepoužívá, pokud mezi uzly Vyrovnávání zatížení. |
-| --min-replica-set-size | Minimální repliky nastavit velikost jako číslo. To platí pro pouze stavové služby. |
-| --náklady na přesunutí | Určuje, náklady na přesunutí pro službu. Možné hodnoty jsou\: "Nula", "Nízká", "Střední", "Vysoká". |
-| – Seznam umístění zásad | JSON kódovaný v seznamu zásad umístění pro službu a všechna přidružená názvy domén. Zásady je možné jednu nebo více\: `NonPartiallyPlaceService`, `PreferPrimaryDomain`, `RequireDomain`, `RequireDomainDistribution`. |
-| --quorum-loss-wait | Maximální doba trvání v sekundách, pro který oddíl se může být ve stavu ztrátě kvora. To platí pro pouze stavové služby. |
-| --replica-restart-wait | Doba v sekundách mezi Pokud replika přestane fungovat a když se vytvoří novou repliku. To platí pro pouze stavové služby. |
-| – zásady škálování | JSON kódovaný seznam škálování zásady pro tuto službu. |
-| --stand-by-replica-keep | Maximální doba trvání v sekundách, pro které pohotovostní režim repliky bude udržovat než jsou odstraněny. To platí pro pouze stavové služby. |
-| --Stavová | Označuje, že cílová služba je do stavové služby. |
-| --Bezstavové | Označuje, že cílová služba je Bezstavová služba. |
-| --target-replica-set-size | Velikost sady replik cíl jako číslo. To platí pro pouze stavové služby. |
-| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Service-ID [povinné] | Identita služby. Většinou se jedná o úplný název služby bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" v 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --omezení | Omezení umístění jako řetězec. Omezení umístění jsou logické výrazy ve vlastnostech uzlu a umožňují omezení služby na konkrétní uzly na základě požadavků služby. Pokud například chcete umístit službu na uzly, kde je typ uzlu NodeType modrý, zadejte\: následující "NodeColor = = Blue". |
+| --korelujed-Service | Název cílové služby, ke které se má korelovat. |
+| --korelační | Proveďte korelaci služby s existující službou pomocí spřažení zarovnání. |
+| --instance-počet | Počet instancí. To platí jenom pro bezstavové služby. |
+| --Load-metriky | Seznam metrik kódovaný ve formátu JSON, který se používá při vyrovnávání zatížení napříč uzly. |
+| --min-replica-set-size | Minimální velikost sady replik jako číslo. To platí jenom pro stavové služby. |
+| --Přesun-cost | Určuje náklady na přesun služby. Možné hodnoty jsou\: "Zero", "low", "Medium", "High". |
+| --umístění-Zásady-seznam | Seznam zásad umístění pro službu a všechny přidružené názvy domén v kódování JSON Zásady můžou být jedna nebo víc z\: `NonPartiallyPlaceService`, `PreferPrimaryDomain`, `RequireDomain`, `RequireDomainDistribution`. |
+| --quorum-loss-wait | Maximální doba trvání v sekundách, po kterou může být oddíl ve stavu ztráty kvora. To platí jenom pro stavové služby. |
+| --replica-restart-wait | Doba trvání v sekundách mezi tím, kdy replika vychází a kdy se vytvoří nová replika. To platí jenom pro stavové služby. |
+| --škálování – zásady | Seznam zásad škálování v kódování JSON pro tuto službu. |
+| --rereplice – udržování | Maximální doba trvání v sekundách, po kterou budou pohotovostní repliky před odebráním zachovány. To platí jenom pro stavové služby. |
+| --Stavová | Indikuje, že cílová služba je stavová služba. |
+| – bez stavu | Indikuje, že cílová služba je Bezstavová služba. |
+| --target-replica-set-size | Velikost cílové sady replik jako číslo. To platí jenom pro stavové služby. |
+| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
-| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
-| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další postup
-- [Nastavit](service-fabric-cli.md) Service Fabric CLI.
-- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

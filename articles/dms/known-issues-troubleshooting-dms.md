@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: a35e0496c7e36d42e28a64fef438fe56713d3c78
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a72a0e26c2af34942faaa6a7e62feef86082e196
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855005"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034832"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Řešení běžných problémů s Azure Database Migration Service a chyb
 
@@ -98,9 +98,9 @@ Pokud se pokoušíte připojit ke zdroji v průvodci projektem služby Azure Dat
 | ------------- | ------------- |
 | Při použití [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [vyžaduje](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) Azure Database Migration Service zřízení tří koncových bodů služby v podsíti Virtual Network přidružené ke službě:<br> --Service Bus koncový bod<br> – Koncový bod úložiště<br> --Koncový bod cílové databáze (například koncový bod SQL, koncový bod Cosmos DB)<br><br><br><br><br> | [Povolte](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) pro připojení ExpressRoute mezi zdrojem a Azure Database Migration Service požadované koncové body služby. <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Chyba časového limitu při migraci databáze MySQL do Azure DB pro MySQL
+## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Při migraci databáze MySQL do Azure DB pro MySQL se zobrazí chyba časového limitu čekání na uzamčení.
 
-Když migrujete databázi MySQL do instance Azure Database for MySQL přes Azure Database Migration Service, migrace se nezdařila s následující chybou vypršení časového limitu:
+Když migrujete databázi MySQL do instance Azure Database for MySQL přes Azure Database Migration Service, migrace se nezdařila s následující chybou vypršení časového limitu pro čekání na uzamčení:
 
 * **Chyba:** Chyba migrace databáze – nepovedlo se načíst soubor – nepovedlo se spustit proces načtení pro soubor n, RetCode: SQL_ERROR SqlState: HY000 NativeError: Zpráva 1205: [MySQL] [ovladač ODBC] [mysqld] překročení časového limitu čekání na zámek; Zkuste restartovat transakci.
 

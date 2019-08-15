@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382ffab090613a2b14ce710a45be10b4c36e5222
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561736"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032668"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Resetovat heslo uživatele pomocí služby Azure Active Directory
 
@@ -43,7 +43,8 @@ Jako správce můžete resetovat heslo uživatele, pokud zapomenete heslo, pokud
 
 3. V **resetovat heslo** stránce **resetovat heslo**.
 
-    Dočasné heslo je automaticky generovaná pro daného uživatele.
+    > [!Note]
+    > Při použití Azure Active Directory se pro uživatele automaticky vygeneruje dočasné heslo. Při používání služby Active Directory v místním prostředí můžete pro uživatele vytvořit heslo.
 
 4. Zkopírujte heslo a předat uživateli. Uživatel muset změnit heslo při další proces přihlašování.
 

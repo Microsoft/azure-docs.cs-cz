@@ -1,6 +1,6 @@
 ---
-title: Konfigurace brány pro směrování požadavků | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat bránu, která zpracovává příchozí provoz pro vaše aplikace běží na služby prostředků infrastruktury sítě.
+title: Konfigurace brány na požadavky směrování | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat bránu, která zpracovává příchozí provoz pro vaše aplikace běžící na Service Fabric síti.
 services: service-fabric-mesh
 documentationcenter: .net
 author: dkkapur
@@ -8,40 +8,39 @@ manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2e2502e35b3720ddbfe5950b89e2388de378f2ba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4fc6f91ee2429205974b9cb7ceb05b7cff53f15
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583637"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034212"
 ---
-# <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurace prostředku brány pro směrování požadavků
+# <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurace prostředku brány na požadavky směrování
 
-Prostředek brány se používá ke směrování příchozího provozu v síti, ke které jsou uloženy vaše aplikace. Nakonfigurujte lze určit pravidla, pomocí kterých jsou žádosti směrované na konkrétní služby nebo koncové body na základě struktury požadavku. Zobrazit [Úvod do vytváření sítí v Service Fabric mřížky](service-fabric-mesh-networks-and-gateways.md) Další informace o sítě a brány v síti. 
+Prostředek brány se používá ke směrování příchozího provozu do sítě, ve které je umístěná vaše aplikace. Nakonfigurujte ji tak, aby určovala pravidla, pomocí kterých se požadavky přesměrují na konkrétní služby nebo koncové body na základě struktury žádosti. Další informace o sítích a branách v síti najdete v tématu [Úvod do sítě v Service Fabric Mesh](service-fabric-mesh-networks-and-gateways.md) . 
 
-Prostředky brány musí být deklarován jako součást šablony nasazení (yaml nebo JSON) a jsou závislé na síťových prostředků. Tento dokument popisuje různé vlastnosti, které lze nastavit pro bránu a zahrnuje Ukázková konfigurace brány.
+Prostředky brány musí být deklarovány jako součást šablony nasazení (JSON nebo YAML) a jsou závislé na síťovém prostředku. Tento dokument popisuje různé vlastnosti, které lze nastavit pro bránu, a popisuje vzorovou konfiguraci brány.
 
-## <a name="options-for-configuring-your-gateway-resource"></a>Možnosti konfigurace vašeho prostředku brány
+## <a name="options-for-configuring-your-gateway-resource"></a>Možnosti konfigurace prostředku brány
 
-Vzhledem k tomu, že prostředek brány slouží jako most mezi vaší aplikací a základní infrastrukturu sítí ( `open` sítě). By měl pouze musíte nakonfigurovat jednu (ve verzi preview síť je omezena na jednu bránu na aplikaci). Deklarace pro prostředek se skládá ze dvou hlavních částí: metadat prostředků a vlastnosti. 
+Vzhledem k tomu, že prostředek brány slouží jako most mezi sítí vaší aplikace a sítí základní infrastruktury ( `open` sítě). Měli byste jenom nakonfigurovat jenom jednu bránu (ve verzi Preview, což je limit jedné brány na aplikaci). Deklarace prostředku se skládá ze dvou hlavních částí: metadata prostředku a vlastnosti. 
 
 ### <a name="gateway-resource-metadata"></a>Metadata prostředku brány
 
-Brána je deklarována pomocí následující metadata:
-* `apiVersion` – musí být nastavena na "2018-09-01-preview" (nebo později, v budoucnu)
-* `name` -název řetězce pro tuto bránu
-* `type` -"Microsoft.ServiceFabricMesh/gateways"
-* `location` – musí být nastavena na umístění aplikace / network; obvykle bude odkaz na parametr umístění ve vašem nasazení
-* `dependsOn` -sítě, pro kterou tato brána bude sloužit jako bod příchozího přenosu dat pro
+Brána je deklarována s následujícími metadaty:
+* `apiVersion`– musí být nastavené na "2018-09-01-Preview" (nebo novější), a to v budoucnu.
+* `name`– název řetězce pro tuto bránu
+* `type`– "Microsoft. ServiceFabricMesh/gateways"
+* `location`– mělo by být nastavené na umístění vaší aplikace nebo sítě; obvykle bude odkaz na parametr Location v nasazení
+* `dependsOn`– síť, pro kterou bude tato brána sloužit jako vstupní bod pro
 
-Zde je, jak vypadá v šabloně nasazení Azure Resource Manageru (JSON): 
+Tady je postup, jak vypadá v šabloně nasazení Azure Resource Manager (JSON): 
 
 ```json
 {
@@ -60,11 +59,11 @@ Zde je, jak vypadá v šabloně nasazení Azure Resource Manageru (JSON):
 
 ### <a name="gateway-properties"></a>Vlastnosti brány
 
-Oddíl properties se používá k definování sítě, mezi kterými je brána a pravidla pro směrování požadavků. 
+Oddíl Properties (vlastnosti) slouží k definování sítí, mezi kterými brána leží, a pravidel pro požadavky směrování. 
 
-#### <a name="source-and-destination-network"></a>Zdrojové a cílové sítě 
+#### <a name="source-and-destination-network"></a>Zdrojová a cílová síť 
 
-Každá brána vyžaduje `sourceNetwork` a `destinationNetwork`. Zdrojová síť je definován jako sítě, ze kterého vaše aplikace bude přijímat příchozí požadavky. Vlastnost jeho název by měl být vždy nastavená na "Otevřít". Cílovou sítí je síť, která cílí na požadavky. Hodnota názvu pro tuto by měl nastavena na název prostředku aplikace místní sítě (úplný odkaz na prostředek by měl obsahovat). Ukázková konfigurace z jak to vypadá v síť s názvem "myNetwork" pro nasazení najdete níže.
+Každá brána vyžaduje `sourceNetwork` a `destinationNetwork`. Zdrojová síť je definovaná jako síť, ze které vaše aplikace bude přijímat příchozí požadavky. Vlastnost Name by měla být vždycky nastavená na Open (otevřít). Cílová síť je síť, na kterou požadavky cílí. Hodnota tohoto názvu by měla být nastavená na název prostředku místní sítě vaší aplikace (musí obsahovat úplný odkaz na prostředek). Níže najdete ukázku konfigurace toho, co vypadá jako nasazení v síti s názvem "myNetwork".
 
 ```json 
 "properties": {
@@ -81,18 +80,18 @@ Každá brána vyžaduje `sourceNetwork` a `destinationNetwork`. Zdrojová síť
 
 #### <a name="rules"></a>Pravidla 
 
-Brány můžou mít více směrování se zpracuje pravidla, které určují, jak příchozí provoz. Pravidlo směrování definuje vztahy mezi naslouchající port a cílový koncový bod pro danou aplikaci. Pravidla směrování TCP existuje mapování 1:1 mezi Port: koncový bod. Pro pravidla směrování protokolu HTTP můžete nastavit složitější pravidla směrování, zkontrolujte cestu požadavku, a volitelně záhlaví, a rozhodnout, jak se budou směrovat žádosti. 
+Brána může mít několik pravidel směrování, která určují, jak se budou zpracovávat příchozí přenosy. Pravidlo směrování definuje vztah mezi naslouchajícím portem a cílovým koncovým bodem pro danou aplikaci. Pro pravidla směrování protokolu TCP existuje mapování 1:1 mezi portem: koncový bod. Pro pravidla směrování protokolu HTTP můžete nastavit složitější pravidla směrování, která prozkoumají cestu k žádosti a volitelně hlavičky pro rozhodování, jak bude požadavek směrován. 
 
-Pravidla směrování zadávají se na základě na port. Každý z portů příchozího přenosu dat má svůj vlastní pole pravidla v rámci části vlastností v konfiguraci brány. 
+Pravidla směrování se zadává na základě jednotlivých portů. Každý port příchozího přenosu dat má vlastní pole pravidel v části vlastnosti konfigurace brány. 
 
-#### <a name="tcp-routing-rules"></a>Pravidla směrování protokolu TCP 
+#### <a name="tcp-routing-rules"></a>Pravidla směrování TCP 
 
 Pravidlo směrování TCP se skládá z následujících vlastností: 
-* `name` – odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
-* `port` – port pro naslouchání pro příchozí požadavky 
-* `destination` -koncový bod specifikace, která zahrnuje `applicationName`, `serviceName`, a `endpointName`, pro které je potřeba směrovat do žádosti
+* `name`– odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
+* `port`– port, na kterém se má naslouchat příchozím žádostem 
+* `destination`– specifikace koncového bodu `applicationName`, `serviceName`která zahrnuje `endpointName`, a, kde je potřeba směrovat požadavky na
 
-Tady je pravidlo směrování TCP příkladu:
+Tady je příklad pravidla směrování TCP:
 
 ```json
 "properties": {
@@ -115,18 +114,18 @@ Tady je pravidlo směrování TCP příkladu:
 #### <a name="http-routing-rules"></a>Pravidla směrování protokolu HTTP 
 
 Pravidlo směrování protokolu HTTP se skládá z následujících vlastností: 
-* `name` – odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
-* `port` – port pro naslouchání pro příchozí požadavky 
-* `hosts` -pole zásad, které platí pro požadavky přicházející na portu výše uvedené různé "hostitelům". Hostitelé jsou sadu aplikací a služeb, které možná běží v síti a může sloužit příchozích požadavků, například webové aplikace. Zásady hostitele jsou interpretovány v pořadí, takže byste měli vytvořit následující sestupně podle úrovně přesnosti
-    * `name` – název DNS hostitele, pro který jsou zadány následující pravidla směrování. Pomocí "*" zde bude vytvářet pravidla směrování pro všechny hostitele.
-    * `routes` -pole zásad pro tento konkrétní hostitel
-        * `match` – na základě specifikace struktury příchozí žádosti pro toto pravidlo použít, `path`
-            * `path` -obsahuje `value` (příchozí identifikátor URI), `rewrite` (jak chcete žádost o předat dál) a `type` (aktuálně může být pouze "Předpony")
-            * `header` -je volitelné pole hodnot záhlaví tak, aby odpovídaly v hlavičce požadavku, že pokud požadavek odpovídá specifikaci cesty (viz výše).
-              * Každá položka obsahuje `name` (název hlavičky k porovnání shody řetězce) `value` (řetězcová hodnota záhlaví v žádosti) a `type` (aktuálně může být pouze "Stejné")
-        * `destination` -Pokud požadavek odpovídá, budou směrovat do tohoto cílového místa, který je určen pomocí `applicationName`, `serviceName`, a `endpointName`
+* `name`– odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
+* `port`– port, na kterém se má naslouchat příchozím žádostem 
+* `hosts`– pole zásad, které se vztahují na požadavky přicházející do různých hostitelů na výše uvedeném portu. Hostitelé jsou sada aplikací a služeb, které mohou být spuštěny v síti a mohou obsluhovat příchozí požadavky, tj. webovou aplikaci. Zásady hostitele jsou interpretovány v pořadí, takže byste měli vytvořit následující v sestupných úrovních specifičnosti.
+    * `name`– název DNS hostitele, pro který jsou zadána následující pravidla směrování. Pomocí tohoto postupu můžete vytvořit pravidla směrování pro všechny hostitele.
+    * `routes`– pole zásad pro tohoto konkrétního hostitele
+        * `match`– specifikace příchozí struktury požadavků pro toto pravidlo, které se má použít, na základě`path`
+            * `path`-obsahuje `value` (příchozí identifikátor URI `rewrite` ) (jak chcete přesměrovat požadavek) a `type` (může aktuálně být jenom "prefix").
+            * `header`– je volitelná hodnota pole hlaviček, která se má shodovat s hlavičkou požadavku, pokud požadavek odpovídá specifikaci cesty (výše).
+              * Každá položka obsahuje `name` (název řetězce záhlaví, který se má shodovat) `value` , (Řetězcová hodnota hlavičky v `type` žádosti) a a (aktuálně může být pouze "přesný").
+        * `destination`– Pokud požadavek odpovídá, bude směrován do tohoto cíle, který je určen pomocí `applicationName`, `serviceName`a.`endpointName`
 
-Tady je příklad HTTP pravidlo směrování pro požadavky přicházející na portu 80 a pro všechny hostitele obsluhuje aplikace v této síti. Pokud adresu URL požadavku obsahuje strukturu, která odpovídá specifikaci cesty, například `<IPAddress>:80/pickme/<requestContent>`, pak budete přesměrováni na `myListener` koncového bodu.  
+Tady je příklad pravidla směrování protokolu HTTP, které se vztahuje na žádosti přicházející na port 80 na všechny hostitele obsluhované aplikacemi v této síti. Má-li adresa URL požadavku strukturu, která odpovídá specifikaci cesty, tj. `<IPAddress>:80/pickme/<requestContent>`, pak bude přesměrována `myListener` do koncového bodu.  
 
 ```json
 "properties": {
@@ -161,9 +160,9 @@ Tady je příklad HTTP pravidlo směrování pro požadavky přicházející na 
 }
 ```
 
-## <a name="sample-config-for-a-gateway-resource"></a>Ukázková konfigurace pro prostředek brány 
+## <a name="sample-config-for-a-gateway-resource"></a>Ukázková konfigurace prostředku brány 
 
-Tady je úplný konfiguraci prostředků brány, která bude vypadat jako (jde přizpůsobit z ukázky příchozího přenosu dat k dispozici v [Mesh vzorků úložiště](https://github.com/Azure-Samples/service-fabric-mesh/blob/2018-09-01-preview/templates/ingress/meshingress.linux.json)):
+Tady je postup, jak vypadá úplná konfigurace prostředku brány (Tato akce je přizpůsobená z ukázky příchozího přenosu dat v [úložišti vzorkování sítě](https://github.com/Azure-Samples/service-fabric-mesh/blob/2018-09-01-preview/templates/ingress/meshingress.linux.json)):
 
 ```json
 {
@@ -227,9 +226,9 @@ Tady je úplný konfiguraci prostředků brány, která bude vypadat jako (jde p
 }
 ```
 
-Tato brána je nakonfigurovaná pro aplikaci systému Linux, "meshAppLinux", který se skládá z alespoň dvě služby, "helloWorldService" a "counterService", která naslouchá na portu 80. V závislosti na struktuře adresy URL příchozích požadavků se bude směrovat žádosti na jednu z těchto služeb. 
-* "\<IPAddress >: 80/helloWorld/\<požadavek\>" výsledkem by byla žádost o nasměrování na "helloWorldListener" v helloWorldService. 
-* "\<IPAddress >: 80/čítač/\<požadavek\>" výsledkem by byla žádost o nasměrování na "counterListener" v counterService. 
+Tato brána je nakonfigurovaná pro aplikaci pro Linux, "meshAppLinux", která se skládá z aspoň dvou služeb, "helloWorldService" a "counterService", která naslouchá na portu 80. V závislosti na struktuře adresy URL příchozího požadavku bude požadavek směrovat na jednu z těchto služeb. 
+* "\<IPAddress >: 80/helloWorld/\<Request\>" by způsobil přesměrování požadavku na "helloWorldListener" v helloWorldService. 
+* "\<IPAddress >: 80/Counter/\<Request\>" by způsobil přesměrování požadavku na "counterListener" v counterService. 
 
 ## <a name="next-steps"></a>Další postup
-* Nasazení [příchozího přenosu dat ukázka](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) zobrazíte brány v akci
+* Nasazením [ukázky](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) příchozího přenosu dat zobrazíte brány v akci.
