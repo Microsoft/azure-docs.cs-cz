@@ -439,20 +439,38 @@
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Vytvoření nové nabídky
       items:
-        - name: Kontrolní seznam k vytvoření nabídky
-          href: ./partner-center-portal/offer-creation-checklist.md
-        - name: Vytvoření nabídky SaaS
-          href: ./partner-center-portal/create-new-saas-offer.md
-        - name: Fakturace SaaS podle objemu dat
-          href: ./partner-center-portal/saas-metered-billing.md
+        - name: Nabídky Dynamics 365
           items:
-            - name: Rozhraní API služeb měření na marketplace – nejčastější dotazy
-              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-            - name: Rozhraní API služeb měření na marketplace
-              href: ./partner-center-portal/marketplace-metering-service-apis.md
-        - name: Rozhraní API naplnění SaaS
-          href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+            - name: Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
+              href: ./partner-center-portal/create-new-customer-engagement-offer.md
+            - name: Vytvoření nabídky Dynamics 365 for Operations
+              href: ./partner-center-portal/create-new-operations-offer.md
+            - name: Vytvoření nabídky Dynamics 365 Business Central
+              href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: Nabídky SaaS
           items:
+            - name: Kontrolní seznam k vytváření nabídek SaaS
+              href: ./partner-center-portal/offer-creation-checklist.md
+            - name: Vytvoření nabídky SaaS
+              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: Fakturace SaaS podle objemu dat
+              href: ./partner-center-portal/saas-metered-billing.md
+              items:
+                - name: Rozhraní API služeb měření na marketplace – nejčastější dotazy
+                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+                - name: Rozhraní API služeb měření na marketplace
+                  href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: Rozhraní API naplnění SaaS
+              href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+              items:
+                - name: Registrace aplikace SaaS
+                  href: ./partner-center-portal/pc-saas-registration.md
+                - name: Rozhraní API pro naplnění SaaS v2
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+                - name: Rozhraní API pro naplnění SaaS v1 (zastaralá)
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+                - name: Rozhraní API pro naplnění SaaS – nejčastější dotazy
+                  href: ./partner-center-portal/saas-fulfillment-apis-faq.md
             - name: Registrace aplikace SaaS
               href: ./partner-center-portal/pc-saas-registration.md
             - name: Rozhraní API pro naplnění SaaS v2

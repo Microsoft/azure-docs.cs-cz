@@ -120,12 +120,8 @@
         - name: Nasazení – REST API
           displayName: 'deployment,rollback on error,redeploy'
           href: resource-group-template-deploy-rest.md
-        - name: Zabezpečení šablon s tokenem SAS
-          items:
-            - name: Použití Azure CLI
-              href: resource-manager-cli-sas-token.md
-            - name: Použití Azure Powershell
-              href: resource-manager-powershell-sas-token.md
+        - name: Zabezpečení šablony s tokenem SAS
+          href: secure-template-with-sas-token.md
         - name: Nasazení do několika skupin prostředků nebo předplatných
           href: resource-manager-cross-resource-group-deployment.md
     - name: CI/CD

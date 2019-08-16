@@ -10,7 +10,7 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Přiřazení licencí k uživatelům
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Přiřazení role s využitím oboru prostředků
+    - name: Udělení oprávnění pro neomezený počet registrací aplikací
       href: roles-quickstart-app-registration-limits.md
     - name: Nastavení konce platnosti skupiny
       href: groups-quickstart-expiration.md

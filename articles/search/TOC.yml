@@ -13,7 +13,7 @@
       items:
         - name: Vytvoření a použití indexu
           href: search-get-started-portal.md
-        - name: Obohacení s využitím umělé Inteligence (kognitivní vyhledávání)
+        - name: Rozšíření s využitím kognitivního hledání (AI)
           href: cognitive-search-quickstart-blob.md
     - name: 'C#'
       href: search-get-started-dotnet.md
@@ -59,6 +59,8 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
     - name: Ukázky Java
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+    - name: Ukázky JavaScriptu
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=javascript'
     - name: Ukázky Pythonu
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
     - name: Ukázky REST

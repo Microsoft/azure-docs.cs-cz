@@ -478,7 +478,7 @@
           items:
             - name: Použití akcelerátoru zápisu
               href: how-to-enable-write-accelerator.md
-            - name: Povolení disků SSD úrovně Ultra
+            - name: Použití disků Ultra
               href: disks-enable-ultra-ssd.md
             - name: Srovnávací test disku
               href: disks-benchmarks.md
