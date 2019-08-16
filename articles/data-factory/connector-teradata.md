@@ -142,8 +142,8 @@ Chcete-li kopírovat data z Teradata, jsou podporovány následující vlastnost
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavena na `TeradataTable`hodnotu. | Ano |
-| database | Název databáze Teradata. | Ne (když je zadán zdroj aktivity "dotaz") |
-| table | Název tabulky v databázi Teradata. | Ne (když je zadán zdroj aktivity "dotaz") |
+| database | Název databáze Teradata. | Ne (když je zadán zdroj aktivity "query") |
+| table | Název tabulky v databázi Teradata. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad:**
 
