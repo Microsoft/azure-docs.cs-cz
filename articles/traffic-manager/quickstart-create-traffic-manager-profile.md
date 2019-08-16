@@ -39,14 +39,14 @@ Pro účely tohoto rychlého startu budete potřebovat dvě instance webové apl
 
 1. V části **vytvořit webovou aplikaci**zadejte nebo vyberte následující hodnoty na kartě **základy** :
 
-   - ****  > **Skupina prostředků**předplatného: Vyberte **vytvořit novou** a potom zadejte **myResourceGroupTM1**.
-   - ****  > **Název**podrobností instance: Zadejte *myWebAppEastUS*.
-   - ****  > **Publikování**podrobností instance: Vyberte **kód**.
-   - ****  > **Zásobník za běhu**podrobností instance: Vybrat **ASP.NET v 4.7**
+   -  > **Skupina prostředků**předplatného: Vyberte **vytvořit novou** a potom zadejte **myResourceGroupTM1**.
+   -  > **Název**podrobností instance: Zadejte *myWebAppEastUS*.
+   -  > **Publikování**podrobností instance: Vyberte **kód**.
+   -  > **Zásobník za běhu**podrobností instance: Vybrat **ASP.NET v 4.7**
    - **Podrobnosti instance operační** **systém:**  >  Vyberte možnost **Windows**.
-   - ****  > **Oblast**podrobností instance:  Vyberte **USA – východ**.
-   - **** Plánování plánu**Windows App Service (východní USA):**  >  Vyberte **vytvořit novou** a potom zadejte **myAppServicePlanEastUS** .
-   - ****  > **SKU a velikost**plánu App Service: Vyberte **standardní S1**.
+   -  > **Oblast**podrobností instance:  Vyberte **USA – východ**.
+   - Plánování plánu**Windows App Service (východní USA):**  >  Vyberte **vytvořit novou** a potom zadejte **myAppServicePlanEastUS** .
+   -  > **SKU a velikost**plánu App Service: Vyberte **standardní S1**.
    
 3. Vyberte kartu **monitorování** nebo vyberte **Další: monitorování**.  V části **monitorování**nastavte **Application Insights** > **Povolit Application Insights** na **ne**.
 
@@ -54,7 +54,7 @@ Pro účely tohoto rychlého startu budete potřebovat dvě instance webové apl
 
 5. Zkontrolujte nastavení a klikněte na **vytvořit**.  Po úspěšném nasazení webové aplikace se vytvoří výchozí web.
 
-6. Použijte postup vytvoření druhé webové aplikace s názvem *myWebAppWestEurope*s názvem **skupiny prostředků** *myResourceGroupTM2*, **oblastí** *západní Evropa*, názvem **** **App Service plánu myAppServicePlanWestEurope**a všechna ostatní nastavení se shodují s *myWebAppEastUS*.
+6. Použijte postup vytvoření druhé webové aplikace s názvem *myWebAppWestEurope*s názvem **skupiny prostředků** *myResourceGroupTM2*, **oblastí** *západní Evropa*, názvem **App Service plánu myAppServicePlanWestEurope**a všechna ostatní nastavení se shodují s *myWebAppEastUS*.
 
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 
@@ -131,7 +131,7 @@ V této části zkontrolujete název domény vašeho profilu Traffic Manager. Ta
 2. Pokud chcete zobrazit Traffic Manager převzetí služeb při selhání v akci, zakažte svoji primární lokalitu:
     1. Na stránce Traffic Manager profil vyberte v části **Přehled** možnost **myPrimaryEndpoint**.
     2. V *myPrimaryEndpoint*vyberte **zakázané** > **Uložit**.
-    3. Zavřete **myPrimaryEndpoint**. Všimněte si, že stav **** je teď zakázaný.
+    3. Zavřete **myPrimaryEndpoint**. Všimněte si, že stav je teď zakázaný.
 3. Zkopírujte název DNS profilu Traffic Manager z předchozího kroku a zobrazte si web v nové relaci webového prohlížeče.
 4. Ověřte, zda je webová aplikace stále k dispozici.
 

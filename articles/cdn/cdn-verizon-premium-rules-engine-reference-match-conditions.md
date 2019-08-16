@@ -157,7 +157,7 @@ Informace o klíči:
 
 ### <a name="client-ip-address"></a>IP adresa klienta
 
-Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody IP adresy klienta: **** /
+Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody IP adresy klienta:/
 
 - **Shody**: Vyžaduje, aby se IP adresa klienta shodovala s jednou ze zadaných IP adres. 
 - Neodpovídá: Vyžaduje, aby IP adresa klienta neodpovídala žádné ze zadaných IP adres. 
@@ -186,7 +186,7 @@ Informace o klíči:
 
 ### <a name="cookie-parameter"></a>Parametr souboru cookie
 
-Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody parametru souboru cookie. **** /
+Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody parametru souboru cookie./
 
 - **Shody**: Vyžaduje, aby požadavek obsahoval zadaný soubor cookie s hodnotou, která odpovídá nejméně jedné z hodnot, které jsou definovány v této podmínce shody.
 - Neodpovídá: Vyžaduje, aby požadavek splňoval jedno z následujících kritérií:
@@ -220,7 +220,7 @@ Informace o klíči:
 
 Podmínka porovnávání regulárního výrazu v parametru cookie definuje název a hodnotu souboru cookie. Můžete použít [regulární výrazy](cdn-verizon-premium-rules-engine-reference.md#regular-expressions) k definování požadované hodnoty souboru cookie.
 
-Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka pro parametr souboru cookie Regex. **** /
+Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka pro parametr souboru cookie Regex./
 
 - **Shody**: Vyžaduje, aby požadavek obsahoval zadaný soubor cookie s hodnotou, která odpovídá zadanému regulárnímu výrazu.
 - Neodpovídá: Vyžaduje, aby požadavek splňoval jedno z následujících kritérií:
@@ -253,7 +253,7 @@ Informace o klíči:
 
 Zemi můžete zadat pomocí jejího kódu země. 
 
-Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody země: **** /
+Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody země:/
 
 - **Shody**: Vyžaduje, aby požadavek obsahoval zadané hodnoty kódu země. 
 - Neodpovídá: Vyžaduje, aby požadavek neobsahuje zadané hodnoty kódu země.
@@ -311,7 +311,7 @@ Informace o klíči:
 
 Podmínka shody zařízení identifikuje požadavky vytvořené z mobilního zařízení na základě jeho vlastností. Zjišťování mobilních zařízení se dosahuje prostřednictvím [WURFL](http://wurfl.sourceforge.net/). 
 
-Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody zařízení: **** /
+Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody zařízení:/
 
 - **Shody**: Vyžaduje, aby zařízení žadatele odpovídalo zadané hodnotě. 
 - Neodpovídá: Vyžaduje, aby zařízení žadatele neodpovídalo zadané hodnotě.
@@ -398,7 +398,7 @@ Informace o klíči:
 
 Název hostitele přidružený k odkazujícímu serveru, prostřednictvím kterého byl požadován obsah, určuje, zda je splněna podmínka odkazující domény.
 
-Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna odkazovaná podmínka domény: ****
+Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna odkazovaná podmínka domény:
 
 - **Shody**: Vyžaduje odkazující název hostitele, aby odpovídal zadaným hodnotám. 
 - Neodpovídá: Vyžaduje, aby odkazující název hostitele neodpovídá zadané hodnotě.
@@ -424,7 +424,7 @@ Informace o klíči:
 
 ### <a name="request-header-literal"></a>Literál hlavičky požadavku
 
-Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody s literálem hlavičky požadavku. ****
+Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody s literálem hlavičky požadavku.
 
 - **Shody**: Vyžaduje, aby požadavek obsahoval určenou hlavičku. Jeho hodnota musí odpovídat hodnotě, která je definována v této podmínce shody.
 - Neodpovídá: Vyžaduje, aby požadavek splňoval jedno z následujících kritérií:
@@ -449,7 +449,7 @@ Informace o klíči:
 
 ### <a name="request-header-regex"></a>Regulární výraz pro záhlaví požadavku
 
-Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka záhlaví žádosti o porovnání regulárního výrazu. ****
+Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka záhlaví žádosti o porovnání regulárního výrazu.
 
 - **Shody**: Vyžaduje, aby požadavek obsahoval určenou hlavičku. Jeho hodnota musí odpovídat vzoru, který je definován v zadaném [regulárním výrazu](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
 - Neodpovídá: Vyžaduje, aby požadavek splňoval jedno z následujících kritérií:
@@ -480,7 +480,7 @@ Informace o klíči:
 
 ### <a name="request-header-wildcard"></a>Zástupný znak hlavičky žádosti
 
-Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody se zástupnými znaky v hlavičce požadavku. ****
+Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody se zástupnými znaky v hlavičce požadavku.
 
 - **Shody**: Vyžaduje, aby požadavek obsahoval určenou hlavičku. Jeho hodnota musí odpovídat alespoň jedné z hodnot, které jsou definovány v této podmínce shody.
 - Neodpovídá: Vyžaduje, aby požadavek splňoval jedno z následujících kritérií:
@@ -565,7 +565,7 @@ Informace o klíči:
 
 Identifikuje požadavek podle jeho relativní cesty, která vylučuje název souboru požadovaného prostředku.
 
-Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody adresáře cesty adresy URL. ****
+Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody adresáře cesty adresy URL.
 
 - **Shody**: Vyžaduje, aby požadavek obsahoval cestu relativní adresy URL s výjimkou názvu souboru, který odpovídá zadanému vzoru adresy URL.
 - Neodpovídá: Vyžaduje, aby žádost obsahovala relativní cestu URL s vyloučením názvu souboru, která neodpovídá zadanému vzoru adresy URL.
@@ -666,7 +666,7 @@ Tato podmínka shody je splněna, pokud nalezne adresy URL, které končí násl
 
 Identifikuje požadavky podle názvu souboru požadovaného prostředku. Pro účely této podmínky shody se název souboru skládá z názvu požadovaného prostředku, tečky a přípony souboru (například index. html).
 
-Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka adresy URL názvu cesty. ****
+Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka adresy URL názvu cesty.
 
 - **Shody**: Vyžaduje, aby žádost obsahovala název souboru v cestě URL, která odpovídá zadanému vzoru.
 - Neodpovídá: Vyžaduje, aby požadavek obsahoval název souboru v cestě URL, která se neshoduje se zadaným vzorem.
@@ -715,7 +715,7 @@ Informace o klíči:
 
     Příklad\/: https:/&lt;Endpoint&gt;. azureedge.NET/**myFolder/index.htm**
 
-  Tato adresa URL odkazuje na následující název hostitele CDN Verizon: http\/:&lt; /WPC.0001. myFolder/index.htm&gt;domény **** /800001/myorigin/
+  Tato adresa URL odkazuje na následující název hostitele CDN Verizon: http\/:&lt; /WPC.0001. myFolder/index.htm&gt;domény /800001/myorigin/
 
 - Adresa URL hraničního CNAME se před porovnáním adresy URL přepíše na adresu URL CDN.
 
@@ -781,7 +781,7 @@ Informace o klíči:
 
 Porovná relativní cestu URL požadavku se zadaným zástupným vzorem.
 
-Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody mezi zástupnými znaky cesty URL. ****
+Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody mezi zástupnými znaky cesty URL.
 
 - **Shody**: Vyžaduje, aby požadavek obsahoval cestu URL, která odpovídá zadanému vzorci zástupných znaků.
 - Neodpovídá: Vyžaduje, aby požadavek obsahoval cestu URL, která neodpovídá zadanému vzoru zástupných znaků.
@@ -799,7 +799,7 @@ Informace o klíči:
 
        Příklad\/: https:/&lt;Endpoint&gt;. azureedge.NET/**myFolder/index.htm**
 
-     Tato adresa URL odkazuje na následující název hostitele CDN Verizon: http\/:&lt; /WPC.0001. myFolder/index.htm&gt;domény **** /800001/myorigin/
+     Tato adresa URL odkazuje na následující název hostitele CDN Verizon: http\/:&lt; /WPC.0001. myFolder/index.htm&gt;domény /800001/myorigin/
 
 - Adresa URL hraničního CNAME se před porovnáním adresy URL přepíše na adresu URL CDN.
 
@@ -847,7 +847,7 @@ Hodnota                   | Relativní vzhledem k    | Výsledek
 
 Porovná řetězec dotazu požadavku se zadanou hodnotou.
 
-Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody literálu dotazu URL. **** /
+Možnost shody neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody literálu dotazu URL./
 
 - **Shody**: Vyžaduje, aby požadavek obsahoval řetězec dotazu adresy URL, který odpovídá zadanému řetězci dotazu.
 - Neodpovídá: Vyžaduje, aby požadavek obsahoval řetězec dotazu adresy URL, který se neshoduje se zadaným řetězcem dotazu.
@@ -884,7 +884,7 @@ Informace o klíči:
 
 Identifikuje požadavky, které obsahují zadaný parametr řetězce dotazu. Tento parametr je nastaven na hodnotu, která odpovídá zadanému vzoru. Parametry řetězce dotazu (například parametr = hodnota) v adrese URL požadavku určují, zda je tato podmínka splněna. Tato podmínka shody identifikuje parametr řetězce dotazu podle názvu a přijímá jednu nebo více hodnot pro hodnotu parametru. 
 
-Shoda neodpovídá parametru určuje podmínky, za kterých je splněna podmínka dotazu adresy URL. **** /
+Shoda neodpovídá parametru určuje podmínky, za kterých je splněna podmínka dotazu adresy URL./
 
 - **Shody**: Vyžaduje, aby požadavek obsahoval zadaný parametr s hodnotou, která odpovídá nejméně jedné z hodnot, které jsou definovány v této podmínce shody.
 - Neodpovídá: Vyžaduje, aby požadavek splňoval jedno z následujících kritérií:
@@ -1017,7 +1017,7 @@ Informace o klíči:
 
 Porovná zadané hodnoty s řetězcem dotazu žádosti.
 
-Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody zástupného znaku dotazu URL. ****
+Možnost **shody**/neodpovídá možnosti určuje podmínky, za kterých je splněna podmínka shody zástupného znaku dotazu URL.
 
 - **Shody**: Vyžaduje, aby požadavek obsahoval řetězec dotazu adresy URL, který odpovídá zadané zástupné hodnotě.
 - Neodpovídá: Vyžaduje, aby požadavek obsahoval řetězec dotazu adresy URL, který neodpovídá zadané zástupné hodnotě.
