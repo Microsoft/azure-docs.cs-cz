@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 37f1a0d9c70afc0a3a86ac76b682ee7b2adb253d
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335805"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69511018"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
@@ -49,7 +49,7 @@ Hlavička hostitele HTTP, která je odeslána z prohlížeče klienta, je nejbě
 
 Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager funguje na úrovni DNS. Vzhledem k tomu, že se klienti připojují k koncovým bodům služby přímo, nedochází při použití Traffic Manager po navázání tohoto připojení k žádnému dopadu na výkon.
 
-Vzhledem k tomu, že Traffic Manager se integruje s aplikacemi na úrovni DNS, vyžaduje se vložení dalšího vyhledávání DNS do řetězce překladu DNS. Dopad Traffic Manager na dobu překladu DNS je minimální. Traffic Manager používá globální síť názvových serverů [a používá síť](https://en.wikipedia.org/wiki/Anycast) s více jmény k zajištění toho, aby se dotazy DNS vždycky směrovaly na nejbližší dostupný názvový server. Kromě toho ukládání odpovědí DNS do mezipaměti znamená, že další latence DNS vzniklé pomocí Traffic Manager platí jenom pro zlomek relací.
+Vzhledem k tomu, že Traffic Manager se integruje s aplikacemi na úrovni DNS, vyžaduje se vložení dalšího vyhledávání DNS do řetězce překladu DNS. Dopad Traffic Manager na dobu překladu DNS je minimální. Traffic Manager používá globální síť názvových serverů a používá síť s [](https://en.wikipedia.org/wiki/Anycast) více jmény k zajištění toho, aby se dotazy DNS vždycky směrovaly na nejbližší dostupný názvový server. Kromě toho ukládání odpovědí DNS do mezipaměti znamená, že další latence DNS vzniklé pomocí Traffic Manager platí jenom pro zlomek relací.
 
 Metoda Performance směruje provoz do nejbližšího dostupného koncového bodu. Výsledkem netto je, že celkový dopad na výkon spojený s touto metodou by měl být minimální. Jakékoli zvýšení latence DNS by mělo být posunuto o nižší latenci sítě ke koncovému bodu.
 
@@ -322,9 +322,9 @@ Traffic Manager odpoví názvem DNS nebo IP adresou koncového bodu. Pro podporu
 
 Traffic Manager se obvykle používá k směrování provozu do aplikací nasazených v různých oblastech. Dá se ale použít i v případě, že aplikace má ve stejné oblasti více než jedno nasazení. Traffic Manager koncových bodů Azure nepovoluje přidání více než jednoho koncového bodu webové aplikace ze stejné oblasti Azure do stejného Traffic Manager profilu.
 
-### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Návody přesunout koncové body Azure profilu Traffic Manager do jiné skupiny prostředků?
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription"></a>Návody přesunout koncové body Azure profilu Traffic Manager do jiné skupiny prostředků nebo předplatného?
 
-Koncové body Azure přidružené k profilu Traffic Manager jsou sledovány pomocí jejich ID prostředků. Pokud se prostředek Azure, který se používá jako koncový bod (například veřejná IP adresa, klasický cloudová služba, WebApp nebo jiný profil Traffic Manager používaný způsobem), přesune do jiné skupiny prostředků, změní se jeho ID prostředku. V tomto scénáři je potřeba aktualizovat profil Traffic Manager tím, že nejprve odstraníte a pak přidáte zpátky koncové body do profilu.
+Koncové body Azure přidružené k profilu Traffic Manager jsou sledovány pomocí jejich ID prostředků. Pokud se prostředek Azure, který se používá jako koncový bod (například veřejná IP adresa, klasický cloudová služba, WebApp nebo jiný profil Traffic Manager), přesune do jiné skupiny prostředků nebo předplatného, změní se jeho ID. V tomto scénáři je potřeba aktualizovat profil Traffic Manager tím, že nejprve odstraníte a pak přidáte zpátky koncové body do profilu.
 
 ## <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncového bodu Traffic Manager
 

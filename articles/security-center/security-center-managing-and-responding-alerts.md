@@ -13,13 +13,13 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
-ms.author: rkarlin
-ms.openlocfilehash: 582912160c8ed514401be3522e52dcc6eb45d263
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 39849514d772f128434daad590de22f941245af7
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235759"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516107"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Správa a zpracování výstrah zabezpečení v Azure Security Center
 Tento dokument vám pomůže používat Azure Security Center ke správě výstrah zabezpečení a reagování na ně.
@@ -52,31 +52,31 @@ Aktuální výstrahy můžete zkontrolovat jejich prohlížením na dlaždici **
 V dolní části této stránky jsou uvedené podrobnosti pro každou výstrahu. Chcete-li je seřadit, klikněte na sloupec, podle kterého chcete řadit. Definice pro každý sloupec je uvedená dále:
 
 * **Popis**: Stručné vysvětlení výstrahy.
-* **Počet**: Seznam všech výstrah tohoto konkrétního typu, které byly zjištěny v určitý den.
-* **Zjištěné podle**: Služba, která je zodpovědná za aktivaci výstrahy.
+* **Počet**: Seznam všech výstrah tohoto konkrétního typu, které byly zjištěny v určitém dni.
+* **Zjistil**: Služba, která byla zodpovědná za aktivaci výstrahy.
 * **Datum**: Datum, kdy došlo k události.
-* **Stav**: Aktuální stav výstrahy. Existují dva typy stavů:
-  * **Aktivní**: Byla zjištěna výstraha zabezpečení.
-  * **Zavře**: Výstraha zabezpečení byla zamítnuta uživatelem. Tento stav se obvykle používá pro výstrahy, které byly prozkoumány a buď zmírněny, nebo nedošlo ke skutečnému útoku.
-* **Závažnost**: Úroveň závažnosti, která může být vysoká, střední nebo Nízká.
+* **Stav**: Aktuální stav této výstrahy. Existují dva typy stavů:
+  * **Aktivní**: Bylo zjištěno upozornění zabezpečení.
+  * **Neúspěšné**: Uživatel zrušil výstrahu zabezpečení. Tento stav se obvykle používá pro výstrahy, které byly prověřené a buď zmírňované, nebo nezjištěné jako skutečný útok.
+* **Závažnost**: Úroveň závažnosti, která může být vysoká, střední nebo nízká.
 
 > [!NOTE]
 > Výstrahy zabezpečení, které generuje Security Center, se také zobrazí v části Protokol aktivit Azure. Další informace o tom, jak získat přístup k Protokolu aktivit Azure, najdete v popisu [zobrazení protokolů aktivit pro auditování akcí u prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 >
 
 
-### <a name="alert-severity"></a>Závažnost výstrahy
+### <a name="alert-severity"></a>Závažnost upozornění
 
--   **Vysoká**: Existuje vysoká pravděpodobnost, že dojde k ohrožení vašich prostředků. Byste se podívat do něj okamžitě. Security Center má vysokou spolehlivostí škodlivým činnostem závěry používají k vydávání výstrahu. Například výstrahy, které se zjistí spuštění známé škodlivé nástroje, jako je nástroj Mimikatz, běžné nástroj používaný pro krádež přihlašovacích údajů. 
--   **Střední**: To je pravděpodobně podezřelou aktivitu, která může znamenat, že dojde k ohrožení prostředku.
-Security Center důvěru v analytické nebo hledání se střední a spolehlivosti škodlivým činnostem je střední na vysokou. Ty by obvykle neměl machine learning nebo detekce anomálií, na základě. Například znak při pokusu o z neobvyklého umístění.
--   **Nízká**: Může to být neškodné pozitivní nebo zablokování útoku. 
-    - Security Center není dostatečně přesvědčeni, že je cílem škodlivý a aktivity mohou být zcela nevinné. Vymazat protokol je například akci, která může dojít v případě, že útočník pokusí skrýt svoje stopy, ale v mnoha případech je běžné operace prováděné správci.
-    - Security Center nebude zjistit obvykle při se zablokoval útoky, pokud je zajímavé případ, který doporučujeme, abyste že si prohlédnout. 
--   **Informační**: Zobrazí, jenom informační výstrahy při podrobné analýze do jednoho incidentu zabezpečení, nebo pokud používáte rozhraní REST API s konkrétním ID výstrahy. Incident je obvykle obsahují celou řadu výstrah, z nichž některé mohou zobrazit na svoje vlastní, které bude jenom informativní, ale v kontextu jiných oznámení může být albertových podívat podrobněji.  
+-   **Vysoká**: Existuje vysoká pravděpodobnost, že dojde k ohrožení zabezpečení prostředku. Měli byste se podívat hned. Security Center má vysokou důvěru v škodlivém záměru i ve zjištěních použitých k vystavení výstrahy. Například výstraha, která detekuje spuštění známého škodlivého nástroje, jako je například Mimikatz, společný nástroj používaný ke krádeži přihlašovacích údajů. 
+-   **Střední**: Je pravděpodobné, že se jedná o podezřelou aktivitu, která může znamenat, že došlo k ohrožení zabezpečení prostředku.
+Při analýze nebo hledání je jistota Security Center střední a důvěra škodlivého záměru je střední až vysoká. Obvykle se jedná o strojové učení nebo detekci na základě anomálií. Například pokus o přihlášení z umístění neobvyklé.
+-   **Nízká úroveň**: Může se jednat o neškodný pozitivní nebo blokovaný útok. 
+    - Security Center není dostatečně jistý, že záměr je škodlivý a aktivita může být Innocent. Například vymazání protokolu je akce, ke které může dojít, když se útočník pokusí skrýt jejich stopy, ale v mnoha případech je rutinní operací prováděná správci.
+    - Security Center vám většinou neřekne při zablokování útoků, pokud se nejedná o zajímavý případ, který doporučujeme najít. 
+-   **Informační**: Informační výstrahy se zobrazí jenom v případě, že přejdete k incidentu zabezpečení, nebo pokud použijete REST API s konkrétním ID výstrahy. Incident se většinou skládá z několika výstrah. některé z nich se můžou zobrazovat jenom s informacemi, ale v kontextu dalších výstrah se můžou důvěryhodného o bližším vzhledu.  
 
 > [!NOTE]
-> Pokud používáte **2015-06-01-preview** verze rozhraní API, existují rozdíly v které alarmů závažnost typy jsou použity na jaké scénáře z jaký je uveden výše.  
+> Pokud používáte verzi rozhraní API **2015-06-01-Preview** , existují rozdíly v tom, jaké typy závažnosti alarmu jsou aplikovány na scénáře, od výše uvedeného.  
 
 ### <a name="filtering-alerts"></a>Filtrování výstrah
 Výstrahy můžete filtrovat podle data, stavu nebo závažnosti. Filtrování výstrah může být užitečné v případech, kdy potřebujete zúžit obor zobrazených výstrah zabezpečení. Například můžete chtít zabývat se výstrahami zabezpečení, k nimž došlo v posledních 24 hodinách, protože zjišťujete případný průnik do systému.
@@ -96,13 +96,13 @@ V tomto případě odkazují vygenerované výstrahy na podezřelé aktivity pro
 
 V poli **Popis** najdete další podrobnosti o této události. Tyto další podrobnosti nabízejí získání náhledu na příčinu výstrahy zabezpečení, cílový prostředek, případnou zdrojovou IP adresu a doporučení, jak provést nápravu.  V některých případech je zdrojová IP adresa prázdná (nedostupná), protože ne všechny protokoly událostí zabezpečení Windows obsahují IP adresu.
 
-Náprava navrhovaná službou Security Center se liší podle výstrahy zabezpečení. V některých případech budete muset k implementaci doporučené nápravy použít další možnosti Azure. Například nápravou pro tento útok je uvedení IP adresy, která generuje tento útok, v seznamu zakázaných serverů, a to pomocí [seznamu ACL sítě](../virtual-network/virtual-networks-acl.md) nebo pravidla [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules). Další informace o různých typech výstrah najdete v tématu [Výstrahy zabezpečení podle typu v Azure Security Center](security-center-alerts-type.md).
+Náprava navrhovaná službou Security Center se liší podle výstrahy zabezpečení. V některých případech budete muset k implementaci doporučené nápravy použít další možnosti Azure. Náprava pro tento útok například neumožňuje, aby IP adresa, která generuje tento útok, používala [seznam ACL sítě](../virtual-network/virtual-networks-acl.md) nebo pravidlo [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules) . Pokud chcete získat další informace o různých typech výstrah, přečtěte si [typy výstrah zabezpečení](security-center-alerts-overview.md#security-alert-types).
 
 > [!NOTE]
 > Ve službě Security Center byla vydána ve verzi Limited Preview nová sada detekcí, které využívají záznamy auditu, což je běžný auditní rámec, k detekci škodlivého chování na počítačích s Linuxem. Pokud se chcete připojit k verzi Preview, zašlete [nám](mailto:ASC_linuxdetections@microsoft.com) e-mail s ID vašich předplatných.
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 V tomto dokumentu jste zjistili, jak ve službě Security Center konfigurovat zásady zabezpečení. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Řešení bezpečnostních incidentů v Azure Security Center](security-center-incident.md)

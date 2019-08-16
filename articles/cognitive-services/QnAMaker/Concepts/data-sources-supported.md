@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/15/2019
 ms.author: diberry
-ms.openlocfilehash: 78c75e69be5521660937e34da0d7261dba1de385
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a3e1853e587f2f1632641cbb896eba59f8dc9455
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955316"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515788"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Zdroje dat pro nástroj QnA Maker obsahu
 
@@ -133,9 +133,21 @@ Strukturované maximálně ve formě *.txt*, *TSV* nebo *.xls* soubory se také 
 
 Žádné další sloupce ve zdrojovém souboru jsou ignorovány.
 
+### <a name="example-of-structured-excel-file"></a>Příklad strukturovaného excelového souboru
+
 Níže je příklad strukturovaných QnA *.xls* soubor s obsahem HTML:
 
  ![Strukturované QnA excel příklad znalostní báze](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Příklad alternativních otázek pro jednu odpověď v excelovém souboru
+
+Níže je uveden příklad strukturovaného souboru QnA *. xls* , který má několik alternativních otázek pro jednu odpověď:
+
+ ![Příklad alternativních otázek pro jednu odpověď v excelovém souboru](../media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+
+Po importu souboru se dvojice otázka a odpověď nachází ve znalostní bázi, jak je znázorněno níže:
+
+ ![Snímek obrazovky s alternativními otázkami pro import jedné odpovědi do znalostní báze Knowledge Base](../media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
 ## <a name="structured-data-format-through-import"></a>Formát strukturovaných dat pomocí importu
 

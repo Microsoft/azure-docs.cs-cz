@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3f6d15e67122afcbea3cc294c803a302e961bdbd
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: c192a994ac5398d41e28a35267b922ba98b721cc
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372551"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69513615"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
 
-Konfigurace stavu Azure Automation je služba Azure, která umožňuje zapisovat, spravovat a kompilovat konfigurace požadovaného stavu prostředí [PowerShell, importovat](/powershell/dsc/configurations) [prostředky DSC](/powershell/dsc/resources)a přiřazovat konfigurace cílovým uzlům, a to vše v nástroji. cloudu.
+Konfigurace stavu Azure Automation je služba Azure, která umožňuje zapisovat, spravovat a kompilovat konfigurace požadovaného stavu prostředí PowerShell, importovat [prostředky DSC](/powershell/dsc/resources)a [](/powershell/dsc/configurations)přiřazovat konfigurace cílovým uzlům, a to vše v nástroji. cloudu.
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Proč používat konfiguraci stavu Azure Automation
 
@@ -57,6 +57,8 @@ Pro uzly s Windows se podporují tyto verze:
 - Windows 10
 - Windows 8.1
 - Windows 7
+
+SKU samostatného produktu [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) neobsahuje implementaci požadovaného stavu konfigurací, takže ji nejde spravovat pomocí prostředí PowerShell DSC nebo konfigurace stavu Azure Automation.
 
 Pro uzly se systémem Linux jsou podporovány následující distribuce/verze:
 
@@ -134,7 +136,7 @@ Raději se díváte, než čtete? Podívá se na následující video od května
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak začít, najdete v tématu [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md) .
 - Další informace o připojování uzlů najdete v tématu věnovaném [připojování počítačů ke správě podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md) .

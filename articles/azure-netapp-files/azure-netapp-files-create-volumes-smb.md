@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 9409beea3f22fd7ff09fe49838a37d9ff0b485f6
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 3cd60f390f0233e2923660fc39675b5a307d8d8f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975912"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515413"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -59,6 +59,18 @@ Podsíť musí být delegovaná na Azure NetApp Files.
     |    Protokol Secure LDAP        |    636       |    TCP           |
     |    Protokol Secure LDAP        |    3269      |    TCP           |
     |    W32Time            |    123       |    UDP           |
+
+* Topologie lokality pro cílovou Active Directory Domain Services musí splňovat osvědčené postupy, zejména v případě, že je nasazená síť Azure Azure NetApp Files.  
+
+    Adresní prostor pro virtuální síť, ve které je nasazený Azure NetApp Files, musí být přidán do nové nebo existující lokality služby Active Directory (kde je řadič domény dosažitelný pomocí Azure NetApp Files nachází). 
+
+* Zadané servery DNS musí být dosažitelné z delegované [podsítě](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) Azure NetApp Files.  
+
+    V tématu [pokyny pro Azure NetApp Files plánování sítě](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) pro podporované topologie sítě.
+
+    Skupiny zabezpečení sítě (skupin zabezpečení sítě) a brány firewall musí mít vhodně nakonfigurovaná pravidla umožňující požadavky na provoz služby Active Directory a DNS.
+
+    Viz [návrh topologie lokality](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) o lokalitách a službách Active Directory. 
 
 ## <a name="create-an-active-directory-connection"></a>Vytvoření připojení ke službě Active Directory
 
@@ -117,7 +129,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
         Pole **Dostupná kvóta** zobrazuje množství nevyužitého místa ve zvoleném fondu kapacity, které můžete použít k vytvoření nového svazku. Velikost nového svazku nesmí překročit dostupnou kvótu.  
 
     * **Virtuální síť**  
-        Zadejte virtuální síť Azure (Vnet), ze které chcete ke svazku přistupovat.  
+        Zadejte službu Azure Virtual Network (VNet), ze které chcete získat přístup ke svazku.  
 
         Virtuální síť, kterou zadáte, musí mít přidělenou podsíť Azure NetApp Files. Služba Azure NetApp Files se dá použít jenom ze stejné virtuální sítě nebo z virtuální sítě, která se nachází ve stejné oblasti jako svazek prostřednictvím partnerského vztahu virtuálních sítí. Ke svazku z místní sítě se můžete dostat i přes Express Route.   
 

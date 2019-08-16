@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 06/19/2019
 ms.author: mathoma
 ms.openlocfilehash: eff121cfaf4473607110de4553a9bb8021990caf
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 08/15/2019
 ms.locfileid: "68444679"
 ---
 V tomto kroku vytvoříte skupinu prostředků a Azure SQL Database izolovanou databázi. 

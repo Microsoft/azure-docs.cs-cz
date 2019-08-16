@@ -12,19 +12,19 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: a610a2c01a1e935c55942b621e5b3799cb002fc0
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 025e45b86fa3a6020652ae9756ceace5b51daa55
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698645"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516203"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Konfigurace pravidla omezení IP adres pomocí brány firewall webových aplikací pro službu Azure front-dveří
 V tomto článku se dozvíte, jak nakonfigurovat pravidla omezení IP adres v bráně firewall webových aplikací (WAF) pro službu Azure front-dveří pomocí Azure CLI, Azure PowerShell nebo šablony Azure Resource Manager.
 
 Pravidlo řízení přístupu na základě IP adresy je vlastní pravidlo WAF, které umožňuje řídit přístup k vašim webovým aplikacím. To se dělá zadáním seznamu IP adres nebo rozsahů IP adres ve formátu CIDR (Classless Inter-Domain Routing).
 
-Ve výchozím nastavení je webová aplikace přístupná z Internetu. Pokud chcete omezit přístup ke klientům ze seznamu známých IP adres nebo rozsahů IP adres, musíte vytvořit dvě pravidla pro odpovídající IP adresy. První pravidlo pro porovnání IP obsahuje seznam IP adres jako vyhovujících hodnot a nastavuje akci, která má být **povolena**. Druhá sekunda s nižší prioritou zablokuje všechny ostatní IP adresy pomocí operátoru **All** a nastaví akci, která mábýt zablokovaná. Po použití pravidla omezení IP adresy budou žádosti, které pocházejí z adres mimo tento seznam povolených, přijmout odpověď 403 Forbidden.  
+Ve výchozím nastavení je webová aplikace přístupná z Internetu. Chcete-li omezit přístup k klientům ze seznamu známých IP adres nebo rozsahů IP adres, můžete vytvořit pravidlo pro porovnání IP, které obsahuje seznam IP adres jako odpovídající hodnoty a operátor nastaví hodnotu "NOT" (negace je true) a akce, která má být zablokovaná. Po použití pravidla omezení IP adresy budou žádosti, které pocházejí z adres mimo tento seznam povolených, přijmout odpověď 403 Forbidden.  
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>Konfigurace zásady WAF pomocí Azure CLI
 
@@ -40,52 +40,51 @@ Pomocí pokynů popsaných v [rychlém startu vytvořte profil služby Azure fro
 
 ### <a name="create-a-waf-policy"></a>Vytvoření zásady WAF
 
-Vytvořte zásadu WAF pomocí příkazu [AZ Network WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-create) . V následujícím příkladu nahraďte název zásady *IPAllowPolicyExampleCLI* jedinečným názvem zásady.
+Vytvořte zásadu WAF pomocí příkazu [AZ Network front-dvířke WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-create) . V následujícím příkladu nahraďte název zásady *IPAllowPolicyExampleCLI* jedinečným názvem zásady.
 
 ```azurecli-interactive 
-az network waf-policy create \
+az network front-door waf-policy create \
   --resource-group <resource-group-name> \
   --subscription <subscription ID> \
   --name IPAllowPolicyExampleCLI
   ```
 ### <a name="add-a-custom-ip-access-control-rule"></a>Přidat vlastní pravidlo řízení přístupu IP
 
-Pomocí příkazu [AZ Network WAF-Policy Custom-Rule Create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-rule-create) přidejte vlastní pravidlo řízení přístupu IP pro zásadu WAF, kterou jste právě vytvořili.
+K přidání vlastního pravidla řízení přístupu IP pro zásadu WAF, kterou jste právě vytvořili, použijte příkaz [AZ Network front-dvířkes WAF-Policy Create-Rule Create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-rule-create) .
 
 V následujících příkladech:
 -  Nahraďte *IPAllowPolicyExampleCLI* jedinečnými zásadami, které jste vytvořili dříve.
 -  Nahraďte *IP adresou-rozsah-1*, *IP adresou-Range-2* a vlastním rozsahem.
 
-Nejprve vytvořte pravidlo povolení protokolu IP pro zadané adresy.
+Nejdřív vytvořte pravidlo povolení IP pro zásadu vytvořenou z předchozího kroku. Poznámka **–** vyžaduje se odložení, protože pravidlo musí obsahovat podmínku shody, která se má přidat v dalším kroku.
 
 ```azurecli
-az network waf-policy custom-rule create \
+az network front-door waf-policy rule create \
   --name IPAllowListRule \
   --priority 1 \
   --rule-type MatchRule \
-  --match-condition RemoteAddr IPMatch ("<ip-address-range-1>","<ip-address-range-2>") \
-  --action Allow \
-  --resource-group <resource-group-name> \
-  --policy-name IPAllowPolicyExampleCLI
-```
-Dále vytvořte **blok všechna** pravidla s nižší prioritou, než má předchozí pravidlo **Povolení** . V následujícím příkladu nahraďte *IPAllowPolicyExampleCLI* jedinečnými zásadami, které jste vytvořili dříve.
-
-```azurecli
-az network waf-policy custom-rule create \
-  --name IPDenyAllRule\
-  --priority 2 \
-  --rule-type MatchRule \
-  --match-condition RemoteAddr Any
   --action Block \
   --resource-group <resource-group-name> \
-  --policy-name IPAllowPolicyExampleCLI
+  --policy-name IPAllowPolicyExampleCLI --defer
 ```
-    
+Dále přidejte podmínku shody do pravidla:
+
+```azurecli
+az network front-door waf-policy rule match-condition add\
+--match-variable RemoteAddr \
+--operator IPMatch
+--values "ip-address-range-1" "ip-address-range-2"
+--negate true\
+--name IPAllowListRule\
+  --resource-group <resource-group-name> \
+  --policy-name IPAllowPolicyExampleCLI 
+  ```
+                                                   
 ### <a name="find-the-id-of-a-waf-policy"></a>Najít ID zásady WAF 
-ID zásady WAF najdete pomocí příkazu [AZ Network WAF-Policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) . V následujícím příkladu nahraďte *IPAllowPolicyExampleCLI* jedinečnými zásadami, které jste vytvořili dříve.
+ID zásady WAF najdete pomocí příkazu [AZ Network front-dvířke WAF-Policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) . V následujícím příkladu nahraďte *IPAllowPolicyExampleCLI* jedinečnými zásadami, které jste vytvořili dříve.
 
    ```azurecli
-   az network waf-policy show \
+   az network front-door  waf-policy show \
      --resource-group <resource-group-name> \
      --name IPAllowPolicyExampleCLI
    ```
@@ -140,43 +139,29 @@ $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `
 -OperatorProperty IPMatch `
 -MatchValue "ip-address-range-1", "ip-address-range-2"
+-NegateCondition 1
 ```
-Pomocí následujícího příkazu vytvořte shodu protokolu IP s veškerým pravidlem *podmínky* :
-```powershell
-$IPMatchALlCondition = New-AzFrontDoorWafMatchConditionObject `
--MatchVariable  RemoteAddr `
--OperatorProperty Any        
-  ```
-    
+     
 ### <a name="create-a-custom-ip-allow-rule"></a>Vytvoření vlastního pravidla povolení IP adresy
 
-Pomocí příkazu [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) definujte akci a nastavte prioritu. V následujícím příkladu budou povoleny požadavky z IP adres klientů, které se shodují se seznamem.
+Pomocí příkazu [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) definujte akci a nastavte prioritu. V následujícím příkladu se zablokují požadavky, které nejsou od klientských IP adres, které se shodují se seznamem.
 
 ```powershell
 $IPAllowRule = New-AzFrontDoorCustomRuleObject `
 -Name "IPAllowRule" `
 -RuleType MatchRule `
 -MatchCondition $IPMatchCondition `
--Action Allow -Priority 1
-```
-Vytvoří **blok všechna** pravidla s nižší prioritou, než je předchozí pravidlo **Povolení** protokolu IP.
-```powershell
-$IPBlockAll = New-AzFrontDoorCustomRuleObject `
--Name "IPDenyAll" `
--RuleType MatchRule `
--MatchCondition $IPMatchALlCondition `
--Action Block `
--Priority 2
+-Action Block -Priority 1
 ```
 
 ### <a name="configure-a-waf-policy"></a>Konfigurace zásad WAF
-Vyhledejte název skupiny prostředků, která obsahuje profil služby front-dveří pro Azure, pomocí `Get-AzResourceGroup`. V dalším kroku nakonfigurujte pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)zásadu WAF s protokolem IP s **blokováním všechna** pravidla.
+Vyhledejte název skupiny prostředků, která obsahuje profil služby front-dveří pro Azure, pomocí `Get-AzResourceGroup`. V dalším kroku nakonfigurujte zásadu WAF s pravidlem IP pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell
   $IPAllowPolicyExamplePS = New-AzFrontDoorWafPolicy `
     -Name "IPRestrictionExamplePS" `
     -resourceGroupName <resource-group-name> `
-    -Customrule $IPAllowRule $IPBlockAll `
+    -Customrule $IPAllowRule`
     -Mode Prevention `
     -EnabledState Enabled
    ```

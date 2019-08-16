@@ -1,7 +1,7 @@
 ---
-title: Diagnostika Azure Standard Load Balancer
+title: Diagnostika Azure Standard Load Balancer s metrikami, výstrahami a stavem prostředků
 titlesuffix: Azure Load Balancer
-description: Pro diagnostiku pro Azure Standard Load Balancer použijte dostupné metriky a informace o stavu.
+description: K diagnostice Standard Load Balancer Azure použijte dostupné metriky, výstrahy a informace o stavu prostředků.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -11,21 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2019
+ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: e0329f5f975b67460796bf7dd9429752549a3483
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b241f753c0de6e14282c679c5aec3c32be68e348
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274478"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516249"
 ---
-# <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriky a Diagnostika stavu pro Standard Load Balancer
+# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika Standard Load Balancer s metrikami, výstrahami a stavem prostředků
 
-Azure Standard Load Balancer zveřejňuje Azure Standard Load Balancer poskytuje vašim prostředkům následující diagnostické možnosti:
-* **Multidimenzionální metriky**: Poskytuje nové multidimenzionální diagnostické možnosti prostřednictvím [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro konfigurace veřejného i interního nástroje pro vyrovnávání zatížení. Můžete sledovat, spravovat a řešit potíže s prostředky nástroje pro vyrovnávání zatížení.
+Azure Standard Load Balancer zpřístupňuje následující diagnostické možnosti:
 
-* **Stav prostředků:** Stránka Load Balancer v Azure Portal a na stránce Resource Health (pod položkou monitor) zpřístupňuje oddíl Resource Health pro konfiguraci veřejného nástroje pro vyrovnávání zatížení Standard Load Balancer.
+* **Multidimenzionální metriky a výstrahy**: Poskytuje nové multidimenzionální diagnostické možnosti prostřednictvím [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro standardní konfigurace nástroje pro vyrovnávání zatížení. Můžete monitorovat, spravovat a řešit potíže s prostředky standardního nástroje pro vyrovnávání zatížení.
+
+* **Stav prostředků:** Stránka Load Balancer v Azure Portal a na stránce Resource Health (pod položkou monitor) zpřístupňuje oddíl Resource Health pro Standard Load Balancer. 
 
 Tento článek poskytuje rychlou prohlídku těchto funkcí a nabízí způsoby jejich použití pro Standard Load Balancer.
 
@@ -141,7 +142,7 @@ Metriky čítače bajtů a paketů popisují objem bajtů a paketů, které vaš
 Pro většinu scénářů použijte **součet** jako agregaci.
 
 Postup získání statistiky počtu bajtů nebo paketů:
-1. Vyberte typ metriky **počet bajtů** nebo **počet paketů** s průměrem jako  agregaci. 
+1. Vyberte typ metriky **počet bajtů** nebo **počet paketů** s průměrem jako agregaci. 
 2. Proveďte jednu z následujících akcí:
    * Použijte filtr na konkrétní IP adresu front-endu, front-end port, back-end IP adresu nebo back-end port.
    * Získejte celkové statistiky prostředku nástroje pro vyrovnávání zatížení bez jakéhokoli filtrování.
@@ -172,9 +173,6 @@ Graf umožňuje zákazníkům řešit vlastní řešení bez nutnosti odhadován
 
 Stav prostředků Standard Load Balancer se zveřejňuje prostřednictvím stávajícího **stavu prostředků** v části **monitorování > Service Health**.
 
->[!NOTE]
->Stav prostředku je pro Load Balancer aktuálně k dispozici pouze pro veřejnou konfiguraci pouze Standard Load Balancer. Prostředky interního nástroje pro vyrovnávání zatížení nebo základní SKU prostředků Load Balancer nezveřejňují stav prostředků.
-
 Zobrazení stavu prostředků veřejné Standard Load Balancer:
 1. Vyberte **monitor** > **Service Health**.
 
@@ -198,13 +196,9 @@ V následující tabulce jsou uvedeny různé stavy prostředků a jejich popisy
 
 | Stav prostředku | Popis |
 | --- | --- |
-| K dispozici | Váš veřejný prostředek nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
-| Není dostupný | Váš veřejný prostředek nástroje pro vyrovnávání zatížení není v pořádku. Diagnostikujte stav tak, že vyberete **Azure monitor** > **metriky**.<br>(*Nedostupný* stav může také znamenat, že prostředek není připojený k vašemu veřejnému nástroji pro vyrovnávání zatížení.) |
-| Neznámé | Stav prostředku pro váš veřejný prostředek nástroje pro vyrovnávání zatížení se ještě neaktualizoval.<br>(*Neznámý* stav může také znamenat, že prostředek není připojen ke svému veřejnému nástroji pro vyrovnávání zatížení.)  |
-
-## <a name="limitations"></a>Omezení 
-
-- Dostupnost cesty k datům (dostupnost virtuální IP adresy) není dostupná pro interní Load Balancer front-endu.
+| K dispozici | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
+| Není dostupný | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Diagnostikujte stav tak, že vyberete **Azure monitor** > **metriky**.<br>(*Nedostupný* stav může také znamenat, že prostředek není připojený k vašemu standardnímu nástroji pro vyrovnávání zatížení.) |
+| Neznámé | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval.<br>(*Neznámý* stav může také znamenat, že prostředek není připojen k vašemu standardnímu nástroji pro vyrovnávání zatížení.)  |
 
 ## <a name="next-steps"></a>Další postup
 
@@ -212,5 +206,3 @@ V následující tabulce jsou uvedeny různé stavy prostředků a jejich popisy
 - Přečtěte si další informace o [odchozím připojení k nástroji pro vyrovnávání zatížení](https://aka.ms/lboutbound).
 - Přečtěte si o [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
 - Přečtěte si o [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) a [o tom, jak pomocí REST API načíst metriky](/rest/api/monitor/metrics/list).
-
-

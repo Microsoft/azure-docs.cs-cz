@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 18dbc60c1a29fbc26f4bbc73faa58aeafc66c32f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2cab129556dcd0407793512f41f91311804abd0f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880101"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510213"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Nastavení přímého vzájemného propojení mezi cloudovou infrastrukturou Azure a Oracle  
 
 K vytvoření [integrovaného Multi-cloudového prostředí](oracle-oci-overview.md) (Preview) nabízí Microsoft a Oracle přímé propojení mezi Azure a Oracle cloudovou infrastrukturou (OCI) prostřednictvím [ExpressRoute](../../../expressroute/expressroute-introduction.md) a [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm). Prostřednictvím propojení ExpressRoute a FastConnect můžou zákazníci zaznamenat nízkou latenci, vysokou propustnost a privátní přímé připojení mezi dvěma cloudy.
 
 > [!IMPORTANT]
-> Připojení mezi Microsoft Azure a rozhraním OCI je ve fázi Preview. Aby bylo možné povolit připojení s nízkou latencí mezi Azure a OCI, musí být pro tuto funkci nejdřív povolený odběr Azure. Do verze Preview se musíte zaregistrovat odesláním e-mailu oracleconnect@microsoft.com s vaším ID předplatného. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Můžete se také obrátit na zástupce Microsoftu, který bude pro tuto verzi Preview povolený. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+> Připojení mezi Microsoft Azure a rozhraním OCI je ve fázi Preview. Pokud chcete povolit připojení s nízkou latencí mezi Azure a OCI, vaše předplatné Azure musí být pro tuto funkci nejdřív uvedené bíle. K provedení tohoto krátkého [formuláře průzkumu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)se musíte zaregistrovat ve verzi Preview. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Můžete se také obrátit na zástupce Microsoftu, který bude pro tuto verzi Preview povolený. Přístup k funkci verze Preview podléhá dostupnosti a omezení Microsoftu, a to pouze podle svého uvážení. Dokončení průzkumu nezaručuje přístup. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) . Některé aspekty této funkce se můžou před zveřejněním změnit.
 
 Následující obrázek ukazuje podrobný přehled propojení:
 

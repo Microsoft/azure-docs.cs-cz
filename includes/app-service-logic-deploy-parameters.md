@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: f188f2c7bea511f1109d37ef49563e0f745a770e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 08/15/2019
 ms.locfileid: "68385755"
 ---
 Pomocí Azure Resource Manager můžete definovat parametry pro hodnoty, které se mají použít při nasazování šablony. Šablona obsahuje `parameters` oddíl, který obsahuje všechny hodnoty parametrů. Každá hodnota parametru je používána šablonou k definování prostředků, které chcete nasadit.

@@ -7,20 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/06/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 58c6d1b032f5b492c5641ff51da80426124069b1
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 46755cb8d0383d166b10d50854eb476b676a6ee4
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716784"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509743"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizaci Azure Active Directory v Azure Active Directory B2C
-
->[!NOTE]
-> Tato funkce je ve verzi Public Preview. Nepoužívejte funkci v produkčních prostředích.
 
 Pokud chcete jako [poskytovatele identity](active-directory-b2c-reference-oauth-code.md) v Azure AD B2C použít Azure Active Directory (Azure AD), musíte vytvořit aplikaci, která ji představuje. V tomto článku se dozvíte, jak povolit přihlášení pro uživatele z konkrétní organizace Azure AD pomocí toku uživatele v Azure AD B2C.
 
@@ -54,7 +51,7 @@ Pokud chcete povolit přihlašování pro uživatele z konkrétní organizace Az
 2. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 3. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
 4. Zadejte **název**. Zadejte například `Contoso Azure AD`.
-5. Vyberte **typ zprostředkovatele identity**, vyberte **OpenID připojit (Preview)** a pak klikněte na **OK**.
+5. Vyberte **typ zprostředkovatele identity**, vyberte **OpenID připojit**a pak klikněte na **OK**.
 6. Vyberte **nastavit tohoto zprostředkovatele identity** .
 7. V poli **Adresa URL metadat**zadejte následující adresu URL `your-AD-tenant-domain` , která nahrazuje název domény vašeho tenanta Azure AD. Například `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`:
 

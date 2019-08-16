@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: c655d108e018bb843b81a4c45c94584985e82488
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8c4659fada420bc81c4633deb8bd241497a0263d
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273963"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509679"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý start: Vytvoření Standard Load Balancer pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -152,16 +152,34 @@ Vytvořte pravidlo skupiny zabezpečení sítě, které povolí příchozí při
 Pomocí příkazu [az network nic create](/cli/azure/network/nic#az-network-nic-create) vytvořte tři síťová rozhraní a přiřaďte je k veřejné IP adrese a skupině zabezpečení sítě. 
 
 ```azurecli-interactive
-for i in `seq 1 2`; do
+
   az network nic create \
     --resource-group myResourceGroupSLB \
-    --name myNic$i \
+    --name myNicVM1 \
     --vnet-name myVnet \
     --subnet mySubnet \
     --network-security-group myNetworkSecurityGroup \
     --lb-name myLoadBalancer \
     --lb-address-pools myBackEndPool
-done
+
+  az network nic create \
+    --resource-group myResourceGroupSLB \
+    --name myNicVM2 \
+    --vnet-name myVnet \
+    --subnet mySubnet \
+    --network-security-group myNetworkSecurityGroup \
+    --lb-name myLoadBalancer \
+    --lb-address-pools myBackEndPool
+  
+  az network nic create \
+    --resource-group myResourceGroupSLB \
+    --name myNicVM3 \
+    --vnet-name myVnet \
+    --subnet mySubnet \
+    --network-security-group myNetworkSecurityGroup \
+    --lb-name myLoadBalancer \
+    --lb-address-pools myBackEndPool
+
 ```
 
 
@@ -179,7 +197,7 @@ Vytvořte skupinu dostupnosti pomocí příkazu [az vm availabilityset create](/
     --name myAvailabilitySet
 ```
 
-### <a name="create-two-virtual-machines"></a>Vytvoření dvou virtuálních počítačů
+### <a name="create-three-virtual-machines"></a>Vytvoření tří virtuálních počítačů
 
 K instalaci serveru NGINX a spuštění aplikace Hello World v Node.js na virtuálním počítači s Linuxem můžete použít konfigurační soubor cloud-init. V aktuálním prostředí vytvořte soubor cloud-init.txt a zkopírujte následující konfiguraci a vložte ji do prostředí. Ujistěte se, že správně kopírujete celý soubor cloud-init, zejména první řádek:
 
@@ -228,17 +246,37 @@ runcmd:
 Vytvořte virtuální počítače pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create).
 
  ```azurecli-interactive
-for i in `seq 1 2`; do
+
   az vm create \
     --resource-group myResourceGroupSLB \
-    --name myVM$i \
+    --name myVM1 \
     --availability-set myAvailabilitySet \
-    --nics myNic$i \
+    --nics myNicVM1 \
     --image UbuntuLTS \
     --generate-ssh-keys \
     --custom-data cloud-init.txt \
     --no-wait
-done
+   
+  az vm create \
+    --resource-group myResourceGroupSLB \
+    --name myVM2 \
+    --availability-set myAvailabilitySet \
+    --nics myNicVM2 \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt \
+    --no-wait
+
+   az vm create \
+    --resource-group myResourceGroupSLB \
+    --name myVM3 \
+    --availability-set myAvailabilitySet \
+    --nics myNicVM3 \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt \
+    --no-wait
+
 ```
 Nasazení virtuálních počítačů může několik minut trvat.
 

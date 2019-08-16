@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967582"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509067"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Spuštění úlohy ACR podle definovaného plánu
 
@@ -48,9 +48,9 @@ Jednoduchým příkladem je následující příkaz `hello-world` , který spou�
 az acr task create \
   --name mytask \
   --registry myregistry \
-  --context /dev/null \
   --cmd hello-world \
-  --schedule "0 21 * * *"
+  --schedule "0 21 * * *" \
+  --context /dev/null
 ```
 
 Spuštěním příkazu [AZ ACR Task show][az-acr-task-show] zobrazíte, že je nakonfigurovaná aktivační událost časovače. Ve výchozím nastavení je také povolená aktivační událost základní aktualizace bitové kopie.
@@ -176,11 +176,11 @@ Každé pole může mít jeden z následujících typů hodnot:
 
 |type  |Příklad  |Při aktivaci  |
 |---------|---------|---------|
-|Konkrétní hodnota |<nobr>"5 * * * *"</nobr>|každou hodinu 5 minut po hodině|
-|Všechny hodnoty (`*`)|<nobr>"* 5 * * *"</nobr>|každou minutu hodiny začínající 5:00 UTC (60 krát den)|
-|Rozsah (`-` operátor)|<nobr>"0 1-3 * * *"</nobr>|3 časy za den, v 1:00, 2:00 a 3:00 UTC|
-|Sada hodnot (`,` operator)|<nobr>"20,30,40 * * * *"</nobr>|3 časy za hodinu, 20 minut, 30 minut a 40 minut po hodině|
-|Hodnota intervalu (`/` operátor)|<nobr>"*/10 * * * *"</nobr>|6 časů za hodinu, 10 minut, 20 minut atd., po celou hodinu
+|Konkrétní hodnota |<nobr>`"5 * * * *"`</nobr>|každou hodinu 5 minut po hodině|
+|Všechny hodnoty (`*`)|<nobr>`"* 5 * * *"`</nobr>|každou minutu hodiny začínající 5:00 UTC (60 krát den)|
+|Rozsah (`-` operátor)|<nobr>`"0 1-3 * * *"`</nobr>|3 časy za den, v 1:00, 2:00 a 3:00 UTC|
+|Sada hodnot (`,` operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 časy za hodinu, 20 minut, 30 minut a 40 minut po hodině|
+|Hodnota intervalu (`/` operátor)|<nobr>`"*/10 * * * *"`</nobr>|6 časů za hodinu, 10 minut, 20 minut atd., po celou hodinu
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -197,7 +197,9 @@ Každé pole může mít jeden z následujících typů hodnot:
 |`"30 9 * Jan Mon"`|v 9:30 UTC každé pondělí v lednu|
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
+
+Příklad použití naplánované úlohy k vyčištění úložišť v registru najdete v tématu [Automatické vymazání imagí z služby Azure Container Registry](container-registry-auto-purge.md).
 
 Příklady úloh aktivovaných potvrzením zdrojového kódu nebo základními aktualizacemi imagí najdete v [řadě kurzů pro úlohy ACR](container-registry-tutorial-quick-task.md).
 

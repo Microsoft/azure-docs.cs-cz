@@ -3,7 +3,7 @@ title: Začínáme s úložištěm front a připojenými službami sady Visual S
 description: Jak začít používat úložiště Azure Queue v projektu webové úlohy po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio.
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 44206f1826fc25407d9dec3f832b70881091e187
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248960"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510789"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Queue Storage a připojenými službami sady Visual Studio (projekty WebJob)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 Kromě **řetězce**parametr může být bajtové pole, objekt **CloudQueueMessage** nebo POCO, který definujete.
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>Zprávy fronty POCO [(obyčejný starý objekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>Zprávy fronty POCO [(obyčejný starý objekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
 V následujícím příkladu zpráva ve frontě obsahuje JSON pro objekt **BlobInformation** , který obsahuje vlastnost **BLOB** . Sada SDK automaticky deserializace objekt.
 
 ```csharp
@@ -88,7 +88,7 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>Typy atributů QueueTrigger fungují s
 **QueueTrigger** můžete použít s následujícími typy:
 
-* **řetězec**
+* **string**
 * Typ POCO serializovaný jako JSON
 * **Byte []**
 * **CloudQueueMessage**
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>Zprávy fronty POCO [(obyčejný starý objekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>Zprávy fronty POCO [(obyčejný starý objekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
 Chcete-li vytvořit zprávu fronty obsahující POCO místo řetězce, předejte typ POCO jako výstupní parametr do konstruktoru atributu **Queue** .
 
 ```csharp
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>Zprávy fronty POCO [(obyčejný starý objekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>Zprávy fronty POCO [(obyčejný starý objekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
 Pro POCO uložený jako JSON ve zprávě fronty můžete použít zástupné symboly, které vlastnosti názvu objektu v parametru **blobpath cestou** atributu **Queue** . Můžete také použít názvy vlastností Queue metadata jako zástupné symboly. Viz [získat metadata zprávy fronty nebo fronty](#get-queue-or-queue-message-metadata).
 
 Následující příklad zkopíruje objekt blob do nového objektu BLOB s jinou příponou. Zpráva fronty je objekt **BlobInformation** , který obsahuje vlastnosti **BLOB** a **BlobNameWithoutExtension** . Názvy vlastností se používají jako zástupné symboly v cestě objektů BLOB pro atributy **objektu BLOB** .
@@ -558,6 +558,6 @@ A v tabulce Azure **konzole. out** a **Console. Errors** vypadají takto:
 
 ![Protokol chyb v tabulce](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jsou uvedené ukázky kódu, které ukazují, jak zpracovávat běžné scénáře pro práci s frontami Azure. Další informace o tom, jak používat Azure WebJobs a sadu WebJobs SDK, najdete v [dokumentaci k prostředkům Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).
 

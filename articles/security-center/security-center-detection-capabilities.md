@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ac3d1a55a707349873132befb25a38358b563138
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bb54221dedc3bfd5ddc84098d5309d26abcfa305
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875560"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515580"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Funkce detekce ve službě Azure Security Center
 Tento dokument popisuje pokročilé možnosti zjišťování Azure Security Center, které pomáhají identifikovat aktivní hrozby cílící na vaše prostředky Microsoft Azure – Windows i Linux – a poskytuje přehledy potřebné k rychlé reakci.
@@ -83,7 +83,7 @@ V tomto dokumentu jste zjistili, jak ve službě Azure Security Center funguje d
 
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md)
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Výstrahy zabezpečení podle typu ve službě Azure Security Center](security-center-alerts-type.md)
+* [Výstrahy zabezpečení v Azure Security Center](security-center-alerts-overview.md)
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
-ms.openlocfilehash: c738b2d44c5faca1ef95b2da8fd1f90a1b3af919
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: a7950d80bd5aa21b26a7724845f10515a65c033d
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371021"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512705"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Rychlý start: Vytvoření konzolové aplikace .NET pro správu Azure Cosmos DB prostředků rozhraní SQL API
 
@@ -165,6 +165,8 @@ Další informace o hierarchii různých entit najdete v tématu [práce s datab
 * [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet)– Tato metoda vytvoří (Pokud neexistuje) nebo získá (Pokud již existuje) kontejner jako asynchronní operace. Můžete zjistit stavový kód z odpovědi, abyste zjistili, zda byl kontejner nově vytvořen (201) nebo byl vrácen existující kontejner (200). 
 * [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet) – Tato metoda vytvoří položku v rámci kontejneru. 
 
+* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync?view=azure-dotnet) – Tato metoda vytvoří položku v rámci kontejneru, pokud ještě neexistuje, nebo ji nahradí, pokud již existuje. 
+
 * [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet
 ) – Tato metoda vytvoří dotaz na položky v rámci kontejneru v databázi Azure Cosmos pomocí příkazu jazyka SQL s parametrizovanými hodnotami. 
 
@@ -294,7 +296,7 @@ public class Program
 
 ### <a name="create-a-database"></a>Vytvoření databáze 
 
-`CreateDatabaseAsync` Definujte metodu `program.cs` v rámci třídy. Tato metoda vytvoří, `FamilyDatabase` Pokud ještě neexistuje. 
+`CreateDatabaseAsync` Definujte metodu `program.cs` v rámci třídy. Tato metoda vytvoří, `FamilyDatabase` Pokud ještě neexistuje.
 
 ```csharp
 private async Task CreateDatabaseAsync()
@@ -322,7 +324,7 @@ private async Task CreateContainerAsync()
 
 ### <a name="create-an-item"></a>Vytvořit položku
 
-Vytvořte položku rodiny přidáním `AddItemsToContainerAsync` metody s následujícím kódem:
+Vytvořte položku rodiny přidáním `AddItemsToContainerAsync` metody s následujícím kódem. Pomocí `CreateItemAsync` metod nebo `UpsertItemAsync` můžete vytvořit položku:
 
 ```csharp
 private async Task AddItemsToContainerAsync()

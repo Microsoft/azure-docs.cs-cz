@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 873f45a6cce85669581037c4c398a52b1ebd6d68
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9b7157cd58abc7f1fecf288e72b0232c8a67b7ee
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966846"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512585"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 
 Rozhraní REST API Azure Machine Learning modelu jako webové služby vytvoří. Můžete odesílat data do tohoto rozhraní API a přijímat předpovědi vrácený modelu. V tomto dokumentu se dozvíte, jak vytvořit klienty pro webovou službu pomocí C#, jazyka Java a Pythonu.
 
-Webovou službu můžete vytvořit, když nasadíte image do Azure Container Instances, služby Azure Kubernetes nebo polí FPGA (s programovatelnými poli brány). Můžete vytvářet bitové kopie z registrovaných modelů a souborů bodování. Identifikátor URI, který se používá pro přístup k webové službě, načtete pomocí [sady Azure Machine Learning SDK](https://aka.ms/aml-sdk). Pokud je povolené ověřování, můžete také použít sady SDK získat ověřovací klíče.
+Webovou službu můžete vytvořit, když nasadíte image do Azure Container Instances, služby Azure Kubernetes nebo polí FPGA (s programovatelnými poli brány). Můžete vytvářet bitové kopie z registrovaných modelů a souborů bodování. Identifikátor URI, který se používá pro přístup k webové službě, načtete pomocí [sady Azure Machine Learning SDK](https://aka.ms/aml-sdk). Pokud je povolené ověřování, můžete k získání ověřovacích klíčů nebo tokenů použít taky sadu SDK.
 
 Obecný pracovní postup pro vytvoření klienta, který používá webovou službu Machine Learning, je:
 
@@ -81,6 +81,8 @@ Azure Machine Learning poskytuje dva způsoby, jak řídit přístup k webovým 
 |Klíč|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povoleno|
 |Podpisový| Není dostupné| Zakázáno ve výchozím nastavení |
 
+Když posíláte požadavek službě, která je zabezpečená pomocí klíče nebo tokenu, použijte k předání klíče nebo tokenu __autorizační__ hlavičku. Klíč nebo token musí být formátován jako `Bearer <key-or-token>`, kde `<key-or-token>` je vaše hodnota klíče nebo tokenu.
+
 #### <a name="authentication-with-keys"></a>Ověřování pomocí klíčů
 
 Pokud povolíte ověřování pro nasazení, automaticky se vytvoří ověřovací klíče.
@@ -112,7 +114,7 @@ K řízení ověřování tokenu použijte `token_auth_enabled` parametr při vy
 Pokud je povoleno ověřování tokenu, můžete použít `get_token` metodu k načtení nosného tokenu a jeho doby vypršení platnosti tokenu:
 
 ```python
-token, refresh_by = service.get_tokens()
+token, refresh_by = service.get_token()
 print(token)
 ```
 
@@ -193,9 +195,9 @@ namespace MLWebServiceClient
     {
         static void Main(string[] args)
         {
-            // Set the scoring URI and authentication key
+            // Set the scoring URI and authentication key or token
             string scoringUri = "<your web service URI>";
-            string authKey = "<your key>";
+            string authKey = "<your key or token>";
 
             // Set the data to be sent to the service.
             // In this case, we are sending two sets of data to be scored.
@@ -309,8 +311,8 @@ var exampleData = []Features{
 
 // Set to the URI for your service
 var serviceUri string = "<your web service URI>"
-// Set to the authentication key (if any) for your service
-var authKey string = "<your key>"
+// Set to the authentication key or token (if any) for your service
+var authKey string = "<your key or token>"
 
 func main() {
     // Create the input data from example data
@@ -364,8 +366,8 @@ public class App {
     public static void sendRequest(String data) {
         // Replace with the scoring_uri of your service
         String uri = "<your web service URI>";
-        // If using authentication, replace with the auth key
-        String key = "<your key>";
+        // If using authentication, replace with the auth key or token
+        String key = "<your key or token>";
         try {
             // Create the request
             Content content = Request.Post(uri)
@@ -438,8 +440,8 @@ import json
 
 # URL for the web service
 scoring_uri = '<your web service URI>'
-# If the service is authenticated, set the key
-key = '<your key>'
+# If the service is authenticated, set the key or token
+key = '<your key or token>'
 
 # Two sets of data to score, so we get two results back
 data = {"data":
@@ -496,6 +498,6 @@ Pro vygenerování webové služby, která je podporována pro použití v Power
 
 Po nasazení webové služby je tato služba příchodná z Power BIch toků dat. [Naučte se využívat Azure Machine Learning webové služby od Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete zobrazit referenční architekturu pro bodování modelů Pythonu a hloubkového učení v reálném čase, jděte do [centra architektury Azure](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

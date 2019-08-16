@@ -181,10 +181,6 @@
           href: security-center-search.md
         - name: Plánování a provoz
           href: security-center-planning-and-operations-guide.md
-        - name: Principy výstrah zabezpečení
-          href: security-center-alerts-type.md
-        - name: UEBA pro uživatele a prostředky Azure
-          href: security-center-ueba-mcas.md
         - name: Přizpůsobení konfigurací zabezpečení
           href: security-center-customize-os-security-config.md
 - name: Referenční informace

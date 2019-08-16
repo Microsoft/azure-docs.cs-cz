@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f5869cbb51cf1c968ee8ca1e2286416fd263d647
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: d6cde04d122d20c4aad5920c29995d9d33165163
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68224640"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515519"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Identifikace problémů pomocí diagnostické funkce
 
@@ -153,7 +153,7 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 |8000|InvalidAuthorizationRoleScope|Název role, kterou jste zadali, se neshoduje s žádnými stávajícími názvy rolí. Zkontrolujte název role pro překlepy a zkuste to znovu. |
 |8001|UserNotFound |Uživatelské jméno, které jste zadali, neodpovídá žádnému existujícímu uživatelskému jménu. Přečtěte si název pro překlepy a zkuste to znovu.|
 |8005|UserNotFoundInAAD |Uživatelské jméno, které jste zadali, neodpovídá žádnému existujícímu uživatelskému jménu. Přečtěte si název pro překlepy a zkuste to znovu.|
-|8008|TenantConsentRequired|Podle [zde](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service) uvedených pokynů poskytněte souhlas pro vašeho tenanta.|
+|8008|TenantConsentRequired|Podle [zde](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop) uvedených pokynů poskytněte souhlas pro vašeho tenanta.|
 
 ### <a name="external-connection-error-codes"></a>Kódy chyb externího připojení
 

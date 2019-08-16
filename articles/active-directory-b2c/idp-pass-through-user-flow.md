@@ -1,35 +1,32 @@
 ---
-title: Předání přístupového tokenu prostřednictvím toku uživatele do aplikace – Azure Active Directory B2C | Microsoft Docs
-description: Přečtěte si, jak můžete prostřednictvím přístupového tokenu pro zprostředkovatele identity OAuth 2.0 předat jako deklarace v toku uživatele v Azure Active Directory B2C.
+title: Předání přístupového tokenu prostřednictvím toku uživatele do aplikace – Azure Active Directory B2C
+description: Naučte se předat přístupový token pro zprostředkovatele identity OAuth 2,0 jako deklaraci identity v toku uživatele v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8e9019699d8a81d31d2b20f674fd76fcb70021d6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 66b3dc4aba5d1b29cc0c6190877fbd6b26a11f0c
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846830"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510103"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Předání přístupového tokenu prostřednictvím toku uživatele do aplikace v Azure Active Directory B2C
 
-> [!NOTE]
-> Tato funkce je aktuálně ve verzi Public Preview.
-
-[Tok uživatele](active-directory-b2c-reference-policies.md) v Azure Active Directory (Azure AD) B2C poskytuje uživatelům vaší aplikace možnost registrace nebo přihlašování pomocí poskytovatele identity. Po spuštění cesty Azure AD B2C obdrží od poskytovatele identity [přístupový token](active-directory-b2c-reference-tokens.md) . Azure AD B2C používá tento token k načtení informací o uživateli. V toku uživatele povolíte deklaraci identity, abyste mohli token předat do aplikací, které zaregistrujete v Azure AD B2C.
+[Tok uživatele](active-directory-b2c-reference-policies.md) v Azure Active Directory B2C (Azure AD B2C) poskytuje uživatelům vaší aplikace možnost registrace nebo přihlášení pomocí poskytovatele identity. Po spuštění cesty Azure AD B2C obdrží od poskytovatele identity [přístupový token](active-directory-b2c-reference-tokens.md) . Azure AD B2C používá tento token k načtení informací o uživateli. V toku uživatele povolíte deklaraci identity, abyste mohli token předat do aplikací, které zaregistrujete v Azure AD B2C.
 
 Azure AD B2C aktuálně podporuje pouze předávání přístupového tokenu zprostředkovatelů identity [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) , které zahrnují [Facebook](active-directory-b2c-setup-fb-app.md) a [Google](active-directory-b2c-setup-goog-app.md). U všech ostatních zprostředkovatelů identity se deklarace identity vrátí jako prázdná.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Vaše aplikace musí používat [uživatelský tok v2](user-flow-versions.md).
-- Tok uživatele má nakonfigurovaný poskytovatele identity OAuth 2,0.
+* Vaše aplikace musí používat [uživatelský tok v2](user-flow-versions.md).
+* Tok uživatele má nakonfigurovaný poskytovatele identity OAuth 2,0.
 
 ## <a name="enable-the-claim"></a>Povolit deklaraci identity
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 21fe92bf4a33dc44545f1bd54c718db6c0a38532
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a334b19fe4dd819a6e4c391e49d934bf5955a567
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843169"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516060"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy k diskům virtuálních počítačů Azure IaaS a spravovaným a nespravovaným prémiovým diskům
 
@@ -143,7 +143,48 @@ Dělení GPT se dá použít jenom na datových discích, nikoli na discích s o
 
 **Jaké typy disků podporují snímky?**
 
-Snímky podpory SSD úrovně Premium, Standard SSD a standardní HDD. U těchto tří typů disků se snímky podporují pro všechny velikosti disků (včetně disků až do 32 TiB velikosti). Ultra SSD nepodporují snímky.
+Snímky podpory SSD úrovně Premium, Standard SSD a standardní HDD. U těchto tří typů disků se snímky podporují pro všechny velikosti disků (včetně disků až do 32 TiB velikosti). Disky Ultra nepodporují snímky.
+
+## <a name="ultra-disks"></a>Disky Ultra
+
+**Jaké oblasti v současné době podporují Ultra disks?**
+- Východní USA 2
+- Jihovýchodní Asie
+- Severní Evropa
+
+**Jaké řady virtuálních počítačů v současné době podporují Ultra disks?**
+- ESv3
+- DSv3
+
+**Jak mám nastavit propustnost Ultra disk na?**
+Pokud si nejste jistí, co nastavit propustnost disku, doporučujeme začít tím, že zadáte velikost vstupně-výstupní operace 16 KiB a upravíte výkon při monitorování aplikace. Vzorec je: Propustnost v MB/s = # z IOPS * 16/1000.
+
+**Nakonfigurovali jsem disk na 40000 IOPS, ale zobrazuje se pouze 12800 IOPS, proč mi nevidím výkon disku?**
+Kromě omezení disku existuje omezení vstupně-výstupní operace, která je uložena na úrovni virtuálního počítače. Ujistěte se prosím, že velikost virtuálního počítače, kterou používáte, může podporovat úrovně, které jsou nakonfigurované na vašich discích. Podrobnosti týkající se omezení v/v, které ukládá váš virtuální počítač, najdete v tématu [velikosti pro virtuální počítače s Windows v Azure](../articles/virtual-machines/windows/sizes.md).
+
+**Můžu používat úrovně ukládání do mezipaměti s Ultra diskem?**
+Ne, Ultra disky nepodporují různé metody ukládání do mezipaměti, které jsou podporované na jiných typech disků. Nastavte ukládání disku do mezipaměti na žádné.
+
+**Můžu k existujícímu virtuálnímu počítači připojit disk Ultra?**
+Je možné, že váš virtuální počítač musí být v oblasti a páru zón dostupnosti, které podporují disky Ultra. Podrobnosti najdete v tématu [Začínáme s disky Ultra](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md) .
+
+**Můžu jako disk s operačním systémem pro svůj virtuální počítač použít disk Ultra?**
+Ne, Ultra disky se podporují jenom jako datové disky a podporují se jenom jako 4K nativní disky.
+
+**Můžu převést existující disk na disk Ultra?**
+Ne, můžete ale migrovat datum z existujícího disku na disk Ultra. Pokud chcete migrovat existující disk na disk Ultra, připojte oba disky ke stejnému virtuálnímu počítači a zkopírujte data disku z jednoho disku na druhý nebo využijte řešení třetích stran pro migraci dat.
+
+**Můžu vytvářet snímky pro disky Ultra?**
+Ne, snímky ještě nejsou k dispozici.
+
+**Je Azure Backup k dispozici pro disky Ultra?**
+Ne, podpora Azure Backup ještě není k dispozici.
+
+**Můžu k virtuálnímu počítači se systémem v sadě dostupnosti připojit disk Ultra?**
+Ne, tato není ještě podporovaná.
+
+**Můžu povolit Azure Site Recovery (ASR) pro virtuální počítače pomocí Ultra disks?**
+Ne, ASR se ještě nepodporuje pro disky Ultra.
 
 ## <a name="standard-ssd-disks"></a>SSD úrovně Standard disky
 

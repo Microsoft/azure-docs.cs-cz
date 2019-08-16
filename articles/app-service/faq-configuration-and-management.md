@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: f7fbfbe5ae5d2ba4148d94768a1109f566151170
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489438"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69513787"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
@@ -167,7 +167,7 @@ Pokud používáte App Service Environment, můžete použít bránu [firewall B
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Návody blokovat porty ve App Service webové aplikaci?
 
-Ve sdíleném prostředí klienta App Service není možné zablokovat konkrétní porty kvůli povaze infrastruktury. Pro vzdálené ladění sady Visual Studio se můžou otevřít taky porty TCP 4016, 4018 a 4020.
+Ve sdíleném prostředí klienta App Service není možné zablokovat konkrétní porty kvůli povaze infrastruktury. Pro vzdálené ladění sady Visual Studio se můžou otevřít taky porty TCP 4020, 4022 a 4024.
 
 V App Service Environment máte plnou kontrolu nad příchozím a odchozím provozem. Skupiny zabezpečení sítě můžete použít k omezení nebo blokování konkrétních portů. Další informace o App Service Environment najdete v tématu [Úvod do App Service Environment](https://azure.microsoft.com/blog/introducing-app-service-environment/).
 
@@ -251,7 +251,7 @@ Další informace o naplánovaných webových úlohách najdete v tématu [Vytvo
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Návody udělat testování průniku pro moji aplikaci App Service?
 
-Chcete-li provést testování průniku, [odešlete žádost](https://portal.msrc.microsoft.com/en-us/engage/pentest).
+Chcete-li provést testování průniku, [odešlete žádost](https://portal.msrc.microsoft.com/engage/pentest).
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Návody nakonfigurovat vlastní název domény pro webovou aplikaci App Service, která používá Traffic Manager?
 

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 8fac70e7e5125ae86b2b5ce13041bbf1fd067bbe
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642069"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509090"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Ověřování mezi registry v úloze ACR pomocí identity spravované službou Azure 
 
@@ -76,7 +76,7 @@ Kroky v této části vytvoří úlohu a umožní uživateli přiřazenou identi
 
 ### <a name="create-task"></a>Vytvořit úlohu
 
-Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Kontext úlohy je místní systém a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. `--assign-identity` Parametr předá ID prostředku identity přiřazené uživatelem. 
+Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. `--assign-identity` Parametr předá ID prostředku identity přiřazené uživatelem. 
 
 ```azurecli
 az acr task create \
@@ -95,7 +95,7 @@ Kroky v této části vytvoří úlohu a povolí identitu přiřazenou systémem
 
 ### <a name="create-task"></a>Vytvořit úlohu
 
-Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Kontext úlohy je místní systém a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. `--assign-identity` Parametr bez hodnoty umožňuje systémem přiřazenou identitu daného úkolu. 
+Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. `--assign-identity` Parametr bez hodnoty umožňuje systémem přiřazenou identitu daného úkolu. 
 
 ```azurecli
 az acr task create \

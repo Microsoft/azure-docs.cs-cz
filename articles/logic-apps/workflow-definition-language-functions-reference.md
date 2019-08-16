@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 07/27/2019
-ms.openlocfilehash: 30123e03a686eed8df0595c8562f2f9d9351bbde
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: c6fd20a2e1766a8bc9abfc92c6fc11d10dbe1bf2
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706450"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516083"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Reference k funkcím pro jazyk definice pracovního postupu v Azure Logic Apps a Microsoft Flow
 
@@ -51,7 +51,7 @@ Tady je několik dalších obecných způsobů, jak můžete ve výrazech použ�
 | ---- | -------------------------------- |
 | Chcete-li provést práci s položkou, předejte tuto položku funkci. | "\@<*functionName*>(<*item*>)" |
 | 1. K získání hodnoty *ParameterName*použijte vnořenou `parameters()` funkci. </br>2. Proveďte práci s výsledkem předáním této hodnoty do *funkce Function*. | "\@Function > (Parameters (' < ParameterName > '))"< |
-| 1. Získá výsledek z vnořené vnitřní funkce *Function.* </br>2. Předejte výsledek *functionName2*vnější funkce. | "\@<*functionName2*>(<*functionName*>(<*item*>))" |
+| 1. Získá výsledek z vnořené vnitřní funkce Function. </br>2. Předejte výsledek *functionName2*vnější funkce. | "\@<*functionName2*>(<*functionName*>(<*item*>))" |
 | 1. Získá výsledek z *funkce Function*. </br>2. Vzhledem k tomu, že výsledkem je objekt s vlastností *PropertyName*, získá hodnotu této vlastnosti. | "\@<*functionName*>(<*item*>).<*propertyName*>" |
 |||
 
@@ -769,7 +769,7 @@ and(<expression1>, <expression2>, ...)
 
 | Návratová hodnota | type | Popis |
 | ------------ | -----| ----------- |
-| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud jsou všechny výrazy pravdivé. Vrátí hodnotu false, pokud je alespoň jeden výraz nepravdivý. |
+| true nebo false | Boolean | Vrátí hodnotu true, pokud jsou všechny výrazy pravdivé. Vrátí hodnotu false, pokud je alespoň jeden výraz nepravdivý. |
 ||||
 
 *Příklad 1*
@@ -1168,7 +1168,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
-| <*destinationTimeZone*> | Ano | Řetězec | Název cílového časového pásma. Další informace najdete v tématu [ID časových pásem](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). |
+| <*destinationTimeZone*> | Ano | Řetězec | Název cílového časového pásma. Další informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
 | <*formátovat*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
@@ -1210,8 +1210,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
-| <*sourceTimeZone*> | Ano | Řetězec | Název zdrojového časového pásma. Další informace najdete v tématu [ID časových pásem](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). |
-| <*destinationTimeZone*> | Ano | Řetězec | Název cílového časového pásma. Další informace najdete v tématu [ID časových pásem](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). |
+| <*sourceTimeZone*> | Ano | Řetězec | Název zdrojového časového pásma. Další informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*destinationTimeZone*> | Ano | Řetězec | Název cílového časového pásma. Další informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
 | <*formátovat*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
@@ -1253,7 +1253,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
-| <*sourceTimeZone*> | Ano | Řetězec | Název zdrojového časového pásma. Další informace najdete v tématu [ID časových pásem](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). |
+| <*sourceTimeZone*> | Ano | Řetězec | Název zdrojového časového pásma. Další informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
 | <*formátovat*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
@@ -1683,7 +1683,7 @@ empty([<collection>])
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Logická hodnota | Vrátí hodnotu pravda, pokud je kolekce prázdná. Vrátí hodnotu false, pokud není prázdná. |
+| true nebo false | Boolean | Vrátí hodnotu pravda, pokud je kolekce prázdná. Vrátí hodnotu false, pokud není prázdná. |
 ||||
 
 *Příklad*
@@ -1720,7 +1720,7 @@ endsWith('<text>', '<searchText>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false  | Logická hodnota | Vrátí hodnotu pravda, pokud je nalezen poslední podřetězec. Pokud se nenajde, vrátí se hodnota false. |
+| true nebo false  | Boolean | Vrátí hodnotu pravda, pokud je nalezen poslední podřetězec. Pokud se nenajde, vrátí se hodnota false. |
 ||||
 
 *Příklad 1*
@@ -1761,7 +1761,7 @@ equals('<object1>', '<object2>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud jsou obě ekvivalentní. Vrátí hodnotu false, pokud není ekvivalentní. |
+| true nebo false | Boolean | Vrátí hodnotu true, pokud jsou obě ekvivalentní. Vrátí hodnotu false, pokud není ekvivalentní. |
 ||||
 
 *Příklad*
@@ -2046,7 +2046,7 @@ greater('<value>', '<compareTo>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota větší než druhá hodnota. Vrátí hodnotu false, pokud je první hodnota rovna nebo menší než druhá hodnota. |
+| true nebo false | Boolean | Vrátí hodnotu true, pokud je první hodnota větší než druhá hodnota. Vrátí hodnotu false, pokud je první hodnota rovna nebo menší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2083,7 +2083,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota větší nebo rovna druhé hodnotě. Vrátí hodnotu false, pokud je první hodnota menší než druhá hodnota. |
+| true nebo false | Boolean | Vrátí hodnotu true, pokud je první hodnota větší nebo rovna druhé hodnotě. Vrátí hodnotu false, pokud je první hodnota menší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2149,7 +2149,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*vyjádření*> | Ano | Logická hodnota | Výraz, který se má kontrolovat |
+| <*vyjádření*> | Ano | Boolean | Výraz, který se má kontrolovat |
 | <*valueIfTrue*> | Ano | Any | Hodnota, která se má vrátit, když je výraz pravdivý |
 | <*valueIfFalse*> | Ano | Any | Hodnota, která se má vrátit, pokud je výraz nepravdivý |
 |||||
@@ -2625,7 +2625,7 @@ less('<value>', '<compareTo>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota menší než druhá hodnota. Vrátí hodnotu false, pokud je první hodnota rovna nebo větší než druhá hodnota. |
+| true nebo false | Boolean | Vrátí hodnotu true, pokud je první hodnota menší než druhá hodnota. Vrátí hodnotu false, pokud je první hodnota rovna nebo větší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2662,7 +2662,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false  | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota menší nebo rovna druhé hodnotě. Vrátí hodnotu false, pokud je první hodnota větší než druhá hodnota. |
+| true nebo false  | Boolean | Vrátí hodnotu true, pokud je první hodnota menší nebo rovna druhé hodnotě. Vrátí hodnotu false, pokud je první hodnota větší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2868,12 +2868,12 @@ not(<expression>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*vyjádření*> | Ano | Logická hodnota | Výraz, který se má kontrolovat |
+| <*vyjádření*> | Ano | Boolean | Výraz, který se má kontrolovat |
 |||||
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud je výraz nepravdivý. Vrátí hodnotu false, pokud má výraz hodnotu true. |
+| true nebo false | Boolean | Vrátí hodnotu true, pokud je výraz nepravdivý. Vrátí hodnotu false, pokud má výraz hodnotu true. |
 ||||
 
 *Příklad 1*
@@ -2917,7 +2917,7 @@ or(<expression1>, <expression2>, ...)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*výraz1*>, <*Výraz2*>,... | Ano | Logická hodnota | Výrazy, které mají být zkontrolovány |
+| <*výraz1*>, <*Výraz2*>,... | Ano | Boolean | Výrazy, které mají být zkontrolovány |
 |||||
 
 | Návratová hodnota | type | Popis |
@@ -3384,7 +3384,7 @@ startsWith('<text>', '<searchText>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false  | Logická hodnota | Vrátí hodnotu pravda, pokud je nalezen počáteční podřetězec. Pokud se nenajde, vrátí se hodnota false. |
+| true nebo false  | Boolean | Vrátí hodnotu pravda, pokud je nalezen počáteční podřetězec. Pokud se nenajde, vrátí se hodnota false. |
 ||||
 
 *Příklad 1*
@@ -3715,7 +3715,7 @@ triggerBody()
 
 ### <a name="triggerformdatamultivalues"></a>triggerFormDataMultiValues
 
-Vrátí pole s hodnotami, které odpovídají názvu klíče *ve výstupu* triggeru *formuláře* nebo formuláře.
+Vrátí pole s hodnotami, které odpovídají názvu klíče ve výstupu triggeru *formuláře* nebo formuláře.
 
 ```
 triggerFormDataMultiValues('<key>')

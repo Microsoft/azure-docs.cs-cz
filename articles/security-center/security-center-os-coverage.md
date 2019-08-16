@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7cd1d451b49faf2f8e3ad38f4ff780256ef2dc5d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9a11af7e2875c9af5cf4b08d459bc67b55dbdcf3
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883602"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515547"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkce podporované nástrojem Azure Security Center
 
@@ -165,6 +165,6 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 ## <a name="next-steps"></a>Další postup
 
 - Naučte se [plánovat a porozumět hlediskům návrhu, které je potřeba přijmout Azure Security Center](security-center-planning-and-operations-guide.md).
-- Přečtěte si další informace o analýze [chování virtuálních počítačů a analýze paměti ve výpisu stavu systému v Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis).
+- Přečtěte si další informace o [detekci hrozeb pro virtuální počítače & serverech v Azure Security Center](security-center-alerts-iaas.md).
 - Přečtěte si [Nejčastější dotazy týkající se použití Azure Security Center](security-center-faq.md).
 - Přečtěte si [blogové příspěvky o zabezpečení Azure a dodržování předpisů](https://blogs.msdn.com/b/azuresecurity/).

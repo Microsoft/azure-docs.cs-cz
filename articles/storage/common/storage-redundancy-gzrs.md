@@ -8,16 +8,16 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1b5a9eb9f91469e6e25c5d90bfeb4aa0213009bc
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017293"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516131"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Vytváření vysoce dostupných Azure Storage aplikací s geograficky redundantním úložištěm (GZRS) (Preview)
 
-Geograficky redundantní úložiště (GZRS) (Preview) manželství vysoké dostupnosti [zóny redundantního úložiště (ZRS)](storage-redundancy-zrs.md) s ochranou z oblasti výpadků poskytované [geograficky redundantním úložištěm (GRS)](storage-redundancy-grs.md). Data v účtu úložiště GZRS se replikují mezi tři [zóny dostupnosti Azure](../../availability-zones/az-overview.md) v primární oblasti a také se replikují do sekundární geografické oblasti pro ochranu z regionálních katastrof.
+Geograficky redundantní úložiště (GZRS) (Preview) manželství vysoké dostupnosti [zóny redundantního úložiště (ZRS)](storage-redundancy-zrs.md) s ochranou z oblasti výpadků poskytované [geograficky redundantním úložištěm (GRS)](storage-redundancy-grs.md). Data v účtu úložiště GZRS se replikují mezi tři [zóny dostupnosti Azure](../../availability-zones/az-overview.md) v primární oblasti a také se replikují do sekundární geografické oblasti pro ochranu z regionálních katastrof. Každá oblast Azure je spárovaná s jinou oblastí v rámci stejné geografické oblasti a tvoří tak místní dvojici. Další podrobnosti a výjimky najdete v [dokumentaci](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 S účtem úložiště GZRS můžete dál číst a zapisovat data, pokud se zóna dostupnosti stane nedostupnou nebo nejde obnovit. Kromě toho jsou vaše data také odolná v případě kompletního oblasti výpadku nebo havárie, ve které není primární oblast obnovitelné. GZRS je navržený tak, aby poskytoval alespoň 99.99999999999999% (16 9) odolnosti objektů v průběhu daného roku. GZRS také nabízí stejné [cíle škálovatelnosti](storage-scalability-targets.md) jako LRS, ZRS, GRS nebo RA-GRS. Volitelně můžete povolit přístup pro čtení k datům v sekundární oblasti pomocí geograficky redundantního úložiště s přístupem pro čtení (RA-GZRS), pokud vaše aplikace musí být schopné číst data v případě havárie v primární oblasti.
 
@@ -30,7 +30,6 @@ GZRS a RA-GZRS podporují jenom účty úložiště pro obecné účely verze 2.
 GZRS a RA-GZRS jsou aktuálně k dispozici pro verzi Preview v následujících oblastech:
 
 - USA – východ
-- Evropa – západ
 
 Microsoft nadále povoluje GZRS a RA-GZRS v dalších oblastech Azure. Informace o podporovaných oblastech najdete na stránce  [aktualizace služby Azure](https://azure.microsoft.com/updates/).
 

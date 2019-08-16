@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: b228dfd92fe389d196a65f7152ef22751842f4bb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 24ad0f2e917420c327577851cabc9e5bdbad2825
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640280"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515665"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Transformace jímky pro tok dat
 
@@ -79,13 +79,16 @@ Nastavit pojmenování souborů:
 
 Vyberte nastavení databáze:
 
+![Karta nastavení zobrazující možnosti jímky SQL](media/data-flow/alter-row2.png "Možnosti SQL")
+
 * **Metoda aktualizace**: Ve výchozím nastavení je povoleno vkládání. Pokud chcete zastavit vkládání nových řádků ze zdroje, zrušte zaškrtnutí políčka **povolí vložení** . Chcete-li aktualizovat, Upsert nebo odstranit řádky, přidejte nejprve transformaci ALTER-Row k označení řádků pro tyto akce. 
 * **Znovu vytvořit tabulku**: Před dokončením toku dat vyřaďte nebo vytvořte cílovou tabulku.
 * **Zkrátit tabulku**: Před dokončením toku dat odeberte všechny řádky z cílové tabulky.
 * **Velikost dávky**: Zadejte číslo, kterým se mají zablokovat zápisy do bloků. Tato možnost slouží k načítání velkých objemů dat. 
 * **Povolit přípravu**: Použijte základnu, když načítáte datový sklad Azure jako datovou sadu jímky.
+* **Skripty před a po SQL**: Zadejte víceřádkové skripty SQL, které se spustí před (před zpracováním) a po (po zpracování) se zapisují do databáze jímky.
 
-![Karta nastavení zobrazující možnosti jímky SQL](media/data-flow/alter-row2.png "Možnosti SQL")
+![skripty pro zpracování před a po SQL](media/data-flow/prepost1.png "Skripty pro zpracování SQL")
 
 > [!NOTE]
 > V toku dat můžete Data Factory přímo vytvořit novou definici tabulky v cílové databázi. Chcete-li vytvořit definici tabulky, nastavte datovou sadu v transformaci jímky, která má název nové tabulky. V datové sadě SQL pod názvem tabulky vyberte **Upravit** a zadejte nový název tabulky. Potom v transformaci jímky zapněte možnost **Povolit posun schématu**. Nastavte **schéma pro import** na **none**.

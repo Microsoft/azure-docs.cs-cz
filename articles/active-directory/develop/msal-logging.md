@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09590fbd340ac3945f05346f99254ec0b76dcd76
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 475b692a29edf5cdd05552e7b5c3dc5fde210275
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834995"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512522"
 ---
 # <a name="logging"></a>Protokolování
 Aplikace Microsoft Authentication Library (MSAL) umožňují generovat zprávy protokolu, které mohou pomáhat diagnostikovat problémy a poskytnout podrobné informace. Aplikace může nakonfigurovat protokolování s několika řádky kódu a mít vlastní kontrolu nad úrovní podrobností a bez ohledu na to, jestli se protokolují osobní údaje a data organizace. Doporučuje se nastavit zpětné volání protokolování MSAL a poskytnout uživatelům možnost odesílat protokoly, pokud mají problémy s ověřováním.
@@ -40,6 +40,10 @@ Protokolovací nástroj MSAL umožňuje zachytit několik úrovní podrobností:
 Protokolovací nástroj MSAL ve výchozím nastavení nezachycuje žádná citlivá osobní nebo organizační data. Knihovna poskytuje možnost povolit protokolování osobních a organizačních dat, pokud se rozhodnete k tomu.
 
 ## <a name="logging-in-msalnet"></a>Přihlášení MSAL.NET
+
+ > [!NOTE]
+ > Další informace o MSAL.NET najdete na [wikiwebu MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki). Získejte ukázky protokolování MSAL.NET a další. 
+ 
 V MSAL 3. x je protokolování nastaveno na aplikaci při vytváření aplikací pomocí `.WithLogging` modifikátoru tvůrce. Tato metoda přebírá volitelné parametry:
 
 - *Úroveň* vám umožní rozhodnout, jakou úroveň protokolování chcete. Při jejich nastavení na chyby se zobrazí jenom chyby.

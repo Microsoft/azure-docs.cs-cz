@@ -7,85 +7,87 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: b0cf6eab86b0b932e44b6824305c23df01f35808
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 2eb23a65196ac4f6456f50dbbbfd9e4b484ad171
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383822"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515723"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Vyberte správnou SKU virtuálního počítače pro váš cluster Azure Průzkumník dat. 
 
-Azure Průzkumník dat obsahuje několik SKU virtuálních počítačů, ze kterých si můžete vybrat při vytváření nového clusteru nebo optimalizaci clusteru pro změnu zatížení. Virtuální počítače se pečlivě rozhodly, aby umožňovaly optimální náklady na jakékoli zatížení. 
+Když vytvoříte nový cluster nebo optimalizujete cluster pro změnu úlohy, Azure Průzkumník dat nabízí několik SKU virtuálních počítačů, ze kterých si můžete vybrat. Virtuální počítače se pečlivě vybraly, aby vám poskytovaly optimální náklady na jakékoli zatížení. 
 
-Velikost a skladová položka virtuálního počítače v clusteru pro správu dat je plně spravovaná službou Azure Průzkumník dat. Je určena faktory, jako je velikost virtuálního počítače modulu a úloha přijímání. 
+Velikost a skladová položka virtuálního počítače v clusteru pro správu dat je plně spravovaná službou Azure Průzkumník dat. Jsou určeny takovými faktory jako velikost virtuálního počítače a úlohy příjmu modulu. 
 
-SKU virtuálního počítače pro cluster Engine se dá kdykoli změnit škálováním [clusteru](manage-cluster-vertical-scaling.md). Proto je nejlepší začít s minimální velikostí SKU, která odpovídá počátečnímu scénáři. Pamatujte na to, že při škálování clusteru dojde k výpadku až 30 minut, než se cluster znovu vytvoří pomocí nové SKU virtuálního počítače.
+SKU virtuálního počítače pro cluster Engine můžete kdykoli změnit změnou [velikosti clusteru](manage-cluster-vertical-scaling.md). Nejlepší je začít s nejmenší velikostí SKU, která odpovídá počátečnímu scénáři. Pamatujte na to, že při škálování clusteru dojde k výpadku po dobu až 30 minut, než se cluster znovu vytvoří s novou SKU virtuálního počítače.
 
 > [!TIP]
-> Pro cluster Azure Průzkumník dat se vztahují výpočetní prostředky [(rezervované instance)](https://docs.microsoft.com/azure/virtual-machines/windows/prepay-reserved-vm-instances) .  
+> [Rezervované instance (ri)](https://docs.microsoft.com/azure/virtual-machines/windows/prepay-reserved-vm-instances) COMPUTE se vztahují na cluster Azure Průzkumník dat.  
 
-Tento článek popisuje různé možnosti pro SKU virtuálních počítačů a poskytuje technické informace, které vám můžou usnadnit optimální volbu.
+Tento článek popisuje různé možnosti pro SKU virtuálních počítačů a poskytuje technické informace, které vám pomůžou dosáhnout nejlepšího výběru.
 
-## <a name="select-the-cluster-type"></a>Vybrat typ clusteru
+## <a name="select-a-cluster-type"></a>Vybrat typ clusteru
 
 Azure Průzkumník dat nabízí dva typy clusterů:
 
-* **Produkční**: Provozní clustery obsahují dva uzly pro clustery a správu dat a jsou provozovány v rámci [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/data-explorer/v1_0/)pro Azure Průzkumník dat.
+* **Produkční**: Provozní clustery obsahují dva uzly pro moduly a clustery pro správu dat a jsou provozovány v rámci [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/data-explorer/v1_0/)pro Azure Průzkumník dat.
 
-* **Vývoj a testování (bez smlouvy SLA)** : Clustery pro vývoj a testování mají jeden uzel D11_v2 pro cluster Engine a jeden uzel D1 pro cluster pro správu dat. Tento typ clusteru představuje nejnižší konfiguraci nákladů z důvodu nízkého počtu instancí a bez poplatků za modul pro zápis do kódu. Pro tuto konfiguraci clusteru neexistuje žádná smlouva SLA, protože nemá redundanci.
+* **Vývoj a testování (bez smlouvy SLA)** : Clustery pro vývoj a testování mají jeden uzel D11 v2 pro cluster Engine a jeden uzel D1 pro cluster pro správu dat. Tento typ clusteru představuje nejnižší konfiguraci nákladů z důvodu nedostatku počtu instancí a žádného zpoplatnění za kód stroje. Pro tuto konfiguraci clusteru neexistuje žádná smlouva SLA, protože nemá redundanci.
 
 ## <a name="sku-types"></a>Typy SKU
 
-Při vytváření clusteru Azure Průzkumník dat vyberte *optimální* SKU virtuálního počítače pro plánované zatížení. Azure Průzkumník dat má dvě rodiny SKU, ze kterých si můžete vybrat:
+Když vytváříte cluster Azure Průzkumník dat, vyberte *optimální* SKU virtuálního počítače pro plánované zatížení. Můžete si vybrat z následujících dvou rodin Azure Průzkumník dat SKU:
 
-* **D_V2**: D SKU je výpočetní prostředí optimalizované a poskytované ve dvou charakterech.
+* **D V2**: D SKU je výpočetní prostředí optimalizované a přináší se dvěma typy:
     * Samotný virtuální počítač
     * Virtuální počítač s disky Premium Storage
 
-* **LS**: L SKU je úložiště optimalizované. Má mnohem větší velikost SSD, než je cena **D** SKU.
+* **LS**: L SKU je optimalizované pro úložiště. Má mnohem větší velikost SSD než obdobně cena D SKU.
 
-Následující tabulka uvádí hlavní rozdíly mezi dostupnými typy SKU:
+Klíčové rozdíly mezi dostupnými typy SKU jsou popsány v následující tabulce:
  
-|**Přidělen** | **D SKU** | **L SKU**
+| Atribut | D SKU | L SKU |
 |---|---|---
-|**Malé SKU**|Minimální velikost je 11 ' se dvěma jádry|Minimální velikost je L4 se čtyřmi jádry.
-|**Dostupnost**|K dispozici ve všech oblastech (verze DS + PS má vyšší omezení dostupnosti)|K dispozici v několika oblastech
-|**Cena za GB mezipaměti na jádro**|Vysoká s SKU D SKU, nízká s verzí DS + PS|Nejlevnější s možností *průběžné platby*
-|**Ceny vyhrazené (rezervované instance)**|Vysoká sleva (více než 55% u závazku na tři roky)|Nižší sleva (20% pro závazek na tři roky)  
+|**Malé SKU**|Minimální velikost je D11 se dvěma jádry|Minimální velikost je L4 se čtyřmi jádry |
+|**Dostupnost**|K dispozici ve všech oblastech (verze DS + PS má vyšší omezení dostupnosti)|K dispozici v několika oblastech |
+|**Cena za&nbsp;GB mezipaměti na jádro**|Vysoká s SKU D SKU, nízká s verzí DS + PS|Nejnižší s možností průběžných plateb |
+|**Ceny rezervovaných instancí (rezervované instance)**|Vysoká sleva (více než&nbsp;55 procent pro závazek na tři roky)|Nižší sleva (20&nbsp;procent pro závazek na tři roky) |  
 
 ## <a name="select-your-cluster-vm"></a>Vyberte virtuální počítač clusteru. 
 
 Pokud chcete vybrat virtuální počítač clusteru, [nakonfigurujte vertikální škálování](manage-cluster-vertical-scaling.md#configure-vertical-scaling). 
 
-Různé možnosti pro SKU virtuálních počítačů umožňují optimalizovat náklady na nezbytné požadavky na výkon a Hot cache pro požadovaný scénář. Pokud scénář vyžaduje optimální výkon pro velký objem dotazů, ideální SKU by mělo být optimalizované pro výpočty. Na druhou stranu platí, že pokud scénář vyžaduje dotazování velkých objemů dat s poměrně nižším zatížením dotazů, sníží se u optimalizované skladové položky úložiště náklady a stále vám bude poskytovat vynikající výkon.
+Díky různým možnostem SKU virtuálních počítačů, ze kterých si můžete vybrat, můžete optimalizovat náklady na požadavky na výkon a za horkou mezipaměť pro váš scénář. 
+* Pokud pro velký objem dotazů potřebujete optimální výkon, ideální SKU by mělo být optimalizované pro výpočty. 
+* Pokud potřebujete zadat dotaz na velké objemy dat s relativně nízkým zatížením dotazů, může SKU optimalizované pro úložiště snížit náklady a stále poskytovat vynikající výkon.
 
-Počet instancí na cluster pro malé SKU je omezený, takže je vhodnější použít větší virtuální počítače, které mají větší velikost paměti RAM. Velikost paměti RAM je nutná pro některé typy dotazů, které přivedou více požadavků na prostředek paměti RAM, například dotazy, které `joins`používají. Proto při zvažování možností škálování doporučujeme škálovat až větší SKU, než můžete škálovat přidáním dalších instancí.
+Vzhledem k tomu, že počet instancí na cluster pro malé SKU je omezený, je vhodnější použít větší virtuální počítače, které mají větší velikost paměti RAM. Pro některé typy dotazů, které přivedou více požadavků na prostředek paměti RAM, je potřeba více paměti RAM, například `joins`dotazy, které používají. Proto Pokud zvažujete možnosti škálování, doporučujeme, abyste místo horizontálního navýšení kapacity nastavili kapacitu na větší skladovou jednotku.
 
 ## <a name="vm-options"></a>Možnosti virtuálního počítače
 
-Následující tabulka uvádí technické specifikace pro virtuální počítače clusteru Azure Průzkumník dat:
+Technické specifikace pro virtuální počítače clusteru Azure Průzkumník dat jsou popsány v následující tabulce:
 
-|**Název**| **Kategorie** | **Velikost SSD** | **Jader** | **SRAM** | **Disky úložiště úrovně Premium (1 TB)**| **Minimální počet instancí na cluster** | **Maximální počet instancí na cluster**
+|**Název**| **Kategorie** | **Velikost SSD** | **Jader** | **SRAM** | **Disky úložiště úrovně Premium (&nbsp;1 TB)**| **Minimální počet instancí na cluster** | **Maximální počet instancí na cluster**
 |---|---|---|---|---|---|---|---
-|D11_v2| optimalizované pro výpočty | 75 GB    | 2 | 14 GB | 0 | 1 | 8 (kromě SKU pro vývoj/testování, kde se nachází 1)
-|D12_v2| optimalizované pro výpočty | 150 GB   | 4 | 28 GB | 0 | 2 | 16
-|D13_v2| optimalizované pro výpočty | 307 GB   | 8 | 56 GB | 0 | 2 | 1 000
-|D14_v2| optimalizované pro výpočty | 614 GB   | 16| 112 GB | 0 | 2 | 1 000
-|DS13_v2 + 1 TB PS| optimalizované úložiště | 1 TB | 8 | 56 GB | 1 | 2 | 1 000
-|DS13_v2 + 2 TB PS| optimalizované úložiště | 2 TB | 8 | 56 GB | 2 | 2 | 1 000
-|DS14_v2 + zřizuje PS| optimalizované úložiště | 3 TB | 16 | 112 GB | 2 | 2 | 1 000
-|DS14_v2 + 4 TB PS| optimalizované úložiště | 4 TB | 16 | 112 GB | 4 | 2 | 1 000
-|L4s_v1| optimalizované úložiště | 650 GB | 4 | 32 GB | 0 | 2 | 16
-|L8s_v1| optimalizované úložiště | 1,3 TB | 8 | 64 GB | 0 | 2 | 1 000
-|L16s_1| optimalizované úložiště | 2,6 TB | 16| 128 GB | 0 | 2 | 1 000
+|D11 v2| optimalizované pro výpočty | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 1 | 8 (kromě SKU pro vývoj/testování, což je 1)
+|D12 v2| optimalizované pro výpočty | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
+|D13 v2| optimalizované pro výpočty | 307&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1 000
+|D14 v2| optimalizované pro výpočty | 614&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1 000
+|DS13 v2 + 1&nbsp;TB&nbsp;PS| optimalizované pro úložiště | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1 000
+|DS13 v2 + 2&nbsp;TB&nbsp;PS| optimalizované pro úložiště | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1 000
+|DS14 v2 + 3&nbsp;TB&nbsp;PS| optimalizované pro úložiště | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1 000
+|DS14 v2 + 4&nbsp;TB&nbsp;PS| optimalizované pro úložiště | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1 000
+|L4S úrovně v1| optimalizované pro úložiště | 650&nbsp;GB | 4 | 32&nbsp;GB | 0 | 2 | 16
+|L8s úrovně v1| optimalizované pro úložiště | 1,3&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1 000
+|L16s_1| optimalizované pro úložiště | 2,6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1 000
 
-* Prohlédněte si aktualizovaný seznam SKU pro virtuální počítače na oblast pomocí [rozhraní Azure Průzkumník dat ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet). 
+* Aktualizovaný seznam SKU pro virtuální počítače můžete zobrazit na jednu oblast pomocí rozhraní Azure Průzkumník dat [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet). 
 * Přečtěte si další informace o [různých skladových](/azure/virtual-machines/windows/sizes-compute)položkách Compute. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Cluster motoru se dá kdykoli [škálovat nahoru nebo dolů](manage-cluster-vertical-scaling.md) změnou SKU virtuálního počítače pro různé potřeby. 
+* Cluster Engine můžete kdykoli [škálovat nebo škálovat](manage-cluster-vertical-scaling.md) v závislosti na proměnlivých potřebách. 
 
-* Velikost clusteru motoru se dá [škálovat a](manage-cluster-horizontal-scaling.md) změnit tak, aby se změnila kapacita se měnícími se požadavky.
+* Velikost clusteru modulu můžete [škálovat nebo škálovat](manage-cluster-horizontal-scaling.md) tak, aby se změnila kapacita v závislosti na změněných požadavcích.
 

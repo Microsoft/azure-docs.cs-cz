@@ -200,6 +200,8 @@
       href: /azure/templates/microsoft.hdinsight/allversions
 - name: Zdroje a prostředky
   items:
+    - name: Nejčastější dotazy
+      href: kafka-faq.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Získejte pomoc na fóru

@@ -1,9 +1,9 @@
 ---
-title: Povolit připojení ke vzdálené ploše pro roli v cloudových službách Azure
-description: Jak nakonfigurovat aplikaci služby Azure cloud umožňuje připojení ke vzdálené ploše
+title: Povolení Připojení ke vzdálené ploše pro roli v Azure Cloud Services
+description: Konfigurace aplikace cloudové služby Azure tak, aby povolovala připojení ke vzdálené ploše
 services: cloud-services
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,92 +12,92 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 924719a8371f4d41cb9ead09252d8f3d3424326a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a6d045513e3e91c5a8b2004e47378a097be8963
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717755"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515914"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Povolení připojení ke vzdálené ploše pro roli v cloudových službách Azure pomocí sady Visual Studio
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Povolení Připojení ke vzdálené ploše pro roli v Azure Cloud Services pomocí sady Visual Studio
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
-Vzdálená plocha umožňuje přístup k ploše role, která běží v Azure. Připojení ke vzdálené ploše můžete použít k odstranění potíží a Diagnostikujte problémy s vaší aplikací je spuštěný.
+Vzdálená plocha umožňuje přístup k ploše role spuštěné v Azure. Připojení ke vzdálené ploše můžete použít k řešení potíží a diagnostikování problémů s aplikací v době, kdy je spuštěná.
 
-Průvodce publikováním, která sadě Visual Studio poskytuje pro cloud services zahrnuje možnost povolit vzdálenou plochu během procesu publikování pomocí přihlašovacích údajů, které zadáte. Pomocí této možnosti je vhodné při používání sady Visual Studio 2017 verze 15.4 nebo starší.
+Průvodce publikováním, který Visual Studio poskytuje pro cloudové služby, zahrnuje možnost povolit vzdálenou plochu během procesu publikování s použitím přihlašovacích údajů, které zadáte. Použití této možnosti je vhodné při použití sady Visual Studio 2017 verze 15,4 a starší.
 
-S Visual Studio 2017 verze 15.5 nebo novější ale doporučujeme vyhnout povolení vzdálené plochy prostřednictvím Průvodce publikovat, pokud pracujete jenom jako jediný vývojář. Pro každé situaci, ve kterém může otevřít projekt jinými vývojáři místo toho povolit vzdálenou plochu na webu Azure portal, prostředí PowerShell nebo z kanál pro vydávání verzí v pracovním postupu průběžného nasazování. Toto doporučení je z důvodu změny jak Visual Studio komunikuje s vzdálené plochy na cloudovou službu virtuálního počítače, jak je vysvětleno v tomto článku.
+Se sadou Visual Studio 2017 verze 15,5 a novější se však doporučuje, abyste zabránili povolování vzdálené plochy prostřednictvím Průvodce publikováním, pokud nepracujete pouze jako jediný vývojář. V případě situace, kdy může být projekt otevřen jinými vývojáři, je místo toho možné povolit vzdálenou plochu prostřednictvím Azure Portal, prostřednictvím PowerShellu nebo z kanálu vydání v pracovním postupu průběžného nasazování. Toto doporučení je způsobeno změnou způsobu, jakým aplikace Visual Studio komunikuje se vzdálenou plochou na VIRTUÁLNÍm počítači cloudové služby, jak je vysvětleno v tomto článku.
 
-## <a name="configure-remote-desktop-through-visual-studio-2017-version-154-and-earlier"></a>Konfigurace vzdálené plochy prostřednictvím sady Visual Studio 2017 verze 15.4 nebo starší
+## <a name="configure-remote-desktop-through-visual-studio-2017-version-154-and-earlier"></a>Konfigurace vzdálené plochy prostřednictvím sady Visual Studio 2017 verze 15,4 a starší
 
-Pokud používáte Visual Studio 2017 verze 15.4 nebo starší, můžete použít **povolit vzdálenou plochu pro všechny role** možnost v Průvodci publikováním. Můžete stále použít Průvodce sadou Visual Studio 2017 verze 15.5 nebo novější, ale nepoužívejte možnost vzdálené plochy.
+Při použití sady Visual Studio 2017 verze 15,4 a starší můžete použít možnost **Povolit vzdálenou plochu pro všechny role** v Průvodci publikováním. Průvodce můžete použít i v systému Visual Studio 2017 verze 15,5 a novější, ale nepoužívejte možnost Vzdálená plocha.
 
-1. V sadě Visual Studio, spusťte Průvodce Publikovat pravým tlačítkem myši na projekt cloudové služby v Průzkumníku řešení a zvolením **publikovat**.
+1. V aplikaci Visual Studio spusťte Průvodce publikováním tak, že kliknete pravým tlačítkem na projekt cloudové služby v Průzkumník řešení a kliknete na **publikovat**.
 
-2. Přihlaste se do vašeho předplatného Azure v případě potřeby a vyberte **Další**.
+2. V případě potřeby se přihlaste k předplatnému Azure a vyberte **Další**.
 
-3. Na **nastavení** stránce **povolit vzdálenou plochu pro všechny role**a pak **nastavení...**  odkaz k otevření **konfigurace vzdálené plochy** dialogové okno.
+3. Na stránce **Nastavení** vyberte **Povolit vzdálenou plochu pro všechny role**a pak vyberte odkaz **nastavení...** . otevře se dialogové okno **Konfigurace vzdálené plochy** .
 
-4. V dolní části dialogového okna, vyberte **další možnosti**. Tento příkaz zobrazí rozevíracího seznamu, ve kterém vytvoříte nebo zvolte certifikát, takže můžete šifrovat přihlašovací údaje při připojování přes vzdálenou plochu.
+4. V dolní části dialogového okna vyberte **Další možnosti**. Tento příkaz zobrazí rozevírací seznam, ve kterém můžete vytvořit nebo zvolit certifikát, abyste při připojování přes vzdálenou plochu mohli šifrovat informace o přihlašovacích údajích.
 
    > [!Note]
-   > Certifikáty, které budete potřebovat pro připojení ke vzdálené ploše se liší od certifikáty, které použijete pro další provoz Azure. Certifikát vzdáleného přístupu musí mít privátní klíč.
+   > Certifikáty, které potřebujete pro připojení ke vzdálené ploše, se liší od certifikátů, které používáte pro jiné operace Azure. Certifikát vzdáleného přístupu musí mít privátní klíč.
 
-5. Vyberte certifikát ze seznamu nebo zvolte  **&lt;vytvořit... &gt;** . Při vytváření nového certifikátu, zadejte popisný název pro nový certifikát po zobrazení výzvy a vyberte **OK**. V rozevíracím seznamu se zobrazí nový certifikát.
+5. Vyberte certifikát ze seznamu nebo zvolte  **&lt;vytvořit... &gt;** . Při vytváření nového certifikátu zadejte po zobrazení výzvy popisný název nového certifikátu a vyberte **OK**. Nový certifikát se zobrazí v rozevíracím seznamu.
 
-6. Zadejte uživatelské jméno a heslo. Nelze použít existující účet. Nepoužívejte jako uživatelské jméno pro nový účet "Administrator".
+6. Zadejte uživatelské jméno a heslo. Existující účet nemůžete použít. Jako uživatelské jméno nového účtu nepoužívejte "správce".
 
-7. Zvolte datum na účtu vyprší platnost a za které připojením ke vzdálené ploše se zablokuje.
+7. Vyberte datum, kdy vyprší platnost účtu, a po kterém budou připojení ke vzdálené ploše blokovaná.
 
-8. Po zadání všech požadovaných informací, vyberte **OK**. Visual Studio přidá do vašeho projektu nastavení vzdálené plochy `.cscfg` a `.csdef` souborů, včetně heslo, které je šifrovaný s použitím zvolený certifikát.
+8. Až zadáte všechny požadované informace, vyberte **OK**. Visual Studio přidá nastavení vzdálené plochy do souborů projektu `.cscfg` a `.csdef` , včetně hesla zašifrovaného pomocí vybraného certifikátu.
 
-9. Proveďte všechny zbývající kroky pomocí **Další** tlačítko a pak vyberte **publikovat** až budete připraveni publikovat vaši cloudovou službu. Pokud si nejste připraveni publikovat, vyberte **zrušit** a odpověď **Ano** po zobrazení výzvy k uložení změn. Cloudové služby můžete publikovat později pomocí těchto nastavení.
+9. Pomocí tlačítka **Další** dokončete všechny zbývající kroky a pak vyberte **publikovat** , až budete připraveni publikovat cloudovou službu. Pokud nejste připraveni k publikování, vyberte **Zrušit** a po zobrazení výzvy k uložení změn odpovězte na **Ano** . Pomocí těchto nastavení můžete cloudovou službu publikovat později.
 
-## <a name="configure-remote-desktop-when-using-visual-studio-2017-version-155-and-later"></a>Konfigurace vzdálené plochy, když pomocí sady Visual Studio 2017 verze 15.5 nebo novější
+## <a name="configure-remote-desktop-when-using-visual-studio-2017-version-155-and-later"></a>Konfigurace vzdálené plochy při použití sady Visual Studio 2017 verze 15,5 a novější
 
-S Visual Studio 2017 verze 15.5 nebo novější můžete stále použít Průvodce publikováním se projekt cloudové služby. Můžete také použít **povolit vzdálenou plochu pro všechny role** možnost, pokud pracujete jenom jako jediný vývojář.
+Pomocí sady Visual Studio 2017 verze 15,5 a novější můžete i nadále používat Průvodce publikováním v projektu cloudové služby. Pokud pracujete jenom jako jediný vývojář, můžete použít taky možnost **Povolit vzdálenou plochu pro všechny role** .
 
-Pokud pracujete jako součást týmu, měli byste místo toho povolit vzdálená plocha ve službě Azure cloud service pomocí [webu Azure portal](cloud-services-role-enable-remote-desktop-new-portal.md) nebo [Powershellu](cloud-services-role-enable-remote-desktop-powershell.md).
+Pokud pracujete jako součást týmu, měli byste místo toho povolit vzdálenou plochu v cloudové službě Azure pomocí [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md) nebo [PowerShellu](cloud-services-role-enable-remote-desktop-powershell.md).
 
-Toto doporučení je z důvodu změn v tom, jak Visual Studio 2017 verze 15.5 nebo novější komunikuje s cloudovou službu virtuálního počítače. Při povolení funkce Vzdálená plocha prostřednictvím Průvodce publikovat, dřívějších verzích sady Visual Studio komunikaci s virtuálním Počítačem přes takzvaný "RDP modul plug-in." Visual Studio 2017 verze 15.5 nebo novější komunikuje se místo toho používat rozšíření RDP"", které je flexibilnější a bezpečnější. Tato změna také v souladu s skutečnost, že na webu Azure portal a Powershellu metody povolit vzdálenou plochu také používat rozšíření RDP.
+Toto doporučení je způsobeno změnou způsobu, jakým Visual Studio 2017 verze 15,5 a novější komunikuje s virtuálním počítačem cloudové služby. Při povolování vzdálené plochy pomocí Průvodce publikováním můžou předchozí verze sady Visual Studio komunikovat s virtuálním počítačem přes to, co se nazývá modul plug-in RDP. Visual Studio 2017 verze 15,5 a novější komunikuje místo toho pomocí rozšíření RDP, které je bezpečnější a flexibilnější. Tato změna se taky zarovnává se skutečností, že Azure Portal a PowerShellové metody pro povolení vzdálené plochy používají také rozšíření RDP.
 
-Když Visual Studio komunikuje se rozšíření RDP, přenášet heslo jako prostý text přes protokol SSL. Konfigurační soubory v projektu však uložit jenom šifrované heslo, které je možné dešifrovat do prostého textu jenom s místní certifikát, který byl původně použit k šifrování.
+Když aplikace Visual Studio komunikuje s rozšířením RDP, přenáší heslo typu prostého textu přes SSL. Konfigurační soubory projektu však ukládají pouze šifrované heslo, které lze dešifrovat pouze v případě prostého textu s místním certifikátem, který byl původně použit k zašifrování.
 
-Pokud provádíte nasazení pokaždé, když projekt cloudové služby ze stejného počítače, vývoj, místní certifikátu je k dispozici. V takovém případě můžete stále použít **povolit vzdálenou plochu pro všechny role** možnost v Průvodci publikováním.
+Pokud projekt cloudové služby nasadíte ze stejného vývojového počítače pokaždé, pak je tento místní certifikát k dispozici. V tomto případě můžete i nadále používat možnost **Povolit vzdálenou plochu pro všechny role** v Průvodci publikováním.
 
-Pokud vy nebo jiní vývojáři chcete nasadit projekt cloudové služby z různých počítačů, ale pak tyto počítače nebude mít nezbytný certifikát k dešifrování hesla. V důsledku toho se zobrazí následující chybová zpráva:
+Pokud ale vy nebo jiní vývojáři chcete nasadit projekt cloudové služby z různých počítačů, pak tyto ostatní počítače nebudou mít potřebný certifikát k dešifrování hesla. V důsledku toho se zobrazí následující chybová zpráva:
 
 ```output
 Applying remote desktop protocol (RDP) extension.
 Certificate with thumbprint [thumbprint] doesn't exist.
 ```
 
-Můžete změnit heslo při každém nasazení cloudové služby, ale tato akce velmi praktické pro každého, kdo potřebuje k použití vzdálené plochy.
+Heslo můžete změnit při každém nasazení cloudové služby, ale tato akce je nevhodná pro všechny uživatele, kteří potřebují používat vzdálenou plochu.
 
-Pokud sdílíte s týmem projektu, pak je nejlepší, zrušte zaškrtnutí políčka v Průvodci publikováním a místo toho povolit přímo pomocí vzdálené plochy [webu Azure portal](cloud-services-role-enable-remote-desktop-new-portal.md) nebo s použitím [Powershellu](cloud-services-role-enable-remote-desktop-powershell.md).
+Pokud sdílíte projekt s týmem, je vhodné zrušit možnost v Průvodci publikováním a místo toho povolit vzdálenou plochu přímo prostřednictvím [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md) nebo pomocí [prostředí PowerShell](cloud-services-role-enable-remote-desktop-powershell.md).
 
-### <a name="deploying-from-a-build-server-with-visual-studio-2017-version-155-and-later"></a>Nasazení ze serveru sestavení pomocí sady Visual Studio 2017 verze 15.5 nebo novější
+### <a name="deploying-from-a-build-server-with-visual-studio-2017-version-155-and-later"></a>Nasazení ze serveru sestavení pomocí sady Visual Studio 2017 verze 15,5 a novější
 
-Můžete nasadit projekt cloudové služby ze serveru sestavení (například pomocí služeb Azure DevOps), které Visual Studio 2017 verze 15.5 nebo novější nainstalovaný v agentovi sestavení. Pomocí tohoto uspořádání nasazení se odehrává ze stejného počítače, na kterém je k dispozici šifrovací certifikát.
+Projekt cloudové služby lze nasadit ze serveru sestavení (například pomocí Azure DevOps Services), ve kterém je nainstalována aplikace Visual Studio 2017 verze 15,5 nebo novější v agentovi sestavení. V tomto uspořádání probíhá nasazení ze stejného počítače, ve kterém je k dispozici šifrovací certifikát.
 
-Pokud chcete používat rozšíření RDP ze služeb Azure DevOps, uveďte následující podrobnosti ve vašem kanálu sestavení:
+Pokud chcete použít rozšíření RDP z Azure DevOps Services, zahrňte do svého kanálu sestavení následující podrobnosti:
 
-1. Zahrnout `/p:ForceRDPExtensionOverPlugin=true` vaše argumenty nástroje MSBuild k Ujistěte se, že nasazení funguje se rozšíření RDP spíše než plugin protokolu RDP. Příklad:
+1. Zahrňte `/p:ForceRDPExtensionOverPlugin=true` do argumentů MSBuild, abyste se ujistili, že nasazení funguje s rozšířením RDP a nikoli s modulem plug-in RDP. Příklad:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
         /p:SkipInvalidConfigurations=true /p:ForceRDPExtensionOverPlugin=true
     ```
 
-1. Po kroků sestavení přidejte **nasazení cloudové služby Azure** kroku a nastavte jeho vlastnosti.
+1. Po dokončení postupu sestavení přidejte krok **nasazení cloudové služby Azure** a nastavte jeho vlastnosti.
 
-1. Po dokončení kroku nasazení přidat **prostředí Azure Powershell** krok, nastavte jeho **zobrazovaný název** vlastnost "nasazení Azure: Povolit rozšíření RDP"(nebo jiný vhodný název) a vyberte příslušné předplatné Azure.
+1. Po kroku nasazení přidejte krok **Azure PowerShellu** , nastavte jeho vlastnost **Zobrazovaný název** na nasazení Azure: Povolte rozšíření RDP (nebo jiný vhodný název) a vyberte příslušné předplatné Azure.
 
-1. Nastavte **typ skriptu** na "Vloženě" a vložte následující kód do **zpracování vloženého skriptu** pole. (Můžete také vytvořit `.ps1` souboru ve vašem projektu pomocí tohoto skriptu **typ skriptu** "Cesta k souboru skriptu" a sadu **cesta ke skriptu** tak, aby odkazoval na soubor.)
+1. Nastavte **typ skriptu** na "inline" a vložte níže uvedený kód do **vloženého pole skriptu** . (V projektu můžete také vytvořit `.ps1` soubor pomocí tohoto skriptu, nastavit **typ skriptu** na "cesta k souboru skriptu" a nastavit **cestu skriptu** tak, aby odkazovala na soubor.)
 
     ```ps
     Param(
@@ -136,16 +136,16 @@ Pokud chcete používat rozšíření RDP ze služeb Azure DevOps, uveďte násl
     Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $credential -Expiration $expiry -Verbose
     ```
 
-## <a name="connect-to-an-azure-role-by-using-remote-desktop"></a>Připojte se k roli Azure pomocí vzdálené plochy
+## <a name="connect-to-an-azure-role-by-using-remote-desktop"></a>Připojení k roli Azure pomocí vzdálené plochy
 
-Po publikování vaší cloudové služby v Azure a povolení vzdálené plochy, můžete použít Průzkumníka serveru Visual Studia pro přihlášení ke cloudové službě virtuálního počítače:
+Po publikování cloudové služby v Azure a zapnutí vzdálené plochy můžete použít Visual Studio Průzkumník serveru pro přihlášení k virtuálnímu počítači cloudové služby:
 
-1. V Průzkumníku serveru rozbalte **Azure** uzel a potom rozbalte uzel pro cloudovou službu a jeden z jeho role, chcete-li zobrazit seznam instancí.
+1. V Průzkumník serveru rozbalte uzel **Azure** a potom rozbalte uzel pro cloudovou službu a jednu z jejích rolí pro zobrazení seznamu instancí.
 
-2. Klikněte pravým tlačítkem na některý uzel instance a vyberte **připojit pomocí vzdálené plochy**.
+2. Klikněte pravým tlačítkem myši na uzel instance a vyberte **připojit pomocí vzdálené plochy**.
 
-3. Zadejte uživatelské jméno a heslo, které jste vytvořili dříve. Nyní jste se přihlásili do vzdálené relace.
+3. Zadejte uživatelské jméno a heslo, které jste vytvořili dříve. Nyní jste přihlášeni ke vzdálené relaci.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 [Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)

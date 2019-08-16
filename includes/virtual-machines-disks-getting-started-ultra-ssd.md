@@ -5,80 +5,113 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/10/2019
+ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 742e0028b1f92beb8300cc97f09d8292259fbc0a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: db8147717e825d9cc48b7f0704dc5eea0be223a9
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712553"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510315"
 ---
-# <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>Povolit a nasadit Azure ultra SSD disky (preview)
+# <a name="using-azure-ultra-disks"></a>Použití disků Azure Ultra
 
-Azure ultra SSD disky (SSD) (preview) nabídka vysoké propustnosti, vysoké IOPS a stálá nízká latence diskové úložiště pro virtuální počítače Azure IaaS (virtuální počítače). Tato nová nabídka poskytuje horní řádek výkon ve stejné úrovně dostupnosti jako naše stávající nabídky disky. Hlavní výhodou ultra SSD disků je schopnost dynamicky měnit výkon SSD společně s vašimi úlohami, aniž byste museli restartovat své virtuální počítače. Ultra SSD disky jsou vhodné pro úlohy náročné na data, jako je SAP HANA, databáze na nejvyšší úrovni a transakce náročné úlohy.
+Disky Azure Ultra nabízejí vysokou propustnost, vysoké IOPS a konzistentní diskové úložiště s nízkou latencí pro virtuální počítače Azure s IaaS. Tato nová nabídka poskytuje horní část výkonu linky na stejné úrovni dostupnosti jako naše nabídky stávajících disků. Jednou z hlavních výhod Ultra disks je schopnost dynamicky měnit výkon jednotky SSD společně s vašimi úlohami, aniž by bylo nutné restartovat virtuální počítače. Disky Ultra jsou vhodné pro úlohy náročné na data, jako jsou SAP HANA, databáze nejvyšší úrovně a zatížení náročné na transakce.
 
-V současné době ve verzi preview jsou ultra disků SSD a vy musíte [zaregistrovat](https://aka.ms/UltraSSDPreviewSignUp) ve verzi preview, aby bylo možné přistupovat k nim.
+## <a name="check-if-your-subscription-has-access"></a>Ověření přístupu k předplatnému
+
+Pokud jste se už zaregistrovali na disky Ultra a chcete zjistit, jestli je u vašeho předplatného povolené disky Ultra, použijte některý z následujících příkazů: 
+
+CLI: `az feature show --namespace Microsoft.Compute --name UltraSSD`
+
+PowerShell: `Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName UltraSSD`
+
+Pokud je vaše předplatné povolené, váš výstup by měl vypadat přibližně takto:
+
+```bash
+{
+  "id": "/subscriptions/<yoursubID>/providers/Microsoft.Features/providers/Microsoft.Compute/features/UltraSSD",
+  "name": "Microsoft.Compute/UltraSSD",
+  "properties": {
+    "state": "Registered"
+  },
+  "type": "Microsoft.Features/providers/features"
+}
+```
 
 ## <a name="determine-your-availability-zone"></a>Určení zóny dostupnosti
 
-Po schválení, budete muset určit, které zóny dostupnosti jsou in, aby bylo možné používat ultra SSD. Spusťte některý z následujících příkazů určit, které zóna v oblasti východní USA 2, ultra disku pro nasazení:
+Po schválení musíte určit, kterou zónu dostupnosti máte, aby bylo možné používat extrémně disky. Spusťte některý z následujících příkazů, abyste určili, na kterou zónu se má nasazovat Ultra disk, a nejdřív nahraďte hodnoty **region**, **vmSize**a **Subscription** :
 
-PowerShell: `Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
+CLI
 
-CLI: `az vm list-skus --resource-type disks --query "[?name=='UltraSSD_LRS'].locationInfo"`
+```bash
+$subscription = "<yourSubID>"
+$region = "<yourLocation>, example value is southeastasia"
+$vmSize = "<yourVMSize>, example value is Standard_E64s_v3"
 
-Odpověď bude podobná formuláři níže, kde X je pásmo má být použito pro nasazení v oblasti východní USA 2. X může být buď 1, 2 nebo 3.
+az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
+```
 
-Zachovat **zóny** hodnota představuje zónu dostupnosti, a budete ho potřebovat za účelem nasazení ultra SSD.
+PowerShell:
 
-|ResourceType  |Name  |Location  |Zóny  |Omezení  |Funkce  |Value  |
+```powershell
+$region = "southeastasia"
+$vmSize = "Standard_E64s_v3"
+(Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) -and $_.LocationInfo[0].ZoneDetails.Count -gt 0})[0].LocationInfo[0].ZoneDetails
+```
+
+Odpověď bude podobná následujícímu formuláři, kde X je zóna, která se má použít pro nasazení ve zvolené oblasti. X může být buď 1, 2 nebo 3. V současné době podporují jenom tři oblasti Ultra disks: Východní USA 2, jihovýchodní Asie a Severní Evropa.
+
+Zachovat hodnotu **zón** , představuje vaši zónu dostupnosti a Vy ji budete potřebovat k nasazení Ultra disku.
+
+|Typ prostředku  |Name  |Location  |Zóny  |Omezení  |Funkce  |Value  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 > [!NOTE]
-> Pokud neodpověděl z příkazu, je registrace k funkci buď stále čekající na vyřízení nebo není schváleno ještě.
+> Pokud nedošlo k žádné odezvě z příkazu, vaše registrace do této funkce je buď stále čeká, nebo používáte starou verzi rozhraní příkazového řádku nebo PowerShellu.
 
-Teď, když znáte zóně, ve které chcete nasadit, postupujte podle kroků nasazení v tomto článku se získat první virtuální počítače nasazené pomocí ultra SSD.
+Teď, když víte, kterou zónu nasadit do, postupujte podle kroků nasazení v tomto článku a nasaďte virtuální počítač s připojeným Ultra diskem nebo připojte Ultra disk k existujícímu virtuálnímu počítači.
 
-## <a name="deploy-an-ultra-ssd-using-azure-resource-manager"></a>Nasazení ultra SSD pomocí Azure Resource Manageru
+## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Nasazení extrémně disku pomocí Azure Resource Manager
 
-Nejprve určete velikost virtuálního počítače k nasazení. V rámci této verze Preview jsou podporovány pouze řady DsV3 a EsV3 virtuálního počítače. Naleznete v druhé tabulce v tomto [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) další podrobné informace o těchto velikostí virtuálních počítačů.
+Nejprve určete velikost virtuálního počítače k nasazení. V současné době podporují jenom rodiny virtuálních počítačů DsV3 a EsV3. Další podrobnosti o těchto velikostech virtuálních počítačů najdete v druhé tabulce na tomto [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) .
 
-Pokud chcete vytvořit virtuální počítač s více ultra disků SSD, podívejte se na ukázku [vytvoření Virtuálního počítače s více ultra SSD](https://aka.ms/UltraSSDTemplate).
+Pokud chcete vytvořit virtuální počítač s více disky Ultra, přečtěte si v ukázce [Vytvoření virtuálního počítače s několika disky Ultra](https://aka.ms/UltraSSDTemplate).
 
-Pokud máte v úmyslu použít vlastní šablonu, ujistěte se, že **apiVersion** pro `Microsoft.Compute/virtualMachines` a `Microsoft.Compute/Disks` je nastaven jako `2018-06-01` (nebo novější).
+Pokud máte v úmyslu použít vlastní šablonu, ujistěte se, že apiVersion `Microsoft.Compute/virtualMachines` pro `Microsoft.Compute/Disks` a je nastavená jako `2018-06-01` (nebo novější).
 
-Nastavte skladovou položku disku **UltraSSD_LRS**, potom nastavení kapacity disku, vstupně-výstupních operací, zóna dostupnosti a propustnost v MB/s pro vytvoření ultra disku.
+Nastavte SKU disku na **UltraSSD_LRS**a pak nastavte kapacitu disku, IOPS, zónu dostupnosti a propustnost v MB/s, aby se vytvořil Ultra disk.
 
-Po zřízení virtuálního počítače můžete oddílu a formátování datových disků a nakonfigurovat je pro vaše úlohy.
+Po zřízení virtuálního počítače můžete rozdělit a naformátovat datové disky a nakonfigurovat je pro vaše úlohy.
 
-## <a name="deploy-an-ultra-ssd-using-cli"></a>Nasazení ultra SSD pomocí rozhraní příkazového řádku
+## <a name="deploy-an-ultra-disk-using-cli"></a>Nasazení Ultra disk s použitím rozhraní příkazového řádku
 
-Nejprve určete velikost virtuálního počítače k nasazení. V rámci této verze Preview jsou podporovány pouze řady DsV3 a EsV3 virtuálního počítače. Naleznete v druhé tabulce v tomto [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) další podrobné informace o těchto velikostí virtuálních počítačů.
+Nejprve určete velikost virtuálního počítače k nasazení. V současné době podporují jenom rodiny virtuálních počítačů DsV3 a EsV3. Další podrobnosti o těchto velikostech virtuálních počítačů najdete v druhé tabulce na tomto [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) .
 
-Pokud chcete použít ultra disků SSD, musíte vytvořit virtuální počítač, který podporuje použití ultra disků SSD.
+Aby bylo možné připojit disk Ultra, je nutné vytvořit virtuální počítač, který je schopný používat disky Ultra.
 
-Nahraďte nebo nastavit **$vmname**, **$rgname**, **$diskname**, **$location**, **$password**, **$user** proměnné s vlastními hodnotami. Nastavte **$zone** hodnotu zónu dostupnosti, které jste získali z [spuštění tohoto článku](#determine-your-availability-zone). Spusťte následující příkaz rozhraní příkazového řádku k vytvoření ultra povoleno virtuálního počítače:
+Nahraďte nebo nastavte **$VMName**, **$RgName**, **$DiskName**, **$Location**, **$Password**, **$User** proměnných s vašimi vlastními hodnotami. Nastavte **$Zone** na hodnotu vaší zóny dostupnosti, kterou jste získali od [začátku tohoto článku](#determine-your-availability-zone). Pak spuštěním následujícího příkazu rozhraní příkazového řádku vytvořte virtuální počítač s povolenou podporou Ultra:
 
 ```azurecli-interactive
-az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --attach-data-disks $diskname --size Standard_D4s_v3 --location $location
+az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
 ```
 
-### <a name="create-an-ultra-ssd-using-cli"></a>Vytvoření ultra SSD pomocí rozhraní příkazového řádku
+### <a name="create-an-ultra-disk-using-cli"></a>Vytvoření Ultra disku pomocí rozhraní příkazového řádku
 
-Teď, když máte virtuální počítač, který podporuje použití ultra disků SSD, můžete vytvořit a připojit se k němu ultra SSD.
+Teď, když máte virtuální počítač schopný připojit disky Ultra disks, můžete k němu vytvořit a připojit disk Ultra.
 
 ```azurecli-interactive
-location="eastus2"
-subscription="xxx"
-rgname="ultraRG"
-diskname="ssd1"
-vmname="ultravm1"
-zone=123
+$location="eastus2"
+$subscription="xxx"
+$rgname="ultraRG"
+$diskname="ssd1"
+$vmname="ultravm1"
+$zone=123
 
-#create an Ultra SSD disk
+#create an ultra disk
 az disk create `
 --subscription $subscription `
 -n $diskname `
@@ -91,9 +124,22 @@ az disk create `
 --disk-mbps-read-write 50
 ```
 
-### <a name="adjust-the-performance-of-an-ultra-ssd-using-cli"></a>Upravit úroveň výkonu ultra SSD pomocí rozhraní příkazového řádku
+## <a name="attach-an-ultra-disk-to-a-vm-using-cli"></a>Připojení disku Ultra k virtuálnímu počítači pomocí rozhraní příkazového řádku
 
-Ultra SSD disky nabízejí jedinečné funkce, která umožňuje upravit jejich výkon, jak používat tuto funkci znázorňuje následující příkaz:
+Případně, pokud je váš stávající virtuální počítač v oblasti oblast/dostupnosti, která je schopná používat disky Ultra, můžete využít Ultra disks bez nutnosti vytvářet nový virtuální počítač.
+
+```bash
+$rgName = "<yourResourceGroupName>"
+$vmName = "<yourVMName>"
+$diskName = "<yourDiskName>"
+$subscriptionId = "<yourSubscriptionID>"
+
+az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $subscriptionId
+```
+
+### <a name="adjust-the-performance-of-an-ultra-disk-using-cli"></a>Úprava výkonu Ultra disku pomocí rozhraní příkazového řádku
+
+Disky Ultra nabízejí jedinečnou možnost, která umožňuje upravit jejich výkon. následující příkaz znázorňuje, jak tuto funkci používat:
 
 ```azurecli-interactive
 az disk update `
@@ -104,11 +150,11 @@ az disk update `
 --set diskMbpsReadWrite=800
 ```
 
-## <a name="deploy-an-ultra-ssd-using-powershell"></a>Nasazení ultra SSD pomocí prostředí PowerShell
+## <a name="deploy-an-ultra-disk-using-powershell"></a>Nasazení Ultra disk s využitím PowerShellu
 
-Nejprve určete velikost virtuálního počítače k nasazení. V rámci této verze Preview jsou podporovány pouze řady DsV3 a EsV3 virtuálního počítače. Naleznete v druhé tabulce v tomto [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) další podrobné informace o těchto velikostí virtuálních počítačů.
+Nejprve určete velikost virtuálního počítače k nasazení. V současné době podporují jenom rodiny virtuálních počítačů DsV3 a EsV3. Další podrobnosti o těchto velikostech virtuálních počítačů najdete v druhé tabulce na tomto [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) .
 
-Pokud chcete použít ultra disků SSD, musíte vytvořit virtuální počítač, který podporuje použití ultra disků SSD. Nahraďte nebo nastavit **$resourcegroup** a **$vmName** proměnné s vlastními hodnotami. Nastavte **$zone** hodnotu zónu dostupnosti, které jste získali z [spuštění tohoto článku](#determine-your-availability-zone). Potom spusťte následující příkaz [rutiny New-AzVm](/powershell/module/az.compute/new-azvm) příkazu vytvořte ultra povolené virtuálního počítače:
+Chcete-li použít disky Ultra, je nutné vytvořit virtuální počítač schopný používat disky Ultra. Nahraďte nebo nastavte **$resourcegroup** a **$vmName** proměnných vlastními hodnotami. Nastavte **$Zone** na hodnotu vaší zóny dostupnosti, kterou jste získali od [začátku tohoto článku](#determine-your-availability-zone). Pak spuštěním následujícího příkazu [New-AzVm](/powershell/module/az.compute/new-azvm) vytvořte virtuální počítač s povolenou podporou Ultra:
 
 ```powershell
 New-AzVm `
@@ -121,9 +167,9 @@ New-AzVm `
     -zone $zone
 ```
 
-### <a name="create-an-ultra-ssd-using-powershell"></a>Vytvoření ultra SSD pomocí prostředí PowerShell
+### <a name="create-an-ultra-disk-using-powershell"></a>Vytvoření Ultra disku pomocí prostředí PowerShell
 
-Teď, když máte virtuální počítač, který podporuje použití ultra disků SSD, můžete vytvořit a připojit se k němu ultra SSD:
+Když teď máte virtuální počítač, který dokáže používat disky Ultra, můžete k němu vytvořit a připojit disk Ultra:
 
 ```powershell
 $diskconfig = New-AzDiskConfig `
@@ -141,15 +187,33 @@ New-AzDisk `
 -Disk $diskconfig;
 ```
 
-### <a name="adjust-the-performance-of-an-ultra-ssd-using-powershell"></a>Upravit úroveň výkonu ultra SSD pomocí prostředí PowerShell
+## <a name="attach-an-ultra-disk-to-a-vm-using-powershell"></a>Připojení disku Ultra k virtuálnímu počítači pomocí PowerShellu
 
-Ultra SSD jedinečná funkce, která umožňuje upravit jejich výkon, příkaz je příklad, který přizpůsobí výkonu bez nutnosti se odpojíte příslušný disk:
+Případně, pokud je váš stávající virtuální počítač v oblasti oblast/dostupnosti, která je schopná používat disky Ultra, můžete využít Ultra disks bez nutnosti vytvářet nový virtuální počítač.
+
+```powershell
+# add disk to VM
+$subscription = "<yourSubscriptionID>"
+$resourceGroup = "<yourResourceGroup>"
+$vmName = "<yourVMName>"
+$diskName = "<yourDiskName>"
+$lun = 1
+Login-AzureRMAccount -SubscriptionId $subscription
+$vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
+$disk = Get-AzDisk -ResourceGroupName $resourceGroup -Name $diskName
+$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
+Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
+```
+
+### <a name="adjust-the-performance-of-an-ultra-disk-using-powershell"></a>Úprava výkonu Ultra disku pomocí prostředí PowerShell
+
+Disky Ultra mají jedinečnou schopnost, která umožňuje upravit jejich výkon. Tento příkaz je příkladem, který upravuje výkon bez nutnosti odpojení disku:
 
 ```powershell
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud jste chtěli vyzkoušet nový typ disku [žádat o přístup k verzi preview se tohoto průzkumu](https://aka.ms/UltraSSDPreviewSignUp).
+Pokud se chcete pokusit vyzkoušet nový typ disku, který bude [vyžadovat přístup k tomuto průzkumu](https://aka.ms/UltraDiskSignup).

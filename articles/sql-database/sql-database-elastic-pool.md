@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 02/28/2019
-ms.openlocfilehash: 31fb6eaefe557c1f135b4558b873454d4a3a01d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/06/2019
+ms.openlocfilehash: 305a35d1d40d94d1ce8e463b4af51eb84278bc3f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568620"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510258"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy vám pomůžou se správou a škálováním více databází Azure SQL.
 
@@ -210,11 +210,11 @@ Další informace najdete v tématu [vytvoření výstrah SQL Database v Azure P
 
   Umbraco využívá elastické fondy se Azure SQL Database k rychlému zřizování a škálování služeb pro tisíce klientů v cloudu.
 
-- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+- [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-  Daxko/CSI používá elastické fondy s Azure SQL Database k urychlení vývojového cyklu a vylepšení služeb a výkonu zákazníků.
+   Daxko/CSI používá elastické fondy s Azure SQL Database k urychlení vývojového cyklu a vylepšení služeb a výkonu zákazníků.   
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Pokud chcete škálovat elastické fondy, přečtěte si téma [škálování elastických fondů](sql-database-elastic-pool-scale.md) a [škálování elastického fondu – vzorový kód](scripts/sql-database-monitor-and-scale-pool-powershell.md) .
 - Video najdete v tématu [Microsoft Virtual Academy video kurz o Azure SQL Database elastické možnosti](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)

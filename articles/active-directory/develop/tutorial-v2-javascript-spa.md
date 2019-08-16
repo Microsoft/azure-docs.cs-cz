@@ -16,18 +16,428 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 867200a4e948e3f971cb135be149d2d3221331de
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: cee0884ef20ef9cfd63d81d6f223705d34c65ccb
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852396"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69511756"
 ---
-[!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-javascriptspa-introduction.md)]
-[!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-javascriptspa-setup.md)]
-[!INCLUDE [3. Use](../../../includes/active-directory-develop-guidedsetup-javascriptspa-use.md)]
-[!INCLUDE [4. Configure](../../../includes/active-directory-develop-guidedsetup-javascriptspa-configure.md)]
-[!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-javascriptspa-test.md)]
+# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA).
+
+V této příručce se dozvíte, jak se jednostránkové aplikace v JavaScriptu (SPA) může přihlašovat pomocí osobních, pracovních a školních účtů, získat přístupový token a volat rozhraní API pro Microsoft Graph nebo jiná rozhraní API, která vyžadují přístupové tokeny z koncového bodu Microsoft Identity Platform.
+
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak ukázková aplikace vygenerovaná touto příručkou funguje
+
+![Ukazuje, jak ukázková aplikace vygenerovaná těmito kurzy funguje.](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+
+<!--start-collapse-->
+### <a name="more-information"></a>Další informace
+
+Ukázková aplikace vytvořená touto příručkou umožňuje, aby se pomocí JavaScriptu ZABEZPEČENÉho dotazování Microsoft Graph rozhraní API nebo webové rozhraní API, které přijímá tokeny z koncového bodu Microsoft Identity Platform. V tomto scénáři se po přihlášení uživatele vyžádá přístupový token a přidá se do požadavků HTTP prostřednictvím autorizační hlavičky. Získání a obnovení tokenu jsou zpracovávány pomocí knihovny Microsoft Authentication Library (MSAL).
+
+<!--end-collapse-->
+
+<!--start-collapse-->
+### <a name="libraries"></a>Knihovny
+
+Tato příručka používá následující knihovnu:
+
+|Knihovna|Popis|
+|---|---|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library pro JavaScript Preview|
+
+> [!NOTE]
+> *msal. js* cílí na *koncový bod platformy Microsoft Identity* , který umožňuje přihlašovat a získávat tokeny prostřednictvím osobních, školních a pracovních účtů. *Koncový bod platformy Microsoft Identity* má [určitá omezení](azure-ad-endpoint-comparison.md#limitations).
+> Pro pochopení rozdílů mezi koncovými body v 1.0 a v 2.0 si přečtěte [Průvodce porovnáním koncových](azure-ad-endpoint-comparison.md)bodů.
+
+<!--end-collapse-->
+
+## <a name="set-up-your-web-server-or-project"></a>Nastavení webového serveru nebo projektu
+
+> Chcete místo toho stáhnout tento projekt ukázky? Proveďte jednu z následujících akcí:
+> 
+> - Chcete-li spustit projekt s místním webovým serverem, jako je například Node. js, [Stáhněte soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
+>
+> - Volitelné Chcete-li spustit projekt se serverem služby IIS, [Stáhněte projekt sady Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
+>
+> A pak pokud chcete před spuštěním nakonfigurovat ukázku kódu, přejděte k [kroku konfigurace](#register-your-application).
+
+## <a name="prerequisites"></a>Požadavky
+
+* Pro spuštění tohoto kurzu potřebujete místní webový server, jako je například [Node. js](https://nodejs.org/en/download/), [.net Core](https://www.microsoft.com/net/core)nebo IIS Express integrace se sadou [Visual Studio 2017](https://www.visualstudio.com/downloads/).
+
+* Pokud používáte Node. js ke spuštění projektu, nainstalujte integrované vývojové prostředí (IDE), například [Visual Studio Code](https://code.visualstudio.com/download), pro úpravu souborů projektu.
+
+* Pokyny v této příručce jsou založené na Node. js i v aplikaci Visual Studio 2017, ale můžete použít jakékoli jiné vývojové prostředí nebo webový server.
+
+## <a name="create-your-project"></a>Vytvořit projekt
+
+> ### <a name="option-1-nodejs-or-other-web-servers"></a>Možnost 1: Node. js nebo jiné webové servery
+> Ujistěte se, že máte nainstalovaný [Node. js](https://nodejs.org/en/download/), a proveďte následující kroky:
+> - Vytvořte složku pro hostování aplikace.
+>
+> ### <a name="option-2-visual-studio"></a>Možnost 2: Visual Studio
+> Pokud používáte Visual Studio a vytváříte nový projekt, udělejte toto:
+> 1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**.
+> 1. V části **Visual C#\Web** vyberte **Webová aplikace ASP.NET (.NET Framework)** .
+> 1. Zadejte název vaší aplikace a pak vyberte **OK**.
+> 1. V části **Nová webová aplikace ASP.NET**vyberte **prázdné**.
+
+## <a name="create-the-spa-ui"></a>Vytvoření uživatelského rozhraní SPA
+1. Vytvořte soubor *index. html* pro váš JavaScript Spa. Pokud používáte aplikaci Visual Studio, vyberte projekt (kořenová složka projektu), klikněte pravým tlačítkem myši a vyberte možnost **Přidat** > **novou položku** > **stránky HTML**a pojmenujte soubor *index. html*.
+
+1. V souboru *index. html* přidejte následující kód:
+
+   ```html
+   <!DOCTYPE html>
+   <html>
+   <head>
+       <title>Quickstart for MSAL JS</title>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
+       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.js"></script>
+   </head>
+   <body>
+       <h2>Welcome to MSAL.js Quickstart</h2><br/>
+       <h4 id="WelcomeMessage"></h4>
+       <button id="SignIn" onclick="signIn()">Sign In</button><br/><br/>
+       <pre id="json"></pre>
+       <script>
+           //JS code
+       </script>
+   </body>
+   </html>
+   ```
+
+   > [!TIP]
+   > Verzi MSAL. js můžete v předchozím skriptu nahradit nejnovější vydanou verzí ve [verzích MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
+
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Přihlášení uživatele pomocí knihovny Microsoft Authentication Library (MSAL)
+
+1. Do `index.html` souboru přidejte následující kód `<script></script>` v rámci značek:
+
+    ```javascript
+    var msalConfig = {
+        auth: {
+            clientId: "Enter_the_Application_Id_here"
+            authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
+        },
+        cache: {
+            cacheLocation: "localStorage",
+            storeAuthStateInCookie: true
+        }
+    };
+
+    var graphConfig = {
+        graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
+    };
+
+    // this can be used for login or token request, however in more complex situations
+    // this can have diverging options
+    var requestObj = {
+        scopes: ["user.read"]
+    };
+
+    var myMSALObj = new Msal.UserAgentApplication(msalConfig);
+    // Register Callbacks for redirect flow
+    myMSALObj.handleRedirectCallback(authRedirectCallBack);
+
+
+    function signIn() {
+
+        myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
+            //Login Success
+            showWelcomeMessage();
+            acquireTokenPopupAndCallMSGraph();
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
+    function acquireTokenPopupAndCallMSGraph() {
+        //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
+        myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
+            callMSGraph(graphConfig.graphMeEndpoint, tokenResponse.accessToken, graphAPICallback);
+        }).catch(function (error) {
+            console.log(error);
+            // Upon acquireTokenSilent failure (due to consent or interaction or login required ONLY)
+            // Call acquireTokenPopup(popup window)
+            if (requiresInteraction(error.errorCode)) {
+                myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
+                    callMSGraph(graphConfig.graphMeEndpoint, tokenResponse.accessToken, graphAPICallback);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+        });
+    }
+
+
+    function graphAPICallback(data) {
+        document.getElementById("json").innerHTML = JSON.stringify(data, null, 2);
+    }
+
+
+    function showWelcomeMessage() {
+        var divWelcome = document.getElementById('WelcomeMessage');
+        divWelcome.innerHTML = 'Welcome ' + myMSALObj.getAccount().userName + "to Microsoft Graph API";
+        var loginbutton = document.getElementById('SignIn');
+        loginbutton.innerHTML = 'Sign Out';
+        loginbutton.setAttribute('onclick', 'signOut();');
+    }
+
+
+    //This function can be removed if you do not need to support IE
+    function acquireTokenRedirectAndCallMSGraph() {
+         //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
+         myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
+             callMSGraph(graphConfig.graphMeEndpoint, tokenResponse.accessToken, graphAPICallback);
+         }).catch(function (error) {
+             console.log(error);
+             // Upon acquireTokenSilent failure (due to consent or interaction or login required ONLY)
+             // Call acquireTokenRedirect
+             if (requiresInteraction(error.errorCode)) {
+                 myMSALObj.acquireTokenRedirect(requestObj);
+             }
+         });
+     }
+
+
+    function authRedirectCallBack(error, response) {
+        if (error) {
+            console.log(error);
+        }
+        else {
+            if (response.tokenType === "access_token") {
+                callMSGraph(graphConfig.graphEndpoint, response.accessToken, graphAPICallback);
+            } else {
+                console.log("token type is:" + response.tokenType);
+            }
+        }
+    }
+
+    function requiresInteraction(errorCode) {
+        if (!errorCode || !errorCode.length) {
+            return false;
+        }
+        return errorCode === "consent_required" ||
+            errorCode === "interaction_required" ||
+            errorCode === "login_required";
+    }
+
+    // Browser check variables
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf('MSIE ');
+    var msie11 = ua.indexOf('Trident/');
+    var msedge = ua.indexOf('Edge/');
+    var isIE = msie > 0 || msie11 > 0;
+    var isEdge = msedge > 0;
+    //If you support IE, our recommendation is that you sign-in using Redirect APIs
+    //If you as a developer are testing using Edge InPrivate mode, please add "isEdge" to the if check
+    // can change this to default an experience outside browser use
+    var loginType = isIE ? "REDIRECT" : "POPUP";
+
+    if (loginType === 'POPUP') {
+        if (myMSALObj.getAccount()) {// avoid duplicate code execution on page load in case of iframe and popup window.
+            showWelcomeMessage();
+            acquireTokenPopupAndCallMSGraph();
+        }
+    }
+    else if (loginType === 'REDIRECT') {
+        document.getElementById("SignIn").onclick = function () {
+            myMSALObj.loginRedirect(requestObj);
+        };
+        if (myMSALObj.getAccount() && !myMSALObj.isCallback(window.location.hash)) {// avoid duplicate code execution on page load in case of iframe and popup window.
+            showWelcomeMessage();
+            acquireTokenRedirectAndCallMSGraph();
+        }
+    } else {
+        console.error('Please set a valid login type');
+    }
+    ```
+
+<!--start-collapse-->
+### <a name="more-information"></a>Další informace
+
+Poté, co uživatel klikne na tlačítko pro **přihlášení** poprvé, `signIn` metoda zavolá `loginPopup` uživatele k přihlášení. Tato metoda má za následek otevření automaticky otevíraného okna s *koncovým bodem Microsoft Identity Platform* pro zobrazení výzvy a ověření přihlašovacích údajů uživatele. V důsledku úspěšného přihlášení se uživatel přesměruje zpátky na původní stránku *index. html* a obdrží se token, který zpracovává `msal.js` , a informace obsažené v tokenu se uloží do mezipaměti. Tento token je známý jako *token ID* a obsahuje základní informace o uživateli, jako je například zobrazované jméno uživatele. Pokud plánujete použít data poskytnutá tímto tokenem pro jakékoli účely, musíte se ujistit, že váš back-end Server ověří tento token, aby bylo zaručeno, že token byl vydán pro platného uživatele pro vaši aplikaci.
+
+Zabezpečené ověřování hesla vygenerované touto příručkou volá `acquireTokenSilent` nebo `acquireTokenPopup` získá *přístupový token* , který se používá k dotazování rozhraní API pro Microsoft Graph pro informace o profilu uživatele. Pokud potřebujete ukázku, která ověří token ID, podívejte se na [tuto]ukázkovou ukázkovou aplikaci v(https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHubu Active-Directory-JavaScript-singlepageapp-dotnet-WebApi-v2") na GitHubu – ukázka používá webové rozhraní API ASP.NET pro ověření tokenu.
+
+#### <a name="getting-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
+
+Po počátečním přihlášení nechcete požádat uživatele, aby se znovu ověřili pokaždé, když potřebují požádat o přístup k prostředku, takže by se pro získání tokenu měl *acquireTokenSilent* použít většinou. V některých případech je ale nutné vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform – mezi příklady patří:
+
+- Může být potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
+- Vaše aplikace žádá o přístup k prostředku, ke kterému musí dát uživatel souhlas
+- Je nutné dvoufaktorové ověřování
+
+Volání výsledků *acquireTokenPopup* v překryvném okně (nebo *acquireTokenRedirect* má za následek přesměrování uživatelů na koncový bod platformy Microsoft Identity), kde uživatelé potřebují pracovat buď potvrzením svých přihlašovacích údajů, a tím, že vyjádření souhlasu s požadovaným prostředkem nebo dokončení ověření dvou faktorů.
+
+#### <a name="getting-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
+
+`acquireTokenSilent` Metoda zpracovává získání a obnovení tokenu bez zásahu uživatele. Po `loginPopup` prvním spuštění `loginRedirect`(nebo) je metoda, `acquireTokenSilent` která se běžně používá k získání tokenů používaných pro přístup k chráněným prostředkům pro následná volání – jako volání pro vyžádání nebo obnovení tokenů se provádí tiše.
+`acquireTokenSilent`může v některých případech selhat – například platnost hesla uživatele vypršela. Vaše aplikace může tuto výjimku zpracovat dvěma způsoby:
+
+1. `acquireTokenPopup` Okamžitě zavolejte na výsledek, který zobrazí výzvu k přihlášení uživatele. Tento model se běžně používá v online aplikacích, kde není k dispozici žádný neautorizovaný obsah v aplikaci pro uživatele. Ukázka vygenerovaná tímto procesem instalace používá tento model.
+
+2. Aplikace mohou také uživateli vytvořit vizuální indikaci, že je vyžadováno interaktivní přihlášení, takže uživatel může vybrat správný čas pro přihlášení nebo může aplikace opakovat `acquireTokenSilent` později. To se běžně používá v případě, že uživatel může použít jiné funkce aplikace bez přerušení – například v aplikaci je k dispozici neověřený obsah. V takovém případě se uživatel může rozhodnout, kdy se chce přihlásit k přístupu k chráněnému prostředku, nebo aktualizovat zastaralé informace.
+
+> [!NOTE]
+> V `loginRedirect` tomto rychlém startu `acquireTokenRedirect` se používají metody a v případě, že se prohlížeč používá Internet Explorer z důvodu [známého problému](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) souvisejícího se zpracováním překryvných oken prohlížečem Internet Exploreru.
+<!--end-collapse-->
+
+## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Volání rozhraní API pro Microsoft Graph pomocí tokenu, který jste právě získali
+
+Do `index.html` souboru přidejte následující kód `<script></script>` v rámci značek:
+
+```javascript
+function callMSGraph(theUrl, accessToken, callback) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200)
+            callback(JSON.parse(this.responseText));
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+    xmlHttp.send();
+}
+```
+<!--start-collapse-->
+
+### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Další informace o tom, jak provést volání REST proti chráněnému rozhraní API
+
+V ukázkové aplikaci vytvořené touto příručkou `callMSGraph()` se metoda používá k vytvoření požadavku HTTP `GET` proti chráněnému prostředku, který vyžaduje token, a pak vrátí obsah volajícímu. Tato metoda přidá získaný token v *autorizační hlavičce protokolu HTTP*. Pro ukázkovou aplikaci vytvořenou touto příručkou je prostředkem koncový bod Microsoft Graph API *já* , který zobrazuje informace o profilu uživatele.
+
+<!--end-collapse-->
+
+## <a name="add-a-method-to-sign-out-the-user"></a>Přidejte metodu pro odhlášení uživatele.
+
+Do `index.html` souboru přidejte následující kód `<script></script>` v rámci značek:
+
+```javascript
+/**
+ * Sign out the user
+ */
+ function signOut() {
+     myMSALObj.logout();
+ }
+```
+
+## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+
+1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
+1. Přejít na stránku Microsoft Identity Platform for Developers [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
+1. Po zobrazení stránky **Registrovat aplikaci** zadejte název vaší aplikace.
+1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+1. V části **identifikátor URI přesměrování** v rozevíracím seznamu vyberte **webovou** platformu a pak nastavte tuto hodnotu na adresu URL aplikace, která je založená na vašem webovém serveru. 
+
+   Informace o nastavení a získání adresy URL pro přesměrování v aplikaci Visual Studio a Node. js naleznete v následujících dvou částech.
+
+1. Vyberte **Zaregistrovat**.
+1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
+1. Tento rychlý Start vyžaduje, aby byl povolený [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) . V levém podokně registrované aplikace vyberte **ověřování**.
+1. V části **Upřesnit nastavení**v části **implicitní udělení**vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
+1. Vyberte **Uložit**.
+
+> #### <a name="set-a-redirect-url-for-nodejs"></a>Nastavení adresy URL pro přesměrování pro Node. js
+> Pro Node. js můžete nastavit port webového serveru v souboru *Server. js* . V tomto kurzu se pro referenci používá port 30662, ale můžete použít jakýkoli jiný dostupný port. 
+>
+> Chcete-li nastavit adresu URL pro přesměrování v informacích o registraci aplikace, přepněte zpět do podokna **Registrace aplikace** a proveďte jednu z následujících akcí:
+>
+> - Nastaví *`http://localhost:30662/`* se jako **Adresa URL pro přesměrování**.
+> - Pokud používáte vlastní port TCP, použijte *`http://localhost:<port>/`* (kde  *\<port >* je vlastní číslo portu TCP).
+>
+> #### <a name="set-a-redirect-url-for-visual-studio"></a>Nastavení adresy URL pro přesměrování pro Visual Studio
+> Pokud chcete získat adresu URL pro přesměrování pro Visual Studio, udělejte toto:
+> 1. V **Průzkumníka řešení**, vyberte projekt.
+>
+>    Otevře se okno **vlastnosti** . Pokud není otevřený, stiskněte **F4**.
+>
+>    ![okno Vlastnosti projektu JavaScriptSPA](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)
+>
+> 1. Zkopírujte hodnotu **URL** .
+ 
+> 1. Přepněte zpět do podokna **Registrace aplikace** a vložte zkopírovanou hodnotu jako **adresu URL pro přesměrování**.
+
+#### <a name="configure-your-javascript-spa"></a>Konfigurace vašeho JavaScriptu SPA
+
+1. V souboru *index. html* , který jste vytvořili během nastavení projektu, přidejte informace o registraci aplikace. V horní části souboru v rámci `<script></script>` značek přidejte následující kód:
+
+    ```javascript
+    var msalConfig = {
+        auth: {
+            clientId: "<Enter_the_Application_Id_here>",
+            authority: "https://login.microsoftonline.com/<Enter_the_Tenant_info_here>"
+        },
+        cache: {
+            cacheLocation: "localStorage",
+            storeAuthStateInCookie: true
+        }
+    };
+    ```
+
+    Kde:
+    - Enter_the_Application_Id_here > je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.  *\<*
+    - Enter_the_Tenant_info_here > je nastavená na jednu z následujících možností:  *\<*
+       - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například *contoso.Microsoft.com*).
+       - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu **organizacemi**.
+       - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tutohodnotu běžnými. Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu **příjemci**.
+
+## <a name="test-your-code"></a>Testování kódu
+
+Otestujte kód pomocí některého z následujících prostředí.
+
+### <a name="test-with-nodejs"></a>Testování pomocí Node. js
+
+Pokud nepoužíváte aplikaci Visual Studio, ujistěte se, že je váš webový server spuštěný.
+
+1. Nakonfigurujte server tak, aby naslouchal portu TCP, který je založený na umístění souboru *index. html* . Pro Node. js spusťte webový server, aby naslouchal na portu spuštěním následujících příkazů na příkazovém řádku ve složce aplikace:
+
+    ```bash
+    npm install
+    node server.js
+    ```
+1. V prohlížeči zadejte **http://\<span\<>/span > localhost: 30662** nebo **\<http://span >\</span > localhost: {port}** , kde *port* je port, na kterém je váš webový server naslouchání. Měl by se zobrazit obsah souboru *index. html* a **přihlašovací** tlačítko.
+
+### <a name="test-with-visual-studio"></a>Testování pomocí sady Visual Studio
+
+Pokud používáte aplikaci Visual Studio, vyberte řešení projektu a potom vyberte F5 ke spuštění projektu. V prohlížeči se otevře umístění http://<span></span>localhost: {port} a **přihlašovací** tlačítko by mělo být viditelné.
+
+## <a name="test-your-application"></a>Testování aplikace
+
+Poté, co prohlížeč načte soubor *index. html* , vyberte možnost **Přihlásit**se. Budete vyzváni k přihlášení pomocí koncového bodu Microsoft Identity Platform:
+
+![Přihlašovací okno účtu v jazyce JavaScript SPA](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
+
+### <a name="provide-consent-for-application-access"></a>Poskytnutí souhlasu pro přístup k aplikaci
+
+Při prvním přihlášení do aplikace se zobrazí výzva k poskytnutí přístupu k vašemu profilu a přihlášení:
+
+![Okno požadovaná oprávnění](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
+
+### <a name="view-application-results"></a>Zobrazit výsledky aplikace
+
+Po přihlášení se v odpovědi rozhraní API pro Microsoft Graph, která se zobrazí na stránce, vrátí informace o vašem profilu uživatele.
+
+![Výsledky z volání rozhraní API Microsoft Graph](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
+
+<!--start-collapse-->
+### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaných oprávněních
+
+Rozhraní Microsoft Graph API vyžaduje, aby *uživatel. přečetl* obor pro čtení profilu uživatele. Tento obor se ve výchozím nastavení automaticky přidá v každé aplikaci, která je zaregistrovaná na portálu pro registraci. Jiná rozhraní API pro Microsoft Graph a také vlastní rozhraní API pro back-end Server můžou vyžadovat další obory. Například rozhraní Microsoft Graph API vyžaduje *calendars. Read* Scope pro výpis kalendářů uživatele.
+
+Chcete-li získat přístup k kalendářům uživatele v kontextu aplikace, přidejte *kalendáře. Přečtěte si* delegované oprávnění k informacím o registraci aplikace. Pak přidejte *kalendáře. Přečtěte* si rozsah `acquireTokenSilent` volání.
+
+>[!NOTE]
+>Uživatel může být vyzván k dalšímu souhlasu při zvýšení počtu oborů.
+
+Pokud rozhraní API back-endu nevyžaduje obor (nedoporučuje se), můžete použít *ClientID* jako obor v voláních pro získání tokenů.
+
+<!--end-collapse-->
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 Pomůžeme nám vylepšit platformu Microsoft identity. Řekněte nám, co si myslíte, díky krátkému průzkumu dvou dotazů.
 

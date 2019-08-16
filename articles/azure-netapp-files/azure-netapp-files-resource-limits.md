@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 763b3961bfd621f05ab5cd021526b0d6d109c020
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4ce40fdf36f7d66e60e15955318e43f1f24f275f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881708"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515846"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -36,15 +36,12 @@ Následující tabulka popisuje omezení prostředků pro Azure NetApp Files:
 |  Počet svazků na fond kapacity     |    500   |    Ano     |
 |  Počet snímků na svazek       |    255     |    Ne        |
 |  Počet podsítí delegovaných pro Azure NetApp Files (Microsoft. NetApp/svazky) na Azure Virtual Network    |   1   |    Ne    |
-|  Maximální počet IP adres používaných ve virtuální síti (včetně partnerských virtuální sítě) s Azure NetApp Files    |    1000   |    Ne   |
+|  Počet souběžných IP adres ve virtuální síti (včetně partnerských virtuální sítě), které mají přístup k Azure NetApp Files   |    1000   |    Ne   |
 |  Minimální velikost jednoho fondu kapacity   |  4 TiB     |    Ne  |
 |  Maximální velikost jednoho fondu kapacity    |  500 TiB   |   Ne   |
 |  Minimální velikost jednoho svazku    |    100 GiB    |    Ne    |
-|  Maximální přiřazená kvóta jednoho svazku *   |   92 TiB   |    Ne   |
-|  Maximální velikost jednoho svazku *     |    100 TiB    |    Ne       |
+|  Maximální velikost jednoho svazku     |    100 TiB    |    Ne       |
 |  Maximální počet souborů (uzlů inode) na jeden svazek     |    50 000 000    |    Ne    |    
-
-\* Svazek se dá ručně vytvořit nebo změnit jeho velikost na maximální 92 TiB. Svazek ale může růst až 100 TiB ve scénáři překročení. Podrobnosti o překročení kapacity najdete v tématu [cost model pro Azure NetApp Files](azure-netapp-files-cost-model.md) . 
 
 ## <a name="request-limit-increase"></a>Zvýšení limitu požadavku 
 
@@ -73,7 +70,7 @@ Z Azure Portal rovina navigace:
     3. Klikněte **na další: K vytvoření žádosti** si Projděte + Create. 
 
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
 - [Pochopení hierarchie úložiště Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
 - [Nákladový model pro Azure NetApp Files](azure-netapp-files-cost-model.md)

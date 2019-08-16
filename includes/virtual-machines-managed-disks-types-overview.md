@@ -5,76 +5,69 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/22/2019
+ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4abf50e11070f2060309ae9b9cd045c874a2c52e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7385888c54d46e706621f781a64d12d3ae7aa5fb
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133224"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512688"
 ---
-# <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou dostupné v Azure?
+# <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou k dispozici v Azure?
 
-Spravované disky Azure nyní nabízí čtyři typy disků, tři, z nichž jsou všeobecně dostupná (GA) a jednu, která je aktuálně ve verzi preview. Těchto čtyř typů disků nevidí každý mít vlastní příslušné cílové scénáře zákazníka.
+Služba Azure Managed disks v současné době nabízí čtyři typy disků. každý typ je zaměřený na konkrétní scénáře zákazníků.
 
 ## <a name="disk-comparison"></a>Porovnání disků
 
-Následující tabulka obsahuje porovnání ultra solid-stát disky (SSD) (preview), premium SSD, SSD na úrovni standard a standardních pevných disků (HDD) pro spravované disky, které vám pomůžou při rozhodování, co se má použít.
+V následující tabulce najdete porovnání disků Ultra, Premium Solid-State-Drives (SSD), Standard SSD a standardních pevných disků (HDD) pro spravované disky, které vám pomůžou rozhodnout se, co se má použít.
 
-|   | Ultra SSD (preview)   | Premium SSD   | SSD úrovně Standard   | Standard HDD   |
+|   | Ultra disk   | SSD úrovně Premium   | SSD úrovně Standard   | Disk HDD úrovně Standard   |
 |---------|---------|---------|---------|---------|
 |Typ disku   |SSD   |SSD   |SSD   |HDD   |
-|Scénář   |Úlohy náročné na vstupně-výstupních operací, jako jsou SAP HANA, databáze na nejvyšší úrovni (třeba SQL, Oracle) a dalších transakcí náročná na výkon úloh.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, málo používaná podnikové aplikace a pro vývoj/testování   |Zálohování méně náročné úlohy s řídkým přístupem   |
-|Velikost disku   |gibibajt 65 536 (GiB) (Preview)   |32 767 giB    |32 767 giB   |32 767 giB   |
-|Maximální propustnost   |2 000 MiB/s (Preview)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
-|Maximální počet vstupně-výstupních operací   |160,000 (preview)   |20,000   |6,000   |2 000   |
+|Scénář   |Úlohy náročné na v/v, jako jsou SAP HANA, databáze nejvyšší úrovně (například SQL, Oracle) a další úlohy náročné na transakce.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, lehce používané podnikové aplikace a vývoj a testování   |Zálohování, Nekritická, zřídka přístup   |
+|Velikost disku   |65 536 gibibajt (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
+|Maximální propustnost   |soubory MiB 2 000/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maximální počet vstupně-výstupních operací za sekundu   |160 000    |20,000   |6,000   |2 000   |
 
-## <a name="ultra-ssd-preview"></a>Ultra SSD (preview)
+## <a name="ultra-disk"></a>Ultra disk
 
-Ultra SSD Azure (preview) poskytuje vysokou propustnost, vysoké IOPS a stálá nízká latence diskové úložiště pro virtuální počítače Azure IaaS. Některé další výhody ultra SSD patří schopnost dynamicky měnit výkon disku spolu s úlohami, aniž byste museli restartovat své virtuální počítače. Ultra SSD disky jsou vhodné pro úlohy náročné na data, jako je SAP HANA, databáze na nejvyšší úrovni a transakce náročné úlohy. Ultra SSD jde použít jenom jako datové disky. Doporučujeme použít disky premium SSD jako disky s operačním systémem.
+Disky Azure Ultra poskytují vysokou propustnost, vysoké IOPS a konzistentní diskové úložiště s nízkou latencí pro virtuální počítače Azure s IaaS. Mezi další výhody prostředí Ultra disks patří schopnost dynamicky měnit výkon disku společně s vašimi úlohami, aniž by bylo nutné restartovat virtuální počítače. Disky Ultra jsou vhodné pro úlohy náročné na data, jako jsou SAP HANA, databáze nejvyšší úrovně a zatížení náročné na transakce. Disky Ultra se dají používat jenom jako datové disky. Jako disky s operačním systémem doporučujeme používat prémiové SSD.
 
 ### <a name="performance"></a>Výkon
 
-Když si zřídíte ultra disku, můžete nezávisle na sobě konfigurovat kapacitu a výkon disku. Ultra SSD se dělí na několik pevných velikostech od 4 GB až 64 TiB a funkcí modelu konfigurace flexibilní výkonu, který umožňuje nezávisle na sobě konfigurovat IOPS a propustnost.
+Když zřizujete disk Ultra, můžete nezávisle konfigurovat kapacitu a výkon disku. Disky Ultra přicházejí v několika pevných velikostech od 4 GiB až 64 TiB a funkce flexibilního modelu konfigurace výkonu, který umožňuje nezávisle konfigurovat vstupně-výstupní operace a propustnost.
 
-Jsou některé klíčové funkce Ultra SSD:
+Mezi klíčové funkce Ultra diskù patří:
 
-- Kapacita disku: Ultra rozsahy kapacity SSD z 4 GiB až 64 TB.
-- Vstupně-výstupních operací disku: Ultra SSD podporu vstupně-výstupních operací omezení 300 IOPS/GiB maximálně 160 kB IOPS na disk. K dosažení vstupně-výstupních operací, kterou jste zřídili, ujistěte se, že jsou vybrané vstupně-výstupních operací disku menší než počet IOPS virtuálních počítačů. Minimální vstupně-výstupních operací disku jsou 100 vstupně-výstupních operací.
-- Propustnost disku: S ultra SSD, propustnost limit jednoho disku je 256 KiB/s pro každý zřízené IOPS, až do maximálního počtu 2000 MB/s disku (kde MB/s = 10 ^ 6 bajtů za sekundu). Propustnost disku minimální je 1 MiB.
-- Ultra SSD disky podporují nastavení vlastnosti výkonu disku (IOPS a propustnost) za běhu bez odpojení disku od virtuálního počítače. Jakmile se operace změny velikosti disku výkonu se vystavil na disku, může trvat až hodinu, tato změna se skutečně projeví.
+- Kapacita disku: Kapacita disků v oblasti Ultra je 4 GiB až 64 TiB.
+- IOPS disku: Disky Ultra podporují limity IOPS 300 IOPS/GiB až do maximálního počtu 160 000 IOPS na disk. Abyste dosáhli IOPS, které jste zřídili, zajistěte, aby byl vybraný disk IOPS menší než limit počtu IOPS virtuálních počítačů. Minimální počet vstupně-výstupních operací na disk je 2 IOPS/GiB, přičemž celkové minimální hodnoty jsou 100 IOPS. Pokud byste například měli 4 GiB disk Ultra, budete mít minimálně 100 IOPS, ale ne 8 IOPS.
+- Propustnost disku: U Ultra disks je limit propustnosti jednoho disku 256 KiB/s pro každý zřízený IOPS, maximálně 2000 MB/s na disk (kde MB/s = 10 ^ 6 bajtů za sekundu). Minimální propustnost na disk je 4KiB/s pro každý zřízený IOPS, přičemž celkové minimální hodnoty jsou 1 MB/s.
+- Disky Ultra podporují úpravu atributů výkonu disku (IOPS a propustnosti) za běhu bez odpojení disku od virtuálního počítače. Jakmile se na disku vystavila operace změny velikosti výkonu disku, může trvat až hodinu, než se změna projeví.
 
 ### <a name="disk-size"></a>Velikost disku
 
-|Velikost disku (GiB)  |Limity vstupně-výstupních operací  |Limit propustnosti (MB/s)  |
+|Velikost disku (GiB)  |Limit IOPS  |Limit propustnosti (MB/s)  |
 |---------|---------|---------|
 |4     |1,200         |300         |
 |8     |2,400         |600         |
 |16     |4,800         |1,200         |
-|32     |9,600         |2 000         |
-|64     |19,200         |2 000         |
-|128     |38,400         |2 000         |
-|256     |76,800         |2 000         |
+|32     |9 600         |2 000         |
+|64     |19 200         |2 000         |
+|128     |38 400         |2 000         |
+|256     |76 800         |2 000         |
 |512     |80,000         |2 000         |
-|1 024 65 536 (velikosti v tomto rozsahu, zvyšovat v přírůstcích po 1 TB)     |160,000         |2 000         |
+|1024 – 65536 (velikosti v tomto rozsahu se zvyšují v přírůstcích po 1 TiB)     |160 000         |2 000         |
 
-### <a name="transactions"></a>Transakce
+### <a name="ga-scope-and-limitations"></a>Rozsah a omezení GA
 
-Ultra disků SSD každý vstupně-výstupní operace menší než nebo rovna až 256 KiB propustnosti se nepovažuje za jeden vstupně-výstupní operace. Vstupně-výstupní operace větší než 256 KiB propustnosti se považují za více vstupně-výstupních operací, o velikosti 256 KiB.
+V současnosti mají extrémně disky další omezení, jsou následující:
 
-### <a name="preview-scope-and-limitations"></a>Rozsah ve verzi Preview a omezení
-
-Ve verzi preview, ultra SSD:
-
-- Jsou podporovány v oblasti východní USA 2 v jediné zóny dostupnosti  
-- Jde použít jenom se zónami dostupnosti (skupiny dostupnosti a jednoho nasazení virtuálních počítačů mimo zóny budou nemá schopnost připojení ultra disku)
-- Jsou podporovány pouze na virtuálních počítačích ES/DS v3
-- Jsou k dispozici pouze jako datové disky a pouze velikost fyzického sektoru 4k podpoře  
-- Je možné vytvořit pouze jako prázdné disky  
-- Aktuálně lze nasadit pouze pomocí šablony Azure Resource Manageru, rozhraní příkazového řádku, Powershellu a sadě Python SDK.
-- Nelze nasadit pomocí webu Azure portal (ještě).
-- Zatím nepodporuje snímky disků, imagí virtuálních počítačů, dostupnosti, škálovací sady virtuálních počítačů a Azure disk encryption.
-- Zatím nepodporuje integraci s Azure Backup nebo Azure Site Recovery.
-- Stejně jako u [většina náhledy](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), tuto funkci neměli používat pro produkční úlohy až do obecné dostupnosti (GA).
+- Podporují se v Východní USA 2, jihovýchodní Asie a Severní Evropa ve dvou zónách dostupnosti na oblast.  
+- Dá se použít jenom se zónami dostupnosti (skupinami dostupnosti a nasazeními s jedním virtuálním počítačem mimo zóny nebude mít možnost připojit Ultra disk).
+- Podporují se jenom u virtuálních počítačů ES/DS v3.
+- K dispozici pouze jako datové disky a podporují pouze velikost fyzického sektoru 4k  
+- Dá se vytvořit jenom jako prázdné disky.  
+- Ještě nepodporují snímky disků, image virtuálních počítačů, skupiny dostupnosti, sady škálování virtuálních počítačů a Azure Disk Encryption.
+- Ještě nepodporují integraci s Azure Backup ani Azure Site Recovery

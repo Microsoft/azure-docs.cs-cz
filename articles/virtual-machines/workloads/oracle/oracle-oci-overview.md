@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 309c481c0ebf0e6061524a12356e67394e5db8d2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b9f4757b9a4282c7b932b9dc74ce741d9bca2f72
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880837"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515315"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Řešení aplikací Oracle integrující Microsoft Azure a Oracle cloudovou infrastrukturu (Preview)
 
@@ -29,7 +29,7 @@ Microsoft a Oracle mají partnerství, aby poskytovaly nízkou latenci a vysokou
 Pomocí tohoto připojení mezi cloudy můžete rozdělit vícevrstvou aplikaci tak, aby běžela vaše databázová vrstva na platformě Oracle Cloud Infrastructure (OCI), a na Microsoft Azure aplikace a další vrstvy. Prostředí je podobné jako spuštění celého zásobníku řešení v jednom cloudu. 
 
 > [!IMPORTANT]
-> Tato funkce mezi cloudy je aktuálně ve verzi Preview a [platí některá omezení](#preview-limitations). Aby bylo možné povolit připojení s nízkou latencí mezi Azure a OCI, musí být předplatné Azure pro tuto funkci nejdřív uvedené bíle. Do verze Preview se musíte zaregistrovat odesláním e-mailu oracleconnect@microsoft.com s vaším ID předplatného. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Můžete se také obrátit na zástupce Microsoftu, který bude pro tuto verzi Preview povolený. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) . Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Tato funkce mezi cloudy je aktuálně ve verzi Preview a [platí pro ně omezení](#preview-limitations). Pokud chcete povolit připojení s nízkou latencí mezi Azure a OCI, vaše předplatné Azure musí být pro tuto funkci nejdřív uvedené bíle. K provedení tohoto krátkého [formuláře průzkumu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)se musíte zaregistrovat ve verzi Preview. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Můžete se také obrátit na zástupce Microsoftu, který bude pro tuto verzi Preview povolený. Přístup k funkci verze Preview podléhá dostupnosti a omezení Microsoftu, a to pouze podle svého uvážení. Dokončení průzkumu nezaručuje přístup. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) . Některé aspekty této funkce se můžou před zveřejněním změnit.
 
 Pokud vás zajímá nasazení řešení Oracle výhradně do infrastruktury Azure, přečtěte si téma [image virtuálních počítačů Oracle a jejich nasazení na Microsoft Azure](oracle-vm-solutions.md).
 

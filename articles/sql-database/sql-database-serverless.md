@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 07/05/2019
-ms.openlocfilehash: 3b9a9f4ac1cf0722ab7d3838f0b0c4c12b47dc74
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566814"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515277"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bez serveru (Preview)
 
@@ -281,7 +281,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>Omezení prostředků
 
-Omezení prostředků najdete v tématu [výpočetní vrstva bez serveru](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier) .
+Omezení prostředků najdete v tématu [výpočetní vrstva bez serveru](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).
 
 ## <a name="billing"></a>Fakturace
 
@@ -321,7 +321,7 @@ Předpokládejme, že cena za výpočetní jednotku je $0.000073/vCore/sekunda. 
 
 Výpočetní vrstva bez serveru je dostupná po celém světě s výjimkou těchto oblastí: Austrálie – střed, Čína – východ, Čína – sever, Francie – jih, Německo – střed, Německo – západ, Indie – jih, Korea – jih, Jižní Afrika – západ, Velká Británie – sever, Velká Británie – jih, Velká Británie – západ a Středozápadní USA.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak [začít, najdete v tématu rychlý Start: Pomocí Azure Portal](sql-database-single-database-get-started.md)vytvořte v Azure SQL Database jednu databázi.
-- Omezení prostředků najdete v tématu [omezení prostředků výpočetní vrstvy bez serveru](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier).
+- Omezení prostředků najdete v tématu [omezení prostředků výpočetní vrstvy bez serveru](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).

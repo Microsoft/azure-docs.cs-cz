@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Nahlaste svůj první model.'
+title: 'Kurz: Výuka prvního modelu ML'
 titleSuffix: Azure Machine Learning service
 description: V tomto kurzu se naučíte základní vzory návrhu ve službě Azure Machine Learning Service a naučíte se jednoduchý model scikit-učení založený na diabetes sadě dat.
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: a3db70925d59f9d0e2793b04824b2e8606719dd4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934240"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516246"
 ---
-# <a name="tutorial-train-your-first-model"></a>Kurz: Trénování prvního modelu
+# <a name="tutorial-train-your-first-ml-model"></a>Kurz: Výuka prvního modelu ML
 
 Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní vzory návrhu ve službě Azure Machine Learning Service a naučíte se jednoduchý model scikit-učení založený na diabetes sadě dat. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
 

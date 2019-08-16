@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
 ms.custom: seo-java-july2019
-ms.openlocfilehash: 58356db2fbdf53bbd16e6fd20de54e022afb38b3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: cea53aefae2e559b7874b1235e4f952fe46ea642
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736666"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509616"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Rychlý start: Vytvoření databáze grafů v Azure Cosmos DB pomocí sady Java SDK 
 
@@ -106,7 +106,7 @@ Následující fragmenty kódu pocházejí ze souboru C:\git-samples\azure-cosmo
 
 Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkopírujte je do aplikace. Tato nastavení umožní aplikaci komunikovat s hostovanou databází.
 
-1. Na [portálu Azure](https://portal.azure.com/) klikněte na **Klíče**. 
+1. V [Azure Portal](https://portal.azure.com/)vyberte **klíče**. 
 
     Zkopírujte první část hodnoty identifikátoru URI.
 
@@ -165,14 +165,14 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
     
     Pokud dochází k chybám časového limitu, zkontrolujte, jestli jste v části [Aktualizace informací o připojení](#update-your-connection-information) správně aktualizovali informace o připojení, a zkuste poslední příkaz spustit znovu. 
     
-    Po zastavení programu stiskněte Enter a pak v internetovém prohlížeči přejděte zpátky na portál Azure. 
+    Po zastavení programu vyberte Enter a pak přepněte zpátky na Azure Portal v internetovém prohlížeči. 
 
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Kontrola a přidání ukázkových dat
 
 Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané do grafu a přidat další datové body.
 
-1. Klikněte na **Průzkumník dat**, rozbalte **sample-graph**, klikněte na **Graf** a potom klikněte na **Použít filtr**. 
+1. Vyberte **Průzkumník dat**, rozbalte **Sample-Graph**, vyberte **graf**a pak vyberte **použít filtr**. 
 
    ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
@@ -180,13 +180,13 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
    ![Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
-3. Teď přidáme několik nových uživatelů. Klikněte na tlačítko **Nový vrchol** a přidejte do grafu data.
+3. Teď přidáme několik nových uživatelů. Vyberte **nový vrchol** a přidejte do grafu data.
 
    ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
 
 4. Do pole popisku zadejte *person* (osoba).
 
-5. Kliknutím na **Přidat vlastnost** přidejte následující vlastnosti. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se pouze klíč id.
+5. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se pouze klíč id.
 
     key|hodnota|Poznámky
     ----|----|----
@@ -197,13 +197,13 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
     > [!NOTE]
     > V tomto rychlém startu vytvoříte kolekci bez oddílů. Pokud však vytvoříte dělenou kolekci zadáním klíče oddílu při vytváření kolekce, pak každý nový vrchol bude muset zahrnovat klíč oddílu jako klíč. 
 
-6. Klikněte na **OK**. Možná bude nutné zvětšit obrazovku, aby se tlačítko **OK** zobrazilo v dolní části obrazovky.
+6. Vyberte **OK**. Možná bude nutné zvětšit obrazovku, aby se tlačítko **OK** zobrazilo v dolní části obrazovky.
 
-7. Znovu klikněte na **Nový vrchol** a přidejte dalšího nového uživatele. 
+7. Znovu vyberte **nový vrchol** a přidejte dalšího nového uživatele. 
 
 8. Zadejte popisek *person* (osoba).
 
-9. Kliknutím na **Přidat vlastnost** přidejte následující vlastnosti:
+9. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností:
 
     key|hodnota|Poznámky
     ----|----|----
@@ -211,17 +211,17 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
     gender (pohlaví)|male (muž)| 
     school (škola)|MIT| 
 
-10. Klikněte na **OK**. 
+10. Vyberte **OK**. 
 
-11. Klikněte na tlačítko **Použít filtr** s výchozím filtrem `g.V()` a zobrazte v grafu všechny hodnoty. Teď se v seznamu **Výsledky** zobrazí všichni uživatelé. 
+11. ClSelectck tlačítko **použít filtr** s výchozím `g.V()` filtrem pro zobrazení všech hodnot v grafu. Teď se v seznamu **Výsledky** zobrazí všichni uživatelé. 
 
-    S přidáváním dalších dat můžete pomocí filtrů omezit výsledky. Průzkumník dat ve výchozím nastavení pomocí filtru `g.V()` načte všechny vrcholy v grafu. Můžete ho změnit na jiný [dotaz grafu](tutorial-query-graph.md), třeba `g.V().count()`, který vrátí počet všech vrcholů v grafu ve formátu JSON. Pokud jste filtr změnili, změňte ho zpátky na `g.V()`, klikněte na **Použít filtr** a znovu zobrazte všechny výsledky.
+    S přidáváním dalších dat můžete pomocí filtrů omezit výsledky. Průzkumník dat ve výchozím nastavení pomocí filtru `g.V()` načte všechny vrcholy v grafu. Můžete ho změnit na jiný [dotaz grafu](tutorial-query-graph.md), třeba `g.V().count()`, který vrátí počet všech vrcholů v grafu ve formátu JSON. Pokud jste filtr změnili, změňte filtr zpět na `g.V()` a vyberte **použít filtr** pro zobrazení všech výsledků znovu.
 
-12. Teď můžete propojit uživatele rakesh a ashley. Ujistěte se, že v seznamu **Výsledky** je vybraný uživatel **ashley**, a potom klikněte na ![Změna cíle vrcholu v grafu](./media/create-graph-java/edit-pencil-button.png) vedle položky **Cíle** vpravo dole. Možná budete muset rozšířit okno, aby se tlačítko zobrazilo.
+12. Teď můžete propojit uživatele rakesh a ashley. V seznamu **výsledků** ověřte, že je vybraná možnost **Ashley** , ![a potom v grafu klikněte na tlačítko změnit cíl](./media/create-graph-java/edit-pencil-button.png) vrcholu v grafu vedle **cílů** na pravé straně. Možná budete muset rozšířit okno, aby se tlačítko zobrazilo.
 
     ![Změna cíle vrcholu v grafu](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
-13. Do pole **Cíl** zadejte *rakesh*, do pole **Popisek hrany** zadejte *knows* (zná) a potom klikněte na zaškrtávací políčko.
+13. Do pole **cíl** zadejte *Rakesh*, do pole **popisek hrany** zadejte *ví*a potom zaškrtněte políčko.
 
     ![Přidání propojení mezi uživateli ashley a rakesh v Průzkumníku dat](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 

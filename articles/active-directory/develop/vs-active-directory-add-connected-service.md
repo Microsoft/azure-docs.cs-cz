@@ -2,7 +2,7 @@
 title: Přidání Azure Active Directory pomocí připojených služeb v aplikaci Visual Studio
 description: Přidání Azure Active Directory pomocí dialogového okna Přidat připojené služby v aplikaci Visual Studio
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5988dc676abfc86e06c56ffb5c68d6f581c231e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 543f976a3284550889545df08e7df53693d02342
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852083"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69511515"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání Azure Active Directory pomocí připojených služeb v aplikaci Visual Studio
 

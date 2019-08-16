@@ -7,12 +7,12 @@ ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d49ef19d763ea3ae643a9c7bbbbb620ae414c664
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7be9a208f82dd9a487c1794a7996f9bb11bb09d8
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816815"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515434"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Mapování ovládacího prvku ukázka ISO 27001
 
@@ -118,13 +118,13 @@ Porozumět tomu, kde vaše prostředky Azure můžou mít neoptimální Kryptogr
 - \[Verze\]Preview: Auditování chybějícího šifrování objektů blob pro účty úložiště
 - \[Verze\]Preview: Nasazení rozšíření virtuálního počítače na audit Windows VM by neměl ukládat hesla pomocí reverzibilního šifrování.
 - \[Verze\]Preview: Auditovat virtuální počítač s Windows nesmí ukládat hesla pomocí reverzibilního šifrování.
-- \[Verze\]Preview: Monitorování nešifrované databáze SQL v Azure Security Center
 - \[Verze\]Preview: Monitorování nešifrovaných disků virtuálních počítačů ve službě Azure Security Center
 - Auditovat povolení šifrování proměnných účtu Automation
 - Auditovat povolení výhradně zabezpečených připojení k Redis Cache
 - Auditovat zabezpečený přenos na účty úložiště
 - Auditovat nastavení vlastnosti ClusterProtectionLevel v Service Fabricu na EncryptAndSign
 - Auditování stavu transparentního šifrování dat
+- Je třeba povolit transparentní šifrování dat databází SQL.
 
 ## <a name="a1241-event-logging"></a>Protokolování událostí. 12.4.1
 
@@ -135,9 +135,9 @@ Diagnostické protokoly poskytují přehled o operacích, které byly provedeny 
 - \[Verze\]Preview: Auditování nasazení Dependency Agent v imagi VMSS-VM (operační systém) není v seznamu
 - \[Verze\]Preview: Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) není v seznamu
 - \[Verze\]Preview: Audit Log Analytics nasazení agenta v VMSS-VM Image (OS) bez seznamu
-- \[Verze\]Preview: Monitorování neauditované databáze SQL v Azure Security Center
 - Auditování nastavení diagnostiky
 - Auditovat nastavení auditování SQL na úrovni serveru
+- Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A. 12.4.3 – protokoly správců a operátorů
 
@@ -147,9 +147,9 @@ Tento podrobný plán vám pomůže zajistit, aby se události systému hlásily
 - \[Verze\]Preview: Auditování nasazení Dependency Agent v imagi VMSS-VM (operační systém) není v seznamu
 - \[Verze\]Preview: Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) není v seznamu
 - \[Verze\]Preview: Audit Log Analytics nasazení agenta v VMSS-VM Image (OS) bez seznamu
-- \[Verze\]Preview: Monitorování neauditované databáze SQL v Azure Security Center
 - Auditování nastavení diagnostiky
 - Auditovat nastavení auditování SQL na úrovni serveru
+- Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 
 ## <a name="a1244-clock-synchronization"></a>Synchronizace hodin A. 12.4.4
 
@@ -159,9 +159,9 @@ Tento podrobný plán vám pomůže zajistit, aby se události systému hlásily
 - \[Verze\]Preview: Auditování nasazení Dependency Agent v imagi VMSS-VM (operační systém) není v seznamu
 - \[Verze\]Preview: Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) není v seznamu
 - \[Verze\]Preview: Audit Log Analytics nasazení agenta v VMSS-VM Image (OS) bez seznamu
-- \[Verze\]Preview: Monitorování neauditované databáze SQL v Azure Security Center
 - Auditování nastavení diagnostiky
 - Auditovat nastavení auditování SQL na úrovni serveru
+- Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A. 12.5.1 instalace softwaru v operačních systémech
 

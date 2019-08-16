@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: e98ac335f475e4a6db6b17d5954512f5749e6aec
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 101cfacf071292d00556656b0df9c6bf9c15f414
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881155"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515880"
 ---
 # <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
@@ -90,7 +90,7 @@ K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
 | `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Platné hodnoty jsou `None` který zakáže interpunkční znaménka, `dictated` což naznačuje explicitní interpunkce, `automatic` které umožní dekodér řešit interpunkční znaménka, nebo `dictatedandautomatic` což naznačuje nařízeny interpunkční znaménka nebo automaticky. |
  | `AddWordLevelTimestamps` | Určuje, zda mají být do výstupu přidány časová razítka na úrovni aplikace Word. Přijaté hodnoty `true` umožňují, aby se časová razítka `false` na úrovni aplikace Word a (výchozí hodnota) zakázala. |
  | `AddSentiment` | Určuje mínění by měl být přidán do utterance. Přijatelné hodnoty `true` umožňují mínění na utterance a `false` (výchozí hodnota), která ji zakáže. |
- | `AddDiarization` | Určuje, že by se mělo provést diarization alalysis na vstupu, u kterého se očekává, že kanál mono obsahuje dvě hlasy. Přijatelné hodnoty `true` umožňují diarization a `false` (výchozí hodnota), která ji zakáže. Také je nutné `AddWordLevelTimestamps` nastavit na hodnotu true.|
+ | `AddDiarization` | Určuje, že by měla být provedena analýza diarization na vstupu, u kterého se očekává, že kanál mono obsahuje dvě hlasy. Přijatelné hodnoty `true` umožňují diarization a `false` (výchozí hodnota), která ji zakáže. Také je nutné `AddWordLevelTimestamps` nastavit na hodnotu true.|
 
 ### <a name="storage"></a>Storage
 

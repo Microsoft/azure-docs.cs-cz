@@ -1,41 +1,44 @@
 ---
-title: Doprovodné materiály k – Azure Active Directory licencování spolupráce B2B ve službě | Dokumentace Microsoftu
-description: Azure Active Directory s B2B, které nevyžaduje spolupráci placené licence Azure AD, ale je můžete také získat placených funkcí pro uživatele typu Host B2B
+title: Doprovodné materiály k licencování pro spolupráci B2B – Azure Active Directory | Microsoft Docs
+description: Azure Active Directory spolupráce B2B nevyžaduje placené licence Azure AD, ale můžete také získat placené funkce pro uživatele typu Host B2B.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 08/15/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df98966b69250d31f2a741411aea6e5554f9ed6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 081061eae07fa3765d032ad155e59ebf5aa3cbc9
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112852"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512554"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Doprovodné materiály k licencování spolupráce Azure Active Directory s B2B
 
-Se spoluprací Azure Active Directory (Azure AD) business-to-business (B2B), můžete pozvat externího uživatele (nebo "uživatele typu host") použití vašich placených služeb Azure AD. U každé placených licencí Azure AD, můžete přiřadit uživateli, můžete pozvat až pět uživatelů typu Host v příspěvku na externí uživatele.
+Díky spolupráci B2B (Business-to-Business) Azure Active Directory (Azure AD) můžete pozvat externí uživatele (neboli uživatele typu Host), aby mohli používat placené služby Azure AD. Některé funkce jsou bezplatné, ale u všech placených funkcí Azure AD můžete pozvat až pět uživatelů typu Host pro každou licenci Azure AD, kterou vlastníte pro zaměstnance nebo uživatele, který není Host, ve vašem tenantovi.
 
-Licencování uživatelů typu Host B2B je automaticky vypočítá a ohlášených závislosti na poměru 1:5. V současné době není možné přiřadit B2B licence uživatele typu Host přímo uživatelům typu Host.
+> [!NOTE]
+> Podrobnosti o cenách služby Azure AD a funkcích spolupráce B2B najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/) .
 
-Kromě toho hosta, které uživatelé můžou používat bezplatné funkce Azure AD se žádné další licenční požadavky. Uživatelé typu Host mají přístup k bezplatným funkcím služby Azure AD i v případě, že nemáte žádné placené licence Azure AD. 
+Licence uživatelů hosta B2B se automaticky vypočítávají a nahlásí na základě poměru 1:5. V současné době není možné přiřadit uživatelské licence B2B hosta přímo uživatelům typu Host.
 
-## <a name="examples-calculating-guest-user-licenses"></a>Příklady: Výpočet licencí uživatelům typu Host
-Jakmile určíte, kolik uživatelů typu Host potřebují přístup k vaší placené služby Azure AD, ujistěte se, že máte dostatečně Azure AD placené licence k pokrytí uživatelů typu Host v poměru vyžaduje 1:5. Následuje několik příkladů:
+Uživatelé typu Host můžou taky používat bezplatné funkce Azure AD bez dalších licenčních požadavků. Uživatelé typu Host mají přístup k bezplatným funkcím služby Azure AD, a to i v případě, že nemáte žádné placené licence Azure AD. 
 
-- Chcete pozvat 100 uživatelů typu Host do aplikace Azure AD nebo služeb, a chcete přiřadit správu přístupu a zřizování pro všechny uživatele typu Host. Budete také chtít vyžadovat vícefaktorové ověřování a podmíněný přístup pro 50 tyto uživatele typu Host. Pro tuto kombinaci, budete potřebovat 10 licencí Azure AD Basic a 10 licencí Azure AD Premium P1. Pokud máte v plánu používat funkce Identity Protection spolu s vaší uživatele typu Host, bude nutné licence Azure AD Premium P2 stejný poměr 1:5 k pokrytí uživatelů typu Host.
-- Chcete pozvat 60 uživatelů typu Host, kteří vyžadují vícefaktorové ověřování, proto musí mít alespoň 12 licence Azure AD Premium P1. Máte 10 zaměstnanci s licencí Azure AD Premium P1, které by umožnilo podle licencování poměr 1:5 až 50 uživatelů typu Host. Budete muset zakoupit další dvě licence Premium P1 pro 10 uživatelů typu Host Další.
+## <a name="examples-calculating-guest-user-licenses"></a>Příklady: Výpočet uživatelských licencí typu Host
+Jakmile určíte, kolik uživatelů typu Host potřebuje získat přístup k placeným službám Azure AD, ujistěte se, že máte dostatek placené licence Azure AD, aby pokryly uživatele typu Host v požadovaném poměru 1:5. Následuje několik příkladů:
 
-## <a name="next-steps"></a>Další postup
+- Chcete pozvat 100 uživatelů typu host na vaše aplikace nebo služby Azure AD a chcete přiřadit správu přístupu a zřizování všem uživatelům typu Host. Také budete chtít vyžadovat MFA a podmíněný přístup pro 50 těchto uživatelů typu Host. K pokrytí této kombinace budete potřebovat 10 licencí Azure AD Basic a licence 10 Azure AD Premium P1. Pokud plánujete použití funkcí ochrany identit u uživatelů typu Host, budete potřebovat Azure AD Premium licence P2 ve stejném poměru 1:5, aby pokryly uživatele typu Host.
+- Chcete pozvat 60 uživatelů typu Host, kteří požadují MFA, takže musíte mít minimálně 12 Azure AD Premium licencí P1. Máte 10 zaměstnanců s licencemi Azure AD Premium P1, což by umožnilo 50 uživatelům typu Host v rámci licenčního poměru 1:5. Abyste pokryli 10 dalších uživatelů typu Host, budete si muset koupit dvě další licence Premium P1.
 
-Na spolupráce B2B ve službě Azure AD najdete v následujících zdrojích:
+## <a name="next-steps"></a>Další kroky
 
-* [Ceny za Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
+Podívejte se na následující zdroje informací o spolupráci Azure AD B2B:
+
+* [Ceny Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 * [Nejčastější dotazy týkající se spolupráce Azure Active Directory s B2B](faq.md)

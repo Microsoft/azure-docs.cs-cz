@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Nastavte prostředí a pracovní prostor.'
+title: 'Kurz: Vytvořte svůj první experiment ML: Instalace'
 titleSuffix: Azure Machine Learning service
 description: V této sérii kurzů dokončíte kompletní kroky, které vám pomohou začít se sadou Azure Machine Learning Python SDK spuštěnou v poznámkových blocích Jupyter.  První část pokrývá vytvoření prostředí serveru cloudového poznámkového bloku a vytvoření pracovního prostoru pro správu experimentů a modelů strojového učení.
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 70fee90fb82618a409d2566a3235ad8ca42e1760
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cc16f3c8ea287e78d7b7b4d9a56f5a2e82c26f01
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934418"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515343"
 ---
-# <a name="tutorial-set-up-environment-and-workspace"></a>Kurz: Nastavení prostředí a pracovního prostoru
+# <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Kurz: Začněte vytvářet první experiment v ML
 
 V tomto kurzu dokončíte kompletní kroky, abyste mohli začít se sadou Azure Machine Learning Python SDK spuštěnou v poznámkových blocích Jupyter. Tento kurz je **první částí série kurzů se dvěma částmi**a popisuje nastavení a konfiguraci prostředí Python a také vytvoření pracovního prostoru pro správu experimentů a modelů strojového učení. [**Druhá část**](tutorial-1st-experiment-sdk-train.md) sestavení na této stránce umožňuje výuku více modelů strojového učení a zavedení procesu správy modelů pomocí Azure Portal i sady SDK.
 
