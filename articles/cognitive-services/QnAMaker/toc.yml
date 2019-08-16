@@ -108,7 +108,7 @@
           displayName: 'create bot, bot, publish to bot, test, edit'
         - name: Získání odpovědí pomocí metadat
           href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context'
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
         - name: Vytvoření robota s podporou znalostní báze
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Vytvoření znalostní báze v jiném jazyce
@@ -166,11 +166,6 @@
       href: troubleshooting.md
     - name: Omezení
       href: limits.md
-    - name: Glosář
-      href: glossary.md
-    - name: Kódy odezvy HTTP
-      displayName: '200, 2xx, 400, 401, 403, 404'
-      href: http-response-codes.md
     - name: Ukázky
       items:
         - name: Pomocný robot QnA Maker

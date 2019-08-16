@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 624c1648bc709e1ca6ee9c4120350a606df67df5
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 79e7027d308d389aa672d164de91df61b1142e32
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035774"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534163"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro konfigurace nativního ověřování certifikátů Azure P2S
 
@@ -126,12 +126,12 @@ Pokud jste ještě vygenerovali certifikáty, použijte následující postup:
 
 ### <a name="install"></a>Instalace a konfigurace
 
-Následující pokyny byly vytvořeny prostřednictvím klient strongswan 5.5.1 na Ubuntu 17.0.4. Ubuntu 16.0.10 nepodporuje grafické rozhraní klient strongswan. Pokud chcete použít Ubuntu 16.0.10, budete muset použít [příkazový řádek](#linuxinstallcli). Níže uvedené příklady nemusí odpovídat obrazovkám, které vidíte v závislosti na vaší verzi systému Linux a klient strongswan.
+V Ubuntu 18.0.4 byly vytvořeny následující pokyny. Ubuntu 16.0.10 nepodporuje grafické rozhraní klient strongswan. Pokud chcete použít Ubuntu 16.0.10, budete muset použít [příkazový řádek](#linuxinstallcli). Níže uvedené příklady nemusí odpovídat obrazovkám, které vidíte v závislosti na vaší verzi systému Linux a klient strongswan.
 
-1. Otevřete **terminál** pro instalaci **klient strongswan** a jeho správce sítě spuštěním příkazu v příkladu. Pokud se zobrazí chyba, která souvisí s *libcharon-Extra-moduly plug-in*, nahraďte ji pomocí ' klient strongswan-plugin-EAP-MSCHAPv2 '.
+1. Otevřete **terminál** pro instalaci **klient strongswan** a jeho správce sítě spuštěním příkazu v příkladu.
 
    ```
-   sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan
+   sudo apt install network-manager-strongswan
    ```
 2. Vyberte ikonu **správce sítě** (šipka nahoru/dolů) a pak vyberte **Upravit připojení**.
 
@@ -199,7 +199,7 @@ Pokud jste ještě vygenerovali certifikáty, použijte následující postup:
    # ipsec up azure
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vraťte se k článku a [dokončete konfiguraci P2S](vpn-gateway-howto-point-to-site-rm-ps.md).
 

@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0ed7d65601465a197cb4d7f92f500e1bf29ad8c2
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 892076954535d880f9081a269215cb7e2a0a8dce
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839673"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541857"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití sady Visual Studio 2019 k vývoji a ladění modulů pro Azure IoT Edge
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak pomocí nástrojů pro Azure IoT Edge pro Visu
   
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows jako vývojovém počítači. Zařízení IoT Edge může být jiné fyzické zařízení.
+Tento článek předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows jako vývojovém počítači. V počítačích s Windows můžete vyvíjet moduly pro Windows nebo Linux. Pro vývoj modulů Windows použijte počítač s Windows, na kterém běží verze 1809/Build 17763 nebo novější. Pokud chcete vyvíjet moduly pro Linux, použijte počítač s Windows, který splňuje [požadavky pro Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install). 
 
 Vzhledem k tomu, že tento článek používá Visual Studio 2019 jako hlavní vývojový nástroj, nainstalujte Visual Studio. Při instalaci sady Visual Studio 2019 se ujistěte, že jste zahrnuli vývoj pro vývoj a desktopy **Azure** **s C++**  úlohami. Můžete [Upravit Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019) a přidat požadované úlohy.
 
@@ -99,19 +99,19 @@ Po přípravě sady Visual Studio 2019 budete potřebovat také následující n
 
    ![Vytvořit nový projekt](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. V **C#** okně **Přidat IoT Edge aplikaci a modulu** vyberte modul nebo **modul C** a pak zadejte název modulu a úložiště imagí modulu. Visual Studio automaticky vyplní název modulu pomocí **localhost: 5000/< název\>vašeho modulu**. Nahraďte ho vlastním registru informace. Pokud pro testování používáte místní registr Docker, pak je **localhost** v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá jako   **_\<název\>registru_. azurecr.IO**. Jenom nahraďte část **localhost: 5000** řetězce tak, aby konečný výsledek vypadal jako  **\< *název*\>registru. azurecr.IO/ _\<svůj název\>modulu_** . Výchozí název modulu je **IoTEdgeModule1**
+1. V **C#** okně **Přidat IoT Edge aplikaci a modulu** vyberte modul nebo **modul C** a pak zadejte název modulu a úložiště imagí modulu. Visual Studio automaticky vyplní název modulu pomocí **localhost: 5000/< název\>vašeho modulu**. Nahraďte ho vlastním registru informace. Pokud pro testování používáte místní registr Docker, pak je **localhost** v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá jako   **_\<název\>registru_. azurecr.IO**. Jenom nahraďte část **localhost: 5000** řetězce tak, aby konečný výsledek vypadal jako  **\< *název*\>registru. azurecr.IO/ _\<svůj název\>modulu_** . Výchozí název modulu je **IotEdgeModule1**
 
    ![Přidat aplikaci a modul](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
 1. Vyberte **OK** a vytvořte tak řešení Azure IoT Edge s modulem, který používá C# buď nebo C.
 
-Teď máte projekt **AzureIoTEdgeApp1. Linux. amd64** nebo projekt **AzureIoTEdgeApp1. Windows. amd64** a také projekt **IoTEdgeModule1** ve vašem řešení. Každý projekt **AzureIoTEdgeApp1** má `deployment.template.json` soubor, který definuje moduly, které chcete sestavit a nasadit pro vaše řešení IoT Edge, a také definuje trasy mezi moduly. Výchozí řešení má modul **SimulatedTemperatureSensor** a modul **IoTEdgeModule1** . Modul **SimulatedTemperatureSensor** generuje Simulovaná data do modulu **IoTEdgeModule1** , zatímco výchozí kód v modulu **IoTEdgeModule1** přímo předává přijaté zprávy do služby Azure IoT Hub.
+Teď máte projekt **AzureIoTEdgeApp1. Linux. amd64** nebo projekt **AzureIoTEdgeApp1. Windows. amd64** a také projekt **IotEdgeModule1** ve vašem řešení. Každý projekt **AzureIoTEdgeApp1** má `deployment.template.json` soubor, který definuje moduly, které chcete sestavit a nasadit pro vaše řešení IoT Edge, a také definuje trasy mezi moduly. Výchozí řešení má modul **tempSensor** a modul **IotEdgeModule1** . Modul **tempSensor** generuje Simulovaná data do modulu **IotEdgeModule1** , zatímco výchozí kód v modulu **IotEdgeModule1** přímo předává přijaté zprávy do služby Azure IoT Hub.
 
-Projekt **IoTEdgeModule1** je Konzolová aplikace .net Core 2,1, pokud se jedná o C# modul. Obsahuje požadované soubory Docker, které potřebujete pro zařízení IoT Edge se systémem pomocí kontejneru Windows nebo kontejneru Linux. `module.json` Soubor popisuje metadata modulu. Skutečný kód modulu, který používá sadu SDK pro zařízení Azure IoT jako závislost, se nachází v `Program.cs` souboru nebo. `main.c`
+Projekt **IotEdgeModule1** je Konzolová aplikace .net Core 2,1, pokud se jedná o C# modul. Obsahuje požadované soubory Docker, které potřebujete pro zařízení IoT Edge se systémem pomocí kontejneru Windows nebo kontejneru Linux. `module.json` Soubor popisuje metadata modulu. Skutečný kód modulu, který používá sadu SDK pro zařízení Azure IoT jako závislost, se nachází v `Program.cs` souboru nebo. `main.c`
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
-Výchozí kód modulu, který je součástí řešení, je umístěn na adrese **IoTEdgeModule1** > **program.cs** ( C#pro) nebo **Main. c** (c). Modul a `deployment.template.json` soubor jsou nastavené tak, aby bylo možné sestavit řešení, nasdílet ho do registru kontejnerů a nasazovat ho do zařízení, aby se spouštělo testování bez zásahu jakéhokoli kódu. Modul je sestavený tak, aby převzal vstup ze zdroje (v tomto případě modul **SimulatedTemperatureSensor** , který simuluje data) a přesměruje ho do Azure IoT Hub.
+Výchozí kód modulu, který je součástí řešení, je umístěn na adrese **IotEdgeModule1** > **program.cs** ( C#pro) nebo **Main. c** (c). Modul a `deployment.template.json` soubor jsou nastavené tak, aby bylo možné sestavit řešení, nasdílet ho do registru kontejnerů a nasazovat ho do zařízení, aby se spouštělo testování bez zásahu jakéhokoli kódu. Modul je sestavený tak, aby převzal vstup ze zdroje (v tomto případě modul **tempSensor** , který simuluje data) a přesměruje ho do Azure IoT Hub.
 
 Až budete připraveni přizpůsobit šablonu modulu vlastním kódem, použijte sady [SDK pro Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) k sestavování modulů, které řeší klíčová úložiště pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost.
 
@@ -134,7 +134,7 @@ Až budete připraveni přizpůsobit šablonu modulu vlastním kódem, použijte
 
 Obvykle budete chtít otestovat a ladit každý modul před jeho spuštěním v rámci celého řešení s více moduly.
 
-1. Klikněte pravým tlačítkem na **IoTEdgeModule1** a v místní nabídce vyberte **nastavit jako spouštěný projekt** .
+1. Klikněte pravým tlačítkem na **IotEdgeModule1** a v místní nabídce vyberte **nastavit jako spouštěný projekt** .
 
    ![Nastavit spouštěcí projekt](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
@@ -165,16 +165,16 @@ Obvykle budete chtít otestovat a ladit každý modul před jeho spuštěním v 
 
 Až dokončíte vývoj jednoho modulu, můžete chtít spustit a ladit celé řešení s několika moduly.
 
-1. Přidejte do řešení druhý modul tak, že kliknete pravým tlačítkem na **AzureIoTEdgeApp1** a vyberete **Přidat** > **Nový IoT Edge modul**. Výchozí název druhého modulu je **IoTEdgeModule2** a bude fungovat jako jiný modul kanálu.
+1. Přidejte do řešení druhý modul tak, že kliknete pravým tlačítkem na **AzureIoTEdgeApp1** a vyberete **Přidat** > **Nový IoT Edge modul**. Výchozí název druhého modulu je **IotEdgeModule2** a bude fungovat jako jiný modul kanálu.
 
-1. Otevřete tento soubor `deployment.template.json` a uvidíte, že se v části **moduly** přidala **IoTEdgeModule2** . Nahradit **trasy** oddíl následujícím kódem. Pokud jste přizpůsobili názvy modulů, ujistěte se, že aktualizujete tyto názvy tak, aby odpovídaly.
+1. Otevřete tento soubor `deployment.template.json` a uvidíte, že se v části **moduly** přidala **IotEdgeModule2** . Nahradit **trasy** oddíl následujícím kódem. Pokud jste přizpůsobili názvy modulů, ujistěte se, že aktualizujete tyto názvy tak, aby odpovídaly.
 
     ```json
         "routes": {
-          "IoTEdgeModule1ToIoTHub": "FROM /messages/modules/IoTEdgeModule1/outputs/* INTO $upstream",
-          "sensorToIoTEdgeModule1": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule1/inputs/input1\")",
-          "IoTEdgeModule2ToIoTHub": "FROM /messages/modules/IoTEdgeModule2/outputs/* INTO $upstream",
-          "sensorToIoTEdgeModule2": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule2/inputs/input1\")"
+          "IotEdgeModule1ToIoTHub": "FROM /messages/modules/IotEdgeModule1/outputs/* INTO $upstream",
+          "sensorToIotEdgeModule1": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule1/inputs/input1\")",
+          "IotEdgeModule2ToIoTHub": "FROM /messages/modules/IotEdgeModule2/outputs/* INTO $upstream",
+          "sensorToIotEdgeModule2": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule2/inputs/input1\")"
         },
     ```
 
@@ -232,7 +232,7 @@ V článku Rychlý start, pomocí kterého jste nastavili své zařízení IoT E
    > [!NOTE]
    > Nesmí vyberete `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json`
 
-1. Kliknutím na tlačítko Aktualizovat zobrazíte nové moduly běžící společně s modulem **SimulatedTemperatureSensor** a **$edgeAgent** a **$edgeHub**.
+1. Kliknutím na tlačítko Aktualizovat zobrazíte nové moduly běžící společně s modulem **tempSensor** a **$edgeAgent** a **$edgeHub**.
 
 ## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 

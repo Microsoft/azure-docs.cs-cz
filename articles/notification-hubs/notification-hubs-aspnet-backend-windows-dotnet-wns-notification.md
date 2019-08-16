@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 32714b3e5a5ed859716faef2ca660f8b2c90b089
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a4949b12076ea7cdbbf882d199279410da95e005
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874147"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558648"
 ---
-# <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Kurz: Odesílání oznámení pro konkrétní uživatele pomocí Azure Notification Hubs
+# <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Kurz: Posílání oznámení konkrétním uživatelům pomocí Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -31,7 +31,7 @@ ms.locfileid: "60874147"
 V tomto kurzu se dozvíte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům aplikace na konkrétním zařízení. K ověřování klientů se používá back-end ASP.NET WebAPI. Když back-end ověří uživatele klientské aplikace, automaticky přidá značku k registraci oznámení. Back-end tuto značku používá k posílání oznámení konkrétnímu uživateli.
 
 > [!NOTE]
-> Dokončený kód pro tento kurz najdete na [GitHubu](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers).
+> Dokončený kód pro tento kurz najdete na [GitHubu](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 
 V tomto kurzu provedete následující kroky:
 
@@ -46,25 +46,25 @@ V tomto kurzu provedete následující kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto kurzu vychází z centra oznámení a projekt aplikace Visual Studio, které jste vytvořili [kurzu: Odesílat oznámení do aplikací pro univerzální platformu Windows pomocí Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) kurzu. Proto ho dokončete před zahájením tohoto kurzu.
+Tento kurz sestaví na centru oznámení a projektu sady Visual Studio, které jste vytvořili [v tomto kurzu: Pomocí kurzu Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) můžete odesílat oznámení do aplikací Univerzální platforma Windows. Proto ho dokončete před zahájením tohoto kurzu.
 
 > [!NOTE]
 > Pokud jako back-endovou službu používáte Mobile Apps ve službě Azure App Service, prostudujte si část [Verze Mobile Apps](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) tohoto kurzu.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="update-the-code-for-the-uwp-client"></a>Aktualizujte kód pro UPW klienta
+## <a name="update-the-code-for-the-uwp-client"></a>Aktualizace kódu pro klienta UWP
 
-V této části můžete aktualizovat kód v projektu pro dokončení [kurzu: Odesílat oznámení do aplikací pro univerzální platformu Windows pomocí Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) kurzu. Projekt už by měl být přidružený k Windows Storu. Také už by měl být nakonfigurovaný tak, aby používal vaše centrum oznámení. V této části přidáte kód, který volá nový back-end WebAPI a používá ho k registraci a zasílání oznámení.
+V této části aktualizujete kód v projektu, který jste dokončili pro [kurz: Pomocí kurzu Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) můžete odesílat oznámení do aplikací Univerzální platforma Windows. Projekt už by měl být přidružený k Windows Storu. Také už by měl být nakonfigurovaný tak, aby používal vaše centrum oznámení. V této části přidáte kód, který volá nový back-end WebAPI a používá ho k registraci a zasílání oznámení.
 
-1. V sadě Visual Studio, otevřete řešení, které jste vytvořili pro [kurzu: Odesílat oznámení do aplikací pro univerzální platformu Windows pomocí Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
-2. V Průzkumníku řešení klikněte pravým tlačítkem na projekt pro univerzální platformu Windows (UPW) a potom klikněte na tlačítko **spravovat balíčky NuGet**.
+1. V aplikaci Visual Studio otevřete řešení, které jste vytvořili pro [tento kurz: Posílání oznámení do aplikací Univerzální platforma Windows pomocí Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+2. V Průzkumník řešení klikněte pravým tlačítkem na projekt Univerzální platforma Windows (UWP) a pak klikněte na **Spravovat balíčky NuGet**.
 3. Na levé straně vyberte **Procházet**.
 4. Do pole **Hledat** zadejte **Http Client**.
 5. V seznamu výsledků klikněte na **System.Net.Http** a pak klikněte na **Nainstalovat**. Dokončete instalaci.
 6. Vraťte se do pole **Hledat** pro balíčky NuGet a zadejte **Json.net**. Nainstalujte balíček **Newtonsoft.json** a pak zavřete okno Správce balíčků NuGet.
 7. V Průzkumníku řešení v projektu **WindowsApp** dvakrát klikněte na soubor **MainPage.xaml** a otevřete ho v editoru Visual Studio.
-8. V `MainPage.xaml` kódu XML nahradit `<Grid>` oddíl s následujícím kódem: Tento kód přidá textové pole uživatelského jména a hesla, které se uživatel ověřuje s. Přidá také textová pole pro zprávy oznámení a značky uživatelského jména, který má dostávat oznámení:
+8. V kódu `<Grid>` XML nahraďte oddíl následujícím kódem: `MainPage.xaml` Tento kód přidá textové pole uživatelské jméno a heslo, se kterým se uživatel ověřuje. Také přidá textová pole pro zprávu oznámení a značku uživatelského jména, které by měly dostávat oznámení:
 
     ```xml
     <Grid>
@@ -116,7 +116,7 @@ V této části můžete aktualizovat kód v projektu pro dokončení [kurzu: Od
         </StackPanel>
     </Grid>
     ```
-9. V Průzkumníku řešení otevřete `MainPage.xaml.cs` souboru **(Windows 8.1)** a **(Windows Phone 8.1)** projekty. Na začátek obou souborů přidejte následující příkazy `using`:
+9. V Průzkumník řešení otevřete `MainPage.xaml.cs` soubor pro projekty **(Windows 8.1)** a **(Windows Phone 8,1)** . Na začátek obou souborů přidejte následující příkazy `using`:
 
     ```csharp
     using System.Net.Http;
@@ -126,12 +126,12 @@ V této části můžete aktualizovat kód v projektu pro dokončení [kurzu: Od
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
-10. V `MainPage.xaml.cs` pro **WindowsApp** projektu, přidejte následující člen do `MainPage` třídy. Nezapomeňte nahradit `<Enter Your Backend Endpoint>` skutečným koncovým bodem vašeho back-endu, který jste předtím získali. Například, `http://mybackend.azurewebsites.net`.
+10. V `MainPage.xaml.cs` nástroji pro projekt **WindowsApp** přidejte do `MainPage` třídy následující člen. Nezapomeňte nahradit `<Enter Your Backend Endpoint>` skutečným koncovým bodem vašeho back-endu, který jste předtím získali. Například, `http://mybackend.azurewebsites.net`.
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
     ```
-11. Přidejte následující kód do třídy MainPage v `MainPage.xaml.cs` pro **(Windows 8.1)** a **(Windows Phone 8.1)** projekty.
+11. Přidejte následující kód do třídy MainPage v `MainPage.xaml.cs` pro projekty **(Windows 8.1)** a **(Windows Phone 8,1)** .
 
     Metoda `PushClick` je obslužná rutina události kliknutí pro tlačítko **Send Push** (Odeslat nabízené oznámení). Metoda volá back-end za účelem aktivace odeslání oznámení do všech zařízení, jejichž značka uživatelského jména odpovídá parametru `to_tag`. Zpráva oznámení se odešle jako obsah JSON v textu požadavku.
 
@@ -213,14 +213,14 @@ V této části můžete aktualizovat kód v projektu pro dokončení [kurzu: Od
         ApplicationData.Current.LocalSettings.Values["AuthenticationToken"] = token;
     }
     ```
-12. Otevřít `App.xaml.cs` a najít volání `InitNotificationsAsync()` v `OnLaunched()` obslužné rutiny události. Okomentujte nebo odstraňte volání metody `InitNotificationsAsync()`. Obslužná rutina tlačítka inicializuje registrace oznámení.
+12. Otevřete `App.xaml.cs` a vyhledejte `InitNotificationsAsync()` volání v `OnLaunched()` obslužné rutině události. Okomentujte nebo odstraňte volání metody `InitNotificationsAsync()`. Obslužná rutina tlačítka inicializuje registrace oznámení.
 
     ```csharp
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
         //InitNotificationsAsync();
     ```
-13. Klikněte pravým tlačítkem na projekt **WindowsApp**, **Přidat** a potom na **Třída**. Název třídy `RegisterClient.cs`, pak klikněte na tlačítko **OK** ke generování třídy.
+13. Klikněte pravým tlačítkem na projekt **WindowsApp**, **Přidat** a potom na **Třída**. Pojmenujte `RegisterClient.cs`třídu a potom kliknutím na tlačítko **OK** vygenerujte třídu.
 
     Tato třída zabalí potřebná volání REST ke kontaktování back-endu aplikace za účelem registrace nabízených oznámení. Kromě toho místně ukládá *ID registrací* vytvořená centrem oznámení, jak je podrobně popsáno v tématu popisujícím [registraci z back-endu aplikace](https://msdn.microsoft.com/library/dn743807.aspx). Po kliknutí na tlačítko **Login and register** (Přihlášení a registrace) použije autorizační token uložený v místním úložišti.
 14. Na začátek souboru RegisterClient.cs přidejte následující příkazy `using`:
@@ -335,7 +335,7 @@ V této části můžete aktualizovat kód v projektu pro dokončení [kurzu: Od
 
     ![][15]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak posílat nabízená oznámení konkrétním uživatelům, k jejichž registracím jsou přidružené značky. V dalším kurzu se dozvíte, jak posílat nabízená oznámení na základě polohy:
 

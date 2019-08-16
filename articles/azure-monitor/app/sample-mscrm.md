@@ -1,6 +1,6 @@
 ---
-title: Microsoft Dynamics CRM a Azure Application Insights | Dokumentace Microsoftu
-description: Získání telemetrie z Microsoft Dynamics CRM Online pomocí Application Insights. Průvodce instalací, získávání dat, vizualizace a export.
+title: Microsoft Dynamics CRM a Azure Application Insights | Microsoft Docs
+description: Získejte telemetrii z Microsoft Dynamics CRM Online pomocí Application Insights. Návod k instalaci, získávání dat, vizualizaci a exportu.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,124 +13,124 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 6119f1116d255f7cd2a2bfc20e86eeca9e5dfe82
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 470f723782ca29409549e0df8e900edf86cd446e
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60523490"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534294"
 ---
-# <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Průvodce: Zapnutí Telemetrie pro Microsoft Dynamics CRM Online pomocí Application Insights
-V tomto článku se dozvíte, jak získat telemetrická data z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Provedeme procesem kompletní proces přidávání skript Application Insights do vaší aplikace, zachycení dat a vizualizace dat.
+# <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Průvodce: Povolení telemetrie pro Microsoft Dynamics CRM Online pomocí Application Insights
+V tomto článku se dozvíte, jak získat data telemetrie z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Po dokončení procesu přidávání skriptu Application Insights do vaší aplikace, zachytávání dat a vizualizace dat vás provedeme.
 
 > [!NOTE]
-> [Procházet ukázkové řešení](https://dynamicsandappinsights.codeplex.com/).
+> [Projděte si ukázkové řešení](https://dynamicsandappinsights.codeplex.com/).
 > 
 > 
 
-## <a name="add-application-insights-to-new-or-existing-crm-online-instance"></a>Přidejte Application Insights do nové nebo stávající instance CRM Online
-Pro monitorování vaší aplikace, přidejte sadu Application Insights SDK do vaší aplikace. Sada SDK odesílá telemetrická data [portál Application Insights](https://portal.azure.com), kde můžete použít naši výkonné analýzy a diagnostické nástroje, nebo exportovat data do úložiště.
+## <a name="add-application-insights-to-new-or-existing-crm-online-instance"></a>Přidat Application Insights do nové nebo existující instance CRM Online
+Chcete-li monitorovat aplikaci, přidejte do aplikace sadu Application Insights SDK. Sada SDK odesílá telemetrii na [portál Application Insights](https://portal.azure.com), kde můžete využít naše výkonné nástroje pro analýzu a diagnostiku nebo exportovat data do úložiště.
 
-### <a name="create-an-application-insights-resource-in-azure"></a>Vytvořte prostředek Application Insights v Azure
+### <a name="create-an-application-insights-resource-in-azure"></a>Vytvoření prostředku Application Insights v Azure
 1. Získat [účet v Microsoft Azure](https://azure.com/pricing). 
-2. Přihlaste se [webu Azure portal](https://portal.azure.com) a přidat nový prostředek Application Insights. Toto je, kde zpracovat a zobrazit vaše data.
+2. Přihlaste se k [Azure Portal](https://portal.azure.com) a přidejte nový prostředek Application Insights. Slouží k tomu, aby se data zpracovala a zobrazila.
 
-    ![Klikněte na +, služby pro vývojáře, Application Insights.](./media/sample-mscrm/01.png)
+    ![Klikněte na +, Vývojářské služby Application Insights.](./media/sample-mscrm/01.png)
 
     Vyberte jako typ aplikace ASP.NET.
-3. Postupujte podle pokynů a [získat skript jazyka JavaScript SDK pro vaši aplikaci](../../azure-monitor/app/javascript.md#set-up-application-insights-for-your-web-page), zkopírujte fragment kódu jazyka JavaScript a ujistěte se, že Instrumentační klíč nahraďte správné hodnoty pro váš prostředek Application Insights.
+3. Postupujte podle pokynů pro [získání skriptu JavaScript SDK pro vaši aplikaci](../../azure-monitor/app/javascript.md), zkopírujte fragment kódu JavaScriptu a nezapomeňte nahradit klíč instrumentace správnou hodnotou pro váš prostředek Application Insights.
 
-### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Vytvoření webovém prostředku jazyka JavaScript v aplikaci Microsoft Dynamics CRM
-1. Otevřete instanci CRM Online a přihlášení s oprávněními správce.
-2. Otevřete Microsoft Dynamics CRM nastavení přizpůsobení, přizpůsobení systému
+### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Vytvoření webového prostředku v JavaScriptu v Microsoft Dynamics CRM
+1. Otevřete vaši instanci CRM Online a přihlaste se s oprávněními správce.
+2. Otevřete nastavení Microsoft Dynamics CRM, přizpůsobení, přizpůsobení systému.
 
-    ![Microsoft Dynamics CRM settings](./media/sample-mscrm/00001.png)
+    ![Nastavení aplikace Microsoft Dynamics CRM](./media/sample-mscrm/00001.png)
 
     ![Nastavení > Přizpůsobení](./media/sample-mscrm/00002.png)
 
-1. Vytvoření prostředku jazyka JavaScript.
+1. Vytvořte prostředek JavaScriptu.
 
-    ![Dialogové okno nového webovém prostředku](./media/sample-mscrm/07.png)
+    ![Dialog Nový webový prostředek](./media/sample-mscrm/07.png)
 
-    Přiřaďte jí název, vyberte **skript (JScript)** a otevřete textový editor.
+    Zadejte název, vyberte **skript (JScript)** a otevřete textový editor.
 
-    ![Otevřete textový editor](./media/sample-mscrm/00004.png)
-2. Zkopírujte kód z Application Insights JavaScript SDK, ve kterém nakonfigurujete svůj Instrumentační klíč před. Při kopírování, ujistěte se, že chcete ignorovat značky skriptu. Podívejte se na snímku obrazovky:
+    ![Otevřete textový editor.](./media/sample-mscrm/00004.png)
+2. Zkopírujte kód z Application Insights JavaScript SDK, ve které jste předtím nakonfigurovali klíč instrumentace. Při kopírování nezapomeňte ignorovat značky skriptu. Podívejte se na snímek obrazovky níže:
 
-    ![Nastavte klíč instrumentace](./media/sample-mscrm/000005.png)
+    ![Nastavení klíče instrumentace](./media/sample-mscrm/000005.png)
 
-    Tento kód obsahuje klíč instrumentace, který identifikuje váš prostředek Application insights.
+    Kód zahrnuje klíč instrumentace, který identifikuje prostředek Application Insights.
 3. Uložit a publikovat.
 
     ![Uložit a publikovat](./media/sample-mscrm/00006.png)
 
-### <a name="instrument-forms"></a>Nástroj formulářů
-1. V Microsoft CRM Online otevřete formulář účtu
+### <a name="instrument-forms"></a>Formuláře instrumentace
+1. V aplikaci Microsoft CRM online otevřete formulář účtu.
 
     ![Formulář účtu](./media/sample-mscrm/00007.png)
-2. Otevřete vlastnosti formuláře
+2. Otevřete vlastnosti formuláře.
 
     ![Vlastnosti formuláře](./media/sample-mscrm/00008.png)
-3. Přidat webovém prostředku jazyka JavaScript, který jste vytvořili
+3. Přidat webový prostředek JavaScriptu, který jste vytvořili
 
     ![Přidat nabídku](./media/sample-mscrm/13.png)
 
-4. Uložení a publikování vlastní formulář.
+4. Uložte a publikujte vlastní nastavení formuláře.
 
-## <a name="metrics-captured"></a>Metriky zachycena
-Nyní jste nastavili zachycování telemetrie pro formulář. Pokaždé, když se používá, data se odešlou do prostředku Application Insights.
+## <a name="metrics-captured"></a>Zaznamenané metriky
+Pro tento formulář jste teď nastavili zachycení telemetrie. Pokaždé, když se použije, data se odešlou do vašeho prostředku Application Insights.
 
-Tady jsou ukázky data, která se zobrazí.
+Zde jsou příklady dat, která se zobrazí.
 
 #### <a name="application-health"></a>Stav aplikace
-![Příklad čas načítání stránky](./media/sample-mscrm/15.png)
+![Příklad času načtení stránky](./media/sample-mscrm/15.png)
 
-![Příklad stránky zobrazení grafu](./media/sample-mscrm/16.png)
+![Příklad grafu zobrazení stránky](./media/sample-mscrm/16.png)
 
-Výjimky prohlížečů:
+Výjimky prohlížeče:
 
-![Graf výjimky prohlížeče](./media/sample-mscrm/17.png)
+![Graf výjimek prohlížeče](./media/sample-mscrm/17.png)
 
-Klepněte na graf, abyste získali více podrobností:
+Další podrobnosti získáte kliknutím na graf:
 
 ![Seznam výjimek](./media/sample-mscrm/18.png)
 
-#### <a name="usage"></a>Využití
+#### <a name="usage"></a>Použití
 ![Uživatelé, relace a zobrazení stránek](./media/sample-mscrm/19.png)
 
-![Grafy relace](./media/sample-mscrm/20.png)
+![Grafy relací](./media/sample-mscrm/20.png)
 
 ![Verze prohlížeče](./media/sample-mscrm/21.png)
 
 #### <a name="browsers"></a>Prohlížeče
-![Rozpis čas načítání stránky](./media/sample-mscrm/22.png)
+![Rozpis doby načítání stránky](./media/sample-mscrm/22.png)
 
 ![Počet relací podle verze prohlížeče](./media/sample-mscrm/23.png)
 
-#### <a name="geolocation"></a>Geografická poloha
+#### <a name="geolocation"></a>Zeměpisná poloha
 ![Počet relací podle země](./media/sample-mscrm/24.png)
 
 ![Relace a uživatelé podle země](./media/sample-mscrm/25.png)
 
-#### <a name="inside-page-view-request"></a>Požadavek na vnitřní stránku zobrazení
-![Stránka zobrazení souhrnu](./media/sample-mscrm/26.png)
+#### <a name="inside-page-view-request"></a>Vnitřní požadavek na zobrazení stránky
+![Souhrn zobrazení stránky](./media/sample-mscrm/26.png)
 
-![Hledat na stránky zobrazení událostí](./media/sample-mscrm/27.png)
+![Vyhledat události zobrazení stránky](./media/sample-mscrm/27.png)
 
 ![Podobná zobrazení stránek](./media/sample-mscrm/28.png)
 
 ![Zobrazení vlastností stránky](./media/sample-mscrm/29.png)
 
-![Počet stránek při relaci](./media/sample-mscrm/30.png)
+![Počet stránek na relaci](./media/sample-mscrm/30.png)
 
 ## <a name="sample-code"></a>Ukázka kódu
-[Procházet ukázky kódu](https://dynamicsandappinsights.codeplex.com/).
+[Projděte si vzorový kód](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="power-bi"></a>Power BI
-Můžete provést i hlubší analýzu, pokud jste [export dat do Microsoft Power BI](../../azure-monitor/app/export-power-bi.md ).
+Pokud [exportujete data do Microsoft Power BI](../../azure-monitor/app/export-power-bi.md ), můžete provést ještě hlubší analýzu.
 
-## <a name="sample-microsoft-dynamics-crm-solution"></a>Ukázkové aplikace Microsoft Dynamics CRM řešení
-[Tady je ukázka řešení implementované v aplikaci Microsoft Dynamics CRM](https://dynamicsandappinsights.codeplex.com/).
+## <a name="sample-microsoft-dynamics-crm-solution"></a>Ukázka řešení Microsoft Dynamics CRM
+[Tady je ukázkové řešení implementované v Microsoft Dynamics CRM](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="learn-more"></a>Víc se uč
 * [Co je Application Insights?](../../azure-monitor/app/app-insights-overview.md)

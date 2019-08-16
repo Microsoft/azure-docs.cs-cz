@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: c673fd43abe6808256eb74f435aad48ed8d41539
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a4395105c66756c4743373707309a88e2afa96b7
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359840"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534818"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: Nasazení modelu klasifikace imagí v Azure Container Instances
 
@@ -38,10 +38,10 @@ Container Instances je skvělé řešení pro testování a porozumění pracovn
 > Kód v tomto článku byl testován pomocí sady Azure Machine Learning SDK 1.0.41 verze.
 
 ## <a name="prerequisites"></a>Požadavky
-Přejděte k [Nastavení vývojového prostředí](#start) pro čtení v rámci kroků poznámkového bloku.  
 
-Pokud chcete spustit Poznámkový blok, nejdřív dokončete [výuku modelu v kurzu (část 1): Školení modelu klasifikace obrázků pomocí služby](tutorial-train-models-with-aml.md)Azure Machine Learning.   Pak spusťte Poznámkový blok **kurzy/img-Classification-part2-Deploy. ipynb** pomocí stejného serveru poznámkového bloku.
+Pokud chcete spustit Poznámkový blok, nejdřív dokončete [výuku modelu v kurzu (část 1): Výukový model](tutorial-train-models-with-aml.md)klasifikace image   Pak otevřete Poznámkový blok **kurzy/img-Classification-part2-Deploy. ipynb** pomocí stejného serveru poznámkového bloku.
 
+Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte `matplotlib` nainstalované `scikit-learn` a ve vašem prostředí. 
 
 ## <a name="start"></a>Nastavení prostředí
 
@@ -377,7 +377,7 @@ service.delete()
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 + Přečtěte si o všech [možnostech nasazení Azure Machine Learning služby](how-to-deploy-and-where.md).
 + Naučte se [vytvářet klienty pro webovou službu](how-to-consume-web-service.md).

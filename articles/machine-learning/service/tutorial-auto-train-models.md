@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 08/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 060257ef144309e37208db80c7731ed96b995b2c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 49f46c09cfcfef2ab1e74ae7c08d9a54289293ac
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990483"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534838"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Použití automatizovaného strojového učení k sestavení regresního modelu
 
@@ -42,36 +42,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před t
 
 ## <a name="prerequisites"></a>Požadavky
 
-Přejděte k [Nastavení vývojového prostředí](#start) pro čtení v rámci kroků poznámkového bloku nebo použijte následující pokyny k získání poznámkového bloku a jeho spuštění na Azure Notebooks nebo na vlastním serveru poznámkového bloku. Pokud chcete spustit Poznámkový blok, budete potřebovat:
+* Dokončení první části, [kurz pro přípravu dat](tutorial-data-prep.md).
 
-* [Spustit kurz přípravy dat](tutorial-data-prep.md).
-* Server Python 3,6 Poznámkový blok s následujícím nainstalovaným:
-    * Sada SDK Azure Machine Learning pro Python s `automl` a `notebooks` Extras
-    * `matplotlib`
-* Poznámkový blok kurzu
-* Pracovní prostor Machine Learning
-* Konfigurační soubor pro pracovní prostor ve stejném adresáři jako Poznámkový blok
+* Po dokončení první části otevřete Poznámkový blok **kurzy/Regression-part2-Automated-ml. ipynb** pomocí stejného serveru poznámkového bloku.
 
-Všechny tyto předpoklady získáte z některého z následujících částí.
-
-* Použití [serveru cloudového poznámkového bloku v pracovním prostoru](#azure)
-* Použití [vlastního serveru poznámkového bloku](#server)
-
-### <a name="azure"></a>Použití serveru cloudového poznámkového bloku v pracovním prostoru
-
-Začněte s vlastním cloudovým notebookovým serverem. [Sada SDK Azure Machine Learning pro Python](https://aka.ms/aml-sdk) je už po vytvoření tohoto cloudového prostředku nainstalovaná a nakonfigurovaná.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* Po spuštění webové stránky poznámkového bloku spusťte Poznámkový blok **kurzy/Regression-part2-Automated-ml. ipynb** .
-
-### <a name="server"></a>Použití vlastního serveru Jupyter notebook
-
-Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači.  Ujistěte se, že ve `matplotlib` svém prostředí `automl` nainstalujete a `notebooks` navíc.
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
-Po dokončení kroků spusťte Poznámkový blok **kurzy/Regression-part2-Automated-ml. ipynb** .
+Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte `matplotlib` nainstalované `automl` a `notebooks` další sady Azure Machine Learning SDK.
 
 ## <a name="start"></a>Nastavení vývojového prostředí
 
@@ -1211,7 +1186,7 @@ Z konečné metriky přesnosti předpovědi vidíte, že model je poměrně dobr
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu automatizovaného strojového učení jste provedli následující úlohy:
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s aplikací Workday | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Workday.
+title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s Workday | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Workday.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,183 +13,213 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aba2d3bab7d709b4bb9ac18e4a9c6ed052a5fb83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 217a51c1032f946e8aaf377627f30aa4faa83a86
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086966"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542706"
 ---
-# <a name="tutorial-integrate-workday-with-azure-active-directory"></a>Kurz: Integrace Workday s Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s Workday
 
-V tomto kurzu se dozvíte, jak zajistit integraci Workday s Azure Active Directory (Azure AD). Při integraci Workday s Azure AD, můžete:
+V tomto kurzu se naučíte, jak integrovat Workday s Azure Active Directory (Azure AD). Když ve službě Azure AD integrujete Workday, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k Workday.
-* Aby uživatelé mohli být automaticky přihlášeni k Workday pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k Workday.
+* Umožněte uživatelům, aby se do Workday přihlásili pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* WORKDAY jednotné přihlašování (SSO) povolené předplatné.
+* Odběr povolený jednotného přihlašování (SSO) pro Workday.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje WORKDAY **SP** jednotné přihlašování zahájené.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Workday podporuje jednotné přihlašování iniciované v **SP** .
 
-## <a name="adding-workday-from-the-gallery"></a>Přidání Workday z Galerie
+## <a name="adding-workday-from-the-gallery"></a>Přidání pracovního dne z Galerie
 
-Pokud chcete nakonfigurovat integraci Workday do služby Azure AD, budete muset přidat Workday z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Workday do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat Workday z galerie.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **Workday** do vyhledávacího pole.
-1. Vyberte **Workday** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Workday** .
+1. Vyberte pracovní **den** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on-for-workday"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Workday
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s aplikací Workday pomocí testovacího uživatele volá **Britta Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatelské ve Workday.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s Workday pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Workday.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s aplikací Workday, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s Workday, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Workday](#configure-workday)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Workday](#create-workday-test-user)**  mít protějšek Britta Simon ve Workday, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, **[přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** .
+2. **[Nakonfigurujte Workday](#configure-workday)** pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte testovacího uživatele v Workday](#create-workday-test-user)** , který bude mít protějšek B. Simon v Workday, který je propojený s reprezentací uživatele Azure AD.
+3. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Workday** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Workday** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** stránky, zadejte hodnoty pro následující pole:
+1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://impl.workday.com/<tenant>/login-saml2.flex`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://impl.workday.com/<tenant>/login-saml2.flex`
 
-    b. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.workday.com`
+    b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`http://www.workday.com`
 
-    c. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://impl.workday.com/<tenant>/login-saml.htmld`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://impl.workday.com/<tenant>/login-saml.htmld`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty se skutečné přihlašovací adresu URL a adresy URL odpovědi. Vaše adresa URL odpovědi musí mít například subdomény: www wd2, wd3, wd3 impl, wd5, wd5 impl).
-    > Pomocí příkazu podobného tomuto `http://www.myworkday.com` funguje, ale `http://myworkday.com` tak není. Kontakt [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi. Vaše adresa URL odpovědi musí mít subdoménu například: www, WD2, WD3, WD3-impl, wd5, wd5-impl).
+    > Použití něčeho `http://www.myworkday.com` jako funguje `http://myworkday.com` , ale ne. Pro získání těchto hodnot se obraťte na [tým podpory klienta v Workday](https://www.workday.com/en-us/partners-services/services/support.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Vaše aplikace Workday očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Pracovní aplikace očekává **nameidentifier** namapovat s **user.mail**, **UPN**a tak dále, takže budete muset upravit mapování atributů kliknutím na  **Upravit** ikonu a změnit mapování atributů.
+6. Vaše aplikace Workday očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Aplikace Workday očekává, že **NameIdentifier** má být namapován pomocí **User. mail**, **UPN**atd., takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
-    > Tady jsme namapované ID názvu s hlavní název uživatele (user.userprincipalname) jako výchozí. Je nutné ID názvu se skutečné ID uživatele ve vašem účtu Workday (e-mailu, hlavního názvu uživatele, atd.) pro úspěšné fungování jednotného přihlašování.
+    > Tady jsme namapovali ID s názvem UPN (User. userPrincipalName) jako výchozí. Abyste mohli úspěšně pracovat s jednotným přihlašováním, je potřeba, abyste namapovali ID, které má skutečné ID uživatele v účtu Workday (e-mail, hlavní název uživatele atd.).
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **certifikát (Base64)** a vyberte **Stáhnout** stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-1. Chcete-li změnit **podepisování** možnosti podle vašich požadavků, klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogové okno.
+1. Chcete-li upravit možnosti **podepisování** podle vašich požadavků, klikněte na tlačítko **Upravit** a otevřete dialogové okno **podpisový certifikát SAML** .
 
     ![image](common/edit-certificate.png) 
 
     ![image](./media/workday-tutorial/signing-option.png)
 
-    a. Vyberte **přihlašování SAML odpověď a kontrolní výraz** pro **podepisování možnost**.
+    a. Pro **možnost podepisování**vyberte **podepsat odpověď SAML a kontrolní výraz** .
 
     b. Klikněte na **Uložit**.
 
-1. Na **nastavení Workday** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
+1. V části **nastavit pracovní den** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+   ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-workday"></a>Konfigurovat pracovní den
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Workday jako správce.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-2. V **vyhledávacího pole** hledání s názvem **upravit nastavení Tenanta – zabezpečení** na horní levé straně domovské stránky.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
 
-    ![Upravit klienta zabezpečení](./media/workday-tutorial/IC782925.png "upravit klienta zabezpečení")
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-3. V **adresy URL přesměrování** části, proveďte následující kroky:
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Workday.
 
-    ![Adresy URL přesměrování](./media/workday-tutorial/IC7829581.png "adresy URL přesměrování")
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Workday**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    a. Klikněte na tlačítko **přidat řádek**.
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-    b. V **přihlašovací adresa URL pro přesměrování**, **adresy URL přesměrování při vypršení časového limitu** a **adresy URL přesměrování Mobile** vložit do textového pole **přihlašovací adresa URL** který jste zkopírovali z **nastavení Workday** části webu Azure portal.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    c. V **adresy URL přesměrování při odhlášení** vložit do textového pole **odhlašovací adresa URL** zkopírovanou z **nastavení Workday** části webu Azure portal.
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-    d. V **používá pro prostředí** textové pole, vyberte název prostředí.  
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-workday"></a>Konfigurace pracovního dne
+
+1. V jiném okně webového prohlížeče se přihlaste ke svému firemnímu webu Workday jako správce.
+
+2. Do **vyhledávacího pole** vyhledejte název **Upravit nastavení klienta – zabezpečení** v levé horní části domovské stránky.
+
+    ![Upravit zabezpečení tenanta](./media/workday-tutorial/IC782925.png "Upravit zabezpečení tenanta")
+
+3. V části **adresy URL pro přesměrování** proveďte následující kroky:
+
+    ![Adresy URL pro přesměrování](./media/workday-tutorial/IC7829581.png "Adresy URL pro přesměrování")
+
+    a. Klikněte na tlačítko **Přidat řádek**.
+
+    b. Do textového pole **Adresa URL pro přesměrování přihlášení**, **Adresa URL pro přesměrování časového limitu** a text **adresy URL pro přesměrování mobilního** přesměrování vložte **adresu URL pro přihlášení** , kterou jste zkopírovali z části **Nastavení pracovního** dne v Azure Portal.
+
+    c. Do textového pole **Adresa URL pro přesměrování odhlášení** vložte **adresu URL** pro odhlášení, kterou jste zkopírovali z části **Nastavení pracovního** dne v Azure Portal.
+
+    d. V části **použito pro prostředí** pole vyberte název prostředí.  
 
    > [!NOTE]
-   > Hodnota atributu prostředí se váže na hodnotu adresy URL tenanta:  
-   > -Pokud název domény adresy URL klienta Workday začíná impl například: *https:\//impl.workday.com/\<tenanta\>/login-saml2.flex*), **prostředí**atribut musí být nastaven na implementaci.  
-   > – Pokud je název domény začíná znakem jiný, budete muset požádat [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) zobrazíte odpovídající **prostředí** hodnotu.
+   > Hodnota atributu prostředí je vázána na hodnotu adresy URL klienta:  
+   > – Pokud název domény pro adresu URL tenanta Workday začíná na impl, například: *https:\//impl.Workday.com/\<\>tenant/Login-Saml2.Flex*), musí být atribut **prostředí** nastavený na implementaci.  
+   > – Pokud název domény začíná na něco jiného, musíte kontaktovat [tým podpory pro pracovníka pracovního](https://www.workday.com/en-us/partners-services/services/support.html) dne a získat tak porovnání hodnoty **prostředí** .
 
-4. V **nastavení SAML** části, proveďte následující kroky:
+4. V části **Nastavení SAML** proveďte následující kroky:
 
-    ![Instalační program SAML](./media/workday-tutorial/IC782926.png "nastavení SAML")
+    ![Nastavení SAML](./media/workday-tutorial/IC782926.png "Nastavení SAML")
 
-    a.  Vyberte **povolit ověřování SAML**.
+    a.  Vyberte **Povolit ověřování SAML**.
 
-    b.  Klikněte na tlačítko **přidat řádek**.
+    b.  Klikněte na tlačítko **Přidat řádek**.
 
-5. V **poskytovatele Identity SAML** části, proveďte následující kroky:
+5. V části **Zprostředkovatelé identity SAML** proveďte následující kroky:
 
-    ![Zprostředkovatelé Identity SAML](./media/workday-tutorial/IC7829271.png "SAML zprostředkovatele Identity")
+    ![Zprostředkovatelé identity SAML](./media/workday-tutorial/IC7829271.png "Zprostředkovatelé identity SAML")
 
-    a. V **název zprostředkovatele identit** textového pole zadejte název zprostředkovatele (například: *SPInitiatedSSO*).
+    a. Do textového pole **název zprostředkovatele identity** zadejte název zprostředkovatele (například: *SPInitiatedSSO*).
 
-    b. Na webu Azure Portal na **nastavení Workday** tématu, zkopírujte **Azure AD identifikátor** hodnotu a vložte jej do **vystavitele** textového pole.
+    b. V Azure Portal v části nastavit pracovní **den** Zkopírujte hodnotu **identifikátoru Azure AD** a vložte ji do textového pole vystavitele.
 
-    ![Zprostředkovatelé Identity SAML](./media/workday-tutorial/IC7829272.png "SAML zprostředkovatele Identity")
+    ![Zprostředkovatelé identity SAML](./media/workday-tutorial/IC7829272.png "Zprostředkovatelé identity SAML")
 
-    c. Na webu Azure Portal na **nastavení Workday** tématu, zkopírujte **odhlašovací adresa URL** hodnotu a vložte jej do **odhlašovací adresa URL odpovědi** textového pole.
+    c. V Azure Portal v části nastavit pracovní **den** ZKOPÍRUJTE hodnotu **URL** pro odhlášení a vložte ji do textového pole **Adresa URL odpovědi** na odhlášení.
 
-    d. Na webu Azure Portal na **nastavení Workday** tématu, zkopírujte **přihlašovací adresa URL** hodnotu a vložte jej do **adresa URL zprostředkovatele identity jednotného přihlašování služby** textového pole.
+    d. V Azure Portal v části nastavit pracovní **den** Zkopírujte hodnotu **adresy URL pro přihlášení** a vložte ji do textového pole **URL služby IDP SSO** .
 
-    e. V **používá pro prostředí** textové pole, vyberte název prostředí.
+    e. V části **použito pro prostředí** pole vyberte název prostředí.
 
-    f. Klikněte na tlačítko **certifikát veřejného klíče zprostředkovatele Identity**a potom klikněte na tlačítko **vytvořit**.
+    f. Klikněte na **certifikát veřejného klíče zprostředkovatele identity**a pak klikněte na **vytvořit**.
 
-    ![Vytvoření](./media/workday-tutorial/IC782928.png "vytvořit")
+    ![Vytvořit](./media/workday-tutorial/IC782928.png "Vytvořit")
 
-    g. Klikněte na tlačítko **vytvořit x509 veřejný klíč**.
+    g. Klikněte na **vytvořit veřejný klíč x509**.
 
-    ![Vytvoření](./media/workday-tutorial/IC782929.png "vytvořit")
+    ![Vytvořit](./media/workday-tutorial/IC782929.png "Vytvořit")
 
-6. V **veřejný klíč zobrazit x509** části, proveďte následující kroky:
+6. V části **Zobrazit veřejný klíč x509** proveďte následující kroky:
 
-    ![Veřejný klíč zobrazit x509](./media/workday-tutorial/IC782930.png "zobrazení x509 veřejný klíč")
+    ![Zobrazit veřejný klíč x509](./media/workday-tutorial/IC782930.png "Zobrazit veřejný klíč x509")
 
-    a. V **název** textového pole zadejte název vašeho certifikátu (například: *PPE\_SP*).
+    a. Do textového pole **název** zadejte název vašeho certifikátu (například: *OOP\_SP*).
 
-    b. V **platné od** textového pole zadejte platnou hodnotu atributu vašeho certifikátu.
+    b. Do textového pole **platné od** zadejte platnou hodnotu atributu certifikátu.
 
-    c.  V **platný na** textového pole zadejte platnou hodnotu atributu vašeho certifikátu.
+    c.  Do textového pole **platné do** zadejte hodnotu atributu platný do atributu vašeho certifikátu.
 
     > [!NOTE]
-    > Můžete získat platný datum a platný datum, od staženého certifikátu poklepáním.  Data patří **podrobnosti** kartu.
+    > Poklikáním na něj můžete získat platné datum a čas platnosti ze staženého certifikátu.  Data jsou uvedena na kartě **Podrobnosti** .
     >
     >
 
-    d.  Otevřete váš certifikát base-64 kódovaných v programu Poznámkový blok a zkopírujte jeho obsah.
+    d.  Otevřete v programu Poznámkový blok certifikát s kódováním Base-64 a zkopírujte jeho obsah.
 
-    e.  V **certifikát** textové pole, vložte obsah schránky.
+    e.  Do textového pole **certifikát** vložte obsah schránky.
 
     f.  Klikněte na **OK**.
 
@@ -197,63 +227,35 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
     ![Konfigurace jednotného přihlašování](./media/workday-tutorial/WorkdaySSOConfiguratio.png "Konfigurace jednotného přihlašování")
 
-    a.  V **ID poskytovatele služby** textové pole, typ **https://www.workday.com** .
+    a.  Do textového pole **ID poskytovatele služby** zadejte **https://www.workday.com** .
 
-    b. Vyberte **není Deflate žádosti o ověření iniciovaného Zprostředkovatelem přihlašování**.
+    b. Vyberte **Neuprostřed žádosti o ověření iniciované v SP**.
 
-    c. Jako **požádat o podpis metody ověřování**vyberte **SHA256**.
+    c. Jako **metodu podpisu žádosti o ověření**vyberte **SHA256**.
 
-    ![Ověřování podpisu požadavku](./media/workday-tutorial/WorkdaySSOConfiguration.png "ověřování podpisu požadavku") 
+    ![Metoda podpisu žádosti o ověření](./media/workday-tutorial/WorkdaySSOConfiguration.png "Metoda podpisu žádosti o ověření") 
 
     d. Klikněte na **OK**.
 
     ![OK](./media/workday-tutorial/IC782933.png "OK")
 
     > [!NOTE]
-    > Ujistěte se prosím, že nastavíte jednotné přihlašování správně. V případě, že můžete povolit jednotné přihlašování s nesprávné nastavení, nebudete moci zadat aplikace pomocí svých přihlašovacích údajů a získat uzamčen. V takovém případě Workday poskytuje záložní adresy url přihlašovacího tam, kde uživatelé můžou přihlásit pomocí svého obvyklého uživatelského jména a hesla v následujícím formátu: [Your Workday URL]/login.flex?redirect=n
+    > Ujistěte se prosím, že jste správně nastavili jednotné přihlašování. Pokud povolíte jednotné přihlašování s nesprávným nastavením, možná nebudete moct aplikaci zadat pomocí vašich přihlašovacích údajů a můžete ji uzamknout. V takovém případě Workday poskytuje adresu URL pro zálohování, kde se uživatelé můžou přihlašovat pomocí normálního uživatelského jména a hesla v následujícím formátu: [vaše adresa URL pracovního dne]/Login.Flex? redirect = n
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-workday-test-user"></a>Vytvořit testovacího uživatele v Workday
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte v Workday uživatele s názvem B. Simon. Pokud chcete přidat uživatele do platformy Workday, pracujte s [týmem podpory klientů](https://www.workday.com/en-us/partners-services/services/support.html) v pracovních klientech. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
-   1. Do pole **Název** zadejte `Britta Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
+## <a name="test-sso"></a>Test SSO
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+Když vyberete dlaždici Workday na přístupovém panelu, měli byste být automaticky přihlášení do pracovního dne, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-V této části povolíte Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k Workday.
-
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **Workday**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
-
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
-1. V **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
-
-### <a name="create-workday-test-user"></a>Vytvoření Workday testovacího uživatele
-
-V této části vytvořte uživatele Britta Simon ve Workday. Práce s [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) přidat uživatele na platformě Workday. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
-
-### <a name="test-sso"></a>Test SSO
-
-Při výběru dlaždice Workday na přístupovém panelu, můžete by měl být automaticky přihlášeni k Workday, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
-
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si Workday ve službě Azure AD](https://aad.portal.azure.com)

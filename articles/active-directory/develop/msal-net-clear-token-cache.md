@@ -1,9 +1,9 @@
 ---
-title: Vymazat mezipaměť tokenu pomocí knihovny Microsoft Authentication Library pro .NET – Azure
-description: Zjistěte, jak vymazat mezipaměť tokenu pomocí knihovna Microsoft Authentication Library pro .NET (MSAL.NET).
+title: Vymazání mezipaměti tokenů pomocí knihovny Microsoft Authentication Library pro .NET – Azure
+description: Zjistěte, jak vymazat mezipaměť tokenů pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6763c6b2b1f9b4de7d8669a50a4979a7aac00c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1cee6443db0b019f79a80cf5b7c0e2a7a50240f2
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544125"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532658"
 ---
-# <a name="clear-the-token-cache-using-msalnet"></a>Vymazat mezipaměť token pomocí MSAL.NET
+# <a name="clear-the-token-cache-using-msalnet"></a>Vymazání mezipaměti tokenů pomocí MSAL.NET
 
-Pokud jste [získání přístupového tokenu](msal-acquire-cache-tokens.md) pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET), token se uloží do mezipaměti. Pokud aplikace potřebuje token, byste nejprve zavolat `AcquireTokenSilent` metodu k ověření, pokud je přijatelné token v mezipaměti. 
+Při [získání přístupového tokenu](msal-acquire-cache-tokens.md) pomocí knihovny Microsoft Authentication Library pro .net (MSAL.NET) se token uloží do mezipaměti. Když aplikace potřebuje token, měla by nejdřív zavolat `AcquireTokenSilent` metodu pro ověření, jestli je přijatelný token v mezipaměti. 
 
-Vymazání mezipaměti je dosaženo odstraněním účty z mezipaměti. Soubor cookie relace, která je v prohlížeči, i když nebude odstraněn.  Následující příklad vytvoří instanci aplikace veřejným klientem, získá účty pro aplikaci a odstraní účty.
+Vymazání mezipaměti se dosáhne odebráním účtů z mezipaměti. Tím nedojde k odebrání souboru cookie relace, který je v prohlížeči, ale.  Následující příklad vytvoří instanci veřejné klientské aplikace, získá účty pro aplikaci a odebere účty.
 
 ```csharp
 private readonly IPublicClientApplication _app;
@@ -50,4 +50,4 @@ while (accounts.Any())
 
 ```
 
-Další informace o získávání a ukládání do mezipaměti tokenů, [získání přístupového tokenu](msal-acquire-cache-tokens.md).
+Pokud chcete získat další informace o získání a ukládání tokenů do mezipaměti, přečtěte si téma [získání přístupového tokenu](msal-acquire-cache-tokens.md).

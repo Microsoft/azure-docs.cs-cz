@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: a92cb0f3da5058e7ffeee6f47e8cfa26ae291005
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5c0c3ade3fd089a4819b8836b07e249fc32c06e0
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990563"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543607"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -149,12 +149,25 @@ K hostování nasazení webové služby lze použít následující výpočetní
 
 ## <a name="prepare-to-deploy"></a>Příprava nasazení
 
-Chcete-li nasadit jako webovou službu, je nutné vytvořit odvozenou konfiguraci (`InferenceConfig`) a konfiguraci nasazení. Odvození modelu nebo Bodové hodnocení je fáze, ve které se nasazený model používá pro předpověď, nejčastěji pro produkční data. V konfiguraci odvození můžete určit skripty a závislosti potřebné k obsluze modelu. V konfiguraci nasazení zadáte podrobné informace o tom, jak řídit model na výpočetním cíli.
+Nasazení modelu vyžaduje několik věcí:
 
-> [!IMPORTANT]
-> Sada Azure Machine Learning SDK neposkytuje způsob, jak webové služby nebo IoT Edge nasazení získat přístup k úložišti dat nebo datovým sadám. Pokud potřebujete nasadit model pro přístup k datům uloženým mimo nasazení, jako je například v účtu Azure Storage, je nutné vyvinout vlastní řešení kódu pomocí příslušné sady SDK. Například [sada SDK Azure Storage pro Python](https://github.com/Azure/azure-storage-python).
->
-> Další alternativou, která může fungovat pro váš scénář, je [Batch předpovědi](how-to-run-batch-predictions.md), která poskytuje přístup k úložišti dat při bodování.
+* __Vstupní skript__. Tento skript přijímá požadavky, vyhodnotí požadavek pomocí modelu a vrátí výsledky.
+
+    > [!IMPORTANT]
+    > Vstupní skript je specifický pro váš model; musí pochopit formát příchozích dat požadavků, formát dat očekávaných modelem a formát dat vrácených klientům.
+    >
+    > Pokud jsou data požadavku ve formátu, který model nepoužívá, skript ho může transformovat do přijatelného formátu. Může také transformovat odpověď předtím, než se vrátí do klienta.
+
+    > [!IMPORTANT]
+    > Sada Azure Machine Learning SDK neposkytuje způsob, jak webové služby nebo IoT Edge nasazení získat přístup k úložišti dat nebo datovým sadám. Pokud potřebujete nasadit model pro přístup k datům uloženým mimo nasazení, jako je například v účtu Azure Storage, je nutné vyvinout vlastní řešení kódu pomocí příslušné sady SDK. Například [sada SDK Azure Storage pro Python](https://github.com/Azure/azure-storage-python).
+    >
+    > Další alternativou, která může fungovat pro váš scénář, je [Batch předpovědi](how-to-run-batch-predictions.md), která poskytuje přístup k úložišti dat při bodování.
+
+* **Závislosti**, například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
+
+* __Konfigurace nasazení__ pro výpočetní cíl, který je hostitelem nasazeného modelu. Tato konfigurace popisuje například požadavky na paměť a procesor potřebný ke spuštění modelu.
+
+Tyto entity jsou zapouzdřeny do __Konfigurace odvození__a __Konfigurace nasazení__. Konfigurace odvození odkazuje na skript vstupu a další závislosti. Tyto konfigurace jsou definovány programově při použití sady SDK a jako soubory JSON při použití rozhraní příkazového řádku k provedení nasazení.
 
 ### <a id="script"></a> 1. Definování vstupního skriptu & závislosti
 
@@ -399,9 +412,13 @@ def run(request):
 
 ### <a name="2-define-your-inferenceconfig"></a>2. Definování InferenceConfig
 
-Konfigurace odvození popisuje, jak nakonfigurovat model pro vytvoření předpovědi. Následující příklad ukazuje, jak vytvořit odvozenou konfiguraci. Tato konfigurace určuje modul runtime, skript vstupu a (volitelně) soubor prostředí conda:
+Konfigurace odvození popisuje, jak nakonfigurovat model pro vytvoření předpovědi. Tato konfigurace není součástí skriptu pro zadávání. odkazuje na váš vstupní skript a používá se k vyhledání všech prostředků vyžadovaných nasazením. Používá se později při skutečně nasazování modelu.
+
+Následující příklad ukazuje, jak vytvořit odvozenou konfiguraci. Tato konfigurace určuje modul runtime, skript vstupu a (volitelně) soubor prostředí conda:
 
 ```python
+from azureml.core.model import InferenceConfig
+
 inference_config = InferenceConfig(runtime="python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
@@ -431,7 +448,7 @@ Informace o použití vlastní image Docker s odvozenou konfigurací najdete v t
 
 ### <a name="3-define-your-deployment-configuration"></a>3. Definování konfigurace nasazení
 
-Před nasazením musíte definovat konfiguraci nasazení. __Konfigurace nasazení je specifická pro výpočetní cíl, který bude hostitelem webové služby__. Například při nasazování místně musíte zadat port, kam služba přijímá požadavky.
+Před nasazením musíte definovat konfiguraci nasazení. __Konfigurace nasazení je specifická pro výpočetní cíl, který bude hostitelem webové služby__. Například při nasazování místně musíte zadat port, kam služba přijímá požadavky. Konfigurace nasazení není součástí skriptu pro vložení. Slouží k definování charakteristik výpočetního cíle, který bude hostovat model a vstupní skript.
 
 Může být také potřeba vytvořit výpočetní prostředek. Například pokud ještě nemáte službu Azure Kubernetes přidruženou k vašemu pracovnímu prostoru.
 
@@ -442,6 +459,12 @@ Následující tabulka uvádí příklad vytvoření konfigurace nasazení pro k
 | Místní | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Instance kontejneru Azure | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+
+Každá z těchto tříd pro webové služby Local, ACI a AKS se dá importovat z `azureml.core.webservice`:
+
+```python
+from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
+```
 
 > [!TIP]
 > Před nasazením modelu jako služby ho můžete chtít profilovat a zjistit optimální požadavky na procesor a paměť. Model můžete profilovat pomocí sady SDK nebo rozhraní příkazového řádku. Další informace najdete v tématu [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) a [AZ ml model model](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) reference.
@@ -459,6 +482,8 @@ K místnímu nasazení musíte mít v místním počítači nainstalovaný Docke
 #### <a name="using-the-sdk"></a>Použití sady SDK
 
 ```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
 service.wait_for_deployment(show_output = True)

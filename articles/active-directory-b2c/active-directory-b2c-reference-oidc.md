@@ -1,5 +1,5 @@
 ---
-title: Webové přihlášení s OpenID Connect-Azure Active Directory B2C | Microsoft Docs
+title: Webové přihlašování pomocí OpenID Connect – Azure Active Directory B2C
 description: Sestavujte webové aplikace pomocí ověřovacího protokolu OpenID Connect v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 08/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0e60bedcf1324b443d9b9cd34e8dc695fdb0b372
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f6188f5c5bdd256ee84c5e7dc8632e5c067ceca5
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931755"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541716"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webové přihlašování pomocí OpenID Connect v Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Azure AD B2C rozšiřuje standardní protokol OpenID Connect a provede více ne�
 
 Pokud vaše webová aplikace potřebuje ověřit uživatele a spustit tok uživatele, může uživatele nasměrovat na `/authorize` koncový bod. Uživatel provede akci v závislosti na toku uživatele.
 
-V této žádosti klient indikuje oprávnění, která musí získat od uživatele v `scope` parametru, a tok uživatele, který se má spustit `p` v parametru. V následujících oddílech jsou uvedeny tři příklady (s přerušením řádků pro čitelnost), z nichž každá používá jiný uživatelský tok. Pokud chcete zjistit, jak každý požadavek funguje, zkuste vložit požadavek do prohlížeče a spustit ho. Můžete nahradit `fabrikamb2c` názvem vašeho tenanta, pokud ho máte a máte vytvořeného toku uživatele. Budete také muset nahradit `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`. Nahraďte ID tohoto klienta ID aplikace, kterou jste vytvořili pro registraci aplikace. Změňte také název `b2c_1_sign_in` zásady na název zásady, který máte ve vašem tenantovi. 
+V této žádosti klient indikuje oprávnění, která musí získat od uživatele v `scope` parametru, a tok uživatele, který se má spustit `p` v parametru. V následujících oddílech jsou uvedeny tři příklady (s přerušením řádků pro čitelnost), z nichž každá používá jiný uživatelský tok. Pokud chcete zjistit, jak každý požadavek funguje, zkuste vložit požadavek do prohlížeče a spustit ho. Můžete nahradit `fabrikamb2c` názvem vašeho tenanta, pokud ho máte a máte vytvořeného toku uživatele. Budete také muset nahradit `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`. Nahraďte ID tohoto klienta ID aplikace, kterou jste vytvořili pro registraci aplikace. Změňte také název `b2c_1_sign_in` zásady na název zásady, který máte ve vašem tenantovi.
 
 #### <a name="use-a-sign-in-user-flow"></a>Použití toku uživatele přihlašování
 ```
@@ -121,7 +121,7 @@ error=access_denied
 
 ## <a name="validate-the-id-token"></a>Ověřit token ID
 
-Pouze příjem tokenu ID nestačí k ověření uživatele. Ověří signaturu tokenu ID a ověří deklarace identity v tokenu podle požadavků vaší aplikace. Azure AD B2C používá [webové tokeny JSON (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii s veřejným klíčem k podepisování tokenů a ověření, že jsou platné. Existuje mnoho Open-Source knihoven, které jsou k dispozici pro ověřování JWTs v závislosti na jazyce předvolby. Doporučujeme tyto možnosti prozkoumat místo implementace vlastní logiky ověřování. 
+Pouze příjem tokenu ID nestačí k ověření uživatele. Ověří signaturu tokenu ID a ověří deklarace identity v tokenu podle požadavků vaší aplikace. Azure AD B2C používá [webové tokeny JSON (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii s veřejným klíčem k podepisování tokenů a ověření, že jsou platné. Existuje mnoho Open-Source knihoven, které jsou k dispozici pro ověřování JWTs v závislosti na jazyce předvolby. Doporučujeme tyto možnosti prozkoumat místo implementace vlastní logiky ověřování.
 
 Azure AD B2C má koncový bod metadat OpenID Connect, který umožňuje aplikaci získat informace o Azure AD B2C za běhu. Mezi tyto informace patří koncové body, obsah tokenu a podpisové klíče tokenu. Pro každého toku uživatelů v tenantovi B2C existuje dokument metadat JSON. Například dokument metadat pro `b2c_1_sign_in` tok uživatele v `fabrikamb2c.onmicrosoft.com` nástroji je umístěný v:
 
@@ -155,7 +155,7 @@ Po ověření tokenu ID můžete zahájit relaci s uživatelem. Deklarace identi
 
 Pokud potřebujete, aby webová aplikace spouštěla toky uživatelů, můžete přeskočit několik dalších částí. Tyto části platí jenom pro webové aplikace, které potřebují ověřená volání do webového rozhraní API a jsou taky chráněná Azure AD B2C.
 
-Můžete uplatnit autorizační kód, který jste získali (pomocí `response_type=code+id_token`), pro token k požadovanému prostředku `POST` odesláním žádosti do `/token` koncového bodu. V Azure AD B2C můžete vyžádat [přístupové tokeny pro jiné rozhraní API](active-directory-b2c-access-tokens.md#request-a-token) obvyklým způsobem zadáním jejich oboru (y) v žádosti.
+Můžete uplatnit autorizační kód, který jste získali (pomocí `response_type=code+id_token`), pro token k požadovanému prostředku `POST` odesláním žádosti do `/token` koncového bodu. V Azure AD B2C můžete [požadovat přístupové tokeny pro jiná rozhraní API](active-directory-b2c-access-tokens.md#request-a-token) obvyklým zadáním jejich oboru (y) v žádosti.
 
 Můžete také požádat o přístupový token pro vlastní back-endové webové rozhraní API vaší aplikace podle konvence použití ID klienta aplikace jako požadovaného oboru (což bude mít za následek přístupový token s tímto ID klienta jako "cílová"):
 
@@ -283,18 +283,24 @@ Chybové odpovědi vypadají jako:
 
 Pokud chcete uživatele podepsat z aplikace, nestačí vymazat soubory cookie aplikace nebo jinak ukončit relaci s uživatelem. Přesměrujte uživatele na Azure AD B2C, abyste se odhlásili. Pokud to neuděláte, uživatel může být schopný znovu ověřit vaši aplikaci, aniž by musel zadávat přihlašovací údaje znovu.
 
-Uživatele můžete jednoduše přesměrovat na `end_session` koncový bod, který je uvedený v dokumentu metadat OpenID Connect popsaného výše:
+Pokud chcete uživatele odhlásit, přesměrujte uživatele na `end_session` koncový bod, který je uvedený v dokumentu metadat OpenID Connect popsaného výše:
 
 ```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
-p=b2c_1_sign_in
-&post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
 | Parametr | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| p | Ano | Tok uživatele, který chcete použít k podepsání uživatele z vaší aplikace. |
+| tenant | Ano | Název vašeho tenanta Azure AD B2C |
+| politických | Ano | Tok uživatele, který chcete použít k podepsání uživatele z vaší aplikace. |
+| id_token_hint| Ne | Dřív vydaný token ID, který se má předat koncovému bodu pro odhlášení, jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. |
 | post_logout_redirect_uri | Ne | Adresa URL, na kterou má být uživatel přesměrován po úspěšném odhlášení. Pokud není zahrnutý, Azure AD B2C zobrazuje uživatele obecnou zprávu. |
+| state | Ne | Pokud je `state` parametr zahrnut v žádosti, v odpovědi by se měla objevit stejná hodnota. Aplikace by měla ověřit, zda `state` jsou hodnoty v žádosti a odpovědi stejné. |
+
+### <a name="require-id-token-hint-in-logout-request"></a>Vyžadovat pomocný parametr tokenu ID v žádosti o odhlášení
+
+Po odhlášení se uživatel přesměruje na identifikátor URI zadaný v `post_logout_redirect_uri` parametru, a to bez ohledu na adresy URL odpovědi, které byly pro aplikaci zadané. Pokud se ale předává `id_token_hint` platnost, Azure AD B2C ověří, že `post_logout_redirect_uri` hodnota odpovídá jednomu z konfigurovaných identifikátorů URI přesměrování aplikace před provedením přesměrování. Pokud pro aplikaci nebyla nakonfigurovaná žádná odpovídající adresa URL odpovědi, zobrazí se chybová zpráva a uživatel nebude přesměrován.
+
+### <a name="external-identity-provider-session"></a>Relace externího zprostředkovatele identity
 
 Přesměrování uživatele na `end_session` koncový bod vymaže některé ze stavů jednotného přihlašování uživatele pomocí Azure AD B2C, ale nepodepisuje uživatele z relace IDP (sociální identity Provider). Pokud uživatel vybere stejný IDP během následného přihlášení, znovu se ověří bez zadání přihlašovacích údajů. Pokud se uživatel chce z aplikace odhlásit, neznamená to nutně, že se chce odhlásit z účtu Facebook. Pokud se ale použijí místní účty, relace uživatele se ukončí správně.
-

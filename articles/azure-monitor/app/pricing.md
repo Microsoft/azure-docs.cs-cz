@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/13/2019
 ms.author: dalek
-ms.openlocfilehash: abf23eda2474ecbcfcaf0dadb26327225213a9a6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4029a9e46b9c9bb7cbd677deff4a172d8fc982f8
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989228"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534589"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro Application Insights
 
@@ -92,7 +92,7 @@ K zobrazení množství dat, která vaše aplikace posílá, můžete použít j
 Tady je několik věcí, které můžete udělat ke snížení objemu dat:
 
 * Použijte [vzorkování](../../azure-monitor/app/sampling.md). Tato technologie omezuje vaši rychlost přenosu dat bez toho, aby se vaše metrika zkrátila. Neztratíte možnost navigace mezi souvisejícími položkami v hledání. V serverových aplikacích vzorkování funguje automaticky.
-* [Omezte počet volání AJAX, která mohou být uvedena](../../azure-monitor/app/javascript.md#detailed-configuration) v každém zobrazení stránky, nebo vypněte vytváření sestav AJAX.
+* [Omezte počet volání AJAX, která mohou být uvedena](../../azure-monitor/app/javascript.md#configuration) v každém zobrazení stránky, nebo vypněte vytváření sestav AJAX.
 * [Úpravou souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) vypněte moduly shromažďování, které nepotřebujete. Můžete se třeba rozhodnout, že čítače výkonu nebo data závislostí jsou nepostradatelná.
 * Rozdělení telemetrie mezi samostatné klíče instrumentace. 
 * Předem agregované metriky. Pokud do své aplikace vložíte volání TrackMetric, můžete snížit provoz pomocí přetížení, které přijímá výpočet průměrné a směrodatné odchylky dávky měření. Nebo můžete použít předagregaci [balíčku](https://www.myget.org/gallery/applicationinsights-sdk-labs).
@@ -206,7 +206,7 @@ Vzhledem k tomu, že tato úroveň platí jenom pro zákazníky s předplatným 
 Pomocí správy prostředků Azure můžete napsat skript pro nastavení cenové úrovně. [Zjistěte jak](powershell.md#price).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vzorkování](../../azure-monitor/app/sampling.md)
 

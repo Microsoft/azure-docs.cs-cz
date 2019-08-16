@@ -1,9 +1,9 @@
 ---
-title: Předávání vlastního stavu v žádosti o ověření (knihovna Microsoft Authentication Library pro JavaScript) | Azure
-description: Zjistěte, jak předat hodnotu parametru vlastního stavu v žádosti o ověření pomocí knihovna Microsoft Authentication Library pro JavaScript (MSAL.js).
+title: Předání vlastního stavu v žádostech o ověření (Microsoft Authentication Library pro JavaScript) | Azure
+description: Přečtěte si, jak předat hodnotu parametru vlastního stavu v žádosti o ověření pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL. js).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: nacanuma
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f29d84838ddb11ac359d7a04dbce8e39dd05ac01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2ae12624b3d897f05437f7795d1a1eee32ca37a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66420495"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532746"
 ---
-# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Předávání vlastního stavu v žádosti o ověření pomocí MSAL.js
-*Stavu* parametru, jak jsou definovány pomocí OAuth 2.0 je součástí požadavek na ověření a je také vrácen v odpovědi tokenu prevenci proti útokům padělání žádosti více webů. Ve výchozím nastavení, knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) předá náhodně vygenerovaný jedinečný *stavu* hodnota parametru v žádosti o ověření.
+# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Předání vlastního stavu v žádostech o ověření pomocí MSAL. js
+Parametr *stavu* definovaný protokolem OAuth 2,0 je součástí žádosti o ověření a je také vrácen v odpovědi tokenu, aby nedocházelo k útokům proti padělání požadavků mezi weby. Ve výchozím nastavení projde knihovna Microsoft Authentication Library pro JavaScript (MSAL. js) náhodně generovanou hodnotu parametru *stavu* v žádostech o ověření.
 
-Parametr stavu můžete také použít ke kódování informace o stavu aplikace před přesměrování. Stav uživatele v aplikacích, jako jsou stránky nebo zobrazení, které byly na serveru, jako vstup pro tento parametr můžete předat. Knihovna MSAL.js umožňuje předat vlastní stav jako parametr stavu `Request` objektu:
+Parametr State lze také použít ke kódování informací o stavu aplikace před přesměrování. Do tohoto parametru můžete předat stav uživatele v aplikaci, jako je například stránka nebo zobrazení, na kterých byly, jako vstup. Knihovna MSAL. js umožňuje předat vlastní stav jako parametr stavu v `Request` objektu:
 
 ```javascript
 // Request type
@@ -57,7 +57,7 @@ let loginRequest = {
 myMSALObj.loginPopup(loginRequest);
 ```
 
-Předaný stavu se připojí jedinečný identifikátor GUID nastavil MSAL.js při odesílání požadavku. Při vrácení odpovědi MSAL.js kontroluje stav shody a vrací vlastní předané ve stavu v `Response` objektu jako `accountState`.
+Předaný stav je připojen k jedinečnému identifikátoru GUID nastavenému pomocí MSAL. js při odesílání žádosti. Když je vrácena odpověď, MSAL. js zkontroluje shodu stavu a potom vrátí vlastní předaný stav `Response` objektu jako. `accountState`
 
 ```javascript
 export type AuthResponse = {
@@ -73,4 +73,4 @@ export type AuthResponse = {
 };
 ```
 
-Další informace, přečtěte si informace o [sestavení jednostránkové aplikace (SPA)](scenario-spa-overview.md) využitím MSAL.js.
+Další informace najdete v tématu [Vytvoření jednostránkové aplikace (Spa)](scenario-spa-overview.md) pomocí MSAL. js.

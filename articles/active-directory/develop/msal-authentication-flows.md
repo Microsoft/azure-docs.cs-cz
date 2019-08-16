@@ -1,9 +1,9 @@
 ---
-title: Toky ověřování (knihovna Microsoft Authentication Library) | Azure
-description: Další informace o ověřování toků a uděluje použít pomocí Microsoft Authentication Library (MSAL).
+title: Toky ověřování (Microsoft Authentication Library) | Azure
+description: Přečtěte si o tocích ověřování a grantech, které používá knihovna Microsoft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,206 +13,206 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/25/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ba6ae188c098e85573503a1518ba65480d713a
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6cd932d2b11c61c380638a1a95f8da357d0c62e3
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807212"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532994"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
-Tento článek popisuje různé ověřování toků Microsoft Authentication Library (MSAL) k dispozici.  Tyto toky je možné v řadě různých scénářích aplikací.
+Tento článek popisuje různé toky ověřování, které poskytuje knihovna Microsoft Authentication Library (MSAL).  Tyto toky je možné používat v různých různých scénářích aplikací.
 
-| Tok | Popis | Použít v|  
+| Tok | Popis | Použito v|  
 | ---- | ----------- | ------- | 
-| [Interaktivní](#interactive) | Získá token interaktivní proces vyzývající uživatele k zadání přihlašovacích údajů prostřednictvím prohlížeče nebo automaticky otevírané okno. | [Aplikace klasické pracovní plochy](scenario-desktop-overview.md), [mobilní aplikace](scenario-mobile-overview.md) |
-| [Implicitní grant](#implicit-grant) | Umožňuje aplikaci získat tokeny bez provedení výměnou přihlašovacích údajů back endového serveru. To umožňuje aplikaci pro uživatele, Udržovat relaci a získat tokeny do dalších webových rozhraní API, vše v rámci klienta kódu jazyka JavaScript.| [Jednostránkové aplikace (SPA)](scenario-spa-overview.md) |
-| [autorizační kód](#authorization-code) | Použít v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. To umožňuje přidat přihlášení a přístup k rozhraní API do vašich mobilních a desktopových aplikací. | [Aplikace klasické pracovní plochy](scenario-desktop-overview.md), [mobilní aplikace](scenario-mobile-overview.md), [webové aplikace](scenario-web-app-call-api-overview.md) | 
-| [On-behalf-of](#on-behalf-of) | Aplikace volá webové rozhraní API, která zase potřebuje k volání jiné služby nebo webové rozhraní API a služby. Cílem je rozšíření delegovaný uživatel identit a oprávnění pomocí řetězce požadavku. | [Webová rozhraní API](scenario-web-api-call-api-overview.md) |
-| [Přihlašovací údaje klienta](#client-credentials) | Umožňuje přístup k prostředkům hostované webové pomocí identity aplikace. Běžně používá pro interakce – servery, které musí běžet na pozadí bez okamžité interakce s uživatelem. | [Aplikace démonů](scenario-daemon-overview.md) |
-| [Kód zařízení](#device-code) | Umožňuje uživatelům umožní přihlásit k omezené vstupní zařízení, jako jsou inteligentní TV, zařízení IoT nebo tiskárny. | [Desktop nebo mobile apps](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
-| [Ověření integrované Windows](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Umožňuje počítačům aplikace v doméně nebo v Azure Active Directory (Azure AD) připojených k získání tokenu tiše (bez nutnosti zásahu uživatelského rozhraní od uživatele).| [Desktop nebo mobile apps](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [Uživatelské jméno/heslo](scenario-desktop-acquire-token.md#username--password) | Umožňuje aplikaci přihlásit uživatele pomocí přímo zpracování své heslo. Tento tok se nedoporučuje. | [Desktop nebo mobile apps](scenario-desktop-acquire-token.md#username--password) | 
+| [Interaktivní](#interactive) | Získá token prostřednictvím interaktivního procesu, který uživateli vyzve k zadání přihlašovacích údajů prostřednictvím prohlížeče nebo místního okna. | [Desktopové aplikace](scenario-desktop-overview.md), [mobilní aplikace](scenario-mobile-overview.md) |
+| [Implicitní udělení](#implicit-grant) | Umožňuje aplikaci získat tokeny bez provedení výměny přihlašovacích údajů back-endu serveru. To umožňuje aplikaci přihlašovat uživatele, udržovat relaci a získávat tokeny do jiných webových rozhraní API, a to vše v kódu JavaScriptu klienta.| [Jednostránkové aplikace (SPA)](scenario-spa-overview.md) |
+| [Autorizační kód](#authorization-code) | Používá se v aplikacích, které jsou nainstalované na zařízení, aby získal přístup k chráněným prostředkům, například k webovým rozhraním API. Díky tomu můžete přidat přihlašování a přístup k rozhraní API pro mobilní a desktopové aplikace. | [Desktopové aplikace](scenario-desktop-overview.md), [mobilní aplikace](scenario-mobile-overview.md), [webové aplikace](scenario-web-app-call-api-overview.md) | 
+| [Jménem](#on-behalf-of) | Aplikace vyvolá službu nebo webové rozhraní API, které zase musí volat jinou službu nebo webové rozhraní API. Nápad je rozšířit identitu delegovaného uživatele a oprávnění prostřednictvím řetězce požadavků. | [Webová rozhraní API](scenario-web-api-call-api-overview.md) |
+| [Přihlašovací údaje klienta](#client-credentials) | Umožňuje přístup k prostředkům hostovaným na webu pomocí identity aplikace. Běžně se používá pro interakce mezi servery, které musí běžet na pozadí bez okamžité interakce s uživatelem. | [Aplikace démona](scenario-daemon-overview.md) |
+| [Kód zařízení](#device-code) | Umožňuje uživatelům přihlašovat se ke vstupnímu zařízení s omezením, jako jsou například inteligentní televizní vysílání, zařízení IoT nebo tiskárna. | [Desktopové/mobilní aplikace](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
+| [Integrované ověřování systému Windows](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Umožňuje aplikacím připojeným k doméně nebo Azure Active Directory (Azure AD) získat token v tichém režimu (bez interakce uživatelského rozhraní od uživatele).| [Desktopové/mobilní aplikace](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
+| [Uživatelské jméno a heslo](scenario-desktop-acquire-token.md#username--password) | Umožňuje aplikaci podepsat uživatele přímo pořízením hesla. Tento tok se nedoporučuje. | [Desktopové/mobilní aplikace](scenario-desktop-acquire-token.md#username--password) | 
 
 ## <a name="interactive"></a>Interaktivní
-Knihovna MSAL podporuje schopnost interaktivně vyzvat uživatele k zadání přihlašovacích údajů přihlásit a získat token s použitím těchto přihlašovacích údajů.
+MSAL podporuje možnost interaktivně vyzvat uživatele k přihlášení k přihlašovacím údajům a získat token pomocí těchto přihlašovacích údajů.
 
 ![Diagram interaktivního toku](media/msal-authentication-flows/interactive.png)
 
-Další informace o použití MSAL.NET interaktivně získat tokeny na konkrétní platformy naleznete v tématu:
+Další informace o použití MSAL.NET k interaktivnímu získání tokenů na konkrétních platformách najdete v tématech:
 - [Xamarin Android](msal-net-xamarin-android-considerations.md)
 - [Xamarin iOS](msal-net-xamarin-ios-considerations.md)
 - [Univerzální platforma Windows](msal-net-uwp-considerations.md)
 
-Další informace o interaktivní volání ve MSAL.js najdete v tématu [výzvu chování v interaktivních požadavků MSAL.js](msal-js-prompt-behavior.md).
+Další informace o interaktivních voláních v MSAL. js najdete v tématu [chování výzvy v interaktivních požadavcích MSAL. js](msal-js-prompt-behavior.md).
 
-## <a name="implicit-grant"></a>Implicitní grant
+## <a name="implicit-grant"></a>Implicitní udělení
 
-Podporuje MSAL [OAuth 2 implicitní tok poskytování](v2-oauth2-implicit-grant-flow.md), který umožňuje aplikaci získat tokeny z Microsoft identity platform bez provedení back endového serveru výměnou přihlašovacích údajů. To umožňuje aplikaci pro uživatele, Udržovat relaci a získat tokeny do dalších webových rozhraní API, vše v rámci klienta kódu jazyka JavaScript.
+MSAL podporuje [tok implicitního udělení OAuth 2](v2-oauth2-implicit-grant-flow.md), který umožňuje aplikaci získat tokeny z platformy Microsoft Identity Platform bez provedení výměny přihlašovacích údajů back-endu serveru. To umožňuje aplikaci přihlašovat uživatele, udržovat relaci a získávat tokeny do jiných webových rozhraní API, a to vše v kódu JavaScriptu klienta.
 
-![Diagram toku implicitní udělení](media/msal-authentication-flows/implicit-grant.svg)
+![Diagram toku implicitního udělení](media/msal-authentication-flows/implicit-grant.svg)
 
-Řada moderních webových aplikací jsou vytvořené jako aplikace na straně klienta, jedna stránka, vytvořené pomocí jazyka JavaScript nebo rozhraní jednostránková aplikace, například Angular, Vue.js a React.js. Tyto aplikace spouštět ve webovém prohlížeči a mají různé ověřování vlastnosti než tradiční na straně serveru webové aplikace. Platforma identit Microsoft umožňuje jednostránkové aplikace přihlásit uživatele a získat tokeny pro přístup k back endovým službám nebo webovým rozhraním API, s použitím implicitního udělení toku. Implicitní tok umožňuje, aby aplikace k získání ID tokenů pro reprezentaci ověřeného uživatele a také přístupové tokeny, které jsou potřebné k volání rozhraní API služby chráněný.
+Mnoho moderních webových aplikací je postavených jako aplikace na straně klienta, které jsou zapisovány pomocí jazyka JavaScript nebo rozhraní zabezpečeného hesla, jako je například úhlové Vue. js, a reaguje. js. Tyto aplikace běží ve webovém prohlížeči a mají různé charakteristiky ověřování než tradiční webové aplikace na straně serveru. Platforma Microsoft Identity Platform umožňuje uživatelům přihlašovat se pomocí jediné stránky a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API pomocí implicitního toku udělení. Implicitní tok umožňuje aplikaci získat tokeny ID, které reprezentují ověřeného uživatele, a také přístup k tokenům potřebným pro volání chráněných rozhraní API.
 
-Tento tok ověřování neobsahuje scénáře aplikací, které používají rozhraní JavaScript napříč platformami jako elektronovým a React-Native, protože vyžadují další možnosti pro interakci s nativní platformy.
+Tento tok ověřování neobsahuje scénáře aplikací, které používají rozhraní JavaScript pro různé platformy, jako jsou například elektronicky a reagující na nativní, protože vyžadují další možnosti pro interakci s nativními platformami.
 
-## <a name="authorization-code"></a>autorizační kód
-Podporuje MSAL [udělení autorizačního kódu OAuth 2](v2-oauth2-auth-code-flow.md). Tomuto grantu lze použít v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. To umožňuje přidat přihlášení a přístup k rozhraní API do vašich mobilních a desktopových aplikací. 
+## <a name="authorization-code"></a>Autorizační kód
+MSAL podporuje [udělení autorizačního kódu OAuth 2](v2-oauth2-auth-code-flow.md). Tento grant se dá použít v aplikacích, které jsou nainstalované na zařízení, aby získal přístup k chráněným prostředkům, například k webovým rozhraním API. Díky tomu můžete přidat přihlašování a přístup k rozhraní API pro mobilní a desktopové aplikace. 
 
-Po přihlášení uživatelů do webových aplikací (websites) webová aplikace obdrží autorizační kód.  K získání tokenu pro volání webových rozhraní API je uplatnit autorizační kód. V ASP.NET a ASP.NET Core webových aplikací, jenom cílem `AcquireTokenByAuthorizationCode` je přidat token do mezipaměti tokenů. Token, který je pak možné aplikací (obvykle v seznamu zařízení, která právě získání tokenu pro rozhraní API s využitím `AcquireTokenSilent`).
+Když se uživatelé přihlásí k webovým aplikacím (websites), obdrží webová aplikace autorizační kód.  Autorizační kód se považuje za získání tokenu pro volání webových rozhraní API. V ASP.NET a ASP.NET Core Web Apps jediným cílem `AcquireTokenByAuthorizationCode` je přidat token do mezipaměti tokenů. Token pak může aplikace použít (obvykle v řadičích, které pouze získají token pro rozhraní API pomocí `AcquireTokenSilent`).
 
-![Diagram toku kódu autorizace](media/msal-authentication-flows/authorization-code.png)
+![Diagram toku autorizačního kódu](media/msal-authentication-flows/authorization-code.png)
 
 V předchozím diagramu aplikace:
 
-1. Požádá o autorizační kód, který je uplatnit na přístupový token.
-2. Přístupový token se používá k volání webového rozhraní API.
+1. Požádá o autorizační kód, který je uplatněn pro přístupový token.
+2. Pomocí přístupového tokenu zavolá webové rozhraní API.
 
 ### <a name="considerations"></a>Požadavky
-- Můžete pouze jednou autorizační kód pro uplatnění token. Nepokoušejte se k získání tokenu s více než jednou stejné autorizační kód (ji výslovně zakazuje standardní specifikace protokolu). Pokud jste redeem kód několikrát záměrně, nebo protože si jich nejste vědomi, že architektura také to udělá za vás, získáte následující chybu: `AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
+- Autorizační kód můžete použít jenom jednou pro uplatnění tokenu. Nepokoušejte se získat token několikrát se stejným autorizačním kódem (výslovně ho zakázal standardní specifikace protokolu). Pokud kód přiřadíte několikrát, nebo protože si nejste vědomi, že pro vás to architektura provede, zobrazí se následující chyba:`AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 
-- Pokud píšete aplikaci ASP.NET nebo ASP.NET Core, k tomu může dojít, že pokud není informování rozhraní framework, který jste už využili autorizační kód. V takovém případě musíte zavolat `context.HandleCodeRedemption()` metodu `AuthorizationCodeReceived` obslužné rutiny události.
+- Pokud zapisujete ASP.NET nebo ASP.NET Core aplikaci, může to nastat, pokud neznáte rozhraní, pro které jste už tento autorizační kód nepovažovali. V tomto případě je třeba volat `context.HandleCodeRedemption()` metodu `AuthorizationCodeReceived` obslužné rutiny události.
 
-- Vyhněte se sdílení přístupový token pomocí technologie ASP.NET, které by mohly bránit přírůstkové souhlasu správně děje. Další informace najdete v tématu [vydat #693](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693).
+- Nepoužívejte sdílení přístupového tokenu s ASP.NET, což by mohlo zabránit správnému vykonání přírůstkového souhlasu. Další informace najdete v tématu věnovaném [vydávání #693](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693).
 
-## <a name="on-behalf-of"></a>On-behalf-of
+## <a name="on-behalf-of"></a>Jménem
 
-Podporuje MSAL [tok on-behalf-of ověřování OAuth 2](v2-oauth2-on-behalf-of-flow.md).  Tento postup se používá, když aplikace volá webové rozhraní API, která zase potřebuje k volání jiné služby nebo webové rozhraní API a služby. Cílem je rozšíření delegovaný uživatel identit a oprávnění pomocí řetězce požadavku. Pro služby střední vrstvy, aby ověřených požadavků pro příjem dat služby je potřeba zabezpečit přístupového tokenu z platforma identit Microsoft jménem uživatele.
+MSAL podporuje [tok ověřování OAuth 2 pro uživatele](v2-oauth2-on-behalf-of-flow.md).  Tento tok se používá, když aplikace vyvolá službu nebo webové rozhraní API, které zase musí volat jinou službu nebo webové rozhraní API. Nápad je rozšířit identitu delegovaného uživatele a oprávnění prostřednictvím řetězce požadavků. Aby služba střední vrstvy prováděla ověřené požadavky na službu pro příjem dat, musí jménem uživatele zabezpečit přístupový token od platformy Microsoft identity.
 
-![Diagram tok on-behalf-of](media/msal-authentication-flows/on-behalf-of.png)
+![Diagram toku za běhu](media/msal-authentication-flows/on-behalf-of.png)
 
-Na předchozím obrázku:
+V předchozím diagramu:
 
 1. Aplikace získá přístupový token pro webové rozhraní API.
-2. Klient (web, desktopové, mobilní nebo jednostránkové aplikace) volá chráněné webové rozhraní API, přidání přístupový token jako token nosiče v ověřovací hlavičku požadavku HTTP. Webové rozhraní API ověří uživatele.
-3. Když klient volá webové rozhraní API, webové rozhraní API požádá o jiný token on-behalf-of uživatele.  
-4. Chráněné webové rozhraní API používá tento token volat podřízené webové rozhraní API on-behalf-of uživatele.  Webové rozhraní API může taky novější požadovat tokeny pro ostatní rozhraní API pro příjem dat (ale pořád jménem stejného uživatele).
+2. Klient (webová, desktopová, mobilní nebo jednostránková aplikace) volá chráněné webové rozhraní API a v ověřovací hlavičce požadavku HTTP se přidá přístupový token jako nosný token. Webové rozhraní API ověřuje uživatele.
+3. Když klient zavolá webové rozhraní API, webové rozhraní API požádá o další token jménem uživatele.  
+4. Chráněné webové rozhraní API používá tento token k volání webového rozhraní API pro příjem dat v rámci uživatele.  Webové rozhraní API může také později žádat o tokeny pro jiná rozhraní API pro příjem dat (ale pořád za stejného uživatele).
 
 ## <a name="client-credentials"></a>Přihlašovací údaje klienta
 
-Podporuje MSAL [údajů klienta OAuth 2, flow](v2-oauth2-client-creds-grant-flow.md). Tento tok umožňuje přístup k prostředkům hostované webové pomocí identity aplikace. Tento typ udělení se běžně používá pro interakce – servery, které musí běžet na pozadí bez okamžité interakce s uživatelem. Tyto typy aplikací jsou často označovány jako účty služby nebo procesy démon. 
+MSAL podporuje [tok přihlašovacích údajů klienta OAuth 2](v2-oauth2-client-creds-grant-flow.md). Tento tok umožňuje přístup k prostředkům hostovaným na webu pomocí identity aplikace. Tento typ grantu se běžně používá pro interakce mezi servery, které musí běžet na pozadí bez okamžité interakce s uživatelem. Tyto typy aplikací se často označují jako démoni nebo účty služeb. 
 
-Přihlašovací údaje klienta udělení povolení toku webové službě (důvěrnému klientovi) ověření při volání jiné webové služby pomocí vlastních přihlašovacích údajů, místo zosobňování uživatele. V tomto scénáři klient je obvykle střední vrstvy webové služby, služba démona nebo webu. Pro vyšší úroveň záruky platforma identit Microsoft také umožňuje volání služby k používání certifikátu (ne sdílený tajný klíč) jako pověření.
+Tok udělení přihlašovacích údajů klienta umožňuje webové službě (důvěrnému klientovi) použít vlastní přihlašovací údaje místo zosobnění uživatele k ověření při volání jiné webové služby. V tomto scénáři je klient většinou webová služba střední vrstvy, služba démona nebo Web. Pro zajištění vyšší úrovně zabezpečení umožňuje volající službě také použít certifikát (namísto sdíleného tajného klíče) jako přihlašovací údaje.
 
 > [!NOTE]
-> Tok důvěrnému klientovi není k dispozici na mobilní platformy (UPW, Xamarin.iOS a Xamarin.Android), protože tyto veřejné klientské aplikace podporují jenom. Veřejné klientské aplikace není zřejmé, jak k prokázání identity aplikace ke zprostředkovateli Identity. Zabezpečené připojení lze nastavit ve webové aplikaci nebo webové rozhraní API zpět končí nasazením certifikátu.
+> Tok důvěrného klienta není dostupný na mobilních platformách (UWP, Xamarin. iOS a Xamarin. Android), protože podporují jenom veřejné klientské aplikace. Veřejné klientské aplikace nevědí, jak prokázat identitu aplikace zprostředkovateli identity. Zabezpečené připojení je možné dosáhnout v back-endu webové aplikace nebo webového rozhraní API nasazením certifikátu.
 
-MSAL.NET podporuje dva typy přihlašovacích údajů klienta. Tyto přihlašovací údaje pro klienta musí být zaregistrovaní v Azure AD. Přihlašovací údaje jsou předány v konstruktory důvěrnému klientovi aplikace ve vašem kódu.
+MSAL.NET podporuje dva typy přihlašovacích údajů klienta. Tyto přihlašovací údaje klienta musí být zaregistrované ve službě Azure AD. Přihlašovací údaje jsou předány do konstruktorů důvěrné klientské aplikace ve vašem kódu.
 
-### <a name="application-secrets"></a>Tajných klíčů aplikací 
+### <a name="application-secrets"></a>Tajné klíče aplikace 
 
-![Diagram důvěrnému klientovi s heslem](media/msal-authentication-flows/confidential-client-password.png)
+![Diagram důvěrného klienta s heslem](media/msal-authentication-flows/confidential-client-password.png)
 
 V předchozím diagramu aplikace:
 
-1. Získá token s použitím přihlašovacích údajů tajný klíč nebo heslo aplikace.
-2. Token, který se používá k podání žádostí o prostředku.
+1. Načte token pomocí tajného klíče aplikace nebo přihlašovacích údajů k heslu.
+2. Používá token k vytváření žádostí o prostředek.
 
 ### <a name="certificates"></a>Certifikáty 
 
-![Diagram důvěrnému klientovi pomocí certifikátu](media/msal-authentication-flows/confidential-client-certificate.png)
+![Diagram důvěrného klienta s certifikátem](media/msal-authentication-flows/confidential-client-certificate.png)
 
 V předchozím diagramu aplikace:
 
-1. Získá token s použitím přihlašovacích údajů certifikátu.
-2. Token, který se používá k podání žádostí o prostředku.
+1. Získá token pomocí pověření certifikátu.
+2. Používá token k vytváření žádostí o prostředek.
 
 Tyto přihlašovací údaje klienta musí být:
-- V Azure AD zaregistrováno.
-- Předaná v procesu vytváření důvěrnému klientovi aplikace ve vašem kódu.
+- Registrováno ve službě Azure AD.
+- Předáno při konstrukci aplikace důvěrného klienta ve vašem kódu.
 
 
 ## <a name="device-code"></a>Kód zařízení
-Podporuje MSAL [tok OAuth 2 zařízení kódu](v2-oauth2-device-code.md), což umožňuje uživatelům umožní přihlásit k omezené vstupní zařízení, jako je inteligentní TV, zařízení IoT nebo tiskárny. Interaktivní ověřování pomocí Azure AD vyžaduje webový prohlížeč. Tok kódu zařízení vám umožní používat jiné zařízení (například jiného počítače nebo mobilního telefonu) se přihlásit interaktivně, ve kterém zařízení nebo operační systém neposkytuje webový prohlížeč.
+MSAL podporuje [tok kódu zařízení OAuth 2](v2-oauth2-device-code.md), který umožňuje uživatelům přihlašovat se ke vstupním zařízením s omezením, jako jsou například inteligentní televizní vysílání, zařízení IoT nebo tiskárna. Interaktivní ověřování pomocí Azure AD vyžaduje webový prohlížeč. Tok kódu zařízení umožňuje uživateli použít jiné zařízení (například jiný počítač nebo mobilní telefon) k interaktivnímu přihlášení, kde zařízení nebo operační systém neposkytuje webový prohlížeč.
 
-S použitím toku kódu zařízení, aplikace získá tokeny krocích zvláště určené pro tato zařízení nebo operační systémy. Příkladem takové aplikace jsou spuštěné na zařízeních IoT nebo nástroje příkazového řádku (CLI). 
+Pomocí toku kódu zařízení aplikace získá tokeny prostřednictvím procesu se dvěma kroky, hlavně navržených pro tato zařízení nebo operační systémy. Mezi takové aplikace patří například ty, které běží na zařízeních IoT nebo nástrojích příkazového řádku (CLI). 
 
 ![Diagram toku kódu zařízení](media/msal-authentication-flows/device-code.png)
 
-Na předchozím obrázku:
+V předchozím diagramu:
 
-1. Pokaždé, když se vyžaduje ověření uživatele, tato aplikace poskytuje kód a požádá uživatele, aby pomocí jiného zařízení (jako jsou připojené k Internetu smartphone) přejděte na adresu URL (například https://microsoft.com/devicelogin). Uživatel je pak výzva k zadání kódu a pokračuje přes běžné ověřování prostředí, včetně výzev k udělení souhlasu a ověřování službou Multi-Factor Authentication v případě potřeby.
+1. Kdykoli se vyžaduje ověření uživatele, aplikace poskytne kód a vyzve uživatele k použití jiného zařízení (například smartphone připojeného k Internetu) k přechodu na adresu URL (například https://microsoft.com/devicelogin). Uživatel se pak vyzve k zadání kódu a pokračuje v běžném prostředí ověřování, včetně výzev k vyjádření souhlasu a vícefaktorového ověřování v případě potřeby.
 
-2. Po úspěšném ověření aplikace příkazového řádku přijímá požadované tokeny prostřednictvím používající back channel a používá k provedení volání webové rozhraní API, které potřebuje.
+2. Po úspěšném ověření obdrží aplikace příkazového řádku požadované tokeny prostřednictvím zpětného kanálu a použije je k provedení volání webového rozhraní API.
 
 ### <a name="constraints"></a>Omezení
 
-- Tok kódu při zařízení je dostupná pouze na veřejné klientské aplikace.
-- Autorita předávané při vytváření aplikace veřejným klientem musí být jedna z následujících akcí:
-  - Klienty (ve formátu `https://login.microsoftonline.com/{tenant}/` kde `{tenant}` je buď identifikátor GUID představující ID tenanta nebo domény přidružené k tenantovi).
-  - pro všechny pracovních a školních účtů (`https://login.microsoftonline.com/organizations/`).
-- Osobní účty Microsoft se zatím nepodporují pomocí koncového bodu Azure AD v2.0 (nelze použít `/common` nebo `/consumers` tenantů).
+- Tok kódu zařízení je k dispozici pouze pro veřejné klientské aplikace.
+- Autorita předaná při sestavování veřejné klientské aplikace musí být jedna z následujících:
+  - Tenant (z formuláře `https://login.microsoftonline.com/{tenant}/` , kde `{tenant}` je buď identifikátor GUID představující ID tenanta nebo doména přidružená k tenantovi).
+  - Pro všechny pracovní a školní účty (`https://login.microsoftonline.com/organizations/`).
+- Osobní účty Microsoft ještě nejsou podporované koncovým bodem Azure AD v 2.0 (nemůžete použít `/common` klienty `/consumers` ani).
 
-## <a name="integrated-windows-authentication"></a>Ověření integrované Windows
-Knihovna MSAL podporuje integrované ověřování Windows (IWA) pro stolní počítače nebo mobilní aplikace, které běží na Azure AD nebo připojené k doméně připojené k počítači s Windows. Pomocí IWA, tyto aplikace můžete získat token tiše (bez nutnosti zásahu uživatelského rozhraní od uživatele). 
+## <a name="integrated-windows-authentication"></a>Integrované ověřování systému Windows
+MSAL podporuje integrované ověřování systému Windows (IWA) pro stolní nebo mobilní aplikace, které běží na připojené doméně nebo počítači s Windows připojeném k Azure AD. Pomocí IWA můžou tyto aplikace v tichém režimu získat token (bez interakce uživatelského rozhraní od uživatele). 
 
-![Diagram ověření integrované Windows](media/msal-authentication-flows/integrated-windows-authentication.png)
+![Diagram integrovaného ověřování systému Windows](media/msal-authentication-flows/integrated-windows-authentication.png)
 
 V předchozím diagramu aplikace:
 
-1. Získá token s použitím integrované ověřování Windows.
-2. Token, který se používá k podání žádostí o prostředku.
+1. Získá token pomocí integrovaného ověřování systému Windows.
+2. Používá token k vytváření žádostí o prostředek.
 
 ### <a name="constraints"></a>Omezení
 
-IWA podporuje pouze federovaných uživatelů to znamená uživatelé vytvořili ve službě Active Directory a Azure AD se opírá o. Vytvořit přímo ve službě Azure AD, bez Active Directory pro uživatele (spravovaných uživatelů) nelze pomocí tohoto toku ověřování. Toto omezení nemá vliv [tok uživatelského jména a hesla](#usernamepassword).
+IWA podporuje jenom federované uživatele, což znamená uživatele vytvořeného v Active Directory a zálohovaných službou Azure AD. Uživatelé, kteří vytvořili přímo ve službě Azure AD, nemůžou používat tento tok ověřování, aniž by museli provádět službu Active Directory (spravované uživatele). Toto omezení neovlivňuje [tok uživatelského jména a hesla](#usernamepassword).
 
-IWA je pro aplikace napsané pro platformy .NET Framework, .NET Core a univerzální platformu Windows.
+IWA je pro aplikace napsané pro .NET Framework, .NET Core a Univerzální platforma Windows platformy.
 
-IWA nebude obejít ověřování Multi-Factor Authentication. Pokud je nakonfigurováno ověřování pomocí služby Multi-Factor Authentication, IWA může selhat, pokud výzva ověřování službou Multi-Factor Authentication je povinný. Ověřování službou Multi-Factor Authentication vyžaduje zásah uživatele.
+IWA neobejde službu Multi-Factor Authentication. Pokud je nakonfigurováno Multi-Factor Authentication, může IWA selhat, pokud je vyžadována výzva služby Multi-Factor Authentication. Multi-Factor Authentication vyžaduje zásah uživatele.
 
-Nemáte kontrolu, když poskytovatel identity požádá o dvojúrovňové ověřování, která se má provést. Správce tenanta nepodporuje. Dvoufaktorové ověřování je obvykle vyžaduje při přihlášení z jiné země, pokud nejste připojeni přes síť VPN k podnikové síti a někdy i když jste připojení přes síť VPN. Azure AD používá AI průběžně další, pokud vyžádáním dvoufaktorového ověřování. Pokud selže IWA vám by měl vrátit zpět k [interaktivní uživatelské výzvy] (#interactive).
+Neřídíte, kdy zprostředkovatel identity požaduje provedení dvojúrovňového ověřování. Správce tenanta. Při přihlášení z jiné země se obvykle vyžaduje dvojúrovňové ověřování, když nejste připojení přes síť VPN k podnikové síti a někdy i když jste připojení přes VPN. Azure AD používá AI k nepřetržitému učení, jestli je potřeba dvojúrovňové ověřování. Pokud IWA neproběhne úspěšně, měli byste se vrátit na [interaktivní uživatelské výzvy] (#interactive).
 
-Autorita předávané při vytváření aplikace veřejným klientem musí být jedna z následujících akcí:
-- Klienty (ve formátu `https://login.microsoftonline.com/{tenant}/` kde `tenant` je buď identifikátor guid představující ID tenanta nebo domény přidružené k tenantovi).
-- pro všechny pracovních a školních účtů (`https://login.microsoftonline.com/organizations/`). Osobní účty Microsoft se nepodporují (nelze použít `/common` nebo `/consumers` tenantů).
+Autorita předaná při sestavování veřejné klientské aplikace musí být jedna z následujících:
+- Tenant (z formuláře `https://login.microsoftonline.com/{tenant}/` , kde `tenant` je buď identifikátor GUID představující ID tenanta nebo doména přidružená k tenantovi).
+- Pro všechny pracovní a školní účty (`https://login.microsoftonline.com/organizations/`). Osobní účty Microsoft nejsou podporované (nemůžete použít `/common` ani `/consumers` tenanta).
 
-Protože IWA je pasivní tok, musí být splněné jednu z následujících:
-- k používání aplikace musí mít dříve schválená uživatelem vaší aplikace. 
-- Správce tenanta musí mít dříve odsouhlasený. pro všechny uživatele v tenantovi k používání aplikace.
+Vzhledem k tomu, že IWA je tichý tok, musí být jedna z následujících podmínek:
+- Uživatel vaší aplikace musí mít dřív souhlas s používáním aplikace. 
+- Správce tenanta musí předtím, než se aplikace přihlásí všem uživatelům v tenantovi, aby aplikaci používal.
 
-To znamená, že je splněna jedna z následujících akcí:
-- Rozhodli jste se jako vývojář **udělení** na portálu Azure portal si to sami.
-- Správce tenanta vybral **udělení nebo odvolání souhlasu správce pro {doména tenanta}** v **oprávnění k rozhraní API** kartu registrace aplikace (naleznete v tématu [přidat oprávnění pro přístup k webovým rozhraním API ](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
-- Jste zadali způsob, jak uživatelům udělit souhlas s aplikace (naleznete v tématu [vyžádání souhlasu uživatele](v2-permissions-and-consent.md#requesting-individual-user-consent)).
-- Zadali jste způsob, jak správce tenanta o souhlasu pro aplikaci (viz [souhlas správce](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
+To znamená, že jedna z následujících možností je pravdivá:
+- Jako vývojář jste vybrali možnost **udělit** Azure Portal pro sebe.
+- Správce tenanta vybral v registraci aplikace v rámci karty **oprávnění rozhraní API** pro tuto aplikaci **souhlas správce grant/REVOKE pro doménu {tenant}** (viz [Přidání oprávnění pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
+- Poskytli jste způsob, jak uživatelům udělit souhlas s aplikací (viz [vyžádání souhlasu jednotlivého uživatele](v2-permissions-and-consent.md#requesting-individual-user-consent)).
+- Poskytli jste možnost souhlasu správce tenanta s aplikací (viz téma [souhlas správce](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
 
-Pro .NET desktop, .NET Core a aplikací pro univerzální platformu Windows je povolen tok IWA. V rozhraní .NET Core je k dispozici pouze přetížení přijímající uživatelské jméno. Uživatelské jméno pro operační systém nemůžete se ptát platformy .NET Core.
+Tok IWA je povolený pro aplikace .NET Desktop, .NET Core a Windows Universal Platform. V .NET Core je k dispozici pouze přetížení přebírající uživatelské jméno. Platforma .NET Core nemůže požádat o uživatelské jméno na operační systém.
   
-Další informace o souhlas, naleznete v tématu [v2.0 oprávnění a vyjádření souhlasu](v2-permissions-and-consent.md).
+Další informace o souhlasu najdete v tématu [oprávnění a vyjádření souhlasu v 2.0](v2-permissions-and-consent.md).
 
 ## <a name="usernamepassword"></a>Uživatelské jméno a heslo 
-Podporuje MSAL [udělení přihlašovacího hesla vlastníka prostředku OAuth 2](v2-oauth-ropc.md), který umožňuje aplikaci přihlásit uživatele pomocí přímo zpracování své heslo. V desktopové aplikaci můžete použít tok uživatelského jména a hesla k získání tokenu bezobslužně. Vyžaduje se žádné uživatelské rozhraní, při používání aplikace.
+MSAL podporuje [udělení přihlašovacích údajů pro heslo vlastníka prostředku OAuth 2](v2-oauth-ropc.md), což umožňuje aplikaci podepsat uživatele přímo zpracováním hesla. V desktopové aplikaci můžete použít tok uživatelského jména a hesla k tiché získání tokenu. Při použití aplikace není vyžadováno žádné uživatelské rozhraní.
 
 ![Diagram toku uživatelského jména a hesla](media/msal-authentication-flows/username-password.png)
 
 V předchozím diagramu aplikace:
 
-1. Získá token odesláním uživatelské jméno a heslo ke zprostředkovateli identity.
-2. Volání webového rozhraní API pomocí tokenu.
+1. Získá token odesláním uživatelského jména a hesla do poskytovatele identity.
+2. Volá webové rozhraní API pomocí tokenu.
 
 > [!WARNING]
-> Tento tok se nedoporučuje. Vyžaduje vysokou míru ohrožení zabezpečení a uživatele.  Tento tok byste měli používat jenom v případě, že toky, které bezpečnější, nelze použít. Další informace najdete v tématu [co je řešení, aby rostoucí problém hesel?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
+> Tento tok se nedoporučuje. Vyžaduje vysoký stupeň důvěry a ohrožení uživatele.  Tento tok byste měli používat jenom v případě, že se jedná o jiné, bezpečnější toky, které se nedají použít. Další informace najdete v tématu [co je řešení rostoucího problému s hesly?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
 
-Upřednostňované tok pro získání tokenu tiše na počítačích připojených k doméně Windows je [integrované ověřování Windows](#integrated-windows-authentication). V opačném případě můžete použít také [toku kódu zařízení](#device-code).
+Upřednostňovaný tok pro získání tokenu v tichém režimu na počítačích připojených k doméně systému Windows je [integrované ověřování systému Windows](#integrated-windows-authentication). V opačném případě můžete použít také [tok kódu zařízení](#device-code).
 
-I když to je užitečné v některých případech (scénáře DevOps), pokud chcete pomocí uživatelského jména a hesla v interaktivních scénářů, ve kterém můžete zadat vlastní uživatelské rozhraní, snažte se vyhnout ho. Pomocí uživatelského jména a hesla:
-- Uživatelé, kteří potřebují provést ověřování službou Multi-Factor Authentication nebude můžou přihlašovat (protože není žádná interakce).
-- Uživatelé nebudou moct jednotného přihlašování.
+I když je to užitečné v některých případech (DevOps scénáře), pokud chcete použít uživatelské jméno a heslo v interaktivních scénářích, kde poskytujete vlastní uživatelské rozhraní, zkuste to vyhnout. Pomocí uživatelského jména a hesla:
+- Uživatelé, kteří se potřebují ke službě Multi-Factor Authentication, se nebudou moct přihlásit (protože žádná interakce není).
+- Uživatelé nebudou moct provádět jednotné přihlašování.
 
 ### <a name="constraints"></a>Omezení
 
-Kromě [integrované ověřování Windows omezení](#integrated-windows-authentication), také platí následující omezení:
+Kromě [omezení integrovaného ověřování systému Windows](#integrated-windows-authentication)platí i následující omezení:
 
-- Tok uživatelského jména a hesla není kompatibilní s podmíněného přístupu a ověřování službou Multi-Factor Authentication. Pokud vaše aplikace běží v tenantovi Azure AD, kde správce tenanta požaduje ověření službou Multi-Factor Authentication, v důsledku toho nelze pomocí tohoto toku. Mnoho organizací to udělat.
+- Tok uživatelského jména a hesla není kompatibilní s podmíněným přístupem a službou Multi-Factor Authentication. V důsledku toho, pokud vaše aplikace běží v tenantovi Azure AD, kde správce tenanta vyžaduje vícefaktorové ověřování, nemůžete tento tok použít. Mnoho organizací to udělat.
 - Funguje pouze pro pracovní a školní účty (nikoli účty Microsoft).
-- Tok je k dispozici na ploše .NET a .NET Core, ale není na univerzální platformu Windows.
+- Tok je k dispozici na platformě .NET Desktop a .NET Core, ale ne na Univerzální platforma Windows.
 
-### <a name="azure-ad-b2c-specifics"></a>Specifika Azure AD B2C
+### <a name="azure-ad-b2c-specifics"></a>Azure AD B2C specifické
 
-Další informace o použití MSAL.NET a Azure AD B2C, najdete v části [pomocí ROPC s Azure AD B2C (MSAL.NET)](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c).
+Další informace o používání MSAL.NET a Azure AD B2C najdete v tématu [použití ROPC s Azure AD B2C (MSAL.NET)](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c).

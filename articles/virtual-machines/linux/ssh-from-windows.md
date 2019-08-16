@@ -1,6 +1,6 @@
 ---
-title: Použití klíčů SSH s Windows pro virtuální počítače s Linuxem | Dokumentace Microsoftu
-description: Zjistěte, jak vygenerovat a používat klíče SSH na počítači Windows pro připojení k virtuální počítač s Linuxem v Azure.
+title: Použití klíčů SSH pro virtuální počítače s Windows pro Linux | Microsoft Docs
+description: Naučte se generovat a používat klíče SSH na počítači s Windows pro připojení k virtuálnímu počítači se systémem Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,119 +15,119 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: bd5eeb3bc3864dc0203c558228dce2f54dbaa79d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 157cc706da34281ec7bb36a9b9e16a4192b3bd96
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708806"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543858"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Použití klíčů SSH s Windows v Azure
 
-Tento článek popisuje, jak vygenerovat a použít *secure shell* klíče (SSH) v počítači Windows vytvořit a připojit se k virtuální počítač s Linuxem (VM) v Azure. Použití klíčů SSH z Linuxu nebo macOS klienta, najdete v článku [rychlé](mac-create-ssh-keys.md) nebo [podrobné](create-ssh-keys-detailed.md) pokyny.
+Tento článek popisuje způsoby generování a použití klíčů protokolu SSH ( *Secure Shell* ) na počítači s Windows k vytvoření a připojení k virtuálnímu počítači se systémem Linux v Azure. Postup použití klíčů SSH z klienta se systémem Linux nebo macOS naleznete v tématu [rychlé](mac-create-ssh-keys.md) a [podrobné](create-ssh-keys-detailed.md) pokyny.
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
-## <a name="windows-packages-and-ssh-clients"></a>Balíčky Windows a klienty SSH
-Připojte se k a spravovat virtuální počítače s Linuxem v Azure s využitím *klienta SSH*. Počítače se systémem Linux nebo macOS obvykle mají sadu příkazů SSH ke vygenerovat a spravovat klíče SSH a vytvoření připojení SSH. 
+## <a name="windows-packages-and-ssh-clients"></a>Balíčky Windows a klienti SSH
+Pomocí *klienta ssh*se připojujete k virtuálním počítačům Linux a spravujete je v Azure. Počítače se systémem Linux nebo macOS obvykle mají sadu příkazů SSH pro generování a správu klíčů SSH a k vytváření připojení SSH. 
 
-Počítače Windows vždy nemají srovnatelné příkazy SSH nainstalované. Nejnovější verze Windows 10 poskytují [příkazy klient OpenSSH](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) vytvořit a spravovat klíče SSH a zajišťovat připojení SSH z příkazového řádku. Nejnovější verze Windows 10 zahrnují také [subsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/about) ke spuštění a přístup k nástroje, jako jsou klienta SSH nativně v rámci prostředí Bash. 
+Na počítačích s Windows nejsou vždycky nainstalované srovnatelné příkazy SSH. Poslední verze Windows 10 poskytují [příkazy klienta OpenSSH](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) k vytváření a správě klíčů ssh a vytvářejí připojení SSH z příkazového řádku. Poslední verze Windows 10 také zahrnují [podsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/about) pro spouštění a přístup k nástrojům, jako je klient SSH nativně v rámci prostředí bash. 
 
-Další běžné Windows SSH, který lze nainstalovat místně jsou klienti součástí následujících balíčků:
+Další běžné klienty Windows SSH, které můžete nainstalovat místně, jsou zahrnuté v následujících balíčcích:
 
 * [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git pro Windows](https://git-for-windows.github.io/)
 * [MobaXterm](https://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
-Můžete použít také nástroje SSH, který je dostupný v Bashi ve [Azure Cloud Shell](../../cloud-shell/overview.md). 
+Můžete také použít nástroje SSH dostupné v bash v [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-* Přístup ke službě Cloud Shell ve webovém prohlížeči na [ https://shell.azure.com ](https://shell.azure.com) nebo [webu Azure portal](https://portal.azure.com). 
-* Přístup ke službě Cloud Shell jako k terminálu z editoru Visual Studio Code pomocí instalace [rozšíření Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
+* Přístup k Cloud Shell ve webovém prohlížeči na [https://shell.azure.com](https://shell.azure.com) nebo v [Azure Portal](https://portal.azure.com). 
+* Když nainstalujete [rozšíření účtu Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account), Cloud Shell v rámci Visual Studio Code přístup k tomuto terminálu.
 
 ## <a name="create-an-ssh-key-pair"></a>Vytvoření páru klíčů SSH
-V následujících částech jsou dvě možnosti k vytvoření páru klíčů SSH ve Windows. Můžete použít příkaz prostředí (`ssh-keygen`) nebo nástroje grafického rozhraní (PuTTYgen).
+Následující části popisují dvě možnosti vytvoření páru klíčů SSH ve Windows. Můžete použít příkaz Shell (`ssh-keygen`) nebo nástroj grafického uživatelského rozhraní (PuTTYgen). Všimněte si také, že při použití PowerShellu k vytvoření klíče nahrajte veřejný klíč jako formát SSH. com (SECSH). Při použití rozhraní příkazového řádku převeďte klíč do formátu OpenSSH před odesláním. 
 
-### <a name="create-ssh-keys-with-ssh-keygen"></a>Vytvoření klíčů SSH s ssh-keygen
+### <a name="create-ssh-keys-with-ssh-keygen"></a>Vytvoření klíčů SSH pomocí ssh-keygen
 
-Pokud spustíte příkazové okno na Windows, která podporuje klientské nástroje SSH (nebo použít Azure Cloud Shell), vytvoření páru klíčů SSH pomocí `ssh-keygen` příkazu. Zadejte následující příkaz a do zobrazených výzev. Pokud existuje pár klíčů SSH ve zvolené umístění, tyto soubory jsou přepsány. 
+Pokud spustíte příkazové prostředí ve Windows, které podporuje nástroje klienta SSH (nebo používáte Azure Cloud Shell), vytvořte pár klíčů ssh pomocí `ssh-keygen` příkazu. Zadejte následující příkaz a odpovězte na výzvy. Pokud ve zvoleném umístění existuje pár klíčů SSH, tyto soubory se přepíší. 
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-Další související informace a informace, najdete v článku [rychlé](mac-create-ssh-keys.md) nebo [podrobné](create-ssh-keys-detailed.md) kroky k vytvoření klíčů SSH pomocí `ssh-keygen`.
+Další informace a informace najdete v tématu [rychlé](mac-create-ssh-keys.md) nebo [podrobné](create-ssh-keys-detailed.md) kroky k vytvoření klíčů ssh pomocí `ssh-keygen`.
 
-### <a name="create-ssh-keys-with-puttygen"></a>Vytvoření klíčů SSH pomocí nástroje PuTTYgen
+### <a name="create-ssh-keys-with-puttygen"></a>Vytvoření klíčů SSH pomocí PuTTYgen
 
-Pokud chcete použít nástroj využívající grafické rozhraní pro vytváření klíčů SSH, můžete použít Generátor klíče PuTTYgen, součástí [balíček ke stažení PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). 
+Pokud upřednostňujete použití nástroje založeného na grafickém uživatelském rozhraní k vytváření klíčů SSH, můžete použít generátor klíčů PuTTYgen, který je zahrnutý v [balíčku pro stažení výstupu](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). 
 
-Pomocí nástroje PuTTYgen vytvoření páru klíčů SSH RSA:
+Vytvoření páru klíčů SSH RSA pomocí PuTTYgen:
 
-1. Spuštění nástroje PuTTYgen.
+1. Spusťte PuTTYgen.
 
-2. Klikněte na tlačítko **generovat**. Ve výchozím nastavení nástroje PuTTYgen generuje 2048bitový klíč RSA SSH-2.
+2. Klikněte na **Generovat**. Ve výchozím nastavení PuTTYgen generuje 2048 klíč RSA-2 pro SSH.
 
-4. Pohybujte myši v prázdné oblasti zajistit náhodnost klíče.
+4. Přesunutím myši kolem prázdné oblasti zadáte náhodnost pro klíč.
 
-5. Po vygenerování veřejný klíč, volitelně zadejte a potvrďte heslo. Zobrazí se výzva pro heslo, při ověřování pomocí privátního klíče SSH k virtuálnímu počítači. Bez přístupového hesla kdyby někdo získal váš privátní klíč se mohl přihlásit k žádné virtuální počítač nebo službu, která používá tento klíč. Doporučujeme že vytvořit přístupové heslo. Pokud však heslo zapomenete, neexistuje žádný způsob, jak jej obnovit.
+5. Po vygenerování veřejného klíče můžete zadat a Potvrdit heslo. Po ověření pro virtuální počítač s privátním klíčem SSH se zobrazí výzva k zadání hesla. Bez přístupového hesla, pokud někdo získá privátní klíč, se může přihlásit k libovolnému virtuálnímu počítači nebo službě, která tento klíč používá. Doporučujeme vytvořit přístupové heslo. Pokud však heslo zapomenete, neexistuje žádný způsob, jak jej obnovit.
 
-6. Veřejný klíč se zobrazí v horní části okna. Můžete zkopírovat celý veřejný klíč a vložte ho do portálu Azure portal nebo šablony Azure Resource Manageru při vytváření virtuálního počítače s Linuxem. Můžete také vybrat **uložit veřejný klíč** uložit kopii do vašeho počítače:
+6. Veřejný klíč se zobrazí v horní části okna. Můžete zkopírovat celý veřejný klíč a pak ho vložit do Azure Portal nebo šablony Azure Resource Manager při vytváření virtuálního počítače se systémem Linux. Můžete také vybrat možnost **Uložit veřejný klíč** a uložit kopii do počítače:
 
-    ![Uložte soubor veřejného klíče PuTTY](./media/ssh-from-windows/save-public-key.png)
+    ![Uložit soubor s veřejným klíčem výstupu](./media/ssh-from-windows/save-public-key.png)
 
-7. Volitelně můžete uložit privátní klíč ve formátu PuTTy soukromého klíče (soubor .ppk), vyberte **uložit privátní klíč**. Budete potřebovat soubor .ppk později k použití klienta PuTTY k vytvořte připojení SSH k virtuálnímu počítači.
+7. Pokud chcete uložit privátní klíč ve formátu RTF (soubor. ppk), vyberte **Uložit privátní klíč**. K vytvoření připojení SSH k virtuálnímu počítači budete potřebovat soubor. ppk později.
 
-    ![Uložte soubor privátního klíče PuTTY](./media/ssh-from-windows/save-ppk-file.png)
+    ![Uložit soubor privátního klíče na výstupu](./media/ssh-from-windows/save-ppk-file.png)
 
-    Pokud chcete uložit privátní klíč ve formátu OpenSSH, formátu soukromého klíče používané mnoha klientů SSH, vyberte **převody** > **Export OpenSSH key**.
+    Pokud chcete uložit privátní klíč ve formátu OpenSSH, použije se formát privátního klíče, který používá mnoho klientů SSH, a pak vyberte **převody** > **exportovat OpenSSH Key**.
 
-## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Zadejte veřejný klíč SSH při nasazování virtuálního počítače
+## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Při nasazování virtuálního počítače zadejte veřejný klíč SSH.
 
-Pokud chcete vytvořit virtuální počítač s Linuxem, který používá klíče SSH pro ověřování, zadejte veřejný klíč SSH při vytváření virtuálního počítače pomocí webu Azure portal nebo jiné metody.
+Pokud chcete vytvořit virtuální počítač se systémem Linux, který používá klíče SSH k ověřování, zadejte svůj veřejný klíč SSH při vytváření virtuálního počítače pomocí Azure Portal nebo jiných metod.
 
-Následující příklad ukazuje, jak by zkopírujte a vložte veřejný klíč do portálu Azure při vytváření virtuálního počítače s Linuxem. Veřejný klíč je obvykle pak uloženy v adresáři ~/.ssh/authorized_key na nový virtuální počítač.
+Následující příklad ukazuje, jak byste při vytváření virtuálního počítače se systémem Linux zkopírovali a vložili tento veřejný klíč do Azure Portal. Veřejný klíč se obvykle uloží do adresáře ~/.ssh/authorized_key na vašem novém VIRTUÁLNÍm počítači.
 
-   ![Použít veřejný klíč při vytvoření virtuálního počítače na webu Azure Portal](./media/ssh-from-windows/use-public-key-azure-portal.png)
+   ![Při vytváření virtuálního počítače v Azure Portal použít veřejný klíč](./media/ssh-from-windows/use-public-key-azure-portal.png)
 
 
 ## <a name="connect-to-your-vm"></a>Připojení k virtuálnímu počítači
 
-Jedním ze způsobů připojení SSH k virtuálním počítačům s Linuxem z Windows je pomocí klienta SSH. Toto je upřednostňovanou metodou, pokud máte klienta SSH nainstaluje do systému Windows, nebo použití nástroje SSH v Bashi ve službě Azure Cloud Shell. Pokud dáváte přednost nástroje využívající grafické rozhraní, můžete se připojit pomocí klienta PuTTY.  
+Jedním ze způsobů, jak vytvořit připojení SSH k VIRTUÁLNÍmu počítači Linux z Windows, je použití klienta SSH. Toto je upřednostňovaná metoda, pokud máte nainstalovaného klienta SSH v systému Windows nebo pokud používáte nástroje SSH v bash v Azure Cloud Shell. Pokud dáváte přednost nástroji založenému na grafickém uživatelském rozhraní, můžete se připojit pomocí výstupu.  
 
-### <a name="use-an-ssh-client"></a>Pomocí klienta SSH
-Veřejný klíč nasazené na vašem virtuálním počítači Azure, a privátní klíč v místním systému, SSH k virtuálnímu počítači pomocí IP adresy nebo název DNS virtuálního počítače. Nahraďte *azureuser* a *myvm.westus.cloudapp.azure.com* v následujícím příkazu se uživatelské jméno správce a plně kvalifikovaný název domény (nebo IP adresou):
+### <a name="use-an-ssh-client"></a>Použití klienta SSH
+S veřejným klíčem nasazeným na VIRTUÁLNÍm počítači Azure a privátním klíčem v místním systému se k vašemu VIRTUÁLNÍmu počítači přihlaste přes SSH pomocí IP adresy nebo názvu DNS vašeho virtuálního počítače. V následujícím příkazu nahraďte *azureuser* a *myvm.westus.cloudapp.Azure.com* uživatelským jménem správce a plně kvalifikovaným názvem domény (nebo IP adresou):
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-Pokud jste nakonfigurovali přístupové heslo při vytváření páru klíčů, zadejte heslo vyzvání během procesu přihlášení.
+Pokud jste při vytváření páru klíčů nakonfigurovali heslo, zadejte ho při zobrazení výzvy během procesu přihlašování.
 
-Pokud virtuální počítač používá zásady přístupu v čase, budete muset požádat o přístup před připojením k virtuálnímu počítači. Další informace o zásadách just-in-time najdete v tématu [spravovat přístup k virtuálním počítačům podle potřeby pomocí v zásadách čas](../../security-center/security-center-just-in-time.md).
+Pokud virtuální počítač používá zásady přístupu za běhu, musíte požádat o přístup, abyste se mohli připojit k virtuálnímu počítači. Další informace o zásadách za běhu najdete v tématu [Správa přístupu k virtuálním počítačům pomocí zásad podle časových údajů](../../security-center/security-center-just-in-time.md).
 
-### <a name="connect-with-putty"></a>Připojit pomocí klienta PuTTY
+### <a name="connect-with-putty"></a>Připojení pomocí výstupu
 
-Pokud jste nainstalovali [balíček ke stažení PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) a dříve vygenerovaný soubor privátního klíče PuTTY (.ppk) můžete připojit k virtuálnímu počítači s Linuxem pomocí klienta PuTTY.
+Pokud jste nainstalovali [balíček pro stažení](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) a dříve vygenerovali soubor privátního klíče (. ppk), můžete se připojit k virtuálnímu počítači se systémem Linux pomocí výstupu.
 
-1. Spusťte PuTTy.
+1. Počáteční výstup.
 
-2. Zadejte název hostitele nebo IP adresu svého virtuálního počítače z portálu Azure portal:
+2. Do Azure Portal zadejte název hostitele nebo IP adresu vašeho virtuálního počítače:
 
-    ![Otevřít nové připojení PuTTY](./media/ssh-from-windows/putty-new-connection.png)
+    ![Otevřít nové připojení k výstupu](./media/ssh-from-windows/putty-new-connection.png)
 
-3. Vyberte **připojení** > **SSH** > **Auth** kategorie. Vyhledejte a vyberte váš PuTTY privátní klíč (soubor .ppk):
+3. Vyberte kategorii > **ověřování**SSH > připojení. Vyhledejte a vyberte svůj privátní klíč pro zadané datové soubory (soubor. ppk):
 
-    ![Vyberte svůj PuTTY privátní klíč pro ověřování](./media/ssh-from-windows/putty-auth-dialog.png)
+    ![Vyberte pro ověřování privátní klíč poštovního výstupu.](./media/ssh-from-windows/putty-auth-dialog.png)
 
-4. Klikněte na tlačítko **otevřít** pro připojení k vašemu virtuálnímu počítači.
+4. Kliknutím na **otevřít** se připojte k virtuálnímu počítači.
 
 ## <a name="next-steps"></a>Další postup
 
-* Podrobný postup, možnosti a pokročilé příklady práce s klíči SSH najdete v tématu [dvojic klíčů podrobný postup vytvoření SSH](create-ssh-keys-detailed.md).
+* Podrobný postup, možnosti a rozšířené příklady práce s klíči SSH najdete v tématu [podrobný postup vytvoření párů klíčů ssh](create-ssh-keys-detailed.md).
 
-* Generování klíčů SSH a připojení SSH pro virtuální počítače s Linuxem můžete také použít prostředí PowerShell ve službě Azure Cloud Shell. Zobrazit [rychlý start pro PowerShell](../../cloud-shell/quickstart-powershell.md#ssh).
+* PowerShell můžete také použít v Azure Cloud Shell k vygenerování klíčů SSH a k vytvoření připojení SSH k virtuálním počítačům se systémem Linux. Další informace najdete v tématu [rychlý Start prostředí PowerShell](../../cloud-shell/quickstart-powershell.md#ssh).
 
-* Pokud máte potíže s používáním SSH k připojení virtuálních počítačů s Linuxem, naleznete v tématu [řešení potíží s připojení SSH k virtuálnímu počítači Azure Linux](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Pokud máte potíže s použitím protokolu SSH pro připojení k virtuálním počítačům se systémem Linux, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

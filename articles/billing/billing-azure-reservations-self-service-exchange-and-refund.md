@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 5e38684500520d4565835456b94200aea399c938
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814114"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543018"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a refundace pro Azure Reservations
 
@@ -60,11 +60,6 @@ Původní faktura se zruší a vytvoří se nová faktura. Peníze se vracejí n
 
 Azure má následující zásady pro zrušení, výměny a refundace.
 
-**Zásady zrušení**
-
-- Pokud rezervaci zrušíte, může se jednat o 12% poplatek za předčasné ukončení.
-- Refundace, kterou obdržíte za zrušení, je zbývající poměr pro nominální částku minus 12% poplatek za předčasné ukončení. Pokud ho chcete zrušit, pokračujte na rezervaci v Azure Portal a vyberte **refundace**.
-
 **Zásady Exchange**
 
 - Můžete vrátit více existujících rezervací pro zakoupení nové rezervace stejného typu. Nemůžete vyměnit rezervace jednoho typu pro jiný. Například nemůžete vrátit rezervaci virtuálního počítače a koupit rezervaci SQL.
@@ -77,10 +72,12 @@ Azure má následující zásady pro zrušení, výměny a refundace.
 - Pro výměny není k dispozici žádná pokuta ani roční omezení.
 
 **Zásady refundace**
+- Pokud rezervaci zrušíte, může se jednat o 12% poplatek za předčasné ukončení.
+- Refundace, kterou obdržíte za zrušení, je zbývající poměr pro nominální částku minus 12% poplatek za předčasné ukončení. Pokud ho chcete zrušit, pokračujte na rezervaci v Azure Portal a vyberte **refundace**.
 - Celková částka náhrady nesmí překročit $50 000 USD v průběhu 12 měsíců.
 - Náhrady se počítají na základě nejnižší ceny nákupní ceny nebo aktuální ceny za rezervaci.
 - Refundaci mohou zpracovat pouze vlastníci rezervace. [Naučte se, jak přidat nebo změnit uživatele, kteří můžou spravovat rezervaci](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Společnost Microsoft si vyhrazuje právo účtovat u všech vratek 12%, i když tato pokuta není aktuálně účtována.
+- Společnost Microsoft si vyhrazuje právo účtovat pokutu 12% pro jakékoli vrácení. Pokuta se momentálně neúčtuje, ale bude se účtovat později.
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Výměna nepremium Storage pro Storage úrovně Premium
 
@@ -90,7 +87,7 @@ Můžete si vyměnit rezervaci zakoupenou pro velikost virtuálního počítače
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak spravovat rezervaci, najdete v tématu [správa Azure reservations](billing-manage-reserved-vm-instance.md).
 - Další informace o Azure Reservations najdete v následujících článcích:

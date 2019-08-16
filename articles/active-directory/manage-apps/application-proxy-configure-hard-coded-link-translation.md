@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 08/15/2019
 ms.author: mimart
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d85fc7ed16f397cb91232e9648df4e8741b37a
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705785"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533694"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrování pevně zakódované odkazů pro aplikace publikované pomocí Azure Proxy aplikací služby AD
 
@@ -30,13 +30,16 @@ Azure Proxy aplikací služby AD zpřístupňuje vaše místní aplikace uživat
 Nejlepším způsobem, jak zajistit, aby odkazy fungovaly v rámci podnikové sítě i mimo ni, je nakonfigurovat externí adresy URL vašich aplikací tak, aby byly stejné jako jejich interní adresy URL. Pomocí [vlastních domén](application-proxy-configure-custom-domain.md) můžete nakonfigurovat externí adresy URL tak, aby místo výchozí domény proxy aplikace používaly název vaší podnikové domény.
 
 
-Pokud ve vašem tenantovi nemůžete použít vlastní domény, existuje několik dalších možností, jak tuto funkci poskytnout. Všechny tyto jsou také kompatibilní s vlastními doménami a navzájem, takže v případě potřeby můžete nakonfigurovat vlastní domény a další řešení. 
+Pokud ve vašem tenantovi nemůžete použít vlastní domény, existuje několik dalších možností, jak tuto funkci poskytnout. Všechny tyto jsou také kompatibilní s vlastními doménami a navzájem, takže v případě potřeby můžete nakonfigurovat vlastní domény a další řešení.
+
+> [!NOTE]
+> Překlad propojení není podporován pro pevně zakódované interní adresy URL vygenerované prostřednictvím JavaScriptu.
 
 **Možnost 1: Použití Managed Browser nebo Microsoft Edge** – toto řešení je možné použít pouze v případě, že plánujete doporučit nebo vyžadovat, aby uživatelé měli přístup k aplikaci prostřednictvím Intune Managed Browser nebo prohlížeče Microsoft Edge. Zpracuje všechny publikované adresy URL. 
 
 **Možnost 2: Použít rozšíření** MyApp – toto řešení vyžaduje, aby uživatelé nainstalovali rozšíření prohlížeče na straně klienta, ale budou zpracovávat všechny publikované adresy URL a fungují s nejoblíbenějšími prohlížeči. 
 
-**Možnost 3: Použijte nastavení** překladu odkazů – Toto je nastavení na straně správce, které je pro uživatele neviditelné. Zpracuje ale jenom adresy URL v HTML a CSS. Pevně zakódované interní adresy URL vygenerované prostřednictvím JavaScriptu (například) nebudou fungovat.  
+**Možnost 3: Použijte nastavení** překladu odkazů – Toto je nastavení na straně správce, které je pro uživatele neviditelné. Zpracuje ale jenom adresy URL v HTML a CSS.   
 
 Díky těmto třem funkcím budou vaše odkazy fungovat bez ohledu na to, kde jsou vaši uživatelé. Pokud máte aplikace, které přímo odkazují na interní koncové body nebo porty, můžete tyto interní adresy URL namapovat na publikované adresy URL proxy externích aplikací. 
 
@@ -146,7 +149,7 @@ Když teď uživatel přistupuje k této aplikaci, proxy automaticky vyhledá in
 
 Chceme, aby tato funkce fungovala pro všechny vaše aplikace. Hledáme více než 30 značek v HTML a CSS. Pokud máte příklad vygenerovaných odkazů, které nejsou přeloženy, odešlete fragment kódu na [zpětnou vazbu k proxy aplikace](mailto:aadapfeedback@microsoft.com). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Použití vlastních domén s Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md) ke stejné interní a externí adrese URL
 
 [Konfigurace mapování alternativního přístupu pro SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)

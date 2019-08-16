@@ -3,7 +3,7 @@ title: Protokolování v aplikacích MSAL | Azure
 description: Přečtěte si o protokolování aplikací MSAL (Microsoft Authentication Library).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/22/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 475b692a29edf5cdd05552e7b5c3dc5fde210275
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 2f52ca8062ed1ed196a67d25385b712451afe8ae
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512522"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532725"
 ---
 # <a name="logging"></a>Protokolování
 Aplikace Microsoft Authentication Library (MSAL) umožňují generovat zprávy protokolu, které mohou pomáhat diagnostikovat problémy a poskytnout podrobné informace. Aplikace může nakonfigurovat protokolování s několika řádky kódu a mít vlastní kontrolu nad úrovní podrobností a bez ohledu na to, jestli se protokolují osobní údaje a data organizace. Doporučuje se nastavit zpětné volání protokolování MSAL a poskytnout uživatelům možnost odesílat protokoly, pokud mají problémy s ověřováním.

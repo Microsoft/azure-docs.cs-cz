@@ -1,9 +1,9 @@
 ---
-title: Vyhněte se opětovné načtení stránky (knihovna Microsoft Authentication Library pro JavaScript) | Azure
-description: Zjistěte, jak se vyhnout opětovné načtení stránky při získávání a obnovování tokeny tiše pomocí knihovna Microsoft Authentication Library pro JavaScript (MSAL.js).
+title: Vyhněte se opětovnému načtení stránky (Microsoft Authentication Library pro JavaScript) | Azure
+description: Přečtěte si, jak se vyhnout opětovnému načítání stránek při opakovaném získání a obnovování tokenů pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL. js).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,35 +13,35 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: nacanuma
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 162811221e6dde89ad11f358b2ec8f32f3c82522
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c382c78cf631def74272768b78ee489e49820d04
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66420465"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532830"
 ---
-# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Při získávání a obnovování tokeny tiše využitím MSAL.js vyhnout opětovné načtení stránky
-Knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) používá skryté `iframe` prvků, které mají získat a obnovit tokeny tiše na pozadí. Azure AD vrátí token do registrované redirect_uri zadaný v požadavku na token (ve výchozím nastavení je to aplikace kořenovou stránku). Protože odpověď je 302, výsledkem HTML odpovídající `redirect_uri` načítán v `iframe`. Obvykle aplikace `redirect_uri` je kořenovou stránku, a to způsobí, že jej znovu načíst.
+# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Vyhněte se opětovnému načítání stránek při získávání a obnovování tokenů v tichém režimu pomocí MSAL. js.
+Knihovna Microsoft Authentication Library pro JavaScript (MSAL. js) `iframe` používá skryté prvky pro získání a obnovení tokenů v tichém režimu na pozadí. Azure AD vrátí token zpátky na registrovaný identifikátor redirect_uri zadaný v žádosti o token (ve výchozím nastavení se jedná o kořenovou stránku aplikace). Vzhledem k tomu, že odpověď je 302, má za následek, že kód `redirect_uri` HTML odpovídá načtení `iframe`v. Obvykle `redirect_uri` je kořenová stránka aplikace a to způsobí, že se znovu načte.
 
-V ostatních případech, pokud přejdete na stránku kořenové aplikace vyžaduje ověření, to může vést na vnořených `iframe` elementy nebo `X-Frame-Options: deny` chyby.
+V ostatních případech se při přechodu na kořenovou stránku aplikace vyžaduje ověření, může to vést k vnořeným `iframe` prvkům nebo `X-Frame-Options: deny` chybě.
 
-Protože MSAL.js nelze zrušit 302 vydané službou Azure AD a k procesu vrácený token je potřeba, nelze zabránit `redirect_uri` z načítán v `iframe`.
+Vzhledem k tomu, že MSAL. js nemůže přeskočit 302, který vystavila služba Azure AD a který je vyžadován ke zpracování `redirect_uri` vráceného tokenu, `iframe`nemůže zabránit v načtení z v.
 
-Aby se zabránilo celé aplikace znovu načíst znovu nebo jiné chyby způsobené z toho důvodu, postupujte podle těchto alternativních řešení.
+Chcete-li se vyhnout opětovnému opětovnému načtení celé aplikace nebo k jiným chybám způsobeným tímto způsobem, postupujte podle těchto alternativních řešení.
 
-## <a name="specify-different-html-for-the-iframe"></a>Zadejte jiný kód HTML pro element iframe
+## <a name="specify-different-html-for-the-iframe"></a>Zadejte pro prvek IFRAME jiný kód HTML.
 
-Nastavte `redirect_uri` vlastnosti konfigurace pro jednoduché stránky, který nevyžaduje ověření. Abyste měli jistotu, že se shoduje s máte `redirect_uri` zaregistrovaný na webu Azure portal. Přihlášení uživatele to nebude mít vliv jak MSAL uloží na úvodní stránce, když uživatel zahájí proces přihlášení a přesměruje zpátky na přesné umístění po dokončení přihlášení.
+`redirect_uri` Nastavte vlastnost na konfiguraci na jednoduchou stránku, která nevyžaduje ověření. Musíte zajistit, aby odpovídaly `redirect_uri` zaregistrovanému v Azure Portal. Nebude to mít vliv na přihlašovací uživatelské prostředí, protože MSAL ukládá úvodní stránku, když uživatel zahájí proces přihlášení a přesměrovává zpátky do přesného umístění po dokončení přihlášení.
 
-## <a name="initialization-in-your-main-app-file"></a>Inicializace v souboru hlavní aplikace
+## <a name="initialization-in-your-main-app-file"></a>Inicializace v hlavním souboru aplikace
 
-Pokud vaše aplikace je strukturována tak, že existuje jedna centrální soubor jazyka Javascript, který definuje inicializace aplikace, směrování a další věci, můžete načíst podmíněně aplikace modulů na základě na, jestli se aplikace načítá `iframe` nebo ne. Příklad:
+Pokud je vaše aplikace strukturována tak, že existuje jeden centrální soubor JavaScriptu, který definuje inicializaci, směrování a další věci aplikace, můžete podmíněně načíst moduly aplikací na základě toho, jestli se aplikace načítá `iframe` nebo ne. Příklad:
 
-In AngularJS: app.js
+V AngularJS: App. js
 
 ```javascript
 // Check that the window is an iframe and not popup
@@ -78,7 +78,7 @@ else {
 }
 ```
 
-V Angular: app.module.ts
+V úhlovém: App. Module. TS
 
 ```javascript
 // Imports...
@@ -150,4 +150,4 @@ export class MsalComponent {
 ```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [sestavení jednostránkové aplikace (SPA)](scenario-spa-overview.md) využitím MSAL.js.
+Přečtěte si další informace o [vytváření jednostránkové aplikace (Spa)](scenario-spa-overview.md) pomocí MSAL. js.

@@ -11,12 +11,12 @@ ms.author: sihhu
 ms.reviewer: trbye
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 241c84212132ee90e71291758e094cb4a115f2e2
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: cc243fea67c479879f25e4f39e3cd1c5e0237869
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018083"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534360"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
@@ -35,40 +35,15 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Přejděte k [Nastavení vývojového prostředí](#start) pro čtení v rámci kroků poznámkového bloku nebo použijte následující pokyny k získání poznámkového bloku a jeho spuštění na Azure Notebooks nebo na vlastním serveru poznámkového bloku. Pokud chcete spustit Poznámkový blok, budete potřebovat:
+* Dokončete [kurz: Začněte vytvářet první experiment](tutorial-1st-experiment-sdk-setup.md) na ml:
+    * Vytvoření pracovního prostoru
+    * Vytvoření serveru cloudového poznámkového bloku
+    * Spustit řídicí panel poznámkového bloku Jupyter
 
-* Server Python 3,6 Poznámkový blok s následujícím nainstalovaným:
-    * `azureml-dataprep` Balíček z Azure Machine Learning SDK
-* Poznámkový blok kurzu
+* Po spuštění řídicího panelu poznámkového bloku Jupyter otevřete Poznámkový blok **kurzy/Regression-part1-data-PREP. ipynb** .
 
-* Použití [serveru cloudového poznámkového bloku v pracovním prostoru](#azure) 
-* Použití [vlastního serveru poznámkového bloku](#server)
+Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že jste `azureml-dataprep` balíček nainstalovali ze sady Azure Machine Learning SDK.
 
-### <a name="azure"></a>Použití serveru cloudového poznámkového bloku v pracovním prostoru
-
-Začněte s vlastním cloudovým notebookovým serverem. Sada SDK Azure Machine Learning pro Python je už po vytvoření tohoto cloudového prostředku nainstalovaná a nakonfigurovaná.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* Po spuštění webové stránky poznámkového bloku spusťte Poznámkový blok **kurzy/Regression-part1-data-PREP. ipynb** .
-
-### <a name="server"></a>Použití vlastního serveru Jupyter notebook
-
-Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači.  Po dokončení kroků spusťte Poznámkový blok **kurzy/Regression-part1-data-PREP. ipynb** .
-
-1. Dokončete kroky instalace v [sadě Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-1. `azureml-dataprep` Balíček je automaticky nainstalován při instalaci sady SDK.
-1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
-
-    ```
-    git clone https://github.com/Azure/MachineLearningNotebooks.git
-    ```
-
-1. Spusťte server poznámkového bloku v naklonovaném adresáři.
-
-    ```shell
-    jupyter notebook
-    ```
 
 ## <a name="start"></a>Nastavení vývojového prostředí
 

@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 8693c48905155ed757bb727e42f4180f36c015f1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f88f6aa6daec342b24d165c4c4cc0a89a0805f7a
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175110"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558460"
 ---
-## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Přidružení účtu služby Azure Storage do služby IoT Hub
+## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Přidružte účet Azure Storage k IoT Hub
 
-Protože aplikace simulovaného zařízení nahraje soubor do objektu blob, musíte mít [služby Azure Storage](../articles/storage/common/storage-quickstart-create-account.md) účet spojený s centrem IoT. Když přidružíte účet Azure Storage pomocí služby IoT hub, IoT hub vygeneruje identifikátor URI SAS. Zařízení můžete pomocí tohoto identifikátoru URI SAS bezpečně nahrát soubor do kontejneru objektů blob. Služba IoT Hub a sady SDK pro zařízení koordinovat proces, který vygeneruje identifikátor URI SAS a zpřístupňuje je na zařízení používat k nahrání souboru.
+Vzhledem k tomu, že aplikace simulovaného zařízení nahrává soubor do objektu blob, musíte mít účet [Azure Storage](../articles/storage/common/storage-quickstart-create-account.md) přidružený k vašemu centru IoT. Když přidružíte účet Azure Storage ke službě IoT Hub, Centrum IoT vygeneruje identifikátor URI SAS. Zařízení může tento identifikátor URI SAS použít k bezpečnému nahrání souboru do kontejneru objektů BLOB. Služba IoT Hub a sady SDK pro zařízení koordinují proces, který generuje identifikátor URI SAS a zpřístupňuje ho zařízení, které se použije k nahrání souboru.
 
-Postupujte podle pokynů v [nahrání souborů konfigurace pomocí webu Azure portal](../articles/iot-hub/iot-hub-configure-file-upload.md). Ujistěte se, že kontejner objektů blob souvisí s centrem IoT a že jsou povolené soubor oznámení.
+Postupujte podle pokynů v tématu [Konfigurace nahrávání souborů pomocí Azure Portal](../articles/iot-hub/iot-hub-configure-file-upload.md). Ujistěte se, že je kontejner objektů BLOB přidružený ke službě IoT Hub a že jsou povolená oznámení o souborech.
 
-![Povolit soubor oznámení na portálu](./media/iot-hub-associate-storage/enable-file-notifications.png)
+![Povolit oznámení souborů na portálu](./media/iot-hub-associate-storage/file-notifications-vs2019.png)

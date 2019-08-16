@@ -5,23 +5,23 @@ description: Naučte se, jak pomocí automatizovaného strojového učení v Azu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 07/23/2019
-ms.openlocfilehash: 7ef19db472b30d82f14a5dd650cb8f4cb1f3ed3a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/14/2019
+ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990075"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534427"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-train-and-deploy-your-first-classification-model-preview"></a>Kurz: Použití automatizovaného strojového učení ke školení a nasazení prvního klasifikačního modelu (Preview)
+# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 
-V tomto kurzu se naučíte, jak vytvořit první automatizovaný experiment strojového učení v Azure Portal. Tento příklad vytvoří model klasifikace, který předpovídá, jestli se klient přihlásí k odběru termínu vkladu s bankou.
+V tomto kurzu se naučíte, jak vytvořit první automatizovaný experiment strojového učení ve Azure Portal (Preview), aniž byste museli psát jediný řádek kódu. Tento příklad vytvoří model klasifikace, který předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
 
-Díky funkcím automatizovaného strojového učení služby a Azure Portal zahájíte proces automatizovaného strojového učení. Výběr algoritmu a ladění parametrů se provádí za vás. Automatizovaná technika strojového učení projde více kombinací algoritmů a jednoduchých parametrů, dokud nenajde nejlepší model na základě vašeho kritéria, a to vše bez psaní jediného řádku kódu.
+Pomocí automatizovaných možností strojového učení služby Azure Machine Learning a Azure Portal zahájíte proces automatizovaného strojového učení. Výběr algoritmu a ladění parametrů se provádí za vás. Automatizovaná technika strojového učení projde více kombinací algoritmů a parametrů, dokud nenajde nejlepší model na základě vašeho kritéria.
 
 V tomto kurzu se seznámíte s následujícími úlohami:
 
@@ -36,7 +36,7 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
-* Datový soubor **bankmarketing_train. csv** . [Stáhněte si ho](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
+* Stáhněte si datový soubor [ **bankmarketing_train. csv** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . Sloupec **y** indikuje, jestli se zákazník přihlásil k odběru pevně stanoveného termínu, který se později identifikuje jako cílový sloupec pro předpovědi v tomto kurzu. 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
@@ -44,11 +44,14 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 
 ## <a name="create-an-experiment"></a>Vytvoření experimentu
 
+Tento postup vás provede procesem nastavování z výběru dat a výběru primárního typu metriky a modelu. 
+
 1. Přejít k levému podoknu pracovního prostoru. V části **vytváření obsahu (Preview)** vyberte **Automated Machine Learning** .
+Zobrazí se úvodní obrazovka s **automatickým Machine Learning** , protože se jedná o první experiment s automatizovaným Machine Learningem.
 
     ![Azure Portal navigační podokno](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
 
-    Vzhledem k tomu, že se jedná o první experiment s automatizovaným Machine Learning, uvidíte **úvodní obrazovku automaticky Machine Learning** . 
+
 
 1. Vyberte **vytvořit experiment**. Pak jako název experimentu zadejte **My-1st-automl-experiment** .
 
@@ -64,7 +67,8 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 
     Až se vytváření dokončí, vyberte v rozevíracím seznamu nový výpočetní výkon a pak vyberte **Další**.
 
-1. V tomto kurzu použijeme výchozí účet úložiště a kontejner vytvořený s vaším novým výpočetním prostředím. Automaticky se naplní ve formuláři.
+    >[!NOTE]
+    >V tomto kurzu použijeme výchozí účet úložiště a kontejner vytvořený s vaším novým výpočetním prostředím. Automaticky se naplní ve formuláři.
 
 1. Vyberte **nahrát** a zvolte soubor **bankmarketing_train. csv** z místního počítače a nahrajte ho do výchozího kontejneru. Verze Public Preview podporuje jenom místní nahrávání souborů a účty úložiště Azure Blob. Po dokončení nahrávání vyberte soubor ze seznamu. 
 
@@ -116,7 +120,9 @@ Jak experiment probíhá, obrazovka s podrobnostmi o **spuštění** aktualizuje
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
-Pro tento experiment se **VotingEnsemble** považuje za nejlepší model, a to na základě metriky **AUC_weighted** . Pomocí automatizovaného strojového učení v Azure Portal můžeme tento model nasadit jako webovou službu a předpovídat si nová data. 
+Pomocí automatizovaného strojového učení v Azure Portal můžeme nasadit nejlepší model jako webovou službu pro předpověď nových dat a identifikaci potenciálních oblastí příležitostí. Pro tento experiment nasazení znamená, že finanční instituce teď má iterativní a škálovatelné řešení pro identifikaci potenciálních zákazníků s dlouhodobým vkladem.
+
+V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model, a to na základě metriky **AUC_weighted** .  Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přibližně 20 minut.
 
 1. Na stránce s podrobnostmi o **spuštění** vyberte tlačítko **nasadit nejlepší model** .
 
@@ -129,13 +135,13 @@ Pro tento experiment se **VotingEnsemble** považuje za nejlepší model, a to n
     Skript bodování| AutoGenerate
     Skript prostředí| AutoGenerate
     
-1. Vyberte **Nasadit**. Dokončení nasazení trvá přibližně 20 minut.
+1. Vyberte **Nasadit**.
 
     Po úspěšném dokončení nasazení se zobrazí následující zpráva:
 
     ![Nasazení dokončeno](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
     
-    A to je vše! Máte provozní webovou službu, která generuje předpovědi.
+    Nyní máte provozní webovou službu, která generuje předpovědi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -159,7 +165,10 @@ Pokud chcete zachovat skupinu prostředků a pracovní prostor pro další kurzy
 
 V tomto kurzu automatizovaného strojového učení jste použili Azure Portal k vytvoření a nasazení klasifikačního modelu. Další informace a další kroky najdete v těchto článcích:
 
-+ Naučte se [využívat webovou službu](how-to-consume-web-service.md).
+> [!div class="nextstepaction"]
+> [Využití webové služby](how-to-consume-web-service.md)
+
+
 + Přečtěte si [](how-to-create-portal-experiments.md#preprocess)Další informace o předzpracování.
 + Přečtěte si další informace o [profilování dat](how-to-create-portal-experiments.md#profile).
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).

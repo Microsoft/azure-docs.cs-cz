@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6725bbc1978109d2b690a98e2cf98cc8c8c25141
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033004"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534795"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Kurz: Analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – Naučte se pomocí Azure Machine Learning
 
@@ -40,33 +40,15 @@ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před t
 
 ## <a name="prerequisites"></a>Požadavky
 
-Přejděte k [Nastavení vývojového prostředí](#start) pro čtení v rámci kroků poznámkového bloku nebo použijte následující pokyny k získání poznámkového bloku a jeho spuštění na Azure Notebooks nebo na vlastním serveru poznámkového bloku.  Pokud chcete spustit Poznámkový blok, budete potřebovat:
+* Dokončete [kurz: Začněte vytvářet první experiment](tutorial-1st-experiment-sdk-setup.md) na ml:
+    * Vytvoření pracovního prostoru
+    * Vytvoření serveru cloudového poznámkového bloku
+    * Spustit řídicí panel poznámkového bloku Jupyter
 
-* Server Python 3,6 Poznámkový blok s následujícím nainstalovaným:
-    * Sada SDK Azure Machine Learning pro Python
-    * `matplotlib` a `scikit-learn`
-* Poznámkový blok kurzu a soubor **utils.py**
-* Pracovní prostor Machine Learning
-* Konfigurační soubor pro pracovní prostor ve stejném adresáři jako Poznámkový blok
+* Po spuštění řídicího panelu poznámkového bloku Jupyter otevřete Poznámkový blok **kurzy/img-Classification-part1-Training. ipynb** .
 
-Všechny tyto předpoklady získáte z některého z následujících částí.
+Kurz a doprovodný soubor **utils.py** je také k dispozici [](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) na GitHubu, pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte `matplotlib` nainstalované `scikit-learn` a ve vašem prostředí.
 
-* Použití [serveru cloudového poznámkového bloku v pracovním prostoru](#azure)
-* Použití [vlastního serveru poznámkového bloku](#server)
-
-### <a name="azure"></a>Použití serveru cloudového poznámkového bloku v pracovním prostoru
-
-Začněte s vlastním cloudovým notebookovým serverem. [Sada SDK Azure Machine Learning pro Python](https://aka.ms/aml-sdk) je už po vytvoření tohoto cloudového prostředku nainstalovaná a nakonfigurovaná.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* Po spuštění webové stránky poznámkového bloku otevřete Poznámkový blok **kurzy/img-Classification-part1-Training. ipynb** .
-
-### <a name="server"></a>Použití vlastního serveru Jupyter notebook
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
- Po dokončení tohoto postupu spusťte Poznámkový blok **kurzy/img-Classification-part1-Training. ipynb** z klonovaného adresáře.
 
 ## <a name="start"></a>Nastavení vývojového prostředí
 

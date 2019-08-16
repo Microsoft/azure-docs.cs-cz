@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934195"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535175"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy
 
@@ -64,7 +64,7 @@ Můžete sledovat svou objednávku prostřednictvím Azure Portal a prostřednic
 
 - Vaše Data Box dorazí na vaše místní prostředí v uzamčeném stavu. K dispozici jsou přihlašovací údaje pro zařízení, které jsou k dispozici v Azure Portal pro vaši objednávku.  
 
-    Když se nastaví Data Box, možná budete muset zjistit, kdo získal všechna oprávnění k těmto přihlašovacím údajům pro zařízení. Chcete-li zjistit, kdo získal do okna **pověření zařízení** , můžete zadat dotaz na protokoly aktivit.  Všechny akce, které zahrnují přístup k **podrobnostem o zařízení > přihlašovací údaje** , se zaprotokolují do protokolů aktivit jako `ListCredentials` akce.
+    Když se nastaví Data Box, možná budete muset zjistit, kdo získal všechna oprávnění k těmto přihlašovacím údajům pro zařízení. Chcete-li zjistit, kdo získal do okna **pověření zařízení** , můžete zadat dotaz na protokoly aktivit.  Všechny akce, které zahrnují přístup k **podrobnostem o zařízení > přihlašovací údaje** , se zaprotokolují do protokolů aktivit jako `ListCredentials` akce.
 
     ![Dotazy na protokoly aktivit](media/data-box-logs/query-activity-log-1.png)
 
@@ -76,7 +76,7 @@ Při kopírování dat do Data Box nebo Data Box Heavy se vygeneruje chybový so
 
 ### <a name="errorxml-file"></a>Error. XML – soubor
 
-Ujistěte se, že úlohy kopírování byly dokončeny bez chyb. Pokud během kopírování dojde k chybám, Stáhněte si protokoly ze stránky **připojit a kopírovat** .
+Ujistěte se, že úlohy kopírování byly dokončeny bez chyb. Pokud během kopírování dojde k chybám, Stáhněte si protokoly ze stránky **připojit a kopírovat** .
 
 - Pokud jste zkopírovali soubor, který není 512 bajtů zarovnaný do složky spravovaného disku na vašem Data Box, soubor se do pracovního účtu úložiště nenahrál jako objekt blob stránky. V protokolech se zobrazí chyba. Odeberte soubor a zkopírujte soubor, který je 512 bajtů zarovnaných.
 - Pokud jste zkopírovali VHDX nebo dynamický virtuální pevný disk nebo Rozdílový virtuální pevný disk (tyto soubory nejsou podporované), zobrazí se v protokolech chyba.
@@ -203,7 +203,7 @@ Pro každé zpracovávané pořadí vytvoří služba Data Box v přidruženém 
 
 Při nahrávání do Azure se provádí výpočet s cyklicky redundantní kontrola (CRC). CRCs z kopie dat a po nahrání dat se porovnávají. Neshoda CRC znamená, že se nepovedlo nahrát odpovídající soubory.
 
-Ve výchozím nastavení se protokoly zapisují do kontejneru s `copylog`názvem. Protokoly se ukládají s následujícími zásadami vytváření názvů:
+Ve výchozím nastavení se protokoly zapisují do kontejneru s `copylog`názvem. Protokoly se ukládají s následujícími zásadami vytváření názvů:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -354,7 +354,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Stáhnout historii objednávek
 
-Historie objednávek je k dispozici v Azure Portal. Pokud je objednávka dokončená a vyčištění zařízení (data mazání z disků) je dokončené, přejděte do pořadí zařízení a přejděte na **Podrobnosti o objednávce**.  **Historie pořadí stahování**  možnost je k dispozici. Další informace najdete v tématu [historie pořadí stahování](data-box-portal-admin.md#download-order-history).
+Historie objednávek je k dispozici v Azure Portal. Pokud je objednávka dokončená a vyčištění zařízení (data mazání z disků) je dokončené, přejděte do pořadí zařízení a přejděte na **Podrobnosti o objednávce**. Máte k dispozici možnost **Stáhnout historii objednávky**. Další informace najdete v tématu [historie pořadí stahování](data-box-portal-admin.md#download-order-history).
 
 Pokud se posunete přes historii objednávek, uvidíte:
 
@@ -411,6 +411,6 @@ Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Naučte se [řešit problémy s data box a data box Heavy](data-box-troubleshoot.md).

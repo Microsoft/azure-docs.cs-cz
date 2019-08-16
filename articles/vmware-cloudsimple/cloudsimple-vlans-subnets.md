@@ -1,19 +1,19 @@
 ---
-title: SÍTĚ VLAN a podsítě v řešení VMware podle CloudSimple – Azure
+title: SÍTĚ VLAN a podsítě v řešení Azure VMware podle CloudSimple
 description: Informace o sítích VLAN a podsítích v privátním cloudu CloudSimple
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6659c50b79237907cf596d65e0ba9fb72113246
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7af191893d6b3cf1c38e5ff44a7a8a04509347a8
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812474"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543800"
 ---
 # <a name="vlans-and-subnets-overview"></a>Přehled sítí VLAN a podsítí
 
@@ -23,27 +23,27 @@ CloudSimple poskytuje síť pro oblast, ve které je nasazená vaše služba Clo
 
 ## <a name="vlans"></a>Sítě VLAN
 
-Sítě VLAN (síť vrstvy 2) se vytvářejí na jeden privátní cloud.  Provoz vrstvy 2 zůstává v rámci hranice privátního cloudu, což vám umožní izolovat místní provoz v rámci privátního cloudu.  SÍŤ VLAN vytvořená v privátním cloudu se dá použít k vytvoření distribuovaných skupin portů jenom v tomto privátním cloudu.  SÍŤ VLAN vytvořená v privátním cloudu se automaticky nakonfiguruje na všech přepínačích připojených k hostitelům privátního cloudu.
+Síť VLAN (síť 2) se vytvoří pro každý privátní cloud.  Provoz vrstvy 2 zůstává v rámci hranice privátního cloudu, což vám umožní izolovat místní provoz v rámci privátního cloudu.  SÍŤ VLAN vytvořená v privátním cloudu se dá použít k vytvoření distribuovaných skupin portů jenom v tomto privátním cloudu.  SÍŤ VLAN vytvořená v privátním cloudu se automaticky nakonfiguruje na všech přepínačích připojených k hostitelům privátního cloudu.
 
 ## <a name="subnets"></a>Podsítě
 
-Při vytváření sítě VLAN můžete vytvořit podsíť tak, že definujete adresní prostor podsítě. IP adresa z adresního prostoru je přiřazena jako brána podsítě. Jeden adresní prostor privátní vrstvy 3 je přiřazený pro zákazníka a oblast. V oblasti sítě můžete nakonfigurovat libovolný adresní prostor RFC 1918 bez překrývání adresního prostoru s vaší místní sítí nebo virtuální sítí Azure.
+Podsíť můžete vytvořit, když vytvoříte síť VLAN tak, že definujete adresní prostor podsítě. IP adresa z adresního prostoru je přiřazena jako brána podsítě. Jeden adresní prostor privátní vrstvy 3 je přiřazený pro zákazníka a oblast. V oblasti sítě můžete nakonfigurovat libovolný adresní prostor RFC 1918 bez překrývání adresního prostoru s vaší místní sítí nebo virtuální sítí Azure.
 
 Všechny podsítě můžou ve výchozím nastavení vzájemně komunikovat a snížit tak režijní náklady na konfiguraci směrování mezi privátními cloudy. Data východní sítě v různých počítačích ve stejné oblasti zůstanou ve stejné síti vrstvy 3 a přenos přes infrastrukturu místní sítě v rámci dané oblasti. Pro komunikaci mezi privátními cloudy v oblasti se nevyžaduje žádný výstup. Tento přístup eliminuje snížení výkonu sítě WAN a odchozích dat při nasazení různých úloh v různých privátních cloudech.
 
 ## <a name="vspherevsan-subnets-cidr-range"></a>Rozsah CIDR vSphere/síti vSAN v podsíti
 
-Privátní cloud se vytvoří jako izolovaný zásobník VMware (ESXi hosts, vCenter, síti vSAN a NSX), který spravuje Server vCenter.  Součásti pro správu se nasazují v síti vybrané pro **Směrování vSphere/síti vSAN pro sítě**.  Rozsah směrování sítě je v průběhu nasazení rozdělen do různých podsítí.
+Privátní cloud se vytvoří jako izolovaný zásobník VMware (ESXi hosts, vCenter, síti vSAN a NSX), který spravuje Server vCenter.  Součásti pro správu se nasazují v síti vybrané pro směrování vSphere/síti vSAN pro sítě.  Rozsah směrování sítě je v průběhu nasazení rozdělen do různých podsítí.
 
-Minimální předpona rozsahu vSphere/síti vSAN podsítí CIDR: **/24** maximálních podsítí vSphere/síti vSAN – předpona rozsahu CIDR: **/21**
+* Minimální předpona rozsahu CIDR podsítě vSphere/síti vSAN: **/24**
+* Maximální předpona rozsahu CIDR podsítě vSphere/síti vSAN: **/21**
 
-> [!CAUTION]
-> IP adresy v rozsahu vSphere/síti vSAN CIDR jsou vyhrazené pro použití v infrastruktuře privátního cloudu. Nepoužívejte IP adresu v tomto rozsahu na žádném virtuálním počítači.
-
+> [!IMPORTANT]
+> IP adresy v rozsahu vSphere/síti vSAN CIDR jsou vyhrazené pro použití v infrastruktuře privátního cloudu.  Nepoužívejte IP adresu v tomto rozsahu na žádném virtuálním počítači.
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>omezení rozsahu vSphere/síti vSAN podsítí CIDR
 
-Výběr velikosti rozsahu CIDR v vSphere/síti vSAN má vliv na velikost vašeho privátního cloudu.  Následující tabulka uvádí maximální počet uzlů, které můžete mít na základě velikosti směrování vSphere/síti vSAN v podsítích.
+Výběr velikosti rozsahu CIDR v podsítích vSphere/síti vSAN má vliv na velikost vašeho privátního cloudu.  Následující tabulka uvádí maximální počet uzlů, které můžete mít na základě velikosti směrování vSphere/síti vSAN v podsítích.
 
 | Zadaná délka předpony vSphere/síti vSAN podsítí CIDR | Maximální počet uzlů |
 |---------------------------------------------------|-------------------------|
@@ -54,19 +54,19 @@ Výběr velikosti rozsahu CIDR v vSphere/síti vSAN má vliv na velikost vašeho
 
 ### <a name="management-subnets-created-on-a-private-cloud"></a>Podsítě pro správu vytvořené v privátním cloudu
 
-Při vytváření privátního cloudu se vytvoří tyto podsítě pro správu. 
+Při vytváření privátního cloudu se vytvoří následující podsítě pro správu.
 
-* **Správa systému** – síť VLAN a podsíť pro síť pro správu hostitele ESXi, server DNS a vCenter Server.
-* **VMotion** -síť VLAN a podsíť pro vMotion síť hostitele ESXi
-* **Síti vSAN** -síť VLAN a podsíť pro síti vSAN síť hostitele ESXi
-* **NsxtEdgeUplink1** – síť VLAN a podsíť pro odchozí připojení VLAN k externí síti.
-* **NsxtEdgeUplink2** – síť VLAN a podsíť pro odchozí připojení VLAN k externí síti.
-* **NsxtEdgeTransport** -síť VLAN a podsíť pro transportní zóny řídí dosah sítí vrstvy 2 v NSX-T.
-* **NsxtHostTransport** – síť VLAN a podsíť pro zónu přenosu hostitele.
+* **Správa systému**. Síť VLAN a podsíť pro virtuální sítě pro správu hostitele ESXi, server DNS a vCenter Server.
+* **VMotion**. Síť VLAN a podsíť pro vMotion hostitele ESXi.
+* **SÍTI VSAN**. Síť VLAN a podsíť pro síti vSAN hostitele ESXi.
+* **NsxtEdgeUplink1**. SÍŤ VLAN a podsíť pro odchozí připojení VLAN k externí síti.
+* **NsxtEdgeUplink2**. SÍŤ VLAN a podsíť pro odchozí připojení VLAN k externí síti.
+* **NsxtEdgeTransport**. SÍŤ VLAN a podsíť pro transportní zóny řídí dosah sítí vrstvy 2 v NSX-T.
+* **NsxtHostTransport**. SÍŤ VLAN a podsíť pro zónu přenosu hostitelů.
 
 ### <a name="management-network-cidr-range-breakdown"></a>Rozpis rozsahu CIDR sítě pro správu
 
-zadaný rozsah vSphere/síti vSAN podsítí CIDR je rozdělen do několika podsítí.  Následující tabulka ukazuje příklad rozpisu pro povolené předpony.  V příkladu se jako rozsah CIDR používá **192.168.0.0** .
+zadaný rozsah vSphere/síti vSAN podsítí CIDR je rozdělen do několika podsítí.  V následující tabulce je uveden příklad rozpisu pro povolené předpony.  V příkladu se jako rozsah CIDR používá 192.168.0.0.
 
 Příklad:
 
@@ -80,6 +80,6 @@ Příklad:
 | NSX – T Edge Uplink1 | 192.168.7.224/28 | 192.168.3.224/28 | 192.168.1.224/28 | 192.168.0.224/28 |
 | NSX – T Edge uplink2 | 192.168.7.240/28 | 192.168.3.240/28 | 192.168.1.240/28 | 192.168.0.240/28 |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Vytváření a správa sítí VLAN a podsítí](https://docs.azure.cloudsimple.com/create-vlan-subnet/)
+* [Vytváření a správa sítí VLAN a podsítí](create-vlan-subnet.md)

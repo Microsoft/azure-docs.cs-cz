@@ -1,6 +1,6 @@
 ---
-title: Použít aktualizace systému ve službě Azure Security Center | Dokumentace Microsoftu
-description: Tento dokument popisuje, jak implementovat doporučení Azure Security Center **nainstalovat aktualizace systému** a **restartovat po aktualizacích systému**.
+title: Použít aktualizace systému v Azure Security Center | Microsoft Docs
+description: V tomto dokumentu se dozvíte, jak implementovat Azure Security Center doporučení **použít aktualizace systému** a **restartovat po aktualizacích systému**.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -13,84 +13,74 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 7f9c5b702c0da8de4476508114be911a9d74f78a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62095437"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69531463"
 ---
-# <a name="apply-system-updates-in-azure-security-center"></a>Použít aktualizace systému ve službě Azure Security Center
-Azure Security Center monitoruje denní Windows a Linuxem a virtuální počítače (VM) pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných zabezpečení a kritických aktualizací ze služby Windows Update nebo Windows Server Update Services (WSUS), podle toho, která služba je nakonfigurována na počítači Windows. Security Center také vyhledává nejnovější aktualizace v systémech Linux. Pokud virtuální počítač nebo počítači chybí aktualizace systému, Security Center vám doporučí použít aktualizace systému.
+# <a name="apply-system-updates-in-azure-security-center"></a>Použít aktualizace systému v Azure Security Center
+Azure Security Center monitoruje každodenní virtuální počítače s Windows a Linuxem pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných aktualizací zabezpečení a kritické aktualizace od web Windows Update nebo Windows Server Update Services (WSUS) podle toho, která služba je nakonfigurovaná na počítači s Windows. Security Center také kontroluje nejnovější aktualizace v systémech Linux. Pokud na vašem VIRTUÁLNÍm počítači nebo v počítači chybí aktualizace systému, Security Center bude doporučit, abyste použili aktualizace systému.
 
 ## <a name="implement-the-recommendation"></a>Implementace doporučení
-Použití systému aktualizace se zobrazí jako doporučení ve službě Security Center. Pokud virtuální počítač nebo počítači chybí aktualizace systému, toto doporučení se zobrazí v části **doporučení** a v části **Compute**.  Vyberete doporučení, otevře **nainstalovat aktualizace systému** řídicího panelu.
+Použití aktualizací systému se zobrazí jako doporučení v Security Center. Pokud na vašem VIRTUÁLNÍm počítači nebo v počítači chybí aktualizace systému, zobrazí se toto doporučení v části **doporučení** a v části **COMPUTE**.  Výběrem doporučení se otevře řídicí panel **použít aktualizace systému** .
 
-V tomto příkladu budeme používat **Compute**.
+V tomto příkladu použijeme **COMPUTE**.
 
-1. Vyberte **Compute** hlavní nabídce služby Security Center.
+1. V hlavní nabídce Security Center vyberte **COMPUTE** .
 
-   ![Zvolte Compute][1]
+   ![Výběr COMPUTE][1]
 
-2. V části **Compute**vyberte **chybějící aktualizace systému**. **Nainstalovat aktualizace systému** otevře se řídicí panel.
+2. V části **COMPUTE**vyberte **chybějící aktualizace systému**. Otevře se řídicí panel **použít aktualizace systému** .
 
-   ![Použít řídicí panel aktualizace systému][2]
+   ![Použít řídicí panel aktualizací systému][2]
 
-   Horní části řídicího panelu poskytuje:
+   Horní část řídicího panelu poskytuje:
 
-    - Celkový počet Windows a virtuální počítače s Linuxem a počítače s chybějícími aktualizacemi systému.
-    - Celkový počet důležitých aktualizací chybí ve virtuálních počítačích a počítačích.
-    - Celkový počet aktualizací zabezpečení mezi virtuální počítače a počítačů.
+    - Celkový počet virtuálních počítačů s Windows a Linux a počítačů chybějících aktualizací systému.
+    - Celkový počet kritických aktualizací chybějících v rámci virtuálních počítačů a počítačů.
+    - Celkový počet aktualizací zabezpečení chybějících v rámci virtuálních počítačů a počítačů.
 
-   Dolní části řídicího panelu se zobrazí všechny chybějící aktualizace ve vašich virtuálních počítačů a počítačů a závažnost chybějící aktualizace.  Seznam obsahuje:
+   V dolní části řídicího panelu se zobrazují všechny chybějící aktualizace napříč virtuálními počítači a počítači a závažnost chybějící aktualizace.  Seznam obsahuje:
 
-    - JMÉNO: Název chybějící aktualizace.
-    - NE. Virtuálních počítačů a počítačů: Celkový počet virtuálních počítačů a počítačů, které chybí daná aktualizace.
-    - STAV: Aktuální stav doporučení:
+    - JMÉNO: Název chybějící aktualizace
+    - NE. Virtuálních počítačů & počítačů: Celkový počet virtuálních počítačů a počítačů, ve kterých chybí Tato aktualizace.
+    - STÁTECH Aktuální stav doporučení:
 
-      - Otevřít: Doporučení dosud nebylo řešeno.
-      - Probíhá: Doporučení se právě zavádí k těmto prostředkům, a nevyžaduje žádné akce se.
-      - Vyřešeno: Doporučení už je dokončené. (Pokud byl problém vyřešen, položka je vyšedlá.)
+      - Otevírají Doporučení ještě není vyřešené.
+      - Probíhá: Doporučení se v tuto chvíli aplikuje na tyto prostředky a nevyžaduje žádnou akci.
+      - Přeložit Doporučení již bylo dokončeno. (Pokud byl problém vyřešen, položka je vyšedlá.)
 
-    - ZÁVAŽNOST: Popisuje závažnost tohoto konkrétního doporučení:
+    - ZÁVAŽNOST Popisuje závažnost tohoto konkrétního doporučení:
 
-      - Vysoká: Ohrožení zabezpečení existuje u významného prostředku (aplikace, virtuálního počítače nebo skupiny zabezpečení sítě) a vyžaduje pozornost.
-      - Střední: Nekritická nebo další kroky jsou nutné k dokončení procesu nebo odstranění ohrožení.
-      - Nízká: Ohrožení zabezpečení, mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
+      - Maximální Existuje chyba s smysluplným prostředkem (aplikace, virtuální počítač nebo skupina zabezpečení sítě) a vyžaduje pozornost.
+      - Úrovně K dokončení procesu nebo odstranění ohrožení zabezpečení se vyžadují nekritické nebo další kroky.
+      - Slab Ohrožení zabezpečení by se mělo řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
 
-3. Vyberte chybějící aktualizace v seznamu zobrazíte podrobnosti.
+3. Pokud chcete zobrazit podrobnosti, vyberte v seznamu chybějící aktualizace.
 
    ![Chybějící aktualizace zabezpečení][3]
 
-4. Vyberte **hledání** ikona na horním pásu karet.  Filtrované počítačům chybí aktualizace se otevře dotaz vyhledávání protokolů služby Azure Monitor.
+4. Vyberte ikonu **hledání** na horním pásu karet.  Dotaz pro vyhledávání protokolů Azure Monitor otevře filtrovaný na počítačích, ve kterých chybí aktualizace.
 
    ![Hledání protokolů Azure Monitor][4]
 
-5. Vyberte počítač ze seznamu pro další informace. Další výsledek vyhledávání se otevře s informacemi filtrovat pouze pro daný počítač.
+5. Pro další informace vyberte počítač ze seznamu. Otevře se další výsledek hledání s informacemi filtrovanými pouze pro tento počítač.
 
     ![Hledání protokolů Azure Monitor][5]
-
-## <a name="reboot-after-system-updates"></a>Restartovat po aktualizacích systému
-1. Vraťte se **doporučení** okno. Po použití aktualizací systému, nazývá se vygeneroval nový záznam **restartovat po aktualizacích systému**. Tato položka vám umožňuje vědět, že je potřeba restartovat virtuální počítač k dokončení procesu instalace aktualizací systému.
-
-   ![Restartovat po aktualizacích systému][6]
-2. Vyberte **restartovat po aktualizacích systému**. Tím se otevře **čeká na dokončení aktualizace systému** okno zobrazení seznamu virtuálních počítačů, které je třeba restartovat, aby mohla dokončit použít systém procesu aktualizací.
-
-   ![Čekání na restartování][7]
-
-Restartujte virtuální počítač z Azure na dokončení procesu.
 
 ## <a name="next-steps"></a>Další postup
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
-* [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
+* [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – Přečtěte si, jak doporučení vám pomůžou chránit vaše prostředky Azure.
+* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – přečtěte si blog příspěvky o zabezpečení Azure a dodržování předpisů.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si blogové příspěvky o zabezpečení Azure a dodržování předpisů.
 
 <!--Image references-->
 [1]: ./media/security-center-apply-system-updates/missing-system-updates.png
@@ -98,5 +88,3 @@ Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato t
 [3]: ./media/security-center-apply-system-updates/detail-on-missing-update.png
 [4]: ./media/security-center-apply-system-updates/log-search.png
 [5]: ./media/security-center-apply-system-updates/search-details.png
-[6]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
-[7]: ./media/security-center-apply-system-updates/restart-pending.png

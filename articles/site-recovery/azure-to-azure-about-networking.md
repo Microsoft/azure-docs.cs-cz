@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 844563e03529e472624b35d2b545c3e432e4ea17
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c642640d590e1f568fb6f6c5072decd75575ab2d
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876285"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543648"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O sítích v Azure do replikace Azure
 
@@ -73,7 +73,7 @@ Site Recovery rozsahy IP adres jsou následující:
    Východní Asie | 52.175.17.132 | 13.94.47.61
    Jihovýchodní Asie | 52.187.58.193 | 13.76.179.223
    Střed Indie | 52.172.187.37 | 104.211.98.185
-   Indie – jih | 52.172.46.220 | 104.211.224.190
+   Jižní Indie | 52.172.46.220 | 104.211.224.190
    Střed USA – sever | 23.96.195.247 | 168.62.249.226
    Severní Evropa | 40.69.212.238 | 52.169.18.8
    Západní Evropa | 52.166.13.64 | 40.68.93.145
@@ -93,8 +93,8 @@ Site Recovery rozsahy IP adres jsou následující:
    USA – západ 2 | 52.183.45.166 | 13.66.228.204
    Spojené království – západ | 51.141.3.203 | 51.141.14.113
    Velká Británie – jih | 51.140.43.158 | 51.140.189.52
-   Velká Británie – jih 2 | 13.87.37.4| 13.87.34.139
-   Velká Británie – sever | 51.142.209.167 | 13.87.102.68
+   Spojené království – jih 2 | 13.87.37.4| 13.87.34.139
+   Spojené království – sever | 51.142.209.167 | 13.87.102.68
    Jižní Korea – střed | 52.231.28.253 | 52.231.32.85
    Jižní Korea – jih | 52.231.198.185 | 52.231.200.144
    Francie – střed | 52.143.138.106 | 52.143.136.55
@@ -109,6 +109,11 @@ Site Recovery rozsahy IP adres jsou následující:
    USA (Gov) – Texas | 52.238.119.218 | 52.238.116.60
    US DoD – východ | 52.181.164.103 | 52.181.162.129
    US DoD – střed | 52.182.95.237 | 52.182.90.133
+   Čína – sever | 40.125.202.254 | 42.159.4.151
+   Čína – sever 2 | 40.73.35.193 | 40.73.33.230
+   Čína – východ | 42.159.205.45 | 42.159.132.40
+   Čína – východ 2 | 40.73.118.52| 40.73.100.125
+  
 ## <a name="example-nsg-configuration"></a>Příklad konfigurace NSG
 
 Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuálního počítače.

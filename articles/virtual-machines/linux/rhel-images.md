@@ -3,22 +3,22 @@ title: Red Hat Enterprise Linux imagí v Azure | Microsoft Docs
 description: Přečtěte si o Red Hat Enterprise Linuxch imagí v Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 6/6/2019
+ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: 7d34e480dd3cf90f1948e83ea1d18c04f1dcdce2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 25b0ccfa5ed2b7b9ff031565fe7f14b1477769c4
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854444"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543844"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux imagí v Azure
 Tento článek popisuje dostupné image Red Hat Enterprise Linux (RHEL) v Azure Marketplace společně se zásadami týkajícími se jejich pojmenování a uchovávání.
@@ -99,13 +99,15 @@ Následující tabulka bude platit pro image RHEL, které obsahují podverze v S
 
 >[!NOTE]
 > V době psaní mají EUS podporu jenom RHEL 7,4 a novější podverze. EUS se už nepodporuje pro RHEL < = 7,3.
+>
+> Další podrobnosti o dostupnosti RHEL EUS najdete [tady](https://access.redhat.com/support/policy/updates/errata).
 
 Dílčí verze |Příklad obrázku EUS              |Stav EUS                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Obrázky publikované v dubnu 2019 a novějších budou ve výchozím nastavení EUS|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | Obrázky publikované od června 2019 a novějších budou ve výchozím nastavení EUS |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | Publikované obrázky můžou 2019 a novější EUS ve výchozím nastavení.  |
-RHEL 8.0      |Není k dispozici                            | Aktuálně nejsou k dispozici žádné image EUS aktuálně.                 |
+RHEL 8.0      |Není k dispozici                            | Není dostupný žádný EUS ze Red Hat.                               |
 
 
 ## <a name="list-of-rhel-images-available"></a>Seznam dostupných imagí RHEL

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: 1dcf08f4fefb53ed46038c82e0ce8f9d3dd94de2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 68968c1f846a1052600a8ed108f4d40fd9d8f2cb
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032248"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534725"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verze Preview – použití nástroje pro vyrovnávání zatížení Standard SKU ve službě Azure Kubernetes (AKS)
 
@@ -92,11 +92,11 @@ Při vytváření a správě clusterů AKS, které podporují Nástroj pro vyrov
 
 * Při použití *standardní* SKU pro nástroj pro vyrovnávání zatížení musíte poskytnout veřejné adresy a vyhnout se vytváření Azure Policy, které zakazují vytváření IP adres. Cluster AKS automaticky vytvoří veřejnou IP adresu *Standard* SKU ve stejné skupině prostředků vytvořené pro cluster AKS, který se obvykle jmenuje s *MC_* na začátku. AKS přiřadí veřejnou IP adresu k nástroji pro vyrovnávání zatížení *Standard* SKU. Veřejná IP adresa je nutná pro povolení odchozího provozu z clusteru AKS. Tato veřejná IP adresa je také nutná k udržení připojení mezi řídicí rovinou a uzly agentů a k udržení kompatibility s předchozími verzemi AKS.
 * Při použití *standardní* skladové položky (SKU) pro nástroj pro vyrovnávání zatížení musíte použít Kubernetes verze 1.13.5 nebo vyšší.
-* Pokud používáte [funkci veřejné IP adresy uzlu](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool) se standardními nástroji pro vyrovnávání zatížení, můžete pro uzel nastavit buď odchozí pravidlo SLB, nebo veřejnou IP adresu. Musíte vybrat jednu nebo druhou, protože jeden virtuální počítač nejde současně připojit k odchozímu pravidlu SLB i k veřejné IP adrese.
 
 I když je tato funkce ve verzi Preview, platí následující další omezení:
 
 * Při použití *standardní* SKU pro nástroj pro vyrovnávání zatížení v AKS nemůžete pro nástroj pro vyrovnávání zatížení nastavit vlastní veřejnou IP adresu pro výstup. Musíte použít IP adresu AKS přiřadí vašemu nástroji pro vyrovnávání zatížení.
+* Tato funkce se nedá použít s [funkcí veřejné IP adresy uzlu](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

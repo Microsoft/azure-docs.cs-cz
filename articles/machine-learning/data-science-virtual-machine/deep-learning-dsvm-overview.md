@@ -15,14 +15,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: ddf1169d94c3e71b92e8b1835040ab5738bf94b8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8541713219eb8daf880605089fe49fc585836bdc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591885"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534952"
 ---
 # <a name="introduction-to-the-deep-learning-virtual-machine"></a>Seznámení s virtuálním počítačem s hloubkovým učením
+
+> [!NOTE]
+> Všechny nástroje pro virtuální počítače s hlubokým učením (DLVM) jsou teď přeložené do [Data Science VM (DSVM)](dsvm-tools-overview.md). DLVM a DSVM jsou nyní stejné. Místo DLVM prosím zvažte vytvoření DSVM.
 
 ## <a name="why-deep-learning-virtual-machine"></a>Proč se virtuální počítač s hloubkovým učením? 
 
@@ -35,7 +38,6 @@ Virtuální počítač s hloubkovým učením je speciálně nakonfigurovaná va
 
 Začněte s virtuálním počítačem s hloubkovým učením pomocí následujících kroků:
 
-* [Zřízení virtuálního počítače s hloubkovým učením](provision-deep-learning-dsvm.md)
-* [Použití virtuálního počítače s hloubkovým učením](use-deep-learning-dsvm.md)
-* [Reference k nástroji](dsvm-deep-learning-ai-frameworks.md)
-* [Ukázky](dsvm-samples-and-walkthroughs.md)
+* [Zřízení Data Science Virtual Machine Windows](provision-vm.md)
+* [Zřízení Data Science Virtual Machine Ubuntu](dsvm-ubuntu-intro.md)
+

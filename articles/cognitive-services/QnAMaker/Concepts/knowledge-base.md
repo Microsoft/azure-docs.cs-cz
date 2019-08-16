@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/15/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 022b16669791b9b9cce066b3dd17c70b33569cc0
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 8cd63913c0e96d496aa617369601c1dd121b4b46
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955239"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542845"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Co je znalostní bázi nástroje QnA Maker?
 
@@ -59,8 +59,72 @@ Postup je vysvětlen v následující tabulce:
 
 Používané funkce zahrnují, ale nejsou omezeny na sémantiku na úrovni aplikace Word, důležitost na úrovni podmínky v Corpus a hloubkované sémantické modely, které určují podobnost a relevanci mezi dvěma textovými řetězci.
 
+## <a name="http-request-and-response-with-endpoint"></a>Požadavek HTTP a odpověď s koncovým bodem
+Když publikujete znalostní bázi, služba vytvoří **koncový bod** http založený na REST, který bude možné integrovat do vaší aplikace, obvykle robota chatu. 
 
-## <a name="next-steps"></a>Další kroky
+### <a name="the-user-query-request-to-generate-an-answer"></a>Požadavek na dotaz na uživatele pro vygenerování odpovědi
+
+**Uživatelský dotaz** je otázka, kterou koncový uživatel požádá o znalostní bázi Knowledge Base, jako je `How do I add a collaborator to my app?`například. Dotaz je často ve formátu přirozeného jazyka nebo některá klíčová slova, která reprezentují otázku, jako `help with collaborators`je například. Dotaz se pošle na vaše znalosti z **požadavku** http v klientské aplikaci.
+
+```json
+{
+    "question": "qna maker and luis",
+    "top": 6,
+    "isTest": true,
+    "scoreThreshold": 20,
+    "strictFilters": [
+    {
+        "name": "category",
+        "value": "api"
+    }],
+    "userId": "sd53lsY="
+}
+```
+
+Odpověď řídíte nastavením vlastností, jako jsou [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)a [stringFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags).
+
+Používejte [obsah konverzací](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) s [funkcemi vícenásobného](../how-to/multiturn-conversation.md) zapínání, aby konverzace mohla Upřesnit otázky a odpovědi a najít správnou a konečnou odpověď.
+
+### <a name="the-response-from-a-call-to-generate-answer"></a>Odpověď ze volání pro vygenerování odpovědi
+
+**Odpověď** http je odpověď získaná ze znalostní báze na základě nejlepší shody pro daný dotaz uživatele. Odpověď obsahuje odpověď a skóre předpovědi. Pokud jste si vyžádali více než jednu otázku nejvyšší úrovně `top` , získáte s vlastností více než jednu horní otázku, z nichž každá má skóre. 
+
+```json
+{
+    "answers": [
+        {
+            "questions": [
+                "What is the closing time?"
+            ],
+            "answer": "10.30 PM",
+            "score": 100,
+            "id": 1,
+            "source": "Editorial",
+            "metadata": [
+                {
+                    "name": "restaurant",
+                    "value": "paradise"
+                },
+                {
+                    "name": "location",
+                    "value": "secunderabad"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="test-and-production-knowledge-base"></a>Testovací a provozní znalostní báze
+Znalostní báze je úložiště otázky a odpovědi vytvořen, udržovat a použít nástroj QnA Maker. Každá úroveň QnA Maker lze použít pro více znalostní báze.
+
+Znalostní báze má dva stavy - testů a publikovat. 
+
+**Testovací znalostní báze** je verze, kterou je upravována, ukládána a testována pro přesnost a úplnost reakcí. Změny provedené ve znalostní bázi test neovlivňují koncový uživatel aplikace/chatovací robot. Testovací znalostní báze se označuje jako `test` požadavek HTTP. 
+
+**Publikovaná znalostní báze** je verze, která se používá ve robotu nebo aplikaci chatu. Akce publikování znalostní báze převádí obsah znalostní báze Test na publikovanou verzi znalostní báze. Protože znalostní báze publikované verzi, která aplikace používá prostřednictvím koncového bodu, by měl zajistit, že obsah je správná a dobře otestovaný věnovat pozornost. Publikovaná znalostní báze je známá jako `prod` v požadavku HTTP. 
+
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Životní cyklus vývoje znalostní báze](./development-lifecycle-knowledge-base.md)
@@ -68,3 +132,11 @@ Používané funkce zahrnují, ale nejsou omezeny na sémantiku na úrovni aplik
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 [Přehled služby QnA Maker](../Overview/overview.md)
+
+Vytvoření a úprava znalostní báze pomocí: 
+* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [Sada .NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+
+Generovat odpověď s: 
+* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [Sada .NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

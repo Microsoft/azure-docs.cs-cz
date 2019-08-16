@@ -2,20 +2,20 @@
 title: Připojení k Azure SQL Data Warehouse – VSTS | Dokumentace Microsoftu
 description: Dotazování SQL Data Warehouse pomocí sady Visual Studio.
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.date: 08/15/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5c0867252023378347e55d673260f28a7bf2ccc4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: aea2b3229dd793bc31adc0038763e09340a5f85a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479447"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534777"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Připojení k SQL Data Warehouse pomocí sady Visual Studio a SSDT
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "68479447"
 > 
 > 
 
-Použijte sadu Visual Studio k dotazování datového skladu SQL Azure během několika minut. Tato metoda používá rozšíření serveru SQL Server Data Tools (SSDT) v sadě Visual Studio. 
+Použijte sadu Visual Studio k dotazování datového skladu SQL Azure během několika minut. Tato metoda používá rozšíření SQL Server Data Tools (SSDT) v aplikaci Visual Studio 2019. 
 
 ## <a name="prerequisites"></a>Požadavky
 Chcete-li použít tento kurz, potřebujete:
@@ -37,7 +37,7 @@ Chcete-li použít tento kurz, potřebujete:
 * Plně kvalifikovaný název serveru SQL. Ten zjistíte v části [Připojení k SQL Data Warehouse][Connect to SQL Data Warehouse].
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Připojení k vaší službě SQL Data Warehouse
-1. Otevřete Visual Studio 2013 nebo 2015.
+1. Otevřete Visual Studio 2019.
 2. Otevřete Průzkumník objektů SQL Serveru. Uděláte to tak, že vyberte **Zobrazení** > **Průzkumník objektů systému SQL Server**.
    
     ![Průzkumník objektů systému SQL Server][1]

@@ -7,16 +7,16 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: 2e595fbee90b710ec6b8090a770d93e688a04818
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2122b6bd5fbd6b15bd5a2e411898d957708bf4c9
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839997"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558871"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
-Azure Reservations vám pomůžou ušetřit peníze tím, že se předem platíte za jednoleté nebo tři roky virtuálních počítačů, SQL Database výpočetní kapacity, Azure Cosmos DB propustnosti nebo jiných prostředků Azure. Předběžná platba vám umožní získat slevu na prostředky, které používáte. Rezervace můžou významně snížit svůj virtuální počítač, výpočetní výkon SQL Database, Azure Cosmos DB nebo jiné náklady na prostředky až do 72% při průběžných platbách. Rezervace poskytují fakturační slevu a neovlivňují běhový stav vašich prostředků.
+Azure Reservations vám pomůžou ušetřit peníze tím, že se předem platíte za jednoleté nebo tři roky virtuálních počítačů, SQL Database výpočetní kapacity, Azure Cosmos DB propustnosti nebo jiných prostředků Azure. Díky předplacení můžete získat slevu na prostředky, které využíváte. Rezervace můžou významně snížit svůj virtuální počítač, výpočetní výkon SQL Database, Azure Cosmos DB nebo jiné náklady na prostředky až do 72% při průběžných platbách. Rezervace poskytují fakturační slevu a neovlivňují běhový stav vašich prostředků.
 
 Rezervaci můžete koupit v [Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
@@ -36,7 +36,7 @@ Pro virtuální počítače s Windows a SQL Database můžete pokrýt náklady n
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Kdo má nárok na zakoupení rezervace?
 
-Pokud si chcete koupit plán, musíte mít roli vlastníka předplatného v podniku (MS-AZR-0017P nebo MS-AZR-0148P) nebo předplatném s průběžnými platbami (MS-AZR-003P nebo MS-AZR-0023P). Poskytovatelé Cloud Solution Provider můžou k nákupu Azure reservations použít Azure Portal nebo [Partnerské centrum](/partner-center/azure-reservations) .
+Pokud si chcete koupit plán, musíte mít roli vlastníka předplatného v podniku (MS-AZR-0017P nebo MS-AZR-0148P) nebo předplatném s průběžnými platbami (MS-AZR-0003P nebo MS-AZR-0023P). Poskytovatelé Cloud Solution Provider můžou k nákupu Azure reservations použít Azure Portal nebo [Partnerské centrum](/partner-center/azure-reservations) .
 
 Zákazníci smlouva Enterprise (EA) můžou omezit nákupy na správce EA tím, že na portálu EA zakáže možnost **Přidat rezervované instance** . Správce EA musí být vlastníkem předplatného alespoň jednoho předplatného, aby si mohl koupit rezervaci. Možnost je užitečná pro podniky, které mají centralizovaný tým k nákupu rezervací pro různá nákladová centra. Po nákupu můžou centralizované týmy do rezervací přidat vlastníky nákladového centra. Vlastníci potom můžou rezervaci omezit na své odběry. Centrální tým nemusí mít přístup vlastníka předplatného, kde se rezervace zakoupí.
 
@@ -158,7 +158,7 @@ Pro zákazníky s jednotlivými předplatnými:
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o Azure Reservations najdete v následujících článcích:
     - [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)

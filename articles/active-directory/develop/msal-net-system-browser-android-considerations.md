@@ -1,9 +1,9 @@
 ---
-title: Důležité informace o Xamarin Android (knihovna Microsoft Authentication Library pro .NET) | Azure
-description: Další informace o konkrétní aspekty při používání Xamarin Android s Microsoft Authentication Library pro .NET (MSAL.NET).
+title: Předpoklady pro Xamarin Android (Microsoft Authentication Library pro .NET) | Azure
+description: Přečtěte si o konkrétních doporučeních pro použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,23 +13,23 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c57feb33967732481d78e0ddaba5e90f4f82f327
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b0c810097913e896027245b15600ed75aabcd25
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544427"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532577"
 ---
-# <a name="xamarin-android-specific-considerations-with-msalnet"></a>Důležité informace specifické pro Xamarin Android pomocí MSAL.NET
-Tento článek popisuje konkrétní aspekty při používání prohlížeče systému v Xamarin pro Android s Microsoft Authentication Library pro .NET (MSAL.NET).
+# <a name="xamarin-android-specific-considerations-with-msalnet"></a>Doporučení pro Xamarin Android týkající se MSAL.NET
+Tento článek popisuje konkrétní informace týkající se použití prohlížeče systému v Xamarin Android s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 
-Počínaje MSAL.NET 2.4.0-preview, MSAL.NET podporuje prohlížečích než Chrome a už nevyžaduje Chrome nainstalovat na zařízení s Androidem pro ověřování.
+Od verze MSAL.NET 2.4.0-Preview MSAL.NET podporuje prohlížeče jiné než Chrome a už nevyžadují, aby se na zařízení s Androidem nainstalovala aplikace Chrome pro ověřování.
 
-Doporučujeme, abyste že pomocí prohlížeče, které podporují vlastní karty, jako je například tyto:
+Doporučujeme používat prohlížeče, které podporují vlastní karty, například tyto:
 
 | Prohlížeče s podporou vlastní karty | Název balíčku |
 |------| ------- |
@@ -38,41 +38,41 @@ Doporučujeme, abyste že pomocí prohlížeče, které podporují vlastní kart
 |Firefox | org.mozilla.firefox|
 |Ecosia | com.ecosia.android|
 |Kiwi | com.kiwibrowser.browser|
-|Kulatý háček | com.brave.browser|
+|Brave | com.brave.browser|
 
-Kromě prohlížeče s podporou vlastní karty, na základě našich testování několika prohlížečích, které nepodporují vlastní karty budou fungovat i pro ověřování: Opera, Opera Mini InBrowser a Maxthon. Další informace najdete v článku [tabulky pro výsledky testů](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Android-system-browser#devices-and-browsers-tested).
+Kromě prohlížečů s podporou vlastních karet na základě našeho testování bude pro ověřování fungovat i několik prohlížečů, které nepodporují vlastní karty: Opera, Opera Mini, inBrowser a Maxthon. Další informace najdete v [tabulce pro výsledky testů](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Android-system-browser#devices-and-browsers-tested).
 
 ## <a name="known-issues"></a>Známé problémy
 
-- Pokud uživatel nemá žádný prohlížeč na zařízení povolená, vyvolá výjimku MSAL.NET `AndroidActivityNotFound` výjimky. 
-  - **Zmírnění dopadů**: Informujte uživatele, že by měl umožňují prohlížeče (nejlépe s podporou vlastní karty) na svém zařízení.
+- Pokud uživatel nemá na zařízení povolený prohlížeč, MSAL.NET vyvolá `AndroidActivityNotFound` výjimku. 
+  - **Omezení rizik**: Informujte uživatele, že by měli povolit prohlížeč (nejlépe s podporou vlastní karty) na svém zařízení.
 
-- Pokud se ověření nezdaří (např. ověřování spustí s DuckDuckGo), vrátí MSAL.NET `AuthenticationCanceled MsalClientException`. 
-  - **Hlavní problém**: Prohlížeč s podporou vlastní karty nebyl povolen v zařízení. Ověřování se spustila s alternativní prohlížeč, který nebylo možné dokončit ověřování. 
-  - **Zmírnění dopadů**: Informujte uživatele, měli by tito instalovat prohlížeče (nejlépe s podporou vlastní kartu) na svém zařízení.
+- Pokud ověřování neproběhne úspěšně (např. Spustí se ověřování s DuckDuckGo), MSAL.NET vrátí `AuthenticationCanceled MsalClientException`. 
+  - **Problém**s kořenovým adresářem: V zařízení není povolený prohlížeč s podporou vlastní karty. Ověřování se spustilo v alternativním prohlížeči, které nedokázalo dokončit ověřování. 
+  - **Omezení rizik**: Informujte uživatele, že by měli nainstalovat prohlížeč (nejlépe s podporou vlastní karty) na svém zařízení.
 
-## <a name="devices-and-browsers-tested"></a>Zařízení a testovat prohlížeče
-V následující tabulce jsou uvedeny, zařízení a prohlížeče, které byly testovány.
+## <a name="devices-and-browsers-tested"></a>Testovaných zařízení a prohlížečů
+V následující tabulce jsou uvedena zařízení a prohlížeče, které byly testovány.
 
-| | Prohlížeč&ast;     |  Výsledek  | 
+| | Prohlížeee&ast;     |  Výsledek  | 
 | ------------- |:-------------:|:-----:|
-| Huawei jeden + / | Chrome&ast; | Průchod|
-| Huawei jeden + / | Edge&ast; | Průchod|
-| Huawei jeden + / | Firefox&ast; | Průchod|
-| Huawei jeden + / | Kulatý háček&ast; | Průchod|
-| Jeden + | Ecosia&ast; | Průchod|
-| Jeden + | Kiwi&ast; | Průchod|
-| Huawei jeden + / | Opera | Průchod|
-| Huawei | OperaMini | Průchod|
-| Huawei jeden + / | InBrowser | Průchod|
-| Jeden + | Maxthon | Průchod|
-| Huawei jeden + / | DuckDuckGo | Uživatel zrušil ověřování|
-| Huawei jeden + / | UC prohlížeče | Uživatel zrušil ověřování|
-| Jeden + | Delfínů | Uživatel zrušil ověřování|
-| Jeden + | Prohlížeč CM | Uživatel zrušil ověřování|
-| Huawei jeden + / | žádná nainstalovaná | AndroidActivityNotFound ex|
+| Huawei/jeden + | Chrome&ast; | Úspěch|
+| Huawei/jeden + | Edge&ast; | Úspěch|
+| Huawei/jeden + | Firefox&ast; | Úspěch|
+| Huawei/jeden + | Brave&ast; | Úspěch|
+| Jedna + | Ecosia&ast; | Úspěch|
+| Jedna + | Kiwi&ast; | Úspěch|
+| Huawei/jeden + | Opera | Úspěch|
+| Huawei | OperaMini | Úspěch|
+| Huawei/jeden + | Prohlížeč | Úspěch|
+| Jedna + | Maxthon | Úspěch|
+| Huawei/jeden + | DuckDuckGo | Uživatel zrušil ověření.|
+| Huawei/jeden + | Prohlížeč UC | Uživatel zrušil ověření.|
+| Jedna + | Delfín | Uživatel zrušil ověření.|
+| Jedna + | Prohlížeč CM | Uživatel zrušil ověření.|
+| Huawei/jeden + | žádné nainstalované | AndroidActivityNotFound ex|
 
-&ast; Podporuje vlastní karty
+&ast;Podporuje vlastní karty
 
-## <a name="next-steps"></a>Další postup
-Kód fragmenty kódu a další informace o používání prohlížeč systému s Xamarin Androidem, najdete v tomto [průvodce](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid).  
+## <a name="next-steps"></a>Další kroky
+Pro fragmenty kódu a další informace o používání prohlížeče systému s Xamarin Androidem si přečtěte tento [Průvodce](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid).  

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1668e0b3b155804496b190f2ba66d220ba0dd219
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381945"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533520"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -86,10 +86,12 @@ K této chybě dojde v případě, že clustery vstupují do neúspěšného sta
 
 *Tato pomoc při řešení potíží je směrována z https://aka.ms/aks-pending-upgrade*
 
-Operace clusteru jsou omezené, když se vyskytnou aktivní operace upgradu, nebo došlo k pokusu o upgrade, ale následně se nepovedlo. Chcete-li diagnostikovat `az aks show -g myResourceGroup -n myAKSCluster -o table` příčinu problému a načíst podrobný stav clusteru. Na základě výsledku:
+Operace upgradu a škálování v clusteru s jedním fondem uzlů nebo clusterem s [více fondy uzlů](use-multiple-node-pools.md) se vzájemně vylučují. Cluster ani fond uzlů nemůžete současně upgradovat a škálovat. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. V důsledku toho jsou operace omezené, když dojde k aktivnímu upgradu nebo operacím škálování a následně došlo k selhání. 
+
+Aby bylo možné diagnostikovat potíže `az aks show -g myResourceGroup -n myAKSCluster -o table` s tím, že se v clusteru načtou podrobné informace o stavu. Na základě výsledku:
 
 * Pokud se cluster aktivně upgraduje, počkejte, až se operace ukončí. Pokud byla úspěšná, zkuste znovu provést dříve neúspěšnou operaci.
-* Pokud se upgrade clusteru nezdařil, postupujte podle kroků uvedených výše.
+* Pokud se upgrade clusteru nezdařil, postupujte podle kroků uvedených v předchozí části.
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Můžu svůj cluster přesunout do jiného předplatného nebo mého předplatného s clusterem do nového tenanta?
 
@@ -105,7 +107,7 @@ Může dojít k chybám, které naznačují, že váš cluster AKS není na sad�
 
 Pokud chcete používat funkce, jako je například automatické škálování clusteru nebo fondy více uzlů, je nutné vytvořit clustery AKS, které používají Virtual Machine Scale Sets. Pokud se pokusíte použít funkce, které závisí na virtuálních počítačích služby Virtual Machine Scale Sets, a zacílíte na běžný cluster AKS s nevirtuálními počítači, budou se vám vracet chyby. Podpora sady škálování virtuálních počítačů je v současné době ve verzi Preview v AKS.
 
-Postupujte podle  pokynů v příslušném dokumentu, aby se správně zaregistrovala funkce Virtual Machine Scale set Preview a vytvořil se cluster AKS:
+Postupujte podle pokynů v příslušném dokumentu, aby se správně zaregistrovala funkce Virtual Machine Scale set Preview a vytvořil se cluster AKS:
 
 * [Použití automatického škálování clusteru](cluster-autoscaler.md)
 * [Vytvoření a použití více fondů uzlů](use-multiple-node-pools.md)
@@ -127,6 +129,6 @@ Operace clusteru jsou omezené, když stále probíhá předchozí operace. Chce
 
 Na základě výstupu stavu clusteru:
 
-* Pokud je cluster v jakémkoli stavu zřizování než *úspěšný* nebo neúspěšný, počkejte na ukončení operace (*upgrade/aktualizace/vytvoření/škálování/odstranění/migrace*). Po dokončení předchozí operace zkuste znovu vyzkoušet nejnovější operaci clusteru.
+* Pokud je cluster v jakémkoli stavu zřizování než *úspěšný* nebo neúspěšný,počkejte na ukončení operace (*upgrade/aktualizace/vytvoření/škálování/odstranění/migrace*). Po dokončení předchozí operace zkuste znovu vyzkoušet nejnovější operaci clusteru.
 
 * Pokud dojde k selhání upgradu clusteru, postupujte podle kroků uvedených v části mi dochází k [chybám, že můj cluster je ve stavu selhání a upgrade nebo škálování nebude fungovat, dokud](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)nebude opraveno.

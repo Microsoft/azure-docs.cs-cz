@@ -7,16 +7,18 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7dd053e3a9824ac0817db528b8b053666e1ded04
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881822"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543507"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 
 Konfigurace hosta používá modul prostředku [Konfigurace požadovaného stavu](/powershell/dsc) (DSC) k vytvoření konfigurace pro auditování virtuálních počítačů Azure. Konfigurace DSC definuje podmínku, ve které by se měl virtuální počítač nacházet. Pokud se konfigurace nezdařila, je aktivován **audit** účinku zásad a virtuální počítač se považuje za nevyhovující.
+
+[Konfiguraci hosta Azure Policy](/azure/governance/policy/concepts/guest-configuration) můžete použít jenom k auditování nastavení v rámci virtuálních počítačů. Náprava nastavení v rámci virtuálních počítačů ještě není dostupná.
 
 Pomocí následujících akcí vytvořte vlastní konfiguraci pro ověření stavu virtuálního počítače Azure.
 

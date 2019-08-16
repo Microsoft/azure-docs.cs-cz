@@ -3,7 +3,7 @@ title: Konfigurace klientské aplikace (knihovna ověřování Microsoft) | Azur
 description: Přečtěte si o možnostech konfigurace pro veřejné klientské a důvěrné klientské aplikace v knihovně Microsoft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767f7362a6c46d864ba17f23f6506bf6cdb71414
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 6fedca8dfb60d976723508bb89cab7d5b6dda1b9
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304735"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532913"
 ---
 # <a name="application-configuration-options"></a>Možnosti konfigurace aplikace
 
@@ -35,7 +35,7 @@ V kódu inicializujete novou veřejnou nebo důvěrnou klientskou aplikaci (nebo
     - [Tajný kód klienta](#client-secret) (u důvěrných klientských aplikací).
 - [Možnosti protokolování](#logging), včetně úrovně protokolování, řízení osobních údajů a názvu komponenty pomocí knihovny.
 
-## <a name="authority"></a>Dohled
+## <a name="authority"></a>Autorita
 Autorita je adresa URL, která označuje adresář, ze kterého může MSAL žádat o tokeny. Mezi běžné autority patří:
 
 - tenant\:\< &lt;https//Login.microsoftonline.com//, kde tenant&gt; je ID tenanta klienta Azure Active Directory (Azure AD) nebo doménu přidruženou k tomuto tenantovi Azure AD.\> Používá se jenom pro přihlášení uživatelů určité organizace.
@@ -98,14 +98,14 @@ V současné době jediným způsobem, jak získat aplikaci pro přihlašování
 ## <a name="client-id"></a>ID klienta
 ID klienta je jedinečné ID aplikace (klienta) přiřazené vaší aplikaci službou Azure AD při registraci aplikace.
 
-## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
+## <a name="redirect-uri"></a>Přesměrovat identifikátor URI
 Identifikátor URI přesměrování je identifikátor URI, kterému poskytovatel identity pošle tokeny zabezpečení zpátky.
 
 ### <a name="redirect-uri-for-public-client-apps"></a>Identifikátor URI pro přesměrování pro veřejné klientské aplikace
 Pokud jste vývojář aplikace veřejného klienta, který používá MSAL:
 - Chcete použít `.WithDefaultRedirectUri()` v aplikacích klasické pracovní plochy nebo UWP (MSAL.NET 4.1 +). Tato metoda nastaví vlastnost přesměrování URI veřejné klientské aplikace na výchozí doporučený identifikátor URI pro přesměrování pro veřejné klientské aplikace. 
 
-  Platforma  | Identifikátor URI pro přesměrování  
+  Platforma  | Přesměrovat identifikátor URI  
   ---------  | --------------
   Aplikace klasické pracovní plochy (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
   UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`hodnota. To umožňuje jednotné přihlašování s prohlížečem nastavením hodnoty na výsledek WebAuthenticationBroker. GetCurrentApplicationCallbackUri (), který se musí zaregistrovat.
@@ -129,7 +129,7 @@ U webových aplikací je identifikátor URI přesměrování (nebo identifikáto
 
 Pro aplikace démona není nutné zadávat identifikátor URI přesměrování.
 
-## <a name="client-secret"></a>Tajný klíč klienta
+## <a name="client-secret"></a>Tajný kód klienta
 Tato možnost určuje tajný klíč klienta pro důvěrnou klientskou aplikaci. Tento tajný klíč (heslo aplikace) poskytuje portál pro registraci aplikací nebo poskytovaný službě Azure AD během registrace aplikace pomocí PowerShellu AzureAD, PowerShell AzureRM nebo Azure CLI.
 
 ## <a name="logging"></a>Protokolování

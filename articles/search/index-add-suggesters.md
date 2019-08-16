@@ -1,6 +1,6 @@
 ---
-title: Přidání typeahead dotazů na index – Azure Search
-description: Povolení akcí našeptávání dotazů ve službě Azure Search vytvořením moduly pro návrhy a formulování požadavků, které vyvolat automatické dokončování nebo autosuggested termíny dotazu.
+title: Přidání dotazů typeahead do indexu – Azure Search
+description: Umožňuje v Azure Search povolit akce dotazování typu dopředu vytvořením modulu pro návrhy a formulací požadavků, které vyvolávají automatické dokončování nebo návrhy dotazů.
 ms.date: 05/02/2019
 services: search
 ms.service: search
@@ -19,38 +19,38 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: eb6667a1429382ed566826de64ad7ffbe83183cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22b53000fa2eebdd8f9cf7fd9f1a2d00763c035b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521886"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533205"
 ---
-# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Přidat moduly pro návrhy na index pro typeahead ve službě Azure Search
+# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Přidání návrhů do indexu pro typeahead v Azure Search
 
-A **modulu pro návrhy** je konstrukce v [index Azure Search](search-what-is-an-index.md) , který podporuje prostředí "search jako vám type". Obsahuje seznam polí, pro které chcete povolit typeahead dotazu vstupy. V rámci indexu, stejného modulu pro návrhy podporuje jednu nebo obě tyto dvě varianty typeahead: *automatické dokončování* dokončení termín nebo frázi při psaní se *návrhy* poskytuje krátký seznam výsledků. 
+Modul pro **návrhy** je konstrukcí v [Azure Search indexu](search-what-is-an-index.md) , který podporuje možnosti hledání typu "vyhledávání jako". Obsahuje seznam polí, pro které chcete povolit vstupy dotazů typeahead. Stejný modul pro návrhy podporuje v rámci indexu buď jednu z těchto dvou typeahead variant, nebo obojí: *Automatické dokončování* dokončuje výraz nebo frázi, kterou píšete, *návrhy* poskytují krátký seznam výsledků. 
 
-Následující snímek obrazovky ukazuje obě typeahead funkce. Na této stránce hledání Xbox automatické dokončování ve více položek můžete přejít na nové stránce výsledků hledání pro daný dotaz, že návrhy jsou skutečné výsledky, které se dostanete na stránku pro tuto konkrétní hru. Můžete omezit automatické dokončování pro jednu položku na panelu hledání nebo zadat seznam podobný znázorněno zde. Máte nějaké návrhy můžete zařízení surface libovolnou část dokumentu, která nejlépe popisuje výsledek.
+Následující snímek obrazovky ilustruje obě funkce typeahead. Na této stránce vyhledávání Xbox se položky automatického dokončování převezmou na novou stránku s výsledky hledání pro daný dotaz, zatímco návrhy jsou skutečné výsledky, které vás zajímají na stránku této konkrétní hry. Automatické dokončování můžete omezit na jednu položku na panelu hledání nebo uvést seznam, jako je zde zobrazený. Pro návrhy můžete vytvořit plochu dokumentu, který nejlépe popisuje výsledek.
 
-![Vizuální porovnání automatického dokončování a navrhované dotazy](./media/index-add-suggesters/visual-comparison-suggest-complete.png "vizuální porovnání automatického dokončování a navrhované dotazy")
+![Vizuální porovnání automatického dokončování a navrhovaných dotazů](./media/index-add-suggesters/visual-comparison-suggest-complete.png "Vizuální porovnání automatického dokončování a navrhovaných dotazů")
 
-K implementaci těchto chování ve službě Azure Search, je jako součást index a dotazu. 
+K implementaci tohoto chování v Azure Search existuje index a komponenta pro dotazy. 
 
-+ Součást index je modulu pro návrhy. Portálu, rozhraní REST API nebo .NET SDK můžete použít k vytvoření modulu pro návrhy. 
++ Součást indexu je modul pro návrhy. K vytvoření nástroje pro vytváření návrhů můžete použít portál, REST API nebo .NET SDK. 
 
-+ Komponentu dotazu je akce zadaný v požadavku dotazu (akce návrh nebo automatické dokončování). 
++ Součást dotazu je akce zadaná u žádosti o dotaz (návrh nebo akce automatického dokončování). 
 
-Na základě na pole je povolena podpora vyhledávání jako vám type. Pokud chcete prostředí podobné je uvedeno na snímku obrazovky můžete implementovat obě typeahead chování ve stejném řešení hledání. Cíl i požadavky *dokumenty* kolekce konkrétního indexu a odpovědi se vrátí po uživatel má k dispozici alespoň tři vstupní řetězec znaků.
+Podpora vyhledávání podle typu je povolena pro každé pole. Typeahead chování můžete implementovat v rámci stejného řešení hledání, pokud chcete podobné prostředí, jaké je uvedené na snímku obrazovky. Oba požadavky cílí na to, že kolekce *dokumentů* určitého indexu a odpovědí se vrátí poté, co uživatel zadá alespoň tři vstupní řetězce znaků.
 
 ## <a name="create-a-suggester"></a>Vytvoření navrhovatele
 
-I když se modulu pro návrhy má několik vlastností, je primárně kolekce pole, pro které chcete povolit typeahead prostředí. Cestovní aplikaci může být například vhodné typeahead hledání na cíle, města a atrakce. Všechny tři pole by jako takové, přejděte v kolekci polí.
+I když má modul pro návrhy několik vlastností, je primárně kolekcí polí, pro které povolujete typeahead prostředí. Například cestovní aplikace může chtít povolit typeahead vyhledávání na cílech, městech a attractions. V takovém případě by všechna tři pole přešla do kolekce Fields.
 
-Pokud chcete vytvořit modulu pro návrhy, přidejte ho do schématu indexu. V indexu může mít jeden modul pro návrhy (konkrétně jeden modul pro návrhy v kolekci moduly pro návrhy). 
+Pokud chcete vytvořit návrh, přidejte ho do schématu indexu. V indexu můžete mít jeden modul pro návrh (konkrétně jeden modul pro návrhy v kolekci modul pro návrhy). 
 
 ### <a name="use-the-rest-api"></a>Použití rozhraní REST API
 
-Rozhraní REST API, můžete přidat moduly pro návrhy prostřednictvím [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index). 
+V REST API můžete přidat moduly pro návrhy prostřednictvím [Create index](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [Update index](https://docs.microsoft.com/rest/api/searchservice/update-index). 
 
   ```json
   {
@@ -70,11 +70,11 @@ Rozhraní REST API, můžete přidat moduly pro návrhy prostřednictvím [Creat
     ]
   }
   ```
-Po vytvoření modulu pro návrhy, přidejte [návrhy API](https://docs.microsoft.com/rest/api/searchservice/suggestions) nebo [rozhraní API pro automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) v logice dotaz, vyvolat funkci.
+Po vytvoření modulu pro návrhy přidejte rozhraní [API návrhů](https://docs.microsoft.com/rest/api/searchservice/suggestions) nebo [rozhraní API pro automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) do logiky dotazu pro vyvolání funkce.
 
 ### <a name="use-the-net-sdk"></a>Použití sady .NET SDK
 
-V C#, definovat [objektu modulu pro návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters` je kolekce, ale jde převzít jenom jednu položku. 
+V C#Definujte objekt nástroje pro [návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters`je kolekce, ale může mít pouze jednu položku. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -97,41 +97,48 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ## <a name="property-reference"></a>Odkaz na vlastnost
 
-Klíčové body k upozornění ohledně moduly pro návrhy je, že je název (moduly pro návrhy jsou odkazovány podle názvu na vyžádání), searchMode (aktuálně pouze jeden "analyzingInfixMatching") a seznam polí, u kterých je povolená typeahead. 
+Klíčovými body, které se týkají modulu pro návrhy, je, že existuje název (pro návrhy se odkazuje podle názvu na žádosti), searchMode (aktuálně jen jedna, "analyzingInfixMatching") a seznam polí, pro která je povolená typeahead. 
 
-Vlastnosti, které definují modulu pro návrhy, patří:
+Mezi vlastnosti definující modul pro návrhy patří následující:
 
 |Vlastnost      |Popis      |
 |--------------|-----------------|
-|`name`        |Název modulu pro návrhy. Použijte název modulu pro návrhy při volání [rozhraní REST API pro návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions) nebo [rozhraní REST API pro automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete).|
-|`searchMode`  |Strategie použitá k vyhledání kandidátských frází. Jediný momentálně podporovaný režim je `analyzingInfixMatching`, který provádí flexibilní porovnávání frází na začátku nebo uprostřed vět.|
-|`sourceFields`|Seznam jednoho nebo více polí, které jsou zdrojem obsahu pro návrhy. Pouze pole typu `Edm.String` a `Collection(Edm.String)` může být zdroje pro návrhy. Lze použít pouze pole, které nemají vlastní analyzátor jazyka nastavit.<p/>Zadejte jenom pole samo očekávaným způsobem a odpovídající odpověď, ať už jde o řetězec dokončené v panel hledání nebo v rozevíracím seznamu.<p/>Název hotelu je vhodným kandidátem, protože má přesnosti. Podrobné pole, jako jsou popisů a komentářů jsou příliš dense. Obdobně opakované pole, jako je například kategorie a značky, jsou méně účinné. V příkladech jsme zahrnuli "kategorie" i přesto prokázat, že může obsahovat více polí. |
+|`name`        |Název modulu pro návrhy. Při volání [návrhů REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) nebo [automatického dokončování REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)použijete název modulu pro návrhy.|
+|`searchMode`  |Strategie použitá pro hledání kandidátských frází. Jediným aktuálně podporovaným režimem `analyzingInfixMatching`je, který provádí flexibilní spárování frází na začátku nebo uprostřed vět.|
+|`sourceFields`|Seznam jednoho nebo více polí, která jsou zdrojem obsahu pro návrhy. Pouze pole typu `Edm.String` a `Collection(Edm.String)` mohou být zdrojem návrhů. Použít lze pouze pole, která nemají sadu vlastní jazykové analyzátory.<p/>Zadejte jenom ta pole, která se sami zahodí k očekávané a příslušné reakci, ať už se jedná o dokončený řetězec na panelu hledání nebo v rozevíracím seznamu.<p/>Název hotelu je dobrý kandidát, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou moc zhuštěná. Podobně opakující se pole, jako jsou kategorie a značky, jsou méně efektivní. V příkladech obsahuje "Category", abyste ukázali, že můžete zahrnout více polí. |
 
-## <a name="when-to-create-a-suggester"></a>Kdy vytvořit modulu pro návrhy
+#### <a name="analysis-of-sourcefields-in-a-suggester"></a>Analýza SourceFields v modulu pro návrhy
 
-Aby se zabránilo opětovné sestavení indexu, modulu pro návrhy a pole určená v `sourceFields` musí být vytvořeny ve stejnou dobu.
+Azure Search analyzuje obsah pole a povoluje dotazování na jednotlivé výrazy. Moduly pro návrhy vyžadují, aby byly předpony indexovány Kromě úplných podmínek, které vyžadují další analýzu nad zdrojovými poli. Vlastní konfigurace analyzátoru můžou kombinovat kterýkoli z různých tokenizátory musíte nejdřív a filtrů, často způsobem, který by vytvořil předpony vyžadované pro návrhy, které neumožňují. Z tohoto důvodu **Azure Search zabránit zahrnutí polí s vlastními analyzátory do**modulu pro návrhy.
 
-Pokud chcete přidat do existujícího indexu, ve kterém jsou existující pole součástí modulu pro návrhy `sourceFields`zásadním způsobem mění definici pole a vyžaduje se opětovné sestavení. Další informace najdete v tématu [postup nového sestavení indexu Azure Search](search-howto-reindex.md).
+> [!NOTE] 
+>  Doporučený postup pro vyřešení výše uvedeného omezení je použití dvou samostatných polí pro stejný obsah. Tím umožníte, aby jedno z polí měl moduly pro návrhy a druhý bylo možné nastavit s vlastní konfigurací analyzátoru.
 
-## <a name="how-to-use-a-suggester"></a>Jak používat modulu pro návrhy
+## <a name="when-to-create-a-suggester"></a>Kdy vytvořit modul pro návrhy
 
-Jak již bylo uvedeno výše můžete modulu pro návrhy pro navrhované dotazy a automatické dokončování. 
+Chcete-li se vyhnout opakovanému sestavení indexu, je třeba vytvořit modul pro `sourceFields` návrhy a pole určená v nástroji.
 
-Modulu pro návrhy se odkazuje na žádost spolu s operaci. Například při volání GET REST, zadejte buď `suggest` nebo `autocomplete` v kolekci dokumentů. REST, po vytvoření modulu pro návrhy použijte [návrhy API](https://docs.microsoft.com/rest/api/searchservice/suggestions) nebo [rozhraní API pro automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) v logice dotazu.
+Pokud přidáte modul pro návrhy do existujícího indexu, kde jsou obsažena existující pole, definice `sourceFields`pole se v podstatě změní a vyžaduje se opětovné sestavení. Další informace najdete v tématu [Postup opětovného sestavení indexu Azure Search](search-howto-reindex.md).
 
-Pro platformu .NET, použijte [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet) nebo [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet).
+## <a name="how-to-use-a-suggester"></a>Jak používat modul pro návrhy
 
-Příklad demonstrace obou požadavků, najdete v části [příklad pro přidání automatické dokončování a návrhy ve službě Azure Search](search-autocomplete-tutorial.md).
+Jak bylo uvedeno dříve, můžete použít modul pro návrhy dotazů, automatického dokončování nebo obojího. 
+
+Na žádost je odkazováno v žádosti spolu s operací. Například v případě volání Get REST zadejte buď `suggest` nebo `autocomplete` v kolekci dokumentů. V případě, že je vytvořen modul pro REST, použijte rozhraní [API návrhů](https://docs.microsoft.com/rest/api/searchservice/suggestions) nebo [rozhraní API pro automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) ve vaší logice dotazu.
+
+V případě .NET použijte [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet) nebo [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet).
+
+Příklad demonstrující obě požadavky najdete v tématu [Příklad přidání automatického dokončování a návrhů v Azure Search](search-autocomplete-tutorial.md).
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-[DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) obsahuje ukázkové C# a kód v Javě a ukazuje vytváření modulu pro návrhy, navrhované dotazy, automatické dokončování a omezující vlastnost navigace. 
+Ukázka [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) obsahuje kód v C# jazyce Java a předvádí vytváření návrhů, navrhované dotazy, automatické dokončování a navigaci omezující vlastnosti. 
 
-Používá izolovaného prostoru služby Azure Search a předem načtené index tak všechny nemusíte je stisknutím klávesy F5 spusťte ho. Žádné předplatné nebo si zaregistrovat nezbytné.
+Používá službu Azure Search sandboxu a předem načtený index, takže ke spuštění stačí stisknout klávesu F5. Není nutné žádné předplatné ani přihlášení.
 
 ## <a name="next-steps"></a>Další postup
 
-Doporučujeme, abyste podle následujícího příkladu lze naleznete v tématu Jak formulovali požadavky.
+Pro zobrazení způsobu formulace požadavků doporučujeme následující příklad.
 
 > [!div class="nextstepaction"]
-> [Návrhy a automatické dokončování ve více příkladů](search-autocomplete-tutorial.md) 
+> [Příklady návrhů a automatického dokončování](search-autocomplete-tutorial.md) 

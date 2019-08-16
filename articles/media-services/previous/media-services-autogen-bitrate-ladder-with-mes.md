@@ -1,6 +1,6 @@
 ---
-title: Pomocí Azure Media Encoder Standard můžete automaticky vygenerovat přenosových | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak automaticky vygenerovat přenosových na základě vstupního rozlišení a s přenosovou rychlostí pomocí Media Encoderu Standard (MES). Se nikdy překročí vstupního rozlišení a s přenosovou rychlostí. Například pokud je vstup 720p na 3 MB/s, výstup se nejlépe zůstanou 720p a začne sazby nižší než 3 MB/s.
+title: Použití Media Encoder Standard k automatickému vytvoření žebříku přenosové rychlosti – Azure | Microsoft Docs
+description: V tomto tématu se dozvíte, jak použít Media Encoder Standard (status) k automatickému vygenerování přenosové žebříky na základě vstupních rozlišení a přenosové rychlosti. Vstupní rozlišení a přenosová rychlost nebudou nikdy překročeny. Pokud je například vstup ve formátu 720p na 3Mbps, výstup bude ve formátu 720p nejlepší a bude začínat vyššími sazbami než 3Mbps.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,43 +13,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: bbaf4d490fcebb4cd741a9b83ffc5d7e85699755
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 14575e0c95acf1345fc3358b323083d86d8eedee
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61224340"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543546"
 ---
-#  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Automaticky generovat přenosových pomocí Azure Media Encoder Standard  
+#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Použití Media Encoder Standard k automatickému vygenerování žebříku přenosové rychlosti  
 
 ## <a name="overview"></a>Přehled
 
-Tento článek ukazuje, jak automaticky vygenerovat přenosových (řešení s přenosovou rychlostí páry) na základě vstupního rozlišení a s přenosovou rychlostí pomocí Media Encoderu Standard (MES). Automaticky generované přednastavení se nikdy nepřekročí vstupního rozlišení a s přenosovou rychlostí. Například pokud je vstup 720p na 3 MB/s, výstup zůstane 720p nejlépe a začne sazby nižší než 3 MB/s.
+Tento článek ukazuje, jak použít Media Encoder Standard (status) k automatickému vygenerování přenosového žebříku (páry rozlišení přenosů) na základě vstupních rozlišení a přenosové rychlosti. Automaticky vygenerované předvolby nikdy nepřekročí vstupní rozlišení a přenosovou rychlost. Například pokud je vstup 720p na 3 MB/s, výstup zůstane 720p nejlépe a začne sazby nižší než 3 MB/s.
 
-### <a name="encoding-for-streaming-only"></a>Kódování pro vysílání datového proudu pouze
+### <a name="encoding-for-streaming-only"></a>Kódování jenom pro streamování
 
-Pokud máte v úmyslu zakódování zdrojového videa zdroje jenom pro streamování, měli byste použít "Adaptivní streamování" přednastavení při vytváření úlohu kódování. Při použití **adaptivní streamování** přednastavení MES kodér bude inteligentně cap přenosových. Ale nebudete mít ovládací prvek kódování náklady, protože služba určuje, kolik vrstvy použít a jaké rozlišením. Příklady výstup vrstvy vytvářených v důsledku kódování pomocí MES se můžete podívat **adaptivní streamování** přednastavení na konci tohoto článku. Výstupní Asset obsahuje soubory MP4, kde audio a video není prokládané.
+Pokud máte v úmyslu zakódovat zdrojové video jenom pro streamování, měli byste při vytváření úlohy kódování použít přednastavení adaptivního streamování. Když použijete přednastavení adaptivního streamování, kodér programu pro úpravu koncového **vysílání** inteligentně odsadí žebřík s přenosovou rychlostí. Nebudete však moci řídit náklady na kódování, protože služba Určuje, kolik vrstev se má použít a v jakém rozlišení. Příklady výstupních vrstev vyprodukovaných pomocí programu pro **úpravu** obsahu můžete zobrazit v důsledku kódování pomocí přednastavení adaptivního streamování na konci tohoto článku. Výstupní Asset obsahuje soubory MP4, kde není prokládaný zvuk a video.
 
 ### <a name="encoding-for-streaming-and-progressive-download"></a>Kódování pro streamování a progresivní stahování
 
-Pokud máte v úmyslu k zakódování zdrojového videa zdroje pro streamování a také vytvářejí soubory MP4 pro progresivní stahování, měli byste použít "obsahu adaptivní více přenosovými rychlostmi MP4" přednastavení při vytváření úlohu kódování. Při použití **obsahu s přenosovou rychlostí MP4 více Adaptive** přednastavení, kodér MES použije stejný kódování logiku, jak je uvedeno výše, ale nyní výstupní asset bude obsahovat soubory MP4 tam, kde zvuku a prokládané video. Můžete použít některý z těchto souborů MP4 (například nejvyšší verze s přenosovou rychlostí) jako soubor progresivní stahování.
+Pokud je vaším záměrem kódovat zdrojové video pro streamování a vytvářet soubory MP4 pro progresivní stahování, měli byste při vytváření úlohy kódování použít předvolbu "obsah adaptivního přenosu více přenosů MP4". Když použijete přednastavení **MP4 s adaptivní přenosovou rychlostí** , použije kodér status Encoder stejnou logiku kódování jako výše, ale výstupní Asset teď bude obsahovat soubory MP4, ve kterých je audio a video prokládaný. Jako soubor progresivního stahování můžete použít jeden z těchto souborů MP4 (například nejvyšší verzi přenosové rychlosti).
 
-## <a id="encoding_with_dotnet"></a>Kódování pomocí Media Services .NET SDK
+## <a id="encoding_with_dotnet"></a>Kódování pomocí sady Media Services .NET SDK
 
 Následující příklad kódu používá sadu Media Services .NET SDK k provádění následujících úloh:
 
 - Vytvořte úlohu kódování.
-- Získání odkazu na kodéru Media Encoder Standard.
-- Přidat úlohu kódování do projektu a nastavení, aby používal **adaptivní streamování** předvolby. 
-- Vytvoření výstupní asset, který obsahuje zakódovanému assetu.
-- Přidáte obslužnou rutinu události chcete zkontrolovat průběh úlohy.
-- Odeslání úlohy.
+- Získejte odkaz na kodér Media Encoder Standard.
+- Přidejte úlohu kódování do úlohy a určete, že se má použít přednastavení adaptivního streamování. 
+- Vytvořte výstupní Asset, který obsahuje kódovaný Asset.
+- Přidejte obslužnou rutinu události pro kontrolu průběhu úlohy.
+- Odešlete úlohu.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```
 using System;
@@ -167,14 +167,14 @@ namespace AdaptiveStreamingMESPresest
 }
 ```
 
-## <a id="output"></a>Výstup
+## <a id="output"></a>Výkonem
 
-Tato část ukazuje tři příklady výstup vrstvy vytvářených v důsledku kódování pomocí MES **adaptivní streamování** předvolby. 
+Tato část ukazuje tři příklady výstupních vrstev vyprodukovaných pomocí programu pro úpravu obsahu pomocí přednastavení **adaptivního streamování** . 
 
 ### <a name="example-1"></a>Příklad 1
 Zdroj s výšku "1080" a "29.970" snímkovou vytvoří 6 videa vrstvy:
 
-|Vrstva|Výška|Šířka|Bitrate(Kbps)|
+|Vrstva|Výška|Šířka|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -186,7 +186,7 @@ Zdroj s výšku "1080" a "29.970" snímkovou vytvoří 6 videa vrstvy:
 ### <a name="example-2"></a>Příklad 2
 Zdroj s výšku "720" a "23.970" snímkovou vytvoří 5 videa vrstvy:
 
-|Vrstva|Výška|Šířka|Bitrate(Kbps)|
+|Vrstva|Výška|Šířka|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -197,7 +197,7 @@ Zdroj s výšku "720" a "23.970" snímkovou vytvoří 5 videa vrstvy:
 ### <a name="example-3"></a>Příklad 3
 Zdroj s výšku "360" a "29.970" snímkovou vytvoří vrstvy 3 videa:
 
-|Vrstva|Výška|Šířka|Bitrate(Kbps)|
+|Vrstva|Výška|Šířka|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|
@@ -209,5 +209,5 @@ Zdroj s výšku "360" a "29.970" snímkovou vytvoří vrstvy 3 videa:
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Media Services kódování – přehled](media-services-encode-asset.md)
+[Přehled kódování Media Services](media-services-encode-asset.md)
 

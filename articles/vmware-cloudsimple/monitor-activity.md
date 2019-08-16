@@ -8,15 +8,15 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8c17bd203b7843de64734a74e7e41a22e42e3501
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ddb3741c987e839fafb8bc222231547988d72f01
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990998"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543753"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Monitorování aktivity řešení VMware podle CloudSimple
- 
+
 Protokoly aktivit CloudSimple poskytují přehled o operacích provedených na portálu CloudSimple.  Seznam obsahuje výstrahy, události, úlohy a audit.  Pomocí protokolů aktivit můžete určit, kdo a jaké operace byly provedeny.  Protokoly aktivit nezahrnují žádné operace čtení provedené uživatelem.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -38,19 +38,19 @@ Chcete-li zobrazit podrobnosti o jakékoli aktivitě na stránce aktivity, vyber
 Kliknutím na záhlaví sloupce seřadíte zobrazení.  Můžete filtrovat sloupce pro konkrétní hodnoty, které chcete zobrazit.  Kliknutím na ikonu **Stáhnout jako sdílený svazek clusteru** si Stáhněte sestavu aktivity.
 
 ## <a name="alerts"></a>Upozornění
- 
+
 Výstrahy jsou oznámením významné aktivity v prostředí CloudSimple.  Výstrahy obsahují události, které mají vliv na fakturaci nebo přístup uživatelů.
 
-Pokud chcete výstrahy potvrdit a odebrat je ze seznamu, vyberte jednu nebo víc ze seznamu a klikněte na **Potvrdit**. 
+Pokud chcete výstrahy potvrdit a odebrat je ze seznamu, vyberte jednu nebo víc ze seznamu a klikněte na **Potvrdit**.
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Popis | 
------------- | ------------- | 
+| Sloupec | Popis |
+------------ | ------------- |
 | Typ výstrahy | Kategorie výstrahy|
 | Time | Čas, kdy došlo k upozornění. |
 | severity | Význam výstrahy.|
-| Název prostředku | Název přiřazený k prostředku, jako je například název privátního cloudu. | 
+| Název prostředku | Název přiřazený k prostředku, jako je například název privátního cloudu. |
 | Typ prostředku | Kategorie prostředku: Privátní cloud, cloudový stojan. |
 | ID prostředku | Identifikátor prostředku |
 | Popis | Popis, který výstrahu aktivoval. |
@@ -58,27 +58,27 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 
 ## <a name="events"></a>Duration
 
-Události zobrazují aktivitu uživatelů a systémů na portálu CloudSimple. Na stránce události je uvedena aktivita přidružená ke konkrétnímu prostředku a závažnost dopadu. 
+Události zobrazují aktivitu uživatelů a systémů na portálu CloudSimple. Na stránce události je uvedena aktivita přidružená ke konkrétnímu prostředku a závažnost dopadu.
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Popis | 
------------- | ------------- | 
+| Sloupec | Popis |
+------------ | ------------- |
 | Time | Datum a čas, kdy došlo k události. |
 | Typ události | Číselný kód identifikující událost. |
 | severity | Závažnost události.|
-| Název prostředku | Název přiřazený k prostředku, jako je například název privátního cloudu. | 
+| Název prostředku | Název přiřazený k prostředku, jako je například název privátního cloudu. |
 | Typ prostředku | Kategorie prostředku: Privátní cloud, cloudový stojan. |
 | Popis | Popis, který výstrahu aktivoval. |
 
 ## <a name="tasks"></a>Úlohy
 
-Úlohy jsou aktivity privátního cloudu, u kterých se očekává, že budou trvat 30 sekund nebo déle. (Aktivity, které se očekávají za méně než 30 sekund, se oznamují jenom jako události.) Otevřete stránky úlohy a sledujte průběh úloh pro váš privátní cloud. 
+Úlohy jsou aktivity privátního cloudu, u kterých se očekává, že budou trvat 30 sekund nebo déle. (Aktivity, které se očekávají za méně než 30 sekund, se oznamují jenom jako události.) Otevřete stránky úlohy a sledujte průběh úloh pro váš privátní cloud.
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Popis | 
------------- | ------------- | 
+| Sloupec | Popis |
+------------ | ------------- |
 | ID úlohy | Jedinečný identifikátor úkolu |
 | Operace | Akce, kterou úkol provede. |
 | Uživatel | Uživatel přiřazený k dokončení úlohy. |
@@ -93,12 +93,12 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 
 ## <a name="audit"></a>Auditování
 
-Protokoly auditu udržují přehled o aktivitě uživatelů. Protokoly auditování můžete použít k monitorování aktivity uživatelů pro všechny uživatele. 
+Protokoly auditu udržují přehled o aktivitě uživatelů. Protokoly auditování můžete použít k monitorování aktivity uživatelů pro všechny uživatele.
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Popis | 
------------- | ------------- | 
+| Sloupec | Popis |
+------------ | ------------- |
 | Time | Čas položky auditu |
 | Operace | Akce, kterou úkol provede. |
 | Uživatel | Uživatel přiřazený k úkolu |

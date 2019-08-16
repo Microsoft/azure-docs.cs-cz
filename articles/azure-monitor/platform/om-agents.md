@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 2ea17a4363218351eb6e5ba0678435f3707e4ab9
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663734"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543045"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojit Operations Manager k Azure Monitor
 
@@ -65,12 +65,12 @@ Než začnete, přečtěte si následující požadavky.
 >[!NOTE]
 >Nedávné změny rozhraní API Azure znemožní zákazníkům úspěšně konfigurovat integraci mezi skupinou pro správu a Azure Monitor pro první spuštění. Pro zákazníky, kteří již mají integrovanou skupinu pro správu se službou, nebudete mít vliv na to, pokud nebudete muset překonfigurovat existující připojení.  
 >Pro následující verze Operations Manager byl vydán nový Management Pack:
->  
->* Pokud System Center Operations Manager 1801, Stáhněte si Management Pack [odsud](https://www.microsoft.com/download/details.aspx?id=57173) .  
->* Pro System Center 2016-Operations Manager Stáhněte Management Pack [odsud](https://www.microsoft.com/download/details.aspx?id=57172) .  
->* Pro System Center Operations Manager 2012 R2 Stáhněte Management Pack [odsud](https://www.microsoft.com/download/details.aspx?id=57171) .  
->
->Tato aktualizace Management Pack neplatí pro System Center Operations Manager 1807, což je vydání aktualizace z verze 1801 a ne úplné sestavení produktu.   
+> - Pro System Center Operations Manager 2019 je Management Pack k dispozici s Operations Manager Build.
+>- Management Pack Operations Manager 1801 je také možné použít i pro Operations Manager 1807.
+>- Management Pack System Center Operations Manager 1801 si můžete stáhnout [tady](https://www.microsoft.com/download/details.aspx?id=57173).
+>- Pro System Center 2016-Operations Manager Stáhněte Management Pack [odsud](https://www.microsoft.com/download/details.aspx?id=57172).  
+>- Pro System Center Operations Manager 2012 R2 Stáhněte Management Pack [odsud](https://www.microsoft.com/download/details.aspx?id=57171).  
+
 
 ### <a name="network"></a>Síť
 

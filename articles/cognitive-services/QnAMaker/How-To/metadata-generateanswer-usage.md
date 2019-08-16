@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: dbfa7aaccd513ffcf8ba3907911d8c49275b2ea6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 18b901b429ee675726ef0e36535f1f97f4cdd076
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967643"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542992"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získat odpověď s GenerateAnswer API a metadaty
 
@@ -229,7 +229,19 @@ Můžete prohledat publikované znalostní báze KB, pomocí `isTest=false`nebo 
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="common-http-errors"></a>Běžné chyby protokolu HTTP
+
+|Kód|Vysvětlení|
+|:--|--|
+|2xx|Úspěch|
+|400|Parametry žádosti jsou nesprávné, což znamená, že požadované parametry jsou chybí, je poškozený nebo je příliš velký|
+|400|tělo žádosti je nesprávná, což znamená, že je ve formátu JSON chybí, je poškozený nebo je příliš velký|
+|401|Neplatný klíč|
+|403|Je zakázané - nemáte správná oprávnění|
+|404|KB neexistuje|
+|410|Toto rozhraní API je zastaralé a už není dostupné.|
+
+## <a name="next-steps"></a>Další postup
 
 Stránka **publikování** také poskytuje informace pro vygenerování odpovědi s použitím [metody post](../Quickstarts/get-answer-from-kb-using-postman.md) a [kudrlinkou](../Quickstarts/get-answer-from-kb-using-curl.md). 
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 025e45b86fa3a6020652ae9756ceace5b51daa55
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d2d52d2faf9122b7dc87f71ac7b1be53eaa99878
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516203"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534985"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Konfigurace pravidla omezení IP adres pomocí brány firewall webových aplikací pro službu Azure front-dveří
 V tomto článku se dozvíte, jak nakonfigurovat pravidla omezení IP adres v bráně firewall webových aplikací (WAF) pro službu Azure front-dveří pomocí Azure CLI, Azure PowerShell nebo šablony Azure Resource Manager.
@@ -56,7 +56,7 @@ V následujících příkladech:
 -  Nahraďte *IPAllowPolicyExampleCLI* jedinečnými zásadami, které jste vytvořili dříve.
 -  Nahraďte *IP adresou-rozsah-1*, *IP adresou-Range-2* a vlastním rozsahem.
 
-Nejdřív vytvořte pravidlo povolení IP pro zásadu vytvořenou z předchozího kroku. Poznámka **–** vyžaduje se odložení, protože pravidlo musí obsahovat podmínku shody, která se má přidat v dalším kroku.
+Nejdřív vytvořte pravidlo povolení IP pro zásadu vytvořenou z předchozího kroku. Poznámka **–** vyžaduje se odložení, protože pravidlo musí zahrnovat aspoň jednu podmínku shody. 
 
 ```azurecli
 az network front-door waf-policy rule create \

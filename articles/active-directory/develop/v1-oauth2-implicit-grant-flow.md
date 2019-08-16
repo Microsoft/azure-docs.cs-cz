@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e30bd940d3312a16f2dd30b175deb6622cb8c01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: eb751d4cad036135865af9f97e159da104749388
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834742"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532402"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Princip toku implicitního udělení OAuth2 v Azure Active Directory (AD)
 
@@ -35,7 +35,7 @@ Implicitní grant OAuth2 je USTR pro udělení nejdelšího seznamu otázek zabe
 
 [Udělení autorizačního kódu OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.1) Quintessential je udělení autorizace, která používá dva samostatné koncové body. Koncový bod autorizace se používá pro fázi interakce uživatele, která má za následek autorizační kód. Koncový bod tokenu potom používá klient pro výměnu kódu přístupového tokenu a často také obnovovací token. Webové aplikace jsou nutné k tomu, aby v koncovém bodu tokenu předcházely vlastní přihlašovací údaje aplikace, aby mohl autorizační Server ověřit klienta.
 
-[Implicitní grant OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.2) je variantou dalších autorizačních grantů. Umožňuje klientovi získat přístupový token (a id_token při použití [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html)) přímo z koncového bodu autorizace bez kontaktování koncového bodu tokenu ani ověřování klienta. Tato varianta byla navržena pro aplikace založené na jazyce JavaScript běžící ve webovém prohlížeči: v původní specifikaci OAuth2 jsou tokeny vráceny v fragmentu identifikátoru URI. Díky tomu jsou bity tokenů dostupné pro kód jazyka JavaScript v klientovi, ale garantuje, že nebudou zahrnuty do přesměrování směrem k serveru. Vrácení tokenů prostřednictvím přesměrování prohlížeče přímo z koncového bodu autorizace. Má také výhodu eliminace všech požadavků pro volání mezi zdroji, což je nezbytné v případě, že je aplikace jazyka JavaScript požadována pro kontaktování koncového bodu tokenu.
+[Implicitní grant OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.2) je variantou dalších autorizačních grantů. Umožňuje klientovi získat přístupový token (a id_token při použití [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html)) přímo z koncového bodu autorizace bez kontaktování koncového bodu tokenu ani ověřování klienta. Tato varianta byla navržena pro aplikace založené na jazyce JavaScript běžící ve webovém prohlížeči: v původní specifikaci OAuth2 jsou tokeny vráceny v fragmentu identifikátoru URI. Díky tomu jsou bity tokenů dostupné pro kód jazyka JavaScript v klientovi, ale garantuje, že nebudou zahrnuty do přesměrování směrem k serveru. V OAuth2 implicitní udělení autorizace koncový bod autorizace vystavuje přístup k tokenům přímo klientovi pomocí identifikátoru URI přesměrování, který byl dříve dodán. Má také výhodu eliminace všech požadavků pro volání mezi zdroji, což je nezbytné v případě, že je aplikace jazyka JavaScript požadována pro kontaktování koncového bodu tokenu.
 
 Důležitou vlastností OAuth2 implicitního udělení je skutečnost, že tyto toky nikdy nevrací aktualizační tokeny klientovi. V další části se dozvíte, jak to není nutné a že by ve skutečnosti došlo k potížím se zabezpečením.
 

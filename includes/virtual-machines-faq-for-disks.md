@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a334b19fe4dd819a6e4c391e49d934bf5955a567
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516060"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541447"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy k diskům virtuálních počítačů Azure IaaS a spravovaným a nespravovaným prémiovým diskům
 
@@ -172,7 +172,7 @@ Je možné, že váš virtuální počítač musí být v oblasti a páru zón d
 Ne, Ultra disky se podporují jenom jako datové disky a podporují se jenom jako 4K nativní disky.
 
 **Můžu převést existující disk na disk Ultra?**
-Ne, můžete ale migrovat datum z existujícího disku na disk Ultra. Pokud chcete migrovat existující disk na disk Ultra, připojte oba disky ke stejnému virtuálnímu počítači a zkopírujte data disku z jednoho disku na druhý nebo využijte řešení třetích stran pro migraci dat.
+Ne, můžete ale migrovat data z existujícího disku na disk Ultra. Pokud chcete migrovat existující disk na disk Ultra, připojte oba disky ke stejnému virtuálnímu počítači a zkopírujte data disku z jednoho disku na druhý nebo využijte řešení třetích stran pro migraci dat.
 
 **Můžu vytvářet snímky pro disky Ultra?**
 Ne, snímky ještě nejsou k dispozici.

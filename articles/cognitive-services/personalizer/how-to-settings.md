@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f0ccf0e480fa57e0ffdfc94ca35cfaceded37a0b
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: cd67f435ff390267e01acd99594b9063db4c4ee1
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663899"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69559090"
 ---
 # <a name="personalizer-settings"></a>Nastavení přizpůsobení
 
@@ -86,6 +86,7 @@ Z oddílu správy prostředků pro **model a zásady**zkontrolujte vytváření 
 ## <a name="import-and-export-learning-policy"></a>Zásady učení pro import a export
 
 V části Správa prostředků pro **model a zásady**importujte nové zásady učení nebo exportujte aktuální zásady učení.
+Můžete získat soubory zásad učení z předchozích exportů nebo stáhnout optimalizované zásady zjištěné při offline hodnocení. Ruční změny těchto souborů budou mít vliv na výkon strojového učení a přesnost offline vyhodnocení a společnost Microsoft nebude moci získat informace o přesnosti strojového učení a hodnocení nebo o výjimkách služby vyplývajících z ručně upravených zásad.
 
 ## <a name="next-steps"></a>Další postup
 

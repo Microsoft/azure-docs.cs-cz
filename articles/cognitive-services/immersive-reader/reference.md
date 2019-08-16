@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 1d9fc20055fe3adb571b5a77330cc6537998cb5f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688320"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534483"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Referenční dokumentace sady pro moderní čtečku
 
@@ -40,7 +40,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | `token` | řetězec | Ověřovací token Azure AD. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
 | `subdomain` | řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
 | `content` | [Obsah](#content) | Objekt obsahující obsah, který se má zobrazit v moderní čtečce. |
-| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelné. |
+| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelný parametr. |
 
 #### <a name="returns"></a>Vrací
 
@@ -73,6 +73,7 @@ Obsahuje obsah, který se zobrazí v moderní čtečce.
 | --------- | ----------- |
 | Text/prostý | Prostý text. |
 | Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Dokument formátu Microsoft Word. docx.
 
 ### <a name="options"></a>Možnosti
 
@@ -104,7 +105,8 @@ Obsahuje informace o chybě.
 | ---- | ----------- |
 | BadArgument | Zadaný argument je neplatný. Podrobnosti `message` naleznete v tématu. |
 | časový limit | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
-| TokenExpired| Platnost zadaného tokenu vypršela. |
+| TokenExpired | Platnost zadaného tokenu vypršela. |
+| Omezené | Překročilo se omezení četnosti volání. |
 
 ## <a name="launching-the-immersive-reader"></a>Spuštění moderního čtecího zařízení
 
@@ -134,7 +136,7 @@ K dosažení nejlepšího prostředí pro moderní čtečku použijte nejnověj�
 * Mozilla Firefox
 * Apple Safari
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Prozkoumejte [sadu moderních čtenářů na GitHubu](https://github.com/microsoft/immersive-reader-sdk)
 * [Rychlé zprovoznění: Vytvoření webové aplikace, která spustí moderní čtečku (C#)](./quickstart.md)

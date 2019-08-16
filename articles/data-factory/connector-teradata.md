@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 6cbddfc5e529bc48e08407796024e5232d1a22e8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966362"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557866"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Kopírování dat z Teradata pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -142,8 +142,8 @@ Chcete-li kopírovat data z Teradata, jsou podporovány následující vlastnost
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavena na `TeradataTable`hodnotu. | Ano |
-| database | Název databáze Teradata. | Ne (když je zadán zdroj aktivity "query") |
-| table | Název tabulky v databázi Teradata. | Ne (když je zadán zdroj aktivity "query") |
+| database | Název databáze Teradata. | Ne (když je zadán zdroj aktivity "dotaz") |
+| table | Název tabulky v databázi Teradata. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad:**
 

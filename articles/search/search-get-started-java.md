@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018, seo-java-july2019
-ms.openlocfilehash: 7172cd01ca881ec3027854444107b0744b65feb3
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 7deb9d2cf16aa82de7ce4ea163652c2936819063
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489792"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533235"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-java"></a>Rychlý start: Vytvoření indexu Azure Search v jazyce Java
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ Následující seznam popisuje soubory, které se vztahují k tomuto příkladu.
 Všechna REST API volání do Azure Search vyžadují, abyste zadali adresu URL služby a `api-key`. 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na panelu odkazů klikněte na **Služba Search** a zobrazte výpis všech služeb Azure Search zřízených pro předplatné.
+2. Na panelu odkazů vyberte **vyhledávací služba** a uveďte všechny služby Azure Search zřízené pro vaše předplatné.
 3. Vyberte službu, kterou chcete použít.
 4. Na řídicím panelu služby uvidíte dlaždice se základními informacemi a ikonu klíče pro přístup ke klíčům správce.
    
@@ -69,20 +69,20 @@ Všechna REST API volání do Azure Search vyžadují, abyste zadali adresu URL 
 
 ## <a name="download-the-sample-files"></a>Stažení ukázkových souborů
 1. Přejděte na [search-java-indexer-demo](https://github.com/Azure-Samples/search-java-indexer-demo) on GitHub.
-2. Klikněte na **Stáhnout ZIP**, uložte soubor .zip na disk a potom z něj extrahujte všechny soubory. Zvažte extrahování souborů do pracovního prostoru Java, aby bylo později snazší projekt najít.
+2. Vyberte **Stáhnout ZIP**, uložte soubor. zip na disk a potom rozbalte všechny soubory, které obsahuje. Zvažte extrahování souborů do pracovního prostoru Java, aby bylo později snazší projekt najít.
 3. Ukázkové soubory jsou jen pro čtení. Klikněte pravým tlačítkem na vlastnosti složky a vymažte atribut jen pro čtení.
 
 Všechny následné úpravy souborů a spouštěné příkazy se budou provádět na souborech v této složce.  
 
 ## <a name="import-project"></a>Import projektu
-1. V prostředí Eclipse zvolte **Soubor** > **Import** > **Obecné** > **Existující projekty do pracovního prostoru**.
+1. V zatmění vyberte **soubor** > **importovat** > obecnéexistující > **projekty do pracovního prostoru**.
    
     ![Snímek obrazovky ukazující, jak importovat existující projekt][4]
 2. V okně **Vybrat kořenový adresář** přejděte do složky obsahující ukázkové soubory. Vyberte složku, která obsahuje složku .project. Projekt by se měl zobrazit v seznamu **Projekty** jako vybraná položka.
    
     ![Snímek obrazovky se seznamem projektů v okně Importovat projekty][12]
-3. Klikněte na tlačítko **Dokončit**.
-4. Pomocí **Prohlížeče projektu** můžete zobrazit a upravit soubory. Pokud ještě není otevřený, klikněte na **Okno** > **Zobrazit zobrazení** > **Prohlížeč projektu** nebo ho otevřete pomocí klávesové zkratky.
+3. Vyberte **Finish** (Dokončit).
+4. Pomocí **Prohlížeče projektu** můžete zobrazit a upravit soubory. Pokud ještě není otevřený, vyberte **okno** >  > zobrazit**Průzkumník projektu** nebo ho otevřete pomocí zástupce.
 
 ## <a name="configure-the-service-url-and-api-key"></a>Konfigurace adresy URL služby a`api-key`
 1. V **Průzkumníku projektu**poklikejte na **config. Properties** a upravte nastavení konfigurace obsahující název serveru a `api-key`.
@@ -96,19 +96,19 @@ Všechny následné úpravy souborů a spouštěné příkazy se budou provádě
 2. Vyberte **Dynamic Web Module**, **Java** a **JavaScript**.
    
     ![Snímek obrazovky ukazující, jak vybrat charakteristiky projektu pro váš projekt][6]
-3. Klikněte na tlačítko **Použít**.
+3. Vyberte **Použít**.
 4. Vyberte **Okno** > **Předvolby** > **Server** > **Běhová prostředí** > **Přidat**.
 5. Rozbalte položku Apache a vyberte verzi serveru Apache Tomcat, kterou jste dříve nainstalovali. V našem systému jsme nainstalovali verzi 8.
    
     ![Snímek obrazovky zobrazující, kde v okně běhového prostředí můžete vybrat svou verzi Apache Tomcat][7]
 6. Na další stránce zadejte instalační adresář Tomcat. V počítači s Windows to bude pravděpodobně C:\Program Files\Apache Software Foundation\Tomcat *verze*.
-7. Klikněte na tlačítko **Dokončit**.
+7. Vyberte **Finish** (Dokončit).
 8. Vyberte **Okno** > **Předvolby** > **Java** > **Nainstalovaná prostředí JRE** > **Přidat**.
 9. V okně **Přidat prostředí JRE**, vyberte **Standardní virtuální počítač**.
-10. Klikněte na **Další**.
-11. V definici prostředí JRE v kořenovém adresáři JRE klikněte na **Adresář**.
+10. Vyberte **Další**.
+11. V definici JRE na domovské stránce JRE vyberte **adresář**.
 12. Přejděte do adresáře **Program Files** > **Java** a vyberte sadu JDK, kterou jste dříve nainstalovali. Je důležité vybrat jako prostředí JRE sadu JDK.
-13. V okně Nainstalovaná prostředí JRE zvolte **JDK**. Vaše nastavení by mělo vypadat jako na následujícím snímku obrazovky.
+13. V části nainstalované prostředí JRE vyberte **JDK**. Vaše nastavení by mělo vypadat jako na následujícím snímku obrazovky.
     
     ![Snímek obrazovky ukazující, jak vybrat JDK jako nainstalovaný JRE][9]
 14. Volitelně vyberte **Okno** > **Webový prohlížeč** > **Internet Explorer**, aby se aplikaci spustila v okně externího prohlížeče. Použití externího prohlížeče poskytuje lepší uživatelské prostředí webové aplikace.
@@ -118,10 +118,10 @@ Všechny následné úpravy souborů a spouštěné příkazy se budou provádě
 Nyní jste dokončili úlohy konfigurace. V dalším kroku sestavíte a spustíte projekt.
 
 ## <a name="build-the-project"></a>Sestavení projektu
-1. V Prohlížeči projektu klikněte pravým tlačítkem na název projektu a zvolte **Spustit jako** > **Build Maven...** , abyste nakonfigurovali projekt.
+1. V Průzkumníku projektu klikněte pravým tlačítkem myši na název projektu a vyberte **Spustit jako** > **Maven sestavení** pro konfiguraci projektu.
    
-    ![Snímek obrazovky ukazující, jak zvolit Maven sestavení v okně Průzkumníka projektu][10]
-2. V okně Upravit konfiguraci v části Cíle zadejte „clean install“ a pak klikněte na **Spustit**.
+    ![Snímek obrazovky ukazující, jak vybrat Maven sestavení v okně Průzkumníka projektu][10]
+2. V části Upravit konfiguraci v části cíle zadejte "čistou instalaci" a pak vyberte **Spustit**.
 
 Stavové zprávy se zobrazují v okně konzoly. Měli byste vidět zprávu o úspěšném sestavení, která oznamuje sestavení projektu bez chyb.
 
@@ -131,19 +131,19 @@ V tomto posledním kroku spustíte aplikaci v běhovém prostředí místního s
 Pokud jste v prostředí Eclipse ještě neurčili běhové prostředí serveru, budete to muset učinit nyní.
 
 1. V Prohlížeči projektu rozbalte položku **WebContent**.
-2. Klikněte pravým tlačítkem na **Search.jsp** > **Spustit jako** > **Spustit na serveru**. Vyberte server Apache Tomcat a potom klikněte na **Spustit**.
+2. Klikněte pravým tlačítkem na **Search.jsp** > **Spustit jako** > **Spustit na serveru**. Vyberte server Apache Tomcat a pak vyberte **Spustit**.
 
 > [!TIP]
-> Pokud jste k uložení projektu použili jiný pracovní prostor než výchozí, budete muset upravit **Konfiguraci spuštění**, aby odkazovala na umístění projektu a nedošlo k chybě při spuštění serveru. V Prohlížeči projektu klikněte pravým tlačítkem na **Search.jsp** > **Spustit jako** > **Konfigurace spuštění**. Vyberte server Apache Tomcat. Klikněte na **Argumenty**. Klikněte na **Pracovní prostor** nebo **Systém souborů**, abyste nastavili složku obsahující projekt.
+> Pokud jste k uložení projektu použili jiný pracovní prostor než výchozí, budete muset upravit **Konfiguraci spuštění**, aby odkazovala na umístění projektu a nedošlo k chybě při spuštění serveru. V Prohlížeči projektu klikněte pravým tlačítkem na **Search.jsp** > **Spustit jako** > **Konfigurace spuštění**. Vyberte server Apache Tomcat. Vyberte **argumenty**. Vyberte **pracovní prostor** nebo **systém souborů** a nastavte složku obsahující projekt.
 > 
 > 
 
 Při spuštění aplikace by se mělo zobrazit okno prohlížeče, které poskytuje vyhledávací pole pro zadání termínů.
 
-Před kliknutím na tlačítko **Hledat** počkejte přibližně jednu minutu, aby měla služba čas na vytvoření a načtení indexu. Pokud se zobrazí chyba HTTP 404, bude třeba před dalším pokusem ještě chvíli počkat.
+Před výběrem možnosti **vyhledávání** počkejte asi jednu minutu, aby se dala vytvořit a načíst index. Pokud se zobrazí chyba HTTP 404, bude třeba před dalším pokusem ještě chvíli počkat.
 
 ## <a name="search-on-usgs-data"></a>Hledání v datech USGS
-Sada dat USGS obsahuje záznamy, které se vztahují ke státu Rhode Island. Pokud u prázdného vyhledávacího pole kliknete na tlačítko **Hledat**, obdržíte prvních 50 položek, což je výchozí nastavení.
+Sada dat USGS obsahuje záznamy, které se vztahují ke státu Rhode Island. Pokud vyberete **Hledat** v prázdném vyhledávacím poli, dostanete prvních 50 položek, což je výchozí hodnota.
 
 Když zadáte hledaný výraz, vyhledávací web bude mít s čím pracovat. Zkuste zadat místní název. Roger Williams byl prvním guvernérem státu Rhode Island. Je po něm pojmenovaná celá řada parků, budov a škol.
 
@@ -155,7 +155,7 @@ Může taky zkusit kterýkoli z těchto výrazů:
 * Pembroke
 * goose +cape
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Toto je první kurz služby Azure Search založený na Javě a sadě dat USGS. Postupně ho budeme rozšiřovat o ukázky dalších vyhledávacích funkcí, které by se vám ve vlastních řešeních mohly hodit.
 
 Pokud již máte základní vědomosti o službě Azure Search, můžete tuto ukázku použít jako odrazový můstek pro další experimentování, případně rozšíření [stránky vyhledávání](search-pagination-page-layout.md) nebo implementaci [fasetové navigace](search-faceted-navigation.md). Můžete taky zdokonalit stránku výsledků hledání přidáním počtů a dávkováním dokumentů, aby se výsledky daly procházet po stránkách.

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f14403422e2c783d75634bb929d8c2130bd505b6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a8a75601daf36ca21ea56a5930219d7d467f0c85
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663880"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557822"
 ---
 # <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>Jak analyzovat výukovou smyčku pomocí offline vyhodnocení
 
@@ -30,7 +30,7 @@ Další informace najdete v článku o [hodnoceních offline](concepts-offline-e
 ## <a name="prerequisites"></a>Požadavky
 
 1. Musíte mít nakonfigurovanou smyčku pro přizpůsobení.
-1. Ve svých protokolech musí mít smyčka přizpůsobené nejmíň 50 000 událostí pro smysluplné výsledky vyhodnocení.
+1. Smyčka přizpůsobování musí mít reprezentativní množství dat – jako jen my recommmend alespoň 50 000 událostí ve svých protokolech pro smysluplné výsledky vyhodnocení.
 
 Volitelně můžete také dříve exportovat soubory _zásad učení_ , které můžete porovnat a testovat ve stejném vyhodnocení.
 

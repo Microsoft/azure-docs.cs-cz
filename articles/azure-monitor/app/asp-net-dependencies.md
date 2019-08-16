@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: c2f115564c81f38dd437f1d3ff1e33d7d162a42f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 858508e949f8a880498e1a3d983dc76224010c31
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326444"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534619"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Sledování závislostí v Azure Application Insights 
 
@@ -86,11 +86,11 @@ Například pokud vytváření kódu pomocí sestavení, které jste sami nenaps
 
 Alternativně `StartOperation` [](custom-operations-tracking.md#outgoing-dependencies-tracking) poskytuje metody rozšíření, které lze použít k ručnímu sledování závislostí, jak je znázorněno zde. `StopOperation` `TelemetryClient`
 
-Pokud chcete přepnout na standardní modul sledování závislostí, odeberte odkaz na DependencyTrackingTelemetryModule v [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) pro aplikace ASP.NET. V případě aplikací ASP.NET Core postupujte podle [pokynů.](asp-net-core.md#configuring-or-removing-default-telemetrymodules)
+Pokud chcete přepnout na standardní modul sledování závislostí, odeberte odkaz na DependencyTrackingTelemetryModule v [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) pro aplikace ASP.NET. V případě aplikací ASP.NET Core postupujte podle [](asp-net-core.md#configuring-or-removing-default-telemetrymodules)pokynů.
 
 ## <a name="tracking-ajax-calls-from-web-pages"></a>Sledování volání AJAX z webových stránek
 
-Pro webové stránky Application Insights JavaScript SDK automaticky shromažďuje volání AJAX jako závislosti, jak je popsáno [zde](javascript.md#ajax-performance). Tento dokument se zaměřuje na závislosti na součástech serveru.
+Pro webové stránky Application Insights JavaScript SDK automaticky shromáždí volání AJAX jako závislosti.
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Rozšířené sledování SQL pro získání úplného dotazu SQL
 
@@ -113,7 +113,7 @@ Ve výše uvedených případech je správným způsobem, jak ověřit, že je m
 
 * [Mapa aplikace](app-map.md) vizualizuje závislosti mezi vaší aplikací a sousední komponenty.
 * [Diagnostika transakcí](transaction-diagnostics.md) zobrazuje jednotná a korelujovaná data serveru.
-* [Karta prohlížeče](javascript.md#ajax-performance) zobrazuje volání AJAX z prohlížečů uživatelů.
+* [Karta prohlížeče](javascript.md) zobrazuje volání AJAX z prohlížečů uživatelů.
 * Kliknutím na z pomalých nebo neúspěšných žádostí zkontrolujete svá volání závislostí.
 * [Analytics](#logs-analytics) slouží k dotazování na data závislostí.
 

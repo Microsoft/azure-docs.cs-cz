@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: robinsh
-ms.openlocfilehash: 544c29505d9bf34622963dfac8987b7eae4f8bc5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 44dea072b9871d0be6e18549896456af2a4989f6
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668194"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558815"
 ---
 # <a name="get-started-with-device-management-net"></a>Začínáme se správou zařízení (.NET)
 
@@ -22,7 +22,7 @@ ms.locfileid: "68668194"
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Pomocí Azure Portal můžete vytvořit IoT Hub a vytvořit identitu zařízení ve službě IoT Hub.
+* Použijte Azure Portal k vytvoření centra IoT a vytvoření identity zařízení ve službě IoT Hub.
 
 * Vytvořte aplikaci simulovaného zařízení, která obsahuje přímou metodu, která toto zařízení restartuje. Přímé metody jsou vyvolány z cloudu.
 
@@ -30,15 +30,15 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
-* **SimulateManagedDevice**, která se připojí ke službě IoT Hub s dříve vytvořenou identitou zařízení, obdrží přímou metodu restart, simuluje fyzické restartování a oznamuje čas posledního restartování.
+* **SimulateManagedDevice**. Tato aplikace se připojuje ke službě IoT Hub s dříve vytvořenou identitou zařízení, přijímá přímou metodu restartování, simuluje fyzické restartování a oznamuje čas posledního restartování.
 
-* **TriggerReboot**, která volá přímou metodu v aplikaci simulovaného zařízení, zobrazuje odpověď a zobrazuje aktualizované hlášené vlastnosti.
+* **TriggerReboot**. Tato aplikace volá přímou metodu v aplikaci simulovaného zařízení, zobrazí odpověď a zobrazí aktualizované hlášené vlastnosti.
 
-Pro absolvování tohoto kurzu potřebujete:
+Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 * Visual Studio.
 
-* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
+* Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -56,27 +56,33 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Aktivace vzdáleného restartování zařízení pomocí přímé metody
 
-V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která inicializuje vzdálené restartování zařízení pomocí přímé metody. Aplikace pomocí dvojitých dotazů na zařízení zjistí čas posledního restartování tohoto zařízení.
+V této části vytvoříte konzolovou aplikaci .NET pomocí nástroje C#, která inicializuje vzdálené restartování zařízení pomocí přímé metody. Aplikace pomocí dvojitých dotazů na zařízení zjistí čas posledního restartování tohoto zařízení.
 
-1. V sadě Visual Studio přidejte k novému řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace (.NET Framework)** . Zkontrolujte, zda máte verzi rozhraní .NET Framework 4.5.1 nebo novější. Pojmenujte projekt **TriggerReboot**.
+1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**.
 
-    ![Nový klasický desktopový projekt Visual C# pro systém Windows](./media/iot-hub-csharp-csharp-device-management-get-started/createserviceapp.png)
+1. V části **vytvořit nový projekt**vyhledejte a vyberte šablonu projektu **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
 
-2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **TriggerReboot** a pak klikněte na **Spravovat balíčky NuGet**.
+1. V části **Konfigurace nového projektu**zadejte název projektu *TriggerReboot*a vyberte .NET Framework verze 4.5.1 nebo novější. Vyberte **Vytvořit**.
 
-3. V okně **Správce balíčků NuGet** vyberte **Procházet**, vyhledejte **Microsoft. Azure. Devices**, vyberte **instalovat** a nainstalujte balíček **Microsoft. Azure. Devices** a přijměte podmínky použití. Tímto postupem se stáhne a nainstaluje balíček NuGet [sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) a jeho závislosti a přidá se na něj odkaz.
+    ![Nový klasický desktopový projekt Visual C# pro systém Windows](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
-    ![Okno Správce balíčků NuGet](./media/iot-hub-csharp-csharp-device-management-get-started/servicesdknuget.png)
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **TriggerReboot** a pak vyberte **Spravovat balíčky NuGet**.
 
-4. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
-   
+1. Vyberte **Procházet**, vyhledejte a vyberte **Microsoft. Azure. Devices**. Vyberte **nainstalovat** a nainstalujte balíček **Microsoft. Azure. Devices** .
+
+    ![Okno Správce balíčků NuGet](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-nuget-devices.png)
+
+   Tento krok stáhne a nainstaluje balíček NuGet [sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) a jeho závislosti a přidá odkaz na něj.
+
+1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+
    ```csharp
    using Microsoft.Azure.Devices;
    using Microsoft.Azure.Devices.Shared;
    ```
-        
-5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem IoT Hub, který jste dříve zkopírovali v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string).
-   
+
+1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem IoT Hub, který jste dříve zkopírovali v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string).
+
    ```csharp
    static RegistryManager registryManager;
    static string connString = "{iot hub connection string}";
@@ -84,8 +90,8 @@ V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která inicia
    static string targetDevice = "myDeviceId";
    ```
 
-6. Do třídy **Program** přidejte následující metodu.  Tento kód získá pro restartování zařízení dvojitou dobu a vypíše hlášené vlastnosti.
-   
+1. Do třídy **Program** přidejte následující metodu.  Tento kód získá pro restartování zařízení dvojitou dobu a vypíše hlášené vlastnosti.
+
    ```csharp
    public static async Task QueryTwinRebootReported()
    {
@@ -93,8 +99,8 @@ V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která inicia
        Console.WriteLine(twin.Properties.Reported.ToJson());
    }
    ```
-        
-7. Do třídy **Program** přidejte následující metodu.  Tento kód inicializuje restart na zařízení pomocí přímé metody.
+
+1. Do třídy **Program** přidejte následující metodu.  Tento kód inicializuje restart na zařízení pomocí přímé metody.
 
    ```csharp
    public static async Task StartReboot()
@@ -110,8 +116,8 @@ V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která inicia
    }
    ```
 
-7. Nakonec do metody **Main** přidejte následující řádky:
-   
+1. Nakonec do metody **Main** přidejte následující řádky:
+
    ```csharp
    registryManager = RegistryManager.CreateFromConnectionString(connString);
    StartReboot().Wait();
@@ -120,14 +126,14 @@ V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která inicia
    Console.ReadLine();
    ```
 
-8. Sestavte řešení.
+1. Vyberte řešení sestavení sestavení. > 
 
 > [!NOTE]
 > Tento kurz provede pouze jeden dotaz pro hlášené vlastnosti zařízení. V produkčním kódu doporučujeme dotazování na detekci změn v hlášených vlastnostech.
 
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
 
-V této části provedete následující operace:
+V této části provedete následující akce:
 
 * Vytvořte konzolovou aplikaci .NET, která reaguje na přímou metodu volanou cloudem.
 
@@ -135,31 +141,38 @@ V této části provedete následující operace:
 
 * Pomocí hlášených vlastností můžete povolit, aby se v zařízeních s dvojitými dotazy identifikovala zařízení a při jejich posledním restartování.
 
-1. V sadě Visual Studio přidejte k stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace**. Pojmenujte projekt **SimulateManagedDevice**.
-   
-    ![Nová aplikace C# Visual v klasickém zařízení s Windows](./media/iot-hub-csharp-csharp-device-management-get-started/createdeviceapp.png)
-    
-2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SimulateManagedDevice** a potom klikněte na **Spravovat balíčky NuGet...** .
+K vytvoření aplikace simulovaného zařízení použijte následující postup:
 
-3. V okně **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **Microsoft. Azure. Devices. Client**. Vyberte **instalovat** a nainstalujte balíček **Microsoft. Azure. Devices. Client** a přijměte podmínky použití. Tímto postupem se stáhne a nainstaluje balíček NuGet [sady SDK pro zařízení Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) a jeho závislosti a přidá se na něj odkaz.
-   
-    ![Klientská aplikace okna Správce balíčků NuGet](./media/iot-hub-csharp-csharp-device-management-get-started/clientsdknuget.png)
-    
-4. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
-   
+1. V aplikaci Visual Studio v řešení TriggerReboot, které jste již vytvořili, vyberte **soubor** > **Nový** > **projekt**. V části **vytvořit nový projekt**vyhledejte a vyberte šablonu projektu **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
+
+1. V části **Konfigurovat nový projekt**, pojmenujte projekt *SimulateManagedDevice*a pro **řešení**vyberte možnost **Přidat do řešení**. Vyberte **Vytvořit**.
+
+    ![Název a přidání projektu do řešení](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
+
+1. V Průzkumník řešení klikněte pravým tlačítkem na nový projekt **SimulateManagedDevice** a pak vyberte **Spravovat balíčky NuGet**.
+
+1. Vyberte **Procházet**, vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Install** (Nainstalovat).
+
+    ![Klientská aplikace okna Správce balíčků NuGet](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
+
+   Tento krok stáhne a nainstaluje balíček NuGet [sady SDK pro zařízení Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) a jeho závislosti a přidá se na něj odkaz.
+
+1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+
     ```csharp
     using Microsoft.Azure.Devices.Client;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem zařízení, který jste si poznamenali v předchozí části.
+1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem zařízení, který jste si poznamenali v předchozí části.
 
     ```csharp
     static string DeviceConnectionString = 
       "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
     static DeviceClient Client = null;
     ```
-6. Přidejte následující pro implementaci přímé metody na zařízení:
+
+1. Přidejte následující pro implementaci přímé metody na zařízení:
 
    ```csharp
    static Task<MethodResponse> onReboot(MethodRequest methodRequest, object userContext)
@@ -193,7 +206,7 @@ V této části provedete následující operace:
    }
    ```
 
-7. Nakonec do metody **Main** přidejte následující kód, který otevře připojení ke službě IoT Hub a inicializuje naslouchací proces metody:
+1. Nakonec do metody **Main** přidejte následující kód, který otevře připojení ke službě IoT Hub a inicializuje naslouchací proces metody:
 
    ```csharp
    try
@@ -219,20 +232,26 @@ V této části provedete následující operace:
        Console.WriteLine("Error in sample: {0}", ex.Message);
    }
    ```
-        
-8. V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem na své řešení a pak klikněte na **Nastavit projekty po spuštění...** . Vyberte **jeden spouštěný projekt**a pak v rozevírací nabídce vyberte projekt **SimulateManagedDevice** . Sestavte řešení.       
+
+1. V Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak vyberte **nastavit projekty po spuštění**. 
+
+1. Pro **běžné vlastnosti** > **spouštěný projekt**vyberte **jeden spouštěný projekt**a pak vyberte projekt **SimulateManagedDevice** . Vyberte **OK** uložte provedené změny.
+
+1. Vyberte řešení sestavení sestavení. > 
 
 > [!NOTE]
-> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo v článku, [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
+> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo při [zpracování přechodné chyby](/azure/architecture/best-practices/transient-faults).
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 
 Nyní jste připraveni aplikaci spustit.
 
-1. Pro spuštění aplikace zařízení .NET **SimulateManagedDevice**. Klikněte pravým tlačítkem na projekt **SimulateManagedDevice** , vyberte **ladit**a pak vyberte **spustit novou instanci**. Mělo by začít naslouchat voláním metod ze služby IoT Hub. 
+1. Pokud chcete spustit aplikaci zařízení .NET **SimulateManagedDevice**, klikněte v Průzkumník řešení pravým tlačítkem myši na projekt **SimulateManagedDevice** , vyberte **ladit**a pak vyberte **spustit novou instanci**. Aplikace by měla začít naslouchat voláním metod ze služby IoT Hub.
 
-2. Když je teď zařízení připojené a čeká se na vyvolání metod, spusťte aplikaci .NET **TriggerReboot** , která vyvolá metodu restart v aplikaci simulovaného zařízení. Provedete to tak, že kliknete pravým tlačítkem na projekt **TriggerReboot** , vyberete **ladit**a pak vyberete **spustit novou instanci**. Měla by se zobrazit zpráva "restartování!". napsané v konzole **SimulatedManagedDevice** a v hlášených vlastnostech zařízení, což zahrnuje čas posledního restartování, který je zapsaný v konzole **TriggerReboot** .
-   
+1. Po tom, co je zařízení připojené a čeká se na vyvolání metod, klikněte pravým tlačítkem na projekt **TriggerReboot** , vyberte **ladit**a pak vyberte **spustit novou instanci**.
+
+   Měla by se zobrazit zpráva "restartování!". napsané v konzole **SimulatedManagedDevice** a v hlášených vlastnostech zařízení, což zahrnuje čas posledního restartování, který je zapsaný v konzole **TriggerReboot** .
+
     ![Spuštění aplikace služby a zařízení](./media/iot-hub-csharp-csharp-device-management-get-started/combinedrun.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

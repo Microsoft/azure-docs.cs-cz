@@ -1,6 +1,6 @@
 ---
-title: Podpora více vystavitelů tokenů ve webové aplikaci založené na OWIN – Azure Active Directory B2C
-description: Naučte se, jak povolit webové aplikaci .NET podporu tokenů vydaných více doménami.
+title: Migrace webových rozhraní API založených na OWIN do b2clogin.com-Azure Active Directory B2C
+description: Naučte se, jak povolit rozhraní Web API .NET pro podporu tokenů vydaných více vystaviteli tokenů při migraci aplikací do b2clogin.com.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,21 +10,23 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 31ab19b8b3adbef1f0ea573af13b98750d278db8
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716726"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533758"
 ---
-# <a name="support-multiple-token-issuers-in-an-owin-based-web-application"></a>Podpora více vystavitelů tokenů ve webové aplikaci založené na OWIN
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrace webového rozhraní API založeného na OWIN na b2clogin.com
 
-Tento článek popisuje postup povolení podpory více vystavitelů tokenů ve službě Web Apps a rozhraní API, které implementují rozhraní [Open Web Interface pro .NET (Owin)](http://owin.org/). Podpora více koncových bodů tokenu je užitečná v případě, že migrujete aplikace Azure Active Directory (Azure AD) B2C z *Login.microsoftonline.com* na *b2clogin.com*.
+Tento článek popisuje techniku pro povolení podpory více vystavitelů tokenů ve webových rozhraních API, které implementují rozhraní [Open Web Interface for .NET (Owin)](http://owin.org/). Podpora více koncových bodů tokenu je užitečná v případě, že migrujete rozhraní API Azure Active Directory B2C (Azure AD B2C) a jejich aplikace z *Login.microsoftonline.com* do *b2clogin.com*.
 
-Následující části obsahují příklad, jak povolit více vystavitelů ve webové aplikaci a odpovídající webové rozhraní API, které používá součásti middlewaru [Microsoft Owin][katana] (Katana). I když jsou příklady kódu specifické pro middleware Microsoft OWIN, měla by být obecná technika platná pro jiné knihovny OWIN.
+Přidáním podpory do svého rozhraní API pro přijetí tokenů vydaných b2clogin.com i login.microsoftonline.com můžete migrovat webové aplikace tak, aby se odstranily podpory pro tokeny vydané login.microsoftonline.com z rozhraní API.
+
+V následujících částech najdete příklad povolení více vystavitelů ve webovém rozhraní API, které používá součásti middlewaru [Microsoft Owin][katana] (Katana). I když jsou příklady kódu specifické pro middleware Microsoft OWIN, měla by být obecná technika platná pro jiné knihovny OWIN.
 
 > [!NOTE]
-> Tento článek je určený pro Azure AD B2C zákazníky s aktuálně nasazenými aplikacemi, `login.microsoftonline.com` které odkazují na doporučený `b2clogin.com` koncový bod a chtějí je migrovat. Pokud nastavujete novou aplikaci, použijte [b2clogin.com](b2clogin.md) jako směrovaný.
+> Tento článek je určený pro Azure AD B2C zákazníky s aktuálně nasazenými rozhraními API a `login.microsoftonline.com` aplikacemi, na které odkazují a kteří chtějí `b2clogin.com` migrovat na doporučený koncový bod. Pokud nastavujete novou aplikaci, použijte [b2clogin.com](b2clogin.md) jako směrovaný.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,7 +36,7 @@ Než budete pokračovat v krocích v tomto článku, budete potřebovat následu
 
 ## <a name="get-token-issuer-endpoints"></a>Získat koncové body vystavitele tokenů
 
-Nejdřív musíte získat identifikátory URI koncového bodu vystavitele tokenu pro každého vystavitele, který chcete v aplikaci podporovat. Pokud chcete získat koncové body *b2clogin.com* a *Login.microsoftonline.com* podporované vaším klientem Azure AD B2C, použijte následující postup v Azure Portal.
+Nejdřív musíte získat identifikátory URI koncového bodu vystavitele tokenu pro každého vystavitele, který chcete v rozhraní API podporovat. Pokud chcete získat koncové body *b2clogin.com* a *Login.microsoftonline.com* podporované vaším klientem Azure AD B2C, použijte následující postup v Azure Portal.
 
 Začněte tím, že vyberete jeden z vašich stávajících uživatelských toků:
 

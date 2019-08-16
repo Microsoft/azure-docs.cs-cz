@@ -1,40 +1,40 @@
 ---
-title: Azure Marketplace zásady a podmínky | Azure
-description: Zásady webu Microsoft Azure Marketplace a podmínky platí pro všechny vydavatele a nabídky na webu Microsoft Azure Marketplace.
-services: Azure, Marketplace, AppSource
+title: Zásady a Termy komerčního tržiště | Azure
+description: Zásady a podmínky komerčního tržiště Microsoftu platí pro všechny vydavatele a nabídky v Microsoft Azure Marketplace.
+services: Azure, Marketplace, AppSource, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 08/09/2019
 ms.author: v-qiwe
-ms.openlocfilehash: c5041e9f7b19508480ff27311ba61d180f4a5a01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: edee3224e32fd853ca2de836f5c4dc0e5e87a100
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937634"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543593"
 ---
-# <a name="azure-marketplace-policies-and-terms"></a>Podmínky a zásady Azure Marketplace
+# <a name="commercial-marketplace-policies-and-terms"></a>Zásady a pojem komerčního tržiště
 
 >[!Note]
->"Marketplace" nebo "Azure Marketplace" znamená, že ve vlastnictví společnosti Microsoft nebo provozovaných platformy, ale s názvem, přes který může zobrazovat nabídky nebo získala zákazníkům. Pokud není uvedeno jinak, zahrnuje Marketplace na webu Azure Portal Marketplace, na webu Azure Marketplace a AppSource.
+>"Komerční tržiště Microsoftu" znamená podnikem vlastněnou nebo řízenou platformu, ale přes kterou můžou zákazníci tyto nabídky prezentovat nebo získat. Pokud není uvedeno jinak, komerční tržiště zahrnuje Microsoft Azure Marketplace a Microsoft AppSource.
 
-Děkujeme vám za váš zájem o publikování nabídky na webu Azure Marketplace. Budeme partnerství s vám umožní vytvářet bohaté zdroje Cloudová řešení a psát obchodní nabídky, které potěšit zákazníky po celém světě a vám pomůžou vytvářet vaše podnikání.
+Děkujeme za váš zájem o publikování nabídek na komerčním webu Marketplace. Zavázali jsme se, že s vámi budete vytvářet bohatou sadu cloudových řešení a řadu obchodních nabídek, které vysvětlují zákazníky po celém světě a pomohli vám sestavovat své podnikání.
 
-Nabídky na webu Marketplace musí dodržovat naše zásady a podmínky. Aktualizujeme tyto zásady a podmínek, které čas od času pomáhá zajistit dobrý uživatelské prostředí a poskytuje partnerům příležitost k úspěšnému. Pokud máte nějakou zpětnou vazbu na našich zásad nebo podmínek, dejte nám vědět, tak v [fórum Azure Marketplace a AppSource](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
+Nabídky na webu Marketplace musí splňovat naše zásady a podmínky. Tyto zásady a časové období aktualizujeme, abychom vám pomohli zajistit dobré prostředí pro zákazníky a poskytnout partnerům možnost úspěchu. Pokud máte svůj názor na naše zásady nebo výrazy, dejte nám prosím vědět na webu [Azure Marketplace a fórum pro AppSource](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
 
-## <a name="policies-and-terms"></a>Zásady a podmínky
+## <a name="policies-and-terms"></a>Zásady a výrazy
 
-* [Zásady certifikaci Azure Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies)
+* [Zásady certifikace komerčního tržiště](https://docs.microsoft.com/legal/marketplace/certification-policies)
 
-* [Zásady účasti na webu](https://docs.microsoft.com/legal/marketplace/participation-policy)
+* [Zásady pro účast](https://docs.microsoft.com/legal/marketplace/participation-policy)
 
 * [Zásady hodnocení a recenzí](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
 
-* [Podmínky Azure Marketplace](https://docs.microsoft.com/legal/marketplace/terms)
+* [Azure Marketplace výrazy](https://docs.microsoft.com/legal/marketplace/terms)
 
 ## <a name="next-steps"></a>Další postup
 
-Přejděte [Průvodce publikováním webu Azure Marketplace a AppSource](./marketplace-publishers-guide.md) stránky.
+Navštivte stránku [Průvodce publikováním Azure Marketplace a AppSource](./marketplace-publishers-guide.md) .
 
 ---

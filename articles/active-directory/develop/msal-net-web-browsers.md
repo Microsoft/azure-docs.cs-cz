@@ -3,7 +3,7 @@ title: Webové prohlížeče v knihovně Microsoft Authentication Library pro .N
 description: Přečtěte si o konkrétních doporučeních pro použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: jmprieur
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb04a30719f7603610b323a4bb271666371ba97
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: e1285c5c61cee25e387ca5fb598f0e062088e549
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276856"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532500"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Používání webových prohlížečů v MSAL.NET
 Pro interaktivní ověřování se vyžadují webové prohlížeče. Ve výchozím nastavení podporuje MSAL.NET [webový prohlížeč systému](#system-web-browser-on-xamarinios-xamarinandroid) na Xamarin. iOS a Xamarin. Android. [Můžete ale také povolit vložený webový prohlížeč](#enable-embedded-webviews-on-ios-and-android) v závislosti na vašich požadavcích (uživatelské rozhraní, nutnosti jednotného přihlašování (SSO), zabezpečení) v aplikacích [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) a [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) . A můžete dokonce [zvolit](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) , který webový prohlížeč se má použít, na základě přítomnosti Chrome nebo prohlížeče, který podporuje vlastní karty Chrome v Androidu. MSAL.NET podporuje pouze prohlížeč systému v aplikacích klasické pracovní plochy .NET Core.
@@ -46,17 +46,17 @@ MSAL.NET je knihovna s více architekturami a má kód specifický pro rozhraní
 
 Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systémový prohlížeč. Prohlížeč systému je lepší při zapamatování uživatelů, kteří se předtím přihlásili. Pokud potřebujete toto chování změnit, použijte`WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>První pohled
+### <a name="at-a-glance"></a>Na první pohled
 
-| Rozhraní .NET Framework        | vložené | Systém | Výchozí |
+| Rozhraní .NET Framework        | Vložené | Systém | Výchozí |
 | ------------- |-------------| -----| ----- |
-| .NET Classic     | Ano | Ano ^ | vložené |
+| .NET Classic     | Ano | Ano ^ | Vložené |
 | .NET Core     | Ne | Ano ^ | Systém |
 | .NET Standard | Ne | Ano ^ | Systém |
-| UWP | Ano | Ne | vložené |
+| UWP | Ano | Ne | Vložené |
 | Xamarin.Android | Ano | Ano  | Systém |
 | Xamarin.iOS | Ano | Ano  | Systém |
-| Xamarin.Mac| Ano | Ne | vložené |
+| Xamarin.Mac| Ano | Ne | Vložené |
 
 ^ Vyžaduje "http://localhost" identifikátor URI přesměrování
 
@@ -141,7 +141,7 @@ U aplikací klasické pracovní plochy ale spuštění webového WebView vede k 
 
 ## <a name="enable-embedded-webviews-on-ios-and-android"></a>Povolit vložená webzobrazení v iOS a Androidu
 
-Můžete také povolit vložená webzobrazení v aplikacích Xamarin. iOS a Xamarin. Android. Od verze MSAL.NET 2.0.0-Preview MSAL.NET podporuje také použití vloženého  možnosti WebView. Pro ADAL.NET je jedinou podporovanou možností vložené WebView.
+Můžete také povolit vložená webzobrazení v aplikacích Xamarin. iOS a Xamarin. Android. Od verze MSAL.NET 2.0.0-Preview MSAL.NET podporuje také použití vloženého možnosti WebView. Pro ADAL.NET je jedinou podporovanou možností vložené WebView.
 
 Jako vývojář, který používá MSAL.NET cílené na Xamarin, se můžete rozhodnout použít buď vložená webzobrazení, nebo systémové prohlížeče. Podle vašeho výběru záleží na uživatelském prostředí a na zabezpečení, které chcete cílit.
 

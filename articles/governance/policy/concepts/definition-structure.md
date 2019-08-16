@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 77bf284734428e9257b46d85296796e4051ace26
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 44bf3171f9da73dac17b29e86c80fc8f0d011498
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494825"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557930"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -151,7 +151,7 @@ Tento příklad odkazuje na parametr **allowedLocations** , který byl prokázá
 
 ### <a name="strongtype"></a>strongType
 
-V rámci vlastnosti můžete použít strongType k poskytnutí seznamu možností s vícenásobným výběrem v rámci Azure Portal.  `metadata` Povolené hodnoty pro **strongType** aktuálně zahrnují:
+V rámci vlastnosti můžete použít strongType k poskytnutí seznamu možností s vícenásobným výběrem v rámci Azure Portal. `metadata` Povolené hodnoty pro **strongType** aktuálně zahrnují:
 
 - `location`
 - `resourceTypes`
@@ -286,7 +286,7 @@ Podporovány jsou následující pole:
 
 Hodnota parametru může být předána poli značky. Předání parametru do pole značek zvyšuje flexibilitu definice zásad během přiřazení zásady.
 
-V následujícím příkladu `concat` se používá k vytvoření vyhledávání pole značek pro značku s názvem hodnota parametru **TagName** . Pokud tato značka neexistuje, použije se  k přidání značky s použitím hodnoty stejné pojmenované sady značek v nadřazené skupině prostředků auditované prostředky pomocí `resourcegroup()` funkce Lookup efekt připojit.
+V následujícím příkladu `concat` se používá k vytvoření vyhledávání pole značek pro značku s názvem hodnota parametru **TagName** . Pokud tato značka neexistuje, použije se k přidání značky s použitím hodnoty stejné pojmenované sady značek v nadřazené skupině prostředků auditované prostředky pomocí `resourcegroup()` funkce Lookup efekt připojit.
 
 ```json
 {
@@ -335,7 +335,7 @@ Tato ukázka pravidla zásad používá **hodnotu** `resourceGroup()` pro porovn
 }
 ```
 
-Tato ukázka pravidla zásad používá **hodnotu** ke kontrole, jestli se výsledek více vnořených  `true`funkcí rovná. Pravidlo odmítne všechny prostředky, které nemají alespoň tři značky.
+Tato ukázka pravidla zásad používá **hodnotu** ke kontrole, jestli se výsledek více vnořených `true`funkcí rovná. Pravidlo odmítne všechny prostředky, které nemají alespoň tři značky.
 
 ```json
 {
@@ -370,7 +370,7 @@ Použití šablonových _funkcí_ v **hodnotě** umožňuje mnoho komplexních v
 }
 ```
 
-Vzorové pravidlo výše uvedené používá [podřetězec ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) pro porovnání prvních tří znaků **názvu** s **ABC**. Pokud je **název** kratší než tři znaky, `substring()` výsledkem funkce je chyba. Tato chyba způsobí, že se zásada stane  účinkem odepření.
+Vzorové pravidlo výše uvedené používá [podřetězec ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) pro porovnání prvních tří znaků **názvu** s **ABC**. Pokud je **název** kratší než tři znaky, `substring()` výsledkem funkce je chyba. Tato chyba způsobí, že se zásada stane účinkem odepření.
 
 Místo toho použijte funkci [if ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) ke kontrole, zda první tři znaky **názvu** odpovídají **ABC** bez povolení **názvu** kratšího než tři znaky, aby došlo k chybě:
 
@@ -517,7 +517,7 @@ Některé aliasy, které jsou k dispozici máte verzi, která se zobrazí jako '
 
 Alias ' Normal ' představuje pole jako jedinou hodnotu. Toto pole je určeno pro přesné scénáře porovnání shody, pokud celá sada hodnot musí být přesně definovaná, a ne více a méně.
 
-Alias **[\*]** umožňuje porovnání s hodnotou každého prvku v poli a konkrétní vlastnosti každého prvku. Tento přístup umožňuje porovnat vlastnosti elementu pro ' Pokud žádný z ', ', pokud je to u všech scénářů ', ', ', '. Pomocí **ipRules [\*]** je třeba ověřit, že každá _Akce_ je zamítnutá , ale nedělejte si starosti, kolik pravidel existuje nebo jaká je _hodnota_ IP. Toto ukázkové pravidlo vyhledá všechny shody **ipRules [\*]. Value** to **10.0.4.1** a použije **effectType** pouze v případě, že nenajde alespoň jednu shodu:
+Alias **[\*]** umožňuje porovnání s hodnotou každého prvku v poli a konkrétní vlastnosti každého prvku. Tento přístup umožňuje porovnat vlastnosti elementu pro ' Pokud žádný z ', ', pokud je to u všech scénářů ', ', ', '. Pomocí **ipRules [\*]** je třeba ověřit, že každá _Akce_ je zamítnutá, ale nedělejte si starosti, kolik pravidel existuje nebo jaká je _hodnota_ IP. Toto ukázkové pravidlo vyhledá všechny shody **ipRules [\*]. Value** to **10.0.4.1** a použije **effectType** pouze v případě, že nenajde alespoň jednu shodu:
 
 ```json
 "policyRule": {
@@ -619,7 +619,7 @@ Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvě
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
 - Projděte si [Vysvětlení efektů zásad](effects.md).

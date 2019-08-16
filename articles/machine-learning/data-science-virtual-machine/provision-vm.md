@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: vijetaj
-ms.openlocfilehash: dfb3e9f6390d4c80b8f3c37b87f2659c671fa823
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 488dc7db01bd865268e143b68cdaccd989010912
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591818"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534933"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Zřízení Data Science Virtual Machine Windows v Azure
 
@@ -48,6 +48,7 @@ DSVM jsou součástí těchto nástrojů:
   * [Přejít](https://drill.apache.org/) na web Apache – Nástroj pro dotaz SQL bez schématu pro Apache Hadoop, NoSQL a cloudové úložiště. Podporuje rozhraní ODBC a JDBC pro dotazování NoSQL a soubory ze standardních nástrojů BI, jako je Power BI, Microsoft Excelu a Tableau.
 * Knihovny v R a Python pro použití v Azure Machine Learning a dalšími službami Azure
 * Git, včetně Git Bash pro práci s úložišť zdrojového kódu, včetně Githubu a Azure DevOps. Git poskytuje několik oblíbených Linux nástroje příkazového řádku, které jsou dostupné i na Git Bash a příkazový řádek. Příklady jsou awk sed, perl, grep, hledání, wget a curl.
+* Vývojové nástroje a editory (RStudio, PyCharm)
 
 ### <a name="about-data-science"></a>O datové vědy
 
@@ -182,7 +183,7 @@ Několik nástrojů pro Azure jsou nainstalované na virtuálním počítači:
 
 * Zástupce na ploše přejde na dokumentaci k sadě Azure SDK.
 * Pomocí **AzCopy** můžete zkopírovat data z účtu Azure Storage a z něj. Pokud chcete zobrazit využití, zadejte **Azcopy** z příkazového řádku.
-* Použití **Průzkumníka služby Azure Storage** procházet objekty, které ukládáte ve svém účtu úložiště Azure. Také kopíruje data do a z Azure Storage. Chcete-li získat přístup k tomuto nástroji,  zadejte do vyhledávacího pole **Průzkumník služby Storage** . Nebo ho vyhledejte v nabídce **Start** systému Windows.
+* Použití **Průzkumníka služby Azure Storage** procházet objekty, které ukládáte ve svém účtu úložiště Azure. Také kopíruje data do a z Azure Storage. Chcete-li získat přístup k tomuto nástroji, zadejte do vyhledávacího pole **Průzkumník služby Storage** . Nebo ho vyhledejte v nabídce **Start** systému Windows.
 * **AdlCopy** kopíruje data do Azure Data Lake. Pokud chcete zobrazit využití, zadejte **adlcopy** v příkazovém řádku.
 * **dtui** kopíruje data do a z Azure Cosmos DB databáze NoSQL v cloudu. Zadejte **dtui** v příkazovém řádku.
 * **Azure Data Factory Integration runtime** kopíruje data mezi místními zdroji dat a cloudem. Používá se v rámci nástroje, jako je Azure Data Factory.
@@ -224,7 +225,7 @@ Pomocí [Instalace webové platformy Microsoft](https://www.microsoft.com/web/do
 > [!NOTE]
 > V edici systému Windows Server 2012, edice DSVM a Windows serveru 2016 před březnem 2018 je výchozí prostředí Anaconda Python 2.7. Sekundární prostředí je Python 3,5, který se nachází na adrese **C:\Anaconda\envs\py35**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Prozkoumejte nástroje pro datové vědy virtuálního počítače tak, že vyberete **Start** nabídky.
 * Další informace o službě Azure Machine Learning najdete [co je služba Azure Machine Learning?](../service/overview-what-is-azure-ml.md) a vyzkoušejte si [rychlých startů a kurzů](../service/index.yml) , které jsou k dispozici.

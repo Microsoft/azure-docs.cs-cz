@@ -9,12 +9,12 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cf063311e5559ddf5706df397ce744a726610000
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 5be247e8bb999ee5306d10e67c46c7273953dc71
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667343"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534698"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení řešení Update Management, Change Tracking a inventáře na několika virtuálních počítačích
 
@@ -45,7 +45,7 @@ Seznam virtuálních počítačů je filtrovaný tak, aby zobrazoval pouze virtu
 
 ### <a name="resource-group-limit"></a>Omezení připojování
 
-Počet skupin prostředků, které můžete použít pro registraci, je omezen [omezeními nasazení Správce prostředků](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Správce prostředků nasazení, nepleťte si s nasazeními aktualizací, jsou omezeny na 5 skupin prostředků na nasazení. Aby se zajistila integrita připojování, 2 z těchto skupin prostředků je vyhrazená pro konfiguraci Log Analyticsho pracovního prostoru, účtu Automation a souvisejících prostředků. Tím se vám ponechá 3 skupiny prostředků, které se mají vybrat pro nasazení.
+Počet skupin prostředků, které můžete použít pro registraci, je omezen [omezeními nasazení Správce prostředků](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Správce prostředků nasazení, nepleťte si s nasazeními aktualizací, jsou omezeny na 5 skupin prostředků na nasazení. Aby se zajistila integrita připojování, 2 z těchto skupin prostředků je vyhrazená pro konfiguraci Log Analyticsho pracovního prostoru, účtu Automation a souvisejících prostředků. Tím se vám ponechá 3 skupiny prostředků, které se mají vybrat pro nasazení. Tento limit se vztahuje jenom na simultánní registraci, nikoli na počet skupin prostředků, které se dají spravovat pomocí řešení automatizace.
 
 Můžete taky použít Runbook pro registraci, další informace najdete v tématu [řešení aktualizací a řešení Change Tracking pro Azure Automation](automation-onboard-solutions.md).
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 5049a35b943c68d1a05d1435113226d83dc5ecf4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: fe0c9d7e870b56bf83b70845af9159ea0703c4ab
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031760"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533632"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Náhled – zabezpečený přístup k serveru rozhraní API pomocí povolených rozsahů IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -108,6 +108,14 @@ Pokud chcete zajistit, aby uzly v clusteru spolehlivě komunikovaly se serverem 
 
 > [!WARNING]
 > Použití Azure Firewall může během měsíčního fakturačního cyklu způsobit významné náklady. Požadavek na použití Azure Firewall by měl být v tomto počátečním období verze Preview nezbytný. Další informace a plánování nákladů najdete v tématu [Azure firewall ceny][azure-firewall-costs].
+>
+> Případně, pokud váš cluster používá nástroj [pro vyrovnávání zatížení Standard SKU][standard-sku-lb], nemusíte konfigurovat Azure firewall jako odchozí bránu. Použijte příkaz [AZ Network Public-IP list][az-network-public-ip-list] a zadejte skupinu prostředků clusteru AKS, který obvykle začíná na *MC_* . Tím se zobrazí veřejná IP adresa pro váš cluster, který můžete vyřadit do seznamu povolených. Příklad:
+>
+> ```azurecli-interactive
+> RG=$(az aks show --resource-group myResourceGroup --name myAKSClusterSLB --query nodeResourceGroup -o tsv)
+> SLB_PublicIP=$(az network public-ip list --resource-group $RG --query [].ipAddress -o tsv)
+> az aks update --api-server-authorized-ip-ranges $SLB_PublicIP --resource-group myResourceGroup --name myAKSClusterSLB
+> ```
 
 Nejprve Získejte název skupiny prostředků *MC_* pro cluster AKS a virtuální síť. Pak vytvořte podsíť pomocí příkazu [AZ Network VNet Subnet Create][az-network-vnet-subnet-create] . Následující příklad vytvoří podsíť s názvem *AzureFirewallSubnet* s rozsahem CIDR *10.200.0.0/16*:
 
@@ -259,11 +267,13 @@ Další informace najdete v tématu [koncepty zabezpečení pro aplikace a clust
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [create-aks-sp]: kubernetes-service-principal.md#manually-create-a-service-principal
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-network-firewall-create]: /cli/azure/ext/azure-firewall/network/firewall#ext-azure-firewall-az-network-firewall-create
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [az-network-firewall-ip-config-create]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-create
 [az-network-firewall-network-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
@@ -271,3 +281,4 @@ Další informace najdete v tématu [koncepty zabezpečení pro aplikace a clust
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[standard-sku-lb]: load-balancer-standard.md

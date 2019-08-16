@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab2aa4415345747a0e87b90ef0a7ee770ef3465
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: e8095b4fa6e52b7c34cedaea35b129ab68dddc65
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608120"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532954"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Základní zásady: Vyžadovat MFA pro správu služby (Preview)
 
@@ -32,21 +32,21 @@ Použití Azure Resource Manager ke správě služeb je vysoce privilegovaná ak
 
 Po povolení této zásady v tenantovi budou mít všichni uživatelé přihlášení k prostředkům správy Azure služby Multi-Factor Authentication. Pokud uživatel není zaregistrován pro vícefaktorové ověřování, uživatel bude muset zaregistrovat pomocí aplikace Microsoft Authenticator, aby bylo možné pokračovat.
 
-Pokud chcete provádět interaktivní přihlašování pomocí [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/authenticate-azureps), použijte rutinu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
+Pokud chcete provádět interaktivní přihlašování pomocí [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/authenticate-azureps), použijte rutinu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 
 ```PowerShell
 Connect-AzAccount
 ```
 
-Po spuštění této rutiny se zobrazí řetězec tokenu. Pokud se chcete přihlásit, zkopírujte tento řetězec a vložte ho [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)do  prohlížeče v prohlížeči. Vaše relace PowerShellu se ověří pro připojení k Azure.
+Po spuštění této rutiny se zobrazí řetězec tokenu. Pokud se chcete přihlásit, zkopírujte tento řetězec a vložte ho [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) do prohlížeče v prohlížeči. Vaše relace PowerShellu se ověří pro připojení k Azure.
 
-Pokud chcete provádět interaktivní přihlašování pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest), spusťte příkaz [AZ Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) .
+Pokud chcete provádět interaktivní přihlašování pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest), spusťte příkaz [AZ Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) .
 
 ```azurecli
 az login
 ```
 
-Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít stránku prohlížeče a podle pokynů v příkazovém řádku zadat autorizační kód po přechodu do [https://aka.ms/devicelogin](https://aka.ms/devicelogin) prohlížeče. Pak se přihlaste pomocí přihlašovacích údajů k účtu v prohlížeči.
+Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít stránku prohlížeče a podle pokynů v příkazovém řádku zadat autorizační kód po přechodu do [https://aka.ms/devicelogin](https://aka.ms/devicelogin) prohlížeče. Pak se přihlaste pomocí přihlašovacích údajů k účtu v prohlížeči.
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
@@ -58,13 +58,13 @@ Zásady standardních **hodnot zásad: Vyžadovat vícefaktorové ověřování 
 
 Chcete-li povolit tuto zásadu a chránit správce:
 
-1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Přejděte na **Azure Active Directory** > **podmíněný přístup**.
 1. V seznamu zásad vyberte **základní zásady: Vyžadovat vícefaktorové ověřování pro správu služeb (Preview**).
 1. Nastavte **Povolit zásadu** pro **okamžité použití zásad**.
-1. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace naleznete v tématu:
 

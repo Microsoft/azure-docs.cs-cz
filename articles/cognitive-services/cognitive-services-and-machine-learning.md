@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/15/2019
 ms.author: diberry
-ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 570429a2d5332e7d951271b36b79d9d16df174c0
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697924"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535212"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services a strojové učení
 
@@ -79,7 +79,7 @@ Služby, které poskytují plně vyškolený model, lze považovat za _černé p
 
 Některé služby vám umožňují přenášet vlastní data a pak vytvořit model. To vám umožní tento model roztáhnout pomocí dat a algoritmu služby s vašimi vlastními daty. Výstup odpovídá vašim potřebám. Když přinesete vlastní data, může být nutné označit data způsobem specifickým pro danou službu. Pokud například provedete výuku modelu, který identifikuje květiny, můžete poskytnout katalog květinových obrázků spolu s umístěním květu v jednotlivých obrázcích pro výuku modelu. 
 
-Služba _vám může_ poskytnout data pro vylepšení vlastních dat. Služba může _vyžadovat_ poskytnutí dat. 
+Služba vám může poskytnout data pro vylepšení vlastních dat. Služba může _vyžadovat_ poskytnutí dat. 
 
 ### <a name="real-time-or-near-real-time-data-required"></a>Vyžaduje se data v reálném čase nebo téměř v reálném čase.
 
@@ -131,6 +131,10 @@ Cognitive Services, které poskytují exportované modely pro jiné nástroje pr
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|[Export](./Custom-Vision-Service/export-model-python.md) pro Tensorflow pro Android, CoreML pro IOS11, ONNX pro Windows ml|
 
+## <a name="learn-more"></a>Víc se uč
+
+* [Průvodce architekturou – Jaké jsou produkty pro strojové učení v Microsoftu?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [Machine Learning – Úvod do hloubkového učení vs. Machine Learning](../machine-learning/service/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>Další postup
 

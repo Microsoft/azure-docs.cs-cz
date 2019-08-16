@@ -1,33 +1,32 @@
 ---
-title: Vytvoření bezserverového rozhraní API pomocí služby Azure Functions | Microsoft Docs
-description: Jak vytvořit bezserverové rozhraní API pomocí služby Azure Functions
-services: functions
+title: Přizpůsobení koncového bodu HTTP v Azure Functions
+description: Přečtěte si, jak přizpůsobit koncový bod triggeru HTTP v Azure Functions
 author: mattchenderson
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: f6a678e03818f1e1f2182b3b0dfab221d415dc72
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 00aa55fe9f92358fd3a0e6f3065e5e2e69e405e1
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107275"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534631"
 ---
-# <a name="create-a-serverless-api-using-azure-functions"></a>Vytvoření bezserverového rozhraní API pomocí služby Azure Functions
+# <a name="customize-an-http-endpoint-in-azure-functions"></a>Přizpůsobení koncového bodu HTTP v Azure Functions
 
-V tomto kurzu se dozvíte, jak služba Azure Functions umožňuje vytvářet vysoce škálovatelná rozhraní API. Služba Azure Functions se dodává s kolekcí integrovaných triggerů a vazeb HTTP, které usnadňují vytvoření koncového bodu v nejrůznějších jazycích včetně Node.JS, C# a dalších. V tomto kurzu přizpůsobíte trigger HTTP tak, aby ve vašem návrhu rozhraní API obsluhoval konkrétní akce. Zároveň se připravíte na rozšíření tohoto rozhraní API integrací Proxy služby Azure Functions a nastavením napodobenin rozhraní API. To vše se provádí v bezserverovém výpočetním prostředí služby Functions, takže se nemusíte starat o škálování prostředků, ale zaměříte se jen na logiku svého rozhraní API.
+V tomto článku se dozvíte, jak Azure Functions umožňuje vytvářet vysoce škálovatelná rozhraní API. Služba Azure Functions se dodává s kolekcí integrovaných triggerů a vazeb HTTP, které usnadňují vytvoření koncového bodu v nejrůznějších jazycích včetně Node.JS, C# a dalších. V tomto článku budete přizpůsobovat Trigger HTTP, který bude zpracovávat konkrétní akce v návrhu rozhraní API. Zároveň se připravíte na rozšíření tohoto rozhraní API integrací Proxy služby Azure Functions a nastavením napodobenin rozhraní API. To vše se provádí v bezserverovém výpočetním prostředí služby Functions, takže se nemusíte starat o škálování prostředků, ale zaměříte se jen na logiku svého rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-Výsledná funkce se bude používat ve zbývajících částech tohoto kurzu.
+Výsledná funkce bude použita pro zbytek tohoto článku.
 
-### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Otevřete web Azure Portal. To uděláte tak, že se k webu [https://portal.azure.com](https://portal.azure.com) přihlásíte pod svým účtem Azure.
 
@@ -39,14 +38,14 @@ Funkce aktivovaná protokolem HTTP je standardně nakonfigurovaná tak, aby při
 
     ![Přizpůsobení funkce HTTP](./media/functions-create-serverless-api/customizing-http.png)
 
-1. Použijte nastavení triggeru HTTP uvedená v tabulce.
+1. Použijte nastavení triggeru HTTP, jak je uvedeno v tabulce.
 
     | Pole | Ukázková hodnota | Popis |
     |---|---|---|
     | Povolené metody HTTP | Vybrané metody | Určuje, jaké metody HTTP mohou být použity k vyvolání této funkce. |
     | Vybrané metody HTTP | GET | Umožňuje, aby se k vyvolání této funkce daly použít jen vybrané metody HTTP. |
     | Šablona trasy | /hello | Určuje, jaká trasa se používá k vyvolání této funkce. |
-    | Úroveň autorizace | Anonymní | Volitelné: Zpřístupňuje funkci bez klíče rozhraní API |
+    | Úroveň autorizace | Anonymní | Volitelné: Zpřístupní přístup k vaší funkci bez klíče rozhraní API. |
 
     > [!NOTE] 
     > Všimněte si, že jste do šablony trasy nezahrnuli předponu základní trasy `/api`, protože to se řeší globálním nastavením.
@@ -103,7 +102,7 @@ Zopakováním postupu v článku o [vytvoření aplikace funkcí](https://docs.m
 
     | Pole | Ukázková hodnota | Popis |
     |---|---|---|
-    | Název | HelloProxy | Popisný název sloužící jen ke správě |
+    | Name | HelloProxy | Popisný název sloužící jen ke správě |
     | Šablona trasy | /api/remotehello | Určuje, jaká trasa se používá k vyvolání tohoto proxy. |
     | Adresa URL back-endu | https://%HELLO_HOST%/api/hello | Určuje koncový bod, na který má být žádost přes proxy směrována. |
     
@@ -180,9 +179,9 @@ Tím přidáte nový proxy GetUserByName bez vlastnosti backendUri. Místo volá
 
 Otestujte napodobeninu rozhraní API voláním koncového bodu `<YourProxyApp>.azurewebsites.net/api/users/{username}` pomocí prohlížeče nebo oblíbeného klienta REST. Nezapomeňte nahradit _{username}_ řetězcovou hodnotou představující uživatelské jméno.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli, jak sestavit a přizpůsobit rozhraní API ve službě Azure Functions. Také jste zjistili, jak spojit více rozhraní API (včetně napodobenin) do jednoho sjednoceného rozsahu rozhraní API. Pomocí těchto technik můžete vytvořit jakkoli složité rozhraní API, a zároveň používat bezserverový výpočetní model, který poskytuje služba Azure Functions.
+V tomto článku jste zjistili, jak vytvořit a přizpůsobit rozhraní API na Azure Functions. Také jste zjistili, jak spojit více rozhraní API (včetně napodobenin) do jednoho sjednoceného rozsahu rozhraní API. Pomocí těchto technik můžete vytvořit jakkoli složité rozhraní API, a zároveň používat bezserverový výpočetní model, který poskytuje služba Azure Functions.
 
 Při dalším vývoji rozhraní API vám mohou přijít vhod následující odkazy:
 

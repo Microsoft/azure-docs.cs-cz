@@ -3,7 +3,7 @@ title: Univerzální platforma Windows hlediska (Microsoft Authentication Librar
 description: Přečtěte si o konkrétních otázkách při použití Univerzální platforma Windows s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d78a64ee41e37fe53eba20eab6753c0b6eb8389
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 263264742088a0012ea844946e13cffbab634b29
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277906"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532490"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>MSAL.NET s ohledem na konkrétní Univerzální platforma Windows
 U UWP máte několik důležitých informací, které je potřeba vzít v úvahu při používání MSAL.NET.
@@ -32,7 +32,7 @@ V platformě `PublicClientApplication` WinRT má následující logickou vlastno
 
 > [!IMPORTANT]
 > Nastavení této vlastnosti na hodnotu true předpokládá, že vývojář aplikace povolil v aplikaci integrované ověřování systému Windows (IWA). Pro toto:
-> - V nástroji pro vaši aplikaci UWP povolte na kartě Možnosti následující možnosti:  ``Package.appxmanifest``
+> - V nástroji pro vaši aplikaci UWP povolte na kartě Možnosti následující možnosti: ``Package.appxmanifest``
 >   - Podnikové ověřování
 >   - Privátní sítě (klient & Server)
 >   - Sdílený uživatelský certifikát

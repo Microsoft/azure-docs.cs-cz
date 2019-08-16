@@ -1,6 +1,6 @@
 ---
-title: Doporučení pro virtuální počítače v Azure Security Center | Dokumentace Microsoftu
-description: Tento dokument popisuje doporučení Azure Security Center k ochraně virtuálních počítačů a počítačů a vaše webové aplikace a služby App Service Environment.
+title: Doporučení pro virtuální počítače v Azure Security Center | Microsoft Docs
+description: Tento dokument vysvětluje Azure Security Center doporučení, která vám pomůžou chránit vaše virtuální počítače a počítače a vaše webové aplikace a App Service prostředí.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,56 +14,56 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: a4aaf440856746895a31914aeee2bddec2ce23f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 798e027ca611905766b1fb8bcdb89cba4aeaf9b2
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544974"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69531339"
 ---
-# <a name="understand-azure-security-center-resource-recommendations"></a>Vysvětlení doporučení prostředků služby Azure Security Center
+# <a name="understand-azure-security-center-resource-recommendations"></a>Vysvětlení Azure Security Centerch doporučení k prostředkům
 
 
 ## <a name="recommendations"></a>Doporučení
-V následujících tabulkách použijte jako vám pomůžou pochopit dostupné výpočetní prostředky a služeb App services, doporučení a co každý z nich dělá, když je použijete.
+Následující tabulky vám pomůžou pochopit dostupná doporučení výpočetních a aplikačních služeb a to, jak se používají.
 
 ### <a name="computers"></a>Počítače
 | Doporučení | Popis |
 | --- | --- |
-| [Povolení shromažďování dat pro předplatná](security-center-enable-data-collection.md) |Doporučuje, abyste zapnuli shromažďování dat v zásadách zabezpečení pro každé ze svých předplatných a všechny virtuální počítače ve svých předplatných. |
-| [Povolit šifrování pro účet služby Azure Storage](security-center-enable-encryption-for-storage-account.md) | Doporučuje povolit šifrování služby Azure Storage pro neaktivní uložená data. Šifrování služby Storage (SSE) funguje tak, že šifrování dat, když se zapisují do úložiště Azure a dešifruje před načítání. SSE je momentálně dostupná jenom pro službu Azure Blob service a lze použít pro objekty BLOB bloku, objekty BLOB stránky a doplňovací objekty BLOB. Další informace najdete v tématu [šifrování služby Storage pro neaktivní uložená data](../storage/common/storage-service-encryption.md).</br>SSE je podporována pouze pro účty úložiště Resource Manageru. Účty úložiště Classic se momentálně nepodporují. Klasické modely nasazení a modely nasazení Resource Manageru najdete v tématu [modelech nasazení Azure](../azure-classic-rm.md). |
-| [Náprava konfigurací zabezpečení](security-center-remediate-os-vulnerabilities.md) |Doporučuje, abyste zakázali konfiguraci operačního systému se konfigurace pravidla doporučené zabezpečení, například neumožňují ukládání hesel. |
-| [Instalace aktualizací systému](security-center-apply-system-updates.md) |Doporučuje nasazení chybějících aktualizací zabezpečení systému a kritických aktualizací do virtuálních počítačů. |
-| [Použít Just-In-Time řízení přístupu k síti](security-center-just-in-time.md) | Doporučuje se použít dočasný přístup virtuálních počítačů v. Jenom v čase je funkce ve verzi preview a dostupné na úrovni Standard služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md). |
-| [Restartování po aktualizacích systému](security-center-apply-system-updates.md#reboot-after-system-updates) |Doporučuje, abyste restartovali virtuální počítač k dokončení procesu instalace aktualizací systému. |
-| [Instalace Endpoint Protection](security-center-install-endpoint-protection.md) |Doporučuje, abyste do virtuálních počítačů nainstalovali antimalwarové programy (platí pouze pro virtuální počítače s Windows). |
-| [Povolení agenta virtuálního počítače](security-center-enable-vm-agent.md) |Umožňuje vám zobrazit, které virtuální počítače vyžadují agenta virtuálního počítače. Agent virtuálního počítače musí být nainstalovaný na virtuálních počítačích, aby mohl poskytovat vyhledávání oprav, vyhledávání směrných plánů a antimalwarové programy. Agent virtuálního počítače je ve výchozím nastavení nainstalován na virtuálních počítačích nasazených z Azure Marketplace. V článku [Agenti a rozšíření virtuálních počítačů – Část 2](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) najdete informace o tom, jak agenta virtuálního počítače nainstalovat. |
-| [Použití šifrování disku](security-center-apply-disk-encryption.md) |Doporučuje, abyste disky svých virtuálních počítačů zašifrovali pomocí služby Azure Disk Encryption (platí pro virtuální počítače s Windows a Linuxem). Na virtuálním počítači se doporučuje šifrování svazku operačního systému i svazku s daty. |
-| [Aktualizace verze operačního systému](security-center-update-os-version.md) |Doporučuje se aktualizovat verzi operačního systému (OS) pro cloudové služby na nejnovější verzi k dispozici pro váš operační systém řady.  Další informace o službách Cloud Services, najdete v článku [Přehled služby Cloud Services](../cloud-services/cloud-services-choose-me.md). |
-| [Není nainstalováno posouzení ohrožení zabezpečení](security-center-vulnerability-assessment-recommendations.md) |Doporučuje, abyste na vašem virtuálním počítači nainstalovali řešení posouzení ohrožení zabezpečení. |
-| [Náprava ohrožení zabezpečení](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Umožňuje vám zobrazit ohrožení zabezpečení systému a aplikací zjištěná řešením posouzení ohrožení zabezpečení nainstalovaným na vašem virtuálním počítači. |
+| Povolit shromažďování dat pro předplatná|Doporučuje, abyste zapnuli shromažďování dat v zásadách zabezpečení pro každé ze svých předplatných a všechny virtuální počítače ve svých předplatných. |
+| Povolit šifrování pro účet úložiště Azure| Doporučuje, abyste povolili šifrování služby Azure Storage pro neaktivní neaktivní data. Šifrování služby Storage (SSE) funguje tak, že šifruje data při zápisu do služby Azure Storage a před načtením je dešifruje. SSE je aktuálně dostupná jenom pro Azure Blob service a dá se použít pro objekty blob bloku, objekty blob stránky a doplňovací objekty blob. Další informace najdete v části [šifrování služby Storage pro](../storage/common/storage-service-encryption.md)neaktivní neaktivní data.</br>SSE se podporuje jenom v Správce prostředků účtech úložiště. Klasické účty úložiště se v tuto chvíli nepodporují. Pro pochopení modelu nasazení Classic a Správce prostředků najdete informace v tématu modely nasazení Azure. |
+| Opravit konfigurace zabezpečení|Doporučuje, abyste narovnali konfigurace operačního systému s doporučenými pravidly konfigurace zabezpečení, třeba nepovoluje ukládání hesel. |
+| Nainstalovat aktualizace systému |Doporučuje nasazení chybějících aktualizací zabezpečení systému a kritických aktualizací do virtuálních počítačů. |
+| Použití řízení přístupu k síti podle potřeby| Doporučuje, abyste použili přístup k virtuálnímu počítači přesně v čase. Funkce právě v čase je ve verzi Preview a dostupná na úrovni Standard Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md). |
+| Restartovat po aktualizacích systému|Doporučuje, abyste restartovali virtuální počítač k dokončení procesu instalace aktualizací systému. |
+| Nainstalovat Endpoint Protection|Doporučuje, abyste do virtuálních počítačů nainstalovali antimalwarové programy (platí pouze pro virtuální počítače s Windows). |
+| Povolit agenta virtuálního počítače |Umožňuje vám zobrazit, které virtuální počítače vyžadují agenta virtuálního počítače. Agent virtuálního počítače musí být nainstalovaný na virtuálních počítačích, aby mohl poskytovat vyhledávání oprav, vyhledávání směrných plánů a antimalwarové programy. Agent virtuálního počítače je ve výchozím nastavení nainstalován na virtuálních počítačích nasazených z Azure Marketplace. V článku [Agenti a rozšíření virtuálních počítačů – Část 2](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) najdete informace o tom, jak agenta virtuálního počítače nainstalovat. |
+| Použít šifrování disku|Doporučuje, abyste disky svých virtuálních počítačů zašifrovali pomocí služby Azure Disk Encryption (platí pro virtuální počítače s Windows a Linuxem). Na virtuálním počítači se doporučuje šifrování svazku operačního systému i svazku s daty. |
+| Aktualizace verze operačního systému|Doporučuje aktualizovat verzi operačního systému (OS) pro vaši cloudovou službu na nejnovější verzi dostupnou pro vaši rodinu operačních systémů.  Další informace o Cloud Services najdete v tématu Cloud Services Overview. |
+| Není nainstalováno posouzení ohrožení zabezpečení|Doporučuje, abyste na vašem virtuálním počítači nainstalovali řešení posouzení ohrožení zabezpečení. |
+| Opravit chyby zabezpečení) |Umožňuje vám zobrazit ohrožení zabezpečení systému a aplikací zjištěná řešením posouzení ohrožení zabezpečení nainstalovaným na vašem virtuálním počítači. |
 
-### App Service <a name="app-services"></a>
+### Aplikační služby<a name="app-services"></a>
 | Doporučení | Popis |
 | --- | --- |
-| App Service by měly být dostupné jenom přes protokol HTTPS | Doporučuje se pouze omezit přístup služby App Service přes protokol HTTPS. |
-| Webové sokety by mělo být zakázáno pro webovou aplikaci| Doporučuje, abyste si pečlivě používání webových soketů ve webových aplikacích.  Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |
-| Použijte vlastní domény pro webovou aplikaci | Doporučuje, použijte vlastní domény k ochraně webové aplikace před běžnými útoky, jako je útok phishing a další útoky související s DNS. |
-| Nakonfigurovat omezení IP adres pro webovou aplikaci | Doporučuje se, že můžete definovat seznam IP adres, které můžou přistupovat k vaší aplikace.  Použití omezení IP adres, ochrání webovou aplikaci před běžnými útoky. |
-| Nejsou povoleny všechny ("*") prostředkům pro přístup k aplikaci | Doporučuje, nenastavujte parametr WEBSITE_LOAD_CERTIFICATES na " *". Nastavení parametru na "* " znamená, že všechny certifikáty se načtou do úložiště osobních certifikátů webové aplikace.  To může vést k porušení principu nejnižší úrovně oprávnění, jak je pravděpodobné, že web potřebuje přístup ke všem certifikátům za běhu. |
-| CORS by nemělo umožňovat každý prostředek pro přístup k aplikaci | Doporučuje se, že povolíte jenom požadované domén pro interakci s vaší webovou aplikací. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat přístup k webové aplikaci všem doménám. |
-| Použijte nejnovější podporované rozhraní .NET Framework pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi rozhraní .NET Framework pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
-| Použít nejnovější podporovanou verzi Javy pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi Javy pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
-| Použít nejnovější podporovanou verzi PHP pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi PHP pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
-| [Přidání brány firewall webových aplikací](security-center-add-web-application-firewall.md) |Doporučuje, firewall webových aplikací (WAF) pro koncové body webové nasazení. Doporučení WAF se zobrazí pro jakékoli veřejnou IP adresu (IP adresa na úrovni Instance nebo IP adresu s vyrovnáváním zatížení), který má skupinu zabezpečení sítě spojenou s otevřenými vstupními webovými porty (80,443).</br></br>Security Center doporučuje zřízení WAF, které pomáhají bránit útokům, které cílí na vaše webové aplikace na virtuálních počítačích a ve službě App Service Environment. App Service Environment (ASE) je [Premium](https://azure.microsoft.com/pricing/details/app-service/) služeb možnost plánu služby Azure App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění aplikací Azure App Service. Další informace o službě ASE, najdete v článku [dokumentace pro App Service Environment](../app-service/environment/intro.md).</br></br>Přidáním těchto aplikací na vašich stávajících nasazení WAF může chránit několik webových aplikací ve službě Security Center. |
-| [Finalizace ochrany aplikací](security-center-add-web-application-firewall.md#finalize-application-protection) |K dokončení konfigurace brány WAF, musí přesměrovat provoz do zařízení WAF. Toto doporučení dokončení změny nezbytné instalační program. |
-| Použít nejnovější podporovanou verzi Node.js pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi Node.js pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
-| CORS by nemělo umožňovat každý prostředek pro přístup k aplikaci Function App | Doporučuje se, že povolíte jenom požadované domén pro interakci s vaší webovou aplikací. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat všechny domény pro přístup k vaší aplikaci funkcí. |
-| Použijte vlastní domény pro aplikaci Function App | Doporučuje, použijte vlastní domény k ochraně aplikace function app před běžnými útoky, jako je útok phishing a další útoky související s DNS. |
-| Nakonfigurovat omezení IP adres pro aplikaci Function App | Doporučuje se, že můžete definovat seznam IP adres, které můžou přistupovat k vaší aplikace. Použití omezení IP adres chrání před běžnými útoky aplikaci function app. |
-| Funkce aplikace by měla být přístupná jen přes HTTPS | Doporučuje se pouze omezit přístup z aplikace Function App přes protokol HTTPS. |
-| Vzdálené ladění by měl být vypnuté pro aplikaci Function App | Doporučuje vypnout ladění pro aplikace Function App, pokud už nepotřebujete ho používat. Vzdálené ladění vyžaduje příchozí porty potřeba otevřít v aplikaci Function App. |
-| Webové sokety by mělo být zakázáno pro aplikaci Function App | Doporučuje, abyste pečlivě zkontrolujte použití procedury webové sokety v rámci aplikace Function App. Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |
+| App Service by měl být přístupný jenom přes HTTPS | Doporučuje, abyste omezili přístup k App Service jenom přes HTTPS. |
+| Webové sokety by mělo být zakázáno pro webovou aplikaci| Doporučuje pečlivě zkontrolovat použití webových soketů v rámci webových aplikací.  Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |
+| Použijte vlastní domény pro webovou aplikaci | Doporučuje používat vlastní domény k ochraně webové aplikace před běžnými útoky, jako jsou útoky phishing a další útoky související s DNS. |
+| Nakonfigurovat omezení IP adres pro webovou aplikaci | Doporučuje definovat seznam IP adres, které mají povolený přístup k vaší aplikaci.  Použití omezení IP adres, ochrání webovou aplikaci před běžnými útoky. |
+| Nejsou povoleny všechny ("*") prostředkům pro přístup k aplikaci | Doporučuje, abyste nastavili parametr WEBSITE_LOAD_CERTIFICATES na *. Nastavením parametru na*' ' znamená, že všechny certifikáty budou načteny do osobního úložiště certifikátů vaší webové aplikace.  To může vést k porušení principu nejnižší úrovně oprávnění, jak je pravděpodobné, že web potřebuje přístup ke všem certifikátům za běhu. |
+| CORS by neměl umožňovat každému prostředku přístup k vaší aplikaci. | Doporučuje, abyste povolili interakci s webovou aplikací pouze požadovanými doménami. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat přístup k webové aplikaci všem doménám. |
+| Použijte nejnovější podporované rozhraní .NET Framework pro webovou aplikaci | Doporučuje, abyste pro nejnovější třídy zabezpečení používali nejnovější verzi .NET Framework. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| Použít nejnovější podporovanou verzi Javy pro webovou aplikaci | Doporučuje, abyste pro nejnovější třídy zabezpečení používali nejnovější verzi Java. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| Použít nejnovější podporovanou verzi PHP pro webovou aplikaci | Doporučuje, abyste pro nejnovější třídy zabezpečení používali nejnovější verzi PHP. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| [Přidání brány firewall webových aplikací](security-center-add-web-application-firewall.md) |Doporučuje nasadit Firewall webových aplikací (WAF) pro koncové body webu. WAF doporučení se zobrazuje pro všechny veřejné IP adresy (buď IP adresa na úrovni instance nebo IP s vyrovnáváním zatížení), které mají přidruženou skupinu zabezpečení sítě s otevřenými vstupními webovými porty (80 443).</br></br>Security Center doporučuje zřídit WAF, které vám pomůžou chránit před útoky zaměřenými na vaše webové aplikace na virtuálních počítačích a v App Service Environment. App Service Environment (pomocným mechanismem) je možnost plánu [Premium](https://azure.microsoft.com/pricing/details/app-service/) Azure App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění Azure App Service aplikací. Další informace o pomocném mechanismu řízení najdete v [dokumentaci k App Service Environment](../app-service/environment/intro.md).</br></br>Můžete chránit více webových aplikací v Security Center přidáním těchto aplikací do stávajících nasazení WAF. |
+| [Finalizace ochrany aplikací](security-center-add-web-application-firewall.md#finalize-application-protection) |Aby bylo možné dokončit konfiguraci WAF, musí být provoz přesměrován na zařízení WAF. Podle tohoto doporučení dokončíte potřebné změny instalačního programu. |
+| Použít nejnovější podporovanou verzi Node.js pro webovou aplikaci | Doporučuje, abyste pro nejnovější třídy zabezpečení používali nejnovější verzi Node. js. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| CORS by nemělo umožňovat každý prostředek pro přístup k aplikaci Function App | Doporučuje, abyste povolili interakci s webovou aplikací pouze požadovanými doménami. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat všechny domény pro přístup k vaší aplikaci funkcí. |
+| Použijte vlastní domény pro aplikaci Function App | Doporučuje používat vlastní domény k ochraně aplikace Function App před běžnými útoky, jako jsou útoky phishing a další útoky související s DNS. |
+| Nakonfigurovat omezení IP adres pro aplikaci Function App | Doporučuje definovat seznam IP adres, které mají povolený přístup k vaší aplikaci. Použití omezení IP adres chrání před běžnými útoky aplikaci function app. |
+| Funkce aplikace by měla být přístupná jen přes HTTPS | Doporučuje, abyste omezili přístup k aplikacím funkcí jenom přes protokol HTTPS. |
+| Vzdálené ladění by mělo být pro aplikaci funkcí vypnuté | Doporučuje vypnout ladění pro Function App, pokud už je nepotřebujete používat. Vzdálené ladění vyžaduje příchozí porty potřeba otevřít v aplikaci Function App. |
+| Webové sokety by mělo být zakázáno pro aplikaci Function App | Doporučuje pečlivě zkontrolovat použití webových soketů v aplikacích Function App. Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |
 
 
 ## <a name="next-steps"></a>Další postup

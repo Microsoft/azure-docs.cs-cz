@@ -1,38 +1,38 @@
 ---
-title: Resetování služby Azure VPN gateway k opětovnému zavedení tunelových propojení IPsec | Dokumentace Microsoftu
-description: Tento článek vás provede resetování služby Azure VPN Gateway k opětovnému zavedení tunelových propojení IPsec. Článek se týká bran VPN classic, a modely nasazení Resource Manager.
+title: Resetování služby Azure VPN Gateway pro opětovné vytvoření tunelů IPsec | Microsoft Docs
+description: Tento článek vás provede resetováním VPN Gateway Azure, aby se znovu navázaly tunely IPsec. Tento článek se týká bran VPN v modelu nasazení Classic i Správce prostředků.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9744a4b7bc5d2e9ce22bfa14ea33a2b11dacda85
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 359773dad53f333b2f052dd5b5481645c72746da
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612453"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533930"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetování brány VPN Gateway
 
-Resetování brány Azure VPN je užitečné v případě ztráty připojení VPN mezi lokalitami na jednom nebo více tunelech VPN typu Site-to-Site. V této situaci vaše místní zařízení VPN fungují správně, ale nejsou schopná vytvořit tunelová propojení prostřednictvím protokolu IPsec s branami Azure VPN. Tento článek pomáhá resetovat bránu VPN.
+Resetování brány Azure VPN je užitečné v případě ztráty připojení VPN mezi lokalitami na jednom nebo více tunelech VPN typu Site-to-Site. V této situaci vaše místní zařízení VPN fungují správně, ale nejsou schopná vytvořit tunelová propojení prostřednictvím protokolu IPsec s branami Azure VPN. Tento článek vám pomůže resetovat bránu VPN.
 
-### <a name="what-happens-during-a-reset"></a>Co se stane při obnovení nastavení?
+### <a name="what-happens-during-a-reset"></a>Co se stane během resetování?
 
-Brány VPN se skládá ze dvou instancí virtuálních počítačů, které jsou spuštěné v konfiguraci aktivní pohotovostní. Když resetujete zařízení brány, restartuje brány a potom znovu použije konfigurace mezi různými místy, které ho. Brána si ponechá stejnou veřejnou IP adresu. To znamená, že nebudete muset aktualizovat konfiguraci směrovače VPN na novou veřejnou IP adresu brány Azure VPN.
+Brána sítě VPN se skládá ze dvou instancí virtuálních počítačů spuštěných v konfiguraci s aktivním pohotovostním režimem. Když resetujete bránu, restartuje bránu a pak na ni znovu použije konfigurace pro více míst. Brána si ponechá stejnou veřejnou IP adresu. To znamená, že nebudete muset aktualizovat konfiguraci směrovače VPN na novou veřejnou IP adresu brány Azure VPN.
 
-Když vydáte příkaz k resetování brány, se okamžitě resetuje právě aktivní instance brány Azure VPN. Během převzetí služeb můžete pohotovostní instancí od aktivní instance (která se resetuje), bude ke krátké prodlevě. Prodleva by neměla být delší než jedna minuta.
+Při vystavení příkazu k resetování brány se okamžitě spustí aktuální aktivní instance služby Azure VPN Gateway. V případě převzetí služeb při selhání z aktivní instance (restartování) bude v pohotovostním stavu k dispozici krátká mezera. Prodleva by neměla být delší než jedna minuta.
 
-Pokud po prvním resetování nedojde k obnovení připojení, znovu vydejte stejný příkaz pro resetování druhé instance virtuálního počítače (nové aktivní brány). Pokud se vyžadují dvě restartování za sebou, bude doba, po kterou se obě instance virtuálního počítače (aktivní a pohotovostní) restartují, trochu delší. To způsobí delší prodlevu propojování VPN – až 30 až 45 minut, než se dokončí resetování virtuálních počítačů.
+Pokud po prvním resetování nedojde k obnovení připojení, znovu vydejte stejný příkaz pro resetování druhé instance virtuálního počítače (nové aktivní brány). Pokud se vyžadují dvě restartování za sebou, bude doba, po kterou se obě instance virtuálního počítače (aktivní a pohotovostní) restartují, trochu delší. To způsobí delší dobu připojení VPN, maximálně 30 až 45 minut, než virtuální počítače dokončí restartování.
 
-Po dvou resetováních Pokud stále máte problémy s připojením mezi různými místy, otevřete prosím prostřednictvím žádosti o podporu z portálu Azure portal.
+Pokud stále dochází k problémům s připojením mezi různými místy, otevřete prosím žádost o podporu z Azure Portal po dvou restartováních.
 
 ## <a name="before"></a>Než začnete
 
-Před restartováním brány ověřte pro každé tunelové propojení VPN typu Site-to-Site (S2S) s protokolem IPsec klíčové body následujícího seznamu. Jakákoli neshoda v těchto bodech způsobí odpojení tunelových propojení VPN typu S2S. Ověřením a opravením konfigurace pro místní a bránami Azure VPN vám ušetří zbytečnému resetování a přerušení ostatních fungujících připojení na brány.
+Před restartováním brány ověřte pro každé tunelové propojení VPN typu Site-to-Site (S2S) s protokolem IPsec klíčové body následujícího seznamu. Jakákoli neshoda v těchto bodech způsobí odpojení tunelových propojení VPN typu S2S. Ověření a opravování konfigurací místních a Azure VPN Gateway vám ušetříte z zbytečných restartování a přerušení pro ostatní funkční připojení v bráně.
 
-Před resetováním brány ověřte následující body:
+Před resetováním brány ověřte následující položky:
 
 * Internetové IP adresy (virtuální IP adresy) pro bránu Azure VPN a bránu místní VPN jsou správně nakonfigurovány v zásadách Azure VPN i v zásadách místní VPN.
 * Předsdílený klíč musí být stejný v bráně Azure VPN i v bráně místní VPN.
@@ -40,15 +40,15 @@ Před resetováním brány ověřte následující body:
 
 ## <a name="portal"></a>Azure Portal
 
-Můžete resetovat bránu VPN Resource Manageru pomocí webu Azure portal. Pokud chcete resetovat bránu classic, přečtěte si článek [Powershellu](#resetclassic) kroky.
+Správce prostředků VPN Gateway můžete resetovat pomocí Azure Portal. Pokud chcete resetovat klasickou bránu, přečtěte [](#resetclassic) si postup PowerShellu.
 
 ### <a name="resource-manager-deployment-model"></a>Model nasazení Resource Manager
 
-1. Otevřít [webu Azure portal](https://portal.azure.com) a přejděte k bráně virtuální sítě Resource Manageru, kterou chcete obnovit.
-2. V okně pro bránu virtuální sítě klikněte na tlačítko "Obnovit".
+1. Otevřete [Azure Portal](https://portal.azure.com) a přejděte do brány správce prostředků virtuální sítě, kterou chcete resetovat.
+2. V okně pro bránu virtuální sítě klikněte na resetovat.
 
-   ![Resetování brány VPN Gateway okno](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
-3. V okně obnovit klikněte na tlačítko **resetování** tlačítko.
+   ![Resetovat okno VPN Gateway](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
+3. V okně Reset klikněte na tlačítko **obnovit** .
 
 ## <a name="ps"></a>PowerShell
 
@@ -56,26 +56,26 @@ Můžete resetovat bránu VPN Resource Manageru pomocí webu Azure portal. Pokud
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Rutina pro obnovení brány je **resetování AzVirtualNetworkGateway**. Před provedením obnovení, ujistěte se, že máte nejnovější verzi [rutiny prostředí PowerShell Az](https://docs.microsoft.com/powershell/module/az.network). Následující příklad resetuje bránu virtuální sítě ve skupině prostředků TestRG1 s názvem brány VNet1GW:
+Rutina pro resetování brány je **resetována – AzVirtualNetworkGateway**. Před provedením resetu se ujistěte, že máte nejnovější verzi PowerShellu [AZ rutins](https://docs.microsoft.com/powershell/module/az.network). Následující příklad obnoví bránu virtuální sítě s názvem VNet1GW ve skupině prostředků TestRG1:
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
-Výsledek:
+Vyústit
 
-Když obdržíte výsledku vrácení, můžete předpokládat resetování brány byla úspěšná. Ale nic ve výsledku vrácené explicitně označuje, že obnovení bylo úspěšné. Pokud chcete prohlédněte si blíže Historie zobrazíte přesně při resetování brány došlo k chybě, můžete zobrazit tyto informace v [webu Azure portal](https://portal.azure.com). Na portálu přejděte na **"Název brány" -> Resource Health**.
+Když obdržíte výsledek vrácení, můžete předpokládat, že resetování brány bylo úspěšné. Nejedná se však o výsledek návratového výsledku, který indikuje, že bylo resetování úspěšné. Pokud se chcete podívat na historii, abyste viděli přesně, kdy došlo k obnovení brány, můžete tyto informace zobrazit v [Azure Portal](https://portal.azure.com). Na portálu přejděte na **"Gateway"-> Resource Health**.
 
 ### <a name="resetclassic"></a>Model nasazení Classic
 
-Rutina pro obnovení brány je **Reset-AzureVNetGateway**. Před provedením obnovení, ujistěte se, že máte nejnovější verzi [rutiny Powershellu služby správy (SM)](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets). Následující příklad resetuje bránu pro virtuální síť s názvem "ContosoVNet":
+Rutina pro resetování brány je **resetována – AzureVNetGateway**. Rutiny Azure PowerShell pro správu služeb musí být nainstalované místně na vašem počítači. Nemůžete použít Azure Cloud Shell. Před provedením resetu se ujistěte, že máte nejnovější verzi [rutin PowerShellu pro správu služeb (SM)](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets). Následující příklad obnoví bránu pro virtuální síť s názvem "ContosoVNet":
 
 ```powershell
 Reset-AzureVNetGateway –VnetName “ContosoVNet”
 ```
 
-Výsledek:
+Vyústit
 
 ```powershell
 Error          :
@@ -88,12 +88,12 @@ StatusCode     : OK
 
 ## <a name="cli"></a>Azure CLI
 
-Chcete-li obnovit brány, použijte [az network vnet-gateway reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway) příkazu. Následující příklad resetuje bránu virtuální sítě s názvem VNet5GW ve skupině prostředků TestRG5:
+Bránu resetujete tak, že použijete příkaz [AZ Network VNet-Gateway Reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway) . Následující příklad obnoví bránu virtuální sítě s názvem VNet5GW ve skupině prostředků TestRG5:
 
 ```azurecli
 az network vnet-gateway reset -n VNet5GW -g TestRG5
 ```
 
-Výsledek:
+Vyústit
 
-Když obdržíte výsledku vrácení, můžete předpokládat resetování brány byla úspěšná. Ale nic ve výsledku vrácené explicitně označuje, že obnovení bylo úspěšné. Pokud chcete prohlédněte si blíže Historie zobrazíte přesně při resetování brány došlo k chybě, můžete zobrazit tyto informace v [webu Azure portal](https://portal.azure.com). Na portálu přejděte na **"Název brány" -> Resource Health**.
+Když obdržíte výsledek vrácení, můžete předpokládat, že resetování brány bylo úspěšné. Nejedná se však o výsledek návratového výsledku, který indikuje, že bylo resetování úspěšné. Pokud se chcete podívat na historii, abyste viděli přesně, kdy došlo k obnovení brány, můžete tyto informace zobrazit v [Azure Portal](https://portal.azure.com). Na portálu přejděte na **"Gateway"-> Resource Health**.

@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c192a994ac5398d41e28a35267b922ba98b721cc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: dd898397b4aaec2e62558d12a3547f7b61d6d3fd
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69513615"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533466"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
 
@@ -126,15 +126,6 @@ Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služ
 >Aktualizovaný soubor je zveřejněný týdně. Tento soubor odráží aktuálně nasazené rozsahy a všechny nadcházející změny v rozsahu IP adres. Nové rozsahy, které se zobrazí v souboru, se v datových centrech nepoužijí aspoň na jeden týden.
 >
 > Každý týden je vhodné stáhnout nový soubor XML. Pak aktualizujte svůj web tak, aby správně identifikoval služby běžící v Azure. Uživatelé Azure ExpressRoute by si měli všimnout, že se tento soubor používá k aktualizaci inzerce protokolu BGP (Border Gateway Protocol) v Azure Space v první týden v měsíci.
-
-## <a name="introduction-video"></a>Úvodní video
-
-Raději se díváte, než čtete? Podívá se na následující video od května 2015, pokud byla konfigurace Azure Automation stavu poprvé oznámena.
-
-> [!NOTE]
-> I když jsou koncepty a životní cyklus popsané v tomto videu správné, konfigurace Azure Automation stavu po nahrání tohoto videa uplynula hodně. Je teď všeobecně dostupná, má v Azure Portal mnohem rozsáhlejší uživatelské rozhraní a podporuje spoustu dalších možností.
-
-> [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>Další kroky
 

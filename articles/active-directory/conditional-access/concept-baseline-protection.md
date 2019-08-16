@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819b2f3c54d97639eceae9aed60fdd5da2e7b3ef
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 572371f4abec413be5a2320c7d69d8126f26924f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608180"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533053"
 ---
 # <a name="what-are-baseline-policies"></a>Co jsou základní zásady?
 
@@ -41,7 +41,7 @@ Všechny čtyři tyto zásady budou mít vliv na starší toky ověřování, ja
 
 S ohledem na výkon a přístup k účtům správců byste je měli považovat za zvláštní péči. Jednou z běžných metod, jak zlepšit ochranu privilegovaných účtů, je vyžadovat silnější formu ověření účtu, když se používají k přihlášení. V Azure Active Directory můžete získat silnější ověření účtu tím, že budete vyžadovat, aby se správci zaregistrovali a používali službu Azure Multi-Factor Authentication.
 
-[Vyžadovat MFA pro správce (Preview)](howto-baseline-protect-administrators.md) je základní zásada, která vyžaduje vícefaktorové ověřování (MFA) pro následující role adresáře, které se považují za nejvíce privilegované role Azure AD:
+[Vyžadovat MFA pro správce (Preview)](howto-baseline-protect-administrators.md) je základní zásada, která vyžaduje vícefaktorové ověřování (MFA) pro následující role adresáře, které se považují za nejvíce privilegované role Azure AD:
 
 * Globální správce
 * Správce SharePointu
@@ -52,7 +52,7 @@ S ohledem na výkon a přístup k účtům správců byste je měli považovat z
 * Správce fakturace
 * Správce uživatelů
 
-Pokud má vaše organizace tyto účty používané ve skriptech nebo v kódu, zvažte jejich nahrazení pomocí [spravovaných identit](../managed-identities-azure-resources/overview.md).
+Pokud má vaše organizace tyto účty používané ve skriptech nebo v kódu, zvažte jejich nahrazení pomocí [spravovaných identit](../managed-identities-azure-resources/overview.md).
 
 ### <a name="end-user-protection-preview"></a>Ochrana koncového uživatele (Preview)
 
@@ -87,13 +87,13 @@ Aby bylo možné chránit privilegované akce, bude vyžadovat vícefaktorové o
 
 Postup při povolování standardních zásad:
 
-1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Přejděte na **Azure Active Directory** > **podmíněný přístup**.
 1. V seznamu zásad vyberte zásadu standardních hodnot, kterou chcete povolit.
 1. Nastavte **Povolit zásady** na **zapnuto**.
 1. Klikněte na Uložit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete v tématu:
 

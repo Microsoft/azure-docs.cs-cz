@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 884ded67c25aca78225baef2d7e4c5de1cc94fd0
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: c6a76f4188ecbf6ca778fdbcd23ac9fed2f60dde
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782294"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534660"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update Management
 
@@ -22,6 +22,42 @@ Tento článek popisuje řešení problémů, ke kterým může při použití U
 Došlo k potížím s agentem pro Hybrid Worker agenta, aby bylo možné zjistit příslušný problém. Další informace o poradci při potížích najdete v tématu [Poradce při potížích s aktualizací agenta](update-agent-issues.md). Všechny ostatní problémy najdete v podrobných informacích o možných problémech.
 
 ## <a name="general"></a>Obecné
+
+### <a name="rp-register"></a>Případě Nepovedlo se zaregistrovat poskytovatele prostředků služby Automation pro předplatná.
+
+#### <a name="issue"></a>Problém
+
+Při práci s řešeními ve vašem účtu Automation se může zobrazit následující chyba.
+
+```error
+Error details: Unable to register Automation Resource Provider for subscriptions:
+```
+
+#### <a name="cause"></a>Příčina
+
+Zprostředkovatel prostředků Automation není v předplatném zaregistrován.
+
+#### <a name="resolution"></a>Řešení
+
+Zprostředkovatele prostředků automatizace můžete zaregistrovat provedením následujících kroků v Azure Portal:
+
+1. Klikněte na **všechny služby** v dolním seznamu služeb Azure a pak vyberte předplatná ve skupině _Obecné_ služby.
+2. Vyberte své předplatné.
+3. V části _Nastavení_klikněte na **poskytovatelé prostředků** .
+4. V seznamu poskytovatelů prostředků ověřte, jestli je zaregistrovaný poskytovatel prostředků **Microsoft. Automation** .
+5. Pokud poskytovatel není uveden, zaregistrujte poskytovatele **Microsoft. Automation** pomocí kroků uvedených v části [ ](/azure/azure-resource-manager/resource-manager-register-provider-errors).
+
+### <a name="mw-exceeded"></a>Případě Naplánovaná Správa aktualizací se nezdařila s chybou MaintenanceWindowExceeded
+
+#### <a name="issue"></a>Problém
+
+Výchozí časové období údržby pro aktualizace je 120 minut. Časový interval pro správu a údržbu můžete zvýšit na maximálně 6 (6) hodin nebo 360 minut.
+
+#### <a name="resolution"></a>Řešení
+
+Upravte všechna neúspěšná naplánovaná nasazení aktualizací a zvyšte časový interval pro správu a údržbu.
+
+Další informace o časových obdobích údržby najdete v tématu [install Updates](../automation-update-management.md#install-updates).
 
 ### <a name="components-enabled-not-working"></a>Případě Součásti pro řešení ' Update Management ' byly povoleny a nyní je tento virtuální počítač konfigurován
 
@@ -298,7 +334,31 @@ Pokud problém s opravou nemůžete vyřešit, vytvořte kopii následujícího 
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
 ```
 
-### <a name="other"></a>Případě Můj problém není uvedený výše.
+## <a name="patches-are-not-installed"></a>Opravy nejsou nainstalovány.
+
+### <a name="machines-do-not-install-updates"></a>Počítače neinstalují aktualizace
+
+* Zkuste aktualizace spustit přímo na počítači. Pokud počítač nejde aktualizovat, projděte si [seznam potenciálních chyb v průvodci odstraňováním potíží](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult).
+* Pokud se aktualizace spustí místně, zkuste na počítači odebrat a znovu nainstalovat agenta podle pokynů v části [Odebrání virtuálního počítače z řešení Update Management](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-for-update-management).
+
+### <a name="i-know-updates-are-available-but-they-dont-show-as-needed-on-my-machines"></a>Ví, že aktualizace jsou k dispozici, ale v mých počítačích se nezobrazuje podle potřeby
+
+* Často k tomu dochází v případě, že jsou počítače nakonfigurované tak, aby získávaly aktualizace z WSUS/SCCM, ale WSUS/SCCM aktualizace neschválí.
+* Pokud chcete zkontrolovat, jestli jsou počítače nakonfigurované pro WSUS/SCCM, můžete [vzájemně porovnat klíč registru UseWUServer s klíči registru uvedenými v tomto dokumentu v části Konfigurace automatických aktualizací prostřednictvím úpravy registru](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s).
+
+### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>**Aktualizace se zobrazují jako nainstalované, ale na počítači je nemůžu najít**
+
+* Aktualizace se často nahrazují jinými aktualizacemi. Další informace najdete v části [Aktualizace se nahradila v průvodci odstraňováním potíží s webem Windows Update](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+
+### <a name="installing-updates-by-classification-on-linux"></a>**Instalace aktualizací podle klasifikace v Linuxu**
+
+* Pro nasazování aktualizací v Linuxu podle klasifikace (důležité aktualizace a aktualizace zabezpečení) platí důležité výhody a rizika, a to zejména pro CentOS. Tato [omezení jsou popsaná na stránce s přehledem řešení Update Management](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2).
+
+### <a name="kb2267602-is-consistently--missing"></a>**KB2267602 stále chybí**
+
+* KB2267602 je [aktualizace definice programu Windows Defender](https://www.microsoft.com/wdsi/definitions). Aktualizuje se každý den.
+
+## <a name="other"></a>Případě Můj problém není uvedený výše.
 
 ### <a name="issue"></a>Problém
 

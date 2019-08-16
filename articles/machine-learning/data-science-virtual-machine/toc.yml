@@ -19,9 +19,7 @@
       href: dsvm-ubuntu-intro.md
     - name: Vytvoření DSVM s CentOS
       href: linux-dsvm-intro.md
-    - name: Vytvoření virtuálního počítače pro hloubkové učení
-      href: provision-deep-learning-dsvm.md
-    - name: Vytvoření DSVM s Geo AI
+    - name: Vytvoření virtuálního počítače s geografickou umělou inteligencí pro datové vědy
       href: provision-geo-ai-dsvm.md
 - name: Koncepty
   items:

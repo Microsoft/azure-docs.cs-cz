@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: a24159a482c55496bb1e6031be951196258a6796
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 837231ca07abcfdbd6ce932bb24bd890d91506a8
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565469"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541453"
 ---
 Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit databázi grafu. 
 
-1. Klikněte na **Průzkumník dat** > **Nový graf**.
+1. Vyberte **Průzkumník dat** > **Nový graf**.
 
     Úplně vpravo se zobrazí oblast **Přidat graf**. Pokud ji nevidíte, možná se budete muset posunout doprava.
 
@@ -32,4 +32,4 @@ Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit 
     ID grafu|sample-graph|Jako název nové kolekce zadejte *sample-graph*. Názvy grafů mají stejné požadavky na znaky jako ID databází.
     Klíč oddílu| /pk |Všechny účty Cosmos DB potřebují ke horizontálnímu škálování klíč oddílu. Naučte se, jak vybrat vhodný klíč oddílu v [článku vytváření oddílů dat grafu](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
 
-3. Po vyplnění formuláře klikněte na **OK**.
+3. Po vyplnění formuláře vyberte **OK**.

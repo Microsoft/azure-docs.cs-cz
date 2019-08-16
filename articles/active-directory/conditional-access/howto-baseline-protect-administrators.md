@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213540a5b6c77146155365133f2cca08eea25351
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b00b061b1763d4b4e7236d8dc9ac1eedf7f923bc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608156"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533013"
 ---
 # <a name="baseline-policy-require-mfa-for-admins-preview"></a>Základní zásady: Vyžadovat MFA pro správce (Preview)
 
 Uživatelé s přístupem k privilegovaným účtům mají neomezený přístup k vašemu prostředí. Vzhledem k napájení těchto účtů byste je měli považovat za zvláštní péči. Jednou z běžných metod, jak zlepšit ochranu privilegovaných účtů, je vyžadovat při přihlášení silnější formu ověření účtu. V Azure Active Directory můžete získat silnější ověření účtu tím, že budete vyžadovat vícefaktorové ověřování (MFA).
 
-**Vyžadovat MFA pro správce (Preview)**  je [základní zásada](concept-baseline-protection.md) , která vyžaduje MFA pokaždé, když se přihlásí jedna z následujících rolí privilegovaného správce:
+**Vyžadovat MFA pro správce (Preview)** je [základní zásada](concept-baseline-protection.md) , která vyžaduje MFA pokaždé, když se přihlásí jedna z následujících rolí privilegovaného správce:
 
 * Globální správce
 * Správce SharePointu
@@ -52,11 +52,11 @@ Zásady standardních **hodnot zásad: Vyžadovat MFA pro správce (Preview)** j
 
 Chcete-li povolit tuto zásadu a chránit správce:
 
-1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Přejděte na **Azure Active Directory** > **podmíněný přístup**.
 1. V seznamu zásad vyberte **základní zásady: Vyžadovat MFA pro správce (Preview)** .
 1. Nastavte **Povolit zásadu** pro **okamžité použití zásad**.
-1. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
 > [!WARNING]
 > V budoucnu existovala možnost **automaticky povolit zásady** , pokud byla tato zásada ve verzi Preview. Tuto možnost jsme odebrali kvůli minimalizaci náhlého dopadu na uživatele. Pokud jste tuto možnost vybrali, když byla k dispozici, není nyní automaticky vybraná možnost **Nepoužívat zásady** . Pokud chtějí použít tuto základní zásady, můžete ji povolit v části výše uvedené kroky.

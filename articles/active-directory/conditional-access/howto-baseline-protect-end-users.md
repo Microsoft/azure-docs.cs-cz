@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608149"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532939"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Základní zásady: Ochrana koncového uživatele (Preview)
 
@@ -64,13 +64,13 @@ Zásady standardních **hodnot zásad: Ochrana koncového uživatele (Preview** 
 
 Chcete-li povolit tuto zásadu a chránit uživatele:
 
-1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Přejděte na **Azure Active Directory** > **podmíněný přístup**.
 1. V seznamu zásad vyberte **základní zásady: Ochrana koncového uživatele (Preview**).
 1. Nastavte **Povolit zásadu** pro **okamžité použití zásad**.
-1. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete v tématu:
 

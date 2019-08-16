@@ -1,61 +1,60 @@
 ---
-title: Vytvoření definice OpenAPI pro funkci s Azure API Management
+title: Vytvoření definice OpenAPI pro rozhraní API bez serveru s využitím Azure API Management
 description: Vytvořte definici OpenAPI, která umožní ostatním aplikacím a službám volat vaši funkci v Azure.
-services: functions
 keywords: OpenAPI, Swagger, cloud apps, cloud services,
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: fc724e241849f4519a0e353cb6789d3f83eaf4b9
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 54a4c6eba094231e8e73cdef87b911dfba20f657
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510443"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533538"
 ---
-# <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Vytvoření definice OpenAPI pro funkci s Azure API Management
+# <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Vytvoření definice OpenAPI pro rozhraní API bez serveru s využitím Azure API Management
 
 Rozhraní REST API se často popisují pomocí definice OpenAPI. Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API.
 
-V tomto kurzu vytvoříte funkci, která určí, jestli je nouzová oprava větrné turbíny nákladově efektivní. Pak vytvoříte definici OpenAPI pro funkci aplikace pomocí [Azure API Management](../api-management/api-management-key-concepts.md) tak, aby funkci lze volat z jiných aplikací a služeb.
+V tomto kurzu vytvoříte funkci, která určí, jestli je nouzová oprava větrné turbíny nákladově efektivní. Pak vytvoříte definici OpenAPI pro aplikaci Function App pomocí [Azure API Management](../api-management/api-management-key-concepts.md) tak, aby se funkce mohla volat z jiných aplikací a služeb.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření funkce v Azure
-> * Vygeneruje definici rozhraní OpenAPI pomocí služby Azure API Management
+> * Generování definice OpenAPI pomocí Azure API Management
 > * Otestování definice zavoláním funkce
 > * Stažení definice OpenAPI
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
-K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace function app umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
+K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
 ## <a name="create-the-function"></a>Vytvoření funkce
 
-Tento kurz používá funkci aktivovanou protokolem HTTP, který přijímá dva parametry:
+V tomto kurzu se používá funkce aktivované protokolem HTTP, která přijímá dva parametry:
 
-* Odhadovaný čas, aby turbíny opravit, v hodinách.
-* Kapacitu turbíny v kilowattech. 
+* Odhadovaná doba k provedení opravy turbíny (v hodinách)
+* Kapacita turbíny v kilowatthodinách. 
 
-Funkce pak vypočítá náklady na opravu a jaký může být výnos turbíny za 24 hodin. Chcete-li vytvořit HTTP funkce aktivovaná [webu Azure portal](https://portal.azure.com).
+Funkce pak vypočítá náklady na opravu a jaký může být výnos turbíny za 24 hodin. Vytvoření funkce aktivované protokolem HTTP v [Azure Portal](https://portal.azure.com).
 
-1. Rozbalte aplikaci funkcí a vyberte tlačítko **+** vedle položky **Funkce**. Vyberte **na portálu** > **pokračovat**.
+1. Rozbalte aplikaci funkcí a vyberte tlačítko **+** vedle položky **Funkce**. Vyberte**pokračovat** **v portálu** > .
 
-1. Vyberte **další šablony...** a pak vyberte **dokončit a zobrazení šablony**
+1. Vyberte **Další šablony...** a pak vyberte **Dokončit a zobrazit šablony** .
 
-1. Výběr triggeru HTTP, zadejte `TurbineRepair` pro funkci **název**, zvolte `Function` pro  **[úroveň ověřování](functions-bindings-http-webhook.md#http-auth)** a pak vyberte  **Vytvoření**.  
+1. Vyberte aktivační událost http, `TurbineRepair` zadejte **název**funkce, zvolte možnost `Function` pro **[úroveň ověřování](functions-bindings-http-webhook.md#http-auth)** a pak vyberte **vytvořit**.  
 
-    ![Vytvoření funkce protokolu HTTP pro OpenAPI](media/functions-openapi-definition/select-http-trigger-openapi.png)
+    ![Vytvoření funkce HTTP pro OpenAPI](media/functions-openapi-definition/select-http-trigger-openapi.png)
 
-1. Nahraďte jeho obsah run.csx C# skriptu souboru následujícím kódem a pak zvolte **Uložit**:
+1. Nahraďte obsah souboru skriptu run. csx C# následujícím kódem a potom zvolte **Uložit**:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -127,51 +126,51 @@ Funkce pak vypočítá náklady na opravu a jaký může být výnos turbíny za
     {"message":"Yes","revenueOpportunity":"$7200","costToFix":"$1600"}
     ```
 
-Nyní máte funkci, která určuje nákladovou efektivitu nouzových oprav. V dalším kroku vygenerujete definice OpenAPI pro aplikaci function app.
+Nyní máte funkci, která určuje nákladovou efektivitu nouzových oprav. Dále vygenerujete definici OpenAPI pro aplikaci Function App.
 
 ## <a name="generate-the-openapi-definition"></a>Generování definice OpenAPI
 
 Nyní jste připraveni vygenerovat definici OpenAPI.
 
-1. Pak vyberte aplikaci funkcí v **funkce platformy**, zvolte **API Management** a vyberte **vytvořit nový** pod **API Management**.
+1. Vyberte aplikaci Function App, potom v části **funkce platformy**zvolte možnost **API Management** a v části **API Management**vyberte **vytvořit novou** .
 
-    ![Zvolte rozhraní API Management v funkce platformy](media/functions-openapi-definition/select-all-settings-openapi.png)
+    ![Zvolit API Management ve funkcích platformy](media/functions-openapi-definition/select-all-settings-openapi.png)
 
-1. Pomocí API Management nastavení uvedená v tabulce pod obrázkem.
+1. Použijte nastavení API Management, jak je uvedeno v tabulce pod obrázkem.
 
     ![Vytvořit novou službu API Management](media/functions-openapi-definition/new-apim-service-openapi.png)
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Název** | Globálně jedinečný název | Název je generován a základě název vaší aplikace function App. |
-    | **Předplatné** | Vaše předplatné | Předplatné, ve kterém tento nový prostředek vytvoří. |  
-    | **[Skupina prostředků](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Stejného prostředku jako aplikace function app, který by měl získat nastavení za vás. |
-    | **Umístění** | Západní USA | Zvolte umístění západní USA. |
-    | **Název organizace** | Contoso | Název organizace používá na portálu pro vývojáře a e-mailových oznámení. |
-    | **E-mail správce** | e-mailu | E-mailu, který přijal systémová oznámení ze služby API Management. |
-    | **Cenová úroveň** | Využití (Preview) | Úroveň využití je ve verzi preview a není k dispozici ve všech oblastech. Úplné podrobnosti o cenách, najdete v článku [stránce s cenami API Management](https://azure.microsoft.com/pricing/details/api-management/) |
+    | **Název** | Globálně jedinečný název | Název se vygeneruje na základě názvu vaší aplikace Function App. |
+    | **Předplatné** | Vaše předplatné | Předplatné, ve kterém je tento nový prostředek vytvořen. |  
+    | **[Skupina prostředků](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Stejný prostředek jako aplikace Function App, který by měl být nastaven za vás. |
+    | **Location** | USA – západ | Vyberte umístění Západní USA. |
+    | **Název organizace** | Contoso | Název organizace, který se používá na portálu pro vývojáře, a pro e-mailová oznámení. |
+    | **E-mail správce** | Váš e-mail | E-mail, který přijal systémová oznámení z API Management. |
+    | **Cenová úroveň** | Spotřeba (Preview) | Úroveň spotřeby je ve verzi Preview a není dostupná ve všech oblastech. Úplné podrobnosti o cenách najdete na [stránce s cenami API Management](https://azure.microsoft.com/pricing/details/api-management/) . |
 
-1. Zvolte **vytvořit** k vytvoření instance API Management, což může trvat několik minut.
+1. Zvolením možnosti **vytvořit** vytvořte instanci API Management, což může trvat několik minut.
 
-1. Vyberte **povolení Application Insights** odeslat protokoly na stejném místě jako funkce aplikace, potvrďte zbývající výchozí hodnoty a vyberte **rozhraní API odkazu**.
+1. Vyberte **povolit Application Insights** pro posílání protokolů na stejné místo jako aplikace Functions, potom přijměte zbývající výchozí hodnoty a vyberte **propojit rozhraní API**.
 
-1. **Import Azure Functions** otevře s **TurbineRepair** funkce zvýrazní. Zvolte **vyberte** pokračujte.
+1. Otevře se **Azure Functions importu** se zvýrazněnou funkcí **TurbineRepair** . Pokračujte výběrem **možnosti vybrat** .
 
-    ![Služba Azure Functions importovat do API managementu](media/functions-openapi-definition/import-function-openapi.png)
+    ![Importovat Azure Functions do API Management](media/functions-openapi-definition/import-function-openapi.png)
 
-1. V **vytvořit z aplikace Function App** stránce, přijměte výchozí hodnoty a vyberte **Create**
+1. Na stránce **vytvořit z Function App** přijměte výchozí hodnoty a vyberte **vytvořit** .
 
     ![Vytvořit z aplikace Function App](media/functions-openapi-definition/create-function-openapi.png)
 
-Rozhraní API je vytvořený pro funkci.
+Rozhraní API se teď pro funkci vytvořilo.
 
 ## <a name="test-the-api"></a>Testovat rozhraní API
 
-Než použijete definici OpenAPI, byste měli ověřit, že rozhraní API funguje.
+Před použitím definice OpenAPI byste měli ověřit, že rozhraní API funguje.
 
-1. Na **testovací** funkce, vyberte na kartě **příspěvek** operace.
+1. Na kartě **test** ve vaší funkci vyberte operace **post** .
 
-1. Zadejte hodnoty pro **hodin** a **kapacity**
+1. Zadejte hodnoty pro **hodiny** a **kapacitu** .
 
     ```json
     {
@@ -180,15 +179,15 @@ Než použijete definici OpenAPI, byste měli ověřit, že rozhraní API funguj
     }
     ```
 
-1. Klikněte na tlačítko **odeslat**, následně zobrazit odpověď HTTP.
+1. Klikněte na **Odeslat**a pak ZOBRAZTE odpověď HTTP.
 
-    ![Test rozhraní API – funkce](media/functions-openapi-definition/test-function-api-openapi.png)
+    ![Rozhraní API pro testování funkcí](media/functions-openapi-definition/test-function-api-openapi.png)
 
 ## <a name="download-the-openapi-definition"></a>Stažení definice OpenAPI
 
-Pokud vaše rozhraní API funguje podle očekávání, si můžete stáhnout definici OpenAPI.
+Pokud vaše rozhraní API funguje podle očekávání, můžete si stáhnout definici OpenAPI.
 
-1. Vyberte **definice stáhnout OpenAPI** v horní části stránky.
+1. V horní části stránky vyberte **Stáhnout definici openapi** .
    
    ![Stažení definice OpenAPI](media/functions-openapi-definition/download-definition.png)
 
@@ -196,9 +195,9 @@ Pokud vaše rozhraní API funguje podle očekávání, si můžete stáhnout def
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Integrace rozhraní API Management mají použít ke generování definice OpenAPI funkcí. Teď můžete upravit definice ve službě API Management na portálu. Můžete také [Další informace o službě API Management](../api-management/api-management-key-concepts.md).
+Použili jste integraci API Management k vygenerování definice OpenAPI vašich funkcí. Nyní můžete upravit definici v API Management na portálu. Můžete si taky [přečíst další informace o API Management](../api-management/api-management-key-concepts.md).
 
 > [!div class="nextstepaction"]
-> [Úprava definice OpenAPI ve službě API Management](../api-management/edit-api.md)
+> [Upravte definici OpenAPI v API Management](../api-management/edit-api.md)

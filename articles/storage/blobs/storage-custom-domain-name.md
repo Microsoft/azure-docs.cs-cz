@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: ae809dd4841d6df8caabebfaded263b52f386834
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2359befc05bff867a8f8b17943ed67d906ff4971
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845041"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534340"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurace vlastního názvu domény pro účet služby Azure Storage
 
@@ -27,7 +27,7 @@ Můžete nakonfigurovat vlastní doménu pro přístup k datům objektů BLOB v 
 > Účty úložiště aktuálně podporují jenom jeden vlastní název domény pro každý účet. Vlastní název domény se nedá namapovat na koncové body služby Web a BLOB Service.
 > 
 > [!NOTE]
-> Mapování funguje pouze pro subdomény (např. www\.contoso.com). Pokud chcete, aby byl váš webový koncový bod dostupný v kořenové doméně (např. contoso.com), musíte [použít Azure CDN s vlastními doménami](storage-https-custom-domain-cdn.md) .
+> Mapování funguje pouze pro subdomény (např. www\.contoso.com). Pokud chcete, aby byl váš webový koncový bod dostupný v kořenové doméně (např. contoso.com), musíte [do svého koncového bodu Azure CDN přidat vlastní doménu](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
 Následující tabulka obsahuje několik ukázkových adres URL pro data objektů BLOB nacházející se v účtu úložiště s názvem *mystorageaccount*. Vlastní subdoménou, která je zaregistrovaná pro účet úložiště, je *Webová\.contoso.com*:
 

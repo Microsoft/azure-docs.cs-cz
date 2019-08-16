@@ -471,14 +471,6 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: Rozhraní API pro naplnění SaaS – nejčastější dotazy
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
-            - name: Registrace aplikace SaaS
-              href: ./partner-center-portal/pc-saas-registration.md
-            - name: Rozhraní API pro naplnění SaaS v2
-              href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
-            - name: Rozhraní API pro naplnění SaaS v1 (zastaralá)
-              href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
-            - name: Rozhraní API pro naplnění SaaS – nejčastější dotazy
-              href: ./partner-center-portal/saas-fulfillment-apis-faq.md
         - name: Otestování nabídky
           href: ./partner-center-portal/test-drive.md
     - name: Stav publikování

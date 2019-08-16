@@ -6,8 +6,6 @@
       href: security-center-intro.md
     - name: Podporované platformy a funkce služby Security Center
       href: security-center-os-coverage.md
-    - name: Vyhodnocení ochrany koncových bodů a doporučení
-      href: security-center-endpoint-protection.md
 - name: Šablony Rychlý start
   expanded: true
   items:
@@ -45,6 +43,24 @@
       href: security-center-incident-response.md
     - name: Správa napříč tenanty
       href: security-center-cross-tenant-management.md
+    - name: Upozornění detekce hrozeb
+      items:
+        - name: Přehled výstrah zabezpečení
+          href: security-center-alerts-overview.md
+        - name: Detekce hrozeb pro virtuální počítače a servery
+          href: security-center-alerts-iaas.md
+        - name: Detekce hrozeb pro cloudové nativní výpočetní prostředí
+          href: security-center-alerts-compute.md
+        - name: Detekce hrozeb pro datové služby
+          href: security-center-alerts-data-services.md
+        - name: Detekce hrozeb pro vrstvu služeb Azure
+          href: security-center-alerts-service-layer.md
+        - name: Integrace s produkty zabezpečení Azure
+          href: security-center-alerts-integration.md
+        - name: Korelace inteligentních výstrah v cloudu (incidenty)
+          href: security-center-alerts-cloud-smart.md
+        - name: Ověřování výstrah (testovací soubor EICAR)
+          href: security-center-alert-validation.md
 - name: Návody
   items:
     - name: Zlepšení skóre Secure Score
@@ -105,42 +121,16 @@
           href: security-center-file-integrity-monitoring.md
         - name: Adaptivní posilování zabezpečení sítě
           href: security-center-adaptive-network-hardening.md
-    - name: Upozornění detekce hrozeb
-      items:
-        - name: Přehled výstrah zabezpečení
-          href: security-center-alerts-overview.md
-        - name: Detekce hrozeb pro virtuální počítače a servery
-          href: security-center-alerts-iaas.md
-        - name: Detekce hrozeb pro cloudové nativní výpočetní prostředí
-          href: security-center-alerts-compute.md
-        - name: Detekce hrozeb pro datové služby
-          href: security-center-alerts-data-services.md
-        - name: Detekce hrozeb pro vrstvu služeb Azure
-          href: security-center-alerts-service-layer.md
-        - name: Integrace s produkty zabezpečení Azure
-          href: security-center-alerts-integration.md
-        - name: Korelace inteligentních výstrah v cloudu (incidenty)
-          href: security-center-alerts-cloud-smart.md
-        - name: Ověřování výstrah (testovací soubor EICAR)
-          href: security-center-alert-validation.md
     - name: Archiv
       items:
         - name: Použít šifrování disku
           href: security-center-apply-disk-encryption.md
         - name: Nainstalovat aktualizace systému
           href: security-center-apply-system-updates.md
-        - name: Povolení šifrování pro účet úložiště
-          href: security-center-enable-encryption-for-storage-account.md
-        - name: Povolit agenta virtuálního počítače
-          href: security-center-enable-vm-agent.md
         - name: Nainstalovat Endpoint Protection
           href: security-center-install-endpoint-protection.md
         - name: Restartovat po aktualizacích systému
           href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
-        - name: Náprava konfigurací zabezpečení
-          href: security-center-remediate-os-vulnerabilities.md
-        - name: Aktualizace verze operačního systému
-          href: security-center-update-os-version.md
         - name: Není nainstalováno posouzení ohrožení zabezpečení
           href: security-center-vulnerability-assessment-recommendations.md
         - name: Přidání brány firewall webových aplikací
@@ -191,6 +181,8 @@
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Vyřazení funkcí a rozhraní API (červenec 2019)
       href: security-center-features-retirement-july2019.md
+    - name: Vyhodnocení ochrany koncových bodů a doporučení
+      href: security-center-endpoint-protection.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

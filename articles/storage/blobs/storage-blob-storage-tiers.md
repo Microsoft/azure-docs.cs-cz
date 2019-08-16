@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 8f180308133ffba12cc3bffb19130aa7a129da9f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 48c6d6ed60045d906fcb711bd07ab492b6bbf488
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952905"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543684"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: horká, studená a archivní úroveň přístupu
 
@@ -80,6 +80,7 @@ Mezi scénáře použití archivní úrovně přístupu patří:
 ### <a name="blob-rehydration"></a>Dosazování objektů blob
 
 [!INCLUDE [storage-blob-rehydrate-include](../../../includes/storage-blob-rehydrate-include.md)]
+Další informace najdete v tématu [dehydratované data objektů BLOB z archivní úrovně](storage-blob-rehydration.md) .  
 
 ## <a name="account-level-tiering"></a>Vrstvení na úrovni účtu
 
@@ -164,11 +165,13 @@ V tomto oddílu jsou předvedené následující scénáře s využitím webu Az
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. Pokud chcete přejít na objekt BLOB ve vašem účtu úložiště, vyberte **všechny prostředky**, vyberte svůj účet úložiště, vyberte svůj kontejner a pak vyberte svůj objekt BLOB.
+1. Pokud chcete přejít na objekt blob ve vašem účtu úložiště, vyberte Všechny prostředky, vyberte účet úložiště a potom vyberte objekt blob.
 
-1. V okně **vlastností objektu BLOB** vyberte rozevírací nabídku **úroveň přístupu** a vyberte úroveň přístupu **Hot**, **studená**nebo **archivní** .
+1. V okně **vlastností objektu BLOB** vyberte tlačítko **změnit úroveň** a otevřete okno vrstvy.
 
-1. V horní části okna klikněte na **Uložit**.
+1. Vyberte úroveňpřístupu horká, **studená**nebo **archivní** . Pokud je objekt BLOB v současné době v archivu a chcete ho znovu vyhodnotit do online úrovně, můžete také vybrat možnost rehydratované prioritu **Standard** nebo **High**.
+
+1. Klikněte na **OK** v dolní části okna.
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
@@ -238,13 +241,15 @@ Ovládání datových vrstev na úrovni objektů blob a úložiště archivu pod
 
 Úložiště dat spolu s dalšími omezeními se nastavuje na úrovni účtu a ne na úrovni přístupu. Proto se můžete rozhodnout použít celý limit v jedné vrstvě nebo ve všech třech vrstvách. Další informace najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 ### <a name="evaluate-hot-cool-and-archive-in-gpv2-and-blob-storage-accounts"></a>Vyhodnotit horkou, studenou a archivní v účtech GPv2 a BLOB Storage
 
 [Ověření dostupnosti horké, studené a archivní úrovně v jednotlivých oblastech](https://azure.microsoft.com/regions/#services)
 
 [Správa životního cyklu služby Azure Blob Storage](storage-lifecycle-management-concepts.md)
+
+[Přečtěte si informace o prodehydratacích dat objektů BLOB z archivní úrovně.](storage-blob-rehydration.md)
 
 [Zapnutí metrik Azure Storage a vyhodnocení používání aktuálních účtů úložiště](../common/storage-enable-and-view-metrics.md)
 

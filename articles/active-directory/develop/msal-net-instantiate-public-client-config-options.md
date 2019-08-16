@@ -1,9 +1,9 @@
 ---
-title: Vytvoření instance aplikace veřejným klientem s možnostmi (knihovna Microsoft Authentication Library pro .NET) | Azure
-description: Zjistěte, jak vytvořit instanci aplikace veřejným klientem s možnostmi konfigurace pomocí knihovna Microsoft Authentication Library pro .NET (MSAL.NET).
+title: Vytvoření instance veřejné klientské aplikace s možnostmi (Microsoft Authentication Library pro .NET) | Azure
+description: Naučte se vytvářet instance veřejné klientské aplikace s možnostmi konfigurace pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,30 +13,30 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 125bbf9aed54fb00f039aeffddd5cc1aad3360a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1311e047b63cc9b5cccc785fbcd118db29f7c4bd
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544404"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532617"
 ---
-# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance aplikace veřejným klientem s možnostmi konfigurace pomocí MSAL.NET
+# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance veřejné klientské aplikace s možnostmi konfigurace pomocí MSAL.NET
 
-Tento článek popisuje, jak vytvořit instanci [aplikace veřejným klientem](msal-client-applications.md) pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).  Aplikace je vytvořena instance s možnostmi konfigurace definované v souboru nastavení.
+Tento článek popisuje, jak vytvořit instanci [veřejné klientské aplikace](msal-client-applications.md) pomocí knihovny Microsoft Authentication Library pro .net (MSAL.NET).  Instance aplikace je vytvořena s možnostmi konfigurace definovanými v souboru nastavení.
 
-Před inicializací aplikace, musíte nejprve [zaregistrovat](quickstart-register-app.md) ho tak, aby vaše aplikace je možné integrovat s platformou identity Microsoft. Po registraci může potřebovat následující informace (který se nachází na webu Azure Portal):
+Před inicializací aplikace je nejprve nutné ji [zaregistrovat](quickstart-register-app.md) , aby bylo možné aplikaci integrovat s platformou Microsoft identity. Po registraci možná budete potřebovat následující informace (které najdete v Azure Portal):
 
 - ID klienta (řetězec představující GUID)
-- Adresa URL zprostředkovatele identity (s názvem instance) a skupinou přihlášení pro aplikaci. Tyto dva parametry jsou souhrnně označovány jako autorita.
-- ID tenanta, pokud píšete řádek obchodní aplikace pouze pro vaši organizaci (také pojmenované jednoho tenanta aplikaci).
-- Pro webové aplikace a někdy pro aplikace veřejným klientem (zejména když vaše aplikace potřebuje pomocí zprostředkovatele) budete mít také nastavíte redirectUri kde kontaktuje zprostředkovatele identity back aplikace s použitím tokenů zabezpečení.
+- Adresa URL zprostředkovatele identity (pojmenovaná instance) a cílová skupina pro přihlášení k vaší aplikaci. Tyto dva parametry jsou souhrnně známé jako autorita.
+- ID tenanta, pokud píšete obchodní aplikaci výhradně pro vaši organizaci (nazývá se jenom jediná aplikace tenanta).
+- Pro webové aplikace a někdy pro veřejné klientské aplikace (zejména v případě, že vaše aplikace potřebuje použít zprostředkovatele) nastavíte také redirectUri, kde bude poskytovatel identity kontaktovat zpět vaší aplikaci pomocí tokenů zabezpečení.
 
 
-Aplikace konzoly .NET Core může mít následující *appsettings.json* konfiguračního souboru:
+Konzolová aplikace .NET Core může mít následující konfigurační soubor *appSettings. JSON* :
 
 ```json
 {
@@ -52,7 +52,7 @@ Aplikace konzoly .NET Core může mít následující *appsettings.json* konfigu
 }
 ```
 
-Následující kód načte tento soubor pomocí rozhraní .NET framework konfigurace:
+Následující kód přečte tento soubor pomocí konfiguračního rozhraní .NET:
 
 ```csharp
 public class SampleConfiguration
@@ -94,7 +94,7 @@ public class SampleConfiguration
 }
 ```
 
-Následující kód vytvoří aplikace pomocí konfigurace ze souboru nastavení:
+Následující kód vytvoří aplikaci pomocí konfigurace ze souboru nastavení:
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");

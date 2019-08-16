@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/06/2019
-ms.openlocfilehash: 8368ebfca4cdd72c5c455a04e29b6c0cb44938ea
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/14/2019
+ms.openlocfilehash: 6d729d9303326dd43f3bc5ae943d6ab788c818f3
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935403"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534443"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Službu Apache HBase Master (HMaster) se nepodařilo spustit ve službě Azure HDInsight.
 
@@ -25,13 +25,17 @@ Během procesu spuštění byly zjištěny neočekávané soubory.
 
 ### <a name="cause"></a>Příčina
 
-Během procesu spuštění provede HMaster spoustu inicializačních kroků, včetně přesunu dat ze složky (. tmp) do složky data. HMaster také prohlíží složku WALs (zapisovat do protokolů) a zjistí, jestli nejsou žádné neaktivní servery oblastí. Ve všech těchto situacích se jedná o základní `list` příkaz v těchto složkách. Pokud v některé z těchto složek dojde kdykoli k neočekávanému souboru, vyvolá výjimku, a proto se nespustí.
+Během procesu spuštění provede HMaster spoustu inicializačních kroků, včetně přesunu dat ze složky (. tmp) do složky data. HMaster také zjistí, jestli neexistují žádné nereagující servery oblastí (WAL).
+
+HMaster provede základní příkaz seznamu ve složkách WAL. Pokud HMaster zobrazí neočekávaný soubor v některé z těchto složek, vyvolá výjimku a nespustí se.
 
 ### <a name="resolution"></a>Řešení
 
-V takové situaci zkontrolujte zásobník volání, abyste viděli, která složka může způsobovat problém (například složka WALs nebo. tmp). Potom přes Průzkumníka cloudu nebo pomocí příkazů HDFS Najděte soubor problému. Souborem problému je obvykle `*-renamePending.json` soubor (soubor deníku používaný k implementaci operace atomické přejmenování v ovladači WASB). V důsledku chyb v této implementaci mohou být takové soubory ponechány v případě selhání procesu. Vynutit odstranění tohoto souboru přes Průzkumníka cloudu. Kromě toho může být v tomto umístění dočasný soubor s charakteristikou $. Soubor nejde zobrazit přes Průzkumníka cloudu a jenom pomocí příkazu HDFS `ls` . K odstranění tohoto souboru můžete `hdfs dfs -rm //\$\$\$.\$\$\$` použít příkaz HDFS.
+Zkontrolujte zásobník volání a pokuste se určit, která složka může způsobovat problém (například může se jednat o složku WAL nebo složku. tmp). Potom v Průzkumníku cloudu nebo pomocí příkazů HDFS zkuste najít soubor problému. Obvykle se jedná o `*-renamePending.json` soubor. `*-renamePending.json` (Soubor je soubor deníku, který se používá k implementaci operace pro atomické přejmenování v ovladači WASB. Z důvodu chyb v této implementaci mohou být tyto soubory ponechány po selhání procesu a tak dále.) Vynutit – odstraňte tento soubor buď v Průzkumníku cloudu, nebo pomocí příkazů HDFS.
 
-Po odebrání souboru problému by se měl HMaster spustit okamžitě.
+V tomto umístění může být někdy také dočasný soubor s názvem něco `$$$.$$$` podobného. K zobrazení tohoto souboru je `ls` nutné použít příkaz HDFS. soubor nelze v Průzkumníkovi cloudu zobrazit. K odstranění tohoto souboru použijte příkaz `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`HDFS.
+
+Po spuštění těchto příkazů by se měl HMaster spustit hned.
 
 ---
 
@@ -39,7 +43,7 @@ Po odebrání souboru problému by se měl HMaster spustit okamžitě.
 
 ### <a name="issue"></a>Problém
 
-Protokol HMaster zobrazí chybovou zprávu podobnou "žádná adresa serveru uvedená v části hbaes: meta pro oblast XXX".
+Může se zobrazit zpráva s `hbase: meta` oznámením, že tabulka není online. Spuštění `hbck` může hlásit, `hbase: meta table replicaId 0 is not found on any region.` že v protokolech HMaster se může zobrazit zpráva: `No server address listed in hbase: meta for region hbase: backup <region name>`.  
 
 ### <a name="cause"></a>Příčina
 
@@ -47,20 +51,20 @@ HMaster nebylo možné inicializovat po restartování HBA.
 
 ### <a name="resolution"></a>Řešení
 
-1. V prostředí HBA spusťte následující příkazy (změňte skutečné hodnoty podle potřeby):
+1. V prostředí HBA zadejte následující příkazy (podle potřeby změňte skutečné hodnoty):
 
-    ```
+    ```hbase
     scan 'hbase:meta'
-    delete 'hbase:meta','hbase:backup <region name>','<column name>' 
+    delete 'hbase:meta','hbase:backup <region name>','<column name>'
     ```
 
-1. Odstraňte položku HBA: Namespace, protože při kontrole adaptérů HBA: tabulka oboru názvů může být hlášena stejná chyba.
+1. `hbase: namespace` Odstraňte položku. Tato položka může být stejná jako chyba, která je hlášena při `hbase: namespace` prohledávání tabulky.
 
 1. Restartujte aktivní HMaster z uživatelského rozhraní Ambari a zobrazte adaptéry HBA ve spuštěném stavu.
 
-1. Spusťte následující příkaz v prostředí HBA a zobrazte všechny offline tabulky:
+1. V prostředí HBA spusťte následující příkaz a zobrazte tak všechny offline tabulky:
 
-    ```
+    ```hbase
     hbase hbck -ignorePreCheckPermission -fixAssignments
     ```
 
@@ -70,29 +74,29 @@ HMaster nebylo možné inicializovat po restartování HBA.
 
 ### <a name="issue"></a>Problém
 
-HMaster vyprší s závažnou výjimkou jako `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`.
+HMaster vyprší s závažnou výjimkou podobnou této: `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`.
 
 ### <a name="cause"></a>Příčina
 
-Časový limit je známá vada s HMaster. Obecné úlohy při spuštění clusteru můžou trvat dlouhou dobu. HMaster se vypne, pokud ještě není přiřazená tabulka oboru názvů. Úkony po spuštění dochází tam, kde velké množství nevyprázdněných dat existuje a není dostačující časový limit pět minut.
+K tomuto problému může dojít, pokud máte spoustu tabulek a oblastí, které se při restartování služeb HMaster nevyprázdnily. Časový limit je známá vada s HMaster. Obecné úlohy při spuštění clusteru můžou trvat dlouhou dobu. HMaster se vypne, pokud ještě není přiřazená tabulka oboru názvů. Úkony po spuštění dochází tam, kde velké množství nevyprázdněných dat existuje a není dostačující časový limit pět minut.
 
 ### <a name="resolution"></a>Řešení
 
-1. Přístup k uživatelskému rozhraní Ambari, přejděte do části HBA – > Konfigurace, `hbase-site.xml` v části vlastní přidejte následující nastavení:
+1. Z uživatelského rozhraní Apache Ambari přejdete do části **HBA** > **Konfigurace**. Do vlastního `hbase-site.xml` souboru přidejte následující nastavení:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
     ```
 
-1. Restartujte požadované služby (hlavně HMaster a případně jiné služby HBA).
+1. Restartujte požadované služby (HMaster a případně jiné služby HBA).
 
 ---
 
-## <a name="scenario-frequent-regionserver-restarts"></a>Scénář: Časté regionserver restartování
+## <a name="scenario-frequent-region-server-restarts"></a>Scénář: Častý restart serveru oblasti
 
 ### <a name="issue"></a>Problém
 
-Uzly jsou pravidelně restartovány. V protokolech regionserver se můžou zobrazit podobné položky:
+Uzly jsou pravidelně restartovány. V protokolech serveru oblastí se můžou zobrazit podobné položky:
 
 ```
 2017-05-09 17:45:07,683 WARN  [JvmPauseMonitor] util.JvmPauseMonitor: Detected pause in JVM or host machine (eg GC): pause of approximately 31000ms
@@ -102,15 +106,15 @@ Uzly jsou pravidelně restartovány. V protokolech regionserver se můžou zobra
 
 ### <a name="cause"></a>Příčina
 
-JVM pozastavení GC na dlouhé regionserver. Pozastavení způsobí, že regionserver přestane reagovat a nebude moct poslat srdce na HMaster v rámci časového limitu relace ZK 40s. HMaster bude přesvědčena, že regionserver je mrtvý a přeruší regionserver a restartuje se.
+Pozastavení `regionserver` JVM GC. Pozastavení bude mít za `regionserver` následek nereagovat a nebude moct odeslat srdcový signál do HMaster v rámci časového limitu ZK relace 40s. HMaster se bude `regionserver` domnívat, že `regionserver` bude nedoručená a restartuje se.
 
 ### <a name="resolution"></a>Řešení
 
-Změňte časový limit relace Zookeeper, ne pouze nastavení `zookeeper.session.timeout` HBA-site-site, ale také Zookeeper nastavení `maxSessionTimeout` . cfg musí být změněno.
+Změňte časový limit relace Zookeeper, ne pouze `hbase-site` nastavení `zookeeper.session.timeout` , ale také `zoo.cfg` je `maxSessionTimeout` třeba změnit nastavení Zookeeper.
 
 1. Přístup k uživatelskému rozhraní Ambari, přejděte na **adaptéry HBA-> konfigurace-> nastavení**, v části časové limity změňte hodnotu časový limit relace Zookeeper.
 
-1. Přístup k uživatelskému rozhraní Ambari, přejděte na **Zookeeper-> config-> Custom v souboru** . cfg, přidejte nebo změňte následující nastavení. Ujistěte se, že hodnota je stejná jako HBA `zookeeper.session.timeout`.
+1. Přístup k uživatelskému rozhraní Ambari, přejděte na **Zookeeper-> config-> Custom** `zoo.cfg`, přidejte nebo změňte následující nastavení. Ujistěte se, že hodnota je stejná jako HBA `zookeeper.session.timeout`.
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -136,7 +140,7 @@ Nastavte adaptéry HBA. RootDir: wasb://@.blob.core.windows.net/hbase a restartu
 
 ---
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

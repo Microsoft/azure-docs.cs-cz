@@ -5,21 +5,25 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e2e91dc91cf0fbe6827808785a4c3cc25b06542b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 93f6bc8533218af7f0e6dcd1c5f7be6fe8c00e29
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174827"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69520825"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
-### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>Je možné používat vlastní interní kořenové certifikační autority infrastruktury veřejných klíčů pro připojení Point-to-Site?
+### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Můžu použít vlastní interní kořenovou certifikační autoritu PKI ke generování certifikátů pro připojení Point-to-site?
 
 Ano. Dříve bylo možné používat pouze kořenové certifikáty podepsané svým držitelem. I nyní je možné nahrát 20 kořenových certifikátů.
+
+### <a name="can-i-use-certificates-from-azure-key-vault"></a>Můžu použít certifikáty z Azure Key Vault?
+
+Ne.
 
 ### <a name="what-tools-can-i-use-to-create-certificates"></a>Jaké nástroje se dají použít k vytvoření certifikátů?
 
@@ -27,11 +31,11 @@ Můžete využít vaše podnikové řešení infrastruktury veřejných klíčů
 
 ### <a name="certsettings"></a>Existují nějaké pokyny pro parametry a nastavení certifikátů?
 
-* **Interní řešení infrastruktury veřejných KLÍČŮ/podnikové infrastruktury veřejných KLÍČŮ:** Postup [generování certifikátů](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
+* **Interní řešení PKI/podnik PKI:** Přečtěte si postup pro [generování certifikátů](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
 
-* **Azure PowerShell:** Zobrazit [prostředí Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) kde najdete kroky.
+* **Azure PowerShell:** Postup najdete v článku o [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) .
 
-* **MakeCert:** Zobrazit [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) kde najdete kroky.
+* **MakeCert:** Postup najdete v článku [Makecert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) .
 
 * **OpenSSL:** 
 
