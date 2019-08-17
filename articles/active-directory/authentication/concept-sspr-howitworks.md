@@ -1,208 +1,203 @@
 ---
-title: Samoobslužné resetování hesla podrobné informace – Azure Active Directory
-description: Jak resetování hesla pomocí samoobslužné služby práce
+title: Samoobslužné resetování hesla s hloubkou podrobně-Azure Active Directory
+description: Jak funguje Samoobslužné resetování hesla
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c31867f4de0e49e2c82733dc859f17ba060bdaa
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60415603"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69561335"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla Azure AD
 
-Jak samoobslužné služby pro resetování hesla (SSPR)? Co tato možnost znamená rozhraní? Pokračujte ve čtení a zjistěte další informace o samoobslužné resetování HESLA Azure Active Directory (Azure AD).
+Jak funguje Samoobslužné resetování hesla (SSPR)? Co tato možnost znamená v rozhraní? Pokud chcete získat další informace o Azure Active Directory (Azure AD) SSPR, pokračujte ve čtení.
 
-|     |
-| --- |
-| Oznámení mobilní aplikace a kód mobilní aplikace jako metody pro hesla pomocí samoobslužné služby Azure AD obnovení jsou funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+## <a name="how-does-the-password-reset-portal-work"></a>Jak funguje portál pro resetování hesla?
 
-## <a name="how-does-the-password-reset-portal-work"></a>Jak resetovat heslo portálu?
+Když uživatel přejde na portál pro resetování hesla, spustí se pracovní postup, který určí:
 
-Když uživatel přejde na portál pro resetování hesla, pracovní postup je vydáno k určení:
+   * Jak má být stránka lokalizována?
+   * Je uživatelský účet platný?
+   * Jakou organizaci uživatel patří?
+   * Kde je spravované heslo uživatele?
+   * Má uživatel licenci používat tuto funkci?
 
-   * Jak by měl být lokalizována stránky?
-   * Je platný uživatelský účet?
-   * Organizace, které uživatel patří do?
-   * Kde se heslo uživatele spravuje?
-   * Je uživatel licenci k použití funkce?
+Další informace o logice za stránku pro resetování hesla najdete v následujících krocích:
 
-Čtení následujícím postupem Další informace o logice heslo resetovat stránky:
-
-1. Uživatel vybere **nemá přístup k účtu** propojení nebo přejde přímo na [ https://aka.ms/sspr ](https://passwordreset.microsoftonline.com).
-   * Podle národního prostředí prohlížeč, prostředí se vykreslí v příslušném jazyce. Prostředí pro resetování hesla je lokalizován do stejných jazyků, které podporují Office 365.
-   * Chcete-li zobrazit resetování hesla portálu v jiné lokalizovaného jazyka přidejte "? mkt =" konec heslo resetovat adresy URL v příkladu, který následuje lokalizace do španělštiny [ https://passwordreset.microsoftonline.com/?mkt=es-us ](https://passwordreset.microsoftonline.com/?mkt=es-us).
-2. Uživatel zadá ID uživatele a předává testu captcha.
-3. Azure AD ověří, že uživatel je možné použít tuto funkci provedením následující kontroly:
-   * Kontroluje, zda uživatel má povolení této funkce a Azure AD má přiřazenou licenci.
-     * Pokud uživatel nemá povolení této funkce nebo mít přiřazenou licenci, uživateli se zobrazí výzva, kontaktovat svého správce resetovat heslo.
-   * Kontroluje, zda uživatel má správné ověřování metody definované na svém účtu v souladu se zásadami správce.
-     * Pokud tato zásada vyžaduje jenom jedna metoda, pak zajišťuje, že uživatel má příslušná data definovaná pro nejméně jednu z metod ověřování ve zásad správce povolené.
-       * Pokud nejsou nakonfigurovaná metody ověřování, uživatel se doporučuje pro kontaktování správce resetovat heslo.
-     * Pokud tato zásada vyžaduje dvě metody, pak zajišťuje, že uživatel má příslušná data definovaná pro minimálně dvě metody ověřování povolené zásady správce.
-       * Pokud nejsou nakonfigurovaná metody ověřování, uživatel se doporučuje pro kontaktování správce resetovat heslo.
-     * Pokud roli Správce služby Azure je přiřazena uživateli, silné heslo dvě brány zásady se vynucují. Další informace o těchto zásadách najdete v části [správce resetovat zásady rozdíly](concept-sspr-policy.md#administrator-reset-policy-differences).
-   * Kontroluje, je-li heslo uživatele spravovaly místně (federované předávací ověřování nebo synchronizaci hodnoty hash hesla).
-     * Pokud je nasazený zpětný zápis a heslo uživatele je spravovaná místně, uživatel může pokračovat k ověření a resetování hesla.
-     * Pokud není nasazený zpětný zápis a heslo uživatele je spravovaná místně, je uživatel vyzván k obraťte se na svého správce resetovat heslo.
-4. Pokud je zjištěno, že se uživatel úspěšně resetoval svoje heslo, uživatel je proveden procesem jeho resetování.
+1. Uživatel vybere nepřístup k **vašemu účtu** nebo přímo do [https://aka.ms/sspr](https://passwordreset.microsoftonline.com)něj nepřejde.
+   * V závislosti na národním prostředí prohlížeče se prostředí vykreslí v příslušném jazyce. Prostředí pro resetování hesla je lokalizováno do stejného jazyka, který podporuje sada Office 365.
+   * Pokud chcete zobrazit portál pro resetování hesla v jiném lokalizovaném jazyce, přidejte na konec adresy URL pro resetování hesla "? MKT =", který následuje po lokalizaci [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)do španělštiny.
+2. Uživatel zadá ID uživatele a předá CAPTCHA.
+3. Azure AD ověřuje, že uživatel může tuto funkci používat, pomocí následujících kontrol:
+   * Kontroluje, jestli má uživatel povolenou tuto funkci a má přiřazenou licenci Azure AD.
+     * Pokud uživatel nemá povolenou tuto funkci nebo má přiřazenou licenci, uživateli se zobrazí výzva, aby se obrátil na správce, aby resetoval heslo.
+   * Kontroluje, zda má uživatel správné metody ověřování definované na svém účtu v souladu se zásadami správce.
+     * Pokud zásada vyžaduje jenom jednu metodu, zajistí, aby měl uživatel příslušná data definovaná pro aspoň jednu z metod ověřování povolených zásadami správce.
+       * Pokud nejsou metody ověřování nakonfigurované, doporučuje se uživateli kontaktovat správce, aby heslo resetoval.
+     * Pokud zásada vyžaduje dvě metody, zajistí, aby měl uživatel příslušná data definovaná pro alespoň dvě metody ověřování povolené zásadami správce.
+       * Pokud nejsou metody ověřování nakonfigurované, doporučuje se uživateli kontaktovat správce, aby heslo resetoval.
+     * Pokud se uživateli přiřadí role správce Azure, vynutily se zásady silného hesla dvou bran. Další informace o této zásadě najdete v části [správce – rozdíly v zásadách resetování zásad](concept-sspr-policy.md#administrator-reset-policy-differences).
+   * Zkontroluje, jestli je uživatelské heslo spravované místně (federované, předávací ověřování nebo hodnota hash hesla se synchronizuje).
+     * Pokud je nasazen zpětný zápis a heslo uživatele je spravováno místně, uživatel může pokračovat v ověřování a resetování hesla.
+     * Pokud není zpětný zápis nasazený a heslo uživatele je spravováno místně, bude uživatel vyzván, aby se obrátil na správce, aby resetoval heslo.
+4. Je-li zjištěno, že uživatel může úspěšně obnovit heslo, bude uživatel proveden procesem obnovení.
 
 ## <a name="authentication-methods"></a>Metody ověřování
 
-Pokud je povolené samoobslužné resetování HESLA, musíte vybrat aspoň jednu z následujících možností pro metody ověřování. Někdy uslyšíte. Tyto možnosti uvedené jako "brány." Důrazně doporučujeme vám **zvolit dvě nebo více metod ověřování** tak, aby vaši uživatelé měli větší flexibilitu v případě, kdy ho potřebují nebudou moct získat přístup k některému. Další informace o metodách uvedené níže najdete v článku [jaké metody ověřování jsou?](concept-authentication-methods.md).
+Pokud je povolená možnost SSPR, musíte pro metody ověřování vybrat alespoň jednu z následujících možností. Někdy uslyšíte tyto možnosti označované jako "brány". Důrazně doporučujeme **vybrat dvě nebo více metod ověřování** , aby uživatelé měli větší flexibilitu v případě, že k nim nebudou mít přístup, když ji potřebují. Další podrobnosti o níže uvedených metodách najdete v článku [co jsou metody ověřování?](concept-authentication-methods.md).
 
-* Oznámení mobilní aplikace (preview)
-* Kód mobilní aplikace (preview)
+* Oznámení mobilní aplikace
+* Kód mobilní aplikace
 * Email
 * Mobilní telefon
 * Telefon do kanceláře
 * Bezpečnostní otázky
 
-Uživatelům můžete jenom resetování hesla, pokud mají data v metody ověřování, které správce povolil.
+Uživatelé můžou resetovat heslo jenom v případě, že mají data přítomná v metodách ověřování, které správce povolil.
 
 > [!IMPORTANT]
-> Počínaje březnem 2019 možnosti telefonního hovoru nebudou k dispozici uživatelům vícefaktorové ověřování a samoobslužné resetování HESLA v tenantech bezplatné a zkušební verze Azure AD. Zprávy SMS, nejsou ovlivněny tuto změnu. Telefonní hovor budou nadále dostupné uživatelům v placené tenantů Azure AD. Tato změna ovlivní jenom klienty bezplatné a zkušební verze Azure AD.
+> Od března 2019 nebudou možnosti telefonního hovoru k dispozici pro MFA a SSPR uživatele v bezplatných nebo zkušebních klientech Azure AD. Tato změna nemá vliv na zprávy SMS. Telefonní hovor bude dál k dispozici uživatelům v placených klientech Azure AD. Tato změna má vliv jenom na bezplatné nebo zkušební klienty Azure AD.
 
 > [!WARNING]
-> Účty přiřazené role Správce služby Azure se bude vyžadovat použití metod, jak jsou definovány v sekci [správce resetovat zásady rozdíly](concept-sspr-policy.md#administrator-reset-policy-differences).
+> Účtům přiřazené role správce Azure se budou vyžadovat použití metod definovaných v části [Správce zásady resetování zásad](concept-sspr-policy.md#administrator-reset-policy-differences).
 
-![Výběr metody ověřování na webu Azure Portal][Authentication]
+![Výběr metod ověřování v Azure Portal][Authentication]
 
-### <a name="number-of-authentication-methods-required"></a>Počet metod ověřování požadovaných
+### <a name="number-of-authentication-methods-required"></a>Vyžaduje se počet požadovaných metod ověřování.
 
-Tato možnost určuje minimální počet dostupné metody ověření nebo brány, které uživatel musí projít resetovat nebo odemknout své heslo. Můžete nastavit na jeden nebo dva.
+Tato možnost určuje minimální počet dostupných metod ověřování nebo brány, které musí uživatel projít, aby bylo možné resetování nebo odemknutí hesla. Dá se nastavit buď na jednu, nebo na dvě.
 
-Uživatelé mohou poskytnout další metody ověřování, pokud správce povolí tuto metodu ověřování.
+Pokud správce povolí tuto metodu ověřování, může se rozhodnout, že dodáte další metody ověřování.
 
-Pokud uživatel nemá zaregistrované minimální požadované metody, zobrazí se jim chybovou stránku, který je nasměruje k požadavku, že správce resetovat své heslo.
+Pokud uživatel nemá registrovány minimální požadované metody, uvidí chybovou stránku, která je směruje, aby požádala správce o resetování hesla.
 
-#### <a name="mobile-app-and-sspr-preview"></a>Mobilní aplikace a samoobslužné resetování HESLA (ve verzi Preview)
+#### <a name="mobile-app-and-sspr"></a>Mobilní aplikace a SSPR
 
-Pokud používáte mobilní aplikace, jako je aplikace Microsoft Authenticator jako metoda pro resetování hesla, byste měli znát následující upozornění:
+Při použití mobilní aplikace, jako je například aplikace Microsoft Authenticator, jako metodu pro resetování hesla, byste měli mít na paměti následující upozornění:
 
-* Když správci potřebují jednu metodu možné použít k resetování hesla, ověřovací kód je jediná dostupná možnost.
-* Když správci vyžadují dvě metody se používá k resetování hesla, uživatelé se můžou použít **buď** oznámení **nebo** ověřovací kód kromě jiných povolené metody.
+* Když správci vyžadují, aby se k resetování hesla použila jedna metoda, je jako jediná dostupná možnost ověřovací kód.
+* Když správci použijí k resetování hesla dvě metody, uživatelé můžou použít **buď** oznámení, **nebo** ověřovací kód kromě jakýchkoli dalších povolených metod.
 
-| Počet metod požadovaných k resetování | Jeden | Dva |
+| Počet metod nutných pro resetování | Hodinu | Dva |
 | :---: | :---: | :---: |
-| Funkce mobilních aplikací, které jsou k dispozici | Kód | Kód nebo oznámení |
+| Dostupné funkce mobilní aplikace | Kód | Kód nebo oznámení |
 
-Uživatelé nemají možnost zaregistrovat svoje mobilní aplikace při registraci pro resetování hesla pomocí samoobslužné služby z [ https://aka.ms/ssprsetup ](https://aka.ms/ssprsetup). Uživatelé můžou registrovat svoje mobilní aplikace na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup), nebo v náhledu nové registrace informace o zabezpečení v [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
+Uživatelé nemají možnost registrovat svou mobilní aplikaci při registraci pro Samoobslužné resetování hesla ze [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)služby. Uživatelé můžou svou mobilní aplikaci [https://aka.ms/mfasetup](https://aka.ms/mfasetup)zaregistrovat v nebo ve verzi Preview nové registrace bezpečnostních údajů na adrese. [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)
 
 > [!WARNING]
-> Je nutné povolit [Konvergované registrace pro samoobslužné resetování hesla a ověřování Azure Multi-Factor Authentication (Public preview)](concept-registration-mfa-sspr-converged.md) předtím, než uživatelé budou mít přístup k nové prostředí na [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
+> Než budou mít uživatelé přístup k novému prostředí v [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo), musíte povolit sblíženou [registraci pro Samoobslužné resetování hesla a službu Azure Multi-Factor Authentication (Public Preview)](concept-registration-mfa-sspr-converged.md) .
 
-### <a name="change-authentication-methods"></a>Změna metody ověřování
+### <a name="change-authentication-methods"></a>Změna metod ověřování
 
-Pokud byste začali s zásadu, která má pouze jeden vyžaduje metodu ověřování pro resetování nebo odemknutí zaregistrované a změníte, že na dvě metody, co se stane?
+Pokud začnete se zásadou, která má jenom jednu požadovanou metodu ověřování pro resetování nebo odemknutí, a změníte ji na dvě metody, co se stane?
 
-| Počet metod zaregistrovaný | Počet metod požadovaných | Výsledek |
+| Počet registrovaných metod | Vyžaduje se počet metod. | Výsledek |
 | :---: | :---: | :---: |
-| minimálně 1. | 1 | **Možnost** resetování nebo odemknutí |
-| 1 | 2 | **Nelze** resetování nebo odemknutí |
-| 2 nebo více | 2 | **Možnost** resetování nebo odemknutí |
+| 1 nebo více | 1 | **Může** resetovat nebo odemknout |
+| 1 | 2 | **Nejde** resetovat ani odemknout |
+| 2 nebo více | 2 | **Může** resetovat nebo odemknout |
 
-Pokud změníte typy metod ověřování, které může uživatel používat, mohou neúmyslně zabráníte uživatelům, bude možné použít samoobslužné resetování HESLA, když nemají minimální množství dat, které jsou k dispozici.
+Pokud změníte typy metod ověřování, které může uživatel použít, může nechtěně zabránit uživatelům, aby mohli používat SSPR, pokud nemají k dispozici minimální množství dat.
 
 Příklad:
-1. Dvě metody ověřování, vyžaduje se nakonfigurují původní zásadou. Používá se pouze telefon do kanceláře a bezpečnostní otázky. 
-2. Správce změní zásady tak, aby už použít bezpečnostní otázky, ale umožňuje použití mobilní telefon a alternativní e-mailu.
-3. Uživatelé bez mobilní telefon a alternativní e-mailovou polí nemůžete resetovat jejich hesla.
+1. Původní zásada je nakonfigurovaná se dvěma požadovanými metodami ověřování. Používá jenom telefonní číslo do kanceláře a bezpečnostní otázky. 
+2. Správce změní zásadu tak, aby už nepoužívala bezpečnostní otázky, ale umožňuje použití mobilního telefonu a alternativního e-mailu.
+3. Uživatelé bez naplnění polí mobilní telefon nebo alternativní e-mailová pole nemůžou resetovat hesla.
 
 ## <a name="registration"></a>Registrace
 
-### <a name="require-users-to-register-when-they-sign-in"></a>Vyžadovat od uživatelů registraci při přihlášení
+### <a name="require-users-to-register-when-they-sign-in"></a>Vyžadovat, aby se uživatelé zaregistrovali při přihlášení
 
-Když tuto možnost povolíte, musí uživatel k dokončení registrace pro resetování hesla, pokud se přihlásí do všech aplikací pomocí služby Azure AD. Tento pracovní postup obsahuje následující aplikace:
+Povolení této možnosti vyžaduje, aby uživatel dokončil registraci resetování hesla, pokud se přihlásí k aplikacím pomocí Azure AD. Tento pracovní postup obsahuje následující aplikace:
 
 * Office 365
 * portál Azure
 * Přístupový panel
 * Federované aplikace
-* Vlastní aplikace pomocí Azure AD
+* Vlastní aplikace s využitím Azure AD
 
-Při vyžadování registrace je zakázaná, uživatelé můžou registrovat ručně. Můžete buď návštěvu [ https://aka.ms/ssprsetup ](https://aka.ms/ssprsetup) nebo vyberte **registrace pro resetování hesla** odkaz pod **profilu** kartu na přístupovém panelu.
+Pokud je vyžadováno registraci zakázané, uživatelé se můžou zaregistrovat ručně. Můžou na přístupovém [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) panelu buď navštívit, nebo vybrat odkaz **zaregistrovat k resetování hesla** na kartě **profil** .
 
 > [!NOTE]
-> Uživatelé můžou zavřít registrační portál pro resetování hesla tak, že vyberete **zrušit** nebo zavřením okna. Ale zobrazí se výzva k registraci pokaždé, když se přihlásí až do dokončení jejich registraci.
+> Uživatelé můžou zavřít portál pro registraci resetování hesel tak, že vyberete **Zrušit** nebo zavřít okno. Jsou ale vyzvání k registraci pokaždé, když se přihlásí, dokud nedokončí jejich registraci.
 >
-> Toto přerušení nedojde k narušení připojení uživatele Pokud už přihlášení.
+> Toto přerušení neruší připojení uživatele, pokud jsou již přihlášena.
 
-### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Nastavte počet dní, než se uživatelům zobrazí výzva k potvrzení jejich ověřovacích informací
+### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Nastavte počet dní, než se uživatelům zobrazí výzva k potvrzení ověřovacích informací.
 
-Tato možnost určuje časový úsek mezi nastavením a reconfirming informace o ověřování a je dostupná jenom v případě, že povolíte **vyžadovat od uživatelů registraci při přihlašování** možnost.
+Tato možnost určuje dobu mezi nastavením a opětovným potvrzením ověřovacích informací a je k dispozici pouze v případě, že povolíte možnost **vyžadovat registraci uživatelů při přihlášení** .
 
-Platné hodnoty jsou 0 až 730 dnů, "0", což znamená, že jsou uživatelé nikdy vyzváni k potvrzení jejich ověřovacích informací.
+Platné hodnoty jsou 0 až 730 dnů, přičemž "0" znamená, že uživatelé nebudou nikdy požádáni o potvrzení ověřovacích informací.
 
 ## <a name="notifications"></a>Oznámení
 
 ### <a name="notify-users-on-password-resets"></a>Upozornit uživatele na resetování hesla
 
-Pokud je tato možnost nastavená na **Ano**, resetování hesel uživateli obdržet e-mail s upozorněním, že se změnil heslo. E-mail je odeslán přes portál pro samoobslužného resetování HESLA k jejich primární a alternativní e-mailové adresy, které jsou v souboru ve službě Azure AD. Nikdo jiný proběhne resetování události.
+Pokud je tato možnost nastavená na **hodnotu Ano**, uživatelé, kteří resetují heslo, obdrží e-mail s upozorněním, že jejich heslo bylo změněno. E-mail se pošle prostřednictvím portálu SSPR do svých primárních a alternativních e-mailových adres, které jsou v souboru v Azure AD. Nikdo jiný není upozorněn na událost resetování.
 
-### <a name="notify-all-admins-when-other-admins-reset-their-passwords"></a>Upozornit všechny správce na resetování hesla jiného správce
+### <a name="notify-all-admins-when-other-admins-reset-their-passwords"></a>Oznamovat všem správcům, kteří resetují hesla jiní správci
 
-Pokud je tato možnost nastavená na **Ano**, pak *všichni správci* dostávat e-mailu na jejich primární e-mailovou adresu v souboru ve službě Azure AD. E-mailu je upozorní, že jiný správce změnil heslo pomocí samoobslužného resetování HESLA.
+Pokud je tato možnost nastavená na **hodnotu Ano**, *všichni správci* obdrží e-mail na svou primární e-mailovou adresu v souboru ve službě Azure AD. E-mail je upozorní, že jiný správce změnil heslo pomocí SSPR.
 
-Příklad: Existují čtyři správci v prostředí. Správce A resetuje heslo pomocí samoobslužného resetování HESLA. Správci B, C a D dostávat e-mailu výstrahy je resetování hesla.
+Příklad: Existují čtyři správci v prostředí. Správce A resetuje heslo pomocí SSPR. Správci B, C a D obdrží e-mail s upozorněním na resetování hesla.
 
 ## <a name="on-premises-integration"></a>Místní integrace
 
-Pokud instalace, konfigurace a povolení služby Azure AD Connect, máte následující další možnosti pro místní integrace. Pokud tyto možnosti zobrazují šedě, pak zpětný zápis není nakonfigurovaná správně. Další informace najdete v tématu [konfigurací zpětného zápisu hesla](howto-sspr-writeback.md).
+Pokud instalujete, konfigurujete a povolíte Azure AD Connect, máte k dispozici následující další možnosti pro místní integraci. Pokud jsou tyto možnosti šedé, zpětný zápis nebyl správně nakonfigurován. Další informace najdete v tématu [Konfigurace zpětného zápisu hesla](howto-sspr-writeback.md).
 
-![Ověřuje se zpětným zápisem hesla je povoleno a práce][Writeback]
+![Ověřování zpětného zápisu hesla je povolené a funguje.][Writeback]
 
-Tato stránka poskytuje rychlé stav v místním klientovi zpětného zápisu, jeden z následujících zpráv se zobrazí na základě aktuální konfigurace:
+Na této stránce najdete rychlý stav místního klienta zpětného zápisu. na základě aktuální konfigurace se zobrazí jedna z následujících zpráv:
 
-* On-premises klienta zpětného zápisu je zprovozněný.
-* Azure AD je online a je připojený k vašemu klientovi zpětného zápisu místní. Ale pravděpodobně nainstalovanou verzi Azure AD Connect je zastaralá. Vezměte v úvahu [Azure AD Connect upgradovat](../hybrid/how-to-upgrade-previous-version.md) abyste měli jistotu, že máte nejnovější funkce připojení a důležité opravy chyb.
-* Bohužel jsme nemůže zjistit stav klienta zpětného zápisu v místním, protože nainstalovaná verze služby Azure AD Connect je zastaralá. [Upgrade služby Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) být schopni zkontrolovat stav připojení.
-* Bohužel to vypadá nemůžeme připojit k vašemu klientovi zpětného zápisu v místním hned teď. [Řešení potíží s Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) obnovení připojení.
-* Bohužel nemůžeme připojit k vašemu klientovi zpětného zápisu v místním protože zpětný zápis hesla není nakonfigurovaná správně. [Nakonfigurovat zpětný zápis hesla](howto-sspr-writeback.md) obnovení připojení.
-* Bohužel to vypadá nemůžeme připojit k vašemu klientovi zpětného zápisu v místním hned teď. To může být dočasné problémy na naší straně. Pokud se problém nevyřeší, [Poradce při potížích s Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) obnovení připojení.
+* Váš místní klient zpětného zápisu je spuštěný.
+* Služba Azure AD je online a je připojená k vašemu místnímu klientovi zpětného zápisu. Vypadá to ale, že nainstalovaná verze Azure AD Connect je zastaralá. Zvažte [upgrade Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) , abyste měli jistotu, že máte nejnovější funkce připojení a důležité opravy chyb.
+* Bohužel nemůžeme kontrolovat stav místního klienta zpětného zápisu, protože nainstalovaná verze Azure AD Connect je zastaralá. [Upgradujte Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) , abyste mohli kontrolovat stav připojení.
+* Bohužel to vypadá, že se teď nemůžeme připojit k místnímu klientovi zpětného zápisu. [Řešení potíží s Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) k obnovení připojení.
+* Bohužel se nemůžeme připojit k vašemu místnímu klientovi zpětného zápisu, protože zpětný zápis hesla není správně nakonfigurovaný. [Nakonfigurujte zpětný zápis hesla](howto-sspr-writeback.md) pro obnovení připojení.
+* Bohužel to vypadá, že se teď nemůžeme připojit k místnímu klientovi zpětného zápisu. To může být způsobeno dočasnými problémy na našem konci. Pokud potíže potrvají, [vyřešte potíže s Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) k obnovení připojení.
 
-### <a name="write-back-passwords-to-your-on-premises-directory"></a>Zapisovat hesla zpět do místního adresáře
+### <a name="write-back-passwords-to-your-on-premises-directory"></a>Zápis hesel zpátky do místního adresáře
 
-Tento ovládací prvek určuje, jestli je povolený zpětný zápis hesla pro tento adresář. Je-li zpětný zápis na, označuje stav místní službu zpětného zápisu. Tento ovládací prvek je užitečné, pokud chcete dočasně zakázat zpětný zápis hesel, aniž byste museli změnit konfiguraci služby Azure AD Connect.
+Tento ovládací prvek určuje, zda je pro tento adresář povolen zpětný zápis hesla. Pokud je zpětný zápis zapnutý, indikuje stav služby pro místní zpětný zápis. Tento ovládací prvek je užitečný, pokud chcete dočasně zakázat zpětný zápis hesla, aniž byste museli Azure AD Connect znovu nakonfigurovat.
 
-* Pokud přepínač nastavený na **Ano**, pak je povolený zpětný zápis a federovaný, předávací ověřování, nebo uživatelům synchronizaci hodnot hash hesel se moct resetovat svá hesla.
-* Pokud přepínač nastavený na **ne**, pak je zakázáno zpětný zápis a federovaný, předávací ověřování, nebo uživatelům synchronizaci hodnot hash hesel, je moct resetovat svá hesla.
+* Pokud je přepínač nastavený na **hodnotu Ano**, pak je povolen zpětný zápis a federované, předávací ověřování nebo synchronizace hodnot hash hesel pomocí algoritmu hash hesla mohou resetovat hesla.
+* Pokud je přepínač nastavený na **ne**, pak se zpětný zápis zakáže a uživatelé synchronizace hodnot hash hesel můžou resetovat hesla.
 
-### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Povolit uživatelům odemčení účtů bez resetování hesel
+### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Povolení odemknutí účtů uživateli bez resetování hesla
 
-Tento ovládací prvek určuje, jestli si uživatelé, kteří navštíví portál pro resetování hesla by měly mít možnost Odemknout své účty v místním Active Directory bez resetování hesla. Ve výchozím nastavení Azure AD odemyká účty při resetování hesla funguje. Toto nastavení použijte k oddělení tyto dvě operace.
+Tento ovládací prvek určuje, zda uživatelé, kteří navštíví portál pro resetování hesla, by měli mít možnost odemknout své místní účty služby Active Directory, aniž by museli resetovat heslo. Ve výchozím nastavení Azure AD odemkne účty, když provede resetování hesla. Toto nastavení slouží k oddělení těchto dvou operací.
 
-* Pokud hodnotu **Ano**, pak uživatelům se zobrazí možnost resetovat své heslo a odemknout účet nebo odemknout svůj účet bez nutnosti k resetování hesla.
-* Pokud hodnotu **ne**, pak uživatelé jsou pouze nebudou moct provádět obnovení kombinované hesla a odemknutí účtu operace.
+* Pokud je nastaveno na **Ano**, uživatelé budou mít možnost resetovat heslo, odemknout účet nebo odemknout účet, aniž by museli resetovat heslo.
+* Pokud je nastavená na **ne**, uživatelé můžou provádět jenom kombinované obnovení hesla a operaci odemknutí účtu.
 
-### <a name="on-premises-active-directory-password-filters"></a>Filtry hesel místní služby Active Directory
+### <a name="on-premises-active-directory-password-filters"></a>Filtry hesel pro místní službu Active Directory
 
-Hesel Azure AD samoobslužné resetování provede ekvivalent iniciované správcem resetování hesla ve službě Active Directory. Pokud použijete filtr na hesla třetích stran pro vynucení pravidel vlastního hesla a vyžadovat, že tento filtr heslo je kontrolován během Azure AD, samoobslužné resetování hesla, ujistěte se, že filtr řešení třetích stran heslo je nakonfigurovaný na použití v scénáře pro resetování hesla správce. [Ochrana hesel Azure AD pro Windows Server Active Directory](concept-password-ban-bad-on-premises.md) se podporuje ve výchozím nastavení.
+Samoobslužné resetování hesla služby Azure AD provádí ekvivalent resetování hesla iniciované správcem ve službě Active Directory. Pokud k vynucení vlastních pravidel hesel používáte filtr hesel třetí strany a požadujete, aby se tento filtr hesel kontroloval během samoobslužného resetování hesla služby Azure AD, ujistěte se, že řešení filtru hesel třetí strany je nakonfigurované tak, aby se používalo v scénář resetování hesla správce [Služba Azure AD Password Protection pro Windows Server Active Directory](concept-password-ban-bad-on-premises.md) je ve výchozím nastavení podporovaná.
 
 ## <a name="password-reset-for-b2b-users"></a>Resetování hesla pro uživatele B2B
 
-Resetování hesla a změny jsou plně podporovány ve všech konfiguracích business-to-business (B2B). Resetování hesla uživatele B2B je podporována v následujících třech případech:
+Resetování a změna hesla jsou plně podporované ve všech konfiguracích B2B (Business-to-Business). Resetování hesla uživatele B2B je podporované v následujících třech případech:
 
-* **Uživatelé v organizaci partnera poskytujícího s existujícím tenantem Azure AD**: Pokud má organizace partnerství s existujícím tenantovi Azure AD, jsme *respektovat jakékoli zásady pro resetování hesla jsou povolené v tomto tenantovi*. Pro resetování hesel v práci abyste měli jistotu, že je povolené samoobslužné resetování HESLA Azure AD stejně musí organizaci partnera poskytujícího. Neplatí žádné další poplatky pro zákazníky s Office 365, a to se dá nastavit pomocí následujících kroků v našich [Začínáme se správou hesel](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) průvodce.
-* **Uživatelé, kteří se zaregistrují prostřednictvím** samoobslužnou registraci: Organizace se stanete-li použít [samoobslužnou registraci](../users-groups-roles/directory-self-service-signup.md) funkce do tenanta, informujeme je resetovat heslo pomocí e-mailu jsou registrované.
-* **Uživatele B2B**: Žádné nové uživatele B2B, které jsou vytvořené pomocí nových [možnosti Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md) budete také moct resetovat heslo pomocí e-mailu, registruje se během procesu pozvánku.
+* **Uživatelé z partnerské organizace s existujícím tenant Azure AD**: Pokud organizace, na kterou spolupracujete, má stávajícího tenanta Azure AD, respektuje *, jestli jsou v tomto tenantovi povolené zásady pro resetování hesel*. Aby se resetování hesla fungovalo, partnerská organizace potřebuje jenom jistotu, že je povolená služba Azure AD SSPR. Zákazníkům Office 365 se neúčtují žádné další poplatky a dají se povolit podle kroků uvedených v příručce [Začínáme se správou hesel](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) .
+* **Uživatelé, kteří se přihlásí prostřednictvím** samoobslužné registrace: Pokud se v organizaci, kterou spolupracujete, [](../users-groups-roles/directory-self-service-signup.md) používá funkce samoobslužného přihlašování, která se dostane do tenanta, umožníme jim resetovat heslo pomocí e-mailu, který si zaregistrovali.
+* **Uživatelé B2B**: Všichni noví uživatelé B2B, kteří vytvořili pomocí nových [možností Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md) , budou moci resetovat hesla také pomocí e-mailu, který zaregistroval během procesu pozvání.
 
-K otestování tohoto scénáře, přejděte na https://passwordreset.microsoftonline.com s jedním z těchto partnerů. Pokud mají alternativní e-mailu nebo e-mail pro ověření definované, resetování hesla funguje podle očekávání.
+Pokud chcete tento scénář vyzkoušet, přečtěte si https://passwordreset.microsoftonline.com některý z těchto partnerských uživatelů. Pokud mají definovaný alternativní e-mail nebo ověřovací e-mail, resetování hesla funguje podle očekávání.
 
 > [!NOTE]
-> Účty Microsoft, kterým byl udělen přístup hosta pro vašeho tenanta Azure AD, například Hotmail.com, Outlook.com nebo jiné osobní e-mailové adresy nejsou možné použít samoobslužné resetování HESLA Azure AD. Potřebují k resetování hesla pomocí informací v nalezen [když nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku.
+> Účtům Microsoft, kterým byl udělen přístup hosta k vašemu tenantovi Azure AD, jako jsou například Hotmail.com, Outlook.com nebo jiné osobní e-mailové adresy, nemůžou využívat Azure AD SSPR. Je potřeba resetovat heslo pomocí informací, které najdete v části když se nemůžete [přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V následujících článcích najdete další informace o resetování hesla prostřednictvím Azure AD:
 
@@ -220,4 +215,4 @@ V následujících článcích najdete další informace o resetování hesla pr
 * [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/concept-sspr-howitworks/sspr-authentication-methods.png "Dostupné metody ověřování Azure AD a požadované množství"
-[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-writeback-running.png "Místní integrace konfigurace zpětného zápisu hesla a informace o odstraňování potíží"
+[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-writeback-running.png "Konfigurace opětovného zápisu hesla na místní integraci a informace o řešení potíží"

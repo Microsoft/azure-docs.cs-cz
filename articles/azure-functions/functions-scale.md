@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 94ef85836ef524b34cd1c51e4eda83695bc70507
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 348cd0eccc66adb29a7564bbbeca99fffec28957
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443940"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562859"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions škálování a hostování
 
@@ -51,7 +51,7 @@ Následující tabulka uvádí aktuální úroveň podpory pro tři plány hosto
 | | Plán Consumption | Plán Premium | Vyhrazený plán |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | GA | preview | GA |
-| Linux | preview | preview | GA |
+| Linux | GA | preview | GA |
 
 ## <a name="consumption-plan"></a>Plán Consumption
 

@@ -1,6 +1,6 @@
 ---
 title: Historie verzí služby Azure AD Connect Health
-description: Tento dokument popisuje se vydání verzí pro Azure AD Connect Health a co je součástí v těchto verzích.
+description: Tento dokument popisuje vydaná vydání pro Azure AD Connect Health a informace o tom, co bylo součástí těchto vydání.
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
@@ -15,226 +15,241 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58de8de9a9fab67d743d4560ccda037d8f41301b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27c0d3055512145396f204fdb17e9375f65a0db3
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298992"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562331"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
-Tým služby Azure Active Directory pravidelně aktualizuje s novými funkcemi a funkce Azure AD Connect Health. Tento článek uvádí verzích a funkcích, které byly vydány.  
+Tým Azure Active Directory pravidelně aktualizuje Azure AD Connect Health novými funkcemi a funkcemi. V tomto článku jsou uvedené verze a funkce, které byly vydány.  
 
 > [!NOTE]
-> Connect Health agentů se automaticky aktualizují při vydání nové verze. Zkontrolujte, zda je povoleno nastavení automatický upgrade z portálu Azure portal. 
+> Při vydání nové verze se automaticky aktualizují agenti stavu připojení. Ujistěte se prosím, že nastavení automatického upgradu je povolené z Azure Portal. 
 >
 
-Azure AD Connect Health pro synchronizaci je součástí instalace služby Azure AD Connect. Další informace o [historie verzí služby Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) zpětnou vazbu funkce, Hlasujte na [Connect Health User Voice kanálu](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
+Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD Connect. Přečtěte si další informace o [Azure AD Connect historii verzí](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) pro zpětnou vazbu k funkcím, Hlasujte na [telefonním kanálu uživatele Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
+## <a name="july-2019"></a>Červenec 2019
+**Aktualizace agenta**
+* Agent Azure AD Connect Health pro AD FS (verze 3.1.59.0) 
+   1. Změna textu v TestWindowsTransport
+   2. Změny pro nahrání AD FS RP
+   
+* Agent Azure AD Connect Health pro AD FS (verze 3.1.56.0) 
+   1. Přidat TestWindowsTransport test a odebrat kontroly koncových bodů WsTrust v testu CheckOffice365Endpoints
+   2. Protokolování informací o operačním systému a .NET
+   3. Zvyšte velikost nahrávání zprávy konfigurace RP na 1 MB.
+   4. Opravy chyb
+   
+* Agent Azure AD Connect Health pro služba AD DS (verze 3.1.56.0) 
+   1. Protokolování informací o operačním systému a .NET 
+   2. Opravy chyb
 
-## <a name="may-2019"></a>. Května 2019.
+## <a name="may-2019"></a>Květen 2019
 **Aktualizace agenta:** 
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.1.51.0) 
-   1. Oprava chyby k rozlišení mezi několika přihlašování, které sdílejí stejnou client-request-id.
-   2. Oprava chyby k analýze chyb chybná uživatelského jména a hesla na jazyk lokalizované servery.   
+* Agent Azure AD Connect Health pro AD FS (verze 3.1.51.0) 
+   1. Oprava chyb pro rozlišení mezi několika znaménky, které sdílejí stejné ID klienta a požadavku.
+   2. Oprava chyb pro analýzu chybných uživatelských jmen a hesel na lokalizovaných serverech jazyka   
 
-## <a name="april-2019"></a>2019\. dubna
+## <a name="april-2019"></a>Duben 2019
 **Aktualizace agenta:** 
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.1.46.0) 
-   1. Oprava výstrahy procesu zkontrolujte duplicitní hlavní název služby pro služby AD FS
+* Agent Azure AD Connect Health pro AD FS (verze 3.1.46.0) 
+   1. Opravit kontrolu duplicitního procesu výstrahy hlavního názvu služby pro ADFS
 
-## <a name="march-2019"></a>2019\. března
+## <a name="march-2019"></a>Březen 2019
 **Aktualizace agenta:** 
-* Agent Azure AD Connect Health pro službu AD DS (verze 3.1.41.0)  
-   1. Kolekce verze rozhraní .NET
-   2. Zlepšení kolekce čítačů výkonu v případě, že chybí některé kategorie
-   3. Oprava chyby v brání vytváření podřízeného procesu z několika instancí Monitoring Agent
+* Agent Azure AD Connect Health pro služba AD DS (verze 3.1.41.0)  
+   1. Kolekce verzí rozhraní .NET
+   2. Zlepšení shromažďování čítačů výkonu, když chybějí určité kategorie
+   3. Oprava chyby při zablokování více instancí agenta monitorování
 
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.1.41.0) 
-   1. Integrace a upgrade služby AD FS testovací skripty pomocí ADFSToolBox
-   2. Implementovat rozhraní .NET verze kolekce
-   3. Zlepšení kolekce čítačů výkonu v případě, že chybí některé kategorie
-   4. Oprava chyby v brání vytváření podřízeného procesu z několika instancí Monitoring Agent
+* Agent Azure AD Connect Health pro AD FS (verze 3.1.41.0) 
+   1. Integrace a upgrade skriptů AD FS testů pomocí ADFSToolBox
+   2. Implementovat kolekci verzí rozhraní .NET
+   3. Zlepšení shromažďování čítačů výkonu, když chybějí určité kategorie
+   4. Oprava chyby při zablokování více instancí agenta monitorování
 
 
-## <a name="november-2018"></a>. Listopadu 2018
-**Nové funkce všeobecné dostupnosti:** 
-* Azure AD Connect Health pro synchronizaci - diagnostikovat a opravit chyby synchronizace duplicitním atributem z portálu
+## <a name="november-2018"></a>Listopadu 2018
+**Nové funkce GA:** 
+* Azure AD Connect Health pro synchronizaci – Diagnostikujte a opravte chyby synchronizace duplicitních atributů z portálu.
 
 **Aktualizace agenta:** 
-* Agent Azure AD Connect Health pro službu AD DS (verze 3.1.24.0) 
-   1. Přenos dodržování předpisů verze 1.2 protokol zabezpečení vrstvy (TLS) a vynucení
-   2. Omezily rušivé výstrahy globálního katalogu
+* Agent Azure AD Connect Health pro služba AD DS (verze 3.1.24.0) 
+   1. Dodržování předpisů a vynucování protokolu TLS (Transport Layer Security) verze 1,2
+   2. Snížení šumu na výstrahách globálního katalogu
    3. Opravy chyb registrace agenta stavu
 
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.1.24.0)  
-   1. Přenos dodržování předpisů verze 1.2 protokol zabezpečení vrstvy (TLS) a vynucení
-   2. Podpora ADFSRequestToken testovacího lokalizovaný operačního systému
-   3. Vyřešit problém zamykání EventHandler agenta diagnostiky
+* Agent Azure AD Connect Health pro AD FS (verze 3.1.24.0)  
+   1. Dodržování předpisů a vynucování protokolu TLS (Transport Layer Security) verze 1,2
+   2. Podpora testu – ADFSRequestToken pro lokalizovaný operační systém
+   3. Problém s vyřešeným uzamknutím agenta diagnostiky
    4. Opravy chyb registrace agenta stavu
 
 ## <a name="august-2018"></a>Srpen 2018 
-*  Agent Azure AD Connect Health pro synchronizaci (verze 3.1.7.0) vydané službou Azure AD Connect verze 1.1.880.0    
-   1. Oprava hotfix pro [monitoring agent pomocí rozhraní .NET Framework KB vysoké využití procesoru vydání verze](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
+*  Agent Azure AD Connect Health pro synchronizaci (verze 3.1.7.0) byl vydaný s Azure AD Connect verze 1.1.880.0.    
+   1. Oprava hotfix pro [vysoký problém s procesorem agenta monitorování s .NET Framework vydáními KB](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
 
 ## <a name="june-2018"></a>Červen 2018 
-**Nové funkce ve verzi preview:** 
-* Azure AD Connect Health pro synchronizaci - diagnostikovat a opravit chyby synchronizace duplicitním atributem z portálu 
+**Nové funkce ve verzi Preview:** 
+* Azure AD Connect Health pro synchronizaci – Diagnostikujte a opravte chyby synchronizace duplicitních atributů z portálu. 
 
 **Aktualizace agenta:** 
-* Agent Azure AD Connect Health pro službu AD DS (verze 3.1.7.0)    
-  1. Oprava hotfix pro [monitoring agent pomocí rozhraní .NET Framework KB vysoké využití procesoru vydání verze](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
+* Agent Azure AD Connect Health pro služba AD DS (verze 3.1.7.0)    
+  1. Oprava hotfix pro [vysoký problém s procesorem agenta monitorování s .NET Framework vydáními KB](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
    
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.1.7.0)  
-  1. Oprava hotfix pro [monitoring agent pomocí rozhraní .NET Framework KB vysoké využití procesoru vydání verze](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
-  2. Výsledky testu opravy na sekundárním serveru služby AD FS Server 2016
+* Agent Azure AD Connect Health pro AD FS (verze 3.1.7.0)  
+  1. Oprava hotfix pro [vysoký problém s procesorem agenta monitorování s .NET Framework vydáními KB](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
+  2. Opravy výsledků testů na sekundárním serveru ADFS Server 2016
    
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.1.2.0)  
-  1. Oprava hotfix pro agenta správy paměti a souvisejících výstrah speciálně pro verzi 3.0.244.0
+* Agent Azure AD Connect Health pro AD FS (verze 3.1.2.0)  
+  1. Oprava hotfix pro správu paměti agenta a související výstrahy specificky pro 3.0.244.0 verze
 
 
 ## <a name="may-2018"></a>Květen 2018
 **Aktualizace agenta:**
-* Agent Azure AD Connect Health pro službu AD DS (verze 3.0.244.0)
-  1. Zlepšení agenta ochrany osobních údajů  
-  2. Obecná vylepšení a opravy chyb
+* Agent Azure AD Connect Health pro služba AD DS (verze 3.0.244.0)
+  1. Vylepšení ochrany osobních údajů agenta  
+  2. Opravy chyb a Obecná vylepšení
 
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.0.244.0)
-  1. Služba agenta diagnostiky a související vylepšení modulu prostředí PowerShell
-  2. Zlepšení agenta ochrany osobních údajů  
-  3. Obecná vylepšení a opravy chyb
+* Agent Azure AD Connect Health pro AD FS (verze 3.0.244.0)
+  1. Vylepšení služby Agent Diagnostics a souvisejících modulů PowerShellu
+  2. Vylepšení ochrany osobních údajů agenta  
+  3. Opravy chyb a Obecná vylepšení
 
-* Agent Azure AD Connect Health pro synchronizaci (verze 3.0.164.0) vydané službou Azure AD Connect verze 1.1.819.0 
-  1. Zlepšení agenta ochrany osobních údajů  
-  2. Obecná vylepšení a opravy chyb
+* Agent Azure AD Connect Health pro synchronizaci (verze 3.0.164.0) byl vydaný s Azure AD Connect verze 1.1.819.0. 
+  1. Vylepšení ochrany osobních údajů agenta  
+  2. Opravy chyb a Obecná vylepšení
 
 
 ## <a name="march-2018"></a>Březen 2018
-**Nové funkce ve verzi preview:**
-* Azure AD Connect Health pro AD FS – sestavě rizikových IP adres a upozornění.
+**Nové funkce ve verzi Preview:**
+* Azure AD Connect Health pro AD FS rizikové zprávy a výstrahy protokolu IP.
 
 **Aktualizace agenta:**
 
-* Agent Azure AD Connect Health pro službu AD DS (verze 3.0.176.0)
+* Agent Azure AD Connect Health pro služba AD DS (verze 3.0.176.0)
   1. Vylepšení dostupnosti agenta 
-  2. Obecná vylepšení a opravy chyb
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.0.176.0)
+  2. Opravy chyb a Obecná vylepšení
+* Agent Azure AD Connect Health pro AD FS (verze 3.0.176.0)
   1. Vylepšení dostupnosti agenta 
-  2. Obecná vylepšení a opravy chyb
-* Agent Azure AD Connect Health pro synchronizaci (verze 3.0.129.0) vydané službou Azure AD Connect verze 1.1.750.0  
+  2. Opravy chyb a Obecná vylepšení
+* Agent Azure AD Connect Health pro synchronizaci (verze 3.0.129.0) byl vydaný s Azure AD Connect verze 1.1.750.0.  
   1. Vylepšení dostupnosti agenta 
-  2. Obecná vylepšení a opravy chyb
+  2. Opravy chyb a Obecná vylepšení
 
 ## <a name="december-2017"></a>Prosinec 2017
 **Aktualizace agenta:**
 
-* Agent Azure AD Connect Health pro službu AD DS (verze 3.0.145.0)
+* Agent Azure AD Connect Health pro služba AD DS (verze 3.0.145.0)
   1. Vylepšení dostupnosti agenta 
-  2. Přidání nových řešení problémů příkazů agenta
-  3. Obecná vylepšení a opravy chyb
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.0.145.0)
-  1. Přidání nových řešení problémů příkazů agenta
+  2. Přidání nového příkazu pro řešení potíží s agenty
+  3. Opravy chyb a Obecná vylepšení
+* Agent Azure AD Connect Health pro AD FS (verze 3.0.145.0)
+  1. Přidání nového příkazu pro řešení potíží s agenty
   2. Vylepšení dostupnosti agenta 
-  3. Obecná vylepšení a opravy chyb
+  3. Opravy chyb a Obecná vylepšení
   
 ## <a name="october-2017"></a>Říjen 2017
 **Aktualizace agenta:**
 
- * Agent Azure AD Connect Health pro synchronizaci (verze 3.0.129.0) vydané službou Azure AD Connect verze 1.1.649.0
-<br></br> Opravili jsme potíže s kompatibilitou verze mezi Azure AD Connect a agenta Azure AD Connect Health pro synchronizaci. Tento problém má vliv na zákazníky, kteří působí Azure AD Connect místní upgrade na verzi 1.1.647.0, ale má v současné době verze 3.0.127.0 stavu agenta. Po upgradu agenta stavu už odesílání dat o službu Azure AD Connect synchronizaci stavu do služby Azure AD Health. S touto opravou během místní upgrade služby Azure AD Connect nainstaluje agenta služby Health verze 3.0.129.0. Agent stavu verze 3.0.129.0 nemá potíže s kompatibilitou s Azure AD Connect verze 1.1.649.0.
+ * Agent Azure AD Connect Health pro synchronizaci (verze 3.0.129.0) byl vydaný s Azure AD Connect verze 1.1.649.0.
+<br></br> Opravili jsme problém s kompatibilitou verzí mezi Azure AD Connect a agentem Azure AD Connect Health pro synchronizaci. Tento problém má vliv na zákazníky, kteří provádějí Azure AD Connect místního upgradu na verzi 1.1.647.0, ale v současné době má agenta Health verze 3.0.127.0. Po upgradu již Agent stavu nebude moci odesílat data o stavu o službě Azure AD Connect Synchronization Service do služby Azure AD Health Service. S touto opravou se Agent stavu 3.0.129.0 nainstaluje během Azure AD Connect místního upgradu. Agent stavu verze 3.0.129.0 nemá problémy s kompatibilitou s Azure AD Connect verzí 1.1.649.0.
 
 ## <a name="july-2017"></a>Červenec 2017
 **Aktualizace agenta:**
 
-* Agent Azure AD Connect Health pro službu AD DS (verze 3.0.68.0)
-  1. Obecná vylepšení a opravy chyb
-  2. Podpora suverénních cloudů
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.0.68.0)
-  1. Obecná vylepšení a opravy chyb
-  2. Podpora suverénních cloudů
-* Agent Azure AD Connect Health pro synchronizaci (verze 3.0.68.0) vydané službou Azure AD Connect verze 1.1.614.0
-  1. Podpora pro Microsoft Azure Government Cloud a Microsoft Cloud Germany
+* Agent Azure AD Connect Health pro služba AD DS (verze 3.0.68.0)
+  1. Opravy chyb a Obecná vylepšení
+  2. Svrchovaná podpora pro Cloud
+* Agent Azure AD Connect Health pro AD FS (verze 3.0.68.0)
+  1. Opravy chyb a Obecná vylepšení
+  2. Svrchovaná podpora pro Cloud
+* Agent Azure AD Connect Health pro synchronizaci (verze 3.0.68.0) byl vydaný s Azure AD Connect verze 1.1.614.0.
+  1. Podpora pro Microsoft Azure Government Cloud a Microsoft Cloud Německo
 
 ## <a name="april-2017"></a>Duben 2017      
 **Aktualizace agenta:**
 
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.0.12.0)
-  1. Obecná vylepšení a opravy chyb
-* Agent Azure AD Connect Health pro službu AD DS (verze 3.0.12.0)
-  1. Čítače výkonu nahrát vylepšení
-  2. Obecná vylepšení a opravy chyb
+* Agent Azure AD Connect Health pro AD FS (verze 3.0.12.0)
+  1. Opravy chyb a Obecná vylepšení
+* Agent Azure AD Connect Health pro služba AD DS (verze 3.0.12.0)
+  1. Vylepšení nahrávání čítačů výkonu
+  2. Opravy chyb a Obecná vylepšení
 
 ## <a name="october-2016"></a>Říjen 2016
 **Aktualizace agenta:**
 
-* Agent Azure AD Connect Health pro službu AD FS (verze 2.6.408.0)
-* Vylepšení detekce klientských IP adres v žádosti o ověření
+* Agent Azure AD Connect Health pro AD FS (verze 2.6.408.0)
+* Vylepšení zjišťování IP adres klientů v žádostech o ověření
 * Opravy chyb související s výstrahami
-* Agent Azure AD Connect Health pro službu AD DS (verze 2.6.408.0)
+* Agent Azure AD Connect Health pro služba AD DS (verze 2.6.408.0)
 * Opravy chyb související s výstrahami.
-* Agent Azure AD Connect Health pro synchronizaci (verze 2.6.353.0) vydané službou Azure AD Connect verze 1.1.281.0
-* Zadejte požadovaná data pro zprávy o chybách synchronizace
+* Agent Azure AD Connect Health pro synchronizaci (verze 2.6.353.0) byl vydaný s Azure AD Connect verze 1.1.281.0.
+* Zadejte požadovaná data pro zprávy o chybách synchronizace.
 * Opravy chyb související s výstrahami
 
-**Nové funkce ve verzi preview:**
+**Nové funkce ve verzi Preview:**
 
-* Zprávy o chybách synchronizace Azure AD Connect
+* Zprávy o chybách synchronizace pro Azure AD Connect
 
 **Nové funkce:**
 
-* Azure AD Connect Health pro AD FS – IP adresa pole je k dispozici v sestavě o nejčastějších 50 uživatelů s chybné uživatelské jméno a heslo.
+* Pole Azure AD Connect Health pro AD FS-IP adresa je k dispozici v sestavě o prvních 50 uživatelích s chybným uživatelským jménem nebo heslem.
 
 ## <a name="july-2016"></a>Červenec 2016
-**Nové funkce ve verzi preview:**
+**Nové funkce ve verzi Preview:**
 
-* [Azure AD Connect Health pro službu AD DS](how-to-connect-health-adds.md).
+* [Azure AD Connect Health pro služba AD DS](how-to-connect-health-adds.md).
 
 ## <a name="january-2016"></a>leden 2016
 **Aktualizace agenta:**
 
-* Agent Azure AD Connect Health pro službu AD FS (verze 2.6.91.1512)
+* Agent Azure AD Connect Health pro AD FS (verze 2.6.91.1512)
 
 **Nové funkce:**
 
-* [Nástroj pro testování připojení pro Azure AD Connect stavu agentů](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)
+* [Nástroj pro testování připojení pro agenty Azure AD Connect Health](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)
 
 ## <a name="november-2015"></a>listopad 2015
 **Nové funkce:**
 
-* Podpora pro [řízení přístupu podle rolí](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* Podpora [Access Control na základě rolí](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
 
-**Nové funkce ve verzi preview:**
+**Nové funkce ve verzi Preview:**
 
 * [Azure AD Connect Health pro synchronizaci](how-to-connect-health-sync.md).
 
 **Opravené problémy:**
 
-* Opravy chyb během registrace agenta.
+* Opravy chyb pro chyby zjištěné při registraci agenta.
 
 ## <a name="september-2015"></a>Září 2015
 **Nové funkce:**
 
-* Nesprávné uživatelské jméno heslo sestavy pro službu AD FS
-* Podpora konfigurace neověřené Proxy protokolu HTTP
-* Podpora konfigurace agenta na jádru serveru
-* Vylepšení výstrah pro službu AD FS
-* Vylepšení agenta Azure AD Connect Health pro službu AD FS pro připojení a data nahrát.
+* Nesprávná sestava hesla uživatelského jména pro AD FS
+* Podpora konfigurace neověřeného proxy serveru HTTP
+* Podpora konfigurace agenta v jádru serveru
+* Vylepšení výstrah pro AD FS
+* Vylepšení v agentovi Azure AD Connect Health pro AD FS pro připojení a nahrávání dat.
 
 **Opravené problémy:**
 
-* Opravy chyb v přehledů o využití pro typy chyb AD FS.
+* Opravy chyb v přehledech využití AD FS typy chyb.
 
-## <a name="june-2015"></a>Červen 2015
-**Počáteční verze služby Azure AD Connect Health pro AD FS a Proxy služby AD FS.**
+## <a name="june-2015"></a>Červeně 2015
+**Počáteční verze Azure AD Connect Health pro AD FS a AD FS proxy**
 
 **Nové funkce:**
 
-* Výstrahy pro monitorování serverů služby AD FS a Proxy služby AD FS s e-mailová oznámení.
-* Snadný přístup k topologie služby AD FS a vzory v čítače výkonu služby AD FS.
-* Trend v úspěšných žádostí o token na serverech služby AD FS seskupené podle aplikací, metody ověřování, žádost o síťové umístění atd.
-* Vývoj požadavků na servery služby AD FS seskupené podle aplikací, chyba typy atd.
+* Výstrahy týkající se monitorování AD FS a AD FS proxy serverů pomocí e-mailových oznámení.
+* Snadný přístup k AD FS topologie a vzory v AD FS čítače výkonu.
+* Trend úspěšných požadavků na tokeny na serverech AD FS seskupených podle aplikací, metod ověřování, požadavku na umístění v síti atd.
+* Trendy v neúspěšné žádosti na serverech AD FS seskupené podle aplikací, typů chyb atd.
 * Jednodušší nasazení agenta pomocí přihlašovacích údajů globálního správce Azure AD.  
 
-## <a name="next-steps"></a>Další postup
-Další informace o [monitorování vaší místní infrastruktury identit a synchronizace služeb v cloudu](whatis-hybrid-identity-health.md).
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o [monitorování místní infrastruktury identit a synchronizačních služeb v cloudu](whatis-hybrid-identity-health.md).
 

@@ -1,5 +1,5 @@
 ---
-title: CreateUiDefitinion. JSON pro prostředí pro vytváření spravované aplikace Azure | Microsoft Docs
+title: CreateUiDefinition. JSON pro prostředí pro vytváření spravované aplikace Azure | Microsoft Docs
 description: Popisuje, jak vytvořit definice uživatelského rozhraní pro Azure Managed Applications
 services: managed-applications
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 292f2995e7ff1f56c306b8c9859bdb323f21762d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1ee6d9332a2be5ccb22b7571b348e2e0aae78fb2
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847597"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563557"
 ---
-# <a name="createuidefitinionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefitinion. JSON pro prostředí pro vytváření spravované aplikace Azure
+# <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. JSON pro prostředí pro vytváření spravované aplikace Azure
 
 Tento dokument zavádí základní koncepty souboru **createUiDefinition. JSON** , který Azure Portal používá k definování uživatelského rozhraní při vytváření spravované aplikace.
 

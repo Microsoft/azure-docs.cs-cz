@@ -11,18 +11,18 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 66effb095edf7927a38fca53b2ff317e9bad468e
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619608"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562929"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Vytvoření funkce na platformě Linux pomocí vlastní image
 
 Služba Azure Functions umožňuje hostovat funkce v Linuxu ve vašem vlastním kontejneru. Můžete také [hostovat ve výchozím kontejneru služby Azure App Service](functions-create-first-azure-function-azure-cli-linux.md). Tato funkce vyžaduje [modul runtime Functions 2. x](functions-versions.md).
 
-V tomto kurzu se dozvíte, jak do Azure nasadit funkce jako vlastní image Dockeru. Tento model je užitečný v případě, že potřebujete přizpůsobit integrovanou image kontejneru. Když vaše funkce vyžadují určitou jazykovou verzi nebo konkrétní závislost nebo konfiguraci, kterou vestavěná image neposkytuje, můžete chtít použít vlastní image. Podporované základní image pro Azure Functions najdete v [úložišti Azure Functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base). [Podpora Pythonu](functions-reference-python.md) je v tuto chvíli ve verzi Preview.
+V tomto kurzu se dozvíte, jak do Azure nasadit funkce jako vlastní image Dockeru. Tento model je užitečný v případě, že potřebujete přizpůsobit integrovanou image kontejneru. Když vaše funkce vyžadují určitou jazykovou verzi nebo konkrétní závislost nebo konfiguraci, kterou vestavěná image neposkytuje, můžete chtít použít vlastní image. Podporované základní image pro Azure Functions najdete v [úložišti Azure Functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base). 
 
 V tomto kurzu se dozvíte, jak pomocí Azure Functions Core Tools vytvořit funkci ve vlastní imagi Linuxu. Tuto image publikujete do aplikace funkcí v Azure, která se vytvořila pomocí Azure CLI. Později aktualizujete funkci pro připojení k úložišti Azure Queue. Povolíte také.  
 
@@ -69,8 +69,6 @@ Po zobrazení výzvy zvolte modul runtime pracovního procesu z následujících
 * `dotnet`: vytvoří projekt knihovny tříd .NET Core (. csproj).
 * `node`: vytvoří projekt jazyka JavaScript.
 * `python`: vytvoří projekt Pythonu.
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 Při spuštění příkazu se zobrazí něco jako následující výstup:
 
@@ -252,7 +250,7 @@ az functionapp deployment container config --enable-cd \
 
 Tento příkaz vrátí adresu URL Webhooku nasazení po povolení průběžného nasazování. K vrácení této adresy URL můžete použít také příkaz [AZ functionapp Deployment Container show-CD-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) . 
 
-Zkopírujte adresu URL nasazení a vyhledejte úložiště Dockerhubu, klikněte na kartu Webhooky, zadejte **název** Webhooku Webhooku, vložte adresu URL do Webhooku a pak zvolte znaménko plus ( **+** ).
+Zkopírujte adresu URL nasazení a vyhledejte úložiště Dockerhubu, klikněte na kartu Webhooky, zadejte **název** Webhooku Webhooku, vložte adresu URL do Webhookua pak zvolte znaménko plus ( **+** ).
 
 ![Přidání Webhooku do úložiště Dockerhubu](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 

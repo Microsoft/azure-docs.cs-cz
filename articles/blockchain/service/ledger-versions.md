@@ -1,8 +1,8 @@
 ---
-title: Služba Azure Blockchain podporované verze knihy, použití dílčích oprav a upgrade
-description: Přehled podporovaných účetní knihy verzí ve službě Azure Blockchain, včetně zásady týkající se systémů, použití dílčích oprav a spravovat systém a upgrady spravovat uživatele.
+title: Služba Azure blockchain podporuje verze hlavní knihy, opravy a upgrade.
+description: Přehled podporovaných verzí v hlavní knize ve službě Azure blockchain, včetně zásad týkajících se oprav systémů a počítačů spravovaných systémem a uživatelem spravovaných upgradů.
 services: azure-blockchain
-keywords: blockchain
+keywords: Blockchain
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
@@ -10,33 +10,33 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 53f65ec91a1e0f1e5a6322f0125bf83cd3e400b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cded49f14ae90f84b18c0a37059677c6c1fed99
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399104"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562790"
 ---
-# <a name="supported-azure-blockchain-service-ledger-versions"></a>Podporované verze služby Azure Blockchain účetní kniha
+# <a name="supported-azure-blockchain-service-ledger-versions"></a>Podporované verze hlavní knihy služby Azure blockchain
 
-Používá službu Azure Blockchain podle ethereum během [kvora](https://www.goquorum.com/developers) určená pro zpracování privátní transakce ve skupině známých účastníků identifikována jako consortium ve službě Azure Blockchain účetní knihy.
+Služba Azure blockchain používá hlavní knihu kvora [](https://www.goquorum.com/developers) založenou na ethereem navrženou pro zpracování privátních transakcí v rámci skupiny známých účastníků, která je určená jako konsorcium ve službě Azure blockchain Service.
 
-V současné době podporuje služba Azure Blockchain [kvora verze 2.2.1](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.1) a [správce transakcí Tessera](https://github.com/jpmorganchase/tessera).
+V současné době služba Azure blockchain podporuje [kvorum verze 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) a [správce transakcí Tessera](https://github.com/jpmorganchase/tessera).
 
 ## <a name="managing-updates-and-upgrades"></a>Správa aktualizací a upgradů
 
-Správa verzí v kvora se provádí prostřednictvím hlavní, vedlejší verzi a vydání opravy. Například pokud je verze kvora 2.0.1, vydání by rozdělit následujícím způsobem:
+Správa verzí v kvoru se provádí prostřednictvím hlavní, dílčí a opravné verze. Pokud je například kvorum verze 2.0.1, typ verze bude zařazen následovně:
 
 |Hlavní | Podverze  | Oprava  |
 | :--- | :----- | :----- |
 | 2 | 0 | 1 | 
 
-Služba Azure Blockchain automaticky aktualizuje opravu verzích kvora pro stávající členy spuštěné do 30 dní od k dispozici od kvora.
+Služba Azure blockchain automaticky aktualizuje vydané verze kvora na stávající běžící členy do 30 dnů od jejího zpřístupnění z kvora.
 
-## <a name="availability-of-new-ledger-versions"></a>Dostupnost nové verze knihy
+## <a name="availability-of-new-ledger-versions"></a>Dostupnost nových verzí hlavní knihy
 
-Azure Blockchain Service poskytuje nejnovější hlavní a dílčí verze knihy kvora během 60 dnů je k dispozici u výrobce kvora. Maximálně čtyři vedlejší verze jsou k dispozici pro konsorcia lze vybírat při zřizování nového člena a consortium. Upgrade z na velký nebo dílčí verze se aktuálně nepodporuje.
+Služba Azure blockchain poskytuje nejnovější hlavní a dílčí verze hlavní knihy kvora do 60 dnů od jejího zpřístupnění od výrobce kvora. Pro konsorcia si můžete při zřizování nového člena a konsorcia poskytnout maximálně čtyři dílčí verze. Upgrade z verze na hlavní nebo dílčí verzi se v tuto chvíli nepodporuje.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Omezení ve službě Azure Blockchain](limits.md)
+[Omezení ve službě Azure blockchain](limits.md)

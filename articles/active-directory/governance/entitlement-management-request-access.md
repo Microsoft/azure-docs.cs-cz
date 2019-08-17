@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b5be74b0734a27b02030e2c6995b43ef0c02162
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678107"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562177"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Požádat o přístup k balíčku přístupu ve správě nároků Azure AD (Preview)
 
@@ -29,6 +29,10 @@ ms.locfileid: "68678107"
 > Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Díky správě nároků Azure AD umožňuje přístupové balíčky jednorázovou instalaci prostředků a zásad, které automaticky spravují přístup po dobu života balíčku přístupu. 
+
+Správce balíčků přístupu může nakonfigurovat zásady, které vyžadují schválení pro uživatele, kteří mají přístup k balíčkům přístupu. Uživatel, který potřebuje přístup k přístupovému balíčku, může odeslat žádost o získání přístupu. Tento článek popisuje, jak odeslat žádost o přístup.
 
 ## <a name="sign-in-to-the-my-access-portal"></a>Přihlášení k portálu pro přístup
 

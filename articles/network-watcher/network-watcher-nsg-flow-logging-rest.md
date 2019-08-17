@@ -1,6 +1,6 @@
 ---
-title: Protokoly toku spravovat skupiny zabezpečení sítě pomocí služby Azure Network Watcher – rozhraní REST API | Dokumentace Microsoftu
-description: Tato stránka vysvětluje, jak spravovat protokoly toků skupin zabezpečení sítě ve službě Azure Network Watcher pomocí rozhraní REST API
+title: Správa protokolů toku skupin zabezpečení sítě pomocí Azure Network Watcher-REST API | Microsoft Docs
+description: Tato stránka vysvětluje, jak spravovat protokoly toku skupin zabezpečení sítě v Azure Network Watcher s REST API
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: ab4b283449ec6c0174f380b0231dd2e78dea419d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88173b24ecfca72e05d6f930b45d732aefad0e56
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688051"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563418"
 ---
-# <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurace skupiny zabezpečení sítě protokolů toku s využitím rozhraní REST API
+# <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurace protokolů toku skupiny zabezpečení sítě pomocí REST API
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
@@ -29,30 +29,30 @@ ms.locfileid: "64688051"
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
-Protokoly toku skupin zabezpečení sítě jsou funkce služby Network Watcher, který vám umožní zobrazit informace o příchozí a odchozí provoz IP přes skupinu zabezpečení sítě. Tyto protokoly toku jsou napsané ve formátu json a zobrazení odchozí a příchozí toků na základě pravidel za NIC toku se vztahuje na 5 řazené kolekce členů informace o toku (zdrojová a cílová IP, zdrojový/cílový Port, protokol), a jestli byl povolený nebo zakázaný provoz.
+Protokoly toku skupin zabezpečení sítě jsou funkcí Network Watcher, která vám umožní zobrazit informace o příchozím a odchozím provozu IP přes skupinu zabezpečení sítě. Tyto protokoly toků jsou napsané ve formátu JSON a zobrazují odchozí a příchozí toky na základě jednotlivých pravidel. síťové rozhraní, ke kterému se tok vztahuje, je 5 – informace o toku (zdrojová nebo cílová IP adresa, zdrojový/cílový port, protokol) a pokud byl provoz povolený nebo zakázaný.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-ARMclient slouží k volání rozhraní REST API pomocí Powershellu. ARMClient se nachází na chocolatey na [ARMClient v Chocolatey](https://chocolatey.org/packages/ARMClient)
+ARMclient se používá k volání REST API s využitím PowerShellu. ARMClient se nachází v čokoládě na [ARMClient](https://chocolatey.org/packages/ARMClient) při čokoládě.
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit Network Watcher](network-watcher-create.md) vytvořit Network Watcher.
+V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
 
 > [!Important]
-> Pro volání rozhraní REST API služby Network Watcher, že název skupiny prostředků v identifikátoru URI žádosti je skupina prostředků, který obsahuje sledovací proces sítě ne prostředky provádíte diagnostických úkonů na.
+> Pro Network Watcher REST API volá název skupiny prostředků v identifikátoru URI požadavku skupina prostředků, která obsahuje Network Watcher, ne prostředky, na kterých provádíte diagnostické akce.
 
 ## <a name="scenario"></a>Scénář
 
-Scénáře popsané v tomto článku se dozvíte, jak povolit, zakázat a dotazování protokolů toku s využitím rozhraní REST API. Další informace o toku loggings skupina zabezpečení sítě najdete v tématu [protokolování toků skupin zabezpečení sítě - přehled](network-watcher-nsg-flow-logging-overview.md).
+Scénář popsaný v tomto článku ukazuje, jak povolit, zakázat a dotazovat protokoly toku pomocí REST API. Další informace o protokolování toků skupin zabezpečení sítě najdete v článku [protokolování toku skupin zabezpečení sítě – přehled](network-watcher-nsg-flow-logging-overview.md).
 
-V tomto scénáři provedete následující:
+V tomto scénáři provedete tyto kroky:
 
-* Povolení protokolů toku (verze 2)
-* Zakázat protokolů toku
-* Stav protokoly toku dotazu
+* Povolit protokoly toku (verze 2)
+* Zakázat protokoly toků
+* Stav protokolů toku dotazů
 
-## <a name="log-in-with-armclient"></a>Přihlaste se pomocí ARMClient
+## <a name="log-in-with-armclient"></a>Přihlášení pomocí ARMClient
 
-Přihlaste se k armclient pomocí přihlašovacích údajů Azure.
+Přihlaste se k armclient s přihlašovacími údaji Azure.
 
 ```powershell
 armclient login
@@ -60,16 +60,16 @@ armclient login
 
 ## <a name="register-insights-provider"></a>Registrace poskytovatele Insights
 
-Aby se tok protokolování nemusí fungovat správně **Microsoft.Insights** musí být zaregistrovaný poskytovatel. Pokud si nejste jisti Pokud **Microsoft.Insights** poskytovatel je zaregistrovaný, spusťte následující skript.
+Aby protokolování toků fungovalo úspěšně, musí být zaregistrovaný poskytovatel **Microsoft. Insights** . Pokud si nejste jistí, jestli je poskytovatel **Microsoft. Insights** zaregistrovaný, spusťte následující skript.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
 armclient post "https://management.azure.com//subscriptions/${subscriptionId}/providers/Microsoft.Insights/register?api-version=2016-09-01"
 ```
 
-## <a name="enable-network-security-group-flow-logs"></a>Povolit skupiny zabezpečení sítě protokolů toku
+## <a name="enable-network-security-group-flow-logs"></a>Povolit protokoly toku skupin zabezpečení sítě
 
-Příkaz, který umožní tok protokoly verze 2 je znázorněno v následujícím příkladu. Pro verzi 1 nahraďte pole 'version' '1':
+V následujícím příkladu je uveden příkaz pro povolení protokolů Flow verze 2. Pro verzi 1 nahraďte pole ' Version ' ' 1 ':
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -98,7 +98,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-Odpověď vrácená z předchozího příkladu vypadá takto:
+Odpověď vrácená z předchozího příkladu je následující:
 
 ```json
 {
@@ -118,9 +118,9 @@ Odpověď vrácená z předchozího příkladu vypadá takto:
 }
 ```
 
-## <a name="disable-network-security-group-flow-logs"></a>Protokoly toku zakázat skupina zabezpečení sítě
+## <a name="disable-network-security-group-flow-logs"></a>Zakázat protokoly toků skupin zabezpečení sítě
 
-Chcete-li zakázat protokolů toku použijte následující příklad. Volání je totéž jako povolení protokolů toku s výjimkou **false** je nastavena pro vlastnost enabled.
+Chcete-li zakázat protokoly toku, použijte následující příklad. Volání je stejné jako povolení protokolů toku, s výjimkou **hodnoty false** nastavené pro vlastnost Enabled.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -149,7 +149,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-Odpověď vrácená z předchozího příkladu vypadá takto:
+Odpověď vrácená z předchozího příkladu je následující:
 
 ```json
 {
@@ -171,7 +171,7 @@ Odpověď vrácená z předchozího příkladu vypadá takto:
 
 ## <a name="query-flow-logs"></a>Protokoly toku dotazů
 
-Následující dotazy volání REST stav toku zaznamená na skupinu zabezpečení sítě.
+Následující volání REST dotazuje stav protokolů toku ve skupině zabezpečení sítě.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -187,7 +187,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/queryFlowLogStatus?api-version=2016-12-01" $requestBody
 ```
 
-Následuje příklad odpovědi vrácené:
+Následuje příklad vracené odpovědi:
 
 ```json
 {
@@ -207,18 +207,21 @@ Následuje příklad odpovědi vrácené:
 }
 ```
 
-## <a name="download-a-flow-log"></a>Stáhnout protokol toku
+## <a name="download-a-flow-log"></a>Stažení protokolu toku
 
-Umístění úložiště protokolů toku je definován při vytvoření. Praktický nástroj pro přístup k těmto protokolů toku uložit do účtu úložiště je Microsoft Azure Storage Explorer, které je možné stáhnout tady:  https://storageexplorer.com/
+Umístění úložiště protokolu toku je definováno při vytvoření. Pohodlný nástroj pro přístup k těmto protokolům toků uloženým do účtu úložiště je Průzkumník služby Microsoft Azure Storage, který se dá stáhnout tady: https://storageexplorer.com/
 
-Pokud je určen účet úložiště, jsou uloženy soubory zachytávání paketů do účtu úložiště v následujícím umístění:
+Pokud je zadaný účet úložiště, soubory zachytávání paketů se uloží do účtu úložiště v následujícím umístění:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-## <a name="next-steps"></a>Další postup
+> [!IMPORTANT]
+> V současné době dochází k potížím s [protokolem toku NSG (Network Security Group)](network-watcher-nsg-flow-logging-overview.md) pro Network Watcher se z úložiště objektů BLOB automaticky neodstraňují na základě nastavení zásad uchovávání informací. Pokud máte existující nenulové zásady uchovávání informací, doporučujeme, abyste pravidelně odstranili objekty blob úložiště, které jsou po dobu jejich uchování, a nemuseli se jim účtovat poplatky. Další informace o tom, jak odstranit blog úložiště protokolu toku NSG, najdete v tématu [odstranění objektů BLOB úložiště protokolu toku NSG](network-watcher-delete-nsg-flow-log-blobs.md).
 
-Zjistěte, jak [vizualizaci protokolů toku NSG s Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak [vizualizovat vaše protokoly toků NSG s open source nástroje](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Naučte [se vizualizovat protokoly toku NSG pomocí PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) .
+
+Naučte se [vizualizovat protokoly toku NSG pomocí nástrojů Open Source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) .

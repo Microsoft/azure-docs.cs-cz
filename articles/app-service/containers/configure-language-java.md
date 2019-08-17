@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 825379c04c22b3f13e651455c490a58ad47169d8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b71cf55944c1049fa2c3ddca79f02a8b75b9b2ec
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967159"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563017"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
@@ -139,7 +139,7 @@ Vývojáři, kteří spouštějí jednu aplikaci s jedním slotem nasazení v pl
 
 Při ladění nastavení haldy aplikace zkontrolujte podrobnosti plánu App Service a vezměte v úvahu více aplikací a slot nasazení potřebuje k vyhledání optimálního přidělení paměti.
 
-Pokud nasazujete aplikaci JAR, měla by být pojmenována *App. jar* , aby předdefinovaná image mohla správně identifikovat vaši aplikaci. (Modul plug-in Maven Toto přejmenování provede automaticky.) Pokud si svůj JAR nepřejete přejmenovat na *App. jar*, můžete nahrát skript prostředí pomocí příkazu, abyste mohli svůj jar spustit. Pak vložte úplnou cestu k tomuto skriptu do textového pole [spouštěcí soubor](app-service-linux-faq.md#built-in-images) v části konfigurace portálu.
+Pokud nasazujete aplikaci JAR, měla by být pojmenována *App. jar* , aby předdefinovaná image mohla správně identifikovat vaši aplikaci. (Modul plug-in Maven Toto přejmenování provede automaticky.) Pokud si svůj JAR nepřejete přejmenovat na *App. jar*, můžete nahrát skript prostředí pomocí příkazu, abyste mohli svůj jar spustit. Pak vložte úplnou cestu k tomuto skriptu do textového pole [spouštěcí soubor](app-service-linux-faq.md#built-in-images) v části konfigurace portálu. Spouštěcí skript neběží z adresáře, do kterého je umístěný. Proto vždy používejte absolutní cesty k odkazování na soubory ve spouštěcím skriptu (například: `java -jar /home/myapp/myapp.jar`).
 
 ### <a name="turn-on-web-sockets"></a>Zapnout webové sokety
 
@@ -688,7 +688,7 @@ Opravy a opravy pro hlavní slabá místa zabezpečení budou vydány, jakmile b
 
 Pokud bude vyřazení podporované běhové prostředí Java, budou se vývojáři Azure, kteří používají modul runtime, předávat oznámení o zastaralosti alespoň šest měsíců před vyřazením modulu runtime.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Na webu [Azure pro vývojáře v jazyce Java](/java/azure/) najdete informace o rychlých startech, kurzech a referenční dokumentaci Java pro Azure.
 

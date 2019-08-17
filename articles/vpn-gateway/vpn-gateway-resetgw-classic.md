@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 359773dad53f333b2f052dd5b5481645c72746da
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 92978815af22e3ce1a549b9ca3e335befca8c918
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533930"
+ms.locfileid: "69563044"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetování brány VPN Gateway
 
@@ -69,10 +69,12 @@ Když obdržíte výsledek vrácení, můžete předpokládat, že resetování 
 
 ### <a name="resetclassic"></a>Model nasazení Classic
 
-Rutina pro resetování brány je **resetována – AzureVNetGateway**. Rutiny Azure PowerShell pro správu služeb musí být nainstalované místně na vašem počítači. Nemůžete použít Azure Cloud Shell. Před provedením resetu se ujistěte, že máte nejnovější verzi [rutin PowerShellu pro správu služeb (SM)](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets). Následující příklad obnoví bránu pro virtuální síť s názvem "ContosoVNet":
+Rutina pro resetování brány je **resetována – AzureVNetGateway**. Rutiny Azure PowerShell pro správu služeb musí být nainstalované místně na vašem počítači. Nemůžete použít Azure Cloud Shell. Před provedením resetu se ujistěte, že máte nejnovější verzi [rutin PowerShellu pro správu služeb (SM)](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets). Při použití tohoto příkazu se ujistěte, že používáte úplný název virtuální sítě. Klasické virtuální sítě vytvořené pomocí portálu mají dlouhý název, který se vyžaduje pro PowerShell. Dlouhý název můžete zobrazit pomocí příkazu Get-AzureVNetConfig-ExportToFile C:\Myfoldername\NetworkConfig.xml.
+
+Následující příklad obnoví bránu pro virtuální síť s názvem "Group TestRG1 virtuální sítě testvnet1" (která na portálu představuje jednoduše "virtuální sítě testvnet1"):
 
 ```powershell
-Reset-AzureVNetGateway –VnetName “ContosoVNet”
+Reset-AzureVNetGateway –VnetName 'Group TestRG1 TestVNet1'
 ```
 
 Vyústit

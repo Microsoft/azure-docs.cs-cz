@@ -12,12 +12,12 @@ ms.subservice: development
 ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 65cbd6679c85e82eaa5fd28bb91d54b443cc891e
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 02caa7154ef9cb8419b533f0cb2d0fd57e86bf9f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515474"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563330"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Začínáme se sadou Visual Studio 2019 pro SQL Data Warehouse
 Sady Visual Studio **2019** SQL Server Data Tools (SSDT) je jeden nástroj, který vám umožní provádět tyto akce:
@@ -33,13 +33,13 @@ Sady Visual Studio **2019** SQL Server Data Tools (SSDT) je jeden nástroj, kter
 > Projekty databáze sady Visual Studio SSDT jsou momentálně ve verzi Preview. Pokud chcete dostávat pravidelné aktualizace této funkce, Hlasujte prosím na [UserVoice].
 
 ## <a name="install-visual-studio-2019"></a>Instalace sady Visual Studio 2019
-Pomocí následujícího odkazu si stáhněte a nainstalujete Visual Studio: [Stáhnout Visual Studio 2019][]. Během instalace musíte vybrat úlohu ukládání a zpracování dat. V aplikaci Visual Studio 2019 není vyžadována další samostatná instalace SSDT.
+Pokud si chcete stáhnout a nainstalovat Visual Studio, přečtěte si téma [Stáhnout Visual Studio 2019][] . Během instalace vyberte úlohu ukládání a zpracování dat. Samostatná instalace SSDT už není v aplikaci Visual Studio 2019 nutná.
 
 ## <a name="reporting-issues-with-ssdt-visual-studio-2019-preview"></a>Hlášení problémů s SSDT sadou Visual Studio 2019 (Preview)
 
 Pokud chcete nahlásit problémy při použití SSDT s SQL Data Warehouse, pošlete e-mailem následující seznam distribuce e-mailů:<sqldwssdtpreview@service.microsoft.com>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když máte nejnovější verzi SSDT, jste připraveni se [připojit][connect] k vašemu SQL Data Warehouse.
 
@@ -51,7 +51,7 @@ Teď, když máte nejnovější verzi SSDT, jste připraveni se [připojit][conn
 [connect]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--Other-->
-[Stáhnout Visual Studio 2019]: https://www.visualstudio.com/downloads/
+[Stáhnout Visual Studio 2019]: https://visualstudio.microsoft.com/vs/preview/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx
 [UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu

@@ -1,109 +1,111 @@
 ---
-title: Vytvoření fondu hostitele Preview virtuální plochy Windows pomocí prostředí PowerShell – Azure
-description: Postup vytvoření fondu hostitele v náhledu virtuální plochy Windows pomocí rutin prostředí PowerShell.
+title: Vytvoření fondu hostitelů ve verzi Preview virtuálních počítačů s Windows pomocí PowerShellu – Azure
+description: Postup vytvoření fondu hostitelů ve verzi Preview ve Windows Virtual desktopu pomocí rutin PowerShellu
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: 374d5a8f51e28b8a10595842cfc301db503b6bed
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 1c365790e1633a74be9f5baf41098e7511f99a7d
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613331"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563291"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
 
-Hostitel fondy jsou kolekce jednoho nebo víc stejných virtuálních počítačů v prostředí klienta Windows virtuální plochy, ve verzi Preview. Každý hostitel fond může obsahovat skupinu aplikací, které mohou uživatelé komunikovat s stejně jako ve fyzických stolním počítači.
+Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta ve verzi Preview virtuálních počítačů s Windows. Každý fond hostitelů může obsahovat skupinu aplikací, se kterou můžou uživatelé interaktivně pracovat, jako by na fyzickém počítači.
 
-## <a name="use-your-powershell-client-to-create-a-host-pool"></a>Použití klienta Powershellu k vytvoření fondu hostitele
+## <a name="use-your-powershell-client-to-create-a-host-pool"></a>Vytvoření fondu hostitelů pomocí klienta PowerShellu
 
-Nejprve je potřeba [stáhněte a naimportujte modul Powershellu virtuální plochy Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) použít v relaci Powershellu, pokud jste tak již neučinili.
+Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
 
-Spuštěním následující rutiny pro přihlášení k prostředí virtuálního klienta Windows
+Spuštěním následující rutiny se přihlaste do prostředí virtuálních počítačů s Windows.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com
 ```
 
-V dalším kroku spusťte tuto rutinu k vytvoření nového fondu hostitele ve vašem tenantovi virtuální plochy Windows:
+Potom spuštěním této rutiny vytvořte nový fond hostitelů ve vašem tenantovi virtuálních klientů s Windows:
 
 ```powershell
 New-RdsHostPool -TenantName <tenantname> -Name <hostpoolname>
 ```
 
-Další rutiny k vytvoření tokenu registrace k autorizaci hostitele relace připojí k fondu hostitele a uložte ho do nového souboru na místním počítači. Můžete určit, jak dlouho je registrační token platný, pomocí parametru - ExpirationHours.
+Spusťte další rutinu pro vytvoření registračního tokenu pro autorizaci hostitele relace pro připojení k fondu hostitelů a jeho uložení do nového souboru na místním počítači. Pomocí parametru-ExpirationHours můžete určit, jak dlouho je registrační token platný.
 
 ```powershell
 New-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname> -ExpirationHours <number of hours> | Select-Object -ExpandProperty Token > <PathToRegFile>
 ```
 
-Potom spusťte tuto rutinu přidat uživatele Azure Active Directory do výchozí skupiny aplikace klasické pracovní plochy pro fond hostitele.
+Potom spuštěním této rutiny přidejte Azure Active Directory uživatele do výchozí skupiny desktopových aplikací pro fond hostitelů.
 
 ```powershell
 Add-RdsAppGroupUser -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-**Přidat RdsAppGroupUser** rutina nepodporuje přidávání skupin zabezpečení a přidá pouze jeden uživatel v čase do skupiny aplikací. Pokud chcete přidat více uživatelů na skupinu aplikací, spusťte rutinu s hlavních názvů uživatelů odpovídající znovu.
+Rutina **Add-RdsAppGroupUser** nepodporuje přidávání skupin zabezpečení a do skupiny aplikací přičítá pouze jednoho uživatele. Pokud chcete do skupiny aplikací přidat více uživatelů, spusťte rutinu znovu s příslušnými hlavními názvy uživatelů.
 
-Spuštěním následující rutiny můžete exportovat registrační token na proměnnou, kterou použijete později v [registraci virtuálních počítačů do hostitelů fondu virtuální plochy Windows](#register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool).
+Spuštěním následující rutiny exportujte registrační token do proměnné, kterou použijete později v části [registrace virtuálních počítačů do fondu hostitelů virtuálních počítačů s Windows](#register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool).
 
 ```powershell
 $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname>).Token
 ```
 
-## <a name="create-virtual-machines-for-the-host-pool"></a>Vytvoření virtuálního počítače pro fond hostitele
+## <a name="create-virtual-machines-for-the-host-pool"></a>Vytváření virtuálních počítačů pro fond hostitelů
 
-Nyní můžete vytvořit virtuální počítač Azure, který může být připojen k hostiteli fondu virtuální plochy Windows.
+Teď můžete vytvořit virtuální počítač Azure, který se dá připojit ke fondu hostitelů virtuálních počítačů s Windows.
 
-Vytvoření virtuálního počítače v několika způsoby:
+Virtuální počítač můžete vytvořit několika způsoby:
 
-- [Vytvoření virtuálního počítače z image Galerie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
+- [Vytvoření virtuálního počítače z Image Galerie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
 - [Vytvoření virtuálního počítače ze spravované image](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
 - [Vytvoření virtuálního počítače z nespravované image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
-## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-preview-agent-installations"></a>Příprava virtuálních počítačů pro virtuální plochy Preview Windows instalace agentů
+Po vytvoření virtuálních počítačů hostitele relace [použijte licenci Windows pro virtuální počítač hostitele relace](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm) , aby se spouštěly vaše virtuální počítače s Windows nebo Windows serverem bez placení na jinou licenci. 
 
-Je třeba provést následující kroky, kterými Příprava virtuálních počítačů, aby bylo možné instalovat agenty virtuální plochy Windows a registraci virtuálních počítačů do hostitelů fondu virtuální plochy Windows:
+## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-preview-agent-installations"></a>Příprava virtuálních počítačů pro instalace agenta verze Preview pro virtuální počítače s Windows
 
-- Je nutné připojení k doméně počítače. To umožňuje příchozí uživatelé virtuální plochy Windows ze svého účtu Azure Active Directory mapovat na svůj účet služby Active Directory a mít přístup k virtuálnímu počítači úspěšně povolený.
-- Pokud virtuální počítač je spuštěný operační systém Windows Server, je nutné nainstalovat roli hostitel relace vzdálené plochy (RDSH). RDSH role umožňuje agentů virtuálního klienta Windows správně nainstalovat.
+Než budete moct nainstalovat agenty virtuálních počítačů s Windows a zaregistrovat virtuální počítače do fondu hostitelů virtuálních počítačů s Windows, musíte provést následující akce:
 
-Pro úspěšné připojení k doméně proveďte následující akce na každém virtuálním počítači:
+- Počítač musí být připojený k doméně. To umožňuje, aby se uživatelé virtuálních ploch Windows namapovali z jejich Azure Active Directory účtu na svůj účet Active Directory a úspěšně povolili přístup k tomuto virtuálnímu počítači.
+- Pokud na virtuálním počítači běží operační systém Windows Server, musíte nainstalovat roli Hostitel relace vzdálené plochy (vzdálené relace). Role vzdálené plochy (hostitele) umožňuje, aby se agenti virtuálních počítačů s Windows správně nainstalovaly.
 
-1. [Připojení k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) s přihlašovacími údaji, které jste zadali při vytváření virtuálního počítače.
-2. Na virtuálním počítači spusťte **ovládací panely** a vyberte **systému**.
-3. Vyberte **název_počítače**vyberte **změnit nastavení**a pak vyberte **změn...**
-4. Vyberte **domény** a pak zadejte doménu služby Active Directory ve virtuální síti.
-5. Ověření pomocí účtu domény, který má oprávnění k připojení k doméně počítače.
+K úspěšnému připojení k doméně udělejte na každém virtuálním počítači tyto věci:
+
+1. [Připojte se k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
+2. Na virtuálním počítači spusťte **Ovládací panely** a vyberte možnost **systém**.
+3. Vyberte **název počítače**, vyberte **změnit nastavení**a pak zvolte **změnit...**
+4. Vyberte **doména** a pak zadejte doménu služby Active Directory ve virtuální síti.
+5. Proveďte ověření pomocí doménového účtu, který má oprávnění k počítačům připojeným k doméně.
 
     >[!NOTE]
-    > Pokud jste se zapojili vaše virtuální počítače do prostředí Azure AD Domain Services, ujistěte se, že vaše doména uživatel připojit také členem skupiny [skupiny Správci AAD DC](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group).
+    > Pokud se k virtuálním počítačům připojujete do prostředí Azure AD Domain Services, ujistěte se, že je uživatel připojení k doméně taky členem [skupiny správců AAD řadiče domény](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group).
 
-## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Registrace virtuálních počítačů do fondu hostitele Windows virtuální plochy, ve verzi Preview
+## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Registrace virtuálních počítačů do fondu hostitelů ve službě Windows Virtual Desktop Preview
 
-Registrace virtuálních počítačů do hostitelů fondu virtuální plochy Windows je stejně jednoduché jako instalace agentů virtuálního klienta Windows.
+Registrace virtuálních počítačů do fondu hostitelů virtuálních klientů Windows je jednoduché jako instalace agentů virtuálních počítačů s Windows.
 
-K registraci agentů virtuálního klienta Windows, proveďte postup na každý virtuální počítač:
+Pokud chcete zaregistrovat agenty virtuálních počítačů s Windows, udělejte na každém virtuálním počítači následující:
 
-1. [Připojení k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) s přihlašovacími údaji, které jste zadali při vytváření virtuálního počítače.
-2. Stáhněte a nainstalujte agenta virtuální plochy Windows.
-   - Stáhněte si [virtuální plochy agenta Windows](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv).
-   - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**vyberte **Odblokovat**a pak vyberte **OK**. To vám umožní váš systém důvěřovat Instalační služby.
-   - Spusťte instalační program. Pokud jste instalační program vyzve k zadání registračního tokenu, zadejte hodnotu jste získali z **Export RdsRegistrationInfo** rutiny.
-3. Stáhněte a nainstalujte agenta zaváděcím virtuální plochy Windows.
-   - Stáhněte si [spouštěcí zavaděč virtuální plochy agenta Windows](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
-   - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**vyberte **Odblokovat**a pak vyberte **OK**. To vám umožní váš systém důvěřovat Instalační služby.
+1. [Připojte se k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
+2. Stáhněte a nainstalujte agenta virtuálního počítače s Windows.
+   - Stáhněte si [agenta pro virtuální počítače s Windows](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv).
+   - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**, vyberte odblokování a pak vyberte **OK**. To umožní vašemu systému důvěřovat instalačnímu programu.
+   - Spusťte instalační program. Když instalační program požaduje registrační token, zadejte hodnotu, kterou jste získali z rutiny **Export-RdsRegistrationInfo** .
+3. Stáhněte a nainstalujte si zaváděcí program pro Windows Virtual Desktop agent.
+   - Stáhněte si [zaváděcí program pro Windows Virtual Desktop agent](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
+   - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**, vyberte odblokování a pak vyberte **OK**. To umožní vašemu systému důvěřovat instalačnímu programu.
    - Spusťte instalační program.
 
 >[!IMPORTANT]
->Pomáhají zabezpečit vaše prostředí virtuálního klienta Windows v Azure, doporučujeme, abyste že na virtuálních počítačích není otevřít příchozí port 3389. Virtuální Desktop Windows nevyžaduje otevřít příchozí port 3389 pro uživatele pro přístup k fondu hostitele virtuálních počítačů. Pokud musíte otevřít port 3389 pro účely odstraňování potíží, doporučujeme vám použít [přístup k virtuálním počítačům just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste provedli hostitele fondu, můžete ho naplnit aplikace RemoteApp. Další informace o tom, jak spravovat aplikace v virtuální plochy Windows, najdete v kurzu skupiny spravovat aplikace.
+Teď, když jste vytvořili fond hostitelů, můžete ho naplnit pomocí vzdálených aplikací RemoteApp. Další informace o správě aplikací ve virtuálním počítači s Windows najdete v kurzu Správa skupin aplikací.
 
 > [!div class="nextstepaction"]
-> [Správa kurz skupiny aplikací](./manage-app-groups.md)
+> [Kurz správy skupin aplikací](./manage-app-groups.md)

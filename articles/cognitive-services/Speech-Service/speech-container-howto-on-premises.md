@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: 06f2db708385c4c3fbf8d005b701b633ac52776a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 420ac45b7d3b5e97772b1aa712ba6b8442ac1de2
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559139"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562762"
 ---
 # <a name="use-with-kubernetes-and-helm"></a>Použití s Kubernetes a Helmem
 
@@ -30,7 +30,7 @@ Před použitím kontejnerů řeči v místním prostředí použijte následuj�
 | Účet Azure | Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][free-azure-account] před tím, než začnete. |
 | Přístup k Container Registry | Aby Kubernetes mohl načíst image Docker do clusteru, bude potřebovat přístup k registru kontejneru. Je nutné nejprve [požádat o přístup k registru kontejneru][speech-preview-access] . |
 | Kubernetes CLI | [KUBERNETES CLI][kubernetes-cli] se vyžaduje pro správu sdílených přihlašovacích údajů z registru kontejneru. Kubernetes je také potřeba před Helm, což je správce balíčků Kubernetes. |
-| Helm CLI | V rámci instalace rozhraní příkazového [řádku Helm][helm-install] budete taky muset inicializovat Helm, který se nainstaluje do nástroje [.][tiller-install] |
+| Helm CLI | V rámci instalace rozhraní příkazového [řádku Helm][helm-install] budete taky muset inicializovat Helm, který se nainstaluje do nástroje [][tiller-install]. |
 |Prostředek řeči |Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého fakturačního klíče a identifikátoru URI koncového bodu faktury Obě hodnoty jsou k dispozici na stránkách přehled a klíče Azure Portal **řeči** a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : klíč prostředku<br><br>**{ENDPOINT_URI}** : příklad identifikátoru URI koncového bodu je:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Doporučená konfigurace hostitelského počítače
@@ -95,7 +95,7 @@ Navštivte [Centrum Microsoft Helme][ms-helm-hub] , kde najdete všechny veřejn
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-Dále nakonfigurujeme hodnoty grafu Helm. Zkopírujte a vložte následující YAML do souboru s názvem `config-values.yaml`. Další informace o přizpůsobení Cognitive Servicesho **rozpoznávání řeči v místním Helm grafu**najdete v tématu [přizpůsobení Helm grafů](#customize-helm-charts). `billing` Hodnoty a `apikey` nahraďte vlastními hodnotami.
+Dále nakonfigurujeme hodnoty grafu Helm. Zkopírujte a vložte následující YAML do souboru s názvem `config-values.yaml`. Další informace o přizpůsobení Cognitive Servicesho **rozpoznávání řeči v místním Helm grafu**najdete v tématu [přizpůsobení Helm grafů](#customize-helm-charts). Nahraďte komentáře `# {API_KEY}`avlastními hodnotami. `# {ENDPOINT_URI}`
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -113,8 +113,8 @@ speechToText:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 
 # text-to-speech configurations
 textToSpeech:
@@ -129,8 +129,8 @@ textToSpeech:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 ```
 
 > [!IMPORTANT]
@@ -262,7 +262,7 @@ Grafy Helm jsou hierarchické. Hierarchicky umožňují dědění grafu, ale tak
 
 [!INCLUDE [Text-to-Speech Helm Chart Config](includes/text-to-speech-chart-config.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další podrobnosti o instalaci aplikací pomocí Helm ve službě Azure Kubernetes Service (AKS) [najdete tady][installing-helm-apps-in-aks].
 

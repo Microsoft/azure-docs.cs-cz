@@ -8,22 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5bb1a4dd9d652481dfe1a2727ee0e5fe7601e96a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812769"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563237"
 ---
-# <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Přístup k řešení VMware pomocí portálu CloudSimple z Azure Portal
+# <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Přístup k řešení VMware pomocí portálu CloudSimple z Azure Portal
 
 Pro přístup k portálu CloudSimple je podporováno jednotné přihlašování. Po přihlášení k Azure Portal máte přístup k portálu CloudSimple bez opětovného přihlášení. Při prvním přístupu k portálu CloudSimple se zobrazí výzva k autorizaci [autorizační aplikace služby CloudSimple](#consent-to-cloudsimple-service-authorization-application) .  Autorizace je jednorázová akce.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Uživatelé s rolemi Builtin **Owner** a **Přispěvatel** mají přístup k portálu CloudSimple.  Role musí být nakonfigurované ve skupině prostředků, ve které je nasazená služba CloudSimple.  Role je také možné nakonfigurovat v objektu služby CloudSimple.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) .
+Uživatelé s rolemi Builtin **Owner** a **Přispěvatel** mají přístup k portálu CloudSimple.  Role musí být nakonfigurované ve skupině prostředků, ve které je nasazená služba CloudSimple.  Role je také možné nakonfigurovat v objektu služby CloudSimple.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) . Přístup k portálu CloudSimple mají jenom uživatelé s předdefinovaným **vlastníkem** a rolemi **přispěvatele** .  Role musí být nakonfigurované v předplatném.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) .
 
-Pokud používáte vlastní role, role by měla mít následující operace ```Actions```.  Další informace o vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Pokud je některá z operací součástí ```NotActions```, uživatel nemá přístup k portálu CloudSimple. 
+Pokud používáte vlastní role, role by měla mít následující operace ```Actions```.  Další informace o vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Pokud je některá z operací součástí ```NotActions```, uživatel nemá přístup k portálu CloudSimple.
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -48,7 +48,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
     ![Spustit portál CloudSimple](media/launch-cloudsimple-portal.png)
 
-> [!TIP]
+> [!NOTE]
 > Pokud vyberete operaci privátního cloudu (například vytvoření nebo rozšíření privátního cloudu) přímo z Azure Portal, otevře se portál CloudSimple se zvýrazněnou stránkou.
 
 Na portálu CloudSimple vyberte **Domů** v nabídce vedle sebe, aby se zobrazily souhrnné informace o vašich privátních cloudech. Zobrazí se prostředky a kapacita vašich privátních cloudů spolu s výstrahami a úlohami, které vyžadují pozornost. U běžných úloh klikněte na pojmenované ikony v horní části stránky.
@@ -57,7 +57,7 @@ Na portálu CloudSimple vyberte **Domů** v nabídce vedle sebe, aby se zobrazil
 
 ## <a name="consent-to-cloudsimple-service-authorization-application"></a>Souhlas s aplikací autorizace služby CloudSimple
 
-Spuštění portálu CloudSimple z Azure Portal poprvé vyžaduje souhlas s aplikací autorizace služby CloudSimple.  Vyberte **přijmout** a udělte vám požadovaná oprávnění a přístup k portálu CloudSimple. 
+Spuštění portálu CloudSimple z Azure Portal poprvé vyžaduje souhlas s aplikací autorizace služby CloudSimple.  Vyberte **přijmout** a udělte vám požadovaná oprávnění a přístup k portálu CloudSimple.
 
 ![Souhlas s autorizací služby CloudSimple – správci](media/cloudsimple-azure-consent.png)
 

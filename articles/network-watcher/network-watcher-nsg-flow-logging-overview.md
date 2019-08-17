@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 1401e378daa0c0a9258858840653899e76c9421c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a77cc22c7a56c29b5b42a032af3d0ea0b2c17d88
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881778"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563516"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
@@ -90,6 +90,9 @@ Níže uvedený text je příkladem protokolu toku. Jak vidíte, existuje více 
 **Povolit protokolování NSG Flow pro všechny skupin zabezpečení sítě připojené k prostředku**: Protokolování toků v Azure je nakonfigurované na prostředku NSG. Tok bude přidružen pouze k jednomu NSG pravidlu. Ve scénářích, kdy je využíváno více skupin zabezpečení sítě, doporučujeme, aby bylo povoleno protokolování NSG Flow na všech skupin zabezpečení sítě použilicích podsíť prostředku nebo síťové rozhraní, aby se zajistilo, že bude zaznamenáván veškerý provoz. Další informace o skupinách zabezpečení sítě najdete v tématu [o vyhodnocení provozu](../virtual-network/security-overview.md#how-traffic-is-evaluated) . 
 
 **Náklady na protokolování toků**: Protokolování toku NSG se účtuje podle objemu vyprodukovaných protokolů. Velký objem přenosů může mít za následek objem protokolu velkého toku a související náklady. Ceny protokolu NSG Flow nezahrnují základní náklady na úložiště. Použití funkce zásady uchovávání informací s protokolováním toku NSG může způsobit velký objem operací úložiště a přidružených nákladů. Pokud nepotřebujete funkci zásad uchovávání informací, doporučujeme nastavit tuto hodnotu na 0. Další podrobnosti najdete v tématu [Network Watcher](https://azure.microsoft.com/pricing/details/network-watcher/) ceny a [ceny Azure Storage](https://azure.microsoft.com/pricing/details/storage/) .
+
+> [!IMPORTANT]
+> V současné době dochází k potížím s [protokolem toku NSG (Network Security Group)](network-watcher-nsg-flow-logging-overview.md) pro Network Watcher se z úložiště objektů BLOB automaticky neodstraňují na základě nastavení zásad uchovávání informací. Pokud máte existující nenulové zásady uchovávání informací, doporučujeme, abyste pravidelně odstranili objekty blob úložiště, které jsou po dobu jejich uchování, a nemuseli se jim účtovat poplatky. Další informace o tom, jak odstranit blog úložiště protokolu toku NSG, najdete v tématu [odstranění objektů BLOB úložiště protokolu toku NSG](network-watcher-delete-nsg-flow-log-blobs.md).
 
 **Příchozí toky zaznamenané z internetových IP adres do virtuálních počítačů bez veřejných IP adres**: Virtuální počítače, které nemají veřejnou IP adresu přiřazenou prostřednictvím veřejné IP adresy přidružené k síťovému adaptéru jako veřejnou IP adresu na úrovni instance nebo které jsou součástí základního fondu back-end nástroje pro vyrovnávání zatížení, používají [výchozí SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) a mají IP adresu přiřazenou Azure pro usnadnění. odchozí připojení. V důsledku toho může dojít k zobrazení záznamů protokolu toku pro toky z internetových IP adres, pokud je tok určen pro port v rozsahu portů přiřazených pro SNAT. I když Azure nedovolí těmto tokům VIRTUÁLNÍm počítačům, bude se zaprotokolovat a bude se zobrazovat Network Watcher v protokolu NSG toku, který navrhuje. Doporučujeme, aby nevyžádaný příchozí internetový provoz byl explicitně zablokován pomocí NSG.
 
@@ -282,7 +285,7 @@ Níže uvedený text je příkladem protokolu toku. Jak vidíte, existuje více 
         ...
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak povolit protokoly toku, najdete v tématu [Povolení protokolování toku NSG](network-watcher-nsg-flow-logging-portal.md).
 - Informace o tom, jak číst protokoly toku, najdete v tématu [Read log NSG Flow](network-watcher-read-nsg-flow-logs.md).

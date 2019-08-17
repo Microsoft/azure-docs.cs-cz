@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8ba2d2fd9c943fe55e82956d022f6ba9840a550f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 00d49d763dedc5d86557dadd10f5d727e7893dbe
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536596"
+ms.locfileid: "69563054"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>Připojení virtuální sítě Azure k CloudSimple pomocí ExpressRoute
 
@@ -24,7 +24,7 @@ Privátní cloudovou síť můžete roztáhnout do vaší virtuální sítě Azu
 Pro připojení ExpressRoute mezi Vaším privátním cloudem a virtuální sítí Azure se vyžaduje autorizační klíč. Pokud chcete získat klíč, zařiďte lístek s <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">podporou</a>.  V žádosti použijte následující informace:
 
 * Typ problému: **Odbornou**
-* Předplatné: Vyberte předplatné, ve kterém je nasazená služba CloudSimple * *.
+* Předplatné: **Vyberte předplatné, ve kterém je nasazená služba CloudSimple.**
 * Služba: **Řešení VMware podle CloudSimple**
 * Typ problému: **Žádost o službu**
 * Podtyp problému: **Autorizační klíč pro připojení virtuální sítě Azure**

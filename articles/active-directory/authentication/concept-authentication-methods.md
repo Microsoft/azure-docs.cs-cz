@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22c25c0a2b2f48baa3b57a8ad39ed4514c884826
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d18c74e908f6d5c4c3d2eefb0518add380fa1324
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533132"
+ms.locfileid: "69561317"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -31,7 +31,7 @@ Microsoft důrazně doporučuje správcům, aby uživatelům umožnil vybrat ví
 | Heslo | MFA a SSPR |
 | Bezpečnostní otázky | Jenom SSPR |
 | E-mailová adresa | Jenom SSPR |
-| Aplikace Microsoft Authenticator | MFA a verze Public Preview pro SSPR |
+| Aplikace Microsoft Authenticator | MFA a SSPR |
 | Hardwarový token OATH | Verze Public Preview pro MFA a SSPR |
 | SMS | MFA a SSPR |
 | Hlasový hovor | MFA a SSPR |
@@ -41,7 +41,7 @@ Microsoft důrazně doporučuje správcům, aby uživatelům umožnil vybrat ví
 
 |     |
 | --- |
-| Hardwarové tokeny OATH pro MFA a SSPR a oznámení mobilní aplikace nebo kód mobilní aplikace jako metody pro Samoobslužné resetování hesla služby Azure AD jsou funkcemi Azure Active Directory veřejné verze Preview. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.|
+| Hardwarové tokeny OATH pro MFA a SSPR jsou funkce verze Public Preview Azure Active Directory. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.|
 |     |
 
 ## <a name="password"></a>Heslo

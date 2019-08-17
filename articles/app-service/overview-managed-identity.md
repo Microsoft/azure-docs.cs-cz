@@ -9,20 +9,17 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 8bc30d50772dffddca32d9f6e22c3d7cec566c70
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: a2b8a4e496094c6275710328e70a09376ce0e5fc
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297154"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563023"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
-
-> [!NOTE] 
-> Podpora spravované identity pro App Service v systému Linux a Web App for Containers je aktuálně ve verzi Preview.
 
 > [!Important] 
 > Spravované identity pro App Service a Azure Functions se nebudou chovat podle očekávání, pokud se vaše aplikace migruje v rámci předplatných nebo tenantů. Aplikace bude muset získat novou identitu, kterou je možné provést zakázáním a opakovaným povolením této funkce. Viz [Odebrání identity](#remove) níže. U podřízených prostředků bude také potřeba mít aktualizované zásady přístupu, aby používaly novou identitu.
@@ -30,8 +27,8 @@ ms.locfileid: "68297154"
 V tomto tématu se dozvíte, jak vytvořit spravovanou identitu pro App Service a Azure Functions aplikace a jak ji použít pro přístup k dalším prostředkům. Spravovaná identita z Azure Active Directory umožňuje vaší aplikaci snadno přistupovat k dalším prostředkům chráněným AAD, jako je například Azure Key Vault. Identita je spravovaná platformou Azure a nevyžaduje zřízení ani otočení jakýchkoli tajných klíčů. Další informace o spravovaných identitách v AAD najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 Aplikaci lze udělit dva typy identit: 
-- **Identita přiřazená systémem** je svázána s vaší aplikací a je odstraněna, pokud je vaše aplikace odstraněna. Aplikace může mít jenom jednu identitu přiřazenou systémem. Podpora identit přiřazené systémem je všeobecně dostupná pro aplikace pro Windows. 
-- **Identita přiřazená uživatelem** je samostatný prostředek Azure, který se dá přiřadit k vaší aplikaci. Aplikace může mít více uživatelsky přiřazených identit. Podpora uživatelsky přiřazené identity je ve verzi Preview pro všechny typy aplikací.
+- **Identita přiřazená systémem** je svázána s vaší aplikací a je odstraněna, pokud je vaše aplikace odstraněna. Aplikace může mít jenom jednu identitu přiřazenou systémem.
+- **Identita přiřazená uživatelem** je samostatný prostředek Azure, který se dá přiřadit k vaší aplikaci. Aplikace může mít více uživatelsky přiřazených identit.
 
 ## <a name="adding-a-system-assigned-identity"></a>Přidání identity přiřazené systémem
 
@@ -158,17 +155,11 @@ Když je web vytvořen, má následující další vlastnosti:
 Kde `<TENANTID>` a`<PRINCIPALID>` jsou nahrazeny identifikátory GUID. Vlastnost tenantId určuje, ke kterému tenantovi AAD patří identita. PrincipalId je jedinečný identifikátor pro novou identitu aplikace. V rámci služby AAD má instanční objekt stejný název, jaký jste zadali App Service nebo Azure Functions instanci.
 
 
-## <a name="adding-a-user-assigned-identity-preview"></a>Přidání uživatelsky přiřazené identity (Preview)
-
-> [!NOTE] 
-> Uživatelsky přiřazené identity jsou momentálně ve verzi Preview. Cloudy svrchovan ještě nejsou podporované.
+## <a name="adding-a-user-assigned-identity"></a>Přidání uživatelsky přiřazené identity
 
 Vytvoření aplikace s uživatelem přiřazenou identitou vyžaduje, abyste vytvořili identitu a pak přidali svůj identifikátor prostředku do vaší konfigurace aplikace.
 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
-
-> [!NOTE] 
-> Toto prostředí portálu se nasazuje a možná ještě není dostupné ve všech oblastech.
 
 Nejdřív budete muset vytvořit prostředek identity přiřazené uživatelem.
 
@@ -180,7 +171,7 @@ Nejdřív budete muset vytvořit prostředek identity přiřazené uživatelem.
 
 4. Vyberte **spravovanou identitu**.
 
-5. V rámci karty **uživatelem přiřazené (Preview)** klikněte na **Přidat**.
+5. Na kartě **přiřazené uživatelem** klikněte na tlačítko **Přidat**.
 
 6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na **Přidat**.
 
@@ -390,6 +381,25 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
+<a name="token-python"></a>V Pythonu:
+
+```python
+import os
+import requests
+
+msi_endpoint = os.environ["MSI_ENDPOINT"]
+msi_secret = os.environ["MSI_SECRET"]
+
+def get_bearer_token(resource_uri, token_api_version):
+    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version={token_api_version}"
+    head_msi = {'Secret':msi_secret}
+
+    resp = requests.get(token_auth_uri, headers=head_msi)
+    access_token = resp.json()['access_token']
+
+    return access_token
+```
+
 <a name="token-powershell"></a>V PowerShellu:
 
 ```powershell
@@ -415,7 +425,7 @@ Odebrání identity přiřazené systémem tímto způsobem ji odstraní také z
 > [!NOTE]
 > K dispozici je také nastavení aplikace, které lze nastavit, WEBSITE_DISABLE_MSI, které jednoduše zakáže místní službu tokenů. Ale ponechá identitu na místě a nástroj bude stále zobrazovat spravovanou identitu jako zapnuto nebo povoleno. V důsledku toho se použití tohoto nastavení nedoporučuje.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Zabezpečený přístup SQL Database pomocí spravované identity](app-service-web-tutorial-connect-msi.md)

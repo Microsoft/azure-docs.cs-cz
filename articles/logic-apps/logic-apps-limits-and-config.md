@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: dd4eef7998b83c7a527738762379d0d3e720d70f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e076d6fed8cb3baf6b62dc3ede6ddd34732ed7a2
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699813"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562075"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -205,7 +205,7 @@ Tady jsou limity pro počet artefaktů pro každou vrstvu integračního účtu.
 | Maps | 25 | 500 | 1 000 |
 | Schémata | 25 | 500 | 1 000 |
 | Sestavení | 10 | 25 | 1 000 |
-| Certifikáty | 25 | 2 | 500 |
+| Certifikáty | 25 | 2 | 1 000 |
 | Konfigurace dávek | 5 | 1 | 50 |
 ||||
 
@@ -333,7 +333,7 @@ Logic Apps nepodporuje přímé připojení k účtům úložiště Azure přes 
 | Spojené království – západ | 51.141.45.238, 51.141.47.136, 51.141.54.185, 51.141.112.112, 51.141.113.36, 51.141.114.77, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105 |
 ||||
 
-## <a name="next-steps"></a>Další kroky  
+## <a name="next-steps"></a>Další postup  
 
 * Naučte se [vytvořit svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) .  
 * Další informace o [běžných příkladech a scénářích](../logic-apps/logic-apps-examples-and-scenarios.md)

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 6ddd8922f1830b2f57c8ecb4ff62871961b09fec
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a1c4575ec2ecc65d863ad80f73e64b7a4efdf96f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228330"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563250"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -39,10 +39,10 @@ Služba je dostupná v všeobecně dostupných oblastech Azure. Ne všechny verz
 
 Regions                                        | Dostupnosti?                                 | Podporované verze
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11 
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11
-[Azure China](https://www.azure.cn/)                                                     | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11
-[Azure Německo](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11
+[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Azure China](https://www.azure.cn/)                                                     | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Azure Německo](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
 
 Tato tabulka je aktualizována, pokud jsou k dispozici aktualizace služby a nové podporované verze.
 
@@ -105,8 +105,8 @@ Následující tabulka je odkazem na jiné rozhraní API datových formátů, kt
 rozhraní API | Výchozí formát dat | Jiné formáty
 --------|---------------------|--------------
 /instance | json | text
-/scheduledevents | json | NTato
-/attested | json | NTato
+/scheduledevents | json | žádný
+/attested | json | žádný
 
 Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Příklad:
 
@@ -130,7 +130,7 @@ Stavový kód HTTP | Reason
 ----------------|-------
 200 OK |
 400 Chybný požadavek | Chybějící `Metadata: true` záhlaví nebo chybějící formát při dotazování na uzel typu list
-404 – Nenalezeno | Požadovaný element neexistuje.
+404 Nenalezeno | Požadovaný element neexistuje.
 Metoda 405 není povolená. | Podporují `GET` se `POST` jenom požadavky a.
 429 příliš mnoho požadavků | Rozhraní API aktuálně podporuje maximálně 5 dotazů za sekundu.
 Chyba služby 500     | Zkusit znovu za chvíli
@@ -346,7 +346,7 @@ Data | Popis | Představená verze
 -----|-------------|-----------------------
 ověřuje přítomnost | Viz [Attestation data](#attested-data) | 2018-10-01
 identity | Spravované identity pro prostředky Azure. Viz [získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) . | 2018-02-01
-Případě | Viz [rozhraní API instance](#instance-api) | 2017-04-02
+instance | Viz [rozhraní API instance](#instance-api) | 2017-04-02
 scheduledevents | Viz [Scheduled Events](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Rozhraní API instance
@@ -364,17 +364,18 @@ name | Název virtuálního počítače | 2017-04-02
 dodání | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 placementGroupId | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů | 2017-08-01
-Rozhraní | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
+rozhraní | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
 platformUpdateDomain |  [Aktualizujte doménu](manage-availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
 platformFaultDomain | [Doména selhání](manage-availability.md) , ve kterém je spuštěný virtuální počítač | 2017-04-02
-Zprostředkovatele | Poskytovatel virtuálního počítače | 2018-10-01
+zprostředkovatel | Poskytovatel virtuálního počítače | 2018-10-01
 publicKeys | [Kolekce veřejných klíčů](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) přiřazených k virtuálnímu počítači a cestám | 2018-04-02
 publisher | Vydavatel image virtuálního počítače | 2017-04-02
 resourceGroupName | [Skupina prostředků](../../azure-resource-manager/resource-group-overview.md) pro virtuální počítač | 2017-08-01
 resourceId | [Plně kvalifikované](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID prostředku | 2019-03-11
-skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
+SKU | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
 subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
-tags | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro virtuální počítač  | 2017-08-01
+značky | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro virtuální počítač  | 2017-08-01
+tagsList | Značky formátované jako pole JSON pro snazší programovou analýzu  | 2019-06-04
 version | Verze image virtuálního počítače | 2017-04-02
 vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
 vmScaleSetName | [Název škálovací sady virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro sadu škálování virtuálního počítače | 2017-12-01
@@ -425,7 +426,7 @@ Hodnota nonce je nepovinný řetězec s deseti číslicemi. Hodnota nonce může
 }
 ```
 
-> Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je vmId, nonce, timeStamp pro vytvoření a vypršení platnosti dokumentu a informace o plánu k imagi. Informace o plánu se naplní jenom pro image na místě na trhu Azure. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
+> Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je například vmId, nonce, subscriptionId, časové razítko pro vytvoření a vypršení platnosti dokumentu a informace o plánu k imagi. Informace o plánu se naplní jenom pro image na místě na trhu Azure. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Načítají se ověřená metadata ve virtuálním počítači s Windows.
 
@@ -457,7 +458,7 @@ Hodnota nonce je nepovinný řetězec s deseti číslicemi. Hodnota nonce může
 }
 ```
 
-> Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je vmId, nonce, timeStamp pro vytvoření a vypršení platnosti dokumentu a informace o plánu k imagi. Informace o plánu se naplní jenom pro image na místě na trhu Azure. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
+> Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je například vmId, nonce, subscriptionId, časové razítko pro vytvoření a vypršení platnosti dokumentu a informace o plánu k imagi. Informace o plánu se naplní jenom pro image na místě na trhu Azure. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
 
 
 ## <a name="example-scenarios-for-usage"></a>Příklady scénářů použití  
@@ -568,8 +569,32 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-> [!NOTE]
-> Značky jsou odděleny středníkem. Pokud je analyzátor napsán pro programové extrakci značek, názvy značek a hodnoty by neměly obsahovat středníky, aby analyzátor fungoval správně.
+`tags` Pole je řetězec, jehož značky jsou odděleny středníky. To může být problém, pokud se v samotných značkách používají středníky. Pokud je analyzátor napsán pro programové extrakci značek, měli byste spoléhat na `tagsList` pole, které je polem JSON bez oddělovačů, a následně snadněji analyzovat.
+
+**Požadavek**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=text"
+```
+
+**Odpověď**
+
+```json
+[
+  {
+    "name": "Department",
+    "value": "IT"
+  },
+  {
+    "name": "Environment",
+    "value": "Test"
+  },
+  {
+    "name": "Role",
+    "value": "WebRole"
+  }
+]
+```
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>Ověření spuštění virtuálního počítače v Azure
 
@@ -612,21 +637,23 @@ Verification successful
     "createdOn":"11/28/18 00:16:17 -0000",
     "expiresOn":"11/28/18 06:16:17 -0000"
   },
-"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34"
+"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
+"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
 }
 ```
 
 Data | Popis
 -----|------------
 nonce | Uživatel zadal nepovinný řetězec s požadavkem. Pokud se v požadavku nezadala hodnota nonce, vrátí se aktuální časové razítko UTC.
-Rozhraní | [](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) Naplánování virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
+rozhraní | [](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) Naplánování virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
 časové razítko/createdOn | Časové razítko, ve kterém byl vytvořen první podepsaný dokument
 časové razítko/expiresOn | Časové razítko, na kterém vyprší platnost podepsaného dokumentu
 vmId |  [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač
+subscriptionId | Předplatné Azure pro virtuální počítač představené v`2019-04-30`
 
 #### <a name="verifying-the-signature"></a>Ověření podpisu
 
-Jakmile získáte podpis výše, můžete ověřit, že signatura pochází od Microsoftu. Můžete také ověřit zprostředkující certifikát a řetěz certifikátů.
+Jakmile získáte podpis výše, můžete ověřit, že signatura pochází od Microsoftu. Můžete také ověřit zprostředkující certifikát a řetěz certifikátů. Nakonec můžete ověřit, jestli je ID předplatného správné.
 
 > [!NOTE]
 > Certifikát pro veřejný cloud a Cloud z svrchovaného cloudu se liší.
@@ -772,6 +799,6 @@ Puppet | https://github.com/keirans/azuremetadata
 
     ![Podpora metadat instance](./media/instance-metadata-service/InstanceMetadata-support.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [Scheduled Events](scheduled-events.md)

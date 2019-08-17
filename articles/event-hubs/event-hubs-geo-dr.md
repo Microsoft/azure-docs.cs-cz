@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 460ea15b0827ea307d64d1bd92d9bd14d5919d73
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 8dca94f0200f6bd41dfdc199b41bf69981a960da
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704382"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562713"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – Geo-zotavení po havárii 
 
@@ -37,7 +37,7 @@ Funkce zotavení po havárii geograficky služby Azure Event Hubs je řešení p
 
 ## <a name="basic-concepts-and-terms"></a>Základními koncepcemi a termíny
 
-Funkce zotavení po havárii implementuje zotavení po havárii metadata a spoléhá na obory názvů zotavení po havárii primární a sekundární. Všimněte si, že je k dispozici pro funkce zotavení po havárii geograficky [standardní SKU](https://azure.microsoft.com/pricing/details/event-hubs/) pouze. Není potřeba nic měnit připojovací řetězec, protože připojení se provádí prostřednictvím alias.
+Funkce zotavení po havárii implementuje zotavení po havárii metadata a spoléhá na obory názvů zotavení po havárii primární a sekundární. Všimněte si, že funkce geografického zotavení po havárii je dostupná jenom pro [standardní a vyhrazené SKU](https://azure.microsoft.com/pricing/details/event-hubs/) . Není potřeba nic měnit připojovací řetězec, protože připojení se provádí prostřednictvím alias.
 
 V tomto článku se používají následující termíny:
 
