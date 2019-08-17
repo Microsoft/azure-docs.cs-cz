@@ -96,7 +96,7 @@ Ke zkopírování dat z platformy Xero, nastavte vlastnost typ datové sady na *
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type datové sady, musí být nastavená na: **XeroObject** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
