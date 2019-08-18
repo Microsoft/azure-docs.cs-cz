@@ -101,11 +101,9 @@
         - name: Správa účtů na portálu CloudSimple
           items:
             - name: Zobrazení přehledu účtů
-              href: 'https://docs.azure.cloudsimple.com/account/'
+              href: account.md
             - name: Zobrazení seznamu uživatelů
-              href: 'https://docs.azure.cloudsimple.com/users/'
-            - name: Zobrazení protokolu využití
-              href: 'https://docs.azure.cloudsimple.com/usage/'
+              href: users.md
             - name: Nastavení připojení virtuální sítě k privátnímu cloudu
               href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
             - name: Úprava profilu uživatele
@@ -129,7 +127,7 @@
             - name: Připojení VPN mezi místním a privátním cloudem
               href: set-up-vpn.md
             - name: Místní síťové připojení s využitím ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: Připojení virtuální sítě Azure s využitím ExpressRoute
               href: azure-expressroute-connection.md
         - name: Platforma VMware

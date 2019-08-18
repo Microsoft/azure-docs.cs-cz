@@ -11,16 +11,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 58f5cfd3718720cafc922bbd7b974a353e0d9d02
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 47de61db96b0f8f9b338f135d4f32eecc4a64efe
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722785"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562954"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Vytvoření funkce aktivované protokolem HTTP v Azure
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 V tomto článku se dozvíte, jak pomocí nástrojů příkazového řádku vytvořit projekt v Pythonu, který běží v Azure Functions. Vytvořená funkce je aktivována požadavky HTTP. Nakonec publikujete projekt tak, aby běžel jako [funkce bez serveru](functions-scale.md#consumption-plan) v Azure.
 
@@ -40,9 +38,9 @@ Než začnete, musíte mít následující:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-and-activate-a-virtual-environment"></a>Vytvoření a aktivace virtuální prostředí
+## <a name="create-and-activate-a-virtual-environment-optional"></a>Vytvoření a aktivace virtuálního prostředí (volitelné)
 
-Aby bylo možné místně vyvíjet a testovat funkce Pythonu, je nutné pracovat v prostředí Python 3,6. Spusťte následující příkazy k vytvoření a aktivace do virtuálního prostředí s názvem `.venv`.
+Pro místní vývoj a testování funkcí Pythonu se doporučuje používat prostředí Python 3,6. Spusťte následující příkazy k vytvoření a aktivace do virtuálního prostředí s názvem `.venv`.
 
 ### <a name="bash"></a>Bash
 
@@ -165,9 +163,10 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 --consumption-plan-location westeurope  --runtime python \
 --name <APP_NAME> --storage-account  <STORAGE_NAME>
 ```
-
 > [!NOTE]
-> Azure Functions, plán spotřeby pro Linux je teď ve verzi Preview a dostupný jenom v následujících oblastech: Západní USA, Východní USA, Západní Evropa Východní Asie. Aplikace pro Linux a Windows se navíc nedají hostovat ve stejné skupině prostředků. Pokud máte existující skupinu prostředků s názvem `myResourceGroup` aplikace funkcí Windows nebo webové aplikace, musíte použít jinou skupinu prostředků.
+> Aplikace pro Linux a Windows nelze hostovat ve stejné skupině prostředků. Pokud máte existující skupinu prostředků s názvem `myResourceGroup` aplikace funkcí Windows nebo webové aplikace, musíte použít jinou skupinu prostředků.
+
+Tento příkaz také zřídí přidruženou instanci služby Azure Application Insights ve stejné skupině prostředků, kterou lze použít pro monitorování a prohlížení protokolů.
 
 Teď jste připraveni publikovat projekt místních funkcí do aplikace Function App v Azure.
 
@@ -175,7 +174,10 @@ Teď jste připraveni publikovat projekt místních funkcí do aplikace Function
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 
-## <a name="next-steps"></a>Další postup
+> [!NOTE]
+> Pokud chcete zobrazit protokoly téměř v reálném čase pro publikovanou aplikaci v Pythonu, doporučujeme použít [Application Insights Live Metrics Stream](functions-monitoring.md#streaming-logs)
+
+## <a name="next-steps"></a>Další kroky
 
 Vytvořili jste projekt funkcí Pythonu s funkcí aktivovaným protokolem HTTP, spustíte ji na místním počítači a nasadíte ji do Azure. Nyní svou funkci rozšíříte do...
 

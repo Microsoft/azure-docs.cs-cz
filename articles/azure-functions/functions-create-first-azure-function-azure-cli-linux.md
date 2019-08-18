@@ -11,20 +11,20 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 84e05b7afa2746587f2ea5008d493730ccbfad7e
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950040"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562985"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Vytvoření první funkce hostované v Linuxu pomocí Core Tools a Azure CLI (Preview)
+# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>Vytvoření první funkce hostované na platformě Linux pomocí základních nástrojů a Azure CLI
 
-Služba Azure Functions umožňuje spuštění kódu v [bezserverovém](https://azure.com/serverless) prostředí Linuxu, aniž byste nejprve museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. Linux – hostování vyžaduje modul [runtime functions 2,0](functions-versions.md). Podpora spuštění aplikace Function App v systému Linux v [plánu spotřeby](functions-scale.md#consumption-plan) bez serveru je aktuálně ve verzi Preview. Další informace najdete v [tomto článku s informacemi o verzi Preview](https://aka.ms/funclinux).
+Služba Azure Functions umožňuje spuštění kódu v [bezserverovém](https://azure.com/serverless) prostředí Linuxu, aniž byste nejprve museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. Linux – hostování vyžaduje [modul runtime Functions 2. x](functions-versions.md). Funkce bez serveru se spouštějí v [plánu spotřeby](functions-scale.md#consumption-plan).
 
 Tento článek Rychlý start vás provede použitím Azure CLI k vytvoření první aplikace funkcí spuštěné v Linuxu. Kód funkce se vytvoří místně a pak se nasadí do Azure pomocí [Azure Functions Core Tools](functions-run-local.md).
 
-Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux. Tento článek popisuje, jak vytvářet funkce v JavaScriptu nebo jazyce C#. Informace o tom, jak vytvářet funkce v Pythonu, najdete v tématu [Vytvoření první funkce Pythonu pomocí základních nástrojů a Azure CLI (Preview)](functions-create-first-function-python.md).
+Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux. Tento článek popisuje, jak vytvářet funkce v JavaScriptu nebo jazyce C#. Informace o tom, jak vytvářet funkce v Pythonu, najdete v tématu [Vytvoření první funkce v Pythonu pomocí základních nástrojů a Azure CLI](functions-create-first-function-python.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

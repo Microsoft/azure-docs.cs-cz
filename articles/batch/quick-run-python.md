@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: f7170fbb4a258e9d8290ad9d207028087b22003a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a2420f98bb07686b548dc6641df77dd0fdf7028b
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322320"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562804"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
 
@@ -174,7 +174,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Vytvoření úlohy Batch
 
-Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Aplikace používá třídu [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) k vytvoření úlohy ve vašem fondu. Metoda [job.add](/python/api/azure.batch.operations.joboperations) odešle fond do služby Batch. Na začátku úloha neobsahuje žádné úkoly.
+Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Aplikace používá třídu [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) k vytvoření úlohy ve vašem fondu. Metoda [Job. Add](/python/api/azure.batch.operations.joboperations) přidá úlohu do zadaného účtu Batch. Na začátku úloha neobsahuje žádné úkoly.
 
 ```python
 job = batch.models.JobAddParameter(

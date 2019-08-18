@@ -8,15 +8,15 @@ ms.service: search
 ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 05/28/2019
+ms.date: 08/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 524ab33fc1d6a88620077a28ec70f09d55b06106
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: c537e2671dcc266e28e5fa8a040088c83394f260
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015784"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563461"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "rozpoznávání hledání" v Azure Search?
 
@@ -36,7 +36,27 @@ Během fáze příjmu dat se použije přirozený jazyk a zpracování obrazu s 
 > Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů v Azure Search. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
 > Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsány na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
-## <a name="components-of-cognitive-search"></a>Komponenty vyhledávání rozpoznávání
+
+## <a name="when-to-use-cognitive-search"></a>Kdy použít vyhledávání rozpoznávání
+
+Vyhledávání v rozpoznávání pomocí předem připravených dovedností je vhodné pro následující scénáře aplikací:
+
++ Naskenované dokumenty (JPEG), u kterých chcete provádět fulltextové vyhledávání. Můžete připojit dovednost optického rozpoznávání znaků (OCR) k identifikaci, extrakci a přijímání textu ze souborů JPEG.
+
++ Soubory PDF s kombinovaným obrázkem a textem Text v souborech PDF lze extrahovat během Azure Search indexování bez použití vyhledávání rozpoznávání, ale přidání image a zpracování přirozeného jazyka může často způsobit lepší výsledek, než poskytuje standardní indexování.
+
++ Vícejazyčný obsah, pro který chcete použít detekci jazyka a případně převod textu.
+
++ Nestrukturované nebo částečně strukturované dokumenty obsahující obsah, který má podstatný význam nebo kontext, který je ve větším dokumentu skrytý. 
+
+  Objekty blob často obsahují velké tělo obsahu, které se zabalí do jednoho pole. Připojením obrazu a dovedností pro zpracování přirozeného jazyka k indexeru můžete vytvořit nové informace, které se Extant v nezpracovaném obsahu, ale ne jinak naplochit jako různá pole. Některé předem připravené schopnosti pro rozpoznávání řeči, které vám můžou pomáhat: extrakce klíčových frází, analýza mínění a rozpoznávání entit (lidé, organizace a umístění).
+
+  Předem připravené dovednosti taky můžete použít k restrukturování obsahu prostřednictvím operací rozdělení textu, sloučení a tvaru.
+
+Vlastní dovednosti můžou podporovat složitější scénáře, jako je rozpoznávání formulářů nebo detekce vlastních entit pomocí modelu, který zadáte a zabalíte do [vlastního webového rozhraní](cognitive-search-custom-skill-interface.md)s dovednostmi. Mezi vlastní dovednosti patří i [Nástroj pro rozpoznávání formulářů](), integraci [rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)a [rozpoznávání vlastních entit](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+
+
+## <a name="component-pipeline-of-cognitive-search"></a>Kanál součásti pro hledání vnímání
 
 Kanál hledání rozpoznávání je založen na [Azure Search *indexerů* ](search-indexer-overview.md) , které procházejí zdroji dat a poskytují ucelené zpracování indexu. Dovednosti jsou teď připojené k indexerům, zachycení a obohacení dokumentů podle dovednosti, které definujete. Po indexování můžete k obsahu přistupovat prostřednictvím žádostí o hledání prostřednictvím všech [typů dotazů podporovaných Azure Search](search-query-overview.md).  Pokud s indexery začínáte, Tato část vás provede jednotlivými kroky.
 
@@ -104,7 +124,7 @@ Indexy jsou generovány z schématu indexu definující pole, atributy a další
 + [Kurz (požadavky HTTP)](cognitive-search-tutorial-blob.md)
 + [Příklad: Vytvoření vlastní dovednosti pro vyhledávání rozpoznávání (C#)](cognitive-search-create-custom-skill-example.md)
 
-Pro účely učení doporučujeme bezplatnou službu, ale mějte na paměti, že počet bezplatných transakcí je omezený na 20 dokumentů za den. Pokud chcete spustit jak rychlý Start, tak kurz za jeden den, použijte menší sadu souborů (10 dokumentů), abyste se mohli vejít do obou cvičení.
+Pro účely učení doporučujeme bezplatnou službu, ale počet bezplatných transakcí je omezený na 20 dokumentů za den. Pokud chcete spustit rychlý Start i kurz za jeden den, použijte menší sadu souborů (10 dokumentů), abyste se mohli vejít do obou cvičení, nebo odstranit indexer, který jste použili v rychlém startu nebo kurzu.
 
 **Krok 3: Kontrola rozhraní API**
 
@@ -115,9 +135,9 @@ Tento krok používá rozhraní REST API k sestavení řešení pro hledání vn
 | REST API | Popis |
 |-----|-------------|
 | [Vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Prostředek identifikující externí zdroj dat, který poskytuje zdrojová data používaná k vytváření obohacených dokumentů.  |
-| [Create Skillset (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek, který koordinuje používání [předdefinovaných dovedností](cognitive-search-predefined-skills.md) a [vlastní vnímání zkušeností](cognitive-search-custom-skill-interface.md) používaných v kanálu rozšíření během indexování. |
+| [Create Skillset (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Toto rozhraní API je specifické pro rozpoznávání vyhledávání. Je to prostředek, který koordinuje používání [předdefinovaných dovedností](cognitive-search-predefined-skills.md) a [vlastní vnímání zkušeností](cognitive-search-custom-skill-interface.md) , které se v kanálu rozšíření používají během indexování. |
 | [Vytvořit index](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schéma, které vyjadřuje index Azure Search. Pole v indexu jsou mapována na pole ve zdrojových datech nebo na pole vyráběná během fáze obohacení (například pole pro názvy organizací vytvořená rozpoznáváním entit). |
-| [Create Indexer (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek definující součásti používané při indexování: včetně zdroje dat, dovednosti, přidružení polí ze zdrojových a zprostředkujících datových struktur do cílového indexu a samotného indexu. Spuštění indexeru je triggerem pro přijímání a obohacení dat. Výstupem je index hledání založený na schématu indexu, vyplněný zdrojovými daty, obohacený přes dovednosti.  |
+| [Create Indexer (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek definující součásti používané při indexování: včetně zdroje dat, dovednosti, přidružení polí ze zdrojových a zprostředkujících datových struktur do cílového indexu a samotného indexu. Spuštění indexeru je triggerem pro přijímání a obohacení dat. Výstupem je index hledání založený na schématu indexu, vyplněný zdrojovými daty, obohacený přes dovednosti. Toto existující rozhraní API je rozšířené pro scénáře hledání rozpoznávání s zahrnutím vlastnosti dovednosti. |
 
 **Téma Typický pracovní postup**
 
@@ -141,7 +161,7 @@ Tento krok používá rozhraní REST API k sestavení řešení pro hledání vn
 
 Další informace o konkrétních otázkách a problémech najdete v tématu [tipy k odstraňování potíží](cognitive-search-concept-troubleshooting.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 + [Dokumentace pro hledání vnímání](cognitive-search-resources-documentation.md)
 + [Rychlé zprovoznění: Vyzkoušet rozpoznávání rozpoznávání v průvodci na portálu](cognitive-search-quickstart-blob.md)

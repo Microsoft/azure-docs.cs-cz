@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed57f581db593a288e62d25a2f0b8ee42c28114
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b6685783d7ade59796af8fbf466124353a897cb9
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852958"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562087"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování do webové aplikace ASP.NET pomocí Microsoftu
 
@@ -55,8 +55,10 @@ V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET přihla
 > 1. Vyberte **Nová registrace**.
 > 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `ASPNET-Quickstart`.
->      - Přidejte `https://localhost:44368/` do **URI pro přesměrování**a klikněte na **zaregistrovat**.
-Vyberte nabídku **Ověřování**, v části **Implicitní udělení oprávnění** nastavte **Tokeny ID** a pak vyberte **Uložit**.
+>      - Přidejte `http://localhost:44368/` do **URI pro přesměrování**a klikněte na **zaregistrovat**.
+>      - V levém navigačním podokně v části Spravovat vyberte **ověřování** .
+>          - V dílčí části **implicitní udělení grantu** vyberte možnost **tokeny ID**.
+>          - A pak vyberte **Uložit**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
@@ -96,7 +98,8 @@ Vyberte nabídku **Ověřování**, v části **Implicitní udělení oprávněn
 >   - Pokud vaše aplikace podporuje režim **Všichni uživatelé účtu Microsoft**, nahraďte tuto hodnotu za `common`.
 >
 > > [!TIP]
-> > Hodnoty *ID aplikace*, *ID adresáře (tenanta)* a *Podporované typy účtu* najdete na stránce **Přehled**.
+> > - Hodnoty *ID aplikace*, *ID adresáře (tenanta)* a *Podporované typy účtu* najdete na stránce **Přehled**.
+> > - Zajistěte, `redirectUri` aby hodnota v **souboru Web. config** odpovídala **identifikátoru URI přesměrování** definovanému pro registraci aplikace ve službě Azure AD (Pokud ne, přejděte do nabídky **ověřování** pro registraci aplikace a aktualizujte **identifikátor URI přesměrování.** pro spárování)
 
 ## <a name="more-information"></a>Další informace
 
@@ -190,7 +193,7 @@ public void SignIn()
 
 Řadič a jeho akce můžete chránit pomocí atributu `[Authorize]`. Tento atribut omezuje přístup k řadiči nebo akcím tak, že ho umožňuje pouze ověřeným uživatelům. To znamená, že výzva ověřování se iniciuje automaticky, pokud o přístup k některé z akcí nebo řadiči s nastaveným atributem `[Authorize]` pokusí *neověřený* uživatel.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vyzkoušejte kurz pro ASP.NET, který nabízí vyčerpávající podrobný návod k vytváření aplikací a nových funkcí, včetně detailního vysvětlení těchto pokynů pro rychlý start.
 
