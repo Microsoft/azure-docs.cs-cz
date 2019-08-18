@@ -56,7 +56,7 @@ Pro propojenou službu webové tabulky jsou podporovány následující vlastnos
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na: **Web** |Ano |
 | url | Adresa URL webového zdroje |Ano |
-| authenticationType | Povolená hodnota je: **Anonymní**. |Ano |
+| authenticationType | Povolená hodnota je: **Anonymous**. |Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
 **Příklad:**
