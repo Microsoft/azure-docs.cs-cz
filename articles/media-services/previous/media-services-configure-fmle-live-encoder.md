@@ -1,6 +1,6 @@
 ---
-title: Konfigurovat kodér FMLE odesílat živý datový proud s jednou přenosovou rychlostí | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak konfigurovat kodér rozhraní Flash Media Live Encoder (FMLE) Chcete-li odesílat datový proud s jednou přenosovou rychlostí do AMS kanálů, které jsou povolené kódování v reálném čase.
+title: Konfigurace kodéru FMLE pro odesílání živého streamu s jednou přenosovou rychlostí | Microsoft Docs
+description: V tomto tématu se dozvíte, jak nakonfigurovat kodér Flash Media Live Encoder (FMLE), který odešle datový proud s jednou přenosovou rychlostí do kanálů AMS, které mají povolené kódování v reálném čase.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 01bb628a6520488dcebf49a1e868213b955abc31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: cenkdin;anilmur
+ms.openlocfilehash: 09d9bdffefe9204e9f58b8f07af5b21228269f6c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465933"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016758"
 ---
-# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Kodér FMLE můžete odesílat živý datový proud s jednou přenosovou rychlostí 
+# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru FMLE k odeslání živého streamu s jednou přenosovou rychlostí 
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -29,11 +30,11 @@ ms.locfileid: "61465933"
 >
 >
 
-Tento článek popisuje, jak nakonfigurovat [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) encoder (FMLE) Odeslat datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase. Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+Tento článek ukazuje, jak nakonfigurovat kodér [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) (FMLE) pro odeslání datového proudu s jednou přenosovou rychlostí do kanálů AMS, které mají povolené kódování v reálném čase. Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
 Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítač s Windows. Pokud jste v systému Mac nebo Linux, pomocí webu Azure portal k vytvoření [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
-Tento kurz popisuje použití AAC. Nicméně FMLE není ve výchozím nastavení podporuje AAC. Je třeba zakoupit modul plug-in AAC kódování, jako třeba z Mainconceptu: [Modul plug-in AAC](https://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+Tento kurz popisuje použití AAC. FMLE ale ve výchozím nastavení nepodporuje AAC. Museli byste si koupit modul plug-in pro kódování AAC, jako je třeba z MainConcept: [Modul plug-in AAC](https://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>Požadavky
 * [Vytvoření účtu Azure Media Services](media-services-portal-create-account.md)
@@ -67,69 +68,69 @@ Tento kurz popisuje použití AAC. Nicméně FMLE není ve výchozím nastavení
 Při spuštění kanálu můžete [nakonfigurovat kodér](media-services-configure-fmle-live-encoder.md).
 
 > [!IMPORTANT]
-> Všimněte si, že fakturace začne ihned poté, co kanál přejde do stavu Připraveno. Další informace najdete v tématu [kanálu stavy](media-services-manage-live-encoder-enabled-channels.md#states).
+> Všimněte si, že fakturace začne hned po přechodu kanálu do stavu připraveno. Další informace najdete v tématu [kanálu stavy](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
-## <a id=configure_fmle_rtmp></a>Konfigurovat kodér FMLE
+## <a id=configure_fmle_rtmp></a>Konfigurace kodéru FMLE
 V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto oddílu popisuje jednotlivé kroky konfigurace v podrobněji.
 
 **Video**:
 
-* Kodek: H.264
-* Profil: Vysoká (úroveň 4.0)
-* S přenosovou rychlostí: 5000 kb/s
-* Klíčový snímek: 2 sekundy (60 sekund)
+* Kodek H. 264
+* Profilu Vysoká (úroveň 4,0)
+* Rychlostí 5000 KB/s
+* Klíč 2 sekundy (60 sekund)
 * Snímková frekvence: 30
 
 **Zvuk**:
 
-* Kodek: AAC (LC)
-* S přenosovou rychlostí: 192 kb/s
+* Kodek AAC (LC)
+* Rychlostí 192 KB/s
 * Vzorkovací frekvence: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Postup konfigurace
-1. Přejděte Flash Media Live Encoder společnosti (FMLE) rozhraní na počítač, který používáte.
+1. Přejděte na rozhraní FMLE (Flash Media Live Encoder) na používaném počítači.
 
-    Rozhraní je jeden hlavní stránky nastavení. Poznamenejte si následující doporučené nastavení, abyste mohli začít se streamováním pomocí FMLE.
+    Rozhraní je jedna hlavní stránka nastavení. Poznamenejte si následující doporučené nastavení, abyste mohli začít s streamování pomocí FMLE.
 
-   * Formát: H.264 Snímková frekvence: 30.00
+   * Formát: H. 264 snímková frekvence: 30,00
    * Velikost vstupu: 1280 x 720
-   * Přenosová rychlost: 5000 kb/s (můžete třeba nastavit podle omezení sítě)  
+   * Přenosová rychlost: 5000 KB/s (dá se upravit na základě omezení sítě)  
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
 
-     Při použití prokládanou zdroje, prosím zaškrtnutí možnost "volby odstranit prokládání"
-2. Vyberte ikonu klíče vedle formátu, by měla být tato další nastavení:
+     Při použití prokládaných zdrojů zaškrtněte možnost Zrušit prokládání.
+2. Vyberte ikonu klíče vedle možnosti formátovat, tato další nastavení by měla být:
 
-   * Profil: Hlavní
+   * Profilu Hlavní
    * Úroveň: 4.0
-   * Klíčový snímek frekvence: 2 sekundy
+   * Frekvence klíčových snímků: 2 sekundy
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
-3. Nastavte následující důležité zvuku nastavení:
+3. Nastavte následující důležité nastavení zvuku:
 
    * Formát: AAC
    * Vzorkovací frekvence: 44100 Hz
-   * S přenosovou rychlostí: 192 Kbps
+   * Rychlostí 192 KB/s
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
-4. Get kanál se uživatelovo zadání adresy URL, abyste mohli přiřadit k FMLE **koncový bod RTMP**.
+4. Získejte vstupní adresu URL kanálu, aby ji bylo možné přiřadit ke FMLEmu **koncovému bodu RTMP**.
 
     Přejděte zpět na nástroj AMSE a zkontrolovat stav dokončení kanálu. Jakmile stav změnil ze **počáteční** k **systémem**, vstupní adresu URL můžete získat.
 
     Při spuštění kanálu, klikněte pravým tlačítkem na název kanálu, přejděte dolů při najetí myší nad **adresa URL vstupu kopírování do schránky** a pak vyberte **primární adresy URL vstupu**.  
 
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle6.png)
-5. Vložte tyto informace **FMS URL** pole z výstupní sekce a přiřaďte název datového proudu.
+5. Tyto informace vložte do pole **Adresa URL FMS** v části výstup a přiřaďte název streamu.
 
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle7.png)
 
-    Pro zajištění další redundance opakujte tyto kroky se sekundární adresa URL vstupu.
+    Pro dodatečnou redundanci opakujte tyto kroky se sekundární vstupní adresou URL.
 6. Vyberte **Connect** (Připojit).
 
 > [!IMPORTANT]
-> Před kliknutím na **připojit**, můžete **musí** Ujistěte se, že kanál je připravený.
+> Než kliknete na **připojit**, **musíte** zajistit, aby byl kanál připravený.
 > Také ujistěte se, že nechcete bez vstupní příspěvek kanálu po dobu delší než 15 minut > nechat kanál ve stavu Připraveno.
 >
 >
@@ -148,7 +149,7 @@ Pokud k chybě, kanál je potřeba resetovat a upravit nastavení kodéru. Najde
 1. Jakmile přehrávání kanálu je potvrzen, vytvořte program. V části **Live** kartu nástroj AMSE klikněte pravým tlačítkem v rámci oblasti program a vyberte **vytvořit nový Program**.  
 
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle9.png)
-2. Název programu a v případě potřeby upravit **délka okna archivu** (která má výchozí hodnotu 4 hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.  
+2. Pojmenujte program a v případě potřeby upravte **délku okna archivu** (výchozí nastavení je 4 hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.  
 3. Zkontrolujte **spustit Program nyní** pole.
 4. Klikněte na tlačítko **vytvořit Program**.  
 

@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/02/2019
-ms.openlocfilehash: a8351f13f015ca53e72bbff41152e46690fdc7bc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/15/2019
+ms.openlocfilehash: f6ff654b8e51dfaf2697df69c7f220d41346c2bc
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855734"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543482"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError výjimky pro Apache Spark ve službě Azure HDInsight
 
@@ -53,13 +53,13 @@ java.lang.OutOfMemoryError
 
 ### <a name="cause"></a>Příčina
 
-Nejpravděpodobnější příčinou této výjimky je nedostatek paměti haldy. Vaše aplikace Spark vyžaduje při spuštění jako vykonavatelů nebo ovladačů dostatečnou paměť haldy Java Virtual Machines (JVM).
+Nejpravděpodobnější příčinou této výjimky je, že není dostatek paměti haldy je přidělit virtuálním počítačům Java (JVMs). Tyto JVMs jsou spouštěny jako vykonavatelé nebo ovladače jako součást aplikace Apache Spark.
 
 ### <a name="resolution"></a>Řešení
 
 1. Určete maximální velikost dat, která bude aplikace Spark zpracovávat. Vyhodnotit odhad velikosti na základě maximální velikosti vstupních dat, zprostředkujících dat vytvořených transformací vstupních dat a výstupními daty vytvořenými dalšími transformacemi mezilehlých dat. Pokud počáteční odhad není dostačující, zvětšete velikost mírně a Iterujte, dokud neproběhne Chyba paměti.
 
-1. Ujistěte se, že cluster HDInsight, který se má použít, má dostatek prostředků v podobě paměti a jader k obsluze aplikace Spark. To se dá určit zobrazením části Cluster Metrics (Metriky clusteru) uživatelského rozhraní YARN clusteru, kde najdete hodnoty využité paměti vs. celkové paměti a využitých virtuálních jader vs. celkových virtuálních jader.
+1. Ujistěte se, že cluster HDInsight, který se má použít, má dostatek prostředků v podobě paměti a jader k obsluze aplikace Spark. To lze určit zobrazením oddílu metriky clusteru v uživatelském rozhraní PŘÍZe clusteru pro hodnoty **používané paměti** vs. **Celková paměť** a **využití virtuální jádra** vs. **Celkových virtuálních jader**.
 
     ![zobrazení základní paměti příze](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 

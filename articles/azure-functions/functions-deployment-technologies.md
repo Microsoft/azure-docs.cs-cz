@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 7f931a72eab534bc2856e9e545b684d2b8ae7a60
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 88b6fbbd68f1f98e50ec0f04336a022dc1580a73
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444027"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562915"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -31,7 +31,7 @@ Azure Functions podporuje místní vývoj a hostování pro různé platformy v 
 
 Každý plán má jiné chování. Ne všechny technologie nasazení jsou k dispozici pro každý charakter Azure Functions. Následující graf ukazuje, které technologie nasazení jsou podporovány pro každou kombinaci operačního systému a plánu hostování:
 
-| Technologie nasazení | Spotřeba Windows | Windows Premium (Preview) | Vyhrazená pro Windows  | Spotřeba Linux (Preview) | Vyhrazený pro Linux |
+| Technologie nasazení | Spotřeba Windows | Windows Premium (Preview) | Vyhrazená pro Windows  | Spotřeba Linux | Vyhrazený pro Linux |
 |-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
 | Adresa URL externího balíčku<sup>1</sup> |✔|✔|✔|✔|✔|
 | Nasazení zip |✔|✔|✔| |✔|
@@ -70,7 +70,7 @@ Adresu URL externího balíčku můžete použít k odkazování na vzdálený s
 >
 >Pokud používáte službu Azure Blob Storage, pomocí privátního kontejneru se [sdíleným přístupovým podpisem (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) udělte funkce přístup k balíčku. Pokaždé, když se aplikace restartuje, načte kopii obsahu. Váš odkaz musí být platný po dobu života aplikace.
 
->__Kdy ji použít:__ Adresa URL externího balíčku je jediná podporovaná metoda nasazení Azure Functions spuštěná v systému Linux v plánu spotřeby (Preview). Když aktualizujete soubor balíčku, na který odkazuje aplikace Function App, musíte [triggery ručně synchronizovat](#trigger-syncing) a sdělit tak Azure, že se vaše aplikace změnila.
+>__Kdy ji použít:__ Adresa URL externího balíčku je jediná podporovaná metoda nasazení Azure Functions spuštěná v systému Linux v plánu spotřeby. Když aktualizujete soubor balíčku, na který odkazuje aplikace Function App, musíte [triggery ručně synchronizovat](#trigger-syncing) a sdělit tak Azure, že se vaše aplikace změnila.
 
 ### <a name="zip-deploy"></a>Nasazení zip
 
@@ -151,7 +151,7 @@ V editoru založeném na portálu můžete přímo upravovat soubory, které jso
 
 V následující tabulce jsou uvedeny operační systémy a jazyky, které podporují úpravy portálu:
 
-| | Spotřeba Windows | Windows Premium (Preview) | Vyhrazená pro Windows | Spotřeba Linux (Preview) | Linux Premium (Preview)| Vyhrazený pro Linux |
+| | Spotřeba Windows | Windows Premium (Preview) | Vyhrazená pro Windows | Spotřeba Linux | Linux Premium (Preview)| Vyhrazený pro Linux |
 |-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | | | |
 | C#Pravidel |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|

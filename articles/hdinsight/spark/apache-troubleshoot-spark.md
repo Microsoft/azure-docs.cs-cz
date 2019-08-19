@@ -4,15 +4,15 @@ description: Získejte odpovědi na běžné dotazy týkající se práce s Apac
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: troubleshooting
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4dc7293c00097c7a5752e29bf7c9a203cbb31a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c88136fee7a75b8f3b8e504b1ff1e6673a31bcf7
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721152"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543173"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparku s využitím Azure HDInsight
 
@@ -22,7 +22,7 @@ Další informace o nejčastější problémy a jejich řešení při práci s [
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-Hodnoty konfigurace Spark můžete ladit vyhnout výjimku OutofMemoryError aplikací Apache Spark. Následující kroky ukazují výchozí konfigurační hodnoty Spark v Azure HDInsight: 
+Hodnoty konfigurace Sparku je možné vyladit tak, aby nedošlo k výjimce Apache Spark aplikace OutofMemoryError. Následující kroky ukazují výchozí hodnoty konfigurace Sparku ve službě Azure HDInsight: 
 
 1. Vyberte v seznamu clusterů **Spark2**.
 
@@ -90,7 +90,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu co způsobí, že výjimka OutofMemoryError aplikací Apache Spark.
+1. Pokud chcete zjistit, které konfigurace Sparku je potřeba nastavit, a určit jejich hodnoty, přečtěte si téma Co způsobuje výjimku Apache Spark OutofMemoryError aplikace.
 
 2. V první buňky Poznámkový blok Jupyter po **%% konfigurace** směrnice, určení konfigurací Sparku v platném formátu JSON. Podle potřeby změňte skutečnými hodnotami:
 
@@ -105,7 +105,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu co způsobí, že výjimka OutofMemoryError aplikací Apache Spark. 
+1. Pokud chcete zjistit, které konfigurace Sparku je potřeba nastavit, a určit jejich hodnoty, přečtěte si téma Co způsobuje výjimku Apache Spark OutofMemoryError aplikace. 
 
 2. Odeslání aplikace Spark na Livy pomocí klienta REST jako cURL. Použijte příkaz podobný následujícímu. Podle potřeby změňte skutečnými hodnotami:
 
@@ -121,7 +121,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu co způsobí, že výjimka OutofMemoryError aplikací Apache Spark.
+1. Pokud chcete zjistit, které konfigurace Sparku je potřeba nastavit, a určit jejich hodnoty, přečtěte si téma Co způsobuje výjimku Apache Spark OutofMemoryError aplikace.
 
 2. Spusťte prostředí sparku s využitím příkaz podobný následujícímu. Podle potřeby změňte skutečné hodnoty konfigurace: 
 
@@ -133,91 +133,16 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 [Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
+## <a name="next-steps"></a>Další postup
 
-## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Co způsobí, že výjimka OutofMemoryError aplikací Apache Spark?
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
-### <a name="detailed-description"></a>Podrobný popis
+* [Přehled správy paměti Spark](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
 
-Aplikace Spark se nezdaří s následující typy nezachycených výjimek:
+* [Ladění aplikace Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/).
 
-```apache
-ERROR Executor: Exception in task 7.0 in stage 6.0 (TID 439) 
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-java.lang.OutOfMemoryError 
-    at java.io.ByteArrayOutputStream.hugeCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.grow(Unknown Source) 
-    at java.io.ByteArrayOutputStream.ensureCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.write(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.drain(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject0(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject(Unknown Source) 
-    at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:44) 
-    at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:101) 
-    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:239) 
-    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
-    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
-    at java.lang.Thread.run(Unknown Source) 
-```
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-```apache
-ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker-0,5,main] 
-
-java.lang.OutOfMemoryError 
-    at java.io.ByteArrayOutputStream.hugeCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.grow(Unknown Source) 
-    at java.io.ByteArrayOutputStream.ensureCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.write(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.drain(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject0(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject(Unknown Source) 
-    at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:44) 
-    at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:101) 
-    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:239) 
-    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
-    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
-    at java.lang.Thread.run(Unknown Source) 
-```
-
-### <a name="probable-cause"></a>Pravděpodobná příčina
-
-Nejpravděpodobnější příčinou této výjimky je, že není dostatek paměti haldy je přidělit virtuálním počítačům Java (JVMs). Tyto JVMs se spouští jako exekutor nebo ovladače jako součást aplikace Spark. 
-
-### <a name="resolution-steps"></a>Postup řešení
-
-1. Určete maximální velikost dat Spark aplikace zpracovává. Můžete provést odhad na základě maximální velikosti vstupních dat, dočasných dat, který je produkovaných transformací vstupních dat a výstupních dat, který je vytvořen, pokud aplikace je další transformací dočasných dat. Tento proces může být iterační, pokud nemůžete formální počáteční odhad. 
-
-2. Ujistěte se, že cluster HDInsight, který se chystáte použít, má dostatek prostředků z hlediska paměti a jader k obsluze aplikace Spark. Této služby můžete zjistit zobrazením část hodnoty v uživatelském rozhraní YARN clusteru metriky **paměti používá** vs. **Celkové paměti**, a **využitých** vs. **Celkových virtuálních jader**.
-
-3. Nastavte následující konfiguraci Sparku na odpovídající hodnoty, které by neměly být delší než 90 % dostupné paměti a jader. Hodnoty mohou být také v rámci požadavky aplikace Spark na paměť: 
-
-    ```apache
-    spark.executor.instances (Example: 8 for 8 executor count) 
-    spark.executor.memory (Example: 4g for 4 GB) 
-    spark.yarn.executor.memoryOverhead (Example: 384m for 384 MB) 
-    spark.executor.cores (Example: 2 for 2 cores per executor) 
-    spark.driver.memory (Example: 8g for 8GB) 
-    spark.driver.cores (Example: 4 for 4 cores)   
-    spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
-    ```
-
-    Chcete-li vypočítat celkové paměti používané všechny moduly provádění: 
-    
-    ```apache
-    spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
-    ```
-   Chcete-li vypočítat celkové paměti používané ovladače:
-    
-    ```apache
-    spark.driver.memory + spark.yarn.driver.memoryOverhead
-    ```
-
-### <a name="additional-reading"></a>Další čtení
-
-- [Přehled správy paměti Apache Sparku](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Ladit aplikace Apache Spark v clusteru služby HDInsight](https://web.archive.org/web/20190112152909/https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
-
-
-### <a name="see-also"></a>Viz také
-[Řešení potíží pomocí Azure HDInsight](../../hdinsight/hdinsight-troubleshoot-guide.md)
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

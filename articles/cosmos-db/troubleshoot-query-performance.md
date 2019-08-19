@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d0dd9a371c4912cae0e74b214c673c629fc1ff55
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986169"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515810"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Řešení potíží s výkonem dotazů pro Azure Cosmos DB
 Tento článek popisuje, jak identifikovat, diagnostikovat a řešit potíže s Azure Cosmos DB problémy s dotazy SQL. Chcete-li dosáhnout optimálního výkonu pro Azure Cosmos DB dotazy, postupujte podle následujících kroků pro řešení potíží. 
@@ -24,11 +24,12 @@ Nejnižší možná latence se dosahuje tím, že se zaručí, že se volající
 ## <a name="check-consistency-level"></a>Kontrola úrovně konzistence
 [Úroveň konzistence](consistency-levels.md) může mít vliv na výkon a poplatky. Ujistěte se, že vaše úroveň konzistence je pro daný scénář vhodná. Další podrobnosti najdete v tématu [Výběr úrovně konzistence](consistency-levels-choosing.md).
 
-## <a name="log-sql-query-in-storage-account"></a>Dotaz protokolu SQL v účtu úložiště
-[Protokoly dotazů rozhraní SQL API prostřednictvím diagnostických protokolů](logging.md#turn-on-logging-in-the-azure-portal) umožňují protokolovat zavedený dotaz do účtu úložiště podle vašeho výběru. To vám umožní podívat se na diagnostické protokoly a najít dotaz pomocí dalších ru a použít ID aktivity, které se bude shodovat s QueryRuntimeStatistics. 
+## <a name="log-the-executed-sql-query"></a>Protokolovat spuštěný dotaz SQL 
 
+Spuštěný dotaz SQL můžete protokolovat v účtu úložiště nebo v tabulce diagnostického protokolu. [Protokoly dotazů SQL prostřednictvím diagnostických protokolů](logging.md#turn-on-logging-in-the-azure-portal) umožňují protokolovat zavedený dotaz do účtu úložiště podle vašeho výběru. To vám umožní podívat se na protokoly a najít dotaz, který používá vyšší ru. Později můžete použít ID aktivity tak, aby odpovídalo skutečnému dotazu v QueryRuntimeStatistics. Dotaz je zakódován z důvodu zabezpečení a názvů parametrů dotazu a jejich hodnoty v klauzulích WHERE se liší od skutečných názvů a hodnot. Můžete použít protokolování do účtu úložiště, abyste zachovali dlouhodobé uchovávání provedených dotazů.  
 
 ## <a name="log-query-metrics"></a>Metriky dotazů protokolu
+
 Slouží `QueryMetrics` k řešení potíží s pomalými nebo nákladnými dotazy. 
 
   * Nastavte `FeedOptions.PopulateQueryMetrics = true`vodpovědi. `QueryMetrics`

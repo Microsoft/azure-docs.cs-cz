@@ -1,6 +1,6 @@
 ---
 title: Vytvoření mapy pomocí Azure Maps | Microsoft Docs
-description: Postup vytvoření mapy JavaScriptu
+description: Jak vytvořit mapu pomocí Azure Maps Web SDK.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9f1188fcf2aa24791ca5181f5c94a1b0f6b15dc1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 932c244ff41e757413a05cde019ee7ee1a82232d
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882070"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976125"
 ---
 # <a name="create-a-map"></a>Vytvoření mapy
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak vytvořit mapu a animovat mapu.
 
 ## <a name="loading-a-map"></a>Načítání mapy
 
-Chcete-li načíst mapu, vytvořte novou instanci [třídy map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest). Při inicializaci mapování ID elementu DIV pro vykreslení mapy a sady možností, které mají být použity při načítání mapy, jsou předány. Pokud v `atlas` oboru názvů nejsou zadány výchozí informace o ověřování, bude nutné tyto informace při načítání mapy zadat v možnostech mapování. Mapa načítá několik zdrojů asynchronně pro výkon. V takovém případě po vytvoření instance mapy připojte `ready` událost nebo `load` k mapě a pak přidejte jakýkoliv další kód, který komunikuje s mapou v této obslužné rutině události. `ready` Událost se aktivuje, jakmile bude mít mapa dostatek prostředků, aby je bylo možné používat programově. `load` Událost je aktivována po úplném načtení počátečního zobrazení mapy. 
+Chcete-li načíst mapu, vytvořte novou instanci [třídy map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest). Při inicializaci mapy se předává ID elementu DIV pro vykreslení mapy a sada možností, které se mají použít při načítání mapy. Pokud v `atlas` oboru názvů nejsou zadány výchozí informace o ověřování, bude nutné tyto informace při načítání mapy zadat v možnostech mapování. Mapa načítá několik zdrojů asynchronně pro výkon. V takovém případě po vytvoření instance mapy připojte `ready` událost nebo `load` k mapě a pak přidejte jakýkoliv další kód, který komunikuje s mapou v této obslužné rutině události. `ready` Událost se aktivuje, jakmile bude mít mapa dostatek prostředků, aby je bylo možné používat programově. `load` Událost je aktivována po úplném načtení počátečního zobrazení mapy. 
 
 <br/>
 
@@ -51,7 +51,7 @@ Existují dva způsoby, jak lze zobrazovanou oblast mapy nastavit pomocí kamery
 
 ### <a name="set-the-camera"></a>Nastavení kamery
 
-V následujícím kódu je vytvořen [objekt mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) a jsou nastaveny možnosti centrování a přiblížení. Vlastnosti mapy, jako je například střed a úroveň přiblížení, jsou [](/javascript/api/azure-maps-control/atlas.cameraoptions)součástí CameraOptionsu.
+V následujícím kódu je vytvořen [objekt mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) a jsou nastaveny možnosti centrování a přiblížení. Vlastnosti mapy, jako je například střed a úroveň přiblížení, jsou součástí [CameraOptionsu](/javascript/api/azure-maps-control/atlas.cameraoptions).
 
 <br/>
 
@@ -104,3 +104,6 @@ Další funkce pro přidání funkcí do aplikace najdete v příkladech kódu:
 
 > [!div class="nextstepaction"]
 > [Přidat ovládací prvky do mapy](map-add-controls.md)
+
+> [!div class="nextstepaction"]
+> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)

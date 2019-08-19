@@ -1,5 +1,5 @@
 ---
-title: Mazal Predikce zpoždění letů
+title: 'Ukázka vizuálního rozhraní #6: Klasifikace pro předpověď zpoždění letů'
 titleSuffix: Azure Machine Learning service
 description: V tomto článku se dozvíte, jak vytvořit model strojového učení pro předpověď zpoždění letu pomocí vizuálního rozhraní přetažení a vlastního kódu jazyka R.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: f2ef5fd17d6c6a91fa5f3c5d62700b68c5fbca24
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4c0a990ae3f45fc7b08c157f180d8ecf805c24e6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855968"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990027"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>Ukázka 6 – klasifikace: Předpověď zpoždění letu pomocí R
 
@@ -117,7 +117,7 @@ Model logistické regrese má v sadě testů AUC 0,631.
 
  ![Vyhodnocení](media/ui-sample-classification-predict-flight-delay/evaluate.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 

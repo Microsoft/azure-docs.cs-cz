@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 08/09/2019
 ms.author: victorh
-ms.openlocfilehash: 89b50cff2d46f8c92c09653aeaac49551c97e9c6
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 9a3cdb846921c2d73dd2cca5d679663c1ba9e192
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314471"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946886"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Přehled záznamů aliasů Azure DNS
 
@@ -29,7 +29,7 @@ Sada záznamů aliasů je podporovaná pro následující typy záznamů v zón�
 
 ## <a name="capabilities"></a>Možnosti
 
-- **Najeďte na prostředek veřejné IP adresy ze sady záznamů DNS A/AAAA.** Můžete vytvořit sadu záznamů a/AAAA a nastavit ji jako záznam aliasu, aby odkazoval na prostředek veřejné IP adresy. Sada záznamů DNS se automaticky změní, pokud se změní veřejná IP adresa nebo se odstraní. Dangling záznamy DNS, které odkazují na nesprávné IP adresy, se vyhnete.
+- **Najeďte na prostředek veřejné IP adresy ze sady záznamů DNS A/AAAA.** Můžete vytvořit sadu záznamů a/AAAA a nastavit ji jako záznam aliasu, aby odkazoval na prostředek veřejné IP adresy (Standard nebo Basic). Sada záznamů DNS se automaticky změní, pokud se změní veřejná IP adresa nebo se odstraní. Dangling záznamy DNS, které odkazují na nesprávné IP adresy, se vyhnete.
 
    Pro každý prostředek je k dispozici aktuální limit 20 záznamů aliasů.
 
@@ -73,7 +73,7 @@ Jak bylo popsáno dříve, záznamy CNAME nejsou podporovány ve vrcholu zóny. 
 > [!NOTE]
 > Ukazatel na vrcholy zóny na koncové body CDN pro Azure CDN z Akamai není aktuálně podporován.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o záznamech aliasů najdete v následujících článcích:
 
