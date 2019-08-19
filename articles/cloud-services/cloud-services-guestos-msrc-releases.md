@@ -7,18 +7,17 @@ author: raiye
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/2/2019
 ms.author: raiye
-ms.openlocfilehash: 534a77ad29338ca1cdba22a3adeb8113521a6246
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 6f7fc27674ad26d8de8dd5d0c6c801b269b0e686
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780078"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941713"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
