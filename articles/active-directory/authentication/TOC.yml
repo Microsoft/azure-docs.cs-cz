@@ -25,7 +25,7 @@
       href: concept-authentication-methods.md
     - name: Ověřování bez hesla
       href: concept-authentication-passwordless.md
-    - name: Kombinovaná registrace
+    - name: Registrace informací o zabezpečení
       href: concept-registration-mfa-sspr-combined.md
     - name: Resetování hesla
       items:
@@ -103,7 +103,7 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: Síť VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: Kombinovaná registrace
+    - name: Registrace informací o zabezpečení
       items:
         - name: Povolení kombinované registrace
           href: howto-registration-mfa-sspr-combined.md

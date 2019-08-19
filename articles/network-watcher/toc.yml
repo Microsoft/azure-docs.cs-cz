@@ -101,6 +101,8 @@
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
+        - name: Odstranění objektů blob úložiště protokolu toků NSG
+          href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: Analýza protokolů toku NSG
           items:
             - name: Čtení protokolů toku NSG

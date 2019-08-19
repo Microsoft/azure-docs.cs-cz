@@ -1,46 +1,127 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Data Box – offline přenos
+summary: Pokud vás při přenosu dat offline omezuje čas, síť nebo cena, použijte zařízení Azure Data Box. Podle velikosti vašich dat zvolte službu Data Box Disk, Data Box nebo Data Box Heavy.
 metadata:
   title: Dokumentace ke službě Azure Data Box – offline přenos
-  description: 'Pokud vás při offline přenosu dat do Azure omezuje čas, síť nebo cena, použijte zařízení Data Box.'
+  description: Pokud vás při offline přenosu dat do Azure omezuje čas, síť nebo cena, použijte zařízení Data Box.
   services: databox
-  author: alkohli
-  manager: twooley
   ms.service: databox
   ms.subservice: pod
   ms.topic: landing-page
-  ms.date: 07/03/2019
+  ms.collection: collection
+  author: alkohli
   ms.author: alkohli
-abstract:
-  description: 'Řada služeb Azure Data Box umožňuje přenášet stovky terabajtů dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Pokud vás při přenosu dat offline omezuje čas, síť nebo cena, použijte zařízení Data Box.<p>Podle velikosti vašich dat zvolte službu Data Box Disk, Data Box nebo Data Box Heavy. U každého zařízení probíhá přenos do Azure ve 4 snadných krocích – objednání, přijetí, kopírování dat na zařízení a vrácení zařízení do Azure. V datacentru Azure se data nahrají a potom vymažou.</p><p>Naučte se využívat službu Data Box pro offline přenos dat prostřednictvím našich šablon Rychlý start a kurzů.</p>'
-sections:
-  - title: Rychlý start
-    items:
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
-            text: Nastavení Data Boxu na webu Azure Portal
-            href: /azure/databox/data-box-quickstart-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
-            text: Nastavení Data Box Disku na webu Azure Portal
-            href: /azure/databox/data-box-disk-quickstart-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
-            text: Nastavení Data Box Heavy na webu Azure Portal
-            href: /azure/databox/data-box-heavy-quickstart-portal
-  - title: Kurzy
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Pro Data Box
-            html: <p><a href="/azure/databox/data-box-deploy-ordered">Objednání zařízení Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-set-up">Zapojení a připojení zařízení Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-copy-data">Kopírování dat na zařízení Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-picked-up">Vrácení zařízení Azure Data Box a ověření nahrání</a></p>
-          - title: Pro Data Box Disk
-            html: '<p><a href="/azure/databox/data-box-disk-deploy-ordered">Objednání Azure Data Box Disku</a></p><p><a href="/azure/databox/data-box-disk-deploy-set-up">Rozbalení, připojení a odemknutí Azure Data Box Disku</a></p><p><a href="/azure/databox/data-box-disk-deploy-copy-data">Kopírování dat na Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-picked-up">Vrácení Azure Data Box Disku a ověření nahrání</a></p>'
-          - title: Pro Data Box Heavy
-            html: <p><a href="/azure/databox/data-box-heavy-deploy-ordered">Objednání Azure Data Box Heavy</a></p><p><a href="/azure/databox/data-box-heavy-deploy-set-up">Zapojení a připojení Azure Data Box Heavy</a></p><p><a href="/azure/databox/data-box-heavy-deploy-copy-data">Kopírování dat na Azure Data Box Heavy</a></p><p><a href="/azure/databox/data-box-heavy-deploy-picked-up">Vrácení Azure Data Box Heavy a ověření nahrání</a></p>
+  ms.date: 08/14/2019
+  ms.openlocfilehash: 03de9ceffe4495b1c3a39dad6617cc72d022fbbd
+  ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/16/2019
+  ms.locfileid: "69557836"
+landingContent:
+- title: Řada služeb Azure Data Box
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Data Box?
+      url: data-box-overview.md
+    - text: Co je disk Data Box?
+      url: data-box-disk-overview.md
+    - text: Co je Data Box Heavy?
+      url: data-box-heavy-overview.md
+  - linkListType: architecture
+    links:
+    - text: Volba možností přenosu dat v Azure
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Nastavení Data Boxu
+      url: data-box-quickstart-portal.md
+    - text: Nastavení Data Box Disku
+      url: data-box-disk-quickstart-portal.md
+    - text: Nastavení zařízení Data Box Heavy
+      url: data-box-heavy-quickstart-portal.md
+  - linkListType: learn
+    links:
+    - text: Import dat offline s využitím Data Boxu
+      url: https://docs.microsoft.com/learn/modules/move-data-with-azure-data-box/
+- title: Zobrazení požadavků
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Pro Data Box
+      url: data-box-system-requirements.md
+    - text: Pro úložiště objektů blob Data Boxu
+      url: data-box-system-requirements-rest.md
+    - text: Pro Data Box Disk
+      url: data-box-disk-system-requirements.md
+    - text: Pro Data Box Heavy
+      url: data-box-heavy-system-requirements.md
+- title: Nasazení Data Boxu
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Objednání
+      url: data-box-deploy-ordered.md
+    - text: Kabel
+      url: data-box-deploy-set-up.md
+    - text: Připojení a kopírování dat přes SMB
+      url: data-box-deploy-copy-data.md
+    - text: Vrácení, odeslání a ověření dat Azure
+      url: data-box-deploy-picked-up.md
+- title: Nasazení Data Box Disku
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Objednání
+      url: data-box-disk-deploy-ordered.md
+    - text: Odemknutí a připojení
+      url: data-box-disk-deploy-set-up.md
+    - text: Kopírování a ověření dat
+      url: data-box-disk-deploy-copy-data.md
+    - text: Vrácení, odeslání a ověření dat Azure
+      url: data-box-disk-deploy-picked-up.md
+- title: Nasazení zařízení Data Box Heavy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Objednání
+      url: data-box-heavy-deploy-ordered.md
+    - text: Kabel
+      url: data-box-heavy-deploy-set-up.md
+    - text: Připojení a kopírování dat přes SMB
+      url: data-box-heavy-deploy-copy-data.md
+    - text: Vrácení, odeslání a ověření dat Azure
+      url: data-box-heavy-deploy-picked-up.md
+- title: Správa zařízení
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Data Box, Data Box Heavy v Azure
+      url: data-box-portal-admin.md
+    - text: Data Box, Data Box Heavy přes místní uživatelské rozhraní
+      url: data-box-local-web-ui-admin.md
+    - text: Data Box Disk v Azure
+      url: data-box-portal-ui-admin.md
+- title: Nejčastější dotazy
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Nejčastější dotazy – Data Box
+      url: data-box-faq.md
+    - text: Nejčastější dotazy – Data Box Disk
+      url: data-box-disk-faq.md
+- title: Řešení potíží
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Data Box, Data Box Heavy
+      url: data-box-troubleshoot.md
+    - text: Úložiště objektů blob Data Boxu
+      url: data-box-troubleshoot-rest.md
+    - text: Data Box Disk
+      url: data-box-disk-troubleshoot.md
+    - text: Otevření lístku podpory
+      url: data-box-disk-contact-microsoft-support.md

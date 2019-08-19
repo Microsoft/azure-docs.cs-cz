@@ -32,6 +32,8 @@
       href: create-host-pools-arm-template.md
     - name: Vytvoření fondu hostitelů pomocí PowerShellu
       href: create-host-pools-powershell.md
+    - name: Použití licence Windows pro hostitele relací Windows Virtual Desktop
+      href: apply-windows-license.md
     - name: Nastavení sdílení profilu uživatele pro fond hostitelů
       href: create-host-pools-user-profile.md
     - name: Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop
@@ -48,6 +50,8 @@
       href: customize-feed-for-virtual-desktop-users.md
     - name: Přizpůsobení vlastností RDP
       href: customize-rdp-properties.md
+    - name: Nasazení diagnostických nástrojů
+      href: deploy-diagnostics.md
 - name: Koncepty
   items:
     - name: Prostředí Windows Virtual Desktop

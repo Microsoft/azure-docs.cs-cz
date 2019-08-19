@@ -276,6 +276,22 @@
         - name: Řešení potíží se službou State Configuration (DSC)
           href: troubleshoot/desired-state-configuration.md
           displayName: 'Desired State Configuration, troubleshoot'
+    - name: Referenční informace
+      items:
+        - name: Komunitní řešení
+          items:
+            - name: Konfigurace dat ve velkém měřítku
+              href: automation-dsc-config-data-at-scale.md
+              displayName: 'DSC, Configuration Data, ConfigData'
+            - name: Vytváření konfigurací ze serverů
+              href: automation-dsc-config-from-server.md
+              displayName: 'DSC, ReverseDSC'
+            - name: Konfigurace na základě STIG
+              href: automation-dsc-configuration-based-on-stig.md
+              displayName: 'DSC, Configuration'
+            - name: Převod konfigurací na složené prostředky
+              href: automation-dsc-create-composite.md
+              displayName: 'DSC, composite'
 - name: Správa sdílených prostředků
   items:
     - name: Certifikáty

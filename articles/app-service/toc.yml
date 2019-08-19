@@ -67,6 +67,8 @@
       href: overview-hosting-plans.md
     - name: Funkce operačního systému
       href: operating-system-functionality.md
+    - name: Osvědčené postupy pro nasazení
+      href: deploy-best-practices.md
     - name: Zabezpečení
       items:
         - name: Doporučení
@@ -217,6 +219,8 @@
       href: /azure/templates/microsoft.web/allversions
 - name: Zdroje a prostředky
   items:
+    - name: Blog služby App Service
+      href: 'https://aka.ms/appserviceblog'
     - name: Získávání dovedností pomocí Microsoft Learn
       href: /learn/browse/
     - name: Plány Azure do budoucna

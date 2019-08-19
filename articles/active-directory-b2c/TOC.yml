@@ -62,9 +62,6 @@
           href: active-directory-b2c-reference-tokens.md
         - name: Vyžádání přístupového tokenu
           href: active-directory-b2c-access-tokens.md
-        - name: Podpora několika vystavitelů tokenů
-          href: multiple-token-endpoints.md
-          displayName: 'migrate, b2clogin, owin, jwt'
     - name: Zásady a toky uživatele
       items:
         - name: Toky uživatele
@@ -307,7 +304,12 @@
             - name: RelyingParty
               href: relyingparty.md
     - name: Použití b2clogin.com
-      href: b2clogin.md
+      items:
+        - name: Přehled b2clogin.com
+          href: b2clogin.md
+        - name: Migrace webového rozhraní API do b2clogin.com
+          href: multiple-token-endpoints.md
+          displayName: 'migrate, b2clogin, owin, jwt'
     - name: Automation
       items:
         - name: Export sestavy využití

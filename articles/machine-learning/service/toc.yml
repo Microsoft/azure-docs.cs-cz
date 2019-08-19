@@ -213,29 +213,29 @@
         - name: Kde a jak nasadit
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Virtuální počítače poznámkového bloku
-          href: how-to-deploy-local-container-notebook-vm.md
-        - name: Azure Container Instances
-          displayName: aci
-          href: how-to-deploy-azure-container-instance.md
-        - name: Azure Kubernetes Service
+        - name: Nasazení do Azure Kubernetes Service
           displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
-        - name: Odvozování GPU
+        - name: Nasazení pro odvozování GPU
           href: how-to-deploy-inferencing-gpus.md
-        - name: Odvozování FPGA
-          href: how-to-deploy-fpga-web-service.md
-        - name: IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Azure App Service
+        - name: Nasazení do Azure App Service
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: Vlastní image Dockeru
+        - name: Nasazení do Azure Container Instances
+          displayName: aci
+          href: how-to-deploy-azure-container-instance.md
+        - name: Nasazení do virtuálních počítačů poznámkového bloku
+          href: how-to-deploy-local-container-notebook-vm.md
+        - name: Použití vlastní image Dockeru
           href: how-to-deploy-custom-docker-image.md
         - name: Nasazování existujících modelů
           displayName: publish existing model
           href: how-to-deploy-existing-model.md
-        - name: Řešení potíží a ladění
+        - name: Nasazení do IoT Edge
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: Nasazení pro odvozování FPGA
+          href: how-to-deploy-fpga-web-service.md
+        - name: Řešení potíží s nasazeními a jejich ladění
           href: how-to-troubleshoot-deployment.md
     - name: Využívání webových služeb
       items:
