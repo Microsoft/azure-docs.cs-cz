@@ -6,8 +6,6 @@
   items:
     - name: Co je virtuální počítač pro datové vědy?
       href: overview.md
-    - name: Co je virtuální počítač pro hloubkové učení?
-      href: deep-learning-dsvm-overview.md
     - name: Co je virtuální počítač s geografickou umělou inteligencí pro datové vědy?
       href: geo-ai-dsvm-overview.md
 - name: Šablony Rychlý start
@@ -23,8 +21,6 @@
       href: provision-geo-ai-dsvm.md
 - name: Koncepty
   items:
-    - name: Zjišťování DSVM
-      href: dsvm-tools-overview.md
     - name: Architektura AI a hloubkového učení
       href: dsvm-deep-learning-ai-frameworks.md
     - name: Programovací jazyky
@@ -49,8 +45,6 @@
       href: vm-do-ten-things.md
     - name: Použití DSVM s Linuxem
       href: linux-dsvm-walkthrough.md
-    - name: Použití virtuálního počítače pro hloubkové učení
-      href: use-deep-learning-dsvm.md
     - name: Použití DSVM s Geo AI
       href: use-geo-ai-dsvm.md
     - name: Vytvoření fondu DSVM s automatickým škálováním

@@ -193,6 +193,8 @@
       items:
         - name: Aplikace Apache Tez se zablokuje
           href: ./interactive-query-troubleshoot-tez-hangs.md
+        - name: Zobrazení Apache Ambari Tez se načítá pomalu
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Výkon dotazů Apache Hive LLAP
           href: ./interactive-query-troubleshoot-query-performance.md
         - name: Pomalá redukční funkce
@@ -203,24 +205,14 @@
           href: ./interactive-query-troubleshoot-permission-error-create-table.md
         - name: Překročení limitu režie GC
           href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
-        - name: Zobrazení Apache Ambari Tez se načítá pomalu
-          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: V zobrazení Apache Hivu se nezobrazuje chybová zpráva
           href: ./interactive-query-troubleshoot-error-message-hive-view.md
         - name: Nepřístupné zobrazení Apache Hivu
           href: ./interactive-query-troubleshoot-inaccessible-hive-view.md
         - name: ZooKeeperHiveClientException – konfigurace HiveServer2
           href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
-        - name: Výkon dotazů Apache Hive LLAP
-          href: ./interactive-query-troubleshoot-query-performance.md
         - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
           href: ../hdinsight-troubleshoot-failed-cluster.md
-        - name: Řešení potíží s Apache Hadoop HDFS
-          href: ../hdinsight-troubleshoot-hdfs.md
-        - name: Řešení potíží s Apache HIVE
-          href: ../hdinsight-troubleshoot-hive.md
-        - name: Řešení potíží s Apache Hadoop YARN
-          href: ../hdinsight-troubleshoot-yarn.md
         - name: Řešení potíží s Apache Hadoop HDFS
           href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
         - name: Řešení potíží s Apache HIVE
