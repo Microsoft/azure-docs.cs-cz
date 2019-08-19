@@ -130,7 +130,7 @@ Následující šablony aktivitu kopírování, která obsahuje úplný seznam p
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type aktivity kopírování musí být nastavená na: **kopírování** | Ano |
+| type | Vlastnost Type aktivity kopírování musí být nastavená na: **Copy** | Ano |
 | inputs | Zadejte datovou sadu vytvoříte, která odkazuje na zdroj dat. Aktivitu kopírování, která podporuje pouze jeden vstup. | Ano |
 | outputs | Zadejte datovou sadu vytvoříte, které body k datům jímky. Aktivitu kopírování, která podporuje pouze jeden výstup. | Ano |
 | typeProperties | Skupina vlastností konfigurace aktivity kopírování. | Ano |
