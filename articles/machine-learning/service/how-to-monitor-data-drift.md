@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: b9593a5802300da8baa1e518f14885637db2068f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 41e357ee53d4c2fbc6683be3446ba2527dd9253f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036189"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623979"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Detekce posunu dat (Preview) na modelech nasazených do služby Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ Pomocí služby Azure Machine Learning můžete sledovat vstupy modelu nasazené
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Jak se monitoruje posun dat ve službě Azure Machine Learning
 
-Pomocí Azure Machine Learning služby je mezi datovými sadami a nasazeními monitorovaná data. Chcete-li monitorovat pro posun dat, je určena datová sada, která je obvykle datovou sadou pro model. Druhá datová sada – obvykle modelují vstupní data shromážděná z nasazení – jsou testována proti základní datové sadě. Obě datové sady jsou [](how-to-explore-prepare-data.md#explore-with-summary-statistics) profilované a vstupní služba pro sledování datového posunu dat. Model strojového učení je vyškolen k detekci rozdílů mezi dvěma datovými sadami. Výkon modelu se převede na koeficient posunu, který měří velikost posunu mezi dvěma datovými sadami. Pomocí [Interpretace modelu](machine-learning-interpretability-explainability.md)jsou vypočítány funkce, které přispívají k součiniteli posunu. Z profilu datové sady jsou sledovány statistické informace o jednotlivých funkcích. 
+Pomocí Azure Machine Learning služby je mezi datovými sadami a nasazeními monitorovaná data. Chcete-li monitorovat pro posun dat, je určena datová sada, která je obvykle datovou sadou pro model. Druhá datová sada – obvykle modelují vstupní data shromážděná z nasazení – jsou testována proti základní datové sadě. Obě datové sady jsou profilované a vstupní služba pro sledování datového posunu dat. Model strojového učení je vyškolen k detekci rozdílů mezi dvěma datovými sadami. Výkon modelu se převede na koeficient posunu, který měří velikost posunu mezi dvěma datovými sadami. Pomocí [Interpretace modelu](machine-learning-interpretability-explainability.md)jsou vypočítány funkce, které přispívají k součiniteli posunu. Z profilu datové sady jsou sledovány statistické informace o jednotlivých funkcích. 
 
 ## <a name="prerequisites"></a>Požadavky
 

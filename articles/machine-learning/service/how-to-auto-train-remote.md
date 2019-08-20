@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 852190f7b66c0d2c527d1784c72f963e11620064
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 3c3205b64803ac4ee67997ef546ffd64c89f23b4
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371104"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624830"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
 
@@ -51,7 +51,6 @@ provisioning_config = AmlCompute.provisioning_configuration(vm_size="STANDARD_D2
                                                             # for GPU, use "STANDARD_NC6"
                                                             # vm_priority = 'lowpriority', # optional
                                                             max_nodes=6)
-
 compute_target = ComputeTarget.create(
     ws, amlcompute_cluster_name, provisioning_config)
 
@@ -67,35 +66,37 @@ Mezi omezení názvu clusteru patří:
 + Musí být kratší než 64 znaků.
 + Nesmí obsahovat žádný z následujících znaků: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |;: \' \\", < > /?. `
 
-## <a name="access-data-using-getdata-function"></a>Přístup k datům pomocí funkce get_data ()
+## <a name="access-data-using-tabulardataset-function"></a>Přístup k datům pomocí funkce TabularDataset
 
-Poskytnutí přístupu vzdálený prostředek na trénovací data. Pro automatizované strojovým učením běžící na vzdálené výpočetní prostředky, data, musí být načtena pomocí `get_data()` funkce.
+Definovány X a y jako `TabularDataset`s, které jsou předány do automatizovaného ml v AutoMLConfig. `from_delimited_files`ve výchozím nastavení nastaví `infer_column_types` hodnotu true, která bude automaticky odvodit typ sloupce. 
 
-Pokud chcete poskytnout přístup, musíte mít:
-+ Vytvořit soubor obsahující get_data.py `get_data()` – funkce
-+ Umístit tento soubor v adresáři dostupné jako absolutní cestu
-
-Kód pro čtení dat z úložiště objektů blob nebo místní disk v souboru get_data.py může zapouzdřit. V následující ukázce kódu data pocházejí z balíčku skriptu sklearn.
+Pokud chcete ručně nastavit typy sloupců, můžete nastavit `set_column_types` argument tak, aby ručně nastavil typ každého sloupce. V následující ukázce kódu data pocházejí z balíčku skriptu sklearn.
 
 ```python
 # Create a project_folder if it doesn't exist
+if not os.path.isdir('data'):
+    os.mkdir('data')
+    
 if not os.path.exists(project_folder):
     os.makedirs(project_folder)
 
-#Write the get_data file.
-%%writefile $project_folder/get_data.py
-
 from sklearn import datasets
+from azureml.core.dataset import Dataset
 from scipy import sparse
 import numpy as np
+import pandas as pd
 
-def get_data():
+data_train = datasets.load_digits()
 
-    digits = datasets.load_digits()
-    X_digits = digits.data[10:,:]
-    y_digits = digits.target[10:]
+pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
+pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
 
-    return { "X" : X_digits, "y" : y_digits }
+ds = ws.get_default_datastore()
+ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
+
+X = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/X_train.csv'))
+y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
+
 ```
 
 ## <a name="create-run-configuration"></a>Vytvořit konfiguraci spuštění
@@ -119,7 +120,6 @@ run_config.environment.python.conda_dependencies = dependencies
 Další příklad tohoto návrhového vzoru najdete v tomto ukázkovém poznámkovém [bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) .
 
 ## <a name="configure-experiment"></a>Konfigurace testu
-
 Zadejte nastavení pro `AutoMLConfig`.  (Viz [úplný seznam parametrů](how-to-configure-auto-train.md#configure-experiment) a jejich možných hodnot.)
 
 ```python
@@ -143,7 +143,8 @@ automl_config = AutoMLConfig(task='classification',
                              path=project_folder,
                              compute_target=compute_target,
                              run_configuration=run_config,
-                             data_script=project_folder + "/get_data.py",
+                             X = X,
+                             y = y,
                              **automl_settings,
                              )
 ```
@@ -158,7 +159,8 @@ automl_config = AutoMLConfig(task='classification',
                              path=project_folder,
                              compute_target=compute_target,
                              run_configuration=run_config,
-                             data_script=project_folder + "/get_data.py",
+                             X = X,
+                             y = y,
                              **automl_settings,
                              model_explainability=True,
                              X_valid=X_test
@@ -286,6 +288,6 @@ Poznámkový blok [How-to-use-AzureML/Automated-Machine-Learning/Remote-amlcompu
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si [jak nakonfigurovat nastavení pro automatické školení](how-to-configure-auto-train.md).

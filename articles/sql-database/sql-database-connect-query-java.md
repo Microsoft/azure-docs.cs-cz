@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
-ms.openlocfilehash: 5e118bad0bfdd1a8e265aa0ed3eeea78a3b0da54
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 8940e13dcc6d6287984ba1cc7c7510768b4e232f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543529"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624085"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Rychlý start: Použití Java k připojení a dotazování databáze SQL Azure
 
@@ -55,7 +55,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Vyberte **databáze SQL** nebo otevřete stránku **spravované instance SQL** .
 
 3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro izolovanou databázi nebo plně kvalifikovaný název serveru vedle možnost **hostitel** pro spravovanou instanci. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** . 
 
@@ -165,7 +165,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 1. Ověřte, že se vrátí prvních 20 řádků a okno aplikace zavřete.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Návrh první databáze SQL Azure](sql-database-design-first-database.md)  
 

@@ -1,60 +1,58 @@
 ---
-title: Nastavení registrace a přihlášení s účtem Weibo pomocí Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zaregistrujte se a přihlaste se poskytují zákazníkům s účty Weibo ve svých aplikacích pomocí služby Azure Active Directory B2C.
+title: Nastavte si registraci a přihlaste se pomocí účtu Weibo pomocí Azure Active Directory B2C
+description: Poskytněte zákazníkům registraci a přihlášení k účtům Weibo ve vašich aplikacích pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 808d4bc8521917b89a7265be6dfab60757baf910
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 428149fbc015037fa8c92bad6fe72cbd97aad5d7
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508055"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622241"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s účtem Weibo pomocí Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Weibo pomocí Azure Active Directory B2C
 
-> [!NOTE]
-> Tato funkce je ve verzi Preview.
-> 
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="create-a-weibo-application"></a>Vytvoření aplikace Weibo
+## <a name="create-a-weibo-application"></a>Vytvoření aplikace v Weibo
 
-Použít účet Weibo jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, budete muset vytvořit aplikaci ve vašem tenantovi, který ho zastupuje. Pokud ještě nemáte účet Weibo, získáte ji na [ https://weibo.com/signup/signup.php?lang=en-us ](https://weibo.com/signup/signup.php?lang=en-us).
+Pokud chcete v Azure Active Directory (Azure AD) B2C použít účet Weibo jako zprostředkovatele identity, musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet Weibo, můžete se zaregistrovat [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us).
 
-1. Přihlaste se k [portál pro vývojáře Weibo](https://open.weibo.com/) pomocí svých přihlašovacích údajů účtu Weibo.
-2. Po přihlášení vyberte své zobrazované jméno v pravém horním rohu.
-3. V rozevíracím seznamu vyberte**编辑开发者信息**(Upravit informace pro vývojáře).
-4. Zadejte požadované informace a vyberte**提交**(Odeslat).
-5. Abyste prošli procesem ověření e-mailu.
-6. Přejděte [stránku ověření identity](https://open.weibo.com/developers/identity/edit).
-7. Zadejte požadované informace a vyberte**提交**(Odeslat).
+1. Přihlaste se k [portálu pro vývojáře Weibo](https://open.weibo.com/) pomocí přihlašovacích údajů k účtu Weibo.
+1. Po přihlášení vyberte své zobrazované jméno v pravém horním rohu.
+1. V rozevíracím seznamu vyberte**编辑开发者信息**(upravit informace pro vývojáře).
+1. Zadejte požadované informace a vyberte**提交**(Odeslat).
+1. Dokončete proces ověření e-mailu.
+1. Přejít na [stránku ověření identity](https://open.weibo.com/developers/identity/edit).
+1. Zadejte požadované informace a vyberte**提交**(Odeslat).
 
 ### <a name="register-a-weibo-application"></a>Registrace aplikace Weibo
 
-1. Přejděte [nové stránce registrace aplikace Weibo](https://open.weibo.com/apps/new).
-2. Zadejte informace potřebné aplikace.
-3. Vyberte**创建**(vytvořit).
-4. Zkopírujte hodnoty **klíče aplikace** a **tajný kód aplikace**. Obě tyto přidat zprostředkovatele identity do svého tenanta potřebujete.
-5. Nahrát povinné fotkám a zadejte potřebné informace.
-6. Vyberte**保存以上信息**(Uložit).
-7. Vyberte**高级信息**(rozšířené informace o).
-8. Vyberte**编辑**(Upravit) vedle pole pro OAuth 2.0**授权设置**(přesměrování URL adresy).
-9. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` pro OAuth 2.0**授权设置**(přesměrování URL adresy). Například pokud je název klienta contoso, nastavte adresu URL bude `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
-10. Vyberte**提交**(Odeslat).  
+1. Přejít na [novou registrační stránku aplikace Weibo](https://open.weibo.com/apps/new)
+1. Zadejte potřebné informace o aplikaci.
+1. Vyberte**创建**(vytvořit).
+1. Zkopírujte hodnoty **klíče aplikace** a tajného klíče **aplikace**. Obě tyto služby potřebujete k přidání poskytovatele identity k vašemu tenantovi.
+1. Nahrajte požadované fotky a zadejte potřebné informace.
+1. Vyberte**保存以上信息**(Uložit).
+1. Vyberte**高级信息**(rozšířené informace).
+1. Vyberte**编辑**(Upravit) vedle pole pro OAuth 2.0**授权设置**(adresa URL pro přesměrování).
+1. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` pro OAuth 2.0**授权设置**(adresa URL pro přesměrování). Například pokud je název vašeho tenanta contoso, nastavte adresu URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. Vyberte**提交**(Odeslat).
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Konfigurace účtu Weibo jako zprostředkovatele identity
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
-3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
-5. Zadejte **název**. Zadejte například *Weibo*.
-6. Vyberte **typ zprostředkovatele identit**vyberte **Weibo (Preview)** a klikněte na tlačítko **OK**.
-7. Vyberte **nastavit tohoto zprostředkovatele identity** a zadejte klíč aplikace, který jste si poznamenali dříve, jako **ID klienta** a zadejte tajný kód aplikace, které jste si poznamenali jako **tajný kód klienta** z Weibo aplikaci, kterou jste vytvořili dříve.
-8. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **vytvořit** uložte konfiguraci Weibo.
+1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
+1. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **Zprostředkovatelé identity**a pak vyberte **Weibo (Preview)** .
+1. Zadejte **název**. Například *Weibo*.
+1. Pro **ID klienta**zadejte klíč aplikace aplikace Weibo, kterou jste vytvořili dříve.
+1. Pro **tajný klíč klienta**zadejte tajný kód aplikace, který jste si poznamenali.
+1. Vyberte **Uložit**.

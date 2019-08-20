@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 08/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0a3a9330eaa977f72cdbaba4e11aaa706b437fad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 60cd87b6cecfb30ebc90f445c79e25c241980a86
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945905"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623345"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Kurz: Sady dat dávkového testu
 
@@ -95,7 +95,7 @@ Použijte k tomu následující postup:
 
 ## <a name="review-batch-results"></a>Zkontrolujte výsledky služby batch
 
-Batch graf zobrazuje čtyři kvadrantech výsledky. Napravo od grafu je filtr. Ve výchozím nastavení je nastaven filtr na první záměr v seznamu. Filtr obsahuje všechny záměry a pouze jednoduché a složené entity. Když vyberete [části grafu](luis-concept-batch-test.md#batch-test-results) nebo bodu v rámci tohoto grafu, přidružené utterance(s) zobrazení pod grafem. 
+Batch graf zobrazuje čtyři kvadrantech výsledky. Napravo od grafu je filtr. Filtr obsahuje záměry a entity. Když vyberete [části grafu](luis-concept-batch-test.md#batch-test-results) nebo bodu v rámci tohoto grafu, přidružené utterance(s) zobrazení pod grafem. 
 
 Když najede myší na graf, kolečko myši můžete zvětšit nebo zmenšit zobrazení v grafu. To je užitečné, když existuje mnoho bodů v grafu úzce společně v clusteru. 
 
@@ -103,27 +103,27 @@ Graf je v čtyři kvadrantech dva oddíly zobrazí červeně. **Toto jsou oddíl
 
 ### <a name="getjobinformation-test-results"></a>Výsledky testu GetJobInformation
 
-**GetJobInformation** zobrazit výsledky testů zobrazené ve filtru, že byla úspěšná 2 čtyři předpovědí. Vyberte název **falešně pozitivní** nad horním pravém kvadrantu zobrazíte projevy pod grafem. 
+**GetJobInformation** zobrazit výsledky testů zobrazené ve filtru, že byla úspěšná 2 čtyři předpovědí. V levém dolním rohu vyberte název **false (negativní** ), aby se projevy pod grafem. 
 
-![Služba LUIS projevy testovací služby batch](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
+Pomocí klávesnice CTRL + E přepnete zobrazení popisku, abyste zobrazili přesný text uživatele utterance. 
 
-Proč jsou dvě projevy předpovědět jako **ApplyForJob**, namísto správné záměr **GetJobInformation**? Co se týče možnosti aplikace word a uspořádání word jsou velmi úzce souvisí dvou příkazů. Kromě toho jsou skoro tři třikrát tolik příklady **ApplyForJob** než **GetJobInformation**. Tato nerovnosti příklad projevy váží **ApplyForJob** upřednostnit na záměr. 
+Utterance `Is there a database position open in Los Colinas?` je označena jako _GetJobInformation_ , ale aktuální model předpovídá utterance jako _ApplyForJob_. 
+
+Existují skoro třikrát tolik příkladů pro **ApplyForJob** než **GetJobInformation**. Tato nestejnoměrnost příkladu projevy se váží ve prospěch záměru **ApplyForJob** , což způsobuje nesprávnou předpověď. 
 
 Všimněte si, že oba záměry mají stejný počet chyb. Nesprávný predikce v jedné záměr má vliv na ostatní záměr také. Oba obsahuje chyby, protože projevy byly správně předpovědět pro jeden záměr a také nesprávně ne pro jiné záměr předpovědět. 
 
-![Služba LUIS batch test filtrování chyb](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
+<a name="fix-the-app"></a>
 
-K časovému okamžiku projevy odpovídající nahoře **falešně pozitivní** jsou části `Can I apply for any database jobs with this resume?` a `Can I apply for any database jobs with this resume?`. Pro první utterance slovo `resume` pouze se použil **ApplyForJob**. Pro druhý utterance slovo `apply` pouze se použil **ApplyForJob** záměr.
-
-## <a name="fix-the-app"></a>Oprava aplikace
+## <a name="how-to-fix-the-app"></a>Jak opravit aplikaci
 
 Cílem této části je, aby všechny projevy správně předpovědět pro **GetJobInformation** po opravě aplikace. 
 
-Přidání projevů soubor tyto služby batch na správné záměr je zdánlivě rychlé opravy. To je, co nechcete dělat ale. Chcete, aby služba LUIS správně předpovědět těchto projevů bez nutnosti přidávat jako příklady. 
+Přidání projevů soubor tyto služby batch na správné záměr je zdánlivě rychlé opravy. To není to, co chcete udělat. Chcete, aby služba LUIS správně předpovědět těchto projevů bez nutnosti přidávat jako příklady. 
 
 Může vás také zajímat o odebrání projevy z **ApplyForJob** dokud množství utterance je stejný jako **GetJobInformation**. Který lze pravděpodobně vyřešit výsledky testů, ale bude bránit LUIS z přesně předpovídat tohoto záměru příště. 
 
-První opravu, je přidat další projevy do **GetJobInformation**. Druhý oprava je omezení hmotnosti slova, jako je `resume` a `apply` směrem k **ApplyForJob** záměr. 
+Opravou je přidání dalších projevy k **GetJobInformation**. Nezapomeňte změnit délku utterance, volbu slov a uspořádání slov, zatímco stále cílíte na záměr najít informace o úloze , a nemusíte je použít pro úlohu.
 
 ### <a name="add-more-utterances"></a>Přidání další projevů
 
@@ -161,15 +161,13 @@ Pokud chcete ověřit, že jsou správně předpovědět projevy v testu služby
 
 1. Vyberte **Test** v horním navigačním panelu. Pokud výsledky batch jsou stále otevřen, vyberte **zpět do seznamu**.  
 
-2. Vyberte tři tečky (***...*** ) tlačítko vpravo od názvu služby batch a vyberte **spouštět datovou sadu**. Počkejte, dokud se provádí test služby batch. Všimněte si, že **zobrazit výsledky** je nyní zelené tlačítko. To znamená, že celý batch proběhla úspěšně.
+1. Klikněte na tlačítko se třemi tečkami (***...***) napravo od názvu dávky a vyberte **Spustit**. Počkejte, dokud se provádí test služby batch. Všimněte si, že **zobrazit výsledky** je nyní zelené tlačítko. To znamená, že celý batch proběhla úspěšně.
 
-3. Vyberte **zobrazit výsledky**. Příkazů by měly mít zelené ikony nalevo od názvu záměru. 
-
-    ![Snímek obrazovky služby LUIS se zvýrazněným tlačítkem výsledky služby batch](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
+1. Vyberte **zobrazit výsledky**. Příkazů by měly mít zelené ikony nalevo od názvu záměru. 
 
 ## <a name="create-batch-file-with-entities"></a>Vytvořte dávkový soubor s entitami 
 
-Aby bylo možné ověřit entity v rámci služby batch testu, entity muset označeny v dávkovém souboru JSON. Používají se jenom ty entity, které se strojově naučily: jednoduché a složené entity. Nepřidávejte mimo počítač zjistili entity, protože se nenachází vždy prostřednictvím regulární výrazy nebo explicitní text odpovídá.
+Aby bylo možné ověřit entity v rámci služby batch testu, entity muset označeny v dávkovém souboru JSON. 
 
 Změnu entity pro celkový počet slov ([token](luis-glossary.md#token)) počet může mít vliv na kvalitu předpovědi. Zajistěte, aby trénovacích dat zadané na záměr s s popiskem projevy zahrnuje celou řadu délky entity. 
 
@@ -178,7 +176,6 @@ Při prvním psaní a testování dávkové soubory, je nejlepší začít s ně
 Hodnota **úlohy** entita, součástí projevy testu je obvykle jedno nebo dvě slova s pár příkladů se další slova. Pokud _vlastní_ lidských zdrojů, aplikace obvykle obsahuje názvy úlohy řada výrazů, příklad projevy označené **úlohy** entity v této aplikaci nebude fungovat správně.
 
 1. Vytvoření `HumanResources-entities-batch.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/) nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) ho.
-
 
 2. V souboru ve formátu JSON služby batch, přidejte pole objektů, které zahrnují projevy s **záměr** chcete předpokládané v testu, stejně jako umístění všech entit v utterance. Entita je založená na tokenech, ujistěte se, že ke spouštění a zastavování Každá entita na znak. Začínat nebo končit utterance v prostoru. To způsobí chybu při importu souboru služby batch.  
 

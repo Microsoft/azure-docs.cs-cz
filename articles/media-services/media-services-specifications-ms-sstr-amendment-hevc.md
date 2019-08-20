@@ -3,7 +3,7 @@ title: Změna SSTR-Smooth Streaming protokolu (MS-) pro HEVC | Azure Media Servi
 description: Tato specifikace popisuje protokol a formát pro fragmentování živého streamování založeného na MP4 pomocí HEVC v Azure Media Services. Toto je změna v dokumentaci protokolu Smooth Streaming (MS-SSTR), která zahrnuje podporu HEVC ingestování a streamování. V tomto článku jsou zadány pouze změny, které jsou požadovány pro doručení HEVC, s výjimkou "(beze změny)" značí, že je text zkopírován pouze pro objasnění.
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: johndeu
 manager: femila
 editor: ''
 ms.assetid: f27d85de-2cb8-4269-8eed-2efb566ca2c6
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: dfd6de1ab2e4530afb56d1c6c67e6d78eb9ee474
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e0637b2a015a610f9c3f92809f63a442980b63b1
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015680"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624808"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Změna protokolu SSTR (MS-) pro HEVC Smooth Streaming 
 
@@ -27,7 +27,7 @@ ms.locfileid: "69015680"
 
 Tento článek poskytuje podrobné změny pro použití specifikace protokolu Smooth Streaming [MS-SSTR], aby bylo možné Smooth Streaming zakódovaném videu HEVC. V této specifikaci vytvoříme pouze změny, které jsou potřeba k dodávání kodeku HEVC video. Tento článek se shoduje se stejným schématem číslování jako specifikace [MS-SSTR]. K dispozici jsou prázdné nadpisy, které jsou uvedeny v celém článku, aby se čtenář orientovat na pozici ve specifikaci [MS-SSTR].  "(Žádná změna)" označuje, že text se kopíruje jenom pro účely objasnění.
 
-Článek obsahuje požadavky na technickou implementaci pro signalizaci HEVCho kodeku videa v manifestu Smooth Streaming a normativní odkazy jsou aktualizovány tak, aby odkazovaly na aktuální standardy MPEG, které zahrnují HEVC, Common Encryption HEVC a box. názvy pro formát základního mediálního souboru ISO byly aktualizovány tak, aby byly konzistentní s nejnovějšími specifikacemi. 
+Článek poskytuje technické požadavky na implementaci pro signalizaci HEVC grafického kodeku (pomocí stop ve formátu hev1 nebo hvc1) v manifestu Smooth Streaming a aktualizace normativních odkazů na odkaz na aktuální standardy MPEG, které zahrnout HEVC, Common Encryption z HEVC a názvy polí pro formát základního mediálního souboru ISO byly aktualizovány tak, aby byly konzistentní s nejnovějšími specifikacemi. 
 
 Odkazovaná Smooth Streaming protokolu [MS-SSTR] popisuje formát, který se používá k doručování a digitálního média na vyžádání, jako je například zvuk a video, v následujícím tvaru: z kodéru na webový server, ze serveru na jiný server a z Server k klientovi HTTP.
 Použití nástroje pro doručování datových struktur MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=327787)prostřednictvím protokolu HTTP umožňuje bezproblémové přepínání téměř v reálném čase mezi různými úrovněmi kvality komprimovaného mediálního obsahu. Výsledkem je stálé prostředí přehrávání pro koncového uživatele klienta HTTP, a to i v případě, že se v klientském počítači nebo zařízení mění podmínky vykreslování sítě a videa.
@@ -148,10 +148,12 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 >   **FourCC (proměnná):** Kód se čtyřmi znaky, který určuje, který formát média se používá pro každou ukázku. Následující rozsah hodnot je vyhrazený s následujícími sémantickými významy:
 > 
 > * "hev1": Ukázky videa pro tuto stopu používají HEVC video s použitím formátu "hev1" vzorového popisu určeného v [ISO/IEC-14496-15].
+>
+> * "hvc1": Ukázky videa pro tuto stopu používají HEVC video s použitím formátu "hvc1" vzorového popisu určeného v [ISO/IEC-14496-15].
 > 
 >   **CodecPrivateData (proměnná):** Data, která určují parametry specifické pro formát média a společná pro všechny vzorky v rámci stop, reprezentované jako řetězec šestnáctkově kódovaných bajtů. Formát a sémantický význam sekvence bajtů se liší hodnotou pole **FourCC** následujícím způsobem:
 > 
->   * Pokud TrackElement popisuje video HEVC, pole **FourCC** se rovná **"hev1"** a;
+>   * Pokud TrackElement popisuje video HEVC, pole **FourCC** se rovná **"hev1"** nebo **"hvc1"** .
 > 
 >   Pole **CODECPRIVATEDATA** musí obsahovat šestnáctkovou řetězcovou reprezentaci následující posloupnosti bajtů určenou v ABNF [[RFC5234]:](https://go.microsoft.com/fwlink/?LinkId=123096) (žádná změna z MS-SSTR).
 > 
@@ -173,7 +175,7 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 
 ### <a name="223-fragment-request"></a>2.2.3 – požadavek na fragment 
 
->   **Poznámka:** Výchozí formát média požadovaný pro podverze 2 a ' hev1 ' je značka "ISO8" základního mediálního formátu ISO zadaná v [ISO/IEC 14496-12] ISO Base Media Format File Format čtvrté edice a [ISO/IEC 23001-7] Common Encryption Second Edition.
+>   **Poznámka:** Výchozí formát média požadovaný pro podverze 2 a ' hev1 ' nebo ' hvc1 ' je ' ISO8 ', základní formát mediálního souboru ISO zadaný v [ISO/IEC 14496-12] ISO Base Media Format File Format čtvrté edice a [ISO/IEC 23001-7] Common Encryption Second Edition.
 
 ### <a name="224-fragment-response"></a>2.2.4 odezva na fragment 
 

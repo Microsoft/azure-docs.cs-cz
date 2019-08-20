@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eee881e6d4e446e07867261545a90dfacaa93712
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 388ef66351140dab18bd7c92290d84f0f4d734ac
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512213"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622788"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Kurz: Přidejte do svých aplikací zprostředkovatele identity v Azure Active Directory B2C
 
@@ -94,13 +94,11 @@ Po vytvoření aplikace pro zprostředkovatele identity, který chcete přidat, 
 
 ### <a name="add-the-azure-active-directory-identity-provider"></a>Přidat Azure Active Directory zprostředkovatele identity
 
-1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C kliknutím na **Filtr adresář a odběr** v horní nabídce a výběrem adresáře, který obsahuje klienta Azure AD B2C.
+1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
+1. Vyberte **Zprostředkovatelé identity**a potom vyberte **Nový poskytovatel OpenID Connect**.
 1. Zadejte **název**. Zadejte například *Contoso Azure AD*.
-1. Vyberte **typ zprostředkovatele identity**, vyberte **OpenID připojit**a pak klikněte na **OK**.
-1. Klikněte na **nastavit tohoto zprostředkovatele identity** .
-1. V poli **Adresa URL metadat**zadejte následující adresu URL, `your-AD-tenant-domain` která nahrazuje název domény vašeho tenanta Azure AD.
+1. V poli **Adresa URL metadat**zadejte následující adresu URL `your-AD-tenant-domain` , která nahrazuje název domény vašeho tenanta Azure AD:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -108,28 +106,27 @@ Po vytvoření aplikace pro zprostředkovatele identity, který chcete přidat, 
 
     Například, `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
-1. Jako **ID klienta**zadejte *ID aplikace (klienta)* , které jste si poznamenali dříve.
-1. Jako **tajný klíč klienta**zadejte hodnotu *tajného klíče klienta* , kterou jste předtím nahráli.
-1. V případě potřeby zadejte hodnotu pro **Domain_hint**. Například, `ContosoAD`. [Pomocné parametry domény](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) jsou direktivy, které jsou zahrnuté v žádosti o ověření z aplikace. Dají se použít k urychlení uživatele na přihlašovací stránku federovaného IdP. Nebo je můžou použít víceklientská aplikace k urychlení uživatele přímo na přihlašovací stránku služby Azure AD, která je označená pro svého tenanta.
-1. Vyberte **OK**.
-1. Vyberte **mapovat deklarace identity zprostředkovatele identity** a nastavte následující deklarace identity:
+1. Jako **ID klienta**zadejte ID aplikace, které jste si poznamenali dříve.
+1. Jako **tajný klíč klienta**zadejte tajný klíč klienta, který jste předtím nahráli.
+1. Ponechte výchozí hodnoty **Rozsah**, **typ odpovědi**a **režim odezvy**.
+1. Volitelné Zadejte hodnotu pro **Domain_hint**. Například *ContosoAD*. [Pomocné parametry domény](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) jsou direktivy, které jsou zahrnuté v žádosti o ověření z aplikace. Dají se použít k urychlení uživatele na přihlašovací stránku federovaného IdP. Nebo je můžou použít víceklientská aplikace k urychlení uživatele přímo na přihlašovací stránku služby Azure AD, která je označená pro svého tenanta.
+1. V části **mapování deklarací identity zprostředkovatele identity**zadejte následující hodnoty mapování deklarací identity:
 
-    - Jako **ID uživatele**zadejte `oid`.
-    - Jako **Zobrazovaný název**zadejte `name`.
-    - Pro **křestní jméno**zadejte `given_name`.
-    - Jako **příjmení**zadejte `family_name`.
-    - Do **e-mailu**zadejte `unique_name`.
+    * **ID uživatele**: *OID*
+    * **Zobrazovaný název**: *název*
+    * **Křestní jméno**: *given_name*
+    * **Příjmení**: *family_name*
+    * **E-mail**: *unique_name*
 
-1. Vyberte **OK**a pak vyberte **vytvořit** a uložte konfiguraci.
+1. Vyberte **Uložit**.
 
 ### <a name="add-the-facebook-identity-provider"></a>Přidat poskytovatele identity Facebooku
 
-1. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
-1. Zadejte **název**. Zadejte například *Facebook*.
-1. Vyberte **typ zprostředkovatele identity**, vyberte **Facebook**a pak vyberte **OK**.
-1. Vyberte **nastavit tohoto zprostředkovatele identity** a jako **ID klienta**zadejte *ID aplikace* , které jste si poznamenali dříve.
-1. Zadejte *tajný kód aplikace* , který jste si poznamenali jako **tajný klíč klienta**.
-1. Vyberte **OK** a pak vyberte **vytvořit** a uložte svou konfiguraci Facebooku.
+1. Vyberte **Zprostředkovatelé identity**a pak vyberte **Facebook**.
+1. Zadejte **název**. Například *Facebook*.
+1. Jako **ID klienta**zadejte ID aplikace Facebook, kterou jste vytvořili dříve.
+1. Pro **tajný klíč klienta**zadejte tajný kód aplikace, který jste si poznamenali.
+1. Vyberte **Uložit**.
 
 ## <a name="update-the-user-flow"></a>Aktualizace toku uživatele
 
@@ -170,7 +167,7 @@ Pokud je operace přihlášení úspěšná, budete přesměrováni na `https://
 }.[Signature]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste zjistili, jak:
 

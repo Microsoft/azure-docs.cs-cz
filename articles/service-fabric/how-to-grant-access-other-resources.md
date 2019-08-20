@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: b6e1108ffee13f1583d920947404963a69616788
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1facd85563a54de2b703bbc8c192976db92c30f7
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68958418"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624888"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Udělení přístupu spravované identitě Service Fabric aplikace do prostředků Azure
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udělení přístupu spravované identitě Service Fabric aplikace do prostředků Azure (Preview)
 
 Aby mohla aplikace používat spravovanou identitu pro přístup k jiným prostředkům, musí se jim udělit oprávnění k přístupu k chráněným prostředkům Azure. Udělení oprávnění je obvykle akce správy na řídicí rovině služby Azure vlastnící chráněný prostředek, který je směrován prostřednictvím Azure Resource Manager, což vynutilo jakoukoli platnou kontrolu přístupu založenou na rolích.
 

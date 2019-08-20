@@ -1,6 +1,6 @@
 ---
-title: Uplatnění pozvání v spolupráce B2B – Azure Active Directory | Dokumentace Microsoftu
-description: Popisuje prostředí uplatnění pozvání spolupráce B2B ve službě Azure AD pro koncové uživatele, včetně smlouvy na zásady ochrany osobních údajů.
+title: Uplatnění pozvánky ve spolupráci B2B – Azure Active Directory | Microsoft Docs
+description: Popisuje prostředí pro uplatnění pozvánky Azure AD B2B pro koncové uživatele, včetně souhlasu s podmínkami ochrany osobních údajů.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,72 +11,72 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80eaa134130195fce00ee6a4d68851e478c4532
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2d32818f9e96e931f9e8c3c13554752327c5c456
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052468"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622611"
 ---
-# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Uplatnění pozvání spolupráce služby Azure Active Directory s B2B
+# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory uplatnění pozvánky B2B pro spolupráci
 
-Tento článek popisuje způsoby uživatele typu Host můžete přístup k prostředkům a procesu souhlas, že dojde k. Při odeslání e-mailová pozvánka hosta, e-mailové pozvánce obsahuje odkaz může uplatnit hosta Chcete-li získat přístup k aplikaci nebo portál. E-mailová pozvánka je pouze jedním ze způsobů, hosté může získávat přístup k vašim prostředkům. Jako alternativu můžete přidat hosty do adresáře a poskytnout přímý odkaz na portálu nebo aplikace, kterou chcete sdílet. Bez ohledu na to, v případě metody, které používají hosté projdete první souhlasu procesu. Tento proces zajistí, že hosté svůj souhlas s podmínkami ochrany osobních údajů a přijmout všechny [podmínky použití](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou) jste nastavili.
+Tento článek popisuje způsoby, kterými můžou uživatelé typu Host získat přístup k vašim prostředkům a k procesu souhlasu, ke kterým dojde. Pokud odešlete e-mailovou pozvánku na hosta, pozvánka zahrnuje odkaz, který může host uplatnit, aby získal přístup k vaší aplikaci nebo portálu. E-mail pozvánky je jedním z způsobů, jak hosté můžou získat přístup k vašim prostředkům. Jako alternativu můžete do svého adresáře přidat hosty a dát jim přímý odkaz na portál nebo aplikaci, kterou chcete sdílet. Bez ohledu na to, jakou metodu používají, se hostů prostřednictvím procesu souhlasu při prvním použití. Tento proces zajistí, že se vaši hosté dohodli na podmínky ochrany osobních údajů a přijmou [podmínky použití](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou) , které jste si nastavili.
 
-Při přidání uživatele typu Host do adresáře má uživatelský účet guest (zobrazitelné v prostředí PowerShell) souhlasu stav, který je zpočátku nastaven **PendingAcceptance**. Toto nastavení zůstane, dokud hosta přijme pozvánku a souhlasí, že zásady ochrany osobních údajů a podmínky použití. Poté stav souhlasu se změní na **přijato**, a na stránkách souhlasu už přítomných hosta.
+Když do svého adresáře přidáte uživatele typu Host, má uživatelský účet hosta stav souhlasu (zobrazitelný v PowerShellu), který je zpočátku nastavený na **PendingAcceptance**. Toto nastavení zůstane, dokud uživatel nepřijme pozvání a schválí vaše zásady ochrany osobních údajů a podmínky použití. Po tomto případě se stav souhlasu změní na **přijato**a na hostovi se již neprezentují stránky souhlasu.
 
-## <a name="redemption-through-the-invitation-email"></a>Uplatnění pozvání, pošlete e-mailem
+## <a name="redemption-through-the-invitation-email"></a>Vyplacení prostřednictvím e-mailu s pozvánkou
 
-Po přidání uživatele typu Host do adresáře podle [pomocí webu Azure portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal), odešle e-mail pozvánku do hostovaného v procesu. Můžete také odeslat e-mailových pozvánek, až budete [pomocí prostředí PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) přidat uživatele typu Host do adresáře. Tady je popis prostředí hosta, kdy se uplatnit na odkaz v e-mailu.
+Když do svého adresáře přidáte uživatele typu host [pomocí Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal), pošle se na hostovi v procesu e-mail s pozvánkou. Můžete také odeslat e-maily pozvánky, když [používáte PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) k přidání uživatelů typu Host do adresáře. Tady je Popis prostředí hosta při uplatnění odkazu v e-mailu.
 
-1. Host dostane [e-mailová pozvánka](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements) , která se odesílá z **Microsoft Invitations**.
-2. Vybere hosta **Začínáme** e-mailu.
-3. Pokud hosta ve federované organizaci nemá účet Azure AD, účet Microsoft (MSA) nebo e-mailový účet, budete vyzváni k vytvoření MSA (Pokud [jednorázové heslo](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) je povolena funkce, která nevyžaduje, aby MSA ).
-4. Host se projdete [souhlas prostředí](#consent-experience-for-the-guest) je popsáno níže.
+1. Host dostane [e-mail pozvánky](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements) , která se pošle z **pozvánky Microsoftu**.
+2. Host vybere v e-mailu **Začínáme** .
+3. Pokud host nemá účet Azure AD, účet Microsoft (MSA) nebo e-mailový účet ve federované organizaci, zobrazí se jim výzva k vytvoření MSA (Pokud není povolená funkce [jednorázového hesla](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) , která nevyžaduje MSA).
+4. Host se provede prostřednictvím [souhlasu](#consent-experience-for-the-guest) uživatele uvedeného níže.
 
-## <a name="redemption-through-a-direct-link"></a>Uplatnění prostřednictvím přímého odkazu
+## <a name="redemption-through-a-direct-link"></a>Uplatnění přes přímý odkaz
 
-Jako alternativu k e-mailové pozvánce můžete udělit Host přímý odkaz do své aplikace nebo portálu. Je nutné nejprve přidat uživatele typu Host do adresáře prostřednictvím [webu Azure portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) nebo [Powershellu](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell). Pak můžete použít některý z [přizpůsobitelné způsoby, jak nasazovat aplikace uživatelům](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences), včetně přímé odkazy přihlašování. Když hosta používá přímý odkaz místo e-mailové pozvánce, jejich provedeme stále vás prostředí pro vyjádření souhlasu první.
+Jako alternativu k e-mailu s pozvánkou můžete hostům poskytnout přímý odkaz na vaši aplikaci nebo portál. Nejdřív je potřeba přidat uživatele typu Host do adresáře prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) nebo PowerShellu. [](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) Pak můžete použít kterýkoli z přizpůsobitelných [způsobů, jak nasadit aplikace pro uživatele](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences), včetně odkazů přímo přihlašování. Když host použije přímý odkaz namísto e-mailu s pozvánkou, bude se dál nacházet pomocí prostředí pro vyjádření souhlasu po prvním čase.
 
 > [!IMPORTANT]
-> Přímý odkaz musí být specifickým pro tenanta. Jinými slovy musí obsahovat ID tenanta nebo ověřené domény, Host lze ověřit ve vašem tenantovi, kde se nachází sdílená aplikace. Běžné adresu URL, jako jsou https://myapps.microsoft.com nebude fungovat pro hosta, protože bude přesměrována na jejich domovském tenantovi pro ověřování. Tady jsou některé příklady přímé odkazy s kontextem tenanta:
- > - Přístupový panel aplikací: https://myapps.microsoft.com/?tenantid=&lt; id klienta&gt; 
- > - Přístupový panel aplikací pro ověřenou doménu: https://myapps.microsoft.com/&lt; ověřené domény&gt;
- > - Azure portal: https://portal.azure.com/&lt; id klienta&gt;
- > - Jednotlivé aplikace: jak používat [přímý odkaz přihlašování](../manage-apps/end-user-experiences.md#direct-sign-on-links)
+> Přímý odkaz musí být specifický pro tenanta. Jinými slovy, musí obsahovat ID tenanta nebo ověřenou doménu, aby bylo možné hosta ověřit ve vašem tenantovi, kde se nachází sdílená aplikace. Společná adresa URL, https://myapps.microsoft.com jako by se u hosta nefunguje, protože se přesměruje na svého domovského tenanta pro ověřování. Tady je několik příkladů přímých odkazů s kontextem tenanta:
+ > - Přístupový panel aplikací: https://myapps.microsoft.com/?tenantid=&lt; ID tenanta&gt; 
+ > - Přístupový panel aplikací pro ověřenou doménu: https://myapps.microsoft.com/&lt; ověřená doména&gt;
+ > - Azure Portal: https://portal.azure.com/&lt; ID tenanta&gt;
+ > - Individuální aplikace: viz jak použít [přímý odkaz na přihlášení](../manage-apps/end-user-experiences.md#direct-sign-on-links) .
 
-Existují případy, kdy se doporučuje namísto přímého odkazu používat e-mailová pozvánka. Pokud tyto speciální případy jsou důležité pro vaši organizaci, doporučujeme pozvat uživatele pomocí metody, které i dál posílat e-mailová pozvánka:
- - Uživatel nemá účet Azure AD, MSA nebo e-mailový účet ve federované organizaci. Pokud používáte funkci jednorázové heslo, je potřeba uplatnit e-mailová pozvánka pro vás kroky pro vytvoření MSA hosta.
- - Někdy objekt pozvaný uživatel nemá e-mailovou adresu z důvodu konfliktu s objektem kontaktů (například Outlook kontaktní objekt). V tomto případě uživatel musí kliknout na adresu URL uplatnění v e-mailová pozvánka.
- - Uživatel může přihlásit pomocí alias e-mailové adresy, který je pozván. (Alias je další e-mailovou adresu, přidružené k e-mailový účet.) V tomto případě uživatel musí kliknout na adresu URL uplatnění v e-mailová pozvánka.
+V některých případech se doporučuje e-mailem pozvánky používat přímý odkaz. Pokud jsou tyto zvláštní případy pro vaši organizaci důležité, doporučujeme, abyste uživatele pozvali pomocí metod, které pořád odesílají e-mail s pozvánkami:
+ - Uživatel nemá účet Azure AD, účet MSA nebo e-mailový účet ve federované organizaci. Pokud nepoužíváte funkci jednorázového hesla, Host musí uplatnit e-mail s pozvánkou, aby se provedou kroky pro vytvoření MSA.
+ - Někdy je možné, že objekt pozvaného uživatele nemá e-mailovou adresu z důvodu konfliktu s objektem Contact (například objekt kontaktu aplikace Outlook). V takovém případě musí uživatel v e-mailu s pozvánkou kliknout na adresu URL pro uplatnění.
+ - Uživatel se může přihlásit pomocí aliasu e-mailové adresy, která byla pozvána. (Alias je další e-mailová adresa přidružená k e-mailovému účtu.) V takovém případě musí uživatel v e-mailu s pozvánkou kliknout na adresu URL pro uplatnění.
 
-## <a name="consent-experience-for-the-guest"></a>Prostředí pro vyjádření souhlasu pro hosta
+## <a name="consent-experience-for-the-guest"></a>Prostředí pro vyjádření souhlasu hosta
 
-Když Host přihlásí k přístupu k prostředkům v organizaci partnera poskytujícího poprvé, že projdete na následujících stránkách. 
+Když se host přihlásí k přístupu k prostředkům v partnerské organizaci poprvé, provedou se následující stránky. 
 
-1. Revize hostovaného **kontrola oprávnění** stránka s popisem zvoucí organizaci zásady ochrany osobních údajů. Uživatel se musí **přijmout** použijte své informace podle zásady ochrany osobních údajů zvoucí organizaci, abyste mohli pokračovat.
+1. Host zkontroluje stránku **oprávnění pro kontrolu** , která popisuje prohlášení o zásadách ochrany osobních údajů ve vaší organizaci. Uživatel musí **přijmout** informace v souladu se zásadami ochrany osobních údajů v organizaci, aby bylo možné pokračovat.
 
-   ![Snímek obrazovky zobrazující stránku zkontrolujte oprávnění](media/redemption-experience/review-permissions.png) 
-
-   > [!NOTE]
-   > Informace o tom, jak jako správce tenanta můžete propojit prohlášení o ochraně osobních údajů vaší organizace, najdete v části [s návody: Přidejte informace o ochraně osobních údajů vaší organizace v Azure Active Directory](https://aka.ms/adprivacystatement).
-
-2. Pokud jsou nakonfigurované podmínky použití, Host se otevře a zkontroluje podmínky použití a potom vybere **přijmout**. 
-
-   ![Snímek obrazovky zobrazující nové podmínky použití](media/redemption-experience/terms-of-use-accept.png) 
+   ![Snímek obrazovky se stránkou pro kontrolu oprávnění](media/redemption-experience/review-permissions.png) 
 
    > [!NOTE]
-   > Můžete nakonfigurovat viz [podmínky použití](../governance/active-directory-tou.md) v **spravovat** > **organizační vztahy** > **podmínky použití**.
+   > Informace o tom, jak se dá správce tenanta připojit k prohlášení o zásadách ochrany osobních údajů vaší organizace [, najdete v tématu How to: Přidejte informace o ochraně osobních údajů vaší organizace](https://aka.ms/adprivacystatement)v Azure Active Directory.
 
-3. Pokud není uvedeno jinak, Host přesměruje k přístupovému panelu aplikací, který obsahuje seznam aplikací, ke kterým přístup hosta.
+2. Pokud jsou podmínky použití nakonfigurované, Host se otevře a zkontroluje podmínky použití a pak vybere **přijmout**. 
 
-   ![Snímek obrazovky ukazující na přístupovém panelu aplikací](media/redemption-experience/myapps.png) 
+   ![Snímek obrazovky s novými podmínkami použití](media/redemption-experience/terms-of-use-accept.png) 
 
-Do vašeho adresáře, Host **Pozvánka se přijala** hodnotu **Ano**. Pokud byl vytvořen MSA, hosta **zdroj** ukazuje **Account Microsoft**. Další informace o vlastnostech uživatelského účtu guest, naleznete v tématu [vlastnosti uživatele spolupráce B2B ve službě Azure AD](user-properties.md). 
+   > [!NOTE]
+   > V části **Správa** > **vztahů** [](../governance/active-directory-tou.md) organizace > **podmínky použití**můžete nakonfigurovat zobrazení podmínek použití.
+
+3. Pokud není uvedeno jinak, Host se přesměruje na přístupový panel aplikace, který obsahuje seznam aplikací, ke kterým má host přístup.
+
+   ![Snímek obrazovky s přístupovým panelem aplikací](media/redemption-experience/myapps.png) 
+
+Ve vašem adresáři se u pozvánky hosta přijala hodnota **Ano**. Pokud byl vytvořen MSA, zobrazí se ve **zdroji** hosta **účet Microsoft**. Další informace o vlastnostech uživatelského účtu hosta najdete v tématu [Vlastnosti uživatele spolupráce Azure AD B2B](user-properties.md). 
 
 ## <a name="next-steps"></a>Další postup
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 - [Přidat uživatele spolupráce Azure Active Directory B2B na webu Azure Portal](add-users-administrator.md)
-- [Jak informačních pracovníků vynutit přidat uživatele spolupráce B2B do Azure Active Directory](add-users-information-worker.md)
-- [Přidat uživatele spolupráce Azure Active Directory B2B pomocí Powershellu](customize-invitation-api.md#powershell)
-- [Opustit organizaci jako uživatele typu Host](leave-the-organization.md)
+- [Jak pracovníci s informacemi přidávají uživatelům spolupráci B2B k Azure Active Directory?](add-users-information-worker.md)
+- [Přidání uživatelů spolupráce v B2B Azure Active Directory pomocí PowerShellu](customize-invitation-api.md#powershell)
+- [Opuštění organizace jako uživatel typu Host](leave-the-organization.md)

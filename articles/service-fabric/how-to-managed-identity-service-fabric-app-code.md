@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 528e1b0a353cdcd716f9bca63c423af7a6f12641
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d5593da4f874688fa099827e418b12e41363f4bd
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68958236"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624874"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Jak využít spravovanou identitu aplikace Service Fabric pro přístup ke službám Azure
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Jak využít spravovanou identitu aplikace Service Fabric pro přístup ke službám Azure (Preview)
 
 Service Fabric aplikace můžou využívat spravované identity pro přístup k jiným prostředkům Azure, které podporují ověřování založené na Azure Active Directory. Aplikace může získat [přístupový token](../active-directory/develop/developer-glossary.md#access-token) představující jeho identitu, která může být přiřazena systémem nebo uživateli, a použít ji jako token nosiče k ověření sebe sama na jinou službu, která se označuje také jako [chráněný server prostředků](../active-directory/develop/developer-glossary.md#resource-server). Token představuje identitu přiřazenou Service Fabric aplikaci a bude ji vydávat jenom pro prostředky Azure (včetně SF aplikací), které tuto identitu sdílejí. Podrobný popis spravovaných identit a rozdíl mezi identitami přiřazenými systémem a uživatelem přiřazenými uživateli najdete v dokumentaci [Přehled spravované identity](../active-directory/managed-identities-azure-resources/overview.md) . V rámci tohoto článku budeme označovat jako [klientskou aplikaci](../active-directory/develop/developer-glossary.md#client-application) Service Fabric aplikace s podporou identity.
 
@@ -308,7 +308,7 @@ Doporučuje se, aby se požadavky nezdařily, protože došlo k opakovanému pok
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
 V tématu [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md) , najdete seznam prostředků, které podporují Azure AD, a jejich odpovídajících ID prostředků.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Udělení přístupu k aplikacím Azure Service Fabric k ostatním prostředkům Azure](./how-to-grant-access-other-resources.md)

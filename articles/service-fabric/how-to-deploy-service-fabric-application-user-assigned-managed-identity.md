@@ -7,14 +7,14 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: atsenthi
-ms.openlocfilehash: b99dbe3fd03b8854d7c1f54d17d5ced1f2534132
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f8dfaa39f02aefbdda1f34afa5011ce5fadbae49
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963880"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624916"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Nasazení aplikace Service Fabric s uživatelem přiřazenou spravovanou identitou
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Nasazení aplikace Service Fabric s uživatelem přiřazenou spravovanou identitou (Preview)
 
 Chcete-li nasadit aplikaci Service Fabric se spravovanou identitou, musí být aplikace nasazena prostřednictvím Azure Resource Manager, obvykle se šablonou Azure Resource Manager. Další informace o tom, jak nasadit aplikaci Service Fabric prostřednictvím Azure Resource Manager, najdete v tématu [Správa aplikací a služeb jako Azure Resource Manager prostředků](service-fabric-application-arm-resource.md).
 
@@ -103,7 +103,7 @@ V předchozím příkladu se jako popisný název spravované identity aplikace 
       </Resources>
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Použití spravované identity v Service Fabric kódu aplikace](how-to-managed-identity-service-fabric-app-code.md)
 * [Postup udělení přístupu aplikace Service Fabric k jiným prostředkům Azure](how-to-grant-access-other-resources.md)

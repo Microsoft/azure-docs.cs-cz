@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 44b98b55bfa2d0424831f6cf612f66dbcdc8a6d9
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 5e9972c5fea7aaa2e6b5270aff87343437b1963e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543688"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624010"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database rozdílů v jazyce T-SQL spravované instance od SQL Server
 
@@ -46,7 +46,7 @@ Možnost nasazení Managed instance poskytuje vysokou kompatibilitu s místními
 - [ODPOJIT SKUPINU DOSTUPNOSTI](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Klauzule [set hadr](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) příkazu [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)
 
-### <a name="backup"></a>Zálohovat
+### <a name="backup"></a>Backup
 
 Spravované instance mají automatické zálohování, takže uživatelé můžou vytvářet úplné zálohy `COPY_ONLY` databáze. Zálohy rozdílů, protokolů a snímků souborů se nepodporují.
 
@@ -62,6 +62,7 @@ Spravované instance mají automatické zálohování, takže uživatelé můžo
 Určitá 
 
 - Se spravovanou instancí můžete zálohovat databázi instance do zálohy s až 32 proužky, které jsou pro databáze až 4 TB v případě, že se používá zálohování zálohy, v případě, že je použita komprese záloh.
+- Nemůžete `BACKUP DATABASE ... WITH COPY_ONLY` provést na databázi, která je zašifrovaná pomocí transparentní šifrování dat pro správu spravovaných službou (TDE). TDE spravované službou vynutí šifrování záloh pomocí interního TDE klíče. Klíč nelze exportovat, takže nelze obnovit zálohu. Použijte automatické zálohování a obnovení k bodu v čase nebo použijte místo toho [TDE spravované zákazníkem (BYOK)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . Šifrování můžete také zakázat v databázi.
 - Maximální velikost záložního proužku pomocí `BACKUP` příkazu ve spravované instanci je 195 GB, což je maximální velikost objektu BLOB. Zvyšte počet pruhů v příkazu Backup, abyste snížili velikost jednotlivých pruhů a zůstali v rámci tohoto limitu.
 
     > [!TIP]
@@ -512,6 +513,10 @@ Služba Service Broker mezi instancemi není podporována:
 - Po vytvoření spravované instance se nepodporují přesunutí spravované instance nebo virtuální sítě do jiné skupiny prostředků nebo předplatného.
 - Některé služby, jako jsou App Service prostředí, Logic Apps a spravované instance (používané pro geografickou replikaci, transakční replikaci nebo prostřednictvím odkazovaných serverů), nemají přístup ke spravovaným instancím v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globální. partnerský vztah](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
 
+### <a name="tempdb-size"></a>Velikost databáze TEMPDB
+
+Maximální velikost `tempdb` souboru nemůže být větší než 24 GB na jádro na úrovni pro obecné účely. Maximální `tempdb` velikost vrstvy pro důležité obchodní informace je omezená velikostí úložiště instance. `Tempdb`velikost souboru protokolu je omezena na 120 GB na úrovni Pro obecné účely i Pro důležité obchodní informace. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb` nebo pokud vydávají více než 120 GB dat protokolu.
+
 ## <a name="Changes"></a>Změny chování
 
 Následující proměnné, funkce a zobrazení vrací různé výsledky:
@@ -526,13 +531,39 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 
 ## <a name="Issues"></a>Známé problémy a omezení
 
-### <a name="tempdb-size"></a>Velikost databáze TEMPDB
+### <a name="cross-database-service-broker-dialogs-dont-work-after-service-tier-upgrade"></a>Po upgradu vrstvy služeb nefungují dialogy pro Service Broker mezi databázemi.
 
-Maximální velikost `tempdb` souboru nemůže být větší než 24 GB na jádro na úrovni pro obecné účely. Maximální `tempdb` velikost vrstvy pro důležité obchodní informace je omezená velikostí úložiště instance. `Tempdb`velikost souboru protokolu je omezena na 120 GB na úrovni Pro obecné účely i Pro důležité obchodní informace. `tempdb` Databáze je vždy rozdělena do 12 datových souborů. Tuto maximální velikost na soubor nelze změnit a nelze do `tempdb`něj přidat nové soubory. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb` nebo pokud vydávají více než 120 GB dat protokolu. `Tempdb`je vždy znovu vytvořen jako prázdná databáze při spuštění nebo převzetí služeb při selhání a jakékoli změny provedené v `tempdb` nezůstanou zachovány. 
+**Datum** Srpna 2019
 
-### <a name="cant-restore-contained-database"></a>Nelze obnovit databázi s omezením
+Dialogy Service Broker mezi databázemi neumožňují doručování zpráv po změně operace vrstvy služby. Jakákoli změna velikosti úložiště virtuální jádra nebo instance ve spravované instanci způsobí, že `service_broke_guid` se hodnota v zobrazení [Sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) změní pro všechny databáze. Jakékoli `DIALOG` vytvořené pomocí příkazu [Begin dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , který odkazuje na zprostředkovatele služby v jiné databázi podle identifikátoru GUID, nebude moci doručovat zprávy.
 
-Spravovaná instance nemůže obnovit [obsažené databáze](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). Obnovení existujících databází v časovém bodě nefunguje na spravované instanci. Mezitím doporučujeme odebrat možnost zahrnutí z databází, které jsou umístěny na spravované instanci. Nepoužívejte možnost omezení pro produkční databáze. 
+**Odstraníte** Před aktualizací úrovně služby zastavte všechny aktivity, které používají konverzaci mezi Service Brokermi databázemi, a potom je znovu inicializujte.
+
+### <a name="some-aad-login-types-cannot-be-impersonated"></a>Některé typy přihlášení AAD se nedají zosobnit.
+
+**Datum** Červenec 2019
+
+Zosobnění pomocí `EXECUTE AS USER` nebo `EXECUTE AS LOGIN` z následujících objektů zabezpečení AAD není podporované:
+-   Uživatelé AAD s aliasem V tomto případě `15517`se vrátí následující chyba.
+- Přihlášení AAD a uživatelé na základě aplikací AAD nebo instančních objektů. V tomto případě `15517` se vrátí následující chyby a `15406`.
+
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryparametr není v sp_send_db_mail podporován.
+
+**Datum** Duben 2019
+
+Parametr v proceduře sp_send_db_mail nefunguje. [](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) `@query`
+
+### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>Přihlášení AAD a uživatelé nejsou v nástrojích podporované.
+
+**Datum** Leden 2019
+
+SQL Server Management Studio a SQL Server Data Tools Fuly podporují přihlášení a uživatele v Azure ACCT-Directory.
+- Používání objektů zabezpečení serveru Azure AD (přihlášení) a uživatelů (Public Preview) s nástroji SQL Server Data Tools aktuálně není podporováno.
+- V SQL Server Management Studio se nepodporuje skriptování pro objekty zabezpečení serveru Azure AD (přihlášení) a uživatele (ve verzi Public Preview).
+
+### <a name="tempdb-structure-and-content-is-re-created"></a>Struktura a obsah TEMPDB se znovu vytvoří.
+
+`tempdb` Databáze je vždy rozdělena do 12 datových souborů a struktura souborů nemůže být změněna. Maximální velikost na soubor nelze změnit a nelze přidat nové soubory do `tempdb`. `Tempdb`je vždy znovu vytvořen jako prázdná databáze při spuštění nebo převzetí služeb při selhání a jakékoli změny provedené v `tempdb` nezůstanou zachovány.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Překročení úložného prostoru s malými databázovými soubory
 
@@ -551,24 +582,9 @@ V tomto příkladu existující databáze fungují i nadále a můžou růst bez
 
 [Počet zbývajících souborů můžete identifikovat](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) pomocí systémových zobrazení. Pokud dosáhnete tohoto limitu, zkuste [vyprázdnit a odstranit některé menší soubory pomocí příkazu DBCC SHRINKFILE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) nebo přepněte na [pro důležité obchodní informaceovou vrstvu, která nemá toto omezení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
-### <a name="tooling"></a>Nástroje
-
-Datové nástroje SQL Server Management Studio a SQL Server mohou mít při přístupu ke spravované instanci problémy.
-
-- Používání objektů zabezpečení serveru Azure AD (přihlášení) a uživatelů (Public Preview) s nástroji SQL Server Data Tools aktuálně není podporováno.
-- V SQL Server Management Studio se nepodporuje skriptování pro objekty zabezpečení serveru Azure AD (přihlášení) a uživatele (ve verzi Public Preview).
-
-### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Nesprávná názvy databází v některých zobrazeních, protokolech a zprávách
+### <a name="guid-values-shown-instead-of-database-names"></a>Hodnoty GUID, které se zobrazují místo názvů databází
 
 Několik systémových zobrazení, čítače výkonu, chybové zprávy, XEvents a položky protokolu chyb zobrazují identifikátory databáze identifikátorů GUID místo skutečných názvů databází. Nespoléhejte na tyto identifikátory GUID, protože se v budoucnu nahrazují skutečnými názvy databází.
-
-### <a name="database-mail"></a>Databázový e-mail
-
-Parametr v proceduře sp_send_db_mail nefunguje. [](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) `@query`
-
-### <a name="database-mail-profile"></a>Profil Databázová pošta
-
-Je třeba volat `AzureManagedInstance_dbmail_profile`profil databázová pošta používaný agentem SQL Server. Pro jiné názvy profilů Databázová pošta neexistují žádná omezení.
 
 ### <a name="error-logs-arent-persisted"></a>Protokoly chyb nejsou trvalé
 
@@ -617,13 +633,7 @@ Moduly CLR umístění do spravované instance a propojené servery nebo distrib
 
 **Odstraníte** Pokud je to možné, použijte připojení kontextu v modulu CLR.
 
-### <a name="tde-encrypted-databases-with-a-service-managed-key-dont-support-user-initiated-backups"></a>TDE – šifrované databáze pomocí klíče spravovaného službou nepodporují uživatelem iniciované zálohy.
-
-Nemůžete `BACKUP DATABASE ... WITH COPY_ONLY` provést na databázi, která je zašifrovaná pomocí transparentní šifrování dat pro správu spravovaných službou (TDE). TDE spravované službou vynutí šifrování záloh pomocí interního TDE klíče. Klíč nelze exportovat, takže nelze obnovit zálohu.
-
-**Odstraníte** Použijte automatické zálohování a obnovení k bodu v čase nebo použijte místo toho [TDE spravované zákazníkem (BYOK)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . Šifrování můžete také zakázat v databázi.
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o spravovaných instancích najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md) .
 - Seznam funkcí a porovnání najdete v tématu [Azure SQL Database porovnání funkcí](sql-database-features.md).

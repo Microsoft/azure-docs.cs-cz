@@ -1,44 +1,43 @@
 ---
-title: Nastavení registrace a přihlášení pomocí účtu Amazon – Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zaregistrujte se a přihlaste se poskytují zákazníkům s účty Amazon ve svých aplikacích pomocí služby Azure Active Directory B2C.
+title: Nastavení registrace a přihlášení pomocí účtu Amazon – Azure Active Directory B2C
+description: Poskytněte zákazníkům služby pro registraci a přihlašování k účtům Amazon ve vašich aplikacích pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a796826892942879e42b2d8fd22b8cc0208a2174
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89dd592e6e5ea1ce71277035654068ce2f782890
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508631"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622210"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Amazon pomocí Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Amazon pomocí Azure Active Directory B2C
 
 ## <a name="create-an-amazon-application"></a>Vytvoření aplikace Amazon
 
-K použití účtu Amazon jako [zprostředkovatele identity](active-directory-b2c-reference-oauth-code.md) v Azure Active Directory (Azure AD) B2C, budete potřebovat k vytvoření aplikace ve vašem tenantovi, který ho zastupuje. Pokud ještě nemáte účet Amazon získáte ji na [ https://www.amazon.com/ ](https://www.amazon.com/).
+Pokud chcete použít účet Amazon jako [poskytovatele identity](active-directory-b2c-reference-oauth-code.md) v Azure Active Directory (Azure AD) B2C, musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet Amazon, můžete se zaregistrovat v [https://www.amazon.com/](https://www.amazon.com/).
 
-1. Přihlaste se k [středisko pro vývojáře Amazon](https://login.amazon.com/) pomocí svých přihlašovacích údajů účtu Amazon.
-2. Pokud jste tak již neučinili, klikněte na tlačítko **zaregistrovat**, postupujte podle kroků registrace pro vývojáře a přijměte zásady.
-3. Vyberte **registrace nové aplikace**.
-4. Zadejte **název**, **popis**, a **URL oznámení o ochraně osobních údajů**a potom klikněte na tlačítko **Uložit**. Oznámení o ochraně osobních údajů je stránka, která spravujete, který poskytuje informace o ochraně osobních údajů pro uživatele.
-5. V **nastavení webu** tématu, zkopírujte hodnoty **ID klienta**. Vyberte **zobrazit tajný kód** získat tajný kód klienta a potom ho zkopírujte. Je třeba obou z nich při konfiguraci účtu Amazon jako zprostředkovatele identity ve vašem tenantovi. **Tajný kód klienta** je důležitým bezpečnostním pověřením.
-6. V **nastavení webu** vyberte **upravit**a pak zadejte `https://your-tenant-name.b2clogin.com` v **povolený JavaScript zdroje** a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v **povoleno Vrátí adresy URL**. Nahraďte `your-tenant-name` s názvem vašeho tenanta. Budete muset použít jenom malá písmena. Pokud zadáte název vašeho klienta i v případě, že klient je definována s velká písmena v Azure AD B2C.
-7. Klikněte na **Uložit**.
+1. Přihlaste se k [centru pro vývojáře Amazon](https://login.amazon.com/) pomocí svých přihlašovacích údajů k účtu Amazon.
+1. Pokud jste to ještě neudělali, klikněte na **zaregistrovat**, postupujte podle kroků registrace pro vývojáře a přijměte zásadu.
+1. Vyberte **Registrovat novou aplikaci**.
+1. Zadejte **název**, **Popis**a **adresu URL pro oznámení o ochraně osobních údajů**a potom klikněte na **Uložit**. Oznámení o ochraně osobních údajů je stránka, kterou spravujete, která poskytuje uživatelům informace o ochraně osobních údajů.
+1. V části **Nastavení webu** ZKOPÍRUJTE hodnoty **ID klienta**. Pokud chcete získat tajný klíč klienta a pak ho zkopírovat, vyberte **Zobrazit tajný kód** . K nakonfigurování účtu Amazon jako poskytovatele identity ve vašem tenantovi potřebujete obě tyto služby. **Tajný kód klienta** je důležité bezpečnostní pověření.
+1. V části **Nastavení webu** vyberte **Upravit**a `https://your-tenant-name.b2clogin.com` potom zadejte **Povolené zdroje JavaScriptu** a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **povolené návratové adresy URL**. Nahraďte `your-tenant-name` názvem vašeho tenanta. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
+1. Klikněte na **Uložit**.
 
 ## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Konfigurace účtu Amazon jako zprostředkovatele identity
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
-3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
-5. Zadejte **název**. Zadejte například *Amazon*.
-6. Vyberte **typ zprostředkovatele identit**vyberte **Amazon**a klikněte na tlačítko **OK**.
-7. Vyberte **nastavit tohoto zprostředkovatele identity** a zadejte ID klienta, který jste si poznamenali dříve, jako **ID klienta** a zadejte tajný kód klienta, který jste si poznamenali jako **tajný kód klienta**Amazon aplikace, kterou jste vytvořili dříve.
-8. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **vytvořit** uložte konfiguraci Amazon.
-
+1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
+1. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **Zprostředkovatelé identity**a pak vyberte **Amazon**.
+1. Zadejte **název**. Příklad: *Amazon*.
+1. Pro **ID klienta**zadejte ID klienta aplikace Amazon, kterou jste vytvořili dříve.
+1. Pro **tajný klíč klienta**zadejte tajný klíč klienta, který jste si poznamenali.
+1. Vyberte **Uložit**.

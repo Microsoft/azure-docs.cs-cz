@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 46755cb8d0383d166b10d50854eb476b676a6ee4
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 477b4e51c49a558aed0e5623a3821fa9b8d9eabd
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509743"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622364"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizaci Azure Active Directory v Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Pokud chcete jako [poskytovatele identity](active-directory-b2c-reference-oauth-
 Pokud chcete povolit přihlašování pro uživatele z konkrétní organizace Azure AD, musíte zaregistrovat aplikaci v tenantovi organizace Azure AD, která není stejná jako váš tenant Azure AD B2C.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD. V horní nabídce vyberte **adresář a filtr** předplatného a zvolte adresář, který obsahuje vašeho TENANTA Azure AD. Toto není stejný tenant jako tenant Azure AD B2C.
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho TENANTA Azure AD. Toto není stejný tenant jako tenant Azure AD B2C.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 4. Vyberte **Nová registrace**.
 5. Zadejte název své aplikace. Například, `Azure AD B2C App`.
@@ -47,27 +47,28 @@ Pokud chcete povolit přihlašování pro uživatele z konkrétní organizace Az
 
 ## <a name="configure-azure-ad-as-an-identity-provider"></a>Konfigurace Azure AD jako zprostředkovatele identity
 
-1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta. V horní nabídce vyberte **adresář a filtr** předplatného a zvolte adresář, který obsahuje vašeho tenanta Azure AD B2C.
-2. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-3. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
-4. Zadejte **název**. Zadejte například `Contoso Azure AD`.
-5. Vyberte **typ zprostředkovatele identity**, vyberte **OpenID připojit**a pak klikněte na **OK**.
-6. Vyberte **nastavit tohoto zprostředkovatele identity** .
-7. V poli **Adresa URL metadat**zadejte následující adresu URL `your-AD-tenant-domain` , která nahrazuje název domény vašeho tenanta Azure AD. Například `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`:
+1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **Zprostředkovatelé identity**a potom vyberte **Nový poskytovatel OpenID Connect**.
+1. Zadejte **název**. Zadejte například *Contoso Azure AD*.
+1. V poli **Adresa URL metadat**zadejte následující adresu URL `your-AD-tenant-domain` , která nahrazuje název domény vašeho tenanta Azure AD:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
 
-8. Jako **ID klienta**zadejte ID aplikace, které jste předtím nahráli, a pro **tajný klíč klienta**zadejte tajný klíč klienta, který jste předtím nahráli.
-9. V případě potřeby zadejte hodnotu pro **Domain_hint**. Například, `ContosoAD`. Toto je hodnota, která se má použít při odkazování na tohoto zprostředkovatele identity pomocí *domain_hint* v žádosti.
-10. Klikněte na **OK**.
-11. Vyberte **mapovat deklarace identity zprostředkovatele identity** a nastavte následující deklarace identity:
+    Například, `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
-    - Jako **ID uživatele**zadejte `oid`.
-    - Jako **Zobrazovaný název**zadejte `name`.
-    - Pro **křestní jméno**zadejte `given_name`.
-    - Jako **příjmení**zadejte `family_name`.
-    - Do **e-mailu**zadejte `unique_name`.
+1. Jako **ID klienta**zadejte ID aplikace, které jste si poznamenali dříve.
+1. Jako **tajný klíč klienta**zadejte tajný klíč klienta, který jste předtím nahráli.
+1. Ponechte výchozí hodnoty **Rozsah**, **typ odpovědi**a **režim odezvy**.
+1. Volitelné Zadejte hodnotu pro **Domain_hint**. Například *ContosoAD*. Toto je hodnota, která se má použít při odkazování na tohoto zprostředkovatele identity pomocí *domain_hint* v žádosti.
+1. V části **mapování deklarací identity zprostředkovatele identity**zadejte následující hodnoty mapování deklarací identity:
 
-12. Klikněte na tlačítko **OK**a potom kliknutím na tlačítko **vytvořit** uložte konfiguraci.
+    * **ID uživatele**: *OID*
+    * **Zobrazovaný název**: *název*
+    * **Křestní jméno**: *given_name*
+    * **Příjmení**: *family_name*
+    * **E-mail**: *unique_name*
+
+1. Vyberte **Uložit**.

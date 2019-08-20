@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/18/2018
+ms.date: 08/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 64921a2ab69306df0b7c3d968055e698dd6995e7
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 8f95b802e51b942421bc580d9c3d5704092f5b1d
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323944"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624021"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -81,11 +81,10 @@ Další informace o registraci aplikace v Azure AD najdete v tématu [scénáře
 ID tenanta identifikuje tenanta Azure AD, který poskytuje služby ověřování pro vaši aplikaci. K získání ID tenanta, postupujte podle těchto kroků:
 
 1. Na webu Azure Portal vyberte služby Active Directory.
-2. Klikněte na **Vlastnosti**.
-3. Zkopírujte hodnotu identifikátoru GUID stanovené **ID adresáře**. Tato hodnota se označuje také jako ID tenanta.
+1. Vyberte **vlastnosti**.
+1. Zkopírujte hodnotu identifikátoru GUID stanovené **ID adresáře**. Tato hodnota se označuje také jako ID tenanta.
 
 ![Zkopírujte ID adresáře.](./media/batch-aad-auth/aad-directory-id.png)
-
 
 ## <a name="use-integrated-authentication"></a>Použít integrované ověřování
 
@@ -93,58 +92,56 @@ Pokud chcete provést ověření pomocí integrovaného ověřování, musíte a
 
 Po zaregistrování aplikace postupujte podle těchto kroků v Azure Portal a udělte jí přístup ke službě Batch:
 
-1. V levém navigačním podokně Azure Portal vyberte **všechny služby**. Klikněte na **Registrace aplikací**.
-2. V seznamu registrací aplikací vyhledejte název vaší aplikace:
+1. V levém navigačním podokně Azure Portal vyberte **všechny služby**. Vyberte **Registrace aplikací**.
+1. V seznamu registrací aplikací vyhledejte název vaší aplikace:
 
     ![Vyhledejte název vaší aplikace.](./media/batch-aad-auth/search-app-registration.png)
 
-3. Klikněte na aplikaci a pak klikněte na **Nastavení**. V **přístup přes rozhraní API** vyberte **požadovaná oprávnění**.
-4. V **požadovaná oprávnění** okna, klikněte na tlačítko **přidat** tlačítko.
-5. V části **Vybrat rozhraní API**vyhledejte rozhraní API služby Batch. Hledejte každý z těchto řetězců, dokud nenajdete rozhraní API:
-    1. **MicrosoftAzureBatch**.
-    2. **Microsoft Azure Batch**. Novější tenanti služby Azure AD mohou používat tento název.
-    3. **ddbf3205-c6bd-46ae-8127-60eb93363864** je ID rozhraní API služby Batch. 
-6. Jakmile najdete rozhraní API pro dávku, vyberte ho a klikněte na **Vybrat**.
-7. V části **vybrat oprávnění**zaškrtněte políčko vedle pole přístup k **Azure Batch službě** a klikněte na **Vybrat**.
-8. Klikněte na **Done** (Hotovo).
+1. Vyberte aplikaci a vyberte **oprávnění rozhraní API**.
+1. V části **oprávnění rozhraní API** vyberte **Přidat oprávnění**.
+1. V části **Vybrat rozhraní API**vyhledejte rozhraní API služby Batch. Hledejte každý z těchto řetězců, dokud nenajdete rozhraní API:
+    1. **Microsoft Azure Batch**
+    1. **ddbf3205-c6bd-46ae-8127-60eb93363864** je ID rozhraní API služby Batch.
+1. Jakmile najdete rozhraní API pro dávku, vyberte ho a vyberte **Vybrat**.
+1. V části **vybrat oprávnění**zaškrtněte políčko vedle pole přístup k **Azure Batch službě** a pak vyberte **Přidat oprávnění**.
 
-Okna **požadovaná oprávnění** teď zobrazí, že vaše aplikace Azure AD má přístup ke knihovně ADAL i k rozhraní API služby Batch. Při první registraci aplikace v Azure AD jsou oprávnění automaticky udělena pro ADAL.
+V části **oprávnění API** se teď zobrazuje, že vaše aplikace Azure AD má přístup k oběma Microsoft Graph i k rozhraní API služby Batch. Oprávnění se udělují Microsoft Graph automaticky při první registraci vaší aplikace ve službě Azure AD.
 
 ![Udělení oprávnění rozhraní API](./media/batch-aad-auth/required-permissions-data-plane.png)
 
-## <a name="use-a-service-principal"></a>Použití instančního objektu 
+## <a name="use-a-service-principal"></a>Použití instančního objektu
 
 Pokud chcete ověřit aplikaci, která běží bez obsluhy, použijte instanční objekt. Po zaregistrování aplikace proveďte následující kroky v Azure Portal ke konfiguraci instančního objektu:
 
 1. Vyžádejte si tajný klíč pro vaši aplikaci.
-2. Přiřaďte aplikaci roli RBAC.
+1. Přiřaďte aplikaci řízení přístupu na základě role (RBAC).
 
-### <a name="request-a-secret-key-for-your-application"></a>Vyžádání tajného klíče pro vaši aplikaci
+### <a name="request-a-secret-for-your-application"></a>Vyžádání tajného klíče pro vaši aplikaci
 
-Když se vaše aplikace ověřuje pomocí instančního objektu, pošle ID aplikace i tajný klíč do Azure AD. Budete muset vytvořit a zkopírovat tajný klíč, který chcete použít z kódu.
+Když se vaše aplikace ověřuje pomocí instančního objektu, pošle ID aplikace i tajný kód do Azure AD. Budete muset vytvořit a zkopírovat tajný klíč, který chcete použít z kódu.
 
 Postupujte podle následujících kroků v Azure Portal:
 
-1. V levém navigačním podokně Azure Portal vyberte **všechny služby**. Klikněte na **Registrace aplikací**.
-2. V seznamu registrací aplikací vyhledejte název vaší aplikace.
-3. Klikněte na aplikaci a pak klikněte na **Nastavení**. V části **přístup k rozhraní API** vyberte **klíče**.
-4. Pokud chcete vytvořit klíč, zadejte popis klíče. Pak vyberte dobu trvání klíče jednoho nebo dvou let. 
-5. Kliknutím na tlačítko **Uložit** vytvoříte a zobrazíte klíč. Zkopírujte klíčovou hodnotu na bezpečné místo, protože po opuštění okna už k ní nebudete mít přístup. 
+1. V levém navigačním podokně Azure Portal vyberte **všechny služby**. Vyberte **Registrace aplikací**.
+1. Vyberte svou aplikaci ze seznamu registrací aplikací.
+1. Vyberte aplikaci a pak vyberte **certifikáty & tajných**kódů. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**.
+1. Pokud chcete vytvořit tajný klíč, zadejte popis tajného kódu. Pak vyberte vypršení platnosti tajného kódu buď po dobu jednoho roku, dvou let, nebo bez vypršení platnosti.
+1. Vyberte **Přidat** a vytvořte a zobrazte tajný klíč. Zkopírujte tajnou hodnotu na bezpečné místo, protože po opuštění stránky už k ní nebudete mít přístup.
 
     ![Vytvoření tajného klíče](./media/batch-aad-auth/secret-key.png)
 
-### <a name="assign-an-rbac-role-to-your-application"></a>Přiřazení role RBAC vaší aplikaci
+### <a name="assign-rbac-to-your-application"></a>Přiřazení RBAC k aplikaci
 
-K ověřování pomocí instančního objektu je třeba přiřadit roli RBAC vaší aplikaci. Postupujte následovně:
+K ověřování pomocí instančního objektu je potřeba přiřadit k aplikaci RBAC. Postupujte následovně:
 
 1. V Azure Portal přejděte na účet Batch používaný vaší aplikací.
-2. V okně **Nastavení** pro účet Batch vyberte **Access Control (IAM)** .
-3. Klikněte na kartu **přiřazení rolí** .
-4. Klikněte na tlačítko **Přidat přiřazení role** . 
-5. V rozevíracím seznamu **role** vyberte roli _Přispěvatel_ nebo _Čtenář_ pro vaši aplikaci. Další informace o těchto rolích najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).  
-6. Do pole **Vybrat** zadejte název vaší aplikace. Vyberte aplikaci ze seznamu a klikněte na **Uložit**.
+1. V části **Nastavení** účtu Batch vyberte možnost **Access Control (IAM)** .
+1. Vyberte kartu **přiřazení rolí** .
+1. Vyberte **přidat přiřazení role**.
+1. V rozevíracím seznamu **role** vyberte roli *Přispěvatel* nebo *Čtenář* pro vaši aplikaci. Další informace o těchto rolích najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).  
+1. Do pole **Vybrat** zadejte název vaší aplikace. V seznamu vyberte svou aplikaci a pak vyberte **Uložit**.
 
-Vaše aplikace by se teď měla zobrazit v nastavení řízení přístupu s přiřazenou rolí RBAC. 
+Vaše aplikace by se teď měla zobrazit v nastavení řízení přístupu s přiřazenou rolí RBAC.
 
 ![Přiřazení role RBAC vaší aplikaci](./media/batch-aad-auth/app-rbac-role.png)
 
@@ -153,11 +150,10 @@ Vaše aplikace by se teď měla zobrazit v nastavení řízení přístupu s př
 ID tenanta identifikuje tenanta Azure AD, který poskytuje služby ověřování pro vaši aplikaci. K získání ID tenanta, postupujte podle těchto kroků:
 
 1. Na webu Azure Portal vyberte služby Active Directory.
-2. Klikněte na **Vlastnosti**.
-3. Zkopírujte hodnotu identifikátoru GUID stanovené **ID adresáře**. Tato hodnota se označuje také jako ID tenanta.
+1. Vyberte **vlastnosti**.
+1. Zkopírujte hodnotu identifikátoru GUID stanovené **ID adresáře**. Tato hodnota se označuje také jako ID tenanta.
 
 ![Zkopírujte ID adresáře.](./media/batch-aad-auth/aad-directory-id.png)
-
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -311,10 +307,10 @@ public static async Task PerformBatchOperations()
     }
 }
 ```
+
 ### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Příklad kódu: Použití instančního objektu Azure AD se službou Batch Python
 
 Pokud chcete provést ověření pomocí instančního objektu ze služby Batch Python, nainstalujte a prokažte moduly [Azure-Batch](https://pypi.org/project/azure-batch/) a [Azure-Common](https://pypi.org/project/azure-common/) .
-
 
 ```python
 from azure.batch import BatchServiceClient
@@ -371,15 +367,15 @@ Pomocí přihlašovacích údajů instančního objektu otevřete objekt **Batch
 )
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o Azure AD najdete v dokumentaci k [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Podrobné příklady ukazující, jak používat ADAL jsou k dispozici v knihovně [ukázek kódu Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) .
+- Další informace o Azure AD najdete v dokumentaci k [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Podrobné příklady ukazující, jak používat ADAL jsou k dispozici v knihovně [ukázek kódu Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) .
 
-* Další informace o instančních objektech naleznete [v tématu Application and Service Principal Objects in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). Pokud chcete vytvořit instanční objekt pomocí Azure Portal, přečtěte si téma [použití portálu k vytvoření aplikace služby Active Directory a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md). Instanční objekt můžete vytvořit také pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
+- Další informace o instančních objektech naleznete [v tématu Application and Service Principal Objects in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). Pokud chcete vytvořit instanční objekt pomocí Azure Portal, přečtěte si téma [použití portálu k vytvoření aplikace služby Active Directory a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md). Instanční objekt můžete vytvořit také pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-* Pokud chcete ověřit aplikace služby Batch Management pomocí Azure AD, přečtěte si téma [ověřování řešení Batch Management se službou Active Directory](batch-aad-auth-management.md).
+- Pokud chcete ověřit aplikace služby Batch Management pomocí Azure AD, přečtěte si téma [ověřování řešení Batch Management se službou Active Directory](batch-aad-auth-management.md).
 
-* Příklad vytvoření klienta služby Batch ověřeného pomocí tokenu Azure AD v Pythonu najdete v tématu [nasazení Azure Batch vlastní image pomocí skriptu Pythonu](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) .
+- Příklad vytvoření klienta služby Batch ověřeného pomocí tokenu Azure AD v Pythonu najdete v tématu [nasazení Azure Batch vlastní image pomocí skriptu Pythonu](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) .
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Co je Azure Active Directory?"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md

@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5bf2ee68ff2cfde2846dff2d94f7478920a18760
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037109"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624988"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL Database do skupiny převzetí služeb při selhání
 
@@ -151,7 +151,7 @@ Aby se dvě spravované instance účastnily skupiny převzetí služeb při sel
     | **Typ brány** | Vyberte **VPN**. |
     | **Typ sítě VPN** | Vybrat **na základě trasy** |
     | **SKU**| Ponechte výchozí `VpnGw1`hodnotu. |
-    | **Location**| Umístění, kde je sekundární spravovaná instance a sekundární virtuální síť.   |
+    | **Location**| Umístění, kde je vaše primární spravovaná instance a primární virtuální síť.   |
     | **Virtuální síť**| Vyberte virtuální síť, která byla vytvořena v části 2, například `vnet-sql-mi-primary`. |
     | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
     | **Název veřejné IP adresy**| Zadejte název vaší IP adresy, například `primary-gateway-IP`. |

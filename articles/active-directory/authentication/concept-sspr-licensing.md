@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 08/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7463b86ea20a712937b8ccba7997c2551aae5be6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879113"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622721"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Licenční požadavky pro Samoobslužné resetování hesla služby Azure AD
 
@@ -34,7 +34,7 @@ Samoobslužné resetování hesla služby Azure AD je licencováno na uživatele
 * Samoobslužné resetování hesla pro cloudové uživatele
    * Jsem **pouze cloudový uživatel** a zapomněl jsem heslo.
       * Chci resetovat heslo na něco, co znáte.
-   * Tato funkce je součástí Azure AD Premium P1 nebo P2 nebo Microsoft 365 Business.
+   * Tato funkce je součástí Azure AD Premium P1 nebo P2, Microsoft 365 Business nebo Office 365.
 
 * Samoobslužné resetování hesla, změna/odemknutí **pomocí místního zpětného zápisu**
    * Jsem **hybridní uživatel** , který má místní uživatelský účet služby Active Directory, se synchronizuje s účtem Azure AD pomocí Azure AD Connect. Chci změnit svoje heslo, nechat zapomenuté heslo nebo být zamčené.
@@ -59,7 +59,7 @@ Azure AD teď podporuje licencování na základě skupin. Správci můžou hrom
 
 Některé služby Microsoft nejsou dostupné ve všech umístěních. Před přiřazením licence uživateli musí správce zadat pro uživatele vlastnost **umístění používání** . Přiřazení licencí se dá udělat v části**Nastavení** **profilu** >  **uživatele** > v Azure Portal. *Když použijete přiřazení skupinové licence, všichni uživatelé bez zadaného umístění pro použití zdědí umístění adresáře.*
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)

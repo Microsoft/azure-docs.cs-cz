@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/09/2019
-ms.openlocfilehash: 1e5eb1e363ac9e282a72a9c1430c3f80c825bb91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945082"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623847"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -201,7 +201,7 @@ Pokud to pořád nefunguje, požádejte správce AAD, aby získal správná opr�
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Co se stane, když neprovedem žádnou akci?
 
-A nebudou již vracet žádné informace a voláníjižnebudevracetcitlivéparametry,jakojeklíčúčtuúložištěnebohesloclusteru.`GET /configurations/{configurationName}` `POST /configurations/gateway` `GET /configurations` Totéž platí pro odpovídající metody SDK a rutiny PowerShellu.
+Volání `GET /configurations` a `POST /configurations/gateway` již nebudou`GET /configurations/{configurationName}` vracet žádné informace a volání již nebude vracet citlivé parametry, jako jsou klíče účtu úložiště nebo heslo clusteru. Totéž platí pro odpovídající metody SDK a rutiny PowerShellu.
 
 Pokud používáte starší verzi některého z nástrojů pro sadu Visual Studio, VSCode, IntelliJ nebo zatmění uvedenou výše, nebudou již nadále fungovat, dokud ji neaktualizujete.
 

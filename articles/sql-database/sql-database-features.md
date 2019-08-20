@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 7e5c33577a2d926266ae45057509b112dc27ce7b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c4ba2269003c9d401982b83f4e66c8caf45a0073
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985727"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624705"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database versus SQL Server
 
@@ -53,7 +53,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [Kolace – Server/instance](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Ne, výchozí kolace `SQL_Latin1_General_CP1_CI_AS` logického serveru se vždycky používá. | Ano, lze nastavit, když [je instance vytvořena](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) a nelze ji později aktualizovat. |
 | [Indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Ano – [úroveň Premium, úroveň Standard – S3 a vyšší, pro obecné účely vrstva a pro důležité obchodní informace úrovně](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ano |
 | [Modul CLR (Common Language Runtime) – CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Ne | Ano, ale bez přístupu k systému souborů v `CREATE ASSEMBLY` příkazu – viz [rozdíly CLR](sql-database-managed-instance-transact-sql-information.md#clr) |
-| [Databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Ano | V současné době není k dispozici [v obnovení, včetně obnovení k bodu v čase](sql-database-managed-instance-transact-sql-information.md#cant-restore-contained-database). Jedná se o chybu, která bude brzy opravena. |
+| [Databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Ano | Ano |
 | [Uživatelé s omezením](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Ano | Ano |
 | [Řízení klíčových slov jazyka toku](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Ano | Ano |
 | [Přihlašovací údaje](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ano, ale pouze [pověření s rozsahem databáze](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ano, ale podporují se jenom `SHARED ACCESS SIGNATURE` Azure Key Vault a se zobrazí [Podrobnosti](sql-database-managed-instance-transact-sql-information.md#credential) . |
@@ -132,7 +132,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [Dočasné tabulky](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [Ano](sql-database-temporal-tables.md) | [Ano](sql-database-temporal-tables.md) |
 | Volba časového pásma | Ne | [Ano](sql-database-managed-instance-timezone.md), a pokud je vytvořena spravovaná instance, musí být nakonfigurována. |
 | Detekce hrozeb|  [Ano](sql-database-threat-detection.md)|[Ano](sql-database-managed-instance-threat-detection.md)|
-| [Příznaky trasování](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Ne | Ne |
+| [Příznaky trasování](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Ne | Ano, ale pouze omezená sada globálních příznaků trasování. Viz [rozdíly DBCC](sql-database-managed-instance-transact-sql-information.md#dbcc) |
 | [Transakční replikace](sql-database-managed-instance-transactional-replication.md) | Ano, [transakční a jenom předplatitelé replikace snímků](sql-database-single-database-migrate.md) | Ano, ve [verzi Public Preview](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance). [Tady si můžete](sql-database-managed-instance-transact-sql-information.md#replication)prohlédnout omezení. |
 | [Proměnné](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Ano | Ano |
 | [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Ano – Pro obecné účely a Pro důležité obchodní informace jenom úrovně služeb| [Ano](transparent-data-encryption-azure-sql.md) |
@@ -166,7 +166,7 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ano, pokud se spravované SSIS v prostředí Azure Data Factory (ADF), ve kterém jsou balíčky uložené v SSISDB hostovaném Azure SQL Database a spouštěné v Azure SSIS Integration Runtime (IR), přečtěte si téma [Vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database serveru a spravované instanci, přečtěte si téma [porovnání Azure SQL Database izolovaných databází nebo elastických fondů a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). | Ano, s Managed SSIS v prostředí Azure Data Factory (ADF), kde jsou balíčky uložené v SSISDB hostovaném spravovanou instancí a spuštěny na Azure SSIS Integration Runtime (IR), najdete [v tématu Vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database a Managed instance, přečtěte si téma [porovnání Azure SQL Database izolovaných databází nebo elastických fondů a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Ne – [viz Power BI](https://docs.microsoft.com/power-bi/) | Ne – [viz Power BI](https://docs.microsoft.com/power-bi/) |
 | [Query Performance Insights (QPI)](sql-database-query-performance.md) | Ano | Ne. Použijte předdefinované sestavy v SQL Server Management Studio a Azure Data Studio. |
-| [Sítě](../virtual-network/virtual-networks-overview.md) | Částečně, umožňuje omezený přístup pomocí [koncových bodů virtuální](sql-database-vnet-service-endpoint-rule-overview.md) sítě. | Ano, spravovaná instance je vložena do virtuální sítě zákazníka. Zobrazit [podsíť](sql-database-managed-instance-transact-sql-information.md#subnet) a [virtuální síť](sql-database-managed-instance-transact-sql-information.md#vnet) |
+| [Virtuální síť](../virtual-network/virtual-networks-overview.md) | Částečně, umožňuje omezený přístup pomocí [koncových bodů virtuální](sql-database-vnet-service-endpoint-rule-overview.md) sítě. | Ano, spravovaná instance je vložena do virtuální sítě zákazníka. Zobrazit [podsíť](sql-database-managed-instance-transact-sql-information.md#subnet) a [virtuální síť](sql-database-managed-instance-transact-sql-information.md#vnet) |
 
 ## <a name="tools"></a>Nástroje
 Azure SQL Database podporuje různé datové nástroje, které vám pomůžou se správou vašich dat.

@@ -7,15 +7,15 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7795612d8aa4974bc640571d49ad1520e2a0f94c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8e39318dcaa31a111908c6be1ae7a51d73eb7478
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963842"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623832"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Co je model prostředků aplikace Service Fabric?
-Doporučuje se Service Fabric aplikace nasadit do Service Fabric clusteru prostřednictvím Azure Resource Manager. Tato metoda umožňuje popsat aplikace a služby ve formátu JSON a nasazovat je do stejné šablony Správce prostředků jako váš cluster. Na rozdíl od nasazení a správy aplikací přes PowerShell nebo Azure CLI není nutné čekat na to, aby cluster byl připravený. Proces registrace, zřizování a nasazení aplikace může probíhat v jednom kroku. Toto je osvědčený postup pro správu životního cyklu aplikací ve vašem clusteru. Další informace najdete v článku [osvědčené postupy](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
+Doporučuje se Service Fabric aplikace nasadit do Service Fabric clusteru prostřednictvím Azure Resource Manager. Tato metoda umožňuje popsat aplikace a služby ve formátu JSON a nasazovat je do stejné šablony Správce prostředků jako váš cluster. Na rozdíl od nasazení a správy aplikací přes PowerShell nebo Azure CLI není nutné čekat na to, aby cluster byl připravený. Proces registrace, zřizování a nasazování aplikací potom může probíhat v jediném kroku. Je to osvědčený postup pro správu životního cyklu aplikací ve vašem clusteru. Další informace najdete v článku [osvědčené postupy](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
 
 V případě potřeby můžete své aplikace spravovat jako Správce prostředků prostředky pro zlepšení:
 * Záznam pro audit: Správce prostředků Audituje každou operaci a udržuje podrobný *Protokol aktivit* , který vám může pomáhat sledovat změny provedené v těchto aplikacích i v clusteru.
@@ -33,9 +33,9 @@ V tomto dokumentu se dozvíte, jak:
 ## <a name="deploy-application-resources-using-azure-resource-manager"></a>Nasazení prostředků aplikace pomocí Azure Resource Manager  
 Chcete-li nasadit aplikaci a její služby pomocí modelu Azure Resource Managerch prostředků aplikace, je nutné zabalit kód aplikace, nahrát balíček a pak odkazovat na umístění balíčku v šabloně Azure Resource Manager jako aplikaci. partner. Další informace najdete v [balíčku aplikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg).
           
-Pak vytvořte šablonu Azure Resource Manager, aktualizujte soubor parametrů s podrobnostmi o aplikaci a nasaďte ji do clusteru Service Fabric. Tady najdete ukázky.
+Pak vytvořte šablonu Azure Resource Manager, aktualizujte soubor parametrů s podrobnostmi o aplikaci a nasaďte ji do clusteru Service Fabric. [Tady](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)najdete ukázky.
 
-### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště 
+### <a name="create-a-storage-account"></a>Vytvoření účtu Storage 
 Nasazení aplikace ze šablony Správce prostředků vyžaduje účet úložiště pro přípravu image aplikace. Můžete znovu použít existující účet úložiště nebo vytvořit nový účet úložiště pro přípravu svých aplikací. Pokud chcete použít existující účet úložiště, můžete tento krok přeskočit. 
 
 ![vytvořit účet úložiště][CreateStorageAccount]

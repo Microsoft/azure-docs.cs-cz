@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: 1b5e3777109b13baa7d774a524664551798ba4ca
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: aab93e1ecd112f7ef9fdb0829469efa14aff2e98
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558202"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623987"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network
 
@@ -267,6 +267,8 @@ Pokud chcete použít virtuální počítač nebo cluster Azure HDInsight ve vir
 
 1. Připojte virtuální počítač nebo cluster HDInsight k vašemu pracovnímu prostoru služby Azure Machine Learning. Další informace najdete v tématu [Nastavení výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md).
 
+<a id="aksvnet"></a>
+
 ## <a name="use-azure-kubernetes-service-aks"></a>Použití služby Azure Kubernetes Service (AKS)
 
 Pokud chcete do svého pracovního prostoru přidat AKS ve virtuální síti, udělejte toto:
@@ -330,7 +332,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Po dokončení procesu vytváření můžete spustit odvození nebo model bodování v clusteru AKS za virtuální sítí. Další informace najdete v tématu [Jak nasadit do AKS](how-to-deploy-to-aks.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nastavení školicích prostředí](how-to-set-up-training-targets.md)
 * [Kam chcete nasazovat modely](how-to-deploy-and-where.md)

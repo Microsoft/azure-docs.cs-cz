@@ -6,18 +6,18 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 06/26/2019
+ms.date: 08/16/2019
 ms.author: alinast
-ms.openlocfilehash: 15a152d6941a8c77cae2ef7771be93db4ddceae4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "67484688"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622974"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Kurz: Nasazení Azure digitální dvojče Preview a konfigurace prostorový graf
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Kurz: Nasazení služby Azure Digital Vláknas ve verzi Preview a konfigurace prostorového grafu
 
-Služba Azure digitální dvojče, ve verzi Preview můžete spojit lidé, místa a zařízení v přeměnit prostorových systému. Tato série kurzů ukazuje, jak použít k detekci obsazení místa s optimálních podmínek jakosti teplotu a air digitální dvojče Azure. 
+Službu Azure Digital Replaces ve verzi Preview můžete použít k spojování osob, míst a zařízení v souvislém prostorovém systému. Tato série kurzů ukazuje, jak použít k detekci obsazení místa s optimálních podmínek jakosti teplotu a air digitální dvojče Azure. 
 
 Tyto kurzy vás provedou konzolovou aplikaci .NET pro vytváření scénáři kancelářskou budovu. Sestavování má více podlahy a místnosti v rámci každý floor. Místnostech obsahovat zařízení připojených senzorů, které detekce pohybu, okolní teploty a vzduchu kvality. 
 
@@ -101,9 +101,9 @@ Ve složce extrahované vzorku, otevřete soubor **digital-twins-samples-csharp\
     ```
 
 1. V sadě Visual Studio Code otevřete [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) soubor **vytížení – rychlý Start** projektu. Aktualizací následujících hodnot:
-   * **ClientId**: Zadejte ID aplikace pro registraci aplikace Azure AD. Jste si poznamenali v části toto ID ve kterém jste [nastavení oprávnění aplikace](#permissions).
+   * **ClientID**: Zadejte ID aplikace pro registraci vaší aplikace Azure AD. Jste si poznamenali v části toto ID ve kterém jste [nastavení oprávnění aplikace](#permissions).
    * **Tenant**: Zadejte ID adresáře vašeho [tenanta Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Také uvedené v části toto ID ve kterém jste [nastavení oprávnění aplikace](#permissions).
-   * **BaseUrl**: Zadejte adresu URL instance digitální dvojče. Pokud chcete získat tuto adresu URL, nahraďte zástupné symboly v této adrese URL s hodnotami pro vaši instanci: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Tuto adresu URL můžete získat také změnou adresy URL rozhraní API správy z [část nasazení](#deploy). Nahraďte **swagger /** s **api/v1.0/** .
+   * **BaseUrl**: Zadejte adresu URL instance digitálního vlákna. Chcete-li získat tuto adresu URL, nahraďte zástupné symboly v této adrese URL `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`hodnotami vaší instance:. Tuto adresu URL můžete získat také změnou adresy URL rozhraní API správy z [část nasazení](#deploy). Nahraďte **swagger /** s **api/v1.0/** .
 
 1. Podívejte se do seznamu digitální dvojče funkce, které můžete prozkoumat pomocí ukázky. Spusťte následující příkaz:
 
@@ -137,7 +137,7 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 ```
 
-Tato funkce využívá [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) ve stejné složce. Tento soubor otevřít, a poznamenejte si hierarchii kancelářskou budovu: *Místo konání*, *Floor*, *oblasti*, a *místnosti*. Každý z těchto fyzických prostorů může obsahovat *zařízení* a *senzory*. Každý záznam obsahuje i předdefinovanou `type` &mdash;například Floor, místnosti.
+Tato funkce využívá [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) ve stejné složce. Otevřete tento soubor a poznamenejte si hierarchii budovy Office: *Místo*,podlahová *plocha, oblast*a *místnosti*. Každý z těchto fyzických prostorů může obsahovat *zařízení* a *senzory*. Každý záznam obsahuje i předdefinovanou `type` &mdash;například Floor, místnosti.
 
 Ukázka **yaml** soubor obsahuje prostorový graf, který používá `Default` digitální dvojče objektový model. Tento model poskytuje obecné názvy pro většinu typů. Obecné názvy jsou dostačující pro budovy. Příklady jsou teploty SensorDataType a mapování pro SpaceBlobType. Typ místa příklad je místnosti s podtypy FocusRoom ConferenceRoom a tak dále. 
 
@@ -149,13 +149,13 @@ Další informace o prostorové grafy a objektové modely, najdete v článku [m
 
 **ProvisionSample.yaml** soubor obsahuje následující uzly:
 
-- **prostředky**: `resources` Uzel vytvoří prostředek služby Azure IoT Hub ke komunikaci se zařízeními ve vašem nastavení. Služby IoT hub v kořenovém uzlu grafu může komunikovat s všech zařízení a senzorů v grafu.  
+- **prostředky**: `resources` Uzel vytvoří prostředek Azure IoT Hub ke komunikaci se zařízeními v instalačním programu. Služby IoT hub v kořenovém uzlu grafu může komunikovat s všech zařízení a senzorů v grafu.  
 
-- **mezery**: V objektovém modelu digitální dvojče `spaces` představují fyzické umístění. Má každý prostor `Type` &mdash;například oblasti, místa nebo zákazník&mdash;a popisný `Name`. Mezery může patřit do jiné prostory vytváření hierarchickou strukturu. Soubor provisionSample.yaml obsahuje prostorový graf imaginární budovy. Poznámka: logické vnoření prostory typu `Floor` v rámci `Venue`, `Area` v dolní mez, a `Room` uzly do oblasti. 
+- **mezery**: V objektovém modelu `spaces` digitálního vlákna představuje fyzická umístění. Má každý prostor `Type` &mdash;například oblasti, místa nebo zákazník&mdash;a popisný `Name`. Mezery může patřit do jiné prostory vytváření hierarchickou strukturu. Soubor provisionSample.yaml obsahuje prostorový graf imaginární budovy. Poznámka: logické vnoření prostory typu `Floor` v rámci `Venue`, `Area` v dolní mez, a `Room` uzly do oblasti. 
 
-- **zařízení**: Může obsahovat mezery `devices`, které jsou fyzické nebo virtuální entity, které spravují počtu senzorů. Zařízení může být například telefonu uživatele, pod senzor Raspberry Pi nebo brány. V imaginární budově v naší ukázce si všimněte, že místnost **Focus Room** obsahuje zařízení **Raspberry Pi 3 A1**. Jednotlivé uzly zařízení jsou identifikované jedinečnou hodnotou `hardwareId` (ID hardwaru), která je v této ukázce pevně zakódovaná. Pokud chcete tuto ukázku nakonfigurovat pro skutečný provoz v produkčním prostředí, nahraďte tyto hodnoty odpovídajícími hodnotami z vašeho systému.  
+- **zařízení**: Mezery můžou obsahovat `devices`fyzické nebo virtuální entity, které spravují řadu senzorů. Zařízení může být například telefonu uživatele, pod senzor Raspberry Pi nebo brány. V imaginární budově v naší ukázce si všimněte, že místnost **Focus Room** obsahuje zařízení **Raspberry Pi 3 A1**. Jednotlivé uzly zařízení jsou identifikované jedinečnou hodnotou `hardwareId` (ID hardwaru), která je v této ukázce pevně zakódovaná. Pokud chcete tuto ukázku nakonfigurovat pro skutečný provoz v produkčním prostředí, nahraďte tyto hodnoty odpovídajícími hodnotami z vašeho systému.  
 
-- **senzorů**: Zařízení může obsahovat více `sensors`. Dokáže detekovat a teploty, pohybu a stav baterie, jako jsou fyzické změny záznamu. Každý uzel senzoru je jednoznačně identifikovaný hodnotou `hardwareId` (ID hardwaru), která je zde pevně zakódovaná. Pro aplikace skutečný nahraďte tyto pomocí jedinečných identifikátorů pro čidel v nastavení aplikace. Soubor provisionSample.yaml má dvě senzorů k zaznamenání *pohybu* a *CarbonDioxide*. Přidejte další senzor, který bude zaznamenávat teplotu (*Temperature*), a to přidáním následujících řádků pod řádky senzoru CarbonDioxide. Všimněte si, že tyto jsou k dispozici v provisionSample.yaml jako komentovaná řádky. Můžete je Odkomentujte tak, že odeberete `#` znak ve každého řádku. 
+- **senzory**: Zařízení může obsahovat víc `sensors`. Dokáže detekovat a teploty, pohybu a stav baterie, jako jsou fyzické změny záznamu. Každý uzel senzoru je jednoznačně identifikovaný hodnotou `hardwareId` (ID hardwaru), která je zde pevně zakódovaná. Pro aplikace skutečný nahraďte tyto pomocí jedinečných identifikátorů pro čidel v nastavení aplikace. Soubor provisionSample.yaml má dvě senzorů k zaznamenání *pohybu* a *CarbonDioxide*. Přidejte další senzor, který bude zaznamenávat teplotu (*Temperature*), a to přidáním následujících řádků pod řádky senzoru CarbonDioxide. Všimněte si, že tyto jsou k dispozici v provisionSample.yaml jako komentovaná řádky. Můžete je Odkomentujte tak, že odeberete `#` znak ve každého řádku. 
 
     ```yaml
             - dataType: Temperature
@@ -184,4 +184,4 @@ Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez 
 
 Chcete-li zjistěte, jak implementovat vlastní logiku monitorování podmínek ve vaší ukázce sestavování, přejděte na další kurz v této sérii: 
 > [!div class="nextstepaction"]
-> [Kurz: Zřízení sestavení a sledování práce podmínky](tutorial-facilities-udf.md)
+> [Kurz: Zřizování pracovních podmínek sestavení a sledování](tutorial-facilities-udf.md)

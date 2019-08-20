@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2f6be256801983924cc794d6c8b8fa31e39959e1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f65bc0a9969ac713c2fb9f8629b97fbe522e9fe0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967855"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624844"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Cenové úrovně v Azure Database for PostgreSQL – jeden server
 
@@ -67,7 +67,7 @@ Zvýšili jsme limity úložiště v našich Pro obecné účely a paměťově o
 |              | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:-------------|:--------------------|:---------------------|
 | Typ úložiště | Azure Premium Storage | Azure Premium Storage |
-| Velikost úložiště | 32 GB až 16 TB| 32 až 16 TB |
+| Velikost úložiště | 32 GB až 16 TB| 32 GB až 16 TB |
 | Velikost přírůstku úložiště | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
 
@@ -100,7 +100,7 @@ Pokud jste například zřídili 1000 GB úložiště a skutečné využití dos
 
 Mějte na paměti, že úložiště je možné škálovat pouze nahoru, ne dolů.
 
-## <a name="backup"></a>Zálohovat
+## <a name="backup"></a>Backup
 
 Služba automaticky provede zálohování vašeho serveru. Minimální doba uchovávání záloh je sedm dní. Můžete nastavit dobu uchovávání až 35 dní. Uchovávání lze v jakémkoli okamžiku během životnosti serveru upravit. Můžete si vybrat mezi místně redundantními a geograficky redundantními zálohováními. Geograficky redundantní zálohy jsou také uloženy v [geograficky spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) oblasti, kde je server vytvořen. Tato redundance poskytuje úroveň ochrany v případě havárie. Máte také možnost obnovit server do jakékoli jiné oblasti Azure, ve které je služba dostupná v geograficky redundantních zálohách. Po vytvoření serveru není možné měnit mezi dvěma možnostmi úložiště zálohování.
 
