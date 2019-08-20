@@ -146,12 +146,12 @@
               href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json
             - name: Klasické nasazení
               href: ./move-limitations/classic-model-move-limitations.md
+            - name: Sítě
+              href: ./move-limitations/networking-move-limitations.md
             - name: Recovery Services
               href: ../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json
             - name: Virtuální počítače
               href: ./move-limitations/virtual-machines-move-limitations.md
-            - name: Virtuální sítě
-              href: ./move-limitations/virtual-network-move-limitations.md
     - name: Značky
       items:
         - name: Označení prostředků

@@ -216,9 +216,6 @@
         - name: Řešení potíží se změnami na virtuálním počítači
           href: automation-tutorial-troubleshoot-changes.md
           displayName: inventory
-        - name: Správa virtuálního počítače se shromažďování dat pro inventarizaci
-          href: automation-vm-inventory.md
-          displayName: inventory
     - name: Řešení potíží
       items:
         - name: Onboarding

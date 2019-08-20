@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3d45defa9ff8e7b2e03d550b76c0e18192c58c4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881589"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626315"
 ---
 Paměťově optimalizované velikosti virtuálních počítačů nabízejí vysoký poměr paměti k procesoru, který je skvělý pro servery relačních databází, střední až velké mezipaměti a analýzu v paměti. Tento článek poskytuje informace o počtu vCPU, datových discích a síťových adaptérů i propustnosti úložiště a šířce pásma sítě pro každou velikost v tomto seskupení.
 
 * Ev3-Series obsahuje procesor E5-2673 V4 2,3 GHz (Broadwell) v konfiguraci s více vlákny, poskytuje lepší hodnotu pro většinu úloh pro obecné účely a přináší Ev3 k virtuálním počítačům pro obecné účely většiny ostatních cloudů.  Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno.  Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
 
-* Řady Eav3-Series a Easv3-Series využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452V v konfiguraci s více vlákny s až 256GB mezipamětí L3 a zvyšují možnosti spouštění většiny paměťově optimalizovaných úloh.  Řady Eav3-Series a Easv3-Series mají stejnou konfiguraci paměti a disku jako Ev3 & Esv3-Series.
+* Řady Eav3-Series a Easv3-Series využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452V v konfiguraci s více vlákny s až 256mb mezipamětí L3 a zvyšují možnosti spouštění většiny paměťově optimalizovaných úloh.  Řady Eav3-Series a Easv3-Series mají stejnou konfiguraci paměti a disku jako Ev3 & Esv3-Series.
 
 * Mv2-Series nabízí nejvyšší počet vCPU (až 208 vCPU) a největší paměť (až 5,7 TiB) libovolného virtuálního počítače v cloudu. Je ideální pro extrémně velké databáze nebo další aplikace, kterým přináší výhody vysoký počet virtuálních procesorů a velké množství paměti.
 

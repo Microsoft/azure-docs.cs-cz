@@ -7,9 +7,8 @@ metadata:
   description: 'Naučte se vytvářet podniková řešení pro hledání nad privátním heterogenním obsahem s využitím Azure Search. Kurzy, reference k rozhraní API a další dokumenty ukazují, jak konsolidovat prohledávatelný obsah do jednoho rychlého indexu, pro který se dají vytvářet dotazy prostřednictvím jednoduché i složité syntaxe a který podporuje širokou škálu scénářů.'
   services: search
   author: HeidiSteen
-  manager: cgronlun
+  manager: nitinme
   ms.service: search
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/12/2019
   ms.author: heidist

@@ -41,7 +41,7 @@ Výpočetní prostředek pro prostředí Azure integration runtime je plně spra
 ### <a name="properties"></a>Vlastnosti
 Následující tabulka obsahuje popisy vlastností vrací rutina pro prostředí Azure integration runtime:
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 -------- | ------------- | 
 | Name | Název modulu runtime integrace se službou Azure. |  
 | State | Stav prostředí Azure integration runtime. | 
@@ -68,7 +68,7 @@ Tato část obsahuje popis vlastností vrací Rutina Get-AzDataFactoryV2Integrat
 
 Následující tabulka obsahuje popis vlastností pro monitorování **každý uzel**:
 
-| Vlastnost | Popis | 
+| Vlastnost | Description | 
 | -------- | ----------- | 
 | Name | Název místního prostředí integration runtime a uzlů s ním spojená. Uzel je místní počítač Windows, který má místní prostředí integration runtime na něm nainstalován. |  
 | Status | Stav celkové místní prostředí integration runtime a každý uzel. Příklad: Online/Offline/Limited/atd. Informace o tyto stavy najdete v další části. | 
@@ -92,7 +92,7 @@ Můžete přepsat počítané výchozí hodnotu na webu Azure Portal. Vyberte Vy
 ### <a name="status-per-node"></a>Stav (na uzel)
 Následující tabulka uvádí možné stavy uzel v místním prostředí integration runtime:
 
-| Status | Popis |
+| Status | Description |
 | ------ | ------------------ | 
 | Online | Uzel je připojen ke službě Data Factory. |
 | Offline | Uzel je offline. |
@@ -105,7 +105,7 @@ Uzlem může být neaktivní, pokud se nemůže připojit k ostatním uzlům.
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Stav (celkové místní prostředí integration runtime)
 Následující tabulka obsahuje možné stavy z místního prostředí integration runtime. Tento stav závisí na stavy všechny uzly, které patří do modulu runtime. 
 
-| Status | Popis |
+| Status | Description |
 | ------ | ----------- | 
 | Třeba registrace | Žádný uzel ještě zaregistrován do tohoto modulu runtime integrace v místním prostředí. |
 | Online | Všechny uzly jsou online. |
@@ -157,13 +157,13 @@ Prostředí Azure-SSIS integration runtime je plně spravovaný cluster Azure vi
 
 ### <a name="properties"></a>Vlastnosti
 
-| Vlastnost/Status | Popis |
+| Vlastnost/Status | Description |
 | --------------- | ----------- |
 | CreateTime | Čas UTC vytvoření prostředí Azure-SSIS integration runtime. |
 | Uzly | Přidělené dostupné uzly vašeho prostředí Azure-SSIS integration runtime se stavy daného uzlu (počáteční/k dispozici/recyklace/není k dispozici) a užitečné chyby. |
 | OtherErrors | Uzel konkrétních užitečné chyb v prostředí Azure-SSIS integration runtime. |
 | LastOperation | Výsledek poslední operace spustit/zastavit na prostředí Azure-SSIS integration runtime s chybami užitečné, pokud se něco nepovedlo. |
-| Stav | Celkový stav (počáteční/počáteční/spuštění/zastavení/zastavená) z prostředí Azure-SSIS integration runtime. |
+| State | Celkový stav (počáteční/počáteční/spuštění/zastavení/zastavená) z prostředí Azure-SSIS integration runtime. |
 | Location | Umístění prostředí Azure-SSIS integration runtime. |
 | NodeSize | Velikost každého uzlu vašeho prostředí Azure-SSIS integration runtime. |
 | NodeCount | Počet uzlů v prostředí Azure-SSIS integration runtime. |
@@ -179,12 +179,12 @@ Prostředí Azure-SSIS integration runtime je plně spravovaný cluster Azure vi
 | ResourceGroupName | Název vaší skupiny prostředků Azure, ve kterém byly vytvořeny služby data factory a Azure-SSIS integration runtime. |
 | DataFactoryName | Název služby Azure data factory. |
 | Name | Název prostředí Azure-SSIS integration runtime. |
-| Popis | Popis prostředí Azure-SSIS integration runtime. |
+| Description | Popis prostředí Azure-SSIS integration runtime. |
 
   
 ### <a name="status-per-node"></a>Stav (na uzel)
 
-| Status | Popis |
+| Status | Description |
 | ------ | ----------- | 
 | Spouštění | Připravuje se tento uzel. |
 | K dispozici | Tento uzel je připravená k nasazení a spouštění balíčků služby SSIS. |
@@ -193,7 +193,7 @@ Prostředí Azure-SSIS integration runtime je plně spravovaný cluster Azure vi
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Stav (celkové prostředí Azure-SSIS integration runtime)
 
-| Celkový stav | Popis | 
+| Celkový stav | Description | 
 | -------------- | ----------- | 
 | Počáteční | Uzly prostředí Azure-SSIS integration runtime se přidělené a připravené. | 
 | Spouštění | Uzly prostředí Azure-SSIS integration runtime se přidělené a připravené a fakturace byla spuštěna. |

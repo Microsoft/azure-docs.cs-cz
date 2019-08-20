@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 4d13779317793b5edd971dd457a77e0bc5cae1c8
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: f85605610727ef2c1e1987b7ef93a41ce2417a25
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426866"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626312"
 ---
 | Resource | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ ms.locfileid: "68426866"
 
 <sup>1</sup> Výchozí limity se liší podle typu kategorie nabídky, jako je bezplatná zkušební verze a průběžné platby a podle řad, například Dv2, F a G. Například výchozí hodnota pro smlouva Enterprise předplatná je 350.
 
-<sup>2</sup> . Na jedno předplatné můžete použít neomezený počet značek. Počet značek na prostředek nebo skupinu prostředků je omezený na 15. Správce prostředků vrátí [seznam jedinečných názvů a hodnot značek](/rest/api/resources/tags) v rámci předplatného pouze v případě, že je počet značek 10 000 nebo méně. I když číslo překračuje 10 000, můžete pořád najít prostředek podle značky.  
+<sup>2</sup> . Na jedno předplatné můžete použít neomezený počet značek. Počet značek na prostředek nebo skupinu prostředků je omezený na 50. Správce prostředků vrátí [seznam jedinečných názvů a hodnot značek](/rest/api/resources/tags) v rámci předplatného pouze v případě, že je počet značek 10 000 nebo méně. I když číslo překračuje 10 000, můžete pořád najít prostředek podle značky.  
 
 <sup>3</sup> . Tyto funkce se už nevyžadují u skupin prostředků Azure a Správce prostředků.
 

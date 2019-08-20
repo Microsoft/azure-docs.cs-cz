@@ -12,6 +12,18 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
+    - name: Klient
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Python
+          href: quickstarts/python-sdk.md
+        - name: Přejít
+          href: quickstarts/go-sdk.md
+        - name: Ruby
+          href: quickstarts/ruby-sdk.md
+        - name: Node.js
+          href: quickstarts/nodejs-sdk.md
     - name: REST API
       items:
         - name: Přejít
@@ -26,18 +38,6 @@
           href: quickstarts/python.md
         - name: Ruby
           href: quickstarts/ruby.md
-    - name: Klient
-      items:
-        - name: 'C#'
-          href: quickstarts/csharp.md
-        - name: Python
-          href: quickstarts/python-sdk.md
-        - name: Přejít
-          href: quickstarts/go-sdk.md
-        - name: Ruby
-          href: quickstarts/ruby-sdk.md
-        - name: Node.js
-          href: quickstarts/nodejs-sdk.md
 - name: Kurzy
   items:
     - name: Integrace Power BI pro analýzu zpětné vazby od zákazníků

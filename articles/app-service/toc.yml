@@ -170,7 +170,7 @@
     - name: Škálování aplikace
       items:
         - name: Vertikální navýšení kapacity serveru
-          href: web-sites-scale.md
+          href: manage-scale-up.md
         - name: Konfigurace úrovně PremiumV2
           href: app-service-configure-premium-tier.md
         - name: Horizontální navýšení kapacity na několik instancí

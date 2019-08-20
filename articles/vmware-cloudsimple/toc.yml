@@ -117,7 +117,7 @@
     - name: Návody
       items:
         - name: Zabezpečení vašeho prostředí
-          href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
+          href: private-cloud-secure.md
         - name: Správa privátního cloudu
           items:
             - name: Zvýšení úrovně oprávnění pro privátní cloud
@@ -143,7 +143,7 @@
             - name: Azure Application Gateway s virtuálními počítači VMware
               href: azure-application-gateway.md
             - name: Konfigurace serveru vCenter privátního cloudu jako koncového bodu automatizace vRealize
-              href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
+              href: configure-server-vrealize-automation-endpoint.md
             - name: Migrace virtuálních počítačů úloh do privátního cloudu
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
             - name: Zajištění vysoké dostupnosti aplikace ve VMware v Azure

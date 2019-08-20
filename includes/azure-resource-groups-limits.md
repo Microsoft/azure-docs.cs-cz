@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/30/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: f027f5b295d75c105e81360a10718239e5b08e4d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698266"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626314"
 ---
 | Resource | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "68698266"
 | Nasazení na skupinu prostředků v historii nasazení |800<sup>1</sup> |800 |
 | Prostředky na nasazení |800 |800 |
 | Zámky pro správu na jedinečný obor |20 |20 |
-| Počet značek na prostředek nebo skupinu prostředků |15 |15 |
+| Počet značek na prostředek nebo skupinu prostředků |50 |50 |
 | Délka klíče značky |512 |512 |
 | Délka hodnoty značky |256 |256 |
 
@@ -25,7 +25,7 @@ ms.locfileid: "68698266"
 
 #### <a name="template-limits"></a>Omezení šablon
 
-| Hodnota | Výchozí omezení | Maximální omezení |
+| Value | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Parametry |256 |256 |
 | Proměnné |256 |256 |
