@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: d93f8c61511dd1d3fc2bfd253fa7a21857f67ed6
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563372"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611962"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Vyberte cenovou úroveň pro Azure Search
 
@@ -62,7 +62,7 @@ K řešení postavenému na Azure Search může doplatit následující možnost
 
 Na rozdíl od virtuálních počítačů nebo jiných prostředků, které mohou být pozastavené, aby se předešlo poplatkům, je služba Azure Search vždy k dispozici na hardwaru vyhrazeném pro výhradní použití. Vytvoření služby je fakturovatelná událost, která se spustí při vytvoření služby a končí při odstranění služby. 
 
-Minimální poplatek je první jednotka vyhledávání (jedna replika x jeden oddíl). Toto minimum je pevně nastavené pro dobu života služby, protože služba nemůže běžet bez jakýchkoli těchto konfigurací. Kromě minima můžete přidat repliky a oddíly nezávisle na sobě. Přírůstkové zvýšení kapacity prostřednictvím replik a oddílů zvýší vaše vyúčtování na základě následujícího vzorce: [(repliky × oddíly x sazba)](#search-units), kde se sazba vám bude účtovat, záleží na cenové úrovni, kterou vyberete.
+Minimální poplatek je první jednotka vyhledávání (jedna replika x jeden oddíl) s fakturovatelnou sazbou. Toto minimum je pevně nastavené pro dobu života služby, protože služba nemůže běžet bez jakýchkoli těchto konfigurací. Kromě minima můžete přidat repliky a oddíly nezávisle na sobě. Přírůstkové zvýšení kapacity prostřednictvím replik a oddílů zvýší vaše vyúčtování na základě následujícího vzorce: [(repliky × oddíly x sazba)](#search-units), kde se sazba vám bude účtovat, záleží na cenové úrovni, kterou vyberete.
 
 Při odhadování nákladů na řešení hledání mějte na paměti, že ceny a kapacita nejsou lineární. (Dvojnásobná kapacita větší než dvojnásobek nákladů.) Příklad toho, jak vzorec funguje, najdete v tématu [jak přidělit repliky a oddíly](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
@@ -157,7 +157,7 @@ L2 offers twice the overall storage capacity of L1.  Choose your tier based on t
 
 ### <a name="evaluating-capacity"></a>Vyhodnocování kapacity
 
-Kapacitu a náklady na provoz služby se přímo vztahují. Vrstvy ukládají omezení na dvou úrovních: úložiště a prostředky. Měli byste si myslet na oba, protože podle toho, co se vám limit dosahuje, je platný limit.
+Kapacita a náklady na provoz služby se dostanou rukou. Vrstvy ukládají omezení na dvou úrovních: úložiště a prostředky. Měli byste si myslet na oba, protože podle toho, co se vám limit dosahuje, je platný limit.
 
 Obchodní požadavky obvykle určují počet indexů, které budete potřebovat. Například je možné, že budete potřebovat globální index pro velké úložiště dokumentů. Případně je možné, že budete potřebovat více indexů na základě oblastí, aplikací nebo Business mezery.
 
@@ -167,25 +167,25 @@ Chcete-li určit velikost indexu, je třeba [ho sestavit](search-create-index-po
 > I když odhaduje budoucí potřeby indexů a úložiště, může to vypadat stejně jako v případě vysokého odhadu. Pokud je kapacita vrstvy příliš nízká, budete muset zřídit novou službu na vyšší úrovni a pak [znovu načíst své indexy](search-howto-reindex.md). Neexistuje žádný místní upgrade služby z jedné SKU na jinou.
 >
 
-### <a name="step-1-develop-rough-estimates-by-using-the-free-tier"></a>Krok 1: Vývoj hrubých odhadů pomocí bezplatné úrovně
+### <a name="estimate-with-the-free-tier"></a>Odhad s úrovní Free
 
-Jedním z přístupů k odhadu kapacity je začít s úrovní Free. Mějte na paměti, že bezplatná služba nabízí až tři indexy, 50 MB úložiště a 2 minuty času indexování. Může být náročné odhadnout velikost předpokládaného indexu s těmito omezeními. Tady je postup, který můžete provést:
+Jedním z přístupů k odhadu kapacity je začít s úrovní Free. Mějte na paměti, že bezplatná služba nabízí až tři indexy, 50 MB úložiště a 2 minuty času indexování. Může být náročné odhadnout velikost předpokládaného indexu s těmito omezeními, ale postup je následující:
 
 + [Vytvořte bezplatnou službu](search-create-service-portal.md).
-+ Připravte malou, reprezentativní datovou sadu (například 5 000 dokumentů a 10% velikost vzorku).
-+ [Sestavte počáteční index](search-create-index-portal.md) a poznamenejte si jeho velikost na portálu (například 30 MB).
++ Připravte malou, reprezentativní datovou sadu.
++ [Sestavte počáteční index na portálu](search-create-index-portal.md) a poznamenejte si jeho velikost. Funkce a atributy mají dopad na úložiště. Například přidání návrhů (typeahead) bude zvyšovat požadavky na úložiště. Pomocí stejné datové sady můžete zkusit vytvořit několik verzí indexu s různými atributy každého pole, abyste viděli, jak se požadavky na úložiště liší. Další informace najdete v části ["dopady na úložiště" v tématu Vytvoření základního indexu](search-what-is-an-index.md#storage-implications).
 
-Pokud je vzorek zástupce a 10 procent celého zdroje dat, bude index 30 MB přibližně 300 MB, pokud jsou všechny dokumenty indexovány. V tomto předběžném čísle může být tato částka dvojnásobná pro rozpočet pro dva indexy (vývoj a produkce). Získáte tak celkem 600 MB požadavků na úložiště. Tento požadavek snadno splní úroveň Basic, takže byste ho měli začít.
+V případě hrubého odhadu se může tato částka zdvojnásobit do rozpočtu pro dva indexy (vývoj a produkce) a odpovídajícím způsobem zvolit svou úroveň.
 
-### <a name="step-2-develop-refined-estimates-by-using-a-billable-tier"></a>Krok 2: Vývoj rafinovaných odhadů pomocí Fakturovatelné úrovně
+### <a name="estimate-with-a-billable-tier"></a>Odhad s fakturovatelnou úrovní
 
-Někteří zákazníci chtějí začít s vyhrazenými prostředky, které můžou pojmout větší vzorkování a dobu zpracování, a pak vyvíjet reálné odhady množství, velikosti a dotazů indexu v průběhu vývoje. Zpočátku se služba zřídí na základě odhadu nejvyššího odhadu. V průběhu vývoje projektu týmy většinou vědí, zda je stávající služba nad nebo pod kapacitou pro plánované produkční úlohy.
+Vyhrazené prostředky můžou sloužit k většímu počtu vzorkování a zpracování za účelem realističtějších odhadů množství indexu, velikosti a svazků dotazů během vývoje. Někteří zákazníci najdou přímo v rámci Fakturovatelné úrovně a pak se znovu vyhodnotí jako vývoj projektu vývoje.
 
 1. [Zkontrolujte omezení služeb na jednotlivých úrovních](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) , abyste zjistili, jestli nižší úrovně můžou podporovat potřebný počet indexů. V úrovních Basic, S1 a S2 jsou limity indexu 15, 50 a 200, v uvedeném pořadí. Optimalizovaná úroveň úložiště má omezení 10 indexů, protože je navržena tak, aby podporovala nízký počet velmi rozsáhlých indexů.
 
 1. [Vytvoření služby v Fakturovatelné úrovni](search-create-service-portal.md):
 
-    + Pokud se nacházíte na začátku školicí křivky, začněte na stránce Basic nebo S1 na začátku.
+    + Pokud si nejste jisti plánovaným zatížením, začněte na stránce Basic nebo S1 nízká.
     + Pokud víte, že budete mít rozsáhlé indexování a načítání dotazů, začněte vysokou, v S2 nebo dokonce S3.
     + Pokud indexuje velké množství dat a zatížení dotazů je relativně nízké, stejně jako u interní obchodní aplikace, začněte s optimalizovaným úložištěm, v L1 nebo L2.
 
@@ -221,7 +221,7 @@ Funkce bezplatné úrovně a verze Preview neposkytují [smlouvy o úrovni služ
 
 + Mějte na paměti, že jediným nevýhodoum zajišťováním je, že pokud jsou skutečné požadavky větší než vaše předpovědi, možná budete muset odtrhnout službu. Aby nedošlo k přerušení služeb, vytvořte novou službu ve stejném předplatném na vyšší úrovni a spusťte ji vedle sebe, dokud všechny aplikace a požadavky necílí na nový koncový bod.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Začněte s bezplatnou úrovní a sestavte počáteční index pomocí podmnožiny vašich dat, abyste pochopili jeho charakteristiky. Struktura dat v Azure Search je obrácená struktura indexu. Velikost a složitost obráceného indexu se určují podle obsahu. Mějte na paměti, že vysoce redundantní obsah obvykle vede k menšímu indexu než vysoce nepravidelný obsah. Takže charakteristiky obsahu, a ne velikost datové sady, určují požadavky na úložiště indexu.
 
