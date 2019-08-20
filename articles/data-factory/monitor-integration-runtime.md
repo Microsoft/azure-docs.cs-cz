@@ -44,11 +44,11 @@ Následující tabulka obsahuje popisy vlastností vrací rutina pro prostředí
 | Vlastnost | Popis |
 -------- | ------------- | 
 | Name | Název modulu runtime integrace se službou Azure. |  
-| Stav | Stav prostředí Azure integration runtime. | 
+| State | Stav prostředí Azure integration runtime. | 
 | Location | Umístění prostředí Azure integration runtime. Podrobnosti o umístění prostředí Azure integration runtime najdete v tématu [Úvod do prostředí integration runtime](concepts-integration-runtime.md). |
 | DataFactoryName | Název objektu pro vytváření dat, které patří prostředí Azure integration runtime. | 
 | ResourceGroupName | Název skupiny prostředků, které patří služby data factory.  |
-| Popis | Popis prostředí integration runtime.  |
+| Description | Popis prostředí integration runtime.  |
 
 ### <a name="status"></a>Status
 Následující tabulka uvádí možné stavy prostředí Azure integration runtime:
