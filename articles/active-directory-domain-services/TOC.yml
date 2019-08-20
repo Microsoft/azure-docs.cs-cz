@@ -1,93 +1,80 @@
 - name: Dokumentace ke službě Azure AD Domain Services
   href: index.yml
 - name: Přehled
-  expanded: true
   items:
     - name: Co je služba Azure Active Directory Domain Services?
       href: overview.md
-    - name: Porovnání s AD na Windows Serveru
-      href: comparison.md
-    - name: Porovnání se službou Azure AD Join
-      href: active-directory-ds-compare-with-azure-ad-join.md
-    - name: Funkce
-      href: active-directory-ds-features.md
+    - name: Porovnání služeb identit
+      href: compare-identity-solutions.md
+- name: Kurzy
+  expanded: true
+  items:
+    - name: Vytvoření spravované domény
+      href: tutorial-create-instance.md
+    - name: Připojení virtuálního počítače s Windows Serverem k doméně
+      href: join-windows-vm.md
+    - name: Instalace nástrojů pro správu
+      href: tutorial-create-management-vm.md
+    - name: Konfigurace protokolu Secure LDAP
+      href: tutorial-configure-ldaps.md
 - name: Ukázky
   items:
     - name: Vytvoření instance Azure AD DS pomocí Azure Powershellu
       href: powershell-create-instance.md
 - name: Koncepty
   items:
-    - name: Jak funguje synchronizace
+    - name: Jak funguje synchronizace Azure AD DS
       href: synchronization.md
+    - name: Jak funguje synchronizace hodnot hash hesel
+      href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Představení služby Azure Active Directory
+      href: ../active-directory/fundamentals/active-directory-whatis.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Architektura Azure Active Directory
+      href: ../active-directory/fundamentals/active-directory-architecture.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Implementace administrativních modelů s minimálními oprávněními
+      href: /windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
 - name: Postup
   items:
-    - name: Vytvoření instance Azure AD DS
+    - name: Konfigurace běžných nastavení
       items:
-        - name: 'Úloha 1: Konfigurace základního nastavení'
-          href: create-instance.md
-        - name: 'Úloha 2: Konfigurace nastavení sítě'
-          href: active-directory-ds-getting-started-network.md
-        - name: 'Úloha 3: Konfigurace skupiny správců a povolení služby Azure AD Domain Services'
-          href: active-directory-ds-getting-started-admingroup.md
-        - name: 'Úloha 4: Aktualizace nastavení DNS pro virtuální síť'
-          href: active-directory-ds-getting-started-dns.md
-        - name: 'Úloha 5: Povolení synchronizace hodnoty hash hesel'
-          href: active-directory-ds-getting-started-password-sync.md
+        - name: Povolení synchronizace hodnoty hash hesel
+          href: active-directory-ds-getting-started-password-sync-synced-tenant.md
+        - name: Konfigurace synchronizace s vymezeným oborem z Azure AD
+          href: scoped-synchronization.md
+        - name: Vytvoření organizační jednotky
+          href: create-ou.md
+        - name: Vytvoření skupinového účtu spravované služby (gMSA)
+          href: create-gmsa.md
     - name: Plán pro Azure AD DS
       items:
-        - name: Scénáře
+        - name: Obvyklé scénáře
           href: scenarios.md
-        - name: Plánování virtuální sítě
+        - name: Požadavky na virtuální síť
           href: network-considerations.md
     - name: Správa Azure AD DS
       items:
-        - name: Povolení událostí auditu zabezpečení (Preview)
-          href: security-audit-events.md
-        - name: Kontrola stavu spravované domény
-          href: check-health.md
-        - name: Konfigurace synchronizace s vymezeným oborem z Azure AD do spravované domény
-          href: scoped-synchronization.md
-        - name: Zabezpečení spravované domény
-          href: secure-your-domain.md
-        - name: Vytvoření OU ve spravované doméně
-          href: create-ou.md
-        - name: Vytvoření skupinového účtu spravované služby ve spravované doméně
-          href: create-gmsa.md
-        - name: Správa zásad skupiny pro Azure AD Domain Services
+        - name: Správa zásad skupiny
           href: manage-group-policy.md
-        - name: Konfigurace zásad hesel ve spravované doméně
-          href: password-policy.md
+        - name: Správa DNS
+          href: manage-dns.md
+        - name: Kontrola stavu
+          href: check-health.md
+        - name: Konfigurace e-mailových oznámení
+          href: notifications.md
         - name: Odstranění spravované domény
           href: delete-aadds.md
-        - name: Vytvoření virtuálního počítače Azure AD DS pro správu
-          href: manage-domain.md
-        - name: Správa DNS pro Azure AD Domain Services
-          href: manage-dns.md
-        - name: Aktualizace e-mailových oznámení
-          href: notifications.md
-        - name: Konfigurace protokolu Secure LDAP (LDAPS) ve spravované doméně Azure AD Domain Services
-          href: configure-ldaps.md
-          items:
-            - name: 'Úloha 2: Export certifikátu protokolu LDAPS'
-              href: active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md
-            - name: 'Úloha 3: Povolení protokolu LDAPS pro spravované domény s využitím webu Azure Portal'
-              href: active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md
-            - name: 'Úloha 4: Konfigurace DNS pro přístup ke spravované doméně z internetu'
-              href: active-directory-ds-ldaps-configure-dns.md
-            - name: 'Krok 5: Vytvoření vazby ke spravované doméně a uzamknutí přístupu přes Secure LDAP'
-              href: active-directory-ds-ldaps-bind-lockdown.md
-    - name: Nasazení aplikací do Azure AD DS
+    - name: Zabezpečení Azure AD DS
       items:
-        - name: Konfigurace podpory pro synchronizaci profilu pro SharePoint Server
-          href: deploy-sp-profile-sync.md
+        - name: Zabezpečení spravované domény
+          href: secure-your-domain.md
         - name: Konfigurace omezeného delegování Kerberos
           href: deploy-kcd.md
-        - name: Nasazení proxy aplikace služby Azure AD
-          href: deploy-azure-app-proxy.md
-    - name: Připojení virtuálních počítačů k Azure AD DS
+        - name: Konfigurace zásad uzamykání účtů a hesel
+          href: password-policy.md
+        - name: Povolení událostí auditu zabezpečení (Preview)
+          href: security-audit-events.md
+    - name: Virtuální počítače připojené k doméně
       items:
-        - name: Virtuální počítač s Windows Serverem
-          href: join-windows-vm.md
         - name: Virtuální počítač s Windows Serverem ze šablony
           href: join-windows-vm-template.md
         - name: CentOS
@@ -98,24 +85,31 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: Řešení potíží s Azure AD DS
+    - name: Nasazení aplikací do Azure AD DS
       items:
-        - name: Průvodce odstraňováním potíží
+        - name: Nasazení proxy aplikace služby Azure AD
+          href: deploy-azure-app-proxy.md
+        - name: Konfigurace podpory pro synchronizaci profilu pro SharePoint Server
+          href: deploy-sp-profile-sync.md
+    - name: Řešení potíží
+      items:
+        - name: Běžné chyby
           href: troubleshoot.md
-        - name: Řešení výstrah
-          href: troubleshoot-alerts.md
+        - name: Běžná upozornění
           items:
-            - name: Oprava narušené konfigurace NSG
+            - name: Běžná upozornění
+              href: troubleshoot-alerts.md
+            - name: Oprava narušené konfigurace sítě
               href: alert-nsg.md
             - name: Obnovení chybějících objektů služby
               href: alert-service-principal.md
-            - name: Chyby protokolu Secure LDAP
+            - name: Upozornění protokolu Secure LDAP
               href: alert-ldaps.md
-        - name: Řešení chyb neshod tenantů
+        - name: Chyb neshod tenantů
           href: mismatched-tenant-error.md
         - name: Pozastavené domény
           href: suspension.md
-        - name: Řešení potíží s protokolem Secure LDAP
+        - name: Protokol Secure LDAP
           href: tshoot-ldaps.md
 - name: Zdroje a prostředky
   items:

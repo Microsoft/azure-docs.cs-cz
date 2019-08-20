@@ -128,6 +128,9 @@
         - name: Konfigurace vývojových prostředí
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
+        - name: Správa softwarového prostředí
+          displayName: 'pip, Conda'
+          href: how-to-use-environments.md
         - name: Povolit protokolování
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md

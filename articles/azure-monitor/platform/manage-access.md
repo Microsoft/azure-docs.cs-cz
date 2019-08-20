@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 59e5bbaf8deccdd8218e9c5590266070ed3b5ebb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881427"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624343"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Správa dat protokolu a pracovních prostorů v Azure Monitor
 
@@ -44,12 +44,12 @@ Režim řízení přístupu nakonfigurovaný v pracovním prostoru můžete zobr
 
 ### <a name="configure-from-the-azure-portal"></a>Konfigurace z Azure Portal
 
-Aktuální režim řízení přístupu k pracovnímu prostoru můžete zobrazit na stránce **Přehled** pracovního prostoru v nabídce **Log Analytics pracovní** prostor. 
+Aktuální režim řízení přístupu k pracovnímu prostoru můžete zobrazit na stránce **Přehled** pracovního prostoru v nabídce **Log Analytics pracovní** prostor.
 
 ![Zobrazit režim řízení přístupu k pracovnímu prostoru](media/manage-access/view-access-control-mode.png)
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-1. V Azure Portal vyberte pracovní prostory Log Analytics > pracovní prostor.  
+1. V Azure Portal vyberte pracovní prostory Log Analytics > pracovní prostor.
 
 Toto nastavení můžete změnit na stránce **vlastností** pracovního prostoru. Změna nastavení se zakáže, pokud nemáte oprávnění ke konfiguraci pracovního prostoru.
 
@@ -60,7 +60,7 @@ Toto nastavení můžete změnit na stránce **vlastností** pracovního prostor
 Pomocí následujícího příkazu prověřte režim řízení přístupu pro všechny pracovní prostory v rámci předplatného:
 
 ```powershell
-Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
+Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions}
 ```
 
 Výstup by měl vypadat takto:
@@ -70,10 +70,10 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-Hodnota `False` znamená, že pracovní prostor je nakonfigurovaný pomocí režimu přístupu kontextu pracovního prostoru.  Hodnota `True` znamená, že pracovní prostor je nakonfigurovaný pomocí režimu přístupu kontextu prostředků. 
+Hodnota `False` znamená, že pracovní prostor je nakonfigurovaný pomocí režimu přístupu kontextu pracovního prostoru.  Hodnota `True` znamená, že pracovní prostor je nakonfigurovaný pomocí režimu přístupu kontextu prostředků.
 
->[!NOTE]
->Pokud je pracovní prostor vrácen bez logické hodnoty a je prázdný, bude také odpovídat výsledkům `False` hodnoty.
+> [!NOTE]
+> Pokud je pracovní prostor vrácen bez logické hodnoty a je prázdný, bude také odpovídat výsledkům `False` hodnoty.
 >
 
 Pomocí následujícího skriptu nastavte režim řízení přístupu pro konkrétní pracovní prostor na oprávnění kontextu prostředku:
@@ -81,9 +81,9 @@ Pomocí následujícího skriptu nastavte režim řízení přístupu pro konkr�
 ```powershell
 $WSName = "my-workspace"
 $Workspace = Get-AzResource -Name $WSName -ExpandProperties
-if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $Workspace.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properties -Force
 ```
@@ -92,9 +92,9 @@ Pomocí následujícího skriptu nastavte režim řízení přístupu pro všech
 
 ```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
-if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $_.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
@@ -159,10 +159,10 @@ Role Čtenář Log Analytics zahrnuje Azure takto:
 * Přidání a odebrání řešení pro správu
 
     > [!NOTE]
-    > Aby bylo možné úspěšně provést dvě poslední akce, musí být udělena na úrovni skupiny nebo předplatného resource toto oprávnění.  
+    > Aby bylo možné úspěšně provést dvě poslední akce, musí být udělena na úrovni skupiny nebo předplatného resource toto oprávnění.
 
 * Čtení klíčů účtu úložiště
-* Konfigurace shromažďování protokolů ze služby Azure Storage  
+* Konfigurace shromažďování protokolů ze služby Azure Storage
 * Úprava nastavení monitorování pro prostředky Azure, včetně
   * Přidání rozšíření virtuálního počítače na virtuální počítače
   * Konfigurace diagnostiky Azure pro všechny prostředky Azure
@@ -202,7 +202,7 @@ Když se uživatelé dotazují v protokolech z pracovního prostoru pomocí př�
 | Oprávnění | Popis |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Příklady:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Možnost Zobrazit všechna data protokolu pro daný prostředek.  |
-| `Microsoft.Insights/diagnosticSettings/write ` | Možnost konfigurace nastavení diagnostiky tak, aby povolovala nastavování protokolů pro tento prostředek. |
+| `Microsoft.Insights/diagnosticSettings/write` | Možnost konfigurace nastavení diagnostiky tak, aby povolovala nastavování protokolů pro tento prostředek. |
 
 `/read`oprávnění je obvykle uděleno z role, která zahrnuje  _\*/Read nebo_ _\*_ oprávnění, jako jsou například předdefinované role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) . Všimněte si, že vlastní role, které zahrnují konkrétní akce nebo vyhrazené předdefinované role, nemusí zahrnovat toto oprávnění.
 
@@ -260,7 +260,7 @@ Chcete-li vytvořit roli s přístupem pouze k _SecurityBaseline_ a žádným ji
 * Vlastníci pracovního prostoru se považují za každého jiného uživatele pro řízení přístupu k jednotlivým tabulkám.
 * Chcete-li snížit počet přiřazení, je třeba přiřadit role ke skupinám zabezpečení místo jednotlivých uživatelů. Pomůže vám to také při konfiguraci a ověření přístupu pomocí existujících nástrojů pro správu skupin.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Zobrazit [přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) ke shromažďování dat z počítačů ve vašem datovém centru nebo jiných cloudovém prostředí.
 

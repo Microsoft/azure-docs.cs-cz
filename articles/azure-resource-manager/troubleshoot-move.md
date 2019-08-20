@@ -1,25 +1,25 @@
 ---
-title: Řešení chyb při přesunu prostředků Azure na nové předplatné nebo skupinu prostředků
+title: Řešení chyb při přesunu prostředků Azure do nového předplatného nebo skupiny prostředků
 description: Použití Azure Resource Manageru k přesunutí prostředků do nové skupiny prostředků nebo předplatného.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: e23d7c571a010e5bfb42e5f15368e0194272ed53
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 445ee2784a74a366089a49a0e2f2f17d51ef93bf
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723464"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624306"
 ---
-# <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Řešení potíží s přesun prostředků Azure do nové skupiny prostředků nebo předplatného
+# <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného
 
-Tento článek nabízí návrhy k vyřešení problémů, při přesouvání prostředků.
+Tento článek popisuje návrhy, které vám pomůžou vyřešit problémy při přesunu prostředků.
 
-## <a name="upgrade-a-subscription"></a>Upgradujte předplatné
+## <a name="upgrade-a-subscription"></a>Upgrade předplatného
 
-Pokud chcete skutečně upgradovat vaše předplatné Azure (např. přechod z bezplatné na průběžné platby), musíte převést vaše předplatné.
+Pokud ve skutečnosti chcete upgradovat předplatné Azure (jako je například přepínání z bezplatného na průběžné platby), budete muset převést své předplatné.
 
 * Upgrade bezplatné zkušební verze, najdete v článku [upgradujte vaše předplatné Microsoft Imagine Azure nebo bezplatná zkušební verze na průběžné platby](../billing/billing-upgrade-azure-subscription.md).
 * Chcete-li změnit účet s průběžnými platbami, [změnit předplatné Azure s průběžnými platbami na jinou nabídku](../billing/billing-how-to-switch-azure-offer.md).
@@ -28,19 +28,23 @@ Pokud nelze převést předplatné [vytvoření žádosti o podporu Azure](../az
 
 ## <a name="service-limitations"></a>Omezení služby
 
-Některé služby vyžadují další aspekty při přesouvání prostředků. Pokud přesouváte i tyto služby, ujistěte se, že najdete pokyny a omezení.
+Některé služby vyžadují při přesunu prostředků další předpoklady. Pokud přesouváte následující služby, ujistěte se, že jste zkontrolovali pokyny a omezení.
 
 * [App Services](./move-limitations/app-service-move-limitations.md)
-* [Služby Azure DevOps](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
+* [Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
 * [Model nasazení Classic](./move-limitations/classic-model-move-limitations.md)
+* [Sítě](./move-limitations/networking-move-limitations.md)
 * [Recovery Services](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
 * [Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
-* [Virtuální sítě](./move-limitations/virtual-network-move-limitations.md)
 
-## <a name="large-requests"></a>Velké požadavky.
+## <a name="large-requests"></a>Velké požadavky
 
-Pokud je to možné, přerušení velké přesune do operací přesunu samostatných. Resource Manager okamžitě vrátí chybu, pokud existuje více než 800 prostředky v rámci jedné operace. Ale přesun prostředků menší než 800 selhat také podle vypršení časového limitu.
+Pokud je to možné, přerušení velké přesune do operací přesunu samostatných. Správce prostředků okamžitě vrátí chybu, pokud je v jedné operaci více než 800 prostředků. Ale přesun prostředků menší než 800 selhat také podle vypršení časového limitu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="resource-not-in-succeeded-state"></a>Prostředek není v úspěšném stavu.
 
-Příkazy pro přesun prostředky, najdete v části [přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
+Pokud se zobrazí chybová zpráva s informacemi o tom, že prostředek nelze přesunout, protože není v úspěšném stavu, může se jednat o závislý prostředek, který tento přesun blokuje. Viz [stav závislých prostředků](./move-limitations/networking-move-limitations.md#state-of-dependent-resources).
+
+## <a name="next-steps"></a>Další postup
+
+Příkazy pro přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo](resource-group-move-resources.md)předplatného.

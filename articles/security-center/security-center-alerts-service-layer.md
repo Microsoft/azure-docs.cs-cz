@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f795822d76def4a6695a4746fba7e8566041cb2b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295552"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624769"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Detekce hrozeb pro vrstvu služeb Azure v Azure Security Center
 
@@ -47,6 +47,7 @@ Analýza Security Centerch síťových vrstev vychází z ukázkových [dat IPFI
 |**Podezřelá příchozí síťová aktivita protokolu SSH**|Při analýze ukázkových síťových přenosů se zjistila příchozí komunikace SSH neobvyklé prostředku ve vašem nasazení. Poměrně velký počet příchozích připojení k vašemu prostředku se pro toto prostředí považuje za neobvyklé. Tato aktivita může znamenat pokus o útok hrubou silou vašeho rozhraní SSH.
 |**Podezřelá příchozí síťová aktivita protokolu RDP z více zdrojů**|Při analýze ukázkových síťových přenosů se zjistilo, že příchozí komunikace protokolu RDP z více zdrojů do prostředku v nasazení byla neobvyklé. Různé jedinečné IP adresy, které se připojují k vašemu prostředku, se považují za neobvyklé pro toto prostředí. Tato aktivita může naznačovat pokus o útok hrubou silou vašeho rozhraní RDP z více hostitelů (botnetu).|
 |**Podezřelá příchozí síťová aktivita protokolu RDP**|Při analýze ukázkových síťových přenosů bylo zjištěno, že příchozí komunikace protokolu RDP neobvyklé do prostředku v nasazení. Poměrně velký počet příchozích připojení k vašemu prostředku se pro toto prostředí považuje za neobvyklé. Tato aktivita může znamenat pokus o útok hrubou silou vašeho rozhraní SSH.|
+|**Byla zjištěna síťová komunikace se škodlivou adresou.**|Analýza analýzy síťových přenosů zjistila komunikaci pocházející z prostředku ve vašem nasazení s možným příkazem a řízením (C & C) Server. Upozorňujeme, že tento typ aktivity může způsobit, že externí entity označí vaši IP adresu jako škodlivou.|
 
 Informace o tom, jak Security Center můžou použít signály související se sítí pro použití ochrany před hrozbami, najdete [v tématu heuristické detekce služby DNS v Azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
 ## Vrstva správy Azure (Azure Resource Manager) (Preview)<a name ="management-layer"></a>
@@ -77,4 +78,4 @@ Security Center nabízí další úroveň ochrany tím, že využívá Azure Res
 > 3. V části **Povolit integrace**zrušte zaškrtnuté políčko **Povolit Microsoft Cloud App Security přístup k datům**a klikněte na **Uložit**.
 
 >[!NOTE]
->Azure Security Center ukládá zákaznická data týkající se zabezpečení ve stejné geografické podobě jako její prostředek. Pokud společnost Microsoft ještě není nasazená Azure Security Center v geografickém prostředku, uloží data do USA. Pokud je povolená Microsoft Cloud App Security (MCAS), ukládají se tyto informace v souladu s pravidly geografického umístění MCAS. Další informace najdete v tématu [úložiště dat pro jiné než regionální služby](http://azuredatacentermap.azurewebsites.net/).
+>Azure Security Center ukládá zákaznická data týkající se zabezpečení ve stejné geografické podobě jako její prostředek. Pokud společnost Microsoft ještě není nasazená Azure Security Center v geografickém prostředku, uloží data do USA. Pokud je povolená Microsoft Cloud App Security (MCAS), ukládají se tyto informace v souladu s pravidly geografického umístění MCAS. Další informace najdete v tématu [úložiště dat pro jiné než regionální služby](https://azuredatacentermap.azurewebsites.net/).

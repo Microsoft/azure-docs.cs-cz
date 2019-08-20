@@ -273,6 +273,8 @@
       items:
         - name: Upgrade na Gen2
           href: upgrade-to-latest-generation.md
+        - name: Správa výpočetních služeb
+          href: manage-compute-with-azure-functions.md
         - name: Monitorování úloh – portál
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: Monitorování úloh – DMV

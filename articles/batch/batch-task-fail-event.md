@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/20/2017
+ms.date: 08/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 68c57fbf510d923c4c87bc180a935965a511dc26
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: aa56b0ead8edc17efe74547f6374a3f8888970b5
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322903"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624202"
 ---
 # <a name="task-fail-event"></a>Událost selhání úlohy
 
@@ -87,8 +87,8 @@ ms.locfileid: "68322903"
 
 |Název elementu|type|Poznámky|
 |------------------|----------|-----------|
-|startTime|Datetime|Čas spuštění úlohy. ' Running ' odpovídá stavu spuštěno  , takže pokud úloha určí soubory prostředků nebo balíčky aplikací, pak čas spuštění odráží čas, kdy se úloha spustila stahování nebo nasazování.  Pokud byl úkol restartován nebo opakován, jedná se o poslední čas spuštění úlohy.|
-|endTime|Datetime|Čas, kdy byla úloha dokončena.|
+|startTime|DateTime|Čas spuštění úlohy. ' Running ' odpovídá stavu spuštěno , takže pokud úloha určí soubory prostředků nebo balíčky aplikací, pak čas spuštění odráží čas, kdy se úloha spustila stahování nebo nasazování.  Pokud byl úkol restartován nebo opakován, jedná se o poslední čas spuštění úlohy.|
+|endTime|DateTime|Čas, kdy byla úloha dokončena.|
 |exitCode|Int32|Ukončovací kód úkolu|
 |retryCount|Int32|Počet opakovaných pokusů o úlohu službou Batch. Úloha se zopakuje, pokud se ukončí s nenulovým ukončovacím kódem, až do zadaného MaxTaskRetryCount.|
 |requeueCount|Int32|Počet, kolikrát se služba Batch znovu zařadila do fronty jako výsledek požadavku uživatele.<br /><br /> Když uživatel odebere uzly z fondu (změnou velikosti nebo zmenšení fondu) nebo když je úloha zakázaná, může uživatel určit, že spuštěné úlohy na uzlech se mají znovu zařadit do fronty ke spuštění. Tento počet sleduje, kolikrát se úkol z těchto důvodů znovu zařadil do fronty.|

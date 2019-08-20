@@ -1,96 +1,100 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure AD Domain Services
+summary: Naučte se používat Azure Active Directory Domain Services k ověřování pomocí protokolů Kerberos nebo NTLM pro aplikace a připojovat virtuální počítače Azure ke spravované doméně.
 metadata:
   title: Dokumentace ke službě Azure AD Domain Services
-  description: 'Naučte se, jak můžete používat Active Directory Domain Services k připojení virtuálních počítačů Azure k doméně bez použití řadiče domény. Kurzy a další dokumentace ukazují, jak můžete spravovat virtuální počítače pomocí zásad skupiny.'
-  keywords: 'Azure AD, Azure, domain join, group policy, LDAP, Kerberos, domain controller, DC, lift and shift'
+  description: Naučte se používat Azure Active Directory Domain Services k ověřování pomocí protokolů Kerberos nebo NTLM pro aplikace a připojovat virtuální počítače Azure ke spravované doméně.
+  services: service
+  ms.service: active-directory
+  ms.subservice: domain-services
+  ms.topic: landing-page
+  ms.collection: collection
   author: iainfoulds
   ms.author: iainfou
   manager: daveba
-  ms.date: 05/22/2019
-  ms.topic: landing-page
-  ms.devlang: na
-  ms.service: active-directory
-  ms.subservice: domain-services
-sections:
-  - items:
-      - type: markdown
-        text: 'Naučte se, jak můžete používat Active Directory Domain Services k připojení virtuálních počítačů Azure k doméně bez použití řadiče domény. Kurzy a další dokumentace ukazují, jak můžete spravovat virtuální počítače pomocí zásad skupiny.'
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: overview.md
-            html: '<p>Přečtěte si, k čemu se dá služba Azure AD Domain Services využít.</p>'
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_investigate.svg'
-            title: Co je služba Azure Active Directory Domain Services?
-          - href: create-instance.md
-            html: <p>Tento jednoduchý názorný postup vám umožní vytvořit si vlastní spravovanou doménu.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
-            title: Začínáme
-          - href: contact-us.md
-            html: <p>Získejte pomoc ve správný čas.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_support.svg'
-            title: Získat podporu
-          - href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
-            html: <p>Projděte si nové funkce služby Azure AD Domain Services.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_whats-new.svg'
-            title: Co je nového
-  - title: Videa
-    items:
-      - type: markdown
-        text: '>[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]'
-  - title: Články věnované plánování
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="comparison.md">Rozhodnutí, jestli tato služba je pro vás vhodná</a>'
-          - html: <a href="active-directory-ds-features.md">Funkce služby Azure AD Domain Services</a>
-          - html: <a href="scenarios.md">Možné využití této služby</a>
-          - html: <a href="synchronization.md">Princip fungování synchronizace ve službě Azure AD Domain Services</a>
-          - html: '<a href="https://azure.microsoft.com/pricing/details/active-directory-ds/">Ceny služby Azure AD Domain Services</a>'
-  - title: Aplikace a Azure AD Domain Services
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="deploy-azure-app-proxy.md">Nasazení proxy aplikací Azure AD</a>
-          - html: <a href="deploy-sp-profile-sync.md">Synchronizace profilu pro SharePoint Server</a>
-          - html: <a href="deploy-kcd.md">Konfigurace omezeného delegování Kerberos</a>
-  - title: Články s návody
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="check-health.md">Kontrola stavu spravované domény</a>
-          - html: <a href="csp.md">Předplatná Azure CSP a Azure AD Domain Services</a>
-          - html: <a href="manage-dns.md">Správa DNS</a>
-          - html: <a href="network-considerations.md">Výběr virtuální sítě</a>
-          - html: <a href="configure-ldaps.md">Konfigurace protokolu Secure LDAP</a>
-          - html: <a href="create-ou.md">Vytvoření organizační jednotky</a>
-          - html: <a href="manage-group-policy.md">Správa zásad skupiny</a>
-  - title: Články věnované řešení potíží
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="troubleshoot.md">Průvodce řešením problémů</a>
-          - html: <a href="troubleshoot-alerts.md">Řešení potíží s upozorněními ve spravované doméně</a>
-          - html: <a href="faqs.md">Nejčastější dotazy</a>
-          - html: '<a href="https://azure.microsoft.com/support/options/">Získat podporu</a>'
-  - title: Další prostředky
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://feedback.azure.com/forums/169401-azure-active-directory/">Váš názor na Azure AD Domain Services na UserVoice</a>'
-          - html: '<a href="https://azure.microsoft.com/roadmap/?category=security-identity">Plány Azure do budoucna</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-contact-us">Kontaktujte nás</a>'
+  ms.date: 08/01/2019
+  ms.openlocfilehash: 3c97b7bbb652fd26e5c8fdb6d20576a3c9e70421
+  ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/19/2019
+  ms.locfileid: "69612870"
+landingContent:
+- title: Další informace o Azure AD Domain Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Azure Active Directory Domain Services?
+      url: overview.md
+    - text: Porovnání řešení identit
+      url: compare-identity-solutions.md
+    - text: Jak funguje synchronizace?
+      url: synchronization.md
+    - text: Nejčastější dotazy
+      url: faqs.md
+- title: Začínáme
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Vytvoření spravované domény
+      url: tutorial-create-instance.md
+  - linkListType: tutorial
+    links:
+    - text: Připojení virtuálního počítače s Windows Serverem k doméně
+      url: join-windows-vm.md
+    - text: Instalace nástrojů pro správu
+      url: tutorial-create-management-vm.md
+- title: Konfigurace
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Konfigurace protokolu Secure LDAP
+      url: tutorial-configure-ldaps.md
+  - linkListType: how-to-guide
+    links:
+    - text: Povolení synchronizace hodnoty hash hesel
+      url: active-directory-ds-getting-started-password-sync-synced-tenant.md
+    - text: Vytvoření organizační jednotky
+      url: create-ou.md
+    - text: Konfigurace omezeného delegování Kerberos
+      url: deploy-kcd.md
+    - text: Zabezpečení spravované domény
+      url: secure-your-domain.md
+- title: Spravovat
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa zásad skupiny
+      url: manage-group-policy.md
+    - text: Správa DNS
+      url: manage-dns.md
+    - text: Kontrola stavu
+      url: check-health.md
+    - text: Konfigurace e-mailových oznámení
+      url: notifications.md
+    - text: Povolení auditů zabezpečení (Preview)
+      url: security-audit-events.md
+- title: Virtuální počítače připojené k doméně
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Windows Server
+      url: join-windows-vm.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ubuntu Server
+      url: join-ubuntu-linux-vm.md
+    - text: Red Hat Enterprise Linux
+      url: join-rhel-linux-vm.md
+- title: Řešení potíží
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Běžné problémy
+      url: troubleshoot.md
+    - text: Běžné výstražné zprávy
+      url: troubleshoot-alerts.md
+    - text: Problémy se skupinami zabezpečení sítě
+      url: alert-nsg.md
+    - text: Problémy s protokolem Secure LDAP
+      url: alert-ldaps.md

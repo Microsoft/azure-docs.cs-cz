@@ -19,6 +19,10 @@
 - name: Koncepty
   expanded: false
   items:
+    - name: Využití podmíněného přístupu
+      href: howto-conditional-access-adoption-kit.md
+    - name: Běžné zásady podmíněného přístupu
+      href: concept-conditional-access-policy-common.md
     - name: Podmínky
       href: conditions.md
     - name: Podmínky umístění
@@ -38,6 +42,22 @@
       href: plan-conditional-access.md
     - name: Osvědčené postupy
       href: best-practices.md
+    - name: Šablony běžných zásad
+      items:
+        - name: Vyžadování MFA pro správce
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: Vyžadování MFA pro správu Azure
+          href: howto-conditional-access-policy-azure-management.md
+        - name: Blokování starší verze ověřování
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: Podmíněný přístup podle rizika
+          href: howto-conditional-access-policy-risk.md
+        - name: Vyžadování důvěryhodného umístění pro registraci MFA
+          href: howto-conditional-access-policy-registration.md
+        - name: Blokování přístupu podle umístění
+          href: howto-conditional-access-policy-location.md
+        - name: 'Vyžadování zařízení, které splňuje požadavky'
+          href: howto-conditional-access-policy-compliant-device.md
     - name: Blokování starší verze ověřování
       href: block-legacy-authentication.md
     - name: Podmíněný přístup pro registrace MFA

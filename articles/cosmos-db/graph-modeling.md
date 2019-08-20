@@ -1,116 +1,116 @@
 ---
-title: Data grafu modelování pro rozhraní Gremlin API služby Azure Cosmos DB
-description: Zjistěte, jak model databáze grafu pomocí Gremlin API služby Cosmos DB.
+title: Modelování dat grafu pro Azure Cosmos DB rozhraní Gremlin API
+description: Naučte se modelovat databázi grafu pomocí Cosmos DB rozhraní Gremlin API.
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: c6ae23efa90874bbefc2aff35f8798aa6c0da791
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 94df90db4a715d2540dfc5ec0aa521d76d22f757
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503417"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624216"
 ---
-# <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Data grafu modelování pro rozhraní Gremlin API služby Azure Cosmos DB
+# <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modelování dat grafu pro Azure Cosmos DB rozhraní Gremlin API
 
-Následující dokument je navržené pro poskytování doporučení modelování dat grafu. Tento krok je důležité, aby bylo možné zajistit škálovatelnost a výkon databáze systému grafu jako data vyvíjí. Efektivní datový model je obzvláště důležité pomocí rozsáhlých grafů.
+Následující dokument je navržený tak, aby poskytoval doporučení pro modelování dat grafu. Tento krok je důležitý, aby se zajistila škálovatelnost a výkon databázového systému grafu jako vývoj dat. Efektivní datový model je obzvláště důležitý u rozsáhlých grafů.
 
 ## <a name="requirements"></a>Požadavky
 
-Proces popsaný v této příručce jsou založené na následující předpoklady:
- * **Entity** jsou určeny v oboru problém. Tyto entity jsou určené ke spotřebě _atomicky_ pro každý požadavek. Jinými slovy databázový systém není určená k načtení jedné entity data ve více požadavků na dotazy.
- * Je znalost **čtení a zápis požadavků** pro databázový systém. Tyto požadavky vás provedou optimalizace potřebné pro grafovému datovému modelu.
- * Zásady [Apache Tinkerpop vlastnost graph standardní](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) jsou dobře pochopitelné.
+Proces popsaný v této příručce je založený na následujících předpokladech:
+ * Identifikují se **entity** v místě problému. Tyto entity mají být pro každý požadavek spotřebovány atomicky. Jinými slovy, databázový systém není navržený tak, aby načetl data jedné entity v rámci více požadavků na dotazy.
+ * Pro databázový systém je potřeba pochopit **požadavky na čtení a zápis** . Tyto požadavky budou mít na výběr optimalizace potřebné pro datový model grafu.
+ * Principy [standardu grafu vlastností Apache Tinkerpop](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) se dobře rozumí.
 
-## <a name="when-do-i-need-a-graph-database"></a>Kdy potřebuji databáze grafů?
+## <a name="when-do-i-need-a-graph-database"></a>Kdy potřebuji databázi grafu?
 
-Řešení databáze grafu je možné optimálně případě použít entit a vztahů v doméně data mají některý z následujících vlastností: 
+Řešení databáze grafu se dá optimálně použít, pokud entity a relace v datové doméně mají některou z těchto vlastností: 
 
-* Entity jsou **vysoce připojené** prostřednictvím popisný vztahy. Výhoda v tomto scénáři je skutečnost, že jsou vztahy uchovávaných v úložišti.
-* Existují **cyklické vztahy** nebo **svým odkazované entity**. Tento model se často výzvy při použití relační nebo dokumentu databáze.
-* Existují **dynamicky vyvíjejí vztahy** mezi entitami. Tento model platí zejména pro hierarchické nebo stromové struktury strukturovaná data s více úrovněmi.
-* Existují **many-to-many vztahy** mezi entitami.
-* Existují **zápis a čtení požadavky na entitami a relacemi**. 
+* Entity jsou **vysoce propojené** prostřednictvím popisných vztahů. Výhodou v tomto scénáři je skutečnost, že se relace ukládají do úložiště.
+* Existují **cyklické relace** nebo **entity s odkazem na sebe**. Tento model je často problémem při použití relačních nebo dokumentových databází.
+* Mezi entitami probíhá **dynamické vyvíjejíní vztahů** . Tento model je obzvláště použitelný pro hierarchická nebo strukturovaná data s mnoha úrovněmi.
+* Mezi entitami existuje několik **vztahů mezi několika různými** entitami.
+* Existují **požadavky na zápis a čtení u entit i vztahů**. 
 
-Splnění výše uvedená kritéria, je pravděpodobné, že přístup databáze grafu poskytne výhody pro **dotazování složitost**, **datový model rozšiřitelnosti**, a **výkonudotazů**.
+Pokud jsou výše uvedená kritéria splněna, je pravděpodobnější, že přístup k databázi grafu bude mít výhody pro **složitost dotazů**, **škálovatelnost datového modelu**a **výkon dotazů**.
 
-Dalším krokem je určit, pokud se bude používat pro účely analýzy a transakční grafu. Pokud graf je určena pro použití pro náročné výpočty a zpracování dat, bylo by vhodné prozkoumat [konektor Cosmos DB Spark](https://docs.microsoft.com/azure/cosmos-db/spark-connector) a použití [GraphX knihovny](https://spark.apache.org/graphx/). 
+Dalším krokem je určit, jestli se má graf použít pro účely analýzy nebo transakce. Pokud je graf určený k použití pro náročné úlohy výpočtů a zpracování dat, je vhodné prozkoumat [Cosmos DB konektor Spark](https://docs.microsoft.com/azure/cosmos-db/spark-connector) a použít [knihovnu GRAPHX](https://spark.apache.org/graphx/). 
 
-## <a name="how-to-use-graph-objects"></a>Jak pomocí objektů grafu
+## <a name="how-to-use-graph-objects"></a>Jak používat objekty grafu
 
-[Apache Tinkerpop vlastnost graph standardní](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) definuje dva typy objektů **vrcholy** a **hrany**. 
+[Standard pro Tinkerpop sady Apache](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) definuje dva typy objektů vrcholů a **hran**. 
 
-Tady jsou osvědčené postupy pro vlastnosti v grafu objektů:
+Níže jsou uvedené osvědčené postupy pro vlastnosti v objektech grafu:
 
-| Object | Vlastnost | Type | Poznámky |
+| Object | Vlastnost | type | Poznámky |
 | --- | --- | --- |  --- |
-| Vertex | id | String | Jednoznačně vynucena na oddíl. Pokud hodnota není zadaná při vložení a automaticky generovaný identifikátor GUID se uloží. |
-| Vertex | label | String | Tato vlastnost se používá k definování typu entity, která reprezentuje vrchol. Pokud není zadána hodnota, použije se výchozí hodnota "vrcholu". |
-| Vertex | properties | Řetězec, logická hodnota, číselné | Seznam samostatné vlastnosti uložené jako páry klíč hodnota v každý vrchol. |
-| Vertex | Klíč oddílu | Řetězec, logická hodnota, číselné | Tato vlastnost definuje, kde bude uložena vrcholu a hrany, které její odchozí. Další informace o [dělení grafů](graph-partitioning.md). |
-| Edge | id | String | Jednoznačně vynucena na oddíl. Automaticky generované ve výchozím nastavení. Okraje obvykle nemají potřeba jednoznačně načíst podle ID. |
-| Edge | label | String | Tato vlastnost se používá k definování typu vztahu, který jste dvěma vrcholy. |
-| Edge | properties | Řetězec, logická hodnota, číselné | Seznam samostatné vlastnosti uložené jako páry klíč hodnota v každé hrany. |
+| Vertex | id | Řetězec | Jedinečně vynutilo na oddíl. Pokud při vložení nezadáte hodnotu a automaticky vygenerovaný identifikátor GUID bude uložen. |
+| Vertex | label | Řetězec | Tato vlastnost slouží k definování typu entity, kterou vrchol představuje. Pokud hodnota není zadaná, použije se výchozí hodnota "vrchol". |
+| Vertex | properties | Řetězec, logická hodnota, číselná hodnota | Seznam samostatných vlastností uložených jako páry klíč-hodnota v každém vrcholu. |
+| Vertex | klíč oddílu | Řetězec, logická hodnota, číselná hodnota | Tato vlastnost určuje, kde budou uloženy vrcholy a jejich odchozí okraje. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). |
+| Edge | id | Řetězec | Jedinečně vynutilo na oddíl. Automaticky generuje standardně. Okraje obvykle nemají jedinečně načteny IDENTIFIKÁTORem. |
+| Edge | label | Řetězec | Tato vlastnost slouží k definování typu vztahu, který má dva vrcholy. |
+| Edge | properties | Řetězec, logická hodnota, číselná hodnota | Seznam samostatných vlastností uložených jako páry klíč-hodnota v jednotlivých hraničních zařízeních. |
 
 > [!NOTE]
-> Okraje nevyžadují hodnotu klíče oddílu, protože jeho hodnota se automaticky přiřadí podle jejich zdrojový vrchol. Další informace najdete v [dělení grafů](graph-partitioning.md) článku.
+> Okraje nevyžadují hodnotu klíče oddílu, protože její hodnota je automaticky přiřazena na základě jejich zdrojového vrcholu. Další informace najdete v článku [dělení grafů](graph-partitioning.md) .
 
-## <a name="entity-and-relationship-modeling-guidelines"></a>Entity a pokyny pro modelování vztahů
+## <a name="entity-and-relationship-modeling-guidelines"></a>Pravidla modelování entit a vztahů mezi entitami
 
-Následují sadu pokynů k přístup datům modelování pro databázi Azure Cosmos DB Gremlin API graph. Tyto pokyny předpokládají, že je existující definici dat domény a dotazy pro něj.
-
-> [!NOTE]
-> Kroky uvedené níže jsou uvedeny jako doporučení. Finálního modelu musí být vyhodnocen a před uvážení jako připravené pro produkční prostředí otestovat. Kromě toho jsou specifické pro implementaci rozhraní Gremlin API služby Azure Cosmos DB následující doporučení. 
-
-### <a name="modeling-vertices-and-properties"></a>Modelování vrcholů a vlastnosti 
-
-Prvním krokem pro grafovému datovému modelu je pro každé zjištěné entity k mapování **vrcholu objekt**. Mapování 1: 1 všechny entity, které vrcholy by měla být počáteční krok a mohou se změnit.
-
-Jeden společný trávení je do mapy – vlastnosti jedné entity jako samostatné vrcholy. Podívejte se na příklad, níže, kde je stejná entita reprezentován dvěma různými způsoby:
-
-* **Na základě vrcholu vlastnosti**: V takovém případě entity používá tři samostatné vrcholů a hran dvě popsat její vlastnosti. Přestože tento přístup může vést ke snížení redundance, jeho hodnota se zvyšuje složitost modelu. Zvýšení složitosti modelu může vést k přidání latenci, složitosti dotazu a výpočtu nákladů. Tento model může také nést výzvy při dělení.
-
-![Model entity s vrcholů vlastnosti.](./media/graph-modeling/graph-modeling-1.png)
-
-* **Vložit vlastnost vrcholy**: Tento přístup využívá dvojice klíč hodnota v seznamu k reprezentaci všech vlastností entity uvnitř vrcholu. Tento přístup poskytuje snížené modelu složitost, což povede k jednodušší dotazy a další nákladově efektivní procházení.
-
-![Model entity s vrcholů vlastnosti.](./media/graph-modeling/graph-modeling-2.png)
+Níže jsou uvedeny pokyny pro přístup k modelování dat pro Azure Cosmos DB databázi rozhraní API Gremlin. Tyto pokyny předpokládají, že existuje existující definice datové domény a dotazů.
 
 > [!NOTE]
-> Výše uvedené příklady ukazují zjednodušený graf z modelu chcete zobrazit pouze porovnání mezi dvěma způsoby dělení hodnoty vlastností entity.
+> Níže uvedené kroky jsou uvedeny jako doporučení. Finální model by měl být vyhodnocen a testován před jeho zvážením jako připravený pro produkční prostředí. Kromě toho níže uvedená doporučení jsou specifická pro implementaci rozhraní Gremlin API pro Azure Cosmos DB. 
 
-**Vložených vlastností vrcholy** vzor obvykle poskytuje další výkonné a škálovatelný přístup. Výchozí přístup k nové grafovému datovému modelu by měl gravitate pro tento model.
+### <a name="modeling-vertices-and-properties"></a>Vrcholy a vlastnosti modelování 
 
-Existují ale scénáře, kde odkazuje na vlastnost může poskytovat výhody. Příklad: Pokud vlastnost odkazované se často aktualizuje. Pomocí samostatných vrcholu za účelem zastoupení neustále změněná vlastnost by minimalizovali množství operací zápisu, které by vyžadovaly aktualizace.
+Prvním krokem pro datový model grafu je namapovat každou identifikovanou entitu na **objekt vrcholu**. Jedno pro mapování všech entit na vrcholy by mělo být počáteční krok a může se změnit.
 
-### <a name="relationship-modeling-with-edge-directions"></a>Vztah modelování edge pokyny
+Jednou z běžných Pitfall je mapovat vlastnosti jedné entity jako samostatné vrcholy. Vezměte v úvahu následující příklad, ve kterém je stejná entita zastoupena dvěma různými způsoby:
 
-Jakmile jsou modelovány vrcholy, hrany lze přidat k označení vztahy mezi nimi. Je první aspektem, který je potřeba zhodnotit **směr relace**. 
+* **Vlastnosti založené na vrcholu**: V tomto přístupu entita používá tři samostatné vrcholy a dva hrany k popisu jejích vlastností. I když tento přístup může snížit redundanci, zvyšuje složitost modelu. Zvýšení složitosti modelu může mít za následek přidání latence, složitosti dotazu a výpočetních nákladů. Tento model může také prezentovat problémy při dělení.
 
-Hraniční objekty mají výchozí směr, který je následován přechod zálohovaných při použití `out()` nebo `outE()` funkce. Pomocí této přirozené směr výsledkem efektivní operace, protože jsou uložené všechny vrcholy s jejich odchozí okrajů. 
+![Model entity s vrcholy pro vlastnosti](./media/graph-modeling/graph-modeling-1.png)
 
-Ale procházení v opačném směru okraj, pomocí `in()` fungovat, bude vždy výsledkem dotazu napříč oddíly. Další informace o [dělení grafů](graph-partitioning.md). Pokud je potřeba neustále procházet pomocí `in()` funkce, doporučuje se přidat hrany v obou směrech.
+* **Vrcholy vložené vlastností**: Tento přístup využívá výhod seznamu párů klíč-hodnota, který představuje všechny vlastnosti entity uvnitř vrcholu. Tento přístup poskytuje nižší složitost modelu, což vede k jednodušším dotazům a efektivnějším procházeníům.
 
-Směr edge můžete určit pomocí `.to()` nebo `.from()` predikáty k `.addE()` kroku Gremlin. Nebo s použitím [BulkExecutor knihovny pro rozhraní Gremlin API](bulk-executor-graph-dotnet.md).
+![Model entity s vrcholy pro vlastnosti](./media/graph-modeling/graph-modeling-2.png)
 
 > [!NOTE]
-> Hraniční objekty mají ve výchozím nastavení směru.
+> Výše uvedené příklady znázorňují zjednodušený model grafu pro zobrazení porovnání dvou způsobů dělení vlastností entit.
+
+Vzor **vrcholů vložené vlastnosti** obecně poskytuje pokročilejší a škálovatelný přístup. Výchozí přístup k novému datovému modelu grafu by měl gravitate k tomuto vzoru.
+
+Existují však situace, kdy odkazování na vlastnost může poskytovat výhody. Příklad: Pokud je odkazovaná vlastnost často aktualizována. Použití samostatného vrcholu pro reprezentaci vlastnosti, která se neustále mění, by minimalizovalo množství operací zápisu, které by tato aktualizace vyžadovala.
+
+### <a name="relationship-modeling-with-edge-directions"></a>Modelování vztahů s směry Edge
+
+Po modelování vrcholů lze přidat okraje k označení vztahů mezi nimi. První aspekt, který je nutné vyhodnotit, je **Směr vztahu**. 
+
+Při použití `out()` funkce or `outE()` mají objekty Edge výchozí směr, který následuje po průchodu. Použití tohoto přirozeného směru vede k efektivní operaci, protože všechny vrcholy jsou uloženy spolu s jejich odchozími okraji. 
+
+Procházení v opačném směru hrany na okraji ale pomocí `in()` funkce vždy způsobí dotaz na více oddílů. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). Pokud je potřeba nepřetržitě procházet pomocí `in()` funkce, doporučujeme přidat hrany v obou směrech.
+
+Můžete určit směr okraje pomocí `.to()` predikátů `.addE()` nebo `.from()` v kroku Gremlin. Nebo pomocí [knihovny hromadných prováděcích modulů pro rozhraní Gremlin API](bulk-executor-graph-dotnet.md).
+
+> [!NOTE]
+> Objekty Edge mají ve výchozím nastavení směr.
 
 ### <a name="relationship-labeling"></a>Popisky vztahů
 
-Používání popisků popisný vztah může zvýšit efektivitu edge rozlišení operací. Tento vzor lze použít následujícími způsoby:
-* Obecné podmínky použití pro popisek vztahu
-* Popisek Zdrojový vrchol s popiskem Cílový vrchol přidružte název relace.
+Použití popisků popisných vztahů může zlepšit efektivitu operací řešení Edge. Tento model lze použít následujícími způsoby:
+* Použijte neobecné výrazy k označení vztahu.
+* Přidružte popisek zdrojového vrcholu k popisku cílového vrcholu s názvem relace.
 
-![Vztah, označování popisky příklady.](./media/graph-modeling/graph-modeling-3.png)
+![Příklady popisků vztahů.](./media/graph-modeling/graph-modeling-3.png)
 
-Čím více konkrétní popisek, který traverser použije k filtrování hrany, tím lépe. Toto rozhodnutí může mít významný dopad na i náklady na dotazu. Kdykoli můžete vyhodnotit náklady na dotaz [použití kroku executionProfile](graph-execution-profile.md).
+Přesnější popisek, který bude používat k filtrování okrajů, lepší. Toto rozhodnutí může mít výrazný dopad i na náklady na dotaz. Náklady na dotaz můžete kdykoli vyhodnotit [pomocí kroku executionProfile](graph-execution-profile.md).
 
 
 ## <a name="next-steps"></a>Další kroky: 
-* Podívejte se na seznam nepodporuje [kroků konzoly Gremlin](gremlin-support.md).
-* Další informace o [grafu, vytváření oddílů databáze](graph-partitioning.md) řešit rozsáhlé grafy.
-* Vyhodnoťte vaše dotazy Gremlin pomocí [kroku spuštění profilu](graph-execution-profile.md).
+* Podívejte se na seznam podporovaných [Gremlin kroků](gremlin-support.md).
+* Přečtěte si o [vytváření oddílů databáze grafů](graph-partitioning.md) , které vám umožní pracovat s velkými grafy.
+* Vyhodnoťte dotazy Gremlin pomocí [kroku profil spuštění](graph-execution-profile.md).

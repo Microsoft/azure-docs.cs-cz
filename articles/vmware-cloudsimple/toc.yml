@@ -111,15 +111,19 @@
         - name: Nastavení virtuálních počítačů VMware pro privátní cloud
           items:
             - name: Vytvoření virtuálního počítače v Azure
-              href: 'https://docs.azure.cloudsimple.com/azure-create-vm/'
+              href: azure-create-vm.md
+            - name: Správa virtuálních počítačů v Azure
+              href: azure-manage-vm.md
     - name: Návody
       items:
         - name: Zabezpečení vašeho prostředí
           href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
         - name: Správa privátního cloudu
           items:
+            - name: Zvýšení úrovně oprávnění pro privátní cloud
+              href: escalate-privileges.md
             - name: Nastavení úloh DNS a DHCP
-              href: 'https://docs.azure.cloudsimple.com/dns-dhcp-setup/'
+              href: dns-dhcp-setup.md
             - name: Síť VPN NSX vrstvy 2 pro migraci
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
         - name: Sítě privátního cloudu
@@ -133,11 +137,11 @@
         - name: Platforma VMware
           items:
             - name: Seznámení s modelem oprávnění privátního cloudu
-              href: 'https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/'
+              href: learn-private-cloud-permissions.md
             - name: Zdroje identit VCenter
               href: set-vcenter-identity.md
             - name: Azure Application Gateway s virtuálními počítači VMware
-              href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
+              href: azure-application-gateway.md
             - name: Konfigurace serveru vCenter privátního cloudu jako koncového bodu automatizace vRealize
               href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
             - name: Migrace virtuálních počítačů úloh do privátního cloudu
@@ -147,7 +151,7 @@
         - name: Ekosystém VMware
           items:
             - name: Zálohování virtuálních počítačů úloh
-              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
+              href: backup-workloads-veeam.md
             - name: Průvodce řešením VMware Horizon
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: Konfigurace šifrování vSAN pro váš privátní cloud

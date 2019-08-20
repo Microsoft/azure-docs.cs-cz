@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/13/2019
+ms.date: 08/19/2019
 ms.author: dalek
-ms.openlocfilehash: 4029a9e46b9c9bb7cbd677deff4a172d8fc982f8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: c3da37d89da8c70f6acdfb1b5ab9c5b10edb86f0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534589"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624406"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro Application Insights
 
@@ -103,7 +103,7 @@ K omezení shromážděných dat můžete použít denní limit objemu. Pokud se
 
 Místo používání denního limitu objemu použijte [vzorkování](../../azure-monitor/app/sampling.md) pro optimalizaci objemu dat na požadovanou úroveň. Pak použijte denní limit jenom jako "poslední" – pro případ, že vaše aplikace neočekávaně začne odesílat mnohem větší objem telemetrie.
 
-Chcete-li změnit denní limit, v části **Konfigurace** prostředku Application Insights v podokně **využití a odhadované náklady** vyberte možnost **denní limit**.
+Pokud chcete změnit denní limit, v části **Konfigurace** prostředku Application Insights klikněte na stránce **využití a odhadované náklady** na **denní limit**.
 
 ![Upravit denní limit telemetrie](./media/pricing/pricing-003.png)
 
@@ -135,11 +135,13 @@ U každého uchovávaného záznamu `itemCount` označuje počet původních zá
 
 ## <a name="change-the-data-retention-period"></a>Změnit dobu uchování dat
 
-Application Insights teď zaregistruje omezený počet Application Insights zákazníků do naší verze Preview pro uchování proměnných. Informace o tom, jak se zapojit do tohoto programu v této verzi Preview, [najdete tady](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031).
+Výchozí doba uchování pro Application Insights prostředky je 90 dní. Pro každý prostředek Application Insights lze vybrat různá období uchování. Úplná sada dostupných dob uchovávání dat je 30, 60, 90, 120, 180, 270, 365, 550 nebo 730 dnů. 
 
-Výchozí doba uchování pro Application Insights prostředky je 90 dní. Pro každý prostředek Application Insights lze vybrat různá období uchování. Úplná sada dostupných dob uchovávání dat je 30, 60, 120, 180, 270, 365, 550 nebo 730 dnů. 
+Pokud chcete změnit dobu uchovávání, z prostředku Application Insights přejděte na stránku **využití a odhadované náklady** a vyberte možnost **uchování dat** :
 
-Když je fakturace povolená pro delší dobu uchování, data uchovávaná déle než 90 dní se budou účtovat jako stejná sazba, která se aktuálně účtuje za Azure Log Analytics uchovávání dat. Další informace najdete na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).  [Pro tento návrh](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)můžete mít přehled o průběhu proměnlivého uchovávání dat. 
+![Upravit denní limit telemetrie](./media/pricing/pricing-005.png)
+
+Když je fakturace povolená pro delší dobu uchování, data uchovávaná déle než 90 dní se budou účtovat jako stejná sazba, která se aktuálně účtuje za Azure Log Analytics uchovávání dat. Další informace najdete na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). [Pro tento návrh](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)můžete mít přehled o průběhu proměnlivého uchovávání dat. 
 
 ## <a name="limits-summary"></a>Souhrn omezení
 
@@ -206,7 +208,7 @@ Vzhledem k tomu, že tato úroveň platí jenom pro zákazníky s předplatným 
 Pomocí správy prostředků Azure můžete napsat skript pro nastavení cenové úrovně. [Zjistěte jak](powershell.md#price).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Vzorkování](../../azure-monitor/app/sampling.md)
 

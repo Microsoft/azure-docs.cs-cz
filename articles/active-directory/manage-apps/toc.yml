@@ -29,6 +29,8 @@
           items:
             - name: Začínáme s integrací aplikací
               href: plan-an-application-integration.md
+            - name: Plánování nasazení přístupového panelu
+              href: access-panel-deployment-plan.md
             - name: Pokyny pro vývojáře
               href: developer-guidance-for-integrating-applications.md
         - name: Jednotné přihlašování

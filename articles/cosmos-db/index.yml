@@ -64,7 +64,7 @@ sections:
               src: media/index/spark-logo.png
             title: Integrované analýzy s využitím Apache Sparku
           - href: /azure/cosmos-db/change-feed/
-            html: '<p>Využijte možnost provádět analýzy v reálném čase s využitím kanálu změn, který poskytuje seřazený seznam dokumentů v kontejneru Azure Cosmos DB, a to v pořadí, ve kterém se upravovaly. </p>'
+            html: '<p>Využijte možnost provádět analýzy v reálném čase s využitím kanálu změn, který poskytuje seřazený seznam dokumentů v kontejneru Azure Cosmos, a to v pořadí, ve kterém se upravovaly. </p>'
             image:
               src: media/index/change-feed-logo.png
             title: Změna kanálu

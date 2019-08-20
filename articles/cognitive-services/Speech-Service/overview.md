@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4ea6f04dbfd18a6e561a255988ba0465b9e017be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967608"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624259"
 ---
 # <a name="what-are-the-speech-services"></a>Co jsou služby Speech?
 
@@ -42,7 +42,8 @@ Tyto funkce tvoří službu Azure Speech Services. Pomocí odkazů v této tabul
 Zjistěte, co je nového ve službě Azure Speech Services.
 
 * Srpen 2019
-  * **Nový kurz**: [Hlasový vstup vám umožní pomocí sady Speech SDK,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * **Nový kurz**: [Hlasová podpora robota s využitím Speech SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * Byl přidán nový styl [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)mluveného slova `en-US-JessaNeural` pro hlasový vstup. 
 * Červeně 2019
   * Vydaná sada Speech SDK 1.6.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v poznámkách k [verzi](releasenotes.md).
 * Květen 2019 – dokumentace je nyní k dispozici pro [přepis konverzace](conversation-transcription-service.md), [přepisy centra volání](call-center-transcription.md)a pro [virtuální asistenty hlasu First](voice-first-virtual-assistants.md).
@@ -88,7 +89,7 @@ Služba Azure Speech Services dobře funguje s integrovanými modely, ale možn�
 | Řeč na text | [Akustický model](how-to-customize-acoustic-models.md) | Vytvořte si vlastní akustický model pro aplikace, nástroje nebo zařízení, které se používají v různých prostředích, jako je třeba v kleci nebo v továrně, z nichž každá má konkrétní podmínky záznamu. Mezi příklady patří zvýrazněné rozpoznávání řeči, konkrétní šum na pozadí nebo použití konkrétního mikrofonu pro záznam. |
 | | [Jazykový model](how-to-customize-language-model.md) | Vytvořte vlastní jazykový model pro zlepšení přepisu slovníku a gramatiky specifické pro pole, jako je lékařské terminologie nebo žargonu. |
 | | [Model výslovnosti](how-to-customize-pronunciation.md) | Pomocí vlastního modelu výslovnosti můžete definovat fonetický tvar a zobrazení slova nebo termínu. Je vhodný pro zpracování vlastní podmínky, jako jsou názvy produktů nebo zkratky. Vše, co potřebujete, abyste mohli začít se výslovnost soubor – soubor .txt jednoduché. |
-| Převod textu na řeč | [Hlasové písmo](how-to-customize-voice-font.md) | Vlastní hlasová písma umožňují vytvořit rozpoznatelný hlasový hlas pro vaši značku. Pro začátek zabere pouze malé množství dat. Větší údaje, které poskytnete, budou zvukové písmo větší, než je vaše hlasová. |
+| Text na řeč | [Hlasové písmo](how-to-customize-voice-font.md) | Vlastní hlasová písma umožňují vytvořit rozpoznatelný hlasový hlas pro vaši značku. Pro začátek zabere pouze malé množství dat. Větší údaje, které poskytnete, budou zvukové písmo větší, než je vaše hlasová. |
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
@@ -98,7 +99,7 @@ Služba Azure Speech Services dobře funguje s integrovanými modely, ale možn�
 * [REST API: Převod textu na řeč](rest-text-to-speech.md)
 * [REST API: Přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Získat klíč předplatného služby Speech Services zdarma](get-started.md)

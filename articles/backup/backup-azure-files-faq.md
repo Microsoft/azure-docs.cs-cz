@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 35a41abb156326612c2d60829980f73457cde881
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 05b591137a53e60b3197feb7f57564a8d4af7a44
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601762"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624286"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -75,7 +75,7 @@ Během období Preview můžete v jednom trezoru chránit sdílené složky Azur
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Můžu chránit dvě různé sdílené složky ze stejného účtu úložiště v jiných trezorech?
 Ne. Všechny sdílené složky v účtu úložiště je možné chránit pouze ve stejném trezoru.
 
-## <a name="backup"></a>Zálohovat
+## <a name="backup"></a>Backup
 
 ### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Kolik naplánovaných záloh můžu nakonfigurovat na sdílení souborů?
 Azure Backup aktuálně podporuje konfiguraci naplánovaných jednorázových záloh sdílených složek Azure. 
@@ -83,10 +83,8 @@ Azure Backup aktuálně podporuje konfiguraci naplánovaných jednorázových z�
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>Kolik záloh na vyžádání jedné sdílené složky můžu vytvořit? <br/>
 V jakémkoli okamžiku můžete mít až 200 snímků jedné sdílené složky. Toto omezení zahrnuje snímky pořízené službou Azure Backup podle definice ve vašich zásadách. Pokud po dosažení omezení začne zálohování selhávat, zajistěte úspěch budoucích zálohování odstraněním bodů obnovení na vyžádání.
 
-### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>Po povolení virtuálních sítí v účtu úložiště začalo při zálohování sdílených složek v tomto účtu docházet k chybám. Proč?
-Zálohování sdílených složek Azure nepodporuje účty úložiště s povolenými virtuálními sítěmi. Zakažte v účtech úložiště virtuální sítě, abyste umožnili úspěšné zálohování.
 
-## <a name="restore"></a>Obnovit
+## <a name="restore"></a>Obnovení
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>Můžu obnovit odstraněnou sdílenou složku Azure? <br/>
 Při odstraňování sdílené složky Azure se zobrazí seznam záloh, které se odstraní, a výzva k potvrzení. Odstraněnou sdílenou složku Azure není možné obnovit.
@@ -101,7 +99,7 @@ Pokud je probíhající úloha obnovení zrušena, proces obnovení se zastaví 
 ## <a name="manage-backup"></a>Správa zálohování
 
 ### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares-br"></a>Můžu ke konfiguraci/správě a obnovení záloh sdílených složek Azure použít PowerShell? <br/>
-Ano. Informace najdete v [podrobné dokumentaci.](backup-azure-afs-automation.md)
+Ano. Informace najdete v podrobné dokumentaci. [](backup-azure-afs-automation.md)
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it-br"></a>Můžu získat přístup ke snímkům pořízeným službou Azure Backup a připojit je? <br/>
 Přístup ke všem snímkům pořízeným službou Azure Backup je možný přes zobrazení snímků na portálu, v PowerShellu nebo v rozhraní příkazového řádku. Další informace o snímcích sdílených složek Azure najdete v tématu [Přehled snímků sdílených složek u souborů Azure (Preview)](../storage/files/storage-snapshots-files.md).

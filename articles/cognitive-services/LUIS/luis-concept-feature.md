@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 829054064a21b2fb8da2bd975501bfcd0840e7eb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639211"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624574"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Funkce seznamu frází ve vaší aplikaci LUIS
 
@@ -69,7 +69,7 @@ Vzhledem k tomu, že slova nebo fráze pro tělo vody jsou synonyma a je možné
 
 ### <a name="non-interchangeable-lists"></a>Seznamy, které nelze měnit
 
-Seznam frází, která není zaměnitelné, je signál, který zvyšuje detekci na LUIS. Seznam frází označuje slova nebo fráze, které jsou důležitější, že jsou další slova významná. To pomáhá při určování záměru a detekce entit. Řekněme například, že máte doménu předmětu, jako je například cesta, která je globální (to znamená napříč kulturami, ale stále v jednom jazyce). Existují slova a fráze, které jsou pro aplikaci důležité, ale nejsou synonyma. 
+Seznam frází, která není zaměnitelné, je signál, který zvyšuje detekci na LUIS. Seznam frází označuje slova nebo fráze, které jsou důležitější než jiná slova. To pomáhá při určování záměru a detekce entit. Řekněme například, že máte doménu předmětu, jako je například cesta, která je globální (to znamená napříč kulturami, ale stále v jednom jazyce). Existují slova a fráze, které jsou pro aplikaci důležité, ale nejsou synonyma. 
 
 Pro jiný příklad použijte seznam frází, které nemůžete měnit, pro vzácná, proprietární a cizí slova. Služba LUIS možná nebudete moct rozpoznat vzácné a proprietární slova, jakož i cizí slova (mimo jazykovou verzi aplikace). Zaměnitelné nastavení znamená, že sadu výjimečných slova tvoří třídu, která by měla služba LUIS učení se rozpoznávání, ale nejsou synonyma nebo mezi sebou vzájemně zaměnitelné.
 

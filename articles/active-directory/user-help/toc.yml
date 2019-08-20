@@ -4,8 +4,16 @@
   items:
     - name: Přehled
       href: user-help-two-step-verification-overview.md
-    - name: Nastavení účtu
-      href: multi-factor-authentication-end-user-first-time.md
+    - name: Nastavení metod dvojúrovňového ověřování
+      items:
+        - name: Přehled
+          href: multi-factor-authentication-end-user-first-time.md
+        - name: Nastavení ověřovací aplikace
+          href: multi-factor-authentication-setup-auth-app.md
+        - name: Nastavení mobilního zařízení
+          href: multi-factor-authentication-setup-phone-number.md
+        - name: Nastavení telefonu do kanceláře
+          href: multi-factor-authentication-setup-office-phone.md
     - name: Správa nastavení
       href: multi-factor-authentication-end-user-manage-settings.md
     - name: Podpora

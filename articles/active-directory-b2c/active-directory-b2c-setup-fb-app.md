@@ -1,52 +1,52 @@
 ---
-title: Nastavení registrace a přihlášení pomocí účtu sítě Facebook – Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zaregistrujte se a přihlaste se poskytují zákazníkům s účty služby Facebook ve svých aplikacích pomocí služby Azure Active Directory B2C.
+title: Nastavení registrace a přihlášení pomocí účtu Facebook – Azure Active Directory B2C
+description: Poskytněte zákazníkům služby pro registraci a přihlašování k aplikacím Facebook v aplikacích pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6b90ba89f17b42f4d92c666c3f539fcad3e3227c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 524e1e5f877fcb03d4252d79635ef855b9811f09
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66733529"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622099"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu sítě Facebook pomocí Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Facebook pomocí Azure Active Directory B2C
 
-## <a name="create-a-facebook-application"></a>Vytvořit aplikaci pro Facebook
+## <a name="create-a-facebook-application"></a>Vytvoření aplikace na Facebooku
 
-Použití účtu sítě Facebook jako [zprostředkovatele identity](active-directory-b2c-reference-oauth-code.md) v Azure Active Directory (Azure AD) B2C, budete potřebovat k vytvoření aplikace ve vašem tenantovi, který ho zastupuje. Pokud ještě nemáte účet na Facebooku, získáte ji na [ https://www.facebook.com/ ](https://www.facebook.com/).
+Pokud chcete použít účet Facebook jako [poskytovatele identity](active-directory-b2c-reference-oauth-code.md) v Azure Active Directory (Azure AD) B2C, musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet Facebook, můžete se zaregistrovat [https://www.facebook.com/](https://www.facebook.com/).
 
-1. Přihlaste se k [Facebook pro vývojáře](https://developers.facebook.com/) pomocí svých přihlašovacích údajů účtu sítě Facebook.
-2. Pokud jste tak již neučinili, musíte zaregistrovat jako vývojář sítě Facebook. Chcete-li to provést, vyberte **Začínáme** v pravém horním rohu stránky, přijmout zásady na Facebooku a dokončete registraci.
-3. Vyberte **Moje aplikace** a potom **přidat novou aplikaci**.
-4. Zadejte **zobrazovaný název** a platný **E-mail kontaktu**.
-5. Klikněte na tlačítko **vytvoření ID aplikace**. To může vyžadovat přijmout zásady platformy Facebooku a proveďte kontrolu zabezpečení online.
-6. Vyberte **nastavení** > **základní**.
-7. Zvolte **kategorie**, například `Business and Pages`. Tato hodnota je potřeba pomocí Facebooku, ale není možné použít u Azure AD B2C.
-8. V dolní části stránky vyberte **přidat platformy**a pak vyberte **webu**.
-9. V **adresa URL webu**, zadejte `https://your-tenant-name.b2clogin.com/` nahrazení `your-tenant-name` s názvem vašeho tenanta. Zadejte adresu URL, **adresa URL zásad ochrany osobních údajů**, například `http://www.contoso.com`. Adresa URL zásad je stránka, které spravujete, k poskytnutí informací o ochraně osobních údajů pro vaši aplikaci.
-10. Vyberte **uložit změny**.
-11. V horní části stránky, zkopírujte hodnotu **ID aplikace**.
-12. Klikněte na tlačítko **zobrazit** a zkopírujte hodnotu **tajný kód aplikace**. Obou z nich použijete ke konfiguraci sítě Facebook jako zprostředkovatele identity ve vašem tenantovi. **Tajný kód aplikace** je důležitým bezpečnostním pověřením.
-13. Vyberte znaménko plus vedle **produkty**a pak vyberte **nastavení** pod **přihlášení k Facebooku**.
-14. V části **přihlášení k Facebooku**vyberte **nastavení**.
-15. V **identifikátory URI pro přesměrování OAuth platný**, zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Nahraďte `your-tenant-name` s názvem vašeho tenanta. Klikněte na tlačítko **uložit změny** v dolní části stránky.
-16. K zajištění dostupnosti sítě Facebook aplikace Azure AD B2C, klepněte na volič stavu v horní části stránky a znovu je zapnout **na** zveřejnit aplikaci, a potom klikněte na **potvrdit**.  V tomto okamžiku by měl stav změnit z **vývoj** k **Live**.
+1. Přihlaste se ke [službě Facebook pro vývojáře](https://developers.facebook.com/) s přihlašovacími údaji k účtu Facebook.
+1. Pokud jste to ještě neudělali, musíte se zaregistrovat jako vývojář Facebooku. Provedete to tak , že vyberete Začínáme v pravém horním rohu stránky, přijmete zásady Facebooku a dokončíte registrační kroky.
+1. Vyberte **Moje aplikace** a pak **přidejte novou aplikaci**.
+1. Zadejte **Zobrazovaný název** a platný **kontaktní e-mail**.
+1. Klikněte na **vytvořit ID aplikace**. To může vyžadovat, abyste přijali zásady platformy Facebook a dokončili online kontrolu zabezpečení.
+1. Vyberte **Nastavení** > **základní**.
+1. Vyberte **kategorii**, například `Business and Pages`. Tuto hodnotu vyžaduje Facebook, ale nepoužívá se pro Azure AD B2C.
+1. V dolní části stránky vyberte **Přidat platformu**a pak vyberte **Web**.
+1. Do pole **Adresa URL webu** `https://your-tenant-name.b2clogin.com/` zadejte `your-tenant-name` nahraďte názvem vašeho tenanta. Zadejte adresu URL pro **zásadu ochrany osobních údajů**, například `http://www.contoso.com`. Adresa URL zásad je stránka, kterou udržujete pro poskytování informací o ochraně osobních údajů pro vaši aplikaci.
+1. Vyberte **Uložit změny**.
+1. V horní části stránky zkopírujte hodnotu **ID aplikace**.
+1. Klikněte na **Zobrazit** a zkopírujte hodnotu tajného kódu **aplikace**. Pomocí obou z nich můžete nakonfigurovat Facebook jako poskytovatele identity ve vašem tenantovi. **Tajný klíč aplikace** je důležité bezpečnostní pověření.
+1. Vyberte znaménko plus vedle položky **produkty**a potom vyberte možnost **nastavit** v části **přihlášení do Facebooku**.
+1. V části **přihlášení na Facebooku**vyberte **Nastavení**.
+1. Do **platného identifikátorů URI pro přesměrování OAuth**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Nahraďte `your-tenant-name` názvem vašeho tenanta. V dolní části stránky klikněte na **Uložit změny** .
+1. Chcete-li zpřístupnit aplikaci Facebook Azure AD B2C, klikněte na selektor stavu v pravém horním rohu stránky a zapněte ji tak , aby byla aplikace veřejná, a pak klikněte na **Potvrdit**.  V tomto okamžiku se stav změní z **vývoje** na **Live**.
 
-## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurace účtu sítě Facebook jako zprostředkovatele identity
+## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurace účtu Facebook jako zprostředkovatele identity
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
-3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
-5. Zadejte **název**. Zadejte například *Facebook*.
-6. Vyberte **typ zprostředkovatele identit**vyberte **Facebook**a klikněte na tlačítko **OK**.
-7. Vyberte **nastavit tohoto zprostředkovatele identity** a zadejte ID aplikace, které jste si poznamenali dříve, jako **ID klienta** a zadejte tajný kód aplikace, které jste si poznamenali jako **tajný kód klienta** z aplikace sítě Facebook, kterou jste vytvořili dříve.
-8. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **vytvořit** uložte konfiguraci sítě Facebook.
+1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
+1. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **Zprostředkovatelé identity**a pak vyberte **Facebook**.
+1. Zadejte **název**. Například *Facebook*.
+1. Jako **ID klienta**zadejte ID aplikace Facebook, kterou jste vytvořili dříve.
+1. Pro **tajný klíč klienta**zadejte tajný kód aplikace, který jste si poznamenali.
+1. Vyberte **Uložit**.

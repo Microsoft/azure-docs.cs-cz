@@ -1,38 +1,38 @@
 ---
-title: Vytvořit lístek podpory pro Microsoft Azure FXT hrany vyfiltrovat
-description: Postupy pro spuštění a bezpečné vypnutí uzlu Azure FXT hrany vyfiltrovat
+title: Otevření lístku podpory pro Microsoft Azure FXT Edge souborového
+description: Postup otevření lístku pro nápovědu k systému Azure FXT Edge souborového
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: v-erkell
-ms.openlocfilehash: 82b6477b42d627baff10d9bde46452bf43900ffd
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 04bc7c4d2ff96ef8b403449cf58d131bdc22a101
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828194"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624118"
 ---
-# <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Vytvořit lístek podpory pro filtr Azure FXT hrany
+# <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Otevření lístku podpory pro Azure FXT Edge souborového
 
-Tento článek vysvětluje, jak získat nápovědu k Azure FXT hrany souborového systému.
+Tento článek vysvětluje, jak získat pomoc s vaším systémem Azure FXT Edge souborového.
 
-Pomocí webu Azure portal otevřete lístek podpory Microsoftu zákaznický servis a podporu.
+Pomocí Azure Portal otevřete lístek podpory s zákaznickými službami a podporami Microsoftu.
 
-1. Otevřít [webu Azure portal](https://portal.azure.com/) a přihlaste se.
-1. Na levém panelu přejděte do dolní části a klikněte na **Nápověda a podpora**.
-1. Klikněte na tlačítko **nová žádost o podporu**. 
+1. Otevřete [Azure Portal](https://portal.azure.com/) a přihlaste se.
+1. Na levém panelu se posuňte dolů a klikněte na tlačítko **help + podpora**.
+1. Klikněte na **Nová žádost o podporu**. 
 
-   ![Snímek obrazovky formulář žádosti o podporu prázdné](media/fxt-support-blank.png)
+   ![Snímek obrazovky s prázdným formulářem žádosti o podporu](media/fxt-support-blank.png)
 
 1. Vyplňte formulář žádosti.  
-    1. V **Základy** , vyberte **typ problému** ``Technical``. 
+    1. Na kartě **základy** vyberte **typ** ``Technical``problému. 
     1. Vyberte své předplatné. 
-    1. V části **služby**vyberte **Azure FXT hrany Filer**. Možná budete muset klikněte na tlačítko **všechny služby** filtrování ovládacího prvku a vyhledejte jej. 
-    1. Zadejte **Souhrn** a zvolte **typ problému**. 
-    ![Snímek obrazovky formulář žádosti o podporu prázdné](media/fxt-support-populated.png) 
-    1. Klikněte na tlačítko **Další** pokračujte. 
-1. V **podrobnosti** kartu, přidat další informace o problému a jak se vás kontaktovat. Můžete nahrát soubor spojené s tímto problémem. 
-1. V **revize + vytvořit**, zkontrolujte informace a klikněte na tlačítko **vytvořit** tlačítko k odeslání vaší žádosti.
+    1. V části **Služba**vyberte **Azure FXT Edge souborového**. Možná budete muset kliknout na ovládací prvek filtru **všechny služby** a najít ho. 
+    1. Zadejte **Souhrn** a vyberte **typ problému**. 
+    ![Snímek obrazovky s prázdným formulářem žádosti o podporu](media/fxt-support-populated.png) 
+    1. Pokračujte kliknutím na tlačítko **Další** . 
+1. Na kartě **Podrobnosti** přidejte další informace o problému a o tom, jak vás kontaktovat. Můžete nahrát soubor, který se vztahuje k problému. 
+1. V části **Revize + vytvořit**zkontrolujte informace a kliknutím na tlačítko **vytvořit** odešlete žádost.
 
-Po odeslání žádosti obdržíte potvrzovací e-mail s číslo lístku. Zaměstnanec podporu vás bude kontaktovat o daném požadavku.
+Po odeslání žádosti se zobrazí potvrzovací e-mail s číslem lístku. Členský pracovník podpory vás o žádosti obrátí.

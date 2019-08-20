@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.author: bharathb
-ms.openlocfilehash: 041f9c95b22fd4b8c238c603deb0558f2bca01a8
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a4de902e51b101d14aac599c9aad8c4feb86a9c6
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737625"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624609"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrace stovek terabajtů dat do Azure Cosmos DB 
 
@@ -140,9 +140,16 @@ Po dokončení požadovaných součástí můžete migrovat data pomocí násled
 
 6. Některé z těchto chyb mohou být způsobeny nesprávnými dokumenty ve zdrojových datech. Ty by měly být identifikovány a opraveny. Dále byste měli znovu spustit krok importu u neúspěšných oddílů a znovu je přijmout. 
 
-Po dokončení migrace můžete ověřit, že je počet dokumentů v Azure Cosmos DB stejný jako počet dokumentů ve zdrojové databázi. V tomto příkladu je celková velikost v Azure Cosmos DB zapnula na 65 terabajty. Po migraci je možné indexování selektivně zapnout a ru se dá snížit na úroveň požadovanou operacemi úloh.   
+Po dokončení migrace můžete ověřit, že je počet dokumentů v Azure Cosmos DB stejný jako počet dokumentů ve zdrojové databázi. V tomto příkladu je celková velikost v Azure Cosmos DB zapnula na 65 terabajty. Po migraci je možné indexování selektivně zapnout a ru se dá snížit na úroveň požadovanou operacemi úloh.
+
+## <a name="contact-the-azure-cosmos-db-team"></a>Kontaktovat tým Azure Cosmos DB
+I když můžete postupovat podle tohoto průvodce k úspěšné migraci velkých datových sad do Azure Cosmos DB pro velké objemy migrace se doporučuje získat od Azure Cosmos DBho produktového týmu, abyste ověřili modelování dat a obecnou kontrolu architektury. V závislosti na datové sadě a úloze může produktový tým také navrhovat další optimalizace výkonu a nákladů, které by vám mohly platit. Chcete-li kontaktovat tým Azure Cosmos DB pro pomoc s migrací ve velkém rozsahu, můžete otevřít lístek podpory pod typem problému "Obecné poradenství" a "velké (TB +) migrace", jak je uvedeno níže.
+
+![Téma podpory migrace](./media/migrate-cosmosdb-data/supporttopic.png)
+
 
 ## <a name="next-steps"></a>Další postup
 * Další informace získáte vyzkoušením ukázkových aplikací, které využívají knihovnu hromadných prováděcích modulů v jazycích [.NET](bulk-executor-dot-net.md) a [Java](bulk-executor-java.md). 
 * Knihovna hromadného prováděcího modulu je integrovaná do konektoru Cosmos DB Spark. Další informace najdete v článku [Azure Cosmos DB Spark Connector](spark-connector.md) .  
+* Obraťte se na Azure Cosmos DB produktového týmu otevřením lístku podpory v části problémový typ problému "Obecné poradenství" a "velké (TB +) migrace" pro další nápovědu k migracím ve velkém měřítku. 
 

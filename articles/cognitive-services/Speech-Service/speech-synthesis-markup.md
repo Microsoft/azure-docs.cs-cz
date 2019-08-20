@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855105"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624242"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Jazyk SSML (Speech Synthesis Markup Language)
 
@@ -31,6 +31,10 @@ Implementace služby SSML pro rozpoznávání řeči je založená konsorcium Wo
 Vyberte si ze standardních nebo neuronové hlasů nebo si vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. 75 a standardní hlasy jsou k dispozici ve více než 45 jazycích a národních prostředích a 5 neuronové hlasy jsou k dispozici ve 4 jazycích a národních prostředích. Úplný seznam podporovaných jazyků, národních prostředí a hlasů (neuronové a Standard) najdete v tématu [Podpora jazyků](language-support.md).
 
 Další informace o standardních, neuronové a vlastních hlasů najdete v tématu [Přehled převodu textu na řeč](text-to-speech.md).
+
+## <a name="special-characters"></a>Speciální znaky
+
+Při použití SSML pro převod textu na syntetizované řeči Pamatujte na to, že stejně jako u formátu XML, speciální znaky, jako jsou uvozovky, apostrofy a závorky, musí být uvozeny řídicím znakem. Další informace najdete v tématu [jazyk XML (Extensible Markup Language) (XML) 1,0: Příloha D](https://www.w3.org/TR/xml/#sec-entexpand).
 
 ## <a name="supported-ssml-elements"></a>Podporované elementy SSML
 
@@ -142,6 +146,7 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 |-------|------|-------------|
 | `en-US-JessaNeural` | typ =`cheerful` | Vyjadřuje, že emoce jsou pozitivní a veselé |
 | | typ =`empathy` | Vyjadřuje smysl caring a porozumění |
+| | typ =`chat` | Mluvte do nepříležitostného a odlehčeného tónu |
 | `zh-CN-XiaoxiaoNeural` | typ =`newscast` | Vyjadřuje formální tón, podobně jako zprávy všesměrového vysílání. |
 | | typ =`sentiment` | Předává zprávu o doteku nebo příběh. |
 

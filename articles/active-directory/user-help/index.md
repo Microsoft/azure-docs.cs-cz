@@ -11,12 +11,12 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a6908a26e1d513261094be28620c3c9a2d86b48
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a065f275321d16b9eaf82a02cb7da45c15aa82cc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383107"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616319"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Uživatelská nápověda pro ověřování, aplikace a správu zařízení
 
@@ -92,8 +92,11 @@ Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bez
                     <div class="cardText">
                         <h3>Nápověda k dvoustupňovému ověřování</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time">Nastavení dvoustupňového ověření</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-auth-app">Nastavení ověřovací aplikace</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-phone-number">Nastavení mobilního zařízení</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-office-phone">Nastavení telefonu do kanceláře</a><br/>
                         <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-manage-settings">Správa nastavení</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-troubleshoot">Pomoc s běžnými problémy</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-sign-in">Jak se přihlásit</a>
                         </p>
                     </div>

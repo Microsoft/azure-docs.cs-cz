@@ -1,26 +1,33 @@
 ---
-title: Použití starších verzí registrace AAD aplikace pro digitální dvojče Azure | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak použít metodu starší verze vytvoření registrace aplikace s Azure Active Directory pro nastavení digitální dvojče Azure.
+title: Použít starší registraci aplikace AAD pro digitální vlákna Azure | Microsoft Docs
+description: Tento článek ukazuje, jak používat starší metodu pro vytvoření registrace aplikace pomocí Azure Active Directory pro nastavení digitálních vláken Azure.
 author: alinamstanciu
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 08/16/2019
 ms.author: alinast
-ms.openlocfilehash: ed6c540cedd21bb5154f8746050d5eaa9444b818
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: e9689c71c881c7f5f29ac05fea53bb2c27f75591
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484728"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624765"
 ---
-# <a name="register-your-azure-digital-twins-app-with-azure-active-directory-legacy"></a>Zaregistrovat aplikaci digitální dvojče Azure pomocí Azure Active Directory starší verze
+# <a name="register-your-azure-digital-twins-app-with-azure-active-directory-legacy"></a>Zaregistrujte si aplikaci digitálních vláken Azure pomocí Azure Active Directory starší verze
 
-Tento článek ukazuje, že používáte starý nebo starší způsob, jak zaregistrovat ukázkovou aplikaci do služby Azure Active Directory (Azure AD) tak, aby měl přístup k vaší instanci digitální dvojče. Možná chcete vyzkoušet tuto metodu v případě nové Azure AD registrace aplikace pro nastavení nefunguje.
+Tento článek popisuje, jak používat nepoužívané **Registrace aplikací (starší)** okno k registraci ukázkové aplikace.
+
+> [!IMPORTANT]
+> * Nové okno **Azure Active Directory** > **Registrace aplikací** nahrazuje starší **Azure Active Directory** > **Registrace aplikací (starší verze)** . 2019. května.
+> * V novém okně se automaticky zobrazí Registrace aplikací vytvořené nebo zobrazené v okně starší verze.
+> * Podrobné informace o migraci na nové prostředí pro registraci aplikací Azure najdete v [Průvodci školením pro azure registrace aplikací](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) a v článku [rychlý Start Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
 [!INCLUDE [Digital Twins legacy AAD](../../includes/digital-twins-permissions-legacy.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Jakmile vaše aplikace je registrovaný pomocí AAD, může se pak propojit s digitální dvojče instance a pomáhají zajistit záloh ve vašem scénáři. Zobrazit buď [rychlý Start](quickstart-view-occupancy-dotnet.md#build-application) nebo [kurzu](tutorial-facilities-setup.md#configure-the-digital-twins-sample) Další informace o dalších krocích. 
+Pokračujte v [rychlém](quickstart-view-occupancy-dotnet.md#build-application) startu nebo [kurzu](tutorial-facilities-setup.md#configure-the-digital-twins-sample).
+
+Naučte [se, jak aplikaci zaregistrovat pomocí nového okna **Registrace aplikací** ](tutorial-facilities-setup.md#grant-permissions-to-your-app).

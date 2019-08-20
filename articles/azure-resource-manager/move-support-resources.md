@@ -4,14 +4,14 @@ description: Zobrazuje seznam typů prostředků Azure, které se dají přesuno
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 7/9/2019
+ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 22493ad7998e9014c88c79e6ac5eee3bf1216119
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 73f4b6fe4714d21c12d2c7bd387cd30f6f711d5a
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226805"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624311"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout podporu operací pro prostředky
 Tento článek uvádí, jestli typ prostředku Azure podporuje operaci přesunu. Poskytuje taky informace o zvláštních podmínkách, které je potřeba vzít v úvahu při přesunu prostředku.
@@ -263,7 +263,7 @@ Přejít na obor názvů poskytovatele prostředků:
 | Redis | Ano | Ano |
 
 > [!IMPORTANT]
-> Pokud je instance Azure cache for Redis nakonfigurovaná pomocí virtuální sítě, nedá se tato instance přesunout do jiného předplatného. Viz [omezení přesunu virtuálních sítí](./move-limitations/virtual-network-move-limitations.md).
+> Pokud je instance Azure cache for Redis nakonfigurovaná pomocí virtuální sítě, nedá se tato instance přesunout do jiného předplatného. Viz [omezení přesunu virtuálních sítí](./move-limitations/networking-move-limitations.md).
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Typ prostředku | Resource group | Subscription |
@@ -309,7 +309,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ano | Ano |
+| účty | Ano | Ano |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 | Typ prostředku | Resource group | Subscription |
@@ -321,7 +321,7 @@ Přejít na obor názvů poskytovatele prostředků:
 | galleries/images/versions | Ne | Ne |
 | hostgroups | Ne | Ne |
 | hostgroups/hostitelé | Ne | Ne |
-| images | Ano | Ano |
+| image | Ano | Ano |
 | proximityplacementgroups | Ne | Ne |
 | restorepointcollections | Ne | Ne |
 | sharedvmimages | Ne | Ne |
@@ -368,7 +368,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ne | Ne |
+| účty | Ne | Ne |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | Typ prostředku | Resource group | Subscription |
@@ -409,7 +409,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Zásilk | Ne | Ne |
+| balíčky | Ne | Ne |
 | plánují | Ne | Ne |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
@@ -426,17 +426,17 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ano | Ano |
+| účty | Ano | Ano |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ano | Ano |
+| účty | Ano | Ano |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| services | Ne | Ne |
+| Služby | Ne | Ne |
 | services/projects | Ne | Ne |
 | slots | Ne | Ne |
 
@@ -478,7 +478,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Kontrolou | Ne | Ne |
+| kontrolou | Ne | Ne |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 | Typ prostředku | Resource group | Subscription |
@@ -516,7 +516,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| services | Ano | Ano |
+| Služby | Ano | Ano |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 | Typ prostředku | Resource group | Subscription |
@@ -533,7 +533,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftgenomics"></a>Microsoft. genomika
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ne | Ne |
+| účty | Ne | Ne |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 | Typ prostředku | Resource group | Subscription |
@@ -553,12 +553,12 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| services | Ano | Ano |
+| Služby | Ano | Ano |
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| virtuální | Ne | Ne |
+| počítače | Ne | Ne |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 | Typ prostředku | Resource group | Subscription |
@@ -573,7 +573,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftinsights"></a>microsoft.insights
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ne | Ne |
+| účty | Ne | Ne |
 | actiongroups | Ano | Ano |
 | activitylogalerts | Ne | Ne |
 | alertrules | Ano | Ano |
@@ -623,12 +623,12 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ano | Ano |
+| účty | Ano | Ano |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ne | Ne |
+| účty | Ne | Ne |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Typ prostředku | Resource group | Subscription |
@@ -654,7 +654,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ne | Ne |
+| účty | Ne | Ne |
 | accounts/workspaces | Ne | Ne |
 | accounts/workspaces/projects | Ne | Ne |
 | teamaccounts | Ne | Ne |
@@ -664,7 +664,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ano | Ano |
+| účty | Ano | Ano |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
 | Typ prostředku | Resource group | Subscription |
@@ -684,7 +684,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ano | Ano |
+| účty | Ano | Ano |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | Typ prostředku | Resource group | Subscription |
@@ -730,7 +730,7 @@ Přejít na obor názvů poskytovatele prostředků:
 | expressroutecrossconnections | Ne | Ne |
 | expressroutegateways | Ne | Ne |
 | expressrouteports | Ne | Ne |
-| frontdoors | Ne | Ne |
+| frontdoory | Ne | Ne |
 | frontdoorwebapplicationfirewallpolicies | Ne | Ne |
 | loadbalancers | Ano – základní SKU<br>No – standardní SKU | Ano – základní SKU<br>No – standardní SKU |
 | localnetworkgateways | Ano | Ano |
@@ -765,7 +765,7 @@ Přejít na obor názvů poskytovatele prostředků:
 | webapplicationfirewallpolicies | Ano | Ano |
 
 > [!IMPORTANT]
-> Přečtěte si doprovodné materiály k [přesunu virtuálních sítí](./move-limitations/virtual-network-move-limitations.md).
+> Viz [pokyny k přesunu sítě](./move-limitations/networking-move-limitations.md).
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ prostředku | Resource group | Subscription |
@@ -791,7 +791,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftpeering"></a>Microsoft.Peering
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Partnerské vztahy | Ne | Ne |
+| peeringy | Ne | Ne |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | Typ prostředku | Resource group | Subscription |
@@ -816,7 +816,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Ne | Ne |
+| účty | Ne | Ne |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 | Typ prostředku | Resource group | Subscription |
@@ -876,7 +876,7 @@ Přejít na obor názvů poskytovatele prostředků:
 | edgeclusters | Ne | Ne |
 | networks | Ne | Ne |
 | secretstores | Ne | Ne |
-| volumes | Ne | Ne |
+| svazky | Ne | Ne |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | Typ prostředku | Resource group | Subscription |
@@ -885,8 +885,8 @@ Přejít na obor názvů poskytovatele prostředků:
 | containergroups | Ne | Ne |
 | brány | Ano | Ano |
 | networks | Ano | Ano |
-| záleží | Ano | Ano |
-| volumes | Ano | Ano |
+| tajné kódy | Ano | Ano |
+| svazky | Ano | Ano |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 | Typ prostředku | Resource group | Subscription |
@@ -986,7 +986,7 @@ Přejít na obor názvů poskytovatele prostředků:
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | providerregistrations | Ne | Ne |
-| Prostředky | Ne | Ne |
+| prostředky | Ne | Ne |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Typ prostředku | Resource group | Subscription |
@@ -1008,7 +1008,7 @@ Přejít na obor názvů poskytovatele prostředků:
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| account | Ano | Ano |
+| účet | Ano | Ano |
 | account/extension | Ano | Ano |
 | account/project | Ano | Ano |
 
