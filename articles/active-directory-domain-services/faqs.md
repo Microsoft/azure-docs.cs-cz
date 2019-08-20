@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 3d44937c977ba264d671f2053d387470651af68a
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 509bd472fe5f930ac830b8b4016129f8acb67324
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030878"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612880"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Nejčastější dotazy
 Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se Azure Active Directory Domain Services. Udržujte kontrolu aktualizací.
@@ -31,6 +31,9 @@ Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se Azure 
 ## <a name="configuration"></a>Konfiguraci
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Můžu vytvořit více spravovaných domén pro jeden adresář služby Azure AD?
 Ne. Pro jeden adresář služby Azure AD můžete vytvořit jenom jednu spravovanou doménu Azure AD Domain Services.  
+
+### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>Můžu povolit Azure AD Domain Services v klasické virtuální síti?
+Klasické virtuální sítě nejsou pro nová nasazení podporovaná. Existující spravované domény nasazené v klasických virtuálních sítích se pořád podporují.
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Můžu Azure AD Domain Services ve virtuální síti Azure Resource Manager povolit?
 Ano. Azure AD Domain Services lze povolit ve virtuální síti Azure Resource Manager. Klasické virtuální sítě Azure už nejsou podporované pro vytváření nových spravovaných domén.

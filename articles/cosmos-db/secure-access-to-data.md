@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: e321091f2abcff4c385b442ac6474c0592845e2e
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602030"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616672"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům v Azure Cosmos DB
 
@@ -105,7 +105,7 @@ Příklad služby střední vrstvy, která se používá ke generování tokenů
 <a id="users"></a>
 
 ## <a name="users"></a>Uživatelé
-Cosmos DB uživatelé jsou přidruženi k databázi Cosmos DB.  Každá databáze může obsahovat nula nebo více Cosmos DB uživatelů.  Následující ukázka kódu ukazuje, jak vytvořit prostředek Cosmos DB uživatele.
+Cosmos DB uživatelé jsou přidruženi k databázi Cosmos.  Každá databáze může obsahovat nula nebo více Cosmos DB uživatelů.  Následující ukázka kódu ukazuje, jak vytvořit prostředek Cosmos DB uživatele.
 
 ```csharp
 //Create a user.
@@ -193,5 +193,5 @@ Azure Cosmos DB umožňuje vyhledávat, vybírat, upravovat a odstraňovat osobn
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o Cosmos DB zabezpečení databáze najdete v článku [Cosmos DB: Zabezpečení](database-security.md)databáze.
+* Další informace o zabezpečení databáze Cosmos najdete v tématu [Cosmos DB: Zabezpečení](database-security.md)databáze.
 * Informace o tom, jak vytvořit Azure Cosmos DB autorizační tokeny, najdete v tématu [Access Control na Azure Cosmos DBch](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)prostředcích.

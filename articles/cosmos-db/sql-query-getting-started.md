@@ -1,33 +1,33 @@
 ---
-title: Začínáme s dotazy SQL ve službě Azure Cosmos DB
-description: Úvod do dotazů SQL
+title: Začínáme s dotazy SQL v Azure Cosmos DB
+description: Seznámení s dotazy SQL
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
-ms.openlocfilehash: 87b275806c06443e37e9e92c35a38b4cde378322
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5537133b31bb63c9fa6ac3a52b344f7f1d9c4c8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342508"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614344"
 ---
 # <a name="getting-started-with-sql-queries"></a>Začínáme s dotazy SQL
 
-Účty služby Azure SQL API služby Cosmos DB podporuje dotazování položek pomocí jazyka SQL (Structured Query) jako dotazovací jazyk typu JSON. Cíle návrhu dotazovací jazyk služby Azure Cosmos DB je:
+Azure Cosmos DB účty rozhraní SQL API podporují dotazování položek pomocí jazyk SQL (Structured Query Language) (SQL) jako dotazovacího jazyka JSON. Cílem Azure Cosmos DBho dotazovacího jazyka je:
 
-* Podporují SQL, jeden z nejčastěji známé a Oblíbené dotazovací jazyky, namísto inventing nový dotazovací jazyk. SQL přes JSON položky poskytuje formální programovací model pro bohaté dotazy.  
+* Podporovat SQL jeden z nejoblíbenějších a oblíbených dotazovacích jazyků, místo aby se dopracoval nový dotazovací jazyk. SQL poskytuje formální programovací model pro bohatou dotazy nad položkami JSON.  
 
-* Model programování v jazyce JavaScript můžete použijte jako základ pro dotazovací jazyk. Systém typů, vyhodnocení výrazu a volání funkce v jazyce JavaScript jsou kořeny rozhraní SQL API. Tyto kořeny poskytují přirozené programovací model pro funkce, jako relační projekce, hierarchická navigace mezi položkami formátu JSON, spojení, prostorových dotazů a volání uživatelem definované funkce (UDF) vytvořené zcela v JavaScriptu.
+* Použijte programovací model jazyka JavaScript jako základ dotazovacího jazyka. Rozhraní API SQL jsou kořeny typu systém, vyhodnocení výrazu a volání funkce. Tyto kořeny poskytují přirozený programovací model pro funkce, jako jsou relační projekce, hierarchická navigace mezi položkami JSON, vlastní spojení, prostorové dotazy a volání uživatelsky definovaných funkcí (UDF) zapsané zcela v JavaScriptu.
 
 ## <a name="upload-sample-data"></a>Nahrání ukázkových dat
 
-Ve vašem účtu SQL rozhraní API Cosmos DB, vytvoření kontejneru s názvem `Families`. Vytvořte dvě jednoduché položky JSON v kontejneru. Většina ukázkové dotazy můžete spustit v dotazu dokumenty Azure Cosmos DB pomocí této datové sady.
+Ve vašem účtu Cosmos DB API SQL vytvořte kontejner s názvem `Families`. Vytvořte v kontejneru dvě jednoduché položky JSON. Většinu ukázkových dotazů můžete spustit v Azure Cosmos DB dotazů na dokumenty pomocí této datové sady.
 
-### <a name="create-json-items"></a>Vytváření položek JSON
+### <a name="create-json-items"></a>Vytvoření položek JSON
 
-Následující kód vytvoří dvě jednoduché JSON položky o rodiny. Jednoduché položky JSON rodin Andersen a Wakefieldů zahrnují nadřazené položky, podřízené položky a jejich mazlíčků, adresu a informace o registraci. První položka obsahuje řetězce, čísla, logické hodnoty, pole a vnořené vlastnosti.
+Následující kód vytvoří dvě jednoduché položky JSON o rodinách. K jednoduchým položkám JSON pro rodiny Andersen a Wakefieldů patří rodiče, děti a jejich domácí, adresa a registrační informace. První položka obsahuje řetězce, čísla, logické hodnoty, pole a vnořené vlastnosti.
 
 
 ```json
@@ -52,7 +52,7 @@ Následující kód vytvoří dvě jednoduché JSON položky o rodiny. Jednoduch
 }
 ```
 
-Druhá položka používá `givenName` a `familyName` místo `firstName` a `lastName`.
+Druhá položka používá `givenName` a `familyName` místo `firstName` a. `lastName`
 
 ```json
 {
@@ -84,11 +84,11 @@ Druhá položka používá `givenName` a `familyName` místo `firstName` a `last
 }
 ```
 
-### <a name="query-the-json-items"></a>Dotaz JSON položek
+### <a name="query-the-json-items"></a>Dotazování na položky JSON
 
-Zkuste několik dotazů na data JSON pochopit některé z klíčových aspektů dotazovací jazyk SQL služby Azure Cosmos DB.
+Vyzkoušejte několik dotazů na data JSON, abyste se seznámili s některými klíčovými aspekty dotazovacího jazyka SQL v Azure Cosmos DB.
 
-Následující dotaz vrátí položek kde `id` pole odpovídá `AndersenFamily`. Protože se jedná `SELECT *` dotaz, výstup dotazu je úplná položka formátu JSON. Další informace o vyberte syntaxe, naleznete v tématu [příkaz SELECT](sql-query-select.md). 
+Následující dotaz vrátí položky, kde se `id` pole shoduje. `AndersenFamily` Vzhledem k tomu, `SELECT *` že se jedná o dotaz, je výstupem dotazu úplná položka JSON. Další informace o syntaxi výběru naleznete v tématu [Select Statement](sql-query-select.md). 
 
 ```sql
     SELECT *
@@ -118,7 +118,7 @@ Výsledky dotazu jsou:
     }]
 ```
 
-Následující dotaz přeformátuje výstup JSON v odlišném tvaru. Dotaz projekty nové JSON `Family` objekt s dvěma vybraná pole `Name` a `City`, pokud adresa město je stejné jako stav. Tento případ se shoduje s "NY, USA".
+Následující dotaz přeformátuje výstup JSON na jiný tvar. Dotaz vychází z nového objektu `Family` JSON se dvěma vybranými `Name` poli a `City`v případě, že adresa města je stejná jako stav. "NY" NY "odpovídá tomuto případu.
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -137,7 +137,7 @@ Výsledky dotazu jsou:
     }]
 ```
 
-Následující dotaz vrátí křestní jména všech dětí v rodině jehož `id` odpovídá `WakefieldFamily`, seřazený podle města.
+Následující dotaz vrátí všechny křestní názvy podřízených objektů v rodině, jejichž `id` shoda `WakefieldFamily`je seřazena podle města.
 
 ```sql
     SELECT c.givenName
@@ -158,18 +158,18 @@ Výsledky jsou:
 
 ## <a name="remarks"></a>Poznámky
 
-Předchozí příklady ukazují několik aspektů dotazovací jazyk služby Cosmos DB:  
+Předchozí příklady ukazují několik aspektů Cosmos DB dotazovacího jazyka:  
 
-* Protože rozhraní SQL API pracuje na hodnoty JSON, zabývá entity ve tvaru stromu místo řádků a sloupců. Můžete se podívat do uzlů stromu na libovolnou hloubku libovolného jako `Node1.Node2.Node3…..Nodem`, podobně jako odkaz na dvě části `<table>.<column>` v ANSI SQL.
+* Vzhledem k tomu, že rozhraní SQL API funguje na hodnotách JSON, pracuje s entitami ve tvaru stromu namísto řádků a sloupců. Můžete odkazovat na uzly stromu libovolné hloubky, `Node1.Node2.Node3…..Nodem`například, podobně jako na `<table>.<column>` odkaz na dvě části v ANSI SQL.
 
-* Protože dotazovací jazyk pracuje s daty bez schématu, systém typů musí být vázán dynamicky. Stejný výraz může přinést různé typy na různé položky. Výsledek dotazu je platnou hodnotu JSON, ale není zaručeno, že bude pevné schéma.  
+* Vzhledem k tomu, že dotazovací jazyk pracuje s daty bez schématu, musí být systém typů svázán dynamicky. Stejný výraz může přinést různé typy na různé položky. Výsledek dotazu je platná hodnota JSON, ale nezaručujeme, že by mělo být pevně dané schéma.  
 
-* Azure Cosmos DB podporuje pouze striktní položky formátu JSON. Systém typů a výrazy jsou omezeny na řešil pouze typy JSON. Další informace najdete v tématu [JSON specifikace](https://www.json.org/).  
+* Azure Cosmos DB podporuje pouze striktní položky formátu JSON. Systém typů a výrazy jsou omezené, aby se jednalo jenom o typy JSON. Další informace najdete v tématu [specifikace JSON](https://www.json.org/).  
 
-* Kontejneru Cosmos DB je kolekce položek JSON bez schématu. Vztahy v různých položek kontejneru i jsou implicitně zachycena členství ve skupině, není ve primárního klíče a vztahy cizího klíče. Tato funkce je důležitá pro spojení uvnitř položky popsané dále v tomto článku.
+* Kontejner Cosmos je kolekce položek JSON bez schématu. Vztahy v rámci a napříč položkami kontejneru jsou implicitně zachyceny omezením, nikoli podle primárního klíče a vztahů cizího klíče. Tato funkce je důležitá pro spojení uvnitř položky, která jsou popsána dále v tomto článku.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Úvod do služby Azure Cosmos DB](introduction.md)
+- [Úvod do Azure Cosmos DB](introduction.md)
 - [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
 - [Klauzule SELECT](sql-query-select.md)

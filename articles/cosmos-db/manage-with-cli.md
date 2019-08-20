@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9ec049311fc158b13bba45deb2974d7cdd531f90
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f9d8bf9161343e4b36a3c16209873962b69d8af5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815044"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615219"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Správa prostředků Azure Cosmos pomocí Azure CLI
 
@@ -41,7 +41,7 @@ az cosmosdb create \
 
 ## <a name="create-a-database"></a>Vytvoření databáze
 
-Chcete-li vytvořit databázi Cosmos DB, spusťte následující příkaz:
+Chcete-li vytvořit databázi Cosmos, spusťte následující příkaz:
 
 ```azurecli-interactive
 az cosmosdb database create \
@@ -52,7 +52,7 @@ az cosmosdb database create \
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Pokud chcete vytvořit kontejner Cosmos DB s RU/s 400 a klíčem oddílu, spusťte následující příkaz:
+Pokud chcete vytvořit kontejner Cosmos s RU/s 400 a klíčem oddílu, spusťte následující příkaz:
 
 ```azurecli-interactive
 # Create a container
@@ -67,7 +67,7 @@ az cosmosdb collection create \
 
 ## <a name="change-the-throughput-of-a-container"></a>Změna propustnosti kontejneru
 
-Chcete-li změnit propustnost Cosmos DB kontejneru na 1000 RU/s, spusťte následující příkaz:
+Pokud chcete změnit propustnost kontejneru Cosmos na 1000 RU/s, spusťte následující příkaz:
 
 ```azurecli-interactive
 # Update container throughput

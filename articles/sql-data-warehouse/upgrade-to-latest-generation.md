@@ -1,6 +1,6 @@
 ---
-title: Upgrade na nejnovější generace služby Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Upgradujte na nejnovější generace architektury Azure hardware a úložiště Azure SQL Data Warehouse.
+title: Upgradujte na nejnovější generaci Azure SQL Data Warehouse | Microsoft Docs
+description: Upgradujte Azure SQL Data Warehouse na nejnovější generaci architektury hardwaru a úložiště Azure.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,35 +10,35 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: a8bd260db7a141ce845ce7fb5b7e10f642907b82
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2864e3d29a0beccd2ef52732a85ea1495e1efab8
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310269"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575300"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu díky upgradu SQL Data Warehouse
 
-Upgradujte na nejnovější generace architektury Azure hardware a úložiště Azure SQL Data Warehouse.
+Upgradujte Azure SQL Data Warehouse na nejnovější generaci architektury hardwaru a úložiště Azure.
 
 ## <a name="why-upgrade"></a>Proč upgradovat?
 
-Nově můžete bez problémů upgradovat na úroveň SQL Data Warehouse – Compute optimalizované Gen2 na webu Azure Portal pro [podporované oblasti](gen2-migration-schedule.md#automated-schedule-and-region-availability-table). Pokud vaše oblast není podporován místním upgradu, můžete upgradovat na podporovanou oblast nebo počkejte místním upgradu k dispozici ve vaší oblasti. Upgradujte, abyste mohli využívat nejnovější generace hardwaru Azure a rozšířené úložiště architekturu, včetně vyšší výkon, vyšší škálovatelnost a neomezené sloupcové úložiště. 
+Nyní můžete bez problémů upgradovat na SQL Data Warehouse výpočetní optimalizované úrovně Gen2 v Azure Portal pro [podporované oblasti](gen2-migration-schedule.md#automated-schedule-and-region-availability-table). Pokud vaše oblast nepodporuje vlastní upgrade, můžete upgradovat na podporovanou oblast nebo počkat, až bude vlastní upgrade k dispozici ve vaší oblasti. Upgradujte teď a využijte výhod nejnovější generace hardwaru Azure a rozšířené architektury úložiště, včetně rychlejšího výkonu, vyšší škálovatelnosti a neomezeného sloupcového úložiště. 
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 ## <a name="applies-to"></a>Platná pro
 
-Tento upgrade se vztahuje na – Compute optimalizované Gen1 úroveň datové sklady v [podporované oblasti](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
+Tento upgrade se týká výpočetně optimalizovaných datových skladů Gen1 vrstvy v [podporovaných oblastech](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-1. Zkontrolujte, jestli vaše [oblasti](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) se podporuje pro GEN1 GEN2 migrace. Poznamenejte si data automatickou migraci. Aby nedocházelo ke konfliktům s automatizovaným procesem, naplánujte si ruční migraci před datem zahájení automatizovaného procesu.
-2. Pokud jste v oblasti, která zatím není podporovaná, pokračovat ke kontrole vaší oblasti, které mají být přidány nebo [upgrade pomocí obnovení](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) v podporované oblasti.
-3. Pokud se vaší oblasti podporuje, [upgrade prostřednictvím webu Azure portal](#upgrade-in-a-supported-region-using-the-azure-portal)
-4. **Vyberte úroveň výkonu navrhované** pro datový sklad na základě vaší aktuální úroveň výkonu na úrovni Gen1 – Compute optimalizované pomocí následující mapování:
+1. Ověřte, jestli je vaše [oblast](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) podporovaná na migraci Gen1 na Gen2. Poznamenejte si data automatické migrace. Aby nedocházelo ke konfliktům automatizovaného procesu, naplánujte ruční migraci před počátečním datem automatizovaného procesu.
+2. Pokud jste v oblasti, která ještě není podporovaná, pokračujte v kontrole oblasti, která se má přidat nebo upgradovat, [pomocí obnovení](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) do podporované oblasti.
+3. Pokud je vaše oblast podporovaná, [upgradujte ji pomocí Azure Portal](#upgrade-in-a-supported-region-using-the-azure-portal)
+4. **Vyberte navrhovanou úroveň výkonu** pro datový sklad na základě vaší aktuální úrovně výkonu pro výpočetní optimalizovanou Gen1 vrstvu pomocí následujícího mapování:
 
-   | Služba COMPUTE úrovně optimalizované Gen1 | Služba COMPUTE úrovně optimalizované Gen2 |
+   | Výpočetní optimalizovaná úroveň Gen1 | Výpočetní optimalizovaná úroveň Gen2 |
    | :-------------------------: | :-------------------------: |
    |            DW100            |           DW100c            |
    |            DW200            |           DW200c            |
@@ -54,87 +54,87 @@ Tento upgrade se vztahuje na – Compute optimalizované Gen1 úroveň datové s
    |           DW6000            |           DW6000c           |
 
 > [!Note]
-> Úrovně výkonu navrhované nejsou přímý převod. Například doporučujeme přejít z DW600 DW500c.
+> Navrhované úrovně výkonu nejsou přímým převodem. Například doporučujeme, abyste provedli z úroveň DW600 na DW500c.
 
-## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Upgrade v podporované oblasti pomocí webu Azure portal
+## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Upgrade v podporované oblasti pomocí Azure Portal
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Migrace z Gen1 na Gen2 prostřednictvím webu Azure portal je trvalá. Proces pro vrácení Gen1 není.  
+> Migrace z Gen1 do Gen2 prostřednictvím Azure Portal je trvalá. Neexistuje proces pro návrat do Gen1.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. Pokud datový sklad vrstvy – Compute optimalizované Gen1 k upgradu je pozastavený, [obnovit datový sklad](pause-and-resume-compute-portal.md).
+1. Pokud je datový sklad Gen1 vrstvy COMPUTE, který se má upgradovat, pozastaven, [obnovte datový sklad](pause-and-resume-compute-portal.md).
 
    > [!NOTE]
-   > Azure SQL Data Warehouse, musí být spuštěna pro migraci na Gen2.
+   > Aby bylo možné migrovat na Gen2, musí být spuštěný Azure SQL Data Warehouse.
 
-2. Připravit na pár minut prostojů. 
+2. Připravte se na několik minut výpadků. 
 
-3. Určit všechny reference na části kódu do úrovní výkonu – Compute optimalizované Gen1 a na jejich odpovídající úroveň výkonu – Compute optimalizované Gen2 je upravit. Níže jsou uvedeny dva příklady z které by měl aktualizovat odkazy na kód před upgradem:
+3. Identifikujte všechny odkazy na výpočetní výkonové úrovně výkonu Gen1 a upravte je na jejich ekvivalentní výpočetní optimalizované úrovni výkonu Gen2. Níže jsou uvedeny dva příklady, kde byste měli aktualizovat odkazy na kód před upgradem:
 
-   Původní příkaz Gen1 Powershellu:
+   Původní příkaz prostředí PowerShell pro Gen1:
 
    ```powershell
    Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
    ```
 
-   Upravit tak, aby:
+   Změněno na:
 
    ```powershell
    Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
    ```
 
    > [!NOTE] 
-   > -RequestedServiceObjectiveName "DW300" se změní na - RequestedServiceObjectiveName "DW300**c**"
+   > -RequestedServiceObjectiveName "DW300" se změnil na-RequestedServiceObjectiveName "DW300**c**"
    >
 
-   Původní příkaz Gen1 T-SQL:
+   Původní Gen1 příkaz T-SQL:
 
    ```SQL
    ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300') ;
    ```
 
-   Upravit tak, aby:
+   Změněno na:
 
    ```sql
    ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300c') ; 
    ```
    > [!NOTE] 
-   > Parametr SERVICE_OBJECTIVE = "DW300" se změní na SERVICE_OBJECTIVE = "DW300**c**.
+   > SERVICE_OBJECTIVE = ' DW300 ' se změnil na SERVICE_OBJECTIVE = ' DW300**c**'
 
-## <a name="start-the-upgrade"></a>Spuštění upgradu
+## <a name="start-the-upgrade"></a>Spustit upgrade
 
-1. Přejdete na úroveň – Compute optimalizované Gen1 datového skladu na webu Azure Portal. Pokud datový sklad vrstvy – Compute optimalizované Gen1 k upgradu je pozastavený, [obnovit datový sklad](pause-and-resume-compute-portal.md). 
-2. Vyberte **upgradovat na Gen2** karty na kartě úlohy:  ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. V Azure Portal můžete přejít na výpočetní výkon optimalizovaný k datovému skladu vrstvy Gen1. Pokud je datový sklad Gen1 vrstvy COMPUTE, který se má upgradovat, pozastaven, [obnovte datový sklad](pause-and-resume-compute-portal.md). 
+2. Na kartě úlohy vyberte **upgradovat na kartu Gen2** :  ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
     
     > [!NOTE]
-    > Pokud se nezobrazí **upgradovat na Gen2** karet na kartě úlohy, typ vašeho předplatného je omezený v aktuální oblasti.
-    > [Vyplňte lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md) získat vaše předplatné povolený.
+    > Pokud na kartě úkoly nevidíte kartu **upgrade na Gen2** , je váš typ předplatného omezený v aktuální oblasti.
+    > [Odešlete lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md) , abyste získali své předplatné na seznamu povolených.
 
-3. Zajistěte, aby že úloha byla dokončena spuštění a nečinná před upgradem. Pro několik minut, než váš datový sklad je zpátky do online režimu jako datový sklad vrstvy – Compute optimalizované Gen2 je budete setkávat s výpadky. **Vyberte Upgrade**:
+3. Před upgradem zajistěte, aby byla vaše úloha spuštěná a byla nečinná. Během několika minut se můžete setkat s výpadky, než se datový sklad vrátí online jako výpočetní optimalizovaný datový sklad vrstvy Gen2. **Vyberte upgrade**:
 
    ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_2.png)
 
-4. **Monitorování upgradu** kontrolou stavu na webu Azure Portal:
+4. **Monitorujte upgrade** tím, že zkontrolujete jeho stav Azure Portal:
 
    ![Upgrade3](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_3.png)
 
-   Prvním krokem procesu upgradu prochází operace škálování ("upgrade – Offline") ve všech relací bude ukončeno, a připojení se ukončí. 
+   První krok procesu upgradu projde operace škálování ("upgrade-offline"), kde budou všechny relace ukončeny, a připojení se zahozena. 
 
-   Druhým krokem procesu upgradu je migrace dat ("upgrade – Online"). Migrace dat je online skapat proces na pozadí. Tento proces pomalu přesune úložiště se sloupcovou strukturou data z původní architektura úložiště na nové architektuře úložiště použití místní mezipaměti SSD. Během této doby bude váš datový sklad pro dotazování a načítání online. Vaše data budou k dispozici pro dotazy bez ohledu na to, zda je před migrací nebo ne. Migrace dat se stane v závislosti na velikost vašich dat, úroveň výkonu a počet segmentů columnstore různou rychlostí. 
+   Druhým krokem procesu upgradu je migrace dat (upgrade-online). Migrace dat je online proces na pozadí trickle. Tento proces pomalu přesune sloupcová data ze staré architektury úložiště do nové architektury úložiště pomocí místní mezipaměti SSD. Během této doby bude váš datový sklad online pro dotazování a načítání. Data budou k dispozici pro dotaz bez ohledu na to, zda byla migrována nebo nikoli. Migrace dat probíhá různě v závislosti na velikosti dat, úrovni výkonu a počtu segmentů columnstore. 
 
-5. **Volitelné doporučení:** Po dokončení operace škálování můžete urychlit proces na pozadí data migrace. Přesun dat můžete vynutit spuštěním [Alter Index znovu sestavit](sql-data-warehouse-tables-index.md) ve všech tabulkách primární columnstore by dotazování na větší třídu cíle na úrovni služby a prostředky. Tato operace je **offline** ve srovnání s skapat proces na pozadí, což může trvat hodiny v závislosti na počtu a velikosti tabulek. Ale po dokončení migrace dat bude mnohem rychlejší, protože z důvodu novou architekturu rozšířené úložiště s vysoce kvalitní rowgroups.
+5. **Volitelné doporučení:** Po dokončení operace škálování můžete urychlit proces migrace dat na pozadí. Pohyb dat můžete vynutit spuštěním [příkazu ALTER index Rebuild](sql-data-warehouse-tables-index.md) na všech primárních tabulkách columnstore, které se dotazují na větší úrovni objektů slo a prostředků. Tato operace je v porovnání s procesem trickle na pozadí v **režimu offline** , což může trvat hodiny v závislosti na počtu a velikosti tabulek. Nicméně po dokončení bude migrace dat mnohem rychlejší z důvodu nové rozšířené architektury úložiště s vysokou kvalitou rowgroups.
  
 > [!NOTE]
-> Příkaz ALTER Index sestavení je v režimu offline operace a tabulky budou dostupné, až se dokončí sestavení.
+> Příkaz ALTER index Rebuild je offline operace a tabulky nebudou k dispozici, dokud se znovu nedokončí sestavení.
 
-Následující dotaz generuje požadované příkazy Alter Index Rebuild k urychlení migrace dat:
+Následující dotaz vygeneruje potřebné příkazy ALTER index rebuild pro urychlení migrace dat:
 
 ```sql
 SELECT 'ALTER INDEX [' + idx.NAME + '] ON [' 
@@ -179,53 +179,53 @@ FROM   sys.indexes idx
 WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE'; 
 ```
 
-## <a name="upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal"></a>Upgrade z Azure zeměpisné oblasti pomocí obnovení na webu Azure portal
+## <a name="upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal"></a>Upgrade z geografické oblasti Azure pomocí obnovení prostřednictvím Azure Portal
 
-## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Vytvoření bodu obnovení uživatelem definované pomocí webu Azure portal
+## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Vytvoření bodu obnovení definovaného uživatelem pomocí Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte do SQL data warehouse, kterou chcete vytvořit bod obnovení pro.
+2. Přejděte do SQL Data Warehouse, pro který chcete vytvořit bod obnovení.
 
-3. V horní části přehledu, vyberte **+ nový bod obnovení**.
+3. V horní části přehledu vyberte **+ nový bod obnovení**.
 
     ![Nový bod obnovení](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
 
-4. Zadejte název pro bod obnovení.
+4. Zadejte název bodu obnovení.
 
-    ![Názvem bodu obnovení](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_1.png)
+    ![Název bodu obnovení](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_1.png)
 
-## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Obnovit databázi aktivní nebo pozastavena pomocí webu Azure portal
+## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Obnovení aktivní nebo pozastavené databáze pomocí Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Přejděte do SQL data warehouse, kterou chcete obnovit z.
-3. V horní části přehledu, vyberte **obnovení**.
+2. Přejděte na SQL Data Warehouse, ze kterého chcete obnovit.
+3. V horní části přehledu vyberte **obnovit**.
 
     ![ Obnovení – přehled](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)
 
-4. Vyberte buď **body obnovení automaticky** nebo **uživatelem definované body obnovení**.
+4. Vyberte buď **body automatického obnovení** nebo **body obnovení definované uživatelem**.
 
-    ![Body obnovení automaticky](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
+    ![Automatické body obnovení](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
 
-5. Pro body obnovení uživatelsky definovaná **vyberte bod obnovení** nebo **vytvořit nový bod obnovení uživatelem definované**. Vyberte zeměpisnou oblast podporovaném serveru Gen2. 
+5. V případě uživatelem definovaných bodů obnovení **Vyberte bod obnovení** nebo **vytvořte nový bod obnovení definovaný uživatelem**. Vyberte server v Gen2 geografické oblasti. 
 
     ![Uživatelem definované body obnovení](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
-## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>Obnovení z Azure zeměpisné oblasti pomocí Powershellu
+## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>Obnovení z geografické oblasti Azure pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Chcete-li obnovit databázi, použijte [obnovení AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) rutiny.
+K obnovení databáze použijte rutinu [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) .
 
 > [!NOTE]
-> Můžete provést geografické obnovení na Gen2! Uděláte to tak, zadejte Gen2 ServiceObjectiveName (třeba DW1000**c**) jako volitelný parametr.
+> K Gen2 můžete použít geografické obnovení. Provedete to tak, že jako volitelný parametr zadáte Gen2 ServiceObjectiveName (např. DW1000**c**).
 
 1. Otevřete Windows PowerShell.
-2. Připojte se ke svému účtu Azure a vypsat všechna předplatná spojená s vaším účtem.
-3. Vyberte předplatné, která obsahuje databázi obnovit.
-4. Získáte databáze, kterou chcete obnovit.
-5. Vytvořte žádost o obnovení pro databáze, určení Gen2 ServiceObjectiveName.
-6. Ověřte stav databázi geograficky obnovit.
+2. Připojte se k účtu Azure a seznamte se se všemi předplatnými přidruženými k vašemu účtu.
+3. Vyberte předplatné, které obsahuje databázi, kterou chcete obnovit.
+4. Získejte databázi, kterou chcete obnovit.
+5. Vytvořte žádost o obnovení pro databázi a určete Gen2 ServiceObjectiveName.
+6. Ověřte stav geograficky obnovené databáze.
 
 ```Powershell
 Connect-AzAccount
@@ -243,13 +243,13 @@ $GeoRestoredDatabase.status
 ```
 
 > [!NOTE]
-> Po dokončení obnovení konfigurace vaší databáze, najdete v článku [nakonfigurovat svou databázi po obnovení](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
+> Konfiguraci databáze po dokončení obnovení najdete v tématu [Konfigurace databáze po obnovení](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
 
-Pokud zdrojová databáze je povolené šifrování TDE, bude obnovenou databázi povoleno TDE.
+Pokud je zdrojová databáze povolena TDE, obnovená databáze bude TDE povolena.
 
 
-Pokud zaznamenáte problémy s váš datový sklad, vytvořte [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) a odkazovat na "Gen2 upgrade" jako možnou příčinu.
+Pokud dojde k potížím s datovým skladem, vytvořte [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) a odkaz "Gen2 upgrade" jako možnou příčinu.
 
 ## <a name="next-steps"></a>Další postup
 
-Váš upgradovaný datový sklad je online. Abyste mohli využívat rozšířenou architektury, najdete v článku [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).
+Upgradovaný datový sklad je online. Pokud chcete využít vylepšenou architekturu, přečtěte si téma [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).

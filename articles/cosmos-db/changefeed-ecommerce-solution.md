@@ -7,16 +7,16 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 7923ce10912ebb6f09c1c3d8390dd51b4f876bea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552001"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616944"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
 
-Kanál změn služby Azure Cosmos DB je mechanismus pro získání informační kanál průběžné a přírůstkové záznamů z kontejneru služby Azure Cosmos DB, jak se tyto záznamy vytvořené nebo změněné. Změna kanálu funguje podpora prostřednictvím naslouchání kontejner pro všechny změny. Potom vypíše seřazený seznam dokumentů, které byly změněny v pořadí, ve kterém byly změněny. Další informace o kanálu změn najdete v tématu [práce díky kanálu změn](change-feed.md) článku. 
+Kanál změny Azure Cosmos DB je mechanismus, který získá průběžné a přírůstkové kanály záznamů z kontejneru Azure Cosmos při vytváření nebo úpravách těchto záznamů. Změna kanálu funguje podpora prostřednictvím naslouchání kontejner pro všechny změny. Potom vypíše seřazený seznam dokumentů, které byly změněny v pořadí, ve kterém byly změněny. Další informace o kanálu změn najdete v tématu [práce díky kanálu změn](change-feed.md) článku. 
 
 Tento článek popisuje, jak kanál změn umožňuje společnost elektronického obchodování porozumět trendům uživatele, provedení analýzy dat v reálném čase a vizualizace. Probereme události, jako je například uživatel položku zobrazení, přidání položky do jejich košíku nebo zakoupení položku. Při jedné z těchto událostí se vytvoří nový záznam a změny kanálu protokolů, které zaznamenávají. Změna kanálu pak aktivační události sérii kroků, což vede k vizualizaci metrik, které analýzu výkonu společnosti a aktivity. Ukázkové metriky, které můžete vizualizovat zahrnout výnosy, jedinečných návštěvníků, Nejoblíbenější položky a průměrná cena zboží, které lze zobrazit a přidat do košíku a zakoupit. Tyto ukázkové metriky může pomoct e-commerce společnosti vyhodnotit své popularitě už web, vývoj jeho reklamy a cenové strategie a učinit rozhodnutí týkající se co inventáře investovat do.
 
@@ -41,9 +41,9 @@ Následující diagram znázorňuje tok dat a součásti účastnící se řeše
    }
    ```
 
-2. **Cosmos DB:** Vygenerovaná data jsou uložená v kolekci Azure Cosmos DB.  
+2. **Cosmos DB:** Vygenerovaná data se ukládají do kontejneru Azure Cosmos.  
 
-3. **Změnit kanál:** Kanál změn bude naslouchat změnám kolekce Azure Cosmos DB. Pokaždé, když do kolekce (která je při výskytu události, uživatelem zobrazení položky, přidání položky do jejich košíku nebo zakoupením položky) se přidá nový dokument, změna kanálu bude aktivovat [funkce Azure Functions](../azure-functions/functions-overview.md).  
+3. **Změnit kanál:** Kanál změn bude naslouchat změnám v kontejneru Azure Cosmos. Pokaždé, když do kolekce (která je při výskytu události, uživatelem zobrazení položky, přidání položky do jejich košíku nebo zakoupením položky) se přidá nový dokument, změna kanálu bude aktivovat [funkce Azure Functions](../azure-functions/functions-overview.md).  
 
 4. **Funkce Azure:** Funkce Azure zpracuje nová data a pošle je do [centra událostí Azure](../event-hubs/event-hubs-about.md).  
 
@@ -143,7 +143,7 @@ Azure Event Hubs přijímá data událostí, úložiště, procesy a předá dat
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>Nastavení funkce Azure Functions ke čtení kanálu změn
 
-Při vytvoření nového dokumentu nebo změně aktuální dokument v kolekci Cosmos DB, automaticky kanálu změn přidá daný upravený dokument do jeho historii změn kolekce. Nyní bude sestavovat a spouštět funkce Azure, která zpracovává kanálu změn. Při vytvoření nebo úpravě v kolekci, kterou jste vytvořili dokument, funkce Azure Functions se aktivuje pomocí kanálu změn. Funkce Azure Functions bude odešlete upravený dokument do centra událostí.
+Když se vytvoří nový dokument nebo se v kontejneru Cosmos upraví aktuální dokument, kanál změn automaticky přidá tento změněný dokument ke své historii změn kolekce. Nyní bude sestavovat a spouštět funkce Azure, která zpracovává kanálu změn. Při vytvoření nebo úpravě v kolekci, kterou jste vytvořili dokument, funkce Azure Functions se aktivuje pomocí kanálu změn. Funkce Azure Functions bude odešlete upravený dokument do centra událostí.
 
 1. Vraťte se do úložiště, které jste naklonovali na vašem zařízení.  
 
@@ -318,7 +318,7 @@ Power BI je sada nástrojů pro obchodní analýzy k analýze dat a sdílet pře
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Volitelné: Vizualizace s využitím webu elektronického obchodování
 
-Nyní zjistíte, jak můžete váš nový nástroj pro analýzu dat pro připojení k webu skutečné elektronického obchodování. Aby bylo možné vytvářet webu elektronického obchodování, použijte databázi Azure Cosmos DB k ukládání seznam kategorií produktů (ženy, Pánské, Unisex), katalog produktů a seznamu Oblíbené položky.
+Nyní zjistíte, jak můžete váš nový nástroj pro analýzu dat pro připojení k webu skutečné elektronického obchodování. Aby bylo možné sestavit web elektronického obchodování, použijte databázi Azure Cosmos k uložení seznamu kategorií produktů (ženy, muži, Unisex), katalogu produktů a seznamu nejoblíbenějších položek.
 
 1. Přejděte zpět na [webu Azure Portal](https://portal.azure.com/), pak na vaše **účtu služby Cosmos DB**, klikněte na **Průzkumník dat**.  
 

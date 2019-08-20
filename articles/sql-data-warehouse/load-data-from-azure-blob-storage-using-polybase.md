@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Načtení dat taxislužby města New York do služby Azure SQL Data Warehouse | Dokumentace Microsoftu'
-description: Kurz používá Azure portal a SQL Server Management Studio k načtení dat taxislužby města New York z veřejného Azure blob do služby Azure SQL Data Warehouse.
+title: 'Kurz: Načíst data taxislužby města New York do Azure SQL Data Warehouse | Microsoft Docs'
+description: Kurz používá Azure Portal a SQL Server Management Studio k načtení dat New York taxislužby města z veřejného objektu blob Azure do Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5f2830b524c554a6988bfc873cd0f6c54e5c56a4
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e3bef20a92322b07219e42c4f7fe8443917eae32
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839679"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575214"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat taxislužby města New York do služby Azure SQL Data Warehouse
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat New York taxislužby města do Azure SQL Data Warehouse
 
-Tento kurz využívá PolyBase k načítání dat taxislužby města New York z veřejného Azure blob do služby Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k: 
+V tomto kurzu se pomocí základu načte data New York taxislužby města z veřejného objektu blob Azure do Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k: 
 
 > [!div class="checklist"]
 > * Vytvoření datového skladu na webu Azure Portal
@@ -42,11 +42,11 @@ Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi apl
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Vytvoření prázdného datového skladu SQL
+## <a name="create-a-blank-sql-data-warehouse"></a>Vytvořit prázdnou SQL Data Warehouse
 
-Datový sklad SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků](memory-and-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-features.md). 
+Vytvoří se Azure SQL Data Warehouse s definovanou sadou [výpočetních prostředků](memory-and-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-features.md). 
 
-Pomocí následujících kroků vytvořte prázdný datový sklad SQL. 
+Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse. 
 
 1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
@@ -78,9 +78,9 @@ Pomocí následujících kroků vytvořte prázdný datový sklad SQL.
 
 5. Klikněte na tlačítko **vyberte**.
 
-6. Klikněte na tlačítko **úroveň výkonu** k určení, zda datový sklad je Gen1 a Gen2 a počet datových skladů jednotky. 
+6. Klikněte na **úroveň výkonu** , abyste určili, jestli je datový sklad Gen1 nebo Gen2, a kolik jednotek datového skladu. 
 
-7. Pro účely tohoto kurzu vyberte **Gen2** služby SQL Data Warehouse. Posuvník nastavený na **DW1000c** ve výchozím nastavení.  Zkuste jeho posouváním hodnotu zvýšit a snížit a podívejte se, jak funguje. 
+7. Pro účely tohoto kurzu vyberte **Gen2** SQL Data Warehouse. Ve výchozím nastavení je posuvník nastaven na **DW1000c** .  Zkuste jeho posouváním hodnotu zvýšit a snížit a podívejte se, jak funguje. 
 
     ![konfigurace výkonu](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -103,7 +103,7 @@ Služba SQL Data Warehouse vytvoří bránu firewall na úrovni serveru, aby zab
 > SQL Data Warehouse komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
 >
 
-1. Po dokončení nasazení klikněte na **Databáze SQL** z nabídky na levé straně a klikněte na **mySampleDatabase** na stránce **Databáze SQL**. Otevře se stránka s přehledem pro vaši databázi, zobrazí plně kvalifikovaný název (například **mynewserver-20180430.database.windows.net**) a poskytne vám možnosti další konfigurace. 
+1. Po dokončení nasazení klikněte na **Databáze SQL** z nabídky na levé straně a klikněte na **mySampleDatabase** na stránce **Databáze SQL**. Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **MyNewServer-20180430.Database.Windows.NET**), který poskytuje možnosti pro další konfiguraci. 
 
 2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následujících rychlých startech. Pak kliknutím na název serveru otevřete nastavení serveru.
 
@@ -133,7 +133,7 @@ Pomocí této IP adresy se teď můžete připojit k serveru SQL a jeho datovým
 Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte **SQL datových skladů** z nabídky na levé straně a klikněte na databázi **datové sklady SQL** stránky. 
+2. V nabídce na levé straně vyberte **SQL Data Warehouse** a klikněte na svou databázi na stránce **SQL Data Warehouse** . 
 3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název mynewserver-20180430.database.windows.net. 
 
     ![informace o připojení](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
@@ -149,7 +149,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
     | Nastavení      | Navrhovaná hodnota | Popis | 
     | ------------ | --------------- | ----------- | 
     | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
-    | Název serveru | Plně kvalifikovaný název serveru | Název by měl vypadat přibližně takto: **mynewserver-20180430.database.windows.net**. |
+    | Název serveru | Plně kvalifikovaný název serveru | Název by měl být podobný tomuto: **MyNewServer-20180430.Database.Windows.NET**. |
     | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
     | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
     | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
@@ -164,7 +164,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
 
 ## <a name="create-a-user-for-loading-data"></a>Vytvoření uživatele pro načítání dat
 
-Účet správce serveru slouží k provádění operací správy a není vhodný pro spouštění dotazů na uživatelská data. Načítání dat je operace s vysokými nároky na paměť. Maximální hodnoty paměti jsou definovány, podle které generaci služby SQL Data Warehouse zřídíte, [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md), a [třídy prostředků](resource-classes-for-workload-management.md). 
+Účet správce serveru slouží k provádění operací správy a není vhodný pro spouštění dotazů na uživatelská data. Načítání dat je operace s vysokými nároky na paměť. Maximální velikost paměti je definována podle toho, jakou generaci SQL Data Warehouse jste zřídili, [jednotky datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md)a [třídu prostředků](resource-classes-for-workload-management.md). 
 
 Doporučujeme vytvořit účet a uživatele vyhrazeného pro načítání dat. Pak přidejte uživatele načítání do [třídy prostředků](resource-classes-for-workload-management.md), která umožňuje odpovídající maximální přidělení paměti.
 
@@ -215,7 +215,7 @@ Prvním krokem k načítání dat je přihlášení jako LoaderRC20.
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Vytvoření externích tabulek pro ukázková data
 
-Teď jste připraveni zahájit proces načítání dat do svého nového datového skladu. V tomto kurzu se dozvíte, jak načíst data taxislužby města New York z objektu blob služby Azure storage pomocí externí tabulky. Informace o přesunu dat do Azure Blob Storage nebo jejich načtení přímo ze zdroje do služby SQL Data Warehouse najdete pro budoucí použití v části s [přehledem načítání](sql-data-warehouse-overview-load.md).
+Teď jste připraveni zahájit proces načítání dat do svého nového datového skladu. V tomto kurzu se dozvíte, jak pomocí externích tabulek načíst data CAB taxislužby z úložiště Azure Storage v New Yorku. Informace o přesunu dat do Azure Blob Storage nebo jejich načtení přímo ze zdroje do služby SQL Data Warehouse najdete pro budoucí použití v části s [přehledem načítání](sql-data-warehouse-overview-load.md).
 
 Spuštěním následujících skriptů SQL zadejte informace o datech, která chcete načíst. Tyto informace zahrnují umístění dat, formát obsahu dat a definici tabulky pro data. 
 
@@ -561,16 +561,16 @@ Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/
 
     ![Zobrazení načtených tabulek](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
-## <a name="authenticate-using-managed-identities-to-load-optional"></a>Ověření pomocí spravované identity načíst (volitelné)
-Načítání při použití technologie PolyBase a ověřování pomocí spravované identity je nejbezpečnější mechanismus a umožňuje vám to využívat koncové body služby virtuální sítě s Azure storage. 
+## <a name="authenticate-using-managed-identities-to-load-optional"></a>Ověřování pomocí spravovaných identit k načtení (volitelné)
+Nasazování pomocí základů a ověření prostřednictvím spravovaných identit je nejbezpečnější mechanismus, který umožňuje využívat koncové body služby virtuální sítě s Azure Storage. 
 
 ### <a name="prerequisites"></a>Požadavky
-1.  Instalace Azure Powershellu pomocí tohoto [průvodce](https://docs.microsoft.com/powershell/azure/install-az-ps).
-2.  Pokud máte účet pro obecné účely v1 a blob storage, je nutné nejprve upgradovat na v2 pro obecné účely použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-3.  Musíte mít **Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště** zapnuté pod účtem služby Azure Storage **brány firewall a virtuální sítě** nabídky nastavení. Projít tento [průvodce](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Další informace.
+1.  Pomocí této [příručky](https://docs.microsoft.com/powershell/azure/install-az-ps)nainstalujte Azure PowerShell.
+2.  Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte nejdřív v této [příručce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)upgradovat na obecné účely v2.
+3.  Abyste měli přístup k tomuto účtu úložiště zapnutý, musíte mít **povolené důvěryhodné služby Microsoftu** v nabídce Azure Storage **brány firewall účtů a nastavení virtuálních sítí** . Další informace najdete v tomto [Průvodci](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
 
 #### <a name="steps"></a>Kroky
-1. V prostředí PowerShell **registraci serveru služby SQL Database** s Azure Active Directory (AAD):
+1. V prostředí PowerShell **zaregistrujte SQL Database Server** pomocí Azure Active Directory (AAD):
 
    ```powershell
    Connect-AzAccount
@@ -578,32 +578,32 @@ Načítání při použití technologie PolyBase a ověřování pomocí spravov
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
    ```
     
-   1. Vytvoření **pro obecné účely v2 účtu úložiště** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+   1. Pomocí této [příručky](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)vytvořte **účet úložiště pro obecné účely v2** .
 
    > [!NOTE]
-   > - Pokud máte účet pro obecné účely v1 a blob storage, je nutné **nejprve upgradovat na v2** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+   > - Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte **nejdřív upgradovat na verzi v2** pomocí této [příručky](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
     
-1. V rámci účtu úložiště, přejděte do **řízení přístupu (IAM)** a klikněte na tlačítko **přidat přiřazení role**. Přiřadit **Přispěvatel dat objektu Blob úložiště** role RBAC pro váš server SQL Database.
+1. V části účet úložiště přejděte na **Access Control (IAM)** a klikněte na **Přidat přiřazení role**. Přiřazení role RBAC **Přispěvatel dat objektů BLOB úložiště** k vašemu serveru SQL Database.
 
    > [!NOTE] 
-   > Tento krok lze provést pouze členové s oprávněními vlastníka. Různé předdefinované role pro prostředky Azure, najdete to [průvodce](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích pro prostředky Azure najdete v tomto [Průvodci](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
-1. **Polybase připojením k účtu Azure Storage:**
+1. **Základní připojení k účtu Azure Storage:**
     
-   1. Vytvořte své přihlašovací údaje s rozsahem databáze s **IDENTITY = "Identita spravované služby"** :
+   1. Vytvořte databázi s rozsahem pověření pomocí **identity = ' identita spravované služby '** :
 
        ```SQL
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
        ```
        > [!NOTE] 
-       > - Není nutné zadat tajný kód se přístupový klíč k úložišti Azure, protože tento mechanismus využívá [Identity spravované](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pod pokličkou.
-       > - Název IDENTITY by měl být **Managed Service Identity** PolyBase připojení k práci s účtem úložiště Azure.
+       > - Není nutné zadávat tajný klíč pomocí Azure Storage přístupového klíče, protože tento mechanismus používá [spravovanou identitu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) v rámci pokrývání.
+       > - Název IDENTITY by měl být Identita spravované služby, aby připojení **typu** Base pro práci s účtem Azure Storage fungovalo.
     
-   1. Create External Data Source zadání Database Scoped Credential se identita spravované služby.
+   1. Vytvořte externí zdroj dat, který určuje rozsah přihlašovacích údajů databáze s Identita spravované služby.
         
-   1. Dotaz jako normální použití [externí tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
+   1. Dotazování jako normální pomocí [externích tabulek](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)
 
-Přečtěte si následující [dokumentaci](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) Pokud chcete nastavit koncové body služeb virtuální sítě pro službu SQL Data Warehouse. 
+Pokud chcete nastavit koncové body služby virtuální sítě pro SQL Data Warehouse, přečtěte si následující [dokumentaci](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) . 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -622,11 +622,11 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 3. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní prostředky ani prostředky úložiště, klikněte na **Odstranit**.
 
-4. Pokud chcete odstranit server SQL, který jste vytvořili, klikněte na tlačítko **mynewserver-20180430.database.windows.net** v předchozím obrázku a pak klikněte na tlačítko **odstranit**.  Buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
+4. Pokud chcete odebrat vytvořený SQL Server, klikněte na **MyNewServer-20180430.Database.Windows.NET** na předchozím obrázku a pak klikněte na **Odstranit**.  Buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
 5. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 V tomto kurzu jste se naučili vytvořit datový sklad a uživatele pro načítání dat. Vytvořili jste externí tabulky pro definici struktury dat uložených v Azure Storage Blob a pak jste pomocí příkazu PolyBase CREATE TABLE AS SELECT načetli data do svého datového skladu. 
 
 Provedli jste tyto akce:
@@ -640,7 +640,7 @@ Provedli jste tyto akce:
 > * Zobrazení průběhu nahrávání dat
 > * Vytvoření statistik pro nově načtená data
 
-Přejděte k přehled vývoje se naučíte migrovat existující databázi do SQL Data Warehouse.
+Přejděte na přehled vývoje, kde se dozvíte, jak migrovat existující databázi do SQL Data Warehouse.
 
 > [!div class="nextstepaction"]
->[Rozhodnutí o návrhu migrovat existující databázi do SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)
+>[Rozhodnutí o návrhu migrace stávající databáze na SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)

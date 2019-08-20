@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67566068"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611922"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium
 Dřív Azure Service Bus nabízet obory názvů jenom na úrovni Standard. Obory názvů jsou nastavení pro více tenantů, která jsou optimalizovaná pro prostředí s nízkou propustností a vývojářem. Úroveň Premium nabízí vyhrazené prostředky na obor názvů pro předvídatelné latenci a vyšší propustnost za pevnou cenu. Úroveň Premium je optimalizovaná pro vysokou propustnost a produkční prostředí, která vyžadují další podnikové funkce.
@@ -115,7 +115,8 @@ Migrace pomocí Azure Portal má stejný logický tok jako migrace pomocí pří
    1. Po dokončení synchronizace vyberte v dolní části stránky **Další** .
 
 1. Zkontrolujte změny na stránce Souhrn. Vyberte **dokončit migraci** pro přepínání oborů názvů a dokončení migrace.
-    ![Přepnout v nabídce][] přepínač oboru názvů po dokončení migrace se zobrazí stránka potvrzení.
+    ![Přepnout nabídku oboru názvů – přepínač][]  
+    Po dokončení migrace se zobrazí stránka potvrzení.
     ![Přepnout obor názvů – úspěch][]
 
 ## <a name="caveats"></a>Upozornění
@@ -208,7 +209,7 @@ Pokud však můžete provést migraci během plánované údržby nebo údržbu 
     >
     > Po dokončení migrace se aplikace přijímače odpojí ze standardního oboru názvů a automaticky se připojí k oboru názvů Premium.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Přečtěte si další informace o [rozdílech mezi zasíláním zpráv na úrovni Standard a Premium](./service-bus-premium-messaging.md).
 * Seznamte se s [vysokou dostupností a geografickými aspekty zotavení po havárii pro Service Bus Premium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).

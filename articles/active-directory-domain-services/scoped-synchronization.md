@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Obor synchronizace | Dokumentace Microsoftu'
-description: Konfigurace synchronizace s vymezeným oborem z Azure AD do spravované domény
+title: 'Azure Active Directory Domain Services: Synchronizace s vymezeným oborem | Microsoft Docs'
+description: Konfigurace vymezené synchronizace z Azure AD do spravovaných domén
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,73 +15,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: bb96e7ccbc38a71d24178c31f8eb9a077c06b8f0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 7d3bd8c6c62c0b8a1be6203e426337fcee7d2126
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472523"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617116"
 ---
-# <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurace vymezených synchronizace z Azure AD do spravované domény
-V tomto článku se dozvíte, jak nakonfigurovat pouze konkrétní uživatelské účty, které se mají synchronizovat z adresáře služby Azure AD do spravované domény služby Azure AD Domain Services.
+# <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurace vymezené synchronizace z Azure AD do spravované domény
+V tomto článku se dozvíte, jak nakonfigurovat jenom konkrétní uživatelské účty, které se mají synchronizovat z adresáře Azure AD, do spravované domény Azure AD Domain Services.
 
 
-## <a name="group-based-scoped-synchronization"></a>Na základě skupin synchronizace s vymezeným oborem
-Ve výchozím nastavení všichni uživatelé a skupiny v adresáři služby Azure AD jsou synchronizovány do spravované domény. Pokud pouze několika uživatelům používat spravovanou doménu, může synchronizovat pouze tyto uživatelské účty. Na základě skupin s vymezeným oborem synchronizace umožňuje udělat. Při konfiguraci, jsou synchronizovány pouze uživatelské účty, které patří do skupiny, které jste zadali do spravované domény.
+## <a name="group-based-scoped-synchronization"></a>Synchronizace s rozsahem na základě skupin
+Ve výchozím nastavení se všechny uživatele a skupiny v adresáři služby Azure AD synchronizují do vaší spravované domény. Pokud spravovaná doména používá jenom několik uživatelů, můžete synchronizovat jenom tyto uživatelské účty. Synchronizace vymezená na základě skupin vám to umožňuje. Po nakonfigurování budou do spravované domény synchronizovány pouze uživatelské účty patřící do skupin, které jste zadali.
 
-Následující tabulka vám pomůže určit, jak používat vymezenou synchronizace:
+Následující tabulka vám pomůže určit, jak se má použít vymezená synchronizace:
 
-| **Aktuální stav** | **Požadovaný stav** | **Požadované konfigurace** |
+| **Aktuální stav** | **Požadovaný stav** | **Požadovaná konfigurace** |
 | --- | --- | --- |
-| Svoji existující spravovanou doménu je nakonfigurovaný k synchronizaci všech uživatelských účtů a skupin. | Chcete synchronizovat pouze uživatelské účty, které patří do konkrétní skupiny do spravované domény. | [Odstranit existující spravovanou doménu](delete-aadds.md). Potom postupujte podle pokynů v tomto článku znovu vytvořit s vymezeným oborem synchronizace nakonfigurovaný. |
-| Nemáte existující spravovanou doménu. | Chcete vytvořit nové spravované domény a synchronizovat pouze uživatelské účty, které patří do konkrétní skupiny. | Postupujte podle pokynů v tomto článku a vytvořte nové spravované doméně s vymezeným oborem synchronizace nakonfigurovaný. |
-| Svoji existující spravovanou doménu je nakonfigurovaný k synchronizaci pouze účty, které patří do konkrétní skupiny. | Chcete-li upravit seznam skupin, jejichž uživatelé měli být synchronizováni na spravovat domény. | Postupujte podle pokynů v tomto článku a upravit vymezené synchronizace. |
+| Vaše stávající spravovaná doména je nakonfigurovaná pro synchronizaci všech uživatelských účtů a skupin. | Chcete synchronizovat jenom uživatelské účty patřící do konkrétních skupin do spravované domény. | [Odstraňte existující spravovanou doménu](delete-aadds.md). Pak postupujte podle pokynů v tomto článku, abyste ho znovu vytvořili s nakonfigurovanou synchronizací s vymezeným oborem. |
+| Nemáte existující spravovanou doménu. | Chcete vytvořit novou spravovanou doménu a synchronizovat jenom uživatelské účty patřící do konkrétních skupin. | Podle pokynů v tomto článku vytvořte novou spravovanou doménu s nakonfigurovanou synchronizací s vymezeným oborem. |
+| Vaše stávající spravovaná doména je nakonfigurovaná tak, aby synchronizoval jenom účty patřící do konkrétních skupin. | Chcete upravit seznam skupin, jejichž uživatelé se mají synchronizovat s doménou Správa. | Podle pokynů v tomto článku můžete upravit vymezenou synchronizaci. |
 
 > [!WARNING]
-> **Změna rozsahu synchronizace způsobí, že kvůli tomu provádět znovu synchronizovat vaši spravovanou doménu.**
+> **Změna rozsahu synchronizace způsobí, že vaše spravovaná doména projde opětovnou synchronizací.**
 > 
->  * Při změně oboru synchronizace pro spravovanou doménu, dojde k úplné opětovné synchronizace.
->  * Objekty, které jsou již není požadován ve spravované doméně se odstraní. Vytvoření nových objektů ve spravované doméně.
->  * Opětovná synchronizace může trvat dlouhou dobu v závislosti na počtu objektů (uživatelů, skupin a členství ve skupinách) ve vaší spravované domény a adresáře služby Azure AD. Pro velké adresáře s mnoha stovek tisíc objektů může pár dní trvat opětovné synchronizace.
+>  * Když změníte rozsah synchronizace pro spravovanou doménu, dojde k úplné opakované synchronizaci.
+>  * Objekty, které již nejsou ve spravované doméně požadovány, jsou odstraněny. Ve spravované doméně se vytvoří nové objekty.
+>  * Opakovaná synchronizace může trvat dlouhou dobu v závislosti na počtu objektů (uživatelů, skupin a členství ve skupinách) ve vaší spravované doméně a adresáři služby Azure AD. Pro velké adresáře s mnoha stovkami tisíc objektů může opětovná synchronizace trvat několik dní.
 
 
-## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Vytvořit nové spravované domény a povolit na základě skupin s vymezeným oborem synchronizace pomocí webu Azure portal
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Vytvořit novou spravovanou doménu a povolit synchronizaci vymezenou podle skupin pomocí Azure Portal
 
-1. Postupujte podle [příručce Začínáme](create-instance.md) vytvořit spravovanou doménu.
-2. Zvolte **obor** při výběru stylu synchronizace v Průvodci vytvořením Azure AD Domain Services.
+1. Použijte [průvodce Začínáme](tutorial-create-instance.md) k vytvoření spravované domény.
+2. Vyberte **vymezený rozsah** během výběru stylu synchronizace v Průvodci vytvořením Azure AD Domain Services.
 
-## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>Vytvořit nové spravované domény a povolit na základě skupin s vymezeným oborem synchronizace pomocí Powershellu
-Dokončete tuto sadu kroků pomocí prostředí PowerShell. Přečtěte si pokyny k [povolit Azure Active Directory Domain Services pomocí Powershellu](powershell-create-instance.md). Několik kroků v tomto článku jsou mírně upravit tak, aby konfigurace synchronizace s vymezeným oborem.
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>Vytvoření nové spravované domény a povolení synchronizace s rozsahem na základě skupin pomocí PowerShellu
+K dokončení této sady kroků použijte PowerShell. Informace o [povolení Azure Active Directory Domain Services pomocí PowerShellu](powershell-create-instance.md)najdete v pokynech. Několik kroků v tomto článku se mírně změnila a konfiguruje se synchronizace s vymezeným oborem.
 
-Proveďte následující kroky konfigurace na základě skupin s vymezeným oborem synchronizace se spravovanou doménou:
+Provedením následujících kroků nakonfigurujte synchronizaci s rozsahem na základě skupin do spravované domény:
 
-1. Proveďte následující úkoly:
-   * [Úloha 1: Nainstalujte požadované moduly Powershellu](powershell-create-instance.md#task-1-install-the-required-powershell-modules).
-   * [Úloha 2: Vytvoření instančního objektu požadovaná služba v adresáři služby Azure AD](powershell-create-instance.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
-   * [Úloha 3: Vytvořte a nakonfigurujte "Správci AAD DC" group]powershell-create-instance.md#task-3-create-and-configure-the-aad-dc-administrators-group).
-   * [Úloha 4: Registrace poskytovatele prostředků služby Azure AD Domain Services](powershell-create-instance.md#task-4-register-the-azure-ad-domain-services-resource-provider).
-   * [Úloha 5: Vytvořte skupinu prostředků](powershell-create-instance.md#task-5-create-a-resource-group).
-   * [Krok 6: Vytvoření a konfigurace virtuální sítě](powershell-create-instance.md#task-6-create-and-configure-the-virtual-network).
+1. Proveďte následující úlohy:
+   * [Úloha 1: Nainstalujte požadované moduly](powershell-create-instance.md#task-1-install-the-required-powershell-modules)prostředí PowerShell.
+   * [Úkol 2: Vytvořte požadovaný instanční objekt v adresáři](powershell-create-instance.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory)služby Azure AD.
+   * [Úloha 3: Vytvořte a nakonfigurujte skupinu ' AAD DC Administrators '] PowerShell-Create-instance. MD # Task-3-Create-a-Configure-the-AAD-DC-Administrators-Group).
+   * [Úloha 4: Zaregistrujte poskytovatele](powershell-create-instance.md#task-4-register-the-azure-ad-domain-services-resource-provider)prostředků Azure AD Domain Services.
+   * [5. úkol: Vytvořte skupinu](powershell-create-instance.md#task-5-create-a-resource-group)prostředků.
+   * [Úloha 6: Vytvořte a nakonfigurujte virtuální síť](powershell-create-instance.md#task-6-create-and-configure-the-virtual-network).
 
-2. Vyberte skupiny, které chcete synchronizovat, a zadání zobrazovaného názvu skupiny, které chcete synchronizovat vaši spravovanou doménu.
+2. Vyberte skupiny, které chcete synchronizovat, a zadejte zobrazované názvy skupin, které chcete synchronizovat do spravované domény.
 
-3. Uložit [skript v následujícím oddílu](scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) do souboru s názvem ```Select-GroupsToSync.ps1```. Spusťte skript podobná níže uvedenému příkladu:
+3. Uložte [skript v následující části](scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) do souboru s názvem ```Select-GroupsToSync.ps1```. Spusťte skript podobný následujícímu:
 
    ```powershell
    .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
    ```
 
    > [!WARNING]
-   > **Nezapomeňte zahrnout skupinu "Správci AAD DC".**
+   > **Nezapomeňte zahrnout skupinu ' AAD DC Administrators '.**
    >
-   > V seznamu skupiny nakonfigurované pro synchronizaci s vymezeným oborem musí obsahovat skupinu "Správci AAD DC". Pokud není zadána tuto skupinu, budou spravované domény nepoužitelné.
+   > Do seznamu skupin nakonfigurovaných pro vymezenou synchronizaci musíte zahrnout skupinu ' AAD DC Administrators '. Pokud tuto skupinu nezahrnete, spravovaná doména nebude použitelná.
    >
 
-4. Teď vytvořte spravovanou doménu a povolte na základě skupin s vymezeným oborem synchronizace pro spravovanou doménu. Zahrnout vlastnost ```"filteredSync" = "Enabled"``` v ```Properties``` parametru. Pro instanci, najdete v následující fragment skriptu zkopírovanými z [7 úloh: Zřízení spravované doméně služby Azure AD Domain Services](powershell-create-instance.md#task-7-provision-the-azure-ad-domain-services-managed-domain).
+4. Nyní vytvořte spravovanou doménu a povolte synchronizaci s vymezeným rozsahem na základě skupin pro spravovanou doménu. Zahrňte vlastnost ```"filteredSync" = "Enabled"``` ```Properties``` do parametru. Například se podívejte na následující fragment skriptu zkopírovaný z [úlohy 7: Zřídí Azure AD Domain Services spravovanou doménu](powershell-create-instance.md#task-7-provision-the-azure-ad-domain-services-managed-domain).
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "contoso100.com"
+   $ManagedDomainName = "contoso.com"
    $ResourceGroupName = "ContosoAaddsRg"
    $VnetName = "DomainServicesVNet_WUS"
    $AzureLocation = "westus"
@@ -95,11 +95,11 @@ Proveďte následující kroky konfigurace na základě skupin s vymezeným obor
    ```
 
    > [!TIP]
-   > Nezapomeňte zahrnout ```"filteredSync" = "Enabled"``` v ```-Properties``` parametrů, takže s vymezeným oborem synchronizace je povolena pro spravovanou doménu.
+   > Nezapomeňte do ```"filteredSync" = "Enabled"``` ```-Properties``` parametru zahrnout, takže je pro spravovanou doménu povolená synchronizace s vymezeným oborem.
 
 
-## <a name="script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1"></a>Skript a vyberte skupiny, které chcete synchronizovat do spravované domény (Select-GroupsToSync.ps1)
-Uložte následující skript do souboru (```Select-GroupsToSync.ps1```). Tento skript nakonfiguruje synchronizace vybraných skupin ke spravované doméně Azure AD Domain Services. Všechny uživatelské účty, které patří do zadané skupiny se budou synchronizovat na spravované doméně.
+## <a name="script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1"></a>Skript pro výběr skupin pro synchronizaci do spravované domény (Select-GroupsToSync. ps1)
+Uložte následující skript do souboru (```Select-GroupsToSync.ps1```). Tento skript nakonfiguruje Azure AD Domain Services k synchronizaci vybraných skupin do spravované domény. Všechny uživatelské účty patřící do zadaných skupin budou synchronizovány do spravované domény.
 
 ```powershell
 param (
@@ -179,18 +179,18 @@ Write-Output "******************************************************************
 ```
 
 
-## <a name="modify-group-based-scoped-synchronization"></a>Upravit vymezené synchronizace podle skupin
-Chcete-li upravit seznam skupin uživatelů mají být synchronizovány s vaší spravované domény, znovu spusťte [skript prostředí PowerShell](scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) a zadejte nový seznam skupin. Nezapomeňte si vždy zadejte skupinu "Správci AAD DC' v tomto seznamu.
+## <a name="modify-group-based-scoped-synchronization"></a>Úprava synchronizace s rozsahem na základě skupin
+Chcete-li upravit seznam skupin, jejichž uživatelé mají být synchronizováni do spravované domény, spusťte znovu [skript prostředí PowerShell](scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) a zadejte nový seznam skupin. Nezapomeňte v tomto seznamu vždycky zadat skupinu "AAD DC Administrators".
 
 > [!WARNING]
-> **Nezapomeňte zahrnout skupinu "Správci AAD DC".**
+> **Nezapomeňte zahrnout skupinu ' AAD DC Administrators '.**
 >
-> V seznamu skupiny nakonfigurované pro synchronizaci s vymezeným oborem musí obsahovat skupinu "Správci AAD DC". Pokud není zadána tuto skupinu, budou spravované domény nepoužitelné.
+> Do seznamu skupin nakonfigurovaných pro vymezenou synchronizaci musíte zahrnout skupinu ' AAD DC Administrators '. Pokud tuto skupinu nezahrnete, spravovaná doména nebude použitelná.
 >
 
 
-## <a name="disable-group-based-scoped-synchronization"></a>Zakažte na základě skupin synchronizace s vymezeným oborem
-Použijte následující skript Powershellu pro zakázání skupinové nastavit rozsah synchronizace vaší spravované domény:
+## <a name="disable-group-based-scoped-synchronization"></a>Zakázat synchronizaci s rozsahem na základě skupin
+Pomocí následujícího skriptu PowerShellu zakažte synchronizaci s rozsahem na základě skupin pro spravovanou doménu:
 
 ```powershell
 // Login to your Azure AD tenant
@@ -206,5 +206,5 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScoped
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Principy synchronizace ve službě Azure AD Domain Services](synchronization.md)
-* [Povolit Azure Active Directory Domain Services pomocí Powershellu](powershell-create-instance.md)
+* [Pochopení synchronizace v Azure AD Domain Services](synchronization.md)
+* [Povolení Azure Active Directory Domain Services pomocí prostředí PowerShell](powershell-create-instance.md)

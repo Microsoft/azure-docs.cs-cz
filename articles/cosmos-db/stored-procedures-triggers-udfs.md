@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1c2bf53a610c566ac58df588f6d96389f2206563
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717533"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614053"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelsky definované funkce
 
@@ -41,7 +41,7 @@ Zápis uložených procedur, triggerů a uživatelsky definovaných funkcí (UDF
 
 ## <a name="transactions"></a>Transakce
 
-Transakce v databázi typické lze definovat jako posloupnost operací provedených jako jednu logickou jednotku práce. Každá transakce poskytuje **záruky vlastností kyselosti**. KYSELost je známý akronym, který představuje: **Tomicity,** **C**onsistency, **I**solation a **D**urability. 
+Transakce v databázi typické lze definovat jako posloupnost operací provedených jako jednu logickou jednotku práce. Každá transakce poskytuje **záruky vlastností kyselosti**. KYSELost je známý akronym, který představuje:Tomicity, **C**onsistency, **I**solation a **D**urability. 
 
 * Nedělitelnost zaručuje, že všechny operace provedené uvnitř transakce jsou považovány za jednu jednotku a všechny z nich jsou potvrzeny nebo žádné z nich. 
 
@@ -79,11 +79,11 @@ Azure Cosmos DB podporuje dva typy aktivačních událostí:
 
 ### <a name="pre-triggers"></a>Předběžné triggery
 
-Azure Cosmos DB poskytuje triggery, které mohou být vyvolány prováděním operace na Azure Cosmos DB položce. Můžete například zadat předběžnou aktivační událost při vytváření položky. V takovém případě se před vytvořením položky spustí předběžná aktivační událost. Předběžné aktivační události nemůže mít žádné vstupní parametry. V případě potřeby je možné pomocí objektu Request aktualizovat tělo dokumentu původní žádosti. Když aktivační události jsou registrovány, uživatelé mohou zadat operace, které můžete spustit s. Pokud byla aktivační událost vytvořena pomocí `TriggerOperation.Create`, znamená to, že použití triggeru v operaci nahrazení nebude povoleno. Příklady najdete v článku [Jak napsat triggery](how-to-write-stored-procedures-triggers-udfs.md#triggers) .
+Azure Cosmos DB poskytuje triggery, které mohou být vyvolány prováděním operace na položce Azure Cosmos. Můžete například zadat předběžnou aktivační událost při vytváření položky. V takovém případě se před vytvořením položky spustí předběžná aktivační událost. Předběžné aktivační události nemůže mít žádné vstupní parametry. V případě potřeby je možné pomocí objektu Request aktualizovat tělo dokumentu původní žádosti. Když aktivační události jsou registrovány, uživatelé mohou zadat operace, které můžete spustit s. Pokud byla aktivační událost vytvořena pomocí `TriggerOperation.Create`, znamená to, že použití triggeru v operaci nahrazení nebude povoleno. Příklady najdete v článku [Jak napsat triggery](how-to-write-stored-procedures-triggers-udfs.md#triggers) .
 
 ### <a name="post-triggers"></a>Po triggerech
 
-Podobně jako předběžné triggery a triggery jsou také přidruženy k operaci pro Azure Cosmos DB položku a nevyžadují žádné vstupní parametry. Jsou spouštěny *po* dokončení operace a mají přístup ke zprávě odpovědi, která je odeslána klientovi. Příklady najdete v článku [Jak napsat triggery](how-to-write-stored-procedures-triggers-udfs.md#triggers) .
+Podobně jako předběžné triggery jsou po triggerech přidružené k operaci na položce Azure Cosmos a nevyžadují žádné vstupní parametry. Jsou spouštěny *po* dokončení operace a mají přístup ke zprávě odpovědi, která je odeslána klientovi. Příklady najdete v článku [Jak napsat triggery](how-to-write-stored-procedures-triggers-udfs.md#triggers) .
 
 > [!NOTE]
 > Zaregistrované triggery se nespustí automaticky, když dojde k odpovídajícím operacím (vytvořit/odstranit/nahradit/aktualizovat). Musí být explicitně volány při provádění těchto operací. Další informace najdete v článku [Jak spustit triggery](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) .
@@ -96,7 +96,7 @@ Uživatelsky definované funkce (UDF) slouží k rozšiřování syntaxe jazyka 
 
 Kromě vydávání dotazů pomocí syntaxe dotazů rozhraní SQL API umožňuje [sada SDK na straně serveru](https://azure.github.io/azure-cosmosdb-js-server) provádět dotazy pomocí rozhraní JavaScript bez znalosti SQL. Rozhraní API pro dotazy jazyka JavaScript umožňuje programově vytvářet dotazy předáním funkcí predikátu do sekvence volání funkcí. Dotazy jsou analyzovány modulem runtime jazyka JavaScript a jsou prováděny efektivně v rámci Azure Cosmos DB. Další informace o podpoře rozhraní API pro JavaScript najdete v článku [práce s integrovaným dotazovým rozhraním API jazyka JavaScript](javascript-query-api.md) . Příklady najdete v článku [jak zapisovat uložené procedury a triggery pomocí rozhraní API dotazů jazyka JavaScript](how-to-write-javascript-query-api.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se psát a používat uložené procedury, triggery a uživatelsky definované funkce v Azure Cosmos DB s následujícími články:
 

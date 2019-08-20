@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: iainfou
-ms.openlocfilehash: 404160c895a8d0a72921fe202adba82c3d069aaf
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3742aed7ff39e0a2f6bdf353fb9f261176027422
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234115"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612961"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>Vytvoření skupinového účtu spravované služby (gMSA) ve spravované doméně Azure AD Domain Services
 V tomto článku se dozvíte, jak vytvořit účty spravované služby ve spravované doméně Azure AD Domain Services.
@@ -49,16 +49,16 @@ Následující příklad ukazuje, jak vytvořit vlastní organizační jednotku 
 
 ```powershell
 # Create a new custom OU on the managed domain
-New-ADOrganizationalUnit -Name "MyNewOU" -Path "DC=CONTOSO100,DC=COM"
+New-ADOrganizationalUnit -Name "MyNewOU" -Path "DC=contoso,DC=COM"
 
 # Create a service account 'WebFarmSvc' within the custom OU.
 New-ADServiceAccount -Name WebFarmSvc  `
--DNSHostName ` WebFarmSvc.contoso100.com  `
--Path "OU=MYNEWOU,DC=CONTOSO100,DC=com"  `
+-DNSHostName ` WebFarmSvc.contoso.com  `
+-Path "OU=MYNEWOU,DC=contoso,DC=com"  `
 -KerberosEncryptionType AES128, AES256  ` -ManagedPasswordIntervalInDays 30  `
--ServicePrincipalNames http/WebFarmSvc.contoso100.com/contoso100.com, `
-http/WebFarmSvc.contoso100.com/contoso100,  `
-http/WebFarmSvc/contoso100.com, http/WebFarmSvc/contoso100  `
+-ServicePrincipalNames http/WebFarmSvc.contoso.com/contoso.com, `
+http/WebFarmSvc.contoso.com/contoso,  `
+http/WebFarmSvc/contoso.com, http/WebFarmSvc/contoso  `
 -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
 ```
 
@@ -67,7 +67,7 @@ http/WebFarmSvc/contoso100.com, http/WebFarmSvc/contoso100  `
 - [Rutina New-ADServiceAccount](https://docs.microsoft.com/powershell/module/addsadministration/New-ADServiceAccount)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Vytvoření vlastní organizační jednotky ve spravované doméně](create-ou.md)
 - [Přehled skupinových účtů spravované služby](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
 - [Začínáme se skupinovými účty spravované služby](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)

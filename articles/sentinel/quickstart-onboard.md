@@ -1,6 +1,6 @@
 ---
-title: Začlenění ve verzi Preview Azure Sentinel | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data v Azure Sentinelu.
+title: Zprovoznění v Azure Sentinel Preview | Microsoft Docs
+description: Naučte se shromažďovat data v Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -15,71 +15,70 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: c9f2f011acb9d815202aa6c6a38ed364ffb0f9cd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0c37d6167012af46204cbca29397f5d226b9649b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619655"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611901"
 ---
-# <a name="on-board-azure-sentinel-preview"></a>Ve verzi Preview připojit Azure Sentinel
+# <a name="on-board-azure-sentinel-preview"></a>On-Board Azure Sentinel Preview
 
 > [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
+> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-V tomto rychlém startu se dozvíte, jak začlenit Sentinelu Azure. 
+V tomto rychlém startu se dozvíte, jak se připojit ke službě Azure Sentinel. 
 
-Do vlaku Sentinelu Azure musíte nejprve povolit Sentinelu Azure a připojte vaše zdroje. Azure Sentinel se dodává s celou řadou konektorů pro Microsoft solutions, k dispozici z pole a poskytuje v reálném čase, integrace, včetně řešení ochrany před internetovými útoky Microsoft, Microsoft 365 zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a další. Kromě toho jsou integrované konektory do širšího ekosystému zabezpečení pro řešení jiného subjektu než Microsoft. Můžete také použít běžný formát události Syslog nebo rozhraní REST API pro připojení zdroje dat pomocí Azure Sentinelu.  
+Aby bylo možné připojit se k Azure Sentinel, musíte nejdřív povolit službu Azure Sentinel a pak připojit zdroje dat. Služba Azure Sentinel je dodávána s řadou konektorů pro řešení Microsoftu, která je dostupná předem a poskytuje integraci v reálném čase, včetně řešení ochrany před internetovými útoky, Microsoft 365ch zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a další. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. K propojení zdrojů dat s funkcí Sentinel Azure můžete použít také běžné formáty událostí, syslog nebo REST API.  
 
-Po připojení zdroje dat, vyberte si z Galerie odborně řídicí panely, které přehledy na základě vašich dat. Tyto řídicí panely můžete snadno přizpůsobit svým potřebám.
+Po připojení zdrojů dat si můžete vybrat z Galerie expertů vytvořených řídicích panelů, které jsou na základě vašich dat Surface Insights. Tyto řídicí panely je možné snadno přizpůsobit podle svých potřeb.
 
 
 ## <a name="global-prerequisites"></a>Globální požadavky
 
-- Aktivní předplatné Azure, pokud ho nemáte, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete.
+- Aktivní předplatné Azure, pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-- Pracovní prostor log Analytics. Zjistěte, jak [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)
+- Log Analytics pracovní prostor. Informace o tom, jak [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)
 
--  Povolit Sentinelu Azure, potřebujete oprávnění přispěvatele pro předplatné, ve kterém se nachází pracovní prostor Sentinelu Azure. 
-- Použití ověřovacích Azure, potřebujete oprávnění Přispěvatel nebo Čtenář, který pracovní prostor patří do skupiny prostředků
-- Může být potřeba další oprávnění pro připojení konkrétní zdroje dat
+-  Pokud chcete povolit Azure Sentinel, potřebujete oprávnění přispěvatele k předplatnému, ve kterém se nachází pracovní prostor Azure Sentinel. 
+- Pokud chcete použít Azure Sentinel, potřebujete oprávnění Přispěvatel nebo čtenář ve skupině prostředků, do které pracovní prostor patří.
+- Pro připojení konkrétních zdrojů dat můžou být potřeba další oprávnění.
  
-## Povolit Azure Sentinel <a name="enable"></a>
+## Povolit službu Azure Sentinel<a name="enable"></a>
 
-1. Přejděte na web Azure Portal.
-2. Ujistěte se, že je vybrané předplatné, ve kterém se vytvoří Sentinelu Azure. 
-3. Hledání Azure Sentinel. 
+1. Přejít do Azure Portal.
+2. Ujistěte se, že je zaškrtnuté předplatné, ve kterém je Azure Sentinel vytvořeno. 
+3. Vyhledejte Sentinel Azure. 
    ![search](./media/quickstart-onboard/search-product.png)
 
-1. Klikněte na tlačítko **+ přidat**.
-1. Vyberte pracovní prostor, který chcete použít nebo vytvořit nový. Můžete spustit ověřovací Azure na více než jednomu pracovnímu prostoru, ale data budou izolovaná do jednoho pracovního prostoru.
+1. Klikněte na **+ Přidat**.
+1. Vyberte pracovní prostor, který chcete použít, nebo vytvořte nový. Službu Azure Sentinel můžete spustit ve více než jednom pracovním prostoru, ale data jsou izolovaná do jednoho pracovního prostoru.
 
    ![search](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
-   > - **Umístění pracovního prostoru** je důležité pochopit, že všechna data můžete Streamovat do ověřovacích Azure je uložen v zeměpisné oblasti pracovního prostoru, který jste vybrali.  
-   > - Výchozí pracovních prostorů vytvořených službou Azure Security Center se nezobrazí v seznamu. Azure Sentinelu nelze nainstalovat na ně.
-   > - Azure Sentinel můžete spustit na pracovní prostory, které jsou nasazené v některém z následujících oblastí:  Austrálie – jihovýchod, Kanada – střed, střed Indie, východní USA, Východ USA 2 EUAP (testovací), Japonsko – východ, Asie – jihovýchod, Velká Británie – Jih, západní Evropa, západní USA 2.
+   > - Výchozí pracovní prostory vytvořené nástrojem Azure Security Center se v seznamu nezobrazí. na ně nemůžete nainstalovat službu Azure Sentinel.
+   > - V pracovních prostorech, které jsou nasazené v některé z těchto oblastí, můžete spustit Azure Sentinel:  Austrálie – jihovýchod, Kanada – střed, Střed Indie, Východní USA, Východní USA 2 EUAP (Kanárské), Japonsko – východ, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Západní USA 2.
 
-6. Klikněte na tlačítko **přidat Azure Sentinel**.
+6. Klikněte na **Přidat Sentinel Azure**.
   
 
 ## <a name="connect-data-sources"></a>Připojení zdrojů dat
 
-Azure Sentinel vytvoří připojení ke službám a aplikace připojuje ke službě a jejich předávání událostí a protokolů Sentinelu Azure. Pro počítače a virtuální počítače můžete nainstalovat agenta, který shromažďuje protokoly a předává je na Azure Sentinelu Sentinelu Azure. Brány firewall a proxy servery využívá Azure Sentinelu serveru protokolu Syslog v Linuxu. Je na něm nainstalován agent a ze které agent shromažďuje protokolu, souborů a předává je na Azure Sentinelu. 
+Služba Azure Sentinel vytvoří připojení ke službám a aplikacím pomocí připojení ke službě a předávání událostí a protokolů do služby Azure Sentinel. U počítačů a virtuálních počítačů můžete nainstalovat agenta Azure Sentinel, který shromáždí protokoly a předává je do Azure Sentinel. Pro brány firewall a proxy servery využívá Azure Sentinel Server Linux syslog. Agent se nainstaluje na něj a odkud agent shromáždí soubory protokolu a předá je do Azure Sentinel. 
  
-1. Klikněte na tlačítko **shromažďování dat**.
-2. Je dlaždice pro každý zdroj dat, které se můžete připojit.<br>
-Klikněte například na **Azure Active Directory**. Pokud propojíte tento zdroj dat, streamování všechny protokoly z Azure AD do Azure Sentinelu. Můžete vybrat typ protokolů, které pokud chcete získat – protokoly přihlášení a/nebo protokoly auditu. <br>
-V dolní části Sentinelu Azure poskytuje doporučení, pro které řídicí panely byste měli nainstalovat pro každý konektor je můžete okamžitě získat zajímavé přehledy napříč vašimi daty. <br> Postupujte podle pokynů k instalaci nebo [naleznete v Průvodci příslušné připojení](connect-data-sources.md) Další informace. Informace o datových konektorů najdete v tématu [připojení služby](connect-data-sources.md).
+1. Klikněte na **shromažďování dat**.
+2. K dispozici je dlaždice pro každý zdroj dat, ke kterému se můžete připojit.<br>
+Klikněte například na **Azure Active Directory**. Pokud tento zdroj dat připojíte, budete streamovat všechny protokoly z Azure AD do Azure Sentinel. Můžete vybrat typ protokolů, které jsou v síti WAN k dispozici, přihlášení a protokoly auditu. <br>
+V dolní části poskytuje Azure Sentinel doporučení pro řídicí panely, které byste měli nainstalovat pro každý konektor, abyste mohli okamžitě získat zajímavé přehledy napříč daty. <br> Postupujte podle pokynů k instalaci nebo se [podívejte na příslušné Průvodce připojením](connect-data-sources.md) , kde najdete další informace. Informace o datových konektorech najdete v tématu [připojení služeb společnosti Microsoft](connect-data-sources.md).
 
-Za data, ke které jsou připojené zdroje vaše data spustí Streamovat do ověřovacích Azure a je připraven k zahájení práce s. Můžete zobrazit v protokolech [integrované řídicí panely](quickstart-get-visibility.md) a začněte vytvářet dotazy v Log Analytics pro [prozkoumat data](tutorial-investigate-cases.md).
+Po připojení zdrojů dat začnou vaše data zasílat Stream do Azure Sentinel a je připravená, abyste mohli začít pracovat s. Protokoly můžete zobrazit ve [vestavěných řídicích panelech](quickstart-get-visibility.md) a začít sestavovat dotazy v Log Analytics a [Prozkoumat data](tutorial-investigate-cases.md).
 
 
 
-## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste se dozvěděli o připojení zdroje dat k Sentinelu Azure. Další informace o Azure Sentinelu, naleznete v následujících článcích:
-- Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
-- Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
-- Stream data z [běžný formát chyba zařízení](connect-common-event-format.md) do ověřovacích Azure.
+## <a name="next-steps"></a>Další kroky
+V tomto dokumentu jste se seznámili s připojením zdrojů dat ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Streamuje data z [běžných chybových formátů](connect-common-event-format.md) do Azure Sentinel.

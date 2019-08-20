@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 444269aa7ca2b0a82b78e8437b7884ef8833c665
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d7f97eec4e0dc6e88d89e845e086b9e5242caa7b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60592557"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616516"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 Tento kurz představuje **kopírování několika tabulek z Azure SQL Database do služby Azure SQL Data Warehouse**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například při kopírování tabulek z SQL Serveru/Oraclu do služby Azure SQL Database/Data Warehouse/Azure Blob nebo při kopírování různých cest ze služby Blob do tabulek Azure SQL Database.
@@ -66,21 +66,15 @@ Podle postupu v článku [Vytvoření databáze Azure SQL](../sql-database/sql-d
 
 ## <a name="azure-services-to-access-sql-server"></a>Služby Azure pro přístup k SQL serveru
 
-Pro SQL Database i SQL Data Warehouse povolte službám Azure přístup k SQL serveru. Ujistěte se, že nastavení **Povolit přístup ke službám Azure** je pro SQL server Azure **zapnuté**. Toto nastavení umožňuje službě Data Factory načítat data z Azure SQL Database a zapisovat data do Azure SQL Data Warehouse. Pokud chcete toto nastavení ověřit a zapnout, proveďte následující kroky:
+Pro SQL Database i SQL Data Warehouse povolte službám Azure přístup k SQL serveru. Ujistěte se, že nastavení **Povolit přístup ke službám Azure** je pro SQL server Azure **zapnuté**. Toto nastavení umožňuje službě Data Factory načítat data z Azure SQL Database a zapisovat data do Azure SQL Data Warehouse. 
 
-1. Klikněte na **Další služby** na levé straně a potom klikněte na **Servery SQL**.
-1. Vyberte svůj server a v části **NASTAVENÍ** klikněte na **Brána firewall**.
-1. Na stránce **Nastavení brány firewall** klikněte na **ZAPNUTO** u možnosti **Povolit přístup ke službám Azure**.
+Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > zabezpečení > firewall a virtuální sítě > nastavte **možnost povolit přístup ke službám Azure** na zapnuto.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **Data a analýzy** > **služby Data Factory**: 
-   
-   ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+1. V nabídce vlevo vyberte vytvořit **Data Factory** **analýzy** > **prostředků** > : ![Data Factory výběru v podokně "nové"](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-1. Na stránce **Nová datová továrna** jako **název** zadejte **ADFTutorialBulkCopyDF**. 
-      
-     ![Stránka Nová datová továrna](./media/tutorial-bulk-copy-portal/new-azure-data-factory.png)
+1. Na stránce **Nová datová továrna** jako **název**zadejte **ADFTutorialBulkCopyDF** . 
  
    Název datové továrny Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba pole názvu, změňte název datové továrny (například na vaše_jméno_ADFTutorialBulkCopyDF). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
@@ -93,19 +87,14 @@ Pro SQL Database i SQL Data Warehouse povolte službám Azure přístup k SQL se
          
      Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
 1. Jako **verzi** vyberte **V2**.
-1. Vyberte **umístění** pro datovou továrnu. Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
-1. Zaškrtněte **Připnout na řídicí panel**.     
+1. Vyberte **umístění** pro datovou továrnu. Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 1. Klikněte na možnost **Vytvořit**.
-1. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
-
-     ![nasazování dlaždice datové továrny](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
-1. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
+1. Po vytvoření se zobrazí stránka **Datová továrna**.
    
-     ![Domovská stránka datové továrny](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
 1. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
-1. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit**, jak je znázorněno na následujícím obrázku:  
+1. Na stránce Začínáme přepněte na levém panelu na kartu **Autor** , jak je znázorněno na následujícím obrázku:  
 
-     ![Stránka Začínáme](./media/tutorial-bulk-copy-portal/get-started-page.png)
+     ![Stránka Začínáme](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 Vytvoříte propojené služby, které propojí vaše úložiště dat a výpočetní prostředí s datovou továrnou. Propojená služba obsahuje informace o připojení, které služba Data Factory používá pro připojení k úložišti dat za běhu. 
@@ -119,44 +108,55 @@ V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi Az
 
     ![Tlačítko Nová propojená služba](./media/tutorial-bulk-copy-portal/new-linked-service-button.png)
 1. V okně **Nová propojená služba** vyberte **Azure SQL Database** a klikněte na **Pokračovat**. 
+1. V okně **Nová propojená služba (Azure SQL Database)** proveďte následující kroky: 
 
-    ![Výběr služby Azure SQL Database](./media/tutorial-bulk-copy-portal/select-azure-sql-database.png)
-1. V okně **Nová propojená služba** proveďte následující kroky: 
+    a. Jako **Název** zadejte **AzureSqlDatabaseLinkedService**.
+    
+    b. Jako **Název serveru** vyberte váš server SQL Azure.
+    
+    c. Jako **Název databáze** vyberte vaši databázi Azure SQL. 
+    
+    d. Zadejte **jméno uživatele** pro připojení k databázi Azure SQL. 
+    
+    e. Zadejte **heslo** pro tohoto uživatele. 
 
-    1. Jako **Název** zadejte **AzureSqlDatabaseLinkedService**. 
-    1. Jako **Název serveru** vyberte váš server SQL Azure.
-    1. Jako **Název databáze** vyberte vaši databázi Azure SQL. 
-    1. Zadejte **jméno uživatele** pro připojení k databázi Azure SQL. 
-    1. Zadejte **heslo** pro tohoto uživatele. 
-    1. Pokud chcete otestovat připojení k databázi Azure SQL s použitím zadaných informací, klikněte na **Test připojení**.
-    1. Klikněte na **Uložit**.
+    f. Pokud chcete otestovat připojení k databázi Azure SQL s použitím zadaných informací, klikněte na **Test připojení**.
+  
+    g. Klikněte na **Pokračovat**.
 
-        ![Nastavení služby Azure SQL Database](./media/tutorial-bulk-copy-portal/azure-sql-database-settings.png)
 
 ### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>Vytvoření propojené služby Azure SQL Data Warehouse pro jímku
 
 1. Na kartě **Připojení** znovu klikněte na **+ Nové** na panelu nástrojů. 
 1. V okně **Nová propojená služba** vyberte **Azure SQL Data Warehouse** a klikněte na **Pokračovat**. 
-1. V okně **Nová propojená služba** proveďte následující kroky: 
-
-    1. Jako **Název** zadejte **AzureSqlDWLinkedService**. 
-    1. Jako **Název serveru** vyberte váš server SQL Azure.
-    1. Jako **Název databáze** vyberte vaši databázi Azure SQL. 
-    1. Zadejte **jméno uživatele** pro připojení k databázi Azure SQL. 
-    1. Zadejte **heslo** pro tohoto uživatele. 
-    1. Pokud chcete otestovat připojení k databázi Azure SQL s použitím zadaných informací, klikněte na **Test připojení**.
-    1. Klikněte na **Uložit**.
+1. V okně **Nová propojená služba (Azure SQL Data Warehouse)** proveďte následující kroky: 
+   
+    a. Jako **Název** zadejte **AzureSqlDWLinkedService**.
+     
+    b. Jako **Název serveru** vyberte váš server SQL Azure.
+     
+    c. Jako **Název databáze** vyberte vaši databázi Azure SQL. 
+     
+    d. Zadejte **jméno uživatele** pro připojení k databázi Azure SQL. 
+     
+    e. Zadejte **heslo** pro tohoto uživatele. 
+     
+    f. Pokud chcete otestovat připojení k databázi Azure SQL s použitím zadaných informací, klikněte na **Test připojení**.
+     
+    g. Klikněte na **Pokračovat**.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Vytvoření pracovní propojené služby Azure Storage
 V tomto kurzu použijete Azure Blob Storage jako dočasné pracovní oblast, abyste zajistili lepší výkon kopírování pro funkci PolyBase.
 
 1. Na kartě **Připojení** znovu klikněte na **+ Nové** na panelu nástrojů. 
 1. V okně **Nová propojená služba** vyberte **Azure Blob Storage** a klikněte na **Pokračovat**. 
-1. V okně **Nová propojená služba** proveďte následující kroky: 
+1. V okně **Nová propojená služba (Azure Blob Storage)** proveďte následující kroky: 
 
-    1. Jako **Název** zadejte **AzureStorageLinkedService**. 
-    1. Jako **Název účtu úložiště** vyberte svůj **účet služby Azure Storage**.
-    1. Klikněte na **Uložit**.
+    a. Jako **Název** zadejte **AzureStorageLinkedService**.                                                     
+    
+    b. Jako **Název účtu úložiště** vyberte svůj **účet služby Azure Storage**.
+    
+    c. Klikněte na **Pokračovat**.
 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
@@ -170,52 +170,38 @@ V tomto kurzu nejsou zdrojová a cílová tabulka SQL pevně zakódované v defi
 
 ### <a name="create-a-dataset-for-source-sql-database"></a>Vytvoření datové sady pro zdrojovou databázi SQL Database
 
-1. Klikněte na symbol **+ (plus)** v levém podokně a pak klikněte na **Datová sada**. 
+1. Klikněte na **+ (plus)** v levém podokně a pak klikněte na **datová sada**. 
 
     ![Nabídka Nová datová sada](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
-1. V okně **Nová datová sada** vyberte **Azure SQL Database** a klikněte na **Dokončit**. Měla by se zobrazit nová karta s názvem **AzureSqlTable1**. 
+1. V okně **Nová datová sada** vyberte **Azure SQL Database**a potom klikněte na **pokračovat**. 
     
-    ![Výběr služby Azure SQL Database](./media/tutorial-bulk-copy-portal/select-azure-sql-database-dataset.png)
-1. V dolní části okna Vlastnosti jako **Název** zadejte **AzureSqlDatabaseDataset**.
-
-1. Přepněte na kartu **Připojení** a proveďte následující kroky: 
-
-   1. Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
-   1. Jako **Tabulka** vyberte jakoukoli tabulku. Tato tabulka je fiktivní. Při vytváření kanálu zadáte dotaz na zdrojovou datovou sadu. Tento dotaz se použije k extrakci dat z databáze Azure SQL. Případně můžete kliknout na zaškrtávací políčko **Upravit** a jako název tabulky zadat **dummyName**. 
-
-      ![Stránka Připojení ke zdrojové datové sadě](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
+1. V okně **nastavit vlastnosti** v části **název**zadejte **AzureSqlDatabaseDataset**. V části **propojená služba**vyberte **AzureSqlDatabaseLinkedService**. Pak klikněte na **Pokračovat**.
+1. Přepněte na kartu **připojení** , vyberte libovolnou tabulku pro **tabulku**. Tato tabulka je fiktivní. Při vytváření kanálu zadáte dotaz na zdrojovou datovou sadu. Tento dotaz se použije k extrakci dat z databáze Azure SQL. Případně můžete kliknout na zaškrtávací políčko **Upravit** a jako název tabulky zadat **dummyName**. 
  
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Vytvoření datové sady pro SQL Data Warehouse jímky
 
 1. Klikněte na symbol **+ (plus)** v levém podokně a pak klikněte na **Datová sada**. 
-1. V okně **Nová datová sada** vyberte **Azure SQL Data Warehouse** a klikněte na **Dokončit**. Měla by se zobrazit nová karta s názvem **AzureSqlDWTable1**. 
-1. V dolní části okna Vlastnosti jako **Název** zadejte **AzureSqlDWDataset**.
-1. Přepněte na kartu **Parametry**, klikněte na **+Nové** a jako název parametru zadejte **DWTableName**. Pokud zkopírujete/vložíte tento název ze stránky, ujistěte se, že není **znak koncové mezery** na konci **DWTableName**. 
-
-    ![Stránka Připojení ke zdrojové datové sadě](./media/tutorial-bulk-copy-portal/sink-dataset-new-parameter.png)
-
+1. V okně **Nová datová sada** vyberte **Azure SQL Data Warehouse**a potom klikněte na **pokračovat**.
+1. V okně **nastavit vlastnosti** v části **název**zadejte **AzureSqlDWDataset**. V části **propojená služba**vyberte **AzureSqlDatabaseLinkedService**. Pak klikněte na **Pokračovat**.
+1. Přepněte na kartu **Parametry**, klikněte na **+Nové** a jako název parametru zadejte **DWTableName**. Pokud zkopírujete nebo vložíte tento název ze stránky, zajistěte, aby na konci **DWTableName**nebyl žádný **znak místa** na konci.
 1. Přepněte na kartu **Připojení**. 
 
-    a. Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
+    a. U **Tabulky** zaškrtněte možnost **Upravit**, klikněte do pole pro zadání názvu tabulky a pak pod ním klikněte na odkaz **Přidat dynamický obsah**. 
 
-    b. U **Tabulky** zaškrtněte možnost **Upravit**, klikněte do pole pro zadání názvu tabulky a pak pod ním klikněte na odkaz **Přidat dynamický obsah**. 
-    
-    ![Název parametru](./media/tutorial-bulk-copy-portal/table-name-parameter.png)
-
-    c. Na stránce **Přidat dynamický obsah** klikněte na **DWTAbleName** pod **Parametry**. Tím se automaticky vyplní horní textové pole výrazem `@dataset().DWTableName`.Pak klikněte na **Dokončit**. Vlastnost **tableName** datové sady je nastavená na hodnotu předávanou jako argument parametru **DWTableName**. Aktivita ForEach iteruje seznam tabulek a jednu po druhé je předává aktivitě kopírování. 
+    b. Na stránce **Přidat dynamický obsah** klikněte v části **parametry** `@dataset().DWTableName`na **DWTAbleName** , který automaticky vyplní textové pole výrazu Top a pak klikněte na **Dokončit**. Vlastnost **tableName** datové sady je nastavená na hodnotu předávanou jako argument parametru **DWTableName**. Aktivita ForEach iteruje seznam tabulek a jednu po druhé je předává aktivitě kopírování. 
 
     ![Tvůrce parametru datové sady](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
-
+ 
 ## <a name="create-pipelines"></a>Vytvoření kanálů
 V tomto kurzu vytvoříte dva kanály: **IterateAndCopySQLTables** a **GetTableListAndTriggerCopyData**. 
 
-Kanál **GetTableListAndTriggerCopyData** provádí dva kroky:
+Kanál **GetTableListAndTriggerCopyData** provádí dvě akce:
 
 * Vyhledá systémové tabulky Azure SQL Database a získá seznam tabulek, které se mají zkopírovat.
 * Aktivuje kanál **IterateAndCopySQLTables**, který provede vlastní kopírování dat.
 
-**IterateAndCopySQLTables** přebírá jako parametr seznam tabulek. Data ze všech tabulek v tomto seznamu se zkopírují z Azure SQL Database do služby SQL Data Warehouse pomocí fázovaného kopírování a PolyBase.
+Kanál **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Data ze všech tabulek v tomto seznamu se zkopírují z Azure SQL Database do služby SQL Data Warehouse pomocí fázovaného kopírování a PolyBase.
 
 ### <a name="create-the-pipeline-iterateandcopysqltables"></a>Vytvoření kanálu IterateAndCopySQLTables
 
@@ -226,44 +212,44 @@ Kanál **GetTableListAndTriggerCopyData** provádí dva kroky:
 
 1. Přepněte na kartu **Parametry** a proveďte následující akce: 
 
-    1. Klikněte na **+ Nový**. 
-    1. Jano **název parametru** zadejte **tableList**.
-    1. Jako **Typ** vyberte **Pole**.
+    a. Klikněte na **+ Nový**. 
+    
+    b. Jano **název parametru** zadejte **tableList**.
+    
+    c. Jako **Typ** vyberte **Pole**.
 
-        ![Parametr kanálu](./media/tutorial-bulk-copy-portal/first-pipeline-parameter.png)
 1. Na panelu nástrojů **Aktivity** rozbalte **Iterace a podmínky** a přetáhněte aktivitu **ForEach** na plochu návrháře kanálu. Na panelu nástrojů **Aktivity** můžete aktivity také vyhledávat. 
 
     a. Na kartě **Obecné** dole zadejte **IterateSQLTables** jako **Název**. 
 
-    b. Přepněte na kartu **Nastavení**, klikněte na pole pro **Položky**, pak pod ním klikněte na odkaz **Přidat dynamický obsah**. 
+    b. Přepněte na kartu **Nastavení** , klikněte na vstupní pole pro **položky**a pak klikněte na odkaz **Přidat dynamický obsah** níže. 
 
-    ![Nastavení aktivity ForEach](./media/tutorial-bulk-copy-portal/for-each-activity-settings.png)
-
-    c. Na stránce **Přidat dynamický obsah** sbalte sekce Systémové proměnné a Funkce a klikněte na **tableList** pod **Parametry**. Tím se automaticky vyplní horní textové pole výrazem `@pipeline().parameter.tableList`. Pak klikněte na **Dokončit**. 
+    c. Na stránce **Přidat dynamický obsah** sbalte oddíly **systémové proměnné** a **funkce** klikněte na **tableList** v části **parametry** `@pipeline().parameter.tableList`. tím se automaticky naplní textové pole horního výrazu. Pak klikněte na **Dokončit**. 
 
     ![Tvůrce parametru ForEach](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
     d. Přepněte na kartu **Aktivity** a kliknutím na **Přidat aktivitu** přidejte podřízenou aktivitu k aktivitě **ForEach**.
 
-1. Na panelu nástrojů **Aktivity** rozbalte **Tok dat** a přetáhněte aktivitu **Kopírování** na plochu návrháře kanálu. Všimněte si nabídky navigace s popisem cesty v horní části. IterateAndCopySQLTable je název kanálu a IterateSQLTables je název aktivity ForEach. Návrhář je v oboru aktivity. Pokud chcete z editoru aktivity ForEach přepnout zpět na editor kanálu, klikněte na odkaz v nabídce navigace s popisem cesty. 
+1. Na panelu nástrojů **aktivity** rozbalte **Přesunout & přenos**a přetáhněte aktivitu **kopírování dat** na plochu návrháře kanálu. Všimněte si nabídky navigace s popisem cesty v horní části. **IterateAndCopySQLTable** je název kanálu a **IterateSQLTables** je název aktivity ForEach. Návrhář je v oboru aktivity. Chcete-li přepnout zpět na Editor kanálů z editoru ForEach, můžete kliknout na odkaz v nabídce popis cesty. 
 
     ![Kopírování v aktivitě ForEach](./media/tutorial-bulk-copy-portal/copy-in-for-each.png)
+
 1. Přepněte na kartu **Zdroj** a proveďte následující kroky:
 
     1. Jako **Zdrojová datová sada** vyberte **AzureSqlDatabaseDataset**. 
-    1. Jako **Uživatelský dotaz** vyberte možnost **Dotaz**. 
+    1. Vyberte možnost **dotazu** pro **použití dotazu**. 
     1. Klikněte na vstupní pole **Dotaz** -> vyberte dole **Přidat dynamický obsah** -> zadejte následující výraz jako **Dotaz** -> vyberte **Dokončit**.
 
         ```sql
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
-        ![Nastavení zdroje kopírování](./media/tutorial-bulk-copy-portal/copy-source-settings.png)
+
 1. Přepněte na kartu **Jímka** a proveďte následující kroky: 
 
     1. Jako **Datová sada jímky** vyberte **AzureSqlDWDataset**.
-    1. Klikněte na vstupní pole pro HODNOTU parametru DWTableName -> vyberte dole **Přidat dynamický obsah**, zadejte výraz `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` jako skript -> vyberte **Dokončit**.
-    1. Rozbalte **Nastavení Polybase** a vyberte **Povolit Polybase**. 
+    1. Klikněte na vstupní pole pro hodnotu parametru DWTableName-> vyberte níže **Přidat dynamický obsah** a jako skript zadejte `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` výraz-> vyberte **Dokončit**.
+    1. Zaškrtněte políčko pro **Povolení základny**. 
     1. Vymažte možnost **Použít výchozí typ**. 
     1. Klikněte na vstupní pole **Skript před kopírováním**, vyberte dole **Přidat dynamický obsah**, zadejte následující výraz jako skript a vyberte **Dokončit**. 
 
@@ -272,35 +258,29 @@ Kanál **GetTableListAndTriggerCopyData** provádí dva kroky:
         ```
 
         ![Nastavení jímky kopírování](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
-
 1. Přepněte na kartu **Nastavení** a proveďte následující kroky: 
 
-    1. V části **Zapnout pracovní režim** vyberte hodnotu **True**.
+    1. Zaškrtněte políčko **Povolit přípravu**.
     1. Jako **Propojená služba účtu úložiště** zadejte **AzureStorageLinkedService**.
 
-        ![Zapnout pracovní režim](./media/tutorial-bulk-copy-portal/copy-sink-staging-settings.png)
-
-1. Pokud chcete ověřit nastavení kanálu, klikněte na **Ověřit** na horním panelu nástrojů kanálu. Ověřte, že se nezobrazí žádná chyba ověření. Pokud chcete **Sestavu ověření kanálu** zavřít, klikněte na **>>**.
+1. Pokud chcete ověřit nastavení kanálu, klikněte na **Ověřit** na horním panelu nástrojů kanálu. Ujistěte se, že se nevyskytla žádná chyba ověřování. Pokud chcete **Sestavu ověření kanálu** zavřít, klikněte na **>>** .
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>Vytvoření kanálu GetTableListAndTriggerCopyData
 
-Tento kanál provádí dva kroky:
+Tento kanál provádí dvě akce:
 
 * Vyhledá systémové tabulky Azure SQL Database a získá seznam tabulek, které se mají zkopírovat.
 * Aktivuje kanál IterateAndCopySQLTables, který provede vlastní kopírování dat.
 
 1. V levém podokně klikněte na symbol **+ (plus)** a pak klikněte na **Kanál**.
+1. Na kartě **Obecné** změňte název kanálu na **GetTableListAndTriggerCopyData**. 
 
-    ![Nabídka Nový kanál](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-1. V okně Vlastnosti změňte název kanálu na **GetTableListAndTriggerCopyData**. 
-
-1. Na panelu nástrojů **Aktivity** rozbalte nabídku **Obecné**, přetáhněte aktivitu **Vyhledávání** na plochu návrháře kanálu a pak postupujte takto:
+1. Na panelu nástrojů **aktivity** rozbalte **Obecné**a přetáhněte aktivitu **vyhledávání** na plochu návrháře kanálu a proveďte následující kroky:
 
     1. Jako **Název** zadejte **LookupTableList**. 
     1. Jako **Popis** zadejte **Načtení seznamu tabulek z databáze Azure SQL**.
 
-        ![Aktivita vyhledávání – stránka Obecné](./media/tutorial-bulk-copy-portal/lookup-general-page.png)
-1. Přepněte na stránku **Nastavení** a proveďte následující kroky:
+1. Přepněte na kartu **Nastavení** a proveďte následující kroky:
 
     1. Jako **Zdrojová datová sada** vyberte **AzureSqlDatabaseDataset**. 
     1. Jako **Použít dotaz** vyberte **Dotaz**. 
@@ -312,39 +292,34 @@ Tento kanál provádí dva kroky:
     1. Zrušte zaškrtnutí pole **Pouze první řádek**.
 
         ![Aktivita vyhledávání – stránka Nastavení](./media/tutorial-bulk-copy-portal/lookup-settings-page.png)
-1. Přetáhněte z panelu nástrojů Aktivity na plochu návrháře kanálu aktivitu **Spuštění kanálu** a nastavte její název na **TriggerCopy**.
+1. Přetáhněte aktivitu **Spustit kanál** z panelu nástrojů aktivity na plochu návrháře kanálu a nastavte název na **TriggerCopy**.
 
-    ![Aktivita spuštění kanálu – stránka Obecné](./media/tutorial-bulk-copy-portal/execute-pipeline-general-page.png)    
-1. Přepněte na stránku **Nastavení** a proveďte následující kroky: 
+1. Přepněte na kartu **Nastavení** a proveďte následující kroky: 
 
     1. Jako **Vyvolaný kanál** vyberte **IterateAndCopySQLTables**. 
     1. Rozbalte část **Upřesnit**. 
     1. Klikněte na **+ Nový** v části **Parametry**. 
     1. Jako **název** parametru zadejte **tableList**.
-    1. Klikněte na vstupní pole HODNOTY -> vyberte dole **Přidat dynamický obsah** -> zadejte `@activity('LookupTableList').output.value` jako hodnotu názvu tabulky -> vyberte **Dokončit**. Seznam výsledků z aktivity vyhledávání nastavujete jako vstup druhého kanálu. Seznam výsledků obsahuje seznam tabulek, jejichž data se musí zkopírovat do cíle. 
+    1. Klikněte na vstupní pole HODNOTY -> vyberte dole **Přidat dynamický obsah** -> zadejte `@activity('LookupTableList').output.value` jako hodnotu názvu tabulky -> vyberte **Dokončit**. Seznam výsledků se nastavuje z aktivity vyhledávání jako vstup druhého kanálu. Seznam výsledků obsahuje seznam tabulek, jejichž data se musí zkopírovat do cíle. 
 
         ![Aktivita spuštění kanálu – stránka Nastavení](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
-1. **Propojte** aktivitu **Vyhledávání** s aktivitou **Spuštění kanálu** přetažením **zeleného pole** připojeného k aktivitě vyhledávání nalevo od aktivity spuštění kanálu.
+1. Pokud chcete aktivitu **vyhledávání** **připojit** k aktivitě **Spustit kanál** , přetáhněte **zelené pole** připojené k aktivitě vyhledávání nalevo od aktivity spustit kanál.
 
     ![Projení aktivit vyhledávání a spuštění kanálu](./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png)
-1. Pokud chcete kanál ověřit, klikněte na **Ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádné chyby ověření. Pokud chcete **Sestavu ověření kanálu** zavřít, klikněte na **>>**.
+1. Pokud chcete kanál ověřit, klikněte na **Ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádné chyby ověření. Pokud chcete **Sestavu ověření kanálu** zavřít, klikněte na **>>** .
 
 1. Pokud chcete publikovat entity (datové sady, kanály atd.) do služby Data Factory, nahoře v okně klikněte na **Publikovat vše**. Počkejte na úspěšné dokončení publikování. 
 
 ## <a name="trigger-a-pipeline-run"></a>Aktivace spuštění kanálu
 
-Přejděte do kanálu **GetTableListAndTriggerCopyData**, klikněte na **Aktivační událost** a klikněte na **Aktivovat**. 
-
-![Aktivovat](./media/tutorial-bulk-copy-portal/trigger-now.png)
+Přejděte na kanál **GetTableListAndTriggerCopyData**, klikněte na **Přidat Trigger**a pak klikněte na **aktivovat hned**. 
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
 
 1. Přepněte na kartu **Monitorování**. Klikejte na **Aktualizovat**, dokud se nezobrazí spuštění obou kanálů ve vašem řešení. Pokračujte v aktualizacích seznamu, dokud se nezobrazí stav **Úspěch**. 
 
-    ![Spuštění kanálu](./media/tutorial-bulk-copy-portal/pipeline-runs.png)
-1. Pokud chcete zobrazit spuštění aktivit související s kanálem GetTableListAndTriggerCopyData, klikněte na první odkaz ve sloupci Akce pro příslušný kanál. Pro toto spuštění kanálu by se měla zobrazit dvě spuštění aktivit. 
+1. Pokud chcete zobrazit spuštění aktivit související s kanálem **GetTableListAndTriggerCopyData** , klikněte na první odkaz v odkazu akce tohoto kanálu. Pro toto spuštění kanálu by se měla zobrazit dvě spuštění aktivit. 
 
-    ![Spuštění aktivit](./media/tutorial-bulk-copy-portal/activity-runs-1.png)    
 1. Pokud chcete zobrazit výstup aktivity **Vyhledávání**, klikněte na odkaz ve sloupci **Výstup** pro příslušnou aktivitu. Okno **Výstup** můžete maximalizovat a obnovit. Po kontrole kliknutím na **X** zavřete okno **Výstup**.
 
     ```json
@@ -400,9 +375,8 @@ Přejděte do kanálu **GetTableListAndTriggerCopyData**, klikněte na **Aktiva�
         ]
     }
     ```    
-1. Pokud chcete přepnout zpět na zobrazení **Spuštění kanálu**, klikněte na odkaz **Kanály** v horní části. Klikněte na odkaz **Zobrazit spuštění aktivit** (první odkaz ve sloupci **Akce**) pro kanál **IterateAndCopySQLTables**. Zobrazený výstup by měl jak je znázorněno na následujícím obrázku: Všimněte si, že existuje **kopírování** spuštění aktivit pro každou tabulku v **vyhledávání** výstup aktivity. 
+1. Pokud chcete přepnout zpět na zobrazení **Spuštění kanálu**, klikněte na odkaz **Kanály** v horní části. Klikněte na odkaz **Zobrazit spuštění aktivit** (první odkaz ve sloupci **Akce**) pro kanál **IterateAndCopySQLTables**. Všimněte si, že pro každou tabulku ve výstupu **vyhledávací** aktivity je spuštěná jedna aktivita **kopírování** . 
 
-    ![Spuštění aktivit](./media/tutorial-bulk-copy-portal/activity-runs-2.png)
 1. Ověřte, že se data zkopírovala do cílové služby SQL Data Warehouse, kterou jste použili v tomto kurzu. 
 
 ## <a name="next-steps"></a>Další kroky

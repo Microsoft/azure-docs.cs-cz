@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 7db14f6406223486ea0efb80d3d1cfcd0351f414
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3ad9aff10b3bae36a173f776f55a434fd8b38b98
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037243"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574266"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>Jak nakonfigurovat počáteční čas procesoru změny kanálu
 
@@ -51,8 +51,7 @@ Procesor změny kanálu bude inicializován a začne číst změny od začátku 
 
 ## <a name="next-steps"></a>Další postup
 
-Teď můžete přejít k další informace o změně v následujících článcích:
+Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 
-* [Přehled kanálu změn](change-feed.md)
-* [Způsoby čtení kanálu změn](read-change-feed.md)
-* [Použití procesoru Change feed](change-feed-processor.md)
+* [Přehled procesoru Change feed](change-feed-processor.md)
+* [Použití Estimator kanálu změn](how-to-use-change-feed-estimator.md)

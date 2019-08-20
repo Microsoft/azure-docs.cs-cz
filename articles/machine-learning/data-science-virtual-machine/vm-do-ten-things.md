@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 2af65dbae59774ed718d58f055158e61f15e2198
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557496"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575103"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které vám pomůžou na Windows virtuální počítač pro datové vědy
 
@@ -54,7 +54,7 @@ V tomto článku se dozvíte, jak používat vaše DSVM k provádění různých
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1. Zkoumání dat a vyvíjet modely s využitím Microsoft ML Server nebo Pythonu
+## <a name="1-explore-data--develop-models-with-microsoft-ml-server"></a>1. Prozkoumejte data & vývoj modelů pomocí Microsoft ML Server
 Jazyky, jako je R a Pythonu můžete provádět datové VĚDY vaší analýzy dat přímo.
 
 Pro jazyk R můžete použít integrované vývojové prostředí jako RStudio, který najdete v nabídce start nebo plochy nebo nástroje R pro Visual Studio. Microsoft poskytuje další knihovny se nad Open zdroj/CRAN-R povolit škálovatelných analýz a možnosti analýzy dat větší než velikost paměti povoleno tímto způsobem paralelní analýzy bloku. 
@@ -73,7 +73,7 @@ Zobrazit [dokumentace k PTVS](https://aka.ms/ptvsdocs) najdete další podrobnos
 
 Nyní jsou nastavení k vytvoření nového projektu Pythonu. Přejděte do **souboru** -> **nový** -> **projektu** -> **Python** a vyberte typ Aplikace v Pythonu, který vytváříte. Prostředí Pythonu pro aktuální projekt můžete nastavit na požadovanou verzi (Python 2.7 nebo 3.6) kliknutím pravým tlačítkem **prostředí Pythonu**, kde vyberou **přidat nebo odebrat prostředí Pythonu**a pak výběr na požadované prostředí. Další informace o práci s nástroji PTVS v produktu [dokumentaci](https://aka.ms/ptvsdocs).
 
-## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Pomocí poznámkového bloku Jupyter pro zkoumání a modelování dat v Pythonu nebo r.
+## <a name="2-use-jupyter-notebooks"></a>2. Použití poznámkových bloků Jupyter
 Poznámkový blok Jupyter je výkonné prostředí, která poskytuje pro zkoumání a modelování dat založené na prohlížeči "integrované vývojové prostředí". V poznámkovém bloku Jupyter, můžete použít Python 2, Python 3 nebo R (Open Source a Microsoft R serveru).
 
 Spusťte Poznámkový blok Jupyter, klikněte na ikonu nabídky start / ikony na ploše s názvem **Poznámkový blok Jupyter**. Na příkazovém řádku DSVM můžete také spustit příkaz ```jupyter notebook``` z adresáře, kde máte existující poznámkových bloků nebo chcete vytvořit nový poznámkových bloků.  
@@ -92,7 +92,7 @@ Po zahájení Jupyter byste měli vidět adresář, který obsahuje pár příkl
 
 Až budete v poznámkovém bloku, které může prozkoumat vaše data sestavení modelu, Testovat model na základě zvoleného knihoven.
 
-## <a name="3-build-models-using-r-or-python-and-operationalize-them-using-azure-machine-learning"></a>3. Vytvářet modely s využitím R nebo Python a zprovoznění je pomocí Azure Machine Learning
+## <a name="3-train--deploy-models-with-azure-machine-learning"></a>3. Výuka & nasazení modelů pomocí Azure Machine Learning
 Po vytvořené a ověřit model dalším krokem je obvykle k nasazení do produkčního prostředí. Díky tomu váš klient aplikace k vyvolání předpovědí modelu v reálném čase nebo na základě režimu služby batch. Azure Machine Learning poskytuje mechanismus pro zprovoznění modelu vytvořené v R nebo Python.
 
 Pokud jste zprovoznění vašeho modelu ve službě Azure Machine Learning, je přístupný webovou službu, která umožňuje klientům volání REST, které předejte vstupní parametry a přijímat předpovědí z modelu jako výstup.   
@@ -210,19 +210,19 @@ ans = consume(ep, sleepstudy)$ans
 
 Další informace o knihovně Azure Machine Learning R najdete [tady](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf).
 
-## <a name="4-administer-your-azure-resources-using-azure-portal-or-powershell"></a>4. Správa prostředků Azure pomocí webu Azure portal nebo Powershellu
+## <a name="4-manage-azure-resources"></a>4. Správa prostředků Azure
 Datové VĚDY nejen umožňuje vytvářet analytické řešení místně na virtuálním počítači, ale také umožňuje přístup ke službám v cloudu Azure Microsoftu. Azure nabízí několik výpočetních, úložiště, služby analýzy dat a dalším službám, které můžete spravovat a přístup k vaší DSVM.
 
-Ke správě předplatného a cloudové prostředky Azure můžete použít prohlížeč a přejděte [webu Azure portal](https://portal.azure.com). Můžete také pomocí Azure Powershellu ke správě vašeho předplatného Azure a prostředky prostřednictvím skriptu.
-Prostředí Azure Powershell můžete spustit ze zástupce na ploše nebo v nabídce start s názvem "Microsoft Azure Powershell." Odkazovat na [dokumentaci k Microsoft Azure Powershellu](../../powershell-azure-resource-manager.md) Další informace o tom, jak můžete spravovat své předplatné Azure a prostředky pomocí skriptů Windows Powershellu.
+Ke správě předplatného Azure a cloudových prostředků máte dvě možnosti:
++ **Azure Portal**: použijte prohlížeč a přejděte na [Azure Portal](https://portal.azure.com)
 
-## <a name="5-extend-your-storage-space-with-a-shared-file-system"></a>5. Prodloužit místa v úložišti s sdílený systém souborů
++ **Azure PowerShell**: použijte skripty Windows PowerShellu. Spusťte prostředí Azure PowerShell z zástupce na ploše nebo z nabídky Start s názvem "Microsoft Azure PowerShell". Úplné podrobnosti najdete v [dokumentaci k Microsoft Azure PowerShellu](../../powershell-azure-resource-manager.md) . 
+
+## <a name="5-extend-storage-with-shared-file-systems"></a>5. Rozšířené úložiště se sdílenými systémy souborů
 Odborníci přes data můžou sdílet velké datové sady, kód nebo jiných prostředků v rámci týmu. Datové VĚDY, samotné se přibližně 45GB volného místa. K rozšíření úložiště, můžete použít službu Azure File a buď ji připojit na jednu nebo víc instancí DSVM nebo k nim přistupovat přes rozhraní REST API.  Můžete také použít [webu Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) nebo použijte [prostředí Azure Powershell](../../virtual-machines/windows/attach-disk-ps.md) pro přidání dalších vyhrazených datových disků. 
 
 > [!NOTE]
 > Maximální místo sdílení službu Azure File je 5 TB a maximální velikost jednotlivých souborů je 1 TB. 
-> 
-> 
 
 Prostředí Azure Powershell můžete použít k vytvoření sdílené složky Azure File Service. Tady je skript, který chcete spustit v prostředí Azure PowerShell k vytvoření služby sdílené složky Azure.
 
@@ -258,7 +258,7 @@ net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
 
 Teď můžete přistupovat tato jednotka, stejně jako u jakékoli jednotky na virtuálním počítači.
 
-## <a name="6-share-code-with-your-team-using-github"></a>6. Sdílejte kód se svým týmem pomocí Githubu
+## <a name="6-share-code-in-github"></a>6. Sdílení kódu na GitHubu
 GitHub je úložiště kódu místo, kde najdete řadu ukázkový kód a zdrojů k různým nástrojům pomocí různých technologií sdílené komunitou vývojářů. Git jako technologie používá ke sledování a uložené verze souborů s kódem. GitHub je také platforma kde si můžete vytvořit vlastního úložiště k uložení sdíleného kódu vašeho týmu a dokumentaci, implementaci správy verzí a také určují, kteří mají přístup k zobrazení a přispívání kódu. Přejděte [stránek nápovědy Githubu](https://help.github.com/) pro další informace o používání Git. Můžete jako jeden ze způsobů, jak spolupracovat se svým týmem, použít kód vyvinutý komunitou a kód zpětně přispívat ke komunitě GitHub.
 
 Datové VĚDY už obsahuje načtené pomocí klientských nástrojů u obou příkazového řádku jako dobře grafického uživatelského rozhraní pro přístup k úložišti GitHub. Nástroj příkazového řádku pro práci s Git a GitHub se nazývá Git Bash. Na datové VĚDY nainstalovanou sadu Visual Studio obsahuje rozšíření Git. Ikony objem požadovaný při spuštění těchto nástrojů v nabídce start a na ploše.
@@ -273,7 +273,7 @@ V sadě Visual Studio můžete provádět stejné operace klonování. Následuj
 
 Můžete najít další informace o používání Git pracovat s úložišti GitHub z několika zdrojů, které jsou k dispozici na webu github.com. [Tahák](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) je užitečný odkaz.
 
-## <a name="7-access-various-azure-data-and-analytics-services"></a>7. Přístup k různým dat a analýza služby Azure
+## <a name="7-access-many-azure-data--analytics-services"></a>7. Přístup k mnoha službám Azure Data & Analytics
 ### <a name="azure-blob"></a>Azure Blob
 Objektů blob v Azure je spolehlivé, úsporné cloudové úložiště pro data velké a malé. Tato část popisuje, jak přesunout data do objektů Blob v Azure a přístup k datům uloženým v objektu Blob Azure.
 
@@ -851,8 +851,8 @@ Tady jsou kroky na požadavky pro přístup ke službě Azure Cosmos DB z datov�
 
 Jakmile importujete data, můžete přejít do aplikace Jupyter a otevřete Poznámkový blok s názvem *DocumentDBSample* , která obsahuje kód pythonu pro přístup k Azure Cosmos DB a provádět některé základní dotazování. Další informace o službě Cosmos DB návštěvou službu [stránky dokumentace](https://docs.microsoft.com/azure/cosmos-db/).
 
-## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8. Vytvářejte sestavy a řídicí panel pomocí Power BI Desktopu
-Můžete vizualizovat soubor sopka JSON z předchozího příkladu Cosmos DB v Power BI získat vizuální přehled o datech. Podrobné kroky postupu jsou k dispozici v [Power BI článku](../../cosmos-db/powerbi-visualize.md). Tady jsou hlavní kroky:
+## <a name="8-power-bi-reports--dashboards"></a>8. Sestavy Power BI & řídicích panelech 
+Soubor JSON Volcano můžete vizualizovat z předchozího Cosmos DB příkladu v Power BI plocha, kde můžete získat vizuální přehledy dat. Podrobné kroky postupu jsou k dispozici v [Power BI článku](../../cosmos-db/powerbi-visualize.md). Tady jsou hlavní kroky:
 
 1. Otevřete Power BI Desktopu a "získat Data." Zadejte adresu URL jako: https://cahandson.blob.core.windows.net/samples/volcano.json
 2. Měli byste vidět importovaných jako seznam záznamů JSON
@@ -884,7 +884,7 @@ Můžete začít vytvářet sestavy a vizualizace pomocí modelu. Můžete postu
 
 ![Power BI Desktopu zobrazení sestavy – konektor Power BI](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
 
-## <a name="9-dynamically-scale-your-dsvm-to-meet-your-project-needs"></a>9. Dynamicky škálujte vaše DSVM podle svých potřeb projektu
+## <a name="9-dynamic-dsvm-scaling"></a>9. Dynamické škálování DSVM 
 Je možné škálovat nahoru a dolů podle svých potřeb projektu datové VĚDY. Pokud není nutné používat virtuální počítač v večer nebo o víkendech, vám stačí vypnout virtuální počítač z [webu Azure portal](https://portal.azure.com).
 
 > [!NOTE]
@@ -898,10 +898,23 @@ Podobně pokud se snižuje potřeba kapacitu zpracování virtuálních počíta
 
 ![Nastavení instance virtuálního počítače](./media/vm-do-ten-things/VMScaling.PNG)
 
-## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10. Nainstalujte další nástroje ve vašem virtuálním počítači
+## <a name="10-add-more-tools"></a>10. Přidat další nástroje
 Existuje několik nástrojů, které jsou předem součástí datové VĚDY, která může vyřešit řadu běžných data, která potřebuje analytics. Tím se ušetří čas se vyhnout museli instalovat a konfigurovat prostředí jednu po druhé a ušetřit peníze Plaťte jen za prostředky, které používají.
 
 Další data a analýzy služby Azure profilována v tomto článku můžete zlepšit prostředí analytics můžete využít. V některých případech může vašim potřebám vyžadovat další nástroje, včetně některých proprietární nástroje třetích stran. Máte plný přístup správce na virtuálním počítači pro instalaci nové nástroje, které potřebujete. Můžete také nainstalovat další balíčky v Pythonu a r. nejsou předem nainstalované. Pro jazyk Python můžete použít buď ```conda``` nebo ```pip```. R můžete použít ```install.packages()``` v R konzole nebo pomocí integrovaného vývojového prostředí a zvolte možnost "**balíčky** -> **instalační balíčky...** ".
+
+## <a name="deep-learning"></a>Hloubkové učení
+
+Kromě ukázky založené na platformě sadu kompletní návody poskytuje se také, který byl ověřen na DLVM. Tyto kurzy vám nastartování vývoje aplikací obsáhlého learningu v doménách, jako je obrázek a text/language understanding. Další kurzy začátku do konce v různých doménách a technologie se nadále přidat.   
+
+
+- [Spouštění neuronovéch sítí napříč různými architekturami](https://github.com/ilkarman/DeepLearningFrameworks): Podrobný návod, který ukazuje, jak migrovat kód z jednoho rozhraní do jiného. Také ukazuje, jak porovnat modelu a výkonu v rozhraní. 
+
+- Návod [, jak sestavit ucelené řešení pro detekci produktů v rámci imagí](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Detekce obrázku je technika, která může vyhledat a klasifikovat objekty v rámci imagí. Tato technologie má potenciál přenést velké odměny v mnoha obchodních doménách reálném životě. Například prodejci, můžete použít tuto techniku k určení, který produkt a zákazníka má neexistoval z police. Tyto informace pomáhají zase úložiště spravovat inventář produktů. 
+
+- [Hloubkové učení pro zvuk](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) tento kurz ukazuje, jak pro trénování modelu obsáhlého learningu pro zjištění zvuku události na [datovou sadu urban zvuky](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) a poskytovat přehled o tom, jak pracovat s zvuková data.
+
+- [Klasifikace textových dokumentů](https://github.com/anargyri/lstm_han): Tento návod ukazuje, jak sestavit a vytvořit výuku dvou různých neuronovéch síťových architektur: Hierarchická síť a dlouhodobá krátkodobá paměť (LSTM). Tyto neuronové sítě pomocí rozhraní Keras API pro obsáhlý learning zařazoval dokumenty do textu. Keras je front-end pro tři nejoblíbenější architektury hloubkového učení: Microsoft Cognitive Toolkit, TensorFlow a Theano.
 
 ## <a name="summary"></a>Souhrn
 To jsou jen některé věci, které vám pomůžou na Microsoft virtuální počítač pro datové vědy. Existuje mnoho dalších věcí, které vám pomůžou usnadnit efektivní analýzy prostředí.

@@ -1,17 +1,17 @@
 ---
 title: Konfigurace brány firewall protokolu IP pro účet Azure Cosmos DB
-description: Naučte se konfigurovat zásady řízení přístupu IP pro podporu brány firewall na Azure Cosmos DB databázových účtech.
+description: Naučte se konfigurovat zásady řízení přístupu IP pro podporu brány firewall na účtech Azure Cosmos.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0b8ad6c5addbff293e9f7e9b8af6ed34d4dd274b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: ee9a686060fd712e9a1f14058ce7db325aaedffd
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494880"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615364"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurace brány firewall protokolu IP v Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Pokud zásadu řízení přístupu k IP adrese povolíte programově, je nutné 
 |------|----------|
 |Německo|51.4.229.218|
 |Čína|139.217.8.252|
-|US Gov|52.244.48.71|
+|Vláda USA|52.244.48.71|
 |Všechny ostatní oblasti|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 Přístup k Azure Portal můžete povolit tak, že vyberete možnost **Povolit přístup z Azure Portal** , jak je znázorněno na následujícím snímku obrazovky: 
@@ -189,7 +189,7 @@ Povolte protokolování diagnostiky v účtu Azure Cosmos DB. Tyto protokoly zob
 Žádosti z podsítě ve virtuální síti s povoleným koncovým bodem služby pro Azure Cosmos DB odesílají virtuální síť a identitu podsítě pro Azure Cosmos DB účty. Tyto požadavky nemají veřejnou IP adresu zdroje, takže filtry IP je odmítnou. Chcete-li v rámci virtuálních sítí dovolit přístup z určitých podsítí, přidejte seznam řízení přístupu, jak je uvedeno v tématu [jak nakonfigurovat virtuální síť a přístup založený na podsíti pro účet Azure Cosmos DB](how-to-configure-vnet-service-endpoint.md). Použití pravidel brány firewall může trvat až 15 minut.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Chcete-li nakonfigurovat koncový bod služby virtuální sítě pro účet Azure Cosmos DB, přečtěte si následující články:
 

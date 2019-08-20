@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Domain Services pro Azure Cloud Solution Provider | Dokumentace Microsoftu
-description: Azure Active Directory Domain Services pro Azure Cloud Solution Providers.
+title: Azure Active Directory Domain Services pro poskytovatele cloudových řešení Azure | Microsoft Docs
+description: Azure Active Directory Domain Services pro poskytovatele cloudových řešení Azure.
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,79 +15,79 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
-ms.openlocfilehash: a0ea28f3b62e6560e4adf8ea6bcb1fe984a1dbe6
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: dc4ad7d8cf9f3267713fd066fa79a4d9d8ab733f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473561"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612962"
 ---
-# <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Domény služby Azure Active Directory (AD) pro Azure Cloud Solution Provider (CSP)
-Tento článek vysvětluje, jak můžete pomocí služby Azure AD Domain Services v rámci předplatného Azure CSP.
+# <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Služba AD DS (Active Directory Domain Services) pro Azure Cloud Solution Provider (CSP) Azure Active Directory
+Tento článek vysvětluje, jak můžete používat Azure AD Domain Services v předplatném CSP Azure.
 
-## <a name="overview-of-azure-csp"></a>Přehled Azure CSP
-Azure CSP je program pro Microsoft Partners a poskytuje kanál licence k různým cloudovým službám Microsoftu. Azure CSP umožňuje partnerům, aby řídit prodej, vlastní fakturační vztah, poskytují technickou a fakturační podporu a být zákazníka, jeden kontaktní bod. Azure CSP navíc poskytuje kompletní sadu nástrojů, včetně samoobslužného portálu a doprovodných rozhraní API. Tyto nástroje mohou partneři CSP snadno zřizovat a spravovat prostředky Azure a vyúčtování u zákazníků a jejich předplatného.
+## <a name="overview-of-azure-csp"></a>Přehled CSP Azure
+CSP Azure je program pro partnery Microsoftu a poskytuje licenční kanál pro různé cloudové služby Microsoftu. CSP Azure umožňuje partnerům spravovat prodej, vlastnit fakturační vztah, poskytovat technickou a fakturační podporu a být jediným kontaktním bodem zákazníka. Kromě toho poskytuje poskytovatel cloudových služeb Azure kompletní sadu nástrojů, včetně samoobslužného portálu a doprovodného rozhraní API. Tyto nástroje umožňují partnerům CSP snadno zřizovat a spravovat prostředky Azure a poskytovat zákazníkům a jejich předplatným fakturaci.
 
-[Portál partnerském centru](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) funguje jako vstupní bod pro všechny partnery Azure CSP. Poskytuje možnosti správy zákazníků, automatizované zpracování a další. Partneři CSP Azure můžete použít možnosti partnerského centra s využitím webové uživatelské rozhraní nebo pomocí prostředí PowerShell a volání rozhraní API.
+[Portál partnerského centra](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) funguje jako vstupní bod pro všechny partnery CSP Azure. Nabízí bohatou možnost správy zákazníků, automatizované zpracování a další funkce. Partneři CSP Azure mohou využívat možnosti partnerského centra pomocí webového uživatelského rozhraní nebo pomocí prostředí PowerShell a různých volání rozhraní API.
 
-Následující diagram znázorňuje, jak funguje model poskytovatele CSP na vysoké úrovni. Contoso má službu Azure AD Active Directory. Mají partnerství s CSP, který implementuje a spravuje prostředky v rámci svého předplatného Azure CSP. Společnost Contoso může mít také běžná (přímý) předplatná Azure, které se fakturují přímo na Contoso.
+Následující diagram znázorňuje, jak model CSP funguje na vysoké úrovni. Contoso má Active Directory služby Azure AD. Mají partnerství se zprostředkovatelem CSP, který nasazuje a spravuje prostředky ve svém předplatném Azure CSP. Contoso může mít také běžná (přímá) předplatná Azure, která se účtují přímo do společnosti Contoso.
 
 ![Přehled modelu CSP](./media/csp/csp_model_overview.png)
 
-CSP partner tenant má tři skupiny speciální agent - správce agentů, technické podpory agenty a agenty prodeje. Agenty skupiny správce se přiřadí k roli správce klienta v adresáři společnosti Contoso služby Azure AD. V důsledku toho uživatel patří do skupiny agentů CSP partner správce má oprávnění správce tenanta v adresáři společnosti Contoso služby Azure AD. Když ustanovení partner CSP předplatné Azure CSP pro společnost Contoso, jejich agenty skupiny správců přiřazena role vlastníka pro toto předplatné. V důsledku toho CSP partner správce agentů má požadovaná oprávnění ke zřízení prostředků Azure, jako je například virtuálních počítačů, virtuálních sítí a Azure AD Domain Services jménem společnosti Contoso.
+Tenant partnera CSP má tři speciální skupiny agentů – agenti pro správu, agenty helpdesku a prodejní agenty. Skupina agentů pro správu je přiřazená k roli správce klienta v adresáři Azure AD společnosti Contoso. V důsledku toho uživatel patřící do skupiny agenti správců CSP má oprávnění správce tenanta v adresáři Azure AD společnosti Contoso. Když partner CSP zřídí předplatné služby Azure CSP pro společnost Contoso, jejich skupina agentů pro správu je přiřazena k roli vlastníka daného předplatného. V důsledku toho mají agenti správce CSP požadovaná oprávnění ke zřízení prostředků Azure, jako jsou virtuální počítače, virtuální sítě a Azure AD Domain Services jménem společnosti Contoso.
 
-Další informace najdete v tématu [základní informace o Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)
+Další informace najdete v tématu [Přehled CSP Azure](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) .
 
-## <a name="benefits-of-using-azure-ad-domain-services-in-an-azure-csp-subscription"></a>Výhody používání služby Azure AD Domain Services v rámci předplatného Azure CSP
-Azure AD Domain Services poskytuje kompatibilní služby systému Windows Server AD do Azure, jako jsou LDAP, ověřování protokolu Kerberos nebo NTLM, připojení k doméně, zásady skupiny a DNS. Během desetiletí mnohé aplikace sestavené tak, aby odpovídaly AD pomocí těchto možností. Mnoho nezávislí výrobci softwaru (ISV) mají sestavíte a nasadíte aplikace v místě jejich zákazníků. Tyto aplikace jsou obtížné pro podporu od, která často vyžaduje přístup do různých prostředí, ve kterých jsou tyto aplikace nasadit. S předplatnými Azure CSP budete mít jednodušší alternativu se Škálováním a flexibilitě Azure.
+## <a name="benefits-of-using-azure-ad-domain-services-in-an-azure-csp-subscription"></a>Výhody používání Azure AD Domain Services v předplatném služby Azure CSP
+Azure AD Domain Services poskytuje služby kompatibilní se službou Windows Server AD v Azure, jako je LDAP, ověřování pomocí protokolu Kerberos nebo NTLM, připojení k doméně, zásady skupiny a DNS. V průběhu desetiletí bylo mnoho aplikací postavených na spolupráci se službou AD pomocí těchto schopností. Mnoho nezávislých výrobců softwaru (ISV) má v místním prostředí své zákazníky sestavené a nasazené aplikace. Tyto aplikace jsou náročné na podporu, protože to často vyžaduje přístup k různým prostředím, ve kterých jsou tyto aplikace nasazené. S předplatnými Azure CSP máte jednodušší alternativu s měřítkem a flexibilitou Azure.
 
-Azure AD Domain Services nyní podporuje předplatných Azure CSP. Teď můžete nasadit aplikace v rámci předplatného Azure CSP vázané na adresář Azure AD vašeho zákazníka. V důsledku toho vaši zaměstnanci (pracovníci podpory oddělení) můžete spravovat spravovat a služby virtuálních počítačů, na kterých je vaše aplikace nasazena pomocí firemních přihlašovacích údajů vaší organizace. Kromě toho můžete zřídit spravované domény služby Azure AD Domain Services pro adresář Azure AD vašeho zákazníka. Aplikace je připojená k spravované doméně vašeho zákazníka. Proto funkce v rámci vaší aplikace, které závisí na protokolu Kerberos nebo NTLM, LDAP, nebo [System.DirectoryServices API](/dotnet/api/system.directoryservices) pracovní bezproblémově proti adresáři vašeho zákazníka. Vaše koncové zákazníky bývá ve využívání vaší aplikace jako služby, aniž byste museli starat o údržbu infrastruktury, které je aplikace nasazená na.
+Azure AD Domain Services teď podporuje předplatná Azure CSP. Svou aplikaci teď můžete nasadit v předplatném CSP Azure, které je vázané na adresář služby Azure AD vašeho zákazníka. V důsledku toho mohou zaměstnanci (pracovníci podpory) spravovat, spravovat a obsluhovat virtuální počítače, na kterých je vaše aplikace nasazena, pomocí podnikových přihlašovacích údajů vaší organizace. Dále můžete zřídit Azure AD Domain Services spravovanou doménu pro adresář Azure AD vašeho zákazníka. Vaše aplikace je připojená k spravované doméně zákazníka. Proto funkce v rámci aplikace, které závisí na protokolu Kerberos/NTLM, LDAP nebo [rozhraní API System. DirectoryServices](/dotnet/api/system.directoryservices) , bez problémů fungují s adresářem zákazníka. Vaši koncoví zákazníci významně využívají používání vaší aplikace jako služby, aniž by museli se starat o údržbu infrastruktury, ve které je aplikace nasazená.
 
-Všechny fakturace pro prostředky Azure, které skutečně využijete v tomto předplatném, včetně služby Azure AD Domain Services, jsou zpoplatněné nad rámec zpět vám. Zachovat plnou kontrolu nad vztah se zákazníkem při rozhodování o prodeje, fakturace, technické podpory atd. Flexibilní platformu Azure CSP, malý tým agenty služby mnoho těmito zákazníky, kteří mají instancí aplikace nasazena.
-
-
-## <a name="csp-deployment-models-for-azure-ad-domain-services"></a>Modely nasazení zprostředkovatele kryptografických služeb pro Azure AD Domain services
-Existují dva způsoby, které můžete použít Azure AD Domain Services s předplatným Azure CSP. Vyberte si ten správný založené na aspekty zabezpečení a jednoduchost, které vaši zákazníci mají.
-
-### <a name="direct-deployment-model"></a>Model nasazení s přímým přístupem
-V tomto modelu nasazení Azure AD Domain Services je povolena v rámci virtuální sítě, které patří do předplatného Azure CSP. CSP partner správce agentů mít následující oprávnění:
-* Oprávnění globálního správce v adresáři služby Azure AD zákazníka.
-* Oprávnění vlastníka předplatného na předplatné Azure CSP.
-
-![Model nasazení s přímým přístupem](./media/csp/csp_direct_deployment_model.png)
-
-V tomto modelu nasazení můžete spravovat poskytovatele CSP správce agentů identit pro zákazníka. Tito agenti pro správu se budou moct zřizovat noví uživatelé, skupiny, přidání aplikace do adresáře služby Azure AD zákazníka atd. Tento model nasazení může být vhodná pro menší organizace, které mají vyhrazené identity správce nebo dáváte přednost pro partner CSP ke správě identit jejich jménem.
+Veškerá fakturace za prostředky Azure, které spotřebováváte v tomto předplatném, včetně Azure AD Domain Services, se účtují zpátky. V rámci vztahu se zákazníkem můžete udržovat plnou kontrolu nad vztahem k prodeji, fakturaci, technické podpoře atd. Díky flexibilitě platformy Azure CSP může malý tým agentů podpory obsluhovat mnoho takových zákazníků, kteří mají nasazené instance aplikace.
 
 
-### <a name="peered-deployment-model"></a>Partnerské nasazení modelu
-V tomto modelu nasazení Azure AD Domain Services je povolena v rámci virtuální sítě patřící do zákazníků – to znamená, přímé předplatné Azure zaplaceno zákazníka. CSP partner pak můžete nasadit aplikace v rámci virtuální sítě, které patří do předplatného zákazníka CSP. Virtuální sítě můžou být připojené pak pomocí partnerského vztahu virtuální sítě Azure. V důsledku toho úloh a aplikací, nasazení partner CSP v předplatném Azure CSP může připojit k spravované doméně zákazníka zřízené v rámci předplatného Azure s přímým přístupem zákazníka.
+## <a name="csp-deployment-models-for-azure-ad-domain-services"></a>Modely nasazení CSP pro službu Azure AD Domain Services
+Existují dva způsoby, jak můžete Azure AD Domain Services použít s předplatným CSP Azure. Vyberte si napravo na základě bezpečnostních a jednoduchosti důležitých informací, které vaši zákazníci mají.
 
-![Partnerské nasazení modelu](./media/csp/csp_peered_deployment_model.png)
+### <a name="direct-deployment-model"></a>Model přímého nasazení
+V tomto modelu nasazení je Azure AD Domain Services povolený ve virtuální síti patřící do předplatného služby Azure CSP. Agenti správce pro poskytovatele CSP mají následující oprávnění:
+* Oprávnění globálního správce v adresáři Azure AD zákazníka.
+* Oprávnění vlastníka předplatného v předplatném Azure CSP.
 
-Tento model nasazení umožňuje oddělit oprávnění a umožňuje CSP partner helpdesku agentů pro správu předplatného Azure a nasadit a spravovat prostředky v ní. Agenty helpdesku CSP partner však není potřeba mít oprávnění globálního správce adresáře služby Azure AD zákazníka. Správci zákazníka identit můžete nadále spravovat identity pro svoji organizaci.
+![Model přímého nasazení](./media/csp/csp_direct_deployment_model.png)
 
-Tento model nasazení může být vhodné k scénáře, kdy poskytuje hostovaný ISV (nezávislý výrobce softwaru) verze místních aplikací, takže bude také potřeba připojit k odběrateli uživatele AD.
+V tomto modelu nasazení můžou agenti správce zprostředkovatele CSP spravovat identity pro zákazníka. Tito agenti správců mají možnost zřídit nové uživatele, skupiny a přidat aplikace v adresáři Azure AD zákazníka atd. Tento model nasazení může být vhodný pro menší organizace, které nemají vyhrazeného správce identit nebo dávají přednost za to, aby partner CSP spravoval identity jménem.
 
 
-## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>Správa služby Azure AD Domain Services spravované domény v předplatných CSP
-Při správě spravované domény v předplatném Azure CSP, platí následující důležité aspekty:
+### <a name="peered-deployment-model"></a>Model partnerského nasazení
+V tomto modelu nasazení je Azure AD Domain Services povolený ve virtuální síti, která je součástí zákazníka – to znamená přímé předplatné Azure placené zákazníkem. Partner CSP pak může nasadit aplikace v rámci virtuální sítě, které patří k předplatnému poskytovatele CSP zákazníka. Virtuální sítě je pak možné propojit pomocí partnerského vztahu virtuálních sítí Azure. V důsledku toho se můžou zatížení a aplikace nasazené partnerem CSP v předplatném Azure CSP připojit k spravované doméně zákazníka zřízené v přímém předplatném Azure zákazníka.
 
-* **Zprostředkovatel kryptografických služeb správce agentů můžete zřídit spravované domény pomocí svých přihlašovacích údajů:** Azure AD Domain Services podporuje předplatných Azure CSP. Uživatelé, kteří patří do skupiny agentů správce CSP partner, proto můžete zřídit nové spravované doméně Azure AD Domain Services.
+![Model partnerského nasazení](./media/csp/csp_peered_deployment_model.png)
 
-* **Vytváření nových spravovaných domén pro své zákazníky pomocí prostředí PowerShell můžete používat skripty pro CSP:** Zobrazit [jak povolit Azure AD Domain Services pomocí prostředí PowerShell](powershell-create-instance.md) podrobnosti.
+Tento model nasazení poskytuje oddělení oprávnění a umožňuje agentům helpdesku poskytovatele CSP spravovat předplatné Azure a nasazovat a spravovat prostředky v něm. Agenti helpdesku pro poskytovatele CSP ale nemusí mít oprávnění globálního správce k adresáři Azure AD zákazníka. Správci identity zákazníka můžou dál spravovat identity pro svou organizaci.
 
-* **CSP správce agentů nelze provádět úlohy průběžné správy ve spravované doméně pomocí svých přihlašovacích údajů:** Uživatelé CSP správce nelze provádět úkoly správy rutiny ve spravované doméně pomocí svých přihlašovacích údajů. Tito uživatelé jsou externí vzhledem k adresáři služby Azure AD zákazníka a jejich pověření nejsou k dispozici v rámci adresáře služby Azure AD zákazníka. Azure AD Domain Services, proto nemá přístup k protokolu Kerberos a NTLM hodnot hash hesel pro tyto uživatele. V důsledku toho tato uživatelé nemohou být ověřeni v Azure AD Domain Services spravované domény.
+Tento model nasazení může být vhodný pro situace, kdy nezávislý výrobce softwaru (nezávislý výrobce softwaru) poskytuje hostovanou verzi své místní aplikace, která se také musí připojit ke službě AD zákazníka.
+
+
+## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>Správa Azure AD Domain Services spravovaných domén v předplatných CSP
+Při správě spravované domény v předplatném Azure CSP platí následující důležité informace:
+
+* **Agenti správce CSP můžou zřídit spravovanou doménu pomocí svých přihlašovacích údajů:** Azure AD Domain Services podporuje předplatná Azure CSP. Proto uživatelé patřící do skupiny agenti správce v partnerovi CSP mohou zřídit novou Azure AD Domain Services spravovanou doménu.
+
+* **Poskytovatelé CSP můžou vytvořit skripty pro vytváření nových spravovaných domén pro zákazníky pomocí prostředí PowerShell:** Podrobnosti najdete v tématu [povolení Azure AD Domain Services pomocí prostředí PowerShell](powershell-create-instance.md) .
+
+* **Agenti správce CSP nemohou provádět probíhající úlohy správy ve spravované doméně pomocí svých přihlašovacích údajů:** Uživatelé správců CSP nemohou provádět rutinní úlohy správy v rámci spravované domény pomocí svých přihlašovacích údajů. Tito uživatelé jsou externí v adresáři Azure AD zákazníka a jejich přihlašovací údaje nejsou k dispozici v adresáři Azure AD zákazníka. Proto Azure AD Domain Services pro tyto uživatele nemá přístup k hodnotám hash hesla protokolu Kerberos a NTLM. V důsledku toho se tyto uživatele nedají ověřit u Azure AD Domain Services spravovaných domén.
 
   > [!WARNING]
-  > **Musíte vytvořit uživatelský účet v adresáři zákazníka k provedení úlohy průběžné správy ve spravované doméně.**
-  > Nemůžete se přihlásit ke spravované doméně pomocí přihlašovacích údajů uživatele CSP správce. K tomu použijte přihlašovací údaje uživatelského účtu, který patří do adresáře Azure AD zákazníka. Budete potřebovat tyto přihlašovací údaje pro úlohy, jako je připojení virtuálních počítačů do spravované domény, Správa DNS, Správa skupiny zásad atd.
+  > **Aby bylo možné provádět úlohy probíhající správy ve spravované doméně, musíte v adresáři zákazníka vytvořit uživatelský účet.**
+  > K spravované doméně se nemůžete přihlásit pomocí přihlašovacích údajů uživatele správce CSP. K tomu slouží přihlašovací údaje uživatelského účtu patřícího k adresáři Azure AD zákazníka. Tyto přihlašovací údaje budete potřebovat pro úlohy, jako je například připojení virtuálních počítačů ke spravované doméně, Správa služby DNS, Správa Zásady skupiny atd.
   >
 
-* **Uživatelský účet vytvořený pro průběžnou správu musí být přidána do skupiny "Správci AAD DC":** "Správci AAD DC" skupina nemá oprávnění k provádění určitých úloh delegovanou správu. ve spravované doméně. Tyto úlohy zahrnují nastavení DNS, vytvoření organizační jednotky, Správa zásad skupiny atd. Pro CSP partnera k provádění takových úloh ve spravované doméně uživatelský účet musí být vytvořeny v rámci adresáře služby Azure AD zákazníka. Přihlašovací údaje pro tento účet musí být sdíleny s agenty správce CSP partner. Tento uživatelský účet musí také, přidají do skupiny "Správci AAD DC" Povolit konfiguračních úloh ve spravované doméně, která se má provést pomocí tohoto uživatelského účtu.
+* **Uživatelský účet vytvořený pro probíhající správu musí být přidán do skupiny Správci AAD DC:** Skupina Správci AAD DC má oprávnění provádět určité delegované úlohy správy ve spravované doméně. Mezi tyto úlohy patří konfigurace DNS, vytváření organizačních jednotek, Správa zásad skupiny atd. Aby mohl partner CSP provádět takové úkoly ve spravované doméně, je potřeba vytvořit uživatelský účet v adresáři Azure AD zákazníka. Přihlašovací údaje pro tento účet musí být sdíleny s agenty správce partnera CSP. Tento uživatelský účet musí být také přidán do skupiny Správci AAD DC, aby bylo možné provádět úlohy konfigurace ve spravované doméně pomocí tohoto uživatelského účtu.
 
 
 ## <a name="next-steps"></a>Další postup
-* [Zaregistrujte se do programu Azure CSP](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) a začněte vytvářet svého podnikání prostřednictvím Azure CSP.
-* Projděte si seznam [služby Azure k dispozici v Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
+* [Zaregistrujte se do programu Azure CSP](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) a začněte vytvářet firmy prostřednictvím CSP Azure.
+* Projděte si seznam [služeb Azure dostupných ve zprostředkovateli CSP Azure](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 * [Povolení služby Azure AD Domain Services pomocí PowerShellu](powershell-create-instance.md)
-* [Začínáme s Azure AD Domain Services](create-instance.md)
+* [Začínáme s Azure AD Domain Services](tutorial-create-instance.md)

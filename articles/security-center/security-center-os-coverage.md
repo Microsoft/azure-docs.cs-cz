@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 9a11af7e2875c9af5cf4b08d459bc67b55dbdcf3
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 21a42b2986b52282fbab914fa702d8c4a323ed35
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515547"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611951"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkce podporované nástrojem Azure Security Center
 
@@ -30,8 +30,7 @@ Monitorování stavu zabezpečení a doporučení jsou k dispozici pro virtuáln
 >
 
 ## <a name="platforms-that-support-the-data-collection-agent"></a>Platformy, které podporují agenta shromažďování dat 
-
-Tato část obsahuje seznam platforem, na kterých je možné spustit agenta Azure Security Center a ze kterého může shromažďovat data.
+Tato část obsahuje seznam platforem, na kterých je možné spustit agenta Log Analytics, který používá služba Azure Security Center.
 
 ### <a name="supported-platforms-for-windows-computers-and-vms"></a>Podporované platformy pro počítače a virtuální počítače s Windows
 Podporovány jsou následující operační systémy Windows:
@@ -53,7 +52,7 @@ Podporovány jsou následující operační systémy Linux:
 > [!NOTE]
 > Vzhledem k tomu, že se seznam podporovaných operačních systémů Linux neustále mění, pokud chcete, kliknutím [sem](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) zobrazíte nejaktuálnější seznam podporovaných verzí, v případě, že došlo ke změnám od posledního publikování tohoto tématu.
 
-64 bitů
+64 – bit
 * CentOS 6 a 7
 * Amazon Linux 2017.09
 * Oracle Linux 6 a 7
@@ -62,7 +61,7 @@ Podporovány jsou následující operační systémy Linux:
 * Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-32 bitů
+32 – bit
 * CentOS 6
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
@@ -108,7 +107,7 @@ Následující tabulka poskytuje matrici:
 
 Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučení, najdete v tématu [Endpoint Protection Assessment and Recommendations](security-center-endpoint-protection.md).
 
-| Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
+| Endpoint Protection (Ochrana koncových bodů)| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
 | Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
 | Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
@@ -137,17 +136,17 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 |Virtuální sítě|✔| Není k dispozici|
 |Podsítě|✔| Není k dispozici|
 |Síťové karty|✔| Není k dispozici|
-|skupin NSG|✔| Není k dispozici|
+|Skupiny NSG|✔| Není k dispozici|
 |Subscription|✔ **| ✔|
 |Batch|✔| Není k dispozici|
 |Service Fabric|✔| Není k dispozici|
-|Účet služby Automation|✔| Není k dispozici|
+|Účet Automation|✔| Není k dispozici|
 |Nástroj pro vyrovnávání zatížení|✔| Není k dispozici|
 |Hledat|✔| Není k dispozici|
 |Service Bus|✔| Není k dispozici|
 |Stream Analytics|✔| Není k dispozici|
 |Centrum událostí|✔| Není k dispozici|
-|Aplikace logiky|✔| Není k dispozici|
+|Logické aplikace|✔| Není k dispozici|
 |Účet úložiště|✔| Není k dispozici|
 |Redis|✔| Není k dispozici|
 |Data Lake Analytics|✔| Není k dispozici|

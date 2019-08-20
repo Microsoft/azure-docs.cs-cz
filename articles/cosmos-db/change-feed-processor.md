@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e5142e9b4e7c2c79fd2b7e41123db4422334b730
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 0efd11ef4e9dda2c522e145bf5cb942998d59e53
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467795"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69573968"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Změnit procesor kanálu v Azure Cosmos DB 
 
@@ -85,12 +85,13 @@ Instance se můžou zvětšovat a zmenšovat a procesor změn kanálu bude dynam
 ## <a name="additional-resources"></a>Další zdroje
 
 * [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/usage/changefeed)
 * [Další ukázky na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Další postup
 
-Teď můžete přejít k další informace o změně v následujících článcích:
+Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 
 * [Přehled kanálu změn](change-feed.md)
-* [Způsoby čtení kanálu změn](read-change-feed.md)
-* [Změna kanálu s využitím Azure Functions](change-feed-functions.md)
+* [Použití Estimator kanálu změn](how-to-use-change-feed-estimator.md)
+* [Změna počátečního času procesoru kanálu](how-to-configure-change-feed-start-time.md)

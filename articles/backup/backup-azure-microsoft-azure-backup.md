@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: eb9908fc7b2d4ecd8af8c2b4a65ab43352035ec5
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 18eacc914a30dc6004bef71e9d3910e170c43d9b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018901"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575140"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 > [!div class="op_single_selector"]
@@ -51,11 +51,11 @@ Pokud nechcete spustit základní server v Azure, můžete server spustit na vir
 
 | Operační systém | Platforma | SKU |
 |:--- | --- |:--- |
-| Windows Server. 2019 |64bitový |Standard, Datacenter, Essentials (MABS v3 a novější) |
-| Windows Server 2016 a nejnovější aktualizace service packu |64bitový |Standard, Datacenter, Essentials (MABS v2 a novější) |
-| Windows Server 2012 R2 a nejnovější aktualizace Service Packu |64bitový |Standard, Datacenter, Foundation |
+| Windows Server. 2019 |64bitová verze |Standard, Datacenter, Essentials (MABS v3 a novější) |
+| Windows Server 2016 a nejnovější aktualizace service packu |64bitová verze |Standard, Datacenter, Essentials (MABS v2 a novější) |
+| Windows Server 2012 R2 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Datacenter, Foundation |
 | Windows Storage Server 2012 R2 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Workgroup |
-| Windows Storage Server 2012 a nejnovější aktualizace Service Packu |64bitový |Standard, Workgroup |
+| Windows Storage Server 2012 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Workgroup |
 
 Pomocí odstranění duplicitních dat systému Windows Server můžete odstranit duplicitu úložiště aplikace DPM. Přečtěte si další informace o tom [, jak aplikace DPM a odstraňování duplicitních dat](https://technet.microsoft.com/library/dn891438.aspx) při nasazení na virtuálních počítačích Hyper-V spolupracují.
 
@@ -176,11 +176,10 @@ Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu 
     Pokud používáte svou vlastní instanci SQL 2017, musíte SSRS nakonfigurovat ručně. Po konfiguraci služby SSRS zajistěte, aby byla vlastnost- *inicializovaná* u služby SSRS nastavena na *hodnotu true*. Pokud je tato hodnota nastavená na true, MABS předpokládá, že služba SSRS je už nakonfigurovaná, a přeskočí konfiguraci služby SSRS.
 
     Pro konfiguraci služby SSRS použijte následující hodnoty: 
-
-        - Service Account: ‘Use built-in account’ should be Network Service
-        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
-        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
-        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+    - Účet služby: Možnost použít předdefinovaný účet by měla být síťová služba
+    - Adresa URL webové služby: Virtuální adresář by měl být ReportServer_.<SQLInstanceName>
+    - Databáze DatabaseName by měl být ReportServer $<SQLInstanceName>
+    - Adresa URL webového portálu: Virtuální adresář by měl být Reports_.<SQLInstanceName>
 
     [Přečtěte si další informace](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguraci služby SSRS.
 
@@ -276,7 +275,7 @@ Kromě toho musí být předplatné Azure v dobrém stavu. Pokud chcete zjistit 
 
 Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pomocí následující tabulky zjistit dopad na nabízené funkce zálohování a obnovení.
 
-| Stav připojení | Předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
+| Stav připojení | předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
 | Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
 | Připojeno |Vypršela platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |

@@ -14,18 +14,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8dca94f0200f6bd41dfdc199b41bf69981a960da
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562713"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611715"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – Geo-zotavení po havárii 
 
 Po celé oblasti Azure nebo datových centrech (Pokud ne [zóny dostupnosti](../availability-zones/az-overview.md) se používají) dojít k výpadku, je velmi důležité pro zpracování dat i nadále fungovat v jiné oblasti nebo datového centra. V důsledku toho *zotavení po havárii geograficky* a *geografickou replikaci* jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje geo-zotavení po havárii a geografická replikace, na úrovni oboru názvů. 
 
-Funkce geografického zotavení po havárii je globálně dostupná pro Event Hubs standardní i pro vyhrazené SKU. Upozorňujeme, že v rámci stejné úrovně SKU můžete jenom geografické obory názvů. Například pokud máte obor názvů v clusteru, který je nabídnut pouze v naší vyhrazené SKU, může být spárován pouze s oborem názvů v jiném clusteru. 
+> [!NOTE]
+> Funkce geografického zotavení po havárii je dostupná jenom pro [standardní a vyhrazené SKU](https://azure.microsoft.com/pricing/details/event-hubs/).  
 
 ## <a name="outages-and-disasters"></a>Výpadků a havárií
 
@@ -37,7 +38,9 @@ Funkce zotavení po havárii geograficky služby Azure Event Hubs je řešení p
 
 ## <a name="basic-concepts-and-terms"></a>Základními koncepcemi a termíny
 
-Funkce zotavení po havárii implementuje zotavení po havárii metadata a spoléhá na obory názvů zotavení po havárii primární a sekundární. Všimněte si, že funkce geografického zotavení po havárii je dostupná jenom pro [standardní a vyhrazené SKU](https://azure.microsoft.com/pricing/details/event-hubs/) . Není potřeba nic měnit připojovací řetězec, protože připojení se provádí prostřednictvím alias.
+Funkce zotavení po havárii implementuje zotavení po havárii metadata a spoléhá na obory názvů zotavení po havárii primární a sekundární. 
+
+Funkce geografického zotavení po havárii je dostupná jenom pro [standardní a vyhrazené SKU](https://azure.microsoft.com/pricing/details/event-hubs/) . Není potřeba nic měnit připojovací řetězec, protože připojení se provádí prostřednictvím alias.
 
 V tomto článku se používají následující termíny:
 
@@ -48,6 +51,19 @@ V tomto článku se používají následující termíny:
 -  *Metadata*: Entity, jako jsou centra událostí a skupiny uživatelů; a jejich vlastnosti služby, které jsou přidruženy k oboru názvů. Všimněte si, že se automaticky replikují jenom entity a jejich nastavení. Zprávy a události se nereplikují. 
 
 -  *Převzetí služeb při selhání*: Proces aktivace sekundárního oboru názvů.
+
+## <a name="supported-namespace-pairs"></a>Podporované páry oboru názvů
+Podporovány jsou následující kombinace primárních a sekundárních oborů názvů:  
+
+| Primární obor názvů | Sekundární obor názvů | Nepodporuje | 
+| ----------------- | -------------------- | ---------- |
+| Standard | Standard | Ano | 
+| Standard | Vyhrazený | Ano | 
+| Vyhrazený | Vyhrazený | Ano | 
+| Vyhrazený | Standard | Ne | 
+
+> [!NOTE]
+> Obory názvů, které jsou ve stejném vyhrazeném clusteru, nelze spárovat. Obory názvů, které jsou v samostatných clusterech, můžete spárovat. 
 
 ## <a name="setup-and-failover-flow"></a>Instalační program a převzetí služeb při selhání toku
 

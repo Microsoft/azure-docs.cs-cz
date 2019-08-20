@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1654ccabab751896fcbbab09d112080ccc2f67b6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467717"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616846"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Použití geoprostorových a GeoJSON umístění dat pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -249,7 +249,7 @@ Tyto funkce lze také ověřit mnohoúhelníku. Například tady používáme ST
 ### <a name="linq-querying-in-the-net-sdk"></a>LINQ dotazování v sadě .NET SDK
 SQL SDK pro .NET také poskytovatelé zástupných procedur metody `Distance()` a `Within()` pro použití v rámci LINQ – výrazy. Tato metoda převádí zprostředkovatele SQL LINQ volání ekvivalentní předdefinované funkce volání SQL (ST_DISTANCE a ST_WITHIN v uvedeném pořadí). 
 
-Tady je příklad dotazu LINQ, který najde všechny dokumenty v kolekci Azure Cosmos DB, jehož hodnota "umístění" je v rámci okruhu 30 km zadaného bodu pomocí jazyka LINQ.
+Tady je příklad dotazu LINQ, který vyhledá všechny dokumenty v kontejneru Azure Cosmos, jehož hodnota "Location" je v rámci poloměru 30 km od zadaného bodu pomocí LINQ.
 
 **Dotaz LINQ vzdálenosti**
 

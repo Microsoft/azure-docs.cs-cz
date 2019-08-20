@@ -1,28 +1,28 @@
 ---
-title: Jak napsat uložené procedury a triggery, pomocí dotazu jazyka JavaScript API ve službě Azure Cosmos DB
-description: Další informace o zápisu uložených procedur a aktivačních událostí ve službě Azure Cosmos DB pomocí rozhraní API pro dotazy jazyka JavaScript
+title: Jak zapisovat uložené procedury a triggery pomocí rozhraní API pro dotazy jazyka JavaScript v Azure Cosmos DB
+description: Naučte se zapisovat uložené procedury a triggery pomocí rozhraní API pro dotazy jazyka JavaScript v Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: f465ac91936b766d2c19ea8efd67b3acc8df6d75
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 20a9ca8e28961a6dc49947a22f745424961b4a3f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243930"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615263"
 ---
-# <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Jak napsat uložených procedur a aktivačních událostí ve službě Azure Cosmos DB pomocí rozhraní API jazyka JavaScript dotazu
+# <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Postup zápisu uložených procedur a triggerů v Azure Cosmos DB pomocí rozhraní API pro dotazy jazyka JavaScript
 
-Azure Cosmos DB umožňuje provádět optimalizované dotazy pomocí rozhraní fluent JavaScript bez znalosti jazyka SQL, který můžete použít pro zapsání uložených procedur a aktivačních událostí. Další informace o podpoře rozhraní API pro JavaScript dotazy ve službě Azure Cosmos DB najdete v tématu [práce s jazykem JavaScript integrovaná rozhraní API pro dotazy ve službě Azure Cosmos DB](javascript-query-api.md) článku.
+Azure Cosmos DB umožňuje provádět optimalizované dotazy pomocí rozhraní Fluent JavaScript bez znalosti jazyka SQL, které lze použít k zápisu uložených procedur nebo triggerů. Další informace o podpoře rozhraní API dotazů JavaScript v Azure Cosmos DB najdete v článku [práce s integrovaným rozhraním API pro integrované dotazy jazyka JavaScript v článku Azure Cosmos DB](javascript-query-api.md) .
 
-## <a id="stored-procedures"></a>Uložené procedury pomocí dotazu jazyka JavaScript API
+## <a id="stored-procedures"></a>Uložená procedura s použitím rozhraní API pro dotazy jazyka JavaScript
 
-Následující vzorový kód je příklad použití dotazu jazyka JavaScript API v rámci uložené procedury. Vloží položku služby Azure Cosmos DB, která je určená jako vstupní parametr a aktualizuje dokumentů metadat pomocí uložené procedury `__.filter()` metodou minSize maxSize a totalSize stupněm MODERATE vlastnost velikost vstupní položky.
+Následující ukázka kódu je příkladem použití rozhraní API pro dotazování jazyka JavaScript v kontextu uložené procedury. Uložená procedura vloží položku Azure Cosmos, která je určená vstupním parametrem, a aktualizuje dokument metadat pomocí `__.filter()` metody, parametru minSize, MaxSize a TotalSize v závislosti na vlastnosti Size položky Input.
 
 > [!NOTE]
-> `__` (dvojité podtržítko) je alias `getContext().getCollection()` při použití rozhraní API jazyka JavaScript dotazu.
+> `__`(dvojité podtržítko) je alias pro při použití `getContext().getCollection()` rozhraní API pro dotazování jazyka JavaScript.
 
 ```javascript
 /**
@@ -80,14 +80,14 @@ function insertDocumentAndUpdateMetadata(item) {
 
 ## <a name="next-steps"></a>Další postup
 
-Naleznete v následujících článcích se dozvíte o uložené procedury, triggery a uživatelem definovaných funkcí ve službě Azure Cosmos DB:
+V následujících článcích najdete informace o uložených procedurách, triggerech a uživatelem definovaných funkcích v Azure Cosmos DB:
 
-* [Jak pracovat s uložené procedury, aktivační události, uživatelem definovaných funkcí ve službě Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
+* [Jak pracovat s uloženými procedurami, triggery, uživatelsky definovanými funkcemi v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
 
-* [Registrace a používání uložených procedur ve službě Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures)
+* [Postup při registraci a používání uložených procedur v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures)
 
-* Registrace a používání [předběžné triggery](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) a [po triggery](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) ve službě Azure Cosmos DB
+* Postup při registraci a používání [předaktivačních událostí](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) a [následných triggerů](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) v Azure Cosmos DB
 
-* [Postup registrace a použití uživatelem definovaných funkcí ve službě Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs)
+* [Postup při registraci a používání uživatelem definovaných funkcí v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs)
 
 * [Syntetické klíče oddílů ve službě Azure Cosmos DB](synthetic-partition-keys.md)

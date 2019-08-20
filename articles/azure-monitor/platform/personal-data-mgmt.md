@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 29c91f2dcff04a2d21973e79c5719c3f4d84181b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827372"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617308"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Doprovodné materiály k osobním údajům uloženým v Log Analytics a Application Insights
 
@@ -98,6 +98,11 @@ Pro požadavky na zobrazení a export dat by se měla použít rozhraní [API pr
 K dispozici jako součást ochrany osobních údajů, která zpracovává cestu rozhraní API pro vyprázdnění. Tato cesta by se měla používat zřídka, protože rizika spojená s tím spojené s tím, jaký je potenciální dopad na výkon, a potenciál pro zkosení všech agregací, měření a dalších aspektů vašich Log Analytics dat. Alternativní přístupy k manipulaci s privátními daty najdete v části [strategie pro zpracování osobních údajů](#strategy-for-personal-data-handling) .
 
 Vyprázdnit je vysoce privilegovaná operace, kterou žádná aplikace ani uživatel v Azure (včetně ani vlastníka prostředku) bude mít oprávnění ke spuštění bez explicitního udělení role v Azure Resource Manager. Tato role je modul pro _vyprázdnění dat_ a měla by být řádně delegovaná kvůli možné ztrátě dat. 
+
+> [!IMPORTANT]
+> Aby bylo možné spravovat systémové prostředky, požadavky na vyprázdnění jsou omezeny na 50 požadavků za hodinu. Měli byste dávkovat provádění požadavků na vymazání odesláním jednoho příkazu, jehož predikát zahrnuje všechny identity uživatelů, které vyžadují vyprázdnění. Použijte [operátor in](/azure/kusto/query/inoperator) k určení více identit. Před spuštěním žádosti o vymazání byste měli spustit dotaz, abyste ověřili, že jsou očekávané výsledky. 
+
+
 
 Po přiřazení role Azure Resource Manager jsou k dispozici dvě nové cesty rozhraní API: 
 

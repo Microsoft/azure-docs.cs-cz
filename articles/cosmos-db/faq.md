@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5cbbd507352471f5e093ef018de4b0c849aad442
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000792"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615379"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
@@ -123,7 +123,7 @@ Ano, služby Azure cosmos DB podporuje analýzu časových řad, tady je ukázka
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Jak můžu začít vyvíjet s využitím rozhraní SQL API?
 
-Nejprve musí přihlásit k odběru služeb Azure. Po registraci předplatného Azure můžete ke svému předplatnému Azure přidat kontejner rozhraní SQL API. Pokyny k přidání účtu služby Azure Cosmos DB najdete v tématu [vytvoření účtu databáze Azure Cosmos DB](create-sql-api-dotnet.md#create-account).
+Nejprve musí přihlásit k odběru služeb Azure. Po registraci předplatného Azure můžete ke svému předplatnému Azure přidat kontejner rozhraní SQL API. Pokyny k přidání Azure Cosmos DB účtu najdete v tématu [Vytvoření účtu databáze Azure Cosmos](create-sql-api-dotnet.md#create-account).
 
 Pro .NET, Python, Node.js, JavaScript a Javu jsou k dispozici sady [SDK](sql-api-sdk-dotnet.md). Vývojáři také mohou použít [rozhraní RESTful HTTP API](/rest/api/cosmos-db/) k interakci s prostředky Azure Cosmos DB z různých platforem a jazyků.
 
@@ -203,7 +203,7 @@ Vytváření oprávnění s použitím ResourceTokens je povolené na úrovni ko
 
 ### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>Co je rozhraní API Azure Cosmos DB pro MongoDB?
 
-Rozhraní API pro Azure Cosmos DB pro MongoDB je vrstva kompatibility protokolů, která umožňuje aplikacím snadno a transparentně komunikovat s nativním databázovým strojem Azure Cosmos DB pomocí stávajících sad SDK a ovladačů podporovaných komunitou pro MongoDB. Vývojáři teď můžou využívat stávající MongoDB sady nástrojů a dovednosti k sestavování aplikací, které využívají Azure Cosmos DB. Vývojáři mají výhodu jedinečných funkcí Azure Cosmos DB, které zahrnují globální distribuci s více hlavními replikacemi, automatické indexování, údržbu zálohování, finančně zálohovaných smluv o úrovni služeb (SLA) atd.
+Rozhraní API pro Azure Cosmos DB pro MongoDB je vrstva kompatibility protokolů, která umožňuje aplikacím snadno a transparentně komunikovat s nativním databázovým strojem Azure Cosmos pomocí stávajících sad SDK a ovladačů podporovaných komunitou pro MongoDB. Vývojáři teď můžou využívat stávající MongoDB sady nástrojů a dovednosti k sestavování aplikací, které využívají Azure Cosmos DB. Vývojáři mají výhodu jedinečných funkcí Azure Cosmos DB, které zahrnují globální distribuci s více hlavními replikacemi, automatické indexování, údržbu zálohování, finančně zálohovaných smluv o úrovni služeb (SLA) atd.
 
 ### <a name="how-do-i-connect-to-my-database"></a>Návody se připojit k databázi?
 
@@ -453,7 +453,7 @@ Rozhraní Table API poskytuje stejné funkce dotazů jako Azure Table storage. A
 Měli byste změnit TableThroughput, pokud platí některá z následujících podmínek:
 
 * Při provádění extrakce, transformace a načítání (ETL) dat, nebo chcete nahrát velké množství dat v krátkém čase.
-* Budete potřebovat větší propustnost z kontejneru nebo ze skupiny kontejnerů na back-endu. Například uvidíte, že používá propustnost je větší než zřízenou propustnost a jste omezovaní. Další informace najdete v tématu [nastavení propustnosti pro kontejnery služby Azure Cosmos DB](set-throughput.md).
+* Budete potřebovat větší propustnost z kontejneru nebo ze skupiny kontejnerů na back-endu. Například uvidíte, že používá propustnost je větší než zřízenou propustnost a jste omezovaní. Další informace najdete v tématu [nastavení propustnosti pro kontejnery Azure Cosmos](set-throughput.md).
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Můžete vertikálně navýšit kapacitu nebo snížit kapacitu propustnosti rozhraní Table API služby tabulky?
 
@@ -720,7 +720,7 @@ Rozhraní Apache Cassandra API je služba platformy, která umožňuje plánová
 
 Azure Cosmos DB poskytuje globální distribuce mimo pole z důvodů nízkou latenci a dostupnosti. Není nutné nastavení repliky nebo další věci. Všechna zápisy jsou vždy trvale kvorum potvrzené v jakékoli oblasti, do které zapisujete a zároveň zadáte záruky výkonu.
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-and-more"></a>Co se stane s ohledem na různá nastavení pro metadata tabulky jako filtr standard pro ukládání do mezipaměti, číst změny opravit, gc_grace, memtable_flush_period komprese a další?
+### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gc_grace-compression-memtable_flush_period-and-more"></a>Co se stane s ohledem na různá nastavení pro metadata tabulky jako filtr standard pro ukládání do mezipaměti, číst změny opravit, gc_grace, memtable_flush_period komprese a další?
 
 Azure Cosmos DB nabízí výkon pro čtení/zápisu a propustnost bez nutnosti zásahu nastavení konfigurace a neúmyslně manipulaci s nimi.
 

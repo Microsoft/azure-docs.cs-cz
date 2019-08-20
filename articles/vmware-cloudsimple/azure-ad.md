@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fe80c6231f95ec7040bde5f1d7e74353b8bfff60
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b9060ecbb9ca9e77d994a8f20378e2c53927586a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544419"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617377"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Použití Azure AD jako zprostředkovatele identity pro vCenter v privátním cloudu CloudSimple
 
@@ -64,16 +64,16 @@ Volitelně můžete nakonfigurovat další funkce služby Azure AD.  Nevyžaduj�
 3. Nakonfigurujte skupinu správců pro správu Azure AD Domain Services, jak je popsáno v tématu [povolení Azure Active Directory Domain Services pomocí Azure Portal](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md).
 4. Aktualizujte nastavení DNS pro váš Azure AD Domain Services, jak je popsáno v tématu [povolení Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-dns.md).  Pokud se chcete připojit ke službě AD přes Internet, nastavte záznam DNS pro veřejnou IP adresu služby Azure AD Domain Services na název domény.
 5. Povolit synchronizaci hodnot hash hesel pro uživatele.  Tento krok umožňuje synchronizaci hodnot hash hesel vyžadovaných pro Azure AD Domain Services ověřování NT LAN Manageru (NTLM) a Kerberos. Po nastavení synchronizace hodnot hash hesel se uživatelé můžou přihlásit ke spravované doméně s použitím podnikových přihlašovacích údajů. Další informace najdete v tématu [povolení synchronizace hodnot hash hesel pro Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
-    1. Pokud jsou k dispozici pouze cloudní uživatelé, musí změnit heslo pomocí <a href="http://myapps.microsoft.com/" target="_blank">přístupového panelu Azure AD</a> , aby bylo zajištěno, že hodnoty hash hesel budou uloženy ve formátu VYŽADOVANÉm protokolem NTLM nebo Kerberos.  Postupujte podle pokynů v tématu [povolení synchronizace hodnot hash hesel do spravované domény pro uživatelské účty výhradně pro Cloud](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md#task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts).  Tento krok je potřeba provést pro jednotlivé uživatele a každého nového uživatele, který je vytvořený v adresáři Azure AD pomocí rutin Azure Portal nebo Azure AD PowerShellu. Uživatelé, kteří potřebují přístup ke službě Azure AD Domain Services, musí použít <a href="http://myapps.microsoft.com/" target="_blank">přístupový panel Azure AD</a> a získat přístup ke svému profilu, aby změnili heslo.
+    1. Pokud jsou k dispozici pouze cloudní uživatelé, musí změnit heslo pomocí <a href="http://myapps.microsoft.com/" target="_blank">přístupového panelu Azure AD</a> , aby bylo zajištěno, že hodnoty hash hesel budou uloženy ve formátu VYŽADOVANÉm protokolem NTLM nebo Kerberos.  Postupujte podle pokynů v tématu [povolení synchronizace hodnot hash hesel do spravované domény pro uživatelské účty výhradně pro Cloud](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).  Tento krok je potřeba provést pro jednotlivé uživatele a každého nového uživatele, který je vytvořený v adresáři Azure AD pomocí rutin Azure Portal nebo Azure AD PowerShellu. Uživatelé, kteří potřebují přístup ke službě Azure AD Domain Services, musí použít <a href="http://myapps.microsoft.com/" target="_blank">přístupový panel Azure AD</a> a získat přístup ke svému profilu, aby změnili heslo.
 
         > [!NOTE]
         > Pokud má vaše organizace pouze cloudové uživatelské účty, musí si všichni uživatelé, kteří používají Azure Active Directory Domain Services, měnit hesla. Uživatelský účet jenom cloudu je účet vytvořený v adresáři služby Azure AD pomocí webu Azure Portal nebo rutin Azure AD PowerShellu. Takové uživatelské účty se nesynchronizují z místního adresáře.
 
-    2. Pokud synchronizujete hesla z místní služby Active Directory, postupujte podle kroků v [dokumentaci ke službě Active Directory] (.. /active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md.
+    2. Pokud synchronizujete hesla z místní služby Active Directory, postupujte podle kroků v [dokumentaci ke službě Active Directory](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md).
 
-6.  Nakonfigurujte zabezpečený protokol LDAP v Azure Active Directory Domain Services, jak je popsáno v tématu [Konfigurace protokolu Secure LDAP (LDAPS) pro spravovanou doménu Azure AD Domain Services](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
-    1. Nahrajte certifikát pro použití zabezpečeným protokolem LDAP, jak je popsáno v tématu Azure [získání certifikátu pro zabezpečený protokol LDAP](../active-directory-domain-services/configure-ldaps.md#task-1---obtain-a-certificate-for-secure-ldap).  CloudSimple doporučuje používat podepsaný certifikát vydaný certifikační autoritou k zajištění, že vCenter může certifikát důvěřovat.
-    2. Povolit zabezpečený protokol LDAP jak je popsáno, [Povolení zabezpečení LDAP (LDAPS) pro Azure AD Domain Services spravovanou doménu](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md).
+6.  Nakonfigurujte zabezpečený protokol LDAP v Azure Active Directory Domain Services, jak je popsáno v tématu [Konfigurace protokolu Secure LDAP (LDAPS) pro spravovanou doménu Azure AD Domain Services](../active-directory-domain-services/tutorial-configure-ldaps.md).
+    1. Nahrajte certifikát pro použití zabezpečeným protokolem LDAP, jak je popsáno v tématu Azure [získání certifikátu pro zabezpečený protokol LDAP](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap).  CloudSimple doporučuje používat podepsaný certifikát vydaný certifikační autoritou k zajištění, že vCenter může certifikát důvěřovat.
+    2. Povolit zabezpečený protokol LDAP jak je popsáno, [Povolení zabezpečení LDAP (LDAPS) pro Azure AD Domain Services spravovanou doménu](../active-directory-domain-services/tutorial-configure-ldaps.md).
     3. Uložte veřejnou část certifikátu (bez privátního klíče) do formátu. cer pro použití s vCenter při konfiguraci zdroje identity.
     4. Pokud je potřeba internetový přístup ke službě Azure AD Domain Services, povolte možnost Povolit zabezpečený přístup k LDAP přes Internet.
     5. Přidejte příchozí pravidlo zabezpečení pro službu Azure AD Domain Services NSG pro port TCP 636.

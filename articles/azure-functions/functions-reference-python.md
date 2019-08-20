@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 0cdd7f291b43f442b8471a19f515e4a2d12b4e74
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 637205bd4ad438d7efbee6fb304b0a934aefdfdf
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562869"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615888"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -315,14 +315,22 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Publikování do Azure
 
-Až budete připraveni k publikování, ujistěte se, že všechny vaše závislosti jsou uvedeny v souboru *. txt požadavků* , který je umístěn v kořenovém adresáři adresáře projektu. Pokud používáte balíček, který vyžaduje kompilátor a nepodporuje instalaci kol kompatibilních s manylinux z PyPI, publikování do Azure selže s následující chybou: 
+Až budete připraveni k publikování, ujistěte se, že všechny vaše závislosti jsou uvedeny v souboru *. txt požadavků* , který je umístěn v kořenovém adresáři adresáře projektu. Azure Functions můžou tyto závislosti [vzdáleně sestavit](functions-deployment-technologies.md#remote-build) .
+
+K nasazení do Azure a provedení vzdáleného sestavení použijte následující příkaz:
+
+```bash
+func azure functionapp publish <app name> --build remote
+```
+
+Pokud nepoužíváte vzdálené sestavení a použijete balíček, který vyžaduje kompilátor a nepodporuje instalaci řady nekompatibilních kol se systémem Linux z PyPI, publikování do Azure bez automatického sestavení selže s následující chybou:
 
 ```
 There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
 The terminal process terminated with exit code: 1
 ```
 
-Chcete-li automaticky sestavit a nakonfigurovat požadované binární soubory, [nainstalujte](https://docs.docker.com/install/) do místního počítače Docker a spusťte následující příkaz pro publikování pomocí [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Nezapomeňte nahradit `<app name>` názvem vaší aplikace Function App v Azure. 
+Chcete-li vytvořit místně a nakonfigurovat požadované binární soubory, [nainstalujte Docker](https://docs.docker.com/install/) do místního počítače a spusťte následující příkaz pro publikování pomocí [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Nezapomeňte nahradit `<app name>` názvem vaší aplikace Function App v Azure. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps

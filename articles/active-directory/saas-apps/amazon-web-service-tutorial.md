@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346c995cbc8be6e609020db799959d873ce89b3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 672a3571202b92232bd45a42254a43019f6a9796
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68944956"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617333"
 ---
 # <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>Kurz: Integrace Amazon Web Services (AWS) s Azure Active Directory
 
@@ -369,6 +369,12 @@ Když na přístupovém panelu vyberete dlaždici AWS, měli byste se automatick
    Do Azure AD se dá přidat víc `servicePrincipals`tenantů AWS (reprezentovaný) z galerie pro zřizování. K dispozici je ale známý problém s tím, že není možné automaticky zapisovat všechny importované role z několika AWS `servicePrincipals` používaných k zřizování do jediného `servicePrincipal` používaného pro jednotné přihlašování. 
    
    Jako alternativní řešení můžete použít [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) k extrakci všech `appRoles` importovaných do každého AWS `servicePrincipal` , kde je zřizování nakonfigurované. Následně můžete přidat tyto řetězce rolí do AWS `servicePrincipal` , kde je nakonfigurované jednotné přihlašování.
+ 
+* Role musí splňovat následující požadavky, aby měly nárok na Import z AWS do služby Azure AD:
+
+  * Role musí mít přesně jednoho poskytovatele SAML definovaného v AWS.
+
+  * Kombinovaná délka ARN role a ARN zprostředkovatele SAML pro importované role musí mít 119 znaků nebo méně.
 
 ## <a name="additional-resources"></a>Další zdroje
 

@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1ee54fac5a4c325ea5db3b97522fd2772b8dbd4
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15ecdf0feb0d8e5307eac9916748e0bacdf51620
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382425"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616051"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Stažení a instalace aplikace Microsoft Authenticator
 
@@ -52,7 +52,7 @@ Nainstalujte nejnovější verzi Microsoft Authenticator aplikace na základě v
 - **Apple iOS.** V zařízení se systémem Apple iOS [Stáhněte a nainstalujte aplikaci Microsoft Authenticator](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)do obchodu App Store.
 
 >[!Important]
->Pokud momentálně nepoužíváte mobilní zařízení, můžete aplikaci Microsoft Authenticator získat tak, že si pošlete odkaz ke stažení ze [stránky Microsoft Authenticator](https://www.microsoft.com/en-us/account/authenticator).
+>Pokud momentálně nepoužíváte mobilní zařízení, můžete aplikaci Microsoft Authenticator získat tak, že si pošlete odkaz ke stažení ze [stránky Microsoft Authenticator](https://www.microsoft.com/account/authenticator).
 
 ## <a name="next-steps"></a>Další postup
 

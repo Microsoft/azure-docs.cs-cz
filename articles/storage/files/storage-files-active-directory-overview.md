@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: addb97d71da1ceac8717ae77204c87a8197dac86
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935169"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611772"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Přehled podpory ověřování služby Azure Files Azure Active Directory Domain Service (Azure služba AD DS) pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -59,7 +59,7 @@ Když se identita přidružená k aplikaci běžící na virtuálním počítač
 ### <a name="enable-azure-ad-domain-service-authentication-for-smb-access"></a>Povolení ověřování Azure AD Domain Service pro přístup přes protokol SMB
 Můžete povolit ověřování služby Azure AD Domain Services pro soubory Azure na vašich nových a existujících účtech úložiště vytvořených po 24. září 2018. 
 
-Než povolíte tuto funkci, ověřte, jestli je nasazený Azure AD Domain Services pro primárního tenanta Azure AD, ke kterému je přidružený váš účet úložiště. Pokud jste ještě nenastavili Azure AD Domain Services, postupujte podle podrobných pokynů uvedených v části [povolení Azure Active Directory Domain Services pomocí Azure Portal](../../active-directory-domain-services/create-instance.md).
+Než povolíte tuto funkci, ověřte, jestli je nasazený Azure AD Domain Services pro primárního tenanta Azure AD, ke kterému je přidružený váš účet úložiště. Pokud jste ještě nenastavili Azure AD Domain Services, postupujte podle podrobných pokynů uvedených v části [povolení Azure Active Directory Domain Services pomocí Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md).
 
 Nasazení Azure AD Domain Services obvykle trvá 10 až 15 minut. Po nasazení Azure AD Domain Services můžete povolit ověřování Azure AD přes SMB pro soubory Azure. Další informace najdete v tématu [Povolení ověřování služby Azure Active Directory Domain Services přes protokol SMB pro soubory Azure](storage-files-active-directory-enable.md). 
 

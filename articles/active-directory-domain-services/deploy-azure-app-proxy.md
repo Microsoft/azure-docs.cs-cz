@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031035"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613012"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Nasazení Azure Proxy aplikací služby AD ve spravované doméně Azure AD Domain Services
 Proxy aplikace Azure Active Directory (AD) pomáhá podporovat vzdálené pracovní procesy publikováním místních aplikací, které jsou k dispozici prostřednictvím Internetu. S Azure AD Domain Services teď můžete nasouvat starší verze aplikací, které běží místně, do služby infrastruktury Azure. Tyto aplikace pak můžete publikovat pomocí Proxy aplikací služby AD Azure, abyste uživatelům ve vaší organizaci zajistili zabezpečený vzdálený přístup.
@@ -35,7 +35,7 @@ K provedení úkolů uvedených v tomto článku budete potřebovat:
 1. Platné **předplatné Azure**.
 2. **Adresář služby Azure AD** – buď synchronizovaný s místním adresářem, nebo s adresářem jenom pro Cloud.
 3. K použití Proxy aplikací služby AD Azure je nutná **licence Azure AD Premium** .
-4. **Azure AD Domain Services** musí být povolený pro adresář služby Azure AD. Pokud jste to ještě neudělali, postupujte podle všech úkolů popsaných v [průvodci Začínáme](create-instance.md).
+4. **Azure AD Domain Services** musí být povolený pro adresář služby Azure AD. Pokud jste to ještě neudělali, postupujte podle všech úkolů popsaných v [průvodci Začínáme](tutorial-create-instance.md).
 
 <br>
 
@@ -114,18 +114,18 @@ Použijte KCD podle prostředků, jak je popsáno v tomto [článku](deploy-kcd.
 
 Pomocí rutiny PowerShellu Get-ADComputer načtěte nastavení počítače, na kterém je nainstalovaný konektor Azure Proxy aplikací služby AD.
 ```powershell
-$ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
+$ConnectorComputerAccount = Get-ADComputer -Identity contoso-proxy.contoso.com
 ```
 
 Potom pomocí rutiny Set-ADComputer nastavte pro server prostředků KCD založenou na prostředku.
 ```powershell
-Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
+Set-ADComputer contoso-resource.contoso.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
 ```
 
 Pokud jste ve spravované doméně nasadili více konektorů proxy aplikací, je třeba pro každou instanci konektoru nakonfigurovat KCD založenou na prostředku.
 
 
 ## <a name="related-content"></a>Související obsah
-* [Azure AD Domain Services – Průvodce Začínáme](create-instance.md)
+* [Azure AD Domain Services – Průvodce Začínáme](tutorial-create-instance.md)
 * [Konfigurace omezeného delegování protokolu Kerberos ve spravované doméně](deploy-kcd.md)
 * [Přehled omezeného delegování protokolu Kerberos](https://technet.microsoft.com/library/jj553400.aspx)

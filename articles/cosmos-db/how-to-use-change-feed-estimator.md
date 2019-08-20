@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 582b0a586f830659bbea4dd665be938d2895de47
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: f72a3bfcfd6b4f480977510963f49f73a7207e1f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544828"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615286"
 ---
 # <a name="use-the-change-feed-estimator"></a>Použít Estimator kanálu změn
 
@@ -23,7 +23,7 @@ Procesor změn kanálu funguje jako ukazatel, který přechází mezi kanálem [
 
 Nasazení procesoru změny kanálu může zpracovávat změny za určitou míru na základě dostupných prostředků, jako jsou například CPU, paměť, síť a tak dále.
 
-Pokud je tato rychlost pomalejší než frekvence, s jakou se vaše změny projeví ve vašem kontejneru Azure Cosmos DB, bude se procesor začínat prodlevou.
+Pokud je tato rychlost pomalejší než frekvence, s jakou se vaše změny vyskytují v rámci vašeho kontejneru Azure Cosmos, váš procesor se zahájí na zpoždění.
 
 Identifikace tohoto scénáře vám pomůže pochopit, jestli potřebujeme škálovat naše nasazení procesoru Change feed.
 
@@ -60,8 +60,7 @@ Tento odhad můžete odeslat řešení monitorování a použít ho k pochopení
 
 ## <a name="next-steps"></a>Další postup
 
-Teď můžete přejít k další informace o změně v následujících článcích:
+Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 
-* [Přehled kanálu změn](change-feed.md)
-* [Způsoby čtení kanálu změn](read-change-feed.md)
-* [Použití procesoru Change feed](change-feed-processor.md)
+* [Přehled procesoru Change feed](change-feed-processor.md)
+* [Změna počátečního času procesoru kanálu](how-to-configure-change-feed-start-time.md)

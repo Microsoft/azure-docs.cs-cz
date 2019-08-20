@@ -1,87 +1,93 @@
 ---
-title: 'Azure Active Directory Domain Services: Příručka věnovaná | Dokumentace Microsoftu'
-description: Vytvoření organizační jednotce (OU) v Azure AD Domain Services spravované domény
+title: Vytvoření organizační jednotky (OU) v Azure AD Domain Services | Microsoft Docs
+description: Naučte se, jak vytvořit a spravovat vlastní organizační jednotku (OU) ve spravované doméně Azure AD Domain Services.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 08/07/2019
 ms.author: iainfou
-ms.openlocfilehash: b2bdad25d676d65494fdd5b6a314f8c3381254de
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a3f9ad20e4bfba6e0bb858c82ccce73bb687a826
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473682"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613086"
 ---
-# <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Vytvořit organizační jednotce (OU) ve spravované doméně Azure AD Domain Services
-Spravované domény služby Azure AD Domain Services patří dvě předdefinované kontejnery nazývá "Kontejnery počítače AADDC" a "Uživatelé AADDC" v uvedeném pořadí. Kontejner 'Kontejnery počítače AADDC' obsahuje objekty počítače pro všechny počítače, které jsou připojené ke spravované doméně. Kontejner 'Uživatelé AADDC' obsahuje uživatele a skupiny v tenantovi Azure AD. V některých případech může být potřeba vytvořit účty služeb ve spravované doméně nasazování úloh. K tomuto účelu můžete vytvořit vlastní organizační jednotce (OU) ve spravované doméně a vytvořit účty služeb v rámci dané organizační jednotce. Tento článek ukazuje, jak vytvoření OU ve spravované doméně.
+# <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Vytvoření organizační jednotky (OU) ve Azure AD Domain Services spravované doméně
+
+Organizační jednotky (OU) v Active Directory Domain Services (služba AD DS) umožňují logicky seskupovat objekty, jako jsou uživatelské účty, účty služeb nebo účty počítačů. Pak můžete přiřadit správce ke konkrétním organizačním jednotkám a použít zásady skupiny k vystavování cílových nastavení konfigurace.
+
+Spravované domény Azure služba AD DS zahrnují dva předdefinované *AADDC počítače* a *AADDC uživatele*. Organizační jednotka *počítačů s AADDC* obsahuje objekty počítače pro všechny počítače, které jsou připojené ke spravované doméně. Organizační jednotka *uživatelů AADDC* zahrnuje uživatele a skupiny synchronizované v rámci TENANTA Azure AD. Když vytváříte a spouštíte úlohy, které používají Azure služba AD DS, možná budete muset vytvořit účty služeb pro aplikace, které se budou ověřovat sami. K organizování těchto účtů služeb často vytváříte vlastní organizační jednotku ve spravované doméně Azure služba AD DS a pak vytvoříte účty služeb v této organizační jednotce.
+
+V tomto článku se dozvíte, jak vytvořit organizační jednotku ve spravované doméně Azure služba AD DS.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Než začnete
-K provádění úkolů uvedených v tomto článku, budete potřebovat:
+## <a name="before-you-begin"></a>Před zahájením
 
-1. Platný **předplatného Azure**.
-2. **Adresář Azure AD** – buď synchronizaci s místním adresářem nebo výhradně cloudový adresář.
-3. **Azure AD Domain Services** musí být povolené pro adresář Azure AD. Pokud jste neudělali, postupujte podle všechny úkoly popsané v [příručce Začínáme](create-instance.md).
-4. Ze kterého budete spravovat Azure AD Domain Services virtuální počítač připojený k doméně spravované domény. Pokud nemáte virtuální počítač, proveďte všechny úkoly popsané v článku s názvem [připojení virtuálního počítače s Windows k spravované doméně](active-directory-ds-admin-guide-join-windows-vm.md).
-5. Potřebujete přihlašovací údaje **uživatelský účet patřící do skupiny "Správci AAD DC"** ve vašem adresáři, chcete-li vytvořit vlastní organizační jednotky ve vaší spravované doméně.
+K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
-## <a name="install-ad-administration-tools-on-a-domain-joined-virtual-machine-for-remote-administration"></a>Nainstalovat nástroje pro správu AD na virtuálním počítači připojeném k doméně pro vzdálenou správu
-Spravované domény služby Azure AD Domain Services je možné spravovat vzdáleně pomocí známých nástrojů pro správu služby Active Directory jako je správu Center Active Directory (ADAC) nebo Powershellu AD. Správci klientů nemají oprávnění k připojení k řadiči domény ve spravované doméně přes vzdálenou plochu. Správa spravované domény, nainstalujte funkci nástroje správy AD virtuálnímu počítači připojený ke spravované doméně. Přečtěte si článek s názvem [spravovat domény služby Azure AD Domain Services](manage-domain.md) pokyny.
+* Aktivní předplatné Azure.
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+* Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
+    * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+* Virtuální počítač pro správu Windows serveru, který je připojený k spravované doméně Azure služba AD DS.
+    * V případě potřeby dokončete kurz a [vytvořte virtuální počítač pro správu][tutorial-create-management-vm].
+* Uživatelský účet, který je členem skupiny správců *řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
 
-## <a name="create-an-organizational-unit-on-the-managed-domain"></a>Vytváření organizační jednotky ve spravované doméně
-Teď, když jsou nainstalovány nástroje pro správu AD v doméně připojené k virtuálnímu počítači, můžeme použít tyto nástroje k vytvoření organizační jednotky ve spravované doméně. Proveďte následující kroky:
+## <a name="custom-ou-considerations-and-limitations"></a>Vlastní doporučení a omezení organizační jednotky
+
+Když vytvoříte vlastní organizační jednotky ve spravované doméně Azure služba AD DS, získáte další flexibilitu správy uživatelů a používání zásad skupiny. V porovnání s místním služba AD DS prostředí existují určitá omezení a požadavky při vytváření a správě vlastní struktury organizační jednotky v Azure služba AD DS:
+
+* Chcete-li vytvořit vlastní organizační jednotky, uživatelé musí být členy skupiny *AAD DC Administrators* .
+* Uživatel, který vytváří vlastní organizační jednotku, má prostřednictvím této organizační jednotky oprávnění správce (úplné řízení) a je vlastníkem prostředku.
+    * Ve výchozím nastavení má skupina *AAD DC Administrators* také úplnou kontrolu nad vlastní organizační jednotkou.
+* Vytvoří se výchozí organizační jednotka pro *uživatele AADDC* , která obsahuje synchronizované uživatelské účty z vašeho TENANTA Azure AD.
+    * Nemůžete přesunout uživatele nebo skupiny z organizační jednotky *AADDC Users* do vlastních organizačních jednotek, které vytvoříte. Do vlastních organizačních jednotek se dají přesunout jenom uživatelské účty nebo prostředky vytvořené ve spravované doméně Azure služba AD DS.
+* Uživatelské účty, skupiny, účty služeb a objekty počítačů, které vytvoříte v části vlastní organizační jednotky, nejsou k dispozici ve vašem tenantovi Azure AD.
+    * Tyto objekty se nezobrazují pomocí Graph API Azure AD nebo v uživatelském rozhraní Azure AD; jsou k dispozici pouze ve spravované doméně Azure služba AD DS.
+
+## <a name="create-a-custom-ou"></a>Vytvoření vlastní organizační jednotky
+
+Pokud chcete vytvořit vlastní organizační jednotku, použijte nástroje pro správu služby Active Directory z virtuálního počítače připojeného k doméně. Centrum správy služby Active Directory umožňuje zobrazovat, upravovat a vytvářet prostředky ve spravované doméně Azure služba AD DS, včetně organizačních jednotek.
 
 > [!NOTE]
-> Pouze členové skupiny "Správci AAD DC" mají požadovaná oprávnění k vytvoření vlastní organizační jednotky. Ujistěte se, že provedete následující kroky jako uživatel, který patří do této skupiny.
->
->
+> Pokud chcete vytvořit vlastní organizační jednotku ve spravované doméně služba AD DS Azure, musíte být přihlášeni k uživatelskému účtu, který je členem skupiny *Správci AAD DC* .
 
-1. Na obrazovce Start klikněte na tlačítko **nástroje pro správu**. Měli byste vidět nástroje pro správu AD nainstalovaný na virtuálním počítači.
+1. Z obrazovky Start vyberte **Nástroje pro správu**. Zobrazí se seznam dostupných nástrojů pro správu, které byly nainstalovány v tomto kurzu, aby bylo možné [vytvořit virtuální počítač pro správu][tutorial-create-management-vm].
+1. Chcete-li vytvořit a spravovat organizační jednotky, vyberte **Centrum správy služby Active Directory** ze seznamu nástrojů pro správu.
+1. V levém podokně vyberte spravovanou doménu Azure služba AD DS, například *contoso.com*. Zobrazí se seznam existujících organizačních jednotek a prostředků:
 
-    ![Nástroje pro správu nainstalovaný na serveru](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
-2. Klikněte na tlačítko **Centrum správy služby Active Directory**.
+    ![Vyberte spravovanou doménu Azure služba AD DS v Centrum správy služby Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 
-    ![Centrum správy služby Active Directory](./media/active-directory-domain-services-admin-guide/adac-overview.png)
-3. Chcete-li zobrazit domény, klikněte na název domény v levém podokně (například "contoso100.com").
+1. Podokno **úlohy** se zobrazuje na pravé straně Centrum správy služby Active Directory. V části doména, jako je *contoso.com*, vyberte **Nový > organizační jednotka**.
 
-    ![Centrum ADAC – zobrazení domény](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
-4. Na pravé straně **úlohy** podokně klikněte na tlačítko **nový** pod uzlem název domény. V tomto příkladu klikneme **nový** pod uzlem 'contoso100(local)' na pravé straně **úlohy** podokně.
+    ![Vyberte možnost vytvoření nové organizační jednotky v Centrum správy služby Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 
-    ![Centrum ADAC – nové organizační jednotky](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
-5. Měli byste vidět možnost vytvořit organizační jednotku. Klikněte na tlačítko **organizační jednotka** ke spuštění **vytvořit organizační jednotku** dialogového okna.
-6. V **vytvořit organizační jednotku** dialogové okno, zadejte **název** nové organizační jednotky. Zadejte krátký popis pro organizační jednotku. Můžete také nastavit **správce** pole pro organizační jednotku. Chcete-li vytvořit vlastní organizační jednotku, klikněte na tlačítko **OK**.
+1. V dialogovém okně **vytvořit organizační jednotku** zadejte **název** nové organizační jednotky, například *MyCustomOu*. Zadejte krátký popis organizační jednotky, jako je například *vlastní organizační jednotka pro účty služeb*. V případě potřeby můžete také nastavit pole **spravované podle** pro organizační jednotku. Pokud chcete vytvořit vlastní organizační jednotku, vyberte **OK**.
 
-    ![Centrum ADAC – vytvoření organizační jednotky dialogu](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
-7. Nově vytvořený organizační jednotky by se měl zobrazit v AD pro správu System Center (ADAC).
+    ![Vytvoření vlastní organizační jednotky z Centrum správy služby Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
 
-    ![Centrum ADAC – vytvoření organizační jednotky](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
+1. Zpět v Centrum správy služby Active Directory je vlastní organizační jednotka nyní uvedená a je k dispozici pro použití:
 
-## <a name="permissionssecurity-for-newly-created-ous"></a>Oprávnění a zabezpečení pro nově vytvořený organizační jednotky
-Ve výchozím nastavení uživatele (člen skupiny "Správci AAD DC"), který vytvořil vlastní organizační jednotky uděleno oprávnění pro správu (Úplné řízení) nad organizační jednotku. Uživatel pak můžete pokračovat a udělit oprávnění k ostatním uživatelům nebo do skupiny "Správci AAD DC' podle potřeby. Jak je znázorněno na následujícím snímku obrazovky, že uživatel 'bob@domainservicespreview.onmicrosoft.com"kdo vytvořil nové organizační jednotky"MyCustomOU"je oprávnění k úplnému řízení nad ním.
+    ![Vlastní organizační jednotka dostupná pro použití v Centrum správy služby Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
- ![Centrum ADAC – zabezpečení nové organizační jednotky](./media/active-directory-domain-services-admin-guide/create-ou-permissions.png)
+## <a name="next-steps"></a>Další kroky
 
-## <a name="notes-on-administering-custom-ous"></a>Poznámky k správě vlastní organizační jednotky
-Teď, když jste vytvořili vlastní organizační jednotky, můžete pokračovat a vytvořit uživatelů, skupin, počítačů a účty služeb v této organizační jednotky. Uživatele nebo skupiny z "AADDC"OJ uživatele nelze přesunout do vlastní organizační jednotky.
+Další informace o používání nástrojů pro správu nebo vytváření a používání účtů služeb najdete v následujících článcích:
 
-> [!WARNING]
-> Uživatelské účty, skupiny, účty služeb a objekty počítače, které vytvoříte v rámci vlastní organizační jednotky nejsou k dispozici ve vašem tenantovi Azure AD. Jinými slovy tyto objekty nezobrazovat pomocí Azure AD Graph API nebo v Uživatelském rozhraní služby Azure AD. Tyto objekty jsou k dispozici pouze ve vaší spravované doméně Azure AD Domain Services.
->
->
-
-## <a name="related-content"></a>Související obsah
-* [Spravovat domény služby Azure AD Domain Services](manage-domain.md)
-* [Správa zásad skupiny pro službu Azure AD Domain Services](manage-group-policy.md)
-* [Centrum správy služby Active Directory: Začínáme se službou](https://technet.microsoft.com/library/dd560651.aspx)
+* [Centrum správy služby Active Directory: Začínáme](https://technet.microsoft.com/library/dd560651.aspx)
 * [Podrobný průvodce účty služby](https://technet.microsoft.com/library/dd548356.aspx)
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md

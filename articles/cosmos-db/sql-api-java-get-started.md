@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/22/2018
 ms.author: sngun
-ms.openlocfilehash: 55bdcf9847f2194f269b92aed830a66c79c4d337
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 269b2bd1c1457b9e70ea4ada758aacb2f2ae96f3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985666"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614639"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Kurz k NoSQL: Vytvoření konzolové aplikace SQL API Java
 
@@ -58,7 +58,7 @@ Vytvořme účet služby Azure Cosmos DB. Pokud už máte účet, který chcete 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>Krok 2: Klonování projektu z Githubu
+## <a id="GitClone"></a>Krok 2: Klonovat projekt GitHubu
 Můžete začít naklonováním úložiště GitHub pro projekt [Začínáme se službou Azure Cosmos DB a Javou](https://github.com/Azure-Samples/documentdb-java-getting-started). Například spusťte z místního adresáře následující příkaz, který načte ukázkový projekt pro místní použití.
 
     git clone git@github.com:Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -73,7 +73,7 @@ Adresář obsahuje soubor `pom.xml` pro projekt a složku `src` obsahující zdr
         <version>LATEST</version>
     </dependency>
 
-## <a id="Connect"></a>Krok 3: Připojte se k účtu služby Azure Cosmos DB
+## <a id="Connect"></a>Krok 3: Připojení k účtu Azure Cosmos DB
 Dále přejděte zpět na [Azure Portal](https://portal.azure.com) a získejte koncový bod a primární hlavní klíč. Koncový bod a primární klíč služby Azure Cosmos DB jsou potřeba k tomu, aby aplikace věděla, kam se má připojit, a aby služba Azure Cosmos DB důvěřovala připojení aplikace.
 
 Na webu Azure Portal přejděte do účtu služby Azure Cosmos DB a klikněte na **Klíče**. Zkopírujte identifikátor URI z portálu a vložte ho do `https://FILLME.documents.azure.com` v souboru Program.java. Poté zkopírujte PRIMÁRNÍ KLÍČ z portálu a vložte ho do `FILLME`.
@@ -84,7 +84,7 @@ Na webu Azure Portal přejděte do účtu služby Azure Cosmos DB a klikněte na
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
-![Snímek obrazovky webu Azure portal používanými v kurzu NoSQL k vytvoření konzolové aplikace jazyka Java. Ukazuje účet služby Azure Cosmos DB se zvýrazněným aktivním centrem, zvýrazněným tlačítkem KLÍČE v okně účtu služby Azure Cosmos DB a zvýrazněnými hodnotami URI, PRIMÁRNÍ KLÍČ a SEKUNDÁRNÍ KLÍČ v okně Klíče.][keys]
+![Snímek obrazovky Azure Portal, který se používá v kurzu NoSQL k vytvoření konzolové aplikace Java Ukazuje účet služby Azure Cosmos DB se zvýrazněným aktivním centrem, zvýrazněným tlačítkem KLÍČE v okně účtu služby Azure Cosmos DB a zvýrazněnými hodnotami URI, PRIMÁRNÍ KLÍČ a SEKUNDÁRNÍ KLÍČ v okně Klíče.][keys]
 
 ## <a name="step-4-create-a-database"></a>Krok 4: Vytvoření databáze
 [Databázi](databases-containers-items.md#azure-cosmos-databases) Azure Cosmos DB je možné vytvořit pomocí metody [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) třídy **DocumentClient**. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
@@ -105,7 +105,7 @@ Kolekce lze vytvořit pomocí [createCollection](/java/api/com.microsoft.azure.d
     DocumentCollection collectionInfo = new DocumentCollection();
     collectionInfo.setId("familycoll");
 
-    // Azure Cosmos DB collections can be reserved with throughput specified in request units/second. 
+    // Azure Cosmos containers can be reserved with throughput specified in request units/second. 
     // Here we create a collection with 400 RU/s.
     RequestOptions requestOptions = new RequestOptions();
     requestOptions.setOfferThroughput(400);
@@ -135,7 +135,7 @@ Dokument lze vytvořit pomocí [createDocument](/java/api/com.microsoft.azure.do
 
 ![Diagram ilustrující hierarchický vztah mezi účtem, online databází, kolekcí a dokumenty používanými v kurzu NoSQL k vytvoření konzolové aplikace v jazyce Java](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>Krok 7: Dotazování prostředků Azure Cosmos DB
+## <a id="Query"></a>Krok 7: Dotazy Azure Cosmos DB prostředky
 Azure Cosmos DB podporuje bohaté [dotazy](how-to-sql-query.md) na dokumenty JSON uložené v každé z kolekcí.  Následující ukázkový kód ukazuje dotazování na dokumenty ve službě Azure Cosmos DB pomocí syntaxe SQL a metody [queryDocuments](/java/api/com.microsoft.azure.documentdb.documentclient.querydocuments).
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
@@ -148,7 +148,7 @@ Azure Cosmos DB podporuje bohaté [dotazy](how-to-sql-query.md) na dokumenty JSO
         System.out.println(String.format("\tRead %s", family));
     }
 
-## <a id="ReplaceDocument"></a>Krok 8: Nahrazení dokumentu JSON
+## <a id="ReplaceDocument"></a>Krok 8: Nahradit dokument JSON
 Azure Cosmos DB podporuje aktualizaci dokumentů JSON pomocí metody [replaceDocument](/java/api/com.microsoft.azure.documentdb.documentclient.replacedocument).
 
     // Update a property
@@ -159,7 +159,7 @@ Azure Cosmos DB podporuje aktualizaci dokumentů JSON pomocí metody [replaceDoc
         andersenFamily,
         null);
 
-## <a id="DeleteDocument"></a>Krok 9: Odstranění dokumentu JSON
+## <a id="DeleteDocument"></a>Krok 9: Odstranit dokument JSON
 Podobně Azure Cosmos DB podporuje odstraňování dokumentů JSON pomocí metody [deleteDocument](/java/api/com.microsoft.azure.documentdb.documentclient.deletedocument).  
 
     this.client.delete("/dbs/familydb/colls/familycoll/docs/Andersen.1", null);
@@ -169,7 +169,7 @@ Odstraněním vytvořené databáze dojde k odebrání databáze a všech jejíc
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a id="Run"></a>Krok 11: Spustit vaše Java všechno dohromady konzolové aplikace!
+## <a id="Run"></a>Krok 11: Spouštějte konzolovou aplikaci v jazyce Java dohromady.
 Chcete-li aplikaci spustit z konzoly, přejděte do složky projektu a proveďte kompilaci pomocí nástroje Maven:
     
     mvn package

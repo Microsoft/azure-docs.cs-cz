@@ -13,12 +13,12 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6145ccc67eedfdae8e9e1aa9245ff8d34101d387
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949556"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616004"
 ---
 # <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>Přehled dvou faktorů ověřování a pracovního nebo školního účtu
 
@@ -29,7 +29,15 @@ Dvojúrovňové ověřování je bezpečnější než heslo, protože spoléhá 
 >[!Important]
 >Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 >
->Tento obsah je taky určený jenom pro použití s vaším pracovním nebo školním účtem, který vám poskytla vaše organizace (například alain@contoso.com). Pokud máte problémy se dvojúrovňovém ověřováním a osobními účet Microsoft, účet, který jste si nastavili pro sebe (například danielle@outlook.com), najdete v tématu [Zapnutí nebo vypnutí dvojúrovňového ověřování pro účet Microsoft](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Tento obsah je taky určený jenom pro použití s vaším pracovním nebo školním účtem, který vám poskytla vaše organizace (například alain@contoso.com). Pokud máte problémy se dvojúrovňovém ověřováním a osobními účet Microsoft, účet, který jste si nastavili pro sebe (například danielle@outlook.com), najdete v tématu [Zapnutí nebo vypnutí dvojúrovňového ověřování pro účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+
+## <a name="who-decides-if-you-use-this-feature"></a>Kdo se rozhodne, jestli tuto funkci používáte?
+
+V závislosti na typu účtu může vaše organizace rozhodnout, že je nutné použít dvojúrovňové ověřování, nebo se můžete rozhodnout sami.
+
+- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (například alain@contoso.com), je to až do vaší organizace bez ohledu na to, jestli musíte použít dvojúrovňové ověřování společně s konkrétními metodami ověřování. Vzhledem k tomu, že vaše organizace rozhodla použít tuto funkci, neexistuje způsob, jak ji individuálně vypnout.
+
+- **Osobní účet Microsoft.** Pro osobní účty Microsoft (například alain@outlook.com) si můžete nastavit dvojúrovňové ověřování. Pokud máte problémy se dvojúrovňovém ověřováním a osobním účet Microsoft, přečtěte si téma [Zapnutí a vypnutí dvojúrovňového ověřování pro účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off). Vzhledem k tomu, že se rozhodnete, jestli chcete tuto funkci používat, můžete ji zapnout nebo vypnout, kdykoli budete chtít.
 
 ## <a name="two-factor-verification-related-articles"></a>Články týkající se dvou faktorů ověřování
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: raynew
-ms.openlocfilehash: 65c330a9b2dcc97160280daede926573fdef4c00
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: fd24d0d9f05855cf22da547f95b16da0a8d2c788
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679360"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617646"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -165,7 +165,7 @@ Vyhrazená IP adresa | Ano
 IPv4 | Ano
 Zachovat zdrojovou IP adresu | Ano
 Koncové body služby virtuální sítě Azure<br/> | Ano
-Akcelerované síťové služby | Ne
+Urychlení sítě | Ne
 
 ## <a name="storage"></a>Storage
 **Komponenta** | **Podporuje se**
@@ -181,7 +181,7 @@ VMDK nebo server typu Host | Ano
 Disk sdíleného clusteru Host/Server | Ne
 Zašifrovaný disk hosta/Server | Ne
 Host/Server NFS NFS | Ne
-ISCSI Host/Server | Ne
+ISCSI Host/Server | Migrace – Ano<br/>V případě zotavení po havárii – technologie iSCSI navrácení služeb po obnovení jako připojeného disku k virtuálnímu počítači.
 Host/server SMB 3,0 | Ne
 Host/Server – RDM | Ano<br/><br/> Není k dispozici pro fyzické servery
 Disk hosta/Server > 1 TB | Ano, disk musí být větší než 1024 MB.<br/><br/>Až 8 192 GB při replikaci do spravovaných disků (9,26 verze a vyšší)<br></br> Až 4 095 GB při replikaci do účtů úložiště

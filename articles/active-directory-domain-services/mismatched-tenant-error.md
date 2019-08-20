@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 676efa155c85ab371ec41c49ad0c15eb2bd5a24a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 4978f7b782271daff996807172a24103bd8d9860
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234010"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617285"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Řešení chyb neodpovídajících adresářů pro existující Azure AD Domain Services spravované domény
 Máte existující Azure AD Domain Services spravovanou doménu. Když přejdete na Azure Portal a zobrazíte spravovanou doménu, zobrazí se tato chybová zpráva:
@@ -63,5 +63,5 @@ K dispozici máte dvě možnosti, jak vyřešit chybu neodpovídajícího adres�
 
 
 ## <a name="related-content"></a>Související obsah
-* [Azure AD Domain Services – Průvodce Začínáme](create-instance.md)
+* [Azure AD Domain Services – Průvodce Začínáme](tutorial-create-instance.md)
 * [Průvodce odstraňováním potíží – Azure AD Domain Services](troubleshoot.md)

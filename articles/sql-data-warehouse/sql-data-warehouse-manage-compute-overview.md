@@ -1,6 +1,6 @@
 ---
-title: Správa výpočetních prostředků ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Další informace o škálování výkonu ve službě Azure SQL Data Warehouse seznámili s funkcemi. Horizontální navýšení kapacity úpravou jednotek Dwu nebo nižší náklady pomocí pozastavení datového skladu.
+title: Správa výpočetních prostředků v Azure SQL Data Warehouse | Microsoft Docs
+description: Přečtěte si o možnostech škálování výkonu v Azure SQL Data Warehouse. Horizontální navýšení kapacity úpravou DWU nebo snížení nákladů díky pozastavení datového skladu.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,29 +10,29 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 47be738a4e5dcec144d482c28e39cbe950bba3e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0935ccc4c4274bfab0c589ef158d4ea0bef455c
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748930"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575321"
 ---
-# <a name="manage-compute-in-azure-sql-data-warehouse"></a>Správa výpočetních služeb v Azure SQL Data Warehouse
-Další informace o správě výpočetních prostředků ve službě Azure SQL Data Warehouse. Nižší náklady pomocí pozastavení datového skladu nebo škálovat datový sklad na splňovat požadavky na výkon. 
+# <a name="manage-compute-in-azure-sql-data-warehouse"></a>Správa výpočetních prostředků v Azure SQL Data Warehouse
+Přečtěte si o správě výpočetních prostředků v Azure SQL Data Warehouse. Snižte náklady tím, že pozastavíte datový sklad nebo Škálujte datový sklad, abyste splnili nároky na výkon. 
 
-## <a name="what-is-compute-management"></a>Co je Správa výpočetních?
-Architektura služby SQL Data Warehouse odděluje úložiště a výpočetního výkonu, což umožňuje nezávislé škálování. V důsledku toho je možné škálovat výpočetní funkce pro zajištění nezávisle na úložišti dat požadavky na výkon. Můžete taky pozastavit a obnovit výpočetní prostředky. Přirozené důsledkem této architektury je, že [fakturační](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) výpočetních a úložných neběží. Pokud není nutné používat službu data warehouse nějakou dobu, můžete ušetřit náklady na výpočetní výkon když pozastavíte výpočetní prostředky. 
+## <a name="what-is-compute-management"></a>Co je Správa výpočtů?
+Architektura SQL Data Warehouse odděluje úložiště a výpočetní výkon, což umožňuje nezávisle škálovat jednotlivé služby. V důsledku toho můžete škálovat výpočetní prostředky tak, aby splňovaly požadavky na výkon nezávisle na úložišti dat. Můžete také pozastavit a obnovit výpočetní prostředky. V důsledku přirozeného důsledku této architektury je [fakturace](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) za výpočetní prostředky a úložiště oddělená. Pokud pro určitou dobu nepotřebujete datový sklad, můžete ušetřit výpočetní náklady tím, že pozastavíte výpočetní výkon. 
 
-## <a name="scaling-compute"></a>Škálování výpočetních
-Můžete horizontálně navýšit kapacitu nebo škálovat výpočetní prostředky zpět úpravou [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) nastavení pro váš datový sklad. Načítání a výkonu dotazování umožňujícímu lineárně zvýšit přidávat další jednotky datového skladu. 
+## <a name="scaling-compute"></a>Škálování výpočetních prostředků
+Můžete škálovat nebo škálovat zpátky výpočetní výkon úpravou nastavení [jednotek datového](what-is-a-data-warehouse-unit-dwu-cdwu.md) skladu pro datový sklad. Načítání a dotazování výkonu se může při přidávání dalších jednotek datového skladu zvýšit lineárně. 
 
-Postup škálování na víc systémů najdete v tématu [webu Azure portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), nebo [T-SQL](quickstart-scale-compute-tsql.md) šablon rychlý start. Můžete také provádět operace škálování na více instancí s [rozhraní REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+Postup pro horizontální navýšení kapacity najdete v serychlých startech [Azure Portal](quickstart-scale-compute-portal.md), [PowerShellu](quickstart-scale-compute-powershell.md)nebo [T-SQL](quickstart-scale-compute-tsql.md) . Můžete také provádět operace škálování na více instancí s [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
-K provedení operace škálování, SQL Data Warehouse nejprve ukončí všechny příchozí dotazy a vrátí zpět transakce zajistit konzistentní stav. Škálování nastane pouze po dokončení odvolání transakce. Pro operace škálování systém odpojí vrstvy úložiště z výpočetních uzlů, přidá výpočetních uzlů a pak znovu vrstvy úložiště na výpočetní vrstvě. Každý datový sklad se ukládá jako 60 distribucí, které jsou rovnoměrně distribuovány do výpočetních uzlů. Přidání další výpočetní uzly přidá další výpočetní výkon. Jak se zvyšuje počet výpočetních uzlů, sníží počet distribucí na výpočetním uzlu, poskytuje větší výpočetní výkon pro vaše dotazy. Snížení jednotky datového skladu, snižuje počet výpočetních uzlů, což snižuje výpočetní prostředky pro dotazy.
+Chcete-li provést operaci škálování, SQL Data Warehouse nejprve zajistěte, aby všechny příchozí dotazy a pak transakce vrátily do konzistentního stavu. K škálování dochází pouze v případě, že je vrácení transakce dokončeno. V případě operace škálování systém odpojí vrstvu úložiště od výpočetních uzlů, přidá výpočetní uzly a pak znovu připojí vrstvu úložiště k výpočetní vrstvě. Každý datový sklad je uložený jako 60 distribucí, které jsou rovnoměrně distribuovány do výpočetních uzlů. Přidání dalších výpočetních uzlů zvyšuje výpočetní výkon. Vzhledem k tomu, že se počet výpočetních uzlů zvyšuje, počet distribucí na výpočetní uzel se sníží a poskytuje pro dotazy efektivnější výpočetní výkon. Podobně snížení jednotek datového skladu snižuje počet výpočetních uzlů, což snižuje výpočetní prostředky pro dotazy.
 
-Následující tabulka ukazuje, jak změnit počet distribucí za výpočetní uzel změny jako jednotky datového skladu.  DWU6000 poskytuje 60 výpočetních uzlů a dosahuje mnohem vyšší výkon než DWU100 dotazu. 
+Následující tabulka ukazuje, jak se mění počet distribucí na výpočetní uzel při změně jednotek datového skladu.  DWU6000 poskytuje 60 výpočetních uzlů a dosahuje mnohem vyššího výkonu dotazů než DWU100. 
 
-| Jednotky datového skladu  | \# výpočetních uzlů | \# distribucí, počtu uzlů |
+| Jednotky datového skladu  | \#Výpočetních uzlů | \#distribucí na uzel |
 | ---- | ------------------ | ---------------------------- |
 | 100  | 1                  | 60                           |
 | 200  | 2                  | 30                           |
@@ -48,71 +48,71 @@ Následující tabulka ukazuje, jak změnit počet distribucí za výpočetní u
 | 6000 | 60                 | 1                            |
 
 
-## <a name="finding-the-right-size-of-data-warehouse-units"></a>Vyhledání správné velikosti jednotky datového skladu
+## <a name="finding-the-right-size-of-data-warehouse-units"></a>Zjištění správné velikosti jednotek datového skladu
 
-Zobrazíte horizontální navýšení kapacity, zejména u větších jednotky datového skladu, přinese zlepšení výkonu, která chcete použít nejméně 1 TB datové sady. Najít nejlepší počet jednotek datového skladu pro váš datový sklad, zkuste škálovat nahoru a dolů. Po načtení dat spustili jste několik dotazů s různým počtem jednotek datového skladu. Škálování je rychlé, můžete zkusit různé úrovně výkonu za hodinu nebo méně. 
+Pokud chcete zobrazit výhody výkonu při horizontálním navýšení kapacity, zvláště u větších jednotek datového skladu, budete chtít použít aspoň jednu datovou sadu o velikosti 1 TB. Pokud chcete najít nejlepší počet jednotek datového skladu pro datový sklad, zkuste horizontální navýšení kapacity a zmenšení kapacity. Po načtení dat spusťte několik dotazů s různými počty jednotek datového skladu. Vzhledem k tomu, že škálování je rychlé, můžete vyzkoušet různé úrovně výkonu za hodinu nebo méně. 
 
-Doporučení pro vyhledání nejlepší počet datových skladů jednotky:
+Doporučení pro vyhledání nejlepšího počtu jednotek datového skladu:
 
-- Pro datový sklad ve vývoji začněte tím, že vyberete menší počet jednotek datového skladu.  Dobrým výchozím bodem je DW400 nebo úroveň DW200.
-- Monitorování výkonu vaší aplikace, počtu vybraných jednotek datového skladu ve srovnání s výkonem, které můžete sledovat.
-- Předpokládejme lineární stupnice a určit, kolik potřebujete zvětšit nebo zmenšit jednotky datového skladu. 
-- Pokračujte v provádění úprav, dokud se nedostanete na úrovni optimální výkon pro vaše obchodní požadavky.
+- Pro datový sklad ve vývoji Začněte výběrem menšího počtu jednotek datového skladu.  Dobrým výchozím bodem je DW400 nebo DW200.
+- Monitorujte výkon aplikace a sledujte počet vybraných jednotek datového skladu v porovnání s výkonem, které sledujete.
+- Předpokládejme Lineární škálování a určete, kolik potřebujete zvýšit nebo snížit jednotky datového skladu. 
+- Pokračujte v provádění úprav, dokud nedosáhnete optimální úrovně výkonu pro vaše podnikové požadavky.
 
-## <a name="when-to-scale-out"></a>Když pro horizontální navýšení kapacity
-Horizontální navýšení kapacity jednotky datového skladu má vliv na tyto aspekty výkonu:
+## <a name="when-to-scale-out"></a>Kdy horizontální navýšení kapacity
+Horizontální navýšení kapacity jednotek datového skladu má dopad na tyto aspekty výkonu:
 
-- Lineárně zlepšuje výkon systému pro kontroly, agregace a příkazů CTAS.
-- Načítání dat se zvyšuje počet čtečky a zapisovače.
-- Maximální počet souběžných dotazů a slotů souběžnosti.
+- Lineárně vylepšuje výkon systému pro prohledávání, agregace a příkazy CTAS.
+- Zvyšuje počet čtenářů a zapisovačů pro načítání dat.
+- Maximální počet souběžných dotazů a souběžných slotů.
 
-Doporučení, kdy pro horizontální navýšení kapacity datového skladu jednotky:
+Doporučení pro horizontální navýšení kapacity datového skladu:
 
-- Před provedením velké datové operace načítání nebo transformace, horizontální navýšení kapacity na zpřístupnit data rychleji.
-- Během pracovní doby ve špičce horizontálně navýšit kapacitu tak, aby vyhovovaly velký počet souběžných dotazů. 
+- Než provedete velkou operaci načítání nebo transformace dat, Škálujte, aby byla data rychleji dostupná.
+- Během špičky v pracovní době se horizontální navýšení kapacity přizpůsobí většímu počtu souběžných dotazů. 
 
-## <a name="what-if-scaling-out-does-not-improve-performance"></a>Co když horizontální navýšení kapacity nezvyšuje výkon?
+## <a name="what-if-scaling-out-does-not-improve-performance"></a>Co když horizontální škálování nezvyšuje výkon?
 
-Přidání jednotky datového skladu zvýšení paralelismu. Pokud je práce rovnoměrně rozdělit mezi jednotlivými výpočetními uzly, další paralelismu zvyšuje výkon dotazů. Pokud se horizontální navýšení kapacity se mění výkon, existují některé důvody, proč k tomu může dojít. Může být zkosené data prostřednictvím distribuce nebo dotazy může být zavedení velké množství přesun dat. Prozkoumat problémy s výkonem dotazů, najdete v článku [řešení potíží s výkonem](sql-data-warehouse-troubleshoot.md#performance). 
+Přidávají se jednotky datového skladu, které zvyšují paralelismus. Pokud je práce rovnoměrně rozdělena mezi výpočetními uzly, další paralelismus vylepšuje výkon dotazů. Pokud horizontální navýšení kapacity nemění výkon, existují některé důvody, proč k tomu může dojít. Vaše data se můžou v rámci distribucí zkosit nebo dotazy můžou zavádět velký objem přesunu dat. Problémy s výkonem dotazů můžete prozkoumat v tématu [řešení potíží s výkonem](sql-data-warehouse-troubleshoot.md#performance). 
 
-## <a name="pausing-and-resuming-compute"></a>Pozastavení a obnovení výpočetních prostředků
-Pozastavení výpočetních způsobí, že vrstvy úložiště se odpojit od výpočetních uzlů. Výpočetní prostředky, které jsou vydávány ze svého účtu. Se vám neúčtovaly výpočetní prostředky během pozastavení výpočetní prostředky. Obnovení výpočetních prostředků znovu úložiště do výpočetních uzlů a obnoví poplatky za výpočetní výkon. Při přesunutí ukazatele myši datového skladu:
+## <a name="pausing-and-resuming-compute"></a>Pozastavování a obnovování výpočetních prostředků
+Pozastavení výpočetního prostředí způsobí odpojení vrstvy úložiště od výpočetních uzlů. Výpočetní prostředky jsou vydávány z vašeho účtu. Při pozastavení výpočtů se vám neúčtují poplatky za výpočetní výkon. Obnovení služby COMPUTE znovu připojí úložiště k výpočetním uzlům a obnoví poplatky za výpočetní výkon. Když pozastavíte datový sklad:
 
-* Výpočetní a paměťové prostředky jsou vráceny do fondu dostupných prostředků v datovém centru
-* Data warehouse jednotku náklady jsou nulové po dobu trvání pozastavení.
-* Úložiště dat není ovlivněn vaše data zůstanou beze změny. 
-* SQL Data Warehouse zruší všechny spuštěné nebo zařazené ve frontě operace.
+* Výpočetní a paměťové prostředky se vrátí do fondu dostupných prostředků v datovém centru.
+* Náklady na jednotku datového skladu jsou po dobu trvání pozastavení nulové.
+* Úložiště dat není ovlivněno a vaše data zůstanou nedotčena. 
+* SQL Data Warehouse zruší všechny spuštěné nebo zařazené operace ve frontě.
 
-Při obnovení datového skladu:
+Po obnovení datového skladu:
 
-* SQL Data Warehouse získá výpočetní a paměťové prostředky pro vaše nastavení jednotek datového skladu.
-* COMPUTE poplatky za svému životopisu jednotky datového skladu.
-* Data k dispozici.
-* Po datový sklad je online, budete muset restartovat své dotazy úlohy.
+* SQL Data Warehouse získá výpočetní a paměťové prostředky pro nastavení jednotek datového skladu.
+* Poplatky za výpočetní prostředky pro vaše jednotky datového skladu se obnoví.
+* Data budou k dispozici.
+* Jakmile je datový sklad online, budete muset restartovat dotazy na úlohy.
 
-Pokud chcete, aby váš datový sklad přístupné, zvažte vertikální snížení jeho kapacity na nejmenší velikost, místo jeho pozastavení. 
+Pokud chcete, aby byl datový sklad vždy přístupný, zvažte jeho horizontální zmenšování na nejmenší velikost, nikoli na jeho pozastavení. 
 
-Pro pozastavení a pokračování kroků, najdete v článku [webu Azure portal](pause-and-resume-compute-portal.md), nebo [Powershellu](pause-and-resume-compute-powershell.md) šablon rychlý start. Můžete také použít [pozastavit rozhraní REST API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) nebo [obnovit rozhraní REST API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute).
+Postup pozastavení a obnovení najdete v tématu rychlé starty [Azure Portal](pause-and-resume-compute-portal.md)nebo [PowerShellu](pause-and-resume-compute-powershell.md) . Můžete také použít [pozastavení REST API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) nebo [obnovení REST API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute).
 
 ## <a name="drain-transactions-before-pausing-or-scaling"></a>Vypusťte transakce před pozastavením nebo škálováním
-Doporučujeme vám umožní existující transakce dokončeny zahájit operaci pozastavení nebo škálování.
+Před zahájením operace pozastavení nebo škálování doporučujeme povolit dokončení stávajících transakcí.
 
 Když službu SQL Data Warehouse pozastavíte nebo škálujete, při vytvoření požadavku na pozastavení nebo škálování se na pozadí zruší vaše dotazy.  Zrušení jednoduchého dotazu SELECT je rychlá operace a nemá téměř žádný vliv na čas potřebný k pozastavení nebo škálování instance.  Nicméně zastavení transakčních dotazů, které upravují data nebo strukturu dat, může trvat mnohem déle.  **Transakční dotazy se podle definice musí dokončit v celém rozsahu, nebo musí vrátit zpět provedené změny.**  Vracení dokončené práce transakčního dotazu zpět může trvat stejně dlouho nebo dokonce déle, než původní změna, kterou dotaz prováděl.  Například pokud zrušíte dotaz, který odstraňoval řádky a už hodinu běžel, může systému hodinu trvat, než odstraněné řádky vloží zpět.  Pokud spustíte pozastavení nebo škálování zatímco probíhají transakce, může to vypadat, že vaše pozastavení nebo škálování trvá dlouho, protože pozastavení a škálování musí počkat na dokončení odvolání transakce, než budou moci pokračovat.
 
-Viz také [vysvětlení transakcí](sql-data-warehouse-develop-transactions.md), a [Optimalizace transakcí](sql-data-warehouse-develop-best-practices-transactions.md).
+Viz také [porozumění transakcím](sql-data-warehouse-develop-transactions.md)a [optimalizace transakcí](sql-data-warehouse-develop-best-practices-transactions.md).
 
-## <a name="automating-compute-management"></a>Automatizace správy výpočetní prostředky
-K automatizaci výpočetní operace správy, najdete v článku [spravovat výpočetní prostředky s využitím Azure functions](manage-compute-with-azure-functions.md).
+## <a name="automating-compute-management"></a>Automatizace výpočetní správy
+Informace o automatizaci operací správy výpočtů najdete v tématu [Správa výpočtů pomocí Azure Functions](manage-compute-with-azure-functions.md).
 
-Každý horizontální navýšení kapacity, pozastavení a pokračování operace může trvat několik minut. Pokud jste se škálování, pozastavení, nebo obnovení automaticky, doporučujeme, implementovat logiku a ujistěte se, že jste dokončili určité operace než budete pokračovat s další akci. Kontroluje se stav datového skladu prostřednictvím různých koncových bodů umožňuje správnou implementaci automatizace těchto operací. 
+Dokončení operací škálování na více instancí, pozastavení a obnovení může trvat několik minut. Pokud používáte automatické škálování, pozastavení nebo obnovení, doporučujeme, abyste před pokračováním v jiné akci implementovali logiku pro zajištění, že byly dokončeny určité operace. Kontrola stavu datového skladu prostřednictvím různých koncových bodů umožňuje správně implementovat automatizaci takových operací. 
 
-Kontrola stavu datového skladu, najdete v článku [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) nebo [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) rychlý start. Můžete také zkontrolovat stav datového skladu s [rozhraní REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
+Pokud chcete zjistit stav datového skladu, přečtěte si rychlý Start pro [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) nebo [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) . Stav datového skladu můžete také ověřit pomocí [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
 
 
 ## <a name="permissions"></a>Oprávnění
 
-Škálování datového skladu, vyžaduje oprávnění popsaná v [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse).  Pozastavení a obnovení vyžadují [Přispěvatel databází SQL](../role-based-access-control/built-in-roles.md#sql-db-contributor) oprávnění, konkrétně Microsoft.Sql/servers/databases/action.
+Škálování datového skladu vyžaduje oprávnění popsaná v [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse).  Pozastavení a obnovení vyžadují oprávnění [přispěvatele databáze SQL](../role-based-access-control/built-in-roles.md#sql-db-contributor) , konkrétně Microsoft. SQL/servery/databáze/akce.
 
 
 ## <a name="next-steps"></a>Další postup
-Dalším aspektem správu výpočetních prostředků je přidělování různých výpočetních prostředků pro jednotlivé dotazy. Další informace najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).
+Další aspekty správy výpočetních prostředků [](manage-compute-with-azure-functions.md) je přidělením různých výpočetních prostředků pro jednotlivé dotazy, najdete v příručce Průvodce správou výpočetních prostředků. Další informace najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).

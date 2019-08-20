@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření aplikace Java pomocí sady Java SDK asynchronní ke správě účtu rozhraní SQL API ve službě Azure Cosmos DB'
+title: 'Kurz: Sestavte aplikaci Java s asynchronní sadou Java SDK pro správu účtu rozhraní SQL API v Azure Cosmos DB'
 description: V tomto kurzu se dozvíte, jak ukládat a přístup k datům v rámci účtu rozhraní SQL API ve službě Azure Cosmos DB s použitím aplikace Async Javu.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 12/15/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: c466c11cc51ca8d8efcf9ff4e86a9dbd2fd4930c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2a6f12bfe7aa3de028039d00c259a606d028a0e5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985640"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614626"
 ---
-# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Kurz: Vytvoření aplikace Java pomocí sady Java SDK asynchronní ke správě dat uložených v účtu rozhraní SQL API
+# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Kurz: Vytvoření aplikace Java s asynchronní sadou Java SDK pro správu dat uložených v účtu rozhraní SQL API
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -114,7 +114,7 @@ client = new AsyncDocumentClient.Builder()
 
 ## <a id="CreateDatabase"></a>Vytvoření databáze
 
-Vytvoření databáze Azure Cosmos DB s použitím `createDatabaseIfNotExists()` metoda třídy DocumentClient. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
+Vytvořte databázi Azure Cosmos pomocí `createDatabaseIfNotExists()` metody třídy DocumentClient. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 

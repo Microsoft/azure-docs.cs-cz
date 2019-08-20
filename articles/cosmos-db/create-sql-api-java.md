@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.custom: seo-java-august2019
-ms.openlocfilehash: 5f8555d23a43a3ca391ec03f827b0d81ac3c4698
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a7e2089b8dfff1f021c31d2b13591b54dcd9c4ac
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933959"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616989"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Rychlý start: Vytvoření aplikace Java pomocí Azure Cosmos DB účtu rozhraní SQL API
 
@@ -26,7 +26,7 @@ ms.locfileid: "68933959"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-V tomto rychlém startu se dozvíte, jak vytvářet a spravovat prostředky účtu rozhraní [SQL API](sql-api-introduction.md) služby Azure Cosmos DB pomocí aplikace v Javě. Nejprve pomocí webu Azure Portal vytvoříte účet rozhraní SQL API služby Azure Cosmos DB, pomocí sady [SQL Java SDK](sql-api-sdk-async-java.md) vytvoříte aplikaci v Javě a pomocí aplikace v Javě přidáte prostředky do svého účtu služby Cosmos DB. Pokyny v tomto rychlém startu platí pro všechny operační systémy, které podporují Javu. Po dokončení tohoto rychlého startu budete obeznámeni s vytvářením a úpravou databází Cosmos DB, kontejnerů buď v uživatelském rozhraní, nebo programově, podle toho, co je vaše preference.
+V tomto rychlém startu se dozvíte, jak vytvářet a spravovat prostředky účtu rozhraní [SQL API](sql-api-introduction.md) služby Azure Cosmos DB pomocí aplikace v Javě. Nejprve pomocí webu Azure Portal vytvoříte účet rozhraní SQL API služby Azure Cosmos DB, pomocí sady [SQL Java SDK](sql-api-sdk-async-java.md) vytvoříte aplikaci v Javě a pomocí aplikace v Javě přidáte prostředky do svého účtu služby Cosmos DB. Pokyny v tomto rychlém startu platí pro všechny operační systémy, které podporují Javu. Po dokončení tohoto rychlého startu budete obeznámeni s vytvářením a úpravou databází Cosmos, kontejnerů buď v uživatelském rozhraní, nebo programově, podle toho, co je vaše preference.
 
 ## <a name="prerequisites"></a>Požadavky
 

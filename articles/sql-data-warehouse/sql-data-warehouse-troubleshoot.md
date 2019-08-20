@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 04d63b2c1583228a274c0ba21c87df08886f5cdb
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a6a6fdf6e63bf8c063f8dd6f23ae380e9ce7b98d
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619063"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575514"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Řešení potíží s Azure SQL Data Warehouse
 V tomto článku jsou uvedené běžné otázky týkající se řešení potíží.
@@ -34,7 +34,7 @@ V tomto článku jsou uvedené běžné otázky týkající se řešení potíž
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | V Průzkumníkovi objektů Visual studia chybí uživatelé AAD.           | Jedná se o známý problém.  Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals][sys.database_principals].  Další informace o použití Azure Active Directory s SQL Data Warehouse najdete v tématu [ověřování pro Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] . |
 | Ruční skriptování, použití Průvodce skriptováním nebo připojení prostřednictvím SSMS je pomalé, nereaguje nebo produkuje chyby. | Zajistěte, aby byl uživatel vytvořen v hlavní databázi. V možnostech skriptování se ujistěte také, že je edice stroje nastavená na Microsoft Azure SQL Data Warehouse Edition a typ modulu je "Microsoft Azure SQL Database". |
-| Generování skriptů v SSMS se nezdařilo                               | Generování skriptu pro SQL Data Warehouse se nepovede, pokud je možnost vygenerovat skript pro závislé objekty nastavená na true. Alternativním řešením je, že uživatelé musí ručně přejít na nástroje-> Možnosti-> Průzkumník objektů systému SQL Server – > vygenerovat skript pro závislé možnosti a nastavit na hodnotu NEPRAVDA. |
+| Generování skriptů v SSMS se nezdařilo                               | Vygenerování skriptu pro SQL Data Warehouse se nezdařila, pokud je možnost "vygenerovat skript pro závislé objekty" nastavena na hodnotu "true". Alternativním řešením je, že uživatelé musí ručně přejít na nástroje-> Možnosti-> Průzkumník objektů systému SQL Server – > vygenerovat skript pro závislé možnosti a nastavit na hodnotu NEPRAVDA. |
 
 ## <a name="performance"></a>Výkon
 | Problém                                                        | Řešení                                                   |
@@ -65,7 +65,7 @@ V tomto článku jsou uvedené běžné otázky týkající se řešení potíž
 | Omezení uložených procedur          | V tématu [omezení uložených procedur][Stored procedure limitations] můžete pochopit některá omezení uložených procedur. |
 | UDF nepodporují příkazy SELECT | Toto je aktuální omezení našich Udfů.  Podrobnější informace najdete v tématu věnovaném [Vytvoření funkce][CREATE FUNCTION] . |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další nápovědu při hledání řešení problému najdete v tématu Další zdroje, které můžete vyzkoušet.
 
 * [Blogy]

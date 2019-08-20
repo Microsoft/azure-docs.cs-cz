@@ -9,12 +9,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 50711f8675e1b8aca6b9f90925ea921d22020ddd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: f1b578ff70e8a2795ba886e6d0c75eff521f77c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442559"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615534"
 ---
 # <a name="security-attributes-for-azure-cosmos-db"></a>Atributy zabezpečení pro Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Tento článek popisuje atributy zabezpečení integrované do Azure Cosmos DB.
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování v klidovém formátu (například šifrování na straně serveru, šifrování na straně serveru pomocí klíčů spravovaných zákazníkem a další funkce šifrování) | Ano | Všechny databáze Cosmos DB a zálohy jsou standardně šifrované. viz [šifrování dat v Azure Cosmos DB](database-encryption-at-rest.md). Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem se nepodporuje. |
+| Šifrování v klidovém formátu (například šifrování na straně serveru, šifrování na straně serveru pomocí klíčů spravovaných zákazníkem a další funkce šifrování) | Ano | Ve výchozím nastavení jsou všechny databáze a zálohy Cosmos šifrované. viz [šifrování dat v Azure Cosmos DB](database-encryption-at-rest.md). Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem se nepodporuje. |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Všechna Azure Cosmos DBová data jsou při přenosu šifrovaná. |
 | Zpracování šifrovacích klíčů (CMK, BYOK atd.)| Ne |  |
 | Šifrování na úrovni sloupce (Azure Data Services)| Ano | Pouze v rozhraních API tabulky Premium. Tato funkce nepodporuje všechna rozhraní API. Viz [Úvod do Azure Cosmos DB: Rozhraní API pro tabulky](table-introduction.md). |
@@ -41,7 +41,7 @@ Tento článek popisuje atributy zabezpečení integrované do Azure Cosmos DB.
 | Izolace sítě a podpora brány firewall| Ano | Díky podpoře brány firewall můžete účet Azure Cosmos nakonfigurovat tak, aby povoloval přístup jenom ze schválené sady IP adres, rozsahu IP adres a/nebo cloudových služeb. Viz [Konfigurace brány firewall protokolu IP v Azure Cosmos DB](how-to-configure-firewall.md).|
 | Podpora vynuceného tunelování| Ano | Dá se nakonfigurovat na straně klienta na virtuální síti, kde jsou umístěné virtuální počítače.   |
 
-## <a name="detection"></a>Detekce
+## <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

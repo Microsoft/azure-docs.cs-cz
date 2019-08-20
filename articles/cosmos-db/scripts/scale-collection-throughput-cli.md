@@ -1,6 +1,6 @@
 ---
-title: Skript Azure CLI – Škálování propustnosti kontejneru Azure Cosmos DB | Microsoft Docs
-description: Ukázkový skript Azure CLI – Škálování propustnosti kontejneru Azure Cosmos DB
+title: Skript Azure CLI – škálování propustnosti kontejneru Azure Cosmos | Microsoft Docs
+description: Ukázkový skript Azure CLI – škálování propustnosti kontejneru Azure Cosmos
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,16 +8,16 @@ ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 593fade731fac86e7fcda69bfe223716127de9e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a7ae4b015ba476ca1ffdb4b4510334490a6f6fee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446648"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616701"
 ---
-# <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>Škálování propustnosti kontejneru Azure Cosmos DB pomocí Azure CLI
+# <a name="scale-azure-cosmos-container-throughput-using-the-azure-cli"></a>Škálování propustnosti kontejneru Azure Cosmos pomocí Azure CLI
 
-Tato ukázka škáluje propustnost jakéhokoli druhu kontejneru Azure Cosmos DB.  
+Tato ukázka škáluje propustnost kontejneru pro jakýkoliv druh Cosmos kontejneru Azure.  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -43,9 +43,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Vytvoří účet služby Azure Cosmos DB. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Vytvoří databázi Azure Cosmos DB. |
-| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Vytvoří kontejner Azure Cosmos DB. |
-| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Aktualizuje kontejner Azure Cosmos DB. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Vytvoří databázi Azure Cosmos. |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Vytvoří kontejner Azure Cosmos. |
+| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Aktualizuje kontejner Azure Cosmos. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup

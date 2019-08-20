@@ -15,27 +15,30 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
 ms.author: vijetaj
-ms.openlocfilehash: 5816f53115f3ec54cbd9784894a5262b68dd6e95
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2814ad51d2f0f868833cf9c6964b7ea4a8424435
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565175"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574922"
 ---
 # <a name="what-is-azure-data-science-virtual-machine-for-linux-and-windows"></a>Co je Azure Data Science Virtual Machine pro Linux a Windows?
 
-Virtuální počítač pro datové vědy je přizpůsobená image virtuálního počítače v cloudu Azure Microsoftu vytvořená speciálně pro účely datových věd. Obsahuje řadu oblíbených předinstalovaných nástrojů datové vědy a dalších funkcí a je předem nakonfigurovaná, abyste mohli hned začít sestavovat inteligentní aplikace pro pokročilou analýzu. Je k dispozici pro Windows Server a Linux. Edici virtuálního počítače pro datové vědy pro Windows nabízíme ve verzích pro Server 2016 a Server 2012. Edice virtuálního počítače pro datové vědy pro Linux nabízíme ve verzích pro Ubuntu 16.04 LTS a CentOS 7.4.
+Virtuální počítač pro datové vědy je přizpůsobená image virtuálního počítače v cloudu Azure Microsoftu vytvořená speciálně pro účely datových věd. Obsahuje řadu oblíbených předinstalovaných nástrojů datové vědy a dalších funkcí a je předem nakonfigurovaná, abyste mohli hned začít sestavovat inteligentní aplikace pro pokročilou analýzu. 
 
-Tento článek popisuje, co můžete s Data Science VM provádět. Popisuje některé z klíčových scénářů použití virtuálního počítače a rozepisuje klíčové funkce, které jsou k dispozici ve verzích Windows a Linux. V tomto článku najdete také pokyny, jak je začít používat.
+Nástroj konfigurace jsou pečlivě otestovat odborníci přes data a vývojáři ve společnosti Microsoft a širší komunity odborníků přes data zajistit stabilitu a obecné životnost.
+
+DSVM je k dispozici na:
++ Windows Server 2016, Windows Server 2012
++ Ubuntu 16,04 LTS a CentOS 7,4
+
+**Všechny nástroje pro virtuální počítače** s hloubkovým učením byly přeloženy do data Science VM. 
 
 
-## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>K čemu mohu využít virtuální počítač pro datové vědy?
+## <a name="what-can-i-do-with-dsvm"></a>Co můžu s DSVM dělat?
 Virtuální počítač pro datové vědy je určený odborníkům pracujícím s daty všech úrovní a v nejrůznějších oborech, kterým poskytuje bezproblémové předkonfigurované a plně integrované prostředí pro vědecké zpracování dat. Místo zavádění srovnatelného pracovního prostoru vlastními silami můžete zřídit virtuální počítač pro datové vědy a tím si ušetřit dny nebo dokonce _týdny_ práce s instalací, konfigurací a správou balíčků. Po přidělení virtuálního počítače pro datové vědy můžete okamžitě začít pracovat na svém projektu datové vědy.
 
 Virtuální počítač pro datové vědy je nakonfigurován a navržen pro širokou řadu scénářů použití. V průběhu změny požadavků na projekt můžete škálovat prostředí nahoru nebo dolů. Můžete také použít preferovaný jazyk pro programové úkoly pro datové vědy a nainstalovat další nástroje, abyste systém mohli přizpůsobit přesně vašim potřebám.
-
-## <a name="key-scenarios"></a>Hlavní scénáře
-V této části najdete několik hlavních scénářů, pro které můžete virtuální počítač pro datové vědy nasadit.
 
 ### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>Předkonfigurovaný analytický desktop v cloudu
 Virtuální počítač pro datové vědy poskytuje základní konfiguraci týmům pro datovou vědu, které chtějí nahradit svoje desktopy spravovaným cloudovým desktopem. Tato základní konfigurace zajišťuje, že všichni odborníci přes data v týmu mají konzistentní nastavení pro ověřování experimentů a spolupráci. Také snižuje náklady snížením zatížení sysadmin. Toto omezení režie šetří čas potřebný k vyhodnocení, instalaci a údržbě různých softwarových balíčků potřebných k provádění pokročilých analýz.
@@ -47,18 +50,37 @@ Firemní učitelé a pedagogské, kteří se učí třídy pro datové vědy, ob
 Hackathony nebo soutěže v oblasti datových věd nebo rozsáhlé modelování či průzkum dat vyžadují – obvykle na krátkou dobu – horizontální navýšení kapacity hardwaru. Data Science VM může přispět k rychlé replikaci prostředí pro datové vědy na vyžádání na škálované servery, které umožňují experimenty s vysokými výpočetními prostředky, které se mají spustit.
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>Vlastní výpočetní výkon pro Azure Notebooks
-
-[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) je bezplatná hostované služba pro vývoj, spouštění a sdílení poznámkových bloků Jupyter v cloudu bez instalace. Úroveň bezplatné služby se ale omezuje na 4 GB paměti a 1 GB dat. Chcete-li uvolnit všechna omezení, můžete připojit projekt poznámkových bloků k Data Science VM nebo jinému virtuálnímu počítači, na kterém běží server Jupyter. Pokud se k Azure Notebooks přihlašujete pomocí účtu s použitím Azure Active Directory (například podnikového účtu), poznámkové bloky automaticky zobrazí virtuální počítače pro datové vědy v jakýchkoli předplatných přidružených k tomuto účtu. Další informace najdete v tématu [Správa a konfigurace projektů – výpočetní vrstva](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) je bezplatná hostované služba pro vývoj, spouštění a sdílení poznámkových bloků Jupyter v cloudu bez instalace. Úroveň bezplatné služby se ale omezuje na 4 GB paměti a 1 GB dat. Chcete-li uvolnit všechna omezení, můžete připojit projekt poznámkových bloků k Data Science VM nebo jinému virtuálnímu počítači, na kterém běží server Jupyter. Pokud se k Azure Notebooks přihlašujete pomocí účtu s použitím Azure Active Directory (například podnikového účtu), poznámkové bloky automaticky zobrazí virtuální počítače pro datové vědy v jakýchkoli předplatných přidružených k tomuto účtu. K rozšíření dostupného výpočetního výkonu můžete [připojit data Science VM k Azure Notebooks](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) .
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Krátkodobé experimenty a vyhodnocování
 S minimálním úsilím věnovaným nastavení je možné virtuální počítač pro datovou vědu využít k vyhodnocení nebo výuce nástrojů, jako jsou Microsoft ML Server, SQL Server, nástroje sady Visual Studio, Jupyter, sady nástrojů pro hloubkové nebo strojové učení a nové nástroje oblíbené v komunitě. Vzhledem k tomu, že Data Science VM lze rychle nastavit, je možné ji použít v jiných scénářích krátkodobého použití. Mezi tyto scénáře patří replikace publikovaných experimentů, provádění ukázek, postupy v online relacích a konferenčních kurzech.
 
 ### <a name="deep-learning"></a>Hloubkové učení
-Virtuální počítač pro datovou vědu můžete využít v tréninkových modelech s použitím algoritmů hloubkového učení na hardwaru založeného na grafickém procesoru. S využitím možností škálování virtuálního počítače v cloudu Azure vám virtuální počítač pro datovou vědu umožňuje používat hardware založený na grafickém procesoru v cloudu podle potřeby. Při tréninku velkých modelů nebo potřebě vysokorychlostních výpočtů je možné přepnout na virtuální počítač založený na grafickém procesoru a stále zůstat na stejném disku s operačním systémem.  Verze Windows Serveru 2016 virtuálního počítače pro datovou vědu je dodávána s předinstalovanými ovladači grafického procesoru, architekturami a verzemi grafického procesoru architektur hloubkového učení. V edici pro Linux je hloubkové učení na grafickém procesoru povolené jak na virtuálním počítači pro datovou vědu CentOS, tak i Ubuntu. Data Science VM edici Ubuntu, CentOS nebo Windows 2016 můžete nasadit do virtuálního počítače Azure, který není založený na GPU. V takovém případě se všechny architektury hloubkového učení vrátí do režimu CPU.
+Virtuální počítač pro datovou vědu můžete využít v tréninkových modelech s použitím algoritmů hloubkového učení na hardwaru založeného na grafickém procesoru. S využitím možností škálování virtuálního počítače v cloudu Azure vám virtuální počítač pro datovou vědu umožňuje používat hardware založený na grafickém procesoru v cloudu podle potřeby. Při tréninku velkých modelů nebo potřebě vysokorychlostních výpočtů je možné přepnout na virtuální počítač založený na grafickém procesoru a stále zůstat na stejném disku s operačním systémem.  Verze Windows Serveru 2016 virtuálního počítače pro datovou vědu je dodávána s předinstalovanými ovladači grafického procesoru, architekturami a verzemi grafického procesoru architektur hloubkového učení. V edici pro Linux je hloubkové učení na grafickém procesoru povolené jak na virtuálním počítači pro datovou vědu CentOS, tak i Ubuntu. Data Science VM edici Ubuntu, CentOS nebo Windows 2016 můžete nasadit do virtuálního počítače Azure, který není založený na GPU. V takovém případě se všechny architektury hloubkového učení vrátí do režimu CPU. Přečtěte si další informace o [dostupných architekturách hloubkového učení a AI](dsvm-deep-learning-ai-frameworks.md).
+ 
+Přečtěte si další informace o [dostupných architekturách hloubkového učení a AI](dsvm-deep-learning-ai-frameworks.md).
 
-## <a name="whats-included-in-the-data-science-vm"></a>Co je součástí virtuálního počítače pro datovou vědu?
-Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů pro datovou vědu a hloubkové učení, které jsou již nainstalovány a nakonfigurovány. Obsahuje taky nástroje, které usnadňují práci s různými datovými a analytickými produkty Azure, jako je Microsoft ML Server (R, Python) pro vytváření prediktivních modelů nebo SQL Server 2017 pro průzkum rozsáhlých datových sad. Data Science VM obsahuje hostitele dalších nástrojů od Open source komunity a od společnosti Microsoft, jakož i ukázkový kód a poznámkové bloky. V následující tabulce najdete výčet a srovnání hlavních komponent, které jsou součástí edic virtuálního počítače pro datovou vědu pro Windows a Linux.
+<a name="included"></a>
 
+## <a name="whats-included-on-dsvm"></a>Co je součástí DSVM?
+Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů pro datovou vědu a hloubkové učení, které jsou již nainstalovány a nakonfigurovány. Obsahuje taky nástroje, které usnadňují práci s různými datovými a analytickými produkty Azure, jako je Microsoft ML Server (R, Python) pro vytváření prediktivních modelů nebo SQL Server 2017 pro průzkum rozsáhlých datových sad. Data Science VM obsahuje hostitele dalších nástrojů od Open source komunity a od společnosti Microsoft, jakož i [ukázkový kód a poznámkové bloky](dsvm-samples-and-walkthroughs.md). 
+
+Nástroje a platformy:
++ [Podporované programovací jazyky](dsvm-languages.md)
+
++ [Podporované datové platformy](dsvm-data-platforms.md)
+
++ [Vývojové nástroje a IDEs](dsvm-tools-development.md)
+
++ [Rozhraní pro hloubkové učení a AI](dsvm-deep-learning-ai-frameworks.md).
+
++ [Machine Learning a nástroje pro datové vědy](dsvm-ml-data-science-tools.md)
+
++ [Nástroje pro přijímání dat](dsvm-tools-ingestion.md)
+
++ [Nástroje pro zkoumání a vizualizaci dat](dsvm-tools-explore-and-visualize.md)
+
+V následující tabulce najdete výčet a srovnání hlavních komponent, které jsou součástí edic virtuálního počítače pro datovou vědu pro Windows a Linux.
 
 | **Nástroj**                                                           | **Edice pro Windows** | **Edice pro Linux** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
@@ -112,7 +134,7 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](https://togaware.com/rattle/) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | Ne | Ano (pouze Ubuntu) |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CatBoost](https://tech.yandex.com/catboost/) | Ne | Ano (pouze Ubuntu) |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Jiskrová,](https://www.h2o.ai/h2o/) [sparková voda](https://www.h2o.ai/sparkling-water/) | Ne | Ano (pouze Ubuntu) |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [](https://www.h2o.ai/h2o/)Jiskrová, [sparková voda](https://www.h2o.ai/sparkling-water/) | Ne | Ano (pouze Ubuntu) |
 | **Nástroje pro hloubkové učení** <br>Všechny nástroje fungují na grafickém procesoru nebo procesoru. |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) (Windows 2016) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow](https://www.tensorflow.org/) | Ano (Windows 2016) | Ano |
@@ -129,18 +151,16 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow Serving](https://www.tensorflow.org/serving/) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorRT](https://developer.nvidia.com/tensorrt) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA, cuDNN, ovladač NVIDIA](https://developer.nvidia.com/cuda-toolkit) | Ano | Ano |
-| **Big Data Platform (pouze Devtest)**|||
-| &nbsp;&nbsp;&nbsp;&nbsp;* Místní samostatný [Spark](https://spark.apache.org/) | Ano | Ano |
-| &nbsp;&nbsp;&nbsp;&nbsp;* Místní [Hadoop](https://hadoop.apache.org/) (HDFS, YARN) | Ne | Ano |
-
-## <a name="get-started"></a>Začínáme
-
-### <a name="windows-data-science-vm"></a>Virtuální počítač pro datovou vědu pro Windows
-* Další informace o vytvoření virtuálního počítače pro datovou vědu pro Windows a jeho použití najdete v článku [Zřízení virtuálního počítače pro datovou vědu pro Windows](provision-vm.md). Další informace o provádění různých úloh potřebných pro projekt vědeckého zpracování dat na virtuálním počítači pro datovou vědu pro Windows najdete v článku [Deset věcí, které můžete provádět na virtuálních počítačích pro datovou vědu](vm-do-ten-things.md).
-
-### <a name="linux-data-science-vm"></a>Virtuální počítač pro datovou vědu pro Linux
-* Další informace o vytvoření virtuálního počítače pro datovou vědu pro Ubuntu a jeho použití najdete v článku [Zřízení virtuálního počítače pro datovou vědu pro Linux (Ubuntu)](dsvm-ubuntu-intro.md). Další informace o vytvoření virtuálního počítače pro datovou vědu pro CentOS a jeho použití najdete v článku [Zřízení virtuálního počítače pro datovou vědu pro Linux CentOS](linux-dsvm-intro.md).
-* Postup provedení několika běžných úloh vědeckého zpracování dat na virtuálním počítači Linux (v systémech CentOS a Ubuntu) najdete v článku [Datová věda na virtuálním počítači pro datovou vědu pro Linux](linux-dsvm-walkthrough.md).
 
 ## <a name="next-steps"></a>Další postup
-[Příručka pro vývojáře v R pro Azure](/azure/architecture/data-guide/technology-choices/r-developers-guide)
+
+Další informace najdete v těchto článcích:
+
++ Windows:
+  + [Nastavení DSVM pro Windows](provision-vm.md)
+  + [10 věcí, které můžete provádět na DSVM Windows](vm-do-ten-things.md)
+
++ Linux:
+  + [Nastavení DSVM pro Linux (Ubuntu)](dsvm-ubuntu-intro.md)
+  + [Nastavení DSVM pro Linux (CentOS)](linux-dsvm-intro.md)
+  + [Datové vědy na DSVM pro Linux](linux-dsvm-walkthrough.md)

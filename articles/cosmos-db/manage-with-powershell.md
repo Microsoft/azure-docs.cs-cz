@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965092"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616833"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní SQL API Azure Cosmos DB pomocí PowerShellu
 
@@ -46,7 +46,7 @@ Následující části demonstrují, jak spravovat účet Azure Cosmos, včetně
 
 ### <a id="create-account"></a>Vytvoření účtu Azure Cosmos
 
-Tento příkaz vytvoří účet databáze Azure Cosmos DB s více oblastmi a [zásadami konzistence](consistency-levels.md)s [více oblastmi][distribute-data-globally].
+Tento příkaz vytvoří účet databáze Azure Cosmos s více oblastmi, [zásadami konzistence](consistency-levels.md)s vazbou na [více oblastí][distribute-data-globally].
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos Account for Core (SQL) API
@@ -112,7 +112,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="update-account"></a>Aktualizace účtu Azure Cosmos
 
-Tento příkaz umožňuje aktualizovat vlastnosti svého účtu databáze Azure Cosmos DB. Mezi vlastnosti, které lze aktualizovat, patří následující:
+Tento příkaz umožňuje aktualizovat vlastnosti účtu databáze Azure Cosmos. Mezi vlastnosti, které lze aktualizovat, patří následující:
 
 * Přidávání nebo odebírání oblastí
 * Mění se výchozí zásada konzistence.
@@ -247,6 +247,7 @@ V následujícím příkladu Předpokládejme, že účet má aktuální priorit
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"

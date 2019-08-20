@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: sngun
-ms.openlocfilehash: a9b1952ed981b0ec522ff3bd607bbef275ff93b8
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 4a9c0fe09bee553f53c90c9833922746aad35d14
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479628"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615075"
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB
 
@@ -35,7 +35,7 @@ Azure Cosmos DB poskytuje vývojářům mobilních aplikací následující klí
 
 * Bohaté dotazy nad daty bez schématu. Azure Cosmos DB ukládá data jako dokumenty JSON bez schématu v heterogenních kolekcích. Nabízí [bohaté a rychlé dotazy](how-to-sql-query.md), aniž byste si museli dělat starosti se schématy nebo indexy.
 * Vysoká propustnost. Se službou Azure Cosmos DB trvá čtení a zápis dokumentů pouze několik milisekund. Vývojáři můžou určit požadovanou propustnost a Azure Cosmos DB ji bude respektovat se smlouvou SLA o 99,99% dostupnosti pro všechny účty v jedné oblasti a všechny účty ve více oblastech s mírnější konzistencí a 99,999% dostupnosti čtení pro všechny účty databáze ve více oblastech.
-* Neomezené škálování. Vaše kolekce Azure Cosmos DB [rostou s vaší aplikací](partition-data.md). Můžete začít s malým množstvím dat a propustností v řádu stovek požadavků za sekundu. Vaše kolekce nebo databáze se můžou rozšířit na petabajty dat s libovolně velkou propustností v řádu stovek milionů požadavků za sekundu.
+* Neomezené škálování. Vaše kontejnery Azure Cosmos se [při zvětšování vaší aplikace zvětšují](partition-data.md). Můžete začít s malým množstvím dat a propustností v řádu stovek požadavků za sekundu. Vaše kolekce nebo databáze se můžou rozšířit na petabajty dat s libovolně velkou propustností v řádu stovek milionů požadavků za sekundu.
 * Globální distribuce. Uživatelé mobilních aplikací jsou v pohybu, často po celém světě. Azure Cosmos DB je [globálně distribuovaná databáze](distribute-data-globally.md). Kliknutím na mapu zpřístupníte svá data uživatelům.
 * Integrovaná bohatá autorizace. Azure Cosmos DB umožňujte snadnou implementaci oblíbených modelů, jako jsou [data jednotlivých uživatelů](https://aka.ms/documentdb-xamarin-todouser) nebo data sdílená několika uživateli bez potřeby vlastního složitého autorizačního kódu.
 * Geoprostorové dotazy. Řada mobilních aplikací dnes nabízí prostředí využívající geografický kontext. Azure Cosmos DB usnadňuje vytváření takových prostředí díky prvotřídní podpoře [geoprostorových typů](geospatial.md).

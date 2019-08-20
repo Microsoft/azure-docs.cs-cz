@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: 641d622377bad7a1239efd526b93c6f0f0c08d4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 08/14/2019
+ms.openlocfilehash: 66077416dca4048fc99047f7d6b967e55aab0a23
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68887037"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575741"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Scénář: Problémy s připojením Apache Phoenix ve službě Azure HDInsight
 
@@ -27,7 +27,7 @@ Nesprávná IP adresa aktivního uzlu Zookeeper
 
 ### <a name="resolution"></a>Řešení
 
-IP adresa aktivního uzlu Zookeeper se dá identifikovat z uživatelského rozhraní Ambari, a to pomocí odkazů na **adaptéry HBA-> Rychlé odkazy – > ZK***  **(aktivní) – informace o > Zookeeper**. Podle potřeby opravte.
+IP adresu aktivního uzlu Zookeeper můžete identifikovat z uživatelského rozhraní Ambari pomocí odkazů na **adaptéry** > pro**Rychlé odkazy** > **ZK (aktivní)**  > **Zookeeper informace**. Opravte IP adresu podle potřeby.
 
 ---
 
@@ -35,27 +35,27 @@ IP adresa aktivního uzlu Zookeeper se dá identifikovat z uživatelského rozhr
 
 Při spouštění příkazů `!tables`, jako je, se zobrazí chybová zpráva podobná následující:
 
-```
+```output
 Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings.
 ```
 
 Při spouštění příkazů `count 'SYSTEM.CATALOG'`, jako je, se zobrazí chybová zpráva podobná následující:
 
-```
+```output
 ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189)
 ```
 
 ### <a name="resolution"></a>Řešení
 
-Restartujte službu HMaster na všech uzlech Zookeeper z uživatelského rozhraní Ambari.
+V uživatelském rozhraní Apache Ambari proveďte následující kroky a restartujte službu HMaster na všech uzlech ZooKeeper:
 
-1. Přejít na **HBA – > aktivní HBase Master** propojit v části Souhrn adaptérů HBA.
+1. V části **Souhrn** adaptérů HBA, přejít na > HBA**aktivní HBase Master**.
 
 1. V části **součásti** restartujte službu HBase Master.
 
-1. Výše uvedený postup opakujte pro zbývající **pohotovostní HBase Master** služby.
+1. Tento postup opakujte pro všechny zbývající **pohotovostní HBase Master** služby.
 
-Aby služba HBase Master mohla stabilizovat a dokončit obnovení, může trvat až 5 minut. Až se `SYSTEM.CATALOG` tabulka vrátí do normálního režimu, problém s připojením k Apache Phoenix by se měl automaticky vyřešit.
+Může trvat až pět minut, než se služba HBase Master stabilizovat a dokončí obnovení. Až se `SYSTEM.CATALOG` tabulka vrátí do normálního režimu, problém s připojením k Apache Phoenix by se měl automaticky vyřešit.
 
 ## <a name="next-steps"></a>Další postup
 

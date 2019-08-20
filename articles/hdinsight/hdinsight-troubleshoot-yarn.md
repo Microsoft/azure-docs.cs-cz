@@ -4,24 +4,24 @@ description: Získejte odpovědi na běžné dotazy týkající se práce s Apac
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: 8396f682558b71ca99af845bd51f7b2c8059f79b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072019"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69573710"
 ---
-# <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop YARN pomocí Azure HDInsight
+# <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop NITĚmi pomocí Azure HDInsight
 
 Další informace o nejčastější problémy a jejich řešení při práci s datovými částmi Apache Hadoop YARN v Apache Ambari.
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Jak vytvořit novou frontu YARN v clusteru?
 
-### <a name="resolution-steps"></a>Postup řešení 
+### <a name="resolution-steps"></a>Postup řešení
 
-Pomocí následujícího postupu Ambari vytvořit novou frontu YARN a potom vyrovnávat přidělení kapacity mezi všechny fronty. 
+Pomocí následujícího postupu Ambari vytvořit novou frontu YARN a potom vyrovnávat přidělení kapacity mezi všechny fronty.
 
 V tomto příkladu dvě existující fronty (**výchozí** a **thriftsvr**) jsou změněny z 50 % kapacity ke kapacitě 25 %, která poskytuje novou kapacitu 50 % fronty (spark).
 
@@ -59,21 +59,20 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 
 ### <a name="additional-reading"></a>Další čtení
 
-- [Apache Hadoop YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
-
+- [Apache Hadoop CapacityScheduler PŘÍZe](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Jak stáhnout protokoly YARNU z clusteru?
-
 
 ### <a name="resolution-steps"></a>Postup řešení 
 
 1. Připojení ke clusteru HDInsight pomocí klienta Secure Shell (SSH). Další informace najdete v tématu [další čtení](#additional-reading-2).
 
-2. Chcete-li vypsat všechna ID aplikace, které jsou aktuálně spuštěné aplikace YARN, spusťte následující příkaz:
+1. Chcete-li vypsat všechna ID aplikace, které jsou aktuálně spuštěné aplikace YARN, spusťte následující příkaz:
 
     ```apache
     yarn top
     ```
+
     ID jsou uvedeny v **APPLICATIONID** sloupce. Umožňuje stažení protokolů z **APPLICATIONID** sloupce.
 
     ```apache
@@ -89,42 +88,42 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-3. Chcete-li stáhnout protokoly kontejneru YARN pro všechny servery aplikace, použijte následující příkaz:
-   
+1. Chcete-li stáhnout protokoly kontejneru YARN pro všechny servery aplikace, použijte následující příkaz:
+
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
     ```
 
-    Tento příkaz vytvoří soubor protokolu s názvem amlogs.txt. 
+    Tento příkaz vytvoří soubor protokolu s názvem amlogs.txt.
 
-4. Stáhnout protokoly kontejneru YARN pro nejnovější základní aplikaci, použijte následující příkaz:
+1. Stáhnout protokoly kontejneru YARN pro nejnovější základní aplikaci, použijte následující příkaz:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
     ```
 
-    Tento příkaz vytvoří soubor protokolu s názvem latestamlogs.txt. 
+    Tento příkaz vytvoří soubor protokolu s názvem latestamlogs.txt.
 
-4. Stáhnout protokoly kontejneru YARN pro první dvě aplikace hlavních serverů, použijte následující příkaz:
+1. Stáhnout protokoly kontejneru YARN pro první dvě aplikace hlavních serverů, použijte následující příkaz:
 
     ```apache
-    yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt 
+    yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
     ```
 
-    Tento příkaz vytvoří soubor protokolu s názvem first2amlogs.txt. 
+    Tento příkaz vytvoří soubor protokolu s názvem first2amlogs.txt.
 
-5. Chcete-li stáhnout všechny protokoly kontejneru YARN, použijte následující příkaz:
+1. Chcete-li stáhnout všechny protokoly kontejneru YARN, použijte následující příkaz:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
     ```
 
-    Tento příkaz vytvoří soubor protokolu s názvem logs.txt. 
+    Tento příkaz vytvoří soubor protokolu s názvem logs.txt.
 
-6. Pokud chcete stáhnout protokol YARN kontejneru pro konkrétní kontejner, použijte následující příkaz:
+1. Pokud chcete stáhnout protokol YARN kontejneru pro konkrétní kontejner, použijte následující příkaz:
 
     ```apache
-    yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt 
+    yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
     Tento příkaz vytvoří soubor protokolu s názvem containerlogs.txt.
@@ -134,6 +133,12 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 - [Připojení k HDInsight (Apache Hadoop) pomocí SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN koncepty a aplikace](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
+## <a name="next-steps"></a>Další kroky
 
-### <a name="see-also"></a>Viz také
-[Řešení potíží pomocí Azure HDInsight](hdinsight-troubleshoot-guide.md)
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+
+- Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
+
+- Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+
+- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

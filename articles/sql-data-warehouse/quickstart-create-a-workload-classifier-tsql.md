@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Vytvoření úlohy třídění – T-SQL | Dokumentace Microsoftu'
-description: Pomocí jazyka T-SQL k vytvoření klasifikátoru úlohy s vysokou důležitostí.
+title: 'Rychlý start: Vytvoření klasifikátoru úloh – T-SQL | Microsoft Docs'
+description: Použijte T-SQL k vytvoření klasifikátoru úloh s vysokou důležitostí.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: f400989fdbdede4f4a07ee13c5a606d51529150c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: ea2e0a3bb55d16c0b413b114fca9da7f95f5c053
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588690"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574860"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rychlý start: Vytvoření úlohy třídění pomocí jazyka T-SQL
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rychlý start: Vytvoření klasifikátoru úloh pomocí T-SQL
 
-V tomto rychlém startu rychle vytvoříte klasifikátor úlohy s vysokou důležitostí pro generální ředitel vaší organizace. Tato úloha třídění vám umožní dotazy generální ředitel pro přednost před další dotazy s důležitostí nižší ve frontě.
+V tomto rychlém startu budete rychle vytvářet třídění úloh s vysokou důležitostí pro generálního ředitele vaší organizace. Tento klasifikátor pracovního vytížení umožní, aby dotazy generální ŘEDITELe měly přednost před jinými dotazy s nižší důležitostí ve frontě.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -30,15 +30,15 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento rychlý start předpokládá už máte datový sklad SQL a zda máte oprávnění CONTROL DATABASE. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
+V tomto rychlém startu se předpokládá, že již máte SQL Data Warehouse a že máte oprávnění k řízení databáze. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-login-for-theceo"></a>Vytvořit přihlášení pro TheCEO
+## <a name="create-login-for-theceo"></a>Vytvoření přihlašovacích údajů pro TheCEO
 
-Vytvořit účet ověřování SQL serveru v `master` databázi s použitím [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql) pro "TheCEO".
+Vytvořte přihlašovací jméno SQL Server ověřování v `master` databázi pomocí příkazu [Create Login](/sql/t-sql/statements/create-login-transact-sql) for ' TheCEO '.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -50,7 +50,7 @@ END
 
 ## <a name="create-user"></a>Vytvořit uživatele
 
-[Vytvoření uživatele](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "TheCEO" v mySampleDataWarehouse
+[Vytvoření uživatele](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "TheCEO", v mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -60,9 +60,9 @@ END
 ;
 ```
 
-## <a name="create-a-workload-classifier"></a>Vytvoření úlohy třídění
+## <a name="create-a-workload-classifier"></a>Vytvoření klasifikátoru úloh
 
-Vytvoření [úlohy třídění](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) pro "TheCEO" s vysokou důležitostí.
+Vytvořte [klasifikátor úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) pro "TheCEO" s vysokou důležitostí.
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -72,7 +72,7 @@ WITH (WORKLOAD_GROUP = 'xlargerc'
       ,IMPORTANCE = HIGH);
 ```
 
-## <a name="view-existing-classifiers"></a>Zobrazit existující třídění
+## <a name="view-existing-classifiers"></a>Zobrazit existující klasifikátory
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers
@@ -86,27 +86,27 @@ DROP USER [TheCEO]
 ;
 ```
 
-Už se neúčtují poplatky za jednotky datového skladu a data uložená v datovém skladu. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
+Účtují se vám poplatky za jednotky datového skladu a data uložená v datovém skladu. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
 
-- Pokud chcete zachovat data v úložišti, můžete pozastavit výpočetní prostředky v době, kdy datový sklad nepoužíváte. Když pozastavíte výpočetní prostředky, jen za úložný prostor. Až budete připraveni začít pracovat s daty, obnovit výpočty.
+- Pokud chcete zachovat data v úložišti, můžete pozastavit výpočetní prostředky v době, kdy datový sklad nepoužíváte. Když pozastavíte výpočetní prostředky, bude se vám účtovat jenom úložiště dat. Až budete připraveni pracovat s daty, obnovte výpočetní výkon.
 - Pokud chcete zamezit budoucím poplatkům, můžete datový sklad odstranit.
 
-Postupujte podle těchto kroků pro vyčištění prostředků.
+Pomocí těchto kroků vyčistěte prostředky.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com), vyberte na váš datový sklad.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte svůj datový sklad.
 
     ![Vyčištění prostředků](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Chcete-li pozastavit výpočetní prostředky, vyberte **pozastavit** tlačítko. Když je datový sklad pozastavený, zobrazí se tlačítko **Spustit**.  Chcete-li obnovit výpočetní prostředky, vyberte **Start**.
+2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Když je datový sklad pozastavený, zobrazí se tlačítko **Spustit**.  Pokud chcete pokračovat v výpočetních prostředích, vyberte **Spustit**.
 
-3. Chcete-li odebrat datový sklad, aby se vám neúčtovaly výpočetní prostředky ani prostředky úložiště, vyberte **odstranit**.
+3. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní výkon nebo úložiště, vyberte **Odstranit**.
 
-4. Chcete-li odstranit server SQL, který jste vytvořili, vyberte **mynewserver-20180430.database.windows.net** v předchozím obrázku a pak vyberte **odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
+4. Pokud chcete odebrat vytvořený SQL Server, vyberte na předchozím obrázku **MyNewServer-20180430.Database.Windows.NET** a pak vyberte **Odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
-5. Chcete-li odebrat skupinu prostředků, vyberte **myResourceGroup**a pak vyberte **odstranit skupinu prostředků**.
+5. Pokud chcete odebrat skupinu prostředků, vyberte **myResourceGroup**a pak vyberte **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další postup
 
-- Právě jste vytvořili úlohu třídění. Spustili jste několik dotazů jako TheCEO zobrazíte jejich výkon. Zobrazit [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) k zobrazení dotazů a závažnosti přiřazené.
-- Další informace o správě pracovního vytížení Azure SQL Data Warehouse, najdete v části [úlohy význam](sql-data-warehouse-workload-importance.md) a [úloh klasifikace](sql-data-warehouse-workload-classification.md).
-- Články s postupy najdete v článku [nakonfigurovat úlohu význam](sql-data-warehouse-how-to-configure-workload-importance.md) a jak [Správa a sledování úloh správy](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Nyní jste vytvořili klasifikátor úloh. Spusťte několik dotazů jako TheCEO, abyste viděli, jak fungují. V tématu [Sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) můžete zobrazit dotazy a přiřazené důležitost.
+- Další informace o správě úloh Azure SQL Data Warehouse najdete v tématu [důležitost úloh](sql-data-warehouse-workload-importance.md) a [klasifikace úloh](sql-data-warehouse-workload-classification.md).
+- V článcích s postupy můžete [nakonfigurovat důležitost úloh](sql-data-warehouse-how-to-configure-workload-importance.md) a [Spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

@@ -1,110 +1,74 @@
 ---
-title: Nastavení dvoustupňového ověřování – Azure Active Directory | Microsoft Docs
-description: Když vaše společnost konfiguruje Azure Multi-Factor Authentication, budete vyzváni k registraci dvoustupňového ověřování. Přečtěte si, jak ho nastavit.
+title: Přehled metod dvou faktorů ověřování – Azure Active Directory | Microsoft Docs
+description: Přehled o tom, jak nastavit metody dvou faktorů ověřování pro dvojúrovňové ověřování.
 services: active-directory
-keywords: kurz použití Azure Directory, Active Directory v cloudu, kurz služby Active Directory
 author: eross-msft
 manager: daveba
-ms.reviewer: richagi
-ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
-ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
-ms.topic: conceptual
-ms.date: 05/15/2017
+ms.workload: identity
+ms.topic: overview
+ms.date: 08/12/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75bc067bfe8a98ef2337f368243b3221be1677d6
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 83bba343ac73fd0df575ae1e8a83c589a0bc15ac
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949893"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616170"
 ---
-# <a name="set-up-my-account-for-two-step-verification"></a>Nastavení účtu pro dvoustupňové ověřování
-Dvoustupňové ověřování je dodatečný krok zabezpečení, který pomáhá chránit váš účet tím, že je těžší, aby ostatní uživatelé mohli rušit. Pokud tento článek čtete, pravděpodobně jste od svého pracovního nebo školního správce o službě Multi-Factor Authentication dostali e-mail. Nebo možná jste se pokusili přihlásit a získali zprávu s výzvou k nastavení dalšího ověření zabezpečení. V takovém případě se nemůžete **přihlásit, dokud nedokončíte proces automatického zápisu**.
+# <a name="set-up-your-two-factor-verification-methods-overview"></a>Přehled metod ověřování dvou faktorů
 
-Tento článek vám pomůže nastavit svůj **pracovní nebo školní účet**. Pokud chcete povolit dvoustupňové ověřování pro vlastní, osobní účet Microsoft, přečtěte si [článek o dvoustupňovém ověřování](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
+Vaše organizace zapnula dvojúrovňové ověřování, což znamená, že přihlášení k vašemu pracovnímu nebo školnímu účtu teď vyžaduje kombinaci vašeho uživatelského jména, hesla a mobilního zařízení nebo telefonu. Vaše organizace toto dodatečné ověření zapnula, protože je bezpečnější než heslo, spoléhá se na dvě formy ověřování: něco, co znáte a co s vámi máte. Dvojúrovňové ověřování může přispět k tomu, aby nedocházelo ke škodlivým podvodníkům, protože by to bylo v úmyslu, protože i když mají vaše heslo, lichá, že nemají vaše zařízení.
 
-## <a name="set-up-your-account"></a>Nastavit účet
+>[!Important]
+>Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
-Když vaše firemní podpora vyžaduje, abyste začali používat dvoustupňové ověřování, zobrazí se obrazovka s oznámením, že **váš správce vyžaduje, abyste u tohoto účtu nastavili další ověření zabezpečení**:
+## <a name="who-decides-if-you-use-this-feature"></a>Kdo se rozhodne, jestli tuto funkci používáte?
 
-![Instalace](./media/multi-factor-authentication-end-user-first-time/first.png)
+V závislosti na typu účtu může vaše organizace rozhodnout, že je nutné použít dvojúrovňové ověřování, nebo se můžete rozhodnout sami.
 
-Začněte tím, že vyberete **nastavit hned.**
+- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (například alain@contoso.com), je to až do vaší organizace bez ohledu na to, jestli musíte použít dvojúrovňové ověřování společně s konkrétními metodami ověřování. Vzhledem k tomu, že vaše organizace rozhodla použít tuto funkci, neexistuje způsob, jak ji individuálně vypnout.
 
-Pokud se vám po přihlášení nezobrazí žádná obrazovka, postupujte podle pokynů v tématu [Správa nastavení pro dvoustupňové ověřování](multi-factor-authentication-end-user-manage-settings.md#using-the-additional-security-verification-page) a Najděte stránku nastavení, kde můžete spravovat možnosti ověřování.
+- **Osobní účet Microsoft.** Pro osobní účty Microsoft (například alain@outlook.com) si můžete nastavit dvojúrovňové ověřování. Pokud máte problémy se dvojúrovňovém ověřováním a osobním účet Microsoft, přečtěte si téma [Zapnutí a vypnutí dvojúrovňového ověřování pro účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off). Vzhledem k tomu, že se rozhodnete, jestli chcete tuto funkci používat, můžete ji zapnout nebo vypnout, kdykoli budete chtít.
 
-## <a name="decide-how-you-want-to-verify-your-sign-ins"></a>Rozhodněte, jak chcete ověřit vaše přihlášení.
+## <a name="access-the-additional-security-verification-page"></a>Přístup k další stránce ověření zabezpečení
 
-První otázkou v procesu registrace je to, jak vás chceme kontaktovat. Podívejte se na možnosti v tabulce a pomocí odkazů nastavte kroky pro instalaci jednotlivých metod.
+Jakmile vaše organizace zapne a nastaví dvojúrovňové ověřování, zobrazí se výzva, abyste zadali další informace, které vám pomůžou zajistit zabezpečení vašeho účtu.
 
-| Způsob kontaktování | Popis |
-| --- | --- |
-| [Mobilní aplikace](#use-a-mobile-app-as-the-contact-method) |- **Dostanou oznámení k ověření.** Tato možnost vloží oznámení do aplikace ověřovatele na telefonu Smartphone nebo tabletu. Podívejte se na oznámení a pokud je legitimní, vyberte v aplikaci **ověřit** . Vaše práce nebo škola může vyžadovat zadání kódu PIN před ověřením.<br>- **Použijte ověřovací kód.** V tomto režimu aplikace ověřovatele vygeneruje ověřovací kód, který se aktualizuje každých 30 sekund. Do přihlašovacího rozhraní zadejte nejaktuálnější ověřovací kód.<br>Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594) a [iOS](https://go.microsoft.com/fwlink/?linkid=866594).|
-| [Mobilní telefonní hovor nebo text](#use-your-mobile-phone-as-the-contact-method) |- **Telefonní hovor** vede automatizované hlasové volání na telefonní číslo, které zadáte. Přivolejte volání a stisknutím klávesy # na klávesnici telefonu proveďte ověření.<br>- **Textová zpráva** končí textovou zprávou obsahující ověřovací kód. Po zobrazení výzvy v textu odpovězte buď na textovou zprávu, nebo zadejte ověřovací kód, který jste zadali do přihlašovacího rozhraní. |
-| [Volání na telefon do kanceláře](#use-your-office-phone-as-the-contact-method) |Vloží automatizované hlasové volání do telefonního čísla, které zadáte. Přihlaste se ke volání a stisknutím klávesy # na klávesnici telefonu proveďte ověření. |
+![Další informace vyžadovat výzvu](media/multi-factor-authentication-verification-methods/multi-factor-authentication-initial-prompt.png)
 
-## <a name="use-a-mobile-app-as-the-contact-method"></a>Použití mobilní aplikace jako způsobu kontaktu
-Použití této metody vyžaduje, abyste na telefonu nebo tabletu nainstalovali ověřovací aplikaci. Kroky v tomto článku jsou založené na Microsoft Authenticator aplikaci, která je k dispozici pro [Android](https://go.microsoft.com/fwlink/?Linkid=825072) a [iOS](https://go.microsoft.com/fwlink/?Linkid=825073).
+### <a name="to-access-the-additional-security-verification-page"></a>Přístup k další stránce ověření zabezpečení
 
->[!NOTE]
->Nemusíte používat aplikaci Microsoft Authenticator. Pokud jste již používali jinou ověřovací aplikaci, můžete ji nadále používat.
+1. V části **Další informace požadované** na příkazovém řádku vyberte **Další** .
 
-1. V rozevíracím seznamu vyberte **mobilní aplikace** .
-2. Vyberte buď **přijmout oznámení pro ověření** , nebo **použijte ověřovací kód**, a pak vyberte **nastavit**.
+    Zobrazí se stránka **Další ověření zabezpečení** .
 
-   ![Obrazovka dodatečného ověření zabezpečení](./media/multi-factor-authentication-end-user-first-time/mobileapp.png)
+2. Na stránce **Další ověření zabezpečení** musíte rozhodnout, kterou ověřovací metodu ověření použít k ověření, na koho jste se přihlásili k pracovnímu nebo školnímu účtu. Můžete vybrat:
 
-3. Na telefonu nebo tabletu otevřete aplikaci a vyberte možnost **+** přidat účet. (Na zařízeních s Androidem vyberte tři tečky a pak **Přidat účet**.)
-4. Zadejte, že chcete přidat pracovní nebo školní účet. Otevře se skener kódu QR v telefonu. Pokud fotoaparát nepracuje správně, můžete vybrat možnost zadat informace o společnosti ručně. Další informace najdete v tématu [Ruční přidání účtu](#add-an-account-manually).  
-5. Naskenujte si obrázek kódu QR, který se zobrazil na obrazovce pro konfiguraci mobilní aplikace.  Vyberte **Hotovo** , aby se zavřela obrazovka Code QR.  
+    | Způsob kontaktování | Popis |
+    | --- | --- |
+    | Mobilní aplikace | <ul><li>**Dostanou oznámení k ověření.** Tato možnost vloží oznámení do aplikace ověřovatele na telefonu Smartphone nebo tabletu. Podívejte se na oznámení a pokud je legitimní, vyberte v aplikaci **ověřit** . Vaše práce nebo škola může vyžadovat zadání kódu PIN před ověřením.</li><li>**Použijte ověřovací kód.** V tomto režimu aplikace ověřovatele vygeneruje ověřovací kód, který se aktualizuje každých 30 sekund. Do přihlašovací obrazovky zadejte nejaktuálnější ověřovací kód.<br>Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594) a [iOS](https://go.microsoft.com/fwlink/?linkid=866594).</li></ul> |
+    | Telefon pro ověření | <ul><li>**Telefonní hovor** vede automatizované hlasové volání na telefonní číslo, které zadáte. Přivolejte volání a stisknutím křížku (#) na klávesnici telefonu proveďte ověření.</li><li>**Textová zpráva** končí textovou zprávou obsahující ověřovací kód. Po zobrazení výzvy v textu odpovězte buď na textovou zprávu, nebo zadejte ověřovací kód, který jste zadali do přihlašovacího rozhraní.</li></ul> |
+    | Telefon do kanceláře | Vloží automatizované hlasové volání do telefonního čísla, které zadáte. Přivolejte volání a stisknutím křížku (#) na klávesnici telefonu proveďte ověření. |
 
-   ![Obrazovka kódu QR](./media/multi-factor-authentication-end-user-first-time/scan2.png)
+## <a name="next-steps"></a>Další kroky
 
-6. Po dokončení aktivace na telefonu vyberte **kontaktovat mě**.  Tento krok pošle oznámení nebo ověřovací kód na váš telefon. Vyberte **ověřit**.  
-7. Pokud vaše společnost vyžaduje PIN kód pro schválení ověřování přihlášení, zadejte ji.
+Po otevření stránky pro **Další ověření zabezpečení** je nutné vybrat a nastavit metodu ověřování dvou faktorů:
 
-   ![Box pro zadání kódu PIN](./media/multi-factor-authentication-end-user-first-time/scan3.png)
+- [Nastavení mobilního zařízení jako metody ověřování](multi-factor-authentication-setup-phone-number.md)
 
-8. Po dokončení zadání kódu PIN vyberte **Zavřít**. V tomto okamžiku by mělo být vaše ověření úspěšné.
-9. Doporučujeme zadat číslo mobilního telefonu pro případ, že ztratíte přístup k mobilní aplikaci. V rozevíracím seznamu zadejte zemi nebo oblast a do pole vedle názvu země nebo oblasti zadejte číslo mobilního telefonu. Vyberte **Další**.
-10. V tomto okamžiku se zobrazí výzva, abyste nastavili hesla aplikací pro neprohlížečové aplikace, jako je například Outlook 2010 nebo starší, nebo nativní e-mailová aplikace na zařízeních Apple. Důvodem je to, že některé aplikace nepodporují dvoustupňové ověřování. Pokud tyto aplikace nepoužíváte, klikněte na **Hotovo** a přeskočte zbývající kroky.
-11. Pokud tyto aplikace používáte, zkopírujte zadané heslo aplikace a vložte ho do své aplikace místo běžného hesla. Můžete použít stejné heslo aplikace pro více aplikací. Další informace najdete v tématu [nápovědu s hesly aplikací].
-12. Klikněte na **Done** (Hotovo).
+- [Nastavte si telefon do kanceláře jako metodu ověřování.](multi-factor-authentication-setup-office-phone.md)
 
-### <a name="add-an-account-manually"></a>Přidat účet ručně
-Pokud chcete ručně přidat účet do mobilní aplikace namísto použití čtečky QR, postupujte podle těchto kroků.
+- [Nastavení aplikace Microsoft Authenticator jako metody ověřování](multi-factor-authentication-setup-auth-app.md)
 
-1. Vyberte tlačítko **zadat účet ručně** .  
-2. Zadejte kód a adresu URL, které jsou k dispozici na stejné stránce, která zobrazuje čárový kód. Tato informace se odkazuje do polí **kód** a **Adresa URL** v mobilní aplikaci.
+## <a name="related-resources"></a>Související prostředky
 
-    ![Instalace](./media/multi-factor-authentication-end-user-first-time/barcode2.png)
-3. Po dokončení aktivace vyberte **kontaktovat mě**. Tento krok pošle oznámení nebo ověřovací kód na váš telefon. Vyberte **ověřit**.
+- [Správa nastavení dvojúrovňové metody ověřování](multi-factor-authentication-end-user-manage-settings.md)
 
-## <a name="use-your-mobile-phone-as-the-contact-method"></a>Použijte svůj mobilní telefon jako způsob kontaktu
-1. V rozevíracím seznamu vyberte **telefon pro ověření** .  
+- [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md)
 
-    ![Instalace](./media/multi-factor-authentication-end-user-first-time/phone.png)  
-2. V rozevíracím seznamu vyberte zemi nebo oblast a zadejte číslo mobilního telefonu.
-3. Vyberte metodu, kterou upřednostňujete k použití s mobilním telefonem nebo voláním.
-4. Vyberte **kontakt mi** a ověřte si své telefonní číslo. V závislosti na vybraném režimu vám pošleme text nebo zavolat. Postupujte podle pokynů uvedených na obrazovce a pak vyberte **ověřit**.
-5. V tomto okamžiku se zobrazí výzva, abyste nastavili hesla aplikací pro neprohlížečové aplikace, jako je například Outlook 2010 nebo starší, nebo nativní e-mailová aplikace na zařízeních Apple. Důvodem je to, že některé aplikace nepodporují dvoustupňové ověřování. Pokud tyto aplikace nepoužíváte, klikněte na **Hotovo** a přeskočte zbývající kroky.
-6. Pokud tyto aplikace používáte, zkopírujte zadané heslo aplikace a vložte ho do své aplikace místo běžného hesla. Můžete použít stejné heslo aplikace pro více aplikací. Další informace najdete v tématu [nápovědu s hesly aplikací].
-7. Klikněte na **Done** (Hotovo).
+- [Přihlášení Pomocí dvojúrovňového ověřování](multi-factor-authentication-end-user-signin.md)
 
-## <a name="use-your-office-phone-as-the-contact-method"></a>Použít telefon do kanceláře jako způsob kontaktu
-1. V rozevíracím seznamu vyberte **telefon do kanceláře** .  
-
-    ![Instalace](./media/multi-factor-authentication-end-user-first-time/office.png)  
-2. Pole telefonní číslo se vyplní automaticky kontaktními informacemi společnosti. Pokud je číslo chybné nebo chybí, požádejte správce, aby provedl změny.
-3. Pokud si chcete ověřit své telefonní číslo, vyberte **kontakt mi** . vaše číslo budeme volat. Postupujte podle pokynů uvedených na obrazovce a pak vyberte **ověřit**.
-4. V tomto okamžiku se zobrazí výzva, abyste nastavili hesla aplikací pro neprohlížečové aplikace, jako je například Outlook 2010 nebo starší, nebo nativní e-mailová aplikace na zařízeních Apple. Důvodem je to, že některé aplikace nepodporují dvoustupňové ověřování. Pokud tyto aplikace nepoužíváte, klikněte na **Hotovo** a přeskočte zbývající kroky.
-5. Pokud tyto aplikace používáte, zkopírujte zadané heslo aplikace a vložte ho do své aplikace místo běžného hesla. Můžete použít stejné heslo aplikace pro více aplikací. Další informace najdete v tématu [co jsou hesla aplikací](multi-factor-authentication-end-user-app-passwords.md).
-6. Klikněte na **Done** (Hotovo).
-
-## <a name="next-steps"></a>Další postup
-* Změňte preferované možnosti a [Spravujte nastavení pro dvoustupňové ověřování](multi-factor-authentication-end-user-manage-settings.md) .
-* Nastavte [hesla aplikací](multi-factor-authentication-end-user-app-passwords.md) pro nativní aplikace zařízení, které nepodporují dvoustupňové ověřování.
-* Podívejte se na [aplikaci Microsoft Authenticator](user-help-auth-app-download-install.md) pro rychlé a zabezpečené ověřování i v případě, že nemáte službu pro buňky.
+- [Získat pomoc se dvojúrovňovém ověřováním](multi-factor-authentication-end-user-troubleshoot.md) 

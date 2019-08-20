@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619813"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616937"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Java prováděcí modul hromadného budou provádět hromadné operace s daty služby Azure Cosmos DB
 
-Tento kurz obsahuje pokyny k používání knihovny Java prováděcí modul hromadného rozhraní Azure Cosmos DB importovat a aktualizovat dokumenty Azure Cosmos DB. Další informace o hromadně prováděcí modul knihovny a jak vám může pomoct využít mimořádně velkou propustnost a úložiště, najdete v článku [hromadně přehled knihovny prováděcí modul](bulk-executor-overview.md) článku. V tomto kurzu sestavení aplikace v Javě, která generuje náhodné dokumentů a budou hromadně importovat do kontejneru Azure Cosmos DB. Po naimportování pak hromadně aktualizovat některé vlastnosti dokumentu. 
+Tento kurz obsahuje pokyny k používání knihovny Java prováděcí modul hromadného rozhraní Azure Cosmos DB importovat a aktualizovat dokumenty Azure Cosmos DB. Další informace o hromadně prováděcí modul knihovny a jak vám může pomoct využít mimořádně velkou propustnost a úložiště, najdete v článku [hromadně přehled knihovny prováděcí modul](bulk-executor-overview.md) článku. V tomto kurzu vytvoříte aplikaci Java, která generuje náhodné dokumenty a hromadně importuje do kontejneru Azure Cosmos. Po naimportování pak hromadně aktualizovat některé vlastnosti dokumentu. 
 
 V současné době je knihovna hromadných prováděcích modulů podporovaná jenom pomocí Azure Cosmos DB SQL API a účtů rozhraní API Gremlin. Tento článek popisuje, jak používat hromadnou prováděcí knihovnu Java s účty rozhraní SQL API. Další informace o použití knihovny hromadné prováděcí modul .NET pomocí rozhraní Gremlin API, najdete v článku [provádět hromadné operace v rozhraní Gremlin API služby Azure Cosmos DB](bulk-executor-graph-dotnet.md).
 
@@ -88,7 +88,7 @@ Naklonované úložiště obsahuje dvě ukázky "hromadný import" a "bulkupdate
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. Volání hodnotu importAll rozhraní API, které generuje náhodné dokumenty pro hromadný import do kontejneru Azure Cosmos DB. Konfigurace příkazový řádek v souboru CmdLineConfiguration.java můžete nakonfigurovat.
+4. Zavolejte rozhraní API pro vyvolání, které generuje náhodné dokumenty pro hromadnou import do kontejneru Azure Cosmos. Konfigurace příkazový řádek v souboru CmdLineConfiguration.java můžete nakonfigurovat.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
@@ -155,7 +155,7 @@ Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumen
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. Volání rozhraní API, které generuje náhodné dokumenty hromadně importovat do kontejneru Azure Cosmos DB bude potom updateAll. Můžete nakonfigurovat příkazového řádku konfigurace mají být předány v CmdLineConfiguration.java souboru.
+2. Zavolejte rozhraní updateAll API, které generuje náhodné dokumenty, které se pak hromadně importují do kontejneru Azure Cosmos. Můžete nakonfigurovat příkazového řádku konfigurace mají být předány v CmdLineConfiguration.java souboru.
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
@@ -206,7 +206,7 @@ Zvažte následující body pro zajištění lepšího výkonu při použití hr
    * Velikost haldy JVM nastavena na hodnotu dostatečně velký, aby jakýkoli problém paměti při zpracování velkého množství dokumentů. Navržená velikost haldy: maximální počet (3GB, 3 * sizeof (všechny dokumenty předaný k hromadnému importu rozhraní API v jedné dávce)).  
    * Existuje předzpracování času, které získáte vyšší propustnost při provádění operace hromadného s velkým množstvím dokumentů. Proto pokud chcete importovat 10 000 000 dokumentů, zprovoznění hromadný import 10krát na 10 hromadné dokumentů každý o velikosti 1 000 000 je vhodnější srovnání se spouštěním hromadný import 100krát na 100 hromadné dokumentů všech velikostí 100 000 dokumentů.  
 
-* Doporučuje se vytvořit instanci jednoho objektu DocumentBulkExecutor pro celou aplikaci v rámci jeden virtuální počítač, který odpovídá konkrétní kontejner Azure Cosmos DB.  
+* Doporučuje se vytvořit instanci jednoho objektu DocumentBulkExecutor pro celou aplikaci v jednom virtuálním počítači, který odpovídá konkrétnímu kontejneru Azure Cosmos.  
 
 * Protože spuštění operace rozhraní API jednou hromadnou spotřebovává velké blok klientského počítače procesoru a sítě vstupně-výstupních operací. To se stane, vytvořením více úkolů interně, vyhněte se vytváření podřízeného procesu více souběžných úloh v rámci procesu aplikace, které volá každé rozhraní API provádění hromadné operace. Pokud volání jednou hromadnou operaci rozhraní API běžící na jeden virtuální počítač nemůže využívat propustnosti celého kontejneru (Pokud se váš kontejner propustnost > 1 milion RU/s), je vhodnější k vytvoření samostatných virtuálních počítačů současně provést hromadné volání operace rozhraní API.
 

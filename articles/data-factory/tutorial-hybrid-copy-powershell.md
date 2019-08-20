@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: abnarain
-ms.openlocfilehash: 49d9be9f10f0e840cfa3d027901a297de8cbf750
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87b32fdef449945b1e8facac2ac5a51b4ef67972
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328162"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617560"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kurz: Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat. 
@@ -82,8 +82,6 @@ V tomto kurzu použijete název a klíč svého účtu úložiště Azure. Získ
 
 1. V okně **Účet úložiště** vyberte **Přístupové klíče**.
 
-    ![Získání názvu a klíče účtu úložiště](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
-
 1. Zkopírujte hodnoty polí **Název účtu úložiště** a **klíč1** a vložte je do Poznámkového bloku nebo jiného editoru pro pozdější použití v rámci kurzu. 
 
 #### <a name="create-the-adftutorial-container"></a>Vytvoření kontejneru adftutorial 
@@ -107,7 +105,6 @@ V této části vytvoříte ve svém úložišti objektů blob v Azure kontejner
 
 1. Okno **Kontejner** pro **adftutorial** nechte otevřené. Použijete ji k ověření výstupu na konci tohoto kurzu. Data Factory v tomto kontejneru vytvoří výstupní složku automaticky, takže ji nemusíte vytvářet.
 
-    ![Okno Kontejner](media/tutorial-hybrid-copy-powershell/container-page.png)
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 
@@ -179,7 +176,7 @@ Pokud jej ve svém počítači ještě nemáte, nainstalujte nejnovější verzi
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Pro vytvoření instancí datové továrny musí mít uživatelský účet, který použijete pro přihlášení k Azure, přiřazenou roli *přispěvatel* nebo *vlastník* předplatného Azure nebo musí být jeho *správcem*.
-> * Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (Azure HDInsight atd.) používané datovou továrnou můžou být v jiných oblastech.
+> * Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (Azure HDInsight atd.) používané datovou továrnou můžou být v jiných oblastech.
 > 
 > 
 
@@ -415,7 +412,7 @@ V tomto kroku s datovou továrnou propojíte místní instanci SQL Serveru.
     > [!IMPORTANT]
     > - Vyberte odpovídající část na základě ověřování, které používáte pro připojení k vaší instanci SQL Serveru.
     > - Položku **\<integration runtime name>** nahraďte názvem vašeho prostředí Integration Runtime.
-    > - Než soubor uložíte, položky **\<servername>**, **\<databasename>**, **\<username>**, a **\<password>** nahraďte odpovídajícími hodnotami pro vaši instanci SQL Serveru.
+    > - Než soubor uložíte, položky **\<servername>** , **\<databasename>** , **\<username>** , a **\<password>** nahraďte odpovídajícími hodnotami pro vaši instanci SQL Serveru.
     > - Pokud v názvu uživatelského účtu nebo serveru potřebujete použít zpětné lomítko (\\), vložte před něj řídicí znak (\\). Použijte například *mydomain\\\\myuser*. 
 
 1. Pokud chcete šifrovat citlivá data (uživatelské jméno, heslo atd.), spusťte rutinu `New-AzDataFactoryV2LinkedServiceEncryptedCredential`.  

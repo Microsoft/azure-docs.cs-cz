@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 37b6a9947d3cabe1f566f842e321229efe9d03b6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 25275aeb6637d50379b7c71e87be9ecffce269db
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598528"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614685"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Vytvoření konzolové aplikace .NET pro správu dat v Azure Cosmos DB účtu rozhraní SQL API
 
@@ -253,7 +253,7 @@ Databázi lze vytvořit buď pomocí ``CosmosClient`` funkce [**CreateDatabaseIf
 
 Zvolte **F5** pro spuštění aplikace.
 
-Blahopřejeme! Úspěšně jste vytvořili databázi Azure Cosmos DB.  
+Blahopřejeme! Úspěšně jste vytvořili databázi Azure Cosmos.  
 
 ## <a id="CreateColl"></a>Krok 5: Vytvoření kontejneru
 > [!WARNING]
@@ -283,10 +283,10 @@ Kontejner lze vytvořit pomocí funkce [**CreateContainerIfNotExistsAsync**](/do
 
    Zvolte **F5** pro spuštění aplikace.
 
-Blahopřejeme! Úspěšně jste vytvořili kontejner Azure Cosmos DB.  
+Blahopřejeme! Úspěšně jste vytvořili kontejner Azure Cosmos.  
 
 ## <a id="CreateDoc"></a>Krok 6: Přidat položky do kontejneru
-Položku lze vytvořit pomocí funkce [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) třídy **CosmosContainer** . Při používání rozhraní SQL API jsou položky dokumenty, které představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit položku do kontejneru Azure Cosmos DB.
+Položku lze vytvořit pomocí funkce [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) třídy **CosmosContainer** . Při používání rozhraní SQL API jsou položky dokumenty, které představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit položku do kontejneru Azure Cosmos.
 
 Nejprve vytvoříme třídu **Family** , která bude představovat objekty uložené v rámci Azure Cosmos DB v této ukázce. Kromě toho vytvoříme i podtřídy **Parent**, **Child**, **Pet** a **Address**, které se použijí v rámci **Family**. Položka poznámky musí mít vlastnost **ID** serializovanou jako **ID** ve formátu JSON.
 
@@ -294,7 +294,7 @@ Nejprve vytvoříme třídu **Family** , která bude představovat objekty ulož
 
     ![Snímek obrazovky s přidáním nové třídy Family.cs do projektu](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
 
-1. Zkopírujte a vložte třídu **rodin**, nadřazených , podřízených, **PET**a **Address** do **Family.cs**.
+1. Zkopírujte a vložte třídu **rodin**,nadřazených, podřízených, **PET**a **Address** do **Family.cs**.
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
@@ -320,7 +320,7 @@ Kód zkontroluje, zda ještě před vytvořením položky se stejným ID neexist
 
 Zvolte **F5** pro spuštění aplikace.
 
-Blahopřejeme! Úspěšně jste vytvořili dvě položky Azure Cosmos DB.  
+Blahopřejeme! Úspěšně jste vytvořili dvě položky Azure Cosmos.  
 
 ## <a id="Query"></a>Krok 7: Dotazy Azure Cosmos DB prostředky
 Azure Cosmos DB podporuje bohaté [dotazy](sql-api-sql-query.md) na dokumenty JSON uložené v každé z kolekcí. Následující vzorový kód ukazuje, jak spustit dotaz proti položkám, které jsme vložili v předchozím kroku.
@@ -347,7 +347,7 @@ Azure Cosmos DB podporuje bohaté [dotazy](sql-api-sql-query.md) na dokumenty JS
 
 Zvolte **F5** pro spuštění aplikace.
 
-Blahopřejeme! Úspěšně jste dotazováni na kontejner Azure Cosmos DB.
+Blahopřejeme! Úspěšně jste dotazováni na kontejner Azure Cosmos.
 
 ## <a id="ReplaceItem"></a>Krok 8: Nahradit položku JSON
 Nyní budeme aktualizovat položku v Azure Cosmos DB.
@@ -375,7 +375,7 @@ Nyní budeme aktualizovat položku v Azure Cosmos DB.
 
    Zvolte **F5** pro spuštění aplikace.
 
-Blahopřejeme! Úspěšně jste nahradili položku Azure Cosmos DB.
+Blahopřejeme! Úspěšně jste nahradili položku Azure Cosmos.
 
 ## <a id="DeleteDocument"></a>Krok 9: Odstranit položku
 Nyní odstraníme položku v Azure Cosmos DB.
@@ -404,7 +404,7 @@ Nyní odstraníme položku v Azure Cosmos DB.
 
 Zvolte **F5** pro spuštění aplikace.
 
-Blahopřejeme! Úspěšně jste odstranili položku Azure Cosmos DB.
+Blahopřejeme! Úspěšně jste odstranili položku Azure Cosmos.
 
 ## <a id="DeleteDatabase"></a>Krok 10: Odstranění databáze
 Nyní odstraníme naši databázi. Odstraněním vytvořené databáze dojde k odebrání databáze a všech podřízených prostředků (kontejnerů, položek a všech uložených procedur, uživatelsky definovaných funkcí a triggerů). Odstraníme také instanci **CosmosClient** .
@@ -419,7 +419,7 @@ Nyní odstraníme naši databázi. Odstraněním vytvořené databáze dojde k o
 
 Zvolte **F5** pro spuštění aplikace.
 
-Blahopřejeme! Úspěšně jste odstranili databázi Azure Cosmos DB.
+Blahopřejeme! Úspěšně jste odstranili databázi Azure Cosmos.
 
 ## <a id="Run"></a>Krok 11: Spustit C# konzolovou aplikaci dohromady!
 V aplikaci Visual Studio vyberte F5 a sestavte a spusťte aplikaci v režimu ladění.

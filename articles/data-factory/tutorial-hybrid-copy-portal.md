@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: abnarain
-ms.openlocfilehash: 7e09c36128c3471ce9df33b2a78eb14fab89435b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad09715f8ccbe20ec6f58d3a4543e0168e9f4cbc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60497937"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617706"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
 V tomto kurzu pomocí uživatelského rozhraní služby Azure Data Factory vytvoříte kanál datové továrny, který kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat.
@@ -89,7 +89,6 @@ V tomto kurzu použijete název a klíč svého účtu úložiště. Název a kl
 
 1. V okně **Účet úložiště** vyberte **Přístupové klíče**.
 
-    ![Přístupové klíče](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
 
 1. Zkopírujte hodnoty polí **Název účtu úložiště** a **klíč1** a vložte je do Poznámkového bloku nebo jiného editoru pro pozdější použití v rámci kurzu. 
 
@@ -114,14 +113,11 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 1. Okno **Kontejner** pro **adftutorial** nechte otevřené. Použijete ji k ověření výstupu na konci tohoto kurzu. Data Factory v tomto kontejneru vytvoří výstupní složku automaticky, takže ji nemusíte vytvářet.
 
-    ![Okno Kontejner](media/tutorial-hybrid-copy-powershell/container-page.png)
-
-
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní služby Data Factory, ve kterém v této datové továrně vytvoříte kanál. 
 
 1. Otevřete webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **Data a analýzy** > **služby Data Factory**:
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**:
    
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -195,7 +191,7 @@ Název datové továrny musí být *globálně jedinečný*. Pokud se u pole s n
 
     ![Název prostředí Integration Runtime](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
 
-1. V části **možnost 1: Expresní instalace**vyberte **kliknutím sem spustíte expresní instalaci pro tento počítač**. 
+1. V **části možnost 1: Expresní instalace**vyberte **kliknutím sem spustíte expresní instalaci pro tento počítač**. 
 
     ![Odkaz na expresní instalaci](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 
@@ -231,7 +227,7 @@ Název datové továrny musí být *globálně jedinečný*. Pokud se u pole s n
 
     a. Ověřte, že se v části **Propojená služba** zobrazí **SqlServerLinkedService**.
 
-    b. V rozevíracím seznamu **Tabulka** vyberte **[dbo].[emp]**.
+    b. V rozevíracím seznamu **Tabulka** vyberte **[dbo].[emp]** .
 
     ![Informace o připojení zdrojové datové sady](./media/tutorial-hybrid-copy-portal/source-dataset-connection.png)
 

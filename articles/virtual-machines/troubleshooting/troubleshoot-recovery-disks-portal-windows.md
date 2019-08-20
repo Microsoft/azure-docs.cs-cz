@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/13/2018
+ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: 8ab6fc75475cd99e3d803450476880175f12d2b6
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: d90238f376a1197964f6dd2fdaa6a6608a156dc6
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881162"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611840"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal
 Pokud váš virtuální počítač s Windows v Azure najde chybu spuštění nebo disku, možná budete muset provést kroky pro řešení potíží na samotném virtuálním pevném disku. Běžným příkladem může být neúspěšná aktualizace aplikace, která brání úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí Azure Portal připojit virtuální pevný disk k jinému virtuálnímu počítači s Windows a opravit případné chyby a pak znovu vytvořit původní virtuální počítač. 
@@ -26,61 +26,78 @@ Pokud váš virtuální počítač s Windows v Azure najde chybu spuštění neb
 ## <a name="recovery-process-overview"></a>Přehled procesu obnovení
 Proces řešení potíží je následující:
 
-1. Odstraňte virtuální počítač, na kterém dochází k potížím, a zachováte virtuální pevné disky.
-2. Připojte virtuální pevný disk k jinému virtuálnímu počítači s Windows pro účely odstraňování potíží.
-3. Připojení k virtuálnímu počítači pro řešení potíží. Úpravou souborů nebo spuštěním libovolných nástrojů opravte potíže s původním virtuálním pevným diskem.
-4. Odpojení virtuálního pevného disku od virtuálního počítače pro řešení potíží.
-5. Vytvořte virtuální počítač pomocí původního virtuálního pevného disku.
-
-U virtuálního počítače, který používá spravovaný disk, teď můžeme použít Azure PowerShell ke změně disku s operačním systémem pro virtuální počítač. Už nepotřebujeme virtuální počítač odstranit a znovu vytvořit. Další informace najdete v tématu [řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure PowerShell](troubleshoot-recovery-disks-windows.md).
+1. Zastavte ovlivněný virtuální počítač.
+1. Vytvořte snímek pro disk s operačním systémem virtuálního počítače.
+1. Z snímku vytvořte virtuální pevný disk.
+1. Připojte virtuální pevný disk k jinému virtuálnímu počítači s Windows pro účely odstraňování potíží.
+1. Připojení k virtuálnímu počítači pro řešení potíží. Úpravou souborů nebo spuštěním libovolných nástrojů opravte potíže s původním virtuálním pevným diskem.
+1. Odpojení virtuálního pevného disku od virtuálního počítače pro řešení potíží.
+1. Proměňte disk s operačním systémem pro virtuální počítač.
 
 > [!NOTE]
 > Tento článek se nevztahuje na virtuální počítač s nespravovaným diskem.
 
-## <a name="determine-boot-issues"></a>Určení problémů se spouštěním
-Pokud chcete zjistit, proč se váš virtuální počítač nemůže správně spustit, Projděte si snímek obrazovky virtuálního počítače diagnostiky spouštění. Běžným příkladem může být neúspěšná aktualizace aplikace nebo odstranění nebo přesunutí základního virtuálního pevného disku.
+## <a name="take-a-snapshot-of-the-os-disk"></a>Pořídit snímek disku s operačním systémem
+Snímek je plná kopie virtuálního pevného disku jen pro čtení (VHD). Doporučujeme, abyste virtuální počítač před vytvořením snímku čistě vypnuli, aby se vymazaly všechny procesy, které probíhají. Pokud chcete pořídit snímek disku s operačním systémem, postupujte podle těchto kroků:
 
-Na portálu vyberte svůj virtuální počítač a pak přejděte dolů k části **Podpora a řešení potíží** . Kliknutím na **Diagnostika spouštění** zobrazte snímek obrazovky. Poznamenejte si všechny konkrétní chybové zprávy nebo chybové kódy, které vám pomůžou zjistit, proč se u virtuálního počítače objevil problém.
+1. Přejít na [Azure Portal](https://portal.azure.com). Z bočního panelu vyberte **virtuální počítače** a potom vyberte virtuální počítač, který má problém.
+1. V levém podokně vyberte **disky**a potom vyberte název disku s operačním systémem.
+    ![Obrázek s názvem disku s operačním systémem](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
+1. Na stránce **Přehled** na disku s operačním systémem a pak vyberte **vytvořit snímek**.
+1. Vytvořte snímek ve stejném umístění jako disk s operačním systémem.
 
-![Zobrazení protokolů konzoly pro diagnostiku spouštění virtuálního počítače](./media/troubleshoot-recovery-disks-portal-windows/screenshot-error.png)
+## <a name="create-a-disk-from-the-snapshot"></a>Vytvoření disku ze snímku
+K vytvoření disku ze snímku použijte následující postup:
 
-Můžete také kliknout na **Stáhnout snímek obrazovky** a stáhnout snímek obrazovky virtuálního počítače.
+1. Z Azure Portal vyberte **Cloud Shell** .
 
-## <a name="view-existing-virtual-hard-disk-details"></a>Zobrazit podrobnosti o existujícím virtuálním pevném disku
-Než budete moci připojit virtuální pevný disk k jinému virtuálnímu počítači, je nutné určit název virtuálního pevného disku (VHD).
+    ![Obrázek o otevřené Cloud Shell](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
+1. Spuštěním následujících příkazů PowerShellu vytvořte ze snímku spravovaný disk. Tyto vzorové názvy byste měli nahradit odpovídajícími názvy.
 
-Vyberte virtuální počítač, který má problém, a pak vyberte **disky**. Poznamenejte si název disku s operačním systémem, jak je uvedeno v následujícím příkladu:
+    ```powershell
+    #Provide the name of your resource group
+    $resourceGroupName ='myResourceGroup'
+    
+    #Provide the name of the snapshot that will be used to create Managed Disks
+    $snapshotName = 'mySnapshot' 
+    
+    #Provide the name of theManaged Disk
+    $diskName = 'newOSDisk'
+    
+    #Provide the size of the disks in GB. It should be greater than the VHD file size. In this sample, the size of the snapshot is 127 GB. So we set the disk size to 128 GB.
+    $diskSize = '128'
+    
+    #Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
+    $storageType = 'StandardLRS'
+    
+    #Provide the Azure region (e.g. westus) where Managed Disks will be located.
+    #This location should be same as the snapshot location
+    #Get all the Azure location using command below:
+    #Get-AzLocation
+    $location = 'westus'
+    
+    $snapshot = Get-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName 
+     
+    $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
+     
+    New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
+    ```
+3. Pokud se příkazy úspěšně spustí, zobrazí se nový disk ve skupině prostředků, kterou jste zadali.
 
-![Výběr objektů BLOB služby Storage](./media/troubleshoot-recovery-disks-portal-windows/view-disk.png)
-
-## <a name="delete-existing-vm"></a>Odstranit existující virtuální počítač
-Virtuální pevné disky a virtuální počítače jsou v Azure dva různé prostředky. Virtuální pevný disk je místo, kde se ukládají samotné operační systémy, aplikace a konfigurace. Samotný virtuální počítač je jenom metadata definující velikost nebo umístění a odkazuje na prostředky, jako je virtuální pevný disk nebo karta virtuální sítě (NIC). Pro každý virtuální pevný disk je zapůjčení přiřazeno při připojení k virtuálnímu počítači. Přestože datové disky je možné připojovat a odpojovat dokonce i za běhu virtuálního počítače, disk s operačním systémem není možné odpojit, dokud se neodstraní prostředek virtuálního počítače. Zapůjčení nadále přidružuje disk s operačním systémem k virtuálnímu počítači i v případě, že je tento virtuální počítač ve stavu Zastaveno a zrušeno.
-
-Prvním krokem při obnovení virtuálního počítače je odstranění samotného prostředku virtuálního počítače. Když odstraníte virtuální počítač, virtuální pevné disky zůstanou ve vašem účtu úložiště. Po odstranění virtuálního počítače připojíte virtuální pevný disk k jinému virtuálnímu počítači, abyste mohli řešit problémy a vyřešit chyby.
-
-Na portálu vyberte svůj virtuální počítač a pak klikněte na **Odstranit**:
-
-![Snímek obrazovky diagnostiky spouštění virtuálního počítače zobrazující chybu spuštění](./media/troubleshoot-recovery-disks-portal-windows/stop-delete-vm.png)
-
-Než se virtuální pevný disk připojíte k jinému virtuálnímu počítači, počkejte, než se dokončí odstranění virtuálního počítače. Aby bylo možné připojit virtuální pevný disk k jinému virtuálnímu počítači, musí být zapůjčení virtuálního pevného disku, který ho přidružuje k virtuálnímu počítači, vydaný.
-
-## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>Připojit stávající virtuální pevný disk k jinému virtuálnímu počítači
-V následujících několika krocích použijete pro účely odstraňování potíží jiný virtuální počítač. K tomuto virtuálnímu počítači pro řešení potíží připojíte existující virtuální pevný disk, abyste mohli procházet a upravovat obsah disku. Tento proces umožňuje opravit chyby v konfiguraci nebo zkontrolovat soubory protokolu aplikace nebo systému, například. Vyberte nebo vytvořte jiný virtuální počítač, který chcete použít pro účely řešení potíží.
+## <a name="attach-the-disk-to-another-vm"></a>Připojte disk k jinému virtuálnímu počítači.
+V následujících několika krocích použijete pro účely odstraňování potíží jiný virtuální počítač. Po připojení disku k virtuálnímu počítači pro řešení potíží můžete procházet a upravovat obsah disku. Tento proces umožňuje opravit chyby konfigurace nebo zkontrolovat další soubory protokolu aplikace nebo systému. K připojení disku k jinému virtuálnímu počítači použijte následující postup:
 
 1. Z portálu vyberte skupinu prostředků a potom vyberte virtuální počítač pro řešení potíží. Vyberte **disky**, vyberte **Upravit**a pak klikněte na **přidat datový disk**:
 
     ![Připojit existující disk na portálu](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. V seznamu **datové disky** vyberte disk s operačním systémem virtuálního počítače, který jste identifikovali. Pokud se disk s operačním systémem nezobrazuje, ujistěte se, že je virtuální počítač pro řešení potíží a disk s operačním systémem ve stejné oblasti (umístění).
+2. V seznamu **datové disky** vyberte disk s operačním systémem virtuálního počítače, který jste identifikovali. Pokud se disk s operačním systémem nezobrazuje, ujistěte se, že je virtuální počítač pro řešení potíží a disk s operačním systémem ve stejné oblasti (umístění). 
 3. Kliknutím na **Uložit** změny aplikujte.
 
-## <a name="mount-the-attached-data-disk"></a>Připojit připojený datový disk
+## <a name="mount-the-attached-data-disk-to-the-vm"></a>Připojte k virtuálnímu počítači připojený datový disk
 
-1. Otevřete připojení ke vzdálené ploše virtuálního počítače. Na portálu vyberte svůj virtuální počítač a klikněte na **připojit**. Stáhněte a otevřete soubor připojení RDP. Zadejte přihlašovací údaje pro přihlášení k VIRTUÁLNÍmu počítači následujícím způsobem:
-
-    ![Přihlaste se k VIRTUÁLNÍmu počítači pomocí vzdálené plochy](./media/troubleshoot-recovery-disks-portal-windows/open-remote-desktop.png)
-
-2. Otevřete **Správce serveru**a pak vyberte **Souborová služba a služba úložiště**. 
+1. Otevřete připojení ke vzdálené ploše na virtuálním počítači pro řešení potíží. 
+2. Na virtuálním počítači pro řešení potíží otevřete **Správce serveru**a pak vyberte **Souborová služba a služba úložiště**. 
 
     ![Vyberte Souborová služba a služba úložiště v Správce serveru](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
@@ -88,10 +105,8 @@ V následujících několika krocích použijete pro účely odstraňování pot
 
     ![Informace o připojených discích a svazcích v Správce serveru](./media/troubleshoot-recovery-disks-portal-windows/server-manager-disk-attached.png)
 
-
 ## <a name="fix-issues-on-original-virtual-hard-disk"></a>Opravit problémy s původním virtuálním pevným diskem
 S připojeným virtuálním pevným diskem teď můžete podle potřeby provádět libovolné kroky údržby a řešení potíží. Jakmile vyřešíte problémy, pokračujte následujícími kroky.
-
 
 ## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Odpojte a odpojte původní virtuální pevný disk
 Po vyřešení chyb odpojte stávající virtuální pevný disk od virtuálního počítače pro řešení potíží. Virtuální pevný disk nemůžete použít s žádným jiným virtuálním počítačem, dokud se neuvolní zapůjčení virtuálního pevného disku k virtuálnímu počítači pro řešení potíží.
@@ -111,33 +126,20 @@ Po vyřešení chyb odpojte stávající virtuální pevný disk od virtuálníh
 
     Než budete pokračovat, počkejte, než virtuální počítač úspěšně odpojí datový disk.
 
-## <a name="create-vm-from-original-hard-disk"></a>Vytvořit virtuální počítač z původního pevného disku
+## <a name="swap-the-os-disk-for-the-vm"></a>Prohození disku s operačním systémem pro virtuální počítač
 
-### <a name="method-1-use-azure-resource-manager-template"></a>Metoda 1 použití šablony Azure Resource Manager
-Pokud chcete vytvořit virtuální počítač z původního virtuálního pevného disku, použijte [tuto šablonu Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet). Šablona nasadí virtuální počítač do existující nebo nové virtuální sítě pomocí adresy URL virtuálního pevného disku z předchozího příkazu. Klikněte na tlačítko **nasadit do Azure** následujícím způsobem:
+Azure Portal teď podporuje změnu disku s operačním systémem virtuálního počítače. Postupujte přitom takto:
 
-![Nasazení virtuálního počítače ze šablony z GitHubu](./media/troubleshoot-recovery-disks-portal-windows/deploy-template-from-github.png)
+1. Přejít na [Azure Portal](https://portal.azure.com). Z bočního panelu vyberte **virtuální počítače** a potom vyberte virtuální počítač, který má problém.
+1. V levém podokně vyberte **disky**a pak vyberte **swap disk s operačním systémem**.
+        ![Obrázek odkládacího disku s operačním systémem v Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
-Šablona se načte do Azure Portal pro nasazení. Zadejte názvy pro svůj nový virtuální počítač a stávající prostředky Azure a vložte adresu URL na existující virtuální pevný disk. Pokud chcete zahájit nasazení, klikněte na **koupit**:
+1. Zvolte nový disk, který jste opravili, a potom zadejte název virtuálního počítače pro potvrzení změny. Pokud se disk v seznamu nezobrazí, počkejte 10. po odpojení disku od virtuálního počítače pro řešení potíží počkejte 10 minut. Také se ujistěte, že je disk ve stejném umístění jako virtuální počítač.
+1. Vyberte OK.
 
-![Nasazení virtuálního počítače ze šablony](./media/troubleshoot-recovery-disks-portal-windows/deploy-from-image.png)
-
-### <a name="method-2-create-a-vm-from-the-disk"></a>Metoda 2 – Vytvoření virtuálního počítače z disku
-
-1. V Azure Portal na portálu vyberte skupinu prostředků a pak najděte disk s operačním systémem. Disk můžete také vyhledat pomocí názvu disku:
-
-    ![Hledat disk z Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/search-disk.png)
-1. Vyberte **Přehled**a pak vyberte **vytvořit virtuální počítač**.
-    ![Vytvoření virtuálního počítače z disku z Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/create-vm-from-disk.png)
-1. Postupujte podle pokynů průvodce a vytvořte virtuální počítač.
-
-## <a name="re-enable-boot-diagnostics"></a>Opětovné povolení diagnostiky spouštění
-Při vytváření virtuálního počítače z existujícího virtuálního pevného disku nemusí být automaticky povolena Diagnostika spouštění. Pokud chcete zjistit stav diagnostiky spouštění a v případě potřeby ho zapnout, vyberte svůj virtuální počítač na portálu. V části **monitorování**klikněte na **nastavení diagnostiky**. Zajistěte, aby byl stav zapnutý a byl vybrán symbol zaškrtnutí vedle možnosti **Diagnostika spouštění** . Pokud provedete nějaké změny, klikněte na **Uložit**:
-
-![Aktualizovat nastavení diagnostiky spouštění](./media/troubleshoot-recovery-disks-portal-windows/reenable-boot-diagnostics.png)
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači, přečtěte si téma [řešení potíží s připojením RDP k virtuálnímu počítači Azure](troubleshoot-rdp-connection.md). Problémy s přístupem k aplikacím běžícím na vašem VIRTUÁLNÍm počítači najdete v tématu [řešení potíží s připojením aplikací na virtuálním počítači s Windows](troubleshoot-app-connection.md).
 
 Další informace o použití Správce prostředků naleznete v tématu [Azure Resource Manager Overview](../../azure-resource-manager/resource-group-overview.md).
+
 

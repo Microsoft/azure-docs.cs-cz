@@ -1,103 +1,115 @@
 ---
-title: Přehled služby Azure Active Directory Domain Services | Dokumentace Microsoftu
-description: Přehled služby Azure Active Directory Domain Services
+title: Přehled Azure Active Directory Domain Services | Microsoft Docs
+description: V tomto přehledu se dozvíte, co Azure Active Directory Domain Services poskytuje a jak ho ve vaší organizaci používat k poskytování služeb identit aplikacím a službám v cloudu.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
-ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/20/2019
+ms.topic: overview
+ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: e29936915f0cd0b7e7ae7adfdbdb90d31195cd34
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 921266b78b82364b4610dcd74b6ee16ee44cb060
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472753"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617246"
 ---
-# <a name="azure-active-directory-ad-domain-services"></a>Doména služby Azure Active Directory (AD)
-## <a name="overview"></a>Přehled
-Infrastruktura Azure zlepšuje vám umožňují nasazovat širokou škálu výpočetních řešení promptně. S Azure Virtual Machines můžete řešení nasazovat prakticky okamžitě a platíte jenom za využívané minuty. S využitím podpory pro Windows, Linux, SQL Server, Oracle, IBM, SAP a BizTalk, můžete nasadit jakýkoli úkol, libovolný jazyk, a na téměř jakýkoli operační systém. Mezi tyto výhody umožňují snadno migrovat starší verze aplikace nasazené v místním do Azure, a Šetřete na provozní výdaje.
+# <a name="what-is-azure-active-directory-domain-services"></a>Co je Azure Active Directory Domain Services?
 
-Klíčový aspekt migraci místních aplikací do Azure je zpracování identity požadavky těchto aplikací. Aplikací podporujících adresářové služby mohou spoléhat na LDAP pro čtení nebo zápis do podnikového adresáře nebo využívají integrované ověřování Windows (ověřování protokolu Kerberos nebo NTLM) k ověření koncových uživatelů. Obchodní aplikace (LOB) běžící na Windows serveru se obvykle nasazují na počítačích připojených k doméně, aby bylo možné je spravovat pomocí zásad skupiny. Pro "lift and shift" u místních aplikací do cloudu nutné vyřešit tyto závislosti v infrastruktuře podnikové identity.
+Azure Active Directory Domain Services (Azure služba AD DS) poskytuje spravované doménové služby, jako je připojení k doméně, zásady skupiny, LDAP a ověřování pomocí protokolu Kerberos nebo NTLM, které jsou plně kompatibilní se službou Windows Server Active Directory. Tyto doménové služby budete používat bez nutnosti nasazovat, spravovat a opravovat řadiče domény v cloudu. Azure služba AD DS se integruje s vaším stávajícím tenant Azure AD, který umožňuje uživatelům přihlásit se pomocí jejich stávajících přihlašovacích údajů. Pomocí existujících skupin a uživatelských účtů taky můžete zabezpečit přístup k prostředkům, což poskytuje plynulý přenos místních prostředků do Azure.
 
-Správci často zapnout na jednu z následujících řešení, abyste vyhověli potřebám identity aplikací nasazených v Azure:
+Azure služba AD DS replikuje informace o identitě z Azure AD, takže funguje s klienty Azure AD, které jsou jenom pro Cloud, nebo synchronizované s místním prostředím Active Directory Domain Services (služba AD DS). Pokud máte existující místní služba AD DS prostředí, můžete synchronizovat informace o uživatelském účtu a zajistit tak konzistentní identitu pro uživatele. Pro cloudová prostředí nepotřebujete tradiční místní služba AD DS prostředí, abyste mohli používat centralizované služby identit Azure služba AD DS. Pro obě prostředí existují stejné sady funkcí Azure služba AD DS.
 
-* Připojení VPN typu site-to-site mezi úlohy probíhající ve službách infrastruktury Azure a podnikový adresář v místním nasazení.
-* Rozšiřte podnikové infrastruktury domény nebo doménové struktuře AD nastavení repliky řadičů domény pomocí služby Azure virtual machines.
-* Nasazení samostatné domény v Azure pomocí řadiče domény nasazené jako virtuální počítače Azure.
+Následující video poskytuje přehled o tom, jak se Azure služba AD DS integruje s vašimi aplikacemi a úlohami a poskytuje služby identity v cloudu:
 
-Všechny tyto přístupy trpí vysoké náklady a režijní náklady na správu. Správci jsou nutné k nasazení řadičů domény pomocí virtuálních počítačů v Azure. Kromě toho potřebují spravovat, zabezpečit, opravy, monitorování, zálohování a řešení těchto virtuálních počítačů. Závislost na připojení VPN v místním adresáři způsobí, že úloh nasazených v Azure a být zranitelné v důsledku přechodných síťových chyb a méně výpadků. Tyto výpadky sítě zase mít za následek nižší dostupnost a sníženou spolehlivost pro tyto aplikace.
-
-Jsme navrhovali Azure AD Domain Services poskytují jednodušší alternativu.
-
-### <a name="watch-an-introductory-video"></a>Podívejte se na úvodní video
+<br />
 
 >[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]
 
-## <a name="introducing-azure-ad-domain-services"></a>Introducing Azure AD Domain Services
+## <a name="common-ways-to-provide-identity-solutions-in-the-cloud"></a>Běžné způsoby poskytování řešení identity v cloudu
 
-Azure AD Domain Services poskytuje služby spravované domény, jako je například připojení k doméně, skupiny zásad, LDAP, Kerberos nebo NTLM, které jsou plně kompatibilní s Windows Server Active Directory. Můžete využívat tyto domény služby bez nutnosti nasazovat, spravovat a oprava řadiče domény v cloudu. Azure AD Domain Services se integruje s existujícím tenantovi Azure AD a tím umožnit uživatelům přihlášení pomocí svých podnikových přihlašovacích údajů. Kromě toho vám pomůže stávajících skupin a uživatelské účty zabezpečení přístupu k prostředkům, čímž zajišťuje hladší "lift a shift" on-premises prostředků se službami infrastruktury Azure.
+Když migrujete stávající úlohy do cloudu, aplikace podporující adresáře můžou používat protokol LDAP pro přístup pro čtení nebo zápis do místního adresáře služba AD DS. Aplikace, které běží na Windows serveru, se obvykle nasazují při připojení k doméně, aby je bylo možné bezpečně spravovat pomocí Zásady skupiny. K ověřování koncových uživatelů se můžou aplikace spoléhat i na integrované ověřování Windows, jako je například ověřování pomocí protokolu Kerberos nebo NTLM.
 
-Funkce Azure AD Domain Services funguje bez problémů bez ohledu na to, jestli je váš tenant Azure AD výhradně cloudový nebo synchronizované s místní Active Directory.
+Správci IT často používají jedno z následujících řešení k poskytování služby identity aplikacím, které běží v Azure:
 
-### <a name="azure-ad-domain-services-for-cloud-only-organizations"></a>Azure AD Domain Services u výhradně cloudového organizací
+* Nakonfigurujte připojení VPN typu Site-to-site mezi úlohami spuštěnými v Azure a místním prostředím služba AD DS.
+* Pomocí virtuálních počítačů Azure můžete k rozšiřování služba AD DS domény nebo doménové struktury vytvořit repliku řadičů domény.
+* Nasazení samostatného služba AD DSho prostředí v Azure pomocí řadičů domény, které běží na virtuálních počítačích Azure.
 
-Výhradně cloudového tenanta Azure AD (označovaný také jako "spravované tenantů") nemá žádné místní identity nároky na místo. Jinými slovy uživatelské účty, jejich hesla a členství ve skupinách jsou všechny nativní pro cloud – to znamená, vytvářet a spravovat ve službě Azure AD. Vezměte v úvahu na chvíli zastavíme Contoso je výhradně cloudového tenanta Azure AD. Jak je znázorněno na následujícím obrázku, správce společnosti Contoso má nakonfigurovanou virtuální síť ve službách infrastruktury Azure. Aplikace a úlohy serveru jsou nasazené v této virtuální síti ve službě Azure virtual machines. Protože Contoso je výhradně cloudový tenant, všechny identity uživatelů, jejich přihlašovacích údajů a členství ve skupinách se vytvářet a spravovat ve službě Azure AD.
+Díky těmto přístupům sítě VPN k místnímu adresáři připojovat aplikace k přechodným síťovým histogramu nebo výpadkům sítě. Pokud nasadíte řadiče domény pomocí virtuálních počítačů v Azure, virtuální počítače IT týmu musí spravovat, zabezpečovat, opravovat, monitorovat, zálohovat a řešit potíže.
 
-![Azure AD Domain Services Overview](./media/active-directory-domain-services-overview/aadds-overview.png)
+Azure služba AD DS nabízí alternativy k nutnosti vytvářet připojení VPN zpátky do místního prostředí služba AD DS nebo spouštět a spravovat virtuální počítače v Azure za účelem poskytování služeb identit. Služba Azure služba AD DS jako spravovaná služba zjednodušuje vytváření řešení integrované identity pro hybridní i cloudové prostředí.
 
-Společnosti Contoso IT správce může povolit Azure AD Domain Services pro svého tenanta Azure AD a zvolit, jestli služby domain services k dispozici v této virtuální síti. Po tomto datu Azure AD Domain Services zřizuje spravované domény a zpřístupňuje je ve virtuální síti. Všechny uživatelské účty, členství ve skupinách a přihlašovacích údajů uživatele ve společnosti Contoso tenantovi Azure AD k dispozici jsou také k dispozici v tomto nově vytvořené domény. Tato funkce umožňuje uživatelům v organizaci přihlásit k doméně pomocí podnikových přihlašovacích údajů – například při vzdáleném připojení k doméně počítače přes vzdálenou plochu. Správci můžou zřizovat přístup k prostředkům v doméně pomocí existujícího členství ve skupinách. Aplikace nasazenými na virtuálních počítačích ve virtuální síti můžou využívat funkce, jako je připojení k doméně, LDAP pro čtení, LDAP bind, ověřování protokolů NTLM a Kerberos a zásad skupiny.
+## <a name="azure-ad-ds-features-and-benefits"></a>Funkce a výhody pro Azure služba AD DS
 
-Několik nejdůležitějšími aspekty spravované domény, zřízenou se službou Azure AD Domain Services jsou následující:
+Aby služby identit poskytovaly aplikace a virtuální počítače v cloudu, služba Azure služba AD DS je plně kompatibilní s tradičním služba AD DSm prostředím pro operace, jako je připojení k doméně, zabezpečení LDAP (LDAPs), Zásady skupiny a správa DNS, a podpora čtení a vazeb LDAP. Podpora zápisu LDAP je k dispozici pro objekty vytvořené ve spravované doméně služby Azure služba AD DS, ale ne prostředky synchronizované z Azure AD. Následující funkce Azure služba AD DS zjednodušují operace nasazení a správy:
 
-* Společnosti Contoso IT správce není potřeba spravovat, opravovat nebo sledovat tuto doménu nebo všechny řadiče domény pro tuto spravovanou doménu.
-* Není nutné ke správě replikace služby AD pro tuto doménu. Uživatelské účty, členství ve skupinách a přihlašovacích údajů ve společnosti Contoso tenantovi Azure AD jsou automaticky dostupné v rámci této spravované doméně.
-* Vzhledem k tomu, že doménu je spravované službou Azure AD Domain Services, Contoso na správce IT nemá oprávnění správce domény nebo správce podnikové sítě v této doméně.
+* **Prostředí pro zjednodušené nasazení:** Služba Azure služba AD DS je povolená pro vašeho tenanta Azure AD pomocí jediného průvodce v Azure Portal.
+* **Integrace se službou Azure AD:** Uživatelské účty, členství ve skupinách a přihlašovací údaje jsou automaticky dostupné z vašeho tenanta Azure AD. Noví uživatelé, skupiny nebo změny atributů z vašeho tenanta Azure AD nebo místního prostředí služba AD DS jsou automaticky synchronizovány do Azure služba AD DS.
+* **Použijte své podnikové přihlašovací údaje nebo hesla:** Hesla pro uživatele v tenantovi Azure AD fungují s Azure služba AD DS. Uživatelé můžou používat své podnikové přihlašovací údaje k počítačům připojeným k doméně, přihlašovat se interaktivně nebo přes vzdálenou plochu a ověřovat je pomocí spravované domény Azure služba AD DS.
+* **Ověřování protokolem NTLM a Kerberos:** Díky podpoře ověřování protokolem NTLM a protokolu Kerberos můžete nasazovat aplikace, které spoléhají na ověřování integrované v systému Windows.
+* **Vysoká dostupnost:** Azure služba AD DS zahrnuje několik řadičů domény, které poskytují vysokou dostupnost vaší spravované domény. Tato vysoká dostupnost zajišťuje dostupnost a odolnost služby při selhání.
 
-### <a name="azure-ad-domain-services-for-hybrid-organizations"></a>Azure AD Domain Services pro hybridní organizace
-Organizace s hybridní infrastruktury IT využívat kombinaci prostředků cloudu a místních prostředků. Tyto organizace synchronizovat informace o identitě ze svého místního adresáře do svého tenanta Azure AD. Jak hybridní organizace vypadat více migraci místních aplikací do cloudu, zejména starší verze adresářové aplikace, může být užitečné k nim Azure AD Domain Services.
+Mezi klíčové aspekty spravované domény Azure služba AD DS patří následující:
 
-Společnost litware má nasazený [Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md), synchronizovat informace o identitě ze svého místního adresáře do svého tenanta Azure AD. Informace o identitě, který je synchronizován obsahuje uživatelské účty, jejich hodnoty hash přihlašovacích údajů pro ověřování (synchronizace hodnot hash hesel) a členství ve skupinách.
+* Spravovaná doména Azure služba AD DS je samostatná doména. Nejedná se o rozšíření místní domény.
+* Váš IT tým nemusí spravovat, opravovat ani monitorovat řadiče domény pro tuto spravovanou doménu Azure služba AD DS.
 
-> [!NOTE]
-> **Synchronizace hodnot hash hesel je povinné pro hybridní organizace používat službu Azure AD Domain Services**. Tento požadavek je vzhledem k tomu, že jsou vyžadována pověření uživatelů ve spravované doméně poskytovaných službou Azure AD Domain Services k ověřování těchto uživatelů prostřednictvím metody pro ověřování protokolů NTLM nebo Kerberos.
->
->
+Pro hybridní prostředí, která běží služba AD DS místně, nemusíte spravovat replikaci AD do spravované domény Azure služba AD DS. Uživatelské účty, členství ve skupinách a přihlašovací údaje z místního adresáře se synchronizují do Azure AD prostřednictvím Azure AD Connect. Tyto uživatelské účty, členství ve skupinách a přihlašovací údaje jsou automaticky dostupné v rámci spravované domény Azure služba AD DS.
 
-![Azure AD Domain Services for Litware Corporation](./media/active-directory-domain-services-overview/aadds-overview-synced-tenant.png)
+## <a name="how-does-azure-ad-ds-work"></a>Jak funguje Azure služba AD DS?
 
-Na předchozím obrázku ukazuje, jak organizace s hybridní infrastrukturu IT, jako jsou společnosti Litware, můžete použít Azure AD Domain Services. Společnosti Litware aplikací a úloh serveru, které vyžadují služby domain services se nasadí ve virtuální síti ve službách infrastruktury Azure. Společnosti Litware správce IT můžete povolit Azure AD Domain Services pro svého tenanta Azure AD a zvolit, jestli spravovaná doména k dispozici v této virtuální síti. Protože společnost Litware organizaci s hybridní infrastrukturu IT, uživatelské účty, skupiny a přihlašovací údaje jsou synchronizovány do svého tenanta Azure AD ze svého místního adresáře. Tato funkce umožňuje uživatelům umožní přihlásit k doméně pomocí podnikových přihlašovacích údajů – například při vzdálené připojení pro počítače připojené k doméně přes vzdálenou plochu. Správci můžou zřizovat přístup k prostředkům v doméně pomocí existujícího členství ve skupinách. Aplikace nasazenými na virtuálních počítačích ve virtuální síti můžou využívat funkce, jako je připojení k doméně, LDAP pro čtení, LDAP bind, ověřování protokolů NTLM a Kerberos a zásad skupiny.
+Pokud chcete poskytovat služby identit, Azure vytvoří ve virtuální síti podle vašeho výběru dostupnou služba AD DS spravovanou doménu. Redundance je poskytována na pozadí a bez nutnosti spravovat, zabezpečit nebo aktualizovat, a to prostřednictvím dvojice řadičů domény Windows serveru. Spravovaná doména Azure služba AD DS je nakonfigurovaná tak, aby prováděla jednosměrnou synchronizaci z Azure AD za účelem poskytnutí přístupu k centrální skupině uživatelů, skupin a přihlašovacích údajů. Prostředky můžete vytvořit přímo ve spravované doméně Azure služba AD DS, ale nesynchronizují se zpátky do Azure AD. Aplikace, služby a virtuální počítače v Azure, které se připojují k této virtuální síti, můžou použít běžné funkce služba AD DS, jako je připojení k doméně, zásady skupiny, LDAP a ověřování pomocí protokolu Kerberos/NTLM. V hybridním prostředí s místním prostředím služba AD DS [Azure AD Connect][azure-ad-connect] synchronizuje informace o identitě s Azure AD.
 
-Několik nejdůležitějšími aspekty spravované domény, zřízenou se službou Azure AD Domain Services jsou následující:
+![Synchronizace v Azure AD Domain Services s Azure AD a místními Active Directory Domain Services pomocí služby AD Connect](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-* Spravovaná doména se samostatné domény. Není rozšířením společnosti Litware místní domény.
-* Společnosti Litware správce IT není nutné spravovat, opravovat ani monitorování řadičů domény pro tuto spravovanou doménu.
-* Není nutné ke správě replikace AD k této doméně. Uživatelské účty, členství ve skupinách a přihlašovacích údajů z místního adresáře společnosti Litware jsou synchronizovány do Azure AD prostřednictvím služby Azure AD Connect. Tyto uživatelské účty, členství ve skupinách a přihlašovací údaje jsou automaticky dostupné v rámci spravované domény.
-* Vzhledem k tomu, že doménu je spravované službou Azure AD Domain Services, Litware od správce IT nemá oprávnění správce domény nebo správce podnikové sítě v této doméně.
+Pokud se chcete podívat na Azure služba AD DS v akci, Podívejme se na několik příkladů:
 
-## <a name="benefits"></a>Výhody
-Díky službě Azure AD Domain Services budete moct využívat následující výhody:
+* [Azure služba AD DS pro hybridní organizace](#azure-ad-ds-for-hybrid-organizations)
+* [služba AD DS Azure pro cloudové organizace](#azure-ad-ds-for-cloud-only-organizations)
 
-* **Jednoduché** – nemůže splnit potřeby identity virtuálních počítačů nasazených služeb infrastruktury Azure s několika jednoduchými kliknutími. Není potřeba nasazovat a spravovat infrastrukturu identit v Azure nebo instalační program připojit zpět k vaší místní infrastruktury identit.
-* **Integrované** – Azure AD Domain Services se úzce integruje se tenanta Azure AD. Teď můžete použít Azure AD jako integrované cloudové podnikové adresáře, který určeného pro potřeby moderních aplikací i tradičních aplikací podporujících adresářové služby.
-* **Kompatibilní** – Azure AD Domain Services je postavená na infrastrukturu na podnikové úrovni zajistí prověřený podnikový systém Windows Server Active Directory. Proto se vaše aplikace můžete spolehnout na vyšší úroveň kompatibility s funkcemi systému Windows Server Active Directory. Ne všechny funkce dostupné v systému Windows Server AD jsou nyní dostupné v Azure AD Domain Services. K dispozici funkce jsou však kompatibilní s odpovídající funkce systému Windows Server AD, které se spoléháte na místní infrastrukturu. Možnosti připojení k protokolu LDAP, Kerberos, NTLM, zásad skupiny a domény tvoří až po zralé nabídka, která prošla testováním a vylepšili prostřednictvím různých verzí Windows serveru.
-* **Nákladově efektivní** – s Azure AD Domain Services, se můžete vyhnout zatížení infrastruktury a správy, který je spojen se správou infrastruktury identity, které tradičních aplikací podporujících adresářové služby. Můžete přesunout tyto aplikace se službami infrastruktury Azure a těžit z větší úspory na provozní výdaje.
+### <a name="azure-ad-ds-for-hybrid-organizations"></a>Azure služba AD DS pro hybridní organizace
 
+Řada organizací spouští hybridní infrastrukturu, která zahrnuje úlohy cloudových i místních aplikací. Starší verze aplikací migrované do Azure v rámci strategie výtahu a posunutí můžou pořád používat tradiční připojení LDAP k poskytování informací o identitě. Pro podporu této hybridní infrastruktury je možné synchronizovat informace o identitě z místního prostředí Active Directory Domain Services (služba AD DS) do tenanta služby Azure AD. Azure služba AD DS pak může poskytnout tyto starší verze aplikací v Azure se zdrojem identity, aniž by bylo nutné konfigurovat a spravovat připojení aplikací zpátky do místních adresářových služeb.
 
-## <a name="next-steps"></a>Další postup
-### <a name="learn-more-about-azure-ad-domain-services"></a>Další informace o službě Azure AD Domain Services
-* [Funkce](active-directory-ds-features.md)
-* [Scénáře nasazení](scenarios.md)
-* [Zjistěte, pokud Azure AD Domain Services vyhovuje případy použití](comparison.md)
-* [Vysvětlení, jak Azure AD Domain Services synchronizován s adresářem Azure AD](synchronization.md)
+Pojďme se podívat na příklad pro společnost Litware Corporation, hybridní organizaci, která spouští místní i prostředky Azure:
 
-### <a name="get-started-with-azure-ad-domain-services"></a>Začínáme s Azure AD Domain Services
-* [Povolení služby Azure AD Domain Services pomocí webu Azure portal](create-instance.md)
+![Azure Active Directory Domain Services pro hybridní organizaci, která zahrnuje místní synchronizaci](./media/overview/synced-tenant.png)
+
+* Úlohy aplikací a serverů, které vyžadují službu Domain Services, se nasazují ve virtuální síti v Azure.
+    * To může zahrnovat starší aplikace migrované do Azure v rámci strategie navýšení a posunutí.
+* Pokud chcete synchronizovat informace o identitě z místního adresáře do svého tenanta Azure AD, Litware Corporation nasadí [Azure AD Connect][azure-ad-connect].
+    * Mezi informace o identitě, která se synchronizují, patří uživatelské účty a členství ve skupinách.
+* Litware IT tým umožňuje služba AD DS Azure AD pro svého tenanta Azure AD v této nebo partnerské virtuální síti.
+* Aplikace a virtuální počítače nasazené ve virtuální síti Azure pak můžou používat funkce Azure služba AD DS, jako je připojení k doméně, čtení LDAP, vázání LDAP, ověřování NTLM a Kerberos, a Zásady skupiny.
+
+### <a name="azure-ad-ds-for-cloud-only-organizations"></a>služba AD DS Azure pro cloudové organizace
+
+Pouze cloudový tenant Azure AD nemá místní zdroj identity. Uživatelské účty a členství ve skupinách jsou například vytvářeny a spravovány v Azure AD.
+
+Teď se podíváme na příklad pro společnost Contoso, jenom pro cloudovou organizaci, která pro identitu používá jenom Azure AD. V Azure AD se vytvářejí a spravují všechny identity uživatelů, jejich přihlašovací údaje a členství ve skupinách. Neexistuje žádná další konfigurace Azure AD Connect k synchronizaci jakýchkoli informací o identitě z místního adresáře.
+
+![Azure Active Directory Domain Services pro cloudovou organizaci bez místní synchronizace](./media/overview/cloud-only-tenant.png)
+
+* Úlohy aplikací a serverů, které vyžadují službu Domain Services, se nasazují ve virtuální síti v Azure.
+* Tým IT společnosti Contoso povoluje Azure služba AD DS pro svého tenanta Azure AD v této nebo partnerské virtuální síti.
+* Aplikace a virtuální počítače nasazené ve virtuální síti Azure pak můžou používat funkce Azure služba AD DS, jako je připojení k doméně, čtení LDAP, vázání LDAP, ověřování NTLM a Kerberos, a Zásady skupiny.
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o Azure služba AD DS porovnání s dalšími řešeními identit a jak funguje synchronizace najdete v následujících článcích:
+
+* [Porovnání Azure služba AD DS s Azure AD, Active Directory Domain Services na virtuálních počítačích Azure a Active Directory Domain Services místních][compare]
+* [Informace o tom, jak se Azure AD Domain Services synchronizuje s adresářem služby Azure AD][synchronization]
+
+Začněte tím, [že pomocí Azure Portal vytvoříte spravovanou doménu Azure služba AD DS][tutorial-create].
+
+<!-- INTERNAL LINKS -->
+[compare]: compare-identity-solutions.md
+[synchronization]: synchronization.md
+[tutorial-create]: tutorial-create-instance.md
+[azure-ad-connect]: ../active-directory/hybrid/whatis-hybrid-identity.md
+[password-hash-sync]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md

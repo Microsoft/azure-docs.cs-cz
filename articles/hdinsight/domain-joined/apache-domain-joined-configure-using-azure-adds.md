@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 1ad3c446df2f2ce62024dfdda589669653f65ef4
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 300fd31632a6b3c9043c19dd9b47f40258080261
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488715"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614217"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak pomocí Azure Active Directory Domain Services
 >
 > Pokud je úložiště clusteru Azure Blob Storage (WASB), nepovolujte vícefaktorové ověřování.
 
-Povolení služby AzureAD-DS je předpokladem, než můžete vytvořit cluster HDInsight s protokolem ESP. Další informace najdete v tématu [povolení Azure Active Directory Domain Services pomocí Azure Portal](../../active-directory-domain-services/create-instance.md). 
+Povolení služby AzureAD-DS je předpokladem, než můžete vytvořit cluster HDInsight s protokolem ESP. Další informace najdete v tématu [povolení Azure Active Directory Domain Services pomocí Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md). 
 
 Když je povolená služba Azure AD-DS, všichni uživatelé a objekty se ve výchozím nastavení začnou synchronizovat z Azure Active Directory (AAD) do Azure AD-DS. Délka operace synchronizace závisí na počtu objektů v Azure AD. Synchronizace může pro stovky tisíc objektů trvat několik dní. 
 
@@ -39,7 +39,7 @@ Název domény, který používáte se službou Azure AD-DS, musí mít 39 znak�
 
 Můžete se rozhodnout synchronizovat jenom skupiny, které potřebují přístup ke clusterům HDInsight. Tato možnost synchronizace pouze některých skupin se nazývá *rozsah synchronizace*. Pokyny najdete v tématu [Konfigurace synchronizace s vymezeným oborem z Azure AD do spravované domény](../../active-directory-domain-services/scoped-synchronization.md) .
 
-Pokud povolíte zabezpečený protokol LDAP, zadejte název domény do pole název subjektu a alternativní název subjektu v certifikátu. Pokud je název domény například *contoso100.onmicrosoft.com*, ujistěte se, že v názvu subjektu certifikátu a alternativním názvu předmětu existuje přesný název. Další informace najdete v tématu [Konfigurace protokolu Secure LDAP pro spravovanou doménu Azure AD – DS](../../active-directory-domain-services/configure-ldaps.md). Níže je uveden příklad vytvoření certifikátu podepsaného svým držitelem a název domény (*contoso100.onmicrosoft.com*) v názvu subjektu i v DnsName (alternativní název subjektu):
+Pokud povolíte zabezpečený protokol LDAP, zadejte název domény do pole název subjektu a alternativní název subjektu v certifikátu. Pokud je název domény například *contoso100.onmicrosoft.com*, ujistěte se, že v názvu subjektu certifikátu a alternativním názvu předmětu existuje přesný název. Další informace najdete v tématu [Konfigurace protokolu Secure LDAP pro spravovanou doménu Azure AD – DS](../../active-directory-domain-services/tutorial-configure-ldaps.md). Níže je uveden příklad vytvoření certifikátu podepsaného svým držitelem a název domény (*contoso100.onmicrosoft.com*) v názvu subjektu i v DnsName (alternativní název subjektu):
 
 ```powershell
 $lifetime=Get-Date
@@ -70,7 +70,7 @@ Po vytvoření spravované identity a správné role může správce AAD-DS nast
 ## <a name="networking-considerations"></a>Aspekty sítí
 
 > [!NOTE]  
-> Služba Azure AD-DS musí být nasazená ve virtuální síti založené na Azure Resource Manager (ARM). Klasické virtuální sítě se pro Azure AD-DS nepodporují. Další podrobnosti najdete [v tématu povolení Azure Active Directory Domain Services pomocí Azure Portal](../../active-directory-domain-services/active-directory-ds-getting-started-network.md) .
+> Služba Azure AD-DS musí být nasazená ve virtuální síti založené na Azure Resource Manager. Klasické virtuální sítě se pro Azure AD-DS nepodporují. Další podrobnosti najdete [v tématu povolení Azure Active Directory Domain Services pomocí Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network) .
 
 Po povolení služby Azure AD-DS se na Virtual Machines AD (VM) spustí místní server DNS (Domain Name Service). Nakonfigurujte službu Azure AD-DS Virtual Network (VNET), aby používala tyto vlastní servery DNS. Pokud chcete najít správné IP adresy, vyberte v kategorii **Spravovat** možnost **vlastnosti** a podívejte se na IP adresy uvedené pod položkou **IP adresa v Virtual Network**.
 
@@ -120,7 +120,7 @@ Spravovanou identitu, kterou jste vytvořili, si můžete vybrat v rozevíracím
 
 ![Konfigurace služby Azure HDInsight ESP Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o konfiguraci zásad podregistru a spouštění dotazů na podregistr najdete v tématu [Konfigurace zásad Apache Hive pro clustery HDInsight s](apache-domain-joined-run-hive.md)protokolem ESP.
 * Informace o použití SSH pro připojení ke clusterům HDInsight s protokolem ESP najdete v tématu [Použití SSH se systémem linux Apache Hadoop v HDInsight ze systému Linux, UNIX nebo OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

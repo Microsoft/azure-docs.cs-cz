@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 77cfde8cc9c6556b907f1185f451c70c8c8e888d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2e6036c5f29614f2e91278b693c07dc3dc8595f2
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534027"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575485"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Vytvoření připojení typu Site-to-Site pomocí webu Azure Portal (Classic)
 
@@ -39,7 +39,7 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 * Ujistěte se, že máte kompatibilní zařízení VPN a někoho, kdo jej umí nakonfigurovat. Další informace o kompatibilních zařízeních VPN a konfiguraci zařízení najdete v tématu [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
 * Ověřte, že máte veřejnou IPv4 adresu pro vaše zařízení VPN.
 * Pokud neznáte rozsahy IP adres v konfiguraci vaší místní sítě, budete se muset spojit s někým, kdo vám s tím pomůže. Při vytváření této konfigurace musíte zadat předpony rozsahu IP adres, které bude Azure směrovat do vašeho místního umístění. Žádná z podsítí vaší místní sítě se nesmí překrývat s podsítěmi virtuální sítě, ke kterým se chcete připojit.
-* V současné době je se k zadání sdíleného klíče a vytvoření připojení brány VPN vyžaduje PowerShell. Nainstalujte nejnovější verzi rutin PowerShellu pro správu služeb Azure. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Při práci s prostředím PowerShell pro tuto konfiguraci se ujistěte, že jej spouštíte jako správce.
+* V současné době je se k zadání sdíleného klíče a vytvoření připojení brány VPN vyžaduje PowerShell. Nainstalujte nejnovější verzi rutin PowerShellu pro správu služeb Azure. Informace o instalaci rutin najdete v tématu [Správa služeb](/powershell/azure/servicemanagement/install-azure-ps). Další informace o instalaci PowerShellu obecně najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview). Při práci s prostředím PowerShell pro tuto konfiguraci se ujistěte, že jej spouštíte jako správce.
 
 ### <a name="values"></a>Ukázkové hodnoty konfigurace pro toto cvičení
 
@@ -159,6 +159,12 @@ V tomto kroku nastavíte sdílený klíč a vytvoříte připojení. Klíč, kte
 
 ### <a name="step-1-connect-to-your-azure-account"></a>Krok 1. Připojení k účtu Azure
 
+Tyto příkazy musíte spustit místně pomocí modulu pro správu služby PowerShell. Chcete-li přepnout na správu služeb, použijte tento příkaz:
+
+```powershell
+azure config mode asm
+```
+
 1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
    ```powershell
@@ -177,18 +183,14 @@ V tomto kroku nastavíte sdílený klíč a vytvoříte připojení. Klíč, kte
 
 ### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>Krok 2. Nastavení sdíleného klíče a vytvoření připojení
 
-Při práci s PowerShellem a modelem nasazení Classic někdy názvy prostředků na portálu neodpovídají názvům, které Azure při použití PowerShellu očekává. Následující kroky vám pomůžou exportovat soubor konfigurace sítě a získat tak přesné hodnoty pro tyto názvy. Tyto příkazy musíte spustit místně pomocí modulu pro správu služby PowerShell. Chcete-li přepnout na správu služeb, použijte tento příkaz:
-
-```powershell
-azure config mode asm
-```
+Když na portálu vytvoříte klasickou virtuální síť (bez použití PowerShellu), Azure přidá název skupiny prostředků do krátkého názvu. Například v závislosti na Azure je název virtuální sítě, kterou jste vytvořili pro toto cvičení, "Group TestRG1 virtuální sítě testvnet1", nikoli "virtuální sítě testvnet1". Prostředí PowerShell vyžaduje úplný název virtuální sítě, nikoli krátký název, který se zobrazí na portálu. V portálu není viditelný dlouhý název. Následující kroky vám pomůžou exportovat soubor konfigurace sítě a získat tak přesné hodnoty pro název virtuální sítě. 
 
 1. Vytvořte ve svém počítači adresář a potom do něj exportujte soubor konfigurace sítě. V tomto příkladu se soubor konfigurace sítě exportuje do adresáře C:\AzureNet.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-2. Otevřete soubor konfigurace sítě v editoru XML a zkontrolujte hodnoty „LocalNetworkSite name“ (Název místní síťové lokality) a „VirtualNetworkSite name“ (Název virtuální síťové lokality). Upravte příklad tak, aby odpovídal potřebným hodnotám. Pokud zadáváte název, který obsahuje mezery, zadejte hodnotu v jednoduchých uvozovkách.
+2. Otevřete soubor konfigurace sítě v editoru XML a zkontrolujte hodnoty „LocalNetworkSite name“ (Název místní síťové lokality) a „VirtualNetworkSite name“ (Název virtuální síťové lokality). Upravte příklad tohoto cvičení tak, aby odrážel hodnoty v XML. Pokud zadáváte název, který obsahuje mezery, zadejte hodnotu v jednoduchých uvozovkách.
 
 3. Nastavte sdílený klíč a vytvořte připojení. Hodnota, kterou generujete a zadáváte, je „-SharedKey“. V příkladu jsme použili „abc123“, ale můžete (a měli byste) vygenerovat něco složitějšího. Důležité je, aby hodnota, kterou zde zadáte, byla stejná jako hodnota, kterou jste zadali při konfiguraci zařízení VPN.
 

@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: a3e1853e587f2f1632641cbb896eba59f8dc9455
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515788"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615982"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Zdroje dat pro nástroj QnA Maker obsahu
 
 Nástroj QnA Maker automaticky extrahuje páry otázka – odpověď z částečně strukturovaných obsah, jako jsou nejčastější dotazy, produktových příruček, pokyny, podporu dokumenty a zásady uložené jako webové stránky, soubory PDF nebo soubory dokumentů aplikace Word. Obsah lze také přidat do znalostní báze ze strukturovaného QnA obsahu souborů. 
+
+## <a name="data-types"></a>Typy dat
 
 Následující tabulka shrnuje typy obsahu a souboru formáty, které podporuje QnA Maker.
 
@@ -32,11 +34,21 @@ Následující tabulka shrnuje typy obsahu a souboru formáty, které podporuje 
 
 ## <a name="data-source-locations"></a>Umístění zdroje dat.
 
-Většina umístění zdrojů dat musí poskytovat veřejné adresy URL nebo soubory, které nevyžadují ověřování. 
+Umístění zdrojů dat jsou **veřejné adresy URL nebo soubory**, které nevyžadují ověřování. 
 
-[Umístění zdrojů dat služby SharePoint](../How-to/add-sharepoint-datasources.md) můžou poskytovat ověřené soubory. Prostředky SharePoint musí být soubory, nikoli webové stránky. 
+Pokud potřebujete ověření pro zdroj dat, můžete k získání těchto dat QnA Maker použít následující metody:
 
-Pokud máte ověřený soubor nebo adresu URL, alternativní možnost je stáhnout soubor z ověřené lokality do místního počítače a pak tento soubor přidat z místního počítače do znalostní báze. 
+* [Stáhnout soubor ručně](#download-file-from-authenticated-data-source-location) a importovat do QnA maker
+* Importovat soubor pro ověřené [umístění služby SharePoint](#import-file-from-authenticated-sharepoint) 
+
+### <a name="download-file-from-authenticated-data-source-location"></a>Stáhnout soubor z umístění ověřeného zdroje dat
+
+Pokud máte ověřený soubor (ne v ověřeném umístění služby SharePoint) nebo adresu URL, je alternativním parametrem stažení souboru z ověřené lokality do místního počítače a následné přidání souboru z místního počítače do znalostní báze.
+
+### <a name="import-file-from-authenticated-sharepoint"></a>Importovat soubor z ověřeného SharePointu 
+
+[Umístění zdrojů dat služby SharePoint](../How-to/add-sharepoint-datasources.md) můžou poskytovat ověřené **soubory**. Prostředky SharePoint musí být soubory, nikoli webové stránky. V případě, že adresa URL končí rozšířením web, například **. ASPX**se nebude naimportovat do QnA maker ze SharePointu.
+
 
 ## <a name="faq-urls"></a>Nejčastější dotazy týkající se adresy URL
 
@@ -203,7 +215,7 @@ Až budete s úpravami hotovi, znovu naimportujte soubor TSV ze stránky **Nasta
 
 Pomocí kurzu **[CommonMark](https://commonmark.org/help/tutorial/index.html)** ověřte své Markdownu. V tomto kurzu je funkce **vyzkoušet** pro rychlé kopírování a vkládání. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Nastavení služby QnA Maker](../How-To/set-up-qnamaker-service-azure.md)

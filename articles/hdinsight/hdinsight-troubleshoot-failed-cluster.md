@@ -1,268 +1,268 @@
 ---
-title: Řešení potíží s pomalé nebo selhání úlohy na clusteru HDInsight – Azure HDInsight
-description: Diagnostika a řešení potíží pomalé nebo selhání clusteru HDInsight.
+title: Řešení potíží s pomalými nebo neúspěšnými úlohami v clusteru HDInsight – Azure HDInsight
+description: Diagnostikujte a vyřešte problém s pomalým nebo neúspěšným clusterem HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: b7afeee554a1faee9507f0a891803024f3bc11e4
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203633"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69573601"
 ---
-# <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Řešení potíží s pomalé nebo selhání úlohy na HDInsight cluster
+# <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Řešení potíží s pomalými nebo neúspěšnými úlohami v clusteru HDInsight
 
-Pokud aplikace zpracovává data v clusteru HDInsight je buď neběží pomalu nebo neúspěšné s kódem chyby, máte několik možností, jak řešení potíží. Pokud vaše úlohy trvá delší dobu, než se očekávalo, nebo pomalé odezvy se zobrazuje v obecných, může být selhání upstream z vašeho clusteru, jako jsou služby, na kterých běží clusteru. Nejčastější příčinou tomuto zpomalování je však nedostatečné škálování. Když vytvoříte nový cluster HDInsight, vyberte odpovídající [velikostí virtuálních počítačů](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
+Pokud aplikace zpracovávající data v clusteru HDInsight běží pomalu nebo selhává s kódem chyby, máte několik možností pro odstraňování potíží. Pokud vaše úlohy trvá déle, než se očekávalo, nebo pokud vidíte pomalé odezvy obecně, může dojít k chybám, které jsou v clusteru v provozu, jako jsou například služby, na kterých cluster běží. Nejběžnější příčinou těchto zpomalování je ale nedostatečné škálování. Když vytváříte nový cluster HDInsight, vyberte odpovídající [velikosti virtuálních počítačů](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
 
-K diagnostice pomalé nebo selhání clusteru, shromážděte informace o všech aspektech prostředí, jako jsou přidružené služby Azure, konfiguraci clusteru a informace o spuštění úlohy. Užitečné Diagnostika je pokusit se reprodukovat chyby stavu na jiném clusteru.
+Pro diagnostiku pomalého nebo neúspěšného clusteru Shromážděte informace o všech aspektech prostředí, jako jsou přidružené služby Azure, konfigurace clusteru a informace o spuštění úloh. Užitečnou diagnostikou je pokus o reprodukování chybového stavu na jiném clusteru.
 
-* Krok 1: Shromažďování dat o problému.
-* Krok 2: Ověření clusteru prostředí HDInsight.
+* Krok 1: Shromážděte údaje o problému.
+* Krok 2: Ověřte prostředí clusteru HDInsight.
 * Krok 3: Zobrazte stav vašeho clusteru.
-* Krok 4: Projděte si prostředí zásobníku a verze.
-* Krok 5: Zkontrolujte soubory protokolu clusteru.
-* Krok 6: Zkontrolujte nastavení konfigurace.
-* Krok 7: Reprodukujte chybu na jiném clusteru.
+* Krok 4: Zkontrolujte zásobník prostředí a verze.
+* Krok 5: Prověřte soubory protokolu clusteru.
+* Krok 6: Ověřte nastavení konfigurace.
+* Krok 7: Reprodukování selhání na jiném clusteru.
 
-## <a name="step-1-gather-data-about-the-issue"></a>Krok 1: Shromažďování dat o problému
+## <a name="step-1-gather-data-about-the-issue"></a>Krok 1: Shromáždění dat o problému
 
-HDInsight poskytuje celou řadu nástrojů, které slouží k identifikaci a řešení potíží s clustery. Následující kroky vás provedou tyto nástroje a pošlete nám návrhy pro přesné určení problém.
+HDInsight poskytuje řadu nástrojů, které můžete použít k identifikaci a řešení problémů s clustery. Následující kroky vás provedou těmito nástroji a poskytnou návrhy pro určení problému.
 
-### <a name="identify-the-problem"></a>Zjistěte, co problém
+### <a name="identify-the-problem"></a>Identifikace problému
 
-Vám pomůže identifikovat problém, zvažte následující otázky:
+K identifikaci problému Vezměte v úvahu následující otázky:
 
-* Co je očekávat provést? Co se stalo místo?
-* Jak dlouho procesu trvala ke spuštění? Jak dlouho by mělo mít být spuštěné?
-* Máte úkoly vždy pomalý na tomto clusteru? Se rychleji na jiném clusteru?
-* Pokud tento problém nejdřív vzniknout? Jak často se to stalo od?
-* Nic se změnilo v konfiguraci clusteru?
+* Co se očekává, že dojde k tomu? Co se stalo?
+* Jak dlouho trvá spuštění procesu? Jak dlouho má běžet?
+* Mají se vždycky spouštět Moje úkoly v tomto clusteru pomalu? Pracovaly rychleji v jiném clusteru?
+* Kdy k tomuto problému došlo poprvé? Jak často k tomu došlo od?
+* Změnila se v konfiguraci clusteru něco?
 
 ### <a name="cluster-details"></a>Podrobnosti o clusteru
 
-Obsahuje informace o důležitých clusteru:
+Důležité informace o clusteru zahrnují:
 
-* Název clusteru.
-* Cluster oblasti - zkontrolujte soubor pro [výpadku oblasti](https://azure.microsoft.com/status/).
-* Typ clusteru HDInsight a verze.
-* Typ a počet instancí HDInsight zadaný pro hlavní a pracovní uzly.
+* Název clusteru
+* Oblast clusteru – kontrolovat [výpadky oblastí](https://azure.microsoft.com/status/).
+* Typ a verze clusteru HDInsight.
+* Typ a počet instancí služby HDInsight určených pro hlavní uzly a uzly pracovního procesu.
 
-Na webu Azure portal může poskytnout tyto informace:
+Azure Portal může poskytnout tyto informace:
 
-![Portál HDInsight Azure informace](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
+![Informace o Azure Portal HDInsight](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-Můžete také použít [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
+Můžete použít také rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
 az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
-Další možností je pomocí Powershellu. Další informace najdete v tématu [spravovat Apache Hadoop clusterů v HDInsight pomocí Azure Powershellu](hdinsight-administer-use-powershell.md).
+Další možností je použití prostředí PowerShell. Další informace najdete v tématu [správa Apache Hadoop clusterů ve službě HDInsight s Azure PowerShell](hdinsight-administer-use-powershell.md).
 
-## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>Krok 2: Ověření clusteru prostředí HDInsight
+## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>Krok 2: Ověření prostředí clusteru HDInsight
 
-Každý cluster HDInsight spoléhá na různé služby Azure a open source softwaru, jako je například Apache HBase a Apache Sparku. Clustery HDInsight můžete také volat na ostatní služby Azure, jako jsou Azure Virtual Network.  Selhání clusteru může být způsoben žádné služby spuštěné v clusteru nebo externí služby.  Změna konfigurace služby clusteru může také způsobit selhání clusteru.
+Každý cluster HDInsight spoléhá na různé služby Azure a na open source softwaru, jako je Apache HBA a Apache Spark. Clustery HDInsight můžou volat taky na jiné služby Azure, jako jsou třeba virtuální sítě Azure.  Selhání clusteru může být způsobeno některou z spuštěných služeb v clusteru nebo externí službou.  Změna konfigurace Clusterové služby může také způsobit selhání clusteru.
 
 ### <a name="service-details"></a>Podrobnosti služby
 
-* Kontrola verze knihovny open source.
-* Vyhledat [výpadek služeb Azure](https://azure.microsoft.com/status/).  
-* Kontrola omezení využití služeb Azure. 
-* Zkontrolujte konfiguraci podsítě virtuální sítě Azure.  
+* Ověřte open source verze vydaných knihoven.
+* Podívejte se na [výpadky služeb Azure](https://azure.microsoft.com/status/).  
+* Podívejte se na omezení využití služeb Azure. 
+* Ověřte konfiguraci podsítě Azure Virtual Network.  
 
-### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Zobrazit nastavení konfigurace clusteru pomocí uživatelského rozhraní Ambari
+### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Zobrazení nastavení konfigurace clusteru pomocí uživatelského rozhraní Ambari
 
-Apache Ambari poskytuje správu a monitorování clusterů HDInsight pomocí webového uživatelského rozhraní a rozhraní REST API. Ambari je zahrnuta v clusterech HDInsight založených na Linuxu. Vyberte **řídicí panel clusteru** podokně na stránky portálu Azure HDInsight.  Vyberte **řídicí panel clusteru HDInsight** podokně otevřete uživatelské rozhraní Ambari, a zadejte přihlašovací údaje clusteru.  
+Apache Ambari poskytuje správu a monitorování clusteru HDInsight pomocí webového uživatelského rozhraní a REST API. Ambari je součástí clusterů HDInsight se systémem Linux. Vyberte podokno **řídicí panel clusteru** na stránce Azure Portal HDInsight.  Výběrem podokna **řídicí panel clusteru HDInsight** otevřete uživatelské rozhraní Ambari a zadejte přihlašovací údaje clusteru.  
 
 ![Uživatelské rozhraní Ambari](./media/hdinsight-troubleshoot-failed-cluster/ambari-ui.png)
 
-Pokud chcete otevřít seznam zobrazení, služby, vyberte **zobrazení Ambari** na stránce portálu Azure.  Tento seznam závisí na které knihovny jsou nainstalovány. Může se zobrazit třeba správce fronty YARN, Hive zobrazení a zobrazení Tez.  Vyberte odkaz služby najdete v článku Konfigurace a informace o službě.
+Chcete-li otevřít seznam zobrazení služeb, vyberte **Ambari zobrazení** na stránce Azure Portal.  Tento seznam závisí na tom, které knihovny jsou nainstalovány. Můžete například zobrazit správce front PŘÍZ, zobrazení podregistru a tez zobrazení.  Kliknutím na odkaz služby zobrazíte informace o konfiguraci a službě.
 
-#### <a name="check-for-azure-service-outages"></a>Vyhledat výpadek služeb Azure
+#### <a name="check-for-azure-service-outages"></a>Kontrolovat výpadky služeb Azure
 
-HDInsight spoléhá na několik služeb Azure. Spuštění virtuálních serverů v Azure HDInsight, úložiště dat a skriptů do úložiště objektů Blob v Azure nebo Azure Data Lake Storage a indexy soubory protokolů ve službě Azure Table storage. Přerušení na tyto služby, i když se taková situace vzácná, může způsobit problémy v HDInsight. Pokud máte neočekávané zpomalení nebo selhání v clusteru, zkontrolujte, [řídicí panel stavu Azure](https://azure.microsoft.com/status/). Stav jednotlivých služeb je uveden podle oblasti. Zkontrolujte váš cluster oblasti a také oblastech souvisejících služeb.
+HDInsight spoléhá na několik služeb Azure. Spouští virtuální servery v Azure HDInsight, ukládá data a skripty do Azure Blob Storage nebo Azure Data Lake Storage a indexuje soubory protokolů ve službě Azure Table Storage. Přerušení těchto služeb, i když zřídka, můžou způsobovat problémy v HDInsight. Pokud máte v clusteru neočekávané zpomalení nebo selhání, podívejte se na [řídicí panel stavu Azure](https://azure.microsoft.com/status/). Stav každé služby je uveden podle oblasti. Prohlédněte si oblast clusteru a také oblasti pro všechny související služby.
 
-#### <a name="check-azure-service-usage-limits"></a>Kontrola omezení využití služby Azure
+#### <a name="check-azure-service-usage-limits"></a>Ověřit omezení využití služeb Azure
 
-Pokud provádíte spuštění velký cluster nebo současně spustit více clusterů, cluster může selhat, pokud byl překročen limit služby Azure. Omezení služby se liší v závislosti na vašem předplatném Azure. Další informace najdete v tématu [předplatného Azure a limity, kvóty a omezení](https://docs.microsoft.com/azure/azure-subscription-service-limits).
-Můžete požádat o to, že Microsoft zlepšit počet prostředků HDInsight (jako třeba počet jader virtuálního počítače a instance virtuálních počítačů) s [Resource Manageru žádost o zvýšení kvóty jader](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Pokud spouštíte velký cluster nebo jste současně spustili mnoho clusterů, cluster může selhat, pokud jste překročili limit služeb Azure. Omezení služby se liší v závislosti na vašem předplatném Azure. Další informace najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Můžete požádat o to, aby Microsoft zvýšil počet dostupných prostředků služby HDInsight (například jader virtuálních počítačů a instancí virtuálních počítačů) s [žádostí o zvýšení kvóty správce prostředků jádra](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-#### <a name="check-the-release-version"></a>Kontrola verze
+#### <a name="check-the-release-version"></a>Ověřit verzi pro vydání
 
-Porovnejte s nejnovější verzí HDInsight verze clusteru. Jednotlivých verzích HDInsight zahrnuje vylepšení, jako jsou nové aplikace, funkce, opravy a opravy chyb. Problém, který ovlivňuje clusteru pravděpodobně byly opraveny v nejnovější verzi. Pokud je to možné, znovu spusťte váš cluster používá nejnovější verzi HDInsight a přidruženými knihovnami, jako je například Apache HBase, Apache Spark a dalších.
+Porovnejte verzi clusteru s nejnovější verzí služby HDInsight. Každé vydání HDInsight zahrnuje vylepšení, jako jsou nové aplikace, funkce, opravy a opravy chyb. Problém, který má vliv na váš cluster, může být opravený v nejnovější verzi. Pokud je to možné, spusťte znovu cluster pomocí nejnovější verze služby HDInsight a přidružených knihoven, jako je Apache HBA, Apache Spark a dalších.
 
-#### <a name="restart-your-cluster-services"></a>Restartujte služby clusteru
+#### <a name="restart-your-cluster-services"></a>Restartujte Clusterové služby.
 
-Pokud máte ve vašem clusteru zpomalení, zvažte restartování služby prostřednictvím uživatelského rozhraní Ambari nebo rozhraní příkazového řádku Azure Classic. Cluster může docházet k přechodným chybám a restartování je nejrychlejší způsob, jak stabilizaci prostředí a potenciálně tak vylepšit výkon.
+Pokud máte v clusteru zpomalení, zvažte restartování služeb prostřednictvím uživatelského rozhraní Ambari nebo Azure Classic CLI. V clusteru může docházet k přechodným chybám a restartování je nejrychlejší způsob, jak prostředí stabilizovat a případně zvýšit výkon.
 
 ## <a name="step-3-view-your-clusters-health"></a>Krok 3: Zobrazit stav vašeho clusteru
 
-Clustery HDInsight se skládají z různých typů uzlů se systémem na instancích virtuálních počítačů. Každý uzel je možné monitorovat vyčerpání prostředků, problémy se síťovým připojením a další problémy, které mohou zpomalit clusteru. Každý cluster obsahuje dva hlavní uzly a většinu typů clusteru obsahovat kombinaci pracovního procesu a hraničních uzlů. 
+Clustery HDInsight se skládají z různých typů uzlů, které běží na instancích virtuálních počítačů. Každý uzel je možné monitorovat pro vyčerpání prostředků, problémy s připojením k síti a další problémy, které mohou cluster zpomalovat. Každý cluster obsahuje dva hlavní uzly a většina typů clusteru obsahuje kombinaci pracovních a hraničních uzlů. 
 
-Popis různých uzlech používá každý typ clusteru najdete v tématu [nastavení clusterů v HDInsight se Apache Hadoop, Apache Spark, Apache Kafka a další](hdinsight-hadoop-provision-linux-clusters.md).
+Popis různých uzlů, které každý typ clusteru používá, najdete v tématu [Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších](hdinsight-hadoop-provision-linux-clusters.md).
 
-Následující části popisují, jak zkontrolovat stav každého uzlu a celkové clusteru.
+Následující části popisují, jak kontrolovat stav jednotlivých uzlů a celkového clusteru.
 
-### <a name="get-a-snapshot-of-the-cluster-health-using-the-ambari-ui-dashboard"></a>Získat snímek stavu clusteru na řídicím panelu uživatelského rozhraní Ambari
+### <a name="get-a-snapshot-of-the-cluster-health-using-the-ambari-ui-dashboard"></a>Získání snímku stavu clusteru pomocí řídicího panelu uživatelského rozhraní Ambari
 
-[Řídicí panel uživatelského rozhraní Ambari](#view-cluster-configuration-settings-with-the-ambari-ui) (`https://<clustername>.azurehdinsight.net`) poskytuje přehled stavu clusteru, jako je například dostupnost, paměti, sítě a využití CPU, využití disku HDFS a tak dále. Část hostitele Ambari slouží k zobrazení prostředků na úrovni hostitele. Můžete také zastavit a restartovat služby.
+[Řídicí panel uživatelského rozhraní Ambari](#view-cluster-configuration-settings-with-the-ambari-ui) (`https://<clustername>.azurehdinsight.net`) poskytuje přehled o stavu clusteru, například o době provozu, paměti, využití sítě a procesoru, HDFS využití disku a tak dále. Pomocí části hostitelé v Ambari můžete zobrazit prostředky na úrovni hostitele. Můžete také zastavit a restartovat služby.
 
-### <a name="check-your-webhcat-service"></a>Zkontrolujte vaše služba WebHCat
+### <a name="check-your-webhcat-service"></a>Podívejte se na službu WebHCat
 
-Jeden běžný scénář pro úlohy Apache Hive, Apache Pig a Apache Sqoop služeb při selhání je selhání se [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (nebo *Templeton*) služby. WebHCat je rozhraní REST pro provádění vzdálené úlohy, jako je například Hive, Pig, MapReduce a nabídku. WebHCat žádostí o odeslání úlohy se přeloží do aplikací Apache Hadoop YARN a vrátí stav odvozený od stav aplikace YARN.  Následující části popisují běžné stavové kódy WebHCat HTTP.
+Jednou z běžných scénářů pro Apache Hive, Apache Vepřu nebo Sqoop úlohy Apache je selhání služby [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (nebo *Templeton*). WebHCat je rozhraní REST pro vzdálené spuštění úlohy, jako je například podregistr, prase, SCOOP a MapReduce. WebHCat překládá žádosti o odeslání úlohy na Apache Hadoop PŘÍZové aplikace a vrátí stav odvozený ze stavu aplikace PŘÍZe.  Následující části popisují běžné WebHCat stavové kódy HTTP.
 
-#### <a name="badgateway-502-status-code"></a>BadGateway (502 stavový kód)
+#### <a name="badgateway-502-status-code"></a>BadGateway (Stavový kód 502)
 
-Toto je obecná zpráva z uzlů brány a je nejběžnější chybový kód. Jednou z možných příčin této je služba WebHCat se dolů na aktivní hlavní uzel. Pokud chcete zkontrolovat pro tuto možnost, použijte následující příkaz CURL:
+Tento kód je obecná zpráva z uzlů brány a jedná se o nejběžnější stavové kódy selhání. Jednou z možných příčin je, že se služba WebHCat nachází na aktivním hlavním uzlu. Pro kontrolu této možnosti použijte následující příkaz složené závorky:
 
 ```bash
 curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
 ```
 
-Ambari zobrazí výstrahu zobrazující hostitele, na kterých služba WebHCat je mimo provoz. Můžete zkusit zobrazíte službě WebHCat zpět restartováním služby svého hostitele.
+Ambari zobrazí výstrahu s informacemi o hostitelích, na kterých je služba WebHCat vypnutá. Službu WebHCat můžete zkusit zálohovat restartováním služby na jejím hostiteli.
 
 ![Restart WebHCat Server](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
 
-Pokud WebHCat server stále nepřejde, pak v protokolu operations zprávy o neúspěchu. Podrobnější informace, zkontrolujte `stderr` a `stdout` soubory odkazuje na uzlu.
+Pokud se server WebHCat stále nespustí, zkontrolujte zprávy o chybách v protokolu operací. Podrobnější informace najdete v souborech `stderr` a `stdout` na uzlech, na které se odkazuje.
 
-#### <a name="webhcat-times-out"></a>WebHCat vyprší časový limit
+#### <a name="webhcat-times-out"></a>WebHCat časový limit
 
-HDInsight bránu vyprší časový limit odpovědi, které trvají déle než dvě minuty, vrací `502 BadGateway`. WebHCat dotazuje služby YARN pro úlohy stavy a pokud YARN trvá déle než dvě minuty reagovat, který požádat o vypršení časového limitu může.
+Vyprší časový limit An HDInsight brány na odpovědi, které trvá déle než `502 BadGateway`dvě minuty, a vrátí se. WebHCat se dotazuje na úlohy PŘÍZe na stavech úloh a pokud by PŘÍZe trvala déle než dvě minuty, může to vytrvat i vypršení tohoto požadavku.
 
-V tomto případě následující v protokolech `/var/log/webhcat` adresáře:
+V takovém případě zkontrolujte následující protokoly v `/var/log/webhcat` adresáři:
 
-* **webhcat.log** je protokolu log4j které serverové protokoly, zápisy
-* **webhcat console.log** je stdout serveru při spuštění
-* **webhcat. konzola error.log** je stderr proces serveru
+* **webhcat. log** je protokol log4j, na který Server zapisuje protokoly.
+* **webhcat-Console. log** je stdout serveru při spuštění
+* **webhcat-Console-Error. log** je stderr procesu serveru.
 
 > [!NOTE]  
-> Každý `webhcat.log` je jednotlivě každý den, generují se soubory s názvem `webhcat.log.YYYY-MM-DD`. Vyberte příslušný soubor pro časový rozsah, kterou právě prošetřujete.
+> Každý `webhcat.log` je převedený za den a generuje soubory `webhcat.log.YYYY-MM-DD`s názvem. Vyberte příslušný soubor pro časový rozsah, který zkoumáte.
 
-Následující části popisují některé možné příčiny vypršení časového limitu pro WebHCat.
+Následující části popisují některé možné příčiny WebHCat časových limitů.
 
 ##### <a name="webhcat-level-timeout"></a>Časový limit úrovně WebHCat
 
-Při zatížení s více než 10 otevřít sockets WebHCat trvá déle, k vytvoření nového připojení soketu, což může způsobit vypršení časového limitu. K zobrazení seznamu síťová připojení do a z WebHCat, použijte `netstat` na aktuální aktivní hlavní uzel:
+Když je WebHCat pod zatížením, s více než 10 otevřenými sokety trvá vytvoření nových připojení soketu déle, což může mít za následek časový limit. Chcete-li zobrazit seznam síťových připojení k WebHCat a z `netstat` nich, použijte aktuální aktivní hlavnímu uzlu:
 
 ```bash
 netstat | grep 30111
 ```
 
-30111 je port, který naslouchá WebHCat. Počet otevřených soketů by měl být menší než 10.
+30111 port WebHCat naslouchá. Počet otevřených soketů by měl být menší než 10.
 
-Pokud neexistují žádné otevřené sokety, výsledkem předchozího příkazu není výsledek. Zkontrolujte, jestli je Templeton nahoru a naslouchá na portu 30111, použijte:
+Pokud neexistují žádné otevřené sokety, předchozí příkaz nevytvoří výsledek. Pokud chcete zjistit, jestli je Templeton v provozu a naslouchá na portu 30111, použijte:
 
 ```bash
 netstat -l | grep 30111
 ```
 
-##### <a name="yarn-level-timeout"></a>Časový limit úrovně YARN
+##### <a name="yarn-level-timeout"></a>Časový limit úrovně PŘÍZe
 
-Templeton volá YARN pro spouštění úloh a komunikaci mezi Templeton a YARN může způsobit vypršení časového limitu.
+Templeton volá PŘÍZi na spouštění úloh a komunikace mezi Templeton a PŘÍZí může způsobit časový limit.
 
-Na úrovni YARN existují dva druhy vypršení časového limitu pro:
+Na úrovni PŘÍZe existují dva typy časových limitů:
 
-1. Odeslání úlohy YARN může trvat dostatečně dlouhá, aby způsobit vypršení časového limitu.
+1. Odeslání úlohy PŘÍZe může trvat dostatečně dlouho, aby se mohl zapříčinit časový limit.
 
-    Pokud otevřete `/var/log/webhcat/webhcat.log` souboru protokolu a vyhledejte "zařazených do fronty úloh", vám může zobrazit více položek kde je příliš dlouhá doba spuštění (> 2000 ms), s položkami znázorňující zvýšení čekání.
+    Pokud otevřete `/var/log/webhcat/webhcat.log` soubor protokolu a vyhledáte "úloha zařazená do fronty", může se zobrazit více položek, kde doba provádění je příliš dlouhá (> 2000 MS), s položkami, které zobrazují zvýšení čekací doby.
 
-    Čas potřebný pro úlohy ve frontě se nadále zvýšit, protože rychlost, jakou nové úlohy odeslání je vyšší než rychlost, jakou jsou staré úlohy dokončeny. Jakmile paměti YARN je 100 % využití, *joblauncher fronty* už si půjčte kapacity z *výchozí fronta*. Proto mohou být přijaty žádné nové úlohy ve frontě joblauncher. Toto chování může způsobit čekání se déle a nebude, způsobí vypršení časového limitu, který obvykle následuje mnoha dalších.
+    Čas úloh ve frontě se dál zvyšuje, protože frekvence, s jakou se nové úlohy odesílají, je vyšší než frekvence, s jakou jsou staré úlohy dokončené. Jakmile se použije paměť PŘÍZe 100%, *fronta joblauncher* už nemůže půjčit kapacitu z *výchozí fronty*. Proto nelze do fronty joblauncher přijmout žádné další nové úlohy. To může způsobit, že čas čekání bude trvat déle a déle, což způsobí chybu vypršení časového limitu, která obvykle následuje po mnoha dalších.
 
-    Následující obrázek znázorňuje frontu joblauncher Nepromyšlené 714.4 %. Je to přijatelné, tak dlouho, dokud je stále Volná kapacita ve frontě výchozí vypůjčit z. Ale když paměti YARN je plně využívá kapacitu 100 % cluster je naplno, nové úlohy musíte počkat, které nakonec způsobí vypršení časového limitu.
+    Na následujícím obrázku je znázorněná fronta joblauncher na 714,4%, která se používá. To je přijatelné, pokud je stále volná kapacita výchozí fronty k vypůjčení. Pokud je ale cluster plně využíván a paměť PŘÍZe je na 100% kapacitě, musí nové úlohy počkat, což nakonec způsobí vypršení časového limitu.
 
-    ![Joblauncher fronty](./media/hdinsight-troubleshoot-failed-cluster/joblauncher-queue.png)
+    ![Fronta Joblauncher](./media/hdinsight-troubleshoot-failed-cluster/joblauncher-queue.png)
 
-    Existují dva způsoby, jak tento problém vyřešit: buď snižte rychlosti nové úlohy odesílá nebo zvýšení rychlosti spotřeby starých úloh ve vertikálním navýšení kapacity clusteru.
+    Existují dva způsoby, jak tento problém vyřešit: Snižte rychlost odeslání nových úloh nebo zvyšte rychlost spotřeby starých úloh tím, že nakonfigurujete škálování clusteru.
 
-2. YARN zpracování může trvat dlouhou dobu, což může způsobit vypršení časového limitu.
+2. Zpracování PŘÍZe může trvat dlouhou dobu, což může způsobit vypršení časových limitů.
 
-    * Seznam všech úloh: Toto je časově náročné volání. Toto volání zobrazí aplikace ze Správce prostředků YARN a pro každé dokončené aplikace, umožňuje získat stav z YARN JobHistoryServer. Toto volání s větší počet úloh, může být vypršení časového limitu.
+    * Vypsat všechny úlohy: Toto je časově náročné volání. Toto volání vypíše aplikace z správce prostředků PŘÍZe a pro každou dokončenou aplikaci Získá stav z JobHistoryServer PŘÍZe. U většího počtu úloh může toto volání vyprší časový limit.
 
-    * Seznam úloh starší než 7 dní: HDInsight YARN JobHistoryServer je nakonfigurovaná na uchovávání informací dokončenou úlohu po dobu sedmi dní (`mapreduce.jobhistory.max-age-ms` hodnota). Došlo k pokusu o zobrazení výčtu výsledků vymazány úlohy vypršení časového limitu.
+    * Seznam úloh, které jsou starší než sedm dní: JobHistoryServery HDInsight se nakonfigurují tak, aby uchovávala informace o dokončených úlohách po dobu sedmi dní (`mapreduce.jobhistory.max-age-ms` hodnota). Při pokusu o výčet vyčištěných úloh dojde k vypršení časového limitu.
 
-Chcete-li diagnostikovat tyto problémy:
+Diagnostikujte tyto problémy:
 
-1. Určit rozsah času UTC řešení
-2. Vyberte příslušné `webhcat.log` soubory
-3. Vyhledejte zobrazit upozornění a chybové zprávy během této doby
+1. Určení rozsahu času UTC pro řešení potíží
+2. Vyberte příslušné `webhcat.log` soubory.
+3. Vyhledat upozornění a chybové zprávy během této doby
 
-#### <a name="other-webhcat-failures"></a>Jiné chyby WebHCat
+#### <a name="other-webhcat-failures"></a>Další WebHCat selhání
 
-1. Stavový kód 500 protokolu HTTP
+1. Stavový kód HTTP 500
 
-    Ve většině případů, kdy WebHCat vrátí 500 chybová zpráva obsahuje podrobnosti o tomto selhání. V opačném případě si projít `webhcat.log` pro zobrazit upozornění a chybové zprávy.
+    Ve většině případů, kdy WebHCat vrátí 500, obsahuje chybová zpráva podrobnosti o selhání. V opačném případě `webhcat.log` se podíváte na upozornění a chybové zprávy.
 
 2. Selhání úlohy
 
-    Můžou nastat případy, kdy interakce s WebHCat jsou úspěšné, ale úlohy, které se nedaří.
+    Můžou nastat případy, kdy interakce s WebHCat jsou úspěšné, ale úlohy selžou.
 
-    Shromažďuje výstup úlohy konzoly jako Templeton `stderr` v `statusdir`, což je často užitečné při řešení potíží. `stderr` obsahuje identifikátor YARN aplikace skutečný dotazu.
+    Templeton shromažďuje výstup konzoly úloh jako `stderr` v `statusdir`, což je často užitečné při řešení potíží. `stderr`obsahuje identifikátor aplikace nitě aktuálního dotazu.
 
-## <a name="step-4-review-the-environment-stack-and-versions"></a>Krok 4: Projděte si prostředí zásobníku a verze
+## <a name="step-4-review-the-environment-stack-and-versions"></a>Krok 4: Kontrola zásobníku prostředí a verzí
 
-Uživatelské rozhraní Ambari **zásobníku a verze** stránka obsahuje informace o clusteru služby configuration a služby historie verzí.  Nesprávná verze knihovny služby Hadoop, může být příčinou selhání clusteru.  V uživatelském rozhraní Ambari, vyberte **správce** nabídky a pak **zásobníky a verze**.  Vyberte **verze** karty na stránce zobrazíte informace o verzi služby:
+Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o konfiguraci služby Cluster Services a historii verzí služby.  Nesprávná verze knihovny služby Hadoop může způsobovat selhání clusteru.  V uživatelském rozhraní Ambari vyberte nabídku **správce** a pak nastavte **zásobníky a verze**.  Na stránce vyberte kartu **verze** , kde najdete informace o verzi služby:
 
 ![Zásobník a verze](./media/hdinsight-troubleshoot-failed-cluster/stack-versions.png)
 
-## <a name="step-5-examine-the-log-files"></a>Krok 5: Zkontrolujte soubory protokolu
+## <a name="step-5-examine-the-log-files"></a>Krok 5: Prověřte soubory protokolu
 
-Existuje mnoho typů protokolů, které jsou generovány z mnoha služeb a komponent, které tvoří HDInsight cluster. [Soubory protokolu WebHCat](#check-your-webhcat-service) jsou popsány dříve. Existuje několik dalších užitečných souborů protokolů, které můžete zúžit problémy s vaším clusterem, můžete zjistit, jak je popsáno v následujících částech.
+Existuje mnoho typů protokolů, které jsou generovány z mnoha služeb a součástí, které tvoří cluster HDInsight. [Soubory protokolu WebHCat](#check-your-webhcat-service) jsou popsány dříve. Existuje několik dalších užitečných souborů protokolu, které můžete prozkoumat pro zúžení potíží s clusterem, jak je popsáno v následujících částech.
 
-* Clustery HDInsight se skládá z několika uzlů, ke spuštění odeslané úlohy jsou úkol většina z nich. Úlohy spustit současně, ale soubory protokolu lze zobrazit pouze výsledky lineárně. HDInsight spustí nové úkoly, ostatní, které se nepovede dokončit. nejdříve se ukončuje. Tato aktivita se protokoluje do `stderr` a `syslog` soubory.
+* Clustery HDInsight se skládají z několika uzlů, přičemž většina z nich je spouštěna z úlohy na spouštění odeslaných úloh. Úlohy se spouštějí souběžně, ale soubory protokolu můžou výsledky zobrazit jenom lineárně. HDInsight provádí nové úlohy a ukončí nejprve jiné, které se nedaří dokončit. Veškerá tato aktivita je protokolována do `stderr` souborů `syslog` a.
 
-* Soubory protokolu akce skriptu zobrazit chyby nebo změny neočekávaná konfigurace během procesu vytváření vašeho clusteru.
+* Soubory protokolu akcí skriptu zobrazují během procesu vytváření clusteru chyby nebo neočekávané změny konfigurace.
 
-* Krok protokolů Hadoop identifikaci úlohy systému Hadoop spuštěn jako součást kroku, který obsahuje chyby.
+* Protokoly kroku Hadoop identifikují úlohy Hadoop spouštěné v rámci kroku obsahujícího chyby.
 
-### <a name="check-the-script-action-logs"></a>Zkontrolujte protokoly akce skriptu
+### <a name="check-the-script-action-logs"></a>Zkontroluje protokoly akcí skriptů.
 
-HDInsight [akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md) spouštění skriptů v clusteru zadali ručně, nebo když. Například akce skriptu lze použít k instalaci dalšího softwaru v clusteru nebo změnit nastavení konfigurace z výchozí hodnoty. Kontrola protokolů akce skriptu vám umožní získat přehled chyb, ke kterým došlo během instalace a konfigurace.  Výběrem můžete zobrazit stav akce skriptu **ops** tlačítko v Uživatelském rozhraní Ambari nebo můžete využít protokoly z výchozí účet úložiště.
+[Akce skriptu](hdinsight-hadoop-customize-cluster-linux.md) HDInsight spouštějí skripty v clusteru ručně nebo v případě, že jsou zadané. Například akce skriptu lze použít k instalaci dalšího softwaru do clusteru nebo ke změně nastavení konfigurace z výchozích hodnot. Kontrola protokolů akcí skriptu může poskytnout přehled o chybách, ke kterým došlo během instalace a konfigurace clusteru.  Stav akce skriptu můžete zobrazit tak, že vyberete tlačítko **OPS** v uživatelském rozhraní Ambari nebo přistupujete k protokolům z výchozího účtu úložiště.
 
-Protokoly akce skriptů jsou umístěny v `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` adresáře.
+Protokoly akcí skriptu se nacházejí v `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` adresáři.
 
-### <a name="view-hdinsight-logs-using-ambari-quick-links"></a>Zobrazit protokoly HDInsight pomocí Ambari rychlé odkazy
+### <a name="view-hdinsight-logs-using-ambari-quick-links"></a>Zobrazení protokolů HDInsight pomocí rychlých odkazů Ambari
 
-Uživatelské rozhraní Ambari HDInsight zahrnuje celou řadu **rychlé odkazy** oddíly.  Pro přístup k protokolu odkazy pro určité služby ve vašem clusteru HDInsight, otevřete uživatelské rozhraní Ambari pro váš cluster a potom vyberte odkaz služby ze seznamu na levé straně. Vyberte **rychlé odkazy** rozevírací seznam, poté uzel HDInsight zájmu a pak vyberte odkaz pro jeho přidružené protokolu.
+Uživatelské rozhraní HDInsight Ambari obsahuje několik oddílů pro **Rychlé odkazy** .  Pro přístup k odkazům na protokol pro konkrétní službu v clusteru HDInsight otevřete uživatelské rozhraní Ambari pro váš cluster a pak vyberte odkaz služby ze seznamu vlevo. Vyberte rozevírací seznam **Rychlé odkazy** , potom uzel HDInsight, který vás zajímá, a pak vyberte odkaz na jeho přidružený protokol.
 
-Například pro HDFS protokoly:
+Například pro protokoly HDFS:
 
-![Ambari – rychlé odkazy na soubory protokolů](./media/hdinsight-troubleshoot-failed-cluster/quick-links.png)
+![Ambari rychlé odkazy na soubory protokolu](./media/hdinsight-troubleshoot-failed-cluster/quick-links.png)
 
-### <a name="view-hadoop-generated-log-files"></a>Zobrazit soubory protokolů generované Hadoop
+### <a name="view-hadoop-generated-log-files"></a>Zobrazení souborů protokolu generovaných systémem Hadoop
 
-HDInsight cluster vytvoří protokoly, které se zapisují do tabulek Azure a Azure Blob storage. YARN vytvoří vlastní protokoly spuštění. Další informace najdete v tématu [Správa protokolů pro HDInsight cluster](hdinsight-log-management.md#access-the-hadoop-log-files).
+Cluster An HDInsight generuje protokoly zapsané do Azure Tables a Azure Blob Storage. PŘÍZe vytvoří vlastní protokoly spuštění. Další informace najdete v tématu [Správa protokolů pro cluster HDInsight](hdinsight-log-management.md#access-the-hadoop-log-files).
 
-### <a name="review-heap-dumps"></a>Zkontrolujte výpisů paměti haldy
+### <a name="review-heap-dumps"></a>Zkontrolovat výpisy haldy
 
-Výpisy haldy paměti obsahují snímek paměti aplikace, včetně hodnot proměnných v době, které jsou užitečné při diagnostikování problémů, ke kterým dochází za běhu. Další informace najdete v tématu [výpisů haldy povolit služby Apache Hadoop v HDInsight se systémem Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
+Výpisy haldy obsahují snímek paměti aplikace, včetně hodnot proměnných v daném čase, které jsou užitečné pro diagnostiku problémů, ke kterým dochází za běhu. Další informace najdete v tématu [Povolení výpisů paměti haldy pro Apache Hadoop služby v HDInsight se systémem Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
 
-## <a name="step-6-check-configuration-settings"></a>Krok 6: Zkontrolujte nastavení konfigurace
+## <a name="step-6-check-configuration-settings"></a>Krok 6: Ověřit nastavení konfigurace
 
-Clustery HDInsight jsou předem nakonfigurované s výchozím nastavením pro souvisejících služeb, jako jsou Hadoop, Hive, HBase a tak dále. V závislosti na typu clusteru, její konfigurace hardwaru, jeho počet uzlů, typy úloh spouštíte a data, že pracujete s (a jak tato data se právě zpracovávají), možná budete muset optimalizovat konfiguraci.
+Clustery HDInsight jsou předem nakonfigurované s výchozím nastavením pro související služby, jako jsou Hadoop, podregistr, HBA a tak dále. V závislosti na typu clusteru, jeho hardwarové konfiguraci, jeho počtu uzlů, typech úloh, které používáte, a datech, se kterými pracujete (a jak se zpracovávají tato data), možná budete muset optimalizovat konfiguraci.
 
-Podrobné pokyny k optimalizaci výkonu konfigurace pro většinu scénářů najdete v tématu [optimalizovat konfigurace clusteru s Apache Ambari](hdinsight-changing-configs-via-ambari.md). Při použití Sparku, naleznete v tématu [úlohy optimalizace Apache Spark pro výkon](spark/apache-spark-perf.md). 
+Podrobné pokyny k optimalizaci konfigurací výkonu pro většinu scénářů najdete v tématu [optimalizace konfigurací clusterů pomocí Apache Ambari](hdinsight-changing-configs-via-ambari.md). Pokud používáte Spark, přečtěte si téma [optimalizace úloh Apache Spark pro výkon](spark/apache-spark-perf.md). 
 
-## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>Krok 7: Reprodukujte chybu na jiném clusteru
+## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>Krok 7: Reprodukce selhání v jiném clusteru
 
-Pro usnadnění diagnostiky příčiny chyby clusteru, spusťte nový cluster se stejnou konfigurací a potom odešlete znovu neúspěšná úloha kroky jeden po druhém. Zkontrolujte výsledky každého kroku před zpracováním dalším objektem. Tato metoda poskytuje možnost opravit a znovu spusťte jeden neúspěšných kroků. Tato metoda také nabízí výhodu v podobě pouze jednou načítání vstupní data.
+Aby bylo možné diagnostikovat zdroj chyby clusteru, spusťte nový cluster se stejnou konfigurací a pak znovu odešlete kroky neúspěšné úlohy po jednom. Před zpracováním následujícího kroku Ověřte výsledky jednotlivých kroků. Tato metoda vám dává možnost opravit a znovu spustit jeden neúspěšný krok. Tato metoda má také výhodu, že se vstupní data načítají jenom jednou.
 
-1. Vytvoření nového clusteru testů se stejnou konfigurací jako selhání clusteru.
-2. První krok úlohy do clusteru testů odešlete.
-3. Po dokončení zpracování kroku zkontrolujte chyby v souborech protokolů kroku. Připojení k hlavnímu uzlu clusteru test a zobrazit soubory protokolů existuje. Soubory protokolu krok se zobrazí pouze po kroku spustí nějakou dobu, dokončí, nebo se nezdaří.
-4. Pokud prvním krokem bylo úspěšné, spusťte na další krok. Pokud došlo k chybám, prostudujte chybu v souborech protokolů. Pokud se jednalo o chybu v kódu, provést opravu a znovu spustit krok.
-5. Pokračujte, dokud nebudou všechny kroky se spustí bez chyb.
-6. Po dokončení ladění testovacího clusteru, odstraňte ho.
+1. Vytvořte nový testovací cluster se stejnou konfigurací, jako má neúspěšný cluster.
+2. Odešlete první krok úlohy do testovacího clusteru.
+3. Když krok dokončí zpracování, vyhledejte chyby v souborech protokolu kroku. Připojte se k hlavnímu uzlu testovacího clusteru a zobrazte tam soubory protokolu. Krokové soubory protokolu se zobrazí jenom po nějaké době, kdy se tento krok spustí nebo dojde k chybě.
+4. Pokud se první krok úspěšně zdařil, spusťte další krok. Pokud došlo k chybám, prozkoumejte chybu v souborech protokolu. Pokud se jedná o chybu ve vašem kódu, proveďte opravu a znovu spusťte krok.
+5. Pokračovat, dokud všechny kroky nebudou spuštěny bez chyb.
+6. Až skončíte s laděním testovacího clusteru, odstraňte ho.
 
 ## <a name="next-steps"></a>Další postup
 
 * [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-* [Analýza protokolů pro HDInsight](hdinsight-debug-jobs.md)
-* [Přihlášení aplikace přístup Apache Hadoop YARN v HDInsight se systémem Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Povolení výpisů paměti haldy pro služby Apache Hadoop v HDInsight se systémem Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Analýza protokolů HDInsight](hdinsight-debug-jobs.md)
+* [Přístup k Apache Hadoop PŘÍZ aplikace v HDInsight se systémem Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Povolit výpisy haldy pro Apache Hadoop služby v HDInsight se systémem Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Známé problémy pro cluster Apache Spark v HDInsight](hdinsight-apache-spark-known-issues.md)

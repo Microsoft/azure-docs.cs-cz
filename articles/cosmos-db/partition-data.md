@@ -6,12 +6,12 @@ author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 67ad37491f71ac82ff52331d19ea92a646c80a52
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8f83c40aeecdbf9ca30adc20286712850882ee41
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716981"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616796"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Dělení a horizontální škálování v Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Logický oddíl také definuje rozsah databázových transakcí. Položky v rám
 
 ## <a name="physical-partitions"></a>Fyzické oddíly
 
-Kontejner Azure Cosmos se škáluje distribucí dat a propustnosti napříč velkým počtem logických oddílů. Interně je jeden nebo více logických oddílů namapovaných na fyzický oddíl, který se skládá ze sady replik, označovaných také jako [*sada replik*](global-dist-under-the-hood.md). Každá sada replik je hostitelem instance databázového stroje Azure Cosmos DB. Sada replik vytvoří data uložená v rámci fyzického oddílu odolného, vysoce dostupného a konzistentního. Fyzický oddíl podporuje maximální velikost úložiště a jednotky žádostí (ru). Každá replika, která tvoří fyzický oddíl, zdědí kvótu úložiště oddílu. Všechny repliky fyzického oddílu společně podporují propustnost, která je přidělena fyzickému oddílu. 
+Kontejner Azure Cosmos se škáluje distribucí dat a propustnosti napříč velkým počtem logických oddílů. Interně je jeden nebo více logických oddílů namapovaných na fyzický oddíl, který se skládá ze sady replik, označovaných také jako [*sada replik*](global-dist-under-the-hood.md). Každá sada replik je hostitelem instance databázového stroje Azure Cosmos. Sada replik vytvoří data uložená v rámci fyzického oddílu odolného, vysoce dostupného a konzistentního. Fyzický oddíl podporuje maximální velikost úložiště a jednotky žádostí (ru). Každá replika, která tvoří fyzický oddíl, zdědí kvótu úložiště oddílu. Všechny repliky fyzického oddílu společně podporují propustnost, která je přidělena fyzickému oddílu. 
 
 Následující obrázek ukazuje, jak jsou logické oddíly namapovány na fyzické oddíly distribuované globálně:
 

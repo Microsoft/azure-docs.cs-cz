@@ -10,16 +10,16 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1f800ade5c5122f0891c9122f6698b6550048c67
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: f5ee4227b0aeb53be4512dafc91f814468b50c12
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479338"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574899"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý start: Vytvoření a dotazování služby Azure SQL Data Warehouse pomocí Azure PowerShell
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý start: Vytvoření a dotazování Azure SQL Data Warehouse pomocí Azure PowerShell
 
-K rychlému vytvoření datového skladu Azure SQL použijte Azure PowerShell.
+Azure SQL Data Warehouse pomocí Azure PowerShell rychle vytvořit.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -149,4 +149,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 Nyní jste vytvořili datový sklad, vytvořili jste pravidlo brány firewall připojené k vašemu datovému skladu a spustili několik dotazů. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 > [!div class="nextstepaction"]
->[Načtení dat do datového skladu SQL](load-data-from-azure-blob-storage-using-polybase.md)
+>[Načtení dat do SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

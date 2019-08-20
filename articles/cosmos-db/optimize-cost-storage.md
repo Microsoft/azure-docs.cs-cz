@@ -1,45 +1,45 @@
 ---
-title: Optimalizovat náklady na úložiště ve službě Azure Cosmos DB
-description: Tento článek vysvětluje, jak spravovat náklady na úložiště pro data uložená ve službě Azure Cosmos DB
+title: Optimalizace nákladů na úložiště v Azure Cosmos DB
+description: Tento článek vysvětluje, jak spravovat náklady na úložiště pro data uložená v Azure Cosmos DB
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 71f1f8896126728277ba6f0bf2c0ded1b2a608b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2955df266bcf164ce4a155acc5209679eff0ce8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967259"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615005"
 ---
-# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimalizovat náklady na úložiště ve službě Azure Cosmos DB
+# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na úložiště v Azure Cosmos DB
 
-Azure Cosmos DB nabízí neomezené úložiště a propustnost. Na rozdíl od propustnost, které budete muset zřizovat a konfigurovat na kontejnery Azure Cosmos nebo databáze, úložiště se účtuje na základě spotřeby. Se účtují jenom u logického úložiště, které skutečně využijete a není nutné rezervovat předem jakékoli úložiště. Úložiště automaticky škáluje směrem nahoru a dolů na základě dat, které přidáváte nebo odebíráte ke kontejneru služby Azure Cosmos DB.
+Azure Cosmos DB nabízí neomezené úložiště a propustnost. Na rozdíl od propustnosti, kterou musíte zřídit a konfigurovat v kontejnerech nebo databázích Azure Cosmos, se úložiště účtuje na základě spotřeby. Účtují se vám jenom logické úložiště, které spotřebováváte, a nemusíte nic rezervovat. Úložiště se automaticky škáluje nahoru a dolů na základě dat, která přidáte nebo odeberete do kontejneru Azure Cosmos.
 
 ## <a name="storage-cost"></a>Náklady na úložiště
 
-S jednotkou GB, účtuje úložiště. Místní úložiště se zálohují na disky SSD se používá vaše data a indexování. Celkové využití úložiště se rovná úložiště potřebné pro data a indexy použité ve všech oblastech, kde používáte službu Azure Cosmos DB. Pokud účet Azure Cosmos se globálně replikovat ve třech oblastech, zaplatíte za celkové náklady na úložiště v každé z těchto tří oblastí. Chcete-li odhadnout požadavky na úložiště, přečtěte si téma [Plánovač kapacity](https://www.documentdb.com/capacityplanner) nástroj. Náklady na úložiště ve službě Azure Cosmos DB je $0,25 GB/měsíc, najdete v článku [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) nejnovější aktualizace. Můžete nastavit výstrahy a určit úložiště využitá službou kontejner Azure Cosmos, monitorování úložiště najdete v tématu [monitorování služby Azure Cosmos DB](monitor-accounts.md)) článku.
+Služba Storage se účtuje s jednotkou GB. Místní úložiště zálohované na jednotku SSD používá vaše data a indexování. Celkové využité úložiště je stejné jako úložiště vyžadované daty a indexy používané ve všech oblastech, ve kterých používáte Azure Cosmos DB. Pokud účet Azure Cosmos globálně replikujte ve třech oblastech, platíte za celkové náklady na úložiště v každé z těchto tří oblastí. Informace o odhadu požadavku na úložiště najdete v tématu Nástroj [Capacity Planner](https://www.documentdb.com/capacityplanner) . Náklady na úložiště v Azure Cosmos DB jsou $0,25 GB/měsíc, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) nejnovější aktualizace. Můžete nastavit výstrahy pro určení úložiště používaného vaším kontejnerem Azure Cosmos, abyste mohli monitorovat úložiště, viz článek [monitorování Azure Cosmos DB](monitor-accounts.md)).
 
-## <a name="optimize-cost-with-item-size"></a>Optimalizujte náklady s velikost položky
+## <a name="optimize-cost-with-item-size"></a>Optimalizace nákladů pomocí velikosti položky
 
-Azure Cosmos DB očekává, že velikost položky bude 2 MB pro optimální výkon a náklady. Pokud potřebujete jakoukoli položku si můžete uložit větší než 2 MB dat, vezměte v úvahu realizace schéma položky. V nepravděpodobném případě, že nelze změnit návrh schématu můžete rozdělit položku na podřízené položky a připojit je logicky s common identifier(ID). Všechny funkce služby Azure Cosmos DB, fungují konzistentně ve ukotvení logického identifikátoru.
+Azure Cosmos DB očekává, že velikost položky bude 2 MB nebo méně pro optimální výkon a náklady. Pokud potřebujete, aby položka ukládala více než 2 MB dat, zvažte přenávrh schématu položky. Ve výjimečné události, kterou nemůžete změnit návrh schématu, můžete rozdělit položku na podpoložky a logicky propojit se společným identifikátorem (ID). Všechny funkce Azure Cosmos DB fungují konzistentně pomocí ukotvení k tomuto logickému identifikátoru.
 
-## <a name="optimize-cost-with-indexing"></a>Optimalizujte náklady s indexování
+## <a name="optimize-cost-with-indexing"></a>Optimalizace nákladů s indexováním
 
-Ve výchozím nastavení data se automaticky indexován, což může zvýšit celkové úložiště spotřebované. Však můžete uplatnit zásady vlastního indexového omezit tato režie. Automatické indexování, který nebyl byla vyladěný pomocí zásad je přibližně 10 – 20 % velikosti položky. Odebráním nebo přizpůsobení index zásady, neplatíte dodatečné náklady pro zápis a nevyžadují další kapacitu. Zobrazit [indexování ve službě Azure Cosmos DB](indexing-policies.md) nakonfigurovat vlastní zásady indexování. Pokud jste už pracovali s relační databází před, může si myslíte, že "indexování všeho." znamená, že možnost zdvojnásobení úložiště nebo vyšší. Ve službě Azure Cosmos DB, v případě, střední, je však mnohem nižší. Ve službě Azure Cosmos DB režijní náklady na úložiště indexů je obvykle nízké (10-20 %) i při automatické indexování, protože je určená pro nízkou úložiště nároky. Tím, že spravuje zásady indexování, můžete řídit kompromis index nároky na místo a výkonu dotazování umožňujícímu podrobnějšího způsobem.
+Ve výchozím nastavení jsou data automaticky indexována, což může zvýšit celkové spotřebované úložiště. Můžete ale použít vlastní zásady indexů a snížit tak tuto režii. Automatické indexování, které se nevytvořily prostřednictvím zásad, je přibližně 10-20% velikosti položky. Odebráním nebo přizpůsobením zásad indexování nebudete platit za nadbytečné náklady za zápisy a nebudete potřebovat další kapacitu propustnosti. Pokud chcete nakonfigurovat vlastní zásady indexování, přečtěte si téma [indexování v Azure Cosmos DB](indexing-policies.md) . Pokud jste předtím pracovali s relačními databázemi, můžete si všimnout, že "index všeho" znamená zdvojnásobení úložiště nebo vyšší. V Azure Cosmos DB se ale ve střední části velkých písmen mnohem snižuje. V Azure Cosmos DB je režie úložiště indexu obvykle nízká (10-20%) i s automatickým indexováním, protože je navržena pro menší nároky na úložiště. Díky správě zásad indexování můžete řídit kompromisy nad nároky na index a výkon dotazů v jemně odstupňovaném způsobem.
 
-## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimalizujte náklady s časem a živého kanálu změn
+## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimalizace nákladů s využitím času na živé a změna kanálu
 
-Jakmile již nepotřebujete data řádně odstraníte ji ze svého účtu Azure Cosmos pomocí [TTL](time-to-live.md), [kanálu změn](change-feed.md) nebo migrujete stará data do jiného úložiště dat, jako je například úložiště objektů blob v Azure nebo datový sklad Azure. Hodnota time to live nebo TTL Azure Cosmos DB poskytuje možnost automaticky odstraňovat položky z kontejneru po určité časové období. Ve výchozím nastavení můžete nastavit dobu za provozu na úrovni kontejneru a přepište hodnotu na základě za položku. Po nastavení interval TTL, ZÍSKÁ v kontejneru nebo na úrovni položek služby Azure Cosmos DB tyto položky automaticky odebrat po období od chvíle, kdy bylo naposledy změněno. Pomocí kanálu změn můžete migrovat data do obou jiného kontejneru ve službě Azure Cosmos DB nebo externím úložišti. Přijímá nula dolů čas migrace a po dokončení migrace, můžete buď odstranit nebo nakonfigurovat TTL odstranit zdrojového kontejneru Azure Cosmos.
+Jakmile už data nepotřebujete, můžete je ze svého účtu Azure Cosmos bez problémů odstranit, a to pomocí [Time to Live](time-to-live.md), [změnit kanál](change-feed.md) nebo můžete migrovat stará data do jiného úložiště dat, jako je Azure Blob Storage nebo Azure Data Warehouse. S hodnotou Time to Live nebo TTL Azure Cosmos DB poskytuje možnost automaticky odstraňovat položky z kontejneru po určitém časovém období. Ve výchozím nastavení můžete nastavit možnost čas na živý na úrovni kontejneru a přepsat hodnotu na základě jednotlivých položek. Jakmile nastavíte hodnotu TTL v kontejneru nebo na úrovni položky, Azure Cosmos DB tyto položky po uplynutí časového období od poslední změny automaticky odebrat. Pomocí kanálu změn můžete migrovat data do jiného kontejneru v Azure Cosmos DB nebo do externího úložiště dat. Migrace trvá nepotřebnou dobu od času a po dokončení migrace můžete odstranit nebo nakonfigurovat dobu v reálném čase, kdy se má zdrojový kontejner Azure Cosmos odstranit.
 
-## <a name="optimize-cost-with-rich-media-data-types"></a>Optimalizujte náklady s bohatý mediální datové typy 
+## <a name="optimize-cost-with-rich-media-data-types"></a>Optimalizace nákladů pomocí bohatých mediálních datových typů 
 
-Pokud chcete ukládat bohatý mediální typy, například videa, obrázky, atd., máte řadu možností ve službě Azure Cosmos DB. Jednou z možností je uložit tyto typy bohatý mediální jako položky Azure Cosmos. Je stanovený limit 2 MB za položky a toto omezení se můžete vyhnout tak řetězení datové položky do více podřízených položek. Nebo můžete uložit je do úložiště objektů Blob v Azure a použít metadata k odkazování z položek aplikace Azure Cosmos. Existuje několik výhody a nevýhody tohoto přístupu. První postup vám pomůže co nejlepšího výkonu z hlediska latence, propustnosti smlouvy o úrovni služeb, a navíc možnosti globální distribuce na klíč pro bohatý mediální datové typy, které kromě regulárních položek Azure Cosmos. Podpora je však k dispozici na vyšší cenu. Uložením média v úložišti objektů Blob v Azure může snížit celkové náklady na. Pokud latence je velmi důležité, můžete použít storage úrovně premium pro bohatý mediální soubory, které jsou odkazovány z položek Azure Cosmos. Nativně integruje s síť CDN pro obsluhu bitové kopie z hraničního serveru za nižší cenu pro obejití geografické omezení. Dolů na straně v tomto scénáři je, že budete muset řešit s využitím dvou services – Azure Cosmos DB a Azure Blob storage, což může zvýšit provozní náklady. 
+Pokud chcete ukládat bohatě formátované typy médií, například videa, obrázky atd., máte k dispozici řadu možností v Azure Cosmos DB. Jednou z možností je ukládat tyto typy bohatých médií do Cosmos položek Azure. U každé položky je povolený limit 2 MB a toto omezení se může vyhnout zřetězením datové položky do více podpoložek. Nebo je můžete uložit ve službě Azure Blob Storage a použít metadata k jejich odkazování z položek Azure Cosmos. Tento přístup má několik specialistů a nevýhody. První postup vám získá nejlepší výkon z hlediska latence, propustnosti SLA a klíč globální distribuce pro datové typy s bohatými mediálními daty kromě běžných položek Azure Cosmos. Podpora je však dostupná za vyšší cenu. Uložením médií do úložiště objektů BLOB v Azure můžete snížit celkové náklady. Pokud je latence kritická, můžete použít službu Premium Storage pro mediální soubory, na které se odkazuje z položek Azure Cosmos. Integruje se nativně s CDN pro poskytování imagí z hraničního serveru za sníženou cenu za účelem obcházení geografického omezení. V tomto scénáři je potřeba se zabývat dvěma službami – Azure Cosmos DB a úložištěm objektů BLOB v Azure, což může zvýšit provozní náklady. 
 
-## <a name="check-storage-consumed"></a>Zkontrolujte využité úložiště
+## <a name="check-storage-consumed"></a>Ověřit spotřebované úložiště
 
-Pokud chcete zkontrolovat spotřebu úložiště kontejneru Azure Cosmos, můžete spustit požadavek HEAD nebo GET ke kontejneru a zkontrolovat `x-ms-request-quota` a `x-ms-request-usage` záhlaví. Můžete také při práci se sadou .NET SDK, můžete použít [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)), a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) vlastnosti, které chcete získat využité úložiště.
+Pokud chcete zkontrolovat spotřebu úložiště kontejneru Azure Cosmos, můžete na kontejneru spustit kopii nebo získat požadavek a zkontrolovat `x-ms-request-quota` `x-ms-request-usage` hlavičky a. Případně při práci s .NET SDK můžete použít vlastnosti [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) a získat tak využité úložiště.
 
 ## <a name="using-sdk"></a>Pomocí sady SDK
 
@@ -50,14 +50,14 @@ ResourceResponse<DocumentCollection> collectionInfo = await client.ReadDocumentC
 Console.WriteLine("Item size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Potom můžete přejít k další informace o optimalizaci nákladů ve službě Azure Cosmos DB najdete v následujících článcích:
+Další informace o optimalizaci nákladů v Azure Cosmos DB najdete v následujících článcích:
 
-* Další informace o [optimalizace pro vývoj a testování](optimize-dev-test.md)
-* Další informace o [vysvětlení vašeho vyúčtování Azure Cosmos DB](understand-your-bill.md)
-* Další informace o [optimalizace propustnosti náklady](optimize-cost-throughput.md)
-* Další informace o [optimalizovat náklady na operace čtení a zápisy](optimize-cost-reads-writes.md)
-* Další informace o [optimalizovat náklady na dotazy](optimize-cost-queries.md)
-* Další informace o [optimalizovat náklady na účty ve více oblastech Azure Cosmos](optimize-cost-regions.md)
+* Další informace o [optimalizaci pro vývoj a testování](optimize-dev-test.md)
+* Další informace o [Azure Cosmos DB vyúčtování](understand-your-bill.md)
+* Další informace o [optimalizaci nákladů na propustnost](optimize-cost-throughput.md)
+* Další informace o [optimalizaci nákladů na čtení a zápisy](optimize-cost-reads-writes.md)
+* Další informace o [optimalizaci nákladů na dotazy](optimize-cost-queries.md)
+* Další informace o [optimalizaci nákladů na účty Azure Cosmos ve více oblastech](optimize-cost-regions.md)
 

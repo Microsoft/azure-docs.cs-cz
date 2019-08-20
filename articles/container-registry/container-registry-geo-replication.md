@@ -6,14 +6,14 @@ author: stevelas
 manager: gwallace
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/24/2019
+ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 2fffa3b063969cbe68fb9a405f4198f15b3f9809
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845201"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574383"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace ve službě Azure Container Registry
 
@@ -105,6 +105,14 @@ ACR zahájí synchronizaci imagí napříč nakonfigurovanými replikami. Po dok
 Geografická replikace je funkce Azure Container Registry SKU úrovně [Premium](container-registry-skus.md) . Při replikaci registru do požadovaných oblastí se vám za každou oblast účtují poplatky za prémiové Registry.
 
 V předchozím příkladu společnost Contoso konsoliduje dvě Registry dolů na jednu a přidávají repliky do Východní USA, Kanady Central a Západní Evropa. Společnost Contoso by platila čtyřikrát za měsíc, a to bez další konfigurace nebo správy. Každá oblast teď znovu načte své image a zlepší výkon, spolehlivost bez poplatků za přenos ze sítě z Západní USA do Kanady a Východní USA.
+
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Řešení potíží s nabízenými operacemi s geograficky replikovanými Registry
+ 
+Klient Docker, který nahraje image do geograficky replikovaného registru, nemusí do jedné replikované oblasti vložit všechny vrstvy obrázků a její manifest. K tomu může dojít, protože Azure Traffic Manager směruje požadavky registru do replikovaného registru nejbližšího ze sítě. Pokud registr obsahuje dvě *blízké* oblasti replikace, vrstvy obrázků a manifesty, mohou být distribuovány do těchto dvou lokalit a při ověření manifestu dojde k chybě operace push. K tomuto problému dochází kvůli způsobu, jakým se název DNS registru vyřeší na některých hostitelích se systémem Linux. K tomuto problému nedochází ve Windows, který poskytuje mezipaměť DNS na straně klienta.
+ 
+Pokud k tomuto problému dojde, jedním z řešení je použít mezipaměť DNS na straně klienta, například `dnsmasq` na hostiteli se systémem Linux. To pomáhá zajistit, že se název registru vyřeší konzistentně. Pokud k odeslání do registru používáte virtuální počítač Linux v Azure, přečtěte si část možnosti [překladu názvů DNS pro virtuální počítače se systémem Linux v Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns).
+
+K optimalizaci překladu DNS na nejbližší replice při vkládání imagí nakonfigurujete geograficky replikovaný registr ve stejných oblastech Azure jako zdroj nabízených operací nebo nejbližší oblast při práci mimo Azure.
 
 ## <a name="next-steps"></a>Další postup
 

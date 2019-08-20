@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ee6d9332a2be5ccb22b7571b348e2e0aae78fb2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 783c4f5b1f5a7f2be748bc7173da2d068e1425f4
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563557"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575648"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. JSON pro prostředí pro vytváření spravované aplikace Azure
 
@@ -52,13 +52,11 @@ Schéma vlastnosti Parameters závisí na kombinaci zadané obslužné rutiny a 
 
 Zahrnutí `$schema` je doporučeno, ale volitelné. Je-li tento parametr zadán `version` , musí hodnota pro odpovídat verzi `$schema` v identifikátoru URI.
 
-Editor JSON můžete použít k vytvoření definice uživatelského rozhraní a pak ho otestovat v izolovaném [prostoru (sandbox) definice uživatelského rozhraní](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) a zobrazit jeho náhled. Další informace o izolovaném prostoru naleznete v tématu [Test rozhraní portálu pro Azure Managed Applications](test-createuidefinition.md).
+Pomocí editoru JSON můžete vytvořit createUiDefinition a potom ho otestovat v [izolovaném prostoru createUiDefinition](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) a zobrazit jeho náhled. Další informace o izolovaném prostoru naleznete v tématu [Test rozhraní portálu pro Azure Managed Applications](test-createuidefinition.md).
 
-## <a name="basics"></a>Základní informace
+## <a name="basics"></a>Základy
 
 Základy je první krok vygenerovaný při Azure Portal analyzuje soubor. Kromě zobrazení prvků určených v `basics`portálu vloží portál prvky pro uživatele pro výběr předplatného, skupiny prostředků a umístění pro nasazení. Pokud je to možné, v tomto kroku by se měly použít prvky, které dotazují parametry pro nasazení na úrovni pro nasazení, jako je název clusteru nebo přihlašovací údaje správce.
-
-Pokud chování prvku závisí na předplatném uživatele, skupině prostředků nebo umístění, pak tento prvek nelze použít v základech. Například **Microsoft. Compute. SizeSelector** závisí na předplatném uživatele a umístění, abyste určili seznam dostupných velikostí. Proto se **Microsoft. Compute. SizeSelector** dá použít jenom v krocích. Obecně platí, že v základech lze použít pouze prvky v oboru názvů **Microsoft. Common** . I když některé elementy v jiných oborech názvů (například **Microsoft. Compute. přihlašovací údaje**), které nejsou závislé na kontextu uživatele, jsou stále povoleny.
 
 ## <a name="steps"></a>Kroky
 
@@ -99,7 +97,7 @@ Chcete-li filtrovat dostupná umístění pouze do těch umístění, která pod
 
 CreateUiDefinition poskytuje [funkce](create-uidefinition-functions.md) pro práci s vstupy a výstupy prvků a funkcemi, jako jsou podmíněné. Tyto funkce jsou podobné v syntaxi a funkcích pro Azure Resource Manager funkcí šablon.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Samotný soubor createUiDefinition. JSON má jednoduché schéma. Skutečná hloubka se nachází ze všech podporovaných elementů a funkcí. Tyto položky jsou popsány podrobněji na adrese:
 

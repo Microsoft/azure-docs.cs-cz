@@ -1,30 +1,30 @@
 ---
-title: Migrace bez oddílů kontejnery služby Azure Cosmos DB do dělené kontejnery
-description: Zjistěte, jak migrovat všechny existující kontejnery bez oddílů do dělené kontejnerů.
+title: Migrace kontejnerů Azure Cosmos, které nejsou rozdělené na oddíly, do dělených kontejnerů
+description: Naučte se migrovat všechny existující nerozdělitelné kontejnery do dělených kontejnerů.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8ba9489496a8f9e3703702e344684b4028a002cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d51c200ebff0d92b1bcdf2c8e3e0325103e214b7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241928"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615031"
 ---
-# <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrace bez oddílů kontejnery do dělené kontejnery
+# <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrace kontejnerů mimo oddíly na dělené kontejnery
 
-Azure Cosmos DB podporuje vytváření kontejnerů bez klíče oddílu. Nyní můžete vytvořit bez oddílů kontejnery pomocí rozhraní příkazového řádku Azure a Azure Cosmos DB SDK (.Net, Java, NodeJs), které mají verzi nižší než nebo rovna 2.x. Nelze vytvořit bez oddílů kontejnerů pomocí webu Azure portal. Takových kontejnerů bez oddílů však nejsou elastický a opravili úložnou kapacitu limit 10 GB a propustnosti 10 tisíc RU/s.
+Azure Cosmos DB podporuje vytváření kontejnerů bez klíče oddílu. V současné době můžete vytvářet nerozdělené kontejnery pomocí Azure CLI a Azure Cosmos DB SDK (.NET, Java, NodeJs), jejichž verze je menší nebo rovna 2. x. Pomocí Azure Portal nelze vytvořit kontejnery bez oddílů. Nicméně tyto nerozdělitelné kontejnery nejsou elastické a mají pevnou kapacitu úložiště o velikosti 10 GB a propustnosti 10 000 RU/s.
 
-Kontejnery bez oddílů jsou starší verze a měli byste migrovat existující kontejnery bez oddílů na dělené kontejnerů a škálovatelného úložiště a propustnost. Azure Cosmos DB poskytuje mechanismus definovaná systémem k migraci kontejnerů bez oddílů do dělené kontejnerů. Tento dokument popisuje, jak automaticky migrovat do dělené kontejnerů jsou všechny existující kontejnery bez oddílů. Můžete využít funkci automatické migraci pouze v případě, že používáte V3 verzi sady SDK ve všech jazycích.
+Kontejnery, které nejsou rozdělené do oddílů, jsou starší a měli byste migrovat existující kontejnery bez oddílů na dělené kontejnery pro škálování úložiště a propustnosti. Azure Cosmos DB poskytuje mechanizmus definovaný systémem pro migraci kontejnerů, které nejsou rozdělené do oddílů, do dělených kontejnerů. Tento dokument vysvětluje, jak se všechny existující kontejnery bez oddílů automaticky migrují do dělených kontejnerů. Funkci automatické migrace můžete využít jenom v případě, že používáte verzi V3 sad SDK ve všech jazycích.
 
 > [!NOTE] 
-> V současné době nemůžete migrovat účty Azure Cosmos DB MongoDB, Gremlin API pomocí kroků popsaných v tomto dokumentu. 
+> V současné době nemůžete migrovat Azure Cosmos DB účty rozhraní API MongoDB a Gremlin pomocí kroků popsaných v tomto dokumentu. 
 
-## <a name="migrate-container-using-the-system-defined-partition-key"></a>Migrace kontejner pomocí klíče oddílu definovaná systémem
+## <a name="migrate-container-using-the-system-defined-partition-key"></a>Migrace kontejneru pomocí klíče oddílu definovaného systémem
 
-Pro podporu migrace, Azure Cosmos DB definuje definovaná systémem klíče oddílu s názvem `/_partitionkey` na všechny kontejnery, které nemají klíč oddílu. Definice klíče oddílu nelze změnit po migraci kontejnerů. Definice kontejneru, který je přenášen do dělené kontejneru bude třeba takto: 
+Pro podporu migrace Azure Cosmos DB definuje klíč oddílu definovaného systémem, který je `/_partitionkey` označený na všech kontejnerech, které nemají klíč oddílu. Po migraci kontejnerů nelze definici klíče oddílu změnit. Například definice kontejneru, který je migrován do děleného kontejneru, bude následující: 
 
 ```json
 {
@@ -38,16 +38,16 @@ Pro podporu migrace, Azure Cosmos DB definuje definovaná systémem klíče odd�
 }
 ```
  
-Po migraci oznámení o kontejneru, můžete vytvořit dokumenty naplněním `_partitionKey` vlastnost spolu s ostatními vlastnostmi dokumentu. `_partitionKey` Vlastnost představuje klíč oddílu dokumentů. 
+Po migraci kontejneru můžete vytvořit dokumenty naplněním `_partitionKey` vlastnosti spolu s dalšími vlastnostmi dokumentu. `_partitionKey` Vlastnost představuje klíč oddílu vašich dokumentů. 
 
-Zvolit klíč oddílu vpravo je důležité pro optimální využití zřízené propustnosti. Další informace najdete v tématu [jak zvolit klíč oddílu](partitioning-overview.md) článku. 
+Výběr správného klíče oddílu je důležitý pro optimální využití zajištěné propustnosti. Další informace najdete v článku [Jak zvolit klíč oddílu](partitioning-overview.md) . 
 
 > [!NOTE]
-> Pouze v případě, že používáte nejnovější verzi nebo V3 verzi sady SDK ve všech jazycích, můžete využít výhod systému definovaným klíčem oddílu.
+> Můžete využít klíč oddílu definovaného systémem pouze v případě, že ve všech jazycích používáte nejnovější verzi sady SDK verze/v3.
 
-Následující příklad ukazuje ukázkový kód pro vytvoření dokumentu s klíčem oddílu definovaný systému a přečtěte si tento dokument:
+Následující příklad ukazuje vzorový kód pro vytvoření dokumentu s klíčem oddílu definovaného systémem a čtení tohoto dokumentu:
 
-**Reprezentace JSON dokumentu**
+**Reprezentace dokumentu ve formátu JSON**
 
 ```csharp
 DeviceInformationItem = new DeviceInformationItem
@@ -91,15 +91,15 @@ CosmosItemResponse<DeviceInformationItem> readResponse =
 
 ```
 
-Úplnou ukázku najdete v tématu [ukázky .net](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) úložiště GitHub. 
+Úplnou ukázku najdete v úložišti GitHub [Samples .NET](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) . 
                       
-## <a name="migrate-the-documents"></a>Migrace dokumenty
+## <a name="migrate-the-documents"></a>Migrace dokumentů
 
-Při definici kontejneru je rozšířené vlastnosti klíče oddílu, dokumenty v kontejneru se automaticky migrovat. To znamená, že vlastnost klíče oddílu systému `/_partitionKey` cesta není automaticky přidán do existující dokumenty. Budete muset změnit rozdělení stávající dokumenty načtením dokumentů, které byly vytvořeny bez klíče oddílu a jejich zpět s přepsáním `_partitionKey` vlastností v dokumentech. 
+I když je definice kontejneru Vylepšená pomocí vlastnosti klíče oddílu, dokumenty v kontejneru se automaticky nemigrují. To znamená, že cesta k vlastnosti `/_partitionKey` klíče systémového oddílu není automaticky přidána do stávajících dokumentů. Existující dokumenty je potřeba znovu rozdělit na oddíly, které se vytvořily bez klíče oddílu, a pak je v dokumentech znovu napíšete pomocí `_partitionKey` vlastnosti. 
 
-## <a name="access-documents-that-dont-have-a-partition-key"></a>Získáte přístup k dokumentům, které nemají klíče oddílu
+## <a name="access-documents-that-dont-have-a-partition-key"></a>Přístup k dokumentům, které nemají klíč oddílu
 
-Aplikace můžou k existující dokumenty, které nemají klíče oddílu pomocí speciální systémové vlastnosti s názvem "CosmosContainerSettings.NonePartitionKeyValue", jedná se o hodnotu nemigrované dokumentů. Tuto vlastnost můžete použít u všech operací CRUD a dotazů. Následující příklad ukazuje ukázkové čtení jednoho dokumentu z NonePartitionKey. 
+Aplikace mají přístup k existujícím dokumentům, které nemají klíč oddílu, pomocí speciální systémové vlastnosti s názvem "CosmosContainerSettings. NonePartitionKeyValue", jedná se o hodnotu nemigrovaných dokumentů. Tuto vlastnost můžete použít ve všech operacích CRUD a dotazování. Následující příklad ukazuje ukázku pro čtení jednoho dokumentu z NonePartitionKey. 
 
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 
@@ -110,17 +110,17 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 ```
 
-Kompletní příklad, jak změnit rozdělení dokumenty, najdete v článku [ukázky .net](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) úložiště GitHub. 
+Kompletní ukázku, jak změnit oddíly dokumentů, najdete v úložišti GitHub Samples [.NET](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) . 
 
-## <a name="compatibility-with-sdks"></a>Kompatibilita s SDK
+## <a name="compatibility-with-sdks"></a>Kompatibilita se sadami SDK
 
-Starší verzi sady SDK služby Azure Cosmos DB například V2.x.x a V1.x.x nepodporují vlastnost klíče oddílu definovaná systémem. Proto při čtení definici kontejneru ze starší sada SDK neobsahuje žádné definice klíče oddílu a tyto kontejnery se bude chovat úplně stejně jako předtím. Aplikace, které jsou vytvořeny pomocí starší verze sady SDK i nadále pracovat bez oddílů je bez nutnosti jakkoli měnit. 
+Starší verze sady Azure Cosmos DB SDK, například v2. x. x a v1. x. x, nepodporují vlastnost klíče oddílu definované systémem. Takže při čtení definice kontejneru ze starší sady SDK neobsahuje žádné definice klíče oddílu a tyto kontejnery se budou chovat přesně stejně jako předtím. Aplikace, které jsou vytvořeny pomocí starší verze sad SDK, budou nadále fungovat s nerozdělenými na oddíly beze změn. 
 
-Pokud migrované kontejneru je využívána nejnovější/V3 verzi sady SDK a spustit sestavování definovaná systémem klíče oddílu v rámci nové dokumenty, nemáte přístup (čtení, aktualizace, odstranění, dotaz), zobrazovat dokumenty ze starších sad SDK.
+Pokud je migrovaný kontejner využíván nejnovější verzí sady SDK a vy začnete naplnit klíč oddílu definovaného systémem v nových dokumentech, nebudete již mít přístup k takovým dokumentům ze starších sad SDK (čtení, aktualizace, odstranění a dotazování).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
-* [Jednotky žádosti v Azure Cosmos DB](request-units.md)
-* [Zřizování propustnosti na kontejnerech a databází](set-throughput.md)
+* [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)
+* [Zřízení propustnosti u kontejnerů a databází](set-throughput.md)
 * [Práce s účtem Azure Cosmos](account-overview.md)

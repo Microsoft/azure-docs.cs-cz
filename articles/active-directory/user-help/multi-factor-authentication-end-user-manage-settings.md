@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acfa31434534eb3618b8a279ea6cff543fae076
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949793"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616152"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>Správa nastavení dvojúrovňové metody ověřování
 
@@ -135,6 +135,10 @@ V závislosti na nastavení organizace se může zobrazit zaškrtávací políč
 
 ## <a name="next-steps"></a>Další postup
 
-- Získejte tipy k odstraňování potíží a nápovědu k problémům [se dvěma faktory ověřování](multi-factor-authentication-end-user-troubleshoot.md) .
+Po přidání nebo aktualizaci nastavení dvojúrovňového ověřování můžete spravovat hesla aplikací, přihlašovat se nebo získat pomoc s některými běžnými problémy souvisejícími s ověřováním dvou faktorů.
 
 - [Spravujte hesla aplikací pro dvoustupňové ověřování](multi-factor-authentication-end-user-app-passwords.md) pro všechny aplikace, které nepodporují dvojúrovňové ověřování.
+
+- [Přihlášení Pomocí dvojúrovňového ověřování](multi-factor-authentication-end-user-signin.md)
+
+- [Získat pomoc se dvojúrovňovém ověřováním](multi-factor-authentication-end-user-troubleshoot.md)

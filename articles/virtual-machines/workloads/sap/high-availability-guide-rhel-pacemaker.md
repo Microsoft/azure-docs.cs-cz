@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: bffb92e37ccddd43c2a64466282084bb6226c338
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 24e7e67145b789737484fcb594f48127c41eafe9
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570555"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575223"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -107,12 +107,16 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    > RHEL 7,6: fence-Agents-4.2.1 -11. el7 _ 6.8  
    > RHEL 7,5: fence-Agents-4.0.11 -86. el7 _ 5.8  
    > RHEL 7,4: fence-Agents-4.0.11 -66. el7 _ 4.12  
-   > Další informace najdete v tématu vytvoření [virtuálního počítače Azure se spuštěným systémem jako RHELý člen clusteru s vysokou dostupností, který může být v případě, že se virtuální počítač vypíná, neúspěšně nebo nevypršela jeho platnost](https://access.redhat.com/solutions/3408711) .
+   > Další informace najdete v článku o [virtuálním počítači Azure spuštěném jako RHELý člen clusteru s vysokou dostupností, který může být ve velkém čase, nebo když se virtuální počítač vypne, neprojde nebo](https://access.redhat.com/solutions/3408711)neuplyne.
 
    Podívejte se na verzi agenta Azure plot. V případě potřeby ho aktualizujte na verzi, která se rovná nebo je vyšší než výše uvedená.
+
    <pre><code># Check the version of the Azure Fence Agent
     sudo yum info fence-agents-azure-arm
    </code></pre>
+
+   > [!IMPORTANT]
+   > Pokud potřebujete aktualizovat agenta Azure plot a při použití vlastní role, nezapomeňte aktualizovat vlastní roli tak, aby zahrnovala akci **stavu PowerOff**. Podrobnosti najdete v tématu [Vytvoření vlastní role pro agenta plotu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent).  
 
 1. **[A]**  Nastavit rozlišení názvu hostitele
 
@@ -266,7 +270,7 @@ K nakonfigurování ochranného zařízení použijte následující příkaz.
 <pre><code>sudo pcs property set stonith-enabled=true
 </code></pre>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP][deployment-guide]

@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f2145811338200b38e84766459844b4c83e5a80
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 00f8a0e8d655f9412eceb7b0901ced829e490f78
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382770"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616098"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Ruční přidání účtu do aplikace
 
@@ -34,7 +34,7 @@ Kódy poskytované pro vaše účty nerozlišují velká a malá písmena a při
 
     ![Obrazovka, která poskytuje kód QR](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
-2. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte  **Přidat účet** a potom vyberte **pracovní nebo školní účet**.
+2. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** a potom vyberte **pracovní nebo školní účet**.
 
 3. Vyberte **nebo zadejte kód ručně**.
 
@@ -84,7 +84,7 @@ Svůj účet Amazon můžete přidat tak, že zapnete dvojúrovňové ověřová
 
 1. V počítači vyberte možnost **Nekontrolovat čárový** kód z pole **zvolit způsob, jakým se zobrazí kódy** pro kód QR.
 
-    Zpráva  s čárovým kódem se zobrazí s tajným kódem. Tuto zprávu nechte otevřenou, abyste mohli zobrazit tajný kód.
+    Zpráva s čárovým kódem se zobrazí s tajným kódem. Tuto zprávu nechte otevřenou, abyste mohli zobrazit tajný kód.
 
 2. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a** v pravém horním rohu vyberte **Další účet (Google, Facebook atd.)** a pak vyberte **nebo zadejte kód ručně**.
 
@@ -101,10 +101,10 @@ Svůj účet Amazon můžete přidat tak, že zapnete dvojúrovňové ověřová
     >[!NOTE]
     >Další informace o dvojúrovňovém ověřování a účtu Amazon najdete v článku [o dvoustupňovém ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) a přihlašování [pomocí dvoustupňového ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).    
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Po přidání účtů do aplikace se můžete přihlásit pomocí aplikace Microsoft Authenticator na svém zařízení. Další informace najdete v tématu [přihlášení pomocí aplikace](user-help-auth-app-sign-in.md).
 
-- Pokud máte potíže s získáním ověřovacího kódu pro osobní účet Microsoft, přečtěte si část **problémy s ověřovacím kódem pro řešení potíží** v článku [účet Microsoft informace o zabezpečení & ověřovací kódy](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) .
+- Pokud máte potíže s získáním ověřovacího kódu pro osobní účet Microsoft, přečtěte si část **problémy s ověřovacím kódem pro řešení potíží** v článku [účet Microsoft informace o zabezpečení & ověřovací kódy](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
 
 - U zařízení se systémem iOS můžete také zálohovat přihlašovací údaje účtu a související nastavení aplikace, jako je například pořadí účtů, do cloudu. Další informace najdete v tématu [zálohování a obnovení pomocí aplikace Microsoft Authenticator](user-help-auth-app-backup-recovery.md).

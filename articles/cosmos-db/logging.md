@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 41fa5a859e738c2bb70e4885aa856f247e922492
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3a2702abd39ecdf506d58b6bd8884f12607e29e8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448998"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615306"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Protokolování diagnostiky ve službě Azure Cosmos DB 
 
-Jakmile začnete používat jednu nebo více databází Azure Cosmos DB, můžete chtít sledovat jak a kdy jsou vaše databáze přístupné. Tento článek poskytuje přehled o protokoly, které jsou k dispozici na platformě Azure. Informace o povolení protokolování diagnostiky pro účely odeslat protokoly do monitorování [služby Azure Storage](https://azure.microsoft.com/services/storage/), jak streamování protokolů do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a jak exportovat protokoly [protokolyAzuremonitoru](https://azure.microsoft.com/services/log-analytics/).
+Až začnete používat jednu nebo více databází Azure Cosmos, můžete chtít monitorovat, jak a kdy se k databázím dostanete. Tento článek poskytuje přehled o protokoly, které jsou k dispozici na platformě Azure. Naučíte se, jak povolit diagnostické protokolování pro účely monitorování, aby se odesílaly protokoly do [Azure Storage](https://azure.microsoft.com/services/storage/), jak streamovat protokoly do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a jak exportovat protokoly do [protokolů Azure monitor](https://azure.microsoft.com/services/log-analytics/).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -25,9 +25,9 @@ Jakmile začnete používat jednu nebo více databází Azure Cosmos DB, můžet
 
 ## <a name="logs-available-in-azure"></a>Protokoly, které jsou k dispozici v Azure
 
-Před mluvíme o tom, jak sledovat účtu služby Azure Cosmos DB, můžeme vysvětlit pár věcí o protokolování a monitorování. Existují různé typy protokolů na platformě Azure. Existují [protokolů aktivit Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [metriky Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), události, monitorování prezenčních signálů, provozních protokolů a tak dále. Existuje množství protokoly. Můžete zobrazit úplný seznam protokolů v [protokoly Azure monitoru](https://azure.microsoft.com/services/log-analytics/) na webu Azure Portal. 
+Před mluvíme o tom, jak sledovat účtu služby Azure Cosmos DB, můžeme vysvětlit pár věcí o protokolování a monitorování. Existují různé typy protokolů na platformě Azure. Existují [protokolů aktivit Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [metriky Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), události, monitorování prezenčních signálů, provozních protokolů a tak dále. Existuje množství protokoly. Zobrazí se úplný seznam protokolů v [Azure monitor protokoly](https://azure.microsoft.com/services/log-analytics/) v Azure Portal. 
 
-Na následujícím obrázku je jiný druh protokoly Azure, které jsou k dispozici:
+Následující obrázek znázorňuje různé druhy protokolů Azure, které jsou k dispozici:
 
 ![Různé druhy protokoly Azure](./media/logging/azurelogging.png)
 
@@ -56,7 +56,7 @@ Protokoly aktivit (operace roviny řízení) může být širší ze své podsta
 
 Diagnostické protokoly Azure jsou emitovány prostředek a poskytují bohaté a časté informace o fungování tohoto prostředku. Tyto protokoly jsou zachyceny na základě požadavku. Obsah tyto protokoly se liší podle typu prostředku. Diagnostické protokoly na úrovni prostředků se také liší od diagnostické protokoly na úrovni operačního systému hosta. Diagnostické protokoly operačního systému hosta byly shromážděny sadou agenta, na kterém běží uvnitř virtuálního počítače nebo jiné nepodporuje typ prostředku. Diagnostické protokoly na úrovni prostředků vyžadovat žádná data specifické podle prostředků agenta a zachycení samotné platformy Azure. Diagnostické protokoly úrovni operačního systému hosta zachytávat data z operačního systému a aplikací, které jsou spuštěné na virtuálním počítači.
 
-![Protokolování diagnostiky pro protokoly úložiště služby Event Hubs a Azure Monitor](./media/logging/azure-cosmos-db-logging-overview.png)
+![Protokolování diagnostiky do protokolů úložiště, Event Hubs nebo Azure Monitor](./media/logging/azure-cosmos-db-logging-overview.png)
 
 ### <a name="what-is-logged-by-azure-diagnostic-logs"></a>Co je protokolováno podle diagnostické protokoly Azure?
 
@@ -68,47 +68,47 @@ Diagnostické protokoly Azure jsou emitovány prostředek a poskytují bohaté a
 <a id="#turn-on"></a>
 ## <a name="turn-on-logging-in-the-azure-portal"></a>Zapnutí protokolování na portálu Azure portal
 
-Chcete-li povolit protokolování diagnostiky na portálu Azure portal postupujte následovně:
+K povolení diagnostického protokolování v Azure Portal použijte následující postup:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
-1. Přejděte do svého účtu Azure Cosmos. Otevřít **nastavení diagnostiky** podokně a pak vyberte **přidejte nastavení diagnostiky** možnost.
+1. Přejděte k účtu Azure Cosmos. Otevřete podokno **nastavení diagnostiky** a pak vyberte **Přidat možnost nastavení diagnostiky** .
 
     ![Zapnutí protokolování diagnostiky pro Azure Cosmos DB na webu Azure Portal](./media/logging/turn-on-portal-logging.png)
 
-1. V **nastavení diagnostiky** stránce, vyplňte formulář s následujícími podrobnostmi: 
+1. Na stránce **nastavení diagnostiky** vyplňte formulář následujícími podrobnostmi: 
 
     * **Název**: Zadejte název pro protokoly a vytvořit.
 
-    * Můžete ukládat protokoly k následujícím službám:
+    * Protokoly můžete ukládat do následujících služeb:
 
-      * **Archivovat do účtu úložiště**: Pokud chcete použít tuto možnost, musíte se připojit k existující účet úložiště. Chcete-li vytvořit nový účet úložiště na portálu, najdete v článku [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md) článku. Poté se vraťte do podokna nastavení diagnostiky služby Azure Cosmos Db na portálu a vyberte svůj účet úložiště. Může trvat několik minut, než se nově vytvořené účty se zobrazí v rozevírací nabídce.
+      * **Archivovat do účtu úložiště**: Pokud chcete použít tuto možnost, musíte se připojit k existující účet úložiště. Informace o vytvoření nového účtu úložiště na portálu najdete v článku o [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md) . Pak se vraťte do podokna nastavení diagnostiky služby Azure Cosmos DB na portálu a vyberte svůj účet úložiště. Může trvat několik minut, než se nově vytvořené účty se zobrazí v rozevírací nabídce.
 
-      * **Stream do centra událostí**: Pokud chcete použít tuto možnost, budete potřebovat existující služby Event Hubs oboru názvů a Centrum událostí se připojit k. Pokud chcete vytvořit obor názvů služby Event Hubs, najdete v článku [vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal](../event-hubs/event-hubs-create.md). Pak se vraťte k této stránce portálu vyberte název oboru názvů a zásad centra událostí.
+      * **Streamování do centra událostí**: Pokud chcete použít tuto možnost, potřebujete existující Event Hubs obor názvů a centrum událostí, ke kterým se chcete připojit. Pokud chcete vytvořit obor názvů služby Event Hubs, najdete v článku [vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal](../event-hubs/event-hubs-create.md). Pak se vraťte na tuto stránku na portálu a vyberte obor názvů a název zásady centra událostí.
 
-      * **Odeslání do Log Analytics**: Pokud chcete použít tuto možnost, použít stávající pracovní prostor nebo vytvořit nový pracovní prostor Log Analytics pomocí následujících kroků na [vytvořit nový pracovní prostor](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) na portálu. 
+      * **Odeslat do Log Analytics**: Pokud chcete tuto možnost použít, buď použijte existující pracovní prostor, nebo vytvořte nový pracovní prostor Log Analytics podle pokynů v části Postup [Vytvoření nového pracovního prostoru](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) na portálu. 
 
    * Můžete protokolovat následující data:
 
-      * **DataPlaneRequests**: Vyberte tuto možnost, chcete-li protokolovat požadavky na back-end ke všem rozhraním API, což zahrnuje účty SQL, graf, MongoDB, Cassandra a Table API ve službě Azure Cosmos DB. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování. Následující data JSON je příklad výstupu zaprotokolované pomocí DataPlaneRequests podrobností. Vlastnosti klíče si uvědomit jsou: Requestcharge, statusCode, clientIPaddress a partitionID:
+      * **DataPlaneRequests**: Tuto možnost vyberte, pokud chcete protokolovat požadavky back-endu na všechna rozhraní API, která zahrnují účty SQL, Graph, MongoDB, Cassandra a rozhraní API pro tabulky v Azure Cosmos DB. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování. Následující data JSON jsou ukázkový výstup podrobností protokolovaných pomocí DataPlaneRequests. Všimněte si klíčových vlastností: Requestcharge, statusCode, clientIPaddress a partitionID:
 
        ```
        { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
        ```
 
-      * **MongoRequests**: Vyberte tuto možnost můžete protokolovat požadavky zahájená uživatelem z front-endu pro požadavků rozhraní API služby Azure Cosmos DB pro MongoDB. MongoDB žádosti se zobrazí v MongoRequests, jakož i DataPlaneRequests. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování. Následující data JSON je příklad výstupu zaprotokolované pomocí MongoRequests podrobností. Vlastnosti klíče si uvědomit jsou: Requestcharge, operační kód:
+      * **MongoRequests**: Tuto možnost vyberte, pokud chcete protokolovat požadavky iniciované uživatelem z front-endu, aby sloužily požadavky na rozhraní API Azure Cosmos DB pro MongoDB. Žádosti MongoDB se zobrazí v MongoRequests a také v DataPlaneRequests. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování. Následující data JSON jsou ukázkový výstup podrobností protokolovaných pomocí MongoRequests. Všimněte si klíčových vlastností: Requestcharge, opCode:
 
        ```
        { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
        ```
 
-      * **QueryRuntimeStatistics**: Vyberte tuto možnost, chcete-li protokolovat text dotazu, který se spustil.  Následující data JSON je příklad výstupu zaprotokolované pomocí QueryRuntimeStatistics podrobností:
+      * **QueryRuntimeStatistics**: Tuto možnost vyberte, pokud chcete protokolovat text dotazu, který se spustil.  Následující data JSON jsou příklad výstupu podrobností protokolovaných pomocí QueryRuntimeStatistics:
 
        ```
        { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
        ```
 
-      * **Metrika žádosti**: Tuto možnost použijte k ukládání podrobné údaje v [metriky Azure](../azure-monitor/platform/metrics-supported.md). Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
+      * **Požadavky**na metriky: Tuto možnost vyberte, pokud chcete ukládat podrobná data do [metrik Azure](../azure-monitor/platform/metrics-supported.md). Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
 
 3. Vyberte **Uložit**.
 
@@ -126,7 +126,7 @@ Povolit protokolování diagnostiky a metriky pomocí Azure CLI, použijte násl
    az monitor diagnostic-settings create --name DiagStorage --resource <resourceId> --storage-account <storageAccountName> --logs '[{"category": "QueryRuntimeStatistics", "enabled": true, "retentionPolicy": {"enabled": true, "days": 0}}]'
    ```
 
-   `resource` Je název účtu služby Azure Cosmos DB. Prostředek je ve formátu "/subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/providers/Microsoft.DocumentDB/databaseAccounts/ < Azure_Cosmos_account_name >" `storage-account` je název účtu úložiště, do které jste Chcete odeslat protokoly. Další protokoly se můžete přihlásit prostřednictvím aktualizace hodnoty parametru kategorie "MongoRequests" nebo "DataPlaneRequests". 
+   `resource` Je název účtu služby Azure Cosmos DB. Prostředek má formát "/Subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/Providers/Microsoft.DocumentDB/databaseAccounts/ `storage-account` < Azure_Cosmos_account_name >" je název účtu úložiště, na který jste Chcete odeslat protokoly. Další protokoly můžete protokolovat tak, že aktualizujete hodnoty parametrů kategorie na "MongoRequests" nebo "DataPlaneRequests". 
 
 - Pokud chcete povolit streamování diagnostických protokolů do centra událostí, použijte tento příkaz:
 
@@ -134,7 +134,7 @@ Povolit protokolování diagnostiky a metriky pomocí Azure CLI, použijte násl
    az monitor diagnostic-settings create --name cdbdiagsett --resourceId <resourceId> --event-hub-rule <eventHubRuleID> --logs '[{"category":"QueryRuntimeStatistics","enabled":true,"retentionPolicy":{"days":6,"enabled":true}}]'
    ```
 
-   `resource` Je název účtu služby Azure Cosmos DB. `event-hub-rule` Je ID event hub pravidlo. 
+   `resource` Je název účtu služby Azure Cosmos DB. `event-hub-rule` Je ID pravidla centra událostí. 
 
 - Pokud chcete povolit odesílání diagnostických protokolů do pracovního prostoru Log Analytics, použijte tento příkaz:
 
@@ -183,7 +183,7 @@ Další informace o tom, jak nakonfigurovat prostředí Azure PowerShell najdete
 ### <a id="storage"></a>Vytvoření nového účtu úložiště pro protokoly
 I když používáte existující účet úložiště pro protokoly, v tomto kurzu, vytvoříme nový účet úložiště, který je vyhrazený pro protokoly služby Azure Cosmos DB. Pro usnadnění práce jsme ukládat podrobnosti o účtu úložiště do proměnné s názvem **sa**.
 
-Pro další usnadnění správy v tomto kurzu používáme stejnou skupinu prostředků jako ten, který obsahuje databázi Azure Cosmos DB. Dosaďte svoje hodnoty **ContosoResourceGroup**, **contosocosmosdblogs**, a **střed USA – sever** parametry, podle potřeby:
+Pro další snadné řízení používáme v tomto kurzu stejnou skupinu prostředků jako ta, která obsahuje databázi Azure Cosmos. Dosaďte svoje hodnoty **ContosoResourceGroup**, **contosocosmosdblogs**, a **střed USA – sever** parametry, podle potřeby:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup `
@@ -251,7 +251,7 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 ```
 
 ### <a id="access"></a>Přístup k protokolům
-Protokoly služby Azure Cosmos DB **DataPlaneRequests** kategorií jsou uloženy v **přehledy. protokoly dataplanerequests** kontejneru v účtu úložiště, které jste zadali. 
+Protokoly Azure Cosmos DB pro kategorii **DataPlaneRequests** se ukládají do kontejneru **Insights-logs-DataPlaneRequests** v účtu úložiště, který jste zadali. 
 
 Nejprve vytvořte proměnnou pro název kontejneru. Proměnná se používá v rámci návodu.
 
@@ -371,22 +371,22 @@ Diagnostické protokoly jsou k dispozici ve vašem účtu po dobu dvou hodin od 
 
 
 <a id="#view-in-loganalytics"></a>
-## <a name="view-logs-in-azure-monitor-logs"></a>Zobrazení protokolů v protokoly Azure monitoru
+## <a name="view-logs-in-azure-monitor-logs"></a>Zobrazit protokoly v protokolu Azure Monitor
 
-Pokud jste vybrali **odesílat do Log Analytics** možnost při zapnutí protokolování diagnostiky, diagnostických dat z vašeho kontejneru protokoly Azure monitoru předá do dvou hodin. Když se podíváte na protokoly Azure monitoru ihned po zapnutí protokolování, nezobrazí se žádná data. Právě počkejte po dobu dvou hodin a zkuste to znovu. 
+Pokud jste vybrali možnost **Odeslat do Log Analytics** , když jste zapnuli protokolování diagnostiky, budou diagnostická data z vašeho kontejneru předána do Azure monitor protokolů do dvou hodin. Když se Azure Monitor protokoly hned po zapnutí protokolování, nezobrazí se žádná data. Právě počkejte po dobu dvou hodin a zkuste to znovu. 
 
-Předtím, než můžete zobrazit protokoly, zkontrolujte a zobrazit, pokud váš pracovní prostor Log Analytics má byla upgradována na nový dotazovací jazyk Kusto. Chcete-li zkontrolovat, otevřete [webu Azure portal](https://portal.azure.com)vyberte **pracovních prostorů Log Analytics** úplně vlevo, pak vyberte název pracovního prostoru, jak je vidět na dalším obrázku. **Pracovní prostor Log Analytics** se zobrazí stránka:
+Před zobrazením protokolů zkontrolujte a zjistěte, jestli je váš pracovní prostor Log Analytics upgradovaný tak, aby používal nový dotazovací jazyk Kusto. Chcete-li kontrolu spustit, otevřete [Azure Portal](https://portal.azure.com), vyberte možnost **Log Analytics pracovní prostory** úplně vlevo a potom vyberte název pracovního prostoru, jak je znázorněno na následujícím obrázku. **Pracovní prostor Log Analytics** se zobrazí stránka:
 
-![Azure Monitor protokolů na webu Azure Portal](./media/logging/azure-portal.png)
+![Azure Monitor protokoly v Azure Portal](./media/logging/azure-portal.png)
 
 >[!NOTE]
 >Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.  
 
 Pokud se zobrazí následující zpráva na **pracovní prostor Log Analytics** stránky, váš pracovní prostor nebyl byla upgradována na nový jazyk. Další informace o tom, jak upgradovat na nový dotazovací jazyk, v tématu [Upgrade pracovního prostoru Azure Log Analytics na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md). 
 
-![Protokoly Azure monitoru upgrade zprávy](./media/logging/upgrade-notification.png)
+![Zpráva o upgradu protokolů Azure Monitor](./media/logging/upgrade-notification.png)
 
-Chcete-li zobrazit diagnostická data v protokolech Azure Monitor, otevřete **prohledávání protokolů** stránky v levé nabídce nebo **správu** oblasti na stránce, jak je znázorněno na následujícím obrázku:
+Chcete-li zobrazit diagnostická data v protokolech Azure Monitor, otevřete stránku **prohledávání protokolu** v nabídce vlevo nebo oblasti **správy** stránky, jak je znázorněno na následujícím obrázku:
 
 ![Možnosti protokolu hledání na webu Azure Portal](./media/logging/log-analytics-open-log-search.png)
 
@@ -397,7 +397,7 @@ Teď, když jste povolili shromažďování dat, spusťte následující příkl
 <a id="#queries"></a>
 ### <a name="queries"></a>Dotazy
 
-Tady jsou některé další dotazy, které můžete zadat do **prohledávání protokolů** pole, které vám pomohou monitorovat kontejnery služby Azure Cosmos DB. Tyto dotazy pracovat [nový jazyk](../log-analytics/log-analytics-log-search-upgrade.md). 
+Tady je několik dalších dotazů, které můžete zadat do pole **hledání v protokolu** , které vám pomůžou monitorovat vaše kontejnery Cosmos Azure. Tyto dotazy pracovat [nový jazyk](../log-analytics/log-analytics-log-search-upgrade.md). 
 
 Další informace o význam data, která je vrácený každou prohledávání protokolů, najdete v článku [interpretace protokolů služby Azure Cosmos DB](#interpret).
 
@@ -451,24 +451,24 @@ Další informace o význam data, která je vrácený každou prohledávání pr
     AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , toint(duration_s)/1000 | render timechart
     ```
 
-Další informace o tom, jak používat nový jazyk prohledávání protokolů, najdete v části [Principy prohledávání protokolů v protokoly Azure monitoru](../log-analytics/log-analytics-log-search-new.md). 
+Další informace o použití nového jazyka pro hledání v protokolu najdete v tématu [vysvětlení prohledávání protokolů v Azure Monitorch protokolech](../log-analytics/log-analytics-log-search-new.md). 
 
 ## <a id="interpret"></a>Interpretujte svoje protokoly
 
-Diagnostická data ukládaná ve službě Azure Storage a Azure Monitor protokoly používá podobné schématu. 
+Diagnostická data uložená v protokolech Azure Storage a Azure Monitor používají podobné schéma. 
 
 Následující tabulka popisuje obsah každé položky protokolu.
 
-| Azure Storage pole nebo vlastnost | Vlastnost protokoly Azure monitoru | Popis |
+| Azure Storage pole nebo vlastnost | Vlastnost protokolů Azure Monitor | Popis |
 | --- | --- | --- |
 | **čas** | **TimeGenerated** | Datum a čas (UTC), kdy došlo k chybě operace. |
 | **ID prostředku** | **Prostředek** | Účet Azure Cosmos DB, pro kterou jsou povolené protokoly.|
 | **Kategorie** | **Kategorie** | Pro protokoly služby Azure Cosmos DB **DataPlaneRequests** je k dispozici pouze hodnota. |
-| **OperationName** | **OperationName** | Název operace Tato hodnota může být některý z následujících operací: Vytvoření, aktualizaci, čtení, ReadFeed, odstranění, nahrazení, spusťte, SqlQuery, dotaz, JSQuery, Head, HeadFeed nebo Upsert.   |
+| **OperationName** | **OperationName** | Název operace Tato hodnota může být libovolná z následujících operací: Vytvořit, aktualizovat, číst, ReadFeed, odstranit, nahradit, spustit, SqlQuery, dotaz, JSQuery, Head, HeadFeed nebo Upsert.   |
 | **Vlastnosti** | neuvedeno | Obsah tohoto pole jsou popsány v řádcích, které následují. |
 | **ID aktivity** | **activityId_g** | Jedinečný identifikátor GUID pro protokolovaných operací. |
 | **userAgent** | **userAgent_s** | Řetězec, který určuje uživatelský agent klienta, který provádí požadavek. Formát je {uživatelské jméno agenta} / {version}.|
-| **requestResourceType** | **requestResourceType_s** | Typ prostředku, u níž. Tato hodnota může být některý z těchto typů prostředků: Databáze, kontejner, dokument, přílohy, uživatele, oprávnění, uložené procedury StoredProcedure, aktivační událost, UserDefinedFunction nebo nabídky. |
+| **requestResourceType** | **requestResourceType_s** | Typ prostředku, u níž. Tato hodnota může být libovolný z následujících typů prostředků: Databáze, kontejner, dokument, příloha, uživatel, oprávnění, StoredProcedure, aktivační událost, UserDefinedFunction nebo nabídka |
 | **statusCode** | **statusCode_s** | Stav odpovědi operace. |
 | **requestResourceId** | **ID prostředku** | ID prostředku, které se vztahují k požadavku. Hodnota může odkazovat na databaseRid, collectionRid nebo documentRid v závislosti na operaci provést.|
 | **clientIpAddress** | **clientIpAddress_s** | IP adresa klienta. |
@@ -486,4 +486,4 @@ Následující tabulka popisuje obsah každé položky protokolu.
    - [Co je Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 - Čtení [stáhnout metrik a diagnostických protokolů ze služby Azure Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs).
-- Čtení [Principy prohledávání protokolů v protokoly Azure monitoru](../log-analytics/log-analytics-log-search-new.md).
+- Přečtěte si [vysvětlení hledání v protokolu v](../log-analytics/log-analytics-log-search-new.md)protokolech Azure monitor.

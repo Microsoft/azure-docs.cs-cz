@@ -6,12 +6,12 @@ author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 70f3471b22027bbf5ece87897e678370767f6743
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 56f293600d876a5bc52b618ce8eed044e93f424d
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717090"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616873"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Implementace architektury lambda na platformě Azure 
 
@@ -42,7 +42,7 @@ Základní principy architektury lambda jsou popsané na předchozím obrázku j
 
 Na další čtení jsme bude možné implementaci této architektury pomocí jenom následující:
 
-* Azure Cosmos DB kolekcí
+* Cosmos kontejnerů Azure
 * Cluster HDInsight (Apache Sparku 2.1)
 * Konektor Spark [1.0](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark_2.1.0_2.11-1.0.0)
 
@@ -114,7 +114,7 @@ Co je důležité pro tyto vrstvy:
 
  1. Všechny **data** odesílají pouze do služby Azure Cosmos DB (abyste předešli problémům vícesměrového vysílání s).
  2. **Dávková vrstva** má hlavní datové sady (set neměnné a jen pro připojení nezpracovaných dat) uložené ve službě Azure Cosmos DB. Pomocí Hdinsight Spark, můžete předem výpočetní agregace v zobrazení počítané služby batch.
- 3. **Obslužné vrstvy** je databáze Azure Cosmos DB s kolekcemi hlavní datové sady a vypočítat dávkové zobrazení.
+ 3. **Vrstva obsluhující** je databáze Azure Cosmos s kolekcemi pro hlavní datovou sadu a vypočítané dávkové zobrazení.
  4. **Rychlostní vrstva** je popsána dále v tomto článku.
  5. Všechny dotazy můžete zodpoví sloučení výsledků služby batch a v reálném čase zobrazení, nebo je jednotlivě příkazu ping.
 
@@ -161,7 +161,7 @@ limit 10
 
 ![Graf zobrazující počet tweetů, které za hashtagem](./media/lambda-architecture/lambda-architecture-batch-hashtags-bar-chart.png)
 
-Teď, když máte dotaz, uložte ji zpět do kolekce pomocí konektoru Spark uložení výstupní data do jiné kolekce.  V tomto příkladu pomocí Scala a představte připojení. Podobně jako v předchozím příkladu, vytvořit konfiguraci připojení k Apache Spark DataFrame uložit do jiné kolekce Azure Cosmos DB.
+Teď, když máte dotaz, uložte ji zpět do kolekce pomocí konektoru Spark uložení výstupní data do jiné kolekce.  V tomto příkladu pomocí Scala a představte připojení. Podobně jako v předchozím příkladu vytvořte připojení konfigurace a uložte Apache Spark dataframe do jiného kontejneru Azure Cosmos.
 
 ```
 val writeConfigMap = Map(
@@ -192,7 +192,7 @@ val tweets_bytags = spark.sql("select hashtags.text as hashtags, count(distinct 
 tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
-Tento příkaz poslední uchránila Spark DataFrame do nové kolekce Azure Cosmos DB; z pohledu architektury lambda, toto je vaše **dávkové zobrazení** v rámci **obslužné vrstvy**.
+Tento poslední příkaz teď uložil váš datový rámec Spark do nového kontejneru Azure Cosmos; z perspektivy architektury lambda se jedná o **dávkové zobrazení** v rámci **vrstvy obsluhy**.
  
 #### <a name="resources"></a>Zdroje a prostředky
 
@@ -205,7 +205,7 @@ Výše uvedené, pomocí Azure Cosmos DB změnit informační kanál Library umo
 
 ![Diagram zvýraznění rychlostní vrstva architektury lambda](./media/lambda-architecture/lambda-architecture-speed.png)
 
-K tomuto účelu vytvořte samostatné kolekce Azure Cosmos DB k ukládání výsledků strukturované streamování dotazy.  To umožňuje, abyste měli přístup ostatní systémy tyto informace nejen Apache Spark. Také pomocí služby Cosmos DB Time-to-Live (TTL) funkce, můžete nakonfigurovat dokumentů, které mají být automaticky odstraněna po nastavenou dobu trvání.  Další informace o funkci Azure Cosmos DB TTL najdete v tématu [vypršení platnosti dat v kolekcích Azure Cosmos DB automaticky s časem TTL](time-to-live.md)
+Provedete to tak, že vytvoříte samostatný kontejner Azure Cosmos, ve kterém uložíte výsledky strukturovaných streamických dotazů.  To umožňuje, abyste měli přístup ostatní systémy tyto informace nejen Apache Spark. Také pomocí služby Cosmos DB Time-to-Live (TTL) funkce, můžete nakonfigurovat dokumentů, které mají být automaticky odstraněna po nastavenou dobu trvání.  Další informace o funkci Azure Cosmos DB TTL najdete v tématu [vypršení platnosti dat v kontejnerech Azure Cosmos automaticky s časem až Live](time-to-live.md) .
 
 ```
 // Import Libraries

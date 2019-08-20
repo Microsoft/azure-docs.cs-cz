@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fff27094881ffbada2bda7937fa714ffc07133
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0e1be41c854e212a7b673d8c2dff42d7b9981fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954352"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616135"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Nastavení informací o zabezpečení (Preview) pro použití ověřovací aplikace
 
@@ -144,7 +144,9 @@ Máte k dispozici další možnosti, jak vaše organizace kontaktuje vaši ident
     >[!Note]
     >Pokud některé z těchto možností chybí, je to pravděpodobně proto, že vaše organizace tyto metody nepovoluje. Pokud se jedná o tento případ, budete muset zvolit dostupnou metodu nebo požádat správce o další nápovědu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
+
+- Přihlaste se pomocí aplikace Microsoft Authenticator, a to podle kroků v článku [přihlášení pomocí dvou kroků ověřování nebo informací o zabezpečení](security-info-setup-signin.md) .
 
 - Resetujte heslo, pokud jste ho ztratili nebo zapomněli z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) , nebo postupujte podle pokynů v článku [resetování svého pracovního nebo školního hesla](user-help-reset-password.md) .
 

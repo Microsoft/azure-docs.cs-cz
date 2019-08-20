@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 849c3a745de08e7cf8ff7f1b8bb237a6d0f54395
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384157"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615342"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globální distribuce dat pomocí Azure Cosmos DB – pod kapotou
 
@@ -34,7 +34,7 @@ Jak je znázorněno na následujícím obrázku, data v kontejneru jsou distribu
 
 Fyzický oddíl je implementován skupinou replik, která se nazývá *sada replik*. Každý počítač hostuje stovky replik, které odpovídají různým fyzickým oddílům v rámci pevně stanovené sady procesů, jak je znázorněno na obrázku výše. Repliky odpovídající na fyzické oddíly jsou umístěné dynamicky a vyrovnáváno zatížení napříč počítači v rámci clusteru a datových center v rámci oblasti.  
 
-Replika jednoznačně patří do tenanta služby Azure Cosmos DB. Každá replika je hostitelem instance služby Cosmos DB [databázový stroj](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), která spravuje prostředky, jakož i přidružené indexy. Databázový stroj Cosmos DB funguje v systému typu atom sekvence záznamů (ARS). Modul je nezávislá k konceptu schématu a rozostří hranice mezi strukturou a hodnotami instancí záznamů. Cosmos DB dosahuje úplného schématu agnosticism automaticky automatického indexování veškerých při ingestování efektivním způsobem, který umožňuje dotazování jejich globálně distribuovaných dat bez nutnosti schéma nebo správu indexů.
+Replika jednoznačně patří do tenanta služby Azure Cosmos DB. Každá replika je hostitelem instance služby Cosmos DB [databázový stroj](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), která spravuje prostředky, jakož i přidružené indexy. Databázový stroj Cosmos funguje na systém typů založených na Atom-Record-Sequence (ARS). Modul je nezávislá k konceptu schématu a rozostří hranice mezi strukturou a hodnotami instancí záznamů. Cosmos DB dosahuje úplného schématu agnosticism automaticky automatického indexování veškerých při ingestování efektivním způsobem, který umožňuje dotazování jejich globálně distribuovaných dat bez nutnosti schéma nebo správu indexů.
 
 Databázový stroj Cosmos se skládá z komponent, včetně implementace několika koordinačních primitivních prvků, jazykových modulů runtime, procesoru dotazů a subsystémů úložiště a indexování zodpovědných za transakční úložiště a indexování dat. přestup. Zajištění vysoké dostupnosti a odolnosti databázový stroj udržuje jeho dat a indexu na jednotkách SSD a replikuje mezi různými instancemi databáze modul v rámci repliku-deklaračních v uvedeném pořadí. Větší klienti odpovídají vyšší škále propustnosti a úložiště a mají buď větší nebo více replik, nebo obojí. Všechny komponenty systému je plně asynchronní – někdy blokuje žádné vlákno a každé vlákno funguje krátkodobou bez dalších nákladů na všechny nepotřebné vlákno přepínače. Omezení četnosti a protitlak jsou zapojena napříč celým spektrem, od řízení přístupu na všech vstupně-výstupní cesty. Databázový stroj Cosmos je navržený tak, aby využil jemně odstupňované souběžnosti a poskytoval vysokou propustnost při provozu v Frugal množství systémových prostředků.
 
@@ -42,7 +42,7 @@ Globální distribuce Cosmos DB spoléhá na dvě abstrakce klíčů – *sady r
 
 ## <a name="replica-sets"></a>Sady replik
 
-Fyzický oddíl je vyhodnocen jako samoobslužná skupina replik s vyrovnáváním zatížení v různých doménách selhání, která se nazývá sada replik. Tato sada souhrnně implementuje protokol replikovaného stavového počítače, aby byla data v rámci fyzického oddílu vysoce dostupná, trvalá a konzistentní. Členství v sadě replik *N* je dynamické – udržuje výkyv mezi *nminimum* a nmaximumy na  základě selhání, operací správy a času, kdy se neúspěšné repliky mají znovu vygenerovat/obnovit. Replikace podle změn členství, protokolu také změní konfiguraci velikost čtení a zápis kvor. Pro jednotnou distribuci propustnosti, která je přiřazená danému fyzickému oddílu, používáme dvě nápady: 
+Fyzický oddíl je vyhodnocen jako samoobslužná skupina replik s vyrovnáváním zatížení v různých doménách selhání, která se nazývá sada replik. Tato sada souhrnně implementuje protokol replikovaného stavového počítače, aby byla data v rámci fyzického oddílu vysoce dostupná, trvalá a konzistentní. Členství v sadě replik *N* je dynamické – udržuje výkyv mezi *nminimum* a nmaximumy na základě selhání, operací správy a času, kdy se neúspěšné repliky mají znovu vygenerovat/obnovit. Replikace podle změn členství, protokolu také změní konfiguraci velikost čtení a zápis kvor. Pro jednotnou distribuci propustnosti, která je přiřazená danému fyzickému oddílu, používáme dvě nápady: 
 
 - Za prvé, náklady na zpracování požadavků na zápis na vedoucím jsou vyšší než náklady na použití aktualizací v následném programu. Odpovídajícím způsobem, je vedoucí instancí rozpočtu více systémových prostředků, než sledujícími. 
 
@@ -77,7 +77,7 @@ Bez ohledu na to, jestli nakonfigurujete databázi Cosmos s jednou nebo více ob
 
 Hranice konzistence s ohraničenou kostarou se zaručuje, že všechny čtení budou v rámci předpony *KB* nebo *T* sekund z posledního zápisu v jakékoli oblasti. Kromě toho je zaručeno, že čtení s omezenou konzistencí neaktuálnosti budou monotónní a s konzistentními zárukami předpony. Protokol ochrany proti entropie funguje způsobem míra časově omezený a zajistí, že předpony není accumulate a nebude muset použít protitlak na zápisy. Konzistence relace zaručuje monotónní čtení, monotónní zápisu, čtení vlastních zápisů, zápis následuje po čtení a konzistentní záruky předpony, po celém světě. Pro databáze nakonfigurované se silnou konzistencí se nevztahují výhody (nízká latence zápisu, dostupnost vysokého zápisu) více oblastí pro zápis, protože se jedná o synchronní replikaci napříč oblastmi.
 
-Sémantika pěti modelů konzistence v Cosmos DB je popsána [zde](consistency-levels.md)a matematicky popsány pomocí víceúrovňového modelu tla + Specification [.](https://github.com/Azure/azure-cosmos-tla)
+Sémantika pěti modelů konzistence v Cosmos DB je popsána [zde](consistency-levels.md)a matematicky popsány pomocí víceúrovňového modelu tla + Specification [](https://github.com/Azure/azure-cosmos-tla).
 
 ## <a name="next-steps"></a>Další postup
 

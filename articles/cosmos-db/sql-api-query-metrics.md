@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: d61d3d00de5b46f7dad44625509eabe6836ca7cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447260"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614815"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů s využitím služby Azure Cosmos DB
 
@@ -44,7 +44,7 @@ Sady SDK poskytují různé možnosti pro spuštění dotazu. Například v .NET
 | `EnableScanInQuery` | Musí být nastavena na hodnotu true, pokud jste se rozhodli mimo indexování, ale chcete se přesto spustit dotaz využitím prohledávání. Pouze použitelné indexování pro požadovaný filtr cesty, pokud je zakázaná. | 
 | `MaxItemCount` | Maximální počet položek k vrácení za odezvy na server. V nastavení na hodnotu -1, můžete nechat server spravovat počet položek. Nebo můžete snížit tuto hodnotu k načtení jenom malý počet položek za odezvy. 
 | `MaxBufferedItemCount` | Toto je možnost na straně klienta a používá k omezení využití paměti při provádění napříč oddíly klauzule ORDER BY. Vyšší hodnota pomáhá snižovat latenci řazení napříč oddíly. |
-| `MaxDegreeOfParallelism` | Získá nebo nastaví počet souběžných operací, které jsou spuštěny na straně klienta během paralelního provádění dotazů v databázi služby Azure Cosmos DB. Hodnotu vlastnosti kladné omezuje počet souběžných operací na hodnotu set. Pokud je nastavena na hodnotu menší než 0, systém automaticky určuje počet souběžných operací pro spuštění. |
+| `MaxDegreeOfParallelism` | Získá nebo nastaví počet souběžných operací, které se spouštějí na straně klienta během paralelního provádění dotazů ve službě Azure Cosmos Database. Hodnotu vlastnosti kladné omezuje počet souběžných operací na hodnotu set. Pokud je nastavena na hodnotu menší než 0, systém automaticky určuje počet souběžných operací pro spuštění. |
 | `PopulateQueryMetrics` | Dobu načítání umožňuje podrobné protokolování statistik času stráveného v různých fázích provádění dotazů jako čas kompilace čas index smyčky a dokumentu. Výstup z statistiky dotazů můžete sdílet s podporou Azure k diagnostice problémů s výkonem dotazů. |
 | `RequestContinuation` | Předáním neprůhledné pokračovací token vrácený jakýkoli dotaz může pokračovat provádění dotazu. Token pro pokračování zapouzdřuje všechny stavy potřebných ke spuštění dotazu. |
 | `ResponseContinuationTokenLimitInKb` | Můžete omezit maximální velikost token pro pokračování vrácená serverem. Můžete potřebovat nastavit aplikační hostitel má omezení velikosti hlaviček odpovědi. Toto nastavení může zvýšit celkové doby trvání a počet ru spotřebovaných pro dotaz.  |
@@ -216,7 +216,7 @@ V části týkající se metrik provádění dotazu vysvětluje, jak načíst č
 ### <a name="indexing-policy"></a>Zásady indexování
 Zobrazit [Konfigurace zásady indexování](index-policy.md) indexování cesty, typy a režimech a jak by mohly mít dopad provedení dotazu. Ve výchozím nastavení, zásady indexování používá indexování hodnot Hash pro řetězce, které platí pro dotazy na rovnost, ale ne pro dotazy na rozsah/order dotazy. Pokud potřebujete dotazy na rozsah pro řetězce, doporučujeme určení index typu rozsah pro všechny řetězce. 
 
-Ve výchozím nastavení použije službu Azure Cosmos DB automatického indexování ke všem datům. Pro vysoce výkonné vložit scénáře, zvažte možnost vyloučit cesty, protože tím se sníží náklady RU pro každou operaci insert. 
+Ve výchozím nastavení Azure Cosmos DB použije automatické indexování na všechna data. V případě scénářů vkládání s vysokým výkonem zvažte možnost vyloučení cest, protože se tím sníží náklady na RU za každou operaci vložení. 
 
 ## <a name="query-execution-metrics"></a>Metriky spouštění dotazů
 Můžete získat podrobné metriky spouštění dotazů předáním volitelné `x-ms-documentdb-populatequerymetrics` záhlaví (`FeedOptions.PopulateQueryMetrics` v sadě .NET SDK). Hodnota vrácená v `x-ms-documentdb-query-metrics` má následující páry klíč hodnota, které jsou určené pro pokročilé Poradce při potížích pro spuštění dotazu. 

@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f9f4a8b52548dad011f5e825fa42c50da970ea7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234192"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613152"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services – řešení potíží s konfigurací protokol Secure LDAP
 
-Tento článek popisuje řešení běžných problémů při [konfiguraci protokolu Secure LDAP](configure-ldaps.md) pro Azure AD Domain Services.
+Tento článek popisuje řešení běžných problémů při [konfiguraci protokolu Secure LDAP](tutorial-configure-ldaps.md) pro Azure AD Domain Services.
 
-## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Protokol Secure LDAP konfigurace skupiny zabezpečení sítě
+## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: protokol Secure LDAP konfigurace skupiny zabezpečení sítě
 
 **Zpráva upozornění:**
 
@@ -54,7 +54,7 @@ Pokud je povolený zabezpečený protokol LDAP, doporučujeme vytvořit další 
 > Port 636 není jediné pravidlo, které vyžaduje, aby Azure AD Domain Services plynule běžel. Další informace najdete v pokynech k [síti](network-considerations.md) nebo v článku věnovaném [odstraňování potíží s konfiguracemi NSG](alert-nsg.md) .
 >
 
-## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Protokol Secure LDAP vypršení platnosti certifikátu
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: protokol Secure LDAP vypršení platnosti certifikátu
 
 **Zpráva upozornění:**
 
@@ -62,7 +62,7 @@ Pokud je povolený zabezpečený protokol LDAP, doporučujeme vytvořit další 
 
 **Řešení:**
 
-Pomocí postupu popsaného v článku [Konfigurace zabezpečeného protokolu LDAP](configure-ldaps.md) vytvořte nový certifikát zabezpečeného protokolu LDAP.
+Pomocí postupu popsaného v článku [Konfigurace zabezpečeného protokolu LDAP](tutorial-configure-ldaps.md) vytvořte nový certifikát zabezpečeného protokolu LDAP.
 
 ## <a name="contact-us"></a>Kontaktujte nás
 Kontaktujte tým Azure Active Directory Domain Services produktů, abyste mohli [sdílet zpětnou vazbu nebo podporu](contact-us.md).

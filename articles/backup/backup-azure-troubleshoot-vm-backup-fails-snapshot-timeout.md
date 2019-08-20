@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: f47afd450350226aa944287e756b73f61b15b32d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 54b83df4c0ad68c9bd6b39d39926657395c48f3e
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952044"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615878"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backupm: Problémy s agentem nebo rozšířením
 
@@ -106,7 +106,7 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **Kód chyby**: UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: V současné době Azure Backup nepodporuje velikosti disků větší než 4095 GB. <br>
 
-Operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 4 095 GB. Pokud si chcete zaregistrovat omezené veřejné verze Preview služby Azure Backup velkých disků pro disky větší než 4 TB a velikost až 30 TB, přečtěte si téma [Přehled zálohování virtuálních počítačů Azure](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 4 095 GB. Pokud si chcete zaregistrovat omezené veřejné verze Preview Azure Backup podpora velkých disků pro disky větší než 4 TB a velikost až 30 TB, přečtěte si tento [článek](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nepovedlo se inicializovat zálohování, protože v tuto chvíli probíhá jiná operace zálohování.
 

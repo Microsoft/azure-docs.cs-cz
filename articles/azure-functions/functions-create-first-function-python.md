@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 47de61db96b0f8f9b338f135d4f32eecc4a64efe
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 5b90702f89af260a67b69bf96c2e079a45298723
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562954"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575438"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Vytvoření funkce aktivované protokolem HTTP v Azure
 
@@ -30,7 +30,7 @@ Než začnete, musíte mít následující:
 
 + Nainstalujte [Python 3,6](https://www.python.org/downloads/).
 
-+ Nainstalujte verzi [Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.1071 nebo novější.
++ Nainstalujte verzi [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1575 nebo novější.
 
 + Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) verze 2. x nebo novější verzi.
 
@@ -79,8 +79,6 @@ Přejděte do nové složky MyFunctionProj:
 ```console
 cd MyFunctionProj
 ```
-
-V dalším kroku aktualizujete soubor host. JSON, aby se povolily sady rozšíření.  
 
 ## <a name="create-a-function"></a>Vytvoření funkce
 
@@ -177,7 +175,7 @@ Teď jste připraveni publikovat projekt místních funkcí do aplikace Function
 > [!NOTE]
 > Pokud chcete zobrazit protokoly téměř v reálném čase pro publikovanou aplikaci v Pythonu, doporučujeme použít [Application Insights Live Metrics Stream](functions-monitoring.md#streaming-logs)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vytvořili jste projekt funkcí Pythonu s funkcí aktivovaným protokolem HTTP, spustíte ji na místním počítači a nasadíte ji do Azure. Nyní svou funkci rozšíříte do...
 

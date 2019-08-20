@@ -1,5 +1,5 @@
 ---
-title: Replikace rozhraní příkazového řádku skriptu-Multi oblast Azure pro službu Azure Cosmos DB
+title: Skript Azure CLI – replikace ve více oblastech pro Azure Cosmos DB
 description: Ukázkový skript Azure CLI – Replikace ve více oblastech pro službu Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
@@ -8,16 +8,16 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 268b15fb0f3e185be4c06c5c0ba20668d1635f04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c957aff49e3428fec4b7ac7f2db19eeed9d7a40
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154673"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614757"
 ---
-# <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-the-azure-cli"></a>Replikace účtu databáze Azure Cosmos DB ve více oblastech a konfigurace priorit převzetí služeb při selhání pomocí Azure CLI
+# <a name="replicate-an-azure-cosmos-database-account-in-multiple-regions-and-configure-failover-priorities-using-the-azure-cli"></a>Replikace účtu databáze Azure Cosmos ve více oblastech a konfigurace priorit převzetí služeb při selhání pomocí Azure CLI
 
-Tato ukázka replikuje jakýkoli druh účtu databáze Azure Cosmos DB ve více oblastech a konfiguruje priority převzetí služeb při selhání pomocí Azure CLI.
+Tato ukázka replikuje jakýkoli druh účtu databáze Azure Cosmos ve více oblastech a konfiguruje priority převzetí služeb při selhání pomocí Azure CLI.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

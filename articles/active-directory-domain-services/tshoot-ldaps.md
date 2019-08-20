@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s protokol Secure LDAP (LDAPS) ve službě Azure AD Domain Services | Dokumentace Microsoftu
-description: Řešení potíží s Secure LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
+title: Řešení potíží s protokol Secure LDAP (LDAPs) v Azure AD Domain Services | Microsoft Docs
+description: Řešení potíží s protokol Secure LDAP (LDAPs) pro Azure AD Domain Services spravovanou doménu
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,36 +15,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: a194919a488f6cb59c76315c9d8a3db1e9c1feb1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 285af0e5e5d5ab03027fc29064a5f3623ed10e2f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472206"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617047"
 ---
-# <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Řešení potíží s Secure LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
+# <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Řešení potíží s protokol Secure LDAP (LDAPs) pro Azure AD Domain Services spravovanou doménu
 
 ## <a name="connection-issues"></a>Problémy s připojením
-Pokud máte potíže s připojením ke spravované doméně pomocí protokolu secure LDAP:
+Pokud máte potíže s připojením ke spravované doméně pomocí protokolu Secure LDAP:
 
-* Na straně klienta musí důvěřovat řetězu vystavitele certifikát protokolu secure LDAP. Můžete přidat kořenové certifikační autority do úložiště důvěryhodných kořenových certifikátů na straně klienta k navázání vztahu důvěryhodnosti.
-* Ověřte, že klienta protokolu LDAP (například ldp.exe) připojí k zabezpečení koncového bodu protokolu LDAP pomocí názvu DNS není IP adresa.
-* Zkontrolujte název DNS, který klient LDAP se připojí k. Musí se přeložit na veřejnou IP adresu pro protokol secure LDAP ve spravované doméně.
-* Ověřte, že certifikát protokolu secure LDAP pro spravovanou doménu má v předmětu nebo alternativní názvy subjektů atribut názvu DNS.
-* Nastavení skupiny zabezpečení sítě pro virtuální síť musí umožňovat provoz na portu 636 z Internetu. Tento krok platí jenom v případě, že jste povolili přístup protokolu secure LDAP přes internet.
+* Řetěz vystavitele certifikátu zabezpečeného protokolu LDAP musí být v klientovi důvěryhodný. Můžete se rozhodnout přidat kořenovou certifikační autoritu do úložiště důvěryhodných kořenových certifikátů na klientovi pro vytvoření vztahu důvěryhodnosti.
+* Ověřte, jestli se klient LDAP (například LDP. exe) připojí ke koncovému bodu zabezpečeného LDAP pomocí názvu DNS, ne IP adresy.
+* Ověřte název DNS, ke kterému se klient LDAP připojuje. Musí se překládat na veřejnou IP adresu pro zabezpečený protokol LDAP ve spravované doméně.
+* Ověřte, že certifikát zabezpečeného protokolu LDAP pro spravovanou doménu má název DNS v předmětu nebo v atributu alternativní názvy subjektu.
+* Nastavení NSG pro virtuální síť musí umožňovat přenos z Internetu na port 636. Tento krok platí jenom v případě, že jste povolili zabezpečený přístup pomocí protokolu LDAP přes Internet.
 
 
-## <a name="need-help"></a>Potřebujete pomoc?
-Pokud stále máte potíže s připojením ke spravované doméně pomocí protokolu secure LDAP [kontaktováním produktového týmu](contact-us.md) nápovědu. Uveďte následující informace umožňující provádět lepší diagnostiku problému:
-* Snímek obrazovky s ldp.exe vytváření připojení a selhání.
+## <a name="need-help"></a>Potřebujete pomoct?
+Pokud stále dochází k potížím s připojením ke spravované doméně pomocí protokolu Secure LDAP, požádejte o technickou podporu [produktového týmu](contact-us.md) . Zahrňte následující informace, které vám pomůžou lépe diagnostikovat problém:
+* Snímek obrazovky nástroje Ldp. exe, který provádí připojení a selhává.
 * Vaše ID tenanta Azure AD a název domény DNS vaší spravované domény.
-* Přesné uživatelské jméno, které se snažíte vytvořit vazbu jako.
+* Přesné uživatelské jméno, se kterým se snažíte vytvořit vazby.
 
 
 ## <a name="related-content"></a>Související obsah
-* [Azure AD Domain Services – Příručka Začínáme](create-instance.md)
-* [Spravovat domény služby Azure AD Domain Services](manage-domain.md)
-* [Základy dotazů protokolu LDAP](https://technet.microsoft.com/library/aa996205.aspx)
-* [Správa zásad skupiny pro službu Azure AD Domain Services](manage-group-policy.md)
+* [Azure AD Domain Services – Průvodce Začínáme](tutorial-create-instance.md)
+* [Správa domény Azure AD Domain Services](tutorial-create-management-vm.md)
+* [Základy dotazů LDAP](https://technet.microsoft.com/library/aa996205.aspx)
+* [Spravovat Zásady skupiny pro Azure AD Domain Services](manage-group-policy.md)
 * [Skupiny zabezpečení sítě](../virtual-network/security-overview.md)
-* [Vytvořte skupinu zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)
+* [Vytvoření skupiny zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)

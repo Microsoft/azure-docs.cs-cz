@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 40caea40637c57aedb6315ff6fc032898ff07af7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467949"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615669"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Změnit informační kanál v Azure Cosmos DB – přehled
 
-Podpora ve službě Azure Cosmos DB funguje kanálu změn prostřednictvím naslouchání kontejneru Azure Cosmos DB k nějakým změnám. Potom vypíše seřazený seznam dokumentů, které byly změněny v pořadí, ve kterém byly změněny. Změny jsou trvalé, dají se zpracovat asynchronně a přírůstkově a výstup se dá distribuovat jednomu nebo více příjemcům k paralelnímu zpracování. 
+Změna podpory kanálu v Azure Cosmos DB funguje tak, že se v kontejneru Azure Cosmos poslouchat jakýmkoli změnám. Potom vypíše seřazený seznam dokumentů, které byly změněny v pořadí, ve kterém byly změněny. Změny jsou trvalé, dají se zpracovat asynchronně a přírůstkově a výstup se dá distribuovat jednomu nebo více příjemcům k paralelnímu zpracování. 
 
 Azure Cosmos DB je velmi vhodná pro Internet věcí, hraní her, maloobchod a provozní protokolování aplikací. Běžný vzor návrhu v těchto aplikacích je použít změny v datech k aktivaci dalších akcí. Příklady dalších akcí:
 
@@ -56,7 +56,7 @@ V účtu Azure Cosmos ve více oblastech Pokud oblast zápisu převezme služby 
 
 Pokud hodnota TTL (Time to Live) vlastnost nastavena na položku na hodnotu -1, kanál změn se uloží navždy. Když se neodstraní data, zůstane v kanálu změn.  
 
-### <a name="change-feed-and-etag-lsn-or-ts"></a>Kanál změn a _etag, _lsn nebo _ts
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Kanál změn a _etag, _lsn nebo _ts
 
 Formát _etag je interní a neměla by mít závislost, protože se sice dají kdykoli měnit. _ts je úprava nebo časové razítko vytvoření. Můžete použít _ts chronologickém porovnání. _lsn je ID dávky, které je přidáno pouze pro změnu kanálu. představuje ID transakce. Stejné _lsn může mít mnoho položek. Značka ETag na FeedResponse se liší od _etag, který se zobrazí v položce. _etag je interní identifikátor a používá se pro souběžnost ovládací prvek informuje o verzi položek, že značka ETag se používá pro pořadí úloh informačního kanálu.
 

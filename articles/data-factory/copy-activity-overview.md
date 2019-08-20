@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: a8265496c475566ec7a87a19eab6d975838e9da4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966390"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614260"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování ve službě Azure Data Factory
 
@@ -130,7 +130,7 @@ Následující šablony aktivitu kopírování, která obsahuje úplný seznam p
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type aktivity kopírování musí být nastavená na: **Copy** | Ano |
+| type | Vlastnost Type aktivity kopírování musí být nastavená na: **kopírování** | Ano |
 | inputs | Zadejte datovou sadu vytvoříte, která odkazuje na zdroj dat. Aktivitu kopírování, která podporuje pouze jeden vstup. | Ano |
 | outputs | Zadejte datovou sadu vytvoříte, které body k datům jímky. Aktivitu kopírování, která podporuje pouze jeden výstup. | Ano |
 | typeProperties | Skupina vlastností konfigurace aktivity kopírování. | Ano |
@@ -144,7 +144,7 @@ Následující šablony aktivitu kopírování, která obsahuje úplný seznam p
 
 ## <a name="monitoring"></a>Monitorování
 
-Můžete monitorovat spuštění v Azure Data Factory "Vytvořit a monitorovat" uživatelské rozhraní nebo programově aktivity kopírování. Pak můžete porovnat výkon a konfigurace vašeho scénáře aktivitou kopírování [výkonu](copy-activity-performance.md#performance-reference) z interní testování.
+Můžete monitorovat spuštění v Azure Data Factory "Vytvořit a monitorovat" uživatelské rozhraní nebo programově aktivity kopírování.
 
 ### <a name="monitor-visually"></a>Vizuální monitorování
 

@@ -3,24 +3,22 @@ title: Řešení potíží s registrací pomocí Azure HDInsight
 description: Získejte odpovědi na běžné otázky týkající se práce s Apache Hive a Azure HDInsight.
 keywords: Azure HDInsight, podregistr, nejčastější dotazy, Průvodce odstraňováním potíží, běžné otázky
 ms.service: hdinsight
-author: dharmeshkakadia
-ms.author: dkakadia
-ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: 91e6803e0a1302a33a3bf176ad84d0b0e0c8c5b6
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+author: hrasheed-msft
+ms.author: hrasheed
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: ca1e3e11ad5458e8e7f7072b7d3dd561853029fe
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875928"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575694"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hive pomocí Azure HDInsight
 
 Přečtěte si o nejčastějších dotazech a jejich řešeních při práci s Apache Hivemi datovými částmi v Apache Ambari.
 
-
 ## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Návody exportovat metastore Hive a naimportovat ho na jiný cluster?
-
 
 ### <a name="resolution-steps"></a>Postup řešení
 
@@ -36,16 +34,15 @@ Přečtěte si o nejčastějších dotazech a jejich řešeních při práci s A
 
 3. Zkopírujte soubor alltables. SQL do nového clusteru HDInsight a pak spusťte následující příkaz:
 
-   ```apache
-   hive -f alltables.sql
-   ```
+    ```apache
+    hive -f alltables.sql
+    ```
 
-Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru jsou stejné jako cesty k datům v původním clusteru. Pokud se cesty k datům liší, můžete ručně upravit vygenerovaný soubor alltables. SQL tak, aby odrážel všechny změny.
+Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru jsou stejné jako cesty k datům v původním clusteru. Pokud se cesty k datům liší, můžete vygenerovaný `alltables.sql` soubor ručně upravit tak, aby odrážel všechny změny.
 
 ### <a name="additional-reading"></a>Další čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
-
 
 ## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Návody najít v clusteru protokoly podregistru?
 
@@ -56,25 +53,24 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
 2. Chcete-li zobrazit protokoly klienta podregistru, použijte následující příkaz:
 
    ```apache
-   /tmp/<username>/hive.log 
+   /tmp/<username>/hive.log
    ```
 
 3. Chcete-li zobrazit protokoly metastore Hive, použijte následující příkaz:
 
    ```apache
-   /var/log/hive/hivemetastore.log 
+   /var/log/hive/hivemetastore.log
    ```
 
-4. Chcete-li zobrazit protokoly Hiveserver, použijte následující příkaz:
+4. Chcete-li zobrazit protokoly serveru pro podregistr, použijte následující příkaz:
 
    ```apache
-   /var/log/hive/hiveserver2.log 
+   /var/log/hive/hiveserver2.log
    ```
 
 ### <a name="additional-reading"></a>Další čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
-
 
 ## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Návody spustit prostředí pro podregistr s konkrétní konfigurací v clusteru?
 
@@ -83,7 +79,7 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
 1. Při spuštění prostředí podregistr zadejte dvojici klíč-hodnota konfigurace. Další informace najdete v tématu [další čtení](#additional-reading-end).
 
    ```apache
-   hive -hiveconf a=b 
+   hive -hiveconf a=b
    ```
 
 2. Pokud chcete zobrazit seznam všech efektivních konfigurací v prostředí s podregistry, použijte následující příkaz:
@@ -95,23 +91,21 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
    Pomocí následujícího příkazu můžete například spustit prostředí registru s povoleným protokolováním ladění v konzole nástroje:
 
    ```apache
-   hive -hiveconf hive.root.logger=ALL,console 
+   hive -hiveconf hive.root.logger=ALL,console
    ```
 
 ### <a name="additional-reading"></a>Další čtení
 
 - [Vlastnosti konfigurace podregistru](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
-
 ## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Návody analyzovat Apache Tez DAG data na cestě kritické pro cluster?
 
-
 ### <a name="resolution-steps"></a>Postup řešení
- 
+
 1. Pokud chcete analyzovat Apache Tez acyklického Graph (DAG) v grafu kritickém pro cluster, připojte se ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu [další čtení](#additional-reading-end).
 
 2. Na příkazovém řádku spusťte následující příkaz:
-   
+
    ```apache
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
    ```
@@ -137,31 +131,28 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
     - **TaskConcurrencyAnalyzer**: Tisk podrobností o souběžnosti úkolu ve DAG
     - **VertexLevelCriticalPathAnalyzer**: Najde kritickou cestu na úrovni vrcholu v DAG.
 
-
 ### <a name="additional-reading"></a>Další čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-
 ## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Návody stáhnout data DAG z clusteru?
-
 
 #### <a name="resolution-steps"></a>Postup řešení
 
 Existují dva způsoby, jak shromažďovat data DAG tez:
 
 - Z příkazového řádku:
- 
+
     Připojte se ke clusteru HDInsight pomocí SSH. Na příkazovém řádku spusťte následující příkaz:
 
   ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId> 
+  hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId>
   ```
 
 - Použijte zobrazení Ambari tez:
-   
-  1. Přejít na Ambari. 
-  2. V pravém horním rohu přejdete do zobrazení tez (pod ikonou dlaždice). 
+
+  1. Přejít na Ambari.
+  2. V pravém horním rohu přejdete do zobrazení tez (pod ikonou dlaždice).
   3. Vyberte DAG, který chcete zobrazit.
   4. Vyberte **stáhnout data**.
 
@@ -169,10 +160,12 @@ Existují dva způsoby, jak shromažďovat data DAG tez:
 
 [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
+## <a name="next-steps"></a>Další postup
 
-### <a name="see-also"></a>Viz také
-[Řešení potíží pomocí Azure HDInsight](hdinsight-troubleshoot-guide.md)
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
+- Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
+- Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-
+- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
