@@ -65,7 +65,7 @@ Propojená služba propojuje úložiště dat do služby data factory. Vytvořen
 
 | Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| accessKeyID |ID tajný přístupový klíč. |řetězec |Ano |
+| accessKeyID |ID tajný přístupový klíč. |string |Ano |
 | secretAccessKey |Vlastního klíče přístupu k tajným klíčům. |Zašifrovaný řetězec tajného kódu |Ano |
 
 >[!NOTE]
