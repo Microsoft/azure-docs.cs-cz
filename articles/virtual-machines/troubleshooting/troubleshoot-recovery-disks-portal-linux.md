@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/14/2016
+ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: 6a848717e4796e0bb35cbcf045bb50fabf543c1b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 21122847c1b417b00cfe8c69b8324a2f73bf31ea
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617662"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641131"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal
 Pokud váš virtuální počítač se systémem Linux zaznamená chybu spuštění nebo disku, možná budete muset provést kroky pro řešení potíží na samotném virtuálním pevném disku. Běžným příkladem může být neplatná položka v `/etc/fstab` systému, která zabraňuje úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí Azure Portal připojit virtuální pevný disk k jinému virtuálnímu počítači se systémem Linux a opravit případné chyby a pak znovu vytvořit původní virtuální počítač.
@@ -27,7 +27,7 @@ Pokud váš virtuální počítač se systémem Linux zaznamená chybu spuštěn
 Proces řešení potíží je následující:
 
 1. Zastavte ovlivněný virtuální počítač.
-1. Vytvořte snímek pro disk s operačním systémem virtuálního počítače.
+1. Pořídit snímek disku s operačním systémem virtuálního počítače.
 1. Z snímku vytvořte virtuální pevný disk.
 1. Připojte virtuální pevný disk k jinému virtuálnímu počítači s Windows pro účely odstraňování potíží.
 1. Připojení k virtuálnímu počítači pro řešení potíží. Úpravou souborů nebo spuštěním libovolných nástrojů opravte potíže s původním virtuálním pevným diskem.
@@ -175,18 +175,6 @@ Azure Portal teď podporuje změnu disku s operačním systémem virtuálního p
 
 1. Zvolte nový disk, který jste opravili, a potom zadejte název virtuálního počítače pro potvrzení změny. Pokud se disk v seznamu nezobrazí, počkejte 10. po odpojení disku od virtuálního počítače pro řešení potíží počkejte 10 minut. Také se ujistěte, že je disk ve stejném umístění jako virtuální počítač.
 1. Vyberte OK.
-
-## <a name="re-enable-boot-diagnostics"></a>Opětovné povolení diagnostiky spouštění
-Při vytváření virtuálního počítače z existujícího virtuálního pevného disku nemusí být automaticky povolena Diagnostika spouštění. Pokud chcete zjistit stav diagnostiky spouštění a v případě potřeby ho zapnout, vyberte svůj virtuální počítač na portálu. V části **monitorování**klikněte na **nastavení diagnostiky**. Zajistěte,aby byl stav zapnutý a byl vybrán symbol zaškrtnutí vedle možnosti **Diagnostika spouštění** . Pokud provedete nějaké změny, klikněte na **Uložit**:
-
-![Aktualizovat nastavení diagnostiky spouštění](./media/troubleshoot-recovery-disks-portal-linux/reenable-boot-diagnostics.png)
-
-## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Řešení potíží s virtuálním počítačem spravovaného disku připojením nového disku s operačním systémem
-1. Zastavte ovlivněný virtuální počítač.
-2. [Vytvořte snímek spravovaného disku](../windows/snapshot-copy-managed-disk.md) s operačním systémem virtuálního počítače spravovaného disku.
-3. [Vytvořte ze snímku spravovaný disk](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
-4. [Připojte spravovaný disk jako datový disk virtuálního počítače](../windows/attach-disk-ps.md).
-5. [Změňte datový disk z kroku 4 na disk s operačním systémem](../windows/os-disk-swap.md).
 
 ## <a name="next-steps"></a>Další postup
 Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači Azure](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Problémy s přístupem k aplikacím běžícím na vašem VIRTUÁLNÍm počítači najdete v tématu [řešení potíží s připojením aplikací na virtuálním počítači se systémem Linux](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

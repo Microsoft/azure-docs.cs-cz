@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: b84e317745b7bd20f4862bd04584e42254a660d1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aa35cb1ae0ad035bdef6ff8e19cf115188ba7f3a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566200"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640860"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Omezení prostředků pro elastické fondy pomocí omezení nákupního modelu založeného na vCore
 
@@ -37,7 +37,7 @@ Omezení pro nákupní model založený na DTU najdete v tématu [SQL Database o
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Úroveň služby Pro obecné účely: Velikosti úložiště a velikosti výpočtů
 
 > [!IMPORTANT]
-> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblasti AustraliaEast.
+> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Úroveň služby Pro obecné účely: Výpočetní platforma generace 4 (část 1)
 
@@ -153,7 +153,7 @@ Omezení pro nákupní model založený na DTU najdete v tématu [SQL Database o
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Úroveň služby Pro důležité obchodní informace: Velikosti úložiště a velikosti výpočtů
 
 > [!IMPORTANT]
-> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblasti AustraliaEast.
+> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih.
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Úroveň služby Pro důležité obchodní informace: Výpočetní platforma generace 4 (část 1)
 
@@ -280,7 +280,7 @@ Následující tabulka popisuje vlastnosti pro databáze ve fondu.
 | Maximální velikost úložiště na databázi |Maximální velikost databáze nastavená uživatelem pro databázi ve fondu. Databáze ve fondu sdílejí přidělené úložiště fondu, takže velikost databáze může dosáhnout je omezená na menší zbývající velikost úložiště fondu a velikosti databáze. Maximální velikost databáze odkazuje na maximální velikost datových souborů a nezahrnuje místo využívané soubory protokolu. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Omezení prostředků vCore pro izolovanou databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na Vcore](sql-database-vcore-resource-limits-single-databases.md) .
 - Omezení prostředků DTU pro jednu databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na DTU](sql-database-dtu-resource-limits-single-databases.md) .

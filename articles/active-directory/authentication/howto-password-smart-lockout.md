@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879249"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637592"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Inteligentní uzamčení Azure Active Directory
 
@@ -48,7 +48,7 @@ Při použití [předávacího ověřování](../hybrid/how-to-connect-pta.md)je
 Například pokud chcete, aby byl čítač Azure AD vyšší než AD, pak bude Azure AD 120 sekund (2 minuty), zatímco vaše služba Prem AD je nastavená na 1 minutu (60 sekund).
 
 > [!IMPORTANT]
-> Správce v současné době nemůže odemknout účty uživatelů cloudu, pokud byly uzamčeny funkcemi inteligentního uzamčení. Správce musí počkat na vypršení platnosti doby uzamčení.
+> Správce v současné době nemůže odemknout účty uživatelů cloudu, pokud byly uzamčeny funkcí inteligentního uzamčení. Správce musí počkat na vypršení platnosti doby uzamčení. Uživatel se ale může odemknout pomocí samoobslužného resetování hesla (SSPR) z důvěryhodného zařízení nebo umístění.
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>Ověřit zásady uzamčení místních účtů
 

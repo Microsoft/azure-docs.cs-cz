@@ -7,14 +7,14 @@ manager: paulyuk
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: 3f5196c81550446221a4524330e355c595b65c6a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934374"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639484"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložit nastavení tajné aplikace pro webovou aplikaci
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak bezpečně uložit nastavení konfigurace tajných 
 
 Tradičně se všechna nastavení konfigurace webové aplikace ukládají do konfiguračních souborů, jako je například web. config. Tento postup vede k vrácení nastavení tajného klíče, jako jsou například přihlašovací údaje cloudu, do veřejných systémů správy zdrojového kódu, jako je GitHub. V obou případech by mohlo být obtížné podléhat osvědčeným postupům zabezpečení z důvodu režie nutné ke změně zdrojového kódu a překonfigurování nastavení vývoje.
 
-Aby se zajistilo, že proces vývoje je zabezpečený, vytvoří se knihovny nástrojů a architektury pro bezpečné uložení nastavení tajného klíče aplikace s minimální nebo žádnou změnou zdrojového kódu.
+Chcete-li zajistit, aby byl proces vývoje zabezpečený, jsou vytvořeny knihovny nástrojů a architektury pro bezpečné uložení nastavení tajného klíče aplikace s minimální nebo žádnou změnou zdrojového kódu.
 
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET a .NET Core – aplikace
 
@@ -45,12 +45,12 @@ Pokud vyvíjíte projekt a potřebujete bezpečně sdílet zdrojový kód, použ
 
     ![Přidat zásady přístupu Key Vault](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-3. Přidejte svůj tajný kód do Key Vault v Azure Portal. Pro vnořená nastavení konfigurace nahraďte ': ' '--', aby byl název Key Vault tajného klíče platný. hodnota ': ' nesmí být v názvu Key Vault tajného klíče.
+3. Do Azure Portal Key Vault přidejte svůj tajný kód. Pro vnořená nastavení konfigurace nahraďte ': ' '--', aby byl název Key Vault tajného klíče platný. hodnota ': ' nesmí být v názvu Key Vault tajného klíče.
 
     ![Přidat Key Vault tajný klíč](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
     > [!NOTE] 
-    > Před verzí sady Visual Studio 2017 V 15.6 jsme použili k doporučení instalace rozšíření pro ověřování služeb Azure pro Visual Studio. Je ale teď zastaralá, protože Funcionality je integrováno v sadě Visual Studio. Proto, pokud jste na starší verzi sady Visual Studio 2017, doporučujeme, abyste aktualizovali aspoň na 2017 15,6 nebo nahoru, abyste mohli tuto funkci používat nativně a přistupovat k trezoru klíčů pomocí samotné identity sady Visual Studio.
+    > Před verzí sady Visual Studio 2017 V 15.6 jsme použili k doporučení instalace rozšíření pro ověřování služeb Azure pro Visual Studio. Je ale teď zastaralá, protože je funkce integrovaná v rámci sady Visual Studio. Proto, pokud jste na starší verzi sady Visual Studio 2017, doporučujeme, abyste aktualizovali aspoň na 2017 15,6 nebo nahoru, abyste mohli tuto funkci používat nativně a přistupovat k trezoru klíčů pomocí samotné identity sady Visual Studio.
     >
  
 4. Do projektu přidejte následující balíčky NuGet:
@@ -97,7 +97,7 @@ Pokud píšete rychlý prototyp a nechcete zřizovat prostředky Azure, Projdět
 
 1. Do projektu nainstalujte následující balíček NuGet
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic
+    Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
 2. Vytvořte soubor podobný následujícímu. Uložte ho do umístění mimo složku vašeho projektu.
@@ -123,7 +123,7 @@ Pokud píšete rychlý prototyp a nechcete zřizovat prostředky Azure, Projdět
     </configBuilders>
     ```
 
-4. Část určení appSettings používá tvůrce konfigurace tajného klíče. Ujistěte se, že existuje nějaká položka pro nastavení tajného klíče se fiktivní hodnotou.
+4. Část určení appSettings používá tvůrce konfigurace tajného klíče. Ujistěte se, že existuje položka pro nastavení tajného klíče se fiktivní hodnotou.
 
     ```xml
         <appSettings configBuilders="Secrets">

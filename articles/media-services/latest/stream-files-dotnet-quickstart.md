@@ -1,6 +1,6 @@
 ---
 title: Streamování videosouborů pomocí služby Azure Media Services – .NET | Microsoft Docs
-description: Postupujte podle kroků v tomto kurzu k vytvoření nového účtu Azure Media Services, kódování souboru a Streamovat do Azure Media Playeru.
+description: Pomocí kroků v tomto kurzu vytvoříte nový účet Azure Media Services, zakódujete soubor a Streamujte ho do Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,21 +11,21 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/20/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3834b4f07f6450f498831accfa6640f55bc5855a
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 7f997865ba33a51c3e3aa7a4c7e990037be9e534
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550177"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637338"
 ---
-# <a name="tutorial-stream-video-files---net"></a>Kurz: Streamování videosouborů – .NET
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Kurz: Kódování vzdáleného souboru na základě adresy URL a streamu pro video – .NET
 
-V tomto kurzu se dozvíte, jak snadné je spustit streamování videa na širokou škálu prohlížečů a zařízení pomocí služby Azure Media Services a kódování. Vstupní obsah se dá specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure.
+V tomto kurzu se dozvíte, jak snadné je zakódovat a spustit streamování videí na nejrůznějších prohlížečích a zařízeních pomocí Azure Media Services. Vstupní obsah se dá specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure.
 Ukázka v tomto tématu kóduje obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Upozorňujeme, že AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
 
-Na konci tohoto kurzu budete Streamovat videa.  
+Na konci kurzu budete moct streamovat video.  
 
 ![Přehrávání videa](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -34,10 +34,10 @@ Na konci tohoto kurzu budete Streamovat videa.
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud nemáte nainstalovanou sadu Visual Studio, můžete získat sadu [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
-- [Vytvoření účtu Media Services](create-account-cli-how-to.md).<br/>Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti.
-- Postupujte podle kroků v [rozhraní API k přístupu k Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md) a uložte přihlašovací údaje. Je potřeba použít pro přístup k rozhraní API.
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).<br/>Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services.
+- Postupujte podle kroků v [části přístup k rozhraní API Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md) a přihlašovací údaje uložte. Budete je muset použít pro přístup k rozhraní API.
 
-## <a name="download-and-configure-the-sample"></a>Stažení a konfigurace ukázky aplikace
+## <a name="download-and-configure-the-sample"></a>Stažení a konfigurace ukázky
 
 Pomocí následujícího příkazu naklonujte do svého počítače úložiště GitHub s ukázkou streamování .NET:  
 
@@ -47,14 +47,14 @@ Pomocí následujícího příkazu naklonujte do svého počítače úložiště
 
 Ukázka se nachází ve složce [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles).
 
-Otevřít [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) stažený projekt. Nahraďte hodnoty s přihlašovacími údaji, které jste získali z [přístup k rozhraní API](access-api-cli-how-to.md).
+Ve staženém projektu otevřete [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) . Nahraďte hodnoty přihlašovacími údaji, které jste získali při [přístupu k rozhraním API](access-api-cli-how-to.md).
 
 Tato ukázka provede následující akce:
 
-1. Vytvoří **transformace** (nejprve, zkontroluje, jestli existuje Zadaná transformace). 
-2. Vytvoří výstup **Asset** , který se používá jako kódování **úlohy**výstup.
-3. Vytvoří **úlohy**vstup, který je založen na adresu URL HTTPS.
-4. Odešle kódování **úlohy** pomocí vstup a výstup, který jste vytvořili dříve.
+1. Vytvoří **transformaci** (nejprve zkontroluje, zda zadaná transformace existuje). 
+2. Vytvoří výstupní **Asset** , který se používá jako výstup **úlohy**kódování.
+3. Vytvoří vstup **úlohy**, který je založen na adrese URL https.
+4. Odešle **úlohu** kódování pomocí vstupu a výstupu, který byl vytvořen dříve.
 5. Zkontroluje stav úlohy.
 6. Vytvoří **Lokátor streamování**.
 7. Vytvoří adresy URL pro streamování.
@@ -66,7 +66,7 @@ Popisy týkající jednotlivých funkcí v ukázce najdete v kódu. Můžete se 
 Když spustíte aplikaci, zobrazí se adresy URL, které můžete použít k přehrávání videa pomocí různých protokolů. 
 
 1. Stisknutím kombinace kláves Ctrl+F5 spusťte aplikaci *EncodeAndStreamFiles*.
-2. Vyberte protokol **HLS** společnosti Apple (končí řetězcem *manifest(format=m3u8-aapl)*) a zkopírujte adresu URL streamování z konzoly.
+2. Vyberte protokol **HLS** společnosti Apple (končí řetězcem *manifest(format=m3u8-aapl)* ) a zkopírujte adresu URL streamování z konzoly.
 
 ![Výstup](./media/stream-files-tutorial-with-api/output.png)
 
@@ -77,19 +77,19 @@ Ve [zdrojovém kódu](https://github.com/Azure-Samples/media-services-v3-dotnet-
 Tento článek používá k otestování streamu přehrávač Azure Media Player. 
 
 > [!NOTE]
-> Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“. 
+> Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“.
 
 1. Otevřete webový prohlížeč a přejděte na adresu [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. Do pole **URL:** vložte jednu z hodnot adres URL pro streamování, které jste získali při spuštění aplikace. 
  
-     Můžete vložit adresu URL do HLS, Dash, nebo technologie Smooth formátu a Azure Media Player se přepne na příslušný protokol streamování pro přehrávání na vašem zařízení automaticky.
+     Můžete vložit adresu URL ve formátu HLS, pomlčka nebo vyhlazení a Azure Media Player přepnout na příslušný protokol pro streamování pro přehrávání na zařízení automaticky.
 3. Stiskněte **Update Player** (Aktualizovat přehrávač).
 
 Azure Media Player můžete použít pro účely testování, nesmí se ale používat v produkčním prostředí. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete žádné prostředky ve vaší skupině prostředků, včetně Media Services a účty úložiště, který jste vytvořili pro účely tohoto kurzu, odstraňte skupinu prostředků.
+Pokud už v rámci skupiny prostředků nepotřebujete žádné prostředky, včetně Media Services a účtů úložiště, které jste pro tento kurz vytvořili, odstraňte skupinu prostředků.
 
 Spusťte následující příkaz rozhraní příkazového řádku:
 
@@ -105,7 +105,7 @@ Kurz [nahrávání, kódování a streamování souborů](stream-files-tutorial-
 
 ### <a name="job-error-codes"></a>Kódy chyb úlohy
 
-Zobrazit [kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Viz [kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="multithreading"></a>Multithreading
 

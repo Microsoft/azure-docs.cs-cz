@@ -9,16 +9,16 @@ ms.date: 06/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0f73871d8248b2f52bab5934eef03d883c72ed79
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d1106865b3a2ea3164090896c5b90ab08f996f3d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985384"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640491"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Nakonfigurování připojovacích řetězců Azure Storage
 
-Připojovací řetězec zahrnuje informace o ověřování vyžadované pro vaši aplikaci pro přístup k datům v účtu Azure Storage za běhu s použitím autorizace pomocí sdíleného klíče. Připojovací řetězce můžete nakonfigurovat na:
+Připojovací řetězec zahrnuje autorizační informace požadované pro vaši aplikaci pro přístup k datům v účtu Azure Storage za běhu pomocí autorizace pomocí sdíleného klíče. Připojovací řetězce můžete nakonfigurovat na:
 
 * Připojte se k emulátoru úložiště Azure.
 * Přístup k účtu úložiště v Azure.
@@ -141,7 +141,7 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Použití emulátoru úložiště Azure pro vývoj a testování](storage-use-emulator.md)
 * [Azure Storage Explorer](storage-explorers.md)

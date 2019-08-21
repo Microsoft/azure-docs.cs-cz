@@ -1,133 +1,131 @@
 ---
-title: Modelování víceklientskou architekturu pro oddělení obsahu v jedné službě – Azure Search
-description: Další informace o běžných vzorech návrhu pro víceklientské aplikace SaaS při používání služby Azure Search.
+title: Modelování víceklientské architektury pro izolaci obsahu v jedné službě – Azure Search
+description: Seznamte se s běžnými návrhovými vzory pro víceklientské aplikace SaaS při použití Azure Search.
 manager: jlembicz
 author: LiamCavanagh
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: liamca
-ms.custom: seodec2018
-ms.openlocfilehash: 58d7ca65a14f9f774b19796c9beae2a7c84102ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3e47fc0c46c638a51e6555ccbdc1885f081c149
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61288698"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640546"
 ---
-# <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Modely návrhu pro víceklientské aplikace SaaS a Azure Search
-Víceklientské aplikace je ten, který poskytuje stejné funkce a služby do libovolného počtu klientů, kteří nemohou zobrazovat ani sdílet data žádným jiným tenantem. Tento dokument popisuje strategie izolace tenanta pro víceklientské aplikace integrované s Azure Search.
+# <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Vzory návrhu pro víceklientské aplikace SaaS a Azure Search
+Víceklientské aplikace nabízí stejné služby a možnosti pro libovolný počet klientů, kteří nemůžou zobrazit nebo sdílet data žádného jiného tenanta. Tento dokument popisuje strategie izolace klientů pro víceklientské aplikace vytvořené pomocí Azure Search.
 
-## <a name="azure-search-concepts"></a>Koncepty služby Azure Search
-Jako řešení typu hledání jako služba Azure Search umožňuje vývojářům přidat do aplikací bohaté vyhledávací prostředí bez správu jakékoliv infrastruktury, nebo studovat načítání informací. Data se odešlou do služby a uloží se do cloudu. Pomocí jednoduchých požadavků na rozhraní API Azure Search, data pak se dají upravit a prohledávat. Přehled služby najdete v [v tomto článku](https://aka.ms/whatisazsearch). Před diskuze o způsobech návrhu, je důležité pochopit některé koncepty ve službě Azure Search.
+## <a name="azure-search-concepts"></a>Azure Search koncepty
+Jako řešení vyhledávání jako služby umožňuje vývojářům přidávat do aplikací bohatě vyhledávaná prostředí Azure Search, aniž by museli spravovat žádnou infrastrukturu nebo se stát odborníkem na načítání informací. Data se odešlou do služby a pak se uloží do cloudu. Pomocí jednoduchých požadavků na rozhraní Azure Search API se dají data upravit a prohledat. Přehled služby najdete v [tomto článku](https://aka.ms/whatisazsearch). Než začnete diskutovat na vzory návrhu, je důležité pochopit některé koncepty v Azure Search.
 
-### <a name="search-services-indexes-fields-and-documents"></a>Vyhledávací služby, indexy, polí a dokumenty
-Při použití Azure Search, jeden přihlásí k odběru *služba search*. Do služby Azure Search je nahrávaných dat, je uložena v *index* v rámci služby search. Může existovat několik indexů v rámci jedné služby. Používat známé koncepty databáze, lze vyhledávací službu připodobnit do databáze a indexy, které v rámci služby lze připodobnit do tabulky v databázi.
+### <a name="search-services-indexes-fields-and-documents"></a>Vyhledávání služeb, indexů, polí a dokumentů
+Při použití Azure Search se jeden přihlašuje k odběru *vyhledávací služby*. Když se data nahrají do Azure Search, uloží se do *indexu* v rámci vyhledávací služby. V rámci jedné služby může být několik indexů. Aby bylo možné používat známé koncepty databází, může být vyhledávací služba likened k databázi, zatímco indexy v rámci služby mohou být likened do tabulek v rámci databáze.
 
-Každý index v rámci služby search obsahuje vlastní schéma, které jsou definovány pomocí řadu přizpůsobitelných *pole*. Data je přidána do indexu Azure Search ve formuláři jednotlivých *dokumenty*. Každý dokument musí být odeslán do konkrétního indexu a musí vyhovovat schéma tohoto indexu. Při vyhledávání dat pomocí služby Azure Search se dotazy fulltextového vyhledávání vydaný pro konkrétní index.  Pokud chcete porovnat tyto koncepty u těch, které databáze, pole může být připodobnit na sloupce v tabulce a dokumenty lze připodobnit pro řádky.
+Každý index v rámci vyhledávací služby má vlastní schéma, které je definováno řadou přizpůsobitelných *polí*. Data jsou přidána do indexu Azure Search ve formě jednotlivých *dokumentů*. Každý dokument musí být nahrán do konkrétního indexu a musí odpovídat schématu indexu. Při vyhledávání dat pomocí Azure Search jsou dotazy fulltextového vyhledávání vydány pro konkrétní index.  Aby bylo možné porovnat tyto koncepty s databázemi, mohou být pole likened do sloupců v tabulce a dokumenty mohou být likened do řádků.
 
 ### <a name="scalability"></a>Škálovatelnost
-Libovolnou službu Azure Search ve standardu [cenovou úroveň](https://azure.microsoft.com/pricing/details/search/) lze škálovat ve dvou dimenzích: úložiště a skupiny dostupnosti.
+Všechny Azure Search služby v [cenové úrovni](https://azure.microsoft.com/pricing/details/search/) Standard se můžou škálovat ve dvou dimenzích: úložiště a dostupnost.
 
-* *Oddíly* lze přidat do úložiště search service zvýšit.
-* *Repliky* lze přidat do služby pro zvýšení prostupnosti požadavků, které dokáže zpracovat vyhledávací službu.
+* *Oddíly* lze přidat ke zvýšení úložiště vyhledávací služby.
+* Do služby lze přidat repliky a zvýšit tak propustnost požadavků, které může služba vyhledávání zpracovat.
 
-Přidávání a odebírání oddílů a replik v vám umožní kapacita služby search růst s množství dat a provoz poptávky aplikací. V pořadí pro službu search k dosažení čtení [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), vyžaduje dvě repliky. V pořadí pro službu k dosažení čtení a zápis [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), vyžaduje tři repliky.
+Přidávání a odebírání oddílů a replik v nástroji umožní, aby služba vyhledávání vzrostla s množstvím dat a provozem, který aplikace požaduje. Aby služba vyhledávání dosáhla [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)pro čtení, vyžaduje dvě repliky. Aby služba dosáhla [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)pro čtení i zápis, vyžaduje tři repliky.
 
-### <a name="service-and-index-limits-in-azure-search"></a>Omezení služby a indexu ve službě Azure Search
-Existuje několik různých [cenové úrovně](https://azure.microsoft.com/pricing/details/search/) ve službě Azure Search úrovně obsahují různé [omezení a kvóty](search-limits-quotas-capacity.md). Některé z těchto omezení jsou na úrovni služby, některé jsou na úrovni index a některé jsou na úrovni oddílu.
+### <a name="service-and-index-limits-in-azure-search"></a>Omezení služby a indexu v Azure Search
+V Azure Search existuje několik různých [cenových úrovní](https://azure.microsoft.com/pricing/details/search/) , každá z vrstev má různá [omezení a kvóty](search-limits-quotas-capacity.md). Některá z těchto omezení jsou na úrovni služby, některé jsou na úrovni indexu a některé jsou na úrovni oddílu.
 
-|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Basic | Standard1 | Standardní2 | Standardní3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
-| Maximální repliky na službu |3 |12 |12 |12 |12 |
-| Maximální oddíly na službu |1 |12 |12 |12 |3 |
-| Maximální vyhledávacích jednotek (repliky * oddíly) na službu |3 |36 |36 |36 |36 (maximální počet 3 oddíly) |
+| Maximální počet replik na službu |3 |12 |12 |12 |12 |
+| Maximální počet oddílů na službu |1 |12 |12 |12 |3 |
+| Maximální počet jednotek hledání (repliky * oddíly) na službu |3 |36 |36 |36 |36 (max. 3 oddíly) |
 | Maximální velikost úložiště na službu |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
 | Maximální velikost úložiště na oddíl |2 GB |25 GB |100 GB |200 GB |200 GB |
-| Maximální počet indexů na službu |5 |50 |200 |200 |3000 (maximálně 1000 indexů na oddíl) |
+| Maximální počet indexů na službu |5 |50 |200 |200 |3000 (max. 1000 indexů/oddílů) |
 
-#### <a name="s3-high-density"></a>S3 High Density.
-V Azure Search S3 cenovou úroveň je možnost režimu vysoké hustoty (HD, High Density) určený speciálně pro scénářích s více tenanty. V mnoha případech je nutné podporovat velký počet menší tenantů v jedné službě dosáhnout výhod jednoduchosti a nákladové efektivity.
+#### <a name="s3-high-density"></a>Vysoká hustota S3
+V cenové úrovni S3 Azure Search je k dispozici možnost pro režim vysoké hustoty (HD) navržený speciálně pro víceklientské scénáře. V mnoha případech je potřeba zajistit podporu velkého počtu menších klientů v rámci jedné služby, abyste dosáhli výhod jednoduchosti a nákladové efektivity.
 
-S3 HD, High Density umožňuje mnoho malé indexů, který se má zabalit pod správu nástroje service hledání jednoduchého podle obchodních možnost pro horizontální navýšení kapacity indexy používající možnost oddílů pro schopnost hostovat více indexů v jedné službě.
+S3 HD umožňuje zabalit celou řadu malých indexů pod správu jedné vyhledávací služby díky možnosti horizontálního navýšení kapacity indexů pomocí oddílů, aby bylo možné hostovat víc indexů v jediné službě.
 
-Služby S3 namítají, může mít mezi 1 a 200 indexy, které společně by mohl být hostitelem až 1,4 miliardy dokumentů. Na druhé straně S3 HD by umožnilo jednotlivých indexů pouze přejít až 1 milion dokumentů, ale dokáže zpracovat až 1000 indexů na oddíl (až 3 000 na službu) a celkový počet dokumentů počet 200 milionů na oddíl (až 600 milionů na službu).
+Služba S3 by mohla mít mezi 1 a 200 indexy, které dohromady můžou hostovat až 1 400 000 000 dokumentů. S3 HD na druhé straně umožní jednotlivým indexům přejít pouze do 1 000 000 dokumentů, ale může zpracovávat až 1000 indexů na oddíl (až 3000 na službu) s celkovým počtem výskytů 200 000 000 na oddíl (až do 600 000 000 podle služby).
 
-## <a name="considerations-for-multitenant-applications"></a>Důležité informace pro víceklientské aplikace
-Víceklientské aplikace, musí efektivní distribuci prostředků mezi různými klienty při zachování určité úrovně ochrany osobních údajů mezi různými tenanty. Při návrhu architektury pro takové aplikace existuje několik důležitých informací:
+## <a name="considerations-for-multitenant-applications"></a>Předpoklady pro víceklientské aplikace
+Víceklientské aplikace musí efektivně distribuovat prostředky mezi klienty a přitom zachovat určitou úroveň ochrany osobních údajů mezi různými klienty. Při navrhování architektury této aplikace je potřeba mít několik důležitých informací:
 
-* *Izolaci klientů:* Vývojáři aplikací nutné podniknout potřebné kroky k zajištění, že se žádní tenanti Neautorizováno nebo nežádoucí přístup k datům z jiných tenantů. Nad rámec hlediska ochrany osobních údajů vyžadují strategie izolace tenanta efektivní správu sdílených prostředků a ochranu před "hlučným sousedům".
-* *Náklady na cloud prostředků:* Stejně jako u jakékoli jiné aplikace, musí zůstat softwarová řešení náklady konkurenční jako součást víceklientské aplikace.
-* *Snadné operací:* Při vývoji víceklientskou architekturu, dopad na operace a složité aplikace je důležitým aspektem. Azure Search má [99,9 % podle smlouvy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
-* *Globální stopu:* Víceklientské aplikace může třeba efektivně obsluhovat klienty, které jsou distribuovány na celém světě.
-* *Škálovatelnost:* Vývojáři aplikací je nutné vzít v úvahu, jak sjednotit mezi údržbu dostatečně nízkou úroveň zvýšení složitosti aplikace a navrhování škálování s počtem klientů a velikosti dat a úlohy klientů aplikace.
+* *Izolace tenanta:* Vývojáři aplikací musí přijmout vhodná opatření, aby se zajistilo, že žádní klienti nemají neoprávněný nebo nežádoucí přístup k datům jiných tenantů. Kromě perspektivy ochrany osobních údajů vyžadují strategie izolace klientů efektivní správu sdílených prostředků a ochranu od sousedních sousedních směrovačů.
+* *Náklady na prostředek v cloudu:* Stejně jako u jakékoli jiné aplikace musí být softwarová řešení nadále nákladná konkurenceschopná jako součást víceklientské aplikace.
+* *Snadné operace:* Při vývoji víceklientské architektury je důležité zvážit dopad na operace a složitost aplikace. Azure Search má [smlouvu SLA 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+* *Globální nároky:* Víceklientské aplikace můžou potřebovat efektivně obsluhovat klienty, kteří jsou distribuováni po celém světě.
+* *Škálovatelnost* Vývojáři aplikací musí vzít v úvahu, jak jsou sladěné mezi udržováním dostatečně nízké úrovně složitosti aplikace a návrhem aplikace pro škálování pomocí počtu klientů a velikosti dat a zatížení tenanta.
 
-Azure Search nabízí několik hranice, které můžete použít k izolaci úloh a dat klientů.
+Azure Search nabízí několik hranic, které se dají použít k izolaci dat a zatížení klientů.
 
-## <a name="modeling-multitenancy-with-azure-search"></a>Modelování víceklientské architektury s Azure Search
-V případě víceklientské scénář vývojář aplikace využívá jednu nebo víc služeb search a rozdělit mezi, indexy a/nebo služby svým klientům. Azure Search má několik běžných vzorech při modelování víceklientské scénář:
+## <a name="modeling-multitenancy-with-azure-search"></a>Modelování více tenantů s Azure Search
+V případě víceklientské scénáře používá vývojář aplikace jednu nebo více vyhledávacích služeb a rozděluje klienty mezi služby, indexy nebo obojí. Azure Search má několik běžných vzorů při modelování scénáře s více klienty:
 
-1. *Index na tenanta:* Každý tenant má vlastní index v rámci služby vyhledávání, který je sdílen s jinými tenanty.
-2. *Služba na tenanta:* Každý tenant má vlastní vyhrazená služba Azure Search nabízí nejvyšší úroveň oddělení dat a úloh.
-3. *Kombinace obou:* Větší úložiště, jsou aktivní více tenantů jsou přiřazeny vyhrazené služby, zatímco menší tenanty přidělují jednotlivých indexů v rámci sdílené služby.
+1. *Index na tenanta:* Každý tenant má svůj vlastní index v rámci vyhledávací služby, která je sdílená s ostatními klienty.
+2. *Služba na tenanta:* Každý tenant má svou vlastní vyhrazenou Azure Search službu, která nabízí nejvyšší úroveň dat a oddělení úloh.
+3. *Kombinace obou:* Větším, více aktivním klientům se přiřazují vyhrazené služby, zatímco v rámci sdílených služeb jsou v menších klientech přiřazeny jednotlivé indexy.
 
 ## <a name="1-index-per-tenant"></a>1. Index na tenanta
-![Portrétu modelu index na tenanta](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+![Portrayal modelu indexu na tenanta](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
 
-V modelu index na tenanta více tenantů zabírat jedinou službou Azure Search, kde každý tenant má vlastní index.
+V modelu indexu pro jednotlivé klienty používá více tenantů jednu Azure Search službu, kde má každý tenant svůj vlastní index.
 
-Tenanti dosáhnout izolace dat, protože všechny požadavky na vyhledávání a vydává operace na úrovni indexu ve službě Azure Search. V aplikační vrstvě je nutné sledování pro směrování provozu různých tenantů do správné indexy ale současná Správa prostředky na úrovni služby ve všech tenantech.
+Klienti dosáhnou izolace dat, protože všechny žádosti o vyhledávání a operace dokumentů jsou vydávány na úrovni indexu v Azure Search. V aplikační vrstvě je potřeba povědomí o směrování různých přenosů klientů na správné indexy a zároveň spravovat prostředky na úrovni služby napříč všemi klienty.
 
-Klíčový atribut index na tenanta modelu je schopnost přidělit nadměrnému počtu procesů kapacitu služby search mezi klienty aplikace vývojář aplikace. Pokud klienti k nerovnoměrné distribuci úloh, ideální kombinaci tenantů mohou být distribuovány na indexy vyhledávání služby tak, aby vyhovovaly několik tenantů vysoce aktivní, náročný a současně současné obsluhování dlouhé konec menší aktivní klienti. Nutný kompromis je nemožnost modelu pro řešení situací, ve kterém je každý tenant souběžně vysoce aktivní.
+Klíčový atribut modelu indexu na tenanta je schopnost, aby vývojář aplikace mohl přerušit kapacitu vyhledávací služby mezi klienty aplikace. Pokud mají klienti nestejnoměrnou distribuci úloh, optimální kombinaci klientů je možné distribuovat v rámci indexů vyhledávací služby, aby se vešlo na řadu vysoce aktivních klientů náročných na prostředky a zároveň dlouhodobě zachovává méně. aktivní klienti. Obchod je neschopnost modelu zvládnout situace, kdy je každý tenant souběžně vysoce aktivní.
 
-Index na tenanta model poskytuje základ pro modelu nákladů proměnnou, kterého je zakoupili přímých celou službu Azure Search a následně vyplněné s klienty. To umožňuje nevyužité kapacity pro určené pro zkušební verze a bezplatné účty.
+Model s indexem na tenanta poskytuje základ pro variabilní nákladový model, kde je celá služba Azure Search zakoupená předem a následně vyplněna klienty. To umožňuje určit nevyužitou kapacitu pro zkušební a bezplatné účty.
 
-U aplikací s globální stopu nemusí být nejúčinnější modelu index na tenanta. Pokud aplikace tenantů se distribuují po celém světě, samostatná služba může být nutné pro každou oblast, která může duplicitní náklady na každé z nich.
+Pro aplikace s globálním nárokem nemusí být model indexu na tenanta nejúčinnější. Pokud jsou klienti aplikace distribuováni po celém světě, může být pro každou oblast nezbytná samostatná služba, která může v každé z nich provádět duplicitní náklady.
 
-Služba Azure Search umožňuje škálování jednotlivých indexů a celkový počet indexů na růst. Je-li odpovídající ceny je vybrán vrstvy, oddílů a replik lze přidat ke službě celé hledání při jednotlivé indexu v rámci služby příliš naroste z hlediska úložiště nebo provoz.
+Azure Search umožňuje škálování jednotlivých indexů a celkový počet indexů, které se mají zvětšit. Pokud se vybere příslušná cenová úroveň, oddíly a repliky se dají přidat do celé vyhledávací služby, když se jednotlivý index v rámci služby rozroste moc velký vzhledem k úložišti nebo provozu.
 
-Pokud celkový počet indexů příliš naroste pro jedinou službou, jiné služby se musí zřídit tak, aby vyhovovaly novým tenantům. Pokud indexy musí přesunout mezi vyhledávací služby, protože se přidají nové služby, musí ručně zkopírovat z jeden index na druhý jako Azure Search se nepovoluje pro index přesunout data z indexu.
+Pokud celkový počet indexů roste pro jednu službu příliš velký, je nutné zřídit jinou službu, která bude vyhovovat novým klientům. Pokud je třeba přesunout indexy mezi vyhledávacími službami, když jsou přidány nové služby, data z indexu musí být ručně zkopírována z jednoho indexu do druhé, protože Azure Search nepovoluje přesunutí indexu.
 
-## <a name="2-service-per-tenant"></a>2. Služeb na jednoho tenanta
-![Portrétu modelu služby na tenanta](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+## <a name="2-service-per-tenant"></a>2. Služba na tenanta
+![Portrayal modelu služby – na tenanta](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
 
-V architektuře služby na tenanta každý tenant má vlastní vyhledávací službu.
+V architektuře pro jednotlivé klienty má každý tenant vlastní vyhledávací službu.
 
-V tomto modelu aplikace dosáhne maximální úroveň izolace pro své tenanty. Každá služba má vyhrazené úložiště a propustnosti pro zpracování požadavku hledání, jakož i různé klíče rozhraní API.
+V tomto modelu aplikace dosahuje maximální úrovně izolace pro své klienty. Každá služba má vyhrazené úložiště a propustnost pro zpracování žádosti o vyhledávání a také samostatné klíče rozhraní API.
 
-Pro aplikace, kde každý tenant má velké nároky nebo zatížení variabilitu tenanta z tenanta je model služby na tenanta efektivní volba jako prostředky se nesdílejí napříč různými tenanty úlohami.
+Pro aplikace, ve kterých má každý tenant velká místa, nebo má příliš proměnlivost od klienta až po tenanta, je model služby-Klient-tenant efektivní volbou, protože prostředky nejsou sdíleny napříč různými úlohami tenantů.
 
-Služba za tenanta model nabízí taky výhody modelu náklady na předvídatelné, oprava. Neexistuje žádné počáteční investici v rámci celé hledání služby, dokud nedojde k tenantovi tak, aby vyplnil, ale náklady za klienta je vyšší než model index na tenanta.
+Model služby na jeden tenant také nabízí předvídatelný fixní nákladový model. V celé službě vyhledávání neexistuje žádná investice, dokud není tenant, který ji vyplní, ale náklady na tenanta jsou vyšší než model indexu na tenanta.
 
-Model služby na tenanta je efektivní volba pro aplikace s globální stopu. S geograficky distribuovanými tenantů je snadné pro každého tenanta služby v příslušné oblasti.
+Model služby pro klienty je efektivní volbou pro aplikace s globálním nároky. S geograficky distribuovanými klienty je snadné mít v příslušné oblasti služby každého tenanta.
 
-Výzev škálování tento model vznikají při jednotlivých tenantů velký růst svých služeb. Služba Azure Search aktuálně nepodporuje upgrade cenovou úroveň služby vyhledávání, takže všechna data byste museli ručně zkopírovat do nové služby.
+Problémy při škálování tohoto modelu vyplývají z toho, kdy jednotliví klienti rozšiřují svoji službu. Azure Search aktuálně nepodporuje upgrade cenové úrovně služby vyhledávání, takže všechna data by musela být ručně zkopírována do nové služby.
 
-## <a name="3-mixing-both-models"></a>3. Kombinace obou modelů
-Jiný způsob modelování víceklientskou architekturu je kombinace strategií pro index na tenanta a na tenanta služby.
+## <a name="3-mixing-both-models"></a>3. Kombinování obou modelů
+Dalším modelem víceklientské architektury pro více tenantů je kombinování strategií index-na tenanta i služby na straně klienta.
 
-Pomocí kombinace dva způsoby, největší klienty aplikace může zabírat vyhrazené služby při dlouhé tail míň aktivní, menší tenantů mohou zaujímat indexů ve sdílené službě. Tento model zajišťuje největší tenantů trvale vysoký výkon ze služby zároveň chránit menší klienty z jakékoli "hlučným sousedům".
+Díky smíchání dvou vzorů můžou největší klienti aplikace zabírat vyhrazené služby, i když má méně aktivního a menšího počtu klientů, můžou ve sdílené službě zabírat indexy. Tento model zajišťuje, že největší klienti mají konzistentně vysoký výkon služby a současně pomáhají chránit menší klienty ze všech sousedních směrovačů s vysokou dostupností.
 
-Implementaci této strategie však využívá předvídání předpovídat, které klienti budou vyžadovat vyhrazená služba versus indexu ve sdílené službě. Zvýšení složitosti aplikace se zvyšuje s nutnost spravovat oba tyto modely víceklientské architektury.
+Implementace této strategie ale spoléhá na předvídání, které klienty budou vyžadovat vyhrazenou službu oproti indexu ve sdílené službě. Složitost aplikace se zvyšuje s potřebou spravovat oba tyto modely víceklientské architektury.
 
-## <a name="achieving-even-finer-granularity"></a>Dosažení i na nižší členitosti
-Výše uvedené vzory návrhu pro modelování scénářích s více tenanty ve službě Azure Search předpokládají jednotného oboru, kde každý tenant je celý instance aplikace. Ale aplikace zvládne někdy menší celou řadu oborů.
+## <a name="achieving-even-finer-granularity"></a>Dosažení ještě jemnějších členitosti
+Výše uvedené vzory návrhu pro modelování scénářů s více klienty v Azure Search předpokládají jednotný obor, ve kterém je každý tenant celá instance aplikace. Aplikace ale můžou někdy zvládnout mnoho menších oborů.
 
-Pokud služby za tenanta a index na tenanta modely nejsou dostatečně malé obory, je možné model indexu dosáhnout i na jemnější stupeň členitosti.
+Pokud modely služeb pro klienty a klienti nejsou dostatečně malé, je možné modelovat index, abyste dosáhli ještě jemnější úrovně členitosti.
 
-Pokud chcete, aby jeden index chovat jinak pro koncové body jiného klienta, můžete přidat pole do indexu, který označuje určitou hodnotu pro každého klienta je to možné. Pokaždé, když klient volá Azure Search k dotazování nebo změně indexu, určuje kód z klientské aplikace má hodnotu vhodnou pro toto pole pomocí služby Azure Search [filtr](https://msdn.microsoft.com/library/azure/dn798921.aspx) funkce v době zpracování dotazu.
+Chcete-li, aby se jeden index choval odlišně pro různé koncové body klienta, lze do indexu přidat pole, které určuje určitou hodnotu pro každého možného klienta. Pokaždé, když klient volá Azure Search pro dotazování nebo změnu indexu, kód z klientské aplikace určuje odpovídající hodnotu pro toto pole pomocí funkce [filtrování](https://msdn.microsoft.com/library/azure/dn798921.aspx) Azure Search v době dotazu.
 
-Tato metoda je možné dosáhnout funkcionality samostatné uživatelské účty, úrovně samostatné oprávnění a dokonce i úplně jiných aplikací.
+Tato metoda se dá použít k dosažení funkcí samostatných uživatelských účtů, samostatných úrovní oprávnění a dokonce i zcela samostatných aplikací.
 
 > [!NOTE]
-> Pomocí postupu popsaného výše nakonfigurovat jeden index k poskytování více tenantů ovlivňuje relevance výsledků hledání. Skóre relevance vyhledávání se vypočítávají v indexu úrovni oboru, ne obor úrovni tenanta, takže za všechny tenanty dat je součástí skóre relevance základní statistiky, jako je frekvence termín.
+> Pomocí výše popsaného přístupu můžete nakonfigurovat jeden index, který bude obsluhovat více tenantů, ovlivnit závažnost výsledků hledání. Výsledky hledání podle relevance jsou vypočítány v oboru na úrovni indexu, nikoli v oboru na úrovni tenanta, takže data všech tenantů jsou zahrnuta v základních statistikách podle relevance skóre, jako je například frekvence.
 > 
 > 
 
 ## <a name="next-steps"></a>Další postup
-Azure Search je atraktivní volba pro mnoho aplikací [Další informace o robustní možnosti služby](https://aka.ms/whatisazsearch). Při vyhodnocování různé způsoby návrhu pro víceklientské aplikace, vezměte v úvahu [různých cenových úrovní](https://azure.microsoft.com/pricing/details/search/) a funkcím [omezení služby](search-limits-quotas-capacity.md) nejlépe přizpůsobit podle aplikací Azure Search úlohy a architektury všech velikostí.
+Azure Search je zajímavou volbou pro mnoho aplikací, [Přečtěte si další informace o robustních schopnostech služby](https://aka.ms/whatisazsearch). Při vyhodnocování různých vzorů návrhu pro víceklientské aplikace Vezměte v úvahu [různé cenové úrovně](https://azure.microsoft.com/pricing/details/search/) a příslušná [omezení služby](search-limits-quotas-capacity.md) , aby se co nejlépe přizpůsobil Azure Search pro úlohy a architektury všech velikostí aplikací.
 
-Mohou být jakékoliv otázky týkající se Azure Search a scénářích s více tenanty přesměrováni na azuresearch_contact@microsoft.com.
+Jakékoli otázky týkající se Azure Search a víceklientské scénáře lze směrovat na azuresearch_contact@microsoft.com.
 

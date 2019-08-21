@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 312caf2d514d630c5bc1fb7755b7ab7a6a3d443a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 64246f28ac185e8816971e24a67682d6d2dd9be1
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840905"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635866"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Dovednost pro vnímání textu sloučení
 

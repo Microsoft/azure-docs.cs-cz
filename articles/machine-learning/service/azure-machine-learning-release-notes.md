@@ -10,18 +10,88 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
-ms.translationtype: MT
+ms.openlocfilehash: 684a84431c8348ddafab8cefbe831c2b58c3cee6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828613"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639934"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://aka.ms/aml-sdk) .
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
+
+## <a name="2019-08-19"></a>2019-08-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Sada SDK Azure Machine Learning pro Python v 1.0.57
++ **Nové funkce**
+  + Povoleno `TabularDataset` , aby je bylo možné spotřebovat pomocí AutomatedML. Pokud se chcete dozvědět `TabularDataset`víc, navštivte https://aka.ms/azureml/howto/createdatasets prosím.
+  
++ **Opravy chyb a vylepšení**
+  + **automl-Client-Core-nativeclient**
+    + Opravili jsme chybu, která se vyvolala při výuce a/nebo ověřovací popisky (y a y_valid), a to ve formě PANDAS dataframe, ale ne jako pole numpy.
+    + Rozhraní bylo aktualizováno pro vytvoření `RawDataContext` , aby vyžadovalo pouze data `AutoMLBaseSettings` a objekt.
+    +  Umožní uživatelům AutoML vyřadit řadu školení, která nejsou dostatečně dlouhá při prognózování. – Povolí uživatelům AutoML odstranit zrna ze sady testů, které neexistují v školicí sadě při prognózování.
+  + **azure-cli-ml**
+    + Certifikát SSL pro vyhodnocování koncového bodu, který je nasazený v clusteru AKS, teď můžete aktualizovat pro Microsoft vygenerovaný i certifikát zákazníka.
+  + **AzureML-automl – jádro**
+    + Opravili jsme problém v AutoML, kde se řádky s chybějícími popisky neodebraly správně.
+    + Vylepšené protokolování chyb v AutoML; všechny chybové zprávy se teď vždycky zapisují do souboru protokolu.
+    + AutoML aktualizovala své připnutí balíčku tak `azureml-defaults`, `azureml-explain-model`aby zahrnovala, a `azureml-dataprep`. AutoML už nebude upozorňovat na neshody balíčků (s výjimkou `azureml-train-automl` balíčku).
+    + Opravili jsme problém v časové řady, kde CV odděluje nestejnou velikost způsobující selhání výpočtu bin.
+    + Pokud se při spuštění iterace kompletu pro školicí typ pro křížové ověření objevilo potíže při stahování modelů vyškolených na celou datovou sadu, máme nekonzistenci mezi závažím modelu a modely, které byly dodány do hlasování. stromů.
+    + Opravili jsme chybu, která se vyvolala při výuce a/nebo ověřovací popisky (y a y_valid), a to ve formě PANDAS dataframe, ale ne jako pole numpy.
+    + Opravili jsme problém s prognózou úkolů v případě, že v logických sloupcích vstupních tabulek nebyl žádný nalezen.
+    + Umožní uživatelům AutoML vyřadit řadu školení, která nejsou dostatečně dlouhá při prognózování. – Povolí uživatelům AutoML odstranit zrna ze sady testů, které neexistují v školicí sadě při prognózování.
+  + **azureml-core**
+    + Vyřešil se problém s řazením parametrů blob_cache_timeout.
+    + Do systémových chyb byly přidány typy výjimek, které se vejdou a transformují.
+    + Přidání podpory pro Key Vault tajných kódů pro vzdálené běhy Přidejte do trezoru klíčů přidruženého k pracovnímu prostoru třídu AzureML. Core. datatrezor. Podporované operace:
+      + AzureML. Core. Workspace. Workspace. Get _default_keyvault ()
+      + AzureML. Core. klíčů trezor. set _secret (název; hodnota)
+      + AzureML. Core. trezor. set _secrets (secrets_dict)
+      + AzureML. Core. klíčů trezor. Get _secret (název)
+      + AzureML. Core. klíčů trezor. Get _secrets (secrets_list)
+      + AzureML. Core. klíčů trezor. list_secrets ()
+    + Další metody získání výchozího trezoru klíčů a získání tajných kódů při vzdáleném spuštění:
+      + AzureML. Core. Workspace. Workspace. Get _default_keyvault ()
+      + AzureML. Core. Run. Run. Get _secret (název)
+      + AzureML. Core. Run. Run. Get _secrets (secrets_list)
+    + Přidání dalších parametrů přepsání do příkazu příkazového řádku pro odeslání – HyperDrive
+    + Zlepšení spolehlivosti volání rozhraní API při opakovaných pokusech o výjimky knihovny pro běžné požadavky.
+    + Přidání podpory pro odeslání spuštění z odeslaného běhu.
+    + Opravili jsme problém s tokenem SAS vypršení platnosti ve sledovacím procesu, který způsobil, že se soubory zastavily po vypršení platnosti počátečního tokenu.
+    + Podporuje se import souborů HTTP CSV/TSV v sadě DataSet Python SDK.
+    + Zastaralá metoda pracovního prostoru. Setup (). Zpráva s upozorněním, která se zobrazuje uživatelům, navrhuje použít místo toho Create () nebo Get ()/from_config ().
+    + Přidání prostředí. Přidejte _private_pip_wheel (), které umožňuje nahrávání privátních vlastních balíčků Pythonu (. WHL) do pracovního prostoru a jejich bezpečné použití pro sestavení nebo vyhodnotit prostředí.
+    + Certifikát SSL pro vyhodnocování koncového bodu, který je nasazený v clusteru AKS, teď můžete aktualizovat pro Microsoft vygenerovaný i certifikát zákazníka.
+  + **azureml-explain-model**
+    + Přidání parametru pro přidání ID modelu do vysvětlení při nahrávání.
+    + Přidání `is_raw` značek k vysvětlení v paměti a nahrání.
+    + Přidala se podpora a testy pytorch pro balíček pro AzureML-vysvětlující-model.
+  + **azureml-opendatasets**
+    + Podporuje detekci a protokolování automatického testovacího prostředí.
+    + Přidali jsme třídy, které nám pomohou načíst populace podle země a PSČ.
+  + **azureml-pipeline-core**
+    + Přidala se vlastnost Label na vstupní a výstupní definice portů.
+  + **AzureML-telemetrie**
+    + Opravila se nesprávná konfigurace telemetrie.
+  + **azureml-train-automl**
+    + Opravili jsme chybu, když při instalaci došlo k chybě, při chybě se nepovedlo přihlásit pole chyby pro spuštění instalačního programu, takže se neuložilo v nadřazeném spuštění "chyby".
+    + Opravili jsme problém v AutoML, kde se řádky s chybějícími popisky neodebraly správně.
+    + Umožní uživatelům AutoML vyřadit řadu školení, která nejsou dostatečně dlouhá při prognózování.
+    + Povolí uživatelům AutoML odstranit zrna ze sady testů, které neexistují v školicí sadě při prognózování.
+    + Nyní AutoMLStep prostřednictvím automl config do back-endu, aby se předešlo jakýmkoli problémům při změnách nebo přidávání nových parametrů konfigurace.
+  + **azureml-train-core**
+    + Přidala se podpora Torch 1,2 v PyTorch Estimator.
+  + **AzureML – widgety**
+    + Vylepšené maticové grafy pro školení klasifikace.
+
+### <a name="azure-portal"></a>Azure Portal
++ **Funkce Preview**
+  + Streamování protokolů a výstupních souborů je teď k dispozici na stránkách s podrobnostmi o spuštění. Když je zapnutý přepínač Preview, soubory se budou v reálném čase aktualizovat.
 
 ## <a name="2019-08-05"></a>2019-08-05
 
@@ -932,6 +1002,6 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
 Nová aktualizovaná verze Azure Machine Learning: Přečtěte si další informace o této verzi: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si přehled [služby Azure Machine Learning Service](../service/overview-what-is-azure-ml.md).

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: b71cf55944c1049fa2c3ddca79f02a8b75b9b2ec
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
-ms.translationtype: MT
+ms.openlocfilehash: 07d44bb54c288202d571f8e664822ecf9b4998be
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563017"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639759"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
@@ -440,7 +440,7 @@ Tato část obsahuje následující pododdíly:
 
 Aplikační server WildFly běžící v App Service v systému Linux běží v samostatném režimu, nikoli v konfiguraci domény. Při horizontálním navýšení kapacity App Service plánu je každá instance WildFly nakonfigurovaná jako samostatný server.
 
-Škálujte aplikaci vertikálně nebo vodorovně pomocí [pravidel škálování](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) a [zvyšte počet instancí](../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+Škálujte aplikaci vertikálně nebo vodorovně pomocí [pravidel škálování](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) a [zvyšte počet instancí](../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ### <a name="customize-application-server-configuration"></a>Přizpůsobení konfigurace aplikačního serveru
 

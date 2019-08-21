@@ -1,6 +1,6 @@
 ---
-title: Použít s Linuxem, řešení potíží s virtuálního počítače pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Informace o řešení potíží virtuální počítač s Linuxem pomocí připojení disku s operačním systémem k obnovení virtuálního počítače pomocí rozhraní příkazového řádku Azure
+title: Použití virtuálního počítače pro řešení potíží se systémem Linux pomocí Azure CLI | Microsoft Docs
+description: Naučte se řešit potíže s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI.
 services: virtual-machines-linux
 documentationCenter: ''
 author: genlin
@@ -13,88 +13,138 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: e1e91ec4393072a7da78c0de800cab26608c74d6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 49ee83e451e9d555a7fe5fca57bc58d6616334da
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709341"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641056"
 ---
-# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Řešení potíží s virtuálního počítače s Linuxem připojením disku s operačním systémem k obnovení virtuálního počítače pomocí Azure CLI
-Pokud virtuální počítač s Linuxem (VM), zaznamená chybám spouštění nebo disku, budete muset provést postup řešení potíží na samotném virtuálním pevném disku. Běžným příkladem by byla neplatná položka v `/etc/fstab` virtuální počítač, který brání tomu nebudou moct úspěšně spustil. Tento článek podrobně popisuje, jak připojit virtuální pevný disk k jinému virtuálnímu počítači Linux opravte všechny chyby a pak znovu vytvořit původní virtuální počítač pomocí Azure CLI. 
-
+# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI
+Pokud váš virtuální počítač se systémem Linux zaznamená chybu spuštění nebo disku, možná budete muset provést kroky pro řešení potíží na samotném virtuálním pevném disku. Běžným příkladem může být neplatná položka v `/etc/fstab` systému, která zabraňuje úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí rozhraní příkazového řádku Azure připojit virtuální pevný disk k jinému virtuálnímu počítači se systémem Linux a opravit případné chyby a pak znovu vytvořit původní virtuální počítač. 
 
 ## <a name="recovery-process-overview"></a>Přehled procesu obnovení
 Proces řešení potíží je následující:
 
-1. Odstranění virtuálního počítače k chybám, zachování virtuálních pevných disků.
-2. Připojení a připojte virtuální pevný disk k jinému virtuálnímu počítači s Linuxem pro účely odstraňování potíží.
-3. Připojení k virtuálnímu počítači pro řešení potíží. Upravení souborů nebo spuštění všech nástrojů k opravě potíží na původním virtuálním pevném disku.
-4. Odpojení virtuálního pevného disku od virtuálního počítače pro řešení potíží.
-5. Vytvoření virtuálního počítače s použitím původního virtuálního pevného disku.
+1. Zastavte ovlivněný virtuální počítač.
+1. Pořídit snímek z disku s operačním systémem virtuálního počítače.
+1. Vytvořte disk ze snímku disku s operačním systémem.
+1. Připojte nový disk s operačním systémem k jinému virtuálnímu počítači Linux pro účely řešení potíží.
+1. Připojení k virtuálnímu počítači pro řešení potíží. Úpravou souborů nebo spuštěním libovolných nástrojů Opravte problémy na novém disku s operačním systémem.
+1. Odpojte a odpojte nový disk s operačním systémem z virtuálního počítače pro řešení potíží.
+1. Změňte disk s operačním systémem pro ovlivněný virtuální počítač.
 
-Pro virtuální počítač, který používá spravovaný disk, najdete v článku [vyřešit spravovaný virtuální počítač Disk připojit nový disk s operačním systémem](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
+K provedení těchto kroků při odstraňování potíží budete potřebovat nainstalovat nejnovější verzi [Azure CLI](/cli/azure/install-az-cli2) a přihlásit se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
 
-Pokud chcete provést tyto kroky pro řešení potíží, je třeba nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index).
+> [!Important]
+> Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [spravovaný disk](../linux/managed-disks-overview.md). 
 
-V následujících příkladech nahraďte názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad `myResourceGroup`, `mystorageaccount`, a `myVM`.
+V následujících příkladech nahraďte názvy parametrů vlastními hodnotami. Příklady názvů parametrů jsou `myResourceGroup` a `myVM`.
 
+## <a name="determine-boot-issues"></a>Určení problémů se spouštěním
+Zkontrolujte sériový výstup a určete, proč se váš virtuální počítač nemůže správně spustit. Běžným příkladem je neplatná položka v `/etc/fstab`, nebo se odstraní nebo přesune základní virtuální pevný disk.
 
-## <a name="determine-boot-issues"></a>Určete spouštěcí problémy
-Prohlédněte si výstup sériové určit, proč váš virtuální počítač není možné správně spustit. Běžným příkladem jsou neplatná položka v `/etc/fstab`, nebo základní virtuální pevný disk se odstraní nebo přesune.
-
-Získání protokolů spouštění s [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics). Následující příklad získá sériového portu výstup z virtuálního počítače s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+Protokoly spouštění získáte pomocí [protokolu AZ VM Boot-Diagnostics Get-Boot-log](/cli/azure/vm/boot-diagnostics). Následující příklad získá sériový výstup z virtuálního počítače s názvem `myVM` ve skupině prostředků s názvem: `myResourceGroup`
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 ```
 
-Zkontrolujte výstup sériové určit, proč tento virtuální počítač se nedaří spustit. Pokud sériové výstup neposkytuje žádné informace, budete muset zkontrolujte soubory protokolu v `/var/log` až budete mít virtuálního pevného disku připojeného k řešení potíží virtuální počítač.
+Přečtěte si sériový výstup a určete, proč se virtuální počítač nedaří spustit. Pokud sériový výstup neposkytuje žádné informace, možná budete muset zkontrolovat soubory protokolu v `/var/log` nástroji, když máte virtuální pevný disk připojený k virtuálnímu počítači pro řešení potíží.
 
+## <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-## <a name="view-existing-virtual-hard-disk-details"></a>Zobrazit podrobnosti o stávající virtuální pevný disk
-Než budete moct připojit virtuální pevný disk (VHD) k jinému virtuálnímu počítači, je potřeba identifikovat URI disk s operačním systémem. 
+Následující příklad zastaví virtuální počítač pojmenovaný `myVM` ze skupiny prostředků s názvem: `myResourceGroup`
 
-Zobrazení informací o virtuálním počítači s [az vm show](/cli/azure/vm). Použití `--query` příznak extrahovat identifikátor URI pro disk s operačním systémem. Následující příklad získá informace o disku pro virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
-
-```azurecli
-az vm show --resource-group myResourceGroup --name myVM \
-    --query [storageProfile.osDisk.vhd.uri] --output tsv
+```powershell
+Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
-Identifikátor URI je podobný **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** .
+Počkejte, než se virtuální počítač dokončí a teprve potom proveďte zpracování na další krok.
 
-## <a name="delete-existing-vm"></a>Odstranění existujícího virtuálního počítače
-Virtuální pevné disky a virtuální počítače jsou v Azure dva různé prostředky. Virtuální pevný disk je, kde jsou uloženy samotného operačního systému, aplikací a konfigurace. Virtuální počítač je jenom metadata, která definují velikost nebo umístění a odkazuje na prostředky, jako jsou virtuální pevný disk nebo virtuální síťová karta (NIC). Každý virtuální pevný disk má při připojení k virtuálnímu počítači přiřadí zapůjčení. Přestože datové disky je možné připojovat a odpojovat dokonce i za běhu virtuálního počítače, disk s operačním systémem není možné odpojit, dokud se neodstraní prostředek virtuálního počítače. Zapůjčení se nadále přidružuje disk s operačním systémem v případě virtuálních počítačů i v případě, že je virtuální počítač v zastaveném a uvolněném stavu.
+## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Vytvoření snímku z disku s operačním systémem virtuálního počítače
 
-Prvním krokem k obnovení vašeho virtuálního počítače je odstranění samotného prostředku virtuálního počítače. Když odstraníte virtuální počítač, virtuální pevné disky zůstanou ve vašem účtu úložiště. Po odstranění virtuálního počítače, připojit virtuální pevný disk k jinému virtuálnímu počítači odstraňovat potíže a řešit chyby.
+Snímek je plná kopie VHD, která je jen pro čtení. Nedá se připojit k virtuálnímu počítači. V dalším kroku vytvoříme z tohoto snímku disk. Následující příklad vytvoří snímek s názvem `mySnapshot` z disku s operačním systémem virtuálního počítače s názvem ' myVM '. 
 
-Odstranění virtuálního počítače s [az vm delete](/cli/azure/vm). Následující příklad odstraní virtuální počítač s názvem `myVM` ze skupiny prostředků s názvem `myResourceGroup`:
+```powershell
+$resourceGroupName = 'myResourceGroup' 
+$location = 'eastus' 
+$vmName = 'myVM'
+$snapshotName = 'mySnapshot'  
 
-```azurecli
-az vm delete --resource-group myResourceGroup --name myVM 
+#Get the VM
+$vm = get-azvm `
+-ResourceGroupName $resourceGroupName `
+-Name $vmName
+
+#Create the snapshot configuration for the OS disk
+$snapshot =  New-AzSnapshotConfig `
+-SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
+-Location $location `
+-CreateOption copy
+
+#Take the snapshot
+New-AzSnapshot `
+   -Snapshot $snapshot `
+   -SnapshotName $snapshotName `
+   -ResourceGroupName $resourceGroupName 
 ```
+## <a name="create-a-disk-from-the-snapshot"></a>Vytvoření disku ze snímku
 
-Počkejte, dokud virtuální počítač má bylo dokončeno odstraňování než připojit virtuální pevný disk k jinému virtuálnímu počítači. Zapůjčený virtuální pevný disk, který se přidruží k němu virtuální počítač je potřeba uvolnit, než budete moct připojit virtuální pevný disk k jinému virtuálnímu počítači.
+Tento skript vytvoří spravovaný disk s názvem `newOSDisk` z snímku s názvem. `mysnapshot`  
 
+```powershell
+#Set the context to the subscription Id where Managed Disk will be created
+#You can skip this step if the subscription is already selected
 
-## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>Připojit existující virtuální pevný disk k jinému virtuálnímu počítači
-Pro několik dalších kroků použijte jiný virtuální počítač pro účely odstraňování potíží. Připojit existující virtuální pevný disk k tomuto řešení problémů s virtuálnímu počítači na Procházet a upravovat obsah na disku. Tento proces umožňuje opravte případné chyby v konfiguraci, případně si můžete přečíst další aplikace nebo systému souborů protokolu, např. Zvolte nebo vytvořte jiný virtuální počítač určený pro účely odstraňování potíží.
+$subscriptionId = 'yourSubscriptionId'
 
-Připojení existujícího virtuálního pevného disku s [az vm unmanaged disku připojit](/cli/azure/vm/unmanaged-disk). Po připojení existující virtuální pevný disk zadejte identifikátor URI na disk, kterou jste získali v předchozím `az vm show` příkazu. Následující příklad připojí k řešení potíží virtuální počítač s názvem existujícího virtuálního pevného disku `myVMRecovery` ve skupině prostředků s názvem `myResourceGroup`:
+Select-AzSubscription -SubscriptionId $SubscriptionId
+
+#Provide the name of your resource group
+$resourceGroupName ='myResourceGroup'
+
+#Provide the name of the snapshot that will be used to create Managed Disks
+$snapshotName = 'mySnapshot' 
+
+#Provide the name of the Managed Disk
+$diskName = 'newOSDisk'
+
+#Provide the size of the disks in GB. It should be greater than the VHD file size.
+$diskSize = '128'
+
+#Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
+$storageType = 'StandardLRS'
+
+#Provide the Azure region (e.g. westus) where Managed Disks will be located.
+#This location should be same as the snapshot location
+#Get all the Azure location using command below:
+#Get-AzLocation
+$location = 'eastus'
+
+$snapshot = Get-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName 
+ 
+$diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
+ 
+New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
+```
+Teď máte kopii původního disku s operačním systémem. Tento nový disk můžete připojit k jinému virtuálnímu počítači s Windows pro účely řešení potíží.
+
+## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>Připojit nový virtuální pevný disk k jinému virtuálnímu počítači
+V následujících několika krocích použijete pro účely odstraňování potíží jiný virtuální počítač. Disk k tomuto virtuálnímu počítači pro odstraňování potíží připojíte, abyste mohli procházet a upravovat obsah disku. Tento proces umožňuje opravit chyby v konfiguraci nebo zkontrolovat soubory protokolu aplikace nebo systému, například. Vyberte nebo vytvořte jiný virtuální počítač, který chcete použít pro účely řešení potíží.
+
+Připojte stávající virtuální pevný disk pomocí [AZ VM unmanaged-disk Attach](/cli/azure/vm/unmanaged-disk). Když připojíte existující virtuální pevný disk, zadejte identifikátor URI na disk získaný v předchozím `az vm show` příkazu. Následující příklad připojí existující virtuální pevný disk k virtuálnímu počítači pro řešení potíží s `myVMRecovery` názvem ve skupině prostředků s `myResourceGroup`názvem:
 
 ```azurecli
 az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
     --vhd-uri https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd
 ```
-
-
-## <a name="mount-the-attached-data-disk"></a>Připojte přídavný datový disk
+## <a name="mount-the-attached-data-disk"></a>Připojit připojený datový disk
 
 > [!NOTE]
-> Následující příklady jsou podrobně popsané kroky potřebné na virtuální počítač s Ubuntu. Pokud používáte jiné distribuce Linuxu, jako je Red Hat Enterprise Linux nebo SUSE, umístění souborů protokolu a `mount` příkazy mohou být mírně liší. Naleznete v dokumentaci pro vaše konkrétní distribuce pro odpovídající změny v příkazech.
+> Následující příklady podrobně popisují kroky vyžadované na virtuálním počítači s Ubuntu. Pokud používáte jiný distribuce pro Linux, například Red Hat Enterprise Linux nebo SUSE, umístění souborů protokolu a `mount` příkazy se můžou trochu lišit. Příslušné změny v příkazech najdete v dokumentaci pro konkrétní distribuce.
 
-1. Připojte přes SSH k virtuálnímu počítači poradce při potížích s pomocí příslušných přihlašovacích údajů. Pokud tento disk je první datový disk připojený k řešení potíží virtuální počítač, disk je pravděpodobně připojený k `/dev/sdc`. Použití `dmseg` zobrazíte připojené disky:
+1. SSH k vašemu VIRTUÁLNÍmu počítači pro řešení potíží pomocí příslušných přihlašovacích údajů. Pokud je tento disk prvním datovým diskem připojeným k vašemu VIRTUÁLNÍmu počítači pro řešení potíží, `/dev/sdc`disk je nejspíš připojený k. Použijte `dmseg` k zobrazení připojených disků:
 
     ```bash
     dmesg | grep SCSI
@@ -110,90 +160,85 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    V předchozím příkladu je disk s operačním systémem na `/dev/sda` a dočasný disk k dispozici pro každý virtuální počítač je v `/dev/sdb`. Pokud jste měli více datových disků, měly by být na `/dev/sdd`, `/dev/sde`, a tak dále.
+    V předchozím příkladu je disk `/dev/sda` s operačním systémem a dočasný disk poskytnutý pro každý virtuální počítač je v. `/dev/sdb` Pokud jste měli více datových disků, měly by být v `/dev/sdd`, `/dev/sde`a tak dále.
 
-2. Vytvořte adresář připojte existující virtuální pevný disk. Následující příklad vytvoří adresář s názvem `troubleshootingdisk`:
+2. Vytvořte adresář pro připojení stávajícího virtuálního pevného disku. Následující příklad vytvoří adresář s názvem `troubleshootingdisk`:
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Pokud máte více oddílů na existující virtuální pevný disk, připojte oddíl povinný. Následující příklad připojí na první primární oddíl `/dev/sdc1`:
+3. Pokud máte na svém stávajícím virtuálním pevném disku více oddílů, připojte požadovaný oddíl. Následující příklad připojí první primární oddíl na `/dev/sdc1`:
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
     ```
 
     > [!NOTE]
-    > Osvědčeným postupem je připojit datové disky na virtuálních počítačích v Azure s využitím univerzálně jedinečným identifikátorem (UUID) virtuálního pevného disku. Pro tento krátký Poradce při potížích scénář připojení virtuálního pevného disku pomocí identifikátoru UUID je nezbytné. Ale při normálním používání úpravy `/etc/fstab` připojit virtuální pevné disky pomocí místo UUID název zařízení může způsobit selhání spuštění virtuálního počítače.
+    > Osvědčeným postupem je připojení datových disků na virtuálních počítačích v Azure s použitím univerzálně jedinečného identifikátoru (UUID) virtuálního pevného disku. Pro tento scénář krátkého řešení potíží není nutné připojení virtuálního pevného disku pomocí identifikátoru UUID. V případě normálního použití ale úpravy `/etc/fstab` pro připojení virtuálních pevných disků pomocí názvu zařízení místo identifikátoru UUID můžou způsobit selhání spuštění virtuálního počítače.
 
 
-## <a name="fix-issues-on-original-virtual-hard-disk"></a>Oprava problémů na původním virtuálním pevném disku
-Pomocí existující virtuální pevný disk připojený můžete teď provádět údržbu a řešení potíží s kroky, podle potřeby. Jakmile vyřešíte problémy, pokračujte následujícími kroky.
+## <a name="fix-issues-on-the-new-os-disk"></a>Oprava problémů na novém disku s operačním systémem
+S připojeným virtuálním pevným diskem teď můžete podle potřeby provádět libovolné kroky údržby a řešení potíží. Jakmile vyřešíte problémy, pokračujte následujícími kroky.
 
 
-## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Odpojení původního virtuálního pevného disku
-Po vyřešení chyby odpojte Image a odpojit existující virtuální pevný disk z vašeho řešení potíží virtuálního počítače. Virtuální pevný disk s jakýkoli jiný virtuální počítač nelze použít, dokud se neuvolní zapůjčení virtuální pevný disk se připojuje k řešení potíží virtuální počítač.
+## <a name="unmount-and-detach-the-new-os-disk"></a>Odpojte a odpojte nový disk s operačním systémem.
+Po vyřešení chyb odpojte a odpojte stávající virtuální pevný disk od virtuálního počítače pro řešení potíží. Virtuální pevný disk nemůžete použít s žádným jiným virtuálním počítačem, dokud se neuvolní zapůjčení virtuálního pevného disku k virtuálnímu počítači pro řešení potíží.
 
-1. Z relace SSH k řešení potíží virtuální počítač odpojte existující virtuální pevný disk. Nejprve změňte mimo nadřazený adresář pro přípojného bodu:
+1. Z relace SSH k vašemu VIRTUÁLNÍmu počítači pro řešení potíží odpojte stávající virtuální pevný disk. Nejdřív změňte nadřazený adresář pro přípojný bod:
 
     ```bash
     cd /
     ```
 
-    Nyní odpojte existující virtuální pevný disk. Následující příklad odpojí zařízení `/dev/sdc1`:
+    Nyní odpojte stávající virtuální pevný disk. Následující příklad odpojí zařízení v `/dev/sdc1`:
 
     ```bash
     sudo umount /dev/sdc1
     ```
 
-2. Nyní Odpojte virtuální pevný disk z virtuálního počítače. Ukončete relaci SSH k virtuálnímu počítači řešení potíží. Seznam připojených datových disků k virtuálnímu počítači poradce při potížích s [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk). Následující příklad zobrazí seznam datových disků připojených k virtuálnímu počítači s názvem `myVMRecovery` ve skupině prostředků s názvem `myResourceGroup`:
+2. Teď odpojte virtuální pevný disk od virtuálního počítače. Ukončete relaci SSH k vašemu VIRTUÁLNÍmu počítači pro řešení potíží. Seznam připojených datových disků k VIRTUÁLNÍmu počítači pro řešení potíží pomocí příkaz [AZ VM unmanaged-disk list](/cli/azure/vm/unmanaged-disk). Následující příklad vypíše datové disky připojené k virtuálnímu počítači s `myVMRecovery` názvem ve skupině prostředků s `myResourceGroup`názvem:
 
     ```azurecli
     azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
         --query '[].{Disk:vhd.uri}' --output table
     ```
 
-    Poznamenejte si název pro existující virtuální pevný disk. Například název disku s identifikátorem URI z **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** je **myVHD**. 
+    Poznamenejte si název existujícího virtuálního pevného disku. Například název disku s identifikátorem URI **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** je **myVHD**. 
 
-    Odpojení datového disku z virtuálního počítače [nespravovaného virtuálního počítače az-disk detach](/cli/azure/vm/unmanaged-disk). Následující příklad odpojí disk s názvem `myVHD` z virtuálního počítače s názvem `myVMRecovery` v `myResourceGroup` skupina prostředků:
+    Odpojte datový disk od virtuálního počítače [AZ VM unmanaged-disk detach](/cli/azure/vm/unmanaged-disk). Následující příklad odpojí disk s názvem `myVHD` z virtuálního počítače s názvem `myVMRecovery` ve `myResourceGroup` skupině prostředků:
 
     ```azurecli
     az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
         --name myVHD
     ```
 
+## <a name="change-the-os-disk-for-the-affected-vm"></a>Změna disku operačního systému pro ovlivněný virtuální počítač
 
-## <a name="create-vm-from-original-hard-disk"></a>Vytvoření virtuálního počítače z původního pevného disku
-Vytvoření virtuálního počítače z původního virtuálního pevného disku, použijte [tuto šablonu Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd). Skutečnou šablonu JSON je na následující odkaz:
+K prohození disků s operačním systémem můžete použít Azure PowerShell. Nemusíte odstranit a znovu vytvořit virtuální počítač.
 
-- https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json
+V tomto příkladu se zastaví virtuální `myVM` počítač s názvem a přiřadí se disk s názvem jako nový disk s `newOSDisk` operačním systémem. 
 
-Šablona nasadí virtuální počítač pomocí identifikátoru URI virtuálního pevného disku z předchozích příkazu. Nasazení šablony s [vytvořit nasazení skupiny pro az](/cli/azure/group/deployment). Zadejte identifikátor URI k původní virtuální pevný disk a pak zadejte typ operačního systému, velikost virtuálního počítače a název virtuálního počítače následujícím způsobem:
+```powershell
+# Get the VM 
+$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
 
-```azurecli
-az group deployment create --resource-group myResourceGroup --name myDeployment \
-  --parameters '{"osDiskVhdUri": {"value": "https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd"},
-    "osType": {"value": "Linux"},
-    "vmSize": {"value": "Standard_DS1_v2"},
-    "vmName": {"value": "myDeployedVM"}}' \
-    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
+# Make sure the VM is stopped\deallocated
+Stop-AzVM -ResourceGroupName myResourceGroup -Name $vm.Name -Force
+
+# Get the new disk that you want to swap in
+$disk = Get-AzDisk -ResourceGroupName myResourceGroup -Name newDisk
+
+# Set the VM configuration to point to the new disk  
+Set-AzVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name  -sto
+
+# Update the VM with the new OS disk. Possible values of StorageAccountType include: 'Standard_LRS' and 'Premium_LRS'
+Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type of the storage account >
+
+# Start the VM
+Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 ```
-
-## <a name="re-enable-boot-diagnostics"></a>Opětovné povolení diagnostiky spouštění
-Při vytváření virtuálního počítače z existujícího virtuálního pevného disku, nemusí Diagnostika spouštění automaticky povolená. Povolte diagnostiku spouštění pomocí [az Diagnostika spouštění virtuálních počítačů – povolit](/cli/azure/vm/boot-diagnostics). Následující příklad povolí diagnostické rozšíření na virtuální počítač s názvem `myDeployedVM` ve skupině prostředků s názvem `myResourceGroup`:
-
-```azurecli
-az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM
-```
-
-## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Řešení potíží s spravovaný virtuální počítač Disk připojením nový disk operačního systému
-1. Ovlivněné virtuální počítač zastavte.
-2. [Vytvoření snímku spravovaného disku](../linux/snapshot-copy-managed-disk.md) z disku s operačním systémem virtuálního počítače spravovaného disku.
-3. [Vytvoření spravovaného disku ze snímku](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
-4. [Připojení spravovaného disku jako datového disku virtuálního počítače](../windows/attach-disk-ps.md).
-5. [Změňte datový disk na disk s operačním systémem z kroku 4](../windows/os-disk-swap.md).
 
 ## <a name="next-steps"></a>Další postup
-Pokud máte problémy s připojením k virtuálnímu počítači, přečtěte si téma [řešení potíží s připojení SSH k virtuálnímu počítači Azure](troubleshoot-ssh-connection.md). Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači, naleznete v tématu [řešit problémy s připojením aplikace na virtuální počítač s Linuxem](troubleshoot-app-connection.md).
+Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači Azure](troubleshoot-ssh-connection.md). Problémy s přístupem k aplikacím běžícím na vašem VIRTUÁLNÍm počítači najdete v tématu [řešení potíží s připojením aplikací na virtuálním počítači se systémem Linux](troubleshoot-app-connection.md).
 

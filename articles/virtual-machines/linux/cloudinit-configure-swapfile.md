@@ -1,6 +1,6 @@
 ---
-title: Použití cloud-init pro konfigurace stránkovacího souboru na virtuálním počítači s Linuxem | Dokumentace Microsoftu
-description: Použití cloud-init k konfigurace stránkovacího souboru v virtuálního počítače s Linuxem během vytváření pomocí Azure CLI
+title: K nakonfigurování odkládacího oddílu na virtuálním počítači se systémem Linux použijte Cloud-init | Microsoft Docs
+description: Jak pomocí Cloud-init nakonfigurovat odkládací oddíl na virtuálním počítači Linux během vytváření pomocí Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,22 +14,22 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: adf03ea912a028c1059683c49350dea3743ee7a6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d8ce12b931b6a30fa375588b73a1140ed4697c2f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671703"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640775"
 ---
-# <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>Konfigurace stránkovacího souboru na virtuálním počítači s Linuxem pomocí cloud-init
-V tomto článku se dozvíte, jak používat [cloud-init](https://cloudinit.readthedocs.io) konfigurace stránkovacího souboru v různých distribucích systému Linux. Stránkovacího souboru byla nakonfigurována tradičně podle Linuxu agenta (WALA) podle distribuce, kterou vyžaduje jeden.  Tento dokument se popisují proces sestavení stránkovacího souboru na vyžádání během zřizování doby použití cloud-init.  Další informace o tom, jak funguje cloud-init nativně v Azure a podporovaných distribucích systému Linux, najdete v části [přehled cloud-init](using-cloud-init.md)
+# <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Použití Cloud-init ke konfiguraci odkládacího oddílu na virtuálním počítači se systémem Linux
+V tomto článku se dozvíte, jak pomocí [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat odkládací oddíl u různých distribucí systému Linux. Odkládací oddíl byl tradičně nakonfigurovaný agentem pro Linux (WALA) na základě toho, která distribuce je vyžaduje.  Tento dokument vám pomůže sestavovat proces vytváření swapového oddílu na vyžádání během doby zřízení pomocí Cloud-init.  Další informace o tom, jak nativně funguje Cloud-init v Azure a podporované distribuce Linux, najdete v článku [Přehled Cloud-init](using-cloud-init.md) .
 
-## <a name="create-swapfile-for-ubuntu-based-images"></a>Vytvořit stránkovacího souboru pro Image založenou na Ubuntu
-Ve výchozím nastavení v Azure nevytvářejte Image z Galerie Ubuntu stránkovací soubory. Povolit konfiguraci odkládací soubor během zřizování čas použití cloud-init virtuálního počítače – podrobnosti najdete [AzureSwapPartitions dokumentu](https://wiki.ubuntu.com/AzureSwapPartitions) na stránkách wiki Ubuntu.
+## <a name="create-swap-partition-for-ubuntu-based-images"></a>Vytvoření odkládacího oddílu pro image založené na Ubuntu
+Ve výchozím nastavení v Azure Image Galerie Ubuntu nevytváří swapové oddíly. Povolení konfigurace prohozeného oddílu během zřizování virtuálního počítače pomocí Cloud-init – Podívejte se na [AzureSwapPartitions dokument](https://wiki.ubuntu.com/AzureSwapPartitions) na wikiwebu Ubuntu.
 
-## <a name="create-swapfile-for-red-hat-and-centos-based-images"></a>Vytvořit stránkovacího souboru pro Image na základě CentOS a Red Hat
+## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>Vytvoření odkládacího oddílu pro image založené na Red Hat a CentOS
 
-V aktuálním prostředí vytvořte soubor *cloud_init_swapfile.txt* a vložte do něj následující konfiguraci. V tomto příkladu vytvoření souboru ve službě Cloud Shell není na místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_swapfile.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Zvolte #1 použít **nano** editoru. Ujistěte se, že se soubor celý cloud-init zkopíroval správně, zejména první řádek.  
+Vytvořte v aktuálním prostředí soubor s názvem *cloud_init_swappart. txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_swappart.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  
 
 ```yaml
 #cloud-config
@@ -48,37 +48,37 @@ mounts:
   - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
 ```
 
-Před nasazením této bitové kopie, je potřeba vytvořit skupinu prostředků pomocí [vytvořit skupiny az](/cli/azure/group) příkazu. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Před nasazením této image je potřeba vytvořit skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte virtuální počítač s [az vm vytvořit](/cli/azure/vm) a zadejte soubor cloud-init s `--custom-data cloud_init_swapfile.txt` následujícím způsobem:
+Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor `--custom-data cloud_init_swappart.txt` Cloud-init následujícím způsobem:
 
 ```azurecli-interactive 
 az vm create \
   --resource-group myResourceGroup \
   --name centos74 \
   --image OpenLogic:CentOS:7-CI:latest \
-  --custom-data cloud_init_swapfile.txt \
+  --custom-data cloud_init_swappart.txt \
   --generate-ssh-keys 
 ```
 
-## <a name="verify-swapfile-was-created"></a>Ověřte, zda byl vytvořen stránkovacího souboru
-Připojte přes SSH k veřejné IP adresu vašeho virtuálního počítače uvedené ve výstupu předchozího příkazu. Zadejte vlastní **publicIpAddress** následujícím způsobem:
+## <a name="verify-swap-partition-was-created"></a>Ověřit vytvoření odkládacího oddílu
+SSH na veřejnou IP adresu vašeho virtuálního počítače zobrazeného ve výstupu z předchozího příkazu. Zadejte vlastní **publicIpAddress** následujícím způsobem:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Jakmile budete mít SSH'ed k virtuálnímu počítači, zkontrolujte, zda byla vytvořena stránkovacího souboru
+Až se SSH'ed do virtuálního počítače, podívejte se, jestli se odkládací oddíl vytvořil.
 
 ```bash
 swapon -s
 ```
 
-Výstup tohoto příkazu by měl vypadat takto:
+Výstup z tohoto příkazu by měl vypadat takto:
 
 ```text
 Filename                Type        Size    Used    Priority
@@ -86,12 +86,12 @@ Filename                Type        Size    Used    Priority
 ```
 
 > [!NOTE] 
-> Pokud máte stávající image Azure, která má nakonfigurované odkládacího souboru a chcete změnit konfiguraci odkládací soubor pro nové bitové kopie, byste měli odebrat existující odkládacího souboru. Najdete v dokumentu 'Vlastní Image k poskytování pomocí cloud-init' Další podrobnosti.
+> Máte-li existující bitovou kopii Azure s nakonfigurovaným odkládacím oddílem a chcete změnit konfiguraci odkládacího oddílu pro nové image, odeberte existující odkládací oddíl. Další podrobnosti najdete v dokumentu "přizpůsobení imagí pro zřízení pomocí Cloud-init".
 
 ## <a name="next-steps"></a>Další postup
-Příklady cloud-init další změny konfigurace najdete tady:
+Další příklady cloudových inicializací změn konfigurace najdete v následujících tématech:
  
-- [Přidání dalších uživatelů Linuxu na virtuální počítač](cloudinit-add-user.md)
-- [Spusťte Správce balíčků aktualizovat existující balíčky při prvním spuštění](cloudinit-update-vm.md)
+- [Přidání dalšího uživatele se systémem Linux k virtuálnímu počítači](cloudinit-add-user.md)
+- [Spusťte Správce balíčků, aby při prvním spuštění aktualizoval existující balíčky.](cloudinit-update-vm.md)
 - [Změnit místní název hostitele virtuálního počítače](cloudinit-update-vm-hostname.md) 
-- [Instalace balíčku aplikace, aktualizovat konfigurační soubory a klíče pro vložení](tutorial-automate-vm-deployment.md)
+- [Instalace balíčku aplikace, aktualizace konfiguračních souborů a vkládání klíčů](tutorial-automate-vm-deployment.md)

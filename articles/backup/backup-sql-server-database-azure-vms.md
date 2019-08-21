@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6a929359c0e4e0a5c64eadbf41f565dfeb56a233
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e18d6519d1ee3c1750757af5c59157de8bdde80c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854119"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637915"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -51,22 +51,29 @@ Navažte připojení pomocí jedné z následujících možností:
 
 - **Povoluje rozsahy IP adres datového centra Azure**. Tato možnost povoluje [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) ve stahování. Pro přístup ke skupině zabezpečení sítě (NSG) použijte rutinu Set-AzureNetworkSecurityRule. Pokud jste bezpečným příjemcům v seznamu jenom IP adresy specifické pro oblast, budete taky muset aktualizovat seznam bezpečných příjemců. Služba Azure Active Directory (Azure AD) bude umožňovat ověřování.
 
-- **Povolí přístup pomocí značek NSG**. Pokud k omezení připojení používáte skupin zabezpečení sítě, tato možnost přidá do vašeho NSG pravidlo, které umožňuje odchozí přístup k Azure Backup pomocí značky AzureBackup. Kromě této značky budete také potřebovat odpovídající [pravidla](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) pro Azure AD a Azure Storage, abyste umožnili připojení k ověřování a přenosu dat. Značka AzureBackup je aktuálně dostupná pouze v prostředí PowerShell. Vytvoření pravidla pomocí značky AzureBackup:
+- **Povolí přístup pomocí značek NSG**.  Pokud k omezení připojení používáte NSG, měli byste pomocí značky služby AzureBackup povolit odchozí přístup k Azure Backup. Kromě toho byste měli také umožňovat připojení pro ověřování a přenos dat pomocí [pravidel](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) pro Azure AD a Azure Storage. To se dá udělat z portálu nebo PowerShellu.
 
-    - Přidání přihlašovacích údajů k účtu Azure a aktualizace národních cloudů<br/>
-    `Add-AzureRmAccount`
+    Vytvoření pravidla pomocí portálu:
+    
+    - Ve **všech službách**klikněte na **skupiny zabezpečení sítě** a vyberte skupinu zabezpečení sítě.
+    - V části **Nastavení**vyberte **odchozí pravidla zabezpečení** .
+    - Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na **příznak služby** a **cílová značka služby** je nastavená na **AzureBackup**.
+    - Klikněte na tlačítko **Přidat**a uložte nově vytvořené odchozí pravidlo zabezpečení.
+    
+   Vytvoření pravidla pomocí prostředí PowerShell:
 
-    - Výběr předplatného NSG<br/>
-    `Select-AzureRmSubscription "<Subscription Id>"`
-
-     - Vybrat NSG<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
-
-    - Přidat odchozí pravidlo pro Azure Backup tag služby<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
-
+   - Přidání přihlašovacích údajů k účtu Azure a aktualizace národních cloudů<br/>
+    ``Add-AzureRmAccount``
+  - Výběr předplatného NSG<br/>
+    ``Select-AzureRmSubscription "<Subscription Id>"``
+  - Vybrat NSG<br/>
+    ```$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"```
+  - Přidat odchozí pravidlo pro Azure Backup tag služby<br/>
+   ```Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"```
   - Uložit NSG<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+    ```Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg```
+
+   
 - **Povolí přístup pomocí značek Azure firewall**. Pokud používáte Azure Firewall, vytvořte pravidlo aplikace pomocí [značky plně kvalifikovaného názvu domény](https://docs.microsoft.com/azure/firewall/fqdn-tags)AzureBackup. To umožňuje odchozí přístup k Azure Backup.
 - **Nasaďte proxy server HTTP pro směrování provozu**. Při zálohování databáze SQL Server na virtuálním počítači Azure používá rozšíření zálohování na virtuálním počítači rozhraní API HTTPS k posílání příkazů pro správu do Azure Backup a dat do Azure Storage. Rozšíření zálohování používá pro ověřování taky službu Azure AD. Přesměrujte provoz rozšíření zálohování pro tyto tři služby prostřednictvím proxy serveru HTTP. Rozšíření jsou jedinou komponentou, která je nakonfigurovaná pro přístup k veřejnému Internetu.
 
@@ -289,7 +296,7 @@ Pokud potřebujete vypnout automatickou ochranu, vyberte název instance v čás
 ![Zakázat automatickou ochranu u této instance](./media/backup-azure-sql-database/disable-auto-protection.png)
 
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se:
 

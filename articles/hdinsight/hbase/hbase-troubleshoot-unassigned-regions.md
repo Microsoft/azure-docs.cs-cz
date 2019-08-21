@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: e75f2fdd0530b92e8c8405b74c2a364ff9e9e28e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/16/2019
+ms.openlocfilehash: 6e734a661557b024257fcd1b9d9c2da6a3bc8f85
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935429"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640230"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Problémy se servery oblastí ve službě Azure HDInsight
 
@@ -27,7 +27,7 @@ Při spuštění `hbase hbck` příkazu se zobrazí chybová zpráva podobná t�
 multiple regions being unassigned or holes in the chain of regions
 ```
 
-Z uživatelského rozhraní Apache HBase Master se může zobrazit, že počet oblastí, které jsou nevyvážené napříč všemi servery oblastí.
+V uživatelském rozhraní Apache HBase Master uvidíte počet oblastí, které jsou nevyvážené napříč všemi oblastmi serverů. Pak můžete spustit `hbase hbck` příkaz pro zobrazení děr v řetězci oblasti.
 
 ### <a name="cause"></a>Příčina
 
@@ -45,7 +45,7 @@ Opravte přiřazení. Podle následujících kroků přeneste nepřiřazené obl
 
 1. Ukončete prostředí Zookeeper pomocí `exit` příkazu.
 
-1. Otevřete uživatelské rozhraní Ambari a restartujte službu Active HBase Master z Ambari.
+1. Otevřete uživatelské rozhraní Apache Ambari a pak restartujte službu Active HBase Master.
 
 1. Spusťte `hbase hbck` příkaz znovu (bez dalších možností). Zkontrolujte výstup a zajistěte, aby byly přiřazeny všechny oblasti.
 
@@ -61,7 +61,7 @@ Servery oblasti se nedaří spustit.
 
 Několik rozdělených adresářů WAL
 
-1. Získat seznam aktuálních Wals: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
+1. Získat seznam aktuálních WALs: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
 
 1. `wals.out` Zkontrolujte soubor. Pokud je k dispozici příliš mnoho rozdělených adresářů (počínaje oddělovači), server oblasti se pravděpodobně nedaří kvůli těmto adresářům.
 

@@ -1,6 +1,6 @@
 ---
 title: Osvědčené postupy – Azure App Service
-description: Přečtěte si osvědčené postupy a řešení potíží pro službu Azure App Service.
+description: Naučte se osvědčené postupy a řešení potíží s Azure App Service.
 services: app-service
 documentationcenter: ''
 author: dariagrigoriu
@@ -15,41 +15,41 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 55b66237cfbd2db9254362b7fa7efe7da7c624d4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b4c7524415865f7db5d4514c14f8e45030620330
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617601"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636679"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Osvědčené postupy pro Azure App Service
-Tento článek shrnuje osvědčené postupy při používání [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
+Tento článek shrnuje osvědčené postupy pro používání [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
 
 ## <a name="colocation"></a>Společné umístění
-Při sestavování řešení, třeba webovou aplikaci a databázi Azure prostředky jsou umístěné v různých oblastech, může mít tyto důsledky:
+Když jsou prostředky Azure, které vytváří řešení, jako je webová aplikace a databáze, umístěné v různých oblastech, může to mít následující důsledky:
 
-* Zvýší latence při komunikaci mezi prostředky
-* Peněžní poplatky za odchozí data přenášet mezi různými oblastmi, jak je uvedeno na [stránku s cenami Azure](https://azure.microsoft.com/pricing/details/data-transfers).
+* Vyšší latence při komunikaci mezi prostředky
+* Peněžní poplatky za přenos odchozích dat mezi oblastmi, jak je uvedeno na [stránce s cenami Azure](https://azure.microsoft.com/pricing/details/data-transfers).
 
-Společné umístění ve stejné oblasti je nejvhodnější pro sestavování řešení, třeba webové aplikace a účet databáze nebo úložiště používané pro udržení obsah nebo dat prostředků Azure. Při vytváření prostředků, ujistěte se, že jsou ve stejné oblasti Azure, pokud máte konkrétní obchodní nebo návrh je neměl by se důvod. Aplikace služby App Service můžete přesunout do stejné oblasti jako databáze s použitím [služby App Service funkce klonování](app-service-web-app-cloning.md) aktuálně k dispozici pro plán App Service Premium aplikace.   
+Společné umístění ve stejné oblasti je nejvhodnější pro prostředky Azure, které tvoří řešení, jako je webová aplikace a databáze nebo účet úložiště, který slouží k ukládání obsahu nebo dat. Při vytváření prostředků se ujistěte, že jsou ve stejné oblasti Azure, pokud nemáte konkrétní obchodní nebo návrhový důvod pro tyto účely. Aplikaci App Service můžete přesunout do stejné oblasti, ve které je vaše databáze, pomocí [funkce klonování App Service](app-service-web-app-cloning.md) , která je aktuálně dostupná pro aplikace Premium App Service Plan.   
 
-## <a name="memoryresources"></a>Když aplikace spotřebovávat více paměti, než se čekalo
-Pokud si všimnete aplikace využívá více paměti, než se očekávalo jako indikován při monitorování nebo služba doporučení, vezměte v úvahu [funkce App Service Samoopravení](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites). Jednu z možností pro funkci automatického opravení trvá vlastní akce podle prahové hodnoty paměti. Akce span spektrum od e-mailová oznámení na šetření přes výpis paměti pro zmírnění dopadů na místě pomocí recyklaci pracovního procesu. Automatické opravy lze konfigurovat pomocí souboru web.config a prostřednictvím popisný uživatelské rozhraní jak je popsáno v blogovém příspěvku pro [rozšíření webu podpory App Service](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
+## <a name="memoryresources"></a>Když aplikace spotřebovávají více paměti, než se očekávalo
+Pokud si všimnete, že aplikace spotřebovává více paměti, než se očekávalo, jak je uvedeno v doporučeních pro monitorování nebo služby, zapamatujte si [funkci App Service automatické](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites)opravy. Jedna z možností funkce Automatické opravy přijímá vlastní akce založené na prahové hodnotě paměti. Akce vychází z e-mailových oznámení do šetření prostřednictvím výpisu paměti při zmírnění omezení na místě tím, že se pracovní proces recykluje. Automatické opravy se dají nakonfigurovat přes web. config a prostřednictvím popisného uživatelského rozhraní popsaného v tomto příspěvku blogu pro [rozšíření webu podpory App Service](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
 
-## <a name="CPUresources"></a>Když aplikace spotřebovávat více procesorů, než se čekalo
-Pokud si všimnete aplikace využívá více procesorů, než se očekávalo nebo prostředí pro opakované využití procesoru špičky indikován při monitorování nebo služba doporučení, zvažte vertikální navýšení kapacity nebo horizontální navýšení kapacity plánu služby App Service. Pokud vaše aplikace je stavový, vertikální navýšení kapacity je jedinou možností, a pokud je vaše aplikace bezstavové, škálování na více instancí přináší větší flexibilitu a vyšší riziko škálování. 
+## <a name="CPUresources"></a>Když aplikace spotřebovávají více PROCESORů, než se očekávalo
+Když si všimnete, že aplikace spotřebovává více PROCESORů, než se očekávala, nebo se pokusíte o opakované využití procesoru, jak je uvedeno v doporučení týkající se monitorování nebo služby, zvažte možnost škálovat škálování nebo škálovat App Service plánu. Pokud je vaše aplikace stavová, je jedinou možností horizontální navýšení kapacity, pokud je vaše aplikace Bezstavová, nabízí větší flexibilitu a vyšší škálovatelnost. 
 
-Další informace o vs "stavové" "" bezstavové můžete sledovat toto video: [Plánování škálovatelné začátku do konce vícevrstvou aplikaci v Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Další informace o možnosti škálování a automatické škálování služby App Service najdete v tématu [škálování webové aplikace ve službě Azure App Service](web-sites-scale.md).  
+Další informace o stavových a bezstavových aplikacích můžete sledovat v tomto videu: [Plánování škálovatelné komplexní aplikace na více úrovních v Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Další informace o možnostech škálování App Service a automatického škálování najdete v tématu [škálování webové aplikace v Azure App Service](manage-scale-up.md).  
 
-## <a name="socketresources"></a>Když je vyčerpání prostředků soketu
-Častým důvodem, proč spotřebovává odchozí připojení TCP je použití klientské knihovny, které nejsou implementovány pro opětovné použití připojení TCP, nebo když se nepoužívá protokol vyšší úrovně jako je například udržování připojení HTTP. Projděte si dokumentaci pro každou z knihoven odkazuje aplikace v plánu App Service jsou nakonfigurované nebo přístupné z kódu pro efektivní opakované použití odchozí připojení. Také pomocí pokynů knihovny dokumentace pro správné vytvoření a vydání nebo čištění, aby předešla úniku připojení. Během vyšetřování klientské knihovny jsou v průběhu, může být zmírnit dopad horizontální navýšení kapacity na několik instancí.
+## <a name="socketresources"></a>Při vyčerpání prostředků soketu
+Běžným důvodem pro vyčerpání odchozích připojení TCP je použití klientských knihoven, které nejsou implementované k opakovanému použití připojení TCP, nebo když se nepoužívá protokol vyšší úrovně, jako je třeba HTTP-Keep-Alive. Přečtěte si dokumentaci ke každé knihovně, na kterou odkazují aplikace v plánu App Service, abyste se ujistili, že jsou ve vašem kódu nakonfigurované nebo používané pro efektivní opakované použití odchozích připojení. Dále postupujte podle pokynů v dokumentaci ke knihovně pro správné vytvoření a vystavení nebo vyčištění, abyste zabránili nevracení připojení. I když tyto klientské knihovny probíhá šetření, dopad může být omezen škálováním na více instancí.
 
-### <a name="nodejs-and-outgoing-http-requests"></a>Node.js a odchozí požadavky http
-Při práci s využitím Node.js a mnoho odchozích požadavků http, je důležité se zabývá HTTP - Keep-Alive. Můžete použít [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` balíčku, aby bylo snazší ve vašem kódu.
+### <a name="nodejs-and-outgoing-http-requests"></a>Node. js a odchozí požadavky http
+Při práci s Node. js a mnoho odchozích požadavků HTTP, které je potřeba řešit pomocí protokolu HTTP-Keep-Alive, je důležité. Pomocí balíčku [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` můžete usnadnit práci s vaším kódem.
 
-Vždy zpracovat `http` odpověď, a to i když neprovedete žádnou akci v obslužné rutině. Pokud nechcete zpracovat odpověď správně, nebudou aplikace, nakonec zasekne, protože nejsou k dispozici žádné další sokety.
+Vždy zpracujte `http` odpověď, i když neuděláte nic v obslužné rutině. Pokud odpověď nezpracujete správně, vaše aplikace se zablokuje, protože už nejsou k dispozici žádné další sokety.
 
-Například při práci s `http` nebo `https` balíčku:
+Například při práci s `http` balíčkem nebo: `https`
 
 ```javascript
 const request = https.request(options, function(response) {
@@ -57,19 +57,19 @@ const request = https.request(options, function(response) {
 });
 ```
 
-Pokud používáte ve službě App Service v Linuxu na počítači s více jádry, jiné osvědčeným postupem je použít PM2 ke spuštění více procesům Node.js ke spuštění vaší aplikace. Provedete to tak, že zadáte spouštěcí příkaz do kontejneru.
+Pokud používáte App Service v systému Linux na počítači s více jádry, další osvědčeným postupem je použití konfiguračního PM2 ke spuštění více procesů Node. js pro spuštění aplikace. Můžete to provést zadáním spouštěcího příkazu do kontejneru.
 
-Chcete-li například spustit čtyři instancí:
+Pokud například chcete spustit čtyři instance:
 
 ```
 pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 ```
 
-## <a name="appbackup"></a>Při zálohování vaší aplikace spustí služeb při selhání
-Dva nejběžnější důvody, proč jsou selhání zálohování aplikace: neplatného nastavení úložiště a konfigurace databáze je neplatná. Tyto chyby se obvykle stát, pokud se změny prostředky úložiště nebo databáze nebo změny, jak získat přístup k těmto prostředkům (například přihlašovací údaje aktualizované vybrané v nastavení zálohování databáze). Zálohování obvykle spouštět podle plánu a vyžadují přístup k úložištím (k výstupu zálohované soubory) a databáze (pro kopírování a čtení obsahu, které mají být zahrnuty do zálohování). Výsledek služeb při selhání pro přístup k některé z těchto prostředků by selhání konzistentní zálohování. 
+## <a name="appbackup"></a>Když se spustí zálohování vaší aplikace jako neúspěšné
+Mezi nejčastější důvody, proč se zálohování aplikace nezdařily, patří neplatná nastavení úložiště a neplatná konfigurace databáze. K těmto selháním obvykle dochází, když dojde k změnám v úložišti nebo databázových prostředcích nebo při změnách, jak získat přístup k těmto prostředkům (například přihlašovací údaje aktualizované pro databázi vybranou v nastavení zálohování). Zálohy obvykle běží podle plánu a vyžadují přístup k úložišti (pro výstup zálohovaných souborů) a databází (pro kopírování a čtení obsahu, který se má zahrnout do zálohování). Výsledek selhání přístupu k některému z těchto prostředků by představoval konzistentní selhání zálohování. 
 
-Když dochází k chybám zálohování, projděte si nejnovější výsledky, abyste pochopili, jaký typ selhání se děje. Pro selhání přístupu k úložišti zkontrolovat a aktualizovat nastavení úložiště používá v konfiguraci zálohování. Pro selhání přístupu k databázi zkontrolovat a aktualizovat vaše řetězce připojení jako součást nastavení aplikace; přejděte k aktualizovat konfiguraci zálohování tak, aby správně zahrnují požadované databáze. Další informace o zálohování aplikace najdete v tématu [zálohování webové aplikace ve službě Azure App Service](manage-backup.md).
+Pokud dojde k selhání zálohování, Projděte si nejnovější výsledky, abyste zjistili, jaký typ selhání se děje. V případě selhání přístupu k úložišti zkontrolujte a aktualizujte nastavení úložiště použité v konfiguraci zálohování. V případě selhání přístupu k databázi zkontrolujte a aktualizujte řetězce připojení jako součást nastavení aplikace. pak pokračujte v aktualizaci konfigurace zálohování tak, aby správně zahrnovala požadované databáze. Další informace o zálohování aplikací najdete v tématu [zálohování webové aplikace v Azure App Service](manage-backup.md).
 
-## <a name="nodejs"></a>Když jsou nasazená nové aplikace Node.js do služby Azure App Service
-Výchozí konfiguraci služby Azure App Service pro aplikace v Node.js se má nejlépe vyhovovat potřebám nejčastěji používané aplikace. Pokud se konfigurace pro aplikace v Node.js, budou těžit z přizpůsobené optimalizace pro zlepšení výkonu nebo optimalizovat využití prostředků pro prostředky procesoru/paměti/sítě naleznete v tématu [osvědčené postupy a Průvodce odstraňováním potíží pro aplikace v Node.js v aplikaci Azure Služba](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Tento článek popisuje nastavení modulu iisnode možná muset nakonfigurovat pro vaši aplikaci Node.js, popisuje různé scénáře nebo problémy, že vaše aplikace se potýkáte a ukazuje, jak řešení těchto problémů.
+## <a name="nodejs"></a>Když jsou nové aplikace Node. js nasazeny na Azure App Service
+Azure App Service výchozí konfigurace pro aplikace Node. js má za cíl nejlépe vyhovovat potřebám většiny běžných aplikací. Pokud by konfigurace aplikace Node. js mohla těžit z přizpůsobeného ladění za účelem zlepšení výkonu nebo optimalizace využití prostředků procesoru, paměti nebo síťových prostředků, přečtěte si téma [osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Tento článek popisuje nastavení iisnode, která může být potřeba nakonfigurovat pro aplikaci Node. js, popisuje různé scénáře nebo problémy, na které vaše aplikace může být vystavena, a ukazuje, jak tyto problémy vyřešit.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2adb2928772f97c2dc14b8ebe9eb2072cbc4a36d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 49e15964ba370cc6dc18491507b906764f1f882c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985372"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640112"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure Storage
 
@@ -143,12 +143,12 @@ Přístup k datům ve vašem účtu úložiště můžete udělit pomocí někte
 
 - **Azure Active Directory:** Použijte přihlašovací údaje pro Azure Active Directory (Azure AD) k ověření uživatele, skupiny nebo jiné identity pro přístup k datům objektů BLOB a front. Pokud je ověření identity úspěšné, pak Azure AD vrátí token, který se použije při autorizaci žádosti do úložiště objektů BLOB v Azure nebo ve frontě. Další informace najdete v tématu [ověření přístupu k Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).
 - **Autorizace sdíleného klíče:** Použijte přístupový klíč účtu úložiště k vytvoření připojovacího řetězce, který vaše aplikace používá za běhu pro přístup k Azure Storage. Hodnoty v připojovacím řetězci slouží k vytvoření hlavičky *autorizace* , která je předána Azure Storage. Další informace najdete v tématu [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md).
-- **Sdílený přístupový podpis:** Pomocí sdíleného přístupového podpisu můžete delegovat přístup k prostředkům v účtu úložiště, pokud nepoužíváte ověřování Azure AD. Sdílený přístupový podpis je token, který zapouzdřuje všechny informace potřebné k autorizaci žádosti o Azure Storage na adrese URL. Můžete zadat prostředek úložiště, udělená oprávnění a interval, ve kterém jsou oprávnění platná, jako součást sdíleného přístupového podpisu. Další informace najdete v tématu [použití sdílených přístupových podpisů (SAS)](storage-sas-overview.md).
+- **Sdílený přístupový podpis:** Pomocí sdíleného přístupového podpisu můžete delegovat přístup k prostředkům v účtu úložiště, pokud nepoužíváte autorizaci Azure AD. Sdílený přístupový podpis je token, který zapouzdřuje všechny informace potřebné k autorizaci žádosti o Azure Storage na adrese URL. Můžete zadat prostředek úložiště, udělená oprávnění a interval, ve kterém jsou oprávnění platná, jako součást sdíleného přístupového podpisu. Další informace najdete v tématu [použití sdílených přístupových podpisů (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
 > Ověřování uživatelů nebo aplikací pomocí přihlašovacích údajů Azure AD zajišťuje zabezpečení a jednoduchost použití prostřednictvím jiných způsobů autorizace. I když můžete nadále používat autorizaci pomocí sdíleného klíče u svých aplikací, použití Azure AD obchází nutnost uložení přístupového klíče účtu k vašemu kódu. Můžete taky dál používat sdílené přístupové podpisy (SAS) pro udělení jemně odstupňovaného přístupu k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné možnosti, aniž by bylo potřeba spravovat tokeny SAS nebo se starat o odvolání napadeného SAS. 
 >
-> Pokud je to možné, Microsoft doporučuje používat ověřování Azure AD pro vaše Azure Storage objekty BLOB a fronty aplikací.
+> Microsoft doporučuje použít autorizaci Azure AD pro Azure Storage objekty BLOB a aplikace fronty, pokud je to možné.
 
 ## <a name="copying-data-into-a-storage-account"></a>Kopírování dat do účtu úložiště
 
@@ -173,7 +173,7 @@ Další informace o REST API Azure Storage najdete v tématu informace o [REST A
 > [!IMPORTANT]
 > Objekty blob šifrované na straně klienta ukládají metadata šifrování s objektem blob. Pokud kopírujete objekt blob šifrovaný na straně klienta, ujistěte se, že operace kopírování zachová metadata objektu blob, zejména metadata šifrování. Pokud objekt blob zkopírujete bez metadat šifrování, obsah objektu blob bude nenávratně ztracený. Další informace o metadatech šifrování najdete v tématu [Azure Storage a šifrování na straně klienta](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-### <a name="azure-importexport-service"></a>Služba Azure Import/Export
+### <a name="azure-importexport-service"></a>Služba import/export Azure
 
 Pokud pro import do svého účtu úložiště máte velké množství dat, zvažte službu Azure import/export. Služba import/export slouží k bezpečnému importování velkých objemů dat do služby Azure Blob Storage a souborů Azure prostřednictvím přenosů diskových jednotek do datacentra Azure. 
 
@@ -183,7 +183,7 @@ Služba import/export se dá použít taky k přenosu dat z úložiště objekt�
 
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Informace o tom, jak vytvořit účet úložiště Azure pro obecné účely, najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
 * Informace o tom, jak vytvořit účet úložiště objektů blob bloku, najdete v tématu [Vytvoření účtu bloku BLOB Storage](../blobs/storage-blob-create-account-block-blob.md).

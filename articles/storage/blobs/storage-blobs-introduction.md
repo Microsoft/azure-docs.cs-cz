@@ -8,70 +8,70 @@ ms.topic: overview
 ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e216503cac2db55115bd4c1b5bf0e2f6e50355fc
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: b54f69edfebca2786ec996b1ca71cea933179b58
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190859"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641033"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Seznámení se službou Azure Blob Storage
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
-## <a name="blob-storage-resources"></a>Prostředky úložiště objektů BLOB
+## <a name="blob-storage-resources"></a>Prostředky BLOB Storage
 
 Úložiště objektů BLOB nabízí tři typy prostředků:
 
-- **Účtu úložiště**. 
-- A **kontejneru** v účtu úložiště
-- A **blob** v kontejneru 
+- **Účet úložiště**. 
+- **Kontejner** v účtu úložiště
+- **Objekt BLOB** v kontejneru 
 
 Na následujícím diagramu jsou vztahy těchto prostředků.
 
-![vztah mezi objektem Blob účet a kontejner prostředku](./media/storage-blob-introduction/blob1.png)
+![vztah mezi objektem BLOB účtu a prostředkem kontejneru](./media/storage-blob-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>Účty úložiště
 
-Účet úložiště poskytuje jedinečný obor názvů v Azure pro vaše data. Každý objekt, ve kterém je uložený ve službě Azure Storage má adresu, která obsahuje název vaší jedinečný účet. Kombinace názvu účtu a koncový bod služby Azure Storage blob tvoří základní adresu pro objekty ve vašem účtu úložiště.
+Účet úložiště poskytuje jedinečný obor názvů v Azure pro vaše data. Každý objekt, který je uložen v Azure Storage má adresu, která obsahuje jedinečný název účtu. Kombinace názvu účtu a koncového bodu objektu blob Azure Storage tvoří základní adresu pro objekty v účtu úložiště.
 
-Například, pokud je název vašeho účtu úložiště *mystorageaccount*, pak bude výchozím koncovým bodem pro úložiště objektů Blob:
+Pokud má například účet úložiště název *mystorageaccount*, pak je výchozím koncovým bodem pro úložiště objektů BLOB:
 
 ```
 http://mystorageaccount.blob.core.windows.net 
 ```
 
-Vytvoření účtu úložiště najdete v tématu [vytvořit účet úložiště](../common/storage-quickstart-create-account.md). Další informace o účtech úložiště najdete v tématu [přehled účtu Azure storage](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Informace o vytvoření účtu úložiště najdete v tématu [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md). Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="containers"></a>Containers
 
-Kontejner slouží k uspořádání sady objektů BLOB, podobně jako do jiného adresáře v systému souborů. Účet úložiště může zahrnovat neomezený počet kontejnerů a v každém kontejneru může být neomezený počet objektů blob. 
+Kontejner uspořádá sadu objektů blob, podobně jako adresář v systému souborů. Účet úložiště může zahrnovat neomezený počet kontejnerů a v každém kontejneru může být neomezený počet objektů blob. 
 
   > [!NOTE]
-  > Názvy kontejnerů musí obsahovat jenom malá písmena. Další informace o pojmenování kontejnerů najdete v tématu [pojmenování a odkazování na kontejnerů, objektů BLOB a metadat](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata).
+  > Názvy kontejnerů musí obsahovat jenom malá písmena. Další informace o pojmenování kontejnerů najdete v tématu pojmenování [kontejnerů, objektů BLOB a metadat a odkazování](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)na ně.
 
 ### <a name="blobs"></a>Objekty blob
  
-Azure Storage podporuje tři typy objektů blob:
+Azure Storage podporuje tři typy objektů BLOB:
 
-* **Objekty BLOB bloku** ukládání textových a binárních dat, a to až do velikosti 4,7 TB. Objekty blob bloku se skládají z bloků dat, které můžete spravovat jednotlivě.
-* **Doplňovací objekty BLOB** jsou tvořené bloky, jako jsou objekty BLOB bloku, ale jsou optimalizované pro doplňovací operace. Doplňovací objekty blob jsou ideální pro scénáře, jako je protokolování dat z virtuálních počítačů.
-* **Objekty BLOB stránky** náhodný přístup úložiště souborů až do 8 TB velikosti. Objekty BLOB stránky ukládat soubory virtuálního pevného disku (VHD) a bude sloužit jako disky pro virtuální počítače Azure. Další informace o objektech BLOB stránky najdete v tématu [objekty BLOB stránky Azure – přehled](storage-blob-pageblob-overview.md)
+* **Objekty blob bloku** ukládají textová a binární data, až do přibližně 4,7 TB. Objekty blob bloku se skládají z bloků dat, které můžete spravovat jednotlivě.
+* **Doplňovací objekty blob** se skládají z bloků, jako jsou objekty blob bloku, ale jsou optimalizované pro operace připojení. Doplňovací objekty blob jsou ideální pro scénáře, jako je protokolování dat z virtuálních počítačů.
+* **Objekty blob stránky** ukládají soubory s náhodným přístupem až do velikosti 8 TB. Objekty blob stránky ukládají soubory virtuálního pevného disku (VHD) a slouží jako disky pro virtuální počítače Azure. Další informace o objektech blob stránky najdete v tématu [Přehled objektů blob stránky Azure](storage-blob-pageblob-overview.md) .
 
-Další informace o různých typech objektů BLOB najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+Další informace o různých typech objektů BLOB najdete v tématu [Principy objektů blob bloku, doplňovacích objektů BLOB a objektů blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
-## <a name="move-data-to-blob-storage"></a>Přesun dat do úložiště objektů Blob
+## <a name="move-data-to-blob-storage"></a>Přesun dat do úložiště objektů BLOB
 
-Počet řešení existují pro migraci existujících dat do úložiště objektů Blob:
+Pro migraci stávajících dat do úložiště objektů BLOB existuje několik řešení:
 
-- **AzCopy** je nástroj příkazového řádku snadno použitelné pro Windows a Linux, který kopíruje data do a z úložiště objektů Blob, napříč kontejnery nebo mezi různými účty úložiště. Další informace o AzCopy najdete v tématu [přenos dat pomocí AzCopy v10 (Preview)](../common/storage-use-azcopy-v10.md). 
-- **Knihovna pro přesun dat úložiště Azure** je knihovna .NET pro přesun dat mezi službami Azure Storage. Knihovna pro přesun dat je sestavován nástroj AzCopy. Další informace najdete v tématu [referenční dokumentaci](/dotnet/api/microsoft.azure.storage.datamovement) pro přesun dat knihovny. 
-- **Azure Data Factory** podporuje kopírování dat do a z úložiště objektů Blob s použitím klíče účtu, sdílený přístupový podpis službu objektu zabezpečení nebo spravovaných identit pro ověřování prostředků Azure. Další informace najdete v tématu [kopírování dat do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
-- **Blobfuse** je virtuálním souborovém systému ovladače pro úložiště objektů Blob v Azure. Blobfuse můžete použít pro přístup k existující data objektů blob bloku v účtu úložiště v systému Linux. Další informace najdete v tématu [postup připojení služby Blob storage jako systém souborů s blobfuse](storage-how-to-mount-container-linux.md).
-- **Azure Data Box** služba je k dispozici pro přenos místních dat do úložiště objektů Blob při velkých datových sad nebo síťovým omezením nahrávání dat při přenosu nereálný. V závislosti na velikost vašich dat, můžete požádat o [disku Azure Data Box](../../databox/data-box-disk-overview.md), [Azure Data Box](../../databox/data-box-overview.md), nebo [Azure Data Box náročné](../../databox/data-box-heavy-overview.md) zařízení od Microsoftu. Můžete kopírovat data na těchto zařízeních a jejich odeslání zpět společnosti Microsoft k odeslání do úložiště objektů Blob.
-- **Služba Azure Import/Export** poskytuje způsob, jak importovat nebo exportovat velkých objemů dat do a z vašeho účtu úložiště pomocí pevných disků, které zadáte. Další informace najdete v tématu [přenášet data do úložiště objektů Blob pomocí služby Microsoft Azure Import/Export](../common/storage-import-export-service.md).
+- **AzCopy** je snadno použitelný nástroj příkazového řádku pro Windows a Linux, který kopíruje data do a z úložiště blobů, napříč kontejnery nebo napříč účty úložiště. Další informace o AzCopy najdete v tématu [přenos dat pomocí AzCopy v10 za účelem (Preview)](../common/storage-use-azcopy-v10.md). 
+- **Knihovna pro přesun dat Azure Storage** je knihovna .NET pro přesouvání dat mezi Azure Storagemi službami. Nástroj AzCopy je sestavený s knihovnou přesunu dat. Další informace najdete v [referenční dokumentaci](/dotnet/api/microsoft.azure.storage.datamovement) k knihovně pro přesun dat. 
+- **Azure Data Factory** podporuje kopírování dat do a ze služby Blob Storage pomocí klíče účtu, sdíleného přístupového podpisu, instančního objektu nebo spravovaných identit pro prostředky Azure. Další informace najdete v tématu [kopírování dat do nebo z úložiště objektů BLOB v Azure pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
+- **Blobfuse** je ovladač virtuálního systému souborů pro úložiště objektů BLOB v Azure. Blobfuse můžete použít pro přístup k existujícím datům objektů blob bloku v účtu úložiště prostřednictvím systému souborů Linux. Další informace najdete v tématu [Postup připojení úložiště objektů BLOB jako systému souborů pomocí blobfuse](storage-how-to-mount-container-linux.md).
+- Služba **Azure Data box** je k dispozici pro přenos místních dat do úložiště objektů blob, pokud velké datové sady nebo omezení sítě odesílají data prostřednictvím nereálného datového spojení. V závislosti na velikosti dat můžete od Microsoftu požádat o [Azure Data box disk](../../databox/data-box-disk-overview.md), [Azure Data box](../../databox/data-box-overview.md)nebo [Azure Data box Heavy](../../databox/data-box-heavy-overview.md) zařízení. Data pak můžete zkopírovat do těchto zařízení a odeslat je zpátky do Microsoftu, aby se nahráli do úložiště objektů BLOB.
+- **Služba Azure import/export** nabízí způsob, jak importovat nebo exportovat velké objemy dat do a z účtu úložiště pomocí pevných disků, které zadáte. Další informace najdete v tématu [použití služby Microsoft Azure import/export k přenosu dat do úložiště objektů BLOB](../common/storage-import-export-service.md).
 
 ## <a name="next-steps"></a>Další postup
 
 * [Vytvoření účtu úložiště](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure škálovatelnost a výkonnostní cíle Storage](../common/storage-scalability-targets.md)
+* [Azure Storage škálovatelnost a výkonnostní cíle](../common/storage-scalability-targets.md)

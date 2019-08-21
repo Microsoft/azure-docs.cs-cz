@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 21a42b2986b52282fbab914fa702d8c4a323ed35
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1f5a144728614ee13bf4f08bb594f0546d446880
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611951"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640787"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkce podporované nástrojem Azure Security Center
 
@@ -107,11 +107,11 @@ Následující tabulka poskytuje matrici:
 
 Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučení, najdete v tématu [Endpoint Protection Assessment and Recommendations](security-center-endpoint-protection.md).
 
-| Endpoint Protection (Ochrana koncových bodů)| Platformy | Instalace Security Center | Zjišťování Security Center |
+| Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
 | Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
 | Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
-| Trend Micro – všechny verze | Řada Windows Serverů  | Ne | Ano |
+| Trend Micro – všechny verze * | Řada Windows Serverů  | Ne | Ano |
 | Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
 | McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
 | McAfee v10+ | Řada Linux serverů  | Ne | Ano **\*** |
@@ -121,6 +121,7 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 
 > [!NOTE]
 > - Detekce služby System Center Endpoint Protection (SCEP) na virtuálním počítači s Windows Serverem 2008 R2 vyžaduje, aby se protokol SCEP nainstaloval po PowerShellu 3,0 (nebo v horní verzi).
+> - Detekce funkce Trend Micro Protection je podporovaná pro obsáhlé agenty zabezpečení.  OfficeScan agenti nejsou podporováni.
 
 ## <a name="supported-paas-features"></a>Podporované funkce PaaS
 
@@ -136,17 +137,17 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 |Virtuální sítě|✔| Není k dispozici|
 |Podsítě|✔| Není k dispozici|
 |Síťové karty|✔| Není k dispozici|
-|Skupiny NSG|✔| Není k dispozici|
+|skupin NSG|✔| Není k dispozici|
 |Subscription|✔ **| ✔|
 |Batch|✔| Není k dispozici|
 |Service Fabric|✔| Není k dispozici|
-|Účet Automation|✔| Není k dispozici|
+|Účet služby Automation|✔| Není k dispozici|
 |Nástroj pro vyrovnávání zatížení|✔| Není k dispozici|
 |Hledat|✔| Není k dispozici|
 |Service Bus|✔| Není k dispozici|
 |Stream Analytics|✔| Není k dispozici|
 |Centrum událostí|✔| Není k dispozici|
-|Logické aplikace|✔| Není k dispozici|
+|Aplikace logiky|✔| Není k dispozici|
 |Účet úložiště|✔| Není k dispozici|
 |Redis|✔| Není k dispozici|
 |Data Lake Analytics|✔| Není k dispozici|

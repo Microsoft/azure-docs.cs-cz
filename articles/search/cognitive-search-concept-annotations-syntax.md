@@ -6,18 +6,16 @@ manager: pablocas
 author: luiscabrer
 ms.service: search
 ms.subservice: cognitive-search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 1868e9fd3a7dde5d6302753986019f481a577007
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 5ce2c1aebebe802aa0fd3bda74c168e7a12341c0
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841299"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639299"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Postup při odkazování na poznámky v dovednosti hledání v rozpoznávání
 

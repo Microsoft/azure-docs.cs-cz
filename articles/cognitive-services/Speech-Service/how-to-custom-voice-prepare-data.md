@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a29117ff6e5173063bc2aced87f08f1a6aea425
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8b4b5553605042499a9a8f3343ac4e6678e7006f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559591"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640431"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Příprava dat pro vytvoření vlastního hlasu
 
@@ -124,7 +124,7 @@ Přepisy musí být připravené ke specifikacím uvedeným v této tabulce. Ka�
 | Název souboru | Použít stejný název jako shodný zvukový soubor |
 | Formát kódování | Pouze UTF-8-BOM |
 | Počet promluv na řádek | Bez omezení |
-| Maximální velikost souboru | 50M |
+| Maximální velikost souboru | 50 MB |
 
 Všechny soubory přepisů v tomto datovém typu by se měly seskupovat do souboru ZIP. V souboru zip není povolena žádná podsložka. Například jste nahráli soubor ZIP obsahující zvukový soubor s názvem "kingstory. wav", 45 sekund dlouhý a druhý s názvem "queenstory. mp3", 200 sekund. Budete potřebovat nahrát další soubor zip, který obsahuje dva přepisy, jeden s názvem ' kingstory. txt ', druhý soubor ' queenstory. txt '. V každém souboru s prostým textem vám poskytneme úplný přepis pro odpovídající zvuk.
 
@@ -139,7 +139,7 @@ Při přípravě zvuku postupujte podle těchto pokynů.
 > [!NOTE]
 > Služba segmentace dlouhého zvuku bude využívat funkci dávkového přepisu pro převod řeči na text, která podporuje pouze uživatele se standardním předplatným (S0).
 
-| Vlastnost | Hodnota |
+| Vlastnost | Value |
 | -------- | ----- |
 | Formát souboru | RIFF (. wav) se vzorkovací frekvencí alespoň 16 kHz-16 bitů v PCM nebo. mp3 s přenosovou rychlostí minimálně 256 KB/s, seskupenou do souboru. zip |
 | Název souboru | Pouze znaky ASCII. Znaky Unicode v názvu selžou (například čínské znaky nebo symboly jako "–"). Není povolený žádný duplicitní název. |

@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 316cfb228050030b15e791e1d890c9048eadc109
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 57dd8e47d44248270920e44268b99c98d399504d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841094"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635854"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Nepoužívané dovednosti při hledání rozpoznávání
 
@@ -25,7 +24,7 @@ Tento dokument popisuje vnímání dovedností, které se považují za zastaral
 * Název dovednosti: Název dovednosti, která bude zastaralá, bude mapována na @odata.type atribut.
 * Poslední dostupná verze rozhraní API: Poslední verze veřejného rozhraní API služby Azure Search, přes který je možné vytvořit nebo aktualizovat dovednosti obsahující odpovídající zastaralou dovednost
 * Konec podpory: Poslední den, po kterém se odpovídající dovednost považuje za nepodporovanou Dříve vytvořená dovednosti by měla dál fungovat, ale uživatelé se doporučují migrovat z nepoužívané dovednosti.
-* Doporučení: Cesta pro migraci k používání podporované dovednosti. Uživatelům se doporučuje postupovat podle doporučení, aby mohli nadále přijímat podporu.
+* Doporučit Cesta pro migraci k používání podporované dovednosti. Uživatelům se doporučuje postupovat podle doporučení, aby mohli nadále přijímat podporu.
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 

@@ -9,12 +9,12 @@ ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f33193e3102afca73344fcd640d14d9af9c1d46e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2607e09e6b8428c2aacc8ee7c6be42f54284a1ce
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775348"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641099"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory
 
@@ -54,7 +54,7 @@ Další informace o tom, jak jsou předdefinované role definované pro Azure St
 
 ### <a name="access-permissions-for-data-operations"></a>Přístupová oprávnění pro datové operace
 
-Podrobnosti o oprávněních požadovaných pro volání konkrétních operací BLOB nebo Služba front najdete v tématu [oprávnění pro volání operací s daty BLOB a Queue](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Podrobnosti o oprávněních požadovaných pro volání konkrétních operací BLOB nebo Služba front najdete v tématu [oprávnění pro volání operací s daty BLOB a Queue](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
 
 ## <a name="resource-scope"></a>Obor prostředku
 
@@ -85,5 +85,5 @@ Služba soubory Azure podporuje autorizaci pomocí Azure AD přes SMB jenom pro 
 ## <a name="next-steps"></a>Další kroky
 
 - [Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](storage-auth-aad-msi.md)
-- [Ověřování s využitím Azure Active Directory z aplikace pro přístup k objektům blob a frontám](storage-auth-aad-app.md)
+- [Autorizace pomocí Azure Active Directory z aplikace pro přístup k objektům blob a frontám](storage-auth-aad-app.md)
 - [Azure Storage podpora pro řízení přístupu na základě Azure Active Directory všeobecně dostupná](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)

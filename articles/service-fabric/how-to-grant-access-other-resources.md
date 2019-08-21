@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: 1facd85563a54de2b703bbc8c192976db92c30f7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 07b26fb86392b26ef45c4370741a32efc7dc436b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624888"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640919"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udělení přístupu spravované identitě Service Fabric aplikace do prostředků Azure (Preview)
 
@@ -68,20 +68,8 @@ Následující příklad ukazuje udělení přístupu k trezoru prostřednictví
 
 Další podrobnosti najdete v tématu [trezory – zásady přístupu pro aktualizaci](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-
-## <a name="related-articles"></a>Související články
-
-* Kontrola [podpory spravovaných identit](./concepts-managed-identity.md) v Azure Service Fabric
-
-* [Nasadit novou](./configure-new-azure-service-fabric-enable-managed-identity.md) Cluster Azure Service Fabric s podporou spravované identity 
-
-* [Povolení spravované identity](./configure-existing-cluster-enable-managed-identity-token-service.md) v existujícím clusteru Azure Service Fabric
-
-* Využití spravované identity Service Fabric aplikace [ze zdrojového kódu](./how-to-managed-identity-service-fabric-app-code.md)
-
-* Podívejte se na seznam [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md) .

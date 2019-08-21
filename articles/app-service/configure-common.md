@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bb4ac9953bcadd9e49cee5b7b99e853705b6567c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9609a886bdcbf093cffaf888f9aeaff0d61acec1
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990272"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636648"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -167,7 +167,7 @@ V [Azure Portal]přejděte na stránku správy aplikace. V nabídce vlevo aplika
 
 ![Obecná nastavení](./media/configure-common/open-general.png)
 
-Tady můžete nakonfigurovat některá společná nastavení aplikace. Některá nastavení vyžadují [horizontální navýšení kapacity až na vyšší cenové úrovně](web-sites-scale.md).
+Tady můžete nakonfigurovat některá společná nastavení aplikace. Některá nastavení vyžadují [horizontální navýšení kapacity až na vyšší cenové úrovně](manage-scale-up.md).
 
 - **Nastavení zásobníku**: Softwarový zásobník, ve kterém se aplikace spustí, včetně jazyka a verze sady SDK. Pro aplikace pro Linux a vlastní kontejnerové aplikace můžete také nastavit volitelný spouštěcí příkaz nebo soubor.
 - **Nastavení platformy**: Umožňuje konfigurovat nastavení pro hostující platformu, včetně:
@@ -248,7 +248,7 @@ Pro aplikace pro Linux se podívejte na:
 
 Další informace najdete v tématu [Konfigurace vlastního kontejneru Linux pro Azure App Service](containers/configure-custom-container.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Konfigurace vlastní domény ve službě Azure App Service]
 - [Nastavení přípravných prostředí ve službě Azure App Service]
@@ -268,4 +268,4 @@ Další informace najdete v tématu [Konfigurace vlastního kontejneru Linux pro
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Základy monitorování v Azure App Service]: ./web-sites-monitor.md
 [Režim kanálu]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Horizontální navýšení kapacity aplikace v Azure App Service]: ./web-sites-scale.md
+[Horizontální navýšení kapacity aplikace v Azure App Service]: ./manage-scale-up.md

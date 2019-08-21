@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 08/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 60e1db913336cc9f9e355c2e8f8466854de20389
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828324"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639986"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů Hyper-V pomocí Azure Migrate posouzení serveru
 
@@ -73,7 +73,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     - Při migraci virtuálních počítačů můžete vybrat jinou cílovou oblast Azure. Všechny oblasti Azure jsou podporovány pro cíl migrace.
 
 7. Klikněte na **Další**.
-8. V **nástroji vybrat nástroj**pro posouzení **vyberte Azure Migrate: **Další**posouzení**serveru > 
+8. V **nástroji vybrat nástroj**pro posouzení **vyberte Azure Migrate: Server Assessment > Další.
 
     ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
@@ -128,13 +128,17 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
 Naimportujte stažený soubor a vytvořte virtuální počítač.
 
-1. Extrahujte soubor VHD s příponou ZIP do složky na hostiteli Hyper-V, která bude hostovat virtuální počítač zařízení. Jsou extrahovány tři složky.
+1. Po stažení souboru VHD s příponou ZIP na hostitele Hyper-V, na kterém bude virtuální počítač zařízení umístěn, rozbalte soubor zip.
+    - V extrahovaném umístění se soubor extrahuje do složky s názvem **AzureMigrateAppliance_VersionNumber**.
+    - Tato složka obsahuje podsložku, která se také označuje jako **AzureMigrateAppliance_VersionNumber**.
+    - Tato podsložka obsahuje tři další podsložky – **snímky**, **virtuální pevné disky**a **Virtual Machines**.
+
 2. Otevřete Správce technologie Hyper-V. V nabídce **Akce**klikněte na **importovat virtuální počítač**.
 
     ![Nasazení VHD](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. V Průvodci importem virtuálního počítače > **než začnete**, klikněte na **Další**.
-3. V části **Vyhledat složku**zadejte složku obsahující extrahovaný virtuální pevný disk. Pak klikněte na tlačítko **Další**.
+3. V části **najít složku**vyberte složku **Virtual Machines** . Pak klikněte na tlačítko **Další**.
 1. V nabídce **Vybrat virtuální počítač**klikněte na **Další**.
 2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)** . Pak klikněte na tlačítko **Další**.
 3. V části **zvolit cíl**ponechte výchozí nastavení. Klikněte na **Další**.
@@ -331,7 +335,7 @@ Hodnocení spolehlivosti pro posouzení je následující.
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu se naučíte:
 

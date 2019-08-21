@@ -1,29 +1,28 @@
 ---
-title: Začínáme s propojováním fyzická zařízení ke službě Azure IoT Hub | Dokumentace Microsoftu
-description: Informace o připojení fyzických zařízení a karty pro službu Azure IoT Hub. Vaše zařízení můžete odesílání telemetrických dat do služby IoT Hub a IoT Hub můžete monitorovat a spravovat vaše zařízení.
+title: Začínáme s připojováním fyzických zařízení k Azure IoT Hub | Microsoft Docs
+description: Naučte se připojit fyzické zařízení a panely k Azure IoT Hub. Vaše zařízení můžou odesílat telemetrii do IoT Hub a IoT Hub můžou monitorovat a spravovat vaše zařízení.
 author: wesmc7777
 manager: timlt
-keywords: kurz Azure iot hub
+keywords: Kurz služby Azure IoT Hub
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: f2af216dc199de7a49546a903b929a17cbddfe9f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e70ee8843e467af152eedefdf7e03a4ea869e4a6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60398670"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638239"
 ---
-# <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT Hub vám umožní začít kurzy fyzických zařízení
+# <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Kurzy k Azure IoT Hub Začínáme s fyzickými zařízeními
 
-Tyto kurzy vám představí službu Azure IoT Hub a sady SDK pro zařízení. Kurzy zahrnují běžné IoT scénáře k předvedení funkcí služby IoT Hub. V kurzech také ukazují, jak služby IoT Hub v kombinaci s dalšími službami Azure a nástroje k sestavování výkonnější řešení IoT. Kurzy uvedené v následující tabulce ukazují, jak vytvořit fyzických zařízení IoT.
+V těchto kurzech se seznámíte s Azure IoT Hub a sady SDK pro zařízení. Kurzy se týkají běžných scénářů IoT k předvedení možností IoT Hub. Kurzy také ukazují, jak kombinovat IoT Hub s dalšími službami a nástroji Azure pro sestavování výkonnějších řešení IoT. V kurzech uvedených v následující tabulce se dozvíte, jak vytvořit fyzická zařízení IoT.
 
 | Zařízení IoT                       | Programovací jazyk |
 |---------------------------------|----------------------|
 | Raspberry Pi                    | [Node.js](iot-hub-raspberry-pi-kit-node-get-started.md), [C](iot-hub-raspberry-pi-kit-c-get-started.md)  |
-| IoT DevKit                      | [Arduino ve VSCode](iot-hub-arduino-iot-devkit-az3166-get-started.md)     |
-| Adafruit Feather HUZZAH ESP8266 | [Arduino](iot-hub-arduino-huzzah-esp8266-get-started.md)              |
+| IoT DevKit                      | [Arduino v VSCode](iot-hub-arduino-iot-devkit-az3166-get-started.md)     |
 
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]

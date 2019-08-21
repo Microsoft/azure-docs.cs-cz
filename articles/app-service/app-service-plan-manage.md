@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c749f090cbb0aeb036a53a01e6cd516617c3186d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 77d5e4ace14fb0071b6e01a01edbad0128382303
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953875"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639737"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Správa plánu App Service v Azure
 
@@ -97,7 +97,7 @@ Oblast, ve které vaše aplikace běží, je oblast plánu App Service. Nemůže
 
 ## <a name="scale-an-app-service-plan"></a>Škálování plánu App Service
 
-Postup horizontálního navýšení kapacity plánu App Service najdete v tématu věnovaném horizontálnímu navýšení [kapacity aplikace v Azure](web-sites-scale.md).
+Postup horizontálního navýšení kapacity plánu App Service najdete v tématu věnovaném horizontálnímu navýšení [kapacity aplikace v Azure](manage-scale-up.md).
 
 Pokud chcete škálovat počet instancí aplikace, přečtěte si téma [Ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md).
 
@@ -110,10 +110,10 @@ Aby nedošlo k neočekávaným poplatkům, při odstranění poslední aplikace 
 > [!IMPORTANT]
 > App Service plánů, ke kterým nejsou přidružené žádné aplikace, se budou účtovat poplatky, protože nadále vyhradí nakonfigurované instance virtuálních počítačů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Škálování aplikace v Azure](web-sites-scale.md)
+> [Škálování aplikace v Azure](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

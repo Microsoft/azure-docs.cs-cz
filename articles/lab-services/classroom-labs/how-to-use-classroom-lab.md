@@ -12,53 +12,82 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/07/2019
+ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: bc5c12d4bb92edaafcc9808da8c48106a6e0cbd5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: ef954f44799b1cf4103847b21ea78e0ac94a9021
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104116"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640151"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak získat přístup k testovacímu prostředí v učebně v Azure Lab Services
-Tento článek popisuje, jak získat přístup k testovacímu prostředí v učebně, připojit se k virtuálnímu počítači v daném testovacím prostředí a zastavit daný virtuální počítač. 
+Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobrazit všechny laboratoře, ke kterým máte přístup, jak spustit nebo zastavit virtuální počítač v testovacím prostředí a jak se připojit k virtuálnímu počítači. 
 
-## <a name="register-to-a-lab"></a>Zaregistrujte se a testovacího prostředí
-1. Přejděte na **adresu URL pro registraci**, kterou jste dostali od vyučujícího. 
-2. Přihlaste se ke službě pomocí školního účtu, abyste dokončili registraci. 
-3. Po dokončení registrace zkontrolujte, že vidíte virtuální počítač pro testovací prostředí, ke kterému máte přístup. 
-2. Počkejte, až bude virtuální počítač připravený, a pak ho **spusťte**. Tento proces trvá nějakou dobu.  
+## <a name="register-to-the-lab"></a>Registrovat do testovacího prostředí
+
+1. Přejděte na **adresu URL pro registraci**, kterou jste dostali od vyučujícího. Po dokončení registrace nemusíte používat registrační adresu URL. Místo toho použijte adresu URL: [https://labs.azure.com](https://labs.azure.com). Aplikace Internet Explorer 11 není zatím podporována. 
+1. Přihlaste se ke službě pomocí školního účtu, abyste dokončili registraci. 
+2. Po dokončení registrace zkontrolujte, že vidíte virtuální počítač pro testovací prostředí, ke kterému máte přístup. 
+3. Počkejte, až bude virtuální počítač připravený. Na dlaždici VM si všimněte následujících polí:
+    1. V horní části dlaždice se zobrazí **název testovacího prostředí**.
+    1. Napravo se zobrazí ikona představující **operační systém** virtuálního počítače. V tomto příkladu se jedná o operační systém Windows. 
+    1. V dolní části dlaždice se zobrazí ikony nebo tlačítka, které spustí/zastaví virtuální počítač a připojí se k virtuálnímu počítači. 
+    1. Napravo od tlačítek se zobrazí stav virtuálního počítače. Ověřte, že se zobrazuje stav virtuálního počítače Zastaveno.
+
+        ![Virtuální počítač v zastaveném stavu](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
+
+## <a name="start-to-stop-the-vm"></a>Spuštění pro zastavení virtuálního počítače
+1. **Spusťte** virtuální počítač tak, že vyberete první tlačítko, jak je znázorněno na následujícím obrázku. Tento proces trvá nějakou dobu.  
 
     ![Spuštění virtuálního počítače](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
+4. Potvrďte, že stav virtuálního počítače je nastavený na **spuštěno**. 
+
+    ![Virtuální počítač ve spuštěném stavu](../media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
+
+    Všimněte si, že ikona prvního tlačítka se změnila tak, aby představovala operaci **zastavení** . Kliknutím na toto tlačítko můžete virtuální počítač zastavit. 
+
+## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
+
+1. Vyberte druhé tlačítko, jak je znázorněno na následujícím obrázku , abyste se připojili k virtuálnímu počítači testovacího prostředí. 
+
+    ![Připojení k virtuálnímu počítači](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
+2. Proveďte jeden z následujících kroků: 
+    1. U virtuálních počítačů s **Windows** uložte soubor **RDP** na pevný disk. Otevřete soubor RDP pro připojení k virtuálnímu počítači. Přihlaste se k počítači pomocí **uživatelského jména** a **hesla** , které jste získali z Educator/profesor. 
+    3. Pro virtuální počítače se **systémem Linux** můžete k připojení použít **SSH** nebo **RDP** (Pokud je povolený). Další informace najdete v tématu [Povolení připojení ke vzdálené ploše pro počítače se systémem Linux](how-to-enable-remote-desktop-linux.md). 
+
+## <a name="progress-bar"></a>Indikátor průběhu 
+Indikátor průběhu na dlaždici zobrazuje počet hodin použitých pro počet [hodin](how-to-configure-student-usage.md#set-quotas-for-users) , které vám jsou přiřazeny. Tentokrát je další čas, který jste si naplánovali vedle naplánovaného času pro testovací prostředí. Barva indikátoru průběhu a textu pod indikátorem průběhu se liší podle následujících scénářů:
+
+- Pokud třída probíhá (v rámci plánu třídy), indikátor průběhu je šedý a představuje nepoužívané hodiny kvóty. 
+
+    ![Indikátor průběhu v šedé barvě](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-class-in-progress.png)
+- Pokud kvóta není přiřazena (0 hodin), text **dostupný pouze během tříd** je zobrazen místo indikátoru průběhu. 
+    
+    ![Stav, pokud není nastavená žádná kvóta](../media/tutorial-connect-vm-in-classroom-lab/available-during-class.png)
+- Pokud jste nepoužívali **kvótu**, barva indikátoru průběhu je **červená**. 
+
+    ![Indikátor průběhu v červené barvě](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-red-color.png)
+- Barva indikátoru průběhu je **modrá** , pokud se nachází mimo naplánovaný čas pro testovací prostředí a že se použila určitá kvótová doba. 
+
+    ![Indikátor průběhu s modrou barvou](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-blue-color.png)
 
 
 ## <a name="view-all-the-classroom-labs"></a>Zobrazit všechna testovací prostředí v učebně
-Až dokončíte registraci na tato praktická cvičení, můžete zobrazit všechny testovací prostředí v učebnách provedením následujících kroků: 
+Po registraci do testovacích prostředí se můžete podívat na všechny laboratoře učebny, a to provedením následujících kroků: 
 
-1. Přejděte do [ https://labs.azure.com ](https://labs.azure.com). Všimněte si, že aplikace Internet Explorer 11 se ještě nepodporuje. 
+1. Přejděte na [https://labs.azure.com](https://labs.azure.com). Aplikace Internet Explorer 11 není zatím podporována. 
 2. Přihlaste se ke službě pomocí uživatelského účtu, který jste použili k registraci do testovacího prostředí. 
-3. Ověřte, že se všechny testovací prostředí, ke kterým máte přístup k. 
+3. Ověřte, že se zobrazí všechny laboratoře, ke kterým máte přístup. 
 
     ![Zobrazit všechna testovací prostředí](../media/how-to-use-classroom-lab/all-labs.png)
 
-## <a name="connect-to-the-virtual-machine-in-a-classroom-lab"></a>Připojení k virtuálnímu počítači v testovacím prostředí v učebně
-
-1. Spuštění virtuálního počítače, pokud ještě není spuštěná, vyberte **Start** na dlaždici. 
-2. Na dlaždici, která představuje virtuální počítač v testovacím prostředí, ke kterému chcete získat přístup, vyberte **Připojit**. 
-3. Proveďte jednu z následujících kroků: 
-   1. Pro **Windows** ukládat virtuální počítače, **RDP** soubor na pevný disk. Otevřete soubor RDP pro připojení k virtuálnímu počítači. Použití **uživatelské jméno** a **heslo** získáte od educator/profesor se přihlaste k počítači. 
-   3. Pro **Linux** virtuální počítače, zkopírujte a uložte připojovací řetězec SSH na **připojit k virtuálnímu počítači** dialogové okno. Použít tento připojovací řetězec z terminálu SSH (například [Putty](https://www.putty.org/)) pro připojení k virtuálnímu počítači.
-
-## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>Zastavení virtuálního počítače v testovacím prostředí v učebně
-
-Chcete-li zastavit virtuální počítač, vyberte **Zastavit** na dlaždici. Po zastavení virtuálního počítače se na dané dlaždici zpřístupní tlačítko **Spustit**. 
 
 ## <a name="next-steps"></a>Další postup
 Viz následující články:
 
-- [Jako správce vytvářet a spravovat účty pro testovací prostředí](how-to-manage-lab-accounts.md)
-- [Jako vlastník testovacího prostředí vytvoření a správa testovacích prostředí](how-to-manage-classroom-labs.md)
-- [Jako vlastník testovacího prostředí nastavení a publikování šablon](how-to-create-manage-template.md)
-- [Jako vlastník testovacího prostředí konfigurovat a spravovat využití testovacího prostředí](how-to-configure-student-usage.md)
+- [Účty testovacího prostředí se vytvářejí a spravují jako správce.](how-to-manage-lab-accounts.md)
+- [Jako vlastník testovacího prostředí vytvářet a spravovat cvičení](how-to-manage-classroom-labs.md)
+- [Jako vlastník testovacího prostředí, nastavení a publikování šablon](how-to-create-manage-template.md)
+- [Jako vlastník testovacího prostředí konfigurace a řízení využití testovacího prostředí](how-to-configure-student-usage.md)
  

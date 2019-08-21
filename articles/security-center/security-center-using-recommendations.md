@@ -1,6 +1,6 @@
 ---
-title: Použití služby Azure Security Center doporučení k vylepšení zabezpečení | Dokumentace Microsoftu
-description: " Další informace o použití zásady a doporučení zabezpečení v Azure Security Center můžete zmírnit útok na zabezpečení. "
+title: Použití Azure Security Center doporučení k vylepšení zabezpečení | Microsoft Docs
+description: " Naučte se používat zásady zabezpečení a doporučení v Azure Security Center, abyste mohli zmírnit útok na zabezpečení. "
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/26/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 60bb1c3b81ef990993a2ce659a2b189c9d8a0eba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967970"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640879"
 ---
-# <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití služby Azure Security Center doporučení k vylepšení zabezpečení
-Tak, že konfigurace zásad zabezpečení a pak implementace doporučení poskytovaných službou Azure Security Center můžete snížit riziko zabezpečení významné události. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení ve službě Security Center můžete zmírnit útok na zabezpečení. 
+# <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití Azure Security Center doporučení k vylepšení zabezpečení
+Můžete snížit pravděpodobnost významné události zabezpečení konfigurací zásad zabezpečení a následnou implementací doporučení Azure Security Center. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení v Security Center, abyste mohli zmírnit útok na zabezpečení. 
 
-Security Center automaticky spustí nepřetržité kontroly pro analýzu stavu zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných bezpečnostní kontroly. Security Center aktualizuje svá doporučení během 24 hodin, s následujícími výjimkami:
+Security Center automaticky spouští nepřetržité prohledávání a analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků zabezpečení. Security Center aktualizuje doporučení během 24 hodin, s následujícími výjimkami:
 
-- Doporučené konfigurace zabezpečení operačního systému se aktualizují do 48 hodin
-- Doporučení pro Endpoint Protection problémy jsou aktualizovány v 8 hodin
+- Doporučení konfigurace zabezpečení operačního systému jsou aktualizována během 48 hodin.
+- Doporučení k problémům se Endpoint Protection jsou aktualizována během 8 hodin.
 
 ## <a name="scenario"></a>Scénář
-Tento scénář popisuje, jak používat Security Center Chcete-li snížit riziko bezpečnostních incidentů monitorování doporučení služby Security Center a provádění akcí. Tento scénář používá fiktivní společnosti, Contoso a rolí uváděné v Centru zabezpečení [Průvodce plánováním a provozem](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). V tomto scénáři Zaměřujeme na role následujících osob:
+V tomto scénáři se dozvíte, jak použít Security Center ke snížení pravděpodobnosti incidentu zabezpečení monitorováním Security Center doporučení a provedením akce. Scénář používá fiktivní společnost, contoso a role prezentované v [příručce Security Center plánování a provoz](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). V tomto scénáři se zaměřujeme na role následujících osoby:
 
-![Scénář role](./media/security-center-using-recommendations/scenario-roles.png)
+![Role scénáře](./media/security-center-using-recommendations/scenario-roles.png)
 
-Contoso nedávno provedla migraci některých místních prostředků do Azure. Contoso chce chránit svoje prostředky a snížit ohrožení zabezpečení svých prostředků v cloudu.
+Společnost Contoso nedávno provedla migraci některých místních prostředků do Azure. Společnost Contoso chce chránit své prostředky a snížit zranitelnost svých prostředků v cloudu.
 
 ## <a name="use-azure-security-center"></a>Použití Azure Security Center
-David ze společnosti Contoso na zabezpečení IT, má již vybrána k začlenění Security Center na předplatná společnosti Contoso ke službě Azure Security Center k zabránění a zjišťování ohrožení zabezpečení. 
+David, od zabezpečení IT společnosti Contoso, se už rozhodla připojit Security Center k předplatným společnosti Contoso Azure Security Center, aby nedocházelo k chybám zabezpečení a detekci jejich zabezpečení. 
 
-Security Center automaticky analyzuje stav zabezpečení prostředků Azure společnosti Contoso a použije výchozí zásady zabezpečení. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří **doporučení** podle nastavení v zásadách zabezpečení ovládací prvky. 
+Security Center automaticky analyzuje stav zabezpečení prostředků Azure společnosti Contoso a použije výchozí zásady zabezpečení. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří **doporučení** na základě ovládacích prvků nastavených v zásadách zabezpečení. 
 
-David spustí standardní vrstva zabezpečení Azure, ve všech svých předplatných zobrazíte kompletní sadu doporučení a funkce zabezpečení, které jsou k dispozici. Jan také podporu připojí všechny jeho existujících místních serverů, které se ještě nemigrovaly do cloudu tak, aby mohl využívat hybridní Security Center v rámci jeho [Windows](quick-onboard-windows-computer.md) a [Linux](quick-onboard-linux-computer.md) servery.
+David spustí standardní úroveň zabezpečení Azure ve všech svých předplatných a získá kompletní sadu doporučení a funkcí zabezpečení, které jsou k dispozici. Jan také zaregistruje všechny existující místní servery, které ještě nebyly migrovány do cloudu, aby mohli využívat hybridní podporu Security Center napříč svými servery s [Windows](quick-onboard-windows-computer.md) a [Linux](quick-onboard-linux-computer.md) .
 
-Jan je vlastníkem úlohy v cloudu. Jan je zodpovědná za použití kontrolních mechanismů pro zabezpečení v souladu se zásadami zabezpečení společnosti Contoso. 
+Jan je vlastníkem úlohy v cloudu. Jan zodpovídá za použití bezpečnostních ovládacích prvků v souladu se zásadami zabezpečení společnosti Contoso. 
 
 Jan provede následující úlohy:
 
-- Doporučení pro monitorování zabezpečení poskytne Security Center
-- Vyhodnocení doporučení týkající se zabezpečení a rozhodnout, jestli má použít nebo zavřít
-- Použití doporučení k zabezpečení
+- Monitorování doporučení zabezpečení, která poskytuje Security Center
+- Vyhodnoťte doporučení zabezpečení a rozhodněte se, jestli by tato doporučení měla použít nebo zrušit.
+- Použít doporučení zabezpečení
 
-### <a name="remediate-threats-using-recommendations"></a>Opravit hrozby pomocí doporučení
-Jako součást své denní aktivity sledování Jeff přihlásí do Azure a otevře službu Security Center. 
+### <a name="remediate-threats-using-recommendations"></a>Náprava hrozeb pomocí doporučení
+V rámci každodenních aktivit monitorování se Jan přihlásí k Azure a otevře Security Center. 
 
-1. Jan vybere předplatné jeho zatížení.
+1. Jan vybere předplatné úlohy.
 
-2. Jan zkontroluje jeho **zabezpečení skóre** získat celkový obrázek zabezpečené předplatná jsou a zjistí, že je jeho skóre 548.
+2. Jan zkontroluje **zabezpečené skóre** , aby získal celkový přehled o tom, jak se přizpůsobuje zabezpečení předplatných a zda je skóre 548.
 
-3. Jan má rozhodnout, která doporučení pro zpracování první. Aby Jan klikne na zabezpečené skóre a začne zpracovávat doporučení v závislosti na tom, kolik zvyšuje jeho [zabezpečení skóre dopad](security-center-secure-score.md).
+3. Jan se musí rozhodnout, která doporučení se mají zpracovat jako první. Takže Jan klikne na zabezpečené skóre a začne zpracovávat doporučení na základě toho, kolik IT vylepšuje dopad na jejich [bezpečné skóre](security-center-secure-score.md).
 
-4. Protože Jan má velké množství připojených virtuálních počítačů a serverů, Jeff rozhodne zaměřit na **výpočetní prostředky a aplikace**.
+4. Vzhledem k tomu, že Jan má spoustu připojených virtuálních počítačů a serverů, se Jan rozhodne soustředit se na **výpočetní výkon a aplikace**.
 
-5. Když Jan klikne **výpočetní prostředky a aplikace**, mohl se zobrazí seznam doporučení a zpracovává podle má zabezpečení skóre dopad.
+5. Když Jan klikne na **výpočty a aplikace**, uvidí seznam doporučení a zpracuje je podle dopadu na zabezpečený výsledek.
 
-6. Jan má mnoho internetového virtuální počítače, a protože jejich porty jsou přístupné, je obavy, že útočník by mohl získat kontrolu nad servery. Aby Jan rozhodne použít (**přístup k virtuálním počítačům just-in-time**) [zabezpečení center-just v time.md].
+6. Má Jan spousta internetových virtuálních počítačů a protože jejich porty jsou vystavené, jsou obavy, že by útočník mohl získat kontrolu nad servery. Takže se Jan rozhodne použít (**přístup k virtuálnímu počítači za běhu**) [Security-Center-just-in-time.MD].
 
-Jan pokračuje procházení s vysokou prioritou a doporučení se střední prioritou a vytváří rozhodnutí na implementaci. Pro jednotlivá doporučení Jeff zjistí podrobné informace o zadaný službou Security Center k pochopení, které prostředky se to týká, jaký vliv má zabezpečené skóre je, co každý znamená, že doporučení a nápravné kroky pro každý problém se dá zmírnit.
+Jan nadále přechází přes doporučení s vysokou prioritou a střední prioritou a provede rozhodnutí o implementaci. U každého doporučení si Jan podíváme na podrobné informace, které Security Center, a dozvíte se, které prostředky jsou ovlivněny, co je to vliv na zabezpečení skóre, co jednotlivé doporučení znamená a nápravné kroky, jak tento problém zmírnit.
 
 ## <a name="conclusion"></a>Závěr
-Monitorování doporučení ve službě Security Center pomáhá eliminovat ohrožení zabezpečení, než dojde k útoku. Když jste opravovat doporučení, zlepšit zabezpečené skóre a stavu zabezpečení vašich úloh. Security Center automaticky zjišťuje nové prostředky, nasazení, vyhodnocuje proti vaší zásady zabezpečení a poskytuje nové doporučení pro jejich zabezpečení.
+Doporučení pro monitorování v Security Center pomáhají eliminovat ohrožení zabezpečení před tím, než dojde k útoku. Když opravíte doporučení, vaše zabezpečené skóre a vaše zatížení stav vylepšit. Security Center automaticky zjistí nové prostředky, které nasadíte, posuzuje je na základě zásad zabezpečení a poskytuje nová doporučení pro jejich zabezpečení.
 
 
-## <a name="next-steps"></a>Další postup
-Ujistěte se, že máte proces monitorování na místě, ve kterém můžete pravidelně kontrolovat doporučení ve službě Security Center tak, že zajistíte bezpečnost vašich prostředků v čase.
+## <a name="next-steps"></a>Další kroky
+Ujistěte se, že máte proces monitorování, ve kterém pravidelně kontrolujete doporučení v Security Center, abyste mohli zajistit, aby se prostředky v průběhu času udržovaly v bezpečí.
 
-Tento scénář vám ukázali, jak používat zásady zabezpečení a doporučení ve službě Security Center můžete zmírnit útok na zabezpečení. Zobrazit [scénáři reakce na incidenty](security-center-incident-response.md) se naučíte být při reakci na incidenty připravený plán předtím, než k útoku dojde.
+Tento scénář ukazuje, jak používat zásady zabezpečení a doporučení v Security Center ke zmírnění útoku zabezpečení. V [případě reakce](security-center-incident-response.md) na incidenty se dozvíte, jak provést plán reakce na incidenty, než dojde k útoku.
 
-Zjistěte, jak reagovat na hrozby s využitím [reakce na incidenty](security-center-incident-response.md).
+Přečtěte si, jak reagovat na hrozby pomocí [reakce](security-center-incident-response.md)na incidenty.

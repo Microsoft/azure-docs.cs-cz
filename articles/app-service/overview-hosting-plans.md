@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: be391f2aa9ee5d94ffc36a6e03d3af8881346520
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932345"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636555"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu Azure App Service
 
@@ -100,7 +100,7 @@ Můžete například zahájit testování webové aplikace v bezplatném App Ser
 
 Stejné funguje v obráceném pořadí. Pokud se domníváte, že už nepotřebujete možnosti nebo funkce vyšší úrovně, můžete horizontální navýšení kapacity snížit na nižší úroveň, která vám ušetří peníze.
 
-Informace o škálování plánu App Service najdete v tématu [horizontální navýšení kapacity aplikace v Azure](web-sites-scale.md).
+Informace o škálování plánu App Service najdete v tématu [horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md).
 
 Pokud je vaše aplikace ve stejném App Service plánu s jinými aplikacemi, možná budete chtít zlepšit výkon aplikace tím, že izolujete výpočetní prostředky. Můžete to udělat přesunutím aplikace do samostatného plánu App Service. Další informace najdete v tématu [Přesunutí aplikace do jiného App Serviceho plánu](app-service-plan-manage.md#move).
 

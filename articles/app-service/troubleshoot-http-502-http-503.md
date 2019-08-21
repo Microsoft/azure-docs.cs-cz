@@ -1,13 +1,13 @@
 ---
-title: Oprava 502 – Chybná brána, 503 Služba není k dispozici chyby - službě Azure App Service | Dokumentace Microsoftu
-description: Řešení potíží s 502 – Chybná brána a 503 Služba není k dispozici chyby v aplikaci hostované v Azure App Service.
+title: Oprava 502 Chybná brána, nedostupná Chyba služby 503 – Azure App Service | Microsoft Docs
+description: Řešení 502 chybných chyb služby Gateway a 503 nedostupných ve vaší aplikaci hostované v Azure App Service.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: ''
 tags: top-support-issue
-keywords: 502 – Chybná brána, 503 Služba není k dispozici, chybě 503, Chyba 502
+keywords: 502 Chybná brána, služba 503 není dostupná, chyba 503, Chyba 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.service: app-service-web
 ms.workload: web
@@ -17,47 +17,47 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d40b11538d5aee20b54ddd6d3ca112f30238b512
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60833037"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636540"
 ---
-# <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Řešení potíží s chybami HTTP typu "502 – Chybná brána" a "503 Služba není dostupná" ve službě Azure App Service
-"502 – Chybná brána" a "503 Služba není k dispozici" jsou běžné chyby v aplikaci hostované v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tento článek pomůže při řešení těchto chyb.
+# <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Řešení chyb HTTP z "502 špatné brány" a "503 Služba není dostupná" v Azure App Service
+"502 Chybná brána" a "503 Služba není k dispozici" jsou běžné chyby v aplikaci hostované v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tento článek vám pomůže vyřešit tyto chyby.
 
-Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Alternativně můžete také soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a klikněte na **získat podporu**.
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [webu MSDN Azure a ve Stack Overflowch fórech](https://azure.microsoft.com/support/forums/). Případně můžete také použít incident podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a klikněte na **získat podporu**.
 
 ## <a name="symptom"></a>Příznak
-Při procházení k aplikaci vrátí HTTP "502 – Chybná brána" Chyba nebo HTTP "503 – nedostupná služba" Chyba.
+Když přejdete na aplikaci, vrátí chybu HTTP "502 chybné brány" nebo "nedostupnou službu HTTP" 503 ".
 
 ## <a name="cause"></a>Příčina
-Tento problém je často způsobeno úrovně problémů v aplikacích, jako například:
+Tento problém je často způsoben problémy na úrovni aplikace, například:
 
-* požadavky trvá příliš dlouho
-* aplikace s použitím vysoké paměti a procesoru
-* aplikace k chybám z důvodu výjimky.
+* žádosti trvající dlouhou dobu
+* aplikace s využitím vysoké paměti nebo procesoru
+* došlo k chybě aplikace kvůli výjimce.
 
-## <a name="troubleshooting-steps-to-solve-502-bad-gateway-and-503-service-unavailable-errors"></a>Řešení potíží s kroky pro řešení "502 – Chybná brána" a "503 Služba není k dispozici" chyby
-Řešení potíží je možné rozdělit do tří odlišných úkolech v postupném pořadí:
+## <a name="troubleshooting-steps-to-solve-502-bad-gateway-and-503-service-unavailable-errors"></a>Postup řešení potíží s řešením "502 špatné brány" a "503" nedostupné služby "
+Řešení potíží se dá rozdělit na tři různé úkoly v sekvenčním pořadí:
 
-1. [Sledovat a monitorovat chování aplikace](#observe)
+1. [Sledování a monitorování chování aplikace](#observe)
 2. [Shromažďování dat](#collect)
-3. [Tyto problémy zmírnit](#mitigate)
+3. [Zmírnit problém](#mitigate)
 
-[App Service](overview.md) nabízí různé možnosti v každém kroku.
+[App Service](overview.md) poskytuje v každém kroku různé možnosti.
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. Sledovat a monitorovat chování aplikace
-#### <a name="track-service-health"></a>Sledování stavu služby
-Microsoft Azure publicizes pokaždé, když je služba došlo k přerušení nebo výkonu snížení. Můžete sledovat stav služby na [webu Azure Portal](https://portal.azure.com/). Další informace najdete v tématu [sledování stavu služby](../monitoring-and-diagnostics/insights-service-health.md).
+### <a name="1-observe-and-monitor-application-behavior"></a>1. Sledování a monitorování chování aplikace
+#### <a name="track-service-health"></a>Sledovat stav služby
+Microsoft Azure publicizes pokaždé, když dojde k přerušení služby nebo snížení výkonu. Stav služby můžete sledovat na webu [Azure Portal](https://portal.azure.com/). Další informace najdete v tématu [sledování stavu služby](../monitoring-and-diagnostics/insights-service-health.md).
 
-#### <a name="monitor-your-app"></a>Sledování aplikace
-Tato možnost umožňuje zjistit, pokud vaše aplikace má nějaké problémy. V okně vaší aplikace, klikněte na tlačítko **požadavky a chyby** dlaždici. **Metrika** okno se zobrazí všechny metriky můžete přidat.
+#### <a name="monitor-your-app"></a>Monitorování aplikace
+Tato možnost umožňuje zjistit, jestli má aplikace nějaké problémy. V okně vaší aplikace klikněte na dlaždici **požadavky a chyby** . V okně metriky se zobrazí všechny metriky, které můžete přidat.
 
-Některé metriky, které můžete chtít monitorovat pro vaši aplikaci
+Některé metriky, které můžete chtít monitorovat pro vaši aplikaci, jsou
 
 * Průměrná pracovní sada paměti
 * Průměrná doba odezvy
@@ -65,58 +65,58 @@ Některé metriky, které můžete chtít monitorovat pro vaši aplikaci
 * Pracovní sada paměti
 * Požadavky
 
-![monitorování aplikace k řešení chyb HTTP 502 – Chybná brána a 503 – nedostupná služba](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
+![monitorování aplikace pro řešení chyb HTTP 502 chybných bran a 503 Služba není k dispozici](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
 Další informace naleznete v tématu:
 
-* [Monitorování aplikací ve službě Azure App Service](web-sites-monitor.md)
+* [Monitorování aplikací v Azure App Service](web-sites-monitor.md)
 * [Zobrazování oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 <a name="collect" />
 
 ### <a name="2-collect-data"></a>2. Shromažďování dat
-#### <a name="use-the-diagnostics-tool"></a>Pomocí diagnostického nástroje
-Služba App Service poskytuje inteligentní a interaktivní prostředí při řešení problémů aplikace bez nezbytné konfigurace. Pokud narazíte na problémy s vaší aplikací, diagnostický nástroj, který bude odkazovat, co je špatně a provede vás na ty správné informace k snadno a rychle odstraňovat potíže a řešit potíže.
+#### <a name="use-the-diagnostics-tool"></a>Použití nástroje pro diagnostiku
+App Service poskytuje inteligentní a interaktivní prostředí, které vám umožní řešit problémy s aplikací bez nutnosti konfigurace. Když narazíte na problémy s vaší aplikací, nástroj pro diagnostiku zjistí, co je špatné, aby vás převedl na správné informace pro snadnější a rychlé řešení potíží a vyřešení problému.
 
-Pro přístup k diagnostice App Service, přejděte do App Service Environment ve vaší aplikaci služby App Service [webu Azure portal](https://portal.azure.com). V levém navigačním panelu klikněte na **diagnostikovat a řešit problémy**.
+Pokud chcete získat přístup k diagnostice App Service, přejděte v [Azure Portal](https://portal.azure.com)do aplikace App Service nebo App Service Environment. V levém navigačním panelu klikněte na **diagnostikovat a řešte problémy**.
 
-#### <a name="use-the-kudu-debug-console"></a>Použijte konzolu pro ladění Kudu
-App Service se dodává s konzolou pro ladění, který můžete použít pro ladění, zkoumat a nahrávání souborů, stejně jako koncové body JSON pro získání informací o vašem prostředí. Tento postup se nazývá *konzola Kudu* nebo *řídicího panelu SCM* pro vaši aplikaci.
+#### <a name="use-the-kudu-debug-console"></a>Použití konzoly ladění Kudu
+App Service se dodává s konzolou ladění, kterou můžete použít pro ladění, prozkoumávání, nahrávání souborů a také pro koncové body JSON pro získání informací o vašem prostředí. To se označuje jako *Konzola Kudu* nebo *řídicí panel SCM* pro vaši aplikaci.
 
-Tento řídicí panel můžete přistupovat tak, že přejdete na odkaz **https://&lt;název vaší aplikace >.scm.azurewebsites.net/** .
+K tomuto řídicímu panelu se dostanete tak, že na něj **https://te&lt;název aplikace >. SCM. azurewebsites. NET/** .
 
-Zde jsou některé z akcí, které poskytuje Kudu:
+K dispozici jsou některé z věcí, které Kudu poskytuje:
 
 * nastavení prostředí pro vaši aplikaci
-* stream protokolů
-* diagnostické výpisu stavu systému
-* ladění konzoly, ve kterém můžete spouštět rutiny prostředí Powershell a základní příkazy DOS.
+* Stream protokolu
+* výpis stavu diagnostiky
+* ladit konzolu, ve které můžete spouštět rutiny prostředí PowerShell a základní příkazy systému DOS.
 
-Další užitečnou funkci Kudu je, že v případě, že vaše aplikace vyvolává výjimkách first-chance, můžete použít Kudu a vypíše nástroj SysInternals Procdump vytvořit paměti. Tyto výpisy paměti jsou snímky procesu a často vám můžou pomoct vyřešit problémy složitější s vaší aplikací.
+Další užitečnou funkcí Kudu je to, že v případě, že aplikace vyvolává první výjimky, můžete k vytváření výpisů paměti použít Kudu a ProcDump nástrojů Sysinternals. Tyto výpisy paměti jsou snímky procesu a často vám můžou pomoct řešit složitější problémy s vaší aplikací.
 
-Další informace o funkcích dostupných v Kudu najdete v tématu [Azure Websites online nástrojů, které byste měli znát](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
+Další informace o funkcích dostupných v Kudu najdete v tématu [online nástroje Azure websites, které byste měli znát](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Tyto problémy zmírnit
+### <a name="3-mitigate-the-issue"></a>3. Zmírnit problém
 #### <a name="scale-the-app"></a>Škálování aplikace
-Ve službě Azure App Service pro vyšší výkon a propustnost, můžete upravit škálování, ve kterém je spuštěna vaše aplikace. Škálování aplikace vyžaduje dvě související akce: Změna vašeho plánu služby App Service na vyšší cenovou úroveň a určitá nastavení konfigurace, poté, co jste přešli na vyšší cenovou úroveň.
+V Azure App Service můžete pro zvýšení výkonu a propustnosti upravit měřítko, na kterém aplikaci spouštíte. Horizontální navýšení kapacity aplikace zahrnuje dvě související akce: Změna plánu App Service na vyšší cenovou úroveň a konfiguraci určitého nastavení po přepnutí na vyšší cenovou úroveň.
 
-Další informace o škálování najdete v tématu [škálování aplikace ve službě Azure App Service](web-sites-scale.md).
+Další informace o škálování najdete v tématu horizontální navýšení [kapacity aplikace v Azure App Service](manage-scale-up.md).
 
-Kromě toho můžete spustit aplikaci ve více než jednu instanci. Nejen to vám poskytne další možnosti zpracování, ale také poskytuje určitou míru odolnosti proti chybám. Pokud proces přestane fungovat na jednu instanci, druhá instance pokračovat, obsluze žádostí.
+Kromě toho můžete zvolit spuštění aplikace na více než jedné instanci. Tato možnost nejen vám poskytne více funkcí zpracování, ale také poskytuje určitou úroveň odolnosti proti chybám. Pokud proces skončí s jednou instancí, ostatní instance nadále nadále obsluhuje požadavky.
 
-Můžete nastavit jako ruční nebo automatické škálování.
+Můžete nastavit škálování na ruční nebo automatické.
 
-#### <a name="use-autoheal"></a>Používají AutoHeal
-AutoHeal recykluje pracovní proces pro vaši aplikaci na základě nastavení, které zvolíte (například změny konfigurace, požadavky, omezení na základě paměti nebo doba potřebná k provedení požadavku). Ve většině případů, recyklace procesu je nejrychlejší způsob, jak zotavení po chybě. I když můžete vždy restartovat aplikaci přímo z portálu Azure Portal, AutoHeal bude to udělala automaticky za vás. Všechno, co musíte udělat, je přidání některých aktivačních událostí v kořenovém souboru web.config pro vaši aplikaci. Všimněte si, že tato nastavení bude fungovat stejným způsobem, i v případě, že vaše aplikace není .NET jeden.
+#### <a name="use-autoheal"></a>Použít reretušovací
+Automatické zacele recykluje pracovní proces vaší aplikace na základě nastavení, které zvolíte (například změny konfigurace, požadavky, limity založené na paměti nebo doba potřebná ke spuštění žádosti). Ve většině případů je recyklací procesu nejrychlejší způsob, jak se zotavit z problému. I když aplikaci můžete kdykoli znovu spustit přímo na portálu Azure Portal, automatické zaretušování ji provede automaticky. Stačí přidat některé triggery do kořenového souboru Web. config pro vaši aplikaci. Všimněte si, že tato nastavení budou fungovat stejným způsobem i v případě, že vaše aplikace není rozhraní .NET One.
 
-Další informace najdete v tématu [Samoopravení weby Azure](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
+Další informace najdete v tématu věnovaném [automatickému retušování webů Azure](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 
-#### <a name="restart-the-app"></a>Restartování aplikace
-Často je to nejjednodušší způsob, jak zotavení při jednorázových potížích. Na [webu Azure Portal](https://portal.azure.com/), v okně vaší aplikace, máte možnost zastavit nebo restartovat aplikaci.
+#### <a name="restart-the-app"></a>Restartujte aplikaci.
+To je často nejjednodušší způsob, jak provést zotavení při jednorázových potížích. Na [portálu Azure Portal](https://portal.azure.com/)v okně vaší aplikace máte možnost zastavit nebo restartovat aplikaci.
 
- ![Restartujte aplikaci k řešení chyb HTTP 502 – Chybná brána a 503 – nedostupná služba](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
+ ![Restartujte aplikaci, aby se vyřešily chyby HTTP 502 Chybná brána a služba 503 není dostupná.](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-Můžete také spravovat aplikace pomocí Azure Powershellu. Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
+Svou aplikaci můžete spravovat i pomocí Azure PowerShellu. Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
 

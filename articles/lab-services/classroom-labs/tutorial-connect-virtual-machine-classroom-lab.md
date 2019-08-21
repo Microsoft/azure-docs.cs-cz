@@ -12,46 +12,62 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 3be1da54b16a24ce3c4431dfe26eb778cea5c83d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 769cb2c6a3ae0e5b94ffd65425634ac9dd0221d0
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60694648"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640008"
 ---
-# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Kurz: Přístup k testovacímu prostředí v učebně ve službě Azure Lab Services
+# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Kurz: Přístup k testovacímu prostředí učebny v Azure Lab Services
 V tomto kurzu se vy, jako student, připojíte k virtuálnímu počítači v testovacím prostředí v učebně. 
 
 V tomto kurzu provedete následující akce:
 
 > [!div class="checklist"]
-> * Použití odkazu pro registraci 
+> * Registrovat do testovacího prostředí
+> * Spuštění virtuálního počítače
 > * Připojení k virtuálnímu počítači
 
-## <a name="use-the-registration-link"></a>Použití odkazu pro registraci
+## <a name="register-to-the-lab"></a>Registrovat do testovacího prostředí
 
-1. Přejděte na **adresu URL pro registraci**, kterou jste dostali od vyučujícího. Není potřeba po dokončení registrace použijte adresa URL pro registraci. Místo toho použijte adresu URL: [ https://labs.azure.com ](https://labs.azure.com). Všimněte si, že aplikace Internet Explorer 11 se ještě nepodporuje. 
+1. Přejděte na **adresu URL pro registraci**, kterou jste dostali od vyučujícího. Po dokončení registrace nemusíte používat registrační adresu URL. Místo toho použijte adresu URL: [https://labs.azure.com](https://labs.azure.com). Aplikace Internet Explorer 11 není zatím podporována. 
 1. Přihlaste se ke službě pomocí školního účtu, abyste dokončili registraci. 
 2. Po dokončení registrace zkontrolujte, že vidíte virtuální počítač pro testovací prostředí, ke kterému máte přístup. 
-3. Počkejte, až bude virtuální počítač připravený, a pak ho **spusťte**. Tento proces trvá nějakou dobu.  
+3. Počkejte, až bude virtuální počítač připravený. Na dlaždici VM si všimněte následujících polí:
+    1. V horní části dlaždice se zobrazí **název testovacího prostředí**.
+    1. Napravo se zobrazí ikona představující **operační systém** virtuálního počítače. V tomto příkladu se jedná o operační systém Windows. 
+    1. Indikátor průběhu na dlaždici zobrazuje počet hodin použitých pro počet [hodin](how-to-configure-student-usage.md#set-quotas-for-users) , které vám jsou přiřazeny. Tentokrát je další čas, který jste si naplánovali vedle naplánovaného času pro testovací prostředí. 
+    1. V dolní části dlaždice se zobrazí ikony nebo tlačítka, které spustí/zastaví virtuální počítač a připojí se k virtuálnímu počítači. 
+    1. Napravo od tlačítek se zobrazí stav virtuálního počítače. Ověřte, že se zobrazuje stav virtuálního počítače Zastaveno. 
+
+        ![Virtuální počítač v zastaveném stavu](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
+
+## <a name="start-the-vm"></a>Spuštění virtuálního počítače
+1. **Spusťte** virtuální počítač tak, že vyberete první tlačítko, jak je znázorněno na následujícím obrázku. Tento proces trvá nějakou dobu.  
 
     ![Spuštění virtuálního počítače](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
+4. Potvrďte, že stav virtuálního počítače je nastavený na **spuštěno**. 
 
-## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
+    ![Virtuální počítač ve spuštěném stavu](../media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 
-1. Vyberte **připojit** na dlaždici pro virtuální počítač, který chcete získat přístup k testovacím prostředí. 
+    Všimněte si, že ikona prvního tlačítka se změnila tak, aby představovala operaci **zastavení** . Kliknutím na toto tlačítko můžete virtuální počítač zastavit. 
+
+## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
+
+1. Vyberte druhé tlačítko, jak je znázorněno na následujícím obrázku , abyste se připojili k virtuálnímu počítači testovacího prostředí. 
 
     ![Připojení k virtuálnímu počítači](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
-2. Proveďte jednu z následujících kroků: 
-    1. Pro **Windows** ukládat virtuální počítače, **RDP** soubor na pevný disk. Otevřete soubor RDP pro připojení k virtuálnímu počítači. Použití **uživatelské jméno** a **heslo** získáte od educator/profesor pro přihlášení k počítači. 
-    3. Pro **Linux** virtuálních počítačů, můžete použít **SSH** nebo **RDP** (Pokud je povolená) pro připojení k nim. Další informace najdete v tématu [povolit připojení ke vzdálené ploše pro počítače s Linuxem](how-to-enable-remote-desktop-linux.md). 
+2. Proveďte jeden z následujících kroků: 
+    1. U virtuálních počítačů s **Windows** uložte soubor **RDP** na pevný disk. Otevřete soubor RDP pro připojení k virtuálnímu počítači. Přihlaste se k počítači pomocí **uživatelského jména** a **hesla** , které jste získali z Educator/profesor. 
+    3. Pro virtuální počítače se **systémem Linux** můžete k připojení použít **SSH** nebo **RDP** (Pokud je povolený). Další informace najdete v tématu [Povolení připojení ke vzdálené ploše pro počítače se systémem Linux](how-to-enable-remote-desktop-linux.md). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste přistupovali k testovacímu prostředí v učebně pomocí odkazu pro registraci, který jste získali od vyučujícího.
 
-Jako vlastník testovacího prostředí budete chtít zobrazit, který je zaregistrován s testovacího prostředí a sledovat využití virtuálních počítačů. Přejděte k dalšímu kurzu, přečtěte si, jak sledovat využití testovacího prostředí:
+Jako vlastník testovacího prostředí chcete zobrazit, kdo se zaregistroval s vaším testovacím prostředím a sledovat využití virtuálních počítačů. Přejděte k dalšímu kurzu, kde se dozvíte, jak sledovat využití testovacího prostředí:
 
 > [!div class="nextstepaction"]
 > [Sledování využití testovacího prostředí](tutorial-track-usage.md) 

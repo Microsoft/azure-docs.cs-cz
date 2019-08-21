@@ -1,6 +1,6 @@
 ---
-title: Jak resetovat heslo místního systému Linux na virtuálních počítačích Azure | Dokumentace Microsoftu
-description: Zavést kroky pro resetování hesla místního systému Linux na virtuálním počítači Azure
+title: Resetování hesla místního systému Linux na virtuálních počítačích Azure | Microsoft Docs
+description: Zavedení kroků pro resetování hesla místního systému Linux na virtuálním počítači Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: Deland-Han
@@ -11,61 +11,64 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 08/20/2019
 ms.author: delhan
-ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fc51dfb90158316b3fe6c11b5265f1cf3251505
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306947"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641034"
 ---
-# <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Jak resetovat heslo místního systému Linux na virtuálních počítačích Azure
+# <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Resetování hesla místního systému Linux na virtuálních počítačích Azure
 
-Tento článek představuje několik metod, jak resetovat hesla místního virtuálního počítače (virtuální počítač s Linuxem). Pokud vypršela platnost uživatelského účtu nebo jenom chcete vytvořit nový účet, můžete použít následující metody k vytvoření nového účtu místního správce a znovu získat přístup k virtuálnímu počítači.
+Tento článek představuje několik způsobů, jak obnovit hesla místních virtuálních počítačů (VM) místního systému Linux. Pokud vypršela platnost uživatelského účtu nebo chcete vytvořit nový účet, můžete pomocí následujících metod vytvořit nový účet místního správce a znovu získat přístup k virtuálnímu počítači.
 
 ## <a name="symptoms"></a>Příznaky
 
-Se nemůže přihlásit k virtuálnímu počítači a zobrazí se zpráva, která určuje, že je nesprávné heslo, které jste použili. Kromě toho nelze použít VMAgent k resetování hesla na portálu Azure portal.
+K virtuálnímu počítači se nemůžete přihlásit a zobrazí se zpráva s oznámením, že heslo, které jste použili, je nesprávné. Kromě toho nemůžete použít VMAgent k resetování hesla na Azure Portal.
 
-## <a name="manual-password-reset-procedure"></a>Postup vytvoření nového ruční hesla
+## <a name="manual-password-reset-procedure"></a>Postup ručního resetování hesla
 
-1.  Odstranění virtuálního počítače a zachovat připojených disků.
+> [!NOTE]
+> Následující kroky se nevztahují na virtuální počítač s nespravovaným diskem.
 
-2.  Připojte jednotku operačního systému jako datový disk k jinému virtuálnímu počítači dočasné ve stejném umístění.
+1. Položte si snímek disku s operačním systémem ovlivněného virtuálního počítače, vytvořte disk ze snímku a pak ho připojte k virtuálnímu počítači pro odstraňování potíží. Další informace najdete v tématu [řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal](troubleshoot-recovery-disks-portal-linux.md).
 
-3.  Spusťte následující příkaz SSH na dočasný virtuální počítač stane superuživatel.
+2. Připojte se k virtuálnímu počítači pro řešení potíží pomocí vzdálené plochy.
+
+3.  Spusťte následující příkaz SSH na virtuálním počítači pro řešení potíží, abyste se stali SuperM uživatelem.
 
     ```bash
     sudo su
     ```
 
-4.  Spustit **fdisk -l** se také podívat na protokoly systému a hledat nově připojený disk. Vyhledejte název jednotky pro připojení. Potom na dočasný virtuální počítač, vyhledejte v příslušných protokolových souborů.
+4.  Spusťte **příkaz fdisk-l** nebo vyhledejte v systémových protokolech, abyste našli nově připojený disk. Vyhledejte název jednotky, který chcete připojit. Pak na dočasném virtuálním počítači vyhledejte příslušný soubor protokolu.
 
     ```bash
     grep SCSI /var/log/kern.log (ubuntu)
     grep SCSI /var/log/messages (centos, suse, oracle)
     ```
 
-    Následuje příklad výstupu z příkazu grep:
+    Následuje příklad výstupu příkazu grep:
 
     ```bash
     kernel: [ 9707.100572] sd 3:0:0:0: [sdc] Attached SCSI disk
     ```
 
-5.  Vytvořit bod připojení volat **tempmount**.
+5.  Vytvořte přípojný bod s názvem **tempmount**.
 
     ```bash
     mkdir /tempmount
     ```
 
-6.  Připojte disk s operačním systémem na přípojný bod. Obvykle bude potřeba připojit *sdc1* nebo *sdc2*. To bude záviset na hostování oddílu v */etc* z disku počítače poškozený.
+6.  Připojte disk s operačním systémem na přípojný bod. Obvykle musíte připojit *sdc1* nebo *sdc2*. To bude záviset na oddílu hostování v adresáři */etc* z poškozeného disku počítače.
 
     ```bash
     mount /dev/sdc1 /tempmount
     ```
 
-7.  Vytvoření kopie základní souborů přihlašovacích údajů před provedením jakýchkoli změn:
+7.  Před provedením změn vytvořte kopie souborů základních přihlašovacích údajů:
 
     ```bash
     cp /etc/passwd /etc/passwd_orig    
@@ -76,13 +79,13 @@ Se nemůže přihlásit k virtuálnímu počítači a zobrazí se zpráva, kter�
     cp /tempmount/etc/shadow /tempmount/etc/shadow_orig
     ```
 
-8.  Resetovat heslo uživatele, které potřebujete:
+8.  Resetujte heslo uživatele, které potřebujete:
 
     ```bash
     passwd <<USER>> 
     ```
 
-9.  Přesuňte změněné soubory do správného umístění na disku počítače poškozený.
+9.  Přesuňte změněné soubory do správného umístění na disku poškozeného počítače.
 
     ```bash
     cp /etc/passwd /tempmount/etc/passwd
@@ -91,19 +94,19 @@ Se nemůže přihlásit k virtuálnímu počítači a zobrazí se zpráva, kter�
     cp /etc/shadow_orig /etc/shadow
     ```
 
-10. Přejděte zpět do kořenového adresáře a odpojit disk.
+10. Vraťte se do kořenového adresáře a odpojte disk.
 
     ```bash
     cd /
     umount /tempmount
     ```
 
-11. Odpojení disku z portálu pro správu.
+11. V Azure Portal odpojte disk od virtuálního počítače pro řešení potíží.
 
-12. Znovu vytvořte virtuální počítač.
+12. [Změňte disk s operačním systémem pro ovlivněný virtuální počítač](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Řešení potíží s virtuálním počítači Azure připojením disku s operačním systémem k jinému virtuálnímu počítači Azure](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
+* [Řešení potíží s virtuálním počítačem Azure připojením disku s operačním systémem k jinému virtuálnímu počítači Azure](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 
 * [Azure CLI: Jak odstranit a znovu nasadit virtuální počítač z virtuálního pevného disku](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

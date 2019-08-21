@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 87f5a14bcd6003ad81b663ed97e5349dcbff2a30
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 597670803514fa59faaafdad73786cdb745a0976
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296518"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640904"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky v programu Windows Defender pomocí Azure Security Center
 
@@ -51,7 +51,7 @@ Výstrahu můžete dále prozkoumat tím, že převedete do ochrany ATP v progra
 
 ## <a name="platform-support"></a>Podpora platformy
 
-Ochrana ATP v programu Windows Defender v Security Center podporuje detekci v operačních systémech Windows Server 2012 R2 a Windows Server 2016 patřících ke standardnímu předplatnému služby.
+Ochrana ATP v programu Windows Defender v Security Center podporuje detekci v operačních systémech Windows Server 2016, 2012 R2 a 2008 R2 SP1 v rámci standardního předplatného služby.
 
 > [!NOTE]
 > Při použití Azure Security Center k monitorování serverů se automaticky vytvoří tenant ATP v programu Windows Defender a data ATP v programu Windows Defender se ve výchozím nastavení uloží do Evropy. Pokud potřebujete přesunout data do jiného umístění, musíte kontaktovat podpora Microsoftu pro resetování tenanta.
@@ -115,7 +115,7 @@ Vygenerování neškodné výstrahy testu ochrany ATP v programu Windows Defende
 
 5. V okně šetření vyberte odkaz pro přechod na portál ochrany ATP v programu Windows Defender.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md): Přečtěte si, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 - [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md): Přečtěte si, jak doporučení vám pomůžou chránit prostředky Azure.

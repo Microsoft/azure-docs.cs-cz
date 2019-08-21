@@ -5,15 +5,15 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/05/2018
+ms.date: 08/20/2019
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: f933b926aa0e277976416ae1b3b2eb684d9fcc85
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
-ms.translationtype: MT
+ms.openlocfilehash: f736d7f1dde8f268033d7c80322b91543672e68f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955088"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638533"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Zálohování a obnovení souborů Azure pomocí PowerShellu
 
@@ -43,7 +43,7 @@ Hierarchie objektů je shrnuta v následujícím diagramu.
 
 ![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [](/powershell/module/az.recoveryservices) v knihovně Azure.
+Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet reference](/powershell/module/az.recoveryservices) v knihovně Azure.
 
 
 ## <a name="set-up-and-install"></a>Nastavení a instalace
@@ -263,6 +263,12 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 
 Snímky sdílené složky Azure se používají v době, kdy se provádí zálohování, takže úloha se obvykle dokončí v čase, kdy příkaz vrátí tento výstup.
 
+### <a name="using-on-demand-backups-to-extend-retention"></a>Použití záloh na vyžádání k rozšířenému uchovávání
+
+Zálohy na vyžádání se dají použít k uchování snímků po dobu 10 let. Plánovače se dají použít ke spouštění skriptů PowerShellu na vyžádání s vybraným uchováváním, takže snímky se v pravidelných intervalech přijímají každý týden, měsíc nebo rok. Při vytváření běžných snímků se řiďte [omezeními zálohování na vyžádání](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share-) pomocí služby Azure Backup.
+
+Pokud hledáte ukázkové skripty, můžete se podívat na ukázkový skript na GitHubu (https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) pomocí Azure Automation Runbooku, který vám umožní pravidelně plánovat zálohy a uchovávat je ještě po dobu 10 let.
+
 ### <a name="modify-the-protection-policy"></a>Upravit zásady ochrany
 
 Pokud chcete změnit zásady používané pro zálohování sdílené složky Azure, použijte [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0). Zadejte příslušnou položku zálohy a novou zásadu zálohování.
@@ -403,5 +409,5 @@ $job.ErrorDetails
  --------- ------------                                          ---------------
 1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support.
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Přečtěte si o](backup-azure-files.md) zálohování souborů Azure v Azure Portal.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/14/2019
-ms.openlocfilehash: f69fc89fe5634c9467cf728c7ab5c4d8ac6c5c74
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 6a29d1e001d4c647d5b975b7e746eced29962ee4
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512312"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637251"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na vCore
 
@@ -35,7 +35,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 ## <a name="general-purpose-service-tier-for-provisioned-compute"></a>Úroveň služby Pro obecné účely pro zřízené výpočetní prostředky
 
 > [!IMPORTANT]
-> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblasti AustraliaEast.
+> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih.
 
 ### <a name="gen4-compute-generation-part-1"></a>Generování výpočetních prostředků COMPUTE GEN4 – (část 1)
 
@@ -184,7 +184,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 ## <a name="business-critical-service-tier-for-provisioned-compute"></a>Úroveň služby Pro důležité obchodní informace pro zřízené výpočetní prostředky
 
 > [!IMPORTANT]
-> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblasti AustraliaEast.
+> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih.
 
 ### <a name="gen4-compute-generation-part-1"></a>Generování výpočetních prostředků COMPUTE GEN4 – (část 1)
 
@@ -311,7 +311,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 
 Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS bude záviset na zatížení.
 
-### <a name="next-steps"></a>Další postup
+### <a name="next-steps"></a>Další kroky
 
 - Omezení prostředků DTU pro jednu databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na DTU](sql-database-dtu-resource-limits-single-databases.md) .
 - Omezení prostředků vCore pro elastické fondy najdete v tématu [omezení prostředků pro elastické fondy pomocí nákupního modelu založeného na Vcore](sql-database-vcore-resource-limits-elastic-pools.md) .

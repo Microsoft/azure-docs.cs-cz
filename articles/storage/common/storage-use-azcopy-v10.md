@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b127738d4be79c30d1791d7313c0f8f7eacaf36
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: 60b3d1dcc7d60b25319b3fa5dd740541a457927f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985142"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640094"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s AzCopy
 
@@ -65,9 +65,9 @@ Tuto tabulku použijte jako vodítko:
 |**Úložiště objektů BLOB (hierarchické obor názvů)** | & SAS pro Azure AD |
 |**Úložiště souborů** | Pouze SAS |
 
-### <a name="option-1-use-azure-ad"></a>Možnost 1: Použití Azure AD
+### <a name="option-1-use-azure-active-directory"></a>Možnost 1: Použít Azure Active Directory
 
-Pomocí Azure AD můžete zadat přihlašovací údaje místo toho, abyste museli k jednotlivým příkazům připojit token SAS.  
+Pomocí Azure Active Directory můžete zadat přihlašovací údaje místo toho, abyste museli k jednotlivým příkazům připojit token SAS.  
 
 > [!NOTE]
 > Pokud v aktuální verzi plánujete zkopírovat objekty blob mezi účty úložiště, budete muset ke každé zdrojové adrese URL připojit token SAS. Token SAS můžete vynechat pouze z cílové adresy URL. Příklady najdete v tématu [kopírování objektů BLOB mezi účty úložiště](storage-use-azcopy-blobs.md).
@@ -93,7 +93,7 @@ Tyto role se dají přiřadit k objektu zabezpečení v libovolném z těchto ob
 Informace o tom, jak ověřit a přiřadit role, najdete [v tématu udělení přístupu k datům Azure Blob a Queue do fronty pomocí RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
-> Mějte na paměti, že rozšíření přiřazení rolí RBAC může trvat až pět minut.
+> Pamatujte na to, že přiřazení rolí RBAC může trvat až pět minut.
 
 Pokud je do seznamu řízení přístupu (ACL) cílového kontejneru nebo adresáře přidaný objekt zabezpečení, nemusíte mít přiřazenou žádnou z těchto rolí. V seznamu ACL vyžaduje váš instanční objekt oprávnění k zápisu do cílového adresáře a oprávnění ke spuštění na kontejneru a v jednotlivých nadřazených adresářích.
 
@@ -149,7 +149,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> Zvažte použití výzvy, jak je znázorněno v tomto příkladu. Tímto způsobem se tajný klíč klienta nezobrazí v historii příkazů konzoly. 
+> Zvažte použití výzvy, jak je znázorněno v tomto příkladu. Tímto způsobem se vaše heslo nezobrazí v historii příkazů vaší konzole.  
 
 Potom zadejte následující příkaz a stiskněte klávesu ENTER.
 
@@ -170,7 +170,7 @@ Dále nastavte `AZCOPY_SPA_CERT_PASSWORD` proměnnou prostředí na heslo certif
 > [!NOTE]
 > Ujistěte se, že jste tuto hodnotu nastavili z příkazového řádku, a ne do nastavení proměnných prostředí operačního systému. Tímto způsobem je hodnota k dispozici pouze pro aktuální relaci.
 
-Tento příklad ukazuje, jak to lze provést v prostředí PowerShell.
+Tento příklad ukazuje, jak můžete tuto úlohu provést v prostředí PowerShell.
 
 ```azcopy
 $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"

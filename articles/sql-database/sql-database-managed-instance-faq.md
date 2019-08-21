@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 2efeb37f8b98f4cf9a29ec8a6976146b81aab26b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779049"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641076"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k SQL Database Managed Instances (FAQ)
 
@@ -36,8 +36,7 @@ Dostupné úrovně služeb a jejich charakteristiky najdete v tématu [technick�
 
 ## <a name="where-can-i-find-known-issues-and-bugs"></a>Kde můžu najít známé problémy a chyby?
 
-Chyby a známé problémy najdete v tématu [změny chování](sql-database-managed-instance-transact-sql-information.md#Changes) a [známé problémy](sql-database-managed-instance-transact-sql-information.md#Issues).
-
+Chyby a známé problémy najdete v tématu [známé problémy](sql-database-managed-instance-transact-sql-information.md#Issues).
 
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>Může mít spravovaná instance stejný název jako místní SQL Server?
 

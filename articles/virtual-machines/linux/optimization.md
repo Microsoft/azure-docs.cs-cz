@@ -1,7 +1,7 @@
 ---
-title: Optimalizace virtuálního počítače s Linuxem v Azure | Dokumentace Microsoftu
-description: Další tipy optimalizace, abyste měli jistotu, že nastavíte virtuální počítač s Linuxem pro zajištění optimálního výkonu v Azure
-keywords: linuxový virtuální počítač, virtuální počítač linux, virtuální počítač s ubuntu
+title: Optimalizace virtuálního počítače se systémem Linux v Azure | Microsoft Docs
+description: Seznamte se s tipy pro optimalizaci a ujistěte se, že jste nastavili virtuální počítač Linux pro zajištění optimálního výkonu v Azure.
+keywords: virtuální počítač Linux, virtuální počítač Linux, virtuální počítač s Ubuntu
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -17,57 +17,57 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: bd59257c1136f52beaf217c1f983c8aeb7bd81d5
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ea8f3f1860223e102aeccf81f72b5294283b83f6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671128"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640755"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
-Vytvoření virtuálního počítače s Linuxem (VM) je snadné provést z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit jste ho nastavili optimalizace jeho výkonu na platformě Microsoft Azure. Toto téma používá virtuální počítač s Ubuntu Server, ale můžete také vytvořit virtuální počítač Linux pomocí [svých vlastních imagí jako šablony](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
+Vytváření virtuálních počítačů se systémem Linux je snadné z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit, že jste ho nastavili tak, aby optimalizoval jeho výkon na platformě Microsoft Azure. V tomto tématu se používá virtuální počítač s Ubuntu serverem, ale můžete také vytvořit virtuální počítač se systémem Linux pomocí [vlastních imagí jako šablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
 ## <a name="prerequisites"></a>Požadavky
-Toto téma předpokládá, že již máte funkční předplatného Azure ([registraci bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/)) a už zřízení virtuálního počítače do vašeho předplatného Azure. Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k předplatnému Azure pomocí [az login](/cli/azure/reference-index) před [vytvoření virtuálního počítače](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+V tomto tématu se předpokládá, že už máte funkční předplatné Azure ([registrace bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/)) a už jste do svého předplatného Azure ZŘÍDILI virtuální počítač. Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásili jste se k předplatnému Azure pomocí [AZ Login](/cli/azure/reference-index) , než [vytvoříte virtuální počítač](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="azure-os-disk"></a>Azure Disk s operačním systémem
-Po vytvoření virtuálního počítače s Linuxem v Azure má dva disky, které s ním spojená. **/ dev/sda** je disk s operačním systémem **/dev/sdb** je dočasný disk.  Nepoužívejte hlavní disk s operačním systémem ( **/dev/sda**) pro všechno, co s výjimkou operačního systému, protože je optimalizovaný pro rychlé spuštění virtuálního počítače a neposkytuje dostatečný výkon pro vaše úlohy. Chcete se připojit jeden nebo víc disků k virtuálnímu počítači k získání trvalého a optimalizované úložiště pro vaše data. 
+## <a name="azure-os-disk"></a>Disk s operačním systémem Azure
+Po vytvoření virtuálního počítače se systémem Linux v Azure jsou k němu přidruženy dva disky. **/dev/sda** je disk s operačním systémem, **/dev/sdb** je váš dočasný disk.  Nepoužívejte hlavní disk s operačním systémem ( **/dev/sda**) pro cokoli s výjimkou operačního systému, protože je optimalizovaný pro rychlý čas spuštění virtuálního počítače a neposkytuje dobrý výkon pro vaše úlohy. Chcete k VIRTUÁLNÍmu počítači připojit jeden nebo více disků, aby bylo možné získat trvalé a optimalizované úložiště pro vaše data. 
 
-## <a name="adding-disks-for-size-and-performance-targets"></a>Přidání disků pro velikost a výkonnostní cíle
-Na základě velikosti virtuálního počítače můžete připojit až 16 další disky na A-Series, 32 disky v D-Series a strojové 64 disků na G-Series – každá až do velikosti 1 TB. Podle potřeby za prostor a požadavky na vstupně-výstupních operací, přidejte další disky. Každý disk má cíl výkonnosti 500 iops pro úložiště úrovně Standard a maximálně 5000 IOps na disku pro Premium Storage.
+## <a name="adding-disks-for-size-and-performance-targets"></a>Přidávání disků pro cíle velikosti a výkonu
+Na základě velikosti virtuálního počítače můžete připojit až 16 dalších disků na diskech řady A-Series 32 na discích řady D-Series a 64 na počítači s procesorem G-series – každé velikosti až 1 TB. Podle požadavků na prostor a IOps přidejte další disky podle potřeby. Každý disk má cíl výkonu 500 IOps pro úložiště úrovně Standard a až 5000 IOps na disk pro Premium Storage.
 
-K dosažení nejvyšší počet IOps na disky Premium Storage, kde jejich nastavení mezipaměti nebyly nastaveny na hodnotu **jen pro čtení** nebo **žádný**, je nutné zakázat **bariéry** při připojení systém souborů v systému Linux. Protože jsou zápisy na disky Premium Storage zajišťuje trvalé pro tato nastavení mezipaměti nepotřebujete překážek.
+Aby bylo možné získat nejvyšší IOps na Premium Storage discích, kde nastavení mezipaměti bylo nastaveno na hodnotu **jen pro čtení** nebo **žádné**, je nutné zakázat **bariéry** při připojování systému souborů v systému Linux. Nepotřebujete překážky, protože zápisy do Premium Storage zálohovaných disků jsou pro tato nastavení mezipaměti trvalé.
 
-* Pokud používáte **reiserFS**, překážek zakázat použití možnosti připojení `barrier=none` (pro povolení bariéry, použijte `barrier=flush`)
-* Pokud používáte **ext3/ext4**, překážek zakázat použití možnosti připojení `barrier=0` (pro povolení bariéry, použijte `barrier=1`)
-* Pokud používáte **XFS**, překážek zakázat použití možnosti připojení `nobarrier` (pro povolení bariéry, použijte možnost `barrier`)
+* Pokud používáte **reiserFS**, zakažte bariéry pomocí možnosti `barrier=none` připojení (Pokud chcete povolit bariéry, použijte `barrier=flush`).
+* Pokud používáte **ext3/ext4**, zakažte bariéry pomocí možnosti `barrier=0` připojení (pro povolení bariéry použijte `barrier=1`).
+* Pokud používáte **XFS**, zakažte bariéry pomocí možnosti `nobarrier` připojení (pro povolení bariéry použijte možnost `barrier`).
 
-## <a name="unmanaged-storage-account-considerations"></a>Důležité informace o účtech nespravovaného úložiště
-Výchozí akce při vytváření virtuálního počítače pomocí Azure CLI je používat službu Azure Managed Disks.  Tyto disky jsou zpracovány platformou Azure, nevyžadují žádné přípravy ani umístění, kam ji uložit.  Nespravované disky se vyžaduje účet úložiště a mají některé důležité informace o dalších výkonu.  Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md).  Následující část popisuje důležité informace o výkonu pouze v případě, že používáte nespravované disky.  Znovu, výchozí a doporučený úložiště řešením je použití spravovaných disků.
+## <a name="unmanaged-storage-account-considerations"></a>Požadavky na účet nespravovaného úložiště
+Výchozí akcí při vytváření virtuálního počítače pomocí Azure CLI je použití Azure Managed Disks.  Tyto disky jsou zpracovávány platformou Azure a nevyžadují žádnou přípravu ani umístění k jejich uložení.  Nespravované disky vyžadují účet úložiště a mají nějaké další požadavky na výkon.  Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md).  V následující části jsou popsány požadavky na výkon pouze v případě, že používáte nespravované disky.  Výchozím a doporučeným řešením úložiště je znovu použít Managed disks.
 
-Pokud vytvoříte virtuální počítač s nespravovanými disky, ujistěte se, že disky připojit z účtů úložiště, které se nacházejí ve stejné oblasti jako virtuální počítač k zajištění těsné blízkosti a minimalizaci latence sítě.  Každý účet úložiště úrovně Standard může mít nejvýše z 20 tisíc vstupně-výstupních operací a kapacity velikosti 500 TB.  Tento limit funguje na přibližně 40 vytížený disky, včetně disk s operačním systémem a všechny datové disky, které vytvoříte. Pro účty služby Premium Storage neexistuje žádné omezení maximální vstupně-výstupních operací, ale neexistuje omezení velikosti 32 TB. 
+Pokud vytvoříte virtuální počítač s nespravovanými disky, nezapomeňte připojit disky z účtů úložiště, které se nacházejí ve stejné oblasti jako váš virtuální počítač, aby se zajistila těsná vzdálenost a minimalizovala latence sítě.  Každý účet úložiště úrovně Standard má maximálně 20 tisíc IOps a kapacitu velikosti 500 TB.  Toto omezení funguje na přibližně 40 intenzivně používaných disků, včetně disku s operačním systémem i všech datových disků, které vytvoříte. U Premium Storage účtů není limit počtu vstupně-výstupních operací stanoven, ale omezení velikosti 32 TB. 
 
-Při práci s vysokým vstupně-výstupních operací úloh a rozhodli úložiště úrovně Standard pro disky, můžete potřebovat rozdělit disky ve více účtech úložiště, abyste měli jistotu, že nebyly dosáhli limitu 20 000 IOps pro účty úložiště úrovně Standard. Váš virtuální počítač může obsahovat kombinaci disků z různých účtů úložiště a typech účtů úložiště, abyste dosáhli optimální konfigurace.
+Když se zaměříte na úlohy s vysokým počtem vstupně-výstupních operací a pro vaše disky jste zvolili úložiště úrovně Standard, budete možná muset rozdělit disky mezi několik účtů úložiště, abyste se ujistili, že jste nedosáhli limitu 20 000 IOps pro standardní účty úložiště. Váš virtuální počítač může obsahovat kombinaci disků z různých účtů úložiště a typů účtů úložiště, abyste dosáhli optimální konfigurace.
  
 
-## <a name="your-vm-temporary-drive"></a>Virtuální počítač dočasné jednotky
-Ve výchozím nastavení při vytváření virtuálního počítače, Azure vám poskytne disk s operačním systémem ( **/dev/sda**) a dočasný disk ( **/dev/sdb**).  Všechny další disky, zobrazit si můžete přidat jako **/dev/sdc**, **/dev/sdd**, **/dev/sde** a tak dále. Všechna data na dočasném disku ( **/dev/sdb**) není trvalý a může dojít ke ztrátě určitých událostí, jako je změna velikosti virtuálního počítače, opětovné nasazení, nebo údržby vynutí restartování vašeho virtuálního počítače.  Velikost a typ dočasného disku se týká velikost virtuálního počítače, kterou jste zvolili v době nasazení. Všechny premium velikosti virtuálních počítačů (řady DS, G a DS_V2) se zálohují dočasné jednotky na místní disk SSD pro další výkon až 48k vstupně-výstupních operací. 
+## <a name="your-vm-temporary-drive"></a>Dočasná jednotka virtuálního počítače
+Když vytvoříte virtuální počítač, Azure ve výchozím nastavení poskytuje disk s operačním systémem ( **/dev/sda**) a dočasný disk ( **/dev/sdb**).  Všechny další disky, které přidáte, se zobrazí jako **/dev/sdc**, **/dev/SDD**, **/dev/SDE** atd. Všechna data na dočasném disku ( **/dev/sdb**) nejsou trvalá a můžou se ztratit, pokud konkrétní události, jako je změna velikosti virtuálního počítače, opětovné nasazení nebo údržba, vynutí restartování vašeho virtuálního počítače.  Velikost a typ dočasného disku souvisí s velikostí virtuálního počítače, kterou jste zvolili v době nasazení. Všechny virtuální počítače s velikostí Premium (DS, G a DS v2 Series) dočasné jednotky se zálohují na místní jednotku SSD, která má další výkon až 48k IOps. 
 
-## <a name="linux-swap-file"></a>Linux stránkovacího souboru
-Pokud je váš virtuální počítač Azure z image Ubuntu nebo CoreOS, můžete použít CustomData odeslat konfiguraci cloudu cloud-init. Pokud jste [nahrát vlastní image Linuxu](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , která používá cloud-init, můžete také nakonfigurovat odkládací oddíl použití cloud-init.
+## <a name="linux-swap-file"></a>Odkládací soubor Linux
+Pokud je váš virtuální počítač Azure z image Ubuntu nebo CoreOS, můžete k odeslání cloudové konfigurace do Cloud-init použít CustomData. Pokud jste [nahráli vlastní image Linux](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , která používá Cloud-init, nakonfigurujete také odkládací oddíly pomocí Cloud-init.
 
-Ubuntu cloudových Imagí je potřeba použít cloud-init konfigurace odkládací oddíl. Další informace najdete v tématu [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
+V případě cloudových imagí Ubuntu je potřeba ke konfiguraci odkládacího oddílu použít Cloud-init. Další informace najdete v tématu [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
 
-Imagí virtuálních počítačů nasazených z Azure Marketplace pro Image bez podpory cloud-init, mají integrované s operačním systémem Linux agenta virtuálního počítače. Tento agent umožňuje virtuálnímu počítači komunikovat s různými službami Azure. Za předpokladu, že jste nasadili standardní image z Azure Marketplace, musíte ji správně nakonfigurovat odkládací soubor Linuxu následujícím způsobem:
+U imagí bez podpory Cloud-init mají image virtuálních počítačů nasazené z Azure Marketplace agenta pro Linux virtuálního počítače integrovaný s operačním systémem. Tento agent umožňuje VIRTUÁLNÍm počítačům komunikovat s různými službami Azure. Za předpokladu, že jste nasadili standardní bitovou kopii z Azure Marketplace, musíte provést následující kroky, abyste správně nakonfigurovali nastavení souborů odkládacího souboru se systémem Linux:
 
-Vyhledejte a upravit dvou položek **/etc/waagent.conf** souboru. Řídit jejich existenci vyhrazené odkládacího souboru a velikost odkládacího souboru. Chcete-li upravit parametry jsou `ResourceDisk.EnableSwap=N` a `ResourceDisk.SwapSizeMB=0` 
+Vyhledejte a upravte dvě položky v souboru **/etc/waagent.conf** . Řídí existenci vyhrazeného stránkovacího souboru a velikosti odkládacího souboru. Parametry, které je třeba ověřit `ResourceDisk.EnableSwap` , jsou a`ResourceDisk.SwapSizeMB` 
 
-Změňte parametry následující nastavení:
+Pokud chcete povolit řádně povolený disk a připojený soubor odkládacího souboru, ujistěte se, že parametry mají následující nastavení:
 
 * ResourceDisk.EnableSwap=Y
-* ResourceDisk.SwapSizeMB={size v MB podle svých potřeb} 
+* ResourceDisk. SwapSizeMB = {Size in MB pro splnění vašich potřeb 
 
-Po provedení změny, budete muset restartovat waagent nebo restartovat virtuální počítač s Linuxem tak, aby odrážela tyto změny.  Víte, byly provedeny změny a odkládacího souboru se vytvořil při použití `free` příkazu zobrazíte volného místa. V následujícím příkladu má vytvořené v důsledku změny 512MB odkládacího souboru **waagent.conf** souboru:
+Jakmile provedete změnu, musíte restartovat waagent nebo restartovat virtuální počítač se systémem Linux, aby se tyto změny projevily.  Věděli jste, že byly provedeny změny a při použití `free` příkazu k zobrazení volného místa byl vytvořen odkládací soubor. Následující příklad obsahuje 512 MB souboru vytvořeného v důsledku změny souboru **waagent. conf** :
 
 ```bash
 azuseruser@myVM:~$ free
@@ -77,24 +77,24 @@ Mem:       3525156     804168    2720988        408       8428     633192
 Swap:       524284          0     524284
 ```
 
-## <a name="io-scheduling-algorithm-for-premium-storage"></a>Plánování algoritmů vstupně-výstupních operací pro Premium Storage
-S 2.6.18 jádro Linuxu, výchozí plánování algoritmus vstupně-výstupní operace se změnil z konečného termínu k CFQ (algoritmus zcela veletrh zařazování do fronty). Pro vzory vstupů/výstupů náhodný přístup je zanedbatelný rozdíl ve výkonu rozdíly mezi CFQ a konečným termínem.  Založené na discích SSD disků, kde je převážně sekvenční vzor vstupně-výstupních operací disku můžete přepnout zpět na algoritmus NOOP nebo termín dosahovat lepšího výkonu vstupně-výstupních operací.
+## <a name="io-scheduling-algorithm-for-premium-storage"></a>Vstupně-výstupní algoritmus plánování pro Premium Storage
+V případě jádra 2.6.18 Linux byl výchozí algoritmus pro vstupně-výstupní operace změněn z koncového termínu na CFQ (zcela přiměřený algoritmus fronty). Ve vzorech vstupně-výstupních operací s náhodným přístupem je rozdíl mezi rozdíly ve výkonu mezi CFQ a konečným termínem nepatrný.  Pro disky založené na SSD, kde je v/v vzor disku předem sekvenční, přepínání zpátky na NOOP nebo konečný výkon může dosáhnout lepšího výkonu vstupu a výstupu.
 
-### <a name="view-the-current-io-scheduler"></a>Zobrazit aktuální Plánovač vstupně-výstupních operací
+### <a name="view-the-current-io-scheduler"></a>Zobrazit aktuálního plánovače/O
 Použijte následující příkaz:  
 
 ```bash
 cat /sys/block/sda/queue/scheduler
 ```
 
-Zobrazí se následující výstup, který označuje aktuálního plánovače.  
+Zobrazí se následující výstup, který indikuje aktuální Plánovač.  
 
 ```bash
 noop [deadline] cfq
 ```
 
-### <a name="change-the-current-device-devsda-of-io-scheduling-algorithm"></a>Změňte aktuální zařízení (/ dev/sda) vstupně-výstupních operací plánování algoritmus
-Pomocí následujících příkazů:  
+### <a name="change-the-current-device-devsda-of-io-scheduling-algorithm"></a>Změnit aktuální zařízení (/dev/sda) pro vstupně-výstupní plánování algoritmu
+Použijte následující příkazy:  
 
 ```bash
 azureuser@myVM:~$ sudo su -
@@ -104,9 +104,9 @@ root@myVM:~# update-grub
 ```
 
 > [!NOTE]
-> Použití tohoto nastavení pro **/dev/sda** samostatně není užitečné. Nastavení pro všechny datové disky, kde sekvenčních vstupně-výstupních operací dominuje vzor vstupně-výstupních operací.  
+> Použití tohoto nastavení pouze pro **/dev/sda** není užitečné. Nastavte na všech datových discích, kde sekvenční vstupně-výstupní operace rozchází do vstupně-výstupního vzoru.  
 
-Byste měli vidět následující výstup, což indikuje, že **grub.cfg** byla znovu sestavena úspěšně a že výchozí plánovač NOOP aktualizovaný.  
+Měl by se zobrazit následující výstup, který indikuje, že se **grub. cfg** úspěšně znovu sestavil a že se výchozí Plánovač AKTUALIZOVAL na NoOp.  
 
 ```bash
 Generating grub configuration file ...
@@ -119,20 +119,20 @@ Found memtest86+ image: /memtest86+.bin
 done
 ```
 
-Pro distribuce řady Red Hat potřebujete jenom následující příkaz:   
+Pro skupinu distribuce Red Hat budete potřebovat jenom tento příkaz:   
 
 ```bash
 echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
 
-## <a name="using-software-raid-to-achieve-higher-iops"></a>Pomocí softwaru diskového pole RAID k dosažení vyšší můžu / operace
-Pokud vaše úlohy vyžadují další vstupně-výstupních operací, než můžete zadat jeden disk, budete muset použít konfiguraci RAID softwaru více disků. Protože Azure už provádí odolnost proti chybám disku ve vrstvě místní infrastruktury, můžete dosáhnout nejvyšší úroveň výkonu z prokládáním konfigurace RAID-0.  Zřízení a vytvoření disků v prostředí Azure a připojení k virtuálním počítačům s Linuxem před rozdělení do oddílů, formátování a připojení jednotky.  Další podrobnosti o konfiguraci nastavení softwaru diskového pole RAID na virtuální počítač s Linuxem v azure najdete v **[konfigurace softwaru diskového pole RAID v Linuxu](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** dokumentu.
+## <a name="using-software-raid-to-achieve-higher-iops"></a>Použití softwarového pole RAID k dosažení vyššího vstupně-funkční operace
+Pokud vaše úlohy vyžadují víc IOps než jeden disk, budete muset použít softwarovou konfiguraci RAID o více discích. Vzhledem k tomu, že Azure už provádí odolnost disku v místní vrstvě prostředků infrastruktury, dosahuje nejvyšší úrovně výkonu z konfigurace prokládání RAID-0.  Zřizování a vytváření disků v prostředí Azure a jejich připojení k VIRTUÁLNÍmu počítači se systémem Linux před vytvořením oddílů, formátování a připojení jednotek.  Další podrobnosti o konfiguraci nastavení RAID softwaru na VIRTUÁLNÍm počítači Linux v Azure najdete v dokumentu **[Konfigurace softwarového pole RAID v systému Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** .
 
 ## <a name="next-steps"></a>Další kroky
-Mějte na paměti, jak se všechny diskuse optimalizace, je potřeba provést testy před a po každé změně měřit dopad, který má tato změna.  Optimalizace je proces krok za krokem, který má odlišné výsledky v různých počítačích ve vašem prostředí.  Co funguje u jedné konfigurace, nemusí fungovat pro ostatní uživatele.
+Mějte na paměti, že stejně jako u všech diskusí optimalizace je potřeba provést testy před a po každé změně, aby se projevil dopad změny.  Optimalizace je podrobný proces, který má různé výsledky v různých počítačích ve vašem prostředí.  To, co pro jednu konfiguraci funguje, nemusí fungovat pro jiné.
 
-Několik užitečných odkazů pro další zdroje informací:
+Některé užitečné odkazy na další prostředky:
 
-* [Uživatelská příručka k Azure Linux Agent](../extensions/agent-linux.md)
-* [Optimalizace výkonu MySQL na virtuálních počítačích Azure s Linuxem](classic/optimize-mysql.md)
-* [Konfigurace softwarového pole RAID v Linuxu](configure-raid.md)
+* [Uživatelská příručka agenta Azure Linux](../extensions/agent-linux.md)
+* [Optimalizace výkonu MySQL na virtuálních počítačích Azure Linux](classic/optimize-mysql.md)
+* [Konfigurace softwarového pole RAID v systému Linux](configure-raid.md)

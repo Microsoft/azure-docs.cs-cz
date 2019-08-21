@@ -1,7 +1,7 @@
 ---
 title: Upgrade služby QnA Maker – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Sdílet nebo upgradovat za účelem správy prostředků lepší služby QnA Maker.
+description: Pokud chcete prostředky spravovat lépe, sdílejte nebo Upgradujte své služby QnA Maker.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,83 +10,83 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: 2fdbb245f838d92e84d1247faa610a2f1a66c532
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439753"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640487"
 ---
-# <a name="share-or-upgrade-your-qna-maker-service"></a>Sdílet nebo upgradovat vaše služba QnA Maker
-Sdílet nebo upgradovat za účelem správy prostředků lepší služby QnA Maker. 
+# <a name="share-or-upgrade-your-qna-maker-service"></a>Sdílení nebo upgrade služby QnA Maker
+Pokud chcete prostředky spravovat lépe, sdílejte nebo Upgradujte své služby QnA Maker. 
 
-Můžete upgradovat po vytvoření počátečního jednotlivých komponent nástroje QnA Maker. Prohlédněte si podrobnosti o výběr SKU a závislé komponenty [tady](https://aka.ms/qnamaker-docs-capacity).
+Po počátečním vytvoření můžete upgradovat jednotlivé součásti QnA Maker stacku. Podívejte se na podrobnosti o závislých součástech a [](https://aka.ms/qnamaker-docs-capacity)výběru SKU.
 
-## <a name="share-existing-services-with-qna-maker"></a>Sdílet existující služby pomocí nástroje QnA Maker
+## <a name="share-existing-services-with-qna-maker"></a>Sdílejte existující služby s QnA Maker
 
-Nástroj QnA Maker vytvoří několik prostředků Azure. Aby bylo možné snížit správy a těžit z náklady pro sdílení obsahu, použijte v následující tabulce vám pomohou pochopit můžou a nemůžou sdílet:
+QnA Maker vytvoří několik prostředků Azure. Aby se snížila úroveň správy a výhoda sdílení nákladů, použijte následující tabulku, která vám pomůže pochopit, co můžete a nemůžete sdílet:
 
 |Služba|Sdílení|
 |--|--|
 |Cognitive Services|X|
-|plán služby App service|✔|
+|Plán služby App Service|✔|
 |App Service|X|
 |Application Insights|✔|
-|Služba Search|✔|
+|Služba vyhledávání|✔|
 
-## <a name="upgrade-qna-maker-management-sku"></a>Upgrade nástroje QnA Maker správu SKU
+## <a name="upgrade-qna-maker-management-sku"></a>Aktualizace SKU správy QnA Maker
 
-Když budete chtít mít další otázky a odpovědi ve znalostní bázi, upgradujte mimo aktuální úroveň, vaše služba QnA Maker cenovou úroveň. 
+Pokud potřebujete mít ve znalostní bázi více otázek a odpovědí za rámec vaší aktuální úrovně, upgradujte si cenovou úroveň služby QnA Maker. 
 
-Postup upgradu nástroje QnA Maker správu SKU:
+Postup při upgradu SKU QnA Maker Management:
 
-1. Přejděte do prostředku nástroje QnA Maker na webu Azure Portal a vyberte **cenová úroveň**.
+1. V Azure Portal otevřete prostředek QnA Maker a vyberte **cenovou úroveň**.
 
-    ![Nástroj QnA Maker prostředků](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
+    ![Prostředek QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
 
-2. Zvolte odpovídající SKU a stiskněte klávesu **vyberte**.
+2. Zvolte odpovídající SKU a stiskněte **Vybrat**.
 
-    ![Nástroje QnA maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
+    ![Ceny QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-## <a name="upgrade-app-service"></a>Upgradovat službu App service
+## <a name="upgrade-app-service"></a>Upgradovat službu App Service
 
- Když znalostní báze potřebuje více požadavků z aplikace pro klienta, upgrade vaše cenová úroveň služby app service.
+ Pokud vaše znalostní báze potřebuje k obsluze více požadavků z klientské aplikace, upgradujte si cenovou úroveň služby App Service.
 
-Je možné [vertikálně navýšit kapacitu](https://docs.microsoft.com/azure/app-service/web-sites-scale) nebo vertikálně snížit kapacitu služby App service.
+Službu App Service můžete [škálovat směrem nahoru](https://docs.microsoft.com/azure/app-service/manage-scale-up) nebo dolů.
 
-1. Přejít k prostředku App service na webu Azure Portal a vyberte **vertikálně navýšit kapacitu** nebo **vertikálně snížit kapacitu** možnosti podle potřeby.
+1. V Azure Portal přejděte do prostředku App Service a podle potřeby vyberte možnosti **horizontálního** navýšení nebo **snížení** kapacity.
 
-    ![Škálování služby app QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
+    ![QnA Maker škálování služby App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-## <a name="upgrade-azure-search-service"></a>Upgradovat službu Azure Search
+## <a name="upgrade-azure-search-service"></a>Aktualizace služby Azure Search
 
-Když budete chtít mít mnoho znalostních bází, upgradujte cenovou úroveň služby Azure Search. 
+Pokud plánujete, že máte spoustu znalostní báze, upgradujte si cenovou úroveň služby Azure Search. 
 
-Aktuálně není možné provádět v místě inovace Azure vyhledávání SKU. Můžete však vytvořit nový prostředek služby Azure search s požadovanou SKU, obnovení dat na nový prostředek a potom ji propojte s zásobníku QnA Maker.
+V současné době není možné provést místní upgrade skladové položky služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem.
 
-1. Vytvoření nového prostředku Azure search na webu Azure Portal a vyberte požadovanou SKU.
+1. Vytvořte nový prostředek Azure Search v Azure Portal a vyberte požadovanou SKU.
 
-    ![Nástroj QnA Maker Azure hledání prostředků](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
+    ![Prostředek služby Azure Search QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-2. Obnovení k novým indexy z váš původním prostředek Azure search. Ukázkový kód pro obnovení zálohy [tady](https://github.com/pchoudhari/QnAMakerBackupRestore).
+2. Obnovte indexy z původního prostředku Azure Search do nového. [Tady](https://github.com/pchoudhari/QnAMakerBackupRestore)najdete ukázkový kód pro obnovení zálohování.
 
-3. Po obnovení dat, přejděte do nového prostředku Azure search, vyberte **klíče**a poznamenejte si **název** a **klíč správce**.
+3. Po obnovení dat přejděte na nový prostředek služby Azure Search, vyberte **klíče**a poznamenejte si **název** a **klíč správce**.
 
-    ![Klíče nástroje QnA Maker Azure search](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
+    ![QnA Maker klíčů pro hledání Azure](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
 
-4. Odkaz nový prostředek Azure search na zásobníku QnA Maker, přejděte na nástroje QnA Maker App service.
+4. Pokud chcete propojit nový prostředek služby Azure Search se zásobníkem QnA Maker, přečtěte si do QnA Maker App Service.
 
-    ![Nástroj QnA Maker služby App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
+    ![QnA Maker AppService](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-5. Vyberte **nastavení aplikace** a nahraďte **AzureSearchName** a **AzureSearchAdminKey** polí z kroku 3.
+5. Vyberte **nastavení aplikace** a v kroku 3 nahraďte pole **AzureSearchName** a **AzureSearchAdminKey** .
 
-    ![Nástroj QnA Maker nastavení služby App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
+    ![Nastavení AppService QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 
 6. Restartujte služby App service.
 
-    ![Nástroj QnA Maker restartování služby App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+    ![QnA Maker AppService restartování](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Použití rozhraní API nástroje QnA Maker](../Quickstarts/csharp.md)
+> [Použít rozhraní API služby QnA Maker](../Quickstarts/csharp.md)

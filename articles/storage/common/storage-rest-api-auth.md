@@ -1,24 +1,24 @@
 ---
-title: Volání služeb Azure Storage Services REST API operací, včetně ověřování | Microsoft Docs
-description: Volání služeb Azure Storage Services REST API operací, včetně ověřování
+title: Volání služeb Azure Storage Services REST API operací s autorizací sdíleného klíče | Microsoft Docs
+description: Pomocí Azure Storage REST API vytvořte požadavek na úložiště objektů BLOB pomocí autorizace pomocí sdíleného klíče.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2149bfb68697129680c45f15c6cce359863fbc59
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1463a470c84d38ebc30e32cf539aa9d6f64a6854
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989946"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640660"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Použití rozhraní REST API pro službu Azure Storage
 
-V tomto článku se dozvíte, jak používat rozhraní REST API služby Blob Storage a jak ověřit volání služby. Je napsaný z pohledu vývojáře, který neví nic o REST a neobsahuje žádné informace o tom, jak provést volání REST. Podíváme se na referenční dokumentaci pro volání REST a podívejte se, jak ji přeložit do skutečného volání REST – která pole se nacházejí? Až se naučíte, jak nastavit volání REST, můžete toto znalosti využít k používání kterékoli jiné rozhraní REST API služby Storage.
+V tomto článku se dozvíte, jak používat rozhraní REST API služby Blob Storage a jak autorizovat volání služby. Je napsaný z pohledu vývojáře, který neví nic o REST a neobsahuje žádné informace o tom, jak provést volání REST. Podíváme se na referenční dokumentaci pro volání REST a podívejte se, jak ji přeložit do skutečného volání REST – která pole se nacházejí? Až se naučíte, jak nastavit volání REST, můžete toto znalosti využít k používání kterékoli jiné rozhraní REST API služby Storage.
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -267,12 +267,13 @@ Teď, když rozumíte tomu, jak vytvořit žádost, zavolat službu a analyzovat
 ## <a name="creating-the-authorization-header"></a>Vytváření autorizační hlavičky
 
 > [!TIP]
-> Azure Storage teď podporuje integraci Azure Active Directory (Azure AD) pro objekty BLOB a fronty. Azure AD nabízí mnohem jednodušší prostředí pro autorizaci žádosti o Azure Storage. Další informace o používání služby Azure AD k autorizaci operací REST najdete v tématu [ověřování pomocí Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Přehled integrace služby Azure AD s Azure Storage najdete v tématu [ověření přístupu k Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).
+> Azure Storage teď podporuje integraci Azure Active Directory (Azure AD) pro objekty BLOB a fronty. Azure AD nabízí mnohem jednodušší prostředí pro autorizaci žádosti o Azure Storage. Další informace o používání služby Azure AD k autorizaci operací REST najdete v tématu [autorizace pomocí Azure Active Directory](/rest/api/storageservices/authorize-with-azure-active-directory). Přehled integrace služby Azure AD s Azure Storage najdete v tématu [ověření přístupu k Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).
 
-K dispozici je článek, který vysvětluje koncepční princip (žádný kód), jak provádět [ověřování pro služby Azure Storage Services](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services).
+K dispozici je článek, který vysvětluje koncepční princip (žádný kód), jak [autorizovat požadavky na Azure Storage](/rest/api/storageservices/authorize-requests-to-azure-storage).
+
 Pojďme na to, aby tento článek byl co nejpřesněji, a zobrazil kód.
 
-Nejprve použijte ověřování pomocí sdíleného klíče. Formát autorizační hlavičky vypadá takto:
+Nejdřív použijte autorizaci pomocí sdíleného klíče. Formát autorizační hlavičky vypadá takto:
 
 ```  
 Authorization="SharedKey <storage account name>:<signature>"  
@@ -360,7 +361,7 @@ Tato část řetězce podpisu představuje účet úložiště, který cílí na
 
 Pokud máte parametry dotazu, tento příklad obsahuje také tyto parametry. Zde je kód, který také zpracovává další parametry dotazu a parametry dotazu s více hodnotami. Nezapomeňte, že vytváříte tento kód, který bude fungovat pro všechna rozhraní REST API. Chcete zahrnout všechny možnosti, a to i v případě, že metoda ListContainers je nepotřebuje.
 
-```csharp 
+```csharp
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
 {
     // The absolute path will be "/" because for we're getting a list of containers.
@@ -376,7 +377,7 @@ private static string GetCanonicalizedResource(Uri address, string storageAccoun
         sb.Append('\n').Append(item).Append(':').Append(values[item]);
     }
 
-    return sb.ToString();
+    return sb.ToString().ToLower();
 }
 ```
 
@@ -566,8 +567,9 @@ Content-Length: 1135
 
 V tomto článku jste zjistili, jak vytvořit požadavek na úložiště objektů BLOB REST API. S požadavkem můžete načíst seznam kontejnerů nebo seznam objektů BLOB v kontejneru. Zjistili jste, jak vytvořit autorizační podpis pro volání REST API a jak ho použít v žádosti REST. Nakonec jste zjistili, jak můžete odpověď prostudovat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [REST API služby BLOB Service](/rest/api/storageservices/blob-service-rest-api)
 * [REST API souborové služby](/rest/api/storageservices/file-service-rest-api)
 * [REST API služby fronty](/rest/api/storageservices/queue-service-rest-api)
+* [REST API služby Table Service](/rest/api/storageservices/table-service-rest-api)

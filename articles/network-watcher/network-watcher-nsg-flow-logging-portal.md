@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 433f8550e9bf8d5f352494005300e1f92494c3c7
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3e5490a4d74f10532764029f7a83788e3e39b592
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563507"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636220"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí Azure Portal
 
@@ -95,7 +95,8 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
     Vytvoření účtu úložiště může trvat kolem minuty. Se zbývajícími kroky nepokračujte, dokud se účet úložiště nevytvoří. Pokud místo vytvoření nového účtu úložiště používáte už existující účet, vyberte účet úložiště, který má vybrané **Všechny sítě** (výchozí) v možnosti **Brány firewall a virtuální sítě** v **NASTAVENÍ** pro účet úložiště. Ve všech případech musí být účet úložiště ve stejné oblasti jako NSG. 
     
     > [!NOTE]
-    > I když jsou poskytovatelé služeb Microsoft. Insight a Microsoft. Network aktuálně podporováni jako důvěryhodné služby Microsoftu pro Azure Storage, protokoly toku NSG se pořád neúplně zaregistrují. Aby bylo možné povolit protokolování toku NSG, musí být **všechny sítě** stále vybrané, dokud není tato funkce plně zaregistrovaná. 
+    > I když jsou poskytovatelé služeb Microsoft. Insight a Microsoft. Network aktuálně podporováni jako [důvěryhodné služby Microsoftu pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services), protokoly toku NSG se pořád neúplně zaregistrují. Aby bylo možné povolit protokolování toku NSG, musí být **všechny sítě** vybrány jak je uvedeno výše.
+    
 4. V levé horním rohu portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 5. Pod **PROTOKOLY** vyberte **Protokoly toku NSG**, jak je vidět na tomto obrázku:
 
