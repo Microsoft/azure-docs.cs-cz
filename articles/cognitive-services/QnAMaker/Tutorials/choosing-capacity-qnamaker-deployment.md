@@ -8,34 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 08/20/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 3126613a9dca00d221610dc46116dd409c65d53d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2b2879a1ebcf01a0433873e8da77c4ce55a078cd
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446625"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647017"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Výběr kapacitu pro vaše nasazení nástroje QnA Maker
 
 Služba QnA Maker je závislá na tři prostředků Azure:
 1.  App Service (pro modul runtime)
-2.  Azure Search (pro ukládání maximálně)
+2.  Azure Search (pro ukládání a hledání QnAs)
 3.  App Insights (volitelné, pro ukládání protokolů chatu a telemetrie)
 
 Před vytvořením služby QnA Maker, byste měli rozhodnout, jaké úroveň výše uvedených služeb je pro vás vhodná. 
 
 Obvykle jsou tři parametry, které je potřeba zvážit:
 
-1. **Propustnost je nutné ze služby**: Vyberte příslušné [plán služby App](https://azure.microsoft.com/pricing/details/app-service/plans/) pro službu App service podle svých potřeb. Je možné [vertikálně navýšit kapacitu](https://docs.microsoft.com/azure/app-service/web-sites-scale) nebo snížit kapacitu aplikace. To by mělo také ovlivnit výběr Azure Search SKU, další podrobnosti najdete v tématu [tady](https://docs.microsoft.com/azure/search/search-sku-tier).
+1. **Propustnost, kterou potřebujete ze služby**: Podle svých potřeb vyberte vhodný [plán aplikace](https://azure.microsoft.com/pricing/details/app-service/plans/) pro vaši službu App Service. Je možné [vertikálně navýšit kapacitu](https://docs.microsoft.com/azure/app-service/manage-scale-up) nebo snížit kapacitu aplikace. To by mělo také ovlivnit výběr Azure Search SKU, další podrobnosti najdete v tématu [tady](https://docs.microsoft.com/azure/search/search-sku-tier).
 
-1. **Velikosti a počtu znalostních bází**: Zvolte odpovídající [Azure vyhledávání SKU](https://azure.microsoft.com/pricing/details/search/) pro váš scénář. Je možné publikovat N-1 znalostních bází na určitou úroveň, kde N je maximální počet indexů na úrovni povoleno. Zkontrolujte také maximální velikosti a počtu dokumentů povolené a úroveň.
+1. **Velikost a počet znalostí znalostní báze**: Vyberte příslušnou SKLADOVOU položku služby [Azure Search](https://azure.microsoft.com/pricing/details/search/) pro váš scénář. Je možné publikovat N-1 znalostních bází na určitou úroveň, kde N je maximální počet indexů na úrovni povoleno. Zkontrolujte také maximální velikosti a počtu dokumentů povolené a úroveň.
 
-    Pokud svou úroveň má 15 povolené indexy, můžete publikovat 14 znalostních bází (1 index na publikované znalostní báze). Patnáctý index se používá pro všechny znalostních bází, vytváření a testování. 
+    Pokud má vaše úroveň například 15 povolených indexů, můžete publikovat 14 báze znalostí (1 index na publikovanou znalostní bázi). Patnáctý index se používá pro všechny znalostní báze pro vytváření a testování. 
 
-1. **Počet dokumentů, jako zdroje**: SKU zdarma službu QnA Maker management omezuje počet dokumentů, které můžete spravovat prostřednictvím portálu a rozhraní API pro 3 (1 MB. velikost každého). Standardní skladová položka nemá žádná omezení pro počet dokumentů, které můžete spravovat. Další podrobnosti najdete [tady](https://aka.ms/qnamaker-pricing).
+1. **Počet dokumentů jako zdrojů**: Bezplatná SKU služby QnA Maker Management omezuje počet dokumentů, které můžete spravovat přes portál, a rozhraní API na 3 (o velikosti 1 MB). Standardní skladová položka nemá žádná omezení pro počet dokumentů, které můžete spravovat. Další podrobnosti najdete [tady](https://aka.ms/qnamaker-pricing).
 
 V následující tabulce jsou uvedené některé podrobné pokyny.
 

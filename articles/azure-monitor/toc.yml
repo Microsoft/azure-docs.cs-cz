@@ -930,6 +930,8 @@
               href: platform/alerts-understand-migration.md
             - name: Použití nástroje pro migraci
               href: platform/alerts-using-migration-tool.md
+            - name: Automatický proces migrace
+              href: platform/alerts-automatic-migration.md
             - name: Správy klasických upozornění metrik
               href: platform/alerts-classic-portal.md
             - name: Klasické upozornění metriky s využitím šablony Resource Manageru

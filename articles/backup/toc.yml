@@ -114,6 +114,8 @@
               href: backup-mabs-system-state-and-bmr.md
         - name: Obnovení dat z Azure Backup Serveru
           href: backup-azure-alternate-dpm-server.md
+        - name: Obnovení virtuálních počítačů VMware s využitím Azure Backup Serveru
+          href: restore-azure-backup-server-vmware.md
     - name: Azure Backup Server v Azure Stacku
       items:
         - name: Instalace Azure Backup Serveru

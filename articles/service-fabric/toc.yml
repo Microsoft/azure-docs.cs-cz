@@ -108,7 +108,7 @@
 - name: Ukázky
   items:
     - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/resources/samples/?service=service-fabric'
+      href: 'https://docs.microsoft.com/samples/browse/'
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
@@ -354,7 +354,7 @@
       href: service-fabric-api-management-overview.md
     - name: Model prostředků aplikace
       href: service-fabric-concept-resource-model.md
-    - name: Spravovaná identita
+    - name: Spravovaná identita (Preview)
       href: concepts-managed-identity.md
 - name: Návody
   items:
@@ -747,7 +747,7 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: Řešení potíží s místním clusterem
           href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: Použití spravované identity pro aplikace Service Fabric
+    - name: Použití spravované identity pro aplikace Service Fabric (Preview)
       items:
         - name: Nastavení clusteru
           items:

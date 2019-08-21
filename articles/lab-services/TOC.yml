@@ -72,7 +72,7 @@
   items:
     - name: Testovací prostředí v učebnách
       items:
-        - name: Vytvoření a konfigurace účtů testovacího prostředí
+        - name: Vytvoření a konfigurace účtů testovacího prostředí (vlastník testovacího prostředí)
           items:
             - name: Vytvoření a správa účtů testovacího prostředí
               href: classroom-labs/how-to-manage-lab-accounts.md
@@ -82,7 +82,7 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Připojení nebo odpojení sdílené galerie imagí
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-        - name: 'Vytváření, konfigurace a využití testovacích prostředí v učebnách'
+        - name: Vytvoření a konfigurace testovacích prostředí v učebnách (učitel)
           items:
             - name: Vytváření a správa testovacích prostředí v učebnách
               href: classroom-labs/how-to-manage-classroom-labs.md
@@ -90,8 +90,6 @@
               href: classroom-labs/how-to-create-manage-template.md
             - name: Konfigurace a řízení využití
               href: classroom-labs/how-to-configure-student-usage.md
-            - name: Přístup k testovacím prostředím v učebnách
-              href: classroom-labs/how-to-use-classroom-lab.md
             - name: Vytvoření a správa plánů
               href: classroom-labs/how-to-create-schedules.md
             - name: Vytvoření prostředí s více virtuálními počítači v rámci virtuálního počítače podle šablony
@@ -102,6 +100,10 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: Nastavení nebo resetování hesel pro virtuální počítače
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+        - name: Připojení k virtuálním počítačům v testovacích prostředích v učebnách (student)
+          items:
+            - name: Přístup k testovacím prostředím v učebnách
+              href: classroom-labs/how-to-use-classroom-lab.md
     - name: DevTest Labs
       items:
         - name: Konfigurace testovacího prostředí
@@ -120,6 +122,8 @@
               href: configure-lab-remote-desktop-gateway.md
             - name: Zveřejnění oznámení v testovacím prostředí
               href: devtest-lab-announcements.md
+            - name: Povolení připojení prohlížeče na virtuálních počítačích
+              href: enable-browser-connection-lab-virtual-machines.md
             - name: Konfigurace správy nákladů
               href: devtest-lab-configure-cost-management.md
             - name: Odesílání oznámení automatického vypínání
@@ -166,6 +170,8 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: Vytvoření virtuálního počítače s využitím image ze sdílené galerie imagí
               href: add-vm-use-shared-image.md
+            - name: Připojení k virtuálnímu počítači přes prohlížeč
+              href: connect-virtual-machine-through-browser.md
             - name: Spuštění nebo zastavení virtuálního počítače s použitím PowerShellu nebo CLI
               href: use-command-line-start-stop-virtual-machines.md
             - name: Restartování virtuálního počítače

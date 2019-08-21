@@ -149,6 +149,8 @@
           href: display-feature-information-android.md
         - name: Přidání vrstvy dlaždic
           href: how-to-add-tile-layer-android-map.md
+    - name: Poskytnutí zpětné vazby k datům
+      href: how-to-use-feedback-tool.md
 - name: Referenční informace
   items:
     - name: Rozšíření rozhraní API a parametrů
