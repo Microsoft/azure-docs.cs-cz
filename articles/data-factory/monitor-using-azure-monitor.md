@@ -107,8 +107,8 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | --- | --- | --- |
 | storageAccountId |Řetězec | ID prostředku účtu úložiště, na který chcete odesílat diagnostické protokoly |
 | serviceBusRuleId |Řetězec | ID pravidla služby Service Bus oboru názvů služby Service Bus, ve kterém chcete mít Event Hubs vytvořené pro streamování diagnostických protokolů. ID pravidla má formát: {Service Bus Resource ID}/authorizationrules/{Key Name}.|
-| ID pracovního prostoru | Komplexní typ | Pole časových období metriky a jejich zásady uchovávání. V tuto chvíli je tato vlastnost prázdná. |
-|metrics metrik| Hodnoty parametrů běhu kanálu, které se mají předat vyvolanému kanálu| Názvy parametrů mapování objektů JSON na hodnoty argumentů |
+| workspaceId | Komplexní typ | Pole časových období metriky a jejich zásady uchovávání. V tuto chvíli je tato vlastnost prázdná. |
+| metrics | Hodnoty parametrů běhu kanálu, které se mají předat vyvolanému kanálu| Názvy parametrů mapování objektů JSON na hodnoty argumentů |
 | logs| Komplexní typ| Název kategorie diagnostického protokolu pro typ prostředku. Chcete-li získat seznam kategorií diagnostického protokolu pro určitý prostředek, proveďte nejprve operaci získat nastavení diagnostiky. |
 | category| Řetězec| Pole kategorií protokolů a jejich zásady uchovávání informací |
 | timeGrain | Řetězec | Členitost metrik, která je zachycena ve formátu ISO 8601 Duration. Musí být PT1M (jedna minuta)|
