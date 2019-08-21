@@ -83,7 +83,7 @@ V moderních podnicích IT oddělení často nevědí o všech cloudových aplik
 
 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) vám může pomoct identifikovat užitečné aplikace, které jsou oblíbené s uživateli, že si mohou schválit a přidat do galerie podnikových aplikací, aby uživatelé využili výhod funkcí, jako je jednotné přihlašování a podmíněný přístup.
 
-*"* * Cloud App Security** pomáhá zajistit, že naši lidé budou správně používat naše cloudové a SaaS aplikace, a to tak, jak podporují základní zásady zabezpečení, které pomáhají chránit Accenture." *--- [Jan Blasi, Správa ředitele, zabezpečení informací, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*"**Cloud App Security** pomáhá zajistit, že naši lidé budou správně používat naše cloudové a SaaS aplikace, a to tak, jak podporují základní zásady zabezpečení, které pomáhají chránit Accenture."* --- [Jan Blasi, Správa ředitele, zabezpečení informací, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 Kromě detekce stínového IT může MCAS také určit úroveň rizika aplikací, zabránit neoprávněnému přístupu k podnikovým datům, možnému úniku dat a dalším bezpečnostním rizikům, která jsou v aplikacích spojená.
 

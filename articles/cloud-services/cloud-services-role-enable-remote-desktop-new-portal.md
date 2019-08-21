@@ -60,7 +60,7 @@ Jakmile je na rolích povolena vzdálená plocha, můžete iniciovat připojení
 4. Klikněte na **otevřít** a pak na **připojit** a spusťte připojení ke vzdálené ploše.
 
 >[!NOTE]
-> Pokud se vaše cloudová služba koná za NSG, možná budete muset vytvořit pravidla, která povolují provoz na portech **3389** a **20000**.  Vzdálená plocha používá port **3389**.  Instance cloudových služeb jsou vyrovnávány zatížení, takže nemůžete přímo určovat, ke které instanci se má připojit.  Agenti *RemoteForwarder* a *RemoteAccess* spravují provoz protokolu RDP a umožňují klientovi odeslat soubor cookie RDP a zadat jednotlivou instanci, ke které se připojí.  Agenti *RemoteForwarder* a *RemoteAccess* vyžadují, aby byl otevřený port **20000***, který může být zablokován, pokud máte NSG.
+> Pokud se vaše cloudová služba koná za NSG, možná budete muset vytvořit pravidla, která povolují provoz na portech **3389** a **20000**.  Vzdálená plocha používá port **3389**.  Instance cloudových služeb jsou vyrovnávány zatížení, takže nemůžete přímo určovat, ke které instanci se má připojit.  Agenti *RemoteForwarder* a *RemoteAccess* spravují provoz protokolu RDP a umožňují klientovi odeslat soubor cookie RDP a zadat jednotlivou instanci, ke které se připojí.  Agenti *RemoteForwarder* a *RemoteAccess* vyžadují, aby byl otevřený port **20000** *, který může být zablokován, pokud máte NSG.
 
 ## <a name="additional-resources"></a>Další zdroje
 

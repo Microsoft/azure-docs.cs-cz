@@ -61,9 +61,9 @@ Při šifrování vygeneruje Klientská knihovna náhodný vektor inicializace (
 > 
 > 
 
-Stažení šifrovaného objektu BLOB zahrnuje načtení obsahu celého objektu BLOB pomocí metod **Get*** pohodlí. Zabalená CEK se nebalí a používá společně s IV (uloženými jako metadata objektů BLOB v tomto případě) k vrácení dešifrovaných dat uživatelům.
+Stažení šifrovaného objektu BLOB zahrnuje načtení obsahu celého objektu BLOB pomocí metod **Get** * pohodlí. Zabalená CEK se nebalí a používá společně s IV (uloženými jako metadata objektů BLOB v tomto případě) k vrácení dešifrovaných dat uživatelům.
 
-Stažení libovolného rozsahu (**Get*** metody s předanými parametry rozsahu) v zašifrovaném objektu BLOB zahrnuje úpravu rozsahu poskytnutého uživateli, aby bylo možné získat malé množství dalších dat, která lze použít k úspěšnému dešifrování požadovaného rozsahu. .
+Stažení libovolného rozsahu ( **Get** * metody s předanými parametry rozsahu) v zašifrovaném objektu BLOB zahrnuje úpravu rozsahu poskytnutého uživateli, aby bylo možné získat malé množství dalších dat, která lze použít k úspěšnému dešifrování požadovaného rozsahu. .
 
 Objekty blob bloku a objekty blob stránky je možné šifrovat nebo dešifrovat pomocí tohoto schématu. V tuto chvíli není k dispozici žádná podpora pro šifrování doplňovacích objektů BLOB.
 
