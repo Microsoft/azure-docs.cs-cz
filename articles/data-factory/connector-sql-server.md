@@ -60,7 +60,7 @@ Pro propojenou službu SQL Server jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na **SQLServer**. | Ano |
 | connectionString |Zadejte informace **připojovacího řetězce** potřebné pro připojení k databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. Přečtěte si následující ukázky.<br/>Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si `password` z připojovacího řetězce konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| userName |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příkladem je **Doména\\\ uživatelské jméno**. |Ne |
+| userName |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příkladem je **domainname\\username**. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Nebo můžete [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ne |
 | connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Ne |
 
