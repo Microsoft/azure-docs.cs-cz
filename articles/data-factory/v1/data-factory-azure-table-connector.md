@@ -484,7 +484,7 @@ Při přesunu dat do a z Azure Table, následující [mapování, které jsou de
 | Edm.Guid |Guid |128bitové globálně jedinečný identifikátor. |
 | Edm.Int32 |Int32 |32bitové celé číslo. |
 | Edm.Int64 |Int64 |64bitové celé číslo. |
-| Edm.String |Řetězec |Hodnota kódování UTF-16. Řetězcové hodnoty může mít až 64 KB. |
+| Edm.String |String |Hodnota kódování UTF-16. Řetězcové hodnoty může mít až 64 KB. |
 
 ### <a name="type-conversion-sample"></a>Ukázka typ převodu
 Následující příklad je pro kopírování dat z objektu Blob Azure do Azure Table s převody typu.
