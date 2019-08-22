@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d6ad7631ae32f8bd04812093a0fef4fa3d575864
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d716eb761ab406b65f10898b29775327a801ac45
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067398"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875463"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Kurz: Monitorování zařízení pomocí Azure IoT Central
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 V tomto kurzu se dozvíte, jak jako operátor můžete pomocí aplikace Microsoft Azure IoT Central monitorovat zařízení a změnit nastavení.
 
@@ -41,7 +43,7 @@ Azure IoT Central posílá oznámení o zařízení v podobě e-mailových zprá
 
 Otevřete e-mailovou zprávu, kterou jste obdrželi na konci kurzu [Konfigurace pravidel a akcí pro zařízení](tutorial-configure-rules.md). V e-mailu zvolte **Click here to open your device** (Kliknutím sem otevřete zařízení):
 
-![E-mailová oznámení výstrah](media/tutorial-monitor-devices/email.png)
+![E-mail s oznámením výstrah](media/tutorial-monitor-devices/email.png)
 
 V prohlížeči se otevře stránka **Device** (Zařízení) simulovaného zařízení **Connected Air Conditioner-1**, které jste vytvořili v předchozích kurzech:
 
@@ -55,15 +57,15 @@ Zvolte zobrazení **Dashboard** a podívejte se na informace o zařízení.
 
 ![Řídicí panel zařízení](media/tutorial-monitor-devices/initial_screen.png)
 
-Graf na řídicím panelu vykresluje teplotní křivku zařízení. Můžete také zjistit aktuální teplotu cíl pro dané zařízení v **vlastnosti zařízení** dlaždici. Rozhodnete se, že cílová teplota je příliš vysoká.
+Graf na řídicím panelu vykresluje teplotní křivku zařízení. Aktuální cílovou teplotu pro zařízení můžete zobrazit také na dlaždici **vlastnosti zařízení** . Rozhodnete se, že cílová teplota je příliš vysoká.
 
 ## <a name="remediate-an-issue"></a>Oprava problému
 
 Cílovou teplotu zařízení můžete změnit na stránce **Settings**:
 
-1. Zvolte **Settings** (Nastavení). Změňte nastavení **Set Temperature** (Nastavit teplotu) na hodnotu 75. Zvolte **Update** (Aktualizovat), aby se do zařízení odeslala nová cílová teplota. Když zařízení potvrdí změny nastavení, stav nastavení se změní na **synchronizované**:
+1. Zvolte **Settings** (Nastavení). Změňte nastavení **Set Temperature** (Nastavit teplotu) na hodnotu 75. Zvolte **Update** (Aktualizovat), aby se do zařízení odeslala nová cílová teplota. Když zařízení potvrdí změnu nastavení, stav nastavení se změní na **Synchronizovaný**:
 
-    ![Aktualizace nastavení](media/tutorial-monitor-devices/change_settings.png)
+    ![Aktualizovat nastavení](media/tutorial-monitor-devices/change_settings.png)
 
 2. Zvolte **Dashboard** a ověřte novou hodnotu nastavení:
 
