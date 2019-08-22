@@ -356,6 +356,8 @@
       href: service-fabric-concept-resource-model.md
     - name: Spravovaná identita (Preview)
       href: concepts-managed-identity.md
+    - name: Konfigurace přihlašovacích údajů úložiště kontejnerů
+      href: configure-container-repository-credentials.md
 - name: Návody
   items:
     - name: Nastavení vývojového prostředí

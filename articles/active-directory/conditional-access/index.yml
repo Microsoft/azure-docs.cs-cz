@@ -1,56 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k podmíněnému přístupu Azure AD
+summary: Jak nakonfigurovat a otestovat podmíněný přístup služby Azure Active Directory
 metadata:
-  document_id: null
-  title: 'Dokumentace k podmíněnému přístupu Azure AD – kurzy, šablony Rychlý start, koncepce, reference | Microsoft Docs'
-  description: 'Zjistěte, jak nakonfigurovat a otestovat podmíněný přístup služby Azure Active Directory.'
+  title: Dokumentace k podmíněnému přístupu Azure AD
+  description: Jak nakonfigurovat a otestovat podmíněný přístup služby Azure Active Directory
   services: active-directory
-  ms.subservice: conditional-access
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: conditional-access
   ms.topic: landing-page
-  ms.date: 08/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 'Zjistěte, jak konfigurací podmíněného přístupu služby Azure AD zajistit rovnováhu mezi zabezpečením a produktivitou. Zásady podmíněného přístupu umožňují do vašeho rozhodování o přístupu začlenit způsob přístupu ke cloudovým aplikacím. Při rozhodování o přístupu můžete například řešit tyto otázky:<ul><li>Jaké je síťové umístění tohoto uživatele?</li><li>Je pokus o přístup iniciovaný ze spravovaného zařízení?</li><li>Z které klientské aplikace se pokus o připojení inicioval?</li><li>Došlo k pokusu o přístup z rizikového přihlášení?</li></ul>Následující informační materiály vám umožní rychle začít.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: Vysvětlení podmíněného přístupu
-    href: 'https://www.youtube.com/watch?v=XruceejcCKQ'
-    width: 246
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Zjistěte, jak nakonfigurovat zásady podmíněného přístupu pro běžné scénáře přístupu.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Vyžadování MFA pro specifické aplikace
-            href: app-based-mfa.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: 'Blokování přístupu, pokud se zjistí riziko relace'
-            href: app-sign-in-risk.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Vyžadování přijetí podmínek použití
-            href: require-tou.md
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Zjistěte, jak migrovat klasické zásady podmíněného přístupu.'
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="/azure/active-directory/conditional-access/policy-migration-mfa">Migrace klasické zásady, která vyžaduje vícefaktorové ověřování</a>'
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 39f9cf3e64e343c2da98f2c4f4b403ccdc0f3f20
+  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/21/2019
+  ms.locfileid: "69874270"
+landingContent:
+- title: Informace o podmíněném přístupu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je podmíněný přístup?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Co jsou podmínky?
+      url: conditions.md
+    - text: Jak se dají definovat umístění?
+      url: location-condition.md
+    - text: Co jsou ovládací prvky?
+      url: controls.md
+    - text: Závislosti služby podmíněného přístupu
+      url: service-dependencies.md
+- title: Nasazení podmíněného přístupu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Plánování nasazení podmíněného přístupu
+      url: plan-conditional-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: Blokování starší verze ověřování
+      url: block-legacy-authentication.md
+    - text: Řešení potíží pomocí nástroje What If
+      url: troubleshoot-conditional-access-what-if.md
+- title: Běžné zásady podmíněného přístupu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Běžné zásady podmíněného přístupu
+      url: concept-conditional-access-policy-common.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vyžadování MFA pro správce
+      url: howto-conditional-access-policy-admin-mfa.md
+    - text: Vyžadování MFA pro správu Azure
+      url: howto-conditional-access-policy-azure-management.md
+    - text: Blokování starší verze ověřování
+      url: howto-conditional-access-policy-block-legacy.md
+    - text: Podmíněný přístup podle rizika (vyžaduje Azure AD Premium P2)
+      url: howto-conditional-access-policy-risk.md
+    - text: Vyžadování důvěryhodného umístění pro registraci MFA
+      url: howto-conditional-access-policy-registration.md
+    - text: Blokování přístupu podle umístění
+      url: howto-conditional-access-policy-location.md
+    - text: Vyžadování zařízení, které splňuje požadavky
+      url: howto-conditional-access-policy-compliant-device.md

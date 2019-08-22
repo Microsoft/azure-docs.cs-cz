@@ -179,12 +179,14 @@
   items:
     - name: Nenalezena žádná předplatná
       href: billing-no-subscriptions-found.md
+    - name: Problémy s platbou
+      href: billing-troubleshoot-azure-payment-issues.md
     - name: Odmítnutá karta
-      href: 'https://support.microsoft.com/en-us/help/4042960'
+      href: billing-troubleshoot-declined-card.md
     - name: Problémy s registrací
-      href: 'https://support.microsoft.com/en-us/help/4042959'
-    - name: Problémy s přihlášením
-      href: 'https://support.microsoft.com/en-us/help/4042961'
+      href: billing-troubleshoot-azure-sign-up.md
+    - name: Problémy s přihlašováním k předplatnému
+      href: billing-troubleshoot-sign-in-issue.md
     - name: Zákaz zobrazení firemních nákladů
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kontaktování podpory

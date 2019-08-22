@@ -97,9 +97,6 @@
         - name: Modularizace šablon
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
-        - name: Správa tajných kódů
-          displayname: key vault
-          href: resource-manager-keyvault-parameter.md
         - name: Vytvoření několika instancí
           href: resource-group-create-multiple.md
         - name: Použití rozšíření šablon
@@ -124,6 +121,13 @@
           href: secure-template-with-sas-token.md
         - name: Nasazení do několika skupin prostředků nebo předplatných
           href: resource-manager-cross-resource-group-deployment.md
+    - name: Zadání parametrů
+      items:
+        - name: Vytvoření souboru parametrů
+          href: resource-manager-parameter-files.md
+        - name: Předávání citlivých hodnot
+          displayname: key vault
+          href: resource-manager-keyvault-parameter.md
     - name: CI/CD
       items:
         - name: Projekt VS s kanály

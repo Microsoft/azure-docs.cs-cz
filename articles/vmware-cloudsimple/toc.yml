@@ -105,7 +105,7 @@
             - name: Zobrazení seznamu uživatelů
               href: users.md
             - name: Nastavení připojení virtuální sítě k privátnímu cloudu
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
+              href: virtual-network-connection.md
             - name: Úprava profilu uživatele
               href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: Nastavení virtuálních počítačů VMware pro privátní cloud
@@ -124,8 +124,8 @@
               href: escalate-privileges.md
             - name: Nastavení úloh DNS a DHCP
               href: dns-dhcp-setup.md
-            - name: Síť VPN NSX vrstvy 2 pro migraci
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
+            - name: Migrace úloh pomocí roztažené sítě vrstvy 2
+              href: migration-layer-2-vpn.md
         - name: Sítě privátního cloudu
           items:
             - name: Připojení VPN mezi místním a privátním cloudem
@@ -145,24 +145,28 @@
             - name: Konfigurace serveru vCenter privátního cloudu jako koncového bodu automatizace vRealize
               href: configure-server-vrealize-automation-endpoint.md
             - name: Migrace virtuálních počítačů úloh do privátního cloudu
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
+              href: migrate-workloads.md
             - name: Zajištění vysoké dostupnosti aplikace ve VMware v Azure
               href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+            - name: Volba metody vyrovnávání zatížení
+              href: load-balancers.md
         - name: Ekosystém VMware
           items:
             - name: Zálohování virtuálních počítačů úloh
               href: backup-workloads-veeam.md
+            - name: Konfigurace privátního cloudu jako lokality pro zotavení po havárii s využitím Zerto
+              href: disaster-recovery-zerto.md
             - name: Průvodce řešením VMware Horizon
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: Konfigurace šifrování vSAN pro váš privátní cloud
               href: vsan-encryption.md
-            - name: Nasazení Oracle RAC v privátním cloudu CloudSimple
-              href: 'https://docs.azure.cloudsimple.com/oracle-rac/'
+            - name: Optimalizace privátního cloudu pro Oracle RAC
+              href: oracle-real-application-clusters.md
         - name: Integrace základních služeb Azure
           items:
             - name: Zdroj identity Azure AD v serveru vCenter privátního cloudu
               href: azure-ad.md
             - name: Místní síťové připojení s využitím ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: Připojení virtuální sítě Azure s využitím ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md

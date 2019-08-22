@@ -44,6 +44,8 @@
               href: ./appsource-offer-publishing-guide.md
             - name: Povolení uvedení na AppSource a Marketplace s využitím Azure Active Directory
               href: ./enable-appsource-marketplace-using-azure-ad.md
+            - name: Integrovaná řešení
+              href: ./integrated-solutions-for-publishers.md
         - name: Marketingové osvědčené postupy
           href: ./gtm-marketing-best-practices.md
           items:

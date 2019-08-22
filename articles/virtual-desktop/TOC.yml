@@ -34,8 +34,10 @@
       href: create-host-pools-powershell.md
     - name: Použití licence Windows pro hostitele relací Windows Virtual Desktop
       href: apply-windows-license.md
-    - name: Nastavení sdílení profilu uživatele pro fond hostitelů
+    - name: Vytvoření kontejneru profilů pro fond hostitelů s využitím sdílené složky
       href: create-host-pools-user-profile.md
+    - name: Vytvoření kontejneru profilů pro fond hostitelů s využitím Azure NetApp Files
+      href: create-fslogix-profile-container.md
     - name: Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop
       href: configure-host-pool-load-balancing.md
     - name: Příprava a přizpůsobení hlavní image VHD

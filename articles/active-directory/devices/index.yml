@@ -1,35 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k identitám zařízení Azure AD
+summary: Přečtěte si, jak nakonfigurovat a spravovat identity zařízení v Azure AD.
 metadata:
-  document_id: null
-  title: 'Dokumentace ke správě identit zařízení Azure AD – kurzy, šablony Rychlý start, koncepce, reference | Microsoft Docs'
-  description: 'Přečtěte si, jak nakonfigurovat a spravovat identity zařízení v Azure AD.'
+  title: Dokumentace k identitám zařízení Azure AD
+  description: Přečtěte si, jak nakonfigurovat a spravovat identity zařízení v Azure AD.
   services: active-directory
-  ms.subservice: devices
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: devices
   ms.topic: landing-page
-  ms.date: 08/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 'Prostřednictvím zařízení v Azure AD uživatelé získávají přístup k vašim firemním prostředkům. Pokud jako správce IT chcete chránit firemní prostředky, chcete mít možnost spravovat identity těchto zařízení v Azure AD. To vám umožní zajistit, aby uživatelé přistupovali k vašim prostředkům ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů.<br>Správa identit zařízení je také základem podmíněného přístupu na základě zařízení. Pomocí podmíněného přístupu na základě zařízení můžete zajistit, aby byl přístup k prostředkům ve vašem prostředí možný pouze se spravovanými zařízeními.'
-sections:
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Další informace o integraci místních zařízení připojených k AD s Azure AD
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Spravované domény
-            href: hybrid-azuread-join-managed-domains.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Federované domény
-            href: hybrid-azuread-join-federated-domains.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: e26be2206ba63fa4721ced7ed1a2f35ddc63a5fd
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69648927"
+landingContent:
+- title: Informace o identitě zařízení
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je identita zařízení?
+      url: overview.md
+    - text: Co je Enterprise State Roaming?
+      url: enterprise-state-roaming-overview.md
+  - linkListType: concept
+    links:
+    - text: Zařízení zaregistrovaná v Azure AD
+      url: concept-azure-ad-register.md
+    - text: Zařízení připojená k Azure AD
+      url: concept-azure-ad-join.md
+    - text: Hybridní zařízení připojená k Azure AD
+      url: concept-azure-ad-join-hybrid.md
+    - text: Jednotné přihlašování k místním prostředkům
+      url: azuread-join-sso.md
+    - text: Primární obnovovací tokeny
+      url: concept-primary-refresh-token.md
+- title: Konfigurace a správa zařízení připojených ke službě Azure AD
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Plánování implementace připojení ke službě Azure AD
+      url: azureadjoin-plan.md
+    - text: Správa místní skupiny Administrators na zařízeních připojených k Azure AD
+      url: assign-local-admin.md
+    - text: Vyhledání a správa zastaralých zařízení ve službě Azure AD
+      url: manage-stale-devices.md
+- title: Konfigurace a správa hybridních zařízení připojených ke službě Azure AD
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Plánování implementace připojení k hybridní službě Azure AD
+      url: hybrid-azuread-join-plan.md
+    - text: Řešení potíží s hybridními zařízeními připojenými k Azure AD
+      url: troubleshoot-hybrid-join-windows-current.md

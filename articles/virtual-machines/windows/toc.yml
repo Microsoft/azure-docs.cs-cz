@@ -251,6 +251,8 @@
           href: mitigate-se.md
         - name: Naplánované události
           href: scheduled-events.md
+        - name: Monitorování plánovaných událostí
+          href: scheduled-event-service.md
         - name: Monitorování metadat
           href: instance-metadata-service.md
         - name: Povolení vnořené virtualizace

@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 08/14/2019
-  ms.openlocfilehash: 03de9ceffe4495b1c3a39dad6617cc72d022fbbd
-  ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+  ms.date: 08/16/2019
+  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/16/2019
-  ms.locfileid: "69557836"
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69650378"
 landingContent:
 - title: Řada služeb Azure Data Box
   linkLists:
@@ -53,75 +53,43 @@ landingContent:
     links:
     - text: Pro Data Box
       url: data-box-system-requirements.md
-    - text: Pro úložiště objektů blob Data Boxu
-      url: data-box-system-requirements-rest.md
     - text: Pro Data Box Disk
       url: data-box-disk-system-requirements.md
     - text: Pro Data Box Heavy
       url: data-box-heavy-system-requirements.md
-- title: Nasazení Data Boxu
+- title: Objednání, nastavení, kopírování, vrácení
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Objednání
+    - text: Data Box
       url: data-box-deploy-ordered.md
-    - text: Kabel
-      url: data-box-deploy-set-up.md
-    - text: Připojení a kopírování dat přes SMB
-      url: data-box-deploy-copy-data.md
-    - text: Vrácení, odeslání a ověření dat Azure
-      url: data-box-deploy-picked-up.md
-- title: Nasazení Data Box Disku
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Objednání
+    - text: Data Box Disk
       url: data-box-disk-deploy-ordered.md
-    - text: Odemknutí a připojení
-      url: data-box-disk-deploy-set-up.md
-    - text: Kopírování a ověření dat
-      url: data-box-disk-deploy-copy-data.md
-    - text: Vrácení, odeslání a ověření dat Azure
-      url: data-box-disk-deploy-picked-up.md
-- title: Nasazení zařízení Data Box Heavy
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Objednání
+    - text: Data Box Heavy
       url: data-box-heavy-deploy-ordered.md
-    - text: Kabel
-      url: data-box-heavy-deploy-set-up.md
-    - text: Připojení a kopírování dat přes SMB
-      url: data-box-heavy-deploy-copy-data.md
-    - text: Vrácení, odeslání a ověření dat Azure
-      url: data-box-heavy-deploy-picked-up.md
 - title: Správa zařízení
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box, Data Box Heavy v Azure
+    - text: Data Box v Azure
       url: data-box-portal-admin.md
-    - text: Data Box, Data Box Heavy přes místní uživatelské rozhraní
-      url: data-box-local-web-ui-admin.md
     - text: Data Box Disk v Azure
       url: data-box-portal-ui-admin.md
-- title: Nejčastější dotazy
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Nejčastější dotazy – Data Box
-      url: data-box-faq.md
-    - text: Nejčastější dotazy – Data Box Disk
-      url: data-box-disk-faq.md
+    - text: Data Box Heavy v Azure
+      url: data-box-portal-admin.md
 - title: Řešení potíží
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box, Data Box Heavy
+    - text: Data Box
       url: data-box-troubleshoot.md
-    - text: Úložiště objektů blob Data Boxu
-      url: data-box-troubleshoot-rest.md
     - text: Data Box Disk
       url: data-box-disk-troubleshoot.md
+    - text: Data Box Heavy
+      url: data-box-troubleshoot.md
+    - text: Nejčastější dotazy k Data Boxu
+      url: data-box-faq.md
+    - text: Nejčastější dotazy k Data Box Disku
+      url: data-box-disk-faq.md
     - text: Otevření lístku podpory
       url: data-box-disk-contact-microsoft-support.md

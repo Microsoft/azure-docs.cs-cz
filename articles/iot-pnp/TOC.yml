@@ -1,0 +1,83 @@
+- name: Dokumentace k IoT Plug and Play
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je IoT Plug and Play?
+      href: overview-iot-plug-and-play.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Vytvoření zařízení pomocí modelu funkcí zařízení
+      href: quickstart-create-pnp-device.md
+    - name: Připojení zařízení ke službě IoT Hub
+      href: quickstart-connect-pnp-device.md
+    - name: Připojení zařízení ke službě IoT Central
+      href: 'https://aka.ms/iot-central-connect-qs'
+    - name: Připojení k zařízení ve vašem řešení
+      href: quickstart-connect-pnp-device-solution.md
+- name: Kurzy
+  items:
+    - name: Vytvoření zařízení s využitím editoru VS Code
+      href: tutorial-pnp-visual-studio-code.md
+    - name: Sestavení zařízení připraveného k certifikaci
+      href: tutorial-build-device-certification.md
+    - name: Certifikace vašeho zařízení
+      href: tutorial-certification-test.md
+- name: Koncepty
+  items:
+    - name: Glosář
+      href: iot-plug-and-play-glossary.md
+    - name: Příručka pro vývojáře
+      href: concepts-developer-guide.md
+    - name: Běžná rozhraní
+      href: concepts-common-interfaces.md
+    - name: Zjišťování modelů
+      href: concepts-model-discovery.md
+    - name: Omezení a kvóty
+      href: concepts-limits-quotas.md
+- name: Návody
+  items:
+    - name: Využití aplikace Workbench pro zařízení IoT
+      href: howto-use-iot-device-workbench.md
+    - name: Instalace průzkumníka IoT
+      href: howto-install-iot-explorer.md
+    - name: Onboarding na portál IoT
+      href: howto-onboard-portal.md
+    - name: Správa modelů
+      href: howto-manage-models.md
+    - name: Připojení k zařízení a interakce s ním
+      href: howto-develop-solution.md
+- name: Referenční informace
+  items:
+    - name: REST
+      href: 'https://aka.ms/iot-pnp-rest'
+    - name: Vygenerování tokenu zabezpečení REST
+      href: howto-generate-sas-token.md
+- name: Související
+  items:
+    - name: Řešení
+      items:
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: Akcelerátory řešení IoT
+          href: /azure/iot-accelerators
+    - name: Služby platformy
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Služba IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Sady SDK pro služby IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: IoT Edge
+      items:
+        - name: Azure IoT Edge
+          href: /azure/iot-edge
+        - name: Sady SDK pro zařízení IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

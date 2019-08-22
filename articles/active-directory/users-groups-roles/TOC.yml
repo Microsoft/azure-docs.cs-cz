@@ -102,7 +102,9 @@
           items:
             - name: Vytvoření dynamické skupiny
               href: groups-create-rule.md
-            - name: Pravidla dynamických skupin
+            - name: Aktualizace pravidla členství
+              href: groups-update-rule.md
+            - name: Syntaxe a pravidla dynamických skupin
               href: groups-dynamic-membership.md
             - name: Změna typu členství ve skupině
               href: groups-change-type.md
