@@ -100,7 +100,7 @@ Následující tabulka určuje, zda je nebo není podporováno typem dat Azure S
 
 | Azure Search datový typ | Podporované v Azure Search jímky |
 | ---------------------- | ------------------------------ |
-| Řetězec | Ano |
+| String | Ano |
 | Int32 | Ano |
 | Int64 | Ano |
 | Double | Ano |
