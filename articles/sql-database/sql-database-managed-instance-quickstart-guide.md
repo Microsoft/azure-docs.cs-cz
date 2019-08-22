@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
-ms.openlocfilehash: 97f7393622311103d94d3067205f902e3eec6843
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8dfe0db5277a995b6e6675381ebeb5aeb243c9b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567350"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647222"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Začínáme s Azure SQL Database Managed instance
 
@@ -56,8 +56,6 @@ Tyto rychlé starty vám umožní rychle vytvořit, nakonfigurovat a obnovit zá
 
 I když se virtuální síť nebo podsíť dá automaticky nakonfigurovat při vytvoření instance pomocí [Azure Portal](sql-database-managed-instance-get-started.md), může být vhodné ji vytvořit ještě předtím, než začnete vytvářet spravované instance, protože můžete nakonfigurovat parametry virtuální sítě a podsítě. Nejjednodušší způsob, jak vytvořit a nakonfigurovat síťové prostředí, je použít šablonu [nasazení prostředků Azure](sql-database-managed-instance-create-vnet-subnet.md) , která vytvoří a nakonfiguruje síť a podsíť, do které se instance umístí. Stačí stisknout tlačítko Azure Resource Manager nasadit a naplnit formulář parametry.
 
-Jako alternativu můžete k automatizaci vytváření sítě použít [skript prostředí PowerShell](https://www.powershellmagazine.com/20../../configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) .
-
 Alternativně můžete tento [skript PowerShellu](https://www.powershellmagazine.com/2018/07/23/configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) použít také k automatizaci vytváření sítě.
 
 Pokud už máte virtuální síť a podsíť, do které chcete nasadit spravovanou instanci, musíte zajistit, aby vaše virtuální síť a podsíť splňovaly [požadavky na síť](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Pomocí tohoto [skriptu PowerShell ověříte, že je vaše podsíť správně nakonfigurovaná](sql-database-managed-instance-configure-vnet-subnet.md). Tento skript ověří vaši síť a nahlásí všechny problémy a poskytne vám informace o tom, co se má změnit, a pak nabídne potřebné změny ve vaší virtuální síti nebo podsíti. Pokud nechcete konfigurovat virtuální síť nebo podsíť ručně, spusťte tento skript. Můžete ji také spustit po jakékoli zásadní rekonfiguraci síťové infrastruktury. Pokud chcete vytvořit a nakonfigurovat vlastní síť, načtěte si [architekturu připojení](sql-database-managed-instance-connectivity-architecture.md) a tuto ucelenou [příručku pro vytváření a konfiguraci prostředí spravované instance](https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01).
@@ -72,7 +70,7 @@ Chcete-li však migrovat provozní databázi nebo dokonce vývoj/testovací data
 
 Přečtěte si další informace o [doporučeném procesu migrace](sql-database-managed-instance-migrate.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Tady najdete [seznam podporovaných funkcí ve spravované instanci](sql-database-features.md) a [Podrobnosti a známé problémy](sql-database-managed-instance-transact-sql-information.md).
 - Seznamte se [s technickými charakteristikami spravované instance](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).

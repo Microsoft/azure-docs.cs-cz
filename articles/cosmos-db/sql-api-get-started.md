@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 25275aeb6637d50379b7c71e87be9ecffce269db
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ea3779ce7d4d77e6b0a55b8a00374b701a073b66
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614685"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876441"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Vytvoření konzolové aplikace .NET pro správu dat v Azure Cosmos DB účtu rozhraní SQL API
 
@@ -323,7 +323,7 @@ Zvolte **F5** pro spuštění aplikace.
 Blahopřejeme! Úspěšně jste vytvořili dvě položky Azure Cosmos.  
 
 ## <a id="Query"></a>Krok 7: Dotazy Azure Cosmos DB prostředky
-Azure Cosmos DB podporuje bohaté [dotazy](sql-api-sql-query.md) na dokumenty JSON uložené v každé z kolekcí. Následující vzorový kód ukazuje, jak spustit dotaz proti položkám, které jsme vložili v předchozím kroku.
+Azure Cosmos DB podporuje formátované [dotazy](sql-api-sql-query.md) na dokumenty JSON uložené v každém kontejneru. Následující vzorový kód ukazuje, jak spustit dotaz proti položkám, které jsme vložili v předchozím kroku.
 
 1. Zkopírujte a vložte metodu **QueryItemsAsync** pod vaší metodou **AddItemsToContainerAsync** .
 
