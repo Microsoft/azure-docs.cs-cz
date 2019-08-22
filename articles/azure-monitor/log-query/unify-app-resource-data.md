@@ -1,6 +1,6 @@
 ---
-title: Sjednocení několik prostředků Azure monitoru Application Insights | Dokumentace Microsoftu
-description: Tento článek obsahuje podrobnosti o tom, jak použít funkci v protokolech monitorování Azure pro různé prostředky Application Insights dotazovat a vizualizovat data.
+title: Sjednocení více prostředků Application Insights Azure Monitor | Microsoft Docs
+description: Tento článek poskytuje podrobné informace o tom, jak používat funkci v Azure Monitor protokoly k dotazování na více prostředků Application Insights a k vizualizaci těchto dat.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -12,27 +12,34 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 190b7f15a8ae0a5b9472188129f7116050fc831f
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: d441b72b34da6146eba523563a09c2908cdcbbf4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466842"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650139"
 ---
-# <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení několik prostředků Azure monitoru Application Insights 
-Tento článek popisuje, jak dotaz a zobrazit všechna data protokolů Application Insights aplikaci na jednom místě, i když se nachází v různých předplatných Azure, jako náhrada vyřazení Application Insights Connector. Počet prostředků prostředky Application Insights, které mohou obsahovat v jediném dotazu je omezena na 100.  
+# <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení více Azure Monitorch prostředků Application Insights 
+Tento článek popisuje, jak zadávat dotazy a zobrazovat všechna data protokolu Application Insights na jednom místě, i když jsou v různých předplatných Azure, jako náhrada za vyřazení Application Insights Connector. Počet prostředků Application Insights, které můžete zahrnout do jednoho dotazu, je omezený na 100.
 
-## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Doporučenému přístupu k dotazování více prostředky Application Insights 
-Výpis několika prostředky služby Application Insights v dotazu může být náročné a obtížné na správu. Místo toho můžete využít funkce rozdělte logiku dotazu z aplikací oborů.  
+## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Doporučený postup pro dotazování více Application Insights prostředků 
+Výpis více Application Insights prostředků v dotazu může být náročný a obtížně udržovatelný. Místo toho můžete využít funkci k oddělení logiky dotazů z oboru aplikací.  
 
-Tento příklad ukazuje, jak můžete monitorovat různé prostředky Application Insights a vizualizovat počet neúspěšných žádostí podle názvu aplikace. Než začnete, spusťte tento dotaz v pracovním prostoru, který je připojen k prostředky Application Insights k získání seznamu propojených aplikací: 
+Tento příklad ukazuje, jak můžete monitorovat více prostředků Application Insights a vizualizovat počet neúspěšných žádostí podle názvu aplikace. Než začnete, spusťte tento dotaz v pracovním prostoru, který je připojený k Application Insights prostředkům, abyste získali seznam připojených aplikací: 
 
 ```
 ApplicationInsights
 | summarize by ApplicationName
 ```
 
-Vytvoření funkce pomocí operátoru union se seznam aplikací a pak uložte dotaz ve vašem pracovním prostoru jako funkce s aliasem *applicationsScoping*.  
+Vytvořte funkci pomocí operátoru Union se seznamem aplikací a pak dotaz uložte ve svém pracovním prostoru jako funkci s aliasem *applicationsScoping*. 
+
+Uvedené aplikace můžete kdykoli upravit na portálu tak, že přejdete do Průzkumníku dotazů v pracovním prostoru a vyberete funkci pro úpravy a uložení nebo pomocí `SavedSearch` rutiny PowerShellu. 
+
+>[!NOTE]
+>Tuto metodu nelze použít s upozorněními protokolu, protože ověření přístupu prostředků pravidla výstrahy, včetně pracovních prostorů a aplikací, se provádí při vytváření výstrahy. Přidání nových prostředků do funkce po vytvoření výstrahy není podporováno. Pokud upřednostňujete použití funkce pro obory prostředků v upozorněních protokolu, je nutné upravit pravidlo výstrahy na portálu nebo pomocí šablony Správce prostředků pro aktualizaci oboru prostředků. Případně můžete do dotazu protokolu výstrahy zahrnout seznam prostředků.
+
+`withsource= SourceApp` Příkaz přidá sloupec do výsledků, který určí aplikaci, která protokol odeslala. Operátor Parse je v tomto příkladu volitelný a používá se k extrahování názvu aplikace z vlastnosti SourceApp. 
 
 ```
 union withsource=SourceApp 
@@ -44,14 +51,7 @@ app('Contoso-app5').requests
 | parse SourceApp with * "('" applicationName "')" *  
 ```
 
->[!NOTE]
->Uvedené aplikace kdykoli na portálu můžete upravit tak, že přejdete na Průzkumníka dotazů ve vašem pracovním prostoru a vyberete funkce pro úpravy a potom uložení nebo pomocí `SavedSearch` rutiny Powershellu. `withsource= SourceApp` Příkaz přidá sloupec do výsledků, který určuje aplikace, které odeslání protokolu. 
->
->Dotaz používá schéma Application Insights, i když dotaz je provést v pracovním prostoru, protože funkce applicationsScoping vrátí strukturu dat Application Insights. 
->
->Operátor analýzy je volitelné v tomto příkladu, extrahuje z vlastnosti SourceApp název aplikace. 
-
-Nyní jste připraveni používat funkce applicationsScoping v dotazu napříč prostředky:  
+Nyní jste připraveni použít funkci applicationsScoping v dotazu mezi prostředky:  
 
 ```
 applicationsScoping 
@@ -62,17 +62,17 @@ applicationsScoping
 | render timechart
 ```
 
-Alias funkce vrátí sjednocení žádosti ze všech definovaných aplikací. Dotazu a filtry pro chybné žádosti a vizualizuje vývoje aplikací.
+Dotaz používá Application Insights schéma, i když se dotaz spustí v pracovním prostoru, protože funkce applicationsScoping vrací datovou strukturu Application Insights. Alias funkce vrací sjednocení požadavků ze všech definovaných aplikací. Dotaz pak filtruje neúspěšné žádosti a vizualizuje trendy podle aplikace.
 
-![Příklad výsledky dotazů napříč](media/unify-app-resource-data/app-insights-query-results.png)
+![Příklad výsledků mezi dotazy](media/unify-app-resource-data/app-insights-query-results.png)
 
-## <a name="query-across-application-insights-resources-and-workspace-data"></a>Dotazování napříč prostředky Application Insights a pracovní prostor dat 
-Když zastavíte konektoru a nutnosti provádět dotazy za časové období, která byla oříznuta podle uchovávání dat Application Insights (90 dnů), je potřeba provést [dotazy napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md) v pracovním prostoru a Application Insights prostředky v přechodném období. To je, dokud vaše aplikace data hromadí za nové uchovávání dat Application Insights uvedených výše. Dotaz vyžaduje některé manipulace, protože schémata v Application Insights a pracovní prostor se liší. V tabulce dále v tomto oddílu zdůrazněním rozdílů schématu. 
+## <a name="query-across-application-insights-resources-and-workspace-data"></a>Dotazování napříč prostředky Application Insights a daty pracovního prostoru 
+Když konektor zastavíte a potřebujete provádět dotazy v časovém rozsahu, který byl zkrácen pomocí Application Insights uchovávání dat (90 dní), budete muset provádět [dotazy na více prostředků](../../azure-monitor/log-query/cross-workspace-query.md) v pracovním prostoru a Application Insights prostředky pro zprostředkující hodin. Je to až do doby, kdy se data vaší aplikace shromáždí podle nového Application Insights uchovávání dat uvedeného výše. Dotaz vyžaduje některé manipulace, protože schémata v Application Insights a pracovní prostor se liší. V tabulce dále v této části jsou zvýrazněny rozdíly ve schématu. 
 
 >[!NOTE]
->[Dotaz napříč prostředky](../log-query/cross-workspace-query.md) protokolu výstrahy je podporována v nové [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení, využívá Azure Monitor [starší verze API upozornění Log Analytics](../platform/api-alerts.md) pro vytvoření nového protokolu pravidla upozornění z webu Azure portal, pokud přejdete z [starší verze rozhraní API upozornění Log](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepnutí nové rozhraní API se stane výchozí pro nové pravidla upozornění na webu Azure portal a umožňuje vám vytvořit dotaz napříč prostředky, že pravidla upozornění protokolů. Můžete vytvořit [napříč prostředky dotazu](../log-query/cross-workspace-query.md) přitom přepínač pomocí pravidel upozornění protokolů [šablony ARM pro scheduledQueryRules rozhraní API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) – ale toto pravidlo upozornění se dají spravovat přes [ scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) a ne z portálu Azure portal.
+>[Dotaz na více prostředků](../log-query/cross-workspace-query.md) v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](../platform/api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pravidla upozornění protokolu [dotazu pro více prostředků](../log-query/cross-workspace-query.md) můžete vytvořit bez toho, aby byl přepínač použit pomocí [šablony ARM pro rozhraní scheduledQueryRules API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , ale toto pravidlo upozornění lze spravovat i v případě, že [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal.
 
-Například pokud konektor přestala pracovat na 2018-11-01, při dotazování protokolů napříč prostředky a aplikace data Application Insights v pracovním prostoru, dotaz by vytvořen jako v následujícím příkladu:
+Pokud například konektor přestal pracovat na 2018-11-01, při dotazování protokolů napříč Application Insights prostředky a data aplikací v pracovním prostoru bude dotaz vytvořen podobně jako v následujícím příkladu:
 
 ```
 applicationsScoping //this brings data from Application Insights resources 
@@ -93,18 +93,18 @@ applicationsScoping //this brings data from Application Insights resources
 | project timestamp , duration , name , resultCode 
 ```
 
-## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Application Insights a Log Analytics rozdíly ve schématu pracovního prostoru
-V následující tabulce jsou uvedeny rozdíly ve schématu mezi Log Analytics a Application Insights.  
+## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Rozdíly mezi Application Insights a Log Analytics schémat pracovního prostoru
+V následující tabulce jsou uvedeny rozdíly v schématech mezi Log Analytics a Application Insights.  
 
-| Vlastnosti pracovního prostoru analýzy protokolů| Vlastnosti prostředku Application Insights|
+| Vlastnosti Log Analytics pracovního prostoru| Vlastnosti prostředku Application Insights|
 |------------|------------| 
 | AnonUserId | user_id|
 | ApplicationId | appId|
 | ApplicationName | appName|
 | ApplicationTypeVersion | application_Version |
-| AvailabilityCount | itemCount |
+| AvailabilityCount | Vlastnost ItemCount |
 | AvailabilityDuration | duration |
-| AvailabilityMessage | message |
+| AvailabilityMessage | zpráva |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
@@ -114,23 +114,23 @@ V následující tabulce jsou uvedeny rozdíly ve schématu mezi Log Analytics a
 | ClientIP | client_IP |
 | Computer | cloud_RoleInstance | 
 | Country | client_CountryOrRegion | 
-| CustomEventCount | itemCount | 
+| CustomEventCount | Vlastnost ItemCount | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | name | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
-| ExceptionCount | itemCount | 
+| ExceptionCount | Vlastnost ItemCount | 
 | ExceptionHandledAt | handledAt |
-| ExceptionMessage | message | 
+| ExceptionMessage | zpráva | 
 | ExceptionType | type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | OS | client_OS | 
-| PageViewCount | itemCount |
+| PageViewCount | Vlastnost ItemCount |
 | PageViewDuration | duration | 
 | PageViewName | name | 
 | ParentOperationID | operation_Id | 
-| RequestCount | itemCount | 
+| RequestCount | Vlastnost ItemCount | 
 | RequestDuration | duration | 
 | RequestID | id | 
 | RequestName | name | 

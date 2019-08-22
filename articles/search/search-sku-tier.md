@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1c86649a989b16d928a46d322af3d805b6fbf832
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611962"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647353"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Vyberte cenovou úroveň pro Azure Search
 
@@ -53,10 +53,10 @@ Další informace o různých úrovních najdete na [stránce s cenami](https://
 
 K řešení postavenému na Azure Search může doplatit následující možnosti:
 
-+ Základní náklady na službu s minimální konfigurací
-+ Přírůstkové náklady při vertikálním navýšení kapacity (přidávání replik nebo oddílů)
-+ Náklady na šířku pásma pro přenos odchozích dat
-+ Vyhledávání rozpoznávání využití prostředků Cognitive Services
++ Základní náklady na službu s minimální konfigurací (vytvořit službu)
++ Přírůstkové náklady při vertikálním navýšení kapacity (přidání replik nebo oddílů)
++ Poplatky za šířku pásma (odchozí přenos dat) 
++ Vyhledávání rozpoznávání (připojit Cognitive Services pro rozšíření AI, úložiště Azure pro znalostní bázi Store)
 
 ### <a name="service-costs"></a>Náklady na službu
 

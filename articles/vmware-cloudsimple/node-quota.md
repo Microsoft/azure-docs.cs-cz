@@ -3,21 +3,21 @@ title: Řešení Azure VMware podle CloudSimple – kvóta uzlu CloudSimple
 description: Popisuje omezení kvót pro uzly CloudSimple a způsob, jak požádat o zvýšení kvóty.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e765d7c87f2f941a5e2d558b71c4e5a71d2df9b1
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 5da91f37d197e9d427343a09d0376076c356e92d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816667"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877815"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>Omezení kvóty uzlu CloudSimple
 
-Pokud je pro službu CloudSimple povolené předplatné, jsou čtyři uzly pro zřizování výchozí dostupné množství.  Z Azure Portal můžete zřídit libovolný [typ uzlu](cloudsimple-node.md) .  K vytvoření privátního cloudu se vyžaduje minimálně tři uzly stejné SKU.  Pokud jste uzly zřídili, může se při pokusu o zřízení dalších uzlů zobrazit chyba.
+V případě, že je vaše předplatné pro službu CloudSimple povolené, jsou čtyři uzly výchozím množstvím dostupným k nákupu.  Z Azure Portal můžete koupit libovolný [typ uzlu](cloudsimple-node.md) .  K vytvoření privátního cloudu se vyžadují aspoň tři uzly stejné SKU.  Pokud jste uzly zakoupili, může se při pokusu o zakoupení dalších uzlů zobrazit chyba.
 
 ## <a name="quota-increase"></a>Zvýšení kvóty
 
@@ -28,7 +28,7 @@ Můžete zvýšit kvótu uzlu odesláním žádosti o podporu. Provozní tým sl
 * Typ služby: **Řešení VMware podle CloudSimple**
 * Typ problému: **Kvóta vyhrazených uzlů**
 * Podtyp problému: **Zvýšení kvóty vyhrazených uzlů**
-* Předmět: **Zvýšení kvóty**
+* Závislosti **Zvýšení kvóty**
 
 V podrobnostech lístku podpory zadejte požadovaný počet uzlů a SKU uzlu.
 
@@ -38,7 +38,7 @@ Můžete také kontaktovat svého zástupce účet Microsoft na adrese [azurevmw
 * SKU uzlu
 * Počet dalších uzlů, pro které požadujete zvýšení kvóty
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zřizování uzlů](create-nodes.md)
+* [Koupit uzly](create-nodes.md)
 * [CloudSimple uzly – přehled](cloudsimple-node.md)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: e5af3803ebb4cb0a88a082d3c85d0df68da8d1b8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a23f71a38324d9751846f1308f79d3a4e746fd85
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566621"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637285"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Výběr mezi úrovněmi služby vCore a migrace z úrovní služeb DTU
 
@@ -28,7 +28,7 @@ Nákupní model založený na Virtual Core (vCore) umožňuje nezávisle škálo
 COMPUTE GEN4 – hardware nabízí podstatně větší množství paměti na vCore. Gen5 hardware ale umožňuje škálovat výpočetní prostředky mnohem vyšší.
 
 > [!IMPORTANT]
-> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblasti AustraliaEast.
+> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih.
 > [!NOTE]
 > Další informace o úrovních služeb založených na DTU najdete v tématu [úrovně služeb pro nákupní model založený na DTU](sql-database-service-tiers-dtu.md). Informace o rozdílech mezi úrovněmi služeb pro nákupní modely založené na DTU a na vCore naleznete v tématu [Azure SQL Database nákup modelů](sql-database-purchase-models.md).
 
@@ -135,7 +135,7 @@ Pokud vytváříte geograficky sekundární v elastickém fondu pro jednu primá
 
 Můžete zkopírovat jakoukoli databázi s výpočetní velikostí založenou na DTU do databáze s výpočetní velikostí založenou na vCore bez omezení nebo speciální sekvencování, pokud cílová výpočetní velikost podporuje maximální velikost databáze zdrojové databáze. Kopie databáze vytvoří snímek dat pro počáteční čas operace kopírování a nesynchronizuje data mezi zdrojem a cílem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Konkrétní velikosti a možnosti velikosti úložiště, které jsou dostupné pro jednotlivé databáze, najdete v tématu [SQL Database omezení prostředků na základě Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md).
 - Konkrétní velikosti a možnosti velikosti úložiště dostupné pro elastické fondy najdete v tématu [SQL Database omezení prostředků na základě Vcore pro elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 49ee83e451e9d555a7fe5fca57bc58d6616334da
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: b1aca591437738b29786f50c2a5291ab456f3416
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641056"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876700"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI
 Pokud váš virtuální počítač se systémem Linux zaznamená chybu spuštění nebo disku, možná budete muset provést kroky pro řešení potíží na samotném virtuálním pevném disku. Běžným příkladem může být neplatná položka v `/etc/fstab` systému, která zabraňuje úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí rozhraní příkazového řádku Azure připojit virtuální pevný disk k jinému virtuálnímu počítači se systémem Linux a opravit případné chyby a pak znovu vytvořit původní virtuální počítač. 
@@ -39,7 +39,7 @@ K provedení těchto kroků při odstraňování potíží budete potřebovat na
 > [!Important]
 > Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [spravovaný disk](../linux/managed-disks-overview.md). 
 
-V následujících příkladech nahraďte názvy parametrů vlastními hodnotami. Příklady názvů parametrů jsou `myResourceGroup` a `myVM`.
+V následujících příkladech nahraďte názvy parametrů vlastními hodnotami, například `myResourceGroup` a. `myVM`
 
 ## <a name="determine-boot-issues"></a>Určení problémů se spouštěním
 Zkontrolujte sériový výstup a určete, proč se váš virtuální počítač nemůže správně spustit. Běžným příkladem je neplatná položka v `/etc/fstab`, nebo se odstraní nebo přesune základní virtuální pevný disk.
@@ -56,88 +56,70 @@ Přečtěte si sériový výstup a určete, proč se virtuální počítač neda
 
 Následující příklad zastaví virtuální počítač pojmenovaný `myVM` ze skupiny prostředků s názvem: `myResourceGroup`
 
-```powershell
-Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
+```azurecli
+az vm stop --resource-group MyResourceGroup --name MyVm
 ```
-
-Počkejte, než se virtuální počítač dokončí a teprve potom proveďte zpracování na další krok.
-
-## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Vytvoření snímku z disku s operačním systémem virtuálního počítače
+## <a name="take-a-snapshot-from-the-os-disk-of-the-affected-vm"></a>Pořízení snímku z disku s operačním systémem ovlivněného virtuálního počítače
 
 Snímek je plná kopie VHD, která je jen pro čtení. Nedá se připojit k virtuálnímu počítači. V dalším kroku vytvoříme z tohoto snímku disk. Následující příklad vytvoří snímek s názvem `mySnapshot` z disku s operačním systémem virtuálního počítače s názvem ' myVM '. 
 
-```powershell
-$resourceGroupName = 'myResourceGroup' 
-$location = 'eastus' 
-$vmName = 'myVM'
-$snapshotName = 'mySnapshot'  
+```azurecli
+#Get the OS disk Id 
+$osdiskid=(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 
-#Get the VM
-$vm = get-azvm `
--ResourceGroupName $resourceGroupName `
--Name $vmName
-
-#Create the snapshot configuration for the OS disk
-$snapshot =  New-AzSnapshotConfig `
--SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
--Location $location `
--CreateOption copy
-
-#Take the snapshot
-New-AzSnapshot `
-   -Snapshot $snapshot `
-   -SnapshotName $snapshotName `
-   -ResourceGroupName $resourceGroupName 
+#creates a snapshot of the disk
+az snapshot create --resource-group myResourceGroupDisk --source "$osdiskid" --name mySnapshot
 ```
 ## <a name="create-a-disk-from-the-snapshot"></a>Vytvoření disku ze snímku
 
-Tento skript vytvoří spravovaný disk s názvem `newOSDisk` z snímku s názvem. `mysnapshot`  
+Tento skript vytvoří spravovaný disk s názvem `myOSDisk` z snímku s názvem. `mySnapshot`  
 
-```powershell
-#Set the context to the subscription Id where Managed Disk will be created
-#You can skip this step if the subscription is already selected
-
-$subscriptionId = 'yourSubscriptionId'
-
-Select-AzSubscription -SubscriptionId $SubscriptionId
-
+```azurecli
 #Provide the name of your resource group
-$resourceGroupName ='myResourceGroup'
+$resourceGroup=myResourceGroup
 
 #Provide the name of the snapshot that will be used to create Managed Disks
-$snapshotName = 'mySnapshot' 
+$snapshot=mySnapshot
 
 #Provide the name of the Managed Disk
-$diskName = 'newOSDisk'
+$osDisk=myNewOSDisk
 
 #Provide the size of the disks in GB. It should be greater than the VHD file size.
-$diskSize = '128'
+$diskSize=128
 
-#Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
-$storageType = 'StandardLRS'
+#Provide the storage type for Managed Disk. Premium_LRS or Standard_LRS.
+$storageType=Premium_LRS
 
-#Provide the Azure region (e.g. westus) where Managed Disks will be located.
-#This location should be same as the snapshot location
-#Get all the Azure location using command below:
-#Get-AzLocation
-$location = 'eastus'
+#Provide the OS type
+$osType=linux
 
-$snapshot = Get-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName 
- 
-$diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
- 
-New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
+#Provide the name of the virtual machine
+$virtualMachine=myVM
+
+#Get the snapshot Id 
+$snapshotId=(az snapshot show --name $snapshot --resource-group $resourceGroup --query [id] -o tsv)
+
+# Create a new Managed Disks using the snapshot Id.
+
+az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType --size-gb $diskSize --source $snapshotId
+
 ```
+
+Pokud skupina prostředků a zdrojový snímek nejsou ve stejné oblasti, zobrazí se při spuštění `az disk create`chyba "prostředek nebyl nalezen". V takovém případě musíte určit `--location <region>` , že se má disk vytvořit ve stejné oblasti jako zdrojový snímek.
+
 Teď máte kopii původního disku s operačním systémem. Tento nový disk můžete připojit k jinému virtuálnímu počítači s Windows pro účely řešení potíží.
 
 ## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>Připojit nový virtuální pevný disk k jinému virtuálnímu počítači
-V následujících několika krocích použijete pro účely odstraňování potíží jiný virtuální počítač. Disk k tomuto virtuálnímu počítači pro odstraňování potíží připojíte, abyste mohli procházet a upravovat obsah disku. Tento proces umožňuje opravit chyby v konfiguraci nebo zkontrolovat soubory protokolu aplikace nebo systému, například. Vyberte nebo vytvořte jiný virtuální počítač, který chcete použít pro účely řešení potíží.
+V následujících několika krocích použijete pro účely odstraňování potíží jiný virtuální počítač. Disk k tomuto virtuálnímu počítači pro odstraňování potíží připojíte, abyste mohli procházet a upravovat obsah disku. Tento proces umožňuje opravit chyby konfigurace nebo zkontrolovat další soubory protokolu aplikace nebo systému.
 
-Připojte stávající virtuální pevný disk pomocí [AZ VM unmanaged-disk Attach](/cli/azure/vm/unmanaged-disk). Když připojíte existující virtuální pevný disk, zadejte identifikátor URI na disk získaný v předchozím `az vm show` příkazu. Následující příklad připojí existující virtuální pevný disk k virtuálnímu počítači pro řešení potíží s `myVMRecovery` názvem ve skupině prostředků s `myResourceGroup`názvem:
+Tento skript připojí disk `myNewOSDisk` k virtuálnímu počítači: `MyTroubleshootVM`
 
 ```azurecli
-az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
-    --vhd-uri https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd
+# Get ID of the OS disk that you just created.
+$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+
+# Attach the disk to the troubleshooting VM
+az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 --sku Standard_LRS --vm-name MyTroubleshootVM
 ```
 ## <a name="mount-the-attached-data-disk"></a>Připojit připojený datový disk
 
@@ -197,46 +179,30 @@ Po vyřešení chyb odpojte a odpojte stávající virtuální pevný disk od vi
     sudo umount /dev/sdc1
     ```
 
-2. Teď odpojte virtuální pevný disk od virtuálního počítače. Ukončete relaci SSH k vašemu VIRTUÁLNÍmu počítači pro řešení potíží. Seznam připojených datových disků k VIRTUÁLNÍmu počítači pro řešení potíží pomocí příkaz [AZ VM unmanaged-disk list](/cli/azure/vm/unmanaged-disk). Následující příklad vypíše datové disky připojené k virtuálnímu počítači s `myVMRecovery` názvem ve skupině prostředků s `myResourceGroup`názvem:
+2. Teď odpojte virtuální pevný disk od virtuálního počítače. Ukončete relaci SSH na VIRTUÁLNÍm počítači pro řešení potíží:
 
     ```azurecli
-    azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
-        --query '[].{Disk:vhd.uri}' --output table
-    ```
-
-    Poznamenejte si název existujícího virtuálního pevného disku. Například název disku s identifikátorem URI **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** je **myVHD**. 
-
-    Odpojte datový disk od virtuálního počítače [AZ VM unmanaged-disk detach](/cli/azure/vm/unmanaged-disk). Následující příklad odpojí disk s názvem `myVHD` z virtuálního počítače s názvem `myVMRecovery` ve `myResourceGroup` skupině prostředků:
-
-    ```azurecli
-    az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
-        --name myVHD
+    az vm disk detach -g MyResourceGroup --vm-name MyTroubleShootVm --name myNewOSDisk
     ```
 
 ## <a name="change-the-os-disk-for-the-affected-vm"></a>Změna disku operačního systému pro ovlivněný virtuální počítač
 
-K prohození disků s operačním systémem můžete použít Azure PowerShell. Nemusíte odstranit a znovu vytvořit virtuální počítač.
+K prohození disků s operačním systémem můžete použít rozhraní příkazového řádku Azure. Nemusíte odstranit a znovu vytvořit virtuální počítač.
 
-V tomto příkladu se zastaví virtuální `myVM` počítač s názvem a přiřadí se disk s názvem jako nový disk s `newOSDisk` operačním systémem. 
+V tomto příkladu se zastaví virtuální `myVM` počítač s názvem a přiřadí se disk s názvem jako nový disk s `myNewOSDisk` operačním systémem.
 
-```powershell
-# Get the VM 
-$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
+```azurecli
+# Stop the affected VM
+az vm stop -n myVM -g myResourceGroup
 
-# Make sure the VM is stopped\deallocated
-Stop-AzVM -ResourceGroupName myResourceGroup -Name $vm.Name -Force
+# Get ID of the OS disk that is repaired.
+$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 
-# Get the new disk that you want to swap in
-$disk = Get-AzDisk -ResourceGroupName myResourceGroup -Name newDisk
-
-# Set the VM configuration to point to the new disk  
-Set-AzVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name  -sto
-
-# Update the VM with the new OS disk. Possible values of StorageAccountType include: 'Standard_LRS' and 'Premium_LRS'
-Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type of the storage account >
+# Change the OS disk of the affected VM to "myNewOSDisk"
+az vm update -g myResourceGroup -n myVM --os-disk $myNewOSDiskid
 
 # Start the VM
-Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
+az vm start -n myVM -g myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Další postup

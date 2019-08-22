@@ -65,7 +65,7 @@ Nejprve vytvořte funkci aktivovanou protokolem HTTP, který se spustí Orchestr
 
     ![Výběr šablony starter HTTP](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Ponechat výchozí název jako `DurableFunctionsHttpStart` a stiskněte klávesu *** Enter **, pak vyberte **anonymní** ověřování.
+3. Ponechat výchozí název jako `DurableFunctionsHttpStart` a stiskněte klávesu ** **Enter**, pak vyberte **anonymní** ověřování.
 
     ![Volba anonymního ověřování](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

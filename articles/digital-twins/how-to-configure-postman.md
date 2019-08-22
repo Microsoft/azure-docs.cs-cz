@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 08/20/2019
 ms.author: v-adgera
-ms.openlocfilehash: 7ceb36d818c84642461372f0df70c8088908550c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965823"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873652"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak nakonfigurovat metodu post pro digitální vlákna Azure
 
@@ -53,7 +53,9 @@ Nakonfigurujte aplikaci Azure Active Directory tak, aby používala tok implicit
 
 ## <a name="obtain-an-oauth-20-token"></a>Získání tokenu OAuth 2,0
 
-Dále nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directory. Následně můžete pomocí získaného tokenu vytvořit ověřený požadavek HTTP na digitální vlákna Azure:
+[!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
+
+Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directory. Následně můžete pomocí získaného tokenu vytvořit ověřený požadavek HTTP na digitální vlákna Azure:
 
 1. Pokud si chcete aplikaci stáhnout, navštivte [www.getpostman.com](https://www.getpostman.com/) .
 1. Ověřte, jestli je vaše **autorizační adresa URL** správná. Měla by mít formát:
@@ -75,7 +77,7 @@ Dále nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active D
     | Adresa URL ověření | Použijte **autorizační adresu URL** z kroku 2. |
     | ID klienta | Použijte **ID aplikace** pro aplikaci Azure Active Directory, která se vytvořila nebo změnila účel z předchozí části. |
     | Scope | Ponechte prázdné |
-    | Stav | Ponechte prázdné |
+    | State | Ponechte prázdné |
     | Ověřování klientů | `Send as Basic Auth header` |
 
 1. Klient by teď měl vypadat takto:
@@ -113,7 +115,7 @@ Po dokončení předchozích kroků nakonfigurujte metodu post, aby se ověřil 
 
 1. Nakonec vyberte **Odeslat** a odešlete požadavek HTTP POST s více částmi.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o rozhraních API pro správu digitálních vláken a způsobu jejich použití najdete v článku [Jak používat rozhraní API pro správu digitálních vláken Azure](how-to-navigate-apis.md).
 

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d95760745dc3554bc63271cedc63dcf3bf017c5c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 59b5138950e0fb94ea0051fa9cfe9aa75cd7d770
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855224"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877791"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Automatizace úloh správy na virtuálních počítačích Azure pomocí rozšíření agenta SQL Server IaaS
 > [!div class="op_single_selector"]
@@ -88,14 +88,17 @@ Tady jsou požadavky na použití rozšíření agenta SQL Server IaaS na vašem
 Aktuální režim SQL Server agenta IaaS můžete zobrazit pomocí prostředí PowerShell: 
 
   ```powershell-interactive
-     //Get the SqlVirtualMachine
+     #Get the SqlVirtualMachine
      $sqlvm = Get-AzResource -Name $vm.Name  -ResourceGroupName $vm.ResourceGroupName  -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines
      $sqlvm.Properties.sqlManagement
   ```
 
-V případě SQL Server virtuálních počítačů, které mají nainstalovaného agenta nebo rozšíření IaaS, můžete pomocí Azure Portal upgradovat režim na úplný. Není možné downgradovat. Abyste to mohli udělat, musíte rozšíření SQL Server IaaS odinstalovat a znovu nainstalovat. 
+SQL Server virtuální počítače, které mají nainstalovanou zjednodušenou příponu IaaS, mohou upgradovat režim na _úplný_ s použitím Azure Portal. SQL Server virtuálních počítačů v režimu _bez agenta_ se může upgradovat na _úplný_ , až se operační systém upgraduje na Windows 2008 R2 a novější. Není možné nadowngradovat – k tomu je potřeba odinstalaci rozšíření SQL IaaS a instalaci znovu. 
 
 Postup upgradu režimu agenta na úplný: 
+
+
+# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejít na prostředek [virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) . 
@@ -108,8 +111,33 @@ Postup upgradu režimu agenta na úplný:
 
     ![Zaškrtávací políčko pro vyjádření souhlasu s restartováním služby SQL Server na virtuálním počítači](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
 
+# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+
+Spusťte následující příkaz AZ CLI Code fragment:
+
+  ```azurecli-interactive
+  # Update to full mode
+
+  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
+  ```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Spusťte následující fragment kódu prostředí PowerShell:
+
+  ```powershell-interactive
+  # Update to full mode
+
+  $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
+  $SqlVm.Properties.sqlManagement="Full"
+  $SqlVm | Set-AzResource -Force
+  ```
+
+---
+
+
 ##  <a name="installation"></a>Instalace
-Rozšíření SQL Server IaaS se nainstaluje při registraci SQL Server virtuálního počítače pomocí [poskytovatele prostředků virtuálního počítače SQL](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-the-sql-vm-resource-provider). V případě potřeby můžete ručně nainstalovat agenta SQL Server IaaS pomocí úplného nebo zjednodušeného režimu. 
+Rozšíření SQL Server IaaS se nainstaluje při registraci SQL Server virtuálního počítače pomocí [poskytovatele prostředků virtuálního počítače SQL](virtual-machines-windows-sql-register-with-resource-provider.md). V případě potřeby můžete ručně nainstalovat agenta SQL Server IaaS pomocí úplného nebo zjednodušeného režimu. 
 
 Rozšíření agenta SQL Server IaaS v plném režimu se automaticky nainstaluje při zřizování jednoho z SQL Server imagí Azure Marketplace virtuálních počítačů pomocí Azure Portal. 
 
@@ -119,10 +147,10 @@ Rozšíření agenta SQL Server IaaS v plném režimu se automaticky nainstaluje
 Pomocí PowerShellu nainstalujte agenta SQL Server IaaS s úplným režimem:
 
   ```powershell-interactive
-     // Get the existing compute VM
+     #Get the existing compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register the SQL Server VM with 'Full' SQL Server IaaS agent
+     #Register the SQL Server VM with 'Full' SQL Server IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='Full'}  
@@ -158,10 +186,10 @@ Pomocí PowerShellu nainstalujte agenta SQL Server IaaS s odlehčeným režimem:
 
 
   ```powershell-interactive
-     // Get the existing  Compute VM
+     /#Get the existing  Compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
+     #Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  
