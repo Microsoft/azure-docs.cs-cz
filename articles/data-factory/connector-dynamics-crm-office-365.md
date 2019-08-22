@@ -279,7 +279,7 @@ Ke zkopírování dat do Dynamics, nastavte typ jímky v aktivitě kopírování
 | type | Nastavte vlastnost typ jímky aktivity kopírování **DynamicsSink**. | Ano |
 | writeBehavior | Chování zápisu operace.<br/>Povolená hodnota je **"Upsert"** . | Ano |
 | writeBatchSize | Počet řádků dat zapsaných do Dynamics v každé dávce. | Ne (výchozí hodnota je 10) |
-| ignoreNullValues | Určuje, jestli se mají ignorovat během operace zápisu hodnot null ze vstupních dat (s výjimkou polí klíčů).<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE**: Data ponechte beze změny po provedení operace upsert/aktualizace cílového objektu. Definovaná výchozí hodnota vložte, když provedete operaci vložení.<br/>- **False**: Pokud tak učiníte, operace upsert/aktualizace, aktualizace dat v cílového objektu na hodnotu NULL. Vložení hodnoty NULL, když provedete operaci vložení. | Ne (výchozí hodnota je false) |
+| ignoreNullValues | Určuje, jestli se mají ignorovat během operace zápisu hodnot null ze vstupních dat (s výjimkou polí klíčů).<br/>Povolené hodnoty jsou **true** a **false**.<br>- **True**: Data ponechte beze změny po provedení operace upsert/aktualizace cílového objektu. Definovaná výchozí hodnota vložte, když provedete operaci vložení.<br/>- **False**: Pokud tak učiníte, operace upsert/aktualizace, aktualizace dat v cílového objektu na hodnotu NULL. Vložení hodnoty NULL, když provedete operaci vložení. | Ne (výchozí hodnota je false) |
 
 >[!NOTE]
 >Výchozí hodnota jímka "**writeBatchSize**"a aktivita kopírování" **[parallelCopies](copy-activity-performance.md#parallel-copy)** " Dynamics jímka jsou obě 10. Proto se 100 záznamů odesílají na Dynamics současně.
