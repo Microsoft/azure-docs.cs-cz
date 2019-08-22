@@ -99,7 +99,7 @@ Pokud je zdroj typu **SqlDWSource**, následující vlastnosti jsou k dispozici 
 
 | Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. |Ne |
+| sqlReaderQuery |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Příklad: select * from MyTable. |Ne |
 | sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury. Příkaz SELECT v uložené proceduře musí být poslední příkaz jazyka SQL. |Ne |
 | storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název/hodnota. Názvy a použití malých a velkých parametry musí odpovídat názvům a použití malých a velkých parametrů uložené procedury. |Ne |
 
