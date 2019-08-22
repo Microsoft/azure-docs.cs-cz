@@ -76,7 +76,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu LinkedIn, musíte �
 
 Definujte účet LinkedIn jako zprostředkovatele deklarací, a to tak, že ho přidáte do prvku **ClaimsProviders** v souboru rozšíření zásady.
 
-1. V editoru otevřete soubor *SocialAndLocalAccounts/ **TrustFrameworkExtensions. XML** *. Tento soubor se nachází v [úvodním balíčku vlastní zásady][starter-pack] , který jste stáhli jako součást jednoho z požadovaných součástí.
+1. V editoru otevřete soubor *SocialAndLocalAccounts/ **TrustFrameworkExtensions. XML***. Tento soubor se nachází v [úvodním balíčku vlastní zásady][starter-pack] , který jste stáhli jako součást jednoho z požadovaných součástí.
 1. Vyhledejte element **ClaimsProviders** . Pokud neexistuje, přidejte jej pod kořenový element.
 1. Přidejte nový **ClaimsProvider** následujícím způsobem:
 
