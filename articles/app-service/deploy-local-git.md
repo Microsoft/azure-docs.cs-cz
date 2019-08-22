@@ -15,12 +15,12 @@ ms.date: 06/18/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 4b2934c8b93ffb247661886cb2791c0719996aeb
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 47db310f6affa6317a74020d182c521d65cd32f3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297187"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875231"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení Gitu pro Azure App Service
 
@@ -156,7 +156,7 @@ Když použijete Git k publikování App Service aplikace v Azure, může se zob
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Nezadali jste větev během `git push`nebo jste `push.default` nenastavili hodnotu v `.gitconfig`.|Spusťte `git push` znovu a určete hlavní větev: `git push azure master`.|
 |`src refspec [branchname] does not match any.`|Pokusili jste se odeslat do jiné jiné než hlavní větve na vzdáleném Azure.|Spusťte `git push` znovu a určete hlavní větev: `git push azure master`.|
 |`RPC failed; result=22, HTTP code = 5xx.`|K této chybě může dojít, pokud se pokusíte odeslat velké úložiště Git přes HTTPS.|Změňte konfiguraci Gitu na místním počítači, aby byla `postBuffer` větší. Například: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node. js se souborem _Package. JSON_ , který určuje další požadované moduly.|Před touto chybou zkontrolujte chybovézprávyprodalšíkontextchyby.`npm ERR!` Níže jsou uvedené známé příčiny této chyby a odpovídající `npm ERR!` zprávy:<br /><br />**Poškozený soubor Package. JSON**:`npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá pro Windows binární distribuci**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />' npm ERR! [modulename@version] předinstalace: \make || gmake\`|
+|`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node. js se souborem _Package. JSON_ , který určuje další požadované moduly.|Před touto chybou zkontrolujte chybovézprávyprodalšíkontextchyby.`npm ERR!` Níže jsou uvedené známé příčiny této chyby a odpovídající `npm ERR!` zprávy:<br /><br />**Poškozený soubor Package. JSON**:`npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá pro Windows binární distribuci**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Další zdroje
 

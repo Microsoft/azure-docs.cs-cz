@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Nasadit model vizuální rozhraní strojového učení'
+title: 'Kurz: Nasazení modelu Machine Learning pomocí vizuálního rozhraní'
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak vytvořit řešení prediktivní analýzy v vizuální rozhraní služby Azure Machine Learning. Trénování, stanovení skóre a nasadit model strojového učení pomocí přetažení a vyřadit moduly. Tento kurz je druhou částí série dvojdílného na předpověď cen automobilů prostřednictvím lineární regrese.
+description: Naučte se vytvářet řešení prediktivní analýzy ve vizuálním rozhraní služby Azure Machine Learning. Naučte se, vyhodnocovat a nasazují model strojového učení pomocí přetažení modulů. Tento kurz je druhou částí série dvou částí pro předpověď cen automobilů pomocí lineární regrese.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,121 +9,115 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: dd28fb51a4fc3fbf3dfc893f2f5f159ccafdb4b3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839306"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891619"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Kurz: Nasadit model vizuální rozhraní strojového učení
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Kurz: Nasazení modelu Machine Learning pomocí vizuálního rozhraní
 
-Ostatním uživatelům příležitost dobře se používají prediktivní model vyvinutý v [první části kurzu](ui-tutorial-automobile-price-train-score.md), můžete ji nasadit jako webová služba Azure. Zatím jste experimentovali s trénování modelu. Teď je čas ke generování nových předpovědí na základě uživatelského zadání. V této části kurzu jste:
+Pokud chcete jiným uživatelům umožnit používání prediktivního modelu vyvinutého v [rámci jednoho kurzu](ui-tutorial-automobile-price-train-score.md), můžete ho nasadit jako webovou službu Azure. Zatím jste experimentování s školením modelu. Nyní je čas vytvořit nové předpovědi na základě vstupu uživatele. V této části kurzu:
 
 > [!div class="checklist"]
-> * Příprava nasazení modelu
+> * Příprava modelu pro nasazení
 > * Nasazení webové služby
 > * Testování webové služby
 > * Správa webové služby
-> * Používání této webové služby
+> * Využívání webové služby
 
 ## <a name="prerequisites"></a>Požadavky
 
-Kompletní [první části kurzu](ui-tutorial-automobile-price-train-score.md) se naučíte trénování a stanovíte jeho skóre modelu strojového učení ve vizuální rozhraní.
+Kompletní [část tohoto kurzu](ui-tutorial-automobile-price-train-score.md) se naučíte, jak ve vizuálním rozhraní naučit a vyhodnocovat model strojového učení.
 
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
 
-Před nasazením experiment jako webové služby, je nejprve nutné převést vaše *výukového experimentu* do *prediktivní experiment*.
+Než nasadíte experiment jako webovou službu, musíte nejprve převést *školicí experiment* na *prediktivní experiment*.
 
-1. Vyberte **vytvářet prediktivní Experiment*** v dolní části na plátno experimentu.
+1. V dolní části plátna experimentu vyberte **vytvořit prediktivní experiment***.
 
-    ![Animovaný gif zobrazující automatický převod výukového experimentu na prediktivní experiment](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
+    ![Animovaný obrázek GIF znázorňující automatický převod školicích experimentů do prediktivního experimentu](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
 
-    Když vyberete **vytvářet prediktivní Experiment**, stane několik věcí:
+    Když vyberete možnost **vytvořit prediktivní experiment**, nastane několik věcí:
     
-    * Trénovaný model se ukládá jako **Trénovaného modelu** modulu paletě modulů. Najdete ho pod **Trénované modely**.
+    * Trained model je uložený jako modul **trained modelu** v paletě modulu. Najdete ho pod školenými **modely**.
     * Moduly, které byly použity pro vzdělávání se odeberou; konkrétně:
       * Trénování modelu
       * Rozdělení dat
       * Vyhodnocení modelu
-    * Uložené trénovaného modelu je přidána zpět do experimentu.
-    * **Webová služba vstup** a **webové služby výstup** moduly jsou přidány. Tyto moduly Identifikujte, kde se data uživatele zadejte modelu a kde se data vrací.
+    * Uložený vycvičený model se přidá zpátky do experimentu.
+    * Jsou přidány výstupní moduly **webové služby** a **webové služby** . Tyto moduly identifikují, kam budou data uživatelů zadávat model a kde se vrátí data.
 
-    **Výukového experimentu** je uložen v části nové karty v horní části na plátno experimentu.
+    **Školicí experiment** se pořád ukládá na nové karty v horní části plátna experimentu.
 
 1. **Spusťte** experiment.
 
-1. Vybrat výstup **Score Model** modul a vyberte **zobrazit výsledky** ověření modelu je funkční. Uvidíte, že původní data se zobrazí spolu s předpokládanou cena ("popisky vyhodnocení").
+1. Vyberte výstup modulu určení **skóre modelu** a vyberte **Zobrazit výsledky** , abyste ověřili, že model stále pracuje. Můžete vidět, že se zobrazí původní data společně s předpovězenou cenou ("popisky s skóre").
 
 Experiment by teď měl vypadat takto:  
 
-![Snímek obrazovky zobrazující očekávané konfiguraci testu po Příprava pro nasazení](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
+![Snímek obrazovky znázorňující očekávanou konfiguraci experimentu po jeho přípravě na nasazení](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
 ## <a name="deploy-the-web-service"></a>Nasazení webové služby
 
-1. Vyberte **nasadit webovou službu** dole na plátně.
+1. Pod plátnem vyberte **nasadit webovou službu** .
 
-1. Vyberte **cílové výpočetní** , že chcete spustit webovou službu.
+1. Vyberte **výpočetní cíl** , pro který chcete spustit webovou službu.
 
-    Vizuální rozhraní v současné době podporuje pouze nasazení na cílových výpočetních prostředí Azure Kubernetes Service (AKS). Můžete vybrat z dostupných cílových výpočetních prostředí AKS ve vaší služby pracovního prostoru machine learning nebo konfigurace pomocí kroků v dialogu, který se zobrazí nové prostředí AKS.
+    V současné době vizuální rozhraní podporuje nasazení pouze do výpočetních cílů služby Azure Kubernetes Service (AKS). V pracovním prostoru služby Machine Learning můžete vybrat z dostupných výpočetních cílů AKS nebo nakonfigurovat nové prostředí AKS pomocí kroků v zobrazeném dialogovém okně.
 
-    ![Snímek obrazovky ukazující, možné konfigurace pro nové cílové výpočetní prostředí](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
+    ![Snímek obrazovky znázorňující možnou konfiguraci pro nový cíl výpočtů](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
 
-1. Vyberte **nasazení webové služby**. Zobrazí se vám následující oznámení po dokončení nasazení. Nasazení může trvat několik minut.
+1. Vyberte **nasadit webovou službu**. Po dokončení nasazení se zobrazí následující oznámení. Nasazení může trvat několik minut.
 
-    ![Snímek obrazovky znázorňující zprávu potvrzení pro úspěšné nasazení.](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
+    ![Snímek obrazovky s potvrzovací zprávou pro úspěšné nasazení](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
 
 ## <a name="test-the-web-service"></a>Test webové služby
 
-Můžete otestovat a spravovat webové služby vizuální rozhraní tak, že přejdete na **webových služeb** kartu.
+Webové služby vizuálního rozhraní můžete testovat a spravovat tak, že přejdete na kartu **webové služby** .
 
-1. Přejděte do části webové služby. Zobrazí se webová služba, které jste nasadili s názvem **kurz – předpovídat cenu automobilu [prediktivní Exp]** .
+1. Přejít na část webové služby. Uvidíte webovou službu, kterou jste nasadili, pomocí pojmenování **kurzu – předpověď ceny automobilu [prediktivní exp]** .
 
-     ![Snímek obrazovky zobrazující kartu web service se nedávno vytvořenou webovou službou zvýrazněnou](./media/ui-tutorial-automobile-price-deploy/web-services.png)
+     ![Snímek obrazovky zobrazující kartu webové služby s zvýrazněnou webovou službou naposledy vytvořenou](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
-1. Vyberte název webové služby, chcete-li zobrazit další podrobnosti.
+1. Pokud chcete zobrazit další podrobnosti, vyberte název webové služby.
 
-     ![Zobrazit snímek obrazovky ukazující, další podrobnosti, které jsou k dispozici ve webové službě](./media/ui-tutorial-automobile-price-deploy/web-service-details.png)
+1. Vyberte **test**.
 
-1. Vyberte **Test**.
+    [![Snímek obrazovky zobrazující stránku testování webové služby](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)](./media/ui-tutorial-automobile-price-deploy/web-service-test.png#lightbox)
 
-    ![Snímek obrazovky zobrazující stránku webové služby](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
+1. Zadejte testovací data nebo použijte možnost automatického vyplňování ukázkových dat a vyberte **test**.
 
-1. Vstup testování dat nebo použijte autofilled ukázková data a vyberte **Test**.
+    Požadavek na test se odešle do webové služby a výsledky se zobrazí na stránce. I když je pro vstupní data vygenerována hodnota ceny, není použita k vygenerování hodnoty předpovědi.
 
-    K webové službě se odešle požadavek testu a výsledky se zobrazí na stránce. I když hodnota ceny se vygeneruje pro vstupní data, není použit ke generování hodnoty předpovědi.
+## <a name="consume-the-web-service"></a>Využívání webové služby
 
-## <a name="consume-the-web-service"></a>Používání této webové služby
+Uživatelé teď můžou odesílat požadavky rozhraní API na webovou službu Azure a získávat výsledky pro předpověď ceny svých nových Automobiles.
 
-Uživatelé teď můžete odesílat žádosti rozhraní API do služby Azure web a zobrazí výsledky odhadnout cenu jejich nových automobilů.
+**Požadavek nebo odpověď** – uživatel pošle jednu nebo více řádků dat automobilu do služby pomocí protokolu HTTP. Služba reaguje s jednou nebo více sadami výsledků.
 
-**Žádost/odpověď** -uživatel odesílá jeden nebo více řádků data automobilů ke službě s použitím protokolu HTTP. Služba jako odpověď vrátí jednu nebo více sad výsledků.
+Ukázková volání REST můžete najít na stránce s podrobnostmi webové služby na kartě spotřebovat.
 
-Můžete najít ukázkové volání REST **využívání** kartu Podrobnosti stránku webové služby.
+   ![Snímek obrazovky znázorňující ukázkové volání REST, které uživatelé můžou najít na kartě spotřebovat](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
 
-   ![Snímek obrazovky zobrazující ukázkový REST volání, že uživatelé mohou najít na kartě využívání](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
-
-Přejděte **dokumentace rozhraní API** kartu Podrobnosti pro rozhraní API.
-
-  ![Snímek obrazovky zobrazující další podrobnosti o rozhraní API, které uživatelé můžete najít na kartě dokumentace rozhraní API](./media/ui-tutorial-automobile-price-deploy/web-service-api.png)
+Přejděte na kartu **API doc** , kde najdete další podrobnosti o rozhraní API.
 
 ## <a name="manage-models-and-deployments"></a>Správa modelů a nasazení
 
-Modely a nasazením webových služeb, které vytvoříte ve vizuální rozhraní můžete také spravovat z pracovního prostoru služby Azure Machine Learning.
+Nasazení modelů a webových služeb, která vytvoříte v rámci vizuálního rozhraní, lze spravovat také z pracovního prostoru služby Azure Machine Learning.
 
-1. Otevření pracovního prostoru v [webu Azure portal](https://portal.azure.com/).  
+1. Otevřete pracovní prostor v [Azure Portal](https://portal.azure.com/).  
 
-1. V pracovním prostoru vyberte **modely**. Vyberte experiment, který jste vytvořili.
+1. V pracovním prostoru vyberte **modely**. Pak vyberte experiment, který jste vytvořili.
 
-    ![Snímek obrazovky ukazující, jak se orientovat na experimentů na webu Azure Portal](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
+    ![Snímek obrazovky, který ukazuje, jak přejít k experimentům v Azure Portal](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
 
-    Na této stránce uvidíte další podrobnosti o tomto modelu.
+    Na této stránce se zobrazí další podrobnosti o modelu.
 
-    ![Snímek obrazovky zobrazující přehled statistiky experimentu na webu Azure Portal](./media/ui-tutorial-automobile-price-deploy/model-details.png)
+1. Vyberte **nasazení**. zobrazí se seznam všech webových služeb, které používají model. Vyberte název webové služby, který se bude nacházet na stránce s podrobnostmi webové služby. Na této stránce můžete získat podrobnější informace o webové službě.
 
-1. Vyberte **nasazení**, zobrazí se seznam všech webových služeb, které používají model. Vyberte název webové služby, bude přejděte na stránku podrobností webové služby. Na této stránce můžete získat podrobnější informace o webové služby.
-
-    ![Spusťte sestavu podrobný snímek obrazovky](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)
+    [![Podrobná sestava spuštění snímku obrazovky](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -131,7 +125,7 @@ Modely a nasazením webových služeb, které vytvoříte ve vizuální rozhran�
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, že klíč kroky vytváření, nasazování a používání strojového učení modelu ve vizuální rozhraní. Další informace o použití vizuální rozhraní pro jiné druhy problémů vyřešit, najdete v článku navýšení kapacity našich ukázkových experimentů.
+V tomto kurzu jste se seznámili s klíčovými kroky při vytváření, nasazování a využívání modelu strojového učení ve vizuálním rozhraní. Další informace o tom, jak můžete pomocí vizuálního rozhraní vyřešit jiné typy problémů, najdete v našich dalších ukázkových experimentech.
 
 > [!div class="nextstepaction"]
-> [Ukázka klasifikaci rizik kredit](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+> [Ukázka klasifikace úvěrového rizika](ui-sample-classification-predict-credit-risk-cost-sensitive.md)

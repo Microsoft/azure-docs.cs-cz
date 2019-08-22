@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 9c5398ff7cb31698db3d4a798b6a082f9e74b99b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d9c91d54fb357807682cd57f46b04454e4e2cfec
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955141"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876653"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>Spolupráce na znalostní bázi
 
@@ -27,27 +27,27 @@ Pomocí následujících kroků můžete svoji QnA Maker službu sdílet s něk�
 
     ![Seznam prostředků nástroje QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
 
-2. Přejít na kartu **Access Control (IAM)** .
+1. Přejít na kartu **Access Control (IAM)** .
 
     ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
 
-3. Vyberte **Přidat**.
+1. Vyberte **Přidat**.
 
     ![QnA Maker IAM – přidat](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-4. Vyberte **vlastníka** nebo roli **Přispěvatel** . Pomocí Access Control na základě rolí nelze udělit přístup jen pro čtení. Role vlastníka a přispěvatele má oprávnění ke čtení i zápisu pro QnA Maker služby.
+1. Vyberte **vlastníka** nebo roli **Přispěvatel** . Pomocí Access Control na základě rolí nelze udělit přístup jen pro čtení. Role vlastníka a přispěvatele mají oprávnění ke čtení i zápisu pro službu QnA Maker.
 
     ![QnA Maker přidat roli IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 
-5. Zadejte e-mail, se kterým chcete sdílet, a stiskněte Uložit.
+1. Zadejte e-mailovou adresu uživatele a stiskněte **Uložit**.
 
     ![QnA Maker IAM – Přidání e-mailu](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
 
-Když teď osoba, se kterou sdílíte službu QnA Maker, přihlásíte se k [portálu QnA maker](https://qnamaker.ai) , uvidí všechny znalostní báze v této službě.
+Když někdo sdílí službu QnA Maker s nástrojem, přihlásí se k [portálu QnA maker](https://qnamaker.ai) , kde se zobrazí všechna znalostní báze v této službě.
 
 Pamatujte, že v QnA Maker službě nemůžete sdílet konkrétní znalostní bázi. Pokud chcete podrobnější řízení přístupu, zvažte distribuci znalostní báze napříč různými QnA Maker službami.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Testování znalostní báze](./test-knowledge-base.md)

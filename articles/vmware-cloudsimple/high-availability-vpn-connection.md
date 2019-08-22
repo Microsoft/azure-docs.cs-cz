@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d08dce95836328f6a0991601951057944fa5f61e
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0ad917215275ce2f80dfdd2ec4e5a16794b36c13
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536440"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650362"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurace připojení s vysokou dostupností z místního prostředí do CloudSimple VPN Gateway
 
@@ -315,7 +315,7 @@ Konfigurace virtuálního zařízení ASAv (Cisco Adaptive Security) na platform
 
 Konfigurace sítě Site-to-Site VPN s ID proxy serveru v Palo Alto:
 
-<a href="https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/vpns/set-up-Site-to-Site-vpn.html#" target="_blank">Nastavení sítě VPN typu Site-to-site</a>
+<a href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn#" target="_blank">Nastavení sítě VPN typu Site-to-site</a>
 
 Nastavuje se monitorování tunelu:
 
@@ -323,4 +323,4 @@ Nastavuje se monitorování tunelu:
 
 Operace brány IKE nebo tunelové propojení IPsec:
 
-<a href="https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/vpns/set-up-Site-to-Site-vpn/enabledisable-refresh-or-restart-an-ike-gateway-or-ipsec-tunnel.html#" target="_blank">Umožňuje povolit nebo zakázat, aktualizovat nebo restartovat bránu IKE nebo tunelové propojení IPsec.</a>
+<a href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn/enabledisable-refresh-or-restart-an-ike-gateway-or-ipsec-tunnel#" target="_blank">Umožňuje povolit nebo zakázat, aktualizovat nebo restartovat bránu IKE nebo tunelové propojení IPsec.</a>

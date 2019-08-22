@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: f0944e9fddc0afb28f758ba7b16232330d3bc34d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 5095e680eb7fd33d28acb2d187f83d86db1b46bf
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635527"
+ms.locfileid: "69656628"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Jak využít spravovanou identitu aplikace Service Fabric pro přístup ke službám Azure (Preview)
 
@@ -60,7 +60,7 @@ kde:
 | `GET` | Příkaz HTTP, který indikuje, že chcete načíst data z koncového bodu. V tomto případě se jedná o přístupový token OAuth. | 
 | `http://localhost:2377/metadata/identity/oauth2/token` | Spravovaný koncový bod identity pro aplikace Service Fabric poskytovaný přes proměnnou prostředí MSI_ENDPOINT. |
 | `api-version` | Parametr řetězce dotazu, který určuje verzi rozhraní API spravované služby tokenu identity; v současné době je `2019-07-01-preview`jediná přijatá hodnota a může se změnit. |
-| `resource` | Parametr řetězce dotazu, který označuje identifikátor URI ID aplikace cílového prostředku. Tato akce se projeví jako `aud` deklarace identity (cílová skupina) vydaného tokenu. Tento příklad vyžaduje token pro přístup k Azure Key Vault, jehož identifikátor URI ID aplikace je https://keyvault.azure.com/. |
+| `resource` | Parametr řetězce dotazu, který označuje identifikátor URI ID aplikace cílového prostředku. Tato akce se projeví jako `aud` deklarace identity (cílová skupina) vydaného tokenu. Tento příklad vyžaduje token pro přístup k Azure Key Vault, jehož identifikátor URI ID aplikace je https:\//keyvault.Azure.com/. |
 | `Secret` | Pole hlavičky požadavku HTTP, které vyžaduje služba Service Fabric Managed identity token Service pro Service Fabric Services k ověření volajícího. Tuto hodnotu poskytuje modul runtime SF přes proměnnou prostředí MSI_SECRET. |
 
 
@@ -308,7 +308,7 @@ Doporučuje se, aby se požadavky nezdařily, protože došlo k opakovanému pok
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
 V tématu [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md) , najdete seznam prostředků, které podporují Azure AD, a jejich odpovídajících ID prostředků.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Udělení přístupu k aplikacím Azure Service Fabric k ostatním prostředkům Azure](./how-to-grant-access-other-resources.md)

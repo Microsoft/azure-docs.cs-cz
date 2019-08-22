@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 412a3cb32663f5bd3bfad2d565b6797f92e26b75
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e5dc449dc51faccdd8c0e69337cc5f8ac19fa296
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641114"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874400"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -56,11 +56,13 @@ Spravovaná instance má dvě úrovně služeb: Pro obecné účely a Pro důle�
 | Maximální velikost databáze | Určeno maximální velikostí úložiště na instanci | Určeno maximální velikostí úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
 | Maximální počet souborů databáze na instanci | Až 280 | 32 767 souborů na databázi |
+| Maximální velikost souboru | 8 TB | 4 TB |
 | Data/protokol IOPS (přibližná) | 500 – 7 500 na jeden soubor<br/>\*[Zvětšením velikosti souboru získat více IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 k-110 K (1375/vCore)<br/>Přidáním dalších virtuální jádra získáte lepší výkon v/v. |
 | Limit propustnosti zápisu protokolu | 3 MB/s na vCore<br/>Max. 22 MB/s na instanci | 4 MB/s na vCore<br/>Max. 48 MB/s na instanci|
 | Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[Zvětšením velikosti souboru získáte lepší vstupně-výstupní operace.](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Není k dispozici |
 | Latence v/v úložiště (přibližná) | 5-10 ms | 1-2 ms |
 | Maximální velikost databáze tempDB | 192 – 1 920 GB (24 GB na vCore)<br/>Přidejte další virtuální jádra, abyste získali více místa v databázi TempDB. | Omezeno velikostí úložiště maximální instance. Velikost souboru protokolu TempDB je aktuálně omezená na 24GB/vCore. |
+| OLTP v paměti | Nepodporuje se | K dispozici |
 | Maximální počet relací | 30000 | 30000 |
 
 > [!NOTE]

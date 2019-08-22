@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 99c4f0f99af61196cf1a12f2f68a7d10d8b2e6c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ece55cdad04e71d339944b5fcda5a16d35630c16
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477157"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877731"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server na virtuálních počítačích Azure? (Windows)
 
@@ -69,12 +69,12 @@ Následující tabulka obsahuje matici imagí SQL Serveru s průběžnými platb
 Dostupné image virtuálních počítačů s Linuxem a SQL Serverem najdete v tématu [Přehled SQL Serveru na virtuálních počítačích Azure (Linux)](../../linux/sql/sql-server-linux-virtual-machines-overview.md).
 
 > [!NOTE]
-> Nyní je možné změnit licenční model plateb za využití virtuálního počítače SQL serveru používat vlastní licenci. Další informace najdete v tématu [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md). 
+> Nyní je možné změnit licenční model s platbami podle využití SQL Server virtuálního počítače na používání vlastní licence. Další informace najdete v tématu [Změna modelu licencování pro virtuální počítač s SQL](virtual-machines-windows-sql-ahb.md). 
 
 ### <a id="BYOL"></a> Používání vlastní licence
 Můžete také používat vlastní licenci (BYOL). V tomto scénáři zaplatíte jenom za virtuální počítač bez jakýchkoli dalších poplatků za licencování SQL Serveru.  Používáním vlastní licence můžete časem ušetřit peníze za nepřetržité produkční úlohy. Požadavky k použití této možnosti najdete v tématu [Doprovodné materiály k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md#byol).
 
-Používání vlastní licence, můžete buď převést existující virtuální počítač SQL platby za využití nebo můžete nasadit bitovou kopii s předponou **{BYOL}** . Další informace o přepínání mezi platby za využití a BYOL váš licenční model, najdete v části [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md). 
+Pokud chcete využít vlastní licenci, můžete buď převést stávající virtuální počítač SQL s platbami za použití, nebo můžete nasadit image s předem opraveným **{BYOL}** . Další informace o přepínání licenčního modelu mezi platbami podle využití a BYOL najdete v tématu [Změna licenčního modelu pro virtuální počítač s SQL](virtual-machines-windows-sql-ahb.md)serverem. 
 
 | Version | Operační systém | Edice |
 | --- | --- | --- |
@@ -83,13 +83,13 @@ Používání vlastní licence, můžete buď převést existující virtuální
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
-Je možné nasadit starších image SQL serveru, která není k dispozici na portálu Azure pomocí Powershellu. Chcete-li zobrazit všechny dostupné Image pomocí Powershellu, použijte následující příkaz:
+Je možné nasadit starší bitovou kopii SQL Server, která není k dispozici v Azure Portal pomocí prostředí PowerShell. Pokud chcete zobrazit všechny dostupné Image pomocí PowerShellu, použijte následující příkaz:
 
   ```powershell
   Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
   ```
 
-Další informace o nasazování virtuálních počítačů SQL Server pomocí Powershellu, zobrazit [jak zřídit virtuální počítače systému SQL Server v prostředí Azure PowerShell](virtual-machines-windows-ps-sql-create.md).
+Další informace o nasazení SQL Server virtuálních počítačů pomocí prostředí PowerShell najdete v tématu [jak zřídit SQL Server virtuálních počítačů pomocí Azure PowerShell](virtual-machines-windows-ps-sql-create.md).
 
 
 ### <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
@@ -97,6 +97,30 @@ Po vytvoření virtuálního počítače s SQL Serverem se k němu připojte z a
 
 ### <a name="migrate-your-data"></a>Migrace dat
 Pokud máte existující databázi, bude ji nutné přesunout do nově zřízeného virtuálního počítače s SQL Serverem. Seznam možností migrace a pokyny najdete v části [Migrace databáze do SQL Serveru ve virtuálním počítači Azure](virtual-machines-windows-migrate-sql.md).
+
+## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Vytváření a Správa prostředků Azure SQL pomocí Azure Portal
+
+Azure Portal poskytuje jednu stránku, kde můžete spravovat [všechny prostředky Azure SQL](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) , včetně vašich virtuálních počítačů SQL.
+
+Pokud chcete získat přístup ke stránce **prostředků Azure SQL** , vyberte v levé nabídce Azure Portal **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte *Azure SQL* .
+
+> [!NOTE]
+> **Azure SQL** nabízí rychlý a snadný způsob, jak získat přístup ke všem databázím SQL, elastickým fondům, databázovým serverům, spravovaným instancím SQL a virtuálním počítačům SQL. Azure SQL není služba nebo prostředek. 
+
+Pokud chcete spravovat existující prostředky, vyberte požadovanou položku v seznamu. Pokud chcete vytvořit nové prostředky Azure SQL, vyberte **+ Přidat**. 
+
+![Stránka portálu Azure SQL](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+
+Po výběru možnosti **+ Přidat**zobrazte další informace o různých možnostech výběrem možnosti **Zobrazit podrobnosti** na libovolné dlaždici.
+
+![Podrobnosti dlaždice databáze](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
+
+Podrobnosti najdete tady:
+
+- [Vytvoření izolované databáze](../../../sql-database/sql-database-single-database-get-started.md)
+- [Vytvoření elastického fondu](../../../sql-database/sql-database-elastic-pool.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)
+- [Vytvoření spravované instance](../../../sql-database/sql-database-managed-instance-get-started.md)
+- [Vytvoření virtuálního počítače s SQL](quickstart-sql-vm-create-portal.md)
 
 ## <a id="lifecycle"></a>Zásady aktualizace imagí virtuálních počítačů SQL
 Azure pro každou podporovanou kombinaci operačního systému, jeho verze a edice udržuje pouze jednu image virtuálního počítače. To znamená, že se image v průběhu času aktualizují a staré image se odebírají. Další informace najdete v části **Image** tématu [Nejčastější dotazy k virtuálním počítačům s SQL Serverem](virtual-machines-windows-sql-server-iaas-faq.md#images).
@@ -108,7 +132,7 @@ Program Zlepšování softwaru a služeb na základě zkušeností uživatelů (
 ### <a name="windows-virtual-machines"></a>Windows Virtual Machines
 * [Přehled služby Virtual Machines](../overview.md)
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 * [Úvod do Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>Sítě

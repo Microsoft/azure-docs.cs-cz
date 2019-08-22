@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 6/1/2019
+ms.date: 08/22/2019
 ms.author: victorh
-ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: da8142ad035eec338a3c1ba1a23be7c2be470a04
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740885"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891709"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -361,6 +360,13 @@ Můžete také použít šablonu Správce prostředků, která nainstaluje a spu
 ### <a name="what-could-cause-backend-health-to-return-an-unknown-status"></a>Co by mohlo způsobit neznámý stav back-endu?
 
 Obvykle se zobrazuje neznámý stav, pokud je přístup k back-endu zablokovaný skupinou zabezpečení sítě (NSG), vlastním DNS nebo uživatelem definovaným směrováním (UDR) v podsíti aplikační brány. Další informace najdete v tématu [stav back-endu, protokolování diagnostiky a metriky pro Application Gateway](application-gateway-diagnostics.md).
+
+### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>Existují nějaké případy, kdy protokoly toku NSG neukazují povolený provoz?
+
+Ano. Pokud vaše konfigurace odpovídá následujícímu scénáři, neuvidíte v protokolech toku NSG povolený provoz:
+- Nasadili jste Application Gateway v2
+- Máte NSGu v podsíti služby Application Gateway.
+- Povolili jste protokoly toku NSG na těchto NSG.
 
 ## <a name="next-steps"></a>Další postup
 

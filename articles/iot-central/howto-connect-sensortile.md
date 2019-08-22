@@ -1,6 +1,6 @@
 ---
-title: Připojte zařízení za SensorTile.box do aplikace Azure IoT Central | Dokumentace Microsoftu
-description: Jako vývojář zařízení zjistěte, jak připojit zařízení SensorTile.box do aplikace Azure IoT Central.
+title: Připojení zařízení SensorTile. Box ke svojí aplikaci Azure IoT Central | Microsoft Docs
+description: Jako vývojář zařízení se naučíte připojit zařízení SensorTile. box k aplikaci Azure IoT Central.
 author: sarahhubbard
 ms.author: sahubbar
 ms.date: 04/24/2019
@@ -8,93 +8,95 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: 8c1b4a4ab834b2203a7e0b6e4e9e366c3fc38774
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce0c5abe6e89094623c07afa2d1c85903e0e7ee7
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472202"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877434"
 ---
-# <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>Připojení zařízení SensorTile.box do aplikace Azure IoT Central
+# <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>Připojení zařízení SensorTile. box k aplikaci Azure IoT Central
 
-Tento článek popisuje, jak jako vývojář zařízení připojit zařízení SensorTile.box do aplikace Microsoft Azure IoT Central.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+Tento článek popisuje, jak jako vývojář zařízení připojit zařízení SensorTile. box k vaší aplikaci Microsoft Azure IoT Central.
 
-K dokončení kroků v tomto článku budete potřebovat následující prostředky:
+## <a name="before-you-begin"></a>Před zahájením
 
-* SensorTile.box zařízení. Další informace najdete v tématu [SensorTile.box](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mems-motion-sensor-eval-boards/steval-mksbox1v1.html).
-* ST volit senzor aplikaci nainstalovanou na zařízení s Androidem, můžete [stáhnout odsud](https://play.google.com/store/apps/details?id=com.st.bluems). Další informace naleznete zde: [ST volit senzor](https://www.st.com/stblesensor)
-* Azure IoT Central aplikace vytvořené z **DevKits** šablony aplikace. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
-* Přidat **SensorTile.box** šablona zařízení do vaší aplikace IoT Central si **šablon** stránku kliknutím na **+ nová**a výběr **SensorTile.box** šablony.
+K dokončení kroků v tomto článku budete potřebovat následující zdroje:
+
+* Zařízení SensorTile. box. Další informace najdete v tématu [SensorTile. Box](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mems-motion-sensor-eval-boards/steval-mksbox1v1.html).
+* Aplikace pro senzory ST v systému Android nainstalovaná na zařízení s Androidem si můžete [stáhnout odsud](https://play.google.com/store/apps/details?id=com.st.bluems). Další informace najdete v těchto informacích: [Senzor ST v-TIVOVAT](https://www.st.com/stblesensor)
+* Aplikace Azure IoT Central vytvořená v šabloně aplikace **DevKits** Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
+* Přidejte šablonu zařízení **SensorTile. Box** do aplikace IoT Central, a to tak, že navštívíte stránku **šablony zařízení** , kliknete na **+ Nový**a vyberete šablonu **SensorTile. Box** .
 
 ### <a name="get-your-device-connection-details"></a>Získat podrobnosti o připojení zařízení
 
-V aplikaci Azure IoT Central přidat z reálného zařízení **SensorTile.box** šablona zařízení a zaznamenání podrobností o připojení zařízení: **ID rozsahu**, **ID zařízení**, a **primární klíč**:
+V aplikaci Azure IoT Central přidejte reálné zařízení ze šablony zařízení **SensorTile. Box** a poznamenejte si podrobnosti o připojení zařízení: **ID oboru**, **ID zařízení**a **primární klíč**:
 
-1. Přidáte zařízení z Device Explorer. Vyberte **+ nový > skutečné** skutečné zařízení přidat.
+1. Přidat zařízení z Device Explorer. Vyberte **+ nový > Real** a přidejte reálné zařízení.
 
-    * Zadejte malé **ID zařízení**, nebo použijte navržené **ID zařízení**.
-    * Zadejte **název zařízení**, nebo použijte navrhovaný název
+    * Zadejte **ID zařízení**s malým písmenem nebo použijte navržené **ID zařízení**.
+    * Zadejte **název zařízení**nebo použijte navrhovaný název.
 
-    ![Přidání zařízení](media/howto-connect-sensortile/real-device.png)
+    ![Přidat zařízení](media/howto-connect-sensortile/real-device.png)
 
-1. Chcete-li získat podrobné informace o připojení zařízení **ID oboru**, **ID zařízení**, a **primární klíč**vyberte **připojit** na stránce zařízení.
+1. Pokud chcete získat podrobnosti o připojení zařízení, **ID oboru**, **ID zařízení**a **primární klíč**, vyberte **připojit** na stránce zařízení.
 
     ![Podrobnosti připojení](media/howto-connect-sensortile/connect-device.png)
 
-1. Poznamenejte si podrobnosti o připojení. Dočasně odpojení od Internetu při přípravě zařízení DevKit v dalším kroku.
+1. Poznamenejte si podrobnosti o připojení. Po přípravě zařízení DevKit v dalším kroku budete dočasně odpojeni od Internetu.
 
-## <a name="set-up-the-sensortilebox-with-the-mobile-application"></a>Nastavit SensorTile.box s mobilní aplikací
+## <a name="set-up-the-sensortilebox-with-the-mobile-application"></a>Nastavení SensorTile. Box mobilní aplikací
 
-V této části se dozvíte, jak nabízet firmware aplikace do zařízení. Můžete pak jak odesílat data zařízení do IoT Central přes mobilní aplikaci ST volit senzor používání připojení Bluetooth s nízkou energie (tabulku).
+V této části se dozvíte, jak odeslat firmware aplikace do zařízení. Pak můžete odesílat data zařízení IoT Central prostřednictvím mobilní aplikace senzoru ST. v programu pro připojení k Internetu pomocí technologie Bluetooth (s nízkou spotřebou).
 
-1. Otevřete ST volit senzor aplikace a stiskněte klávesu **vytvořit novou aplikaci** tlačítko.
+1. Otevřete aplikaci pro senzory ST BULKu a stiskněte tlačítko **vytvořit novou aplikaci** .
 
-    ![Vytvoření aplikace](media/howto-connect-sensortile/create-app.png)
+    ![Vytvořit aplikaci](media/howto-connect-sensortile/create-app.png)
 
-1. Vyberte **měřítko** aplikace.
-1. Stisknutím tlačítka Odeslat.
+1. Vyberte aplikaci **Barometer** .
+1. Stiskněte tlačítko nahrát.
 
-    ![Měřítko nahrávání](media/howto-connect-sensortile/barometer-upload.png)
+    ![Nahrávání Barometer](media/howto-connect-sensortile/barometer-upload.png)
 
-1. Kliknutím na tlačítko Přehrát přidružené k vaší SensorTile.box.
-1. Po dokončení procesu SensorTile.box datových proudů teplota, tlaku a vlhkosti přes zakázat.
+1. Stiskněte tlačítko Přehrát přidružené k vašemu SensorTile. box.
+1. Po dokončení procesu SensorTile. Box vysílá teplotu, tlak a vlhkost přes tabulku.
 
-## <a name="connect-the-sensortilebox-to-the-cloud"></a>Připojení ke cloudu SensorTile.box
+## <a name="connect-the-sensortilebox-to-the-cloud"></a>Připojení SensorTile. Box ke cloudu
 
-V této části se dozvíte, jak připojit SensorTile.box mobilních aplikací a připojit mobilní aplikace do cloudu.
+V této části se dozvíte, jak připojit SensorTile. box do mobilní aplikace a připojit mobilní aplikaci ke cloudu.
 
-1. V nabídce vlevo vyberte **cloudu protokolování** tlačítko.
+1. V nabídce vlevo vyberte tlačítko protokolování do **cloudu** .
 
-    ![Protokolování v cloudu](media/howto-connect-sensortile/cloud-logging.png)
+    ![Protokolování cloudu](media/howto-connect-sensortile/cloud-logging.png)
 
-1. Vyberte **Azure IoT Central** jako poskytovatele cloudu.
-1. Vložte ID zařízení a ID oboru, který jste si předtím poznamenali.
+1. Jako poskytovatele cloudu vyberte **Azure IoT Central** .
+1. Vložte ID zařízení a ID oboru, které jste si poznamenali dříve.
 
-    ![Přihlašovací údaje](media/howto-connect-sensortile/credentials.png)
+    ![Pověření](media/howto-connect-sensortile/credentials.png)
 
-1. Vyberte **klíč aplikace** přepínač.
-1. Klikněte na tlačítko **připojit** a vyberte telemetrických dat, které chcete nahrát.
-1. Po několika sekundách se zobrazí data na řídicí panel aplikací IoT Central.
+1. Vyberte přepínač **klíče aplikace** .
+1. Klikněte na **připojit** a vyberte data telemetrie, která chcete nahrát.
+1. Po několika sekundách se data zobrazí na řídicím panelu aplikace IoT Central.
 
-## <a name="sensortilebox-device-template-details"></a>Podrobnosti o šabloně SensorTile.box zařízení
+## <a name="sensortilebox-device-template-details"></a>Podrobnosti o šabloně zařízení SensorTile. box
 
-Aplikace vytvořené z této šablony SensorTile.box zařízení s následujícími charakteristikami:
+Aplikace vytvořená v šabloně zařízení SensorTile. box s následujícími charakteristikami:
 
-### <a name="telemetry"></a>Telemetrická data
+### <a name="telemetry"></a>Telemetrie
 
 | Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkost       | %      | 30       | 90     | 1              |
-| temp           | °C     | 0     | 40     | 1              |
-| tlak       | mbar    | 900     | 1100    | 2              |
+| názvem           | °C     | 0     | 40     | 1              |
+| pressure       | mbar    | 900     | 1100    | 2              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
-| accelerometerZ | mg     | -2000   | 2000    | 0              |
+| accelerometerX | mg/Nm3     | -2000   | 2000    | 0              |
+| akcelerometr | mg/Nm3     | -2000   | 2000    | 0              |
+| accelerometerZ | mg/Nm3     | -2000   | 2000    | 0              |
 | gyroscopeX     | DPS   | -3276   | 3276    | 1              |
 | gyroscopeY     | DPS   | -3276   | 3276    | 1              |
 | gyroscopeZ     | DPS   | -3276   | 3276    | 1              |
@@ -102,6 +104,6 @@ Aplikace vytvořené z této šablony SensorTile.box zařízení s následujíc�
 | FFT_Y     |    |    |     |               |
 | FFT_Z     |    |    |     |               |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste zjistili, jak se připojit k aplikaci Azure IoT Central SensorTile.box, navrhované dalším krokem je další [jak vytvořit šablonu vlastního zařízení](howto-set-up-template.md) pro zařízení IoT.
+Teď, když jste se naučili, jak připojit SensorTile. box do vaší aplikace IoT Central Azure, je navržený další krok, kde se dozvíte, [jak nastavit vlastní šablonu zařízení](howto-set-up-template.md) pro vlastní zařízení IoT.

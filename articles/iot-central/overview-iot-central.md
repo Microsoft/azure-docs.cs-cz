@@ -1,6 +1,6 @@
 ---
 title: Co je Azure IoT Central | Microsoft Docs
-description: Azure IoT Central je řešení SaaS začátku do konce, kterými můžete vytvářet a spravovat vlastní řešení IoT. Tento článek obsahuje přehled funkcí Azure IoT Central.
+description: Azure IoT Central je ucelené řešení SaaS, které můžete použít k vytvoření a správě vlastního řešení IoT. Tento článek obsahuje přehled funkcí Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
 ms.date: 04/24/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 84fa7aa006a6bc5365527dbf8043797617543590
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ff212e77b6fcaaa057c22c420cce82e7ea6c82e6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704544"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877297"
 ---
 <!---
 Purpose of an Overview article: 
@@ -25,16 +25,18 @@ Purpose of an Overview article:
 
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
-Azure IoT Central je plně spravovaná řešení software jako služba IoT, které umožňuje snadno vytvářet produkty, které se připojují fyzickým a digitálním světem. Svoji vizi propojených produktů můžete přivést k životu následujícími kroky:
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+Azure IoT Central je plně spravované řešení IoT typu software jako služba, které umožňuje snadno vytvářet produkty, které spojují fyzické a digitální světů. Svoji vizi propojených produktů můžete přivést k životu následujícími kroky:
 
 - Získávání nových informací z připojených zařízení, které vám pomohou poskytovat zákazníkům lepší produkty a prostředí
 - Vytváření nových obchodních příležitostí pro vaši organizaci
 
-Azure IoT Central, porovnání s obvyklou pro projekty IoT:
+Azure IoT Central v porovnání s typickým projektem IoT:
 
-- Snižuje režie správy.
-- Snižuje provozní náklady a režie.
-- Umožňuje snadno upravit aplikaci, při práci s:
+- Snižuje režijní náklady na správu.
+- Snižuje provozní náklady a režijní náklady.
+- Aplikace usnadňuje přizpůsobení aplikace při práci s těmito nástroji:
   - Špičkové technologie jako [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) a [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)
   - Funkce zabezpečení na podnikové úrovni, třeba komplexní šifrování
 
@@ -42,7 +44,7 @@ Následující video obsahuje přehled Azure IoT Central:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Microsoft-IoT-Central-intro-walkthrough/Player]
 
-Tento článek popisuje pro Azure IoT Central:
+Tento článek popisuje, jak IoT Central Azure:
 
 - Typické osoby přidružené k projektu
 - Postup vytvoření aplikace
@@ -51,7 +53,7 @@ Tento článek popisuje pro Azure IoT Central:
 
 ## <a name="personas"></a>Osoby
 
-Azure IoT Central dokumentace odkazuje na čtyři Person, kteří pracují s Azure IoT Central aplikace:
+Dokumentace ke službě Azure IoT Central odkazuje na čtyři osoby, kteří komunikují s aplikací Azure IoT Central:
 
 - _Tvůrce_ zodpovídá za definování typů zařízení, která se připojují k aplikaci, a přizpůsobuje aplikaci pro operátora.
 - _Operátor_ spravuje zařízení připojená k aplikaci.
@@ -65,12 +67,12 @@ Jako tvůrce vytvoříte pomocí Azure IoT Central pro svoji organizaci vlastní
 - Cloudová aplikace, která přijímá ze zařízení telemetrická data a umožňuje vám tato zařízení spravovat
 - Více zařízení připojených k vaší cloudové aplikaci, na kterých běží vlastní kód
 
-Můžete rychle nasadit novou aplikaci Azure IoT Central a potom jej přizpůsobte vašim konkrétním požadavkům ve vašem prohlížeči. Jako tvůrce, použijete k vytvoření nástroje pro webové _šablona zařízení_ pro zařízení, která se připojují k vaší aplikaci. Podrobný plán, který definuje charakteristiky a chování typu zařízení, jako je šablona zařízení:
+Můžete rychle nasadit novou aplikaci IoT Central Azure a pak ji přizpůsobit konkrétním požadavkům v prohlížeči. Jako tvůrce použijete webové nástroje k vytvoření _šablony_ pro zařízení, která se připojují k vaší aplikaci. Šablona zařízení je plán, který definuje charakteristiky a chování typu zařízení, například:
 
-- Telemetrie, kterou odesílá.
+- Telemetrii, kterou posílá.
 - Obchodní vlastnosti, které můžete upravit operátor
 - Vlastnosti zařízení nastavené zařízením, které jsou v aplikaci jen pro čtení
-- Prahové hodnoty, které odpovídá aplikace.
+- Prahové hodnoty, na které aplikace reaguje.
 - Nastavení určující chování zařízení
 
 Šablony zařízení a aplikaci můžete okamžitě otestovat s využitím simulovaných dat, která vám Azure IoT Central vygeneruje.
@@ -83,7 +85,7 @@ Jako tvůrce můžete taky přizpůsobit uživatelské rozhraní aplikace Azure 
 
 ## <a name="connect-your-devices"></a>Připojení zařízení
 
-Jakmile tvůrce definuje typy zařízení, které se můžou připojovat k aplikaci, vývojář zařízení vytvoří kód, který na zařízeních poběží. Jako vývojář zařízení vytváříte kód zařízení pomocí open source [sad SDK Azure IoT](https://github.com/Azure/azure-iot-sdks) od Microsoftu. Tyto sady SDK nabízejí širokou podporu jazyků, platforem a protokolů, aby vyhověly vašim požadavkům na připojení vašich zařízení k aplikaci Azure IoT Central. Sady SDK vám pomůže implementovat následující funkce zařízení:
+Jakmile tvůrce definuje typy zařízení, které se můžou připojovat k aplikaci, vývojář zařízení vytvoří kód, který na zařízeních poběží. Jako vývojář zařízení vytváříte kód zařízení pomocí open source [sad SDK Azure IoT](https://github.com/Azure/azure-iot-sdks) od Microsoftu. Tyto sady SDK nabízejí širokou podporu jazyků, platforem a protokolů, aby vyhověly vašim požadavkům na připojení vašich zařízení k aplikaci Azure IoT Central. Sady SDK vám pomůžou implementovat následující možnosti zařízení:
 
 - Vytvořit zabezpečené připojení
 - Odesílat telemetrická data
@@ -96,17 +98,17 @@ Další informace najdete v příspěvku na blogu [Výhody používání sad SDK
 
 Aplikace Azure IoT Central jsou plně hostované Microsoftem, což snižuje režijní náklady na jejich správu.
 
-Jako operátor používáte aplikaci Azure IoT Central ke správě zařízení v rámci svého řešení Azure IoT Central. Operátory provádět úlohy, jako:
+Jako operátor používáte aplikaci Azure IoT Central ke správě zařízení v rámci svého řešení Azure IoT Central. Obsluha provede úkoly, jako například:
 
 - Monitorovat zařízení připojená k aplikaci
 - Řešit potíže a opravovat problémy se zařízeními
 - Zřizovat nová zařízení
 
-Jako tvůrce můžete definovat vlastní pravidla a akce, které pracovat s daty streamovanými ze zařízení připojených. Operátor může tato pravidla povolit nebo zakázat na úrovni zařízení za účelem řízení a automatizace úloh v rámci aplikace.
+Jako tvůrce můžete definovat vlastní pravidla a akce, které provozují streamování dat z připojených zařízení. Operátor může tato pravidla povolit nebo zakázat na úrovni zařízení za účelem řízení a automatizace úloh v rámci aplikace.
 
-Správci spravovat přístup k vaší aplikace pomocí [uživatelských rolí a oprávnění](howto-administer.md).
+Správci spravují přístup k vaší aplikaci pomocí [rolí a oprávnění uživatele](howto-administer.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečetli jste si přehled Azure IoT Central a tady jsou doporučené další kroky:
 

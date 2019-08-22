@@ -1,6 +1,6 @@
 ---
-title: Jak se zaměřit na verze modulu runtime Azure Functions
-description: Služba Azure Functions podporuje více verzí modulu runtime. Zjistěte, jak určit verzi modulu runtime aplikace funkcí hostované v Azure.
+title: Jak cílit na verze modulu runtime Azure Functions
+description: Azure Functions podporuje více verzí modulu runtime. Naučte se, jak určit běhovou verzi aplikace Function App hostované v Azure.
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -8,60 +8,60 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: glenga
-ms.openlocfilehash: 2047f11272c6154d4443e889eff24401c2f73afa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6e9ac50f38b2cf7bc3531e58e87ff2a8768c0a45
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067699"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650472"
 ---
-# <a name="how-to-target-azure-functions-runtime-versions"></a>Jak se zaměřit na verze modulu runtime Azure Functions
+# <a name="how-to-target-azure-functions-runtime-versions"></a>Jak cílit na verze modulu runtime Azure Functions
 
-Aplikace function app se spouští na konkrétní verzi modulu runtime Azure Functions. Existují dvě hlavní verze: [1.x a 2.x](functions-versions.md). Ve výchozím nastavení, funkce aplikace, které jsou vytvořeny verze 2.x modulu runtime. Tento článek vysvětluje, jak nakonfigurovat aplikaci function app v Azure pro spouštění na zvolené verzi. Informace o tom, jak nakonfigurovat místní vývojové prostředí pro konkrétní verzi, najdete v části [kódu a testování Azure Functions místně](functions-run-local.md).
+Aplikace Function App běží na konkrétní verzi Azure Functions runtime. Existují dvě hlavní verze: [1. x a 2. x](functions-versions.md). Ve výchozím nastavení aplikace Function App, které jsou vytvořeny ve verzi 2. x modulu runtime. Tento článek vysvětluje, jak nakonfigurovat aplikaci Function App v Azure tak, aby běžela na zvolené verzi. Informace o tom, jak nakonfigurovat místní vývojové prostředí pro konkrétní verzi, naleznete v tématu [Code and test Azure Functions lokálně](functions-run-local.md).
 
-## <a name="automatic-and-manual-version-updates"></a>Verze automatické a ruční aktualizace
+## <a name="automatic-and-manual-version-updates"></a>Automatické a ruční aktualizace verze
 
-Azure Functions Umožňuje cílit na konkrétní verzi modulu runtime s použitím `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace function app. Aplikace function app se ukládají na zadaný hlavní verze, dokud se nerozhodnete explicitně přesunout na novou verzi.
+Azure Functions umožňuje cílit na konkrétní verzi modulu runtime pomocí `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace ve Function App. Aplikace Function App je udržována v zadané hlavní verzi, dokud nebudete explicitně chtít přejít na novou verzi.
 
-Pokud zadáte jenom hlavní verzi ("~ 2" pro 2.x nebo "~ 1" pro 1.x), aplikace function app se automaticky aktualizují na nový dílčí verze modulu runtime, jakmile budou k dispozici. Nový dílčí verze není zavést rozbíjející změny. Pokud zadáte vedlejší verze (například "2.0.12345"), aplikace function app se Připne na tuto konkrétní verzi, dokud ji explicitně nezměníte.
+Pokud zadáte pouze hlavní verzi (~ 2 pro 2. x nebo ~ 1 pro 1. x), aplikace Function App se automaticky aktualizuje na nové podverze modulu runtime, jakmile budou k dispozici. Nové podverze nevedou k nedůležitým změnám. Pokud zadáte vedlejší verzi (například "2.0.12345"), aplikace Function App se přiřadí k dané konkrétní verzi, dokud ji explicitně nezměníte.
 
 > [!NOTE]
-> Pokud připnete na konkrétní verzi nástroje Azure Functions a pak zkuste publikovat do Azure pomocí sady Visual Studio, dialogové okno objeví se při zobrazení výzvy k aktualizaci na nejnovější verzi nebo zrušit publikování. Chcete-li předejít, přidejte `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` vlastnost v vaše `.csproj` souboru.
+> Pokud připnete ke konkrétní verzi Azure Functions a potom se pokusíte publikovat do Azure pomocí sady Visual Studio, zobrazí se dialogové okno s výzvou k aktualizaci na nejnovější verzi nebo zrušení publikování. Pokud se tomu chcete vyhnout, `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` přidejte `.csproj` do souboru vlastnost.
 
-Když je veřejně dostupná nová verze, výzvu na portálu poskytuje možnost Přesunout nahoru na tuto verzi. Po přesunutí na novou verzi, můžete kdykoli použít `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace, které chcete vrátit k předchozí verzi.
+Když je k dispozici veřejně dostupná nová verze, zobrazí se výzva na portálu, která vám umožní přejít až k této verzi. Po přesunu na novou verzi můžete nastavení `FUNCTIONS_EXTENSION_VERSION` aplikace vždy použít k přechodu zpět na předchozí verzi.
 
-Ke změně verze modulu runtime způsobí, že se aplikace function app k restartování.
+Změna verze modulu runtime způsobuje restartování aplikace Function App.
 
-Hodnoty můžete nastavit `FUNCTIONS_EXTENSION_VERSION` nastavení, které povolí automatické aktualizace aplikací jsou aktuálně "~ 1" pro modul runtime verze 1.x a "~ 2" pro 2.x.
+Hodnoty, které můžete nastavit v `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace, aby umožňovaly automatické aktualizace, jsou v současnosti "~ 1" pro modul runtime 1. x a ~ 2 pro 2. x.
 
-## <a name="view-and-update-the-current-runtime-version"></a>Zobrazit a aktualizovat aktuální verze modulu runtime
+## <a name="view-and-update-the-current-runtime-version"></a>Zobrazení a aktualizace aktuální verze modulu runtime
 
-Můžete změnit verzi modulu runtime používá aplikace function App. Z důvodu potenciál rozbíjející změny v by měl změnit pouze verze modulu runtime, než vytvoříte všechny funkce v aplikaci function app. I když se verze modulu runtime závisí `FUNCTIONS_EXTENSION_VERSION` nastavení, by měl provedení této změny na webu Azure Portal a není to změnou nastavení přímo. Je to proto, že na portálu ověří změny a provádět další související změny podle potřeby.
+Můžete změnit verzi modulu runtime, kterou používá aplikace Function App. Z důvodu potenciálních změn můžete změnit pouze verzi modulu runtime ještě před vytvořením funkcí ve vaší aplikaci Function App. I když je verze modulu runtime určena `FUNCTIONS_EXTENSION_VERSION` nastavením, měli byste tuto změnu provést v Azure Portal a nikoli změnou nastavení přímo. Důvodem je to, že portál ověří vaše změny a v případě potřeby provede další související změny.
 
-### <a name="from-the-azure-portal"></a>Na webu Azure Portal
+### <a name="from-the-azure-portal"></a>Z Azure Portal
 
 [!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
 > [!NOTE]
-> Pomocí webu Azure portal, nelze změnit verzi modulu runtime aplikace function App, který již obsahuje funkce.
+> Pomocí Azure Portal nemůžete změnit verzi modulu runtime aplikace Function App, která již obsahuje funkce.
 
-### <a name="view-and-update-the-runtime-version-using-azure-cli"></a>V Azure CLI
+### <a name="view-and-update-the-runtime-version-using-azure-cli"></a>Z Azure CLI
 
-Můžete také zobrazit a nastavit `FUNCTIONS_EXTENSION_VERSION` z příkazového řádku Azure.
+Můžete také zobrazit a nastavit v `FUNCTIONS_EXTENSION_VERSION` rozhraní příkazového řádku Azure CLI.
 
 >[!NOTE]
->Protože jiné nastavení může mít vliv na verzi modulu runtime, měli byste změnit verzi na portálu. Na portálu automaticky provede další potřebné aktualizace, jako je například Node.js verze a modulu runtime zásobníku při změně verze modulu runtime.  
+>Vzhledem k tomu, že jiná nastavení můžou být ovlivněná verzí modulu runtime, měli byste změnit verzi na portálu. Když změníte běhové verze, portál automaticky provede další potřebné aktualizace, jako je například verze Node. js a zásobník modulu runtime.  
 
-Pomocí Azure CLI, zobrazit aktuální verze modulu runtime s [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) příkazu.
+Pomocí Azure CLI zobrazte aktuální verzi modulu runtime pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) .
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <function_app> \
 --resource-group <my_resource_group>
 ```
 
-V tomto kódu nahraďte `<function_app>` s názvem aplikace function App. Také nahraďte `<my_resource_group>` s názvem skupiny prostředků pro vaši aplikaci function app. 
+V tomto kódu nahraďte `<function_app>` názvem vaší aplikace Function App. Nahraďte `<my_resource_group>` také názvem skupiny prostředků vaší aplikace Function App. 
 
-Zobrazí `FUNCTIONS_EXTENSION_VERSION` v následujícím výstupu, který byl zkrácen pro přehlednost:
+Zobrazí se `FUNCTIONS_EXTENSION_VERSION` následující výstup, který byl zkrácen pro přehlednost:
 
 ```output
 [
@@ -86,7 +86,7 @@ Zobrazí `FUNCTIONS_EXTENSION_VERSION` v následujícím výstupu, který byl zk
 ]
 ```
 
-Můžete aktualizovat `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace function App s [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) příkazu.
+`FUNCTIONS_EXTENSION_VERSION` Nastavení v aplikaci Function App můžete aktualizovat pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) .
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
@@ -94,16 +94,16 @@ az functionapp config appsettings set --name <function_app> \
 --settings FUNCTIONS_EXTENSION_VERSION=<version>
 ```
 
-Nahraďte `<function_app>` s názvem aplikace function App. Také nahraďte `<my_resource_group>` s názvem skupiny prostředků pro vaši aplikaci function app. Také nahraďte `<version>` s platnou verzi modul runtime verze 1.x nebo `~2` verze 2.x.
+Nahraďte `<function_app>` názvem vaší aplikace Function App. Nahraďte `<my_resource_group>` také názvem skupiny prostředků vaší aplikace Function App. Nahraďte `<version>` také platnou verzí modulu runtime 1. x nebo `~2` verze 2. x.
 
-Tento příkaz můžete spustit [Azure Cloud Shell](../cloud-shell/overview.md) výběrem **vyzkoušet** v předchozím příkladu kódu. Můžete také použít [rozhraní příkazového řádku Azure místně](/cli/azure/install-azure-cli) k provedení tohoto příkazu po provedení [az login](/cli/azure/reference-index#az-login) k přihlášení.
+Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](/cli/azure/reference-index#az-login) pro přihlášení.
 
 
 
-## <a name="next-steps"></a>Další postup
-
-> [!div class="nextstepaction"]
-> [Cílový modul runtime 2.0 ve vašem místním vývojovém prostředí](functions-run-local.md)
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Zobrazit poznámky k verzím modulu runtime](https://github.com/Azure/azure-webjobs-sdk-script/releases)
+> [Cílení na modul runtime 2,0 ve vašem místním vývojovém prostředí](functions-run-local.md)
+
+> [!div class="nextstepaction"]
+> [Verze modulu runtime najdete v poznámkách k verzi.](https://github.com/Azure/azure-webjobs-sdk-script/releases)

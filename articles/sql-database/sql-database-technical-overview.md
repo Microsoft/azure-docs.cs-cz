@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: e648f89a86d7d6064b883496f888cb27a4af27e4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1c4fae5c41f4f23c4a7fe3135b602133aa69aacd
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566391"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873736"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database Service
 
@@ -198,6 +198,8 @@ SQL Database zjednodušuje a zefektivňuje vytváření a správu aplikací. SQL
 
 SQL Database podporuje vytváření aplikací pomocí Pythonu, Javy, Node.js, PHP, Ruby a .NET v systémech MacOS, Linux a Windows. SQL Database podporuje stejné [knihovny připojení](sql-database-libraries.md) jako SQL Server.
 
+[!INCLUDE [sql-database-create-manage-portal](includes/sql-database-create-manage-portal.md)]
+
 ## <a name="sql-database-frequently-asked-questions-faq"></a>Nejčastější dotazy SQL Database
 
 ### <a name="what-is-the-current-version-of-sql-database"></a>Jaká je aktuální verze SQL Database
@@ -240,7 +242,7 @@ K Zvýhodněné hybridní využití Azure pro SQL Server budou mít zákazníci 
 - [Zpětná vazba](https://aka.ms/sqlfeedback): Hlášení chyb a funkcí žádosti
 - [Reddit](https://www.reddit.com/r/SQLServer/): Diskuze SQL Server
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Na [stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/) najdete cenové kalkulačky a srovnání cen izolovaných databází a elastických fondů.
 - Tyto rychlé starty vám pomůžou začít:

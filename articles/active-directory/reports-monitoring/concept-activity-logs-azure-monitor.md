@@ -17,12 +17,12 @@ ms.date: 04/22/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8fb570d328c7391c269d4a2aa91c69003b1cfc8
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f62ad020d2ec3b5ab712f50dca2dddd3b981f098
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989889"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656473"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit Azure AD v Azure Monitor
 
@@ -70,7 +70,7 @@ Pokud už máte licenci Azure AD, potřebujete k vytvoření účtu úložiště
 
 ### <a name="storage-size-for-activity-logs"></a>Velikost úložiště pro protokoly aktivit
 
-Každá událost protokolu auditu zabere v úložišti dat asi 2 kB. V případě tenanta se 100 000 uživateli, ve kterém dojde asi k 1,5 milionu událostí denně, byste za den spotřebovali asi 3 GB úložiště. Vzhledem k tomu, že k zápisům dochází v dávkách asi po pěti minutách, můžete očekávat asi 9 000 operací zápisu za měsíc. 
+Každá událost protokolu auditu zabere v úložišti dat asi 2 kB. Protokoly událostí přihlášení mají přibližně 4 KB úložiště dat. V případě tenanta se 100 000 uživateli, ve kterém dojde asi k 1,5 milionu událostí denně, byste za den spotřebovali asi 3 GB úložiště. Vzhledem k tomu, že k zápisům dochází v dávkách asi po pěti minutách, můžete očekávat asi 9 000 operací zápisu za měsíc. 
 
 
 Následující tabulka obsahuje odhad nákladů na účet úložiště pro obecné účely v2 v oblasti Západní USA s dobou uchování minimálně jeden rok, v závislosti na velikosti tenanta. Přesnější odhad objemu dat, který můžete ve své aplikaci očekávat, vám poskytne [cenová kalkulačka služby Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).

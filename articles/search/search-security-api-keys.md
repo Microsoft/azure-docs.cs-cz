@@ -2,7 +2,7 @@
 title: Vytváření, Správa a zabezpečení správce a rozhraní API pro dotazování klíčů – Azure Search
 description: API-Keys řídí přístup ke koncovému bodu služby. Klíče správce udělují přístup pro zápis. Klíče dotazů lze vytvořit pro přístup jen pro čtení.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: d3880ed367ebe33e04f37b139927b75e3d01b178
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a148ccccd156b0bf637a134758b3a1c8b9db70a7
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855784"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647887"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Vytváření a Správa klíčů rozhraní API pro službu Azure Search
 

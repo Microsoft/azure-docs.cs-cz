@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: d50acc50880229626c847d41d9abe9a9e13d9c6e
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736119"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876876"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Vývoj a nasazení WebJobs pomocí sady Visual Studio – Azure App Service
 
@@ -90,7 +90,7 @@ Projekt můžete nasadit jako webovou úlohu samostatně nebo ho připojit k web
 
 Pokud používáte sadu Visual Studio 2015, nainstalujte [sadu Azure SDK pro .NET (Visual studio 2015)](https://azure.microsoft.com/downloads/).
 
-Pokud používáte Visual Studio 2019, nainstalujte [úlohu vývoj pro Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
+Pokud používáte Visual Studio 2017, nainstalujte [úlohu vývoj pro Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
 
 ### <a id="convert"></a>Povolit nasazení WebJobs pro existující projekt konzolové aplikace
 
@@ -241,7 +241,7 @@ WebJobs podporuje následující nastavení:
 | `schedule` | Aktivované | Spusťte úlohu WebJob v plánu založeném na CRON. Další informace najdete v [článku referenční](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)informace o aktivačních událostech časovače. |
 | `stopping_wait_time`| Vše | Umožňuje kontrolu nad chováním při vypnutí. Další informace najdete v tématu [řádné vypnutí](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Další informace o sadě WebJobs SDK](webjobs-sdk-how-to.md)

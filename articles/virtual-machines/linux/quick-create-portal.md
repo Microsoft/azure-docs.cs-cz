@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 8/16/2019
+ms.date: 8/20/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 189d6d0030264590986d6fe2af47d35705cfb08b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: feaefef23b433a296d25cc11b5cd89d86acd280f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575804"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650196"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače se systémem Linux v Azure Portal
 
-Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Azure Portal je uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet virtuální počítače a související prostředky. V tomto rychlém startu se dozvíte, jak pomocí webu Azure Portal nasadit virtuální počítač s Linuxem Ubuntu 16.04 LTS. Také se k virtuálnímu počítači připojíte přes SSH a nainstalujete na něj webový server NGINX, abyste virtuální počítač viděli v akci.
+Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Azure Portal je uživatelské rozhraní založené na prohlížeči pro vytváření prostředků Azure. V tomto rychlém startu se dozvíte, jak použít Azure Portal k nasazení virtuálního počítače se systémem Linux se systémem Ubuntu 18,04 LTS. Také se k virtuálnímu počítači připojíte přes SSH a nainstalujete na něj webový server NGINX, abyste virtuální počítač viděli v akci.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -33,62 +33,29 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 K dokončení tohoto rychlého startu potřebujete pár klíčů SSH. Pokud už máte pár klíčů SSH, můžete tento krok přeskočit.
 
-Otevřete prostředí Bash a pomocí nástroje [ssh-keygen](https://www.ssh.com/ssh/keygen/) vytvořte pár klíčů SSH. Příklad příkazu, který je třeba provést, je uveden níže. Pokud na místním počítači nemáte prostředí Bash, můžete použít [Azure Cloud Shell](https://shell.azure.com/bash).
+Otevřete prostředí Bash a pomocí nástroje [ssh-keygen](https://www.ssh.com/ssh/keygen/) vytvořte pár klíčů SSH. Pokud na místním počítači nemáte prostředí Bash, můžete použít [Azure Cloud Shell](https://shell.azure.com/bash).
 
-```bash
-ssh-keygen -t rsa -b 2048
-```
 
-Zobrazí se výzva k zadání souboru, do kterého chcete uložit dvojici klíčů. Můžete buď zadat konkrétní umístění souboru, nebo jen "Enter", aby se uložily ve výchozím umístění uvedeném v závorkách. Pak se zobrazí výzva k zadání hesla. Můžete zadat přístupové heslo pro svůj klíč SSH. Pokud chcete pokračovat bez hesla, můžete stisknout Enter.
-
-```bash
-[root@linuxvm ~]$ ssh-keygen -t rsa -b 2048
-Enter the file in which to save the key (home/root/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your public key has been saved in /home/root/.ssh/id_rsa.pub.
-The key fingerprint is: SHA256:kkQS13gbaxevy4ULH0mW6wLIkcFm0twx/rIlSo1fIqU
-The key's randomart image is:
-+---[RSA 2018]----+
-|   +oo=+         |
-|  . B=o.+ .      |
-|   + o+. + +     |
-|    o* o+ = .    |
-|   .EoB.S+ =     |
-|   .o+.O. * .    |
-|    . o. = =     |
-|        . *      |
-|         .       |
-+----[SHA256]-----+
-```
-Příkaz vygeneruje veřejné a privátní klíče s výchozím `id_rsa` názvem v `~/.ssh directory`. `ssh-keygen` Příkaz vrátí úplnou cestu k veřejnému klíči. Použijte cestu k veřejnému klíči v příkazu `cat` a zobrazte obsah tohoto klíče.
-
-```bash
-cat ~/.ssh/id_rsa.pub
-```
-
->[!NOTE]
-> Pokud se rozhodnete uložit klíč SSH v jiném umístění než ve výchozím nastavení, budete ho muset použít při spuštění`cat`
-
-Výstup tohoto příkazu si uložte. Toto je váš veřejný klíč a budete ho potřebovat při konfiguraci účtu správce pro přihlášení k vašemu VIRTUÁLNÍmu počítači.
-
-Další informace o příkazu ssh-keygen najdete na [stránce muž](https://linux.die.net/man/1/ssh-keygen).
-
-Pokud používáte počítač s Windows a chcete další informace o tom, jak vytvářet páry klíčů SSH, včetně použití výstupu, přečtěte si téma [použití klíčů ssh v systému Windows](ssh-from-windows.md).
-
-Pokud pár klíčů SSH vytvoříte pomocí služby Cloud Shell, uloží se do sdílené složky Azure, kterou služba [Cloud Shell automaticky připojí](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Tuto sdílenou složku ani účet úložiště neodstraňujte,dokud nenačtete své klíče, jinak ztratíte přístup k virtuálnímu počítači.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. V nabídce v horní části stránky vyberte `>_` ikonu pro otevření Cloud Shell.
+1. Ujistěte se, že Cloudshellu říká **bash** v levém horním rohu. Pokud se jedná o PowerShell, vyberte v rozevíracím seznamu **bash** a vyberte **Potvrdit** pro změnu prostředí bash shell.
+1. Zadejte `ssh-keygen -t rsa -b 2048` , chcete-li vytvořit klíč SSH. 
+1. Zobrazí se výzva k zadání souboru, do kterého chcete uložit dvojici klíčů. Stačí stisknout **ENTER** a uložit ve výchozím umístění, které je uvedené v závorkách. 
+1. Zobrazí se výzva k zadání hesla. Pro svůj klíč SSH můžete zadat přístupové heslo nebo stisknutím klávesy **ENTER** pokračovat bez hesla.
+1. Příkaz vygeneruje veřejné a privátní klíče s výchozím `id_rsa` názvem v `~/.ssh directory`. `ssh-keygen` Příkaz vrátí úplnou cestu k veřejnému klíči. Použijte cestu k veřejnému klíči pro zobrazení jejího obsahu `cat` zadáním. `cat ~/.ssh/id_rsa.pub`
+1. Zkopírujte výstup tohoto příkazu a uložte ho někam pro pozdější použití v tomto článku. Toto je váš veřejný klíč a budete ho potřebovat při konfiguraci účtu správce pro přihlášení k vašemu VIRTUÁLNÍmu počítači.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.azure.com) .
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 
-1. Do vyhledávacího pole nad seznamem prostředků Azure Marketplace vyhledejte **Ubuntu Server 18,04** a vyberte nabídku Ubuntu 18,04 LTS a pak zvolte **vytvořit**.
+1. V **oblíbených**vyberte **Ubuntu Server 18,04 LTS**.
 
-1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a potom v části **Skupina prostředků** vyberte **Vytvořit nový**. V automaticky otevíraném okně zadejte jako název skupiny prostředků *myResourceGroup* a potom zvolte **OK**.
+1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a potom v části **Skupina prostředků** vyberte **Vytvořit nový**. Jako název skupiny prostředků zadejte *myResourceGroup* a pak zvolte **OK**. 
 
     ![Vytvoření nové skupiny prostředků pro virtuální počítač](./media/quick-create-portal/project-details.png)
 
@@ -96,11 +63,11 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
     ![Část podrobností o instancích](./media/quick-create-portal/instance-details.png)
 
-1. V části **účet správce**vyberte **veřejný klíč SSH**, zadejte své uživatelské jméno a potom do textového pole vložte svůj veřejný klíč, který jste předtím uložili. Ve veřejném klíči odeberte počáteční a koncové prázdné znaky.
+1. V části **účet správce**vyberte **veřejný klíč SSH**, zadejte své uživatelské jméno a pak vložte svůj veřejný klíč. Ve veřejném klíči odeberte počáteční a koncové prázdné znaky.
 
     ![Účet správce](./media/quick-create-portal/administrator-account.png)
 
-1. V části **Pravidla portů pro příchozí spojení** > **Veřejné příchozí porty** zvolte **Povolit vybrané porty** a potom z rozevíracího seznamu vyberte **SSH (22)** a **HTTP (80)** .
+1. V části **Pravidla portů pro příchozí spojení** > **Veřejné příchozí porty** zvolte **Povolit vybrané porty** a potom z rozevíracího seznamu vyberte **SSH (22)** a **HTTP (80)** . 
 
     ![Otevřené porty pro protokoly RDP a HTTP](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -110,22 +77,22 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 Nasazení virtuálního počítače bude několik minut trvat. Po dokončení nasazení se přesuňte k další části.
 
-
+    
 ## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
 
 Vytvořte připojení SSH k virtuálnímu počítači.
 
-1. Na stránce Přehled pro váš virtuální počítač vyberte tlačítko **Připojit**.
+1. Na stránce Přehled pro váš virtuální počítač vyberte tlačítko **Připojit**. 
 
     ![Portál 9](./media/quick-create-portal/portal-quick-start-9.png)
 
-2. Na stránce **Připojení k virtuálnímu počítači** ponechte výchozí výběr možností pro připojení podle IP adresy přes port 22. V části **Přihlásit pomocí místního účtu virtuálního počítače** se zobrazí příkaz pro připojení. Kliknutím na tlačítko příkaz zkopírujte. Následující příklad ukazuje, jak vypadá příkaz pro připojení přes SSH:
+2. Na stránce **Připojení k virtuálnímu počítači** ponechte výchozí výběr možností pro připojení podle IP adresy přes port 22. V části **Přihlásit pomocí místního účtu virtuálního počítače** se zobrazí příkaz pro připojení. Vyberte tlačítko pro zkopírování příkazu. Následující příklad ukazuje, jak vypadá příkaz pro připojení přes SSH:
 
     ```bash
     ssh azureuser@10.111.12.123
     ```
 
-3. Pomocí stejného prostředí bash, které jste použili k vytvoření páru klíčů SSH (jako je [Azure Cloud Shell](https://shell.azure.com/bash) nebo místní prostředí bash), vložte do prostředí příkaz pro připojení SSH a vytvořte relaci SSH.
+3. Pomocí stejného prostředí bash, které jste použili k vytvoření páru klíčů ssh (můžete znovu otevřít Cloud Shell tak `>_` https://shell.azure.com/bash), že znovu vyberete nebo budete pokračovat, vložíte do prostředí příkaz pro připojení SSH a vytvoříte relaci SSH.
 
 ## <a name="install-web-server"></a>Instalace webového serveru
 

@@ -2,17 +2,17 @@
 title: Rozhraní API pro plnění SaaS v2 | Azure Marketplace
 description: Tento článek vysvětluje, jak vytvořit a spravovat nabídku SaaS pro AppSource a Azure Marketplace s použitím přidružených rozhraní API pro splnění verze v2.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a2041aefcfdcb1746e64f50c7cb53b3bfaec3299
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016045"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872794"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>Rozhraní API pro splnění SaaS verze 2 
 
@@ -116,7 +116,7 @@ Koncový bod vyřešení umožňuje vydavateli přeložit token Marketplace na t
 
 *Kódy odpovědí:*
 
-Kód: 200<br>
+Znakovou 200<br>
 Vyřeší neprůhledný token na SaaS předplatné. Tělo odpovědi:
  
 
@@ -130,17 +130,17 @@ Vyřeší neprůhledný token na SaaS předplatné. Tělo odpovědi:
 }
 ```
 
-Kód: 400<br>
+Znakovou 400<br>
 Chybný požadavek. x-MS-Marketplace – token chybí, je poškozený nebo vypršela jeho platnost.
 
-Kód: 403<br>
-Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
+Znakovou 403<br>
+Přístupu. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
-Kód: 404<br>
-Nenalezeno
+Znakovou 404<br>
+Nenalezeno.
 
-Kód: 500<br>
-Vnitřní chyba serveru
+Znakovou 500<br>
+Došlo k vnitřní chybě serveru.
 
 ```json
 {
@@ -179,7 +179,7 @@ Zobrazí seznam všech předplatných SaaS pro vydavatele.
 
 *Kódy odpovědí:*
 
-Kód: 200 <br/>
+Znakovou 200 <br/>
 Získá vydavatele a odpovídající odběry pro všechny nabídky vydavatele na základě ověřovacího tokenu.
 Datová část odpovědi:<br>
 
@@ -218,11 +218,11 @@ Datová část odpovědi:<br>
 
 Token pokračování bude přítomen pouze v případě, že existují další "stránky" plánů k načtení. 
 
-Kód: 403 <br>
-Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli. 
+Znakovou 403 <br>
+Přístupu. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli. 
 
-Kód: 500<br>
-Vnitřní chyba serveru
+Znakovou 500<br>
+Došlo k vnitřní chybě serveru.
 
 ```json
 {
@@ -257,7 +257,7 @@ Získá zadané předplatné SaaS. Pomocí tohoto volání získáte informace o
 
 *Kódy odpovědí:*
 
-Kód: 200<br>
+Znakovou 200<br>
 Získá předplatné SaaS z identifikátoru. Datová část odpovědi:<br>
 
 ```json
@@ -287,14 +287,14 @@ Response Body:
 }
 ```
 
-Kód: 403<br>
-Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
+Znakovou 403<br>
+Přístupu. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
-Kód: 404<br>
-Nenalezeno<br> 
+Znakovou 404<br>
+Nenalezeno.<br> 
 
-Kód: 500<br>
-Vnitřní chyba serveru<br>
+Znakovou 500<br>
+Došlo k vnitřní chybě serveru.<br>
 
 ```json
 {
@@ -327,7 +327,7 @@ Pomocí tohoto volání zjistíte, jestli pro aktuálního vydavatele existují 
 
 *Kódy odpovědí:*
 
-Kód: 200<br>
+Znakovou 200<br>
 Načte seznam dostupných plánů pro zákazníka. Tělo odpovědi:
 
 ```json
@@ -340,14 +340,14 @@ Načte seznam dostupných plánů pro zákazníka. Tělo odpovědi:
 }
 ```
 
-Kód: 404<br>
-Nenalezeno<br> 
+Znakovou 404<br>
+Nenalezeno.<br> 
 
-Kód: 403<br>
-Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli. <br> 
+Znakovou 403<br>
+Přístupu. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli. <br> 
 
-Kód: 500<br>
-Vnitřní chyba serveru<br>
+Znakovou 500<br>
+Došlo k vnitřní chybě serveru.<br>
 
 ```json
 { 
@@ -388,20 +388,20 @@ Vnitřní chyba serveru<br>
 
 *Kódy odpovědí:*
 
-Kód: 200<br>
+Znakovou 200<br>
 Aktivuje předplatné.<br>
 
-Kód: 400<br>
+Znakovou 400<br>
 Chybný požadavek: Chyby ověření.
 
-Kód: 403<br>
-Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
+Znakovou 403<br>
+Přístupu. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
-Kód: 404<br>
-Nenalezeno
+Znakovou 404<br>
+Nenalezeno.
 
-Kód: 500<br>
-Vnitřní chyba serveru
+Znakovou 500<br>
+Došlo k vnitřní chybě serveru.
 
 ```json
 {
@@ -451,20 +451,20 @@ Request Body:
 
 *Kódy odpovědí:*
 
-Kód: 202<br>
+Znakovou 202<br>
 Požadavek na změnu plánu byl přijat. U partnera se očekává, že se bude dotazovat na umístění operace, aby bylo možné určit úspěch nebo neúspěch. <br>
 
-Kód: 400<br>
+Znakovou 400<br>
 Chybný požadavek: Chyby ověření.
 
-Kód: 403<br>
-Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
+Znakovou 403<br>
+Přístupu. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
-Kód: 404<br>
-Nenalezeno
+Znakovou 404<br>
+Nenalezeno.
 
-Kód: 500<br>
-Vnitřní chyba serveru
+Znakovou 500<br>
+Došlo k vnitřní chybě serveru.
 
 ```json
 {
@@ -517,21 +517,21 @@ Request Body:
 
 *Kódy odpovědí:*
 
-Kód: 202<br>
+Znakovou 202<br>
 Žádost o změnu množství byla přijata. U partnera se očekává, že se bude dotazovat na umístění operace, aby bylo možné určit úspěch nebo neúspěch. <br>
 
-Kód: 400<br>
+Znakovou 400<br>
 Chybný požadavek: Chyby ověření.
 
 
-Kód: 403<br>
-Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
+Znakovou 403<br>
+Přístupu. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
-Kód: 404<br>
-Nenalezeno
+Znakovou 404<br>
+Nenalezeno.
 
-Kód: 500<br>
-Vnitřní chyba serveru
+Znakovou 500<br>
+Došlo k vnitřní chybě serveru.
 
 ```json
 {
@@ -569,20 +569,20 @@ Zruší odběr a odstraní zadané předplatné.
 
 *Kódy odpovědí:*
 
-Kód: 202<br>
+Znakovou 202<br>
 Partner inicioval volání odhlášení odběru předplatného SaaS.<br>
 
-Kód: 400<br>
+Znakovou 400<br>
 Odstraní se v rámci předplatného, `allowedCustomerOperations`které není v.
 
-Kód: 403<br>
-Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
+Znakovou 403<br>
+Přístupu. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
-Kód: 404<br>
-Nenalezeno
+Znakovou 404<br>
+Nenalezeno.
 
-Kód: 500<br>
-Vnitřní chyba serveru
+Znakovou 500<br>
+Došlo k vnitřní chybě serveru.
 
 ```json
 {
@@ -622,7 +622,7 @@ Zobrazí nedokončené operace pro aktuálního vydavatele.
 
 *Kódy odpovědí:*
 
-Kód: 200<br> Získá seznam nevyřízených operací v rámci předplatného. Datová část odpovědi:
+Znakovou 200<br> Získá seznam nevyřízených operací v rámci předplatného. Datová část odpovědi:
 
 ```json
 [{
@@ -640,17 +640,17 @@ Kód: 200<br> Získá seznam nevyřízených operací v rámci předplatného. D
 ```
 
 
-Kód: 400<br>
+Znakovou 400<br>
 Chybný požadavek: Chyby ověření.
 
-Kód: 403<br>
-Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
+Znakovou 403<br>
+Přístupu. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
-Kód: 404<br>
-Nenalezeno
+Znakovou 404<br>
+Nenalezeno.
 
-Kód: 500<br>
-Vnitřní chyba serveru
+Znakovou 500<br>
+Došlo k vnitřní chybě serveru.
 
 ```json
 {
@@ -685,7 +685,7 @@ Umožňuje vydavateli sledovat `subscribe`stav zadané aktivované asynchronní 
 
 *Kódy odpovědí:*<br>
 
-Kód: 200<br> Načte zadanou probíhající operaci SaaS. Datová část odpovědi:
+Znakovou 200<br> Načte zadanou probíhající operaci SaaS. Datová část odpovědi:
 
 ```json
 Response body:
@@ -704,16 +704,16 @@ Response body:
 
 ```
 
-Kód: 400<br>
+Znakovou 400<br>
 Chybný požadavek: Chyby ověření.
 
-Kód: 403<br>
-Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
+Znakovou 403<br>
+Přístupu. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
  
-Kód: 404<br>
-Nenalezeno
+Znakovou 404<br>
+Nenalezeno.
 
-Kód: 500<br> Vnitřní chyba serveru
+Znakovou 500<br> Došlo k vnitřní chybě serveru.
 
 ```json
 {
@@ -760,21 +760,21 @@ Aktualizuje stav operace, aby označovala úspěch nebo neúspěch se zadanými 
 
 *Kódy odpovědí:*
 
-Kód: 200<br> Výzva k informování o dokončení operace na straně partnera. Tato odpověď by například mohla signalizovat změnu míst nebo plánů.
+Znakovou 200<br> Výzva k informování o dokončení operace na straně partnera. Tato odpověď by například mohla signalizovat změnu míst nebo plánů.
 
-Kód: 400<br>
+Znakovou 400<br>
 Chybný požadavek: Chyby ověření.
 
-Kód: 403<br>
-Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
+Znakovou 403<br>
+Přístupu. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
-Kód: 404<br>
-Nenalezeno
+Znakovou 404<br>
+Nenalezeno.
 
-Kód: 409<br>
+Znakovou 409<br>
 Došlo. Například novější transakce je již splněna.
 
-Kód: 500<br> Vnitřní chyba serveru
+Znakovou 500<br> Došlo k vnitřní chybě serveru.
 
 ```json
 {
@@ -790,7 +790,6 @@ Kód: 500<br> Vnitřní chyba serveru
 
 Vydavatel musí implementovat Webhook v této službě SaaS, aby proaktivně upozornil uživatele na změny ve své službě. Očekává se, že služba SaaS před provedením akce v oznámení Webhooku zavolá rozhraní API operací k ověření a autorizaci.
 
-Aby bylo zajištěno zabezpečení komunikace, společnost Microsoft jako součást volání zahrnuje token Azure Active Directory JWT v autorizační hlavičce. Poskytovatelé SaaS jsou doporučováni k ověření tokenu JWT, jak je popsáno v článku [Microsoft Identity Platform Access tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) , aby bylo zajištěno, že budou přijímána pouze platná volání.
 
 ```json
 {

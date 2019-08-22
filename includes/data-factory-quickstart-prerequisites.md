@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: dc12d77e9a57938051300277940b6e5107e45496
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 0a2bf306ccfa3a4a4fc80d0d55493f284185bba9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234536"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648437"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,23 +38,19 @@ Další informace najdete v následujících článcích:
 ### <a name="azure-storage-account"></a>Účet služby Azure Storage
 V tomto rychlém startu budete účet úložiště Azure (konkrétně úložiště objektů blob) pro obecné účely používat jako *zdrojové* i *cílové úložiště dat*. Pokud nemáte účet úložiště Azure pro obecné účely, přečtěte si téma [Vytvoření účtu úložiště](../articles/storage/common/storage-quickstart-create-account.md) a účet si vytvořte. 
 
-#### <a name="get-the-storage-account-name-and-account-key"></a>Získání názvu a klíče účtu úložiště
-V tomto rychlém startu budete potřebovat název a klíč svého účtu úložiště Azure. Následující postup předvádí kroky k získání názvu a klíče vašeho účtu úložiště. 
+#### <a name="get-the-storage-account-name"></a>Získání názvu účtu úložiště
+Pro tento rychlý Start budete potřebovat název svého účtu úložiště Azure. Následující postup popisuje kroky pro získání názvu účtu úložiště: 
 
 1. Ve webovém prohlížeči přejdete na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí uživatelského jména a hesla Azure.
 2. Vyberte **všechny služby** > **úložiště** > **účty úložiště**.
 3. Na stránce **účty úložiště** vyfiltrujte váš účet úložiště (Pokud je to potřeba) a pak vyberte svůj účet úložiště. 
-4.  -      *Napostrannímpanelustránkynázevúčtu>hoúčtuúložištěpřejdětenapopiseknastaveníavybertepřístupovéklíče.\<* Zobrazí se - název  *účtu>přístupové\<* klíče.
-
-   ![Získání názvu a klíče účtu úložiště](media/data-factory-quickstart-prerequisites/storage-account-name-key.png)
-5. Zkopírujte do schránky hodnoty z polí **Název účtu úložiště** a **klíč1**. Vložte je do Poznámkového bloku nebo jiného editoru a uložte je. Použijete je později v tomto rychlém startu.   
 
 #### <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů blob
 V této části vytvoříte v úložišti objektů blob v Azure kontejner objektů blob s názvem **adftutorial**.
 
-1.  -   >  Na bočním panelu stránky  *názevúčtu>přístupovýmiklíčivybertepřehledyobjektůBLOB.\<*
-2. Na panelu nástrojů -   *název účtu>objektyblobstránkyvyberte\<* kontejner.
-3. V dialogovém okně **Nový kontejner** jako název zadejte **adftutorial** a pak vyberte **OK**. Stránka název -     *účtu>objektyBLOBseaktualizujetak,abyzahrnovalaadftutorialv\<* seznamu kontejnerů.
+1. Na stránce účet úložiště vyberte přehledy > **objektů BLOB**.
+2. Na panelu nástrojů -  *název účtu>objektyblobstránkyvyberte\<* kontejner.
+3. V dialogovém okně **Nový kontejner** jako název zadejte **adftutorial** a pak vyberte **OK**. Stránka název -   *účtu>objektyBLOBseaktualizujetak,abyzahrnovalaadftutorialv\<* seznamu kontejnerů.
 
    ![Seznam kontejnerů](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
@@ -68,7 +64,7 @@ Jane, Doe
 
 Uložte soubor do složky **C:\ADFv2QuickStartPSH** . (Pokud složka ještě neexistuje, vytvořte ji.) Pak se vraťte do Azure Portal a proveďte následující kroky:
 
-1. Na stránce s -   *názvem účtu>objektyblob,nakterýchjsteskončili,vyberteadftutorialzaktualizovanéhoseznamukontejnerů\<* . (Pokud jste okno zavřeli nebo jste přešli na > jinou stránku, přihlaste se znovu k [Azure Portal](https://portal.azure.com) , vyberte **všechny služby služby** > úložiště**účty**úložiště, vyberte svůj účet úložiště a pak vyberte **objekty blob** . **adftutorial.** )  > 
+1. Na stránce s -  *názvem účtu>objektyblob,nakterýchjsteskončili,vyberteadftutorialzaktualizovanéhoseznamukontejnerů\<* . (Pokud jste okno zavřeli nebo jste přešli na > jinou stránku, přihlaste se znovu k [Azure Portal](https://portal.azure.com) , vyberte **všechny služby služby** > úložiště**účty**úložiště, vyberte svůj účet úložiště a pak vyberte **objekty blob** . **adftutorial.** )  > 
 2. Na panelu nástrojů na stránce kontejneru **adftutorial** vyberte **nahrát**.
 3. Na stránce **nahrát objekt BLOB** vyberte pole **soubory** a pak vyhledejte a vyberte soubor **EMP. txt** .
 4. Rozbalte nadpis **Upřesnit** . Stránka se teď zobrazí, jak je znázorněno na následujícím obrázku:

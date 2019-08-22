@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 38b37b45964dd724b18f22a478be0d85a7036ce7
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9b96294362400891113812e308ff59bd0e438b90
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946968"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873355"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací třetích stran Apache Hadoop v Azure HDInsight
 
@@ -37,7 +37,7 @@ Následující seznam uvádí publikované aplikace:
 |[Hvězdicový Presto pro Azure HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto je rychlý a Škálovatelný modul SQL pro distribuované dotazy. Navržen k oddělení úložiště a výpočetního výkonu, je ideální pro dotazování na data v Azure Data Lake Storage, Azure Blob Storage, SQL a NoSQL databáze a další zdroje dat Presto. |
 |[Kolekce dat StreamSets pro Cloud HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop, HBA, Spark, Kafka |StreamSets data collector je jednoduchý, výkonný modul, který streamuje data v reálném čase. Pomocí kolekce dat můžete směrovat a zpracovávat data v datových proudech. Obsahuje 30denní licenci na zkušební verzi. |
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifacta.tr01) |Hadoop, Spark, HBA |Trifacta Wrangler Enterprise pro HDInsight podporuje datové tahání v podnikové síti pro libovolná škálování dat. Cena za provozování Trifacta v Azure je kombinací nákladů na předplatné Trifacta a náklady na infrastrukturu Azure pro virtuální počítače. |
-|[Datová platforma sjednocuje](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/unifi-software.unifi-data-catalog) |Hadoop, HBA, vyplavení, Spark |Datová platforma sjednocuje je bezproblémově integrovaná sada nástrojů samoobslužných dat, která slouží k tomu, aby firemnímu uživateli bylo možné řešit výzvy k datům, které jsou zaměřeny na přírůstkové výnosy, snižovat náklady nebo provozní složitost. |
+|[Datová platforma sjednocuje](https://unifisoftware.com/platform/) |Hadoop, HBA, vyplavení, Spark |Datová platforma sjednocuje je bezproblémově integrovaná sada nástrojů samoobslužných dat, která slouží k tomu, aby firemnímu uživateli bylo možné řešit výzvy k datům, které jsou zaměřeny na přírůstkové výnosy, snižovat náklady nebo provozní složitost. |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |Unravel data App pro cluster HDInsight Spark. |
 |[Ponorová Data Catalog řízená v AI](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/waterline_data.waterline_data) |Spark |Vyčíslení katalogů, uspořádání a řízení dat pomocí AI k automatickému označení dat pomocí obchodních podmínek. Vodoryskou vaší firmy chtějí katalogu je zásadní, součástí úspěch pro samoobslužné analýzy, dodržování předpisů a zásad správného řízení a iniciativy správy IT. |
 

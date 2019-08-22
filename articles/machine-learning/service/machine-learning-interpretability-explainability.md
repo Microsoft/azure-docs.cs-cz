@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 1e742c278b9356c7501964541802e0c96dc74b09
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358657"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872390"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Interpretace modelu pomocí služby Azure Machine Learning
 
@@ -69,7 +69,7 @@ __Přímí vysvětlujícíi__ přicházejí z integrovaných knihoven. Sada SDK 
 * **Vysvětlení důležitosti funkce permutace**: Funkce permutace je důležitou metodou pro vysvětlení modelů klasifikace a regrese, které jsou nechte inspirovat pomocí [náhodných strukturních struktur Breiman](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) (viz oddíl 10). Na nejvyšší úrovni je způsob, jakým funguje, náhodným pohybem dat pro celou datovou sadu a výpočtem množství metriky výkonu, které se v zájmu sníží. Čím větší je tato změna, tím důležitější je funkce.
 
 * **Vysvětlujícíka vápna** (`contrib`): V závislosti na VÁPNě vysvětlená VÁPNa používá pro vytvoření místních náhradních modelů špičkový algoritmus nezávislá (VÁPNo), který je založený na modelu. Na rozdíl od globálních náhradních modelů se VÁPNo zaměřuje na školení místních náhradních modelů pro vysvětlení jednotlivých předpovědi.
-* **Vysvětlující text Han** (`contrib`): Vysvětlující text HAN používá hierarchickou síť k získání vysvětlení modelu z textových dat pro daný textový model černého pole. V rámci předpokládaných výstupů pro daný model učitelů se naučíme mít k disvede náhradní model HAN. Po globálním školení na corpus textu jsme přidali krok s doladěním pro konkrétní dokument, aby se zlepšila přesnost vysvětlení. HAN používá obousměrný RNN se dvěma úrovněmi pozornosti, pro větu a wordovou pozornost. Jakmile je DNN vyškolený pro model učitelů a vyladěný podle konkrétního dokumentu, můžeme z vrstev pozornosti extrahovat slova důležitost. Zjistili jsme, že HAN bude přesnější než VÁPNo nebo SHAP pro textová data, ale také dražší z hlediska času školení. Vylepšili jsme ale dobu školení tím, že uživateli umožníme inicializovat síť s vkládáním slov šetrnější, i když je pořád pomalu. Dobu školení můžete významně zlepšit spuštěním HAN na vzdáleném virtuálním počítači s grafickým procesorem Azure. Implementace HAN je popsána v části hierarchické pozornosti sítě pro klasifikaci dokumentu (Yang et al., 2016) ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)).
+* **Vysvětlující text Han** (`contrib`): Vysvětlující text HAN používá hierarchickou síť k získání vysvětlení modelu z textových dat pro daný textový model černého pole. V rámci předpokládaných výstupů pro daný model učitelů se naučíme mít k disvede náhradní model HAN. Po globálním školení na corpus textu jsme přidali krok s doladěním pro konkrétní dokument, aby se zlepšila přesnost vysvětlení. HAN používá obousměrný RNN se dvěma úrovněmi pozornosti, pro větu a wordovou pozornost. Jakmile je DNN vyškolený pro model učitelů a vyladěný podle konkrétního dokumentu, můžeme z vrstev pozornosti extrahovat slova důležitost. Zjistili jsme, že HAN bude přesnější než VÁPNo nebo SHAP pro textová data, ale také dražší z hlediska času školení. Vylepšili jsme ale dobu školení tím, že uživateli umožníme inicializovat síť s vkládáním slov šetrnější, i když je pořád pomalu. Dobu školení můžete významně zlepšit spuštěním HAN na vzdáleném virtuálním počítači s grafickým procesorem Azure. Implementace HAN je popsána v části [hierarchické pozornosti sítě pro klasifikaci dokumentu (Yang et al., 2016)](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification).
 
 
 __Meta__ selektory automaticky vyberou vhodný přímý vysvětlující a generují nejlepší informace, které se budou vysvětlovat na základě daného modelu a datových sad. Metaznačky využije všechny knihovny (SHAP, VÁPNo, napodobá atd.), které jsme spojili nebo vyvinuli. Následující jsou metaznačky, které jsou k dispozici v sadě SDK:
@@ -599,6 +599,6 @@ Tento vysvětlující se dá nasadit společně s původním modelem a dá se po
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Chcete-li zobrazit kolekci poznámkových bloků Jupyter, které ukazují výše uvedené pokyny, přečtěte si [ukázkové poznámkové bloky s ukázkou interpretace Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model).

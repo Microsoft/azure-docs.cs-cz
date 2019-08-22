@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 5ef1749217dd8980892d7bf933cbe1412929fbbd
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976982"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873195"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Rozšíření zpráv pro zprávy ze zařízení na Cloud IoT Hub (Preview)
 
@@ -76,6 +76,8 @@ Informace o tom, jak vyzkoušet rozšiřování zpráv, najdete v [kurzu rozší
 
 * Celková velikost zprávy, včetně rozšíření, nesmí překročit 256 KB. V případě, že velikost zprávy překračuje 256 KB, bude zpráva vynechá IoT Hub. Můžete použít [IoT Hub metriky](iot-hub-metrics.md) k identifikaci a ladění chyb při vyřazení zpráv. Například můžete monitorovat D2C. telemetrie. odchozí. neplatné.
 
+* Rozšiřování zpráv se nevztahuje na události s digitálními událostmi změny (součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md)).
+
 ## <a name="pricing"></a>Ceny
 
 Rozšíření zpráv je k dispozici bez dalších poplatků. V současné době se vám budou účtovat poplatky za odeslání zprávy do IoT Hub. U této zprávy se účtují jenom jednou, a to i v případě, že zpráva přejde do více koncových bodů.
@@ -84,9 +86,11 @@ Rozšíření zpráv je k dispozici bez dalších poplatků. V současné době 
 
 Tato funkce je dostupná ve verzi Preview a je dostupná ve všech oblastech kromě Východní USA, Západní USA, Západní Evropa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure Čína 21Vianet](/azure/china)a [Azure Německo](https://azure.microsoft.com/global-infrastructure/germany/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o směrování zpráv do IoT Hub najdete v těchto článcích:
+
+* [Kurz vylepšení zpráv](tutorial-message-enrichments.md)
 
 * [Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů](iot-hub-devguide-messages-d2c.md)
 

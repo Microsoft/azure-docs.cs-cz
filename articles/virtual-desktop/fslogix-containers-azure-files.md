@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
-ms.translationtype: MT
+ms.openlocfilehash: 54d3f175e74b9f94c7845725e3d8f4531750df57
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947224"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877555"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
 
@@ -86,7 +86,7 @@ Virtuální plocha Windows nabízí plnou kontrolu velikosti, typu a počtu virt
 Aby se zajistilo, že prostředí virtuálních počítačů s Windows dodržuje osvědčené postupy:
 
 - Účet úložiště Azure Files musí být ve stejné oblasti jako virtuální počítače hostitele relace.
-- Oprávnění k souborům Azure by měla odpovídat oprávněním popsaným v [kontejnerech profil požadavků](https://docs.fslogix.com/display/20170529/Requirements+-+Profile+Containers).
+- Oprávnění k souborům Azure by měla odpovídat oprávněním popsaným v [kontejnerech profil požadavků](https://docs.microsoft.com/fslogix/overview#requirements).
 - Každý fond hostitelů musí být sestaven se stejným typem a velikostí virtuálního počítače na základě stejné hlavní bitové kopie.
 - Každý virtuální počítač fondu hostitelů musí být ve stejné skupině prostředků, aby se mohla spravovat podpora, škálování a aktualizace.
 - Pro zajištění optimálního výkonu by se řešení úložiště a kontejner profilu FSLogix měly nacházet ve stejném umístění datového centra.
@@ -99,6 +99,6 @@ K nastavení prostředí virtuálních ploch Windows použijte následující p�
 - Pokud chcete začít sestavovat vaše řešení virtualizace plochy, přečtěte si téma [Vytvoření tenanta ve virtuální ploše Windows](tenant-setup-azure-active-directory.md).
 - Pokud chcete vytvořit fond hostitelů v rámci tenanta virtuálních klientů Windows, přečtěte si téma [Vytvoření fondu hostitelů pomocí Azure Marketplace](create-host-pools-azure-marketplace.md).
 - Pokud chcete nastavit plně spravované sdílené složky v cloudu, přečtěte si téma [Nastavení sdílené složky Azure Files](/articles/storage/files/storage-files-active-directory-enable.md).
-- Pokud chcete nakonfigurovat kontejnery profilů FSLogix, přečtěte si téma [Nastavení sdílené složky profilu uživatele pro fond hostitelů](create-host-pools-user-profile.md).
+- Pokud chcete nakonfigurovat kontejnery profilů FSLogix, přečtěte si téma [vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md).
 - Pokud chcete přiřadit uživatele k fondu hostitelů, přečtěte si téma [Správa skupin aplikací pro virtuální počítač s Windows](manage-app-groups.md).
 - Informace o přístupu k prostředkům virtuálního počítače s Windows z webového prohlížeče najdete v tématu [připojení k virtuálnímu](connect-web.md)počítači s Windows.

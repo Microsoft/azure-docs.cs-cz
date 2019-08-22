@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: glenga
-ms.openlocfilehash: 183056d01146194b2854a70df790802e1a0bb839
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 498bb8c0f1e7bb674605d4a98f0be0f3e0b9a7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782240"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650499"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Postup zakázání funkcí v Azure Functions
 
@@ -29,7 +29,7 @@ Tento článek vysvětluje, jak zakázat funkci v Azure Functions. Pro *vypnutí
 
 ## <a name="functions-2x---all-languages"></a>Functions 2. x – všechny jazyky
 
-Ve funkcích 2. x zakážete funkci pomocí nastavení aplikace ve formátu `AzureWebJobs.<FUNCTION_NAME>.Disabled`. Toto nastavení můžete vytvořit a upravit programově pomocí rozhraní příkazového řádku Azure CLI. To můžete provést také na kartě **Správa** vaší funkce v [Azure Portal](https://portal.azure.com). 
+Ve funkcích 2. x zakážete funkci pomocí nastavení aplikace ve formátu `AzureWebJobs.<FUNCTION_NAME>.Disabled`. Toto nastavení aplikace můžete vytvořit a upravit mnoha různými způsoby, včetně použití [Azure CLI](/cli/azure/) a karty **Správa** vaší funkce v [Azure Portal](https://portal.azure.com). 
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -135,6 +135,6 @@ Tato metoda umožňuje povolit a zakázat funkci změnou nastavení aplikace, an
 >
 > Všimněte si také, že portál může indikovat, že funkce je zakázaná, když ne.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tento článek se týká zakázání automatických triggerů. Další informace o aktivačních událostech najdete v tématu [triggery a vazby](functions-triggers-bindings.md).

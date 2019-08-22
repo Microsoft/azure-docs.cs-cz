@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Spustit skript R v clusteru služby ML v Azure HDInsight pomocí přihlašovací stránce RStudio serveru'
-description: V tomto rychlém startu můžete spustit skript R v clusteru služby ML v Azure HDInsight pomocí přihlašovací stránce RStudio serveru.
+title: 'Rychlý start: Spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí serveru RStudio'
+description: V rychlém startu spustíte skript R v clusteru služby ML ve službě Azure HDInsight pomocí serveru RStudio.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,32 +8,32 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 484763adfa154dcdf226b03f1f591d248532ee35
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 295430027afabcfcf793a87ae5859dc9c6675966
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450916"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876298"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Rychlý start: Spustit skript R v clusteru služby ML v Azure HDInsight pomocí přihlašovací stránce RStudio serveru
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Rychlý start: Spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí serveru RStudio
 
-ML služeb v Azure HDInsight umožňuje skripty R používat Apache Spark a Apache Hadoop MapReduce ke spouštění distribuovaných výpočtů. Služby ML Určuje, jak jsou spouštěny nastavení výpočetního kontextu volání. Hraničním uzlu clusteru poskytuje praktické místo k připojení ke clusteru a ke spuštění skriptů jazyka R. Díky hraniční uzel máte možnost spuštění paralelizované distribuované funkce RevoScaleR mezi jádry hraničního uzlu serveru. Můžete také spustit je na uzlech clusteru s použitím jeho RevoScaleR Hadoop Map Reduce nebo kontexty služby compute Apache Spark.
+Služba ML Services v Azure HDInsight umožňuje skriptům R používat Apache Spark a Apache Hadoop MapReduce ke spouštění distribuovaných výpočtů. Služba ML řídí, jak se spouštějí volání, nastavením výpočetního kontextu. Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spouštění skriptů jazyka R. Pomocí hraničního uzlu máte možnost spouštět paralelní distribuované funkce RevoScaleR napříč jádry serveru hraničního uzlu. Můžete je také spouštět v uzlech clusteru pomocí RevoScaleR mapy Hadoop pro redukci nebo Apache Spark výpočetních kontextů.
 
-V tomto rychlém startu se dozvíte, jak chcete spustit skript R s prostředím RStudio serveru, který předvádí použití Sparku k distribuovaným výpočtům jazyka r. Bude definovat výpočetní kontext provádět výpočty místně na hraničním uzlu a znovu distribuovány napříč uzly v clusteru HDInsight.
+V tomto rychlém startu se dozvíte, jak spustit skript R s RStudio serverem, který ukazuje použití Sparku pro distribuované výpočty R. Definujete výpočetní kontext pro místní provádění výpočtů na hraničním uzlu a znovu rozšíříte napříč uzly v clusteru HDInsight.
 
 ## <a name="prerequisite"></a>Požadavek
 
-Cluster služby ML v HDInsight. Zobrazit [vytvořit Apache Hadoop clusterů pomocí webu Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a vyberte **služby ML** pro **typ clusteru**.
+Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **služeb ml** pro **typ clusteru**.
 
 ## <a name="connect-to-rstudio-server"></a>Připojení k RStudio Serveru
 
-Přihlašovací stránce RStudio serveru běží na hraničním uzlu clusteru. Přejděte na následující adresu URL kde `CLUSTERNAME` je název clusteru služby ML jste vytvořili:
+RStudio server běží na hraničním uzlu clusteru. V části název clusteru služby ml `CLUSTERNAME` , který jste vytvořili, použijte následující adresu URL:
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Při prvním přihlášení potřeba dvojí ověření. První zobrazení výzvy k ověření, zadejte přihlašovací jméno správce clusteru a heslo, výchozí hodnota je `admin`. Druhý zobrazení výzvy k ověření, zadejte přihlašování přes SSH a heslo, výchozí hodnota je `sshuser`. Následující přihlášení potřebovat jenom přihlašovací údaje SSH.
+Při prvním přihlášení budete muset dvakrát ověřit. Pro první výzvu k ověření zadejte přihlašovací jméno a heslo správce clusteru. výchozí hodnota je `admin`. Pro druhé zobrazení výzvy k ověření zadejte přihlašovací jméno a heslo SSH, výchozí hodnota `sshuser`je. Další přihlašovací údaje vyžadují jenom pověření SSH.
 
 Po připojení by vaše obrazovka měla vypadat podobně jako na následujícím snímku obrazovky:
 
@@ -41,7 +41,7 @@ Po připojení by vaše obrazovka měla vypadat podobně jako na následujícím
 
 ## <a name="use-a-compute-context"></a>Použití výpočetního kontextu
 
-1. V RStudio serveru pomocí následujícího kódu načtěte ukázková data do výchozího úložiště pro HDInsight:
+1. Z RStudio serveru pomocí následujícího kódu načtěte ukázková data do výchozího úložiště pro HDInsight:
 
     ```RStudio
     # Set the HDFS (WASB) location of example data
@@ -76,9 +76,9 @@ Po připojení by vaše obrazovka měla vypadat podobně jako na následujícím
      rxHadoopCopyFromLocal(source, bigDataDirRoot)
     ```
 
-    Tento krok může trvat přibližně 8 minut na dokončení.
+    Dokončení tohoto kroku může trvat přibližně 8 minut.
 
-1. Některé informace o datech a nadefinujeme dva zdroje dat. V RStudio, zadejte následující kód:
+1. Vytvořte nějaké informace o datech a definujte dva zdroje dat. Do RStudio zadejte následující kód:
 
     ```RStudio
     # Define the HDFS (WASB) file system
@@ -105,7 +105,7 @@ Po připojení by vaše obrazovka měla vypadat podobně jako na následujícím
      formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
     ```
 
-1. Spusťte logistickou regresi přes data s využitím **místní** výpočetního kontextu. V RStudio, zadejte následující kód:
+1. Spusťte z dat logistickou regresi pomocí **místního** výpočetního kontextu. Do RStudio zadejte následující kód:
 
     ```RStudio
     # Set a local compute context
@@ -120,7 +120,7 @@ Po připojení by vaše obrazovka měla vypadat podobně jako na následujícím
      summary(modelLocal)
     ```
 
-    Výpočtů by se měla dokončit během 7 minut. Byste měli vidět výstup, který končí řádky podobný následujícímu fragmentu kódu:
+    Výpočty by měly být dokončeny během přibližně 7 minut. Měl by se zobrazit výstup, který končí řádky podobné následujícímu fragmentu kódu:
 
     ```output
     Data: airOnTimeDataLocal (RxTextData Data Source)
@@ -150,7 +150,7 @@ Po připojení by vaše obrazovka měla vypadat podobně jako na následujícím
       Number of iterations: 7
     ```
 
-1. Spusťte stejnou logistickou regresi pomocí **Spark** kontextu. Kontext Spark distribuuje zpracování do všech pracovních uzlů v clusteru HDInsight. V RStudio, zadejte následující kód:
+1. Spusťte stejnou logistickou regresi pomocí kontextu **Spark** . Kontext Spark distribuuje zpracování do všech pracovních uzlů v clusteru HDInsight. Do RStudio zadejte následující kód:
 
     ```RStudio
     # Define the Spark compute context
@@ -168,17 +168,20 @@ Po připojení by vaše obrazovka měla vypadat podobně jako na následujícím
      summary(modelSpark)
     ```
 
-    Výpočtů by se měla dokončit během 5 minut.
+    Výpočty by měly být dokončeny během přibližně 5 minut.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení tohoto rychlého startu, můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
+Po dokončení rychlého startu možná budete chtít cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
 
-Odstranění clusteru, naleznete v tématu [odstranění clusteru HDInsight pomocí prohlížeče, Powershellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
+Pokud chcete odstranit cluster, přečtěte si téma [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak chcete spustit skript R s RStudio serveru, který jsme vám ukázali použití Sparku k distribuovaným výpočtům jazyka r.  Přejděte k dalšímu článku další možnosti, které jsou k dispozici k určení, zda a jak je provádění paralelizována přes jader hraničním uzlu nebo clusteru HDInsight.
+V tomto rychlém startu jste zjistili, jak spustit skript R se serverem RStudio, který ukázal použití Sparku pro distribuované výpočty R.  V dalším článku se dozvíte, jaké možnosti jsou k dispozici pro určení toho, zda a jak je provádění paralelně v jádrech hraničního uzlu nebo clusteru HDInsight.
 
 > [!div class="nextstepaction"]
 >[Možnosti výpočetního kontextu pro služby ML v HDInsight](./r-server-compute-contexts.md)
+
+> [!NOTE]
+> Tato stránka popisuje funkce softwaru RStudio. K Microsoft Azure HDInsight není přidružena společnost RStudio, Inc.

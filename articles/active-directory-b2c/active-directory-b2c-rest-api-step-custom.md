@@ -1,51 +1,51 @@
 ---
-title: Rozhraní REST API deklarací výměny – Azure Active Directory B2C
-description: Výměna deklarací rozhraní REST API přidejte do vlastních zásad v Active Directory B2C.
+title: REST API výměn deklarací identity – Azure Active Directory B2C
+description: Přidejte REST API výměny deklarací identity do vlastních zásad v Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bdef508e12a3b11143149b330da73838b53f860
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 42129870c6ab2bb5e58bdf9aaa323a3d64b479f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439014"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644921"
 ---
-# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Přidání rozhraní REST API služby výměny deklarací identity do vlastních zásad v Azure Active Directory B2C
+# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Přidání výměn deklarací identity REST API do vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Můžete přidat interakci s rozhraní RESTful API do vaší [vlastní zásady](active-directory-b2c-overview-custom.md) v Azure Active Directory (Azure AD) B2C. Tento článek ukazuje, jak vytvořit cestu uživatele Azure AD B2C, který spolupracuje s služby typu REST.
+Do [vlastních zásad](active-directory-b2c-overview-custom.md) v Azure Active Directory (Azure AD) B2C můžete přidat interakci s rozhraním API RESTful. V tomto článku se dozvíte, jak vytvořit Azure AD B2C cestu uživatele, která komunikuje s RESTful službami.
 
-Interakce zahrnuje výměna deklarací identit informací mezi deklarace rozhraní REST API a Azure AD B2C. Výměna deklarací identity mají následující vlastnosti:
+Interakce zahrnuje výměnu deklarací informací mezi REST API deklarací identity a Azure AD B2C. Výměny deklarací identity mají následující vlastnosti:
 
-- Může sloužit jako krok Orchestrace.
-- Externí akce můžete aktivovat. To například protokolovat událost v externí databázi.
-- Je možné načíst hodnotu a uloží je v uživatelské databázi.
-- Můžete změnit tok spouštění.
+- Dá se navrhovat jako krok orchestrace.
+- Může aktivovat externí akci. Například může protokolovat událost v externí databázi.
+- Dá se použít k načtení hodnoty a jejímu uložení do uživatelské databáze.
+- Může změnit tok provádění.
 
-Scénář, který je reprezentován v tomto článku obsahuje následující akce:
+Scénář, který je reprezentován v tomto článku, zahrnuje následující akce:
 
-1. Vyhledání uživatele v externím systému.
-2. Získejte Město, ve kterém je tento uživatel zaregistrovaný.
-3. Tento atribut vraťte se do aplikace jako deklarace identity.
+1. Vyhledejte uživatele v externím systému.
+2. Získejte město, kde je tento uživatel zaregistrován.
+3. Vrátí tento atribut do aplikace jako deklaraci identity.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Proveďte kroky v [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md).
-- Koncový bod rozhraní REST API pro interakci s. Tento článek používá jednoduché Azure fungovat jako příklad. Vytvoření funkce Azure Functions najdete v tématu [vytvoření první funkce na webu Azure Portal](../azure-functions/functions-create-first-azure-function.md).
+- Proveďte kroky v části Začínáme [s vlastními zásadami](active-directory-b2c-get-started-custom.md).
+- REST API koncový bod, se kterým chcete pracovat. V tomto článku se jako příklad používá jednoduchá funkce Azure Functions. Pokud chcete vytvořit funkci Azure Functions, přečtěte si téma [Vytvoření první funkce v Azure Portal](../azure-functions/functions-create-first-azure-function.md).
 
 ## <a name="prepare-the-api"></a>Příprava rozhraní API
 
-V této části můžete připravit funkce Azure získat hodnotu pro `email`a pak se vraťte hodnotu `city` , který je možné pomocí Azure AD B2C, jako deklarace identity.
+V této části připravíte funkci Azure Functions `email`, aby přijímala hodnotu, a potom vrátí `city` hodnotu, kterou může Azure AD B2C použít jako deklarace.
 
-Změna souboru run.csx pro funkci Azure, kterou jste vytvořili pomocí následujícího kódu:
+Změňte soubor run. csx pro funkci Azure, kterou jste vytvořili pro použití následujícího kódu:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -82,11 +82,11 @@ public class ResponseContent
 }
 ```
 
-## <a name="configure-the-claims-exchange"></a>Konfigurace výměna deklarací identit
+## <a name="configure-the-claims-exchange"></a>Konfigurace výměny deklarací identity
 
-Technický profil obsahuje konfiguraci exchange deklarace identity.
+Technický profil poskytuje konfiguraci pro výměnu deklarací identity.
 
-Otevřít *TrustFrameworkExtensions.xml* soubor a přidejte následující **ClaimsProvider** – XML element uvnitř **ClaimsProviders** elementu.
+Otevřete soubor *TrustFrameworkExtensions. XML* a přidejte do elementu **ClaimsProviders** následující element XML **ClaimsProvider** .
 
 ```XML
 <ClaimsProvider>
@@ -97,8 +97,10 @@ Otevřít *TrustFrameworkExtensions.xml* soubor a přidejte následující **Cla
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
         <Item Key="ServiceUrl">https://myfunction.azurewebsites.net/api/HttpTrigger1?code=bAZ4lLy//ZHZxmncM8rI7AgjQsrMKmVXBpP0vd9smOzdXDDUIaLljA==</Item>
-        <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
         <Item Key="AllowInsecureAuthInProduction">true</Item>
       </Metadata>
       <InputClaims>
@@ -113,11 +115,13 @@ Otevřít *TrustFrameworkExtensions.xml* soubor a přidejte následující **Cla
 </ClaimsProvider>
 ```
 
-**InputClaims** element definuje deklarace identity, které se odesílají do služby REST. V tomto příkladu je hodnota deklarace identity `givenName` se odesílají službě REST jako deklarace identity `email`. **OutputClaims** element definuje deklarace, které se očekává, že ze služby REST.
+Element **InputClaims** definuje deklarace, které se odesílají do služby REST. V tomto příkladu je hodnota deklarace identity `givenName` odeslána službě REST jako deklarace identity. `email` Element **OutputClaims** definuje deklarace identity, které se očekávají od služby REST.
 
-## <a name="add-the-claim-definition"></a>Přidat definici deklarací identity
+Výše uvedené `AuthenticationType` komentáře a `AllowInsecureAuthInProduction` určete změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API pro RESTful pro produkční prostředí, najdete v tématu [zabezpečení rozhraní API RESTful se základními ověřováním](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) a [zabezpečením RESTful API pomocí ověřování certifikátů](active-directory-b2c-custom-rest-api-netfw-secure-cert.md).
 
-Přidejte definici pro `city` uvnitř **BuildingBlocks** elementu. Můžete najít tento prvek na začátku souboru TrustFrameworkExtensions.xml.
+## <a name="add-the-claim-definition"></a>Přidat definici deklarace identity
+
+Přidejte definici pro `city` uvnitř elementu **BuildingBlocks** . Tento element lze najít na začátku souboru TrustFrameworkExtensions. XML.
 
 ```XML
 <BuildingBlocks>
@@ -132,11 +136,11 @@ Přidejte definici pro `city` uvnitř **BuildingBlocks** elementu. Můžete naj�
 </BuildingBlocks>
 ```
 
-## <a name="add-an-orchestration-step"></a>Přidat na krok Orchestrace
+## <a name="add-an-orchestration-step"></a>Přidat krok orchestrace
 
-Existuje řada případů použití, kde volání rozhraní REST API je možné jako krok Orchestrace. Jako krok Orchestrace ho lze použít jako aktualizace externího systému poté, co uživatel úspěšně dokončí úlohu, jako první registraci nebo jako aktualizace profilu udržovat synchronizované informace. V takovém případě se používá k posílení údaje do aplikace po upravit profil.
+Existuje mnoho případů použití, kde REST API volání lze použít jako krok orchestrace. Jako krok orchestrace se dá použít jako aktualizace externího systému poté, co uživatel úspěšně dokončil úkol, jako je například registrace v prvním čase, nebo jako aktualizace profilu, aby se informace synchronizovaly. V tomto případě se používá k rozšíření informací poskytnutých aplikaci po úpravě profilu.
 
-Přidání kroku do cesty uživatele úpravy profilu. Jakmile se uživatel ověřen (kroků Orchestrace 1 až 4 v následující kód XML), a uživatel zadal aktualizovaný profil informací (krok 5). Kopírování profil upravovat kód XML cesty uživatele z *TrustFrameworkBase.xml* soubor do vašeho *TrustFrameworkExtensions.xml* soubor uvnitř **Userjourney** element. Pak proveďte změny v kroku 6.
+Přidejte krok do profilu upravit cestu uživatele. Po ověření uživatele (kroky Orchestration 1-4 v následujícím kódu XML) a uživatel zadal aktualizované informace o profilu (krok 5). Zkopírujte kód XML cesty pro úpravy profilu uživatele ze souboru *TrustFrameworkBase. XML* do souboru *TrustFrameworkExtensions. XML* v rámci elementu **userjourney** . Pak proveďte úpravy jako krok 6.
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
@@ -146,7 +150,7 @@ Přidání kroku do cesty uživatele úpravy profilu. Jakmile se uživatel ově�
 </OrchestrationStep>
 ```
 
-Poslední XML pro cestu uživatele by měl vypadat jako v tomto příkladu:
+Finální XML pro cestu uživatele by mělo vypadat jako v tomto příkladu:
 
 ```XML
 <UserJourney Id="ProfileEdit">
@@ -204,11 +208,11 @@ Poslední XML pro cestu uživatele by měl vypadat jako v tomto příkladu:
 </UserJourney>
 ```
 
-## <a name="add-the-claim"></a>Přidání deklarace identity
+## <a name="add-the-claim"></a>Přidat deklaraci identity
 
-Upravit *ProfileEdit.xml* a přidejte `<OutputClaim ClaimTypeReferenceId="city" />` k **OutputClaims** elementu.
+Upravte soubor *ProfileEdit. XML* a přidejte `<OutputClaim ClaimTypeReferenceId="city" />` jej do elementu **OutputClaims** .
 
-Po přidání nové deklarace technický profil bude vypadat jako v tomto příkladu:
+Po přidání nové deklarace bude technický profil vypadat jako v tomto příkladu:
 
 ```XML
 <TechnicalProfile Id="PolicyProfile">
@@ -223,15 +227,15 @@ Po přidání nové deklarace technický profil bude vypadat jako v tomto přík
 </TechnicalProfile>
 ```
 
-## <a name="upload-your-changes-and-test"></a>Odešlete své změny a otestovat
+## <a name="upload-your-changes-and-test"></a>Nahrání změn a testování
 
-1. (Volitelné:) Uložte stávající verzi (stažením) souborů než budete pokračovat.
-2. Nahrát *TrustFrameworkExtensions.xml* a *ProfileEdit.xml* a vybrat, zda chcete přepsat existující soubor.
+1. Volitelné Než budete pokračovat, uložte existující verzi (stažením) souborů.
+2. Nahrajte soubor *TrustFrameworkExtensions. XML* a *ProfileEdit. XML* a vyberte k přepsání stávajícího souboru.
 3. Vyberte **B2C_1A_ProfileEdit**.
-4. Pro **vyberte aplikaci** na stránce Přehled vlastních zásad, vyberte webovou aplikaci s názvem *webapp1* , které jste dříve zaregistrovali. Ujistěte se, že **adresy URL odpovědi** je `https://jwt.ms`.
-4. Vyberte **spustit nyní**. Přihlaste se pomocí přihlašovacích údajů k účtu a klikněte na tlačítko **pokračovat**.
+4. Pro **možnost vybrat aplikaci** na stránce Přehled v části vlastní zásady vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Ujistěte se, že **Adresa URL odpovědi** je `https://jwt.ms`.
+4. Vyberte **Spustit nyní**. Přihlaste se pomocí přihlašovacích údajů k účtu a klikněte na **pokračovat**.
 
-Pokud všechno je správně nastavené, token, který zahrnuje novou deklaraci `city`, s hodnotou `Redmond`.
+Pokud je všechno správně nastavené, token zahrnuje novou deklaraci identity `city`s hodnotou. `Redmond`
 
 ```JSON
 {
@@ -249,7 +253,15 @@ Pokud všechno je správně nastavené, token, který zahrnuje novou deklaraci `
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Můžete také navrhnout zásahu jako profil ověření. Další informace najdete v tématu [názorný postup: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C, jako na vstup uživatele](active-directory-b2c-rest-api-validation-custom.md).
-- [Upravit profil upravit sbírat dodatečné informace od uživatelů](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+Interakci můžete také navrhnout jako profil ověřování. Další informace najdete v tématu [Návod: Integrujte REST API výměn deklarací identity v cestě uživatele Azure AD B2C při ověřování vstupu](active-directory-b2c-rest-api-validation-custom.md)uživatele.
+
+[Úpravou úpravy profilu Shromážděte Další informace od uživatelů.](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+
+[Odkaz RESTful Technical Profile](restful-technical-profile.md)
+
+Informace o zabezpečení rozhraní API najdete v následujících článcích:
+
+* [Zabezpečení rozhraní API RESTful pomocí základního ověřování (uživatelské jméno a heslo)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+* [Zabezpečení rozhraní API RESTful pomocí klientských certifikátů](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

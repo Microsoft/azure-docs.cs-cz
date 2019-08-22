@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 305a35d1d40d94d1ce8e463b4af51eb84278bc3f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510258"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876411"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy vám pomůžou se správou a škálováním více databází Azure SQL.
 
@@ -155,8 +155,14 @@ Databáze ve fondu obecně podporují stejné [funkce provozní kontinuity](sql-
 
 Existují dva způsoby, jak můžete vytvořit elastický fond v Azure Portal.
 
-1. Elastický fond můžete vytvořit hledáním **elastického fondu SQL** na **webu Marketplace** nebo kliknutím na **+ Přidat** v okně procházení elastické fondy SQL. Pomocí tohoto pracovního postupu zřizování fondu můžete zadat nový nebo existující server.
-2. Nebo můžete vytvořit elastický fond tak, že přejdete na existující server SQL a kliknutím na **vytvořit fond** vytvoříte fond přímo na tento server. Jediným rozdílem je, že přeskočíte krok, ve kterém server zadáte během pracovního postupu zřizování fondu.
+1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud Azure SQL není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte *Azure SQL* .
+2. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o elastických fondech můžete zobrazit tak, že na dlaždici **databáze** vyberete **Zobrazit podrobnosti** .
+3. Na dlaždici **databáze** vyberte v rozevíracím seznamu **typ prostředku** možnost **elastický fond** a pak vyberte **vytvořit**:
+
+   ![Vytvoření elastického fondu](./media/sql-database-elastic-pool/create-elastic-pool.png)
+
+
+1. Nebo můžete vytvořit elastický fond tak, že přejdete na existující server SQL Azure a kliknutím na **+ Nový fond** vytvoříte fond přímo do tohoto serveru.
 
 > [!NOTE]
 > Na serveru můžete vytvořit více fondů, ale nemůžete přidávat databáze z různých serverů do stejného fondu.
@@ -214,7 +220,7 @@ Další informace najdete v tématu [vytvoření výstrah SQL Database v Azure P
 
    Daxko/CSI používá elastické fondy s Azure SQL Database k urychlení vývojového cyklu a vylepšení služeb a výkonu zákazníků.   
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete škálovat elastické fondy, přečtěte si téma [škálování elastických fondů](sql-database-elastic-pool-scale.md) a [škálování elastického fondu – vzorový kód](scripts/sql-database-monitor-and-scale-pool-powershell.md) .
 - Video najdete v tématu [Microsoft Virtual Academy video kurz o Azure SQL Database elastické možnosti](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)

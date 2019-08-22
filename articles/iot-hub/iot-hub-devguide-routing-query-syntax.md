@@ -1,6 +1,6 @@
 ---
-title: Dotaz na směrování zpráv služby Azure IoT Hub | Dokumentace Microsoftu
-description: Příručka pro vývojáře – syntaxe dotazu pro směrování zpráv ve službě Azure IoT Hub.
+title: Dotaz na směrování zpráv v Azure IoT Hub | Microsoft Docs
+description: Příručka pro vývojáře – syntaxe dotazu pro směrování zpráv v Azure IoT Hub.
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -8,24 +8,24 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f6439d79e5d46621b92b1c24ba5caf87889f443
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400639"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877061"
 ---
-# <a name="iot-hub-message-routing-query-syntax"></a>Syntaxi dotazů směrování zpráv služby IoT Hub
+# <a name="iot-hub-message-routing-query-syntax"></a>Syntaxe dotazu směrování zpráv IoT Hub
 
-Směrování zpráv umožňuje uživatelům totiž směrovat různé datové typy, telemetrická data zprávy typu zařízení a události životního cyklu zařízení, dvojče zařízení události změn do různých koncových bodů. Bohaté dotazy můžete také použít k těmto datům před směrování pro příjem dat, které vás zajímají. Tento článek popisuje směrování dotazovací jazyk zpráv služby IoT Hub a poskytuje některé běžné vzory dotazů.
+Směrování zpráv umožňuje uživatelům směrovat různé datové typy, konkrétně zprávy telemetrie zařízení, události životního cyklu zařízení a události s dvojitou změnou událostí, do různých koncových bodů. Na tato data můžete také použít formátované dotazy a teprve potom je směrovat, abyste získali data, která vás zajímají. Tento článek popisuje dotazovací jazyk směrování zpráv IoT Hub a poskytuje některé běžné vzory dotazů.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Směrování zpráv umožňuje dotazování na vlastnosti zprávy a tělo zprávy stejně jako značky dvojčat zařízení a vlastnosti dvojčete zařízení. Pokud tělo zprávy není JSON, směrování zpráv může stále směrovat zprávy, ale dotazy nejde použít pro text zprávy.  Dotazy jsou popsány jako logické výrazy, kde je logická hodnota PRAVDA dotaz úspěšný, která směruje všechna příchozí data a logickou hodnotu false selže dotaz a směrovat žádná data. Pokud je výraz vyhodnocen jako null nebo nedefinovaný, je považován za hodnotu false a vygeneruje se chyba v diagnostických protokolů v případě selhání. Syntaxe dotazu musí být správná pro trasy, která má být uloženy a vyhodnotí.  
+Směrování zpráv vám umožní dotazovat se na vlastnosti zprávy a text zprávy a také na vlastní značky zařízení a vlastnosti, které jsou v zařízení. Pokud tělo zprávy není JSON, směrování zpráv stále může směrovat zprávu, ale dotazy nelze použít na tělo zprávy.  Dotazy jsou popsány jako logické výrazy, kde logická hodnota true provede dotaz úspěšně, který směruje všechna příchozí data, a logická hodnota false neprojde dotazem a nebudou směrována žádná data. Pokud je výraz vyhodnocen jako null nebo nedefinován, je považován za false a v případě selhání bude v diagnostických protokolech generována chyba. Syntaxe dotazu musí být správná, aby bylo možné trasu uložit a vyhodnotit.  
 
-## <a name="message-routing-query-based-on-message-properties"></a>Směrování dotazů zprávy podle vlastnosti zprávy 
+## <a name="message-routing-query-based-on-message-properties"></a>Dotaz na směrování zpráv na základě vlastností zprávy 
 
-Definuje služby IoT Hub [běžný formát](iot-hub-devguide-messages-construct.md) pro všechna zařízení cloud zasílání zpráv pro interoperabilitu mezi protokoly. Zprávy služby IoT Hub se předpokládá následující reprezentaci JSON zprávy. Vlastnosti systému jsou přidány pro všechny uživatele a identifikaci obsahu zprávy. Uživatelé mohou přidávat vlastnosti aplikace selektivně ke zprávě. Doporučujeme použít názvy vlastností jedinečný, protože zasílání zpráv typu zařízení cloud služby IoT Hub není malá a velká písmena. Například pokud máte více vlastností se stejným názvem, IoT Hub se odeslat pouze jedna z vlastností.  
+IoT Hub definuje [společný formát](iot-hub-devguide-messages-construct.md) pro všechny zprávy typu zařízení-Cloud pro interoperabilitu napříč protokoly. IoT Hub zpráva předpokládá následující reprezentace zprávy ve formátu JSON. Vlastnosti systému jsou přidány pro všechny uživatele a identifikují obsah zprávy. Uživatelé můžou do zprávy selektivně přidat vlastnosti aplikace. Doporučujeme používat jedinečné názvy vlastností, jako je IoT Hub zasílání zpráv ze zařízení na Cloud nerozlišuje velká a malá písmena. Například pokud máte více vlastností se stejným názvem, IoT Hub bude odeslána pouze jedna z vlastností.  
 
 ```json
 { 
@@ -49,26 +49,27 @@ Definuje služby IoT Hub [běžný formát](iot-hub-devguide-messages-construct.
 
 ### <a name="system-properties"></a>Systémové vlastnosti
 
-Vlastnosti systému identifikaci obsahu a zdrojové zpráv. 
+Vlastnosti systému vám pomůžou identifikovat obsah a zdroj zpráv. 
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| contentType | string | Uživatel Určuje typ obsahu zprávy. Povolit dotazu na obsah zprávy, by měl být tato hodnota nastavena application/JSON. |
-| contentEncoding | string | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud typ obsahu je nastaven na application/JSON. |
-| iothub-connection-device-id | string | Tato hodnota nastavena ve službě IoT Hub a identifikuje ID zařízení. Dotaz, použijte `$connectionDeviceId`. |
-| iothub-enqueuedtime | string | Tato hodnota nastavena ve službě IoT Hub a představuje skutečný čas zařadit zprávu ve formátu UTC. Dotaz, použijte `enqueuedTime`. |
+| contentType | řetězec | Uživatel Určuje typ obsahu zprávy. Pokud chcete pro tělo zprávy zapnout dotaz, měla by být tato hodnota nastavená na Application/JSON. |
+| contentEncoding | řetězec | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud je contentType nastavený na Application/JSON. |
+| iothub-ID zařízení-připojení | řetězec | Tato hodnota je nastavena IoT Hub a identifikuje ID zařízení. K dotazování použijte `$connectionDeviceId`. |
+| iothub-enqueuedtime | řetězec | Tato hodnota je nastavena IoT Hub a představuje skutečný čas enqueuing zprávy ve standardu UTC. K dotazování použijte `enqueuedTime`. |
+| iothub – název rozhraní | řetězec | Tato hodnota je nastavena uživatelem a představuje název digitálního vlákna, které implementuje zprávu telemetrie. K dotazování použijte `$interfaceName`. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). |
 
-Jak je popsáno v [zpráv IoT Hub](iot-hub-devguide-messages-construct.md), existují další systémové vlastnosti ve zprávě. Kromě **contentType**, **contentEncoding**, a **enqueuedTime**, **connectionDeviceId** a  **connectionModuleId** může být dotazována také.
+Jak je popsáno v [IoT Hub zprávy](iot-hub-devguide-messages-construct.md), ve zprávě jsou další vlastnosti systému. Kromě **ContentType**, **contentEncoding**a **EnqueuedTime**lze také zadat dotaz **connectionDeviceId** a **connectionModuleId** .
 
 ### <a name="application-properties"></a>Vlastnosti aplikace
 
-Vlastnosti aplikace jsou uživatelem definované řetězce, které lze přidat do zprávy. Tato pole jsou volitelná.  
+Vlastnosti aplikace jsou uživatelsky definované řetězce, které lze přidat do zprávy. Tato pole jsou volitelná.  
 
 ### <a name="query-expressions"></a>Výrazy dotazů
 
-Dotaz na vlastnosti zprávy systému je potřeba mít předponu `$` symbol. Dotazy na vlastnosti aplikace, ke kterým se přistupuje pomocí názvu a by neměly mít předponu `$`symbol. Pokud název vlastnosti aplikace začíná `$`, pak služby IoT Hub se ji vyhledejte ve vlastnostech systému a nebyl nalezen, potom bude vypadat ve vlastnostech aplikace. Příklad: 
+Dotaz na vlastnosti systému zpráv musí být s `$` symbolem předpony. Dotazy na vlastnosti aplikace jsou k dispozici s jejich názvem a neměly by obsahovat předponu `$`. Pokud název vlastnosti aplikace začíná `$`na, IoT Hub ho vyhledat ve vlastnostech systému a nebude nalezen, bude vypadat ve vlastnostech aplikace. Příklad: 
 
-K dotazování na vlastnosti contentEncoding systému 
+Dotaz na systémovou vlastnost contentEncoding 
 
 ```sql
 $contentEncoding = 'UTF-8'
@@ -80,19 +81,19 @@ Dotaz na vlastnost processingPath aplikace:
 processingPath = 'hot'
 ```
 
-Kombinace těchto dotazů, můžete logické výrazy a funkce:
+Chcete-li kombinovat tyto dotazy, můžete použít logické výrazy a funkce:
 
 ```sql
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-Úplný seznam podporovaných operátory a funkce jsou uvedené v [výraz a podmínky](iot-hub-devguide-query-language.md#expressions-and-conditions)
+V části [výraz a podmínky](iot-hub-devguide-query-language.md#expressions-and-conditions)se zobrazí úplný seznam podporovaných operátorů a funkcí.
 
-## <a name="message-routing-query-based-on-message-body"></a>Zpráva směrovací dotaz založený na textu zprávy 
+## <a name="message-routing-query-based-on-message-body"></a>Dotaz na směrování zpráv na základě textu zprávy 
 
-Povolit dotazování v textu zprávy, musí být zpráva v JSON zakódován do kódování UTF-8, UTF-16 nebo UTF-32. `contentType` Musí být nastaveno na `application/JSON` a `contentEncoding` na jednu z podporovaných kódování UTF ve vlastnosti systému. Pokud tyto vlastnosti nejsou zadané, nebudou služby IoT Hub vyhodnocení výrazu dotazu na obsah zprávy. 
+Pokud chcete povolit dotazování na tělo zprávy, měla by být zpráva ve formátu JSON, který je kódovaný v kódování UTF-8, UTF-16 nebo UTF-32. Musí být nastavené na `application/JSON` a `contentEncoding` na jedno z podporovaných kódování UTF ve vlastnosti System. `contentType` Nejsou-li tyto vlastnosti zadány, IoT Hub nevyhodnotí výraz dotazu v textu zprávy. 
 
-Následující příklad ukazuje, jak vytvořit zprávu s správně formát a je kódovaný text JSON: 
+Následující příklad ukazuje, jak vytvořit zprávu s správně vytvořeným a kódovaným textem JSON: 
 
 ```javascript
 var messageBody = JSON.stringify(Object.assign({}, {
@@ -143,7 +144,7 @@ deviceClient.sendEvent(message, (err, res) => {
 
 ### <a name="query-expressions"></a>Výrazy dotazů
 
-Dotaz na text zprávy musí mít předponu `$body`. Text odkazu, odkaz na pole text nebo více odkazů na text můžete použít ve výrazu dotazu. Výraz dotazu můžete také kombinovat odkaz tělo zprávy systému vlastnostmi a referenční dokumentace k vlastnostem zprávy aplikace. Následující příklad, jsou všechny výrazy platný dotaz: 
+Dotaz na text zprávy musí být s `$body`předponou. Ve výrazu dotazu můžete použít odkaz na tělo, odkaz na pole textu nebo několik odkazů na text. Výraz dotazu může také kombinovat odkaz na tělo s vlastnostmi systému zpráv a odkazem na vlastnosti aplikace zprávy. Například následující jsou všechny platné výrazy dotazu: 
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
@@ -161,9 +162,9 @@ length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```
 
-## <a name="message-routing-query-based-on-device-twin"></a>Zpráva směrovací dotaz založený na dvojče zařízení 
+## <a name="message-routing-query-based-on-device-twin"></a>Dotaz na směrování zpráv na základě vlákna zařízení 
 
-Směrování zpráv umožňuje dotazování na [dvojče zařízení](iot-hub-devguide-device-twins.md) značek a vlastností, které jsou objekty JSON. Všimněte si, že při dotazování u dvojče modulu se nepodporuje. Ukázka značek dvojče zařízení a vlastností je uveden níže.
+Směrování zpráv vám umožní dotazovat se na značky a vlastnosti v [zařízení](iot-hub-devguide-device-twins.md) , které jsou objekty JSON. Dotazování na zdvojení modulu není podporované. Ukázka dvojitých značek a vlastností zařízení je uvedená níže.
 
 ```JSON
 {
@@ -196,7 +197,7 @@ Směrování zpráv umožňuje dotazování na [dvojče zařízení](iot-hub-dev
 
 ### <a name="query-expressions"></a>Výrazy dotazů
 
-Dotaz na text zprávy musí mít předponu `$twin`. Výraz dotazu, můžete také kombinovat dvojčete značku nebo vlastnost odkaz s text odkazu, vlastnosti zprávy systému a referenční dokumentace k vlastnostem zprávy aplikace. Doporučujeme používat jedinečné názvy značek a vlastnosti, protože dotaz není malá a velká písmena. Také nepoužívejte `twin`, `$twin`, `body`, nebo `$body`, jako názvy vlastností. Následující příklad, jsou všechny výrazy platný dotaz: 
+Dotaz na text zprávy musí být s `$twin`předponou. Výraz dotazu může také kombinovat odkaz na dvojitou značku nebo vlastnost s odkazem na tělo, vlastnostmi systému zprávy a odkazem na vlastnosti aplikace zprávy. Doporučujeme použít v tagu a vlastnostech jedinečné názvy, protože dotaz nerozlišuje velká a malá písmena. Také upustí od použití `twin` `$twin` `body`,, nebo `$body`jako názvů vlastností. Například následující jsou všechny platné výrazy dotazu: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
@@ -212,5 +213,5 @@ $twin.tags.deploymentLocation.floor = 1
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [směrování zpráv](iot-hub-devguide-messages-d2c.md).
-* Zkuste [zprávy směrování kurzu](tutorial-routing.md).
+* Přečtěte si o [směrování zpráv](iot-hub-devguide-messages-d2c.md).
+* Vyzkoušejte [kurz směrování zpráv](tutorial-routing.md).

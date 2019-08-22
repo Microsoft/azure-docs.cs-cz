@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/19/2019
 ms.author: v-adgera
-ms.openlocfilehash: 64a980ba8ed581b3cad369951220d47baf9e17ab
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849286"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656527"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -26,6 +26,9 @@ Tento článek shrnuje klíčové osvědčené postupy, které je potřeba sledo
 > [!IMPORTANT]
 > Pokud chcete zajistit maximální zabezpečení prostoru IoT, Projděte si další zdroje zabezpečení. Ujistěte se, že jste zahrnuli vaše dodavatele zařízení.
 
+> [!TIP]
+> Použijte [Azure Security Center pro IoT](https://docs.microsoft.com/azure/asc-for-iot/) , které vám pomůžou odhalit hrozby zabezpečení IoT a ohrožení zabezpečení.
+
 ## <a name="iot-security-best-practices"></a>Osvědčené postupy zabezpečení IoT
 
 Mezi klíčové postupy pro bezpečné zabezpečení vašich zařízení IoT patří:
@@ -36,6 +39,7 @@ Mezi klíčové postupy pro bezpečné zabezpečení vašich zařízení IoT pat
 > * Vezměte v úvahu potenciální využívání filtrování IP adres a omezení portů zařízení.
 > * Omezí vstupně-výstupní operace a šířku pásma zařízení pro zlepšení výkonu. Omezení rychlosti může zlepšit zabezpečení tím, že se zabrání útokům DOS (Denial-of-Service).
 > * Udržujte firmware zařízení v aktuálním stavu.
+> * Pravidelně auditujte a kontrolujte osvědčené postupy zabezpečení zařízení, sítě a brány, protože se dále zlepšují a vyvíjí.
 
 Mezi klíčové postupy pro bezpečné zabezpečení prostoru IoT patří:
 
@@ -43,6 +47,7 @@ Mezi klíčové postupy pro bezpečné zabezpečení prostoru IoT patří:
 > * Šifrování uložených, uložených nebo trvalých dat.
 > * Vyžadovat, aby hesla nebo klíče byly pravidelně měněny nebo aktualizovány.
 > * Pozorně omezte přístup a oprávnění podle role. Další informace najdete v části [osvědčené postupy řízení přístupu založené na rolích](#rbac) níže.
+> * Vezměte v úvahu dělenou topologii sítě, aby byla zařízení v každé síti izolovaná od ostatních.
 > * Používejte výkonné šifrování. Vyžadovat dlouhá hesla a používat zabezpečené protokoly a dvojúrovňové ověřování.
 
 [Monitorování](./how-to-configure-monitoring.md) Prostředky IoT, které můžete sledovat pro odlehlé hodnoty, hrozby nebo parametry prostředků, které spadají mimo rozsah běžné operace. Využijte Azure Analytics ke správě monitorování.

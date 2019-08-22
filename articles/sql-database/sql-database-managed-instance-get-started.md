@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 646a602d7e6c47454f039a5f4f1981a60b56fa56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567522"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873872"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rychlý start: Vytvoření spravované instance Azure SQL Database
 
@@ -35,11 +35,11 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 Následující kroky ukazují, jak vytvořit spravovanou instanci.
 
-1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
-2. Najděte **spravovanou instanci**a pak vyberte **Azure SQL Managed instance**.
-3. Vyberte **Vytvořit**.
+1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud Azure SQL není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte *Azure SQL* .
+2. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o Azure SQL Database Managed instance si můžete zobrazit tak, že na dlaždici **spravované instance** vyberete **Zobrazit podrobnosti** .
+3. Vyberte **vytvořit**:
 
-   ![Vytvoření spravované instance](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
+   ![Vytvoření spravované instance](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
 4. Vyplňte formulář **spravované instance SQL** pomocí požadovaných informací s použitím informací v následující tabulce.
 

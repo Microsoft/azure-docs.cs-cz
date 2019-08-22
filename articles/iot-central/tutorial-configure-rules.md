@@ -9,16 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 56ced4f5e2fd0fbf829f72cff2413998398a7a09
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30bfd3b119b3ae4badbda50747158e8b08a9dd08
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066012"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875521"
 ---
-# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Kurz: Konfigurace pravidla a akce pro vaše zařízení v Azure IoT Central
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Kurz: Konfigurace pravidel a akcí pro zařízení v Azure IoT Central
 
 *Tento článek je pro operátory, tvůrce a správce.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 V tomto kurzu vytvoříte pravidlo, které pošle e-mail, když teplota zařízení připojené klimatizace překročí 90&deg; F.
 
@@ -26,7 +28,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření pravidla založeného na telemetrii
-> * Přidání akce
+> * Přidat akci
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,42 +36,42 @@ Než začnete, musíte dokončit kurz [definování nového typu zařízení ve 
 
 ## <a name="create-a-telemetry-based-rule"></a>Vytvoření pravidla založeného na telemetrii
 
-1. Chcete-li přidat nové pravidlo na základě telemetrie pro vaši aplikaci, v levé navigační nabídce **šablon**:
+1. Chcete-li do aplikace přidat nové pravidlo založené na telemetrie, vyberte v levém navigačním panelu **šablony zařízení**:
 
     ![Stránka šablony zařízení](media/tutorial-configure-rules/templatespage1.png)
 
-    Zobrazí **připojené Vzduchovod (1.0.0)** zařízení šablonu, kterou jste vytvořili v předchozím kurzu.
+    Zobrazí se šablona zařízení **připojeného vzduchu (1.0.0)** , kterou jste vytvořili v předchozím kurzu.
 
-2. Chcete-li upravit šablonu vašeho zařízení, vyberte **připojené Vzduchovod** šablonu, kterou jste vytvořili v předchozím kurzu.
+2. Pokud chcete přizpůsobit šablonu zařízení, vyberte **připojenou** šablonu klimatizace, kterou jste vytvořili v předchozím kurzu.
 
-3. Přidání telemetrické pravidla v **pravidla** zobrazit, vyberte možnost **pravidla**vyberte **+ nové pravidlo**a pak vyberte **Telemetrie**:
+3. Pokud chcete přidat pravidlo založené na telemetrie v zobrazení **pravidla** , vyberte **pravidla**, vyberte **+ nové pravidlo**a potom vyberte **telemetrie**:
 
     ![Zobrazení pravidel](media/tutorial-configure-rules/newrule.png)
 
 5. Při definování pravidla použijte informace v následující tabulce:
 
-    | Nastavení                                      | Hodnota                             |
+    | Nastavení                                      | Value                             |
     | -------------------------------------------- | ------------------------------    |
     | Name                                         | Upozornění klimatizace na teplotu |
     | Enable rule for all devices of this template (Povolit pravidlo pro všechna zařízení této šablony) | Zapnuto                                |
     | Podmínka                                    | Teplota je větší než 90    |
-    | Agregace                                  | Žádný                              |
+    | Agregace                                  | Žádné                              |
 
     ![Podmínka pravidla teploty](media/tutorial-configure-rules/temperaturerule.png)
 
     Potom vyberte **Uložit**.
 
-## <a name="add-an-action"></a>Přidání akce
+## <a name="add-an-action"></a>Přidat akci
 
-Když definujete pravidlo, také definujete akci, kterou chcete spustit, když jsou podmínky pravidla splněny. V tomto kurzu vytvoříte pravidlo s akci, která se odešle e-mailové oznámení.
+Když definujete pravidlo, také definujete akci, kterou chcete spustit, když jsou podmínky pravidla splněny. V tomto kurzu vytvoříte pravidlo s akcí, která pošle e-mailové oznámení.
 
-1. Chcete-li přidat **akce**, první **Uložit** pravidlo a poté přejděte dolů na **konfigurovat pravidlo Telemetrie** panelu. Zvolte **+** vedle **akce**a klikněte na tlačítko **e-mailu**:
+1. Pokud chcete přidat **akci**, nejdřív **uložte** pravidlo a potom se posuňte dolů na panelu **konfigurovat pravidlo telemetrie** . Klikněte na **+** tlačítko Další **Akce**a pak zvolte možnost **e-mail**:
 
     ![Akce pravidla teploty](media/tutorial-configure-rules/addaction.png)
 
 2. Při definování akce použijte informace v následující tabulce:
 
-    | Nastavení   | Hodnota                          |
+    | Nastavení   | Value                          |
     | --------- | ------------------------------ |
     | Do        | Vaše e-mailová adresa             |
     | Poznámky     | Teplota klimatizace překročila prahovou hodnotu. |
@@ -77,27 +79,27 @@ Když definujete pravidlo, také definujete akci, kterou chcete spustit, když j
     > [!NOTE]
     > Pokud chcete dostávat e-mailové oznámení, e-mailová adresa musí být [ID uživatele v aplikaci](howto-administer.md) a tento uživatel se musel k aplikaci alespoň jednou přihlásit.
 
-    ![Akce teploty](media/tutorial-configure-rules/temperatureaction.png)
+    ![Teplotní akce](media/tutorial-configure-rules/temperatureaction.png)
 
-3. Vyberte **Uložit**. Pravidlo je uvedeno na **pravidla** stránky.
+3. Vyberte **Uložit**. Vaše pravidlo je uvedené na stránce **pravidla** .
 
 ## <a name="test-the-rule"></a>Testování pravidla
 
 Krátce po uložení se pravidlo aktivuje. Pokud jsou splněny podmínky definované v pravidle, vaše aplikace pošle zprávu na e-mailovou adresu, kterou jste zadali v akci.
 
 > [!NOTE]
-> Po dokončení testování vypněte pravidlo zastavit příjem oznámení ve vaší doručené pošty.
+> Po dokončení testování vypněte pravidlo, aby ve vaší doručené poště přestal přijímat výstrahy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]
 > * Vytvoření pravidla založeného na telemetrii
-> * Přidání akce
+> * Přidat akci
 
-Teď, když jste definovali pravidlo založené na prahových hodnotách navrhované dalším krokem je [přizpůsobení zobrazení operátoru](tutorial-customize-operator.md).
+Teď, když jste definovali pravidlo na základě prahové hodnoty, je navržený další krok [přizpůsobení zobrazení operátoru](tutorial-customize-operator.md).
 
 Další informace o různých typech pravidel v Azure IoT Central a postup parametrizace definice pravidla najdete v tématech:
 * [Vytvoření pravidla telemetrie a nastavení oznámení](howto-create-telemetry-rules.md)

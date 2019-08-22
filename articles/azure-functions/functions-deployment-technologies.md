@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 9f40ec658fc6725f381300d967c9d7cd61c3a218
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: a0c34fcc70d92f98a6d72e4cd2fc78d34d863d55
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624151"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650459"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -60,7 +60,7 @@ Při změně jakékoli aktivační události musí infrastruktura funkcí znát 
 
 ### <a name="remote-build"></a>Vzdálené sestavení
 
-Azure Functions může automaticky provádět buildy na kódu, který obdrží po nasazení zip. Tato sestavení se chovají trochu různě v závislosti na tom, jestli je aplikace spuštěná v systému Windows nebo Linux. Vzdálená sestavení se neprovádí, pokud se aplikace dřív nastavila tak, aby běžela v režimu [balíčku](run-functions-from-deployment-package.md) . 
+Azure Functions může automaticky provádět buildy na kódu, který obdrží po nasazení zip. Tato sestavení se chovají trochu různě v závislosti na tom, jestli je aplikace spuštěná v systému Windows nebo Linux. Vzdálená sestavení se neprovádí, pokud se aplikace dřív nastavila tak, aby běžela v režimu [balíčku](run-functions-from-deployment-package.md) . Pokud se chcete dozvědět, jak používat vzdálené sestavení, přejděte k souboru [zip Deploy](#zip-deploy).
 
 > [!NOTE]
 > Pokud máte problémy se vzdáleným sestavením, může to být způsobeno tím, že aplikace byla vytvořena před zpřístupněním funkce (1. srpna 2019). Zkuste vytvořit novou aplikaci Function App.
@@ -85,11 +85,11 @@ Když se aplikace na platformě Linux vytváří vzdáleně, [spouštějí se z 
 
 ##### <a name="consumption-preview-plan"></a>Plán využití (Preview)
 
-Aplikace Functions pro Linux běžící v plánu spotřeby nemají web SCM/Kudu, který omezuje možnosti nasazení. Aplikace Function App v systému Linux spuštěné v plánu spotřeby ale podporují vzdálená sestavení. Tato vzdálená sestavení používají [Oryx](https://github.com/microsoft/Oryx).
+Aplikace Functions pro Linux běžící v plánu spotřeby nemají web SCM/Kudu, který omezuje možnosti nasazení. Aplikace Function App v systému Linux spuštěné v plánu spotřeby ale podporují vzdálená sestavení.
 
 ##### <a name="dedicated-and-premium-preview-plans"></a>Plány vyhrazené a Premium (verze Preview)
 
-Aplikace Function App běžící na Linux ve [vyhrazeném plánu (App Service)](functions-scale.md#app-service-plan) a [plánu Premium](functions-scale.md#premium-plan) mají taky omezený web SCM/Kudu, který využívá [Oryx](https://github.com/microsoft/Oryx).
+Aplikace Function App běžící na systému Linux ve [vyhrazeném plánu (App Service)](functions-scale.md#app-service-plan) a [plánu Premium](functions-scale.md#premium-plan) mají také omezený web SCM/Kudu.
 
 ## <a name="deployment-technology-details"></a>Podrobnosti o technologii nasazení
 
@@ -111,7 +111,7 @@ Pomocí nástroje zip Deploy nahrajte soubor. zip, který obsahuje vaši aplikac
 
 >__Jak ji použít:__ Nasazení pomocí vašeho oblíbeného klientského nástroje: [Vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)nebo [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Pokud chcete soubor. zip nasadit do aplikace Function App ručně, postupujte podle pokynů v tématu [nasazení ze souboru. zip nebo adresy URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
-Chcete-li provést nasazení souboru zip se vzdáleným sestavením, použijte následující příkaz pro [základní nástroje](functions-run-local.md) :
+Chcete-li provést nasazení souboru ZIP [](#remote-build)se vzdáleným sestavením, použijte následující příkaz pro [základní nástroje](functions-run-local.md) :
 
 ```bash
 func azure functionapp publish <app name> --build remote

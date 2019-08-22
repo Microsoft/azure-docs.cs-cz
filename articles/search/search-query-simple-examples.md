@@ -1,8 +1,8 @@
 ---
-title: Příklady dotazů pomocí syntaxe "jednoduchý" hledání – Azure Search
-description: Příklady jednoduchých dotazů pro fulltextové vyhledávání, vyhledávání filtr, geografické vyhledávání, Fasetové vyhledávání a jiných řetězců dotazu používá k dotazování indexu Azure Search.
+title: Příklady dotazů s syntaxí jednoduchého vyhledávání – Azure Search
+description: Jednoduché příklady dotazů pro fulltextové vyhledávání, filtrování vyhledávání, geografické vyhledávání, nafiltrované vyhledávání a další řetězce dotazů, které se používají k dotazování indexu Azure Search.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
@@ -10,80 +10,80 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6b7451371fe1562a6763643cd90e5646bd255018
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: df84686e512db90351d5a9815706890bce49848b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653528"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647614"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Příklady dotazů pomocí syntaxe "jednoduchý" vyhledávání ve službě Azure Search
+# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Příklady dotazů, které používají syntaxi hledání "jednoduchá" v Azure Search
 
-[Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) vyvolá výchozí analyzátor dotazů pro provádění fulltextové vyhledávací dotazy na index Azure Search. Analyzátor jednoduchého dotazu je rychlá a zpracovává běžné scénáře ve službě Azure Search, včetně fulltextové vyhledávání, vyhledání filtrované a fasetová a geografické vyhledávání. V tomto článku krokovat příklady demonstrující operace dotazu jsou dostupné při použití jednoduchého syntaxe.
+[Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) vyvolá výchozí analyzátor dotazů pro provádění fulltextových vyhledávacích dotazů pro Azure Search index. Jednoduchý analyzátor dotazů je rychlý a pracuje s běžnými scénáři v Azure Search, včetně fulltextového vyhledávání, filtrovaných a omezujících výsledků hledání a geografického vyhledávání. V tomto článku se seznámíme s příklady, které demonstrují operace dotazů, které jsou k dispozici při použití jednoduché syntaxe.
 
-Syntaxe alternativní dotazu je [úplné Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), podpora složitější struktury, dotazu, jako například přibližných shod a hledání pomocí zástupných znaků, které můžete provést další čas ke zpracování. Další informace a příklady demonstrující úplnou syntaxi najdete v tématu [Příklady dotazů syntaxe Lucene](search-query-lucene-examples.md).
+Alternativní syntaxe dotazu je [Úplná Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), která podporuje složitější struktury dotazů, jako je hledání přibližných a zástupných znaků. to může trvat déle. Další informace a příklady demonstrující úplnou syntaxi naleznete v tématu [příklady dotazů syntaxe pro Lucene](search-query-lucene-examples.md).
 
-## <a name="formulate-requests-in-postman"></a>Formulování požadavků v nástroji Postman
+## <a name="formulate-requests-in-postman"></a>Formulování požadavků v post
 
-Následující příklady využívají vyhledávací index NYC Jobs skládající se z úlohy nejsou k dispozici na základě datové poskytované [města New York OpenData](https://nycopendata.socrata.com/) iniciativy. Tato data by neměly být zahrnuté v aktuální nebo dokončení. Index je v sandboxu služby od Microsoftu, což znamená, že potřebujete předplatnému Azure nebo Azure Search vyzkoušet tyto dotazy.
+Následující příklady využívají index vyhledávání úloh NYC sestávající z úloh, které jsou k dispozici na základě datové sady poskytované městem OpenData iniciativy z [New Yorku](https://nycopendata.socrata.com/) . Tato data by se neměla považovat za aktuální nebo kompletní. Index je na službě izolovaného prostoru poskytované Microsoftem, což znamená, že k pokusu o provedení těchto dotazů nepotřebujete předplatné Azure ani Azure Search.
 
-Co je třeba je Postman nebo ekvivalentní nástroje pro vydání požadavku HTTP na GET. Další informace najdete v tématu [prozkoumat s využitím klientů REST](search-get-started-postman.md).
+K tomu, co potřebujete, je odeslání nebo ekvivalent nástroje pro vystavení požadavku HTTP na GET. Další informace najdete v tématu [prozkoumání pomocí klientů REST](search-get-started-postman.md).
 
-### <a name="set-the-request-header"></a>Nastavte hlavičku žádosti
+### <a name="set-the-request-header"></a>Nastavit hlavičku požadavku
 
-1. V hlavičce požadavku, nastavte **Content-Type** k `application/json`.
+1. V hlavičce požadavku nastavte **typ obsahu** na `application/json`.
 
-2. Přidat **klíč api-key**a nastavte ho na tento řetězec: `252044BE3886FE4A8E3BAA4F595114BB`. Toto je klíč dotazu hostování NYC Jobs indexu služby search izolovaného prostoru.
+2. Přidejte **klíč API-Key**a nastavte jej na tento řetězec: `252044BE3886FE4A8E3BAA4F595114BB`. Toto je klíč dotazu pro vyhledávací službu izolovaného prostoru (sandbox), která hostuje index úloh NYC.
 
-Po zadání hlavičce žádosti, jej můžete znovu použít pro všechny dotazy v tomto článku záměnu pouze **hledání =** řetězec. 
+Po zadání hlavičky žádosti ji můžete znovu použít pro všechny dotazy v tomto článku, přičemž se odkládá jenom řetězec **Search =** String. 
 
   ![Hlavička žádosti Postman](media/search-query-lucene-examples/postman-header.png)
 
-### <a name="set-the-request-url"></a>Nastavení adresy URL požadavku
+### <a name="set-the-request-url"></a>Nastavení adresy URL žádosti
 
-Požadavek je spárovaná s adresy URL obsahující řetězce koncový bod a vyhledávání Azure Search příkaz GET.
+Request je příkaz GET, který se spáruje s adresou URL obsahující Azure Search koncový bod a hledaný řetězec.
 
   ![Hlavička žádosti Postman](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
-Adresa URL sestavení obsahuje následující prvky:
+Složení adresy URL má následující prvky:
 
-+ **`https://azs-playground.search.windows.net/`** Vyhledávací služba izolovaného prostoru udržuje vývojový tým Azure Search. 
-+ **`indexes/nycjobs/`** je index NYC Jobs v kolekci indexů této služby. Název služby a index se vyžadují v požadavku.
-+ **`docs`** je kolekce dokumenty obsahující všechny prohledávatelný obsah. Dotazu api-key zadaný v hlavičce žádosti funguje pouze na operace čtení, které cílí na kolekce dokumentů.
-+ **`api-version=2019-05-06`** Nastaví verzi api-version, což je povinný parametr u každého požadavku.
-+ **`search=*`** řetězec dotazu, který počátečního dotazu má hodnotu null, vrátí prvních 50 výsledky (ve výchozím nastavení).
++ **`https://azs-playground.search.windows.net/`** je vyhledávací služba izolovaného prostoru, kterou udržuje Azure Search vývojový tým. 
++ **`indexes/nycjobs/`** je index úloh NYC v kolekci indexů dané služby. V žádosti se vyžaduje název služby i index.
++ **`docs`** je kolekce dokumentů obsahující veškerý prohledávatelný obsah. Klíč rozhraní API pro dotaz zadaný v hlavičce požadavku funguje jenom na operacích čtení, které cílí na kolekci dokumentů.
++ **`api-version=2019-05-06`** nastaví verzi rozhraní API, což je povinný parametr u všech požadavků.
++ **`search=*`** je řetězec dotazu, který je v počátečním dotazu null, vrací první 50 výsledků (ve výchozím nastavení).
 
-## <a name="send-your-first-query"></a>Odeslat svůj první dotaz
+## <a name="send-your-first-query"></a>Odeslání prvního dotazu
 
-Jako ověřovací krok, vložte následující požadavek do GET a klikněte na tlačítko **odeslat**. Výsledky jsou vráceny jako podrobné dokumenty JSON. Vrátí se celý dokumenty, které vám umožní vidět všechna pole a všechny hodnoty.
+Jako krok ověření vložte následující žádost do pole získat a klikněte na **Odeslat**. Výsledky se vrátí jako podrobné dokumenty JSON. Vrátí se celé dokumenty, což vám umožní zobrazit všechna pole a všechny hodnoty.
 
-Vložte tuto adresu URL do klienta REST jako krok ověření a chcete-li zobrazit strukturu dokumentu.
+Vložte tuto adresu URL do klienta REST jako krok ověření a zobrazte strukturu dokumentu.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-Řetězec dotazu **`search=*`** , odpovídá neurčené hledání hodnotu null nebo prázdné vyhledávání. Není zvlášť užitečné, ale je nejjednodušší vyhledávání, které vám pomůžou.
+Řetězec dotazu, **`search=*`** , je nespecifikované vyhledávání odpovídající hodnotě null nebo prázdné vyhledávání. Není to zvláště užitečné, ale jedná se o nejjednodušší hledání, které můžete provést.
 
-Volitelně můžete přidat **`$count=true`** pro adresu URL pro vrátí počet dokumentů odpovídajících kritériím vyhledávání. V prázdné hledaný řetězec je to všechny dokumenty v indexu (přibližně 2800 v případě NYC Jobs).
+Volitelně můžete přidat **`$count=true`** adresu URL a vrátit tak počet dokumentů, které odpovídají kritériím vyhledávání. U prázdného vyhledávacího řetězce se jedná o všechny dokumenty v indexu (přibližně 2800 v případě úloh NYC).
 
-## <a name="how-to-invoke-simple-query-parsing"></a>Vyvolání parsování jednoduchého dotazu
+## <a name="how-to-invoke-simple-query-parsing"></a>Postup vyvolání jednoduchých analýz dotazů
 
-Pro interaktivní dotazy, není nutné zadávat nemusíte: jednoduché je výchozí nastavení. V kódu, pokud dříve vyvolat **queryType = full** celý dotaz v syntaxi může resetovat výchozí **queryType = jednoduché**.
+U interaktivních dotazů není nutné zadávat nic: výchozí hodnota je jednoduchá. Pokud jste v kódu dříve vyvolali příkaz **querytype = Full** pro úplnou syntaxi dotazu, mohli byste výchozí nastavení obnovit pomocí příkazu **querytype = Simple**.
 
-## <a name="example-1-field-scoped-query"></a>Příklad 1: S rozsahem pole dotazu
+## <a name="example-1-field-scoped-query"></a>Příklad 1: Dotaz v oboru pole
 
-Tento první příklad není specifické pro analyzátor, ale jsme s ním vést k zavedení prvního pojem základních dotazů: členství ve skupině. V tomto příkladu obory, provádění dotazu a odpovědi na pár konkrétních polí. Znalost, jak strukturovat, čitelné odpověď JSON je důležité, pokud je nástroj Postman nebo vyhledávání explorer. 
+Tento první příklad není specifický pro specifickou analýzu, ale zavedeme ho, aby zavedl první základní koncept dotazu: omezení. V tomto příkladu se jedná o provádění dotazů a odpověď na pouze několik konkrétních polí. Znalost způsobu strukturování čitelné odpovědi JSON je důležitá, pokud je váš nástroj pro odesílání nebo hledání v Průzkumníku služby Search. 
 
-Pro zkrácení, zaměřuje dotazu pouze *business_title* pole a určuje pouze názvy business jsou vráceny. Syntaxe je **searchFields** omezit spuštění dotazu pouze na pole business_title a **vyberte** k určení, která pole jsou zahrnuty v odpovědi.
+V případě zkrácení se dotaz zaměřuje pouze na pole *business_title* a jsou vráceny pouze obchodní tituly. Syntaxe je **searchFields** , aby se omezilo provádění dotazů jenom na pole business_title, a **Vyberte** , která pole jsou zahrnutá v odpovědi.
 
-### <a name="partial-query-string"></a>Řetězec dotazu částečné
+### <a name="partial-query-string"></a>Částečný řetězec dotazu
 
 ```http
 searchFields=business_title&$select=business_title&search=*
 ```
 
-Zde je stejný dotaz obsahuje několik polí v seznamu odděleného čárkami.
+Tady je stejný dotaz s více poli v seznamu odděleném čárkami.
 
 ```http
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
@@ -95,31 +95,31 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
 
-Odpověď pro tento dotaz by měl vypadat podobně jako na následujícím snímku obrazovky.
+Odpověď pro tento dotaz by měla vypadat podobně jako na následujícím snímku obrazovky.
 
-  ![Ukázková odpověď postman](media/search-query-lucene-examples/postman-sample-results.png)
+  ![Ukázková odpověď po ukázce](media/search-query-lucene-examples/postman-sample-results.png)
 
-Možná jste si všimli skóre vyhledávání v odpovědi. Jednotné skóre 1 dojít, pokud neexistuje žádné pořadí buď protože vyhledávání nebylo fulltextové vyhledávání, nebo protože byla použita žádná kritéria. Pro hodnotu null vyhledávání se žádná kritéria vraťte řádků v pořadí. Pokud zahrnete skutečné kritéria, zobrazí se hledání, které skóre, které se změní na smysluplné hodnoty.
+Možná jste si všimli skóre hledání v odpovědi. Rovnoměrné skóre 1 nastane, pokud není k dispozici žádný rozměr, protože hledání nevrátilo fulltextové vyhledávání, nebo vzhledem k tomu, že se nepoužila žádná kritéria. Pro prázdné vyhledávání bez kritérií se řádky vrátí v libovolném pořadí. Pokud zahrnete skutečná kritéria, uvidíte, že výsledky hledání se budou vyvíjet na smysluplné hodnoty.
 
-## <a name="example-2-look-up-by-id"></a>Příklad 2: Vyhledávání podle ID
+## <a name="example-2-look-up-by-id"></a>Příklad 2: Vyhledat podle ID
 
-V tomto příkladu je o něco neobvyklé, ale při vyhodnocování chování vyhledávání, můžete chtít zkontrolovat celý obsah určitého dokumentu pochopit, proč byla zahrnuty nebo vyloučeny ze výsledky. Chcete-li vrátit jednoho dokumentu v celém rozsahu, použijte [operace vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document) a zajistěte tak předání ID dokumentu.
+Tento příklad je netypický, ale při vyhodnocování chování vyhledávání můžete chtít zkontrolovat celý obsah konkrétního dokumentu a pochopit, proč byl zahrnutý nebo vyloučený z výsledků. Chcete-li vrátit jediný dokument v celém rozsahu, použijte [operaci vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document) a předejte mu ID dokumentu.
 
-Všechny dokumenty měly jedinečný identifikátor. Vyzkoušet syntaxe vyhledávacího dotazu, nejprve vrátíte seznam ID dokumentu, abyste našli, z nich se má použít. NYC Jobs identifikátory jsou uloženy v `id` pole.
+Všechny dokumenty mají jedinečný identifikátor. Chcete-li vyzkoušet syntaxi vyhledávacího dotazu, nejprve vraťte seznam ID dokumentů, abyste mohli najít jeden, který chcete použít. V případě úloh NYC jsou identifikátory uloženy v `id` poli.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=id&$select=id&search=*
 ```
 
-Následující příklad je vyhledávací dotaz vrací na základě určitého dokumentu `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5", která se nacházela v předchozí odpovědi. Následující dotaz vrátí celý dokument, pouze vybraná pole. 
+Dalším příkladem je vyhledávací dotaz vracející konkrétní dokument založený na `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5", který se objevil jako první v předchozí odpovědi. Následující dotaz vrátí celý dokument, nikoli pouze vybraná pole. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
 ```
 
-## <a name="example-3-filter-queries"></a>Příklad 3: Filtrování dotazů
+## <a name="example-3-filter-queries"></a>Příklad 3: Filtrovat dotazy
 
-[Syntaxe filtru](https://docs.microsoft.com/azure/search/search-query-odata-filter) je výraz OData, který vám pomůže s **hledání** nebo samostatně. Filtr samostatné bez parametrů vyhledávání, je užitečná, pokud výraz filtru je možné k plnému určení dokumenty, které vás zajímají. Bez řetězce dotazu, neexistuje žádná lexikální nebo jazyková analýza bez výsledků (všechny hodnoty jsou 1) a žádné řazení. Všimněte si, že se že hledaný řetězec je prázdný.
+[Syntaxe filtru](https://docs.microsoft.com/azure/search/search-query-odata-filter) je výraz OData, který můžete použít se službou **Search** nebo sám o sobě. Samostatný filtr bez parametru vyhledávání je užitečný v případě, že výraz filtru dokáže plně kvalifikovat dokumenty, které vás zajímají. Bez řetězce dotazu není k dispozici žádná lexikální nebo Lingvistická analýza, žádné bodování (všechny skóre jsou 1) a žádné hodnocení. Všimněte si, že hledaný řetězec je prázdný.
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -131,31 +131,31 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     }
 ```
 
-Použijí společně, filtr je na celý index použije první, a pak provede vyhledávání na výsledcích filtru. Používání filtrů tak může být užitečné pro zlepšení výkonu dotazů zmenšením sady dokumentů, které musí dotaz vyhledávání zpracovat.
+Při použití společně se filtr použije jako první pro celý index a pak se provede hledání na základě výsledků filtru. Používání filtrů tak může být užitečné pro zlepšení výkonu dotazů zmenšením sady dokumentů, které musí dotaz vyhledávání zpracovat.
 
-  ![Odpověď na dotaz filtru](media/search-query-simple-examples/filtered-query.png)
+  ![Filtrovat odpověď dotazu](media/search-query-simple-examples/filtered-query.png)
 
-Pokud chcete v nástroji Postman, pomocí GET to vyzkoušet, můžete vložit do tento řetězec:
+Pokud si to chcete vyzkoušet v příspěvku pomocí GET, můžete vložit do tohoto řetězce:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
-Další efektivní způsob, jak kombinovat filtru a vyhledávání je prostřednictvím **`search.ismatch*()`** ve výrazu filtru, kde můžete použít vyhledávací dotaz v rámci filtru. Tento výraz filtr používá zástupný znak na *plán* vyberte business_title včetně plánu termín, planner, plánování a tak dále.
+Dalším účinným způsobem, jak kombinovat filtrování a hledání **`search.ismatch*()`** , je ve výrazu filtru, kde můžete použít vyhledávací dotaz v rámci filtru. Tento výraz filtru používá zástupný znak k výběru business_title, včetně plánu, Planneru, plánování a tak dále.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-Další informace o této funkci najdete v části [search.ismatch v "Příklady filtrů"](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples).
+Další informace o této funkci naleznete v tématu [Search. Match in "Filter Examples"](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples).
 
 ## <a name="example-4-range-filters"></a>Příklad 4: Filtry rozsahu
 
-Rozsah filtrování je podporované prostřednictvím **`$filter`** výrazy pro libovolného datového typu. Následující příklady vyhledávat číselným a řetězcovým pole. 
+Filtrování rozsahu je podporováno prostřednictvím **`$filter`** výrazů pro libovolný datový typ. Následující příklady vyhledají číselná a řetězcová pole. 
 
-Datové typy jsou důležité pro filtry rozsahu a fungují lépe, když je číselná data v číselná pole a řetězcová data v polích řetězce. Číselná data ve pole řetězce není vhodný pro rozsahy adres, protože nejsou porovnatelné ve službě Azure Search, číselných řetězců. 
+Datové typy jsou důležité v filtrech rozsahu a fungují nejlépe, pokud jsou číselná data v číselném poli a řetězcová data v polích řetězců. Číselná data v polích řetězců nejsou vhodná pro rozsah, protože číselné řetězce nejsou srovnatelné v Azure Search. 
 
-Následující příklady jsou ve formátu POST pro lepší čitelnost (číselného rozsahu, za nímž následuje rozsah textu):
+Následující příklady jsou ve formátu POST pro čitelnost (číselný rozsah následovaný textem Range):
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
       "count": "true"
     }
 ```
-  ![Filtr rozsahu pro číselných rozsahů](media/search-query-simple-examples/rangefilternumeric.png)
+  ![Filtr rozsahu pro číselné rozsahy](media/search-query-simple-examples/rangefilternumeric.png)
 
 
 ```http
@@ -181,9 +181,9 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     }
 ```
 
-  ![Filtr rozsahu pro oblasti textu](media/search-query-simple-examples/rangefiltertext.png)
+  ![Filtr rozsahu pro textové rozsahy](media/search-query-simple-examples/rangefiltertext.png)
 
-Můžete také vyzkoušet tyto v nástroji Postman, pomocí GET:
+Můžete je také vyzkoušet v příspěvku pomocí GET:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
@@ -194,13 +194,13 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ```
 
 > [!NOTE]
-> "Faceting" nad oblastí hodnot je běžné požadavky aplikace hledání. Další informace a příklady vytváření filtry omezující vlastnost navigace struktur, naleznete v tématu ["Filtru na základě rozsahu" v *jak implementovat fasetovou navigaci*](search-faceted-navigation.md#filter-based-on-a-range).
+> Omezující vlastnosti přes rozsahy hodnot jsou běžným požadavkem na aplikaci vyhledávání. Další informace a příklady vytváření filtrů pro navigační struktury omezující vlastnosti najdete v části ["filtrování na základě rozsahu" v tématu *implementace omezujících navigačních*](search-faceted-navigation.md#filter-based-on-a-range)objektů.
 
 ## <a name="example-5-geo-search"></a>Příklad 5: Geografické vyhledávání
 
-Ukázkového indexu zahrnuje pole geo_location pomocí zeměpisné šířky a délky. V tomto příkladu [geo.distance funkce](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) , která filtruje na dokumenty v rámci obvod výchozí bod odhlašování libovolné vzdálenosti (v kilometrech), který zadáte. Můžete upravit poslední hodnotu v dotazu (4), zmenšit nebo zvětšit plochu dotazu.
+Vzorový index obsahuje pole geo_location s souřadnicemi zeměpisné šířky a délky. V tomto příkladu se používá [funkce Geo. Distance](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) , která filtruje dokumenty v rámci obvodu počátečního bodu, a to až do libovolné vzdálenosti (v kilometrech), kterou zadáte. Poslední hodnotu v dotazu (4) můžete upravit tak, aby se snížila nebo rozšířila oblast povrchu dotazu.
 
-V následujícím příkladu je ve formátu POST pro lepší čitelnost:
+Následující příklad je ve formátu POST pro čitelnost:
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -211,90 +211,90 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
       "count": "true"
     }
 ```
-Výsledky hledání jsou výsledků dosáhnete lépe čitelný, oříznut ID úlohy, pracovní pozice a pracovní umístění. Souřadnice počátečního byly získány z náhodných dokument v indexu (v takovém případě pro pracovní umístění na ostrově Staten.
+Pro lepší čitelnost výsledků se výsledky hledání oříznou tak, aby zahrnovaly ID úlohy, název úlohy a pracovní umístění. Počáteční souřadnice byly získány z náhodného dokumentu v indexu (v tomto případě pro pracovní umístění na Staten ostrově.
 
-Můžete také vyzkoušet to v nástroji Postman, pomocí GET:
+Můžete to také vyzkoušet v příspěvku pomocí GET:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
-## <a name="example-6-search-precision"></a>Příklad 6: Hledání přesnosti
+## <a name="example-6-search-precision"></a>Příklad 6: Přesnost vyhledávání
 
-Termín dotazy jsou jedněch podmínkách, možná spousta z nich, které vyhodnocují nezávisle na sobě. Fráze dotazy jsou uzavřena v uvozovkách a vyhodnotí jako doslovný řetězec. Přesnost shody se řídí operátory a searchMode.
+Termínové dotazy jsou jednoduché a pravděpodobně mnoho z nich, které jsou vyhodnocovány nezávisle. Frázové dotazy jsou uzavřeny v uvozovkách a vyhodnocovány jako doslovné řetězce. Přesnost shody je řízena operátory a searchMode.
 
-Příklad 1: **`&search=fire`** vrátí výsledky, 150, pokud obsahují všechny shody fire slovo někde v dokumentu.
+Příklad 1: **`&search=fire`** vrátí 150 výsledků, kde všechny shody obsahují slovo, které se spustí někde v dokumentu.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
 ```
 
-Příklad 2: **`&search=fire department`** vrátí 2002 výsledky. Shody jsou vráceny pro dokumenty, které obsahují fire nebo oddělení.
+Příklad 2: **`&search=fire department`** vrátí 2002 výsledků. Shody se vrátí pro dokumenty, které obsahují buď oheň, nebo oddělení.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
-Příklad 3: **`&search="fire department"`** vrátí 82 výsledky. Vnější řetězec v uvozovkách je verbatim hledání na oba výrazy a shoda nenajde na tokenizovaná podmínky v indexu skládající se z kombinované podmínky. To vysvětluje, proč vyhledávání jako **`search=+fire +department`** není ekvivalentní. Oba výrazy jsou povinné, ale vyhledávají, nezávisle na sobě. 
+Příklad 3: **`&search="fire department"`** vrátí 82 výsledků. Uzavření řetězce v uvozovkách je doslovné hledání obou podmínek a shody se v indexu skládají z kombinovaných podmínek. To vysvětluje, proč není podobné **`search=+fire +department`** hledání ekvivalentní. Oba podmínky jsou požadovány, ale jsou prohledávány nezávisle. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
 ```
 
-## <a name="example-7-booleans-with-searchmode"></a>Příklad 7: Logických hodnot s searchMode
+## <a name="example-7-booleans-with-searchmode"></a>Příklad 7: Logické hodnoty pomocí searchMode
 
-Jednoduchá syntaxe podporuje logické operátory ve formě znaků (`+, -, |`). Parametr searchMode informuje kompromisy mezi přesnosti a Vzpomínáte, s `searchMode=any` elegantní spojené s vracením (odpovídající se žádná kritéria kvalifikuje dokument pro sada výsledků), a `searchMode=all` elegantní přesnosti (všechna kritéria musí odpovídat). Výchozí hodnota je `searchMode=any`, což být matoucí, pokud jsou překrývání dotaz s více operátorů a získání širší místo zúžit výsledky. To platí zejména s NOT, pokud výsledky obsahují všechny dokumenty "neobsahující" konkrétní období.
+Jednoduchá syntaxe podporuje logické operátory ve formě znaků (`+, -, |`). Parametr searchMode informuje o kompromisech mezi přesností a odvoláním a `searchMode=any` s upřednostněním odvolání (párování u všech kritérií má za následek, že dokument pro sadu výsledků `searchMode=all` ) a upřednostňuje přesnost (všechna kritéria musí být shodná). Výchozí hodnota je `searchMode=any`, což může být matoucí v případě, že vytváříte dotaz s více operátory a místo užších výsledků získáváte širší výsledky. To platí zejména u možnosti Ne, kde výsledky zahrnují všechny dokumenty "neobsahující" konkrétní výraz.
 
-Pomocí searchMode výchozí (všechny), se vrátí 2800 dokumenty: těch, které obsahují více částí termín "fire oddělení" a navíc všechny dokumenty, které nemají termín "Metrotech Center".
+Při použití výchozího searchMode (any) se vrátí 2800 dokumentů: těch, které obsahují "Požární oddělení", a navíc všechny dokumenty, které nemají výraz "MetroTech Center".
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  ![Hledat všechny režimu](media/search-query-simple-examples/searchmodeany.png)
+  ![libovolný režim hledání](media/search-query-simple-examples/searchmodeany.png)
 
-Změna searchMode k `all` vynucuje kumulativní efekt na kritériích a vrátí menší sadu výsledků – 21 dokumentů - skládající se z dokumenty, které obsahují celou frázi "fire oddělení" minus tyto úlohy na adrese Metrotech Center.
+Změna searchMode k `all` vykonání kumulativního efektu pro kritéria a vrátí menší sadu výsledků dotazu-21 dokumentů, které obsahují dokumenty obsahující celou frázi "Požární oddělení", a tyto úlohy se na adrese MetroTech centra minus.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  ![režim hledání všech](media/search-query-simple-examples/searchmodeall.png)
+  ![vše v režimu hledání](media/search-query-simple-examples/searchmodeall.png)
 
-## <a name="example-8-structuring-results"></a>Příklad 8: Strukturování výsledky
+## <a name="example-8-structuring-results"></a>Příklad 8: Strukturování výsledků
 
-Několik parametrů řídit, která pole jsou v hledání výsledků, počet dokumentů v každé dávky a pořadí řazení. V tomto příkladu resurfaces některé z předchozích příkladů omezení výsledků na konkrétní pole pomocí **$select** příkazu a kritéria hledání verbatim vrácení 82 shody 
+Několik parametrů řídí, která pole jsou ve výsledcích hledání, počet dokumentů vrácených v každé dávce a pořadí řazení. Tento příklad překryje několik předchozích příkladů a omezí výsledky na konkrétní pole pomocí příkazu **$Select** a doslovného kritéria, vrátí 82 shod. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
-Připojí na předchozí příklad, můžete seřadit podle názvu. Tento typ funguje, protože je civil_service_title *seřaditelné* v indexu.
+Připojeno k předchozímu příkladu, můžete řadit podle názvu. Toto řazení funguje, protože civil_service_title je v indexu.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
 ```
 
-Výsledky stránkování je implementováno pomocí **$top** parametrů v tomto případě vrátí prvních 5 dokumenty:
+Výsledky stránkování se implementují pomocí parametru **$Top** , v tomto případě vrátí prvních 5 dokumentů:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
 ```
 
-Pokud chcete získat další 5, přeskočte první dávky:
+Pokud chcete získat další 5, přeskočte první dávku:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
-## <a name="next-steps"></a>Další kroky
-Zkuste zadat dotazy ve vašem kódu. Následující odkazy popisují, jak nastavit vyhledávacích dotazů pro .NET a rozhraní REST API pomocí jednoduché syntaxe výchozí.
+## <a name="next-steps"></a>Další postup
+Zkuste zadat dotazy ve svém kódu. Následující odkazy vysvětlují, jak nastavit vyhledávací dotazy pro rozhraní .NET i REST API s použitím výchozí jednoduché syntaxe.
 
-* [Dotazování indexu Azure Search pomocí .NET SDK](search-query-dotnet.md)
-* [Dotazování indexu Azure Search pomocí rozhraní REST API](search-create-index-rest-api.md)
+* [Dotazování indexu Azure Search pomocí sady .NET SDK](search-query-dotnet.md)
+* [Dotazování indexu Azure Search pomocí REST API](search-create-index-rest-api.md)
 
-Odkaz na další syntaxi dotazu architektury a příklady najdete v následujících odkazů:
+Další informace o syntaxi, architektuře dotazů a příkladech najdete na následujících odkazech:
 
-+ [Příklady dotazů syntaxe Lucene pro vytváření upřesňující dotazy](search-query-lucene-examples.md)
-+ [Jak funguje fulltextové vyhledávání ve službě Azure Search](search-lucene-query-architecture.md)
++ [Příklady dotazů syntaxe Lucene pro vytváření pokročilých dotazů](search-query-lucene-examples.md)
++ [Jak funguje úplné hledání textu v Azure Search](search-lucene-query-architecture.md)
 + [Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Úplné dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Filtrovat a řadit podle syntaxe](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [Úplný dotaz Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Syntaxe Filter a OrderBy](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)

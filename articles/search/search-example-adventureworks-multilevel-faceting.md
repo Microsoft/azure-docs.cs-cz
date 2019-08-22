@@ -1,29 +1,29 @@
 ---
-title: 'Příklad: Víceúrovňové omezující vlastnosti – Azure Search'
-description: Zjistěte, jak vytvořit strukturu, "faceting" pro více úrovní taxonomií vytváření vnořených navigační strukturu, kterou můžete na stránkách aplikace.
+title: 'Příklad: Omezující vlastnosti na více úrovních – Azure Search'
+description: Naučte se vytvářet strukturální struktury pro taxonomie na více úrovních a vytváření vnořené navigační struktury, kterou můžete zahrnout na stránky aplikace.
 author: cstone
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: chstone
-ms.openlocfilehash: e17a91a35b69102e4e0ac6025559bbc32e71d8fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a6fda0157f0f3a4ca5861acd4bcbead7839e451
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024130"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649935"
 ---
 # <a name="example-multi-level-facets-in-azure-search"></a>Příklad: Víceúrovňové omezující vlastnosti v Azure Search
 
-Azure Search schémata nepodporují explicitně víceúrovňových taxonomie kategorií, ale můžete ji odhadnout je pomocí manipulace s obsahem před indexování a potom se použijí nějakou zvláštní zacházení s výsledky. 
+Schémata Azure Search nepodporují explicitně víceúrovňové kategorie, ale můžete je roztřídit tak, že před indexováním provedete jejich navýšení a potom použijete pro ně speciální zpracování. 
 
 ## <a name="start-with-the-data"></a>Začněte s daty
 
-Příklad v tomto článku je založen na předchozím příkladu [Model databáze AdventureWorks inventáře](search-example-adventureworks-modeling.md), na které si předvedeme omezující vlastnosti na více úrovních ve službě Azure Search.
+Příklad v tomto článku sestaví předchozí příklad, [modeluje databázi inventáře AdventureWorks](search-example-adventureworks-modeling.md)a předvádí charakteristiky na více úrovních v Azure Search.
 
-AdventureWorks má jednoduché taxonomie dvouúrovňová pomocí vztahu nadřazenosti a podřízenosti. Pro pevnou délkou taxonomie hlubin této struktury jednoduchý dotaz připojení k SQL slouží k seskupení taxonomie:
+V AdventureWorks je jednoduchá meziúroveň taxonomie s relací typu nadřazený-podřízený. Pro hloubky taxonomie s pevnou délkou této struktury se dá použít jednoduchý dotaz SQL JOIN k seskupení taxonomie:
 
 ```T-SQL
 SELECT 
@@ -35,27 +35,27 @@ LEFT JOIN
   ON category.ParentProductCategoryId=parent.ProductCategoryId
 ```
 
-  ![Výsledky dotazu](./media/search-example-adventureworks/prod-query-results.png "výsledků dotazu")
+  ![Výsledky dotazu](./media/search-example-adventureworks/prod-query-results.png "Výsledky dotazu")
 
-## <a name="indexing-to-a-collection-field"></a>Indexování do kolekce pole
+## <a name="indexing-to-a-collection-field"></a>Indexování do pole kolekce
 
-V indexu obsahující tuto strukturu, vytvářet **Collection(Edm.String)** pole ve schématu Azure Search pro ukládání těchto dat, a ujistěte se, že atributy pole zahrnout facetable prohledávatelné, filtrovatelné a získat.
+V indexu, který obsahuje tuto strukturu, vytvořte pole **Collection (EDM. String)** ve schématu Azure Search pro uložení těchto dat. Zajistěte, aby atributy pole zahrnovaly prohledávatelný, filtrovatelné, plošky a získatelné.
 
-Nyní názvy při indexování obsahu, který odkazuje na konkrétní taxonomie kategorií, odešlete taxonomie jako pole obsahujícího text z každou úroveň taxonomie. Například pro entitu s `ProductCategoryId = 5 (Mountain Bikes)`, odešlete pole jako `[ "Bikes", "Bikes|Mountain Bikes"]`
+Nyní při indexování obsahu, který odkazuje na konkrétní kategorii taxonomie, odešlete taxonomii jako pole obsahující text z každé úrovně taxonomie. Například pro entitu s `ProductCategoryId = 5 (Mountain Bikes)`můžete pole Odeslat jako`[ "Bikes", "Bikes|Mountain Bikes"]`
 
-Všimněte si, že zařazení nadřazené kategorie "Kol" v hodnotě podřízené kategorie "Horská kola". Každá podkategorie vložit jeho celou cestu relativní vzhledem k kořenový element. Znak oddělovače kanálu je volitelný, ale musí být konzistentní vzhledem k aplikacím a by se neměl zobrazit ve zdrojovém textu. Znak oddělovače se použije v kódu aplikace k rekonstrukci stromu taxonomie ve výsledcích omezující vlastnost.
+Všimněte si zahrnutí nadřazené kategorie "Bikes" v podřízené kategorii hodnota "horská kola". Každá podkategorie by měla vložit celou cestu relativní k kořenovému elementu. Oddělovač znaků kanálu je libovolný, ale musí být konzistentní a neměl by se zobrazovat ve zdrojovém textu. Znak oddělovače bude použit v kódu aplikace k rekonstrukci stromu taxonomie z výsledků omezujících vlastností.
 
-## <a name="construct-the-query"></a>Vytvořit dotaz
+## <a name="construct-the-query"></a>Sestavit dotaz
 
-Při vydání dotazů, patří následující omezující vlastnost specifikaci (kde taxonomie zahrnuje epics vlastního pole taxonomie kategorizovatelné): `facet = taxonomy,count:50,sort:value`
+Při vydávání dotazů zahrňte následující specifikaci omezující vlastnosti (kde taxonomie je vaše pole taxonomie obličeje):`facet = taxonomy,count:50,sort:value`
 
-Hodnotu count musí být dostatečně vysoká, aby vrácení všech hodnot možné taxonomie. Dat AdventureWorks obsahuje 41 taxonomie odlišné hodnoty, takže `count:50` je dostačující.
+Hodnota Count musí být dostatečně vysoká, aby vracela všechny možné hodnoty taxonomie. Data AdventureWorks obsahují 41 různých hodnot taxonomie, takže `count:50` je to dostačující.
 
-  ![Fasetová filtr](./media/search-example-adventureworks/facet-filter.png "Fasetová filtru")
+  ![Filtr s omezujícími vlastnostmi](./media/search-example-adventureworks/facet-filter.png "Filtr s omezujícími vlastnostmi")
 
-## <a name="build-the-structure-in-client-code"></a>Struktura v klientském kódu sestavení
+## <a name="build-the-structure-in-client-code"></a>Sestavení struktury v kódu klienta
 
-V kódu aplikace klienta rekonstrukci stromu taxonomie rozdělením každá hodnota omezující vlastnosti na znakem svislé čáry.
+V kódu klientské aplikace znovu sestavte strom taxonomie rozdělením každé hodnoty omezující vlastnosti na znak kanálu.
 
 ```javascript
 var sum = 0
@@ -82,21 +82,21 @@ results['@search.facets'][field].forEach(function(d) {
 categories.count = sum;
 ```
 
-**Kategorie** objektu teď můžete použít k vykreslení sbalitelné taxonomie stromu s přesný počet:
+Objekt **Categories** se teď dá použít k vykreslení sbalitelného stromu taxonomie se správnými počty:
 
-  ![Víceúrovňové fasetová filtr](./media/search-example-adventureworks/multi-level-facet.png "víceúrovňové fasetová filtru")
+  ![víceúrovňový filtr s omezujícími vlastnostmi](./media/search-example-adventureworks/multi-level-facet.png "víceúrovňový filtr s omezujícími vlastnostmi")
 
  
-Každé propojení ve stromu měli použít související filtru. Příklad:
+U každého odkazu ve stromu by se měl použít příslušný filtr. Příklad:
 
-+ **taxonomie/any** `(x:x eq 'Accessories')` vrátí všechny dokumenty ve větvi příslušenství
-+ **taxonomie/any** `(x:x eq 'Accessories|Bike Racks')` vrátí jenom dokumenty s podkategorie nosiče větvi příslušenství.
++ **taxonomie/any** `(x:x eq 'Accessories')` vrátí všechny dokumenty ve větvi příslušenství.
++ **taxonomie/any** `(x:x eq 'Accessories|Bike Racks')` vrátí pouze dokumenty s podkategorií stojanů kol v rámci větve příslušenství.
 
-Tato technika se škálovat pro složitější scénáře, jako jsou podrobnější taxonomie stromy a duplicitní podkategorie, ke kterým dochází v rámci jiné nadřazené kategorie (například `Bike Components|Forks` a `Camping Equipment|Forks`).
+Tato technika se škáluje tak, aby pokrývala složitější scénáře, jako jsou hlubší stromy taxonomie a zdvojené podkategorie, ke kterým `Bike Components|Forks` dochází `Camping Equipment|Forks`v různých nadřazených kategoriích (například a).
 
 > [!TIP]
-> Rychlost dotazu je ovlivněna počet omezujících vlastností vrácena. Chcete-li podporovat taxonomie velmi velké sady, zvažte přidání facetable **Edm.String** pole pro uchování hodnoty nejvyšší úrovně taxonomii pro každý dokument. Potom použijte stejný postup výše, ale pouze provedení dotazu omezující kolekce – vlastnost (filtruje taxonomie kořenové pole) Pokud je uživatel rozbalí uzel nejvyšší úrovně. Nebo, pokud 100 % odvolání se nevyžaduje, jednoduše snížení počtu omezující vlastnosti na přiměřenou hodnotu a ujistěte se, že omezující vlastnost položky jsou seřazeny podle počtu.
+> Rychlost dotazu je ovlivněna počtem vrácených omezujících vlastností. Pro podporu velmi rozsáhlých sad taxonomie zvažte přidání pole **EDM. String** pro plošky, které bude uchovávat hodnotu taxonomie nejvyšší úrovně pro každý dokument. Pak použijte stejný postup, ale v případě, že uživatel rozbalí uzel nejvyšší úrovně, proveďte pouze dotaz Collection-Faced (filtrováno v kořenovém poli taxonomie). Nebo pokud není vyžadováno odvolání 100%, stačí snížit počet omezujících podmínek na rozumné číslo a zajistit, aby byly položky omezující vlastnosti seřazené podle počtu.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-[Příklad: Model databáze AdventureWorks inventáře pro službu Azure Search](search-example-adventureworks-modeling.md)
+[Příklad: Modelování databáze inventáře AdventureWorks pro Azure Search](search-example-adventureworks-modeling.md)

@@ -1,13 +1,13 @@
 ---
-title: OData – reference geoprostorové funkce – Azure Search
-description: OData geoprostorové funkce, geo.distance a geo.intersects v dotazech Azure Search.
+title: Referenční informace o funkcích geografické územní funkce OData – Azure Search
+description: Funkce v geografickém prostoru OData, geografická vzdálenost a geografická. průniky v Azure Searchch dotazech.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,22 +19,22 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0ce63ab1143c784eb3e10f47c20ef2b5034d63a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9585a9a7ea976ed32ccb8eed1e69877339196f87
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079792"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647568"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Geoprostorové funkce OData ve službě Azure Search - `geo.distance` a `geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Geografické prostorové funkce OData v Azure Search- `geo.distance` a`geo.intersects`
 
-Služba Azure Search podporuje geoprostorové dotazy v [výrazů filtru OData](query-odata-filter-orderby-syntax.md) prostřednictvím `geo.distance` a `geo.intersects` funkce. `geo.distance` Funkce vrací vzdálenost v kilometrech mezi dvěma body, jeden je pole nebo proměnné rozsahu a z nich bude konstantu předanou v rámci filtru. `geo.intersects` Vrací funkce `true` Pokud časovém okamžiku v daném mnohoúhelníku, kde je bod je proměnná pole nebo rozsahu a mnohoúhelník je zadána jako konstanta předanou v rámci filtru.
+Azure Search podporuje geografické prostorové dotazy ve [výrazech filtru OData](query-odata-filter-orderby-syntax.md) prostřednictvím `geo.distance` funkcí `geo.intersects` a. `geo.distance` Funkce vrátí vzdálenost v kilometrech mezi dvěma body, jedno je pole nebo proměnná rozsahu a jedna se jako součást filtru předává jako součást. `geo.intersects` Funkce vrátí`true` , zda je daný bod v rámci daného mnohoúhelníku, kde je bod pole nebo proměnná rozsahu a mnohoúhelník je zadán jako součást filtru jako konstanta.
 
-`geo.distance` Funkci můžete použít také v [ **$orderby** parametr](search-query-odata-orderby.md) seřadit výsledky hledání podle vzdálenost od daného bodu. Syntaxe pro `geo.distance` v **$orderby** je stejný jako v **$filter**. Při použití `geo.distance` v **$orderby**, ke kterému se vztahuje pole musí být typu `Edm.GeographyPoint` a musí být také **seřaditelné**.
+Funkci lze také použít v [parametru **$OrderBy** ](search-query-odata-orderby.md) k řazení výsledků hledání podle vzdálenosti od daného bodu. `geo.distance` Syntaxe pro `geo.distance` v **$OrderBy** je stejná jako v **$Filter**. Při použití `geo.distance` v **$OrderBy**musí pole, na které se vztahuje, být typu `Edm.GeographyPoint` a musí být také možné jej **Seřadit**.
 
 ## <a name="syntax"></a>Syntaxe
 
-Následující EBNF ([Extended Backus-Naur – formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `geo.distance` a `geo.intersects` funkce, jakož i geoprostorové hodnoty, na kterých pracují:
+Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `geo.distance` funkcí a `geo.intersects` i geografické hodnoty, na kterých pracují:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -58,69 +58,69 @@ geo_polygon ::=
 lon_lat_list ::= lon_lat(',' lon_lat)*
 ```
 
-Diagramu interaktivní syntaxe je také k dispozici:
+K dispozici je také diagram interaktivní syntaxe:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro službu Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
+> [Diagram syntaxe OData pro Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
 
 > [!NOTE]
-> Zobrazit [referenční příručka syntaxe výrazů OData pro službu Azure Search](search-query-odata-syntax-reference.md) pro dokončení EBNF.
+> Kompletní EBNF najdete v referenčních informacích k [syntaxi výrazu OData pro Azure Search](search-query-odata-syntax-reference.md) .
 
-### <a name="geodistance"></a>geo.distance
+### <a name="geodistance"></a>Geografická vzdálenost
 
-`geo.distance` Funkce přebírá dva parametry typu `Edm.GeographyPoint` a vrátí `Edm.Double` hodnotu, která je vzdálenost v kilometrech. Tím se liší od jiných služeb, které podporují geoprostorového operace OData, které obvykle vrací vzdálenost v metrech.
+Funkce přebírá dva parametry typu `Edm.GeographyPoint` a vrací `Edm.Double` hodnotu, která představuje vzdálenost mezi nimi v kilometrech. `geo.distance` To se liší od jiných služeb podporujících geografické prostorové operace OData, které obvykle vracejí vzdálenosti v metrech.
 
-Jeden z parametrů k `geo.distance` musí být konstanta bodu zeměpisné oblasti a další musí být pole Cesta (nebo proměnnou rozsahu v případě filtr iterování přes pole typu `Collection(Edm.GeographyPoint)`). Pořadí těchto parametrů nezáleží.
+Jeden z parametrů pro `geo.distance` musí být konstanta geografického bodu a druhý musí být cesta pole (nebo proměnná rozsahu v případě, že je v případě filtru iterace na pole typu `Collection(Edm.GeographyPoint)`). Pořadí těchto parametrů nezáleží.
 
-Konstanta bodu zeměpisné oblasti je ve formátu `geography'POINT(<longitude> <latitude>)'`, kde zeměpisná délka a šířka jsou číselné konstanty.
+Konstanta geografického bodu je ve tvaru `geography'POINT(<longitude> <latitude>)'`, kde Zeměpisná délka a zeměpis je číselné konstanty.
 
 > [!NOTE]
-> Při použití `geo.distance` ve filtru musí porovnat vzdálenost vrácené funkcí s použitím konstantní `lt`, `le`, `gt`, nebo `ge`. Operátory `eq` a `ne` nejsou podporovány při porovnávání vzdálenosti. To je třeba správné použití `geo.distance`: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.
+> Při použití `geo.distance` ve filtru je nutné porovnat vzdálenost vrácenou funkcí s konstantou pomocí `lt`, `le`, `gt`nebo `ge`. Operátory `eq` a`ne` nejsou podporovány při porovnávání vzdálenosti. Jedná se například o správné použití `geo.distance`:. `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`
 
 ### <a name="geointersects"></a>geo.intersects
 
-`geo.intersects` Funkce přebírá proměnnou typu `Edm.GeographyPoint` a konstantu `Edm.GeographyPolygon` a vrátí `Edm.Boolean`  --  `true` v mezích mnohoúhelníku, pokud je bod `false` jinak.
+`Edm.Boolean` `Edm.GeographyPolygon`  --  `false` Funkce přebírá proměnnou typu `Edm.GeographyPoint` a konstanta a vrátí `true` , pokud je bod uvnitř hranice mnohoúhelníku, jinak. `geo.intersects`
 
-Mnohoúhelník je dvojrozměrné povrch ukládá jako posloupnost body definující ohraničující prstenec (najdete v článku [příklady](#examples) níže). Mnohoúhelník musí zavřou, což znamená, první a poslední bod sad musí být stejné. [Bodů mnohoúhelníku musí být v pořadí proti směru hodinových ručiček](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Mnohoúhelník je dvourozměrná plocha uložená jako sekvence bodů definujících ohraničující prstenec (viz [Příklady](#examples) níže). Mnohoúhelník musí být uzavřen, což znamená, že první a poslední bod musí být stejné. [Body v mnohoúhelníku musí být v pořadí zprava doleva](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Geoprostorové dotazy a pokrývání uzlů 180th poledníků mnohoúhelníky
+### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Geografické prostorové dotazy a mnohoúhelníky, které pokrývá 180th poledníku
 
-Pro mnoho geoprostorového dotaz knihovny formulování dotazu, který zahrnuje 180th poledníků (téměř datová hranice) je buď off-limits nebo vyžaduje alternativní řešení, jako je například rozdělení na dva na obou stranách poledníky mnohoúhelníku.
+V mnoha geograficky integrovaných knihovnách dotazů je vyjednaný dotaz, který obsahuje 180th poledníku (poblíž datová hranice (), je buď vypnutý, nebo vyžaduje alternativní řešení, například rozdělení mnohoúhelníku na dvě, jednu na obě strany poledníku.
 
-Ve službě Azure Search, geoprostorové dotazy, které obsahují zeměpisnou délku 180 stupňů bude fungovat podle očekávání, pokud je obdélníkový tvar dotazu a vaše souřadnice zarovnají k rozložení mřížky podél zeměpisnou šířku a délku (například `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`). V opačném případě pro neobdélníkových nebo nezarovnaných tvary, zvažte rozdělení mnohoúhelníku přístup.  
+V Azure Search geografické prostorové dotazy, které zahrnují 180, budou fungovat podle očekávání, pokud je obrazec dotazu obdélníkový a vaše souřadnice se zarovnají k rozložení mřížky podél zeměpisné délky a zeměpisné šířky (například `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`). V opačném případě u nepravoúhlých nebo nezarovnanéch tvarů zvažte přístup k rozdělenému mnohoúhelníku.  
 
-### <a name="geo-spatial-functions-and-null"></a>Geoprostorové funkce a `null`
+### <a name="geo-spatial-functions-and-null"></a>Geografické funkce a`null`
 
-Všechna ostatní pole bez kolekce ve službě Azure Search, pole typu, jako jsou `Edm.GeographyPoint` může obsahovat `null` hodnoty. Když Azure Search zpracuje `geo.intersects` pro pole, která je `null`, výsledek bude vždy `false`. Chování `geo.distance` v tomto případě závisí na kontextu:
+Stejně jako všechna ostatní pole bez kolekce v Azure Search mohou pole typu `Edm.GeographyPoint` obsahovat `null` hodnoty. Když Azure Search vyhodnotí `geo.intersects` pro pole, které `null`je, bude výsledek vždycky `false`. Chování `geo.distance` v tomto případě závisí na kontextu:
 
-- Filtry `geo.distance` z `null` výsledky v pole `null`. To znamená, že dokument nebude odpovídat, protože `null` ve srovnání s všechny nenulovou hodnotu, vyhodnotí `false`.
-- Při řazení výsledků za použití **$orderby**, `geo.distance` z `null` výsledky v maximální možné vzdálenost pole. Dokumenty se toto pole bude zatříděna nižší, než všechny ostatní při řazení `asc` je používat (výchozí) a větší než ostatní, pokud je směr `desc`.
+- Ve filtrech `geo.distance` pole má `null` za následek `null`. To znamená, že se dokument neshoduje, protože `null` je v porovnání s jakoukoliv hodnotou, která `false`není null, vyhodnocena jako.
+- Při řazení výsledků pomocí **$OrderBy** `geo.distance` `null` pole má za následek maximální možnou vzdálenost. Dokumenty s takovým polem budou seřazeny menší než všechny ostatní, pokud je `asc` použit směr řazení (výchozí nastavení) a větší než všechny ostatní, pokud je `desc`směr.
 
 ## <a name="examples"></a>Příklady
 
-### <a name="filter-examples"></a>Příklady filtrů
+### <a name="filter-examples"></a>Příklady filtru
 
-Najít všechny hotely v rámci 10 kilometrů bodu daného odkazu (kde je pole s typem umístění `Edm.GeographyPoint`):
+Najde všechny hotely v průběhu 10 km od daného referenčního bodu (kde umístění je pole typu `Edm.GeographyPoint`):
 
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
 
-Najít všechny hotely v rámci daného zobrazení popsány mnohoúhelníku (kde je pole s typem umístění `Edm.GeographyPoint`). Všimněte si, že je uzavřena mnohoúhelníku (první a poslední bod sad musí být stejná) a [body musí být uvedeny v pořadí proti směru hodinových ručiček](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Najde všechny hotely v daném zobrazení, které jsou popsány jako mnohoúhelník (umístění je pole typu `Edm.GeographyPoint`). Všimněte si, že mnohoúhelník je uzavřený (nastavení prvního a posledního bodu musí být stejné) a [body musí být uvedené v pořadí zprava doleva](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
-### <a name="order-by-examples"></a>Příklady klauzule ORDER by
+### <a name="order-by-examples"></a>Příklady pořadí
 
-Seřadit sestupně podle hotels `rating`, pak vzestupně podle vzdálenosti od dané souřadnice:
+Seřadit hotely sestupně `rating`podle vzdálenosti od daných souřadnic a vzestupně od nich:
 
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-Seřadit v sestupném pořadí podle hotels `search.score` a `rating`a pak ve vzestupném pořadí podle vzdálenosti od dané souřadnice tak, aby mezi dva hotels s identické hodnocení na ten nejbližší je uvedená jako první:
+Seřadit hotely v sestupném `search.score` pořadí `rating`podle a a potom ve vzestupném pořadí podle vzdálenosti od daných souřadnic, takže mezi dvěma hotely a identickým hodnocením je nejbližší, který je uveden jako první:
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
-- [Filtry ve službě Azure Search](search-filters.md)
-- [Přehled o výraz jazyka OData pro službu Azure Search](query-odata-filter-orderby-syntax.md)
-- [Reference k syntaxi výrazů OData pro službu Azure Search](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;rozhraní REST API služby Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filtry v Azure Search](search-filters.md)
+- [Přehled jazyka výrazů OData pro Azure Search](query-odata-filter-orderby-syntax.md)
+- [Referenční dokumentace syntaxe výrazu OData pro Azure Search](search-query-odata-syntax-reference.md)
+- [Hledat dokumenty &#40;Azure Search REST API služby&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

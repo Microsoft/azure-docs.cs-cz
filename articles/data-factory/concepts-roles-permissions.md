@@ -1,6 +1,6 @@
 ---
-title: Role a oprávnění pro službu Azure Data Factory | Dokumentace Microsoftu
-description: Popisuje role a oprávnění potřebná k vytvoření datové továrny a pro práci s podřízené prostředky.
+title: Role a oprávnění pro Azure Data Factory | Microsoft Docs
+description: Popisuje role a oprávnění potřebná k vytváření datových továren a práci s podřízenými prostředky.
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 author: gauravmalhot
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: 19666eb668dd120c1705c6a62a8ba1abd2321026
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 765464f8593e217fba0b564a1fabad7777e94a36
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61261805"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873597"
 ---
-# <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro službu Azure Data Factory
+# <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro Azure Data Factory
 
-Tento článek popisuje role potřebné k vytváření a správě prostředků Azure Data Factory a oprávnění udělená tyto role.
+Tento článek popisuje role potřebné k vytváření a správě Azure Data Factorych prostředků a oprávnění udělených těmito rolemi.
 
 ## <a name="roles-and-requirements"></a>Role a požadavky
 
@@ -34,58 +34,62 @@ Ukázku pokynů pro přidání uživatele do role najdete v článku věnovaném
 
 ## <a name="set-up-permissions"></a>Nastavení oprávnění
 
-Po vytvoření datové továrny můžete chtít umožní ostatním uživatelům práci s datovou továrnou. Pokud chcete dát přístup ostatním uživatelům, je nutné je přidat do integrovaného **Přispěvatel Data Factory** role pro skupinu prostředků, která obsahuje datovou továrnou.
+Po vytvoření Data Factory možná budete chtít umožnit ostatním uživatelům pracovat s datovou továrnou. Pokud chcete tento přístup ostatním uživatelům udělit, musíte je přidat do předdefinované role **přispěvatele Data Factory** ve skupině prostředků, která obsahuje datovou továrnu.
 
-### <a name="scope-of-the-data-factory-contributor-role"></a>Obor role Přispěvatel Data Factory
+### <a name="scope-of-the-data-factory-contributor-role"></a>Rozsah role Přispěvatel Data Factory
 
-Členství ve skupině **Přispěvatel Data Factory** rolí umožňuje uživatelům provádět následující akce:
-- Vytvořit, upravit a odstranit objekty pro vytváření dat a podřízené prostředky, včetně datových sad, propojených služeb, kanály, aktivační události a prostředí integration runtime.
-- Nasazení šablon Resource Manageru. Nasazení podle modelu Resource Manager je metoda nasazení použít se službou Data Factory na webu Azure Portal.
-- Správa výstrah App Insights pro službu data factory.
+Členství v roli **přispěvatel Data Factory** umožňuje uživatelům provádět následující akce:
+- Vytvářejte, upravujte a odstraňujte datové továrny a podřízené prostředky, včetně datových sad, propojených služeb, kanálů, triggerů a prostředí Integration runtime.
+- Nasaďte šablony Správce prostředků. Nasazení Správce prostředků je metoda nasazení, kterou používá Data Factory v Azure Portal.
+- Spravujte výstrahy App Insights pro datovou továrnu.
 - Vytvořte lístky podpory.
 
-Další informace o této role, naleznete v tématu [role Přispěvatel Data Factory](../role-based-access-control/built-in-roles.md#data-factory-contributor).
+Další informace o této roli najdete v tématu [Data Factory role přispěvatele](../role-based-access-control/built-in-roles.md#data-factory-contributor).
 
 ### <a name="resource-manager-template-deployment"></a>Nasazení šablony Resource Manageru
 
-**Přispěvatel Data Factory** role na úrovni skupiny prostředků nebo vyšší, umožňuje uživatelům nasadit šablon Resource Manageru. Členové role proto můžete použít šablony Resource Manageru k nasazování datové továrny a jejich podřízené prostředky, včetně datových sad, propojených služeb, kanály, aktivační události a prostředí integration runtime. Členství v této roli uživatele vytvořit další prostředky, ale neumožňuje.
+Role **přispěvatel Data Factory** na úrovni skupiny prostředků nebo výše umožňuje uživatelům nasadit správce prostředků šablony. V důsledku toho mohou členové role použít šablony Správce prostředků k nasazení datových továren a jejich podřízených prostředků, včetně datových sad, propojených služeb, kanálů, triggerů a prostředí Integration runtime. Členství v této roli ale neumožňuje uživateli vytvářet další prostředky.
 
-Oprávnění pro úložiště Azure a Githubu nejsou oprávnění datové továrny. V důsledku toho uživatel s oprávněními úložiště, který je pouze členové role Čtenář můžete upravit podřízené prostředky Data Factory a potvrzení změn úložišti, ale tyto změny nelze publikovat.
+Oprávnění pro Azure Repos a GitHub jsou nezávislá na oprávněních Data Factory. V důsledku toho uživatel s oprávněními úložiště, který je členem role čtenář, může upravovat Data Factory podřízených prostředků a potvrdit změny v úložišti, ale nemůže tyto změny publikovat.
 
 > [!IMPORTANT]
-> Nasazení šablony Resource Manageru s **Přispěvatel Data Factory** role nezvýší vaše oprávnění. Například pokud nasadit šablonu, která vytvoří virtuální počítač Azure, a nemáte oprávnění k vytvoření virtuálních počítačů, nasazení se nezdaří s chybou autorizace.
+> Nasazení šablon Správce prostředků s rolí **přispěvatele Data Factory** nezvyšuje vaše oprávnění. Pokud například nasadíte šablonu, která vytvoří virtuální počítač Azure, a nemáte oprávnění k vytváření virtuálních počítačů, nasazení se nepovede a dojde k chybě autorizace.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Vlastní scénáře a vlastní role
 
-V některých případech budete muset udělit různé úrovně přístupu pro uživatele různé datové továrny. Příklad:
-- Budete potřebovat skupinu, ve kterém uživatelé mají oprávnění na konkrétní datové továrny.
-- Nebo možná bude nutné skupinu, kde uživatelé můžete sledovat pouze služby data factory (nebo objekty pro vytváření) ale nelze změnit.
+Někdy může být nutné udělit různým uživatelům služby Data Factory různé úrovně přístupu. Příklad:
+- Možná budete potřebovat skupinu, kde uživatelé mají oprávnění pouze pro konkrétní objekt pro vytváření dat.
+- Nebo možná budete potřebovat skupinu, kde uživatelé můžou monitorovat jenom objekt pro vytváření dat (nebo továrny), ale nemůžou ho upravovat.
 
-Tyto vlastní scénáře můžete dosáhnout vytvořením vlastních rolí a přiřazování uživatelů k rolím. Další informace o vlastních rolích najdete v tématu [vlastní role v Azure](..//role-based-access-control/custom-roles.md).
+Tyto vlastní scénáře můžete dosáhnout vytvořením vlastních rolí a přiřazením uživatelů k těmto rolím. Další informace o vlastních rolích najdete v tématu [vlastní role v Azure](..//role-based-access-control/custom-roles.md).
 
-Tady je pár příkladů, které ukazují, můžete dosáhnout s vlastními rolemi:
+Tady je několik příkladů, které ukazují, co můžete dosáhnout s vlastními rolemi:
 
-- Umožňují uživateli vytvořit, upravit nebo odstranit všechny služby data factory v skupiny prostředků na webu Azure Portal.
+- Umožní uživateli vytvořit, upravit nebo odstranit jakoukoli datovou továrnu ve skupině prostředků z Azure Portal.
 
-  Přiřadíte integrovanou **Přispěvatel Data Factory** role na úrovni skupiny prostředků pro daného uživatele. Pokud chcete povolit přístup k objektu pro vytváření všech dat v rámci předplatného, přiřazení role na úrovni předplatného.
+  Přiřaďte předdefinované role **přispěvatele Data Factory** na úrovni skupiny prostředků pro uživatele. Pokud chcete přístup k libovolné datové továrně v rámci předplatného zpřístupnit, přiřaďte roli na úrovni předplatného.
 
-- Umožní zobrazení uživatele (čtení) a monitorovat objekt pro vytváření dat, ale nikoli upravovat nebo ho změnit.
+- Umožní uživateli zobrazení (číst) a monitorovat objekt pro vytváření dat, ale nemůže ho upravovat ani měnit.
 
-  Přiřadíte integrovanou **čtečky** role na objekt pro vytváření zdrojů dat pro uživatele.
+  Přiřaďte k prostředku služby Data Factory pro uživatele integrovanou roli **Čtenář** .
 
-- Umožní uživateli upravit jednu datovou továrnu na webu Azure Portal.
+- Umožní uživateli upravovat v Azure Portal jedinou datovou továrnu.
 
   Tento scénář vyžaduje dvě přiřazení rolí.
 
-  1. Přiřadíte integrovanou **Přispěvatel** na objekt pro vytváření dat na úrovni role.
-  2. Vytvořit vlastní roli s oprávněním **Microsoft.Resources/deployments/** . Tuto vlastní roli přiřadíte uživatele na úrovni skupiny prostředků.
+  1. Přiřaďte integrovanou roli **přispěvatele** na úrovni datové továrny.
+  2. Vytvořte vlastní roli s oprávněním **Microsoft. Resources/Deployments/** . Přiřaďte tuto vlastní roli uživateli na úrovni skupiny prostředků.
 
-- Umožní uživateli aktualizovat objekt pro vytváření dat z Powershellu nebo sady SDK, ale není na portálu Azure portal.
+- Dovolit uživateli, aby mohl testovat připojení pouze v propojené službě
 
-  Přiřadíte integrovanou **Přispěvatel** role na objekt pro vytváření zdrojů dat pro uživatele. Tato role umožňuje uživateli zobrazit prostředky na webu Azure Portal, ale uživatel nemůže přejít **publikovat** a **Publikovat vše** tlačítka.
+    Vytvořte vlastní roli role s oprávněními pro následující akce: **Microsoft. DataFactory/Factory/getFeatureValue/Read** a **Microsoft. DataFactory/Factory/getDataPlaneAccess/Read**. Přiřaďte tuto vlastní roli k prostředku datové továrny pro uživatele.
+
+- Umožněte uživateli aktualizovat datovou továrnu z PowerShellu nebo sady SDK, ale ne v Azure Portal.
+
+  Přiřaďte k prostředku datové továrny integrovanou roli přispěvatele pro uživatele. Tato role uživateli umožňuje zobrazit prostředky v Azure Portal, ale uživatel nemá přístup k tlačítkům **publikovat** a **Publikovat všechna** .
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o rolích v Azure – [pochopit definice rolí](../role-based-access-control/role-definitions.md)
+- Další informace o rolích v Azure – [pochopení definic rolí](../role-based-access-control/role-definitions.md)
 
-- Další informace o **Přispěvatel Data Factory** role - [role Přispěvatel Data Factory](../role-based-access-control/built-in-roles.md#data-factory-contributor).
+- Přečtěte si další informace o [roli Přispěvatel](../role-based-access-control/built-in-roles.md#data-factory-contributor)rolí přispěvatel **Data Factory** Data Factory.

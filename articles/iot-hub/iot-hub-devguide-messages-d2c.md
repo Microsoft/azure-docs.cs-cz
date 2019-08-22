@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2d4d39cc7b330794094745851856365ef54b42f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6ee9e334c10bd2d0f291b5fd1bb547ba3ba83ddb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828195"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877191"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů
 
@@ -39,7 +39,7 @@ Pomocí standardní [Event Hubs integrace a sad SDK](iot-hub-devguide-messages-r
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-IoT Hub podporuje zápis dat do Azure Blob Storage ve formátu [Apache Avro](https://avro.apache.org/) a také ve formátu JSON. Možnost kódovat formát JSON je obecně dostupná ve všech oblastech, ve kterých je IoT Hub k dispozici. Výchozí hodnota je AVRO. Formát kódování lze nastavit pouze v případě, že je nakonfigurován koncový bod úložiště objektů BLOB. Formát nelze upravit pro existující koncový bod. Při použití kódování JSON musíte nastavit contentType na JSON a contentEncoding na UTF-8 ve [vlastnostech systému](iot-hub-devguide-routing-query-syntax.md#system-properties)zpráv. Pokud tato akce není nastavena, IoT Hub zapíše zprávy ve formátu kódování Base 64. Formát kódování můžete vybrat pomocí IoT Hub vytvořit nebo aktualizovat REST API, konkrétně [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)nebo [Azure PowerShellu](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Následující diagram ukazuje, jak vybrat formát kódování v Azure Portal.
+IoT Hub podporuje zápis dat do Azure Blob Storage ve formátu [Apache Avro](https://avro.apache.org/) a také ve formátu JSON. Možnost kódovat formát JSON je obecně dostupná ve všech oblastech, ve kterých je IoT Hub k dispozici. Výchozí hodnota je AVRO. Formát kódování lze nastavit pouze v případě, že je nakonfigurován koncový bod úložiště objektů BLOB. Formát nelze upravit pro existující koncový bod. Při použití kódování JSON musíte nastavit contentType na **Application/JSON** a ContentEncoding na **UTF-8** ve [vlastnostech systému](iot-hub-devguide-routing-query-syntax.md#system-properties)zpráv. U obou z těchto hodnot se nerozlišují malá a velká písmena. Pokud není kódování obsahu nastaveno, IoT Hub zapíše zprávy ve formátu kódování Base 64. Formát kódování můžete vybrat pomocí IoT Hub vytvořit nebo aktualizovat REST API, konkrétně [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)nebo [Azure PowerShellu](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Následující diagram ukazuje, jak vybrat formát kódování v Azure Portal.
 
 ![Kódování koncového bodu služby Blob Storage](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -53,7 +53,7 @@ IoT Hub vytvoří dávky zprávy a zapisuje data do objektu blob, kdykoli dávka
 
 Můžete použít libovolnou konvenci pojmenovávání souborů, ale musíte použít všechny uvedené tokeny. Pokud nejsou k dispozici žádná data pro zápis, IoT Hub bude zapisovat do prázdného objektu BLOB.
 
-Při směrování do úložiště objektů BLOB doporučujeme zařadit objekty BLOB a potom je v nich vyřadit, aby se zajistilo, že všechny kontejnery budou čteny bez jakýchkoli předpokladů oddílu. Rozsah oddílu se může během [převzetí služeb při selhání iniciované společností Microsoft](iot-hub-ha-dr.md#microsoft-initiated-failover) nebo [ruční převzetí služeb při](iot-hub-ha-dr.md#manual-failover-preview)selhání IoT Hub změnit. K vytvoření výčtu seznamů objektů blob můžete použít [rozhraní list API objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/list-blobs) . Podívejte se prosím na následující ukázku jako na doprovodné materiály.
+Při směrování do úložiště objektů BLOB doporučujeme zařadit objekty BLOB a potom je v nich vyřadit, aby se zajistilo, že všechny kontejnery budou čteny bez jakýchkoli předpokladů oddílu. Rozsah oddílu se může během [převzetí služeb při selhání iniciované společností Microsoft](iot-hub-ha-dr.md#microsoft-initiated-failover) nebo [ruční převzetí služeb při](iot-hub-ha-dr.md#manual-failover)selhání IoT Hub změnit. K vytvoření výčtu seznamů objektů blob můžete použít [rozhraní list API objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/list-blobs) . Podívejte se prosím na následující ukázku jako na doprovodné materiály.
 
    ```csharp
         public void ListBlobsInContainer(string containerName, string iothub)
@@ -103,7 +103,7 @@ Záložní cestu můžete povolit nebo zakázat v okně Azure Portal-> směrová
 
 ## <a name="non-telemetry-events"></a>Události bez telemetrie
 
-Kromě telemetrie zařízení umožňuje směrování zpráv taky posílat události události změny zařízení a životního cyklu zařízení. Pokud je například vytvořená trasa se zdrojem dat nastaveným na **události změny zařízení s dvojitou změnou**, IoT Hub odesílá zprávy na koncový bod, který obsahuje změnu v zařízení. Podobně platí, že pokud se vytvoří trasa se zdrojem dat nastaveným na **události životního cyklu zařízení**, IoT Hub odešle zprávu s oznámením, jestli se zařízení odstranilo nebo vytvořilo. 
+Kromě telemetrie zařízení umožňuje směrování zpráv také odesílat události s náhodnými změnami zařízení, události životního cyklu zařízení a digitální události změny (ve verzi Public Preview). Pokud je například vytvořená trasa se zdrojem dat nastaveným na **události změny zařízení s dvojitou změnou**, IoT Hub odesílá zprávy na koncový bod, který obsahuje změnu v zařízení. Podobně platí, že pokud se vytvoří trasa se zdrojem dat nastaveným na **události životního cyklu zařízení**, IoT Hub odešle zprávu s oznámením, jestli se zařízení odstranilo nebo vytvořilo. V rámci technologie Plug and Play IoT ve verzi [Public Preview](../iot-pnp/overview-iot-plug-and-play.md)může vývojář vytvořit trasy se zdrojem dat nastaveným na **digitální události změny** , a IoT Hub posílá zprávy vždy, když je nastavená nebo změněná [vlastnost](../iot-pnp/iot-plug-and-play-glossary.md) digitálního vlákna. [digitální dvojitá událost ](../iot-pnp/iot-plug-and-play-glossary.md)se nahradí nebo dojde k události změny pro podkladové vlákna zařízení.
 
 [IoT Hub se taky integruje s Azure Event Grid](iot-hub-event-grid.md) k publikování událostí zařízení, aby podporovaly integrace v reálném čase a automatizaci pracovních postupů založených na těchto událostech. Podívejte se na klíčové [rozdíly mezi směrováním a Event Gridm zpráv a](iot-hub-event-grid-routing-comparison.md) Naučte se, co nejlépe vyhovuje vašemu scénáři.
 

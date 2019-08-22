@@ -8,14 +8,15 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
-ms.openlocfilehash: ed840352096f1a1739bc8f655be42096456d3c33
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: f007cf0d46d6cbee39a950b9784bbc9bde702ff5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405663"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69657749"
 ---
 | Omezení | Popis |
 |:---|:---|
 | Dotazovací jazyk | Azure Monitor používá stejný [dotazovací jazyk Kusto](/azure/kusto/query/) jako Azure Průzkumník dat. Viz [rozdíly v jazyce Azure monitor protokolu dotazu](../articles/azure-monitor/log-query/data-explorer-difference.md) pro prvky jazyka KQL, které nejsou v Azure monitor podporovány. |
 | Oblasti Azure | Dotazy protokolů můžou mít nadměrné nároky na to, kdy data jsou Log Analytics pracovní prostory ve více oblastech Azure. Podrobnosti najdete v tématu [omezení dotazů](../articles/azure-monitor/log-query/scope.md#query-limits) . |
+| Dotazy na různé prostředky | Maximální počet Application Insightsch prostředků a Log Analytics pracovních prostorů v jednom dotazu omezený na 100.<br>Dotaz mezi prostředky není v Návrháři zobrazení podporován.<br>Dotaz na více prostředků v upozorněních protokolu se podporuje v novém rozhraní scheduledQueryRules API.<br>Podrobnosti najdete v tématu [omezení dotazů mezi prostředky](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) . |

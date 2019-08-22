@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 0122b76592ce9e1179a3d65f7db681679bda6f37
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e5b99bba3c3b21ea9662845928c523c329695bf8
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988609"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877240"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Instalace modulu runtime Azure IoT Edge ve Windows
 
@@ -29,11 +29,6 @@ V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge
 > Známý problém s operačním systémem Windows brání přechodu do režimu spánku a hibernace, když IoT Edge moduly (kontejnery Windows nano serveru izolované na procesu). Tento problém má vliv na výdrž baterie zařízení.
 >
 > Jako alternativní řešení pomocí příkazu `Stop-Service iotedge` zastavte všechny běžící IoT Edge moduly předtím, než tyto stavy napájení využijete. 
-
-<!--
-> [!NOTE]
-> Using Linux containers on Windows systems is not a recommended or supported production configuration for Azure IoT Edge. However, it can be used for development and testing purposes.
--->
 
 Použití kontejnerů Linux v systémech Windows není doporučená nebo podporovaná konfigurace produkčního prostředí pro Azure IoT Edge. To však lze použít pro účely vývoje a testování. Další informace najdete v tématu [použití IoT Edge ve Windows ke spouštění kontejnerů Linux](how-to-install-iot-edge-windows-with-linux.md).
 
@@ -57,6 +52,9 @@ Azure IoT Edge spoléhá na modul kontejneru, který je [kompatibilní s OCI](ht
 >Azure IoT Edge softwarové balíčky jsou souladu s licenčními podmínkami umístěný v balíčcích (v adresáři licencí). Přečtěte si licenční podmínky před použitím balíčku. Instalace a použití balíčku se považuje za svůj souhlas s těmito podmínkami. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíček.
 
 PowerShellový skript stáhne a nainstaluje démona zabezpečení Azure IoT Edge. Démon zabezpečení potom spustí první ze dvou běhových modulů a Agent IoT Edge, který umožňuje vzdálené nasazení jiných modulů. 
+
+>[!TIP]
+>Pro zařízení IoT Core doporučujeme spouštět instalační příkazy pomocí relace RemotePowerShell. Další informace najdete v tématu [použití PowerShellu pro Windows IoT](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell).
 
 Když na zařízení poprvé nainstalujete IoT Edge runtime, bude potřeba zřídit zařízení s identitou ze služby IoT Hub. Jedno zařízení IoT Edge lze zřídit ručně pomocí připojovacího řetězce zařízení, který poskytuje IoT Hub. Nebo můžete použít službu Device Provisioning (DPS) k automatickému zřízení zařízení, což je užitečné v případě, že máte spoustu zařízení nastavených. Podle svého výběru: zřizování zvolte příslušný instalační skript. 
 

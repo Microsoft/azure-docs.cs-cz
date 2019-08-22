@@ -1,75 +1,75 @@
 ---
-title: Filtry pro vymezení výsledky hledání v rejstříku – Azure Search
-description: Filtrovat podle identity zabezpečení uživatele, jazyka, geografického umístění nebo číselné hodnoty ke snížení výsledky hledání na dotazy ve službě Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure.
+title: Filtry pro určení oboru výsledků hledání v indexu – Azure Search
+description: Vyfiltrujte podle identity zabezpečení uživatele, jazyka, geografického umístění nebo číselných hodnot, abyste omezili výsledky hledání dotazů v Azure Search, což je hostovaná cloudová vyhledávací služba na Microsoft Azure.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4b5d198506473c598f058c881f781a06e191df88
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 49af6f1f535df098aa45cccd7e2d629ff6ccef50
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653445"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649845"
 ---
 # <a name="filters-in-azure-search"></a>Filtry ve službě Azure Search 
 
-A *filtr* obsahuje kritéria pro výběr dokumenty používané v dotazu Azure Search. Nefiltrované hledání zahrnuje všechny dokumenty v indexu. Filtr oborů Vyhledávací dotaz na podmnožinu dokumentů. Například filtr může omezit fulltextové vyhledávání pouze tyto produkty s konkrétní značku nebo barvu na cenových bodech nad určitou mezí.
+*Filtr* poskytuje kritéria pro výběr dokumentů používaných v Azure Searchm dotazu. Nefiltrované hledání zahrnuje všechny dokumenty v indexu. Filtr je oborem dotazu hledání na podmnožinu dokumentů. Filtr může například omezit fulltextové vyhledávání jenom na ty produkty, které mají konkrétní značku nebo barvu, za ceny nad určitou prahovou hodnotou.
 
-Některé možnosti vyhledávání uložit filtr požadavky jako součást provádění, ale můžete použít filtry, kdykoli budete chtít omezit vyhledávání pomocí *založené na hodnotách* kritéria (oboru hledání na typ produktu "knihy" kategorie" bez fiction"publikováno"Simon & Schuster").
+Některé možnosti vyhledávání ukládají požadavky na filtrování v rámci implementace, ale filtry můžete použít kdykoli, když chcete omezit hledání pomocí kritérií založených na *hodnotách* (vyhledávání oborů na typ produktu knihy) pro kategorii nefiktivní vydavatelé. Simon & Schuster ").
 
-Pokud místo toho se cílené hledání na konkrétní data *struktury* (oboru hledání pole zapracováním připomínek zákazníků), existuje alternativní metody, je popsáno níže.
+Pokud místo toho cílíte na cílení na konkrétní datové *struktury* (vyhledávání oborů na pole Customers-recenze), existují alternativní metody popsané níže.
 
 ## <a name="when-to-use-a-filter"></a>Kdy použít filtr
 
-Filtry jsou základní několik možnosti vyhledávání, včetně "najít poblíž", Fasetové navigace a zabezpečení filtry, které zobrazují pouze dokumenty, které uživatele je povoleno. Pokud se rozhodnete implementovat některou z těchto možností, filtr je povinný. Je filtr připojit k vyhledávací dotaz, který poskytuje informace o zeměpisné poloze souřadnice kategorie omezující vlastnost vybrané uživatele nebo ID zabezpečení žadatel.
+Filtry jsou základem pro několik vyhledávacích funkcí, jako je "najít blízko jsem", omezující navigaci a filtry zabezpečení, které zobrazují pouze dokumenty, které uživatel může zobrazit. Pokud implementujete některé z těchto prostředí, je vyžadován filtr. Je to filtr připojený k vyhledávacímu dotazu, který poskytuje souřadnice geografického umístění, kategorii omezující vlastnosti vybranou uživatelem nebo ID zabezpečení žadatele.
 
-Ukázkové scénáře zahrnují následující:
+Příklady scénářů zahrnují následující:
 
-1. Pomocí filtru do průřezu zahrnout indexu na základě hodnot dat v indexu. Zadané schéma s Město, bydlení typu a zařízení, můžete například vytvořit filtr pro explicitní výběr dokumenty, které splňují vaše kritéria (v Praze, condos, waterfront). 
+1. Pomocí filtru Vytvořte výřez indexu na základě hodnot dat v indexu. Vzhledem ke schématu s městem, typem ubytování a možností rekreačního programu můžete vytvořit filtr, který explicitně vybere dokumenty, které splňují kritéria (v Seattle, Condos, Waterfront). 
 
-   Fulltextové vyhledávání se stejnými vstupy často vytváří podobné výsledky, ale v tom, že vyžaduje přesnou shodu období filtr obsahu v indexu je přesnější filtru. 
+   Fulltextové vyhledávání se stejnými vstupy často vytváří podobné výsledky, ale filtr je přesnější v tom, že vyžaduje přesné porovnání termínu filtru s obsahem v indexu. 
 
-2. Pokud vyhledávání se dodává s filtru požadavků pomocí filtru:
+2. Filtr použijte v případě, že se v prostředí vyhledávání nachází požadavek filtru:
 
-   * [Fasetová navigace](search-faceted-navigation.md) používá filtr, aby předávání zpátky kategorie omezující vlastnost vybrané uživatelem.
-   * Geografické vyhledávání používá filtr, aby předat souřadnice aktuálního umístění v "najít poblíž" aplikace. 
-   * Filtry zabezpečení předat identifikátory zabezpečení jako kritéria filtru, kde se shoda v indexu slouží jako proxy pro přístupová práva k dokumentu.
+   * [Omezující navigace](search-faceted-navigation.md) používá filtr k předání zpět kategorie omezující vlastnosti vybrané uživatelem.
+   * Geografické vyhledávání používá filtr k předání souřadnic aktuálního umístění v aplikacích "najít blízko". 
+   * Filtry zabezpečení přecházejí identifikátory zabezpečení jako kritéria filtru, kde shoda v indexu slouží jako proxy pro přístupová práva k dokumentu.
 
-3. Pokud chcete kritéria vyhledávání pro číselné pole, použijte filtr. 
+3. Filtr použijte v případě, že chcete vyhledávací kritéria pro číselné pole. 
 
-   Číselná pole se retrievable v dokumentu a může zobrazit ve výsledcích hledání, ale nejsou prohledávatelná (v souladu s fulltextové vyhledávání) samostatně. Pokud potřebujete kritéria pro výběr na základě číselných dat, použijte filtr.
+   Číselná pole se dají v dokumentu načíst a můžou se zobrazit ve výsledcích hledání, ale nedají se prohledávat (závisí na úplném vyhledávání textu) jednotlivě. Pokud potřebujete kritéria výběru založená na číslech dat, použijte filtr.
 
-### <a name="alternative-methods-for-reducing-scope"></a>Alternativní metody pro snížení oboru
+### <a name="alternative-methods-for-reducing-scope"></a>Alternativní metody pro omezení rozsahu
 
-Pokud chcete efekt zužující ve výsledcích vyhledávání, filtry nejsou pouze podle vašeho výběru. Tyto možnosti může být lépe vyhovovat, v závislosti na vaší cíle:
+Pokud chcete ve výsledcích hledání zúžit efekt, filtry nejsou vaší volbou. V závislosti na vašem cíli můžou být tyto alternativy lépe vyhovující:
 
- + `searchFields` parametr dotazu váže hodnotu hledání konkrétních polí. Například pokud indexu poskytuje samostatných polích pro angličtinu a slovenštinu popisy, můžete použít searchFields cílit na pole, která chcete použít pro fulltextové vyhledávání. 
+ + `searchFields`parametr dotazu Pegs hledání na konkrétní pole. Například pokud váš index poskytuje samostatná pole pro anglické a španělské popisy, můžete použít searchFields k určení, která pole se mají použít pro fulltextové vyhledávání. 
 
-+ `$select` parametr slouží k určení nastavení pole, která chcete zahrnout do výsledku efektivně ořezávání odpověď před odesláním ho do volající aplikace. Tento parametr upřesnění dotazu nebo snižte kolekce dokumentů, ale pokud je vaším cílem menší odpověď, je tento parametr, zvažte možnost. 
++ `$select`parametr se používá k určení, která pole se mají zahrnout do sady výsledků, aby se před odesláním do volající aplikace účinně vystřihoval odpověď. Tento parametr neupřesňuje dotaz ani neomezuje kolekci dokumentů, ale pokud je menší odezva na váš cíl, je tento parametr možnost zvážit. 
 
-Další informace o obou parametrů najdete v tématu [vyhledávání dokumentů > požádat o > parametrů dotazu](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
+Další informace o obou parametrech naleznete v tématu [Search documents > Request > dotazu Parameters](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
 
 
-## <a name="how-filters-are-executed"></a>Způsob provedení filtrů
+## <a name="how-filters-are-executed"></a>Jak se spouštějí filtry
 
-V době zpracování dotazu filtr analyzátor přijímá kritéria jako vstup, převede výraz na Atomický logické výrazy reprezentována jako strom a pak vyhodnotí strom filtru přes filtrovatelných polích v indexu.
+Analyzátor filtru v době dotazu přijímá kritéria jako vstup, převede výraz na atomické logické výrazy reprezentované jako strom a pak vyhodnotí strom filtru přes pole, která lze filtrovat v indexu.
 
-Filtrování probíhá v kombinaci s hledání opravňujících dokumenty, které mají být zahrnuty zpracování příjmu dat pro načtení dokumentu a hodnocení závažnosti. V kombinaci s hledaný řetězec filtru efektivně snižuje spojené s vracením sadu následných vyhledávací operace. Při použití samostatně (například pokud řetězec dotazu je prázdný where `search=*`), kritéria filtru, která je výhradně vstup. 
+K filtrování dochází v kombinaci se službou Search a je kvalifikováno, které dokumenty zahrnout do zpracování pro příjem dat pro načtení dokumentů a hodnocení relevance. Při párování s hledaným řetězcem filtr efektivně snižuje sadu odvolání následné operace vyhledávání. Při samostatném použití (například při prázdném řetězci dotazu, kde `search=*`) je kritérium filtru jediným vstupem. 
 
 ## <a name="defining-filters"></a>Definování filtrů
 
-Filtry jsou výrazy OData, kloubové pomocí [podmnožinou syntaxe OData V4, které jsou podporované ve službě Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
+Filtry jsou výrazy OData kloubované pomocí podmnožiny [syntaxe OData v4 podporované v Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
 
-Můžete zadat jeden filtr pro každý **hledání** operace, ale samotný filtr může obsahovat více polí, více kritérií, a pokud používáte **ismatch** funkce, více výrazů fulltextové vyhledávání. Ve výrazu vícedílný filtru můžete zadat predikáty v libovolném pořadí (dle pravidel priority operátorů). Neexistuje žádné výrazné zvýšení výkonu, pokud se pokusíte změnit uspořádání predikáty v určitém pořadí.
+Pro každou operaci **hledání** můžete zadat jeden filtr, ale samotný filtr může zahrnovat více polí, více kritérií a pokud použijete funkci **Match** , více výrazů fulltextového vyhledávání. Ve výrazu filtru s více částmi lze predikáty zadat v libovolném pořadí (v souladu s pravidly priority operátoru). V případě, že se pokusíte změnit uspořádání predikátů v určité sekvenci, neexistuje žádný výrazný nárůst výkonu.
 
-Jedním z omezení pro výraz filtru je maximální limit velikosti požadavku. Celou žádost, včetně filtrů, může být maximálně 16 MB pro metodu POST nebo velikosti 8 KB u metody GET. Platí omezení na počet klauzulí ve výrazu filtru. Základním pravidlem je, že pokud máte stovky klauzule vám hrozí, že narazíte omezení. Doporučujeme, abyste návrhu vaší aplikace tak negeneruje filtry neomezené velikosti.
+Jedním z omezení výrazu filtru je omezení maximální velikosti požadavku. Celý požadavek, včetně filtru, může mít maximálně 16 MB pro POST nebo 8 KB pro GET. Existuje také omezení počtu klauzulí ve výrazu filtru. Dobrým pravidlem je, že pokud máte stovky klauzulí, riskujete, že se nebudete muset provozovat. Doporučujeme navrhnout aplikaci tak, aby negenerovala filtry neohraničené velikosti.
 
-Následující příklady představují definice typický filtrů v několik rozhraní API.
+Následující příklady znázorňují definice filtru typický v několika rozhraních API.
 
 ```http
 # Option 1:  Use $filter for GET
@@ -95,23 +95,23 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
     var results = searchIndexClient.Documents.Search("*", parameters);
 ```
 
-## <a name="filter-usage-patterns"></a>Filtr vzory využití
+## <a name="filter-usage-patterns"></a>Filtrovat vzorce použití
 
-Následující příklady znázorňují několik vzory využití pro scénáře filtru. Další informace najdete v článku [syntaxe výrazů OData > Příklady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Následující příklady ilustrují několik vzorů použití pro scénáře filtru. Další nápady najdete v tématu [Syntaxe výrazů OData > příklady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
-+ Samostatné **$filter**, bez řetězce dotazu, užitečné, pokud výraz filtru je možné k plnému určení dokumenty, které vás zajímají. Bez řetězce dotazu neexistuje žádná lexikální nebo jazyková analýza, žádné bodování a žádné řazení. Všimněte si, že se že hledaný řetězec je právě hvězdičky, což znamená, že "odpovídat všechny dokumenty".
++ Samostatný **$Filter**bez řetězce dotazu, který je užitečný, když výraz filtru dokáže plně kvalifikovat dokumenty, které vás zajímají. Bez řetězce dotazu neexistují žádné lexikální ani lingvistické analýzy, žádné bodování a žádné hodnocení. Všimněte si, že hledaný řetězec je jenom hvězdička, což znamená "odpovídá všem dokumentům".
 
    ```
    search=*&$filter=(baseRate ge 60 and baseRate lt 300) and accommodation eq 'Hotel' and city eq 'Nogales'
    ```
 
-+ Kombinace řetězec dotazu a **$filter**, kde filtr vytvoří dílčí a řetězec dotazu obsahuje vstupy termín pro fulltextové vyhledávání přes filtrované podmnožinu. Pomocí filtru s řetězcem dotazu je nejběžnější vzor používání.
++ Kombinace řetězce dotazu a **$Filter**, kde filtr vytvoří podmnožinu, a řetězec dotazu poskytuje termínové vstupy pro fulltextové vyhledávání nad filtrovanou podmnožinou. Nejběžnějším vzorem použití je použití filtru s řetězcem dotazu.
 
    ```
    search=hotels ocean$filter=(baseRate ge 60 and baseRate lt 300) and city eq 'Los Angeles'
    ```
 
-+ Složené dotazy, které jsou odděleny "nebo", každý s vlastní kritéria filtru (například "beagles' v"pes") nebo"siamese"v"cat". Výrazů v kombinaci s `or` se vyhodnocují zvlášť, s sjednocení dokumentů, které vyhovují každý výraz odeslána zpět v odpovědi. Tento vzor využití se dosahuje prostřednictvím `search.ismatchscoring` funkce. Můžete také použít verzi vyhodnocování `search.ismatch`.
++ Složené dotazy oddělené znakem "nebo", z nichž každá má vlastní kritéria filtru (například ' Beagles ' v ' pes ' nebo ' Siamese ' v ' Cat '). Výrazy kombinované s `or` jsou vyhodnocovány jednotlivě a sjednocením dokumentů, které odpovídají jednotlivým výrazům, odeslaným zpět v odpovědi. Tento vzor využití se dosahuje prostřednictvím `search.ismatchscoring` funkce. Můžete také použít verzi bez bodování, `search.ismatch`.
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
@@ -121,7 +121,7 @@ Následující příklady znázorňují několik vzory využití pro scénáře 
    $filter=search.ismatchscoring('luxury | high-end', 'description') or category eq 'Luxury'
    ```
 
-  Je také možné kombinovat fulltextové vyhledávání přes `search.ismatchscoring` pomocí filtrování pomocí `and` místo `or`, ale to je funkčně ekvivalentní k použití `search` a `$filter` parametrů v požadavku hledání. Například následující dva dotazy přinesou stejný výsledek:
+  Je také `search.ismatchscoring` možné kombinovat fulltextové vyhledávání přes s filtry pomocí `and` místo `or`, ale je `search` to funkčně ekvivalentní použití parametrů a `$filter` v žádosti o vyhledávání. Například následující dva dotazy vytvoří stejný výsledek:
 
   ```
   $filter=search.ismatchscoring('pool') and rating ge 4
@@ -129,7 +129,7 @@ Následující příklady znázorňují několik vzory využití pro scénáře 
   search=pool&$filter=rating ge 4
   ```
 
-Zpracování v těchto článcích pro komplexní pokyny konkrétní případy použití:
+V těchto článcích najdete kompletní pokyny pro konkrétní případy použití:
 
 + [Filtry omezující vlastnost](search-filters-facets.md)
 + [Filtry jazyka](search-filters-language.md)
@@ -137,42 +137,42 @@ Zpracování v těchto článcích pro komplexní pokyny konkrétní případy p
 
 ## <a name="field-requirements-for-filtering"></a>Požadavky na pole pro filtrování
 
-V rozhraní REST API, filtrovat je *na* ve výchozím nastavení pro jednoduché pole. Filtrovatelná pole zvýšit velikost indexu; Nezapomeňte nastavit `"filterable": false` pro pole, které nechcete použít ve skutečnosti ve filtru. Další informace o nastavení pole definic najdete v tématu [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+V REST API je filtr pro jednoduché pole *ve* výchozím nastavení zapnutý. Filtrovatelné pole zvyšují velikost indexu; Nezapomeňte nastavit `"filterable": false` pro pole, která nechcete ve filtru skutečně použít. Další informace o nastavení definic polí najdete v tématu [Create index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-V sadě .NET SDK dají filtrovat je *vypnout* ve výchozím nastavení. Pole můžete filtrovat díky nastavení [IsFilterable vlastnost](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) k odpovídající položce [pole](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) objektu `true`. Můžete také uděláte deklarativně pomocí [IsFilterable atribut](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). V následujícím příkladu je atribut nastaven na `BaseRate` vlastnost třídu modelu, který se mapuje na definici indexu.
+V sadě .NET SDK je filtr ve výchozím nastavení *vypnutý* . Můžete nastavit filtrování pole nastavením [vlastnosti Filter](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) odpovídajícího objektu [pole](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) na `true`. Můžete to provést také deklarativně pomocí [atributu Filter](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). V následujícím příkladu je atribut nastaven na `BaseRate` vlastnost třídy modelu, která je mapována na definici indexu.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
     public double? BaseRate { get; set; }
 ```
 
-### <a name="making-an-existing-field-filterable"></a>Provádění filterable existující pole
+### <a name="making-an-existing-field-filterable"></a>Zpřístupnění existujícího pole s filtrem
 
-Nelze upravovat existující pole, aby se daly filterable. Místo toho budete muset přidat nové pole, nebo znovu sestavte index. Další informace o nové sestavení indexu nebo opětovného vyplnění polí naleznete v tématu [postup nového sestavení indexu Azure Search](search-howto-reindex.md).
+Existující pole nemůžete upravovat, aby je bylo možné filtrovat. Místo toho je nutné přidat nové pole nebo znovu sestavit index. Další informace o opětovném sestavení indexu nebo přeplňování polí naleznete v tématu [jak znovu sestavit index Azure Search](search-howto-reindex.md).
 
-## <a name="text-filter-fundamentals"></a>Základy text filtru
+## <a name="text-filter-fundamentals"></a>Základy textových filtrů
 
-Filtry textu spárovat pole řetězce pro řetězcové literály, které zadáte do pole filtrovat. Na rozdíl od fulltextové vyhledávání neexistuje žádný provést lexikální analýzu nebo dělení slov textové filtry, takže pro pouze přesné shody. Předpokládejme například, pole *f* obsahuje "Slunečný den", `$filter=f eq 'Sunny'` neodpovídá, ale `$filter=f eq 'sunny day'` bude. 
+Textové filtry odpovídají polím řetězců v řetězcích literálů, které zadáte do filtru. Na rozdíl od fulltextového vyhledávání neexistuje žádná lexikální analýza ani zalamování slov pro textové filtry, takže porovnání jsou pouze pro přesné shody. Například Předpokládejme, že pole *f* obsahuje "Slunečné Day", `$filter=f eq 'Sunny'` neodpovídá, ale `$filter=f eq 'sunny day'` bude. 
 
-Textové řetězce jsou malá a velká písmena. Neexistuje žádné nižší-malá a velká písmena slov velká: `$filter=f eq 'Sunny day'` nenajde "Slunečný den".
+V textových řetězcích se rozlišují velká a malá písmena. Nejsou k dispozici malá a velká písmena použitach slov: `$filter=f eq 'Sunny day'` "Slunečné Day" (den) se nenalezne.
 
-### <a name="approaches-for-filtering-on-text"></a>Přístupy k filtrování podle textu
+### <a name="approaches-for-filtering-on-text"></a>Přístupy k filtrování textu
 
 | Přístup | Popis | Kdy je použít |
 |----------|-------------|-------------|
-| [`search.in`](search-query-odata-search-in-function.md) | Funkce, která odpovídá poli proti oddělený seznam řetězců. | Doporučuje se pro [filtry zabezpečení](search-security-trimming-for-azure-search.md) a pro všechny filtry, které je potřeba mít odpovídající pole řetězce mnoho nezpracované textové hodnoty. **Hledat.v** funkce je určená pro rychlost a je mnohem rychlejší než explicitní porovnávání na pole pro každý řetězec pomocí `eq` a `or`. | 
-| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Funkce, která umožňuje kombinovat fulltextové vyhledávání operace s operacemi výhradně Booleovský filtr ve stejném výrazu filtru. | Použití **search.ismatch** (nebo ekvivalent bodování **search.ismatchscoring**) Pokud chcete, aby více kombinací vyhledávací filtr v jedné žádosti. Můžete ji také používat *obsahuje* filtr na částečné řetězce v rámci většího řetězce. |
-| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Uživatelem definovaný výraz se skládá z pole, operátory a hodnoty. | Použijte ho, když chcete najít přesné shody mezi hodnotu řetězce a pole řetězce. |
+| [`search.in`](search-query-odata-search-in-function.md) | Funkce, která odpovídá poli s odděleným seznamem řetězců. | Doporučuje se pro [filtry zabezpečení](search-security-trimming-for-azure-search.md) a pro všechny filtry, u kterých je potřeba spárovat mnoho nezpracovaných textových hodnot pomocí pole řetězce. Funkce **Search.in** je navržena pro rychlost a je mnohem rychlejší než explicitní porovnání pole s každým řetězcem pomocí `eq` a `or`. | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Funkce, která umožňuje kombinovat operace fulltextového vyhledávání s přísnými logickými operacemi filtru ve stejném výrazu filtru. | Pokud chcete více kombinací vyhledávacího filtru v jednom požadavku, použijte **Search** . ismatchscoring (nebo jeho ekvivalent pro vyhodnocování, **Search.** ). Můžete ji také použít pro filtr *obsahuje* pro filtrování částečného řetězce v rámci většího řetězce. |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Uživatelsky definovaný výraz tvořený poli, operátory a hodnotami. | Toto použijte, pokud chcete najít přesné shody mezi řetězcovým polem a řetězcovou hodnotou. |
 
-## <a name="numeric-filter-fundamentals"></a>Základy číselný filtr
+## <a name="numeric-filter-fundamentals"></a>Základy číselného filtru
 
-Číselná pole nejsou `searchable` v kontextu fulltextové vyhledávání. Pouze řetězce jsou v souladu s fulltextové vyhledávání. Například pokud zadáte 99,99 jako hledaný termín, nezískáte zpět počítají $99,99 položky. Místo toho zobrazí položky, které mají číslo 99 v polích řetězce dokumentu. Proto pokud máte číselná data, předpokladem je, použijeme je pro filtry, včetně rozsahů, omezující vlastnosti, skupiny a tak dále. 
+Číselná pole `searchable` nejsou v kontextu fulltextového vyhledávání. Pouze řetězce jsou předmětem fulltextového vyhledávání. Pokud například zadáte 99,99 jako hledaný termín, nebudou se za položky vracet ceny za $99,99. Místo toho se zobrazí položky, které mají číslo 99 v polích řetězců dokumentu. Pokud tedy máte číselná data, předpokládáme, že je budete používat pro filtry, včetně rozsahů, omezujících vlastností, skupin a tak dále. 
 
-Dokumenty, které obsahují číselná pole (cena, velikost, SKU, ID) zadejte tyto hodnoty ve výsledcích hledání, pokud je označeno pole `retrievable`. Tady je bod je že hledání textu v plném znění samotné neplatí pro číselné pole typů.
+Dokumenty, které obsahují číselná pole (Price, Size, SKU, ID), poskytují tyto hodnoty ve výsledcích hledání, pokud `retrievable`je pole označeno. Zde je uvedeno, že fulltextové vyhledávání samotné není použitelné pro číselné typy polí.
 
 ## <a name="next-steps"></a>Další postup
 
-Nejprve zkuste **Průzkumníka služby Search** na portálu a odesílání dotazů s **$filter** parametry. [Reálné. místo ukázkového indexu](search-get-started-portal.md) poskytuje zajímavé výsledky pro následující filtrovat dotazy, když je vložte do panelu hledání:
+Nejprve na portálu zkuste **Vyhledat** dotazy pomocí parametrů **$Filter** . [Index reálného vzorku](search-get-started-portal.md) poskytuje zajímavé výsledky pro následující filtrované dotazy při jejich vkládání do panelu hledání:
 
 ```
 # Geo-filter returning documents within 5 kilometers of Redmond, Washington state
@@ -195,12 +195,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-Práci s další příklady naleznete v tématu [syntaxe výrazů filtru OData > Příklady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Chcete-li pracovat s dalšími příklady, viz [Příklady syntaxe výrazů filtru OData > příklady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
 ## <a name="see-also"></a>Viz také:
 
-+ [Jak funguje fulltextové vyhledávání ve službě Azure Search](search-lucene-query-architecture.md)
-+ [Hledání dokumentů rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Jak funguje úplné hledání textu v Azure Search](search-lucene-query-architecture.md)
++ [Hledat dokumenty REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Syntaxe dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 + [Podporované datové typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)

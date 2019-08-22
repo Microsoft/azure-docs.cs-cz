@@ -8,14 +8,16 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 0fcce6bd6ee9461790ca7618f65be9a20a821afc
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7366072dbf6b000981899a56ca1c8cfe6af6f04a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360337"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876050"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Exportujte data do Azure Blob Storage
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 *Toto téma se týká správců.*
 
@@ -38,10 +40,10 @@ Pokud nemáte existující úložiště pro export do, postupujte takto:
 
 1. Vytvořte [nový účet úložiště v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Další informace najdete v [dokumentaci Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
 2. Jako typ účtu vyberte **obecné účely** nebo **úložiště objektů BLOB**.
-3. Zvolte předplatné. 
+3. Vyberte předplatné. 
 
     > [!Note] 
-    > Teď můžete exportovat data do jiných předplatných,  která se neshodují s touto aplikací pro IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
+    > Teď můžete exportovat data do jiných předplatných, která se neshodují s touto aplikací pro IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
 
 4. Vytvořte kontejner v účtu úložiště. Přejít na účet úložiště. V části **BLOB Service**vyberte **Procházet objekty blob**. Vybrat **+ kontejner** v horní části a vytvořit nový kontejner
 
@@ -85,7 +87,7 @@ Teď, když máte cíl úložiště pro export dat, postupujte podle těchto kro
 
 7. V části **data, která chcete exportovat**, určete každý typ dat k exportu nastavením typ na **zapnuto**.
 
-6. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **Export dat** zapnutý. Vyberte **Uložit**.
+6. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se,že je **Export dat** zapnutý. Vyberte **Uložit**.
 
    ![Konfigurace průběžného exportu dat](media/howto-export-data/export-list-blob.png)
 

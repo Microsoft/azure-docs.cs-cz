@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: e18d6519d1ee3c1750757af5c59157de8bdde80c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637915"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872910"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -175,7 +175,7 @@ Jak zjišťovat databáze běžící na virtuálním počítači:
    Pro optimalizaci zátěže zálohování Azure Backup nastaví maximální počet databází v jedné úloze zálohování na 50.
 
      * Chcete-li chránit více než 50 databází, nakonfigurujte více záloh.
-     * Pro povolení [](#enable-auto-protection) celé instance nebo skupiny dostupnosti Always On. V rozevíracím seznamu **AutoProtect** vyberte zapnuto apak vyberte **OK**.
+     * Pokud chcete [Povolit](#enable-auto-protection) celou instanci nebo skupinu dostupnosti Always On, vyberte v rozevíracím seznamu automaticky **chránit** možnost Zapnuto apak vyberte **OK**.
 
     > [!NOTE]
     > Funkce [automatické ochrany](#enable-auto-protection) umožňuje nejen ochranu na všech existujících databázích najednou, ale také automaticky chrání všechny nové databáze přidané do této instance nebo do skupiny dostupnosti.  

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815717"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873071"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Vyladění hyperparameters pro modelu pomocí služby Azure Machine Learning
 
@@ -325,11 +325,9 @@ Také můžete vizualizovat výkon jednotlivých spuštění v průběhu školen
 
 Kromě toho můžete vizuálně identifikovat korelace mezi výkonem a hodnoty jednotlivých hyperparameters pomocí paralelní koordinuje vykreslení. 
 
-![hyperparameter ladění paralelní souřadnice](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)
+[![paralelní souřadnice ladění parametrů](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 Můžete vizualizovat váš hyperparameter ladění spuštění portálu Azure web. Další informace o tom, jak zobrazit experimentu na webovém portálu najdete v tématu [jak sledovat experimenty](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
-
-![portál hyperparameter ladění](media/how-to-tune-hyperparameters/HyperparameterTuningPortal.png)
 
 ## <a name="find-the-best-model"></a>Vyhledání nejvhodnějšího modelu
 
@@ -353,6 +351,6 @@ Další informace najdete v poznámkách k vlakovým parametrům-* v této slož
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Sledovat experimentu](how-to-track-experiments.md)
 * [Nasazení trénovaného modelu](how-to-deploy-and-where.md)

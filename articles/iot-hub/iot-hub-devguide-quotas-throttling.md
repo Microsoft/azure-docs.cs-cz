@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 0e60607d50722a4496dc8f4ad7d609cdf9fd5792
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950527"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877167"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -25,6 +25,10 @@ Každé předplatné Azure může mít maximálně 50 IoT Hub a maximálně 1 be
 Každé centrum IoT se zřizuje s určitým počtem jednotek na konkrétní úrovni. Úroveň a počet jednotek určují maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, která se používá k výpočtu denní kvóty, je 0,5 KB pro rozbočovač úrovně Free a 4KB pro všechny ostatní úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 Vrstva také určuje omezení omezování, která IoT Hub vynutila pro všechny operace.
+
+### <a name="iot-plug-and-play"></a>IoT Plug and Play
+
+Během veřejné verze Preview zařízení IoT technologie Plug and Play odesílají samostatné zprávy na jedno rozhraní, což může zvýšit počet zpráv započítaných do vaší kvóty zpráv.
 
 ## <a name="operation-throttles"></a>Omezení operací
 
@@ -122,7 +126,7 @@ Více jednotek IoT Hub ovlivňuje omezení popsané dříve, ale neposkytuje ž�
 
 Pokud se zobrazí neočekávaná zvýšení latence operace, obraťte se na [Podpora Microsoftu](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Podrobné informace o chování omezení IoT Hub najdete v příspěvku na blogu [IoT Hub omezování a vás](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: c642640d590e1f568fb6f6c5072decd75575ab2d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b549e8bf53ca7728b18e04542c7291f0ce720cb0
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543648"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876462"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O sítích v Azure do replikace Azure
 
@@ -68,7 +68,7 @@ Pokud používáte proxy server brány firewall založený na protokolu IP nebo 
 
 Site Recovery rozsahy IP adres jsou následující:
 
-   **Cílové** | **Site Recovery IP** |  **Site Recovery monitorování IP adresy**
+   **Cíl** | **Site Recovery IP** |  **Site Recovery monitorování IP adresy**
    --- | --- | ---
    Východní Asie | 52.175.17.132 | 13.94.47.61
    Jihovýchodní Asie | 52.187.58.193 | 13.76.179.223
@@ -149,7 +149,7 @@ Tato pravidla jsou nutná, aby bylo možné replikaci z cílové oblasti do zdro
 
    **Location** | **Site Recovery IP adresa** |  **IP adresa monitorování Site Recovery**
     --- | --- | ---
-   Střed USA | 13.82.88.226 | 104.45.147.24
+   East US | 13.82.88.226 | 104.45.147.24
 
 ## <a name="network-virtual-appliance-configuration"></a>Konfigurace síťového virtuálního zařízení
 
@@ -172,7 +172,7 @@ V rámci virtuální sítě můžete vytvořit koncový bod síťové služby pr
 
 Výchozí systémovou trasu Azure pro předponu adresy 0.0.0.0/0 můžete přepsat [vlastní trasou](../virtual-network/virtual-networks-udr-overview.md#custom-routes) a přesměrováním provozu virtuálního počítače do místního síťového virtuálního zařízení (síťové virtuální zařízení), ale tato konfigurace se nedoporučuje pro Site Recovery replikaci. Pokud používáte vlastní trasy, měli byste ve virtuální síti [vytvořit koncový bod služby virtuální sítě](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) pro úložiště, aby provoz replikace neopouští hranice Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Začněte chránit své úlohy [replikací virtuálních počítačů Azure](site-recovery-azure-to-azure.md).
 - Další informace o [uchovávání IP adres](site-recovery-retain-ip-azure-vm-failover.md) pro převzetí služeb při selhání virtuálního počítače Azure
 - Přečtěte si další informace o zotavení po havárii [virtuálních počítačů Azure pomocí ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md).

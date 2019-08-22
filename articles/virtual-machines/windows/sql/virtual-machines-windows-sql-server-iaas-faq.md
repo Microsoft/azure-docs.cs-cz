@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 80c90ceb0e2edac47d67b99e7fb7f03c1ab82fb1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5b3c65361f45c8ad5bdf3adf89dc3002c229d0d0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882356"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650407"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy týkající se SQL Server běžících na virtuálních počítačích s Windows v Azure
 
@@ -87,7 +87,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
    Pokud chcete mít bezplatnou pasivní licenci pro sekundární skupinu dostupnosti nebo instanci clusteru s podporou převzetí služeb při selhání, musíte splnit všechna následující kritéria, jak je uvedeno v části [licenční příručka pro správu licencí](https://download.microsoft.com/download/7/8/C/78CDF005-97C1-4129-926B-CE4A6FE92CF5/SQL_Server_2017_Licensing_guide.pdf):
 
-   1. Máte [mobilitu licencí](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) v rámci programu [Software Assurance](https://www.microsoft.comlicensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
+   1. Máte [mobilitu licencí](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) v rámci programu [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
    1. Pasivní SQL Server instance neobsluhuje SQL Server data pro klienty nebo spouštění aktivních SQL Server úloh. Slouží pouze k synchronizaci s primárním serverem a v případě údržby pasivní databáze v pohotovostním úsporném režimu. Pokud obsluhuje data, jako jsou například sestavy klientů se spuštěnou službou Active SQL Server, nebo provádění libovolné "pracovní", jako jsou například další zálohy ze sekundárního serveru, pak musí být placená licencovaná SQL Server instance. 
    1. Licence na službu Active SQL Server je pokrytá programem Software Assurance a umožňuje **jednu** pasivní sekundární SQL Server instanci, která má až stejnou velikost COMPUTE jako licencovaný aktivní server. 
    1. Sekundární SQL Server virtuální počítač využívá [model licence](virtual-machines-windows-sql-ahb.md)BYOL (s vlastní licencí) nebo zvýhodněné hybridní využití Azure (AHB). 

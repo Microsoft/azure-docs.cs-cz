@@ -1,23 +1,23 @@
 ---
-title: Tabulky brány firewall – řešení VMware podle CloudSimple – Azure
+title: Řešení Azure VMware podle CloudSimple – tabulky brány firewall
 description: Přečtěte si o CloudSimple tabulkách firewallu privátního cloudu a pravidlech brány firewall.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d25aa9252f061cee7f4cffdca42f00d84f719a3
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812659"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877715"
 ---
 # <a name="firewall-tables-overview"></a>Přehled tabulek brány firewall
 
-Tabulka brány firewall obsahuje seznam pravidel pro filtrování síťového provozu do a z prostředků privátního cloudu. Můžete je použít pro síť VLAN nebo podsíť. Pravidla pak řídí síťový provoz mezi zdrojovou sítí nebo IP adresou a cílovou sítí nebo IP adresou.
+Tabulka brány firewall obsahuje seznam pravidel pro filtrování síťového provozu do a z prostředků privátního cloudu. Můžete použít tabulky brány firewall na síť VLAN nebo podsíť. Pravidla řídí síťový provoz mezi zdrojovou sítí nebo IP adresou a cílovou sítí nebo IP adresou.
 
 ## <a name="firewall-rules"></a>Pravidla brány firewall
 
@@ -26,7 +26,7 @@ Následující tabulka popisuje parametry v pravidle brány firewall.
 | Vlastnost | Podrobnosti |
 | ---------| --------|
 | **Název** | Název, který jedinečně identifikuje pravidlo brány firewall a jeho účel. |
-| **Priorita** | Číslo mezi 100 a 4096 a 100 je nejvyšší prioritou. Pravidla se zpracovávají v pořadí podle priority. Když se provoz dostane přes shodu pravidla, zpracování pravidla se zastaví. V důsledku toho se nezpracovávají všechna pravidla, která existují s nižšími prioritami, která mají stejné atributy jako pravidla s vyššími prioritami.  Dbejte na to, abyste se vyhnuli konfliktům pravidel. |
+| **Priorita** | Číslo mezi 100 a 4096 a 100 je nejvyšší prioritou. Pravidla se zpracovávají v pořadí podle priority. Když provoz narazí na pravidlo shodu, zpracování pravidla se zastaví. V důsledku toho nejsou zpracovávána pravidla s nižšími prioritami, která mají stejné atributy jako pravidla s vyššími prioritami.  Dbejte na to, abyste se vyhnuli konfliktům pravidel. |
 | **Sledování stavu** | Sledování může být bezstavové (privátní cloud, Internet nebo VPN) nebo stavová (veřejná IP adresa).  |
 | **Protokol** | Mezi možnosti patří všechny, TCP nebo UDP. Pokud budete vyžadovat protokol ICMP, použijte libovolný. |
 | **Směr** | Určuje, jestli se pravidlo vztahuje na příchozí nebo odchozí provoz. |
@@ -51,7 +51,7 @@ Pro tok přenosů v opačném směru můžou být nutná další pravidla.  Pro 
 
 ### <a name="default-rules"></a>Výchozí pravidla
 
-Následující výchozí pravidla se vytvoří v každé tabulce brány firewall.
+V každé tabulce brány firewall jsou vytvořena následující výchozí pravidla.
 
 |Priority|Name|Sledování stavu|Direction|Typ provozu|Protocol|Source|Zdrojový port|Cíl|Cílový port|Action|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
@@ -62,4 +62,4 @@ Následující výchozí pravidla se vytvoří v každé tabulce brány firewall
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení tabulek a pravidel brány firewall](https://docs.azure.cloudsimple.com/firewall/)
+* [Nastavení tabulek a pravidel brány firewall](firewall.md)

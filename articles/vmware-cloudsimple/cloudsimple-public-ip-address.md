@@ -1,23 +1,23 @@
 ---
-title: Řešení VMware podle CloudSimple – veřejná IP adresa Azure
-description: Přečtěte si o veřejných IP adresách a jejich přínosech na řešení VMware od CloudSimple
+title: Řešení Azure VMware podle CloudSimple – veřejná IP adresa
+description: Další informace o veřejných IP adresách a jejich přínosech k řešení Azure VMware od CloudSimple
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 29d2bdb75a7f4409e6b3ffee2608cfe7adde6b1f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812518"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877683"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple – přehled veřejné IP adresy
 
-Veřejná IP adresa umožňuje internetovým prostředkům komunikovat příchozí a privátní cloudové prostředky na privátní IP adrese. Soukromá IP adresa je buď virtuální počítač, nebo nástroj pro vyrovnávání zatížení softwaru. Privátní IP adresa se nachází ve vašem privátním cloudu vCenter. Veřejná IP adresa umožňuje vystavit služby, které běží na vašem privátním cloudu, na Internet.
+Veřejná IP adresa umožňuje, aby internetové prostředky komunikovaly s prostředky privátního cloudu na privátní IP adrese. Soukromá IP adresa je virtuální počítač nebo nástroj pro vyrovnávání zatížení softwaru ve vašem privátním cloudu vCenter. Veřejná IP adresa umožňuje vystavit služby, které běží na vašem privátním cloudu, na Internet.
 
 Veřejná IP adresa je vyhrazená pro soukromou IP adresu, dokud ji nezrušíte. Veřejná IP adresa se dá přiřadit jenom k jedné privátní IP adrese.
 
@@ -33,4 +33,4 @@ Použití veřejné IP adresy ke komunikaci příchozích adres poskytuje:
 
 ## <a name="next-steps"></a>Další postup
 
-* Informace o [přidělení veřejné IP adresy](https://docs.azure.cloudsimple.com/public-ips/)
+* Informace o [přidělení veřejné IP adresy](public-ips.md)

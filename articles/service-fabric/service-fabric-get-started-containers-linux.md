@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: atsenthi
-ms.openlocfilehash: dde124a568581c53a4168b1c84e5df8a9d55155f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599563"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650656"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
@@ -181,28 +181,11 @@ Zadejte mapování portů v příslušném formátu. V tomto článku je třeba 
 ![Generátor Service Fabric Yeoman pro kontejnery][sf-yeoman]
 
 ## <a name="configure-container-repository-authentication"></a>Konfigurace ověřování úložiště kontejnerů
- Pokud se váš kontejner potřebuje ověřovat v privátním úložišti, přidejte `RepositoryCredentials`. Pro účely tohoto článku přidejte název a heslo účtu pro registr kontejneru myregistry.azurecr.io. Zajistěte, aby se zásada přidala pod značku ServiceManifestImport odpovídající správnému balíčku služby.
 
-```xml
-   <ServiceManifestImport>
-      <ServiceManifestRef ServiceManifestName="MyServicePkg" ServiceManifestVersion="1.0.0" />
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-        <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-        <PortBinding ContainerPort="80" EndpointRef="myServiceTypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-   </ServiceManifestImport>
-``` 
-
-Doporučujeme, abyste heslo úložiště zašifroval. Pokyny najdete [v tématu Správa šifrovaných tajných klíčů v Service Fabricch aplikacích](service-fabric-application-secret-management.md) .
-
-### <a name="configure-cluster-wide-credentials"></a>Konfigurace přihlašovacích údajů na úrovni clusteru
-Další informace najdete v dokumentaci.[](
-service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
+V tématu [ověřování úložiště kontejnerů](configure-container-repository-credentials.md)se dozvíte, jak nakonfigurovat různé typy ověřování pro stahování imagí kontejneru.
 
 ## <a name="configure-isolation-mode"></a>Konfigurace režimu izolace
-V případě běhové verze 6,3 je pro kontejnery Linux podporovaná izolace virtuálních počítačů, což pro kontejnery podporuje dva režimy izolace: proces a HyperV. V režimu izolace HyperV jsou jádra izolovaná od každého kontejneru a hostitele kontejneru. Izolace HyperV se implementuje pomocí [jasných kontejnerů](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Režim izolace je určen pro clustery systému Linux v `ServicePackageContainerPolicy` elementu v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozím nastavením je režim izolace procesu. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
+V případě běhové verze 6,3 je pro kontejnery Linux podporovaná izolace virtuálních počítačů, což pro kontejnery podporuje dva režimy izolace: proces a Hyper-V. V režimu izolace technologie Hyper-V jsou jádra izolovaná mezi jednotlivými kontejnery a hostitelem kontejneru. Izolace Hyper-V se implementuje pomocí prázdných [kontejnerů](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Režim izolace je určen pro clustery systému Linux v `ServicePackageContainerPolicy` elementu v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozím nastavením je režim izolace procesu. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
 
 ```xml
 <ServiceManifestImport>
@@ -236,7 +219,7 @@ V případě běhové verze 6,3 je pro kontejnery Linux podporovaná izolace vir
 
 Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy*, v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK**. Pokud *health_status* je *unhealthy*, zobrazí se **UPOZORNĚNÍ**. 
 
-Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se mají tato hodnocení Docker HEALTHCHECK hlásit jako chyba. Pokud je tato možnost povolená, zobrazí se zpráva o stavu **OK** , pokud je *health_status* *v pořádku* a **Chyba** se zobrazí, když *health_status* není v *pořádku.*
+Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se mají tato hodnocení Docker HEALTHCHECK hlásit jako chyba. Pokud je tato možnost povolená,zobrazí se zpráva o stavu **OK** , pokud je *health_status* *v pořádku* a **Chyba** se zobrazí, když *health_status* není v pořádku.
 
 Pokyn **HEALTHCHECK** odkazující na aktuální kontrolu, která se provede pro monitorování stavu kontejneru, musí být uvedený v souboru Dockerfile použitém při generování image kontejneru.
 
@@ -288,7 +271,7 @@ Otevřete prohlížeč a přejděte na adresu Service Fabric Explorer na adrese 
 
 Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na IP adresu vrácenou na portu 4000, například http:\//localhost: 4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
-![Hello World][hello-world]
+![Hello World!][hello-world]
 
 
 ## <a name="clean-up"></a>Vyčištění
@@ -493,7 +476,7 @@ V modulu runtime Service Fabric verze 6.2 a novější můžete spustit démona 
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o spouštění [kontejnerů v Service Fabric](service-fabric-containers-overview.md).
 * Přečtěte si kurz [Nasazení aplikace .NET v kontejneru](service-fabric-host-app-in-a-container.md).
 * Informace o [životním cyklu aplikace](service-fabric-application-lifecycle.md) Service Fabric.

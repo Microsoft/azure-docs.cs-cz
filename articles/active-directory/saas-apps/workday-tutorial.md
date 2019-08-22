@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 08/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 217a51c1032f946e8aaf377627f30aa4faa83a86
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542706"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891969"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s Workday
 
@@ -227,7 +227,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednotného přihlašování](./media/workday-tutorial/WorkdaySSOConfiguratio.png "Konfigurace jednotného přihlašování")
 
-    a.  Do textového pole **ID poskytovatele služby** zadejte **https://www.workday.com** .
+    a.  Do textového pole **ID poskytovatele služby** zadejte **http://www.workday.com** .
 
     b. Vyberte **Neuprostřed žádosti o ověření iniciované v SP**.
 

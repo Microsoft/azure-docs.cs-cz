@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 0e78d9cfce59615a53534fe9815205e39f64853d
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 89c24512e50dedbf10d145088ec77c2e6e303d1e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868838"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873150"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro službu Azure Machine Learning
 
@@ -41,7 +41,7 @@ Tato šablona vytvoří následující služby Azure:
 * Azure Storage Account
 * Azure Key Vault
 * Azure Application Insights
-* Azure Container Registry
+* Registr kontejneru Azure
 * Pracovní prostor služby Azure Machine Learning
 
 Skupina prostředků je kontejner, který obsahuje služby. Jednotlivé služby jsou vyžadovány pracovním prostorem Azure Machine Learning.
@@ -71,8 +71,6 @@ Další informace o šablonách najdete v následujících článcích:
    * Skupina prostředků: Vyberte nebo vytvořte skupinu prostředků, která bude obsahovat služby.
    * Název pracovního prostoru: Název, který se má použít pro pracovní prostor Azure Machine Learning, který se má vytvořit. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat pouze alfanumerické znaky a znak "-".
    * Oblasti Vyberte umístění, kde se budou prostředky vytvářet.
-
-     ![Parametry šablony v Azure Portal](media/how-to-create-workspace-template/template-parameters.png)
 
 Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
@@ -117,7 +115,7 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
 * Zkontrolujte zásady přístupu Key Vault a pak pomocí těchto zásad nastavte vlastnost accessPolicies šablony.
 * Ověřte, zda prostředek Key Vault již existuje. Pokud tomu tak není, nevytvářejte ho znovu prostřednictvím šablony. Například přidejte parametr, který umožňuje zakázat vytvoření prostředku Key Vault, pokud již existuje.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nasazení prostředků pomocí Správce prostředků šablon a Správce prostředků REST API](../../azure-resource-manager/resource-group-template-deploy-rest.md).
 * [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035343"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892026"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Virtual Networku (FAQ)
 
@@ -29,9 +29,11 @@ Azure Virtual Network (VNet) je reprezentace vaší vlastní sítě v cloudu. Je
 
 Použít virtuální sítě k:
 
-* Vytvoření vyhrazené privátní virtuální sítě jenom v případě, že pro vaše řešení nepotřebujete konfiguraci mezi různými místy. Při vytváření sítě VNet můžou vaše služby a virtuální počítače v rámci virtuální sítě komunikovat přímo a bezpečně mezi sebou v cloudu. I nadále můžete nakonfigurovat připojení koncových bodů pro virtuální počítače a služby, které vyžadují internetovou komunikaci, jako součást řešení.
-* Bezpečně Rozšiřte své datové centrum pomocí virtuální sítě, můžete vytvářet tradiční sítě VPN S2S (site-to-site) k bezpečnému škálování kapacity datacentra. S2S VPN používají protokol IPSEC k zajištění zabezpečeného připojení mezi vaší firemní bránou VPN a Azure.
-* Povolit scénáře hybridního cloudu virtuální sítě vám poskytnou flexibilitu při podpoře řady scénářů hybridního cloudu. Cloudové aplikace můžete bezpečně propojit s jakýmkoli typem místního systému, jako jsou sálové počítače a systémy UNIX.
+* Vytvořte vyhrazenou virtuální síť jen pro privátní cloud. Někdy nepotřebujete pro vaše řešení konfiguraci mezi různými místy. Při vytváření sítě VNet můžou vaše služby a virtuální počítače v rámci virtuální sítě komunikovat přímo a bezpečně mezi sebou v cloudu. I nadále můžete nakonfigurovat připojení koncových bodů pro virtuální počítače a služby, které vyžadují internetovou komunikaci, jako součást řešení.
+
+* Zabezpečeně šíří vaše datové centrum. Pomocí virtuální sítě můžete vytvářet tradiční sítě VPN S2S (site-to-site) k bezpečnému škálování kapacity datacentra. S2S VPN používají protokol IPSEC k zajištění zabezpečeného připojení mezi vaší firemní bránou VPN a Azure.
+
+* Povolte hybridní cloudové scénáře. Virtuální sítě vám nabízí flexibilitu při podpoře řady hybridních cloudových scénářů. Cloudové aplikace můžete bezpečně propojit s jakýmkoli typem místního systému, jako jsou sálové počítače a systémy UNIX.
 
 ### <a name="how-do-i-get-started"></a>Jak mám začít?
 Začněte tím, že přejdete do dokumentace ke službě [Virtual Network](https://docs.microsoft.com/azure/virtual-network/) . Tento obsah poskytuje informace o přehledu a nasazení všech funkcí virtuální sítě.

@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: 81b2145e6107558f2d9698c7e5d03658f1129b00
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 63534260e042a1b47ca5e635c48123672d663a9b
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667928"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873314"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Úlohy plánování a vysílání (Python)
 
@@ -47,15 +47,17 @@ Na konci tohoto kurzu máte dvě aplikace v Pythonu:
 
 **scheduleJobService.py**, která volá přímou metodu v aplikaci simulovaného zařízení a aktualizuje požadované vlastnosti pro vyplňování zařízení pomocí úlohy.
 
-[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
-
-Níže jsou uvedené pokyny k instalaci požadovaných součástí.
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
 > [!NOTE]
 > **Sada Azure IoT SDK pro Python** nepodporuje přímo funkce **úloh** . Místo toho tento kurz nabízí alternativní řešení, které využívá asynchronní vlákna a časovače. Další aktualizace najdete na stránce funkce **sady SDK klienta služby** na stránce [Azure IoT SDK pro Python](https://github.com/Azure/azure-iot-sdk-python) .
 >
+
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+## <a name="prerequisites"></a>Požadavky
+
+Pro absolvování tohoto kurzu potřebujete:
+
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -74,6 +76,10 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která reaguje na př
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > Balíčky PIP pro Azure-iothub-Service-Client a Azure-iothub-Device-Client jsou momentálně dostupné jenom pro operační systém Windows. Informace pro Linux a Mac OS najdete v oddílech týkajících se Linux a Mac OS na stránce [Příprava vývojového prostředí pro Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
+   >
 
 2. Pomocí textového editoru vytvořte nový soubor **simDevice.py** v pracovním adresáři.
 
@@ -158,9 +164,27 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která reaguje na př
 
 ## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
 
-[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
+V tomto článku vytvoříte back-end službu, která vyvolá přímou metodu na zařízení a aktualizuje její dvojitou hodnotu. Služba potřebuje ke volání přímé metody na zařízení oprávnění **služby Connect** . Služba také potřebuje oprávnění **pro čtení** a **zápis** do registru ke čtení a zápisu registru identit. Nejsou k dispozici žádné výchozí zásady sdíleného přístupu, které obsahují pouze tato oprávnění, takže je třeba ji vytvořit.
 
-[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+Chcete-li vytvořit zásadu sdíleného přístupu, která uděluje oprávnění **k zápisu služby**, **čtení registru**a **zápisu do registru** , a k získání připojovacího řetězce pro tuto zásadu, postupujte podle následujících kroků:
+
+1. Otevřete Centrum IoT v [Azure Portal](https://portal.azure.com). Nejjednodušší způsob, jak se dostat do služby IoT Hub, je vybrat **skupiny prostředků**, vybrat skupinu prostředků, ve které se nachází vaše centrum IoT, a pak ze seznamu prostředků vybrat centrum IoT.
+
+2. V levém podokně Centra IoT vyberte **zásady sdíleného přístupu**.
+
+3. V horní nabídce nad seznamem zásad vyberte **Přidat**.
+
+4. V podokně **Přidat zásady sdíleného přístupu** zadejte popisný název zásady. například: *serviceAndRegistryReadWrite*. V části **oprávnění**vyberte **Služba připojení** a **zápis do registru** (při výběru **zápisu do registru**se automaticky vybere možnost**čtení** z registru). Potom vyberte **Vytvořit**.
+
+    ![Ukázat, jak přidat nové zásady sdíleného přístupu](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
+
+5. Zpátky v podokně **zásady sdíleného přístupu** vyberte ze seznamu zásad novou zásadu.
+
+6. V části **sdílené přístupové klíče**vyberte ikonu kopírování pro **připojovací řetězec – primární klíč** a uložte hodnotu.
+
+    ![Zobrazit způsob načtení připojovacího řetězce](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
+
+Další informace o zásadách a oprávněních sdíleného přístupu IoT Hub najdete v tématu [řízení přístupu a oprávnění](./iot-hub-devguide-security.md#access-control-and-permissions).
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Plánování úloh pro volání přímé metody a aktualizace vlastností vlákna zařízení
 
@@ -172,9 +196,13 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která inicializuje v
     pip install azure-iothub-service-client
     ```
 
+   > [!NOTE]
+   > Balíčky PIP pro Azure-iothub-Service-Client a Azure-iothub-Device-Client jsou momentálně dostupné jenom pro operační systém Windows. Informace pro Linux a Mac OS najdete v oddílech týkajících se Linux a Mac OS na stránce [Příprava vývojového prostředí pro Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
+   >
+
 2. Pomocí textového editoru vytvořte nový soubor **scheduleJobService.py** v pracovním adresáři.
 
-3. Na začátek souboru `import` **scheduleJobService.py** přidejte následující příkazy a proměnné:
+3. Na začátek souboru `import` **scheduleJobService.py** přidejte následující příkazy a proměnné. Zástupný symbol nahraďte připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT Hub.](#get-the-iot-hub-connection-string) `{IoTHubConnectionString}` Zástupný symbol nahraďte ID zařízení, které jste zaregistrovali v [části registrace nového zařízení ve službě IoT Hub:](#register-a-new-device-in-the-iot-hub) `{deviceId}`
 
     ```python
     import sys

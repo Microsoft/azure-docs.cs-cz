@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 07/25/2019
+ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 684a84431c8348ddafab8cefbe831c2b58c3cee6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e169d7734776f9319685d97f941b3fc11eec8298
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639934"
+ms.locfileid: "69656253"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
-V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://aka.ms/aml-sdk) .
+V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://aka.ms/aml-sdk) . 
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
 
@@ -1002,6 +1002,6 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
 Nová aktualizovaná verze Azure Machine Learning: Přečtěte si další informace o této verzi: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si přehled [služby Azure Machine Learning Service](../service/overview-what-is-azure-ml.md).

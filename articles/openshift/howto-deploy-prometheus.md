@@ -1,46 +1,46 @@
 ---
-title: Nasadit samostatnou instanci Prometheus v clusteru Azure Red Hat OpenShift | Dokumentace Microsoftu
-description: Vytvoření Prometheus instance v clusteru Azure Red Hat OpenShift monitorovat metriky vaší aplikace.
+title: Nasazení samostatné instance Prometheus v clusteru Azure Red Hat OpenShift | Microsoft Docs
+description: Vytvořte instanci Prometheus v clusteru Azure Red Hat OpenShift a sledujte metriky vaší aplikace.
 author: makdaam
 ms.author: b-lejaku
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/17/2019
-keywords: prometheus aro, openshift, red hat, metriky
-ms.openlocfilehash: a9748932a72106413677b21fe0efd1f69fb02e47
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+keywords: Prometheus, ARO, OpenShift, metriky, Red Hat
+ms.openlocfilehash: f81a993caa31578e689fb3a90108f3cf0ca81fc2
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827021"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875123"
 ---
-# <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Nasadit samostatnou instanci Prometheus v clusteru Azure Red Hat OpenShift
+# <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Nasazení samostatné instance Prometheus v clusteru Azure Red Hat OpenShift
 
-Tento článek popisuje, jak nakonfigurovat samostatnou instanci Prometheus používající zjišťování služby v clusteru Azure Red Hat OpenShift.
+Tento článek popisuje, jak nakonfigurovat samostatnou instanci Prometheus, která používá zjišťování služeb v clusteru Azure Red Hat OpenShift.
 
 > [!NOTE]
-> Zákazník přístup správce ke clusteru Azure Red Hat OpenShift není povinné.
+> Přístup ke clusteru Azure Red Hat OpenShift není potřebný pro správce zákazníka.
 
-Cíl instalace:
+Nastavení cíle:
 
-- Jeden projekt (prometheus – projekt), která obsahuje Prometheus a Alertmanager.
-- Dva projekty (project1 aplikace a aplikace "project2"), které obsahují aplikace, které chcete monitorovat.
+- Jeden projekt (Prometheus-Project), který obsahuje Prometheus a Alertmanager.
+- Dva projekty (App-Project1 a App-"Project2") obsahující aplikace, které chcete monitorovat.
 
-Připravíte budete některé Prometheus config soubory místně. Vytvořte novou složku, kam ji uložit. Konfigurační soubory se ukládají v clusteru jako tajné kódy, v případě, že tajný tokeny později přidaného do clusteru.
+Soubory konfigurace Prometheus budete připravovat místně. Vytvořte novou složku, do které se budou ukládat. Konfigurační soubory se ukládají v clusteru jako tajné klíče v případě, že se do clusteru přidají tajné tokeny později.
 
-## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Přihlaste se ke clusteru pomocí nástroje OS
+## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Přihlaste se ke clusteru pomocí nástroje OC.
 
-1. Otevřete webový prohlížeč a přejděte k webové konzole ve vašem clusteru (https://openshift. *náhodné id*. *oblast*. azmosa.io).
+1. Otevřete webový prohlížeč a pak klikněte na webovou konzoli vašeho clusteru (https://openshift. *ID náhodného*. *region*. azmosa.IO).
 2. Přihlaste se pomocí přihlašovacích údajů Azure.
-3. Vyberte své uživatelské jméno v pravém horním rohu a pak vyberte **kopírování přihlašovací příkaz**.
-4. Vložte své uživatelské jméno do terminálu, které budete používat.
+3. V pravém horním rohu vyberte své uživatelské jméno a pak vyberte **příkaz Kopírovat přihlášení**.
+4. Vložte své uživatelské jméno do terminálu, který budete používat.
 
 > [!NOTE]
-> Chcete-li zobrazit, pokud jste přihlášeni ke správné clusteru, spusťte `oc whoami -c` příkazu.
+> Pokud se chcete podívat, jestli jste se přihlásili ke správnému `oc whoami -c` clusteru, spusťte příkaz.
 
-## <a name="prepare-the-projects"></a>Příprava projekty
+## <a name="prepare-the-projects"></a>Příprava projektů
 
-Pokud chcete vytvořit projekty, spusťte následující příkazy:
+Chcete-li vytvořit projekty, spusťte následující příkazy:
 ```
 oc new-project prometheus-project
 oc new-project app-project1
@@ -49,10 +49,10 @@ oc new-project app-project2
 
 
 > [!NOTE]
-> Můžete použít `-n` nebo `--namespace` parametru nebo vyberte nějaký aktivní projekt spuštěním `oc project` příkazu.
+> Můžete buď použít `-n` parametr nebo `--namespace` , nebo vybrat `oc project` aktivní projekt spuštěním příkazu.
 
-## <a name="prepare-the-prometheus-configuration-file"></a>Příprava Prometheus konfigurační soubor
-Vytvořte soubor prometheus.yml tak, že zadáte následující obsah:
+## <a name="prepare-the-prometheus-configuration-file"></a>Příprava konfiguračního souboru Prometheus
+Zadáním následujícího obsahu vytvořte soubor Prometheus. yml:
 ```
 global:
   scrape_interval: 30s
@@ -73,18 +73,18 @@ scrape_configs:
           - app-project1
           - app-project2
 ```
-Vytvoření tajného kódu volá Prom tak, že zadáte následující konfiguraci:
+Zadáním následující konfigurace vytvořte tajný klíč s názvem prom:
 ```
 oc create secret generic prom --from-file=prometheus.yml -n prometheus-project
 ```
 
-Soubor prometheus.yml je základní Prometheus konfiguračního souboru. Nastaví intervaly a nakonfiguruje automatické zjišťování v tří projektů (prometheus projektu, project1 aplikace, aplikace "project2"). V konfiguračním souboru jsou automaticky zjistit koncové body získaný prostřednictvím protokolu HTTP bez ověřování.
+Soubor Prometheus. yml je základní konfigurační soubor Prometheus. Nastaví intervaly a nakonfiguruje automatické zjišťování ve třech projektech (Prometheus-Project, App-Project1, App-"Project2"). V předchozím konfiguračním souboru jsou automaticky zjištěné koncové body vyřazeny přes protokol HTTP bez ověřování.
 
-Další informace o automatizované získávání dat koncové body, naleznete v tématu [Prometheus šířku config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
+Další informace o koncových bodech pro vyřazení najdete v tématu [Prometheus Scape config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
 
 
-## <a name="prepare-the-alertmanager-config-file"></a>Příprava Alertmanager konfiguračního souboru
-Vytvořte soubor alertmanager.yml tak, že zadáte následující obsah:
+## <a name="prepare-the-alertmanager-config-file"></a>Příprava konfiguračního souboru Alertmanager
+Zadáním následujícího obsahu vytvořte soubor alertmanager. yml:
 ```
 global:
   resolve_timeout: 5m
@@ -102,30 +102,30 @@ receivers:
 - name: default
 - name: deadmansswitch
 ```
-Vytvoření tajného kódu volá Prom výstrah tak, že zadáte následující konfiguraci:
+Vytvořte tajný klíč s názvem prom-Alerts zadáním následující konfigurace:
 ```
 oc create secret generic prom-alerts --from-file=alertmanager.yml -n prometheus-project
 ```
 
-Alertmanager.yml je konfigurační soubor Správce oznámení.
+Alertmanager. yml je konfigurační soubor správce výstrah.
 
 > [!NOTE]
-> Pokud chcete ověřit předchozí dva kroky, spusťte `oc get secret -n prometheus-project` příkazu.
+> Chcete-li ověřit dva předchozí kroky, spusťte `oc get secret -n prometheus-project` příkaz.
 
 ## <a name="start-prometheus-and-alertmanager"></a>Spustit Prometheus a Alertmanager
-Přejděte na [úložiště openshift/zdroje](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus) a stáhněte si [prometheus standalone.yaml](
-https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml) šablony. Použijte šablonu projektu prometheus tak, že zadáte následující konfiguraci:
+Přejít do [úložiště OpenShift/Origin](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus) a stáhnout [šablonu Prometheus-Standalone. yaml](
+https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml) . Použijte šablonu na Prometheus-Project zadáním následující konfigurace:
 ```
 oc process -f https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml | oc apply -f - -n prometheus-project
 ```
-Soubor prometheus standalone.yaml je OpenShift šablona. Vytvoří instanci Prometheus pomocí oauth proxy před jeho a instanci Alertmanager také zabezpečený pomocí oauth proxy. V této šabloně oauth proxy nakonfigurována, aby umožňovala každý uživatel, který může "get" názvů prometheus projektu (viz `-openshift-sar` příznak).
+Soubor Prometheus-Standalone. yaml je šablonou OpenShift. Vytvoří instanci Prometheus s protokolem OAuth-proxy před IT a instancí Alertmanager, která je zabezpečená také pomocí proxy OAuth-proxy. V této šabloně je proxy server OAuth nakonfigurovaný tak, aby umožňoval každému uživateli, který může získat obor názvů Prometheus-Project (viz `-openshift-sar` příznak).
 
 > [!NOTE]
-> Chcete-li zkontrolovat, jestli má prom StatefulSet rovná požadovaná a aktuální počet replik, `oc get statefulset -n prometheus-project` příkazu. Chcete-li zkontrolovat všechny prostředky v projektu, spusťte `oc get all -n prometheus-project` příkazu.
+> Chcete-li ověřit, zda má prom StatefulSet stejný a aktuální počet replik, spusťte `oc get statefulset -n prometheus-project` příkaz. Chcete-li kontrolovat všechny prostředky v projektu, spusťte `oc get all -n prometheus-project` příkaz.
 
-## <a name="add-permissions-to-allow-service-discovery"></a>Přidání oprávnění pro povolení zjišťování služby
+## <a name="add-permissions-to-allow-service-discovery"></a>Přidání oprávnění pro povolení zjišťování služeb
 
-Vytvořte soubor prometheus sdrole.yml tak, že zadáte následující obsah:
+Zadáním následujícího obsahu vytvořte soubor Prometheus-sdrole. yml:
 ```
 apiVersion: template.openshift.io/v1
 kind: Template
@@ -170,46 +170,46 @@ objects:
     name: prom
     namespace: ${PROMETHEUS_PROJECT}
 ```
-Použít šablonu pro všechny projekty, které chcete povolit zjišťování služby, spusťte následující příkazy:
+Chcete-li šablonu použít pro všechny projekty, ze kterých chcete povolení zjišťování služby, spusťte následující příkazy:
 ```
 oc process -f prometheus-sdrole.yml | oc apply -f - -n app-project1
 oc process -f prometheus-sdrole.yml | oc apply -f - -n app-project2
+oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 ```
-Pokud chcete, aby Prometheus shromažďovat metriky, od sebe sama, přiřaďte oprávnění v prometheus projektu.
 
 > [!NOTE]
-> Chcete-li ověřit, zda byly správně vytvořena Role a RoleBinding, spusťte `oc get role` a `oc get rolebinding` příkazy.
+> Chcete-li ověřit, zda byla role a RoleBinding správně vytvořena `oc get role` , `oc get rolebinding` spusťte příkazy a.
 
-## <a name="optional-deploy-example-application"></a>Volitelné: Nasazení ukázkové aplikace
+## <a name="optional-deploy-example-application"></a>Volitelné: Nasadit ukázkovou aplikaci
 
-Všechno funguje, ale neexistují žádné metriky zdroje. Přejděte na adresu URL Prometheus (https://prom-prometheus-project.apps.*náhodné id*.*oblast*.azmosa.io/). Najdete ho s použitím následující příkaz:
+Vše funguje, ale neexistují žádné zdroje metriky. Přejděte na adresu URL Prometheus (https://prom-prometheus-project.apps.*náhodné id*.*oblast*.azmosa.io/). Můžete ji najít pomocí následujícího příkazu:
 
 ```
 oc get route prom -n prometheus-project
 ```
 > [!IMPORTANT]
-> Nezapomeňte přidat předponu https:// na začátku názvu hostitele.
+> Nezapomeňte přidat předponu https://na začátek názvu hostitele.
 
-**Stav > zjišťování služby** stránka zobrazí aktivní cíle 0/0.
+Na stránce **stav > zjišťování služby** se zobrazí 0/0 aktivní cíle.
 
-Pokud chcete nasadit ukázková aplikace, které zpřístupňuje základní metriky Pythonu v rámci /metrics koncový bod, spusťte následující příkazy:
+Pokud chcete nasadit ukázkovou aplikaci, která zveřejňuje základní metriky Pythonu pod koncovým bodem/Metrics, spusťte následující příkazy:
 ```
 oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=example1 -n app-project1
 
 oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=example2 -n app-project2
 ```
-Nové aplikace by se zobrazit jako platné cíle na stránce zjišťování služby během 30 sekund po nasazení.
+Nové aplikace by se měly zobrazit jako platné cíle na stránce zjišťování služby během 30 sekund po nasazení.
 
-Další podrobnosti, vyberte možnost **stav** > **cíle**.
+Další podrobnosti najdete v výběru**cíle** **stavu** > .
 
 > [!NOTE]
-> Pro každý cíl úspěšně scraped Prometheus přidá na datový bod v aktuálním metriku. Vyberte **Prometheus** v levém horním rohu, zadejte **nahoru** jako výraz a pak vyberte **Execute**.
+> Pro každý úspěšně vyřazený cíl Prometheus přidá datový bod do metriky nahoru. V levém horním rohu vyberte **Prometheus** , jako výraz zadejte a pak vyberte **Execute (spustit**).
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete přidat vlastní instrumentaci Prometheus pro vaše aplikace. Prometheus klientské knihovny, který zjednodušuje Prometheus metriky přípravy, je připraven pro různé programovací jazyky.
+Do svých aplikací můžete přidat vlastní instrumentaci Prometheus. Klientská knihovna Prometheus, která zjednodušuje přípravu metrik Prometheus, je připravená pro různé programovací jazyky.
 
-Další informace najdete v následující knihovny Githubu:
+Další informace najdete v následujících knihovnách GitHubu:
 
  - [Java](https://github.com/prometheus/client_java)
  - [Python](https://github.com/prometheus/client_python)

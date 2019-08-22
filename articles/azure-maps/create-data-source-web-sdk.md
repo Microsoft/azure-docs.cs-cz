@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c225aa5f821925247d27890e9ee75f3eac4d9eb9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 36c06182d0807ce3d255477a865023ae7b74e2cb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977349"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874934"
 ---
 # <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
@@ -22,7 +22,11 @@ Sada Azure Maps Web SDK ukládá data do zdrojů dat, která optimalizují data 
 
 **Zdroj dat pro injson**
 
-Zdroj dat založený na bázi JSON může načíst a uložit data místně pomocí `DataSource` třídy. Data typu injson lze ručně vytvořit nebo vytvořit pomocí tříd pomocníka v oboru názvů [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . `DataSource` Třída poskytuje funkce pro import místních nebo vzdálených souborů injson. Vzdálené soubory typu injson musí být hostované na koncovém bodu s povoleným CORs. `DataSource` Třída poskytuje funkce pro data bodu clusteringu. 
+Zdroj dat založený na bázi JSON může načíst a uložit data místně pomocí `DataSource` třídy. Data typu injson lze ručně vytvořit nebo vytvořit pomocí tříd pomocníka v oboru názvů [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . `DataSource` Třída poskytuje funkce pro import místních nebo vzdálených souborů injson. Vzdálené soubory typu injson musí být hostované na koncovém bodu s povoleným CORs. `DataSource` Třída poskytuje funkce pro data bodu clusteringu. Data je možné snadno přidat, odebrat a aktualizovat pomocí `DataSource` třídy.
+
+
+> [!TIP]
+> Pokud chcete přepsat všechna data v `DataSource`, pokud provedete volání `clear` funkcí then `add` , mapa se pokusí znovu vykreslit dvakrát, což by mohlo způsobit zpoždění. Místo toho použijte `setShapes` funkci, která odebere a nahradí všechna data ve zdroji dat a aktivuje pouze jedno opakované vykreslování mapy.
 
 **Zdroj vektorové dlaždice**
 

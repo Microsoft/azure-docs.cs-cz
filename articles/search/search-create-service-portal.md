@@ -1,7 +1,7 @@
 ---
 title: Vytvoření služby Azure Search na portálu – Azure Search
 description: Zřídí prostředek Azure Search v Azure Portal. Vyberte skupiny prostředků, oblasti a SKU nebo cenovou úroveň.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0649fea0b598ffaaaf2611c9d1324174105ee5d4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0aabf10b3be8f2f13abbba15d514a008f193646c
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931543"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649950"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Vytvoření služby Azure Search na portálu
 

@@ -2,7 +2,7 @@
 title: 'Rychlý Start pro Node. js: Vytváření, načítání a dotazování indexů pomocí Azure Search rozhraní REST API – Azure Search'
 description: Ukázka Node. js pro Azure Search, která demonstruje, jak vytvořit, načíst data do a dotazovat se z JavaScriptu
 author: lobrien
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 07/30/2019
 ms.author: laobri
-ms.openlocfilehash: 41ad5aed975f30250d53d746e7590f88e375b6e9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: b22a6371522674895465afac88e68f556ab09bcb
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977225"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656309"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Rychlý start: Vytvoření indexu Azure Search v Node. js
 > [!div class="op_single_selector"]

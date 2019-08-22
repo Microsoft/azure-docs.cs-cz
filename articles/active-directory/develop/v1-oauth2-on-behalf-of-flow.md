@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf0c639dd5fb678af7fca9224292218331b10ee6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: accd14446ab8f4a70336e3bd6787cbd8c93ff21d
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834749"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891520"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Volání služeb pro službu, která používají delegovanou identitu uživatele v toku za jménem
 
@@ -196,7 +196,7 @@ Odpověď na úspěch je odpověď protokolu JSON OAuth 2,0 s následujícími p
 
 Následující příklad ukazuje odpověď na úspěch na žádost o přístupový token pro https://graph.windows.net webové rozhraní API.
 
-```
+```json
 {
     "token_type":"Bearer",
     "scope":"User.Read",
@@ -215,7 +215,7 @@ Následující příklad ukazuje odpověď na úspěch na žádost o přístupov
 
 Koncový bod tokenu Azure AD vrátí chybovou odpověď, když se pokusí získat přístupový token pro rozhraní API pro příjem dat, které je nastavené pomocí zásad podmíněného přístupu (například Multi-Factor Authentication). Služba střední vrstvy by tuto chybu měla obit klientské aplikaci, aby mohla klientská aplikace poskytnout interakci uživatele, aby splnila zásady podmíněného přístupu.
 
-```
+```json
 {
     "error":"interaction_required",
     "error_description":"AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",

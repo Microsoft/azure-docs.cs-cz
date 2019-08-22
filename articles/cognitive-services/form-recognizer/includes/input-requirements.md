@@ -5,19 +5,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 17dc32f8948387b90229d3c4c07102cff98e3018
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4079b0cab0126a9750bbb91ca7046aa18dbe9ece
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562684"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69657754"
 ---
 Nástroj pro rozpoznávání formulářů funguje na vstupních dokumentech, které splňují tyto požadavky:
 
 * Formát musí být JPG, PNG nebo PDF (text nebo naskenovaný). Soubory PDF vložené jako text jsou nejlepší, protože v extrakci znaků a umístění není možnost chyba.
 * Pokud jsou vaše soubory PDF zamčené heslem, musíte zámek před odesláním odebrat.
 * Velikost souboru musí být menší než 4 MB.
-* V případě obrázků musí být rozměry v rozsahu 50 × 50 pixelů až 4200 × 4200 pixelů.
+* V případě obrázků musí být rozměry v rozsahu 600 × 100 pixelů až 4200 × 4200 pixelů.
 * Pokud je naskenovaný z papírových dokumentů, formuláře by měly být vysoce kvalitní kontroly.
 * Text musí používat latinku (anglické znaky).
 * Data musí obsahovat klíče a hodnoty.

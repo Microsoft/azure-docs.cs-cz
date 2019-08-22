@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 04/29/2019
+ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee8af77ce8f3897fdf1cb3da9a125acca28f9419
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
-ms.translationtype: MT
+ms.openlocfilehash: e730e1b5534c4c74734816f5481247e341436b08
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358695"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656329"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Použití SSL k zabezpečení webové služby prostřednictvím Azure Machine Learning
 
@@ -32,7 +32,7 @@ Protokoly TLS a SSL závisí na *digitálních certifikátech*, které vám pom�
 > [!WARNING]
 > Pokud pro webovou službu nepoužíváte protokol HTTPS, data odesílaná do a ze služby mohou být viditelná i pro ostatní na internetu.
 >
-> Protokol HTTPS taky umožňuje klientovi ověřit pravost serveru, ke kterému se připojuje. Tato funkce chrání klienty proti [útokům](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) prostředníkem.
+> Protokol HTTPS taky umožňuje klientovi ověřit pravost serveru, ke kterému se připojuje. Tato funkce chrání klienty proti [](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) útokům prostředníkem.
 
 Toto je obecný proces zabezpečení webové služby:
 
@@ -55,7 +55,7 @@ Pokud název domény ještě nemáte, kupte si ho od *registrátora názvu domé
 
 ## <a name="get-an-ssl-certificate"></a>Získat certifikát SSL
 
-Existuje mnoho způsobů, jak získat certifikát SSL (digitální certifikát). Nejběžnější je koupit si ho od certifikační autority  (CA). Bez ohledu na to, kde certifikát obdržíte, potřebujete následující soubory:
+Existuje mnoho způsobů, jak získat certifikát SSL (digitální certifikát). Nejběžnější je koupit si ho od certifikační autority (CA). Bez ohledu na to, kde certifikát obdržíte, potřebujete následující soubory:
 
 * A **certifikát**. Certifikát musí obsahovat úplný řetěz certifikátů a musí být "PEM-encodeded".
 * A **klíč**. Klíč musí být také zakódovaný v PEM.
@@ -153,7 +153,108 @@ V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou služb
 
   ![Služba Azure Machine Learning: Zabezpečení webových služeb pomocí SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="update-the-ssl-certificate"></a>Aktualizace certifikátu SSL
+
+Platnost certifikátů SSL vyprší a je třeba je obnovit. K tomu obvykle dochází každý rok. Informace v následujících částech použijte k aktualizaci a obnovení certifikátu pro modely nasazené do služby Azure Kubernetes Service:
+
+### <a name="update-a-microsoft-generated-certificate"></a>Aktualizace certifikátu vygenerovaného společností Microsoft
+
+Pokud certifikát původně vygeneroval Microsoft (při použití *leaf_domain_label* k vytvoření služby), použijte k aktualizaci certifikátu jeden z následujících příkladů:
+
+**Použití sady SDK**
+
+```python
+from azureml.core.compute import AksCompute
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute.aks import SslConfiguration
+
+# Get the existing cluster
+aks_target = AksCompute(ws, clustername)
+
+# Update the existing certificate by referencing the leaf domain label
+ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True)
+update_config = AksUpdateConfiguration(ssl_configuration)
+aks_target.update(update_config)
+```
+
+**Použití rozhraní příkazového řádku**
+
+```azurecli
+az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
+```
+
+Další informace najdete v následujících dokumentech k dokumentaci:
+
+* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
+* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
+
+### <a name="update-custom-certificate"></a>Aktualizovat vlastní certifikát
+
+Pokud byl certifikát původně vygenerován certifikační autoritou, použijte následující postup:
+
+1. K obnovení certifikátu použijte dokumentaci poskytovanou certifikační autoritou. Tento proces vytvoří nové soubory certifikátů.
+
+1. Pomocí sady SDK nebo rozhraní příkazového řádku aktualizujte službu pomocí nového certifikátu:
+
+    **Použití sady SDK**
+
+    ```python
+    from azureml.core.compute import AksCompute
+    from azureml.core.compute.aks import AksUpdateConfiguration
+    from azureml.core.compute.aks import SslConfiguration
+    
+    # Read the certificate file
+    def get_content(file_name):
+        with open(file_name, 'r') as f:
+            return f.read()
+
+    # Get the existing cluster
+    aks_target = AksCompute(ws, clustername)
+    
+    # Update cluster with custom certificate
+    ssl_configuration = SslConfiguration(cname="myaks", cert=get_content('cert.pem'), key=get_content('key.pem'))
+    update_config = AksUpdateConfiguration(ssl_configuration)
+    aks_target.update(update_config)
+    ```
+
+    **Použití rozhraní příkazového řádku**
+
+    ```azurecli
+    az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-cname "myaks"--ssl-cert-file "cert.pem" --ssl-key-file "key.pem"
+    ```
+
+Další informace najdete v následujících dokumentech k dokumentaci:
+
+* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
+* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
+
+## <a name="disable-ssl"></a>Zakázat protokol SSL
+
+Pokud chcete protokol SSL zakázat pro model nasazený do služby Azure Kubernetes, můžete použít sadu SDK nebo rozhraní příkazového řádku:
+
+**Použití sady SDK**
+
+```python
+from azureml.core.compute import AksCompute
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute.aks import SslConfiguration
+
+# Get the existing cluster
+aks_target = AksCompute(ws, clustername)
+
+# Disable SSL
+ssl_configuration = SslConfiguration(status="Disabled")
+update_config = AksUpdateConfiguration(ssl_configuration)
+aks_target.update(update_config)
+```
+
+**Použití rozhraní příkazového řádku**
+
+```azurecli
+ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-disable True
+```
+
+## <a name="next-steps"></a>Další kroky
 Naučte se:
 + [Využití modelu strojového učení nasazeného jako webové služby](how-to-consume-web-service.md)
 + [Zabezpečené spouštění experimentů a odvození v rámci virtuální sítě Azure](how-to-enable-virtual-network.md)

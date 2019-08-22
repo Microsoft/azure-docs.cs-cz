@@ -2,19 +2,19 @@
 title: 'Kurz REST: Indexování částečně strutured dat v objektech blob JSON – Azure Search'
 description: Naučte se indexovat a prohledávat částečně strukturované objekty blob služby Azure JSON pomocí Azure Search rozhraní REST API a post.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6362e3cccd3c306a210f0241214206204b5ee96e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: cb9c97efd62a56ad0eac49956f11fb422a448194
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840708"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647860"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Kurz REST: Indexujte a prohledejte částečně strukturovaná data (bloby JSON) v Azure Search
 

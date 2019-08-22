@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 9a62001f168e0577ea07ad030923a4d0398e50af
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534973"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872486"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv IoT Hubu
 
@@ -101,7 +101,7 @@ Vlastnost **iothub-Connection-auth-Method** obsahuje serializovaný objekt JSON 
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o omezení velikosti zpráv v IoT Hub najdete v tématu [IoT Hub kvóty a omezování](iot-hub-devguide-quotas-throttling.md).
 

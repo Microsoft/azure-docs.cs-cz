@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 164a71354423bebc1422ba94747f2daeec33909d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e9c21ff5c4c94eecc7bb1a6643e46166df80edf4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828927"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648317"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)
 
@@ -92,7 +92,7 @@ Koncoví uživatelé, kteří mají povolený MFA prostřednictvím místního A
 
 ### <a name="device-registration"></a>Registrace zařízení
 
-Jedním z požadavků pro vytvoření tohoto nového, silného pověření je, že zařízení musí být také zaregistrované v tenantovi služby Azure AD pro jednotlivé uživatele. Kvůli aktuálním omezením registrace zařízení se může zařízení zaregistrovat jenom v jednom tenantovi. Tento limit znamená, že pro přihlašování telefonem se dá povolit jenom jeden pracovní nebo školní účet v aplikaci Microsoft Authenticator.
+Jedním z požadavků pro vytvoření těchto nových silných přihlašovacích údajů je, že zařízení, ve kterém je nainstalovaná aplikace Microsoft Authenticator, musí být také zaregistrovaná v tenantovi služby Azure AD pro jednotlivé uživatele. Kvůli aktuálním omezením registrace zařízení se může zařízení zaregistrovat jenom v jednom tenantovi. Tento limit znamená, že pro přihlašování telefonem se dá povolit jenom jeden pracovní nebo školní účet v aplikaci Microsoft Authenticator.
 
 > [!NOTE]
 > Registrace zařízení není stejná jako Správa zařízení nebo MDM. Přidružuje jenom ID zařízení a ID uživatele společně v adresáři Azure AD.  

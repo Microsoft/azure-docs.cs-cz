@@ -1,6 +1,6 @@
 ---
-title: Pravidla členství v dynamické skupině automatické – Azure Active Directory | Dokumentace Microsoftu
-description: Jak vytvořit pravidla členství pro skupiny a odkaz se automaticky vyplní.
+title: Pravidla dynamického automatického členství ve skupině – Azure Active Directory | Microsoft Docs
+description: Jak vytvořit pravidla členství pro automatické naplňování skupin a odkaz na pravidlo.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,176 +9,182 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 08/12/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a0e0508babdd9ae703e38d58b079ab5fa16f68c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f529723abd449891dba845253502b78e8666199f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397885"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650212"
 ---
-# <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
+# <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
-Ve službě Azure Active Directory (Azure AD) můžete vytvořit komplexní pravidla založená na atributu umožňující dynamickým členstvím ve skupinách. Členství v dynamické skupině snižuje administrativní režii potřebnou ke přidávání a odebírání uživatelů. Tento článek podrobně popisuje vlastnosti a syntaxe pro vytvoření pravidla dynamického členství pro uživatele nebo zařízení. Pravidlo pro dynamické členství můžete nastavit pro skupiny zabezpečení nebo pro skupiny Office 365.
+V Azure Active Directory (Azure AD) můžete vytvářet složitá pravidla založená na atributech, která umožní dynamické členství pro skupiny. Dynamické členství ve skupinách snižuje administrativní režii při přidávání a odebírání uživatelů. Tento článek podrobně popisuje vlastnosti a syntaxi pro vytváření pravidel dynamického členství pro uživatele nebo zařízení. Pravidlo pro dynamické členství můžete nastavit pro skupiny zabezpečení nebo pro skupiny Office 365.
 
-Když se změní libovolné atributy uživatele nebo zařízení, systém vyhodnotí všechna dynamická pravidla skupin v adresáři a zjistěte, jestli tato změna se aktivuje všechny skupiny přidá nebo odebere. Pokud uživatel nebo zařízení splňuje pravidlo pro skupinu, se přidají jako člena této skupiny. Pokud již uživatel pravidlo, se odeberou. Nemůžete ručně přidat nebo odebrat členem dynamické skupiny.
+Když se změní kterýkoli atribut uživatele nebo zařízení, systém vyhodnotí všechna dynamická pravidla skupiny v adresáři, aby zjistil, jestli by změna aktivovala nebo odebrala nějakou skupinu. Pokud uživatel nebo zařízení splňuje pravidlo pro skupinu, přidají se jako členové této skupiny. Pokud už pravidla nevyhovují, odeberou se. Nemůžete ručně přidat nebo odebrat člena dynamické skupiny.
 
-* Můžete vytvořit dynamické skupiny zařízení nebo uživatelů, ale nelze vytvořit pravidlo, které obsahuje uživatele a zařízení.
-* Nelze vytvořit skupinu zařízení na základě atributů zařízení vlastníků. Pravidla členství zařízení mohou odkazovat pouze na atributy zařízení.
+* Můžete vytvořit dynamickou skupinu pro zařízení nebo pro uživatele, ale nemůžete vytvořit pravidlo, které bude obsahovat uživatele i zařízení.
+* Nemůžete vytvořit skupinu zařízení na základě atributů vlastníků zařízení. Pravidla členství v zařízeních můžou odkazovat jenom na atributy zařízení.
 
 > [!NOTE]
-> Tato funkce vyžaduje licenci Azure AD Premium P1 pro každý jedinečný uživatel, který je členem jedné nebo více dynamických skupin. Není nutné k přiřazení licencí uživatelům pro ně být členem dynamické skupiny, ale minimální počet licencí musí mít v tenantovi k pokrytí všech těchto uživatelů. Například pokud máte celkem 1 000 jedinečných uživatelů v všech dynamických skupin ve vašem tenantovi, je třeba alespoň 1000 licencí pro Azure AD Premium P1 pro splnění požadavcích na licence.
+> Tato funkce vyžaduje licenci Azure AD Premium P1 pro každého jedinečného uživatele, který je členem jedné nebo více dynamických skupin. Nemusíte přiřazovat licence uživatelům, aby byli členy dynamických skupin, ale musíte mít minimální počet licencí v tenantovi pro pokrytí všech takových uživatelů. Pokud byste například měli celkem 1 000 jedinečných uživatelů ve všech dynamických skupinách ve vašem tenantovi, budete potřebovat minimálně 1 000 licencí pro Azure AD Premium P1, aby splňovaly licenční požadavek.
 >
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>Vytváření tělo pravidla členství
+## <a name="constructing-the-body-of-a-membership-rule"></a>Sestavování těla pravidla členství
 
-Pravidlo členství, které naplňuje skupinu uživatelů nebo zařízení automaticky se binární výraz, jehož výsledkem výsledek true nebo false. Jsou tři části jednoduché pravidlo:
+Pravidlo členství, které automaticky naplní skupinu uživateli nebo zařízeními, je binární výraz, jehož výsledkem je výsledek true nebo false. Mezi tři části jednoduchého pravidla patří:
 
 * Vlastnost
-* Operátor
-* Hodnota
+* Operator
+* Value
 
-Pořadí částí v rámci výrazu jsou důležité k zamezení chyby syntaxe.
+Pořadí částí v rámci výrazu je důležité, aby nedocházelo k chybám syntaxe.
 
-### <a name="rules-with-a-single-expression"></a>Pravidla s jeden výraz
+### <a name="rule-builder-in-the-azure-portal"></a>Tvůrce pravidel v Azure Portal
 
-Jeden výraz je nejjednodušší forma pravidla členství a pouze má tři části uvedených výše. Pravidlo s jeden výraz vypadá podobně jako tento: `Property Operator Value`, kde je název objekt.vlastnost syntaxe pro vlastnost.
+Azure AD poskytuje tvůrci pravidel pro rychlejší vytváření a aktualizaci důležitých pravidel. Tvůrce pravidel podporuje až pět pravidel. Chcete-li přidat šest a všechny následné výrazy pravidla, je nutné použít textové pole. Další podrobné pokyny najdete v tématu [Aktualizace dynamické skupiny](groups-update-rule.md).
 
-Následuje příklad pravidla správně členství s jeden výraz:
+   ![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-update-rule/update-dynamic-group-rule.png)
+
+### <a name="rules-with-a-single-expression"></a>Pravidla s jedním výrazem
+
+Jediným výrazem je nejjednodušší forma pravidla členství a má jenom tři části uvedené výše. Pravidlo s jedním výrazem vypadá podobně jako v tomto příkladu `Property Operator Value`:, kde syntaxe pro vlastnost je název Object. Property.
+
+Následuje příklad správného vytvořeného pravidla členství s jedním výrazem:
 
 ```
 user.department -eq "Sales"
 ```
 
-Závorky jsou nepovinné pro jeden výraz. Celková délka obsahu pravidla členství může mít maximálně 2048 znaků.
+Kulaté závorky jsou volitelné pro jeden výraz. Celková délka těla pravidla členství nesmí překročit 2048 znaků.
 
-## <a name="supported-properties"></a>Podporovaných vlastností
+## <a name="supported-properties"></a>Podporované vlastnosti
 
 Existují tři typy vlastností, které lze použít k vytvoření pravidla členství.
 
-* Boolean
-* String
+* Logická hodnota
+* Řetězec
 * Kolekce řetězců
 
-Toto jsou vlastnosti uživatele, které vám umožní vytvořit jeden výraz.
+Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvoření jednoho výrazu.
 
-### <a name="properties-of-type-boolean"></a>Vlastnosti typu boolean
+### <a name="properties-of-type-boolean"></a>Vlastnosti typu Boolean
 
-| Vlastnosti | Povolené hodnoty | Využití |
+| Vlastnosti | Povolené hodnoty | Použití |
 | --- | --- | --- |
-| accountEnabled |Hodnota TRUE, false |true – eq user.accountEnabled |
-| dirSyncEnabled |Hodnota TRUE, false |true – eq user.dirSyncEnabled |
+| accountEnabled |true false |User. accountEnabled-EQ true |
+| dirSyncEnabled |true false |User. nastavení dirsyncenabled-EQ true |
 
-### <a name="properties-of-type-string"></a>Vlastnosti typu řetězec
+### <a name="properties-of-type-string"></a>Vlastnosti typu String
 
-| Vlastnosti | Povolené hodnoty | Využití |
+| Vlastnosti | Povolené hodnoty | Použití |
 | --- | --- | --- |
-| city |Některé řetězcová hodnota nebo *null* |(user.city - eq "value") |
-| Země |Některé řetězcová hodnota nebo *null* |(user.country - eq "value") |
-| companyName | Některé řetězcová hodnota nebo *null* | (user.companyName - eq "value") |
-| Oddělení |Některé řetězcová hodnota nebo *null* |(user.department - eq "value") |
-| displayName |Libovolnou hodnotou řetězce |(user.displayName - eq "value") |
-| employeeId |Libovolnou hodnotou řetězce |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
-| facsimileTelephoneNumber |Některé řetězcová hodnota nebo *null* |(user.facsimileTelephoneNumber - eq "value") |
-| givenName |Některé řetězcová hodnota nebo *null* |(user.givenName - eq "value") |
-| pracovní funkce |Některé řetězcová hodnota nebo *null* |(user.jobTitle - eq "value") |
-| mail |Některé řetězcová hodnota nebo *null* (adresa SMTP uživatele) |(user.mail - eq "value") |
-| mailNickName |Libovolnou hodnotou řetězce (poštovní alias uživatele) |(user.mailNickName - eq "value") |
-| Mobilní zařízení |Některé řetězcová hodnota nebo *null* |(user.mobile - eq "value") |
-| ID objektu |Identifikátor GUID objektu uživatele |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |
-| onPremisesSecurityIdentifier | On-premises identifikátor zabezpečení (SID) pro uživatele, kteří byly synchronizované z místní do cloudu. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
-| passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |Některé řetězcová hodnota nebo *null* |(user.physicalDeliveryOfficeName - eq "value") |
-| PSČ |Některé řetězcová hodnota nebo *null* |(user.postalCode - eq "value") |
-| preferredLanguage |Kód ISO 639-1 |(user.preferredLanguage - eq "en US") |
-| sipProxyAddress |Některé řetězcová hodnota nebo *null* |(user.sipProxyAddress - eq "value") |
-| state |Některé řetězcová hodnota nebo *null* |(user.state - eq "value") |
-| streetAddress |Některé řetězcová hodnota nebo *null* |(user.streetAddress - eq "value") |
-| Příjmení |Některé řetězcová hodnota nebo *null* |(user.surname - eq "value") |
-| telephoneNumber |Některé řetězcová hodnota nebo *null* |(user.telephoneNumber - eq "value") |
-| usageLocation |Dvě lettered směrové číslo země |(user.usageLocation - eq "USA") |
-| userPrincipalName (Hlavní název uživatele) |Libovolnou hodnotou řetězce |(user.userPrincipalName -eq "alias@domain") |
-| userType |člen hosta *null* |(user.userType - eq "Člen") |
+| city |Libovolná hodnota řetězce nebo hodnota *null* |(User. City-EQ "hodnota") |
+| krajin |Libovolná hodnota řetězce nebo hodnota *null* |(User. Country-EQ "value") |
+| Společnosti | Libovolná hodnota řetězce nebo hodnota *null* | (User. companyName-EQ "value") |
+| Oddělení |Libovolná hodnota řetězce nebo hodnota *null* |(User. Department-EQ "hodnota") |
+| displayName |Libovolná hodnota řetězce |(User. DisplayName-EQ "value") |
+| employeeId |Libovolná hodnota řetězce |(User. employeeId-EQ "value")<br>(User. ČísloZaměstnance-ne *null*) |
+| facsimileTelephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. facsimileTelephoneNumber-EQ "value") |
+| givenName |Libovolná hodnota řetězce nebo hodnota *null* |(User. Value-EQ "value") |
+| pracovní funkce |Libovolná hodnota řetězce nebo hodnota *null* |(User. jobTitle-EQ "value") |
+| e-mailu |Libovolná hodnota řetězce nebo hodnota *null* (adresa SMTP uživatele) |(User. mail-EQ "value") |
+| mailNickName |Libovolná hodnota řetězce (e-mailový alias uživatele) |(User. mailNickName-EQ "value") |
+| Mobilní zařízení |Libovolná hodnota řetězce nebo hodnota *null* |(User. Mobile-EQ "value") |
+| ID objektu |Identifikátor GUID objektu uživatele |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
+| onPremisesSecurityIdentifier | Místní identifikátor zabezpečení (SID) pro uživatele, kteří byli synchronizováni z místního prostředí do cloudu. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
+| passwordPolicies |Žádné DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
+| physicalDeliveryOfficeName |Libovolná hodnota řetězce nebo hodnota *null* |(User. physicalDeliveryOfficeName-EQ "value") |
+| PSČ |Libovolná hodnota řetězce nebo hodnota *null* |(User. postalCode-EQ "hodnota") |
+| preferredLanguage |Kód ISO 639-1 |(User. preferredLanguage-EQ "en-US") |
+| sipProxyAddress |Libovolná hodnota řetězce nebo hodnota *null* |(User. sipProxyAddress-EQ "value") |
+| state |Libovolná hodnota řetězce nebo hodnota *null* |(User. State-EQ "value") |
+| streetAddress |Libovolná hodnota řetězce nebo hodnota *null* |(User. streetAddress-EQ "value") |
+| Příjmení |Libovolná hodnota řetězce nebo hodnota *null* |(User. příjmení-EQ "hodnota") |
+| telephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. telephoneNumber-EQ "value") |
+| usageLocation |Dva směrové číslo země |(User. usageLocation-EQ "US") |
+| userPrincipalName (Hlavní název uživatele) |Libovolná hodnota řetězce |(user.userPrincipalName -eq "alias@domain") |
+| userType |člen typu host *null* |(User. userType-EQ "Member") |
 
-### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce typu řetězec
+### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce řetězců typu
 
-| Vlastnosti | Povolené hodnoty | Využití |
+| Vlastnosti | Povolené hodnoty | Použití |
 | --- | --- | --- |
-| otherMails |Libovolnou hodnotou řetězce |(user.otherMails – obsahuje "alias@domain") |
-| proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses – obsahuje "SMTP: alias@domain") |
+| otherMails |Libovolná hodnota řetězce |(User. otherMails-Contains "alias@domain") |
+| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-obsahuje "SMTP: alias@domain") |
 
-Vlastnosti používané pro pravidla zařízení, najdete v části [pravidla pro zařízení](#rules-for-devices).
+Vlastnosti používané pro pravidla zařízení najdete v tématu [pravidla pro zařízení](#rules-for-devices).
 
 ## <a name="supported-operators"></a>Podporované operátory
 
-V následující tabulce jsou uvedeny všechny podporované operátory a jejich syntaxi pro jeden výraz. Operátory lze používat s nebo bez předpony spojovníku (-).
+V následující tabulce jsou uvedeny všechny podporované operátory a jejich syntaxe pro jeden výraz. Operátory lze použít s předponou spojovníku (-) nebo bez ní.
 
-| Operátor | Syntaxe |
+| Operator | Syntaxe |
 | --- | --- |
-| Nerovná se |-ne |
-| Je rovno |-eq |
-| Nemá na začátku |-notStartsWith |
-| Začíná |-startsWith |
+| Nerovná se |-Ne |
+| Je rovno |– EQ |
+| Nezačíná na |-notStartsWith |
+| Začíná |– startsWith |
 | Neobsahuje |-notContains |
 | Obsahuje |-obsahuje |
 | Neodpovídá |-notMatch |
-| Match |-match |
-| V | -v |
-| Ne v | -notIn |
+| Shoda |– shoda |
+| V | -in |
+| Není v | -notIn |
 
-### <a name="using-the--in-and--notin-operators"></a>Pomocí-v a notIn – operátory
+### <a name="using-the--in-and--notin-operators"></a>Používání operátorů-in a-notIn
 
-Pokud chcete porovnat hodnotu atributu uživatele s celou řadou různých hodnot můžete použít-v nebo - notIn operátory. Použít závorky symboly "[" a "]" begin a end seznam hodnot.
+Pokud chcete porovnat hodnotu atributu uživatele s řadou různých hodnot, můžete použít operátory-in nebo-notIn. K zahájení a ukončení seznamu hodnot použijte symboly závorek "[" a "]".
 
- V následujícím příkladu se výraz vyhodnotí jako true Pokud je hodnota user.department jakákoliv hodnota v seznamu:
+ V následujícím příkladu se výraz vyhodnotí jako true, pokud se hodnota User. Department rovná libovolné hodnotě v seznamu:
 
 ```
    user.department -in ["50001","50002","50003","50005","50006","50007","50008","50016","50020","50024","50038","50039","51100"]
 ```
 
 
-### <a name="using-the--match-operator"></a>Pomocí operátoru – shoda 
-**-Odpovídat** operátor se používá pro porovnávání libovolný regulární výraz. Příklady:
+### <a name="using-the--match-operator"></a>Použití operátoru-Match 
+Operátor **-Match** se používá pro porovnávání libovolného regulárního výrazu. Příklady:
 
 ```
 user.displayName -match "Da.*"   
 ```
-David da (caldav), vyhodnotí jako pravdivá, aDa nevyhodnotí jako false.
+Hodnota da, dav, David vyhodnocena jako true, hodnota aDa je vyhodnocena jako false.
 
 ```
 user.displayName -match ".*vid"
 ```
-David vyhodnotí jako true, Da nevyhodnotí jako false.
+David se vyhodnotí jako true, da se vyhodnotí jako false.
 
 ## <a name="supported-values"></a>Podporované hodnoty
 
-Hodnoty použité ve výrazu se může skládat z několika typů, včetně:
+Hodnoty použité ve výrazu mohou sestávat z několika typů, včetně:
 
 * Řetězce
-* Boolean – true, false
-* Čísla
+* Logická hodnota – true, false
+* Hodnoty
 * Pole – číselné pole, pole řetězců
 
-Při zadání hodnoty v rámci výrazu je potřeba použít správnou syntaxi. aby nedocházelo k chybám. Jsou některé tipy syntaxi:
+Při zadávání hodnoty v rámci výrazu je důležité použít správnou syntaxi, aby nedocházelo k chybám. Zde jsou některé tipy syntaxe:
 
 * Dvojité uvozovky jsou volitelné, pokud hodnota není řetězec.
-* Operace řetězec a regulární výraz se nerozlišují malá a velká písmena.
-* Řetězcová hodnota obsahuje uvozovky, obě nabídky by měla být uzavřena \` znak, například user.department - eq \`"Sales\`" je lze patřičnou syntaxi, pokud je hodnota "Prodeje".
-* Můžete také provádět kontrola hodnot Null, pomocí null jako hodnotu, například `user.department -eq null`.
+* Operace s řetězci String a Regex nerozlišují velká a malá písmena.
+* Pokud řetězcová hodnota obsahuje dvojité uvozovky, obě nabídky by měly být uvozeny \` znakem, například User. Department-EQ \`"Sales\`", jedná se o správnou syntaxi, pokud je hodnota "Sales".
+* Můžete také provádět kontroly null a jako hodnotu použít null, `user.department -eq null`například.
 
-### <a name="use-of-null-values"></a>Použití hodnoty Null
+### <a name="use-of-null-values"></a>Použití hodnot null
 
-Chcete-li zadat hodnotu null v pravidle, můžete použít *null* hodnotu. 
+Chcete-li v pravidle zadat hodnotu null, můžete použít hodnotu *null* . 
 
-* Použití - eq nebo - ne při porovnávání *null* hodnotu ve výrazu.
-* Použijte uvozovky kolem slovo *null* pouze v případě, že chcete, aby interpretovat jako hodnotu řetězcového literálu.
-* -Není operátor nelze použít jako srovnávací operátor pro hodnotu null. Když ho používáte, ať už používáte hodnotu null nebo $null dojde k chybě.
+* Při porovnávání hodnoty *null* ve výrazu použijte hodnotu-EQ nebo-ne.
+* Použijte uvozovky kolem slova *null* pouze v případě, že je chcete interpretovat jako řetězcovou hodnotu literálu.
+* Operátor-NOT nelze použít jako srovnávací operátor pro hodnotu null. Pokud ho použijete, zobrazí se chyba, ať už použijete hodnotu null nebo $null.
 
-Správný způsob, jak odkazovat na hodnotu null je následujícím způsobem:
+Správný způsob, jak odkazovat na hodnotu null, je následující:
 
 ```
    user.mail –ne null
@@ -186,9 +192,9 @@ Správný způsob, jak odkazovat na hodnotu null je následujícím způsobem:
 
 ## <a name="rules-with-multiple-expressions"></a>Pravidla s více výrazy
 
-Pravidla členství ve skupině se může skládat z více než jeden výraz jedné připojené prostřednictvím- a- nebo a – nejsou logické operátory. Logické operátory lze také použít v kombinaci. 
+Pravidlo členství ve skupině se může skládat z více než jednoho jednoho výrazu připojeného logickými operátory-a,-nebo a not. Logické operátory lze také použít v kombinaci. 
 
-Následují příklady pravidel členství správně s více výrazy:
+Následují příklady správně konstruovaných pravidel členství s více výrazy:
 
 ```
 (user.department -eq "Sales") -or (user.department -eq "Marketing")
@@ -197,7 +203,7 @@ Následují příklady pravidel členství správně s více výrazy:
 
 ### <a name="operator-precedence"></a>Priorita operátorů
 
-Všechny operátory jsou uvedeny níže v pořadí podle priority od nejvyšší k nejnižší. Operátory na stejném řádku mají stejnou prioritu:
+Všechny operátory jsou uvedeny níže v pořadí podle priority od nejvyšší po nejnižší. Operátory na stejném řádku mají stejnou přednost:
 
 ```
 -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
@@ -207,165 +213,165 @@ Všechny operátory jsou uvedeny níže v pořadí podle priority od nejvyšší
 -any -all
 ```
 
-Následuje příklad priorita operátorů kde dvou výrazů jsou vyhodnocujeme, jestli uživatel:
+Následuje příklad přednosti operátoru, kdy je pro uživatele vyhodnocovány dva výrazy:
 
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
 ```
 
-Závorky jsou potřeba jenom v případě, že priorita nesplňuje vaše požadavky. Pokud chcete, aby oddělení vyčíslen první, následujícím příkladu je použití závorek k určení pořadí:
+Závorky jsou nutné pouze v případě, že priorita nesplňuje vaše požadavky. Například pokud chcete, aby oddělení vyhodnotilo jako první, následující ukazuje, jak lze pomocí závorek určit pořadí:
 
 ```
    user.country –eq "US" –and (user.department –eq "Marketing" –or user.department –eq "Sales")
 ```
 
-## <a name="rules-with-complex-expressions"></a>Pravidla s složité výrazy
+## <a name="rules-with-complex-expressions"></a>Pravidla se složitými výrazy
 
-Pravidla členství se může skládat z kde provádět vlastnosti, operátory a hodnoty na složitější formulářů složité výrazy. Výrazy jsou považovány za komplexní, když je splněna některá z následujících akcí:
+Pravidlo členství se může skládat ze složitých výrazů, kde vlastnosti, operátory a hodnoty přebírají složitější formy. Výrazy jsou považovány za složité, pokud jsou splněny některé z následujících hodnot:
 
-* Vlastnost se skládá z kolekce hodnot. Konkrétně více Vážíme si toho vlastnosti
-* Použití výrazů-všechny a - všechny operátory
-* Vlastní hodnota výrazu může být jeden nebo více výrazů
+* Vlastnost se skládá z kolekce hodnot; konkrétně vlastnosti s více hodnotami
+* Výrazy používají operátory-any a-All.
+* Hodnota výrazu může být jeden nebo více výrazů.
 
-## <a name="multi-value-properties"></a>Vícehodnotový vlastnosti
+## <a name="multi-value-properties"></a>Vlastnosti s více hodnotami
 
-Vícehodnotový vlastnosti jsou kolekce objektů stejného typu. Slouží k vytvoření pravidla členství pomocí-všechny a - všechny logické operátory.
+Vlastnosti s více hodnotami jsou kolekce objektů stejného typu. Je možné je použít k vytvoření pravidel členství pomocí logických operátorů-any a-All.
 
-| Vlastnosti | Hodnoty | Využití |
+| Vlastnosti | Hodnoty | Použití |
 | --- | --- | --- |
-| assignedPlans | Každý objekt v kolekci zveřejňuje následující vlastnosti řetězce: capabilityStatus, služby, servicePlanId |user.assignedPlans – všechny (assignedPlan.servicePlanId - eq "efb87545-963c-4e0d-99df-69c6916d9eb0"- a assignedPlan.capabilityStatus - eq "Povoleno") |
-| proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses – všechny (\_ – obsahuje "contoso")) |
+| assignedPlans | Každý objekt v kolekci zpřístupňuje následující řetězcové vlastnosti: capabilityStatus, Service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-any (.-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-a assignedPlan. capabilityStatus-EQ "Enabled") |
+| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any (\_ -obsahuje "contoso")) |
 
-### <a name="using-the--any-and--all-operators"></a>Pomocí-všechny a - všechny operátory
+### <a name="using-the--any-and--all-operators"></a>Použití operátorů-any a-All
 
-Můžete použít – všechny - všechny operátory a použít podmínku pro jednu nebo všechny položky v kolekci, v uvedeném pořadí.
+K použití podmínky pro jednu nebo všechny položky v kolekci můžete použít operátory-any a-All.
 
-* -žádný (splněn pokud alespoň jedna položka v kolekci odpovídá podmínce)
-* -všechny (splněn, jestliže splňují podmínku všechny položky v kolekci)
+* -Any (splněno, když alespoň jedna položka v kolekci odpovídá podmínce)
+* -All (splněné, když se všechny položky v kolekci shodují s podmínkou)
 
 #### <a name="example-1"></a>Příklad 1
 
-assignedPlans je vlastnost více hodnotami, který obsahuje seznam všech plánu služeb přiřazeném pro uživatele. Následující výraz zvolí uživatelé, kteří mají Exchange Online (plán 2) plán služeb (jako hodnota identifikátoru GUID), který je také ve stavu Enabled:
+assignedPlans je vlastnost s více hodnotami, která obsahuje seznam všech plánů služeb přiřazených uživateli. Následující výraz vybere uživatele, kteří mají plán služby Exchange Online (plán 2) (jako hodnotu GUID), který je také v povoleném stavu:
 
 ```
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-Do skupiny všichni uživatelé, pro kterého je možné pravidla, jako je například tento služby Office 365 (nebo jiné služby Microsoft Online Service) je funkce povolená. Můžete pak použít pomocí sady zásad do skupiny.
+Pravidlo, jako je tato vlastnost, lze použít k seskupení všech uživatelů, pro které je povolená funkce Office 365 (nebo jiná online služba Microsoftu). Pro skupinu pak můžete použít sadu zásad.
 
 #### <a name="example-2"></a>Příklad 2
 
-Následující výraz vybere všechny uživatele, kteří mají všechny plán služeb, která je přidružená ke službě Intune (identifikovaný podle názvu služby "SCO"):
+Následující výraz vybere všechny uživatele, kteří mají libovolný plán služby, který je přidružený ke službě Intune (identifikovaný názvem služby SCO):
 
 ```
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore--syntax"></a>Pomocí podtržítka (\_) syntaxe
+### <a name="using-the-underscore-_-syntax"></a>Použití syntaxe podtržítka (\_)
 
-Podtržítko (\_) syntaxe odpovídá výskytů určité hodnoty v jednom z vlastnosti kolekce s více hodnotami řetězce pro přidání uživatelů nebo zařízení do dynamické skupiny. Se použije s parametrem- nebo - všemi operátory.
+Syntaxe podtržítka (\_) se shoduje s výskytem konkrétní hodnoty v jedné z vlastností kolekce řetězců s více hodnotami, aby bylo možné přidat uživatele nebo zařízení do dynamické skupiny. Používá se u operátorů-any nebo-ALL.
 
-Tady je příklad použití podtržítko (\_) v pravidlu pro přidání členů podle user.proxyAddress (to funguje stejně v případě user.otherMails). Toto pravidlo se přidá každý uživatel s adresa proxy serveru, který obsahuje "contoso" do skupiny.
+Tady je příklad použití podtržítka (\_) v pravidle pro přidání členů na základě User. ProxyAddress (to funguje stejně pro User. otherMails). Toto pravidlo přidá libovolného uživatele s adresou proxy, který ve skupině obsahuje "contoso".
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
 ```
 
-## <a name="other-properties-and-common-rules"></a>Další vlastnosti a běžných pravidel
+## <a name="other-properties-and-common-rules"></a>Další vlastnosti a společná pravidla
 
-### <a name="create-a-direct-reports-rule"></a>Vytvořit pravidlo "Přímé podřízené"
+### <a name="create-a-direct-reports-rule"></a>Vytvoření pravidla "přímé sestavy"
 
-Můžete vytvořit skupina obsahující všechny přímých podřízených manažera. Při v budoucnu změnit manažera přímé podřízené skupiny členství se upraví automaticky.
+Můžete vytvořit skupinu obsahující všechny přímé sestavy manažera. Když se v budoucnu změní přímá sestavování portálu, členství ve skupině se upraví automaticky.
 
-Přímí podřízení pravidlo je vytvořená pomocí následující syntaxe:
+Pravidlo přímých sestav je vytvořené pomocí následující syntaxe:
 
 ```
 Direct Reports for "{objectID_of_manager}"
 ```
 
-Tady je příklad platná pravidla, kde "62e19b97-8b3d-4d4a-a106-4ce66896a863" je objectID sady manager:
+Tady je příklad platného pravidla, kde "62e19b97-8b3d-4d4a-A106-4ce66896a863" je objectID správce:
 
 ```
 Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 ```
 
-Následující tipy vám umožňují použít pravidlo správně.
+Následující tipy vám pomůžou pravidlo používat správně.
 
-* **ID správce** je ID objektu správce. Nachází se v nástroji Správce **profilu**.
-* Pravidla pro práci, ujistěte se, že **správce** vlastnosti jsou správně nastavena pro uživatele ve vašem tenantovi. Můžete zkontrolovat aktuální hodnotu v uživatele **profilu**.
-* Toto pravidlo podporuje pouze přímé podřízené manažera. Jinými slovy, nelze vytvořit skupinu s manažera přímé podřízené *a* své sestavy.
+* **ID správce** je ID objektu správce. Najdete ho v **profilu**správce.
+* Aby pravidlo fungovalo, ujistěte se, že je vlastnost **Manager** nastavena správně pro uživatele ve vašem tenantovi. Aktuální hodnotu můžete ověřit v **profilu**uživatele.
+* Toto pravidlo podporuje pouze přímé sestavy vedoucího správce. Jinými slovy, nemůžete vytvořit skupinu s přímými sestavami manažera *a* jejich sestavami.
 * Toto pravidlo nelze kombinovat s jinými pravidly členství.
 
-### <a name="create-an-all-users-rule"></a>Vytvoření pravidla "Všichni uživatelé"
+### <a name="create-an-all-users-rule"></a>Vytvoří pravidlo pro všechny uživatele.
 
-Můžete vytvořit skupinu obsahující všechny uživatele v tenantovi pomocí pravidla členství. Při přidávání nebo v budoucnu odebere z tenanta uživatelů, skupiny členství se automaticky upraví.
+Můžete vytvořit skupinu obsahující všechny uživatele v rámci tenanta pomocí pravidla členství. Když se uživatelé v budoucnu přidávají nebo odebírají z tenanta, členství ve skupině se automaticky upraví.
 
-Pravidlo "Všechny uživatele" je vytvořen pomocí jediný výraz, ne – operátor a hodnotu null. Toto pravidlo přidává ke skupině uživatelů typu Host B2B, stejně jako členské uživatele.
+Pravidlo "Všichni uživatelé" je tvořeno pomocí jednoduchého výrazu s použitím operátoru-ne a hodnoty null. Toto pravidlo přidá uživatele typu Guest B2B i členské uživatele do skupiny.
 
 ```
 user.objectid -ne null
 ```
 
-### <a name="create-an-all-devices-rule"></a>Vytvoření pravidla "Všechna zařízení"
+### <a name="create-an-all-devices-rule"></a>Vytvořit pravidlo pro všechna zařízení
 
-Můžete vytvořit skupina, která obsahuje všechna zařízení v rámci tenanta pomocí pravidla členství. Při přidávání nebo v budoucnu odebere z klienta zařízení se automaticky upraví členství skupiny.
+Můžete vytvořit skupinu obsahující všechna zařízení v rámci tenanta pomocí pravidla členství. Když se zařízení v budoucnu přidají nebo odeberou z tenanta, členství ve skupině se automaticky upraví.
 
-Pravidlo "Všechna zařízení" je vytvořen pomocí jediný výraz, ne – operátor a hodnotu null:
+Pravidlo všechna zařízení je vytvořené pomocí jednoho výrazu s použitím operátoru-ne a hodnoty null:
 
 ```
 device.objectid -ne null
 ```
 
-## <a name="extension-properties-and-custom-extension-properties"></a>Rozšíření vlastností a vlastností vlastního rozšíření
+## <a name="extension-properties-and-custom-extension-properties"></a>Vlastnosti rozšíření a vlastnosti vlastního rozšíření
 
-Vlastnosti vlastního rozšíření a atributů rozšíření jsou podporovány jako řetězec vlastnosti pravidla dynamického členství. Atributy rozšíření jsou synchronizované z místní Windows Server AD a využijte formát "ExtensionAttributeX", kde X je rovno 1 – 15. Tady je příklad pravidla, která používá jako vlastnost atributu rozšíření:
+Atributy rozšíření a vlastnosti vlastního rozšíření jsou podporovány jako vlastnosti řetězce v dynamických pravidlech členství. Atributy rozšíření se synchronizují z místního systému Windows Server AD a převezmou formát "ExtensionAttributeX", kde X se rovná 1-15. Tady je příklad pravidla, které používá atribut rozšíření jako vlastnost:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Vlastnosti vlastní rozšíření jsou synchronizované z místní Windows Server AD nebo z připojených aplikací SaaS a jsou formátu `user.extension_[GUID]__[Attribute]`, kde:
+Vlastní vlastnosti rozšíření se synchronizují z místní služby Windows Server AD nebo z připojené aplikace SaaS a mají formát `user.extension_[GUID]__[Attribute]`, kde:
 
-* [Identifikátor GUID] je jedinečný identifikátor v adresáři AAD aplikace, který vytvořil vlastnost ve službě Azure AD
-* [Attribute] je název vlastnosti, protože byla vytvořena
+* [GUID] je jedinečný identifikátor ve službě Azure AD pro aplikaci, která vytvořila vlastnost ve službě Azure AD.
+* [Attribute] je název vlastnosti, jak byla vytvořena.
 
-Je například pravidlo, které používá rozšíření vlastních vlastností:
+Příkladem pravidla, které používá vlastní vlastnost rozšíření:
 
 ```
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-Název vlastní vlastnosti najdete v adresáři zadáním dotazu na vlastnosti pomocí Graph Exploreru a vyhledávání pro název vlastnosti. Kromě toho můžete nyní vybrat **získat vlastnosti rozšíření vlastních** odkazu v Tvůrci pravidlo skupiny dynamické uživatele k zadání ID a jedinečných aplikací a zobrazit úplný seznam vlastností vlastního rozšíření pro použití při vytváření pravidla dynamického členství. Tento seznam můžete také aktualizovat, k získání nových vlastností vlastního rozšíření pro tuto aplikaci.
+Název vlastní vlastnosti lze najít v adresáři dotazem na vlastnost uživatele pomocí Průzkumníka graphu a vyhledáním názvu vlastnosti. V Tvůrci pravidel dynamické skupiny uživatelů teď můžete vybrat odkaz **získat vlastní rozšíření vlastností** a zadat jedinečný identifikátor aplikace a získat úplný seznam vlastností vlastního rozšíření, které se použijí při vytváření dynamického pravidla členství. Tento seznam můžete také aktualizovat, k získání nových vlastností vlastního rozšíření pro tuto aplikaci.
 
 ## <a name="rules-for-devices"></a>Pravidla pro zařízení
 
-Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členství ve skupině. Uživatelé a zařízení nemůže mít jako členy skupiny. **OrganizationalUnit** atribut, už nejsou uvedení by se neměl používat. Tento řetězec je nastavena pomocí Intune v určitých případech ale nebyla rozpoznána službou Azure AD, takže žádná zařízení se přidají do skupiny založené na tento atribut.
+Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členství ve skupině. Nemůžete mít uživatele i zařízení jako členy skupiny. Atribut **organizationalUnit** již není uveden a neměl by být použit. Tento řetězec je v Intune nastavený v určitých případech, ale Azure AD ho nerozpoznal, takže se do skupin na základě tohoto atributu nepřidala žádná zařízení.
 
-Můžete použít následující atributy zařízení.
+Je možné použít následující atributy zařízení.
 
- Atribut zařízení  | Hodnoty | Příklad:
+ Atribut zařízení  | Hodnoty | Příklad
  ----- | ----- | ----------------
- accountEnabled | Hodnota TRUE, false | (device.accountEnabled - eq true)
- displayName | Libovolnou hodnotou řetězce |(device.displayName - eq "Rob iPhone")
- deviceOSType | Libovolnou hodnotou řetězce | (device.deviceOSType - eq "iPad")- nebo (device.deviceOSType - eq "iPhone")<br>(device.deviceOSType – obsahuje "AndroidEnterprise")<br>(device.deviceOSType - eq "AndroidForWork")
- deviceOSVersion | Libovolnou hodnotou řetězce | (device.deviceOSVersion - eq "9.1")
- deviceCategory | Název kategorie platné zařízení | (device.deviceCategory - eq "BYOD")
- deviceManufacturer | Libovolnou hodnotou řetězce | (device.deviceManufacturer - eq "Samsung")
- deviceModel | Libovolnou hodnotou řetězce | (device.deviceModel - eq "iPad Air")
- deviceOwnership | Osobní, společnosti, neznámé | (device.deviceOwnership - eq "Company")
- enrollmentProfileName | Název profilu profil registrace zařízení Apple nebo Windows Autopilot | (device.enrollmentProfileName - eq "DEP Iphony")
- isRooted | Hodnota TRUE, false | (device.isRooted - eq true)
- managementType | MDM (pro mobilní zařízení)<br>PC (pro počítače spravované pomocí agenta Intune pro počítače) | (device.managementType - eq "MDM")
- deviceId | platné ID zařízení Azure AD | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- ID objektu | ID objektu platný Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
- systemLabels | jakýkoli řetězec odpovídající vlastnosti zařízení Intune pro označování moderního pracoviště zařízení | (device.systemLabels – obsahuje "M365Managed")
+ accountEnabled | true false | (Device. accountEnabled-EQ true)
+ displayName | libovolná hodnota řetězce |(Device. DisplayName-EQ "Rob iPhone")
+ deviceOSType | libovolná hodnota řetězce | (Device. deviceOSType-EQ "iPad")-nebo (zařízení. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-obsahuje "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
+ deviceOSVersion | libovolná hodnota řetězce | (Device. deviceOSVersion-EQ "9,1")
+ deviceCategory | platný název kategorie zařízení | (Device. deviceCategory-EQ "BYOD")
+ deviceManufacturer | libovolná hodnota řetězce | (Device. deviceManufacturer-EQ "Samsung")
+ deviceModel | libovolná hodnota řetězce | (Device. deviceModel-EQ "iPad Air")
+ deviceOwnership | Osobní, společnost, neznámá | (Device. deviceOwnership-EQ "společnost")
+ enrollmentProfileName | Název profilu registrace zařízení Apple nebo název profilu Windows autopilotu | (zařízení. enrollmentProfileName-EQ "DEP – iPhone")
+ s kořenem | true false | (Device.-rooted-EQ true)
+ managementType | MDM (pro mobilní zařízení)<br>POČÍTAČ (pro počítače spravované agentem Intune pro počítače) | (Device. managementType-EQ "MDM")
+ deviceId | platné ID zařízení Azure AD | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ ID objektu | platné ID objektu Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ systemLabels | libovolný řetězec odpovídající vlastnosti zařízení Intune pro označování moderních zařízení na pracovišti | (Device. systemLabels-obsahuje "M365Managed")
 
 > [!Note]  
-> Pro deviceOwnership při vytváření dynamické skupiny zařízení, je nutné nastavit hodnotu rovnající se "Společnost". V Intune reprezentována vlastnictví zařízení jako firemní. místo toho. Odkazovat na [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) další podrobnosti. 
+> Pro deviceOwnership při vytváření dynamických skupin pro zařízení musíte nastavit hodnotu rovnou "společnost". V Intune se vlastnictví zařízení prezentuje jako firemní. Další podrobnosti najdete v tématu [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) . 
 
 ## <a name="next-steps"></a>Další postup
 
-Tyto články poskytují další informace o skupinách ve službě Azure Active Directory.
+Tyto články poskytují další informace o skupinách v Azure Active Directory.
 
 * [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Vytvoření nové skupiny a přidání členů](../fundamentals/active-directory-groups-create-azure-portal.md)

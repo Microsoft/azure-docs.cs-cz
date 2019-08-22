@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 92d6f005018040e20c2df72dbc608a47bc8d9f08
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: e7c0f0abdf4a96f4af904f76549bdebd62b803cd
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849023"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877323"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Aktivace Azure Functions pomocí webhooků v Azure IoT Central
 
 *Toto téma se týká tvůrců a správců.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Pomocí Azure Functions můžete spustit kód bez serveru na výstupu Webhooku z pravidel IoT Central. Nemusíte zřizovat virtuální počítač nebo publikovat webovou aplikaci, abyste ji mohli použít Azure Functions, ale místo toho můžete spustit tento kód bez serveru. Pomocí Azure Functions transformovat datovou část Webhooku před odesláním do konečného umístění, jako je například databáze SQL nebo Event Grid.
 

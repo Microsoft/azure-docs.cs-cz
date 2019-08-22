@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b7157cd58abc7f1fecf288e72b0232c8a67b7ee
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 4aa948a785153dd0d70a9af41ae0ed25036827f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512585"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656270"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 
@@ -43,7 +43,7 @@ Třída [AzureML. Core. WebService](https://docs.microsoft.com/python/api/azurem
 * `auth_enabled`– Pokud je povolené ověřování klíčů, `True`; `False`jinak.
 * `token_auth_enabled`– Pokud je povolené ověřování tokenu `True`,; `False`jinak.
 * `scoring_uri` Adresa – rozhraní REST API.
-
+* `swagger_uri`– Adresa specifikace OpenAPI Tento identifikátor URI je k dispozici, pokud jste povolili automatické generování schématu. Další informace najdete v tématu [nasazení modelů pomocí služby Azure Machine Learning](how-to-deploy-and-where.md#schema).
 
 Existují tři způsoby pro načtení těchto informací pro nasazené webové služby:
 
@@ -56,6 +56,7 @@ Existují tři způsoby pro načtení těchto informací pro nasazené webové s
                                            image_config=image_config,
                                            workspace=ws)
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 * Můžete použít `Webservice.list` k načtení seznamu nasazené webové služby pro modely v pracovním prostoru. Můžete přidat filtry k zúžení seznamu vrácených informací. Další informace o tom, co je možné filtrovat, najdete v dokumentaci ke službě [WebService. list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) .
@@ -63,6 +64,7 @@ Existují tři způsoby pro načtení těchto informací pro nasazené webové s
     ```python
     services = Webservice.list(ws)
     print(services[0].scoring_uri)
+    print(services[0].swagger_uri)
     ```
 
 * Pokud znáte název nasazené služby, můžete vytvořit novou instanci `Webservice`a zadat název pracovního prostoru a služby jako parametry. Nový objekt obsahuje informace o nasazené služby.
@@ -70,11 +72,12 @@ Existují tři způsoby pro načtení těchto informací pro nasazené webové s
     ```python
     service = Webservice(workspace=ws, name='myservice')
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 ### <a name="authentication-for-services"></a>Ověřování pro služby
 
-Azure Machine Learning poskytuje dva způsoby, jak řídit přístup k webovým službám. 
+Azure Machine Learning poskytuje dva způsoby, jak řídit přístup k webovým službám.
 
 |Metoda ověření|ACI|AKS|
 |---|---|---|
@@ -498,6 +501,6 @@ Pro vygenerování webové služby, která je podporována pro použití v Power
 
 Po nasazení webové služby je tato služba příchodná z Power BIch toků dat. [Naučte se využívat Azure Machine Learning webové služby od Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete zobrazit referenční architekturu pro bodování modelů Pythonu a hloubkového učení v reálném čase, jděte do [centra architektury Azure](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

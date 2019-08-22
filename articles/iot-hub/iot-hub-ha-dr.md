@@ -5,18 +5,18 @@ author: rkmanda
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: 32caebf8ea216050427f4400102cf56ffc657b55
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f1944e06989844528a55c89f82c3db3b3a28dca1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875251"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876901"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub vysoká dostupnost a zotavení po havárii
 
-Jako první krok k implementaci odolného řešení IoT, architektům, vývojářům a vlastníkům podnikových aplikací musí definovat cíle pro dobu provozu pro řešení, která vytváří. Tyto cíle lze definovat hlavně na základě konkrétních obchodních cílů pro každý scénář. V tomto kontextu se v článku [technické postupy pro provozní kontinuitu Azure](https://docs.microsoft.com/azure/architecture/resiliency/) popisuje obecné rozhraní, které vám pomůžou zamyslet se na provozní kontinuitu a zotavení po havárii. Dokument pro [zotavení po havárii a vysokou dostupnost pro aplikace Azure](https://msdn.microsoft.com/library/dn251004.aspx) poskytuje pokyny pro architekturu pro aplikace Azure, které umožňují dosáhnout vysoké dostupnosti (ha) a zotavení po havárii (Dr).
+Jako první krok k implementaci odolného řešení IoT, architektům, vývojářům a vlastníkům podnikových aplikací musí definovat cíle pro dobu provozu pro řešení, která vytváří. Tyto cíle lze definovat hlavně na základě konkrétních obchodních cílů pro každý scénář. V tomto kontextu se v článku [technické postupy pro provozní kontinuitu Azure](https://docs.microsoft.com/azure/architecture/resiliency/) popisuje obecné rozhraní, které vám pomůžou zamyslet se na provozní kontinuitu a zotavení po havárii. Dokument pro [zotavení po havárii a vysokou dostupnost pro aplikace Azure](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery) poskytuje pokyny pro architekturu pro aplikace Azure, které umožňují dosáhnout vysoké dostupnosti (ha) a zotavení po havárii (Dr).
 
 Tento článek popisuje funkce HA a zotavení po havárii, které nabízí konkrétně služba IoT Hub. Hlavními oblastmi popsanými v tomto článku jsou:
 
@@ -41,7 +41,7 @@ Služba IoT Hub poskytuje vysokou oblast HA tím, že implementuje redundance ve
 
 Pokud se v datovém centru rozšíří výpadky z důvodu výpadků napájení nebo jiných selhání týkajících se fyzických prostředků, může dojít k několika vzácným situacím. Tyto události jsou vzácné, během kterých výše popsaná funkce HA v rámci oblasti HA není vždy popsána v tématu. IoT Hub poskytuje několik řešení pro zotavení po delších výpadkech. 
 
-Možnosti obnovení dostupné zákazníkům v takové situaci jsou "převzetí služeb při selhání iniciované společností Microsoft" a "ruční převzetí služeb při selhání". Základní rozdíl mezi těmito dvěma verzemi spočívá v tom, že společnost Microsoft zahájí bývalé a uživatel ji zahájí. Ruční převzetí služeb při selhání v porovnání s možností převzetí služeb při selhání spouštěné Microsoftem zahrnuje taky dobu kratšího cíle obnovení (RTO). Konkrétní RTO, které nabízí jednotlivé možnosti, jsou popsány v následujících částech. Když se v některé z těchto možností provede převzetí služeb IoT Hub ze své primární oblasti, bude centrum plně funkční v odpovídající [geografické oblasti Azure](../best-practices-availability-paired-regions.md).
+Možnosti obnovení dostupné zákazníkům v takové situaci představují [převzetí služeb při selhání](#microsoft-initiated-failover) a [ruční převzetí služeb při](#manual-failover)selhání iniciované společností Microsoft. Základní rozdíl mezi těmito dvěma verzemi spočívá v tom, že společnost Microsoft zahájí bývalé a uživatel ji zahájí. Ruční převzetí služeb při selhání v porovnání s možností převzetí služeb při selhání spouštěné Microsoftem zahrnuje taky dobu kratšího cíle obnovení (RTO). Konkrétní RTO, které nabízí jednotlivé možnosti, jsou popsány v následujících částech. Když se v některé z těchto možností provede převzetí služeb IoT Hub ze své primární oblasti, bude centrum plně funkční v odpovídající [geografické oblasti Azure](../best-practices-availability-paired-regions.md).
 
 Obě tyto možnosti převzetí služeb při selhání nabízejí následující cíle bodů obnovení (RPO):
 
@@ -55,26 +55,24 @@ Obě tyto možnosti převzetí služeb při selhání nabízejí následující 
 | Zprávy monitorování operací |Ztratí se všechny nepřečtené zprávy. |
 | Zprávy o zpětné vazbě z cloudu na zařízení |Ztratí se všechny nepřečtené zprávy. |
 
-<sup>1</sup> Zprávy typu cloud-zařízení a nadřazené úlohy se neobnoví jako součást ručního převzetí služeb při selhání v nabídce Preview této funkce.
+<sup>1</sup> Zprávy typu cloud-zařízení a nadřazené úlohy se neobnoví jako součást ručního převzetí služeb při selhání.
 
-Až se operace převzetí služeb při selhání pro Centrum IoT dokončí, očekává se, že všechny operace ze zařízení a back-endové aplikace budou pokračovat v práci bez nutnosti ručního zásahu.
+Až se operace převzetí služeb při selhání pro Centrum IoT dokončí, očekává se, že všechny operace ze zařízení a back-endové aplikace budou pokračovat v práci bez nutnosti ručního zásahu. To znamená, že zprávy ze zařízení do cloudu by měly fungovat i nadále a celý registr zařízení zůstane beze změny. Události emitované prostřednictvím Event Grid můžou být využívány prostřednictvím stejných předplatných nakonfigurovaných dříve, dokud jsou tyto Event Grid odběry i nadále k dispozici.
 
 > [!CAUTION]
 > - Název a koncový bod, který je kompatibilní s centrem událostí, se po převzetí služeb při selhání změní na koncový bod IoT Hub integrovaných událostí. Při přijímání zpráv telemetrie z integrovaného koncového bodu pomocí klienta centra událostí nebo hostitele procesoru událostí byste měli připojení vytvořit [pomocí připojovacího řetězce služby IoT Hub](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) . Tím zajistíte, že vaše back-endové aplikace budou dál fungovat, aniž by bylo nutné ruční zásah po převzetí služeb při selhání. Pokud použijete název a koncový bod kompatibilní s centrem událostí ve vaší back-endové aplikaci přímo, budete muset znovu nakonfigurovat aplikaci tak, že po převzetí služeb při selhání znovu nakonfigurujete [nový název a koncový bod kompatibilní](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) s centrem událostí, aby bylo možné pokračovat v operacích.
 >
-> - Po převzetí služeb při selhání můžete události vydávané prostřednictvím Event Grid využívat prostřednictvím stejných předplatných, která jsou nakonfigurovaná dříve, dokud jsou tyto Event Grid předplatných dál dostupné.
->
 > - Při směrování do úložiště objektů BLOB doporučujeme zařadit objekty BLOB a potom je v nich vyřadit, aby se zajistilo, že všechny kontejnery budou čteny bez jakýchkoli předpokladů oddílu. Rozsah oddílu se může během převzetí služeb při selhání nebo ručního převzetí služeb při selhání iniciovat společnosti Microsoft změnit. Informace o tom, jak vytvořit výčet seznamu objektů blob, najdete v tématu [směrování do úložiště objektů BLOB](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
 
-### <a name="microsoft-initiated-failover"></a>Převzetí služeb při selhání iniciované Microsoftem
+## <a name="microsoft-initiated-failover"></a>Převzetí služeb při selhání iniciované Microsoftem
 
 Převzetí služeb při selhání iniciované společností Microsoft je ve výjimečných situacích vykonáváno pro převzetí služeb při selhání všech Center IoT z ovlivněné oblasti do odpovídající geografické oblasti. Tento proces je výchozí možností (žádný způsob, jak uživatelům odhlásit) a nevyžaduje od uživatele zásah. Společnost Microsoft si vyhrazuje právo stanovit, kdy bude tato možnost uplatněna. Tento mechanismus nezahrnuje souhlas uživatele před převzetím služeb při selhání centra uživatele. Převzetí služeb při selhání iniciované Microsoftem má za cíl čas obnovení (RTO) 2-26 hodin. 
 
 Velký RTO je, protože Microsoft musí provést operaci převzetí služeb při selhání jménem všech ovlivněných zákazníků v této oblasti. Pokud používáte méně důležité řešení IoT, které může trvat zhruba denně výpadky, můžete se na tuto možnost pořídit, abyste splnili celkové cíle zotavení po havárii pro vaše řešení IoT. Celková doba, po kterou se běhové operace stanou plně funkční, když se tento proces aktivuje, je popsaný v části "doba pro obnovení".
 
-### <a name="manual-failover-preview"></a>Ruční převzetí služeb při selhání (Preview)
+## <a name="manual-failover"></a>Ruční převzetí služeb při selhání
 
-Pokud se RTO, kterou iniciované převzetí služeb při selhání, nesplňuje vaše pracovní doba provozu, měli byste zvážit použití ručního převzetí služeb při selhání a aktivovat proces převzetí služeb při selhání sami. RTO použití této možnosti může být kdekoli v rozmezí 10 minut až několik hodin. RTO je aktuálně funkcí počtu zařízení zaregistrovaných v instanci centra IoT, u které došlo k převzetí služeb při selhání. Můžete očekávat, že RTO pro centrum hostující přibližně 100 000 zařízení bude v jen po dobu 15 minut. Celková doba, po kterou se běhové operace stanou plně funkční, když se tento proces aktivuje, je popsaný v části "doba pro obnovení".
+Pokud nesplňuje vaše cíle provozní doby provozu RTO, kterou iniciovala služba převzetí služeb při selhání, zvažte použití ručního převzetí služeb při selhání. RTO použití této možnosti může být kdekoli v rozmezí 10 minut až několik hodin. RTO je aktuálně funkcí počtu zařízení zaregistrovaných v instanci centra IoT, u které došlo k převzetí služeb při selhání. Můžete očekávat, že RTO pro centrum hostující přibližně 100 000 zařízení bude v jen po dobu 15 minut. Celková doba, po kterou se běhové operace stanou plně funkční, když se tento proces aktivuje, je popsaný v části "doba pro obnovení".
 
 Možnost ručního převzetí služeb při selhání je vždy dostupná pro použití bez ohledu na to, jestli má primární region výpadky nebo ne. Proto tuto možnost můžete použít k provádění plánovaných převzetí služeb při selhání. Jedním z příkladů použití plánovaného převzetí služeb při selhání je provedení pravidelného přechodu k převzetí služeb při selhání. V takovém případě se jedná o slovo s upozorněním, ale výsledkem plánované operace převzetí služeb při selhání je výpadek centra po dobu určenou RTO pro tuto možnost a také způsobí ztrátu dat, jak je definováno v tabulce RPO výše. Je možné zvážit nastavení instance testovacího centra IoT, aby bylo možné naplánovat možnost plánovaného převzetí služeb při selhání, a získat tak jistotu, že vaše možnosti budou fungovat i v případě, že dojde k reálné havárii.
 
@@ -83,18 +81,18 @@ Možnost ručního převzetí služeb při selhání je vždy dostupná pro pou�
 >
 > - Ruční převzetí služeb při selhání by se nemělo používat jako mechanismus k trvalé migraci vašeho centra mezi geograficky spárované oblasti Azure. Tím by došlo k zvýšené latenci operací prováděných s centrem ze zařízení, která se nacházejí ve staré primární oblasti.
 
-### <a name="failback"></a>Navrácení služeb po obnovení
+## <a name="failback"></a>Navrácení služeb po obnovení
 
 Navrácení služeb po obnovení do staré primární oblasti se dá dosáhnout tak, že akci převzetí služeb při selhání vykonáte jiným časem. Pokud se původní operace převzetí služeb při selhání provedla při obnovení z rozšířeného výpadku v původní primární oblasti, doporučujeme, aby se centrum po obnovení do původního umístění obnovilo z situace výpadku.
 
 > [!IMPORTANT]
 > - Uživatelé můžou provádět jenom 2 úspěšné převzetí služeb při selhání a 2 úspěšné operace navrácení služeb po obnovení za den.
 >
-> - Zpět na back-vrácení služeb při selhání nebo převzetí služeb při selhání se nepovoluje. Uživatelé budou muset počkat jednu hodinu mezi těmito operacemi.
+> - Zpět na back-vrácení služeb při selhání nebo převzetí služeb při selhání se nepovoluje. Mezi těmito operacemi musíte počkat 1 hodinu.
 
-### <a name="time-to-recover"></a>Doba obnovení
+## <a name="time-to-recover"></a>Doba obnovení
 
-I když plně kvalifikovaný název domény (a tudíž připojovací řetězec) instance centra IoT zůstane stejný po převzetí služeb při selhání, podkladová IP adresa se změní. Vzhledem k tomu, že po aktivaci procesu převzetí služeb při selhání může být celková doba pro běhové operace prováděná vůči instanci služby IoT Hub plně funkční, můžete ji vyjádřit pomocí následující funkce.
+I když plně kvalifikovaný název domény (a tudíž připojovací řetězec) instance centra IoT zůstane stejný po převzetí služeb při selhání, pak se změní podkladová IP adresa. Vzhledem k tomu, že po aktivaci procesu převzetí služeb při selhání může být celková doba pro běhové operace prováděná vůči instanci služby IoT Hub plně funkční, můžete ji vyjádřit pomocí následující funkce.
 
 Doba obnovení = RTO [10 min-2 hodiny pro ruční převzetí služeb při selhání (2-26 hodin) pro převzetí služeb při selhání spouštěné Microsoftem] + prodleva šíření DNS + doba, kterou klientská aplikace aktualizuje v mezipaměti IoT Hub IP adresa.
 
@@ -125,15 +123,14 @@ Pro zjednodušení tohoto kroku byste měli použít operace idempotentní. Oper
 
 Tady je souhrn možností HA/DR prezentovaných v tomto článku, které se dají použít jako rámec Reference k výběru správné možnosti, která funguje pro vaše řešení.
 
-| Možnost HA/DR | RTO | OBNOVENÍ | Vyžaduje ruční zásah? | Složitost implementace | Dodatečný dopad na náklady|
+| Možnost HA/DR | RTO | Cíl bodu obnovení (RPO) | Vyžaduje ruční zásah? | Složitost implementace | Dodatečný dopad na náklady|
 | --- | --- | --- | --- | --- | --- |
-| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|Ne|Žádný|Žádný|
-| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Ano|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádný|
+| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|Ne|Žádné|Žádné|
+| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Ano|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádné|
 | HA mezi oblastmi |< 1 min.|Závisí na četnosti replikace vlastního řešení HA.|Ne|Vysoká|> 1x náklady 1 centra IoT|
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Azure IoT Hub najdete na následujících odkazech:
-
-* [Začínáme se službou IoT Hub (rychlý Start)](quickstart-send-telemetry-dotnet.md)
 * [Co je Azure IoT Hub?](about-iot-hub.md)
+* [Začínáme se službou IoT Hub (rychlý Start)](quickstart-send-telemetry-dotnet.md)
+* [Kurz: Provedení ručního převzetí služeb při selhání pro Centrum IoT](tutorial-manual-failover.md)

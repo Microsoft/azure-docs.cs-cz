@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45a7477fa312a172579c6b4717e9f679ac253e1b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 50f2f1f7f5d8509a28557e9704bc178be465b1ee
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823814"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648662"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -36,6 +36,20 @@ Azure AD obdrží vylepšení průběžně. Abyste mohli používat aktuální p
 - Plány pro změny
 
 Tato stránka se aktualizuje každý měsíc, takže návštěvě pravidelně. Pokud hledáte položky, které jsou starší než šest měsíců, najdete je v archivu, abyste mohli [novinky v Azure Active Directory](whats-new-archive.md).
+
+---
+
+## <a name="august-2019"></a>Srpen 2019
+
+### <a name="adalnet-ignores-the-msalnet-shared-cache-for-on-behalf-of-scenarios"></a>ADAL.NET ignoruje sdílenou mezipaměť MSAL.NET pro scénáře v zastoupení.
+
+**Textový** Pevné  
+**Kategorie služby:** Ověřování (přihlášení)  
+**Schopnost produktu:** Ověřování uživatelů
+
+Počínaje službou Azure AD Authentication Library (ADAL.NET) verze 5.0.0-Preview musí vývojáři aplikací [serializovat jednu mezipaměť na účet pro webové aplikace a webová rozhraní API](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api). V opačném případě může dojít ke zvýšení oprávnění v některých scénářích využívajících [tok](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow), a to spolu `UserAssertion`s některými konkrétními případy použití. Aby se zabránilo této chybě, ADAL.NET nyní ignoruje sdílenou mezipaměť Microsoft Authentication Library for dotnet (MSAL.NET) pro scénáře v zastoupení.
+
+Další informace o tomto problému naleznete v tématu [Azure Active Directory zvýšení úrovně zabezpečení oprávnění v knihovně ověřování](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258).
 
 ---
 
@@ -69,7 +83,7 @@ Nové změny uživatelského rozhraní přicházejí do návrhu **Přidat z obla
 
 **Textový** Plánování změn  
 **Kategorie služby:** MFA  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 Odebíráme IP adresu MFA serveru z [webové služby IP adresa a adresa URL sady Office 365](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service). Pokud aktuálně spoléháte na tyto stránky, abyste mohli aktualizovat nastavení brány firewall, musíte se ujistit, že máte také seznam IP adres, které jsou zdokumentovány v části **požadavky brány firewall Azure Multi-Factor Authentication serveru** v tématu [Začínáme. s využitím článku Azure Multi-Factor Authentication serveru](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) .
 
@@ -122,7 +136,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Nyní můžete automatizovat vytváření, aktualizaci a odstraňování uživatelských účtů pro tyto nově integrované aplikace:
 
@@ -170,7 +184,7 @@ Další informace najdete v tématu [Povolení auditů zabezpečení pro Azure A
 
 **Textový** Nová funkce  
 **Kategorie služby:** Samoobslužné resetování hesla  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Nové metody ověřování & sestavy Insights vám pomůžou pochopit, jak se registrují funkce jako Azure Multi-Factor Authentication a Samoobslužné resetování hesla, včetně počtu registrovaných Uživatelé pro každou funkci, jak často se Samoobslužné resetování hesla používá k resetování hesel a podle toho, jakou metodu se resetuje.
 
@@ -182,7 +196,7 @@ Další informace najdete v tématu [použití metod ověřování & Insights (P
 
 **Textový** Nová funkce  
 **Kategorie služby:** Identity Protection  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 Všichni Správci služby Azure AD teď můžou v horní části existujících sestav zabezpečení vybrat hlavičku, jako je například zpráva **uživatelů označených příznakem rizika** , aby mohli začít používat nové prostředí zabezpečení, jak je znázorněno v sestavách **rizikové uživatele** a **rizikových přihlášení** . . V průběhu času se všechny sestavy zabezpečení přesunou ze starších verzí do nových verzí a nové sestavy poskytují následující další možnosti:
 
@@ -226,7 +240,7 @@ Další informace najdete v tématu [Přímá federace pomocí AD FS a poskytova
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Nyní můžete automatizovat vytváření, aktualizaci a odstraňování uživatelských účtů pro tyto nově integrované aplikace:
 
@@ -276,7 +290,7 @@ V současné době se na obrazovkách registrace aplikace Azure Portal pořád z
 
 **Textový** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 S radostí oznamujeme, že protokoly aktivit Azure AD (sestavy auditu a přihlášení) jsou teď dostupné prostřednictvím modulu Azure AD PowerShellu. Dřív jste mohli vytvořit vlastní skripty pomocí koncových bodů MS Graph API a teď jsme tuto možnost rozšířili na rutiny PowerShellu.
 
@@ -288,7 +302,7 @@ Další informace o tom, jak tyto rutiny použít, najdete v tématu [rutiny Azu
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Aktualizovali jsme sestavy protokolu auditu a přihlašování, takže teď můžete použít různé filtry, aniž byste je museli přidávat jako sloupce na obrazovkách sestavy. Navíc teď můžete rozhodnout, kolik filtrů chcete na obrazovce zobrazit. Tyto aktualizace společně usnadňují čtení a větší rozsah vašich potřeb vašich sestav.
 
@@ -302,7 +316,7 @@ Další informace o těchto aktualizacích najdete v tématech [filtrování pro
 
 **Textový** Nová funkce  
 **Kategorie služby:** Identity Protection  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 S potěšením oznamujeme, že nové rozhraní riskDetections API pro Microsoft Graph je teď ve verzi Public Preview. Toto nové rozhraní API můžete použít k zobrazení seznamu uživatelů s ochranou identity v organizaci a zjišťování rizik přihlašování. Toto rozhraní API můžete použít také k efektivnějšímu dotazování detekce rizik, včetně podrobností o typu detekce, stavu, úrovni a dalších.
 
@@ -328,7 +342,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Nyní můžete automatizovat vytváření, aktualizaci a odstraňování uživatelských účtů pro tyto nově integrované aplikace:
 
@@ -372,7 +386,7 @@ Další informace o nastavení firemního brandingu najdete v tématu [Přidán�
 
 **Textový** Zastaralé  
 **Kategorie služby:** MFA  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication ve své organizaci, musí nyní používat cloudové ověřování Azure Multi-Factor Authentication. Zákazníci, kteří si server MFA vyaktivovali před 1. července, se nezmění. Pořád budete moct stáhnout nejnovější verzi, získat budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci.
 
@@ -398,7 +412,7 @@ Vyřazení TLS 1,0 a TLS 1,1 proběhne od 31. srpna 2019, ale budeme poskytovat 
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Teď můžete použít sestavu využití a přehledů, která se nachází v oblasti **podnikové aplikace** Azure Portal, a získat tak pohled na vaše přihlašovací údaje zaměřené na aplikaci, včetně informací o:
 
@@ -416,7 +430,7 @@ Další informace o této funkci najdete v tématu [Sestava využití a přehled
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Podle těchto nových kurzů použijte službu zřizování Azure AD k automatizaci vytváření, odstraňování a aktualizace uživatelských účtů pro následující cloudové aplikace:
 
@@ -436,7 +450,7 @@ Další informace o tom, jak lépe zabezpečit organizaci prostřednictvím auto
 
 **Textový** Nová funkce  
 **Kategorie služby:** Není k dispozici  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 Teď můžete monitorovat a zdokonalovat stav zabezpečení identity pomocí funkce skóre Secure identity ve službě Azure AD. Funkce skóre Secure identity využívá jeden řídicí panel, který vám může pomáhat:
 
@@ -472,7 +486,7 @@ Další informace najdete v části [Microsoft Identity Platform](https://docs.m
 
 **Textový** Nová funkce  
 **Kategorie služby:** Identity Protection  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 S radostí oznamujeme, že teď můžete pomocí rozhraní API pro rizikové uživatele načítat historii rizik uživatelů, odvolat rizikové uživatele a potvrdit ohrožení uživatelů. Tato změna vám pomůže efektivněji aktualizovat stav rizika vašich uživatelů a pochopit jejich historii rizik.
 
@@ -538,7 +552,7 @@ Další informace najdete v tématu [vymáhání zásady pojmenování pro skupi
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 S radostí oznamujeme obecnou dostupnost Microsoft Graph Podpora koncových bodů rozhraní API pro protokoly aktivit služby Azure AD. V této verzi teď můžete používat protokol auditu Azure AD verze 1,0 jak v protokolu, tak i v protokolech rozhraní API pro přihlášení.
 
@@ -550,7 +564,7 @@ Další informace najdete v tématu [Přehled rozhraní API protokolu auditu slu
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podmíněný přístup  
-**Schopnost produktu:** Zabezpečení a ochrana identity  
+**Schopnost produktu:** Zabezpečení identity & ochrana  
 
 Správci teď můžou vytvořit zásady podmíněného přístupu pro použití v rámci kombinované registrační stránky. To zahrnuje použití zásad pro povolení registrace v těchto případech:
 
@@ -568,13 +582,13 @@ Další informace o podmíněném přístupu a resetování hesla najdete v blog
 
 ## <a name="april-2019"></a>Duben 2019
 
-### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-in-refreshed-azure-ad-identity-protection"></a>Nové zjišťování analýz Azure AD Threat je teď k dispozici v obnovených Azure AD Identity Protection
+### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-as-part-of-azure-ad-identity-protection"></a>Nové zjišťování analýz Azure AD Threat je teď k dispozici jako součást Azure AD Identity Protection
 
 **Textový** Nová funkce  
 **Kategorie služby:** Azure AD Identity Protection  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
-Detekce analýzy hrozeb Azure AD je teď k dispozici v aktualizovaném Azure AD Identity Protection. Tato nová funkce pomáhá označovat aktivitu uživatele, která je neobvyklá pro konkrétního uživatele nebo která je konzistentní se známými vzory útoku na základě interní a externí analýzy hrozeb Microsoftu.
+Detekce analýzy hrozeb Azure AD je teď k dispozici jako součást aktualizované Azure AD Identity Protection funkce. Tato nová funkce pomáhá indikovat neobvyklou aktivitu uživatelů pro konkrétního uživatele nebo aktivitu, která je konzistentní se známými vzory útoku na základě interních a externích zdrojů analýzy hrozeb Microsoftu.
 
 Další informace o aktualizované verzi Azure AD Identity Protection najdete na blogu o [čtyřech hlavních Azure AD Identity Protection vylepšeních, která jsou teď ve verzi Public Preview](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) , a na [Azure Active Directory Identity Protection (aktualizované)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) předmětu. Další informace o detekci Azure AD Threat Intelligence najdete v článku [Azure Active Directory Identity Protection rizikové události](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence) .
 
@@ -612,7 +626,7 @@ Další informace najdete v tématu [vymáhání zásady pojmenování pro skupi
 
 **Textový** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Abychom vám pomohli vyřešit svůj názor na vizualizace pomocí protokolů aktivit Azure AD, zavádíme nové funkce Insights v Log Analytics. Tato funkce vám pomůže získat přehled o prostředcích Azure AD pomocí našich interaktivních šablon nazývaných sešity. Tyto předem připravené sešity můžou poskytovat podrobné informace pro aplikace nebo uživatele a zahrnovat:
 
@@ -684,7 +698,7 @@ Další informace najdete v tématu [řešení chyb během synchronizace](https:
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podmíněný přístup  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 Podmíněný přístup na základě ochrany aplikací je teď k dispozici pomocí zásad **vyžadovat ochranu aplikací** . Tato nová zásada pomáhá zvýšit zabezpečení vaší organizace tím, že pomáhá zabránit:
 
@@ -702,7 +716,7 @@ Další informace najdete v tématu [Postup při vyžadování zásad ochrany ap
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podmíněný přístup  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 Vylepšili jsme podporu Azure AD pro Microsoft Edge, včetně poskytování nové podpory pro jednotné přihlašování a podmíněný přístup Azure AD. Pokud jste už dřív používali Microsoft Intune Managed Browser, teď můžete místo toho použít Microsoft Edge.
 
@@ -802,7 +816,7 @@ Tato aktualizace pošle `invalid_grant` chybu: `AADSTS50196: The server terminat
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Vytvořili jsme novou stránku **protokolů auditu** Azure AD, které vám pomůžou zlepšit čitelnost a jak hledat vaše informace. Pokud chcete zobrazit stránku nové **protokoly auditu** , vyberte v části **aktivita** v Azure AD možnost **protokoly auditu** .
 
@@ -816,7 +830,7 @@ Další informace o nové stránce **protokoly auditu** najdete [v tématu sesta
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Podmíněný přístup  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 Abychom správcům zabránili v náhodném uzamykání ze svých klientů prostřednictvím nesprávně nakonfigurovaných zásad podmíněného přístupu, vytvořili jsme nová upozornění a aktualizované pokyny v Azure Portal. Další informace o nových pokynech najdete v tématu [co jsou závislosti služby v Azure Active Directory podmíněný přístup](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
 
@@ -836,7 +850,7 @@ Aktualizovali jsme naše stávající prostředí s využitím, abychom vylepši
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Nyní můžete stahovat velké objemy protokolů aktivit přímo z Azure Portal. Tato aktualizace vám umožní:
 
@@ -872,7 +886,7 @@ Pokud jste tyto podmínky dříve používali v rámci zásad podmíněného př
 
 ## <a name="february-2019"></a>Únor 2019
 
-### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Konfigurovatelné šifrování tokenů SAML v Azure AD (public preview) 
+### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Konfigurovatelné šifrování tokenů SAML Azure AD (Public Preview) 
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
@@ -884,7 +898,7 @@ Další informace o konfiguraci šifrování tokenu SAML najdete v tématu [Konf
 
 ---
 
-### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu pro skupiny nebo aplikace pomocí Kontrol přístupu Azure AD
+### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu pro skupiny nebo aplikace pomocí kontrol přístupu Azure AD
 
 **Textový** Nová funkce  
 **Kategorie služby:** Kontroly přístupu  
@@ -896,7 +910,7 @@ Další informace o tom, jak vytvořit kontrolu přístupu pomocí kontrol pří
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – únor 2019
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Nové federované aplikace dostupné v galerii aplikací Azure AD – únor 2019
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
@@ -910,7 +924,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 ---
 
-### <a name="enhanced-combined-mfasspr-registration"></a>Vylepšená kombinovaná registrace MFA a SSPR
+### <a name="enhanced-combined-mfasspr-registration"></a>Rozšířená kombinovaná registrace MFA/SSPR
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Samoobslužné resetování hesla  
@@ -938,7 +952,7 @@ Další informace o tom, jak rozšířené možnosti registrace, najdete v téma
 
 ---
 
-### <a name="updated-policy-management-experience-for-user-flows"></a>Aktualizované prostředí pro správu zásad pro toky uživatele
+### <a name="updated-policy-management-experience-for-user-flows"></a>Aktualizované prostředí pro správu zásad pro toky uživatelů
 
 **Textový** Změněná funkce  
 **Kategorie služby:** B2C – Správa identit uživatelů  
@@ -952,7 +966,7 @@ Další informace o novém prostředí pro správu zásad najdete v tématu [Azu
 
 ---
 
-### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Volba konkrétních verzí elementů stránek poskytovaných službou Azure AD B2C
+### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Zvolit konkrétní verze prvků stránky poskytované Azure AD B2C
 
 **Textový** Nová funkce  
 **Kategorie služby:** B2C – Správa identit uživatelů  
@@ -964,7 +978,7 @@ Další informace o volbě konkrétní verze prvků stránky najdete v tématu [
 
 ---
 
-### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>Konfigurovatelné požadavky na heslo koncových uživatelů pro B2C (GA)
+### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>Konfigurovatelné požadavky na heslo pro koncové uživatele pro B2C (GA)
 
 **Textový** Nová funkce  
 **Kategorie služby:** B2C – Správa identit uživatelů  
@@ -976,7 +990,7 @@ Další informace o konfiguraci požadavků na složitost hesla najdete [v téma
 
 ---
 
-### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Nové výchozí šablony pro prostředí pro ověřování pod vlastní značkou
+### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Nové výchozí šablony pro prostředí pro ověřování vlastních značek
 
 **Textový** Nová funkce  
 **Kategorie služby:** B2C – Správa identit uživatelů  

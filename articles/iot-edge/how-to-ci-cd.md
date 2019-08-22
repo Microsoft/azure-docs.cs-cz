@@ -4,26 +4,29 @@ description: Nastavte průběžnou integraci a průběžné nasazování – Azu
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/22/2019
+ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 659a6f5acaac848084ed1e9590a414191542b54a
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e14025a5a7a3e81404498638d6f6f9c5ff18ed58
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414633"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650807"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování do Azure IoT Edge
 
 Pomocí integrovaných Azure IoT Edge úloh v Azure Pipelines můžete snadno přijmout DevOps s aplikacemi Azure IoT Edge. Tento článek ukazuje, jak můžete pomocí funkcí průběžné integrace a průběžného nasazování pro Azure Pipelines sestavovat, testovat a nasazovat aplikace rychle a efektivně do Azure IoT Edge. 
 
-V tomto článku se dozvíte, jak pomocí integrovaných úloh Azure IoT Edge pro Azure Pipelines vytvořit dva kanály pro řešení IoT Edge. První vezme váš kód a sestaví řešení, nasdílením imagí modulu do registru kontejneru a vytvořením manifestu nasazení. Druhý nasadí moduly do cílových IoT Edgech zařízení.  
-
 ![Diagram – CI a CD větve pro vývoj a provoz](./media/how-to-ci-cd/cd.png)
 
+V tomto článku se dozvíte, jak pomocí integrovaných úloh Azure IoT Edge pro Azure Pipelines vytvořit dva kanály pro řešení IoT Edge. V úlohách Azure IoT Edge lze použít čtyři akce.
+   - **Azure IoT Edge – image modulu sestavení** přebírají kód řešení IoT Edge a sestavují image kontejneru.
+   - **Image modulu nabízených oznámení Azure IoT Edge** vloží image modulů do registru kontejneru, který jste zadali.
+   - **Azure IoT Edge – vygenerovat manifest nasazení** převezme soubor Deployment. template. JSON a proměnné a pak vygeneruje finální soubor manifestu nasazení IoT Edge.
+   - **Azure IoT Edge – nasazení do IoT Edge zařízení** pomáhá vytvářet IoT Edge nasazení do jednoho nebo více IoT Edge zařízení.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -77,15 +80,15 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte, aby se kan�
     
      ![Konfigurace fondu agentů sestavení](./media/how-to-ci-cd/configure-env.png)
 
-5. Váš kanál je předem nakonfigurovaný s úlohou s názvem **úloha agenta 1**. Vyberte znaménko plus ( **+** ) a přidejte do úlohy tři úkoly: **Azure IoT Edge** dvakrát a **publikujte artefakty sestavení** . (Tlačítko **Přidat** můžete zobrazit tak, že najedete myší na název jednotlivých úkolů.)
+5. Váš kanál je předem nakonfigurovaný s úlohou s názvem **úloha agenta 1**. Vyberte znaménko plus ( **+** ) a přidejte do úlohy tři úkoly: **Azure IoT Edge** dvakrát, **zkopírujte soubory** jednou a **publikujte artefakty sestavení** . (Tlačítko **Přidat** můžete zobrazit tak, že najedete myší na název jednotlivých úkolů.)
 
    ![Přidat úlohu Azure IoT Edge](./media/how-to-ci-cd/add-iot-edge-task.png)
 
-   Po přidání všech tří úkolů bude úloha agenta vypadat jako v následujícím příkladu:
+   Po přidání všech čtyř úkolů bude úloha agenta vypadat jako v následujícím příkladu:
     
    ![Tři úkoly v kanálu sestavení](./media/how-to-ci-cd/add-tasks.png)
 
-6. Vyberte první úlohu **Azure IoT Edge** , kterou chcete upravit. Tato úloha sestaví všechny moduly v řešení s cílovou platformou, kterou zadáte, vygeneruje také soubor **Deployment. JSON** , který oznamuje IoT Edge zařízením, jak nakonfigurovat nasazení.
+6. Vyberte první úlohu **Azure IoT Edge** , kterou chcete upravit. Tato úloha vytvoří všechny moduly v řešení s cílovou platformou, kterou určíte.
 
    * **Zobrazovaný název**: Přijměte výchozí **Image modulu Azure IoT Edge-Build**.
    * **Akce**: Přijměte výchozí **Image modulu buildu**. 
@@ -93,7 +96,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte, aby se kan�
    * **Výchozí platforma**: Vyberte odpovídající platformu pro vaše moduly na základě cílového IoT Edge zařízení. 
    * **Výstupní proměnné**: Výstupní proměnné obsahují referenční název, který lze použít ke konfiguraci cesty k souboru, ve kterém bude vytvořen soubor Deployment. JSON. Nastavte název odkazu na něco, co se zapamatovat jako **Edge**. 
 
-7. Vyberte druhý úkol **Azure IoT Edge** , který chcete upravit. Tato úloha vloží všechny image modulu do registru kontejneru, který jste vybrali. Přidá taky přihlašovací údaje registru kontejneru do souboru **Deployment. JSON** , aby vaše zařízení IoT Edge mělo přístup k obrázkům modulu. 
+7. Vyberte druhý úkol **Azure IoT Edge** , který chcete upravit. Tato úloha vloží všechny image modulu do registru kontejneru, který jste vybrali.
 
    * **Zobrazovaný název**: Zobrazovaný název se automaticky aktualizuje při změně pole akce. 
    * **Akce**: Pomocí rozevíracího seznamu vyberte **Image nabízených modulů**. 
@@ -103,24 +106,32 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte, aby se kan�
 
    Pokud máte více registrů kontejnerů k hostování vaší bitové kopie modulu, budete muset Duplikovat tuto úlohu, vyberte jiný registr kontejneru a použijte **obejít modulu nebo modulech** v upřesňujících nastaveních obejít imagí, které nejsou pro tuto konkrétního registru.
 
-8. Vyberte úlohu **publikování artefaktů sestavení** a upravte ji. Zadejte cestu k souboru nasazení generovanému úlohou sestavení. Nastavte **cestu k publikování** hodnoty tak, aby odpovídala výstupní proměnné, kterou jste nastavili v úloze modulu sestavení. Například, `$(edge.DEPLOYMENT_FILE_PATH)`. Ostatní hodnoty ponechte jako výchozí. 
+8. Vyberte úlohu **kopírování souborů** a upravte ji. Pomocí této úlohy můžete kopírovat soubory do pracovního adresáře artefaktu.
 
-9. Otevřete kartu **triggery** a zaškrtněte políčko pro **Povolení průběžné integrace**. Ujistěte se, že větev, která obsahuje kód je součástí.
+   * **Zobrazovaný název**: Kopírovat soubory do: Odkládací složka.
+   * **Obsah**: Vložte dva řádky do této části `deployment.template.json` a. `**/module.json` Tyto dva typy souborů jsou vstupy pro generování manifestu nasazení IoT Edge. Je nutné zkopírovat do pracovní složky artefaktu a publikovat pro kanál vydaných verzí.
+   * **Cílová složka**: Vložte proměnnou `$(Build.ArtifactStagingDirectory)`. Informace o popisu najdete v tématu věnovaném [proměnným sestavení](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
+
+9. Vyberte úlohu **publikování artefaktů sestavení** a upravte ji. Zadejte cestu pracovního adresáře artefaktu k úloze, aby bylo možné cestu publikovat do kanálu uvolnění.
+   
+   * **Zobrazovaný název**: Publikovat artefakt: drop.
+   * **Cesta pro publikování**: Vložte proměnnou `$(Build.ArtifactStagingDirectory)`. Informace o popisu najdete v tématu věnovaném [proměnným sestavení](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
+   * **Název artefaktu**: drop.
+   * **Umístění pro publikování artefaktu**: Azure Pipelines.
+
+
+10. Otevřete kartu **triggery** a zaškrtněte políčko pro **Povolení průběžné integrace**. Ujistěte se, že větev, která obsahuje kód je součástí.
 
     ![Zapnout trigger průběžné integrace](./media/how-to-ci-cd/configure-trigger.png)
 
-10. Uložte nový kanál sestavení pomocí tlačítka **Save (Uložit** ).
+11. Uložte nový kanál sestavení pomocí tlačítka **Save (Uložit** ).
 
 Tento kanál je teď nakonfigurovaný tak, aby se spouštěl automaticky při vložení nového kódu do úložiště. Poslední úkol, který publikuje artefakty kanálu, aktivuje kanál vydání. Pokračujte k další části a sestavte tak kanál pro vydávání verzí. 
 
 ## <a name="configure-continuous-deployment"></a>Konfigurace průběžného nasazování
 V této části vytvoříte kanál pro vydávání verzí, který je nakonfigurován tak, aby běžel automaticky v případě, že kanál sestavení vyřazuje artefakty a zobrazí v Azure Pipelines protokoly nasazení.
 
-V této části vytvoříte dvě různé fáze, jednu pro testovací nasazení a jednu pro produkční nasazení. 
-
-### <a name="create-test-stage"></a>Vytvořit testovací fázi
-
-Vytvořte nový kanál a nakonfigurujte jeho první fázi pro nasazení služby zabezpečování kvality (QA). 
+Vytvořit nový kanál a přidat novou fázi 
 
 1. V **verze** kartě **+ nový kanál**. Nebo pokud již máte kanály verzí, klikněte na tlačítko **+ Nový** a vyberte **+ Nový kanál vydání**.  
 
@@ -130,9 +141,7 @@ Vytvořte nový kanál a nakonfigurujte jeho první fázi pro nasazení služby 
 
     ![Začít s prázdnou úlohu](./media/how-to-ci-cd/start-with-empty-job.png)
 
-3. Nový kanál vydaných verzí se inicializuje s jednou fází nazvanou **fáze 1**. Přejmenujte fázi 1 na **QA** a považovat ji za testovací prostředí. Kanály průběžného nasazování mají obvykle několik fází. Můžete vytvořit další informace na základě DevOps praxe. Po přejmenování zavřete okno Podrobnosti fáze. 
-
-    ![Vytvořit testovací prostředí fáze](./media/how-to-ci-cd/QA-env.png)
+3. Nový kanál vydaných verzí se inicializuje s jednou fází nazvanou **fáze 1**. Přejmenujte fázi 1 na **vývoj** a považovat ji za testovací prostředí. Kanály průběžného nasazování mají obvykle několik fází včetně **vývoje**, **přípravy** a **produkčního**prostředí. Můžete vytvořit další informace na základě DevOps praxe. Po přejmenování zavřete okno Podrobnosti fáze. 
 
 4. Propojte tuto verzi s artefakty sestavení, které jsou publikovány kanálem sestavení. Klikněte na tlačítko **přidat** v oblasti artefakty.
 
@@ -146,57 +155,46 @@ Vytvořte nový kanál a nakonfigurujte jeho první fázi pro nasazení služby 
 
    ![Konfigurace aktivační události pro průběžné nasazování](./media/how-to-ci-cd/add-a-trigger.png)
 
-7. Fáze kontroly **kvality** je předem nakonfigurovaná s jednou úlohou a nulovými úkoly. V nabídce kanálu vyberte **úlohy** a pak zvolte fázi kontroly **kvality** .  Vyberte úlohu a počet úloh pro konfiguraci úkolů v této fázi.
+7. Fáze **vývoje** je předem nakonfigurovaná s jednou úlohou a nulovými úkoly. V nabídce kanálu vyberte **úlohy** a pak zvolte fázi **vývoje** .  Vyberte úlohu a počet úloh pro konfiguraci úkolů v této fázi.
 
-    ![Konfigurace úloh dotazů a odpovědí](./media/how-to-ci-cd/view-stage-tasks.png)
+    ![Konfigurace úloh vývoje](./media/how-to-ci-cd/view-stage-tasks.png)
 
-8. Ve fázi kontroly kvality by se měla zobrazit úloha výchozího **agenta**. Můžete nakonfigurovat podrobnosti o úloze agenta, ale úloha nasazení je nezávislá na platformě, takže můžete použít buď **hostované VS2017** nebo **hostované Ubuntu 1604** ve **fondu agentů** (nebo jakýkoli jiný agent, který spravujete sami). 
+8. Ve fázi **vývoje** byste měli vidět výchozí **úlohu agenta**. Můžete nakonfigurovat podrobnosti o úloze agenta, ale úloha nasazení je nezávislá na platformě, takže můžete použít buď **hostované VS2017** nebo **hostované Ubuntu 1604** ve **fondu agentů** (nebo jakýkoli jiný agent, který spravujete sami). 
 
-9. Vyberte znaménko plus ( **+** ) a přidejte jeden úkol. Vyhledejte a přidejte **Azure IoT Edge**. 
+9. Vyberte znaménko plus ( **+** ) a přidejte dvě úlohy. Vyhledejte a přidejte **Azure IoT Edge** dvakrát.
 
-    ![Přidání úkolů pro kontrolu kvality](./media/how-to-ci-cd/add-task-qa.png)
+    ![Přidat úkoly pro vývoj](./media/how-to-ci-cd/add-task-qa.png)
 
-10. Vyberte úlohu nový Azure IoT Edge a nakonfigurujte ji s následujícími hodnotami:
+10. Vyberte první úlohu **Azure IoT Edge** a nakonfigurujte ji s následujícími hodnotami:
 
     * **Zobrazovaný název**: Zobrazovaný název se automaticky aktualizuje při změně pole akce. 
-    * **Akce**: Pomocí rozevíracího seznamu vyberte **nasadit a IoT Edge zařízení**. Změna hodnoty akce také aktualizuje zobrazovaný název úlohy tak, aby odpovídal.
+    * **Akce**: Pomocí rozevíracího seznamu vyberte **Generovat Manifest nasazení**. Změna hodnoty akce také aktualizuje zobrazovaný název úlohy tak, aby odpovídal.
+    * **soubor. template. JSON**: Vložte cestu `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`. Cesta je publikovaná z kanálu sestavení.
+    * **Výchozí platforma**: Při sestavování imagí modulu vyberte stejnou hodnotu.
+    * **Výstupní cesta**: Vložte cestu `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`. Tato cesta je konečným souborem manifestu nasazení IoT Edge.
+
+    Tyto konfigurace pomáhají nahradit adresy URL imagí modulu v `deployment.template.json` souboru. **Manifest pro generování nasazení** také pomáhá nahradit proměnné s přesnou hodnotu, kterou jste definovali `deployment.template.json` v souboru. V vs/vs Code zadáváte skutečnou hodnotu v `.env` souboru. V Azure Pipelines nastavíte hodnotu na kartě proměnné kanálu uvolnění. Přejděte na kartu proměnné a nakonfigurujte název a hodnotu následujícím způsobem.
+
+    * **ACR_ADDRESS**: Vaše adresa Azure Container Registry. 
+    * **ACR_PASSWORD**: Vaše heslo Azure Container Registry.
+    * **ACR_USER**: Vaše Azure Container Registry uživatelské jméno.
+
+    Pokud máte v projektu další proměnné, můžete na této kartě zadat název a hodnotu. **Manifest pro generování nasazení** může rozpoznat pouze proměnné v `${VARIABLE}` charakteru, ujistěte se, že je používáte ve vašich `*.template.json` souborech.
+
+    ![Konfigurace proměnných pro kanál verze](./media/how-to-ci-cd/configure-variables.png)
+
+10. Vyberte druhou úlohu **Azure IoT Edge** a nakonfigurujte ji s následujícími hodnotami:
+
+    * **Zobrazovaný název**: Zobrazovaný název se automaticky aktualizuje při změně pole akce. 
+    * **Akce**: Pomocí rozevíracího seznamu vyberte **nasadit pro IoT Edge zařízení**. Změna hodnoty akce také aktualizuje zobrazovaný název úlohy tak, aby odpovídal.
     * **Předplatné Azure**: Vyberte předplatné, které obsahuje vaše IoT Hub.
     * **Název IoT Hub**: Vyberte své Centrum IoT. 
     * **Vyberte jedno nebo více zařízení**: Vyberte, jestli chcete, aby se kanál verze nasadil do jednoho nebo víc zařízení. 
       * Pokud nasadíte do jednoho zařízení, zadejte **ID zařízení IoT Edge**. 
-      * Pokud nasazujete na více zařízení, zadejte **podmínku cíle**zařízení. Cílová podmínka se filtr tak, aby odpovídaly sadu hraničních zařízení ve službě IoT Hub. Pokud chcete použít značky zařízení jako podmínka, musíte aktualizovat dvojče zařízení služby IoT Hub zařízení odpovídající značky. Aktualizujte **ID nasazení IoT Edge** a **prioritu nasazení IoT Edge** v rozšířených nastaveních. Další informace o vytváření nasazení pro více zařízení najdete v tématu [principy IoT Edgeho automatického nasazení](module-deployment-monitoring.md).
+      * Pokud nasazujete na více zařízení, zadejte **podmínku cíle**zařízení. Podmínka cíle je filtr, který odpovídá sadě IoT Edge zařízení v IoT Hub. Pokud chcete použít značky zařízení jako podmínka, musíte aktualizovat dvojče zařízení služby IoT Hub zařízení odpovídající značky. Aktualizujte **ID nasazení IoT Edge** a **prioritu nasazení IoT Edge** v rozšířených nastaveních. Další informace o vytváření nasazení pro více zařízení najdete v tématu [principy IoT Edgeho automatického nasazení](module-deployment-monitoring.md).
+    * Rozbalte položku Rozšířená nastavení, vyberte možnost **ID nasazení IoT Edge**a vložte `$(System.TeamProject)-$(Release.EnvironmentName)`proměnnou. Tím se namapuje název projektu a verze s vaším ID nasazení IoT Edge.
 
 11. Vyberte **Uložit** a uložte změny do nového kanálu vydání. Vraťte se do Zobrazení kanálu výběrem **kanálu** z nabídky. 
-
-### <a name="create-production-stage"></a>Vytvořit fázi výroby
-
-Vytvořte ve svém kanálu pro vydání druhou fázi pro produkční nasazení. 
-
-1. Naklonujte fázi kontroly kvality a vytvořte druhou fázi pro produkci. Najeďte ukazatelem myši na fázi kontroly kvality a pak vyberte tlačítko klonování. 
-
-    ![Klonovat fáze](./media/how-to-ci-cd/clone-stage.png)
-
-2. Výběrem nové fáze s názvem **kopie QA**otevřete její vlastnosti. Změňte název **fáze na produkční**prostředí. Zavřete okno Vlastnosti fáze. 
-
-3. Chcete-li otevřít úkoly fáze výroby, vyberte možnost **úkoly** v nabídce kanál a pak zvolte fázi **výroby** . 
-
-4. Vyberte úlohu Azure IoT Edge, kterou chcete nakonfigurovat, pokud má být v produkčním prostředí. Nastavení nasazení jsou pravděpodobně stejná pro QA a for PROD, s výjimkou toho, že chcete cílit na jiné zařízení nebo sadu zařízení v produkčním prostředí. Aktualizujte pole ID zařízení nebo cílovou podmínku a ID nasazení pro vaše produkční zařízení. 
-
-5. Uložte ho pomocí tlačítka **Uložit** . Pak vyberte **kanál** a vraťte se do Zobrazení kanálu.
-    
-6. Způsob, jakým je tento kanál verze aktuálně nakonfigurovaný, artefakt sestavení aktivuje fázi **QA** a **potom zpracuje** fázi pokaždé, když se nové sestavení nedokončí. Obvykle ale budete chtít integrovat některé testovací případy na zařízeních s QA a ručně schválit nasazení v produkčním prostředí. Pro vytvoření podmínky schválení pro fázi výroby použijte následující postup:
-
-    1. Otevřete panel nastavení **podmínek před nasazením** .
-
-        ![Otevřít před nasazením podmínky](./media/how-to-ci-cd/pre-deploy-conditions.png)    
-
-    2. Přepněte podmínku **schválení před nasazením** na **povoleno**. Do pole schvalovatelé přidejte jednoho nebo více uživatelů  nebo skupin a upravte všechny další požadované zásady schvalování. Pokud chcete změny uložit, zavřete panel podmínky před nasazením.
-    
-       ![Nastavení podmínek](./media/how-to-ci-cd/set-pre-deployment-conditions.png)
-
-
-7. Uložte svůj kanál pro vydávání verzí pomocí tlačítka **Uložit** . 
-
     
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Ověřte IoT Edge CI/CD s sestavení a vydávání kanálů
 
@@ -208,17 +206,21 @@ K aktivaci úlohy sestavení, můžete potvrdíte a vložíte změny do úloži�
 
     ![Ruční aktivační události](./media/how-to-ci-cd/manual-trigger.png)
 
-3. Vyberte úlohu sestavení a sledujte její průběh. Pokud je kanál sestavení úspěšně dokončen, aktivuje vydání verze do fáze pro kontrolu **kvality** . 
+3. Vyberte úlohu sestavení a sledujte její průběh. Pokud je kanál sestavení úspěšně dokončen, aktivuje vydání **vývojové** fáze. 
 
     ![Protokoly o sestavení](./media/how-to-ci-cd/build-logs.png)
 
-4. Úspěšné nasazení do fáze kontroly **kvality** spustí oznámení schvalovateli. Ověřte, že se moduly nasazené úspěšně nasadily na zařízení nebo zařízení, na která cílíte ve fázi kontroly kvality. Potom přejděte na kanál pro vydání a sdělte schválení vydané verze, abyste přešli do fáze výroby, a to tak, že vyberete tlačítko **prod** a pak vyberete **schválit**. 
+4. Úspěšná verze **dev** vytvoří nasazení IoT Edge pro cílení IoT Edge zařízení.
 
-    ![Čeká na schválení](./media/how-to-ci-cd/pending-approval.png)
+    ![Vydání pro vývoj](./media/how-to-ci-cd/pending-approval.png)
 
-5. Jakmile schvalující schválit tuto změnu, je možné nasadit do **produkční**.
+5. Kliknutím na **vývojové** fáze zobrazíte protokoly verzí.
+
+    ![Protokoly verzí](./media/how-to-ci-cd/release-logs.png)
+
+
 
 ## <a name="next-steps"></a>Další postup
-
+* Ukázka osvědčených postupů IoT Edge DevOps v [projektu Azure DevOps pro IoT Edge](how-to-devops-project.md)
 * Vysvětlení nasazení IoT Edge v [vysvětlení nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md)
 * Provede kroky k vytvoření, aktualizace nebo odstranění nasazení v [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md).

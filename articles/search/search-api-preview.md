@@ -3,7 +3,7 @@ title: Verze Preview REST API Azure Search 2019-05-06 – Preview – Azure Sear
 description: Služba Azure Search REST API verze 2019-05-06-Preview zahrnuje experimentální funkce, jako jsou úložiště znalostí a šifrovací klíče spravované zákazníkem.
 services: search
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 29d079c4e21352ced5fdcde44acaee66b79f6af9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7fa280742556b7bc42d2c7fb30c880f836eef62b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876659"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649983"
 ---
 # <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Rozhraní REST API služby Azure Search – verze 2019-05-06 – Preview
 Tento článek popisuje `api-version=2019-05-06-Preview` verzi služby Azure Search REST API, která nabízí experimentální funkce, které ještě nejsou všeobecně dostupné.

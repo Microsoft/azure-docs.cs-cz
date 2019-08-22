@@ -3,19 +3,19 @@ title: Mapování polí pro automatizované indexování pomocí indexerů – A
 description: Nakonfigurujte mapování polí Azure Search indexeru na účet pro rozdíly v názvech polí a reprezentace dat.
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 771a6e413cd08a338da41c09cd6a0da35e28e5e4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b64f6dcecb26e35689ad6f569ade6c7862f06f1a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840650"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648127"
 ---
 # <a name="field-mappings-and-transformations-using-azure-search-indexers"></a>Mapování polí a transformace pomocí Azure Search indexerů
 
@@ -189,7 +189,7 @@ Následující tabulka porovnává různá kódování Base64 řetězce `00>00?0
 | Base64 s odsazením | `MDA+MDA/MDA=` | Používejte znaky bezpečné pro URL a odstraňte odsazení. | Použití standardních znaků Base64 a přidání odsazení |
 | Base64 bez odsazení | `MDA+MDA/MDA` | Použít znaky bezpečné pro URL | Použití standardních znaků base64 |
 | Zabezpečená adresa URL – Base64 s odsazením | `MDA-MDA_MDA=` | Odebrat odsazení | Přidat odsazení |
-| Zabezpečená adresa URL – bez odsazení kódu base64 | `MDA-MDA_MDA` | Žádný | Žádné |
+| Zabezpečená adresa URL – bez odsazení kódu base64 | `MDA-MDA_MDA` | Žádné | Žádné |
 
 <a name="extractTokenAtPositionFunction"></a>
 

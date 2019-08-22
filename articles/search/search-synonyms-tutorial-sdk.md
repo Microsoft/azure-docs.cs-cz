@@ -1,7 +1,7 @@
 ---
-title: Synonyma C# příklad – Azure Search
-description: V tomto C# například informace o postupu přidání funkce synonym do indexu ve službě Azure Search. Mapa synonym je seznam ekvivalentní termíny. Pole s podporou synonymum rozbalte dotazy obsahovat uživatelem zadaný výraz a všech souvisejících synonym.
-manager: cgronlun
+title: C# Příklad synonym – Azure Search
+description: V tomto C# příkladu se dozvíte, jak přidat funkci synonym do indexu v Azure Search. Mapa synonym je seznam ekvivalentních termínů. Pole, která podporují synonymum, rozšiřují dotazy tak, aby zahrnovaly uživatelsky zadaný termín a všechna související synonyma.
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,29 +9,29 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5b81e4b9a8773cc8e4cc76582ccf2df88565d3d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad71a6ab5090e601ef075617edf08c421abebdb0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025158"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647755"
 ---
-# <a name="example-add-synonyms-for-azure-search-in-c"></a>Příklad: Přidání synonym pro službu Azure Search vC#
+# <a name="example-add-synonyms-for-azure-search-in-c"></a>Příklad: Přidat synonyma pro Azure Search vC#
 
 Synonyma rozšiřují dotazy hledáním shody s termíny, které jsou považované za sémantické ekvivalenty vstupního výrazu. Chcete třeba, aby položce auto odpovídaly i dokumenty obsahující termíny automobil a vozidlo. 
 
-Ve službě Azure Search se synonyma definují v *mapě synonym*, pomocí *pravidel mapování*, která přidružují ekvivalentní termíny. Tento příklad popisuje základní kroky pro přidání a synonyma pomocí existujícího indexu. Získáte informace o těchto tématech:
+Ve službě Azure Search se synonyma definují v *mapě synonym*, pomocí *pravidel mapování*, která přidružují ekvivalentní termíny. Tento příklad popisuje základní kroky pro přidání a používání synonym s existujícím indexem. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořit mapu synonym pomocí [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) třídy. 
-> * Nastavte [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) vlastnost pro pole, která by měla podporovat dotazu rozšíření prostřednictvím synonym.
+> * Vytvořte mapu synonym pomocí třídy [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) . 
+> * Nastavte vlastnost [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) pro pole, která by měla podporovat rozbalování dotazů prostřednictvím synonym.
 
-Pole povolené synonymum můžete zadávat dotazy, jak byste normálně učinili. Neexistuje žádná syntaxe dalšího dotazu, požadovaná pro přístup k synonym.
+Můžete zadat dotaz na pole s povoleným synonymem, stejně jako normálně. Pro přístup k synonymům není nutná žádná další syntaxe dotazů.
 
 Můžete vytvořit několik map synonym, zveřejnit je jako prostředky na úrovni služby dostupné pro všechny indexy a potom určit, který se má použít na úrovni pole. V době zpracování dotazu služba Azure Search nejenom prohledá index, ale pokud některé z polí využitých v tomto dotazu má mapu synonym, prohledá i tuto mapu.
 
 > [!NOTE]
-> Synonyma mohou být vytvořeny prostřednictvím kódu programu, ale na portálu. Pokud byste uvítali podporu synonym na portálu Azure Portal, sdělte nám svůj názor na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
+> Synonyma lze vytvořit programově, ale ne na portálu. Pokud byste uvítali podporu synonym na portálu Azure Portal, sdělte nám svůj názor na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -163,18 +163,18 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ~~~
 První dotaz najde dokument z pravidla `five star=>luxury`. Druhý dotaz rozšíří vyhledávání pomocí `internet,wifi` a třetí použije k vyhledání shody v dokumentech `hotel, motel` i `economy,inexpensive=>budget`.
 
-Přidání synonym úplně mění možnosti vyhledávání. V tomto příkladu se nepodařilo vrátit smysluplné výsledky, i když dokumenty v indexu byly relevantní původním dotazům. Povolením synonym můžeme rozšířit index tak, aby zahrnoval běžně používané termíny, a nemusíme přitom nijak upravovat podkladová data v indexu.
+Přidání synonym úplně mění možnosti vyhledávání. V tomto příkladu se v původních dotazech nevrátily smysluplné výsledky, i když by dokumenty v našem rejstříku byly relevantní. Povolením synonym můžeme rozšířit index tak, aby zahrnoval běžně používané termíny, a nemusíme přitom nijak upravovat podkladová data v indexu.
 
 ## <a name="sample-application-source-code"></a>Zdrojový kód ukázkové aplikace
 Úplný zdrojový kód ukázkové aplikace použité v tomto názorném postupu najdete na [Githubu](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejší způsob, jak vyčistit po příkladem je tak, že odstraníte skupinu prostředků obsahující službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
+Nejrychlejší způsob, jak vyčistit po příkladech, odstraněním skupiny prostředků obsahující službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
 
 ## <a name="next-steps"></a>Další postup
 
-Funkce synonym v tomto příkladu jsme vám ukázali C# kód k vytvoření a odesílání pravidla mapování a poté zavolejte mapu synonym v dotazu. Další informace najdete v referenční dokumentaci [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/).
+Tento příklad ukázal funkci synonym v C# kódu pro vytvoření a odeslání pravidel mapování a volání mapy synonym na dotaz. Další informace najdete v referenční dokumentaci [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/).
 
 > [!div class="nextstepaction"]
 > [Synonyma ve službě Azure Search](search-synonyms.md)

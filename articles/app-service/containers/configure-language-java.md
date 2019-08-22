@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 07d44bb54c288202d571f8e664822ecf9b4998be
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 428c470eb633c7727f65c5a9a3afa76bce50b177
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639759"
+ms.locfileid: "69647248"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
@@ -423,7 +423,7 @@ Další informace o tomto tématu najdete v [dokumentaci ke jarnímu spuštění
 ## <a name="configure-java-ee-wildfly"></a>Konfigurace jazyka Java EE (WildFly)
 
 > [!NOTE]
-> Java Enterprise Edition v systému App Service Linux je momentálně ve verzi Preview. Tento zásobník se nedoporučuje pro práci na produkčním prostředí. informace o našich zásobnících Java SE a Tomcat.
+> Java Enterprise Edition v systému App Service Linux je momentálně ve verzi Preview. Tento zásobník se nedoporučuje pro práci na produkčním prostředí.
 
 Azure App Service v systému Linux umožňuje vývojářům v jazyce Java sestavovat, nasazovat a škálovat aplikace Java Enterprise (Java EE) na plně spravovanou službu se systémem Linux.  Základní běhové prostředí Java Enterprise je open source aplikační server [WildFly](https://wildfly.org/) .
 
@@ -434,7 +434,6 @@ Tato část obsahuje následující pododdíly:
 - [Nainstalovat moduly a závislosti](#install-modules-and-dependencies)
 - [Konfigurace zdrojů dat](#configure-data-sources)
 - [Povolit poskytovatele zasílání zpráv](#enable-messaging-providers)
-- [Konfigurace ukládání do mezipaměti správy relací](#configure-session-management-caching)
 
 ### <a name="scale-with-app-service"></a>Škálování pomocí App Service
 
@@ -652,14 +651,121 @@ Postup povolení fazolových bobů v rámci zprávy pomocí Service Bus jako mec
 
 4. Postupujte podle kroků uvedených v části instalace modulů a závislostí s popisovačem XML modulu, závislostmi jar, příkazy rozhraní příkazového řádku JBoss a spouštěcím skriptem pro poskytovatele JMS. Kromě těchto čtyř souborů budete také muset vytvořit soubor XML, který definuje název JNDI pro frontu JMS a téma. Podívejte se na [Toto úložiště](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig) pro referenční konfigurační soubory.
 
-### <a name="configure-session-management-caching"></a>Konfigurace ukládání do mezipaměti správy relací
+## <a name="use-redis-as-a-session-cache-with-tomcat"></a>Použití Redis jako mezipaměti relace s Tomcat
 
-Ve výchozím nastavení App Service v systému Linux bude používat soubory cookie spřažení relací, aby bylo zajištěno, že požadavky klientů se stávajícími relacemi jsou směrovány na stejnou instanci aplikace. Toto výchozí chování nevyžaduje žádnou konfiguraci, ale má určitá omezení:
+Tomcat můžete nakonfigurovat tak, aby používala externí úložiště relací, jako je například [Azure cache pro Redis](/azure/azure-cache-for-redis/). To umožňuje zachovat stav uživatelské relace (například data nákupního košíku), když se uživatel přenese do jiné instance aplikace, například když dojde k automatickému škálování, restartování nebo převzetí služeb při selhání.
 
-- Pokud dojde k restartování instance aplikace nebo snížení kapacity, dojde ke ztrátě stavu uživatelské relace na aplikačním serveru.
-- Pokud mají aplikace delší časový limit relace nebo pevný počet uživatelů, může trvat nějakou dobu, než se nové instance automatického škálování dostanou načíst, protože se budou směrovat jenom nové relace na nově spuštěné instance.
+Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby používala implementaci [PersistentManager](http://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) . Následující kroky vysvětlují tento proces pomocí [správce relací Pivot: Redis-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) jako příklad.
 
-WildFly můžete nakonfigurovat tak, aby používala externí úložiště relací, jako je například [Azure cache pro Redis](/azure/azure-cache-for-redis/). Pokud chcete vypnout směrování na základě souborů cookie relace a povolit, aby nakonfigurované úložiště relací WildFly fungovalo bez rušivého vlivu, budete muset [zakázat existující konfiguraci spřažení instancí ARR](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) .
+1. Otevřete terminál bash a použijte `export <variable>=<value>` k nastavení všech těchto proměnných prostředí.
+
+    | Proměnná                 | Value                                                                      |
+    |--------------------------|----------------------------------------------------------------------------|
+    | RESOURCEGROUP_NAME       | Název skupiny prostředků, která obsahuje vaši instanci App Service.       |
+    | WEBAPP_NAME              | Název vaší App Service instance.                                     |
+    | WEBAPP_PLAN_NAME         | Název vašeho plánu App Service                                          |
+    | OBLAST                   | Název oblasti, ve které je vaše aplikace hostovaná.                           |
+    | REDIS_CACHE_NAME         | Název vaší instance Azure cache pro instanci Redis                           |
+    | REDIS_PORT               | Port SSL, na kterém Redis Cache naslouchá.                             |
+    | REDIS_PASSWORD           | Primární přístupový klíč vaší instance.                                  |
+    | REDIS_SESSION_KEY_PREFIX | Hodnota, kterou určíte k identifikaci klíčů relací, které pocházejí z vaší aplikace. |
+
+    Informace o názvu, portu a přístupu k informacím o Azure Portal najdete v částech **vlastnosti** nebo **přístupové klíče** vaší instance služby.
+
+2. Vytvořte nebo aktualizujte soubor *Src/Main/WebApp/META-INF* vaší aplikace s následujícím obsahem:
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Context path="">
+        <!-- Specify Redis Store -->
+        <Valve className="com.gopivotal.manager.SessionFlushValve" />
+        <Manager className="org.apache.catalina.session.PersistentManager">
+            <Store className="com.gopivotal.manager.redis.RedisStore"
+                   connectionPoolSize="20"
+                   host="${REDIS_CACHE_NAME}.redis.cache.windows.net"
+                   port="${REDIS_PORT}"
+                   password="${REDIS_PASSWORD}"
+                   sessionKeyPrefix="${REDIS_SESSION_KEY_PREFIX}"
+                   timeout="2000"
+            />
+        </Manager>
+    </Context>
+    ```
+
+    Tento soubor určuje a nakonfiguruje implementaci správce relací pro vaši aplikaci. Používá proměnné prostředí, které jste nastavili v předchozím kroku, abyste zachovali informace o svém účtu ze zdrojových souborů.
+
+3. Pomocí FTP nahrajte soubor JAR správce relací do instance App Service a umístěte ho do adresáře */Home/Tomcat/lib* . Další informace najdete v tématu [nasazení aplikace pro Azure App Service pomocí FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp).
+
+4. Zakažte [soubor cookie spřažení relace](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) pro vaši instanci App Service. To můžete provést z Azure Portal tak, že přejdete do aplikace a pak nakonfigurujete nastavení **konfigurace > obecná nastavení > spřažení ARR** na **off**. Alternativně můžete použít následující příkaz:
+
+    ```azurecli
+    az webapp update -g <resource group> -n <webapp name> --client-affinity-enabled false
+    ```
+
+    Ve výchozím nastavení App Service použijí soubory cookie spřažení relace, aby bylo zajištěno, že požadavky klientů se stávajícími relacemi budou směrovány do stejné instance aplikace. Toto výchozí chování nevyžaduje žádnou konfiguraci, ale nemůže zachovat stav uživatelské relace, když se vaše instance aplikace restartuje nebo když se provoz přesměruje na jinou instanci. Když [zakážete existující konfiguraci spřažení instance ARR](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) pro vypnutí směrování založeného na souborech cookie relace, umožníte, aby nakonfigurované úložiště relace fungovalo bez rušivého vlivu.
+
+5. Přejděte do části **vlastnosti** instance App Service a najděte **Další odchozí IP adresy**. Tyto možnosti označují všechny možné odchozí IP adresy pro vaši aplikaci. Zkopírujte je pro použití v dalším kroku.
+
+6. Pro každou IP adresu vytvořte v mezipaměti Azure pro instanci Redis pravidlo brány firewall. To můžete provést na Azure Portal z části **Brána firewall** vaší instance Redis. Zadejte jedinečný název pro každé pravidlo a nastavte **Počáteční IP adresu** a hodnoty KONCOVých **IP** adres na stejnou IP adresu.
+
+7. Přejděte do části **Rozšířená nastavení** instance Redis a nastavte možnost **povoluje přístup pouze přes protokol SSL** . Tím umožníte, aby vaše instance App Service komunikovala s mezipamětí Redis prostřednictvím infrastruktury Azure.
+
+8. Aktualizujte konfiguraci v souboru *pom. XML* vaší aplikace tak, aby odkazovala na informace o účtu Redis. `azure-webapp-maven-plugin` Tento soubor používá proměnné prostředí, které jste předtím nastavili, aby byly informace o svém účtu ze zdrojových souborů.
+
+    V případě potřeby přejděte `1.7.0` na aktuální verzi [modulu plug-in Maven pro Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme).
+
+    ```xml
+    <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <configuration>
+
+            <!-- Web App information -->
+            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+            <appServicePlanName>${WEBAPP_PLAN_NAME}-${REGION}</appServicePlanName>
+            <appName>${WEBAPP_NAME}-${REGION}</appName>
+            <region>${REGION}</region>
+            <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
+
+            <appSettings>
+                <property>
+                    <name>REDIS_CACHE_NAME</name>
+                    <value>${REDIS_CACHE_NAME}</value>
+                </property>
+                <property>
+                    <name>REDIS_PORT</name>
+                    <value>${REDIS_PORT}</value>
+                </property>
+                <property>
+                    <name>REDIS_PASSWORD</name>
+                    <value>${REDIS_PASSWORD}</value>
+                </property>
+                <property>
+                    <name>REDIS_SESSION_KEY_PREFIX</name>
+                    <value>${REDIS_SESSION_KEY_PREFIX}</value>
+                </property>
+                <property>
+                    <name>JAVA_OPTS</name>
+                    <value>-Xms2048m -Xmx2048m -DREDIS_CACHE_NAME=${REDIS_CACHE_NAME} -DREDIS_PORT=${REDIS_PORT} -DREDIS_PASSWORD=${REDIS_PASSWORD} IS_SESSION_KEY_PREFIX=${REDIS_SESSION_KEY_PREFIX}</value>
+                </property>
+
+            </appSettings>
+
+        </configuration>
+    </plugin>
+    ```
+
+9. Znovu sestavte a nasaďte aplikaci.
+
+    ```bash
+    mvn package
+    mvn azure-webapp:deploy
+    ```
+
+Vaše aplikace teď bude používat Redis Cache pro správu relací.
+
+Ukázku, kterou můžete použít k otestování těchto pokynů, najdete v tématu [škálování-Stateful-Java-Web-App-on-Azure](https://github.com/Azure-Samples/scaling-stateful-java-web-app-on-azure) úložiště na GitHubu.
 
 ## <a name="docker-containers"></a>Kontejnery Dockeru
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 0f8942d92958ee8add9645239cc5664a4a96bb33
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f411771fbf39a99642506253fc025d6b29840423
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533351"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648647"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události IoT Hub pomocí Event Grid k aktivaci akcí
 
@@ -72,7 +72,7 @@ Následující příklad ukazuje schéma události připojené k zařízení:
 
 ### <a name="device-telemetry-schema"></a>Schéma telemetrie zařízení
 
-Zpráva telemetrie zařízení musí být v platném formátu JSON se sadou contentType nastavenou na JSON a contentEncoding nastavenou na UTF-8 ve [vlastnostech systému](iot-hub-devguide-routing-query-syntax.md#system-properties)zpráv. Pokud tato akce není nastavena, IoT Hub zapíše zprávy ve formátu kódování Base 64.
+Zpráva telemetrie zařízení musí být v platném formátu JSON se sadou contentType nastavenou na **Application/JSON** a contentEncoding nastavenou na **UTF-8** ve [vlastnostech systému](iot-hub-devguide-routing-query-syntax.md#system-properties)zpráv. U obou těchto vlastností se nerozlišují malá a velká písmena. Pokud není kódování obsahu nastaveno, IoT Hub zapíše zprávy ve formátu kódování Base 64.
 
 Události telemetrie zařízení můžete rozšířit předtím, než se publikují do Event Grid tím, že vyberete koncový bod jako Event Grid. Další informace najdete v tématu [Přehled rozšíření zpráv](iot-hub-message-enrichments-overview.md).
 
@@ -174,9 +174,9 @@ Předmět událostí IoT používá formát:
 devices/{deviceId}
 ```
 
-Event Grid také umožňuje filtrování atributů každé události, včetně obsahu dat. To vám umožní vybrat, které události budou doručeny do obsahu na základě zprávy telemetrie. Příklady zobrazení najdete v tématu [Rozšířené filtrování](../event-grid/event-filtering.md#advanced-filtering) . Pro filtrování těla zprávy telemetrie musíte nastavit contentType na JSON a contentEncoding na UTF-8 ve [vlastnostech systému](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)zpráv.
+Event Grid také umožňuje filtrování atributů každé události, včetně obsahu dat. To vám umožní vybrat, které události budou doručeny do obsahu na základě zprávy telemetrie. Příklady zobrazení najdete v tématu [Rozšířené filtrování](../event-grid/event-filtering.md#advanced-filtering) . Pro filtrování těla zprávy telemetrie musíte nastavit contentType na **Application/JSON** a ContentEncoding na **UTF-8** ve [vlastnostech systému](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)zpráv. U obou těchto vlastností se nerozlišují malá a velká písmena.
 
-Pro události netelemetrie, jako jsou DeviceConnected, DeviceDisconnected, DeviceCreated a DeviceDeleted, je možné při vytváření předplatného použít filtrování Event Grid. Pro události telemetrie se kromě filtrování v Event Grid můžou uživatelé také filtrovat na základě vlákna zařízení, vlastností a textu zprávy pomocí dotazu směrování zpráv. Vytvoříme výchozí [trasu](iot-hub-devguide-messages-d2c.md) v IoT Hub na základě vašeho Event Grid předplatného pro telemetrii zařízení. Tato jediná trasa dokáže zvládnout všechna Vaše předplatná Event Grid. Chcete-li filtrovat zprávy před odesláním dat telemetrie, můžete aktualizovat [dotaz směrování](iot-hub-devguide-routing-query-syntax.md). Všimněte si, že dotaz směrování lze použít na tělo zprávy pouze v případě, že tělo je JSON. Ve [vlastnostech systému](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)zpráv musíte také nastavit CONTENTTYPE na JSON a CONTENTENCODING na UTF-8.
+Pro události netelemetrie, jako jsou DeviceConnected, DeviceDisconnected, DeviceCreated a DeviceDeleted, je možné při vytváření předplatného použít filtrování Event Grid. Pro události telemetrie se kromě filtrování v Event Grid můžou uživatelé také filtrovat na základě vlákna zařízení, vlastností a textu zprávy pomocí dotazu směrování zpráv. Vytvoříme výchozí [trasu](iot-hub-devguide-messages-d2c.md) v IoT Hub na základě vašeho Event Grid předplatného pro telemetrii zařízení. Tato jediná trasa dokáže zvládnout všechna Vaše předplatná Event Grid. Chcete-li filtrovat zprávy před odesláním dat telemetrie, můžete aktualizovat [dotaz směrování](iot-hub-devguide-routing-query-syntax.md). Všimněte si, že dotaz směrování lze použít na tělo zprávy pouze v případě, že tělo je JSON. Ve [vlastnostech systému](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)zpráv musíte také nastavit ContentType na **Application/JSON** a contentEncoding na **UTF-8** .
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Omezení pro události připojené k zařízení a odpojené zařízení
 

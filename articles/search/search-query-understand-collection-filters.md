@@ -1,13 +1,13 @@
 ---
-title: Principy filtrů kolekce OData – Azure Search
-description: Principy fungování filtry kolekcí OData ve službě Azure Search dotazy.
+title: Porozumění filtrům kolekce OData – Azure Search
+description: Porozumění způsobu, jakým filtry kolekce OData fungují v Azure Searchch dotazech.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,46 +19,46 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 7af1b0ab95d04249d6d74e3324dbeb30eda6e1de
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c3a0205f5a9ac5115e78f1bc11f70b2c50a9714
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079597"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647412"
 ---
-# <a name="understanding-odata-collection-filters-in-azure-search"></a>Principy filtrů kolekce OData ve službě Azure Search
+# <a name="understanding-odata-collection-filters-in-azure-search"></a>Principy filtrů kolekce OData v Azure Search
 
-K [filtr](query-odata-filter-orderby-syntax.md) v kolekci polí ve službě Azure Search, můžete použít [ `any` a `all` operátory](search-query-odata-collection-operators.md) spolu s **výrazy lambda**. Výrazy lambda jsou logické výrazy, které odkazují **proměnnou rozsahu**. `any` a `all` operátory jsou obdobou `for` smyčky ve většině programovacích jazyků, se proměnné rozsahu, přičemž role proměnná smyčky a výraz lambda jako tělo smyčky. Proměnná rozsahu přebírá hodnotu "aktuální" kolekce během iterace smyčky.
+Chcete-li [filtrovat](query-odata-filter-orderby-syntax.md) pole kolekce v Azure Search, můžete použít [ `any` operátory a `all` ](search-query-odata-collection-operators.md) společně s **lambda výrazy**. Výrazy lambda jsou logické výrazy, které odkazují na **proměnnou rozsahu**. Operátory `any` `for` a `all` jsou analogické jako smyčka ve většině programovacích jazyků, přičemž proměnná rozsahu přebírá roli proměnné smyčky a výraz lambda jako tělo smyčky. Proměnná rozsahu během iterace smyčky převezme hodnotu "Current" kolekce.
 
-Na nejnižší, který je, jak to funguje koncepčně. Azure Search ve skutečnosti implementuje filtry velmi jiným způsobem, jak `for` smyčky práce. V ideálním případě by tento rozdíl neviditelná pro vás, ale v některých situacích není. Konečným výsledkem bude, že jsou pravidla, které je třeba dodržovat při psaní výrazů lambda.
+Alespoň to funguje koncepčně. Ve skutečnosti Azure Search implementuje filtry ve velmi jiném způsobu, jak `for` cykly fungují. V ideálním případě by tento rozdíl byl neviditelný, ale v některých situacích to není. Konečným výsledkem je, že existují pravidla, která je nutné provést při psaní výrazů lambda.
 
-Tento článek vysvětluje, proč existují pravidla pro kolekci filtrů ukážou, jak Azure Search spustí tyto filtry. Pokud píšete rozšířené filtry s komplexní lambda výrazy, vám můžou pomoct v tomto článku v budově pochopíte co je možné ve filtrech a proč.
+V tomto článku se dozvíte, proč pravidla pro filtry kolekcí existují. Prozkoumejte, jak Azure Search tyto filtry spouští. Pokud píšete Pokročilé filtry pomocí složitých výrazů lambda, může být tento článek užitečný při vytváření znalostí o tom, co je možné ve filtrech a proč.
 
-Informace o tom, co pravidel jsou kolekce filtrů, včetně příkladů, najdete v části [filtry kolekce řešení potíží s OData ve službě Azure Search](search-query-troubleshoot-collection-filters.md).
+Informace o tom, jaká pravidla filtrů kolekcí jsou, včetně příkladů, najdete [v tématu řešení potíží s filtry kolekce OData v Azure Search](search-query-troubleshoot-collection-filters.md).
 
-## <a name="why-collection-filters-are-limited"></a>Proč jsou omezené kolekci filtrů
+## <a name="why-collection-filters-are-limited"></a>Proč jsou filtry kolekcí omezené
 
-Existují tři základní důvody, případně proč bezpečná není všechny typy kolekcí, které podporují všechny funkce filtru:
+Existují tři základní důvody, proč nejsou všechny funkce filtru podporovány pro všechny typy kolekcí:
 
-1. Pouze některé operátory jsou podporovány pro určitých datových typů. Například nemá smysl pro porovnání logické hodnoty `true` a `false` pomocí `lt`, `gt`, a tak dále.
-1. Azure Search nepodporuje **korelační hledání** na pole typu `Collection(Edm.ComplexType)`.
-1. Azure Search používá obrácený indexy, které provádějí filtry nad všemi typy dat, včetně kolekcí.
+1. Pro určité typy dat jsou podporovány pouze některé operátory. Například nemá smysl porovnat logické `true` hodnoty a `false` použít `lt`, `gt`a tak dále.
+1. Azure Search nepodporuje **korelační hledání** polí typu `Collection(Edm.ComplexType)`.
+1. Azure Search používá obrácené indexy ke spouštění filtrů přes všechny typy dat, včetně kolekcí.
 
-Prvním důvod je právě důsledkem jak jsou definované jazyka OData a systém typů modelu EDM. Poslední dva jsou vysvětlené podrobněji ve zbývající části tohoto článku.
+Prvním důvodem je pouze důsledek, jak jsou definovány jazyky OData a systém typů EDM. Poslední dva jsou podrobněji vysvětleny ve zbývající části tohoto článku.
 
-## <a name="correlated-versus-uncorrelated-search"></a>Korelační a bez korelace nejsou vyhledávání
+## <a name="correlated-versus-uncorrelated-search"></a>Prokorelujd versus nekorelační hledání
 
-Při použití více kritéria filtru v rámci kolekce komplexních objektů, kritéria jsou **korelační** vzhledem k tomu, že se vztahují na *každý objekt v kolekci*. Například následující filtr vrátí hotely, které mají alespoň jednu deluxe místnosti s rychlostí nižší než 100:
+Při použití více kritérií filtru v rámci kolekce složitých objektů jsou kritéria korelace , protože se vztahují na *každý objekt v kolekci*. Například následující filtr vrátí hotely, které mají alespoň jednu Deluxe místnost s frekvencí menší než 100:
 
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
 
-Pokud se filtrování *bez korelace nejsou*, výše uvedený filtr může vrátit ohodnotit hotely, kde je jediná místnost deluxe a jiné místnosti má nastavenu základní hodnotu menší než 100. Který by nedávalo smysl, protože obě klauzule výrazu lambda použít u stejné proměnné rozsahu, a to `room`. To je důvod, proč se korelují tyto filtry.
+Pokud filtrování nekoreluje, může výše uvedený filtr vracet hotely, kde je jedna místnost Deluxe a jiné místnosti má základní sazbu nižší než 100. To by nevedlo smysl, protože obě klauzule výrazu lambda se vztahují na stejnou proměnnou rozsahu, konkrétně `room`. To je důvod, proč se tyto filtry korelují.
 
-Ale pro fulltextové vyhledávání, neexistuje žádný způsob, jak odkazovat na konkrétní rozsah proměnné. Pokud používáte fielded vyhledávání pro vydávání [úplné dotazů Lucene](query-lucene-syntax.md) tohoto objektu, jako jsou:
+Pro fulltextové vyhledávání ale neexistuje žádný způsob, jak odkazovat na konkrétní proměnnou rozsahu. Pokud k vystavení [úplného dotazu Lucene](query-lucene-syntax.md) , jako je tato, použijete pole hledání:
 
     Rooms/Type:deluxe AND Rooms/Description:"city view"
 
-hotels zpět ve kterém je jediná místnost deluxe a jiné místnosti uvádí "city zobrazení" se může zobrazit v popisu. Například následujícím dokumentu s `Id` z `1` by odpovídala dotazu:
+Můžete se dostat do hotelů, kde je jedna místnost Deluxe, a v popisu se zobrazí jiné místo "město". Například dokument uvedený níže se shoduje s `Id` `1` dotazem:
 
 ```json
 {
@@ -80,39 +80,39 @@ hotels zpět ve kterém je jediná místnost deluxe a jiné místnosti uvádí "
 }
 ```
 
-Důvodem je, že `Rooms/Type` odkazuje na všechny analyzované podmínky `Rooms/Type` pole v celém dokumentu a podobně pro `Rooms/Description`, jak je znázorněno v následujících tabulkách.
+Důvodem je, že `Rooms/Type` odkazuje na všechny analyzované výrazy `Rooms/Type` v celém dokumentu a podobně pro `Rooms/Description`, jak je znázorněno v následujících tabulkách.
 
 Jak `Rooms/Type` je uloženo pro fulltextové vyhledávání:
 
-| Výraz v `Rooms/Type` | ID dokumentu |
+| Termín`Rooms/Type` | ID dokumentů |
 | --- | --- |
 | deluxe | 1, 2 |
 | standard | 1 |
 
 Jak `Rooms/Description` je uloženo pro fulltextové vyhledávání:
 
-| Výraz v `Rooms/Description` | ID dokumentu |
+| Termín`Rooms/Description` | ID dokumentů |
 | --- | --- |
-| dvůr | 2 |
+| courtyard | 2 |
 | city | 1 |
 | zahrada | 1 |
-| Velké | 1 |
-| motel | 2 |
-| Místnosti | 1, 2 |
+| velké | 1 |
+| Motel | 2 |
+| konverzační | 1, 2 |
 | standard | 1 |
-| Sada | 1 |
-| zobrazit | 1 |
+| sad | 1 |
+| zobrazení | 1 |
 
-Proto na rozdíl od výše filtru, která v podstatě říká "odpovídaly i dokumenty, kde má prostor `Type` rovno"Deluxe místnosti"a **této stejné místnosti** má `BaseRate` kratší než 100", říká vyhledávací dotaz "shoda dokumenty, kde `Rooms/Type`má termín "deluxe" a `Rooms/Description` má frázi "city zobrazení". Neexistuje žádná koncepce jednotlivé místnosti, jejichž pole může být korelována v druhém případě.
+Proto na rozdíl od výše uvedeného filtru, který v podstatě říká "odpovídání na dokumenty, `Type` kde se místnost rovná" Deluxe místnost "a **že stejná místnost** má `BaseRate` méně než 100", vyhledávací dotaz znamená "odpovídání `Rooms/Type` na dokumenty", kde má výraz "Deluxe "a `Rooms/Description` má frázi" zobrazení měst ". Neexistuje žádný koncept jednotlivých místností, jejichž pole je možné v druhém případě sladit.
 
 > [!NOTE]
-> Pokud jste chtěli podporu pro korelační vyhledávání přidat do služby Azure Search, prosím hlasovat pro [tuto položku User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections).
+> Pokud chcete zobrazit podporu pro korelační vyhledávání přidané do Azure Search, Hlasujte prosím pro [tuto položku uživatelského hlasu](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections).
 
-## <a name="inverted-indexes-and-collections"></a>Obráceným indexy a kolekce
+## <a name="inverted-indexes-and-collections"></a>Obrácené indexy a kolekce
 
-Mohli jste si všimnout, že jsou mnohem méně omezení pro výrazy lambda přes komplexní kolekce než je například jednoduché kolekce pro `Collection(Edm.Int32)`, `Collection(Edm.GeographyPoint)`, a tak dále. Je to proto Azure Search ukládá komplexní kolekce jako skutečné kolekce dílčí dokumentů, zatímco jednoduché kolekce nejsou uložené jako kolekce vůbec.
+Možná jste si všimli, že existuje mnohem méně omezení pro výrazy lambda přes složitou kolekci `Collection(Edm.Int32)`, než je pro jednoduché kolekce, `Collection(Edm.GeographyPoint)`například, a tak dále. Důvodem je to, že Azure Search ukládá komplexní kolekce jako skutečné kolekce poddokumentů, zatímco jednoduché kolekce nejsou uloženy ve všech kolekcích.
 
-Představte si třeba pole kolekce filterable řetězce jako `seasons` v indexu pro online prodejce. Některé dokumenty uložené pro tento index může vypadat takto:
+Představte si například pole pro shromažďování řetězců, jako `seasons` je třeba v indexu pro online prodejce. Některé dokumenty nahrané do tohoto indexu můžou vypadat takto:
 
 ```json
 {
@@ -136,18 +136,18 @@ Představte si třeba pole kolekce filterable řetězce jako `seasons` v indexu 
 }
 ```
 
-Hodnoty `seasons` pole jsou uloženy ve struktuře s názvem **obrácený index**, která vypadá přibližně takto:
+Hodnoty `seasons` pole jsou uloženy ve struktuře s názvem **obrácený index**, který vypadá přibližně takto:
 
-| Termín | ID dokumentu |
+| Termín | ID dokumentů |
 | --- | --- |
-| Spring | 1, 2 |
+| návratu | 1, 2 |
 | letní | 1 |
-| spadají | 1, 2 |
-| na zimní | 2, 3 |
+| narozeniny | 1, 2 |
+| Zimní | 2, 3 |
 
-Tuto datovou strukturu je navržené pro odpověď na otázku jeden s skvělé rychlost: V dokumenty, které daný pojem zřejmě? Odpovědi na tuto otázku pracuje podobně jako kontrolu rovnosti jednoduché než smyčce přes kolekce. Ve skutečnosti to je důvod, proč pro kolekce řetězců, Azure Search umožňuje pouze `eq` jako operátor porovnání uvnitř výrazu lambda pro `any`.
+Tato datová struktura je navržená tak, aby odpovídala jedné otázce s velkou rychlostí: Ve kterých dokumentech se daný pojem zobrazuje? Zodpovězení této otázky funguje více jako při jednoduché kontrole rovnosti než smyčka nad kolekcí. Ve skutečnosti to je důvod, proč pro kolekce řetězců Azure Search umožňuje `eq` pouze jako operátor porovnání uvnitř výrazu lambda pro. `any`
 
-Vytváření z rovnosti, dále podíváme na tom, jak je možné kombinovat více kontroly rovnosti na proměnnou rozsahu s `or`. Funguje díky algebraický a [distributivních vlastnost kvantifikátory](https://en.wikipedia.org/wiki/Existential_quantification#Negation). Tento výraz:
+Sestavování od rovnosti: dále se podíváme na to, jak je možné zkombinovat více kontrol rovnosti na stejnou `or`proměnnou rozsahu s. Díky algebraický a [vlastnictví kvantifikátorů](https://en.wikipedia.org/wiki/Existential_quantification#Negation)to funguje. Tento výraz:
 
     seasons/any(s: s eq 'winter' or s eq 'fall')
 
@@ -155,7 +155,7 @@ je ekvivalentní:
 
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
 
-a každý z nich `any` dílčí výrazy mohou být provedeny efektivně, pomocí obrácenou indexu. Navíc k [negace práva kvantifikátory](https://en.wikipedia.org/wiki/Existential_quantification#Negation), tento výraz:
+a každý ze dvou `any` dílčích výrazů je možné efektivně provádět pomocí obráceného indexu. V důsledku toho, že se jedná o [zákon o negaci kvantifikátorů](https://en.wikipedia.org/wiki/Existential_quantification#Negation), tento výraz:
 
     seasons/all(s: s ne 'winter' and s ne 'fall')
 
@@ -163,33 +163,33 @@ je ekvivalentní:
 
     not seasons/any(s: s eq 'winter' or s eq 'fall')
 
-Proto je možné použít `all` s `ne` a `and`.
+což je důvod, proč je možné použít `all` s `ne` a `and`.
 
 > [!NOTE]
-> I když podrobnosti jsou nad rámec tohoto dokumentu, tyto stejné zásady rozšířit [vzdálenosti a průnik testy pro kolekce geoprostorového bodů](search-query-odata-geo-spatial-functions.md) také. To je důvod, proč v `any`:
+> I když jsou podrobnosti nad rámec tohoto dokumentu, tyto stejné principy se také rozšíří na [dálkovou a Mezioddílové testy pro kolekce geograficky prostorových bodů](search-query-odata-geo-spatial-functions.md) . To je důvod, proč `any`v:
 >
-> - `geo.intersects` Nelze se bude negovat
-> - `geo.distance` musí být porovnány pomocí `lt` nebo `le`
-> - výrazy musí být kombinován se `or`, nikoli `and`
+> - `geo.intersects`nemůže být negace
+> - `geo.distance`musí být porovnány `lt` pomocí nebo`le`
+> - výrazy musí být kombinovány `or`s, ne`and`
 >
-> Konverzace pravidla platí pro `all`.
+> Pravidla konverzace platí pro `all`.
 
-Širší výrazů jsou povoleny v případě, že filtrování na kolekce dat typy, které podporují `lt`, `gt`, `le`, a `ge` operátory, jako například `Collection(Edm.Int32)` třeba. Konkrétně můžete použít `and` stejně jako `or` v `any`, tak dlouho, dokud základní výrazy porovnání jsou sloučeny do **rozsahu porovnání** pomocí `and`, které jsou pak dále kombinované pomocí `or`. Tato struktura logické výrazy se nazývá [disjunktivní normální formuláře (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form), jinak známé jako "OR a". Naopak, lambda výrazy pro `all` pro tyto datové typy musí být v [formuláře možností (pojivové normální CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form), jinak známé jako "Operátoru and or". Služba Azure Search umožňuje takové porovnání rozsahu, protože může spustit, je pomocí obrácený indexy efektivně, stejně to můžete provést rychlé termín vyhledávání pro řetězce.
+Při filtrování kolekcí datových `lt`typů, které podporují operátory `le`, `gt`, a `ge` , jako `Collection(Edm.Int32)` například, jsou povoleny širší škály výrazů. Konkrétně můžete `and` použít stejně jako `or` v `any`, pokud jsou základní výrazy porovnání zkombinovány do **porovnávání rozsahů** pomocí `and`, které jsou poté dále kombinovány pomocí `or`. Tato struktura logických výrazů se nazývá [Disjunctive Normal Form (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form), jinak se označuje jako "ORS of and". Naopak výrazy lambda pro `all` pro tyto datové typy musí být v [conjunctive normální formě (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form), jinak označované jako "and of ORS". Azure Search umožňuje toto porovnání rozsahu, protože je může spouštět pomocí obrácených indexů, stejně jako může provádět rychlé vyhledávání řetězců.
 
-Stručně řečeno tady jsou hrubé odhady pro je povolené ve výrazu lambda:
+Tady jsou shrnutá pravidla pro to, co je ve výrazu lambda povolené:
 
-- Uvnitř `any`, *kladné kontroly* jsou vždy povolena, jako jsou operátory rovnosti, porovnání rozsahu `geo.intersects`, nebo `geo.distance` ve srovnání s `lt` nebo `le` (přemýšlení "těsnost", jako je například rovnost při rozhodování o kontrolu vzdálenost).
-- Uvnitř `any`, `or` je vždycky povolená. Můžete použít `and` pouze pro datové typy, které můžete vyjádřit kontroly rozsahu a pouze tehdy, pokud použijete or operátoru and (DNF).
-- Uvnitř `all`, pravidla se vrátit zpět – pouze *záporné kontroly* jsou povolené, můžete použít `and` vždy, můžete si `or` pouze pro rozsah kontroly, vyjádřené jako operátoru and z or (možností CNF).
+- Uvnitř `any`jsou *pozitivní kontroly* vždy povoleny, `geo.intersects`jako je rovnost, porovnávání rozsahů nebo `geo.distance` porovnání s `lt` nebo `le` (Představte "těsnost" jako rovnost, pokud je to možné. vzdálenost).
+- Uvnitř `any`jevždypovoleno `or` . Můžete použít `and` pouze pro datové typy, které mohou vyjádřit kontroly rozsahu a pouze v případě, že používáte ORS of and (DNF).
+- V `all`rámci jsou pravidla stornována – jsou povoleny pouze *záporné kontroly* , můžete použít `and` možnost Always a můžete použít `or` pouze pro kontroly rozsahu vyjádřené jako and of ORS (CNF).
 
-V praxi jsou tyto typy filtrů, které budete nejpravděpodobněji i přesto použít. Je to pomůže vám pochopit, co je ale možné hranice.
+V praxi se jedná o typy filtrů, které nejpravděpodobněji budete chtít použít. Stále je dobré pochopit hranice toho, co je možné, i když.
 
-Konkrétní příklady, které druhy filtry jsou povolené a které nejsou, naleznete v tématu [jak platnou kolekci filtrů zápisu](search-query-troubleshoot-collection-filters.md#bkmk_examples).
+Konkrétní příklady, které typy filtrů jsou povolené a které nejsou, najdete v tématu [Postup zápisu platných filtrů kolekcí](search-query-troubleshoot-collection-filters.md#bkmk_examples).
 
 ## <a name="next-steps"></a>Další postup  
 
-- [Řešení potíží s filtry kolekcí OData ve službě Azure Search](search-query-troubleshoot-collection-filters.md)
-- [Filtry ve službě Azure Search](search-filters.md)
-- [Přehled o výraz jazyka OData pro službu Azure Search](query-odata-filter-orderby-syntax.md)
-- [Reference k syntaxi výrazů OData pro službu Azure Search](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;rozhraní REST API služby Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Řešení potíží s filtry kolekce OData v Azure Search](search-query-troubleshoot-collection-filters.md)
+- [Filtry v Azure Search](search-filters.md)
+- [Přehled jazyka výrazů OData pro Azure Search](query-odata-filter-orderby-syntax.md)
+- [Referenční dokumentace syntaxe výrazu OData pro Azure Search](search-query-odata-syntax-reference.md)
+- [Hledat dokumenty &#40;Azure Search REST API služby&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

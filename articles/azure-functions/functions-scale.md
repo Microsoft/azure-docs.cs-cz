@@ -1,24 +1,21 @@
 ---
 title: Azure Functions škálování a hostování | Microsoft Docs
 description: Naučte se vybírat mezi plánem Azure Functions spotřebu a plánem Premium.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: funkce Azure Functions, funkce, plán spotřeby, plán Premium, zpracování událostí, Webhooky, dynamická výpočetní funkce a architektura bez serveru
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdef1457254b6deb8a0b791b11c94154518b4301
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636444"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874935"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions škálování a hostování
 
@@ -143,9 +140,6 @@ Další informace o typech účtů úložiště najdete v tématu [představení
 V plánech spotřeby a Premium Azure Functions infrastruktura škálovat prostředky procesoru a paměti přidáním dalších instancí hostitele Functions na základě počtu událostí, na kterých se funkce aktivuje. Každá instance hostitele Functions v plánu spotřeby je omezená na 1,5 GB paměti a jeden procesor.  Instance hostitele je celá aplikace Function App, což znamená, že všechny funkce v rámci aplikace Function App sdílejí prostředky v rámci instance a škálují ve stejnou dobu. Aplikace Function App, které sdílejí stejný plán spotřeby, se škálují nezávisle.  V plánu Premium bude velikost vašeho plánu určovat dostupnou paměť a procesor pro všechny aplikace v tomto plánu na této instanci.  
 
 Soubory s kódem funkce jsou uložené ve sdílených složkách služby soubory Azure na hlavním účtu úložiště funkce. Když odstraníte hlavní účet úložiště aplikace Function App, soubory s kódem funkce se odstraní a nelze je obnovit.
-
-> [!NOTE]
-> Při použití triggeru objektu BLOB v plánu spotřeby může při zpracování nových objektů BLOB docházet ke zpoždění až 10 minut. K tomuto zpoždění dochází, když se aplikace Function App nečinný. Po spuštění aplikace Function App se objekty blob zpracovávají okamžitě. Chcete-li se vyhnout této prodlevě při startu, použijte plán Premium nebo použijte [aktivační událost Event Grid](functions-bindings-event-grid.md). Další informace najdete v [článku odkaz na vazbu triggeru objektu BLOB](functions-bindings-storage-blob.md#trigger).
 
 ### <a name="runtime-scaling"></a>Škálování za běhu
 

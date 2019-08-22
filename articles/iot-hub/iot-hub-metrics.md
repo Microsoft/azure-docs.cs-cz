@@ -1,119 +1,122 @@
 ---
-title: Použití metrik k monitorování Azure IoT Hub | Dokumentace Microsoftu
-description: Jak používat Azure IoT Hub metriky vyhodnocování a sledování celkového stavu vašeho centra IoT hub.
+title: Monitorování IoT Hub Azure pomocí metriky | Microsoft Docs
+description: Jak používat metriky Azure IoT Hub k vyhodnocení a monitorování celkového stavu vašich Center IoT Hub.
 author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 6afebfe9a5db713e31fed0acd2e8ad7244f30037
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 948cdb2ab1af3fe93566497186c025f7f8f39b2e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274921"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877077"
 ---
-# <a name="understand-iot-hub-metrics"></a>Vysvětlení metriky služby IoT Hub
+# <a name="understand-iot-hub-metrics"></a>Pochopení IoT Hub metriky
 
-Metrika služby IoT Hub poskytuje lepší data o stavu prostředků Azure IoT ve vašem předplatném Azure. Metriky služby IoT Hub umožňují posouzení celkového stavu služby IoT Hub a zařízení k němu připojená. Přístupných statistiky jsou důležité, protože pomáhají můžete zjistit, co se děje s vaší problémy IoT hub a nápovědu původních příčin aniž byste museli kontaktovat podporu Azure.
+IoT Hub metriky poskytují lepší údaje o stavu prostředků Azure IoT ve vašem předplatném Azure. IoT Hub metriky umožňují posoudit celkový stav služby IoT Hub a zařízení, která jsou k ní připojená. Uživatelsky orientované statistiky jsou důležité, protože vám pomůžou zjistit, co se chystá ve službě IoT Hub, a problémy s hlavními příčinami, aniž byste museli kontaktovat podporu Azure.
 
-Ve výchozím nastavení jsou povolené metriky. Můžete zobrazit metriky služby IoT Hub na webu Azure Portal.
+Metriky jsou ve výchozím nastavení povolené. IoT Hub metriky můžete zobrazit z Azure Portal.
 
-## <a name="how-to-view-iot-hub-metrics"></a>Postup zobrazení metriky služby IoT Hub
+> [!NOTE]
+> IoT Hub metriky můžete použít k zobrazení informací o zařízeních IoT technologie Plug and Play připojených k vašemu IoT Hub. Zařízení IoT technologie Plug and Play jsou součástí [iot technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md).
 
-1. Vytvoření služby IoT hub. Můžete najít pokyny o tom, jak vytvořit IoT hub v [odesílání telemetrických dat ze zařízení do služby IoT Hub](quickstart-send-telemetry-dotnet.md) průvodce.
+## <a name="how-to-view-iot-hub-metrics"></a>Jak zobrazit metriky IoT Hub
 
-2. Otevře se okno služby IoT hub. Odtud, klikněte na tlačítko **metriky**.
+1. Vytvořte centrum IoT. Pokyny k vytvoření služby IoT Hub najdete v tématu [odeslání telemetrie ze zařízení do průvodce IoT Hub](quickstart-send-telemetry-dotnet.md) .
+
+2. Otevřete okno centra IoT. Odtud klikněte na **metriky**.
    
-    ![Snímek obrazovky ukazující, kde je možnost metriky v stránka s materiály pro službu IoT Hub](./media/iot-hub-metrics/enable-metrics-1.png)
+    ![Snímek obrazovky s možností metriky na IoT Hub stránce prostředků](./media/iot-hub-metrics/enable-metrics-1.png)
 
-3. V okně metrik můžete zobrazit metriky pro službu IoT hub a vytváření vlastních zobrazení metriky. 
+3. V okně metriky můžete zobrazit metriky pro Centrum IoT a vytvářet vlastní zobrazení metrik. 
    
-    ![Snímek obrazovky zobrazující stránku metriky pro službu IoT Hub](./media/iot-hub-metrics/enable-metrics-2.png)
+    ![Snímek obrazovky zobrazující stránku metriky pro IoT Hub](./media/iot-hub-metrics/enable-metrics-2.png)
     
-4. Můžete se rozhodnout poslat data metrik do účtu Azure Storage nebo koncový bod služby Event Hubs kliknutím **nastavení diagnostiky**, pak **přidejte nastavení diagnostiky**
+4. Data metriky můžete odeslat do Event Hubsho koncového bodu nebo účtu Azure Storage kliknutím na **nastavení diagnostiky**a pak na **Přidat nastavení diagnostiky** .
 
-   ![Snímek obrazovky ukazující, kde je tlačítko nastavení diagnostiky](./media/iot-hub-metrics/enable-metrics-3.png)
+   ![Snímek obrazovky se zobrazeným tlačítkem pro nastavení diagnostiky](./media/iot-hub-metrics/enable-metrics-3.png)
 
-## <a name="iot-hub-metrics-and-how-to-use-them"></a>Metriky služby IoT Hub a způsob jejich použití
+## <a name="iot-hub-metrics-and-how-to-use-them"></a>IoT Hub metriky a jejich použití
 
-IoT Hub poskytuje několik metriky, které vám poskytnou přehled o stavu vašeho centra a celkový počet připojených zařízení. Můžete kombinovat informace z několika metrik k vykreslení větší přehled o stavu služby IoT hub. Následující tabulka popisuje metriky, které sleduje každý IoT hub a jak se jednotlivé metriky souvisí s celkový stav služby IoT hub.
+IoT Hub poskytuje několik metrik, které vám poskytnou přehled o stavu vašeho centra a celkový počet připojených zařízení. Můžete zkombinovat informace z několika metrik a vykreslit větší přehled o stavu služby IoT Hub. Následující tabulka popisuje metriky jednotlivých sledování IoT Hub a informace o tom, jak se každá metrika vztahuje k celkovému stavu centra IoT.
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|d2c<br>.telemetry<br>.ingress.<br>allProtocol|Pokusy o odeslat zpráva telemetrie|Count|Celkem|Počet zpráv typu zařízení cloud telemetrie, které se pokusil odeslat do služby IoT hub|Žádné dimenze|
-|d2c<br>.telemetry<br>.ingress<br>.Success|Telemetrické zprávy odesílané|Count|Celkem|Počet zpráv typu zařízení cloud telemetrie úspěšně odeslán do služby IoT hub|Žádné dimenze|
-|c2d<br>.Commands<br>.egress<br>.Complete<br>.Success|Dokončení příkazů|Count|Celkem|Počet příkazů typu cloud zařízení zařízení byla úspěšně dokončena|Žádné dimenze|
-|c2d<br>.Commands<br>.egress<br>.abandon<br>.Success|Příkazy opuštění|Count|Celkem|Počet opuštěných zařízení příkazy typu cloud zařízení|Žádné dimenze|
-|c2d<br>.Commands<br>.egress<br>.Reject<br>.Success|Příkazy zamítnuto|Count|Celkem|Počet odmítnutých zařízení příkazy typu cloud zařízení|Žádné dimenze|
-|zařízení<br>.totalDevices|Celkový počet zařízení (zastaralé)|Count|Celkem|Počet zařízení zaregistrovaný do služby IoT hub|Žádné dimenze|
-|zařízení<br>.connectedDevices<br>.allProtocol|Připojené zařízení (zastaralé) |Count|Celkem|Počet zařízení připojená ke službě IoT hub|Žádné dimenze|
-|d2c<br>.telemetry<br>.egress<br>.Success|Směrování: telemetrické zprávy doručí|Počet|Celkem|Počet pokusů, které zprávy se úspěšně doručila na všechny koncové body pomocí služby IoT Hub směrování. Pokud zpráva je směrována do několika koncových bodů, tato hodnota zvýší o jedna pro každé úspěšné dodání. Pokud zpráva se doručí na stejný koncový bod vícekrát, tato hodnota zvýší o jedna pro každé úspěšné dodání.|Žádné dimenze|
-|d2c<br>.telemetry<br>.egress<br>.dropped|Směrování: telemetrie počet ztracených zpráv |Počet|Celkem|Počet pokusů, které služba IoT Hub směrování z důvodu dead koncové body byly zahodit zprávy. Tato hodnota nepočítá doručování zpráv do základní trasy dodaným vynechané zprávy nejsou existuje.|Žádné dimenze|
-|d2c<br>.telemetry<br>.egress<br>.orphaned|Směrování: telemetrické zprávy osamocené |Count|Celkem|Počet pokusů, které zprávy byly osamocené přesměrováním služby IoT Hub, protože neodpovídají žádné pravidla směrování (včetně základní pravidlo). |Žádné dimenze|
-|d2c<br>.telemetry<br>.egress<br>.invalid|Směrování: telemetrické zprávy nekompatibilní|Count|Celkem|Počet pokusů směrování služby IoT Hub se nepodařilo doručit z důvodu nekompatibility s koncovým bodem. Tato hodnota nezahrnuje opakovaných pokusů.|Žádné dimenze|
-|d2c<br>.telemetry<br>.egress<br>.Fallback|Směrování: zprávy doručeny pro použití náhradní lokality|Počet|Celkem|Počet pokusů, které směrování služby IoT Hub doručení zprávy na koncový bod přidružený k použití náhradní lokality trasy.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.egress<br>.eventHubs|Směrování: zprávy doručeny do centra událostí|Count|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zpráv do koncových bodů centra událostí.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.latency<br>.eventHubs|Směrování: zpráva latence pro Centrum událostí|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat zprávu do koncového bodu centra událostí.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.egress<br>.serviceBusQueues|Směrování: doručení zpráv do fronty služby Service Bus|Count|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zpráv do fronty služby Service Bus koncových bodů.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.latency<br>.serviceBusQueues|Směrování: zpráva latence pro frontu služby Service Bus|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy do fronty koncového bodu služby Service Bus.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.egress<br>.serviceBusTopics|Směrování: doručení zprávy do tématu služby Service Bus|Count|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zprávy do tématu služby Service Bus koncových bodů.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.latency<br>.serviceBusTopics|Směrování: zpráva latence pro téma služby Service Bus|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy do tématu koncovým bodem Service Bus.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.egress<br>.builtIn<br>.events|Směrování: zprávy doručovat zprávy a události|Počet|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zprávy na integrovaný koncový bod (zprávy/events). Tato metrika jenom začne pracovat, když je povoleno směrování (https://aka.ms/iotrouting) pro službu IoT hub.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.latency<br>. builtIn.events|Směrování: zpráva latence pro zprávy a události|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy do integrovaného koncového bodu (zprávy/events). Tato metrika jenom začne pracovat, když je povoleno směrování (https://aka.ms/iotrouting) pro službu IoT hub.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.egress<br>.Storage|Směrování: doručení zprávy do služby storage|Count|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zpráv do koncových bodů úložiště.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.latency<br>.Storage|Směrování: zpráva latence pro úložiště|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy na koncový bod úložiště.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.egress<br>.Storage<br>.bytes|Směrování: data doručí do úložiště|B|Celkem|Objem dat (v bajtech) směrování služby IoT Hub doručí do koncových bodů úložiště.|Žádné dimenze|
-|d2c<br>.Endpoints<br>.egress<br>.Storage<br>.blobs|Směrování: objekty BLOB doručit do úložiště|Count|Celkem|Počet pokusů, které směrování služby IoT Hub doručí do koncových bodů úložiště objektů BLOB.|Žádné dimenze|
-|EventGridDeliveries|Event Grid doručení (preview)|Count|Celkem|Počet událostí služby IoT Hub, které se publikují do služby Event Grid. Dimenze výsledku používejte po dobu úspěšné i neúspěšné požadavky. Dimenze typ EventType ukazuje typ události (https://aka.ms/ioteventgrid). Chcete-li zobrazit where požadavky pocházejí z, použijte typ EventType dimenze.|Výsledek, typ události|
-|EventGridLatency|Event Grid latence (preview)|Milisekundy|Průměr|Průměrná latence (milisekundy) z při událostí služby Iot Hub se vygeneroval pro při publikování události do služby Event Grid. Toto číslo je průměr mezi všechny typy událostí. Pomocí dimenze typ EventType zobrazíte latence konkrétní typ události.|EventType|
-|d2c<br>.twin<br>.Read<br>.Success|Čtení dvojčat úspěšné ze zařízení|Count|Celkem|Počet všech úspěšných čtení dvojčat zařízení iniciované.|Žádné dimenze|
-|d2c<br>.twin<br>.Read<br>.failure|Čtení dvojčat ze zařízení se nezdařila|Count|Celkem|Počet všech se nezdařilo čtení dvojčat zařízení inicioval.|Žádné dimenze|
-|d2c<br>.twin<br>.Read<br>.Size|Velikost odpovědi čtení dvojčat zařízení|B|Průměr|Průměrné, minimální a maximální ze všech úspěšné, zařízení iniciované dvojčete čtení.|Žádné dimenze|
-|d2c<br>.twin<br>.update<br>.Success|Aktualizace dvojčat úspěšné ze zařízení|Count|Celkem|Počet všech úspěšných aktualizací dvojčete zařízení iniciované.|Žádné dimenze|
-|d2c<br>.twin<br>.update<br>.failure|Aktualizace dvojčat ze zařízení s chybami|Count|Celkem|Počet všech neúspěšných dvojčete zařízení iniciované aktualizací.|Žádné dimenze|
-|d2c<br>.twin<br>.update<br>.Size|Velikost aktualizace dvojčete zařízení|B|Průměr|Průměrné a minimální a maximální velikost všech úspěšné, zařízení iniciované dvojčete aktualizace.|Žádné dimenze|
-|c2d<br>.Methods<br>.Success|Volání úspěšné přímé metody|Počet|Celkem|Počet všech úspěšných volání přímé metody.|Žádné dimenze|
-|c2d<br>.Methods<br>.failure|Přímé metody vyvolání se nezdařilo|Count|Celkem|Počet všech se nezdařilo volání metody s přímým přístupem.|Žádné dimenze|
-|c2d<br>.Methods<br>.requestSize|Žádost o velikosti vyvolání přímé metody|B|Průměr|Průměrné, minimální a maximální počet všech úspěšných požadavků přímé metody.|Žádné dimenze|
-|c2d<br>.Methods<br>.responseSize|Velikost odpovědi vyvolání přímé metody|B|Průměr|Průměrné, minimální a maximální všechny úspěšné přímé metody odpovědí.|Žádné dimenze|
-|c2d<br>.twin<br>.Read<br>.Success|Čtení dvojčat úspěšné z back-endu|Count|Celkem|Počet všech úspěšných čtení dvojčat iniciované back-end.|Žádné dimenze|
-|c2d<br>.twin<br>.Read<br>.failure|Čtení dvojčat se nezdařilo z back-endu|Count|Celkem|Počet všech se nezdařilo čtení dvojčat iniciované back-end.|Žádné dimenze|
-|c2d<br>.twin<br>.Read<br>.Size|Velikost odpovědi čtení dvojčat z back-endu|B|Průměr|Průměr a minimální a maximální velikost všech úspěšné, iniciované back-end dvojčete čtení.|Žádné dimenze|
-|c2d<br>.twin<br>.update<br>.Success|Aktualizace dvojčat úspěšné z back-endu|Počet|Celkem|Počet všech úspěšné aktualizace dvojčete iniciované back-end.|Žádné dimenze|
-|c2d<br>.twin<br>.update<br>.failure|Aktualizace dvojčat se nezdařilo z back-endu|Count|Celkem|Počet všech neúspěšných iniciované back-end dvojčete aktualizací.|Žádné dimenze|
-|c2d<br>.twin<br>.update<br>.Size|Velikost dvojčete aktualizací z back-endu|B|Průměr|Průměrné, minimální a maximální velikost všech úspěšné, iniciované back-end dvojčete aktualizace.|Žádné dimenze|
-|twinQueries<br>.Success|Úspěšné dvojčete dotazy|Count|Celkem|Počet všech úspěšných dvojčete dotazů.|Žádné dimenze|
-|twinQueries<br>.failure|Neúspěšné dvojčete dotazy|Počet|Celkem|Počet všech neúspěšných dvojčete dotazů.|Žádné dimenze|
-|twinQueries<br>.resultSize|Velikost výsledku dotazy dvojčete|B|Průměr|Průměrné, minimální a maximální velikosti výsledek všech dotazů na dvojčata úspěšné.|Žádné dimenze|
-|jobs<br>.createTwinUpdateJob<br>.Success|Úspěšné vytvoření úlohy aktualizace dvojčete|Počet|Celkem|Počet všech po úspěšném vytvoření úlohy aktualizace dvojčete.|Žádné dimenze|
-|jobs<br>.createTwinUpdateJob<br>.failure|Neúspěšné vytvoření úlohy aktualizace dvojčete|Count|Celkem|Počet všech neúspěšných vytváření úlohy aktualizace dvojčete.|Žádné dimenze|
-|jobs<br>.createDirectMethodJob<br>.Success|Úspěšné vytvoření úloh vyvolání – metoda|Počet|Celkem|Počet všech po úspěšném vytvoření úlohy vyvolání přímé metody.|Žádné dimenze|
-|jobs<br>.createDirectMethodJob<br>.failure|Neúspěšné vytvoření úloh vyvolání – metoda|Count|Celkem|Počet všech neúspěšných vytváření úloh vyvolání přímé metody.|Žádné dimenze|
-|jobs<br>.listJobs<br>.Success|Úspěšné volání do seznamu úloh|Počet|Celkem|Počet všech úspěšných volání do seznamu úloh.|Žádné dimenze|
-|jobs<br>.listJobs<br>.failure|Neúspěšná volání do seznamu úloh|Počet|Celkem|Počet všech neúspěšných volání do seznamu úloh.|Žádné dimenze|
-|jobs<br>.cancelJob<br>.Success|V případě úspěšné úlohy|Count|Celkem|Počet všech úspěšných volání zrušit úlohu.|Žádné dimenze|
-|jobs<br>.cancelJob<br>.failure|Zrušení úlohy, která selhala|Count|Celkem|Počet všech neúspěšných volání zrušit úlohu.|Žádné dimenze|
-|jobs<br>.queryJobs<br>.Success|Úspěšné úlohy dotazů|Počet|Celkem|Počet všech úspěšných volání do úlohy dotaz.|Žádné dimenze|
-|jobs<br>.queryJobs<br>.failure|Neúspěšné úlohy dotazy|Počet|Celkem|Počet všech neúspěšných volání do úlohy dotaz.|Žádné dimenze|
-|jobs<br>.completed|Dokončené úlohy|Count|Celkem|Počet všech dokončených úloh.|Žádné dimenze|
-|jobs<br>.Failed|Neúspěšné úlohy|Count|Celkem|Počet všech neúspěšných úloh.|Žádné dimenze|
-|d2c<br>.telemetry<br>.ingress<br>.sendThrottle|Počet chyb omezení|Count|Celkem|Omezí počet chyb omezení kvůli propustnost zařízení|Žádné dimenze|
-|dailyMessage<br>QuotaUsed|Celkový počet zpráv používá|Count|Průměr|Počet celkový počet zpráv, které se dnes používají. Jedná se o kumulativní hodnotu, která se resetuje na nulu v 00:00 UTC každý den.|Žádné dimenze|
-|deviceDataUsage|Celkový počet zařízení využití dat|B|Celkem|Bajtů přenesených do a z jakékoli zařízení připojené k IOT hub|Žádné dimenze|
-|totalDeviceCount|Celkový počet zařízení (preview)|Count|Průměr|Počet zařízení zaregistrovaný do služby IoT hub|Žádné dimenze|
-|Připojení<br>DeviceCount|Připojené zařízení (preview)|Count|Průměr|Počet zařízení připojená ke službě IoT hub|Žádné dimenze|
-|Konfigurace|Konfigurace metrik|Počet|Celkem|Pro operace konfigurace metrik|Žádné dimenze|
+|d2c<br>. telemetrie<br>příchozího přenosu dat.<br>allProtocol|Počet pokusů o odeslání zprávy telemetrie|Count|Celkem|Počet zpráv typu zařízení-Cloud telemetrie, které se pokusily o odeslání do služby IoT Hub|Žádné dimenze|
+|d2c<br>. telemetrie<br>. příchozí<br>. úspěch|Odeslané zprávy telemetrie|Count|Celkem|Počet zpráv telemetrie typu zařízení-Cloud, které se úspěšně odeslaly do služby IoT Hub|Žádné dimenze|
+|c2d<br>. příkazy<br>. odchozí<br>. dokončeno<br>. úspěch|Dokončené příkazy|Count|Celkem|Počet příkazů typu cloud-zařízení úspěšně dokončených zařízením|Žádné dimenze|
+|c2d<br>. příkazy<br>. odchozí<br>. Abandon<br>. úspěch|Zrušené příkazy|Count|Celkem|Počet příkazů typu cloud-zařízení, které zařízení opustilo|Žádné dimenze|
+|c2d<br>. příkazy<br>. odchozí<br>. zamítnout<br>. úspěch|Odmítnuté příkazy|Count|Celkem|Počet příkazů typu cloud-zařízení odmítnutých zařízením|Žádné dimenze|
+|zařízení<br>.totalDevices|Celkem zařízení (zastaralé)|Count|Celkem|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné dimenze|
+|zařízení<br>.connectedDevices<br>.allProtocol|Připojená zařízení (zastaralé) |Count|Celkem|Počet zařízení připojených ke službě IoT Hub|Žádné dimenze|
+|d2c<br>. telemetrie<br>. odchozí<br>. úspěch|Směrování: doručené zprávy telemetrie|Count|Celkem|Počet pokusů o úspěšné doručení zpráv do všech koncových bodů pomocí směrování IoT Hub. Pokud je zpráva směrována do více koncových bodů, tato hodnota se u každého úspěšného doručení zvyšuje o jednu. Pokud se zpráva doručí do stejného koncového bodu víckrát, tato hodnota se u každého úspěšného doručení zvyšuje o jednu.|Žádné dimenze|
+|d2c<br>. telemetrie<br>. odchozí<br>. vyřazeno|Směrování: vyřazené zprávy telemetrie |Count|Celkem|Počet pokusů o vyřazení zpráv IoT Hub směrování z důvodu nedoručených koncových bodů. Tato hodnota nepočítá počet zpráv doručených do záložní trasy, protože se tam nedoručují vyřazené zprávy.|Žádné dimenze|
+|d2c<br>. telemetrie<br>. odchozí<br>. osamocený|Směrování: osamocené zprávy telemetrie |Count|Celkem|Počet, kolikrát byly zprávy osamocené IoT Hub směrování, protože neodpovídaly pravidlům směrování (včetně záložního pravidla). |Žádné dimenze|
+|d2c<br>. telemetrie<br>. odchozí<br>. neplatné|Směrování: nekompatibilní zprávy telemetrie|Count|Celkem|Počet, kolikrát IoT Hub směrování nedokázala doručovat zprávy z důvodu nekompatibility s koncovým bodem. Tato hodnota nezahrnuje opakované pokusy.|Žádné dimenze|
+|d2c<br>. telemetrie<br>. odchozí<br>. Fallback|Směrování: zprávy doručené do záložního režimu|Count|Celkem|Počet, kolikrát IoT Hub směrování doručených zpráv do koncového bodu přidruženého k záložní trase.|Žádné dimenze|
+|d2c<br>. koncové body<br>. odchozí<br>.eventHubs|Směrování: zprávy doručené do centra událostí|Count|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů centra událostí.|Žádné dimenze|
+|d2c<br>. koncové body<br>. latence<br>.eventHubs|Směrování: latence zprávy pro centrum událostí|Milisekundy|Average|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami IoT Hub a příchozími zprávami do koncového bodu centra událostí.|Žádné dimenze|
+|d2c<br>. koncové body<br>. odchozí<br>.serviceBusQueues|Směrování: zprávy doručené do fronty Service Bus|Count|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů fronty Service Bus|Žádné dimenze|
+|d2c<br>. koncové body<br>. latence<br>.serviceBusQueues|Směrování: latence zprávy pro Service Bus frontu|Milisekundy|Average|Průměrná latence (v milisekundách) mezi vstupem zprávy a IoT Hub a zpráv telemetrie do koncového bodu fronty Service Bus|Žádné dimenze|
+|d2c<br>. koncové body<br>. odchozí<br>.serviceBusTopics|Směrování: zprávy doručené do Service Bus tématu|Count|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů tématu Service Bus.|Žádné dimenze|
+|d2c<br>. koncové body<br>. latence<br>.serviceBusTopics|Směrování: latence zprávy pro Service Bus téma|Milisekundy|Average|Průměrná latence (v milisekundách) mezi vstupem zprávy a IoT Hub a zpráv telemetrie do koncového bodu Service Bus tématu.|Žádné dimenze|
+|d2c<br>. koncové body<br>. odchozí<br>. builtIn<br>události. events|Směrování: zprávy doručené zprávám/událostem|Count|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do integrovaného koncového bodu (zprávy/události). Tato metrika začne pracovat pouze v případě, že https://aka.ms/iotrouting) je povoleno směrování (pro službu IoT Hub.|Žádné dimenze|
+|d2c<br>. koncové body<br>. latence<br>. builtIn. events|Směrování: latence zpráv pro zprávy/události|Milisekundy|Average|Průměrná latence (v milisekundách) mezi vstupem zprávy a IoT Hub a zprávou telemetrie do integrovaného koncového bodu (zprávy/události) Tato metrika začne pracovat pouze v případě, že https://aka.ms/iotrouting) je povoleno směrování (pro službu IoT Hub.|Žádné dimenze|
+|d2c<br>. koncové body<br>. odchozí<br>. Storage|Směrování: zprávy doručené do úložiště|Count|Celkem|Počet pokusů, IoT Hub směrování úspěšně doručuje zprávy do koncových bodů úložiště.|Žádné dimenze|
+|d2c<br>. koncové body<br>. latence<br>. Storage|Směrování: latence zpráv pro úložiště|Milisekundy|Average|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami pro IoT Hub a zprávy telemetrie do koncového bodu úložiště|Žádné dimenze|
+|d2c<br>. koncové body<br>. odchozí<br>. Storage<br>. bajtů|Směrování: data Doručená do úložiště|B|Celkem|Množství dat (v bajtech) IoT Hub směrování doručené koncovým bodům úložiště.|Žádné dimenze|
+|d2c<br>. koncové body<br>. odchozí<br>. Storage<br>objekty blob|Směrování: objekty blob doručené do úložiště|Count|Celkem|Počet pokusů IoT Hub směrování dodaných objektů blob do koncových bodů úložiště.|Žádné dimenze|
+|EventGridDeliveries|Event Grid doručení (Preview)|Count|Celkem|Počet událostí IoT Hub publikovaných do Event Grid Použijte výslednou dimenzi pro počet úspěšných a neúspěšných žádostí. Dimenze EventType zobrazuje typ události (https://aka.ms/ioteventgrid). Chcete-li zobrazit, odkud žádosti pocházejí, použijte dimenzi EventType.|Výsledek, EventType|
+|EventGridLatency|Latence Event Grid (Preview)|Milisekundy|Average|Průměrná latence (v milisekundách) od okamžiku, kdy byla událost centra IoT vygenerována při publikování události do Event Grid. Toto číslo je průměrem mezi všemi typy událostí. Použijte dimenzi EventType k zobrazení latence konkrétního typu události.|Typ události|
+|d2c<br>.twin<br>. Read<br>. úspěch|Úspěšné čtení ze zařízení|Count|Celkem|Počet všech úspěšných zdvojených čtení iniciované zařízením|Žádné dimenze|
+|d2c<br>.twin<br>. Read<br>. Chyba|Neúspěšná čtení ze zařízení|Count|Celkem|Počet všech neúspěšných čtení, která byla iniciována zařízením.|Žádné dimenze|
+|d2c<br>.twin<br>. Read<br>. Size|Velikost odpovědi u dvojitých čtení ze zařízení|B|Average|Průměrná, minimální a maximální hodnota všech úspěšných zdvojených čtení iniciované zařízením|Žádné dimenze|
+|d2c<br>.twin<br>. Update<br>. úspěch|Úspěšné nedokončené změny ze zařízení|Count|Celkem|Počet všech úspěšných nevyžádaných aktualizací iniciované zařízením|Žádné dimenze|
+|d2c<br>.twin<br>. Update<br>. Chyba|Neúspěšné aktualizace ze zařízení se zdvojenými chybami|Count|Celkem|Počet všech neúspěšných aktualizací inicializovaných zařízením.|Žádné dimenze|
+|d2c<br>.twin<br>. Update<br>. Size|Velikost dvojitě aktualizovaných aktualizací ze zařízení|B|Average|Průměrná, minimální a maximální velikost všech úspěšných nevyžádaných aktualizací iniciované zařízením|Žádné dimenze|
+|c2d<br>. Methods<br>. úspěch|Úspěšná volání přímé metody|Count|Celkem|Počet všech úspěšných volání přímé metody.|Žádné dimenze|
+|c2d<br>. Methods<br>. Chyba|Neúspěšná volání přímé metody|Count|Celkem|Počet všech neúspěšných volání metody Direct|Žádné dimenze|
+|c2d<br>. Methods<br>.requestSize|Velikost žádosti o vyvolání přímé metody|B|Average|Průměrně, minimální a maximální počet všech úspěšných požadavků na metodu Direct.|Žádné dimenze|
+|c2d<br>. Methods<br>.responseSize|Velikost odezvy volání přímých metod|B|Average|Průměrných, minimálních a maximálních odpovědí všech úspěšných přímých metod.|Žádné dimenze|
+|c2d<br>.twin<br>. Read<br>. úspěch|Úspěšné zdvojené čtení z back-endu|Count|Celkem|Počet všech úspěšných zdvojených čtení spouštěných back-endu.|Žádné dimenze|
+|c2d<br>.twin<br>. Read<br>. Chyba|Neúspěšné čtení z back-endu ze zadních vláken|Count|Celkem|Počet všech neúspěšných čtení, která byla inicializována back-endu.|Žádné dimenze|
+|c2d<br>.twin<br>. Read<br>. Size|Velikost odpovědi zdvojeného čtení z back-endu|B|Average|Průměrně, minimální a maximální počet všech úspěšných zdvojených čtení, které byly spuštěny na konci.|Žádné dimenze|
+|c2d<br>.twin<br>. Update<br>. úspěch|Úspěšné zdvojené aktualizace z back-endu|Count|Celkem|Počet všech úspěšných dokončených aktualizací, které jsou úspěšně spouštěny po konci.|Žádné dimenze|
+|c2d<br>.twin<br>. Update<br>. Chyba|Neúspěšné zdvojené aktualizace z back-endu|Count|Celkem|Počet všech neúspěšných provolaných aktualizací, které selhaly po back-endu.|Žádné dimenze|
+|c2d<br>.twin<br>. Update<br>. Size|Velikost dvojitě aktualizovaných aktualizací z back-endu|B|Average|Průměrná, minimální a maximální velikost všech úspěšných kompletních aktualizací spuštěných na konci.|Žádné dimenze|
+|twinQueries<br>. úspěch|Úspěšné zdvojené dotazy|Count|Celkem|Počet všech úspěšných vlákenných dotazů.|Žádné dimenze|
+|twinQueries<br>. Chyba|Neúspěšné zdvojené dotazy|Count|Celkem|Počet všech neúspěšných dotazů, které selhaly.|Žádné dimenze|
+|twinQueries<br>.resultSize|Velikost výsledku nevlákenných dotazů|B|Average|Průměrnou, minimální a maximální velikost výsledku všech úspěšných vlákenných dotazů.|Žádné dimenze|
+|jobs<br>.createTwinUpdateJob<br>. úspěch|Úspěšné vytváření zdvojených úloh aktualizace|Count|Celkem|Počet všech úspěšných vytvoření zdvojených úloh aktualizace.|Žádné dimenze|
+|jobs<br>.createTwinUpdateJob<br>. Chyba|Nepovedlo se vytvořit úlohy s dvojitou aktualizací|Count|Celkem|Počet všech neúspěšných vytvoření zdvojených úloh aktualizace.|Žádné dimenze|
+|jobs<br>.createDirectMethodJob<br>. úspěch|Úspěšné vytváření úloh vyvolání metod|Count|Celkem|Počet všech úspěšných vytvoření úloh vyvolání přímé metody.|Žádné dimenze|
+|jobs<br>.createDirectMethodJob<br>. Chyba|Nepovedlo se vytvořit úlohy vyvolání metody|Count|Celkem|Počet všech neúspěšných vytvoření úloh volání přímé metody.|Žádné dimenze|
+|jobs<br>.listJobs<br>. úspěch|Úspěšná volání na seznam úloh|Count|Celkem|Počet všech úspěšných volání pro výpis úloh.|Žádné dimenze|
+|jobs<br>.listJobs<br>. Chyba|Neúspěšná volání pro výpis úloh|Count|Celkem|Počet všech neúspěšných volání pro výpis úloh|Žádné dimenze|
+|jobs<br>.cancelJob<br>. úspěch|Úspěšná zrušení úlohy|Count|Celkem|Počet všech úspěšných volání pro zrušení úlohy.|Žádné dimenze|
+|jobs<br>.cancelJob<br>. Chyba|Neúspěšná zrušení úloh|Count|Celkem|Počet všech neúspěšných volání pro zrušení úlohy.|Žádné dimenze|
+|jobs<br>.queryJobs<br>. úspěch|Úspěšné dotazy na úlohy|Count|Celkem|Počet všech úspěšných volání úloh dotazů.|Žádné dimenze|
+|jobs<br>.queryJobs<br>. Chyba|Neúspěšné dotazy na úlohy|Count|Celkem|Počet všech neúspěšných volání pro úlohy dotazu.|Žádné dimenze|
+|jobs<br>. dokončeno|Dokončené úlohy|Count|Celkem|Počet všech dokončených úloh.|Žádné dimenze|
+|jobs<br>. Chyba|Neúspěšné úlohy|Count|Celkem|Počet všech neúspěšných úloh.|Žádné dimenze|
+|d2c<br>. telemetrie<br>. příchozí<br>.sendThrottle|Počet chyb omezování|Count|Celkem|Počet chyb omezení z důvodu omezení propustnosti zařízení|Žádné dimenze|
+|dailyMessage<br>QuotaUsed|Celkový počet použitých zpráv|Count|Average|Počet všech aktuálně využívaných zpráv Jedná se o kumulativní hodnotu, která se každý den resetuje na nulu v 00:00 UTC.|Žádné dimenze|
+|deviceDataUsage|Celkové využití dat zařízení|B|Celkem|Bajtů přenesených do a ze všech zařízení připojených k IotHub|Žádné dimenze|
+|totalDeviceCount|Celkem zařízení (Preview)|Count|Average|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné dimenze|
+|připojen<br>Počet zařízení|Připojená zařízení (Preview)|Count|Average|Počet zařízení připojených ke službě IoT Hub|Žádné dimenze|
+|konfiguračních|Metriky konfigurace|Count|Celkem|Metriky pro operace konfigurace|Žádné dimenze|
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když už víte, přehled metrik služby IoT Hub, přejděte na tento odkaz na další informace o správě služby Azure IoT Hub:
+Teď, když jste se seznámili s přehledem IoT Hub metriky, získáte další informace o správě Azure IoT Hub pomocí tohoto odkazu:
 
 * [Monitorování operací](iot-hub-operations-monitoring.md)
 
-Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
+Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Příručka vývojáře pro IoT Hub](iot-hub-devguide.md)
+* [IoT Hub příručka pro vývojáře](iot-hub-devguide.md)
 
-* [Nasazení AI do hraničních zařízení pomocí služby Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Nasazení AI do hraničních zařízení pomocí Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

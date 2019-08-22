@@ -1,73 +1,73 @@
 ---
-title: 'Příklad: Model databáze AdventureWorks inventáře – Azure Search'
-description: Informace o modelování relačních dat, transformují se do ploché sady dat, pro indexování a úplné vyhledávání ve službě Azure Search.
+title: 'Příklad: Modelování databáze inventáře AdventureWorks – Azure Search'
+description: Naučte se modelovat relační data, transformovat je na sloučenou datovou sadu pro indexování a fulltextové vyhledávání v Azure Search.
 author: cstone
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: chstone
-ms.openlocfilehash: 6d5d01dfbbcfda56818f5c38b06117a87e021445
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52ccf3edfca5b3481b038bd5d3449c1dd6354179
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61291885"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649921"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Příklad: Model databáze AdventureWorks inventáře pro službu Azure Search
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Příklad: Modelování databáze inventáře AdventureWorks pro Azure Search
 
-Modelování strukturovaných databáze obsahu do indexu search efektivnější je zřídka jednoduché cvičení. Plánování a správa změn jste si poznamenali, existuje odvrácená denormalizing zdrojové řádky od jejich stavu připojených k tabulce do podporou vyhledávání entit. Tento článek používá AdventureWorks ukázková data, k dispozici online, abyste měli na očích běžné možnosti při přechodu z databáze pro hledání. 
+Modelování obsahu strukturované databáze do efektivního indexu hledání je výjimečným cvičením. Pro plánování a změnu v rámci správy existuje výzva k denormalizaci zdrojových řádků z jejich stavu připojeného k tabulkám na uživatelsky přívětivé entity pro vyhledávání. Tento článek používá ukázková data společnosti AdventureWorks, která jsou k dispozici online, k zdůraznění běžných zkušeností v přechodu z databáze k hledání. 
 
 ## <a name="about-adventureworks"></a>O AdventureWorks
 
-Pokud máte instanci systému SQL Server, může být obeznámeni s ukázkovou databází AdventureWorks. Mezi tabulkami, které jsou zahrnuté v této databázi jsou pět tabulek, které poskytují informace o produktu.
+Pokud máte instanci SQL Server, možná budete obeznámeni s ukázkovou databází AdventureWorks. Mezi tabulkami, které jsou součástí této databáze, patří pět tabulek, které zveřejňují informace o produktu.
 
 + **ProductModel**: název
-+ **Produkt**: název, barvy, náklady, velikost, váha, image, kategorie (každý řádek se připojí k určité ProductModel)
-+ **ProductDescription**: popis
-+ **ProductModelProductDescription**: národní prostředí (každý řádek spojení ProductModel na konkrétní ProductDescription pro konkrétní jazyk)
-+ **ProductCategory**: název, nadřazené kategorie
++ **Produkt**: název, barva, náklady, velikost, váha, obrázek, kategorie (každý řádek se připojí ke konkrétnímu ProductModel)
++ **ProductDescription**: Popis
++ **ProductModelProductDescription**: locale (každý řádek spojuje ProductModel ke konkrétnímu jazyku ProductDescription pro určitý jazyk)
++ **ProductCategory**: název, Nadřazená kategorie
 
-Kombinování všechna tato data do ploché sady řádků, které je možné ingestovat v indexu vyhledávání je daný úkol. 
+Kombinování všech těchto dat do ploché sady řádků, které lze ingestovat do indexu vyhledávání, je úkol na ruce. 
 
-## <a name="considering-our-options"></a>Vzhledem k tomu, naše možnosti
+## <a name="considering-our-options"></a>Zvážení našich možností
 
-Naivní přístup by k indexování všechny řádky z tabulky Product (připojené, kde je to vhodné) od do tabulky Product má nejvíce specifické informace. Tento přístup však by vystavovat indexu vyhledávání vnímaná pouze objekt třídy resultset. Například je k dispozici ve dvou barvy a velikosti šest silniční 650 modelu. Dotaz "silniční kola" by poté dominovaly dvanáct výskyty stejného modelu rozlišené pouze pomocí velikostí a barvou. Dalších šesti silniční specifické modely by všechny možné předané centrům nether řadě vyhledávání: dvě stránky.
+Přístup Naive by měl naindexovat všechny řádky z tabulky produktů (tam, kde je to vhodné), protože tabulka produktu má nejvíce specifické informace. Tento přístup však vystaví index vyhledávání pro zjištěné duplicity v sadě výsledků. Model silničního 650 je například k dispozici ve dvou barvách a šesti velikostech. Dotaz pro "silniční kola" by pak byl podléhat dvanáct instancím stejného modelu, odlišeny pouze podle velikosti a barvy. Ostatní šest modelů, které jsou specifické pro silnici, by se relegated na netherou svět hledání: Druhá stránka.
 
-  ![Seznam produktů](./media/search-example-adventureworks/products-list.png "seznam produktů")
+  ![Seznam produktů](./media/search-example-adventureworks/products-list.png "Seznam produktů")
  
-Všimněte si, že model silniční 650 má dvanáct možnosti. Jeden na mnoho entit řádky jsou nejlépe reprezentovány ve formě pole s více hodnotami nebo předprodukčním aggregated hodnotu pole v indexu vyhledávání.
+Všimněte si, že model Road-650 má dvanáct možností. Řádky entity 1: n se nejlépe prezentují jako pole s více hodnotami nebo předem agregovaná pole v indexu vyhledávání.
 
-Řešení tohoto problému je stejně jednoduché jako přesunutí cílový index do tabulky ProductModel velká a malá písmena. Mohlo by ignorovat důležitá data v tabulce produktu, které by měly být zastoupeny pořád ve výsledcích hledání.
+Vyřešení tohoto problému není tak jednoduché jako přesunutí cílového indexu do tabulky ProductModel. Tím by došlo k ignorování důležitých dat v tabulce produktů, která by měla být ve výsledcích hledání stále zastoupena.
 
-## <a name="use-a-collection-data-type"></a>Použijte datový typ kolekce
+## <a name="use-a-collection-data-type"></a>Použití datového typu kolekce
 
-"Správný přístup" je využívat funkce schéma vyhledávání, která nemá přímé paralelní databázový model: **Collection(EDM.String)** . Datový typ kolekce se používá v případě, že máte seznam jednotlivých řetězců, spíše než velmi dlouhý řetězec (jeden). Pokud už máte značky nebo klíčová slova, použijete datový typ kolekce pro toto pole.
+Správný přístup je využití funkce vyhledávacího schématu, která nemá přímý paralelní v modelu databáze: **Collection (EDM. String)** . Datový typ kolekce se používá, pokud máte seznam jednotlivých řetězců, nikoli velmi dlouhý (jeden) řetězec. Pokud máte značky nebo klíčová slova, měli byste pro toto pole použít datový typ kolekce.
 
-Definováním více hodnotami indexu pole **Collection(Edm.String)** "color", "velikost" a "image" pomocné informace jsou zachované pro "faceting" a filtrování bez zahlcení index s duplicitní položky. Podobně platí agregační funkce pro číselná pole produktu indexování **minListPrice** namísto každých jednoho produktu **listPrice**.
+Při definování polí indexu s více hodnotami **kolekce (EDM. String)** pro "Color", "size" a "image" jsou pomocné informace uchovány pro omezující vlastnosti a pro filtrování bez zneznečištění indexu s duplicitními položkami. Podobně použijte agregační funkce na pole číselného produktu a indexování **minListPrice** místo každého jednotlivého produktu **listPrice**.
 
-Zadaný index s těchto struktur, vyhledejte "Horská kola" by zobrazil diskrétní jízdních kol modely, při zachování důležitá metadata, jako je barva, velikost a nejnižší cenu. Na následujícím snímku obrazovky je uvedena ukázka.
+Hledání "horských kol" podle indexu s těmito strukturami by zobrazilo diskrétní modely jízdních kol a zároveň zachovává důležitá metadata, jako je barva, velikost a nejnižší cena. Následující snímek obrazovky nabízí ilustraci.
 
-  ![Příklad prohledávání kolo Horská oblast](./media/search-example-adventureworks/mountain-bikes-visual.png "příklad prohledávání kolo Horská oblast")
+  ![Příklad hledání horských kol](./media/search-example-adventureworks/mountain-bikes-visual.png "Příklad hledání horských kol")
 
-## <a name="use-script-for-data-manipulation"></a>Pomocí skriptu pro manipulaci s daty
+## <a name="use-script-for-data-manipulation"></a>Použití skriptu pro manipulaci s daty
 
-Bohužel tento typ modelování nelze snadno uskutečnit pomocí příkazů jazyka SQL samostatně. Místo toho použijte jednoduchý skript NodeJS k načtení dat a jejich mapování na hledání vhodných JSON entit.
+Tento typ modelování bohužel nelze snadno dosáhnout pouze pomocí příkazů SQL. Místo toho načtěte data pomocí jednoduchého NodeJS skriptu a pak ho namapujte na uživatelsky přívětivé entity JSON.
 
-Mapování konečné databázové hledání vypadá takto:
+Konečné mapování hledání databáze vypadá takto:
 
-+ Model (Edm.String: prohledávatelné, filtrovatelné, retrievable) z "ProductModel.Name"
-+ description_en (Edm.String: prohledávatelné) z "ProductDescription" pro model kde jazyková verze = "en"
-+ Barva (Collection(Edm.String): prohledávatelné, filtrovatelné, facetable, retrievable): jedinečné hodnoty z "Product.Color" pro model
-+ velikost (Collection(Edm.String): prohledávatelné, filtrovatelné, facetable, retrievable): jedinečné hodnoty z "Product.Size" pro model
-+ bitové kopie (Collection(Edm.String): retrievable): jedinečné hodnoty z "Product.ThumbnailPhoto" pro model
-+ minStandardCost (Edm.Double: filtrovatelné, facetable, řazení, retrievable): agregační minimum všech "Product.StandardCost" pro model
-+ minListPrice (Edm.Double: filtrovatelné, facetable, řazení, retrievable): agregační minimum všech "Product.ListPrice" pro model
-+ minWeight (Edm.Double: filtrovatelné, facetable, řazení, retrievable): agregační minimum všech "Product.Weight" pro model
-+ produkty (Collection(Edm.String): prohledávatelné, filtrovatelné, retrievable): jedinečné hodnoty z "Product.Name" pro model
++ Model (EDM. String: prohledávatelné, filtrovatelné, lze získat) z "ProductModel.Name"
++ description_en (EDM. String: prohledávatelný) z "ProductDescription" pro model, kde culture = ' en '
++ Color (Collection (EDM. String): prohledávatelné, filtrovatelné, plošky, získatelné): jedinečné hodnoty z "Product. Color" pro model
++ Size (Collection (EDM. String): prohledávatelné, filtrovatelné, plošky, získatelné): jedinečné hodnoty z "Product. Size" pro model
++ Image (Collection (EDM. String): disThumbnailPhoto): jedinečné hodnoty z "Product." pro model
++ minStandardCost (EDM. Double: Filtered, Faced,,): Aggregate minima ze všech hodnot "Product. StandardCost" pro model
++ minListPrice (EDM. Double: Filtered, Faced,,): agregované minimum všech hodnot "produkt. ListPrice" pro model
++ minWeight (EDM. Double: Filtered, Faced,,): Aggregate minima ze všech "produktu. váhy" pro model
++ Products (Collection (EDM. String): můžete prohledávatelné, filtrovatelné, získatelné): jedinečné hodnoty z "Product.Name" pro model
 
-Po připojení k tabulce ProductModel s používáním produktu a ProductDescription, [lodash](https://lodash.com/) (nebo LINQ v jazyku C#) pro rychlou transformaci výsledků:
+Po spojení tabulky ProductModel s produktem a ProductDescription použijte [lodash](https://lodash.com/) (nebo LINQ v C#) k rychlé transformaci sady výsledků:
 
 ```javascript
 var records = queryYourDatabase();
@@ -93,7 +93,7 @@ var models = _(records)
   .value();
 ```
 
-Výsledný kód JSON vypadá takto:
+Výsledný formát JSON vypadá takto:
 
 ```json
 [
@@ -137,7 +137,7 @@ Výsledný kód JSON vypadá takto:
 ]
 ```
 
-A konečně tady je dotaz SQL, který vrací počáteční sada záznamů. Můžu použít [mssql](https://www.npmjs.com/package/mssql) modul npm k načtení dat do aplikace NodeJS.
+Nakonec tady je dotaz SQL pro návrat počáteční sady záznamů. Použil jsem modul [MSSQL](https://www.npmjs.com/package/mssql) npm k načtení dat do aplikace NodeJS.
 
 ```T-SQL
 SELECT
@@ -163,6 +163,6 @@ WHERE
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Příklad: Víceúrovňové omezující vlastnosti taxonomií ve službě Azure Search](search-example-adventureworks-multilevel-faceting.md)
+> [Příklad: Taxonomie omezující vlastnosti na více úrovních v Azure Search](search-example-adventureworks-multilevel-faceting.md)
 
 

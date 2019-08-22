@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b792c0fc5d02a84d45b47ac68e0058144f31e673
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641004"
+ms.locfileid: "69644882"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -545,15 +545,13 @@ Dialogy Service Broker mezi databázemi ukončí doručování zpráv do služeb
 
 **Odstraníte** Před aktualizací úrovně služby zastavte všechny aktivity, které používají konverzaci mezi Service Brokermi databázemi, a potom je znovu inicializujte. Pokud jsou zbývající zprávy nedoručené po změně úrovně služeb, přečtěte si zprávy ze zdrojové fronty a znovu je odešlete do cílové fronty.
 
-### <a name="impresonification-of-aad-login-types-is-not-supported"></a>Impresonification typů přihlášení AAD se nepodporuje.
+### <a name="impersonification-of-aad-login-types-is-not-supported"></a>Impersonification typů přihlášení AAD se nepodporuje.
 
 **Datum** Červenec 2019
 
 Zosobnění pomocí `EXECUTE AS USER` nebo `EXECUTE AS LOGIN` z následujících objektů zabezpečení AAD není podporované:
 -   Uživatelé AAD s aliasem V tomto případě `15517`se vrátí následující chyba.
 - Přihlášení AAD a uživatelé na základě aplikací AAD nebo instančních objektů. V tomto případě `15517` se vrátí následující chyby a `15406`.
-
-### <a name="database-email"></a>E-mail databáze 
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryparametr není v sp_send_db_mail podporován.
 
@@ -641,7 +639,7 @@ Moduly CLR umístění do spravované instance a propojené servery nebo distrib
 
 **Odstraníte** Pokud je to možné, použijte připojení kontextu v modulu CLR.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o spravovaných instancích najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md) .
 - Seznam funkcí a porovnání najdete v tématu [Azure SQL Database porovnání funkcí](sql-database-features.md).

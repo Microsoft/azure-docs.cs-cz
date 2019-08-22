@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/21/2019
-ms.openlocfilehash: b0d227b71677db1d6b4ce8386b02cf957ca259f7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.date: 08/16/2019
+ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668414"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891661"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Kurz: Předpověď ceny automobilu pomocí vizuálního rozhraní
 
@@ -27,9 +27,11 @@ V první části si nastavíte prostředí, přetahujete datové sady a moduly p
 V první části kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Import a vyčištění dat
+> * Vytvoření nového experimentu
+> * Import dat
+> * Příprava dat
 > * Výuka modelu strojového učení
-> * Skóre a vyhodnocení modelu
+> * Vyhodnocení modelu Machine Learning
 
 V [druhé části](ui-tutorial-automobile-price-deploy.md) kurzu se naučíte, jak nasadit prediktivní model jako webovou službu Azure, abyste ho mohli použít k předpovídání ceny každé auta na základě technických specifikací, které odešlete. 
 
@@ -37,13 +39,17 @@ Hotová verze tohoto kurzu je k dispozici jako vzorový experiment.
 
 Pokud ho chcete najít, vyberte na **stránce experimenty**možnost **Přidat nový**a **potom vyberte ukázková 1 – regrese: Experimentování s cenami za automobil (** základní)
 
-## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
+## <a name="create-a-new-experiment"></a>Vytvoření nového experimentu
+
+Pokud chcete vytvořit experiment vizuálního rozhraní, budete nejdřív potřebovat pracovní prostor služby Azure Machine Learning. V této části se dozvíte, jak vytvořit oba tyto prostředky.
+
+### <a name="create-a-new-workspace"></a>Vytvořit nový pracovní prostor
 
 Pokud máte pracovní prostor služby Azure Machine Learning, přejděte k další části.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-new-experiment"></a>Vytvořit nový experiment
+### <a name="create-an-experiment"></a>Vytvoření experimentu
 
 1. Otevřete pracovní prostor v [Azure Portal](https://portal.azure.com/).
 
@@ -57,7 +63,7 @@ Pokud máte pracovní prostor služby Azure Machine Learning, přejděte k dalš
 
 1. Vyberte výchozí název experimentu **"experiment byl vytvořen na...** " v horní části plátna a přejmenujte ho na něco smysluplného. Například **"předpověď ceny automobilu"** . Název nemusí být jedinečný.
 
-## <a name="specify-data"></a>Zadat data
+## <a name="import-data"></a>Import dat
 
 Machine Learning závisí na datech. Donovanovo je v tomto rozhraní k dispozici několik ukázkových datových sad, které můžete experimentovat s nástrojem. Pro tento kurz použijte ukázková data o **cenách automobilu (RAW)** . 
 
@@ -65,7 +71,7 @@ Machine Learning závisí na datech. Donovanovo je v tomto rozhraní k dispozici
 
 1. Vyberte datovou sadu, **údaje o cenách automobilu (RAW)** a přetáhněte ji na plátno.
 
-   ![Přetáhněte data na plátno.](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
+   ![Přetáhněte data na plátno.](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
 
 1. Vyberte sloupce dat, se kterými chcete pracovat. Do pole Hledat v horní části palety zadejte **Select** a vyhledejte modul **Výběr sloupců v datové sadě** .
 
@@ -87,11 +93,11 @@ Machine Learning závisí na datech. Donovanovo je v tomto rozhraní k dispozici
 
     V dialogovém okně **Vybrat sloupce** vyberte **všechny sloupce** a zahrňte **všechny funkce**. Dialogové okno by mělo vypadat takto:
 
-     ![výběr sloupců](./media/ui-tutorial-automobile-price-train-score/select-all.png)
+     ![výběr sloupců](./media/ui-tutorial-automobile-price-train-score/select-all.gif)
 
 1. V pravém dolním rohu výběrem **OK** zavřete selektor sloupců.
 
-## <a name="run-the-experiment"></a>Spusťte experiment.
+### <a name="run-the-experiment"></a>Spusťte experiment.
 
 V každém okamžiku klikněte na výstupní port datové sady nebo modulu, abyste viděli, jak data v tomto okamžiku v toku dat vypadají. Pokud je možnost vizualizace zakázaná, musíte nejdřív spustit experiment.
 
@@ -100,7 +106,7 @@ V každém okamžiku klikněte na výstupní port datové sady nebo modulu, abys
 Až bude cílový výpočetní výkon dostupný, experiment se spustí. Po dokončení běhu se u každého modulu zobrazí zelený znak zaškrtnutí.
 
 
-## <a name="visualize-the-data"></a>Vizualizace dat
+### <a name="visualize-the-data"></a>Vizualizace dat
 
 Teď, když jste spustili svůj úvodní experiment, můžete vizualizovat data a pochopit Další informace o datové sadě, kterou máte.
 
@@ -110,9 +116,9 @@ Teď, když jste spustili svůj úvodní experiment, můžete vizualizovat data 
 
     V této datové sadě každý řádek představuje automobil a proměnné přidružené k jednotlivým automobilům se zobrazí jako sloupce. V této datové sadě jsou 205 řádky a 26 sloupců.
 
-     Pokaždé, když kliknete na sloupec dat, zobrazí se vlevo obrázek informace o statistice a **vizualizaci** daného sloupce. Když například kliknete na **Počet dvířek** , které vidíte, má dvě jedinečné hodnoty a dvě chybějící hodnoty. Posuňte se dolů a zobrazte hodnoty: dvě a čtyři dveře.
+    Pokaždé, když kliknete na sloupec dat, zobrazí se vlevo obrázek informace o statistice a **vizualizaci** daného sloupce.
 
-     ![Náhled dat](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
+    [![Náhled dat](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)](./media/ui-tutorial-automobile-price-train-score/preview-data.gif#lightbox)
 
 1. Kliknutím na jednotlivé sloupce pochopíte více o vaší datové sadě a zamyslete se nad tím, zda budou tyto sloupce užitečné pro předpověď ceny automobilu.
 
@@ -137,15 +143,11 @@ Nejprve odeberte sloupec **normalizovaných ztrát** .
 
     * V pravém dolním rohu výběrem **OK** zavřete selektor sloupců.
 
-    ![Vyloučení sloupce](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![Vyloučení sloupce](./media/ui-tutorial-automobile-price-train-score/exclude-column.gif)
         
     Nyní podokno vlastnosti pro možnost vybrat sloupce v datové sadě označuje, že bude procházet všechny sloupce datové sady kromě **normalizovaných ztrát**.
         
     V podokně vlastnosti se zobrazí vyloučený sloupec **normalizované ztráty** .
-        
-    ![Podokno vlastností](./media/ui-tutorial-automobile-price-train-score/property-pane.png)
-        
-    Kliknutím dvakrát na modul a zadáním textu je možné přidat k modulu komentář. To vám může pomoci rychle poznat, jaký je účel modulu v experimentu. 
 
 1. Dvakrát klikněte na modul **Výběr sloupců v datové sadě** a zadejte komentář "vyloučit normalizované ztráty". 
     
@@ -168,22 +170,22 @@ Při výukovém modelu je nutné provést něco o chybějících datech. V takov
 1. V podokně Vlastnosti vyberte v **režimu čištění**možnost **odstranit celý řádek** .
 
 1. Klikněte dvakrát na modul a zadejte komentář Odstranění řádků s chybějícími hodnotami.
- 
-    ![Odebrat řádky](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
 
     Experiment by teď měl vypadat nějak takto:
     
     ![vybrat – sloupec](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
 
-## <a name="train-the-model"></a>Trénování modelu
+## <a name="train-a-machine-learning-model"></a>Výuka modelu strojového učení
 
 Teď, když jsou data připravena, můžete vytvořit prediktivní model. Vaše data budete používat ke výukě modelu. Pak otestujete model, abyste viděli, jak úzce je možné předpovědět ceny.
+
+### <a name="select-an-algorithm"></a>Výběr algoritmu
 
 **Klasifikace** a **regrese** jsou dva typy technik strojového učení se supervizí. **Klasifikace** předpovídá odpověď ze definované sady kategorií, jako je například barva (červená, modrá nebo zelená). **Regrese** se používá k předpovídání čísla.
 
 Vzhledem k tomu, že chcete odhadnout cenu, což je číslo, můžete použít regresní algoritmus. V tomto příkladu použijete model lineární regrese.
 
-Zajistěte si model tím, že mu udělíte sadu dat, která obsahuje cenu. Model vyhledá data a vyhledá korelaci mezi funkcemi automobilu a jeho cenou.
+### <a name="split-the-data"></a>Rozdělení dat
 
 Využijte svá data pro školení modelu a testujte je rozdělením dat na samostatné školení a testování datových sad.
 
@@ -191,17 +193,17 @@ Využijte svá data pro školení modelu a testujte je rozdělením dat na samos
 
 1. Vyberte modul **rozdělit data** . V podokně Vlastnosti nastavte zlomek řádků v první výstupní sadě dat na 0,7. Tímto způsobem budeme k tomu, že použijeme 70 procent dat pro výuku modelu, a pro testování se vrátíme o 30 procent.
 
-    ![Snímek obrazovky znázorňující správnou konfiguraci podokna vlastností Hodnoty "rozdělená data" by měly být rozdělené na řádky, 0,7, náhodné rozdělení, 0, false.](./media/ui-tutorial-automobile-price-train-score/split-data.png)
-
 1. Poklikejte na rozdělená **data** a zadejte komentář "rozdělit datovou sadu do sady školení (0,7) a sady testů (0,3)".
+
+### <a name="train-the-model"></a>Trénování modelu
+
+Zajistěte si model tím, že mu udělíte sadu dat, která obsahuje cenu. Model vyhledá data a vyhledá korelaci mezi funkcemi automobilu a jeho cenou.
 
 1. Chcete-li vybrat sledovací algoritmus, zrušte zaškrtnutí políčka pro hledání palety modulu.
 
 1. Rozbalte **Machine Learning** potom rozbalte položku **inicializovat model**. Tímto se zobrazí několik kategorií modulů, které je možné použít k inicializaci algoritmů strojového učení.
 
 1. Pro tento experiment vyberte **regresní** > **lineární regresi** a přetáhněte ji na plátno experimentu.
-
-    ![Snímek obrazovky znázorňující správnou konfiguraci podokna vlastností Hodnoty "rozdělená data" by měly být rozdělené na řádky, 0,7, náhodné rozdělení, 0, false.](./media/ui-tutorial-automobile-price-train-score/linear-regression-module.png)
 
 1. Najděte modul vlakového **modelu** a přetáhněte ho na plátno experimentu. Připojte výstup modulu lineární regrese k levému vstupu modulu vlak model a připojte výstup školicích dat (levý port) modulu **rozdělení dat** ke správnému vstupu modulu **vlak model** .
 
@@ -215,7 +217,7 @@ Využijte svá data pro školení modelu a testujte je rozdělením dat na samos
 
     ![Snímek obrazovky, který ukazuje správnou konfiguraci experimentu po přidání modulu vlak model.](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
-## <a name="score-and-evaluate-the-model"></a>Skóre a vyhodnocení modelu
+## <a name="evaluate-a-machine-learning-model"></a>Vyhodnocení modelu Machine Learning
 
 Teď, když jste pronaučili model pomocí 70 procent vašich dat, můžete ho použít k vyhodnocení dalších 30 procent dat, abyste viděli, jak dobře model funguje.
 
@@ -245,31 +247,11 @@ Pro váš model se zobrazí následující statistiky:
 
 Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodnota označuje, že předpověď přesněji odpovídá skutečným hodnotám. U koeficientu stanovitelnosti je bližší jeho hodnota jednomu (1,0), což je lepší předpovědi.
 
-## <a name="manage-experiments-in-azure-machine-learning-service-workspace"></a>Správa experimentů v pracovním prostoru služby Azure Machine Learning
-
-Experimenty, které vytvoříte ve vizuálním rozhraní, lze spravovat z pracovního prostoru služby Azure Machine Learning. Použijte pracovní prostor k zobrazení podrobnějších informací, jako jsou například jednotlivci experimentů, diagnostické protokoly, prováděcí grafy a další.
-
-1. Otevřete pracovní prostor v [Azure Portal](https://portal.azure.com/).  
-
-1. V pracovním prostoru vyberte **experimenty**. Pak vyberte experiment, který jste vytvořili.
-
-    ![Snímek obrazovky, který ukazuje, jak přejít k experimentům v Azure Portal](./media/ui-tutorial-automobile-price-train-score/portal-experiments.png)
-
-    Na této stránce se zobrazí přehled experimentu a jeho nejnovějších spuštění.
-
-    ![Snímek obrazovky s přehledem statistik experimentů v Azure Portal](./media/ui-tutorial-automobile-price-train-score/experiment-overview.png)
-
-1. Pokud chcete zobrazit další podrobnosti o konkrétním spuštění, vyberte číslo spuštění.
-
-    ![Podrobná sestava spuštění snímku obrazovky](./media/ui-tutorial-automobile-price-train-score/run-details.png)
-
-    Sestava spuštění je aktualizována v reálném čase. Pokud jste v experimentu použili **skript spustit** v Pythonu nebo **spustíte modul skriptu jazyka R** , můžete na kartě **protokoly** zadat protokol skriptu pro výstup.
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V první části tohoto kurzu jste dokončili tyto kroky:
 

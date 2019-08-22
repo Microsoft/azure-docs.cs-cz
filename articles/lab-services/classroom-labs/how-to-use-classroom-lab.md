@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: ef954f44799b1cf4103847b21ea78e0ac94a9021
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 8987a22d4546fe887d1dda9adff8f46afe667618
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640151"
+ms.locfileid: "69644992"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak získat přístup k testovacímu prostředí v učebně v Azure Lab Services
 Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobrazit všechny laboratoře, ke kterým máte přístup, jak spustit nebo zastavit virtuální počítač v testovacím prostředí a jak se připojit k virtuálnímu počítači. 
@@ -37,7 +37,7 @@ Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobra
 
         ![Virtuální počítač v zastaveném stavu](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
 
-## <a name="start-to-stop-the-vm"></a>Spuštění pro zastavení virtuálního počítače
+## <a name="start-or-stop-the-vm"></a>Spuštění nebo zastavení virtuálního počítače
 1. **Spusťte** virtuální počítač tak, že vyberete první tlačítko, jak je znázorněno na následujícím obrázku. Tento proces trvá nějakou dobu.  
 
     ![Spuštění virtuálního počítače](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)

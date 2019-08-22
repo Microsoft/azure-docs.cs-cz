@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 8227aa366c8f5149d4212e6cdd00e2745db84814
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f2397c67b71cc370a0a98d44bb02e5ee77551afb
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881959"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650650"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření a funkce virtuálních počítačů pro Linux
 
@@ -86,7 +86,7 @@ Pomocí následujících metod lze spustit rozšíření pro existující virtu�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Rozšíření virtuálních počítačů Azure je možné spustit s existujícím virtuálním počítačem pomocí příkazu [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) . Následující příklad spustí rozšíření vlastních skriptů na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*. Nahraďte ukázkový název skupiny prostředků, název virtuálního počítače a skript, který https://raw.githubusercontent.com/me/project/hello.sh) se má spustit (s vašimi vlastními informacemi. 
+Rozšíření virtuálních počítačů Azure je možné spustit s existujícím virtuálním počítačem pomocí příkazu [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) . Následující příklad spustí rozšíření vlastních skriptů na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*. Nahraďte ukázkový název skupiny prostředků, název virtuálního počítače a skript, který se má\/spustit (https:/RAW.githubusercontent.com/me/Project/Hello.sh), s vašimi vlastními informacemi. 
 
 ```azurecli
 az vm extension set `

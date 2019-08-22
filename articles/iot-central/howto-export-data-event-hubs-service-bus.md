@@ -8,14 +8,16 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: c6f10352646350152c5aac795885231697e81fe7
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: e6df6a1f751106f62cdfecc3a7b5efb0fe4c63bf
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850192"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876000"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportujte data v Azure IoT Central
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 *Toto téma se týká správců.*
 
@@ -39,7 +41,7 @@ Pokud nemáte existující Event Hubs/Service Bus k exportu do, postupujte podle
 2. Vyberte předplatné. 
 
     > [!Note] 
-    > Teď můžete exportovat data do jiných předplatných,  která se neshodují s touto aplikací pro IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
+    > Teď můžete exportovat data do jiných předplatných, která se neshodují s touto aplikací pro IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
 3. Vytvořte centrum událostí v oboru názvů Event Hubs. Vytvořte instanci centra událostí tak, že přejdete do svého oboru názvů a vyberete **+ centrum událostí** v horní části.
 
 ## <a name="create-service-bus-namespace"></a>Vytvořit obor názvů Service Bus
@@ -48,7 +50,7 @@ Pokud nemáte existující Event Hubs/Service Bus k exportu do, postupujte podle
 2. Vyberte předplatné. 
 
     > [!Note] 
-    > Teď můžete exportovat data do jiných předplatných,  která se neshodují s touto aplikací pro IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
+    > Teď můžete exportovat data do jiných předplatných, která se neshodují s touto aplikací pro IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
 
 3. Pokud chcete vytvořit frontu nebo téma, do kterého chcete exportovat, klikněte na obor názvů Service Bus a vyberte **+ fronta** nebo **+ téma** v horní části.
 
@@ -93,7 +95,7 @@ Teď, když máte Event Hubs/Service Bus cíl pro export dat, postupujte podle t
 
 7. V části **data, která chcete exportovat**, určete každý typ dat k exportu nastavením typ na **zapnuto**.
 
-6. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **Export dat** zapnutý. Vyberte **Uložit**.
+6. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se,že je **Export dat** zapnutý. Vyberte **Uložit**.
 
     ![Konfigurace průběžného exportu dat](media/howto-export-data/export_list1.png)
 
@@ -112,7 +114,7 @@ Data o měřeních, zařízeních a šablonách zařízení se exportují do cen
 Po IoT Central obdrží zprávu ze zařízení, bude nová zpráva exportována rychle. Každá exportovaná zpráva v Event Hubs a Service Bus obsahuje úplnou zprávu, kterou zařízení ve formátu JSON poslalo ve vlastnosti "tělo". 
 
 > [!NOTE]
-> Zařízení, která odesílají měření, jsou představována ID zařízení (viz následující části). Pokud chcete získat názvy zařízení, exportovat data ze zařízení a korelovat jednotlivé Messsage pomocí ConnectionDeviceIdu, která  odpovídá ID **deviceId** zprávy zařízení.
+> Zařízení, která odesílají měření, jsou představována ID zařízení (viz následující části). Pokud chcete získat názvy zařízení, exportovat data ze zařízení a korelovat jednotlivé Messsage pomocí ConnectionDeviceIdu, která odpovídá ID **deviceId** zprávy zařízení.
 
 Následující příklad ukazuje zprávu o měření dat přijatých v centru událostí nebo v Service Bus fronty nebo tématu.
 
@@ -293,7 +295,7 @@ Následující příklad ukazuje zprávu o datech šablon zařízení v centru u
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když víte, jak exportovat data do Azure Event Hubs a Azure Service Bus, přejděte k dalšímu kroku:
 

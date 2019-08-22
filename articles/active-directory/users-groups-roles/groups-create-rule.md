@@ -1,6 +1,6 @@
 ---
-title: Vytvoření dynamické skupiny a kontrola stavu – Azure Active Directory | Dokumentace Microsoftu
-description: Jak vytvořit pravidla členství ve skupině na webu Azure Portal, zkontrolujte stav.
+title: Vytvořte dynamickou skupinu a ověřte stav-Azure Active Directory | Microsoft Docs
+description: Postup vytvoření pravidla členství ve skupině v Azure Portal najdete v části stav.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,74 +9,74 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 08/12/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f828ff83e6b9c60eb08edef7f47e88185fb5aef8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cb4f9d2f78857231d0ecd81a2538a75b4b8a2f74
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472145"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650298"
 ---
-# <a name="create-a-dynamic-group-and-check-status"></a>Vytvoření dynamické skupiny a zkontrolovat stav
+# <a name="create-a-dynamic-group-and-check-status"></a>Vytvořit dynamickou skupinu a ověřit stav
 
-Ve službě Azure Active Directory (Azure AD) můžete použít pravidla pro zjišťování členství ve skupinách na základě vlastností uživatele nebo zařízení. Tento článek vysvětluje, jak vytvořit pravidlo pro dynamické skupiny na webu Azure Portal.
-Dynamické členství je podporovaná pro skupiny zabezpečení nebo skupiny Office 365. Při použití pravidla členství ve skupině atributů uživatelů a zařízení se vyhodnotí shod s využitím pravidel členství. Když atribut pro uživatele nebo zařízení, všechny dynamické skupiny v organizaci se zpracovávají změny členství. Uživatelé a zařízení přidávají a odebírají, pokud nebudou splňovat podmínky pro skupinu.
+V Azure Active Directory (Azure AD) můžete pomocí pravidel určit členství ve skupině na základě vlastností uživatele nebo zařízení. V tomto článku se dozvíte, jak nastavit pravidlo pro dynamickou skupinu v Azure Portal.
+Dynamické členství je podporováno pro skupiny zabezpečení nebo skupiny Office 365. Při použití pravidla členství ve skupině se vyhodnotí atributy uživatelů a zařízení pro shody s pravidlem členství. Když se změní atribut uživatele nebo zařízení, zpracují se všechna pravidla dynamické skupiny v organizaci pro změny členství. Uživatelé a zařízení se přidají nebo odeberou, pokud splňují podmínky pro skupinu. Skupiny zabezpečení lze použít buď pro zařízení, nebo pro uživatele, ale skupiny sady Office 365 mohou být pouze skupiny uživatelů.
 
-Příklady syntaxe, podporovaných vlastností, operátory a hodnoty pro pravidlo členství, najdete v článku [pravidla dynamického členství pro skupiny ve službě Azure Active Directory](groups-dynamic-membership.md).
+Příklady syntaxe, podporovaných vlastností, operátorů a hodnot pravidla členství najdete v tématu [dynamická pravidla členství pro skupiny v Azure Active Directory](groups-dynamic-membership.md).
 
-## <a name="to-create-a-group-membership-rule"></a>Chcete-li vytvořit pravidla členství ve skupině
+## <a name="to-create-a-group-membership-rule"></a>Vytvoření pravidla členství ve skupině
 
-1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v globální správce, Správce služby Intune nebo role uživatele správce v tenantovi.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v roli globální správce, Správce služby Intune nebo Správce uživatelů v tenantovi.
 2. Vyberte **skupiny**.
-3. Vyberte **všechny skupiny**a vyberte **novou skupinu**.
+3. Vyberte možnost **všechny skupiny**a vyberte možnost **Nová skupina**.
 
-   ![Vyberte příkaz pro přidání nové skupiny](./media/groups-create-rule/new-group-creation.png)
+   ![Vyberte příkaz pro přidání nové skupiny.](./media/groups-create-rule/new-group-creation.png)
 
-4. Na **skupiny** stránky, zadejte název a popis nové skupiny. Vyberte **typ členství** pro uživatele nebo zařízení a pak vyberte **Přidat dynamický dotaz**. Tvůrce pravidlo můžete použít k vytvoření jednoduché pravidlo, nebo [napsat pravidlo členství, sami](groups-dynamic-membership.md).
+4. Na stránce **Skupina** zadejte název a popis nové skupiny. Vyberte **typ členství** buď pro uživatele, nebo pro zařízení a pak vyberte **Přidat dynamický dotaz**. Tvůrce pravidel podporuje až pět výrazů. Chcete-li přidat šest nebo jakékoli následné výrazy, je nutné použít textové pole.
 
    ![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. Pokud chcete zobrazit vlastnosti vlastní rozšíření, která je k dispozici pro dotaz na členství
-   1. Vyberte **získání rozšíření vlastních vlastností**
-   2. Zadejte ID aplikace a pak vyberte **aktualizovat vlastnosti**. 
-6. Po vytvoření pravidla, vyberte **přidat dotaz** v dolní části okna.
-7. Vyberte **vytvořit** na **skupiny** okno pro vytvoření skupiny.
+5. Zobrazení vlastních vlastností rozšíření dostupných pro dotaz na členství
+   1. Vyberte **získat vlastnosti vlastního rozšíření** .
+   2. Zadejte ID aplikace a pak vyberte **aktualizovat vlastnosti**.
+6. Po vytvoření pravidla vyberte **Uložit**.
+7. Vyberte **vytvořit** na stránce **Nová skupina** a vytvořte skupinu.
 
-Pokud pravidlo, které jste zadali, není platná, zobrazí se vysvětlení, proč nebylo možné zpracovat pravidlo v pravém horním rohu portálu. Přečtěte si ho pečlivě, abyste pochopili, jak opravit pravidlo.
+Pokud pravidlo, které jste zadali, není platné, zobrazí se v oznámení Azure na portálu vysvětlení, proč se pravidlo nedalo zpracovat. Pečlivě si přečtěte, abyste zjistili, jak pravidlo opravit.
 
-## <a name="turn-on-or-off-welcome-email"></a>Zapněte nebo vypněte Uvítacího e-mailu
+## <a name="turn-on-or-off-welcome-email"></a>Zapnutí nebo vypnutí uvítacího e-mailu
 
-Když se vytvoří nová skupina Office 365, úvodní oznámení se posílá uživatele, kteří jsou přidány do skupiny. Později Pokud se změní libovolné atributy uživatele nebo zařízení, všechny dynamické skupiny v organizaci se zpracovávají změny členství. Uživatelé, kteří jsou přidány také obdrží úvodní oznámení. Můžete ji vypnout toto chování v [Powershellu v Exchangi](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
+Když se vytvoří nová skupina Office 365, pošle se uvítací e-mailové oznámení uživatelům, kteří se do této skupiny přidají. Později platí, že pokud se libovolné atributy uživatele nebo zařízení změní, budou se pro změny členství zpracovávat všechna pravidla dynamické skupiny v organizaci. Přidaní uživatelé pak obdrží i uvítací oznámení. Toto chování můžete vypnout v [prostředí Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps).
 
-## <a name="check-processing-status-for-a-rule"></a>Kontrola stavu zpracování pro pravidlo
+## <a name="check-processing-status-for-a-rule"></a>Zkontroluje stav zpracování pravidla.
 
-Zobrazí členství na zpracování stavu a datum poslední aktualizace **přehled** stránce pro skupinu.
+Stav zpracování členství a datum poslední aktualizace můžete zobrazit na stránce **Přehled** pro danou skupinu.
   
-  ![Zobrazení stavu dynamické skupiny](./media/groups-create-rule/group-status.png)
+  ![zobrazení stavu dynamické skupiny](./media/groups-create-rule/group-status.png)
 
-Tyto stavové zprávy lze zobrazit pro **členství zpracování** stavu:
+Pro stav **zpracování členství** lze zobrazit následující stavové zprávy:
 
-* **Vyhodnocení**:  Byla přijata změnu skupiny a aktualizace se právě vyhodnocována.
-* **Zpracování**: Aktualizace se právě zpracovává.
-* **Dokončena aktualizace**: Bylo dokončeno zpracování a provedli všechny použitelné aktualizace.
-* **Chyba zpracování**:  Zpracování nelze dokončit, protože došlo k chybě vyhodnocení pravidla členství.
-* **Pozastavená aktualizace**: Aktualizace pravidla dynamického členství byla pozastavena správcem. MembershipRuleProcessingState nastavená na "Pozastaveno".
+* **Vyhodnocení**:  Byla přijata změna skupiny a probíhá vyhodnocení aktualizací.
+* **Zpracovává**se: Probíhá zpracování aktualizací.
+* **Aktualizace dokončena**: Zpracování bylo dokončeno a všechny použitelné aktualizace byly provedeny.
+* **Chyba zpracování**:  Zpracování se nepodařilo dokončit kvůli chybě při vyhodnocování pravidla členství.
+* **Aktualizace**pozastavena: Správci pozastavili aktualizace pravidla dynamického členství. MembershipRuleProcessingState je nastavené na pozastaveno.
 
-Tyto stavové zprávy lze zobrazit pro **členství poslední aktualizace** stavu:
+Pro stav **Poslední aktualizace členství** se můžou zobrazit tyto stavové zprávy:
 
-* &lt;**Datum a čas**&gt;: Čas posledního členství byl aktualizován.
-* **V průběhu**: Právě probíhají aktualizace.
-* **Neznámý**: Čas poslední aktualizace nelze načíst. Skupina může být nový.
+* &lt;**Datum a čas**&gt;: Čas poslední aktualizace členství.
+* **Probíhá**: Aktuálně probíhá aktualizace.
+* **Neznámý**: Čas poslední aktualizace nelze načíst. Tato skupina může být nová.
 
-Pokud dojde k chybě při zpracování pravidla členství pro konkrétní skupinu, upozornění se zobrazí v horní **stránka s přehledem** pro skupinu. Pokud ne čekající členství v dynamické aktualizace lze zpracovat pro všechny skupiny v rámci tenanta pro další pak 24 hodin, upozornění se zobrazí v horní **všechny skupiny**.
+Pokud při zpracovávání pravidla členství pro určitou skupinu dojde k chybě, zobrazí se v horní části **stránky přehled** pro danou skupinu výstraha. Pokud není možné zpracovat žádné nedokončené dynamické aktualizace členství pro všechny skupiny v tenantovi za více než 24 hodin, zobrazí se v horní části **všech skupin**výstraha.
 
-![zpracování chybové zprávy oznámení](./media/groups-create-rule/processing-error.png)
+![zpracování upozornění na chybové zprávy](./media/groups-create-rule/processing-error.png)
 
-Tyto články poskytují další informace o skupinách ve službě Azure Active Directory.
+Tyto články poskytují další informace o skupinách v Azure Active Directory.
 
 * [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Vytvoření nové skupiny a přidání členů](../fundamentals/active-directory-groups-create-azure-portal.md)

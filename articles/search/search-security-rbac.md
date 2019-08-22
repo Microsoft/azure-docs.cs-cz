@@ -1,43 +1,43 @@
 ---
-title: Nastavte role RBAC pro Azure pro správu přístupu na portálu – Azure Search
-description: Na základě rolí správy (RBAC) na webu Azure Portal pro řízení a delegování úloh správy pro správu Azure Search.
+title: Nastavení rolí RBAC pro přístup pro správu Azure na portálu – Azure Search
+description: Administrativní řízení na základě rolí (RBAC) v Azure Portal pro řízení a delegování úloh správy Azure Search správě.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 924d2529e3477c299d4a90c076fe9e6c8faf11f3
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61282352"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647398"
 ---
-# <a name="set-rbac-roles-for-administrative-access"></a>Nastavte role RBAC pro přístup pro správu
+# <a name="set-rbac-roles-for-administrative-access"></a>Nastavení rolí RBAC pro přístup pro správu
 
-Azure poskytuje [modelu globální autorizace na základě rolí](../role-based-access-control/role-assignments-portal.md) pro všechny služby spravovat prostřednictvím portálu nebo rozhraní API Resource Manageru. Role vlastník, Přispěvatel a čtenář určují úroveň *Správa služby* pro uživatele, skupiny nebo objekty zabezpečení přiřazené ke každé roli služby Active Directory. 
+Azure poskytuje [globální autorizační model založený](../role-based-access-control/role-assignments-portal.md) na rolích pro všechny služby spravované prostřednictvím portálu nebo rozhraní Správce prostředků API. Role vlastník, přispěvatel a čtenář určují úroveň *správy služeb* pro uživatele, skupiny a objekty zabezpečení služby Active Directory přiřazené jednotlivým rolím. 
 
 > [!Note]
-> Není k dispozici žádné ovládací prvky přístupu na základě rolí pro zabezpečení části indexu nebo podmnožinu dokumentů. Pro přístup na základě identity výsledků vyhledávání můžete vytvořit filtry zabezpečení mají být odebrány výsledky podle identity, odebírání dokumentů, pro které žadatel by přístup mít neměly. Další informace najdete v tématu [filtry zabezpečení](search-security-trimming-for-azure-search.md) a [zabezpečené službou Active Directory](search-security-trimming-for-azure-search-with-aad.md).
+> Pro zabezpečení částí indexu nebo podmnožiny dokumentů nejsou k dispozici žádná řízení přístupu na základě rolí. Pro přístup na základě identity přes výsledky hledání můžete vytvořit filtry zabezpečení pro oříznutí výsledků podle identity a odebrání dokumentů, ke kterým by žadatel neměl mít přístup. Další informace najdete v tématech [filtry zabezpečení](search-security-trimming-for-azure-search.md) a zabezpečení [pomocí služby Active Directory](search-security-trimming-for-azure-search-with-aad.md).
 
-## <a name="management-tasks-by-role"></a>Úkoly správy rolí
+## <a name="management-tasks-by-role"></a>Úlohy správy podle rolí
 
-Pro službu Azure Search jsou spojeny s úrovní oprávnění, které podporují následující úkoly správy rolí:
+Pro Azure Search jsou role přidružené k úrovním oprávnění, které podporují následující úlohy správy:
 
-| Role | Úkol |
+| Role | Úloha |
 | --- | --- |
-| Vlastník |Vytvoření nebo odstranění služby nebo libovolný objekt služby, včetně klíče api Key, indexy, indexery, indexer zdroje dat a indexeru plány.<p>Zobrazit stav služby, včetně počtu a velikosti úložiště.<p>Přidání nebo odstranění členství v roli (pouze vlastník můžete spravovat členství v roli).<p>Správci předplatného a vlastníci služby mají automatickým členstvím v roli vlastníky. |
-| Přispěvatel |Stejnou úroveň přístupu jako vlastník, minus správu role RBAC. Například můžete přispěvatele vytvořit nebo odstranit objekty, nebo zobrazit a znovu vygenerovat [klíče api Key](search-security-api-keys.md), ale nelze upravit členství v rolích. |
-| [Předdefinovaná role Přispěvatel služby Search](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | Odpovídá roli Přispěvatel. |
-| Čtenář |Základy služby zobrazení a metriky. Členové této role nelze zobrazit, index, indexer, zdroj dat nebo informace o klíči.  |
+| Owner |Vytvořte nebo odstraňte službu nebo libovolný objekt ve službě, včetně klíčů rozhraní API, indexů, indexerů, zdrojů dat indexeru a plánů indexerů.<p>Zobrazení stavu služby, včetně počtu a velikosti úložiště<p>Přidat nebo odstranit členství v rolích (pouze vlastník může spravovat členství v rolích).<p>Správci předplatného a vlastníci služeb mají automatické členství v roli vlastníci. |
+| Přispěvatel |Stejná úroveň přístupu jako vlastník a minus Správa rolí RBAC. Přispěvatel může například vytvořit nebo odstranit objekty nebo zobrazit a znovu vygenerovat [klíče rozhraní API](search-security-api-keys.md), ale nemůže změnit členství v rolích. |
+| [Předdefinovaná role Search Service Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | Odpovídá roli Přispěvatel. |
+| Čtenář |Zobrazit základy služby a metriky. Členové této role nemůžou zobrazovat index, indexer, zdroj dat ani informace o klíčích.  |
 
-Role nejsou udělena přístupová práva ke koncovému bodu služby. Hledání operace služby, jako je například Správa indexů, naplňování indexu a dotazy na data vyhledávání, jsou ovládaná klíče api Key, ne rolí. Další informace najdete v tématu [spravovat klíče api Key](search-security-api-keys.md).
+Role neudělují přístupová práva ke koncovému bodu služby. Operace hledání služby, jako je například Správa indexů, naplnění indexu a dotazy na data hledání, se řídí prostřednictvím klíčů rozhraní API, nikoli rolí. Další informace najdete v tématu [Správa klíčů rozhraní API](search-security-api-keys.md).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 + [Správa s využitím PowerShellu](search-manage-powershell.md) 
-+ [Výkon a optimalizace do služby Azure Search](search-performance-optimization.md)
-+ [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../role-based-access-control/overview.md).
++ [Výkon a optimalizace v Azure Search](search-performance-optimization.md)
++ Začněte [s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).

@@ -1,101 +1,103 @@
 ---
-title: Vizualizace dat v Power BI řídicí panel Azure IoT Central | Dokumentace Microsoftu
-description: Pomocí řešení Power BI pro Azure IoT Central umožňuje vizualizovat a analyzovat vaše data IoT Central.
+title: Vizualizace dat IoT Central Azure v řídicím panelu Power BI | Microsoft Docs
+description: K vizualizaci a analýze dat IoT Central použijte řešení Power BI pro Azure IoT Central.
 ms.service: iot-central
 services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 06/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 16d7691d59e0805c7f8cf565a599ca5e6a78a7cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 897b72dd7b292492e45cdc7401fe1acc5c86ca20
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053043"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877462"
 ---
-# <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Vizualizace a analýza Azure IoT Central dat na řídicím panelu Power BI
+# <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Vizualizace a analýza dat IoT Central Azure v řídicím panelu Power BI
 
-*Toto téma se vztahuje na správce.*
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-![Kanál řešení Power BI](media/howto-connect-powerbi/iot-continuous-data-export.png)
+*Toto téma se týká správců.*
 
-Můžete vytvářet výkonné řídicí panel Power BI k monitorování výkonu zařízení IoT řešení Power BI pro Azure IoT Central. Na řídicím panelu Power BI můžete:
-- Sledovat, kolik dat vaše zařízení odesílají v čase
-- Porovnat objem dat mezi telemetrie, stavy a události
-- Identifikovat zařízení, která se hlásí velké množství měření
-- Sledovat historické trendy měření zařízení
-- Identifikace problematické zařízení, které posílají velké množství kritické události
+![Power BI kanál řešení](media/howto-connect-powerbi/iot-continuous-data-export.png)
 
-Toto řešení nastaví kanál, který přijímá data ve vašem účtu úložiště objektů Blob v Azure z [průběžný Export dat](howto-export-data.md). Tento tok dat do Azure Functions, Azure Data Factory a Azure SQL Database pro zpracování a transformaci dat. Výstup můžete vizualizovat a analyzovat v sestavě Power BI, který si můžete stáhnout jako soubor .PBIX. Všechny tyto prostředky se vytvoří ve vašem předplatném Azure, takže si můžete přizpůsobit tak, aby odpovídala vašim potřebám jednotlivých komponent.
+K vytvoření výkonného řídicího panelu Power BI pro monitorování výkonu zařízení IoT použijte Power BI řešení pro Azure IoT Central. Na řídicím panelu Power BI můžete:
+- Sledování množství dat, která zařízení odesílají v průběhu času
+- Porovnání datových svazků mezi telemetrie, stavy a událostmi
+- Identifikujte zařízení, která hlásí spoustu měření.
+- Sledujte historické trendy měření zařízení.
+- Identifikujte problematická zařízení, která odesílají spoustu kritických událostí.
 
-## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Získejte [Power BI Solution pro Azure IoT Central](https://aka.ms/iotcentralpowerbisolutiontemplate) z Microsoft AppSource.
+Toto řešení nastaví kanál, který převezme data z účtu služby Azure Blob Storage ze [souvislého exportu dat](howto-export-data.md). Tato data se převedou do Azure Functions, Azure Data Factory a Azure SQL Database pro zpracování a transformaci dat. Výstup se dá vizuálně analyzovat a analyzovat v sestavě Power BI, kterou si můžete stáhnout jako soubor PBIX. Všechny tyto prostředky se vytvoří ve vašem předplatném Azure, takže můžete jednotlivé komponenty přizpůsobit tak, aby vyhovovaly vašim potřebám.
+
+## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Získejte [řešení Power BI pro Azure IoT Central](https://aka.ms/iotcentralpowerbisolutiontemplate) z Microsoft AppSource.
 
 ## <a name="prerequisites"></a>Požadavky
 Nastavení řešení vyžaduje následující:
 - Přístup k předplatnému Azure
-- Exportovat data s využitím [průběžný Export dat](howto-export-data.md) z vaší aplikace IoT Central. Doporučujeme že vám zapnout měření, zařízení a zařízení šablony streamování naplno využít řídicí panel Power BI.
-- Power BI Desktopu (nejnovější verze)
+- Exportovaná data pomocí [průběžného exportu dat](howto-export-data.md) z aplikace IoT Central. Pro maximum na Power BI řídicím panelu doporučujeme zapnout měření, zařízení a datové proudy šablon zařízení.
+- Power BI Desktop (nejnovější verze)
 - Power BI Pro (Pokud chcete řídicí panel sdílet s ostatními)
 
 ## <a name="reports"></a>Sestavy
 
-Dvě sestavy jsou automaticky generovány. 
+Dvě sestavy se generují automaticky. 
 
-První zpráva zobrazí Historický přehled průběžně měření, která zařízení a rozdělí různé druhy měření a zařízení, které jste odeslali nejvyšší počet měření.
+První sestava zobrazuje historický přehled o měřeních hlášených zařízeními a rozděluje různé typy měření a zařízení, které odeslaly nejvyšší počet měření.
 
-![Stránka sestavy v Power BI 1](media/howto-connect-powerbi/template-page1-hasdata.PNG)
+![Stránka sestavy Power BI 1](media/howto-connect-powerbi/template-page1-hasdata.PNG)
 
-Druhá sestava věnuje hlouběji do událostí a zobrazí Historický přehled průběžně chyby a varování hlášených. Profil také ukazuje, zařízení, která hlásí nejvyšší počet událostí shrnutí, a také konkrétně chybové události a události varování.
+Druhá sestava komentáře hlouběji do událostí a zobrazuje historické zobrazení chyb a upozornění. Zobrazuje také zařízení, která hlásí nejvyšší počet událostí, a konkrétně události chyb a upozornění.
 
-![Sestavy Power BI – stránka 2](media/howto-connect-powerbi/template-page2-hasdata.PNG)
+![Stránka sestavy Power BI 2](media/howto-connect-powerbi/template-page2-hasdata.PNG)
 
 ## <a name="architecture"></a>Architektura
-Všechny prostředky, které byly vytvořeny je přístupný na webu Azure Portal. Všechno, co by měl být v rámci jedné skupiny prostředků.
+Všechny prostředky, které byly vytvořeny, mohou být k dispozici v Azure Portal. Vše by mělo být v rámci jedné skupiny prostředků.
 
-![Zobrazení Azure Portal, skupiny prostředků](media/howto-connect-powerbi/azure-deployment.PNG)
+![Zobrazení skupiny prostředků na webu Azure Portal](media/howto-connect-powerbi/azure-deployment.PNG)
 
-Níže je popsána podrobností o jednotlivých prostředků a jak se používá.
+Konkrétní informace o jednotlivých prostředcích a způsobu jejich použití jsou popsány níže.
 
 ### <a name="azure-functions"></a>Azure Functions
-Aplikace Azure Function app se spustí pokaždé, když je nový soubor zapsán do úložiště objektů Blob. Funkce extrahovat pole v rámci každé měření, zařízení a zařízení soubor šablony a naplní několik převodní tabulky SQL, které má být použit službou Azure Data Factory.
+Aplikace Azure Functions se aktivuje při každém zápisu nového souboru do úložiště objektů BLOB. Funkce rozbalí pole v rámci jednotlivých měření, zařízení a souborů šablon zařízení a naplní několik mezilehlých tabulek SQL, které bude Azure Data Factory používat.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
-Azure Data Factory se připojí ke službě SQL database jako propojenou službu. Spuštění aktivity uložené procedury, které zpracování dat a uložit do tabulky analýzy.
+Azure Data Factory se připojí k databázi SQL jako propojená služba. Spouští aktivity uložených procedur, které zpracovávají data a ukládají je do tabulek analýzy.
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
-K naplnění výchozích sestav, které se automaticky vytvoří tyto tabulky. Prozkoumejte tato schémata v Power BI a můžete vytvářet vlastní vizualizace s těmito daty.
+Tyto tabulky jsou automaticky vytvořeny pro naplnění výchozích sestav. Prozkoumejte tato schémata v Power BI a můžete na těchto datech vytvořit vlastní vizualizace.
 
 | Název tabulky |
 |------------|
-|[analytics]. [Měření]|
-|[analytics]. [Zprávy]|
-|[fáze]. [Měření]|
-|[analytics]. [Vlastnosti]|
+|[analýza]. Jednotek|
+|[analýza]. Zprávy|
+|[fáze]. Jednotek|
+|[analýza]. Vlastnosti|
 |[analytics].[PropertyDefinitions]|
-|[analytics]. [MeasurementDefinitions]|
-|[analytics]. [Zařízení]|
-|[analytics]. [DeviceTemplates]|
+|[analýza]. [MeasurementDefinitions]|
+|[analýza]. Signalizac|
+|[analýza]. [DeviceTemplates]|
 |[dbo].[date]|
 |[dbo].[ChangeTracking]|
 
 ## <a name="estimated-costs"></a>Odhadované náklady
 
-Tady je zapojené odhad nákladů Azure (funkce Azure Functions, Data Factory, Azure SQL). Všechny ceny jsou uvedeny v USD. Mějte na paměti, že ceny se liší podle oblasti, takže by měl vždy vyhledat nejnovější cen jednotlivých služeb, které mají získat skutečné ceny.
-Následující výchozí hodnoty jsou nastavené pro vás v šabloně (můžete upravit některé z těchto po věcí nastavit):
+Tady je odhad nákladů na Azure (Azure Functions, Data Factory, Azure SQL). Všechny ceny jsou v USD. Mějte na paměti, že ceny se liší podle oblastí, takže byste měli vždycky vyhledat nejnovější ceny jednotlivých služeb, abyste získali skutečné ceny.
+Následující výchozí hodnoty jsou nastaveny pro vás v šabloně (některé z těchto možností můžete po nastavení upravit):
 
-- Služba Azure Functions: Plán služby App Service S1, 74.40 $/ měsíc
-- Azure SQL S1, ~$30/month
+- Azure Functions: App Service plán S1, $74.40/měsíc
+- Azure SQL S1, ~ $30/měsíc
 
-Doporučujeme vám seznámit se s různé cenové možnosti a upravit možnosti tak, aby odpovídala vašim potřebám.
+Doporučujeme, abyste se seznámili s různými cenovými možnostmi a vylepšit je podle vašich potřeb.
 
 ## <a name="resources"></a>Zdroje a prostředky
 
-Navštivte web AppSource a získat [řešení Power BI pro Azure IoT Central](https://aka.ms/iotcentralpowerbisolutiontemplate).
+Navštivte AppSource a získejte [řešení Power BI pro Azure IoT Central](https://aka.ms/iotcentralpowerbisolutiontemplate).
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili, jak vizualizace dat v Power BI, je zde navrhované další krok:
+Teď, když jste se naučili, jak vizualizovat data v Power BI, je tady doporučený další krok:
 
 > [!div class="nextstepaction"]
 > [Správa zařízení](howto-manage-devices.md)

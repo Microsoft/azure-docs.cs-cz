@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7c331a4a7395069dc4dc3ab1dcfc89415be0898c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8827aa660d348ef9e42c617067c2837b8697ba6e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854458"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876783"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co je verze Preview pro virtuální počítače s Windows? 
 
@@ -81,7 +81,7 @@ K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto v�
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí být:
 
 * [Standardní](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) [Služba AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)připojená k doméně nebo k ní připojená. Virtuální počítače nemůžou být připojené k Azure AD.
-* Spouští se jedna z následujících [podporovaných bitových kopií operačního systému](#supported-virtual-machine-os-image).
+* Spouští se jedna z následujících [podporovaných bitových kopií operačního systému](#supported-virtual-machine-os-images).
 
 >[!NOTE]
 >Pokud potřebujete předplatné Azure, můžete si [zaregistrovat měsíční bezplatnou zkušební verzi](https://azure.microsoft.com/free/). Pokud používáte bezplatnou zkušební verzi Azure, měli byste použít službu Azure AD Domain Services k udržování synchronizace služby Windows Server Active Directory s Azure Active Directory.
@@ -101,14 +101,14 @@ Virtuální plocha Windows podporuje následující klienti vzdálené plochy:
 * [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
 * [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
 
-## <a name="supported-virtual-machine-os-image"></a>Podporovaná image operačního systému virtuálního počítače
+## <a name="supported-virtual-machine-os-images"></a>Podporované image operačních systémů virtuálních počítačů
 
 Virtuální počítač s Windows podporuje následující image operačních systémů:
 
 * Více relací Windows 10 Enterprise
 * Windows Server 2016
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Chcete-li začít, budete muset vytvořit tenanta. Pokud se chcete dozvědět víc o tom, jak vytvořit tenanta, přejděte k kurzu Vytvoření tenanta.
 

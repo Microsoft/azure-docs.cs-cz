@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Sestavení indexu obohaceného AI v Azure Portal-Azure Search'
 description: Data extrakce, přirozeného jazyka a zpracování obrazu na portálu Azure Search indexování pomocí Azure Portal a ukázkových dat.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: quickstart
 ms.date: 07/09/2019
 ms.author: heidist
-ms.openlocfilehash: 7bc8bd77ef581134fad0cb2e11277dc4fcee99c4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a4654e5895e9c7768b9fa6b975ef848294bcc8cc
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841181"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648906"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Rychlý start: Vytvoření kanálu indexování AI pomocí dovedností rozpoznávání v Azure Search
 
@@ -174,7 +174,7 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny pr
 
 Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V závislosti na tom, jak jste zřídili Cognitive Services prostředek, můžete experimentovat s indexováním a obohacením tak, že znovu spustíte Průvodce s různými dovednostmi a zdrojovými datovými poli. Pokud chcete postup opakovat, odstraňte index a indexer a pak znovu indexer vytvořte s tím, že vyberete novou kombinaci možností.
 

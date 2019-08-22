@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 10/06/2017
-ms.openlocfilehash: 243f4e63cc04bca018c2bf69492dccf163e92b73
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/16/2019
+ms.openlocfilehash: 0a89cd2c576a3539d7b1b6a282a2287551e8265a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780835"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877128"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Úlohy plánování a vysílání (Node. js)
 
@@ -48,9 +48,11 @@ Na konci tohoto kurzu máte dvě aplikace Node. js:
 
 * **scheduleJobService. js**, který volá přímou metodu v aplikaci simulovaného zařízení a aktualizuje požadované vlastnosti v zařízení pomocí úlohy.
 
+## <a name="prerequisites"></a>Požadavky
+
 Pro absolvování tohoto kurzu potřebujete:
 
-* Node. js verze 10.0. x nebo novější [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node. js pro tento kurz v systému Windows nebo Linux.
+* Node. js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node. js pro tento kurz v systému Windows nebo Linux.
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
@@ -68,39 +70,39 @@ V této části vytvoříte konzolovou aplikaci Node. js, která reaguje na př�
 
 1. Vytvořte novou prázdnou složku s názvem **simDevice**.  Ve složce **simDevice** vytvořte soubor Package. JSON pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
 
-   ```
+   ```console
    npm init
    ```
 
 2. Na příkazovém řádku ve složce **simDevice** spusťte následující příkaz k instalaci balíčku sady SDK pro zařízení **Azure-IoT-Device** a balíčku **Azure-IoT-Device-MQTT** :
-   
-   ```
+
+   ```console
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
 3. Pomocí textového editoru vytvořte nový soubor **simDevice. js** ve složce **simDevice** .
 
 4. Na začátek souboru **simDevice. js** přidejte následující příkazy ' vyžadovat ':
-   
-    ```
+
+    ```javascript
     'use strict';
-   
+
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Přidejte proměnnou **connectionString** a použijte ji k vytvoření instance **klienta**.  
-   
-    ```
-    var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
+5. Přidejte proměnnou **connectionString** a použijte ji k vytvoření instance **klienta**. Nahraďte `{yourDeviceConnectionString}` hodnotu zástupného symbolu připojovacím řetězcem zařízení, který jste zkopírovali dříve.
+
+    ```javascript
+    var connectionString = '{yourDeviceConnectionString}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
 6. Přidejte následující funkci pro zpracování metody **lockDoor** .
-   
-    ```
+
+    ```javascript
     var onLockDoor = function(request, response) {
-   
+
         // Respond the cloud app for the direct method
         response.send(200, function(err) {
             if (err) {
@@ -109,14 +111,14 @@ V této části vytvoříte konzolovou aplikaci Node. js, která reaguje na př�
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');
             }
         });
-   
+
         console.log('Locking Door!');
     };
     ```
 
 7. Přidejte následující kód pro registraci obslužné rutiny pro metodu **lockDoor** .
 
-   ```
+   ```javascript
    client.open(function(err) {
         if (err) {
             console.error('Could not connect to IotHub client.');
@@ -145,30 +147,30 @@ V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vz
 
 1. Vytvořte novou prázdnou složku s názvem **scheduleJobService**.  Ve složce **scheduleJobService** vytvořte soubor Package. JSON pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
 
-    ```
+    ```console
     npm init
     ```
 
 2. Na příkazovém řádku ve složce **scheduleJobService** spusťte následující příkaz, který nainstaluje balíček sady SDK pro zařízení **Azure-iothub** a balíček **Azure-IoT-Device-MQTT** :
-   
-    ```
+
+    ```console
     npm install azure-iothub uuid --save
     ```
 
 3. Pomocí textového editoru vytvořte nový soubor **scheduleJobService. js** ve složce **scheduleJobService** .
 
-4. Na začátek souboru **dmpatterns_gscheduleJobServiceetstarted_service. js** přidejte následující příkazy ' vyžadovat ':
-   
-    ```
+4. Na začátek souboru **scheduleJobService. js** přidejte následující příkazy ' vyžadovat ':
+
+    ```javascript
     'use strict';
-   
+
     var uuid = require('uuid');
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Přidejte následující deklarace proměnných a nahraďte zástupné hodnoty:
-   
-    ```
+5. Přidejte následující deklarace proměnných. Nahraďte hodnotu [](#get-the-iot-hub-connection-string) zástupnéhosymboluhodnotou,kteroujstezkopírovalivčástizískánípřipojovacíhořetězcecentraIoT`{iothubconnectionstring}` hub. Pokud jste zaregistrovali jiné zařízení než **myDeviceId**, nezapomeňte ho změnit v podmínce dotazu.
+
+    ```javascript
     var connectionString = '{iothubconnectionstring}';
     var queryCondition = "deviceId IN ['myDeviceId']";
     var startTime = new Date();
@@ -177,8 +179,8 @@ V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vz
     ```
 
 6. Přidejte následující funkci, která slouží k monitorování provádění úlohy:
-   
-    ```
+
+    ```javascript
     function monitorJob (jobId, callback) {
         var jobMonitorInterval = setInterval(function() {
             jobClient.getJob(jobId, function(err, result) {
@@ -197,14 +199,14 @@ V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vz
     ```
 
 7. Přidejte následující kód k naplánování úlohy, která volá metodu zařízení:
-   
-    ```
+  
+    ```javascript
     var methodParams = {
         methodName: 'lockDoor',
         payload: null,
         responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable to process method
     };
-   
+
     var methodJobId = uuid.v4();
     console.log('scheduling Device Method job with id: ' + methodJobId);
     jobClient.scheduleDeviceMethod(methodJobId,
@@ -228,8 +230,8 @@ V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vz
     ```
 
 8. Přidejte následující kód k naplánování úlohy pro aktualizaci vlákna zařízení:
-   
-    ```
+
+    ```javascript
     var twinPatch = {
        etag: '*',
        properties: {
@@ -239,9 +241,9 @@ V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vz
            }
        }
     };
-   
+
     var twinJobId = uuid.v4();
-   
+
     console.log('scheduling Twin Update job with id: ' + twinJobId);
     jobClient.scheduleTwinUpdate(twinJobId,
                                 queryCondition,
@@ -270,20 +272,28 @@ V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vz
 Nyní můžete spustit aplikace.
 
 1. Na příkazovém řádku ve složce **simDevice** spusťte následující příkaz, který zahájí naslouchání metodě restart přímo.
-   
-    ```
+
+    ```console
     node simDevice.js
     ```
 
 2. Na příkazovém řádku ve složce **scheduleJobService** spusťte následující příkaz, který aktivuje úlohy pro uzamknutí dvířek a aktualizaci vlákna.
-   
-    ```
+
+    ```console
     node scheduleJobService.js
     ```
 
-3. V konzole se zobrazí odpověď zařízení k přímé metodě.
+3. V konzole se zobrazí odpověď zařízení k přímé metodě a stavu úlohy.
 
-## <a name="next-steps"></a>Další postup
+   Následující příklad ukazuje reakci zařízení přímo na metodu:
+
+   ![Výstup aplikace simulovaného zařízení](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
+
+   Níže vidíte úlohy plánování služby pro přímou metodu a aktualizaci s doplňováním zařízení a úlohy spuštěné k dokončení:
+
+   ![Spuštění aplikace simulovaného zařízení](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
+
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste použili úlohu k naplánování přímé metody na zařízení a aktualizaci vlastností vlákna zařízení.
 

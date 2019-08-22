@@ -3,18 +3,18 @@ title: 'Rychlý Start Pythonu: Vytváření, načítání a dotazování indexů
 description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, poznámkových bloků Jupyter a REST API Azure Search.
 ms.date: 07/11/2019
 author: heidisteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 9e12133179ca02c3474e768305feb8ae19a6178e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 308e296ba5306949e87e68f14c8c219b85825af4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840761"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656791"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Rychlý start: Vytvoření indexu Azure Search v Pythonu pomocí poznámkových bloků Jupyter
 > [!div class="op_single_selector"]
@@ -302,7 +302,7 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny pr
 
 Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V rámci zjednodušení se v tomto rychlém startu používá zkrácená verze indexu hotelů. Můžete vytvořit úplnou verzi a vyzkoušet si zajímavější dotazy. Chcete-li získat úplnou verzi a všechny dokumenty 50, spusťte průvodce **importem dat** a vyberte možnost *hotely-ukázka* z vestavěných ukázkových zdrojů dat.
 

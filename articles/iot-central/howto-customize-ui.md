@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cef0014fb47aeddcad785fb3f938ab928964a942
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 28a0e91befb717882aa202a776e0b9cddb8fd390
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725717"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876106"
 ---
-# <a name="customize-the-azure-iot-central-ui"></a>Přizpůsobení uživatelského rozhraní Azure IoT Central 
+# <a name="customize-the-azure-iot-central-ui"></a>Přizpůsobení uživatelského rozhraní Azure IoT Central
 
-Tento článek popisuje, jak jako správce můžete přizpůsobit uživatelské rozhraní aplikace pomocí vlastních motivů a úpravou odkazů na odkazy, které odkazují na vaše vlastní prostředky pro usnadnění. 
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+Tento článek popisuje, jak jako správce můžete přizpůsobit uživatelské rozhraní aplikace pomocí vlastních motivů a úpravou odkazů na odkazy, které odkazují na vaše vlastní prostředky pro usnadnění.
 
 Následující snímek obrazovky ukazuje stránku používající standardní motiv:
 

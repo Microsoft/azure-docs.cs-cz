@@ -1,146 +1,146 @@
 ---
-title: Škálování oddílů a replik pro dotazy a indexování – vyhledávání Azure
-description: Upravte oddílů a replik prostředky počítače ve službě Azure Search, kde každého prostředku se účtuje v jednotkách fakturovatelné vyhledávání.
+title: Škálujte oddíly a repliky pro dotazy a indexování – Azure Search
+description: Upravte prostředky počítače oddíly a repliky v Azure Search, kde se jednotlivé prostředky účtují jako Fakturovatelné jednotky hledání.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5955b21ae405f15960974fcbc81b8383f3322509
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c048dcf31d8f434f742d2da9351ef9b46f0a71d4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485704"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650068"
 ---
-# <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Škálování oddílů a replik pro dotazy a indexování úloh ve službě Azure Search
-Poté co [zvolte cenovou úroveň](search-sku-tier.md) a [při zřizování vyhledávací služby](search-create-service-portal.md), dalším krokem je Volitelně můžete zvýšit počet repliky nebo oddíly, které používá vaše služba. Každá úroveň nabízí pevný počet jednotek fakturace. Tento článek vysvětluje, jak přidělit jednotkách zajistit optimální konfiguraci, která vyrovnává vaše požadavky na spuštění dotazu, indexování a úložiště.
+# <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Škálujte oddíly a repliky pro úlohy dotazů a indexování v Azure Search
+Po [výběru cenové úrovně](search-sku-tier.md) a [zřízení Vyhledávací služby](search-create-service-portal.md)je dalším krokem volitelně zvýšení počtu replik nebo oddílů používaných vaší službou. Každá úroveň nabízí pevný počet fakturačních jednotek. Tento článek vysvětluje, jak tyto jednotky přidělit, abyste dosáhli optimální konfigurace, která bude vyrovnávat vaše požadavky na provádění dotazů, indexování a úložiště.
 
-Konfigurace prostředků je k dispozici, když nastavujete službu na [úroveň Basic](https://aka.ms/azuresearchbasic) nebo jeden z [úroveň Standard nebo optimalizované pro úložiště](search-limits-quotas-capacity.md). Pro služby na těchto úrovních kapacity dokupovat v jednotkách po *hledání jednotky* (su) kde jednotlivých oddílů a replik se počítá jako jeden příkaz SU. 
+Konfigurace prostředků je k dispozici při nastavení služby na úrovni [Basic](https://aka.ms/azuresearchbasic) nebo na jednu z [úrovní optimalizovaných pro úložiště Standard nebo Storage](search-limits-quotas-capacity.md). Pro služby na těchto úrovních je kapacita zakoupena v přírůstcích *jednotek hledání* (SUs), kde se každý oddíl a replika počítají jako jeden su. 
 
-Použití méně výsledků SUs v proporcionálně snížení nákladů. Účtování probíhá za platit tak dlouho, dokud je nastavení služby. Pokud nepoužíváte dočasně služby, je jediný způsob, jak se vyhnout fakturace odstraňování služby a potom vytvoříte ho znovu když je potřebujete.
+Použití menšího počtu výsledků služby SUs v poměrné nižší faktuře. Fakturace je platná, pokud je služba nastavená. Pokud službu nepoužíváte, jediným způsobem, jak se vyvarovat, je odstranit službu a pak ji znovu vytvořit, až ji budete potřebovat.
 
 > [!Note]
-> Odstraněním služby odstraníte všechno, co na něj. Neexistuje žádné zařízení v rámci Azure Search pro zálohování a obnovení trvalých dat hledání. K opětovnému nasazení existujícího indexu na novou službu, když spustíte program použitý k vytvoření a načtení původně. 
+> Odstranění služby odstraní vše. V rámci Azure Search neexistuje žádné zařízení pro zálohování a obnovení trvalých dat hledání. Chcete-li znovu nasadit stávající index nové služby, měli byste spustit program, který byl původně vytvořen a načten. 
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: repliky a oddíly
-Repliky a oddíly, které jsou primární zdroje, které zálohují vyhledávací službu.
+Repliky a oddíly jsou primárními prostředky, které zálohují vyhledávací službu.
 
 | Resource | Definice |
 |----------|------------|
-|*Oddíly* | Poskytuje index úložiště a vstupně-výstupních operací pro operace čtení a zápisu (například, když znovu sestavit nebo aktualizovat index).|
-|*Repliky* | Instance z vyhledávací služby, které se používají především pro operace dotazů Vyrovnávání zatížení. Každá replika vždy hostuje jedna kopie indexu. Pokud máte 12 repliky, budete mít 12 zkopíruje každý index načíst služby.|
+|*Oddíly* | Poskytuje úložiště indexu a vstupně-výstupní operace pro operace čtení/zápisu (například při opakovaném sestavování nebo obnovování indexu).|
+|*Repliky* | Instance vyhledávací služby, které se primárně používají k vyrovnávání zatížení operací dotazů. Každá replika vždy hostuje jednu kopii indexu. Pokud máte 12 replik, budete mít 12 kopií každého indexu načteného ve službě.|
 
 > [!NOTE]
-> Neexistuje žádný způsob, jak přímo pracovat s nebo spravovat, které indexy spustit v replice. Jednu kopii každého index pro všemi replikami je součástí architektury služby.
+> Neexistuje žádný způsob, jak přímo manipulovat nebo spravovat, které indexy jsou spuštěny na replice. Jedna kopie každého indexu v každé replice je součástí architektury služby.
 >
 
 
-## <a name="how-to-allocate-replicas-and-partitions"></a>Postup přidělení repliky a oddíly
-Ve službě Azure Search je služba původně přidělené minimální úroveň prostředků, který se skládá z jednoho oddílu a jednu repliku. Pro úrovně, které ho podporují můžou přírůstkově upravovat výpočetních prostředcích, které zvýšením počtu oddílů Pokud potřebujete další úložiště a vstupně-výstupní operace, nebo přidejte víc replik pro svazky větší dotazu nebo lepší výkon. Jediné služby musí mít dostatek prostředků ke zpracování všech úloh (indexování a dotazy). Nelze rozdělit zatížení mezi více službami.
+## <a name="how-to-allocate-replicas-and-partitions"></a>Postup přidělení replik a oddílů
+V Azure Search je služba zpočátku přidělena minimální úroveň prostředků, která se skládá z jednoho oddílu a jedné repliky. U vrstev, které to podporují, můžete přírůstkově upravovat výpočetní prostředky tím, že zvětšíte oddíly, pokud potřebujete víc úložiště a vstupně-výstupní operace, nebo přidat další repliky pro větší objemy dotazů nebo lepší výkon. Jedna služba musí mít dostatek prostředků pro zpracování všech úloh (indexování a dotazů). Úlohy mezi několika službami nelze rozdělit.
 
-Chcete-li zvýšit nebo změnit přidělení repliky a oddíly, doporučujeme pomocí webu Azure portal. Na portálu vynucuje omezení na povolené kombinace, které zůstávají pod mezní hodnoty. Pokud budete potřebovat založené na skriptu nebo kódu zřizování přístup [prostředí Azure PowerShell](search-manage-powershell.md) nebo [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/services) alternativní řešení.
+Pro zvýšení nebo změnu přidělení replik a oddílů doporučujeme použít Azure Portal. Portál vynutil omezení povolených kombinací, které jsou nižší než maximální limity. Pokud vyžadujete přístup založený na skriptech nebo způsobu zřizování na základě kódu, [Azure PowerShell](search-manage-powershell.md) nebo [REST API správy](https://docs.microsoft.com/rest/api/searchmanagement/services) jsou alternativní řešení.
 
-Obecně platí Hledat aplikace potřebovat víc replik, než má téma oddílů, zejména pokud operace služby jsou upřednostněno dotazu úlohy. V sekci [vysoké dostupnosti](#HA) vysvětluje, proč.
+Vyhledávací aplikace obecně vyžadují více replik než oddílů, zejména v případě, že operace služby jsou posunuty k úlohám dotazů. Oddíl o [vysoké dostupnosti](#HA) vysvětluje, proč.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) a vyberte vyhledávací službu.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) a vyberte vyhledávací službu.
 
-2. V **nastavení**, otevřete **škálování** stránky pro úpravu repliky a oddíly. 
+2. V **Nastavení**otevřete stránku **škálování** a upravte repliky a oddíly. 
 
-   Následující snímek obrazovky ukazuje standardní službu opatřena jednu repliku a oddílu. Vzorce v dolní části označuje, kolik jednotek vyhledávání se používá (1). Pokud je cena ze jednotku se 100 USD (ne skutečná cena), bude měsíční náklady na spuštění této služby 100 USD v průměru.
+   Následující snímek obrazovky ukazuje standardní službu zřízenou s jednou replikou a oddílem. Vzorec v dolní části indikuje, kolik jednotek hledání se používá (1). Pokud byla Jednotková cena $100 (nejedná se o skutečnou cenu), budou měsíční náklady na spuštění této služby $100 v průměru.
 
-   ![Měřítko stránky zobrazující aktuální hodnoty](media/search-capacity-planning/1-initial-values.png "měřítko stránky zobrazující aktuální hodnoty")
+   ![Stránka škály zobrazující aktuální hodnoty](media/search-capacity-planning/1-initial-values.png "Stránka škály zobrazující aktuální hodnoty")
 
-3. Pomocí posuvníku zvyšte nebo snižte počet oddílů. Vzorce v dolní části označuje, kolik jednotek vyhledávání se používají.
+3. Pomocí posuvníku zvyšte nebo snižte počet oddílů. Vzorec v dolní části uvádí, kolik jednotek hledání se používá.
 
-   V tomto příkladu zdvojnásobuje kapacitu se dvě repliky a jednotlivých oddílů. Všimněte si, že počet jednotek vyhledávání; je teď čtyři protože fakturační vzorec je repliky vynásobené oddíly (2 x 2). Zvýší kapacitu zdvojnásobuje více než náklady na provoz služby. Pokud hledání cena jednotky se 100 USD, nový měsíční faktuře bude nyní 400 dolarů.
+   Tento příklad zdvojnásobuje kapacitu se dvěma replikami a oddíly. Všimněte si počtu jednotek hledání; je teď čtyři, protože vzorec fakturace je vynásobený pomocí oddílů (2 x 2). Dvojnásobná kapacita je větší než dvojnásobek nákladů na provoz služby. Pokud byla cena za jednotku vyhledávání $100, nový měsíční účet by byl nyní $400.
 
-   Aktuální náklady za jednotku jednotlivé vrstvy, najdete [stránce s cenami](https://azure.microsoft.com/pricing/details/search/).
+   Aktuální cenu za každou jednotku na jednotlivých úrovních najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/search/).
 
-   ![Přidat repliky a oddíly](media/search-capacity-planning/2-add-2-each.png "přidat repliky a oddíly")
+   ![Přidat repliky a oddíly](media/search-capacity-planning/2-add-2-each.png "Přidat repliky a oddíly")
 
-3. Klikněte na tlačítko **Uložit** potvrďte provedené změny.
+3. Potvrďte změny kliknutím na **Uložit** .
 
-   ![Potvrzení změn škálování a fakturace](media/search-capacity-planning/3-save-confirm.png "potvrzení změn škálování a fakturace")
+   ![Potvrďte změny ve škálování a fakturaci](media/search-capacity-planning/3-save-confirm.png "Potvrďte změny ve škálování a fakturaci")
 
-   Změny v kapacitě trvat několik hodin. Po spuštění procesu a neexistuje žádná monitorování v reálném čase pro repliky a oddíl úpravy nedá zrušit. Ale tato zpráva zůstává viditelná, zatímco probíhají změny.
+   Změny v kapacitě trvá několik hodin. Po spuštění procesu nemůžete operaci zrušit a v reálném čase není monitorování pro repliky a úpravy oddílů. Během probíhajících změn však zůstane vidět následující zpráva.
 
-   ![Stavová zpráva na portálu](media/search-capacity-planning/4-updating.png "stavová zpráva na portálu")
+   ![Stavová zpráva na portálu](media/search-capacity-planning/4-updating.png "Stavová zpráva na portálu")
 
 
 > [!NOTE]
-> Po zřízení služby nejde upgradovat na vyšší skladovou Položku. Musíte vytvořit vyhledávací služby na novou úroveň a znovu načíst indexů. Zobrazit [vytvoření služby Azure Search na portálu](search-create-service-portal.md) nápovědu pro zřizování služby.
+> Po zřízení služby ji nelze upgradovat na vyšší SKU. Je nutné vytvořit vyhledávací službu na nové úrovni a znovu načíst indexy. Nápovědu k zřizování služeb najdete [v tématu Vytvoření služby Azure Search na portálu](search-create-service-portal.md) .
 >
 >
 
 <a id="chart"></a>
 
-## <a name="partition-and-replica-combinations"></a>Kombinace oddílů a replik
+## <a name="partition-and-replica-combinations"></a>Kombinace oddílů a repliky
 
-Základní služby může obsahovat právě jeden oddíl a až tři repliky, maximum omezit tři služby SUS. Pouze měnitelné prostředek je repliky. Budete potřebovat minimálně dvě repliky pro zajištění vysoké dostupnosti pro dotazy.
+Základní služba může mít přesně jeden oddíl a až tři repliky, a to maximálním limitem tři služby SUs. Jediným upravitelným prostředkem jsou repliky. Pro zajištění vysoké dostupnosti dotazů potřebujete minimálně dvě repliky.
 
-Všechny standardní a optimalizované pro úložiště vyhledávací služby může převzít následující kombinace repliky a oddíly, v souladu s limit 36 SU. 
+Všechny služby a služby optimalizované pro úložiště Standard a Storage můžou v souladu s limitem 36-SU předpokládat následující kombinace replik a oddílů. 
 
-|   | **oddíl 1** | **2 oddíly** | **3 oddíly** | **4 oddíly** | **6 oddíly** | **12 oddíly** |
+|   | **1 oddíl** | **2 oddíly** | **3 oddíly** | **4 oddíly** | **6 oddílů** | **12 oddílů** |
 | --- | --- | --- | --- | --- | --- | --- |
-| **1 repliky** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
-| **2 repliky** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
-| **3 repliky** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 repliky** |4 SU |8 SU |12 SU |16 SU |24 SU |neuvedeno |
-| **5 repliky** |5 SU |10 SU |15 SU |20 SU |30 SU |neuvedeno |
-| **6 replik** |6 SU |12 SU |18 SU |24 SU |36 SU |neuvedeno |
-| **12 repliky** |12 SU |24 SU |36 SU |neuvedeno |neuvedeno |neuvedeno |
+| **1 replika** |1\. SU |2\. SU |3 SU |4\. SU |6\. SU |12. SU |
+| **2 repliky** |2\. SU |4\. SU |6\. SU |8\. SU |12. SU |24 SU |
+| **3 repliky** |3 SU |6\. SU |9\. SU |12. SU |18 SU |36 SU |
+| **4 repliky** |4\. SU |8\. SU |12. SU |16. SU |24 SU |Není k dispozici |
+| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |Není k dispozici |
+| **6 replik** |6\. SU |12. SU |18 SU |24 SU |36 SU |Není k dispozici |
+| **12 replik** |12. SU |24 SU |36 SU |Není k dispozici |Není k dispozici |Není k dispozici |
 
-Su, ceny a kapacita je podrobně popsaný v na webu Azure. Další informace najdete v tématu [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/).
+Služba SUs, ceny a kapacita jsou podrobně vysvětleny na webu Azure. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/search/).
 
 > [!NOTE]
-> Počet replik a oddíly, které jsou rovnoměrně rozděleny do 12 (konkrétně, 1, 2, 3, 4, 6 nebo 12). Je to proto, že každý index Azure Search předem rozdělí na 12 horizontálních oddílů, tak, aby bylo možné rozdělit do stejné části na všechny oddíly. Například pokud vaše služba má tři oddíly a vytvoření indexu, každý oddíl bude obsahovat čtyři horizontální oddíly indexu. Jak Azure Search horizontální oddíly, což je index je podrobnosti implementace, v budoucích vezích se můžou změnit. I když číslo 12 ještě dnes, by neměli očekávat, že jejich počet vždy být 12 v budoucnosti.
+> Počet replik a oddílů se rozdělí i na 12 (konkrétně 1, 2, 3, 4, 6, 12). Důvodem je to, že Azure Search předdělí každý index na 12 horizontálních oddílů tak, aby se mohl rozdělit na stejné části ve všech oddílech. Například pokud má vaše služba tři oddíly a vytvoříte index, každý oddíl bude obsahovat čtyři horizontálních oddílůy indexu. Způsob, jakým Azure Search horizontálních oddílů indexem, je podrobný popis implementace, který se může změnit v budoucích verzích. I když je číslo 12 dnes, neměli byste očekávat, že toto číslo bude v budoucnu vždy 12.
 >
 
 
 <a id="HA"></a>
 
 ## <a name="high-availability"></a>Vysoká dostupnost
-Vzhledem k tomu je snadné a poměrně rychlé vertikální navýšení kapacity, doporučujeme obecně, že začnete s jedním oddílem a jednu nebo dvě repliky a potom vertikálního navýšení jako dotaz svazky sestavení. Především u replik spuštěné úlohy dotazu. Pokud potřebujete další propustnost nebo vysokou dostupnost, bude pravděpodobně vyžadovat další repliky.
+Vzhledem k tomu, že je snadné a poměrně rychlé horizontální navýšení kapacity, doporučujeme, abyste začali s jedním oddílem a jednou nebo dvěma replikami a pak nastavili horizontální navýšení kapacity pro sestavení dotazů. Úlohy dotazů běží hlavně na replikách. Pokud potřebujete větší propustnost nebo vysokou dostupnost, budete pravděpodobně potřebovat další repliky.
 
-Obecná doporučení pro zajištění vysoké dostupnosti jsou:
+K dispozici jsou obecná doporučení pro vysokou dostupnost:
 
-* Dvě repliky pro zajištění vysoké dostupnosti úloh jen pro čtení (dotazy)
+* Dvě repliky pro vysokou dostupnost úloh jen pro čtení (dotazů)
 
-* Tři nebo více replik pro zajištění vysoké dostupnosti pro čtení a zápis úloh (dotazů a indexování, jak přidat, aktualizovat ani odstranit jednotlivé dokumenty)
+* Tři nebo více replik pro vysokou dostupnost úloh čtení a zápisu (dotazy a indexování při přidání, aktualizaci nebo odstranění jednotlivých dokumentů)
 
-Smlouvy o úrovni služeb (SLA) pro službu Azure Search je určená v operacích dotazu a na aktualizace indexu, které se skládají z přidání, aktualizace nebo odstranění dokumentů.
+Smlouvy o úrovni služeb (SLA) pro Azure Search jsou zaměřené na operace dotazování a na aktualizace indexů, které se skládají z přidávání, aktualizace a odstraňování dokumentů.
 
-Úroveň Basic zbarvení hlavy kořene navýšení kapacity na jeden oddíl a tři repliky. Pokud požadujete flexibilitu okamžitě reagovat na výkyvy poptávky pro indexování a dotazování propustnost, zvažte jednu z úrovně Standard.  Pokud zjistíte, že se že mnohem rychleji než propustnost dotazů rostou vaše požadavky na úložiště, zvažte jednu z úrovní optimalizované pro úložiště.
+Úroveň Basic je vystaralá na jednom oddílu a tři repliky. Pokud chcete, aby flexibilita okamžitě reagovala na kolísání poptávky při indexování i propustnosti dotazů, vezměte v úvahu jednu z úrovní Standard.  Pokud zjistíte, že vaše požadavky na úložiště roste mnohem rychleji než propustnost dotazu, vezměte v úvahu jednu z vrstev optimalizovaných pro úložiště.
 
-### <a name="index-availability-during-a-rebuild"></a>Index dostupnost během opětovné sestavení
+### <a name="index-availability-during-a-rebuild"></a>Dostupnost indexu během opětovného sestavení
 
-Vysoká dostupnost pro Azure Search se vztahují na dotazů a aktualizace indexu, které není zahrnují nové sestavení indexu. Je-li odstranit pole, změna datového typu nebo přejmenovat pole, je potřeba znovu sestavte index. Index znovu sestavit, musíte odstranit index, znovu vytvořte index a znovu načíst data.
+Vysoká dostupnost pro Azure Search souvisí s dotazy a aktualizacemi indexu, které nezahrnují opakované sestavení indexu. Pokud odstraníte pole, změníte datový typ nebo přejmenujete pole, bude nutné index znovu sestavit. Chcete-li znovu sestavit index, je nutné index odstranit, znovu vytvořit index a znovu načíst data.
 
 > [!NOTE]
-> Nová pole můžete přidat do indexu Azure Search bez nutnosti opětovného sestavení indexu. Hodnota nové pole bude mít hodnotu null pro všechny dokumenty již v indexu.
+> Do indexu Azure Search můžete přidat nová pole bez nového sestavení indexu. Hodnota nového pole bude null pro všechny dokumenty, které jsou již v indexu.
 
-Pokud chcete zachovat dostupnost indexu během opětovné sestavení, musíte mít kopii index s jiným názvem ve stejné službě nebo její kopie index se stejným názvem v jiné službě a potom zadejte přesměrování nebo logika převzetí služeb při selhání ve vašem kódu.
+Chcete-li zachovat dostupnost indexu během opětovného sestavení, je nutné mít kopii indexu s jiným názvem ve stejné službě nebo kopii indexu se stejným názvem v jiné službě a potom v kódu poskytnout logiku přesměrování nebo převzetí služeb při selhání.
 
 ## <a name="disaster-recovery"></a>Zotavení po havárii
-V současné době neexistuje žádný předdefinovaný mechanismus pro zotavení po havárii. Přidání repliky nebo oddíly může být nesprávné strategie pro splnění cíle pro zotavení po havárii. Nejběžnější přístup je k zajištění redundance na úrovni služby nastavením druhý vyhledávací službě v jiné oblasti. Stejně jako u dostupnost během opětovné sestavení indexu, přesměrování nebo logika převzetí služeb při selhání musí pocházet z vašeho kódu.
+V současné době není k dispozici žádný vestavěný mechanismus pro zotavení po havárii. Přidání oddílů nebo replik by představovalo špatnou strategii pro splnění cílů zotavení po havárii. Nejběžnějším přístupem je přidat redundanci na úrovni služby nastavením druhé služby vyhledávání v jiné oblasti. Stejně jako v případě dostupnosti při opětovném sestavování indexu musí být logika přesměrování nebo převzetí služeb při selhání pocházet z vašeho kódu.
 
-## <a name="increase-query-performance-with-replicas"></a>Zvýšení výkonu dotazů s replikami.
-Latence dotazu je indikátor, že jsou potřeba další repliky. Obecně platí je první krok směrem k zlepšení výkonu dotazů pro přidání dalších tohoto prostředku. Při přidávání repliky, další kopie, které index znovu online pro podporu úloh s větší dotazu a načtení vyvážit požadavky přes víc replik.
+## <a name="increase-query-performance-with-replicas"></a>Zvýšení výkonu dotazů pomocí replik
+Latence dotazů je ukazatel, který vyžaduje další repliky. Obecně platí, že prvním krokem k vylepšení výkonu dotazů je přidání dalších prostředků. Když přidáváte repliky, další kopie indexu se přenesou do online režimu, aby podporovaly větší úlohy dotazů a vyrovnaly zatížení požadavků přes více replik.
 
-Nemůžeme poskytovat pevné odhady pro dotazy za sekundu (QPS): dotaz výkon závisí na složitosti dotazu a konkurenční úlohy. I když přidání repliky jasně výsledkem lepší výkon, výsledek není striktně lineární: přidání tří replik nezaručuje Trojitá propustnost.
+Pro dotazy za sekundu nemůžeme poskytnout pevné odhady dotazů (QPS): výkon dotazů závisí na složitosti dotazu a konkurenčních úlohách. I když je přidání replik jasně výsledkem lepšího výkonu, výsledek není výhradně lineární: přidání tří replik nezaručuje trojnásobnou propustnost.
 
-Pokyny při odhadování QPS pro vaše úlohy najdete v tématu [Azure Search výkon a optimalizace aspekty](search-performance-optimization.md).
+Pokyny k odhadování QPS pro vaše úlohy najdete v tématu [Azure Search posouzení výkonu a optimalizace](search-performance-optimization.md).
 
-## <a name="increase-indexing-performance-with-partitions"></a>Zvyšte výkon indexování oddílů
-Hledat aplikace, které vyžadují téměř aktualizace dat v reálném čase, bude nutné proporcionálně více oddílů než repliky. Přidání oddílů šíří operací čtení a zápisu napříč většího počtu výpočetních prostředků. Také poskytuje více místa na disku pro ukládání další indexům a dokumentům.
+## <a name="increase-indexing-performance-with-partitions"></a>Zvýšení výkonu indexování pomocí oddílů
+Prohledat aplikace, které vyžadují aktualizaci dat téměř v reálném čase, budou potřebovat rozčlenit více oddílů než repliky. Přidávání oddílů rozšíří operace čtení/zápisu v rámci většího počtu výpočetních prostředků. Nabízí také více místa na disku pro ukládání dalších indexů a dokumentů.
 
-Indexy větší trvat delší dobu dotazu. V důsledku toho můžete zjistit, že každý další nárůst oddíly vyžaduje menší, ale proporcionální zvýšení replik. Do rychlost provádění dotazů bude převedena bude faktor složité dotazy a množství dotazů.
+Větším indexům trvá dotaz déle. V takovém případě se může stát, že při každém přírůstkovém navýšení oddílů se v replikách vyžaduje menší, ale úměrný nárůst. Složitost vašich dotazů a svazků dotazů se projeví v tom, jak se rychle vykoná provádění dotazů.
 
 
 ## <a name="next-steps"></a>Další postup
 
-[Zvolte cenovou úroveň pro službu Azure Search](search-sku-tier.md)
+[Vyberte cenovou úroveň pro Azure Search](search-sku-tier.md)

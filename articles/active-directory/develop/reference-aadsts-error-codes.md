@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e62a0c1363acfedc1f059ac0e56fce0df68298f8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532393"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874241"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
 
@@ -265,6 +265,7 @@ Hledáte informace o kódech chyb AADSTS, které vrací služba tokenů zabezpe�
 | AADSTS700023 | InvalidResourcelessScope – zadaná hodnota oboru vstupních parametrů není platná, pokud požaduje přístupový token. |
 | AADSTS1000000 | UserNotBoundError – rozhraní API pro vázání vyžaduje, aby uživatel Azure AD ověřil i s externím IDP, ke kterému ještě nedošlo. |
 | AADSTS1000002 | BindCompleteInterruptError – vazba byla úspěšně dokončena, ale uživatel musí být informován. |
+| AADSTS7000112 | UnauthorizedClientApplicationDisabled – aplikace je zakázaná. |
 
 ## <a name="next-steps"></a>Další postup
 

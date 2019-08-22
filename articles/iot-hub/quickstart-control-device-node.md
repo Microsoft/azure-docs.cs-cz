@@ -10,14 +10,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 462b485b5dc5106ab18959ab2cdbfe1bfc0f94bf
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: ba49709e6cab2d3e6a752fb7b529da7edb9f642e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330560"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877153"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>Rychlý start: Řízení zařízení připojená ke službě IoT hub (Node.js)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>Rychlý start: Řízení zařízení připojeného ke IoT Hub (Node. js)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Potřebujete Node.js v10.x.x, nebo později na vývojovém počítači.
+Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Ve vývojovém počítači potřebujete Node. js v10 za účelem. x. x nebo novější.
 
 Node.js pro různé platformy si můžete stáhnout z webu [nodejs.org](https://nodejs.org).
 
@@ -45,7 +45,7 @@ Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověř
 node --version
 ```
 
-Spusťte následující příkaz pro přidání rozšíření Microsoft Azure IoT pro Azure CLI do instance služby Cloud Shell. Rozšíření IOT přidá služby IoT Hub, IoT Edge a IoT zařízení zřizování služby (DPS) konkrétní příkazy rozhraní příkazového řádku Azure.
+Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -55,21 +55,21 @@ Pokud jste to ještě neudělali, stáhněte si ukázkový projekt Node.js z web
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-Pokud jste dokončili předchozí [rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
+Pokud jste dokončili předchozí [Průvodce rychlým startem: Poslat telemetrii ze zařízení do služby IoT Hub](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-Pokud jste dokončili předchozí [rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
+Pokud jste dokončili předchozí [Průvodce rychlým startem: Poslat telemetrii ze zařízení do služby IoT Hub](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
 
 Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí služby Azure Cloud Shell.
 
-1. Spusťte následující příkaz v Azure Cloud Shell vytvořte identitu zařízení.
+1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-   **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste zvolili pro službu IoT hub.
+   **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT.
 
-   **MyNodeDevice**: Název zařízení, které se registrace. Použití **MyNodeDevice** jak je znázorněno. Pokud zvolíte jiný název pro vaše zařízení, musíte použít tento název v rámci tohoto článku a aktualizujte název zařízení v ukázkové aplikace před spuštěním je.
+   **MyNodeDevice**: Název zařízení, které se chystáte registrovat. Použijte **MyNodeDevice** , jak je znázorněno na obrázku. Pokud pro své zařízení zvolíte jiný název, budete ho muset použít v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -78,7 +78,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-    **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste zvolili pro službu IoT hub.
+    **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -95,7 +95,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 3. Potřebujete také _připojovací řetězec služby_, který back-endové aplikaci umožní připojení k vašemu centru IoT a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
 
-    **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste zvolili pro službu IoT hub.
+    **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub show-connection-string \
@@ -110,7 +110,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 ## <a name="listen-for-direct-method-calls"></a>Naslouchání voláním přímé metody
 
-Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT pro konkrétní zařízení, odešle simulovaná telemetrická data a z vašeho centra naslouchá voláním přímé metody. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení odešle po spuštění přímé metody zpět do centra potvrzení.
+Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT pro konkrétní zařízení, odešle simulovaná telemetrická data a z vašeho centra naslouchá voláním přímé metody. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení po provedení přímé metody pošle potvrzení zpátky do vašeho centra.
 
 1. V okně místního terminálu a přejděte do kořenové složky ukázkového projektu Node.js. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2**.
 
@@ -131,7 +131,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 ## <a name="call-the-direct-method"></a>Volání přímé metody
 
-Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na straně služby. Aplikace provádí volání přímé metody na zařízení prostřednictvím centra IoT a čeká na potvrzení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu.
+Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na straně služby. Aplikace umožňuje přímé volání metod do zařízení prostřednictvím služby IoT Hub a naslouchá potvrzením. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu.
 
 1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu Node.js. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application**.
 
@@ -146,7 +146,7 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
     node BackEndApplication.js
     ```
 
-    Následující snímek obrazovky ukazuje výstup, zatímco aplikace provádí volání přímé metody na zařízení a obdrží potvrzení:
+    Následující snímek obrazovky ukazuje výstup, ve kterém aplikace představuje přímé volání metody do zařízení a přijímá potvrzení:
 
     ![Spuštění back-endové aplikace](./media/quickstart-control-device-node/BackEndApplication.png)
 
@@ -160,9 +160,9 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu volat přímé metody v zařízení z aplikace back-end a přidal odpověď na volání přímé metody v aplikaci simulovaného zařízení.
+V tomto rychlém startu jste volali přímou metodu na zařízení z back-endové aplikace a odpověděli na přímé volání metody v aplikaci simulovaného zařízení.
 
 Informace o tom, jak směrovat zprávy typu zařízení-cloud do různých cílů v cloudu, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Kurz: Telemetrická data trasy pro různé koncové body pro zpracování](tutorial-routing.md)
+> [Kurz: Směrování telemetrie do různých koncových bodů pro zpracování](tutorial-routing.md)

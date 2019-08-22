@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: barclayn
-ms.openlocfilehash: 784a6821502a0e02a74d619047604ffe47df7e97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf55761bb58e309f919e08530fe047a137756323
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60914165"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656539"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure vyhrazené modulu hardwarového zabezpečení, vysoké dostupnosti
 
-Azure vyhrazené modulu hardwarového zabezpečení je podporovány s vysokou dostupností datových centrech společnosti Microsoft. Libovolné datacentrum s vysokou dostupností je však zranitelné na místním selháním a extrémních případech, selhání na místní úrovni. Microsoft nasazuje zařízením hardwarového zabezpečení v různých datacentrech v jedné oblasti a ujistěte se, že zřizování více zařízení nevede k těmto zařízením sdílení jediného racku. Další úroveň vysoké dostupnosti můžete dosáhnout spárováním těchto modulů hardwarového zabezpečení v datových centrech v oblasti funkce Gemalto HA skupiny. Je také možné pár zařízení v různých oblastech adres regionální převzetí služeb při selhání v případě zotavení po havárii. S touto konfigurací víceúrovňová vysoké dostupnosti se automaticky řešit jakékoli neúspěchy zařízení aplikací pracovat. Všech datových centrech také mít náhradní zařízení a součásti na místě tak včas se dá nahradit žádné zařízení se nezdařilo.
+Azure vyhrazené modulu hardwarového zabezpečení je podporovány s vysokou dostupností datových centrech společnosti Microsoft. Libovolné datacentrum s vysokou dostupností je však zranitelné na místním selháním a extrémních případech, selhání na místní úrovni. Microsoft nasazuje zařízením hardwarového zabezpečení v různých datacentrech v jedné oblasti a ujistěte se, že zřizování více zařízení nevede k těmto zařízením sdílení jediného racku. Další úroveň vysoké dostupnosti je možné dosáhnout spárováním těchto HSM napříč datacentry v oblasti pomocí funkce skupiny identita Gemalto HA. Je také možné pár zařízení v různých oblastech adres regionální převzetí služeb při selhání v případě zotavení po havárii. S touto konfigurací víceúrovňová vysoké dostupnosti se automaticky řešit jakékoli neúspěchy zařízení aplikací pracovat. Všech datových centrech také mít náhradní zařízení a součásti na místě tak včas se dá nahradit žádné zařízení se nezdařilo.
 
 ## <a name="high-availability-example"></a>Příklad vysoké dostupnosti
 
-Informace o tom, jak nakonfigurovat zařízení HSM pro zajištění vysoké dostupnosti na úrovni softwaru je v "Gemalto Luna sítě HSM Průvodce správou". Tento dokument je k dispozici na [Gemalto zákaznického portálu služeb podpory](https://supportportal.gemalto.com/csm/).
+Informace o tom, jak nakonfigurovat zařízení HSM pro zajištění vysoké dostupnosti na úrovni softwaru je v "Gemalto Luna sítě HSM Průvodce správou". Tento dokument je k dispozici na [stránce HSM identita Gemalto](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/).
 
 Následující diagram znázorňuje architekturu s vysokou dostupností. Používá více zařízení v oblasti a více zařízení spárovat v samostatné oblasti. Tato architektura používá minimálně čtyři zařízení HSM a součásti virtuální sítě.
 

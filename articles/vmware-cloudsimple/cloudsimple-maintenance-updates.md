@@ -3,25 +3,25 @@ title: Řešení Azure VMware podle CloudSimple – údržba a aktualizace Cloud
 description: Popisuje proces služby CloudSimple pro plánovanou údržbu a aktualizace.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5d6eeecbecc89995c25e687cc6808ed3b0c5dc5c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 92f02c0abef6755213d4c73189c7e0a593867ef6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816216"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877931"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>Údržba a aktualizace CloudSimple
 
-Prostředí privátního cloudu je navrženo tak, aby nedošlo k jednomu bodu selhání:
+Prostředí privátního cloudu je navrženo tak, aby nedošlo k žádnému jedinému bodu selhání.
 
-* Clustery ESXi jsou nakonfigurovány s vysokou dostupností vSphere. Clustery mají velikost alespoň jednoho náhradního uzlu pro odolnost.
+* Clustery ESXi jsou nakonfigurovány s vysokou dostupností vSphere (HA). Clustery mají velikost alespoň jednoho náhradního uzlu pro odolnost.
 * Redundantní primární úložiště poskytuje síti vSAN, což vyžaduje aspoň tři uzly, aby se zajistila ochrana před jediným selháním. Síti vSAN je možné nakonfigurovat tak, aby poskytovala vyšší odolnost proti většímu objemu clusterů.
-* Virtuální počítače vCenter, PSC a NSX Manageru se konfigurují pomocí zásad úložiště RAID-10, které chrání před selháním úložiště. Virtuální počítače jsou chráněné proti selhání uzlů/sítě pomocí vSphere HA.
+* Virtuální počítače vCenter, PSC a NSX Manager jsou nakonfigurované s úložištěm RAID-10, které se chrání před selháním úložiště. Virtuální počítače jsou chráněné proti selhání uzlů/sítě pomocí vSphere HA.
 * Hostitelé ESXi mají redundantní ventilátory a síťové karty.
 * Přepínače pro mandát a hřbet jsou nakonfigurovány ve dvojicích HA za účelem zajištění odolnosti.
 
@@ -57,9 +57,9 @@ CloudSimple zálohuje, udržuje a aktualizuje tyto prvky VMware v privátních c
 CloudSimple Backup zahrnuje:
 
 * Noční přírůstkové zálohování pravidel vCenter, PSC a DVS.
-* Použití nativních rozhraní API vCenter k zálohování komponent v aplikační vrstvě.
+* nativní rozhraní API vCenter pro zálohování komponent v aplikační vrstvě.
 * Automatické zálohování před aktualizací nebo upgradem softwaru pro správu VMware.
-* Šifrování dat na zdrojovém serveru vCenter před přenosem dat přes zašifrovaný kanál TLS 1.2 do Azure. Data se ukládají do objektu blob Azure, kde se replikují napříč oblastmi.
+* šifrování dat vCenter ve zdroji před přenosem dat přes zašifrovaný kanál TLS 1.2 do Azure. Data se ukládají do objektu blob Azure, kde se replikují napříč oblastmi.
 
 Obnovení si můžete vyžádat otevřením [support Request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -103,6 +103,6 @@ CloudSimple testuje kritickou opravu zabezpečení, jakmile bude k dispozici z V
 
 CloudSimple poskytuje čtvrtletní aktualizace pro softwarové komponenty VMware. Když je k dispozici nová hlavní verze softwaru VMware, CloudSimple spolupracuje se zákazníky na koordinaci vhodného časového období údržby pro upgrade.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-[Zálohování virtuálních počítačů s úlohami pomocí Veeam](https://docs.azure.cloudsimple.com/backup-workloads-veeam/).
+[Zálohování virtuálních počítačů s úlohou pomocí Veeam](backup-workloads-veeam.md)

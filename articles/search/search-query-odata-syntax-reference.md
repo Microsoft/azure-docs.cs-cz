@@ -1,13 +1,13 @@
 ---
-title: Reference k syntaxi výrazů OData – Azure Search
-description: Formální gramatiku a syntaxe specifikace pro OData výrazy v dotazech Azure Search.
+title: Referenční dokumentace syntaxe výrazu OData – Azure Search
+description: Formální gramatika a specifikace syntaxe pro výrazy OData v Azure Searchch dotazech.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,29 +19,29 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ebe41ba61ac5136900328db9c35acb8551dcd5b2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5d7e6456cd6a6648ff2ca38ecbb4f2de5479d7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428661"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647497"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-search"></a>Reference k syntaxi výrazů OData pro službu Azure Search
+# <a name="odata-expression-syntax-reference-for-azure-search"></a>Referenční dokumentace syntaxe výrazu OData pro Azure Search
 
-Služba Azure Search používá [výrazů OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) jako parametry v celém rozhraní API. Nejčastěji se používají výrazy prostředí OData pro `$orderby` a `$filter` parametry. Tyto výrazy mohou být složité, který obsahuje více klauzulí, funkce a operátory. Ale i jednoduché výrazy OData jako vlastnost cesty se používají ve mnoho částí rozhraní REST API Azure Search. Například cesta výrazy se používají k odkazování na dílčí pole komplexní polí kdekoli v rozhraní API, jako je například při výpisu dílčí pole v [modulu pro návrhy](index-add-suggesters.md), [vyhodnocování funkce](index-add-scoring-profiles.md), `$select` parametr , nebo dokonce [fielded vyhledávání v dotazů Lucene](query-lucene-syntax.md).
+Azure Search jako parametry v rozhraní API používá [výrazy OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) . Obvykle se používají výrazy OData pro `$orderby` parametry a. `$filter` Tyto výrazy mohou být složité, obsahující více klauzulí, funkcí a operátorů. Nicméně i jednoduché výrazy OData, jako jsou cesty k vlastnostem, se používají v mnoha částech Azure Search REST API. Například výrazy cest se používají k odkazování na podpole komplexních polí všude v rozhraní API, jako je například při výpisu dílčích polí v modulu pro [návrhy](index-add-suggesters.md), [funkci bodování](index-add-scoring-profiles.md), parametru nebo `$select` dokonce [hledání pomocí pole v Lucene. dotazy](query-lucene-syntax.md).
 
-Tento článek popisuje všechny tyto typy výrazů OData pomocí formální gramatiku. K dispozici je také [interaktivním diagramem](#syntax-diagram) umožňující vizuálnímu zkoumání gramatiky.
+Tento článek popisuje všechny tyto formy výrazů OData pomocí formální gramatiky. K dispozici je také [interaktivní diagram](#syntax-diagram) , který usnadňuje vizuální zkoumání gramatiky.
 
-## <a name="formal-grammar"></a>Formální gramatiku
+## <a name="formal-grammar"></a>Formální gramatika
 
-Popisujeme podmnožinou jazyka OData podporované službou Azure Search pomocí EBNF ([Extended Backus-Naur – formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) gramatiky. "Shora dolů", počínaje nejvíce složité výrazy a je rozdělit do více primitivní výrazy jsou uvedena pravidla. V horní části jsou gramatika pravidla, které odpovídají konkrétní parametry REST API služby Azure Search:
+Podmnožinu jazyka OData podporovaného Azure Search můžete popsat pomocí gramatiky na EBNF ([Rozšířená Backus – Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)). Pravidla jsou uvedena v seznamu "shora dolů", počínaje nejsložitějšími výrazy a jejich rozdělení do více primitivních výrazů. V horní části jsou gramatická pravidla, která odpovídají konkrétním parametrům Azure Search REST API:
 
-- [`$filter`](search-query-odata-filter.md), definované `filter_expression` pravidlo.
-- [`$orderby`](search-query-odata-orderby.md), definované `order_by_expression` pravidlo.
-- [`$select`](search-query-odata-select.md), definované `select_expression` pravidlo.
-- Pole cest, které jsou definované `field_path` pravidlo. Pole cesty se používají v rozhraní API. Můžete si buď pole nejvyšší úrovně z indexu nebo dílčí pole s jedním nebo více [komplexní pole](search-howto-complex-data-types.md) předchůdce.
+- [`$filter`](search-query-odata-filter.md)definuje `filter_expression` pravidlo.
+- [`$orderby`](search-query-odata-orderby.md)definuje `order_by_expression` pravidlo.
+- [`$select`](search-query-odata-select.md)definuje `select_expression` pravidlo.
+- Cesty polí definované `field_path` pravidlem Cesty polí se používají v celém rozhraní API. Můžou odkazovat buď na pole nejvyšší úrovně indexu, nebo na dílčí pole s jedním nebo více [komplexními poli](search-howto-complex-data-types.md) .
 
-Po procházet EBNF [diagram syntaxe](https://en.wikipedia.org/wiki/Syntax_diagram) , která umožňuje interaktivní prozkoumávání gramatiky a vztahy mezi její pravidla.
+Poté, co je EBNF [diagram syntaxe](https://en.wikipedia.org/wiki/Syntax_diagram) , který umožňuje interaktivně prozkoumat gramatickou a vztah mezi pravidly.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -209,14 +209,14 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="syntax-diagram"></a>Diagram syntaxe
 
-Vizuálně procházejte gramatiku jazyka OData podporované službou Azure Search, zkuste použít interaktivní syntaxe diagramu:
+Chcete-li vizuálně prozkoumat gramatickou gramatiku, kterou podporuje Azure Search, vyzkoušejte interaktivní diagram syntaxe:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro službu Azure Search](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Diagram syntaxe OData pro Azure Search](https://azuresearch.github.io/odata-syntax-diagram/)
 
-## <a name="see-also"></a>Další informace najdete v tématech  
+## <a name="see-also"></a>Viz také:  
 
-- [Filtry ve službě Azure Search](search-filters.md)
-- [Hledání dokumentů &#40;rozhraní REST API služby Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filtry v Azure Search](search-filters.md)
+- [Hledat dokumenty &#40;Azure Search REST API služby&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Syntaxe dotazů Lucene](query-lucene-syntax.md)
-- [Jednoduchá syntaxe dotazů ve službě Azure Search](query-simple-syntax.md)
+- [Jednoduchá syntaxe dotazů v Azure Search](query-simple-syntax.md)

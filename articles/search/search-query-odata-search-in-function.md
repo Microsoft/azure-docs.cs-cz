@@ -1,13 +1,13 @@
 ---
-title: Referenční dokumentace funkcí Hledat.v OData – Azure Search
-description: Hledat.v funkci prostředí OData v dotazech Azure Search.
+title: Referenční informace o funkci search.in OData – Azure Search
+description: Funkce search.in OData v dotazech Azure Search.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,32 +19,32 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a61291e547021077341a5f1b3db7422afa5b9440
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8bac0205fa2de8378abaa4d9e8ba8e05ea69192e
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449974"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647939"
 ---
-# <a name="odata-searchin-function-in-azure-search"></a>OData `search.in` funkce ve službě Azure Search
+# <a name="odata-searchin-function-in-azure-search"></a>Funkce `search.in` OData v Azure Search
 
-Běžný scénář v [výrazů filtru OData](query-odata-filter-orderby-syntax.md) je zkontrolovat, zda je jedno pole v jednotlivých dokumentech rovná některého mnoho možných hodnot. To je třeba, jak implementovat některé aplikace [oříznutí zabezpečení](search-security-trimming-for-azure-search.md) – zaškrtnutím pole obsahující jeden nebo více ID instančního objektu seznam identifikátorů objektu zabezpečení reprezentující uživatele vydáním dotazu. Jeden ze způsobů, jak napsat dotaz tímto způsobem je použít [ `eq` ](search-query-odata-comparison-operators.md) a [ `or` ](search-query-odata-logical-operators.md) operátory:
+Běžným scénářem ve [výrazech filtru OData](query-odata-filter-orderby-syntax.md) je ověřit, jestli je jedno pole v každém dokumentu rovno jedné z mnoha možných hodnot. Například to znamená, že některé aplikace implementují [oříznutí zabezpečení](search-security-trimming-for-azure-search.md) – pomocí zaškrtnutí pole obsahujícího jedno nebo více identifikátorů zabezpečení v seznamu identifikátorů zabezpečení, který představuje uživatele, který dotaz vystavil. Jedním ze způsobů, jak napsat dotaz, je použít [`eq`](search-query-odata-comparison-operators.md) operátory a: [`or`](search-query-odata-logical-operators.md)
 
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
 
-Existuje ale kratší způsob, jak zapisovat, pomocí `search.in` funkce:
+Existuje však kratší způsob, jak to napsat pomocí `search.in` funkce:
 
     group_ids/any(g: search.in(g, '123, 456, 789'))
 
 > [!IMPORTANT]
-> Kromě ještě kratší a snadněji čtou, pomocí `search.in` také poskytuje [přinese zlepšení výkonu](#bkmk_performance) a předchází některé [velikost omezení filtrů](search-query-odata-filter.md#bkmk_limits) když existují stovky nebo i tisíce hodnoty zahrnout do filtru. Z tohoto důvodu, důrazně doporučujeme používat `search.in` místo složitější disjunkce rovnosti výrazů.
+> Kromě méně lepších a snazších čtení pomocí `search.in` nástroje také poskytuje výhody související s [výkonem](#bkmk_performance) a vyhnete se určitým [omezením velikosti filtrů](search-query-odata-filter.md#bkmk_limits) , pokud jsou do filtru zahrnuty stovky nebo dokonce tisíce hodnot. Z tohoto důvodu se důrazně doporučuje použít `search.in` místo složitějšího odstavení výrazů rovnosti.
 
 > [!NOTE]
-> Nedávno zavedl 4.01 verzi OData standard [ `in` operátor](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230), která má podobné chování jako `search.in` funkce ve službě Azure Search. Nicméně Azure Search nepodporuje tento operátor, takže je nutné použít `search.in` namísto toho funkci.
+> Verze 4,01 Standard OData nedávno zavedla [ `in` operátor](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230), který má `search.in` podobné chování jako funkce v Azure Search. Azure Search ale tento operátor nepodporuje, takže musíte místo toho použít `search.in` funkci.
 
 ## <a name="syntax"></a>Syntaxe
 
-Následující EBNF ([Extended Backus-Naur – formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `search.in` funkce:
+Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `search.in` funkce:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -53,15 +53,15 @@ search_in_call ::=
     'search.in(' variable ',' string_literal(',' string_literal)? ')'
 ```
 
-Diagramu interaktivní syntaxe je také k dispozici:
+K dispozici je také diagram interaktivní syntaxe:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro službu Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
+> [Diagram syntaxe OData pro Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
 
 > [!NOTE]
-> Zobrazit [referenční příručka syntaxe výrazů OData pro službu Azure Search](search-query-odata-syntax-reference.md) pro dokončení EBNF.
+> Kompletní EBNF najdete v referenčních informacích k [syntaxi výrazu OData pro Azure Search](search-query-odata-syntax-reference.md) .
 
-`search.in` Funkce testuje, jestli daný řetězec pole nebo proměnné rozsahu se rovná k jednomu z daného seznamu hodnot. Rovnost mezi proměnnou a každá hodnota v seznamu je určena stejným způsobem jako pro malá a velká písmena způsobem `eq` operátor. Proto výraz jako `search.in(myfield, 'a, b, c')` je ekvivalentní `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, s tím rozdílem, že `search.in` předá mnohem lepší výkon.
+`search.in` Funkce testuje, zda je dané pole řetězce nebo proměnná rozsahu rovno jednomu z daného seznamu hodnot. Rovnost mezi proměnnou a každou hodnotou v seznamu je určena způsobem, který rozlišuje velká a malá písmena, stejně jako u `eq` operátoru. Proto výraz jako `search.in(myfield, 'a, b, c')` je `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`ekvivalentní s, s výjimkou `search.in` toho, že bude poskytovat mnohem lepší výkon.
 
 Existují dvě přetížení `search.in` funkce:
 
@@ -70,43 +70,43 @@ Existují dvě přetížení `search.in` funkce:
 
 Parametry jsou definovány v následující tabulce:
 
-| Název parametru | Type | Popis |
+| Název parametru | type | Popis |
 | --- | --- | --- |
-| `variable` | `Edm.String` | Odkaz na pole řetězce (nebo proměnnou rozsahu přes kolekce pole řetězce v případě, kdy `search.in` je použit uvnitř `any` nebo `all` výraz). |
-| `valueList` | `Edm.String` | Řetězec obsahující oddělený seznam hodnot tak, aby odpovídala `variable` parametru. Pokud `delimiters` parametr není zadán, výchozí oddělovače jsou místa a čárku. |
-| `delimiters` | `Edm.String` | Řetězec, ve kterém každý znak je považován za oddělovačem při analýze `valueList` parametru. Výchozí hodnota tohoto parametru je `' ,'` to znamená, že všechny hodnoty s prostory a/nebo čárkou oddělené. Pokud je potřeba použít oddělovače kromě mezery a čárky, protože hodnoty obsahovat tyto znaky, můžete zadat alternativní oddělovače jako `'|'` v tomto parametru. |
+| `variable` | `Edm.String` | Odkaz na pole řetězce (nebo proměnná rozsahu v poli kolekce řetězců v případě, kdy `search.in` se používá `any` uvnitř výrazu or `all` ). |
+| `valueList` | `Edm.String` | Řetězec obsahující oddělený seznam hodnot, který se má shodovat s `variable` parametrem. `delimiters` Pokud parametr není zadán, výchozí oddělovače jsou mezera a čárka. |
+| `delimiters` | `Edm.String` | Řetězec, ve kterém je každý znak považován za oddělovač při analýze `valueList` parametru. Výchozí hodnota tohoto parametru `' ,'` znamená, že všechny hodnoty s mezerami a/nebo čárkami mezi nimi budou oddělené. Pokud potřebujete použít oddělovače jiné než mezery a čárky, protože vaše hodnoty obsahují tyto znaky, můžete zadat alternativní oddělovače, jako je `'|'` například v tomto parametru. |
 
 <a name="bkmk_performance"></a>
 
-### <a name="performance-of-searchin"></a>Výkon `search.in`
+### <a name="performance-of-searchin"></a>Výkon`search.in`
 
-Pokud používáte `search.in`, můžete očekávat, že když druhý parametr obsahuje seznam stovky nebo tisíce hodnoty doby odezvy sekunda. Neexistuje žádné explicitní omezení na počet položek, které můžete předat `search.in`, i když jsou dál omezené na žádost o maximální velikosti. Však latence bude růst počet hodnot.
+Pokud použijete `search.in`, můžete očekávat dobu odezvy za sekundu v případě, že druhý parametr obsahuje seznam stovek nebo tisíců hodnot. Pro počet položek `search.in`, které můžete předat, neexistuje žádný explicitní limit, i když se vám i nadále omezuje maximální velikost požadavku. Latence se ale zvětšuje, jakmile se zvýší počet hodnot.
 
 ## <a name="examples"></a>Příklady
 
-Najdete všechny hotels s názvem rovno "Moře zobrazení motel" nebo "Rozpočtu hotel". Fráze obsahovat mezery, která je výchozím oddělovačem. Můžete zadat alternativní oddělovač v jednoduchých uvozovkách jako třetí parametr řetězce:  
+Vyhledá všechny hotely s názvem, který se rovná buď Motel, nebo "rozpočet hotel". Fráze obsahují mezery, což je výchozí oddělovač. Můžete zadat alternativní oddělovač v jednoduchých uvozovkách jako třetí řetězcový parametr:  
 
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
 
-Najít všechny hotels s názvem rovno "Moře zobrazení motel" nebo rozpočtu hotelu oddělené "|"):
+Najde všechny hotely s názvem, které se rovnají buď Motel, nebo "rozpočet hotel" oddělené |):
 
     search.in(HotelName, 'Sea View motel|Budget hotel', '|')
 
-Najdete všechny hotels s prostory, které mají značky 'Wi-Fi' nebo "tub":
+Vyhledejte všechny hotely pomocí místností s označením "WiFi" nebo "vyskočí":
 
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub')))
 
-Najdete shoda s frází v rámci kolekce, jako je například "vyhřívaný ručníků stojany" nebo "fén zahrnuté" značky.
+Najde shodu u frází v rámci kolekce, jako jsou například "zahřívaná racky navrhování ručníků" nebo "hairdryer include" ve značkách.
 
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-Najdete všechny hotels bez značky "motel" a "kabině":
+Vyhledejte všechny hotely bez označení ' Motel ' nebo ' cabin':
 
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
-- [Filtry ve službě Azure Search](search-filters.md)
-- [Přehled o výraz jazyka OData pro službu Azure Search](query-odata-filter-orderby-syntax.md)
-- [Reference k syntaxi výrazů OData pro službu Azure Search](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;rozhraní REST API služby Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filtry v Azure Search](search-filters.md)
+- [Přehled jazyka výrazů OData pro Azure Search](query-odata-filter-orderby-syntax.md)
+- [Referenční dokumentace syntaxe výrazu OData pro Azure Search](search-query-odata-syntax-reference.md)
+- [Hledat dokumenty &#40;Azure Search REST API služby&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

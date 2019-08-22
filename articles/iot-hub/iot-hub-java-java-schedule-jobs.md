@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 07/10/2017
-ms.openlocfilehash: ecbdbdd29a777a997c594f8119c1474a89e64a10
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 08/16/2019
+ms.openlocfilehash: 60d8d4594d76fbef36df0259940d4437e28280cb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404182"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873393"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Úlohy plánování a vysílání (Java)
 
@@ -87,21 +87,23 @@ V této části vytvoříte konzolovou aplikaci Java, která používá úlohy p
 
 Vytvoření aplikace:
 
-1. Ve vývojovém počítači vytvořte prázdnou složku s názvem `iot-java-schedule-jobs`.
+1. Ve vývojovém počítači vytvořte prázdnou složku s názvem **IoT-Java-Schedule-Jobs**.
 
-2. Ve složce vytvořte pomocí následujícího příkazu na příkazovém řádku projekt Maven s názvem **Schedule-Jobs.** `iot-java-schedule-jobs` Všimněte si, že se jedná o jeden dlouhý příkaz:
+2. Ve složce **IoT-Java-Schedule-Jobs** vytvořte pomocí následujícího příkazu na příkazovém řádku projekt Maven s názvem **Schedule-Jobs** . Všimněte si, že se jedná o jeden dlouhý příkaz:
 
-    `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=schedule-jobs -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
+   ```cmd/sh
+   mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=schedule-jobs -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+   ```
 
-3. Na příkazovém řádku přejděte do `schedule-jobs` složky.
+3. Na příkazovém řádku přejděte do složky **plán – úlohy** .
 
-4. Pomocí textového editoru otevřete `pom.xml` soubor `schedule-jobs` ve složce a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Service-Client** ve vaší aplikaci:
+4. Pomocí textového editoru otevřete soubor **pom. XML** ve složce **Schedule-Jobs** a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Service-Client** ve vaší aplikaci:
 
     ```xml
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.7.23</version>
+      <version>1.17.1</version>
       <type>jar</type>
     </dependency>
     ```
@@ -127,9 +129,9 @@ Vytvoření aplikace:
     </build>
     ```
 
-6. `pom.xml` Soubor uložte a zavřete.
+6. Uložte a zavřete soubor **pom. XML** .
 
-7. V textovém editoru otevřete `schedule-jobs\src\main\java\com\mycompany\app\App.java` soubor.
+7. Pomocí textového editoru otevřete soubor **Schedule-jobs\src\main\java\com\mycompany\app\App.Java** .
 
 8. Do souboru přidejte následující příkazy pro **import**:
 
@@ -264,7 +266,7 @@ Vytvoření aplikace:
     public static void main( String[] args ) throws Exception
     ```
 
-15. Chcete-li spustit a monitorovat dvě úlohy postupně, přidejte do metody **Main** následující kód:
+15. Chcete-li spustit a monitorovat dvě úlohy sekvenčně, nahraďte kód v metodě **Main** následujícím kódem:
 
     ```java
     // Record the start time
@@ -291,36 +293,50 @@ Vytvoření aplikace:
     System.out.println("Shutting down schedule-jobs app");
     ```
 
-16. `schedule-jobs\src\main\java\com\mycompany\app\App.java` Soubor uložte a zavřete.
+16. Uložte a zavřete soubor **Schedule-jobs\src\main\java\com\mycompany\app\App.Java**
 
-17. Sestavte aplikaci **Schedule-Jobs** a opravte všechny chyby. Na příkazovém řádku přejděte do `schedule-jobs` složky a spusťte následující příkaz:
+17. Sestavte aplikaci **Schedule-Jobs** a opravte všechny chyby. Na příkazovém řádku přejděte do složky **Schedule-Jobs** a spusťte následující příkaz:
 
-    `mvn clean package -DskipTests`
+    ```cmd/sh
+    mvn clean package -DskipTests
+    ```
 
 ## <a name="create-a-device-app"></a>Vytvoření aplikace pro zařízení
 
 V této části vytvoříte konzolovou aplikaci Java, která zpracovává požadované vlastnosti odesílané z IoT Hub a implementuje přímé volání metody.
 
-1. Ve složce vytvořte pomocí následujícího příkazu na příkazovém řádku projekt Maven s názvem **simulované zařízení.** `iot-java-schedule-jobs` Všimněte si, že se jedná o jeden dlouhý příkaz:
+1. Ve složce **IoT-Java-Schedule-Jobs** vytvořte pomocí následujícího příkazu na příkazovém řádku projekt Maven s názvem **simulované zařízení** . Všimněte si, že se jedná o jeden dlouhý příkaz:
 
-    `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
+   ```cmd/sh
+   mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+   ```
 
-2. Na příkazovém řádku přejděte do `simulated-device` složky.
+2. Na příkazovém řádku přejděte do složky simulovaného **zařízení** .
 
-3. Pomocí textového editoru otevřete `pom.xml` soubor `simulated-device` ve složce a přidejte následující závislosti do uzlu **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Device-Client** ve vaší aplikaci:
+3. Pomocí textového editoru otevřete soubor **pom. XML** ve složce **simulovaného zařízení** a přidejte následující závislosti do uzlu **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Device-Client** ve vaší aplikaci:
 
     ```xml
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.3.32</version>
+      <version>1.17.5</version>
     </dependency>
     ```
 
     > [!NOTE]
     > Můžete vyhledat nejnovější verzi **IoT-Device-Client** pomocí [vyhledávání Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Přidejte následující uzel **sestavení** za uzel **závislosti** . Tato konfigurace instruuje Maven, aby k sestavení aplikace použil Java 1,8:
+4. Přidejte následující závislost na uzel **závislosti** . Tato závislost konfiguruje NOP pro přihlašování k Apache [SLF4J](https://www.slf4j.org/) , které používá klientská sada SDK pro zařízení k implementaci protokolování. Tato konfigurace je volitelná, ale pokud ji vynecháte, může se při spuštění aplikace zobrazit upozornění v konzole. Další informace o protokolování v sadě SDK klienta zařízení najdete v tématu [protokolování](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)v ukázkách pro soubor Readme pro *zařízení Azure IoT SDK pro jazyk Java* .
+
+    ```xml
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-nop</artifactId>
+      <version>1.7.28</version>
+    </dependency>
+    ```
+
+5. Přidejte následující uzel **sestavení** za uzel **závislosti** . Tato konfigurace instruuje Maven, aby k sestavení aplikace použil Java 1,8:
 
     ```xml
     <build>
@@ -338,11 +354,11 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     </build>
     ```
 
-5. `pom.xml` Soubor uložte a zavřete.
+6. Uložte a zavřete soubor **pom. XML** .
 
-6. V textovém editoru otevřete `simulated-device\src\main\java\com\mycompany\app\App.java` soubor.
+7. Pomocí textového editoru otevřete soubor **Simulated-device\src\main\java\com\mycompany\app\App.Java** .
 
-7. Do souboru přidejte následující příkazy pro **import**:
+8. Do souboru přidejte následující příkazy pro **import**:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -353,10 +369,10 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     import java.util.Scanner;
     ```
 
-8. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte `{youriothubname}` názvem služby IoT Hub a `{yourdevicekey}` hodnotou klíče zařízení, kterou jste vygenerovali v části *vytvoření identity zařízení* :
+9. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte `{yourdeviceconnectionstring}` připojovacím řetězcem zařízení, který jste zkopírovali dříve v části [zaregistrovat nové zařízení v rámci centra IoT Hub](#register-a-new-device-in-the-iot-hub) :
 
     ```java
-    private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myDeviceID;SharedAccessKey={yourdevicekey}";
+    private static String connString = "{yourdeviceconnectionstring}";
     private static IotHubClientProtocol protocol = IotHubClientProtocol.MQTT;
     private static final int METHOD_SUCCESS = 200;
     private static final int METHOD_NOT_DEFINED = 404;
@@ -364,7 +380,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
 
     Tato ukázková aplikace používá při vytváření instance objektu **DeviceClient** proměnnou **protocol**.
 
-9. K tisku dvojitých oznámení v konzole nástroje přidejte do třídy **aplikace** následující vnořenou třídu:
+10. K tisku dvojitých oznámení v konzole nástroje přidejte do třídy **aplikace** následující vnořenou třídu:
 
     ```java
     // Handler for device twin operation notifications from IoT Hub
@@ -375,7 +391,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     }
     ```
 
-10. Chcete-li vytisknout oznámení přímých metod do konzoly, přidejte do třídy **aplikace** následující vnořenou třídu:
+11. Chcete-li vytisknout oznámení přímých metod do konzoly, přidejte do třídy **aplikace** následující vnořenou třídu:
 
     ```java
     // Handler for direct method notifications from IoT Hub
@@ -386,7 +402,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     }
     ```
 
-11. Chcete-li zpracovat Přímá volání metody z IoT Hub, přidejte do třídy **aplikace** následující vnořenou třídu:
+12. Chcete-li zpracovat Přímá volání metody z IoT Hub, přidejte do třídy **aplikace** následující vnořenou třídu:
 
     ```java
     // Handler for direct method calls from IoT Hub
@@ -411,13 +427,13 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     }
     ```
 
-12. Aktualizujte podpis metody **Main** tak, aby zahrnoval `throws` následující klauzuli:
+13. Aktualizujte podpis metody **Main** tak, aby zahrnoval `throws` následující klauzuli:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException
     ```
 
-13. Do metody **Main** přidejte následující kód:
+14. Nahraďte kód v metodě **Main** následujícím kódem:
     * Vytvořte klienta zařízení pro komunikaci s IoT Hub.
     * Vytvořte objekt **zařízení** pro uložení vlastností, které jsou v zařízení.
 
@@ -435,7 +451,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     };
     ```
 
-14. Chcete-li spustit služby klienta zařízení, přidejte do metody **Main** následující kód:
+15. Chcete-li spustit služby klienta zařízení, přidejte do metody **Main** následující kód:
 
     ```java
     try {
@@ -453,7 +469,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     }
     ```
 
-15. Chcete-li počkat, než uživatel stiskne klávesu **ENTER** před vypnutím, přidejte na konec metody **Main** následující kód:
+16. Chcete-li počkat, než uživatel stiskne klávesu **ENTER** před vypnutím, přidejte na konec metody **Main** následující kód:
 
     ```java
     // Close the app
@@ -465,35 +481,41 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     scanner.close();
     ```
 
-16. `simulated-device\src\main\java\com\mycompany\app\App.java` Soubor uložte a zavřete.
+17. Uložte a zavřete soubor **Simulated-device\src\main\java\com\mycompany\app\App.Java** .
 
-17. Sestavte aplikaci **simulovaného zařízení** a opravte všechny chyby. Na příkazovém řádku přejděte do `simulated-device` složky a spusťte následující příkaz:
+18. Sestavte aplikaci **simulovaného zařízení** a opravte všechny chyby. Na příkazovém řádku přejděte do složky simulovaného **zařízení** a spusťte následující příkaz:
 
-    `mvn clean package -DskipTests`
+    ```cmd/sh
+    mvn clean package -DskipTests
+    ```
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 
 Nyní jste připraveni spustit konzolové aplikace.
 
-1. Na příkazovém řádku ve `simulated-device` složce spusťte následující příkaz, který spustí aplikaci zařízení naslouchající pro požadované změny vlastností a přímé volání metody:
+1. Na příkazovém řádku ve složce **simulovaného zařízení** spusťte následující příkaz, který spustí aplikaci zařízení naslouchající pro požadované změny vlastností a přímé volání metody:
 
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+   ```cmd/sh
+   mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+   ```
 
-    ![Spustí se klient zařízení.](./media/iot-hub-java-java-schedule-jobs/device-app-1.png)
+   ![Spustí se klient zařízení.](./media/iot-hub-java-java-schedule-jobs/device-app-1.png)
 
 2. Na příkazovém řádku ve `schedule-jobs` složce spusťte následující příkaz, který spustí aplikaci **Schedule-Jobs** Service ke spuštění dvou úloh. První nastaví požadované hodnoty vlastností a druhý zavolá přímo metodu:
 
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+   ```cmd\sh
+   mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+   ```
 
-    ![Aplikace služby Java IoT Hub vytvoří dvě úlohy.](./media/iot-hub-java-java-schedule-jobs/service-app-1.png)
+   ![Aplikace služby Java IoT Hub vytvoří dvě úlohy.](./media/iot-hub-java-java-schedule-jobs/service-app-1.png)
 
 3. Aplikace zařízení zpracovává požadovanou změnu vlastnosti a přímé volání metody:
 
-    ![Klient zařízení reaguje na změny](./media/iot-hub-java-java-schedule-jobs/device-app-2.png)
+   ![Klient zařízení reaguje na změny](./media/iot-hub-java-java-schedule-jobs/device-app-2.png)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Vytvořili jste back-endové aplikace ke spouštění dvou úloh. První úloha nastavila požadované hodnoty vlastností a druhá úloha se nazývá přímá metoda.
+V tomto kurzu jste použili úlohu k naplánování přímé metody na zařízení a aktualizaci vlastností vlákna zařízení.
 
 Pomocí následujících zdrojů se naučíte:
 

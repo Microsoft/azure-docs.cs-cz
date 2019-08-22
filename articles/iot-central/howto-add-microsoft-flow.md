@@ -1,6 +1,6 @@
 ---
-title: Vytváření pracovních postupů s Azure IoT Central konektorem v Microsoft Flow | Dokumentace Microsoftu
-description: Použití konektoru pro IoT Central v Microsoft Flow spouštět pracovní postupy a vytvořit, získat, aktualizovat, odstraňovat zařízení a spusťte příkazy v pracovních postupech.
+title: Vytváření pracovních postupů pomocí konektoru Azure IoT Central v Microsoft Flow | Microsoft Docs
+description: Pomocí konektoru IoT Central v Microsoft Flow můžete aktivovat pracovní postupy a vytvářet, získávat, aktualizovat, odstraňovat zařízení a spouštět příkazy v pracovních postupech.
 services: iot-central
 author: viv-liu
 ms.author: viviali
@@ -8,162 +8,164 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: e8bc8b8d4e3585ea4c0505f2e36abc6d1da7f8eb
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 5f5353d0d85d6af4e74c48c80c790449852b43ef
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797710"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876290"
 ---
-# <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Vytváření pracovních postupů s IoT Central konektorem v Microsoft Flow
+# <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Vytváření pracovních postupů pomocí konektoru IoT Central v Microsoft Flow
 
-*Toto téma platí pro tvůrce a správce.*
+*Toto téma se týká tvůrců a správců.*
 
-Pomocí Microsoft Flow můžete automatizovat pracovní postupy mezi mnoha aplikacemi a služeb, které využívají firemní uživatelé. Pracovní postupy můžete aktivovat pomocí IoT Central konektoru v Microsoft Flow, když se pravidlo aktivuje v IoT Central. V pracovním postupu aktivovaného IoT Central nebo jakékoli jiné aplikace můžete použít akce v spojnici IoT Central:
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+Použijte Microsoft Flow k automatizaci pracovních postupů napříč mnoha aplikacemi a službami, na kterých využívají firemní uživatelé. Pomocí konektoru IoT Central v Microsoft Flow můžete aktivovat pracovní postupy, když se pravidlo aktivuje v IoT Central. V pracovním postupu aktivovaném IoT Central nebo jakékoli jiné aplikaci můžete použít akce v konektoru IoT Central k těmto akcím:
 - Vytvoření zařízení
-- Získejte informace o zařízení
-- Aktualizovat vlastnosti a nastavení zařízení
+- Získat informace o zařízení
+- Aktualizace vlastností a nastavení zařízení
 - Spuštění příkazu na zařízení
 - Odstranění zařízení
 
-Podívejte se na [tyto šablony Microsoft Flow](https://aka.ms/iotcentralflowtemplates) IoT Central, které se připojovat k jiným službám, jako jsou mobilní oznámení a Microsoft Teams.
+Podívejte se na [tyto Microsoft Flow šablony](https://aka.ms/iotcentralflowtemplates) , které se připojují IoT Central k jiným službám, jako jsou například mobilní oznámení a Microsoft Teams.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Aplikace s průběžnými platbami
-- Microsoft osobní nebo pracovní nebo školní účet, používat Microsoft Flow ([Další informace o plánech Microsoft Flow](https://aka.ms/microsoftflowplans))
-- Pracovní nebo školní účet k používání konektoru Azure IoT Central
+- Osobní nebo pracovní nebo školní účet Microsoftu pro použití Microsoft Flow (další[informace o Microsoft Flowch plánech](https://aka.ms/microsoftflowplans))
+- Pracovní nebo školní účet pro použití konektoru služby Azure IoT Central
 
-## <a name="trigger-a-workflow"></a>Trigger pracovního postupu
+## <a name="trigger-a-workflow"></a>Aktivace pracovního postupu
 
-V této části se dozvíte, jak aktivovat mobilní oznámení v mobilní aplikaci Flow při pravidlo aktivuje v IoT Central. V rámci aplikace IoT Central a používání vloženého návrháře Microsoft Flow můžete vytvořit tato celý pracovní postup.
+V této části se dozvíte, jak aktivovat mobilní oznámení v mobilní aplikaci Flow při triggeru pravidla v IoT Central. Celý pracovní postup můžete v aplikaci IoT Central sestavit pomocí integrovaného návrháře Microsoft Flow.
 
-1. Začněte tím, že [vytváření pravidla v IoT Central](howto-create-telemetry-rules.md). Po uložení podmínky pravidla, vyberte **akce Microsoft Flow** jako novou akci. Otevře se dialogové okno pro konfiguraci pracovního postupu. IoT Central uživatelský účet, který jste přihlášeni, se použije pro přihlášení do Microsoft Flow.
+1. Začněte [vytvořením pravidla v IoT Central](howto-create-telemetry-rules.md). Po uložení podmínek pravidla vyberte **akci Microsoft Flow** jako novou akci. Otevře se dialogové okno, ve kterém můžete nakonfigurovat pracovní postup. IoT Central uživatelský účet, ke kterému jste se přihlásili, se použije k přihlášení k Microsoft Flow.
 
-    ![Vytvořit novou akci Microsoft Flow](media/howto-add-microsoft-flow/createflowaction.png)
+    ![Vytvořit novou Microsoft Flow akci](media/howto-add-microsoft-flow/createflowaction.png)
 
-1. Zobrazí se seznam pracovních postupů, které mají přístup k a jsou připojené k tomuto pravidlu IoT Central. Klikněte na tlačítko **zkoumání šablon** nebo **nový > vytvořit ze šablony** a můžete si vybrat z kterékoli z dostupných šablon. 
+1. Zobrazí se seznam pracovních postupů, ke kterým máte přístup, a jsou k tomuto pravidlu IoT Central připojeni. Klikněte na **prozkoumat šablony** nebo **Nový > vytvořit ze šablony** a můžete si vybrat z libovolné dostupné šablony. 
 
     ![Dostupné šablony Microsoft Flow](media/howto-add-microsoft-flow/flowtemplates1.png)
 
-1. Jste vyzváni k přihlášení ke konektorům v šabloně, kterou jste zvolili. 
+1. Zobrazí se výzva, abyste se přihlásili ke konektorům v šabloně, kterou jste zvolili. 
 
     > [!NOTE]
-    > K používání konektoru Azure IoT Central, musíte se přihlásit pomocí účtu služby Azure Active Directory (pracovní nebo školní účet). Osobní účet, jako abc@outlook.com nebo abc@live.com nepodporuje konektoru Azure IoT Central.
+    > Pokud chcete použít konektor Azure IoT Central, musíte se přihlásit pomocí účtu Azure Active Directory (pracovní nebo školní účet). Konektor služby Azure IoT Central nepodporuje abc@outlook.com osobní abc@live.com účet, například nebo.
 
-    Až se zaregistrujete ke konektorům, budete přesměrováni do návrháře k vytvoření pracovního postupu. Pracovní postup obsahuje aktivační událost IoT Central, která má svoji aplikaci a pravidlo už vytvořilo.
+    Až se přihlásíte ke konektorům, budete mít v Návrháři k sestavení pracovního postupu. Pracovní postup obsahuje aktivační proceduru IoT Central, která obsahuje již vyplněnou aplikaci a pravidlo.
 
-1. Pracovní postup můžete přizpůsobit úpravou informace předány akcí a přidání nové akce. V tomto příkladu "action" je **oznámení – odeslat mobilní oznámení**. Můžete zahrnout *dynamický obsah* z vašeho IoT Central pravidla předávání podél důležité informace, jako je název zařízení a časové razítko oznámení.
-
-    > [!NOTE]
-    > Vyberte **zobrazit další** textu v okně dynamického obsahu se získat měření a hodnoty vlastností, které aktivuje pravidlo.
-
-    ![Tok akce s otevřeným podoknem dynamické úpravy](./media/howto-add-microsoft-flow/flowdynamicpane1.png)
-
-1. Po dokončení úprav akci, vyberte **Uložit**. Budete přesměrováni na stránku přehled vašeho pracovního postupu. Zde můžete zobrazit historii spuštění a sdílet ho s dalšími kolegy.
+1. Pracovní postup můžete přizpůsobit tak, že upravíte informace předané akci a přidáte nové akce. V tomto příkladu je akce **oznámení – poslat mi mobilní oznámení**. Můžete zahrnout *dynamický obsah* z pravidla IoT Central, který do vašeho oznámení předává důležité informace, jako je název zařízení a časové razítko.
 
     > [!NOTE]
-    > Pokud chcete ostatním uživatelům ve vaší aplikaci IoT Central, chcete-li upravit toto pravidlo, musí ho sdílet s nimi v Microsoft Flow. Přidáte své účty Microsoft Flow jako vlastníky ve svém pracovním postupu.
+    > Pokud chcete získat hodnoty měření a vlastností, které pravidlo aktivovaly, vyberte **Zobrazit další** text v okně dynamického obsahu.
 
-1. Pokud vrátíte se do vaší aplikace IoT Central, uvidíte, že toto pravidlo obsahuje akci Microsoft Flow v oblasti akce.
+    ![Akce úpravy toku s otevřeným dynamickým podoknem](./media/howto-add-microsoft-flow/flowdynamicpane1.png)
 
-Můžete také vytvářet pracovní postupy pomocí konektoru rozhraní IoT Central přímo z Microsoft Flow. Pak můžete které IoT Central aplikace pro připojení k.
+1. Po dokončení úprav akce vyberte **Uložit**. Budete přesměrováni na stránku Přehled pracovního postupu. Tady můžete zobrazit historii spuštění a sdílet ji s dalšími kolegy.
+
+    > [!NOTE]
+    > Pokud chcete, aby toto pravidlo upravili jiní uživatelé v aplikaci IoT Central, musíte je s nimi nasdílet v Microsoft Flow. Přidejte své Microsoft Flow účty jako vlastníky do pracovního postupu.
+
+1. Pokud se vrátíte zpět k aplikaci IoT Central, uvidíte toto pravidlo v oblasti akcí Microsoft Flow akci.
+
+Pracovní postupy můžete vytvářet také pomocí konektoru IoT Central přímo v Microsoft Flow. Pak můžete zvolit, ke které aplikaci IoT Central se chcete připojit.
 
 ## <a name="create-a-device-in-a-workflow"></a>Vytvoření zařízení v pracovním postupu
 
-V této části se dozvíte, jak vytvořit nové zařízení v IoT Central při stisknutí tlačítka na mobilním zařízení pomocí mobilní aplikace Microsoft Flow. Tato akce ve službě Flow můžete integrovat systémy ERP, jako je Dynamics IoT Central tak, že vytvoříte nové zařízení, když se zařízení přidá jinde.
+V této části se dozvíte, jak vytvořit nové zařízení v IoT Central při stisknutí tlačítka na mobilním zařízení pomocí Microsoft Flow mobilní aplikace. Pomocí této akce v programu Flow můžete integrovat systémy ERP, jako je Dynamics, pomocí IoT Central vytvořením nového zařízení, když se zařízení přidá jinam.
 
-1. Začněte vytvořením prázdné pracovního postupu v Microsoft Flow.
+1. Začněte vytvořením prázdného pracovního postupu v Microsoft Flow.
 
-1. Vyhledejte **tlačítko tok pro mobilní zařízení** jako trigger.
+1. Hledat **tlačítko toku pro mobilní zařízení** jako Trigger
 
-1. V této aktivační události, přidat textový vstup volá **název zařízení**. Změnit popis text, který má být **zadejte název zařízení novým zařízením**.
+1. V této aktivační události přidejte textový vstup nazvaný **název zařízení**. Změňte text popisu tak, aby bylo možné **zadat název zařízení nového zařízení**.
 
-1. Přidejte novou akci. Hledat **vytvoření zařízení Azure IoT Central -** akce.
+1. Přidejte novou akci. Vyhledejte **IoT Central Azure – vytvořit akci zařízení** .
 
-1. Vyberte aplikaci a zvolte zařízení šablonu pro vytvoření zařízení z v rozevíracích seznamech. Zobrazí se vám akce po rozbalení zobrazují všechny vlastnosti a nastavení zařízení.
+1. Vyberte aplikaci a v rozevíracích seznamech vyberte šablonu zařízení, ze které chcete vytvořit zařízení. Uvidíte akci rozšířit a zobrazí se všechny vlastnosti a nastavení zařízení.
 
-1. Vyberte pole název zařízení. V podokně dynamického obsahu vyberte **název zařízení**. Tato hodnota se předá ze vstupu uživatele zadá přes mobilní aplikaci a je název nové zařízení na IoT Central. Jediné povinné pole v tomto příkladu je název zařízení označená červenou hvězdičkou. Jiné šablony zařízení může mít více povinná pole, které je potřeba vyplnit pro vytvoření nového zařízení.
+1. Vyberte pole název zařízení. V podokně dynamického obsahu vyberte **název zařízení**. Tato hodnota se předává ze vstupu, který uživatel zadá přes mobilní aplikaci, a je název nového zařízení v IoT Central. V tomto příkladu je jediným vyžadovaným polem název zařízení, který je označen červenou hvězdičkou. Jiná šablona zařízení může mít více povinných polí, která musí být vyplněna, aby bylo možné vytvořit nové zařízení.
 
-    ![Tok vytvořit dynamické podokna akcí zařízení](./media/howto-add-microsoft-flow/flowcreatedevice1.png)
+    ![Dynamické podokno pro vytvoření toku akce zařízení](./media/howto-add-microsoft-flow/flowcreatedevice1.png)
 
-1. (Volitelné) Vyplňte další pole, která je vhodná pro vytváření nových zařízení.
+1. Volitelné Vyplňte další pole podle potřeby pro vytváření nových zařízení.
 
-1. Nakonec uložte pracovního postupu.
+1. Nakonec uložte pracovní postup.
 
-1. Zkuste pracovního postupu v mobilní aplikaci Microsoft Flow. Přejděte **tlačítka** kartě v aplikaci. Měli byste vidět tlačítko -> vytvořit nový pracovní postup zařízení. Zadejte název nové zařízení a sledujte, zobrazí se i IoT Central!
+1. Vyzkoušejte svůj pracovní postup v mobilní aplikaci Microsoft Flow. V aplikaci přejdete na kartu **tlačítka** . Mělo by se zobrazit vaše tlačítko > Vytvoření nového pracovního postupu zařízení. Zadejte název nového zařízení a sledujte jeho zobrazení v IoT Central!
 
-    ![Snímek obrazovky mobilní zařízení vytvořit tok](./media/howto-add-microsoft-flow/flowmobilescreenshot.png)
+    ![Mobilní snímek obrazovky pro vytvoření zařízení Flow](./media/howto-add-microsoft-flow/flowmobilescreenshot.png)
 
 ## <a name="update-a-device-in-a-workflow"></a>Aktualizace zařízení v pracovním postupu
 
-V této části se dozvíte, jak aktualizovat nastavení zařízení a vlastností v IoT Central při stisknutí tlačítka na mobilním zařízení pomocí mobilní aplikace Microsoft Flow.
+V této části se dozvíte, jak aktualizovat nastavení a vlastnosti zařízení v IoT Central po stisknutí tlačítka na mobilním zařízení pomocí Microsoft Flow mobilní aplikace.
 
-1. Začněte vytvořením prázdné pracovního postupu v Microsoft Flow.
+1. Začněte vytvořením prázdného pracovního postupu v Microsoft Flow.
 
-1. Vyhledejte **tlačítko tok pro mobilní zařízení** jako trigger.
+1. Hledat **tlačítko toku pro mobilní zařízení** jako Trigger
 
-1. V tento trigger, přidejte jako vstup **umístění** textové zadání, která odpovídá nastavení nebo vlastnosti, kterou chcete změnit. Změňte popis.
+1. V této aktivační události přidejte vstup jako textový vstup , který odpovídá nastavení nebo vlastnosti, kterou chcete změnit. Změňte text popisu.
 
-1. Přidejte novou akci. Hledat **aktualizovat zařízení Azure IoT Central -** akce.
+1. Přidejte novou akci. Vyhledejte akci **IoT Central Azure – aktualizace zařízení** .
 
-1. Vyberte aplikace z rozevíracího seznamu. Teď budete potřebovat ID existující zařízení, které chcete aktualizovat. 
+1. Z rozevíracího seznamu vyberte svou aplikaci. Teď budete potřebovat ID existujícího zařízení, které chcete aktualizovat. 
 
     > [!NOTE] 
-    > **Je nutné použít ID nalezeno v adrese URL** na stránce s podrobnostmi zařízení zařízení, které chcete aktualizovat. V Průzkumníku zařízení seznam zařízení se nenašlo ID zařízení není ten správný pro použití v Microsoft Flow.
+    > Na stránce Podrobnosti o zařízení, které chcete aktualizovat, je **nutné použít ID, které najdete na adrese URL** . ID zařízení, které se nachází v seznamu zařízení v Průzkumníkovi zařízení, není ten, který se má použít v Microsoft Flow.
 
-    ![IoT Central ID z adresy URL](./media/howto-add-microsoft-flow/iotcdeviceidurl.png)
+    ![ID IoT Central z adresy URL](./media/howto-add-microsoft-flow/iotcdeviceidurl.png)
 
-1. Je-li aktualizovat název zařízení. Pokud chcete aktualizovat všechny vlastnosti a nastavení zařízení, je třeba vybrat šablonu zařízení zařízení, které chcete aktualizovat v **šablona zařízení** rozevíracího seznamu. Akce dlaždic se rozbalí a zobrazí všechny vlastnosti a nastaveních, pomocí kterých můžete aktualizovat.
+1. Název zařízení můžete aktualizovat. Pokud chcete aktualizovat některé vlastnosti a nastavení zařízení, musíte v rozevíracím seznamu **Šablona zařízení** vybrat šablonu zařízení, kterou chcete aktualizovat. Dlaždice akce se rozbalí, aby se zobrazily všechny vlastnosti a nastavení, které můžete aktualizovat.
 
-    ![Tok pracovní postup aktualizace zařízení](./media/howto-add-microsoft-flow/flowupdatedevice1.png)
+    ![Pracovní postup aktualizace toku pro zařízení](./media/howto-add-microsoft-flow/flowupdatedevice1.png)
 
-1. Vyberte jednotlivé vlastnosti a nastavení, které chcete aktualizovat. V podokně dynamického obsahu zvolte odpovídající vstup z triggeru. V tomto příkladu hodnotu umístění rozšíří se dolů do umožňuje aktualizovat vlastnost umístění zařízení.
+1. Vyberte všechny vlastnosti a nastavení, které chcete aktualizovat. V podokně dynamického obsahu vyberte odpovídající vstup z aktivační události. V tomto příkladu se hodnota umístění rozšíří, aby se aktualizovala vlastnost umístění zařízení.
 
-1. Nakonec uložte pracovního postupu.
+1. Nakonec uložte pracovní postup.
 
-1. Zkuste pracovního postupu v mobilní aplikaci Microsoft Flow. Přejděte **tlačítka** kartě v aplikaci. Měli byste vidět tlačítko -> aktualizace zařízení pracovního postupu. Zadejte vstupy a zařízení v IoT Central aktualizovat!
+1. Vyzkoušejte svůj pracovní postup v mobilní aplikaci Microsoft Flow. V aplikaci přejdete na kartu **tlačítka** . Mělo by se zobrazit vaše tlačítko > aktualizace pracovního postupu zařízení. Zadejte vstupy a podívejte se, jak se zařízení aktualizuje v IoT Central!
 
-## <a name="get-device-information-in-a-workflow"></a>Získejte informace o zařízení v pracovním postupu
+## <a name="get-device-information-in-a-workflow"></a>Získání informací o zařízení v pracovním postupu
 
-Můžete získat informace o zařízení s použitím jeho ID **získat zařízení Azure IoT Central -** akce. 
+Podle jeho ID můžete získat informace o zařízení pomocí **IoT Central Azure – získat akci zařízení** . 
 > [!NOTE] 
-> **Je nutné použít ID nalezeno v adrese URL** na stránce s podrobnostmi zařízení zařízení, které chcete aktualizovat. V Průzkumníku zařízení seznam zařízení se nenašlo ID zařízení není ten správný pro použití v Microsoft Flow.
+> Na stránce Podrobnosti o zařízení, které chcete aktualizovat, je **nutné použít ID, které najdete na adrese URL** . ID zařízení, které se nachází v seznamu zařízení v Průzkumníkovi zařízení, není ten, který se má použít v Microsoft Flow.
 
-Můžete získat informace, jako je název zařízení, název šablony zařízení, hodnoty vlastnosti a hodnoty nastavení k předání do pozdějších akcích v pracovním postupu. Tady je příklad pracovního postupu, který se předá jméno zákazníka hodnotu vlastnosti ze zařízení do Microsoft Teams.
+Můžete získat informace, jako je název zařízení, název šablony zařízení, hodnoty vlastností a hodnoty nastavení, které chcete předat pozdějším akcím v pracovním postupu. Tady je příklad pracovního postupu, který předává hodnotu vlastnosti název zákazníka ze zařízení do Microsoft Teams.
 
-   ![Tok pracovní postup get zařízení](./media/howto-add-microsoft-flow/flowgetdevice1.png)
+   ![Tok získat pracovní postup zařízení](./media/howto-add-microsoft-flow/flowgetdevice1.png)
 
 
 ## <a name="run-a-command-on-a-device-in-a-workflow"></a>Spuštění příkazu na zařízení v pracovním postupu
-Spustíte příkaz na zařízení, zadat jeho pomocí ID **Azure IoT Central – spusťte příkaz** akce. 
+Můžete spustit příkaz na zařízení určeném pomocí jeho ID pomocí akce **IoT Central Azure – spuštění příkazu** . 
 
 > [!NOTE] 
-> **Je nutné použít ID nalezeno v adrese URL** na stránce s podrobnostmi zařízení zařízení, které chcete aktualizovat. V Průzkumníku zařízení seznam zařízení se nenašlo ID zařízení není ten správný pro použití v Microsoft Flow.
+> Na stránce Podrobnosti o zařízení, které chcete aktualizovat, je **nutné použít ID, které najdete na adrese URL** . ID zařízení, které se nachází v seznamu zařízení v Průzkumníkovi zařízení, není ten, který se má použít v Microsoft Flow.
     
-Můžete si vybrat příkaz pro spuštění a předání v parametrech příkaz v rámci této akce. Tady je příklad pracovního postupu, který spouští příkaz restartování zařízení pomocí tlačítka v mobilní aplikaci Microsoft Flow.
+Můžete vybrat příkaz pro spuštění a předání parametrů příkazu prostřednictvím této akce. Tady je příklad pracovního postupu, který spouští příkaz k restartování zařízení z tlačítka v mobilní aplikaci Microsoft Flow.
 
-   ![Tok pracovní postup get zařízení](./media/howto-add-microsoft-flow/flowrunacommand1.png)
+   ![Tok získat pracovní postup zařízení](./media/howto-add-microsoft-flow/flowrunacommand1.png)
 
-## <a name="delete-a-device-in-a-workflow"></a>Odstranit zařízení v pracovním postupu
+## <a name="delete-a-device-in-a-workflow"></a>Odstranění zařízení v pracovním postupu
 
-Můžete odstranit zařízení s použitím jeho ID **odstranit zařízení Azure IoT Central -** akce. 
+Podle jeho ID můžete zařízení odstranit pomocí akce **Azure IoT Central-odstranit zařízení** . 
 > [!NOTE] 
-> **Je nutné použít ID nalezeno v adrese URL** na stránce s podrobnostmi zařízení zařízení, které chcete aktualizovat. V Průzkumníku zařízení seznam zařízení se nenašlo ID zařízení není ten správný pro použití v Microsoft Flow.
+> Na stránce Podrobnosti o zařízení, které chcete aktualizovat, je **nutné použít ID, které najdete na adrese URL** . ID zařízení, které se nachází v seznamu zařízení v Průzkumníkovi zařízení, není ten, který se má použít v Microsoft Flow.
 
-Tady je příklad pracovního postupu, který odstraní zařízení při stisknutí tlačítka v mobilní aplikaci Microsoft Flow.
+Tady je příklad pracovního postupu, který odstraní zařízení na vyžádání tlačítka v mobilní aplikaci Microsoft Flow.
 
-   ![Pracovní postup zařízení odstranění toku](./media/howto-add-microsoft-flow/flowdeletedevice.png)
+   ![Pracovní postup odstranění zařízení v toku](./media/howto-add-microsoft-flow/flowdeletedevice.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud máte potíže při vytváření připojení ke konektoru Azure IoT Central, tady je několik užitečných tipů k vám.
+Pokud máte potíže při vytváření připojení ke konektoru služby Azure IoT Central, najdete tady několik tipů, které vám pomůžou.
 
-1. Osobní účty Microsoft (například @hotmail.com, @live.com, @outlook.com domén) nejsou v tuto chvíli nepodporuje. Musíte použít Azure Active Directory (AD) pracovní nebo školní účet.
+1. Osobní účty Microsoft (například @hotmail.com, @live.com, @outlook.com domény) se v tuto chvíli nepodporují. Musíte použít pracovní nebo školní účet Azure Active Directory (AD).
 
-2. K používání konektoru IoT Central v Microsoft Flow, musíte přihlášení aplikace IoT Central alespoň jednou. V opačném případě aplikace nezobrazí v rozevíracích seznamech aplikací.
+2. Pokud chcete použít konektor IoT Central v Microsoft Flow, musíte se k IoT Central aplikaci přihlásit aspoň jednou. V opačném případě se aplikace nebude zobrazovat v rozevíracích seznamech aplikace.
 
-3. Pokud při použití účtu Azure AD jsou dochází k chybě, zkuste otevřít prostředí Windows PowerShell a spusťte následující rutiny jako správce.
+3. Pokud se vám při používání účtu Azure AD zobrazuje chyba, zkuste otevřít Windows PowerShell a spustit následující rutin jako správce.
 
     ``` PowerShell
     Install-Module AzureAD
@@ -171,7 +173,7 @@ Pokud máte potíže při vytváření připojení ke konektoru Azure IoT Centra
     New-AzureADServicePrincipal -AppId 9edfcdd9-0bc5-4bd4-b287-c3afc716aac7 -DisplayName "Azure IoT Central"
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste zjistili, jak používat Microsoft Flow k vytváření pracovních postupů, navrhované dalším krokem je [spravovat zařízení](howto-manage-devices.md).
+Teď, když jste se naučili, jak používat Microsoft Flow k sestavování pracovních postupů, je navržený další krok ke [správě zařízení](howto-manage-devices.md).
 

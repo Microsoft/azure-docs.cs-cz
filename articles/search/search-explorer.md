@@ -1,7 +1,7 @@
 ---
 title: Nástroj Průzkumník služby Search pro dotazování na data v Azure Portal-Azure Search
 description: Pro dotazy na indexy v Azure Search použijte Azure Portal nástroje, jako je Průzkumník vyhledávání. Zadejte hledané výrazy nebo plně kvalifikované vyhledávací řetězce s pokročilou syntaxí.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 87e5ec82299ef9ddc8bc8756196bb2ace3d1f6f3
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414242"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649968"
 ---
 # <a name="search-explorer-for-querying-data-in-azure-search"></a>Průzkumník služby Search pro dotazování na data v Azure Search 
 
@@ -142,14 +142,14 @@ Tipy pro hledání v **Průzkumníkovi služby Search**:
 
 + Výsledky jsou vráceny jako podrobné dokumenty JSON, takže můžete v celém rozsahu zobrazit konstrukci a obsah dokumentu. Pomocí výrazů dotazů zobrazených v příkladech můžete omezit, která pole jsou vrácena.
 
-+ Dokumenty se skládají ze všech polí označených jako načístelné **v indexu** . Chcete-li zobrazit atributy indexu na portálu, klikněte na *realestate-US-Sample* v seznamu **indexy** na stránce s přehledem hledání.
++ Dokumenty se skládají ze všech polí označených jako načístelné v indexu. Chcete-li zobrazit atributy indexu na portálu, klikněte na *realestate-US-Sample* v seznamu **indexy** na stránce s přehledem hledání.
 
 + Dotazy na volném formuláři, podobně jako to, co byste mohli zadat do komerčního webového prohlížeče, jsou užitečné při testování činnosti koncového uživatele. Předpokládejme například, že jste zavedli integrovaný vzorový index realestate, mohli byste zadat "Seattle Apartments Lake Washington" a potom můžete pomocí kombinace kláves CTRL-F vyhledat výrazy ve výsledcích hledání. 
 
 + Výrazy dotazu a filtru musí být kloubem v syntaxi podporované Azure Search. Výchozí hodnota je [Jednoduchá syntaxe](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale pro výkonnější dotazy můžete použít také [úplné Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) . [Výrazy filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) jsou syntaxí OData.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V následujících zdrojích najdete další informace o syntaxi dotazů a příklady.
 

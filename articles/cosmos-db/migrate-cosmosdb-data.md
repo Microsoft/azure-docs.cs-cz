@@ -7,18 +7,23 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.author: bharathb
-ms.openlocfilehash: a4de902e51b101d14aac599c9aad8c4feb86a9c6
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6092b3aac2b0282a795d89730266e72179b34e8a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624609"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648899"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrace stovek terabajtů dat do Azure Cosmos DB 
 
 Azure Cosmos DB může ukládat terabajty dat. K přesunu produkční úlohy na Azure Cosmos DB můžete provést rozsáhlou migraci dat. Tento článek popisuje problémy spojené s přesunutím velkých objemů dat do Azure Cosmos DB a zavádí vám nástroj, který pomáhá s problémy a migruje data do Azure Cosmos DB. V tomto případě se zákazník používal Cosmos DB rozhraní SQL API.  
 
 Před migrací celé úlohy na Azure Cosmos DB můžete migrovat podmnožinu dat a ověřit některé aspekty, jako je například volba klíče oddílu, výkon dotazů a modelování dat. Po ověření konceptu konceptu můžete přesunout celou úlohu na Azure Cosmos DB.  
+
+K urychlení vytváření a migrace aplikací na Azure Cosmos DB můžete použít také [Program Cosmos DB Bootstrap](https://azurecosmosdb.github.io/CosmosBootstrap/) . V rámci tohoto programu by se technici z týmu Azure Cosmos DB přiřadili k vašemu projektu a pomohli vám migrovat data do Azure Cosmos DB. Kliknutím na tlačítko níže si můžete zaregistrovat Cosmos DB zaváděcí program:
+
+> [!div class="nextstepaction"]
+> [Zaváděcí program Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ## <a name="tools-for-data-migration"></a>Nástroje pro migraci dat 
 
@@ -152,4 +157,7 @@ I když můžete postupovat podle tohoto průvodce k úspěšné migraci velkýc
 * Další informace získáte vyzkoušením ukázkových aplikací, které využívají knihovnu hromadných prováděcích modulů v jazycích [.NET](bulk-executor-dot-net.md) a [Java](bulk-executor-java.md). 
 * Knihovna hromadného prováděcího modulu je integrovaná do konektoru Cosmos DB Spark. Další informace najdete v článku [Azure Cosmos DB Spark Connector](spark-connector.md) .  
 * Obraťte se na Azure Cosmos DB produktového týmu otevřením lístku podpory v části problémový typ problému "Obecné poradenství" a "velké (TB +) migrace" pro další nápovědu k migracím ve velkém měřítku. 
+* K urychlení vytváření a migrace aplikací na Azure Cosmos DB použijte [Program Cosmos DB Bootstrap](https://azurecosmosdb.github.io/CosmosBootstrap/) .
 
+> [!div class="nextstepaction"]
+> [Zaváděcí program Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)

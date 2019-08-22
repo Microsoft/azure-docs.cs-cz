@@ -1,6 +1,6 @@
 ---
-title: Kontrolní body a opětovného přehrání v Durable Functions – Azure
-description: Zjistěte, jak vytváření kontrolních bodů a odpověď funguje v rozšíření Durable Functions pro službu Azure Functions.
+title: Kontrolní body a přehrávání v Durable Functions – Azure
+description: Přečtěte si, jak se v rozšíření Durable Functions pro Azure Functions funguje kontrolní bod a odpověď.
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -10,22 +10,22 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b1fd31a758501620129fdbbc532b8defcf927045
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ed9e4aced7983cce10a577b38c1c170474cf83d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648495"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876866"
 ---
-# <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Kontrolní body a opětovného přehrání v Durable Functions (Azure Functions)
+# <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Kontrolní body a opakované přehrání v Durable Functions (Azure Functions)
 
-Mezi klíčové atributy odolná služba Functions je **spolehlivé provádění**. Aktivita funkcí a funkcí nástroje Orchestrator může běžet na různých virtuálních počítačů v rámci datového centra a tyto virtuální počítače nebo základní síťovou infrastrukturu není 100 % spolehlivý.
+Jedním z klíčových atributů Durable Functions je **spolehlivé provádění**. Funkce a funkce nástroje Orchestrator mohou běžet na různých virtuálních počítačích v rámci datového centra. Tyto virtuální počítače nebo základní síťové infrastruktury nejsou 100% Reliable.
 
-Přestože to Durable Functions zajišťuje spolehlivé provádění Orchestrace. Dělá to pomocí úložiště front do volání funkce jednotky a pravidelně historie provádění vytváření kontrolních bodů do tabulky úložiště (pomocí vzoru návrhu cloudu říká [modelu Event Sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)). Této historie můžete znovu přehrát pak automaticky rekonstruovat v paměti stav funkce orchestrátoru.
+Navzdory tomu Durable Functions zajišťuje spolehlivé provádění orchestrace. K tomu slouží fronty úložiště k řízení vyvolání funkcí a pravidelnému vytváření kontrolních bodů historie spouštění do tabulek úložiště (pomocí vzoru návrhu cloudu známého jako [zdroje událostí](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)). Tato historie se pak může přehrát, aby automaticky znovu vytvořila stav v paměti funkce Orchestrator.
 
-## <a name="orchestration-history"></a>Historie Orchestrace
+## <a name="orchestration-history"></a>Historie orchestrace
 
-Předpokládejme, že máte následující funkce nástroje orchestrator:
+Předpokládejme, že máte následující funkci Orchestrator:
 
 ### <a name="c"></a>C#
 
@@ -45,7 +45,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -61,75 +61,75 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-V každé `await` (C#) nebo `yield` – příkaz (JavaScript), kontrolní body trvalý Framework úloh stav provádění funkce do tabulky úložiště. Tento stav se, co se označuje jako *Orchestrace historie*.
+V každém `await` příkazuC#() `yield` nebo (JavaScript), trvalá architektura pro úlohy kontrolní stav provádění funkce do tabulkového úložiště. Tento stav je označován jako *Historie orchestrace*.
 
-## <a name="history-table"></a>Tabulky historie
+## <a name="history-table"></a>Tabulka historie
 
-Obecně řečeno trvalý Framework úkolů provede následující akce na každý kontrolní bod:
+Obecně řečeno, trvalá architektura pro úlohy v každém kontrolním bodu provede následující:
 
-1. Historie provádění uloží do tabulky Azure Storage.
-2. Zařadí zprávy pro funkce orchestrátoru chce volat.
-3. Zařadí zprávy pro orchestrator, samotný &mdash; například zpráv trvalý časovače.
+1. Uloží historii spouštění do Azure Storage tabulek.
+2. Zařazování zpráv do fronty pro funkce, které chce Orchestrator vyvolat.
+3. Ve frontě zařazování zpráv pro &mdash; nástroj Orchestrator, například trvalé zprávy časovače.
 
-Po dokončení kontrolního bodu funkce orchestrátoru je bezplatné odstraněn z paměti, dokud nedojde k více práce na práci.
+Po dokončení kontrolního bodu je možné odebrat funkci Orchestrator z paměti, dokud nebude k dispozici více práce.
 
 > [!NOTE]
-> Azure Storage neposkytuje žádné záruky transakční mezi ukládání dat do úložiště tabulek a front. Zpracování chyb, poskytovatele úložiště Durable Functions používá *konečné konzistence* vzory. Tyto vzory Ujistěte se, že pokud dojde k chybě nebo ztrátě připojení uprostřed kontrolní bod se neztratila žádná data.
+> Azure Storage neposkytuje žádné transakční záruky mezi uložením dat do úložiště tabulek a front. Pro zpracování selhání používá poskytovatel úložiště Durable Functions konečné vzorce *konzistence* . Tyto vzory zajistí, že nedojde ke ztrátě dat v případě selhání nebo ztráty připojení uprostřed kontrolního bodu.
 
-Po dokončení historie funkce je uvedeno výše bude vypadat nějak takto ve službě Azure Table Storage (zkratka pro ilustraci):
+Po dokončení bude historie dříve zobrazených funkcí vypadat přibližně takto v Azure Table Storage (pro ilustraci je zkrácený):
 
-| PartitionKey (ID instance)                     | EventType             | Timestamp               | Vstup | Název             | Výsledek                                                    | Status |
+| PartitionKey (InstanceId)                     | Typ události             | Timestamp               | Vstup | Name             | Výsledek                                                    | Stav |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | Hodnotu Null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" "Hello Tokio!" ""                                        |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" "Hello Tokio!" "                                        |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | "" "Hello Seattle!" ""                                      |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | "" "Hello Praha!" "                                      |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hello Londýn!" ""                                       |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokio!" ",""Hello Seattle!" ",""Londýn Hello!" "]" | Dokončeno           |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hello Londýn!" "                                       |                     |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[" "Hello Tokio!" "," "Hello Seattle!" "," "Hello Londýn!" "]" | Dokončeno           |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
 
-Několik poznámek na hodnoty ve sloupcích:
+Několik poznámek na hodnotách sloupců:
 
-* **PartitionKey**: Obsahuje ID instance orchestraci.
-* **EventType**: Představuje typ události. Může být jedna z následujících typů:
-  * **OrchestrationStarted**: Funkce orchestrátoru obnovit od await nebo je poprvé spuštěna. `Timestamp` Sloupec slouží k naplnění deterministická hodnota [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) rozhraní API.
-  * **ExecutionStarted**: Funkce orchestrátoru zahájilo se spuštění poprvé. Tato událost také obsahuje funkce vstup v `Input` sloupce.
-  * **TaskScheduled**: Funkce protokolem aktivit byl naplánován. Název funkce aktivity jsou zachyceny `Name` sloupce.
-  * **TaskCompleted**: K dokončení funkce aktivitu. Výsledek funkce je ve `Result` sloupce.
-  * **TimerCreated**: Trvalý časovač se vytvořil. `FireAt` Sloupec obsahuje naplánovaném čase UTC, kdy vyprší.
-  * **TimerFired**: Událost je trvalý časovače.
-  * **EventRaised**: Externí událost byla odeslána do instance Orchestrace. `Name` Sloupec zachycuje název události a `Input` sloupec zachycuje datové části události.
-  * **OrchestratorCompleted**: Funkce orchestrátoru očekáváno.
-  * **ContinueAsNew**: Funkce orchestrátoru dokončit a samotné restartuje, takže se nový stav. `Result` Sloupec obsahuje hodnotu, která se používá jako vstup v instanci aplikace restartovala.
-  * **ExecutionCompleted**: Funkce orchestrátoru dokončena (nebo neúspěšných). Výstupy funkce nebo podrobnosti o chybě jsou uloženy v `Result` sloupce.
-* **Časové razítko**: Časové razítko UTC Historie událostí.
+* **PartitionKey**: Obsahuje ID instance orchestrace.
+* **Typ události**: Představuje typ události. Může být jeden z následujících typů:
+  * **OrchestrationStarted**: Funkce Orchestrator obnovila z await nebo je spuštěná poprvé. Sloupec se používá k naplnění deterministické hodnoty rozhraní CurrentUtcDateTime API. [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) `Timestamp`
+  * **ExecutionStarted**: Funkce nástroje Orchestrator zahájila první spuštění. Tato událost také obsahuje vstup funkce ve `Input` sloupci.
+  * **TaskScheduled**: Naplánovala se funkce aktivity. Název funkce aktivity je zachycen ve `Name` sloupci.
+  * **TaskCompleted**: Funkce aktivity je dokončená. Výsledek funkce je ve `Result` sloupci.
+  * **TimerCreated**: Byl vytvořen trvalý časovač. `FireAt` Sloupec obsahuje plánovaný čas UTC, kdy vyprší platnost časovače.
+  * **TimerFired**: Byl aktivován trvalý časovač.
+  * **EventRaised**: Do instance Orchestration byla odeslána externí událost. Sloupec zachytí název události `Input` a sloupec zachycuje datovou část události. `Name`
+  * **OrchestratorCompleted**: Očekává se funkce Orchestrator.
+  * **ContinueAsNew**: Funkce Orchestrator se dokončila a sama se restartovala s novým stavem. `Result` Sloupec obsahuje hodnotu, která se používá jako vstup v restartované instanci.
+  * **ExecutionCompleted**: Funkce Orchestrator se úspěšně dokončila (nebo selhala). Výstupy funkce nebo podrobnosti o chybě jsou uloženy ve `Result` sloupci.
+* **Časové razítko**: Časové razítko UTC události historie.
 * **Název**: Název funkce, která byla vyvolána.
-* **Vstup**: Vstup ve formátu JSON funkce.
-* **Výsledek**: Výstupní funkci. To znamená, že vrácená hodnota.
+* **Vstup**: Vstup funkce ve formátu JSON.
+* **Výsledek**: Výstup funkce; To znamená, že návratová hodnota.
 
 > [!WARNING]
-> Když je to užitečné jako nástroj pro ladění, nevyřídí všechny závislosti pro tuto tabulku. To může změnit, protože rozšíření Durable Functions vyvíjí.
+> I když je to užitečné jako ladicí nástroj, neprovádějte žádnou závislost v této tabulce. Může se změnit, jak se vyvíjí rozšíření Durable Functions.
 
-Pokaždé, když se funkce obnoví ze `await` (C#) nebo `yield` (JavaScript), trvalý Framework úlohy znovu spustí operaci funkce orchestrátoru úplně od začátku. Na každý znovu spustit consults historii spuštění chcete určit, zda má aktuální asynchronní operace umístíte.  Pokud konal úplně operaci, rozhraní okamžitě přehrává výstupní operace a přejde k další `await` (C#) nebo `yield` (JavaScript). Tento proces pokračuje, dokud se přehrály celou historii, v tomto okamžiku se obnoví všechny místní proměnné ve funkci nástroje orchestrator na předchozí hodnoty.
+Pokaždé, když se funkce obnoví z `await` rozhraníC#() `yield` nebo (JavaScript), reaktivuje se znovu funkce Orchestrator od nuly. Při každém opakovaném spuštění prochází historii spouštění a určí, zda byla provedena aktuální asynchronní operace.  Pokud tato operace proběhla, rozhraní přehraje výstup této operace okamžitě a přesune se k dalšímu `await` (C#) nebo `yield` (JavaScriptu). Tento proces pokračuje, dokud nebude celá historie znovu přehrána, přičemž všechny místní proměnné ve funkci Orchestrator budou obnoveny na jejich předchozí hodnoty.
 
-## <a name="orchestrator-code-constraints"></a>Omezení kódu produktu Orchestrator
+## <a name="orchestrator-code-constraints"></a>Omezení kódu Orchestrator
 
-Chování opakování vytvoří omezení na typu kódu, který je možné psát v funkce orchestrátoru:
+Chování při opětovném přehrání vytvoří omezení pro typ kódu, který lze zapsat do funkce Orchestrator:
 
-* Kód produktu Orchestrator musí být **deterministické**. Přehrály více než jednou a musí mít stejný výsledek pokaždé, když. Například žádné přímé volání pro získání aktuální datum a čas, získat náhodných čísel, generovat náhodný GUID nebo volání do vzdálené koncové body.
+* Kód Orchestrator musí být **deterministický**. Bude opakovaně přehrána několikrát a je nutné pokaždé vyvolat stejný výsledek. Například žádná přímá volání pro získání aktuálního data a času, získání náhodných čísel, generování náhodných identifikátorů GUID nebo volání vzdálených koncových bodů.
 
-  Pokud kód orchestrator je potřeba získat aktuální datum a čas, měla by používat [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) nebo `currentUtcDateTime` (JavaScript) rozhraní API, který je bezpečný pro opakování.
+  Pokud kód Orchestrator potřebuje získat aktuální datum a čas, měl by používat rozhraní API [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) nebo `currentUtcDateTime` (JavaScript), které je bezpečné pro opětovné přehrání.
 
-  Pokud orchestrator kód musí generovat náhodný GUID, měla by používat [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) rozhraní API (.NET), který je bezpečný pro opakování nebo generování identifikátoru GUID delegáta aktivity funkce (JavaScript), jako v tomto příkladu:
+  Pokud kód Orchestrator potřebuje vygenerovat náhodný identifikátor GUID, měl by používat rozhraní API [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET), které je bezpečné pro opětovné přehrání, nebo delegovat generování identifikátoru GUID na funkci Activity (JavaScript), jako v tomto příkladu:
 
   ```javascript
   const uuid = require("uuid/v1");
@@ -139,37 +139,37 @@ Chování opakování vytvoří omezení na typu kódu, který je možné psát 
   }
   ```
 
-  Nedeterministické operace je třeba provést v funkce aktivity. To zahrnuje všechny interakce s jiných vstupních nebo výstupních vazeb. Tím se zajistí, že všechny Nedeterministický hodnoty se budou vygenerované jednou na první spuštění a uloží do historie spouštění. Další spuštění pak bude automaticky používat uložené hodnoty.
+  Nedeterministické operace se musí provádět ve funkcích aktivit. To zahrnuje jakoukoli interakci s dalšími vstupními nebo výstupními vazbami. Tím se zajistí, že se při prvním spuštění vygeneruje všechny nedeterministické hodnoty a uloží se do historie spouštění. Další vykonání se pak automaticky použije uložená hodnota.
 
-* Orchestrator kód by měl být **neblokující**. Například to znamená, že žádné vstupně-výstupní operace a žádná volání `Thread.Sleep` (.NET) nebo ekvivalentní rozhraní API.
+* Kód Orchestrator by neměl být **zablokován**. Například to znamená, že nejsou žádné vstupně-výstupní operace ani žádná `Thread.Sleep` volání rozhraní (.NET) nebo ekvivalentní rozhraní API.
 
-  Pokud je nutné zpoždění orchestrátoru, můžete použít [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) nebo `createTimer` (JavaScript) rozhraní API.
+  Pokud se nástroj Orchestrator potřebuje zpozdit, může použít rozhraní API [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) nebo `createTimer` (JavaScript).
 
-* Kód produktu Orchestrator musí **nikdy zahájena libovolné asynchronní operace** s výjimkou použití [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) rozhraní API nebo `context.df` objektu rozhraní API. Například, ne `Task.Run`, `Task.Delay` nebo `HttpClient.SendAsync` v .NET, nebo `setTimeout()` a `setInterval()` v jazyce JavaScript. Trvalý Framework úkol spustí kód nástroje orchestrator v jednom vlákně a nemůžou komunikovat s ostatními vlákny, které mohou být naplánovány tak jiné asynchronní rozhraní API.
+* Kód Orchestrator nesmí **iniciovat žádnou asynchronní operaci** s výjimkou použití [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) rozhraní API DurableOrchestrationContext `context.df` nebo rozhraní API objektu. Například ne `Task.Run`, `Task.Delay` `setTimeout()` nebo `HttpClient.SendAsync` v rozhraní .NET nebo`setInterval()` v jazyce JavaScript. Prostředí trvalého úkolu spouští kód Orchestrator v jednom vlákně a nemůže pracovat s jinými vlákny, které by mohly být naplánovány jinými asynchronními rozhraními API. Pokud k tomu dojde `InvalidOperationException` , je vyvolána výjimka.
 
-* **Mělo by se vyhnout nekonečné smyčky** v kódu produktu orchestrator. Protože trvalý úloh Framework uloží historie provádění funkce průběhu Orchestrace, může způsobit nekonečnou smyčku instanci orchestrator mít nedostatek paměti. U scénářů s nekonečnou smyčku pomocí rozhraní API [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) nebo `continueAsNew` (JavaScript) restartujte spuštění funkce a zrušíte předchozí historie spuštění.
+* **Nekonečná smyčka by se měla** v kódu Orchestrator vyhnout. Vzhledem k tomu, že architektura trvalého úlohy ukládá historii spouštění, protože funkce orchestrace pokračuje, může nekonečná smyčka způsobit nedostatek paměti z důvodu instance nástroje Orchestrator. V případě scénářů nekonečné smyčky použijte rozhraní API, jako je [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) ( `continueAsNew` .NET) nebo (JavaScript), a restartujte provádění funkce a zahoďte předchozí historii spuštění.
 
-* Funkce jazyka JavaScript orchestrator nesmí být `async`. Musí být deklarovány jako synchronní generátor funkce.
+* Funkce nástroje JavaScript Orchestrator nemohou `async`být. Musí být deklarovány jako synchronní funkce generátoru.
 
-Zatímco tato omezení se může zdát složitý na nejprve v praxi, které nejsou pevné dodržovat. Trvalý Framework úkol pokusí rozpoznat porušení výše uvedených pravidel a vyvolá výjimku `NonDeterministicOrchestrationException`. Ale toto chování zjišťování je best effort a by neměl na ní závisí.
-
-> [!NOTE]
-> Všechna tato pravidla vztahují pouze na funkce aktivované `orchestrationTrigger` vazby. Aktivita funkce aktivované službou `activityTrigger` vazbu a funkce, které používají `orchestrationClient` vazby, mají žádné takové omezení.
-
-## <a name="durable-tasks-net"></a>Trvalý úlohy (.NET)
+I když se tato omezení můžou jevit jako těžké, v praxi je nemusíte sledovat. Prostředí trvalého úkolu se pokusí zjistit porušení výše uvedených pravidel a vyvolá `NonDeterministicOrchestrationException`. Toto chování při detekci je ale nejlepší úsilí a na něj byste neměli záviset.
 
 > [!NOTE]
-> Tato část popisuje podrobnosti interní implementace rozhraní trvalý úloh. Odolná služba Functions můžete použít bez znalosti tyto informace. Je určena pouze pro vám pomůže pochopit chování opakování.
+> Všechna tato pravidla platí pouze pro funkce aktivované `orchestrationTrigger` vazbou. Funkce aktivity aktivované `activityTrigger` vazbou a funkce, které `orchestrationClient` používají vazbu, nemají taková omezení.
 
-Úlohy, které může být bezpečně očekávána funkcí nástroje orchestrator jsou někdy označovány jako *trvalý úlohy*. Toto jsou úlohy, které se vytváří a spravují trvalý rozhraním úloh. Příklady jsou úlohy vrácené `CallActivityAsync`, `WaitForExternalEvent`, a `CreateTimer`.
+## <a name="durable-tasks-net"></a>Trvalé úkoly (.NET)
 
-Tyto *trvalý úlohy* interně spravuje pomocí seznamu `TaskCompletionSource` objekty. Během opětovného přehrání tyto úlohy vytvořené jako součást spuštění kódu produktu orchestrator a jsou dokončit, protože dispečer zobrazí odpovídající události historie. Tohle všechno se synchronně pomocí jedno vlákno, dokud se znovu přehrát veškerá historie. Žádné trvalé úlohy, které nebyly dokončeny do konce historie opakování má provádět příslušné akce. Zpráva může být například zařazených do fronty k voláním funkce aktivity.
+> [!NOTE]
+> Tato část popisuje interní implementace podrobností o trvalém rozhraní úlohy. Durable Functions můžete použít bez znalosti těchto informací. Je určena jenom k tomu, aby vám pomohla pochopit chování při přehrávání.
 
-Chování při spuštění je zde popsáno, by vám pomohou pochopit, proč kód funkce produktu orchestrator musí nikdy `await` úlohu krátkodobé: dispečerského vlákna nelze počkejte na její dokončení a jakékoli zpětného volání pomocí této úlohy můžete potenciálně poškodit sledování stav funkce orchestrátoru. Některé kontroly za běhu jsou na místě, chcete-li tomu zabránit.
+Úkoly, které je možné bezpečně očekávat v rámci funkcí nástroje Orchestrator, se občas označují jako *odolné úlohy*. Jedná se o úlohy, které jsou vytvářeny a spravovány trvalým architekturou úloh. Příklady jsou úlohy vracené `CallActivityAsync`, `WaitForExternalEvent`a `CreateTimer`.
 
-Pokud chcete další informace o jak trvalý Framework úkol spustí funkcí nástroje orchestrator, je dobré provedete poradit [trvalý úloh zdrojového kódu na Githubu](https://github.com/Azure/durabletask). Zejména, naleznete v tématu [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) a [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
+Tyto *odolné úkoly* jsou interně spravovány pomocí seznamu `TaskCompletionSource` objektů. Během opakovaného přehrávání se tyto úlohy vytvoří jako součást provádění kódu Orchestrator a jsou dokončeny, protože dispečer vytvoří výčet odpovídajících událostí historie. To vše se provádí synchronně pomocí jednoho vlákna, dokud se veškerá historie znovu nepřehraje. Jakékoli trvalé úkoly, které nejsou dokončeny na konci historie, mají provedeny příslušné akce. Například zpráva může být zařazena do fronty pro volání funkce aktivity.
+
+Chování, které se tady popisuje, by vám mělo porozumět tomu, proč `await` kód funkce Orchestrator nesmí nikdy Nerušit úkol: dispečerský podproces nemůže počkat na jeho dokončení a jakékoli zpětné volání této úlohy by mohlo poškodit sledování. stav funkce Orchestrator K tomu je potřeba provést několik kontrol za běhu.
+
+Pokud chcete získat další informace o tom, jak architektura trvalého úlohy spouští funkce nástroje Orchestrator, je nejlepší postup, jak se obrátit na [trvalý zdrojový kód úlohy na GitHubu](https://github.com/Azure/durabletask). Zejména viz [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) a [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o správě instance](durable-functions-instance-management.md)
+> [Další informace o správě instancí](durable-functions-instance-management.md)

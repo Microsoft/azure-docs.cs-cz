@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5c0c3ade3fd089a4819b8836b07e249fc32c06e0
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
-ms.translationtype: MT
+ms.openlocfilehash: 7bfbec194733f2f8422eef45236a64e45bb553c7
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543607"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656361"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -190,6 +190,8 @@ Následující příklad vrátí cestu k jednomu souboru s názvem `sklearn_mnis
 ```python
 model_path = Model.get_model_path('sklearn_mnist')
 ```
+
+<a id="schema"></a>
 
 #### <a name="optional-automatic-schema-generation"></a>Volitelné Automatické generování schématu
 
@@ -746,7 +748,7 @@ Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 
 Další informace naleznete v referenční dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)

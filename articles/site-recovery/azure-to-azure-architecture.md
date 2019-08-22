@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 2ed93846e0a1ab98b25bdfbe33b34779996da82b
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 6882476cabc3dc3a737f31eeeb4ccd92e5ea6ee0
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782642"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872742"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
@@ -74,7 +74,7 @@ Výchozí nastavení zásad replikace můžete spravovat a upravovat následují
 - Nastavení můžete upravit při povolování replikace.
 - Zásadu replikace můžete vytvořit kdykoli a pak ji použít při povolování replikace.
 
-### <a name="multi-vm-consistency"></a>Konzistence vzhledem k více virtuálním počítačům
+### <a name="multi-vm-consistency"></a>Konzistence s více virtuálními počítači
 
 Pokud chcete, aby se virtuální počítače replikoval společně a aby při převzetí služeb při selhání sdílely body obnovení konzistentní vzhledem k aplikacím a konzistentní vzhledem k aplikacím, můžete je shromáždit dohromady do replikační skupiny. Konzistence s více virtuálními počítači ovlivňuje výkon úloh a měla by se používat jenom pro virtuální počítače, na kterých běží úlohy, které vyžadují konzistenci napříč všemi počítači. 
 
@@ -139,6 +139,7 @@ Pokud se odchozí přístup pro virtuální počítače ovládá pomocí adres U
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Odchozí připojení pro rozsahy IP adres
 
 Chcete-li řídit odchozí připojení pro virtuální počítače pomocí IP adres, povolte tyto adresy.
+Podrobnosti o požadavcích na připojení k síti najdete v [dokumentu White paper o sítích](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) . 
 
 #### <a name="source-region-rules"></a>Pravidla zdrojové oblasti
 

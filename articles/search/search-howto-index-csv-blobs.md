@@ -1,41 +1,41 @@
 ---
-title: Indexování objektů BLOB CSV pomocí indexeru Azure Search Blob – Azure Search
-description: Procházení objektů BLOB CSV v úložišti objektů Blob v Azure pro fulltextové vyhledávání pomocí indexu Azure Search. Indexery můžete automatizovat příjem dat pro vybrané zdroje dat jako úložiště objektů Blob v Azure.
+title: Indexování objektů BLOB CSV s Azure Search indexerem objektů blob – Azure Search
+description: Procházení objektů BLOB ve formátu CSV v Azure Blob Storage pro fulltextové vyhledávání pomocí Azure Searchho indexu. Indexery automatizují přijímání dat pro vybrané zdroje dat, jako je Azure Blob Storage.
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e7d959e77d27fb04b18f402e4056d4dea1607039
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b135fd1a0758567a7b504996bf442a913741fe59
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522891"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656756"
 ---
-# <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indexování objektů BLOB CSV pomocí indexeru Azure Search blob
+# <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indexování objektů BLOB CSV s Azure Search indexerem objektů BLOB
 
 > [!Note]
-> režim parsování delimitedText je ve verzi preview a není určen pro použití v produkčním prostředí. [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) tuto funkci poskytuje. Není dostupná podpora .NET SDK v současnosti.
+> Režim analýzy delimitedText je ve verzi Preview a není určený pro použití v produkčním prostředí. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
 >
 
-Ve výchozím nastavení [indexeru Azure Search blob](search-howto-indexing-azure-blob-storage.md) analyzuje oddělený text objektů BLOB jako jediný neodkazovaný blok textu. Nicméně s objekty BLOB, který obsahuje data ve formátu CSV, často chcete zpracovávat každý řádek v objektu blob jako samostatný dokument. Například směru následující text s oddělovači, můžete k analýze do dva dokumenty a každý obsahuje pole "tags", "datePublished" a "id": 
+Ve výchozím nastavení [Azure Search indexer objektů BLOB](search-howto-indexing-azure-blob-storage.md) analyzuje objekty BLOB s oddělovači textu jako jeden blok textu. Nicméně s objekty blob obsahujícími data CSV často chcete s každým řádkem v objektu BLOB zacházet jako se samostatným dokumentem. Například s ohledem na následující oddělený text můžete ho chtít analyzovat do dvou dokumentů, z nichž každý obsahuje pole ID, datePublished a Tags: 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-V tomto článku se dozvíte, jak analyzovat objektů BLOB CSV pomocí Azure Search blob indexerby nastavení `delimitedText` režim parsování. 
+V tomto článku se dozvíte, jak analyzovat objekty blobů sdíleného svazku clusteru pomocí Azure Search objektů BLOB `delimitedText` indexerby nastavení režimu analýzy. 
 
 > [!NOTE]
-> Postupujte podle doporučení konfigurace indexeru v [jeden mnoho indexování](search-howto-index-one-to-many-blobs.md) výstup více dokumentů vyhledávání z jednoho objektu blob Azure.
+> Při indexování několika dokumentů hledání z jednoho objektu blob Azure postupujte podle doporučení pro konfiguraci indexeru v indexu [1: n](search-howto-index-one-to-many-blobs.md) .
 
-## <a name="setting-up-csv-indexing"></a>Nastavení indexování sdíleného svazku clusteru
-Indexování objektů BLOB CSV, vytvořit nebo aktualizovat definici rozhraní indexeru se `delimitedText` režim parsování na [vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer) žádosti:
+## <a name="setting-up-csv-indexing"></a>Nastavení indexování CSV
+Chcete-li indexovat objekty blob ve formátu CSV, vytvořte nebo aktualizujte definici indexeru s `delimitedText` režimem analýzy u žádosti [vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) :
 
     {
       "name" : "my-csv-indexer",
@@ -43,27 +43,27 @@ Indexování objektů BLOB CSV, vytvořit nebo aktualizovat definici rozhraní i
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
 
-`firstLineContainsHeaders` Označuje, že první řádek (Neprázdné) každý objekt blob obsahuje záhlaví.
-Pokud objekty BLOB není obsahovat řádek záhlaví počáteční, záhlaví musí být zadán v konfigurace indexeru: 
+`firstLineContainsHeaders`označuje, že první (neprázdný) řádek každého objektu BLOB obsahuje hlavičky.
+Pokud objekty blob neobsahují počáteční řádek záhlaví, hlavičky by se měly zadat v konfiguraci indexeru: 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-Můžete přizpůsobit pomocí znaku oddělovače `delimitedTextDelimiter` nastavení konfigurace. Příklad:
+Pomocí `delimitedTextDelimiter` nastavení konfigurace můžete změnit znak oddělovače. Příklad:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
 > [!NOTE]
-> V současné době je podporována pouze kódování UTF-8. Pokud potřebujete podporu pro jiné kódování, Hlasujte pro ni [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> V současné době je podporována pouze kódování UTF-8. Pokud potřebujete podporu pro další kódování, Hlasujte pro ni na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 > [!IMPORTANT]
-> Při použití text oddělený znaky režim parsování Azure Search se předpokládá, že všechny objekty BLOB ve zdroji dat bude sdílený svazek clusteru. Pokud potřebujete podporovat kombinaci objekty BLOB sdíleného svazku clusteru a jiné než CSV v stejného zdroje dat, prosím Hlasujte pro ni [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Když použijete režim pro analýzu textu s oddělovači, Azure Search předpokládá, že všechny objekty blob ve zdroji dat budou CSV. Pokud potřebujete podporovat kombinaci sdílených svazků clusteru CSV a jiných objektů BLOB ve stejném zdroji dat, Hlasujte prosím na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 > 
 > 
 
-## <a name="request-examples"></a>Příklady žádosti
-Vložení to všechny najednou, tady jsou příklady úplnou datovou část. 
+## <a name="request-examples"></a>Příklady požadavků
+Zde jsou uvedeny kompletní příklady datové části. 
 
-Zdroj dat: 
+Datového 
 
     POST https://[service name].search.windows.net/datasources?api-version=2019-05-06-Preview
     Content-Type: application/json
@@ -76,7 +76,7 @@ Zdroj dat:
         "container" : { "name" : "my-container", "query" : "<optional, my-folder>" }
     }   
 
-Indexer:
+Indexer
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06-Preview
     Content-Type: application/json
@@ -89,6 +89,6 @@ Indexer:
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## <a name="help-us-make-azure-search-better"></a>Pomozte nám vylepšit Azure Search
-Pokud máte požadavky na funkce nebo nápady na vylepšení, zadejte svůj vstup na [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
+## <a name="help-us-make-azure-search-better"></a>Pomozte nám zajistit Azure Search lepší
+Pokud máte na vylepšení žádosti o funkce nebo nápady, poskytněte svůj vstup na [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
 

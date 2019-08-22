@@ -1,48 +1,48 @@
 ---
-title: Příprava a přizpůsobit hlavní imagi virtuálního pevného disku – Azure
-description: Jak můžete připravit, přizpůsobit a nahrajte virtuální plochy Windows hlavní image ve verzi preview do Azure.
+title: Příprava a přizpůsobení image hlavního virtuálního pevného disku – Azure
+description: Příprava, přizpůsobení a nahrání hlavní image ve verzi Preview virtuálního klienta Windows do Azure
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 2413a380adf32755452482d2b68d2055f7db666d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: abde79ab131719fe4f2963db98c7a6daa3419424
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620439"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876839"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
-Tento článek vysvětluje postup přípravy bitové kopie hlavního virtuálního pevného disku (VHD) pro odeslání do Azure, včetně vytvoření virtuálního počítače (VM) a instalovat software na ně. Tyto pokyny se týkají konfigurace specifické pro virtuální plochy Windows ve verzi Preview, který lze použít s existujícími procesy vaší organizace.
+V tomto článku se dozvíte, jak připravit hlavní image virtuálního pevného disku (VHD) pro nahrání do Azure, včetně postupu při vytváření virtuálních počítačů a instalaci softwaru na tyto počítače. Tyto pokyny jsou určené pro konfiguraci pro virtuální počítače s Windows ve verzi Preview, která se dá použít spolu s existujícími procesy vaší organizace.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Windows 10 Enterprise více relací je k dispozici v galerii Imagí Azure. Existují dvě možnosti pro přizpůsobení této bitové kopie.
+Více relací Windows 10 Enterprise je k dispozici v galerii imagí Azure. Existují dvě možnosti, jak tento obrázek přizpůsobit.
 
-Prvním způsobem je ke zřízení virtuálních počítačů (VM) v Azure podle pokynů v [vytvoření virtuálního počítače ze spravované image](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)a pak pokračujte [přípravy softwaru a instalace](set-up-customize-master-image.md#software-preparation-and-installation).
+První možností je zřídit virtuální počítač (VM) v Azure podle pokynů v tématu [Vytvoření virtuálního počítače ze spravované image](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)a následnou přeskočení na [přípravu softwaru a instalaci](set-up-customize-master-image.md#software-preparation-and-installation).
 
-Druhou možností je vytvoření bitové kopie místně stažením image, zřizování virtuálních počítačů Hyper-V a přizpůsobení tak, aby odpovídala vašim potřebám, které probereme v následující části.
+Druhou možností je vytvořit image místně tak, že si stáhnete image, zřídíte virtuální počítač s technologií Hyper-V a přizpůsobíte ji tak, aby vyhovovala vašim potřebám, které jsme si pokryli v následující části.
 
 ### <a name="local-image-creation"></a>Vytvoření místní image
 
-Po stažení image do místního umístění otevřete **Správce technologie Hyper-V** vytvoření virtuálního počítače pomocí virtuálního pevného disku jste zkopírovali. Následující pokyny jsou jednoduchá verze, ale můžete najít další podrobné pokyny v [vytvoření virtuálního počítače Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
+Po stažení Image do místního umístění otevřete **Správce technologie Hyper-V** a vytvořte virtuální počítač se zkopírovaným virtuálním pevným diskem. V následujících pokynech je jednoduchá verze, ale můžete najít podrobnější pokyny v tématu [Vytvoření virtuálního počítače v Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
 
-Chcete-li vytvořit virtuální počítač pomocí zkopírovaného virtuálního pevného disku:
+Vytvoření virtuálního počítače se zkopírovaným virtuálním pevným diskem:
 
-1. Otevřít **Průvodce novým virtuálním počítačem**.
+1. Otevřete **Průvodce novým virtuálním počítačem**.
 
-2. Na stránce zadat generaci vyberte **1. generace**.
+2. Na stránce zadat generaci vyberte **generace 1**.
 
-    ![Snímek obrazovky stránky zadat generaci. Je vybraná možnost "1. generace".](media/a41174fd41302a181e46385e1e701975.png)
+    ![Snímek obrazovky se stránkou pro určení generace. Je vybrána možnost "generace 1".](media/a41174fd41302a181e46385e1e701975.png)
 
-3. V části Typ kontrolního bodu zakázání kontrolních bodů zrušením zaškrtnutí políčka.
+3. V části typ kontrolního bodu zakažte kontrolní body tím, že zrušíte jeho zrušení.
 
-    ![Snímek obrazovky oddílu typ kontrolního bodu na stránce kontrolní body.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
+    ![Snímek obrazovky oddílu s typem kontrolního bodu na stránce s kontrolními body](media/20c6dda51d7cafef33251188ae1c0c6a.png)
 
-V prostředí PowerShell k zakázání kontrolních bodů můžete spustit taky následující rutinu.
+Můžete taky spustit následující rutinu v PowerShellu a zakázat kontrolní body.
 
 ```powershell
 Set-VM -Name <VMNAME> -CheckpointType Disabled
@@ -50,11 +50,11 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>Pevný disk
 
-Pokud vytvoříte virtuální počítač z existujícího virtuálního pevného disku, vytvoří dynamický disk ve výchozím nastavení. Lze jej změnit na pevný disk tak, že vyberete **upravit disku...**  jak je znázorněno na následujícím obrázku. Podrobnější pokyny najdete v článku [Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+Pokud vytvoříte virtuální počítač z existujícího virtuálního pevného disku, vytvoří se ve výchozím nastavení dynamický disk. Můžete ji změnit na pevný disk výběrem možnosti **Upravit disk...** , jak je znázorněno na následujícím obrázku. Podrobnější pokyny najdete v tématu [Příprava virtuálního pevného disku (VHDX) Windows pro nahrání do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
 
-![Snímek obrazovky možnost upravit Disk.](media/35772414b5a0f81f06f54065561d1414.png)
+![Snímek obrazovky s možností upravit disk](media/35772414b5a0f81f06f54065561d1414.png)
 
-Můžete také spouštět následující rutiny prostředí PowerShell můžete změnit disk na pevný disk.
+Pomocí následující rutiny prostředí PowerShell můžete také změnit disk na pevný disk.
 
 ```powershell
 Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.vhd -VHDType Fixed
@@ -62,59 +62,59 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ## <a name="software-preparation-and-installation"></a>Příprava softwaru a instalace
 
-Tato část popisuje, jak připravit a nainstalovat FSLogix, program Windows Defender a další běžné aplikace. 
+Tato část popisuje, jak připravit a nainstalovat FSLogix, Windows Defender a další běžné aplikace. 
 
-Pokud instalujete Office 365 ProPlus a OneDrive na vašem virtuálním počítači, přečtěte si téma [instalaci Office na hlavní imagi virtuálního pevného disku](install-office-on-wvd-master-image.md). Pomocí následujícího odkazu v další kroky v tomto článku se vraťte k tomuto článku a dokončit proces hlavní virtuálního pevného disku.
+Pokud na svém VIRTUÁLNÍm počítači instalujete Office 365 ProPlus a OneDrive, přečtěte si téma [instalace Office na hlavním obrázku VHD](install-office-on-wvd-master-image.md). Pomocí odkazu v dalších krocích tohoto článku se vraťte k tomuto článku a dokončete proces hlavního virtuálního pevného disku.
 
-Pokud budou uživatelé potřebovat přístup k určité obchodní aplikace, doporučujeme že nainstalovat po dokončení této části pokyny.
+Pokud uživatelé potřebují přístup k určitým aplikacím LOB, doporučujeme je nainstalovat po dokončení pokynů v této části.
 
 ### <a name="disable-automatic-updates"></a>Zakázat automatické aktualizace
 
-Chcete-li zakázat automatické aktualizace pomocí místních zásad skupiny:
+Zakázání automatických aktualizací prostřednictvím místních Zásady skupiny:
 
-1. Otevřít **Editor místních zásad skupiny\\šablony pro správu\\součásti Windows\\Windows Update**.
-2. Klikněte pravým tlačítkem na **Konfigurace automatických aktualizací** a nastavte ho na **zakázané**.
+1. Otevřete **Editor místních zásad skupiny\\šablony pro správu\\součásti\\systému Windows Web Windows Update**.
+2. Klikněte pravým tlačítkem na **Konfigurovat Automatické aktualizace** a nastavte ji na **zakázáno**.
 
-Můžete také spustit následující příkaz na příkazovém řádku, chcete-li zakázat automatické aktualizace.
+Můžete také spustit následující příkaz na příkazovém řádku a zakázat tak automatické aktualizace.
 
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
-### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Zadejte počáteční rozložení pro počítače s Windows 10 (volitelné)
+### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Zadat počáteční rozložení pro počítače s Windows 10 (volitelné)
 
-Spuštěním tohoto příkazu zadejte počáteční rozložení pro počítače s Windows 10.
+Spusťte tento příkaz a určete tak počáteční rozložení počítačů s Windows 10.
 
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
 
-### <a name="set-up-user-profile-container-fslogix"></a>Nastavit kontejner profilu uživatele (FSLogix)
+### <a name="set-up-user-profile-container-fslogix"></a>Nastavení kontejneru profilu uživatele (FSLogix)
 
-Chcete-li zahrnout jako součást image kontejneru FSLogix, postupujte podle pokynů v [nastavení sdílené složky profilu uživatele pro hostitele fond](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Můžete otestovat funkci FSLogix kontejner s [v tomto rychlém startu](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
+Pokud chcete zahrnout kontejner FSLogix jako součást image, postupujte podle pokynů v tématu [vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). V [tomto rychlém](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)startu můžete testovat funkčnost kontejneru FSLogix.
 
 ### <a name="configure-windows-defender"></a>Konfigurace programu Windows Defender
 
-Pokud program Windows Defender je nakonfigurovaný na virtuálním počítači, ujistěte se, že se má nakonfigurovat pro prohledávání není celý obsah souborů VHD a VHDX během přílohy.
+Pokud je ve virtuálním počítači nakonfigurovaný Windows Defender, ujistěte se, že je nakonfigurované tak, aby během přílohy nekontroloval celý obsah souborů VHD a VHDX.
 
-Tato konfigurace pouze odebere prohledávání souborů VHD a VHDX během přílohu, ale neovlivní v reálném čase.
+Tato konfigurace odstraní jenom kontrolu souborů VHD a VHDX během přílohy, ale neovlivní kontrolu v reálném čase.
 
-Podrobnější pokyny pro postup konfigurace programu Windows Defender ve Windows serveru, najdete v článku [vyloučení konfigurace Windows Defenderu antivirové ochrany v programu v systému Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+Podrobnější pokyny týkající se konfigurace Windows Defenderu na Windows serveru najdete v tématu [konfigurace vyloučení antivirové ochrany v programu Windows Defender na Windows serveru](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
 
-Další informace o tom, jak nakonfigurovat programu Windows Defender z kontroly vyloučit některé soubory, naleznete v tématu [konfigurace a ověření vyloučení na základě umístění souboru rozšíření a složku](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
+Další informace o tom, jak nakonfigurovat Windows Defender pro vyloučení určitých souborů ze skenování, najdete v tématu [Konfigurace a ověření vyloučení na základě přípony souboru a umístění složky](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
 
-### <a name="configure-session-timeout-policies"></a>Konfigurace zásad vypršení časového limitu relace
+### <a name="configure-session-timeout-policies"></a>Konfigurace zásad časového limitu relace
 
-Zásady vzdálené relace je možné vynucovat na úrovni zásad skupiny, protože všechny virtuální počítače ve fondu hostitelů jsou součástí stejné skupiny zabezpečení.
+Zásady vzdálené relace je možné vyhovět na úrovni Zásady skupiny, protože všechny virtuální počítače ve fondu hostitelů jsou součástí stejné skupiny zabezpečení.
 
-Před konfigurací zásad vzdálené relace:
+Konfigurace zásad vzdálené relace:
 
-1. Přejděte do **šablony pro správu** > **součásti Windows** > **služby Vzdálená plocha**  >  **Hostitel relace vzdálené plochy** > **časové limity relací**.
-2. V panelu napravo, vyberte **nastavení časového limitu pro aktivní, ale nečinnosti relace služby Vzdálená plocha** zásad.
-3. Po zobrazení modálního dialogového okna změnit možnost zásad z **Nenakonfigurováno** k **povoleno** aktivovat zásady.
-4. V rozevírací nabídce pod možnost zásad, nastavit dobu, po kterou se má **4 hodiny**.
+1. Přejděte na **šablony pro správu** > **součásti**systémuWindows > Vzdálená plocha hostitel relace vzdálené plochyčasový > **limit relace**. > 
+2. Na panelu na pravé straně vyberte **nastavení časového limitu pro aktivní, ale nečinné zásady relací vzdálené plochy služby Vzdálená plocha** .
+3. Po zobrazení modálního okna změňte možnost zásady z **není nakonfigurovaná** na **povoleno** , aby se zásady aktivovaly.
+4. V rozevírací nabídce pod možností zásady nastavte dobu na **4 hodiny**.
 
-Relace vzdálené zásady můžete taky nakonfigurovat ručně spuštěním následujících příkazů:
+Zásady vzdálené relace můžete nakonfigurovat také ručně spuštěním následujících příkazů:
 
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
@@ -125,64 +125,64 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDi
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 7200000 /f
 ```
 
-### <a name="set-up-time-zone-redirection"></a>Nastavit časové pásmo přesměrování
+### <a name="set-up-time-zone-redirection"></a>Nastavení přesměrování časového pásma
 
-Časové pásmo přesměrování lze vynutit na úrovni zásad skupiny, protože všechny virtuální počítače ve fondu hostitelů jsou součástí stejné skupiny zabezpečení.
+Přesměrování časového pásma se dá vyhovět na úrovni Zásady skupiny, protože všechny virtuální počítače ve fondu hostitelů jsou součástí stejné skupiny zabezpečení.
 
-Chcete-li přesměrovat časová pásma:
+Postup přesměrování časových pásem:
 
-1. Na serveru, Active Directory, spusťte **konzoly pro správu zásad skupiny**.
-2. Rozbalte doménu a objekty zásad skupiny.
-3. Klikněte pravým tlačítkem myši **objektu zásad skupiny** , který jste vytvořili pro nastavení zásad skupiny a vyberte **upravit**.
-4. V **Editor správy zásad skupiny**, přejděte na **konfigurace počítače** > **zásady** > **správy Šablony** > **součásti Windows** > **služby Vzdálená plocha** > **hostitel relace vzdálené plochy**   >  **Zařízení a prostředků**.
-5. Povolit **povolí přesměrování při časové pásmo** nastavení.
+1. Na serveru služby Active Directory otevřete **Konzola pro správu zásad skupiny**.
+2. Rozbalíte své domény a Zásady skupiny objekty.
+3. Klikněte pravým tlačítkem myši na **objekt Zásady skupiny** , který jste vytvořili pro nastavení zásad skupiny, a vyberte **Upravit**.
+4. V **Editor pro správu zásad skupiny**přejděte na**zásady** >  > konfigurace počítače**šablony pro správu** > součástisystémuWindows >  .Služba > Vzdálená plocha**hostitel relace vzdálené plochy** > **přesměrování zařízení a prostředků**.
+5. Povolte nastavení **Povolit přesměrování časového pásma** .
 
-Tento příkaz můžete spustit také na hlavní bitová kopie pro přesměrování časová pásma:
+Tento příkaz můžete také spustit v hlavní imagi pro přesměrování časových pásem:
 
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableTimeZoneRedirection /t REG_DWORD /d 1 /f
 ```
 
-### <a name="disable-storage-sense"></a>Zakázání služby Sense úložiště
+### <a name="disable-storage-sense"></a>Zakázat rozpoznávání úložiště
 
-Pro hostitele relace virtuální plochy Windows, používající Windows 10 Enterprise nebo Windows 10 Enterprise více relací doporučujeme zakázat inteligentní úložiště. Inteligentní úložiště můžete zakázat v nabídce nastavení v části **úložiště**, jak je znázorněno na následujícím snímku obrazovky:
+Pro hostitele relací virtuálních počítačů s Windows, kteří používají více relací Windows 10 Enterprise nebo Windows 10 Enterprise, doporučujeme zakázat smysl úložiště. Smysl úložiště můžete zakázat v nabídce nastavení v části **úložiště**, jak je znázorněno na následujícím snímku obrazovky:
 
-![Snímek obrazovky nabídky úložiště v části nastavení. Možnost "Inteligentní úložiště" je vypnutý.](media/storagesense.png)
+![Snímek obrazovky nabídky úložiště v části nastavení. Možnost "rozpoznávání úložiště" je vypnuta.](media/storagesense.png)
 
-Spuštěním následujícího příkazu můžete také změnit nastavení v registru:
+Nastavení registru můžete změnit také spuštěním následujícího příkazu:
 
 ```batch
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
 ```
 
-### <a name="include-additional-language-support"></a>Zahrnout podpory dalších jazyků
+### <a name="include-additional-language-support"></a>Zahrnutí další jazykové podpory
 
-Tento článek nepopisuje, jak nakonfigurovat jazyk a místní podpory. Další informace najdete v následujících článcích:
+Tento článek nepopisuje, jak nakonfigurovat jazyk a regionální podporu. Další informace najdete v následujících článcích:
 
-- [Přidat jazyky do imagí Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
+- [Přidání jazyků do imagí Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
 - [Funkce na vyžádání](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
-- [Jazyk a oblast funkcí na vyžádání (zámořských)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+- [Funkce jazyků a oblastí na vyžádání (francouzské verze)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
 
 ### <a name="other-applications-and-registry-configuration"></a>Další aplikace a konfigurace registru
 
-Tato část zahrnuje aplikace a konfigurace operačního systému. Všechny konfigurace v této části se provádí prostřednictvím položky registru, které mohou být provedeny pomocí příkazového řádku a nástroje regedit.
+Tato část se zabývá konfigurací aplikace a operačního systému. Veškerá konfigurace v této části se provádí prostřednictvím položek registru, které je možné spouštět pomocí nástrojů příkazového řádku a nástroje Regedit.
 
 >[!NOTE]
->Osvědčené postupy můžete implementovat v konfiguraci se objekty zásad skupiny (GPO) nebo registru importy. Správce můžete zvolit jednu z možností na základě požadavků organizace.
+>Osvědčené postupy v konfiguraci můžete implementovat buď pomocí objektů Zásady skupiny (GPO) nebo importů registru. Správce může zvolit jednu z možností podle požadavků organizace.
 
-Pro zpětnou vazbu centra shromažďování telemetrických dat na Windows 10 Enterprise více relací spusťte tento příkaz:
+Pro shromažďování dat v centru Feedback v rámci více relací Windows 10 Enterprise můžete spustit tento příkaz:
 
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 3 /f
 ```
 
-Spusťte následující příkaz k vyřešení selhání aplikace Watson:
+Spusťte následující příkaz, který vyřeší chyby programu Watson:
 
 ```batch
 remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting
 ```
 
-Zadejte následující příkazy do editoru registru a opravte 5 podporu k řešení. Před povolením zásobníku vedle sebe, je nutné spustit příkazy.
+Zadáním následujících příkazů do editoru registru opravíte podporu řešení 5k. Aby bylo možné povolit souběžný zásobník, je nutné spustit tyto příkazy.
 
 ```batch
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxMonitors /t REG_DWORD /d 4 /f
@@ -194,38 +194,38 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxYResolution /t REG_DWORD /d 2880 /f
 ```
 
-## <a name="prepare-the-image-for-upload-to-azure"></a>Příprava bitové kopie nahrát do Azure
+## <a name="prepare-the-image-for-upload-to-azure"></a>Příprava image pro nahrání do Azure
 
-Po dokončení konfigurace a nainstalované všechny aplikace, postupujte podle pokynů v [Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) připravte si bitovou kopii.
+Po dokončení konfigurace a instalace všech aplikací postupujte podle pokynů v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX k nahrání do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) pro přípravu image.
 
-Po přípravě image pro nahrávání, ujistěte se, že virtuální počítač zůstane ve stavu vypnuto nebo uvolnění.
+Po přípravě image pro nahrání se ujistěte, že virtuální počítač zůstane ve stavu vypnuto nebo zrušeno.
 
-## <a name="upload-master-image-to-a-storage-account-in-azure"></a>Hlavní image odeslat do účtu úložiště v Azure
+## <a name="upload-master-image-to-a-storage-account-in-azure"></a>Nahrání hlavní image do účtu úložiště v Azure
 
-Tato část se týká pouze pokud hlavní bitová kopie bylo vytvořeno místně.
+Tato část platí jenom v případě, že se hlavní image vytvořila místně.
 
-Postupujte podle následujících pokynů zjistíte, jak nahrát hlavní image do účtu služby Azure storage. Pokud ještě nemáte účet úložiště Azure, postupujte podle pokynů v [v tomto článku](https://code.visualstudio.com/tutorials/static-website/create-storage) k jejímu vytvoření.
+V následujících pokynech se dozvíte, jak nahrát hlavní bitovou kopii do účtu služby Azure Storage. Pokud ještě nemáte účet úložiště Azure, vytvořte ho podle pokynů v [tomto článku](https://code.visualstudio.com/tutorials/static-website/create-storage) .
 
-1. Pokud jste tak dosud neučinili, převeďte na pevné image virtuálního počítače (VHD). Pokud bitovou kopii není převést na pevný, nelze úspěšně vytvořit image.
+1. Pokud jste to ještě neudělali, převeďte image virtuálního počítače (VHD) na pevnou. Pokud bitovou kopii nepřevedete na pevnou, nemůžete tuto image úspěšně vytvořit.
 
-2. Nahrání virtuálního pevného disku do kontejneru objektů blob v účtu úložiště. Můžete nahrát rychle s [nástroj Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/). Další informace o nástroji Průzkumník služby Storage najdete v tématu [v tomto článku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
+2. Nahrajte virtuální pevný disk do kontejneru objektů BLOB v účtu úložiště. Pomocí [nástroje Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/)můžete rychle nahrávat. Další informace o nástroji pro Průzkumník služby Storage najdete v [tomto článku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
-    ![Snímek obrazovky okna nástroje Microsoft Azure Storage Explorer vyhledávání. Je zaškrtnuto políčko "Nahrát VHD nebo vhdx soubory jako objekty BLOB stránky (doporučeno)".](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    ![Snímek obrazovky okna hledání nástroje pro Průzkumník služby Microsoft Azure Storage Zaškrtávací políčko nahrát soubory. VHD nebo VHDX jako objekty blob stránky (doporučeno) je zaškrtnuté.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
-3. Dále přejděte na web Azure Portal ve svém prohlížeči a vyhledejte "Image". Hledání by měla vést k **vytvoření image** stránce, jak je znázorněno na následujícím snímku obrazovky:
+3. V dalším kroku přejdete do Azure Portal v prohlížeči a vyhledáte "image". Vaše hledání by vám mělo vést k **Vytvoření** stránky s obrázkem, jak je znázorněno na následujícím snímku obrazovky:
 
-    ![Snímek obrazovky stránky vytvořit image na webu Azure portal, naplní se ukázkové hodnoty pro bitovou kopii.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
+    ![Snímek obrazovky se stránkou vytvořit obrázek v Azure Portal vyplněný příklady hodnot pro obrázek.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
 
-4. Po vytvoření image, by se zobrazit oznámení jako na následujícím snímku obrazovky:
+4. Po vytvoření image by se na následujícím snímku obrazovky měla zobrazit oznámení, jako je třeba ta:
 
-    ![Snímek obrazovky oznámení "byla úspěšně vytvořena image".](media/1f41b7192824a2950718a2b7bb9e9d69.png)
+    ![Snímek obrazovky s oznámením o úspěšném vytvoření obrázku](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když máte image, můžete vytvořit nebo aktualizovat hostitele fondy. Další informace o tom, jak vytvořit a aktualizovat hostitele fondy, najdete v následujících článcích:
+Teď, když máte image, můžete vytvořit nebo aktualizovat fondy hostitelů. Další informace o tom, jak vytvořit a aktualizovat fondy hostitelů, najdete v následujících článcích:
 
-- [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru](create-host-pools-arm-template.md)
-- [Kurz: Vytvoření fondu hostitele pomocí webu Azure Marketplace](create-host-pools-azure-marketplace.md)
-- [Vytvoření hostitele fondu pomocí Powershellu](create-host-pools-powershell.md)
-- [Nastavení sdílené složky profilu uživatele pro fond hostitele](create-host-pools-user-profile.md)
-- [Konfigurace metody vyrovnávání zatížení virtuálního klienta Windows](configure-host-pool-load-balancing.md)
+- [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manager](create-host-pools-arm-template.md)
+- [Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](create-host-pools-azure-marketplace.md)
+- [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md)
+- [Vytvoření kontejneru profilů pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md)
+- [Konfigurace metody vyrovnávání zatížení pro virtuální počítače s Windows](configure-host-pool-load-balancing.md)

@@ -1,61 +1,61 @@
 ---
-title: prohledání analýzy provozu – Azure Search implementovat
-description: Povolení analýzy provozu vyhledávání pro službu Azure Search k přidání telemetrické a uživatelem iniciované události do souborů protokolu.
+title: implementace analýzy provozu vyhledávání – Azure Search
+description: Povolení služby Search Analytics pro Azure Search k přidání událostí telemetrie a uživatelem iniciované události do souborů protokolu.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b15ae30151b22509a78b9a39d258991363a05e5b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: bb12ed2f18df100ab3f679e7a8a3ef1e7c1aca45
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295423"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647803"
 ---
-# <a name="implement-search-traffic-analytics-in-azure-search"></a>Ve službě Azure Search implementovat prohledání analýzy provozu
-Prohledání analýzy provozu je vzor pro implementování smyčka zpětné vazby pro vaši vyhledávací službu. Tento model popisuje potřebná data a jak ji pomocí Application Insights, monitorování služeb ve více platformách Špička v oboru shromažďovat.
+# <a name="implement-search-traffic-analytics-in-azure-search"></a>Implementace vyhledávání analýzy provozu v Azure Search
+Prohledat analýzu provozu je vzor pro implementaci smyčky zpětné vazby pro vaši vyhledávací službu. Tento model popisuje potřebná data a jejich shromažďování pomocí Application Insights, což je oborový vedoucí služby pro monitorování služeb na různých platformách.
 
-Prohledání analýzy provozu vám umožní získat přehled o vaší vyhledávací služby a odhalit nové poznatky o vašich uživatelích a jejich chování. Tím, že data o co vaši uživatelé vybrat, je možné rozhodnutí, která ještě vylepšit prostředí pro vyhledávání a vraťte se zpět při výsledky nejsou, co neočekává.
+Prohledat analýzu provozu vám umožní získat přehled o službě vyhledávání a vysílat přehledy o vašich uživatelích a jejich chování. Díky datům o tom, co vaši uživatelé zvolí, je možné učinit rozhodnutí, která ještě více vylepší možnosti vyhledávání, a vrátit se zpátky, pokud výsledky nejsou očekávané.
 
-Služba Azure Search nabízí řešení telemetrie, která se integruje s Azure Application Insights a Power BI poskytují podrobné monitorování a sledování. Interakce s Azure Search je pouze prostřednictvím rozhraní API, telemetrická data musí být implementované vývojáři pomocí služby search, postupujte podle pokynů na této stránce.
+Azure Search nabízí řešení telemetrie, které integruje službu Azure Application Insights a Power BI, aby poskytovala podrobné sledování a sledování. Vzhledem k tomu, že interakce s Azure Search je pouze prostřednictvím rozhraní API, telemetrie musí implementovat vývojáři pomocí vyhledávání, a to podle pokynů na této stránce.
 
-## <a name="identify-relevant-search-data"></a>Identifikujte příslušné vyhledávání dat
+## <a name="identify-relevant-search-data"></a>Identifikujte relevantní hledaná data
 
-Pokud chcete, aby metriky užitečná hledání, je nutné protokolovat některé signály od uživatelů vyhledávací aplikaci. Tyto signály místo obsah, který uživatelé mají zájem a že považují za relevantní pro jejich potřeby.
+Aby bylo možné využít metriky hledání, je nutné protokolovat některé signály od uživatelů aplikace pro hledání. Tyto signály označují obsah, o který si uživatelé zajímá a které považují za důležité k jejich potřebám.
 
-Existují dva signály, které potřebuje prohledání analýzy provozu:
+Existují dva signály hledání Analýza provozu potřeby:
 
-1. Hledat události generovaným uživateli: pouze zajímavé dotazy vyhledávání iniciovanou uživatelem. Žádostí o hledání použitých k naplnění omezující vlastnosti, další obsah nebo interní informace, nejsou důležité a zkosení a usměrňovat výsledky.
+1. Uživatelem vygenerované události vyhledávání: jenom vyhledávací dotazy iniciované uživatelem jsou zajímavé. Žádosti o vyhledávání, které se použily k naplnění omezujících podmínek, dalšího obsahu nebo jakýchkoli interních informací, nejsou důležité a jejich výsledky se zkosí a posunou.
 
-2. Události kliknutí generovaným uživateli: Pomocí kliknutí v tomto dokumentu označujeme uživatel výběrem konkrétní hledání výsledku vrácený z vyhledávacího dotazu. Kliknutím obecně znamená, že dokument je výsledkem relevantní pro konkrétní vyhledávací dotaz.
+2. Události kliknutí generované uživatelem: Kliknutím v tomto dokumentu na něj odkazujeme na uživatele, který vybírá konkrétní výsledky hledání vrácené z vyhledávacího dotazu. V takovém případě se v případě konkrétního vyhledávacího dotazu obvykle jedná o relevantní výsledek.
 
-Díky propojení hledání a klikněte na události s id korelace, je možné k analýze chování uživatelů ve vaší aplikaci. Tyto přehledy jsou možné dosáhnout s pouze protokoly přenosů služby search.
+Když propojíte hledání a kliknete na události s ID korelace, je možné analyzovat chování uživatelů ve vaší aplikaci. Tyto přehledy hledání neumožňují získat pouze protokoly provozu hledání.
 
-## <a name="add-search-traffic-analytics"></a>Přidat prohledání analýzy provozu
+## <a name="add-search-traffic-analytics"></a>Přidat analýzu provozu hledání
 
-Signály uvedených v předchozí části musí shromáždit z vyhledávací aplikaci, jak s ním uživatel pracuje. Application Insights je rozšiřitelná řešení pro monitorování, dostupné pro více platforem s možností flexibilní instrumentace. Použití služby Application Insights vám umožní využít vyhledávání sestav Power BI vytvoří služba Azure Search snazší analýzu dat.
+Signály uvedené v předchozí části se musí shromažďovat z aplikace pro hledání, když s ním uživatel pracuje. Application Insights je rozšiřitelné řešení monitorování, které je dostupné pro více platforem s flexibilními možnostmi instrumentace. Využití Application Insights umožňuje využít sestavy Power BIho vyhledávání, které vytvořila Azure Search, aby bylo možné snadněji analyzovat data.
 
-V [portál](https://portal.azure.com) stránku pro službu Azure Search, okno prohledání analýzy provozu obsahuje tahák pro postup dle tohoto modelu telemetrická data. Můžete také vybrat nebo vytvořte prostředek Application Insights a zobrazit nezbytná data vše na jednom místě.
+Na stránce [portálu](https://portal.azure.com) pro vaši službu Azure Search okno hledání Analýza provozu obsahuje list tahák pro následující vzor telemetrie. Můžete také vybrat nebo vytvořit prostředek Application Insights a zobrazit potřebná data na jednom místě.
 
-![Pokyny pro analýzu provozu hledání][1]
+![Pokyny pro hledání Analýza provozu][1]
 
-## <a name="1---select-a-resource"></a>1 - vybrat prostředek
+## <a name="1---select-a-resource"></a>1\. výběr prostředku
 
-Musíte vybrat prostředek Application Insights nebo, pokud již nemáte vytvořit. Můžete použít prostředek, který se už používá pro přihlášení vyžaduje vlastní události.
+Musíte vybrat prostředek Application Insights, který se má použít, nebo ho vytvořit, pokud ho ještě nemáte. K protokolování požadovaných vlastních událostí můžete použít prostředek, který se už používá.
 
-Při vytváření nového prostředku Application Insights, všechny typy aplikací jsou platné pro tento scénář. Vyberte ten, který nejlépe vyhovuje požadavkům platformu, kterou používáte.
+Při vytváření nového prostředku Application Insights jsou všechny typy aplikací platné pro tento scénář. Vyberte ten, který nejlépe odpovídá platformě, kterou používáte.
 
-Budete potřebovat Instrumentační klíč pro vytvoření klienta telemetrie pro vaši aplikaci. Můžete ho získat na řídicím panelu portálu služby Application Insights a můžete ho získat na stránce Analýza provozu vyhledávání vyberte instanci, kterou chcete použít.
+Pro vytvoření klienta telemetrie pro vaši aplikaci potřebujete klíč instrumentace. Můžete ji získat z řídicího panelu portálu Application Insights, nebo ji můžete získat na stránce hledání Analýza provozu a vybrat instanci, kterou chcete použít.
 
-## <a name="2---add-instrumentation"></a>2 – přidání instrumentace
+## <a name="2---add-instrumentation"></a>2\. Přidání instrumentace
 
-Tato fáze je, kde jste instrumentovali vlastní vyhledávací aplikaci pomocí prostředku Application Insights vytvořili v předchozím kroku. Existují čtyři kroky k tomuto procesu:
+V této fázi si můžete instrumentovat svoji vlastní aplikaci pro hledání pomocí Application Insights prostředku vytvořeného v předchozím kroku. Tento postup obsahuje čtyři kroky:
 
-**Krok 1: Vytvoření klienta telemetrie** jedná se o objekt, který odesílá události do prostředku Application Insights.
+**Krok 1: Vytvořte klienta** telemetrie. Jedná se o objekt odesílající události do prostředku Application Insights.
 
 *C#*
 
@@ -71,9 +71,9 @@ Tato fáze je, kde jste instrumentovali vlastní vyhledávací aplikaci pomocí 
     window.appInsights=appInsights;
     </script>
 
-Pro ostatní jazyky a platformy, najdete v úplných [seznamu](https://docs.microsoft.com/azure/application-insights/app-insights-platforms).
+Další jazyky a platformy najdete v [seznamu](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)úplný.
 
-**Krok 2: ID vyhledávání pro korelace požadavku** ke koordinaci požadavků hledání pomocí kliknutí, je potřeba mít id korelace, které se týkají těchto dvou různých událostí. Azure Search poskytuje Id hledání při požadavku s hlavičkou:
+**Krok 2: Vyžádejte si ID hledání korelace** pro korelaci žádostí o vyhledávání s kliknutími, je nutné mít ID korelace, které se vztahuje na tyto dvě odlišné události. Azure Search vám poskytne ID hledání, když si ho vyžádáte s hlavičkou:
 
 *C#*
 
@@ -94,18 +94,18 @@ Pro ostatní jazyky a platformy, najdete v úplných [seznamu](https://docs.micr
     request.setRequestHeader("Access-Control-Expose-Headers", "x-ms-azs-searchid");
     var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
-**Krok 3: Hledat události protokolu**
+**Krok 3: Události prohledávání protokolu**
 
-Pokaždé, když požadavek hledání vydává uživatelem, je zapotřebí přihlásit, který jako vyhledávání událostí s následující schéma na vlastní události Application Insights:
+Pokaždé, když uživatel vydává požadavek na hledání, byste se měli přihlásit jako událost hledání s následujícím schématem na Application Insights vlastní události:
 
-**SearchServiceName**: název vyhledávací služby (řetězec) **SearchId**: Jedinečný identifikátor (guid) vyhledávací dotaz (nastane v odpovědi na vyhledávání) **IndexName**: indexu služby vyhledávání (string) možné dotazovat **QueryTerms**: hledané termíny (řetězec) zadané uživatelem **ResultCount**: (int). počet dokumentů, které byly vráceny (nastane v odpovědi na vyhledávání)  **ScoringProfile**: název bodovací profil používá, pokud existuje (string)
+**SearchServiceName**: (String) název služby vyhledávání **searchid**: (GUID) jedinečný identifikátor vyhledávacího dotazu (v odpovědi na hledání) **indexer**: (String) vyhledávací služba pro dotazování **QueryTerms**: (String) Search výrazy zadané uživatelem **element resultcount nastavený**: (int) počet vrácených dokumentů (v odpovědi na hledání) **ScoringProfile**: (v řetězci) se použije název používaného profilu vyhodnocování (pokud nějaký existuje).
 
 > [!NOTE]
-> Počet požadavků na dotazy uživatelů vygenerované přidáním $count = true vašemu vyhledávacímu dotazu. Další informace najdete v článku [zde](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)
+> Počet požadavků u dotazů generovaných uživatelem přidáním $count = true do vyhledávacího dotazu. Další informace najdete [tady](https://docs.microsoft.com/rest/api/searchservice/search-documents#request) .
 >
 
 > [!NOTE]
-> Mějte na paměti se protokolovat jenom vyhledávací dotazy, které jsou generovány podle uživatele.
+> Nezapomeňte pouze dotazy na hledání v protokolu, které jsou generovány uživateli.
 >
 
 *C#*
@@ -131,14 +131,14 @@ Pokaždé, když požadavek hledání vydává uživatelem, je zapotřebí přih
     ScoringProfile: <scoring profile used>
     });
 
-**Krok 4: Klikněte na tlačítko Přihlásit události**
+**Krok 4: Události kliknutí na protokol**
 
-Pokaždé, když uživatel klikne na dokumentu, který je signál, který musíte být přihlášeni k analýze vyhledávání. Použití vlastních událostí Application Insights k protokolování těchto událostí s následující schéma:
+Pokaždé, když uživatel klikne na dokument, je signál, který musí být protokolován pro účely analýzy vyhledávání. Pomocí Application Insights vlastní události Zaprotokolujte tyto události s následujícím schématem:
 
-**ServiceName**: název vyhledávací služby (řetězec) **SearchId**: Jedinečný identifikátor (guid) související vyhledávací dotaz **DocId**: identifikátor dokumentu (řetězec) **pozice**: stránka s výsledky (int) řád dokumentu v hledání
+**ServiceName**: (String) název vyhledávací služby **searchid**: (GUID) jedinečný identifikátor relačního vyhledávacího dotazu **fulltextovém identifikátorů docid**: (String) umístění identifikátoru dokumentu **pozice**: (int) v dokumentu na stránce výsledků hledání
 
 > [!NOTE]
-> Pozice odkazuje na mohutnosti pořadí ve vaší aplikaci. Můžete libovolně nastavit toto číslo je vždy stejný, aby pro porovnání.
+> Pozice odkazuje na pořadí mohutnosti ve vaší aplikaci. Můžete nastavit toto číslo, pokud je vždy stejné, aby bylo možné porovnat.
 >
 
 *C#*
@@ -160,44 +160,44 @@ Pokaždé, když uživatel klikne na dokumentu, který je signál, který musít
         Rank: <clicked document position>
     });
 
-## <a name="3---analyze-in-power-bi"></a>3 – analýza v Power BI
+## <a name="3---analyze-in-power-bi"></a>3\. analýza v Power BI
 
-Po instrumentovat aplikaci a ověřit, že je vaše aplikace správně připojené k Application Insights, můžete použít předdefinované šablony vytvořené službou Azure Search pro Power BI desktopu. 
+Po instrumentaci aplikace a ověření, že je aplikace správně připojená k Application Insights, můžete použít předdefinovanou šablonu vytvořenou Azure Search pro Power BI Desktop. 
 
-Azure search poskytuje monitorování [balíček obsahu Power BI](https://app.powerbi.com/getdata/services/azure-search) tak, aby můžete analyzovat data protokolů. T balíček obsahu přidá předdefinované grafů a tabulek, které jsou užitečné pro analýzu další data zachycená pro prohledání analýzy provozu. Další informace najdete v tématu [stránce nápovědy balíčku obsahu](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/). 
+Azure Search poskytuje monitorování [Power BI balíčku obsahu](https://app.powerbi.com/getdata/services/azure-search) , abyste mohli analyzovat data protokolu. Sada Content Pack T přidává předdefinované grafy a tabulky, které jsou užitečné při analýze dalších dat zaznamenaných pro vyhledávání analýz provozu. Další informace najdete v tématu [stránce nápovědy balíčku obsahu](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/). 
 
-1. Ve službě Azure vyhledávání v levém navigačním podokně řídicí panel **nastavení**, klikněte na tlačítko **Analýza provozu vyhledávání**.
+1. V levém navigačním podokně Azure Search řídicího panelu vyberte v části **Nastavení**možnost **Prohledat analýzu provozu**.
 
-2. Na **Analýza provozu vyhledávání** stránce, v kroku 3, klikněte na tlačítko **získat Power BI Desktopu** instalace Power BI.
+2. Na stránce **Prohledat analýzu provozu** v kroku 3 klikněte na **získat Power BI Desktop** a nainstalujte Power BI.
 
-   ![Získání sestav Power BI](./media/search-traffic-analytics/get-use-power-bi.png "sestavy získat Power BI")
+   ![Získání sestav Power BI](./media/search-traffic-analytics/get-use-power-bi.png "Získání sestav Power BI")
 
-2. Klikněte na stejné stránce **sestavu stáhnout PowerBI**.
+2. Na stejné stránce klikněte na **Stáhnout sestavu PowerBI**.
 
-3. Sestava se otevře v Power BI Desktopu a zobrazí se výzva k připojení k Application Insights. Tato informace najdete v Azure stránek portálu pro vás prostředku Application Insights.
+3. Sestava se otevře v Power BI Desktop a zobrazí se výzva, abyste se připojili k Application Insights. Tyto informace můžete najít na stránce Azure Portal Application Insights prostředku.
 
-   ![Připojte se k Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "připojení k Application Insights")
+   ![Připojení k Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Připojení k Application Insights")
 
-4. Klikněte na tlačítko **zatížení**.
+4. Klikněte na **načíst**.
 
-Sestava obsahuje grafy a informovaněji rozhodovat v tabulkách, které vám pomůžou zlepšit výkon vyhledávání a závažnosti.
+Sestava obsahuje grafy a tabulky, které vám pomůžou dělat podrobnější rozhodnutí o vylepšení výkonu a relevance hledání.
 
-Metriky zahrnuty následující položky:
+Metriky obsahují následující položky:
 
-* Klikněte na tlačítko prostřednictvím frekvence (KONT): poměr uživatelů, kteří kliknutím na počet celkový počet prohledávání určitého dokumentu.
-* Vyhledávání bez kliknutí: podmínky pro nejčastější dotazy, které registrují bez kliknutí
-* Většina kliknutí na dokumenty: nejvíce kliknutí na dokumenty podle ID za posledních 24 hodin, 7 dní až 30 dní.
-* Dvojice oblíbený termín dokumentu: podmínky, které vyplývají ve stejném dokumentu kliknutí, seřazené podle kliknutí.
-* Čas na: kliknutí kterých rozdělit podle času od vyhledávací dotaz
+* Klikněte na rychlost (centrum): poměr uživatelů, kteří na konkrétní dokument kliknou, na celkový počet hledání.
+* Hledání bez kliknutí: podmínka pro nejčastější dotazy, které registrují žádné kliknutí.
+* Nejpoužívanější dokumenty: nejvíce kliknuli dokumenty podle ID za posledních 24 hodin, 7 dní a 30 dnů.
+* Oblíbené páry termínů: podmínky, které mají za následek kliknutí na stejný dokument, seřazené kliknutím na tlačítko.
+* Doba, po kterou se má kliknout: po dobu od vyhledávacího dotazu se odblokuje na sebe.
 
-Následující snímek obrazovky ukazuje předdefinovaných sestav a grafů pro analýzu hledání analýzu provozu.
+Následující snímek obrazovky zobrazuje předdefinované sestavy a grafy pro analýzu analýz provozu vyhledávání.
 
-![Řídicí panel Power BI pro službu Azure Search](./media/search-traffic-analytics/AzureSearch-PowerBI-Dashboard.png "řídicí panel Power BI pro službu Azure Search")
+![Řídicí panel Power BI pro Azure Search](./media/search-traffic-analytics/AzureSearch-PowerBI-Dashboard.png "Řídicí panel Power BI pro Azure Search")
 
 ## <a name="next-steps"></a>Další postup
-Instrumentujte vaše vyhledávací aplikace k získání dat výkonné a přehledné informace o vaší vyhledávací služby.
+Instrumentujte svoji vyhledávací aplikaci, abyste získali výkonná a přehledné data o vaší vyhledávací službě.
 
-Další informace najdete na [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) a přejděte [stránce s cenami](https://azure.microsoft.com/pricing/details/application-insights/) získat další informace o jejich různých úrovní služeb.
+Další informace o [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/application-insights/) , kde najdete další informace o různých úrovních služeb.
 
 Další informace o vytváření úžasných sestav. Zobrazit [Začínáme s Power BI Desktopu](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) podrobnosti
 

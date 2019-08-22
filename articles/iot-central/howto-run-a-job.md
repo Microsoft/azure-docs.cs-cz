@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 298770b1b2da816ddef9154fafb20d7c6cb82df3
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 6c18a244ceae2ccd9a536abeb6bc2d85760bb0a6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849043"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875913"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Vytvoření a spuštění úlohy v aplikaci Azure IoT Central
 
@@ -72,7 +72,7 @@ Chcete-li zkopírovat existující úlohu, kterou jste vytvořili, vyberte ji na
 
 Po vytvoření úlohy se sloupec **stav** aktualizuje o nejnovější stavovou zprávu úlohy. Hodnoty možných stavů jsou uvedené v následující tabulce:
 
-| Zpráva o stavu       | Význam stavu                                          |
+| Stavová zpráva       | Význam stavu                                          |
 | -------------------- | ------------------------------------------------------- |
 | Dokončeno            | Tato úloha se spustila na všech zařízeních.              |
 | Selhalo               | Tato úloha se nezdařila a na zařízeních se nedokončilo úplné spuštění.  |
@@ -82,7 +82,7 @@ Po vytvoření úlohy se sloupec **stav** aktualizuje o nejnovější stavovou z
 
 Stavová zpráva je následován přehledem zařízení v úloze. Následující tabulka uvádí možné hodnoty stavu zařízení:
 
-| Zpráva o stavu       | Význam stavu                                                     |
+| Stavová zpráva       | Význam stavu                                                     |
 | -------------------- | ------------------------------------------------------------------ |
 | Úspěch            | Počet zařízení, na kterých byla úloha úspěšně provedena.       |
 | Selhalo               | Počet zařízení, na kterých se úloha nedokázala spustit.       |
@@ -91,7 +91,7 @@ Stavová zpráva je následován přehledem zařízení v úloze. Následující
 
 Pokud chcete zobrazit stav úlohy a všechna postižená zařízení, vyberte úlohu. Pokud chcete stáhnout soubor. csv, který obsahuje podrobnosti úlohy, včetně seznamu zařízení a jejich stavových hodnot, vyberte **Stáhnout podrobnosti o úloze**. Vedle každého názvu zařízení se zobrazí jedna z následujících stavových zpráv:
 
-| Zpráva o stavu       | Význam stavu                                                                |
+| Stavová zpráva       | Význam stavu                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
 | Dokončeno            | Úloha se spustila na tomto zařízení.                                     |
 | Selhalo               | U tohoto zařízení se nepovedlo spustit úlohu. V této chybové zprávě se zobrazí další informace.  |

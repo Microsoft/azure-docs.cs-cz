@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 13eef9beb6c86683c56efc744dc42b4614b84fe9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: b813ef89bb1a55f769d0ea2391855ba5d671c140
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946486"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648798"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob Storage
 
@@ -29,9 +29,11 @@ Pokud si to chcete vyzkoušet hned teď, podívejte se na některý z těchto č
 
 |Pokud chcete použít tento nástroj:    |Viz tento článek: |
 |--|-|
-|Azure Portal    |[Rychlé zprovoznění: Směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|portál Azure    |[Rychlé zprovoznění: Směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[Rychlé zprovoznění: Směrování událostí úložiště do webového koncového bodu pomocí PowerShellu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[Rychlé zprovoznění: Směrování událostí úložiště do webového koncového bodu pomocí Azure CLI](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+
+Pokud má váš účet hierarchický obor názvů, v tomto kurzu se dozvíte, jak propojit dohromady Event Grid předplatné, funkci Azure a [úlohu](https://docs.azuredatabricks.net/user-guide/jobs.html) v Azure Databricks: [Návodu K aktualizaci rozdílové tabulky](data-lake-storage-events.md)datacihly použijte Azure Data Lake Storage Gen2 události.
 
 ## <a name="the-event-model"></a>Model události
 
@@ -95,7 +97,7 @@ Aplikace, které zpracovávají události služby Blob Storage, by měly dodržo
 > * Chcete-li zajistit, aby se **událost Microsoft. Storage. BlobCreated** aktivovala pouze v případě, že je objekt blob bloku zcela potvrzen, vyfiltrujte `CopyBlob`událost pro `PutBlockList` volání `FlushWithClose` , `PutBlob`nebo REST API volání. Tato volání rozhraní API aktivují událost **Microsoft. Storage. BlobCreated** až po úplném potvrzení dat do objektu blob bloku. Další informace o tom, jak vytvořit filtr, najdete v tématu [filtrování událostí pro Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o Event Grid a podělte se o události služby Blob Storage:
 

@@ -4,14 +4,14 @@ description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 08/06/2019
+ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ec6e58438e7be953e1f672fb815ff3f68a7f252
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839253"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650419"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -634,7 +634,7 @@ V předchozím příkladu vrátí objekt v následujícím formátu:
 
 ## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
+`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
 Vrací jedinečný identifikátor prostředku. Tuto funkci použít, když název prostředku je nejednoznačný nebo není zřízené v rámci stejné šablony. 
 
@@ -646,43 +646,46 @@ Vrací jedinečný identifikátor prostředku. Tuto funkci použít, když náze
 | resourceGroupName |Ne |řetězec |Výchozí hodnota je aktuální skupinu prostředků. Tuto hodnotu zadejte, když budete chtít načíst prostředek v jiné skupině prostředků. |
 | Typ prostředku |Ano |řetězec |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
 | resourceName1 |Ano |řetězec |Název prostředku. |
-| resourceName2 |Ne |řetězec |Další zdroje segment názvu Pokud vnořených prostředků. |
+| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+
+Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
 ### <a name="return-value"></a>Návratová hodnota
 
 Tento identifikátor se vrátí v následujícím formátu:
 
-```json
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-```
+**/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}**
+
 
 ### <a name="remarks"></a>Poznámky
 
-Při použití s nasazením `resourceId()` na [úrovni](deploy-to-subscription.md)předplatného může funkce načíst jenom ID prostředků nasazených na dané úrovni. Můžete například získat ID definice zásady nebo definice role, ale ne ID účtu úložiště. U nasazení do skupiny prostředků má opak hodnotu true. Nemůžete získat ID prostředku nasazeného na úrovni předplatného.
+Počet parametrů, které zadáte, se liší v závislosti na tom, zda se jedná o prostředek nadřazeného nebo podřízeného prostředku a zda je prostředek ve stejném předplatném nebo skupině prostředků.
 
-Hodnoty parametrů, které jste zadali závisí na tom, jestli prostředek je ve stejného předplatného a skupiny prostředků jako aktuální nasazení. Pokud chcete získat ID prostředku účtu úložiště ve stejném předplatném a skupině prostředků, použijte:
-
-```json
-"[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
-```
-
-Chcete-li získat ID prostředku účtu úložiště ve stejném předplatném, ale jinou skupinu prostředků, použijte:
+Pokud chcete získat ID prostředku nadřazeného prostředku ve stejném předplatném a skupině prostředků, zadejte typ a název prostředku.
 
 ```json
-"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+"[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-Pokud chcete získat ID prostředku účtu úložiště v jiném předplatném a skupině prostředků, použijte:
+Pokud chcete získat ID prostředku pro podřízený prostředek, věnujte pozornost počtu segmentů v typu prostředku. Zadejte název prostředku pro každý segment typu prostředku. Název segmentu odpovídá prostředku, který existuje pro danou část hierarchie.
+
+```json
+"[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
+```
+
+Pokud chcete získat ID prostředku ve stejném předplatném, ale v jiné skupině prostředků, zadejte název skupiny prostředků.
+
+```json
+"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
+```
+
+Pokud chcete získat ID prostředku v jiném předplatném a skupině prostředků, zadejte ID předplatného a název skupiny prostředků.
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Chcete-li získat ID prostředku pro databázi v jiné skupině prostředků, použijte:
-
-```json
-"[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
-```
+Při použití s nasazením `resourceId()` na [úrovni](deploy-to-subscription.md)předplatného může funkce načíst jenom ID prostředků nasazených na dané úrovni. Můžete například získat ID definice zásady nebo definice role, ale ne ID účtu úložiště. U nasazení do skupiny prostředků má opak hodnotu true. Nemůžete získat ID prostředku nasazeného na úrovni předplatného.
 
 Pokud chcete získat ID prostředku na úrovni předplatného při nasazení v oboru předplatného, použijte:
 
@@ -810,7 +813,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
 * Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).

@@ -1,13 +1,13 @@
 ---
-title: Vyberte odkaz OData – Azure Search
-description: Referenční dokumentace jazyka OData pro výběr syntaxe v dotazech Azure Search.
+title: Odkaz na výběr OData – Azure Search
+description: Referenční dokumentace jazyka OData pro příkaz SELECT syntax v Azure Searchch dotazech.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: Brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9383ae725fffac55854488ffbc6aeb161ae7e0c2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 64e9ad75d88f595ab5def6fe8b63fee9407ae0fe
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079675"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647878"
 ---
-# <a name="odata-select-syntax-in-azure-search"></a>Syntaxe OData $select ve službě Azure Search
+# <a name="odata-select-syntax-in-azure-search"></a>Syntaxe $select OData v Azure Search
 
- Můžete použít [OData **$select** parametr](query-odata-filter-orderby-syntax.md) zvolit pole, která chcete zahrnout do výsledků hledání z Azure Search. Tento článek popisuje syntaxi **$select** podrobně. Další obecné informace o tom, jak používat **$select** při zobrazení výsledků hledání, najdete v článku [výsledků jak pracovat s hledáním ve službě Azure Search](search-pagination-page-layout.md).
+ Pomocí [parametru **$Select** OData](query-odata-filter-orderby-syntax.md) můžete zvolit, která pole se mají zahrnout do výsledků hledání z Azure Search. V tomto článku se podrobně popisuje syntaxe **$Select** . Obecnější informace o tom, jak používat **$Select** při prezentaci výsledků hledání, najdete [v tématu Jak pracovat s výsledky hledání v Azure Search](search-pagination-page-layout.md).
 
 ## <a name="syntax"></a>Syntaxe
 
-**$Select** parametr určuje pole, která pro každý dokument jsou vráceny v sadě výsledků dotazu. Následující EBNF ([Extended Backus-Naur – formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiky **$select** parametr:
+Parametr **$Select** určuje, která pole pro každý dokument jsou vrácena v sadě výsledků dotazu. Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro parametr **$Select** :
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -42,30 +42,30 @@ select_expression ::= '*' | field_path(',' field_path)*
 field_path ::= identifier('/'identifier)*
 ```
 
-Diagramu interaktivní syntaxe je také k dispozici:
+K dispozici je také diagram interaktivní syntaxe:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro službu Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [Diagram syntaxe OData pro Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> Zobrazit [referenční příručka syntaxe výrazů OData pro službu Azure Search](search-query-odata-syntax-reference.md) pro dokončení EBNF.
+> Kompletní EBNF najdete v referenčních informacích k [syntaxi výrazu OData pro Azure Search](search-query-odata-syntax-reference.md) .
 
-**$Select** parametr je k dispozici ve dvou formách:
+Parametr **$Select** se vyskytuje ve dvou formách:
 
-1. Jednu hvězdičku (`*`), což indikuje, že všechny zobrazitelná pole by měla být vrácena, nebo
-1. Čárkou oddělený seznam cest pole, určení polí, která by měla vrátit.
+1. Jedna hvězdička (`*`), která označuje, že by měla být vrácena všechna pole k dispozici, nebo
+1. Čárkami oddělený seznam cest polí a určení, která pole se mají vrátit
 
-Při použití druhý formulář, může určit pouze zobrazitelná pole v seznamu.
+Při použití druhého formuláře můžete v seznamu zadat jenom pole, která lze načíst.
 
-Pokud uvedete seznam komplexní pole bez explicitním zadáním dílčích polí, všechny zobrazitelná dílčí pole součástí sady výsledků dotazu. Předpokládejme například, indexu má `Address` pole `Street`, `City`, a `Country` dílčí pole, které jsou všechny retrievable. Pokud zadáte `Address` v **$select**, výsledky dotazu bude obsahovat všechny tři dílčí pole.
+Pokud vypíšete komplexní pole bez explicitního určení jeho dílčích polí, budou do sady výsledků dotazu zahrnuty všechna průchozí dílčí pole. Předpokládejme například, že `Address` váš index obsahuje pole s `Street`, `City`a `Country` podpole, která lze načíst. Pokud zadáte `Address` v **$Select**, budou výsledky dotazu zahrnovat všechna tři dílčí pole.
 
 ## <a name="examples"></a>Příklady
 
-Zahrnout `HotelId`, `HotelName`, a `Rating` pole nejvyšší úrovně ve výsledcích, stejně jako `City` dílčí pole `Address`:
+`HotelName` `Rating` Dovýsledků`Address`uveďte pole `HotelId`, a nejvyšší úrovně a také `City` dílčí pole pro:
 
     $select=HotelId, HotelName, Rating, Address/City
 
-Výsledek příklad může vypadat takto:
+Příklad výsledku může vypadat takto:
 
 ```json
 {
@@ -78,11 +78,11 @@ Výsledek příklad může vypadat takto:
 }
 ```
 
-Zahrnout `HotelName` nejvyšší úrovně pole ve výsledcích, stejně jako všechny dílčí pole `Address`a `Type` a `BaseRate` dílčí pole všech objektů `Rooms` kolekce:
+`BaseRate` `Address` `Type` Do výsledků zahrňte pole `Rooms` nejvyšší úrovně a také všechna dílčí pole a a dílčí pole jednotlivých objektů v kolekci: `HotelName`
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 
-Výsledek příklad může vypadat takto:
+Příklad výsledku může vypadat takto:
 
 ```json
 {
@@ -108,9 +108,9 @@ Výsledek příklad může vypadat takto:
 }
 ```
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
-- [Jak pracovat s hledání výsledků ve službě Azure Search](search-pagination-page-layout.md)
-- [Přehled o výraz jazyka OData pro službu Azure Search](query-odata-filter-orderby-syntax.md)
-- [Reference k syntaxi výrazů OData pro službu Azure Search](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;rozhraní REST API služby Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Jak pracovat s výsledky hledání v Azure Search](search-pagination-page-layout.md)
+- [Přehled jazyka výrazů OData pro Azure Search](query-odata-filter-orderby-syntax.md)
+- [Referenční dokumentace syntaxe výrazu OData pro Azure Search](search-query-odata-syntax-reference.md)
+- [Hledat dokumenty &#40;Azure Search REST API služby&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

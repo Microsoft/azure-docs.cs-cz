@@ -1,71 +1,71 @@
 ---
-title: Nastavení sdílené složky profilu uživatele pro fond hostitele Windows Virtual Desktop Preview – Azure
-description: Jak vytvořit kontejner FSLogix profil pro fond hostitele Windows virtuální plochy, ve verzi Preview.
+title: Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí sdílené složky založené na virtuálním počítači – Azure
+description: Jak nastavit kontejner profilu FSLogix pro fond hostitelů ve verzi Preview virtuálních počítačů s Windows pomocí sdílené složky založené na virtuálním počítači.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 692902c28b336dd46a7c6f00d5cf5a61ee9f7328
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: cf3d682e4d0c68822267a4e63846d80b632cbdcc
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619106"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876796"
 ---
-# <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Nastavení sdílení profilu uživatele pro fond hostitelů
+# <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Vytvoření kontejneru profilů pro fond hostitelů pomocí sdílené složky
 
-Služba Windows virtuální plochy, ve verzi Preview nabízí FSLogix profilu kontejnery jako řešení doporučené uživatelských profilů. Nedoporučujeme, že pomocí disku profilu uživatele (UPD) řešení, která bude zastaralé v budoucích verzích Windows virtuálního klienta.
+Služba Windows Virtual Desktop Preview nabízí kontejnery profilů FSLogix jako doporučené řešení profilu uživatele. Nedoporučujeme používat řešení diskového profilu uživatele (UPD), které se v budoucích verzích virtuálního klienta Windows už nepoužívá.
 
-V této části zjistíte, jak vytvořit sdílenou složku FSLogix profilu kontejner pro skupinu hostitelů. Obecná dokumentace týkající se FSLogix, najdete v článku [FSLogix lokality](https://docs.fslogix.com/).
+V tomto článku se dozvíte, jak nastavit sdílení kontejneru profilu FSLogix pro fond hostitelů pomocí sdílené složky založené na virtuálním počítači. Další dokumentaci k FSLogix najdete na [webu FSLogix](https://docs.fslogix.com/).
 
-## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Vytvořit nový virtuální počítač, který bude sloužit jako sdílené složky
+## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Vytvořit nový virtuální počítač, který bude fungovat jako sdílená složka
 
-Při vytváření virtuálního počítače, je nutné ho umístit na buď stejné virtuální síti jako virtuální počítače fondu hostitele nebo virtuální síť, která se může připojit k hostování fondu virtuálních počítačů. Vytvoření virtuálního počítače v několika způsoby:
+Při vytváření virtuálního počítače ho Nezapomeňte umístit do stejné virtuální sítě jako virtuální počítače fondu hostitelů nebo do virtuální sítě, která má připojení k virtuálním počítačům fondu hostitelů. Virtuální počítač můžete vytvořit několika způsoby:
 
-- [Vytvoření virtuálního počítače z image Galerie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
+- [Vytvoření virtuálního počítače z Image Galerie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
 - [Vytvoření virtuálního počítače ze spravované image](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
 - [Vytvoření virtuálního počítače z nespravované image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
-Po vytvoření virtuálního počítače, připojte ho k doméně provedením následujících akcí:
+Po vytvoření virtuálního počítače ho připojte k doméně tím, že provedete následující akce:
 
-1. [Připojení k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) s přihlašovacími údaji, které jste zadali při vytváření virtuálního počítače.
-2. Na virtuálním počítači spusťte **ovládací panely** a vyberte **systému**.
-3. Vyberte **název_počítače**vyberte **změnit nastavení**a pak vyberte **změn...**
-4. Vyberte **domény** a pak zadejte doménu služby Active Directory ve virtuální síti.
-5. Ověření pomocí účtu domény, který má oprávnění k připojení k doméně počítače.
+1. [Připojte se k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
+2. Na virtuálním počítači spusťte **Ovládací panely** a vyberte možnost **systém**.
+3. Vyberte **název počítače**, vyberte **změnit nastavení**a pak zvolte **změnit...**
+4. Vyberte **doména** a pak zadejte doménu služby Active Directory ve virtuální síti.
+5. Proveďte ověření pomocí doménového účtu, který má oprávnění k počítačům připojeným k doméně.
 
-## <a name="prepare-the-virtual-machine-to-act-as-a-file-share-for-user-profiles"></a>Příprava virtuálního počítače tak, aby fungoval jako sdílené složky pro profily uživatelů
+## <a name="prepare-the-virtual-machine-to-act-as-a-file-share-for-user-profiles"></a>Příprava virtuálního počítače, který bude fungovat jako sdílená složka pro profily uživatelů
 
-Následují obecné pokyny o tom, jak připravit virtuální počítač tak, aby fungoval jako sdílené složky pro uživatelské profily:
+Níže najdete obecné pokyny k přípravě virtuálního počítače, který bude fungovat jako sdílená složka pro profily uživatelů:
 
-1. Přidat uživatele Windows virtuální plochy služby Active Directory do [skupiny zabezpečení Active Directory](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups). Tuto skupinu zabezpečení se použije k ověření uživatelé virtuální plochy Windows k virtuálnímu počítači soubor sdílenou složku, kterou jste právě vytvořili.
-2. [Připojení k virtuálnímu počítači sdílené složky souboru](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine).
-3. Na virtuálním počítači soubor sdílené složce vytvořte složku na **jednotce C** , který se použije jako sdílenou složku profilu.
-4. Klikněte pravým tlačítkem na novou složku, vyberte **vlastnosti**vyberte **sdílení**a pak vyberte **rozšířené možnosti sdílení...** .
-5. Vyberte **sdílet tuto složku**vyberte **oprávnění...** a pak vyberte **přidat...** .
-6. Vyhledejte skupinu zabezpečení, ke které jste přidali uživatelé virtuální plochy Windows a pak ověřte, zda má tuto skupinu **úplné řízení**.
-7. Po přidání skupiny zabezpečení, klikněte pravým tlačítkem na složku, vyberte **vlastnosti**vyberte **sdílení**, zkopírujte dolů **síťová cesta** pro pozdější použití.
+1. Přidejte uživatele služby Active Directory systému Windows do [skupiny zabezpečení služby Active Directory](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups). Tato skupina zabezpečení se použije k ověření uživatelů virtuální plochy Windows na virtuálním počítači sdílené složky, který jste právě vytvořili.
+2. [Připojte se k virtuálnímu počítači sdílené složky](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine).
+3. Na virtuálním počítači sdílené složky vytvořte složku na **jednotce C** , která bude použita jako sdílená složka profilu.
+4. Pravým tlačítkem myši klikněte na novou složku, vyberte **vlastnosti**, vyberte **sdílení**a pak vyberte **Rozšířené sdílení...** .
+5. Vyberte **sdílet tuto složku**, vyberte **oprávnění...** a pak vyberte **Přidat...** .
+6. Vyhledejte skupinu zabezpečení, do které jste přidali uživatele virtuální plochy Windows, a ujistěte se, že má skupina **oprávnění Úplné řízení**.
+7. Po přidání skupiny zabezpečení klikněte pravým tlačítkem na složku, vyberte **vlastnosti**, vyberte **sdílení**a pak zkopírujte **síťovou cestu** , která se má použít pro pozdější použití.
 
-Další informace o oprávněních najdete v tématu [FSLogix dokumentaci](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers).
+Další informace o oprávněních najdete v [dokumentaci k FSLogix](https://docs.microsoft.com/fslogix/fslogix-storage-config-ht).
 
-## <a name="configure-the-fslogix-profile-container"></a>Konfigurace kontejneru FSLogix profilu
+## <a name="configure-the-fslogix-profile-container"></a>Konfigurace kontejneru profilu FSLogix
 
-Ke konfiguraci virtuálních počítačů se softwarem FSLogix, proveďte postup na každý počítač zaregistrovaný do fondu hostitele:
+Pokud chcete nakonfigurovat virtuální počítače s FSLogix softwarem, udělejte na každém počítači zaregistrovaném do fondu hostitelů následující:
 
-1. [Připojení k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) s přihlašovacími údaji, které jste zadali při vytváření virtuálního počítače.
-2. Spustit internetový prohlížeč a přejděte do [tento odkaz](https://go.microsoft.com/fwlink/?linkid=2084562) stažení FSLogix agenta. Jako součást verze preview pro veřejnost virtuální plochy Windows získáte licenční klíč k aktivaci FSLogix softwaru. Klíč je LicenseKey.txt soubor zahrnut do souboru .zip FSLogix agenta.
-3. Přejděte na buď \\ \\Win32\\vydání nebo \\ \\X64\\verze v souboru ZIP a spusťte **FSLogixAppsSetup** pro instalaci agenta FSLogix.
-4. Přejděte do **Program Files** > **FSLogix** > **aplikace** potvrďte instalaci agenta.
-5. Z nabídky start spusťte **RegEdit** jako správce. Přejděte do **počítače\\HKEY_LOCAL_MACHINE\\softwaru\\FSLogix**.
-6. Vytvořte klíč s názvem **profily**.
-7. Vytvořte následující hodnoty pro klíč profily:
+1. [Připojte se k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
+2. Spusťte internetový prohlížeč a přejděte na [Tento odkaz](https://go.microsoft.com/fwlink/?linkid=2084562) a Stáhněte si agenta FSLogix.
+3. Přejděte na \\ \\verzi Win32\\nebo \\ x64 v souboru. zip a spuštěním FSLogixAppsSetup nainstalujte agenta FSLogix.\\ \\  Další informace o tom, jak nainstalovat FSLogix, najdete v tématu [Stažení a instalace FSLogix](https://docs.microsoft.com/fslogix/install-ht).
+4. Přejděte na **Program Files** > **FSLogix** > **Apps** a potvrďte, že je agent nainstalovaný.
+5. V nabídce Start spusťte program **Regedit** jako správce. Přejděte na **počítač\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
+6. Vytvořte klíč s názvem **Profiles**.
+7. Pro klíč profilů vytvořte následující hodnoty:
 
-| Name                | type               | Hodnota/dat                        |
+| Name                | type               | Data/hodnota                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | DWORD              | 1                                 |
-| VHDLocations        | Víceřetězcová hodnota | "Síťovou cestu pro sdílenou složku"     |
+| Enabled             | HODNOTY              | 1                                 |
+| VHDLocations        | Hodnota s více řetězci | "Síťová cesta pro sdílenou složku"     |
 
 >[!IMPORTANT]
->Pomáhají zabezpečit vaše prostředí virtuálního klienta Windows v Azure, doporučujeme, abyste že na virtuálních počítačích není otevřít příchozí port 3389. Virtuální Desktop Windows nevyžaduje otevřít příchozí port 3389 pro uživatele pro přístup k fondu hostitele virtuálních počítačů. Pokud musíte otevřít port 3389 pro účely odstraňování potíží, doporučujeme vám použít [přístup k virtuálním počítačům just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).

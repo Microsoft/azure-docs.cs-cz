@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 3d3fc1541fb99d8d1219392158c3b87cd6ff99aa
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: MT
+ms.openlocfilehash: 37624c79a345f956de9a289c672340e391199e2f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033530"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650691"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvořit novou nabídku SaaS
 
@@ -225,7 +225,7 @@ Do tohoto pole lze zadat až 3 000 znaků textu. Další tipy najdete v článku
 
 #### <a name="description"></a>**Popis**
 
-Toto pole je povinné. Položky, které se mají zahrnout do popisu: 
+Toto je povinné pole. Položky, které se mají zahrnout do popisu: 
 
 * Jasně popište, jak se má v prvních několika větách popisu v této nabídce vyhodnotit.  
 * Mějte na paměti, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět.  
@@ -302,12 +302,7 @@ Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu
 
     Výše uvedená by vypadala takto:
 
-    <h1>Toto je nadpis 1.</h1> 
-    <h2>Toto je Nadpis 2</h2> 
-    <h3>Toto je nadpis 3</h3> 
-    <h4>Toto je nadpis 4.</h4> 
-    <h5>Toto je nadpis 5.</h5> 
-    <h6>Toto je nadpis 6.</h6> 
+    ![Ukázkové nadpisy](./media/heading.png)
 
 #### <a name="links"></a>Odkazy
 
@@ -494,6 +489,6 @@ Pokud tuto nabídku publikujete poprvé, můžete:
 - Poskytněte pokyny k testování certifikačního týmu, abyste měli jistotu, že vaše aplikace je testována správně, kromě doplňkových poznámek, které jsou užitečné pro porozumění vaší aplikaci.
 - Kliknutím na **Odeslat**nabídku pro publikování odešlete. Pošleme vám e-mail s oznámením, že je k dispozici verze Preview vaší nabídky, kterou si můžete prohlédnout a schválit. Je nutné, abyste se vrátili do partnerského centra a vybrali možnost pro publikování nabídky na veřejném webu (nebo v případě soukromé nabídky pro privátní cílovou skupinu).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Aktualizace stávající nabídky na komerčním webu Marketplace](./update-existing-offer.md)

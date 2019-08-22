@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72155e072acb8006b48f6951fc60081126c80691
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e73a64a9782535da31e2eacbaa2740007707c774
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990464"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872411"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu 
 
@@ -317,7 +317,7 @@ Chcete-li zobrazit výpočetní cíle pro váš pracovní prostor, použijte ná
 1. Přejděte do [Azure Portal](https://portal.azure.com) a otevřete svůj pracovní prostor. 
 1. V části __aplikace__vyberte __COMPUTE__.
 
-    ![Karta výpočetní zobrazení](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
+    [![Zobrazit kartu COMPUTE](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Vytvořit cíl výpočtů
 
@@ -336,8 +336,6 @@ Podle předchozích kroků zobrazte seznam cílů výpočtů. Pak pomocí těcht
 
 1. Vyplňte formulář. Zadejte hodnoty požadovaných vlastností, zejména **rodinu virtuálních počítačů**, a **maximální počet uzlů** , které se mají použít ke spuštění výpočtů.  
 
-    ![Vyplnit formulář](./media/how-to-set-up-training-targets/add-compute-form.png) 
-
 1. Vyberte __Vytvořit__.
 
 
@@ -348,8 +346,6 @@ Podle předchozích kroků zobrazte seznam cílů výpočtů. Pak pomocí těcht
 1. Zobrazí se podrobnosti o cíli služby Compute: 
 
     ![Zobrazit podrobnosti o cíli počítače](./media/how-to-set-up-training-targets/compute-target-details.png) 
-
-
 
 ### <a id="portal-reuse"></a>Připojit cíle výpočtů
 
@@ -449,7 +445,7 @@ Příklady školení s různými cíli výpočtů najdete v těchto poznámkový
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Kurz: Výuka modelu](tutorial-train-models-with-aml.md) používá ke školení modelu spravovaný výpočetní cíl.
 * Naučte se [efektivně ladit parametry](how-to-tune-hyperparameters.md) pro vytváření lepších modelů.

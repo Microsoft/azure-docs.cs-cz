@@ -1,6 +1,6 @@
 ---
-title: Oznámení Centra zabezpečení
-description: Toto téma vysvětluje zabezpečení Azure notification hubs.
+title: Notification Hubs zabezpečení
+description: Toto téma vysvětluje zabezpečení pro centra oznámení Azure.
 services: notification-hubs
 documentationcenter: .net
 author: jwargo
@@ -14,42 +14,40 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: jowargo
-ms.openlocfilehash: 3f5b23028094b545262e9c01640890f2c0b989ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73a6d0eaab286dec9d02bb55eb75f0781bcffcc4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431249"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891574"
 ---
-# <a name="notification-hubs-security"></a>Oznámení Centra zabezpečení
+# <a name="notification-hubs-security"></a>Notification Hubs zabezpečení
 
 ## <a name="overview"></a>Přehled
 
-Toto téma popisuje model zabezpečení služby Azure Notification Hubs.
+Toto téma popisuje model zabezpečení Azure Notification Hubs.
 
 ## <a name="shared-access-signature-security-sas"></a>Zabezpečení sdíleného přístupového podpisu (SAS)
 
-Notification Hubs implementuje schéma zabezpečení na úrovni entity volat SAS (sdíleným přístupovým podpisům). Toto schéma umožňuje deklarovat až 12 autorizační pravidla v popisu, které udělit práva na dané entitě entit pro zasílání zpráv.
+Notification Hubs implementuje schéma zabezpečení na úrovni entity nazývané SAS (sdílený přístupový podpis). Každé pravidlo obsahuje název, hodnotu klíče (sdílený tajný klíč) a sadu práv, jak je vysvětleno v tématu [deklarace identity zabezpečení](#security-claims). Při vytváření centra oznámení se automaticky vytvoří dvě pravidla: jednu s právy na naslouchání (kterou používá klientská aplikace) a druhá se **všemi** právy (které aplikace back-end používá).
 
-Každé pravidlo obsahuje název, hodnotu klíče (sdílený tajný klíč) a sada práv, jak je vysvětleno v [deklarací identity zabezpečení](#security-claims). Při vytváření centra oznámení, automaticky vytvoří dvě pravidla: jednu s **naslouchání** práv (klientská aplikace využívá) a jeden u **všechny** práv (back-endu aplikace používá).
+Pokud při provádění správy registrace z klientských aplikací nejsou informace odesílané prostřednictvím oznámení citlivé (například aktualizace o počasí), je pro přístup k centru oznámení běžný způsob, jak získat přístup ke službě centrum oznámení, aby byla hodnota klíče pravidla pro příjem pouze pro přístup k klientské aplikaci, a pokud chcete, aby klíčová hodnota pravidla měla plný přístup k back-endu aplikace.
 
-Při provádění Správa registrací z klientských aplikací, pokud informace odeslány prostřednictvím oznámení není citlivé (například aktualizace počasí), běžný způsob pro přístup k centru oznámení je poskytnout hodnotu klíče pravidlo přístup jen pro naslouchání na klientskou aplikaci a poskytnout hodnotu klíče pravidlo úplný přístup k back-endu aplikace.
+Aplikace by neměly vkládat hodnotu klíče do klientských aplikací pro Windows Store, místo toho si klientské aplikace načtou z back-endu aplikace při spuštění.
 
-Aplikace by neměl vložit hodnotu klíče v klientských aplikacích pro Windows Store, místo toho mají načíst z back-endu aplikace při spuštění klientské aplikace.
+Klíč s přístupem k naslouchání umožňuje klientské aplikaci zaregistrovat se pro libovolnou značku. Pokud vaše aplikace musí omezit registrace na konkrétní značky pro konkrétní klienty (například když značky reprezentují ID uživatelů), musí back-end aplikace provést registrace. Další informace najdete v tématu [Správa registrace](notification-hubs-push-notification-registration-management.md). Tímto způsobem klientská aplikace nebude mít přímý přístup k Notification Hubs.
 
-Klíč s **naslouchání** přístup umožňuje klientskou aplikaci pro registraci všechny značky. Pokud vaše aplikace musí omezení registrace konkrétní značky pro konkrétní klienty (třeba při značky představují ID uživatele), musíte provést back-endu aplikace registrace. Další informace najdete v tématu [Správa registrací](notification-hubs-push-notification-registration-management.md). Všimněte si, že tímto způsobem klientská aplikace nebudou mít přímý přístup k Notification Hubs.
+## <a name="security-claims"></a>Deklarace identity zabezpečení
 
-## <a name="security-claims"></a>Zabezpečení deklarace identity
+Podobně jako u jiných entit jsou operace centra oznámení povoleny pro tři deklarace zabezpečení: **Naslouchat**, **odesílat**a **Spravovat**.
 
-Podobně jako u jiných entit, operace centra oznámení jsou povoleny pro tři deklarace identity zabezpečení: **Naslouchání**, **odeslat**, a **spravovat**.
-
-| Deklarovat   | Popis                                          | Přípustné operace |
+| Deklarace identity   | Popis                                          | Povolené operace |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Naslouchat  | Vytvoření/aktualizaci, čtení a odstranění jednoho registrace | Vytvoří nebo aktualizuje registrace<br><br>Registrace pro čtení<br><br>Číst všechny registrace pro popisovač<br><br>Odstranit registrace |
-| Odeslat    | Odesílání zpráv do centra oznámení                | Odeslání zprávy |
-| Spravovat  | CRUDs v Notification Hubs (včetně, aktualizují se přihlašovací údaje systému oznámení platformy a zabezpečení klíče) a na základě značek čtení registrací |Vytvoření, aktualizaci, čtení nebo odstranění notification hubs<br><br>Čtení registrací podle značky |
+| Naslouchat  | Vytváření, aktualizace, čtení a odstraňování jednotlivých registrací | Vytvořit nebo aktualizovat registraci<br><br>Čtení registrace<br><br>Čtení všech registrací pro popisovač<br><br>Odstranit registraci |
+| Poslat    | Odesílání zpráv do centra oznámení                | Odeslat zprávu |
+| Spravovat  | CRUD na Notification Hubs (včetně aktualizace přihlašovacích údajů PNS a bezpečnostních klíčů) a čtení registrací na základě značek |Vytvořit, aktualizovat, číst a odstranit centra oznámení<br><br>Čtení registrací podle značky |
 
-Notification Hubs přijímá podpis, který generuje tokeny s použitím sdílené klíče nakonfigurovaná přímo v centru oznámení.
+Notification Hubs přijímá podpisové tokeny vytvořené se sdílenými klíči nakonfigurovanými přímo v centru oznámení.
 
-Není možné odeslat oznámení na více než jeden obor názvů. Obory názvů je logický kontejner pro notification hubs a nejsou zahrnuty s odesíláním oznámení.
-Zásady přístupu na úrovni oboru názvů (pověření) lze použít pro operace na úrovni oboru názvů, třeba: výpis notification hubs, vytvoření nebo odstranění služby notification hubs, atd. Pouze zásady přístupu na úrovni centra by umožňují odesílat oznámení.
+Není možné odesílat oznámení do více než jednoho oboru názvů. Obory názvů představují logický kontejner pro centra oznámení a nejsou zapojená do odesílání oznámení.
+Zásady přístupu na úrovni oboru názvů (přihlašovací údaje) se dají použít pro operace na úrovni oboru názvů, například: výpis Center oznámení, vytváření nebo odstraňování Center oznámení atd. Jenom zásady přístupu na úrovni centra by vám umožnily odeslat oznámení.

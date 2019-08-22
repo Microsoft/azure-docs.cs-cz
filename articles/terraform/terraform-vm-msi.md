@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3aaf943b5eecd9ec1853c09ea36156b98560d3d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884479"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648707"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí spravovaných identit pro prostředky Azure
 
@@ -47,17 +47,17 @@ Na kartě **Vytvořit Terraform** zadejte následující podrobnosti:
 
 1. **Základy**
     
-   * **Název**: Název virtuálního počítače Terraform.
-   * **Uživatelské jméno**: ID první účet přihlášení.
+   * **Název**: Název vašeho virtuálního počítače s Terraformu.
+   * **Uživatelské jméno**: První ID přihlášení k účtu.
    * **Heslo**: První heslo účtu. (Místo hesla můžete použít veřejný klíč SSH.)
-   * **Předplatné**: Předplatné, ve které je vytvořené a fakturuje počítač. Toto předplatné musí mít oprávnění vytvářet prostředky.
-   * **Skupina prostředků**: Nové nebo existující skupinu prostředků.
-   * **Umístění**: Datacentrum, který nejlépe vyhovuje. (Obvykle jde o datacentrum s většinou dat nebo nejbližší datacentrum kvůli co nejrychlejšímu síťovému přístupu.)
+   * **Předplatné:** Předplatné, ve kterém se má počítač vytvořit a fakturovat. Toto předplatné musí mít oprávnění vytvářet prostředky.
+   * **Skupina prostředků**: Nová nebo existující skupina prostředků.
+   * **Umístění**: Datacentrum, které je nejvhodnější. (Obvykle jde o datacentrum s většinou dat nebo nejbližší datacentrum kvůli co nejrychlejšímu síťovému přístupu.)
 
 2. **Další nastavení**
 
    * **Velikost**: Velikost virtuálního počítače. 
-   * **Typ disku virtuálního počítače**: SSD nebo pevný disk.
+   * **Typ disku virtuálního počítače**: SSD nebo HDD.
 
 3. **Souhrn Terraformu**
 
@@ -85,7 +85,7 @@ Oprávnění přispěvatele pomůže identitě spravované služby na virtuáln�
 
 `. ~/tfEnv.sh`
 
-Předchozí skript používá k ověření v Azure a přiřazení oprávnění přispěvatele pro celé předplatné spravované identitě na virtuálním počítači mechanismus [interaktivního přihlášení v Azure CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest). 
+Předchozí skript používá k ověření v Azure a přiřazení oprávnění přispěvatele pro celé předplatné spravované identitě na virtuálním počítači mechanismus [interaktivního přihlášení v Azure CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#sign-in-interactively). 
 
  Virtuální počítač má back-end vzdáleného stavu Terraformu. Pokud ho chcete povolit při nasazení Terraformu, zkopírujte soubor remoteState.tf z adresáře tfTemplate do kořenového adresáře skriptů Terraformu.  
 
@@ -93,7 +93,7 @@ Předchozí skript používá k ověření v Azure a přiřazení oprávnění p
 
  Další informace o vzdálené správě stavu najdete na [této stránce týkající se vzdáleného stavu Terraformu](https://www.terraform.io/docs/state/remote.html). Přístupový klíč úložiště je v tomto souboru zveřejněný a před zápisem konfiguračních souborů Terraformu do správy zdrojového kódu je potřeba ho vyloučit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak v Azure nastavit virtuální počítač Terraform s Linuxem. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky: 
 
  [Dokumentace k Terraformu v Azure](https://docs.microsoft.com/azure/terraform/)  

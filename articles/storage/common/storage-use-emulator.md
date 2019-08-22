@@ -7,12 +7,12 @@ ms.date: 08/10/2018
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 9e0e024a5bd3c9cf16879bb9ea93727a338ddbf4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: ee8dd9da186013dc168e20e6b8b842cca85de172
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986411"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877625"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -221,9 +221,21 @@ V emulátoru nejsou žádné rozdíly specifické pro úložiště Queue.
 
 ## <a name="storage-emulator-release-notes"></a>Poznámky k verzi emulátoru úložiště
 
+### <a name="version-510"></a>Verze 5,10
+
+* Emulátor úložiště nebude zamítnout verzi 2019-07-07 služeb úložiště v koncových bodech blob, Queue a Table service.
+
+### <a name="version-59"></a>Verze 5,9
+
+* Emulátor úložiště nebude zamítnout verzi 2019-02-02 služeb úložiště v koncových bodech blob, Queue a Table service.
+
+### <a name="version-58"></a>Verze 5,8
+
+* Emulátor úložiště nebude zamítnout verzi 2018-11-09 služeb úložiště v koncových bodech blob, Queue a Table service.
+
 ### <a name="version-57"></a>Verze 5,7
 
-Opravili jsme chybu, která by způsobila chybu v případě povolení protokolování.
+* Opravili jsme chybu, která by způsobila chybu v případě povolení protokolování.
 
 ### <a name="version-56"></a>Verze 5,6
 
@@ -236,11 +248,11 @@ Opravili jsme chybu, která by způsobila chybu v případě povolení protokolo
 
 ### <a name="version-54"></a>Verze 5,4
 
-Za účelem vylepšení stability při instalaci se emulátor již nepokouší rezervovat porty v době instalace. Pokud jsou požadovány rezervace portů, zadejte je pomocí možnosti *-reserveports* příkazu **init** .
+* Za účelem vylepšení stability při instalaci se emulátor již nepokouší rezervovat porty v době instalace. Pokud jsou požadovány rezervace portů, zadejte je pomocí možnosti *-reserveports* příkazu **init** .
 
 ### <a name="version-53"></a>Verze 5,3
 
-Emulátor úložiště teď podporuje verze 2017-07-29 služeb úložiště v koncových bodech blob, Queue a Table service.
+* Emulátor úložiště teď podporuje verze 2017-07-29 služeb úložiště v koncových bodech blob, Queue a Table service.
 
 ### <a name="version-52"></a>Verze 5,2
 
@@ -249,7 +261,7 @@ Emulátor úložiště teď podporuje verze 2017-07-29 služeb úložiště v ko
 
 ### <a name="version-51"></a>Verze 5,1
 
-Opravili jsme chybu, kdy emulátor úložiště vrátil `DataServiceVersion` hlavičku v některých odpovědích, kde služba nebyla.
+* Opravili jsme chybu, kdy emulátor úložiště vrátil `DataServiceVersion` hlavičku v některých odpovědích, kde služba nebyla.
 
 ### <a name="version-50"></a>Verze 5,0
 
@@ -308,7 +320,7 @@ Opravili jsme chybu, kdy emulátor úložiště vrátil `DataServiceVersion` hla
 * Grafické uživatelské rozhraní emulátoru úložiště je zastaralé ve prospěch rozhraní příkazového řádku pro skriptování. Podrobnosti o rozhraní příkazového řádku najdete v tématu Referenční informace k nástroji příkazového řádku emulátoru úložiště. Grafické rozhraní bude nadále k dispozici ve verzi 3,0, ale je k němu možné přistupovat pouze v případě, že se emulátor služby COMPUTE nainstaluje kliknutím pravým tlačítkem na ikonu na hlavním panelu systému a výběrem možnosti zobrazit uživatelské rozhraní emulátoru úložiště.
 * Služba Azure Storage je teď plně podporovaná ve verzi 2013-08-15. (Dřív byla tato verze podporovaná jenom emulátorem úložiště verze 2.2.1 Preview.)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vyhodnoťte [Azurite](https://github.com/arafato/azurite)emulátoru Open Source úložiště pro různé platformy, který spravuje komunita. 
 * [Azure Storage ukázky používající rozhraní .NET](../storage-samples-dotnet.md) obsahují odkazy na několik ukázek kódu, které můžete použít při vývoji aplikace.

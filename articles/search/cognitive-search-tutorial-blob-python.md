@@ -1,7 +1,7 @@
 ---
 title: 'Kurz Pythonu: Volání Cognitive Services v kanálu rozšíření AI – Azure Search'
 description: Projděte si příklad extrakce dat, přirozeného jazyka a zpracování AI v Azure Search pomocí poznámkového bloku Pythonu Jupyter. Extrahovaná data jsou indexována a snadno se k nim přistupovaly pomocí dotazu.
-manager: cgronlun
+manager: nitinme
 author: LisaLeib
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: af355ec353e12c30723597927883cb23dfa31e71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cde1fe258d2caf7e7dc9d8ede582364f42c676b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840919"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648885"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Kurz Pythonu: Volání rozhraní API služeb Cognitive Services v kanálu indexování Azure Search
 

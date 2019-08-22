@@ -4,25 +4,25 @@ ms.service: billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 203f0eda7e2e9d1545e7bf5cc2bb6eff9c2c3c55
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1080e3488483610af0f0c9afadaf000895021821
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68936777"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69657752"
 ---
 | Resource | Zdarma | Sdílené | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Webové, mobilní nebo API aplikace](https://azure.microsoft.com/services/app-service/) na [plán](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> pro Azure App Service |10 |100 |Neomezeno<sup>2</sup> |Neomezeno<sup>2</sup> |Neomezeno<sup>2</sup> |Neomezeno<sup>2</sup>|
 | [Plán služby App Service](../articles/app-service/overview-hosting-plans.md) |10 na oblast |10 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků|
 | Typ instance COMPUTE |Sdílené |Sdílené |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup></p> |Vyhrazené<sup>3</sup>|
-| [Horizontální](../articles/app-service/web-sites-scale.md) navýšení kapacity (maximální počet instancí) |1 sdílená |1 sdílená |3 vyhrazené<sup></sup> 3 |10 vyhrazených<sup>3</sup> |20 vyhrazených<sup>3</sup>|100 vyhrazené<sup>4</sup>|
+| [Horizontální](../articles/app-service/manage-scale-up.md) navýšení kapacity (maximální počet instancí) |1 sdílená |1 sdílená |3 vyhrazené<sup></sup> 3 |10 vyhrazených<sup>3</sup> |20 vyhrazených<sup>3</sup>|100 vyhrazené<sup>4</sup>|
 | Úložiště<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
 | Čas procesoru (5 minut)<sup>6</sup> |3 minuty |3 minuty |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a>|
 | Čas procesoru (den)<sup>6</sup> |60 minut |240 minut |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |
 | Paměť (1 hodina) |1 024 MB na plán App Service |1 024 MB na aplikaci |Není k dispozici |Není k dispozici |Není k dispozici |Není k dispozici |
 | Šířka pásma |165 MB |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |
-| Architektura aplikace |32 bitů |32 bitů |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |
+| Architektura aplikace |32 – bit |32 – bit |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |
 | Webové sokety na instanci<sup>7</sup> |5 |35 |350 |Unlimited |Unlimited |Unlimited |
 | Souběžná [připojení ladicího programu](../articles/app-service/troubleshoot-dotnet-visual-studio.md) na aplikaci |1 |1 |1 |5 |5 |5 |
 | App Service certifikátů na předplatné<sup>10</sup>| Nepodporuje se | Nepodporuje se |10 |10 |10 |10 |
@@ -31,7 +31,7 @@ ms.locfileid: "68936777"
 | Integrovaný nástroj pro vyrovnávání zatížení | |X |X |X |X |X<sup>9</sup> |
 | [Vždy zapnuto](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Naplánovaná zálohování](../articles/app-service/manage-backup.md) | | | | Naplánované zálohy každé 2 hodiny, maximálně 12 záloh za den (ruční + naplánované) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) |
-| [Automatické škálování](../articles/app-service/web-sites-scale.md) | | | |X |X |X |
+| [Automatické škálování](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
 | Webové [úlohy](../articles/app-service/webjobs-create.md) <sup>8</sup> |X |X |X |X |X |X |
 | Podpora [Azure Scheduleru](https://azure.microsoft.com/services/scheduler/) | |X |X |X |X |X |
 | [Monitorování koncových bodů](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |

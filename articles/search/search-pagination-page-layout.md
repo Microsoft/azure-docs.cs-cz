@@ -2,7 +2,7 @@
 title: Jak pracovat s výsledky hledání – Azure Search
 description: Struktura a řazení výsledků hledání, získání počtu dokumentů a přidání navigace obsahu do výsledků hledání v Azure Search.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: ''
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bb86a75be464cb78a16170626bc96778d43bb8b6
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 9fa2baf64dbb35d85c55635d7522075d61bfc17d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67974624"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647709"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Jak pracovat s výsledky hledání v Azure Search
 Tento článek poskytuje informace o tom, jak implementovat standardní prvky stránky výsledků hledání, jako jsou celkové počty, načítání dokumentů, objednávky řazení a navigace. Možnosti související s stránkou, které přidávají data nebo informace do výsledků hledání, jsou zadány prostřednictvím požadavků na [hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) odesílaných službě Azure Search. 
