@@ -49,7 +49,7 @@ Presto propojené služby jsou podporovány následující vlastnosti:
 | serverVersion | Verze Presto serveru. (to znamená 0.148-t)  | Ano |
 | catalog | Kontext pro všechny žádosti na serveru, který katalogu.  | Ano |
 | port | Port TCP, Presto server používá pro naslouchání pro připojení klientů. Výchozí hodnota je 8080.  | Ne |
-| authenticationType. | Mechanismus ověřování používaný pro připojení k Presto serveru. <br/>Povolené hodnoty jsou: **Anonymní**, **LDAP** | Ano |
+| authenticationType | Mechanismus ověřování používaný pro připojení k Presto serveru. <br/>Povolené hodnoty jsou: **Anonymní**, **LDAP** | Ano |
 | username | Uživatelské jméno pro připojení k serveru Presto.  | Ne |
 | password | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | enableSsl | Určuje, zda jsou šifrované připojení k serveru pomocí SSL. Výchozí hodnota je false.  | Ne |
