@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 1478e8f44db2e6a1d52d069d2f52830c265b2641
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 7cda51870a98b2606a0133a61ad6f786e7e9324a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036823"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900139"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nové nabídky Dynamics 365 for Customer Engagement & PowerApps
 
@@ -82,27 +82,11 @@ Vyberte z následujících možností:
 
 ## <a name="connect-lead-management"></a>Připojit řízení zájemců
 
-Spojte se se zákazníky přímo tím, že zapojíte systém pro správu vztahů se zákazníky (CRM). Pokud tak učiníte, obdržíte kontaktní údaje zákazníka, když zákazník vyjádří zájem nebo nasadí váš produkt.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-Pokud chcete připojit systém CRM, vyberte **připojit**.
+Další informace najdete v tématu [Přehled správy potenciálních zákazníků](./commercial-marketplace-get-customer-leads.md) .
 
-### <a name="choose-a-lead-destination"></a>Zvolit cíl zájemce
-
-Když vyberete **připojit**, zobrazí se rozevírací nabídka, kde můžete vybrat systém CRM a pak zadat podrobnosti o připojení.
-
-Partnerské centrum podporuje následující systémy CRM pro správu potenciálních zákazníků. Vyberte odkaz pro pokyny k instalaci.
-
-- [Tabulka Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) – zadejte připojovací řetězec k účtu úložiště. 
-- [Dynamics 365 pro zákaznickou zapojení (dříve Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) – zadejte adresu URL vaší Instance Dynamics 365 a režim ověřování (Office 365 nebo Azure Active Directory).
-- [Koncový bod HTTPS](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) – zadejte adresu URL koncového bodu https. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) – zadejte ID serveru, ID účtu Munchkin a ID formuláře.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) – zadejte ID vaší organizace. 
-
-#### <a name="additional-lead-management-resources"></a>Další zdroje informací o vedoucím řízení
-
-- [Nejčastější dotazy ke správě potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Přehled řízení vedoucích – jeden pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+Před přechodem k další části si nezapomeňte **Uložit** .
 
 ## <a name="properties"></a>Vlastnosti
 

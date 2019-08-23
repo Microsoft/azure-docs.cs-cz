@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 07/19/2019
+ms.date: 08/23/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 1349e07662504564fdf48a53f24525c4a16aa477
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f65b1d62a9c0e6835421c2ae796f9ea390407c9a
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326907"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971601"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -57,7 +57,7 @@ Můžete omezit odchozí provoz HTTP/S nebo Azure SQL provoz (Preview) na zadan�
 
 Můžete centrálně vytvořit pravidla pro *povolení* nebo *blokování* podle zdrojové a cílové IP adresy, portu a protokolu. Brána Azure Firewall je plně stavová, takže dokáže odlišit legitimní pakety pro různé typy spojení. Pravidla jsou vynucována a protokolována napříč různými předplatnými a virtuálními sítěmi.
 
-## <a name="fqdn-tags"></a>Značky plně kvalifikovaných názvů domén
+## <a name="fqdn-tags"></a>Značky plně kvalifikovaného názvu domény
 
 Značky plně kvalifikovaných názvů domén usnadňují povolení přenosů z dobře známé služby Azure prostřednictvím brány firewall. Řekněme například, že chcete povolit síťové přenosy z webu Windows Update přes bránu firewall. Můžete vytvořit pravidlo aplikace a zahrnout značku webu Windows Update. Teď je možný síťový přenos z webu Windows Update přes vaši bránu firewall.
 
@@ -112,6 +112,7 @@ Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP)
 |Zóny dostupnosti se dají konfigurovat jenom během nasazování.|Zóny dostupnosti se dají konfigurovat jenom během nasazování. Po nasazení brány firewall nemůžete Zóny dostupnosti nakonfigurovat.|Jedná se o účel.|
 |SNAT při příchozích připojeních|Kromě DNAT jsou připojení přes veřejnou IP adresu (příchozí) brány firewall před jejich vstupem na jednu z privátních IP adres brány firewall. Tento požadavek dnes (také pro aktivní/aktivní síťová virtuální zařízení) zajistíte tak, aby se zajistilo symetrické směrování.|Pokud chcete zachovat původní zdroj pro HTTP/S, zvažte použití hlaviček [xff](https://en.wikipedia.org/wiki/X-Forwarded-For) . Například před bránou firewall použijte službu, jako je například [přední vrátka Azure](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) . WAF můžete také přidat jako součást služby Azure front-dveří a řetězit k bráně firewall.
 |Podpora filtrování plně kvalifikovaného názvu domény SQL pouze v režimu proxy (port 1433)|Pro Azure SQL Database, Azure SQL Data Warehouse a Azure SQL Managed instance:<br><br>V průběhu verze Preview se filtrování plně kvalifikovaného názvu domény SQL podporuje jenom v režimu proxy serveru (port 1433).<br><br>Pro Azure SQL IaaS:<br><br>Pokud používáte nestandardní porty, můžete tyto porty zadat v pravidlech aplikací.|V případě SQL v režimu přesměrování, který je ve výchozím nastavení při připojování z Azure, můžete místo toho použít filtr přístupu pomocí značky služby SQL jako součást Azure Firewallch síťových pravidel.
+|Odchozí provoz na portu TCP 25 není povolený.| Odchozí připojení SMTP, která používají port TCP 25, jsou blokovaná. Port 25 se primárně používá pro neověřené doručování e-mailů. Toto je výchozí chování platformy pro virtuální počítače. Další informace najdete v tématu řešení potíží s [odchozím připojením SMTP v Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Na rozdíl od virtuálních počítačů ale tuto funkci v tuto chvíli nemůžete povolit na Azure Firewall.|Použijte doporučený postup k odeslání e-mailu, jak je uvedeno v článku věnovaném odstraňování potíží SMTP. Případně vylučte virtuální počítač, který potřebuje odchozí přístup SMTP z výchozí trasy k bráně firewall, a místo toho nakonfigurujte odchozí přístup přímo na Internet.
 
 ## <a name="next-steps"></a>Další postup
 

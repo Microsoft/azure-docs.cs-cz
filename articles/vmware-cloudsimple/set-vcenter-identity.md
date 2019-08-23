@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6229e78958fdc4995153d99ad02a15804330f1b
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: d314cc55096f681d1bcf66d33c4c30a4060751e9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544562"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972652"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Nastavení zdrojů identity vCenter pro používání služby Active Directory
 
@@ -63,7 +63,7 @@ Při nastavování domény služby Active Directory použijte informace v násle
 Pokud máte informace v předchozí tabulce, můžete do vCenter přidat místní službu Active Directory jako zdroj identity jednotného přihlašování.
 
 > [!TIP]
-> Další informace o zdrojích identity jednotného přihlašování najdete na <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html" target="_blank">stránce dokumentace k VMware</a>.
+> Další informace o zdrojích identity jednotného přihlašování najdete na [stránce dokumentace k VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html).
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Nastavení nové služby Active Directory v privátním cloudu
 
@@ -83,7 +83,7 @@ Podrobné pokyny najdete v tématu [instalace nové doménové struktury služby
 
 Po nastavení doménové struktury a domény služby Active Directory můžete do [vCenter přidat zdroj identity](#add-an-identity-source-on-vcenter) pro novou službu Active Directory.
 
-### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Nové Doména služby Active Directory v existující doménové struktuře služby Active Directory
+### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Nová doména služby Active Directory v existující doménové struktuře služby Active Directory
 
 Chcete-li nastavit novou doménu služby Active Directory v existující doménové struktuře služby Active Directory, budete potřebovat:
 

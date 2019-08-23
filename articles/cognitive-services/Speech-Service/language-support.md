@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abff902dc62ad7ae48f2ecedfbd52aeb96719093
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815259"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970369"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Podpora jazyků a oblastí pro hlasové služby
 
@@ -24,40 +24,40 @@ Různé jazyky jsou podporovány pro různé funkce služby Speech Services. Ná
 
 ## <a name="speech-to-text"></a>Převod řeči na text
 
-Sada SDK pro rozpoznávání řeči od Microsoftu i REST API podporují následující jazyky (národní prostředí). Různé úrovně vlastního nastavení jsou k dispozici pro jednotlivé jazyky.
+Sada SDK pro rozpoznávání řeči od Microsoftu i REST API podporují následující jazyky (národní prostředí). Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání zvuku a přepisu s popiskem nebo souvisejícího textu: Věty.  Přizpůsobení výslovnosti je aktuálně k dispozici pouze pro en-US a de-DE. Další informace o přizpůsobení [najdete tady](how-to-custom-speech.md).
 
-  Kód | Jazyk | [Akustické přizpůsobení](how-to-customize-acoustic-models.md) | [Přizpůsobení jazyka](how-to-customize-language-model.md) | [Výslovnost přizpůsobení](how-to-customize-pronunciation.md)
- ------|----------|---------------------|---------------------|-------------------------
- ar – například | Arabština (Egypt), moderní standard | Ne | Ano | Ne
- ES certifikační autority | Katalánština | Ne | Ne | Ne
- da-DK | Dánština (Dánsko) | Ne | Ne | Ne
- de-DE | Němčina (Německo) | Ano | Ano | Ano
- cs AU | angličtina (Austrálie) | Ne | Ano | Ne
- cs CA | angličtina (Kanada) | Ne | Ano | Ne
- en-GB | Angličtina (Spojené království) | Ne | Ano | Ne
- en-IN | English (India) | Ano | Ano | Ne
- cs NZ | angličtina (Nový Zéland) | Ne | Ano | Ne 
- en-US | Angličtina (Spojené státy) | Ano | Ano | Ano
- es-ES | Španělština (Španělsko) | Ano | Ano | Ne
- es-MX | Španělština (Mexiko) | Ne | Ano | Ne
- fi-FI | Finština (Finsko) | Ne | Ne | Ne
- fr-CA | Francouzština (Kanada) | Ne | Ano | Ne
- fr-FR | Francouzština (Francie) | Ano | Ano | Ne
- Dobrý den – v | hindština (Indie) | Ne | Ano | Ne
- IT-IT | Italština (Itálie) | Ano | Ano | Ne
- ja-JP | Japonština (Japonsko) | Ne | Ano | Ne
- ko-KR | Korejština (Jižní Korea) | Ne | Ano | Ne
- nb-NO | Norština (Bokmal) (Norsko) | Ne | Ne | Ne
- NL-NL | Nizozemština (Nizozemsko) | Ne | Ano | Ne
- pl-PL | Polština (Polsko) | Ne | Ne | Ne
- pt-BR | Portugalština (Brazílie) | Ano | Ano | Ne
- pt-PT | Portugalština (Portugalsko) | Ne | Ano | Ne
- ru-RU | Ruština (Rusko) | Ano | Ano | Ne
- sv-SE | Švédština (Švédsko) | Ne | Ne | Ne
- zh-CN | Čínština (Mandarínština, zjednodušená čínština) | Ano | Ano | Ne
- zh-HK | Čínština (kantonština, tradiční) | Ne | Ano | Ne
- zh-TW | Čínština (Tchaj-wanská Mandarínština) | Ne | Ano | Ne
- th TH | thajština (Thajsko) | Ne | Ne | Ne
+  Kód | Jazyk | Podporováno | Přizpůsobitelné
+ ------|----------|---------------------|---------------------
+ ar – například | Arabština (Egypt), moderní standard | Ano | Ano
+ ES certifikační autority | Katalánština | Ano | Ne
+ da-DK | Dánština (Dánsko) | Ano | Ne
+ de-DE | Němčina (Německo) | Ano | Ano
+ cs AU | angličtina (Austrálie) | Ano | Ano
+ cs CA | angličtina (Kanada) | Ano | Ano
+ en-GB | Angličtina (Spojené království) | Ano | Ano
+ en-IN | English (India) | Ano | Ano
+ cs NZ | angličtina (Nový Zéland) | Ano | Ano
+ en-US | Angličtina (Spojené státy) | Ano | Ano
+ es-ES | Španělština (Španělsko) | Ano | Ano
+ es-MX | Španělština (Mexiko) | Ano | Ano
+ fi-FI | Finština (Finsko) | Ano | Ne
+ fr-CA | Francouzština (Kanada) | Ano | Ano
+ fr-FR | Francouzština (Francie) | Ano | Ano
+ Dobrý den – v | hindština (Indie) | Ano | Ano
+ IT-IT | Italština (Itálie) | Ano | Ano
+ ja-JP | Japonština (Japonsko) | Ano | Ano
+ ko-KR | Korejština (Jižní Korea) | Ano | Ano
+ nb-NO | Norština (Bokmal) (Norsko) | Ano | Ne
+ NL-NL | Nizozemština (Nizozemsko) | Ano | Ano
+ pl-PL | Polština (Polsko) | Ano | Ne
+ pt-BR | Portugalština (Brazílie) | Ano | Ano
+ pt-PT | Portugalština (Portugalsko) | Ano | Ano
+ ru-RU | Ruština (Rusko) | Ano | Ano
+ sv-SE | Švédština (Švédsko) | Ano | Ne
+ zh-CN | Čínština (Mandarínština, zjednodušená čínština) | Ano | Ano
+ zh-HK | Čínština (kantonština, tradiční) | Ano | Ano
+ zh-TW | Čínština (Tchaj-wanská Mandarínština) | Ano | Ano
+ th TH | thajština (Thajsko) | Ano | Ne 
 
 
 ## <a name="text-to-speech"></a>Převod textu na řeč

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 07/16/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 1b749df7c5b3badbc6e7eccd885cb953ab3d0afa
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b8c6b4085f56bc12b67bf87177ba33b82c6a6db9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277393"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900584"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Co je Azure Data Box Gateway?
 
@@ -57,7 +57,6 @@ Data Box Gateway nabízí následující funkce:
 |Rychlý přístup     | Místní mezipaměť na zařízení pro rychlý přístup k naposledy použitým souborům.|
 |Nahrání offline     | Odpojený režim podporuje scénáře nahrání v režimu offline.|
 |Aktualizace dat     | Možnost aktualizovat místní soubory pomocí nejnovějších souborů z cloudu.|
-|Šifrování    | BitLocker podporuje místní šifrování dat a bezpečný přenos dat do cloudu přes protokol *https*.       |
 |Odolnost     | Integrovaná odolnost sítě.        |
 
 
@@ -97,7 +96,7 @@ Data Box Gateway fyzické zařízení, prostředek Azure a cílový účet úlo�
     Oblasti, do kterých účty úložiště ukládají data služby Data Box, by se měly nacházet v blízkosti umístění zařízení, aby byl zajištěn optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si [systémové požadavky služby Data Box Gateway](data-box-gateway-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box Gateway](data-box-gateway-limits.md).

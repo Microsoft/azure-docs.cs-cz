@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5da91f37d197e9d427343a09d0376076c356e92d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 12fecfc3a20d91b9324e1662f3f937340b7ff5c4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877815"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972454"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>Omezení kvóty uzlu CloudSimple
 
@@ -38,7 +38,7 @@ Můžete také kontaktovat svého zástupce účet Microsoft na adrese [azurevmw
 * SKU uzlu
 * Počet dalších uzlů, pro které požadujete zvýšení kvóty
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Koupit uzly](create-nodes.md)
 * [CloudSimple uzly – přehled](cloudsimple-node.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 5174b46bae5bbcc18f5a2575fb68cce1305507a3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a1a97e7521e9772b1d13049d42e67d7ac318fffc
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826707"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907365"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště Azure Blob Storage do databáze SQL Database pomocí služby Azure Data Factory
 V tomto kurzu vytvoříte datovou továrnu pomocí uživatelského rozhraní služby Azure Data Factory. Kanál v této datové továrně kopíruje data z úložiště Azure Blob Storage do databáze SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -172,6 +172,9 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 1. Přejděte na kartu s kanálem a zkontrolujte, že je v rozevíracím seznamu **Datová sada jímky** vybraná sada **OutputSqlDataset**.
 
     ![Karta Kanál](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
+
+Volitelně můžete mapovat schéma zdroje na odpovídající schéma cíle pomocí [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md) .
+    
 ## <a name="validate-the-pipeline"></a>Ověření kanálu
 Vyberte **Ověřit** z panelu nástrojů a kanál ověřte.
  
@@ -246,7 +249,7 @@ V tomto kroku vytvoříte pro kanál aktivační událost plánovače. Tato akt
 
 1. Ověřte, že se až do uplynutí zadaného koncového času budou do tabulky **emp** vkládat dva řádky za minutu (pro každé spuštění kanálu). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti Blob Storage. Naučili jste se tyto postupy: 
 
 > [!div class="checklist"]

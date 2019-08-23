@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: aa3a9bdb51e1137cde2ca29e2b5db55ba621cf8c
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516246"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972504"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: Výuka prvního modelu ML
 
@@ -31,11 +31,13 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Jediným předpokladem je spuštění předchozího kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
+Jediným předpokladem je spuštění první části tohoto kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
+
+V této části kurzu spustíte kód v ukázkovém poznámkovém bloku Jupyter otevřeném na konci části. Tento článek vás provede stejným kódem, který je v poznámkovém bloku.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Připojit pracovní prostor a vytvořit experiment
 
-Naimportujte `config.json`třídua načtěte informace o předplatném ze souboru pomocí `from_config().` funkce, která ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete zadat i parametr cesty, který bude odkazovat na soubor. `Workspace` pomocí `from_config(path="your/file/path")`. Pokud tento poznámkový blok spouštíte na serveru cloudového poznámkového bloku v pracovním prostoru, soubor je automaticky v kořenovém adresáři.
+Naimportujte `config.json`třídua načtěte informace o předplatném ze souboru pomocí `from_config().` funkce, která ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete zadat i parametr cesty, který bude odkazovat na soubor. `Workspace` pomocí `from_config(path="your/file/path")`. V případě serveru cloudového poznámkového bloku je soubor automaticky v kořenovém adresáři.
 
 Pokud následující kód požádá o další ověřování, jednoduše vložte odkaz do prohlížeče a zadejte ověřovací token.
 

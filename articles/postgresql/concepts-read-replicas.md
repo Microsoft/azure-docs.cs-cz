@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.openlocfilehash: 928a85c9d03148198fe3e965636740812ce732f7
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 08/21/2019
+ms.openlocfilehash: 0884120c15b2e48566d1889400197e316bac9021
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976290"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907442"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v Azure Database for PostgreSQL – jeden server
 
@@ -120,9 +120,25 @@ Replikaci mezi hlavní a replikou můžete zastavit. Akce zastavit způsobí, ž
 > Samostatný server se nedá znovu vytvořit do repliky.
 > Před zastavením replikace v replice pro čtení zajistěte, aby měla replika všechna data, která požadujete.
 
-Při zastavení replikace ztratí replika všechny odkazy na předchozí hlavní a jiné repliky. Mezi hlavním serverem a replikou neexistuje automatizované převzetí služeb při selhání. 
+Při zastavení replikace ztratí replika všechny odkazy na předchozí hlavní a jiné repliky.
 
 Přečtěte si, jak [zastavit replikaci do repliky](howto-read-replicas-portal.md).
+
+## <a name="fail-over"></a>Převzetí služeb při selhání
+Mezi hlavním serverem a serverem repliky neexistuje automatizované převzetí služeb při selhání. 
+
+Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi hlavním serverem a replikou. Velikost prodlevy závisí na tom, jak velké zatížení běží na hlavním serveru. Ve většině případů se prodlevy replikují mezi několik sekund až na několik minut. Vlastní prodlevu replikace můžete sledovat pomocí *prodlevy repliky*metriky, která je k dispozici pro každou repliku. Tato metrika ukazuje čas od poslední opakované transakce. Doporučujeme, abyste zjistili, jaký je průměrný prodleva tím, že v časovém intervalu pozoruje prodlevu repliky. Můžete nastavit upozornění na prodlevu repliky, takže pokud bude mimo očekávaný rozsah, můžete provést akci.
+
+> [!Tip]
+> Pokud převezmete služby při selhání k replice, prodleva v době odpojování repliky z hlavní větve bude označovat, kolik dat se ztratilo.
+
+Jakmile se rozhodnete, že chcete převzít služby při selhání do repliky, 
+
+1. Zastavit replikaci do repliky tento krok je nutný k tomu, aby server repliky mohl přijímat zápisy. V rámci tohoto procesu se server repliky restartuje a odpojí se od hlavního serveru. Jakmile zahájíte zastavení replikace, proces back-endu obvykle trvá přibližně 2 minuty, než se dokončí. Přečtěte si další informace o [zastavení replikace](#stop-replication).
+    
+2. Nasměrujte aplikaci na (bývalé) repliku, každý server má jedinečný připojovací řetězec. Aktualizujte svou aplikaci tak, aby odkazovala na (bývalé) repliku místo na hlavní.
+    
+Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 výše.
 
 
 ## <a name="considerations"></a>Požadavky
@@ -136,17 +152,17 @@ Před vytvořením repliky `azure.replication_support` pro čtení musí být pa
 Replika pro čtení je vytvořená jako nový server Azure Database for PostgreSQL. Existující server nelze vytvořit do repliky. Nelze vytvořit repliku jiné repliky pro čtení.
 
 ### <a name="replica-configuration"></a>Konfigurace repliky
-Replika je vytvořena pomocí stejné konfigurace serveru jako hlavní. Po vytvoření repliky se dá několik nastavení měnit nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
+Replika se vytvoří pomocí stejného nastavení výpočtů a úložiště jako hlavní. Po vytvoření repliky se dá několik nastavení měnit nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
 
 > [!IMPORTANT]
-> Než bude konfigurace hlavního serveru aktualizována na nové hodnoty, aktualizujte konfiguraci repliky na hodnotu stejné nebo větší. Tato akce zajistí, že replika bude udržovat všechny změny provedené v hlavní větvi.
+> Před aktualizací hlavního nastavení na novou hodnotu aktualizujte konfiguraci repliky na hodnotu rovná se nebo větší. Tato akce zajistí, že replika bude udržovat všechny změny provedené v hlavní větvi.
 
 PostgreSQL vyžaduje, aby hodnota `max_connections` parametru v replice pro čtení byla větší než nebo rovna hlavní hodnotě. v opačném případě se replika nespustí. V Azure Database for PostgreSQL `max_connections` je hodnota parametru založena na SKU. Další informace najdete v tématu [omezení v Azure Database for PostgreSQL](concepts-limits.md). 
 
 Pokud se pokusíte aktualizovat hodnoty serveru, ale nedodržují limity, dojde k chybě.
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
-[PostgreSQL vyžaduje](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) , aby hodnota `max_prepared_transactions` parametru v replice pro čtení byla větší než nebo rovna hlavní hodnotě. v opačném případě se replika nespustí. Pokud chcete změnit `max_prepared_transactions` hlavní server, nejdřív ho změňte na replikách.
+[PostgreSQL vyžaduje](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) , aby hodnota `max_prepared_transactions` parametru v replice pro čtení byla větší než nebo rovna hlavní hodnotě. v opačném případě se replika nespustí. Pokud chcete změnit `max_prepared_transactions` hlavní server, nejdřív ho změňte na replikách.
 
 ### <a name="stopped-replicas"></a>Zastavené repliky
 Pokud zastavíte replikaci mezi hlavním serverem a replikou pro čtení, bude se replika znovu používat pro změnu. Zastavená replika se stal samostatným serverem, který přijímá čtení i zápis. Samostatný server se nedá znovu vytvořit do repliky.
@@ -154,5 +170,6 @@ Pokud zastavíte replikaci mezi hlavním serverem a replikou pro čtení, bude s
 ### <a name="deleted-master-and-standalone-servers"></a>Odstraněné hlavní a samostatné servery
 Po odstranění hlavního serveru se všechny jeho repliky pro čtení stanou samostatnými servery. Repliky se restartují, aby se tato změna projevila.
 
-## <a name="next-steps"></a>Další kroky
-Naučte se [vytvářet a spravovat repliky pro čtení v Azure Portal](howto-read-replicas-portal.md).
+## <a name="next-steps"></a>Další postup
+* Naučte se [vytvářet a spravovat repliky pro čtení v Azure Portal](howto-read-replicas-portal.md).
+* Naučte se [vytvářet a spravovat repliky pro čtení v rozhraní příkazového řádku Azure CLI](howto-read-replicas-cli.md).

@@ -1,100 +1,100 @@
 ---
-title: Monitorování Azure Site Recovery procesový server
-description: Tento článek popisuje, jak monitorovat Azure Site Recovery procesový server.
+title: Monitorování Azure Site Recovery procesového serveru
+description: Tento článek popisuje, jak monitorovat Azure Site Recovery procesový Server.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 4ff52e737438210296b8f2201d5e66e1d38b7bc9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d746385a034fdf742b8958b3d1fe51ea2a3c5cf
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418281"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972178"
 ---
-# <a name="monitor-the-process-server"></a>Monitorování procesový server
+# <a name="monitor-the-process-server"></a>Monitorování procesového serveru
 
-Tento článek popisuje, jak monitorovat [Site Recovery](site-recovery-overview.md) procesový server.
+Tento článek popisuje, jak monitorovat [Site Recovery](site-recovery-overview.md) procesový Server.
 
-- Procesový server se používá při nastavování zotavení po havárii místních virtuálních počítačů VMware a fyzických serverů do Azure.
-- Ve výchozím nastavení procesový server běží na konfiguračním serveru. Je nainstalovaná ve výchozím nastavení při nasazení konfiguračního serveru.
-- V případě potřeby škálování a zpracovávají velké objemy replikované počítače a zvýšit objem provozu replikace, můžete nasadit další, horizontální navýšení kapacity procesových serverů.
+- Procesový Server se používá při nastavení zotavení po havárii místních virtuálních počítačů VMware a fyzických serverů do Azure.
+- Ve výchozím nastavení běží procesový Server na konfiguračním serveru. Je nainstalována ve výchozím nastavení při nasazení konfiguračního serveru.
+- Pokud budete chtít škálovat a zpracovávat větší počet replikovaných počítačů a vyšších objemů replikačních přenosů, můžete nasadit další procesové servery se škálováním na více instancí.
 
-[Další informace](vmware-physical-azure-config-process-server-overview.md) o roli a nasazení procesových serverů.
+[Přečtěte si další informace](vmware-physical-azure-config-process-server-overview.md) o roli a nasazení procesových serverů.
 
 ## <a name="monitoring-overview"></a>Přehled monitorování
 
-Vzhledem k tomu, že procesový server má mnoho role, zejména ukládání replikovaných dat do mezipaměti, kompresi a přenos do Azure, je důležité monitorovat stav zpracování procesu serveru průběžně.
+Vzhledem k tomu, že procesový Server má tolik rolí, zejména při ukládání replikovaných dat do mezipaměti, kompresi a přenos do Azure, je důležité monitorovat stav procesového serveru průběžně.
 
-Existuje mnoho situací, které často ovlivňují výkon procesu serveru. Problémy neovlivňují výkon bude mít požadovaného kaskádového efektu na stav virtuálního počítače, případně doručením (push) na procesovém serveru a jeho replikované počítače v kritickém stavu. Situace:
+K dispozici je řada situací, které mají obvykle vliv na výkon procesového serveru. Problémy, které mají vliv na výkon, budou mít na stav virtuálních počítačů kaskádový efekt, takže se procesový Server i jeho replikované počítače dostanou do kritického stavu. Mezi situace patří:
 
-- Vysoký počet virtuálních počítačů pomocí procesového serveru, blíží nebo překračuje doporučené omezení.
-- Tento procesový server používají virtuální počítače mají s vysokou četností změn dat sazby.
-- Propustnost sítě mezi virtuálními počítači a že procesový server není dost informací k nahrání dat replikace k procesového serveru.
-- Propustnost sítě mezi procesovým serverem a Azure není dostatečná k odesílání dat replikace z procesového serveru do Azure.
+- Vysoký počet virtuálních počítačů používá procesový Server, který se blíží nebo nepřekračuje doporučeným omezením.
+- Virtuální počítače používající procesový Server mají vysokou frekvenci přenosů.
+- Propustnost sítě mezi virtuálními počítači a procesovým serverem není dostatečná pro nahrání dat replikace na procesový Server.
+- Propustnost sítě mezi procesovým serverem a Azure není dostatečná pro nahrání dat replikace z procesového serveru do Azure.
 
-Všechny tyto problémy mohou ovlivnit plánovaného bodu obnovení (RPO) virtuálních počítačů. 
+Všechny tyto problémy mohou ovlivnit cíl bodu obnovení (RPO) virtuálních počítačů. 
 
-**Proč?** Protože všechny disky na virtuálním počítači mají společný bod generování bod obnovení pro virtuální počítač vyžaduje. Pokud má jeden disk s vysokou četností změn dat sazby, je replikace pomalá nebo procesový server nejsou optimálním řešením, ovlivňuje to, jak efektivní jsou vytvořeny body obnovení.
+**Proč?** Vzhledem k tomu, že generování bodu obnovení pro virtuální počítač vyžaduje, aby všechny disky na virtuálním počítači měly společný bod. Pokud má jeden disk velkou četnost změn, je replikace pomalá nebo procesový Server není optimální, ovlivňuje způsob, jakým se vytvářejí efektivní body obnovení.
 
 ## <a name="monitor-proactively"></a>Proaktivní monitorování
 
-Abyste zabránili problémům s procesový server, je potřeba:
+Aby se zabránilo problémům s procesovým serverem, je důležité:
 
-- Vysvětlení specifické požadavky na procesových serverů pomocí [kapacity a pokyny k dimenzování](site-recovery-plan-capacity-vmware.md#capacity-considerations)a ujistěte se, že proces servery jsou nasazené a spouštění podle doporučení.
-- Monitorování výstrah a řešení potíží, když k nim dojde, zajištění efektivního provozu procesových serverů.
+- Seznamte se s konkrétními požadavky na procesové servery s využitím [pokynů pro kapacitu a velikosti](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zajistěte, aby byly procesní servery nasazené a spuštěné podle doporučení.
+- Sledujte výstrahy a řešte problémy při jejich výskytu a udržujte tak efektivní procesy procesů.
 
 
-## <a name="process-server-alerts"></a>Upozornění k procesového serveru
+## <a name="process-server-alerts"></a>Výstrahy procesového serveru
 
-Procesový server generuje počet upozornění na stav, uvedené v následující tabulce.
+Procesový Server vygeneruje množství upozornění na stav, shrnuté v následující tabulce.
 
 **Typ výstrahy** | **Podrobnosti**
 --- | ---
-![V pořádku][green] | Procesový server je v pořádku a připojené.
-![Upozornění][yellow] | Využití procesoru > 80 % po dobu posledních 15 minut
-![Upozornění][yellow] | > 80 % využití paměti za posledních 15 minut
-![Upozornění][yellow] | Mezipaměť složky volného místa < 30 % po dobu posledních 15 minut
-![Upozornění][yellow] | Služby procesového serveru nejsou spuštěné za posledních 15 minut
-![Kritická][red] | Využití procesoru > 95 % po dobu posledních 15 minut
-![Kritická][red] | > 95 % využití paměti za posledních 15 minut
-![Kritická][red] | Složka mezipaměti volné místo < 25 % za posledních 15 minut
-![Kritická][red] | Žádný prezenční signál z procesového serveru po dobu 15 minut.
+![V pořádku][green] | Procesový Server je připojený a v pořádku.
+![Upozornění][yellow] | Využití CPU > 80% za posledních 15 minut
+![Upozornění][yellow] | Využití paměti > 80% za posledních 15 minut.
+![Upozornění][yellow] | Volné místo ve složce mezipaměti < 30% za posledních 15 minut
+![Upozornění][yellow] | Služby procesového serveru nejsou spuštěné za posledních 15 minut.
+![Kritická][red] | Využití CPU > 95% za posledních 15 minut
+![Kritická][red] | Využití paměti > 95% za posledních 15 minut.
+![Kritická][red] | Volné místo ve složce mezipaměti < 25% za posledních 15 minut
+![Kritická][red] | Žádný prezenční signál od procesového serveru po dobu 15 minut.
 
-![klíč tabulky](./media/vmware-physical-azure-monitor-process-server/table-key.png)
+![Klíč tabulky](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 
 > [!NOTE]
-> Nejhorší výstrahy vygenerované podle celkového stavu procesového serveru.
+> Celkový stav procesového serveru je založený na nejhorším vygenerovaném upozornění.
 
 
 
-## <a name="monitor-process-server-health"></a>Monitorování procesu serveru stavu
+## <a name="monitor-process-server-health"></a>Monitorovat stav procesového serveru
 
-Můžete monitorovat stav procesových serverů následujícím způsobem: 
+Stav serverů procesů můžete monitorovat následujícím způsobem: 
 
-1. K monitorování stavu replikace a stav replikovaného počítače a jeho procesový server v trezoru > **replikované položky**, klikněte na počítač, který chcete sledovat.
-2. V **stav replikace**, můžete sledovat stav virtuálního počítače. Klikněte na stavu k podrobnostem pro podrobnosti o chybě.
+1. Pokud chcete monitorovat stav replikace a stav replikovaného počítače a jeho procesový Server, v trezoru > **replikované položky**klikněte na počítač, který chcete monitorovat.
+2. V části stav **replikace**můžete monitorovat stav virtuálního počítače. Kliknutím na stav přejdete k podrobnostem o podrobnostech o chybě.
 
-    ![Stav zpracování procesu serveru na řídicím panelu virtuálních počítačů](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
+    ![Stav procesového serveru na řídicím panelu virtuálních počítačů](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
 
-4. V **stav zpracování procesu serveru**, můžete monitorovat stav procesového serveru. Přejít na nižší úroveň podrobnosti.
+4. Včásti stav procesového serveru můžete monitorovat stav procesového serveru. Podrobnosti najdete v podrobnostech.
 
     ![Podrobnosti procesového serveru na řídicím panelu virtuálních počítačů](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
 
-5. Stav je možné také monitorovat pomocí grafické vyjádření na stránce virtuálního počítače.
-    - Horizontální navýšení kapacity procesového serveru budou zvýrazněna oranžově, pokud existují upozornění s ním spojená a červenou, když má všechny kritické problémy. 
-    - Pokud na procesovém serveru běží ve výchozím nasazení konfiguračního serveru, bude konfigurační server zvýrazněny odpovídajícím způsobem.
-    - Chcete přejít k podrobnostem, klikněte na tlačítko na konfiguračním serveru nebo procesového serveru. Poznámka: všechny problémy a jakýchkoli doporučení pro nápravu.
+5. Stav lze také monitorovat pomocí grafické reprezentace na stránce virtuálního počítače.
+    - Procesový Server se škálováním na více instancí bude zvýrazněný oranžová, pokud jsou k němu přidružená nějaká upozornění a červené, pokud má kritické problémy. 
+    - Pokud je procesový Server spuštěný ve výchozím nasazení na konfiguračním serveru, pak bude konfigurační server zvýrazněný odpovídajícím způsobem.
+    - Chcete-li přejít k podrobnostem, klikněte na konfigurační server nebo procesový Server. Poznamenejte si všechny problémy a veškerá doporučení k nápravě.
 
-Můžete také sledovat zpracovat servery v trezoru v části **infrastruktura Site Recovery**. V **spravovat vaše infrastruktura Site Recovery**, klikněte na tlačítko **konfigurační servery**. Vyberte konfigurační server přidružené k procesového serveru a přejít dolů do podrobnosti procesového serveru.
+Můžete také monitorovat procesní servery v trezoru v části **Site Recovery infrastruktura**. V oblasti **Správa infrastruktury Site Recovery**klikněte na **konfigurační servery**. Vyberte konfigurační server přidružený k procesu serveru a přejděte k podrobnostem o procesovém serveru.
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud máte některá proces servery problémy, postupujte podle našich [pokyny při řešení potíží](vmware-physical-azure-troubleshoot-process-server.md)
-- Pokud potřebujete další pomoc, zveřejněte svůj dotaz v [fórum pro Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
+- Pokud máte nějaké problémy s procesovým serverem, postupujte podle pokynů pro [řešení potíží](vmware-physical-azure-troubleshoot-process-server.md) .
+- Pokud potřebujete další informace, pošlete svůj dotaz do [fóra Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png
