@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 07/29/2019
-ms.openlocfilehash: 78dff1b9d9db4e54ab1a8f7203088753e206c610
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 08/21/2019
+ms.openlocfilehash: 635b7adb8753b7e9490e8f14a0699c09297fdbbb
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641952"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899084"
 ---
 # <a name="scenario-apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Scénář: Apache Spark úloha běží pomalu, pokud kontejner úložiště Azure obsahuje mnoho souborů v Azure HDInsight.
 
@@ -27,8 +27,6 @@ Toto je známý problém Sparku. Zpomalení přicházejí z `ListBlob` operací 
 
 Aby bylo možné sledovat oddíly, Spark musí udržovat `FileStatusCache` , který obsahuje informace o struktuře adresářů. Pomocí této mezipaměti může Spark analyzovat cesty a znát dostupné oddíly. Výhodou sledování oddílů je, že Spark při čtení dat mění jenom nezbytné soubory. Aby bylo možné tyto informace aktualizovat v aktuálním stavu, musí Spark při psaní nových dat zobrazit seznam všech souborů v adresáři a aktualizovat tuto mezipaměť.
 
-V Spark 1,6 pokaždé, když aktualizujete adresář, můžete (1) vymazat mezipaměť (2) rekurzivně vypsat všechny soubory a (3) aktualizovat celou mezipaměť. To bude mít za následek mnoho operací výpisu.
-
 V Spark 2,1 ale nemusíme aktualizovat mezipaměť po každém zápisu, Spark zkontroluje, jestli se stávající sloupec oddílu shoduje s navrhovanou operací zápisu v aktuální žádosti o zápis, takže bude také vést k vypsání operací na začátku každého zápisu.
 
 Tento problém s výkonem by měl být vyřešen v Spark 2,2 při zápisu dat v režimu připojení.
@@ -39,7 +37,7 @@ Když vytvoříte dělenou datovou sadu, je důležité použít schéma dělen�
 
 V každé n-tého mikrodávce, kde N% 100 = = 0 (100 je pouze příklad), přesuňte existující data do jiného adresáře, který lze načíst pomocí Sparku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

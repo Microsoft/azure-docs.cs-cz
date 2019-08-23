@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: 420ac45b7d3b5e97772b1aa712ba6b8442ac1de2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: d8a5b941be34028f7a1c53e39b38ab30714ba301
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562762"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971337"
 ---
 # <a name="use-with-kubernetes-and-helm"></a>Použití s Kubernetes a Helmem
 
@@ -150,7 +150,7 @@ K instalaci *grafu Helm* je potřeba provést [`helm install`][helm-install-cmd]
 
 ```console
 helm install microsoft/cognitive-services-speech-onpremise \
-    --version 0.1.0 \
+    --version 0.1.1 \
     --values <config-values.yaml> \
     --name onprem-speech
 ```

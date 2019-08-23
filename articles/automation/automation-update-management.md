@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 393c66f57cd4a7621ad660774a95502c0f5ad8c4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: b9fcf06caf2abf116a2f2b99f26ead6277f7ad50
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534720"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970554"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -76,7 +76,7 @@ V následující tabulce je uveden seznam podporovaných operačních systémů:
 |Operační systém  |Poznámky  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze posouzení aktualizací.         |
-|Windows Server 2008 R2 SP1 a novější.  |Vyžaduje se .NET Framework 4.5.1 nebo novější. ([Stáhnout .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Je vyžadován Windows PowerShell 4,0 nebo novější. ([Stáhnout WMF 4,0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Pro zvýšení spolehlivosti se doporučuje prostředí Windows PowerShell 5,1.  ([Stáhnout WMF 5,1](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2008 R2 (RTM a SP1 Standard)|Vyžaduje se .NET Framework 4.5.1 nebo novější. ([Stáhnout .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Je vyžadován Windows PowerShell 4,0 nebo novější. ([Stáhnout WMF 4,0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Pro zvýšení spolehlivosti se doporučuje prostředí Windows PowerShell 5,1.  ([Stáhnout WMF 5,1](https://www.microsoft.com/download/details.aspx?id=54616))        |
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje, aby příkaz "Yumu" vracel data zabezpečení, která CentOS nejsou v poli. Další informace o opravách na základě klasifikace v CentOS najdete v tématu [klasifikace aktualizací v systému Linux](#linux-2) .          |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
@@ -371,7 +371,7 @@ Následující adresy jsou vyžadovány konkrétně pro Update Management. Komun
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
-U počítačů s Windows musíte taky u všech koncových bodů vyžadovaných nástrojem web Windows Update umožňovat provoz.  Aktualizovaný seznam požadovaných koncových bodů můžete najít v [problémech souvisejících s HTTP/proxy serverem](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Pokud máte místní [web Windows Update Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musíte taky na serveru, který určíte v [klíči služby WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry), povolený provoz.
+U počítačů s Windows musíte taky u všech koncových bodů vyžadovaných nástrojem web Windows Update umožňovat provoz.  Aktualizovaný seznam požadovaných koncových bodů najdete v problémech [souvisejících s HTTP/proxy serverem](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Pokud máte místní [web Windows Update Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musíte taky na serveru, který určíte v [klíči služby WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry), povolený provoz.
 
 U počítačů se systémem Red Hat Linux uveďte požadované koncové body na [IP adresách pro servery RHUI Content Delivery](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) . Další distribuce pro Linux najdete v dokumentaci pro poskytovatele.
 

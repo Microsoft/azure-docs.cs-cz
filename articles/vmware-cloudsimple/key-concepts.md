@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e434065feb218b0a46220b95cc6bfd9a7033de30
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 120ab94ce62010acf4e742bd5220405961dad6db
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816108"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972729"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solution-by-cloudsimple"></a>Klíčové koncepty správy řešení Azure VMware podle CloudSimple
 
@@ -34,7 +34,6 @@ Přečtěte si další informace o [službě CloudSimple](cloudsimple-service.md
 ## <a name="cloudsimple-node"></a>Uzel CloudSimple
 
 Uzel CloudSimple je vyhrazený, holé hostitel s více technologiemi a hostitele úložiště, do kterého je nasazený VMware ESXi hypervisor. Tento uzel je pak začleněn do platforem VMware vSphere, vCenter, síti vSAN a NSX. Jsou povolené i síťové služby CloudSimple a hraniční sítě. Každý uzel slouží jako jednotka výpočetní kapacity a úložiště, kterou můžete zřídit pro vytváření [privátních cloudů CloudSimple](cloudsimple-private-cloud.md). Uzly zřídíte nebo rezervujete v oblasti, kde je dostupná služba CloudSimple.
-
 
 Přečtěte si další informace o [CloudSimple uzlech](cloudsimple-node.md).
 

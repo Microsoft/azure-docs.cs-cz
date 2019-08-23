@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7838fd30869629298c5b44cc4b3e5c1e5daa7051
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: ef5a605fb0190e67de8b2bb95bbccfd8fd3cf279
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69519994"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906040"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Kurz: Konfigurace Signagelive pro Automatické zřizování uživatelů
 
@@ -56,8 +56,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 Před konfigurací Signagelive pro Automatické zřizování uživatelů pomocí Azure AD budete muset povolit SCIM zřizování na Signagelive.
 
-1.  Zajistěte si přístup k [Signagelive](mailto:development@signagelive.com) , abyste získali tajný token potřebný ke konfiguraci zřizování SCIM.
-
+  Zajistěte si přístup k [Signagelive](mailto:development@signagelive.com) , abyste získali tajný token potřebný ke konfiguraci zřizování SCIM.
 
 ## <a name="add-signagelive-from-the-gallery"></a>Přidání Signagelive z Galerie
 
@@ -86,7 +85,7 @@ Pokud chcete nakonfigurovat Signagelive pro Automatické zřizování uživatel�
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Signagelive na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
->  Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro BitaBIZ podle pokynů uvedených v [kurzu Signagelive jednotného přihlašování](Signagelive-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
+>  Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Signagelive podle pokynů uvedených v [kurzu Signagelive jednotného přihlašování](Signagelive-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
 
 ### <a name="to-configure-automatic-user-provisioning-for-signagelive--in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Signagelive ve službě Azure AD:
 
@@ -106,7 +105,8 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části přihlašovací údaje správce zadejte ` https://samlapi.signagelive.com/scim/v2` **adresu URL tenanta**. Do pole **tajný token** zadejte hodnotu **nosných tokenů** poskytovanou technickým vývojářským týmem. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Signagelive. Pokud se připojení nepovede, ujistěte se, že má váš účet Signagelive oprávnění ![správce, a zkuste to znovu s adresou URL tenanta + token.](common/provisioning-testconnection-tenanturltoken.png)
+5. V části přihlašovací údaje správce zadejte ` https://samlapi.signagelive.com/scim/v2` **adresu URL tenanta**. Do pole **tajný token** zadejte hodnotu **nosných tokenů** poskytovanou technickým vývojářským týmem. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Signagelive. Pokud se připojení nepovede, ujistěte se, že má váš účet Signagelive oprávnění správce, a zkuste to znovu.
+    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
 6. V poli **e-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
@@ -144,15 +144,15 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Signagelive.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než následné synchronizace. Další informace o tom, jak dlouho bude trvat pro uživatele a/nebo skupiny, najdete v článku [Jak dlouho bude trvat, než budou uživatelé zřizovat](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users). 
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Signagelive. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)

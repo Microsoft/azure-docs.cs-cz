@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934833"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899959"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>World bez hesel s Azure Active Directory
 
@@ -150,7 +150,7 @@ Vzhledem k tomu, že většina uživatelů je zvykla používat k ověřování 
 
 Aby bylo možné aplikaci Microsoft Authenticator použít jako řešení bez hesla pro přihlášení k účtu služby Azure AD, musí být kroky provedeny správcem i koncovými uživateli.
 
-Nejdřív bude správce muset [Povolit používání aplikace jako přihlašovací údaje](../../active-directory/authentication/howto-authentication-passwordless-phone.md) v Tenantovi pomocí Windows PowerShellu. Správce bude taky muset povolit koncovým uživatelům ověřování Azure Multi-Factor Authentication (Azure MFA) a nakonfigurovat Microsoft Authenticator aplikaci jako jednu z [metod ověřování](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
+Nejdřív bude správce muset [Povolit používání aplikace jako přihlašovací údaje](../../active-directory/authentication/howto-authentication-passwordless-phone.md) v Tenantovi pomocí Windows PowerShellu. Správce bude taky muset povolit koncové uživatele pro Azure Multi-Factor Authentication (Azure MFA) a nakonfigurovat Microsoft Authenticator aplikaci jako jednu z [metod ověřování](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
 
 Koncoví uživatelé budou muset [Stáhnout a nainstalovat](../../active-directory/user-help/user-help-auth-app-download-install.md) aplikaci Microsoft Authenticator a [nastavit účet](../../active-directory/user-help/security-info-setup-auth-app.md) tak, aby používal aplikaci Microsoft Authenticator jako jednu z metod ověřování.
 
@@ -208,7 +208,7 @@ Správci můžou povolit podporu FIDO2 ve službě Azure AD a přiřazovat funkc
 
 * Azure AD
 
-* Služba Azure Multi-Factor Authentication
+* Azure Multi-Factor Authentication
 
 * Kombinovaná registrace – náhled
 
@@ -226,9 +226,9 @@ Doporučujeme také, aby každá organizace vytvořila protokol pro uživatele a
 
 #### <a name="user-sets-up-fido2-security-key"></a>Uživatel nastaví klíč zabezpečení FIDO2.
 
-Správci sice můžou [ručně zřizovat klíče](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) a distribuovat je koncovým uživatelům, takže zřizování a povolování poskytovatele přihlašovacích údajů FIDO2 na zamykací obrazovce Windows 10 budou podporované prostřednictvím [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods). Správci budou taky muset použít [Azure Portal](https://portal.azure.com/) k povolení zařízení hardwarových tokenů jako metody ověřování pomocí hesla.
+Správci sice můžou [ručně zřizovat klíče](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) a distribuovat je koncovým uživatelům, takže zřizování a povolování poskytovatele přihlašovacích údajů FIDO2 na zamykací obrazovce Windows 10 budou podporované prostřednictvím [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods). Správci budou taky muset použít [Azure Portal](https://portal.azure.com/) k povolení zařízení hardwarových tokenů jako metody ověřování pomocí hesla.
 
-Nasazování klíčů zabezpečení FIDO2 také vyžaduje, aby uživatelé zaregistrovali své klíče pomocí [kombinované registrace](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Při kombinované registraci se uživatelé registrují jednou a získají výhody pro Azure Multi-Factor Authentication i pro resetování hesla jednotného přihlašování (SSPR).
+Nasazování klíčů zabezpečení FIDO2 také vyžaduje, aby uživatelé zaregistrovali své klíče pomocí [kombinované registrace](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Při kombinované registraci se uživatelé registrují jednou a získají výhody pro Azure Multi-Factor Authentication i resetování hesla jednotného přihlašování (SSPR).
 
 Kromě výběru hardwarového tokenu jako výchozí metody Multi-Factor Authentication doporučujeme také vybrat další možnost ověření.
 
@@ -343,4 +343,4 @@ Zavedení moderních technologií Multi-Factor Authentication, jako je biometrik
 ## <a name="next-steps"></a>Další postup
 
 * Přehled toho, [co je](../../active-directory/authentication/concept-authentication-passwordless.md) nejenom pro hesla?
-* [Jak ve službě Azure AD povolit nepoužívatelné hesla](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)
+* [Jak ve službě Azure AD povolit nepoužívatelné hesla](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: b99dbd403de0de948527fbe74b7e1205316822c0
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019683"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897006"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Pro ověřování pomocí SQL použít Azure Active Directory ověřování
 
@@ -116,8 +116,9 @@ Chcete-li vytvořit uživatele databáze s omezením v Azure SQL Database, sprav
 
 Ověřování Azure Active Directory podporuje následující metody připojení k databázi pomocí identit Azure AD:
 
-- Použití integrovaného ověřování systému Windows
-- Použití hlavního názvu služby Azure AD a hesla
+- Azure Active Directory heslo
+- Azure Active Directory integrovaný
+- Azure Active Directory univerzální s MFA
 - Použití ověřování pomocí tokenu aplikace
 
 Následující metody ověřování jsou podporovány pro objekty zabezpečení serveru Azure AD (přihlášení) (**Public Preview**):
@@ -125,7 +126,6 @@ Následující metody ověřování jsou podporovány pro objekty zabezpečení 
 - Azure Active Directory heslo
 - Azure Active Directory integrovaný
 - Azure Active Directory univerzální s MFA
-- Azure Active Directory Interactive
 
 
 ### <a name="additional-considerations"></a>Další aspekty
@@ -143,7 +143,7 @@ Následující metody ověřování jsou podporovány pro objekty zabezpečení 
 - Ověřování Azure AD je podporované pro SQL Database Azure Portal **Import databáze** a **Export databázových** oken. Import a export pomocí ověřování Azure AD se taky podporuje z příkazu PowerShellu.   
 - Ověřování Azure AD se podporuje pro SQL Database, spravovanou instanci a SQL Data Warehouse pomocí rozhraní příkazového řádku (CLI). Další informace najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication-configure.md) a [SQL Server-AZ SQL Server](https://docs.microsoft.com/cli/azure/sql/server).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak vytvořit a naplnit Azure AD a jak nakonfigurovat Azure AD pomocí Azure SQL Database nebo Azure SQL Data Warehouse, najdete v tématu [Konfigurace a správa Azure Active Directory ověřování pomocí SQL Database, spravované instance nebo SQL Data Warehouse](sql-database-aad-authentication-configure.md).
 - Kurz použití objektů zabezpečení serveru Azure AD (přihlášení) se spravovanými instancemi najdete v tématu [objekty zabezpečení serveru Azure AD (přihlášení) se spravovanými instancemi](sql-database-managed-instance-aad-security-tutorial.md) .

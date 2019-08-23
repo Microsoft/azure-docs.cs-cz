@@ -74,8 +74,6 @@
               items:
                 - name: Použití
                   href: ../azure-monitor/insights/service-map.md
-                - name: Konfigurace
-                  href: ../azure-monitor/insights/service-map-configure.md
                 - name: Integrace s Operations Managerem
                   href: ../azure-monitor/insights/service-map-scom.md
             - name: Posouzení SQL

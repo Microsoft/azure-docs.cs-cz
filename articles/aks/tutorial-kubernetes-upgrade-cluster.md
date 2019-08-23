@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 0986da64fda659b949d5d1e6cfae03df2daded19
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 9fe02c9b563259abb51a1a768c7facdf1bf601f7
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019160"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898839"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Kurz: Upgrade Kubernetes ve službě Azure Kubernetes (AKS)
 
@@ -40,12 +40,12 @@ Před upgradem clusteru pomocí příkazu [az aks get-upgrades][] zkontrolujte, 
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-V následujícím příkladu je aktuální verze *1.13.9*a dostupné verze se zobrazí ve sloupci *upgrady* .
+V následujícím příkladu je aktuální verze *1.13.10*a dostupné verze se zobrazí ve sloupci *upgrady* .
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 -------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.13.9           1.13.9             1.14.5
+default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
 ```
 
 ## <a name="upgrade-a-cluster"></a>Upgrade clusteru
@@ -58,16 +58,16 @@ Aby se minimalizovalo přerušení spuštěných aplikací, uzly AKS pečlivě u
 1. Když je nový uzel připravený a připojený ke clusteru, začne Plánovač Kubernetes v něm spouštět lusky.
 1. Starý uzel se odstraní a další uzel v clusteru zahájí proces Cordon a vyprázdnění.
 
-Cluster AKS můžete upgradovat pomocí příkazu [az aks upgrade][]. Následující příklad upgraduje cluster na Kubernetes verze *1.14.5*.
+Cluster AKS můžete upgradovat pomocí příkazu [az aks upgrade][]. Následující příklad upgraduje cluster na Kubernetes verze *1.14.6*.
 
 > [!NOTE]
-> Najednou můžete upgradovat pouze jednu dílčí verzi. Můžete například upgradovat z *1.12. x* na *1.13. x*, ale nelze upgradovat z *1.12.8* na *1.14. x* přímo. Pokud chcete upgradovat z *1.12. x* na *otázku 1.14. x*, nejdřív upgradujte z *1.12. x* na *1.13. x*a pak proveďte jiný upgrade z *1.13. x* na *otázku 1.14. x*.
+> Najednou můžete upgradovat pouze jednu dílčí verzi. Můžete například upgradovat z *1.12. x* na *1.13. x*, ale nelze upgradovat z *1.12. x* na *otázku 1.14. x* přímo. Pokud chcete upgradovat z *1.12. x* na *otázku 1.14. x*, nejdřív upgradujte z *1.12. x* na *1.13. x*a pak proveďte jiný upgrade z *1.13. x* na *otázku 1.14. x*.
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.5
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.6
 ```
 
-Následující zhuštěný příklad výstupu ukazuje *kubernetesVersion* nyní sestavy *1.14.5*:
+Následující zhuštěný příklad výstupu ukazuje *kubernetesVersion* nyní sestavy *1.14.6*:
 
 ```json
 {
@@ -85,7 +85,7 @@ Následující zhuštěný příklad výstupu ukazuje *kubernetesVersion* nyní 
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.14.5",
+  "kubernetesVersion": "1.14.6",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -100,12 +100,12 @@ Následujícím způsobem ověřte úspěšné provedení upgradu pomocí přík
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Následující příklad výstupu ukazuje, že cluster AKS spouští *KubernetesVersion 1.14.5*:
+Následující příklad výstupu ukazuje, že cluster AKS spouští *KubernetesVersion 1.14.6*:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.14.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.14.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru

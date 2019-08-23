@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 288a05fc09e0c59a01a8d4c9940c0d51cabdd28f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640960"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972338"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>Konfigurace šifrování síti vSAN pro privátní cloud CloudSimple
 
 Můžete nakonfigurovat funkci síti vSAN software Encryption, aby privátní cloud CloudSimple mohl pracovat s klíčovým management server spuštěným ve službě Azure Virtual Network.
 
-Při použití šifrování síti vSAN vyžaduje VMware použití externího nástroje management server Key 1,1 KMIP (KMS) třetí strany. Můžete využít veškerou podporovanou službu správy klíčů, která je certifikována VMware a je dostupná pro Azure. 
+Při použití šifrování síti vSAN vyžaduje VMware použití externího nástroje management server Key 1,1 KMIP (KMS) třetí strany. Můžete využít veškerou podporovanou službu správy klíčů, která je certifikována VMware a je dostupná pro Azure.
 
 V této příručce se dozvíte, jak používat službu správy klíčů HyTrust, která běží ve službě Azure Virtual Network. Podobný přístup lze použít pro jakékoli jiné certifikované řešení služby správy klíčů třetí strany pro síti vSAN.
 

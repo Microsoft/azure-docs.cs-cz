@@ -42,7 +42,7 @@
       href: plan-conditional-access.md
     - name: Osvědčené postupy
       href: best-practices.md
-    - name: Šablony běžných zásad
+    - name: Běžné zásady podmíněného přístupu
       items:
         - name: Vyžadování MFA pro správce
           href: howto-conditional-access-policy-admin-mfa.md

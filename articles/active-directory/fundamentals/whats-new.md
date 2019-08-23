@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50f2f1f7f5d8509a28557e9704bc178be465b1ee
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 93327091d0065a67d441dd56cadd83f4f7d2d1f2
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648662"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970402"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -85,7 +85,7 @@ Nové změny uživatelského rozhraní přicházejí do návrhu **Přidat z obla
 **Kategorie služby:** MFA  
 **Schopnost produktu:** Zabezpečení identity & ochrana
 
-Odebíráme IP adresu MFA serveru z [webové služby IP adresa a adresa URL sady Office 365](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service). Pokud aktuálně spoléháte na tyto stránky, abyste mohli aktualizovat nastavení brány firewall, musíte se ujistit, že máte také seznam IP adres, které jsou zdokumentovány v části **požadavky brány firewall Azure Multi-Factor Authentication serveru** v tématu [Začínáme. s využitím článku Azure Multi-Factor Authentication serveru](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) .
+Odebíráme IP adresu MFA serveru z [webové služby IP adresa a adresa URL sady Office 365](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service). Pokud aktuálně spoléháte na tyto stránky, abyste mohli aktualizovat nastavení brány firewall, musíte se ujistit, že máte také seznam IP adres, které jsou popsány v části **požadavky na bránu firewall pro Azure Multi-Factor Authentication Server** v části [Začínáme. s využitím článku Azure Multi-Factor Authentication serveru](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) .
 
 ---
 
@@ -114,7 +114,7 @@ Další informace najdete v tématu [co je nového pro ověřování?](https://d
 
 Zákazníci Azure AD teď můžou nastavit zásady pro správu FIDO2 bezpečnostních klíčů pro uživatele a skupiny organizace. Koncoví uživatelé také mohou zaregistrovat své bezpečnostní klíče sami, pomocí klíčů se přihlásíte ke svým účtům Microsoft na webech, zatímco na zařízeních s podporou FIDO, a také se přihlásíte ke svým zařízením s Windows 10 připojeným k Azure AD.
 
-Další informace najdete v tématu [Povolení přihlášení bez hesla pro Azure AD (Preview)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) pro informace týkající se správců a [Nastavení bezpečnostních údajů pro použití bezpečnostního klíče (Preview)](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-security-key) pro informace týkající se koncových uživatelů.
+Další informace najdete v tématu [Povolení přihlášení bez hesla pro Azure AD (Preview)](/azure/active-directory/authentication/concept-authentication-passwordless) pro informace týkající se správců a [Nastavení bezpečnostních údajů pro použití bezpečnostního klíče (Preview)](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-security-key) pro informace týkající se koncových uživatelů.
 
 ---
 
@@ -390,7 +390,7 @@ Další informace o nastavení firemního brandingu najdete v tématu [Přidán�
 
 Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication ve své organizaci, musí nyní používat cloudové ověřování Azure Multi-Factor Authentication. Zákazníci, kteří si server MFA vyaktivovali před 1. července, se nezmění. Pořád budete moct stáhnout nejnovější verzi, získat budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci.
 
-Další informace najdete v tématu [Začínáme s Azure Multi-Factor Authentication serverem](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy). Další informace o cloudovém ověřování Azure Multi-Factor Authentication najdete v tématu [plánování cloudového nasazení Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted).
+Další informace najdete v tématu [Začínáme s Azure Multi-Factor Authentication Server](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy). Další informace o cloudových Multi-Factor Authenticationch Azure najdete v tématu [plánování cloudového nasazení azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted).
 
 ---
 

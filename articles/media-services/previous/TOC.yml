@@ -72,7 +72,7 @@
             - name: Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti
               href: media-services-roll-storage-access-keys.md
             - name: Správa prostředků ve více účtech úložiště
-              href: meda-services-managing-multiple-storage-accounts.md
+              href: media-services-managing-multiple-storage-accounts.md
         - name: Kvóty a omezení
           href: media-services-quotas-and-limitations.md
     - name: Konfigurace nástroje Postman
@@ -94,8 +94,6 @@
               href: media-services-dotnet-upload-files.md
             - name: REST
               href: media-services-rest-upload-files.md
-        - name: Nahrávání velkých souborů pomocí Aspery
-          href: media-services-upload-files-with-aspera.md
         - name: Nahrávání souborů pomocí StorSimple
           href: media-services-upload-files-from-storsimple.md
         - name: Kopírování existujících objektů blob

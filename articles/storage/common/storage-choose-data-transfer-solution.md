@@ -1,6 +1,6 @@
 ---
-title: Zvolte řešení Azure pro přenos dat | Dokumentace Microsoftu
-description: Zjistěte, jak zvolit řešení Azure pro přenos dat na základě velikosti dat a dostupnou šířku pásma sítě ve vašem prostředí
+title: Zvolit řešení Azure pro přenos dat | Microsoft Docs
+description: Naučte se, jak zvolit řešení Azure pro přenos dat na základě velikostí dat a dostupné šířky pásma sítě ve vašem prostředí.
 services: storage
 author: alkohli
 ms.service: storage
@@ -8,79 +8,79 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 56470c08f0ac940dae42821ae61846f1c86d52eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 838d65da90ec0daef69375e5a75bcb497a0c3512
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479517"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900390"
 ---
-# <a name="choose-an-azure-solution-for-data-transfer"></a>Zvolte řešení Azure pro přenos dat
+# <a name="choose-an-azure-solution-for-data-transfer"></a>Zvolit řešení Azure pro přenos dat
 
-Tento článek obsahuje přehled některých běžných přenos dat do Azure řešení. Článek taky obsahuje odkazy na doporučené možnosti v závislosti na šířku pásma sítě ve vašem prostředí a množství dat, kterou chcete převést.
+Tento článek poskytuje přehled některých běžných řešení pro přenos dat Azure. Článek také odkazuje na Doporučené možnosti v závislosti na šířce pásma sítě ve vašem prostředí a velikosti dat, která chcete přenést.
 
-## <a name="types-of-data-movement"></a>Typy přesun dat
+## <a name="types-of-data-movement"></a>Typy přesunu dat
 
-Přenos dat může být offline nebo přes síťové připojení. Vyberte řešení v závislosti na vaší:
+Přenos dat může být offline nebo přes síťové připojení. Vyberte své řešení v závislosti na vašich:
 
-- **Velikost dat** – velikost dat určená pro přenos,
-- **Frekvence přenosu** -jednorázové nebo pravidelné ingestování a
-- **Síť** – šířka pásma dostupná pro data přenosu ve vašem prostředí.
+- **Velikost dat** – velikost dat, která se mají přenést,
+- **Frekvence přenosu** – jednorázová nebo pravidelná příjem dat a
+- **Síť** – šířka pásma dostupná pro přenos dat ve vašem prostředí.
 
-Přesouvání dat může být z následujících typů:
+Pohyb dat může být z následujících typů:
 
-- **Offline převod pomocí expedovatelném stavu zařízení** – použití fyzických expedovatelném stavu zařízení, pokud chcete provést offline jednorázově datové přenosy. Microsoft vám pošle na disk nebo zabezpečené specializované zařízení. Alternativně můžete zakoupit a odeslání vlastní disky. Kopírování dat do zařízení a potom ho odešlete do Azure kterého se nahrávají data.  Dostupné možnosti pro tento případ jsou Data Box Disk, zařízení Data Box, Heavy pole Data a Import/Export (použít vlastní disky).
+- **Offline přenos pomocí zařízení** s podporou přepravení – použití fyzických zařízení s podporou přenesených dat v případě, že chcete provést offline přenos hromadných přenosů za provozu. Microsoft vám pošle disk nebo zabezpečené specializované zařízení. Případně můžete zakoupit a dodávat vlastní disky. Data do zařízení zkopírujete a pak ho dodáte do Azure, kde se data nahrají.  Dostupné možnosti pro tento případ jsou Data Box Disk, Data Box, Data Box Heavy a import/export (použijte vlastní disky).
 
-- **Síťové přenosy** – přenos dat do Azure přes síťové připojení. To můžete udělat mnoha způsoby.
+- **Síťový přenos** – data do Azure přenášíte přes síťové připojení. To lze provést mnoha způsoby.
 
-    - **Grafické rozhraní** – Pokud čas od času přenos několika souborů a není potřeba automatizovat přenos dat, můžete vybrat nástroje grafického rozhraní, jako je Průzkumník služby Azure Storage nebo nástroj pro zkoumání založeného na webu na webu Azure portal.
-    - **Skriptované nebo programové přenos** – optimalizované softwarové nástroje, které poskytují nebo přímo volat naše rozhraní API REST/SDK můžete použít. Jsou k dispozici skriptovatelný nástroje AzCopy, Azure Powershellu a rozhraní příkazového řádku Azure. Pro programové rozhraní použijte jednu ze sad SDK pro .NET, Java, Python, uzlu/JS, C++, Go, PHP nebo Ruby.
-    - **Místní zařízení** – My dodáme fyzický nebo virtuální zařízení, které se nachází ve vašem datovém centru a optimalizuje přenos dat přes síť. Tato zařízení také poskytují místní mezipaměti často používaných souborů. Fyzické zařízení je okraj pole Data a virtuální zařízení je brána dat pole. Spustit trvale v místním i připojení k Azure přes síť.
-    - **Spravované datové kanály** – můžete nastavit kanál cloudu pravidelně přenášet soubory mezi několik služeb Azure, místní nebo kombinace dvou. Azure Data Factory můžete nastavit a spravovat datové kanály a přesun a transformaci dat pro analýzu.
+    - **Grafické rozhraní** – Pokud občas přenášíte jenom pár souborů a nepotřebujete provádět automatizaci přenosu dat, můžete zvolit nástroj grafického rozhraní, například Průzkumník služby Azure Storage nebo webový nástroj pro průzkum v Azure Portal.
+    - **Skriptovaná nebo programová migrace** – můžete používat optimalizované softwarové nástroje, které poskytujeme nebo voláme přímo rozhraní REST API/sady SDK. Dostupné nástroje pro skriptování jsou AzCopy, Azure PowerShell a Azure CLI. Pro programové rozhraní použijte jednu ze sad SDK pro .NET, Java, Python, Node/JS, C++, přejít, php nebo Ruby.
+    - **Místní zařízení** – poskytujeme fyzické nebo virtuální zařízení, které se nachází ve vašem datovém centru a optimalizuje přenos dat přes síť. Tato zařízení také poskytují místní mezipaměť často používaných souborů. Fyzickým zařízením je Data Box Edge a virtuálním zařízením je Data Box Gateway. Oba se spustí trvale ve vašich prostorách a připojí se k Azure přes síť.
+    - **Spravovaný datový kanál** – můžete nastavit kanál cloudu k pravidelnému přenosu souborů mezi několika službami Azure, místním prostředím nebo kombinací dvou. Pomocí Azure Data Factory můžete nastavit a spravovat datové kanály a přesouvat a transformovat data pro analýzu.
 
-Následující vizuál znázorňuje pokyny k výběru různých přenos dat do Azure nástroje v závislosti na šířku pásma sítě dostupnou pro přenos, velikost dat určená pro přenosu a četnost přenos.
+Následující vizuál znázorňuje pokyny pro výběr různých nástrojů pro přenos dat Azure v závislosti na šířce pásma, která je dostupná pro přenos, velikost dat určená pro přenos a frekvence přenosů.
 
 ![Nástroje pro přenos dat Azure](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-**Horní omezení zařízení offline převodu – Data Box Disk, zařízení Data Box a Data Box náročné je možné rozšířit tak, že více objednávek typu zařízení.*
+**Horní meze zařízení offline přenosu – Data Box Disk, Data Box a Data Box Heavy se dají rozšířit tak, že se do něj umístí víc objednávek typu zařízení.*
 
 ## <a name="selecting-a-data-transfer-solution"></a>Výběr řešení pro přenos dat
 
-Odpovězte na následující otázky vám pomohou s výběrem řešení pro přenos dat:
+Odpovězte na následující otázky, které vám pomůžou vybrat řešení pro přenos dat:
 
-- Je vaše šířka pásma sítě k dispozici omezené nebo neexistující a chcete převést velkých datových sad?
+- Je dostupná šířka pásma sítě, která je omezená nebo neexistující, a chcete přenést velké datové sady?
   
-    Pokud ano, přečtěte si: [Scénář 1: Přenos velkých datových sad bez nebo malou šířku pásma sítě](storage-solution-large-dataset-low-network.md).
-- Chcete přes síť přenášet velké datové sady a máte střední pro velká šířka pásma sítě?
+    Pokud ano, přečtěte si: [Scénář 1: Přenos velkých datových sad bez nebo nízké šířky pásma](storage-solution-large-dataset-low-network.md)sítě.
+- Chcete přenášet velké datové sady přes síť a máte střední až velkou šířku pásma sítě?
 
-    Pokud ano, přečtěte si: [Scénář 2: Přenos velkých datových sad s střední velká šířka pásma sítě](storage-solution-large-dataset-moderate-high-network.md).
-- Chcete být čas od času přenos přes síť, několika souborů?
+    Pokud ano, přečtěte si: [Scénář 2: Přenos velkých datových sad se střední a vysokou šířkou](storage-solution-large-dataset-moderate-high-network.md)pásma sítě.
+- Chcete občas přenést jenom několik souborů přes síť?
 
-    Pokud ano, přečtěte si téma [scénář 3: Převést malé datové sady s omezením na střední šířka pásma sítě](storage-solution-small-dataset-low-moderate-network.md).
-- Hledáte přenos dat v daném okamžiku v pravidelných intervalech?
+    Pokud ano, podívejte [se na scénář 3: Přenos malých datových sad s omezenou na střední šířku pásma](storage-solution-small-dataset-low-moderate-network.md)sítě.
+- Hledáte v pravidelných intervalech přenos dat k bodu v čase?
 
-    Pokud ano, použít skripty programové možnosti uvedené v [scénář 4: Přenosy dat pravidelné](storage-solution-periodic-data-transfer.md).
-- Hledáte probíhající, průběžné datové přenosy
+    Pokud ano, použijte skriptované/programové možnosti popsané ve [scénáři 4: Periodické datové přenosy](storage-solution-periodic-data-transfer.md).
+- Hledáte průběžný přenos dat?
 
-    Pokud ano, pomocí možností v [scénář 4: Přenosy dat pravidelné](storage-solution-periodic-data-transfer.md).
+    Pokud ano, použijte možnosti ve [scénáři 4: Periodické datové přenosy](storage-solution-periodic-data-transfer.md).
  
 
-## <a name="data-transfer-feature-in-azure-portal"></a>Funkce přenosu dat na webu Azure portal
+## <a name="data-transfer-feature-in-azure-portal"></a>Funkce přenosu dat v Azure Portal
 
-Můžete také přejít ke svému účtu Azure Storage v Azure portal a vyberte **přenos dat** funkce. Zadejte šířku pásma sítě ve vašem prostředí, velikost dat, který chcete převést a frekvence přenosu dat. Zobrazí se optimální data transfer řešení odpovídající informace, které jste zadali. 
+Můžete také přejít na účet Azure Storage v Azure Portal a vybrat funkci pro **přenos dat** . Zadejte šířku pásma sítě ve vašem prostředí, velikost dat, která chcete přenést, a četnost přenosu dat. Budou se vám zobrazovat optimální řešení pro přenos dat, která odpovídají zadaným informacím. 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Úvod k Azure Storage Explorer](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
-- [Přečtěte si základní informace o AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
-- [Použití Azure Powershellu s Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
+- Seznámení [se Průzkumník služby Azure Storage](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
+- [Přečtěte si přehled AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
+- [Použití Azure PowerShell s Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
 - [Použití Azure CLI s Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
-- Další informace o:
+- Další informace:
 
-    - [Azure Data Box Azure Data Box Disk a Azure Data Box náročné na offline převody](https://docs.microsoft.com/azure/databox/).
-    - [Azure Data Box brány a Azure Data Box Edge pro online převody](https://docs.microsoft.com/azure/databox-online/).
-- [Zjistěte, co je Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
-- Použití rozhraní REST API pro přenos dat
+    - [Azure Data box, Azure Data box disk a Azure Data box Heavy pro offline přenosy](https://docs.microsoft.com/azure/databox/).
+    - [Azure Data box Gateway a Azure Data box Edge pro online přenosy](https://docs.microsoft.com/azure/databox-online/).
+- [Přečtěte si, co je Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
+- Použití rozhraní REST API k přenosu dat
 
-    - [In .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)
+    - [V .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
+    - [V jazyce Java](https://docs.microsoft.com/java/api/overview/azure/storage)

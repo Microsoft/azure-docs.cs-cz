@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f7f90c5ecb3c53792ca819eeba98b5f21f548473
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 973b097224b639a70d0904f1f82f2d95e3786d1f
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987484"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69969576"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Klientské knihovny pro připojení k Azure Analysis Services
 
@@ -66,7 +66,7 @@ Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat
 
  ADOMD.NET je klientská Knihovna spravovaných dat, která se používá pro dotazování Analysis Services dat. Je nainstalována a používána nástroji a klientskými aplikacemi. 
   
- Při připojování k databázi jsou vlastnosti připojovacího řetězce pro všechny tři knihovny podobné. Skoro jakýkoli připojovací řetězec, který definujete pro ADOMD.NET pomocí [Microsoft. AnalysisServices. klienta AdomdClient. AdomdConnection. ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) , funguje také pro AMO a zprostředkovatel Analysis Services OLE DB (MSOLAP). Další informace najdete v tématu [vlastnosti &#40;připojovacího řetězce&#41;Analysis Services](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-servicess).  
+ Při připojování k databázi jsou vlastnosti připojovacího řetězce pro všechny tři knihovny podobné. Skoro jakýkoli připojovací řetězec, který definujete pro ADOMD.NET pomocí [Microsoft. AnalysisServices. klienta AdomdClient. AdomdConnection. ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) , funguje také pro AMO a zprostředkovatel Analysis Services OLE DB (MSOLAP). Další informace najdete v tématu [vlastnosti &#40;připojovacího řetězce&#41;Analysis Services](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-services).  
 
   
 ##  <a name="bkmk_LibUpdate"></a>Jak určit verzi klientské knihovny   

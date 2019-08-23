@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 459c11448280b63bafdfd54c13a6cad5983ef1b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 967ca233169e2a2a213534d5b60bef2e3f44b6a9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615881"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69969645"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -45,7 +45,7 @@ Pro zjednodušení konfigurace sítě pro úlohy aplikací Kubernetes používá
 
     ![Diagram znázorňující tok přenosů NodePort v clusteru AKS][aks-nodeport]
 
-- Nástroj pro vyrovnávání **zatížení – vytvoří** prostředek nástroje pro vyrovnávání zatížení Azure, nakonfiguruje externí IP adresu a připojí požadované lusky k back-endu služby Vyrovnávání zatížení. Pokud chcete zákazníkům dovolit, aby se do aplikace dostali, vytvoří se na požadovaných portech pravidla vyrovnávání zatížení. 
+- Nástroj pro vyrovnávání zatížení – vytvoří prostředek nástroje pro vyrovnávání zatížení Azure, nakonfiguruje externí IP adresu a připojí požadované lusky k back-endu služby Vyrovnávání zatížení. Pokud chcete zákazníkům dovolit, aby se do aplikace dostali, vytvoří se na požadovaných portech pravidla vyrovnávání zatížení. 
 
     ![Diagram znázorňující Load Balancer tok provozu v clusteru AKS][aks-loadbalancer]
 
@@ -55,7 +55,7 @@ Pro zjednodušení konfigurace sítě pro úlohy aplikací Kubernetes používá
 
 IP adresu pro nástroje pro vyrovnávání zatížení a služby lze dynamicky přiřadit nebo můžete zadat existující statickou IP adresu, kterou chcete použít. Je možné přiřadit interní i externí statické IP adresy. Tato existující statická IP adresa je často vázaná na položku DNS.
 
-Je možné vytvořit *interní* i *externí* nástroje pro vyrovnávání zatížení. Interním nástrojům pro vyrovnávání zatížení je přiřazena pouze privátní IP adresa, proto k němu nelze přicházet z Internetu.
+Je možné vytvořit *interní* i *externí* nástroje pro vyrovnávání zatížení. Interním nástrojům pro vyrovnávání zatížení je přiřazena pouze privátní IP adresa, takže k nim nelze přicházet z Internetu.
 
 ## <a name="azure-virtual-networks"></a>Virtuální sítě Azure
 
@@ -146,7 +146,7 @@ Zásada sítě je funkce Kubernetes, která je dostupná v AKS, která umožňuj
 
 Další informace najdete v tématu [zabezpečení provozu mezi lusky pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)][use-network-policies].
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete začít používat AKS sítě, vytvořte a nakonfigurujte cluster AKS s vlastními rozsahy IP adres s využitím [kubenet][aks-configure-kubenet-networking] nebo [Azure CNI][aks-configure-advanced-networking].
 

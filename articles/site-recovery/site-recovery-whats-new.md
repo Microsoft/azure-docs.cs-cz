@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 1ce71665a924c6681af418075d8cc635c73f8a1a
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 3dc20036ead29c62d47b4a628d7ce8101b9d31f4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717677"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972527"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -24,6 +24,27 @@ Pokud máte návrhy na funkce Site Recovery, rádi bychom [slyšeli vaše názor
 ## <a name="installing-updates"></a>Instalace aktualizací
 
 V [tomto článku najdete](service-updates-how-to.md) informace o podpoře a pokynech k aktualizaci Site Recovery.
+
+## <a name="updates-august-2019"></a>Aktualizace (srpen 2019)
+
+### <a name="update-rollup-39"></a>Kumulativní aktualizace 39
+
+[Kumulativní aktualizace 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) poskytuje následující aktualizace.
+
+**Aktualizace** | **Podrobnosti**
+--- | ---
+**Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
+**Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
+
+
+### <a name="azure-vm-disaster-recovery"></a>Zotavení po havárii virtuálního počítače Azure
+
+Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shrnuté v tabulce.
+
+**Funkce** | **Podrobnosti**
+--- | ---
+**Šifrování bez služby Azure AD** | Šifrování bez aplikace Azure AD se teď podporuje pro replikaci virtuálních počítačů Azure na spravované disky se systémem Windows.
+**Síťové prostředky pro převzetí služeb při selhání** | Při převzetí služeb při selhání do jiné oblasti teď můžete k virtuálnímu počítači připojit nastavení síťových prostředků (skupin zabezpečení sítě, Vyrovnávání zatížení, veřejné IP adresy). 
 
 ## <a name="updates-july-2019"></a>Aktualizace (červenec 2019)
 
@@ -339,6 +360,6 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Aktualizujte si naše aktualizace na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?product=site-recovery) .

@@ -1,33 +1,33 @@
 ---
-title: Prozkoumat prostředky Azure.
-description: Zjistěte, jak pomocí dotazovacího jazyka prostředků grafu můžete zkoumat vaše prostředky a zjistit, jak jsou připojené.
+title: Prozkoumejte prostředky Azure
+description: Naučte se používat jazyk dotazů grafu prostředků k prozkoumání vašich prostředků a zjištění způsobu jejich připojení.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/23/2019
+ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0b4a75558f5e82b707ae5d012acef4d2c5c4b7a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c6fdebad3cd84699e1ac7d06bb58a33d1522af1
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723812"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972312"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Zkoumání prostředků Azure pomocí služby Resource Graph
 
-Azure Graph prostředků poskytuje schopnost zkoumat a zjišťovat prostředky Azure, rychle a ve velkém měřítku. Navržené pro rychlou odezvu, je skvělý způsob, jak získat informace o vašem prostředí a také o vlastnosti, které tvoří vašich prostředků Azure.
+Azure Resource Graph nabízí možnost prozkoumat a zjišťovat prostředky Azure rychle a ve velkém měřítku. Je to skvělý způsob, jak se naučit vaše prostředí a také informace o vlastnostech, které tvoří prostředky Azure.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
-## <a name="explore-virtual-machines"></a>Prozkoumejte virtual machines
+## <a name="explore-virtual-machines"></a>Prozkoumat virtuální počítače
 
-Běžné prostředků v Azure je virtuální počítač. Jako typ prostředku virtuální počítače mají mnoho vlastností, které je možné zadávat dotazy. Každou vlastnost nabízí možnost pro filtrování nebo vyhledání přesně prostředek, který hledáte.
+Běžným prostředkem v Azure je virtuální počítač. Jako typ prostředku mají virtuální počítače mnoho vlastností, které se dají dotazovat. Každá vlastnost nabízí možnost filtrovat nebo vyhledat přesně prostředek, který hledáte.
 
 ### <a name="virtual-machine-discovery"></a>Zjišťování virtuálních počítačů
 
-Začněme s použitím jednoduchého dotazu k získání jednoho virtuálního počítače z našeho prostředí a podívejte se na vlastnosti vrátila.
+Pojďme začít s jednoduchým dotazem, který získá jeden virtuální počítač z našeho prostředí a Prohlédněte si vrácené vlastnosti.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -43,9 +43,9 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit
 ```
 
 > [!NOTE]
-> Prostředí Azure PowerShell `Search-AzGraph` rutina vrátí **PSCustomObject** ve výchozím nastavení. Výstup vypadají stejně jako co bude vráceno z rozhraní příkazového řádku Azure, aby `ConvertTo-Json` rutina se používá. Výchozí hodnota pro **hloubky** je _2_. Nastavení na _100_ měli převést všechny vrácené úrovně.
+> Rutina `Search-AzGraph` Azure PowerShell ve výchozím nastavení vrátí **PSCustomObject** . Aby výstup vypadal stejně jako výsledek vrácený rozhraním Azure CLI, `ConvertTo-Json` použije se rutina. Výchozí hodnota hloubky je _2_. Nastavení na hodnotu _100_ by mělo být převedeno na všechny vrácené úrovně.
 
-Výsledky JSON jsou strukturovaná podobně jako v následujícím příkladu:
+Výsledky JSON jsou strukturované podobně jako v následujícím příkladu:
 
 ```json
 [
@@ -110,11 +110,11 @@ Výsledky JSON jsou strukturovaná podobně jako v následujícím příkladu:
 ]
 ```
 
-Vlastnosti Řekněte nám, další informace o prostředku virtuálního počítače, včetně SKU, operační systém, disky, značky, a skupinu prostředků a předplatného je členem.
+Vlastnosti oznamují dodatečné informace o samotném prostředku virtuálního počítače, vše od SKU, operačního systému, disků, značek a skupiny prostředků a předplatného, které je členem.
 
 ### <a name="virtual-machines-by-location"></a>Virtuální počítače podle umístění
 
-Pořízení, co jsme se dozvěděli o prostředků virtuálních počítačů, použijeme **umístění** vlastnosti count všech virtuálních počítačů podle umístění. Pokud chcete aktualizovat dotaz, vytvoříme odeberete limit a shrnout počet hodnot umístění.
+Podíváme se na to, co se na prostředku virtuálních počítačů dozvědělo, a pomocí vlastnosti **Location** spočítat všechny virtuální počítače podle umístění. Chcete-li aktualizovat dotaz, odeberte tento limit a Shrňte počet hodnot umístění.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -129,7 +129,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | summarize
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
 ```
 
-Výsledky JSON jsou strukturovaná podobně jako v následujícím příkladu:
+Výsledky JSON jsou strukturované podobně jako v následujícím příkladu:
 
 ```json
 [
@@ -148,11 +148,11 @@ Výsledky JSON jsou strukturovaná podobně jako v následujícím příkladu:
 ]
 ```
 
-Teď vidíme kolik virtuálních počítačů v každé oblasti Azure.
+Teď můžeme zjistit, kolik virtuálních počítačů máme v každé oblasti Azure.
 
-### <a name="virtual-machines-by-sku"></a>Skladová jednotka potřebuje virtuální počítače
+### <a name="virtual-machines-by-sku"></a>Virtuální počítače podle SKU
 
-Po návratu do původní vlastnosti virtuálního počítače, zkuste najít všechny virtuální počítače, které mají velikost SKU **Standard_B2s**. Vrátí vyhledávání v kódu JSON, vidíme, že je uložený v **properties.hardwareprofile.vmsize**. Aktualizujeme dotaz, který najde všechny virtuální počítače, které odpovídají této velikosti a vrátit pouze název virtuálního počítače a oblast.
+Až se vrátíte k původním vlastnostem virtuálního počítače, zkusíme najít všechny virtuální počítače, které mají velikost SKU **Standard_B2s**. Při prohlížení vráceného kódu JSON uvidíme, že je uložený v **Properties. položka hardwareprofile. VMSize**. Aktualizujeme dotaz tak, aby vyhledal všechny virtuální počítače, které odpovídají této velikosti, a vrátí jenom název virtuálního počítače a oblasti.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -167,9 +167,9 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' and propert
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
 ```
 
-### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuální počítače připojené na premium managed disks
+### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuální počítače připojené k diskům spravovaným na úrovni Premium
 
-Pokud jsme chtěli přimět podrobnosti premium managed disks, které jsou připojené k těmto **Standard_B2s** virtuální počítače, můžeme rozšířit dotazu a poskytli nám ID prostředku tyto spravované disky.
+Pokud jsme chtěli získat podrobné informace o discích spravovaných na úrovni Premium, které jsou připojené k těmto virtuálním počítačům s **Standard_B2s** , můžeme rozšířit dotaz a poskytnout nám ID prostředku těchto spravovaných disků.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -179,7 +179,7 @@ where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile
 ```
 
 > [!NOTE]
-> Dalším způsobem, jak získat skladovou Položku by byly pomocí **aliasy** vlastnost **Microsoft.Compute/virtualMachines/sku.name**. Zobrazit [zobrazit aliasy](../samples/starter.md#show-aliases) a [zobrazovat odlišné alias hodnoty](../samples/starter.md#distinct-alias-values) příklady.
+> Další způsob, jak získat SKU, je použít vlastnost aliass **Microsoft. COMPUTE/virtualMachines/SKU. Name**. Podívejte se na příklady [Zobrazit aliasy](../samples/starter.md#show-aliases) a [Zobrazit odlišné hodnoty aliasu](../samples/starter.md#distinct-alias-values) .
 
 ```azurecli-interactive
 az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -191,11 +191,11 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
 
 Výsledkem je seznam ID disků.
 
-### <a name="managed-disk-discovery"></a>Zjišťování spravovaného disku
+### <a name="managed-disk-discovery"></a>Zjišťování spravovaných disků
 
-První záznam z předchozího dotazu, se podíváme vlastnosti, které existují na spravovaný disk, který se připojuje k první virtuální počítač. Aktualizované dotaz používá ID disku a změní typ.
+S prvním záznamem z předchozího dotazu prozkoumáme vlastnosti, které existují na spravovaném disku, který byl připojen k prvnímu virtuálnímu počítači. Aktualizovaný dotaz používá ID disku a mění typ.
 
-Příklad výstupu z předchozího dotazu, například:
+Příklad výstupu z předchozího dotazu například:
 
 ```json
 [
@@ -209,11 +209,11 @@ Příklad výstupu z předchozího dotazu, například:
 where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-Před spuštěním dotazu, jak jsme věděli **typ** by měla nyní být **Microsoft.Compute/disks**?
-Když se podíváte na úplné ID, zobrazí se vám **/providers/Microsoft.Compute/disks/** jako součást řetězce. Tento fragment řetězce poskytuje nápovědu, jaký typ pro hledání. Je to alternativní metoda může být odeberete limit podle typu a místo toho pouze hledat podle ID pole. Je jedinečný Identifikátor, by byla vrácena jenom jednomu záznamu a **typ** vlastnost na něm poskytuje tuto podrobností.
+Než začnete s dotazem, zjistili jsme, že tento **typ** by teď měl být **Microsoft. COMPUTE/disks**?
+Pokud se podíváte na celé ID, uvidíte **/providers/Microsoft.COMPUTE/disks/** jako součást řetězce. Tento fragment řetězce vám poskytne pokyn pro hledání typu. Alternativním způsobem je odebrat limit podle typu a místo toho Hledat v poli ID. Vzhledem k tomu, že ID je jedinečné, vrátí se pouze jeden záznam a vlastnost **Type** v něm poskytne podrobnosti.
 
 > [!NOTE]
-> Pro tento příklad fungoval je potřeba nahradit pole ID výsledku ze svého vlastního prostředí.
+> Aby tento příklad fungoval, je nutné nahradit pole ID výsledkem z vašeho vlastního prostředí.
 
 ```azurecli-interactive
 az graph query -q "where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
@@ -223,7 +223,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/disks' and id == '/subscript
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
 ```
 
-Výsledky JSON jsou strukturovaná podobně jako v následujícím příkladu:
+Výsledky JSON jsou strukturované podobně jako v následujícím příkladu:
 
 ```json
 [
@@ -257,19 +257,27 @@ Výsledky JSON jsou strukturovaná podobně jako v následujícím příkladu:
 ]
 ```
 
-## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Prozkoumejte virtual machines k vyhledání veřejné IP adresy
+## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Prozkoumejte virtuální počítače a vyhledejte veřejné IP adresy.
 
-Tato sada rozhraní příkazového řádku Azure dotazů, nejprve vyhledá a ukládá všechna síťová rozhraní (NIC) prostředkům připojeným k virtuálním počítačům. Poté používá k nalezení každý prostředek IP adresy, která je veřejná IP adresa seznam síťových adaptérů a tyto hodnoty. Navíc poskytuje seznam veřejných IP adres.
+Tato sada dotazů nejprve najde a uloží všechna síťová rozhraní (NIC) připojená k virtuálním počítačům. Pak dotazy použijí seznam síťových adaptérů k vyhledání každého prostředku IP adresy, který je veřejná IP adresa a ukládá tyto hodnoty. Nakonec dotazy poskytují seznam veřejných IP adres.
 
 ```azurecli-interactive
-# Use Resource Graph to get all NICs and store in the 'nic' variable
+# Use Resource Graph to get all NICs and store in the 'nics.txt' file
 az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20" --output table | tail -n +3 > nics.txt
 
 # Review the output of the query stored in 'nics.txt'
 cat nics.txt
 ```
 
-Použití `nics.txt` soubor v dalším dotazu se získat podrobnosti zdroje související síťové rozhraní ve kterých je veřejné IP adresy připojit k síťové kartě
+```azurepowershell-interactive
+# Use Resource Graph to get all NICs and store in the $nics variable
+$nics = Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20"
+
+# Review the output of the query stored in the variable
+$nics.nic
+```
+
+Pomocí souboru (Azure CLI) nebo proměnné (Azure PowerShell) v dalším dotazu získáte podrobnosti o prostředcích síťového rozhraní, kde je k síťovému adaptéru připojená veřejná IP adresa.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file
@@ -279,15 +287,28 @@ az graph query -q="where type =~ 'Microsoft.Network/networkInterfaces' | where i
 cat ips.txt
 ```
 
-Poslední, použijte seznam veřejných IP adres prostředků uložený v `ips.txt` od jejich získat skutečný veřejnou IP adresu a zobrazit.
+```azurepowershell-interactive
+# Use Resource Graph  with the $nics variable to get all related public IP addresses and store in $ips variable
+$ips = Search-AzGraph -Query "where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$($nics.nic -join "','")') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp"
+
+# Review the output of the query stored in the variable
+$ips.publicIp
+```
+
+Nakonec použijte seznam prostředků veřejných IP adres uložených v souboru (Azure CLI) nebo proměnnou (Azure PowerShell), abyste získali skutečnou veřejnou IP adresu ze souvisejícího objektu a zobrazili.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'ips.txt' file to get the IP address of the public IP address resources
 az graph query -q="where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$(awk -vORS="','" '{print $0}' ips.txt | sed 's/,$//')') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip" --output table
 ```
 
-## <a name="next-steps"></a>Další postup
+```azurepowershell-interactive
+# Use Resource Graph with the $ips variable to get the IP address of the public IP address resources
+Search-AzGraph -Query "where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
+```
+
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [dotazovacím jazyku](query-language.md)
-- Zobrazit jazyk v aplikaci [Starter dotazy](../samples/starter.md)
-- Viz advanced používá v [upřesňujících dotazů](../samples/advanced.md)
+- Zobrazit jazyk používaný v počátečních [dotazech](../samples/starter.md)
+- Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0e8be1675dd2b400f89ab17fe85c037066302409
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927929"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906023"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
@@ -182,12 +182,12 @@ Monitorujte a omezte přímé připojení k Internetu z virtuálního počítač
 **Podrobnosti**: Pomocí RBAC zajistěte, aby přístup k síťovým prostředkům měla jenom centrální skupina sítě.
 
 **Osvědčené postupy**: Identifikujte a opravte vystavené virtuální počítače, které umožňují přístup z jakékoli zdrojové IP adresy.   
-**Podrobnosti**: Použijte Azure Security Center. Security Center se doporučuje omezit přístup prostřednictvím internetových koncových bodů, pokud některá z vašich skupin zabezpečení sítě má jedno nebo několik příchozích pravidel, která umožňují přístup z jakékoli zdrojové IP adresy. Security Center bude doporučit, abyste tato příchozí pravidla upravili a [omezili přístup](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) ke zdrojovým IP adresám, které skutečně potřebují přístup.
+**Podrobnosti**: Použijte Azure Security Center. Security Center se doporučuje omezit přístup prostřednictvím internetových koncových bodů, pokud některá z vašich skupin zabezpečení sítě má jedno nebo několik příchozích pravidel, která umožňují přístup z jakékoli zdrojové IP adresy. Security Center bude doporučit, abyste tato příchozí pravidla upravili a [omezili přístup](../../security-center/security-center-network-recommendations.md) ke zdrojovým IP adresám, které skutečně potřebují přístup.
 
 **Osvědčené postupy**: Omezte porty pro správu (RDP, SSH).   
 **Podrobnosti**: [Přístup k virtuálnímu počítači JIT (just-in-time)](../../security-center/security-center-just-in-time.md) se dá použít k uzamknutí příchozího provozu do virtuálních počítačů Azure. tím se sníží riziko útoků na útoky a zároveň se vám umožní snadný přístup k virtuálním počítačům v případě potřeby. Když je kompilátor JIT povolený, Security Center zamkne příchozí provoz do vašich virtuálních počítačů Azure vytvořením pravidla skupiny zabezpečení sítě. Vyberete porty na virtuálním počítači, pro které bude příchozí provoz uzamčen. Tyto porty jsou ovládány řešením JIT.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and-patterns.md) najdete v tématu Doporučené postupy zabezpečení pro použití při navrhování, nasazování a správě cloudových řešení pomocí Azure.
 
 K dispozici jsou následující prostředky, které poskytují obecnější informace o zabezpečení Azure a souvisejících službách Microsoftu:
