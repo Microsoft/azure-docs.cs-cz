@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd451f4c7ada3c062862098d4cda5314152be0c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d819479c5e4bdbf8287dc7408c0f7813f5e32b13
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881996"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900177"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Sledování metrik a nasazení modelů pomocí služby MLflow a Azure Machine Learning (Preview)
 
@@ -27,6 +27,8 @@ V tomto článku se dozvíte, jak povolit sledování identifikátoru URI a prot
 + Nasaďte MLflow experimenty jako webovou službu Azure Machine Learning. Nasazením jako webové služby můžete v produkčních modelech použít funkce monitorování Azure Machine Learning a detekce posunu dat. 
 
 [MLflow](https://www.mlflow.org) je open source knihovna pro správu životního cyklu experimentů ve strojovém učení. Sledování MLFlow je součást MLflow, která protokoluje a sleduje metriky běhu a artefakty modelu bez ohledu na prostředí experimentu – místně – na virtuálním počítači vzdálený výpočetní cluster, a to ani na Azure Databricks.
+
+Následující obrázek znázorňuje, že se sledováním MLflow můžete provést libovolný experiment – bez ohledu na to, jestli je na virtuálním počítači, místně ve vašem počítači, nebo na Azure Databricksovém clusteru, a sledovat metriky spuštění a artefakty modelu úložiště. v pracovním prostoru Azure Machine Learning.
 
 ![mlflow s diagramem Azure Machine Learning](media/how-to-use-mlflow/mlflow-diagram-track.png)
 
@@ -139,9 +141,11 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>Sledování spuštění Azure Databricks
 
-MLflow sledování pomocí služby Azure Machine Learning umožňuje ukládat protokolované metriky a artefakty z vaší datacihly do pracovního prostoru Azure Machine Learning.
+MLflow sledování pomocí služby Azure Machine Learning umožňuje ukládat protokolované metriky a artefakty z vašich datacihlů, které běží ve vašem pracovním prostoru Azure Machine Learning.
 
-Chcete-li spustit Mlflow experimenty s Azure Databricks, je třeba nejprve vytvořit [pracovní prostor Azure Databricks a cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). V clusteru nezapomeňte nainstalovat knihovnu *AzureML-mlflow* z PyPi, abyste zajistili, že má cluster přístup k potřebným funkcím a třídám.
+Pokud chcete Mlflow experimenty spustit pomocí Azure Databricks, musíte nejdřív vytvořit [pracovní prostor Azure Databricks a cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) .
+
+V clusteru nezapomeňte nainstalovat knihovnu *AzureML-mlflow* z PyPi, abyste zajistili, že má cluster přístup k potřebným funkcím a třídám.
 
 ### <a name="install-libraries"></a>Instalovat knihovny
 
@@ -210,10 +214,13 @@ ws.get_details()
 
 Nasazení MLflow experimentů jako webové služby Azure Machine Learning umožňuje využívat možnosti Azure Machine Learning správy modelů a funkce detekce posunu dat a aplikovat je na produkční modely.
 
+Následující diagram znázorňuje, že s rozhraním API pro nasazení MLflow můžete nasadit stávající modely MLflow jako webovou službu Azure Machine Learning bez ohledu na jejich architektury – PyTorch, Tensorflow, scikit-učení, ONNX atd. a spravovat produkční modely v nástroji. Váš pracovní prostor.
+
 ![mlflow s diagramem Azure Machine Learning](media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
 ### <a name="log-your-model"></a>Protokolovat model
-Než budeme moct nasadit, ujistěte se, že je váš model uložený, abyste na něj mohli odkazovat a umístění jeho cesty pro nasazení. Ve školicím skriptu by měl být podobný kódu jako následující metoda [mlflow. skriptu sklearn. log _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) , která uloží váš model do určeného adresáře výstupů. 
+
+Než budete moct nasadit, ujistěte se, že je váš model uložený, abyste na něj mohli odkazovat a umístění cesty pro nasazení. Ve školicím skriptu by měl být podobný kódu jako následující metoda [mlflow. skriptu sklearn. log _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) , která uloží váš model do určeného adresáře výstupů. 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -227,7 +234,7 @@ mlflow.sklearn.log_model(regression_model, model_save_path)
 
 ### <a name="retrieve-model-from-previous-run"></a>Načíst model z předchozího běhu
 
-Aby bylo možné načíst požadovaný běh, potřebujeme ID běhu a cestu v historii spuštění, kde byl model uložen. 
+Chcete-li načíst požadovaný běh, budete potřebovat ID běhu a cestu v historii spuštění, kde byl model uložen. 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -244,7 +251,7 @@ model_save_path = 'model'
 
 `mlflow.azureml.build_image()` Funkce vytvoří image Docker z uloženého modelu v rámci způsobu, který se používá. Automaticky vytvoří kód obálky Inferencing specifický pro rozhraní a určí závislosti balíčku. Zadejte cestu k modelu, váš pracovní prostor, ID běhu a další parametry.
 
-V následujícím kódu sestavíme image Docker pomocí *Run:/< spustit. id >/model* jako cestu Model_uri pro Scikit experiment.
+Následující kód vytvoří image Docker pomocí *Run:/< spustit. id >/model* jako cestu Model_uri pro Scikit experiment.
 
 ```python
 import mlflow.azureml
@@ -290,9 +297,9 @@ webservice.wait_for_deployment(show_output=True)
 ```
 #### <a name="deploy-to-aks"></a>Nasazení do AKS
 
-K nasazení na AKS potřebujete vytvořit cluster AKS a přenést image Docker, kterou chcete nasadit. V tomto příkladu přeneseme dříve vytvořenou image z našeho nasazení ACI.
+K nasazení na AKS potřebujete vytvořit cluster AKS a přenést image Docker, kterou chcete nasadit. V tomto příkladu převeďte dříve vytvořenou bitovou kopii z nasazení ACI.
 
-K získání image z předchozího nasazení ACI používáme třídu [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) . 
+K získání image z předchozího nasazení ACI použijte třídu [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) . 
 
 ```python
 from azureml.core.image import Image
@@ -368,6 +375,6 @@ Pokud neplánujete použít zaznamenané metriky a artefakty v pracovním prosto
 
 [MLflow s poznámkovým blokům Azure ml](https://aka.ms/azureml-mlflow-examples) ukazují a rozšiřují koncepty prezentované v tomto článku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Spravujte své modely](concept-model-management-and-deployment.md).
 * Monitorujte v produkčních modelech [přenos dat](how-to-monitor-data-drift.md).

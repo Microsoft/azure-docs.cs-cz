@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 039a4db11adf66e0c28826106df5845b42fedef5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f395ba5d63463aa177b453d187d025a4461eff28
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688252"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905576"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Přehled povolení Azure Monitor pro virtuální počítače (Preview)
 
@@ -33,7 +33,10 @@ Nastavení Azure Monitor pro virtuální počítače:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že rozumíte informace v následujících částech.
+Než začnete, ujistěte se, že rozumíte informace v následujících částech. 
+
+>[!NOTE]
+>Následující informace popsané v této části se vztahují také na [řešení Service map](service-map.md).  
 
 ### <a name="log-analytics"></a>Log Analytics
 
@@ -46,8 +49,8 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 - Velká Británie – jih
 - Západní Evropa
 - Jihovýchodní Asie
-- Austrálie – východ
-- Austrálie – jihovýchod
+- Austrálie – východ<sup>1</sup>
+- Austrálie – jihovýchod<sup>1</sup>
 
 <sup>1</sup> této oblasti nepodporuje aktuálně funkci stavu služby Azure Monitor pro virtuální počítače.
 
@@ -65,7 +68,7 @@ Pracovní prostor můžete také vytvořit, když povolíte monitorování pro j
 
 Pokud chcete nastavit scénář ve velkém měřítku, který používá Azure Policy, Azure PowerShell nebo šablony Azure Resource Manager, v pracovním prostoru Log Analytics:
 
-* Nainstalujte řešení ServiceMap a InfrastructureInsights. Tuto instalaci můžete dokončit pomocí zadané Azure Resource Manager šablony. Nebo **na kartě Začínáme** vyberte **Konfigurovat pracovní prostor**.
+* Nainstalujte řešení ServiceMap a InfrastructureInsights. Tuto instalaci můžete dokončit pomocí zadané Azure Resource Manager šablony. Nebo na kartě Začínáme vyberte **Konfigurovat pracovní prostor**.
 * Konfigurovat pracovní prostor Log Analytics ke shromažďování čítačů výkonu.
 
 Pokud chcete nakonfigurovat pracovní prostor pro scénář ve velkém měřítku, použijte jednu z následujících metod:
@@ -153,6 +156,9 @@ Funkce map v Azure Monitor pro virtuální počítače získá svá data od agen
 
 Bez ohledu na to, jestli povolíte Azure Monitor pro virtuální počítače pro jeden virtuální počítač Azure, nebo použijete metodu nasazení v rámci škálování, nainstalujte agenta jako součást prostředí pomocí rozšíření Azure VM Dependency agent.
 
+>[!NOTE]
+>Následující informace popsané v této části se vztahují také na [řešení Service map](service-map.md).  
+
 V hybridním prostředí můžete ručně stáhnout a nainstalovat agenta závislostí. Pokud jsou vaše virtuální počítače hostované mimo Azure, použijte metodu automatizovaného nasazení.
 
 Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy v hybridním prostředí.
@@ -167,8 +173,8 @@ Agenta závislostí si můžete stáhnout z těchto umístění:
 
 | File | Operační systém | Verze | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.8.1 | 622C99924385CBF539988D759BCFDC9146BB157E7D577C997CDD2674E27E08DD |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.8.1 | 3037934A5D3FB7911D5840A9744AE9F980F87F620A7F7B407F05E276FE7AE4A8 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.1 | FCF9C1D9B20AD414051B49EE79144E595CCC411EB6D444D6D5B5A7B1874DCDEC |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
@@ -246,6 +252,6 @@ Další informace o shromažďování a používání dat najdete v článku [pr
 
 Nyní, když jste povolili monitorování pro váš virtuální počítač, jsou informace o monitorování k dispozici pro analýzu v Azure Monitor pro virtuální počítače.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o použití funkce stavu, najdete v článku [zobrazení monitorování Azure pro virtuální počítače stav](vminsights-health.md). Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).

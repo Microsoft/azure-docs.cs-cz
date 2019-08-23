@@ -4,20 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f0cf167a391cb14c70edd51832ec83cdda7bab6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 81fb599ca4987adccdb91baa7a74c33ae3af48d4
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968535"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906616"
 ---
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
-* C#7,1 nebo novější
-* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
-* [Balíček NuGet Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), nebo vašem oblíbeném textovém editoru
-* Klíč předplatného Azure pro službu Translator Text
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-net-core-project"></a>Vytvoření projektu .NET Core
 
@@ -76,12 +72,37 @@ public class TransliterationResult
 }
 ```
 
-## <a name="create-a-function-to-transliterate-text"></a>Vytvoření funkce pro přepis textu
+## <a name="get-subscription-information-from-environment-variables"></a>Získání informací o předplatném z proměnných prostředí
 
-V rámci `TransliterateTextRequest()`třídy vytvořte asynchronní funkci s názvem. `Program` Tato funkce přijímá čtyři argumenty: `subscriptionKey`, `host`, `route` `inputText`a.
+Do `Program` třídy přidejte následující řádky. Tyto řádky čtou klíč předplatného a koncový bod z proměnných prostředí a vyvolá chybu, pokud narazíte na nějaké problémy.
 
 ```csharp
-static public async Task TransliterateTextRequest(string subscriptionKey, string host, string route, string inputText)
+private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
+private static readonly string subscriptionKey = Environment.GetEnvironmentVariable(key_var);
+
+private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
+private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
+
+static Program()
+{
+    if (null == subscriptionKey)
+    {
+        throw new Exception("Please set/export the environment variable: " + key_var);
+    }
+    if (null == endpoint)
+    {
+        throw new Exception("Please set/export the environment variable: " + endpoint_var);
+    }
+}
+// The code in the next section goes here.
+```
+
+## <a name="create-a-function-to-transliterate-text"></a>Vytvoření funkce pro přepis textu
+
+V rámci `TransliterateTextRequest()`třídy vytvořte asynchronní funkci s názvem. `Program` Tato funkce přijímá čtyři argumenty: `subscriptionKey`, `endpoint`, `route` `inputText`a.
+
+```csharp
+static public async Task TransliterateTextRequest(string subscriptionKey, string endpoint, string route, string inputText)
 {
   /*
    * The code for your call to the translation service will be added to this
@@ -129,7 +150,7 @@ Přidejte tento kód do `HttpRequestMessage`:
 // Set the method to Post.
 request.Method = HttpMethod.Post;
 // Construct the URI and add headers.
-request.RequestUri = new Uri(host + route);
+request.RequestUri = new Uri(endpoint + route);
 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
@@ -159,15 +180,15 @@ static async Task Main(string[] args)
     // Output languages are defined in the route.
     // For a complete list of options, see API reference.
     // https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate
-    string subscriptionKey = "YOUR_TRANSLATOR_TEXT_KEY_GOES_HERE";
-    string host = "https://api.cognitive.microsofttranslator.com";
     string route = "/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScript=latn";
     string textToTransliterate = @"こんにちは";
-    await TransliterateTextRequest(subscriptionKey, host, route, textToTransliterate);
+    await TransliterateTextRequest(subscriptionKey, endpoint, route, textToTransliterate);
+    Console.WriteLine("Press any key to continue.");
+    Console.ReadKey();
 }
 ```
 
-Všimněte si, že v `Main`nástroji deklarujete `subscriptionKey`, `host` `route`, a skript pro přepis `textToTransliterate`.
+Všimněte si, že v `Main`nástroji deklarujete `subscriptionKey`, `endpoint` `route`, a skript pro přepis `textToTransliterate`.
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
@@ -200,7 +221,7 @@ Tato zpráva je sestavena z nezpracovaného formátu JSON, který bude vypadat t
 
 Ujistěte se, že zdrojový kód ukázkové aplikace, jako jsou klíče předplatného odebrání jakýchkoli důvěrných informací.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
 

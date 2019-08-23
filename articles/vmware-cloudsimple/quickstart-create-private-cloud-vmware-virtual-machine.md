@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4e1642366d41906035e1ba1b7f75d0ad875c739b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8d4712ca57801c15510ffcaf54852ce9287d343b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574787"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972404"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Vytváření virtuálních počítačů VMware v privátním cloudu
 
@@ -143,7 +143,7 @@ Síťové stránky na portálu CloudSimple umožňují zadat konfiguraci pro tab
 
     ![Veřejná IP adresa](media/quick-create-pc-public-ip.png)
 
-Spustí se úkol přidělení veřejné IP adresy. Stav úlohy můžete zjistit na stránce **aktivity > úlohy** . Po dokončení přidělení se nová položka zobrazí na stránce veřejné IP adresy. 
+Spustí se úkol přidělení veřejné IP adresy. Stav úlohy můžete zjistit na stránce **aktivity > úlohy** . Po dokončení přidělení se nová položka zobrazí na stránce veřejné IP adresy.
 
 Virtuální počítač, na který musí být tato IP adresa namapovaná, musí být nakonfigurovaný s místní adresou uvedenou výše. Postup konfigurace IP adresy je specifický pro operační systém virtuálního počítače. Správný postup najdete v dokumentaci k operačnímu systému virtuálního počítače.
 
@@ -205,7 +205,7 @@ or
 ```
 python3 -m http.server 80
 ```
-Spusťte prohlížeč na ploše a najeďte na port 80 pro veřejnou IP adresu, abyste mohli procházet soubory na VIRTUÁLNÍm počítači. 
+Spusťte prohlížeč na ploše a najeďte na port 80 pro veřejnou IP adresu, abyste mohli procházet soubory na VIRTUÁLNÍm počítači.
 
 ### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>Výchozí pravidla brány firewall CloudSimple pro veřejnou IP adresu
 

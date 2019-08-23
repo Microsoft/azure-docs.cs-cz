@@ -16,12 +16,12 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 7675a22b4b2d8b13524f06f45d6bb805c1e2fad1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 8f55e2eb3ac7fe2e869b6b1061f6d45d11894ccf
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019136"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905944"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Koupit a nakonfigurovat certifikát SSL pro Azure App Service
 
@@ -139,7 +139,7 @@ Jakmile je operace obnovení klíčů dokončena, klikněte na tlačítko **sync
 
 ## <a name="renew-certificate"></a>Prodloužit platnost certifikátu
 
-Pokud chcete kdykoli zapnout automatické obnovování certifikátu, vyberte certifikát na stránce [App Service certifikáty](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) a potom klikněte na tlačítko **automaticky obnovit nastavení** v levém navigačním panelu.
+Pokud chcete kdykoli zapnout automatické obnovování certifikátu, vyberte certifikát na stránce [App Service certifikáty](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) a potom klikněte na tlačítko **automaticky obnovit nastavení** v levém navigačním panelu. Ve výchozím nastavení má App Service certifikáty dobu platnosti 1 rok.
 
 Vyberte **zapnuto** a klikněte na **Uložit**. Pokud máte zapnuté automatické obnovení, můžou se certifikáty spustit automaticky po 60 dnech před vypršením platnosti.
 

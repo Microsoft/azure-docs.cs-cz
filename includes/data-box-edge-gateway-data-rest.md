@@ -2,19 +2,18 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a6ceee0f7db4b7b368dce1a28c8edc0b2b11180
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: eb55d993ad8960f821c2b72f0a53602166b7cc7e
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175649"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900620"
 ---
-Pro data v klidovém stavu:
+Pro neaktivní neaktivní data:
 
-- Nástroj BitLocker XTS-AES 256bitového šifrování se používá k ochraně místní data.
-- Přístup k datům uloženým ve sdílených složkách je omezen.
+- Přístup k datům uloženým ve sdílených složkách je omezený.
 
-    - Klientů protokolu SMB využívajících sdílet data potřebovat přihlašovací údaje uživatele přidružené sdílené složky. Tyto přihlašovací údaje jsou definovány, když se vytvoří sdílené složky.
-    - IP adresy klientů systému souborů NFS, které přístup ke sdílené složce je potřeba přidat po vytvoření sdílené složky.
+    - Klienti SMB, kteří mají přístup ke sdíleným datům, potřebují přihlašovací údaje uživatele přidružené ke sdílené složce. Tyto přihlašovací údaje se definují při vytvoření sdílené složky.
+    - Po vytvoření sdílené složky je třeba přidat IP adresy klientů NFS, kteří přistupují ke sdílené složce.

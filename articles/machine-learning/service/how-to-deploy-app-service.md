@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/01/2019
-ms.openlocfilehash: a5fd376a6da70ed68baedf44fd4c2cc47e68d3cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: HT
+ms.openlocfilehash: ada2a19de12c2f3f6b23fcc3d759afb0c747d37d
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872377"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897414"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Nasazení modelu Machine Learning do Azure App Service (Preview)
 
@@ -108,11 +108,11 @@ V `show_output=True`případě je zobrazen výstup procesu Docker Build. Po doko
 
 1. V [Azure Portal](https://portal.azure.com)vyberte pracovní prostor Azure Machine Learning. V části __Přehled__ použijte odkaz __registru__ pro přístup k Azure Container registry pro daný pracovní prostor.
 
-    ![Snímek obrazovky s přehledem pracovního prostoru](media/how-to-deploy-app-service/workspace-overview.png)
+    [![Snímek obrazovky s přehledem pracovního prostoru](media/how-to-deploy-app-service/workspace-overview.png)](media/how-to-deploy-app-service/workspace-overview-expanded.png)
 
 2. Z Azure Container Registry vyberte __úložiště__a pak vyberte __název bitové kopie__ , kterou chcete nasadit. Pro verzi, kterou chcete nasadit, vyberte položku __...__ a pak ji nasaďte __do webové aplikace__.
 
-    ![Snímek obrazovky s nasazením z ACR do webové aplikace](media/how-to-deploy-app-service/deploy-to-web-app.png)
+    [![Snímek obrazovky s nasazením z ACR do webové aplikace](media/how-to-deploy-app-service/deploy-to-web-app.png)](media/how-to-deploy-app-service/deploy-to-web-app-expanded.png)
 
 3. Pokud chcete vytvořit webovou aplikaci, zadejte název lokality, předplatné, skupinu prostředků a vyberte plán/umístění služby App Service. Nakonec vyberte __vytvořit__.
 
@@ -122,7 +122,7 @@ V `show_output=True`případě je zobrazen výstup procesu Docker Build. Po doko
 
 Z [Azure Portal](https://portal.azure.com)vyberte webovou aplikaci vytvořenou v předchozím kroku. V části __Přehled__ zkopírujte __adresu URL__. Tato hodnota je __základní adresa URL__ služby.
 
-![Snímek obrazovky s přehledem pro webovou aplikaci](media/how-to-deploy-app-service/web-app-overview.png)
+[![Snímek obrazovky s přehledem pro webovou aplikaci](media/how-to-deploy-app-service/web-app-overview.png)](media/how-to-deploy-app-service/web-app-overview-expanded.png)
 
 Webová služba, která předává požadavky do modelu, je umístěna `{baseurl}/score`na adrese. Například, `https://mywebapp.azurewebsites.net/score`. Následující kód Pythonu ukazuje, jak odesílat data do adresy URL a zobrazovat odpověď:
 
@@ -147,7 +147,7 @@ print(response.elapsed)
 print(response.json())
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o konfiguraci webové aplikace naleznete v dokumentaci [App Service v systému Linux](/azure/app-service/containers/) .
 * Další informace o škálování najdete v tématu [Začínáme s automatickým škálováním v Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).

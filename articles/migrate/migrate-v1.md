@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7cf87c3a146f51666a2c24c7cd0d6e9425159225
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228930"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905224"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -81,7 +81,7 @@ Zobrazení Připravenost pro Azure v posouzení zobrazuje stav připravenosti je
 Připraveno pro Azure | Žádné problémy s kompatibilitou Počítač se dá migrovat tak, jak je, do Azure, a spustí se v Azure s plnou podporou Azure. | U virtuálních počítačů, které jsou pro migraci vhodné, doporučí Azure Migrate velikost virtuálního počítače v Azure.
 Připraveno pro Azure s podmínkou | Počítač se může spustit v Azure, ale nemusí mít plnou podporu Azure. Například počítač se starší verzí Windows serveru, který se v Azure nepodporuje. | Azure Migrate vysvětluje problémy s připraveností a poskytuje kroky k nápravě.
 Nepřipraveno pro Azure |  Virtuální počítač se nespustí v Azure. Pokud má virtuální počítač například disk, který je větší než 4 TB, nejde ho hostovat v Azure. | Azure Migrate vysvětluje problémy s připraveností a poskytuje kroky k nápravě.
-Připravenost neznámá | Azure Migrate nemůžou identifikovat připravenost Azure, obvykle proto, že data nejsou k dispozici.
+Připravenost není známá. | Azure Migrate nemůžou identifikovat připravenost Azure, obvykle proto, že data nejsou k dispozici.
 
 
 #### <a name="azure-vm-properties"></a>Vlastnosti virtuálního počítače Azure
@@ -244,8 +244,7 @@ Instalace agenta na počítač se systémem Linux:
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Instalace agenta MMA na počítači monitorovaném nástrojem Operations Manager
 
-Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není nutné instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Je potřeba nainstalovat agenta závislostí.
-
+Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není potřeba instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Je potřeba nainstalovat agenta závislostí.
 
 ### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 
@@ -254,9 +253,11 @@ Pro počítače monitorované nástrojem System Center Operations Manager 2012 R
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- Přečtěte si další informace o podpoře agenta závislostí pro operační systémy [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) a [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) .
-- [Přečtěte si další informace](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) o tom, jak můžete pomocí skriptů nainstalovat agenta závislostí.
+- Přečtěte si další informace o [podpoře agenta závislostí](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) pro operační systémy Windows a Linux.
+- [Přečtěte si další informace](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) o tom, jak můžete pomocí skriptů nainstalovat agenta závislostí.
 
+>[!NOTE]
+> Článek Azure Monitor pro virtuální počítače, na který se odkazuje, obsahuje přehled systémových požadavků a metod nasazení agenta závislostí, které se vztahují také na řešení Service Map.
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Vytvoření skupiny s mapováním závislostí
 

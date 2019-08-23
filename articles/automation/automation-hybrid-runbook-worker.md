@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 015318b1695f76121662b82e94b37de1ddb63b1b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5573eea4e7a5322c762665d2db8e3fbed1f585a1
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952936"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970439"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker
 
@@ -47,6 +47,7 @@ Chcete-li nainstalovat a nakonfigurovat Hybrid Runbook Worker systému Windows, 
 Než začnete s nasazováním Hybrid Runbook Worker, přečtěte si [informace pro plánování vaší sítě](#network-planning) . Po úspěšném nasazení pracovního procesu si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak nakonfigurovat Runbooky pro automatizaci procesů v místním datacentru nebo v jiném cloudovém prostředí.
 
 Počítač může být přidán do skupiny Hybrid Runbook Worker ve vašem účtu Automation, aby podporoval Runbooky Automation, pokud používáte stejný účet pro řešení i pro členství v Hybrid Runbook Worker skupině. Tuto funkci jsme do funkce Hybrid Runbook Worker přidali ve verzi 7.2.12024.0.
+
 ## <a name="remove-a-hybrid-runbook-worker"></a>Odebrání Hybrid Runbook Worker
 
 Jeden nebo více procesů Hybrid Runbook Worker můžete odebrat ze skupiny nebo můžete skupinu odebrat v závislosti na vašich požadavcích. Pokud chcete odebrat Hybrid Runbook Worker z místního počítače, postupujte takto:

@@ -6,19 +6,19 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7a61edc01a87be8996b4d7dd5093f9d3554e6585
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 315d4daf7155bc33235507f39b5cce8869db5aa6
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417754"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972164"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů VMware na zotavení po havárii do Azure
 
-Tento článek popisuje, jak Příprava místních serverů VMware na zotavení po havárii do Azure s využitím [Azure Site Recovery](site-recovery-overview.md) služby. 
+Tento článek popisuje, jak připravit místní servery VMware na zotavení po havárii do Azure pomocí [Azure Site Recovery](site-recovery-overview.md) Services. 
 
 Toto je druhý kurz řady, která ukazuje, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače VMware. V prvním kurzu jste [nastavili komponenty Azure](tutorial-prepare-azure.md) potřebné pro zotavení po havárii VMware.
 
@@ -26,17 +26,17 @@ Toto je druhý kurz řady, která ukazuje, jak nastavit zotavení po havárii do
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Příprava účtu na vCenter serveru nebo hostiteli vSphere ESXi, pro automatizaci zjišťování virtuálních počítačů.
-> * Příprava účtu pro automatickou instalaci služby Mobility na virtuální počítače VMware.
-> * Zkontrolujte VMware serveru a požadavky na virtuální počítač a podporu.
-> * Připravte se na připojení k virtuálním počítačům Azure po převzetí služeb při selhání.
+> * Připravte si účet na serveru vCenter nebo hostiteli ESXi vSphere, abyste mohli automatizovat zjišťování virtuálních počítačů.
+> * Připravte účet na automatickou instalaci služby mobility na virtuální počítače VMware.
+> * Přečtěte si požadavky a podporu k VMware serveru a VIRTUÁLNÍm počítačům.
+> * Příprava na připojení k virtuálním počítačům Azure po převzetí služeb při selhání.
 
 > [!NOTE]
-> Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny přečtěte si článek v části How To Site Recovery obsahu.
+> Kurzy ukazují nejjednodušší cestu k nasazení scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v článku v části jak Site Recovery obsahu.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Ujistěte se, že jste připravili Azure jak je popsáno v [prvního kurzu této série](tutorial-prepare-azure.md).
+Ujistěte se, že jste připravili Azure, jak je popsáno v [prvním kurzu této série](tutorial-prepare-azure.md).
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Příprava účtu pro automatické zjišťování
 
@@ -69,8 +69,8 @@ Připravte účet následujícím způsobem:
 
 Připravte účet domény nebo místní účet s oprávněními k instalaci na virtuální počítač.
 
-- **Virtuální počítače s Windows**: Instalace na virtuálních počítačích s Windows, pokud nepoužíváte doménový účet, zakažte vzdálené řízení přístupu uživatele na místním počítači. Provedete to tak, že v registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** přidáte položku DWORD **LocalAccountTokenFilterPolicy** s hodnotou 1.
-- **Virtuální počítače s Linuxem**: Pokud chcete instalaci provést na virtuální počítače s Linuxem, připravte na zdrojovém serveru s Linuxem kořenový účet.
+- **Virtuální počítače s Windows**: Pokud chcete nainstalovat na virtuální počítače s Windows, pokud nepoužíváte doménový účet, zakažte na místním počítači vzdálené řízení přístupu uživatele. Provedete to tak, že v registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** přidáte položku DWORD **LocalAccountTokenFilterPolicy** s hodnotou 1.
+- **Virtuální počítače se systémem Linux**: Pokud chcete instalaci provést na virtuální počítače s Linuxem, připravte na zdrojovém serveru s Linuxem kořenový účet.
 
 
 ## <a name="check-vmware-requirements"></a>Kontrola požadavků na VMware
@@ -82,7 +82,7 @@ Ujistěte se, že servery a virtuální počítače VMware splňují požadavky.
 3. Zkontrolujte podporu místní [sítě](vmware-physical-azure-support-matrix.md#network) a [úložiště](vmware-physical-azure-support-matrix.md#storage). 
 4. Zkontrolujte podporované [sítě Azure](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [úložiště](vmware-physical-azure-support-matrix.md#azure-storage) a [výpočetní prostředí](vmware-physical-azure-support-matrix.md#azure-compute) po převzetí služeb při selhání.
 5. Místní virtuální počítače, které replikujete do Azure, musí splňovat [Požadavky na virtuální počítače Azure](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
-6. Ve virtuálních počítačích s Linuxem musí být jedinečný název zařízení nebo název přípojného bodu. Ujistěte se, že žádné dvě zařízení a přípojné body mají stejné názvy. Všimněte si, že název nejsou malá a velká písmena. Například názvy dvou zařízení pro stejný virtuální počítač jako _zařízení1_ a _zařízení1_ není povolený.
+6. V případě virtuálních počítačů se systémem Linux by měl být název zařízení nebo přípojný bod jedinečný. Zajistěte, aby v žádném ze dvou zařízení/přípojných bodů nebyly stejné názvy. Všimněte si, že název nerozlišuje velká a malá písmena. Například pojmenování dvou zařízení pro stejný virtuální počítač jako _zařízení1_ a _zařízení1_ není povoleno.
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání
@@ -96,7 +96,7 @@ Pokud se po převzetí služeb při selhání chcete připojit k virtuálním po
     - Před převzetím služeb při selhání povolte na místním počítači protokol RDP.
     - Protokol RDP musí být povolený v části **Brána Windows Firewall** -> **Povolené aplikace a funkce** pro **doménovou a privátní** síť.
     - Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135).
-- Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. Pokud existují, nebudete moct přihlásit k virtuálnímu počítači, dokud se aktualizace nedokončí.
+- Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. V takovém případě se k virtuálnímu počítači nebudete moct přihlásit, dokud se aktualizace nedokončí.
 - Po převzetí služeb při selhání na virtuálním počítači Azure s Windows zkontrolujte **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače. Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy pro řešení potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Pokud se po převzetí služeb při selhání chcete připojit k virtuálním počítačům s Linuxem pomocí protokolu SSH, postupujte následovně:
@@ -109,13 +109,13 @@ Pokud se po převzetí služeb při selhání chcete připojit k virtuálním po
 
 
 ## <a name="failback-requirements"></a>Požadavky na navrácení služeb po obnovení
-Pokud plánujete navrácení služeb po obnovení v místní lokalitě, jsou celou řadou [předpokladů pro navrácení služeb po obnovení](vmware-azure-reprotect.md##before-you-begin). Tyto teď můžete připravit, ale není nutné. Můžete připravit po převzetí služeb při selhání do Azure.
+Pokud máte v úmyslu navrátit služby po obnovení do místní lokality, je k dispozici několik [požadavků na navrácení služeb po obnovení](vmware-azure-reprotect.md##before-you-begin). Můžete je připravit teď, ale nemusíte to. Po převzetí služeb při selhání do Azure se můžete připravit.
 
 
 
 ## <a name="next-steps"></a>Další postup
 
-Nastavení zotavení po havárii. Pokud replikujete více virtuálních počítačů, plánování kapacity.
+Nastavte zotavení po havárii. Pokud provádíte replikaci více virtuálních počítačů, naplánujte kapacitu.
 > [!div class="nextstepaction"]
-> [Nastavení zotavení po havárii do Azure pro virtuální počítače VMware](vmware-azure-tutorial.md)
-> [plánování kapacit](site-recovery-deployment-planner.md).
+> [Nastavte zotavení po havárii do Azure pro virtuální počítače](vmware-azure-tutorial.md)
+> VMware, které[provádějí plánování kapacity](site-recovery-deployment-planner.md).

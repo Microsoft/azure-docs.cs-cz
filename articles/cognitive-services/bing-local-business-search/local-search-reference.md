@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 9030d85ff5bc83bb54f4a67a9f319a1670a6c2ad
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c9ebaeb66bc46132160c77c09f93fc2921dc8961
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881850"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906353"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Referenční informace o rozhraní API pro vyhledávání místních obchodních v7 Bingu
 
@@ -222,7 +223,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   
 |Stavový kód|Popis|  
 |-----------------|-----------------|  
-|200|Úspěšné|  
+|200|Úspěch|  
 |400|Jeden z parametrů dotazu chybí nebo je neplatný.|  
 |401|Klíč předplatného chybí nebo není platný.|  
 |403|Uživatel je ověřený (například používá platný klíč předplatného), ale nemá oprávnění k požadovanému prostředku.<br /><br /> Bing může tento stav vrátit také v případě, že volající překročil kvótu na měsíc.|  
@@ -268,7 +269,7 @@ Níže jsou možné kódy chyb a hodnoty kódu dílčí chyby.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization, když Bing nemůže ověřit volajícího. `Ocp-Apim-Subscription-Key` Hlavička například chybí nebo klíč předplatného není platný.<br/><br/>Redundance probíhá, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, kód stavu HTTP je 401.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing vrátí InsufficientAuthorization, pokud volající nemá oprávnění pro přístup k prostředku. Tato situace může nastat, pokud byl klíč předplatného zakázán nebo vypršela jeho platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, kód stavu HTTP je 403.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Rychlý start hledání místních obchodních obchodů](quickstarts/local-quickstart.md)
 - [Rychlý Start pro místní vyhledávání v jazyce Java](quickstarts/local-search-java-quickstart.md)
 - [Rychlý Start uzlu místního hledání firmy](quickstarts/local-search-node-quickstart.md)

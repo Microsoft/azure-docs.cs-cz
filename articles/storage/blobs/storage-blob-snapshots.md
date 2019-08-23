@@ -1,6 +1,6 @@
 ---
-title: Vytvořit snímek jen pro čtení objektu blob ve službě Azure Storage | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit snímek objektu blob k zálohování dat objektů blob v daném okamžiku v čase. Zjistěte, jak se účtují snímky a jak pomocí nich můžete minimalizovat náklady na kapacitu.
+title: Vytvoření snímku objektu BLOB jen pro čtení v Azure Storage | Microsoft Docs
+description: Naučte se vytvořit snímek objektu BLOB pro zálohování dat objektů BLOB v daném časovém okamžiku. Zjistěte, jak se účtují snímky, a jak je používat k minimalizaci poplatků za kapacitu.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,33 +8,33 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9c24f613de8bf26331f6fe328358aaf8a320d522
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0da3373ba2c13bd6a00a92a6b38bead86fc9a5ea
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65794235"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897017"
 ---
 # <a name="create-a-blob-snapshot"></a>Vytvoření snímku objektu blob
 
-Snímek je verze jen pro čtení objektu blob, která je provedena v bodě v čase. Snímky jsou užitečné pro zálohování objekty BLOB. Po vytvoření snímku, může číst, zkopírujte nebo odstraňte ji, ale už ho nelze změnit.
+Snímek je verze objektu BLOB jen pro čtení, která je pořízena v určitém časovém okamžiku. Snímky jsou užitečné pro zálohování objektů BLOB. Až snímek vytvoříte, můžete ho číst, kopírovat nebo odstranit, ale nemůžete ho upravovat.
 
-Snímek objektu blob je stejný jako jeho základní objekt blob, s tím rozdílem, že má identifikátor URI objektu blob **data a času** hodnotu připojí k identifikátoru URI označuje čas pořízení snímku objektu blob. Například, pokud identifikátor URI objektu blob stránky je `http://storagesample.core.blob.windows.net/mydrives/myvhd`, snímku identifikátoru URI je podobný `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`.
+Snímek objektu BLOB je stejný jako základní objekt BLOB s tím rozdílem, že identifikátor URI objektu BLOB má hodnotu **DateTime** připojenou k identifikátoru URI objektu blob, aby označoval čas, kdy se snímek povedl. Pokud je `http://storagesample.core.blob.windows.net/mydrives/myvhd`například identifikátor URI objektu blob stránky, je identifikátor URI snímku `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`podobný.
 
 > [!NOTE]
-> Přístup ke všem snímkům sdílet identifikátor URI základního objektu blob. Jediný rozdíl mezi základní objekt blob a snímek je připojený **data a času** hodnotu.
+> Všechny snímky sdílí identifikátor URI základního objektu BLOB. Jediným rozdílem mezi základním objektem BLOB a snímkem je připojená hodnota **DateTime** .
 >
 
-Objekt blob může mít libovolný počet snímků. Snímky budou zachovány, dokud sami výslovně neodstraníte. Snímek nemůže něj jeho základní objekt blob. Můžete zobrazit výčet snímků přidružených k základní objekt blob ke sledování aktuálního snímky.
+Objekt BLOB může mít libovolný počet snímků. Snímky zůstanou trvalé, dokud je explicitně neodstraníte. Snímek nemůže mít živý základní objekt BLOB. Můžete vytvořit výčet snímků přidružených k základnímu objektu BLOB a sledovat aktuální snímky.
 
-Při vytváření snímku objektu blob, systémové vlastnosti objektu blob se zkopírují do snímku se stejnými hodnotami. Metadata základního objektu blob je také zkopírován do snímku, pokud neurčíte samostatné metadat pro snímek po jeho vytvoření.
+Když vytvoříte snímek objektu blob, vlastnosti systému objektu BLOB se zkopírují do snímku se stejnými hodnotami. Metadata základního objektu BLOB se také zkopírují do snímku, pokud při vytváření snímku neurčíte samostatná metadata.
 
-Žádné zapůjčení přidružené k základní objekt blob nemají vliv na snímku. Nelze získat zapůjčení na snímek.
+Všechna zapůjčení přidružená k základnímu objektu BLOB neovlivňují snímek. U snímku nelze získat zapůjčení.
 
-Soubor virtuálního pevného disku se používá k ukládání aktuální informace a stav disku virtuálního počítače. Odpojení disku od virtuálního nebo vypnout virtuální počítač a potom pořídit snímek jeho soubor virtuálního pevného disku. Tento soubor snímku můžete použít později k načtení souboru virtuálního pevného disku v tomto okamžiku v čase a znovu vytvořte virtuální počítač.
+Soubor VHD se používá k uložení aktuálních informací a stavu disku virtuálního počítače. Disk můžete odpojit v rámci virtuálního počítače nebo ho vypnout a pak pořídit snímek jeho souboru VHD. Tento soubor snímku můžete použít později k načtení souboru VHD v daném časovém okamžiku a znovu vytvořit virtuální počítač.
 
 ## <a name="create-a-snapshot"></a>Vytvoření snímku
-Následující příklad kódu ukazuje, jak vytvořit snímek pomocí [Klientská knihovna Azure Storage pro .NET](/dotnet/api/overview/azure/storage/client). Tento příklad určuje další metadata pro snímek při jeho vytvoření.
+Následující příklad kódu ukazuje, jak vytvořit snímek pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage/client). Tento příklad určuje další metadata pro snímek při jeho vytvoření.
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
@@ -69,35 +69,35 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 }
 ```
 
-## <a name="copy-snapshots"></a>Kopie snímků
-Operace kopírování týkajících se snímky objektů BLOB a postupovat podle těchto pravidel:
+## <a name="copy-snapshots"></a>Kopírovat snímky
+Operace kopírování zahrnující objekty BLOB a snímky dodržují tato pravidla:
 
-* Můžete zkopírovat snímek nad jeho základní objekt blob. Zvyšuje se úroveň snímku na pozici základní objekt blob, můžete obnovit starší verzi objektu blob. Snímek zůstane, ale základní objekt blob je přepsat zapisovatelné kopie snímku.
-* Můžete zkopírovat snímek do cílového objektu blob s jiným názvem. Výsledný cílový objekt blob je zapisovatelný objekt blob a ne snímku.
-* Když se zkopíruje zdrojový objekt blob, všechny snímky zdrojový objekt blob nejsou zkopírovat do cíle. Když kopie se přepsat cílový objekt blob, všechny snímky přidružené k původní cílový objekt blob zůstanou beze změny.
-* Při vytváření snímku objektu blob bloku, objektu blob potvrzené blokovaných webů. je také zkopírován do snímku. Všechny nepotvrzené bloků nejsou zkopírovány.
+* Snímek můžete zkopírovat přes svůj základní objekt BLOB. Zvýšením úrovně snímku na pozici základního objektu blob můžete obnovit předchozí verzi objektu BLOB. Snímek zůstane, ale základní objekt BLOB se přepíše zapisovatelnou kopií snímku.
+* Snímek můžete zkopírovat do cílového objektu BLOB s jiným názvem. Výsledný cílový objekt BLOB je zapisovatelný objekt blob, který není snímkem.
+* Při kopírování zdrojového objektu BLOB se žádné snímky zdrojového objektu BLOB nezkopírují do cíle. Když je cílový objekt BLOB přepsaný kopií, všechny snímky přidružené k původnímu cílovému objektu BLOB zůstanou beze změny.
+* Při vytváření snímku objektu blob bloku je do snímku zkopírován také seznam potvrzených bloků objektu BLOB. Nepotvrzené bloky nejsou zkopírovány.
 
-## <a name="specify-an-access-condition"></a>Zadejte podmínku přístup
-Při volání [CreateSnapshotAsync][dotnet_CreateSnapshotAsync], určíte podmínku přístup tak, aby snímku se vytvoří pouze v případě, že je některá podmínka splněná. Chcete-li určit podmínku přístup, použijte [AccessCondition] [ dotnet_AccessCondition] parametru. Pokud se zadaná podmínka není splněna, není vytvořen snímek a službu Blob service vrátí stavový kód [HTTPStatusCode][dotnet_HTTPStatusCode]. PreconditionFailed.
+## <a name="specify-an-access-condition"></a>Zadat podmínku přístupu
+Při volání [CreateSnapshotAsync][dotnet_CreateSnapshotAsync]můžete určit podmínku přístupu, aby byl snímek vytvořen pouze v případě splnění podmínky. Chcete-li určit podmínku přístupu, použijte parametr [AccessCondition][dotnet_AccessCondition] . Pokud zadaná podmínka není splněna, snímek se nevytvoří a Blob service vrátí stavový kód [HTTPStatusCode][dotnet_HTTPStatusCode]. PreconditionFailed.
 
 ## <a name="delete-snapshots"></a>Odstranit snímky
-Nelze odstranit objekt blob se snímky, pokud snímky budou také odstraněny. Můžete odstranit snímek jednotlivě nebo určit, že všechny snímky se odstraní při odstranění zdrojového objektu blob. Při pokusu odstranit objekt blob, který má snímky stále, bude výsledkem chyba.
+Nelze odstranit objekt BLOB se snímky, pokud nejsou odstraněny také snímky. Snímek můžete odstranit jednotlivě nebo můžete určit, že se při odstranění zdrojového objektu BLOB odstraní všechny snímky. Pokud se pokusíte odstranit objekt blob, který má stále snímky, dojde k chybě.
 
-Následující příklad kódu ukazuje, jak odstranit objekt blob a jeho snímky v .NET, ve kterém `blockBlob` je objekt typu [CloudBlockBlob][dotnet_CloudBlockBlob]:
+Následující příklad kódu ukazuje, jak odstranit objekt BLOB a jeho snímky v rozhraní .NET, kde `blockBlob` je objekt typu [CloudBlockBlob][dotnet_CloudBlockBlob]:
 
 ```csharp
 await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);
 ```
 
-## <a name="snapshots-with-azure-premium-storage"></a>Snímky se službou Azure Premium Storage
-Při použití snímků díky službě Premium Storage, platí následující pravidla:
+## <a name="snapshots-with-azure-premium-storage"></a>Snímky s využitím Azure Premium Storage
+Při použití snímků se Premium Storage platí následující pravidla:
 
-* Maximální počet snímků na objekt blob stránky v účtu služby premium storage je 100. Pokud je tento limit překročen, operace vytvoření snímku objektu Blob vrátí kód chyby: 409 (`SnapshotCountExceeded`).
-* Udělat snímek objektu blob stránky v účtu služby premium storage každých 10 minut. Pokud dojde k překročení tohoto kurzu, operace vytvoření snímku objektu Blob vrátí kód chyby: 409 (`SnapshotOperationRateExceeded`).
-* Další snímek, můžete operaci objekt Blob kopírování ke zkopírování snímku do jiného objektů blob stránky v účtu. Cílový objekt blob pro operaci kopírování nesmí mít všechny existující snímky. Pokud cílový objekt blob má snímky, pak objekt Blob kopírování operace vrátí kód chyby: 409 (`SnapshotsPresent`).
+* Maximální počet snímků na objekt blob stránky v účtu Premium Storage je 100. V případě překročení tohoto limitu operace objektu BLOB snímku vrátí kód chyby 409`SnapshotCountExceeded`().
+* Můžete pořídit snímek objektu blob stránky v účtu Premium Storage, a to každých 10 minut. Pokud je tato rychlost překročena, operace objektu BLOB snímku vrátí kód chyby 409`SnapshotOperationRateExceeded`().
+* Pro čtení snímku můžete použít operaci kopírovat objekt BLOB ke zkopírování snímku do jiného objektu blob stránky v účtu. Cílový objekt BLOB pro operaci kopírování nesmí mít žádné existující snímky. Pokud cílový objekt BLOB má snímky, vrátí operace kopírování objektu BLOB kód chyby 409 (`SnapshotsPresent`).
 
-## <a name="return-the-absolute-uri-to-a-snapshot"></a>Vrátí absolutní identifikátor URI na snímek
-Tento příklad kódu jazyka C# vytvoří snímek a zapíše absolutní identifikátor URI pro primární umístění.
+## <a name="return-the-absolute-uri-to-a-snapshot"></a>Vrátí absolutní identifikátor URI snímku.
+Tento C# příklad kódu vytvoří snímek a zapíše absolutní identifikátor URI pro primární umístění.
 
 ```csharp
 //Create the blob service client object.
@@ -119,60 +119,60 @@ CloudBlockBlob blobSnapshot = blob.CreateSnapshot();
 Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 ```
 
-## <a name="understand-how-snapshots-accrue-charges"></a>Vysvětlení, jak snímky nechat nabíhat poplatky
-Vytváří se snímek, který je jen pro čtení kopírování objektu blob, může způsobit poplatky za úložiště další data k vašemu účtu. Při návrhu aplikace, je důležité vědět, jak může nabíhají tyto poplatky, tak, aby měli minimalizovat náklady.
+## <a name="understand-how-snapshots-accrue-charges"></a>Vysvětlení způsobu nabíhání nákladů na snímky
+Vytvoření snímku, který je kopií objektu BLOB jen pro čtení, může mít za následek další poplatky za ukládání dat do vašeho účtu. Při návrhu aplikace je důležité vědět, jak se tyto poplatky můžou snížit, abyste mohli minimalizovat náklady.
 
 ### <a name="important-billing-considerations"></a>Důležité informace o fakturaci
-Následující seznam obsahuje klíčové body, které je třeba zvážit při vytváření snímku.
+Následující seznam obsahuje klíčové body, které je potřeba vzít v úvahu při vytváření snímku.
 
-* Účtu úložiště se neúčtují poplatky za jedinečné bloky a stránky, ať už jsou v objektu blob nebo ve snímku. Váš účet není účtovat další poplatky za snímky přidružené tomuto objektu blob až do aktualizace objektů blob, na kterém jsou založeny. Po aktualizaci základní objekt blob diverges z jeho snímků. Pokud k tomu dojde, bude vám účtována jedinečné bloky nebo stránky v jednotlivých objektů blob nebo snímku.
-* Po nahrazení blok v rámci objektu blob bloku, účtuje se jako jedinečný blok následně tohoto bloku. To platí i v případě, že blok má stejné ID bloku a stejná data, je na něm ve snímku. Po bloku usiluje o opět ho diverges z jeho protějšek v libovolný snímek a vám bude účtovat svá data. To samé platí pro stránku v objekt blob stránky, která se aktualizuje s stejná data.
-* Nahrazení objektu blob bloku voláním [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream] [ dotnet_UploadFromStream], nebo [UploadFromByteArray] [ dotnet_UploadFromByteArray] metoda nahradí všechny bloky v objektu blob. Pokud máte snímek přidružené tohoto objektu blob, všechny bloky v základní objekt blob a snímek nyní odchýlit a vám budou účtovat všechny bloky v obou objekty BLOB. To platí i v případě, že data na základní objekt blob a snímek zůstávají stejné.
-* Služba Azure Blob service nemá žádné prostředky k určení, zda dva bloky obsahují stejné údaje. Každý blok, který je nahraný a potvrzené je považován za jedinečný, i když má stejná data a stejné ID bloku. Poplatky se účtují za jedinečné bloky, proto je důležité vzít v úvahu informující o probíhající aktualizaci objektu blob, který má výsledky snímku v další jedinečné bloky a další poplatky.
+* Váš účet úložiště se za jedinečné bloky nebo stránky účtuje bez ohledu na to, jestli jsou v objektu BLOB nebo ve snímku. U vašeho účtu se neúčtují další poplatky za snímky přidružené k objektu blob, dokud neaktualizujete objekt blob, na kterém jsou založené. Po aktualizaci základního objektu BLOB se odliší od jeho snímků. Pokud k tomu dojde, budou se vám účtovat jedinečné bloky nebo stránky v každém objektu BLOB nebo snímku.
+* Když nahradíte blok v rámci objektu blob bloku, tento blok se následně účtuje jako jedinečný blok. To platí i v případě, že má blok stejné ID bloku a stejná data jako ve snímku. Po opětovném potvrzení bloku se odliší od jeho protějšku v jakémkoli snímku a za jeho data se vám budou účtovat poplatky. Totéž platí pro stránku v objektu blob stránky, který je aktualizovaný se stejnými daty.
+* Nahrazení objektu blob bloku voláním metody [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream]nebo [UploadFromByteArray][dotnet_UploadFromByteArray] nahradí všechny bloky v objektu BLOB. Pokud máte snímek přidružený k tomuto objektu blob, všechny bloky v základním objektu BLOB a snímku se teď odchýlit a budou se vám účtovat všechny bloky v obou objektech blob. To platí i v případě, že data v základním objektu BLOB a snímku zůstanou stejná.
+* Blob service Azure nemá žádný způsob, jak určit, jestli dva bloky obsahují identická data. Každý blok, který je nahraný a potvrzený, se považuje za jedinečný, a to i v případě, že má stejná data a stejné ID bloku. Vzhledem k tomu, že se poplatky za jedinečné bloky, je důležité vzít v úvahu, že aktualizace objektu blob, který má snímek, má za následek další jedinečné bloky a další poplatky.
 
-### <a name="minimize-cost-with-snapshot-management"></a>Minimalizace nákladů s Správa snímku
+### <a name="minimize-cost-with-snapshot-management"></a>Minimalizace nákladů pomocí správy snímků
 
-Doporučujeme vám Správa snímků pečlivě vyhnout dalším poplatkům. Můžete postupovat podle těchto osvědčených postupů a tím pomáhá minimalizovat náklady na úložiště vašeho snímky:
+Doporučujeme pečlivě spravovat vaše snímky, abyste se vyhnuli dodatečným poplatkům. Můžete dodržovat tyto osvědčené postupy, které vám pomohou minimalizovat náklady vzniklé úložištěm vašich snímků:
 
-* Odstranit a znovu vytvořit snímky přidružené tomuto objektu blob pokaždé, když se aktualizovat objekt blob, i v případě, že aktualizujete daty shodné, není-li návrhu aplikace vyžaduje, že udržujete snímky. Tím odstraníte a znovu vytvoříte snímky objektu blob, můžete zajistit, že není odchýlit objektů blob a snímky.
-* Pokud udržujete snímky pro objekt blob, vyhněte se volání [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [ UploadFromStream][dotnet_UploadFromStream], nebo [UploadFromByteArray] [ dotnet_UploadFromByteArray] aktualizovat objekt blob. Tyto metody nahradí všechny bloky v objektu blob, způsobil základní objekt blob a jeho snímky, chcete-li odchýlit výrazně. Místo toho aktualizovat pomocí nejmenšího počtu bloků [PutBlock] [ dotnet_PutBlock] a [PutBlockList] [ dotnet_PutBlockList] metody.
+* Odstraňte a znovu vytvořte snímky přidružené k objektu BLOB při aktualizaci objektu blob, a to i v případě, že se aktualizujete se stejnými daty, pokud návrh aplikace nevyžaduje, abyste zachovali snímky. Odstraněním a opětovným vytvořením snímků objektu BLOB se můžete ujistit, že se objekty BLOB a snímky neodchylují.
+* Pokud udržujete snímky pro objekt blob, vyhněte se voláním [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream]nebo [UploadFromByteArray][dotnet_UploadFromByteArray] k aktualizaci objektu BLOB. Tyto metody nahrazují všechny bloky v objektu blob, což způsobí, že základní objekt BLOB a jeho snímky se budou významně odchýlit. Místo toho aktualizujte nejmenší možný počet bloků pomocí metod [PutBlock][dotnet_PutBlock] a [PutBlockList][dotnet_PutBlockList] .
 
-### <a name="snapshot-billing-scenarios"></a>Snímek fakturace scénáře
-Následující scénáře ukazují, jak nabíhají poplatky za objekt blob bloku a její snímky.
+### <a name="snapshot-billing-scenarios"></a>Scénáře fakturace snímků
+Následující scénáře ukazují, jak se účtují poplatky za objekt blob bloku a jeho snímky.
 
 **Scénář 1**
 
-Ve scénáři 1 základní objekt blob se neaktualizoval po pořízení snímku, takže pouze pro jedinečné bloky 1, 2 a 3 budou účtovat poplatky.
+Ve scénáři 1 se základní objekt BLOB po pořízení snímku neaktualizoval, takže se poplatky účtují jenom pro jedinečné bloky 1, 2 a 3.
 
 ![Prostředky Azure Storage](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-1.png)
 
 **Scénář 2**
 
-Ve scénáři 2 základní objekt blob se aktualizovala, ale snímku nevypršela. Blok 3 byla aktualizována a přestože obsahuje stejná data a stejné ID, není stejný jako blokovat 3 ve snímku. V důsledku toho účet se budou účtovat čtyři bloky.
+Ve scénáři 2 se základní objekt BLOB aktualizoval, ale snímek ne. Blok 3 byl aktualizován, a přestože obsahuje stejná data a stejné ID, není stejný jako blok 3 ve snímku. Výsledkem je, že se účtu účtuje čtyři bloky.
 
 ![Prostředky Azure Storage](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-2.png)
 
 **Scénář 3**
 
-Ve scénáři 3 základní objekt blob se aktualizovala, ale snímku nevypršela. Blok 3 byla nahrazena bloku 4 v základní objekt blob, ale snímek odráží bloku 3. V důsledku toho účet se budou účtovat čtyři bloky.
+Ve scénáři 3 se základní objekt BLOB aktualizoval, ale snímek ne. Blok 3 byl nahrazen blokem 4 v základním objektu blob, ale snímek stále odráží blok 3. Výsledkem je, že se účtu účtuje čtyři bloky.
 
 ![Prostředky Azure Storage](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-3.png)
 
 **Scénář 4**
 
-V případě 4 základní objekt blob se úplně aktualizovala a obsahuje jeden z jeho původní bloků. V důsledku toho účet se budou účtovat všechny bloky osm jedinečný. Tato situace může nastat, pokud používáte metodu aktualizace, jako [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [ UploadFromStream][dotnet_UploadFromStream], nebo [UploadFromByteArray][dotnet_UploadFromByteArray], protože tyto metody nahradí veškerý obsah objektu blob.
+Ve scénáři 4 byl základní objekt BLOB zcela aktualizován a neobsahuje žádné původní bloky. V důsledku toho se účet účtuje za všechny osm jedinečných bloků. K tomuto scénáři může dojít, pokud používáte metodu aktualizace, jako je [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream]nebo [UploadFromByteArray][dotnet_UploadFromByteArray], protože tyto metody nahrazují celý obsah objektu BLOB.
 
 ![Prostředky Azure Storage](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o práci se snímky disků virtuálních počítačů (VM) v [zálohování Azure nespravované disky virtuálních počítačů s přírůstkovými snímky](../../virtual-machines/windows/incremental-snapshots.md)
+* Další informace o práci s virtuálními počítači a snímky disků virtuálních počítačů najdete v [zálohování nespravovaných disků virtuálních počítačů Azure pomocí přírůstkových snímků](../../virtual-machines/windows/incremental-snapshots.md) .
 
-* Další příklady použití Blob storage, najdete v části [vzorových kódů Azure](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob). Stažení ukázkové aplikace a spusťte ho nebo procházení kódu na Githubu.
+* Další příklady kódu s využitím úložiště objektů BLOB najdete v tématu [ukázky kódu Azure](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob). Můžete si stáhnout ukázkovou aplikaci a spustit ji nebo procházet kód na GitHubu.
 
 [dotnet_AccessCondition]: https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.accesscondition
 [dotnet_CloudBlockBlob]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob
-[dotnet_CreateSnapshotAsync]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.generatedblobs.createsnapshotasync
+[dotnet_CreateSnapshotAsync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.createsnapshotasync
 [dotnet_HTTPStatusCode]: https://docs.microsoft.com/java/api/com.microsoft.store.partnercenter.network.httpstatuscode
 [dotnet_PutBlockList]: /dotnet/api/microsoft.azure.storage.blob.cloudblockblob.putblocklist
 [dotnet_PutBlock]: /dotnet/api/microsoft.azure.storage.blob.cloudblockblob.putblock

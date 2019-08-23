@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a6c12a2fdc8616dd6f7107d11e8f6c77401811fb
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8a567dbbd8c5e752b8d9294623a5f4d3f37e5a05
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968570"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906821"
 ---
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [JDK 7 nebo novější](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
-* Klíč předplatného Azure pro službu Translator Text
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>Inicializovat projekt pomocí Gradle
 
@@ -44,7 +42,7 @@ plugins {
     application
 }
 application {
-    mainClassName = "LengthSentence"
+    mainClassName = "BreakSentence"
 }
 repositories {
     mavenCentral()
@@ -65,11 +63,11 @@ Pojďme vytvořit složku pro ukázkovou aplikaci. V pracovním adresáři spus�
 mkdir -p src/main/java
 ```
 
-Potom v této složce vytvořte soubor s názvem `LengthSentence.java`.
+Potom v této složce vytvořte soubor s názvem `BreakSentence.java`.
 
 ## <a name="import-required-libraries"></a>Importovat požadované knihovny
 
-Otevřete `LengthSentence.java` a přidejte tyto příkazy pro import:
+Otevřete `BreakSentence.java` a přidejte tyto příkazy pro import:
 
 ```java
 import java.io.*;
@@ -85,22 +83,23 @@ import com.squareup.okhttp.*;
 Nejprve budete muset vytvořit veřejnou třídu pro svůj projekt:
 
 ```java
-public class LengthSentence {
+public class BreakSentence {
   // All project code goes here...
 }
 ```
 
-Přidejte tyto řádky do `LengthSentence` třídy. Všimněte si, že spolu s nástrojem `api-version`můžete definovat vstupní jazyk. V této ukázce je to anglické.
+Přidejte tyto řádky do `BreakSentence` třídy. Nejdřív se klíč předplatného a koncový bod čtou z proměnných prostředí. Pak si všimnete, že spolu s nástrojem `api-version`můžete definovat vstupní jazyk. V této ukázce je to anglické.
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0&language=en";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/breaksentence?api-version=3.0&language=en";
 ```
 Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a sestavení žádosti
 
-Přidejte tento řádek `LengthSentence` do třídy pro vytvoření instance `OkHttpClient`:
+Přidejte tento řádek `BreakSentence` do třídy pro vytvoření instance `OkHttpClient`:
 
 ```java
 // Instantiates the OkHttpClient.
@@ -145,8 +144,8 @@ Posledním krokem je vytvoření žádosti a získání odpovědi. Přidejte tyt
 ```java
 public static void main(String[] args) {
     try {
-        LengthSentence lengthSentenceRequest = new LengthSentence();
-        String response = lengthSentenceRequest.Post();
+        BreakSentence breakSentenceRequest = new BreakSentence();
+        String response = BreakSentenceRequest.Post();
         System.out.println(prettify(response));
     } catch (Exception e) {
         System.out.println(e);
@@ -188,7 +187,7 @@ gradle run
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
 

@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/21/2019
 ms.author: v-adgera
-ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a39663adedfdb9c00c4429f65ec1bd27286cb136
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873652"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904296"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak nakonfigurovat metodu post pro digitální vlákna Azure
 
@@ -35,9 +35,9 @@ Prostřednictvím klienta pro řešení můžou vývojáři řešení určit dru
 
 Nakonfigurujte aplikaci Azure Active Directory tak, aby používala tok implicitního udělení OAuth 2,0.
 
-1. Pomocí kroků v [tomto rychlém](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) startu vytvořte aplikaci Azure AD typu Native. Nebo můžete znovu použít stávající registraci nativní aplikace.
+1. Pokud chcete vytvořit aplikaci Azure AD, postupujte podle kroků v [našem rychlém](./quickstart-view-occupancy-dotnet.md) startu. Nebo vytvořte [nativní aplikaci pomocí starší verze okna AAD](./how-to-use-legacy-aad.md).
 
-1. V části **požadovaná oprávnění**vyberte **Přidat** a do pole **Přidat přístup k rozhraní API**zadejte **digitální vlákna Azure** . Pokud se vám toto rozhraní API nepodaří najít, vyhledejte místo toho **Azure Smart Spaces**. Pak vyberte **udělit oprávnění > delegovaná oprávnění** a **Hotovo**.
+1. V části **oprávnění rozhraní API**vyberte **Přidat oprávnění**. Pak se **digitální vlákna Azure** v rámci **používání rozhraní API moje organizace používá**. Pokud se vám toto rozhraní API nepodaří najít, vyhledejte místo toho **Azure Smart Spaces**. Pak vyberte **delegovaná oprávnění**, **číst** > **čtení. zápis**a **Přidat oprávnění**.
 
     [![Registrace aplikací Azure Active Directory přidání rozhraní API](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
@@ -75,7 +75,7 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
     | Typ udělení | `Implicit` |
     | Adresa URL pro zpětné volání | `https://www.getpostman.com/oauth2/callback` |
     | Adresa URL ověření | Použijte **autorizační adresu URL** z kroku 2. |
-    | ID klienta | Použijte **ID aplikace** pro aplikaci Azure Active Directory, která se vytvořila nebo změnila účel z předchozí části. |
+    | ID klienta | Použijte **ID aplikace** pro aplikaci Azure Active Directory, která se vytvořila nebo znovu použila z předchozí části. |
     | Scope | Ponechte prázdné |
     | State | Ponechte prázdné |
     | Ověřování klientů | `Send as Basic Auth header` |

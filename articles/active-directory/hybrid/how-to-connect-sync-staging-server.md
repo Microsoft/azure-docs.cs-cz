@@ -1,6 +1,6 @@
 ---
-title: 'Synchronizace Azure AD Connect: Provozní úlohy a důležité informace | Dokumentace Microsoftu'
-description: Toto téma popisuje provozní úlohy synchronizace Azure AD Connect a postup přípravy k provozování této součásti.
+title: 'Azure AD Connect synchronizace: Provozní úlohy a požadavky | Microsoft Docs'
+description: Toto téma popisuje provozní úlohy pro Azure AD Connect synchronizaci a postup přípravy na provoz této součásti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,117 +16,117 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381556"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900061"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Pracovní server a zotavení po havárii
-Se serverem v pracovním režimu můžete provést změny v konfiguraci a zobrazit náhled změn před provedením server aktivní. Také umožňuje spustit úplný import a úplnou synchronizaci za účelem ověření, že všechny změny se očekává, že před provedením těchto změn do vašeho provozního prostředí.
+U serveru v pracovním režimu můžete změnit konfiguraci a zobrazit náhled změn před tím, než provedete server aktivní. Umožňuje taky spustit úplnou synchronizaci a úplnou synchronizaci a ověřit, jestli jsou všechny změny očekávané, než provedete tyto změny v produkčním prostředí.
 
 ## <a name="staging-mode"></a>Pracovní režim
 Pracovní režim lze použít pro několik scénářů, včetně:
 
 * Vysoká dostupnost
-* Testujte a nasazujte nové změny konfigurace.
-* Zavádí nový server a vyřadit z provozu starého.
+* Otestujte a nasaďte nové změny konfigurace.
+* Zaveďte nový server a vyřaďte ho do provozu staré.
 
-Během instalace, můžete vybrat server v **pracovním režimu**. Tato akce aktivuje na server pro import a synchronizaci, ale nespustí se žádné exporty. Server v pracovní režimu neběží synchronizaci hesel nebo zpětný zápis hesla i v případě, že jste vybrali při instalaci těchto funkcí. Pokud zakážete pracovní režim, server začne export, umožňuje synchronizaci hesel a aktivovat zpětný zápis hesla.
+Během instalace můžete vybrat server, který bude v **pracovním režimu**. Tato akce zpřístupní Server jako aktivní pro import a synchronizaci, ale nespustí žádné exporty. Server v pracovním režimu nespouští synchronizaci hesla ani zpětný zápis hesla, i když jste tyto funkce při instalaci vybrali. Když zakážete pracovní režim, Server spustí export, povolí synchronizaci hesla a povolí zpětný zápis hesla.
 
 > [!NOTE]
-> Předpokládejme, že máte Azure AD Connect s povolenou funkcí synchronizace hodnot Hash hesel. Když povolíte pracovní režim, server zastavuje synchronizace hesel se změní z místní služby AD. Pokud zakážete pracovní režim, server pokračuje v synchronizaci změn hesel z tam, kde poslední skončila. Pokud na serveru je v pracovním režimu delší dobu, může trvat nějakou dobu serveru a synchronizuje všechny změny hesel, které došlo během časového období nastaly.
+> Předpokládejme, že máte Azure AD Connect s povolenou funkcí synchronizace hodnot hash hesel. Když povolíte pracovní režim, server přestane synchronizovat změny hesel z místní služby AD. Když zakážete pracovní režim, server obnoví synchronizaci změn hesel z místa, kde naposledy skončil. Pokud je server v pracovním režimu po delší dobu, může chvíli trvat, než server synchronizuje všechny změny hesel, ke kterým došlo během tohoto časového období.
 >
 >
 
-Export stále můžete vynutit pomocí synchronization service manager.
+Můžete přesto vynutit export pomocí synchronizace Service Manageru.
 
-Server v pracovní režimu i nadále přijímat změny z Active Directory a Azure AD. Vždy má kopii nejnovější změny a zkuste velmi rychlé zpracování může přes odpovědnosti jiný server. Pokud provedete změny v konfiguraci primárního serveru, je vaší odpovědností, abyste provést stejné změny na server v pracovní režimu.
+Server v pracovním režimu nadále přijímá změny ze služby Active Directory a Azure AD a může v případě selhání rychle převzít zodpovědnosti jiného serveru. Pokud provedete změny konfigurace primárního serveru, je vaše zodpovědností udělat stejné změny serveru v pracovním režimu.
 
-Pro ty z vás se znalostí starší verze technologií synchronizace se liší pracovní režim, protože má svou vlastní databázi SQL server. Tato architektura umožňuje pracovní režim serveru byly umístěné v jiném datovém centru.
+Pro vás se znalostí starších technologií synchronizace se pracovní režim liší od chvíle, kdy server má svou vlastní databázi SQL. Tato architektura umožňuje, aby se server pracovního režimu nacházel v jiném datovém centru.
 
 ### <a name="verify-the-configuration-of-a-server"></a>Ověření konfigurace serveru
-Chcete-li použít tuto metodu, postupujte podle těchto kroků:
+Chcete-li použít tuto metodu, postupujte podle následujících kroků:
 
-1. [Příprava](#prepare)
+1. [Systém](#prepare)
 2. [Konfigurace](#configuration)
-3. [Importovat a synchronizovat](#import-and-synchronize)
-4. [Ověření](#verify)
+3. [Import a synchronizace](#import-and-synchronize)
+4. [Ověříte](#verify)
 5. [Přepnout aktivní server](#switch-active-server)
 
 #### <a name="prepare"></a>Příprava
-1. Instalace služby Azure AD Connect, vyberte **pracovním režimu**a zrušte výběr **spuštění synchronizace** na poslední stránce Průvodce instalací. Tento režim umožňuje uživateli spustit synchronizační modul ručně.
+1. Nainstalujte Azure AD Connect, vyberte **pracovní režim**a zrušte výběr **Spustit synchronizaci** na poslední stránce Průvodce instalací. Tento režim umožňuje spustit modul synchronizace ručně.
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
-2. Znaménko vypnout/přihlašování do a z nabídky vyberte možnost zahájení **synchronizační služba**.
+2. Odhlaste se nebo se přihlaste a v nabídce Start vyberte **synchronizační službu**.
 
-#### <a name="configuration"></a>Konfigurace
-Pokud vlastní změny provedené na primární server a chcete porovnat konfigurace s testovacím serveru, použijte [dokumentace služby Azure AD Connect konfigurace](https://github.com/Microsoft/AADConnectConfigDocumenter).
+#### <a name="configuration"></a>Konfiguraci
+Pokud jste provedli vlastní změny primárního serveru a chcete porovnat konfiguraci s pracovním serverem, použijte [Azure AD Connect Configuration Documentation](https://github.com/Microsoft/AADConnectConfigDocumenter).
 
-#### <a name="import-and-synchronize"></a>Importovat a synchronizovat
-1. Vyberte **konektory**a vyberte první konektor s typem **Active Directory Domain Services**. Klikněte na tlačítko **spustit**vyberte **úplný import**, a **OK**. Tyto kroky proveďte pro všechny konektory tohoto typu.
-2. Vyberte konektor s typem **Azure Active Directory (Microsoft)** . Klikněte na tlačítko **spustit**vyberte **úplný import**, a **OK**.
-3. Ujistěte se, že je stále vybraná karta konektory. Pro každý konektor s typem **Active Directory Domain Services**, klikněte na tlačítko **spustit**vyberte **rozdílová synchronizace**, a **OK**.
-4. Vyberte konektor s typem **Azure Active Directory (Microsoft)** . Klikněte na tlačítko **spustit**vyberte **rozdílová synchronizace**, a **OK**.
+#### <a name="import-and-synchronize"></a>Import a synchronizace
+1. Vyberte **konektory**a vyberte první konektor s typem **Active Directory Domain Services**. Klikněte na **Spustit**, vyberte **úplný import**a pak **OK**. Proveďte tyto kroky u všech konektorů tohoto typu.
+2. Vyberte konektor typu **Azure Active Directory (Microsoft)** . Klikněte na **Spustit**, vyberte **úplný import**a pak **OK**.
+3. Ujistěte se, že jsou konektory karet stále vybrané. U každého konektoru s typem **Active Directory Domain Services**klikněte na **Spustit**, vyberte **rozdílovou synchronizaci**a pak na **OK**.
+4. Vyberte konektor typu **Azure Active Directory (Microsoft)** . Klikněte na **Spustit**, vyberte **rozdílovou synchronizaci**a pak na **OK**.
 
-Nyní máte připravené změny do služby Azure AD a místní AD (Pokud používáte hybridní nasazení systému Exchange) export. Následující kroky umožňují zkontrolovat, co se chystá změna před zahájením skutečně export do adresáře.
+Teď máte připravené změny v exportu do Azure AD a místní služby AD (Pokud používáte hybridní nasazení Exchange). Následující kroky vám umožní zkontrolovat, co se chystá změnit, než začnete s exportem do adresářů.
 
-#### <a name="verify"></a>Ověřit
-1. Spusťte příkazový řádek a přejděte na `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Spuštěním příkazu `csexport "Name of Connector" %temp%\export.xml /f:x` Název konektoru můžete najít v synchronizační služba. Má název "contoso.com – AAD" podobně jako pro Azure AD.
-3. Spuštěním příkazu `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` Když máte soubor ve složce % temp % s názvem export.csv, které se dají prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
-4. Proveďte potřebné změny data nebo konfigurace a projít tyto kroky opakujte (Import a synchronizaci a ověřte, zda) až se očekává, že změny, které mají být exportovány.
+#### <a name="verify"></a>Ověření
+1. Spuštění příkazového řádku a přechod na`%ProgramFiles%\Microsoft Azure AD Sync\bin`
+2. Spuštěním příkazu `csexport "Name of Connector" %temp%\export.xml /f:x`Název konektoru najdete v části synchronizační služba. Má název podobný řetězci "contoso.com – AAD" pro Azure AD.
+3. Spuštěním příkazu `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`Máte soubor v souboru% temp% s názvem export. csv, který lze prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
+4. Proveďte nezbytné změny dat nebo konfigurace a spusťte tyto kroky znovu (import a synchronizace a ověření), dokud se neočekávají změny, které se chystá exportovat.
 
-**Vysvětlení souboru export.csv** většina souboru je zřejmých. Některé zkratky obsahu:
-* OMODT – změny typu objektu. Určuje, zda je operace na úrovni objektu přidání, aktualizace nebo odstranění.
-* AMODT – typ atributu úpravy. Určuje, zda je operace na úrovni atribut přidání, aktualizace nebo odstranění.
+**Princip exportu souboru. csv** Většina souboru je zřejmá. Některé zkratky pro pochopení obsahu:
+* OMODT – typ změny objektu. Určuje, zda je operace na úrovni objektu Add, Update nebo DELETE.
+* AMODT – typ změny atributu Určuje, zda je operace na úrovni atributu přidat, aktualizovat nebo odstranit.
 
-**Načíst běžné identifikátory** export.csv soubor obsahuje všechny změny, které mají být exportovány. Každý řádek odpovídá změnu pro objekt v prostoru konektoru a objekt je identifikovaný atribut rozlišující název. Atribut rozlišující název je jedinečný identifikátor přiřazena objektu v prostoru konektoru. Pokud máte mnoho řádků/změn v export.csv k analýze, může být obtížné si můžete zjistit, které objekty, že změny jsou podle pouze rozlišující název atributu. Pro zjednodušení procesu analýzy změny pomocí csanalyzer.ps1 skript prostředí PowerShell. Tento skript načte běžné identifikátory (například displayName, userPrincipalName) objekty. Použití skriptu:
-1. Zkopírujte skript prostředí PowerShell z části [CSAnalyzer](#appendix-csanalyzer) do souboru s názvem `csanalyzer.ps1`.
-2. Otevřete okno Powershellu a přejděte do složky, ve které jste vytvořili skript prostředí PowerShell.
+**Načíst společné identifikátory** Soubor export. csv obsahuje všechny změny, které mají být exportovány. Každý řádek odpovídá změně objektu v prostoru konektoru a objekt je identifikován atributem DN. Atribut DN je jedinečný identifikátor přiřazený objektu v prostoru konektoru. Máte-li k analýze mnoho řádků a změn v souboru export. csv, může být obtížné zjistit, které objekty se tyto změny týkají, na základě samotného atributu DN. Pro zjednodušení procesu analýzy změn použijte skript prostředí PowerShell csanalyzer. ps1. Skript načte běžné identifikátory (například DisplayName, userPrincipalName) objektů. Postup použití skriptu:
+1. Zkopírujte skript PowerShellu z části [CSAnalyzer](#appendix-csanalyzer) do souboru s názvem `csanalyzer.ps1`.
+2. Otevřete okno PowerShellu a přejděte do složky, ve které jste vytvořili PowerShellový skript.
 3. Spustit: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
-4. Teď máte soubor s názvem **processedusers1.csv** , která se dají prozkoumat v aplikaci Microsoft Excel. Všimněte si, že soubor poskytuje mapování z rozlišující název atributu pro běžné identifikátory (například zobrazovaný název a hodnota userPrincipalName). Aktuálně nezahrnuje změny skutečné atributů, které mají být exportovány.
+4. Teď máte soubor s názvem **processedusers1. csv** , který se dá prozkoumat v Microsoft Excelu. Všimněte si, že soubor poskytuje mapování z atributu DN na společné identifikátory (například DisplayName a userPrincipalName). V současné době nezahrnuje změny atributů, které mají být exportovány.
 
 #### <a name="switch-active-server"></a>Přepnout aktivní server
-1. Na aktuálně aktivní server vypnout server (DirSync nebo FIM nebo Azure AD Sync), není export do služby Azure AD nebo ho nastavit v pracovním režimu (Azure AD Connect).
-2. Spusťte Průvodce instalací serveru v **pracovním režimu** a zakázat **pracovním režimu**.
+1. Na aktuálně aktivním serveru buď vypněte Server (DirSync/FIM/Azure AD Sync), takže se neexportuje do služby Azure AD ani nenastaví v pracovním režimu (Azure AD Connect).
+2. Spusťte Průvodce instalací na serveru v **pracovním režimu** a zakažte **pracovní režim**.
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/additionaltasks.png)
 
 ## <a name="disaster-recovery"></a>Zotavení po havárii
-Součástí návrhu implementace je plánování co dělat v případě, že nedojde k havárii Pokud ztratíte synchronizační server. Existují různé modely mají použít, a který se má použít, závisí na několika faktorech včetně:
+Součástí návrhu implementace je naplánovat, co dělat v případě, že dojde k výpadku, kdy se synchronizační server ztratí. Existují různé modely, které je potřeba použít a které z nich je možné použít na několika faktorech, mezi které patří:
 
-* Co je vaší míře tolerance pro nebude možné provádět změny objektů ve službě Azure AD během výpadku?
-* Pokud používáte synchronizace hesel, uživatelé přijmou, že se mají použít staré heslo ve službě Azure AD v případě, že se mění v místním?
-* Máte závislost na provoz v reálném čase, jako je například zpětný zápis hesla?
+* Jaká je vaše tolerance, aby se během výpadku nemohly měnit objekty v Azure AD?
+* Pokud používáte synchronizaci hesel, uživatelé přijmou, aby v případě změny v místním prostředí používali staré heslo ve službě Azure AD.
+* Máte závislost na operacích v reálném čase, jako je třeba zpětný zápis hesla?
 
-V závislosti na odpovědi na tyto otázky a zásad vaší organizace je možné implementovat jednu z následujících strategií:
+V závislosti na odpovědích na tyto otázky a zásady vaší organizace je možné implementovat jednu z následujících strategií:
 
-* Znovu sestavte v případě potřeby.
-* Mít náhradní pohotovostní server, označované jako **pracovním režimu**.
+* V případě potřeby znovu sestavte.
+* Mít náhradní pohotovostní server, známý jako **pracovní režim**.
 * Použijte virtuální počítače.
 
-Pokud použijete integrovanou databází SQL Express, pak byste si rovněž projít [vysoké dostupnosti pro SQL](#sql-high-availability) oddílu.
+Pokud nepoužíváte integrovanou databázi SQL Express, měli byste si také projít část s [vysokou dostupností SQL](#sql-high-availability) .
 
 ### <a name="rebuild-when-needed"></a>Znovu sestavit v případě potřeby
-Přijatelné strategií je plánování opětovném sestavení serveru v případě potřeby. Obvykle instalace synchronizačního modulu a nechcete, můžete dokončit počáteční import a synchronizace během pár hodin. Pokud není k dispozici náhradní server, je možné k hostování synchronizační modul dočasně použít řadič domény.
+Životaschopná strategie je plánování serveru, který je v případě potřeby znovu sestaven. Obvykle je instalace synchronizačního modulu a provádění počátečního importu a synchronizace dokončena během několika hodin. Pokud není k dispozici náhradní server, je možné dočasně použít řadič domény k hostování synchronizačního modulu.
 
-Synchronizační modul server neukládá některému ze stavů o objektech, tak databázi můžete znovu sestavit z dat ve službě Active Directory a Azure AD. **SourceAnchor** atribut se používá pro připojení objekty v místním prostředím a cloudem. Pokud je znovu sestavit server pomocí existující objekty v místním prostředím a cloudem, poté synchronizační modul porovnává tyto objekty společně znovu na přeinstalace. Jsou věci, které potřebujete k dokumentu a uložit změny konfigurace serveru, jako jsou pravidla filtrování a synchronizace. Tyto vlastní konfigurace musí být znovu použit před jejím zahájením.
+Server synchronizačního modulu neukládá žádný stav objektů, aby bylo možné databázi znovu vytvořit z dat ve službě Active Directory a v Azure AD. Atribut **sourceAnchor** se používá pro připojení k objektům z místního prostředí a cloudu. Pokud znovu sestavíte Server s existujícími objekty v místním prostředí i v cloudu, pak modul synchronizace tyto objekty porovnává znovu po přeinstalaci. K dokumentování a ukládání jsou potřeba změny v konfiguraci serveru, jako jsou například pravidla filtrování a synchronizace. Tyto vlastní konfigurace je nutné znovu použít před zahájením synchronizace.
 
-### <a name="have-a-spare-standby-server---staging-mode"></a>Mít náhradní pohotovostní server – pracovní režim
-Pokud máte složitější prostředí, pak máte nejméně jeden pohotovostní server doporučuje. Během instalace, můžete povolit serveru tak, aby se v **pracovním režimu**.
+### <a name="have-a-spare-standby-server---staging-mode"></a>Mít náhradní pohotovostní server – režim přípravy
+Pokud máte složitější prostředí, doporučuje se mít jeden nebo více pohotovostních serverů. Během instalace můžete povolit, aby byl server v **pracovním režimu**.
 
-Další informace najdete v tématu [pracovním režimu](#staging-mode).
+Další informace najdete v tématu [pracovní režim](#staging-mode).
 
-### <a name="use-virtual-machines"></a>Použijte virtuální počítače
-Metoda běžné a podporovaných je ke spuštění synchronizační modul v rámci virtuálního počítače. V případě, že hostitel má problém, bitová kopie se synchronizační modul server můžete migrovat na jiný server.
+### <a name="use-virtual-machines"></a>Použití virtuálních počítačů
+Běžnou a podporovanou metodou je spuštění synchronizačního modulu na virtuálním počítači. V případě, že hostitel má problém, image se serverem synchronizačního stroje se dá migrovat na jiný server.
 
-### <a name="sql-high-availability"></a>Vysoké dostupnosti pro SQL
-Pokud nechcete použít SQL Server Express, která se dodává s Azure AD Connect, pak vysoké dostupnosti pro SQL Server. měli byste také zvážit. Řešení vysoké dostupnosti, podporované zahrnují clusteringu SQL a AOA (skupiny dostupnosti Always On). Nepodporovaná řešení obsahovat zrcadlení.
+### <a name="sql-high-availability"></a>Vysoká dostupnost SQL
+Pokud nepoužíváte SQL Server Express, která se dodává s Azure AD Connect, měli byste zvážit také vysokou dostupnost pro SQL Server. Mezi podporovaná řešení s vysokou dostupností patří clustering SQL a AOA (skupiny dostupnosti Always On). Nepodporovaná řešení zahrnují zrcadlení.
 
-Azure AD Connect verze 1.1.524.0 byla přidaná podpora pro SQL AOA. Před instalací Azure AD Connect je nutné povolit SQL AOA. Během instalace Azure AD Connect zjistí, zda zadaná instance SQL je nebo není povolená pro SQL AOA. Pokud je povolené SQL AOA, Azure AD Connect další přijde na to, pokud SQL AOA je nakonfigurovaná pro používání replikace synchronní nebo asynchronní replikace. Při nastavování naslouchacího procesu skupiny dostupnosti, se doporučuje nastavit vlastnost RegisterAllProvidersIP na hodnotu 0. Je to proto, že Azure AD Connect v současnosti využívá nativní klient systému SQL pro připojení k SQL a nativní klient systému SQL nepodporuje používání vlastnosti MultiSubNetFailover.
+Do Azure AD Connect ve verzi 1.1.524.0 se přidala podpora pro SQL AOA. Před instalací Azure AD Connect musíte povolit SQL AOA. Během instalace Azure AD Connect zjistí, jestli je zadaná instance SQL povolená pro SQL AOA nebo ne. Pokud je povolený SQL AOA, Azure AD Connect dál vyhodnotí, pokud je SQL AOA nakonfigurované na používání synchronní replikace nebo asynchronní replikace. Při nastavování naslouchacího procesu skupiny dostupnosti doporučujeme nastavit vlastnost RegisterAllProvidersIP na hodnotu 0. Důvodem je to, že Azure AD Connect aktuálně používá SQL Native Client k připojení k SQL a SQL Native Client nepodporuje použití vlastnosti MultiSubNetFailover.
 
-## <a name="appendix-csanalyzer"></a>Appendix CSAnalyzer
-V části [ověřte](#verify) o tom, jak pomocí tohoto skriptu.
+## <a name="appendix-csanalyzer"></a>Příloha CSAnalyzer
+Informace o tom [](#verify) , jak tento skript použít, najdete v části.
 
 ```
 Param(

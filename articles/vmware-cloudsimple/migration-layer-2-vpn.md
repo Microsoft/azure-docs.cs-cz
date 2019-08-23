@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa7117fd7b5c8fa92f9d9cff1d7b1cbc18555840
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 55401ca498f06aa0b959c3926f2a07f40e7fb638
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881200"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972621"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrace úloh pomocí roztažené sítě vrstvy 2
 
@@ -276,7 +276,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/local-endpoints
 "trust_crl_ids": []
 }
 ```
- 
+
 ### <a name="create-a-peer-endpoint"></a>Vytvořit rovnocenný koncový bod
 
 ```

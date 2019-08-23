@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 4cf959c5218160a8fe341e6ffdfdf459c1a19247
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 50264b1364f40ff5e68ae4a93783d62837c167b3
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019175"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898814"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru Azure Kubernetes Service (AKS)
 
@@ -40,22 +40,22 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 >
 > Chcete-li provést upgrade, z *1.12. x* -> *1.14. x*, nejprve upgradujte z *1.12. x* -> *1.13. x*a potom proveďte upgrade z *1.13. x* -> *1.14. x*.
 
-Následující příklad výstupu ukazuje, že cluster je možné upgradovat na verzi *1.13.9*:
+Následující příklad výstupu ukazuje, že cluster je možné upgradovat na verze *1.13.9* a *1.13.10*:
 
 ```console
-Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.12.8           1.12.8             1.13.9
+Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
+-------  ----------------  ---------------  -----------------  ---------------
+default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 ```
 
 ## <a name="upgrade-an-aks-cluster"></a>Upgrade clusteru AKS
 
 Seznam dostupných verzí pro cluster AKS můžete upgradovat pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Během procesu upgradu AKS přidá nový uzel do clusteru, na kterém je spuštěná zadaná verze Kubernetes, a pak pečlivě [Cordon a][kubernetes-drain] vyprázdní jeden ze starých uzlů, aby se minimalizovalo přerušení spouštění aplikací. Když se nový uzel potvrdí jako běžící aplikace, Starý uzel se odstraní. Tento proces se opakuje, dokud nebudou upgradovány všechny uzly v clusteru.
 
-Následující příklad upgraduje cluster na verzi *1.13.9*:
+Následující příklad upgraduje cluster na verzi *1.13.10*:
 
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.9
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
 ```
 
 Upgrade clusteru může trvat několik minut v závislosti na tom, kolik uzlů máte.
@@ -66,12 +66,12 @@ Pokud chcete ověřit, že upgrade proběhl úspěšně, použijte příkaz [AZ 
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Následující příklad výstupu ukazuje, že cluster teď spouští *1.13.9*:
+Následující příklad výstupu ukazuje, že cluster teď spouští *1.13.10*:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.13.9               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>Další postup

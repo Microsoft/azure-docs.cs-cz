@@ -8,20 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8a47968ec252f628da8a1a36570fb06eb4bb10bf
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886946"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972814"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>Odstranění privátního cloudu CloudSimple
 
-CloudSimple poskytuje flexibilitu pro odstranění privátního cloudu.  Privátní cloud se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Při odstranění privátního cloudu se odstraní všechny clustery. 
+CloudSimple poskytuje flexibilitu pro odstranění privátního cloudu.  Privátní cloud se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Při odstranění privátního cloudu se odstraní všechny clustery.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Odstranění privátního cloudu odstraní celý privátní cloud.  Odstraní se všechny součásti privátního cloudu.  Pokud chcete zachovat všechna data, ujistěte se, že jste data zálohovali do místního úložiště nebo do úložiště Azure. 
+Odstranění privátního cloudu odstraní celý privátní cloud.  Odstraní se všechny součásti privátního cloudu.  Pokud chcete zachovat všechna data, ujistěte se, že jste data zálohovali do místního úložiště nebo do úložiště Azure.
 
 Mezi komponenty privátního cloudu patří:
 
@@ -31,12 +31,11 @@ Mezi komponenty privátního cloudu patří:
 * Všechna uživatelská data uložená v privátním cloudu
 * Všechna příloha pravidla brány firewall k síti VLAN nebo podsíti
 
-
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="delete-a-private-cloud"></a>Odstranění privátního cloudu 
+## <a name="delete-a-private-cloud"></a>Odstranění privátního cloudu
 
 1. [Přístup k portálu CloudSimple](access-cloudsimple-portal.md).
 
@@ -52,12 +51,10 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
     ![Odstranění privátního cloudu – potvrzení](media/delete-private-cloud-confirm.png)
 
-
 Privátní cloud je označený k odstranění.  Proces odstranění začíná tři hodiny a odstraní privátní cloud.
 
 > [!CAUTION]
 > Po odstranění privátního cloudu musí být uzly smazány.  Měření uzlů bude pokračovat v přenesení uzlů z vašeho předplatného.
-
 
 ## <a name="next-steps"></a>Další postup
 

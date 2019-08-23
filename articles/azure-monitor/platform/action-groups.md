@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/22/2019
+ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 52d7b84fe6210d8a4d46814ad6749bed0463478e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: a0b0df9110f062b5f9c23840cb21308b634c9c81
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405642"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898162"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -32,7 +32,7 @@ Informace o použití šablon Azure Resource Manager ke konfiguraci skupin akcí
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Vytvoření skupiny akcí pomocí Azure Portal
 
-1. V [Azure Portal](https://portal.azure.com)vyberte monitorovat . Podokno **monitorování** slučuje všechna nastavení monitorování a data v jednom zobrazení.
+1. V [Azure Portal](https://portal.azure.com)vyberte monitorovat. Podokno **monitorování** slučuje všechna nastavení monitorování a data v jednom zobrazení.
 
     ![Služba monitorování](./media/action-groups/home-monitor.png)
     
@@ -76,6 +76,11 @@ Po vytvoření skupiny akcí je tato skupina zobrazená v části **skupiny akc�
 > [!NOTE]
 > V tématu [omezení služby předplatného pro monitorování](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) pro číselná omezení u každé z níže uvedených položek.  
 
+### <a name="automation-runbook"></a>Runbook služby Automation
+Omezení pro datové části sady Runbook najdete v části [omezení služby předplatného Azure](../../azure-subscription-service-limits.md) .
+
+Ve skupině akcí můžete mít omezený počet akcí sady Runbook. 
+
 ### <a name="azure-app-push-notifications"></a>Nabízená oznámení aplikace Azure
 Můžete mít omezený počet akcí aplikace Azure ve skupině akcí.
 
@@ -87,6 +92,16 @@ E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
+### <a name="email-azure-resource-manager-role"></a>Poslat e-mail roli Azure Resource Manageru
+Odešlete e-mail členům role předplatného.
+
+Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+
+### <a name="function"></a>Funkce
+Klíče funkcí pro aplikace Function App nakonfigurované jako akce jsou čteny prostřednictvím rozhraní API Functions, které aktuálně vyžaduje aplikace funkce v2 ke konfiguraci nastavení aplikace "AzureWebJobsSecretStorageType" na "soubory". Další informace najdete v tématu [změny správy klíčů ve Functions v2]( https://aka.ms/funcsecrets).
+
+Ve skupině akcí můžete mít omezený počet akcí funkce.
+
 ### <a name="itsm"></a>ITSM
 Akce ITSM vyžaduje připojení ITSM. Naučte se vytvořit [připojení ITSM](../../azure-monitor/platform/itsmc-overview.md).
 
@@ -95,51 +110,7 @@ Ve skupině akcí můžete mít omezený počet ITSM akcí.
 ### <a name="logic-app"></a>Aplikace logiky
 Ve skupině akcí můžete mít omezený počet akcí aplikace logiky.
 
-### <a name="function"></a>Funkce
-Klíče funkcí pro aplikace Function App nakonfigurované jako akce jsou čteny prostřednictvím rozhraní API Functions, které aktuálně vyžaduje aplikace funkce v2 ke konfiguraci nastavení aplikace "AzureWebJobsSecretStorageType" na "soubory". Další informace najdete v tématu [změny správy klíčů ve Functions v2]( https://aka.ms/funcsecrets).
-
-Ve skupině akcí můžete mít omezený počet akcí funkce.
-
-### <a name="automation-runbook"></a>Runbook služby Automation
-Omezení pro datové části sady Runbook najdete v části [omezení služby předplatného Azure](../../azure-subscription-service-limits.md) .
-
-Ve skupině akcí můžete mít omezený počet akcí sady Runbook. 
-
-### <a name="sms"></a>SMS
-Další důležité informace najdete v tématu [omezení přenosové rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) a [chování výstrah serveru SMS](../../azure-monitor/platform/alerts-sms-behavior.md) .
-
-Ve skupině akcí můžete mít omezený počet akcí serveru SMS.  
-
-### <a name="voice"></a>Hlas
-Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
-
-Ve skupině akcí můžete mít omezený počet hlasových akcí.
-
-### <a name="webhook"></a>Webhook
-Webhooky se zopakují pomocí následujících pravidel. Volání Webhooku se v případě vrácení následujících stavových kódů HTTP znovu pokusí o maximálně 2 časy: 408, 429, 503, 504 nebo když koncový bod HTTP neodpovídá. První opakování se provede po 10 sekundách. Druhý pokus proběhne po 100 sekundách. Po dvou selháních nebude žádná skupina akcí volat koncový bod na 30 minut. 
-
-Zdrojové rozsahy IP adres
- - 13.72.19.232
- - 13.106.57.181
- - 13.106.54.3
- - 13.106.54.19
- - 13.106.38.142
- - 13.106.38.148
- - 13.106.57.196
- - 13.106.57.197
- - 52.244.68.117
- - 52.244.65.137
- - 52.183.31.0
- - 52.184.145.166
- - 51.4.138.199
- - 51.5.148.86
- - 51.5.149.19
-
-Chcete-li dostávat aktualizace o změnách těchto IP adres, doporučujeme nakonfigurovat Service Health výstrahu, která sleduje informační oznámení o službě skupin akcí.
-
-Ve skupině akcí můžete mít omezený počet akcí Webhooku.
-
-#### <a name="secure-webhook"></a>Zabezpečený Webhook
+### <a name="secure-webhook"></a>Zabezpečený Webhook
 **Funkce zabezpečeného Webhooku je teď ve verzi Preview.**
 
 Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory k zabezpečení připojení mezi skupinou akcí a vaším chráněným webovým rozhraním API (koncový bod Webhooku). Celkový pracovní postup pro využití této funkce je popsaný níže. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
@@ -156,12 +127,12 @@ Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory 
     - Úprava proměnné $myAzureADApplicationObjectId skriptu PowerShellu pro použití ID objektu vaší aplikace Azure AD
     - Spusťte upravený skript.
     
-1. Nakonfigurujte akci Webhooku skupiny akcí.
+1. Nakonfigurujte akci zabezpečeného Webhooku skupiny akcí.
     - Zkopírujte hodnotu $myApp. ObjectId ze skriptu a zadejte ji do pole ID objektu aplikace v definici akce Webhooku.
     
     ![Akce zabezpečení Webhooku](./media/action-groups/action-groups-secure-webhook.png)
 
-##### <a name="secure-webhook-powershell-script"></a>Zabezpečený skript prostředí PowerShell Webhooku
+#### <a name="secure-webhook-powershell-script"></a>Zabezpečený skript prostředí PowerShell Webhooku
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -230,8 +201,43 @@ Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
 
+### <a name="sms"></a>SMS
+Další důležité informace najdete v tématu [omezení přenosové rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) a [chování výstrah serveru SMS](../../azure-monitor/platform/alerts-sms-behavior.md) .
 
-## <a name="next-steps"></a>Další postup
+Ve skupině akcí můžete mít omezený počet akcí serveru SMS.  
+
+### <a name="voice"></a>Hlas
+Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+
+Ve skupině akcí můžete mít omezený počet hlasových akcí.
+
+### <a name="webhook"></a>Webhook
+Webhooky se zopakují pomocí následujících pravidel. Volání Webhooku se v případě vrácení následujících stavových kódů HTTP znovu pokusí o maximálně 2 časy: 408, 429, 503, 504 nebo když koncový bod HTTP neodpovídá. První opakování se provede po 10 sekundách. Druhý pokus proběhne po 100 sekundách. Po dvou selháních nebude žádná skupina akcí volat koncový bod na 30 minut. 
+
+Zdrojové rozsahy IP adres
+ - 13.72.19.232
+ - 13.106.57.181
+ - 13.106.54.3
+ - 13.106.54.19
+ - 13.106.38.142
+ - 13.106.38.148
+ - 13.106.57.196
+ - 13.106.57.197
+ - 52.244.68.117
+ - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
+ - 51.4.138.199
+ - 51.5.148.86
+ - 51.5.149.19
+
+Chcete-li dostávat aktualizace o změnách těchto IP adres, doporučujeme nakonfigurovat Service Health výstrahu, která sleduje informační oznámení o službě skupin akcí.
+
+Ve skupině akcí můžete mít omezený počet akcí Webhooku.
+
+
+
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [chování výstrah SMS](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Získejte [informace o schématu Webhooku upozornění protokolu aktivit](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
 * Další informace o [konektoru ITSM](../../azure-monitor/platform/itsmc-overview.md)

@@ -3,16 +3,16 @@ title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s dotazem na prostředky Azure pomocí Azure Resource graphu.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 511d170f90e8ed34b00a3960d084223ec73d99dd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3c59b5c4b580604c65572364d29d4e5d10a26820
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480550"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900011"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Řešení chyb pomocí Azure Resource graphu
 
@@ -60,6 +60,33 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 # View the completed results of the query on all subscriptions
 $response
 ```
+
+### <a name="rest-contenttype"></a>Případě Nepodporovaná hlavička REST typu obsahu
+
+#### <a name="issue"></a>Problém
+
+Zákazníci, kteří se dotazují do grafu prostředků Azure REST API obdrží odpověď _500_ (interní chyba serveru).
+
+#### <a name="cause"></a>Příčina
+
+Graf Azure Resource REST API podporuje `Content-Type` jenom **Application/JSON**. Některé nástroje nebo agenti REST mají výchozí hodnotu **Text/prostý**, což REST API nepodporuje.
+
+#### <a name="resolution"></a>Řešení
+
+Ověřte, že nástroj nebo agent, který používáte k dotazování na Azure Resource Graph, má `Content-Type` záhlaví REST API nakonfigurované pro **Application/JSON**.
+### <a name="rest-403"></a>Případě Žádná oprávnění ke čtení pro všechna předplatná v seznamu
+
+#### <a name="issue"></a>Problém
+
+Zákazníci, kteří explicitně předají seznam předplatných s dotazem na Azure Resource Graph, získají odpověď _403_ (zakázáno).
+
+#### <a name="cause"></a>Příčina
+
+Pokud zákazník nemá oprávnění ke čtení pro všechna poskytnutá předplatná, je žádost zamítnuta z důvodu nedostatku příslušných zabezpečovacích práv.
+
+#### <a name="resolution"></a>Řešení
+
+V seznamu předplatných uveďte aspoň jedno předplatné, ke kterému má zákazník, který dotaz spouští, oprávnění ke čtení. Další informace najdete v tématu [oprávnění v Azure Resource graphu](../overview.md#permissions-in-azure-resource-graph).
 
 ## <a name="next-steps"></a>Další postup
 

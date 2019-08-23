@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 993654f22e3eaec0758366b85501c4c93373f2bc
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 5a362d2610e6feb85de730c086070636f3afa2b9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968668"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906691"
 ---
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [JDK 7 nebo novější](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
-* Klíč předplatného Azure pro službu Translator Text
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>Inicializovat projekt pomocí Gradle
 
@@ -89,11 +87,12 @@ public class Translate {
 }
 ```
 
-Přidejte tyto řádky do `Translate` třídy. Všimněte si, že spolu se `api-version`dvěma dalšími parametry byly připojeny `url`k. Tyto parametry slouží k nastavení výstupů překladu. V této ukázce je nastavena na hodnotu němčina (`de`) a italština (`it`). Ujistěte se, že jste aktualizovali hodnotu klíče předplatného.
+Přidejte tyto řádky do `Translate` třídy. Nejdřív se klíč předplatného a koncový bod čtou z proměnných prostředí. Pak si všimněte, že spolu s `api-version`, byly `url`do nástroje připojeny dva další parametry. Tyto parametry slouží k nastavení výstupů překladu. V této ukázce je nastavena na hodnotu němčina (`de`) a italština (`it`). 
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-String url = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de,it";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/translate?api-version=3.0&to=de,it";
 ```
 
 Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
@@ -191,7 +190,7 @@ gradle run
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
 

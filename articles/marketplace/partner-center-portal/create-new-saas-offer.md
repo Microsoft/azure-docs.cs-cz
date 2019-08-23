@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 37624c79a345f956de9a289c672340e391199e2f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650691"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900123"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvořit novou nabídku SaaS
 
@@ -153,23 +153,9 @@ Povolením testovacích jednotek budete požádáni o konfiguraci demonstrační
 
 ## <a name="connect-lead-management"></a>Připojit řízení zájemců
 
-Spojte se se zákazníky přímo, a to tak, že na tržištích zadáte nabídku a zapojíte systém pro řízení vztahů se zákazníky (CRM), abyste mohli dostávat kontaktní údaje zákazníka hned, co zákazník vyjádří zájem nebo nasadí vaše produktu.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-- **Zvolit cíl zájemce** (rozevírací nabídka): Poskytněte podrobnosti o připojení do systému CRM, kam chcete poslat zájemce zákazníkům. 
-
-Partnerské centrum podporuje následující systémy CRM pro správu potenciálních zákazníků. Vyberte odkaz pro pokyny k instalaci.
-
-- Objekt blob Azure – zadejte kontaktní e-mail, název kontejneru a připojovací řetězec účtu úložiště. 
-- [Tabulka Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) – zadejte kontaktní e-mail a připojovací řetězec účtu úložiště. 
-- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) – poskytněte kontaktní e-mail, adresu URL a režim ověřování (Office 365 nebo Azure Active Directory).
-- [Koncový bod HTTPS](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) – zadejte kontaktní e-mail a adresu URL koncového bodu https. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) – poskytněte kontaktní e-mail, ID formuláře, ID účtu Munchkin a ID serveru.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) – poskytněte kontaktní E-mail a ID organizace. 
-
-#### <a name="additional-lead-management-resources"></a>Další zdroje informací o vedoucím řízení
-- [Nejčastější dotazy ke správě potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Přehled řízení vedoucích – jeden pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+Další informace najdete v tématu [Přehled správy potenciálních zákazníků](./commercial-marketplace-get-customer-leads.md) .
 
 Před přechodem k další části si nezapomeňte **Uložit** .
 
@@ -489,6 +475,6 @@ Pokud tuto nabídku publikujete poprvé, můžete:
 - Poskytněte pokyny k testování certifikačního týmu, abyste měli jistotu, že vaše aplikace je testována správně, kromě doplňkových poznámek, které jsou užitečné pro porozumění vaší aplikaci.
 - Kliknutím na **Odeslat**nabídku pro publikování odešlete. Pošleme vám e-mail s oznámením, že je k dispozici verze Preview vaší nabídky, kterou si můžete prohlédnout a schválit. Je nutné, abyste se vrátili do partnerského centra a vybrali možnost pro publikování nabídky na veřejném webu (nebo v případě soukromé nabídky pro privátní cílovou skupinu).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Aktualizace stávající nabídky na komerčním webu Marketplace](./update-existing-offer.md)

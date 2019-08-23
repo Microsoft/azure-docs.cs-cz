@@ -1,5 +1,5 @@
 ---
-title: Spojte Data řešení ve službě Azure Monitor | Dokumentace Microsoftu
+title: Řešení pro přenos dat v Azure Monitor | Microsoft Docs
 description: Při přenosu dat se konsolidované síti a výkonu data z počítačů s agenty Log Analytics. Kvůli pomoci při korelaci dat se síťová data kombinují s daty protokolu.
 services: log-analytics
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: b7968de8ad4357241eb8d86d51e991f4bbab959d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e1324bb90c0b92daf709b695a0a8b3af9161c2e
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65601569"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905434"
 ---
-# <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Řešení Wire Data 2.0 (Preview) ve službě Azure Monitor
+# <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Řešení Wire Data 2.0 (Preview) v Azure Monitor
 
 ![Symbol Wire Data](media/wire-data/wire-data2-symbol.png)
 
@@ -28,12 +28,12 @@ Při přenosu dat se konsolidované síti a výkonu data shromážděná z poč�
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Kromě agenta Log Analytics řešení Wire Data používá Microsoft Agents závislostí, který nainstalujete na počítačích ve vaší infrastruktuře IT. Závislí agenti monitorují síťová data odesílaná do a z počítačů na úrovních sítě 2–3 v [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), a to včetně různých použitých protokolů a portů. Data se pak posílají do Azure monitorování pomocí agentů.  
+Kromě agenta Log Analytics řešení Wire Data používá Microsoft Agents závislostí, který nainstalujete na počítačích ve vaší infrastruktuře IT. Závislí agenti monitorují síťová data odesílaná do a z počítačů na úrovních sítě 2–3 v [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), a to včetně různých použitých protokolů a portů. Data se pak odesílají Azure Monitor pomocí agentů.  
 
 >[!NOTE]
->Pokud jste už nasadili řešení Service Map, nebo zvažuje Service Map nebo [monitorování Azure pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md), je nové připojení metriky sady dat shromažďovat a ukládat ve službě Azure Monitor, která poskytuje stejné informace s Wire Data.
+>Pokud jste už nasadili Service Map, nebo zvažujete Service Map nebo [Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md), vytvoří se nová sada dat metriky připojení, kterou shromažďují a ukládají v Azure monitor, které poskytují srovnatelné informace pro přenosová data.
 
-Ve výchozím nastavení Azure Monitor protokoly dat týkající se využití procesoru, paměti, disku a sítě výkonnostní data z čítače integrovaný do Windows a Linuxem, jakož i další čítače, které můžete zadat. Shromažďování síťových a jiných dat probíhá u každého agenta v reálném čase včetně podsítí a protokolů na úrovni aplikace, které počítač používá.  Řešení Wire Data sleduje síťová data na úrovni aplikace, nikoli v přenosové vrstvě TCP.  Toto řešení nesleduje individuální signály ACK a SYN.  Po dokončení metody handshake se připojení považuje za aktivní a označí se jako Připojeno. Toto připojení zůstává aktivní, dokud obě strany souhlasí, že je soket otevřený, a data mohou proudit tam a zpět.  Po obou stranách zavře připojení, je označena jako odpojeno.  Proto se počítá jen šířka pásma úspěšně dokončených paketů a neoznamují se opětovně odeslané nebo neúspěšné pakety.
+Ve výchozím nastavení Azure Monitor protokoluje data o výkonu procesoru, paměti, disku a sítě z čítačů integrovaných do systémů Windows a Linux a také dalších čítačů výkonu, které lze zadat. Shromažďování síťových a jiných dat probíhá u každého agenta v reálném čase včetně podsítí a protokolů na úrovni aplikace, které počítač používá.  Řešení Wire Data sleduje síťová data na úrovni aplikace, nikoli v přenosové vrstvě TCP.  Toto řešení nesleduje individuální signály ACK a SYN.  Po dokončení metody handshake se připojení považuje za aktivní a označí se jako Připojeno. Toto připojení zůstává aktivní, dokud obě strany souhlasí, že je soket otevřený, a data mohou proudit tam a zpět.  Jakmile se připojení ukončí, bude označeno jako odpojeno.  Proto se počítá jen šířka pásma úspěšně dokončených paketů a neoznamují se opětovně odeslané nebo neúspěšné pakety.
 
 Pokud používáte [sFlow](http://www.sflow.org/) nebo jiný software s [protokolem NetFlow společnosti Cisco](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), budou vám statistiky a údaje dat kabelové sítě povědomé.
 
@@ -52,48 +52,48 @@ Mezi předdefinované typy dotazů pro prohledávání protokolu patří:
 
 Při hledání pomocí dat kabelové sítě můžete filtrováním a seskupením dat zobrazit informace o hlavních agentech a protokolech. Můžete také zjistit, kdy určité počítače (IP adresy / adresy MAC) vzájemně komunikovaly, jak dlouho a kolik dat bylo odesláno – vidíte vlastně metadata o síťovém provozu, která se dají prohledávat.
 
-Protože si ale prohlížíte metadata, nemusí být užitečná při řešení problémů, kdy musíte jít do hloubky. Při přenosu dat ve službě Azure Monitor není úplné sběru dat v síti.  Nejsou určena k hloubkovému řešení problémů na úrovni paketů. Výhodou používání agenta ve srovnání s jinými metodami kolekce, je, že není nutné instalovat zařízení, opětovně konfigurovat síťové přepínače nebo proveďte komplikované konfigurace. Data kabelové sítě jednoduše vycházejí z agenta, kterého nainstalujete do počítače a který bude monitorovat svůj vlastní síťový provoz. Další výhodu poznáte, když potřebujete monitorovat úlohy běžící u poskytovatele cloudu, poskytovatele hostování služeb nebo v Microsoft Azure, kdy uživatel nevlastní vrstvu prostředků infrastruktury.
+Protože si ale prohlížíte metadata, nemusí být užitečná při řešení problémů, kdy musíte jít do hloubky. Data o přenosech v Azure Monitor nejsou úplným zachytáváním síťových dat.  Nejsou určena k hloubkovému řešení problémů na úrovni paketů. Výhodou použití agenta ve srovnání s jinými metodami shromažďování je, že nemusíte instalovat zařízení, překonfigurovat síťové přepínače nebo provádět složité konfigurace. Data kabelové sítě jednoduše vycházejí z agenta, kterého nainstalujete do počítače a který bude monitorovat svůj vlastní síťový provoz. Další výhodu poznáte, když potřebujete monitorovat úlohy běžící u poskytovatele cloudu, poskytovatele hostování služeb nebo v Microsoft Azure, kdy uživatel nevlastní vrstvu prostředků infrastruktury.
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
-Řešení Wire Data získává data ze závislého agenta Microsoft. Agent závislostí závisí na agenta Log Analytics pro jeho připojení k Azure Monitor. To znamená, že server musí mít nainstalovaný a nakonfigurovaný pomocí agenta závislostí agenta Log Analytics. Následující tabulka popisuje připojené zdroje, které řešení Wire Data podporuje.
+Řešení Wire Data získává data ze závislého agenta Microsoft. Dependency Agent závisí na agentu Log Analytics pro připojení k Azure Monitor. To znamená, že server musí mít nainstalovaný a nakonfigurovaný pomocí agenta závislostí agenta Log Analytics. Následující tabulka popisuje připojené zdroje, které řešení Wire Data podporuje.
 
 | **Připojený zdroj** | **Podporuje se** | **Popis** |
 | --- | --- | --- |
-| Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro Windows](../../azure-monitor/platform/agent-windows.md), agenti Windows vyžadují Agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems). |
-| Agenti systému Linux | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě [agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), agenty Linux vyžadují Agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](../../azure-monitor/platform/om-agents.md). <br><br> Přímé připojení z počítače agenta System Center Operations Manageru do Azure monitoru je povinný. |
+| Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro Windows](../platform/agent-windows.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](vminsights-enable-overview.md#supported-operating-systems). |
+| Agenti systému Linux | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě [agenta Log Analytics pro Linux](../learn/quick-collect-linux-computer.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](vminsights-enable-overview.md#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](../platform/om-agents.md). <br><br> Je požadováno přímé připojení z System Center Operations Manager počítače agenta k Azure Monitor. |
 | Účet služby Azure Storage | Ne | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
 
-Na Windows Microsoft Monitoring Agent (MMA) používá System Center Operations Manageru a Azure Monitor k shromažďuje a odesílá data. V závislosti na kontextu se nazývá agenta System Center Operations Manager Agent, agenta Log Analytics, MMA nebo přímý Agent. System Center Operations Manageru a Azure Monitor poskytuje trošku odlišné verze agenta MMA. Tyto verze můžete každou sestavu na System Center Operations Manager, Azure Monitor nebo obojí.
+V systému Windows se Microsoft Monitoring Agent (MMA) používá v System Center Operations Manager a Azure Monitor ke shromažďování a posílání dat. V závislosti na kontextu se nazývá agenta System Center Operations Manager Agent, agenta Log Analytics, MMA nebo přímý Agent. System Center Operations Manager a Azure Monitor poskytují mírně odlišnou verzi MMA. Tyto verze mohou jednotlivé sestavy System Center Operations Manager, Azure Monitor nebo obojí.
 
-V Linuxu agenta Log Analytics pro Linux shromažďuje a odesílá data do Azure monitoru. Při přenosu dat můžete použít na servery s agenty, které jsou přímo připojené k Azure Monitor nebo na serverech, které se připojují k monitorování Azure prostřednictvím skupin pro správu System Center Operations Manager.
+V systému Linux agent Log Analytics pro Linux shromažďuje a odesílá data do Azure Monitor. Můžete použít data na serverech s agenty přímo připojenými k Azure Monitor nebo na serverech, které se připojují k Azure Monitor prostřednictvím System Center Operations Manager skupin pro správu.
 
-Závislý agent nepřenáší sám o sobě žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data ve Wire Data přenášena agenta Log Analytics do Azure monitoru, vždy, buď přímo nebo přes bránu Log Analytics.
+Agent závislostí neodesílá žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data v datových přenosech jsou vždy přenášena agentem Log Analytics do Azure Monitor, a to buď přímo, nebo prostřednictvím brány Log Analytics.
 
 ![Diagram agenta](./media/wire-data/agents.png)
 
-Pokud jste uživatel System Center Operations Manager s skupinu pro správu připojené k Azure Monitor:
+Pokud jste System Center Operations Manager uživatel se skupinou pro správu připojenou k Azure Monitor:
 
-- Není nutná žádná další konfigurace, kdy agentů System Center Operations Manager můžete přístup k Internetu pro připojení k Azure Monitor.
-- Budete muset nakonfigurovat bránu Log Analytics pro práci s nástrojem System Center Operations Manager při agenty System Center Operations Manager nemá přístup k Azure Monitor přes internet.
+- Pokud agenti System Center Operations Manager mají přístup k Internetu, aby se mohli připojit k Azure Monitor, nevyžaduje se žádná další konfigurace.
+- Pokud System Center Operations Manager agenti získat přístup k Azure Monitor přes Internet, musíte nakonfigurovat bránu Log Analytics pro práci s System Center Operations Manager.
 
-Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení k Azure monitorování pomocí Log Analytics brány. Můžete stáhnout ze brána Log Analytics [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Pokud se počítače se systémem Windows nebo Linux nemohou přímo připojit ke službě, je nutné nakonfigurovat agenta Log Analytics pro připojení k Azure Monitor pomocí brány Log Analytics. Můžete stáhnout ze brána Log Analytics [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Vyžaduje se nabídka řešení [Přehledy a analýzy](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing).
 - Pokud používáte předchozí verzi řešení Wire Data, musíte ho nejprve odebrat. Všechna data zachycená původním řešením Wire Data jsou ale pořád dostupná ve verzi Wire Data 2.0 a při prohledávání protokolu.
-- K instalaci a odinstalaci závislého agenta se vyžadují oprávnění správce.
-- Závislý agent musí být nainstalovaný na počítači s 64bitovým operačním systémem.
+- K instalaci nebo odinstalaci agenta závislostí jsou nutná oprávnění správce.
+- Agent závislostí musí být nainstalován v počítači s 64 operačním systémem.
 
 ### <a name="operating-systems"></a>Operační systémy
 
-V následujících částech najdete seznam operačních systémů pro závislého agenta. Řešení Wire Data nepodporuje 32bitovou architekturu žádného operačního systému.
+V následujících částech najdete seznam podporovaných operačních systémů pro agenta závislostí. Řešení Wire Data nepodporuje 32bitovou architekturu žádného operačního systému.
 
 #### <a name="windows-server"></a>Windows Server
 
-- Windows Server 2019
+- Windows Server. 2019
 - Windows Server 2016 1803
 - Windows Server 2016
 - Windows Server 2012 R2
@@ -109,7 +109,7 @@ V následujících částech najdete seznam operačních systémů pro závislé
 - Windows 7
 
 #### <a name="supported-linux-operating-systems"></a>Podporované operační systémy a Linux
-Podporované operační systémy pro agenta závislostí v Linuxu v následujících částech.  
+V následujících částech najdete seznam podporovaných operačních systémů pro agenta závislostí v systému Linux.  
 
 - Jsou podporované jen verze s výchozím a SMP jádrem Linuxu.
 - Verze s nestandardním jádrem, jako jsou PAE a Xen, nejsou podporované v žádné distribuci Linuxu. Například systém s vydání řetězec "2.6.16.21-0.8-xen" není podporován.
@@ -121,7 +121,7 @@ Podporované operační systémy pro agenta závislostí v Linuxu v následujíc
 |:--|:--|
 | 7.4 | 3.10.0-693 |
 | 7.5 | 3.10.0-862 |
-| 7.6 | 3.10.0-957 |
+| 7,6 | 3.10.0-957 |
 
 ##### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
@@ -140,7 +140,7 @@ Podporované operační systémy pro agenta závislostí v Linuxu v následujíc
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| Ubuntu 18.04 | jádra 4.15.\*<br>4.18* |
+| Ubuntu 18.04 | jádro 4,15.\*<br>4,18 * |
 | Ubuntu 16.04.3 | jádra 4.15. * |
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
@@ -149,7 +149,7 @@ Podporované operační systémy pro agenta závislostí v Linuxu v následujíc
 
 | Verze operačního systému | Verze jádra
 |:--|:--|
-| 11 SP4 | 3.0.* |
+| 11 SP4 | 3,0. * |
 
 ##### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
@@ -167,29 +167,29 @@ Podporované operační systémy pro agenta závislostí v Linuxu v následujíc
 
 
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
 Při konfiguraci řešení Wire Data pro vaše pracovní prostory použijte následující postup.
 
-1. Povolení řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí procesu popsaného v [přidat řešení z Galerie řešení monitorování](../../azure-monitor/insights/solutions.md).
-2. Nainstalujte závislého agenta na každý počítač, ze kterého chcete získat data. Závislý agent dokáže monitorovat připojení k bezprostředním sousedům, takže nepotřebujete mít agenta na každém počítači.
+1. Povolte řešení Activity Log Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání řešení monitorování z galerie řešení](../../azure-monitor/insights/solutions.md).
+2. Nainstalujte agenta závislostí do každého počítače, kde chcete získat data. Agent závislostí může monitorovat připojení k přímým sousedům, takže nebudete muset mít v každém počítači agenta.
 
 > [!NOTE]
 > Předchozí verze řešení Wire Data se nedá přidat do nových pracovních prostorů. Pokud máte povolené původní řešení Wire Data, můžete ho dál používat. Pokud ale chcete použít Wire Data 2.0, musíte původní verzi nejprve odebrat.
 > 
  
-### <a name="install-the-dependency-agent-on-windows"></a>Instalace závislého agenta ve Windows
+### <a name="install-the-dependency-agent-on-windows"></a>Instalace agenta závislostí na Windows
 
 K instalaci a odinstalaci tohoto agenta se vyžadují oprávnění správce.
 
-Závislý agent se instaluje do počítačů s Windows prostřednictvím souboru InstallDependencyAgent-Windows.exe. Pokud tento spustitelný soubor spustíte bez jakýchkoli parametrů, spustí se průvodce interaktivní instalací.
+Agent závislostí je nainstalován na počítačích se systémem Windows prostřednictvím InstallDependencyAgent-Windows. exe. Pokud tento spustitelný soubor spustíte bez jakýchkoli parametrů, spustí se průvodce interaktivní instalací.
 
-Následujícím postupem nainstalujte závislého agenta na jednotlivé počítače s Windows:
+K instalaci agenta závislostí do každého počítače se systémem Windows použijte následující postup:
 
 1. Instalace agenta Log Analytics, proveďte kroky v [shromažďovat data z počítačů s Windows hostovaných ve vašem prostředí](../../azure-monitor/platform/agent-windows.md).
-2. Stáhněte závislého agenta pro Windows pomocí odkazu v předchozí části a pak ho spusťte následujícím příkazem: `InstallDependencyAgent-Windows.exe`
+2. Pomocí odkazu v předchozí části Stáhněte agenta závislostí systému Windows a spusťte jej pomocí následujícího příkazu:`InstallDependencyAgent-Windows.exe`
 3. Pomocí průvodce agenta nainstalujte.
-4. Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. U agentů pro Windows se adresář protokolu nachází zde: %Programfiles%\Microsoft Dependency Agent\logs.
+4. Pokud agenta závislostí nespustí, zkontrolujte protokoly podrobné informace o chybě. U agentů pro Windows se adresář protokolu nachází zde: %Programfiles%\Microsoft Dependency Agent\logs.
 
 #### <a name="windows-command-line"></a>Příkazový řádek Windows
 
@@ -202,19 +202,19 @@ InstallDependencyAgent-Windows.exe /?
 | <code>/?</code> | Získá seznam parametrů příkazového řádku. |
 | <code>/S</code> | Provede tichou instalaci bez zobrazení výzev uživateli. |
 
-Soubory závislého agenta pro Windows jsou standardně umístěné zde: C:\Program Files\Microsoft Dependency Agent.
+Ve výchozím nastavení jsou soubory pro agenta závislostí systému Windows umístěny ve složce C:\Program Files\Microsoft Dependency agent.
 
-### <a name="install-the-dependency-agent-on-linux"></a>Instalace závislého agenta v Linuxu
+### <a name="install-the-dependency-agent-on-linux"></a>Instalace agenta závislostí v Linuxu
 
 K instalaci nebo konfiguraci tohoto agenta se vyžaduje přístup uživatele root.
 
-Závislý agent se do linuxových počítačů instaluje příkazem InstallDependencyAgent-Linux64.bin, což je skript prostředí se samorozbalovacím binárním souborem. Tento soubor můžete spustit pomocí příkazu _sh_ nebo tak, že k samotnému souboru přidáte oprávnění ke spuštění.
+Agent závislostí se instaluje do počítačů se systémem Linux prostřednictvím InstallDependencyAgent-Linux64. bin, skriptu prostředí s samorozbalovacím binárním souborem. Tento soubor můžete spustit pomocí příkazu _sh_ nebo tak, že k samotnému souboru přidáte oprávnění ke spuštění.
 
-Následujícím postupem nainstalujte závislého agenta na jednotlivé počítače s Linuxem:
+Instalace agenta závislostí na každý počítač s Linuxem pomocí následujících kroků:
 
 1. Instalace agenta Log Analytics, proveďte kroky v [shromažďovat data z počítačů s Linuxem hostovaných ve vašem prostředí](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key).
-2. Stáhněte závislého agenta pro Linux pomocí odkazu v předchozí části a pak ho nainstalujte jako uživatel root následujícím příkazem: sh InstallDependencyAgent-Linux64.bin
-3. Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. U agentů pro Linux se adresář protokolu nachází zde: /var/opt/microsoft/dependency-agent/log.
+2. Pomocí odkazu v předchozí části Stáhněte agenta závislostí pro Linux a pak ho nainstalujte jako kořenový adresář pomocí následujícího příkazu: SH InstallDependencyAgent-Linux64. bin
+3. Pokud agenta závislostí nespustí, zkontrolujte protokoly podrobné informace o chybě. U agentů pro Linux se adresář protokolu nachází zde: /var/opt/microsoft/dependency-agent/log.
 
 Spuštěním instalačního programu s následujícím parametrem `-help` zobrazíte seznam parametrů instalace.
 
@@ -228,7 +228,7 @@ InstallDependencyAgent-Linux64.bin -help
 | <code>-s</code> | Provede tichou instalaci bez zobrazení výzev uživateli. |
 | <code>--check</code> | Zkontroluje oprávnění a operační systém bez instalace agenta. |
 
-Soubory závislého agenta se nacházejí v následujících adresářích:
+Soubory pro agenta závislostí jsou umístěny v následujících adresářích:
 
 | **Soubory** | **Umístění** |
 | --- | --- |
@@ -240,7 +240,7 @@ Soubory závislého agenta se nacházejí v následujících adresářích:
 
 ### <a name="installation-script-examples"></a>Příklady instalačního skriptu
 
-Se snadným nasazením závislého agenta na mnoho serverů najednou vám pomůže skript. Následující příklady skriptů můžete použít ke stažení a instalaci závislého agenta do Windows nebo Linuxu.
+Chcete-li snadno nasadit agenta závislostí na mnoho serverů najednou, pomůže vám použít skript. Pomocí následujících ukázkových skriptů můžete stáhnout a nainstalovat agenta závislostí v systému Windows nebo Linux.
 
 #### <a name="powershell-script-for-windows"></a>Skript PowerShellu pro Windows
 
@@ -264,7 +264,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 ### <a name="desired-state-configuration"></a>Konfigurace požadovaného stavu
 
-K nasazení závislého agenta prostřednictvím konfigurace požadovaného stavu můžete použít modul xPSDesiredStateConfiguration a několik následujících řádků kódu:
+Chcete-li nasadit agenta závislostí přes konfiguraci požadovaného stavu, můžete použít modul xPSDesiredStateConfiguration a bitovou část kódu, například následující:
 
 ```powershell
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
@@ -277,7 +277,7 @@ Node $NodeName
 
 {
 
-    # Download and install the Dependency Agent
+    # Download and install the Dependency agent
 
     xRemoteFile DAPackage
 
@@ -317,19 +317,19 @@ Node $NodeName
 
 ```
 
-### <a name="uninstall-the-dependency-agent"></a>Odinstalace závislého agenta
+### <a name="uninstall-the-dependency-agent"></a>Odinstalace agenta závislostí
 
-Následující části vám pomůžou s odebráním závislého agenta.
+Následující části vám pomůžou odebrat agenta závislostí.
 
-#### <a name="uninstall-the-dependency-agent-on-windows"></a>Odinstalace závislého agenta ve Windows
+#### <a name="uninstall-the-dependency-agent-on-windows"></a>Odinstalace agenta závislostí v systému Windows
 
-Správce může závislého agenta pro Windows odinstalovat přes Ovládací panely.
+Správce můžete odinstalovat agenta závislosti pro Windows pomocí ovládacích panelů.
 
-Správce může závislého agenta odinstalovat také spuštěním souboru %Programfiles%\Microsoft Dependency Agent\Uninstall.exe.
+Správce může také spustit %Programfiles%\Microsoft Agent\Uninstall.exe závislostí pro odinstalaci agenta závislostí.
 
-#### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalace závislého agenta v Linuxu
+#### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalace agenta závislostí v systému Linux
 
-Pokud chcete závislého agenta úplně odinstalovat z Linuxu, musíte odebrat samotného agenta a konektor, který se instaluje automaticky s tímto agentem. Obojí najednou odinstalujete následujícím jediným příkazem:
+Chcete-li úplně odinstalovat agenta závislostí ze systému Linux, je nutné odebrat samotného agenta a konektor, který je nainstalován automaticky s agentem. Obojí najednou odinstalujete následujícím jediným příkazem:
 
 ```
 rpm -e dependency-agent dependency-agent-connector
@@ -337,7 +337,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>Sady Management Pack
 
-Když se řešení Wire Data aktivuje v pracovním prostoru služby Log Analytics, odešle se do všech serverů Windows v tomto pracovním prostoru sada Management Pack o velikosti 300 kB. Pokud používáte agenty nástroje System Center Operations Manager v [připojené skupině pro správu](../platform/om-agents.md), nasadí se sada Management Pack monitoru závislostí z nástroje System Center Operations Manager. Pokud byli přímo připojení agenti, Azure Monitor nabízí sadu management pack.
+Když se řešení Wire Data aktivuje v pracovním prostoru Log Analytics, odešle se do všech serverů Windows v tomto pracovním prostoru sada Management Pack o velikosti 300 kB. Pokud používáte agenty nástroje System Center Operations Manager v [připojené skupině pro správu](../platform/om-agents.md), nasadí se sada Management Pack monitoru závislostí z nástroje System Center Operations Manager. Pokud jsou agenti přímo připojeni, Azure Monitor doručí Management Pack.
 
 Tato sada Management Pack má název Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Uloží se sem: %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs. Sada Management Pack používá tento zdroj dat: %Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
@@ -347,7 +347,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 
 - Řešení Wire Data získává data z počítačů s operačními systémy Windows Server 2012 R2, Windows 8.1 a novějšími.
 - Na počítačích, ze kterých chcete data kabelové sítě získávat, se vyžaduje rozhraní Microsoft .NET 4.0 nebo novější.
-- Přidat řešení Wire Data do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidat řešení z Galerie řešení monitorování](solutions.md). Není nutná žádná další konfigurace.
+- Přidejte řešení přenos dat do svého pracovního prostoru Log Analytics pomocí procesu popsaného v tématu [Přidání řešení monitorování z galerie řešení](solutions.md). Není nutná žádná další konfigurace.
 - Pokud si chcete prohlédnout data kabelové sítě konkrétního řešení, musí být toto řešení už přidané do vašeho pracovního prostoru.
 
 Po instalaci agentů a tohoto řešení se ve vašem pracovním prostoru objeví dlaždice Wire Data 2.0.
@@ -356,7 +356,7 @@ Po instalaci agentů a tohoto řešení se ve vašem pracovním prostoru objeví
 
 ## <a name="using-the-wire-data-20-solution"></a>Použití řešení Wire Data 2.0
 
-Na stránce **Přehled** pracovního prostoru služby Log Analytics na Azure Portalu otevřete kliknutím na **Wire Data 2.0** řídicí panel Wire Data. Tento řídicí panel obsahuje okna popsaná v následující tabulce. V každém okně je seznam až 10 položek, které vyhovují kritériím oboru a časového rozsahu daného okna. Kliknutím na **Zobrazit vše** v dolní části okna nebo na záhlaví okna můžete spustit hledání v protokolu, které vrátí všechny záznamy.
+Na stránce **Přehled** pracovního prostoru Log Analytics na Azure Portalu otevřete kliknutím na **Wire Data 2.0** řídicí panel Wire Data. Tento řídicí panel obsahuje okna popsaná v následující tabulce. V každém okně je seznam až 10 položek, které vyhovují kritériím oboru a časového rozsahu daného okna. Kliknutím na **Zobrazit vše** v dolní části okna nebo na záhlaví okna můžete spustit hledání v protokolu, které vrátí všechny záznamy.
 
 | **Okno** | **Popis** |
 | --- | --- |
@@ -400,7 +400,7 @@ Pro každý typ vstupních dat se vytvoří záznam typu _WireData_. Záznamy Wi
 | Direction | Příchozí nebo odchozí |
 | MaliciousIP | IP adresa známého škodlivého zdroje |
 | Severity | Závažnost podezřelého malwaru |
-| RemoteIPCountry | Země nebo oblast, Vzdálená IP adresa |
+| RemoteIPCountry | Země nebo oblast vzdálené IP adresy |
 | ManagementGroupName | Název skupiny pro správu nástroje Operations Manager |
 | SourceSystem | Zdroj, kde byla data shromážděna |
 | SessionStartTime | Čas zahájení relace |
@@ -417,7 +417,6 @@ Pro každý typ vstupních dat se vytvoří záznam typu _WireData_. Záznamy Wi
 | ProcessName | Cesta a název souboru procesu |
 | RemoteIPLongitude | Zeměpisná délka IP adresy |
 | RemoteIPLatitude | Zeměpisná šířka IP adresy |
-
 
 ## <a name="next-steps"></a>Další postup
 

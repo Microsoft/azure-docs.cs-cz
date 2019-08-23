@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 2fa9db20554df813e5da94e2bbea122ac6cc9b60
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946533"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899942"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Podrobný plán zabezpečení a dodržování předpisů Azure – IaaS webová aplikace pro Spojené království
 
@@ -186,7 +186,7 @@ Tyto virtuální sítě se pořád spravují jako samostatné prostředky, ale z
 
 [Pokyny pro nasazení služby Windows Server Active Directory v Azure Virtual Machines](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
-**Integrace služby Active Directory**: Jako alternativu k vyhrazené služba AD DS architektuře můžou zákazníci chtít použít integraci [Azure Active Directory](/azure/architecture/reference-architectures/identity.md) nebo [službu Active Directory v Azure, která je připojená k místní doménové struktuře](/azure/architecture/reference-architectures/identity.md).
+**Integrace služby Active Directory**: Jako alternativu k vyhrazené služba AD DS architektuře můžou zákazníci chtít použít integraci [Azure Active Directory](/azure/architecture/reference-architectures/identity) nebo [službu Active Directory v Azure, která je připojená k místní doménové struktuře](/azure/architecture/reference-architectures/identity).
 
 ### <a name="security"></a>Zabezpečení
 
@@ -200,9 +200,9 @@ Zákazníci taky můžou zvážit použití [rozšířeného modelu správy zabe
 
 **Rozsahy IP adres**: Rozsahy IP adres v architektuře jsou navržené rozsahy. Zákazníkům doporučujeme vzít v úvahu vlastní prostředí a použít příslušné rozsahy.
 
-**Hybridní připojení**: Cloudové úlohy jsou připojené k místnímu datovému centru prostřednictvím protokolu IPSEC VPN pomocí VPN Gateway Azure. Zákazníci by měli mít jistotu, že používají vhodný VPN Gateway pro připojení k Azure. Příklad – [VPN Gateway správce prostředků šabloně](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Zákazníci, kteří využívají rozsáhlé a kritické úlohy s požadavky na velké objemy dat, můžou zvážit hybridní síťovou architekturu s využitím [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute.md) pro připojení privátních sítí k cloudovým službám Microsoftu.
+**Hybridní připojení**: Cloudové úlohy jsou připojené k místnímu datovému centru prostřednictvím protokolu IPSEC VPN pomocí VPN Gateway Azure. Zákazníci by měli mít jistotu, že používají vhodný VPN Gateway pro připojení k Azure. Příklad – [VPN Gateway správce prostředků šabloně](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Zákazníci, kteří využívají rozsáhlé a kritické úlohy s požadavky na velké objemy dat, můžou zvážit hybridní síťovou architekturu s využitím [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) pro připojení privátních sítí k cloudovým službám Microsoftu.
 
-**Oddělení obav**: Tato referenční architektura odděluje virtuální sítě pro operace správy a obchodní operace. Samostatné virtuální sítě a podsítě umožňují správu provozu, včetně omezení příchozího a odchozího přenosu, pomocí skupin zabezpečení sítě mezi segmenty sítě, které následují v rámci osvědčených postupů pro [cloudové služby Microsoftu a zabezpečení sítě](/azure/architecture/vdc/networking-virtual-datacenter.md) .
+**Oddělení obav**: Tato referenční architektura odděluje virtuální sítě pro operace správy a obchodní operace. Samostatné virtuální sítě a podsítě umožňují správu provozu, včetně omezení příchozího a odchozího přenosu, pomocí skupin zabezpečení sítě mezi segmenty sítě, které následují v rámci osvědčených postupů pro [cloudové služby Microsoftu a zabezpečení sítě](/azure/architecture/vdc/networking-virtual-datacenter) .
 
 **Správa prostředků**: Prostředky Azure, jako jsou virtuální počítače, virtuální sítě a nástroje pro vyrovnávání zatížení, se spravují seskupením dohromady do [skupin prostředků Azure](../../azure-resource-manager/resource-group-overview.md). Role Access Control na základě prostředků se pak dají přiřadit ke každé skupině prostředků, aby se omezil přístup jenom na autorizované uživatele.
 

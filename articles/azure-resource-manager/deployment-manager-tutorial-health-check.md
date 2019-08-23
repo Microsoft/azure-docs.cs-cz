@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3946690b24ec4123df1bb19deb05143189fd5aa5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: def218564511b65809e776f97d0962b72f72adc2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596043"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898139"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: Použití kontroly stavu v Azure Deployment Manager (Public Preview)
 
@@ -36,7 +36,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Ověření nasazení zavedení
 > * Vyčištění prostředků
 
-Další prostředky:
+Další materiály:
 
 - [Reference k Azure Deployment Manager REST API](https://docs.microsoft.com/rest/api/deploymentmanager/).
 - [Ukázka Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
@@ -235,8 +235,8 @@ Ověření a otestování funkce Azure Functions:
 
 Pro zjednodušení tohoto kurzu se šablona topologie a artefakty sdílejí v následujících umístěních, takže nemusíte připravovat svoji vlastní kopii. Pokud chcete použít vlastní, postupujte podle pokynů v [kurzu: Použijte Azure Deployment Manager se šablonami](./deployment-manager-tutorial.md)správce prostředků.
 
-* Šablona topologie: \ https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
-* Úložiště artefaktů: \ https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
+* Šablona topologie:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json)
+* Úložiště artefaktů:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
 
 Pokud chcete topologii nasadit, vyberte **vyzkoušet** a otevřete Cloud Shell a pak vložte powershellový skript.
 
@@ -265,8 +265,8 @@ Políčko **Zobrazit skryté typy** musí být zaškrtnuté, aby se prostředky 
 
 Pro zjednodušení tohoto kurzu se revidovaná Šablona zavedení sdílí v následujících umístěních, takže nemusíte připravovat svoji vlastní kopii. Pokud chcete použít vlastní, postupujte podle pokynů v [kurzu: Použijte Azure Deployment Manager se šablonami](./deployment-manager-tutorial.md)správce prostředků.
 
-* Šablona topologie: \ https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
-* Úložiště artefaktů: \ https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
+* Šablona topologie:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json)
+* Úložiště artefaktů:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
 
 Použijte adresu URL stavu není v pořádku, kterou jste vytvořili v části [Vytvoření simulátoru služby kontroly stavu](#create-a-health-check-service-simulator). **ManagedIdentityID**najdete v tématu [Vytvoření spravované identity přiřazené uživatelem](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity).
 

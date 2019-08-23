@@ -1,21 +1,19 @@
 ---
 title: Vývoj Azure Functions pomocí sady Visual Studio | Microsoft Docs
 description: Naučte se vyvíjet a testovat Azure Functions pomocí Azure Functionsch nástrojů pro Visual Studio 2019.
-services: functions
-documentationcenter: .net
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 6040552ccee5269e4a04d8b7a1ee072400a8506d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593252"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905684"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -213,6 +211,9 @@ Tím se zobrazí dialogové okno **nastavení aplikace** pro aplikaci Function A
 
 **Místní** představuje hodnotu nastavení v souboru Local. Settings. JSON a **Vzdálená** je aktuální nastavení v aplikaci Function App v Azure.  Vyberte **Přidat nastavení** a vytvořte nové nastavení aplikace. K zkopírování hodnoty nastavení do **vzdáleného** pole použijte odkaz **Vložit hodnotu z místního** . Nedokončené změny se zapisují do souboru místního nastavení a aplikace Function App, když vyberete **OK**.
 
+> [!NOTE]
+> Ve výchozím nastavení se soubor Local. Settings. JSON nekontroluje do správy zdrojového kódu. To znamená, že když naklonete projekt místní funkce ze správy zdrojového kódu, projekt nemá soubor Local. Settings. JSON. V takovém případě je nutné ručně vytvořit soubor Local. Settings. JSON v kořenu projektu, aby dialog **nastavení aplikace** fungoval podle očekávání. 
+
 Nastavení aplikace můžete spravovat také jedním z těchto způsobů:
 
 * [Použití Azure Portal](functions-how-to-use-azure-function-app-settings.md#settings).
@@ -229,7 +230,7 @@ Povolení Application Insights pro aplikaci Function App:
 
 Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Functions Core Tools najdete v tématu [Code and test Azure Functions v místním](functions-run-local.md)prostředí.
 

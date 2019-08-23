@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 1f06345995e30f4d7f165230f4292c560c89e2e8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68489767"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905719"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Použití řešení Service Map v Azure
-Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Služba Service Map poskytuje zobrazení vašich serverů tak, jak si je představujete – jako vzájemně propojené systémy, které zajišťují důležité služby. Service Map zobrazuje propojení mezi servery, procesy, latenci příchozích a odchozích připojení a porty napříč libovolnou architekturou propojenou protokolem TCP. Nevyžaduje se přitom žádná konfigurace kromě instalace agenta.
+
+Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Service Map zobrazuje vaše servery tak, jak o nich přemýšlíte, tzn. jako propojené systémy, které zajišťují důležité služby. Service Map zobrazuje propojení serverů, procesů, latenci příchozích a odchozích připojení a porty v libovolné architektuře propojené protokolem TCP. Kromě instalace agenta se nevyžaduje žádná konfigurace.
 
 Tento článek popisuje podrobnosti o připojování a používání Service Map. Informace o konfiguraci požadavků pro toto řešení najdete v tématu [Povolení přehledu Azure monitor pro virtuální počítače](vminsights-enable-overview.md#prerequisites). Pro Shrnutí budete potřebovat následující:
 
@@ -407,7 +408,7 @@ Každá vlastnost RemoteIp v tabulce *VMConnection* je kontrolována na základ�
 | `ReportReferenceLink` |Odkazuje na sestavy související s daným pozorovatelem. |
 | `AdditionalInformation` |Poskytuje další informace, pokud je to možné, o zjištěné hrozbě. |
 
-### <a name="servicemapcomputercl-records"></a>Záznamy ServiceMapComputer_CL
+### <a name="servicemapcomputer_cl-records"></a>Záznamy ServiceMapComputer_CL
 
 Záznamy s typem *ServiceMapComputer_CL* obsahují data inventáře pro servery s Service map agenty. Tyto záznamy mají vlastnosti v následující tabulce:
 
@@ -433,7 +434,7 @@ Záznamy s typem *ServiceMapComputer_CL* obsahují data inventáře pro servery 
 | `VirtualMachineName_s` | Název virtuálního počítače |
 | `BootTime_t` | Čas spuštění |
 
-### <a name="servicemapprocesscl-type-records"></a>Záznamy typu ServiceMapProcess_CL
+### <a name="servicemapprocess_cl-type-records"></a>Záznamy typu ServiceMapProcess_CL
 
 Záznamy s typem *ServiceMapProcess_CL* mají data inventáře pro procesy připojené k protokolu TCP na serverech s agenty Service map. Tyto záznamy mají vlastnosti v následující tabulce:
 
@@ -554,16 +555,57 @@ Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím
 
 Další informace o shromažďování a používání dat najdete v článku [prohlášení o ochraně osobních údajů Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
 
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o [hledání v protokolu](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k načtení dat shromažďovaných pomocí Service map.
 
-
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Další informace najdete v [části řešení potíží v dokumentu konfigurace Service map]( service-map-configure.md#troubleshooting).
+Pokud máte potíže s instalaci nebo spuštění řešení Service Map, tato část vám pomoct. Pokud stále nejde problém vyřešit, obraťte se prosím Microsoft Support.
 
+### <a name="dependency-agent-installation-problems"></a>Problémy instalace agenta závislostí
+
+#### <a name="installer-prompts-for-a-reboot"></a>Instalační program zobrazí výzvu k restartování
+Agent závislostí *obvykle* nevyžaduje restart při instalaci nebo odebrání. Ale v některých výjimečných případech, Windows Server vyžaduje restartování počítače pokračujte s instalací. K tomu dojde v případě, že závislost, obvykle C++ knihovna Microsoft Visual Redistributable Library, vyžaduje restart z důvodu zamčeného souboru.
+
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Zpráva: nepovedlo se nainstalovat agenta závislostí: Nepovedlo se nainstalovat běhové knihovny Visual studia (kód = [code_number]).
+
+Agent Microsoft Dependency je založená na knihovnách modulu runtime Microsoft Visual Studio. Pokud dojde k problému při instalaci knihoven, zobrazí se zpráva. 
+
+Instalační programy knihovny runtime vytvářet protokoly ve složce %LOCALAPPDATA%\temp. Soubor je `dd_vcredist_arch_yyyymmddhhmmss.log`, kde *oblouk* `x86` je nebo `amd64` a *rrrrmmddhhmmss* je datum a čas (24hodinový čas), kdy byl protokol vytvořen. Protokol obsahuje podrobné informace o problému, který blokuje instalaci.
+
+Může být užitečné nejdřív nainstalovat [nejnovější knihovny modulu runtime](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) .
+
+V následující tabulce jsou uvedeny čísly kódů a doporučená řešení.
+
+| Kód | Popis | Řešení |
+|:--|:--|:--|
+| 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která nebyla nainstalována. | Vyhledejte v protokolu nejnovější instalační program knihovny.<br><br>Pokud odkaz na `Windows8.1-KB2999226-x64.msu` je následovaný řádkem `Error 0x80240017: Failed to execute MSU package,` , nemáte požadavky na instalaci KB2999226. Postupujte podle pokynů v části požadavky v tématu [Universal C Runtime](https://support.microsoft.com/kb/2999226) v článku o systému Windows. Může být potřeba spuštěním služby Windows Update a restartovat více než jednou. aby bylo možné nainstalujte příslušné požadované součásti.<br><br>Znovu spusťte instalační program agenta Microsoft Dependency. |
+
+### <a name="post-installation-issues"></a>Po instalaci problémy
+
+#### <a name="server-doesnt-appear-in-service-map"></a>Server se nezobrazí v Service Map
+
+Pokud se instalace agenta závislostí zdařila, ale nevidíte počítač v řešení Service Map:
+* Agent závislostí úspěšné instalaci? Můžete si to ověřit tak, že kontroluje se, pokud je služba nainstalována a spuštěna.<br><br>
+**Windows:** Vyhledejte službu s názvem **Microsoft Dependency agent**.
+**Linux:** Vyhledejte spuštěného procesu **Microsoft-Dependency-agent**.
+
+* Jste na [Log Analytics úrovně Free](https://azure.microsoft.com/pricing/details/monitor/)? Bezplatný plán umožňuje až pět jedinečných Service Map počítačů. Jakékoli další počítače se v Service Map nezobrazí, i když už pět předchozích zařízení neposílá data.
+
+* Odesílá váš server data protokolu a výkonu pro Azure Monitor protokolů? Přejít na Azure Monitor\Logs a spustit pro váš počítač následující dotaz: 
+
+    ```kusto
+    Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    ```
+
+Obdrželi jste různých událostí ve výsledcích? Jsou data poslední? Pokud ano, Váš agent Log Analytics pracuje správně a komunikuje s pracovním prostorem. Pokud ne, ověřte agenta na svém počítači: [Log Analytics agenta pro řešení potíží se systémem Windows](../platform/agent-windows-troubleshoot.md) nebo [agenta Log Analytics pro řešení potíží](../platform/agent-linux-troubleshoot.md)se systémem Linux.
+
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server se zobrazí v Service Map, ale nemá žádné procesy
+
+Pokud se Váš počítač nachází v Service Map, ale nemá žádná data o procesu nebo připojení, která indikuje, že je agent závislostí nainstalovaný a spuštěný, ale ovladač jádra se nenačetl. 
+
+Podívejte se `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` na (Windows) `/var/opt/microsoft/dependency-agent/log/service.log file` nebo (Linux). Poslední řádek souboru by měla zobrazovat, proč se nenačetla jádra. Například jádra nemusí být podporovány v Linuxu, pokud jste aktualizovali vaši jádra.
 
 ## <a name="feedback"></a>Zpětná vazba
 

@@ -1,151 +1,150 @@
 ---
-title: Plánování kapacity pro zotavení po havárii Hyper-V pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Pomocí tohoto článku můžete odhadnout kapacitu při nastavování zotavení po havárii pomocí služby Azure Site Recovery.
+title: Plánování kapacity pro zotavení po havárii technologie Hyper-V pomocí Azure Site Recovery | Microsoft Docs
+description: Tento článek použijte k odhadu kapacity při nastavování zotavení po havárii pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: eeadfd6a57ff8a26f3f124e2a807fcd66e77b85f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7501982f90cd145e0fc918bf976a840323a31127
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036651"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972576"
 ---
-# <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Plánování kapacity pro zotavení po havárii virtuálních počítačů Hyper-V 
+# <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Plánování kapacity pro zotavení po havárii virtuálního počítače Hyper-V 
 
-Nová verze vylepšené [Azure Site Recovery Deployment Planner pro Hyper-V do Azure nasazení](site-recovery-hyper-v-deployment-planner.md) je nyní k dispozici. Nahradí původní nástroj. Použijte nové nástroje pro plánování nasazení.
-Tento nástroj nabízí následující pokyny:
+[Plánovač nasazení služby Azure Site Recovery] (site-recovery-hyper-v-deployment-planner.md) pro nasazení Hyper-V do Azure nabízí následující:
 
-* Vyhodnocení způsobilosti virtuálního počítače, na základě počtu disků, velikosti disků, vstupně-výstupních operací, četnosti změn a několika charakteristik virtuálních počítačů
-* Srovnání šířky pásma sítě posouzení cíle bodu obnovení
+* Vyhodnocení způsobilosti virtuálního počítače na základě počtu disků, velikosti disku, IOPS, změn a několika vlastností virtuálního počítače
+* Posouzení šířky pásma sítě a posouzení cíle bodu obnovení
 * Požadavky na infrastrukturu Azure
 * Požadavky na místní infrastrukturu
-* Počáteční replikace do dávek pokyny
-* Odhadované celkové náklady na zotavení do Azure
+* Pokyny k dávkování počáteční replikace
+* Odhadované celkové náklady na zotavení po havárii do Azure
 
 
-Azure Site Recovery Capacity Planner vám pomůže určit vašim požadavkům na kapacitu při replikaci virtuálních počítačů Hyper-V pomocí Azure Site Recovery.
+Azure Site Recovery Capacity Planner vám pomůže určit požadavky na kapacitu při replikaci virtuálních počítačů Hyper-V pomocí Azure Site Recovery.
 
-Pomocí Site Recovery Capacity Planneru analyzovat vaše zdrojové prostředí a úlohy. Pomáhá odhadnout požadavky na šířku pásma, prostředcích serveru, které potřebujete pro umístění zdroje a prostředky (například virtuální počítače a úložiště), je třeba v cílovém umístění.
+K analýze zdrojového prostředí a úloh použijte Site Recovery Capacity Planner. Pomáhá odhadnout potřeby šířky pásma, prostředky serveru, které potřebujete pro zdrojové umístění, a prostředky (například virtuální počítače a úložiště), které potřebujete v cílovém umístění.
 
 Nástroj můžete spustit ve dvou režimech:
 
-* **Snadné plánování**: Poskytuje sítě a serveru projekce, které jsou založené na průměrném počtu virtuálních počítačů, disků, úložiště a frekvenci změn.
-* **Podrobné plánování**: Poskytuje podrobnosti o každé úloze na úrovni virtuálního počítače. VM compatibility analyzovat a získat projekce sítě a serveru.
+* **Rychlé plánování**: Poskytuje projekce sítě a serveru na základě průměrného počtu virtuálních počítačů, disků, úložiště a frekvence změn.
+* **Podrobné plánování**: Poskytuje podrobnosti o jednotlivých úlohách na úrovni virtuálního počítače. Analyzujte kompatibilitu virtuálních počítačů a získejte projekce ze sítě a serveru.
 
 ## <a name="before-you-start"></a>Než začnete
 
-* Shromážděte informace o vašem prostředí, včetně virtuálních počítačů, discích jednotlivých virtuálních počítačů, úložiště na disk.
-* Identifikujte vaší denní frekvenci změn pro replikovaná data. Stáhněte si [kapacity Hyper-V, nástroj pro plánování](https://www.microsoft.com/download/details.aspx?id=39057) získat o míru změn. [Přečtěte si další informace](site-recovery-capacity-planning-for-hyper-v-replication.md) o tomto nástroji. Doporučujeme spustit tento nástroj za týden k zachycení průměry.
+* Shromážděte informace o vašem prostředí, včetně virtuálních počítačů, disků na virtuální počítač, úložiště na disk.
+* Identifikujte míru denní změny (změn) pro replikovaná data. Stáhněte si [Nástroj pro plánování kapacity technologie Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) , abyste získali rychlost změny. [Přečtěte si další informace](site-recovery-capacity-planning-for-hyper-v-replication.md) o tomto nástroji. Pro zachycení průměrů doporučujeme spustit tento nástroj za týden.
 
 
 ## <a name="run-the-quick-planner"></a>Spuštění rychlého plánovače
-1. Stáhnout a otevřít [Site Recovery Capacity Planneru](https://aka.ms/asr-capacity-planner-excel). Budete muset spustit makra. Po zobrazení výzvy, dle popisu na povolit úpravy a obsah.
+1. Stáhněte a otevřete [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). Je nutné spustit makra. Po zobrazení výzvy proveďte výběry pro povolení úprav a obsahu.
 
-2. V **vyberte typ Plánovač** pole se seznamem, vyberte **rychlé Planneru**.
+2. V seznamu **Vyberte typ plánovače** vyberte **rychlé plánování**.
 
    ![Začínáme](./media/site-recovery-capacity-planner/getting-started.png)
 
-3. Na **Capacity Planner** listu, zadejte požadované informace. Vyplňte všechna pole v kroužku červeně na následujícím snímku obrazovky:
+3. V listu **Capacity Planner** zadejte požadované informace. Vyplňte všechna pole v červeném kruhu na následujícím snímku obrazovky:
 
-   a. V **vyberte váš scénář**, zvolte **Hyper-V do Azure** nebo **VMware/fyzických prostředků do Azure**.
+   a. V **Možnosti vyberte svůj scénář**zvolte možnost **Hyper-V do Azure** nebo **VMware/fyzický do Azure**.
 
-   b. V **průměrná denní frekvence změny dat (%)** , zadejte tyto informace shromáždíte pomocí [kapacity Hyper-V, nástroj pro plánování](site-recovery-capacity-planning-for-hyper-v-replication.md) nebo [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md).
+   b. V části **Průměrná denní četnost změn dat (%)** zadejte informace, které shromažďujete, pomocí [Nástroje pro plánování kapacity technologie Hyper-V](site-recovery-capacity-planning-for-hyper-v-replication.md) nebo [Site Recovery Plánovač nasazení](./site-recovery-deployment-planner.md).
 
-   c. **Komprese** nastavení nepoužívají při replikaci virtuálních počítačů Hyper-V do Azure. Komprese použijte zařízení třetích stran, jako je Riverbed.
+   c. Nastavení **Komprese** se nepoužívá při replikaci virtuálních počítačů Hyper-V do Azure. Pro kompresi použijte zařízení třetí strany, například Riverbed.
 
-   d. V **uchování ve dnech**, zadejte počet dní, jak dlouho se má zachovat repliky.
+   d. Do doby **uchování ve dnech**zadejte počet dní, po které chcete uchovávat repliky.
 
-   e. V **počet hodin, v které počáteční replikace pro dávku virtuálních počítačů by se měla Dokončit** a **počet virtuálních počítačů na počáteční replikaci dávky**, zadejte nastavení, která slouží k výpočtu požadavky na počáteční replikaci. Při nasazení Site Recovery, se nahraje celou počáteční datovou sadu.
+   e. V **počtu hodin, během kterých by měla být počáteční replikace pro dávku virtuálních počítačů dokončena** , a **počet virtuálních počítačů na počáteční dávku replikace**zadejte nastavení, která se použijí k výpočtu požadavků na počáteční replikaci. Při nasazení Site Recovery se nahraje celá počáteční datová sada.
 
    ![Vstupy](./media/site-recovery-capacity-planner/inputs.png)
 
-4. Po zadání hodnoty pro zdrojové prostředí, zobrazený výstup zahrnuje:
+4. Po zadání hodnot pro zdrojové prostředí obsahuje zobrazený výstup:
 
-   * **Šířka pásma vyžadovaná pro rozdílovou replikaci (v MB za sekundu)** : Průměrná denní četnost změn dat se vypočítá šířce pásma pro rozdílovou replikaci.
-   * **Šířka pásma vyžadovaná pro počáteční replikaci (v MB za sekundu)** : Šířka pásma sítě pro počáteční replikaci se počítají hodnoty počáteční replikace, které zadáte.
-   * **Úložiště (v GB) vyžaduje**: Celkový úložiště Azure vyžaduje.
-   * **Celkový počet vstupně-výstupních operací na úložiště úrovně Standard**: Číslo se počítá na základě jednotek velikosti 8 kb IOPS na účty celkový úložiště úrovně standard. Pro rychlé plánovače číslo se vypočítá podle všech disků zdrojového virtuálního počítače a frekvence změny dat o denním. Pro podrobné plánovače číslo se počítá na základě celkového počtu virtuálních počítačů, které jsou mapovány na standardní virtuální počítače Azure a data změnit rychlost na těchto virtuálních počítačích.
-   * **Počet účtů úložiště úrovně Standard vyžaduje**: Celkový počet účtů úložiště úrovně standard je potřeba k ochraně virtuálních počítačů. Účet úložiště úrovně standard může obsahovat až 20 000 IOPS ve všech virtuálních počítačích ve standardním úložišti. Na disku je podporováno maximálně 500 IOPS.
-   * **Počet objektů Blob disků požadovaných**: Počet disků, které jsou vytvořeny ve službě Azure storage.
-   * **Počet účtů premium vyžaduje**: Celkový počet účtů úložiště úrovně premium je potřeba k ochraně virtuálních počítačů. Zdrojový virtuální počítač s vysokým vstupně-výstupních operací (větší než 20 000) potřebuje účet premium storage. Účet úložiště úrovně premium může obsahovat až 80 000 vstupně-výstupních operací.
-   * **Celkový počet vstupně-výstupních operací na Premium Storage**: Číslo se počítá na základě jednotek velikosti 256 kB vstupně-výstupních operací pro účty úložiště. Celkový počet premium. Pro rychlé plánovače číslo se vypočítá podle všech disků zdrojového virtuálního počítače a frekvence změny dat o denním. Pro podrobné plánovače číslo se počítá na základě celkového počtu virtuálních počítačů, které jsou mapovány na virtuálních počítačích Azure úrovně premium (řady DS a GS) a data změnit rychlost na těchto virtuálních počítačích.
-   * **Počet konfiguračních serverů vyžaduje**: Ukazuje, kolik konfigurační servery jsou potřebné pro nasazení.
-   * **Počet dalších procesových serverů, které vyžaduje**: Ukazuje, zda jsou povinné, kromě procesový server, na kterém běží na konfiguračním serveru ve výchozím nastavení dalších procesových serverů.
-   * **100 % dodatečné úložiště na zdrojovém**: Ukazuje, zda je vyžadováno dodatečné úložiště ve zdrojovém umístění.
+   * **Požadovaná šířka pásma pro rozdílovou replikaci (v MB/s)** : Šířka pásma sítě pro rozdílovou replikaci se počítá podle průměrné denní míry změny dat.
+   * **Požadovaná šířka pásma pro počáteční replikaci (v MB/s)** : Šířka pásma sítě pro počáteční replikaci se počítá podle hodnot počáteční replikace, které zadáte.
+   * **Vyžadováno úložiště (v GB)** : Vyžaduje se celková velikost úložiště Azure.
+   * **Celkový počet IOPS ve standardním úložišti**: Číslo se vypočítá na základě velikosti jednotky 8K IOPS v celkových standardních účtech úložiště. Pro rychlé plánování se číslo vypočítá na základě všech disků zdrojového virtuálního počítače a rychlosti denních změn dat. V podrobném plánovači se číslo vypočítá na základě celkového počtu virtuálních počítačů, které jsou namapované na standardní virtuální počítače Azure a četnosti změn dat na těchto virtuálních počítačích.
+   * **Vyžaduje se počet standardních účtů úložiště**: Celkový počet standardních účtů úložiště potřebných k ochraně virtuálních počítačů. Účet úložiště úrovně Standard může obsahovat až 20 000 IOPS napříč všemi virtuálními počítači ve službě Storage úrovně Standard. Na disk se podporuje maximálně 500 IOPS.
+   * **Požadovaný počet disků objektů BLOB**: Počet disků, které jsou vytvořeny ve službě Azure Storage.
+   * **Počet požadovaných účtů Premium**: Celkový počet účtů služby Premium Storage potřebných k ochraně virtuálních počítačů. Zdrojový virtuální počítač s vysokým počtem vstupně-výstupních operací (větším než 20 000) vyžaduje účet Premium Storage. Účet Premium Storage může obsahovat až 80 000 IOPS.
+   * **Celkový počet IOPS na Premium Storage**: Číslo se vypočítá na základě velikosti jednotky 256 IOPS v celkových účtech Premium Storage. Pro rychlé plánování se číslo vypočítá na základě všech disků zdrojového virtuálního počítače a rychlosti denních změn dat. V podrobném plánovači se číslo vypočítá na základě celkového počtu virtuálních počítačů, které jsou namapované na virtuální počítače Azure úrovně Premium (DS a GS Series), a frekvence změny dat na těchto virtuálních počítačích.
+   * **Požadovaný počet konfiguračních serverů**: Ukazuje, kolik konfiguračních serverů je pro nasazení potřeba.
+   * **Počet požadovaných dalších procesových serverů**: Zobrazuje, zda jsou kromě procesového serveru, který běží na konfiguračním serveru, ve výchozím nastavení vyžadovány další procesní servery.
+   * **100% dodatečné úložiště na zdroji**: Ukazuje, jestli je ve zdrojovém umístění potřeba další úložiště.
 
       ![Výstup](./media/site-recovery-capacity-planner/output.png)
 
-## <a name="run-the-detailed-planner"></a>Spustit podrobnou Planneru
+## <a name="run-the-detailed-planner"></a>Spuštění podrobného plánovače
 
-1. Stáhnout a otevřít [Site Recovery Capacity Planneru](https://aka.ms/asr-capacity-planner-excel). Budete muset spustit makra. Po zobrazení výzvy, dle popisu na povolit úpravy a obsah.
+1. Stáhněte a otevřete [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). Je nutné spustit makra. Po zobrazení výzvy proveďte výběry pro povolení úprav a obsahu.
 
-2. V **vyberte typ Plánovač**vyberte **podrobné Planneru** ze seznamu.
+2. V části **Vyberte typ plánovače**vyberte **podrobný Plánovač** ze seznamu.
 
    ![Příručka Začínáme](./media/site-recovery-capacity-planner/getting-started-2.png)
 
-3. Na **úlohy kvalifikace** listu, zadejte požadované informace. Musíte vyplnit všechna pole označené.
+3. V listu **kvalifikace úlohy** zadejte požadované informace. Musíte vyplnit všechna označená pole.
 
-   a. V **jader procesoru**, zadejte celkový počet jader na zdrojovém serveru.
+   a. V **části procesory**zadejte celkový počet jader na zdrojovém serveru.
 
-   b. V **přidělení paměti (v MB)** , zadejte velikost paměti RAM zdrojovém serveru.
+   b. V části **přidělení paměti (v MB)** zadejte velikost paměti RAM zdrojového serveru.
 
-   c. V **počet síťových adaptérů**, zadejte počet síťových adaptérů na zdrojovém serveru.
+   c. V poli **počet**síťových adaptérů určete počet síťových adaptérů na zdrojovém serveru.
 
-   d. V **celková velikost úložiště (v GB)** , zadejte celková velikost úložiště virtuálního počítače. Například pokud na zdrojovém serveru má tři disky s 500 GB, celková velikost úložiště velikost je 1 500 GB.
+   d. V části **Celková velikost úložiště (v GB)** zadejte celkovou velikost úložiště virtuálního počítače. Pokud má například zdrojový server tři disky s 500 GB, celková velikost úložiště je 1 500 GB.
 
-   e. V **počet disků připojených**, zadejte celkový počet disků ze zdrojového serveru.
+   e. V poli **Počet připojených disků**zadejte celkový počet disků zdrojového serveru.
 
-   f. V **disku využití kapacity (%)** , zadejte průměrné využití.
+   f. V části **využití kapacity disku (%)** zadejte průměrné využití.
 
-   g. V **(%) frekvence každodenní změny dat**, zadejte frekvence každodenní změny dat ze zdrojového serveru.
+   g. V části **denní četnost změn dat (%)** zadejte denní četnost změn dat na zdrojovém serveru.
 
-   h. V **velikost mapování virtuálního počítače Azure**, zadejte velikost virtuálního počítače Azure, který chcete propojit. Pokud nechcete provést ručně, vyberte **výpočetní virtuální počítače IaaS**. Pokud vstupní ruční nastavení a pak vyberte **výpočetní virtuální počítače IaaS**, manuální nastavení se můžou přepsat. Proces výpočetní automaticky určí nejlepší shodu velikosti virtuálního počítače Azure.
+   h. V části **mapování velikosti virtuálního počítače Azure**zadejte velikost virtuálního počítače Azure, kterou chcete namapovat. Pokud to nechcete provést ručně, vyberte **COMPUTE IaaS virtuální počítače**. Pokud zadáte ruční nastavení a pak vyberete **výpočetní virtuální počítače IaaS**, může být ruční nastavení přepsáno. Výpočetní proces automaticky identifikuje nejlepší shodu velikosti virtuálního počítače Azure.
 
-   ![Úloha kvalifikace list](./media/site-recovery-capacity-planner/workload-qualification.png)
+   ![List kvalifikace úlohy](./media/site-recovery-capacity-planner/workload-qualification.png)
 
-4. Pokud vyberete **výpočetní virtuální počítače IaaS**, zde jsou jeho funkce:
+4. Pokud vyberete **virtuální počítače COMPUTE IaaS**, najdete tady:
 
    * Ověří povinné vstupy.
-   * Vypočítá vstupně-výstupních operací a navrhne nejlepší shodu velikosti virtuálního počítače Azure pro každý virtuální počítač, který opravňuje k replikaci do Azure. Pokud odpovídající velikost, kterou virtuální počítač Azure nebyl nalezen, zobrazí chybu. Například pokud počet disků připojených 65, zobrazí chybu, protože nejvyšší velikost virtuálního počítače Azure je 64.
-   * Navrhuje účet úložiště, který lze použít pro virtuální počítač Azure.
-   * Vypočítá celkový počet účtů úložiště úrovně standard a účty úložiště úrovně premium vyžaduje pro pracovní vytížení. Přejděte dolů a zobrazit typ úložiště Azure a účet úložiště, který je možné pro zdrojový server.
-   * Dokončení a seřadí zbytek tabulky na základě přiřazené pro virtuální počítač a počet disků připojených typu úložiště (standard nebo premium). Pro všechny virtuální počítače, které splňují požadavky pro Azure, ve sloupci **je virtuální počítač kvalifikovaný?** ukazuje **Ano**. Pokud virtuální počítač nelze zálohovat do Azure, zobrazí chybu.
+   * Vypočítá IOPS a navrhne nejlepší shodu velikosti virtuálního počítače Azure pro každý virtuální počítač, který je způsobilý pro replikaci do Azure. Pokud se pro virtuální počítač Azure odpovídající velikosti nedá zjistit, zobrazí se chyba. Pokud je například počet připojených disků 65, zobrazí se chyba, protože nejvyšší velikost virtuálního počítače Azure je 64.
+   * Navrhuje účet úložiště, který se dá použít pro virtuální počítač Azure.
+   * Vypočítá celkový počet standardních účtů úložiště a účtů služby Premium Storage potřebných pro úlohy. Posuňte se dolů a zobrazte typ úložiště Azure a účet úložiště, který se dá použít pro zdrojový server.
+   * Dokončí a seřadí zbytek tabulky na základě požadovaného typu úložiště (Standard nebo Premium) přiřazeného k virtuálnímu počítači a počtu připojených disků. U všech virtuálních počítačů, které splňují požadavky pro Azure, **je sloupec kvalifikovaný pro virtuální počítače?** zobrazuje **Ano**. Pokud se virtuální počítač nedá zálohovat do Azure, zobrazí se chyba.
 
-Sloupce AA AE výstupu a zadejte informace pro každý virtuální počítač.
+Sloupce AA až AE jsou výstupem a poskytují informace pro každý virtuální počítač.
 
-![Výstupní sloupce AA AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
+![Výstupní sloupce AA až AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
-### <a name="example"></a>Příklad:
-Jako příklad pro šest virtuálních počítačů pomocí hodnoty uvedené v tabulce nástroje a požadavky na úložiště Azure a virtuální počítač Azure je nejlepší shodou.
+### <a name="example"></a>Příklad
+Například pro šest virtuálních počítačů s hodnotami zobrazenými v tabulce nástroj vypočítá a přiřadí nejlepší shodu virtuálních počítačů s Azure a požadavky na úložiště Azure.
 
-![Přiřazení úloh kvalifikace](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+![Přiřazení kvalifikace úloh](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
-* Ukázkový výstup vezměte na vědomí následující:
+* V příkladu výstupu si všimněte následujícího:
 
-  * První sloupec je sloupec ověření pro virtuální počítače, disky a změny.
-  * Dva účty úložiště úrovně standard a premium na jeden účet úložiště je třeba pět virtuálních počítačů.
-  * VM3 nemá nárok ochranu, protože minimálně jeden disk jsou větší než 1 TB.
-  * VM1 a VM2 můžete použít první účet úložiště úrovně standard
-  * VM4 můžete použít druhý účet úložiště úrovně standard.
-  * VM5 a VM6 potřebovat účet úložiště úrovně premium a jak můžete použít jeden účet.
+  * První sloupec je ověřovací sloupec pro virtuální počítače, disky a změny.
+  * Pro pět virtuálních počítačů je potřeba mít dva účty úložiště úrovně Standard a jeden účet Premium Storage.
+  * VM3 neopravňují k ochraně, protože jeden nebo více disků je více než 1 TB.
+  * VM1 a VM2 můžou používat první účet Standard Storage.
+  * VM4 může používat druhý standardní účet úložiště.
+  * VM5 a VM6 potřebují účet Premium Storage a obě můžou používat jenom jeden účet.
 
     > [!NOTE]
-    > Vstupně-výstupních operací na úložiště úrovně standard a premium se počítají na úrovni virtuálního počítače a ne na úrovni disku. Standardní virtuální počítač dokáže zpracovat až 500 IOPS na disk. Pokud jsou větší než 500 IOPS disku, musíte služby premium storage. Pokud se více než 500 IOPS disku, ale vstupně-výstupních operací pro celkový počet disků virtuálních počítačů jsou v rámci omezení podpory standardní virtuální počítač Azure, vybere Plánovač standardní virtuální počítač a nikoli řady DS nebo GS. (Omezení virtuálních počítačů Azure se velikost virtuálního počítače, počet disků, počet adaptérů, procesoru a paměti.) Je potřeba ručně aktualizovat mapování Azure velikost buňky s odpovídající řady DS nebo GS virtuálního počítače.
+    > IOPS v úložišti úrovně Standard a Premium se počítají na úrovni virtuálního počítače a ne na úrovni disku. Standardní virtuální počítač může zpracovávat až 500 vstupně-výstupních operací na disk. Pokud je IOPS pro disk větší než 500, budete potřebovat Premium Storage. Pokud je IOPS pro určitý disk větší než 500, ale IOPS za celkový počet disků virtuálního počítače je v rámci podpory Standard omezení virtuálních počítačů Azure, Plánovač zvolí standardní virtuální počítač, nikoli řadu DS nebo GS. (Omezení virtuálních počítačů Azure jsou velikosti virtuálních počítačů, počet disků, počet adaptérů, procesor a paměť.) Je potřeba ručně aktualizovat buňku s velikostí Azure s odpovídajícím virtuálním počítačem DS nebo GS.
 
 
-Po zadání všech informací, vyberte **odesílání dat do nástroje plánovače** otevřete Capacity Planner. Chcete-li zobrazit, jestli máte nárok na ochranu jsou zvýrazněny úlohy.
+Po zadání všech informací vyberte **Odeslat data do nástroje Planner** a otevřete Capacity Planner. Úlohy jsou zvýrazněné a ukazují, jestli mají nárok na ochranu.
 
-### <a name="submit-data-in-capacity-planner"></a>Odesílání dat v Capacity Planner
-1. Když otevřete **Capacity Planner** listu, naplní jej na základě nastavení, které jste zadali. Slovo "Úloha" se zobrazí v **Infra vstupy zdroj** buňky zobrazíte, že je vstup **úlohy kvalifikace** listu.
+### <a name="submit-data-in-capacity-planner"></a>Odesílat data v Capacity Planner
+1. Když otevřete list **Capacity Planner** , naplní se na základě vámi zadaných nastavení. Slovo "úloha" se zobrazí ve zdrojové buňce pro **infračervené vstupy** , aby se zobrazilo, že vstupem je list **kvalifikace úlohy** .
 
-2. Pokud chcete provést změny, budete muset upravit **úlohy kvalifikace** listu. Potom vyberte **odesílání dat do nástroje plánovače** znovu.
+2. Chcete-li provést změny, je nutné upravit sešit **kvalifikace úlohy** . Pak znovu vyberte **Odeslat data do nástroje Planner** .
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>Další postup
-[Zjistěte, jak spustit](site-recovery-capacity-planning-for-hyper-v-replication.md) nástroj pro plánování kapacity.
+[Přečtěte si, jak spustit](site-recovery-capacity-planning-for-hyper-v-replication.md) Nástroj pro plánování kapacity.

@@ -3,34 +3,35 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 06/19/2019
+ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935010"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69894102"
 ---
-V tomto kroku vytvoříte skupinu prostředků a Azure SQL Database izolovanou databázi.
+V tomto kroku vytvoříte Azure SQL Database jedinou databázi. 
 
 > [!IMPORTANT]
-> Nezapomeňte nastavit pravidla brány firewall tak, aby používala veřejnou IP adresu počítače, na kterém provedete kroky v tomto článku. 
+> Nezapomeňte nastavit pravidla brány firewall, která budou používat veřejnou IP adresu počítače, který používáte k dokončení tohoto článku.
 >
-> Informace najdete v tématu vytvoření [pravidla brány firewall na úrovni databáze](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) nebo určení IP adresy používané pro pravidlo brány firewall na úrovni serveru pro váš počítač v tématu [Vytvoření brány firewall na úrovni serveru](../sql-database-server-level-firewall-rule.md).  
+> Informace najdete v tématech [Vytvoření pravidla brány firewall na úrovni databáze](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) nebo určení IP adresy používané pro pravidlo brány firewall na úrovni serveru pro váš počítač najdete v tématu [Vytvoření brány firewall na úrovni serveru](../sql-database-server-level-firewall-rule.md).  
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
 
-1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
-2. Vyberte **databáze** a pak výběrem **SQL Database** otevřete stránku **vytvořit SQL Database** .
+1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte *Azure SQL* .
+2. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o různých databázích můžete zobrazit tak, že na dlaždici **databáze** vyberete **Zobrazit podrobnosti** .
+3. Vyberte **vytvořit**:
 
-   ![Vytvoření izolované databáze](../media/sql-database-get-started-portal/create-database-1.png)
+   ![Vytvoření izolované databáze](../media/sql-database-get-started-portal/create-single-database.png)
 
 3. Na kartě **základy** v části **Project Details (podrobnosti projektu** ) zadejte nebo vyberte následující hodnoty:
 
-   - **Předplatné**: Rozevírací seznam a vyberte správné předplatné, pokud se nezobrazí.
+   - **Předplatné:** Rozevírací seznam a vyberte správné předplatné, pokud se nezobrazí.
    - **Skupina prostředků**: Vyberte **vytvořit nový**, zadejte `myResourceGroup`a vyberte **OK**.
 
      ![Nová databáze SQL – karta Basic](../media/sql-database-get-started-portal/new-sql-database-basics.png)

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e1543d578e6812fd270bd76ec18bdfe8fe5ba6a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d4bf7b894a23f0054485ddb6dbb91c4df2122222
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324029"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907326"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
@@ -42,7 +42,7 @@ Informace o scénářích a účtech Batch najdete v [přehledu funkcí](batch-a
 
     ![Vytvoření účtu Batch][account_portal]
 
-    a. **Předplatné**: Předplatné, ve kterém chcete vytvořit účet Batch. Pokud máte jenom jedno předplatné, bude ve výchozím nastavení vybrané.
+    a. **Předplatné:** Předplatné, ve kterém chcete vytvořit účet Batch. Pokud máte jenom jedno předplatné, bude ve výchozím nastavení vybrané.
 
     b. **Skupina prostředků**: Vyberte existující skupinu prostředků pro nový účet Batch nebo volitelně vytvořte novou.
 
@@ -115,7 +115,7 @@ V režimu předplatného uživatele je vyžadován trezor klíčů Azure, který
 
 Při vytváření účtu Batch v režimu předplatného uživatele použijte skupinu prostředků trezoru klíčů. Jako režim přidělování fondů zadejte **předplatné uživatele** , vyberte Trezor klíčů a zaškrtnutím políčka udělte přístup k trezoru klíčů Azure Batch. 
 
-Pokud dáváte přednost ručnímu udělení přístupu k trezoru klíčů, přejděte do části **zásady přístupu** trezoru klíčů a vyberte **Microsoft Azure Batch**. Nakonfigurujte **oprávnění tajných klíčů** pomocí rozevírací nabídky. Azure Batch musí být udělené minimální oprávnění **získat**, **Zobrazit**, **nastavit**a **Odstranit** .
+Pokud dáváte přednost ručnímu udělení přístupu k trezoru klíčů, přejděte do části **zásady přístupu** trezoru klíčů a vyberte **Přidat zásady přístupu** a vyhledejte **Microsoft Azure Batch**. Po výběru budete muset nakonfigurovat **tajná oprávnění** pomocí rozevírací nabídky. Azure Batch musí být udělené minimální oprávnění **získat**, **Zobrazit**, **nastavit**a **Odstranit** .
 
 ![Tajná oprávnění pro Azure Batch](./media/batch-account-create-portal/secret-permissions.png)
 

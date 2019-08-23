@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 73480c6e24ab13b7764c5b72280c19971eb3d039
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 1ef4d8e76b54b995a09decdfaf9974f0929c8ed9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296490"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905346"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.
@@ -47,7 +47,7 @@ Security Center není možné spustit doporučení identity pro agenty správce 
 Seznam [](security-center-identity-access.md#recommendations) doporučení identity a přístupu, která poskytuje Security Center, najdete v tématu věnovaném doporučením.
 
 ## <a name="monitoring-security-health"></a>Sledování stavu zabezpečení
-Můžete monitorovat stav zabezpečení vašich prostředků na **Security Center – přehled** řídicího panelu. Oddíl **** Resources je indikátor stavu ukazující závažnost pro každý typ prostředku.
+Můžete monitorovat stav zabezpečení vašich prostředků na **Security Center – přehled** řídicího panelu. Oddíl Resources je indikátor stavu ukazující závažnost pro každý typ prostředku.
 
 Seznam všech problémů můžete zobrazit tak, že vyberete **doporučení**. V části **prostředky**můžete zobrazit seznam problémů, které jsou specifické pro výpočetní & aplikace, zabezpečení dat, sítě nebo identity & přístup. Další informace o tom, jak používat doporučení, najdete v části [implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
@@ -79,7 +79,7 @@ V části **Přehled**najdete seznam doporučení. První sloupec uvádí doporu
 1. Pro další podrobnosti vyberte předplatné v seznamu.
 
 ### <a name="subscriptions-section"></a>Oddíl Subscriptions
-V **** části Předplatná je seznam předplatných. První sloupec obsahuje seznam předplatných. Druhý sloupec zobrazuje celkový počet doporučení pro každé předplatné. Třetí sloupec zobrazuje závažnost problémů.
+Včásti Předplatná je seznam předplatných. První sloupec obsahuje seznam předplatných. Druhý sloupec zobrazuje celkový počet doporučení pro každé předplatné. Třetí sloupec zobrazuje závažnost problémů.
 
 ![Karta předplatného][4]
 
@@ -125,10 +125,10 @@ Následující tabulku použijte jako pomůcku, která vám pomůže pochopit do
 > [!NOTE]
 > Pokud jste vytvořili zásadu podmíněného přístupu, která vyžaduje MFA, ale má nastavené vyloučení, vyhodnocování doporučení pro Security Center MFA posuzuje zásady, které nedodržují předpisy, protože umožňuje některým uživatelům přihlašovat se k Azure bez MFA.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 
-- [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-recommendations.md)
+- [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
 - [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
 - [Ochrana dat a služby SQL Azure v Azure Security Center](security-center-sql-service-recommendations.md)
 

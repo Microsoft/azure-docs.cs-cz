@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2019
 ms.author: vijetaj
-ms.openlocfilehash: de407f4b4de58abebf87b82ff6f76342a0e9f7e0
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: adf6a68d6da4236874dce403bb4d7043087049b2
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575044"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970362"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Architektura AI a hloubkového učení
 [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM) podporuje řadu prostorů pro hloubkové učení, které vám pomůžou sestavovat aplikace umělal Intelligence (AI) s využitím prediktivních analýz a funkcí rozpoznávání, jako je obrázek a porozumění jazyka.

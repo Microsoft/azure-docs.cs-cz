@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a622aa85d1d0a9dcd5d5ad9b2b30e7a3120ea974
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d58cec644c75baaac37862f445477da92075c44d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878009"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907352"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>Kurz: Definování nového typu zařízení v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -90,11 +90,11 @@ Následující kroky ukazují, jak naimportovat model schopností pro zařízen�
 
 1. Chcete-li přidat novou šablonu zařízení, vyberte **+ Nový** na stránce **šablony zařízení** .
 
-1. V seznamu modelů schopností zařízení vyberte **vlastní** .
+1. V seznamu šablon vyberte možnost **vlastní** .
 
 1. Jako název své šablony zařízení zadejte **senzor životního prostředí** .
 
-1. Pokud chcete vytvořit nový model schopností zařízení ze souboru JSON, vyberte **importovat model schopností** . Přejděte do složky, kam jste uložili soubor **EnvironmentalSensorInline. capabilitymodel. JSON** na místním počítači. Vyberte soubor **EnvironmentalSensorInline. capabilitymodel. JSON** a pak vyberte Importovat. Model schopností environmentálního senzoru zahrnuje rozhraní **snímače životního prostředí** a **informace o zařízení** :
+1. Pokud chcete vytvořit nový model schopností zařízení ze souboru JSON, vyberte **importovat model schopností** . Přejděte do složky, kam jste uložili soubor **EnvironmentalSensorInline. capabilitymodel. JSON** na místním počítači. Vyberte soubor **EnvironmentalSensorInline. capabilitymodel. JSON** a pak vyberte **otevřít**. Model schopností environmentálního senzoru zahrnuje rozhraní **snímače životního prostředí** a **informace o zařízení** :
 
     ![Model schopností zařízení snímače prostředí](./media/tutorial-define-device-type-pnp/newdevicecapabilitymodel.png)
 
@@ -147,9 +147,9 @@ Když vyberete možnost **Generovat výchozí zobrazení**, automaticky se přid
 
 Řídicí panel zařízení umožňuje, aby operátor vizualizuje zařízení pomocí grafů a metrik. Jako tvůrce můžete definovat, které informace se zobrazí na řídicím panelu zařízení. Pro zařízení můžete definovat několik řídicích panelů. Pokud chcete vytvořit řídicí panel pro vizualizaci telemetrie senzorů pro životní prostředí, vyberte **zobrazení** a pak **Vizualizujte zařízení**:
 
-1. Všechny vlastnosti zařízení, vlastnosti cloudu, telemetrie a statické možnosti jsou uvedené na panelu na pravé straně. Jakoukoli z těchto položek můžete přetáhnout do zobrazení. Přetáhněte vlastnost do zobrazení. Dlaždici můžete nakonfigurovat pomocí ikony ozubeného kolečka.
+1. V části **vlastnosti**jsou uvedeny všechny vlastnosti zařízení, vlastnosti cloudu, telemetrie a statické možnosti. Jakoukoli z těchto položek můžete přetáhnout do zobrazení. Přetáhněte vlastnost **úroveň jasu** do zobrazení. Dlaždici můžete nakonfigurovat pomocí ikony ozubeného kolečka.
 
-1. Chcete-li přidat graf, který vykresluje telemetrii, vyberte **vlhkost** a **teplotu**a pak vyberte **kombinovat**. Chcete-li zobrazit tento graf v libovolném jiném formátu, například výsečového grafu nebo pruhový graf, vyberte tlačítko **změnit vizualizaci** v horní části dlaždice.
+1. Chcete-li přidat graf, který vykresluje telemetrii, vyberte **vlhkost** a **teplotu**a pak vyberte **kombinovat**. Chcete-li zobrazit tento graf v jiném formátu, například výsečového grafu nebo pruhový graf, vyberte tlačítko **změnit vizualizaci** v horní části dlaždice.
 
 1. Kliknutím na **Uložit** uložte zobrazení:
 
@@ -161,7 +161,7 @@ Formulář zařízení umožňuje operátorovi upravovat vlastnosti zapisovateln
 
 Vytvoření formuláře pro zobrazení a úpravy vlastností senzoru životního prostředí:
 
-1. Vyberte dlaždici pro **úpravu zařízení a dat** v cloudu.
+1. Přejděte k **zobrazením** v šabloně **environmentálního senzoru** . Kliknutím na dlaždici pro **úpravu zařízení a cloudových dat** přidejte nové zobrazení.
 
 1. Zadejte název formuláře **vlastnosti senzoru prostředí**.
 
@@ -169,10 +169,9 @@ Vytvoření formuláře pro zobrazení a úpravy vlastností senzoru životního
 
 1. Vyberte **úroveň jasu** a vlastnosti zařízení **stavu zařízení** . Pak vyberte **přidat oddíl**. Upravte název oddílu na **vlastnosti senzoru**. Vyberte **Použít**.
 
-1. Vyberte vlastnosti zařízení **zbývající baterie**, **model zařízení**, **verze firmwaru**, **výrobce**a **sériové číslo** . Pak vyberte **přidat oddíl**. Upravte název oddílu na **vlastnosti zařízení**. Vyberte **Použít**.
+1. Vyberte **model zařízení**, **verzi softwaru**, **výrobce**a **výrobce procesoru** – vlastnosti zařízení. Pak vyberte **přidat oddíl**. Upravte název oddílu na **vlastnosti zařízení**. Vyberte **Použít**.
 
 1. Kliknutím na **Uložit** uložte zobrazení.
-
 
 ## <a name="publish-device-template"></a>Publikovat šablonu zařízení
 

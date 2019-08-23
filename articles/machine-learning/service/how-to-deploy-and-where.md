@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7bfbec194733f2f8422eef45236a64e45bb553c7
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656361"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897701"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -723,7 +723,7 @@ Modely můžete průběžně nasazovat pomocí rozšíření Machine Learning pr
 
 1. Pomocí __připojení služby__ nastavte připojení instančního objektu k vašemu pracovnímu prostoru služby Azure Machine Learning, abyste měli přístup ke všem artefaktům. Přejděte na nastavení projektu, klikněte na připojení služby a vyberte Azure Resource Manager.
 
-    ![zobrazení-služba-připojení](media/how-to-deploy-and-where/view-service-connection.png) 
+    [![zobrazení-služba-připojení](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png) 
 
 1. Definujte AzureMLWorkspace jako __úroveň oboru__ a vyplňte následující parametry.
 
@@ -731,11 +731,11 @@ Modely můžete průběžně nasazovat pomocí rozšíření Machine Learning pr
 
 1. Abyste mohli model strojového učení průběžně nasazovat pomocí Azure Pipelines, vyberte v části kanály možnost __vydaná verze__. Přidejte nový artefakt, vyberte artefakt modelu AzureML a připojení služby, které jste vytvořili v předchozím kroku. Vyberte model a verzi pro aktivaci nasazení. 
 
-    ![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)
+    [![SELECT-AzureMLmodel-artefakt](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
 
 1. Povolte na artefaktu modelu aktivační událost modelu. Zapnutím triggeru pokaždé, když je zadaná verze (tj. nejnovější verze) tohoto modelu se registruje ve vašem pracovním prostoru, aktivuje se kanál verze Azure DevOps. 
 
-    ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
+    [![Enable-model-Trigger](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
 
 Další ukázkové projekty a příklady najdete v následujících ukázkových úložištích:
 

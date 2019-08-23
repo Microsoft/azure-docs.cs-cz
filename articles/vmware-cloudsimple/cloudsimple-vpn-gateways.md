@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 88c27b920817da5edc2cefe780903c2b94695807
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8b7b02c164021ac084dccf5663122620b2af1b15
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877638"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972891"
 ---
 # <a name="vpn-gateways-overview"></a>Přehled bran VPN
 
@@ -68,6 +68,6 @@ Připojení VPN typu Site-to-site používá k navázání zabezpečeného přip
 
 SÍŤ VPN typu Point-to-site slouží k posílání šifrovaného provozu mezi sítí v CloudSimple oblasti a klientským počítačem.  Síť VPN typu Point-to-site je nejjednodušší způsob, jak získat přístup k síti privátního cloudu, včetně virtuálních počítačů vCenter a zatížení vašeho privátního cloudu.  Pokud se připojujete k privátnímu cloudu vzdáleně, použijte připojení VPN typu Point-to-site.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nastavení služby VPN Gateway](vpn-gateway.md)

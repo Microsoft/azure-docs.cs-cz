@@ -6,25 +6,20 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/13/2019
+ms.date: 08/21/2019
 ms.author: heidist
-ms.openlocfilehash: 1f3e4d69d3fdba8eba2e7d3cadc3c29703bffcaf
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558609"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899685"
 ---
 # <a name="what-is-azure-search"></a>Co je Azure Search?
 
-Azure Search je cloudové řešení hledání jako služby, které vývojářům poskytuje rozhraní API a nástroje pro přidávání bohatých možností vyhledávání přes soukromý, heterogenní obsah ve webových, mobilních a podnikových aplikacích. Váš vlastní kód vyvolá příjem dat (indexování), vydává požadavky na dotazy a zpracovává odpovědi. Možnosti vyhledávání jsou definovány ve vašem klientském kódu pomocí funkce z Azure Search, při provádění dotazů prostřednictvím trvalého indexu, který vytváříte, vlastníte a ukládáte na Azure Search.
+Azure Search je cloudové řešení hledání jako služby, které vývojářům poskytuje rozhraní API a nástroje pro přidávání bohatých možností vyhledávání přes soukromý, heterogenní obsah ve webových, mobilních a podnikových aplikacích. Váš vlastní kód vyvolá ingestování dat (indexování) pro vytvoření a načtení indexu. Na druhé straně kód aplikace vystavuje požadavky na dotazy a zpracovává odpovědi. Možnosti vyhledávání jsou ve vašem klientovi definované pomocí funkce z Azure Search, při provádění dotazů prostřednictvím trvalého indexu, který vytvoříte, vlastníte a uložíte v Azure Search.
 
 ![Architektura Azure Search](media/search-what-is-azure-search/azure-search-diagram.svg "Architektura Azure Search")
-
-<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
-+ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
-+ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
-+ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
 
 Funkce se zveřejňuje prostřednictvím jednoduchého rozhraní [REST API](/rest/api/searchservice/) nebo [.NET SDK](search-howto-dotnet-sdk.md), které zakrývá zákonitou složitost načítání informací. Kromě rozhraní API portál Azure poskytuje podporu správy a správy obsahu a nástroje pro vytváření prototypů a dotazů na indexy. Služba běží v cloudu, proto infrastrukturu a dostupnost spravuje Microsoft.
 
@@ -36,7 +31,7 @@ Azure Search je vhodný pro následující scénáře aplikací:
 
 + Snadná implementace funkcí souvisejících s vyhledáváním Rozhraní API Azure Search zjednodušují vytváření dotazů, omezující navigaci, filtry (včetně geografického hledání), mapování synonym, dotazy typeahead a optimalizaci závažnosti. Pomocí integrovaných funkcí můžete vyhovět očekáváním koncových uživatelů při hledání podobného komerčním vyhledávacím webům.
 
-+ Indexování nestrukturovaného textu nebo extrakce textu a informací ze souborů obrázků. Funkce pro vyhledávání rozpoznávání Azure Search přidává do kanálu indexování zpracování AI. Některé běžné případy použití zahrnují rozpoznávání OCR přes naskenovaný dokument, rozpoznávání entit a extrakci klíčových frází pro velké dokumenty, rozpoznávání jazyka a překlad textu a analýzu mínění.
++ Indexování nestrukturovaného textu nebo extrakce textu a informací ze souborů obrázků. Funkce pro [vyhledávání rozpoznávání](cognitive-search-concept-intro.md) Azure Search přidává do kanálu INDEXOVÁNÍ zpracování AI. Některé běžné případy použití zahrnují rozpoznávání OCR přes naskenovaný dokument, rozpoznávání entit a extrakci klíčových frází pro velké dokumenty, rozpoznávání jazyka a překlad textu a analýzu mínění.
 
 + Jazykové požadavky jsou splněné pomocí vlastních a jazykových analyzátorů Azure Search. Pokud máte obsah, který není v angličtině, Azure Search podporuje jak analyzátory Lucene, tak i procesory přirozeného jazyka společnosti Microsoft. Můžete také nakonfigurovat analyzátory, aby byly zajištěny specializované zpracování nezpracovaného obsahu, například filtrování diakritických znamének.
 
@@ -93,7 +88,9 @@ Model vyžádání načítá data z externích zdrojů dat. Podporují ho *index
 Model nabízení se zajišťuje prostřednictvím sady SDK nebo rozhraní REST API, která slouží k posílání aktualizovaných dokumentů do indexu. Data můžete nabízet prakticky z libovolné datové sady ve formátu JSON. Pokyny k načítání dat najdete v článcích [Přidávání, aktualizace a odstraňování dokumentů](/rest/api/searchservice/addupdate-or-delete-documents) nebo [Jak používat sadu .NET SDK](search-howto-dotnet-sdk.md).
 
 ### <a name="step-4-search"></a>Krok 4: Hledat
-Po naplnění indexu můžete [vydávat vyhledávací dotazy](/rest/api/searchservice/Search-Documents) do vašeho koncového bodu služby pomocí jednoduchých žádostí HTTP přes rozhraní REST API nebo .NET SDK.
+Po naplnění indexu můžete [vydávat vyhledávací dotazy](search-query-overview.md) pro koncový bod služby pomocí jednoduchých požadavků HTTP s [REST API](/rest/api/searchservice/Search-Documents) nebo [sadou .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations).
+
+Projděte si [vytvořením první vyhledávací aplikace](tutorial-csharp-create-first-app.md) , kterou vytvoříte a pak rozšíříte webovou stránku, která shromažďuje uživatelský vstup a zpracovává výsledky. K dotazování existujícího indexu můžete použít také [metodu post pro interaktivní volání REST](search-get-started-postman.md) nebo integrované [Průzkumník služby Search](search-explorer.md) v nástroji Azure Portal.
 
 ## <a name="how-it-compares"></a>Srovnání s ostatními řešeními
 

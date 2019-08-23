@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: cc16f3c8ea287e78d7b7b4d9a56f5a2e82c26f01
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 54fc87f02ca058e17de3a65627bc76fd7d9cac11
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515343"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971554"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Kurz: Začněte vytvářet první experiment v ML
 
@@ -73,7 +73,9 @@ Po spuštění virtuálního počítače pomocí části **virtuální počíta�
     > [!TIP]
     > Tato složka se nachází na [kontejneru úložiště](concept-workspace.md#resources) ve vašem pracovním prostoru, nikoli na samotném virtuálním počítači poznámkového bloku.  Virtuální počítač poznámkového bloku můžete odstranit a pořád zachovat veškerou práci.  Když později vytvoříte nový virtuální počítač s poznámkovým blokem, načte se tato složka. Pokud svůj pracovní prostor sdílíte s ostatními, uvidí vaši složku a zobrazí se jejich.
 
-1. Otevřete podadresář a pak ho otevřete `tutorials/tutorial-1st-experiment-sdk-train.ipynb` , aby se spouštěla druhá **část** kurzu. `samples-*`
+1. `samples-*` Otevřete podadresář a pak otevřete`tutorials/tutorial-1st-experiment-sdk-train.ipynb` 
+
+Ve **druhé části** kurzu spouštíte kód v `tutorial-1st-experiment-sdk-train.ipynb` nástroji pro výuku modelu strojového učení.
 
 ## <a name="end"></a>Vyčištění prostředků
 

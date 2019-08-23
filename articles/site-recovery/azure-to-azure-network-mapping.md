@@ -1,83 +1,83 @@
 ---
-title: Mapování virtuálních sítí mezi dvěma oblastmi Azure ve službě Azure Site Recovery | Dokumentace Microsoftu
-description: Azure Site Recovery koordinuje replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů a fyzických serverů. Další informace o převzetí služeb při selhání do Azure nebo do sekundárního datacentra.
+title: Mapování virtuálních sítí mezi dvěma oblastmi Azure v Azure Site Recovery | Microsoft Docs
+description: Azure Site Recovery koordinuje replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů a fyzických serverů. Přečtěte si o převzetí služeb při selhání do Azure nebo do sekundárního datacentra.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: b25806044dd74092a5404ad7ef24ddd386dffbc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c24352fdbc6b81e7d263ac8c511b7c61792e6ae
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521756"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907872"
 ---
-# <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavte mapování sítě a IP adresy pro virtuální sítě
+# <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavení mapování sítě a adresování IP pro virtuální sítě
 
-Tento článek popisuje, jak namapovat dvě instance s virtuálními sítěmi Azure (Vnet) nachází v různých oblastech Azure a jak nastavit IP adresování mezi sítěmi. Mapování sítě poskytuje výchozí chování pro výběr cílové sítě založené na zdrojové síti při povolení replikace.
+Tento článek popisuje, jak namapovat dvě instance virtuálních sítí Azure (virtuální sítě) nacházejících se v různých oblastech Azure a jak nastavit IP adresy mezi sítěmi. Mapování sítě poskytuje výchozí chování pro výběr cílové sítě na základě zdrojové sítě v době povolení replikace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete mapovat sítě, měli byste mít [virtuálním sítím Azure](../virtual-network/virtual-networks-overview.md) ve zdrojové a cílové oblasti Azure. 
+Předtím, než budete mapovat sítě, byste měli mít [Azure virtuální sítě](../virtual-network/virtual-networks-overview.md) ve zdrojové a cílové oblasti Azure. 
 
-## <a name="set-up-network-mapping-manually-optional"></a>Nastavit ruční mapování sítě (volitelné)
+## <a name="set-up-network-mapping-manually-optional"></a>Ruční nastavení mapování sítě (volitelné)
 
-Mapovat sítě následujícím způsobem:
+Mapujte sítě následujícím způsobem:
 
-1. V **infrastruktura Site Recovery**, klikněte na tlačítko **+ mapování sítě**.
+1. V **Site Recovery infrastruktuře**klikněte na **+ mapování sítě**.
 
-    ![ Vytvořit mapování sítě](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
+    ![ Vytvoření mapování sítě](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
-3. V **přidání mapování sítě**vyberte zdrojové a cílové umístění. V našem příkladu zdroj virtuální počítač běží v oblasti východní Asie a replikuje do oblasti jihovýchodní Asie.
+3. V části **Přidat mapování sítě**vyberte zdrojové a cílové umístění. V našem příkladu je zdrojový virtuální počítač spuštěný v oblasti Východní Asie a replikuje se do oblasti jihovýchodní Asie.
 
-    ![Vyberte zdroj a cíl](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
-3. V adresáři opačné nyní vytvořte mapování sítě. V našem příkladu zdrojem bude nyní jihovýchodní Asii a cíl bude východní Asie.
+    ![Vybrat zdroj a cíl](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+3. Nyní vytvořte mapování sítě v protějším adresáři. V našem příkladu bude zdroj teď jihovýchodní Asie a cíl bude Východní Asie.
 
-    ![Přidání podokna mapování sítě – vyberte zdrojové a cílové umístění pro cílovou síť](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
+    ![Přidat podokno mapování sítě – vyberte zdrojové a cílové umístění pro cílovou síť.](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
 
-## <a name="map-networks-when-you-enable-replication"></a>Mapovat sítě při povolení replikace
+## <a name="map-networks-when-you-enable-replication"></a>Mapování sítí při povolení replikace
 
-Pokud jste dosud připraveni mapování sítě, než začnete konfigurovat zotavení po havárii pro virtuální počítače Azure, můžete zadat cílovou síť, jakmile je [nastavení a povolení replikace](azure-to-azure-how-to-enable-replication.md). Když nastavíte takto to se stane toto:
+Pokud jste nepřipravili mapování sítě před konfigurací zotavení po havárii pro virtuální počítače Azure, můžete při nastavování [a povolování replikace](azure-to-azure-how-to-enable-replication.md)zadat cílovou síť. Když to uděláte, dojde k následujícímu:
 
-- Založený na cíli, který vyberete, Site Recovery automaticky vytvoří mapování sítě ze zdrojové do cílové oblasti a z cíle do zdrojové oblasti.
-- Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti, která je stejný jako zdrojovou síť k síti. Site Recovery přidává **Azure Site Recovery -** jako příponu k názvu zdrojové síti. Můžete přizpůsobit cílová síť.
-- Pokud mapování sítě pro zdrojové síti již došlo, namapované Cílová síť bude vždy výchozí při povolení replikace pro více virtuálních počítačů. Můžete změnit cílovou virtuální sítí výběrem dalších dostupných možností z rozevíracího seznamu. 
-- Chcete-li změnit výchozí cílová virtuální síť pro nové replikace, budete muset upravit existující mapování sítě.
-- Pokud chcete upravit mapování sítě z oblasti A oblasti B, ujistěte se, že je nejprve odstranit mapování sítě z oblasti B do oblasti A. Po odstranění reverzní mapování upravit mapování sítě z oblasti A oblasti B a pak vytvořte relevantní reverzní mapování.
+- V závislosti na zvoleném cíli Site Recovery automaticky vytvořit mapování sítě ze zdroje do cílové oblasti a z cíle do zdrojové oblasti.
+- Ve výchozím nastavení Site Recovery vytvoří síť v cílové oblasti, která je shodná se zdrojovou sítí. Site Recovery přidá nástroj **-ASR** jako příponu na název zdrojové sítě. Můžete přizpůsobit cílovou síť.
+- Pokud pro zdrojovou síť již proběhlo mapování sítě, namapovaná Cílová síť bude vždy výchozí v době povolování replikace pro více virtuálních počítačů. Cílovou virtuální síť můžete změnit výběrem jiných dostupných možností z rozevíracího seznamu. 
+- Chcete-li změnit výchozí cílovou virtuální síť pro nové replikace, je nutné upravit existující mapování sítě.
+- Pokud chcete změnit mapování sítě z oblasti A na oblast B, ujistěte se, že jste nejdřív odstranili mapování sítě z oblasti B na oblast A. Po odstranění mapování zpět změňte mapování sítě z oblasti A na oblast B a pak vytvořte příslušné zpětné mapování.
 
 >[!NOTE]
->* Upravuje se mapování sítě se změní pouze výchozí hodnoty pro nový virtuální počítač replikace. Výběr cílové virtuální sítě pro existující replikace nemá vliv. 
->* Pokud chcete změnit Cílová síť pro stávající replikaci, přejděte na výpočty a síť nastavení replikované položky.
+>* Změna mapování sítě mění pouze výchozí hodnoty pro nové replikace virtuálních počítačů. Nemá vliv na vybrané cílové virtuální sítě pro existující replikace. 
+>* Pokud chcete změnit cílovou síť pro existující replikaci, použijte nastavení výpočty a síť replikované položky.
 
-## <a name="specify-a-subnet"></a>Zadejte podsíť
+## <a name="specify-a-subnet"></a>Zadejte podsíť.
 
-Podsítě, kterou vyberete virtuální počítač s cílem vycházet z názvu podsítě zdrojový virtuální počítač.
+Podsíť cílového virtuálního počítače se vybere na základě názvu podsítě zdrojového virtuálního počítače.
 
-- Pokud podsíť se stejným názvem jako zdrojová podsíť virtuálních počítačů je k dispozici v cílové síti, nastaví se pro cílový virtuální počítač této podsíti.
-- Pokud podsíť s tímto názvem neexistuje v cílové síti, první podsíti v abecedním pořadí je nastavena jako cílovou podsíť.
-- Můžete změnit cílovou podsíť v **výpočty a síť** nastavení pro virtuální počítač.
+- Pokud je v cílové síti dostupná podsíť se stejným názvem, jako je zdrojová podsíť virtuálních počítačů, je tato podsíť nastavená pro cílový virtuální počítač.
+- Pokud v cílové síti neexistuje podsíť se stejným názvem, první podsíť v abecedním pořadí se nastaví jako cílová podsíť.
+- Cílovou podsíť můžete upravit v nastavení **výpočty a síť** pro virtuální počítač.
 
-    ![Výpočty a síť výpočetní vlastnosti okna](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
+    ![Okno výpočetních a síťových výpočetních vlastností](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
 
-## <a name="set-up-ip-addressing-for-target-vms"></a>Nastavení přidělování IP adres pro cílový virtuální počítače
+## <a name="set-up-ip-addressing-for-target-vms"></a>Nastavení IP adres pro cílové virtuální počítače
 
-IP adresa pro jednotlivé síťové karty na cílový virtuální počítač nakonfigurován takto:
+IP adresa každé síťové karty na cílovém virtuálním počítači je nakonfigurovaná takto:
 
-- **DHCP**: Pokud síťového rozhraní zdrojového virtuálního počítače používá DHCP, síťového rozhraní cílového virtuálního počítače je také nastavena na používání protokolu DHCP.
-- **Statická IP adresa**: Pokud síťového rozhraní zdrojového virtuálního počítače používá statické IP adresy, cílové síťové karty virtuálního počítače také použít statické IP adresy.
+- **DHCP**: Pokud síťová karta zdrojového virtuálního počítače používá službu DHCP, síťové rozhraní cílového virtuálního počítače je také nastavené na používání protokolu DHCP.
+- **Statická IP adresa**: Pokud síťová karta zdrojového virtuálního počítače používá přidělování statických IP adres, použije cílový síťový adaptér virtuálního počítače taky statickou IP adresu.
 
 
 ## <a name="ip-address-assignment-during-failover"></a>Přiřazení IP adresy během převzetí služeb při selhání
 
 **Zdrojové a cílové podsítě** | **Podrobnosti**
 --- | ---
-Stejného adresního prostoru | IP adresa zdroje síťové karty virtuálního počítače je nastavena jako cílové síťové karty IP adresu virtuálního počítače.<br/><br/> Pokud tato adresa není k dispozici, nastavit je jako cíl další dostupnou IP adresu.
+Stejný adresní prostor | IP adresa zdrojového adaptéru virtuálního počítače je nastavená jako IP adresa cílové síťové karty virtuálního počítače.<br/><br/> Pokud adresa není k dispozici, je jako cíl nastavena Další dostupná IP adresa.
 
-Jiným adresním prostorem<br/><br/> Další dostupnou IP adresu v cílové podsíti je nastavena jako cíl adresa síťové karty virtuálního počítače.
+Jiný adresní prostor<br/><br/> Následující dostupná IP adresa v cílové podsíti je nastavená jako adresa cílové síťové karty virtuálního počítače.
 
 
 
@@ -85,17 +85,15 @@ Jiným adresním prostorem<br/><br/> Další dostupnou IP adresu v cílové pods
 
 **Cílová síť** | **Podrobnosti**
 --- | ---
-Cílová síť je převzetí služeb při selhání virtuální sítě | -Cílová IP adresa je statická, ale ne stejnou IP adresu jako vyhrazené pro převzetí služeb při selhání.<br/><br/>  -Přiřazenou adresu je další dostupnou adresu od konce rozsahu podsítě.<br/><br/> Příklad: Pokud zdrojová IP adresa je 10.0.0.19 a převzetí služeb při selhání síť používá rozsah 10.0.0.0/24, IP adresa dalšího přiřazené k cílovému virtuálnímu počítači je 10.0.0.254.
-Cílová síť není převzetí služeb při selhání virtuální sítě | -Cílová IP adresa bude statické pomocí stejné IP adresy rezervované pro převzetí služeb při selhání.<br/><br/>  – Pokud je již přiřazen stejnou IP adresu, IP adresa je dalším objektem, který je k dispozici na konci rozsahu podsítě.<br/><br/> Příklad: Pokud statickou IP adresu zdrojového 10.0.0.19 a převzetí služeb při selhání je připojen k síti, která není převzetí služeb při selhání sítě, s rozsah 10.0.0.0/24, pak statickou IP adresu cílového bude 10.0.0.0.19, pokud je k dispozici, a v opačném případě bude 10.0.0.254.
+Cílová síť je virtuální síť převzetí služeb při selhání. | -Cílová IP adresa je statická, ale ne stejná IP adresa, která je vyhrazená pro převzetí služeb při selhání.<br/><br/>  – Přiřazená adresa je další dostupná adresa od konce rozsahu podsítě.<br/><br/> Příklad: Pokud je zdrojová IP adresa 10.0.0.19 a síť s podporou převzetí služeb při selhání používá rozsah 10.0.0.0/24, pak je 10.0.0.254 další IP adresa přiřazená k cílovému virtuálnímu počítači.
+Cílová síť není virtuální síť převzetí služeb při selhání. | -Cílová IP adresa bude statická se stejnou IP adresou rezervovanou pro převzetí služeb při selhání.<br/><br/>  – Pokud je stejná IP adresa už přiřazená, pak je tato IP adresa další dostupnou na konci rozsahu podsítě.<br/><br/> Příklad: Pokud je zdrojová statická IP adresa 10.0.0.19 a převzetí služeb při selhání je v síti, která není síť s podporou převzetí služeb při selhání, s rozsahem 10.0.0.0/24, pak bude cílová statická IP adresa 10.0.0.0.19, pokud je k dispozici, a jinak bude 10.0.0.254.
 
-- Převzetí služeb virtuální sítě je cílové síti, který vyberete při nastavování zotavení po havárii.
-- Doporučujeme vždy používat mimo produkční sítě pro testovací převzetí služeb při selhání.
-- Můžete upravit IP adresu cílového v **výpočty a síť** nastavení virtuálního počítače.
+- Virtuální síť převzetí služeb při selhání je cílová síť, kterou vyberete při nastavování zotavení po havárii.
+- Pro testovací převzetí služeb při selhání doporučujeme vždycky používat neprodukční síť.
+- Cílovou IP adresu můžete upravit v nastavení **výpočty a síť** virtuálního počítače.
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Kontrola [sítě pokyny](site-recovery-azure-to-azure-networking-guidance.md) pro zotavení po havárii virtuálního počítače Azure.
-- [Další informace](site-recovery-retain-ip-azure-vm-failover.md) o zachování IP adresy po převzetí služeb při selhání.
-
-Je-li vybrána Cílová síť vnet převzetí služeb při selhání"a 2. přejděte na příkaz Řekněme, že"Pokud cílová síť zvolili se liší od virtuální síť převzetí služeb při selhání, ale má stejného rozsahu podsítě jako virtuální síť převzetí služeb při selhání"
+- Přečtěte si [pokyny k síti](site-recovery-azure-to-azure-networking-guidance.md) pro zotavení po havárii virtuálního počítače Azure.
+- [Přečtěte si další informace](site-recovery-retain-ip-azure-vm-failover.md) o zachování IP adres po převzetí služeb při selhání.

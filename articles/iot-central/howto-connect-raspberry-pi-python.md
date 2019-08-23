@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: bd506bf1210692feb017f3b526c3b6d4bca36004
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c8fd5309f50cfc024083cb8a05d679d04bf112dc
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877429"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972265"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Připojení k aplikaci Azure IoT Central k aplikaci v jazyce malin – PI (Python)
 
@@ -29,6 +29,9 @@ K dokončení kroků v tomto článku budete potřebovat následující komponen
 
 * Aplikace IoT Central v Azure vytvořená z **ukázkové** šablony aplikace Devkits Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 * Zařízení malinu PI, na kterém běží operační systém Raspbian. Malina. PI musí být schopná připojit se k Internetu. Další informace najdete v tématu [nastavení svého malinu PI](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
+
+> [!TIP]
+> Další informace o nastavení a připojení k zařízení malin. PI najdete na webu Začínáme [s malinou PI](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi) .
 
 ## <a name="sample-devkits-application"></a>**Ukázková aplikace Devkits**
 
@@ -63,12 +66,37 @@ Následující postup popisuje, jak stáhnout a nakonfigurovat ukázkovou aplika
 * Odesílá hodnoty telemetrie a vlastností do Azure IoT Central.
 * Reaguje na nastavení změn provedených v Azure IoT Central.
 
-Pokud chcete zařízení nakonfigurovat, postupujte podle podrobných [pokynů na GitHubu](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md).
+1. Připojte se k prostředí prostředí v aplikaci malin PI, a to buď z plochy Malina, nebo vzdáleně pomocí SSH.
 
-1. Po nakonfigurování zařízení zahájí vaše zařízení odesílání měření telemetrie do Azure IoT Central.
+1. Spuštěním následujícího příkazu nainstalujte klienta IoT Central Python:
+
+    ```sh
+    pip install iotc
+    ```
+
+1. Stáhněte si vzorový kód Pythonu:
+
+    ```sh
+    curl -O https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
+    ```
+
+1. Upravte soubor, který jste stáhli, `PRIMARY/SECONDARY device KEY` a `SCOPE_ID`zástupné symboly nahraďte hodnotami připojení, které jste si poznamenali dříve. `DEVICE_ID` `app.py` Uložte provedené změny.
+
+    > [!TIP]
+    > V prostředí v aplikaci malin PI můžete použít textové editory **nano** nebo **VI** .
+
+1. Pomocí následujícího příkazu spusťte ukázku:
+
+    ```sh
+    python app.py
+    ```
+
+    V aplikaci malin PI začíná posílání měření telemetrie do Azure IoT Central.
+
 1. V aplikaci Azure IoT Central můžete vidět, jak kód spuštěný ve Malině PI komunikuje s aplikací:
 
     * Na stránce **měření** reálného zařízení uvidíte telemetrii odeslanou od Malin. PI.
+    * Na stránce **vlastnosti** můžete zobrazit vlastnost zařízení **číslo** .
     * Na stránce **Nastavení** můžete změnit nastavení pro malinu PI, jako je například napětí a rychlost ventilátoru. Když aplikace malin. PI tuto změnu potvrdí, nastavení se zobrazí jako **synchronizované**.
 
 ## <a name="raspberry-pi-device-template-details"></a>Podrobnosti šablony zařízení malin. PI
@@ -115,6 +143,6 @@ Přepnout nastavení
 | Vlastnost zařízení | Číslo Die   | dieNumber  | číslo    |
 | Text            | Location     | location   | Není k dispozici       |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste se naučili, jak připojit malinu PI ke svojí aplikaci IoT Central Azure, je doporučeným dalším krokem postup pro [nastavení vlastní šablony zařízení](howto-set-up-template.md) pro vlastní zařízení IoT.

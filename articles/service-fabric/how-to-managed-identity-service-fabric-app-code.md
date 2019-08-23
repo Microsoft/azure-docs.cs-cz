@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5095e680eb7fd33d28acb2d187f83d86db1b46bf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 8e535fc581e186abd032206c2bbf78623d95967f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656628"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899771"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Jak využít spravovanou identitu aplikace Service Fabric pro přístup ke službám Azure (Preview)
 
@@ -23,7 +23,7 @@ Service Fabric aplikace můžou využívat spravované identity pro přístup k 
 > Spravovaná identita představuje přidružení mezi prostředkem Azure a instančním objektem v odpovídajícím tenantovi Azure AD, který je přidružený k předplatnému, které obsahuje daný prostředek. V kontextu Service Fabric se spravované identity podporují jenom pro aplikace nasazené jako prostředky Azure. 
 
 > [!IMPORTANT]
-> Před použitím spravované identity Service Fabric aplikace musí mít klientská aplikace udělený přístup k chráněnému prostředku. V seznamu [služeb Azure, které podporují ověřování Azure AD](/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources) pro kontrolu podpory, a pak v dokumentaci příslušné služby najdete konkrétní kroky pro udělení přístupu identit k prostředkům, které vás zajímají. 
+> Před použitím spravované identity Service Fabric aplikace musí mít klientská aplikace udělený přístup k chráněnému prostředku. V seznamu [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) pro kontrolu podpory, a pak v dokumentaci příslušné služby najdete konkrétní kroky pro udělení přístupu identit k prostředkům, které vás zajímají. 
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>Získání přístupového tokenu pomocí REST API
 V clusterech povolených pro spravovanou identitu modul runtime Service Fabric zveřejňuje koncový bod localhost, který mohou aplikace použít k získání přístupových tokenů. Koncový bod je k dispozici na každém uzlu clusteru a je přístupný všem entitám v tomto uzlu. Autorizovaní volající mohou získat přístupové tokeny voláním tohoto koncového bodu a předkládáním ověřovacího kódu; kód je generován modulem runtime Service Fabric pro každou aktivaci balíčku kódu služby a je vázán na životní cyklus procesu hostujícího daný balíček kódu služby.
@@ -308,7 +308,7 @@ Doporučuje se, aby se požadavky nezdařily, protože došlo k opakovanému pok
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
 V tématu [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md) , najdete seznam prostředků, které podporují Azure AD, a jejich odpovídajících ID prostředků.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Udělení přístupu k aplikacím Azure Service Fabric k ostatním prostředkům Azure](./how-to-grant-access-other-resources.md)

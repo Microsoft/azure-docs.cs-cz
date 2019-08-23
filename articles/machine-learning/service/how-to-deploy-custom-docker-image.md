@@ -1,7 +1,7 @@
 ---
-title: Nasazení modelů pomocí vlastní image Docker
+title: Nasazení modelů pomocí vlastního základního obrázku Docker
 titleSuffix: Azure Machine Learning service
-description: Naučte se používat vlastní image Docker při nasazení modelů služby Azure Machine Learning. Při nasazování proučeného modelu se vytvoří image Docker pro hostování image, webového serveru a dalších součástí potřebných ke spuštění služby. I když služba Azure Machine Learning poskytuje pro vás výchozí image, můžete také použít vlastní image.
+description: Naučte se používat vlastní základní image Docker při nasazení modelů služby Azure Machine Learning. Při nasazování proučeného modelu se nasadí základní image kontejneru pro spuštění modelu pro odvození. I když služba Azure Machine Learning poskytuje výchozí základní image, můžete použít také vlastní základní image.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,23 +9,25 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/11/2019
-ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/22/2019
+ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990530"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971519"
 ---
-# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>Nasazení modelu pomocí vlastní image Docker
+# <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 
-Naučte se používat vlastní image Docker při nasazení vycvičených modelů pomocí služby Azure Machine Learning.
+Naučte se používat vlastní základní image Docker při nasazování vycvičených modelů pomocí služby Azure Machine Learning.
 
-Když nasadíte školený model do webové služby nebo IoT Edge zařízení, vytvoří se image Docker. Tato image obsahuje model, prostředí conda a assety potřebné k používání modelu. Obsahuje taky webový server, který zpracovává příchozí požadavky při nasazení jako webovou službu a součásti potřebné pro práci s Azure IoT Hub.
+Když nasadíte vycvičený model do webové služby nebo IoT Edge zařízení, vytvoří se balíček, který bude obsahovat webový server pro zpracování příchozích požadavků.
 
-Služba Azure Machine Learning poskytuje výchozí snímek Docker, takže se o jeho vytvoření nemusíte starat. Můžete také použít vlastní image, kterou vytvoříte jako _základní image_. Základní bitová kopie se používá jako výchozí bod, když se pro nasazení vytvoří obrázek. Poskytuje základní operační systém a součásti. Proces nasazení poté přidá další součásti, jako je model, prostředí conda a další prostředky, do image před jejich nasazením.
+Služba Azure Machine Learning poskytuje výchozí základní image Docker, takže se o jejich vytvoření nemusíte starat. Můžete také použít vlastní základní image, kterou vytvoříte jako _základní image_. 
 
-Obvykle vytvoříte vlastní bitovou kopii, když chcete řídit verze součástí nebo ušetřit čas během nasazování. Například můžete chtít standardizovat konkrétní verzi Pythonu, conda nebo jiné součásti. Možná budete chtít nainstalovat i software vyžadovaný modelem, kdy proces instalace trvá dlouho. Instalace softwaru při vytváření základní image znamená, že ji nemusíte instalovat pro každé nasazení.
+Základní bitová kopie se používá jako výchozí bod, když se pro nasazení vytvoří obrázek. Poskytuje základní operační systém a součásti. Proces nasazení poté přidá další součásti, jako je model, prostředí conda a další prostředky, do image před jejich nasazením.
+
+Obvykle vytvoříte vlastní základní bitovou kopii, pokud chcete použít Docker ke správě závislostí, udržovat užší kontrolu nad verzemi součástí nebo ušetřit čas během nasazování. Například můžete chtít standardizovat konkrétní verzi Pythonu, conda nebo jiné součásti. Možná budete chtít nainstalovat i software vyžadovaný modelem, kdy proces instalace trvá dlouho. Instalace softwaru při vytváření základní image znamená, že ji nemusíte instalovat pro každé nasazení.
 
 > [!IMPORTANT]
 > Při nasazení modelu nelze přepsat základní komponenty, jako jsou například webové servery nebo součásti IoT Edge. Tyto komponenty poskytují známé pracovní prostředí, které Microsoft testuje a podporuje.
@@ -35,8 +37,8 @@ Obvykle vytvoříte vlastní bitovou kopii, když chcete řídit verze součást
 
 Tento dokument je rozdělen do dvou částí:
 
-* Vytvoření vlastní image: Poskytuje informace správcům a DevOpsům při vytváření vlastní image a konfiguraci ověřování pro Azure Container Registry pomocí rozhraní příkazového řádku Azure CLI a Machine Learning CLI.
-* Použít vlastní image: Poskytuje informace pro odborníky přes data a DevOps/MLOps při používání vlastních imagí při nasazování proučeného modelu ze sady Python SDK nebo ML CLI.
+* Vytvoření vlastní základní Image: Poskytuje informace správcům a DevOpsům při vytváření vlastní image a konfiguraci ověřování pro Azure Container Registry pomocí rozhraní příkazového řádku Azure CLI a Machine Learning CLI.
+* Nasazení modelu pomocí vlastní základní Image: Poskytuje informace pro odborníky přes data a inženýry DevOps/ml na používání vlastních imagí při nasazení vyškolené modelu ze sady Python SDK nebo ml CLI.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -47,7 +49,7 @@ Tento dokument je rozdělen do dvou částí:
 * [Azure Container Registry](/azure/container-registry) nebo jiný registr Docker, který je přístupný na internetu.
 * Kroky v tomto dokumentu předpokládají, že máte zkušenosti s vytvářením a používáním objektu __Konfigurace odvození__ jako součást nasazení modelu. Další informace najdete v části Příprava na nasazení v tématu [nasazení a jak](how-to-deploy-and-where.md#prepare-to-deploy).
 
-## <a name="create-a-custom-image"></a>Vytvoření vlastní image
+## <a name="create-a-custom-base-image"></a>Vytvoření vlastní základní image
 
 Informace v této části předpokládají, že používáte Azure Container Registry k ukládání imagí Docker. Při plánování vytváření vlastních imagí pro službu Azure Machine Learning použijte následující kontrolní seznam:
 
@@ -109,7 +111,7 @@ Pokud jste už provedli vyškolené nebo nasazené modely pomocí služby Azure 
 
     `<registry_name>` Hodnota je název Azure Container registry pro váš pracovní prostor.
 
-### <a name="build-a-custom-image"></a>Vytvoření vlastní image
+### <a name="build-a-custom-base-image"></a>Vytvoření vlastní základní image
 
 Postup v této části vás seznámí s vytvořením vlastní image Docker ve vašem Azure Container Registry.
 
@@ -162,7 +164,7 @@ Další informace o vytváření imagí pomocí Azure Container Registry najdete
 
 Další informace o nahrání existujících imagí do Azure Container Registry najdete v tématu odeslání [prvního obrázku do privátního registru kontejneru Docker](/azure/container-registry/container-registry-get-started-docker-cli).
 
-## <a name="use-a-custom-image"></a>Použití vlastní image
+## <a name="use-a-custom-base-image"></a>Použití vlastní základní image
 
 Pokud chcete použít vlastní image, potřebujete tyto informace:
 
@@ -174,7 +176,7 @@ Pokud chcete použít vlastní image, potřebujete tyto informace:
 
     Pokud tyto informace nemáte, obraťte se na správce Azure Container Registry, který obsahuje vaši image.
 
-### <a name="publicly-available-images"></a>Veřejně dostupné obrázky
+### <a name="publicly-available-base-images"></a>Veřejně dostupné základní image
 
 Společnost Microsoft poskytuje několik imagí Docker pro veřejně dostupné úložiště, které je možné použít s kroky v této části:
 

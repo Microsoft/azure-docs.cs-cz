@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 09/15/2017
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 44dea072b9871d0be6e18549896456af2a4989f6
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 5a0be55df9be67fcf6ff5d53e18e3eb2b0e69d7f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558815"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904480"
 ---
 # <a name="get-started-with-device-management-net"></a>Začínáme se správou zařízení (.NET)
 
@@ -34,7 +34,9 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 * **TriggerReboot**. Tato aplikace volá přímou metodu v aplikaci simulovaného zařízení, zobrazí odpověď a zobrazí aktualizované hlášené vlastnosti.
 
-Pro absolvování tohoto kurzu musí být splněné následující požadavky:
+## <a name="prerequisites"></a>Požadavky
+
+Pro absolvování tohoto kurzu potřebujete:
 
 * Visual Studio.
 
@@ -81,7 +83,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí nástroje C#, kter�
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem IoT Hub, který jste dříve zkopírovali v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string).
+1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu [](#get-the-iot-hub-connection-string) zástupnéhosymbolupřipojovacímřetězcemIoTHub,kterýjstedřívezkopírovalivčástizískánípřipojovacíhořetězcecentraIoT`{iot hub connection string}` hub.
 
    ```csharp
    static RegistryManager registryManager;
@@ -133,7 +135,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí nástroje C#, kter�
 
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
 
-V této části provedete následující akce:
+V této části:
 
 * Vytvořte konzolovou aplikaci .NET, která reaguje na přímou metodu volanou cloudem.
 
@@ -164,11 +166,10 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem zařízení, který jste si poznamenali v předchozí části.
+1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu [](#register-a-new-device-in-the-iot-hub) zástupnéhosymbolupřipojovacímřetězcemzařízení,kterýjstesidřívepoznamenalivčástiregistracenovéhozařízeníveslužběIoT`{device connection string}` hub.
 
     ```csharp
-    static string DeviceConnectionString = 
-      "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static string DeviceConnectionString = "{device connection string}";
     static DeviceClient Client = null;
     ```
 
@@ -233,7 +234,7 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
    }
    ```
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak vyberte **nastavit projekty po spuštění**. 
+1. V Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak vyberte **nastavit projekty po spuštění**.
 
 1. Pro **běžné vlastnosti** > **spouštěný projekt**vyberte **jeden spouštěný projekt**a pak vyberte projekt **SimulateManagedDevice** . Vyberte **OK** uložte provedené změny.
 
@@ -244,7 +245,7 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 
-Nyní jste připraveni aplikaci spustit.
+Nyní jste připraveni spustit aplikace.
 
 1. Pokud chcete spustit aplikaci zařízení .NET **SimulateManagedDevice**, klikněte v Průzkumník řešení pravým tlačítkem myši na projekt **SimulateManagedDevice** , vyberte **ladit**a pak vyberte **spustit novou instanci**. Aplikace by měla začít naslouchat voláním metod ze služby IoT Hub.
 

@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 356b430e0bb9170999398eb8eb68ad31f2d5eeb6
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: d5f0dbf916096b608495c0cc1017d919616653d4
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017306"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899704"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>Nasazení nástroje pro diagnostiku
+# <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
 Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Windows umožňuje:
 
@@ -106,7 +106,7 @@ Tady je postup, jak ručně nakonfigurovat Doporučené čítače výkonu:
     -   Čas procesoru (\*)\\informace o procesoru
     -   Zpoždění vstupu uživatele na relaci (\*)\\max. zpoždění vstupu
 
-Přečtěte si další informace o čítačích výkonu ve [zdrojích dat výkonu systému Windows a Linux v Azure monitor](/articles/azure-monitor/platform/data-sources-performance-counters.md).
+Přečtěte si další informace o čítačích výkonu ve [zdrojích dat výkonu systému Windows a Linux v Azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
 
 >[!NOTE]
 >Jakékoli další čítače, které nakonfigurujete, se nezobrazí v samotném nástroji pro diagnostiku. Aby se zobrazila v nástroji pro diagnostiku, je nutné nakonfigurovat konfigurační soubor nástroje. Pokyny k tomu, jak to provést s pokročilou správou, budou k dispozici v GitHubu později.
@@ -150,7 +150,7 @@ Aby bylo možné zobrazit stav virtuálních počítačů, musíte povolit Log A
 4. Vyberte název virtuálního počítače, ke kterému se chcete připojit.
 5. Vyberte **Connect** (Připojit).
 
-## <a name="deploy-the-diagnostics-tool"></a>Nasazení nástroje pro diagnostiku
+## <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
 Nasazení šablony Azure Resource Management pro nástroj pro diagnostiku:
 
@@ -189,7 +189,7 @@ Nastavení identifikátoru URI přesměrování:
 
 Před zpřístupněním diagnostického nástroje pro uživatele se ujistěte, že mají následující oprávnění:
 
-- Uživatelé potřebují pro Log Analytics oprávnění ke čtení. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md).
+- Uživatelé potřebují pro Log Analytics oprávnění ke čtení. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
 -  Uživatelé potřebují taky oprávnění ke čtení pro tenanta virtuálních počítačů s Windows (role čtenářů služby Vzdálená plocha). Další informace najdete v tématu [delegovaný přístup ve verzi Preview pro virtuální počítač s Windows](delegated-access-virtual-desktop.md).
 
 Také musíte uživatelům poskytnout následující informace:
@@ -229,22 +229,22 @@ Můžete také interagovat s uživateli na hostiteli relace:
 - Logický disk (\*)\|% volné místo:
 
     - Zobrazí procentuální hodnotu celkového použitelného místa na logickém disku, který je zdarma.
-    - Prahová hodnota: Méně než 20% je označeno jako chybné.
+    - Mezí Méně než 20% je označeno jako chybné.
 
 - Logický disk (C:)\\prům. Délka fronty disku:
 
     - Představuje systémové podmínky úložiště.
-    - Prahová hodnota: Vyšší než 5 je označeno jako není v pořádku.
+    - Mezí Vyšší než 5 je označeno jako není v pořádku.
 
 - Paměť (\*)\\k dispozici v MB:
 
     - Paměť, která je k dispozici pro systém.
-    - Prahová hodnota: Méně než 500 MB označeno jako chybné.
+    - Mezí Méně než 500 MB označeno jako chybné.
 
 - Čas procesoru (\*)\\informace o procesoru:
 
-    - Prahová hodnota: Vyšší než 80% je označeno jako není v pořádku.
+    - Mezí Vyšší než 80% je označeno jako není v pořádku.
 
 - [Zpoždění vstupu uživatele na relaci (\*)\\maximální prodleva vstupu](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
-    - Prahová hodnota: Vyšší než 2000 MS je označeno jako není v pořádku.
+    - Mezí Vyšší než 2000 MS je označeno jako není v pořádku.

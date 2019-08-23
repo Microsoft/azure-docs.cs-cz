@@ -1,6 +1,6 @@
 ---
-title: Důležité informace o sítích s App Service Environment – Azure
-description: Vysvětluje síťový provoz služby ASE a jak nastavit skupiny zabezpečení sítě a trasy definované uživatelem s vaší služby ASE
+title: Síťové požadavky s App Service Environment – Azure
+description: Vysvětluje síťový provoz pomocného mechanismu a nastavení skupin zabezpečení sítě a udr pomocí pomocného mechanismu.
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -14,106 +14,106 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3f80f3c6be747cf84aa9d8b2c386c0568a7511ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 01a7c4e41dd628ec8671555daf828b67bebba23e
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069382"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898670"
 ---
-# <a name="networking-considerations-for-an-app-service-environment"></a>Důležité informace o sítích pro službu App Service Environment #
+# <a name="networking-considerations-for-an-app-service-environment"></a>Síťové požadavky pro App Service Environment #
 
 ## <a name="overview"></a>Přehled ##
 
- Azure [služby App Service Environment] [ Intro] je nasazení služby Azure App Service do podsítě ve službě Azure virtual network (VNet). Existují dva typy nasazení pro App Service environment (ASE):
+ Azure [App Service Environment][Intro] je nasazení Azure App Service do podsítě ve službě Azure Virtual Network (VNET). K dispozici jsou dva typy nasazení App Service prostředí (pomocného mechanismu):
 
-- **Externí služby ASE**: Poskytuje hostované služby ASE aplikace na IP adresu přístupné z Internetu. Další informace najdete v tématu [vytvoření externí služby ASE][MakeExternalASE].
-- **SLUŽBA ASE S ILB**: Poskytuje služby ASE hostované aplikace na IP adresu uvnitř virtuální sítě. Vnitřní koncový bod je interní nástroj pro vyrovnávání zatížení (ILB), což je důvod, proč se používá označení službu ASE. Další informace najdete v tématu [vytvoření a použití prostředí ILB ASE][MakeILBASE].
+- **Externí POmocného mechanismu**: Zpřístupňuje aplikace hostované pro pomocného objektu na IP adrese přístupné pro Internet. Další informace najdete v tématu [Vytvoření externího POmocného mechanismu služby][MakeExternalASE].
+- **INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU**: Zpřístupňuje aplikace hostované pro pomocného objektu na IP adrese v rámci vaší virtuální sítě. Interním koncovým bodem je interní nástroj pro vyrovnávání zatížení (interního nástroje), což je důvod, proč se nazývá pomocného mechanismu interního nástroje. Další informace najdete v tématu [Vytvoření a použití][MakeILBASE]pomocného interního nástrojeu.
 
-Všechny služby ase, externí a ILB, mají veřejná virtuální IP adresy, který se používá k řízení příchozích přenosů, jako z adresy při volání ze služby ASE k Internetu. Volání ze služby ASE, která se připojuje k Internetu, ponechejte virtuální sítě pomocí virtuální IP adresy přiřazené pro danou službu ASE. Veřejnou IP Adresou této virtuálních IP adres je zdrojová IP adresa pro všechna volání ze služby ASE, které připojuje k Internetu. Pokud aplikace ve vaší službě ASE provést volání k prostředkům ve vaší virtuální síti nebo přes síť VPN, Zdrojová IP adresa je jednou z IP adresy v podsíti používaným vaší službou ASE. Vzhledem k tomu, že služba ASE je v rámci virtuální sítě, dostanete také prostředky v rámci virtuální sítě bez jakékoli dodatečné konfigurace. Pokud virtuální síť je připojená k vaší místní síti, aplikace ve vaší službě ASE také mají přístup k prostředkům existuje bez další konfigurace.
+Všechny služby ASE, externí a interního nástroje mají veřejnou virtuální IP adresu, která se používá pro příchozí provoz správy a jako adresa od v případě volání z pomocného mechanismu pro Internet. Volání z pomocného modulu pro pořízení, který přejde na Internet, opustí virtuální síť prostřednictvím VIP přiřazené k tomuto pomocnému uživateli. Veřejná IP adresa tohoto VIP je zdrojová IP adresa pro všechna volání z pomocného mechanismu, která se nachází na internetu. V případě, že aplikace ve vaší službě pomocného mechanismu volání vyvolají prostředky ve vaší virtuální síti nebo v síti VPN, je zdrojová IP adresa jednou z IP adres v podsíti používané vaším pomocným mechanismem řízení. Vzhledem k tomu, že je přístupový modul pro přístup ve virtuální síti, může také přistupovat k prostředkům v rámci virtuální sítě bez jakékoli další konfigurace. Pokud je virtuální síť připojená k vaší místní síti, aplikace ve vašem přihlašování k prostředkům mají také přístup k prostředkům, které nemají žádnou další konfiguraci.
 
-![Externí služby ASE][1] 
+![Externí pomocného mechanismu][1] 
 
-Pokud už máte externí služby ASE, je koncový bod, který vaše aplikace služby ASE přeložit pro také veřejných virtuálních IP adres:
+Pokud máte externí pomocný objekt pro pořízení, veřejná VIP je zároveň koncovým bodem, na který aplikace pomocného mechanismu přikládá:
 
 * HTTP/S 
 * FTP/S
 * Nasazení webu
 * Vzdálené ladění
 
-![SLUŽBA ASE S ILB][2]
+![INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU][2]
 
-Pokud máte službu ASE, je adresa ILB adresy koncových bodů HTTP/S, FTP/S, nasazení webu a vzdálené ladění.
+Pokud máte interního nástroje pomocného programu pro zápis, adresa interního nástroje adresy je koncový bod pro HTTP/S, FTP/S, nasazení webu a vzdálené ladění.
 
-## <a name="ase-subnet-size"></a>Velikost podsítě služby ASE ##
+## <a name="ase-subnet-size"></a>Velikost podsítě pomocného mechanismu ##
 
-Po nasazení služby ASE se nedá změnit velikost podsítě používané k hostování služby ASE.  Služby ASE používá adresu pro každou roli infrastruktury stejně jako u každé instance plánu izolované služby App Service.  Kromě toho jsou pět adres používané sítí Azure pro každou podsíť, která je vytvořena.  Služba ASE se žádné plány služby App Service vůbec používat 12 adres před vytvořením aplikace.  Pokud službu ASE, pak použije 13 adresy předtím, než vytvoříte aplikaci v této službě ASE. Jak škálovat svoji službu ASE, infrastrukturu role jsou přidány každý násobky 15 až 20 instancí plánu služby App Service.
+Velikost podsítě, která se používá k hostování pomocného mechanismu řízení, se po nasazení pomocného mechanismu nemůže změnit.  Nástroj pro pomocné služby používá adresu pro každou roli infrastruktury a také pro každou izolovanou instanci plánu App Service.  K dispozici je také pět adres používaných službou Azure Networking pro každou vytvořenou podsíť.  Pomocného programu, který nemá žádné plány App Service, bude používat 12 adres ještě před vytvořením aplikace.  Pokud se jedná o interního nástroje pomocného mechanismu, pak bude používat 13 adres ještě před tím, než vytvoříte aplikaci v tomto pomocném objektu pro vytváření. Při horizontálním navýšení kapacity se přidávají role infrastruktury každé násobky 15 a 20 instancí App Service plánu.
 
    > [!NOTE]
-   > V podsíti, ale služba ASE může být nic dalšího. Je potřeba zvolit adresní prostor, který umožňuje na budoucí růst. Toto nastavení později nejde změnit. Doporučujeme velikost `/24` s 256 adres.
+   > V podsíti není nic jiného, ale pomocného mechanismu. Nezapomeňte zvolit adresní prostor, který umožňuje budoucí nárůst. Toto nastavení nemůžete později změnit. Doporučujeme velikost `/24` s 256 adresami.
 
-Když škálujete směrem nahoru nebo dolů, se přidají nové role odpovídající velikost a pak se vaše úlohy migrují z aktuální velikost pro cílovou velikost. Původní virtuální počítače odebrány až po migraci úloh. Pokud máte službu ASE s 100 instancí ASP, bude tečku tam, kde potřebujete double počet virtuálních počítačů.  Je proto doporučujeme použití lomítkem (/ 24) tak, aby vyhovovaly všechny změny, které můžete potřebovat.  
+Při horizontálním navýšení nebo snížení kapacity se přidají nové role příslušné velikosti a pak se z aktuální velikosti migrují vaše úlohy na cílovou velikost. Původní virtuální počítače se odebraly až po migraci úloh. Pokud jste nastavili pomocného programu s 100 instancemi ASP, nastane doba, kdy potřebujete zdvojnásobit počet virtuálních počítačů.  Z tohoto důvodu doporučujeme použití "/24" k přizpůsobení jakýchkoli změn, které byste mohli potřebovat.  
 
-## <a name="ase-dependencies"></a>Závislostí služby ASE ##
+## <a name="ase-dependencies"></a>Závislosti pomocného mechanismu ##
 
-### <a name="ase-inbound-dependencies"></a>Služba ASE příchozí závislosti ###
+### <a name="ase-inbound-dependencies"></a>Příchozí závislosti na pomocném mechanismu ###
 
-Jenom pro službu ASE k provozu služby ASE vyžaduje následující porty otevřené:
+K fungování pomocného mechanismu pro zpracování vyžaduje jenom následující porty, které se dají otevřít:
 
 | Použití | Z | Do |
 |-----|------|----|
-| Správa | Adresy pro správu aplikace app Service | Podsíti služby ASE: 454, 455 |
-|  Interní komunikace služby ASE | Podsíti služby ASE: Všechny porty | Podsíti služby ASE: Všechny porty
-|  Povolit nástroji Azure load balancer příchozí | Nástroj pro vyrovnávání zatížení Azure | Podsíti služby ASE: 16001
+| Správa | Adresy pro správu App Service | Podsíť přimocného mechanismu: 454, 455 |
+|  Interní komunikace prostřednictvím pomocného mechanismu | Podsíť přimocného mechanismu: Všechny porty | Podsíť přimocného mechanismu: Všechny porty
+|  Povolit příchozí službu Azure Load Balancer | Nástroj pro vyrovnávání zatížení Azure | Podsíť přimocného mechanismu: 16001
 
-Existují 2 porty, které můžete zobrazit jako otevřený na portu kontroly 7654 a 1221. Tyto odpovídají IP adresu a nic víc. Může být blokované v případě potřeby. 
+K dispozici jsou dva další porty, které mohou být zobrazeny jako otevřené na prověřování portů 7654 a 1221. Odpoví s IP adresou a nic dalšího. V případě potřeby je můžete zablokovat. 
 
-Řízení příchozích přenosů poskytuje příkazy a ovládání služby ase kromě systému sledování. Zdrojové adresy pro tento provoz jsou uvedeny v [adresy služby ASE správu] [ ASEManagement] dokumentu. Konfigurace zabezpečení sítě je potřeba povolit přístup z adresy pro správu služby ASE na portech 454 a 455. Pokud zablokujete přístup z těchto adres, vaše služba ASE přestane není v pořádku a pak zablokuje. Provoz TCP, který je k dispozici ve na portech 454 a 455 musí vracet ze stejné virtuální IP adresy nebo je nutné kvůli problému asymetrického směrování. 
+Příchozí provoz správy poskytuje kromě monitorování systému také příkaz a řízení pomocného mechanismu řízení. Zdrojové adresy tohoto provozu jsou uvedené v dokumentu adresy pro [správu pomocného mechanismu][ASEManagement] . Konfigurace zabezpečení sítě musí umožňovat přístup z adres správy pomocného mechanismu přístupu na portech 454 a 455. Pokud zablokujete přístup z těchto adres, váš přístupový stav se změní na není v pořádku a pak se pozastaví. Provoz TCP, který je součástí portů 454 a 455, se musí vrátit ze stejné virtuální IP adresy nebo dojde k potížím s asymetrickým směrováním. 
 
-V podsíti služby ASE jsou mnoho portech používaných ke komunikaci interní komponenty a můžete změnit. To vyžaduje všechny porty v podsíti služby ASE byla přístupná z podsítě služby ASE. 
+V rámci podsítě služby přihlášeného programu je k dispozici mnoho portů pro interní komunikaci komponent a může se změnit. K tomu je potřeba, aby všechny porty v podsíti služby přihlašování byly dostupné z podsítě pomocného mechanismu. 
 
-Minimální porty, které musí být otevřené pro komunikaci mezi Azure load balancer a podsíti služby ASE jsou 454 a 455 16001. 16001 port je používán pro keep alive přenosy mezi nástroje pro vyrovnávání zatížení a služby ASE. Pokud používáte službu ASE, pak můžete uzamknout provoz na právě 454, 455, 16001 porty.  Pokud používáte externí služby ASE, budete muset vzít v úvahu přístupové porty normální aplikace.  
+Pro komunikaci mezi nástrojem pro vyrovnávání zatížení Azure a podsítí pomocného mechanismu musí být minimální porty, které je potřeba otevřít, 454, 455 a 16001. Port 16001 se používá pro udržování provozu mezi nástrojem pro vyrovnávání zatížení a pomocným mechanismem řízení. Pokud používáte interního nástroje pomocného mechanismu, můžete provoz uzamknout až do pouhých 454, 455, 16001 portů.  Pokud používáte externí přístupový modul pro přístup k datům, musíte vzít v úvahu normální porty pro přístup k aplikacím.  
 
-Ostatní porty budete muset sami se týkají jsou porty aplikace:
+K dalším portům, se kterými se budete muset zabývat, patří porty aplikace:
 
 | Použití | Porty |
 |----------|-------------|
 |  HTTP/HTTPS  | 80, 443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
-|  Visual Studio vzdálené ladění  |  4020, 4022, 4024 |
-|  Webová služba pro nasazení | 8172 |
+|  Vzdálené ladění sady Visual Studio  |  4020, 4022, 4024 |
+|  Služba Nasazení webu | 8172 |
 
-Pokud zablokujete porty aplikací, vaše služba ASE může i nadále fungovat, ale vaše aplikace nemusí.  Pokud používáte aplikace přiřazené IP adresy s externí služby ASE, budete muset povolit přenosy z IP adres přiřazených k vašim aplikacím k podsíti služby ASE na porty uvedené na portálu služby ASE > stránky IP adresy.
+Pokud zablokujete porty aplikace, může váš přihlašovat stále fungovat, ale vaše aplikace nemusí.  Pokud používáte IP adresy přiřazené aplikacím s externím pomocným mechanismem řízení, bude potřeba, abyste povolili provoz z IP adres přiřazených k vašim aplikacím do podsítě pro pomocné služby na portech, které jsou zobrazené na portálu pomocného mechanismu pro > IP adres.
 
-### <a name="ase-outbound-dependencies"></a>Odchozí závislostí služby ASE ###
+### <a name="ase-outbound-dependencies"></a>Odchozí závislosti na pomocném mechanismu ###
 
-Pro odchozí přístup k službě ASE závisí na více externích systémů. Mnohé z těchto systémové závislosti jsou definovány s názvy DNS a nejsou mapovány na pevnou sadu IP adres. Služba ASE vyžaduje, aby odchozí přístup z podsítě služby ASE pro všechny externí IP adresy na různých portů. 
+Pro odchozí přístup závisí přístupový objekt na více externích systémech. Mnohé z těchto systémových závislostí jsou definované s názvy DNS a nemapují se na pevně danou sadu IP adres. Proto pomocného mechanismu vyžaduje odchozí přístup z podsítě pro pomocné služby na všechny externí IP adresy v různých portech. 
 
-Služba ASE komunikuje navýšení kapacity k internetovým adresám přístupné na následující porty:
+Služba pomocného mechanismu oznamuje přístup k Internetu adres na těchto portech:
 
 | Využití | Porty |
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
-| 8CRL Windows, Linux závislosti, aktualizace služby Azure | 80/443 |
+| 8CRL, aktualizace Windows, závislosti Linux, služby Azure | 80/443 |
 | Azure SQL | 1433 | 
 | Monitorování | 12000 |
 
-Odchozí závislosti jsou uvedené v tomto dokumentu, který popisuje [omezovat se jenom odchozí provoz služby App Service Environment](./firewall-integration.md). Pokud službu ASE ztratí přístup k jeho závislostí, přestane fungovat. Pokud k tomu dojde dostatečně dlouho, služba ASE je pozastaveno. 
+Odchozí závislosti jsou uvedené v dokumentu, který popisuje [uzamykání App Service Environment odchozích přenosů](./firewall-integration.md). Pokud přístupový modul pro přístup ztratí přístup k jeho závislostem, přestane fungovat. Pokud k tomu dojde dostatečně dlouho, pozastaví se pomocného mechanismu. 
 
-### <a name="customer-dns"></a>Zákazník DNS ###
+### <a name="customer-dns"></a>DNS zákazníka ###
 
-Pokud virtuální síť nakonfigurována se serverem DNS definované zákazníkem, úlohy klientů použít. Služby ASE používá službu Azure DNS pro účely správy. Pokud virtuální síť má nakonfigurovanou zákazníka vybraný server DNS, DNS server musí být dostupný z podsítě, která obsahuje službu ASE.
+Pokud je virtuální síť nakonfigurovaná pomocí serveru DNS definovaného zákazníkem, použije se k tomu zatížení klienta. Správce služby používá Azure DNS pro účely správy. Pokud je virtuální síť nakonfigurovaná pomocí serveru DNS vybraného zákazníkem, musí být server DNS dosažitelný z podsítě, která obsahuje pomocného uživatele.
 
-Otestujte překlad DNS vaší webové aplikace, můžete příkaz konzoly *nameresolver*. Přejděte na okno ladění na vašem webu scm pro vaši aplikaci nebo přejít do aplikace na portálu a vyberte konzoly. Z příkazového řádku prostředí můžete vydat příkaz *nameresolver* spolu s názvem DNS, kterou chcete vyhledat. Které získáte zpět výsledek je stejný jako co by vaše aplikace získá při nastavování stejné vyhledávání. Pokud používáte nslookup, provede vyhledávání pomocí služby Azure DNS místo toho.
+K otestování překladu DNS z vaší webové aplikace můžete použít příkaz konzoly *nameresolver*. Pro vaši aplikaci přejdete do okna ladění na webu SCM nebo na portálu přejdete na aplikaci a vyberte Konzola. Z příkazového řádku prostředí můžete zadat *nameresolver* příkazu spolu s názvem DNS, který chcete vyhledat. Výsledek, který vrátíte, je stejný jako to, co by vaše aplikace získala při stejném vyhledávání. Pokud použijete nástroj nslookup, provedete místo toho vyhledávání pomocí Azure DNS.
 
-Pokud změníte nastavení serveru DNS virtuální sítě, vaše služba ASE je v, musíte restartovat službu ASE. Abyste se vyhnuli restartování vaší služby ASE, důrazně doporučujeme konfigurovat nastavení DNS pro vaši virtuální síť, před vytvořením služby ASE.  
+Pokud změníte nastavení DNS virtuální sítě, ve které je váš přihlášený, budete muset restartovat službu pomocného mechanismu. Abyste se vyhnuli restartování vašeho pomocného mechanismu, důrazně doporučujeme nakonfigurovat nastavení DNS pro virtuální síť předtím, než vytvoříte správce přidaných mechanismů.  
 
 <a name="portaldep"></a>
 
 ## <a name="portal-dependencies"></a>Závislosti portálu ##
 
-Kromě funkční závislostí služby ASE se několik další položky týkající se práce s portálem. Některé funkce na webu Azure Portal závisí na přímý přístup k _web SCM_. Pro každou aplikaci ve službě Azure App Service jsou dvě adresy URL. První adresa URL je přístup k vaší aplikaci. Je druhý adresa URL pro přístup k webu SCM, což se označuje taky jako _konzola Kudu_. Funkce, které používají web SCM:
+Kromě funkčních závislostí pomocného mechanismu je několik dalších položek, které se týkají prostředí portálu. Některé funkce v Azure Portal závisí na přímém přístupu k _webu SCM_. Pro každou aplikaci v Azure App Service jsou k dispozici dvě adresy URL. První adresa URL má přístup k vaší aplikaci. Druhá adresa URL má přístup k webu SCM, který se také nazývá _Konzola Kudu_. K funkcím, které používají web SCM, patří:
 
 -   Webové úlohy
 -   Funkce
@@ -123,107 +123,107 @@ Kromě funkční závislostí služby ASE se několik další položky týkajíc
 -   Průzkumník procesů
 -   Konzola
 
-Pokud používáte službu ASE, web SCM není dostupné z oblasti mimo virtuální síť. Některé funkce nebudou fungovat z portálu pro aplikace, protože vyžadují přístup k webu SCM aplikace. Můžete připojit k webu SCM přímo namísto použití na portálu. 
+Když použijete interního nástroje pomocného mechanismu, web SCM není přístupný mimo virtuální síť. Některé možnosti nebudou fungovat z portálu aplikace, protože vyžadují přístup k webu SCM aplikace. K webu SCM se můžete připojit přímo místo používání portálu. 
 
-Pokud vaše služba ASE s ILB je název domény *contoso.appserviceenvironnment.net* a je název vaší aplikace *testapp*, aplikace je dosažena *testapp.contoso.appserviceenvironment.net*. Správce řízení služeb webu, která jde s ním je dosažena *testapp.scm.contoso.appserviceenvironment.net*.
+Pokud je vaším pomocným mechanismem interního nástroje název domény *contoso.appserviceenvironment.NET* a název vaší aplikace je *TestApp*, aplikace se dorazí na *TestApp.contoso.appserviceenvironment.NET*. Web SCM, který se s ním doprovází, se dosáhne na *TestApp.SCM.contoso.appserviceenvironment.NET*.
 
-## <a name="ase-ip-addresses"></a>Služba ASE IP adresy ##
+## <a name="ase-ip-addresses"></a>IP adresy pomocného mechanismu ##
 
-Služba ASE má několik IP adres je potřeba vědět. Jsou to tyto:
+Pomocného programu má na paměti několik IP adres. Jsou to tyto:
 
-- **Veřejnou IP adresu příchozího**: Používá se pro aplikaci externí službě ase a provoz správy v externí službě ASE a službu ASE.
-- **Odchozí veřejnou IP adresu**: Použít jako IP adresa "od" pro odchozí připojení ze služby ASE, které ponechejte virtuální sítě, které nejsou směrovány dolů sítě VPN.
-- **Adresa ILB IP**: ILB IP adresu existuje pouze ve službě ASE s ILB.
-- **Aplikace přiřazená SSL na základě IP adresy**: Provádět jen s externí služby ASE, a pokud je nakonfigurovaný protokol SSL na základě IP adresy.
+- **Veřejná příchozí IP adresa**: Používá se pro přenosy aplikací v externím pomocném mechanismu řízení a provoz pro správu v externím přihlašování a v interního nástroje pomocném mechanismu.
+- **Odchozí veřejná IP adresa**: Používá se jako IP adresa "z" pro odchozí připojení z přižádaného mechanismu, která opustí virtuální síť, která není směrována do sítě VPN.
+- **Interního nástroje IP adresa**: IP adresa interního nástroje existuje jenom v pomocném mechanismu interního nástroje.
+- **Adresy SSL na základě IP adres přiřazené aplikacím**: Možné jenom s externím pomocným mechanismem zabezpečení a při konfiguraci SSL na základě IP adresy.
 
-Tyto IP adresy jsou viditelné na webu Azure Portal v uživatelském rozhraní služby ASE. Pokud máte službu ASE, je uvedena IP adresa pro ILB.
+Všechny tyto IP adresy jsou viditelné v Azure Portal v uživatelském rozhraní služby Řízení uživatelských mechanismů. Pokud máte interního nástroje pomocného nástroje, zobrazí se v seznamu IP adresa pro interního nástroje.
 
    > [!NOTE]
-   > Tyto IP adresy se nezmění, tak dlouho, dokud vaše služba ASE zůstane zprovozněný.  Pokud vaše služba ASE bude pozastavit a obnovit, adresy používané službou ASE se změní. Běžné příčiny službu ase k zablokuje je-li blokovat přístup k řízení příchozích nebo blokovat přístup k závislostí služby ASE. 
+   > Tyto IP adresy se nezmění, pokud váš správce služby zůstane v provozu.  Pokud dojde k pozastavení a obnovení vašeho pomocného mechanismu, adresy používané vaším pomocným mechanismem změn se změní. Normální příčinou pozastaveného pomocného mechanismu řízení je, že Pokud zablokujete příchozí přístup pro správu nebo zablokuje přístup k závislosti na pomocném mechanismu 
 
 ![IP adresy][3]
 
-### <a name="app-assigned-ip-addresses"></a>Aplikace přiřazená IP adresy ###
+### <a name="app-assigned-ip-addresses"></a>IP adresy přiřazené aplikacím ###
 
-S externí služby ASE můžete přiřadit IP adresy pro jednotlivé aplikace. Nemůžete udělat s ILB ASE. Další informace o tom, jak nakonfigurovat aplikaci tak, aby mít svou vlastní IP adresu najdete v tématu [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](../app-service-web-tutorial-custom-ssl.md).
+Pomocí externího pomocného uživatele můžete přiřadit IP adresy jednotlivým aplikacím. Nemůžete to udělat pomocí pomocného programu interního nástroje. Další informace o tom, jak nakonfigurovat aplikaci tak, aby měla svou vlastní IP adresu, najdete v tématu [vytvoření vazby existujícího vlastního certifikátu SSL pro Azure App Service](../app-service-web-tutorial-custom-ssl.md).
 
-Pokud aplikace má vlastní SSL založené na protokolu IP adresu, službu ASE rezervuje dva porty pro mapování na tuto IP adresu. Jeden port je pro provoz protokolu HTTP a je jiný port pro protokol HTTPS. Tyto porty jsou uvedené v uživatelském rozhraní služby ASE v části IP adresy. Provoz musí být schopen kontaktovat tyto porty z virtuální IP adresy nebo aplikace nejsou dostupné. Tento požadavek je důležité si pamatovat, když konfigurujete skupiny zabezpečení sítě (Nsg).
+Když má aplikace svoji vlastní adresu SSL založenou na IP adresách, pomocného mechanismu pro mapování na tuto IP adresu rezervuje dva porty. Jeden port je pro přenosy HTTP a druhý port pro protokol HTTPS. Tyto porty jsou uvedené v uživatelském rozhraní pomocného mechanismu v části IP adresy. Provoz musí být schopný získat přístup k těmto portům z virtuální IP adresy nebo jsou aplikace nedostupné. Tento požadavek je důležité pamatovat při konfiguraci skupin zabezpečení sítě (skupin zabezpečení sítě).
 
 ## <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě) ##
 
-[Skupiny zabezpečení sítě] [ NSGs] poskytnout možnost řídit přístup k síti v rámci virtuální sítě. Při použití na portálu se s nejnižší prioritou na Zamítnout vše, co pravidlo odepřít implicitní. Co je vytvořit jsou vaše pravidla povolit.
+[Skupiny zabezpečení sítě][NSGs] poskytují možnost řídit přístup k síti v rámci virtuální sítě. Když použijete portál, existuje implicitní pravidlo odepření s nejnižší prioritou pro zamítnutí všeho. To, co sestavíte, jsou vaše pravidla povolení.
 
-Ve službě ASE nemáte přístup k virtuálním počítačům, které používají k hostování služby ASE, samotného. Jsou to v rámci předplatného spravovaných microsoftem. Pokud chcete omezit přístup k aplikacím služby ase, nastavte skupiny zabezpečení sítě v podsíti služby ASE. Přitom platíte důkladnou pozornost závislostí služby ASE. Pokud zablokujete všechny závislosti, že služba ASE přestane fungovat.
+V pomocném mechanismu přístupu nemáte přístup k virtuálním počítačům použitým k hostování samotného mechanismu. Jsou v rámci předplatného spravovaného společností Microsoft. Pokud chcete omezit přístup k aplikacím v pomocném mechanismu přístupu, nastavte skupin zabezpečení sítě v podsíti pro pomocného mechanismu. V takovém případě věnujte pečlivou pozornost závislostem pomocného mechanismu. Pokud zablokujete jakékoli závislosti, přestane fungovat.
 
-Skupiny zabezpečení sítě se dá nakonfigurovat na webu Azure portal nebo přes PowerShell. Zde uvedené informace se zobrazí na webu Azure portal. Vytvoření a Správa skupin zabezpečení sítě na portálu jako prostředek nejvyšší úrovně v rámci **sítě**.
+Skupin zabezpečení sítě se dá nakonfigurovat přes Azure Portal nebo přes PowerShell. Zde najdete informace o Azure Portal. Skupin zabezpečení sítě vytvoříte a spravujete na portálu jako prostředek nejvyšší úrovně v části **sítě**.
 
-Požadované položky v skupinu zabezpečení sítě pro službu ASE na funkci, jsou pro povolení provozu:
+Požadované položky v NSG, aby mohl funkce pomocného mechanismu provozu fungovat:
 
-**Příchozí**
-* značka AppServiceManagement na portech 454,455 služby z IP adresa
+**Příjem**
+* ze značky služby IP AppServiceManagement na portech 454 455
 * z nástroje pro vyrovnávání zatížení na portu 16001
-* z podsítě služby ASE k podsíti služby ASE na všech portech
+* z podsítě služby přihlašování do podsítě pomocného mechanismu na všech portech
 
-**Odchozí**
-* pro všechny IP adresy na port 123
-* pro všechny IP adresy na porty 80 a 443
-* značka AzureSQL porty 1433 na IP adresu služby
-* pro všechny IP adresy na port 12000
-* k podsíti služby ASE na všech portech
+**Komunikace**
+* na všechny IP adresy na portu 123
+* na všechny IP adresy na portech 80, 443
+* na porty služby IP AzureSQL na portech 1433
+* na všechny IP adresy na portu 12000
+* do podsítě pomocného mechanismu pro všechny porty
 
-DNS port není nutné přidat, protože přenosy do DNS nemá vliv pravidla skupiny zabezpečení sítě. Tyto porty nezahrnují porty, které vaše aplikace potřebuje pro úspěšné používání. Běžná aplikace přístupové porty jsou:
+Port DNS není nutné přidávat, protože provoz do služby DNS není ovlivněn NSG pravidly. Tyto porty nezahrnují porty, které vaše aplikace vyžadují pro úspěšné použití. Standardní porty pro přístup k aplikacím:
 
 | Použití | Porty |
 |----------|-------------|
 |  HTTP/HTTPS  | 80, 443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
-|  Visual Studio vzdálené ladění  |  4020, 4022, 4024 |
-|  Webová služba pro nasazení | 8172 |
+|  Vzdálené ladění sady Visual Studio  |  4020, 4022, 4024 |
+|  Služba Nasazení webu | 8172 |
 
-Pokud příchozí a odchozí požadavky jsou vzít v úvahu, vypadat podobně jako na skupiny zabezpečení sítě v tomto příkladu skupiny zabezpečení sítě. 
+Při zohlednění vstupních a odchozích požadavků by měl skupin zabezpečení sítě vypadat podobně jako skupin zabezpečení sítě v tomto příkladu. 
 
 ![Příchozí pravidla zabezpečení][4]
 
-Výchozí pravidlo umožňuje IP adresy ve virtuální síti komunikovat s podsíti služby ASE. Další výchozí pravidlo umožňuje nástroje pro vyrovnávání zatížení, označované také jako veřejnou virtuální IP adresy, ke komunikaci se službou ASE. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle **přidat** ikonu. Když vložíte odepřít všechno ostatní pravidla než výchozí pravidla, zabránit provoz mezi virtuální IP adresy a služby ASE. Chcete-li zabránit provoz přicházející z uvnitř virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použít prostředek rovna AzureLoadBalancer s cílovou **jakékoli** a rozsah portů **\*** . Vzhledem k tomu, že pravidlo NSG, je použita na podsíti služby ASE, nemusíte být konkrétní v cílovém umístění.
+Výchozí pravidlo povoluje, aby IP adresy ve virtuální síti komunikovaly s podsítí pomocného mechanismu. Další výchozí pravidlo povolí službě Vyrovnávání zatížení, která se označuje jako veřejná VIP, ke komunikaci s pomocným mechanismem řízení. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle ikony **Přidat** . Pokud před výchozími pravidly vložíte pravidlo Odepřít vše jiného, zabráníte tak provozu mezi VIP a pomocným mechanismem řízení. Pokud chcete zabránit provozu v rámci virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použijte zdroj, který se rovná AzureLoadBalancer, s cílovým umístěním a rozsahem **\*** portů. Vzhledem k tomu, že pravidlo NSG se používá pro podsíť pomocného mechanismu, nemusíte být v cíli specifická.
 
-Pokud jste IP adresy přiřazené vaší aplikaci, ujistěte se, že můžete ponechat porty otevřené. Pokud chcete zobrazit porty, vyberte **služby App Service Environment** > **IP adresy**.  
+Pokud jste aplikaci přiřadili IP adresu, zajistěte, aby byly porty otevřené. Porty zobrazíte tak, že vyberete **App Service Environment** > **IP adresy**.  
 
-Všechny položky uvedené v následující odchozí pravidla jsou potřeba, s výjimkou poslední položky. Umožňují přístup k síti závislostí služby ASE, které jste si poznamenali dříve v tomto článku. Pokud některý z nich, vaše služba ASE přestane fungovat. Poslední položku v seznamu umožňuje vaší služby ASE ke komunikaci s ostatními prostředky ve virtuální síti.
+Všechny položky zobrazené v následujících odchozích pravidlech jsou potřeba s výjimkou poslední položky. Umožňují síťovému přístupu ke závislostem pomocného mechanismu, které byly popsány dříve v tomto článku. Pokud je některý z nich zablokujete, váš pomocného programu přestane fungovat. Poslední položka v seznamu umožňuje vašemu přihlášenému uživatelům komunikovat s ostatními prostředky ve vaší virtuální síti.
 
 ![Odchozí pravidla zabezpečení][5]
 
-Jakmile vaše skupiny zabezpečení sítě jsou definovány, je přiřadíte k podsíti, ke které vaše služba ASE je v. Pokud si nepamatujete ASE virtuální síť nebo podsíť, zobrazí se na stránce portálu služby ASE. Přiřazení skupiny zabezpečení sítě k podsíti služby, přejděte k podsíti uživatelského rozhraní a vyberte skupiny zabezpečení sítě.
+Po definování skupin zabezpečení sítě je přiřaďte k podsíti, ve které je váš pomocným mechanismem řízení. Pokud si nepamatujete virtuální síť nebo podsíť pomocného mechanismu, můžete ji zobrazit na stránce portálu pomocného mechanismu. Pokud chcete přiřadit NSG k vaší podsíti, otevřete to tak, že přejdete do uživatelského rozhraní podsítě a vyberete NSG.
 
 ## <a name="routes"></a>Trasy ##
 
-Vynucené tunelování znamená nastavit trasy ve virtuální síti, odchozí provoz nemá přejít přímo na Internetu, ale někde jinde jako bránu ExpressRoute nebo virtuální zařízení.  Pokud je potřeba nakonfigurovat službu ASE takovým způsobem, pak si přečtěte dokument [konfigurace služby App Service Environment s vynuceným tunelovým propojením][forcedtunnel].  Tento dokument vám sdělí možnosti dostupné pro práci s ExpressRoute a vynucené tunelování.
+Vynucené tunelování je při nastavování tras ve virtuální síti, aby odchozí přenosy nepřešly přímo na Internet, ale někde jinde jako brána ExpressRoute nebo virtuální zařízení.  Pokud potřebujete nějakým způsobem nakonfigurovat pomocného správce, přečtěte si dokument týkající se [konfigurace App Service Environment s vynuceným tunelovým propojením][forcedtunnel].  Tento dokument vám sdělí možnosti dostupné pro práci s ExpressRoute a vynuceným tunelovým propojením.
 
-Při vytváření služby ASE na portálu také vytvoříme sadu směrovací tabulky podsítě, který je vytvořen pomocí služby ASE.  Tyto trasy se jednoduše Řekněme, že odesílání odchozí provoz přímo k Internetu.  
-Ruční vytvoření tras, postupujte podle těchto kroků:
+Při vytváření pomocného mechanismu na portálu vytvoříme také sadu směrovacích tabulek v podsíti, která je vytvořená pomocí pomocného mechanismu služby.  Tyto trasy jednoduše říkají odeslání odchozího provozu přímo na Internet.  
+Chcete-li vytvořit stejné trasy ručně, postupujte podle následujících kroků:
 
 1. Přejděte na web Azure Portal. Vyberte **sítě** > **směrovací tabulky**.
 
-2. Vytvoření nové směrovací tabulky ve stejné oblasti jako virtuální síť.
+2. Vytvořte novou směrovací tabulku ve stejné oblasti, ve které je vaše virtuální síť.
 
-3. Ve směrovací tabulce uživatelského rozhraní, **trasy** > **přidat**.
+3. V uživatelském rozhraní směrovací tabulky vyberte **trasy** > **Přidat**.
 
-4. Nastavte **typem dalšího segmentu směrování** k **Internet** a **předponu adresy** k **0.0.0.0/0**. Vyberte **Uložit**.
+4. Nastavte **typ dalšího segmentu směrování** na **Internet** a **předponu adresy** na **0.0.0.0/0**. Vyberte **Uložit**.
 
-    Zobrazí se přibližně takto:
+    Pak se zobrazí něco podobného následujícímu:
 
     ![Funkční trasy][6]
 
-5. Po vytvoření nové směrovací tabulky, přejděte na podsíť, která obsahuje vaše služba ASE. Směrovací tabulka vyberte ze seznamu na portálu. Po uložení změn, měli byste vidět pak skupin zabezpečení sítě a tras, které jsou uvedené s vaší podsítě.
+5. Až vytvoříte novou směrovací tabulku, přejdete do podsítě, která obsahuje váš pomocným mechanismem řízení. Vyberte směrovací tabulku ze seznamu na portálu. Po uložení změn byste měli vidět skupin zabezpečení sítě a trasy zaznamenané ve vaší podsíti.
 
-    ![Skupiny Nsg a trasy][7]
+    ![Skupin zabezpečení sítě a trasy][7]
 
 ## <a name="service-endpoints"></a>Koncové body služeb ##
 
-Koncové body služby umožňují omezit přístup k víceklientským službám na sadu virtuálních sítí a podsítí Azure. Další informace o koncových bodech služby najdete v dokumentaci pro [koncové body služby pro virtuální síť][serviceendpoints]. 
+Koncové body služby umožňují omezit přístup k víceklientským službám na sadu virtuálních sítí a podsítí Azure. Další informace o koncových bodech služby najdete v dokumentaci k koncovým bodům služby [Virtual Network][serviceendpoints] . 
 
-Když pro prostředek povolíte koncové body služby, vytvoří se trasy s vyšší prioritou než všechny ostatní trasy. Pokud použijete koncové body služby pro libovolnou službu Azure, pomocí vynuceného tunelového propojení ASE, provoz do těchto služeb nebudou vynuceného tunelového propojení. 
+Když pro prostředek povolíte koncové body služby, vytvoří se trasy s vyšší prioritou než všechny ostatní trasy. Pokud používáte koncové body služby v jakékoli službě Azure s vynuceným pomocným mechanismem řízení, nebude přenos do těchto služeb vynucený tunelování. 
 
-Pokud jsou koncové body služby povolené v podsíti s instancí SQL Azure, musí mít koncové body služby povolené i všechny instance SQL Azure, ke kterým se z této podsítě připojuje. Pokud chcete ze stejné podsítě přistupovat k několika instancím SQL Azure, není možné povolit koncové body služby v jedné instanci SQL Azure a v jiné ne. Žádné další služby Azure se chová jako SQL Azure s ohledem na koncové body služby. Když povolíte koncové body služby se službou Azure Storage, uzamknete přístup k danému prostředku z vaší podsítě, ale stále budete mít přístup k ostatním účtům služby Azure Storage, a to i v případě, že nemají povolené koncové body služby.  
+Pokud jsou koncové body služby povolené v podsíti s instancí SQL Azure, musí mít koncové body služby povolené i všechny instance SQL Azure, ke kterým se z této podsítě připojuje. Pokud chcete ze stejné podsítě přistupovat k několika instancím SQL Azure, není možné povolit koncové body služby v jedné instanci SQL Azure a v jiné ne. Žádná jiná služba Azure se nechová jako Azure SQL s ohledem na koncové body služby. Když povolíte koncové body služby se službou Azure Storage, uzamknete přístup k danému prostředku z vaší podsítě, ale stále budete mít přístup k ostatním účtům služby Azure Storage, a to i v případě, že nemají povolené koncové body služby.  
 
 ![Koncové body služeb][8]
 

@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 62a90e30b281a7a9b0d1369893cf58fb12086a0b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 7f14a12d5de64206f64e8c7205beb2c59c4f1f2a
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968724"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906909"
 ---
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [Prerequisites](prerequisites-python.md)]
 
-K tomuto rychlému startu potřebujete:
-
-* Python 2.7.x nebo 3.x
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
@@ -23,10 +21,7 @@ Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém 
 
 ```python
 # -*- coding: utf-8 -*-
-import os
-import requests
-import uuid
-import json
+import os, requests, uuid, json
 ```
 
 > [!NOTE]
@@ -34,17 +29,25 @@ import json
 
 První komentář říká interpretu Pythonu, že má použít kódování UTF-8. Pak se importují požadované moduly pro čtení klíče předplatného z proměnné prostředí, vytvoření požadavku HTTP, vytvoření jedinečného identifikátoru a zpracování odpovědi JSON vrácené službou Translator Text API.
 
-## <a name="set-the-base-url-and-path"></a>Nastavte základní adresu URL a cestu
+## <a name="set-the-endpoint-and-path"></a>Nastavení koncového bodu a cesty
 
-Translator Text globální koncový bod je nastaven jako `base_url`. `path` nastaví trasu `languages` a určuje, že chceme cílit na rozhraní API verze 3.
+Tato ukázka se pokusí přečíst koncový bod Translator Text z proměnné prostředí: `TRANSLATOR_TEXT_ENDPOINT`. Pokud proměnné prostředí neznáte, můžete hodnotu `endpoint` nastavit jako řetězec a okomentovat podmíněný příkaz.
+
+```python
+endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
+```
+
+Translator Text globální koncový bod je nastaven jako `endpoint`. `path` nastaví trasu `languages` a určuje, že chceme cílit na rozhraní API verze 3.
 
 >[!NOTE]
 > Další informace o koncových bodech, trasách a parametrech požadavků [najdete v článku Translator text API 3,0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ```python
-base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/languages?api-version=3.0'
-constructed_url = base_url + path
+constructed_url = endpoint + path
 ```
 
 ## <a name="add-headers"></a>Přidání hlaviček

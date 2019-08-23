@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 510f58cc0b71fb75ac6f5e15fc883c3caf4a8f9a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946394"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898024"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Enterprise Security for Azure Machine Learning Service
 
@@ -31,7 +31,7 @@ Multi-Factor Authentication se podporuje, pokud je Azure Active Directory (Azure
 * Klient prezentuje token Azure Resource Manager & všechny Azure Machine Learning služby.
 * Služba Azure Machine Learning poskytuje výpočetnímu prostředí pro uživatele Azure Machine Learning token. Například Výpočetní prostředky služby Machine Learning. Tento token používá výpočetní uživatel k volání služby Azure Machine Learning (omezení oboru do pracovního prostoru) po dokončení spuštění.
 
-![Snímek obrazovky ukazující, jak ověřování funguje ve službě Azure Machine Learning](./media/enterprise-readiness/authentication.png)
+[![Snímek obrazovky ukazující, jak ověřování funguje ve službě Azure Machine Learning](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Ověřování pro nasazení webové služby
 
@@ -185,7 +185,7 @@ Každý pracovní prostor má přidruženou spravovanou identitu přiřazenou sy
 
 Metriky Azure Monitor lze použít k zobrazení a monitorování metrik pro pracovní prostor služby Azure Machine Learning. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor a pak použijte odkaz __metriky__ .
 
-![Snímek obrazovky znázorňující ukázkovou metriku pro pracovní prostor](./media/enterprise-readiness/workspace-metrics.png)
+[![Snímek obrazovky znázorňující ukázkovou metriku pro pracovní prostor](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 Metriky obsahují informace o spuštění, nasazení a registracích.
 
@@ -197,7 +197,7 @@ Pomocí protokolu aktivit v pracovním prostoru můžete zobrazit různé operac
 
 Na následujícím snímku obrazovky vidíte protokol aktivit pro pracovní prostor:
 
-![Snímek obrazovky zobrazující protokol aktivit v pracovním prostoru](./media/enterprise-readiness/workspace-activity-log.png)
+[![Snímek obrazovky zobrazující protokol aktivit v pracovním prostoru](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 Podrobnosti žádosti o vyhodnocování jsou uložené v Application Insights, který se vytvoří v předplatném uživatele při vytváření pracovního prostoru. Protokolované informace obsahují pole jako HTTPMethod, UserAgent, ComputeType, RequestUrl, StatusCode, RequestId, Duration atd.
 
@@ -220,14 +220,14 @@ Uživatel se do Azure AD přihlásí z libovolného podporovaného klienta služ
 
 Další výpočetní prostředky připojené k pracovnímu prostoru (služba Azure Kubernetes, virtuální počítač atd.) můžou zákazníci zřídit taky podle potřeby.
 
-![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/create-workspace.png)
+[![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>Uložit zdrojový kód (školicí skripty)
 
 Následující diagram znázorňuje pracovní postup snímku kódu.
 Přidruženo k pracovnímu prostoru služby Azure Machine Learning jsou adresáře (experimenty), které obsahují zdrojový kód (školicí skripty).  Tyto skripty se ukládají v místním počítači zákazníka a v cloudu (v Azure Blob Storage v rámci předplatného zákazníka). Snímky kódu se používají ke spuštění nebo kontrole historických auditů.
 
-![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/code-snapshot.png)
+[![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>Školení
 
@@ -253,7 +253,7 @@ Následující diagram znázorňuje pracovní postup školení.
 
 Tento krok se zobrazuje v toku, ve kterém služba Training COMPUTE zapisuje *metriky spuštění* zpátky do služby Azure Machine Learning, ze které se uloží do Cosmos DB. Klienti mohou volat službu Azure Machine Learning, která bude z Cosmos DB znovu aktivovat metriky a vrátit ji zpět do klienta.
 
-![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/training-and-metrics.png)
+[![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>Vytváření webových služeb
 
@@ -267,7 +267,7 @@ Podívejte se na podrobnosti níže:
 * Podrobnosti žádosti o vyhodnocování jsou uložené v Application Insights, který je v předplatném uživatele.
 * Telemetrie se taky vloží do předplatného Microsoft/Azure.
 
-![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/inferencing.png)
+[![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>Další kroky
 

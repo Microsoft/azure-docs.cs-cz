@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: e169d7734776f9319685d97f941b3fc11eec8298
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 1e35baf24b59e7864982d131f44f79458e0d9015
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656253"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971494"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -89,9 +89,18 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
   + **AzureML – widgety**
     + Vylepšené maticové grafy pro školení klasifikace.
 
+### <a name="azure-machine-learning-data-prep-sdk-v1112"></a>Sada Azure Machine Learning data PREP SDK v 1.1.12
++ **Nové funkce**
+  + Seznamy řetězců lze nyní předat jako vstup do `read_*` metod.
+
++ **Opravy chyb a vylepšení**
+  + Výkon aplikace `read_parquet` byl výrazně vylepšen při spuštění ve Sparku.
+  + Opravili jsme problém `column_type_builder` , kdy se nezdařil v případě jednoho sloupce s nejednoznačnými formáty data.
+
 ### <a name="azure-portal"></a>Azure Portal
 + **Funkce Preview**
   + Streamování protokolů a výstupních souborů je teď k dispozici na stránkách s podrobnostmi o spuštění. Když je zapnutý přepínač Preview, soubory se budou v reálném čase aktualizovat.
+  + Možnost nastavit kvótu na úrovni pracovního prostoru je vydaná ve verzi Preview. Kvóty AmlCompute se přidělují na úrovni předplatného, ale teď vám umožňuje distribuovat tuto kvótu mezi pracovními prostory a přidělit je pro spravedlivé sdílení a zásady správného řízení. Stačí kliknout na okno **používání a kvóty** v levém navigačním panelu pracovního prostoru a vybrat kartu **Konfigurace kvót** . Všimněte si, že musíte být správcem předplatného, aby bylo možné nastavit kvóty na úrovni pracovního prostoru, protože se jedná o operaci mezi pracovními prostory.
 
 ## <a name="2019-08-05"></a>2019-08-05
 
@@ -1002,6 +1011,6 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
 Nová aktualizovaná verze Azure Machine Learning: Přečtěte si další informace o této verzi: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si přehled [služby Azure Machine Learning Service](../service/overview-what-is-azure-ml.md).

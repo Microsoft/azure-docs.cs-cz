@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261436"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904398"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru Linux pro navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure můžete navrátit služby virtuálních počítačů na místní lokalitu. Pro navrácení služeb po obnovení musíte virtuální počítač znovu ochránit z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server pro příjem provozu. 
@@ -67,7 +67,7 @@ V jednotce DVD ponechte Ubuntu 16.04.2 s minimální 64 bitovou kopií ISO a spu
 
 1.  Jako preferovaný jazyk vyberte **angličtinu** a pak vyberte **ENTER**.
     
-    ![Výběr jazyka](./media/vmware-azure-install-linux-master-target/image1.png)
+    ![Vybrat jazyk](./media/vmware-azure-install-linux-master-target/image1.png)
 1. Vyberte **instalovat server Ubuntu**a pak vyberte **ENTER**.
 
     ![Výběr instalace serveru Ubuntu](./media/vmware-azure-install-linux-master-target/image2.png)
@@ -214,12 +214,11 @@ Pokud ho chcete stáhnout pomocí systému Linux, zadejte:
 
 ### <a name="apply-custom-configuration-changes"></a>Použít vlastní změny konfigurace
 
-Chcete-li použít vlastní změny konfigurace, použijte následující postup:
-
+Chcete-li použít vlastní změny konfigurace, použijte následující postup jako uživatel ROOT:
 
 1. Spusťte následující příkaz, který untar binární soubor.
 
-    `tar -zxvf latestlinuxmobsvc.tar.gz`
+    `tar -xvf latestlinuxmobsvc.tar.gz`
 
     ![Snímek obrazovky příkazu, který se má spustit](./media/vmware-azure-install-linux-master-target/image16.png)
 
@@ -241,7 +240,7 @@ K vytvoření disku pro uchovávání informací použijte následující postup
 
 1. Připojte k virtuálnímu počítači s hlavním serverem Linux nový disk o 1 TB a spusťte počítač.
 
-2. Pomocí příkazu  s více cestami se dozvíte víc s ID disku pro uchovávání  informací: více cest
+2. Pomocí příkazu s více cestami se dozvíte víc s ID disku pro uchovávání informací: více cest
 
     ![ID více cest](./media/vmware-azure-install-linux-master-target/image27.png)
 
@@ -343,7 +342,7 @@ Spusťte instalační program. Automaticky zjistí, že je agent nainstalovaný 
 
 Uvidíte, že pole **verze** obsahuje číslo verze hlavního cíle.
 
-## <a name="common-issues"></a>Běžné problémy
+## <a name="common-issues"></a>Běžné potíže
 
 * Ujistěte se, že jste vMotion úložiště nepnuli na žádné součásti pro správu, jako je například hlavní cíl. Pokud se hlavní cíl přesune po úspěšném opětovném zapnutí ochrany, disky virtuálních počítačů (VMDK) se nedají odpojit. V tomto případě se navrácení služeb po obnovení nezdařilo.
 

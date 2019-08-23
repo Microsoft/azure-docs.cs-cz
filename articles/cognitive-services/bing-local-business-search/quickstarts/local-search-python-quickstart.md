@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: c6da3c9a169f3b6e5885499d3a7bc5347902782e
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 100d731614e2193c5f858249315f748836323b4c
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423327"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906254"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Rychlý start: Odeslání dotazu do rozhraní API Bingu pro vyhledávání na místních obchodech v Pythonu
 
@@ -66,7 +67,7 @@ print (json.dumps(json.loads(result), indent=4))
 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Rychlý Start pro místní vyhledávání v jazyce Java](local-search-java-quickstart.md)
 - [Rychlý start hledání C# místních obchodních obchodů](local-quickstart.md)
 - [Rychlý Start uzlu místního hledání firmy](local-search-node-quickstart.md)

@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: 89c56496ed1f356ffedf4df93f1728bd4acda323
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 4987c17eabf5d9e140352e3581b38a7d29049c5f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639959"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899968"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "rozpoznávání hledání" v Azure Search?
 
@@ -51,7 +51,7 @@ Vyhledávání v rozpoznávání pomocí předem připravených dovedností je v
 
   Předem připravené dovednosti taky můžete použít k restrukturování obsahu prostřednictvím operací rozdělení textu, sloučení a tvaru.
 
-Vlastní dovednosti můžou podporovat složitější scénáře, jako je rozpoznávání formulářů nebo detekce vlastních entit pomocí modelu, který zadáte a zabalíte do [vlastního webového rozhraní](cognitive-search-custom-skill-interface.md)s dovednostmi. Mezi vlastní dovednosti patří i [Nástroj pro rozpoznávání formulářů](), integraci [rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)a [rozpoznávání vlastních entit](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+Vlastní dovednosti můžou podporovat složitější scénáře, jako je rozpoznávání formulářů nebo detekce vlastních entit pomocí modelu, který zadáte a zabalíte do [vlastního webového rozhraní](cognitive-search-custom-skill-interface.md)s dovednostmi. Mezi vlastní dovednosti patří i [Nástroj pro rozpoznávání formulářů](/azure/cognitive-services/form-recognizer/overview), integraci [rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)a [rozpoznávání vlastních entit](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
 
 ## <a name="component-pipeline-of-cognitive-search"></a>Kanál součásti pro hledání vnímání
@@ -159,7 +159,7 @@ Tento krok používá rozhraní REST API k sestavení řešení pro hledání vn
 
 Další informace o konkrétních otázkách a problémech najdete v tématu [tipy k odstraňování potíží](cognitive-search-concept-troubleshooting.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 + [Dokumentace pro hledání vnímání](cognitive-search-resources-documentation.md)
 + [Rychlé zprovoznění: Vyzkoušet rozpoznávání rozpoznávání v průvodci na portálu](cognitive-search-quickstart-blob.md)

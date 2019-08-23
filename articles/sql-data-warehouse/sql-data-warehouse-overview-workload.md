@@ -1,21 +1,21 @@
 ---
-title: Další informace o Azure SQL Data Warehouse operace | Dokumentace Microsoftu
+title: Informace o operacích Azure SQL Data Warehouse | Microsoft Docs
 description: 'Pružnost služby SQL Data Warehouse vám umožňuje zvýšit, snížit nebo pozastavit výpočetní výkon pomocí posuvné stupnice jednotek datového skladu (DWU). Tento článek vysvětluje metriky datového skladu a jejich vztah k jednotkám DWU. '
 services: sql-data-warehouse
-author: kevinvngo
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: f0489d9c018abac380cd0f8b1aa51fa5bb81707a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47e04cb6b58a185e84120fe73a8468834d2e57fd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531188"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907925"
 ---
 # <a name="data-warehouse-workload"></a>Úlohy datového skladu
 Úlohami datového skladu se rozumí všechny operace, které na datovém skladu probíhají. Úlohy datového skladu zahrnují celý proces načtení dat do skladu, provedení analýzy a vytvoření sestav na datovém skladu, správy dat v datovém skladu a exportu dat z datového skladu. Hloubka a šířka těchto složek je často úměrná úrovni vyspělosti datového skladu.
@@ -61,8 +61,8 @@ Jednou z možností, jak zpřístupnit data pro sestavy a analýzy, je odesílá
 * Pokud jde o generování sestav, každou noc můžete snímkem denních dat naplnit servery sestav jen pro čtení. Tato možnost dává zákazníkům větší šířku a současně snižuje nároky na výpočetní prostředky datového skladu. Z hlediska zabezpečení vám datová tržiště umožňují snížit počet uživatelů, kteří mají přístup k datovému skladu.
 * Pokud jde o analýzy, můžete buď vytvořit analytickou datovou krychli na datovém skladu a spustit analýzu na datovém skladu, nebo můžete předběžně zpracovat data a exportovat je do serveru pro analýzu k další analýze.
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychle [vytvořit datový sklad SQL Data Warehouse][create a SQL Data Warehouse] a [načíst ukázková data][load sample data].
+## <a name="next-steps"></a>Další kroky
+Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychle [vytvořit SQL Data Warehouse][create a SQL Data Warehouse] a [načíst ukázková data][load sample data].
 
 <!--Image references-->
 

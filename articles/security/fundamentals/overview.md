@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e87fc74b3fa989471f9074a33fc66d8cb8250aa0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2cc8f4f81ad95376dcbc10c2952c1b2ed95ffe42
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927839"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907918"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -270,6 +270,7 @@ Firewall webových aplikací je funkce služby [Azure Application Gateway](../..
 
 
 Centralizovaný firewall webových aplikací, který chrání před webovými útoky, značně zjednodušuje správu zabezpečení a nabízí lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Firewall webových aplikací umožňuje jednoduše převést stávající aplikační brány do služby Application Gateway.
+
 ### <a name="traffic-manager"></a>Traffic Manager
 Microsoft [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) umožňuje řídit distribuci provozu uživatelů pro koncové body služby v různých datových centrech. K koncovým bodům služby podporovaným Traffic Manager patří virtuální počítače Azure, Web Apps a cloudové služby. Službu Traffic Manager můžete používat také s externími koncovými body mimo Azure. Traffic Manager používá službu DNS (Domain Name System) k přímému směrování požadavků klientů na nejvhodnější koncový bod na základě [metody směrování provozu](../../traffic-manager/traffic-manager-routing-methods.md) a stavu koncových bodů.
 
@@ -295,18 +296,8 @@ Můžete povolit následující kategorie diagnostického protokolu pro skupin z
 -   Čítač pravidel: Obsahuje položky pro počet, kolikrát se každé pravidlo NSG použije pro odepření nebo povolení provozu.
 
 ### <a name="azure-security-center"></a>Azure Security Center
-Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a poskytuje lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované monitorování zabezpečení a správu zásad napříč předplatnými Azure, pomáhá detekovat hrozby, které by jinak neinformovaly, a spolupracuje s širokou ekosystémem řešení zabezpečení. Síťová doporučení centra pro brány firewall, skupiny zabezpečení sítě, konfiguraci pravidel příchozího provozu a další.
 
-Dostupná doporučení sítě jsou následující:
-
--   [Přidat bránu firewall nové generace](../../security-center/security-center-add-next-generation-firewall.md) Doporučuje přidat firewall nové generace (NGFW) od partnera Microsoftu, aby se zvýšila ochrana zabezpečení.
-
--   [Směrování provozu jenom přes NGFW](../../security-center/security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) Doporučuje nakonfigurovat pravidla skupiny zabezpečení sítě (NSG), která vynutí příchozí provoz na VIRTUÁLNÍm počítači prostřednictvím vaší NGFW.
-
--   [Povolit skupiny zabezpečení sítě v podsítích nebo virtuálních počítačích](../../security-center/security-center-enable-network-security-groups.md) Doporučuje, abyste povolili skupin zabezpečení sítě v podsítích nebo virtuálních počítačích.
-
--   [Omezení přístupu přes internetový koncový bod](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) Doporučuje nakonfigurovat pravidla příchozího provozu pro skupin zabezpečení sítě.
-
+[Azure Security Center](../../security-center/security-center-intro.md) průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří [doporučení](../../security-center/security-center-recommendations.md) , která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
 
 ## <a name="compute"></a>Compute
 
@@ -369,7 +360,7 @@ Microsoft používá pro správu identit a přístupu více postupů a technolog
 
 | Bezplatné a běžné funkce     | Základní funkce    |Funkce Premium P1 |Funkce Premium P2 | Připojení Azure Active Directory – jenom Windows 10 – související funkce|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [Adresářové objekty](../../active-directory/active-directory-whatis.md), [Správa uživatelů a skupin (přidání/aktualizace/odstranění)/zřizování na základě uživatelů, registrace zařízení](../../active-directory/active-directory-whatis.md), [jednotné přihlašování (SSO)](../../active-directory/active-directory-whatis.md), samoobslužná [Změna hesla pro uživatele cloudu](../../active-directory/active-directory-whatis.md), [připojit (synchronizační modul rozšiřuje místní adresáře na Azure Active Directory)](../../active-directory/active-directory-whatis.md), [sestavy zabezpečení a využití](../../active-directory/active-directory-whatis.md) .       |   [Správa/zřizování přístupu na základě skupin](../../active-directory/active-directory-whatis.md), [Samoobslužné resetování hesla pro uživatele](../../active-directory/active-directory-whatis.md)v cloudu, [Branding společnosti (přihlašovací stránky/vlastní nastavení přístupového panelu)](../../active-directory/active-directory-whatis.md), [proxy aplikací](../../active-directory/active-directory-whatis.md), [SLA 99,9%](../../active-directory/active-directory-whatis.md) |  [Samoobslužná správa skupin a aplikací/samoobslužné přidávání aplikací/dynamické skupiny](../../active-directory/active-directory-whatis.md), samoobslužné [resetování hesla, změna/odemknutí s místním zpětným zápisem](../../active-directory/active-directory-whatis.md), [Multi-Factor Authentication (cloudové a místní (MFA Server) )](../../active-directory/active-directory-whatis.md), [MIM CAL + MIM Server](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Automatická změna hesla pro skupinové účty](../../active-directory/active-directory-whatis.md)|    [Identity Protection](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Připojení zařízení ke službě Azure AD, Desktop SSO, Microsoft Passport pro Azure AD, obnovení pomocí nástroje BitLocker pro správu](../../active-directory/active-directory-whatis.md), [automatické registraci MDM, samoobslužné obnovení nástroje BitLocker, dalším místním správcům na zařízení s Windows 10 prostřednictvím služby Azure AD JOIN](../../active-directory/active-directory-whatis.md)|
+|   [Adresářové objekty](../../active-directory/active-directory-whatis.md), [Správa uživatelů a skupin (přidání/aktualizace/odstranění)/zřizování na základě uživatelů, registrace zařízení](../../active-directory/active-directory-whatis.md), [jednotné přihlašování (SSO)](../../active-directory/active-directory-whatis.md), samoobslužná [Změna hesla pro uživatele cloudu](../../active-directory/active-directory-whatis.md), [připojit (synchronizační modul rozšiřuje místní adresáře na Azure Active Directory)](../../active-directory/active-directory-whatis.md), [sestavy zabezpečení a využití](../../active-directory/active-directory-whatis.md) .       |   [Správa/zřizování přístupu na základě skupin](../../active-directory/active-directory-whatis.md), [Samoobslužné resetování hesla pro uživatele](../../active-directory/active-directory-whatis.md)v cloudu, [Branding společnosti (přihlašovací stránky/vlastní nastavení přístupového panelu)](../../active-directory/active-directory-whatis.md), [proxy aplikací](../../active-directory/active-directory-whatis.md), [SLA 99,9%](../../active-directory/active-directory-whatis.md) |  [Samoobslužná správa skupin a aplikací/samoobslužné přidávání aplikací/dynamické skupiny](../../active-directory/active-directory-whatis.md), samoobslužné [resetování hesla, změna/odemknutí pomocí místního zápisu back](../../active-directory/active-directory-whatis.md)- [Multi-Factor Authentication (cloudové a místní (MFA Server) )](../../active-directory/active-directory-whatis.md), [MIM CAL + MIM Server](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Automatická změna hesla pro skupinové účty](../../active-directory/active-directory-whatis.md)|    [Identity Protection](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Připojení zařízení ke službě Azure AD, Desktop SSO, Microsoft Passport pro Azure AD, obnovení pomocí nástroje BitLocker pro správu](../../active-directory/active-directory-whatis.md), [automatické registraci MDM, samoobslužné obnovení nástroje BitLocker, dalším místním správcům na zařízení s Windows 10 prostřednictvím služby Azure AD JOIN](../../active-directory/active-directory-whatis.md)|
 
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) je funkce Premium Azure Active Directory, která umožňuje identifikovat cloudové aplikace používané zaměstnanci ve vaší organizaci.
@@ -387,7 +378,7 @@ Microsoft používá pro správu identit a přístupu více postupů a technolog
 - [Proxy aplikací služby Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/) poskytuje jednotné přihlašování a zabezpečený vzdálený přístup k webovým aplikacím hostovaným místně.
 
 ## <a name="next-steps"></a>Další kroky
-- [Začínáme se zabezpečením Microsoft Azure](./https://docs.microsoft.com/azure/security)
+- [Začínáme se zabezpečením Microsoft Azure](https://docs.microsoft.com/azure/security)
 
 Služby a funkce Azure, které můžete použít ke zvýšení zabezpečení služeb a dat v rámci Azure
 

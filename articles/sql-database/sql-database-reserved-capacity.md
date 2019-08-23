@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/02/2019
-ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781302"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972555"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Platba za SQL Database výpočetních prostředků s využitím Azure SQL Database rezervované kapacity
 
@@ -70,6 +70,10 @@ Rezervace můžete zrušit, vyměnit nebo vrátit refundaci s určitými omezen�
 ## <a name="vcore-size-flexibility"></a>flexibilita velikosti vCore
 
 flexibilita velikosti vCore vám pomůže škálovat směrem nahoru nebo dolů v rámci úrovně výkonu a oblasti, aniž by došlo ke ztrátě výhod vyhrazené kapacity. SQL Database Rezervovaná kapacita také poskytuje flexibilitu pro dočasné přesouvání aktivních databází mezi fondy a izolovanými databázemi v rámci normálních operací (ve stejné oblasti a úrovni výkonu), aniž by došlo ke ztrátě rezervované kapacity. výhodnosti. Když v rezervaci zachováte nepoužitou vyrovnávací paměť, můžete efektivně spravovat špičky výkonu, aniž byste museli překročit svůj rozpočet.
+
+## <a name="limitation"></a>Omezení
+
+Nemůžete rezervovat databáze SQL založené na DTU (Basic, Standard nebo Premium).
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: aae2270417e0bb3bdf0dd847e2e09e7cb1999d39
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624769"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972471"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Detekce hrozeb pro vrstvu služeb Azure v Azure Security Center
 
@@ -50,6 +50,10 @@ Analýza Security Centerch síťových vrstev vychází z ukázkových [dat IPFI
 |**Byla zjištěna síťová komunikace se škodlivou adresou.**|Analýza analýzy síťových přenosů zjistila komunikaci pocházející z prostředku ve vašem nasazení s možným příkazem a řízením (C & C) Server. Upozorňujeme, že tento typ aktivity může způsobit, že externí entity označí vaši IP adresu jako škodlivou.|
 
 Informace o tom, jak Security Center můžou použít signály související se sítí pro použití ochrany před hrozbami, najdete [v tématu heuristické detekce služby DNS v Azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
+
+>[!NOTE]
+>Výstrahy detekce hrozby síťové vrstvy Azure se v Azure Security Center negenerují během první hodiny po vytvoření virtuálního počítače.
+
 ## Vrstva správy Azure (Azure Resource Manager) (Preview)<a name ="management-layer"></a>
 
 >[!NOTE]

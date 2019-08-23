@@ -10,13 +10,14 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 06/27/2019
-ms.openlocfilehash: 1afe8a2e9179c768fd639b4a208de98b0789a53f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+manager: craigg
+ms.date: 08/22/2019
+ms.openlocfilehash: 551c2c02af7b996a34a138586fd91a77a0455d92
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569452"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904326"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -32,10 +33,10 @@ Tyto zálohy můžete použít k těmto akcím:
 
 - **Obnovte stávající databázi k určitému bodu v čase v minulosti** v rámci doby uchování pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. V izolovaných databázích a elastických fondech Tato operace vytvoří novou databázi na stejném serveru jako původní databázi. V rámci spravované instance Tato operace může vytvořit kopii databáze nebo stejné nebo jiné spravované instance v rámci stejného předplatného.
   - **[Změňte dobu uchování zálohy](#how-to-change-the-pitr-backup-retention-period)** mezi 7 až 35 dny a nakonfigurujte zásady zálohování.
-  - **Změňte dlouhodobé zásady uchovávání** na izolovaná databáze a elastické fondy po dobu až 10 let pomocí [Azure Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) nebo [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups).
+  - **Změňte dlouhodobé zásady uchovávání** na izolovaná databáze a elastické fondy po dobu až 10 let pomocí [Azure Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) nebo [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups).
 - **Obnovení odstraněné databáze na čas, kdy byla odstraněna** nebo kdykoli v rámci doby uchování. Odstraněnou databázi lze obnovit pouze na stejném logickém serveru nebo ve spravované instanci, kde byla vytvořena původní databáze.
 - **Obnovte databázi do jiné geografické oblasti**. Geografické obnovení umožňuje obnovení z geografické havárie, když nemůžete získat přístup k serveru a databázi. Vytvoří novou databázi na jakémkoli existujícím serveru kdekoli na světě.
-- **Obnovte databázi z určité dlouhodobé zálohy** na Izolovaná databáze nebo elastický fond, pokud byla databáze nakonfigurovaná s použitím dlouhodobých zásad uchovávání informací (LTR). LTR umožňuje obnovit starou verzi databáze pomocí [Azure Portal](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal) nebo [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups) , aby splňovala požadavek na dodržování předpisů nebo spustila starou verzi aplikace. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
+- **Obnovte databázi z určité dlouhodobé zálohy** na Izolovaná databáze nebo elastický fond, pokud byla databáze nakonfigurovaná s použitím dlouhodobých zásad uchovávání informací (LTR). LTR umožňuje obnovit starou verzi databáze pomocí [Azure Portal](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal) nebo [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups) , aby splňovala požadavek na dodržování předpisů nebo spustila starou verzi aplikace. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
 - Chcete-li provést obnovení, přečtěte si téma [obnovení databáze ze zálohy](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
@@ -46,7 +47,7 @@ Některé z těchto operací můžete vyzkoušet v následujících příkladech
 | | Azure Portal | Azure PowerShell |
 |---|---|---|
 | Změna uchovávání záloh | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-the-azure-portal) <br/> [Spravovaná instance](sql-database-automated-backups.md#change-pitr-for-a-managed-instance) | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| Změna dlouhodobého uchovávání záloh | [Samostatná databáze](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Izolovaná databáze](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups)<br/>Spravovaná instance – není k dispozici  |
+| Změna dlouhodobého uchovávání záloh | [Samostatná databáze](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Izolovaná databáze](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Spravovaná instance – není k dispozici  |
 | Obnovit databázi z bodu v čase | [Samostatná databáze](sql-database-recovery-using-backups.md#point-in-time-restore) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | Obnovení odstraněné databáze | [Samostatná databáze](sql-database-recovery-using-backups.md#deleted-database-restore-using-the-azure-portal) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Obnovení databáze z Azure Blob Storage | Izolovaná databáze – není k dispozici <br/>Spravovaná instance – není k dispozici  | Izolovaná databáze – není k dispozici <br/>[Spravovaná instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
@@ -81,7 +82,7 @@ Podobně jako PITR, zálohy LTR jsou geograficky redundantní a chráněné [Azu
 Další informace najdete v tématu [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
 
 ## <a name="storage-costs"></a>Cena za uložení
-Ve výchozím nastavení se do úložiště objektů blob RA-GRS úrovně Standard zkopíruje sedm dní automatizovaných záloh vašich databází. Úložiště využívané týdenními úplnými zálohami, denními rozdílovými zálohami a zálohami protokolů transakcí se kopíruje každých 5 minut. Velikost transakčního protokolu závisí na rychlosti změny databáze. Minimální objem úložiště, který se rovná 100 % velikosti databáze, se poskytuje bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc.
+U izolovaných databází se minimální hodnota záložního úložiště rovná 100% velikosti databáze je k dispozici bez dalších poplatků. V případě elastických fondů se minimální hodnota úložiště zálohy rovná 100% přiděleného úložiště dat pro fond, a to bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc. Tato další spotřeba bude záviset na zatížení a velikosti jednotlivých databází.
 
 Další informace o cenách za úložiště najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/sql-database/single/) . 
 
@@ -170,7 +171,7 @@ Stavový kód: 200
 
 Další informace najdete v tématu [REST API uchovávání záloh](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Zálohy databází jsou důležitou součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii, protože chrání vaše data před náhodným poškozením nebo odstraněním. Další informace o dalších Azure SQL Database řešení pro provozní kontinuitu najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).
 - Obnovení k určitému bodu v čase pomocí Azure Portal najdete v tématu [obnovení databáze k určitému bodu v čase pomocí Azure Portal](sql-database-recovery-using-backups.md).

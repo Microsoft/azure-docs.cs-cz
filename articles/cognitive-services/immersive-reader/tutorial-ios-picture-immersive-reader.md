@@ -1,20 +1,20 @@
 ---
 title: 'Kurz: Vytvořte aplikaci pro iOS, která bude mít fotografii a spustí ji v moderní čtečce (SWIFT).'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte aplikaci pro iOS od začátku a přidáte obrázek do funkce moderního čtečky.
 services: cognitive-services
-author: MeganRoach
+author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.author: t-meroa
-ms.openlocfilehash: d0e6cf05043c82faa04d530571ad7cacb3a02854
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.author: metan
+ms.openlocfilehash: bdaee97c8c5d7e19076847c5f1f7c07c528c1747
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991068"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899376"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Kurz: Vytvořte aplikaci pro iOS, která spustí moderní čtečku s obsahem z fotky (SWIFT).
 

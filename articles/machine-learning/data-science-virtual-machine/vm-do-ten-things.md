@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
-ms.translationtype: MT
+ms.openlocfilehash: cd4acdd4009a94b51807a536c28b138b86d2aced
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575103"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971752"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které vám pomůžou na Windows virtuální počítač pro datové vědy
 
@@ -64,10 +64,6 @@ Pro Python můžete použít integrované vývojové prostředí jako je Visual 
 * Vytvoření vlastního prostředí pro každou verzi tak, že přejdete do **nástroje** -> **nástroje Python Tools** -> **prostředí Pythonu** a pak levým na " **+ Vlastní**"v sadě Visual Studio Community Edition
 * Zadejte popis a nastavte prostředí předponovou cestu jako *c:\anaconda\envs\python2* pro Anaconda Python 2.7
 * Klikněte na tlačítko **automaticky rozpoznat** a potom **použít** uložit prostředí.
-
-Tady je vypadá vlastní prostředí v sadě Visual Studio.
-
-![Snímek obrazovky sady Visual Studio s nástroji Python Tools for Visual Studio vybrali](./media/vm-do-ten-things/PTVSSetup.png)
 
 Zobrazit [dokumentace k PTVS](https://aka.ms/ptvsdocs) najdete další podrobnosti o tom, jak vytvořit prostředí Pythonu.
 
@@ -219,7 +215,7 @@ Ke správě předplatného Azure a cloudových prostředků máte dvě možnosti
 + **Azure PowerShell**: použijte skripty Windows PowerShellu. Spusťte prostředí Azure PowerShell z zástupce na ploše nebo z nabídky Start s názvem "Microsoft Azure PowerShell". Úplné podrobnosti najdete v [dokumentaci k Microsoft Azure PowerShellu](../../powershell-azure-resource-manager.md) . 
 
 ## <a name="5-extend-storage-with-shared-file-systems"></a>5. Rozšířené úložiště se sdílenými systémy souborů
-Odborníci přes data můžou sdílet velké datové sady, kód nebo jiných prostředků v rámci týmu. Datové VĚDY, samotné se přibližně 45GB volného místa. K rozšíření úložiště, můžete použít službu Azure File a buď ji připojit na jednu nebo víc instancí DSVM nebo k nim přistupovat přes rozhraní REST API.  Můžete také použít [webu Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) nebo použijte [prostředí Azure Powershell](../../virtual-machines/windows/attach-disk-ps.md) pro přidání dalších vyhrazených datových disků. 
+Odborníci přes data můžou sdílet velké datové sady, kód nebo jiných prostředků v rámci týmu. Datové VĚDY, samotné se přibližně 45GB volného místa. K rozšíření úložiště, můžete použít službu Azure File a buď ji připojit na jednu nebo víc instancí DSVM nebo k nim přistupovat přes rozhraní REST API.  K přidání dalších vyhrazených datových disků můžete použít taky [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) nebo [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) . 
 
 > [!NOTE]
 > Maximální místo sdílení službu Azure File je 5 TB a maximální velikost jednotlivých souborů je 1 TB. 
@@ -295,8 +291,6 @@ Pro přesun dat mezi vaší místní soubory a úložiště objektů blob, můž
     AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
 Nahraďte **C:\myfolder** na cestu, kde je soubor uložen, **mystorageaccount** na název účtu úložiště objektů blob, **mycontainer** názvu kontejneru **klíč účtu úložiště** na přístupový klíč k úložišti objektů blob. Můžete najít přihlašovací údaje účtu úložiště v [webu Azure portal](https://portal.azure.com).
-
-![Snímek obrazovky se klíče účtu úložiště a informací o kontejneru na webu Azure Portal](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
 
 Spuštěním příkazu AzCopy v Powershellu nebo z příkazového řádku. Tady je použití příkazu AzCopy:
 
@@ -393,9 +387,7 @@ Azure Data Lake Storage je vysoce škálovatelné úložiště pro úlohy analý
 
 **Přesunout data z virtuálního počítače do Data Lake: Průzkumník Azure Data Lake**
 
-Můžete použít **Průzkumníka služby Azure Data Lake** k odeslání dat z místních souborů ve vašem virtuálním počítači do úložiště Data Lake.
-
-![Snímek obrazovky pomocí Data Lake Explorer k nahrání souborů](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
+Pomocí nástroje **Azure Data Lake Explorer** můžete [Odeslat data z místních souborů ve virtuálním počítači do úložiště data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
 Můžete také sestavovat datové kanály pro zprovoznění vašeho přesunu dat do nebo z aplikace pomocí Azure Data Lake [Azure Data Factory(ADF)](https://azure.microsoft.com/services/data-factory/). Projít tento [článku](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) vás provede kroky pro vytváření dat kanály.
 
@@ -406,8 +398,6 @@ Pokud máte data uložená v úložišti objektů Blob v Azure, můžete přímo
 ![Snímek obrazovky dialogového okna Přidat zdroj dat](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 V sadě Visual Studio můžete číst data z úložiště objektů blob, provádět některé manipulace s daty, návrh funkcí a výstupní Výsledná data do Azure Blob Storage nebo Azure Data Lake. Při odkazování na data ve službě blob storage, použijte **wasb: / /** ; když odkazují na data ve službě Azure Data Lake, použijte **swbhdfs: / /**
-
-![Snímek obrazovky s položkou WASB zvýrazněnou dotazu](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 V sadě Visual Studio můžete použít následující dotazy U-SQL:
 
@@ -486,7 +476,7 @@ Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase a Storm v clo
 
 ![Povolit vzdálený přístup ke clusteru HDInsight](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Vytvoření pracovního prostoru Azure Machine Learning. Z tohoto pracovního prostoru Machine Learning se ukládají vaše experimenty strojového učení. Vyberte zvýrazněnou možností na portálu, jak je znázorněno na následujícím snímku obrazovky:
+* Vytvoření pracovního prostoru Azure Machine Learning. Z tohoto pracovního prostoru Machine Learning se ukládají vaše experimenty strojového učení. Vyberte zvýrazněné možnosti na portálu, jak je znázorněno na následujícím snímku obrazovky:
 
 ![Vytvoření pracovního prostoru Azure Machine Learningu](./media/vm-do-ten-things/Create_ML_Space.PNG)
 
@@ -880,9 +870,7 @@ Teď máte data v datovém modelu Power BI. Power BI desktopu by měl vypadat ta
 
 ![Power BI Desktop](./media/vm-do-ten-things/PowerBIVolcanoData.png)
 
-Můžete začít vytvářet sestavy a vizualizace pomocí modelu. Můžete postupovat podle kroků v tomto [Power BI článku](../../cosmos-db/powerbi-visualize.md#build-the-reports) vytvářet sestavy. Výstup je sestava, která vypadá nějak takto.
-
-![Power BI Desktopu zobrazení sestavy – konektor Power BI](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
+Můžete začít vytvářet sestavy a vizualizace pomocí modelu. Můžete postupovat podle kroků v tomto [Power BI článku](../../cosmos-db/powerbi-visualize.md#build-the-reports) vytvářet sestavy.
 
 ## <a name="9-dynamic-dsvm-scaling"></a>9. Dynamické škálování DSVM 
 Je možné škálovat nahoru a dolů podle svých potřeb projektu datové VĚDY. Pokud není nutné používat virtuální počítač v večer nebo o víkendech, vám stačí vypnout virtuální počítač z [webu Azure portal](https://portal.azure.com).
@@ -894,9 +882,7 @@ Je možné škálovat nahoru a dolů podle svých potřeb projektu datové VĚDY
 
 Pokud potřebujete zpracovávat rozsáhlé analýzy a potřebujete větší kapacitu procesoru nebo paměti a/nebo disk najdete velké řadu velikostí virtuálních počítačů z hlediska Procesorových jader, založený na grafickém procesoru instancí pro obsáhlý learning, kapacita paměti a disku typy (včetně disků SSD) které splňují výpočetní prostředky a rozpočtu potřebám. Úplný seznam virtuálních počítačů spolu s jejich hodinovou cenu výpočetních prostředků je k dispozici na [ceny služby Azure Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/) stránky.
 
-Podobně pokud se snižuje potřeba kapacitu zpracování virtuálních počítačů (například: přesunout hlavních úloh Hadoop nebo Spark cluster), můžete vertikálně snížit kapacitu clusteru ze [webu Azure portal](https://portal.azure.com) a přejděte na nastavení vaše instance virtuálních počítačů. Zde je snímek obrazovky.
-
-![Nastavení instance virtuálního počítače](./media/vm-do-ten-things/VMScaling.PNG)
+Podobně pokud se snižuje potřeba kapacitu zpracování virtuálních počítačů (například: přesunout hlavních úloh Hadoop nebo Spark cluster), můžete vertikálně snížit kapacitu clusteru ze [webu Azure portal](https://portal.azure.com) a přejděte na nastavení vaše instance virtuálních počítačů. 
 
 ## <a name="10-add-more-tools"></a>10. Přidat další nástroje
 Existuje několik nástrojů, které jsou předem součástí datové VĚDY, která může vyřešit řadu běžných data, která potřebuje analytics. Tím se ušetří čas se vyhnout museli instalovat a konfigurovat prostředí jednu po druhé a ušetřit peníze Plaťte jen za prostředky, které používají.

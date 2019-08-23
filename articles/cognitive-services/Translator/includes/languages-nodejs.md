@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 6b1fff913defce20aff41f685c5b96f0547faaca
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: fd8b4ae06018de1d03ca60e836534a535c8f5df8
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968752"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906944"
 ---
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
-K tomuto rychlému startu potřebujete:
-
-* [Node.js 8.12.x nebo novější](https://nodejs.org/en/)
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
@@ -31,6 +29,14 @@ const uuidv4 = require('uuid/v4');
 
 Tyto moduly jsou potřeba k vytvoření požadavku HTTP a jedinečného identifikátoru pro hlavičku `'X-ClientTraceId'`.
 
+## <a name="set-the-endpoint"></a>Nastavení koncového bodu
+
+Tato ukázka se pokusí přečíst koncový bod Translator Text z proměnné prostředí: `TRANSLATOR_TEXT_ENDPOINT`. Pokud proměnné prostředí neznáte, můžete hodnotu `endpoint` nastavit jako řetězec a okomentovat podmíněný příkaz.
+
+```javascript
+lorum ipsum
+```
+
 ## <a name="configure-the-request"></a>Konfigurace požadavku
 
 Metoda `request()` zpřístupněná prostřednictvím modulu požadavků nám umožňuje předat metodu HTTP, adresu URL, parametry požadavku, hlavičky a text JSON jako objekt `options`. V tomto fragmentu kódu nakonfigurujeme požadavek:
@@ -41,7 +47,7 @@ Metoda `request()` zpřístupněná prostřednictvím modulu požadavků nám um
 ```javascript
 let options = {
     method: 'GET',
-    baseUrl: 'https://api.cognitive.microsofttranslator.com/',
+    baseUrl: endpoint,
     url: 'languages',
     qs: {
       'api-version': '3.0',

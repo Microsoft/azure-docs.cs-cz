@@ -1,97 +1,97 @@
 ---
-title: Zabezpečení služby Azure Data Box brány | Dokumentace Microsoftu
-description: Popisuje funkce zabezpečení a ochrana osobních údajů, které chrání vaše virtuální zařízení Azure Data Box brány, služby a dat, v místním prostředí i v cloudu.
+title: Zabezpečení Azure Data Box Gateway | Microsoft Docs
+description: Popisuje funkce zabezpečení a ochrany osobních údajů, které chrání vaše Azure Data Box Gateway virtuální zařízení, služby a data v místním prostředí i v cloudu.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 230d1a28ba15a8736e46c02cb08217a28fc18599
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89f981fcda8f40daff49ebdf796b896d90ce1754
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695184"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900601"
 ---
-# <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box brány zabezpečení a ochranu dat.
+# <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway zabezpečení a ochrana dat
 
-Zabezpečení představuje závažný problém při přijetí nové technologie, zejména v případě, že tato technologie se používá s důvěrných nebo vlastnických dat. Azure brána pole dat pomáhá zajistit pouze oprávněné entity můžete zobrazit, upravit nebo odstranit data.
+Zabezpečení je zásadním problémem při přijímání nové technologie, zejména v případě, že se technologie používá s důvěrnými nebo proprietárními daty. Azure Data Box Gateway vám pomůže zajistit, aby data mohla zobrazovat, upravovat nebo odstraňovat jenom autorizované entity.
 
-Tento článek popisuje funkce zabezpečení Azure Data Box brány, které pomáhají chránit všechny komponenty řešení a data jsou v nich uložené.
+Tento článek popisuje funkce zabezpečení Azure Data Box Gateway, které vám pomůžou chránit jednotlivé součásti řešení a data, která jsou v nich uložená.
 
-Brána pole dat řešení se skládá z čtyři hlavní součásti, které spolu interagují:
+Data Box Gateway řešení se skládá ze čtyř hlavních součástí, které vzájemně spolupracují:
 
-- **Služba Brána pole data, která hostované v Azure**. Prostředek správy, který použijete k vytvoření objednávky zařízení nakonfigurovat zařízení a potom sledovat pořadí do konce.
-- **Zařízení data Box brány**. Virtuální zařízení, který zřídíte v hypervisoru systému, který zadáte. Tato virtuální zařízení se používá pro import místních dat do Azure.
-- **Klienty a hostitele připojené k zařízení**. Klienti ve vaší infrastruktuře, připojte se k zařízení Data Box brány a obsahující data, která se dají chránit.
-- **Cloudové úložiště**. Umístění v cloudové platformy Azure, kde jsou uložená data. Toto umístění je obvykle účtu úložiště propojeném prostředku brány pole dat, který vytvoříte.
+- **Služba data box Gateway hostovaná v Azure**. Prostředek správy, který použijete k vytvoření pořadí zařízení, nakonfigurovat zařízení a pak sledovat pořadí dokončení.
+- **Data box Gateway zařízení**. Virtuální zařízení, které jste zřídili v hypervisoru systému, který zadáte. Toto virtuální zařízení slouží k importu místních dat do Azure.
+- **Klienti/hostitelé připojení k zařízení**. Klienti v infrastruktuře, kteří se připojují k Data Box Gateway zařízení a obsahují data, která je třeba chránit.
+- **Cloudové úložiště**. Umístění na cloudové platformě Azure, kde jsou uložená data. Toto umístění obvykle je účet úložiště propojený s vámi vytvořeným prostředkem Data Box Gateway.
 
 
-## <a name="data-box-gateway-service-protection"></a>Ochrana služby pole brány dat
+## <a name="data-box-gateway-service-protection"></a>Ochrana Data Box Gateway služby
 
-Služba Data Box brány je služba pro správu, která je hostovaná v Azure. Služba se používá ke konfiguraci a správě zařízení.
+Služba Data Box Gateway je služba pro správu, která je hostovaná v Azure. Služba se používá ke konfiguraci a správě zařízení.
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-service-protection.md)]
+[!INCLUDE [data-box-edge-gateway-service-protection](../../includes/data-box-edge-gateway-service-protection.md)]
 
-## <a name="data-box-gateway-device-protection"></a>Ochrana zařízení data Box brány
+## <a name="data-box-gateway-device-protection"></a>Data Box Gateway Ochrana zařízení
 
-Zařízení Data Box brány je virtuální zařízení, pro kterého je zřízené v hypervisoru, který zadáte v místním systému. Zařízení pomáhá odesílání dat do Azure. Vaše zařízení:
+Zařízení Data Box Gateway je virtuální zařízení, které je zřízené v hypervisoru místního systému, který zadáte. Zařízení pomáhá posílat data do Azure. Vaše zařízení:
 
-- Potřebuje aktivační klíč pro přístup ke službě Data Box Edge/Data pole brány.
-- Je chráněn za všech okolností heslo zařízení.
+- Pro přístup ke službě Data Box Edge/Data Box Gateway potřebuje aktivační klíč.
+- Je chráněna za všech okolností heslem zařízení.
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->
 
-### <a name="protect-the-device-via-activation-key"></a>Ochrana zařízení pomocí aktivační kód
+### <a name="protect-the-device-via-activation-key"></a>Chránit zařízení pomocí aktivačního klíče
 
-Pouze autorizovaného zařízení Data Box brány může připojit k službě Brána pole dat, který vytvoříte ve svém předplatném Azure. K ověření zařízení, budete muset použít aktivační kód k aktivaci zařízení pomocí služby Data Box brány.
+Ke službě Data Box Gateway, kterou vytvoříte ve vašem předplatném Azure, se smí připojit jenom autorizované Data Box Gateway zařízení. K autorizaci zařízení musíte použít aktivační klíč k aktivaci zařízení ve službě Data Box Gateway.
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-activation-key.md)]
+[!INCLUDE [data-box-edge-gateway-activation-key](../../includes/data-box-edge-gateway-activation-key.md)]
 
-Další informace najdete v tématu [získat aktivační klíč](data-box-gateway-deploy-prep.md#get-the-activation-key).
+Další informace najdete v tématu [získání aktivačního klíče](data-box-gateway-deploy-prep.md#get-the-activation-key).
 
-### <a name="protect-the-device-via-password"></a>Ochrana zařízení pomocí hesla
+### <a name="protect-the-device-via-password"></a>Chránit zařízení pomocí hesla
 
-Hesla se ujistěte, že jenom Autorizovaní uživatelé můžou přistupovat k datům. Data Box brány zařízení spuštění v uzamčeném stavu.
+Hesla zajišťují, že k datům budou mít přístup jenom autorizovaní uživatelé. Zařízení Data Box Gateway se spouští v uzamčeném stavu.
 
 Můžete:
 
-- Připojení k místní webové uživatelské rozhraní zařízení přes prohlížeč a zadejte heslo pro přihlášení k zařízení.
-- Vzdálené připojení k rozhraní prostředí PowerShell zařízení prostřednictvím protokolu HTTP. Ve výchozím nastavení je zapnutá Vzdálená správa. Zadejte heslo zařízení pro přihlášení k zařízení. Další informace najdete v tématu [připojit vzdáleně na vaše zařízení Data Box brány](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface).
+- Připojte se k místnímu webovému uživatelskému rozhraní zařízení přes prohlížeč a pak zadejte heslo pro přihlášení k zařízení.
+- Vzdáleně se připojte k rozhraní PowerShell zařízení přes HTTP. Vzdálená správa je ve výchozím nastavení zapnutá. Pak můžete zadat heslo zařízení pro přihlášení k zařízení. Další informace najdete v tématu [vzdálené připojení k vašemu data box Gateway zařízení](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-password-best-practices.md)]
-- Použití místní webové uživatelské rozhraní pro [změnit heslo](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access). Pokud změníte heslo, nezapomeňte informovat všechny uživatele vzdáleného přístupu tak, že nebudou mít potíže při přihlašování.
+[!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
+- [Změňte heslo](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)pomocí místního webového uživatelského rozhraní. Pokud změníte heslo, nezapomeňte se informovat o všech uživatelích vzdáleného přístupu tak, aby k nim nevznikly problémy s přihlášením.
 
 
 ## <a name="protect-your-data"></a>Ochrana dat
 
-Tato část popisuje funkce zabezpečení brána pole dat, které chrání data během přenosu a uložené.
+Tato část popisuje funkce zabezpečení Data Box Gateway, které chrání při přenosu a uložená data.
 
-### <a name="protect-data-at-rest"></a>Ochrana dat v klidovém stavu
+### <a name="protect-data-at-rest"></a>Ochrana dat v klidovém umístění
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-rest.md)]
 
-### <a name="protect-data-in-flight"></a>Chránit data na cestě
+### <a name="protect-data-in-flight"></a>Ochrana dat v letu
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-flight.md)]
+[!INCLUDE [data-box-edge-gateway-data-flight](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>Ochrana dat přes účet úložiště
+### <a name="protect-data-via-storage-accounts"></a>Ochrana dat prostřednictvím účtů úložiště
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
-- Otočit o a poté [synchronizovat klíče účtu úložiště](data-box-gateway-manage-shares.md#sync-storage-keys) pravidelně k ochraně vašeho účtu úložiště před neoprávněnými uživateli.
+[!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
+- Pravidelně otáčejte a [synchronizujte klíče účtu úložiště](data-box-gateway-manage-shares.md#sync-storage-keys) , abyste chránili svůj účet úložiště před neoprávněnými uživateli.
 
 ## <a name="manage-personal-information"></a>Správa osobních údajů
 
-Služba Data Box brány shromažďuje osobní informace v následujících scénářích:
+Služba Data Box Gateway shromažďuje osobní údaje v následujících scénářích:
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-manage-personal-data.md)]
+[!INCLUDE [data-box-edge-gateway-manage-personal-data](../../includes/data-box-edge-gateway-manage-personal-data.md)]
 
-Chcete-li zobrazit seznam uživatelů, kteří mohou přistupovat k nebo odstranit sdílenou složku, postupujte podle kroků v [spravovat sdílené složky na bráně dat pole](data-box-gateway-manage-shares.md).
+Chcete-li zobrazit seznam uživatelů, kteří mají přístup nebo odstranit sdílenou složku, postupujte podle pokynů v části [Správa sdílených složek na data box Gateway](data-box-gateway-manage-shares.md).
 
-Další informace najdete v tématu Zásady ochrany osobních údajů společnosti Microsoft na [centrum](https://www.microsoft.com/trustcenter).
+Další informace najdete v zásadách ochrany osobních údajů Microsoftu na webu [Trust Center](https://www.microsoft.com/trustcenter).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Nasazení zařízení Data Box brány](data-box-gateway-deploy-prep.md)
+[Nasazení zařízení Data Box Gateway](data-box-gateway-deploy-prep.md)

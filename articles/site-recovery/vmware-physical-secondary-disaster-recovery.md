@@ -1,86 +1,86 @@
 ---
-title: Nastavení zotavení po havárii virtuálních počítačů VMware nebo fyzické servery do sekundární lokality pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit zotavení po havárii virtuálních počítačů VMware, nebo Windows a Linuxem fyzických serverů do sekundární lokality pomocí Azure Site Recovery.
+title: Nastavení zotavení po havárii virtuálních počítačů VMware nebo fyzických serverů do sekundární lokality s Azure Site Recovery | Microsoft Docs
+description: Naučte se, jak nastavit zotavení po havárii virtuálních počítačů VMware nebo fyzických serverů se systémem Windows a Linux do sekundární lokality s Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 9a1cb63bd2a209c72af608d23515723a63b180e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a87abfdd70db07e4310dc6a39a280e12f664d03b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417725"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972090"
 ---
-# <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Nastavení zotavení po havárii virtuálních počítačů VMware v místním nebo fyzické servery do sekundární lokality
+# <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Nastavení zotavení po havárii místních virtuálních počítačů VMware nebo fyzických serverů do sekundární lokality
 
-Nástroje InMage Scout v [Azure Site Recovery](site-recovery-overview.md) poskytuje v reálném čase replikaci mezi místní servery VMware. Nástroje InMage Scout je součástí předplatných služby Azure Site Recovery.
+InMage Scout v [Azure Site Recovery](site-recovery-overview.md) poskytuje replikaci v reálném čase mezi místními lokalitami VMware. InMage Scout je zahrnutý v předplatných služby Azure Site Recovery.
 
-## <a name="end-of-support-announcement"></a>Ukončení podpory oznámení
+## <a name="end-of-support-announcement"></a>Oznámení o ukončení podpory
 
-Ukončení podpory se blíží scénáře Azure Site Recovery pro replikaci VMware v místním prostředí nebo fyzickým datovým centrům.
+Scénář Azure Site Recovery pro replikaci mezi místními VMware nebo fyzickými datacentry se blíží konci podpory.
 
--   Od srpna 2018 se scénáři nesmí být nakonfigurovaný v trezoru služby Recovery Services a InMage Scout software nelze stáhnout z trezoru. Existující nasazení budou podporované. 
--   Od 31 prosince 2020 nebude podporovat scénáře.
-- Existující partnery můžete až do konce podpory zapojení nových zákazníků do scénáře.
+-   Od srpna 2018 se scénář nedá nakonfigurovat v Recovery Services trezoru a InMage Scout software nejde stáhnout z trezoru. Existující nasazení budou podporována. 
+-   Od prosince 31 2020 se scénář nepodporuje.
+- Stávající partneři mohou připojit nové zákazníky do scénáře až do doby, než skončí podpora.
 
-Během a 2019 2018 budou vydány dvě aktualizace: 
+Během 2018 a 2019 budou vydány dvě aktualizace: 
 
--   Aktualizace 7: Řeší problémy konfigurace a dodržování předpisů, síť a poskytuje podporu protokolu TLS 1.2.
--   Aktualizace 8: Přidává podporu pro 7.3/7.4/7.5 RHEL/CentOS operačních systémů Linux a SUSE 12
+-   Aktualizace 7: Opravuje konfiguraci sítě a problémy dodržování předpisů a poskytuje podporu TLS 1,2.
+-   Aktualizace 8: Přidává podporu pro operační systémy Linux RHEL/CentOS 7.3/7.4/7.5 a pro SUSE 12
 
-Po aktualizaci 8 žádné další aktualizace budou vydány. Bude podpora omezené prostřednictvím oprav hotfix pro operační systémy přidán v aktualizaci 8 a opravy chyb podle nezaručené.
+Po aktualizaci 8 nebudou zveřejněny žádné další aktualizace. Pro operační systémy přidané v Update 8 bude omezená podpora oprav hotfix a opravy chyb na základě nejlepšího úsilí.
 
-Azure Site Recovery dál inovovat tak, že zákazníkům VMware a Hyper-V poskytuje bezproblémové a ve své třídě nejlepší řešení DRaaS s využitím Azure jako lokalitu pro zotavení po havárii. Společnost Microsoft doporučuje tento existující InMage nebo ASR Scout zákazníci zvážit pomocí Azure Site Recovery replikaci z VMware do Azure scénář pro potřeby jejich obchodní kontinuity podnikových procesů. Azure Site Recovery replikaci z VMware do Azure scénář je řešení zotavení po Havárii podnikové úrovni pro aplikace, VMware, které nabízí RPO a RTO minut, podporu pro více virtuálních počítačů aplikace replikace a obnovení, bezproblémové připojení, komplexní monitorování a významné výhody celkových nákladů na vlastnictví.
+Azure Site Recovery nadále inovační tím, že zákazníkům VMware a Hyper-V zajistí bezproblémové a nejlepší řešení DRaaS ve své třídě s Azure jako lokalitu pro zotavení po havárii. Microsoft doporučuje, aby stávající zákazníci InMage/ASR Scout zvážili použití scénáře Azure Site Recovery VMware do Azure pro potřeby jejich provozní kontinuity. Scénář Azure Site Recovery VMware do Azure je podniková řešení DR pro aplikace VMware, které nabízí RPO a RTO minut, podporu replikace a obnovení aplikací pro víc virtuálních počítačů, bezproblémové zprovoznění, komplexní monitorování a významná výhoda celkových nákladů na vlastnictví
 
-### <a name="scenario-migration"></a>Scénáře migrace
-Jako alternativu doporučujeme nastavit zotavení po havárii pro místní virtuální počítače VMware a fyzické počítače a jejich replikací do Azure. Proveďte to následujícím způsobem:
+### <a name="scenario-migration"></a>Migrace scénářů
+Jako alternativu doporučujeme nastavit zotavení po havárii pro místní virtuální počítače VMware a fyzické počítače jejich replikací do Azure. Postupujte následovně:
 
-1.  Projděte si následující rychlý porovnání. Než se dají replikovat místní počítače, je nutné zkontrolujte, jestli splňují [požadavky](./vmware-physical-azure-support-matrix.md#replicated-machines) pro replikaci do Azure. Pokud provádíte replikaci virtuálních počítačů VMware, doporučujeme, abyste si přečetli [pokyny pro plánování kapacity](./site-recovery-plan-capacity-vmware.md)a spusťte [nástroj Plánovač nasazení](./site-recovery-deployment-planner.md) pro požadavky na kapacitu identity a ověření dodržování předpisů.
-2.  Po spuštění plánovače nasazení služby, můžete nastavení replikace: o pro virtuální počítače VMware, postupujte podle těchto kurzů k [Příprava Azure](./tutorial-prepare-azure.md), [Příprava VMware v místním prostředí](./vmware-azure-tutorial-prepare-on-premises.md), a [nastavení zotavení po havárii](./vmware-azure-tutorial-prepare-on-premises.md).
-o pro fyzické počítače, použít tento [kurzu](./physical-azure-disaster-recovery.md).
-3.  Jakmile se počítače replikují do Azure, můžete spustit [zotavení po havárii](./site-recovery-test-failover-to-azure.md) k Ujistěte se, že vše funguje podle očekávání.
+1.  Přečtěte si rychlé porovnání uvedené níže. Než budete moct replikovat místní počítače, musíte ověřit, že splňují [požadavky](./vmware-physical-azure-support-matrix.md#replicated-machines) na replikaci do Azure. Pokud provádíte replikaci virtuálních počítačů VMware, doporučujeme vám projít si [pokyny pro plánování kapacity](./site-recovery-plan-capacity-vmware.md)a spustit [nástroj Plánovač nasazení](./site-recovery-deployment-planner.md) pro požadavky na kapacitu identity a ověřit dodržování předpisů.
+2.  Po spuštění Plánovač nasazení můžete nastavit replikaci: o pro virtuální počítače VMware. podle těchto kurzů [Připravte Azure](./tutorial-prepare-azure.md), [Připravte své místní prostředí VMware](./vmware-azure-tutorial-prepare-on-premises.md)a [nastavte zotavení po havárii](./vmware-azure-tutorial-prepare-on-premises.md).
+v případě fyzických počítačů postupujte podle tohoto [kurzu](./physical-azure-disaster-recovery.md).
+3.  Po replikaci počítačů do Azure můžete spustit postup [zotavení po havárii](./site-recovery-test-failover-to-azure.md) , abyste měli jistotu, že všechno funguje podle očekávání.
 
 ### <a name="quick-comparison"></a>Rychlé porovnání
 
 **Funkce** | **Replikace do Azure** |**Replikace mezi datacentry VMware**
 --|--|--
-**Požadované součásti** |Služba mobility na replikované počítače. Místní konfigurační server, procesový server a hlavní cílový server. Dočasný procesní server v Azure pro navrácení služeb po obnovení.|Službu mobility, procesový Server, konfigurační Server a hlavní cíl
-**Konfigurace a Orchestrace** |Trezor služby Recovery Services na webu Azure Portal | Pomocí vContinuum 
-**Replikované** |Disk (Windows nebo Linuxem) |Svazek Windows<br> Disk – Linux
-**Cluster sdílených disků** |Nepodporuje se|Podporováno
-**Četnost změn dat omezení (průměr)** |10 MB/s dat na disk<br> Data 25MB/s na virtuální počítač<br> [Další informace](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | Data > 10 MB/s na disk  <br> Data > 25 MB/s na virtuální počítač
-**Monitorování** |Z webu Azure portal|Z CX (konfigurační Server)
-**Matice podpory** | [Kliknutím sem zobrazíte podrobnosti](./vmware-physical-azure-support-matrix.md)|[Stáhnout Azure Site Recovery Scout kompatibilní matice](https://aka.ms/asr-scout-cm)
+**Požadované součásti** |Služba mobility na replikovaných počítačích. Místní konfigurační server, procesový Server, hlavní cílový server. Dočasný procesový Server v Azure pro navrácení služeb po obnovení.|Služba mobility, procesový Server, konfigurační server a hlavní cíl
+**Konfigurace a orchestrace** |Recovery Services trezor v Azure Portal | Použití vContinuum 
+**Replikovateln** |Disk (Windows a Linux) |Svazek – okna<br> Disk – Linux
+**Cluster sdíleného disku** |Nepodporuje se|Podporováno
+**Omezení četnosti změn dat (průměr)** |10 MB/s dat na disk<br> data 25 MB JAVASCRIPTOVÉHO/s na virtuální počítač<br> [Víc se uč](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | > 10 MB/s dat na disk  <br> > dat o velikosti 25 MB/s na virtuální počítač
+**Monitorování** |Z Azure Portal|Z CX (konfigurační server)
+**Matice podpory** | [Kliknutím sem zobrazíte podrobnosti.](./vmware-physical-azure-support-matrix.md)|[Stáhnout matrici kompatibilní s funkcí ASR Scout](https://aka.ms/asr-scout-cm)
 
 
 ## <a name="prerequisites"></a>Požadavky
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
-- [Kontrola](vmware-physical-secondary-support-matrix.md) požadavky na podporu pro všechny součásti.
-- Ujistěte se, že počítače, které chcete replikovat v souladu s [počítač podporu replikovaných](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
+- [Zkontrolujte](vmware-physical-secondary-support-matrix.md) požadavky na podporu pro všechny komponenty.
+- Ujistěte se, že počítače, které chcete replikovat, vyhovují [podpoře replikovaného počítače](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 
 
-## <a name="download-and-install-component-updates"></a>Stáhněte a nainstalujte aktualizace součástí
+## <a name="download-and-install-component-updates"></a>Stáhnout a nainstalovat aktualizace součástí
 
- Zkontrolovat a nainstalovat nejnovější [aktualizace](#updates). Aktualizace musí být nainstalován na servery v následujícím pořadí:
+ Zkontrolujte a nainstalujte nejnovější [aktualizace](#updates). Aktualizace by se měly instalovat na serverech v následujícím pořadí:
 
-1. RX serveru (Pokud je k dispozici)
-2. Konfigurace serverů
-3. Procesových serverů
+1. Server pro příjem (Pokud je k dispozici)
+2. Konfigurační servery
+3. Procesové servery
 4. Hlavní cílové servery
-5. vContinuum servery
-6. Zdrojový server (Windows a servery se systémem Linux)
+5. servery vContinuum
+6. Zdrojový server (servery se systémem Windows i Linux)
 
-Nainstalujte aktualizace následujícím způsobem:
+Aktualizace nainstalujte následujícím způsobem:
 
 > [!NOTE]
->Všechny komponenty Scout soubor aktualizovanou verzi nemusí být stejné v souboru ZIP aktualizace. Starší verze znamenat, že není žádná změna v komponentě od předchozí aktualizace v této aktualizaci.
+>Všechny součásti Scout Components v souboru Update. zip nemusejí být stejné. Starší verze značí, že od předchozí aktualizace k této aktualizaci se nezměnila součást.
 
-Stáhněte si [aktualizovat](https://aka.ms/asr-scout-update7) soubor .zip a [MySQL a PHP upgradovat](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) konfigurační soubory. Aktualizovat soubor .zip obsahuje soubor všechny základní binární soubory a kumulativního upgradu binární soubory z následujících součástí: 
+Stáhněte soubor [Update](https://aka.ms/asr-scout-update7) . zip a konfigurační soubory pro [upgrade MySQL a php](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) . Soubor Update. zip obsahuje všechny základní binární soubory a binární soubory kumulativního upgradu následujících součástí: 
 - InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
 - RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz
 - InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
@@ -117,231 +117,231 @@ Stáhněte si [aktualizovat](https://aka.ms/asr-scout-update7) soubor .zip a [My
 - InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release.tar.gz
 - InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
 - InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
-  1. Rozbalte soubory .zip.
-  2. **RX server**: Kopírování **RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz** k příjmu serveru a rozbalte ho. Ve složce extrahované spustit **/Install**.
-  3. **Konfigurační server a procesový server**: Kopírování **CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe** konfigurační server a procesový server. Dvakrát klikněte na spustit ho.<br>
-  4. **Windows hlavní cílový server**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** k serveru. Dvojím kliknutím ho spustit. Stejný soubor lze také použít pro novou instalaci. Stejnou aktualizaci nástroj unified agent platí také pro zdrojový server.
-  Aktualizace není nutné použít na hlavním cílovém připravený pomocí **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** je to nový instalační program GA s nejnovějšími změnami.
-  5. **vContinuum server**:  Kopírování **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** k serveru.  Ujistěte se, že jsme uzavřeli Průvodce vContinuum. Poklikejte na soubor k jeho spuštění.
-  6. **Hlavního linuxového cílového serveru**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** hlavní Linuxový uzel cílovému serveru a rozbalte ho. Ve složce extrahované spustit **/Install**.
-  7. **Zdrojový server Windows**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** na zdrojovém serveru. Poklikejte na soubor k jeho spuštění. 
-  8. **Zdrojový server Linux**: Chcete-li aktualizovat nástroj unified agent, zkopírujte odpovídající verzi souboru nástroj unified agent na Linux server a rozbalte jej. Ve složce extrahované spustit **/Install**.  Příklad: Pro RHEL 6.7 64bitovým serverem, kopie **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** na server a rozbalte ho. Ve složce extrahované spustit **/Install**.
-  9. Po upgradu konfigurační Server, procesový Server a RX server instalátory uvedené výš, musí být upgradovány ručně pomocí kroků uvedených v části 7.4 knihoven PHP využívající databázi MySQL [rychlá Instalační příručka](https://aka.ms/asr-scout-quick-install-guide).
+  1. Extrahujte soubory. zip.
+  2. **Server pro příjem**: Zkopírujte **rx_ 8.0.7.0 _ga_update_7_2965621_28dec18. tar. gz** na server pro příjem a extrahujte ho. V extrahované složce spusťte příkaz **/install**.
+  3. **Konfigurační server a procesový Server**: Zkopírujte **cx_windows_ 8.0.7.0 _ga_update_7_2965621_28dec18. exe** na konfigurační server a procesový Server. Dvojím kliknutím ji spusťte.<br>
+  4. **Hlavní cílový server Windows**: Chcete-li aktualizovat sjednoceného agenta, zkopírujte na server **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** . Dvakrát klikněte na ni a spusťte ji. Stejný soubor lze také použít pro novou instalaci. Stejná aktualizace sjednoceného agenta se vztahuje také na zdrojový server.
+  Aktualizace nemusí platit pro hlavní cíl připravený pomocí nástroje **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** , protože se jedná o nový instalační program GA se všemi nejnovějšími změnami.
+  5. **vContinuum Server**:  Zkopírujte **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** na server.  Ujistěte se, že jste Průvodce vContinuum zavřeli. Dvakrát klikněte na soubor a spusťte ho.
+  6. **Server s hlavním cílovým systémem Linux**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** na hlavní cílový server Linux a extrahujte ho. V extrahované složce spusťte příkaz **/install**.
+  7. **Zdrojový server se systémem Windows**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte na zdrojový server **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** . Dvakrát klikněte na soubor a spusťte ho. 
+  8. **Zdrojový server se systémem Linux**: Chcete-li aktualizovat sjednoceného agenta, zkopírujte odpovídající verzi souboru sjednoceného agenta na server Linux a extrahujte ji. V extrahované složce spusťte příkaz **/install**.  Příklad: Pro RHEL 6,7 64-bit Server zkopírujte **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** na server a extrahujte ho. V extrahované složce spusťte příkaz **/install**.
+  9. Po upgradu konfiguračního serveru, procesového serveru a serveru pro příjem s výše uvedenými instalačními programy je potřeba upgradovat ručně knihovny PHP a MySQL pomocí kroků uvedených v části 7,4 příručky pro [rychlé instalace](https://aka.ms/asr-scout-quick-install-guide).
 
 ## <a name="enable-replication"></a>Povolení replikace
 
-1. Nastavení replikace mezi zdrojové a cílové servery VMware.
-2. Najdete v následujících dokumentech získat další informace o instalaci, ochrany a obnovení:
+1. Nastavte replikaci mezi zdrojovou a cílovou lokalitou VMware.
+2. Další informace o instalaci, ochraně a obnovení najdete v následujících dokumentech:
 
    * [Poznámky k verzi](https://aka.ms/asr-scout-release-notes)
-   * [Matice kompatibility](https://aka.ms/asr-scout-cm)
+   * [Tabulka kompatibility](https://aka.ms/asr-scout-cm)
    * [Uživatelská příručka](https://aka.ms/asr-scout-user-guide)
-   * [Uživatelská příručka k příjmu](https://aka.ms/asr-scout-rx-user-guide)
-   * [Příručka pro rychlou instalaci](https://aka.ms/asr-scout-quick-install-guide)
-   * [Upgrade knihovny MYSQL a PHP](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade)
+   * [Uživatelská příručka pro příjem](https://aka.ms/asr-scout-rx-user-guide)
+   * [Průvodce rychlou instalací](https://aka.ms/asr-scout-quick-install-guide)
+   * [Upgrade knihoven MYSQL a PHP](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade)
 
-## <a name="updates"></a>Aktualizace
+## <a name="updates"></a>Aktuální zprávy
 
-### <a name="site-recovery-scout-801-update-7"></a>Aktualizace služby Site Recovery Scout 8.0.1 7 
-Aktualizováno: Stáhněte si 31. prosince 2018 [Scout aktualizace 7](https://aka.ms/asr-scout-update7).
-Aktualizace Scout 7 je úplné instalační program, který lze použít pro novou instalaci i jako upgrade stávající agenty/MT, které jsou na předchozí aktualizace (z aktualizace 1 pro aktualizaci 6). Obsahuje všechny opravy z Update 1 na aktualizaci 6 plus nové opravy a vylepšení popsaných níže.
+### <a name="site-recovery-scout-801-update-7"></a>Site Recovery Scout 8.0.1 Update 7 
+Aktualizováno: 31. prosince 2018 stáhnout [Scout Update 7](https://aka.ms/asr-scout-update7).
+Scout Update 7 je úplný instalační program, který se dá použít pro novou instalaci, a také k upgradu existujících agentů/MT, které se nacházejí v předchozích aktualizacích (od aktualizace 1 po aktualizaci 6). Obsahuje všechny opravy z aktualizace Update 1 pro aktualizaci 6 a nové opravy a vylepšení popsané níže.
  
 #### <a name="new-features"></a>Nové funkce
-* Dodržování PCI
-* Podpora protokolu TLS verze 1.2
+* Kompatibilita sběrnice PCI
+* Podpora TLS v 1.2
 
-#### <a name="bug-and-security-fixes"></a>Chyby a oprav chyb zabezpečení
-* Opraveno: Windows Cluster nebo samostatné počítače mají nesprávnou konfiguraci IP adresy při obnovení nebo zotavení.
-* Opraveno: Někdy selže operace přidání disku clusteru V2V.
-* Opraveno: vContinuum Průvodce zasekne fázi obnovení Pokud hlavním cíli je Windows Server 2016
-* Opraveno: Problémy se zabezpečením MySQL jsou omezeny upgradovat na verzi 5.7.23 MySQL
+#### <a name="bug-and-security-fixes"></a>Opravy chyb a zabezpečení
+* Určí Při obnovení/zotavení po havárii mají cluster se systémem Windows nebo samostatné počítače nesprávnou konfiguraci protokolu IP.
+* Určí Někdy se operace přidání disku pro cluster V2V nezdařila.
+* Opraveno: Průvodce vContinuum se během fáze obnovení zablokuje, pokud je hlavním cílem Windows Server 2016.
+* Určí Problémy zabezpečení MySQL se zmírnit upgradem MySQL na verzi 5.7.23
 
-#### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>Ruční Upgrade pro PHP a MySQL v CS, PS a příjmu
-Skriptovací platformu PHP byste upgradovat na verzi 7.2.10 na konfigurační Server, procesový Server a Server příjmu.
-Systém správy databáze MySQL byste upgradovat na verzi 5.7.23 na konfigurační Server, procesový Server a Server příjmu.
-Postupujte podle kroků ruční podle [rychlá Instalační příručka](https://aka.ms/asr-scout-quick-install-guide) upgrade verze PHP a MySQL.
+#### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>Ruční upgrade pro PHP a MySQL v CS, PS a RX
+Skriptovací platforma PHP by se měla upgradovat na verzi 7.2.10 na konfiguračním serveru, procesovém serveru a serveru pro příjem.
+Systém správy databáze MySQL by měl být upgradován na verzi 5.7.23 na konfiguračním serveru, procesovém serveru a serveru pro příjem.
+Pokud chcete upgradovat verze PHP a MySQL, postupujte prosím podle kroků v příručce k [rychlé instalaci](https://aka.ms/asr-scout-quick-install-guide) .
 
-### <a name="site-recovery-scout-801-update-6"></a>Aktualizace služby Site Recovery Scout 8.0.1 6 
+### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 Update 6 
 Aktualizováno: 12. října 2017
 
-Stáhněte si [Scout aktualizace 6](https://aka.ms/asr-scout-update6).
+Stáhněte si [aktualizaci Scout Update 6](https://aka.ms/asr-scout-update6).
 
-Scout aktualizací 6 je kumulativní aktualizace. Obsahuje všechny opravy od 1 aktualizace Update 5 a nové opravy a vylepšení popsaných níže. 
+Scout Update 6 je kumulativní aktualizace. Obsahuje všechny opravy z aktualizace Update 1 pro aktualizaci 5 a nové opravy a vylepšení popsané níže. 
 
-#### <a name="new-platform-support"></a>Nová podpora platformy
-* Byla přidána podpora pro zdroje Windows Server 2016
-* Byla přidána podpora pro následujících operačních systémů Linux:
-    - Red Hat Enterprise Linux (RHEL) 6.9
+#### <a name="new-platform-support"></a>Podpora nové platformy
+* Přidala se podpora pro zdrojový Windows Server 2016.
+* Přidala se podpora pro následující operační systémy Linux:
+    - Red Hat Enterprise Linux (RHEL) 6,9
     - CentOS 6.9
     - Oracle Linux 5,11
-    - Oracle Linux 6.8
-* Byla přidána podpora pro System Center 6.5 VMware
+    - Oracle Linux 6,8
+* Pro VMware Center 6,5 se přidala podpora.
 
-Nainstalujte aktualizace následujícím způsobem:
+Aktualizace nainstalujte následujícím způsobem:
 
 > [!NOTE]
->Všechny komponenty Scout soubor aktualizovanou verzi nemusí být stejné v souboru ZIP aktualizace. Starší verze znamenat, že není žádná změna v komponentě od předchozí aktualizace v této aktualizaci.
+>Všechny součásti Scout Components v souboru Update. zip nemusejí být stejné. Starší verze značí, že od předchozí aktualizace k této aktualizaci se nezměnila součást.
 
-Stáhněte si [aktualizovat](https://aka.ms/asr-scout-update6) soubor .zip. Soubor obsahuje následující součásti: 
+Stáhněte si soubor [Update](https://aka.ms/asr-scout-update6) . zip. Soubor obsahuje následující součásti: 
 - RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
 - CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe
 - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
 - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
 - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-- Uživatelský Agent update4 bity pro počítač RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
-  1. Rozbalte soubory .zip.
-  2. **RX server**: Kopírování **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** k příjmu serveru a rozbalte ho. Ve složce extrahované spustit **/Install**.
-  3. **Konfigurační server a procesový server**: Kopírování **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** konfigurační server a procesový server. Dvakrát klikněte na spustit ho.<br>
-  4. **Windows hlavní cílový server**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** k serveru. Dvojím kliknutím ho spustit. Stejnou aktualizaci nástroj unified agent platí také pro zdrojový server. Pokud zdroj se neaktualizoval na s aktualizací Update 4, měli byste aktualizovat nástroj unified agent.
-  Aktualizace není nutné použít na hlavním cílovém připravený pomocí **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** je to nový instalační program GA s nejnovějšími změnami.
-  5. **vContinuum server**:  Kopírování **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** k serveru.  Ujistěte se, že jsme uzavřeli Průvodce vContinuum. Poklikejte na soubor k jeho spuštění.
-  Aktualizace není nutné použít na hlavním cíli připravený pomocí **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** je to nový instalační program GA s nejnovějšími změnami.
-  6. **Hlavního linuxového cílového serveru**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** na hlavní cílový server a rozbalte ho. Ve složce extrahované spustit **/Install**.
-  7. **Zdrojový server Windows**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** na zdrojovém serveru. Poklikejte na soubor k jeho spuštění. 
-  Není nutné pro instalaci agenta Update 5 na zdrojovém serveru, pokud již byl aktualizován na aktualizaci Update 4 nebo agenta zdroje nástroje je nainstalovaný nejnovější základní instalační služby systému **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe**.
-  8. **Zdrojový server Linux**: Chcete-li aktualizovat nástroj unified agent, zkopírujte odpovídající verzi souboru nástroj unified agent na Linux server a rozbalte jej. Ve složce extrahované spustit **/Install**.  Příklad: Pro RHEL 6.7 64bitovým serverem, kopie **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** na server a rozbalte ho. Ve složce extrahované spustit **/Install**.
+- UA Update4 bitů pro RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<Linux OS > _ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz
+  1. Extrahujte soubory. zip.
+  2. **Server pro příjem**: Zkopírujte **rx_ 8.0.4.0 _ga_update_4_8725872_16sep16. tar. gz** na server pro příjem a extrahujte ho. V extrahované složce spusťte příkaz **/install**.
+  3. **Konfigurační server a procesový Server**: Zkopírujte **cx_windows_ 8.0.6.0 _ga_update_6_13746667_18sep17. exe** na konfigurační server a procesový Server. Dvojím kliknutím ji spusťte.<br>
+  4. **Hlavní cílový server Windows**: Chcete-li aktualizovat sjednoceného agenta, zkopírujte na server **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** . Dvakrát klikněte na ni a spusťte ji. Stejná aktualizace sjednoceného agenta se vztahuje také na zdrojový server. Pokud se zdroj neaktualizoval na Update 4, měli byste aktualizovat sjednoceného agenta.
+  Aktualizace nemusí platit pro hlavní cíl připravený pomocí nástroje **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** , protože se jedná o nový instalační program GA se všemi nejnovějšími změnami.
+  5. **vContinuum Server**:  Zkopírujte **vcon_windows_ 8.0.6.0 _ga_update_6_11525767_21sep17. exe** na server.  Ujistěte se, že jste Průvodce vContinuum zavřeli. Dvakrát klikněte na soubor a spusťte ho.
+  Aktualizace nemusí platit pro hlavní cíl připravený pomocí nástroje **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** , protože se jedná o nový instalační program GA se všemi nejnovějšími změnami.
+  6. **Server s hlavním cílovým systémem Linux**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** na hlavní cílový server a rozbalte ho. V extrahované složce spusťte příkaz **/install**.
+  7. **Zdrojový server se systémem Windows**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte na zdrojový server **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** . Dvakrát klikněte na soubor a spusťte ho. 
+  Nemusíte instalovat agenta Update 5 na zdrojovém serveru, pokud už je aktualizovaný na verzi Update 4 nebo když je zdrojový agent nainstalovaný pomocí nejnovějšího základního instalačního programu **inmage_ua_ 8.0.1.0 _windows_ga_28sep2017_release. exe**.
+  8. **Zdrojový server se systémem Linux**: Chcete-li aktualizovat sjednoceného agenta, zkopírujte odpovídající verzi souboru sjednoceného agenta na server Linux a extrahujte ji. V extrahované složce spusťte příkaz **/install**.  Příklad: Pro RHEL 6,7 64-bit Server zkopírujte **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** na server a extrahujte ho. V extrahované složce spusťte příkaz **/install**.
 
 
 > [!NOTE]
-> * Základní Unified Agent(UA) installer pro Windows se obnovil podpory systému Windows Server 2016. V novém instalačním programu **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** je součástí balíčku balíček základní Scout GA (**InMage_Scout_Standard_8.0.1 GA – Oct17.zip**). Stejný instalační program se použije pro všechny podporované verze Windows. 
-> * Základní Windows vContinuum & hlavní cílový instalační program byl aktualizován pro podporu Windows serveru 2016. V novém instalačním programu **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** je součástí balíčku balíček základní Scout GA (**InMage_Scout_Standard_8.0.1 GA – Oct17.zip**). Stejný instalační program se použije k nasazení Windows 2016 hlavního cíle a hlavního cíle Windows 2012 R2.
-> * Windows server 2016 na fyzický server nepodporuje automatické obnovení systému Scout. Podporuje pouze systém Windows Server 2016 virtuálního počítače VMware. 
+> * Instalace instalačního programu jednotného agenta (UA) pro systém Windows byla aktualizována tak, aby podporovala Windows Server 2016. Nový instalační program **inmage_ua_ 8.0.1.0 _windows_ga_28sep2017_release. exe** je zabalený pomocí základního balíčku Scout GA (**inmage_scout_standard_ 8.0.1 GA-Oct17. zip**). Stejný instalační program bude použit pro všechny podporované verze systému Windows. 
+> * Základní instalační program Windows vContinuum & Master byl aktualizován tak, aby podporoval systém Windows Server 2016. Nový instalační program **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** je zabalený pomocí základního balíčku Scout GA (**inmage_scout_standard_ 8.0.1 GA-Oct17. zip**). Stejný instalační program bude použit k nasazení hlavního cíle Windows 2016 a serveru Windows 2012R2 Master Target.
+> * Systém Windows Server 2016 na fyzickém serveru není podporován ASR Scout. Podporuje jenom virtuální počítač VMware s Windows serverem 2016. 
 >
 
 #### <a name="bug-fixes-and-enhancements"></a>Opravy chyb a vylepšení
-- Na konci konfigurace nic selže a ochranu navrácení služeb po obnovení pro virtuální počítač s Linuxem zobrazí se seznam disků k replikaci.
+- Ochrana před navrácením služeb po obnovení pro virtuální počítač se systémem Linux se nezdařila, protože seznam disků, které mají být replikovány, je
 
-### <a name="site-recovery-scout-801-update-5"></a>Aktualizace služby Site Recovery Scout 8.0.1 5
-Aktualizace Scout 5 je kumulativní aktualizace. Obsahuje všechny opravy z Update 1 na aktualizaci Update 4 a nové opravy je popsáno níže.
-- Opravy Site Recovery Scout Update 4 Update 5 jsou speciálně pro hlavní cíl a vContinuum součásti.
-- Pokud zdrojové servery, hlavní cílový, konfiguraci, proces a příjmu servery jsou již spuštěna verze Update 4 a pak použít pouze na hlavním cílovém serveru. 
+### <a name="site-recovery-scout-801-update-5"></a>Site Recovery Scout 8.0.1 Update 5
+Scout Update 5 je kumulativní aktualizace. Obsahuje všechny opravy z aktualizace Update 1 pro aktualizaci 4 a nové opravy popsané níže.
+- Opravy z Site Recovery Scout Update 4 na aktualizaci 5 jsou určené konkrétně pro hlavní cílové a vContinuum součásti.
+- Pokud jsou na zdrojových serverech, hlavní cílový server, konfigurace, proces a servery pro příjem dat již spuštěn Update 4, použijte jej pouze na hlavním cílovém serveru. 
 
-#### <a name="new-platform-support"></a>Nová podpora platformy
-* SUSE Linux Enterprise Server 11, aktualizace Service Pack 4(SP4)
-* 64bitový SLES 11 SP4 **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** je součástí balíčku balíček základní Scout GA (**InMage_Scout_Standard_8.0.1 GA.zip**). Stažení balíčku verze GA z portálu, jak je popsáno v vytvořte trezor.
+#### <a name="new-platform-support"></a>Podpora nové platformy
+* SUSE Linux Enterprise Server 11 Service Pack 4 (SP4)
+* SLES 11 SP4 64 bit **inmage_ua_ 8.0.1.0 _sles11-SP4-64_ga_13apr2017_release. tar. gz** je zabalený pomocí základního balíčku Scout GA (**inmage_scout_standard_ 8.0.1 GA. zip**). Stáhněte si balíček GA z portálu, jak je popsáno v tématu Vytvoření trezoru.
 
 
 #### <a name="bug-fixes-and-enhancements"></a>Opravy chyb a vylepšení
 
-* Opravy pro zvýšení clusteru Windows podporují spolehlivosti:
-    * Oprava – některé P2V MSCS clusteru disky budou RAW po obnovení.
-    * Obnovení clusteru fixed-P2V MSCS selže z důvodu neshody objednávky disku.
-    * Oprava – The MSCS clusteru operace přidání disků selže a zobrazí se chyba neshoda velikosti disku.
-    * Kontrola připravenosti v pro zdrojový clusteru MSCS pomocí mapování RDM logických jednotek v velikost ověření selže.
-    * Fixed-jeden uzel clusteru ochrana se nezdaří kvůli potížím neshoda SCSI. 
-    * Opětovné fixed-ochrany serveru se službou cluster Windows P2V selže, pokud jsou k dispozici cílové disky clusteru. 
+* Opravy pro zvýšení spolehlivosti podpory clusteru Windows:
+    * Opraveno – některé disky clusteru P2V MSCS se po obnovení stanou nezpracovanými.
+    * Opravené obnovení clusteru serveru MSCS se nepovede kvůli neshodě pořadí disků.
+    * Opraveno – operace clusteru nástroje MSCS pro přidání disků se nezdařila s chybou neshody velikosti disku.
+    * Opraveno – Kontrola připravenosti pro zdrojový cluster serveru MSCS s mapováním RDM LUN se nezdařila v rámci ověřování velikosti.
+    * Ochrana clusteru s jedním uzlem se nezdařila z důvodu problému se neshodou SCSI. 
+    * Pevná Ochrana clusteru P2V Windows Cluster Server se nezdařila, pokud jsou k dispozici cílové disky clusteru. 
     
-* Opraveno: Při navrácení služeb po obnovení ochrany Pokud vybraný hlavní cílový server není na stejném serveru ESXi jako chráněný zdrojový počítač (při přesměrování ochrany), pak vContinuum vybere nesprávný hlavní cílový server během navrácení služeb po obnovení pro obnovení a obnovení operace se nezdaří.
+* Určí Pokud se během ochrany proti navrácení služeb po obnovení nenachází vybraný hlavní cílový server na stejném serveru ESXi jako chráněný zdrojový počítač (během dopředné ochrany), pak vContinuum při obnovení navrácení služeb po obnovení vytvoří nesprávný hlavní cílový server a obnovení operace se nezdařila.
 
 > [!NOTE]
-> * Opravy clusteru P2V platí pouze pro fyzického clusteru MSCS clustery, které jsou nově chránit pomocí Site Recovery Scout Update 5. Pokud chcete nainstalovat opravy clusteru chráněného clusteru MSCS P2V clusterů s starší aktualizace, provést upgrade kroky uvedené v části 12 [zpráva k vydání verze pro Site Recovery Scout](https://aka.ms/asr-scout-release-notes).
-> * Pokud během opětovné ochrany, jsou na všech uzlech clusteru aktivní stejnou sadu disků, jako když původně chráněný, pak znovu ochranu fyzického clusteru MSCS můžete opakovaně používat pouze existující cílové disky. Pokud ne, pak použijte ruční kroky v oddílu 12 [zpráva k vydání verze pro Site Recovery Scout](https://aka.ms/asr-scout-release-notes), přesunout cílové disky na straně do správného úložiště dat cesty pro opakované použití při opětovné ochrany. Pokud znovu nastavit ochranu clusteru MSCS v režimu P2V bez upgradu kroků vytvoří nový disk na cílovém serveru ESXi. Musíte ručně odstranit staré disky z úložiště.
-> * Zdroj SLES11 nebo SLES11 (s žádné aktualizace service pack) server se restartoval řádně, pak ručně označit **kořenové** disku páry replikace na opětovnou synchronizaci. Se neobjeví žádná oznámení v rozhraní CX. Pokud není označí disk kořenové pro opětovnou synchronizaci, můžete si všimnout problémy s integritou dat.
+> * Opravy clusteru P2V se vztahují jenom na fyzické clustery MSCS, které jsou nově chráněné pomocí Site Recovery Scout Update 5. Pokud chcete nainstalovat opravy clusteru v chráněných clusterech P2V MSCS se staršími aktualizacemi, postupujte podle kroků pro upgrade uvedených v části 12 [poznámky k verzi služby Site Recovery Scout](https://aka.ms/asr-scout-release-notes).
+> * Pokud je v době opětovné ochrany na všech uzlech clusteru aktivní stejná sada disků, jako kdyby byla zpočátku chráněná, může opětovná ochrana fyzického clusteru MSCS znovu použít jenom existující cílové disky. Pokud ne, pak použijte ruční kroky v části 12 poznámky k [verzi Site Recovery Scout](https://aka.ms/asr-scout-release-notes), abyste přesunuli cílové diskové disky na správnou cestu k úložišti dat, abyste je mohli znovu použít při opětovné ochraně. Pokud znovu nastavíte ochranu clusteru MSCS v režimu P2V bez provedení kroků upgradu, vytvoří se na cílovém serveru ESXi nový disk. Staré disky budete muset odstranit z úložiště dat ručně.
+> * Pokud se server SLES11 nebo SLES11 (se všemi aktualizacemi Service Pack) restartuje řádně, pak ručně označte páry replikace **kořenového** disku pro opakovanou synchronizaci. V rozhraní CX není žádné oznámení. Pokud neoznačíte kořenový disk pro opakovanou synchronizaci, můžete si všimnout problémů s integritou dat.
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4
-Scout Update 4 je kumulativní aktualizace. Zahrnuje všechny opravy aktualizace 1 pro s aktualizací Update 3 a nové opravy je popsáno níže.
+Scout Update 4 je kumulativní aktualizace. Zahrnuje všechny opravy od aktualizace Update 1 až po aktualizaci 3 a nové opravy popsané níže.
 
-#### <a name="new-platform-support"></a>Nová podpora platformy
+#### <a name="new-platform-support"></a>Podpora nové platformy
 
-* Byla přidána podpora pro vCenter/vSphere 6.0, 6.1 a 6.2
-* Byla přidána podpora těchto operačních systémů Linux:
-  * Red Hat Enterprise Linux (RHEL) 7.0, 7.1 a 7.2
-  * CentOS 7.0, 7.1 a 7.2
-  * Red Hat Enterprise Linux (RHEL) 6.8
+* Přidala se podpora pro vCenter/vSphere 6,0, 6,1 a 6,2.
+* Přidala se podpora pro tyto operační systémy Linux:
+  * Red Hat Enterprise Linux (RHEL) 7,0, 7,1 a 7,2
+  * CentOS 7,0, 7,1 a 7,2
+  * Red Hat Enterprise Linux (RHEL) 6,8
   * CentOS 6.8
 
 > [!NOTE]
-> RHEL/CentOS 7 64-bit **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** je součástí balíčku balíček základní Scout GA **InMage_Scout_Standard_8.0.1 GA.zip**. Stažení balíčku Scout GA z portálu, jak je popsáno v vytvořte trezor.
+> RHEL/CentOS 7 64 bit **inmage_ua_ 8.0.1.0 _rhel7-64_ga_06oct2016_release. tar. gz** je zabalený pomocí základního balíčku Scout GA **inmage_scout_standard_ 8.0.1 GA. zip**. Stáhněte si balíček Scout GA z portálu, jak je popsáno v části Vytvoření trezoru.
 
 #### <a name="bug-fixes-and-enhancements"></a>Opravy chyb a vylepšení
 
-* Vylepšené vypnutí zpracování následujících operačních systémů Linux a duplicity, aby se zabránilo problémům nežádoucí Opětovná synchronizace:
-    * Red Hat Enterprise Linux (RHEL) 6.x
-    * Oracle Linux (OL) 6.x
-* Pro Linux je omezena na místního uživatele nyní všechna oprávnění k přístupu v instalačním adresáři nástroje unified agent.
-* Na Windows, opravu pro vypršení časového limitu problém, ke které došlo při vydávání běžné distribuované konzistence záložky v silně zatížen distribuovaných aplikací, jako jsou clustery systému SQL Server a bod sdílené složky.
-* Oprava protokolu související v instalačním programu základní pro konfigurační server.
-* Odkaz ke stažení pro VMware vCLI 6.0 přidal do Windows instalační program základní hlavní cíl.
-* Další kontroly a protokoly byly přidány, změny v konfiguraci sítě během cvičení obnovení převzetí služeb při selhání a po havárii.
-* Oprava problému, který způsobil informace o zachování nechcete oznámený ke konfiguračnímu serveru.  
-* V případě fyzických clusterů opravy problému, který způsobil selhání Průvodce vContinuum při zmenšování zdrojového svazku změnu velikosti svazku.
-* Opravu problému ochranu clusteru, která se nezdařila s chybou: "Nepovedlo se najít podpis disku", pokud je disk clusteru PRDM disku.
-* Oprava pro server selhání cxps přenosu, způsobené výjimku mimo rozsah.
-* Název serveru a IP adresu sloupce jsou nyní změnit v **nabízené instalace** stránky průvodce vContinuum.
-* Vylepšení rozhraní API příjmu:
-  * Pět nejnovější dostupné běžné konzistence odkazuje nyní k dispozici (zaručeno, značky).
-  * Kapacita a volné místo podrobnosti se zobrazí u všech chráněných prostředků.
+* Vylepšené zpracování vypnutí pro následující operační systémy Linux a klony, aby nedocházelo k nežádoucím potížím při opakované synchronizaci:
+    * Red Hat Enterprise Linux (RHEL) 6. x
+    * Oracle Linux (OL) 6. x
+* Pro Linux se všechna oprávnění k přístupu ke složkám v adresáři sjednocené instalace agenta teď omezují jenom na místního uživatele.
+* Ve Windows se jedná o opravu problému s časováním, ke kterému došlo při vystavování běžných distribuovaných záložek konzistence, a to na silně načtené distribuované aplikace, jako jsou SQL Server a clustery bodu sdílení.
+* Oprava související s protokolem v základní instalační službě konfiguračního serveru.
+* Odkaz ke stažení pro VMware vCLI 6,0 se přidal do základního instalačního programu Windows Master Target.
+* Pro změny konfigurace sítě během převzetí služeb při selhání a zotavení po havárii se přidaly další kontroly a protokoly.
+* Oprava problému, který způsobil, že informace o uchovávání dat nejsou hlášeny ke konfiguračnímu serveru.  
+* U fyzických clusterů je oprava problému, který způsobil selhání změny velikosti svazku, v průvodci vContinuum při zmenšování zdrojového svazku.
+* Oprava problému s ochranou clusteru, u něhož došlo k chybě: "Nepovedlo se najít podpis disku, pokud je disk clusteru PRDM disk.
+* Oprava pro chybu přenosového serveru cxps, která je způsobená výjimkou mimo rozsah.
+* Sloupce název serveru a IP adresa je teď možné měnit na stránce pro **nabízenou instalaci** v průvodci vContinuum.
+* Vylepšení rozhraní API pro příjem:
+  * K dispozici jsou pět nejnovějších dostupných běžných bodů konzistence (jenom garantované značky).
+  * Pro všechna chráněná zařízení se zobrazí podrobnosti o kapacitě a volném prostoru.
   * Stav ovladače Scout na zdrojovém serveru je k dispozici.
 
 > [!NOTE]
-> * **InMage_Scout_Standard_8.0.1_GA.zip** základní balíček obsahuje:
->     * Instalátor aktualizovanou konfiguraci serveru základní (**InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe**)
->     * Instalační program základní s Windows hlavní cíl (**InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_26Feb2015_release.exe**).
->     * Pro všechny nové instalace použijte nové konfigurační server a hlavní cílový GA bits Windows.
-> * Aktualizace 4 se dá použít přímo na 8.0.1 Obecné dostupnosti.
-> * Konfigurační server a příjmu aktualizace nelze vrátit zpět poté, co jste použili.
+> * **Inmage_scout_standard_ 8.0.1 _ga. zip** Base Package:
+>     * Aktualizovaný základní instalační program konfiguračního serveru (**inmage_cx_ 8.0.1.0 _windows_ga_26feb2015_release. exe**)
+>     * Základní instalační program Windows pro hlavní cíl (**inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_26feb2015_release. exe**).
+>     * Pro všechny nové instalace použijte nový konfigurační server a hlavní cílový server Windows v g bitů.
+> * Aktualizaci 4 lze použít přímo na 8.0.1 GA.
+> * Konfigurační server a aktualizace pro příjem se po použití nedají vrátit zpátky.
 
 
 ### <a name="azure-site-recovery-scout-801-update-3"></a>Azure Site Recovery Scout 8.0.1 Update 3
 
-Všechny aktualizace Site Recovery jsou kumulativní. Aktualizací Update 3 obsahuje všechny opravy z Update 1 a Update 2. Aktualizací Update 3 je možné použít přímo na 8.0.1 Obecné dostupnosti. Konfigurační server a příjmu aktualizace nelze vrátit zpět poté, co jste použili.
+Všechny aktualizace Site Recovery jsou kumulativní. Aktualizace 3 obsahuje všechny opravy z Update 1 a Update 2. Aktualizaci 3 lze použít přímo na 8.0.1 GA. Konfigurační server a aktualizace pro příjem se po použití nedají vrátit zpátky.
 
 #### <a name="bug-fixes-and-enhancements"></a>Opravy chyb a vylepšení
-Aktualizace 3 řeší následující problémy:
+Aktualizace 3 opravuje následující problémy:
 
-* Konfigurační server a příjmu nejsou registrovány v trezoru, když jsou za proxy serverem.
-* Počet hodin, ve kterých nebylo dosaženo plánovaného bodu obnovení (RPO), není aktualizován v sestavě o stavu.
-* Konfigurační server nesynchronizuje s RX při podrobnosti o hardwaru ESX nebo podrobnosti o síti, obsahovat žádné znaky znakové sady UTF-8.
-* Řadiče domény systému Windows Server 2008 R2 nespouštět po obnovení.
+* Konfigurační server a RX nejsou v trezoru zaregistrované, pokud se nachází za proxy serverem.
+* Počet hodin, ve kterých se nedosáhlo cíle bodu obnovení (RPO), se v sestavě stavu neaktualizuje.
+* Konfigurační server se nesynchronizuje se systémem RX, pokud podrobnosti o hardwaru ESX nebo podrobnosti sítě obsahují jakékoli znaky UTF-8.
+* Řadiče domény se systémem Windows Server 2008 R2 se po obnovení nespustí.
 * Offline synchronizace nefunguje podle očekávání.
-* Po převzetí služeb při selhání virtuálního počítače nebude odstranění replikace páru průběh v konzole nástroje Konfigurace serveru po dlouhou dobu. Uživatele nelze dokončit navrácení služeb po obnovení nebo obnovit provoz.
-* Celkově snímkových operací úlohou konzistence byly optimalizovány odstraněním, chcete-li snížit aplikace odpojí např. do klientů systému SQL Server.
-* Vylepšili jsme výkon nástroje (VACP.exe) konzistence. Zmenšili jsme využití paměti vyžadované pro vytváření snímků na Windows.
-* Vynucené instalace služby chyb, pokud heslo je větší než 16 znaků.
-* vContinuum nebude zkontrolujte a výzvu k zadání nové přihlašovací údaje k vCenter, při změně přihlašovacích údajů.
-* V Linuxu není správce mezipaměti hlavní cíl (cachemgr) stahování souborů z procesového serveru. Výsledkem je omezení šířky pásma replikace páru.
-* Když pořadí převzetí služeb při selhání fyzického disku clusteru (MSCS) není stejná ve všech uzlech, replikaci není nastavena pro některý ze svazků clusteru. Cluster musí znovunastavení ochrany, abyste mohli využít tuto opravu.  
-* SMTP funkce nepracuje dle očekávání, po upgradu RX 7.1 Scout k Scout 8.0.1.
-* Další statistiky byly přidány do protokolu pro operaci vrácení zpět, sledovat čas potřebný k jejímu dokončení.
-* Byla přidána podpora pro operační systémy Linux na zdrojovém serveru:
-  * Aktualizace Red Hat Enterprise Linux (RHEL) 6, 7
-  * CentOS 6 aktualizace 7
-* Konfigurační server a příjmu konzoly teď zobrazit oznámení pro dvojici, která přejde do režimu rastrového obrázku.
-* Byly přidány následující opravy zabezpečení v příjmu:
-    * Povolení obejít prostřednictvím parametru manipulaci: Omezený přístup uživatelům není použitelné.
-    * Padělání žádosti více webů: Koncept token stránka byla implementována a vygeneruje náhodně na každou stránku. To znamená, že existuje pouze jedna přihlášení instance pro stejného uživatele, a aktualizace stránky nefunguje. Místo toho je přesměrován na řídicí panel.
-    * Nahrání souboru se škodlivým: Soubory jsou omezeny na konkrétní rozšíření: z aiff, amp, avi, bmp, sdíleného svazku clusteru, doc, docx, příznaků, flv, gif, gz, gzip, jpeg, jpg, protokolu, střední, mov, mp3, mp4, mpc, mpeg, mpg, ods, odt, pdf, png, ppt, pptx, pxd, qt, paměti ram, rar, rm, rmi, rmvb, rtf, sdc, sitd, swf , sxc, sxw, cíl, tgz, tif, tiff, txt, vsd, wav, wma, wmv, xls, xlsx, xml a zip.
-    * Trvalé skriptování napříč weby: Zadávání byly přidány.
+* Po převzetí služeb virtuálního počítače při selhání nepokračuje v konzole konfiguračního serveru po dlouhou dobu odstranění páru replikace. Uživatelé nemůžou dokončit operace navrácení služeb po obnovení nebo obnovení.
+* Byly optimalizované celkové operace snímkování úlohou konzistence, které vám pomůžou snižovat odpojení aplikací, jako jsou SQL Server klienti.
+* Vylepšili jsme výkon nástroje pro konzistenci (VACP. exe). Využití paměti vyžadované pro vytváření snímků ve Windows se snížilo.
+* Pokud je heslo delší než 16 znaků, služba push Install dojde k chybě.
+* vContinuum nekontroluje a vyzývá nové přihlašovací údaje pro vCenter při změně přihlašovacích údajů.
+* V systému Linux hlavní cílový správce mezipaměti (cachemgr) nestahuje soubory z procesového serveru. Výsledkem je omezení dvojice replikací.
+* Pokud není pořadí fyzického disku clusteru s podporou převzetí služeb při selhání na všech uzlech stejný, replikace není nastavená pro některé svazky clusteru. Aby bylo možné tuto opravu využít, musí být cluster znovu chráněn.  
+* Funkce protokolu SMTP nefunguje podle očekávání, po upgradu na RX z verze Scout 7,1 na Scout 8.0.1.
+* Do protokolu pro operaci vrácení zpět se přidalo více statistik, aby se mohla sledovat doba potřebná k jejímu dokončení.
+* Na zdrojovém serveru se přidala podpora pro operační systémy Linux:
+  * Red Hat Enterprise Linux (RHEL) 6 – aktualizace 7
+  * CentOS 6 – aktualizace 7
+* Konfigurační server a Konzola pro příjem nyní zobrazují oznámení pro dvojici, která přecházejí do režimu rastrového obrázku.
+* V RX byly přidány následující opravy zabezpečení:
+    * Obcházení autorizace prostřednictvím manipulace s parametry: Omezený přístup pro uživatele, kteří nejsou k dispozici.
+    * Padělání žádostí mezi weby: Koncept tokenu stránky byl implementován a vygeneruje se náhodným pro každou stránku. To znamená, že pro stejného uživatele je k dispozici pouze jedna instance jednotného přihlašování a aktualizace stránky nefunguje. Místo toho se přesměruje na řídicí panel.
+    * Nahrání škodlivého souboru: Soubory jsou omezené na konkrétní rozšíření: z, AIFF, ASF, AVI, BMP, CSV, doc, DOCX, FLA, FLV, GIF, GZ, gzip, JPEG, jpg, log, Mid, MOV, MP3, MP4, MPC, MPEG, MPG, ODS, ODT, PDF, RM, RMI, RMVB, RTF, SDC, sitd, SWF , SXC, SXW, tar, TGZ, TIF, TIFF, txt, VSD, WAV, WMA, WMV, XLS, XLSX, XML a zip.
+    * Trvalé skriptování mezi weby: Byla přidána ověření vstupu.
 
-### <a name="azure-site-recovery-scout-801-update-2-update-03dec15"></a>Aktualizace služby Azure Site Recovery Scout 8.0.1 2 (03 aktualizace 15 prosince)
+### <a name="azure-site-recovery-scout-801-update-2-update-03dec15"></a>Azure Site Recovery Scout 8.0.1 Update 2 (aktualizace 03Dec15)
 
-Opravy v aktualizaci Update 2 patří:
+Opravy ve Update 2 zahrnují:
 
-* **Konfigurační server**: Problémy, které zabránily 31 dnů zdarma měření funkce funkční podle očekávání, když byl zaregistrován konfiguračního serveru k trezoru Azure Site Recovery.
-* **Nástroj Unified agent**: Oprava pro problém, kvůli němuž není nainstalována na hlavním cílovém serveru během upgradu z verze 8.0 na 8.0.1 aktualizace Update 1.
+* **Konfigurační server**: Problémy, které zabránily nesprávnému fungování funkce měření na základě 31 dní, jsou při registraci konfiguračního serveru do trezoru Azure Site Recovery.
+* **Sjednocený agent**: Opravte problém v aktualizaci Update 1, který vedl k instalaci aktualizace na hlavní cílový server během upgradu z verze 8,0 na 8.0.1.
 
-### <a name="azure-site-recovery-scout-801-update-1"></a>Aktualizace služby Azure Site Recovery Scout 8.0.1 1
-Aktualizace Update 1 zahrnuje následující opravy chyb a nové funkce:
+### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
+Aktualizace 1 obsahuje následující opravy chyb a nové funkce:
 
-* 31 dnů zdarma ochrany na instanci serveru. To umožňuje otestovat funkci nebo nastavení testování konceptu.
-* Všechny operace na serveru, včetně převzetí služeb při selhání a navrácení služeb po obnovení, je zdarma pro prvních 31 dní. Čas začne, když server je nejprve chránit pomocí Site Recovery Scout. Od 32. dne každý chráněný server se účtuje sazbou standardní instance pro ochranu Site Recovery do lokality vlastněné zákazníkem.
-* V každém okamžiku je k dispozici na počet chráněných serverů se účtuje **řídicí panel** v trezoru.
-* Byla přidána podpora rozhraní příkazového řádku (vCLI) vSphere 5.5 Update 2.
-* Přidali jsme podporu těchto operačních systémů Linux na zdrojovém serveru:
-    * RHEL 6 aktualizace 6
-    * RHEL 5 Update 11
-    * CentOS 6 aktualizace 6
-    * CentOS 5 Update 11
-* Opravy chyb pro řeší následující problémy:
-  * Pro konfigurační server nebo RX server neúspěšné registrace trezoru.
-  * Svazky clusteru nejsou zobrazeny jako očekávané při clusterovaný, že znovunastavení ochrany virtuálních počítačů podle jejich obnovení.
-  * Navrácení služeb po obnovení selže, když hlavní cílový server je hostovaná na jiném serveru ESXi z produkčního prostředí v místním virtuálním počítačům.
-  * Konfigurační soubor oprávnění se mění při upgradu na 8.0.1. Tato změna ovlivní ochranu a operace.
-  * Prahová hodnota opětovné synchronizace se nevynucuje podle očekávání, způsobuje nekonzistentní replikace chování.
-  * Nastavení plánovaného bodu obnovení v konzole pro konfiguraci serveru nezobrazí správně. Hodnota nekomprimovaných dat nesprávně ukazuje komprimované hodnoty.
-  * Operace odebrání nedojde k odstranění podle očekávání v nástroji Průvodce vContinuum a replikace se neodstraní z konzoly pro konfigurační server.
-  * V Průvodci vContinuum disku je automaticky při kliknutí na **podrobnosti** v zobrazení disku během ochrany virtuálních počítačů v clusteru MSCS.
-  * V případě fyzického na virtuální (P2V) nejsou požadované HP služby (například CIMnotify a CqMgHost) přesunout na ruční obnovení virtuálního počítače. Tento problém má za následek další spuštění.
-  * Virtuální počítač s Linuxem ochrana se nezdaří, pokud existuje více než 26 disků na hlavním cílovém serveru.
+* 31 dní bezplatné ochrany na instanci serveru. To vám umožní testovat funkce nebo nastavit testování konceptu.
+* Všechny operace na serveru, včetně převzetí služeb při selhání a navrácení služeb po obnovení, jsou v prvních 31 dnech zdarma. Čas začíná při první ochraně serveru pomocí Site Recovery Scout. Od 32nd dne se každý chráněný Server účtuje za standardní sazbu instance, která se Site Recovery ochrana na webu vlastněné zákazníkem.
+* Počet chráněných serverů, které jsou momentálně účtované, je kdykoli k dispozici na **řídicím panelu** v trezoru.
+* Byla přidána podpora pro rozhraní příkazového řádku vSphere (vCLI) 5,5 Update 2.
+* Na zdrojovém serveru se přidala podpora pro tyto operační systémy Linux:
+    * RHEL 6 – aktualizace 6
+    * RHEL 5 – aktualizace 11
+    * CentOS 6 – aktualizace 6
+    * CentOS 5 – aktualizace 11
+* Opravy chyb, které řeší následující problémy:
+  * Registrace trezoru se pro konfigurační server nebo server pro příjem nezdařila.
+  * Po obnovení ochrany clusterových virtuálních počítačů se svazky clusteru nezobrazí podle očekávání.
+  * Navrácení služeb po obnovení se nepovede, když je hlavní cílový server hostovaný na jiném serveru ESXi z místních produkčních virtuálních počítačů.
+  * Oprávnění ke konfiguračnímu souboru se po upgradu na 8.0.1 mění. Tato změna má vliv na ochranu a operace.
+  * Prahová hodnota opakované synchronizace není vynucena podle očekávání a způsobuje nekonzistentní chování replikace.
+  * Nastavení RPO se v konzole konfiguračního serveru nezobrazují správně. Hodnota nekomprimovaných dat nesprávně zobrazuje komprimovanou hodnotu.
+  * Operace odebrání se v průvodci vContinuum neodstraní podle očekávání a replikace se z konzoly konfiguračního serveru neodstraní.
+  * Když v průvodci vContinuum kliknete na **Podrobnosti** v zobrazení disku, během ochrany virtuálních počítačů MSCS se disk automaticky nevybere.
+  * V případě fyzického na virtuální (P2V) se požadované služby HP (například CIMnotify a CqMgHost) nepřesunou na ruční v rámci obnovení virtuálních počítačů. Výsledkem tohoto problému je další čas spuštění.
+  * Ochrana virtuálního počítače se systémem Linux se nezdařila, pokud je na hlavním cílovém serveru více než 26 disků.
 

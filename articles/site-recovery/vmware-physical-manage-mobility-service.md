@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 7cd555f66bb6f65f498f9b3e5db9bbeda0505a8f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384968"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972134"
 ---
 # <a name="manage-mobility-agent-on-protected-machines"></a>Správa agenta mobility na chráněných počítačích
 
@@ -61,7 +61,7 @@ Odinstalujte z uživatelského rozhraní nebo z příkazového řádku.
 
 ### <a name="on-a-linux-machine"></a>V počítači se systémem Linux
 1. Na počítači se systémem Linux se přihlaste jako uživatel **root** .
-2. V terminálu přejděte na/user/local/ASR.
+2. V terminálu přejděte na/usr/local/ASR.
 3. Spusťte následující příkaz:
     ```
     uninstall.sh -Y
@@ -76,7 +76,7 @@ Pro generování bodů konzistence aplikací je na zdrojovém počítači vyžad
 3. Spusťte skript InMageVSSProvider_Uninstall. cmd. Tato akce odinstaluje službu, pokud již existuje.
 4. Spusťte skript InMageVSSProvider_Install. cmd pro ruční instalaci poskytovatele služby VSS.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Nastavení zotavení po havárii pro virtuální počítače VMware](vmware-azure-tutorial.md)
 - [Nastavení zotavení po havárii pro fyzické servery](physical-azure-disaster-recovery.md)

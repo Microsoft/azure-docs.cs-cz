@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f7afd3d4b03c55c6cd9878b7d22106eee371ba99
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 1a33e20ec540a05885eb13a3828d28ffc9923fff
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877913"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972837"
 ---
 # <a name="cloudsimple-security-overview"></a>Přehled zabezpečení CloudSimple
 

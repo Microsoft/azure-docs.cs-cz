@@ -1,166 +1,166 @@
 ---
-title: Pochopit, jak metrika výstrahy práce ve službě Azure Monitor.
-description: Získejte přehled, co můžete dělat s upozornění na metriku a jak fungují ve službě Azure Monitor.
+title: Pochopte, jak budou výstrahy metriky fungovat v Azure Monitor.
+description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a jak fungují v Azure Monitor.
 author: snehithm
 ms.author: snmuvva
 ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: ce65d87142df64a9f0c27f3acdb4d6f25e86fb8a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4dd95d32bad76a610b88a4362e7887efdfaf6af0
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071629"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972063"
 ---
-# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Pochopit, jak metrika výstrahy práce ve službě Azure Monitor
+# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Vysvětlení, jak fungují výstrahy metrik v Azure Monitor
 
-Upozornění metrik ve službě Azure Monitor pracovat nad vícedimenzionálních metrik. Tyto metriky můžou být [platformy metriky](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [vlastní metriky](../../azure-monitor/platform/metrics-custom-overview.md), [oblíbených protokolů ze služby Azure Monitor převést na metriky](../../azure-monitor/platform/alerts-metric-logs.md) a metrik Application Insights. Upozornění metrik hodnocení v pravidelných intervalech a zkontrolujte, zda podmínky na jeden nebo více metrika časových řad jsou true a vás upozorní, pokud se splní hodnocení. Upozornění na metriky jsou stavová, to znamená, že pouze odeslat oznámení při změně stavu.
+Výstrahy metrik v Azure Monitor pracují na multidimenzionálních metrikách. Tyto metriky můžou být [metrikami platforem](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [vlastní metriky](../../azure-monitor/platform/metrics-custom-overview.md), [Oblíbené protokoly z Azure monitor převedené na metriky](../../azure-monitor/platform/alerts-metric-logs.md) a Application Insights metriky. Výstrahy metriky jsou vyhodnocovány v pravidelných intervalech, aby bylo možné zjistit, zda jsou splněné podmínky na jedné nebo více metrik časových řad, a upozorňovat na to, až budou vyhodnocení splněna. Upozornění na metriku jsou stavová, to znamená, že odesílají oznámení pouze při změně stavu.
 
-## <a name="how-do-metric-alerts-work"></a>Jak fungují upozornění na metriku
+## <a name="how-do-metric-alerts-work"></a>Jak fungují výstrahy metrik?
 
-Pravidlo upozornění metriky můžete definovat tak, že zadáte cílový prostředek, které se mají monitorovat, název metriky, typ podmínky (statická nebo dynamická) a podmínky (operátor a prahová hodnota citlivosti) a skupinu akcí, až se spustí, když se pravidlo upozornění aktivuje. Typy podmínek ovlivňují způsob, jakým se určují prahové hodnoty. [Další informace o možnostech typu a citlivosti podmínku dynamickými prahovými hodnotami](alerts-dynamic-thresholds.md).
+Můžete definovat pravidlo výstrahy metriky zadáním cílového prostředku, který se má monitorovat, názvu metriky, typu podmínky (statické nebo dynamické) a podmínky (operátor a prahová hodnota/citlivost) a skupiny akcí, která se aktivuje při aktivaci pravidla výstrahy. Typy podmínek ovlivňují způsob, jakým jsou určovány prahové hodnoty. [Přečtěte si další informace o typu dynamické prahové hodnoty a možnosti citlivosti](alerts-dynamic-thresholds.md).
 
-### <a name="alert-rule-with-static-condition-type"></a>Pravidlo upozornění s typem statická podmínka
+### <a name="alert-rule-with-static-condition-type"></a>Pravidlo upozornění s typem statické podmínky
 
-Řekněme, že jste vytvořili pravidlo metriky upozornění jednoduché statické prahové hodnoty následujícím způsobem:
+Řekněme, že jste vytvořili jednoduché pravidlo výstrahy metriky se statickou prahovou hodnotou následujícím způsobem:
 
-- Cílový prostředek (Azure prostředků, kterou chcete monitorovat): myVM
-- Metrika: Procento CPU
-- Typ podmínky: Statická
-- Časová agregace (Statistika, která se spouští nad nezpracované hodnoty metrik. Čas podporované agregace jsou Min, Max, Avg, celkový počet, počet): Průměr
-- Období (vzhled back okno, přes které metriky jsou kontrolovány hodnoty): Za posledních 5 minut.
-- Frequency (četnost, se kterým zkontroluje upozornění metriky, pokud jsou splněny podmínky): 1 min.
-- Operátor: Větší než
-- Prahová hodnota: 70
+- Cílový prostředek (prostředek Azure, který chcete monitorovat): myVM
+- Metriky Procento CPU
+- Typ podmínky: Static
+- Časová agregace (statistika, která se spouští přes nezpracované hodnoty metrik. Podporovaná časová agregace jsou min, Max, AVG, Total, Count): Average
+- Tečka (pohled na pozadí, na kterém jsou zaškrtnuté hodnoty metriky): Za posledních 5 minut
+- Frekvence (frekvence, s níž výstraha metriky kontroluje, zda jsou splněny podmínky): 1 min
+- Podnikatel Větší než
+- Mezí 70
 
-Od doby, kdy se vytvoří pravidlo upozornění monitorování spouští každou 1 minutu a prohledá hodnoty metrik za posledních 5 minut a zkontroluje, pokud průměr těchto hodnot, které je vyšší než 70. Pokud tedy je splněna podmínka, průměrné procento CPU za posledních 5 minut vyšší než 70, pravidlo upozornění aktivuje aktivovaná upozornění. Pokud jste nakonfigurovali e-mailu nebo akce hook webové do skupiny akcí přidružené pravidlo upozornění, zobrazí se aktivovaná upozornění u obou.
+Od okamžiku vytvoření pravidla výstrahy se monitor spouští každých 1 min a hledá metriky za posledních 5 minut a zkontroluje, jestli průměr těchto hodnot překračuje 70. Pokud je splněna podmínka, průměrná procentuální hodnota procesoru za posledních 5 minut překračuje 70, pravidlo výstrahy aktivuje aktivované oznámení. Pokud jste nakonfigurovali akci e-mail nebo webový zavěšení ve skupině akcí přidružené k pravidlu výstrahy, obdržíte i aktivované oznámení.
 
-Při použití více podmínek v jednom pravidlu, pravidlo "a" podmínky společně.  To znamená upozornění je vyvoláno, když všechny podmínky upozornění vyhodnotí jako true a vyřešit, když jedna z podmínek už není true. A příkladem tohoto typu výstrahy může být výstraha při "CPU vyšší než 90 %" a "délka fronty je více než 300 položek". 
+Pokud v jednom pravidle používáte více podmínek, pravidlo "and" tyto podmínky pohromadě.  To znamená, že výstraha se aktivuje, když se všechny podmínky ve výstraze vyhodnotí jako pravdivé, a vyřešte, když jedna z podmínek už není pravdivá. A příkladem tohoto typu výstrahy bude upozornění, když je procesor vyšší než 90% a délka fronty je více než 300 položek. 
 
-### <a name="alert-rule-with-dynamic-condition-type"></a>Pravidlo upozornění s typem dynamická podmínka
+### <a name="alert-rule-with-dynamic-condition-type"></a>Pravidlo upozornění s dynamickým typem podmínky
 
-Řekněme, že jste vytvořili jednoduchý metriky upozornění pravidla dynamickými prahovými hodnotami následujícím způsobem:
+Řekněme, že jste vytvořili jednoduché pravidlo upozornění metriky dynamického prahového hodnoty následujícím způsobem:
 
-- Cílový prostředek (Azure prostředků, kterou chcete monitorovat): myVM
-- Metrika: Procento CPU
+- Cílový prostředek (prostředek Azure, který chcete monitorovat): myVM
+- Metriky Procento CPU
 - Typ podmínky: Dynamické
-- Časová agregace (Statistika, která se spouští nad nezpracované hodnoty metrik. Čas podporované agregace jsou Min, Max, Avg, celkový počet, počet): Průměr
-- Období (vzhled back okno, přes které metriky jsou kontrolovány hodnoty): Za posledních 5 minut.
-- Frequency (četnost, se kterým zkontroluje upozornění metriky, pokud jsou splněny podmínky): 1 min.
-- Operátor: Větší než
-- Citlivost: Střední
-- Vzhled Back období: 4
-- Počet porušení zásad: 4
+- Časová agregace (statistika, která se spouští přes nezpracované hodnoty metrik. Podporovaná časová agregace jsou min, Max, AVG, Total, Count): Average
+- Tečka (pohled na pozadí, na kterém jsou zaškrtnuté hodnoty metriky): Za posledních 5 minut
+- Frekvence (frekvence, s níž výstraha metriky kontroluje, zda jsou splněny podmínky): 1 min
+- Podnikatel Větší než
+- Hlediska Střední
+- Hledat zpětná období: 4
+- Počet porušení: 4
 
-Jakmile se vytvoří pravidlo upozornění, dynamickými prahovými hodnotami algoritmu strojového učení se získat historická data, která je k dispozici, vypočítá prahovou hodnotu, která nejlíp odpovídá vzoru chování řady metrik a průběžně se další závislosti na nová data, aby Prahová hodnota přesnější.
+Po vytvoření pravidla výstrahy budou dynamické prahové hodnoty algoritmu strojového učení získávat historická data, která jsou k dispozici, vypočítat prahovou hodnotu, která nejlépe odpovídá vzoru chování metriky a bude se průběžně učit na základě nových dat. prahová hodnota přesnější.
 
-Od doby, kdy se vytvoří pravidlo upozornění monitorování spouští každou 1 minutu a prohledá hodnoty metrik za posledních 20 minut, které jsou seskupeny do období 5 minut a zkontroluje, pokud průměr hodnot období v každé 4 období překročí prahovou hodnotu očekávané. Pokud tedy je splněna podmínka, průměrné procento CPU za posledních 20 minut (čtyři období 5 minut) se od chování je očekávané čtyřikrát, pravidlo upozornění aktivuje aktivovaná upozornění. Pokud jste nakonfigurovali e-mailu nebo akce hook webové do skupiny akcí přidružené pravidlo upozornění, zobrazí se aktivovaná upozornění u obou.
+Od okamžiku vytvoření pravidla výstrahy se monitor spouští každých 1 min a prohlíží hodnoty metriky za posledních 20 minut seskupené do 5 minut a kontroluje, jestli průměr hodnot období v každé 4 obdobích překračuje očekávanou prahovou hodnotu. Pokud je splněna podmínka, průměrná procentuální hodnota procesoru za posledních 20 minut (čtyři 5 minut) se odchyluje od očekávaného chování čtyřikrát, pravidlo výstrahy aktivuje aktivované oznámení. Pokud jste nakonfigurovali akci e-mail nebo webový zavěšení ve skupině akcí přidružené k pravidlu výstrahy, obdržíte i aktivované oznámení.
 
-### <a name="view-and-resolution-of-fired-alerts"></a>Zobrazení a řešení aktivovaná upozornění
+### <a name="view-and-resolution-of-fired-alerts"></a>Zobrazit a vyřešit aktivované výstrahy
 
-Výše uvedené příklady pravidel upozornění ohlásí je možné zobrazit i na webu Azure Portal v **všechny výstrahy** okno.
+Výše uvedené příklady pravidel výstrah lze také zobrazit v Azure Portal v okně **všechna upozornění** .
 
-Dejme tomu, že využití na "myVM" pokračuje v následné kontroly je nad prahovou hodnotou, pravidlo upozornění nebude znovu vyvolat, dokud nebudou vyřešeny podmínky.
+Řekněme, že použití příkazu "myVM" pokračuje nad prahovou hodnotou v následných kontrolách. pravidlo výstrahy nebude znovu spuštěno, dokud nebudou podmínky vyřešeny.
 
-Zopakovat později, pokud využití na "myVM" se vrátí zpět na normální tedy neklesne pod prahovou hodnotou. Pravidlo výstrahy monitoruje podmínku pro ještě dvakrát, odeslat oznámení o vyřešené. Pravidlo upozornění odešle zprávu s přeložit/deaktivaci pro tři po sobě jdoucí tečky ke snížení šumu v případě netřepotá podmínek není splněna se vyskytl výstražný stav.
+Po určité době se využití "myVM" vrátí zpět na normální (pod prahovou hodnotou). Pravidlo výstrahy sleduje podmínku ještě dvakrát, aby bylo možné odeslat vyřešené oznámení. Pravidlo výstrahy pošle přeloženou nebo deaktivovanou zprávu, pokud se podmínka výstrahy nesplní po dobu tří po sobě jdoucích období, aby se snížila hlučnost v případě přepíná podmínek.
 
-Jak vyřešit oznámení se posílá navýšení kapacity pomocí webhooků a e-mailu, stav výstrahy instance (označované jako stav monitorování) na webu Azure portal je také nastavena na vyřešený.
+Jak se vyřešené oznámení odesílá prostřednictvím webových hooků nebo e-mailu, je stav instance výstrahy (nazývaný stav monitorování) v Azure Portal také nastaven na hodnotu Vyřešeno.
 
-### <a name="using-dimensions"></a>Pomocí dimenzí
+### <a name="using-dimensions"></a>Použití dimenzí
 
-Upozornění metrik ve službě Azure Monitor také podporovat monitorování několika kombinace hodnot dimenze s jedním pravidlem. Nyní se pokusíme pochopit, proč může používat více kombinace dimenzí s nám pomůže následující příklad.
+Výstrahy metrik v Azure Monitor také podporují monitorování více kombinací hodnot dimenzí s jedním pravidlem. Pojďme pochopit, proč byste mohli použít více kombinací dimenzí s příkladem.
 
-Řekněme, že máte plán služby App Service pro váš web. Chcete monitorovat využití procesoru ve více instancích spuštění vaší webové stránky nebo aplikace. Můžete to udělat pomocí metrik pravidlo upozornění následujícím způsobem:
+Řekněme, že máte App Service plán pro váš web. Chcete monitorovat využití procesoru u více instancí, na kterých běží web nebo aplikace. Pomocí pravidla výstrahy metriky můžete postupovat takto:
 
 - Cílový prostředek: myAppServicePlan
-- Metrika: Procento CPU
-- Typ podmínky: Statická
+- Metriky Procento CPU
+- Typ podmínky: Static
 - Dimenze
   - Instance = InstanceName1, InstanceName2
-- Časová agregace: Průměr
-- Období: Za posledních 5 minut.
-- Frekvence: 1 min.
-- Operátor: GreaterThan
-- Prahová hodnota: 70
+- Časová agregace: Average
+- Hodin Za posledních 5 minut
+- Opakování 1 min
+- Podnikatel GreaterThan
+- Mezí 70
 
-Stejně jako dříve, toto pravidlo monitoruje Pokud průměrné využití procesoru po dobu posledních 5 minut vyšší než 70 %. Pomocí stejného pravidla však můžete sledovat dvě instance provozovat svůj web. Každá instance se získat jednotlivě monitorovat a budete dostávat oznámení jednotlivě.
+Podobně jako předtím toto pravidlo monitoruje, pokud průměrné využití CPU za posledních 5 minut překračuje 70%. U stejného pravidla ale můžete monitorovat dvě instance běžící na vašem webu. Každá instance se monitoruje jednotlivě a oznámení se vám budou zobrazovat jednotlivě.
 
-Řekněme, že máte webovou aplikaci, která zaznamenává masivní poptávky a budete muset přidat další instance. Výše uvedené pravidlo pořád sleduje pouze dvě instance. Můžete však vytvořit pravidlo následujícím způsobem:
+Řekněme, že máte webovou aplikaci, která zobrazuje obrovský požadavek, a budete muset přidat další instance. Výše uvedené pravidlo stále sleduje pouze dvě instance. Pravidlo ale můžete vytvořit následujícím způsobem:
 
 - Cílový prostředek: myAppServicePlan
-- Metrika: Procento CPU
-- Typ podmínky: Statická
+- Metriky Procento CPU
+- Typ podmínky: Static
 - Dimenze
   - Instance = *
-- Časová agregace: Průměr
-- Období: Za posledních 5 minut.
-- Frekvence: 1 min.
-- Operátor: GreaterThan
-- Prahová hodnota: 70
+- Časová agregace: Average
+- Hodin Za posledních 5 minut
+- Opakování 1 min
+- Podnikatel GreaterThan
+- Mezí 70
 
-Toto pravidlo bude automaticky sledovat všechny hodnoty pro instanci tj vaše instance můžete sledovat, jak objevují aniž byste museli upravovat vaše metriky pravidlo upozornění znovu.
+Toto pravidlo automaticky monitoruje všechny hodnoty pro instanci, tj. své instance můžete monitorovat tak, jak se dostanou, aniž byste museli znovu upravovat pravidlo upozornění na metriky.
 
-Při monitorování více dimenzí, dynamickými prahovými hodnotami, které můžete vytvořit pravidlo upozornění přizpůsobené prahové hodnoty pro stovky metriky řad najednou. Dynamické prahové hodnoty za následek méně pravidel upozornění pro správu a spoustu času ukládá na správu a vytváření pravidel upozornění.
+Při monitorování více dimenzí může pravidlo pro dynamické prahové hodnoty vytvořit přizpůsobené prahové hodnoty pro stovky řady metrik v čase. Dynamické prahové hodnoty mají za následek méně pravidel výstrah pro správu a významnou dobu ukládání při správě a vytváření pravidel výstrah.
 
-Řekněme, že můžete mít třeba webovou aplikaci s více instancemi a nevíte, co je nejvhodnější prahovou hodnotu. Výše uvedených pravidel bude vždy používat prahovou hodnotu 70 %. Můžete však vytvořit pravidlo následujícím způsobem:
+Řekněme, že máte webovou aplikaci s velkým počtem instancí a nevíte, jakou je nejvhodnější prahová hodnota. Výše uvedená pravidla budou vždycky používat prahovou hodnotu 70%. Pravidlo ale můžete vytvořit následujícím způsobem:
 
 - Cílový prostředek: myAppServicePlan
-- Metrika: Procento CPU
+- Metriky Procento CPU
 - Typ podmínky: Dynamické
 - Dimenze
   - Instance = *
-- Časová agregace: Průměr
-- Období: Za posledních 5 minut.
-- Frekvence: 1 min.
-- Operátor: GreaterThan
-- Citlivost: Střední
-- Vzhled Back období: 1
-- Počet porušení zásad: 1
+- Časová agregace: Average
+- Hodin Za posledních 5 minut
+- Opakování 1 min
+- Podnikatel GreaterThan
+- Hlediska Střední
+- Hledat zpětná období: 1
+- Počet porušení: 1
 
-Toto pravidlo monitoruje Pokud průměrné využití procesoru po dobu posledních 5 minut vyšší než očekávané chování u každé instance. Stejné pravidlo, že instance můžete sledovat, jak objevují aniž byste museli upravovat vaše metriky pravidlo upozornění znovu. Každá instance bude získat prahovou hodnotu, která odpovídá vzoru chování řady metrik a se neustále mění v závislosti na nová data se zpřesnit prahovou hodnotu. Stejně jako dříve, každá instance bude monitorovat jednotlivě a budete dostávat oznámení jednotlivě.
+Toto pravidlo monitoruje, zda průměrné využití procesoru za posledních 5 minut překračuje očekávané chování pro každou instanci. Stejné pravidlo můžete sledovat instance, protože se zobrazí, aniž byste museli znovu upravovat pravidlo upozornění na metriky. Každá instance získá prahovou hodnotu, která odpovídá vzoru chování metrik řady, a bude se průběžně měnit na základě nových dat, aby byla prahová hodnota přesnější. Stejně jako dřív se jednotlivé instance monitorují jednotlivě a oznámení se vám budou zobrazovat jednotlivě.
 
-Zvýšení období zpět vzhled a počet porušení zásad můžete také povolit filtrování výstrah pouze upozornění na vaší definice významné odchylky. [Další informace o dynamické prahové hodnoty pokročilé možnosti](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
+Zvýšení doby zpětného vyhledávání a počtu porušení může také umožňovat filtrování výstrah jenom na základě definice významné odchylky. [Přečtěte si další informace o rozšířených možnostech pro dynamické prahové hodnoty](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorování ve velkém měřítku pomocí upozornění na metriky ve službě Azure Monitor
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorování ve velkém měřítku pomocí výstrah metrik v Azure Monitor
 
-Zatím jste mohli vidět, jak jeden upozornění na metriku může sloužit k monitorování jeden nebo více metriky týkající se časové řady na jeden prostředek Azure. V mnoha případech můžete stejné pravidlo upozornění u mnoha prostředky. Azure Monitor podporuje také monitorování více prostředků s jedním pravidlem upozornění metriky. Tato funkce je momentálně podporována pouze na virtuálních počítačích. Navíc jeden upozornění na metriku můžete monitorovat prostředky v jedné oblasti Azure.
+Zatím jste viděli, jak se dá jedna výstraha metriky použít k monitorování jedné nebo mnoha metrik časových řad, které souvisí s jedním prostředkem Azure. V mnoha případech možná budete chtít, aby se stejné pravidlo pro upozornění uplatnilo na mnoho prostředků. Azure Monitor také podporuje monitorování více prostředků s jedním pravidlem upozornění na metriky. Tato funkce je aktuálně podporována pouze na virtuálních počítačích. Jedna výstraha metriky může také monitorovat prostředky v jedné oblasti Azure.
 
-Můžete určit rozsah monitorování podle jednoho upozornění na metriku v jednom ze tří způsobů:
+Můžete určit rozsah monitorování jedním výstrahou metriky jedním ze tří způsobů:
 
 - jako seznam virtuálních počítačů v jedné oblasti Azure v rámci předplatného
-- všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupin prostředků v rámci předplatného
+- všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupinách prostředků v rámci předplatného
 - všechny virtuální počítače (v jedné oblasti Azure) v jednom předplatném
 
-Vytvoření pravidla upozornění na metriky, které monitorují několik prostředků je třeba [vytváření dalších upozornění metriky](alerts-metric.md) , který monitoruje na jediný prostředek. Jediný rozdíl je, že vyberete všechny prostředky, které chcete monitorovat. Můžete také vytvořit tato pravidla pomocí [šablon Azure Resource Manageru](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Zobrazí se jednotlivá oznámení pro každý virtuální počítač.
+Vytváření pravidel upozornění na metriky, které monitorují více prostředků, je jako [Vytvoření jakékoli jiné výstrahy metriky](alerts-metric.md) , která monitoruje jeden prostředek. Jediným rozdílem je, že byste vybrali všechny prostředky, které chcete monitorovat. Tato pravidla můžete také vytvořit prostřednictvím [šablon Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Pro každý virtuální počítač budete dostávat jednotlivá oznámení.
 
-## <a name="typical-latency"></a>Typické latence
+## <a name="typical-latency"></a>Typická latence
 
-Pro upozornění metrik obvykle dostanete oznámení za méně než 5 minut Pokud nastavíte pravidlo upozornění frekvence bude 1 min. V případě velkého zatížení pro systémy oznámení případech může se zobrazit delší latence.
+V případě výstrah metriky se obvykle během 5 minut zobrazí upozornění, pokud nastavíte četnost pravidel upozornění na 1 min. V případě velkého zatížení systémů oznámení se může zobrazit delší latence.
 
-## <a name="supported-resource-types-for-metric-alerts"></a>Podporované typy prostředků pro upozornění na metriku
+## <a name="supported-resource-types-for-metric-alerts"></a>Podporované typy prostředků pro výstrahy metriky
 
 Úplný seznam podporovaných typů prostředků najdete v tomto [článku](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
-Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit, pokud podporují upozornění na metriku všechny typy prostředků, který používáte, následující tabulka ukazuje na prostředek typy podporovaných klasického upozornění metrik a pokud se podporuje upozornění metrik ještě dnes nebo ne.
+Pokud dnes používáte klasické výstrahy metrik a chcete zjistit, jestli upozornění na metriky podporují všechny typy prostředků, které používáte, v následující tabulce jsou uvedeny typy prostředků podporované klasickými výstrahami metriky a pokud jsou podporovány výstrahami metrik ještě dnes nebo ne.
 
-|Typ prostředku podporuje klasického upozornění metrik | Podporuje upozornění na metriku |
+|Typ prostředku podporovaný klasickými výstrahami metriky | Podporováno výstrahami metriky |
 |-------------------------------------------------|----------------------------|
 | Microsoft.ApiManagement/service | Ano |
 | Microsoft.Batch/batchAccounts| Ano|
 |Microsoft.Cache/redis| Ano |
-|Microsoft.ClassicCompute/virtualMachines | Ne |
+|Microsoft. ClassicCompute/virtualMachines | Ne |
 |Microsoft.ClassicCompute/domainNames/slots/roles | Ne|
 |Microsoft.CognitiveServices/accounts | Ne |
 |Microsoft.Compute/virtualMachines | Ano|
 |Microsoft.Compute/virtualMachineScaleSets| Ano|
-|Microsoft.ClassicStorage/storageAccounts| Ne |
-|Microsoft.DataFactory/datafactories | Ano|
+|Microsoft. ClassicStorage/storageAccounts| Ne |
+|Microsoft. DataFactory/DataFactory | Ano|
 |Microsoft.DBforMySQL/servers| Ano|
 |Microsoft.DBforPostgreSQL/servers| Ano|
 |Microsoft.Devices/IotHubs | Ne|
-|Microsoft.DocumentDB/databaseAccounts| Ano|
+|Microsoft. DocumentDB/databaseAccounts| Ano|
 |Microsoft.EventHub/namespaces | Ano|
 |Microsoft.Logic/workflows | Ano|
 |Microsoft.Network/loadBalancers |Ano|
@@ -174,14 +174,14 @@ Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit
 |Microsoft.StreamAnalytics/streamingjobs| Ano|
 |Microsoft.TimeSeriesInsights/environments | Ano|
 |Microsoft Web/serverfarms | Ano |
-|Microsoft Weby (s výjimkou funkce) | Ano|
+|Microsoft Web nebo weby (kromě funkcí) | Ano|
 |Microsoft Web/hostingEnvironments/multiRolePools | Ne|
 |Microsoft Web/hostingEnvironments/workerPools| Ne |
-|Microsoft.SQL/Servers | Ne |
+|Microsoft. SQL/servery | Ne |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Zjistěte, jak vytvořit, zobrazit a spravovat upozornění metrik v Azure](alerts-metric.md)
-- [Zjistěte, jak nasadit upozornění na metriku pomocí šablony Azure Resource Manageru](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Naučte se vytvářet, zobrazovat a spravovat upozornění na metriky v Azure.](alerts-metric.md)
+- [Naučte se nasazovat výstrahy metrik pomocí šablon Azure Resource Manager.](../../azure-monitor/platform/alerts-metric-create-templates.md)
 - [Další informace o skupinách akcí](action-groups.md)
-- [Další informace o typ podmínky dynamickými prahovými hodnotami](alerts-dynamic-thresholds.md)
+- [Další informace o typu podmínky dynamického prahového hodnoty](alerts-dynamic-thresholds.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 1fd08efd12e723a16445eba1d341f017a86a212e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e55b191e937b6c9f8183b3878b264eb50401b3f1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68481411"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904024"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager následujících omezení se vztahují jenom na síťové prostředky spravované prostřednictvím **Azure Resource Manager** pro jednotlivé oblasti a předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům](../articles/networking/check-usage-against-limits.md)předplatného.
 
@@ -78,7 +78,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Resource | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Virtuální sítě |100 |100 |
-| Místní síťové lokality |20 |Kontaktujte podporu. |
+| Místní síťové lokality |20 |50 |
 | Servery DNS na virtuální síť |20 |20 |
 | Privátní IP adresy na virtuální síť |4 096 |4 096 |
 | Souběžné toky TCP nebo UDP na síťové karty virtuálního počítače nebo instance role |500 000, až 1 000 000 pro dvě nebo více síťových adaptérů. |500 000, až 1 000 000 pro dvě nebo více síťových adaptérů. |

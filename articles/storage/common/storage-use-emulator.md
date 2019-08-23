@@ -3,16 +3,16 @@ title: Použití emulátoru úložiště Azure pro vývoj a testování | Micros
 description: Emulátor úložiště Azure poskytuje bezplatné místní vývojové prostředí pro vývoj a testování vašich Azure Storagech aplikací. Zjistěte, jak jsou požadavky autorizovány, jak se připojit k emulátoru z vaší aplikace a jak používat nástroj příkazového řádku.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/10/2018
+ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: ee8dd9da186013dc168e20e6b8b842cca85de172
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: HT
+ms.openlocfilehash: a50b397ffe1cfc44d4234dcfbee1618e9fb2506c
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877625"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900343"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -320,7 +320,7 @@ V emulátoru nejsou žádné rozdíly specifické pro úložiště Queue.
 * Grafické uživatelské rozhraní emulátoru úložiště je zastaralé ve prospěch rozhraní příkazového řádku pro skriptování. Podrobnosti o rozhraní příkazového řádku najdete v tématu Referenční informace k nástroji příkazového řádku emulátoru úložiště. Grafické rozhraní bude nadále k dispozici ve verzi 3,0, ale je k němu možné přistupovat pouze v případě, že se emulátor služby COMPUTE nainstaluje kliknutím pravým tlačítkem na ikonu na hlavním panelu systému a výběrem možnosti zobrazit uživatelské rozhraní emulátoru úložiště.
 * Služba Azure Storage je teď plně podporovaná ve verzi 2013-08-15. (Dřív byla tato verze podporovaná jenom emulátorem úložiště verze 2.2.1 Preview.)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Vyhodnoťte [Azurite](https://github.com/arafato/azurite)emulátoru Open Source úložiště pro různé platformy, který spravuje komunita. 
 * [Azure Storage ukázky používající rozhraní .NET](../storage-samples-dotnet.md) obsahují odkazy na několik ukázek kódu, které můžete použít při vývoji aplikace.

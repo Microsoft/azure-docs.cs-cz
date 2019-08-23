@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric se správa rozhraní API – přehled | Dokumentace Microsoftu
-description: Tento článek je úvodem do jako brána pro vaše aplikace Service Fabric pomocí Azure API Management.
+title: Přehled služby Azure Service Fabric s API Management | Microsoft Docs
+description: Tento článek představuje úvod k používání služby Azure API Management jako brány k vašim Service Fabricm aplikacím.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,108 +14,108 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 0dac2730bcc13b979de6a8faaaa53c0aaf15e902
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 52f9584a2f793ff513100afcb7b7bd6acd2a4742
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621811"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900508"
 ---
-# <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric s Azure API Management – přehled
+# <a name="service-fabric-with-azure-api-management-overview"></a>Přehled Service Fabric s využitím Azure API Management
 
-Cloudové aplikace obvykle potřebují front-end bránu, která poskytuje jediný bod příjmu příchozího přenosu od uživatelů, zařízení nebo dalších aplikací. V Service Fabric, může být brána Bezstavová služba, jako [aplikace ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md), nebo jiná služba navržená pro příjem provozu, jako například [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [služby IoT Hub](https://docs.microsoft.com/azure/iot-hub/), nebo [Azure API Management](https://docs.microsoft.com/azure/api-management/).
+Cloudové aplikace obvykle potřebují front-end bránu, která poskytuje jediný bod příjmu příchozího přenosu od uživatelů, zařízení nebo dalších aplikací. V Service Fabric může být bránou Bezstavová služba, jako je například [aplikace ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)nebo jiná služba určená pro příchozí přenos dat, jako je například [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)nebo [Azure API Management](https://docs.microsoft.com/azure/api-management/).
 
-Tento článek je úvodem do jako brána pro vaše aplikace Service Fabric pomocí Azure API Management. API Management se integruje přímo do Service Fabric umožňuje publikovat rozhraní API s bohatou sadou pravidel směrování pro back-end služby Service Fabric. 
+Tento článek představuje úvod k používání služby Azure API Management jako brány k vašim Service Fabricm aplikacím. API Management se integruje přímo s Service Fabric, což vám umožní publikovat rozhraní API s bohatou sadou pravidel směrování pro vaše back-end Service Fabric služby. 
 
 ## <a name="availability"></a>Dostupnost
 
 > [!IMPORTANT]
-> Tato funkce je dostupná v **Premium** a **Developer** podporu úrovních služby API Management kvůli požadované virtuální sítě.
+> Tato funkce je dostupná na úrovních úrovně **Premium** a **Developer** API Management v důsledku podpory požadované virtuální sítě.
 
 ## <a name="architecture"></a>Architektura
 
-Běžné architektury Service Fabric používá jednostránkovou webovou aplikaci, která provádí volání HTTP na back endovým službám, které zveřejňují rozhraní API HTTP. [Začínáme – ukázkové aplikace Service Fabric](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) ukazuje příklad této architektury.
+Společná architektura Service Fabric používá jednostránkovou webovou aplikaci, která provádí volání HTTP do back-endové služby, které zveřejňují rozhraní API protokolu HTTP. Příklad této architektury zobrazuje [ukázková aplikace Service Fabric Začínáme](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) .
 
-V tomto scénáři bezstavovou webovou službu slouží jako brány do aplikace Service Fabric. Tento přístup vyžaduje, abyste napsal webovou službu, která se dá požadavky HTTP proxy server na back endové služby, jak je znázorněno v následujícím diagramu:
+V tomto scénáři slouží Bezstavová webová služba jako brána do aplikace Service Fabric. Tento přístup vyžaduje, abyste napsali webovou službu, která může proxy požadavky HTTP na back-endové služby, jak je znázorněno na následujícím diagramu:
 
-![Service Fabric s Azure API Management přehled topologie][sf-web-app-stateless-gateway]
+![Service Fabric s Azure API Management topologii – přehled][sf-web-app-stateless-gateway]
 
-Jak aplikace jejich složitost v, tak proveďte brány, které se musí poskytnout rozhraní API před řadu back endové služby. Azure API Management je určený k řešení složitých rozhraní API pomocí pravidel směrování, řízení přístupu, omezení četnosti, sledování, protokolování událostí a ukládání odpovědí do mezipaměti s minimálním úsilím na vaší straně. Azure API Management podporuje zjišťování služby Service Fabric, překlad oddílů a replik výběr inteligentně směrovat požadavky přímo na back endové služby v Service Fabric, takže není nutné psát bezstavové brány rozhraní API. 
+Vzhledem k tomu, že aplikace se výrazně mění, udělejte od služby back-end nesčetných brány, které musí představovat rozhraní API. Služba Azure API Management je navržená tak, aby zpracovávala složitá rozhraní API pomocí pravidel směrování, řízení přístupu, omezení četnosti, monitorování, protokolování událostí a ukládání odpovědí do mezipaměti s minimálními nároky na vaši část. Azure API Management podporuje zjišťování služby Service Fabric, rozlišení oddílů a výběr repliky k inteligentnímu směrování požadavků přímo do back-endové služby v Service Fabric, takže nemusíte psát vlastní bezstavovou bránu API. 
 
-V tomto scénáři webové uživatelské rozhraní i nadále obsluhuje prostřednictvím webové služby, při volání rozhraní API protokolu HTTP jsou spravovaná a směrovat pomocí Azure API Management, jak je znázorněno v následujícím diagramu:
+V tomto scénáři se webové uživatelské rozhraní pořád obsluhuje prostřednictvím webové služby, zatímco volání HTTP API se spravují a směrují prostřednictvím Azure API Management, jak je znázorněno na následujícím diagramu:
 
-![Service Fabric s Azure API Management přehled topologie][sf-apim-web-app]
+![Service Fabric s Azure API Management topologii – přehled][sf-apim-web-app]
 
 ## <a name="application-scenarios"></a>Scénáře aplikací
 
-Služby v Service Fabric může být Bezstavová nebo stavová a že může rozdělit na oddíly jedním ze tří režimů: singleton, rozsah int-64 a s názvem. Rozlišení koncového bodu služby vyžaduje identifikaci konkrétní oddíl konkrétní instanci služby. Při překladu koncový bod služby, název instance služby (například `fabric:/myapp/myservice`) stejně jako konkrétního oddílu služba musí být zadána, s výjimkou oddílů singleton.
+Služby v Service Fabric můžou být bezstavové nebo stavové a můžou být rozdělené do oddílů pomocí jednoho ze tří schémat: singleton, int-64 rozsah a s názvem. Řešení koncového bodu služby vyžaduje určení konkrétního oddílu určité instance služby. Při vyhodnocování koncového bodu služby musí být zadána jak název instance služby (například `fabric:/myapp/myservice`), tak i konkrétní oddíl služby, s výjimkou případů, kdy je oddíl singleton.
 
-Azure API Management můžete použít s libovolnou kombinací jakékoli schéma dělení, bezstavové služby a stavové služby.
+Azure API Management lze použít s libovolnou kombinací bezstavových služeb, stavových služeb a všech schémat dělení.
 
-## <a name="send-traffic-to-a-stateless-service"></a>Posílání provozu do bezstavové služby
+## <a name="send-traffic-to-a-stateless-service"></a>Odesílání provozu do bezstavové služby
 
-V nejjednodušším případě přenosy předávaly do instance bezstavové služby. K dosažení tohoto cíle, API Management operace obsahuje zásady zpracování příchozích pomocí Service Fabric back-end systém, který se mapuje na instanci konkrétní bezstavové služby v Service Fabric back endu. Požadavky odeslané na tuto službu se posílají náhodné repliky instance bezstavové služby.
+V nejjednodušším případě se přenos přepošle na bezstavovou instanci služby. Aby to bylo možné, operace API Management obsahuje zásady příchozího zpracování s back-end Service Fabric, které se mapují na určitou stavovou instanci služby v Service Fabric back-endu. Požadavky odeslané do této služby se odesílají do náhodné instance služby.
 
-#### <a name="example"></a>Příklad:
-V následujícím scénáři aplikace Service Fabric obsahuje Bezstavová služba s názvem `fabric:/app/fooservice`, který zpřístupňuje interní rozhraní HTTP API. Název instance služby je dobře známý a může být pevně zakódované přímo v zásadách zpracování příchozích API Management. 
+#### <a name="example"></a>Příklad
+V následujícím scénáři Service Fabric aplikace obsahuje bezstavovou službu s názvem `fabric:/app/fooservice`, která zveřejňuje interní rozhraní HTTP API. Název instance služby je dobře známý a může být pevně zakódovaný přímo v API Management zásady příchozího zpracování. 
 
-![Service Fabric s Azure API Management přehled topologie][sf-apim-static-stateless]
+![Service Fabric s Azure API Management topologii – přehled][sf-apim-static-stateless]
 
-## <a name="send-traffic-to-a-stateful-service"></a>Posílání provozu do stavové služby
+## <a name="send-traffic-to-a-stateful-service"></a>Odeslání provozu do stavové služby
 
-Podobně jako bezstavové služby scénář, provozu může být přeposílán instanci stavové služby. V takovém případě operaci rozhraní API Management obsahuje zásady zpracování příchozích pomocí Service Fabric back-end systém, který mapuje žádost na konkrétní oddíl s konkrétním *stavová* instance služby. Oddíl pro mapování každý požadavek je počítaný metodou lambda pomocí vstupu z příchozího požadavku HTTP, jako je například hodnota v cestě adresy URL. Zásady můžou nakonfigurovat na odesílání žádostí, pouze primární replikou, nebo náhodného repliky pro operace čtení.
+Podobně jako u bezstavových služeb se přenos dá přeslat na instanci stavové služby. V takovém případě API Management operace obsahuje zásadu příchozího zpracování s back-end Service Fabric, která mapuje požadavek na konkrétní oddíl určité instance stavové služby. Oddíl, na který má být namapován každý požadavek, je vypočítán prostřednictvím metody lambda pomocí nějakého vstupu z příchozího požadavku HTTP, jako je například hodnota v cestě URL. Zásady je možné nakonfigurovat tak, aby odesílaly požadavky jenom na primární repliku, nebo na náhodnou repliku pro operace čtení.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
-V následujícím scénáři aplikace Service Fabric obsahuje dělené stavové služby s názvem `fabric:/app/userservice` , která zveřejní vnitřní rozhraní HTTP API. Název instance služby je dobře známý a může být pevně zakódované přímo v zásadách zpracování příchozích API Management.  
+V následujícím scénáři Service Fabric aplikace obsahuje dělenou stavovou službu s názvem `fabric:/app/userservice` , která zveřejňuje interní rozhraní HTTP API. Název instance služby je dobře známý a může být pevně zakódovaný přímo v API Management zásady příchozího zpracování.  
 
-Služba je rozdělen na oddíly pomocí schématu oddílu Int64 dva oddíly a klíče rozsahu, který zahrnuje `Int64.MinValue` k `Int64.MaxValue`. Back-end zásady vypočítá klíče oddílu v rámci tohoto rozsahu převedením `id` hodnota zadaná v cestě adresy URL požadavku na 64bitové celé číslo, i když libovolný algoritmus lze zde compute klíč oddílu. 
+Služba je rozdělená pomocí schématu oddílu Int64 se dvěma oddíly a rozsahem klíče, který se `Int64.MinValue` rozpíná `Int64.MaxValue`na. Zásada back-end vypočítá klíč oddílu v tomto rozsahu převodem `id` hodnoty zadané v cestě požadavku URL na 64 celé číslo, i když zde můžete použít libovolný algoritmus, který vypočítá klíč oddílu. 
 
-![Service Fabric s Azure API Management přehled topologie][sf-apim-static-stateful]
+![Service Fabric s Azure API Management topologii – přehled][sf-apim-static-stateful]
 
-## <a name="send-traffic-to-multiple-stateless-services"></a>Odesílat provoz do více bezstavové služby
+## <a name="send-traffic-to-multiple-stateless-services"></a>Odesílání provozu do více bezstavových služeb
 
-V pokročilejších scénářích můžete definovat operace, která se mapuje žádosti více než jednu instanci služby API Management. V takovém případě každé operace obsahuje zásady, které mapuje požadavky na konkrétní instanci služby podle hodnoty z příchozího požadavku HTTP, jako třeba řetězec cesty nebo dotazu adresy URL a v případě stavových služeb, oddílu v rámci instance služby. 
+V pokročilejších scénářích můžete definovat operaci API Management, která mapuje požadavky na více než jednu instanci služby. V takovém případě každá operace obsahuje zásadu, která mapuje požadavky na konkrétní instanci služby na základě hodnot z příchozího požadavku HTTP, jako je například cesta URL nebo řetězec dotazu, a v případě stavových služeb oddíl v instanci služby. 
 
-K dosažení tohoto cíle, API Management operace obsahuje zásady zpracování příchozích pomocí Service Fabric back-end systém, který se mapuje na instanci bezstavové služby v Service Fabric podle hodnoty získané z příchozího požadavku protokolu HTTP back endu. Požadavky na instanci služby se posílají náhodné repliky instance služby.
+Aby to bylo možné, operace API Management obsahuje zásady příchozího zpracování s back-end Service Fabric, který se mapuje na bezstavovou instanci služby v Service Fabric back-endu na základě hodnot načtených z příchozího požadavku HTTP. Požadavky na službu jsou odesílány do náhodné instance služby.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
-V tomto příkladu je vytvořena nová instance bezstavovou službu pro každého uživatele, aplikace se dynamicky generované názvem pomocí následující vzorec:
+V tomto příkladu je nová Bezstavová instance služby vytvořena pro každého uživatele aplikace s dynamicky generovaným názvem pomocí následujícího vzorce:
  
 - `fabric:/app/users/<username>`
 
-  Každá služba má jedinečný název, ale nejsou známy názvy předem, protože služby jsou vytvořeny v reakci na uživatele nebo správce vstup a proto nemůže být pevně zakódovaný do zásad služby APIM nebo pravidla směrování. Místo toho se v definici zásad back endu z vygeneruje název služby, do které chcete odeslat žádost o `name` hodnota zadaná v cestě adresy URL požadavku. Příklad:
+  Každá služba má jedinečný název, ale názvy nejsou známy, protože služby jsou vytvořeny v reakci na vstup uživatele nebo správce, a proto nemohou být pevně zakódovány do zásad APIM nebo pravidel směrování. Místo toho se název služby, pro kterou se má odeslat žádost, vygeneruje v definici zásady back-endu z `name` hodnoty zadané v cestě žádosti URL. Příklad:
 
-  - Požadavek na `/api/users/foo` přesměrovala do instance služby `fabric:/app/users/foo`
-  - Požadavek na `/api/users/bar` přesměrovala do instance služby `fabric:/app/users/bar`
+  - Požadavek na `/api/users/foo` směrování do instance služby`fabric:/app/users/foo`
+  - Požadavek na `/api/users/bar` směrování do instance služby`fabric:/app/users/bar`
 
-![Service Fabric s Azure API Management přehled topologie][sf-apim-dynamic-stateless]
+![Service Fabric s Azure API Management topologii – přehled][sf-apim-dynamic-stateless]
 
-## <a name="send-traffic-to-multiple-stateful-services"></a>Odesílat provoz do více stavové služby
+## <a name="send-traffic-to-multiple-stateful-services"></a>Odesílání provozu do více stavových služeb
 
-Podobně jako v příkladu Bezstavová služba, API Management operace můžete mapovat požadavky na více než jeden **stavová** instance služby, v které takovém také může být zapotřebí provést překlad oddílů pro každou instanci stavové služby.
+Podobně jako v případě nestavové služby může operace API Management mapovat žádosti na více než jednu instanci **stavové** služby. v takovém případě možná budete muset pro každou stavovou instanci služby provést rozlišení oddílu.
 
-K dosažení tohoto cíle, API Management operace obsahuje zásady zpracování příchozích pomocí Service Fabric back-end systém, který se mapuje na instanci stavové služby v Service Fabric podle hodnoty získané z příchozího požadavku protokolu HTTP back endu. Kromě mapování požadavku na konkrétní instanci služby, žádost lze také mapovat do konkrétního oddílu v rámci instance služby, případně na primární repliku nebo náhodného sekundární repliky v rámci oddílu.
+Aby to bylo možné, operace API Management obsahuje zásady příchozího zpracování s back-end Service Fabric, který se mapuje na instanci stavové služby v Service Fabric back-endu na základě hodnot načtených z příchozího požadavku HTTP. Kromě mapování požadavku na konkrétní instanci služby je možné požadavek také namapovat na konkrétní oddíl v rámci instance služby a volitelně buď na primární repliku, nebo na náhodnou sekundární repliku v rámci oddílu.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
-V tomto příkladu je vytvořena nová instance stavové služby pro každého uživatele, aplikace se dynamicky generované názvem pomocí následující vzorec:
+V tomto příkladu se vytvoří nová stavová instance pro každého uživatele aplikace s dynamicky generovaným názvem pomocí následujícího vzorce:
  
 - `fabric:/app/users/<username>`
 
-  Každá služba má jedinečný název, ale nejsou známy názvy předem, protože služby jsou vytvořeny v reakci na uživatele nebo správce vstup a proto nemůže být pevně zakódovaný do zásad služby APIM nebo pravidla směrování. Místo toho se v definici zásad back endu z vygeneruje název služby, do které chcete odeslat žádost o `name` zadat hodnotu cesty adresy URL požadavku. Příklad:
+  Každá služba má jedinečný název, ale názvy nejsou známy, protože služby jsou vytvořeny v reakci na vstup uživatele nebo správce, a proto nemohou být pevně zakódovány do zásad APIM nebo pravidel směrování. Místo toho se název služby, pro kterou se má odeslat žádost, vygeneruje v definici zásady back-endu z `name` hodnoty zadané v cestě URL požadavku. Příklad:
 
-  - Požadavek na `/api/users/foo` přesměrovala do instance služby `fabric:/app/users/foo`
-  - Požadavek na `/api/users/bar` přesměrovala do instance služby `fabric:/app/users/bar`
+  - Požadavek na `/api/users/foo` směrování do instance služby`fabric:/app/users/foo`
+  - Požadavek na `/api/users/bar` směrování do instance služby`fabric:/app/users/bar`
 
-Každá instance služby je také rozdělit na oddíly pomocí dva oddíly a klíče rozsahu, který zahrnuje schéma oddílu Int64 `Int64.MinValue` k `Int64.MaxValue`. Back-end zásady vypočítá klíče oddílu v rámci tohoto rozsahu převedením `id` hodnota zadaná v cestě adresy URL požadavku na 64bitové celé číslo, i když libovolný algoritmus lze zde compute klíč oddílu. 
+Každá instance služby je také rozdělená pomocí schématu oddílu Int64 se dvěma oddíly a rozsahem klíče, který se `Int64.MinValue` rozpíná na `Int64.MaxValue`. Zásada back-end vypočítá klíč oddílu v tomto rozsahu převodem `id` hodnoty zadané v cestě požadavku URL na 64 celé číslo, i když zde můžete použít libovolný algoritmus, který vypočítá klíč oddílu. 
 
-![Service Fabric s Azure API Management přehled topologie][sf-apim-dynamic-stateful]
+![Service Fabric s Azure API Management topologii – přehled][sf-apim-dynamic-stateful]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Postupujte podle [kurzu](service-fabric-tutorial-deploy-api-management.md) nastavení vašeho prvního clusteru Service Fabric pomocí rozhraní API Management a tok žádostí prostřednictvím služby API Management k vašim službám.
+Postupujte podle tohoto [kurzu](service-fabric-tutorial-deploy-api-management.md) a nastavte svůj první Service Fabric cluster s požadavky API Management a flow prostřednictvím API Management do vašich služeb.
 
 <!-- links -->
 

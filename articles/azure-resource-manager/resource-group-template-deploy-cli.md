@@ -4,14 +4,14 @@ description: K nasazení prostředků do Azure použijte Azure Resource Manager 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/12/2019
+ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 93b1b16776bac6cb24996d6fa08a547318802f32
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: bd43e919cc0b2bcf1d130c7e616b7da064abcc65
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853834"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971016"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 
@@ -133,7 +133,7 @@ Zadané nasazení musí být úspěšné.
 
 ## <a name="parameters"></a>Parametry
 
-K předání hodnot parametrů můžete použít buď vložené parametry, nebo soubor parametrů. Předchozí příklady v tomto článku znázorňují vložené parametry.
+K předání hodnot parametrů můžete použít buď vložené parametry, nebo soubor parametrů.
 
 ### <a name="inline-parameters"></a>Vložené parametry
 
@@ -172,23 +172,7 @@ Formát arrayContent. JSON je:
 
 Místo předání parametrů jako vložených hodnot do skriptu může být snazší použít soubor JSON, který obsahuje hodnoty parametrů. Soubor parametrů musí být místní soubor. Soubory externích parametrů se v Azure CLI nepodporují.
 
-Soubor parametrů musí být v následujícím formátu:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-     "storageAccountType": {
-         "value": "Standard_GRS"
-     }
-  }
-}
-```
-
-Všimněte si, že oddíl Parameters obsahuje název parametru, který odpovídá parametru definovanému ve vaší šabloně (storageAccountType). Soubor parametrů obsahuje hodnotu parametru. Tato hodnota se během nasazení automaticky předává do šablony. Můžete vytvořit více než jeden soubor parametrů a pak předat příslušnému souboru parametrů pro daný scénář. 
-
-Zkopírujte předchozí příklad a uložte ho jako soubor s názvem `storage.parameters.json`.
+Další informace o souboru parametrů naleznete v tématu [Create správce prostředků Parameter File](resource-manager-parameter-files.md).
 
 Chcete-li předat místní soubor parametrů, `@` použijte k určení místního souboru s názvem Storage. Parameters. JSON.
 
@@ -198,18 +182,6 @@ az group deployment create \
   --resource-group ExampleGroup \
   --template-file storage.json \
   --parameters @storage.parameters.json
-```
-
-### <a name="parameter-precedence"></a>Priorita parametru
-
-Můžete použít vložené parametry a místní soubor parametrů ve stejné operaci nasazení. Můžete například zadat některé hodnoty v souboru s místním parametrem a přidat další hodnoty vložené během nasazování. Zadáte-li hodnoty pro parametr v místním souboru parametrů i v poli inline, má hodnota inline přednost.
-
-```azurecli
-az group deployment create \
-  --resource-group testgroup \
-  --template-file demotemplate.json \
-  --parameters @demotemplate.parameters.json \
-  --parameters exampleArray=@arrtest.json
 ```
 
 ## <a name="test-a-template-deployment"></a>Testování nasazení šablony
@@ -263,7 +235,7 @@ Pokud má vaše šablona syntaktickou chybu, příkaz vrátí chybu oznamující
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Příklady v tomto článku nasazují prostředky do skupiny prostředků ve vašem výchozím předplatném. Pokud chcete použít jiné předplatné, přečtěte si téma [Správa několika předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
 - Pokud chcete určit, jak se mají zpracovávat prostředky, které existují ve skupině prostředků, ale nejsou definované v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manager](deployment-modes.md).

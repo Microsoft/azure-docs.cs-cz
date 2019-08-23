@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e730e1b5534c4c74734816f5481247e341436b08
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 5a2cab9dff4a075545d919cb41e72cf6e446e9d2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656329"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897325"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Použití SSL k zabezpečení webové služby prostřednictvím Azure Machine Learning
 
@@ -149,9 +149,9 @@ V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou služb
   > [!WARNING]
   > Pokud jste službu *leaf_domain_label* použili k vytvoření služby pomocí certifikátu od Microsoftu, neaktualizujte ručně hodnotu DNS clusteru. Hodnota by měla být nastavena automaticky.
 
-  Aktualizujte DNS na kartě **Konfigurace** veřejné IP adresy clusteru AKS. (Podívejte se na následující obrázek.) Veřejná IP adresa je typ prostředku, který se vytvoří v rámci skupiny prostředků, která obsahuje uzly agenta AKS a další síťové prostředky.
+  Aktualizujte DNS veřejné IP adresy clusteru AKS na kartě **Konfigurace** v části **Nastavení** v levém podokně. (Podívejte se na následující obrázek.) Veřejná IP adresa je typ prostředku, který se vytvoří v rámci skupiny prostředků, která obsahuje uzly agenta AKS a další síťové prostředky.
 
-  ![Služba Azure Machine Learning: Zabezpečení webových služeb pomocí SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  [![Služba Azure Machine Learning: Zabezpečení webových služeb pomocí SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Aktualizace certifikátu SSL
 
@@ -230,9 +230,7 @@ Další informace najdete v následujících dokumentech k dokumentaci:
 
 ## <a name="disable-ssl"></a>Zakázat protokol SSL
 
-Pokud chcete protokol SSL zakázat pro model nasazený do služby Azure Kubernetes, můžete použít sadu SDK nebo rozhraní příkazového řádku:
-
-**Použití sady SDK**
+Pokud chcete protokol SSL zakázat pro model nasazený do služby Azure Kubernetes, `SslConfiguration` vytvořte `status="Disabled"`pomocí a pak proveďte aktualizaci:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -246,12 +244,6 @@ aks_target = AksCompute(ws, clustername)
 ssl_configuration = SslConfiguration(status="Disabled")
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
-```
-
-**Použití rozhraní příkazového řádku**
-
-```azurecli
- az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-disable True
 ```
 
 ## <a name="next-steps"></a>Další kroky

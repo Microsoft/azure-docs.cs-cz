@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: bed95c070649785a701f9d08a98faf29c8ee1413
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990686"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900433"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí .NET (Preview)
 
@@ -44,7 +44,7 @@ K ověřování pomocí přihlašovacích údajů Azure AD pomocí klientské kn
 
 Pokud chcete vytvořit instanční objekt pomocí Azure CLI a přiřadit roli RBAC, zavolejte příkaz [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) . Zadejte Azure Storage roli přístupu k datům, která se přiřadí k novému instančnímu objektu. Role musí zahrnovat akci **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** . Další informace o předdefinovaných rolích, které jsou k dispozici pro Azure Storage, najdete v tématu [předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
 
-Kromě toho zadejte obor pro přiřazení role. Instanční objekt vytvoří klíč delegování uživatele, což je operace prováděná na úrovni účtu úložiště, takže přiřazení role by mělo být vymezeno na úrovni účtu úložiště, skupiny prostředků nebo předplatného. Další informace o oprávněních RBAC pro vytvoření SAS delegování uživatele najdete v části **přiřazení oprávnění s RBAC** v tématu [Vytvoření sas uživatele (REST API)](/rest/api/storageservices/create-a-user-delegation-sas).
+Kromě toho zadejte obor pro přiřazení role. Instanční objekt vytvoří klíč delegování uživatele, což je operace prováděná na úrovni účtu úložiště, takže přiřazení role by mělo být vymezeno na úrovni účtu úložiště, skupiny prostředků nebo předplatného. Další informace o oprávněních RBAC pro vytvoření SAS delegování uživatele najdete v části **přiřazení oprávnění s RBAC** v tématu [Vytvoření sas uživatele (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
 Pokud nemáte dostatečná oprávnění k přiřazení role k instančnímu objektu, může být nutné požádat vlastníka nebo správce účtu, aby provedl přiřazení role.
 
@@ -276,4 +276,4 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 ## <a name="see-also"></a>Viz také:
 
 - [Získat operaci klíče delegování uživatele](/rest/api/storageservices/get-user-delegation-key)
-- [Vytvoření SAS delegování uživatele (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
+- [Vytvoření SAS delegování uživatele (REST API)](/rest/api/storageservices/create-user-delegation-sas)

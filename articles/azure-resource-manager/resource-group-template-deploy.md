@@ -1,56 +1,56 @@
 ---
-title: Nasazení prostředků pomocí Powershellu a šablony | Dokumentace Microsoftu
-description: Nasazení prostředků do Azure pomocí Azure Resource Manageru a Azure Powershellu. Prostředky jsou definovány v šabloně Resource Manageru.
+title: Nasazení prostředků pomocí PowerShellu a šablony | Microsoft Docs
+description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure PowerShell. Prostředky jsou definovány v šabloně Resource Manageru.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 63d729f19b0ef20d0e7a716d6857b4627095856b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f9fb786933d03b27be47c9f778a5f1575ca17c2
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476979"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970911"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu
 
-Zjistěte, jak nasadit prostředky do Azure pomocí šablon Resource Manageru pomocí prostředí Azure PowerShell. Další informace o konceptech, nasazení a správě řešení Azure najdete v tématu [přehled Azure Resource Manageru](resource-group-overview.md).
+Naučte se používat Azure PowerShell s Správce prostředků šablonami k nasazení prostředků do Azure. Další informace o konceptech nasazení a správy řešení Azure najdete v tématu [přehled Azure Resource Manager](resource-group-overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment-scope"></a>Rozsah nasazení
 
-Můžete cílit na vaše nasazení předplatného Azure nebo skupinu prostředků v rámci předplatného. Ve většině případů cílíte nasazení do skupiny prostředků. Použití předplatného nasazení použít zásady a přiřazení rolí v rámci předplatného. Vytvořte skupinu prostředků a nasazení prostředků do ní také použijete nasazení předplatných. V závislosti na rozsahu nasazení můžete použít různé příkazy.
+Nasazení můžete cílit buď na předplatné Azure, nebo na skupinu prostředků v rámci předplatného. Ve většině případů budete cílit na nasazení do skupiny prostředků. Nasazení předplatných použijte k uplatnění zásad a přiřazení rolí v rámci předplatného. K vytvoření skupiny prostředků a nasazení prostředků do ní taky použijete nasazení předplatného. V závislosti na rozsahu nasazení použijete jiné příkazy.
 
-Nasazení do **skupiny prostředků**, použijte [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
+K nasazení do **skupiny prostředků**použijte [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
 ```
 
-Nasazení do **předplatné**, použijte [New-AzDeployment](/powershell/module/az.resources/new-azdeployment):
+K nasazení do předplatného použijte [New-AzDeployment](/powershell/module/az.resources/new-azdeployment):
 
 ```azurepowershell
 New-AzDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-Nasazení skupiny pro správu se v současné době podporují jenom přes rozhraní REST API. Zobrazit [nasazení prostředků pomocí šablon Resource Manageru a rozhraní REST API Resource Manageru](resource-group-template-deploy-rest.md).
+V současné době se nasazení skupin pro správu podporují jenom prostřednictvím REST API. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Správce prostředků REST API](resource-group-template-deploy-rest.md).
 
-V příkladech v tomto článku se používá nasazení skupiny prostředků. Další informace o nasazení předplatných najdete v tématu [vytvoření skupiny prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
+Příklady v tomto článku používají nasazení skupin prostředků. Další informace o nasazeních předplatných najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni](deploy-to-subscription.md)předplatného.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat k nasazení šablony. Pokud již nemáte, stáhněte a uložte [Ukázková šablona](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z úložiště šablon Quickstart pro Azure. Název místního souboru použitý v tomto článku je **c:\MyTemplates\azuredeploy.json**.
+K nasazení budete potřebovat šablonu. Pokud ho ještě nemáte, Stáhněte si a uložte ukázkovou [šablonu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z úložiště šablon Azure pro rychlý Start. Místní název souboru, který se používá v tomto článku, je **c:\MyTemplates\azuredeploy.JSON**.
 
-Pokud používáte Azure Cloud shell k nasazení šablony, budete muset nainstalovat Azure PowerShell a připojte se k Azure:
+Pokud nepoužíváte k nasazení šablon službu Azure Cloud Shell, musíte nainstalovat Azure PowerShell a připojit se k Azure:
 
-- **Instalace rutin Powershellu pro Azure v místním počítači.** Další informace najdete v tématu [Začínáme s Azure PowerShellem](/powershell/azure/get-started-azureps).
-- **Připojení k Azure s využitím [připojit AZAccount](/powershell/module/az.accounts/connect-azaccount)** . Pokud máte více předplatných Azure, může být také potřeba spustit [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). Další informace najdete v tématu [použít několik předplatných Azure](/powershell/azure/manage-subscriptions-azureps).
+- **Nainstalujte rutiny Azure PowerShell na místním počítači.** Další informace najdete v tématu [Začínáme s Azure PowerShellem](/powershell/azure/get-started-azureps).
+- **Připojte se k Azure pomocí [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)** . Pokud máte více předplatných Azure, může být nutné spustit také rutinu [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). Další informace najdete v tématu [použití více předplatných Azure](/powershell/azure/manage-subscriptions-azureps).
 
-## <a name="deploy-local-template"></a>Nasazení místního šablony
+## <a name="deploy-local-template"></a>Nasadit místní šablonu
 
-Následující příklad vytvoří skupinu prostředků a nasadí šablony z místního počítače. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, pomlčky a závorky. Může být až 90 znaků. Nesmí končit tečkou.
+Následující příklad vytvoří skupinu prostředků a nasadí šablonu z místního počítače. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, spojovníky a závorky. Může to být až 90 znaků. Nemůže končit tečkou.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -63,11 +63,11 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 Dokončení nasazení může trvat několik minut.
 
-## <a name="deploy-remote-template"></a>Nasazení vzdálené šablony
+## <a name="deploy-remote-template"></a>Nasadit vzdálenou šablonu
 
-Místo uložení šablony Resource Manageru na místním počítači, můžete chtít uložit je do externího umístění. Šablony můžete uložit úložiště správy zdrojového kódu (např. GitHub). Nebo můžete je ukládat v účtu úložiště Azure pro zajištění sdíleného přístupu ve vaší organizaci.
+Místo uložení šablon Správce prostředků na místním počítači můžete chtít ukládat je do externího umístění. Šablony můžete ukládat do úložiště správy zdrojového kódu (například GitHub). Nebo je můžete uložit do účtu služby Azure Storage pro sdílený přístup ve vaší organizaci.
 
-Chcete-li nasadit externí šablony, použijte **TemplateUri** parametru. Použijte identifikátor URI v příkladu nasazení ukázkové šablony z Githubu.
+Pokud chcete nasadit externí šablonu, použijte parametr **TemplateUri** . Pomocí identifikátoru URI v příkladu nasaďte ukázkovou šablonu z GitHubu.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -78,13 +78,13 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-V předchozím příkladu vyžaduje veřejně přístupné identifikátor URI pro šablony, které lze použít pro většinu scénářů, protože šablony by neměl obsahovat citlivá data. Pokud je třeba zadat citlivá data (jako je zadání hesla správce), předáte tuto hodnotu jako zabezpečený parametr. Ale pokud nechcete, aby vaše šablona veřejně přístupný, budete ho chránit ukládáním do privátního úložiště kontejnerů. Informace o nasazení šablony, která se vyžaduje token sdíleného přístupového podpisu (SAS), najdete v části [nasazení privátní šablony s tokenem SAS](resource-manager-powershell-sas-token.md). Absolvovat kurz, naleznete v tématu [kurzu: Integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md).
+Předchozí příklad vyžaduje pro šablonu veřejně přístupný identifikátor URI, který funguje ve většině scénářů, protože by šablona neměla obsahovat citlivá data. Pokud potřebujete zadat citlivá data (třeba heslo správce), předejte tuto hodnotu jako zabezpečený parametr. Pokud ale nechcete, aby byla šablona veřejně přístupná, můžete ji chránit uložením do privátního kontejneru úložiště. Informace o nasazení šablony, která vyžaduje token sdíleného přístupového podpisu (SAS), najdete v tématu [nasazení privátní šablony s tokenem SAS](resource-manager-powershell-sas-token.md). Pokud chcete projít kurz, přečtěte [si kurz: Integruje Azure Key Vault do Správce prostředků](./resource-manager-tutorial-use-key-vault.md)Template Deployment.
 
-## <a name="deploy-from-azure-cloud-shell"></a>Nasazení ze služby Azure Cloud shell
+## <a name="deploy-from-azure-cloud-shell"></a>Nasazení z Azure Cloud shellu
 
-Můžete použít [Azure Cloud Shell](https://shell.azure.com) k nasazení vaší šablony. Pokud chcete nasadit šablonu externí, zadejte identifikátor URI šablony. Pokud chcete nasadit šablonu místní, musí nejdřív načíst šablony do účtu úložiště pro službu Cloud Shell. Postup nahrání souborů do prostředí, vyberte **nahrávání a stahování souborů** ikonu nabídky v okně prostředí.
+K nasazení šablony můžete použít [Azure Cloud Shell](https://shell.azure.com) . Chcete-li nasadit externí šablonu, zadejte identifikátor URI šablony. Pokud chcete nasadit místní šablonu, musíte nejdřív načíst šablonu do účtu úložiště pro vaši Cloud Shell. Chcete-li odeslat soubory do prostředí, vyberte v okně prostředí ikonu nabídky **nahrát/stáhnout soubory** .
 
-Otevřete Cloud shell, přejděte do [ https://shell.azure.com ](https://shell.azure.com), nebo vyberte **Try It** ze sekce kódu následujícího:
+Cloud Shell otevřete tak, že přejdete [https://shell.azure.com](https://shell.azure.com)na nebo vyberete příkaz **try-it** z následujícího oddílu kódu:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -95,20 +95,20 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Vložte kód do prostředí, klikněte pravým tlačítkem uvnitř prostředí a potom vyberte **vložte**.
+Pokud chcete vložit kód do prostředí, klikněte pravým tlačítkem myši do prostředí a pak vyberte **Vložit**.
 
-## <a name="redeploy-when-deployment-fails"></a>Opětovné nasazení při nasazení se nezdaří
+## <a name="redeploy-when-deployment-fails"></a>Znovu nasadit v případě neúspěchu nasazení
 
-Tato funkce se také označuje jako *vrácení zpět při chybě*. Pokud se nasazení nezdaří, můžete automaticky znovu nasadit starší a úspěšné nasazení z historie nasazení. Pokud chcete nastavit opětovné nasazení, použijte buď `-RollbackToLastDeployment` nebo `-RollBackDeploymentName` parametr v příkazu pro nasazení. Tato funkce je užitečná, pokud máte známého funkčního stavu pro nasazení infrastruktury a chcete se vrátit do tohoto stavu. Existuje několik omezení a omezení:
+Tato funkce se také označuje jako *vrácení zpět s chybou*. V případě neúspěchu nasazení můžete z historie nasazení automaticky znovu nasadit předchozí úspěšné nasazení. Chcete-li určit opětovné nasazení, použijte `-RollbackToLastDeployment` buď `-RollBackDeploymentName` parametr nebo v příkazu nasazení. Tato funkce je užitečná v případě, že máte známý dobrý stav pro nasazení infrastruktury a chcete se vrátit k tomuto stavu. Existuje několik aspektů a omezení:
 
-- Opětovné nasazení se spustí, přesně tak, jak byl dříve spuštěn se stejnými parametry. Nelze změnit parametry.
-- Předchozí nasazení se spustí pomocí [úplný režim](./deployment-modes.md#complete-mode). Se odstraní všechny prostředky, které nejsou zahrnuty v předchozím nasazení a konfigurace všech prostředků jsou nastaveny do jejich předchozího stavu. Ujistěte se, že plně chápete [režimy nasazení](./deployment-modes.md).
-- Opětovné nasazení má vliv pouze prostředky, všechny změny dat to nebude mít vliv.
-- Tato funkce je podporována pouze na nasazení skupiny prostředků, ne předplatné úrovně nasazení. Další informace o nasazení na úrovni předplatného najdete v tématu [vytvoření skupiny prostředků a prostředků na úrovni předplatného](./deploy-to-subscription.md).
+- Opětovné nasazení se spouští přesně tak, jak bylo dříve spuštěno se stejnými parametry. Nemůžete změnit parametry.
+- Předchozí nasazení se spouští v [režimu úplného](./deployment-modes.md#complete-mode)použití. Všechny prostředky, které nejsou součástí předchozího nasazení, se odstraní a všechny konfigurace prostředků se nastavují do jejich předchozího stavu. Ujistěte se, že plně rozumíte [režimům nasazení](./deployment-modes.md).
+- Opětovné nasazení má vliv pouze na prostředky, změny dat nejsou ovlivněny.
+- Tato funkce je podporována pouze v nasazeních skupiny prostředků, nikoli v nasazeních na úrovni předplatného. Další informace o nasazení na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni](./deploy-to-subscription.md)předplatného.
 
-Tato možnost dala použít, vaše nasazení musí mít jedinečné názvy, tak je možné identifikovat v historii. Pokud nemáte jedinečné názvy, aktuální selhání nasazení může přepsat předchozí úspěšné nasazení v historii. Tuto možnost můžete použít pouze u kořenové úrovně nasazení. Nasazení z vnořené šablony nejsou k dispozici pro nové nasazení.
+Chcete-li použít tuto možnost, musí mít vaše nasazení jedinečné názvy, aby je bylo možné identifikovat v historii. Pokud nemáte jedinečné názvy, může aktuální nasazení v historii přepsat dříve úspěšné nasazení. Tuto možnost můžete použít jenom u nasazení na kořenové úrovni. Nasazení z vnořené šablony nejsou k dispozici pro opětovné nasazení.
 
-K opětovnému nasazení poslední úspěšné nasazení, přidejte `-RollbackToLastDeployment` parametr jako příznak.
+Chcete-li znovu nasadit poslední úspěšné nasazení, přidejte `-RollbackToLastDeployment` parametr jako příznak.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -126,15 +126,15 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
   -RollBackDeploymentName ExampleDeployment01
 ```
 
-Zadané nasazení musí mít bylo úspěšné.
+Zadané nasazení musí být úspěšné.
 
-## <a name="pass-parameter-values"></a>Předání hodnot parametrů
+## <a name="pass-parameter-values"></a>Předat hodnoty parametrů
 
-Účelem předání hodnot parametrů, můžete použít parametry vložené nebo soubor parametru. Předchozí příklady v tomto článku ukazují vložených parametrů.
+K předání hodnot parametrů můžete použít buď vložené parametry, nebo soubor parametrů.
 
 ### <a name="inline-parameters"></a>Vložené parametry
 
-Pro předání parametrů vložený, zadejte názvy parametrů s `New-AzResourceGroupDeployment` příkazu. Například předávání řetězce a pole do šablony, použijte:
+Chcete-li předat vložené parametry, zadejte název parametru pomocí `New-AzResourceGroupDeployment` příkazu. Například pro předání řetězce a pole do šablony použijte:
 
 ```powershell
 $arrayParam = "value1", "value2"
@@ -144,7 +144,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -exampleArray $arrayParam
 ```
 
-Můžete také získat obsah souboru a poskytují tento obsah jako parametr vložené.
+Obsah souboru můžete také získat a poskytnout ho jako vložený parametr.
 
 ```powershell
 $arrayParam = "value1", "value2"
@@ -154,9 +154,9 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -exampleArray $arrayParam
 ```
 
-Získávání hodnotu parametru ze souboru je užitečné, když je potřeba zadat hodnoty konfigurace. Například můžete zadat [cloud-init hodnoty pro virtuální počítač s Linuxem](../virtual-machines/linux/using-cloud-init.md).
+Získání hodnoty parametru ze souboru je užitečné v případě, že potřebujete zadat konfigurační hodnoty. Můžete například zadat [hodnoty Cloud-init pro virtuální počítač se systémem Linux](../virtual-machines/linux/using-cloud-init.md).
 
-Pokud je potřeba předat pole objektů, vytvoření tabulky hash v Powershellu a přidat je do pole. Toto pole můžete předáte jako parametr během nasazení.
+Pokud potřebujete předat pole objektů, vytvořte v PowerShellu zatřiďovací tabulky a přidejte je do pole. Předat toto pole jako parametr během nasazování.
 
 ```powershell
 $hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
@@ -167,30 +167,13 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -exampleArray $subnetArray
 ```
 
-
 ### <a name="parameter-files"></a>Soubory parametrů
 
-Místo předání parametrů jako hodnoty vložená ve skriptu, možná bude snadněji používá soubor JSON, který obsahuje hodnoty parametrů. Soubor parametrů může být místní soubor nebo externí soubor s identifikátorem URI přístupné.
+Místo předání parametrů jako vložených hodnot do skriptu může být snazší použít soubor JSON, který obsahuje hodnoty parametrů. Soubor parametrů může být místní soubor nebo externí soubor s přístupným identifikátorem URI.
 
-Soubor parametrů musí být v následujícím formátu:
+Další informace o souboru parametrů naleznete v tématu [Create správce prostředků Parameter File](resource-manager-parameter-files.md).
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-     "storageAccountType": {
-         "value": "Standard_GRS"
-     }
-  }
-}
-```
-
-Všimněte si, že sekci parametrů obsahuje název parametru, který odpovídá parametru definovaného v šabloně (storageAccountType). Soubor parametrů obsahuje hodnotu pro parametr. Tato hodnota je automaticky předávaných do šablony během nasazení. Můžete vytvořit více než jeden soubor s parametry a poté předejte soubor odpovídající parametr pro scénář.
-
-Předchozí příklad zkopírujte a uložte ho jako soubor s názvem `storage.parameters.json`.
-
-Chcete-li předat parametr místní soubor, použijte **TemplateParameterFile** parametr:
+Chcete-li předat místní soubor parametrů, použijte parametr **TemplateParameterFile** :
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -198,7 +181,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-Chcete-li předat soubor externí parametrů, použijte **TemplateParameterUri** parametr:
+Chcete-li předat externí soubor parametrů, použijte parametr **TemplateParameterUri** :
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -206,26 +189,16 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
 
-### <a name="parameter-precedence"></a>Parametr prioritu
+## <a name="test-template-deployments"></a>Nasazení šablon testů
 
-Můžete použít parametry vložené a místní parametr souboru v rámci jedné operace nasazení. Můžete například zadat některé hodnoty v souboru parametrů místní a přidat další hodnoty vložený během nasazení. Pokud zadáte hodnoty pro parametr v parametru místního souboru a vložené, hodnota vložené přednost.
-
-Ale při použití souboru externí parametr nemůžete předat další hodnoty buď jako vložené nebo z místního souboru. Pokud zadáte soubor parametrů v **TemplateParameterUri** parametr, parametry budou ignorovány všechny vložené. Zadejte všechny hodnoty parametrů v externím souboru. Pokud šablona obsahuje citlivé hodnotu, která není možné zahrnout v souboru parametrů, přidejte tuto hodnotu do trezoru klíčů, nebo dynamicky poskytovat všechny vložené hodnoty parametru.
-
-### <a name="parameter-name-conflicts"></a>Parametr název je v konfliktu
-
-Pokud šablona obsahuje parametr se stejným názvem jako jeden z parametrů v příkazu Powershellu, prostředí PowerShell nabídne parametr z šablony Příponové **FromTemplate**. Například parametr s názvem **ResourceGroupName** ve vaší šabloně je v konfliktu s **ResourceGroupName** parametr [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) rutiny. Zobrazí výzva k zadání hodnoty pro **ResourceGroupNameFromTemplate**. Obecně byste se měli vyhnout této záměně není pojmenováním parametry se stejným názvem jako parametrů použitých pro operace nasazení.
-
-## <a name="test-template-deployments"></a>Testovací šablony nasazení
-
-Chcete-li otestovat šablonu a parametry hodnoty bez skutečného nasazení všechny prostředky, použijte [Test-AzureRmResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). 
+K otestování svých šablon a hodnot parametrů bez skutečného nasazení jakýchkoli prostředků použijte [test-AzureRmResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). 
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType Standard_GRS
 ```
 
-Pokud nejsou zjištěny žádné chyby, dokončení příkazu bez odezvy. Pokud dojde k chybě, příkaz vrátí chybovou zprávu. Nesprávná hodnota pro účet úložiště SKU, například vrátí následující chybu:
+Pokud se nezjistí žádné chyby, příkaz se dokončí bez odpovědi. Pokud se zjistí chyba, vrátí příkaz chybovou zprávu. Například předáním nesprávné hodnoty SKU účtu úložiště vrátí následující chybu:
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName testgroup `
@@ -238,16 +211,16 @@ Message : Deployment template validation failed: 'The provided value 'badSku' fo
 Details :
 ```
 
-Pokud vaše šablona obsahuje chybu syntaxe, příkaz vrátí chybu s informacemi, že ho nebylo možné rozložit šablony. Zpráva číslo řádku a pozice chybu analýzy.
+Pokud má vaše šablona syntaktickou chybu, příkaz vrátí chybu oznamující, že nešlo analyzovat šablonu. Zpráva indikuje číslo řádku a umístění chyby analýzy.
 
 ```powershell
 Test-AzResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
   ". Path 'variables', line 31, position 3.
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Bezpečně zavést vaše služba pro více než jedné oblasti, naleznete v tématu [Azure Deployment Manager](deployment-manager-overview.md).
-- Chcete-li určit způsob zpracování prostředky, které existují ve skupině prostředků, ale nejsou definovány v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manageru](deployment-modes.md).
-- Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [Princip struktury a syntaxe šablon Azure Resource Manageru](resource-group-authoring-templates.md).
-- Informace o nasazení šablony, která se vyžaduje SAS token najdete v tématu [nasazení privátní šablony s tokenem SAS](resource-manager-powershell-sas-token.md).
+- Pokud chcete službu bezpečně zavést do více než jedné oblasti, přečtěte si [Azure Deployment Manager](deployment-manager-overview.md).
+- Pokud chcete určit, jak se mají zpracovávat prostředky, které existují ve skupině prostředků, ale nejsou definované v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manager](deployment-modes.md).
+- Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [pochopení struktury a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
+- Informace o nasazení šablony, která vyžaduje token SAS, najdete v tématu [nasazení privátní šablony s tokenem SAS](resource-manager-powershell-sas-token.md).

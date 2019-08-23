@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08e27052c3583ddea7a2fb6fe96fa6b48cd6c372
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5d2247aab872a71f250bd0b4b52714e402d2102d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333879"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905202"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Přehled Azure Active Directory Identity Protection rizikových událostí
 
@@ -61,7 +61,7 @@ Když služba získá přihlašovací údaje uživatele z tmavého webu, vloží
 
 Tento typ rizikové události indikuje přihlášení z IP adres nakažených malwarem, u kterých je známo, že aktivně komunikuje se serverem robot. To je určeno korelacemi IP adres zařízení uživatele proti IP adresám, které se nacházely v kontaktu se serverem robota, zatímco byl server robot aktivní.
 
-## <a name="unfamiliar-sign-in-properties"></a>Neznámé vlastnosti přihlášení
+## <a name="unfamiliar-sign-in-properties"></a>Neznámou vlastnost přihlášení
 
 **Typ detekce:** V reálném čase  
 **Starý název:** Přihlášení z neznámých míst
@@ -76,3 +76,8 @@ Tuto detekci také spouštíme pro základní ověřování (nebo starší proto
 **Starý název:** Tato detekce se zobrazí ve starších verzích Azure AD Identity Protection (uživatelé s příznakem rizika, rizikové události) jako uživatelé s nevrácenými přihlašovacími údaji.
 
 Tento typ rizikové události označuje aktivitu uživatele, která je pro daného uživatele neobvyklá, nebo je konzistentní se známými vzory útoku na základě interních a externích zdrojů analýzy hrozeb Microsoftu.
+
+## <a name="admin-confirmed-user-compromised"></a>Správce potvrdil napadení uživatele
+
+**Typ detekce:** Offline <br>
+Tato detekce indikuje, že správce v uživatelském rozhraní rizikové uživatele nebo pomocí rozhraní riskyUsers API vybral možnost potvrdit zneužití uživatele. Pokud chcete zjistit, který správce potvrdil ohrožení tohoto uživatele, Zkontrolujte historii rizika uživatele (prostřednictvím uživatelského rozhraní nebo rozhraní API).

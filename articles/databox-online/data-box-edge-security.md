@@ -1,96 +1,98 @@
 ---
-title: Zabezpečení služby Azure Data Box Edge | Dokumentace Microsoftu
-description: Popisuje funkce zabezpečení a ochrana osobních údajů, které chrání váš Azure Data Box hraniční zařízení, služby a data v místním prostředí i v cloudu.
+title: Zabezpečení Azure Data Box Edge | Microsoft Docs
+description: Popisuje funkce zabezpečení a ochrany osobních údajů, které chrání vaše Azure Data Box Edge zařízení, služby a data místně a v cloudu.
 services: Data Box Edge
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8823aebe17a5446b3c507878833c2525c338dde1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 375576dd4a7897c48474fd2af00a99084292d854
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717999"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970886"
 ---
-# <a name="azure-data-box-edge-security-and-data-protection"></a>Azure Data Box Edge zabezpečení a ochranu dat.
+# <a name="azure-data-box-edge-security-and-data-protection"></a>Azure Data Box Edge zabezpečení a ochrana dat
 
-Zabezpečení představuje závažný problém při přijetí nové technologie, zejména v případě, že tato technologie se používá s důvěrných nebo vlastnických dat. Azure Data Box Edge pomůže vám zajistit pouze oprávněné entity můžete zobrazit, upravit nebo odstranit data.
+Zabezpečení je zásadním problémem při přijímání nové technologie, zejména v případě, že se technologie používá s důvěrnými nebo proprietárními daty. Azure Data Box Edge vám pomůže zajistit, aby data mohla zobrazovat, upravovat nebo odstraňovat jenom autorizované entity.
 
-Tento článek popisuje funkce zabezpečení okraj pole dat, které pomáhají chránit všechny komponenty řešení a data jsou v nich uložené.
+Tento článek popisuje funkce zabezpečení Data Box Edge, které vám pomůžou chránit jednotlivé součásti řešení a data, která jsou v nich uložená.
 
-Azure Data Box Edge se skládá z čtyři hlavní součásti, které spolu interagují:
+Azure Data Box Edge se skládá ze čtyř hlavních součástí, které vzájemně spolupracují:
 
-- **Služba okraj pole data, která hostované v Azure**. Prostředek správy, který použijete k vytvoření objednávky zařízení nakonfigurovat zařízení a potom sledovat pořadí do konce.
-- **Zařízení data Box Edge**. Zařízení pro přenos dodávané, takže můžete importovat místních dat do Azure.
-- **Klienty a hostitele připojené k zařízení**. Klienti ve vaší infrastruktuře, připojte se k zařízení Data Box Edge a obsahující data, která se dají chránit.
-- **Cloudové úložiště**. Umístění v cloudové platformy Azure, kde jsou uložená data. Toto umístění je obvykle účtu úložiště propojeném prostředku okraj pole dat, který vytvoříte.
+- **Služba data box Edge hostovaná v Azure**. Prostředek správy, který použijete k vytvoření pořadí zařízení, nakonfigurovat zařízení a pak sledovat pořadí dokončení.
+- **Data box Edge zařízení**. Přenosové zařízení, které vám bylo dodány, abyste mohli importovat vaše místní data do Azure.
+- **Klienti/hostitelé připojení k zařízení**. Klienti v infrastruktuře, kteří se připojují k Data Box Edge zařízení a obsahují data, která je třeba chránit.
+- **Cloudové úložiště**. Umístění na cloudové platformě Azure, kde jsou uložená data. Toto umístění obvykle je účet úložiště propojený s vámi vytvořeným prostředkem Data Box Edge.
 
-## <a name="data-box-edge-service-protection"></a>Ochrana služby Edge pole dat
+## <a name="data-box-edge-service-protection"></a>Ochrana Data Box Edge služby
 
 Služba Data Box Edge je služba pro správu, která je hostovaná v Azure. Služba se používá ke konfiguraci a správě zařízení.
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-service-protection.md)]
 
-## <a name="data-box-edge-device-protection"></a>Ochrana dat pole hraniční zařízení
+## <a name="data-box-edge-device-protection"></a>Data Box Edge Ochrana zařízení
 
-Data Box hraniční zařízení je v místním zařízení, který pomáhá získat z dat o zpracování místně a odesílá je do Azure. Vaše zařízení:
+Zařízení Data Box Edge je místní zařízení, které pomáhá transformovat data tak, že je zpracovává místně a odesílá je do Azure. Vaše zařízení:
 
-- Potřebuje aktivační klíč pro přístup ke službě Data Box Edge.
-- Je chráněn za všech okolností heslo zařízení.
-- Je zařízení uzamknuté. Zařízení řadiče pro správu desky a systému BIOS jsou chráněné heslem. Systém BIOS je chráněn omezený přístup uživatelů.
+- Pro přístup ke službě Data Box Edge potřebuje aktivační klíč.
+- Je chráněna za všech okolností heslem zařízení.
+- Je uzamčené zařízení. Zařízení BMC a BIOS jsou chráněná heslem. Systém BIOS je chráněn omezeným přístupem uživatele.
 - Má povolené zabezpečené spouštění.
-- Spuštění Windows Defenderu Device Guard. Device Guard umožňuje spouštět jenom důvěryhodné aplikace, které definujete v zásady integrity kódu.
+- Spustí ochranu zařízení v programu Windows Defender. Device Guard umožňuje spouštět jenom důvěryhodné aplikace, které definujete v zásadách integrity kódu.
 
-### <a name="protect-the-device-via-activation-key"></a>Ochrana zařízení pomocí aktivační kód
+### <a name="protect-the-device-via-activation-key"></a>Chránit zařízení pomocí aktivačního klíče
 
-Pouze autorizovaného zařízení Data Box Edge je povolené pro připojení služby Data Box Edge, který vytvoříte ve svém předplatném Azure. K ověření zařízení, budete muset použít aktivační kód k aktivaci zařízení pomocí služby Data Box Edge.
+Ke službě Data Box Edge, kterou vytvoříte ve vašem předplatném Azure, se smí připojit jenom autorizované Data Box Edge zařízení. K autorizaci zařízení musíte použít aktivační klíč k aktivaci zařízení ve službě Data Box Edge.
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-activation-key.md)]
 
-Další informace najdete v tématu [získat aktivační klíč](data-box-edge-deploy-prep.md#get-the-activation-key).
+Další informace najdete v tématu [získání aktivačního klíče](data-box-edge-deploy-prep.md#get-the-activation-key).
 
-### <a name="protect-the-device-via-password"></a>Ochrana zařízení pomocí hesla
+### <a name="protect-the-device-via-password"></a>Chránit zařízení pomocí hesla
 
-Hesla se ujistěte, že jenom Autorizovaní uživatelé můžou přistupovat k datům. Data Box hraniční zařízení spuštění v uzamčeném stavu.
+Hesla zajišťují, že k datům budou mít přístup jenom autorizovaní uživatelé. Zařízení Data Box Edge se spouští v uzamčeném stavu.
 
 Můžete:
 
-- Připojení k místní webové uživatelské rozhraní zařízení přes prohlížeč a zadejte heslo pro přihlášení k zařízení.
-- Vzdálené připojení k rozhraní PowerShell zařízení prostřednictvím protokolu HTTP. Ve výchozím nastavení je zapnutá Vzdálená správa. Zadejte heslo zařízení pro přihlášení k zařízení. Další informace najdete v tématu [připojit vzdáleně na vaše zařízení Data Box Edge](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
+- Připojte se k místnímu webovému uživatelskému rozhraní zařízení přes prohlížeč a pak zadejte heslo pro přihlášení k zařízení.
+- Vzdáleně se připojte k rozhraní PowerShellu zařízení přes HTTP. Vzdálená správa je ve výchozím nastavení zapnutá. Pak můžete zadat heslo zařízení pro přihlášení k zařízení. Další informace najdete v tématu [vzdálené připojení k vašemu data box Edge zařízení](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-password-best-practices.md)]
-- Použití místní webové uživatelské rozhraní pro [změnit heslo](data-box-edge-manage-access-power-connectivity-mode.md#manage-device-access). Pokud změníte heslo, nezapomeňte informovat všechny vzdálení uživatelé tak nebudou mít potíže při přihlašování.
+- [Změňte heslo](data-box-edge-manage-access-power-connectivity-mode.md#manage-device-access)pomocí místního webového uživatelského rozhraní. Pokud změníte heslo, nezapomeňte se informovat o všech uživatelích vzdáleného přístupu, aby nemuseli mít problémy s přihlášením.
 
 ## <a name="protect-your-data"></a>Ochrana dat
 
-Tato část popisuje funkce zabezpečení okraj pole dat, které chrání data během přenosu a uložené.
+Tato část popisuje funkce zabezpečení Data Box Edge, které chrání při přenosu a uložená data.
 
-### <a name="protect-data-at-rest"></a>Ochrana dat v klidovém stavu
+### <a name="protect-data-at-rest"></a>Ochrana dat v klidovém umístění
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-rest.md)]
+- BitLocker XTS-AES 256-bitové šifrování se používá k ochraně místních dat.
 
-### <a name="protect-data-in-flight"></a>Chránit data na cestě
+
+### <a name="protect-data-in-flight"></a>Ochrana dat v letu
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>Ochrana dat přes účet úložiště
+### <a name="protect-data-via-storage-accounts"></a>Ochrana dat prostřednictvím účtů úložiště
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
-- Otočit o a poté [synchronizovat klíče účtu úložiště](data-box-edge-manage-shares.md#sync-storage-keys) pravidelně k ochraně vašeho účtu úložiště před neoprávněnými uživateli.
+- Pravidelně otáčejte a [synchronizujte klíče účtu úložiště](data-box-edge-manage-shares.md#sync-storage-keys) , abyste chránili svůj účet úložiště před neoprávněnými uživateli.
 
 ## <a name="manage-personal-information"></a>Správa osobních údajů
 
-Služba Data Box Edge shromažďuje osobní informace v následujících scénářích:
+Služba Data Box Edge shromažďuje osobní údaje v následujících scénářích:
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-manage-personal-data.md)]
 
-Chcete-li zobrazit seznam uživatelů, kteří mohou přistupovat k nebo odstranit sdílenou složku, postupujte podle kroků v [spravovat sdílené složky na okraji pole Data](data-box-edge-manage-shares.md).
+Chcete-li zobrazit seznam uživatelů, kteří mají přístup nebo odstranit sdílenou složku, postupujte podle pokynů v části [Správa sdílených složek na data box Edge](data-box-edge-manage-shares.md).
 
-Další informace najdete v tématu Zásady ochrany osobních údajů společnosti Microsoft na [centrum](https://www.microsoft.com/trustcenter).
+Další informace najdete v zásadách ochrany osobních údajů Microsoftu na webu [Trust Center](https://www.microsoft.com/trustcenter).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Nasazení zařízení Data Box Edge](data-box-edge-deploy-prep.md)

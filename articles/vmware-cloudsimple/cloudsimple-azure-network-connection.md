@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 90e3121c3f036d1abc8ca372ee349aef3485d07b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69625049"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972951"
 ---
 # <a name="azure-network-connections-overview"></a>Přehled připojení k síti Azure
 
@@ -45,7 +45,6 @@ Stávající okruh Azure ExpressRoute můžete připojit k vaší CloudSimple ob
 
 ![Místní ExpressRoute připojení – Global Reach](media/cloudsimple-global-reach-connection.png)
 
-
 ## <a name="connection-to-on-premises-network-and-azure-virtual-network"></a>Připojení k místní síti a službě Azure Virtual Network
 
 Připojení k místní síti a službě Azure Virtual Network můžou existovat ve vaší síti CloudSimple.  Připojení používá protokol BGP pro výměnu tras mezi místní sítí, službou Azure Virtual Network a CloudSimple sítí.  Když připojíte síť CloudSimple k vaší virtuální síti Azure v přítomnosti Global Reachho připojení, trasy virtuální sítě Azure budou viditelné ve vaší místní síti.  K trase Exchange dojde v Azure mezi hraničními směrovači.
@@ -62,7 +61,7 @@ Připojení k CloudSimple síti z místní sítě a z Azure Virtual Network umo�
 * CloudSimple nebude inzerovat výchozí trasu k připojením ExpressRoute.
 * Pokud Váš místní směrovač inzeruje výchozí trasu, provoz ze sítě CloudSimple a virtuální sítě Azure bude používat inzerovanou výchozí trasu.  V důsledku toho se k virtuálním počítačům v Azure nelze dostat pomocí veřejných IP adres.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Připojení virtuální sítě Azure k CloudSimple pomocí ExpressRoute](virtual-network-connection.md)
 * [Připojení z místního prostředí k CloudSimple pomocí ExpressRoute](on-premises-connection.md)

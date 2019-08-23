@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: fc70d140479be100e6aa52cf8105d3e466342cd7
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 74b502a37081c729c5e33a0db7dc7f26cb44774b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302665"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972289"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Nasazení OPC vlákna do existujícího projektu
 
@@ -142,4 +142,4 @@ Tenant AAD, který se má použít
 Teď, když jste se naučili, jak nasadit OPC vlákna do existujícího projektu, je tady doporučený další krok:
 
 > [!div class="nextstepaction"]
-> [Zabezpečená komunikace klienta OPC a OPC PLC](howto-opc-vault-deploy-existing-client-plc-communication.md)
+> [Zabezpečená komunikace klienta OPC UA a OPC UA PLC](howto-opc-vault-secure.md)

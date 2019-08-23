@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9dbe1751ac77f370991af75ea161247c21700ff2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886985"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972817"
 ---
-# <a name="delete-nodes-from-vmware-solution-by-cloudsimple---azure"></a>Odstranění uzlů z řešení VMware podle CloudSimple – Azure
+# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Odstranění uzlů z řešení Azure VMware podle CloudSimple
 
-Po vytvoření se CloudSimple uzly.  Uzly musí být odstraněny, aby se zastavilo měření uzlů.  Odstraníte uzly, které se nepoužívají z Azure Portal. 
+Po vytvoření se CloudSimple uzly.  Uzly musí být odstraněny, aby se zastavilo měření uzlů.  Odstraníte uzly, které se nepoužívají z Azure Portal.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -25,7 +25,6 @@ Uzel se dá odstranit jenom za následujících podmínek:
 
 * Privátní cloud vytvořený pomocí uzlů je odstraněný.  Informace o odstranění privátního cloudu najdete v tématu [Odstranění řešení Azure VMware pomocí CloudSimple privátního cloudu](delete-private-cloud.md).
 * Uzel byl odebrán z privátního cloudu zmenšením privátního cloudu.  Pokud chcete zmenšit privátní cloud, přečtěte si téma [zmenšení řešení Azure VMware pomocí CloudSimple privátního cloudu](shrink-private-cloud.md).
-
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

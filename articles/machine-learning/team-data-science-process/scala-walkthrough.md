@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cdc37ace4687fe978030f528dcd5cbc87da596f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b22d461d327e595908ea8cc18dd0d507fdc83ecd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589575"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907699"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Vědecké zkoumání dat pomocí Scala a Spark v Azure
 Tento článek ukazuje, jak pomocí Scala pro úkoly technik strojového učení pomocí Sparku škálovatelné MLlib a Spark ML balíčky v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [vědecké zkoumání dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): příjem dat a zkoumání, vizualizaci, vytváření funkcí, modelování a modelu využití. Modely v článku zahrnují logistické a lineární regrese, náhodných doménové struktury a vylepšené přechodu stromů (GBTs), kromě dvě běžné úkoly technik strojového učení:
 
-* Regresní problém: Predikce tip částka cesty taxíkem ($)
-* Binární klasifikace: Predikce tip nebo tip cesty taxíkem (1/0)
+* Problém regrese: Předpověď míry špičky ($) pro taxislužby cestu
+* Binární klasifikace: Předpověď tipů Tip nebo No Tip (1/0) pro taxislužby cestu
 
 Proces modelování vyžaduje trénování a hodnocení na testovací datové sady a relevantní přesnost metriky. V tomto článku se dozvíte, jak k uložení těchto modelů ve službě Azure Blob storage a jak stanovení skóre a vyhodnotit prediktivní výkonu. Tento článek se týká také pokročilejší témata o tom, jak pomocí křížového ověření a hyperparametrické sweeping optimalizaci modelů. Data používaná je ukázka 2013 NYC taxislužby cesty a tarif datové sady k dispozici na Githubu.
 
@@ -32,7 +32,7 @@ Proces modelování vyžaduje trénování a hodnocení na testovací datové sa
 
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) je nabídka hostovaných v Azure z open-source Spark. Také zahrnuje podporu pro poznámkové bloky Jupyter Scala v clusteru Spark a možné spouštění interaktivních dotazů Spark SQL transformace, filtrovat a vizualizovat data uložená v úložišti objektů Blob v Azure. Fragmenty kódu Scala v tomto článku, které poskytují řešení a zobrazit příslušné grafy k vizualizaci dat spouštět v poznámkových blocích Jupyter nainstalované v clusterech Spark. Kroky modelování v těchto tématech mít kód, který popisuje, jak pro trénování, vyhodnocení, uložit a používat každý typ modelu.
 
-Postup instalace a kód v tomto článku jsou pro Azure HDInsight 3.4 Spark 1.6. Ale kódu v tomto článku a [Poznámkový blok Jupyter Scala](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration%20Modeling%20and%20Scoring%20using%20Scala.ipynb) jsou obecné a by mělo fungovat jakéhokoli jiného clusteru Spark. Postup instalace a správy clusteru může být mírně liší, jak je zobrazeno v tomto článku, pokud nepoužíváte HDInsight Spark.
+Postup instalace a kód v tomto článku jsou pro Azure HDInsight 3.4 Spark 1.6. Ale kódu v tomto článku a [Poznámkový blok Jupyter Scala](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb) jsou obecné a by mělo fungovat jakéhokoli jiného clusteru Spark. Postup instalace a správy clusteru může být mírně liší, jak je zobrazeno v tomto článku, pokud nepoužíváte HDInsight Spark.
 
 > [!NOTE]
 > Téma, které se dozvíte, jak pomocí Pythonu, spíše než Scala k provedení úloh pro proces vědy Data začátku do konce, naleznete v tématu [vědecké zkoumání dat pomocí Sparku v Azure HDInsight](spark-overview.md).
@@ -41,7 +41,7 @@ Postup instalace a kód v tomto článku jsou pro Azure HDInsight 3.4 Spark 1.6.
 
 ## <a name="prerequisites"></a>Požadavky
 * Mít předplatné Azure. Pokud již nemáte, [získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Potřebujete cluster Azure HDInsight 3.4 Spark 1.6 dokončete následující postup. K vytvoření clusteru, postupujte podle pokynů v [začít: Vytvořit Apache Spark v Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Nastavit typ clusteru a verzi na **vybrat typ clusteru** nabídky.
+* Potřebujete cluster Azure HDInsight 3.4 Spark 1.6 dokončete následující postup. Pokud chcete vytvořit cluster, přečtěte si pokyny [v tématu Začínáme: Vytvoření Apache Spark ve službě Azure](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)HDInsight. Nastavit typ clusteru a verzi na **vybrat typ clusteru** nabídky.
 
 ![Konfigurace clusteru typu HDInsight](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -66,7 +66,7 @@ Můžete nahrát ho přímo z Githubu na server poznámkového bloku Jupyter na 
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Instalační program: Přednastavení kontexty Spark a Hive, Magic Sparku a Spark knihovny
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Obecného Předdefinované Spark a kontexty podregistru, Spark Magic a knihovny Spark
 ### <a name="preset-spark-and-hive-contexts"></a>Přednastavení kontexty Spark a Hive
     # SET THE START TIME
     import java.util.Calendar
@@ -226,7 +226,7 @@ Následující příklad kódu určuje umístění vstupních dat pro čtení a 
 
 **Výstup:**
 
-Čas spuštění buňku: 8 sekund.
+Čas, kdy se má buňka spustit: 8 sekund.
 
 ### <a name="query-the-table-and-import-results-in-a-data-frame"></a>Dotaz tabulku a importovat výsledky v datovém rámci.
 V dalším kroku dotaz tabulku pro tarif, osobní a datový tip; filtrovat data poškozena a odlehlé; a tisk několik řádků.
@@ -411,7 +411,7 @@ Pro indexování, použijte `StringIndexer()`a ten hot kódování, použijte `O
 
 **Výstup:**
 
-Čas spuštění buňku: 4 sekundy.
+Čas, kdy se má buňka spustit: 4 sekundy.
 
 ### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>Ukázka a rozdělení datové sady do zlomky trénování a testování
 Tento kód vytvoří náhodný vzorkování dat (v tomto příkladu 25 %). I když vzorkování není potřeba například kvůli velikosti datové sady, tento článek ukazuje, jak můžete vzorkovat, abyste věděli, jak používat vlastní problémů v případě potřeby. Když ukázky jsou velké, to ušetří spoustu času, při trénování modelů. Dále rozdělte ukázku na školení část (v tomto příkladu 75 %) a testování částí (v tomto příkladu 25 %) pro použití v zařazení a regresní modelování.
@@ -450,7 +450,7 @@ Přidáte náhodné číslo (mezi 0 a 1) pro každý řádek (ve sloupci "rand")
 
 **Výstup:**
 
-Čas spuštění buňku: 2 sekundy.
+Čas, kdy se má buňka spustit: 2 sekundy.
 
 ### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>Zadejte proměnnou školení a funkce a pak vytvořte indexovaných nebo horkou jeden kódovaný trénování a testování vstupního bodu Rdd nebo datového rámce s popiskem
 Tato část obsahuje kód, který ukazuje, jak indexovat zařazené do kategorií textová data jako datový typ s popiskem bodu a jeho kódování, takže ho můžete použít pro trénování a testování logistické regrese MLlib a jiných modelů klasifikace. S popiskem bodových objektů jsou Rdd, které jsou formátovány způsobem, který je potřeba jako vstupní data pro většinu v MLlib algoritmů strojového učení. A [označené jako bod](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) je přidružený místní vektoru, dense nebo zhuštěný, popisek a odpovědí.
@@ -493,7 +493,7 @@ V tomto kódu je třeba zadat Cílová proměnná (závislé) a funkce, které c
 
 **Výstup:**
 
-Čas spuštění buňku: 4 sekundy.
+Čas, kdy se má buňka spustit: 4 sekundy.
 
 ### <a name="automatically-categorize-and-vectorize-features-and-targets-to-use-as-inputs-for-machine-learning-models"></a>Automaticky kategorizaci a vektorizovaná funkce a cíle, které chcete použít jako vstupy pro modely strojového učení
 Použijte Spark ML ke kategorizaci cíl a funkce, které chcete používat ve funkcích modelování založený na stromové architektuře. Kód provede dvě úlohy:
@@ -532,7 +532,7 @@ Tady je kód pro tyto dvě úlohy.
 
 
 
-## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Binární klasifikační model: Předpověď, jestli by měla být věnována tip
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Model binární klasifikace: Předpovědět, zda by měl být vyplacen Tip
 V této části vytvoříte tři typy binární klasifikační modely a vytvořte předpověď, jestli by měla být věnována tip:
 
 * A **model logistické regrese** pomocí Spark ML `LogisticRegression()` – funkce
@@ -723,9 +723,9 @@ Dále vytvořte model klasifikace GBT pomocí vaší MLlib `GradientBoostedTrees
 
 **Výstup:**
 
-Oblasti pod křivkou roc s více TŘÍDAMI: 0.9846895479241554
+Plocha pod křivkou ROC: 0.9846895479241554
 
-## <a name="regression-model-predict-tip-amount"></a>Regresní model: Předpověď velikost špičky
+## <a name="regression-model-predict-tip-amount"></a>Regresní model: Odhadnout částku tipu
 V této části vytvoříte dva typy regresní modely a vytvořte předpověď velikost špičky:
 
 * A **trénování modelu lineární regrese Vyřešeno** pomocí Spark ML `LinearRegression()` funkce. Budete uložení modelu a vyhodnocení modelu na testovací data.
@@ -775,7 +775,7 @@ V této části vytvoříte dva typy regresní modely a vytvořte předpověď v
 
 **Výstup:**
 
-Čas spuštění buňku: 13 sekund.
+Čas, kdy se má buňka spustit: 13 sekund.
 
     # LOAD A SAVED LINEAR REGRESSION MODEL FROM BLOB STORAGE AND SCORE A TEST DATA SET
 
@@ -848,7 +848,7 @@ Vytvořte grafy pomocí Pythonu matplotlib.
 
 **Výstup:**
 
-![Velikost špičky: Skutečné vs. předpokládané](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
+![Hodnota tipu: Skutečný vs. předpokládaný](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>Vytvořte GBT regresní model
 Vytvoření GBT regresní model pomocí Spark ML `GBTRegressor()` funkci a pak vyhodnotit model na testovací data.
@@ -881,7 +881,7 @@ Vytvoření GBT regresní model pomocí Spark ML `GBTRegressor()` funkci a pak v
 
 **Výstup:**
 
-Test R-sqr je: 0.7655383534596654
+Test R-SQR je: 0.7655383534596654
 
 ## <a name="advanced-modeling-utilities-for-optimization"></a>Nástroje pro pokročilé modelování pro optimalizaci
 V této části použijte nástroje machine learning, které vývojáři často používají pro optimalizaci modelů. Konkrétně můžete optimalizovat modelů strojového učení třemi různými způsoby s použitím parametru sweeping a křížového ověřování:
@@ -938,7 +938,7 @@ V dalším kroku rozdělení dat na trénování a ověření sady, použijte hy
 
 **Výstup:**
 
-Test R-sqr je: 0.6226484708501209
+Test R-SQR je: 0.6226484708501209
 
 ### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>Optimalizovat binární klasifikační model s použitím křížového ověření a hyperparametrické sweeping
 V této části se dozvíte, jak optimalizovat binární klasifikační model s použitím křížového ověření a hyperparametrické sweeping. Tento mechanismus využívá Spark ML `CrossValidator` funkce.
@@ -982,7 +982,7 @@ V této části se dozvíte, jak optimalizovat binární klasifikační model s 
 
 **Výstup:**
 
-Čas spuštění buňku: 33 sekund.
+Čas, kdy se má buňka spustit: 33 sekund.
 
 ### <a name="optimize-the-linear-regression-model-by-using-custom-cross-validation-and-parameter-sweeping-code"></a>Pomocí vlastního kódu křížového ověření a parametr sweeping optimalizovat trénování modelu lineární regrese
 V dalším kroku optimalizovat modelu s použitím vlastního kódu a určení nejlepších parametrů modelu pomocí kritéria nejvyšší přesností. Potom vytvořte finálního modelu, vyhodnocení modelu na testovací data a uložit model ve službě Blob storage. Nakonec načíst model, skóre testovacích dat a vyzkoušejte přesnost.
@@ -1097,7 +1097,7 @@ V dalším kroku optimalizovat modelu s použitím vlastního kódu a určení n
 
 **Výstup:**
 
-Čas spuštění buňku: 61 sekund.
+Čas, kdy se má buňka spustit: 61 sekund.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Použití modelů předdefinovaných ve Spark machine learning automaticky pomocí Scala
 Přehled o tématech, které vás provedou úkoly, které tvoří procesu pro datové vědy v Azure, najdete v části [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

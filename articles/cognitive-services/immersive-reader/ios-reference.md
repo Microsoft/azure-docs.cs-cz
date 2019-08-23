@@ -1,20 +1,20 @@
 ---
 title: Referenční dokumentace sady moderní čtečky pro iOS
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Referenční dokumentace pro sadu iOS SDK pro moderní čtečku
 services: cognitive-services
-author: MeganRoach
+author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
-ms.author: t-meroa
-ms.openlocfilehash: acdaaf0bf08644053e86343ae4b002002fee6a84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.author: metan
+ms.openlocfilehash: 615c09dd8a7287918bb009ce11854278b21554c1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966601"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899414"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Referenční dokumentace sady pro moderní čtečku
 
@@ -40,7 +40,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 | `token` | Řetězec | Ověřovací token Azure AD. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
 | `subdomain` | Řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
 | `content` | [Obsah](#content) | Objekt obsahující obsah, který se má zobrazit v moderní čtečce. |
-| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelné. |
+| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelný parametr. |
 | `onSuccess` | ()-> void | Uzávěr, který je vyvolán při úspěšném spuštění moderního čtecího zařízení. |
 | `onFailure` | (chyba _: [Chyba](#error)) -> void | Uzávěr, který je vyvolán, když se nepovede načíst moderní čtecí zařízení. Tento zavírací den vrátí [`Error`](#error) objekt, který představuje kód chyby a chybovou zprávu přidruženou k selhání. Další informace najdete v tématu [kódy chyb](#error-codes). |
 
@@ -100,7 +100,7 @@ struct Error {
 
 Sada moderní čtečky iOS SDK je podporovaná pro iOS 9,0 nebo novější, na iPadu a na iPhonu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Prozkoumejte [sadu iOS SDK pro moderní čtečku na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS)
 * [Rychlé zprovoznění: Vytvořte aplikaci pro iOS, která spustí moderní čtečku (SWIFT).](./ios-quickstart.md)

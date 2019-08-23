@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df13a6638c5ed72532b020ef7074123a2159b1c4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536310"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972386"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Konfigurace připojení VPN k privátnímu cloudu CloudSimple
 
@@ -26,7 +26,7 @@ Brány VPN vám umožňují připojit se k CloudSimple síti z místní sítě a
 
 V oblasti můžete vytvořit jednu bránu VPN typu Site-to-site a jednu bránu VPN typu Point-to-site.
 
-## <a name="point-to-site-vpn"></a>SÍŤ VPN typu Point-to-site
+## <a name="point-to-site-vpn"></a>Point-to-Site VPN
 
 Pokud chcete vytvořit bránu VPN typu Point-to-site, přečtěte si téma [Vytvoření brány VPN typu Point-to-site](vpn-gateway.md#create-point-to-site-vpn-gateway).
 

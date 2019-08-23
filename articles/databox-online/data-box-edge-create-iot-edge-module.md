@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 734ad263356ab9f91c7cb92ab174a14e0c5dd867
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775176"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900635"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Vývoj modulu C# IoT Edge pro přesun souborů na data box Edge
 
@@ -127,8 +127,10 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 2. V horní části **oboru názvů FileCopyModule**přidejte následující příkazy using pro typy, které se používají později. **Microsoft. Azure. Devices. Client. Transport. MQTT** je protokol, který slouží k odesílání zpráv do centra IoT Edge.
 
     ```
-    using Microsoft.Azure.Devices.Client.Transport.Mqtt;
-    using Newtonsoft.Json;
+    namespace FileCopyModule
+    {
+        using Microsoft.Azure.Devices.Client.Transport.Mqtt;
+        using Newtonsoft.Json;
     ```
 3. Do třídy program přidejte proměnnou **InputFolderPath** a **OutputFolderPath** .
 
@@ -140,7 +142,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. Chcete-li definovat tělo zprávy, přidejte třídu **sudé** .
+4. Hned za předchozí krok přidejte třídu **sudý** a definujte text zprávy.
 
     ```
     /// <summary>
@@ -156,7 +158,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
     }
     ```
 
-5. V metodě **Init** kódem vytvoříte a nakonfigurujete objekt **ModuleClient**. Tento objekt umožňuje modulu připojit se k místnímu modulu Azure IoT Edge runtime pomocí protokolu MQTT pro odesílání a příjem zpráv. Připojovací řetězec, který je použit v metodě Init, je dodána modulu modulem runtime IoT Edge. Kód zaregistruje zpětné volání kopírovacího kopírování pro příjem zpráv z centra IoT Edge prostřednictvím koncového bodu **input1** .
+5. V **metodě Init**kód vytvoří a nakonfiguruje objekt **ModuleClient** . Tento objekt umožňuje modulu připojit se k místnímu modulu Azure IoT Edge runtime pomocí protokolu MQTT pro odesílání a příjem zpráv. Připojovací řetězec, který je použit v metodě Init, je dodána modulu modulem runtime IoT Edge. Kód zaregistruje zpětné volání kopírovacího kopírování pro příjem zpráv z centra IoT Edge prostřednictvím koncového bodu **input1** . **Metodu init** nahraďte následujícím kódem.
 
     ```
     /// <summary>
@@ -178,11 +180,11 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
     }
     ```
 
-6. Vložte kód pro **kopírování**do.
+6. Odeberte kód pro **metodu zprávy kanálu** a na jejím místě vložte kód pro **kopii**.
 
     ```
         /// <summary>
-        /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
+        /// This method is called whenever the module is sent a message from the IoT Edge Hub.
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
         /// </summary>
@@ -236,6 +238,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
     ```
 
 7. Soubor uložte.
+8. Můžete si také [Stáhnout existující ukázku kódu](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) pro tento projekt. Pak můžete ověřit soubor, který jste uložili proti souboru **program.cs** v této ukázce.
 
 ## <a name="build-your-iot-edge-solution"></a>Sestavení řešení IoT Edge
 
@@ -246,7 +249,7 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
 
     `docker login <ACR login server> -u <ACR username>`
 
-    Použijte přihlašovací server a uživatelské jméno, které jste zkopírovali z registru kontejneru. 
+    Použijte přihlašovací server a uživatelské jméno, které jste zkopírovali z registru kontejneru.
 
     ![Sestavování a nabízených IoT Edge řešení](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
 
@@ -271,6 +274,6 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
 
 4. Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresa obrázku je sestavena z informací, které jsou v souboru Module. JSON ve formátu `<repository>:<version>-<platform>`. Pro tento článek by měl vypadat nějak takto `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`:.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete nasadit a spustit tento modul na Data Box Edge, přečtěte si postup v tématu [Přidání modulu](data-box-edge-deploy-configure-compute.md#add-a-module).
