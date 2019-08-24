@@ -9,7 +9,7 @@ ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: f89e7307d75b159886cb47bde3e1fceb5ed557f5
 ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2019
 ms.locfileid: "68699319"
@@ -249,7 +249,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Kanada – střed | Toronto |
 | Kanada – východ | Québec |
 | Střed Indie | Puné |
-| Střed USA | Iowa |
+| Střední USA | Iowa |
 | Východní Asie | Hongkong – zvláštní správní oblast |
 | East US | Virginie |
 | USA – východ 2 | Virginie |
@@ -258,9 +258,9 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Jižní Korea – jih| Busan |
 | Japonsko – východ | Tokio, Saitama |
 | Japonsko – západ | Ósaka |
-| Střed USA – sever | Illinois |
+| Středoseverní USA | Illinois |
 | Severní Evropa | Irsko |
-| Střed USA – jih | Texas |
+| Středojižní USA | Texas |
 | Jižní Indie | Čennaj |
 | Jihovýchodní Asie | Singapur |
 | Velká Británie – jih | Londýn |
@@ -269,7 +269,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | USA (Gov) – Texas | Texas |
 | USA (Gov) – Virginia | Virginie |
 | Západní Evropa | Nizozemsko |
-| Západní střed USA | Wyoming |
+| Středozápadní USA | Wyoming |
 | USA – západ | Kalifornie |
 | USA – západ 2 | Washington |
 
@@ -287,22 +287,22 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 |---------------------|--------------------|
 | Austrálie – východ      | Austrálie – jihovýchod|
 | Austrálie – jihovýchod | Austrálie – východ     |
-| Brazílie – jih        | Střed USA – jih   |
+| Brazílie – jih        | Středojižní USA   |
 | Kanada – střed      | Kanada – východ        |
 | Kanada – východ         | Kanada – střed     |
 | Střed Indie       | Jižní Indie        |
-| Střed USA          | Východní USA 2          |
+| Střední USA          | Východní USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
 | East US             | USA – západ            |
-| Východ USA 2           | Střed USA         |
+| Východ USA 2           | Střední USA         |
 | Francie – střed      | Francie – jih       |
 | Japonsko – východ          | Japonsko – západ         |
 | Japonsko – západ          | Japonsko – východ         |
 | Jižní Korea – střed       | Jižní Korea – jih        |
 | Jižní Korea – jih         | Jižní Korea – střed      |
 | Severní Evropa        | Západní Evropa        |
-| Střed USA – sever    | Střed USA – jih   |
-| Střed USA – jih    | Střed USA – sever   |
+| Středoseverní USA    | Středojižní USA   |
+| Středojižní USA    | Středoseverní USA   |
 | Jižní Indie         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
 | Velká Británie – jih            | Spojené království – západ            |
@@ -311,9 +311,9 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | US Gov – Iowa         | USA (Gov) – Virginia    |
 | USA (Gov) – Virginia      | USA (Gov) – Texas       |
 | Západní Evropa         | Severní Evropa       |
-| Západní střed USA     | USA – západ 2          |
+| Středozápadní USA     | USA – západ 2          |
 | USA – západ             | East US            |
-| USA – západ 2           | Západní střed USA    |
+| USA – západ 2           | Středozápadní USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

@@ -68,10 +68,10 @@ Povolte provoz z IP adres uvedených pro služby stavu a správy Azure HDInsight
 | &nbsp; | Jižní Korea – jih | 52.231.203.16</br>52.231.205.214 | \*:443 | Příchozí
 | Spojené království | Spojené království – západ | 51.141.13.110</br>51.141.7.20 | \*:443 | Příchozí |
 | &nbsp; | Velká Británie – jih | 51.140.47.39</br>51.140.52.16 | \*:443 | Příchozí |
-| Spojené státy | Střed USA | 13.89.171.122</br>13.89.171.124 | \*:443 | Příchozí |
+| Spojené státy | Střední USA | 13.89.171.122</br>13.89.171.124 | \*:443 | Příchozí |
 | &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | Příchozí |
-| &nbsp; | Střed USA – sever | 157.56.8.38</br>157.55.213.99 | \*:443 | Příchozí |
-| &nbsp; | Západní střed USA | 52.161.23.15</br>52.161.10.167 | \*:443 | Příchozí |
+| &nbsp; | Středoseverní USA | 157.56.8.38</br>157.55.213.99 | \*:443 | Příchozí |
+| &nbsp; | Středozápadní USA | 52.161.23.15</br>52.161.10.167 | \*:443 | Příchozí |
 | &nbsp; | USA – západ | 13.64.254.98</br>23.101.196.19 | \*:443 | Příchozí |
 | &nbsp; | USA – západ 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Příchozí |
 
