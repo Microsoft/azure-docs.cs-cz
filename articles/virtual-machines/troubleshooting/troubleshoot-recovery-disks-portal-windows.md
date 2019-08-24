@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: d90238f376a1197964f6dd2fdaa6a6608a156dc6
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 8fd2f997bd5d5156616b5aad70a3460f64e774bc
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611840"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997863"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal
 Pokud váš virtuální počítač s Windows v Azure najde chybu spuštění nebo disku, možná budete muset provést kroky pro řešení potíží na samotném virtuálním pevném disku. Běžným příkladem může být neúspěšná aktualizace aplikace, která brání úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí Azure Portal připojit virtuální pevný disk k jinému virtuálnímu počítači s Windows a opravit případné chyby a pak znovu vytvořit původní virtuální počítač. 
@@ -67,8 +67,8 @@ K vytvoření disku ze snímku použijte následující postup:
     #Provide the size of the disks in GB. It should be greater than the VHD file size. In this sample, the size of the snapshot is 127 GB. So we set the disk size to 128 GB.
     $diskSize = '128'
     
-    #Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
-    $storageType = 'StandardLRS'
+    #Provide the storage type for Managed Disk.  Premium_LRS or Standard_LRS.
+    $storageType = 'Standard_LRS'
     
     #Provide the Azure region (e.g. westus) where Managed Disks will be located.
     #This location should be same as the snapshot location

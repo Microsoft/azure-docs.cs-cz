@@ -1,147 +1,148 @@
 ---
-title: Rozšíření PostgreSQL v Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
-description: Popisuje možnosti k rozšíření funkčnosti vaší databáze pomocí rozšíření ve službě Azure Database for PostgreSQL.
+title: Rozšíření PostgreSQL v Azure Database for PostgreSQL – škálovatelné (Citus)
+description: V této části najdete popis možnosti rozšíření funkcí databáze pomocí rozšíření v Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 4022c95bfda8cbdaed75876793bfbba4254a5c54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aabcb0b0d01d821c529803927dacec448c923745
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410253"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998019"
 ---
-# <a name="postgresql-extensions-in-azure-database-for-postgresql---hyperscale-citus-preview"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
+# <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – škálovatelné (Citus)
 
-PostgreSQL poskytuje schopnost rozšiřovat funkce vaší databáze pomocí rozšíření. Rozšíření umožňují sdružování více souvisejících objektů SQL společně v jednom balíčku, který může načíst nebo odstranit z databáze pomocí jediného příkazu. Po načtení v databázi, můžou rozšíření fungovat stejně jako integrované funkce. Další informace o rozšíření PostgreSQL, naleznete v tématu [balení souvisejících objektů do rozšíření](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
+PostgreSQL poskytuje možnost rozšíření funkcí databáze pomocí rozšíření. Rozšíření umožňují sdružování více souvisejících objektů SQL dohromady v jednom balíčku, který se dá načíst nebo odebrat z databáze jediným příkazem. Po načtení do databáze nástroje můžou rozšíření fungovat jako integrované funkce. Další informace o rozšířeních PostgreSQL najdete v tématu věnovaném [sbalení objektů souvisejících s rozšířením](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
 
-## <a name="how-to-use-postgresql-extensions"></a>Jak používat rozšíření PostgreSQL
+## <a name="use-postgresql-extensions"></a>Použití rozšíření PostgreSQL
 
-Rozšíření PostgreSQL musí být nainstalován ve vaší databázi, abyste mohli používat. Pokud chcete nainstalovat konkrétní rozšíření, spusťte [vytvořit rozšíření](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) příkaz nástroj psql načíst objekty zabalené do databáze.
+Aby bylo možné použít rozšíření PostgreSQL, musí být v databázi nainstalovány. Pro instalaci konkrétního rozšíření spusťte příkaz [Create Extension](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) z nástroje psql, který načte zabalené objekty do vaší databáze.
 
-Azure Database for PostgreSQL aktuálně podporuje jenom podmnožinu klíče rozšíření, jak je uvedeno níže. Rozšíření nad rámec uvedené nejsou podporovány. Nelze vytvořit vlastní rozšíření s využitím Azure Database pro služba PostgreSQL.
+Azure Database for PostgreSQL – verze Preview (Citus) Preview aktuálně podporuje podmnožinu přípon klíčů, jak je uvedeno zde. Jiná rozšíření než ta, která jsou uvedena, nejsou podporována. Pomocí Azure Database for PostgreSQL nemůžete vytvořit vlastní rozšíření.
 
-## <a name="extensions-supported-by-azure-database-for-postgresql"></a>Rozšíření podporovány službou Azure Database for PostgreSQL
+## <a name="extensions-supported-by-azure-database-for-postgresql"></a>Rozšíření podporovaná nástrojem Azure Database for PostgreSQL
 
-Následující tabulky uvádí standardní PostgreSQL rozšíření, které jsou aktuálně podporovány službou Azure Database for PostgreSQL. Tyto informace jsou k dispozici také spuštěním `SELECT * FROM pg_available_extensions;`.
+V následujících tabulkách jsou uvedeny standardní rozšíření PostgreSQL, která jsou aktuálně podporována nástrojem Azure Database for PostgreSQL. Tyto informace jsou také k dispozici `SELECT * FROM pg_available_extensions;`v systému.
 
-### <a name="data-types-extensions"></a>Rozšíření typů dat
+### <a name="data-types-extensions"></a>Datové typy – rozšíření
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Klapk** | **Popis** |
 > |---|---|
-> | [citext](https://www.postgresql.org/docs/9.6/static/citext.html) | Poskytuje typ řetězce znaků na velká a malá písmena. |
+> | [citext](https://www.postgresql.org/docs/9.6/static/citext.html) | Poskytuje znakový typ řetězce bez rozlišení velkých a malých písmen. |
 > | [cube](https://www.postgresql.org/docs/9.6/static/cube.html) | Poskytuje datový typ pro multidimenzionální datové krychle. |
-> | [hstore](https://www.postgresql.org/docs/9.6/static/hstore.html) | Poskytuje datový typ pro ukládání sad párů klíč/hodnota. |
-> | [isn](https://www.postgresql.org/docs/9.6/static/isn.html) | Poskytuje datové typy pro mezinárodní produktu číslování. |
-> | [lo](https://www.postgresql.org/docs/current/lo.html) | Velký objekt údržby. |
-> | [ltree](https://www.postgresql.org/docs/9.6/static/ltree.html) | Poskytuje datový typ pro hierarchické stromové struktury jako struktury. |
-> | [seg –](https://www.postgresql.org/docs/current/seg.html) | Datový typ představující segmenty čáry nebo intervaly s plovoucí desetinnou čárkou. |
-> | [prvních n hodnot](https://github.com/citusdata/postgresql-topn/) | Typ n nejlepších JSONB. |
+> | [hstore](https://www.postgresql.org/docs/9.6/static/hstore.html) | Poskytuje datový typ pro ukládání sad párů klíč-hodnota. |
+> | [isn](https://www.postgresql.org/docs/9.6/static/isn.html) | Poskytuje typy dat pro mezinárodní standardy číslování produktů. |
+> | [lo](https://www.postgresql.org/docs/current/lo.html) | Údržba Large Object. |
+> | [ltree](https://www.postgresql.org/docs/9.6/static/ltree.html) | Poskytuje datový typ pro hierarchické struktury podobné stromu. |
+> | [SEG –](https://www.postgresql.org/docs/current/seg.html) | Datový typ reprezentující segmenty čar nebo intervaly s plovoucí desetinnou čárkou. |
+> | [Nejlepší](https://github.com/citusdata/postgresql-topn/) | Zadejte pro JSONB Top-n. |
 
-### <a name="functions-extensions"></a>Funkce rozšíření
+### <a name="full-text-search-extensions"></a>Rozšíření fulltextového vyhledávání
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Klapk** | **Popis** |
 > |---|---|
-> | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Funkce pro pole s automatickými přírůstky. |
-> | [earthdistance](https://www.postgresql.org/docs/9.6/static/earthdistance.html) | Poskytuje prostředky k výpočtu kruh velké vzdálenosti na zemském povrchu. |
-> | [fuzzystrmatch](https://www.postgresql.org/docs/9.6/static/fuzzystrmatch.html) | Poskytuje několik funkcí k určení vzdálenost mezi řetězci a podobnosti. |
-> | [Vložit\_uživatelské jméno](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | Funkce pro sledování, kdo ho změnil tabulku. |
-> | [intagg](https://www.postgresql.org/docs/current/intagg.html) | Agregátor celé číslo a enumerátor (zastaralé). |
-> | [intarray](https://www.postgresql.org/docs/9.6/static/intarray.html) | Poskytuje funkce a operátory pro práci s null bez pole celých čísel. |
-> | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | Funkce pro sledování čas poslední změny. |
+> | [DICT –\_int](https://www.postgresql.org/docs/9.6/static/dict-int.html) | Poskytuje šablonu slovníku pro hledání textu pro celá čísla. |
+> | [dict\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Šablona slovníku pro hledání textu pro zpracování rozšířeného synonyma |
+> | [odakcent](https://www.postgresql.org/docs/9.6/static/unaccent.html) | Vyhledávací slovník textu, který z lexemes odebere zvýraznění (znaménka diakritiky). |
+
+### <a name="functions-extensions"></a>Rozšíření funkcí
+
+> [!div class="mx-tableFixed"]
+> | **Klapk** | **Popis** |
+> |---|---|
+> | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Funkce pro pole AutoIncrement. |
+> | [earthdistance](https://www.postgresql.org/docs/9.6/static/earthdistance.html) | Poskytuje způsob, jak vypočítat Skvělé vzdálenosti na povrchu země. |
+> | [fuzzystrmatch](https://www.postgresql.org/docs/9.6/static/fuzzystrmatch.html) | Poskytuje několik funkcí k určení podobností a vzdálenosti mezi řetězci. |
+> | [vložit\_uživatelské jméno](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | Funkce pro sledování, kdo změnil tabulku |
+> | [intagg](https://www.postgresql.org/docs/current/intagg.html) | Celočíselný agregátor a enumerátor (zastaralé). |
+> | [intarray](https://www.postgresql.org/docs/9.6/static/intarray.html) | Poskytuje funkce a operátory pro manipulaci s poli typu Integer bez hodnoty null. |
+> | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | Funkce pro sledování času poslední změny. |
 > | [pgcrypto](https://www.postgresql.org/docs/9.6/static/pgcrypto.html) | Poskytuje kryptografické funkce. |
 > | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Spravuje dělené tabulky podle času nebo ID. |
-> | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Poskytuje funkce a operátory pro určení podobnost na základě porovnání trigram alfanumerické text. |
-> | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | Funkce pro implementaci referenční integritu (zastaralé). |
-> | relace\_analytics | Funkce pro dotazování hstore pole. |
-> | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Poskytuje funkce, které pracují s celé tabulky, včetně křížového. |
-> | [tcn](https://www.postgresql.org/docs/current/tcn.html) | Aktivaci oznámení o změnách. |
-> | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Funkce pro implementaci doba trvání cesty. |
+> | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Poskytuje funkce a operátory pro určení podobnosti alfanumerického textu na základě odpovídajícího formátu Hiragana. |
+> | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | Funkce pro implementaci referenční integrity (zastaralé). |
+> | Analýza\_relací | Funkce pro dotazování na pole hstore |
+> | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Poskytuje funkce, které pracují s celými tabulkami, včetně křížového. |
+> | [tcn](https://www.postgresql.org/docs/current/tcn.html) | Aktivována oznámení o změně. |
+> | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Funkce pro implementaci času na cestách |
 > | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Generuje univerzálně jedinečné identifikátory (UUID). |
 
-### <a name="full-text-search-extensions"></a>Fulltextové vyhledávání rozšíření
+### <a name="hyperscale-extensions"></a>Rozšíření s škálovatelným škálováním
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Klapk** | **Popis** |
 > |---|---|
-> | [dict\_int](https://www.postgresql.org/docs/9.6/static/dict-int.html) | Poskytuje šablony textu vyhledávání slovníku pro celá čísla. |
-> | [dict\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Textové vyhledávání slovníku šablony pro rozšířené synonymum zpracování. |
-> | [unaccent](https://www.postgresql.org/docs/9.6/static/unaccent.html) | Slovník vyhledávání textu, který zruší lexemes zvýraznění (značky diakritických znamének). |
+> | [citus](https://github.com/citusdata/citus) | Distribuovaná databáze Citus |
+> | horizontálních oddílů\_– Nástroj pro vyrovnávání zatížení | Bezpečně vyvážit data ve skupině serverů v případě přidávání nebo odebírání uzlů. |
 
-### <a name="index-types-extensions"></a>Rozšíření index typy
+### <a name="index-types-extensions"></a>Rozšíření typů indexu
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Klapk** | **Popis** |
 > |---|---|
-> | [Standard](https://www.postgresql.org/docs/current/bloom.html) | Metoda přístupu Standard - soubor s podpisem na základě indexu. |
-> | [taková\_gin](https://www.postgresql.org/docs/9.6/static/btree-gin.html) | Poskytuje ukázkové GIN – operátor třídy, které implementují B-stromu jako chování u určitých datových typů. |
-> | [taková\_gist](https://www.postgresql.org/docs/9.6/static/btree-gist.html) | Poskytuje GiST index operátor třídy, které implementují B-stromu. |
+> | [bloom](https://www.postgresql.org/docs/current/bloom.html) | Bloom metoda přístupu – index založený na souboru signatury. |
+> | [BTREE\_gin](https://www.postgresql.org/docs/9.6/static/btree-gin.html) | Poskytuje ukázkové třídy operátorů GIN, které implementují chování typu B-Tree pro určité typy dat. |
+> | [BTREE\_registr](https://www.postgresql.org/docs/9.6/static/btree-gist.html) | Poskytuje třídy operátoru indexového indexu, které implementují B-Tree. |
 
 ### <a name="language-extensions"></a>Jazyková rozšíření
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Klapk** | **Popis** |
 > |---|---|
-> | [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL zaveditelný procedurální jazyk. |
+> | [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PgSQLový jazyk PL/spustitelný. |
 
-### <a name="hyperscale-extensions"></a>Velkokapacitní rozšíření
+### <a name="miscellaneous-extensions"></a>Různá rozšíření
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
-> |---|---|
-> | [citus](https://github.com/citusdata/citus) | Citus distribuovaná databáze. |
-> | horizontální oddíl\_rebalancer | Bezpečně obnovit rovnováhu data ve skupině serveru v případě uzlu přidání nebo odebrání. |
-
-### <a name="miscellaneous-extensions"></a>Ostatní rozšíření
-
-> [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Klapk** | **Popis** |
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | Funkce správy pro PostgreSQL. |
-> | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Funkce pro ověřování integrity vztah. |
-> | [file\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | Obálka cizí data pro přístup k souborům bez stromové struktury. |
-> | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | Kontrola obsahu stránky databáze na nízké úrovni. |
-> | [pg\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | Poskytuje prostředky k posouzení, co se děje v mezipaměti sdílené vyrovnávací paměti v reálném čase. |
+> | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Funkce pro ověření integrity vztahu |
+> | [FDW\_souboru](https://www.postgresql.org/docs/current/file-fdw.html) | Obálka cizích dat pro přístup plochých souborů |
+> | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | Zkontrolujte obsah stránek databáze na nízké úrovni. |
+> | [pg\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | Poskytuje způsob, jak zkoumat, co se děje ve sdílené mezipaměti vyrovnávací paměti v reálném čase. |
 > | [pg\_cron](https://github.com/citusdata/pg_cron) | Plánovač úloh pro PostgreSQL. |
-> | [pg\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | Zkontrolujte volné místo map (FSM). |
+> | [PG\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | Projděte si mapu volného místa (FSM). |
 > | [pg\_prewarm](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | Poskytuje způsob, jak načíst data relace do mezipaměti vyrovnávací paměti. |
-> | [PG\_stat\_příkazy](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | Poskytuje prostředky pro sledování statistiky provádění příkazů SQL Server spuštěn. (Viz níže pro poznámky na toto rozšíření). |
-> | [pg\_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) | Podívejte se na viditelnost mapy (VM) a informace o viditelnost na úrovni stránky. |
-> | [pgrowlocks](https://www.postgresql.org/docs/9.6/static/pgrowlocks.html) | Poskytuje prostředky k zobrazení informací na úrovni řádků zamykání. |
-> | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | Poskytuje prostředky k zobrazení Statistika na úrovni řazené kolekce členů. |
-> | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Obálka cizí dat používá pro přístup k datům uloženým v externí servery PostgreSQL. (Viz níže pro poznámky na toto rozšíření).|
+> | [příkazy\_pg\_stat](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | Poskytuje způsob, jak sledovat statistiku provádění všech příkazů SQL provedených serverem. Informace o tomto rozšíření najdete v části "pg_stat_statements". |
+> | [viditelnost\_stránky](https://www.postgresql.org/docs/current/pgvisibility.html) | Projděte si informace o viditelnosti mapy viditelnosti (VM) a na úrovni stránky. |
+> | [pgrowlocks](https://www.postgresql.org/docs/9.6/static/pgrowlocks.html) | Poskytuje způsob zobrazení informací o uzamykání na úrovni řádků. |
+> | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | Poskytuje způsob zobrazení statistik na úrovni řazené kolekce členů. |
+> | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Obálka cizích dat slouží k přístupu k datům uloženým na externích PostgreSQL serverech. Informace o tomto rozšíření najdete v části "dblink a postgres_fdw".|
 > | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | Informace o certifikátech SSL. |
-> | [tsm\_systému\_řádků](https://www.postgresql.org/docs/current/tsm-system-rows.html) | Klauzule TABLESAMPLE metodu, která přijímá počet řádků jako omezení. |
-> | [tsm\_systému\_čas](https://www.postgresql.org/docs/current/tsm-system-time.html) | Klauzule TABLESAMPLE metodu, která přijímá čas v milisekundách jako omezení. |
-> | [hypopg](https://hypopg.readthedocs.io/en/latest/) | Poskytuje způsob vytváření hypotetické indexy, které není nákladů CPU nebo disk. |
-> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | Modul, který podporuje připojení k jiné databáze PostgreSQL z v rámci relace databáze. (Viz níže pro poznámky na toto rozšíření). |
-> | [xml2](https://www.postgresql.org/docs/current/xml2.html) | Dotazy XPath a XSLT. |
+> | [TSM\_systémové\_řádky](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE – metoda, která přijímá počet řádků jako limit. |
+> | [TSM\_systémový\_čas](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE – metoda, která akceptuje dobu v milisekundách jako limit. |
+> | [hypopg](https://hypopg.readthedocs.io/en/latest/) | Poskytuje způsob vytváření hypotetických indexů, které nenákladují na procesor ani na disk. |
+> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | Modul, který podporuje připojení k ostatním databázím PostgreSQL v rámci relace databáze. Informace o tomto rozšíření najdete v části "dblink a postgres_fdw". |
+> | [xml2](https://www.postgresql.org/docs/current/xml2.html) | Dotazování XPath a transformace XSLT. |
 
 
-### <a name="postgis-extensions"></a>PostGIS rozšíření
+### <a name="postgis-extensions"></a>Rozšíření PostGIS
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Klapk** | **Popis** |
 > |---|---|
-> | [PostGIS](https://www.postgis.net/), postgis\_topology, postgis\_tiger\_geocoder, postgis\_sfcgal | Prostorová a geografické objekty pro PostgreSQL. |
-> | Adresa\_standardizer, adresa\_standardizer\_data\_USA | Použít k analýze adresu do rozložení na základní prvky. Použít pro podporu geokódování adresu normalizace kroku. |
-> | postgis\_sfcgal | PostGIS SFCGAL funkce. |
-> | postgis\_tiger\_geocoder | PostGIS tiger geocoder a reverzní geocoder. |
-> | postgis\_topologie | PostGIS topologie prostorové typy a funkce. |
+> | [PostGIS](https://www.postgis.net/), PostGIS\_, topologie PostGIS\_tygr\_, PostGIS\_sfcgal | Prostorové a geografické objekty pro PostgreSQL. |
+> | adresa\_pro standardizaci adresování,\_adresové\_\_data | Slouží k analýze adresy na prvky prvku. Slouží k podpoře kroku pro normalizaci adres geografického kódování. |
+> | postgis\_sfcgal | PostGIS funkce SFCGAL. |
+> | postgis\_tiger\_geocoder | PostGIS tygr, INCODE a Reverse INCODE. |
+> | topologie\_PostGIS | Prostorové typy a funkce topologie PostGIS. |
 
 
-## <a name="pgstatstatements"></a>pg_stat_statements
-[Pg\_stat\_příkazy rozšíření](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) se předem na každý server Azure Database for PostgreSQL poskytnout způsob sledování statistiky provádění příkazů SQL.
-Nastavení `pg_stat_statements.track`, který určuje, jaké příkazy se počítají podle přípony, výchozí hodnota je `top`, to znamená všechny příkazy vydané klienti jsou sledovány. Jsou dvě další sledování úrovně `none` a `all`. Toto nastavení se dá konfigurovat jako parametr serveru prostřednictvím [webu Azure portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
+## <a name="pg_stat_statements"></a>pg_stat_statements
+[Rozšíření příkazů\_pg\_stat](https://www.postgresql.org/docs/current/pgstatstatements.html) je předem načteno na každý Azure Database for PostgreSQL Server, který poskytuje prostředky pro sledování statistik provádění příkazů SQL.
 
-Je kompromis mezi informace o spuštění dotazu poskytuje pg_stat_statements a dopad na výkon serveru jako protokoly každý příkaz jazyka SQL. Pokud nepoužíváte aktivně pg_stat_statements rozšíření, doporučujeme vám, že jste nastavili `pg_stat_statements.track` k `none`. Všimněte si, že některé třetích stran sledování služeb může záviset na pg_stat_statements poskytovat informace o výkonu dotazů, proto zkontrolujte, jestli to není v tomto případě nebo ne.
+Nastavení `pg_stat_statements.track` určuje, které příkazy se započítávají pomocí rozšíření. Výchozí hodnota `top`je, což znamená, že jsou sledovány všechny příkazy vystavené přímo klienty. Tyto dvě úrovně sledování jsou `none` a. `all` Toto nastavení se dá nakonfigurovat jako parametr serveru prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
 
-## <a name="dblink-and-postgresfdw"></a>dblink a postgres_fdw
-dblink a postgres_fdw vám umožní připojit z jednoho serveru PostgreSQL do jiné nebo do jiné databáze na stejném serveru. Přijímající server je potřeba povolit připojení ze serveru pro odesílání prostřednictvím brány firewall. Při použití těchto rozšíření k připojení mezi – Azure Database for postgresql – servery, to můžete udělat tak, že nastavíte "Povolit přístup ke službám Azure" na ON. Pokud chcete, abyste použili rozšíření se ve smyčce zpět na stejný server je také potřeba. Nastavení "Povolit přístup ke službám Azure" najdete na stránce webu Azure portal pro Postgres server v části zabezpečení připojení. Zapnutí "Povolit přístup ke službám Azure" na seznamů povolených všechny IP adresy Azure.
+Mezi informacemi o spuštění dotazu pg_stat_statements poskytuje a vliv na výkon serveru při zaznamenání jednotlivých příkazů SQL. Pokud nepoužíváte rozšíření pg_stat_statements, doporučujeme, abyste nastavili `pg_stat_statements.track` na. `none` Některé služby monitorování třetích stran se můžou spoléhat na pg_stat_statements, aby mohli poskytovat přehledy o výkonu dotazů, takže ověřte, jestli se jedná o případ nebo ne.
 
-V současné době odchozí připojení ze služby Azure Database for PostgreSQL nejsou podporovány, s výjimkou připojení k jiné – Azure Database for postgresql – servery.
+## <a name="dblink-and-postgres_fdw"></a>dblink a postgres_fdw
+Pomocí dblink a postgres_fdw se můžete připojit z jednoho serveru PostgreSQL k druhému nebo do jiné databáze na stejném serveru. Přijímající server musí v bráně firewall umožňovat připojení z odesílajícího serveru. Pokud chcete použít tato rozšíření pro připojení mezi Azure Database for PostgreSQL servery, nastavte možnost **Povolení přístupu ke službám Azure** na zapnuto. Toto nastavení musíte zapnout také v případě, že chcete použít rozšíření pro návrat ke stejnému serveru. Nastavení **Povolení přístupu ke službám Azure** najdete na stránce Azure Portal pro server Postgres v části **zabezpečení připojení**. Povolení **přístupu ke službám Azure** na seznamu povolených všech IP adres Azure.
+
+V současné době se odchozí připojení z Azure Database for PostgreSQL nepodporují, s výjimkou připojení k jiným serverům Azure Database for PostgreSQL.

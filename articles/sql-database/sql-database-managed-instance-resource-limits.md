@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: e5dc449dc51faccdd8c0e69337cc5f8ac19fa296
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 776a27ca0babfd7557bf4d16c449a8dfa5bceaf7
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874400"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998198"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -42,7 +42,8 @@ Azure SQL Database spravovanou instanci lze nasadit na dvě generace hardwaru: C
 | Maximální rezervované úložiště instancí |  Pro obecné účely: 8 TB<br/>Pro důležité obchodní informace: 1TB | Pro obecné účely: 8 TB<br/> V závislosti na počtu jader Pro důležité obchodní informace 1 TB, 2 TB nebo 4 TB. |
 
 > [!IMPORTANT]
-> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih.
+> - Probíhá fáze COMPUTE GEN4 – hardwaru. Doporučuje se nasadit nové spravované instance na Gen5 hardware.
+> - COMPUTE GEN4 – hardware je v tuto chvíli k dispozici v následujících oblastech: Severní Evropa, Západní Evropa, Východní USA, Střed USA – jih, Střed USA – sever, Západní USA 2, Střed USA, Kanada – střed, Jižní Indie, jihovýchodní Asie a Korea – střed.
 
 ### <a name="service-tier-characteristics"></a>Vlastnosti vrstvy služeb
 
@@ -106,7 +107,7 @@ Následující tabulka ukazuje výchozí regionální omezení pro podporovaná 
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional a MSDN Platforms|2|32|
 
-\*Při plánování nasazení Vezměte v úvahu, že Pro důležité obchodní informace (BC) vCore (kvůli přidané redundanci) spotřebovává 4x větší kapacitu Pro obecné účely než vCore (GP). Pro výpočty tedy 1 GP vCore = 1 vCore jednotku a 1 BC vCore = 4 jednotky vCore. Abyste zjednodušili analýzu spotřeby proti výchozím omezením, Shrňte jednotky vCore ve všech podsítích v oblasti, ve které se nasazují spravované instance, a porovnejte výsledky s omezeními jednotky instance pro typ předplatného. **Maximální počet Vcore jednotek** se vztahuje na každé předplatné v oblasti. Pro jednotlivé podsítě neplatí žádné omezení s tím rozdílem, že součet všech virtuální jádra nasazených napříč více podsítěmi musí být nižší nebo roven **maximálnímu počtu Vcore jednotek**.
+\*Při plánování nasazení Vezměte v úvahu, že úroveň služby Pro důležité obchodní informace (BC) vyžaduje čtyři (4) větší kapacitu vCore než úroveň služby Pro obecné účely (GP). Příklad: 1 GP vCore = 1 vCore jednotka a 1 BC vCore = 4 jednotky vCore. Abyste zjednodušili analýzu spotřeby proti výchozím omezením, Shrňte jednotky vCore ve všech podsítích v oblasti, ve které se nasazují spravované instance, a porovnejte výsledky s omezeními jednotky instance pro typ předplatného. **Maximální počet Vcore jednotek** se vztahuje na každé předplatné v oblasti. Pro jednotlivé podsítě neplatí žádné omezení s tím rozdílem, že součet všech virtuální jádra nasazených napříč více podsítěmi musí být nižší nebo roven **maximálnímu počtu Vcore jednotek**.
 
 \*\*Větší podsíť a omezení vCore jsou k dispozici v následujících oblastech: Austrálie – východ, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Západní USA 2.
 

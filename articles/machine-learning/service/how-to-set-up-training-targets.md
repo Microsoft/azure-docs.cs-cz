@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e73a64a9782535da31e2eacbaa2740007707c774
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: MT
+ms.openlocfilehash: 7d9d6dc8a980c543aa1a94c0ed4e9ae845769567
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872411"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997908"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu 
 
@@ -433,7 +433,7 @@ Nebo můžete:
 * Odešlete experiment [pomocí rozšíření CLI](reference-azure-machine-learning-cli.md#experiments).
 * Odešlete experiment prostřednictvím [rozšíření vs Code](how-to-vscode-tools.md#train-and-tune-models).
 
-## <a name="github-tracking-and-integration"></a>Sledování a integrace GitHubu
+## <a name="git-tracking-and-integration"></a>Sledování a integrace Git
 
 Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Například aktuální ID potvrzení pro úložiště je protokolováno jako součást historie.
 
@@ -445,7 +445,7 @@ Příklady školení s různými cíli výpočtů najdete v těchto poznámkový
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Kurz: Výuka modelu](tutorial-train-models-with-aml.md) používá ke školení modelu spravovaný výpočetní cíl.
 * Naučte se [efektivně ladit parametry](how-to-tune-hyperparameters.md) pro vytváření lepších modelů.

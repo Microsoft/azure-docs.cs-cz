@@ -1,138 +1,169 @@
 ---
-title: Konfigurace agenta Azure Log Analytics pro počítače Windows hybridní | Dokumentace Microsoftu
-description: V tomto rychlém startu dozvíte, jak nasadit agenta Log Analytics pro počítače Windows spuštěné mimo Azure a Povolit shromažďování dat pomocí služby Log Analytics.
-services: log-analytics
-documentationcenter: log-analytics
+title: Shromažďování dat z hybridního počítače s Windows pomocí Azure Monitor | Microsoft Docs
+description: V tomto rychlém startu se dozvíte, jak nasadit agenta Log Analytics pro počítače se systémem Windows, na kterých běží mimo Azure, a jak povolit shromažďování dat pomocí protokolů Azure Monitor.
+services: azure-monitor
+documentationcenter: azure-monitor
 author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: log-analytics
+ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 04/09/2019
+ms.date: 08/22/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 15885137b9559bf34fb2b985398401af09caa629
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 50059711df195c13ee44061ee4844f0192e0e10d
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602982"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992097"
 ---
-# <a name="configure-the-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>Konfigurace agenta Log Analytics pro počítače s Windows v hybridním prostředí
-[Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) může shromažďovat data přímo z fyzických nebo virtuálních počítačů s Windows do jednoho úložiště pro účely podrobných analýz a korelace. Log Analytics může shromažďovat data z datové centrum nebo jiné cloudové prostředí. Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Windows a shromažďovat z něj data.  Informace o virtuálních počítačích Windows Azure naleznete v tématu [shromažďování dat o virtuálních počítačích Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
+# <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Shromažďování dat z počítače s Windows v hybridním prostředí pomocí Azure Monitor
 
-Požadavky na podporovanou konfiguraci najdete v tématu [Windows podporované operační systémy](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) a [konfigurace brány firewall sítě](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
+[Azure monitor](../overview.md) může shromažďovat data přímo z vašich fyzických nebo virtuálních počítačů s Windows ve vašem prostředí do pracovního prostoru Log Analytics a získat tak podrobnou analýzu a korelaci. Instalace [agenta Log Analytics](../platform/log-analytics-agent.md) umožňuje Azure monitor shromažďovat data z datového centra nebo jiného cloudového prostředí. Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Windows a shromažďovat z něj data. Informace o virtuálních počítačích Azure s Windows najdete v tématu [shromažďování dat o virtuálních počítačích Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
+
+Další informace o podporované konfiguraci najdete v tématu [podporované operační systémy Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) a [Konfigurace brány firewall sítě](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
  
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
+
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
-1. Na webu Azure Portal vyberte **Všechny služby**. Do vyhledávacího pole zadejte **Log Analytics**. Při psaní seznam se průběžně filtruje podle vašeho zadání. Vyberte **Log Analytics**:
 
-    ![portál Azure](media/quick-collect-windows-computer/azure-portal-01.png)
+1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
+
+    ![portál Azure](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+
+2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
+
+   * Zadejte název nového **pracovního prostoru Log Analytics**, například *DefaultLAWorkspace*.  
+   * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
+   * Jako **skupinu prostředků** vyberte existující skupinu prostředků, která obsahuje jeden nebo několik virtuálních počítačů Azure.  
+   * Vyberte **Umístění**, do kterého jsou vaše virtuální počítače nasazené.  Další informace najdete na stránce uvádějící [oblasti, ve kterých je dostupná služba Log Analytics](https://azure.microsoft.com/regions/services/).
+   * Pokud vytváříte pracovní prostor v novém předplatném vytvořeném po 2. dubnu 2018, automaticky se použije cenový plán *podle počtu GB* a možnost vybrat cenovou úroveň nebude dostupná.  Pokud vytváříte pracovní prostor pro existující předplatné vytvořené před 2. dubnem nebo pro předplatné, které se vázalo na existující registraci smlouvy Enterprise, vyberte si cenovou úroveň, které dáváte přednost.  Další informace o jednotlivých úrovních najdete v [podrobnostech o cenách Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
   
-2. Vyberte **vytvořit**a potom zadejte následující údaje:
+        ![Okno pro vytvoření Log Analytics prostředku](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
 
-   * Zadejte název pro nový **pracovní prostor Log Analytics**. Podobný **DefaultLAWorkspace**.
-   * Vyberte **předplatné** propojení. Pokud se výchozí hodnota není ten, který chcete použít, zvolte jinou kolekci ze seznamu.
-   * Pro **skupiny prostředků**, vyberte existující skupinu prostředků, který obsahuje jeden nebo více Azure virtual machines.  
-   * Vyberte **Umístění**, do kterého jsou vaše virtuální počítače nasazené. Tady je seznam [oblasti Log Analytics je k dispozici](https://azure.microsoft.com/regions/services/).  
-   * Pokud vytváříte pracovní prostor v rámci předplatného, který jste vytvořili po 2. dubnem 2018, budou automaticky používat pracovní prostor **Per GB** cenový plán. Nebudete moci vybrat cenovou úroveň. Pokud vytváříte pracovní prostor v rámci předplatného, který jste vytvořili před 2. dubnem 2018, nebo v předplatném, které se vázalo na existující registraci smlouvy Enterprise, vyberte cenovou úroveň, kterou chcete použít. Zobrazit [podrobnosti o cenách Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) informace o úrovních.
+3. Po zadání požadovaných informací v podokně **log Analyticsho pracovního prostoru** vyberte **OK**.  
 
-        ![Vytvoření prostředku Log Analytics](media/quick-collect-windows-computer/create-loganalytics-workspace-02.png)<br>  
+Během ověřování informací a vytváření pracovního prostoru můžete průběh zpracování sledovat prostřednictvím položky nabídky **Oznámení**. 
 
-3. Po zadání požadovaných informací v **pracovní prostor Log Analytics** vyberte **OK**.  
 
-Během ověřování informací a vytváří se nový pracovní prostor, můžete sledovat průběh **oznámení** v nabídce.
+## <a name="get-the-workspace-id-and-key"></a>Získat ID a klíč pracovního prostoru
 
-## <a name="get-the-workspace-id-and-key"></a>Získejte ID pracovního prostoru a klíč
-Před instalací Microsoft Monitoring Agent pro Windows, budete potřebovat ID pracovního prostoru a klíč vašeho pracovního prostoru Log Analytics. Průvodce instalací potřebuje tyto informace ke správné konfiguraci agenta a zajistěte, aby že mohl komunikovat s Log Analytics.  
+Než nainstalujete agenta Log Analytics pro Windows (také označovaný jako Microsoft Monitoring Agent (MMA)), budete potřebovat ID a klíč pracovního prostoru pro váš Log Analytics pracovní prostor. Průvodce instalací potřebuje tyto informace, aby mohl správně nakonfigurovat agenta a zajistit, aby mohl komunikovat s Azure Monitor.  
 
-1. V levém horním rohu webu Azure portal, vyberte **všechny služby**. Do vyhledávacího pole zadejte **Log Analytics**. Při psaní seznam se průběžně filtruje podle vašeho zadání. Vyberte **Log Analytics**.
-2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který jste vytvořili dříve. (Může mít pojmenujete jej **DefaultLAWorkspace**.)
-3. Vyberte **upřesňující nastavení**:
+1. V levém horním rohu Azure Portal vyberte **všechny služby**. Do vyhledávacího pole zadejte **Log Analytics**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **Log Analytics pracovní prostory**.
 
-    ![Upřesňující nastavení log Analytics](media/quick-collect-windows-computer/log-analytics-advanced-settings-01.png)
+2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který jste vytvořili dříve. (Je možné, že jste nastavili název **DefaultLAWorkspace**.)
+
+3. Vybrat **upřesňující nastavení**:
+
+    ![Log Analytics Upřesnit nastavení](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
   
 4. Vyberte **Připojené zdroje** a pak **Servery Windows**.
-5. Zkopírujte hodnoty napravo od **ID pracovního prostoru** a **primární klíč**. Vložte je do oblíbeného editoru.
+
+5. Zkopírujte hodnoty napravo od ID a **primárního klíče** **pracovního prostoru** . Vložte je do svého oblíbeného editoru.
 
 ## <a name="install-the-agent-for-windows"></a>Instalace agenta pro Windows
-Následující kroky instalace a konfigurace agenta pro Log Analytics v Azure a Azure Government. Instalace agenta v počítači budete pomocí programu Instalace agenta Microsoft Monitoring Agent.
 
-1. Pokračováním z předchozího sadu kroků, na **servery Windows** stránky, vyberte **stáhnout agenta Windows** verzi, kterou chcete stáhnout. Vyberte příslušnou verzi pro architekturu procesoru operačního systému Windows.
+Následující postup nainstaluje a nakonfiguruje agenta pro Log Analytics v Azure a Azure Government. Pomocí instalačního programu Microsoft Monitoring Agent nainstalujete agenta do svého počítače.
+
+1. Po pokračování předchozí sady kroků na stránce **Windows servery** vyberte **Stáhnout verzi agenta pro Windows** , kterou chcete stáhnout. Vyberte příslušnou verzi pro architekturu procesoru operačního systému Windows.
+
 2. Spusťte instalační program a nainstalujte agenta na svém počítači.
-2. Na **úvodní** stránce vyberte **Další**.
-3. Na stránce **Licenční podmínky** si přečtěte licenční podmínky a pak vyberte **Souhlasím**.
-4. Na stránce **Cílová složka** změňte nebo ponechte výchozí instalační složku a pak vyberte **Další**.
-5. Na **možnosti instalace agenta** stránce, připojit agenta k Azure Log Analytics a pak vyberte **Další**.
-6. Na **Azure Log Analytics** stránce, proveďte následující kroky:
-   1. Vložte **ID pracovního prostoru** a **klíč pracovního prostoru (primární klíč)** , který jste si zkopírovali dříve. Pokud má počítač hlásit do pracovního prostoru Log Analytics ve službě Azure Government, vyberte **Azure US Government** v **Azure Cloud** seznamu.  
-   2. Pokud počítač potřebuje komunikovat se službou Log Analytics přes proxy server, vyberte **Upřesnit** a zadejte adresu URL a číslo portu proxy serveru. Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo pro ověřování pomocí serveru proxy a pak vyberte **Další**.  
-7. Vyberte **Další** po přidání nastavení konfigurace:
 
-    ![Instalace agenta Microsoft Monitoring Agent](media/quick-collect-windows-computer/log-analytics-mma-setup-laworkspace.png)
+3. Na **úvodní** stránce vyberte **Další**.
 
-8. Na stránce **Připraveno k instalaci** zkontrolujte zvolené volby a pak vyberte **Nainstalovat**.
-9. Na **konfigurace byla úspěšně dokončena** stránce **Dokončit**.
+4. Na stránce **Licenční podmínky** si přečtěte licenční podmínky a pak vyberte **Souhlasím**.
 
-Po dokončení instalace a nastavení agenta Microsoft Monitoring Agent se zobrazí v Ovládacích panelech. Můžete zkontrolovat svou konfiguraci a ověřit připojení agenta k Log Analytics. Při připojení na **Azure Log Analytics** agenta na kartě se zobrazí tato zpráva: **Microsoft Monitoring Agent se úspěšně připojilo ke službě Microsoft Log Analytics.**<br><br> ![Stav připojení MMA](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+5. Na stránce **Cílová složka** změňte nebo ponechte výchozí instalační složku a pak vyberte **Další**.
+
+6. Na stránce **Možnosti instalace agenta** Připojte agenta k Azure Log Analytics a pak vyberte **Další**.
+
+7. Na stránce **Azure Log Analytics** proveďte tyto kroky:
+
+   1. Vložte do **ID pracovního prostoru** a **klíč pracovního prostoru (primární klíč)** , který jste zkopírovali dříve. Pokud by měl počítač nahlásit do pracovního prostoru Log Analytics v Azure Government, vyberte v seznamu **cloud Azure** možnost **státní správa Azure USA** .  
+   2. Pokud počítač potřebuje komunikovat se službou Log Analytics přes proxy server, vyberte **Upřesnit** a zadejte adresu URL a číslo portu proxy serveru. Pokud vaše proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo pro ověřování pomocí proxy server a pak vyberte **Další**.  
+
+8. Po přidání nastavení konfigurace vyberte **Další** :
+
+    ![Instalace Microsoft Monitoring Agent](media/quick-collect-windows-computer/log-analytics-mma-setup-laworkspace.png)
+
+9. Na stránce **Připraveno k instalaci** zkontrolujte zvolené volby a pak vyberte **Nainstalovat**.
+
+10. Na stránce **Konfigurace byla úspěšně dokončena** vyberte **Dokončit**.
+
+Po dokončení instalace a nastavení se Microsoft Monitoring Agent zobrazí v Ovládacích panelech. Můžete zkontrolovat svou konfiguraci a ověřit, zda je agent připojen k pracovnímu prostoru Log Analytics. Když se připojí, na kartě **Azure Log Analytics** se Agent zobrazí tato zpráva: **Microsoft Monitoring Agent se úspěšně připojil ke službě Microsoft Log Analytics.**<br><br> ![Stav připojení MMA](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 ## <a name="collect-event-and-performance-data"></a>Shromažďování dat o událostech a výkonu
-Log Analytics může shromažďovat události, které zadáte z protokolu událostí Windows a čítače výkonu pro delší dlouhodobější analýzu a generování sestav. Je-li provést akci při zjištění konkrétní podmínky. Postupujte podle těchto kroků a pro začátek nakonfigurujte shromažďování událostí z protokolu událostí Windows a několika běžných čítačů výkonu.  
 
-1. V levém dolním rohu webu Azure portal, vyberte **další služby**. Do vyhledávacího pole zadejte **Log Analytics**. Při psaní seznam se průběžně filtruje podle vašeho zadání. Vyberte **Log Analytics**.
-2. Vyberte **upřesňující nastavení**:
+Azure Monitor mohou shromažďovat události, které zadáte z protokolu událostí systému Windows, a čítače výkonu pro dlouhodobé analýzy a vytváření sestav. Může také provést akci při zjištění konkrétní podmínky. Postupujte podle těchto kroků a pro začátek nakonfigurujte shromažďování událostí z protokolu událostí Windows a několika běžných čítačů výkonu.  
 
-    ![Upřesňující nastavení log Analytics](media/quick-collect-windows-computer/log-analytics-advanced-settings-01.png)
+1. V levém dolním rohu Azure Portal vyberte **Další služby**. Do vyhledávacího pole zadejte **Log Analytics**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **Log Analytics pracovní prostory**.
+
+2. Vybrat **upřesňující nastavení**:
+
+    ![Log Analytics Upřesnit nastavení](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
  
 3. Vyberte **Data** a pak vyberte **Protokoly událostí systému Windows**.  
-4. Protokol událostí přidáte zadáním názvu protokolu. Zadejte **systému**a pak vyberte symbol plus (**+**).  
-5. V tabulce, vyberte **chyba** a **upozornění** závažnosti.
-6. Vyberte **Uložit** v horní části stránky.
-7. Vyberte **čítače výkonu Windows** povolte shromažďování čítačů výkonu na počítači s Windows.
-8. Při první konfiguraci čítačů výkonu Windows pro nový pracovní prostor Log Analytics, budete mít možnost rychle vytvořit několik běžných čítačů. Zaškrtněte políčko vedle něj jsou uvedeny jednotlivé možnosti:
+
+4. Protokol událostí můžete přidat zadáním názvu protokolu. Zadejte **systém**a potom vyberte znaménko plus ( **+** ).  
+
+5. V tabulce vyberte závažnost **chyby** a **varování** .
+
+6. V horní části stránky vyberte **Save (Uložit** ).
+
+7. Pokud chcete povolit shromažďování čítačů výkonu na počítači s Windows, vyberte **čítače výkonu systému Windows** .
+
+8. Když poprvé nakonfigurujete čítače výkonu Windows pro nový pracovní prostor Log Analytics, budete mít možnost rychle vytvořit několik běžných čítačů. Každá možnost je uvedena vedle sebe s zaškrtávací políčko:
 
     ![Čítače výkonu Windows](media/quick-collect-windows-computer/windows-perfcounters-default.png).
     
-    Vyberte **přidat vybrané čítače výkonu**. Čítače se přidají a přednastaví s 10-ukázkového desetisekundového intervalu shromažďování.
+    Vyberte **Přidat vybrané čítače výkonu**. Čítače jsou přidány a přednastaveny s intervalem vzorkování kolekce deseti sekund.
 
-9. Vyberte **Uložit** v horní části stránky.
+9. V horní části stránky vyberte **Save (Uložit** ).
 
 ## <a name="view-collected-data"></a>Zobrazit shromážděná data
-Teď, když jste povolili shromažďování dat, můžeme spustit prohledávání protokolů jednoduché a zobrazit nějaká data z cílového počítače.  
 
-1. Na portálu Azure, ve vybraném pracovním prostoru, vyberte **protokoly** dlaždici.  
-2. Na **prohledávání protokolů** podokně, v dialogovém okně dotazu zadejte **výkonu** a klikněte na tlačítko **spustit** horní části pole dotazu:
+Teď, když jste povolili shromažďování dat, můžeme spustit jednoduché prohledávání protokolů, abyste viděli nějaká data z cílového počítače.  
+
+1. Ve vybraném pracovním prostoru v levém podokně vyberte **protokoly**.
+
+2. Na stránce dotaz na protokoly zadejte `Perf` do editoru dotazů a vyberte **Spustit**.
  
-    ![Prohledávání protokolu log Analytics](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
+    ![Log Analytics prohledávání protokolu](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 
-    Například dotaz na tomto obrázku vrátil 735 záznamů o výkonu:
+    Například dotaz na tomto obrázku vrátil 10 000 záznamů o výkonu. Vašich výsledků bude výrazně méně.
 
-    ![Výsledek prohledávání protokolu v Log Analytics](media/quick-collect-windows-computer/log-analytics-search-perf.png)
+    ![Výsledek prohledávání protokolu v Log Analytics](media/quick-collect-azurevm/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Můžete z počítače odebrat agenta a odstranit pracovní prostor Log Analytics, pokud je už nepotřebujete.  
 
-Chcete agenta odebrat, proveďte tyto kroky:
+Agenta můžete z počítače odebrat a odstranit Log Analytics pracovní prostor, pokud je už nepotřebujete.  
+
+Chcete-li odebrat agenta, proveďte následující kroky:
 
 1. Otevřete ovládací panely.
+
 2. Otevřete **Programy a funkce**.
-3. V **programy a funkce**vyberte **agenta Microsoft Monitoring Agent** a pak vyberte **odinstalovat**.
 
-Pokud chcete odstranit pracovní prostor Log Analytics, které jste vytvořili dříve, vyberte ji a, vyberte na stránce prostředků **odstranit**:
+3. V **programech a funkcích**vyberte **Microsoft Monitoring Agent** a pak vyberte **odinstalovat**.
 
-![Odstranit pracovní prostor Analýzy protokolů](media/quick-collect-windows-computer/log-analytics-portal-delete-resource.png)
+Pokud chcete odstranit pracovní prostor Log Analytics, který jste vytvořili dříve, vyberte ho a na stránce prostředek vyberte **Odstranit**:
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste shromažďování provozních dat o výkonu z počítače s Windows můžete snadno začít zkoumat, analýza a funguje na data můžete shromažďovat, pro *bezplatné*.  
+![Odstranit pracovní prostor Analýzy protokolů](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-Chcete-li zjistěte, jak zobrazit a analyzovat data, pokračujte na kurz:
+## <a name="next-steps"></a>Další kroky
+
+Teď, když shromažďujete data o provozu a výkonu z počítače s Windows, můžete snadno začít zkoumat, analyzovat a vystupovat data, která shromáždíte, a to *zdarma*.  
+
+Pokud se chcete dozvědět, jak zobrazit a analyzovat data, přejděte k kurzu:
 
 > [!div class="nextstepaction"]
 > [Zobrazení nebo analýza dat v Log Analytics](tutorial-viewdata.md)

@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 3d10814858d38d61e5346a4eb0dfb3d3d24ad4c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 286fa60fef8de5240fb2ccd0f14ced0c4e38ff73
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568314"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981357"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade aplikace na použití nejnovější klientské knihovny pro elastickou databázi
 
-Nové verze [elastic Database klientské knihovny](sql-database-elastic-database-client-library.md) jsou k dispozici prostřednictvím rozhraní NuGetand Manager NuGetPackage v aplikaci Visual Studio. Upgrady obsahují opravy chyb a podporu pro nové funkce klientské knihovny.
+Nové verze [elastic Database klientské knihovny](sql-database-elastic-database-client-library.md) jsou k dispozici prostřednictvím NuGet a rozhraní Správce balíčků NuGet v aplikaci Visual Studio. Upgrady obsahují opravy chyb a podporu pro nové funkce klientské knihovny.
 
 **Pro nejnovější verzi:** Přejít na [Microsoft. Azure. SqlDatabase. ElasticScale. Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 

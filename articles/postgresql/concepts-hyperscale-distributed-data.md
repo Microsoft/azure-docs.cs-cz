@@ -1,56 +1,57 @@
 ---
-title: Distribuovaných dat ve službě Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
-description: Tabulky a distribuovat ve skupině serveru horizontálních oddílů.
+title: Distribuovaná data v Azure Database for PostgreSQL – Citus (škálování)
+description: Tabulky a horizontálních oddílů distribuované ve skupině serverů.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 9020ee690d93a1b477471fac4a482a909fca5935
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acc07086f4eaac523cb27e1361cb9cc6d380c695
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077332"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998044"
 ---
-# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Distribuovaných dat ve službě Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
+# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Distribuovaná data v Azure Database for PostgreSQL – Citus (škálování)
 
-Tento článek popisuje, jak tři tabulky typů v Hyperškálovacím (Citus).
-Ukazuje, jak distribuované tabulky se ukládají jako horizontální oddíly a způsob, jakým horizontální oddíly jsou umístěné na uzlech.
+Tento článek popisuje tři typy tabulek ve verzi Preview Azure Database for PostgreSQL – Citus.
+Ukazuje, jak jsou distribuované tabulky uložené jako horizontálních oddílů, a způsob, jakým se horizontálních oddílů umístí na uzly.
 
 ## <a name="table-types"></a>Typy tabulek
 
-Existují tři typy tabulek v Hyperškálovacím skupiny serverů, každý použit pro různé účely.
+Existují tři typy tabulek ve skupině serverů Citus (), které se používají pro různé účely.
 
-### <a name="type-1-distributed-tables"></a>Typu 1: distribuované tabulky
+### <a name="type-1-distributed-tables"></a>Typ 1: Distribuované tabulky
 
-Prvním typem a nejčastějším je *distribuované* tabulky. Zdá se být normální tabulky pro příkazy SQL, ale jsou vodorovně *dělené* napříč uzly pracovního procesu. To znamená, že řádky tabulky jsou uložené na jiných uzlech, a to v tabulkách fragment volá *horizontálních oddílů*.
+První typ a nejběžnější je distribuované tabulky. Jeví se jako normální tabulky pro příkazy SQL, ale jsou horizontálně rozdělené mezi pracovní uzly. To znamená, že řádky tabulky jsou uloženy v různých uzlech v části fragment tabulky s názvem horizontálních oddílů.
 
-Velkokapacitní spustí nejen SQL, ale příkazy DDL v celém clusteru, takže změna schématu tabulky distribuované uspořádá sebe aktualizovat všechny tabulky horizontálních oddílů napříč pracovních procesů.
+Citus) spouští nejen SQL, ale příkazy DDL v celém clusteru.
+Změna schématu distribuované tabulky se zavede na sebe, aby se aktualizovala všechna horizontálních oddílůa tabulky napříč pracovními procesy.
 
 #### <a name="distribution-column"></a>Sloupec distribuce
 
-Velkokapacitní používá vylepšením horizontálního dělení přiřadit řádků do horizontálních oddílů. Přiřazení tvoří nedeterministicky závislosti na hodnotě sloupec tabulky s názvem *distribučního sloupce.* Správce clusteru musíte určit tento sloupec při distribuci tabulku.
-Provádění tou správnou volbou je důležité pro výkon a funkčnost.
+Citus () používá algoritmus horizontálního dělení k přiřazení řádků do horizontálních oddílů. Přiřazení je provedeno deterministické na základě hodnoty sloupce tabulky nazývaného distribuční sloupec. Správce clusteru musí při distribuci tabulky určit tento sloupec.
+Nastavení správné volby je důležité pro výkon a funkčnost.
 
-### <a name="type-2-reference-tables"></a>Typů 2: referenční tabulky
+### <a name="type-2-reference-tables"></a>Typ 2: Referenční tabulky
 
-Referenční tabulky je typ distribuované tabulky, jejichž celý obsah se soustředí do jednoho horizontálního oddílu. Horizontálního oddílu je replikovat i na všech pracovních procesů, aby dotazy na libovolné pracovní měli přístup k místně, referenční informace bez režie sítě si vyžádá řádků z jiného uzlu. Referenční tabulky mít žádný sloupec distribuce, protože není potřeba rozlišovat samostatných horizontálních oddílech na každém řádku.
+Referenční tabulka je typ distribuované tabulky, jejíž celý obsah se soustředí na jeden horizontálních oddílů. Horizontálních oddílů se replikuje u každého pracovního procesu. Dotazy na kterýkoliv pracovní proces mají přístup k referenčním informacím místně, bez zatížení sítě při vyžadování řádků z jiného uzlu. Referenční tabulky nemají žádný distribuční sloupec, protože nemusíte rozlišovat samostatné horizontálních oddílů na řádek.
 
-Referenční tabulky jsou obvykle malé a slouží k ukládání dat, která je relevantní pro dotazy, běžící na libovolném uzlu pracovního procesu. Například výčtové hodnoty jako pořadí stavy nebo kategorie produktů.
+Referenční tabulky jsou obvykle malé a slouží k ukládání dat, která jsou relevantní pro dotazy spuštěné v libovolném pracovním uzlu. Příkladem jsou výčtové hodnoty, jako jsou stavy objednávek nebo kategorie produktů.
 
-### <a name="type-3-local-tables"></a>Typů 3: místní tabulky
+### <a name="type-3-local-tables"></a>Typ 3: Místní tabulky
 
-Při použití Hyperškálovatelného koordinační uzel, ke kterým se připojujete je standardní databázi PostgreSQL. Můžete vytvořit běžné tabulky na koordinátor a nechtějí horizontálního dělení je.
+Při použití Citus () je uzel koordinátora, ke kterému se připojujete, standardní databáze PostgreSQL. V koordinátoru můžete vytvořit obyčejné tabulky a zvolit, aby se horizontálních oddílů.
 
-Vhodným kandidátem pro místní tabulky by malé pro správu tabulky, které nechcete podílet na dotazy spojení. Například uživatelé tabulku pro ověření a přihlášení aplikace.
+Dobrým kandidátem na místní tabulky budou malé administrativní tabulky, které se nepodílejí na dotazech JOIN. Příkladem je tabulka uživatelů pro přihlášení aplikace a ověřování.
 
 ## <a name="shards"></a>Horizontálních oddílů
 
-Předchozí část popisuje jak distribuované tabulky se ukládají jako oddíly na pracovních uzlech. Získá další technické podrobnosti o této části.
+Předchozí část popisuje, jak se distribuované tabulky ukládají jako horizontálních oddílů na pracovních uzlech. Tato část se věnuje více technickým podrobnostem.
 
-`pg_dist_shard` Tabulku metadat na koordinátor obsahuje řádek pro každý horizontální oddíl každé distribuované tabulky v systému. Řádek odpovídá ID horizontálních oddílů s celou řadou celá čísla v rozsahu hodnoty hash (shardminvalue, shardmaxvalue):
+Tabulka `pg_dist_shard` metadat koordinátora obsahuje řádek pro každý horizontálních oddílů každé distribuované tabulky v systému. Řádek odpovídá ID horizontálních oddílů s rozsahem celých čísel v prostoru hodnot hash (shardminvalue, shardmaxvalue).
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -63,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Pokud chce určit, které horizontální oddíl uchovává řádek koordinační uzel `github_events`, hashuje hodnotu rozdělení sloupce v řádku a kontroluje horizontální oddíl\'s rozsah obsahuje hodnotu hash. (Rozsahů je definována tak, aby image hashovací funkce je jejich nesouvislý sjednocení.)
+Pokud uzel koordinátora chce určit `github_events`, který horizontálních oddílů obsahuje řádek, vyhodnotí hodnotu distribučního sloupce v řádku. Uzel pak ověří, který rozsah\'horizontálních oddílů s má hodnotu hash. Rozsahy jsou definovány tak, že obrázek funkce hash je jejich nesouvislý sjednocení.
 
-### <a name="shard-placements"></a>Umístění horizontálních oddílů
+### <a name="shard-placements"></a>Horizontálních oddílů místa
 
-Předpokládejme, že je přidružený k řádku dotyčný 102027 tohoto horizontálního oddílu. Na řádku bude číst nebo zapisovat do tabulky nazvané `github_events_102027` v jednom zaměstnanců. Které pracovní? Která je určena výhradně tabulky metadat a mapování horizontálních oddílů k pracovnímu procesu se označuje jako horizontální oddíl *umístění*.
+Předpokládejme, že horizontálních oddílů 102027 je přidružen k danému řádku. Řádek je načten nebo napsán v tabulce s názvem `github_events_102027` v jednom z pracovních procesů. Který pracovník? To je určeno výhradně tabulkami metadat. Mapování horizontálních oddílů na pracovní proces se označuje jako umístění horizontálních oddílů.
 
-Koordinační uzel přepíše dotazy na fragmenty, které odkazují na konkrétní tabulky jako `github_events_102027`, a spouští tyto fragmenty na příslušné pracovní procesy. Tady je příklad dotazu spustit na pozadí se najít uzel uchovávající ID 102027 horizontálního oddílu.
+Uzel koordinátora přepíše dotazy na fragmenty, které odkazují na konkrétní tabulky, jako `github_events_102027` a spustí tyto fragmenty na příslušných pracovních procesech. Tady je příklad dotazu spuštěného na pozadí, kde najdete uzel obsahující horizontálních oddílů ID 102027.
 
 ```sql
 SELECT
@@ -90,4 +91,4 @@ WHERE shardid = 102027;
     └─────────┴───────────┴──────────┘
 
 ## <a name="next-steps"></a>Další postup
-- Zjistěte, jak [zvolte sloupec distribuce](concepts-hyperscale-choose-distribution-column.md) pro distribuované tabulky
+- Naučte se, jak [zvolit distribuční sloupec](concepts-hyperscale-choose-distribution-column.md) pro distribuované tabulky.

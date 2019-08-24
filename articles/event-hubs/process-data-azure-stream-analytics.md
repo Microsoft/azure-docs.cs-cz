@@ -8,18 +8,15 @@ ms.author: spelluru
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 003e68b36ff71fb2991cf087ef33f72aba73a8be
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233966"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991948"
 ---
-# <a name="process-data-from-your-event-hub-using-azure-stream-analytics-preview"></a>Zpracování dat z centra událostí pomocí Azure Stream Analytics (Preview)
+# <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Zpracování dat z centra událostí pomocí Azure Stream Analytics 
 Služba Azure Stream Analytics usnadňuje ingestování, zpracování a analýzu streamování dat z Azure Event Hubs a umožňuje efektivní přehledy, které umožňují řídit akce v reálném čase. Tato integrace vám umožní rychle vytvořit kanál analýzy v Hot-Path. Azure Portal můžete použít k vizualizaci příchozích dat a napsání dotazu Stream Analytics. Jakmile je dotaz připravený, můžete ho přesunout do produkčního prostředí jenom několika kliknutími. 
-
-> [!NOTE]
-> Tato funkce je aktuálně ve verzi Preview. 
 
 ## <a name="key-benefits"></a>Klíčové výhody
 Tady jsou klíčové výhody služby Azure Event Hubs a Integrace Azure Stream Analytics: 

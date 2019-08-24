@@ -1,32 +1,32 @@
 ---
-title: Koncepty serveru ve službě Azure Database for PostgreSQL
-description: Tento článek obsahuje důležité informace a pokyny pro konfiguraci a správu databáze Azure pro servery PostgreSQL.
+title: Koncepty serveru v Azure Database for PostgreSQL
+description: Tento článek popisuje informace a pokyny pro konfiguraci a správu Azure Database for PostgreSQLch serverů.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: d03cfd49887adf1f6a4650e374d3e13eeca735a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 533958221898b620500b7363f3710f75f155934a
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077467"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998049"
 ---
-# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Společné umístění tabulky ve službě Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
+# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Společné umístění tabulky v Azure Database for PostgreSQL – měřítko (Citus)
 
-Společné umístění znamená, že ukládání související informace dohromady na stejné uzly. Rychlé, když je k dispozici bez síťový provoz všech potřebných dat dotazy přejít. Společné umístění dat na různých uzlech umožňuje vytvářet dotazy umožňuje efektivně spouštět paralelně na jednotlivých uzlech.
+Spolupoloha znamená ukládání souvisejících informací společně na stejných uzlech. Dotazy můžou být rychlé, pokud jsou všechna potřebná data dostupná bez jakýchkoli síťových přenosů. Spolulokalizace souvisejících dat na různých uzlech umožňuje, aby dotazy byly efektivně spouštěny paralelně na jednotlivých uzlech.
 
-## <a name="data-colocation-for-hash-distributed-tables"></a>Společné umístění dat pro hodnoty hash distribuované tabulky
+## <a name="data-colocation-for-hash-distributed-tables"></a>Společné umístění dat pro tabulky distribuované algoritmem hash
 
-Ve Hyperškálovatelného řádek ukládá v horizontálním oddílu, pokud hodnota hash hodnoty ve sloupci distribuční spadá do rozsahu hodnot hash horizontálních oddílů. Horizontálních oddílech stejný rozsah hodnot hash jsou vždy umístěny na stejném uzlu. Neustále řádků s hodnotami sloupce rovnoměrná distribuce mezi tabulkami ve stejném uzlu.
+V Azure Database for PostgreSQL – ve verzi Preview (Citus) je řádek uložený v horizontálních oddílů, pokud hodnota hash hodnoty v distribučním sloupci spadá do rozsahu hodnot hash horizontálních oddílů. Horizontálních oddílů se stejným rozsahem hodnot hash jsou vždy umístěny do stejného uzlu. Řádky s hodnotami rovnoměrného distribučního sloupce jsou vždy na stejném uzlu napříč tabulkami.
 
 ![Horizontálních oddílů](media/concepts-hyperscale-colocation/colocation-shards.png)
 
-## <a name="a-practical-example-of-colocation"></a>Praktické příklad společného umístění
+## <a name="a-practical-example-of-colocation"></a>Praktický příklad kolokace
 
-Vezměte v úvahu následující tabulky, které mohou být součástí analýzy webových víceklientské SaaS:
+Vezměte v úvahu následující tabulky, které mohou být součástí SaaS webového analytického nástroje pro více tenantů:
 
 ```sql
 CREATE TABLE event (
@@ -45,9 +45,9 @@ CREATE TABLE page (
 );
 ```
 
-Nyní chceme zodpovědět dotazy, které můžou být vystavené řídicí panel určených pro zákazníky, například: "Vrátí počet návštěv v minulém týdnu pro všechny stránky, počínaje" / blogu "v tenantovi šest."
+Nyní chceme odpovídat na dotazy, které mohou být vydány řídicím panelem, který je zákazníkem přístupný. Příkladem dotazu je "vrácení počtu návštěv za poslední týden pro všechny stránky začínající na"/blog "v tenantovi 6."
 
-Pokud naše data byla v možnosti nasazení s jedním serverem, jsme mohli snadno express dotaz pomocí bohaté sadě relační operací, které SQL:
+Pokud byla naše data v možnosti nasazení na jednom serveru, můžeme snadno vyjádřit náš dotaz pomocí bohatě dostupné relačních operací, které nabízí SQL:
 
 ```sql
 SELECT page_id, count(event_id)
@@ -62,13 +62,13 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Za předpokladu, [pracovního sadě](https://en.wikipedia.org/wiki/Working_set) pro tento dotaz se vejde do paměti, tabulka jedním serverem je vhodné řešení. Zvažte však příležitostí škálování datového modelu s Hyperškálováním možností nasazení.
+Pokud se do paměti vejde [pracovní sada](https://en.wikipedia.org/wiki/Working_set) tohoto dotazu, bude vhodné řešení tabulka jednoho serveru. Pojďme vzít v úvahu příležitosti škálování datového modelu s možností nasazení Citus ().
 
-### <a name="distributing-tables-by-id"></a>Distribuce tabulky podle ID
+### <a name="distribute-tables-by-id"></a>Distribuovat tabulky podle ID
 
-Dotazy na jeden server spusťte zpomalení roste počet klientů a data uložená pro každého tenanta. Pracovní sada zastaví do paměti a procesoru stane kritickým bodem.
+Dotazy na jeden server začínají snižovat počet klientů a data uložená pro každého tenanta roste. Pracovní sada se zastaví přizpůsobení paměti a CPU se stane kritickým bodem.
 
-V tomto případě můžeme horizontálních oddílů data napříč mnoha uzly pomocí mírou škálování. První a nejdůležitější možnost, kterou potřebujeme se ujistit, pokud horizontální dělení představuje sloupci distribuce. Začněme naivní výběr mezi používáním `event_id` pro tabulku událostí a `page_id` pro `page` tabulky:
+V tomto případě můžeme horizontálních oddílů data v mnoha uzlech pomocí škálování (Citus). První a nejdůležitější volba, kterou musíme udělat, když se rozhodneme, že horizontálních oddílů je distribuční sloupec. Pojďme začít s Naive možností použití `event_id` pro tabulku událostí a `page_id` pro `page` tabulku:
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -77,7 +77,7 @@ SELECT create_distributed_table('event', 'event_id');
 SELECT create_distributed_table('page', 'page_id');
 ```
 
-Když data rozptýlena mezi různé pracovní procesy, jsme nejde provést spojení, protože jsme by v jednom uzlu PostgreSQL. Místo toho budeme muset zadávat dotazy na dvě:
+Pokud jsou data rozdělená mezi různé pracovní procesy, nemůžeme na jednom uzlu PostgreSQL provést spojení, jako bychom rádi. Místo toho musíme vydávat dva dotazy:
 
 ```sql
 -- (Q1) get the relevant page_ids
@@ -92,24 +92,24 @@ WHERE page_id IN (/*…page IDs from first query…*/)
 GROUP BY page_id ORDER BY count DESC LIMIT 10;
 ```
 
-Později potřebujete výsledky ze dvou kroků a nelze jej zkombinovat aplikací.
+Následně je třeba, aby se výsledky ze dvou kroků spojily s aplikací.
 
-Spuštění dotazů musí zkontrolujte data v horizontálních oddílech, které jsou rozmístěny napříč uzly.
+Spuštění dotazů musí prostudovat data v horizontálních oddílů rozptýlených napříč uzly.
 
-![neefektivní dotazů](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
+![Neefektivní dotazy](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
 
-V tomto případě distribuci dat vytvoří podstatné nevýhody:
+V takovém případě distribuce dat vytváří zásadní nevýhody:
 
--   Režie z dotazování každý horizontální oddíl, spouštění více dotazů
--   Režie Q1 vrácením klientovi mnoho řádků
--   2\. čtvrtletí stát velké
--   Nemusíte psát dotazy v několika krocích vyžaduje změny v aplikaci
+-   Režie při dotazování jednotlivých horizontálních oddílů a spuštění více dotazů.
+-   Režie z Q1 vracející mnoho řádků klientovi.
+-   Dotaz č. 2 se bude velký.
+-   Potřeba psát dotazy v několika krocích vyžaduje změny v aplikaci.
 
-Protože data rozptýlena, může být paralelizována dotazy. Je však pouze výhodné Pokud množství práce, která provádí dotaz je podstatně větší nároky na dotazování více horizontálních oddílů.
+Data jsou rozptýlená, takže dotazy je možné paralelně rozdávat. To je výhodné jenom v případě, že množství práce, které dotaz dělá, je podstatně větší než režie pro dotazování mnoha horizontálních oddílů.
 
-### <a name="distributing-tables-by-tenant"></a>Distribuce tabulky pomocí tenanta
+### <a name="distribute-tables-by-tenant"></a>Distribuovat tabulky podle tenanta
 
-V Hyperškálovacím jsou řádky se stejnou hodnotou sloupec distribuce musí být na stejném uzlu. Začít znova, můžeme vytvořit naší tabulky s `tenant_id` jako sloupec distribuce.
+V Citus je zaručeno, že řádky se stejnou hodnotou distribučního sloupce budou ve stejném uzlu. Počínaje tím můžeme vytvořit tabulky s použitím `tenant_id` distribučního sloupce.
 
 ```sql
 -- co-locate tables by using a common distribution column
@@ -117,7 +117,7 @@ SELECT create_distributed_table('event', 'tenant_id');
 SELECT create_distributed_table('page', 'tenant_id', colocate_with => 'event');
 ```
 
-Velkokapacitní nyní můžete odpovědět na původní dotaz jeden server bez úprav (1):
+Nyní může Citus odpovědět na původní dotaz s jedním serverem beze změny (Q1):
 
 ```sql
 SELECT page_id, count(event_id)
@@ -132,12 +132,12 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Z důvodu filtr a spojení tenant_id Hyperškálovatelného ví, lze zodpovědět celý dotaz pomocí sady společně umísťovat horizontální oddíly, které obsahují data tohoto konkrétního tenanta. Jeden uzel PostgreSQL může zodpovědět v jediném kroku.
+Vzhledem k tomu, že filtr a spojení v tenant_id, Citus () ví, že je možné odpovědět na celý dotaz pomocí sady společně umístěných horizontálních oddílů, které obsahují data tohoto konkrétního tenanta. Jeden uzel PostgreSQL může odpovědět na dotaz v jednom kroku.
 
-![lepší dotazu](media/concepts-hyperscale-colocation/colocation-better-query.png)
+![Lepší dotaz](media/concepts-hyperscale-colocation/colocation-better-query.png)
 
-V některých případech musí obsahovat ID tenanta v unikátních omezení a připojit se k podmínky změnit dotazy a schémata tabulek. Je to ale obvykle jednoduché změny.
+V některých případech se dotazy a schémata tabulek musí změnit tak, aby zahrnovaly ID tenanta v jedinečných omezeních a podmínkách připojení. Tato změna je obvykle jednoduchá.
 
 ## <a name="next-steps"></a>Další postup
 
-- Zobrazit, jak se data tenanta umístěny společně v [kurzu práce s více tenanty](tutorial-design-database-hyperscale-multi-tenant.md)
+- Podívejte se, jak se v [kurzu víceklientské architektury](tutorial-design-database-hyperscale-multi-tenant.md)nacházejí data tenanta.

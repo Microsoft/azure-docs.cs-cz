@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da7b9c44d15ac0ca16afe15e429a6fe2cf89e366
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: a8737d468b49904eaa16e873dd5d468b4eed6fb6
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575236"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992005"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -121,7 +121,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 
 ## <a name="change-log"></a>Protokol změn
-
+- 08/22/2019: Změny v [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro aktualizaci adres URL pro vytvoření vlastní role  
 - 08/16/2019: Změny v [Nastavení Pacemaker na Red Hat Enterprise Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) , které budou zákazníkům připomenout, že budou aktualizovat akce v vlastní roli, pokud se aktualizuje na novou verzi agenta Azure plot  
 - 08/15/2019: Změny v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) tak, aby odrážely obecnou dostupnost Ultra disk (dřív SSD úrovně Ultra)
 - 08/01/2019: Změny [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro integraci změn konkrétně pro SLES 15 

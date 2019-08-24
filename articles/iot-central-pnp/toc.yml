@@ -119,6 +119,8 @@
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
         - name: Služba IoT Hub Device Provisioning
           href: /azure/iot-dps
         - name: Location Based Services

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
-ms.date: 08/06/2019
-ms.openlocfilehash: c7092b2cbcef01ef71261b6f5498cde56a40c358
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/22/2019
+ms.openlocfilehash: 476b8cff23d09d81fe356a6445e27794b267d9a2
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857245"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998110"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Řešení chyb při vytváření clusteru s Azure HDInsight
 
@@ -29,7 +29,7 @@ Následující problémy jsou nejběžnější hlavní příčiny selhání při
 
 ## <a name="permissions-issues"></a>Problémy s oprávněními
 
-Pokud používáte Data Lake Storage Gen 2, ujistěte se, že uživatelsky přiřazená spravovaná identita přiřazená ke clusteru HDInsight je v roli **Přispěvatel dat objektů BLOB úložiště** nebo v **roli vlastníka dat objektu BLOB úložiště**. Úplné pokyny k instalaci najdete v tématu [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) .
+Pokud používáte Azure Data Lake Storage Gen 2 a obdržíte chybu "Tato žádost nemá autorizaci k provedení této operace pomocí tohoto oprávnění", otevřete Azure Portal, vyberte svůj účet úložiště a v části Access Control (IAM) zajistěte, aby **objekt BLOB úložiště. Role Přispěvatel dat** nebo role **vlastníka dat objektu BLOB úložiště** přiřadila přístup k **spravované identitě přiřazené uživateli** pro dané předplatné. Podrobné pokyny najdete v tématu [Nastavení oprávnění pro spravovanou identitu na data Lake Storage Gen2ovém účtu](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) .
 
 Pokud používáte Data Lake Storage Gen 1, přečtěte si [tady](../hdinsight-hadoop-use-data-lake-store.md)pokyny k instalaci a konfiguraci. Data Lake Storage Gen 1 se u clusterů HBA nepodporuje a v HDInsight verze 4,0 se nepodporuje.
 
@@ -73,6 +73,8 @@ Ujistěte se, že používáte [podporovanou verzi Azure HDInsight](../hdinsight
 ## <a name="storage-account-name-restrictions"></a>Omezení názvu účtu úložiště
 
 Názvy účtů úložiště nesmí být delší než 24 znaků a nesmí obsahovat speciální znak. Tato omezení platí také pro výchozí název kontejneru v účtu úložiště.
+
+Pro vytvoření clusteru se taky použijí další omezení pojmenování. Další informace najdete v tématu [omezení názvu clusteru](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name).
 
 ## <a name="service-outages"></a>Výpadky služeb
 

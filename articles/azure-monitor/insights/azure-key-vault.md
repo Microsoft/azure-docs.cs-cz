@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
-ms.openlocfilehash: b7d9ff760bac06602d8d770a358c8a2e22a72c81
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1e0e9a0d76e644ec48ecd423a105dd89629d290c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849201"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997688"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Řešení Azure Key Vault Analytics v Azure Monitor
 
@@ -103,28 +103,28 @@ Po kliknutí na dlaždici **Key Vault Analytics** můžete zobrazit souhrny prot
 ## <a name="azure-monitor-log-records"></a>Záznamy protokolu Azure Monitor
 Azure Key Vault řešení analyzuje záznamy, které mají typ trezorů klíčů, které jsou shromažďovány z [protokolů AuditEvent](../../key-vault/key-vault-logging.md) v Azure Diagnostics.  Vlastnosti těchto záznamů jsou uvedené v následující tabulce:  
 
-| Vlastnost | Description |
+| Vlastnost | Popis |
 |:--- |:--- |
-| type |*AzureDiagnostics* |
-| SourceSystem |*Azure* |
-| CallerIpAddress |IP adresa klienta, který odeslal požadavek |
-| Kategorie | *AuditEvent* |
-| CorrelationId |Volitelný GUID, který může klient předat pro korelaci protokolů na straně klienta s protokoly na straně služby (Key Vault). |
-| Trvání v MS |Doba trvání obsloužení požadavku REST API v milisekundách. Tato doba nezahrnuje latenci sítě, takže čas, který měříte na straně klienta, se nemusí shodovat s časem. |
-| httpStatusCode_d |Stavový kód HTTP vrácený požadavkem (například *200*) |
-| id_s |Jedinečné ID žádosti |
-| identity_claim_appid_g | Identifikátor GUID pro ID aplikace |
-| OperationName |Název operace, jak je popsáno v [Azure Key Vault protokolování](../../key-vault/key-vault-logging.md) |
-| OperationVersion |Verze REST API požadovaná klientem (například *2015-06-01*) |
-| requestUri_s |Identifikátor URI žádosti |
-| Resource |Název trezoru klíčů |
-| Skupina prostředků |Skupina prostředků trezoru klíčů |
-| Prostředku |ID prostředku Azure Resource Manageru V případě protokolů Key Vault se jedná o Key Vault ID prostředku. |
-| ResourceProvider |*MICROSOFT.KEYVAULT* |
-| Typ prostředku | *TREZORY* |
-| ResultSignature |Stav HTTP (například *OK*) |
-| ResultType |Výsledek žádosti o REST API (například *úspěch*) |
-| SubscriptionId |ID předplatného Azure s předplatným, které obsahuje Key Vault |
+| `Type` |*AzureDiagnostics* |
+| `SourceSystem` |*Azure* |
+| `CallerIpAddress` |IP adresa klienta, který odeslal požadavek |
+| `Category` | *AuditEvent* |
+| `CorrelationId` |Volitelný GUID, který může klient předat pro korelaci protokolů na straně klienta s protokoly na straně služby (Key Vault). |
+| `DurationMs` |Doba trvání obsloužení požadavku REST API v milisekundách. Tato doba nezahrnuje latenci sítě, takže čas, který měříte na straně klienta, se nemusí shodovat s časem. |
+| `httpStatusCode_d` |Stavový kód HTTP vrácený požadavkem (například *200*) |
+| `id_s` |Jedinečné ID žádosti |
+| `identity_claim_appid_g` | Identifikátor GUID pro ID aplikace |
+| `OperationName` |Název operace, jak je popsáno v [Azure Key Vault protokolování](../../key-vault/key-vault-logging.md) |
+| `OperationVersion` |Verze REST API požadovaná klientem (například *2015-06-01*) |
+| `requestUri_s` |Identifikátor URI žádosti |
+| `Resource` |Název trezoru klíčů |
+| `ResourceGroup` |Skupina prostředků trezoru klíčů |
+| `ResourceId` |ID prostředku Azure Resource Manageru V případě protokolů Key Vault se jedná o Key Vault ID prostředku. |
+| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
+| `ResourceType` | *TREZORY* |
+| `ResultSignature` |Stav HTTP (například *OK*) |
+| `ResultType` |Výsledek žádosti o REST API (například *úspěch*) |
+| `SubscriptionId` |ID předplatného Azure s předplatným, které obsahuje Key Vault |
 
 ## <a name="migrating-from-the-old-key-vault-solution"></a>Migrace ze starého řešení Key Vault
 V lednu 2017 se podporuje možnost posílání protokolů z Key Vault do Log Analytics změnit. Tyto změny poskytují následující výhody:

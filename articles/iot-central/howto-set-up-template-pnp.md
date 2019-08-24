@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 982ebf28a0f99a6eace2448676c934855cd99d1f
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: fd7cd8f73f602953573b7e6edab32bf2a6aecc05
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879731"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998119"
 ---
 # <a name="set-up-and-manage-a-device-template-preview-features"></a>Nastavení a Správa šablony zařízení (funkce ve verzi Preview)
 
@@ -36,7 +36,7 @@ Z této šablony zařízení může operátor vytvářet a připojovat reálné 
 > [!NOTE]
 > Šablony zařízení můžou vytvářet, upravovat a odstraňovat jenom tvůrci a správci. Každý uživatel může vytvořit zařízení na stránce **zařízení** z existujících šablon zařízení.
 
-[IoT technologie Plug and Play](https://aka.ms/iot-pnp-docs) umožňuje IoT Central integrovat zařízení bez psaní jakéhokoli vloženého kódu zařízení. V jádru IoT technologie Plug and Play je schéma modelu schopností zařízení, které popisuje možnosti zařízení. V aplikaci IoT Central Preview používají šablony zařízení tyto modely schopností zařízení technologie Plug and Play IoT.
+[IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) umožňuje IoT Central integrovat zařízení bez psaní jakéhokoli vloženého kódu zařízení. V jádru IoT technologie Plug and Play je schéma modelu schopností zařízení, které popisuje možnosti zařízení. V aplikaci IoT Central Preview používají šablony zařízení tyto modely schopností zařízení technologie Plug and Play IoT.
 
 Jako tvůrce máte k dispozici několik možností pro vytváření šablon zařízení:
 
@@ -251,7 +251,7 @@ Po publikování šablony zařízení můžete provádět pouze omezené změny 
 
 Po publikování šablony zařízení může operátor přejít na stránku **zařízení** a přidat buď skutečná, nebo simulovaná zařízení, která používají šablonu zařízení. Můžete i nadále upravovat a ukládat šablonu zařízení, když provádíte změny, ale pokud chcete tyto změny předávat do operátoru, který se zobrazí na stránce **zařízení** , musíte vybrat **publikovat** pokaždé.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili, jak v aplikaci Azure IoT Central nastavit šablonu zařízení, můžete:
 

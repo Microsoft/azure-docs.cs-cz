@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 05/02/2019
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a82a44127a470b6366eeffc60c73f762d5a8f525
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 6c5068512f8ba26f7710bca7c0fccb98e0a5be33
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348577"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996748"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Použití rozšíření rozhraní příkazového řádku pro službu Azure Machine Learning
 
@@ -112,7 +112,14 @@ Následující příkazy ukazují, jak používat rozhraní příkazového řád
 
     Další informace najdete v tématu [AZ ml DataStore Attach-BLOB](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-attach-blob).
 
-    
++ Nahrajte soubory do úložiště dat.
+
+    ```azurecli-interactive
+    az ml datastore upload  -n datastorename -p sourcepath
+    ```
+
+    Další informace najdete v tématu [AZ ml DataStore upload](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-upload).
+
 + Připojte cluster AKS jako cíl služby Compute.
 
     ```azurecli-interactive
@@ -153,6 +160,42 @@ Následující příkazy ukazují, jak používat rozhraní příkazového řád
     ```
 
     Další informace najdete v tématu [AZ ml experiment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
+
+## <a name="environment-management"></a>Správa prostředí
+
+Následující příkazy ukazují, jak vytvářet, registrovat a vypisovat Azure Machine Learning služby pro [](how-to-configure-environment.md) váš pracovní prostor:
+
++ Vytvořit soubory pro generování uživatelského rozhraní pro prostředí:
+
+    ```azurecli-interactive
+    az ml environment scaffold -n myenv -d myenvdirectory
+    ```
+
+    Další informace najdete v tématu [AZ ml Environment – generování uživatelského rozhraní](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-scaffold).
+
++ Registrace prostředí:
+
+    ```azurecli-interactive
+    az ml environment register -d myenvdirectory
+    ```
+
+    Další informace najdete v tématu [AZ ml Environment Registry](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-register).
+
++ Seznam registrovaných prostředí:
+
+    ```azurecli-interactive
+    az ml environment list
+    ```
+
+    Další informace najdete v tématu [AZ ml Environment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-list).
+
++ Stažení registrovaného prostředí:
+
+    ```azurecli-interactive
+    az ml environment download -n myenv -d downloaddirectory
+    ```
+
+    Další informace najdete v tématu [AZ ml Environment Download](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download).
 
 ## <a name="model-registration-profiling-deployment"></a>Registrace modelů, profilace, nasazení
 
@@ -206,7 +249,7 @@ Následující příkazy ukazují, jak registrace trénovaného modelu a pak ho 
 
 [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aks-deploy-config.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Odkaz na příkazy pro rozšíření Machine Learning CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest)
 

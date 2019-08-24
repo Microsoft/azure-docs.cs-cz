@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 152e373f3a340a8abe3d8bc54d6515296d95efba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 48161f56a8885239525587b764c4a116ffc8539f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878317"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997733"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Rychlý start: Vytvoření zařízení IoT technologie Plug and Play a jeho připojení k aplikaci IoT Central pomocí modelu schopností zařízení
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
-_Model schopností zařízení_ (DCM) popisuje možnosti zařízení [IoT technologie Plug and Play](https://aka.ms/iot-pnp-docs) . IoT Central může použít DCM k vytvoření šablony zařízení a vizualizací pro zařízení, když se zařízení poprvé připojí. V tomto rychlém startu se naučíte:
+_Model schopností zařízení_ (DCM) popisuje možnosti zařízení [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) . IoT Central může použít DCM k vytvoření šablony zařízení a vizualizací pro zařízení, když se zařízení poprvé připojí. V tomto rychlém startu se naučíte:
 
 * Pomocí Visual Studio Code vytvořit zařízení IoT technologie Plug and Play pomocí DCM.
 * Spusťte kód zařízení ve Windows a podívejte se, jak se připojí k vaší IoT Central aplikaci.

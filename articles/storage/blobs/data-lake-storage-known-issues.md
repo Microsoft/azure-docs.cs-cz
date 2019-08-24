@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 369069ef9a9c562ef6ba88a46dc0ef82c4debba1
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950686"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991812"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -32,7 +32,7 @@ Rozhraní API pro úložiště objektů BLOB jsou zakázaná, aby nedocházelo k
 
 Pokud některá z těchto rozhraní používají rozhraní API objektů BLOB a chcete je použít pro práci se všemi obsahy, které nahráváte do svého účtu, máte dvě možnosti.
 
-* **Možnost 1**: Nepovolujte hierarchický obor názvů v účtu úložiště BLOB, dokud nebudou rozhraní API BLOB vzájemně ovladatelné pomocí Azure Data Lake rozhraní API Gen2. Použití účtu úložiště bez hierarchického oboru názvů znamená, že pak nebudete mít přístup k Data Lake Storage Gen2 specifickým funkcím, jako jsou seznamy řízení přístupu k adresářům a systémům souborů.
+* **Možnost 1**: Nepovolujte hierarchický obor názvů v účtu úložiště BLOB, dokud nebudou rozhraní API BLOB vzájemně ovladatelné pomocí Azure Data Lake rozhraní API Gen2. Použití účtu úložiště bez hierarchického oboru názvů znamená, že nebudete mít přístup k Data Lake Storage Gen2 specifickým funkcím, jako jsou seznamy řízení přístupu k adresářům a kontejnerům.
 
 * **Možnost 2**: Zaregistrujte se do veřejné verze Preview [přístupu k více protokolům na data Lake Storage](data-lake-storage-multi-protocol-access.md). Nástroje a aplikace, které volají rozhraní API objektů blob, stejně jako funkce úložiště BLOB, jako jsou protokoly diagnostiky, můžou pracovat s účty, které mají hierarchický obor názvů.
 

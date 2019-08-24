@@ -1,6 +1,6 @@
 ---
 title: Správa dat v Azure Data Lake Storage Gen2 pomocí Průzkumník služby Azure Storage
-description: V tomto rychlém startu se dozvíte, jak pomocí Průzkumník služby Azure Storage vytvořit systém souborů v účtu Azure Data Lake Storage Gen2 a také v adresáři a souboru. V dalším kroku se dozvíte, jak stáhnout soubor do místního počítače a jak zobrazit celý soubor v adresáři.
+description: V tomto rychlém startu se dozvíte, jak pomocí Průzkumník služby Azure Storage vytvořit kontejner v účtu Azure Data Lake Storage Gen2 a také v adresáři a souboru. V dalším kroku se dozvíte, jak stáhnout soubor do místního počítače a jak zobrazit celý soubor v adresáři.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3450de26c12d91f4be00fe39bd5703564c786190
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95d7a58c8188e8c6633f6be50af608aed437edff
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855616"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991422"
 ---
 # <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Správa dat v účtu Azure Data Lake Storage Gen2 pomocí Průzkumník služby Azure Storage
 
@@ -41,13 +41,13 @@ Po dokončení připojení se Průzkumník služby Azure Storage otevře se zobr
 
 ![Průzkumník služby Microsoft Azure Storage – okno Připojení](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
 
-## <a name="create-a-file-system"></a>Vytvoření systému souborů
+## <a name="create-a-container"></a>Vytvoření kontejneru
 
 Objekty blob jsou vždy nahrány do adresáře. Díky tomu můžete organizovat skupiny objektů blob podobně, jako organizujete soubory do složek na svém počítači.
 
-Chcete-li vytvořit adresář, rozbalte účet úložiště, který jste vytvořili v kroku pokračování. Vyberte **kontejner objektů BLOB**, klikněte pravým tlačítkem a vyberte **vytvořit kontejner objektů BLOB**. Zadejte název systému souborů. Po dokončení stiskněte klávesu **ENTER** , aby se vytvořil systém souborů. Jakmile se adresář objektů BLOB úspěšně vytvoří, zobrazí se ve složce **kontejneru objektů BLOB** pro vybraný účet úložiště.
+Chcete-li vytvořit adresář, rozbalte účet úložiště, který jste vytvořili v kroku pokračování. Vyberte **kontejner objektů BLOB**, klikněte pravým tlačítkem a vyberte **vytvořit kontejner objektů BLOB**. Zadejte název kontejneru. Po dokončení stiskněte klávesu **ENTER** a kontejner se vytvoří. Jakmile se adresář objektů BLOB úspěšně vytvoří, zobrazí se ve složce **kontejneru objektů BLOB** pro vybraný účet úložiště.
 
-![Průzkumník služby Microsoft Azure Storage – vytváření systému souborů](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
+![Průzkumník služby Microsoft Azure Storage – vytváření kontejneru](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
 
 ## <a name="upload-blobs-to-the-directory"></a>Nahrajte objekty blob do adresáře.
 

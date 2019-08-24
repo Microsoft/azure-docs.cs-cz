@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: aa2cfbee6feeacf46003fdc244f0aeea5df0f41a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847348"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991913"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -31,7 +31,7 @@ Informace o tom, jak přiřadit role k objektům zabezpečení v rozsahu svého 
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Dopad přiřazení rolí na seznam řízení přístupu na úrovni souborů a adresářů
 
-Zatímco použití přiřazení rolí RBAC je účinným mechanismem pro řízení přístupových oprávnění, jedná se o velmi výrazně odstupňovaný mechanismus vzhledem k seznamům ACL. Nejmenší členitost pro RBAC je na úrovni systému souborů a bude vyhodnocena s vyšší prioritou než seznamy řízení přístupu (ACL). Proto pokud přiřadíte roli objektu zabezpečení v oboru systému souborů, má tento objekt zabezpečení úroveň autorizace přidruženou k této roli pro všechny adresáře a soubory v tomto systému souborů bez ohledu na přiřazení seznamu ACL.
+Zatímco použití přiřazení rolí RBAC je účinným mechanismem pro řízení přístupových oprávnění, jedná se o velmi výrazně odstupňovaný mechanismus vzhledem k seznamům ACL. Nejmenší členitost pro RBAC je na úrovni kontejneru a ta se vyhodnotí s vyšší prioritou než seznamy ACL. Proto pokud přiřadíte roli objektu zabezpečení v oboru kontejneru, má tento objekt zabezpečení úroveň autorizace přidruženou k této roli pro všechny adresáře a soubory v tomto kontejneru bez ohledu na přiřazení seznamu ACL.
 
 Když je objektu zabezpečení uděleno oprávnění k datům RBAC prostřednictvím [předdefinované role](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)nebo prostřednictvím vlastní role, tato oprávnění se vyhodnotí jako první při autorizaci žádosti. Pokud je požadovaná operace autorizována přiřazeními RBAC objektu zabezpečení, je autorizace okamžitě vyřešena a nejsou provedeny žádné další kontroly seznamu ACL. Případně platí, že pokud objekt zabezpečení nemá přiřazení RBAC, nebo se operace požadavku neshoduje s přiřazeným oprávněním, provedou se kontroly seznamů ACL, aby bylo možné zjistit, zda je objekt zabezpečení autorizován k provedení požadované operace.
 
@@ -81,7 +81,7 @@ Přístupové seznamy ACL a výchozí seznamy ACL mají stejnou strukturu.
 
 ### <a name="levels-of-permission"></a>Úrovně oprávnění
 
-Oprávnění objektu systému souborů jsou **čtení**, **zápis**a **spouštění**a lze je použít u souborů a adresářů, jak je znázorněno v následující tabulce:
+Oprávnění pro objekt kontejneru jsou **čtení**, **zápis**a **spouštění**a lze je použít u souborů a adresářů, jak je znázorněno v následující tabulce:
 
 |            |    File     |   Adresář |
 |------------|-------------|----------|
@@ -90,7 +90,7 @@ Oprávnění objektu systému souborů jsou **čtení**, **zápis**a **spouště
 | **Provést (X)** | Neznamená cokoli v kontextu Data Lake Storage Gen2 | Vyžaduje se pro procházení podřízených položek adresáře. |
 
 > [!NOTE]
-> Pokud udělujete oprávnění jenom pomocí seznamů ACL (bez RBAC), pak udělíte instančnímu objektu přístup pro čtení nebo zápis do souboru, musíte mu přidělit oprávnění ke **spouštění** systému souborů a ke každé složce v hierarchii složek, které vést k souboru.
+> Pokud udělujete oprávnění jenom pomocí seznamů ACL (bez RBAC), pak udělíte instančnímu objektu přístup pro čtení nebo zápis do souboru, musíte mu přidělit oprávnění ke **spuštění** tohoto kontejneru a ke každé složce v hierarchii složek, které vést k souboru.
 
 #### <a name="short-forms-for-permissions"></a>Zkrácené verze oprávnění
 
@@ -154,7 +154,7 @@ V seznamech ACL pro POSIX je každý uživatel přidružený k *primární skupi
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Přiřazení vlastnící skupiny pro nový soubor nebo adresář
 
-* **Případ 1**: Kořenový adresář "/". Tento adresář se vytvoří při vytvoření Data Lake Storage Gen2ho systému souborů. V takovém případě je vlastnící skupina nastavena na uživatele, který systém souborů vytvořil, pokud byl proveden pomocí protokolu OAuth. Pokud je systém souborů vytvořený pomocí sdíleného klíče, SAS účtu nebo SAS služby, pak je vlastník a vlastnící skupina nastavená na **$superuser**.
+* **Případ 1**: Kořenový adresář "/". Tento adresář se vytvoří při vytvoření kontejneru Data Lake Storage Gen2. V takovém případě je vlastnící skupina nastavena na uživatele, který kontejner vytvořil, pokud byl proveden pomocí protokolu OAuth. Pokud je kontejner vytvořený pomocí sdíleného klíče, SAS účtu nebo SAS služby, pak je vlastník a vlastnící skupina nastavená na **$superuser**.
 * **Případ 2** (Všechny ostatní případy): Při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazeného adresáře.
 
 ##### <a name="changing-the-owning-group"></a>Změna vlastnící skupiny
@@ -216,13 +216,13 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 Jak je znázorněno v algoritmu kontroly přístupu, maska omezuje přístup pro pojmenované uživatele, vlastnící skupinu a pojmenované skupiny.  
 
 > [!NOTE]
-> Pro nový Data Lake Storage Gen2 souborový systém je maska pro seznam ACL přístupu kořenového adresáře ("/") standardně 750 pro adresáře a 640 pro soubory. Soubory neobdrží bit X, protože to není podstatné pro soubory v systému pouze v úložišti.
+> Pro nový kontejner Data Lake Storage Gen2 je maska pro seznam ACL přístupu kořenového adresáře ("/") standardně 750 pro adresáře a 640 pro soubory. Soubory neobdrží bit X, protože to není podstatné pro soubory v systému pouze v úložišti.
 >
 > Maska může být určena pro volání podle volání. To umožňuje různým náročným systémům, jako jsou clustery, mít různé efektivní masky pro jejich souborové operace. Pokud je pro daný požadavek zadána maska, zcela přepíše výchozí masku.
 
 #### <a name="the-sticky-bit"></a>Bit sticky
 
-Bit navrchu je pokročilejší funkcí systému souborů POSIX. V kontextu Data Lake Storage Gen2 je nepravděpodobné, že bude potřeba nacházet v rychlém bitu. Pokud je v adresáři zapnutý bit s rychlým nastavením, může být podřízená položka pouze smazána nebo přejmenována vlastníkem uživatele podřízené položky.
+Bit Sticky je pokročilejší funkcí kontejneru POSIX. V kontextu Data Lake Storage Gen2 je nepravděpodobné, že bude potřeba nacházet v rychlém bitu. Pokud je v adresáři zapnutý bit s rychlým nastavením, může být podřízená položka pouze smazána nebo přejmenována vlastníkem uživatele podřízené položky.
 
 Bit Sticky není zobrazený v Azure Portal.
 
@@ -291,7 +291,7 @@ Nebo
 
 ### <a name="who-is-the-owner-of-a-file-or-directory"></a>Kdo je vlastníkem souboru nebo adresáře?
 
-Autor souboru nebo adresáře se stal vlastníkem. V případě kořenového adresáře se jedná o identitu uživatele, který vytvořil systém souborů.
+Autor souboru nebo adresáře se stal vlastníkem. V případě kořenového adresáře se jedná o identitu uživatele, který kontejner vytvořil.
 
 ### <a name="which-group-is-set-as-the-owning-group-of-a-file-or-directory-at-creation"></a>Která skupina je nastavená jako vlastnící skupina souboru nebo adresáře při vytvoření?
 
@@ -320,7 +320,7 @@ Pokud máte pro instanční objekt správný identifikátor OID, přejděte na s
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Podporuje Data Lake Storage Gen2 dědění seznamů ACL?
 
-Přiřazení Azure RBAC mají dědit. Přiřazení toku z předplatného, skupiny prostředků a prostředků účtu úložiště dolů do prostředku systému souborů.
+Přiřazení Azure RBAC mají dědit. Přiřazení toku z předplatného, skupiny prostředků a prostředků účtu úložiště dolů do prostředku kontejneru.
 
 Seznamy ACL nedědí. Výchozí seznamy ACL je ale možné použít k nastavení seznamů ACL pro podřízené podadresáře a soubory vytvořené v nadřazeném adresáři. 
 

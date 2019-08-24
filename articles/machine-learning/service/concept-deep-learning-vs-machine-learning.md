@@ -1,5 +1,5 @@
 ---
-title: Úvod do hloubkového učení vs. Machine Learning
+title: Obsáhlý Learning a strojové učení
 titleSuffix: Azure Machine Learning service
 description: Přečtěte si o vztahu mezi hloubkovým učením a strojovým učením a o tom, jak se vejdou do kategorie umělal Intelligence. Tento článek popisuje, jak obsáhlý Learning řeší scénáře, jako je odhalování podvodů, rozpoznávání hlasu a obličeje, mínění Analytics a prognózy časových řad.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5301be493ef22fc2d74cc337d88b04caf391fdaa
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934279"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982808"
 ---
-# <a name="introduction-to-deep-learning-vs-machine-learning"></a>Seznámení s hloubkovým učením a strojovým učením
+# <a name="deep-learning-vs-machine-learning"></a>Obsáhlý Learning a strojové učení
 
 Tento článek vám pomůže pochopit vztah mezi hloubkovým učením a strojovým učením. Dozvíte se, jak tyto dvě koncepce porovnávají a jak se vejdou do širší kategorie umělých inteligentních funkcí. Nakonec tento článek popisuje, jak se dá využít obsáhlý Learning v reálných scénářích, jako je odhalování podvodů, rozpoznávání hlasu a obličeje, analýza mínění a prognózování časových řad.
 

@@ -127,6 +127,8 @@
       href: how-to-event-domains.md
     - name: Implementace převzetí služeb při selhání na straně klienta
       href: custom-disaster-recovery.md
+    - name: Řešení chyb
+      href: troubleshoot-errors.md
 - name: Referenční informace
   items:
     - name: Azure CLI

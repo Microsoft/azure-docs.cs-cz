@@ -10,39 +10,38 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 08/14/2019
-ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 01228dc01b8006a0a2476ddbbd6fa8ff430e280a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534427"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982762"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 
 V tomto kurzu se naučíte, jak vytvořit první automatizovaný experiment strojového učení ve Azure Portal (Preview), aniž byste museli psát jediný řádek kódu. Tento příklad vytvoří model klasifikace, který předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
 
-Pomocí automatizovaných možností strojového učení služby Azure Machine Learning a Azure Portal zahájíte proces automatizovaného strojového učení. Výběr algoritmu a ladění parametrů se provádí za vás. Automatizovaná technika strojového učení projde více kombinací algoritmů a parametrů, dokud nenajde nejlepší model na základě vašeho kritéria.
+Pomocí automatizovaného strojového učení můžete automatizovat časově náročné úlohy. Automatizované Machine Learning rychle projde mnoho kombinací algoritmů a parametrů, které vám pomůžou najít nejlepší model na základě metriky úspěšnosti výběru.
 
-V tomto kurzu se seznámíte s následujícími úlohami:
+V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 > [!div class="checklist"]
-> * Nakonfigurujte pracovní prostor služby Azure Machine Learning.
-> * Vytvořte experiment.
-> * Automaticky naučit model klasifikace.
-> * Zobrazit podrobnosti o školicím běhu
+> * Vytvořte pracovní prostor služby Azure Machine Learning.
+> * Spusťte automatizovaný experiment strojového učení.
+> * Zobrazit podrobnosti experimentu.
 > * Nasazení modelu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
-* Stáhněte si datový soubor [ **bankmarketing_train. csv** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . Sloupec **y** indikuje, jestli se zákazník přihlásil k odběru pevně stanoveného termínu, který se později identifikuje jako cílový sloupec pro předpovědi v tomto kurzu. 
+* Stáhněte si datový soubor [**bankmarketing_train. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . Sloupec **y** indikuje, jestli se zákazník přihlásil k odběru pevně stanoveného termínu, který se později identifikuje jako cílový sloupec pro předpovědi v tomto kurzu. 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-an-experiment"></a>Vytvoření experimentu
+## <a name="create-and-run-the-experiment"></a>Vytvoření a spuštění experimentu
 
 Tento postup vás provede procesem nastavování z výběru dat a výběru primárního typu metriky a modelu. 
 
@@ -50,8 +49,6 @@ Tento postup vás provede procesem nastavování z výběru dat a výběru prim�
 Zobrazí se úvodní obrazovka s **automatickým Machine Learning** , protože se jedná o první experiment s automatizovaným Machine Learningem.
 
     ![Azure Portal navigační podokno](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
-
-
 
 1. Vyberte **vytvořit experiment**. Pak jako název experimentu zadejte **My-1st-automl-experiment** .
 
@@ -72,14 +69,11 @@ Zobrazí se úvodní obrazovka s **automatickým Machine Learning** , protože s
 
 1. Vyberte **nahrát** a zvolte soubor **bankmarketing_train. csv** z místního počítače a nahrajte ho do výchozího kontejneru. Verze Public Preview podporuje jenom místní nahrávání souborů a účty úložiště Azure Blob. Po dokončení nahrávání vyberte soubor ze seznamu. 
 
-    [![Vybrat datový soubor](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
-
 1. Karta **Náhled** nám umožňuje dále konfigurovat naše data pro tento experiment.
 
     Na kartě **Náhled** označte, že data obsahují záhlaví. Služba ve výchozím nastavení zahrnuje všechny funkce (sloupce) pro školení. V tomto příkladu se posuňte doprava a **ignorujte** funkci **day_of_week** .
 
     ![Konfigurace karty Preview](media/tutorial-1st-experiment-automated-ml/preview-tab-config.gif)
-
 
     >[!NOTE]
     > Profilování dat není k dispozici u výpočtů s nulovými minimálními uzly.
@@ -103,9 +97,7 @@ Zobrazí se úvodní obrazovka s **automatickým Machine Learning** , protože s
 
 1. Pokud chcete experiment spustit, vyberte **Spustit** .
 
-   Po zahájení experimentu se v horní části zobrazí prázdná obrazovka s podrobnostmi o **spuštění** s následujícím stavem. 
-
-      ![Spustit přípravu](media/tutorial-1st-experiment-automated-ml/run-preparing.png)
+   Po zahájení experimentu se v horní části zobrazí prázdná obrazovka s podrobnostmi o **spuštění** s následujícím stavem.
       
 Proces přípravy experimentu trvá několik minut. Po dokončení procesu se stavová zpráva změní na spuštěno.
 
@@ -137,11 +129,9 @@ V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model
     
 1. Vyberte **Nasadit**.
 
-    Po úspěšném dokončení nasazení se zobrazí následující zpráva:
-
-    ![Nasazení dokončeno](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
+    Po úspěšném dokončení nasazení se zobrazí zpráva o dokončení nasazení.
     
-    Nyní máte provozní webovou službu, která generuje předpovědi.
+Nyní máte provozní webovou službu, která generuje předpovědi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -167,7 +157,6 @@ V tomto kurzu automatizovaného strojového učení jste použili Azure Portal k
 
 > [!div class="nextstepaction"]
 > [Využití webové služby](how-to-consume-web-service.md)
-
 
 + Přečtěte si [](how-to-create-portal-experiments.md#preprocess)Další informace o předzpracování.
 + Přečtěte si další informace o [profilování dat](how-to-create-portal-experiments.md#profile).

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: bbbb570cc042d5faa16b66c42aef9792b24fdb12
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: dc9f59894da071e956283591cf7206bc371650b7
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854054"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991431"
 ---
 # <a name="pre-filtering-manifests-by-using-dynamic-packager"></a>Předběžné filtrování manifestů pomocí dynamického balíčku
 
@@ -28,7 +28,7 @@ Některé scénáře doručování vyžadují, abyste se ujistili, že zákazní
 
 Filtrování můžete kombinovat zadáním [filtrů na lokátoru streamování](filters-concept.md#associating-filters-with-streaming-locator) a dalších filtrů specifických pro zařízení, které klient ZADÁ v adrese URL. To může být užitečné k omezení dalších stop, jako jsou metadata nebo datové proudy událostí, zvukové jazyky nebo popisné zvukové stopy. 
 
-Díky této možnosti můžete v datovém proudu zadat různé filtry, což  poskytuje výkonné řešení pro manipulaci s dynamickým manifestem, které cílí na více scénářů použití pro vaše cílová zařízení. Toto téma vysvětluje koncepty související s **dynamickými manifesty** a obsahuje příklady scénářů, ve kterých byste mohli chtít použít tuto funkci.
+Díky této možnosti můžete v datovém proudu zadat různé filtry, což poskytuje výkonné řešení pro manipulaci s dynamickým manifestem, které cílí na více scénářů použití pro vaše cílová zařízení. Toto téma vysvětluje koncepty související s **dynamickými manifesty** a obsahuje příklady scénářů, ve kterých byste mohli chtít použít tuto funkci.
 
 > [!NOTE]
 > Dynamické manifesty nemění Asset a výchozí manifest tohoto prostředku. 
@@ -107,7 +107,7 @@ Tady je filtrovaný prostředek:
 
 ## <a name="adjusting-the-presentation-window-dvr"></a>Úprava okna prezentace (DVR)
 
-V současné době Azure Media Services nabízí kruhový archiv, ve kterém je možné nastavit dobu trvání mezi 5 minutami a 25 hodinami. Filtrování manifestu lze použít k vytvoření okna postupného DVR v horní části archivu, aniž byste museli odstraňovat média. Existuje řada scénářů, ve kterých mají všesměrová vysílání poskytnout omezené okno DVR pro přesun s živým okrajem a zároveň zachovat větší archivační interval. Všesměrové vysílání může chtít použít data z okna DVR k zvýraznění klipů nebo může chtít pro různá zařízení poskytnout různá okna se systémem DVR. Například většina mobilních zařízení nezpracovává velká okna ve službě DVR (pro mobilní zařízení je možné mít dva minuty, ale 1 hodina pro klienty pro stolní počítače).
+V současné době Azure Media Services nabízí kruhový archiv, ve kterém je možné nastavit dobu trvání mezi 1 minutou až 25 hodinami. Filtrování manifestu lze použít k vytvoření okna postupného DVR v horní části archivu, aniž byste museli odstraňovat média. Existuje řada scénářů, ve kterých mají všesměrová vysílání poskytnout omezené okno DVR pro přesun s živým okrajem a zároveň zachovat větší archivační interval. Všesměrové vysílání může chtít použít data z okna DVR k zvýraznění klipů nebo může chtít pro různá zařízení poskytnout různá okna se systémem DVR. Například většina mobilních zařízení nezpracovává velká okna ve službě DVR (pro mobilní zařízení a jednu hodinu pro klienty pro stolní počítače můžete mít dvě minuty).
 
 ![Okno DVR][dvr_filter]
 
@@ -149,7 +149,7 @@ Další informace najdete v [tomto blogovém příspěvku](https://azure.microso
     - Chcete-li určit vlastnosti stop v assetu, [Získejte a zkontrolujte soubor manifestu](#get-and-examine-manifest-files).
     - Vzorec pro nastavení vlastností časového razítka filtru assetu je: <br/>startTimestamp = &lt;čas zahájení v manifestu +  &gt;&lt;očekával čas spuštění filtru v sekundách&gt; * časová osa
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Následující články ukazují, jak vytvořit filtry prostřednictvím kódu programu:  
 

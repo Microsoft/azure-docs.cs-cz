@@ -12,7 +12,7 @@
     - name: Připojení zařízení ke službě IoT Hub
       href: quickstart-connect-pnp-device.md
     - name: Připojení zařízení ke službě IoT Central
-      href: 'https://aka.ms/iot-central-connect-qs'
+      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Připojení k zařízení ve vašem řešení
       href: quickstart-connect-pnp-device-solution.md
 - name: Kurzy
@@ -50,7 +50,7 @@
 - name: Referenční informace
   items:
     - name: REST
-      href: 'https://aka.ms/iot-pnp-rest'
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
     - name: Vygenerování tokenu zabezpečení REST
       href: howto-generate-sas-token.md
 - name: Související
@@ -58,7 +58,7 @@
     - name: Řešení
       items:
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /azure/iot-central
         - name: Akcelerátory řešení IoT
           href: /azure/iot-accelerators
     - name: Služby platformy

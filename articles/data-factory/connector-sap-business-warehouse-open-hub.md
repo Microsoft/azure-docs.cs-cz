@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: e94c4f179174a3957aef8828687ebf1fbb299903
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0c4a70f337166a304bd8664da2180fcda29ca8ac
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967421"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996639"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
 
@@ -174,7 +174,7 @@ Chcete-li kopírovat data z a do SAP BW otevřít centrum, nastavte vlastnost Ty
 
 Chcete-li kopírovat data z SAP BW otevřete centrum, nastavte typ zdroje v aktivitě kopírování na **SapOpenHubSource**. V části **zdroje** aktivity kopírování nejsou potřeba žádné další vlastnosti specifické pro daný typ.
 
-Pro urychlení načítání dat můžete u aktivity kopírování nastavit [`parallelCopies`](copy-activity-performance.md#parallel-copy) , aby se data načetla z SAP BW otevřeného centra paralelně. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně spouští čtyři volání RFC a každé volání RFC načte část dat z SAP BW otevřené tabulky hub rozdělené podle ID žádosti DTP a ID balíčku. To platí v případě, že počet jedinečných ID žádosti DTP + ID balíčku je větší než hodnota `parallelCopies`.
+Pro urychlení načítání dat můžete u aktivity kopírování nastavit [`parallelCopies`](copy-activity-performance.md#parallel-copy) , aby se data načetla z SAP BW otevřeného centra paralelně. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně spouští čtyři volání RFC a každé volání RFC načte část dat z SAP BW otevřené tabulky hub rozdělené podle ID žádosti DTP a ID balíčku. To platí v případě, že počet jedinečných ID žádosti DTP + ID balíčku je větší než hodnota `parallelCopies`. Při kopírování dat do úložiště dat založeného na souborech je také znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
 **Příklad:**
 

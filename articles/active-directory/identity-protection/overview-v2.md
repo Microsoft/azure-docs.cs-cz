@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2987f8fb116bfcbb1698335c3aca6f1fd8eb633e
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: f2f7e26e2f32ba02db9afc0676a99003717ff585
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717290"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991082"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co je Azure Active Directory Identity Protection (Aktualizováno)?
 
@@ -50,9 +50,9 @@ Azure AD Identity Protection detekuje následující rizikové události:
 | --- | --- | --- |
 | Neobvyklá cesta | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. | Offline |
 | Anonymní IP adresa | Přihlaste se z anonymní IP adresy (například: Prohlížeč pro Anonymizer, sítě VPN. | V reálném čase |
-| Neznámé vlastnosti přihlášení | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno. | V reálném čase |
+| Neznámou vlastnost přihlášení | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno. | V reálném čase |
 | IP adresy související s malwarem | Přihlášení z IP adresy propojené s malwarem | Offline |
-| Nevrácená pověření | Tato riziková událost znamená, že unikly platné přihlašovací údaje uživatele. | Offline |
+| Nevrácená pověření | Tato riziková událost označuje, že došlo k úniku platných přihlašovacích údajů uživatele. | Offline |
 
 ## <a name="types-of-risk"></a>Typy rizik 
 
@@ -145,13 +145,17 @@ Další informace najdete v tématu [přiřazení rolí správce v Azure Active 
 >[!NOTE]
 > Během veřejné verze Preview aplikace Identity Protection (aktualizované) budou mít přístup k sestavě rizikových uživatelů a rizikových přihlášení pouze Azure AD Premium zákazníci P2.
 
-| Funkce | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
-| --- | --- | --- | --- |
-| Zásady rizik uživatelů | Ano | Ne | Ne |
-| Zásady rizik přihlašování | Ano | Ne | Ne |
-| Sestava o rizikových uživatelích | Úplný přístup | Omezené informace | Omezené informace |
-| Sestava rizikových přihlášení | Úplný přístup | Omezené informace | Omezené informace |
-| Zásady registrace MFA | Ano | Ne | Ne |
+| Funkce | Podrobnosti | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
+| --- | --- | --- | --- | --- |
+| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection) | Ano | Ne | Ne |
+| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup) | Ano | Ne | Ne |
+| Sestavy zabezpečení | Přehled | Ano | Ne | Ne |
+| Sestavy zabezpečení | Rizikové uživatele | Úplný přístup | Omezené informace | Omezené informace |
+| Sestavy zabezpečení | Riziková přihlášení | Úplný přístup | Omezené informace | Omezené informace |
+| Sestavy zabezpečení | Detekce rizik | Úplný přístup | Omezené informace | Ne |
+| Oznámení | Upozornění na zjištěné ohrožené uživatele | Ano | Ne | Ne |
+| Oznámení | Týdenní přehled | Ano | Ne | Ne |
+| | Zásady registrace MFA | Ano | Ne | Ne |
 
 ## <a name="next-steps"></a>Další kroky 
 

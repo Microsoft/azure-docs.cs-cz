@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 344dddb4e16f23ae40028c090c499d210adb8837
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f58785b17a1e6236636744c32dac07a6c9ed138d
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855454"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992254"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Kurz: Extrakce, transformace a načtení dat pomocí Apache Hive ve službě Azure HDInsight
 
@@ -92,26 +92,26 @@ V této části nahrajete data do clusteru HDInsight a pak tato data zkopírujet
 
    Příkaz extrahuje soubor **. csv** .
 
-4. Pomocí následujícího příkazu vytvořte Data Lake Storage Gen2 systému souborů.
+4. K vytvoření kontejneru Data Lake Storage Gen2 použijte následující příkaz.
 
    ```bash
-   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   `<file-system-name>` Zástupný symbol nahraďte názvem, který chcete systému souborů poskytnout.
+   `<container-name>` Zástupný symbol nahraďte názvem, který chcete poskytnout kontejneru.
 
    `<storage-account-name>` Zástupný symbol nahraďte názvem vašeho účtu úložiště.
 
 5. Pomocí následujícího příkazu vytvořte adresář.
 
    ```bash
-   hdfs dfs -mkdir -p abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
+   hdfs dfs -mkdir -p abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
    ```
 
 6. Pomocí následujícího příkazu zkopírujte soubor *. csv* do adresáře:
 
    ```bash
-   hdfs dfs -put "<file-name>.csv" abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
+   hdfs dfs -put "<file-name>.csv" abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
    ```
 
    Pokud název souboru obsahuje mezery nebo speciální znaky, použijte kolem názvu souboru uvozovky.
@@ -128,7 +128,7 @@ V rámci úlohy Apache Hive naimportujete data ze souboru. CSV do tabulky Apache
    nano flightdelays.hql
    ```
 
-2. Upravte následující text tak, že `<file-system-name>` nahradíte `<storage-account-name>` zástupné symboly a v názvu systému souborů a svého účtu úložiště. Pak tento text zkopírujte a vložte do konzoly nano pomocí klávesy SHIFT a kliknutím pravým tlačítkem myši na tlačítko.
+2. Upravte následující text nahrazením `<container-name>` zástupných symbolů a `<storage-account-name>` názvem svého kontejneru a účtu úložiště. Pak tento text zkopírujte a vložte do konzoly nano pomocí klávesy SHIFT a kliknutím pravým tlačítkem myši na tlačítko.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -160,14 +160,14 @@ V rámci úlohy Apache Hive naimportujete data ze souboru. CSV do tabulky Apache
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
 
     -- Drop the delays table if it exists
     DROP TABLE delays;
     -- Create the delays table and populate it with data
     -- pulled in from the CSV file (via the external table defined previously)
     CREATE TABLE delays
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
     AS
     SELECT YEAR AS year,
         FL_DATE AS flight_date,
@@ -218,7 +218,7 @@ V rámci úlohy Apache Hive naimportujete data ze souboru. CSV do tabulky Apache
     GROUP BY origin_city_name;
     ```
 
-   Tento dotaz načte seznam měst, ve kterých došlo ke zpožděním kvůli nepřízni počasí, společně s průměrnou délkou zpoždění a uloží ho do umístění `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`. Později z tohoto umístění data načte Sqoop a exportuje je do služby Azure SQL Database.
+   Tento dotaz načte seznam měst, ve kterých došlo ke zpožděním kvůli nepřízni počasí, společně s průměrnou délkou zpoždění a uloží ho do umístění `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`. Později z tohoto umístění data načte Sqoop a exportuje je do služby Azure SQL Database.
 
 7. Beeline ukončíte zadáním `!quit` na příkazovém řádku.
 
@@ -300,7 +300,7 @@ Pro tuto operaci budete potřebovat název serveru z vaší databáze SQL. Pokud
 
 ## <a name="export-and-load-the-data"></a>Exportovat a načíst data
 
-V předchozích částech jste do umístění `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`zkopírovali transformovaná data. V této části použijete Sqoop k exportu dat z `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili ve službě Azure SQL Database.
+V předchozích částech jste do umístění `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`zkopírovali transformovaná data. V této části použijete Sqoop k exportu dat z `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili ve službě Azure SQL Database.
 
 1. Pomocí následujícího příkazu ověřte, že má Sqoop vhled do vaší databáze SQL:
 
@@ -313,7 +313,7 @@ V předchozích částech jste do umístění `abfs://<file-system-name>@<storag
 2. Pomocí následujícího příkazu exportujte data z tabulky **hivesampletable** do tabulky **zpoždění** :
 
    ```bash
-   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<file-system-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<container-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
    ```
 
    Sqoop se připojí k databázi, která obsahuje tabulku **zpoždění** , a exportuje data z `/tutorials/flightdelays/output` adresáře do tabulky s **prodlevami** .

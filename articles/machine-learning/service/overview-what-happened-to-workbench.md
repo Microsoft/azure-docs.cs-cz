@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: e043847db09eec6ec05cca1e259024cf08e91ed0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1bac6a2ec5657f3304e52fb328895a4f5aa94529
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846037"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996771"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -40,7 +40,7 @@ Nejnovější verze služby Azure Machine Learning Service obsahuje následujíc
 + Nová, komplexnější <a href="https://aka.ms/aml-sdk" target="_blank">sada Python SDK</a>.
 + Nové rozšířené [rozšíření Azure CLI](reference-azure-machine-learning-cli.md) pro Machine Learning.
 
-[Architektura](concept-azure-machine-learning-architecture.md) byla přepracována pro snadné použití. Místo několika prostředků a účtů Azure potřebujete jenom [pracovní prostor služby Azure Machine Learning](concept-workspace.md). Pracovní prostory můžete rychle vytvářet v [Azure Portal] ((How-to-Manage-workspace.md). Když použijete pracovní prostor, více uživatelů může ukládat výpočetní a implementační cíle, modelové experimenty, image Docker, nasazené modely atd.
+[Architektura](concept-azure-machine-learning-architecture.md) byla přepracována pro snadné použití. Místo několika prostředků a účtů Azure potřebujete jenom [pracovní prostor služby Azure Machine Learning](concept-workspace.md). Pracovní prostory můžete vytvářet rychle na webu [Azure Portal](how-to-manage-workspace.md). Když použijete pracovní prostor, více uživatelů může ukládat výpočetní a implementační cíle, modelové experimenty, image Docker, nasazené modely atd.
 
 I když v aktuální verzi existují nové vylepšené klienty rozhraní CLI a sady SDK, aplikace Desktop Workbench byla vyřazena. Experimenty se dají spravovat na [řídicím panelu pracovního prostoru v Azure Portal](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal). Řídicí panel můžete použít k zobrazení historie experimentu, ke správě výpočetních cílů připojených k pracovnímu prostoru, ke správě modelů a imagí Dockeru, a dokonce i k nasazení webových služeb.
 

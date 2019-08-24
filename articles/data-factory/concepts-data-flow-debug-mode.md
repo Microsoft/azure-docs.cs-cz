@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 945d123c0901722a527e7cc8181c91f09e4e95ec
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014511"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991929"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režimu ladění toku dat
 
@@ -53,7 +53,14 @@ S laděním na se na spodním panelu na kartě náhled dat zobrazí světlo. Bez
 
 ![Náhled dat](media/data-flow/datapreview.png "Náhled dat")
 
+> [!NOTE]
+> Zdroje souborů omezují pouze řádky, které vidíte, nikoli řádky, které jsou čteny. U velmi rozsáhlých datových sad se doporučuje, abyste vybrali malou část tohoto souboru a použili ho pro vaše testování. Můžete vybrat dočasný soubor v nastavení ladění pro každý zdroj, který je typem datové sady souboru.
+
 Při spuštění v režimu ladění v toku dat nebudou data zapsána do transformace jímky. Ladicí relace má sloužit jako testovací kabel pro vaše transformace. Během ladění nejsou požadovány jímky a jsou ignorovány v toku dat. Pokud chcete testovat zápisy dat do jímky, spusťte tok dat z kanálu Azure Data Factory a použijte ladění z kanálu.
+
+### <a name="testing-join-conditions"></a>Testování podmínek připojení
+
+Pokud se test jednotky připojí, existují nebo transformace vyhledávání, ujistěte se, že používáte pro svůj test malou sadu známých dat. Pomocí možnosti nastavení ladění výše můžete nastavit dočasný soubor, který se má použít pro vaše testování. To je potřeba proto, že při omezování nebo vzorkování řádků z velké datové sady nemůžete předpovědět, které řádky a které klíče se budou do toku číst pro účely testování. Výsledek je Nedeterministický, což znamená, že podmínky připojení můžou selhat.
 
 ### <a name="quick-actions"></a>Rychlé akce
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 3f40c69900b0d7f1c3bf446c1153e21dd7fd4d1b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014939"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997676"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics návodu k redigování
 
@@ -40,7 +40,7 @@ Nejjednodušší způsob, jak začít používat redigování, je použití nás
 
 ### <a name="download-and-setup"></a>Stažení a nastavení
 
-1. Stáhněte si nástroj AMSE z [tohoto místa](https://github.com/Azure/Azure-Media-Services-Explorer).
+1. Stáhněte si nástroj AMSE for AMS v2 z [tohoto místa](https://aka.ms/amseforv2).
 1. Přihlaste se ke svému účtu Media Services pomocí klíče služby.
 
     Pokud chcete získat název účtu a informace o klíči, přejděte na [Azure Portal](https://portal.azure.com/) a vyberte svůj účet AMS. Pak vyberte Nastavení > klíče. Zobrazí se okno Správa klíčů, které ukazuje název účtu a primární a sekundární klíče. Zkopírujte hodnoty názvu účtu a primárního klíče.
@@ -121,7 +121,7 @@ Pokud jste vývojář, který se pokouší analyzovat data anotace JSON, podíve
 6.  Nahrajte tento soubor do výstupního prostředku z kroku 1. Nahrajte také původní video do tohoto assetu a nastavte ho jako primární Asset. 
 7.  Spusťte úlohu redigování na tomto assetu pomocí režimu "redigování", abyste získali konečné navýšení videa. 
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup 
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

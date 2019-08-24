@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: abc09ac1a13537c31fe96fae14edefd0d06b6aef
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: fab65828228bdea8f0367f8928b83934bf0a7a4f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880251"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995875"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Architektura Azure IoT Central (funkce ve verzi Preview)
 
@@ -73,7 +73,7 @@ V aplikaci IoT Central Azure definují šablony zařízení chování a možnost
 
 V šabloně aplikace IoT Central ve verzi Preview:
 
-- **Modely schopností zařízení** určují možnosti zařízení, jako je například telemetrie, kterou posílá, vlastnosti, které definují stav zařízení, a příkazy, na které zařízení reaguje. Možnosti zařízení jsou uspořádány do jednoho nebo více rozhraní. Další informace o modelech schopností zařízení najdete v dokumentaci ke službě [IoT technologie Plug and Play](https://aka.ms/iot-pnp-docs) .
+- **Modely schopností zařízení** určují možnosti zařízení, jako je například telemetrie, kterou posílá, vlastnosti, které definují stav zařízení, a příkazy, na které zařízení reaguje. Možnosti zařízení jsou uspořádány do jednoho nebo více rozhraní. Další informace o modelech schopností zařízení najdete v dokumentaci ke službě [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) .
 - **Vlastnosti cloudu** určují vlastnosti IoT Central úložišť pro zařízení. Tyto vlastnosti jsou uloženy pouze v IoT Central a nejsou nikdy odesílány do zařízení.
 - **Zobrazení** určují řídicí panely a formuláře, které tvůrce vytvoří, aby mohl obsluhu monitorovat a spravovat zařízení.
 - **Přizpůsobení** umožní tvůrci přepsat některé definice v modelu schopností zařízení, aby byly lépe relevantní pro IoT Central aplikace.

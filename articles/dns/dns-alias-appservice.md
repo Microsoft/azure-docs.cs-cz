@@ -46,7 +46,7 @@ Vytvořte dva plány Web App Service ve skupině prostředků pomocí následuj�
 |Name  |Operační systém  |Location  |Cenová úroveň  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|East US|Vývoj/testování D1 – Shared|
-|ASP-02     |Windows|Střed USA|Vývoj/testování D1 – Shared|
+|ASP-02     |Windows|Střední USA|Vývoj/testování D1 – Shared|
 
 ## <a name="create-app-services"></a>Vytvořit App Services
 
@@ -61,7 +61,7 @@ Vytvořte dvě webové aplikace, jednu v každém plánu App Service.
    |Name<br>(musí být jedinečné v rámci. azurewebsites.net)|Skupina prostředků |Zásobník modulu runtime|Oblast|App Service plán/umístění
    |---------|---------|-|-|-------|
    |App – 01|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|East US|ASP-01 (D1)|
-   |App-02|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|Střed USA|ASP-02 (D1)|
+   |App-02|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|Střední USA|ASP-02 (D1)|
 
 ### <a name="gather-some-details"></a>Shromáždit nějaké podrobnosti
 
@@ -90,7 +90,7 @@ Nyní můžete vytvořit koncové body pro tyto dvě webové aplikace.
    |type  |Name  |Target  |Location  |Nastavení vlastní hlavičky|
    |---------|---------|---------|---------|---------|
    |Externí koncový bod     |Konec – 01|IP adresa, kterou jste si poznamenali pro App-01|East US|Hostitel:\<adresa URL, kterou jste si poznamenali pro App-01.\><br>Příklad: **Host: App-01.azurewebsites.NET**|
-   |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|Střed USA|Hostitel:\<adresa URL, kterou jste si poznamenali pro App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
+   |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|Střední USA|Hostitel:\<adresa URL, kterou jste si poznamenali pro App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
 
 ## <a name="create-dns-zone"></a>Vytvořit zónu DNS
 

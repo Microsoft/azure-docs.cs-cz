@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a283f6cbcf4dc345a8c55192507c461f33244d6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855443"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992268"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Kurz: Přístup k datům Data Lake Storage Gen2 pomocí Azure Databricks pomocí Sparku
 
@@ -124,18 +124,18 @@ Pomocí AzCopy zkopírujte data ze souboru *. csv* do účtu Data Lake Storage G
 2. Pokud chcete kopírovat data z účtu *. csv* , zadejte následující příkaz.
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
    * Nahraďte hodnotu zástupnéhosymbolucestouksouboru.`<csv-folder-path>` CSV.
 
    * Nahraďte `<storage-account-name>` hodnotu zástupného symbolu názvem vašeho účtu úložiště.
 
-   * `<file-system-name>` Zástupný symbol nahraďte libovolným názvem, který chcete systému souborů poskytnout.
+   * `<container-name>` Zástupný symbol nahraďte libovolným názvem, který chcete vašemu kontejneru přidělit.
 
-## <a name="create-a-file-system-and-mount-it"></a>Vytvořit systém souborů a připojit ho
+## <a name="create-a-container-and-mount-it"></a>Vytvoření kontejneru a jeho připojení
 
-V této části vytvoříte systém souborů a složku v účtu úložiště.
+V této části vytvoříte kontejner a složku ve svém účtu úložiště.
 
 1. V [Azure Portal](https://portal.azure.com)otevřete službu Azure Databricks, kterou jste vytvořili, a vyberte **Spustit pracovní prostor**.
 
@@ -158,12 +158,12 @@ V této části vytvoříte systém souborů a složku v účtu úložiště.
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
     dbutils.fs.mount(
-    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    source = "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/folder1",
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
 
-18. V `appId`tomto bloku kódu Nahraďte zástupné hodnoty, `storage-account-name` `password`, `tenant`a v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte `file-system-name` hodnotu zástupného symbolu názvem, který jste zadali do systému souborů adls v předchozím kroku.
+18. V `appId`tomto bloku kódu Nahraďte zástupné hodnoty, `storage-account-name` `password`, `tenant`a v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte `container-name` hodnotu zástupného symbolu názvem, který jste zadali do kontejneru v předchozím kroku.
 
 Pomocí těchto hodnot nahraďte uvedené zástupné symboly.
 
@@ -173,7 +173,7 @@ Pomocí těchto hodnot nahraďte uvedené zástupné symboly.
 
    * `storage-account-name` Je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
 
-   * `file-system-name` Zástupný symbol nahraďte libovolným názvem, který chcete systému souborů poskytnout.
+   * `container-name` Zástupný symbol nahraďte libovolným názvem, který chcete vašemu kontejneru přidělit.
 
    > [!NOTE]
    > V nastavení produkčního prostředí zvažte uložení hesla v Azure Databricks. Pak místo hesla přidejte klíč vyhledávání do bloku kódu. Po dokončení tohoto rychlého startu se můžete podívat na příklady tohoto přístupu v článku věnovaném [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) na webu Azure Databricks.

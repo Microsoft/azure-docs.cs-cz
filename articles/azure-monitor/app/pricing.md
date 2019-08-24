@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/19/2019
+ms.date: 08/22/2019
 ms.author: dalek
-ms.openlocfilehash: c3da37d89da8c70f6acdfb1b5ab9c5b10edb86f0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 45a8f8a7ee4d887503aeaf8e0e285c45a21c4bcc
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624406"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982623"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro Application Insights
 
@@ -65,30 +65,43 @@ Do faktury Azure se přidají poplatky za Application Insights. Podrobnosti o fa
 
 ![V nabídce vlevo vyberte fakturace.](./media/pricing/02-billing.png)
 
-## <a name="data-rate"></a>Rychlost přenosu dat
-Objem dat, která odesíláte, je omezený třemi způsoby:
+## <a name="managing-your-data-volume"></a>Správa objemu dat 
 
-* **Vzorkování**: Vzorkování můžete použít ke snížení objemu telemetrie, která je odesílána z vašeho serveru a klientských aplikací s minimálním zkreslením metrik. Vzorkování je primární nástroj, který můžete použít k optimalizaci množství dat, která odesíláte. Přečtěte si další informace o [funkcích vzorkování](../../azure-monitor/app/sampling.md). 
-* **Denní limit**: Při vytváření prostředku Application Insights v Azure Portal je denní limit nastavený na 100 GB za den. Při vytváření prostředku Application Insights v aplikaci Visual Studio je výchozí hodnota malá (pouze 32,3 MB/den). Hodnota denní limit je nastavená tak, aby se usnadnilo testování. Je určeno, že uživatel si před nasazením aplikace do produkčního prostředí zvýší denní limit. 
-
-    Maximální limit je 1 000 GB za den, pokud nepožadujete vyšší maximum pro vysokou přenosovou aplikaci. 
-
-    Při nastavování denního limitu postupujte opatrně. Váš záměr by neměl mít *nikdy žádný denní limit*. Pokud získáte denní limit, ztratíte data po zbytek dne a nemůžete monitorovat svoji aplikaci. Chcete-li změnit denní limit, použijte možnost **denní limit objemu** . K této možnosti můžete získat přístup v podokně **využití a odhadované náklady** (Tento postup je podrobněji popsán dále v článku).
-    Odebrali jsme omezení pro některé typy předplatného, které mají kredit, který nebylo možné použít pro Application Insights. Pokud v minulosti má předplatné limit útraty, dialogové okno denní limit obsahuje pokyny pro odebrání limitu útraty a povolení denního limitu, který bude vyvolán až 32,3 MB za den.
-* **Omezování**: Omezení omezuje přenosovou rychlost na 32 000 událostí za sekundu, průměrně za 1 minutu na klíč instrumentace.
-
-*Co se stane, když moje aplikace překročí míru omezení?*
-
-* Objem dat odesílaných vaší aplikací se vyhodnocuje každou minutu. Pokud překročí průměrnou sazbu za sekundu v průběhu minuty, server odmítne některé požadavky. Sada SDK ukládá data do vyrovnávací paměti a poté se pokusí ji znovu odeslat. Rozšíří nárůst během několika minut. Pokud vaše aplikace konzistentně odesílá data s více než frekvencí omezení, budou některá data vyřazena. (Sady SDK ASP.NET, Java a JavaScript se pokusí znovu odeslat data tímto způsobem; jiné sady SDK mohou jednoduše odtahovat omezená data.) Pokud dojde k omezování, upozornění oznámení vám upozorní, že k tomu došlo.
-
-*Návody víte, kolik dat Moje aplikace posílá?*
-
-K zobrazení množství dat, která vaše aplikace posílá, můžete použít jednu z následujících možností:
+Pokud chcete zjistit, kolik dat vaše aplikace posílá, můžete:
 
 * Přejděte na podokno **využití a odhadované náklady** , kde se zobrazí graf denního objemu dat. 
 * V Průzkumník metrik přidejte nový graf. U metriky grafu vyberte **svazek datového bodu**. Zapněte **seskupování**a pak proveďte seskupení podle **datového typu**.
+* `systemEvents` Použijte datový typ. Chcete-li například zobrazit objem dat zpracovaných za poslední den, dotaz by byl:
 
-## <a name="reduce-your-data-rate"></a>Snížení rychlosti dat
+```kusto
+systemEvents 
+| where timestamp >= ago(1d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes)
+```
+
+Tento dotaz se dá použít v [upozornění protokolu Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) k nastavení výstrah na datových svazcích. 
+
+Objem dat, která odesíláte, můžete spravovat třemi způsoby:
+
+* **Vzorkování**: Vzorkování můžete použít ke snížení objemu telemetrie, která je odesílána z vašeho serveru a klientských aplikací s minimálním zkreslením metrik. Vzorkování je primární nástroj, který můžete použít k optimalizaci množství dat, která odesíláte. Přečtěte si další informace o [funkcích vzorkování](../../azure-monitor/app/sampling.md).
+ 
+* **Denní limit**: Při vytváření prostředku Application Insights v Azure Portal je denní limit nastavený na 100 GB za den. Při vytváření prostředku Application Insights v aplikaci Visual Studio je výchozí hodnota malá (pouze 32,3 MB/den). Hodnota denní limit je nastavená tak, aby se usnadnilo testování. Je určeno, že uživatel si před nasazením aplikace do produkčního prostředí zvýší denní limit. 
+
+    Maximální limit je 1 000 GB za den, pokud nepožadujete vyšší maximum pro vysokou přenosovou aplikaci. 
+    
+    E-maily s upozorněním na denní limit jsou odesílány účtu, který je členem těchto rolí pro váš Application Insights prostředek: "ServiceAdmin", "AccountAdmin", "spolusprávce", "Owner".
+
+    Při nastavování denního limitu postupujte opatrně. Váš záměr by neměl mít *nikdy žádný denní limit*. Pokud získáte denní limit, ztratíte data po zbytek dne a nemůžete monitorovat svoji aplikaci. Chcete-li změnit denní limit, použijte možnost **denní limit objemu** . K této možnosti můžete získat přístup v podokně **využití a odhadované náklady** (Tento postup je podrobněji popsán dále v článku).
+    
+    Odebrali jsme omezení pro některé typy předplatného, které mají kredit, který nebylo možné použít pro Application Insights. Pokud v minulosti má předplatné limit útraty, dialogové okno denní limit obsahuje pokyny pro odebrání limitu útraty a povolení denního limitu, který bude vyvolán až 32,3 MB za den.
+    
+* **Omezování**: Omezení omezuje přenosovou rychlost na 32 000 událostí za sekundu, průměrně za 1 minutu na klíč instrumentace. Objem dat odesílaných vaší aplikací se vyhodnocuje každou minutu. Pokud překročí průměrnou sazbu za sekundu v průběhu minuty, server odmítne některé požadavky. Sada SDK ukládá data do vyrovnávací paměti a poté se pokusí ji znovu odeslat. Rozšíří nárůst během několika minut. Pokud vaše aplikace konzistentně odesílá data s více než frekvencí omezení, budou některá data vyřazena. (Sady SDK ASP.NET, Java a JavaScript se pokusí znovu odeslat data tímto způsobem; jiné sady SDK mohou jednoduše odtahovat omezená data.) Pokud dojde k omezování, upozornění oznámení vám upozorní, že k tomu došlo.
+
+## <a name="reduce-your-data-volume"></a>Zmenšení objemu dat
+
 Tady je několik věcí, které můžete udělat ke snížení objemu dat:
 
 * Použijte [vzorkování](../../azure-monitor/app/sampling.md). Tato technologie omezuje vaši rychlost přenosu dat bez toho, aby se vaše metrika zkrátila. Neztratíte možnost navigace mezi souvisejícími položkami v hledání. V serverových aplikacích vzorkování funguje automaticky.

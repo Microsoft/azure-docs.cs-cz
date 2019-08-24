@@ -4,17 +4,17 @@ description: Použití zařízení Azure IoT Edge jako transparentní brána, kt
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 08/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91860e9ec8d503a01d079925466093d19bbbccf
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e61ddd6cb51795fad564b6246fb24ea4ce48f028
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698605"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982956"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge
 
@@ -52,8 +52,6 @@ Následující kroky vás provedou procesem vytvoření certifikátů a jejich i
 Zařízení Azure IoT Edge jako bránu nakonfigurovat. Použijte postup instalace IoT Edge pro jeden z následujících operačních systémů:
   * [Windows](how-to-install-iot-edge-windows.md)
   * [Linux](how-to-install-iot-edge-linux.md)
-
-Tento článek odkazuje na *název hostitele brány* na několika místech. Název hostitele brány je deklarovaný v parametru **hostname** souboru config. yaml na zařízení IoT Edge brány. Používá se k vytvoření certifikátů v tomto článku a odkazuje se na připojovací řetězec zařízení pro příjem dat. Název hostitele brány musí být přeložitelný na IP adresu, a to buď pomocí DNS, nebo zadáním souboru hostitele.
 
 ## <a name="generate-certificates-with-windows"></a>Generování certifikátů s Windows
 
@@ -142,15 +140,18 @@ V této části vytvoříte tři certifikáty a připojit je v řetězu. Uveden�
    Tento příkaz skriptu vytvoří několik souborů certifikátů a klíčů, ale budeme na něj odkazovat ještě dále v tomto článku:
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-2. Pomocí následujícího příkazu vytvořte certifikát certifikační autority IoT Edge zařízení a privátní klíč. Zadejte název hostitele brány, který najdete v souboru iotedge\config.yaml na zařízení brány. Název hostitele brány se používá k pojmenování souborů a během generování certifikátu. 
+2. Pomocí následujícího příkazu vytvořte certifikát certifikační autority IoT Edge zařízení a privátní klíč. Zadejte název certifikátu certifikační autority, například **MyEdgeDeviceCA**. Název slouží k pojmenování souborů a během generování certifikátu. 
 
    ```powershell
-   New-CACertsEdgeDevice "<gateway hostname>"
+   New-CACertsEdgeDeviceCA "MyEdgeDeviceCA"
    ```
 
    Tento příkaz skriptu vytvoří několik souborů certifikátů a klíčů, včetně dvou informací, které budeme odkazovat na později v tomto článku:
-   * `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >Pokud zadáte jiný název než **MyEdgeDeviceCA**, pak certifikáty a klíče vytvořené tímto příkazem budou tento název zobrazovat. 
 
 Teď, když máte certifikáty, přeskočte k [instalaci certifikátů v bráně](#install-certificates-on-the-gateway)
 
@@ -193,6 +194,8 @@ V této části vytvoříte tři certifikáty a připojit je v řetězu. Uveden�
 
 1. Vytvořte certifikát kořenové certifikační autority a jeden zprostředkující certifikát. Tyto certifikáty jsou umístěny v  *\<WRKDIR >* .
 
+   Pokud jste už v tomto pracovním adresáři vytvořili kořenové a zprostředkující certifikáty, tento skript znovu nespouštějte. Po spuštění tohoto skriptu dojde k přepsání stávajících certifikátů. Místo toho přejděte k dalšímu kroku. 
+
    ```bash
    ./certGen.sh create_root_and_intermediate
    ```
@@ -200,15 +203,18 @@ V této části vytvoříte tři certifikáty a připojit je v řetězu. Uveden�
    Skript vytvoří několik certifikátů a klíčů. Poznamenejte si ji, na kterou odkazujeme v další části:
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`
 
-2. Pomocí následujícího příkazu vytvořte certifikát certifikační autority IoT Edge zařízení a privátní klíč. Zadejte název hostitele brány, který najdete v souboru iotedge/config. yaml na zařízení brány. Název hostitele brány se používá k pojmenování souborů a během generování certifikátu. 
+2. Pomocí následujícího příkazu vytvořte certifikát certifikační autority IoT Edge zařízení a privátní klíč. Zadejte název certifikátu certifikační autority, například **MyEdgeDeviceCA**. Název slouží k pojmenování souborů a během generování certifikátu. 
 
    ```bash
-   ./certGen.sh create_edge_device_certificate "<gateway hostname>"
+   ./certGen.sh create_edge_device_ca_certificate "MyEdgeDeviceCA"
    ```
 
    Skript vytvoří několik certifikátů a klíčů. Poznamenejte si dva, na které budeme odkazovat v následující části: 
-   * `<WRKDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>/private/iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >Pokud zadáte jiný název než **MyEdgeDeviceCA**, pak certifikáty a klíče vytvořené tímto příkazem budou tento název zobrazovat. 
 
 ## <a name="install-certificates-on-the-gateway"></a>Instalace certifikátů na bráně
 
@@ -216,8 +222,8 @@ Teď, když jste provedli řetěz certifikátů, budete muset nainstalovat na za
 
 1. Zkopírujte následující soubory z  *\<WRKDIR >* . Uložte kamkoli na vašem zařízení IoT Edge. Budeme odkazovat do cílového adresáře na zařízení IoT Edge jako  *\<CERTDIR >* . 
 
-   * Certifikát certifikační Autority zařízení –  `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * Privátní klíč certifikační Autority zařízení – `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * Certifikát certifikační Autority zařízení –  `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * Privátní klíč certifikační Autority zařízení – `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
    * Kořenová certifikační autorita –`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
    K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .  Pokud jste certifikáty vygenerovali na samotném IoT Edge zařízení, můžete tento krok přeskočit a použít cestu k pracovnímu adresáři.
@@ -233,16 +239,16 @@ Teď, když jste provedli řetěz certifikátů, budete muset nainstalovat na za
 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>\\certs\\azure-iot-test-only.root.ca.cert.pem"
       ```
    
    * Linux: 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>/private/iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem"
       ```
 
@@ -313,6 +319,6 @@ Díky této funkci se můžou místní moduly nebo zařízení se stejným zař�
 
 Chcete-li povolit rozšířené možnosti offline, navažte vztah mezi nadřazenými a podřízenými zařízeními mezi zařízením IoT Edge brány a zařízeními pro příjem dat, která se k němu připojí. Tyto kroky jsou podrobněji vysvětleny v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když máte zařízení IoT Edge funguje jako transparentní brána, musíte pro příjem dat zařízení důvěřovat brány a odesílat zprávy do něj. Další informace najdete v tématu [připojení zařízení pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md) a [ověření zařízení pro příjem dat na Azure IoT Hub](how-to-authenticate-downstream-device.md).

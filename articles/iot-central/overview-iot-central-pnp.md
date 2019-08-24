@@ -9,19 +9,19 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 0675be988e7e9560560dd07338563c9fa22fcb4c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878289"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997747"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Co je Azure IoT Central (funkce verze Preview)?
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 > [!WARNING]
-> Možnosti [IoT technologie Plug and Play](https://aka.ms/iot-pnp-docs) v Azure IoT Central jsou momentálně ve verzi Public Preview. Nepoužívejte IoT Central aplikaci technologie Plug and Play IoT povolenou pro produkční úlohy. V produkčních prostředích se používá aplikace IoT Central vytvořená z aktuální, všeobecně dostupné šablony aplikace.
+> Možnosti [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) v Azure IoT Central jsou momentálně ve verzi Public Preview. Nepoužívejte IoT Central aplikaci technologie Plug and Play IoT povolenou pro produkční úlohy. V produkčních prostředích se používá aplikace IoT Central vytvořená z aktuální, všeobecně dostupné šablony aplikace.
 
 Azure IoT Central je plně spravované řešení IoT typu software jako služba, které umožňuje snadno vytvářet produkty, které spojují fyzické a digitální světů. Svoji vizi propojených produktů můžete přivést k životu následujícími kroky:
 
@@ -95,7 +95,7 @@ Tato šablona zařízení zahrnuje:
 
 ### <a name="create-device-templates"></a>Vytvoření šablon zařízení
 
-[IoT technologie Plug and Play](https://aka.ms/iot-pnp-docs) umožňuje IoT Central integrovat zařízení bez psaní jakéhokoli vloženého kódu zařízení. V jádru IoT technologie Plug and Play je schéma modelu schopností zařízení, které popisuje možnosti zařízení. V aplikaci IoT Central Preview používají šablony zařízení tyto modely schopností zařízení technologie Plug and Play IoT.
+[IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) umožňuje IoT Central integrovat zařízení bez psaní jakéhokoli vloženého kódu zařízení. V jádru IoT technologie Plug and Play je schéma modelu schopností zařízení, které popisuje možnosti zařízení. V aplikaci IoT Central Preview používají šablony zařízení tyto modely schopností zařízení technologie Plug and Play IoT.
 
 Jako tvůrce máte k dispozici několik možností pro vytváření šablon zařízení:
 
@@ -151,4 +151,4 @@ Přečetli jste si přehled Azure IoT Central a tady jsou doporučené další k
   - [Přidat pravidla pro automatizaci řešení jako tvůrce](tutorial-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
   - [Monitorovat zařízení jako operátor](tutorial-monitor-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
   - [Jako operátor přidejte do řešení zařízení.](tutorial-add-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
-- Další informace o [IoT technologie Plug and Play](https://aka.ms/iot-pnp-docs)
+- Další informace o [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md)

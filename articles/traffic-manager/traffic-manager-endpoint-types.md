@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: allensu
-ms.openlocfilehash: 1b72fc510543ff57f5fac1b03e76df7ffed3fbfe
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 9de5b161c6bb1897058898dddd620ad093f148be
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333821"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981057"
 ---
 # <a name="traffic-manager-endpoints"></a>Koncové body služby Traffic Manager
 
@@ -101,9 +101,9 @@ Pokud jsou všechny koncové body v profilu zakázané, nebo pokud je samotný p
 
 * [Můžu použít Traffic Manager s více než jednou webovou aplikací ve stejné oblasti?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
 
-* [Návody přesunout koncové body Azure profilu Traffic Manager do jiné skupiny prostředků?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group)
+* [Návody přesunout koncové body Azure profilu Traffic Manager do jiné skupiny prostředků?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Přečtěte si, [jak Traffic Manager funguje](traffic-manager-how-it-works.md).
 * Přečtěte si o Traffic Manager [monitorování koncového bodu a automatické převzetí služeb při selhání](traffic-manager-monitoring.md)

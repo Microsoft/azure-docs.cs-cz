@@ -1,146 +1,146 @@
 ---
-title: Zkontrolujte stav publikování vaší nabídky komerční Marketplace
-description: Zkontrolujte stav ověření, certifikace a náhled kroků potřebných pro publikování nabídky prostřednictvím webu Marketplace a obchodní v Microsoft Partner Center.
+title: Podívejte se na stav publikování vaší nabídky na komerčním webu Marketplace.
+description: Kontrola stavu kroků ověření, certifikace a verze Preview požadovaných k publikování nabídky prostřednictvím komerčního tržiště v partnerském centru Microsoftu.
 author: mattwojo
 manager: evansma
 ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ae4840877ae461244a76984ed8ac3edc82d57a38
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: c547ad256e6ba44da4ef81aa2a3aa2c77ba24815
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653986"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982733"
 ---
-# <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Zkontrolujte stav publikování vaší nabídky komerční Marketplace
+# <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Podívejte se na stav publikování vaší nabídky na komerčním webu Marketplace.
 
-Můžete zobrazit vaše aktuální **stav publikování** na **nabízí přehled** karty [portálu komerční Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) v partnerském centru.
+Aktuální **stav publikování** můžete zobrazit na kartě **Přehled nabídky** na [portálu komerčního webu Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) v partnerském centru.
 
-Pro každou nabídku musí zobrazí jedna z následujících indikátory stavu.
+U každé nabídky by se mělo zobrazit jeden z následujících indikátorů stavu.
 
 | **Stav**    | **Popis**  |
 | :---------- | :-------------------|
-| **Návrh** | Nabídka se vytvořila, ale není zveřejněná. |
-| **Probíhá publikování** | Plán/nabídky pracuje cestě provede kroky procesu publikování. |
-| **Nutná pozornost** | Kritický problém byl zjištěn během certifikace společnosti Microsoft nebo publikování kroků. |
-| **Preview** | Nabídka byla certifikovat společností Microsoft a nyní čeká na finální ověření vydavatelem. Vyberte vysílat živě, aby nabídka live. |
-| **Živé** | Nabídka je v provozu na webu Marketplace a vidí a můžou zákazníci získat. |
-| **Čeká na ukončení prodej** | Vydavatel vybraných "zastavit zákazník" na nabídku nebo plán, ale akce nebyla dosud dokončena. |
-| **Není k dispozici na webu Marketplace** | Byl odebrán dříve publikované nabídky nebo plán na webu Marketplace. |
+| **Vypracováván** | Nabídka se vytvořila, ale není publikovaná. |
+| **Probíhá publikování.** | Nabídka/plán pracuje způsobem, který prochází postupem procesu publikování. |
+| **Nutná pozornost** | Došlo ke zjištění kritického problému během certifikace od společnosti Microsoft nebo některého z kroků publikování. |
+| **Preview** | Nabídka byla certifikována společností Microsoft a nyní očekává konečné ověření vydavatelem. Výběrem možnosti přejít na Live zajistěte, aby byla nabídka živá. |
+| **Bydlí** | Nabídka je na webu Marketplace živá a může ji zobrazit a získat zákazníci. |
+| **Čeká na zastavení prodeje** | Vydavatel v nabídce nebo plánu vybral možnost ukončit prodej, ale akce ještě není dokončená. |
+| **Není k dispozici na webu Marketplace** | Odebrali jsme dříve publikovanou nabídku nebo plán na webu Marketplace. |
 
-## <a name="automated-validation"></a>Automatické ověření
+## <a name="automated-validation"></a>Automatizované ověřování
 
-Prvním krokem v procesu publikování je sada automatické ověření. Každého kroku ověření odpovídá funkci, kterou jste se rozhodli povolit při vytváření vaší nabídky. Pokud tato funkce není povolená, přeskočí ověření pokračovat dalším krokem publikování. Každé ověření je třeba provést předtím, než je schválený stav publikování.
+Prvním krokem procesu publikování je sada automatizovaných ověření. Každý krok ověření odpovídá funkci, kterou jste zvolili k povolení při vytváření vaší nabídky. Pokud tato funkce není povolená, ověřování se přeskočí k dalšímu kroku publikování. Před schválením stavu publikování je nutné provést každou kontrolu ověření.
 
-- **Nabízejí nastavení toku nákupu (< 10 minut)**
+- **Nastavení toku nákupu nabídky (< 10 min)**
 
-V tomto kroku zajistíme, že vaše nabídka může být splněn jste si koupili zákazníků prostřednictvím webu Azure portal. Tento krok platí jenom pro nabídek prodávaných prostřednictvím společnosti Microsoft.
+V tomto kroku zajistíme splnění vaší nabídky při nákupu zákazníky prostřednictvím Azure Portal. Tento krok platí jenom pro nabídky prodávané prostřednictvím Microsoftu.
 
-- **Test jednotky ověření dat (přibližně 5 minut)**
+- **Ověření dat testovacích jednotek (~ 5 min.)**
 
-V tomto kroku jsme ověřit data, které jste zadali v testovací verze technické konfigurační oddíl nabídky. Funkce testu jednotky jsou testovány a schválena. Tento krok platí pouze pro nabídky s si testovací jízdu povolena.
+V tomto kroku Ověřujeme data, která jste zadali v části technická konfigurace testovacích jednotek v této nabídce. Funkce testovacích jednotek je testována a schválena. Tento krok platí jenom pro nabídky s povolenou testovací jednotkou.
 
-- **Test jednotky zřizování (~ 30 min)**
+- **Zřizování testovacích jednotek (~ 30 min.)**
 
-V tomto kroku po ověření dat a funkce vaše testovací verze v předchozím kroku můžeme nasadit a replikovat instance vaše testovací verze tak, aby byly připraveny pro používání zákazníka.  Tento krok platí pouze pro nabídky s si testovací jízdu povolena.
+V tomto kroku nasadíme a provedeme po ověření dat a funkcí testovacích jednotek v předchozím kroku instance testovacího disku, aby byly připravené na použití pro zákazníky.  Tento krok platí jenom pro nabídky s povolenou testovací jednotkou.
 
-- **Vedoucí řízení ověřování a registraci (< 15 min)**
+- **Ověření a registrace řízení vedoucího (< 15 min)**
 
-V tomto kroku potvrdíme, že váš systém správy potenciálních zákazníků může přijímat potenciálních zákazníků na základě informací uvedených v nabídce nastavení. Tento krok platí pouze pro nabídky s povolenou správou potenciálních zákazníků.
+V tomto kroku potvrzujeme, že váš systém pro správu potenciálních zákazníků může obdržet zájemce na základě podrobností uvedených v nastavení nabídky. Tento krok platí jenom pro nabídky se zapnutou správou potenciálních zákazníků.
 
 ## <a name="certification"></a>Certifikace
 
-Před publikováním, musí mít certifikovanou nabídky odeslané do komerčních Marketplace v partnerském centru. Odeslání přísnými testy, některé automatizované a manuální, včetně kontroly před ostatními této oblasti podstupovali nabídky [zásady certifikaci Azure Marketplace](https://docs.microsoft.com/legal/marketplace/general-policies). Nabízejí odesílání musí být označen oprávnění k certifikaci předtím, než se pokračovat k dalšímu kroku v publikování toku.
+Před publikováním musí být nabídky odeslané na komerční tržišti v partnerském centru certifikovány. Odeslané nabídky prošly přísným testováním, některými automatizovanými a jinými ručními, včetně kontroly nad [Azure Marketplacemi zásadami certifikace](https://docs.microsoft.com/legal/marketplace/general-policies). Podání nabídky musí být označeno jako opravňující k certifikaci, aby bylo možné pokračovat k dalšímu kroku v publikačním toku.
 
-### <a name="types-of-validation-that-take-place-during-certification"></a>Typy ověřování, které provedou během certifikace
+### <a name="types-of-validation-that-take-place-during-certification"></a>Typy ověřování, které probíhají během certifikace
 
-Existují tři úrovně ověření součástí procesu certifikace pro každou nabídku odeslání.
+Existují tři úrovně ověřování zahrnuté v procesu certifikace pro každou podanou nabídku.
 
-- Vydavatel obchodní způsobilosti
+- Způsobilost pro firmy vydavatele
 - Ověření obsahu
 - Technické ověření
 
-#### <a name="publisher-business-eligibility"></a>Vydavatel obchodní způsobilosti
+#### <a name="publisher-business-eligibility"></a>Způsobilost pro firmy vydavatele
 
-Každý typ nabídky zkontroluje sadu základní kritéria, které musí splnit vydavatele. Kritéria mohou zahrnovat stav programu MPN vydavatele, schopností nachází, úrovně kompetencí, atd.
+Každý typ nabídky kontroluje sadu základních kritérií způsobilosti, které musí vydavatel splňovat. Kritéria způsobilosti můžou zahrnovat stav programu MPN vydavatele, uchovávané kompetence, úrovně kompetence atd.
 
 #### <a name="content-validation"></a>Ověření obsahu
 
-Během ověřování obsahu zkontrolují informace zadá, když jste vytvořili vaši nabídku kvalitu a spolehlivost. Tyto kontroly se zkontrolujte zadané pro marketplace podrobnosti, ceny, dostupnost, přidružené plány atd. Abyste splnili Azure Marketplace nebo AppSource výpis kritéria, ověříme, že vaše nabídka zahrnuje:
+Při ověřování obsahu jsou informace, které jste zadali při vytváření vaší nabídky, kontrolovány na kvalitu a relevanci. Tyto kontroly prověří vaše položky s podrobnostmi o seznamech na Marketplace, cenách, dostupnosti, přidružených plánech atd. Pro splnění kritérií pro výpis Azure Marketplace a/nebo AppSource ověříme, že vaše nabídka zahrnuje:
 
-- název, který přesně popisuje nabídky;
-- kvalitně napsané popisy, které poskytují důkladný přehled a návrh hodnoty;
-- kvalita snímků obrazovky a doprovodných videa; a
-- vysvětlení, jak tuto nabídku využívá platformy Microsoft a nástrojů.
+- název, který přesně popisuje nabídku;
+- jasně psané popisy, které poskytují důkladný přehled a změnu hodnoty;
+- snímky obrazovky kvality a doprovodná videa; ani
+- Vysvětlení způsobu, jakým nabídka využívá platformy a nástroje společnosti Microsoft.
 
-Další informace týkající se obsahu ověřovací kritéria načtením [obecné výpis zásady](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general-policies).
+Další informace o kritériích ověřování obsahu najdete v tématu [Obecné zásady výpisu](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general).
 
 #### <a name="technical-validation"></a>Technické ověření
 
-Nabídka (balíček nebo binární) během technické ověření projde následující kontroly.
-- Zkontrolovat malware
-- Volání sítě monitorovat
-- Balíček analyzován
-- Důkladné prohledání skutečné funkce nabídky
+Během technického ověřování dojde k tomu, že nabídka (balíček nebo binární) projde následující kontroly.
+- Prověřený malware
+- Monitorovaná síťová volání
+- Analyzovaný balíček
+- Důkladné prohledání aktuálních funkcí nabídky
 
-Nabídky je testován napříč různými platformami a verze, aby se zajistilo, že je robustní.
+Nabídka je testována na různých platformách a verzích, aby bylo zajištěno jejich robustní.
 
-Projděte si podrobnosti o konkrétní konfiguraci požadované pro vaší nabídky v části technických konfigurace tohoto dokumentu.
+Zkontrolujte konkrétní konfigurační údaje požadované pro vaši nabídku v části technická konfigurace tohoto dokumentu.
 
-### <a name="certification-failure-report"></a>Sestava selhání certifikace
+### <a name="certification-failure-report"></a>Sestava o chybách certifikace
 
-Po dokončení kontroly Pokud vaše nabídka uplynutí certifikační pak přesunu k dalšímu kroku v procesu publikování. V případě neúspěchu nabídkou na některý z kontroly výpis, technických nebo zásad nebo pokud nejste oprávněni předložit nabídku typu, je sestava selhání certifikační generována a pošle vám e-mailem.
+Po dokončení kontroly se v případě, že vaše nabídka prošla certifikací, přesune na další krok v procesu publikování. Pokud se vaší nabídce nezdařila žádná z těchto kontrol seznamů, technických nebo zásad nebo pokud nemáte nárok na odeslání nabídky tohoto typu, je generována zpráva o selhání certifikace a e-mailem.
 
-Tato sestava obsahuje popis všech zásad, které se nepodařilo spolu s poznámky ke kontrole. Projděte si tuto sestavu e-mailu, řešit jakékoli problémy, provedení aktualizací pro vaši nabídku v případě potřeby a odešlete znovu nabídkou pomocí [portálu komerční Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) v partnerském centru. (Můžete neúspěšné nabídka tolikrát, kolikrát podle potřeby až do certifikace předávání).
+Tato sestava obsahuje popisy všech zásad, které se nezdařily, spolu s revizními zprávami. Přečtěte si tuto e-mailovou sestavu, vyřešte případné problémy, proveďte v případě potřeby aktualizace nabídky a znovu odešlete nabídku pomocí [komerčního portálu Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) v partnerském centru. (Nabídku můžete znovu odeslat tolikrát, kolikrát je potřeba, dokud neprojdete certifikátem).
 
-## <a name="preview-creation"></a>Vytvoření náhledu
+## <a name="preview-creation"></a>Vytváření náhledu
 
-Během **ve verzi Preview vytváření** krok, můžeme vytvořit verzi této nabídky pouze cílové skupině, která jste vytvořili v části Preview o vaší nabídce.
+Během kroku **vytvoření verze Preview** vytvoříme verzi nabídky, která je dostupná jenom pro cílovou skupinu, kterou jste zadali v části verze Preview vaší nabídky.
 
-## <a name="publisher-approval"></a>Vydavatel schválení
+## <a name="publisher-approval"></a>Schválení vydavatele
 
-V tomto kroku se dostat se žádostí o můžete zkontrolovat a schválit ve verzi preview nabídku před posledním krokem publikování.
+V tomto kroku se vám pošle e-mail s žádostí o kontrolu a schválení vaší nabídky Preview před konečným krokem publikování.
 
-Pokud jste vybrali na prodej vaší nabídky Microsoftu, bude možné otestovat pořízení a nasazení vaší nabídce, ujistěte se, že splňují vaše požadavky během této fáze schválení ve verzi preview. Vaše nabídka ještě nebudou k dispozici stydké webu Marketplace. Testování a schválit v této verzi preview, bude nutné vybrat **pro uvedení do provozu** na [ **nabízí přehled** ](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) řídicího panelu.
+Pokud jste si zvolili prodej vaší nabídky prostřednictvím Microsoftu, budete moct otestovat navýšení a nasazení vaší nabídky, abyste měli jistotu, že vyhovují vašim požadavkům v této fázi schvalování verze Preview. Vaše nabídka nebude zatím k dispozici na webu Pubic Marketplace. Jakmile otestujete a schválíte tuto verzi Preview, budete muset na řídicím panelu [**Přehled nabídek**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) vybrat možnost **Přejít na aktivní** .
 
-Pokud chcete provést změny na nabídku během této fáze ve verzi preview, můžete upravit a opětovného odesílání k publikování nové verze preview. Přečtěte si článek [aktualizaci existující marketplace nabízí](#update-existing-marketplace-offers) podrobnosti o další změny.
+Pokud chcete v této fázi Preview provádět změny nabídky, můžete je upravit a znovu odeslat a publikovat novou verzi Preview. Podrobnosti o dalších změnách najdete v článku [aktualizace stávajících nabídek Marketplace](#update-existing-marketplace-offers) .
 
-Pokud už vaši nabídku za provozu a dostupná na webu Marketplace, všech aktualizací provedete nebude publikování neprojeví, dokud nevyberete **pro uvedení do provozu** na [ **nabízí přehled** ](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) řídicí panel.
+Pokud je vaše nabídka už živá a dostupná pro veřejnost na webu Marketplace, jakékoli aktualizace, které provedete, se neprojeví, dokud na řídicím panelu [**Přehled nabídky**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) nevyberete možnost **Přejít na aktivní** .
 
-### <a name="publish-offer-to-the-public"></a>Publikování nabídky pro veřejnost
+### <a name="publish-offer-to-the-public"></a>Publikovat nabídku veřejné
 
-Přihlaste se do partnerského centra a přejít na nabídku. Budete přesměrováni na **nabízí přehled** stránky. V horní části této stránky, zobrazí se možnost pro **vysílat živě**. Vyberte **vysílat živě,** a po potvrzení, tuto nabídku start, získávání publikována veřejně. Obdržíte oznámení e-mailem při nabídky je v provozu.
+Přihlaste se k partnerskému centru a získejte přístup k této nabídce. Budete přesměrováni na stránku s **přehledem nabídky** . V horní části této stránky se zobrazí možnost **začít živě**. Vyberte **Přejít do provozu** a po potvrzení se nabídka začne publikovat na veřejném. Až bude nabídka živá, dostanete e-mailové oznámení.
 
 ## <a name="publish"></a>Publikování
 
-Teď, když jste se rozhodli **vysílat živě** v rámci vaší nabídky, ji dáte k dispozici na webu Marketplace, jsou řadu kontrol finálním ověřením, které budou prošli zajistit konfiguraci se, že živé nabídka stejně jako verze preview verze nabídky.
+Teď, když jste vybrali možnost **začít živě** s vaší nabídkou a zpřístupnit ji na webu Marketplace, máte k dispozici řadu konečných kontrol ověření, které se budou zvýšit, aby se zajistilo, že je živá nabídka nakonfigurovaná stejně jako verze Preview nabídky.
 
-- **Nabízejí nastavení toku nákupu (> 10 minut)**
+- **Nastavení toku nákupu nabídky (> 10 min)**
 
-V tomto kroku zajistíme, že vaše nabídka může být splněn jste si koupili zákazníků prostřednictvím webu Azure portal. Tento krok platí jenom pro nabídek prodávaných prostřednictvím společnosti Microsoft.
+V tomto kroku zajistíme splnění vaší nabídky při nákupu zákazníky prostřednictvím Azure Portal. Tento krok platí jenom pro nabídky prodávané prostřednictvím Microsoftu.
 
-- **Test jednotky ověření dat (přibližně 5 minut)**
+- **Ověření dat testovacích jednotek (~ 5 min.)**
 
-V tomto kroku jsme ověřit data, které jste zadali v testovací verze technické konfigurační oddíl nabídky. Funkce testu jednotky jsou testovány a schválena. Tento krok platí pouze pro nabídky s si testovací jízdu povolena.
+V tomto kroku Ověřujeme data, která jste zadali v části technická konfigurace testovacích jednotek v této nabídce. Funkce testovacích jednotek je testována a schválena. Tento krok platí jenom pro nabídky s povolenou testovací jednotkou.
 
-- **Test jednotky zřizování (~ 30 min)**
+- **Zřizování testovacích jednotek (~ 30 min.)**
 
-V tomto kroku jsme nasazení a replikovat instance vaše testovací verze tak, aby byly připraveny pro používání zákazníka.  Tento krok platí pouze pro nabídky s si testovací jízdu povolena.
+V tomto kroku nasadíme a replikujte instance testovacích jednotek, aby byly připravené k použití na zákazníky.  Tento krok platí jenom pro nabídky s povolenou testovací jednotkou.
 
-- **Vedoucí řízení ověřování a registraci (> 15 minut)**
+- **Ověření a registrace řízení vedoucího (> 15 min)**
 
-V tomto kroku potvrdíme, že váš systém správy potenciálních zákazníků může přijímat potenciálních zákazníků na základě informací uvedených v nabídce nastavení. Tento krok platí pouze pro nabídky s povolenou správou potenciálních zákazníků.
+V tomto kroku potvrzujeme, že váš systém pro správu potenciálních zákazníků může obdržet zájemce na základě podrobností uvedených v nastavení nabídky. Tento krok platí jenom pro nabídky se zapnutou správou potenciálních zákazníků.
 
-- **Poslední publikování (> 30 minut)**
+- **Finální publikování (> 30 minut)**
 
-V tomto kroku zajistíme, že vaše nabídka se stanou veřejně dostupné na webu Marketplace.
+V tomto kroku zajistíme, že vaše nabídka bude veřejně dostupná na webu Marketplace.
 
-## <a name="update-existing-marketplace-offers"></a>Aktualizace stávající nabídky na webu marketplace
+## <a name="update-existing-marketplace-offers"></a>Aktualizace stávajících nabídek Marketplace
 
-Pokud chcete provést změny na nabídku, kterou jste už publikovali, musíte nejprve aktualizovat stávající nabídky a pak je znovu publikovat.
+Pokud chcete provést změny v nabídce, kterou jste už publikovali, musíte nejdřív aktualizovat existující nabídku a pak ji znovu publikovat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- [Aktualizace stávající nabídky na webu Marketplace obchodní](./update-existing-offer.md)
+- [Aktualizace stávající nabídky na komerčním webu Marketplace](./update-existing-offer.md)

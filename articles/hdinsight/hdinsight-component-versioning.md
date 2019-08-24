@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 30eb922e17810ddd53166a702b5fc513684f2140
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: b451769f5f98bf64ca340504c983f16d1db36647
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742382"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991557"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jaké jsou součásti Apache Hadoop a verze, které jsou k dispozici v HDInsight?
 
@@ -178,6 +178,9 @@ V části najdete odkazy na poznámky k verzi pro distribuce datových platforem
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Výchozí konfigurace uzlů a velikosti virtuálních počítačů pro clustery
 
 V následujících tabulkách jsou uvedeny výchozí velikosti virtuálních počítačů pro clustery HDInsight.  Tento graf je nezbytný pro pochopení velikostí virtuálních počítačů, které se mají použít při vytváření skriptů PowerShellu nebo rozhraní příkazového řádku Azure CLI pro nasazení clusterů HDInsight.
+
+> [!NOTE]
+> Jedinými typy clusterů, které mají datové disky, jsou Kafka a HBA clustery s povolenou funkcí urychleného zápisu. HDInsight podporuje P30 a S30 velikosti disků v těchto scénářích.
 
 > [!IMPORTANT]  
 > Pokud v clusteru potřebujete víc než 32 pracovních uzlů, musíte vybrat velikost hlavního uzlu s aspoň 8 jádry a 14 GB paměti RAM.

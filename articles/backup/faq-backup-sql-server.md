@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: a600c50e97f0d069443112a59d529c0d6f6fecad
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6e3ce21419e131ceef65939202eb70a98f10b040
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737065"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982437"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 
@@ -37,9 +37,10 @@ Za určitých okolností služba Azure Backup spustí znovu média zálohování
 Automatické zaretušování je ve výchozím nastavení povolené pro všechny uživatele. Pokud se ale rozhodnete, že se odhlásíte, postupujte takto:
 
   * V instanci SQL Server v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte nebo upravte soubor **ExtensionSettingsOverrides. JSON** .
-  * V souboru **ExtensionSettingsOverrides. JSON**nastavte *{"EnableAutoHealer": false}* .
+  * V souboru **ExtensionSettingsOverrides. JSON**nastavte *{"EnableAutoHealer": false}* .
   * Uložte změny a zavřete soubor.
-  * V SQL Server instanci otevřete **úlohu spravovat** a restartujte službu **AzureWLBackupCoordinatorSvc** .  
+  * V SQL Server instanci otevřete **úlohu spravovat** a restartujte službu **AzureWLBackupCoordinatorSvc** .
+   
 
 ## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>Můžu řídit, kolik souběžných záloh běží na SQL serveru?
 
@@ -71,12 +72,12 @@ Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesíl
 V nabídce **úloha zálohování** se zobrazí pouze úlohy zálohování ad-hoc. Pro naplánovaná úloha použijte [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Jsou budoucí databáze automaticky přidány pro zálohování?
-Ano, tuto možnost můžete dosáhnout [automatickou ochranou](backup-sql-server-database-azure-vms.md#enable-auto-protection).  
+Ano, tuto možnost můžete dosáhnout [automatickou ochranou](backup-sql-server-database-azure-vms.md#enable-auto-protection).  
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Když odstraním databázi z autoprotected instance, co se stane se zálohami?
 Pokud je databáze vyřazena z autoprotected instance, zálohování databáze se stále pokouší. To znamená, že Odstraněná databáze začne v rámci **zálohované položky** zobrazovat stav není v pořádku a je pořád chráněná.
 
-Správným způsobem zastavení ochrany této databáze je **zastavení zálohování** s **odstraňováním dat** v této databázi.  
+Správným způsobem zastavení ochrany této databáze je **zastavení zálohování** s **odstraňováním dat** v této databázi.  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Když zabráním operaci zálohování funkce autoprotected Database, která bude její chování?
 Pokud zastavíte **zálohování s uchováním dat**, nebudou probíhat žádná budoucí zálohování a stávající body obnovení zůstanou beze změny. Databáze bude i nadále považována za chráněnou a zobrazí se v části **zálohované položky**.

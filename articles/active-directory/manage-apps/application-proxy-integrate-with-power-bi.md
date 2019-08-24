@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9073e00f5c3702e43665541bd8ff9e66c2bc505b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ca2b7f2b0e20e85e1e62f8efabb81eddd5f901f2
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968498"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991118"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu pro Power BI Mobile s využitím Azure Proxy aplikací služby AD
 
@@ -103,25 +103,28 @@ Teď jste připraveni nakonfigurovat Azure Proxy aplikací služby AD.
 
 Pokud chcete dokončit nastavování aplikace, přejděte do části **Uživatelé a skupiny** a přiřaďte uživatele k přístupu k této aplikaci.
 
-## <a name="step-3-register-the-native-app-and-grant-access-to-the-api"></a>Krok 3: Registrace nativní aplikace a udělení přístupu k rozhraní API
+## <a name="step-3-grant-power-bi-mobile-access-to-report-services"></a>Krok 3: Udělení Power BI Mobile přístupu ke službám sestav
 
-Nativní aplikace jsou programy vyvinuté pro použití na platformě nebo zařízení. Předtím, než se může mobilní aplikace Power BI připojit k rozhraní API a přistupovat k nim, musíte ho zaregistrovat ve službě Azure AD.  
+Předtím, než se může mobilní aplikace Power BI připojit a získat přístup ke službám sestav, se musíte v Azure AD správně zaregistrovat.  
 
-1. Zaregistrujte aplikaci ve službě Azure AD pomocí [kroku 2 v tématu Jak povolit nativním klientským aplikacím interakci s proxy aplikacemi](application-proxy-configure-native-client-application.md#step-2-register-your-native-application).
+1. Na stránce **přehled** Azure Active Directory vyberte možnost **Registrace aplikací**.
+2. Na kartě **všechny aplikace** vyhledejte aplikaci, kterou jste vytvořili v kroku 2.
+3. Vyberte aplikaci a pak vyberte **ověřování**.
+4. Přidejte následující identifikátory URI přesměrování na základě vámi používané platformy.
 
-   Při registraci aplikace pro Power BI Mobile **iOS**přidejte následující identifikátory URI pro přesměrování:
+   Při registraci aplikace pro Power BI Mobile **iOS**přidejte následující identifikátory URI pro přesměrování typu Public Client (Mobile & Desktop):
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   Při registraci aplikace pro Power BI Mobile **Android**přidejte následující identifikátory URI pro přesměrování:
+   Při registraci aplikace pro Power BI Mobile **Android**přidejte následující identifikátory URI pro přesměrování typu Public Client (Mobile & Desktop):
    - `urn:ietf:wg:oauth:2.0:oob`
 
    > [!IMPORTANT]
-   > Aby aplikace fungovala správně, musí být přidávané identifikátory URI pro přesměrování.
+   > Aby aplikace fungovala správně, musí být přidávané identifikátory URI pro přesměrování. Pokud konfigurujete pro iOS i Android, stačí jenom zaregistrovat **jednu** aplikaci a přidat identifikátory URI pro přesměrování pro iOS i Android. Pokud pro každou platformu požadujete samostatné aplikace, budete muset zahrnout identifikátor URI přesměrování: `mspbi-adal://com.microsoft.powerbimobile` pro obě aplikace.
 
-Teď, když jste zaregistrovali nativní aplikaci, můžete dát IT přístup k dalším aplikacím v adresáři, v tomto případě pro přístup ke službám sestav publikovaným pomocí proxy aplikací. Postupujte podle kroků v [části Krok 3: Udělte přístup k aplikaci](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)proxy.
+2. Teď, když jste zaregistrovali nativní aplikaci, můžete dát IT přístup k dalším aplikacím v adresáři, v tomto případě pro přístup ke službám sestav publikovaným pomocí proxy aplikací. Postupujte podle kroků v [části Krok 3: Udělte přístup k aplikaci](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)proxy.
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>Krok 4: Připojení z aplikace Power BI Mobile
 

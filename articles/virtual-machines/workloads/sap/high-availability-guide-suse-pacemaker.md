@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 551f140c22677bea363ad5d8f43bf9670f783a1d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ec25abbdaa160976928a9ea0fea29a4d1fbf823a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725608"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992127"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -532,7 +532,7 @@ Využitím techniky STONITH zařízení využívá instanční objekt služby k 
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Vytvořit vlastní roli pro agent síťové izolace
 
-Objekt služby nemá ve výchozím nastavení oprávnění pro přístup k prostředkům Azure. Je potřeba udělit oprávnění instančního objektu pro spuštění a zastavení (uvolníte) všechny virtuální počítače v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete vytvořit pomocí [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+Objekt služby nemá ve výchozím nastavení oprávnění pro přístup k prostředkům Azure. Je potřeba udělit oprávnění instančního objektu pro spuštění a zastavení (uvolníte) všechny virtuální počítače v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete vytvořit pomocí [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli)
 
 Použijte následující obsah vstupního souboru. Je potřeba upravit obsah, který je pro vaše předplatná, c276fc76-9cd4-44c9-99a7-4fd71546436e a e91d47c4-76f3-4271-a796-21b4ecfe3624 nahraďte ID vašeho předplatného. Pokud máte pouze jedno předplatné, odeberte v AssignableScopes druhou položku.
 
@@ -629,7 +629,7 @@ sudo crm configure property maintenance-mode=false
      Upozornění: CIB-Bootstrap-Options: neznámý atribut hostName_ <strong>hostname</strong>  
    > Tyto zprávy upozornění je možné ignorovat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP][deployment-guide]

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/21/2019
 ms.author: jingwang
-ms.openlocfilehash: 1baa28dd1c9cc323e3dc7ca6fc5fbe2eac54652a
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 0cc7313531e92aa0f57b09a9252902848297bdbf
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829148"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996665"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database spravované instance pomocí Azure Data Factory
 
@@ -126,31 +126,33 @@ Různými typy ověřování najdete v následujících částech na požadavky 
 
 Chcete-li použít ověřování pomocí tokenu aplikace služby Azure AD založené na instančním objektu, postupujte podle následujících kroků:
 
-1. [Vytvořte aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) z Azure Portal. Poznamenejte si název aplikace a následující hodnoty, které definují propojené služby:
+1. Postupujte podle kroků a [zřiďte správce Azure Active Directory pro vaši spravovanou instanci](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
+
+2. [Vytvořte aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) z Azure Portal. Poznamenejte si název aplikace a následující hodnoty, které definují propojené služby:
 
     - ID aplikace
     - Klíč aplikace
     - ID tenanta
 
-2. [Vytvoření přihlašovacích](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) údajů pro Azure Data Factory spravovanou identitu. V SQL Server Management Studio (SSMS) se připojte ke svojí spravované instanci pomocí účtu SQL Server, který je **sysadmin**. V **Hlavní** databázi spusťte následující příkaz T-SQL:
+3. [Vytvoření přihlašovacích](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) údajů pro Azure Data Factory spravovanou identitu. V SQL Server Management Studio (SSMS) se připojte ke svojí spravované instanci pomocí účtu SQL Server, který je **sysadmin**. V **Hlavní** databázi spusťte následující příkaz T-SQL:
 
     ```sql
     CREATE LOGIN [your application name] FROM EXTERNAL PROVIDER
     ```
 
-2. [Vytvořte uživatele databáze](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) s omezením pro Azure Data Factory spravovanou identitu. Připojte se k databázi z nebo do které chcete kopírovat data, spusťte následující příkaz T-SQL: 
+4. [Vytvořte uživatele databáze](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) s omezením pro Azure Data Factory spravovanou identitu. Připojte se k databázi z nebo do které chcete kopírovat data, spusťte následující příkaz T-SQL: 
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
     ```
 
-3. Udělte Data Factory spravovaná identita potřebná k tomu, aby se běžně daly dělat pro uživatele SQL a jiné. Spusťte následující kód. Další možnosti najdete v [tomto dokumentu](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+5. Udělte Data Factory spravovaná identita potřebná k tomu, aby se běžně daly dělat pro uživatele SQL a jiné. Spusťte následující kód. Další možnosti najdete v [tomto dokumentu](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your application name]
     ```
 
-4. Nakonfigurujte propojenou službu Azure SQL Database spravované instance v Azure Data Factory.
+6. Nakonfigurujte propojenou službu Azure SQL Database spravované instance v Azure Data Factory.
 
 **Příklad: použití ověřování instančního objektu**
 
@@ -185,25 +187,27 @@ Datová továrna může být přidružená ke [spravované identitě pro prostř
 
 Pokud chcete použít spravované ověřování identity, postupujte podle těchto kroků.
 
-1. [Vytvoření přihlašovacích](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) údajů pro Azure Data Factory spravovanou identitu. V SQL Server Management Studio (SSMS) se připojte ke svojí spravované instanci pomocí účtu SQL Server, který je **sysadmin**. V **Hlavní** databázi spusťte následující příkaz T-SQL:
+1. Postupujte podle kroků a [zřiďte správce Azure Active Directory pro vaši spravovanou instanci](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
+
+2. [Vytvoření přihlašovacích](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) údajů pro Azure Data Factory spravovanou identitu. V SQL Server Management Studio (SSMS) se připojte ke svojí spravované instanci pomocí účtu SQL Server, který je **sysadmin**. V **Hlavní** databázi spusťte následující příkaz T-SQL:
 
     ```sql
     CREATE LOGIN [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-2. [Vytvořte uživatele databáze](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) s omezením pro Azure Data Factory spravovanou identitu. Připojte se k databázi z nebo do které chcete kopírovat data, spusťte následující příkaz T-SQL: 
+3. [Vytvořte uživatele databáze](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) s omezením pro Azure Data Factory spravovanou identitu. Připojte se k databázi z nebo do které chcete kopírovat data, spusťte následující příkaz T-SQL: 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-3. Udělte Data Factory spravovaná identita potřebná k tomu, aby se běžně daly dělat pro uživatele SQL a jiné. Spusťte následující kód. Další možnosti najdete v [tomto dokumentu](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+4. Udělte Data Factory spravovaná identita potřebná k tomu, aby se běžně daly dělat pro uživatele SQL a jiné. Spusťte následující kód. Další možnosti najdete v [tomto dokumentu](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your Data Factory name]
     ```
 
-4. Nakonfigurujte propojenou službu Azure SQL Database spravované instance v Azure Data Factory.
+5. Nakonfigurujte propojenou službu Azure SQL Database spravované instance v Azure Data Factory.
 
 **Příklad: používá spravované ověřování identity.**
 

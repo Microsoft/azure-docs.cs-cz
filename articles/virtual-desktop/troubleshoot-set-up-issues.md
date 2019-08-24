@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: efc721f7852d50e431be38f52e27d72ad7f3ae76
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 93f111eb4439b89ac367ad7e7b951e26cecb86e4
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877571"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981099"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
@@ -53,7 +53,7 @@ Příklad nezpracované chyby:
 
 **Způsobit** Uživatel, který je přihlášený, nemá přiřazenou roli TenantCreator ve svých Azure Active Directory.
 
-**Opravit** Postupujte podle pokynů v tématu [přiřazení role aplikace TenantCreator uživateli ve vašem tenantovi Azure Active Directory](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant). Po provedení těchto pokynů budete mít přiřazeného uživatele k roli TenantCreator.
+**Opravit** Postupujte podle pokynů v tématu [přiřazení role aplikace TenantCreator uživateli ve vašem tenantovi Azure Active Directory](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role). Po provedení těchto pokynů budete mít přiřazeného uživatele k roli TenantCreator.
 
 ![Snímek obrazovky přiřazené role TenantCreator](media/TenantCreatorRoleAssigned.png)
 
@@ -316,7 +316,7 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 ### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Chyba: Uživatel vyžaduje Azure Multi-Factor Authentication (MFA).
 
-![Snímek obrazovky vašeho nasazení selhal kvůli nedostatku služby Multi-Factor Authentication (MFA).](media/MFARequiredError.png)
+![Snímek obrazovky nasazení se nezdařil z důvodu nedostatku Multi-Factor Authentication (MFA)](media/MFARequiredError.png)
 
 Příklad nezpracované chyby:
 

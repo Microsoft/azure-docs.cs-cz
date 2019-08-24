@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/2/2019
+ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 444d5ca996c014bdbf2e62cacf2563c7b63372e4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 19d3fe4285cf6bf316a0d445e49a398ed5d66a35
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69015723"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991783"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace při živém streamování vyprší metadata 
 
-Poslední aktualizace: 2019-07-02
+Poslední aktualizace: 2019-08-22
 
 ### <a name="conformance-notation"></a>Zápis shody
 
@@ -74,6 +74,7 @@ Následující dokumenty obsahují pravidla, která prostřednictvím odkazu v t
 | [AMF0]            | ["AMF0 zpráv o akcích"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf) |
 | [POMLČKA-IF-IOP]     | Doporučení pro spolupráci s POMLČKou v oboru fóra v 4,2[https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html) |
 | [HLS-TMD]         | Časované metadata pro HTTP Live Streaming –[https://developer.apple.com/streaming](https://developer.apple.com/streaming) |
+| [CMAF-ID3]         | [Časované metadata ve formátu Common Media Application Format (CMAF)](https://aomediacodec.github.io/av1-id3/)
 | [ID3v2]           | 2\.4.0 značky ID3 verze[http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure) |
 | [ISO-14496-12]    | ISO/IEC 14496-12: Část 12 formát souboru základního média ISO, FourthEdition 2012-07-15  |
 | [MPEGDASH]        | Informační technologie – dynamické adaptivní streamování přes HTTP (POMLČKa) – část 1: Popis multimediální prezentace a formáty segmentů. Květen 2014. Zveřejněna. ADRESA URL https://www.iso.org/standard/65274.html |
@@ -95,21 +96,146 @@ Následující dokumenty obsahují pravidla, která prostřednictvím odkazu v t
 
 ## <a name="2-timed-metadata-ingest"></a>2. Časově omezená příjem metadat
 
-## <a name="21-rtmp-ingest"></a>2,1 RTMP ingest
+Azure Media Services podporuje místní metadata v reálném čase pro protokoly [RTMP] i Smooth Streaming [MS-SSTR-ingestovat]. Metadata v reálném čase lze použít k definování vlastních událostí s vlastními jedinečnými vlastními schématy (JSON, binary, XML), jakož i s definovanými formáty, jako je ID3, nebo SCTE-35 pro signalizaci reklamy ve vysílání datového proudu. 
 
-[RTMP] umožňuje, aby se časované signály metadat odesílaly jako startovací zprávy [AMF0] vložené do datového proudu [RTMP]. Zprávy s oznámením mohou být odeslány na nějakou dobu před samotným signálem pro spojení AD události nebo [SCTE35] AD. Pro podporu tohoto scénáře je skutečný čas události odeslán v rámci zprávy upozornění. Další informace najdete v tématu [AMF0].
+Tento článek poskytuje podrobné informace o tom, jak odesílat vlastní časované signály metadat pomocí podporovaných protokolů ingestování Media Services. Článek také vysvětluje, jakým způsobem jsou manifesty pro HLS, POMLČKu a Smooth Streaming upraveny pomocí signálů s časovým limitem a způsobu jejich přemístění, když je obsah dodán pomocí CMAF (fragmenty MP4) nebo segmentů přenosu dat (TS) pro HLS. 
+
+Běžné scénáře použití pro časované metadata zahrnují:
+
+ - Signály AD SCTE-35 AD pro aktivaci přerušení reklamy v živé události nebo v případě lineárního vysílání
+ - Metadata vlastního ID3, která můžou aktivovat události v klientské aplikaci (v prohlížeči, iOS nebo Androidu)
+ - Vlastní definovaná metadata JSON, Binary nebo XML pro aktivaci událostí v klientské aplikaci
+ - Telemetrii z živého kodéru, kamery IP nebo pomocí dronů
+ - Události z kamery IP, jako je pohyb, detekce obličeje atd.
+ - Informace o zeměpisné poloze z fotoaparátu akce, pomocí dronů nebo přesunutí zařízení
+ - Texty skladby
+ - Hranice programu pro lineární živý kanál
+ - Obrázky nebo rozšířená metadata, která se mají zobrazit v živém kanálu
+ - Sportovní výsledky nebo informace o herních hodinách
+ - Interaktivní reklamní balíčky, které se mají zobrazit vedle videa v prohlížeči
+ - Kvízy a cyklické dotazování
+  
+Azure Media Services živé události a balírna je schopná přijímat tyto časované signály metadat a převádět je do datového proudu metadat, který může kontaktovat klientské aplikace pomocí protokolů založených na standardech, jako je HLS a POMLČKa.
+
+
+## <a name="21-rtmp-timed-metadata"></a>2,1 metadata RTMP – vypršela
+
+Protokol [RTMP] umožňuje odeslat časované signály metadat pro různé scénáře, jako jsou vlastní metadata a signály AD SCTE-35. 
+
+Reklamní signály (startovací zprávy) se odesílají jako startovací zprávy [AMF0] vložené do datového proudu [RTMP]. Zprávy s oznámením mohou být odeslány na nějakou dobu před samotným signálem pro spojení AD události nebo [SCTE35] AD. Pro podporu tohoto scénáře je skutečný čas události odeslán v rámci zprávy upozornění. Další informace najdete v tématu [AMF0].
+
+Azure Media Services podporuje následující příkazy [AMF0] pro ingestování RTMP:
+
+- **onUserDataEvent** – používá se pro vlastní metadata nebo pro [ID3v2] časované metadata.
+- **onAdCue** – používá se primárně k signalizaci příležitosti umístění reklamy v živém streamu. Podporují se dva formy hromádky, jednoduchý režim a režim "SCTE-35". 
+- **onCuePoint** – podporováno některými místními hardwarovými kodéry, jako je například element živého kodéru, k signalizaci zpráv [SCTE35]. 
+  
 
 Následující tabulky popisují formát datové části zprávy AMF, kterou Media Services ingestovat pro režimy "jednoduché" a [SCTE35].
 
 Název zprávy [AMF0] lze použít k odlišení více proudů událostí stejného typu.  V případě zpráv [SCTE-35] i "jednoduchého" musí být název zprávy AMF "onAdCue" podle požadavku ve specifikaci [Adobe-primetime].  Všechna pole, která nejsou uvedená níže, se Azure Media Services při ingestování ignorují.
 
-## <a name="211-rtmp-signal-syntax"></a>2.1.1 – syntaxe signálu RTMP
+## <a name="211-rtmp-with-custom-metadata-using-onuserdataevent"></a>2.1.1 RTMP s vlastními metadaty s využitím "onUserDataEvent"
+
+Pokud chcete poskytnout vlastní kanály metadat z nadřazeného kodéru, kamery IP, pomocí dronů nebo zařízení pomocí protokolu RTMP, použijte typ příkazu "onUserDataEvent" [AMF0] data Message.
+
+Příkaz **"onUserDataEvent"** data Message musí obsahovat datovou část zprávy s následující definicí, kterou má zachytit Media Services a zabalené do formátu HLS, pomlčky a vyhlazení.
+Doporučuje se odesílat zprávy s vypršenou platností – zprávy s metadaty nejsou častěji než každých 0,5 sekund (500 ms). Každá zpráva by mohla agregovat metadata z více snímků, pokud potřebujete zadat metadata na úrovni rámce. Pokud posíláte datové proudy s více přenosovými rychlostmi, doporučujeme, abyste zároveň poskytovali metadata jenom pro jednu přenosovou rychlost, abyste snížili šířku pásma a nedocházelo k rušivému zpracování videa nebo zvuku. 
+
+Datová část pro **"onUserDataEvent"** by měla být zpráva formátu [MPEGDASH] EventStream XML. Díky tomu je snadné předat vlastní definovaná schémata, která se dají přenášet v EMSG datových vytíženích pro CMAF [MPEGCMAF] obsah, který se doručuje přes protokoly HLS nebo POMLČKy. Každá zpráva streamování událostí obsahuje schemeIdUri, který funguje jako identifikátor schématu zprávy URN a definuje datovou část zprávy. Některá schémata, jako je https://aomedia.org/emsg/ID3 například "" pro [ID3v2] nebo **urn: scte: scte35:2013: bin** pro [scte-35], jsou standardizovány v oboru pro interoperabilitu. Libovolný poskytovatel aplikace může definovat vlastní schéma pomocí adresy URL, kterou řídí (vlastní doména), a v případě potřeby může zadat specifikaci na této adrese URL. Pokud hráč má obslužnou rutinu pro definované schéma, pak to je jediná součást, která potřebuje pochopit datovou část a protokol.
+
+Schéma pro datovou část XML EventStream [MPEG-SPOJOVNÍK] je definováno jako (výňatek z POMLČKy ISO-IEC-23009-1-3 Edition). Všimněte si, že v tuto chvíli je podporovaná jenom jedna "EventType" na "EventStream". Pokud je v **EventStream**k dispozici více událostí, bude zpracován pouze první prvek **události** .
+
+```xml
+  <!-- Event Stream -->
+  <xs:complexType name="EventStreamType">
+    <xs:sequence>
+      <xs:element name="Event" type="EventType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute ref="xlink:href"/>
+    <xs:attribute ref="xlink:actuate" default="onRequest"/>
+    <xs:attribute name="schemeIdUri" type="xs:anyURI" use="required"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="timescale" type="xs:unsignedInt"/>
+  </xs:complexType>
+  <!-- Event  -->
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="presentationTime" type="xs:unsignedLong" default="0"/>
+    <xs:attribute name="duration" type="xs:unsignedLong"/>
+    <xs:attribute name="id" type="xs:unsignedInt"/>
+    <xs:attribute name="contentEncoding" type="ContentEncodingType"/>
+    <xs:attribute name="messageData" type="xs:string"/>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+```
+
+
+### <a name="example-xml-event-stream-with-id3-schema-id-and-base64-encoded-data-payload"></a>Ukázkový datový proud události XML s ID schématu ID3 a datovou datovou částí s kódováním base64.  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="https://aomedia.org/emsg/ID3">
+         <Event contentEncoding="Base64">
+          -- base64 encoded ID3v2 full payload here per [CMAF-TMD] --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-base64-encoded-binary-data"></a>Příklad datového proudu událostí s vlastním ID schématu a binárními daty s kódováním base64  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:binary">
+         <Event contentEncoding="Base64">
+          -- base64 encoded custom binary data message --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-custom-json"></a>Příklad datového proudu událostí s vlastním ID schématu a vlastním kódem JSON  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:JSON">
+         <Event>
+          [
+            {"key1" : "value1"},
+            {"key2" : "value2"}
+          ]
+         </Event>
+   <EventStream>
+```
+
+### <a name="built-in-supported-scheme-id-uris"></a>Předdefinované identifikátory URI IDENTIFIKÁTORů podporovaných schémat
+| Identifikátor URI ID schématu                 |  Popis                                             |
+|-------------------------------|----------------------------------------------------------|
+| https://aomedia.org/emsg/ID3   | Popisuje, jak lze metadata [ID3v2] přenést jako časované metadata v rámci fragmentované MP4 kompatibilního s CMAF [MPEGCMAF]. Další informace najdete v tématu [časované metadata ve formátu Common Media Application Format (CMAF)](https://aomediacodec.github.io/av1-id3/) . |
+
+### <a name="event-processing-and-manifest-signaling"></a>Zpracování událostí a signalizace manifestu
+
+Po přijetí platné události **onUserDataEvent** bude Azure Media Services Hledat platnou datovou část XML, která odpovídá EventStreamType (definované v [MPEGDASH]), analyzovat datovou část XML a převést ji na pole fragmentu [MPEGCMAF] MP4 "EMSG" verze 1 pro úložiště v archivu Live a přenos do balíčku Media Services.   Balíček zjistí v živém streamu pole ' EMSG ' a:
+
+- (a) "dynamické balení" do segmentů TS pro doručování klientům HLS v souladu se specifikací HLS Time metadata Specification [HLS-TMD] nebo
+- (b) předat za doručení v CMAF fragmentech prostřednictvím HLS nebo POMLČKy nebo 
+- (c) převeďte je na signál pro zhuštěnou stopu pro doručení prostřednictvím Smooth Streaming [MS-SSTR].
+
+Kromě EMSG ve formátu CMAF nebo TS pro HLS, manifesty pro POMLČKu (MPD) a Smooth Streaming budou obsahovat odkaz na proudy událostí v pásmu (označované také jako stopa v podobě zhuštěného streamu v Smooth Streaming). 
+
+Jednotlivé události nebo jejich datová data se neúčtují přímo v manifestech HLS, SPOJOVNÍKu nebo hladce. 
+
+### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>Další informativní omezení a výchozí hodnoty pro události onUserDataEvent
+
+- Pokud v elementu EventStream není nastavená časová osa, ve výchozím nastavení se použije časová osa RTMP 1Khz.
+- Doručení zprávy onUserDataEvent je omezeno na každý 500 ms max. Pokud události odesíláte častěji, může to mít vliv na šířku pásma a stabilitu živého kanálu.
+
+## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>2.1.2 upozornění na hromádku služby RTMP pro AD pomocí "onCuePoint"
 
 Azure Media Services může naslouchat a reagovat na několik typů zpráv [AMF0], které se dají použít k signalizaci různých synchronizovaných metadat v reálném čase v živém streamu.  Specifikace [Adobe-primetime] definuje dva typy hromádky s názvem "jednoduchý" a "SCTE-35" režim. U "jednoduchého" režimu Media Services podporuje jedinou zprávu AMF upozornění nazvanou "onAdCue" s použitím datové části, která odpovídá tabulce níže definované pro signál "jednoduchý režim".  
 
 V následující části se zobrazuje "jednoduchý" režim "v" režimu RTMP, který se dá použít k signalizaci základního signálu "spliceOut", který se bude přenášet do klientského manifestu pro HLS, POMLČKu a Smooth Streaming Microsoftu. To je velmi užitečné ve scénářích, kdy zákazník nemá komplexní systém pro nasazení nebo vkládání signálů SCTE s využitím služby AD-35 a používá k posílání zprávy startovacích zpráv základní kodér prostřednictvím rozhraní API. Místní kodér obvykle podporuje rozhraní API založené na REST pro aktivaci tohoto signálu, který bude také "zablokovat" datový proud videa vložením IDR snímku do videa a spuštění nové skupinu GOP.
 
-## <a name="212--simple-mode-ad-signaling-with-rtmp"></a>Signalizace reklamy v jednoduchém režimu s použitím RTMP
+## <a name="213--rtmp-ad-cue-signaling-with-oncuepoint---simple-mode"></a>2.1.3 pro upozornění na hromádku RTMP AD pomocí "onCuePoint" – jednoduchý režim
 
 | Název pole | Typ pole | Požadováno? | Popisy                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
@@ -121,7 +247,7 @@ V následující části se zobrazuje "jednoduchý" režim "v" režimu RTMP, kte
 
 ---
  
-## <a name="213-scte-35-mode-ad-signaling-with-rtmp"></a>2.1.3 SCTE-35 – signalizace inzerce v režimu RTMP
+## <a name="214-rtmp-ad-cue-signaling-with-oncuepoint---scte-35-mode"></a>2.1.4 upozornění na hromádku v rámci služby AD RTMP pomocí "onCuePoint"-SCTE-35 režimu
 
 Když pracujete s pokročilejším pracovním postupem pro provozování, který vyžaduje, aby se do manifestu HLS nebo POMLČKy převedla úplná 35 SCTE zpráva datové části, je nejlepší použít režim SCTE-35 specifikace [Adobe-primetime].  Tento režim podporuje signály v rámci Band SCTE-35, které se odesílají přímo do místního kodéru Live Encoder. potom se signály zakódují do datového proudu RTMP pomocí režimu SCTE-35, který je zadaný ve specifikaci [Adobe-primetime]. 
 
@@ -139,7 +265,7 @@ V tomto scénáři je nutné odeslat z místního kodéru následující datovou
 | time       | Number     | Požadováno | Čas prezentace události nebo reklamy.  Čas a trvání prezentace **by měly být** v souladu s přístupovými body streamu (SAP) typu 1 nebo 2, jak je definováno v [ISO-14496-12] příloze I. Pro odchozí HLS **by měl být** čas a trvání zarovnaný s hranicemi segmentů. Prezentace a doba trvání různých zpráv událostí v rámci stejného datového proudu událostí se nesmí překrývat. Jednotky jsou zlomky sekund.
 
 ---
-## <a name="214-elemental-live-oncuepoint-ad-markers-with-rtmp"></a>2.1.4 značky živých reklam "onCuePoint" s RTMP
+## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 RTMP AD signalizace s "onCuePoint" pro živé prvky
 
 On-premises on-premises Encoder podporuje v signálu RTMP značky AD. Azure Media Services v současné době podporuje pouze typ značky "onCuePoint" pro RTMP.  To může být povoleno v nastavení skupiny Adobe RTMP v nastaveních sady Media Live Encoder (nastavení nebo rozhraní API) pomocí nastavení "**ad_markers**" na "onCuePoint".  Podrobnosti najdete v dokumentaci k elementu Live. Povolení této funkce ve skupině RTMP projde signály SCTE-35 do výstupů Adobe RTMP, aby je bylo možné zpracovat pomocí Azure Media Services.
 
@@ -156,7 +282,7 @@ Typ zprávy "onCuePoint" je definován v [Adobe-Flash-AS] a má následující s
 
 Když se použije tento režim značky AD, výstup manifestu HLS je podobný režimu Adobe "Simple". 
 
-### <a name="215-cancellation-and-updates"></a>zrušení a aktualizace 2.1.5
+### <a name="216-cancellation-and-updates"></a>2.1.6 zrušení a aktualizace
 
 Zprávy můžete zrušit nebo aktualizovat odesláním více zpráv se stejným časem a ID prezentace. Čas a ID prezentace jedinečně identifikují událost a poslední přijatá zpráva pro konkrétní dobu prezentace, která splňuje podmínky předběžného zavedení, je zpráva, na které se aplikace používá. Aktualizovaná událost nahrazuje všechny dříve přijaté zprávy. Omezení předběžného zavedení je čtyři sekundy. Oznámení obdržené nejméně čtyři sekundy před dobou trvání prezentace se budou zpracovávat.
 
@@ -465,6 +591,13 @@ Když zprávy mají výše popsaný formát, odesílají se do HLS, hladkého a 
 Při testování vaší implementace s Azure Media Services platformou Nejdřív spusťte testování před přechodem na testování v Livestream pro kódování před přechodem na testování pomocí Livestream Pass-through.
 
 ---
+
+## <a name="change-history"></a>Historie změn
+
+| Date     | Změny                                                                            |
+|----------|------------------------------------------------------------------------------------|
+| 07/2/19  | Revidovaná podpora pro ingestování RTMP pro SCTE35, přidání RTMP "onCuePoint" pro živé prvky | 
+| 08/22/19 | Aktualizováno, aby se přidala OnUserDataEvent do RTMP pro vlastní metadata                         |
 
 ## <a name="next-steps"></a>Další kroky
 Zobrazení Media Servicesch cest výuky.

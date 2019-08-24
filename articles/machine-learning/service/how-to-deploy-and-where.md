@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a4146e20efae87287b77687e4a1d3b0196cb1c95
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897701"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997939"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -416,7 +416,20 @@ def run(request):
 
 Konfigurace odvození popisuje, jak nakonfigurovat model pro vytvoření předpovědi. Tato konfigurace není součástí skriptu pro zadávání. odkazuje na váš vstupní skript a používá se k vyhledání všech prostředků vyžadovaných nasazením. Používá se později při skutečně nasazování modelu.
 
-Následující příklad ukazuje, jak vytvořit odvozenou konfiguraci. Tato konfigurace určuje modul runtime, skript vstupu a (volitelně) soubor prostředí conda:
+Konfigurace odvození může použít Azure Machine Learning prostředí k definování závislostí softwaru potřebných pro vaše nasazení. Prostředí umožňují vytvářet, spravovat a opakovaně používat závislosti softwaru vyžadované pro školení a nasazení. Následující příklad ukazuje načtení prostředí z pracovního prostoru a jeho následné použití s konfigurací odvození:
+
+```python
+from azureml.core import Environment
+from azureml.core.model import InferenceConfig
+
+deploy_env = Environment.get(workspace=ws,name="myenv",version="1")
+inference_config = InferenceConfig(entry_script="x/y/score.py",
+                                   environment=deploy_env)
+```
+
+Další informace o prostředích najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md).
+
+Závislosti můžete zadat také přímo bez použití prostředí. Následující příklad ukazuje, jak vytvořit konfiguraci odvození, která načte závislosti softwaru ze souboru conda:
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -468,10 +481,40 @@ Každá z těchto tříd pro webové služby Local, ACI a AKS se dá importovat 
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-> [!TIP]
-> Před nasazením modelu jako služby ho můžete chtít profilovat a zjistit optimální požadavky na procesor a paměť. Model můžete profilovat pomocí sady SDK nebo rozhraní příkazového řádku. Další informace najdete v tématu [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) a [AZ ml model model](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) reference.
->
-> Výsledky profilování modelu jsou generovány jako `Run` objekt. Další informace najdete v referenčních informacích ke třídě [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py) .
+#### <a name="profiling"></a>Profilace
+
+Před nasazením modelu jako služby ho můžete chtít profilovat a zjistit optimální požadavky na procesor a paměť. Model můžete profilovat pomocí sady SDK nebo rozhraní příkazového řádku. Následující příklady ukazují, jak používat profilaci ze sady SDK:
+
+> [!IMPORTANT]
+> Při použití profilování, odvozená konfigurace, kterou zadáte, nemůže odkazovat na Azure Machine Learning prostředí. Místo toho definujte závislosti softwaru pomocí `conda_file` parametru `InferenceConfig` objektu.
+
+```python
+import json
+test_sample = json.dumps({'data': [
+    [1,2,3,4,5,6,7,8,9,10]
+]})
+
+profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
+profile.wait_for_profiling(true)
+profiling_results = profile.get_results()
+print(profiling_results)
+```
+
+Tento kód zobrazí výsledek podobný následujícímu textu:
+
+```python
+{'cpu': 1.0, 'memoryInGB': 0.5}
+```
+
+Výsledky profilování modelu jsou generovány jako `Run` objekt.
+
+Informace o používání profilování z rozhraní příkazového řádku najdete v tématu [AZ ml model Profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
+
+Další informace najdete v následujících referenčních dokumentech:
+
+* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
+* [Profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--model~s--inference-config--input-data-)
+* [Odvození schématu konfiguračního souboru](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Nasadit do cíle
 
@@ -742,7 +785,136 @@ Další ukázkové projekty a příklady najdete v následujících ukázkových
 * [https://github.com/Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 * [https://github.com/Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
+## <a name="package-models"></a>Modely balíčků
+
+V některých případech může být vhodné vytvořit image Docker bez nasazení modelu. Například při plánování [nasazení na Azure App Service](how-to-deploy-app-service.md). Nebo můžete chtít stáhnout image a spustit ji v místní instalaci Docker. Můžete dokonce chtít stáhnout soubory používané k sestavení image, zkontrolovat je, upravit je a sestavit je ručně.
+
+Balení modelu vám umožňuje provádět obojí. Zabalí všechny prostředky potřebné k hostování modelu jako webové služby a umožňuje stáhnout zcela sestavenou image Docker nebo soubory potřebné k jeho sestavení. Existují dva způsoby použití balení modelu:
+
+* __Stáhnout zabalený model__: Stáhněte si image Docker obsahující model a další soubory, které jsou potřeba k jeho hostování jako webové služby.
+* __Generovat souboru Dockerfile__: Stáhli jste souboru Dockerfile, model, vstupní skript a další prostředky potřebné k vytvoření image Docker. Pak můžete soubory zkontrolovat nebo provést změny před tím, než Image sestavíte místně.
+
+Oba balíčky lze použít k získání místní image Docker. 
+
+> [!TIP]
+> Vytvoření balíčku je podobné jako nasazení modelu, protože používá registrovaný model a odvozenou konfiguraci.
+
+> [!IMPORTANT]
+> Funkce, jako je stažení plně sestavené Image nebo vytváření image místně, vyžadují instalaci [](https://www.docker.com) pracovního Docker na vaše vývojové prostředí.
+
+### <a name="download-a-packaged-model"></a>Stažení zabaleného modelu
+
+Následující příklad ukazuje, jak vytvořit bitovou kopii, která je zaregistrována v Azure Container Registry pro váš pracovní prostor:
+
+```python
+package = Model.package(ws, [model], inference_config)
+package.wait_for_creation(show_output=True)
+```
+
+Po vytvoření balíčku můžete použít `package.pull()` k načtení image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Například, `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. Po stažení použijte `docker images` příkaz pro výpis místních imagí:
+
+```text
+REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
+myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43GB
+```
+
+Chcete-li spustit místní kontejner pomocí této image, použijte následující příkaz pro spuštění pojmenovaného kontejneru z prostředí nebo příkazového řádku. Nahraďte `docker images` hodnotu ID image vrácenou z příkazu: `<imageid>`
+
+```bash
+docker run -p 6789:5001 --name mycontainer <imageid>
+```
+
+Tento příkaz spustí nejnovější verzi image s názvem `myimage`. Mapuje místní port 6789 na port v kontejneru, na kterém naslouchá webová služba (5001). Také přiřadí název `mycontainer` kontejneru, což usnadňuje jeho zastavení. Po spuštění můžete odeslat požadavky na `http://localhost:6789/score`.
+
+### <a name="generate-dockerfile-and-dependencies"></a>Generovat souboru Dockerfile a závislosti
+
+Následující příklad ukazuje, jak stáhnout souboru Dockerfile, model a další prostředky potřebné k sestavení image místně. `generate_dockerfile=True` Parametr označuje, že chceme mít soubory, ne plně sestavenou Image:
+
+```python
+package = Model.package(ws, [model], inference_config, generate_dockerfile=True)
+package.wait_for_creation(show_output=True)
+# Download the package
+package.save("./imagefiles")
+# Get the Azure Container Registry that the model/dockerfile uses
+acr=package.get_container_registry()
+print("Address:", acr.address)
+print("Username:", acr.username)
+print("Password:", acr.password)
+```
+
+Tento kód stáhne soubory potřebné k sestavení image do `imagefiles` adresáře. Souboru Dockerfile zahrnuté do uložených souborů odkazuje na základní obrázek uložený v Azure Container Registry. Při sestavování image v místní instalaci Docker musíte pro ověření v tomto registru použít adresu, uživatelské jméno a heslo. Pomocí následujících kroků sestavíte Image pomocí místní instalace Docker:
+
+1. Z prostředí nebo relace příkazového řádku použijte následující příkaz k ověření Docker s Azure Container Registry. `<address>`Nahraďte `<username>`, a `<password>` hodnotami načtenými pomocí `package.get_container_registry()`:
+
+    ```bash
+    docker login <address> -u <username> -p <password>
+    ```
+
+2. K sestavení image použijte následující příkaz. Nahraďte `<imagefiles>` cestou k adresáři, kam `package.save()` se uložily soubory:
+
+    ```bash
+    docker build --tag myimage <imagefiles>
+    ```
+
+    Tento příkaz nastaví název bitové kopie na `myimage`.
+
+Chcete-li ověřit, zda byl obrázek vytvořen, použijte `docker images` příkaz. V seznamu by se `myimage` měla zobrazit obrázek:
+
+```text
+REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
+<none>          <none>              2d5ee0bf3b3b        49 seconds ago      1.43GB
+myimage         latest              739f22498d64        3 minutes ago       1.43GB
+```
+
+Chcete-li spustit nový kontejner na základě tohoto obrázku, použijte následující příkaz:
+
+```bash
+docker run -p 6789:5001 --name mycontainer myimage:latest
+```
+
+Tento příkaz spustí nejnovější verzi image s názvem `myimage`. Mapuje místní port 6789 na port v kontejneru, na kterém naslouchá webová služba (5001). Také přiřadí název `mycontainer` kontejneru, což usnadňuje jeho zastavení. Po spuštění můžete odeslat požadavky na `http://localhost:6789/score`.
+
+### <a name="example-client-to-test-the-local-container"></a>Příklad klienta pro otestování místního kontejneru
+
+Následující kód je příkladem klienta Pythonu, který lze použít s kontejnerem:
+
+```python
+import requests
+import json
+
+# URL for the web service
+scoring_uri = 'http://localhost:6789/score'
+
+# Two sets of data to score, so we get two results back
+data = {"data":
+        [
+            [ 1,2,3,4,5,6,7,8,9,10 ],
+            [ 10,9,8,7,6,5,4,3,2,1 ]
+        ]
+        }
+# Convert to JSON string
+input_data = json.dumps(data)
+
+# Set the content type
+headers = {'Content-Type': 'application/json'}
+
+# Make the request and display the response
+resp = requests.post(scoring_uri, input_data, headers=headers)
+print(resp.text)
+```
+
+Další ukázkové klienty v jiných programovacích jazycích najdete v tématu [využívání modelů nasazených jako webové služby](how-to-consume-web-service.md).
+
+### <a name="stop-the-docker-container"></a>Zastavení kontejneru Docker
+
+Pokud chcete kontejner zastavit, použijte následující příkaz z jiného prostředí nebo příkazového řádku:
+
+```bash
+docker kill mycontainer
+```
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
 Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()`.
 Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 

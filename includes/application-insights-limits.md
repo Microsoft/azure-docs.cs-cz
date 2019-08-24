@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: mbullwin
 ms.custom: include file
-ms.openlocfilehash: 7bf9c338315f5013be815625b06d633567a801a0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 14e2bd4af2616e9dd33fe8267de132ab6c0f1cfe
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912329"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982604"
 ---
 K dispozici jsou určitá omezení počtu metrik a událostí na aplikaci, tj. na klíč instrumentace. Omezení závisí na zvoleném [cenovém plánu](https://azure.microsoft.com/pricing/details/application-insights/).
 
@@ -21,7 +21,7 @@ K dispozici jsou určitá omezení počtu metrik a událostí na aplikaci, tj. n
 | --- | --- | --- |
 | Celkem dat za den | 100 GB | Objem dat jde snížit nastavením limitu. Pokud potřebujete víc dat, můžete limit na portálu zvýšit, až 1 000 GB. Pro kapacitu větší než 1 000 GB odešlete e-mail na AIDataCap@microsoft.comadresu.
 | Omezování | události 32 000 za sekundu | Omezení se měří se po minutách.
-| Uchovávání dat | 90 dní | Tento prostředek je pro funkce [Vyhledávání](../articles/azure-monitor/app/diagnostic-search.md), [Analýza](../articles/azure-monitor/app/analytics.md) a [Průzkumník metrik](../articles/azure-monitor/app/metrics-explorer.md).
+| Uchovávání dat | [30-730 dní](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period)  | Tento prostředek je pro funkce [Vyhledávání](../articles/azure-monitor/app/diagnostic-search.md), [Analýza](../articles/azure-monitor/app/analytics.md) a [Průzkumník metrik](../articles/azure-monitor/app/metrics-explorer.md).
 | [Vícekrokový test dostupnosti](../articles/azure-monitor/app/availability-multistep.md) – uchování podrobných výsledků | 90 dní | Tento prostředek poskytuje podrobné výsledky každého kroku.
 | Maximální velikost položky telemetrie | 64 kB |
 | Maximální počet položek telemetrie na dávku | 64 K |

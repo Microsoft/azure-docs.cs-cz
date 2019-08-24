@@ -1,5 +1,5 @@
 ---
-title: Co je trezor OPC – Azure | Dokumentace Microsoftu
+title: Co je OPC trezor – Azure | Microsoft Docs
 description: Přehled trezoru OPC
 author: dominicbetts
 ms.author: dobett
@@ -8,25 +8,32 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 40a9016ac7a10175b51f0fb6f072dd089bde3a51
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 44315790116545dd888aed533731bbf01abe801d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606279"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997306"
 ---
 # <a name="what-is-opc-vault"></a>Co je trezor OPC?
 
-OPC trezor je mikroslužeb, která můžete konfigurovat, registrace a správa životního cyklu certifikátu pro server OPC UA a klientských aplikací v cloudu. Tento článek popisuje případech stačí použít trezor OPC.
+OPC trezor je mikroslužba, která umožňuje konfigurovat, registrovat a spravovat životní cyklus certifikátů pro server OPC UA a klientské aplikace v cloudu. Tento článek popisuje jednoduché případy použití trezoru OPC.
 
 ## <a name="certificate-management"></a>Správa certifikátů
 
-Například výrobní společnost potřebuje pro připojení jejich počítačů serveru OPC UA k jejich nově vytvořený klientská aplikace. Výrobce provádí počáteční přístup počítače serveru, se okamžitě zobrazí chybovou zprávu na aplikace serveru OPC UA k označení, že klientská aplikace není zabezpečený. Tento mechanismus je postavená na počítači serveru OPC UA zabránit Nepovolená aplikace přístup, což zabrání zákeřnému pracovat na dílně.
+Například výrobní společnost potřebuje připojit svůj počítač serveru OPC UA ke své nově sestavené klientské aplikaci. Když výrobce vytvoří počáteční přístup k serveru, zobrazí se v aplikaci serveru OPC UA okamžitě chybová zpráva s oznámením, že klientská aplikace není zabezpečená. Tento mechanismus je sestavený v počítači serveru OPC UA, aby nedocházelo k neoprávněnému přístupu k aplikacím, což zabrání v dílenském řízení začarovaný.
 
 ## <a name="application-security-management"></a>Správa zabezpečení aplikací
-Profesionální zabezpečení používá trezor OPC mikroslužeb snadno povolit server OPC UA pro komunikaci s všechny klientské aplikace, protože trezor OPC má všechny funkce pro certifikát registru, ukládání a správa životního cyklu. Teď je bezpečné připojení serveru OPC UA, může komunikovat na nově vytvořený klientské aplikace
+Specialista zabezpečení používá mikroslužbu OPC trezoru, která umožňuje snadno povolit serveru OPC UA komunikaci s jakoukoli klientskou aplikací, protože OPC trezor má všechny funkce pro Registry certifikátů, úložiště a správu životního cyklu. Server OPC UA je teď bezpečně připojený a může komunikovat s nově vytvořenou klientskou aplikací.
 
-## <a name="the-complete-opc-vault-architecture"></a>Kompletní architekturu OPC trezoru
-Následující diagram znázorňuje kompletní architekturu OPC trezoru.
+## <a name="the-complete-opc-vault-architecture"></a>Kompletní architektura trezoru OPC
+Následující diagram znázorňuje kompletní architekturu trezoru OPC.
 
-![Architektura OPC trezoru](media/overview-opc-vault-architecture/opc-vault.png)
+![Architektura úložiště OPC](media/overview-opc-vault-architecture/opc-vault.png)
+
+## <a name="next-steps"></a>Další postup
+
+Teď, když jste se naučili o trezoru OPC a jeho použití, je tady doporučený další krok:
+
+> [!div class="nextstepaction"]
+> [Architektura úložiště OPC](overview-opc-vault-architecture.md)

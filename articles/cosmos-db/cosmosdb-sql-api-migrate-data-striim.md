@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: rimman
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: dba29ea2d4d0ad18f021e0271c6131f9473cbe8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 27961413d0dddc165f90ebde1c5e1aee6b8d9fd3
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827798"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981842"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Migrace dat do Azure Cosmos DB účtu rozhraní SQL API pomocí Striim
  
@@ -195,7 +195,7 @@ V této části nakonfigurujete Azure Cosmos DB účet rozhraní SQL API jako c�
 
 Pomocí řešení Striim v Azure můžete průběžně migrovat data do Azure Cosmos DB z různých zdrojů, jako jsou Oracle, Cassandra, MongoDB a různé další Azure Cosmos DB. V případě jakýchkoli problémů při nastavování cesty migrace pomocí Striim si zaregistrujte žádost o podporu na [webu Striim](https://go2.striim.com/request-support-striim).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Pokud migrujete data na Azure Cosmos DB SQL API, přečtěte si [článek jak migrovat data na účet rozhraní API Cassandra pomocí Striim](cosmosdb-cassandra-api-migrate-data-striim.md) .
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 32c903e5d469a9a3e7b98bd406b5512d752bb210
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
-ms.translationtype: MT
+ms.openlocfilehash: 0ebf18fe2dc6906bc2c06d94388d126fb55c6024
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017790"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981421"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty úložiště a fronty Service Bus – porovnání a kontrast
 Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure dnes: Fronty úložiště a fronty Service Bus. Tyto informace můžete použít ke srovnání příslušných technologií a pomůžou vám kvalifikovaněji se rozhodnout, které řešení nejlíp vyhovuje vašim potřebám.
@@ -68,7 +68,7 @@ V této části jsou porovnávány některé základní možnosti služby Říze
 | Kritéria porovnání | Fronty úložiště | Fronty služby Service Bus |
 | --- | --- | --- |
 | Záruka řazení |**Ne** <br/><br>Další informace naleznete v první poznámce v části "Další informace".</br> |**Yes – first-in-first-out (FIFO)**<br/><br>(pomocí relací zasílání zpráv) |
-| Záruka na doručení |**Nejméně jednou** |**Nejméně jednou**<br/><br/>**Maximálně jednou** |
+| Záruka na doručení |**Nejméně jednou** |Nejméně **jednou** (použití režimu Receive PeekLock – Toto je výchozí nastavení) <br/><br/>Maximálně **jednou** (použití režimu Receive ReceiveAndDelete) <br/> <br/> Další informace o různých [režimech příjmu](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | Podpora atomických operací |**Ne** |**Ano**<br/><br/> |
 | Chování při příjmu |**Bez blokování**<br/><br/>(hned se dokončí, pokud se nenalezne žádná nová zpráva.) |**Blokování s časovým limitem/bez**<br/><br/>(nabízí dlouhodobé cyklické dotazování nebo ["Comet techniku"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Bez blokování**<br/><br/>(jenom prostřednictvím rozhraní API spravovaného rozhraním .NET) |
 | Rozhraní API pro vložení stylu |**Ne** |**Ano**<br/><br/>[Zprávy](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) a relace rozhraní .NET API pro informování. |

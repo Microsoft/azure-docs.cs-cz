@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 90a9c67a11b54490b801ec65f691b4ae853ab4f2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 4c26431ee0d506dda547fb4027845baa15c9a134
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972214"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997883"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -254,11 +254,11 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
 |EnableTableEndpoint | Povolí Azure rozhraní API pro tabulky | CosmosDB. emulátor. exe/EnableTableEndpoint | |
 |TablePort | Číslo portu, které se má použít pro koncový bod tabulky Azure Výchozí hodnota je 8902. | CosmosDB. emulátor. exe/TablePort =\<port\> | \<port\>: Jedno číslo portu|
 | KeyFile | Načte autorizační klíč ze zadaného souboru. Pro vytvoření souboru klíče použijte možnost/GenKeyFile | CosmosDB. emulátor. exe/keyfile =\<název_souboru\> | \<název_souboru\>: Cesta k souboru |
-| ResetDataPath | Rekurzivně odstraní všechny soubory v zadané cestě. Pokud cestu nezadáte, použije se výchozí hodnota%LOCALAPPDATA%\CosmosDbEmulator. | CosmosDB. emulátor. exe/ResetDataPath [=\<cesta >] | \<cesta\>: Cesta k souboru  |
+| ResetDataPath | Rekurzivně odstraní všechny soubory v zadané cestě. Pokud cestu nezadáte, použije se výchozí hodnota%LOCALAPPDATA%\CosmosDbEmulator. | CosmosDB. emulátor. exe/ResetDataPath =\<cesta > | \<cesta\>: Cesta k souboru  |
 | StartTraces  |  Spusťte shromažďování protokolů trasování ladění. | CosmosDB. emulátor. exe/StartTraces | |
 | StopTraces     | Zastavte shromažďování protokolů trasování ladění. | CosmosDB. emulátor. exe/StopTraces  | |
 |FailOnSslCertificateNameMismatch | Ve výchozím nastavení emulátor znovu vygeneruje svůj certifikát SSL podepsaný svým držitelem, pokud síť SAN s certifikátem nezahrnuje název domény hostitele emulátoru, místní adresu IPv4, localhost a adresu 127.0.0.1. Tato možnost způsobí, že emulátor při spuštění selže. Pak použijte možnost/GenCert a vytvořte a nainstalujte nový certifikát SSL podepsaný svým držitelem. | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | Vygenerujte a nainstalujte nový certifikát SSL podepsaný svým držitelem. Volitelně můžete zahrnout čárkami oddělený seznam dalších názvů DNS pro přístup k emulátoru přes síť. | CosmosDB. emulátor. exe/GenCert [ \<čárkami oddělený seznam dalších názvů\>DNS] | |
+| GenCert | Vygenerujte a nainstalujte nový certifikát SSL podepsaný svým držitelem. Volitelně můžete zahrnout čárkami oddělený seznam dalších názvů DNS pro přístup k emulátoru přes síť. | CosmosDB. emulátor. exe/GenCert =\<DNS-Names\> |\<názvy\>DNS: Volitelný čárkami oddělený seznam dalších názvů DNS  |
 | DirectPorts |Určuje porty, které chcete použít pro přímé připojení. Výchozí hodnoty jsou 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<přímé porty\> | \<directports\>: Seznam 4 portů oddělených čárkami |
 | Klíč |Autorizační klíč pro emulátor. Klíč musí být 64bajtový vektor s kódováním base-64. | CosmosDB.Emulator.exe /Key:\<klíč\> | \<klíč\>: Klíč musí být kódování Base-64 pro vektor 64-byte.|
 | EnableRateLimiting | Určuje, že je povoleno chování omezující četnost požadavků. |CosmosDB.Emulator.exe /EnableRateLimiting | |
@@ -509,7 +509,7 @@ Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkaz
 3. V seznamu aplikací se posuňte na položku **Azure Cosmos DB Emulator**, vyberte ji, klikněte na **Odinstalovat**, potvrďte a znovu klikněte na **Odinstalovat**.
 4. Když je aplikace odinstalovaná, přejděte do složky `%LOCALAPPDATA%\CosmosDBEmulator` a odstraňte ji.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak používat místní emulátor pro bezplatný místní vývoj. Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak exportovat certifikáty SSL emulátoru.
 

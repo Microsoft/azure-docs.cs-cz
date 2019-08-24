@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 4722cda0506493671ff872d75e7376f3de74b1b8
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2d7cc217ff8ae45491c0f9d6b54ea8afea19cd2e
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886647"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981240"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database a řízení přístupu k síti v datovém skladu
 
@@ -33,6 +33,7 @@ Když vytvoříte novou službu Azure SQL Server [z Azure Portal](sql-database-s
 
 - Virtual Network pravidla brány firewall: – pomocí této funkce povolíte provoz z konkrétní Virtual Network v rámci hranice Azure.
 
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
 
 ## <a name="allow-azure-services"></a>Povolení služeb Azure 
 Při vytváření nové služby Azure SQL Server [z Azure Portal](sql-database-single-database-get-started.md)zůstane toto nastavení ponecháno nezaškrtnuté.

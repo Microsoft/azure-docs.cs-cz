@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: bf9bb7adfa25ea16498a32b57d4927de7e81c007
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 98b97abf9fe0d8e71f93022dcbfeff0a5339d5a1
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826914"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983085"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrace Apache Spark a Apache Hive s konektorem skladu podregistru
 
@@ -51,7 +51,7 @@ Postupujte podle těchto kroků a nastavte konektor pro datový sklad mezi Spark
 
         ![Konfigurace Spark2 Ambari](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-    1. Nastavte `spark.hadoop.hive.llap.daemon.service.hosts` na stejnou hodnotu jako **název aplikace LLAP** vlastnosti v části **pokročilý podregistr-Interactive-ENV**. Například `llap0`.
+    1. Nastavte `spark.hadoop.hive.llap.daemon.service.hosts` na stejnou hodnotu jako **podregistr Property. llap. démon. Service. Hosts** v umístění * * rozšířený podregistr-Interactive-site * *. Například `@llap0`.
 
     1. Nastavte `spark.sql.hive.hiveserver2.jdbc.url` na připojovací řetězec JDBC, který se připojí k Hiveserver2 v clusteru interaktivních dotazů. Připojovací řetězec pro váš cluster bude vypadat jako URI níže. `CLUSTERNAME`je název vašeho clusteru Spark a `user` parametry a `password` jsou nastavené na správné hodnoty pro váš cluster.
 
@@ -237,7 +237,7 @@ Pomocí následujících kroků vytvořte příklad konektoru skladu s podmnoži
 
     ![Ukázková tabulka po použití zásad Ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Použití Interactive Query se službou HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started).
 * [Příklady interakce s konektorem skladiště v podregistru pomocí Zeppelin, Livy, Spark-Submit a pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

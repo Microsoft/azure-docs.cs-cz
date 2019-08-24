@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 5991aec681b00583a9c66328aed601593c864c63
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: ce663dec47f99b6ba4751e23e7ac7f13de866a5d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517202"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982984"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
 
@@ -67,7 +67,7 @@ Pokud používáte ISE se stávající virtuální sítí, běžný problém ins
 
 Pokud jste vytvořili novou virtuální síť a podsítě bez omezení, nemusíte ve virtuální síti nastavovat [skupiny zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/security-overview.md) , abyste mohli řídit provoz napříč podsítěmi. Pro existující virtuální síť můžete *volitelně* nastavit skupin zabezpečení sítě [filtrováním síťového provozu napříč](../virtual-network/tutorial-filter-network-traffic.md)podsítěmi. Pokud zvolíte tuto trasu, ujistěte se, že ISE otevírá konkrétní porty, jak je popsáno v následující tabulce ve virtuální síti, která má skupin zabezpečení sítě. Takže pro existující skupin zabezpečení sítě nebo brány firewall ve virtuální síti se ujistěte, že tyto porty otevřou. Díky tomu váš ISE zůstane přístupný a bude fungovat správně, takže nepřijdete o přístup k vašemu ISE. V opačném případě, pokud jsou nějaké požadované porty nedostupné, váš ISE přestane fungovat.
 
-Tato tabulka popisuje porty ve vaší virtuální síti, které používá ISE, a kde se tyto porty používají. [Značky služby Správce prostředků](../virtual-network/security-overview.md#service-tags) představují skupinu předpon IP adres, které při vytváření pravidel zabezpečení pomůžou minimalizovat složitost.
+Tato tabulka popisuje porty ve vaší virtuální síti, které používá váš ISE, a kde se tyto porty používají. [Značky služby Správce prostředků](../virtual-network/security-overview.md#service-tags) představují skupinu předpon IP adres, které při vytváření pravidel zabezpečení pomůžou minimalizovat složitost.
 
 > [!IMPORTANT]
 > Pro interní komunikaci v rámci podsítí vyžaduje ISE otevření všech portů v těchto podsítích.
@@ -117,7 +117,7 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
    |----------|----------|-------|-------------|
    | **Předplatné** | Ano | <*název_předplatného_Azure*> | Předplatné Azure, které se má použít pro vaše prostředí |
    | **Skupina prostředků** | Ano | <*Azure-resource-group-name*> | Skupina prostředků Azure, ve které chcete vytvořit prostředí |
-   | **Název prostředí integrační služby** | Ano | <*Název prostředí*> | Název, který poskytne vašemu prostředí |
+   | **Název prostředí integrační služby** | Ano | <*Název prostředí*> | Název ISE, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`) a tečky (`.`). |
    | **Location** | Ano | <*Azure-datacenter-region*> | Oblast datacenter Azure, kde se má vaše prostředí nasadit |
    | **SKU** | Ano | **Premium** nebo **Developer (bez smlouvy SLA)** | SKU ISE, která se má vytvořit a použít. Rozdíly mezi těmito SKU najdete v tématu [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Důležité**informace: Tato možnost je k dispozici pouze při vytváření ISE a nedá se změnit později. |
    | **Další kapacita** | Nárok <br>Ano <p><p>Developer: <br>Nelze použít | Nárok <br>0 až 10 <p><p>Developer: <br>Nelze použít | Počet dalších jednotek zpracování, které se mají použít pro tento prostředek ISE. Pokud chcete přidat kapacitu po vytvoření, přečtěte si téma [Přidání kapacity ISE](#add-capacity). |
@@ -136,7 +136,7 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
 
    * Používá [Formát CIDR (Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) a adresní prostor třídy B.
 
-   * Používá minimálně a `/27` v adresním prostoru, protože každá podsíť musí mít *minimálně 32 adres* *.* Příklad:
+   * Používá minimálně a `/27` v adresním prostoru, protože každá podsíť musí mít minimálně 32 adres. Příklad:
 
      * `10.0.0.0/27`má 32 adres, protože 2<sup>(32-27)</sup> je 2<sup>5</sup> nebo 32.
 

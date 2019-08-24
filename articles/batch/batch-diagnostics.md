@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: MT
+ms.openlocfilehash: da5a71c75485f929ba9c4f510066df84d7a31996
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323628"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992169"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
@@ -48,6 +48,7 @@ Chcete-li zobrazit všechny metriky pro účet Batch:
 1. Na portálu klikněte na tlačítko **všechny služby** > **účty Batch**a pak klikněte na název vašeho účtu Batch.
 2. V části **monitorování**, klikněte na tlačítko **metriky**.
 3. Vyberte jednu nebo několik metrik. Pokud chcete, vyberte metriky dalších prostředků s použitím **předplatná**, **skupiny prostředků**, **typ prostředku**, a **prostředků** rozevírací seznamy.
+    * Pro metriky založené na počtu (například "vyhrazený počet jader" nebo "počet uzlů s nízkou prioritou") použijte agregaci "průměr". Pro metriky založené na událostech (například "velikost fondu dokončené události") použijte agregaci Count (počet).
 
     ![Metriky služby batch](media/batch-diagnostics/metrics-portal.png)
 

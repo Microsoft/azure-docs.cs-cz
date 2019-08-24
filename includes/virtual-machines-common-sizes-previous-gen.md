@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 8d90d71b8d29d26f09ef617ddd56ce91eb4e5e2e
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 632b23a726b8e006152662ef7814aa4b7ef887fc
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541449"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69984530"
 ---
 V této části najdete informace o předchozích generacích velikostí virtuálních počítačů. Tyto velikosti je stále možné používat, ale k dispozici jsou novější generace. 
 
@@ -61,7 +61,7 @@ MB/s = 10^6 bajtů za sekundu a GiB = 1024^3 bajtů.
 
 ## <a name="nvv2-series"></a>NVv2-Series
 
-**Doporučení pro novější velikost**: [NVv3-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series-preview-1)
+**Doporučení pro novější velikost**: [NVv3-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
 
 Virtuální počítače řady NVv2-Series využívají technologii [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU a technologii NVIDIA Grid s procesory Intel Broadwell. Tyto virtuální počítače jsou určené pro akcelerované grafické aplikace GPU a virtuální plochy, kde si zákazníci chtějí vizualizovat svá data, simulovat výsledky pro zobrazení, práci na CAD nebo vykreslování a streamování obsahu. Tyto virtuální počítače navíc mohou spouštět úlohy v jednoduché přesnosti, jako je kódování a vykreslování. Virtuální počítače s NVv2 podporují Premium Storage a přidávají se s dvojnásobnou paměťovou pamětí (RAM) ve srovnání s jejím předchůdcem (řady NV).  
 

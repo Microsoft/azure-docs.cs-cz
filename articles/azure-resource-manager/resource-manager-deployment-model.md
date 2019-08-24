@@ -3,17 +3,17 @@ title: Nasazení Resource Manager a Classic | Microsoft Docs
 description: Popisuje rozdíly mezi modelem nasazení Resource Manager a modelem nasazení Classic (neboli Service Management).
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: overview
-ms.date: 11/15/2017
+ms.topic: conceptual
+ms.date: 08/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: 773d369f23154a510624169b9329555a1f865320
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9356a1603a39f2ac4d18b27445bf0f8d3a555d7e
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206317"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982469"
 ---
-# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manageru a klasického nasazení: Vysvětlení modelů nasazení a stavu prostředků
+# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vs. klasické nasazení: Pochopení modelů nasazení a stavu vašich prostředků
 
 > [!NOTE]
 > Informace uvedené v tomto článku budete potřebovat pouze při migraci z klasického nasazení do nasazení Azure Resource Manageru.
@@ -68,7 +68,7 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-Ale rutiny Resource Manageru **rutiny Get-AzVM** vrátí jenom virtuální počítače nasazené prostřednictvím Resource Manageru. Následující příkaz nevrátí virtuální počítač vytvořený prostřednictvím nasazení Classic.
+Rutina Správce prostředků **Get-AzVM** ale vrací jenom virtuální počítače nasazené prostřednictvím Správce prostředků. Následující příkaz nevrátí virtuální počítač vytvořený prostřednictvím nasazení Classic.
 
 ```powershell
 Get-AzVM -ResourceGroupName ExampleGroup
@@ -107,7 +107,7 @@ Následující tabulka popisuje změny v interakci poskytovatelů výpočetních
 | Cloudová služba pro službu Virtual Machines |Cloudová služba byla kontejnerem pro uložení virtuálních počítačů, která vyžadovala dostupnost z platformy a vyrovnávání zatížení. |Cloudová služba už není objektem vyžadovaným pro vytvoření virtuálního počítače pomocí nového modelu. |
 | Virtuální sítě |Virtuální síť je pro virtuální počítač volitelná. Pokud existuje, nedá se nasadit pomocí Resource Manageru. |Virtuální počítač vyžaduje virtuální síť nasazenou pomocí Resource Manageru. |
 | Účty úložiště |Virtuální počítač vyžaduje účet úložiště pro uložení virtuálních pevných disků pro operační systém, dočasné soubory a další data. |Virtuální počítač vyžaduje účet úložiště pro uložení disků do úložiště objektů blob. |
-| Skupiny dostupnosti |Dostupnost pro platformu byla označovaná konfigurací stejného parametru „AvailabilitySetName“ ve službě Virtual Machines. Maximální počet domén selhání byl 2. |Skupina dostupnosti je prostředek vystavený poskytovatelem Microsoft.Compute. Služby Virtual Machines, které vyžadují vysokou dostupnost, musejí být součástí skupiny dostupnosti. Maximální počet domén selhání je teď 3. |
+| Sady dostupnosti |Dostupnost pro platformu byla označovaná konfigurací stejného parametru „AvailabilitySetName“ ve službě Virtual Machines. Maximální počet domén selhání byl 2. |Skupina dostupnosti je prostředek vystavený poskytovatelem Microsoft.Compute. Služby Virtual Machines, které vyžadují vysokou dostupnost, musejí být součástí skupiny dostupnosti. Maximální počet domén selhání je teď 3. |
 | Skupiny vztahů |Skupiny vztahů byly nezbytné k vytváření služeb Virtual Network. Se zavedením regionálních služeb Virtual Network přestaly být nutné. |Abychom to zjednodušili, koncept skupin vztahů neexistuje v rozhraních API, které se vystavují prostřednictvím správce Azure Resource Manager. |
 | Vyrovnávání zatížení |Vytvoření cloudové služby nabízí implicitní nástroj pro vyrovnávání zatížení nasazených služeb Virtual Machines. |Nástroj pro vyrovnávání zatížení je prostředek vystavený poskytovatelem Microsoft.Network. Primární síťové rozhraní služeb Virtual Machines, které potřebuje vyrovnávání zatížení, musí odkazovat na nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení můžou být interní nebo externí. Instance nástroje pro vyrovnávání zatížení odkazuje na back-endový fond IP adres zahrnující síťový adaptér virtuálního počítače (volitelné) a na veřejnou nebo privátní IP adresu nástroje pro vyrovnávání zatížení (volitelné). |
 | Virtuální IP adresa |Po přidání virtuálního počítače do cloudové služby získají služby Cloud Services výchozí VIP (virtuální IP adresu). Virtuální IP adresa je adresa přidružená k implicitnímu nástroji pro vyrovnávání zatížení. |Veřejná IP adresa je prostředek vystavený poskytovatelem Microsoft.Network. Veřejná IP adresa může být statická (vyhrazená) nebo dynamická. Dynamické veřejné IP adresy můžete přiřadit ke službě Load Balancer. Veřejné IP adresy můžete zabezpečit pomocí skupin zabezpečení. |

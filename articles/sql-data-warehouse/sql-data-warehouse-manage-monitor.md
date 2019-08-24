@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 07/23/2019
+ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: f2dab34ea0ef64f4062819e9b2d475e6a226856b
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: b67986fdc53a2b927f6481846ab179a826490c01
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405436"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995699"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitorování vaší úlohy pomocí DMV
 Tento článek popisuje, jak pomocí zobrazení dynamické správy (zobrazení dynamické správy) monitorovat vaše úlohy. To zahrnuje šetření provádění dotazů v Azure SQL Data Warehouse.
@@ -206,9 +206,11 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Pokud máte dotaz, který spotřebovává velké množství paměti nebo obdržel chybovou zprávu týkající se přidělení databáze tempdb, často se jedná o velmi velkou [Create Table jako Select (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) nebo příkaz [INSERT Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) spuštěný, který selhává v poslední operace přesunu dat To může být obvykle identifikováno jako operace ShuffleMove v plánu distribuovaného dotazu přímo před konečným výběrem vložení.
+Pokud máte dotaz, který spotřebovává velké množství paměti nebo obdržel chybovou zprávu týkající se přidělení databáze tempdb, může to být způsobeno velmi velkým [Create Table jako Select (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) nebo příkazem [INSERT Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) , který je spuštěný, který selhává v poslední operace přesunu dat To může být obvykle identifikováno jako operace ShuffleMove v plánu distribuovaného dotazu přímo před konečným výběrem vložení.  Pomocí [Sys. DM _pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) můžete monitorovat operace ShuffleMove. 
 
-Nejběžnějším rizikem je přerušení CTAS nebo vložení příkazu SELECT do více příkazů Load, aby datový svazek nepřesáhl počet 1 TB na uzel tempdb. Cluster můžete také škálovat na větší velikost, která bude rozšiřovat velikost databáze tempdb na více uzlech, čímž se zmenší databáze tempdb na každém jednotlivém uzlu. 
+Nejběžnějším rizikem je přerušení CTAS nebo vložení příkazu SELECT do více příkazů Load, aby datový svazek nepřesáhl počet 1 TB na uzel tempdb. Cluster můžete také škálovat na větší velikost, která bude rozšiřovat velikost databáze tempdb na více uzlech, čímž se zmenší databáze tempdb na každém jednotlivém uzlu.
+
+Kromě CTAS a vkládání příkazů SELECT můžou velké a komplexní dotazy běžící s nedostatečnou pamětí přesahovat do databáze tempdb, což způsobuje selhání dotazů.  Zvažte spuštění s větší [třídou prostředků](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) , abyste se vyhnuli zalití do tempdb.
 
 ## <a name="monitor-memory"></a>Monitorovat paměť
 

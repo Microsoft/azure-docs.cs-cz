@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 73e7312eacd11fbec052d2b0b7781528c3b3d50f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 176762e0d1c007f924d779a1b77dd52c7ed56e01
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575385"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981491"
 ---
 # <a name="monitor-workload---azure-portal"></a>Monitorování úloh – Azure Portal
 
@@ -30,13 +30,13 @@ Tento článek popisuje, jak pomocí Azure Portal monitorovat vaše úlohy. Zahr
 
 Přejděte do okna procházení pro Log Analytics pracovní prostory a vytvořte pracovní prostor. 
 
-![Pracovní prostory služby Log Analytics](media/sql-data-warehouse-monitor/log_analytics_workspaces.png)
+![Pracovní prostory Log Analytics](media/sql-data-warehouse-monitor/log_analytics_workspaces.png)
 
 ![Přidat pracovní prostor analýzy](media/sql-data-warehouse-monitor/add_analytics_workspace.png)
 
 ![Přidat pracovní prostor analýzy](media/sql-data-warehouse-monitor/add_analytics_workspace_2.png)
 
-Další informace o pracovních prostorech najdete v následující [dokumentaci](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#create-a-workspace).
+Další informace o pracovních prostorech najdete v následující [dokumentaci](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace#create-a-workspace).
 
 ## <a name="turn-on-diagnostic-logs"></a>Zapnout diagnostické protokoly 
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.openlocfilehash: a01f6cbb20d084864d3a7f64aa8c90d2bc3405f2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 08/21/2019
+ms.openlocfilehash: 8cfda202e57dcee4f7a783de893fb712501dfd26
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977076"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992188"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Čtení replik v Azure Database for MariaDB
 
@@ -50,7 +50,7 @@ Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie,
 
 
 ### <a name="paired-regions"></a>Spárované oblasti
-Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení ve spárované oblasti Azure vašeho hlavního serveru. Pokud neznáte pár vaší oblasti, můžete získat další informace v [článku spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení ve spárované oblasti Azure vašeho hlavního serveru. Pokud neznáte pár vaší oblasti, můžete získat další informace v [článku spárované oblasti Azure](../best-practices-availability-paired-regions.md).
 
 Pokud používáte repliky mezi jednotlivými oblastmi pro plánování zotavení po havárii, doporučujeme vytvořit repliku v spárované oblasti namísto jedné z ostatních oblastí. Spárované oblasti zabraňují souběžným aktualizacím a přiřazují fyzickou izolaci a zasídlí dat.  
 
@@ -156,7 +156,7 @@ Následující parametry serveru jsou uzamčené na hlavním serveru i na server
 - Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie MariaDB pro replikaci.
 - Zajistěte, aby tabulky hlavního serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi hlavními a replikami.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure Portal](howto-read-replicas-portal.md)
 - Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure CLI](howto-read-replicas-cli.md) .

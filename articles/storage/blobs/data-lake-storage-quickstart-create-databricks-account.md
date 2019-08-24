@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.reviewer: jeking
-ms.openlocfilehash: a1e7ee4f81f2b40b804ee69c8366ca87c377e6ac
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4e4e4d250de823ae8fb78a306bae313f340e7ce9
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855497"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992307"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Rychlý start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks
 
@@ -88,7 +88,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 Další informace o vytváření clusterů najdete v tématu [Vytvoření clusteru Spark v Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
 
-## <a name="create-storage-account-file-system"></a>Vytvoření systému souborů v účtu úložiště
+## <a name="create-storage-account-container"></a>Vytvořit kontejner účtu úložiště
 
 V této části nejprve vytvoříte v pracovním prostoru Azure Databricks poznámkový blok a pak spustíte fragmenty kódu, kterými nakonfigurujete účet úložiště.
 
@@ -113,15 +113,15 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
    spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
-   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   dbutils.fs.ls("abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
 
     > [!NOTE]
-    > Tento blok kódu přímo přistupuje k Data Lake koncovému bodu Gen2 pomocí OAuth, ale existují i jiné způsoby, jak připojit pracovní prostor datacihly k vašemu účtu Data Lake Storage Gen2. Systém souborů můžete například připojit pomocí protokolu OAuth nebo použít přímý přístup se sdíleným klíčem. <br>Příklady těchto přístupů najdete v [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks.
+    > Tento blok kódu přímo přistupuje k Data Lake koncovému bodu Gen2 pomocí OAuth, ale existují i jiné způsoby, jak připojit pracovní prostor datacihly k vašemu účtu Data Lake Storage Gen2. Kontejner můžete například připojit pomocí protokolu OAuth nebo použít přímý přístup se sdíleným klíčem. <br>Příklady těchto přístupů najdete v [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks.
 
-5. V `storage-account-name`tomto bloku kódu Nahraďte zástupné hodnoty, `tenant-id` `appID`, `password`a v tomto bloku kódu hodnotami, které jste shromáždili při vytváření instančního objektu. Nastavte hodnotu `file-system-name` zástupný symbol na libovolný název, který chcete systému souborů poskytnout.
+5. V `storage-account-name`tomto bloku kódu Nahraďte zástupné hodnoty, `tenant-id` `appID`, `password`a v tomto bloku kódu hodnotami, které jste shromáždili při vytváření instančního objektu. Nastavte hodnotu `container-name` zástupný symbol na libovolný název, který chcete kontejneru přidělit.
 
     > [!NOTE]
     > V nastavení produkčního prostředí zvažte uložení ověřovacího klíče v Azure Databricks. Pak místo ověřovacího klíče přidejte do bloku kódu vyhledávací klíč. Po dokončení tohoto rychlého startu se můžete podívat na příklady tohoto přístupu v článku věnovaném [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) na webu Azure Databricks.
@@ -148,7 +148,7 @@ V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
 
 Ke spuštění úlohy Spark SQL na datech použijte následující postup.
 
-1. Spuštěním příkazu SQL vytvořte dočasnou tabulku pomocí dat z ukázkového datového souboru JSON **small_radio_json.json**. V následujícím fragmentu kódu nahraďte zástupné hodnoty názvy vašeho systému souborů a účtu úložiště. Vytvořený poznámkový blok použijte k vložení fragmentu do nové buňky kódu v poznámkovém bloku a stiskněte SHIFT+ENTER.
+1. Spuštěním příkazu SQL vytvořte dočasnou tabulku pomocí dat z ukázkového datového souboru JSON **small_radio_json.json**. V následujícím fragmentu kódu nahraďte zástupné hodnoty názvem vašeho kontejneru a názvem účtu úložiště. Vytvořený poznámkový blok použijte k vložení fragmentu do nové buňky kódu v poznámkovém bloku a stiskněte SHIFT+ENTER.
 
     ```sql
     %sql
@@ -156,7 +156,7 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path  "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json"
+     path  "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json"
     )
     ```
 

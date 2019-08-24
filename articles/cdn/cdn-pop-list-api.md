@@ -1,6 +1,6 @@
 ---
-title: Načíst aktuální seznam Verizon POP pro Azure CDN | Dokumentace Microsoftu
-description: Zjistěte, jak načíst aktuální seznam Verizon POP pomocí rozhraní REST API.
+title: Načíst aktuální seznam IP adres POP pro Azure CDN | Microsoft Docs
+description: Přečtěte si, jak načíst aktuální seznam POP.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -12,26 +12,39 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
-ms.author: kumud
+ms.date: 08/22/2019
+ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: c8316b994dac6b859f019bea1aac6b6a5c2c5b2d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: bc8e8219c8f8de75b01c584a2a5ce13cc1429fec
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593563"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991782"
 ---
-# <a name="retrieve-the-current-verizon-pop-list-for-azure-cdn"></a>Načíst aktuální seznam Verizon POP pro Azure CDN
+# <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>Načte aktuální seznam IP adres POP Verizon pro Azure CDN.
 
-Rozhraní REST API můžete použít k načtení sady IP adres pro bod společnosti Verizon serverů přítomnost (POP). Tyto servery POP provádět požadavky původních serverů, které jsou spojeny s koncovými body Azure Content Delivery Network (CDN) v profilu Verizonu (**Azure CDN Standard od Verizonu** nebo **Azure CDN Premium od Verizonu**). Všimněte si, že tuto sadu IP adres se liší od IP adresy, které klient zobrazoval se vám při zasílání požadavků do bodů POP. 
+Pomocí REST API můžete načíst sadu IP adres pro servery POP (Point of Presence) Verizon. Tyto servery POP vytvářejí požadavky na zdrojové servery, které jsou přidružené k koncovým bodům služby Azure Content Delivery Network (CDN) v profilu Verizon (**Azure CDN Standard Verizon** nebo **Azure CDN Premium z Verizon**). Všimněte si, že tato sada IP adres se liší od IP adres, které klient uvidí při přijímání požadavků na body POP. 
 
-Syntaxe operaci rozhraní REST API pro načítání seznamu bodů POP, naleznete v tématu [hraničních uzlů – seznam](https://docs.microsoft.com/rest/api/cdn/edgenodes/list).
+Syntaxi operace REST API pro načtení seznamu POP naleznete v tématu [Edge Nodes-list](https://docs.microsoft.com/rest/api/cdn/edgenodes/list).
+
+# <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Načte aktuální seznam IP adres Microsoft POP pro Azure CDN.
+
+Pokud chcete aplikaci uzamknout, aby přijímala provoz jenom od Microsoftu Azure CDN od Microsoftu, budete muset pro svůj back-end nastavit seznamy ACL pro IP adresu. Můžete také omezit sadu povolených hodnot pro záhlaví "X-Restricted-host" odesílané Azure CDN od Microsoftu. Tyto kroky jsou podrobně popsané níže:
+
+Nakonfigurujte IP funkce acling pro vaše back-endy pro příjem provozu z Azure CDN z adresního prostoru IP adres back-endu Microsoftu a služby infrastruktury Azure. 
+
+* Azure CDN z IP adresy back-endu IPv4 Microsoftu: 147.243.0.0/16
+* Azure CDN z IP adresy back-endu IPv6 Microsoftu: 2a01:111:2050::/44
+
+Rozsahy IP adres a značky služeb pro služby Microsoftu najdete [tady](https://www.microsoft.com/download/details.aspx?id=56519) .
+
+Vyfiltruje hodnoty pro příchozí hlavičku X předaného hostitele odesílané Azure CDN od Microsoftu. Jediné povolené hodnoty pro záhlaví musí být všichni hostitelé koncového bodu, jak jsou definované ve vaší konfiguraci CDN. Ve skutečnosti přesněji řečeno, jenom názvy hostitelů, ze kterých chcete přijímat provoz, od tohoto konkrétního původu.
 
 ## <a name="typical-use-case"></a>Typický případ použití
 
-Z bezpečnostních důvodů můžete použít tento seznam IP k vynucení, požadavky na server původu se provedou jenom z místní nabídky platné Verizon. Například někdo zjistit název hostitele nebo IP adresu pro koncový bod CDN zdrojový server, jeden může-li požadavků přímo na původním serveru, proto obcházení škálování a zabezpečení poskytované systémem Azure CDN. Nastavením IP adres ve vráceném seznamu jako pouze povolené IP adresy na původním serveru, můžete zabránit v tomto scénáři. Aby bylo zajištěno, že máte nejnovější seznam POP, načtení alespoň jednou za den. 
+Z bezpečnostních důvodů můžete pomocí tohoto seznamu IP adres vymezit, aby se požadavky na zdrojový server vynutily jenom z platného Verizon POP. Pokud někdo například zjistil název hostitele nebo IP adresu pro počáteční server koncového bodu CDN, může jeden požadavek přímo na zdrojový server, takže obchází možnosti škálování a zabezpečení, které poskytuje Azure CDN. Díky nastavení IP adres v vráceném seznamu jako jenom povolených IP adres na zdrojovém serveru je možné tento scénář zabránit. Abyste měli jistotu, že máte nejnovější seznam POP, načtěte ho aspoň jednou denně. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Informace o rozhraní REST API najdete v tématu [REST API služby Azure CDN](https://docs.microsoft.com/rest/api/cdn/).
+Informace o REST API najdete v tématu [Azure CDN REST API](https://docs.microsoft.com/rest/api/cdn/).

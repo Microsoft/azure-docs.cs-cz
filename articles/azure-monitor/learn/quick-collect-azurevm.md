@@ -1,5 +1,5 @@
 ---
-title: Shromažďování dat o virtuálních počítačích Azure | Dokumentace Microsoftu
+title: Shromažďování dat z virtuálního počítače Azure pomocí Azure Monitor | Microsoft Docs
 description: Zjistěte, jak povolit rozšíření agenta Log Analytics pro virtuální počítače a zapnout shromažďování dat z virtuálních počítačů Azure pomocí Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
@@ -14,16 +14,16 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 1a61c0f96f62712bbd2500b2e80fd08565990bbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874889"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992156"
 ---
-# <a name="collect-data-about-azure-virtual-machines"></a>Shromažďování dat o virtuálních počítačích Azure
+# <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Shromažďování dat z virtuálního počítače Azure pomocí Azure Monitor
 
-[Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md) může shromažďovat data přímo z virtuálních počítačů Azure a dalších prostředků ve vašem prostředí do jednoho úložiště pro účely podrobných analýz a korelace. Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat virtuální počítače Azure s Linuxem nebo Windows a shromažďovat z nich data.  
+[Azure monitor](../overview.md) může shromažďovat data přímo z virtuálních počítačů Azure do pracovního prostoru Log Analytics a získat tak podrobnou analýzu a korelaci. Když nainstalujete rozšíření Log Analytics VM pro [Windows](../../virtual-machines/extensions/oms-windows.md) a [Linux](../../virtual-machines/extensions/oms-linux.md) , umožníte Azure monitor shromažďovat data z vašich virtuálních počítačů Azure. V tomto rychlém startu se dozvíte, jak nakonfigurovat a shromažďovat data z virtuálních počítačů se systémem Azure Linux nebo Windows pomocí rozšíření virtuálního počítače v několika snadných krocích.  
  
 Tento rychlý start předpokládá, že máte existující virtuální počítač Azure. Pokud ne, můžete [vytvořit virtuální počítač s Windows](../../virtual-machines/windows/quick-create-portal.md) nebo [vytvořit virtuální počítač s Linuxem](../../virtual-machines/linux/quick-create-cli.md) podle našich rychlých startů pro virtuální počítače.
 
@@ -33,7 +33,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
+1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
     ![portál Azure](media/quick-collect-azurevm/azure-portal-01.png)<br>  
 
@@ -55,7 +55,7 @@ Během ověřování informací a vytváření pracovního prostoru můžete pr�
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Pro virtuální počítače s Windows a Linuxem, které už jsou nasazené v Azure, můžete agenta Log Analytics nainstalovat pomocí rozšíření Log Analytics pro virtuální počítače. Použití rozšíření zjednodušuje proces instalace a automaticky agenta nakonfiguruje pro odesílání dat do pracovního prostoru Log Analytics, který zadáte. Agent se také automaticky upgraduje a tím zajišťuje, abyste měli nejnovější funkce a opravy. Než budete pokračovat, ověřte, že virtuální počítač běží v opačném případě se nezdaří se nepodaří.  
+Pro virtuální počítače s Windows a Linuxem, které už jsou nasazené v Azure, můžete agenta Log Analytics nainstalovat pomocí rozšíření Log Analytics pro virtuální počítače. Použití rozšíření zjednodušuje proces instalace a automaticky agenta nakonfiguruje pro odesílání dat do pracovního prostoru Log Analytics, který zadáte. Agent je také automaticky upgradován při vydání novější verze, čímž se zajistí, že budete mít nejnovější funkce a opravy. Než budete pokračovat, ověřte, že virtuální počítač běží v opačném případě se nezdaří se nepodaří.  
 
 >[!NOTE]
 >Agenta Log Analytics pro Linux není možné nakonfigurovat tak, aby se hlásil více než jednomu pracovnímu prostoru Log Analytics. 
@@ -74,7 +74,7 @@ Pro virtuální počítače s Windows a Linuxem, které už jsou nasazené v Azu
 
 ## <a name="collect-event-and-performance-data"></a>Shromažďování dat o událostech a výkonu
 
-Log Analytics může shromažďovat události z protokolů událostí Windows nebo protokolu Syslog v Linuxu a z čítačů výkonu, které určíte pro dlouhodobější analýzu a generování sestav, a provést akci při zjištění konkrétní podmínky. Postupujte podle těchto kroků a pro začátek nakonfigurujte shromažďování událostí ze systémového protokolu Windows a protokolu Syslog v Linuxu a několika běžných čítačů výkonu.  
+Azure Monitor může shromažďovat události z protokolů událostí systému Windows nebo systému Linux syslog a čítače výkonu, které zadáte pro dlouhodobé analýzy a vytváření sestav, a provést akci při zjištění konkrétní podmínky. Postupujte podle těchto kroků a pro začátek nakonfigurujte shromažďování událostí ze systémového protokolu Windows a protokolu Syslog v Linuxu a několika běžných čítačů výkonu.  
 
 ### <a name="data-collection-from-windows-vm"></a>Shromažďování dat z virtuálního počítače s Windows
 
@@ -124,15 +124,15 @@ Log Analytics může shromažďovat události z protokolů událostí Windows ne
 
 Teď, když jste povolili shromažďování dat, můžete spustit příklad jednoduchého prohledávání protokolu a zobrazit nějaká data z cílových virtuálních počítačů.  
 
-1. Na webu Azure Portal přejděte do Log Analytics a vyberte pracovní prostor vytvořený dříve.
+1. Ve vybraném pracovním prostoru v levém podokně vyberte **protokoly**.
 
-2. Vyberte dlaždici **prohledávání protokolů** a v podokně prohledávání protokolu zadejte do pole dotazu text `Perf` a potom stiskněte klávesu ENTER nebo klikněte na tlačítko Vyhledat napravo od pole dotazu.
+2. Na stránce dotaz na protokoly zadejte `Perf` do editoru dotazů a vyberte **Spustit**.
 
-    ![Příklad dotazu prohledávání protokolu v Log Analytics](./media/quick-collect-azurevm/log-analytics-portal-perf-query.png) 
+    ![Příklad dotazu prohledávání protokolu v Log Analytics](./media/quick-collect-windows-computer/log-analytics-portal-queryexample.png) 
 
-Například dotaz na následujícím obrázku vrátil 735 záznamů o výkonu.  Vašich výsledků bude výrazně méně.
+    Například dotaz na následujícím obrázku vrátil 10 000 záznamů o výkonu. Vašich výsledků bude výrazně méně.
 
-![Výsledek prohledávání protokolu v Log Analytics](media/quick-collect-azurevm/log-analytics-search-perf.png)
+    ![Výsledek prohledávání protokolu v Log Analytics](media/quick-collect-azurevm/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

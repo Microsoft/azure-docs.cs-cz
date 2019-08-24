@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404609"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992356"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -117,6 +117,10 @@ Po kliknutí na tuto ikonu se zobrazí plán spuštění a následný profil vý
 * Můžete určit, kolik oddílů bude používat ADF. U každé zdrojové & transformaci jímky a také každou jednotlivou transformaci můžete nastavit schéma dělení. U menších souborů může být při výběru možnosti "jeden oddíl" vhodnější pracovat lépe a rychleji než při vytváření oddílů malých souborů v Sparku.
 * Pokud nemáte k dispozici dostatek informací o zdrojových datech, můžete vybrat oddíl "kruhové dotazování" a nastavit počet oddílů.
 * Pokud prozkoumáte data a zjistíte, že máte sloupce, které mohou být vhodné pro klíče hash, použijte možnost dělení hodnoty hash.
+* Při ladění v náhledu dat a ladění kanálu počítejte s tím, že omezení a velikosti vzorkování pro souborové zdroje založené na souborech se vztahují pouze na počet vrácených řádků, nikoli na počet čtených řádků. To je důležité si uvědomit, protože může ovlivnit výkon při spuštění ladění a může způsobit selhání toku.
+* Nezapomeňte, že clustery ladění jsou ve výchozím nastavení malé clustery s jedním uzlem, takže používejte dočasné malé soubory pro ladění. Přejděte na nastavení ladění a najeďte na malou podmnožinu dat pomocí dočasného souboru.
+
+![Nastavení ladění](media/data-flow/debugsettings3.png "Nastavení ladění")
 
 ### <a name="file-naming-options"></a>Možnosti pojmenovávání souborů
 

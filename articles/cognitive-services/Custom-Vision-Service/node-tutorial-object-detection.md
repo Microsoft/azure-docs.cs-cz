@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 7f43507566109a52b914f27e37e5392345ec2eaf
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6e3bf7b4fb60d81ff8883c2592de3739572bf2fa
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946164"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997795"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Rychlý start: Vytvoření projektu pro detekci objektů pomocí Custom Vision Node. js SDK
 
@@ -26,20 +26,19 @@ Tento článek poskytuje informace a ukázkový kód, který vám může pomoci 
 - Je nainstalovaný [Node. js 8](https://www.nodejs.org/en/download/) nebo novější.
 - [npm](https://www.npmjs.com/) je nainstalovaný.
 
+[!INCLUDE [get-keys](includes/get-keys.md)]
+
+[!INCLUDE [node-get-images](includes/node-get-images.md)]
+
+
 ## <a name="install-the-custom-vision-sdk"></a>Instalace sady Custom Vision SDK
 
-Chcete-li nainstalovat sady SDK služby Custom Vision pro Node. js, spusťte následující příkazy:
+Chcete-li do projektu nainstalovat sady SDK služby Custom Vision Service pro Node. js, spusťte následující příkazy:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
-
-Image si můžete stáhnout s ukázkami [Node. js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples).
-
-[!INCLUDE [get-keys](includes/get-keys.md)]
-
-[!INCLUDE [node-get-images](includes/node-get-images.md)]
 
 ## <a name="add-the-code"></a>Přidání kódu
 
@@ -47,9 +46,10 @@ V upřednostňovaném adresáři projektu vytvořte nový soubor s názvem *Samp
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
-Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Všimněte si, že rozdíl mezi vytvářením projektu detekce objektů a klasifikace obrázků je doména, která se zadává při volání metody **create_project**.
+Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do příslušných definic vložte klíče předplatného a nastavte hodnotu cesty sampleDataRoot na cestu ke složce imagí. Ujistěte se, že hodnota koncového bodu odpovídá koncovým bodům školení a předpovědi, které jste vytvořili v [Customvision.AI](https://www.customvision.ai/). Všimněte si, že rozdíl mezi vytvářením projektu detekce objektů a klasifikace obrázků je doména, která se zadává při volání metody **create_project**.
 
 ```javascript
+const fs = require('fs');
 const util = require('util');
 const TrainingApi = require("@azure/cognitiveservices-customvision-training");
 const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");
@@ -235,7 +235,7 @@ V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné 
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Právě jste viděli, jak se dají jednotlivé kroky procesu detekce objektů provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 

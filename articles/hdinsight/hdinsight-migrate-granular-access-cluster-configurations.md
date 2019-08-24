@@ -6,23 +6,23 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.date: 08/22/2019
+ms.openlocfilehash: 03bea7b9df929914e25ca97b382dc5c120b5a769
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623847"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983022"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
-Zavádíme některé důležité změny pro podporu přístupu k citlivým informacím na základě přesnější role. V rámci těchto změn **může být nutné provést určitou akci** , pokud používáte některou z [ovlivněných entit nebo scénářů](#am-i-affected-by-these-changes).
+Zavádíme některé důležité změny pro podporu přístupu k citlivým informacím na základě přesnější role. V rámci těchto změn mohou být některé akce vyžadovány **3. září 2019,** Pokud používáte některou z [ovlivněných entit a scénářů](#am-i-affected-by-these-changes).
 
 ## <a name="what-is-changing"></a>Co se mění?
 
 Dříve mohli tajné klíče získat prostřednictvím rozhraní API HDInsight uživatelů clusteru, kteří mají [role RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)vlastník, přispěvatel nebo čtenář, protože byly k dispozici pro kohokoli s `*/read` oprávněním. Tajné kódy se definují jako hodnoty, které by se daly použít k získání vyšší úrovně přístupu, než jakou má uživatel role. Mezi ně patří hodnoty jako například přihlašovací údaje protokolu HTTP brány clusteru, klíče účtu úložiště a přihlašovací údaje databáze.
 
-Když budete pokračovat, bude přístup k těmto tajným klíčům vyžadovat `Microsoft.HDInsight/clusters/configurations/action` oprávnění, což znamená, že je uživatelé s rolí čtenář už nebudou mít přístup. Role, které mají toto oprávnění, jsou přispěvatel, vlastník a nová role operátora clusteru HDInsight (Další informace najdete níže).
+Od 3. září 2019 budou přístup k těmto tajným klíčům `Microsoft.HDInsight/clusters/configurations/action` vyžadovat oprávnění, což znamená, že je uživatelé s rolí čtenář již nebudou mít přístup. Role, které mají toto oprávnění, jsou přispěvatel, vlastník a nová role operátora clusteru HDInsight (Další informace najdete níže).
 
 Zavádíme taky novou roli [operátora clusteru HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) , která bude moct načíst tajné kódy bez udělení oprávnění pro správu přispěvatele nebo vlastníka. Sumarizace:
 
@@ -59,13 +59,13 @@ Následující rozhraní API se změní nebo zastaralé:
 
 - [**Získat/Configurations/{ConfigurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (odstraněné citlivé informace)
     - Dřív se použila k získání individuálních typů konfigurace (včetně tajných klíčů).
-    - Toto volání rozhraní API nyní vrátí jednotlivé typy konfigurace s tajnými klíči vynechány. Chcete-li získat všechny konfigurace, včetně tajných klíčů, použijte nové volání POST/configurations. Chcete-li získat pouze nastavení brány, použijte nové volání POST/getGatewaySettings.
+    - Od 3. září 2019 toto volání rozhraní API nyní vrátí jednotlivé typy konfigurace s tajnými klíči vynechány. Chcete-li získat všechny konfigurace, včetně tajných klíčů, použijte nové volání POST/configurations. Chcete-li získat pouze nastavení brány, použijte nové volání POST/getGatewaySettings.
 - [**Získat/Configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) zastaralé
     - Dřív se použilo k získání všech konfigurací (včetně tajných klíčů).
-    - Toto volání rozhraní API již nebude podporováno. Chcete-li získat všechny konfigurace před tím, použijte nové volání POST/configurations. Chcete-li získat konfigurace s citlivými parametry, použijte volání metody GET/configurations/{configurationName}.
+    - Od 3. září 2019 bude toto volání rozhraní API zastaralé a už se nepodporuje. Chcete-li získat všechny konfigurace před tím, použijte nové volání POST/configurations. Chcete-li získat konfigurace s citlivými parametry, použijte volání metody GET/configurations/{configurationName}.
 - [**Příspěvek/Configurations/{ConfigurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) zastaralé
     - Dřív se použila k aktualizaci přihlašovacích údajů brány.
-    - Toto volání rozhraní API bude zastaralé a už se nepodporuje. Místo toho použijte nový příspěvek/updateGatewaySettings.
+    - Od 3. září 2019 bude toto volání rozhraní API zastaralé a už se nepodporuje. Místo toho použijte nový příspěvek/updateGatewaySettings.
 
 Byla přidána následující náhradní rozhraní API:</span>
 
@@ -201,7 +201,7 @@ Pokud to pořád nefunguje, požádejte správce AAD, aby získal správná opr�
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Co se stane, když neprovedem žádnou akci?
 
-Volání `GET /configurations` a `POST /configurations/gateway` již nebudou`GET /configurations/{configurationName}` vracet žádné informace a volání již nebude vracet citlivé parametry, jako jsou klíče účtu úložiště nebo heslo clusteru. Totéž platí pro odpovídající metody SDK a rutiny PowerShellu.
+Od 3. září 2019 `GET /configurations` a `POST /configurations/gateway` volání již nebudou `GET /configurations/{configurationName}` vracet žádné informace a volání již nebude vracet citlivé parametry, jako jsou klíče účtu úložiště nebo heslo clusteru. Totéž platí pro odpovídající metody SDK a rutiny PowerShellu.
 
 Pokud používáte starší verzi některého z nástrojů pro sadu Visual Studio, VSCode, IntelliJ nebo zatmění uvedenou výše, nebudou již nadále fungovat, dokud ji neaktualizujete.
 

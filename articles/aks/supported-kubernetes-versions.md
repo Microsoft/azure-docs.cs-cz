@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0f2d3079de43767e61dfc1c8d77244da19f13a40
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
-ms.translationtype: HT
+ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898865"
+ms.locfileid: "69982698"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -30,7 +30,6 @@ Kubernetes používá standardní [sémantickou](https://semver.org/) verzi sch�
 Example:
   1.12.14
   1.12.15
-  1.13.7
 ```
 
 Každé číslo ve verzi označuje obecnou kompatibilitu s předchozí verzí:
@@ -39,7 +38,7 @@ Každé číslo ve verzi označuje obecnou kompatibilitu s předchozí verzí:
 * Vedlejší verze se změní, když jsou provedeny změny funkčnosti, které jsou zpětně kompatibilní s ostatními podverzemi.
 * Opravy verzí se mění, když jsou provedeny zpětně kompatibilní opravy chyb.
 
-Obecně platí, že by se uživatelé měli Endeavor spustit nejnovější verzi opravy podverze, kterou používají. Pokud je například váš provozní cluster na *1.13.6* a *1.13.7* je dostupná nejnovější dostupná verze opravy pro řadu *1,13* , měli byste upgradovat na *1.13.7* , jakmile budete mít jistotu, že je váš cluster plně opravený a podporovaný.
+Obecně platí, že by se uživatelé měli Endeavor spustit nejnovější verzi opravy podverze, kterou používají. Pokud je například váš provozní cluster na *1.12.14* a *1.12.15* je dostupná nejnovější dostupná verze opravy pro řadu *1,12* . , měli byste upgradovat na *1.12.15* , jakmile budete mít jistotu, že je váš cluster plně opravený a podporovaný.
 
 ## <a name="kubernetes-version-support-policy"></a>Zásady podpory verzí Kubernetes
 

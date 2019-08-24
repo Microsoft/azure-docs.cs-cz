@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 0efd11ef4e9dda2c522e145bf5cb942998d59e53
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: aecad80bb1b1e95b07b9df4105547406ff76b84c
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573968"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991539"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Změnit procesor kanálu v Azure Cosmos DB 
 
@@ -85,7 +85,7 @@ Instance se můžou zvětšovat a zmenšovat a procesor změn kanálu bude dynam
 ## <a name="additional-resources"></a>Další zdroje
 
 * [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/usage/changefeed)
+* [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Další ukázky na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Další postup

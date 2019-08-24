@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 255d1be1c8cfaec366aee6964e41537f6b6c50d8
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: da1a5f54e5e989f661770d518a6753b831b59bd4
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576612"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990519"
 ---
-# <a name="conditional-access-require-compliant-devices"></a>Podmíněný přístup: Vyžadovat vyhovující zařízení
+# <a name="conditional-access-require-compliant-devices"></a>Podmíněný přístup: Vyžadování zařízení, které splňuje požadavky
 
 Organizace, které nasadily Microsoft Intune, můžou použít informace vrácené ze svých zařízení k identifikaci zařízení, která splňují požadavky na dodržování předpisů, jako jsou:
 
@@ -49,10 +49,10 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
 
-[Zásady dodržování předpisů pro zařízení fungují s Azure AD](/intune/device-compliance-get-started.md#device-compliance-policies-work-with-azure-ad)
+[Zásady dodržování předpisů pro zařízení fungují s Azure AD](https://docs.microsoft.com/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)

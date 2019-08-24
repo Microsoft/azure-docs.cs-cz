@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/17/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f22273a28d5e4207712bdba71ef788629d51916e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0ad01d76e93c731ed5faed268a0537cada787952
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321672"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996819"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS u Azure CDN vlastní domény
 
@@ -130,7 +130,7 @@ Udělte Azure CDN oprávnění přistupovat k certifikátům (tajným kódům) v
 
     ![Nastavení zásad přístupu](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. V části **Oprávnění na základě tajných kódů** vyberte **Získat** a povolte, aby síť CDN mohla tato oprávnění provádět za účelem získání a zobrazení těchto certifikátů. 
+3. Vyberte **získat oprávnění** k tajným klíčům a pak Získejte a vypíšete **oprávnění k certifikátu** , aby síť CDN mohla provádět tato oprávnění k získání a výpisu certifikátů. 
 
 4. Vyberte **OK**. 
 
@@ -280,7 +280,7 @@ Po zákazu funkce HTTPS vlastní domény může trvat 6 až 8 hodin, než se zm�
 
 Následující tabulka ukazuje průběh operace, která proběhne při zákazu HTTPS. Po zákazu HTTPS se v dialogovém okně vlastní domény zobrazí tři kroky operace. Když se jednotlivé kroky aktivují, zobrazí se pod nimi další podrobnosti. Po úspěšném dokončení kroku se vedle něj zobrazí zelená značka zaškrtnutí. 
 
-| Průběh operace | Podrobnosti o operaci | 
+| Průběh operace | Detaily operace | 
 | --- | --- |
 | 1\. Odesílání žádosti | Odesílání vaší žádosti |
 | 2\. Zrušení zřízení certifikátu | Odstraňování certifikátu |

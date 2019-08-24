@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c1f3d1ec7bb9e9f449cea3f9aa36ca8f80348c6e
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: dc76d9a0d492d8ef0e37c0c34173216ff4c75164
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612818"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990573"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače se systémem CoreOS Linux ke spravované doméně
 V tomto článku se dozvíte, jak připojit virtuální počítač s CoreOS Linux v Azure k spravované doméně Azure AD Domain Services.
@@ -79,9 +79,9 @@ Dále aktualizujte konfigurační soubor SSSD v ('/etc/SSSD/SSSD.conf ') tak, ab
 [sssd]
 config_file_version = 2
 services = nss, pam
-domains = contoso.COM
+domains = CONTOSO.COM
 
-[domain/contoso.COM]
+[domain/CONTOSO.COM]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad
@@ -99,17 +99,17 @@ ldap_force_upper_case_realm = true
 fallback_homedir = /home/%d/%u
 
 krb5_server = contoso.com
-krb5_realm = contoso.COM
+krb5_realm = CONTOSO.COM
 ```
 
-Nahraďte "contoso. COM ' s názvem domény DNS vaší spravované domény. Nezapomeňte zadat název domény v souboru conf velkými písmeny.
+Nahraďte "CONTOSO. COM ' s názvem domény DNS vaší spravované domény. Nezapomeňte zadat název domény v souboru conf velkými písmeny.
 
 
 ## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Připojit se k virtuálnímu počítači Linux ke spravované doméně
 Teď, když jsou na virtuálním počítači se systémem Linux nainstalované požadované balíčky, je dalším úkolem připojit se k virtuálnímu počítači do spravované domény.
 
 ```console
-sudo adcli join -D contoso.COM -U bob@contoso.COM -K /etc/krb5.keytab -H contoso-coreos.contoso.com -N coreos
+sudo adcli join -D CONTOSO.COM -U bob@CONTOSO.COM -K /etc/krb5.keytab -H contoso-coreos.contoso.com -N coreos
 ```
 
 
@@ -129,10 +129,10 @@ sudo systemctl start sssd.service
 ## <a name="verify-domain-join"></a>Ověření připojení k doméně
 Ověřte, jestli se počítač úspěšně připojil ke spravované doméně. Připojte se k virtuálnímu počítači CoreOS připojenému k doméně pomocí jiného připojení SSH. Použijte účet uživatele domény a potom zkontrolujte, jestli je uživatelský účet správně vyřešený.
 
-1. Do terminálu SSH zadejte následující příkaz, který se připojí k doméně připojené k doméně CoreOS pomocí SSH. Použijte doménový účet, který patří do spravované domény (napříkladbob@contoso.COMv tomto případě).
+1. Do terminálu SSH zadejte následující příkaz, který se připojí k doméně připojené k doméně CoreOS pomocí SSH. Použijte doménový účet, který patří do spravované domény (napříkladbob@CONTOSO.COMv tomto případě).
     
     ```console
-    ssh -l bob@contoso.COM contoso-coreos.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-coreos.contoso.com
     ```
 
 2. V terminálu SSH zadejte následující příkaz, který zjistí, zda byl domovský adresář správně inicializován.

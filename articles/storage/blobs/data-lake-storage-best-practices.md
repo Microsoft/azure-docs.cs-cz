@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: a5bfc664c412c93bbf3e522b01528e8247be3291
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016059"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991869"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen2
 
@@ -31,11 +31,11 @@ Když je skupině zabezpečení přiřazena oprávnění, přidání nebo odebr�
 
 ### <a name="security-for-groups"></a>Zabezpečení pro skupiny
 
-Když vy nebo vaši uživatelé potřebujete mít přístup k datům v účtu úložiště s povoleným hierarchickým oborem názvů, je nejvhodnější použít Azure Active Directory skupiny zabezpečení. Některé doporučené skupiny, které se mají spustit, můžou být **ReadOnlyUsers**, **WriteAccessUsers**a **FullAccessUsers** pro kořen systému souborů a dokonce oddělené pro klíčové podadresáře. Pokud existují nějaké jiné očekávané skupiny uživatelů, které by mohly být později přidány, ale ještě nebyly identifikovány, můžete zvážit vytvoření fiktivních skupin zabezpečení, které mají přístup k určitým složkám. Pomocí skupiny zabezpečení zajistíte, že se můžete vyhnout dlouhé době zpracování při přiřazování nových oprávnění tisícům souborů.
+Když vy nebo vaši uživatelé potřebujete mít přístup k datům v účtu úložiště s povoleným hierarchickým oborem názvů, je nejvhodnější použít Azure Active Directory skupiny zabezpečení. Některé doporučené skupiny, které začínají na začátku, můžou být **ReadOnlyUsers**, **WriteAccessUsers**a **FullAccessUsers** pro kořen kontejneru a dokonce oddělené pro klíčové podadresáře. Pokud existují nějaké jiné očekávané skupiny uživatelů, které by mohly být později přidány, ale ještě nebyly identifikovány, můžete zvážit vytvoření fiktivních skupin zabezpečení, které mají přístup k určitým složkám. Pomocí skupiny zabezpečení zajistíte, že se můžete vyhnout dlouhé době zpracování při přiřazování nových oprávnění tisícům souborů.
 
 ### <a name="security-for-service-principals"></a>Zabezpečení instančních objektů
 
-Azure Active Directory instanční objekty obvykle používají služby, jako je Azure Databricks pro přístup k datům v Data Lake Storage Gen2. U mnoha zákazníků může být pro jeden objekt služby Azure Active Directory dostačující a může mít úplná oprávnění v kořenu Data Lake Storage Gen2 systému souborů. Jiní zákazníci mohou vyžadovat více clusterů s různými instančními objekty, kde jeden cluster má úplný přístup k datům a druhý cluster s přístupem pro čtení. 
+Azure Active Directory instanční objekty obvykle používají služby, jako je Azure Databricks pro přístup k datům v Data Lake Storage Gen2. U mnoha zákazníků může být pro jeden objekt služby Azure Active Directory dostačující a může mít úplná oprávnění v kořenu Data Lake Storage Gen2 kontejneru. Jiní zákazníci mohou vyžadovat více clusterů s různými instančními objekty, kde jeden cluster má úplný přístup k datům a druhý cluster s přístupem pro čtení. 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Povolit bránu Data Lake Storage Gen2 firewall s přístupem ke službě Azure
 

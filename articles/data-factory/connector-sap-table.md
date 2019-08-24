@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: da7dbdee4a376d88219a7a621ed7e3867873a37c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8d98405cfbabdff25c40d41b209d79761e699396
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967387"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996596"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -223,7 +223,7 @@ Chcete-li kopírovat data z tabulky SAP, jsou podporovány následující vlastn
 <br/>
 >`maxPartitionsNumber` `partitionLowerBound` `partitionUpperBound` Jako příklad se počet řádků v jednotlivých oddílech vypočte pomocí tohoto vzorce: (celkový počet řádků mezi a)/. `partitionOnInt` `partitionOption`<br/>
 <br/>
->Chcete-li načíst datové oddíly paralelně a urychlit kopírování, je paralelní úroveň řízena [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavením aktivity kopírování. Pokud jste například nastavili `parallelCopies` čtyři, Data Factory souběžně vygeneruje a spustí čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z tabulky SAP. Důrazně doporučujeme `maxPartitionsNumber` , abyste si vynásobení hodnoty `parallelCopies` vlastnosti.
+>Chcete-li načíst datové oddíly paralelně a urychlit kopírování, je paralelní úroveň řízena [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavením aktivity kopírování. Pokud jste například nastavili `parallelCopies` čtyři, Data Factory souběžně vygeneruje a spustí čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z tabulky SAP. Důrazně doporučujeme `maxPartitionsNumber` , abyste si vynásobení hodnoty `parallelCopies` vlastnosti. Při kopírování dat do úložiště dat založeného na souborech je také znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
 V `rfcTableOptions`nástroji můžete použít následující běžné operátory dotazů SAP k filtrování řádků:
 

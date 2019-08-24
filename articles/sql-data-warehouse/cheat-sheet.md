@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 08/23/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 38d353541b233f3cd9466e8dcf6c2b84083bd859
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6c198b6d5e9ecfed3f36ddc3be831af85a913ca5
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515791"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995839"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Tahák pro službu Azure SQL Data Warehouse
 Tento tahák obsahuje užitečné tipy a osvědčené postupy pro vytváření řešení Azure SQL Data Warehouse. Než začnete, přečtěte si článek [Vzory a antivzory úloh Azure SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns), který podrobně popisuje jednotlivé kroky a vysvětluje, co je služba SQL Data Warehouse, a co není.
@@ -39,9 +39,9 @@ Nejprve svá data načtěte do služby [Azure Data Lake Store](https://docs.micr
 
 | Návrh | Doporučení |
 |:--- |:--- |
-| Distribuce | Kruhové dotazování. |
+| Distribuce | Kruhové dotazování |
 | Indexování | Halda |
-| Dělení | Žádný |
+| Dělení | Žádné |
 | Třída prostředku | largerc nebo xlargerc |
 
 Další informace o [migraci dat], [načítání dat] a [procesu extrakce, načítání a transformace (ELT)](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading). 
@@ -50,7 +50,7 @@ Další informace o [migraci dat], [načítání dat] a [procesu extrakce, nač�
 
 Použijte následující strategie v závislosti na vlastnostech tabulek:
 
-| Type | Skvěle se hodí pro...| Na co si dát pozor|
+| type | Skvěle se hodí pro...| Na co si dát pozor|
 |:--- |:--- |:--- |
 | Replikované | • Malé tabulky dimenzí v hvězdicovém schématu s úložištěm menším než 2 GB po kompresi (přibližně 5násobná komprese) |• V tabulce se provádí velké množství transakcí zápisu (například vložení, operace upsert, odstranění, aktualizace).<br></br>• Často měníte zřizování jednotek datového skladu (DWU).<br></br>• Vaše tabulka obsahuje mnoho sloupců, ale používáte pouze 2 až 3 sloupce.<br></br>• Indexujete replikovanou tabulku. |
 | Kruhové dotazování (výchozí) | • Dočasná nebo pracovní tabulka<br></br> • Žádný zřejmý připojovací klíč ani vhodný sloupec |• Nízký výkon kvůli přesunům dat |
@@ -70,7 +70,7 @@ Další informace o [replikovaných tabulkách] a [distribuovaných tabulkách].
 
 Indexování je užitečné pro rychlé čtení tabulek. Existuje jedinečná sada technologií, které můžete použít podle svých potřeb:
 
-| Type | Skvěle se hodí pro... | Na co si dát pozor|
+| type | Skvěle se hodí pro... | Na co si dát pozor|
 |:--- |:--- |:--- |
 | Halda | • Pracovní nebo dočasná tabulka<br></br>• Malé tabulky s malým počtem hledání |• Každé hledání prochází celou tabulku. |
 | Clusterovaný index | • Tabulky obsahující až 100 milionů řádků<br></br>• Velké tabulky (více než 100 milionů řádků) obsahující pouze 1 až 2 často používané sloupce |• Používá se u replikované tabulky.<br></br>• Máte složité dotazy zahrnující několik operací spojení a seskupení.<br></br>• Provádíte aktualizace indexovaných sloupců, což zabírá paměť. |
@@ -96,9 +96,11 @@ Přečtěte si další informace o [oddílech].
 
 ## <a name="incremental-load"></a>Přírůstkové načítání
 
-Pokud se chystáte přírůstkově načítat data, nejprve se ujistěte, že pro načítání dat přidělujete větší třídy prostředků. K automatizaci kanálů ELT do služby SQL Data Warehouse doporučujeme použít PolyBase nebo ADF V2.
+Pokud se chystáte přírůstkově načítat data, nejprve se ujistěte, že pro načítání dat přidělujete větší třídy prostředků.  To je důležité hlavně při načítání do tabulek pomocí clusterovaných indexů columnstore.  Další podrobnosti naleznete v tématu [třídy prostředků](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) .  
 
-V případě velkých dávek aktualizací historických dat nejprve příslušná data odstraňte. Pak proveďte hromadné vložení nových dat. Tento dvoukrokový přístup je efektivnější.
+K automatizaci kanálů ELT do služby SQL Data Warehouse doporučujeme použít PolyBase nebo ADF V2.
+
+Pro velkou dávku aktualizací v historických datech zvažte použití [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) k zapsání dat, která chcete uchovávat v tabulce, a nepoužívejte vložení, aktualizaci a odstranění.
 
 ## <a name="maintain-statistics"></a>Udržujte statistiky
  Dokud nebudou obecně dostupné automatické statistky, vyžaduje SQL Data Warehouse ruční údržbu statistik. Statistiky je důležité aktualizovat, když dojde k *významným* změnám vašich dat. Pomáhá to optimalizovat plány dotazů. Pokud zjistíte, že údržba vašich statistik trvá příliš dlouho, pečlivěji zvažte, které sloupce mají statistiku mít. 
@@ -157,7 +159,7 @@ Nasazujte své paprsky do databází SQL ze služby SQL Data Warehouse jedním k
 <!--Other Web references-->
 [typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[migraci dat]:https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
+[migraci dat]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 [Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql

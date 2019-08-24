@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: abde79ab131719fe4f2963db98c7a6daa3419424
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8127c0a42ec42a661af31cc489964cc40cb4937d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876839"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981077"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -112,7 +112,7 @@ Konfigurace zásad vzdálené relace:
 1. Přejděte na **šablony pro správu** > **součásti**systémuWindows > Vzdálená plocha hostitel relace vzdálené plochyčasový > **limit relace**. > 
 2. Na panelu na pravé straně vyberte **nastavení časového limitu pro aktivní, ale nečinné zásady relací vzdálené plochy služby Vzdálená plocha** .
 3. Po zobrazení modálního okna změňte možnost zásady z **není nakonfigurovaná** na **povoleno** , aby se zásady aktivovaly.
-4. V rozevírací nabídce pod možností zásady nastavte dobu na **4 hodiny**.
+4. V rozevírací nabídce pod možností zásady nastavte hodnotu doba na **3 hodiny**.
 
 Zásady vzdálené relace můžete nakonfigurovat také ručně spuštěním následujících příkazů:
 
@@ -122,7 +122,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fRese
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 7200000 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 10800000 /f
 ```
 
 ### <a name="set-up-time-zone-redirection"></a>Nastavení přesměrování časového pásma

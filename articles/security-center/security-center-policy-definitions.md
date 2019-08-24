@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/19/2019
+ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: db7811a925846337487801a63e0f0c4584179c06
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 56e6285501529f26e3622e2f773dbd373c169c10
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295520"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990492"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Zásady zabezpečení Azure monitorované pomocí Security Center
 Tento článek poskytuje seznam definic Azure Policy, které můžete monitorovat v Azure Security Center. Další informace o zásadách zabezpečení najdete v tématu [práce se zásadami zabezpečení](tutorial-security-policy.md).
@@ -85,7 +85,7 @@ Další informace o předdefinovaných zásadách sledovaných nástrojem Securi
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak ve službě Security Center konfigurovat zásady zabezpečení. Další informace o Security Center najdete v následujících článcích.
 
 * [Průvodce plánováním a provozem Azure Security Center](security-center-planning-and-operations-guide.md): Naučte se plánovat a pochopit důležité informace o návrhu v Azure Security Center.

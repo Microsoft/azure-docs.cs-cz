@@ -78,15 +78,15 @@ Zdrojové oblasti jsou uvedené v následující tabulce. Všechny veřejné obl
 
 | Zdrojové oblasti |
 |---------------------|-----------------|------------------|-----------------|
-| Austrálie – střed   | Střední USA – EUAP | Jižní Korea – střed    | Západní střed USA |
+| Austrálie – střed   | Střední USA – EUAP | Jižní Korea – střed    | Středozápadní USA |
 | Austrálie – střed 2 | Východní Asie       | Jižní Korea – jih      | Západní Evropa     |
-| Austrálie – východ      | East US         | Střed USA – sever | Indie – západ      |
+| Austrálie – východ      | East US         | Středoseverní USA | Indie – západ      |
 | Austrálie – jihovýchod | Východní USA 2       | Severní Evropa     | USA – západ         |
-| Brazílie – jih        | Východ USA 2 – EUAP  | Střed USA – jih | USA – západ 2       |
+| Brazílie – jih        | Východ USA 2 – EUAP  | Středojižní USA | USA – západ 2       |
 | Kanada – střed      | Francie – střed  | Jižní Indie      |                 |
 | Kanada – východ         | Francie – jih    | Jihovýchodní Asie   |                 |
 | Střed Indie       | Japonsko – východ      | Velká Británie – jih         |                 |
-| Střed USA          | Japonsko – západ      | Spojené království – západ          |                 |
+| Střední USA          | Japonsko – západ      | Spojené království – západ          |                 |
 
 
 

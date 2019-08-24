@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: a9451b5dcd572eee27809cf66df889f06da960ed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2a94f82e4830bd1e9c96039f5ef8fe6546b0d0b
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571494"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982679"
 ---
 # <a name="role-based-access-control-rbac-and-privileged-identity-management-pim"></a>Access Control na základě rolí (RBAC) a Privileged Identity Management (PIM)
 
@@ -27,7 +27,7 @@ V případě vysoké úrovně vyžaduje implementace RBAC tři komponenty:
 
 ![RBAC – přehled](media/rbac-overview.png)
 
-* **Objekty zabezpečení**: Objekt zabezpečení může být některý z následujících: uživatel, skupina, [instanční objekty nebo [spravovaná identita](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Objektům zabezpečení by se měla přiřadit oprávnění pomocí skupin Azure Active Directory.
+* **Objekty zabezpečení**: Objekt zabezpečení může být některý z následujících: uživatel, skupina, [objekty služby](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)nebo [spravovaná identita](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Objektům zabezpečení by se měla přiřadit oprávnění pomocí skupin Azure Active Directory.
 
 * **Definice rolí**: Definice role, označovaná také jako role, je kolekce oprávnění. Tato oprávnění definují operace, které mohou být provedeny pomocí objektů zabezpečení přiřazených k definici role. Tuto funkci poskytují role prostředků Azure a Azure Active Directory role správců. Azure obsahuje sadu předdefinovaných rolí (odkazů), které se dají rozšířit o vlastní role.
 

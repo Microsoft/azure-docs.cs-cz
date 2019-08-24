@@ -110,6 +110,19 @@
           href: tutorial-deploy-ssis-packages-azure.md
         - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
+    - name: Load Data Lake Storage Gen2
+      href: load-azure-data-lake-storage-gen2.md
+      items:
+        - name: Kopírování ze služby Data Lake Storage Gen1
+          href: load-azure-data-lake-storage-gen2-from-gen1.md
+    - name: Načtení služby Azure SQL Data Warehouse
+      href: load-azure-sql-data-warehouse.md
+    - name: Načtení služby Data Lake Storage Gen1
+      href: load-azure-data-lake-store.md
+    - name: Načtení dat SAP BW
+      href: load-sap-bw-data.md
+    - name: Načtení dat Office 365
+      href: load-office-365-data.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
@@ -358,29 +371,14 @@
           href: delete-activity.md
         - name: Nástroj pro kopírování dat
           href: copy-data-tool.md
-        - name: Load Data Lake Storage Gen2
-          href: load-azure-data-lake-storage-gen2.md
-          items:
-            - name: Kopírování ze služby Data Lake Storage Gen1
-              href: load-azure-data-lake-storage-gen2-from-gen1.md
-        - name: Načtení služby Azure SQL Data Warehouse
-          href: load-azure-sql-data-warehouse.md
-        - name: Načtení služby Data Lake Storage Gen1
-          href: load-azure-data-lake-store.md
-        - name: Načtení dat SAP BW
-          href: load-sap-bw-data.md
-        - name: Načtení dat Office 365
-          href: load-office-365-data.md
-        - name: Čtení nebo zápis dělených dat
-          href: how-to-read-write-partitioned-data.md
+        - name: Výkon a ladění
+          href: copy-activity-performance.md
         - name: Podpora formátů a komprese
           href: supported-file-formats-and-compression-codecs.md
         - name: Mapování typů a schémat
           href: copy-activity-schema-and-type-mapping.md
         - name: Odolnost proti chybám
           href: copy-activity-fault-tolerance.md
-        - name: Výkon a ladění
-          href: copy-activity-performance.md
     - name: Transformace dat
       href: transform-data.md
       items:

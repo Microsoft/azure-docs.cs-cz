@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: 0504da45cbbd60629954d3e3ca3230e05761c1d6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e22e05618c8b8977ba8b03afd3b654d27d4fa6bd
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640369"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981734"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB
 
 Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby, i když není odborník na zabezpečení a integruje se se systémy centrálního monitorování zabezpečení.
 
-Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do  [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit.
+Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit.
 
 > [!NOTE]
 >
@@ -31,16 +31,16 @@ V případě úplného šetření výstrah zabezpečení doporučujeme povolit [
 
 ### <a name="set-up-atp-using-the-portal"></a>Nastavení ATP pomocí portálu
 
-1. Spusťte Azure Portal v  [https://portal.azure.com](https://portal.azure.com/).
+1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com/).
 
 2. Z účtu Azure Cosmos DB v nabídce **Nastavení** vyberte **Rozšířené zabezpečení**.
 
     ![Nastavení ATP](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
 
-3. V okně **Upřesnit konfiguraci zabezpečení** :
+3. V okně **Upřesnit konfiguraci zabezpečení** :
 
     * Klikněte na možnost **Rozšířená ochrana před internetovými útoky** anastavte ji na zapnuto.
-    * Kliknutím na **Uložit** uložte nové nebo aktualizované zásady rozšířené ochrany před internetovými útoky.   
+    * Kliknutím na **Uložit** uložte nové nebo aktualizované zásady rozšířené ochrany před internetovými útoky.   
 
 ### <a name="set-up-atp-using-rest-api"></a>Nastavení ATP pomocí REST API
 
@@ -75,5 +75,5 @@ E-mailové oznámení se také pošle s podrobnostmi výstrahy a doporučenými 
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [protokolování diagnostiky v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
-* Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Další informace o [protokolování diagnostiky v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
+* Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

@@ -75,7 +75,7 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
    **Location** | **Site Recovery IP adresa** |  **IP adresa monitorování Site Recovery**
     --- | --- | ---
-   Střed USA | 40.69.144.231 | 52.165.34.144
+   Střední USA | 40.69.144.231 | 52.165.34.144
 
 ### <a name="nsg-rules---central-us"></a>Pravidla NSG – Střed USA
 
@@ -89,7 +89,7 @@ Tato pravidla jsou nutná, aby bylo možné replikaci z cílové oblasti do zdro
 
    **Location** | **Site Recovery IP adresa** |  **IP adresa monitorování Site Recovery**
     --- | --- | ---
-   Střed USA | 13.82.88.226 | 104.45.147.24
+   Střední USA | 13.82.88.226 | 104.45.147.24
 ## <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problém 3: Konfigurace Site Recovery se nezdařila (151197)
 - **Možná příčina** </br>
   - Nelze navázat připojení ke koncovým bodům služby Azure Site Recovery.

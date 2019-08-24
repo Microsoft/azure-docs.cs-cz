@@ -1,24 +1,86 @@
 ---
 title: Odstranit skupinu prostředků a prostředky – Azure Resource Manageru
-description: Popisuje, jak Azure Resource Manageru orders odstranění prostředků při odstranění skupiny prostředků. Popisuje kódy odpovědí a jak je určit, pokud bylo odstranění úspěšné zpracovává Resource Manageru.
+description: Popisuje, jak odstranit skupiny prostředků a prostředky. Popisuje, jak Azure Resource Manager při odstraňování skupiny prostředků vyřadí odstranění prostředků. Popisuje kódy odpovědí a jak je určit, pokud bylo odstranění úspěšné zpracovává Resource Manageru.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 08/22/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 18990b51b5ff2184197db48fd139d63750626663
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 75cdeb88a68dece59d6b037592f7212fa895e821
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204206"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991697"
 ---
-# <a name="azure-resource-manager-resource-group-deletion"></a>Odstranění skupiny prostředků služby Azure Resource Manageru
+# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager skupiny prostředků a odstraňování prostředků
 
-Tento článek popisuje, jak Azure Resource Manageru orders odstranění prostředky, když odstraníte skupinu prostředků.
+Tento článek popisuje, jak odstranit skupiny prostředků a prostředky. Popisuje, jak Azure Resource Manager při odstraňování skupiny prostředků vyřadí odstranění prostředků.
 
-## <a name="determine-order-of-deletion"></a>Určení pořadí odstranění
+## <a name="delete-resource-group"></a>Odstranit skupinu prostředků
+
+Chcete-li odstranit skupinu prostředků, použijte jednu z následujících metod.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name <resource-group-name>
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az group delete --name <resource-group-name>
+```
+
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. Na [portálu](https://portal.azure.com)vyberte skupinu prostředků, kterou chcete odstranit.
+
+1. Vyberte **Odstranit skupinu prostředků**.
+
+   ![Odstranit skupinu prostředků](./media/resource-group-delete/delete-group.png)
+
+1. Odstranění potvrďte tak, že zadáte název skupiny prostředků.
+
+---
+
+## <a name="delete-resource"></a>Odstranit prostředek
+
+K odstranění prostředku použijte jednu z následujících metod.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResource `
+  -ResourceGroupName ExampleResourceGroup `
+  -ResourceName ExampleVM `
+  -ResourceType Microsoft.Compute/virtualMachines
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az resource delete \
+  --resource-group ExampleResourceGroup \
+  --name ExampleVM \
+  --resource-type "Microsoft.Compute/virtualMachines"
+```
+
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. Na [portálu](https://portal.azure.com)vyberte prostředek, který chcete odstranit.
+
+1. Vyberte **Odstranit**. Následující snímek obrazovky ukazuje možnosti správy pro virtuální počítač.
+
+   ![Odstranit prostředek](./media/resource-group-delete/delete-resource.png)
+
+1. Po zobrazení výzvy potvrďte odstranění.
+
+---
+
+## <a name="how-order-of-deletion-is-determined"></a>Jak je určeno pořadí odstranění
 
 Když odstraníte skupinu prostředků, Resource Manager určuje pořadí, odstraňte prostředky. Použije následujícím pořadí:
 
@@ -27,8 +89,6 @@ Když odstraníte skupinu prostředků, Resource Manager určuje pořadí, odstr
 2. Dále se odstraní prostředky, které spravují další prostředky. Prostředek může mít `managedBy` nastavenou k označení, že jiný prostředek spravuje ho. Pokud je tato vlastnost nastavena, před dalším prostředkům odstranění prostředku, který spravuje jiný prostředek.
 
 3. Zbývající prostředky odstraní po předchozí dvě kategorie.
-
-## <a name="resource-deletion"></a>Odstranění prostředku
 
 Po pořadí je určeno, vydá Resource Manageru operace odstranění pro každý zdroj. Čeká nějak záviset na dokončení, než budete pokračovat.
 

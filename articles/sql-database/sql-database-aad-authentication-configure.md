@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: b6414ac41b1bb43e3fe1470a7ae2b1358126003a
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a14926dea576e0331cb8c0f8010f060f47faa3e7
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68569677"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991163"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa ověřování Azure Active Directory pomocí SQL
 
@@ -327,7 +327,7 @@ Pokud chcete potvrdit, že správce Azure AD je správně nastavený, připojte 
 Pokud chcete zřídit uživatele databáze s omezením založené na službě Azure AD (jiný než správce serveru, který je vlastníkem databáze), připojte se k databázi pomocí identity Azure AD, která má přístup k databázi.
 
 > [!IMPORTANT]
-> Podpora ověřování Azure Active Directory je k dispozici v [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) a [datových nástrojích SQL Server](https://msdn.microsoft.com/library/mt204009.aspx) v aplikaci Visual Studio 2015. Verze SSMS ze srpna 2016 obsahuje také podporu univerzálního ověřování služby Active Directory, která správcům umožňuje vyžadovat vícefaktorové ověřování pomocí telefonního hovoru, textové zprávy, čipové karty s kódem PIN nebo oznámením o mobilní aplikaci.
+> Podpora ověřování Azure Active Directory je k dispozici v [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) a [datových nástrojích SQL Server](https://msdn.microsoft.com/library/mt204009.aspx) v aplikaci Visual Studio 2015. Verze SSMS ze srpna 2016 obsahuje také podporu univerzálního ověřování služby Active Directory, která správcům umožňuje vyžadovat Multi-Factor Authentication pomocí telefonního hovoru, textové zprávy, čipové karty s kódem PIN nebo oznámením o mobilní aplikaci.
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Použití identity Azure AD pro připojení pomocí SSMS nebo SSDT
 
@@ -412,6 +412,9 @@ Další informace najdete v [blogu o SQL Server zabezpečení](https://blogs.msd
 ### <a name="sqlcmd"></a>sqlcmd
 
 Následující příkazy se připojují pomocí nástroje Sqlcmd verze 13,1, který je k dispozici na [webu Download Center](https://go.microsoft.com/fwlink/?LinkID=825643).
+
+> [!NOTE]
+> `sqlcmd``-G` pomocí příkazu nefunguje u systémových identit a vyžaduje přihlášení k hlavnímu uživateli.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

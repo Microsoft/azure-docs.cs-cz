@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: cafe761d2b566a7bddce503765c11bf9f8e00f2a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2954f0bfcfe78243c2df12182f45034f46c8391d
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847458"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991896"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen2 pro požadavky na velké objemy dat
 
@@ -25,7 +25,7 @@ Existují čtyři klíčové fáze zpracování velkých objemů dat:
 > * Stahování dat
 > * Vizualizace dat
 
-Začněte vytvořením účtu úložiště a systému souborů. Pak udělte přístup k datům. První část tohoto článku vám pomůžou tyto úlohy provést. Ve zbývajících částech zvýrazníme možnosti a nástroje pro každou fázi zpracování.
+Začněte tím, že vytvoříte účet úložiště a kontejner. Pak udělte přístup k datům. První část tohoto článku vám pomůžou tyto úlohy provést. Ve zbývajících částech zvýrazníme možnosti a nástroje pro každou fázi zpracování.
 
 ## <a name="create-a-data-lake-storage-gen2-account"></a>Vytvoření účtu Data Lake Storage Gen2
 
@@ -33,16 +33,16 @@ Začněte vytvořením účtu úložiště a systému souborů. Pak udělte př�
 
 Pokud ho chcete vytvořit, [Přečtěte si rychlý Start: Vytvořte účet](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)úložiště Azure Data Lake Storage Gen2.
 
-## <a name="create-a-file-system"></a>Vytvoření systému souborů
+## <a name="create-a-container"></a>Vytvoření kontejneru
 
-*Systém souborů* je kontejner pro složky a soubory. Abyste mohli začít ingestovat data v účtu úložiště, potřebujete aspoň jednu z nich.  Tady je seznam nástrojů, které můžete použít k jejich vytvoření.
+Tady je seznam nástrojů, pomocí kterých můžete vytvořit kontejner pro vaše soubory.
 
 |Tool | Doprovodné materiály |
 |---|--|
-|Azure Storage Explorer | [Vytvoření systému souborů pomocí Průzkumník služby Storage](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
+|Azure Storage Explorer | [Vytvoření kontejneru pomocí Průzkumník služby Storage](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
 |AzCopy | [Vytvoření kontejneru objektů BLOB nebo sdílené složky pomocí AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
-|Rozhraní příkazového řádku systému souborů Hadoop (HDFS) se službou HDInsight |[Vytvoření systému souborů pomocí HDFS v HDInsight](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
-|Kód v poznámkovém bloku Azure Databricks|[Vytvoření systému souborů účtu úložiště (Scala)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [Vytvořit systém souborů a připojit ho (Python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
+|Rozhraní příkazového řádku kontejneru Hadoop (HDFS) se službou HDInsight |[Vytvoření kontejneru pomocí HDFS v HDInsight](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
+|Kód v poznámkovém bloku Azure Databricks|[Vytvoření kontejneru účtu úložiště (Scala)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [Vytvoření kontejneru a jeho připojení (Python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
 
 Je nejjednodušší vytvořit systémy souborů pomocí Průzkumník služby Storage nebo AzCopy. Vytváření systémů souborů pomocí HDInsight a datacihly trvá trochu více práce. Pokud ale plánujete použít clustery HDInsight nebo datacihly ke zpracování vašich dat, můžete nejdřív vytvořit své clustery a použít rozhraní příkazového řádku HDFS pro vytváření systémů souborů.  
 

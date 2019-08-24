@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
-ms.openlocfilehash: 2f39678e9fa0ed665863a94767240e2e37eace39
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
-ms.translationtype: HT
+ms.openlocfilehash: f0d63b9e01b7e39b03e6a3b1e310b5fae0f8d25f
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906077"
+ms.locfileid: "69982852"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps-Azure Portal
 
@@ -43,7 +43,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
    | Vlastnost | Value | Popis |
    |----------|-------|-------------|
-   | **Název** | <*Logic-App-Name*> | Název aplikace logiky, který může obsahovat `-`jenom písmena, číslice nebo znaky `)`, `(` `_`,,, `.` . Tento příklad používá "moji-First-Logic-App". |
+   | **Název** | <*Logic-App-Name*> | Název aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky`(`( `)`,) a tečky`.`(). Tento příklad používá "moji-First-Logic-App". |
    | **Předplatné** | <*název_předplatného_Azure*> | Název vašeho předplatného Azure |
    | **Skupina prostředků** | <*Azure-resource-group-name*> | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) , která slouží k uspořádání souvisejících prostředků. V tomto příkladu se používá "My-First-LA-RG". |
    | **Location** | <*Oblast Azure*> | Oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
@@ -180,7 +180,7 @@ Pokud tuto ukázku už nepotřebujete, odstraňte skupinu prostředků, která o
 
 Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/home?forum=azurelogicapps).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili svou první aplikaci logiky, která podle zadaného plánu (každou minutu) kontroluje aktualizace informačního kanálu RSS a při nalezení aktualizace provede akci. Další informace najdete v tomto kurzu, ve kterém se vytváří pokročilejší pracovní postupy založené na plánu:
 

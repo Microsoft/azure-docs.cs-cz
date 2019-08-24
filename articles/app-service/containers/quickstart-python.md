@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/29/2019
+ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: 163876d63ba2127dd3f3444e95b284918e60e368
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 2ff4364fdb0f24ca08a77279d569c0f03de9bb24
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952001"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996847"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -82,7 +82,7 @@ Ve službě Cloud Shell vytvořte adresář rychlého startu a přejděte do ně
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 Potom spusťte následující příkaz, pomocí kterého do tohoto adresáře naklonujete úložiště ukázkové aplikace.

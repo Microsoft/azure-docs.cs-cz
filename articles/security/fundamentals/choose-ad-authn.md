@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928030"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997822"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity. 
 
@@ -66,6 +66,9 @@ Ověřovací systém může poskytovat další požadavky na pokročilé ověřo
 Následující část vám pomůže rozhodnout, která metoda ověřování je pro vás nejvhodnější pomocí rozhodovacího stromu. Pomůže vám určit, jestli se má nasadit Cloud nebo federované ověřování pro vaše řešení hybridní identity Azure AD.
 
 ## <a name="decision-tree"></a>Rozhodovací strom
+
+> [!NOTE]
+> PTA funguje pouze s alternativním ID, pokud je jako alternativní ID zvolena hodnota UserPrincipalName. Pouze potom bude místní hodnota UserPrincipalName synchronizována z AD do AAD. Další informace najdete v tématu o tom, [že předávací ověřování podporuje "alternativní ID" jako uživatelské jméno místo "userPrincipalName"?](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname).
 
 ![Rozhodovací strom ověřování Azure AD](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
@@ -176,7 +179,7 @@ Následující diagramy popisují komponenty architektury nejvyšší úrovně, 
 
 |Úvahu|Synchronizace hodnot hash hesel + bezproblémové jednotné přihlašování|Předávací ověřování + bezproblémové jednotné přihlašování|Federace se službou AD FS|
 |:-----|:-----|:-----|:-----|
-|Kde k ověřování dochází?|V cloudu|V cloudu po výměně zabezpečeného ověřování hesla pomocí místního ověřovacího agenta|Místní|
+|Kde k ověřování dochází?|V cloudu|V cloudu po výměně zabezpečeného ověřování hesla pomocí místního ověřovacího agenta|Lokálně|
 |Jaké jsou požadavky na místní server mimo systém zřizování: Azure AD Connect?|Žádné|Jeden server pro každého dalšího ověřovacího agenta|Dva nebo více AD FS serverů<br><br>Dva nebo více serverů WAP v hraniční/DMZ síti|
 |Jaké jsou požadavky na místní Internet a sítě mimo zřizovací systém?|Žádné|[Odchozí internetový přístup](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) ze serverů používajících ověřovací agenty|[Příchozí internetový přístup](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) k serverům WAP v hraniční síti<br><br>Příchozí síťový přístup k serverům AD FS ze serverů WAP v hraniční síti<br><br>Vyrovnávání zatížení sítě|
 |Existuje požadavek na certifikát SSL?|Ne|Ne|Ano|

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 151eb535e70bd485c978ac21539c784bbea0a532
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9331473402ddd22180df3b404824969360d48164
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973230"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995821"
 ---
 # <a name="opc-vault-architecture"></a>Architektura úložiště OPC
 
@@ -88,3 +88,10 @@ Aby bylo možné podporovat globální Server zjišťování sítě továrny, m�
 ## <a name="yet-unsupported-features"></a>Zatím nepodporované funkce
 
 **(*)** ještě není podporováno.
+
+## <a name="next-steps"></a>Další kroky
+
+Teď, když jste se seznámili s architekturou trezoru OPC, je tady doporučený další krok:
+
+> [!div class="nextstepaction"]
+> [Sestavování a nasazování trezoru OPC](howto-opc-vault-deploy.md)

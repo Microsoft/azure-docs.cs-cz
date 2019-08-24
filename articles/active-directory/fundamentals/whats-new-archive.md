@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b338ad90c01c109cc9b2e222f1d7bcaa09f20346
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a978e2755818e88cad580753e041eacd50a9e6d2
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812951"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980483"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv co je nového? ve službě Azure Active Directory
 
@@ -36,7 +36,7 @@ Co je nového zpráva k vydání verze poskytování informací o:
 
 ## <a name="january-2019"></a>Leden 2019
 
-### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Spolupráce Active Directory B2B pomocí ověřování jednorázovým heslem (public preview)
+### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Spolupráce služby Active Directory B2B s použitím jednorázového ověřování pomocí hesla (Public Preview)
 
 **Textový** Nová funkce  
 **Kategorie služby:** B2B  
@@ -64,7 +64,7 @@ Další informace o nových souborech cookie najdete v tématu [nastavení soubo
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2019"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – leden 2019
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2019"></a>Dostupné nové federované aplikace v galerii aplikací Azure AD – leden 2019
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
@@ -78,11 +78,11 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 ---
 
-### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>Nová vylepšení Azure AD Identity Protection (Public Preview)
+### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>Vylepšení nových Azure AD Identity Protection (verze Public Preview)
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Identity Protection  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 S radostí oznamujeme, že jsme do nabídky Azure AD Identity Protection Public Preview přidali následující vylepšení, včetně těchto:
 
@@ -98,11 +98,11 @@ Další informace o vylepšeních najdete v tématu [co je Azure Active Director
 
 ---
 
-### <a name="new-app-lock-feature-for-the-microsoft-authenticator-app-on-ios-and-android-devices"></a>Nová funkce Zámek aplikace pro aplikaci Microsoft Authenticator na zařízeních s iOSem a Androidem
+### <a name="new-app-lock-feature-for-the-microsoft-authenticator-app-on-ios-and-android-devices"></a>Nová funkce zámku aplikace pro Microsoft Authenticator aplikaci na zařízeních s iOS a Androidem
 
 **Textový** Nová funkce  
 **Kategorie služby:** Aplikace Microsoft Authenticator  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 Chcete-li zachovat jednorázová hesla, informace o aplikaci a nastavení aplikace, můžete zapnout funkci zámku aplikace v aplikaci Microsoft Authenticator. Zapnutí zámku aplikace znamená, že budete požádáni o ověření pomocí PIN kódu nebo biometriky pokaždé, když otevřete aplikaci Microsoft Authenticator.
 
@@ -110,7 +110,7 @@ Další informace najdete v tématu [Nejčastější dotazy k aplikaci Microsoft
 
 ---
 
-### <a name="enhanced-azure-ad-privileged-identity-management-pim-export-capabilities"></a>Vylepšené funkce exportování ve službě Azure AD Privileged Identity Management (PIM)
+### <a name="enhanced-azure-ad-privileged-identity-management-pim-export-capabilities"></a>Rozšířené možnosti exportu Azure AD Privileged Identity Management (PIM)
 
 **Textový** Nová funkce  
 **Kategorie služby:** Privileged Identity Management  
@@ -124,7 +124,7 @@ Další informace najdete v tématu [zobrazení historie aktivit a auditu pro ro
 
 ## <a name="novemberdecember-2018"></a>Listopad/prosinec 2018
 
-### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>Uživatelé, kteří se odebrali z oboru synchronizace, se už nepřepínají na čistě cloudové účty
+### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>Uživatelé odebrání z oboru synchronizace už nepřešli na účty jenom pro Cloud.
 
 **Textový** Pevné  
 **Kategorie služby:** Správa uživatelů  
@@ -143,19 +143,19 @@ Tato oprava proto brání přímým aktualizacím atributu ImmutableID uživatel
 
 - **ImmutableID aktualizace velkého rozsahu pro mnoho uživatelů v dvoufázovém přístupu**
   
-  Například je třeba provést zdlouhavou migraci služba AD DS mezi doménovými strukturami. Řešení: Použijte Azure AD Connect ke **konfiguraci kotvy zdrojového kódu** a, když uživatel migruje, zkopírujte existující hodnoty ImmutableID z Azure AD do atributu ms-DS-Consistency-GUID místního uživatele služba AD DS v nové doménové struktuře. Další informace najdete v tématu [použití MS-DS-ConsistencyGuid jako sourceAnchor](/azure/active-directory/hybrid/plan-connect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor).
+  Například je třeba provést zdlouhavou migraci služba AD DS mezi doménovými strukturami. Řešení Použijte Azure AD Connect ke **konfiguraci kotvy zdrojového kódu** a, když uživatel migruje, zkopírujte existující hodnoty ImmutableID z Azure AD do atributu ms-DS-Consistency-GUID místního uživatele služba AD DS v nové doménové struktuře. Další informace najdete v tématu [použití MS-DS-ConsistencyGuid jako sourceAnchor](/azure/active-directory/hybrid/plan-connect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor).
 
 - **Rozsáhlé aktualizace ImmutableID pro mnoho uživatelů v jednom snímku**
 
-  Například při implementaci Azure AD Connect uděláte chybu a teď potřebujete změnit atribut SourceAnchor. Řešení: Zakažte DirSync na úrovni tenanta a vymažte všechny neplatné hodnoty ImmutableID. Další informace najdete v tématu [vypnutí synchronizace adresářů pro Office 365](/office365/enterprise/turn-off-directory-synchronization).
+  Například při implementaci Azure AD Connect uděláte chybu a teď potřebujete změnit atribut SourceAnchor. Řešení Zakažte DirSync na úrovni tenanta a vymažte všechny neplatné hodnoty ImmutableID. Další informace najdete v tématu [vypnutí synchronizace adresářů pro Office 365](/office365/enterprise/turn-off-directory-synchronization).
 
-- **Přesouhlasení místního uživatele s existujícím uživatelem v Azure AD** Například uživatel, který byl znovu vytvořen v služba AD DS vygeneruje duplicitní hodnotu v účtu Azure AD, místo aby se přeshodoval s existujícím účtem služby Azure AD (osamocený objekt). Řešení: K přemapování zdrojového ukotvení/ImmutableID použijte Azure AD Connect Health v Azure Portal. Další informace najdete v tématu [scénář osamoceného objektu](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario).
+- **Přesouhlasení místního uživatele s existujícím uživatelem v Azure AD** Například uživatel, který byl znovu vytvořen v služba AD DS vygeneruje duplicitní hodnotu v účtu Azure AD, místo aby se přeshodoval s existujícím účtem služby Azure AD (osamocený objekt). Řešení K přemapování zdrojového ukotvení/ImmutableID použijte Azure AD Connect Health v Azure Portal. Další informace najdete v tématu [scénář osamoceného objektu](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario).
 
 ### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>Změna způsobující chybu: Aktualizace schématu auditu a přihlášení prostřednictvím Azure Monitor
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 V současné době publikujete datové proudy protokolu auditu i přihlašování prostřednictvím Azure Monitor, takže můžete hladce integrovat soubory protokolů pomocí nástrojů pro SIEM nebo pomocí Log Analytics. V závislosti na vaší zpětné vazbě a při přípravě na obecné oznámení o dostupnosti této funkce provádíme v našem schématu následující změny. Tyto změny schématu a související aktualizace dokumentace budou provedeny první týden v lednu.
 
@@ -185,7 +185,7 @@ Další informace o schématu najdete v tématu [Interpretace schématu protokol
 
 ---
 
-### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>Vylepšení Identity Protection pro model strojového učení s učitelem a modul skóre rizika
+### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>Vylepšení Identity Protection pro model strojového učení pod dohledem a modul hodnocení rizik
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Identity Protection  
@@ -197,7 +197,7 @@ Detekce rizik se teď vyhodnocuje pomocí modelu strojového učení pod dohlede
 
 ---
 
-### <a name="administrators-can-reset-their-own-password-using-the-microsoft-authenticator-app-public-preview"></a>Správci můžou resetovat své vlastní heslo pomocí aplikace Microsoft Authenticator (Public Preview)
+### <a name="administrators-can-reset-their-own-password-using-the-microsoft-authenticator-app-public-preview"></a>Správci můžou resetovat svoje vlastní heslo pomocí aplikace Microsoft Authenticator (Public Preview).
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Samoobslužné resetování hesla  
@@ -215,11 +215,11 @@ Správci Azure AD teď můžou resetovat svoje vlastní heslo pomocí oznámení
 
 - Zpráva SMS
 
-Další informace o použití aplikace Microsoft Authenticator k resetování hesel najdete v tématu [Samoobslužné resetování hesla v Azure AD – mobilní aplikace a SSPR (Preview)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr-preview) .
+Další informace o použití aplikace Microsoft Authenticator k resetování hesel najdete v tématu [Samoobslužné resetování hesla v Azure AD – mobilní aplikace a SSPR (Preview)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr) .
 
 ---
 
-### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>Nová role Správce cloudových zařízení Azure AD (Public preview)
+### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>Nová role správce cloudového zařízení služby Azure AD (Public Preview)
 
 **Textový** Nová funkce  
 **Kategorie služby:** Registrace a správa zařízení  
@@ -231,7 +231,7 @@ Další informace o rolích a oprávněních najdete v tématu [přiřazení rol
 
 ---
 
-### <a name="manage-your-devices-using-the-new-activity-timestamp-in-azure-ad-public-preview"></a>Správa zařízení pomocí nových časových razítek aktivity v Azure AD (Public Preview)
+### <a name="manage-your-devices-using-the-new-activity-timestamp-in-azure-ad-public-preview"></a>Správa zařízení pomocí časového razítka nové aktivity ve službě Azure AD (Public Preview)
 
 **Textový** Nová funkce  
 **Kategorie služby:** Registrace a správa zařízení  
@@ -280,7 +280,7 @@ Další informace najdete v [části Přidání podmínek použití funkce Azure
  
 ---
 
-### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>Nové e-maily služby Azure AD Privileged Identity Management (PIM) pro role Azure Active Directory
+### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>Nové e-maily Azure AD Privileged Identity Management (PIM) pro Azure Active Directory role
 
 **Textový** Nová funkce  
 **Kategorie služby:** Privileged Identity Management  
@@ -302,7 +302,7 @@ Další informace o PIM a dostupných e-mailových oznámeních najdete [v téma
 
 ---
 
-### <a name="group-based-licensing-is-now-generally-available"></a>Licencování na základě skupin je teď obecně dostupné
+### <a name="group-based-licensing-is-now-generally-available"></a>Licencování na základě skupin je teď všeobecně dostupné.
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Ostatní  
@@ -314,7 +314,7 @@ Další informace o licencování na základě skupin najdete [v tématu Co je l
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2018"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – listopad 2018
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2018"></a>Nové federované aplikace dostupné v galerii aplikací Azure AD – listopad 2018
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
@@ -334,7 +334,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 **Textový** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 S potěšením oznamujeme, že teď můžou přesměrovávat protokolů služby Azure AD do služby Azure Log Analytics. Tato funkce nejžádanějších pomáhá poskytnout ještě lepší přístup k analytics pro vaši firmu, operace a zabezpečení, jakož i způsob, jak pomoc při sledování infrastruktury. Další informace najdete v tématu [protokoly aktivit Azure Active Directory v Azure Log Analytics teď k dispozici](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-Activity-logs-in-Azure-Log-Analytics-now/ba-p/274843) blogu.
 
@@ -451,7 +451,7 @@ Další informace najdete v tématu [novinky na portálu Moje aplikace?](https:/
 
 **Textový** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Nové **řešení potíží a podpora** kartě **přihlášení** stránky Azure portal, má pomoci správce a pracovníky technické podpory řešit problémy spojené s přihlášení Azure AD. Tato nová karta poskytuje kód chyby, chybová zpráva a doporučeními k nápravě (pokud existuje) vám pomohou při řešení problému. Pokud nemůžete vyřešit problém, jsme také získáte nový způsob, jak vytvořit lístek podpory pomocí **kopírování do schránky** prostředí, která naplní **ID žádosti** a **Datum(UTC)** pole pro soubor protokolu v vašeho lístku podpory.  
 
@@ -719,7 +719,7 @@ Příklad některé z nových e-mailu návrhů a další informace najdete v té
 
 **Textový** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Protokoly aktivit Azure AD jsou teď dostupné ve verzi public preview pro Azure Monitor (Sledování služby celou platformu Azure). Azure Monitor nabízí dlouhodobé uchování a bezproblémové integrace. kromě tato vylepšení:
 
@@ -737,7 +737,7 @@ Další informace o těchto nových funkcích najdete v blogovém [protokoly akt
 
 **Textový** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
  
 Umožňuje tato aktualizace můžete zjistit, které zásady jsou vyhodnocovány, když se uživatel přihlásí spolu s výsledky zásady. Kromě toho sestavu teď obsahuje typ klientské aplikace použitých uživatelem, abyste mohli identifikovat provozu starší verzi protokolu. Položky sestavy lze nyní také vyhledávat ID korelace, které najdete v chybové zprávě přístupných a slouží k identifikaci a řešení potíží s odpovídající žádost o přihlášení.
 
@@ -747,7 +747,7 @@ Umožňuje tato aktualizace můžete zjistit, které zásady jsou vyhodnocovány
 
 **Textový** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
  
 Se zavedením **klientskou aplikaci** pole v aktivit přihlašování protokoly, zákazníci můžou teď najdete v tématu uživatelé, které používají starší verze ověřování. Zákazníci budou moct přistupovat k těmto informacím pomocí rozhraní Graph API MS přihlášení nebo prostřednictvím přihlášení protokoly aktivit v portálu Azure AD, kde můžete použít **klientskou aplikaci** ovládací prvek pro filtrování starší verze ověřování. Přečtěte si další podrobnosti naleznete v dokumentaci.
 
@@ -787,7 +787,7 @@ Seznam všech aplikací, které podporují zřizování uživatelů ve galerii A
 
 **Textový** Nová funkce  
 **Kategorie služby:** AD Connect  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
  
 Azure AD Connect Health uvádí samoobslužnou nápravu můžete zvýraznit a oprava chyb synchronizace. Tato funkce odstraňování potíží s duplicitním atributem chyby synchronizace a opravy objekty, které jsou osamocené ze služby Azure AD. Tuto diagnostiku má následující výhody:
 
@@ -895,7 +895,7 @@ Oznámení mobilní aplikace je možné zapnout jenom na jako součást zásady,
 
 **Textový** Plánování změn  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Z důvodu naše vynucení silnější zabezpečení museli měnit oprávnění pro aplikace, které používají pro přístup k toku delegované autorizace [rozhraní API protokoly aktivit Azure AD](https://aka.ms/aadreportsapi). Tato změna se provádí **26. června 2018**.
 
@@ -1015,7 +1015,7 @@ Další informace najdete v tématu [Azure Active Directory Terms of použít fu
 
 **Textový** Nová funkce  
 **Kategorie služby:** Ostatní  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
  
 Vydali jsme nové podrobné pokyny o tom, jak nasadit Azure Multi-Factor Authentication (MFA) ve vaší organizaci.
 
@@ -1141,7 +1141,7 @@ Kontrola přístupu skupiny a aplikace je teď obecně dostupná jako součást 
 
 **Textový** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
  
 Azure protokoly aktivit AD, které obsahuje přihlášení a protokoly auditu, jsou teď dostupné prostřednictvím MS Graphu. Představili jsme dva koncové body prostřednictvím MS Graphu k těmto protokolům získat přístup. Podívejte se na naše [dokumenty](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) pro programový přístup k vytváření sestav rozhraní API Azure AD jak začít. 
 
@@ -1276,7 +1276,7 @@ Další informace najdete v tématu [funkcí Azure AD podmínky použití](https
 
 **Textový** Nová funkce  
 **Kategorie služby:** Ostatní  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Connect Health teď podporuje schopnost detekovat IP adresy, které by překračovaly prahovou hodnotu neúspěšných přihlášení U/P na hodinové nebo denní bázi. Možnosti poskytované touto funkcí jsou:
 
@@ -1433,7 +1433,7 @@ Další informace najdete v tématu [co je spolupráce B2B ve službě Azure AD?
 
 **Textový** Nová funkce  
 **Kategorie služby:** Podmíněný přístup  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
  
 **Nyní ve verzi public preview!**
 
@@ -1592,7 +1592,7 @@ Další informace najdete v tématu [Azure Active Directory bezproblémové jedn
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Proxy aplikace  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
  
 Tato verze konektoru se postupně zavádí do listopadu. Tato nová verze konektoru obsahuje následující změny:
 
@@ -1621,7 +1621,7 @@ Navigační prostředí pro správu uživatelů a skupin je teď jednodušší. 
 
 **Textový** Nová funkce  
 **Kategorie služby:** Azure Stack  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Sestavy protokolu Azure AD aktivit jsou teď dostupné v Microsoft Azure provozované společností 21Vianet (Azure China 21Vianet) instance. Tyto protokoly jsou zahrnuty:
 
@@ -1645,7 +1645,7 @@ Další informace o tom, jak tyto sestavy použít, najdete v části [generová
 
 **Textový** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Schopnost produktu:** Monitorování a sestavy
+**Schopnost produktu:** Monitorování & vytváření sestav
 
 Jako součást zpětné vazby zákazníků bez oprávnění správce rolí má přístup k aktivit Azure AD povolit protokoly, zavedli jsme možnost pro uživatele, kteří jsou v roli "Čtenáře sestav" přístup k přihlášení a auditování aktivit v rámci webu Azure portal, jakož i pomocí našich rozhraní Graph API. 
 
@@ -1790,7 +1790,7 @@ Tato verze má následující aktualizace a změny:
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Podmíněný přístup  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 Přidali jsme další aplikace, které podporují podmíněný přístup na základě aplikace. Teď můžete získat přístup k Office 365 a dalším aplikacím Azure AD připojení cloudu pomocí těchto schválených klientských aplikací.
 
@@ -1841,7 +1841,7 @@ Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v t
 
 **Textový** Nová funkce  
 **Kategorie služby:** Identity Protection  
-**Schopnost produktu:** Zabezpečení a ochrana identity
+**Schopnost produktu:** Zabezpečení identity & ochrana
 
 Podrobnější informace o získání zjištěné rizikové události se váže k předplatnému služby Azure AD. V edici Azure AD Premium P2 získáte nejpodrobnější informace o základní všechna nalezení.
 
@@ -2202,7 +2202,7 @@ Další informace naleznete v tématu:
 ### <a name="network-policy-server-extension-for-azure-multi-factor-authentication"></a>Sítě rozšíření zásad serveru pro ověřování Azure Multi-Factor Authentication 
 
 **Textový** Nová funkce    
-**Kategorie služby:**  Vícefaktorové ověřování  
+**Kategorie služby:**  Ověřování pomocí služby Multi-Factor Authentication  
 **Schopnost produktu:** Ověřování uživatelů
 
 Rozšíření serveru Network Policy Server pro ověřování Azure Multi-Factor Authentication cloudové možnosti ověřování službou Multi-Factor Authentication přidá do vaší infrastruktury ověřování pomocí svých stávajících serverech. Rozšíření serveru Network Policy Server můžete přidat telefonní hovor, textová zpráva nebo ověřovacích telefonních aplikací do vašeho existujícího toku ověřování. Není nutné instalovat, konfigurovat a Udržovat nové servery. 
@@ -2308,7 +2308,7 @@ Kvůli problému služba byla tato funkce dočasně zakázané. Tento problém b
 ### <a name="new-multi-factor-authentication-features"></a>Nové funkce služby Multi-Factor Authentication
 
 **Textový** Nová funkce  
-**Kategorie služby:** Vícefaktorové ověřování  
+**Kategorie služby:** Ověřování pomocí služby Multi-Factor Authentication  
 **Schopnost produktu:** Zabezpečení identity a ochrana  
 
 Vícefaktorové ověřování (MFA) je důležitou součástí ochrany vaší organizace. Chcete-li více adaptive přihlašovací údaje a prostředí pohodlnější, byly přidány následující funkce: 

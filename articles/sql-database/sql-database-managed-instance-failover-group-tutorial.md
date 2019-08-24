@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 059a614dff7fc0eab5419e3e2ffdeaeecb79ad99
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624988"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981373"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL Database do skupiny převzetí služeb při selhání
 
@@ -47,7 +47,7 @@ V tomto kroku vytvoříte skupinu prostředků a primární spravovanou instanci
 1. Výběrem **vytvořit** spusťte stránku pro vytvoření **spravované instance SQL** . 
 1. Na stránce **Vytvoření spravované Instance Azure SQL Database** na kartě **základy**
     1. V části **Podrobnosti o projektu**vyberte v rozevíracím seznamu své **předplatné** a pak zvolte **vytvořit novou** skupinu prostředků. Zadejte název vaší skupiny prostředků, `myResourceGroup`jako je například. 
-    1. V části **Podrobnosti spravované instance**zadejte název spravované instance a oblast, do které chcete nasadit spravovanou instanci. Nezapomeňte vybrat oblast s spárovaným regionem [](/azure/best-practices-availability-paired-regions). Ve službě **COMPUTE + Storage** ponechte výchozí hodnoty. 
+    1. V části **Podrobnosti spravované instance**zadejte název spravované instance a oblast, do které chcete nasadit spravovanou instanci. Ve službě **COMPUTE + Storage** ponechte výchozí hodnoty. 
     1. V části **účet správce**zadejte přihlašovací jméno správce, například `azureuser`a složitá hesla správce. 
 
     ![Vytvořit primární MI](media/sql-database-managed-instance-failover-group-tutorial/primary-sql-mi-values.png)
@@ -79,7 +79,7 @@ Pokud chcete vytvořit virtuální síť, postupujte takto:
     | **Název** |  Název virtuální sítě, která se má použít u sekundární spravované instance, například `vnet-sql-mi-secondary`. |
     | **Adresní prostor** | Adresní prostor pro virtuální síť, například `10.128.0.0/16`. | 
     | **Předplatné** | Předplatné, ve kterém se nachází vaše primární spravovaná instance a skupina prostředků |
-    | **Oblast** | Umístění, do kterého budete nasazovat sekundární spravovanou instanci. To by mělo být v [spárované oblasti](/azure/best-practices-availability-paired-regions) na primární spravovanou instanci.  |
+    | **Oblast** | Umístění, do kterého budete nasazovat sekundární spravovanou instanci. |
     | **Podsíť** | Název vaší podsítě. `default`je ve výchozím nastavení k dispozici pro vás. |
     | **Rozsah adres**| Rozsah adres pro vaši podsíť. Musí se lišit od rozsahu adres podsítě používaného virtuální sítí vaší primární spravované instance, například `10.128.0.0/24`.  |
     | &nbsp; | &nbsp; |
@@ -92,7 +92,6 @@ V tomto kroku vytvoříte sekundární spravovanou instanci v Azure Portal, kter
 
 Vaše druhá spravovaná instance musí:
 - Být prázdné. 
-- Musí se nacházet v rámci [spárované oblasti](/azure/best-practices-availability-paired-regions) se svým primárním objektem spravované instance. 
 - Mít jinou podsíť a rozsah IP adres než primární spravovaná instance. 
 
 K vytvoření sekundární spravované instance použijte následující postup: 
@@ -108,7 +107,7 @@ K vytvoření sekundární spravované instance použijte následující postup:
     | **Předplatné** |  Předplatné, ve kterém je vaše primární spravovaná instance. |
     | **Skupina prostředků**| Skupina prostředků, ve které je vaše primární spravovaná instance. |
     | **Název spravované instance** | Název vaší nové sekundární spravované instance, například`sql-mi-secondary`  | 
-    | **Oblast**| Umístění [spárované oblasti](/azure/best-practices-availability-paired-regions) pro vaši sekundární spravovanou instanci.  |
+    | **Oblast**| Umístění sekundární spravované instance.  |
     | **Přihlašovací jméno správce spravované instance** | Přihlašovací jméno, které chcete použít pro novou sekundární spravovanou instanci, například `azureuser`. |
     | **Heslo** | Složitá hesla, která budou používána přihlášením správce pro novou sekundární spravovanou instanci.  |
     | &nbsp; | &nbsp; |
@@ -246,7 +245,7 @@ Vyčistěte prostředky tak, že nejprve odstraníte spravovanou instanci, potom
 1. Odstraňte všechny zbývající prostředky. Do `yes` textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**. 
 1. Odstraňte skupinu prostředků výběrem možnosti **Odstranit skupinu prostředků**, zadáním názvu skupiny `myResourceGroup`prostředků a pak výběrem možnosti **Odstranit**. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste nakonfigurovali skupinu převzetí služeb při selhání mezi dvěma spravovanými instancemi. Naučili jste se tyto postupy:
 

@@ -1,5 +1,5 @@
 ---
-title: Jak spravovat službu správy certifikátů trezoru OPC – Azure | Microsoft Docs
+title: Jak spravovat službu OPC trezor certifikátů – Azure | Microsoft Docs
 description: Správa certifikátů kořenové certifikační autority OPC trezoru a uživatelských oprávnění
 author: mregen
 ms.author: mregen
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6e53914b16bc126cdab7300d918dbb7b6b868728
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 4420e5b0d895f8ea30dbd39fc50dd7480d57d086
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973802"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995994"
 ---
-# <a name="how-to-manage-the-opc-ua-certificate-service"></a>Jak spravovat službu OPC UA Certificate Service
+# <a name="how-to-manage-the-opc-vault-certificate-service"></a>Jak spravovat službu OPC trezor certifikátů
 
-Tento článek popisuje úlohy správy pro službu OPC UA Certificate Management v Azure, způsob obnovení certifikátů certifikační autority vystavitele, obnovení seznamu odvolaných certifikátů (CRL) a postup udělení a odvolání přístupu uživatele.
+Tento článek popisuje úlohy správy pro službu správy certifikátů trezoru OPC v Azure, obnovení certifikátů certifikační autority vystavitele, obnovení seznamu odvolaných certifikátů (CRL) a postup udělení a odvolání přístupu uživatele.
 
 ## <a name="create-or-renew-the-root-ca-certificate"></a>Vytvořit nebo obnovit certifikát kořenové certifikační autority
 
@@ -56,7 +56,7 @@ V následujícím pracovním postupu jsou všechny žádosti o certifikát v ods
 4. Klikněte na tlačítko a vydejte aktualizovaný seznam CRL pro všechny aktivní certifikáty vystavitelů v úložišti trezoru OPC. `Update CRL Revocation List(CRL)`
 5. Po několika sekundách `Certificate Details` se zobrazí. Stisknutím `Issuer` nebo`Crl` Stáhněte nejnovější certifikát certifikační autority a seznam CRL pro distribuci do vašich aplikací OPC UA.
 
-## <a name="manage-user-roles"></a>Správa uživatelských rolí
+## <a name="manage-user-roles"></a>Správa rolí uživatelů
 
 Role uživatelů pro mikroslužby trezoru OPC se spravují v Azure Active Directory podnikových aplikacích.
 

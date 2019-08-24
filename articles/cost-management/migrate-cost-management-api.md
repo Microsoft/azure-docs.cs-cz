@@ -1,6 +1,6 @@
 ---
-title: Migrace z smlouvy Enterprise do rozhraní API smlouvy zákazníků společnosti Microsoft – Azure | Dokumentace Microsoftu
-description: Tento článek vám pomůže pochopit důsledky migrace na Microsoft zákaznické smlouvy Microsoft Enterprise Agreement (EA).
+title: Migrace z smlouva Enterprise na rozhraní API zákaznické smlouvy Microsoftu – Azure | Microsoft Docs
+description: Tento článek vám pomůže pochopit důsledky migrace Microsoft smlouva Enterprise (EA) na zákaznickou smlouvu Microsoftu.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -10,130 +10,130 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: c3fb1f430076b26f7b5dd83e167371ac6d957ac4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c2041984ffa2c455ea4d60a756fcb4142219d91
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967236"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981442"
 ---
-# <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migraci na smlouvu Enterprise pro smlouvy zákazníků společnosti Microsoft
+# <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrace z smlouva Enterprise na rozhraní API zákaznické smlouvy Microsoftu
 
-Tento článek vám pomůže pochopit strukturu dat, rozhraní API a další systémové integrace rozdíly mezi účty Enterprise Agreement (EA) a smlouvy zákazníka Microsoftu (MCA). Azure Cost Management podporuje rozhraní API pro oba typy účtů. Zkontrolujte [nastavení fakturační účet pro](../billing/billing-mca-setup-account.md) článku smlouvy zákazníka se společností Microsoft před pokračováním.
+Tento článek vám pomůže pochopit strukturu dat, rozhraní API a další rozdíly v integraci systému mezi smlouva Enterprise (EA) a účty Microsoft Customer Agreement (MCA). Azure Cost Management podporuje rozhraní API pro oba typy účtů. Než budete pokračovat, přečtěte si článek o [Nastavení fakturačního účtu pro](../billing/billing-mca-setup-account.md) zákaznickou smlouvu od Microsoftu.
 
-Organizace s existujícím účtem EA by měl k tomuto článku ve spojení s nastavíte účet MCA. Prodlužuje se platnost účtu EA dříve, vyžaduje minimální úkony přesunout z původní registrace do nové. Migrace na účet MCA ale vyžaduje další úsilí. Další úsilí je z důvodu změn v podkladové fakturační subsystému to mít vliv na všechny související náklady na rozhraní API a nabídky služeb.
+Organizace s existujícím účtem EA by si měli projít tento článek ve spojení s nastavením účtu MCA. Dříve se při obnovení účtu EA vyžadovalo, aby se přechod z původního zápisu do nového zavedl na nějakou minimální práci. Migrace na účet MCA ale vyžaduje další úsilí. Další úsilí je kvůli změnám v podkladovém subsystému, které se týkají všech cenově vydaných rozhraní API a nabídek služeb.
 
-## <a name="mca-apis-and-integration"></a>Rozhraní API MCA a integrace
+## <a name="mca-apis-and-integration"></a>Rozhraní API a integrace MCA
 
-Rozhraní API MCA a nově zavedené integraci vám umožní:
+Rozhraní API pro MCA a novou integraci umožňují:
 
-- Máte kompletní dostupnost rozhraní API pomocí nativních rozhraní API Azure.
-- V jedné fakturační účet nakonfigurujte více faktur.
-- Přístup k kombinované rozhraní API se využití služeb Azure, třetích stran využití webu Marketplace a nákupy na Marketplace.
-- Zobrazení nákladů napříč fakturace profily (stejné jako registrací) pomocí Azure Cost Management.
-- Přístup k nové rozhraní API pro zobrazení nákladů, nechte se informovat náklady překročit předdefinovaným prahovým hodnotám a export nezpracovaných dat automaticky.
+- Dokončete dostupnost rozhraní API prostřednictvím nativních rozhraní API Azure.
+- Nakonfigurujte více faktur v jednom fakturačním účtu.
+- Přístup k kombinovanému rozhraní API s využitím služeb Azure, využitím Marketplace a nákupy na webu Marketplace.
+- Prohlédněte si náklady v rámci fakturačních profilů (stejné jako registrace) pomocí Azure Cost Management.
+- Přístup k novým rozhraním API pro zobrazení nákladů vám pošle upozornění, když náklady překročí předdefinované prahové hodnoty, a automaticky se exportují nezpracované údaje
 
-## <a name="migration-checklist"></a>Kontrolní seznam pro migraci
+## <a name="migration-checklist"></a>Kontrolní seznam migrace
 
-V následujících položek nápovědy přechod do MCA rozhraní API.
+Následující položky vám pomůžou přejít na rozhraní API MCA.
 
-- Seznamte se s novými [Microsoft na základě smlouvy fakturační účet](../billing/billing-mca-overview.md).
-- Určete, které rozhraní API můžete použít a zobrazit ty, které nahrazují v následující části.
-- Seznamte se s [rozhraní REST API Azure Resource Manageru](/rest/api/azure).
-- Pokud ještě není používáte rozhraní API Azure Resource Manageru, [registrace vaší klientské aplikace v Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad).
-- Aktualizace kódu na [ověřování pomocí služby Azure AD](/rest/api/azure/#create-the-request).
-- Aktualizace kódu nahraďte volání rozhraní API MCA volání rozhraní API EA.
-- Aktualizace pro zpracování použít nové chybové kódy chyb.
-- Zkontrolujte doplňkové integraci nabídky, jako Cloudyn a Power BI pro jiné potřebné akce.
+- Seznamte se s novým [fakturačním účtem Microsoft Customer Agreement](../billing/billing-mca-overview.md).
+- Určete, která rozhraní API používáte, a zjistěte, které z nich jsou nahrazené v následující části.
+- Seznamte se s [Azure Resource Manager rozhraní REST API](/rest/api/azure).
+- Pokud rozhraní API Azure Resource Manager ještě nepoužíváte, [Zaregistrujte si klientskou aplikaci ve službě Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad).
+- Aktualizujte jakýkoliv kód programování a [použijte ověřování Azure AD](/rest/api/azure/#create-the-request).
+- Aktualizujte jakýkoliv kód programování, aby nahradil volání rozhraní API EA pomocí volání rozhraní API MCA.
+- Zpracování chyb aktualizace pro použití nových kódů chyb.
+- Další akce, které je potřeba provést, najdete v dalších nabídkách integrace, jako je Cloudyn a Power BI.
 
-## <a name="ea-apis-replaced-with-mca-apis"></a>Rozhraní EA API nahradí MCA rozhraní API
+## <a name="ea-apis-replaced-with-mca-apis"></a>Rozhraní API EA nahrazená rozhraními API MCA
 
-Rozhraní EA API pomocí klíče rozhraní API pro ověřování a autorizaci. MCA rozhraní API pomocí ověřování Azure AD.
+Rozhraní API EA používají pro ověřování a autorizaci klíč rozhraní API. Rozhraní API pro MCA využívají ověřování Azure AD.
 
-| Účel | EA API | MCA API |
+| Účel | EA API | ROZHRANÍ API MCA |
 | --- | --- | --- |
-| Zůstatek a kreditech | [/balancesummary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) | Microsoft.Billing/billingAccounts/billingProfiles/availableBalanceussae |
-| Využití (JSON) | [/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)[/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) | [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| Využití (CSV) | [/ usagedetails/download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) [ /usagedetails/odeslání](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| Využití webu Marketplace (CSV) | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)[/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| Fakturační období | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
-| Ceník | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Formát Microsoft.Billing/billingAccounts/billingProfiles/pricesheet/default/download = json|CSV Microsoft.Billing/billingAccounts/.../billingProfiles/.../invoices/... Formát /pricesheet/default/download = json|CSV Microsoft.Billing/billingAccounts/... / billingProfiles /.. /providers/Microsoft.consumption/pricesheets/download  |
-| Nákup rezervace | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft.Billing/billingAccounts/billingProfiles/transactions |
-| Doporučení pro rezervaci | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
-| Využití rezervace | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
+| Zůstatek a kredity | [/balancesummary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) | Microsoft. fakturace/billingAccounts/billingProfiles/availableBalanceussae |
+| Použití (JSON) | [/UsageDetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) [/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) | [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Využití (CSV) | [/UsageDetails/Download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) [/UsageDetails/Submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [Microsoft. spotřeb/usageDetails/stáhnout](/rest/api/consumption/usagedetails) <sup>1</sup> |
+| Využití Marketplace (CSV) | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)[/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [Microsoft. spotřeb/usageDetails/stáhnout](/rest/api/consumption/usagedetails) <sup>1</sup> |
+| Fakturační období | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | Microsoft. fakturace/billingAccounts/billingProfiles/faktur |
+| Ceník | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft. faktura/billingAccounts/billingProfiles/pricesheet/default/download Format = JSON|CSV Microsoft. fakturuje/billingAccounts/.../billingProfiles/............ /pricesheet/default/download Format = JSON|CSV Microsoft. fakturace/billingAccounts/.. /billingProfiles/.. /providers/Microsoft.Consumption/pricesheets/download  |
+| Nákupy rezervací | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft. fakturace/billingAccounts/billingProfiles/transakcí |
+| Doporučení pro rezervaci | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft. spotřeb/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
+| Využití rezervace | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details) [/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft. spotřeb/reservationDetails](/rest/api/consumption/reservationsdetails) [Microsoft. spotřeb/reservationSummaries](/rest/api/consumption/reservationssummaries) |
 
-<sup>1</sup> služby azure a využití webu Marketplace třetích stran jsou k dispozici [podrobnosti o použití rozhraní API](/rest/api/consumption/usagedetails).
+<sup>1</sup> služba Azure a využití tržiště třetích stran jsou k dispozici v [rozhraní API s podrobnostmi o využití](/rest/api/consumption/usagedetails).
 
-Následující rozhraní API jsou k dispozici pro fakturační účty MCA:
+Pro fakturační účty MCA jsou k dispozici následující rozhraní API:
 
-| Účel | Rozhraní API smlouvy (MCA) zákazníků společnosti Microsoft |
+| Účel | Rozhraní API Microsoft Customer Agreement (MCA) |
 | --- | --- |
-| Fakturace účty<sup>2</sup> | Microsoft.Billing/billingAccounts |
-| Profily fakturace<sup>2</sup> | Microsoft.Billing/billingAccounts/billingProfiles |
-| Části faktury<sup>2</sup> | Microsoft.Billing/billingAccounts/invoiceSections |
-| Faktury | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
-| Fakturace předplatného | {scope}/billingSubscriptions |
+| Fakturační účty<sup>2</sup> | Microsoft. fakturace/billingAccounts |
+| Fakturační profily<sup>2</sup> | Microsoft. fakturace/billingAccounts/billingProfiles |
+| Oddíly faktury<sup>2</sup> | Microsoft. fakturace/billingAccounts/invoiceSections |
+| Faktury | Microsoft. fakturace/billingAccounts/billingProfiles/faktur |
+| Fakturace předplatných | {Scope}/billingSubscriptions |
 
-<sup>2</sup> rozhraní API vrátí seznam objektů, které jsou obory, kde prostředí pro správu nákladů na webu Azure Portal a rozhraní API pro provoz. Další informace o oborech Cost Management najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
+<sup>2</sup> rozhraní API vrací seznam objektů, které jsou obory, kde Cost Management prostředí Azure Portal a rozhraní API. Další informace o oborech Cost Management najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
 
-Pokud použijete všechny existující rozhraní API EA, musíte je pro fakturační účty MCA aktualizovat. Následující tabulka uvádí další změny integrace:
+Pokud používáte jakákoli existující rozhraní API EA, musíte je aktualizovat, aby podporovaly fakturační účty MCA. Následující tabulka uvádí další změny v integraci:
 
-| Účel | Staré nabídky | Nová nabídka |
+| Účel | Stará nabídka | Nová nabídka |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) obsah balíčku a konektoru | [Aplikace Microsoft Azure Consumption Insights Power BI](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) a [konektoru Azure Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | Balíček obsahu a konektor pro [Microsoft spotřeb Insights](/power-bi/desktop-connect-azure-consumption-insights) | [Microsoft Azure Consumption Insights Power BI aplikace](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) a [konektor Azure Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) |
 
-## <a name="apis-to-get-balance-and-credits"></a>Rozhraní API pro získání zůstatek a kredity
+## <a name="apis-to-get-balance-and-credits"></a>Rozhraní API pro získání rovnováhy a kreditů
 
-[Získání souhrnu Zůstatek](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) rozhraní API vám dává měsíční přehled:
+Souhrnné rozhraní API pro [získání zůstatku](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) vám poskytne Měsíční souhrn:
 
 - Zůstatky
 - Nové nákupy
-- Poplatky za služby Azure Marketplace
+- Poplatky za Azure Marketplace služby
 - Úpravy
-- Poplatky za Nadlimitní využití služby
+- Poplatky za nadlimitní využití služby
 
-Všechna rozhraní API využití jsou nahrazené nativních rozhraní API Azure, které používají Azure AD pro ověřování a autorizaci. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme se službou REST](/rest/api/azure/#create-the-request).
+Všechna rozhraní API pro vydanou spotřebu se nahrazují nativními rozhraními API Azure, která pro ověřování a autorizaci používají Azure AD. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme s REST](/rest/api/azure/#create-the-request).
 
-Rozhraní API získat souhrn zůstatek nahrazuje rozhraní API Microsoft.Billing/billingAccounts/billingProfiles/availableBalance.
+Souhrnné rozhraní API pro získání zůstatku je nahrazeno rozhraním API Microsoft. fakturace/billingAccounts/billingProfiles/availableBalance.
 
-Pokud chcete získat dostupné zůstatky dostupná rozhraní API pro vyrovnávat:
+K získání dostupných zůstatků s dostupným rozhraním API pro vyrovnávání zatížení:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/availableBalances?api-version=2018-11-01-preview` |
 
-## <a name="apis-to-get-cost-and-usage"></a>Rozhraní API pro získání nákladů a využití
+## <a name="apis-to-get-cost-and-usage"></a>Rozhraní API k získání nákladů a využití
 
-Získejte denní rozpis nákladů od využití služeb Azure, využití webu Marketplace třetích stran a další nákupy na Marketplace s následující rozhraní API. Následující rozhraní API samostatné byly sloučeny pro využití webu Marketplace třetích stran a služeb Azure. Staré rozhraní API jsou nahrazené [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails) rozhraní API. Přidá nákupy na Marketplace, které byly dříve zobrazí pouze v zůstatek souhrn k datu.
+Pomocí následujících rozhraní API získáte denní rozpis nákladů na využití služeb Azure, využití Marketplace a další nákupy na webu Marketplace. Následující samostatná rozhraní API se sloučila pro služby Azure a použití na tržišti třetích stran. Stará rozhraní API se nahradí rozhraním API [Microsoft. spotřeb/usageDetails](/rest/api/consumption/usagedetails) . Přidá nákupy na webu Marketplace, které byly dříve zobrazeny pouze v souhrnu salda do data.
 
-- [Získat podrobnosti o využití a stahování](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
-- [Získání podrobností/odeslat využití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
-- [Získat podrobnosti o využití/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
+- [Získat podrobnosti o využití/stáhnout](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
+- [Získat podrobnosti o využití/odeslat](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
+- [Získat podrobnosti o využití/UsageDetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
 - [Získat podrobnosti o využití/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
-- [Získat úložiště marketplace poplatek/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
-- [Získat úložiště marketplace poplatek/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
+- [Získat poplatek za marketplacecharges na webu Marketplace](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
+- [Získat poplatek za marketplacechargesbycustomdate na webu Marketplace](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
 
-Všechna rozhraní API využití jsou nahrazené nativních rozhraní API Azure, které používají Azure AD pro ověřování a autorizaci. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme se službou REST](/rest/api/azure/#create-the-request).
+Všechna rozhraní API pro vydanou spotřebu se nahrazují nativními rozhraními API Azure, která pro ověřování a autorizaci používají Azure AD. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme s REST](/rest/api/azure/#create-the-request).
 
-Předchozí rozhraní API se nahrazuje rozhraní API využití nebo použití podrobností.
+Všechna předchozí rozhraní API se nahradí rozhraním API pro využití a používání podrobností.
 
-Pokud chcete získat podrobnosti o použití rozhraní API pro využití podrobnosti:
+Získání podrobností o použití rozhraní API s podrobnostmi o využití:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | GET | `https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?api-version=2019-01-01` |
 
-Podrobnosti o použití rozhraní API, stejně jako u rozhraní API pro správu všech náklady, je k dispozici v několika oborech. Invoiced náklady jako by se tradičně dostat na úrovni registrace, použijte fakturační oboru profilu.  Další informace o oborech Cost Management najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
+Rozhraní API s podrobnostmi o využití, stejně jako u všech Cost Management rozhraní API, je k dispozici ve více oborech. U fakturovaných nákladů, jak byste tradičně získali na úrovni registrace, použijte rozsah fakturačního profilu.  Další informace o oborech Cost Management najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
 
-| Type | Formát ID |
+| type | Formát ID |
 | --- | --- |
 | Fakturační účet | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | Fakturační profil | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
-| Předplatné | `/subscriptions/{subscriptionId}` |
-| Skupina prostředků | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
+| Subscription | `/subscriptions/{subscriptionId}` |
+| Resource group | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
 
-Použijte následující parametry řetězce dotazu k aktualizaci kódu.
+Použijte následující parametry QueryString k aktualizaci kódu programování.
 
 | Staré parametry | Nové parametry |
 | --- | --- |
@@ -141,9 +141,9 @@ Použijte následující parametry řetězce dotazu k aktualizaci kódu.
 | `endTime=yyyy-MM-dd` | `endDate=yyyy-MM-dd` |
 | `startTime=yyyy-MM-dd` | `startDate=yyyy-MM-dd` |
 
-Text odpovědi změní také.
+Změnil se také text odpovědi.
 
-Původní text odpovědi:
+Původní tělo odpovědi:
 
 ```
 {
@@ -153,7 +153,7 @@ Původní text odpovědi:
 }
 ```
 
-Nový text odpovědi:
+Nové tělo odpovědi:
 
 ```
 {
@@ -168,144 +168,144 @@ Nový text odpovědi:
 }
 ```
 
-Název vlastnosti obsahující pole záznamů využití změněn od dat k _hodnoty_. Každý záznam pro plochý seznam podrobné vlastnosti. Ale každý záznam teď najdete všechny podrobnosti jsou nyní ve vnořené vlastnosti s názvem _vlastnosti_, kromě značek. Nová struktura je konzistentní s ostatními rozhraními API Azure. Změnily se některé názvy vlastností. V následující tabulce jsou uvedeny odpovídající vlastnosti.
+Název vlastnosti obsahující pole záznamů o využití se změnil z dat na _hodnoty_. Každý záznam použitý k dispozici má nestrukturovaný seznam podrobných vlastností. Každý záznam teď ale všechny podrobnosti jsou teď ve vnořené vlastnosti s názvem _vlastnosti_, s výjimkou značek. Nová struktura je konzistentní s jinými rozhraními API Azure. Některé názvy vlastností se změnily. V následující tabulce jsou uvedeny odpovídající vlastnosti.
 
-| Původní vlastnosti | Nové vlastnosti | Poznámky |
+| Stará vlastnost | Nová vlastnost | Poznámky |
 | --- | --- | --- |
-| AccountId | neuvedeno | Vytvoření odběru se nesleduje. Použijte invoiceSectionId (stejné jako departmentId). |
-| AccountNameAccountOwnerId a AccountOwnerEmail | neuvedeno | Vytvoření odběru se nesleduje. Použijte invoiceSectionName (stejné jako departmentName). |
-| AdditionalInfo | additionalInfo | &nbsp;  |
-| ChargesBilledSeparately | isAzureCreditEligible | Všimněte si, že tyto vlastnosti jsou opaky. Pokud isAzureCreditEnabled hodnotu true, bude ChargesBilledSeparately vracet hodnotu false. |
-| ConsumedQuantity | množství | &nbsp; |
-| ConsumedService | consumedService | Přesné řetězcové hodnoty se mohou lišit. |
-| ConsumedServiceId | Žádný | &nbsp; |
-| Nákladové středisko | Nákladové středisko | &nbsp; |
+| AccountId | Není k dispozici | Autor předplatného není sledován. Použijte invoiceSectionId (totéž jako departmentId). |
+| AccountNameAccountOwnerId a AccountOwnerEmail | Není k dispozici | Autor předplatného není sledován. Použijte invoiceSectionName (stejné jako oddělení). |
+| Další informace | additionalInfo | &nbsp;  |
+| ChargesBilledSeparately | isAzureCreditEligible | Všimněte si, že tyto vlastnosti jsou Opaky. Pokud má isAzureCreditEnabled hodnotu true, ChargesBilledSeparately by byl false. |
+| Využité množství | quantity | &nbsp; |
+| Využívaná služba | consumedService | Přesné řetězcové hodnoty se mohou lišit. |
+| ConsumedServiceId | Žádné | &nbsp; |
+| Nákladové středisko | costCenter | &nbsp; |
 | Datum a usageStartDate | date | &nbsp;  |
-| Den | Žádný | Analyzuje den od data. |
-| DepartmentId | invoiceSectionId | Přesné hodnoty se liší. |
-| Název oddělení | invoiceSectionName | Přesné řetězcové hodnoty se mohou lišit. Části faktury tak, aby odpovídaly oddělení, nakonfigurujte v případě potřeby. |
-| ExtendedCost a nákladů | costInBillingCurrency | &nbsp;  |
-| InstanceId | resourceId | &nbsp;  |
-| Opakované poplatky | Žádný | &nbsp;  |
+| Den | Žádné | Analyzuje den od data. |
+| ID oddělení | invoiceSectionId | Přesné hodnoty se liší. |
+| Název oddělení | invoiceSectionName | Přesné řetězcové hodnoty se mohou lišit. V případě potřeby nakonfigurujte v sekcích faktury odpovídající oddělení. |
+| ExtendedCost a náklady | costInBillingCurrency | &nbsp;  |
+| ID instance | resourceId | &nbsp;  |
+| Je pravidelný poplatek | Žádné | &nbsp;  |
 | Location | location | &nbsp;  |
-| meterCategory | meterCategory | Přesné řetězcové hodnoty se mohou lišit. |
+| Kategorie měřiče | meterCategory | Přesné řetězcové hodnoty se mohou lišit. |
 | ID měřiče | meterId | Přesné řetězcové hodnoty se liší. |
-| meterName | meterName | Přesné řetězcové hodnoty se mohou lišit. |
-| MeterRegion | meterRegion | Přesné řetězcové hodnoty se mohou lišit. |
-| meterSubCategory | meterSubCategory | Přesné řetězcové hodnoty se mohou lišit. |
-| Měsíc | Žádný | Analyzuje měsíců od data. |
-| Název nabídky | Žádný | Použití publisherName a productOrderName. |
-| offerId | Žádný | &nbsp;  |
-| Pořadové číslo | Žádný | &nbsp;  |
-| PartNumber | Žádný | Použijte meterId a productOrderName k jednoznačné identifikaci ceny. |
+| Název měřiče | meterName | Přesné řetězcové hodnoty se mohou lišit. |
+| Oblast měřiče | meterRegion | Přesné řetězcové hodnoty se mohou lišit. |
+| Podkategorie měřiče | meterSubCategory | Přesné řetězcové hodnoty se mohou lišit. |
+| Měsíc | Žádné | Analyzuje měsíc od data. |
+| Název nabídky | Žádné | Použijte Publisher a productOrderName. |
+| OfferId | Žádné | &nbsp;  |
+| Číslo objednávky | Žádné | &nbsp;  |
+| PartNumber | Žádné | Pomocí meterId a productOrderName jednoznačně Identifikujte ceny. |
 | Název plánu | productOrderName | &nbsp;  |
-| Product | Product |   |
-| productId | productId | Přesné řetězcové hodnoty se liší. |
+| Produkt | Produkt |   |
+| ID produktu | productId | Přesné řetězcové hodnoty se liší. |
 | Název vydavatele | publisherName | &nbsp;  |
-| ResourceGroup | resourceGroupName | &nbsp;  |
+| Skupina prostředků | resourceGroupName | &nbsp;  |
 | ResourceGuid | meterId | Přesné řetězcové hodnoty se liší. |
-| resourceLocation | resourceLocation | &nbsp;  |
-| ResourceLocationId | Žádný | &nbsp;  |
-| ResourceRate | effectivePrice | &nbsp;  |
-| ServiceAdministratorId | neuvedeno | &nbsp;  |
+| Umístění prostředku | resourceLocation | &nbsp;  |
+| ResourceLocationId | Žádné | &nbsp;  |
+| Sazba zdroje | effectivePrice | &nbsp;  |
+| ServiceAdministratorId | Není k dispozici | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
-| ServiceInfo2 | serviceInfo2 | &nbsp;  |
+| Informace o službách 2 | serviceInfo2 | &nbsp;  |
 | ServiceName | meterCategory | Přesné řetězcové hodnoty se mohou lišit. |
 | ServiceTier | meterSubCategory | Přesné řetězcové hodnoty se mohou lišit. |
-| StoreServiceIdentifier | neuvedeno | &nbsp;  |
-| subscriptionGuid | subscriptionId | &nbsp;  |
+| StoreServiceIdentifier | Není k dispozici | &nbsp;  |
+| GUID odběru | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
-| subscriptionName | subscriptionName | &nbsp;  |
-| Tags | značky | Vlastnosti značky se vztahují na kořenový objekt, nikoli na vnořené vlastnosti. |
-| unitOfMeasure | unitOfMeasure | Přesné řetězcové hodnoty se liší. |
+| Název odběru | subscriptionName | &nbsp;  |
+| Tags | značky | Vlastnost tagss se vztahuje na kořenový objekt, nikoli na vlastnost vnořené vlastnosti. |
+| Měrná jednotka | unitOfMeasure | Přesné řetězcové hodnoty se liší. |
 | usageEndDate | date | &nbsp;  |
-| Rok | Žádný | Analyzuje rok od data. |
-| (nové) | billingCurrency | Měna použitá pro příslušný poplatek. |
-| (nové) | billingProfileId | Jedinečné ID pro fakturační profil (stejně jako s registrací). |
-| (nové) | billingProfileName | Název fakturačního profilu (stejně jako s registrací). |
-| (nové) | chargeType | Slouží k rozlišení využití služeb Azure, využití webu Marketplace a nákupy. |
-| (nové) | invoiceId | Jedinečné ID pro fakturu. Prázdná pro aktuální, otevřete měsíce. |
-| (nové) | publisherType | Typ vydavatele pro nákupy od jiných. Prázdná pro využití. |
-| (nové) | serviceFamily | Typ nákupu. Prázdná pro využití. |
-| (nové) | servicePeriodEndDate | Datum ukončení zakoupené služby. |
-| (nové) | servicePeriodStartDate | Počáteční datum zakoupené služby. |
+| Rok | Žádné | Analyzuje rok od data. |
+| New | billingCurrency | Měna použitá pro poplatek |
+| New | billingProfileId | Jedinečné ID pro fakturační profil (stejné jako registrace). |
+| New | billingProfileName | Název fakturačního profilu (stejný jako registrace). |
+| New | chargeType | Slouží k odlišení využití služeb Azure, využití Marketplace a nákupů. |
+| New | invoiceId | Jedinečné ID faktury Prázdné pro aktuální, otevřený měsíc. |
+| New | publisherType | Typ vydavatele pro nákupy Prázdné pro použití. |
+| New | serviceFamily | Typ nákupu. Prázdné pro použití. |
+| New | servicePeriodEndDate | Koncové datum zakoupené služby. |
+| New | servicePeriodStartDate | Počáteční datum zakoupené služby. |
 
-## <a name="billing-periods-api-replaced-by-invoices-api"></a>Rozhraní API období nahrazuje faktury rozhraní API pro fakturaci
+## <a name="billing-periods-api-replaced-by-invoices-api"></a>Rozhraní API pro fakturační období nahrazené rozhraním API faktury
 
-Fakturační účty MCA nepoužívejte fakturační období. Místo toho používají faktury oboru náklady na konkrétní fakturační období. [Rozhraní API pro fakturaci období](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) nahrazuje rozhraní API faktury. Všechna rozhraní API využití jsou nahrazené nativních rozhraní API Azure, které používají Azure AD pro ověřování a autorizaci. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme se službou REST](/rest/api/azure/#create-the-request).
+Fakturační účty MCA nepoužívají fakturační období. Místo toho používají faktury k oboru nákladů na konkrétní fakturační období. [Rozhraní API pro fakturační období](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) nahrazuje rozhraní API pro fakturaci. Všechna rozhraní API pro vydanou spotřebu se nahrazují nativními rozhraními API Azure, která pro ověřování a autorizaci používají Azure AD. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme s REST](/rest/api/azure/#create-the-request).
 
-Pokud chcete získat faktury s rozhraním API faktury:
+K získání faktury pomocí rozhraní API pro fakturaci:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoices?api-version=2018-11-01-preview` |
 
-## <a name="price-sheet-apis"></a>Rozhraní API pro ceny list
+## <a name="price-sheet-apis"></a>Rozhraní API ceníku
 
-Tato část popisuje stávajících rozhraní API tabulky ceny a poskytuje doporučení pro přesun do rozhraní API tabulky ceny pro smlouvy Microsoft zákazníka. Také popisuje rozhraní API tabulky ceny pro smlouvy Microsoft zákazníka a vysvětluje polí v nepublikovaných ceníků. [Organizace získat ceník](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) a [Enterprise získáte fakturačních obdobích, která](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) jsou rozhraní API pro zákazníka smlouvu se společností Microsoft (Microsoft.Billing/billingAccounts/billingProfiles nahrazuje rozhraní API tabulky cena / pricesheet). Nové rozhraní API podporuje JSON a sdíleného svazku clusteru formáty ve formátech, asynchronní REST. Všechna rozhraní API využití jsou nahrazené nativních rozhraní API Azure, které používají Azure AD pro ověřování a autorizaci. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme se službou REST](/rest/api/azure/#create-the-request).
+Tato část popisuje existující rozhraní API ceníku a poskytuje doporučení pro přechod na rozhraní API ceníku pro smlouvy o zákaznících Microsoftu. Popisuje také rozhraní API ceníku pro smlouvy o zákaznících Microsoftu a vysvětluje pole v ceníkech. Rozhraní API pro [podnikové získání ceníku](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) a [podnik získá fakturační období](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) nahrazuje rozhraní API ceníku pro smlouvy o zákaznících Microsoftu (Microsoft. faktura/billingAccounts/billingProfiles/pricesheet). V případě asynchronních formátů REST podporuje nové rozhraní API formáty JSON i CSV. Všechna rozhraní API pro vydanou spotřebu se nahrazují nativními rozhraními API Azure, která pro ověřování a autorizaci používají Azure AD. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme s REST](/rest/api/azure/#create-the-request).
 
-### <a name="billing-enterprise-apis"></a>Rozhraní API pro fakturaci Enterprise
+### <a name="billing-enterprise-apis"></a>Fakturační podniková rozhraní API
 
-API pro fakturaci Enterprise s podnikové registrace umožňuje získat ceny a informace o fakturačním období. Ověřování a autorizaci používat Azure Active Directory webových tokenů.
+Použili jste fakturovaná podniková rozhraní API s podnikovými registracemi k získání informací o cenách a fakturačních obdobích. Ověřování a autorizace používané Azure Active Directory webovými tokeny.
 
-Pokud chcete získat příslušné ceny pro zadaný podnikového zápisu ceníku a fakturační období rozhraní API:
+Pokud chcete získat platné ceny pro zadaný Podnikový zápis pomocí rozhraní API ceníku a fakturačního období:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet` |
 | GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet` |
 
-### <a name="price-sheet-api-for-microsoft-customer-agreements"></a>Ceny rozhraní API list pro smlouvy Microsoft zákazníka
+### <a name="price-sheet-api-for-microsoft-customer-agreements"></a>Rozhraní API ceníku pro smlouvy o zákaznících Microsoftu
 
-Pomocí rozhraní API tabulky ceny pro smlouvy Microsoft zákazníka chcete-li zobrazit ceny pro všechny služby poskytované v konektoru Azure Consumption and Marketplace. Pro fakturační profil uvedené ceny platí pro všechna předplatná, která patří do fakturační profil.
+Pomocí rozhraní API ceníku pro smlouvy Microsoft Customer můžete zobrazit ceny za všechny služby Azure a spotřebu na webu Marketplace. Ceny zobrazené pro fakturační profil platí pro všechna předplatná, která patří do fakturačního profilu.
 
-Pomocí rozhraní API tabulky cena zobrazíte všechna data ceník služby Azure Consumption ve formátu CSV:
+Pomocí rozhraní API ceníku si můžete zobrazit všechna data ceníku služeb Azure spotřebovaná ve formátu CSV:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=csv` |
 
-Zobrazíte všechna data ceník služby Azure Consumption ve formátu JSON pomocí rozhraní API tabulky Cena:
+Pomocí rozhraní API ceníku si můžete zobrazit všechny Ceníní data služby Azure spotřebovaná v tabulce ve formátu JSON:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
 
-Pomocí rozhraní API vrátí ceníku pro celý účet. Ale můžete také získat zkrácenou verzi ceníku ve formátu PDF. Souhrn obsahuje konektoru Azure Consumption and Marketplace využití služby, které se účtují pro konkrétní fakturu. Faktura je identifikován InvoiceID {nebyl}, což je stejná jako **číslo faktury** uvedené v souboru PDF souhrn faktury. Tady je příklad.
+Když použijete rozhraní API, vrátí se ceník pro celý účet. Můžete ale také získat zhuštěnou verzi ceníku ve formátu PDF. Shrnutí zahrnuje služby Azure pro využívání a spotřebu na webu Marketplace, které se účtují za konkrétní fakturu. Faktura je identifikována číslem {invoiceId}, který je stejný jako **číslo faktury** zobrazené v souborech PDF v souhrnném dokumentu faktury. Tady je příklad.
 
-![Zobrazuje číslo faktury, která odpovídá InvoiceID nebyl obrázku](./media/migrate-cost-management-api/invoicesummary.png)
+![Příklad obrázku znázorňujícího číslo faktury, které odpovídá InvoiceId](./media/migrate-cost-management-api/invoicesummary.png)
 
-Zobrazení informací faktury s rozhraním API tabulky cena ve formátu CSV:
+Zobrazení informací o fakturaci pomocí rozhraní API ceníku ve formátu CSV:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
-Zobrazení informací faktury s rozhraním API tabulky cena ve formátu JSON:
+Postup zobrazení informací o fakturaci pomocí rozhraní API ceníku ve formátu JSON:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
-Najdete v článku odhad ceny platné pro libovolnou službu Azure Consumption nebo Marketplace spotřebu v aktuálního fakturačního cyklu otevřít nebo limitu služby.
+V aktuálním otevřeném fakturačním cyklu nebo období služby můžete také zobrazit odhadované ceny pro jakoukoli spotřebu Azure nebo službu Marketplace pro spotřebu na webu Marketplace.
 
-Chcete-li zobrazit odhad ceny za spotřebu služeb pomocí rozhraní API tabulky cena ve formátu CSV:
+Chcete-li zobrazit odhadované ceny pro služby spotřeby s rozhraním API ceníku ve formátu CSV:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
-Chcete-li zobrazit odhad ceny za spotřebu služeb pomocí rozhraní API tabulky cena ve formátu JSON:
+Chcete-li zobrazit odhadované ceny pro služby spotřeby s rozhraním API ceníku ve formátu JSON:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
-Rozhraní API Microsoft zákazníka smlouvy cena listu jsou *asynchronního rozhraní API REST*. Odpovědi na rozhraní API se změnil z starší synchronního rozhraní API. Změní také těle odpovědi rozhraní API.
+Rozhraní API ceníku zákaznické smlouvy od Microsoftu jsou *asynchronní rozhraní REST API*. Odezvy pro rozhraní API se změnily ze starších synchronních rozhraní API. Změnil se také text odpovědi rozhraní API.
 
-#### <a name="old-response-body"></a>Původní text odpovědi
+#### <a name="old-response-body"></a>Původní tělo odpovědi
 
-Tady je příklad synchronní odpověď rozhraní REST API:
+Tady je příklad synchronní REST API odpovědi:
 
 ```
 [
@@ -324,9 +324,9 @@ Tady je příklad synchronní odpověď rozhraní REST API:
     ]
 ```
 
-#### <a name="new-response-body"></a>Nový text odpovědi
+#### <a name="new-response-body"></a>Nové tělo odpovědi
 
-Podpora rozhraní API [REST Azure asynchronní](../azure-resource-manager/resource-manager-async-operations.md) formátu. Volání rozhraní API pomocí GET a zobrazí se následující odpověď:
+Rozhraní API podporují [asynchronní formát REST Azure](../azure-resource-manager/resource-manager-async-operations.md) . Volání rozhraní API pomocí GET a obdržíte následující odpověď:
 
 ```
 No Response Body
@@ -334,7 +334,7 @@ No Response Body
 HTTP Status 202 Accepted
 ```
 
-Umístění výstupu se odesílají následující hlavičky:
+Následující hlavičky jsou odesílány s umístění výstupu:
 
 ```
 Location:https://management.azure.com/providers/Microsoft.Consumption/operationresults/{operationId}?sessiontoken=XZDFSnvdkbkdsb==
@@ -347,7 +347,7 @@ OData-EntityId: {operationId}
 
 ```
 
-Ujistěte se, volání do umístění jiného GET. Odpověď na volání GET je stejný, dokud operace dosaženo stavu dokončení nebo selhání. Po dokončení vrátí odpověď na místo volání GET adresu URL pro stažení. Tak, jako kdyby operace se provedl ve stejnou dobu. Tady je příklad:
+Zajistěte další volání GET do umístění. Odpověď na volání metody GET je stejná, dokud operace nedosáhne stavu dokončení nebo selhání. Po dokončení vrátí odpověď na umístění volání GET adresu URL pro stahování. Stejně, jako kdyby byla operace provedena ve stejnou dobu. Tady je příklad:
 
 ```
 HTTP Status 200
@@ -363,155 +363,155 @@ HTTP Status 200
                      }
 ```
 
-Klienta můžete také provést volání GET `Azure-AsyncOperation`. Koncový bod vrátí stav operace.
+Klient může také provést volání metody GET pro `Azure-AsyncOperation`. Koncový bod vrátí stav operace.
 
-Pole v starší API Enterprise získáte seznam ceny v následující tabulce. Obsahuje odpovídající pole nového ceníku pro smlouvy Microsoft zákazníka:
+V následující tabulce jsou uvedena pole v seznamu starší verze Enterprise získat ceník. Obsahuje odpovídající pole v novém ceníku pro smlouvy o zákaznících Microsoftu:
 
-| Původní vlastnosti | Nové vlastnosti | Poznámky |
+| Stará vlastnost | Nová vlastnost | Poznámky |
 | --- | --- | --- |
-| billingPeriodId  | _Není k dispozici_ | Není k dispozici. Pro smlouvy Microsoft zákazníka nahradí koncept billingPeriodId faktury a přidružené ceníku. |
+| billingPeriodId  | _Nelze použít_ | Není k dispozici. U zákaznických smluv od Microsoftu se fakturovaná a přidružená cenová stránka nahradila konceptem billingPeriodId. |
 | meterId  | meterId | &nbsp;  |
 | unitOfMeasure  | unitOfMeasure | Přesné řetězcové hodnoty se mohou lišit. |
-| includedQuantity  | includedQuantity | Není k dispozici pro služby v Microsoft zákaznických smluv. |
-| PartNumber  | _Není k dispozici_ | Místo toho použijte kombinaci productOrderName (stejné jako offerId) a meterid. |
-| UnitPrice  | UnitPrice | Cena za jednotku platí za služby využité v Microsoft zákaznických smluv. |
-| Kód měny  | pricingCurrency | Microsoft zákaznických smluv mají cenu reprezentace v cenách měn a fakturační Měna. Kód měny odpovídá pricingCurrency ve smlouvách Microsoft zákazníka. |
-| offerId | productOrderName | Místo OfferId můžete použít productOrderName ale není stejná jako OfferId. Ale productOrderName a měření určit, že ceny ve smlouvách Microsoft zákazníků týkající se meterId a Offerid ve starší verzi registrace. |
+| includedQuantity  | includedQuantity | Neplatí pro služby v zákaznických smlouvách Microsoftu. |
+| partNumber  | _Nelze použít_ | Místo toho použijte kombinaci productOrderName (totéž jako hodnotami OfferId) a MeterId. |
+| JednotkováCena  | JednotkováCena | Jednotková cena se vztahuje na služby spotřebované v zákaznických smlouvách Microsoftu. |
+| currencyCode  | pricingCurrency | Zákaznické smlouvy Microsoftu obsahují cenové reprezentace v cenové měně a v měně fakturace. CurrencyCode odpovídá pricingCurrencyům v rámci smluv o zákaznících Microsoftu. |
+| offerId | productOrderName | Místo hodnotami OfferId můžete použít productOrderName, ale není totéž jako hodnotami OfferId. ProductOrderName a měřič však určují ceny v rámci smluv o zákaznících Microsoftu, které se týkají meterId a hodnotami OfferId při starších registraci. |
 
-## <a name="consumption-price-sheet-api-operations"></a>Operace rozhraní API tabulky cena spotřeby
+## <a name="consumption-price-sheet-api-operations"></a>Provozní operace rozhraní API cenového listu spotřeby
 
-Pro smlouvy Enterprise, můžete použít rozhraní API tabulky cena spotřeby [získat](/rest/api/consumption/pricesheet/get) a [získat podle fakturační období](/rest/api/consumption/pricesheet/getbybillingperiod) operací pro obor ID předplatného nebo fakturačního období. Rozhraní API pomocí ověřování Azure Resource Manageru.
+V případě smluv Enterprise jste v rámci předplatného nebo fakturačního období použili operace [získat](/rest/api/consumption/pricesheet/get) a [získat podle](/rest/api/consumption/pricesheet/getbybillingperiod) ceny pro účely fakturačního období pro obor. Rozhraní API používá ověřování pomocí správy prostředků Azure.
 
-Získat informace o cenách z ceníku pro obor s rozhraním API tabulky Cena:
+Chcete-li získat informace ceníku pro obor s rozhraním API ceníku:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
-Chcete-li získat informace o cenách z ceníku fakturační období s rozhraním API tabulky Cena:
+Chcete-li získat informace o ceníku podle fakturačního období pomocí rozhraní API ceníku:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
-Místo výše uvedené koncové body rozhraní API použijte následující dotazy pro smlouvy Microsoft zákazníka:
+Místo výše uvedených koncových bodů rozhraní API použijte pro smlouvy Microsoft Customer Agreement následující ty:
 
-**Ceny rozhraní API list pro zákazníka smlouvu se společností Microsoft (asynchronní rozhraní REST API)**
+**Rozhraní API ceníku pro smlouvy o zákaznících Microsoftu (asynchronní REST API)**
 
-Toto rozhraní API je pro smlouvy Microsoft zákazníků a poskytuje další atributy.
+Toto rozhraní API je pro zákaznické smlouvy Microsoftu a poskytuje další atributy.
 
-**Ceníku pro fakturační profil obor v Vytvoření fakturačního účtu**
+**Ceník pro obor fakturačního profilu ve fakturačním účtu**
 
-Toto rozhraní API se stávajícím rozhraním API. Zajištění nového ceníku pro fakturační profil v fakturační účet byl aktualizován.
+Toto rozhraní API je existující rozhraní API. Byla aktualizována, aby poskytovala ceník pro fakturační profil ve fakturačním účtu.
 
-## <a name="price-sheet-for-a-scope-by-billing-account"></a>Ceník pro obor podle fakturační účet
+## <a name="price-sheet-for-a-scope-by-billing-account"></a>Ceník pro obor podle fakturačního účtu
 
-Ověřování pomocí Azure Resource Manager se používá při získat ceník v oboru registrace s fakturačním účtu.
+Ověřování Azure Resource Manager se používá při získání ceníku v oboru registrace ve fakturačním účtu.
 
-Pokud chcete získat ceník na účet pro zápis ve fakturační účet:
+Postup získání ceníku na účtu pro registraci ve fakturačním účtu:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | GET | `/providers/Microsoft.Billing/billingAccounts/65085863/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
-Zákaznické smlouvy Microsoft použijte informace v následující části. Poskytuje vlastnosti pole použité pro smlouvy Microsoft Customer.
+Pro smlouvu o zákaznících Microsoftu použijte informace v následující části. Poskytuje vlastnosti polí používané pro smlouvy o zákaznících Microsoftu.
 
-### <a name="price-sheet-for-a-billing-profile-scope-in-a-billing-account"></a>Ceníku pro fakturační profil obor v fakturační účet
+### <a name="price-sheet-for-a-billing-profile-scope-in-a-billing-account"></a>Ceník pro obor fakturačního profilu ve fakturačním účtu
 
-Aktualizovaný ceník fakturační účet rozhraní API získá ceníku ve formátu CSV. Pokud chcete získat ceník v oboru fakturační profil pro MCA:
+Aktualizovaný ceník pomocí rozhraní API fakturačního účtu získá ceník ve formátu CSV. Pro získání ceníku v oboru fakturačního profilu pro MCA:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | GET | `/providers/Microsoft.Billing/billingAccounts/28ae4b7f-41bb-581e-9fa4-8270c857aa5f/billingProfiles/ef37facb-cd6f-437a-9261-65df15b673f9/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
-V oboru registrace EA odpověď rozhraní API a vlastnosti jsou identické. Vlastnosti odpovídají vlastnostem MCA stejné.
+V oboru registrace EA je odpověď rozhraní API a vlastnosti identické. Vlastnosti odpovídají stejným vlastnostem MCA.
 
-Starší vlastnosti [rozhraní API Azure Resource Manageru cena list](/rest/api/consumption/pricesheet) a stejné nové vlastnosti jsou v následující tabulce.
+Starší vlastnosti pro [Azure Resource Manager rozhraní API ceníku](/rest/api/consumption/pricesheet) a stejné nové vlastnosti jsou v následující tabulce.
 
-| Staré Azure Resource Manageru cena list rozhraní API vlastnost  | Vlastnosti nového rozhraní API služeb Microsoft zákazníka smlouvy cena list   | Popis |
+| Stará vlastnost rozhraní API ceníku Azure Resource Manager  | Nová vlastnost rozhraní API ceníku zákaznické smlouvy Microsoftu   | Popis |
 | --- | --- | --- |
-| ID měření | _MeterId_ | Jedinečný identifikátor pro měřidla. Stejné jako meterId. |
-| Název měřiče | meterName | Název měřiče. Představuje nasaditelný prostředky služeb Azure. |
-| Kategorie měřiče  | service | Název kategorie klasifikace pro měřidla. Stejné jako u služby Microsoft zákazníka smlouvy ceníku. Přesné řetězcové hodnoty se liší. |
-| Podkategorie měřiče | meterSubCategory | Název dílčí klasifikace v rámci kategorie měřiče. Podle klasifikace rozdílů mezi sadu základních funkcí ve službě. Například základní SQL DB vs. standardní databázi SQL. |
+| ID měřiče | _meterId_ | Jedinečný identifikátor pro měřič Stejné jako meterId. |
+| Název měřiče | meterName | Název měřiče Měřič představuje prostředek nasazení služby Azure. |
+| Kategorie měřiče  | service | Název kategorie klasifikace pro měřič Stejné jako služba v ceníku zákaznických smluv společnosti Microsoft. Přesné řetězcové hodnoty se liší. |
+| Podkategorie měřiče | meterSubCategory | Název kategorie podklasifikace měřiče Na základě klasifikace rozlišení sady funkcí vysoké úrovně v rámci služby. Například základní databáze SQL databáze vs Standard SQL DB. |
 | Oblast měřiče | meterRegion | &nbsp;  |
-| Jednotka | _Není k dispozici_ | Může být analyzován z unitOfMeasure. |
-| Jednotka měření | unitOfMeasure | &nbsp;  |
-| Výrobní číslo | _Není k dispozici_ | Místo partNumber použijte k jednoznačné identifikaci cena za fakturační profil productOrderName a MeterId. Na faktuře MCA místo partNumber v MCA faktury jsou uvedena pole. |
-| Cena za jednotku | UnitPrice | Cena za jednotku smlouvy zákazníka se společností Microsoft. |
-| Kód měny | pricingCurrency | Microsoft zákaznických smluv představují ceny v měně ceny a fakturace měny. Kód měny je stejný jako pricingCurrency ve smlouvách Microsoft zákazníka. |
-| Zahrnuté množství | includedQuantity | Není k dispozici ke službám ve smlouvách Microsoft zákazníka. Zobrazit s hodnotou nula. |
-|  Id nabídky  | productOrderName | Namísto OfferId použijte productOrderName. Není stejný jako OfferId, productOrderName a měření zjistit ceny ve smlouvách Microsoft zákazníka. Ve starší verzi registrací souvisejících s meterId a Offerid. |
+| Jednotka | _Nelze použít_ | Dá se analyzovat z unitOfMeasure. |
+| Měrná jednotka | unitOfMeasure | &nbsp;  |
+| Číslo části | _Nelze použít_ | Místo partNumber použijte productOrderName a MeterId k jednoznačné identifikaci ceny pro fakturační profil. Pole jsou uvedena na faktuře MCA místo partNumber na fakturách MCA. |
+| Jednotková cena | JednotkováCena | Cena za jednotku zákaznických smluv Microsoftu |
+| Kód měny | pricingCurrency | Smlouvy o zákaznících Microsoftu představuje ceny v cenové měně a v měně fakturace. Kód měny je stejný jako pricingCurrency v zákaznických smlouvách Microsoftu. |
+| Zahrnuté množství | includedQuantity | Neplatí pro služby v zákaznických smlouvách Microsoftu. Zobrazit s hodnotami nula |
+|  ID nabídky  | productOrderName | Místo hodnotami OfferId použijte productOrderName. To není stejné jako hodnotami OfferId, ale productOrderName a měřič určují ceny v zákaznických smlouvách Microsoftu. Související s meterId a hodnotami OfferId ve starších registraci. |
 
-Ceny pro smlouvy Microsoft zákazníků je definován jiným způsobem než smlouvy Enterprise. Cena služby v podnikového zápisu je jedinečný pro produkt, PartNumber, měřidla a nabídky. PartNumber není používanými ve smlouvách Microsoft zákazníka.
+Cena za smlouvy Microsoft Customer Agreement je definována odlišně než u smluv Enterprise. Cena za služby v podnikovém zápisu je jedinečná pro produkt, PartNumber, měřič a nabídku. PartNumber se nepoužívá v zákaznických smlouvách Microsoftu.
 
-Ceny služby Azure Consumption, který je součástí smlouvy zákazníka Microsoftu je jedinečný pro productOrderName a meterId. Představují měřiče služby a plán produktu.
+Cena služby spotřeba za Azure, která je součástí smlouvy o zákaznících Microsoftu, je jedinečná pro productOrderName a meterId. Představují měřič služby a plán produktu.
 
-K synchronizaci mezi ceníku a jeho použití v rozhraní API podrobnosti o použití, můžete použít productOrderName a meterId.
+Pokud chcete sjednotit ceny mezi ceníkem a využitím v rozhraní API s podrobnostmi využití, můžete použít productOrderName a meterId.
 
-Uživatelé, kteří mají fakturace profilu vlastník, Přispěvatel, Čtenář a fakturace práva správce, můžete si stáhnout ceníku.
+Ceník můžou stáhnout uživatelé s právy vlastník fakturačního profilu, přispěvatel, čtenář a správce fakturace.
 
-Ceník zahrnuje ceny za služby, jejichž cena je založená na využití. Služby zahrnují využití Azure a využití webu Marketplace. Nejnovějšími cenami na konci každé období služby je uzamčen a použít pro použití v jedné službě období. Pro služby konektoru Azure consumption limitu služby je obvykle kalendářní měsíc.
+Ceník zahrnuje ceny za služby, jejichž ceny vycházejí z využití. Mezi tyto služby patří využití Azure a využití Marketplace. Poslední cena na konci každého období služby se uzamkne a použije se k využití v rámci jedné období služby. Pro služby Azure spotřeber je období služby obvykle kalendářní měsíc.
 
-### <a name="retired-price-sheet-api-fields"></a>Vyřazeno polí listu ceny rozhraní API
+### <a name="retired-price-sheet-api-fields"></a>Vyřazená pole APLIKAČNÍho ceníku
 
-Následující pole jsou buď není k dispozici v rozhraní API od Microsoftu zákazníka smlouvy cena list nebo mají stejná pole.
+Následující pole nejsou k dispozici v rozhraních API ceníku zákaznické smlouvy společnosti Microsoft ani mají stejná pole.
 
-|Vyřazeno pole| Popis|
+|Vyřazené pole| Popis|
 |---|---|
-| billingPeriodId | Nejsou k dispozici. Odpovídá InvoiceID nebyl pro MCA. |
+| billingPeriodId | Nelze použít. Odpovídá InvoiceId pro MCA. |
 | offerId | Není k dispozici. Odpovídá productOrderName v MCA. |
-| meterCategory  | Není k dispozici. Služba v MCA odpovídá. |
-| Jednotka | Není k dispozici. Může být analyzován z unitOfMeasure. |
-| Kód měny | Stejné jako pricingCurrency v MCA. |
+| meterCategory  | Není k dispozici. Odpovídá službě v MCA. |
+| jednotka | Není k dispozici. Dá se analyzovat z unitOfMeasure. |
+| currencyCode | Stejné jako pricingCurrency v MCA. |
 | meterLocation | Stejné jako meterRegion v MCA. |
-| partNumber partnumber | Nedá se použít kvůli výrobní číslo není uveden ve MCA faktury. Místo partnumber použijte kombinaci meterId a productOrderName k jednoznačné identifikaci ceny. |
+| partNumber partnumber | Nelze použít, protože číslo součásti není uvedeno v části faktury MCA. Místo partNumber použijte kombinaci meterId a productOrderName k jednoznačné identifikaci cen. |
 | totalIncludedQuantity | Není k dispozici. |
 | pretaxStandardRate  | Není k dispozici. |
 
-## <a name="reservation-instance-charge-api-replaced"></a>Rezervované Instance poplatek za rozhraní API nahradit
+## <a name="reservation-instance-charge-api-replaced"></a>Nahradilo se rozhraní API pro účtování instance rezervace.
 
-Můžete získat fakturační transakce pro nákup rezervace se [API poplatku za rezervované Instance](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges). Nové rozhraní API zahrnuje všechny nákupy, včetně nabídky na webu Marketplace třetích stran. Všechna rozhraní API využití jsou nahrazené nativních rozhraní API Azure, které používají Azure AD pro ověřování a autorizaci. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme se službou REST](/rest/api/azure/#create-the-request). Rozhraní API pro poplatek za rezervované Instance se nahrazuje rozhraní API pro transakce.
+Fakturační transakce pro nákupy rezervací můžete získat pomocí [rozhraní API pro poplatky za rezervované instance](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges). Nové rozhraní API zahrnuje všechny nákupy, včetně nabídek na webu Marketplace třetích stran. Všechna rozhraní API pro vydanou spotřebu se nahrazují nativními rozhraními API Azure, která pro ověřování a autorizaci používají Azure AD. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme s REST](/rest/api/azure/#create-the-request). Rozhraní API pro poplatky za rezervované instance nahrazuje rozhraní API transakcí.
 
-Pokud chcete získat rezervace nákupní transakce s transakcí rozhraní API:
+Získání transakcí nákupu rezervací pomocí rozhraní API pro transakce:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/transactions?api-version=2018-11-01-preview` |
 
-## <a name="recommendations-apis-replaced"></a>Doporučení nahrazuje rozhraní API
+## <a name="recommendations-apis-replaced"></a>Nahrazená rozhraní API doporučení
 
-Rozhraní API doporučení nákupu rezervované Instance poskytují využití virtuálního počítače za posledních 7, 30 a 60 dní. Rozhraní API také poskytnout doporučení nákupu rezervace. Mezi ně patří:
+Rozhraní API doporučení pro nákup rezervovaných instancí poskytují využití virtuálních počítačů za posledních 7, 30 nebo 60 dnů. Rozhraní API také poskytují doporučení k nákupu rezervací. Mezi ně patří:
 
-- [Sdílené rezervované Instance doporučení API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)
-- [Rozhraní API pro doporučování jednu rezervovanou instanci](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)
+- [Rozhraní API pro doporučení sdílené rezervované instance](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)
+- [Rozhraní API doporučení pro jednu rezervovanou instanci](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)
 
-Všechna rozhraní API využití jsou nahrazené nativních rozhraní API Azure, které používají Azure AD pro ověřování a autorizaci. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme se službou REST](/rest/api/azure/#create-the-request). Nahrazují doporučení rezervace rozhraní API výše uvedenými [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) rozhraní API.
+Všechna rozhraní API pro vydanou spotřebu se nahrazují nativními rozhraními API Azure, která pro ověřování a autorizaci používají Azure AD. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme s REST](/rest/api/azure/#create-the-request). Rozhraní API doporučení pro rezervaci uvedená výše jsou nahrazena rozhraním API [Microsoft. spotřeb/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) .
 
-Pokud chcete získat doporučení rezervace rezervace rozhraní Recommendations API:
+Postup získání doporučení pro rezervaci pomocí rozhraní API pro rezervaci s doporučeními:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationRecommendations?api-version=2019-01-01` |
 
-## <a name="reservation-usage-apis-replaced"></a>Rozhraní API využití rezervace nahradit
+## <a name="reservation-usage-apis-replaced"></a>Rozhraní API využití rezervace nahrazeno
 
-Můžete získat rezervace využití registrace s rozhraním API pro využití rezervovaných instancí. Pokud registrace existuje více než jednu rezervovanou instanci, můžete také získat využití všech rezervovaných instancí nákupy použitím tohoto rozhraní API.
+Můžete získat využití rezervace v registraci pomocí rozhraní Využití rezervovaných instancí API. Pokud je v registraci více než jedna rezervovaná instance, můžete pomocí tohoto rozhraní API získat také využití všech rezervovaných nákupů instancí.
 
 Mezi ně patří:
 
-- [Podrobnosti o použití rezervované Instance](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)
-- [Souhrn využití rezervovaných instancí](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
+- [Podrobnosti Využití rezervovaných instancí](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)
+- [Souhrn Využití rezervovaných instancí](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
 
-Všechna rozhraní API využití jsou nahrazené nativních rozhraní API Azure, které používají Azure AD pro ověřování a autorizaci. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme se službou REST](/rest/api/azure/#create-the-request). Nahrazují doporučení rezervace rozhraní API výše uvedenými [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails) a [Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) rozhraní API.
+Všechna rozhraní API pro vydanou spotřebu se nahrazují nativními rozhraními API Azure, která pro ověřování a autorizaci používají Azure AD. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme s REST](/rest/api/azure/#create-the-request). Rozhraní API doporučení pro rezervaci uvedená výše jsou nahrazena rozhraními API [Microsoft. spotřeb/reservationDetails](/rest/api/consumption/reservationsdetails) a [Microsoft. spotřeb/reservationSummaries](/rest/api/consumption/reservationssummaries) .
 
-Pokud chcete získat podrobnosti o rezervaci s rozhraním API podrobnosti o rezervaci:
+Získání podrobností o rezervacích pomocí rozhraní API s podrobnostmi rezervací:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationDetails?api-version=2019-01-01` |
 
-Pokud chcete získat rezervace souhrny přes rozhraní API souhrny rezervaci:
+Postup získání souhrnů rezervací pomocí rozhraní API souhrnů rezervací:
 
 | Metoda | Identifikátor URI žádosti |
 | --- | --- |
@@ -519,32 +519,32 @@ Pokud chcete získat rezervace souhrny přes rozhraní API souhrny rezervaci:
 
 
 
-## <a name="move-from-cloudyn-to-cost-management"></a>Přesunout do služby Cost Management od Cloudyn
+## <a name="move-from-cloudyn-to-cost-management"></a>Přesunutí z Cloudyn na Cost Management
 
-Organizace, které používají [Cloudyn](https://cloudyn.com) by měla začít používat [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) pro všechny potřeby správy nákladů. Služba Cost Management je k dispozici na webu Azure Portal s žádné zařazení do systému a latenci osmi hodin. Další informace najdete v tématu [dokumentace ke službě Cost Management](index.yml).
+Organizace, které používají [Cloudyn](https://cloudyn.com) , by měly začít používat [Azure cost management](https://azure.microsoft.com/services/cost-management/) pro potřeby nákladů na správu. Cost Management je k dispozici v Azure Portal bez zaregistrování a latence při osmi hodinách. Další informace najdete v dokumentaci k [cost management](index.yml).
 
-Ve službě Azure Cost Management můžete:
+Pomocí Azure Cost Management můžete:
 
-- Zobrazení nákladů v čase ve vztahu k rozpočtu předdefinované. Analýza denní náklady na modely k identifikaci a zastavit útraty anomálie. Rozdělte náklady podle značek, skupinu prostředků, služby a umístění.
-- Vytvoření rozpočty si nastavit limity na využití a nákladů a nechte se informovat důležité prahové hodnoty jsou dosaženy. Nastavení služby automation s skupin akcí na vlastní události a vynucování pevných limitů podle vašich představ.
-- Optimalizace nákladů a využití pomocí doporučení Azure advisoru. Zjistit optimalizace nákupu se rezervace, downsize využívané virtuální počítače a odstraňte nepoužívané prostředky držet se v mezích rozpočtu.
-- Plánování nákladů a využití export dat denně publikování souboru CSV do vašeho účtu úložiště. Automatizujte integraci s externími systémy fakturačních dat udržovat synchronizované a aktuální.
+- Zobrazení nákladů v průběhu času s předdefinovaným rozpočtem. Analyzujte denní modely nákladů a identifikujte a zastavujte anomálie útraty. Snížit náklady podle značek, skupiny prostředků, služby a umístění.
+- Vytvořte rozpočty pro nastavení omezení využití a nákladů a při přístupu k důležitým prahovým hodnotám Buďte upozorněni. Nastavte automatizaci pomocí skupin akcí, které aktivují vlastní události a vynutili pro vaše termíny pevně stanovené limity.
+- Optimalizujte náklady a využití pomocí doporučení od Azure Advisor. Objevte optimalizace nákupu s rezervacemi, klidnějších nepoužitými virtuálními počítači a odstraňujte nepoužívané prostředky, abyste zůstali v rámci rozpočtů.
+- Naplánujte export nákladů a využití a exportujte soubor CSV do účtu úložiště denně. Automatizujte integraci s externími systémy a udržujte účtovací data v synchronizovaných a aktuálním stavu.
 
 ## <a name="power-bi-integration"></a>Integrace Power BI
 
-Pokud používáte Power BI pro vytváření sestav nákladů, musíte přejít na následující:
+Pokud používáte Power BI pro vytváření sestav nákladů, musíte přejít k následujícímu:
 
-- Microsoft Azure Consumption Insights aplikace Power BI
-- Klasické pracovní plochy konektoru Azure Consumption Insights
+- Aplikace Microsoft Azure Consumption Insights Power BI
+- Konektor Azure Consumption Insights Desktop
 
 
-Konektor se doporučuje pro organizace, kteří požadují největší flexibilitu. Aplikace Power BI je ale také k dispozici pro rychlé nastavení.
+Konektor se doporučuje pro organizace, které mají největší flexibilitu. K dispozici je však také aplikace Power BI pro rychlé nastavování.
 
-- Nainstalujte [Power BI aplikace Microsoft Azure Consumption Insights](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)
+- Instalace [aplikace Microsoft Azure Consumption Insights Power BI](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)
 - [Připojit pomocí konektoru Azure Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights)
 
-Starší Consumption Insights balíček obsahu a konektor pracoval na úrovni registrace. Ta vyžaduje alespoň přístup čtení. Nová aplikace Consumption Insights Power BI a nový konektor Azure Consumption Insights jsou k dispozici pro fakturační profil uživatele. Týmy, které potřebují další možnosti pro kontrolu nákladů nebo pokud chcete zobrazit náklady napříč fakturace profily používejte v [analýza nákladů](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/costanalysis) na webu Azure portal.
+Balíček obsahu starší verze Application Insights a konektor pracoval na úrovni registrace. Vyžaduje se aspoň přístup pro čtení. Nová aplikace Power BI Insights Insights a nový konektor Azure Consumption Insights jsou k dispozici pro uživatele fakturačního profilu. Týmy, které potřebují další možnosti pro kontrolu nákladů nebo zobrazení nákladů v rámci fakturačních profilů, by měly využít při [analýze nákladů](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/costanalysis) Azure Portal.
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si [dokumentace ke službě Cost Management](index.yml) se naučíte monitorovat a kontrolovat útraty Azure. Nebo, pokud chcete optimalizovat využití prostředků ve službě Cost Management.
+- Přečtěte si [dokumentaci cost management](index.yml) , kde se dozvíte, jak monitorovat a řídit výdaje na Azure. Nebo, pokud chcete optimalizovat využití prostředků pomocí Cost Management.

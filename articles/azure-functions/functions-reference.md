@@ -1,23 +1,20 @@
 ---
 title: Pokyny pro vývoj Azure Functions | Microsoft Docs
 description: Naučte se Azure Functions koncepty a techniky, které potřebujete k vývoji funkcí v Azure, a to napříč všemi programovacími jazyky a vazbami.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Příručka pro vývojáře, funkce Azure Functions, zpracování událostí, Webhooky, dynamické výpočty, architektura bez serveru
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 2715aeae5d10241703fa876557d1edcea1723874
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874960"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982638"
 ---
 # <a name="azure-functions-developers-guide"></a>Příručka pro vývojáře Azure Functions
 V Azure Functions konkrétní funkce sdílí několik základních technických konceptů a komponent bez ohledu na jazyk nebo vazbu, které používáte. Než přejdete k podrobnostem učení, které jsou specifické pro daný jazyk nebo vazbu, přečtěte si tento přehled, který platí pro všechny.
@@ -44,7 +41,7 @@ Soubor Function. JSON definuje Trigger funkce, vazby a další nastavení konfig
 }
 ```
 
-Další příklady naleznete na [stránce wikiwebu Function. JSON](https://github.com/Azure/azure-functions-host/wiki/function.json).
+Další informace najdete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
 
 `bindings` Vlastnost je místo, kde můžete nakonfigurovat triggery i vazby. Každá vazba sdílí několik společných nastavení a některá nastavení, která jsou specifická pro konkrétní typ vazby. Každá vazba vyžaduje následující nastavení:
 
@@ -55,7 +52,7 @@ Další příklady naleznete na [stránce wikiwebu Function. JSON](https://githu
 | `name` |řetězec |Název, který se používá pro vázaná data ve funkci. Pro C#je toto název argumentu; v případě JavaScriptu je klíč v seznamu klíč/hodnota. |
 
 ## <a name="function-app"></a>Function App
-Function App poskytuje kontext spuštění v Azure, ve kterém se vaše funkce spouštějí. Aplikace Function App se skládá z jedné nebo několika individuálních funkcí, které jsou spravované, nasazené a škálovat dohromady. Všechny funkce ve Function App sdílí stejný cenový plán, průběžné nasazování a verzi modulu runtime. Aplikaci Function App si můžete představit jako způsob, jak organizovat a shromažďovat své funkce. 
+Function App poskytuje kontext spuštění v Azure, ve kterém se vaše funkce spouštějí. V takovém případě je to jednotka nasazení a správy pro vaše funkce. Aplikace Function App se skládá z jedné nebo několika individuálních funkcí, které jsou spravované, nasazené a škálovat dohromady. Všechny funkce ve Function App sdílí stejný cenový plán, způsob nasazení a běhovou verzi. Aplikaci Function App si můžete představit jako způsob, jak organizovat a shromažďovat své funkce. Další informace najdete v tématu [Správa aplikace Function App](functions-how-to-use-azure-function-app-settings.md). 
 
 > [!NOTE]
 > Všechny funkce aplikace Function App musí být vytvořené ve stejném jazyce. V [předchozích verzích](functions-versions.md) modulu runtime Azure Functions to nebylo nutné.
@@ -103,7 +100,7 @@ Máte problémy s chybami pocházejícími z vazeb? Přečtěte si dokumentaci [
 ## <a name="reporting-issues"></a>Vytváření sestav – problémy
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace naleznete v následujících materiálech:
 
 * [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)

@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/28/2019
+ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ea247907aebc241fb8f1b266ad55bc2fc983607f
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: c971e84a12b23625326d63b3493395f1d1381937
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853986"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996893"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Vytvoření aplikace v Pythonu v Azure App Service v systému Linux (Preview)
 
@@ -41,7 +41,7 @@ Ve službě Cloud Shell vytvořte adresář rychlého startu a přejděte do ně
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 Potom spusťte následující příkaz, pomocí kterého do tohoto adresáře naklonujete úložiště ukázkové aplikace.
@@ -163,9 +163,9 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Integrovaná image v Pythonu v rámci služby App Service v Linuxu je aktuálně ve verzi Preview a je možné přizpůsobit příkaz sloužící ke spuštění vaší aplikace. Produkční aplikace v Pythonu můžete místo toho vytvářet taky s využitím vlastního kontejneru.
+Integrovaná image v jazyce Python v App Service v systému Linux je aktuálně ve verzi Preview a můžete přizpůsobit příkaz, který je použit ke spuštění aplikace. Produkční aplikace v Pythonu můžete místo toho vytvářet taky s využitím vlastního kontejneru.
 
 > [!div class="nextstepaction"]
 > [Kurz: Aplikace Python s PostgreSQL](tutorial-python-postgresql-app.md)

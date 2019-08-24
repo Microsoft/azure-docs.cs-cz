@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 3b50b0e81103f0b4c8ffa757673c9ec0ef652fc0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 45f7db943499b8a722b8e203d676d1d80eb5091e
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614122"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996681"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -431,12 +431,14 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
 2. **Zdrojový formát dat** je **Parquet**, **ORC**nebo text s **oddělovači**, s následujícími konfiguracemi:
 
    1. Cesta ke složce neobsahuje filtr zástupných znaků.
-   2. Název souboru odkazuje na jeden soubor nebo `*` `*.*`na.
-   3. `rowDelimiter` musí být **\n**.
-   4. `nullValue` je buď nastavit na **prázdný řetězec** ("") nebo jako výchozí, vlevo a `treatEmptyAsNull` ponechané jako výchozí nebo nastavený na hodnotu true.
-   5. `encodingName` je nastavena na **utf-8**, což je výchozí hodnota.
+   2. Název souboru je prázdný nebo odkazuje na jeden soubor. Pokud v aktivitě kopírování zadáte název souboru se zástupnými znaky `*` , `*.*`může to být pouze nebo.
+   3. `rowDelimiter`je **Výchozí hodnota**, **\n**, **\r\n**nebo **\r**.
+   4. `nullValue`je ponechán jako výchozí nebo nastaven na **prázdný řetězec** ("") a `treatEmptyAsNull` je ponechán jako výchozí nebo nastaven na hodnotu true.
+   5. `encodingName`je ponechán jako výchozí nebo nastavený na **UTF-8**.
    6. `quoteChar`, `escapeChar` a`skipLineCount` nejsou zadány. Podpora technologie PolyBase přeskočit řádek záhlaví, které se dají konfigurovat jako `firstRowAsHeader` ve službě ADF.
    7. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
+
+3. Pokud je zdrojem složka, musí být `recursive` v aktivitě kopírování nastavena hodnota true (pravda).
 
 ```json
 "activities":[
@@ -445,7 +447,7 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "BlobDataset",
+                "referenceName": "ParquetDataset",
                 "type": "DatasetReference"
             }
         ],
@@ -457,7 +459,11 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
         ],
         "typeProperties": {
             "source": {
-                "type": "BlobSource",
+                "type": "ParquetSource",
+                "storeSettings":{
+                    "type": "AzureBlobStorageReadSetting",
+                    "recursive": true
+                }
             },
             "sink": {
                 "type": "SqlDWSink",
@@ -617,5 +623,5 @@ Při kopírování dat z nebo do služby Azure SQL Data Warehouse, se používaj
 | Varbinary                             | Byte[]                         |
 | varchar                               | String, Char[]                 |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky, aktivita kopírování ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -16,34 +16,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 40b8f101d968514ac599b43a79b7e62b7fd837a4
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 5f34498fbdacf7fc6e62788913c795ab70ceef23
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779470"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991617"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Datové vědy virtuálního počítače na základě týmu analýzy a AI prostředí 
-[Virtuální počítač pro datové vědy](overview.md) (DSVM) poskytuje bohaté prostředí na platformě Azure s využitím předem připravených softwarem umělé inteligence (AI) a analýzy dat. 
+[Data Science Virtual Machine](overview.md) (DSVM) poskytuje bohatý prostředí na platformě Azure s předem připraveným softwarem pro umělou Intelligence (AI) a analýzou dat.
 
-Tradičně datové VĚDY slouží jako jednotlivé analytický desktop. Odborníci přes data jednotlivých získají produktivity pomocí sdílených vyskytují na předem připravených analýzy prostředí. Analýzy velkých týmů plánování prostředí analytics pro odborníky přes data a vývojářům AI, jedním z opakované motivy je sdílený analytické infrastruktury pro vývoj a experimentování. Tato infrastruktura spravuje v podnikovém IT zásady, které také usnadňují spolupráci a konzistence napříč týmy datové vědy a analýzy. 
+Tradičně datové VĚDY slouží jako jednotlivé analytický desktop. Tato sdílená a předem sestavená analytická prostředí získávají jednotlivá specialista na data. Jelikož týmy pro velké analýzy plánují prostředí pro odborníky na data a pro vývojáře AI, je jedním z opakovaných motivů sdílená analytická infrastruktura pro vývoj a experimentování. Tato infrastruktura se spravuje v souladu s podnikovými zásadami IT, která také usnadňuje spolupráci a konzistenci napříč týmy pro datové vědy a analýzy.
 
-Sdílená infrastruktura taky umožňuje IT mohli lépe využívat analýzy prostředí. Některé organizace volání infrastruktury vědy a analýzy dat na základě týmu "analytics izolovaném prostoru." Umožňuje datovým vědcům pro přístup k různým datové assety rychle pochopit data, spouštět experimenty, ověřit hypotézy a vytvářet prediktivní modely, aniž by to mělo dopad na produkční prostředí. 
+Sdílená infrastruktura umožňuje lepší využití IT prostředí pro analýzu. Některé organizace volají v rámci *analytického izolovaného prostoru*pro datové vědy a analytické infrastruktury. Umožňuje pracovníkům dat přistupovat k různým datovým assetům a rychle pochopit data. Toto prostředí izolovaného prostoru také pomáhá pracovníkům dat provádět experimenty, ověřovat hypotézy a sestavovat prediktivní modely, aniž by to ovlivnilo produkční prostředí.
 
-Protože datové VĚDY funguje na úrovni infrastruktury Azure, správci IT můžou snadno konfigurovat DSVM provozovat souladu se zásadami IT rozlehlé sítě. Datové VĚDY poskytuje úplnou flexibilitu při provádění různých sdílení architektury s přístupem k podnikovým datovým assetům řízené způsobem. 
+Protože datové VĚDY funguje na úrovni infrastruktury Azure, správci IT můžou snadno konfigurovat DSVM provozovat souladu se zásadami IT rozlehlé sítě. DSVM nabízí plnou flexibilitu při implementaci různých architektur sdílení a zároveň nabízí přístup k podnikovým datovým prostředkům řízeným způsobem.
 
-Tato část popisuje některé modely a pokyny, které můžete použít k nasazení datové VĚDY jako infrastruktura týmu data science. Stavební bloky pro tyto vzory pocházejí z infrastruktury Azure jako služba (IaaS), tak se vztahují na všechny virtuální počítače Azure. Sada Tato série článků je zaměřena na použití těchto funkcí standardní infrastruktury Azure pro virtuální počítač pro datové vědy. 
+Tato část popisuje některé modely a pokyny, které můžete použít k nasazení datové VĚDY jako infrastruktura týmu data science. Vzhledem k tomu, že stavební bloky pro tyto vzory pocházejí z infrastruktury Azure jako služby (IaaS), vztahují se na všechny virtuální počítače Azure. Tato série článků se zaměřuje na použití těchto standardních funkcí infrastruktury Azure na DSVM.
 
-Zde jsou některé z nejdůležitějších stavebních bloků analýzy týmu podnikovém prostředí:
+Mezi klíčové stavební bloky prostředí Enterprise Team Analytics patří:
 
-* [Došlo ke ztrátě schopnosti fondu z virtuálního počítače pro datové vědy](dsvm-pools.md)
+* [Fond DSVMs s autoškálou](dsvm-pools.md)
 * [Společné identity a přístup k pracovnímu prostoru žádné datové ve fondu](dsvm-common-identity.md)
 * [Zabezpečený přístup ke zdrojům dat](dsvm-secure-access-keys.md)
 
 
-Tato série článků obsahuje pokyny a odkazy pro každý z předchozí položky. Nezahrnuje všechny aspekty a požadavky při nasazení v rozlehlých konfigurace DSVM. Tady je další dokumentace ke službě Azure, který vám pomůže při implementaci DSVM instancí ve vašem podniku: 
+Tato série poskytuje pokyny a ukazatele pro každé z předchozích témat. Nezabývá se všemi důležitými informacemi a požadavky pro nasazení DSVMs ve velkých podnikových konfiguracích. Tady jsou některé další prostředky Azure, které můžete použít při implementaci DSVM instancí v podniku:
 
-* [Zabezpečení sítě] (https://docs.microsoft.com/azure/security/fundamentals/network-security
+* [Zabezpečení sítě](https://docs.microsoft.com/azure/security/fundamentals/network-security)
 * [Monitorování](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) a [správy](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [Protokolování a auditování](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
 * [Řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview)
@@ -52,4 +52,4 @@ Tato série článků obsahuje pokyny a odkazy pro každý z předchozí položk
 * [Šifrování](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Data zjišťování a zásad správného řízení](https://docs.microsoft.com/azure/data-catalog/)
 
-[Azure Architecture Center](https://docs.microsoft.com/azure/architecture/) poskytuje podrobné architekturu začátku do konce a vzory pro vytváření a správu infrastruktury cloudové analýzy. 
+A konečně [cetrum architektury Azure](https://docs.microsoft.com/azure/architecture/) poskytuje detailní ucelenou architekturu a modely pro sestavování a správu cloudové infrastruktury pro analýzu.

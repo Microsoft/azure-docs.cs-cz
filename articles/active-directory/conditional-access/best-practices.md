@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963451"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980504"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -87,7 +87,9 @@ Pro každé přihlášení Azure Active Directory vyhodnotí všechny zásady a 
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Pracuje podmíněný přístup s Exchange ActiveSync?
 
-Ano, v zásadách podmíněného přístupu můžete použít Exchange ActiveSync s některými [omezeními](block-legacy-authentication.md). 
+Ano, v zásadách podmíněného přístupu můžete použít Exchange ActiveSync.
+
+Některé cloudové aplikace, jako je SharePoint Online a Exchange Online, podporují i starší verze ověřovacích protokolů. Když klientská aplikace může pro přístup ke cloudové aplikaci použít starší verzi ověřovacího protokolu, Azure AD nemůže vynutilit zásady podmíněného přístupu u tohoto pokusu o přístup. Pokud chcete, aby klientská aplikace nemohly obejít vynucování zásad, měli byste ověřit, jestli je možné povolit jenom moderní ověřování u ovlivněných cloudových aplikací.
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Jak byste měli nakonfigurovat podmíněný přístup s aplikacemi Office 365?
 
@@ -140,7 +142,7 @@ Zvažte možnost Migrace zásad, které jste nevytvořili v Azure Portal z těch
 
 Další informace najdete v tématu [migrace klasických zásad v Azure Portal](policy-migration.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Chcete-li znát:
 

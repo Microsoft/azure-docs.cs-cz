@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: gwallace
-ms.openlocfilehash: 14bbbb6581d3e6d00db532e343f8362fc44d0044
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c7251b24ccd15971a704b6b47288f49168b27039
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876337"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980883"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Instalace a konfigurace Terraformu pro zřizování virtuálních počítačů a jiné infrastruktury do Azure
  
@@ -47,10 +47,10 @@ Usage: terraform [--version] [--help] <command> [args]
 
 Pokud chcete povolit Terraformu k zřizování prostředků do Azure, vytvořte [instanční objekt služby Azure AD](/cli/azure/create-an-azure-service-principal-azure-cli). Instanční objekt uděluje vašim skriptům Terraformu možnost zřídit prostředky v předplatném Azure.
 
-Pokud máte několik předplatných Azure, nejdřív Dotazujte svůj účet pomocí příkazu [AZ Account show](/cli/azure/account#az-account-show) , který získá seznam ID předplatného a ID tenanta:
+Pokud máte několik předplatných Azure, nejdřív Dotazujte svůj účet pomocí příkazu [AZ Account list](/cli/azure/account#az-account-list) , abyste získali seznam ID předplatného a ID tenanta:
 
 ```azurecli-interactive
-az account show --query "{subscriptionId:id, tenantId:tenantId}"
+az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
 Chcete-li použít vybrané předplatné, nastavte odběr této relace pomocí [AZ Account set](/cli/azure/account#az-account-set). Nastavte proměnnou `id` prostředí tak, aby obsahovala hodnotu vráceného pole z předplatného, které chcete použít: `SUBSCRIPTION_ID`

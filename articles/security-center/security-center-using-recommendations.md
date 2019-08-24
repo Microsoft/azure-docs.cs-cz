@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 13d6eb64b2089cf93f08c294cc9b6a2034b64fa0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640879"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990544"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití Azure Security Center doporučení k vylepšení zabezpečení
 Můžete snížit pravděpodobnost významné události zabezpečení konfigurací zásad zabezpečení a následnou implementací doporučení Azure Security Center. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení v Security Center, abyste mohli zmírnit útok na zabezpečení. 
@@ -72,9 +72,9 @@ Jan nadále přechází přes doporučení s vysokou prioritou a střední prior
 Doporučení pro monitorování v Security Center pomáhají eliminovat ohrožení zabezpečení před tím, než dojde k útoku. Když opravíte doporučení, vaše zabezpečené skóre a vaše zatížení stav vylepšit. Security Center automaticky zjistí nové prostředky, které nasadíte, posuzuje je na základě zásad zabezpečení a poskytuje nová doporučení pro jejich zabezpečení.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Ujistěte se, že máte proces monitorování, ve kterém pravidelně kontrolujete doporučení v Security Center, abyste mohli zajistit, aby se prostředky v průběhu času udržovaly v bezpečí.
 
-Tento scénář ukazuje, jak používat zásady zabezpečení a doporučení v Security Center ke zmírnění útoku zabezpečení. V [případě reakce](security-center-incident-response.md) na incidenty se dozvíte, jak provést plán reakce na incidenty, než dojde k útoku.
+Tento scénář ukazuje, jak používat zásady zabezpečení a doporučení v Security Center ke zmírnění útoku zabezpečení.
 
-Přečtěte si, jak reagovat na hrozby pomocí [reakce](security-center-incident-response.md)na incidenty.
+Naučte se reagovat na hrozby se [správou a reakcí na výstrahy zabezpečení](security-center-managing-and-responding-alerts.md).

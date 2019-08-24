@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/21/2019
-ms.openlocfilehash: 67dda1ab56c6a706a9fdbef45fabdae9167ffe2b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 08/22/2019
+ms.openlocfilehash: 497a00570d85ab83f71416e979e485db4685b64a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616338"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992120"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Vytvoření a přístup k datovým sadám (Preview) v Azure Machine Learning
 
@@ -26,7 +26,7 @@ S Azure Machine Learningmi datovými sadami můžete:
 
 * V úložišti, na který odkazují datové sady, **uchovejte jednu kopii dat** . 
 
-* **Snadný přístup k datům během školení modelu** bez obav o připojovací řetězec nebo cestu k datům.
+* **Snadný přístup k datům během školení k modelu** bez obav o připojovací řetězce nebo cesty k datům.
 
 * **Sdílení dat & spolupráci** s ostatními uživateli.
 
@@ -44,7 +44,8 @@ K vytváření a práci s datovými sadami potřebujete:
 > Některé třídy DataSet (Preview) mají závislosti na balíčku [AzureML-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . Pro uživatele se systémem Linux jsou tyto třídy podporovány pouze v následujících distribucích:  Red Hat Enterprise Linux, Ubuntu, Fedora a CentOS.
 
 ## <a name="dataset-types"></a>Typy datových sad
-Datové sady jsou rozdělené do různých typů na základě toho, jak je uživatelé využívají při školení. V současné době podporujeme TabularDatasets, které reprezentují data v tabulkovém formátu, a to analýzou poskytnutého souboru nebo seznamu souborů. To vám umožní vyhodnotit data do PANDAS dataframe. TabularDataset se dají vytvořit ze souborů CSV, TSV, Parquet a výsledků dotazu SQL atd. Úplný seznam najdete v naší dokumentaci.
+
+Datové sady jsou rozdělené do různých typů na základě toho, jak je uživatelé využívají při školení. V současné době podporujeme [TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , které reprezentují data v tabulkovém formátu, a to analýzou poskytnutého souboru nebo seznamu souborů. To vám umožní vyhodnotit data do PANDAS dataframe. `TabularDataset` Objekt se dá vytvořit ze souboru CSV, TSV, souborů Parquet, výsledků dotazu SQL atd. Úplný seznam najdete v naší dokumentaci.
 
 Další informace o nadcházejících změnách rozhraní API najdete v tématu [co je služba Azure Machine Learning?](https://aka.ms/tabular-dataset) 
 
@@ -96,9 +97,9 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 | |PassengerId|Zachované|Pclass|Name|Sex|Věk|SibSp|Parch|Vel|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|0|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
+0|1|0|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||ne
 1|2|1|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
-2|3|1|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
+2|3|1|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||ne
 
 ## <a name="register-datasets"></a>Registrace datových sad
 
@@ -136,7 +137,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="access-your-data-during-training"></a>Přístup k datům během školení
 
-Registrované datové sady jsou přístupné místně a vzdáleně na výpočetních clusterech, jako je Azure Machine Learning Compute. Chcete-li získat přístup k zadané datové sadě mezi experimenty, použijte následující kód k získání pracovního prostoru a registrované datové sady podle názvu. `get_by_name` Metoda`Dataset` ve třídě ve výchozím nastavení vrátí nejnovější verzi datové sady registrované v pracovním prostoru.
+Registrované datové sady jsou přístupné místně a vzdáleně na výpočetních clusterech, jako je Azure Machine Learning Compute. Chcete-li získat přístup k zadané datové sadě mezi experimenty, použijte následující kód k získání pracovního prostoru a registrované datové sady podle názvu. [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) Metoda`Dataset` ve třídě ve výchozím nastavení vrátí nejnovější verzi datové sady registrované v pracovním prostoru.
 
 ```Python
 %%writefile $script_folder/train.py

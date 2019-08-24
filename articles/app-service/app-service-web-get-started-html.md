@@ -1,5 +1,5 @@
 ---
-title: Vytvoření statické webové aplikace HTML – Azure App Service | Dokumentace Microsoftu
+title: Vytvoření webové aplikace ve statickém HTML – Azure App Service | Microsoft Docs
 description: Nasazením ukázkové aplikace ve statickém HTML se naučíte, jak spouštět webové aplikace ve službě Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/20/2018
+ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 064466b73e03e9648b78c32b7e6ffcd83defd607
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a96cdafc2304dda78e1926bfc7ed1b4e89f95fa
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66139400"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996855"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento rychlý start ukazuje, jak nasazení základní lokality HTML + CSS do služby Azure App Service. Absolvujete ho ve službě [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale příkazy můžete také spouštět místně pomocí [Azure CLI](/cli/azure/install-azure-cli).
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto rychlém startu se dozvíte, jak nasadit základní web HTML + CSS do Azure App Service. Absolvujete ho ve službě [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale příkazy můžete také spouštět místně pomocí [Azure CLI](/cli/azure/install-azure-cli).
 
 ![Domovská stránka ukázkové aplikace](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -90,7 +90,7 @@ Poznamenejte si hodnotu `resourceGroup`. Budete ji potřebovat v části [Vyči�
 
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
 
-V prohlížeči přejděte na adresu URL aplikace: `http://<app_name>.azurewebsites.net`.
+V prohlížeči přejdete na adresu URL aplikace: `http://<app_name>.azurewebsites.net`.
 
 Stránka je spuštěná jako webová aplikace služby Azure App Service.
 
@@ -120,7 +120,7 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
 Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
-V levé nabídce klikněte na tlačítko **App Services**a pak klikněte na název aplikace Azure.
+V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-get-started-html/portal1.png)
 

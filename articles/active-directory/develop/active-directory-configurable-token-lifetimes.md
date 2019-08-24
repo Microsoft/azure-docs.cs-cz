@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 08/22/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f6aa209b6e99be406634e01be47c6dd9572d62a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95c337501c46dd9b30ff20d71a9363ab03fdb608
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853435"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980451"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životnosti tokenů v Azure Active Directory (Preview)
 
@@ -81,15 +81,15 @@ Zásada životního cyklu tokenu je typ objektu zásad, který obsahuje pravidla
 ### <a name="configurable-token-lifetime-properties"></a>Konfigurovatelné vlastnosti životnosti tokenů
 | Vlastnost | Řetězec vlastnosti zásad | Ovlivňuje | Výchozí | Minimální | Maximum |
 | --- | --- | --- | --- | --- | --- |
-| Doba života přístupového tokenu |AccessTokenLifetime<sup>4</sup> |Přístupové tokeny, tokeny ID, tokeny typu Saml2 |1 hodina |10 minut |1 den |
+| Doba života přístupového tokenu |AccessTokenLifetime<sup>2</sup> |Přístupové tokeny, tokeny ID, tokeny typu Saml2 |1 hodina |10 minut |1 den |
 | Maximální neaktivní čas obnovovacího tokenu |MaxInactiveTime |Aktualizovat tokeny |90 dní |10 minut |90 dní |
 | Maximální stáří tokenu obnovení jednoho faktoru |MaxAgeSingleFactor |Aktualizovat tokeny (pro všechny uživatele) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
 | Maximální stáří tokenu pro Multi-Factor Refresh |MaxAgeMultiFactor |Aktualizovat tokeny (pro všechny uživatele) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
-| Maximální stáří tokenu relace s jedním faktorem |MaxAgeSessionSingleFactor<sup>2</sup> |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
-| Maximální stáří tokenu relace Multi-Factor |MaxAgeSessionMultiFactor<sup>3</sup> |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
+| Maximální stáří tokenu relace s jedním faktorem |MaxAgeSessionSingleFactor |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
+| Maximální stáří tokenu relace Multi-Factor |MaxAgeSessionMultiFactor |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>365 dní je maximální explicitní délka, kterou lze pro tyto atributy nastavit.
-* <sup>4</sup> . Pokud chcete, aby webový klient Microsoft Teams funguje, doporučujeme nastavit AccessTokenLifetime na více než 15 minut pro týmy Microsoft.
+* <sup>2</sup> . Pokud chcete, aby webový klient Microsoft Teams funguje, doporučujeme nastavit AccessTokenLifetime na více než 15 minut pro týmy Microsoft.
 
 ### <a name="exceptions"></a>Výjimky
 | Vlastnost | Ovlivňuje | Výchozí |

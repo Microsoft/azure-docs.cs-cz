@@ -4,13 +4,20 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: beb08c29587e4ce522131142fd61925b5af45fa9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 59adee2f1d6a99a0a984b9b63c7201266b6381d4
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175077"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69984528"
 ---
-Změny provedené na sdílenou složku Azure pomocí webu Azure portal nebo podepisování SMB jsou bezprostředně zjištěna a replikovat jako změny koncový bod serveru. Služba soubory Azure ještě nemá oznámení o změnách nebo záznamu do deníku, takže neexistuje žádný způsob, jak automaticky zahájí relace synchronizace, pokud se změnily soubory. Ve Windows serveru, využívá Azure File Sync [záznamu do deníku Windows USN](https://msdn.microsoft.com/library/windows/desktop/aa363798.aspx) automaticky zahájení relace synchronizace, když se změní soubory.<br /><br /> Ke zjištění změn sdílenou složku Azure, Azure File Sync má plánovanou úlohu nazvanou *změnit úlohy zjišťování*. Úloha zjišťování změn zobrazí každý soubor ve sdílené složce a porovná ho s verzí synchronizace pro tento soubor. Když úloha zjišťování změn zjistí, že soubory se změnily, Azure File Sync spustí relaci synchronizace. Každých 24 hodin se spustí úloha zjišťování změn. Protože úloha zjišťování změn funguje tak, že výčet každý soubor ve sdílené složce Azure file, detekce změn trvá déle, v větší oborech názvů než v menších obory názvů. Pro velké obory názvů může trvat déle než jednou za 24 hodin k určení, které soubory se změnily.<br /><br />
-Poznámka: provedené změny sdílenými složkami Azure pomocí rozhraní REST nemá nikoli aktualizaci, čas poslední změny SMB a se projeví jako změnu synchronizace. <br /><br />
-Jsme se s touto přidávání detekce změn pro sdílené složky Azure podobný USN pro svazky ve Windows serveru. Nám pomohou určit prioritu tuto funkci pro budoucí vývoj hlasováním ji do [UserVoice soubory Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files).
+Změny provedené ve sdílené složce Azure pomocí Azure Portal nebo SMB se hned nedetekuje a replikují jako změny koncového bodu serveru. Soubory Azure ještě nemají oznámení o změnách ani deníky, takže neexistuje způsob, jak automaticky iniciovat relaci synchronizace při změně souborů. V systému Windows Server Azure File Sync používá [Deník USN systému Windows](https://msdn.microsoft.com/library/windows/desktop/aa363798.aspx) k automatickému zahájení relace synchronizace při změně souborů.
+
+Pokud chcete zjistit změny sdílené složky Azure, Azure File Sync má naplánovanou úlohu s názvem *úloha detekce změn*. Úloha detekce změn vytvoří výčet všech souborů ve sdílené složce a pak ji porovná s verzí synchronizace pro daný soubor. Když úloha zjišťování změn zjistí, že se soubory změnily, Azure File Sync zahájí relaci synchronizace. Úloha zjišťování změn je zahájena každých 24 hodin. Vzhledem k tomu, že úloha zjišťování změn funguje při vytváření výčtu všech souborů ve sdílené složce Azure, zjišťování změn trvá déle než v menších oborech názvů. Pro velké obory názvů může trvat déle než jednou za 24 hodin, abyste zjistili, které soubory se změnily.
+
+K okamžité synchronizaci souborů, které se změnily ve sdílené složce Azure, se dá použít rutina PowerShellu **Invoke-AzStorageSyncChangeDetection** k ručnímu spuštění rozpoznávání změn ve sdílené složce Azure. Tato rutina je určená pro scénáře, kdy nějaký typ automatizovaného procesu provádí změny ve sdílené složce Azure nebo že tyto změny provádí správce (například přesunutí souborů a adresářů do sdílené složky). V případě změn koncového uživatele doporučujeme nainstalovat agenta Azure File Sync do virtuálního počítače IaaS a nechat koncové uživatele přistupovat ke sdílené složce prostřednictvím virtuálního počítače IaaS. Tímto způsobem budou všechny změny rychle synchronizovány s ostatními agenty bez nutnosti používat rutinu Invoke-AzStorageSyncChangeDetection. Další informace najdete v dokumentaci k [vyvolání metody Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) .
+
+>[!NOTE]
+>Změny provedené ve sdílené složce Azure pomocí REST neaktualizují čas poslední změny protokolu SMB a při synchronizaci se neprojeví jako změny.
+
+Zkoumáme přidání zjišťování změn pro sdílenou složku Azure podobně jako u svazků na Windows serveru. Nám pomůžou nastavit prioritu této funkce pro budoucí vývoj, a to hlasováním v [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).

@@ -1,70 +1,78 @@
 ---
-title: Konfigurace agenta Azure Log Analytics pro hybridní počítač s Linuxem | Microsoft Docs
-description: Zjistěte, jak nasadit agenta Log Analytics pro Linux na počítačích mimo Azure a povolit shromažďování dat pomocí Log Analytics.
-services: log-analytics
-documentationcenter: log-analytics
+title: Shromažďování dat z hybridního počítače se systémem Linux pomocí Azure Monitor | Microsoft Docs
+description: V tomto rychlém startu se dozvíte, jak nasadit agenta Log Analytics pro počítače se systémem Linux běžící mimo Azure a povolit shromažďování dat pomocí protokolů Azure Monitor.
+services: azure-monitor
+documentationcenter: azure-monitor
 author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: log-analytics
+ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 06/14/2019
+ms.date: 08/22/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 535b96a2bb86f1996e6ff0aba19339b55a18ee50
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 6fa26adab64a91ac2910607e4a828f9362490d08
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515867"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991758"
 ---
-# <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Konfigurace agenta Log Analytics pro počítače s Linuxem v hybridním prostředí
-[Azure Log Analytics](../platform/agent-windows.md) může shromažďovat data přímo z fyzického nebo virtuálního počítače s Linuxem ve vašem datacentru nebo jiném cloudovém prostředí do jednoho úložiště pro účely podrobných analýz a korelací. Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Linuxem a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Linuxem najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](quick-collect-azurevm.md).  
+# <a name="collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Shromažďování dat z počítače se systémem Linux v hybridním prostředí pomocí Azure Monitor
 
-Než budete pokračovat, měli byste si nejdřív projít článek [Přehled](../platform/log-analytics-agent.md) agenta Log Analytics, abyste zjistili, jaké konfigurace jsou podporované, [podporované operační systémy Linux](../platform/log-analytics-agent.md#supported-linux-operating-systems) a [Konfigurace brány firewall sítě](../platform/log-analytics-agent.md#network-firewall-requirements). 
+[Azure monitor](../overview.md) může shromažďovat data přímo z fyzických nebo virtuálních počítačů se systémem Linux ve vašem prostředí do pracovního prostoru Log Analytics pro účely podrobných analýz a korelace. Instalace [agenta Log Analytics](../platform/log-analytics-agent.md) umožňuje Azure monitor shromažďovat data z datového centra nebo jiného cloudového prostředí. V tomto rychlém startu se dozvíte, jak pomocí několika jednoduchých kroků nakonfigurovat a shromažďovat data ze serveru Linux. Informace o virtuálních počítačích Azure Linux najdete v tématu [shromažďování dat o virtuálních počítačích Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
+Další informace o podporované konfiguraci najdete v tématu [podporované operační systémy Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) a [Konfigurace brány firewall sítě](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
+ 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
-1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 
-    ![portál Azure](media/quick-collect-linux-computer/azure-portal-01.png) 
+1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
+
+    ![portál Azure](media/quick-collect-azurevm/azure-portal-01.png)<br>  
 
 2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
 
-   * Zadejte název nového **pracovního prostoru Log Analytics**, například *DefaultLAWorkspace*. Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.   
+   * Zadejte název nového **pracovního prostoru Log Analytics**, například *DefaultLAWorkspace*.  
    * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
    * Jako **skupinu prostředků** vyberte existující skupinu prostředků, která obsahuje jeden nebo několik virtuálních počítačů Azure.  
-   * Vyberte **Umístění**, do kterého jsou vaše virtuální počítače nasazené.  Další informace najdete na stránce uvádějící [oblasti, ve kterých je dostupná služba Log Analytics](https://azure.microsoft.com/regions/services/).  
+   * Vyberte **Umístění**, do kterého jsou vaše virtuální počítače nasazené.  Další informace najdete na stránce uvádějící [oblasti, ve kterých je dostupná služba Log Analytics](https://azure.microsoft.com/regions/services/).
    * Pokud vytváříte pracovní prostor v novém předplatném vytvořeném po 2. dubnu 2018, automaticky se použije cenový plán *podle počtu GB* a možnost vybrat cenovou úroveň nebude dostupná.  Pokud vytváříte pracovní prostor pro existující předplatné vytvořené před 2. dubnem nebo pro předplatné, které se vázalo na existující registraci smlouvy Enterprise, vyberte si cenovou úroveň, které dáváte přednost.  Další informace o jednotlivých úrovních najdete v [podrobnostech o cenách Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
-
-        ![Okno pro vytvoření Log Analytics prostředku](media/quick-collect-linux-computer/create-loganalytics-workspace-02.png)<br>  
+  
+        ![Okno pro vytvoření Log Analytics prostředku](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
 
 3. Po zadání požadovaných informací v podokně **log Analyticsho pracovního prostoru** vyberte **OK**.  
 
 Během ověřování informací a vytváření pracovního prostoru můžete průběh zpracování sledovat prostřednictvím položky nabídky **Oznámení**. 
 
 ## <a name="obtain-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
-Před instalací agenta Log Analytics pro Linux potřebujete ID a klíč vašeho pracovního prostoru Log Analytics.  Tyto informace vyžaduje skript obálky agenta ke správné konfiguraci agenta a zajištění, aby agent mohl úspěšně komunikovat s Log Analytics.
+
+Před instalací agenta Log Analytics pro Linux potřebujete ID a klíč vašeho pracovního prostoru Log Analytics.  Tyto informace vyžaduje skript obálky agenta ke správné konfiguraci agenta a zajištění, aby mohl úspěšně komunikovat s Azure Monitor.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
-1. V Azure Portal vyberte **všechny služby** , které najdete v levém horním rohu. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
-2. V seznamu pracovních prostorů Log Analytics vyberte *DefaultLAWorkspace* vytvořený dříve.
-3. Vyberte **Upřesňující nastavení**.
+1. V levém horním rohu Azure Portal vyberte **všechny služby**. Do vyhledávacího pole zadejte **Log Analytics**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **Log Analytics pracovní prostory**.
 
-    ![Upřesňující nastavení Log Analytics](media/quick-collect-linux-computer/log-analytics-advanced-settings-01.png) 
+2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který jste vytvořili dříve. (Je možné, že jste nastavili název **DefaultLAWorkspace**.)
+
+3. Vybrat **upřesňující nastavení**:
+
+    ![Upřesňující nastavení Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png) 
  
-4. Vyberte **Připojené zdroje** a pak **Servery s Linuxem**.   
-5. Napravo se zobrazí hodnoty **ID pracovního prostoru** a **Primární klíč**. Obě hodnoty zkopírujte a vložte do oblíbeného editoru.   
+4. Vyberte **Připojené zdroje** a pak **Servery s Linuxem**.
+
+5. Napravo se zobrazí hodnoty **ID pracovního prostoru** a **Primární klíč**. Obě hodnoty zkopírujte a vložte do oblíbeného editoru.
 
 ## <a name="install-the-agent-for-linux"></a>Instalace agenta pro Linux
+
 V následujících krocích se nakonfiguruje instalace agenta pro Log Analytics v Azure a cloudu Azure Government.  
 
 >[!NOTE]
@@ -74,7 +82,7 @@ Pokud počítač s Linuxem potřebuje komunikovat se službou Log Analytics pros
 
 Příklad: `https://user01:password@proxy01.contoso.com:30443`
 
-1. Pokud chcete nakonfigurovat počítač s Linuxem pro připojení k Log Analytics, spusťte následující příkaz a zadejte do něj ID a primární klíč pracovního prostoru, které jste zkopírovali dříve. Tento příkaz stáhne agenta, ověří jeho kontrolní součet a nainstaluje ho. 
+1. Chcete-li počítač se systémem Linux nakonfigurovat pro připojení k Log Analyticsmu pracovnímu prostoru, spusťte následující příkaz, který zadává dříve zkopírovaný identifikátor pracovního prostoru a primární klíč. Tento příkaz stáhne agenta, ověří jeho kontrolní součet a nainstaluje ho. 
     
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
@@ -86,7 +94,7 @@ Příklad: `https://user01:password@proxy01.contoso.com:30443`
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-2. Pokud chcete nakonfigurovat počítač s Linuxem pro připojení k Log Analytics v cloudu Azure Government, spusťte následující příkaz a zadejte do něj ID a primární klíč pracovního prostoru, které jste zkopírovali dříve. Tento příkaz stáhne agenta, ověří jeho kontrolní součet a nainstaluje ho. 
+2. Pokud chcete počítač se systémem Linux nakonfigurovat tak, aby se připojil k Log Analytics pracovnímu prostoru v Azure Government cloudu, spusťte následující příkaz, který zadává dříve zkopírovaný ID a primární klíč pracovního prostoru. Tento příkaz stáhne agenta, ověří jeho kontrolní součet a nainstaluje ho. 
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
@@ -104,34 +112,45 @@ Příklad: `https://user01:password@proxy01.contoso.com:30443`
     ``` 
 
 ## <a name="collect-event-and-performance-data"></a>Shromažďování dat o událostech a výkonu
-Log Analytics může shromažďovat události z protokolu Syslog v Linuxu a z čítačů výkonu, které určíte pro dlouhodobější analýzu a generování sestav, a provést akci při zjištění konkrétní podmínky.  Postupujte podle těchto kroků a pro začátek nakonfigurujte shromažďování událostí z protokolu Syslog v Linuxu a několika běžných čítačů výkonu.  
 
-1. Vyberte **Syslog**.  
-2. Protokol událostí přidáte zadáním názvu protokolu. Zadejte **SYSLOG** a potom vyberte znaménko plus **+** .  
-3. V tabulce zrušte zaškrtnutí závažností **Informace**, **Oznámení** a **Ladění**. 
-4. V horní části stránky vyberte **Uložit** a uložte konfiguraci.
-5. Výběrem **Data o výkonu systému Linux** povolte shromažďování čítačů výkonu na počítači s Linuxem. 
-6. Při první konfiguraci linuxových čítačů výkonu pro nový pracovní prostor Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou uvedeny u každého z nich zaškrtávací políčko. 
+Azure Monitor může shromažďovat události ze systému Linux syslog a čítačů výkonu, které určíte pro dlouhodobé analýzy a vytváření sestav. Může také provést akci při zjištění konkrétní podmínky. Postupujte podle těchto kroků a pro začátek nakonfigurujte shromažďování událostí z protokolu Syslog v Linuxu a několika běžných čítačů výkonu.  
 
-    ![Vybrané výchozí čítače výkonu Windows](media/quick-collect-linux-computer/linux-perfcounters-default.png)
-    
-    Vyberte **Přidat vybrané čítače výkonu**. Čítače se přidají a přednastaví s použitím ukázkového desetisekundového intervalu shromažďování.
+1. V levém dolním rohu Azure Portal vyberte **Další služby**. Do vyhledávacího pole zadejte **Log Analytics**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **Log Analytics pracovní prostory**.
 
-7. V horní části stránky vyberte **Uložit** a uložte konfiguraci.
+2. Vyberte **data**a pak vyberte **syslog**.  
+
+3. Syslog přidáte zadáním názvu protokolu. Zadejte **SYSLOG** a potom vyberte znaménko plus **+** .  
+
+4. V tabulce zrušte zaškrtnutí závažností **Informace**, **Oznámení** a **Ladění**. 
+
+5. V horní části stránky vyberte **Uložit** a uložte konfiguraci.
+
+6. Výběrem **Data o výkonu systému Linux** povolte shromažďování čítačů výkonu na počítači s Linuxem. 
+
+7. Při první konfiguraci linuxových čítačů výkonu pro nový pracovní prostor Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.
+
+    ![Vybrané výchozí čítače výkonu Windows](media/quick-collect-azurevm/linux-perfcounters-default.png)
+
+    Vyberte **použít níže konfiguraci na moje počítače** a pak vyberte **Přidat vybrané čítače výkonu**. Čítače se přidají a přednastaví s použitím ukázkového desetisekundového intervalu shromažďování.  
+
+8. V horní části stránky vyberte **Uložit** a uložte konfiguraci.
 
 ## <a name="view-data-collected"></a>Zobrazení shromážděných dat
+
 Teď, když jste povolili shromažďování dat, můžete spustit příklad jednoduchého prohledávání protokolu a zobrazit nějaká data z cílového počítače.  
 
-1. V Azure Portal pokračujte na Log Analytics a vyberte pracovní prostor, který jste vytvořili dříve.
-2. Vyberte dlaždici **prohledávání protokolů** a v podokně prohledávání protokolu zadejte `Perf` do pole dotazu a potom stiskněte klávesu ENTER nebo klikněte na tlačítko Vyhledat napravo od pole dotazu.
+1. Ve vybraném pracovním prostoru v levém podokně vyberte **protokoly**.
 
-    ![Příklad dotazu prohledávání protokolu v Log Analytics](media/quick-collect-linux-computer/log-analytics-portal-queryexample.png)
+2. Na stránce dotaz na protokoly zadejte `Perf` do editoru dotazů a vyberte **Spustit**.
+ 
+    ![Log Analytics prohledávání protokolu](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 
-    Například dotaz na následujícím obrázku vrátil 735 záznamů o výkonu.
+    Například dotaz na následujícím obrázku vrátil 10 000 záznamů o výkonu. Vašich výsledků bude výrazně méně.
 
     ![Výsledek prohledávání protokolu v Log Analytics](media/quick-collect-linux-computer/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
 Pokud je už nepotřebujete, můžete z počítače s Linuxem odebrat agenta a odstranit pracovní prostor Log Analytics.  
 
 Pokud chcete agenta odebrat, spusťte v počítači s Linuxem následující příkaz. Argument *--purge* úplně odebere agenta a jeho konfiguraci.
@@ -140,12 +159,13 @@ Pokud chcete agenta odebrat, spusťte v počítači s Linuxem následující př
 
 Pokud chcete pracovní prostor odstranit, vyberte pracovní prostor Log Analytics, který jste vytvořili dříve, a na stránce prostředku vyberte **Odstranit**.
 
-![Odstranění prostředku Log Analytics](media/quick-collect-linux-computer/log-analytics-portal-delete-resource.png)
+![Odstranění prostředku Log Analytics](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
 ## <a name="next-steps"></a>Další kroky
+
 Teď, když shromažďujete data o provozu a výkonu z místního počítače s Linuxem, můžete jednoduše a *zdarma* začít zkoumat a analyzovat shromážděná data a provádět na jejich základě akce.  
 
-Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.   
+Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.
 
 > [!div class="nextstepaction"]
 > [Zobrazení nebo analýza dat v Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md)

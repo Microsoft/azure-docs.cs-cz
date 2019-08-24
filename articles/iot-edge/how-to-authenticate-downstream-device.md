@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4d6c7665d281ff7c27fd8b61537804b6803b3b43
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 1634d7cd3dfe8d118e220fa8620ef6467c15ea2c
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360172"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983008"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Ověření podřízeného zařízení pro Azure IoT Hub
 
@@ -29,6 +29,12 @@ Existují tři obecné kroky k nastavení úspěšného transparentního připoj
 Zařízení pro příjem dat se můžou pomocí IoT Hub ověřit pomocí jedné ze tří metod: symetrických klíčů (někdy označovaných jako sdílené přístupové klíče), certifikátů podepsaných držitelem X. 509 nebo certifikátů podepsaných certifikační autoritou (CA) X. 509. Postup ověřování se podobá postupům, které se používají k nastavení zařízení bez IoT Edge s IoT Hub, s malým rozdílem na deklaraci vztahu brány.
 
 Kroky v tomto článku ukazují ruční zřizování zařízení, ne Automatické zřizování pomocí Azure IoT Hub Device Provisioning Service. 
+
+## <a name="prerequisites"></a>Požadavky
+
+Proveďte kroky v části [konfigurace IoT Edge zařízení, které bude fungovat jako transparentní brána](how-to-create-transparent-gateway.md).
+
+Tento článek odkazuje na *název hostitele brány* na několika místech. Název hostitele brány je deklarovaný v parametru **hostname** souboru config. yaml na zařízení IoT Edge brány. Používá se k vytvoření certifikátů v tomto článku a odkazuje se na připojovací řetězec zařízení pro příjem dat. Název hostitele brány musí být přeložitelný na IP adresu, a to buď pomocí DNS, nebo zadáním souboru hostitele.
 
 ## <a name="symmetric-key-authentication"></a>Ověřování symetrického klíče
 
@@ -133,7 +139,7 @@ Nejjednodušší způsob, jak to provést, je použít stejný počítač, kter�
    * `<WRKDIR>\certs\iot-device-<device name>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device name>*.key.pem`
 
-   Na tyto soubory se budete odkazovat v aplikacích na listovém zařízení, které se připojují k IoT Hub. K přesunu souborů certifikátů můžete použít službu, jako je například [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je například [zabezpečený kopírovací protoco](https://www.ssh.com/ssh/scp/) .
+   Na tyto soubory se budete odkazovat v aplikacích na listovém zařízení, které se připojují k IoT Hub. K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .
 
 K dokončení stejné operace vytváření zařízení můžete použít [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . Následující příklad vytvoří nové zařízení IoT s ověřováním X. 509 podepsaným svým držitelem a přiřadí nadřazené zařízení: 
 
@@ -187,7 +193,7 @@ Nejjednodušší způsob, jak tento scénář otestovat, je použít stejný po�
    * `<WRKDIR>\certs\iot-device-<device id>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device id>*.key.pem`
 
-   Na tyto soubory se budete odkazovat v aplikacích na listovém zařízení, které se připojují k IoT Hub. K přesunu souborů certifikátů můžete použít službu, jako je například [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je například [zabezpečený kopírovací protoco](https://www.ssh.com/ssh/scp/) .
+   Na tyto soubory se budete odkazovat v aplikacích na listovém zařízení, které se připojují k IoT Hub. K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .
 
 K dokončení stejné operace vytváření zařízení můžete použít [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . Následující příklad vytvoří nové zařízení IoT s podpisem certifikační autority X. 509 podepsané ověřováním a přiřadí nadřazené zařízení: 
 

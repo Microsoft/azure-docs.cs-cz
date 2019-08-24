@@ -1,130 +1,128 @@
 ---
-title: Konfigurace nastavení aplikace Azure Function App | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat nastavení aplikace Azure function app.
-services: ''
-documentationcenter: .net
+title: Konfigurace nastavení služby Azure Function App | Microsoft Docs
+description: Přečtěte si, jak nakonfigurovat nastavení Azure Function App.
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 92ca09040836dfc55a9d709b12a0ee01192d6bac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27e56c3bcaa08fee25c362cdfed64c61b92873cb
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957388"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982658"
 ---
-# <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Správa aplikace function app na webu Azure Portal 
+# <a name="how-to-manage-a-function-app"></a>Správa aplikace Function App
 
-Aplikace function app ve službě Azure Functions poskytuje kontext spuštění pro jednotlivé funkce. Chování funkce aplikací platí pro všechny funkce, které jsou hostované aplikace pro danou funkci. Toto téma popisuje, jak konfigurovat a spravovat vaše aplikace function App na webu Azure Portal.
+V Azure Functions aplikace Function App poskytuje kontext spuštění pro vaše jednotlivé funkce. Chování aplikace Function App se vztahuje na všechny funkce hostované danou funkcí Function App. Toto téma popisuje, jak nakonfigurovat a spravovat aplikace Function App v Azure Portal.
 
-Pokud chcete začít, přejděte [webu Azure portal](https://portal.azure.com) a přihlaste se ke svému účtu Azure. Na panelu hledání v horní části portálu zadejte název vaší aplikace Function App a vyberte ji ze seznamu. Po výběru aplikace function app, naleznete na následující stránce:
+Začněte tím, že přejdete na [Azure Portal](https://portal.azure.com) a přihlásíte se k účtu Azure. Na panelu hledání v horní části portálu zadejte název vaší aplikace Function App a vyberte ji ze seznamu. Po výběru aplikace Function App se zobrazí následující stránka:
 
-![Přehled funkcí aplikace na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+![Přehled aplikace Function App v Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-Můžete přejít na všechno, co potřebujete ke správě aplikace function app na stránce Přehled zejména **[nastavení aplikace](#settings)** a **[funkce:](#platform-features)** .
+Na stránce Přehled můžete přejít na všechno, co potřebujete ke správě aplikace Function App, zejména **[nastavení aplikace](#settings)** a **[funkce platformy](#platform-features)** .
 
 ## <a name="settings"></a>Nastavení aplikace
 
-**Nastavení aplikace** kartu uchovává nastavení, které používají vaši aplikaci function app.
+Karta **nastavení aplikace** uchovává nastavení, která používá aplikace Function App.
 
-![Nastavení aplikace Function app na webu Azure Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+![Nastavení aplikace Function App v Azure Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-Tato nastavení jsou uloženy v zašifrované podobě a je nutné vybrat **zobrazí hodnoty** zobrazit hodnoty na portálu.
+Tato nastavení jsou šifrovaná a je nutné vybrat možnost **Zobrazit hodnoty** a zobrazit hodnoty na portálu.
 
-Chcete-li přidat nastavení **nové nastavení aplikace** a přidejte nový pár klíč hodnota.
+Chcete-li přidat nastavení, vyberte možnost **nové nastavení aplikace** a přidejte novou dvojici klíč-hodnota.
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-Když vyvíjíte aplikaci function app místně, tyto hodnoty se zachovají v souboru local.settings.json projektu.
+Když vyvíjíte aplikaci funkcí lokálně, tyto hodnoty se udržují v souboru projektu Local. Settings. JSON.
 
 ## <a name="platform-features"></a>Funkce platformy
 
-![Funkce kartě funkce platformy aplikace.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
+![Karta funkce Function App Platform](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
-Aplikace Function App běží v a spravuje, platformu Azure App Service. Vaše aplikace function App v důsledku toho mají přístup k většině funkcí Azure core webhosting platformy. **Funkce platformy** je karta, kde přístup k mnoha funkcím platformy App Service, můžete použít ve vaší aplikace function App. 
+Aplikace Function App běží na a jsou udržované Azure App Service platformou. Aplikace Function App mají proto přístup k většině funkcí základní webové hostující platformy Azure. Karta **funkce platformy** je místo, kde máte přístup k mnoha funkcím App Service platformy, kterou můžete použít ve svých aplikacích Function App. 
 
 > [!NOTE]
-> Ne všechny funkce App Service jsou k dispozici při spuštění aplikace function app na spotřebu plán hostování.
+> Ne všechny funkce App Service jsou dostupné, když aplikace Function App běží na plánu hostování spotřeby.
 
-Zbývající část tohoto tématu, zaměřuje se na následující funkce služby App Service na webu Azure Portal, které jsou užitečné pro funkce:
+Zbývající část tohoto tématu se zaměřuje na následující funkce App Service v Azure Portal, které jsou užitečné pro funkce:
 
-+ [App Service editor](#editor)
++ [Editor App Service](#editor)
 + [Console](#console)
 + [Rozšířené nástroje (Kudu)](#kudu)
 + [Možnosti nasazení](#deployment)
 + [CORS](#cors)
-+ [Ověřování](#auth)
++ [Autentizace](#auth)
 + [Definice rozhraní API](#swagger)
 
-Další informace o tom, jak pracovat s nastavením služby App Service najdete v tématu [konfigurace nastavení služby Azure App Service](../app-service/configure-common.md).
+Další informace o tom, jak pracovat s nastaveními App Service, najdete v tématu [Konfigurace nastavení Azure App Service](../app-service/configure-common.md).
 
 ### <a name="editor"></a>App Service Editor
 
 | | |
 |-|-|
-| ![App Service editoru aplikace Function app.](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | Editor služby App Service je pokročilé editor na portálu, který vám umožní upravit konfigurační soubory JSON a nabídne soubory kódu. Pokud vyberete tuto možnost, spustí se na samostatné kartě prohlížeče v základním editoru. To umožňuje integraci s úložištěm Git, spouštět a ladit kód a upravit nastavení aplikace function app. Tento editor poskytuje vylepšené vývojářské prostředí pro funkce ve srovnání s výchozím okně aplikace funkce.    |
+| ![Editor aplikace Function App App Service.](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | Editor App Service je pokročilý editor v portálu, který můžete použít k úpravě konfiguračních souborů JSON a souborů kódu podobně. Výběrem této možnosti se spustí samostatná karta prohlížeče se základním editorem. To umožňuje integraci s úložištěm Git, spuštěním a laděním kódu a úpravou nastavení aplikace Function App. Tento editor nabízí vylepšené vývojové prostředí pro vaše funkce v porovnání s výchozím oknem aplikace Function App.    |
 
-![Editor služby App Service](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
+![Editor App Service](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
-### <a name="console"></a>Konzoly
+### <a name="console"></a>Stromu
 
 | | |
 |-|-|
-| ![Funkce konzoly aplikace na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-console.png) | Konzole na portálu je ideální pro vývojáře nástroj, když budete chtít pracovat s vaší aplikace function app z příkazového řádku. Běžné příkazy zahrnout adresáře a vytváření souborů a navigace, jakož i provádí dávkové soubory a skripty. |
+| ![Konzola aplikace Function App v Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-console.png) | Konzola na portálu je ideální vývojářský nástroj, když dáváte přednost interakci s aplikací Function App z příkazového řádku. Mezi běžné příkazy patří vytváření a navigace adresářů a souborů a také provádění dávkových souborů a skriptů. |
 
-![Aplikace konzoly – funkce](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
+![Konzola aplikace Function App](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
 ### <a name="kudu"></a>Rozšířené nástroje (Kudu)
 
 | | |
 |-|-|
-| ![Aplikace Function app Kudu na portálu Azure portal](./media/functions-how-to-use-azure-function-app-settings/function-app-advanced-tools.png) | Pokročilé nástroje pro službu App Service (Kudu) poskytují přístup k pokročilým funkcím pro správu vaší aplikace function App. Z modulu Kudu můžete spravovat informace o systému, nastavení aplikace, proměnné prostředí, rozšíření webu, hlavičky protokolu HTTP a proměnných serveru. Můžete také spustit **Kudu** tak, že přejdete na koncový bod správce řízení služeb pro aplikace function app, jako je třeba `https://<myfunctionapp>.scm.azurewebsites.net/` |
+| ![Aplikace Function App Kudu v Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-advanced-tools.png) | Rozšířené nástroje pro App Service (označované také jako Kudu) poskytují přístup k pokročilým funkcím správy aplikace Function App. Z Kudu můžete spravovat systémové informace, nastavení aplikace, proměnné prostředí, rozšíření webu, hlavičky protokolu HTTP a proměnné serveru. **Kudu** můžete také spustit tak, že přejdete do koncového bodu SCM pro vaši aplikaci Function App, jako je například`https://<myfunctionapp>.scm.azurewebsites.net/` |
 
-![Konfigurace modulu Kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
+![Konfigurace Kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
 
 ### <a name="a-namedeploymentdeployment-options"></a><a name="deployment">Možnosti nasazení
 
 | | |
 |-|-|
-| ![Možnosti nasazení aplikace funkcí na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Funkce vám umožní vyvíjet kódu funkce v místním počítači. Pak můžete nahrát projektu lokální funkce aplikace do Azure. Kromě tradičních nahrání přes protokol FTP funkce vám umožní nasadit aplikaci function app pomocí oblíbených průběžnou integraci řešení, jako jsou GitHub, Azure DevOps, Dropbox, Bitbucket nebo jiné. Další informace najdete v tématu [průběžné nasazování pro službu Azure Functions](functions-continuous-deployment.md). Nahrát ručně pomocí FTP a místního Gitu, je také nutné [nakonfigurujete své přihlašovací údaje nasazení](functions-continuous-deployment.md#credentials). |
+| ![Možnosti nasazení aplikace Function App v Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Funkce umožňují vyvíjet kód funkce na místním počítači. Potom můžete do Azure nahrát svůj projekt místní aplikace Function App. Kromě tradičního nahrání serveru FTP vám funkce umožní nasadit aplikaci Function App s oblíbenými řešeními pro kontinuální integraci, jako je GitHub, Azure DevOps, Dropbox, Bitbucket a další. Další informace najdete v tématu [průběžné nasazování pro Azure Functions](functions-continuous-deployment.md). Pokud chcete nahrávat ručně pomocí FTP nebo místního Gitu, musíte taky [nakonfigurovat přihlašovací údaje pro nasazení](functions-continuous-deployment.md#credentials). |
 
 
 ### <a name="cors"></a>CORS
 
 | | |
 |-|-|
-| ![Aplikace Function app CORS na portálu Azure portal](./media/functions-how-to-use-azure-function-app-settings/function-app-cors.png) | Pokud chcete zabránit spuštění škodlivého kódu ve vašich službách, blokuje služby App Service volání vaší aplikace function App z externích zdrojů. Služba Functions podporuje prostředků mezi zdroji (CORS), aby vám umožní definovat "povolených" povolené zdroje, ze kterých může přijmout funkce vzdálené žádosti pro sdílení obsahu.  |
+| ![Funkce CORS aplikace Function App v Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-cors.png) | Aby se zabránilo spouštění škodlivého kódu ve vašich službách, App Service blokuje volání aplikací Function App z externích zdrojů. Funkce podporuje sdílení prostředků mezi zdroji (CORS) a umožňuje definovat "seznam povolených" povolených zdrojů, ze kterých můžou vaše funkce přijímat vzdálené požadavky.  |
 
-![Konfigurace aplikace Function App CORS](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
+![Konfigurace CORS Function App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-### <a name="auth"></a>Ověřování
+### <a name="auth"></a>Přihlašovací
 
 | | |
 |-|-|
-| ![Funkce ověřování aplikace na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | Použijete-li funkce triggeru HTTP, můžete vyžadovat volání nejdřív ověřit. App Service podporuje ověřování Azure Active Directory a přihlaste se pomocí poskytovatelé služeb sociálních sítí, jako je Facebook, Microsoft a Twitter. Podrobnosti o konfiguraci zprostředkovatele konkrétní ověřování najdete v tématu [Přehled ověřování služby Azure App Service](../app-service/overview-authentication-authorization.md). |
+| ![Ověřování aplikace Function App v Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | Pokud funkce používají aktivační událost HTTP, můžete vyžadovat první ověření volání. App Service podporuje ověřování Azure Active Directory a přihlašování pomocí poskytovatelů sociálních sítí, jako je Facebook, Microsoft a Twitter. Podrobnosti o konfiguraci konkrétních zprostředkovatelů ověřování najdete v tématu [Přehled ověřování Azure App Service](../app-service/overview-authentication-authorization.md). |
 
-![Konfigurace ověřování aplikace function App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
+![Konfigurace ověřování pro aplikaci Function App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
 
 ### <a name="swagger"></a>Definice rozhraní API
 
 | | |
 |-|-|
-| ![Aplikace – funkce rozhraní API swaggeru definici na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Služba Functions podporuje Swagger a umožňuje klientům snadněji využívat funkce aktivované protokolem HTTP. Další informace o vytvoření definice rozhraní API ve Swaggeru [hostovat rozhraní RESTful API s CORS v Azure App Service](../app-service/app-service-web-tutorial-rest-api.md). Proxy služby Functions lze také definovat jednu rovinu rozhraní API pro více funkcí. Další informace najdete v tématu [práce s proxy služby Azure Functions](functions-proxies.md). |
+| ![Rozhraní API aplikace Function App – definice Swagger v Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Funkce podporují Swagger, aby mohli klienti snadněji využívat funkce aktivované protokolem HTTP. Další informace o vytváření definic rozhraní API pomocí Swagger najdete na webu [hostování rozhraní RESTful API s CORS v Azure App Service](../app-service/app-service-web-tutorial-rest-api.md). K definování jediného povrchu rozhraní API pro více funkcí můžete použít také proxy služby Functions. Další informace najdete v tématu [práce s proxy služby Azure Functions](functions-proxies.md). |
 
-![Konfigurovat rozhraní API aplikace Function App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-apidef.png)
+![Konfigurace rozhraní API Function App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-apidef.png)
 
 
 
 ## <a name="next-steps"></a>Další postup
 
-+ [Konfigurace nastavení služby Azure App Service](../app-service/configure-common.md)
++ [Konfigurace nastavení Azure App Service](../app-service/configure-common.md)
 + [Průběžné nasazování se službou Azure Functions](functions-continuous-deployment.md)
 
 

@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c6a76f4188ecbf6ca778fdbcd23ac9fed2f60dde
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 024cc18f537334a4e9fb260864b13ac027af582f
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534660"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982688"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update Management
 
@@ -339,7 +339,7 @@ Pokud problém s opravou nemůžete vyřešit, vytvořte kopii následujícího 
 ### <a name="machines-do-not-install-updates"></a>Počítače neinstalují aktualizace
 
 * Zkuste aktualizace spustit přímo na počítači. Pokud počítač nejde aktualizovat, projděte si [seznam potenciálních chyb v průvodci odstraňováním potíží](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult).
-* Pokud se aktualizace spustí místně, zkuste na počítači odebrat a znovu nainstalovat agenta podle pokynů v části [Odebrání virtuálního počítače z řešení Update Management](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-for-update-management).
+* Pokud se aktualizace spustí místně, zkuste na počítači odebrat a znovu nainstalovat agenta podle pokynů v části [Odebrání virtuálního počítače z řešení Update Management](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-from-update-management).
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-needed-on-my-machines"></a>Ví, že aktualizace jsou k dispozici, ale v mých počítačích se nezobrazuje podle potřeby
 

@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 5639571739f3eb6263f62444e7ab02186e2ca945
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 21720ead788a505f86c4d35eb5a39943ff4a2e12
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742585"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981002"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Stažení virtuálního pevného disku se systémem Linux z Azure
 
@@ -58,9 +58,9 @@ Pokud chcete virtuální pevný disk použít jako image k vytvoření dalších
 Pokud chcete virtuální pevný disk použít jako disk pro novou instanci existujícího virtuálního počítače nebo datového disku, proveďte tyto kroky:
 
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2.  V nabídce centra klikněte na **Virtuální počítače**.
+2.  V nabídce vlevo vyberte **Virtual Machines**.
 3.  V seznamu vyberte virtuální počítač.
-4.  V okně pro virtuální počítač klikněte na **zastavit**.
+4.  Na stránce pro virtuální počítač vyberte **zastavit**.
 
     ![Zastavit virtuální počítač](./media/download-vhd/export-stop.png)
 
@@ -68,21 +68,21 @@ Pokud chcete virtuální pevný disk použít jako disk pro novou instanci exist
 
 Pokud chcete stáhnout soubor VHD, musíte vygenerovat adresu URL [sdíleného přístupového podpisu (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Po vygenerování adresy URL se adresa URL přiřadí čas vypršení platnosti.
 
-1.  V nabídce okna pro virtuální počítač klikněte na **disky**.
-2.  Vyberte disk s operačním systémem pro virtuální počítač a klikněte na **exportovat disk**.
-3.  Klikněte na **vygenerovat adresu URL**.
+1.  V nabídce stránky pro virtuální počítač vyberte **disky**.
+2.  Vyberte disk s operačním systémem pro virtuální počítač a pak vyberte **exportovat disk**.
+3.  Vyberte **generovat adresu URL**.
 
     ![Vygenerovat URL](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>Stáhnout VHD
 
-1.  Pod vygenerovanou adresou URL klikněte na Stáhnout soubor VHD.
-
+1.  V části vygenerovaná adresa URL vyberte **Stáhnout soubor VHD**.
+**
     ![Stáhnout VHD](./media/download-vhd/export-download.png)
 
-2.  Možná budete muset kliknutím na **Uložit** v prohlížeči spustit stahování. Výchozí název souboru VHD je *abcd*.
+2.  Možná budete muset vybrat **Uložit** v prohlížeči a zahájit stahování. Výchozí název souboru VHD je *abcd*.
 
-    ![V prohlížeči klikněte na Uložit.](./media/download-vhd/export-save.png)
+    ![V prohlížeči vyberte Save (Uložit).](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Další postup
 
