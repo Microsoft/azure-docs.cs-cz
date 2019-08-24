@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: 51d1af24a22f7ed86b01b1c7c79b204cd552a7ea
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 29ad95e33381aa03dc647e077cea56022f35a8db
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385401"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982842"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlý start: Vytváření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
 
@@ -82,6 +82,8 @@ Začněte vytvořením [projektu skupiny prostředků Azure](../azure-resource-m
    ![Vytvoření projektu skupiny prostředků Azure](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
+   > Názvy skupin prostředků můžou obsahovat jenom písmena, číslice, tečky`.`(), podtržítka (`_`), spojovníky (`-`) a kulaté závorky`(`( `)`,), ale nemohou *končit* tečkami`.`().
+   >
    > Pokud se **Cloud** nebo **Skupina prostředků Azure** nezobrazí, ujistěte se, že jste nainstalovali sadu Azure SDK pro Visual Studio.
 
    Pokud používáte Visual Studio 2019, postupujte podle následujících kroků:

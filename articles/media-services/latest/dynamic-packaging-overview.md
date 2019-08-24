@@ -11,44 +11,44 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/29/2019
+ms.date: 08/22/2019
 ms.author: juliako
-ms.openlocfilehash: 5979e34e7c186a0484c8db2d432a3c57a5ed1d15
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 352b42099bcd832792aad2fa24dca3e14525dc06
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679155"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990627"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
-Microsoft Azure Media Services lze použít k doručování mnoha mediálních formátů zdrojového souboru, formátů datových proudů médií a formátů ochrany obsahu na nejrůznější technologie klienta (například iOS a XBOX). Tito klienti rozumí různým protokolům, například iOS vyžaduje formát HTTP Live Streaming (HLS) a Xbox vyžaduje Smooth Streaming. Pokud máte sadu souborů s adaptivní přenosovou rychlostí (s více přenosovými rychlostmi) (ISO Base Media 14496-12) nebo sadu adaptivních přenosů Smooth Streaming soubory, které chcete obsluhovat do klientů, kteří rozumí HLS, MPEG POMLČKy nebo Smooth Streaming, můžete využít výhod *dynamického Balení*. Balení je nezávislá na rozlišení videa, jsou podporovány SD/HD/UHD-4K.
+Microsoft Azure Media Services lze použít ke kódování mnoha mediálních formátů souborů a k jejich doručování prostřednictvím různých protokolů streamování s ochranou obsahu nebo bez nich, aby bylo možné dosáhnout všech hlavních zařízení (například zařízení s iOS a Androidem). Tito klienti rozumí různým protokolům. například iOS vyžaduje doručení datových proudů ve formátu HTTP Live Streaming (HLS) a zařízení s Androidem podporují HLS a také formát MPEG POMLČKy. Aby bylo možné připravit zdrojové soubory pro doručování datovým proudem s adaptivní přenosovou [](encoding-concept.md) rychlostí, je nutné je zakódovat do sady s více přenosovými rychlostmi (označované také jako adaptivní přenosové rychlosti) soubory MP4 (ISO Base Media 14496-12). Z této sady souborů MP4 můžete video doručovat prostřednictvím HLS nebo MPEG-POMLČKy nebo Smooth Streamingch protokolů pomocí **dynamického balení**.
 
 V Media Services [koncový bod streamování](streaming-endpoint-concept.md) představuje dynamický (za běhu) balení a službu původu, která může doručovat obsah živě a na vyžádání přímo do klientské aplikace přehrávače pomocí jednoho z běžných protokolů mediálního streamování (HLS nebo POMLČKA). Dynamické balení je funkce, která nabízí standard pro všechny **koncové body streamování** (Standard nebo Premium). 
 
-Pokud chcete využít výhod dynamického balení, musíte mít [Asset](assets-concept.md) , který obsahuje sadu souborů MP4 s adaptivní přenosovou rychlostí a konfigurační soubory pro streamování (. ISM,. ISMC,. MPI atd.). Jedním ze způsobů, jak tyto soubory získat, je zakódovat vaše soubory mezzanine (zdrojové soubory) pomocí Media Services. Chcete-li zpřístupnit pro klienty přehrávání videa v kódovaném prostředku, je nutné vytvořit [Lokátor streamování](streaming-locators-concept.md) a vytvořit adresy URL streamování. Pak se v závislosti na zadaném formátu v manifestu klienta streamování (HLS, POMLČKa nebo plynule) zobrazí datový proud v protokolu, který jste zvolili.
+Pokud chcete využít výhod **dynamického balení**, musíte mít **Asset** se sadou souborů MP4 s adaptivní přenosovou rychlostí a konfigurační soubory streamování, které vyžaduje Media Services dynamické balení. Jedním ze způsobů, jak tyto soubory získat, je zakódovat vaše soubory mezzanine (zdrojové soubory) pomocí Media Services. Chcete-li zpřístupnit pro klienty přehrávání videa v kódovaném prostředku, je nutné vytvořit **Lokátor streamování** a vytvořit adresy URL streamování. Na základě zadaného formátu v manifestu klienta streamování (HLS, MPEG POMLČKa nebo Smooth Streaming) obdržíte datový proud v protokolu, který jste zvolili.
 
 Díky tomu pak stačí uložit (a platit) soubory pouze v jednom úložném formátu a služba Media Services bude sestavovat a dodávat vhodný formát streamování v reakci na požadavky klientů. 
 
-V Media Services se používá dynamické balení bez ohledu na to, jestli používáte streamování živě nebo na vyžádání. 
+V Media Services se dynamická balení používá bez ohledu na to, jestli používáte streamovaná videa živě nebo na vyžádání. 
 
 > [!NOTE]
 > Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="on-demand-streaming-workflow"></a>Pracovní postup streamování na vyžádání
 
-Tady je běžný pracovní postup pro Media Services streamování na vyžádání s dynamickým balením:
+Následuje běžný pracovní postup streamování Media Services, kde se používá dynamické balení spolu se standardním kodérem v Azure Media Services.
 
-1. Nahrajte vstupní nebo zdrojový soubor (nazývaný soubor *Mezzanine* ). Mezi příklady patří soubor MP4, MOV nebo MXF. 
-1. Zakódovat soubor Mezzanine do nastavení H. 264 MP4 s adaptivní přenosovou rychlostí. 
+1. Nahrání vstupního souboru, jako je soubor QuickTime nebo MOV nebo MXF (pro seznam podporovaných formátů, najdete v článku [formáty podporované Media Encoder Standard](media-encoder-standard-formats.md). To se také označuje jako Mezzanine nebo zdrojový soubor.
+1. [Zakódovat](#encode-to-adaptive-bitrate-mp4s) soubor Mezzanine do sady H. 264/AAC MP4 s adaptivní přenosovou rychlostí. 
 1. Publikujte výstupní Asset, který obsahuje sadu MP4 s adaptivní přenosovou rychlostí. Publikujete vytvořením lokátoru streamování.
-1. Vytvářejte adresy URL, které cílí na různé formáty (HLS, MPEG-POMLČKa a Smooth Streaming). Koncový bod streamování se stará o poskytování správného manifestu a požadavků pro různé formáty.
+1. Vytvářejte adresy URL, které cílí na různé formáty (HLS, MPEG-POMLČKa a Smooth Streaming). **Koncový bod streamování** by postaral o poskytování správného manifestu a požadavků pro všechny tyto různé formáty.
 
-Tento diagram znázorňuje pracovní postup streamování na vyžádání s dynamickým balením:
+Následující diagram znázorňuje streamování na vyžádání s dynamickým pracovním postupem pro balení.
 
 ![Diagram pracovního postupu pro streamování na vyžádání s dynamickým balením](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
-### <a name="encoding-to-adaptive-bitrate-mp4s"></a>Kódování do adaptivní přenosové rychlosti rychlostmi
+### <a name="encode-to-adaptive-bitrate-mp4s"></a>Kódovat do adaptivní přenosové rychlosti rychlostmi
 
 V následujících článcích se dozvíte, [jak zakódovat video pomocí Media Services](encoding-concept.md):
 
@@ -93,14 +93,15 @@ Tyto protokoly pro doručování obsahu můžete použít v Media Services dynam
 |MPEG-SPOJOVNÍK CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |Technologie Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
-## <a name="delivery-codecs-support"></a>Podpora pro kodeky pro doručování 
-
-### <a name="video-codecs"></a>Videokodeky
+## <a name="video-codecs-supported-by-dynamic-packaging"></a>Video kodeky podporované dynamickým balením
 
 Dynamické balení podporuje následující kodeky videí:
 * Soubory MP4 obsahující video kódované pomocí [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC nebo AVC1) nebo [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 nebo hvc1).
 
-### <a name="audio-codecs"></a>Zvukové kodeky
+> [!NOTE]
+> Rozlišení až 4K a snímkové frekvence až 60 snímků za sekundu byly testovány s dynamickým balením. [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2. Pokud máte amshelp@microsoft.com v tomto tématu nějaké dotazy, kontaktujte prosím. 
+
+## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Zvukové kodeky podporované dynamickým balením
 
 Dynamické balení podporuje následující zvukové protokoly popsané níže:
 
@@ -109,7 +110,10 @@ Dynamické balení podporuje následující zvukové protokoly popsané níže:
 
 Dynamické balení nepodporuje soubory, které obsahují zvuk [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) (Jedná se o zastaralý kodek).
 
-#### <a name="mp4-files"></a>Soubory MP4
+> [!NOTE]
+> [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování na Dolby Digital Plus prostřednictvím starších rozhraní API v2. Pokud máte amshelp@microsoft.com v tomto tématu nějaké dotazy, kontaktujte prosím. 
+
+### <a name="mp4-files"></a>Soubory MP4
 
 Dynamické balení podporuje soubory MP4, které obsahují zvuk kódovaný pomocí následujících protokolů: 
 
@@ -126,7 +130,7 @@ Dynamické balení podporuje soubory MP4, které obsahují zvuk kódovaný pomoc
     * DTS Express (dtse)
     * DTS-HD – bezeztrátová (bez jádra) (dtsl)
 
-#### <a name="multiple-audio-tracks"></a>Více zvukových stop
+### <a name="multiple-audio-tracks"></a>Více zvukových stop
 
 Dynamické balení podporuje více zvukových stop pro výstup HLS (verze 4 nebo novější) pro streamování assetů, které mají více zvukových stop s více kodeky a jazyky.
 

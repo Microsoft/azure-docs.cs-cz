@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b08358680793ccdadca27c5f2aa57fbffe89b53a
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: f35836f60fae11c0955c128e96a4cea188681942
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973789"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997660"
 ---
-# <a name="how-to-run-the-opc-ua-certificate-management-service-securely"></a>Bezpečné spuštění služby správy certifikátů OPC UA
+# <a name="how-to-run-the-opc-vault-certificate-management-service-securely"></a>Bezpečné spuštění služby Správa certifikátů trezoru OPC
 
-Tento článek vysvětluje, jak bezpečně spustit službu OPC UA Certificate Management v Azure a další pokyny pro zabezpečení, které je potřeba zvážit.
+Tento článek vysvětluje, jak bezpečně spustit službu pro správu certifikátů trezoru OPC v Azure a další pokyny pro zabezpečení, které je potřeba zvážit.
 
 ## <a name="roles"></a>Role
 
@@ -32,7 +32,7 @@ Mikroslužba trezoru OPC je nakonfigurovaná tak, aby umožňovala jedinečným 
 
 ### <a name="certificate-management-service-roles"></a>Role služby správy certifikátů
 
-Mikroslužba definuje následující role:
+Mikroslužba trezoru OPC definuje následující role:
 
 - **Čtecí modul**: Ve výchozím nastavení má každý ověřený uživatel v tenantovi oprávnění ke čtení. 
   - Přístup pro čtení aplikací a žádostí o certifikát. Může vypsat a dotazovat se na aplikace a žádosti o certifikát. K dispozici jsou také informace o zjišťování zařízení a veřejné certifikáty s přístupem pro čtení.
@@ -132,14 +132,14 @@ Pro IoT Edge zařízení by se měly názvy hostitelů a IP adresy zdokumentovat
 
 Dokumentace k hierarchii certifikační autority musí obsahovat všechny provozované certifikační autority, včetně všech souvisejících podřízených certifikačních autorit, nadřazených certifikačních autorit a kořenových certifikačních autorit, i když je služba nespravuje. Místo formální dokumentace může být k dispozici vyčerpávající sada všech certifikátů certifikační autority, které nejsou prošly platností.
 
-> [!IMPORTANT]
+> [!NOTE]
 > Ukázková aplikace OPC trezoru podporuje stažení všech certifikátů používaných a vyprodukovaných ve službě pro dokumentaci.
 
 ### <a name="document-the-issued-certificates-by-all-certification-authorities-cas"></a>Dokumentování vydaných certifikátů všemi certifikačními autoritami (CAs)
 
 Pro dokumentaci by měla být k dispozici vyčerpávající sada všech certifikátů vydaných za posledních 12 měsíců.
 
-> [!IMPORTANT]
+> [!NOTE]
 > Ukázková aplikace OPC trezoru podporuje stažení všech certifikátů používaných a vyprodukovaných ve službě pro dokumentaci.
 
 ### <a name="document-the-sop-for-securely-deleting-cryptographic-keys"></a>Dokumentuje autority pro bezpečné odstranění kryptografických klíčů.
@@ -220,7 +220,7 @@ Mikroslužba OPC trezor autority je popsaná v [přehledu](overview-opc-vault-ar
 
 Proces odvolaných certifikátů je popsaný v [přehledu](overview-opc-vault-architecture.md) a v tématu [Správa](howto-opc-vault-manage.md) dokumentů.
     
-### <a name="document-certification-authority-key-generation-ceremony"></a>Dokument generování klíče certifikační autority procedury 
+### <a name="document-certification-authority-ca-key-generation-ceremony"></a>Dokument pro generování klíčů certifikační autority (CA) pro procedury 
 
 Generování klíče CA vystavitele ve mikroslužbě trezoru OPC je zjednodušené z důvodu zabezpečeného úložiště v úložišti klíčů Azure a popsaných v tématu [Správa](howto-opc-vault-manage.md) dokumentace.
 

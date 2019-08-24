@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 7b5c0a045fe932db38666559ee415d7b27aa11e4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 05ecfdc4f082aaa44fe54e6b807a1c5faf84eb8d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614179"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996448"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Průvodce škálovatelností a výkonem aktivity kopírování
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
@@ -41,30 +41,30 @@ Po přečtení tohoto článku, budou moci odpovědět na následující otázky
 
 ADF nabízí architekturu bez serveru, která umožňuje paralelismus na různých úrovních, což vývojářům umožňuje vytvářet kanály pro plné využití šířky pásma sítě a vstupně-výstupních operací úložiště a šířky pásma pro maximalizaci propustnosti přesunu dat pro vaše prostředí.  To znamená, že propustnost, kterou můžete dosáhnout, lze odhadnout měřením minimální propustnosti nabízených zdrojovým úložištěm dat, cílovým úložištěm dat a šířky pásma sítě mezi zdrojovým a cílovým serverem.  V následující tabulce je vypočítána doba kopírování na základě velikosti dat a limitu šířky pásma pro vaše prostředí. 
 
-| Velikost dat \ šířka pásma | 50 Mb/s    | 100 Mb/s  | 200 Mb/s  | 500 Mb/s  | 1 Gb/s   | 10 Gb/s  |
-| --------------------- | ---------- | --------- | --------- | --------- | -------- | -------- |
-| 1 GB                  | 2,7 min.    | 1,4 min.   | 0,7 min.   | 0,3 min.   | 0,1 min.  | 0,0 min.  |
-| 10 GB                 | 27,3 min.   | 13,7 min.  | 6,8 min.   | 2,7 min.   | 1,3 min.  | 0,1 min.  |
-| 100 GB                | 4,6 hod.    | 2,3 hod.   | 1,1 hod.   | 0,5 hod.   | 0,2 hod.  | 0,0 hod.  |
-| 1 TB                  | 46,6 hod.   | 23,3 hod.  | 11,7 hod.  | 4,7 hod.   | 2,3 hod.  | 0,2 hod.  |
-| 10 TB                 | 19,4 dní  | 9,7 dní  | 4,9 dní  | 1,9 dní  | 0,9 dní | 0,1 dní |
-| 100 TB                | 194,2 dní | 97,1 dní | 48,5 dní | 19,4 dní | 9,5 dní | 0,9 dní |
-| 1 PB                  | 64,7. mo    | 32,4. mo   | 16,2. mo   | 6,5. mo    | 3,2. mo   | 0,3. mo   |
-| 10 PB                 | 647,3. mo   | 323,6. mo  | 161,8. mo  | 64,7. mo   | 31,6. mo  | 3,2. mo   |
+| Velikost dat/ <br/> šířka pásma | 50 Mb/s    | 100 Mb/s  | 500 Mb/s  | 1 Gb/s   | 5 Gb/s   | 10 Gb/s  | 50 GB/s   |
+| --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
+| **1 GB**                    | 2,7 min.    | 1,4 min.   | 0,3 min.   | 0,1 min.  | 0,03 min. | 0,01 min. | 0,0 min.   |
+| **10 GB**                   | 27,3 min.   | 13,7 min.  | 2,7 min.   | 1,3 min.  | 0,3 min.  | 0,1 min.  | 0,03 min.  |
+| **100 GB**                  | 4,6 hod.    | 2,3 hod.   | 0,5 hod.   | 0,2 hod.  | 0,05 hod. | 0,02 hod. | 0,0 hod.   |
+| **1 TB**                    | 46,6 hod.   | 23,3 hod.  | 4,7 hod.   | 2,3 hod.  | 0,5 hod.  | 0,2 hod.  | 0,05 hod.  |
+| **10 TB**                   | 19,4 dní  | 9,7 dní  | 1,9 dní  | 0,9 dní | 0,2 dní | 0,1 dní | 0,02 dní |
+| **100 TB**                  | 194,2 dní | 97,1 dní | 19,4 dní | 9,7 dní | 1,9 dní | 1 dny   | 0,2 dní  |
+| **1 PB**                    | 64,7. mo    | 32,4. mo   | 6,5. mo    | 3,2. mo   | 0,6. mo   | 0,3. mo   | 0,06. mo   |
+| **10 PB**                   | 647,3. mo   | 323,6. mo  | 64,7. mo   | 31,6. mo  | 6,5. mo   | 3,2. mo   | 0,6. mo    |
 
 Kopie ADF je škálovatelná na různých úrovních:
 
 ![Jak kopíruje ADF škálování](media/copy-activity-performance/adf-copy-scalability.png)
 
-- Jediná aktivita kopírování může využít výhod škálovatelných výpočetních prostředků: při použití Azure Integration Runtime můžete pro každou aktivitu kopírování v rámci serveru zadat [až 256 DIUs](#data-integration-units) . Při použití Integration Runtime v místním prostředí můžete ručně navýšení kapacity počítače nebo horizontální navýšení kapacity na více počítačů ([až 4 uzly](create-self-hosted-integration-runtime.md#high-availability-and-scalability)) a jedna aktivita kopírování bude rozdělit svou sadu souborů napříč všemi uzly.
-- Jedna aktivita kopírování čte z a zapisuje do úložiště dat pomocí více vláken.
 - Tok řízení ADF může spustit více aktivit kopírování paralelně, například pomocí [pro každou smyčku](control-flow-for-each-activity.md).
+- Jediná aktivita kopírování může využít výhod škálovatelných výpočetních prostředků: při použití Azure Integration Runtime můžete pro každou aktivitu kopírování v rámci serveru zadat [až 256 DIUs](#data-integration-units) . Při použití Integration Runtime v místním prostředí můžete ručně navýšení kapacity počítače nebo horizontální navýšení kapacity na více počítačů ([až 4 uzly](create-self-hosted-integration-runtime.md#high-availability-and-scalability)) a jedna aktivita kopírování bude rozdělit svou sadu souborů napříč všemi uzly.
+- Jedna aktivita kopírování čte z a zapisuje do úložiště dat pomocí paralelního více [](#parallel-copy)vláken.
 
 ## <a name="performance-tuning-steps"></a>Postup optimalizace výkonu
 
 Provedením těchto kroků vyoptimalizujete výkon služby Azure Data Factory s aktivitou kopírování.
 
-1. **Vytvořte směrný plán.** Během fáze vývoje otestujte svůj kanál pomocí aktivity kopírování v reprezentativní ukázce dat. Shromažďování podrobností o spuštění a charakteristik výkonu po [monitorování aktivity kopírování](copy-activity-overview.md#monitoring)
+1. **Vyberte testovací datovou sadu a vytvořte směrný plán.** Během fáze vývoje otestujte svůj kanál pomocí aktivity kopírování v reprezentativní ukázce dat. Datová sada, kterou zvolíte, by měla představovat vaše typické vzorce dat (struktura složek, vzorek souboru, schéma dat atd.) a je dostatečně velká pro vyhodnocení výkonu kopírování, například trvá 10 minut nebo i déle, než se aktivita kopírování dokončí. Shromažďování podrobností o spuštění a charakteristik výkonu po [monitorování aktivity kopírování](copy-activity-overview.md#monitoring)
 
 2. **Jak maximalizovat výkon jedné aktivity kopírování**:
 
@@ -78,7 +78,7 @@ Provedením těchto kroků vyoptimalizujete výkon služby Azure Data Factory s 
 
    Aktivita kopírování by se měla při zvětšování nastavení DIÚ skoro dokonale lineárně škálovat.  Pokud při zdvojnásobení nastavení DIÚ nevidíte propustnost, může docházet k dvěma akcím:
 
-   - Konkrétní vzor kopírování, který používáte, nepřináší přidávání dalších DIUs.  I když jste zadali větší hodnotu DIÚ, skutečná DIÚ použitá zůstala stejná a proto získáte stejnou propustnost jako předtím.  Pokud se jedná o tento případ, přejít na krok #3
+   - Konkrétní vzor kopírování, který používáte, nepřináší přidávání dalších DIUs.  I když jste zadali větší hodnotu DIÚ, skutečná DIÚ použitá zůstala stejná a proto získáte stejnou propustnost jako předtím.  Pokud se jedná o tento případ, maximalizujte agregovanou propustnost spuštěním několika kopií současně odkazujících na krok 3.
    - Přidáním dalších DIUs (zvýšení výkonu) a tím se zvýší rychlost extrakce, přenosu a načítání dat, buď zdrojové úložiště dat, síť v nástroji, nebo cílové úložiště dat dosáhlo svého kritického bodu a případně omezení.  Pokud se jedná o tento případ, zkuste kontaktovat správce úložiště dat nebo správce vaší sítě, aby se zvýšil nejvyšší limit, nebo můžete také omezit nastavení DIÚ, dokud nedojde k překročení omezení.
 
    **Pokud je aktivita kopírování prováděna v Integration Runtime v místním prostředí:**
@@ -90,7 +90,7 @@ Provedením těchto kroků vyoptimalizujete výkon služby Azure Data Factory s 
    Pokud chcete dosáhnout vyšší propustnosti, můžete buď horizontální navýšení nebo horizontální navýšení kapacity v místním prostředí IR:
 
    - Pokud procesor a dostupná paměť v uzlu IR v místním prostředí nejsou plně využívány, ale spuštění souběžných úloh dosáhlo limitu, měli byste škálovat kapacitu tak, že zvýšíte počet souběžných úloh, které lze spustit na uzlu.  Pokyny najdete [tady](create-self-hosted-integration-runtime.md#scale-up) .
-   - Pokud je na druhé straně procesor vysoký v místním prostředí IR a dostupná paměť je nízká, můžete přidat nový uzel, aby bylo možné lépe škálovat zatížení napříč více uzly.  Pokyny najdete [tady](create-self-hosted-integration-runtime.md#high-availability-and-scalability) .
+   - Pokud je na druhé straně procesor vysoký v místním prostředí IR nebo je dostupná paměť nízká, můžete přidat nový uzel, který vám umožní lépe škálovat zatížení napříč více uzly.  Pokyny najdete [tady](create-self-hosted-integration-runtime.md#high-availability-and-scalability) .
 
    Při horizontálním navýšení kapacity nebo horizontálním navýšení kapacity prostředí IR v místním prostředí můžete spustit test testu, abyste zjistili, jestli se vám stále zobrazuje větší propustnost.  Pokud propustnost přestane zlepšit, asi nejspíš buď zdrojové úložiště dat, síť v síti, nebo cílové úložiště dat dosáhlo svého kritického bodu a zahajuje se omezení. Pokud se jedná o tento případ, zkuste kontaktovat správce úložiště dat nebo správce vaší sítě, aby se zvýšil nejvyšší limit, nebo můžete přejít zpátky na předchozí nastavení škálování pro prostředí IR s vlastním hostováním. 
 
@@ -98,9 +98,7 @@ Provedením těchto kroků vyoptimalizujete výkon služby Azure Data Factory s 
 
    Teď, když jste dosáhli maximálního výkonu jedné aktivity kopírování, pokud jste ještě nedosáhli horní meze propustnosti vašeho prostředí – síť, zdrojové úložiště dat a cílové úložiště dat – můžete spouštět více aktivit kopírování paralelně pomocí ADF. konstrukce toků řízení, například [pro každou smyčku](control-flow-for-each-activity.md).
 
-4. **Diagnostikujte a Optimalizujte výkon.** Pokud výkon, který sledujete, nesplňuje vaše očekávání, identifikujte kritická místa výkonu. Potom optimalizace výkonu můžete odebrat nebo snižují dopad kritické body.
-
-   V některých případech se při spuštění aktivity kopírování v Azure Data Factory zobrazí zpráva "Tipy pro ladění výkonu" na stránce [monitorování aktivity kopírování](copy-activity-overview.md#monitor-visually), jak je znázorněno v následujícím příkladu. Zpráva vás upozorní na kritické body, které se identifikovaly pro daný běh kopírování. Také vám pomůže s tím, co se dá změnit, aby se zvýšila propustnost kopírování. Tipy pro ladění výkonu aktuálně poskytují návrhy jako:
+4. **Tipy pro ladění výkonu a funkce optimalizace.** V některých případech se při spuštění aktivity kopírování v Azure Data Factory zobrazí zpráva "Tipy pro ladění výkonu" na stránce [monitorování aktivity kopírování](copy-activity-overview.md#monitor-visually), jak je znázorněno v následujícím příkladu. Zpráva vás upozorní na kritické body, které se identifikovaly pro daný běh kopírování. Také vám pomůže s tím, co se dá změnit, aby se zvýšila propustnost kopírování. Tipy pro ladění výkonu aktuálně poskytují návrhy jako:
 
    - Při kopírování dat do Azure SQL Data Warehouse použít základ
    - Zvyšte Azure Cosmos DB jednotky žádostí nebo Azure SQL Database DTU (jednotky propustnosti databáze), když je prostředek na straně úložiště dat kritický.
@@ -114,12 +112,11 @@ Provedením těchto kroků vyoptimalizujete výkon služby Azure Data Factory s 
 
    ![Sledování kopírování pomocí tipů pro ladění výkonu](media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-   Kromě toho jsou zde některé běžné požadavky. Úplný popis nástroje pro diagnostiku výkonu překračuje rozsah tohoto článku.
+   Kromě toho jsou zde některé funkce optimalizace výkonu, o kterých byste měli vědět:
 
-   - Funkce optimalizace výkonu:
-     - [Paralelní kopírování](#parallel-copy)
-     - [Jednotky integrace dat](#data-integration-units)
-     - [Kopírování dvoufázové instalace](#staged-copy)
+   - [Paralelní kopírování](#parallel-copy)
+   - [Jednotky integrace dat](#data-integration-units)
+   - [Kopírování dvoufázové instalace](#staged-copy)
    - [Škálovatelnost prostředí Integration runtime v místním prostředí](concepts-integration-runtime.md#self-hosted-integration-runtime)
 
 5. **Rozšiřte konfiguraci na celou datovou sadu.** Až budete spokojeni s výsledky a výkonem spuštění, můžete rozšířit definici a kanál tak, aby pokryly celou datovou sadu.
@@ -136,7 +133,9 @@ Azure Data Factory poskytuje následující funkce optimalizace výkonu:
 
 Jednotka Integration data je míra, která představuje napájení (kombinace procesoru, paměti a přidělení síťových prostředků) jedné jednotky v Azure Data Factory. Jednotka pro integraci dat platí jenom pro [prostředí Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime), ale ne pro místní [prostředí Integration runtime](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-Povolený DIUs k tomu, aby mohl provádět kopírování aktivit, je mezi 2 a 256. Pokud není zadán, následující tabulka uvádí výchozí DIUs používá ve scénářích různé kopie:
+Bude se vám účtovat počet **využitých jednotek \* doby trvání \* kopírování DIUs a cena za diú za hodinu**. [Tady se můžete](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)podívat na aktuální ceny. Pro každý typ předplatného se můžou použít místní měna a samostatná sleva.
+
+Povolený DIUs k tomu, aby mohl provádět kopírování aktivit, je **mezi 2 a 256**. Pokud není zadaný nebo jste v uživatelském rozhraní zvolili "automaticky", Data Factory dynamicky použít optimální nastavení DIÚ na základě páru zdroj-jímka a datového vzoru. V následující tabulce jsou uvedeny výchozí DIUs používané v různých scénářích kopírování:
 
 | Kopírování | Výchozí DIUs určené služby |
 |:--- |:--- |
@@ -151,7 +150,7 @@ Při monitorování spuštění aktivit můžete zobrazit DIUs, která se použ�
 > [!NOTE]
 > Nastavení DIUs větší než 4 se v současné době týká jenom při kopírování více souborů z Azure Storage, Azure Data Lake Storage, Amazon S3, Google Cloud Storage, cloudového FTP FTP nebo cloudu SFTP do dalších cloudových úložišť dat.
 
-**Příklad**
+**Příklad:**
 
 ```json
 "activities":[
@@ -173,10 +172,6 @@ Při monitorování spuštění aktivit můžete zobrazit DIUs, která se použ�
 ]
 ```
 
-#### <a name="data-integration-units-billing-impact"></a>Fakturační dopad jednotky integrace dat
-
-Pamatujte na to, že se vám účtuje celková doba operace kopírování. Celková doba, kterou se vám účtuje za přesun dat, je součet doby trvání napříč DIUs. Pokud úloha kopírování používá k trvat jednu hodinu se dvěma jednotkami cloudu a teď trvá 15 minut s osm jednotek v cloudu, bude celkové vyúčtování skoro stejné zůstane.
-
 ### <a name="parallel-copy"></a>Paralelní kopírování
 
 Vlastnost **parallelCopies** můžete použít k označení paralelismu, které má aktivita kopírování použít. Tuto vlastnost si můžete představit jako maximální počet vláken v rámci aktivity kopírování, kterou si můžete přečíst ze zdroje nebo zapisovat do úložiště dat jímky paralelně.
@@ -193,6 +188,15 @@ Pro každou spuštění aktivity kopírování Azure Data Factory určuje počet
 > Když kopírujete data mezi úložišti na základě souborů, výchozí chování obvykle poskytuje nejlepší propustnost. Výchozí chování je automaticky určováno na základě vzoru zdrojového souboru.
 
 Pro řízení zatížení počítačů, které hostují vaše úložiště dat nebo pro optimalizaci výkonu kopírování, můžete přepsat výchozí hodnotu a zadat hodnotu pro vlastnost **parallelCopies** . Hodnota musí být celé číslo větší než nebo rovno 1. V době běhu používá aktivita kopírování hodnotu, která je menší nebo rovna hodnotě, kterou jste nastavili.
+
+**Ukazuje na poznámku:**
+
+- Při kopírování dat mezi úložišti založenými na souborech Určuje **parallelCopies** paralelismus na úrovni souboru. Blokování v rámci jednoho souboru probíhá automaticky a transparentně. Je navržená tak, aby používala nejvhodnější velikost bloku dat pro daný typ zdrojového úložiště dat, aby se data načetla paralelně a kolmo k **parallelCopies**. Skutečný počet paralelních kopie služba pro přesun dat se používá pro operaci kopírování v době běhu je delší než počet souborů, které máte. Pokud je chování kopírování **mergeFile**, aktivita kopírování nemůže využít paralelismus na úrovni souborů.
+- Při kopírování dat z úložišť, která nejsou založená na souborech (s výjimkou [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabulka SAP](connector-sap-table.md#sap-table-as-source)a konektoru [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) jako zdroje s povoleným vytvářením oddílů dat), do úložišť, která jsou založená na souborech, služba pro přesun dat ignoruje vlastnost **parallelCopies** . I v případě, že je zadán paralelismu, není použita v tomto případě.
+- Vlastnost **parallelCopies** je kolmá na **dataIntegrationUnits**. Předchozí se počítá přes všechny jednotky integrace Data.
+- Když zadáte hodnotu vlastnosti **parallelCopies** , zvažte zvýšení zátěže ve zdrojovém a úložišti dat jímky. Zvažte také zvýšení zatížení v místním prostředí Integration runtime, pokud je aktivita kopírování oprávněná, například pro hybridní kopírování. Toto zvýšení zatížení nastane hlavně v případě, že máte více aktivit nebo souběžných spuštění stejných aktivit, které se spouštějí ve stejném úložišti dat. Pokud si všimnete, že úložiště dat nebo místní prostředí Integration runtime je zahlcené zatížením, snižte hodnotu **parallelCopies** k uvolnění zátěže.
+
+**Příklad:**
 
 ```json
 "activities":[
@@ -213,13 +217,6 @@ Pro řízení zatížení počítačů, které hostují vaše úložiště dat n
     }
 ]
 ```
-
-**Ukazuje na poznámku:**
-
-* Při kopírování dat mezi úložišti založenými na souborech Určuje **parallelCopies** paralelismus na úrovni souboru. Blokování v rámci jednoho souboru probíhá automaticky a transparentně. Je navržená tak, aby používala nejvhodnější velikost bloku dat pro daný typ zdrojového úložiště dat, aby se data načetla paralelně a kolmo k **parallelCopies**. Skutečný počet paralelních kopie služba pro přesun dat se používá pro operaci kopírování v době běhu je delší než počet souborů, které máte. Pokud je chování kopírování **mergeFile**, aktivita kopírování nemůže využít paralelismus na úrovni souborů.
-* Při kopírování dat z úložišť, která nejsou založená na souborech (s výjimkou [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabulka SAP](connector-sap-table.md#sap-table-as-source)a konektoru [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) jako zdroje s povoleným vytvářením oddílů dat), do úložišť, která jsou založená na souborech, služba pro přesun dat ignoruje vlastnost **parallelCopies** . I v případě, že je zadán paralelismu, není použita v tomto případě.
-* Vlastnost **parallelCopies** je kolmá na **dataIntegrationUnits**. Předchozí se počítá přes všechny jednotky integrace Data.
-* Když zadáte hodnotu vlastnosti **parallelCopies** , zvažte zvýšení zátěže ve zdrojovém a úložišti dat jímky. Zvažte také zvýšení zatížení v místním prostředí Integration runtime, pokud je aktivita kopírování oprávněná, například pro hybridní kopírování. Toto zvýšení zatížení nastane hlavně v případě, že máte více aktivit nebo souběžných spuštění stejných aktivit, které se spouštějí ve stejném úložišti dat. Pokud si všimnete, že úložiště dat nebo místní prostředí Integration runtime je zahlcené zatížením, snižte hodnotu **parallelCopies** k uvolnění zátěže.
 
 ### <a name="staged-copy"></a>Kopírování dvoufázové instalace
 
@@ -301,9 +298,9 @@ Tady jsou odkazy na sledování výkonu a ladění pro některá z podporovanýc
 * Místní SQL Server: [Monitorujte a Optimalizujte výkon](https://msdn.microsoft.com/library/ms189081.aspx).
 * Místní souborový server: [Ladění výkonu pro souborové servery](https://msdn.microsoft.com/library/dn567661.aspx).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další články o aktivitě kopírování najdete v článcích:
 
 - [Přehled aktivit kopírování](copy-activity-overview.md)
-- [Mapování schématu aktivity kopírování](copy-activity-schema-and-type-mapping.md)
-- [Zkopírovat aktivitu odolnost proti chybám](copy-activity-fault-tolerance.md)
+- [Použití Azure Data Factory k migraci dat ze služby Data Lake nebo datového skladu do Azure](data-migration-guidance-overview.md)
+- [Migrace dat ze služby Amazon S3 do Azure Storage](data-migration-guidance-s3-azure-storage.md)

@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016374"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992232"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Upgradujte řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2
 
@@ -235,7 +235,7 @@ Všimněte si, že existují třetí strany, které mohou Data Lake Storage Gen1
 
 * Pokud používáte nástroj, který nekopíruje seznamy ACL nebo nechcete zkopírovat seznamy ACL, pak budete muset nastavit seznamy ACL v cílovém ručně na odpovídající nejvyšší úrovni. Uděláte to pomocí Průzkumníka služby Storage. Ujistěte se, že tyto seznamy ACL jsou výchozí seznamy ACL, tak, aby soubory a složky, které můžete zkopírovat dědí je.
 
-* V Data Lake Storage Gen1 nejvyšší úrovně můžete nastavit seznamy ACL je v kořenovém adresáři účtu. V Data Lake Storage Gen2 ale nejvyšší úroveň, kterou můžete nastavit, je v kořenové složce systému souborů, ne u celého účtu. Takže pokud chcete nastavit výchozí seznamy ACL na úrovni účtu, budete muset duplicitní těch všechny systémy souborů ve vašem účtu Data Lake Storage Gen2.
+* V Data Lake Storage Gen1 nejvyšší úrovně můžete nastavit seznamy ACL je v kořenovém adresáři účtu. V Data Lake Storage Gen2 ale nejvyšší úroveň, kterou můžete nastavit, je v kořenové složce kontejneru, ne u celého účtu. Takže pokud chcete nastavit výchozí seznamy ACL na úrovni účtu, budete muset duplicitní těch všechny systémy souborů ve vašem účtu Data Lake Storage Gen2.
 
 * Omezení pojmenování souboru se liší mezi těmito dvěma systémy úložiště. Tyto rozdíly jsou zejména při kopírování z Data Lake Storage Gen2 do Data Lake Storage Gen1 protože ten má více omezené omezení.
 

@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.custom: seo-java-august2019
-ms.openlocfilehash: a7e2089b8dfff1f021c31d2b13591b54dcd9c4ac
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 110c4a343909a81e092b147b79ed69d6bd5c2d9c
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616989"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981758"
 ---
-# <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Rychlý start: Vytvoření aplikace Java pomocí Azure Cosmos DB účtu rozhraní SQL API
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
 
 
 > [!div class="op_single_selector"]
@@ -202,7 +202,7 @@ Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovac�
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos, databáze dokumentů a kontejneru pomocí Průzkumník dat a spuštění aplikace ke stejnému účelu prostřednictvím kódu programu. Teď můžete do svého kontejneru Azure Cosmos importovat další data. 
 

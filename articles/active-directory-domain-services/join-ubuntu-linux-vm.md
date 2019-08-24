@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c782629d422eb8846b209fed7ab6b5a5c015de25
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80dbb4f3d0c8b993beab5f6344d6034d6c2b6895
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612294"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990580"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Připojení virtuálního počítače s Ubuntu v Azure ke spravované doméně
 V tomto článku se dozvíte, jak připojit Ubuntu Linux virtuální počítač k Azure AD Domain Services spravované doméně.
@@ -88,7 +88,7 @@ Dále nainstalujte balíčky požadované pro připojení k doméně na virtuál
 3. Během instalace protokolu Kerberos se zobrazí růžová obrazovka. Instalace balíčku krb5-User se vyzve k zadání názvu sféry (všechna velká písmena). Instalace zapisuje oddíly [Realm] a [domain_realm] v/etc/krb5.conf.
 
     > [!TIP]
-    > Pokud je název spravované domény contoso.com, jako sféru zadejte contoso.COM. Nezapomeňte, že název sféry musí být zadaný velkými PÍSMENy.
+    > Pokud je název spravované domény contoso.com, jako sféru zadejte CONTOSO.COM. Nezapomeňte, že název sféry musí být zadaný velkými PÍSMENy.
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Konfigurace nastavení protokolu NTP (Network Time Protocol) na virtuálním počítači se systémem Linux
@@ -121,7 +121,7 @@ Teď, když jsou na virtuálním počítači se systémem Linux nainstalované p
 1. Seznamte se se spravovanou doménou služby AAD Domain Services. Do terminálu SSH zadejte následující příkaz:
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -138,7 +138,7 @@ Teď, když jsou na virtuálním počítači se systémem Linux nainstalované p
     >
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. Připojte počítač k doméně. Do terminálu SSH zadejte následující příkaz:
@@ -149,7 +149,7 @@ Teď, když jsou na virtuálním počítači se systémem Linux nainstalované p
     > Pokud se váš virtuální počítač nemůže připojit k doméně, ujistěte se, že skupina zabezpečení sítě virtuálního počítače umožňuje odchozí přenosy protokolu Kerberos na portu TCP + UDP 464 do podsítě virtuální sítě pro spravovanou doménu Azure služba AD DS.
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM' --install=/
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM' --install=/
     ```
 
 Pokud se počítač úspěšně připojí ke spravované doméně, měla by se zobrazit zpráva ("úspěšně zaregistrovaný počítač ve sféře").
@@ -192,10 +192,10 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ## <a name="verify-domain-join"></a>Ověření připojení k doméně
 Ověřte, jestli se počítač úspěšně připojil ke spravované doméně. Připojte se k virtuálnímu počítači Ubuntu připojenému k doméně pomocí jiného připojení SSH. Použijte účet uživatele domény a potom zkontrolujte, jestli je uživatelský účet správně vyřešený.
 
-1. Do terminálu SSH zadejte následující příkaz, který se připojí k doméně připojené k doméně Ubuntu pomocí SSH. Použijte doménový účet, který patří do spravované domény (napříkladbob@contoso.COMv tomto případě).
+1. Do terminálu SSH zadejte následující příkaz, který se připojí k doméně připojené k doméně Ubuntu pomocí SSH. Použijte doménový účet, který patří do spravované domény (napříkladbob@CONTOSO.COMv tomto případě).
     
     ```console
-    ssh -l bob@contoso.COM contoso-ubuntu.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-ubuntu.contoso.com
     ```
 
 2. V terminálu SSH zadejte následující příkaz, který zjistí, zda byl domovský adresář správně inicializován.

@@ -1,5 +1,5 @@
 ---
-title: Oznámení o migraci brány pro Azure SQL Database z Gen2 do Gen3 | Microsoft Docs
+title: Upozornění migrace provozu brány na Azure SQL Database | Microsoft Docs
 description: Článek obsahuje oznámení uživatelům o migraci IP adres Azure SQL Database bran
 services: sql-database
 ms.service: sql-database
@@ -10,42 +10,44 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 85691464684ff327c01a85bf357514f447564dd7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: 1fc6c054b32c62fbebaa2af738e25ef0dec362ac
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568107"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981293"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 
-Díky tomu, že se infrastruktura Azure zlepšuje, Microsoft pravidelně aktualizuje hardware, aby bylo zajištěno, že budeme poskytovat nejlepší možné prostředí pro zákazníky. V nadcházejících měsících plánujeme přidat brány postavené na novějších generacích hardwaru a vyřadit z provozu brány z provozu na starším hardwaru v některých oblastech.  
+Díky tomu, že se infrastruktura Azure zlepšuje, Microsoft pravidelně aktualizuje hardware, aby bylo zajištěno, že budeme poskytovat nejlepší možné prostředí pro zákazníky. V nadcházejících měsících plánujeme přidat brány postavené na novějších generacích hardwaru, migrovat provoz na ně a nakonec vyřadit brány z provozu na starší hardware v některých oblastech.  
 
 Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli změně bran, které jsou dostupné v jednotlivých oblastech. Nejaktuálnější informace se budou udržovat v tabulce [IP adres Azure SQL Database brány](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) .
 
 ## <a name="impact-of-this-change"></a>Dopad této změny
 
-První kolo vyřazení brány z provozu je naplánováno na 1. září 2019 v následujících oblastech:
-
+První kolo migrace provozu na novější brány se plánuje na **14. října 2019** v následujících oblastech:
+- Brazílie – jih
 - USA – západ
 - Západní Evropa
 - East US
-- Střední USA
+- Střed USA
 - Jihovýchodní Asie
-- Středojižní USA
+- Střed USA – jih
 - Severní Evropa
-- Středoseverní USA
+- Střed USA – sever
 - Japonsko – západ
 - Japonsko – východ
 - Východní USA 2
 - Východní Asie
 
-Vyřazená IP adresa přestane přijímat přenosy a jakékoli nové pokusy o připojení budou směrovány do jedné z bran v dané oblasti.
+Migrace provozu změní veřejnou IP adresu, kterou služba DNS pro váš SQL Database vyřeší.
+Bude to mít vliv, pokud máte
+- Pevně zakóduje IP adresu pro konkrétní bránu v místní bráně firewall.
+- Všechny podsítě používající Microsoft. SQL jako koncový bod služby, ale nemůžou komunikovat s IP adresami brány.
 
-Kde neuvidíte dopad této změny:
-
-- U zákazníků, kteří používají přesměrování podle zásad připojení, se žádný dopad neprojeví.
-- Připojení k SQL Database zevnitř v rámci Azure a používání značek služeb nebude mít vliv na.
+Nebudete mít vliv na 
+- Přesměrování jako zásady připojení
+- Připojení k SQL Database v rámci Azure a používání značek služeb
 - Připojení pomocí podporovaných verzí ovladače JDBC pro SQL Server se nijak neprojeví. Podporované verze JDBC najdete v tématu [Stažení ovladače Microsoft JDBC Driver for SQL Server](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>Co dělat, pokud jste to ovlivnili
@@ -56,6 +58,6 @@ Neúspěšné ověření certifikátu prostřednictvím připojení od aplikací
 
 Pokud výše uvedené omezení nefunguje, zažádejte si do souboru žádost o podporu pro SQL Database pomocí následující adresy URL: https://aka.ms/getazuresupport
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [architektuře připojení Azure SQL](sql-database-connectivity-architecture.md) .

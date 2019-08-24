@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 59ac4b36a4bc2b3ff454b3a2ae98ce60f6bfcb5f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614260"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996606"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování ve službě Azure Data Factory
 
@@ -264,10 +264,7 @@ V této ukázce si během kopírování ADF vypíše oznámení, že jímka slu�
 ## <a name="incremental-copy"></a>Přírůstkové kopírování
 Data Factory podporuje scénáře přírůstkového kopírování rozdílových dat ze zdrojového úložiště dat do úložiště dat jímky. Zobrazit [kurz: přírůstkové kopírování dat](tutorial-incremental-copy-overview.md).
 
-## <a name="read-and-write-partitioned-data"></a>Čtení a zápis dělených dat
-Ve verzi 1 služby Azure Data Factory nepodporuje čtení nebo zápis dělených dat pomocí vlastnosti SliceStart a SliceEnd/WindowStart/WindowEnd systémové proměnné. V aktuální verzi můžete toto chování dosáhnout s použitím parametru kanál a čas zahájení/naplánovaný čas triggeru jako hodnotu parametru. Další informace najdete v tématu [jak číst nebo zapisovat data rozdělit na oddíly](how-to-read-write-partitioned-data.md).
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Tyto rychlé starty, kurzy a ukázky, naleznete v tématu:
 
 - [Kopírování dat z jednoho umístění do jiného umístění ve stejném úložišti objektů Blob v Azure](quickstart-create-data-factory-dot-net.md)

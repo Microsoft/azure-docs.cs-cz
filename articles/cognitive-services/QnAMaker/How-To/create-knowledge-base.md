@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2cacc8cc6d7c22a93f46007e8150a4e55dc7650
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967720"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012812"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Rychlý start: Vytvoření znalostní báze pomocí portálu služby rozhraní API služby QnA Maker
 
@@ -45,24 +45,21 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
     ![Nastavení zdroje dat](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - Zadejte vaši službu **název.** Duplicitní názvy a speciální znaky jsou podporovány.
-    - Přidejte adresy URL pro data, která chcete, aby byl extrahován. Zobrazit další informace o typech podporované zdroje [tady](../Concepts/data-sources-supported.md).
-    - Nahrání souborů pro data, která chcete, aby byl extrahován. Zobrazit [informace o cenách](https://aka.ms/qnamaker-pricing) chcete zobrazit, kolik dokumenty, které můžete přidat.
-    - Pokud chcete ručně přidat maximálně, můžete přeskočit **kroku 4** je vidět na předchozím obrázku.
+1. Dejte službě **název** , třeba `my first kb`. Duplicitní názvy a speciální znaky jsou podporovány.
 
-1. Přidat **Chit chat** do znalostní BÁZÍ. Zvolte možnost Přidat pro robota podporu funkce CHITEST-chat, a to tak, že vyberete jednu z osobních možností. 
+1. Přidejte stránku řešení potíží s QnA maker jako adresu URL `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`: a pak `+ Add URL`vyberte. Zobrazit další informace o typech podporované zdroje [tady](../Concepts/data-sources-supported.md). Pro tento rychlý Start **Nenahrávat soubory** pro data, která chcete extrahovat. Zobrazit [informace o cenách](https://aka.ms/qnamaker-pricing) chcete zobrazit, kolik dokumenty, které můžete přidat.
 
-    ![Přidání funkce CHITEST-chat do znalostní báze KB](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+1. Přidat  **_matematický_ program CHITEST – chat** do vaší znalostní báze 
 
 1. Vyberte **vytvořit znalostní BÁZÍ**.
 
     ![Vytvoření znalostní BÁZE](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-1. Trvá několik minut, než se data extrahovat.
+1. Extrakce dat může trvat několik minut.
 
     ![Extrakce](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-1. Po úspěšném vytvoření znalostní báze, budete přesměrováni **znalostní báze** stránky.
+1. Po úspěšném vytvoření znalostní báze budete přesměrováni na stránku **znalostní báze** .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

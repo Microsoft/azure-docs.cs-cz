@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: ce6fc5d32fc9e17499a56cec7f4db2849370a1ec
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566726"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981164"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Úroveň služby s škálovatelným škálováním na až 100 TB
 
@@ -110,7 +110,7 @@ Díky možnosti rychlého zprovoznění dalších výpočetních uzlů jen pro �
 
 Databázi škálování na více systému je možné vytvořit pomocí [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) nebo rozhraní příkazového [řádku](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Databáze s škálovatelným škálováním jsou dostupné jenom pomocí [nákupního modelu založeného na Vcore](sql-database-service-tiers-vcore.md).
 
-Následující příkaz T-SQL vytvoří databázi s měřítkem. V `CREATE DATABASE` příkazu je nutné zadat jak edici, tak i cíl služby. Seznam platných cílů služeb najdete v tématu [omezení prostředků](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier) .
+Následující příkaz T-SQL vytvoří databázi s měřítkem. V `CREATE DATABASE` příkazu je nutné zadat jak edici, tak i cíl služby. Seznam platných cílů služeb najdete v tématu [omezení prostředků](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) .
 
 ```sql
 -- Create a HyperScale Database
@@ -156,7 +156,7 @@ Azure SQL Database úroveň škálování je aktuálně dostupná v následujíc
 - Austrálie – jihovýchod
 - Brazílie – jih
 - Kanada – střed
-- Střední USA
+- Střed USA
 - Čína – východ 2
 - Čína – sever 2
 - Východní Asie
@@ -167,10 +167,10 @@ Azure SQL Database úroveň škálování je aktuálně dostupná v následujíc
 - Japonsko – západ
 - Jižní Korea – střed
 - Jižní Korea – jih
-- Středoseverní USA
+- Střed USA – sever
 - Severní Evropa
 - Jižní Afrika – sever
-- Středojižní USA
+- Střed USA – jih
 - Jihovýchodní Asie
 - Velká Británie – jih
 - Spojené království – západ
@@ -232,7 +232,7 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Elastické fondy |  Elastické fondy se v současnosti nepodporují u SQL Databaseho škálování.|
 | Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nedá se migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je export a import pomocí souboru BACPAC.|
 | Migrace databází pomocí trvalých objektů v paměti | Pro škálování podporuje pouze netrvalé objekty v paměti (typy tabulek, nativní aktualizace SPs a funkce).  Trvalé tabulky v paměti a další objekty je nutné vyřadit a znovu vytvořit jako objekty, které nejsou v paměti, před migrací databáze na úroveň služby pro škálování na úrovni služby.|
-| Změna sledování dat | Nebudete moct používat funkci Change data Tracking s databázemi s škálovatelnými škálováními. |
+| Sledování změn | Nebudete moci používat Change Tracking s databázemi v rámci škálování. |
 | Geografická replikace  | U Azure SQL Databaseho škálování se ještě nedá konfigurovat geografickou replikaci.  Můžete provést geografickou obnovu (obnovení databáze v jiném geografickém umístění, pro DR nebo jiné účely) |
 | Integrace TDE/integrace | Transparentní šifrování databáze pomocí Azure Key Vault (obecně označované jako BYOK) ještě není podporované pro Azure SQL Database škálování, ale TDE se spravovanými klíči služby se plně podporuje. |
 |Funkce inteligentní databáze | 1. Vytvoření indexu, vyřazení modelů pro poradce při vytváření indexů není školené pro Databázeu s měřítkem. <br/>2. Problém s schématem, DbParameterization nedávno přidané poradci nejsou pro databázi s podporou škálování podporovány.|

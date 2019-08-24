@@ -1,75 +1,44 @@
 ---
-title: Omezení nástroje prostředku a objekt služby Azure Analysis Services | Dokumentace Microsoftu
-description: Popisuje omezení prostředků a objektu služby Azure Analysis Services.
+title: Azure Analysis Services omezení prostředků a objektů | Microsoft Docs
+description: Popisuje Azure Analysis Services omezení prostředků a objektů.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 08/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0ffbffc788baaffd4a0532c3918ed82cc3eaf5c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40a5b68a12724f2574af19bb10c276c54c5afba0
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023541"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997588"
 ---
-# <a name="analysis-services-resource-and-object-limits"></a>Omezení prostředků a objektu služby analýzy
+# <a name="analysis-services-resource-and-object-limits"></a>Analysis Services omezení prostředků a objektů
 
-Tento článek popisuje zdroje a model objektu omezení.
+Tento článek popisuje omezení pro prostředky a objekty modelu.
 
-## <a name="tier-limits"></a>Úroveň omezení
+## <a name="tier-limits"></a>Omezení vrstvy
 
-### <a name="developer-tier"></a>Úroveň Developer
-
-Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení. Jeden plán zahrnuje stejné funkce jako úroveň Standard, ale s omezením výkonu, jednotek QPU a velikosti paměti. Škálování dotazů repliky není k dispozici pro tuto vrstvu. Tato úroveň nenabízí smlouvu SLA.
-
-|Plánování  |Jednotky QPU  |Paměť (GB)  |
-|---------|---------|---------|
-|D1    |    20     |    3     |
-
-
-### <a name="basic-tier"></a>Úroveň Basic
-
-Tato úroveň se doporučuje pro produkční řešení s menšími tabulkovými modely, omezenou souběžností uživatelů a jednoduchými požadavky na obnovení dat. Horizontální navýšení kapacity replik dotazů *není k dispozici* pro tuto vrstvu. Perspektivy, více oddílů a DirectQuery tabulkový model funkce nejsou podporovány na této úrovni.  
-
-|Plánování  |Jednotky QPU  |Paměť (GB)  |
-|---------|---------|---------|
-|B1    |    40     |    10     |
-|B2    |    80     |    20     |
-
-### <a name="standard-tier"></a>Úroveň Standard
-
-Tato úroveň je pro důležité produkční aplikace, které vyžadují elastickou uživatelskou souběžnost a využívají datové modely s rychlým růstem. Podporuje pokročilou aktualizaci dat pro aktualizace datových modelů téměř v reálném čase a podporuje veškeré funkce tabulkového modelování.
-
-|Plánování  |Jednotky QPU  |Paměť (GB)  |
-|---------|---------|---------|
-|S1    |    40     |    10     |
-|S2    |    100     |    25     |
-|S3    |    200     |    50     |
-|S4    |    400     |    100     |
-|S8*    |    320     |    200     |
-|S9*    |    640    |    400     |
-
-\* Není dostupné ve všech oblastech.  
+Omezení QPU a paměti pro úrovně Developer, Basic a Standard najdete na [stránce s cenami Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
 
 ## <a name="object-limits"></a>Omezení objektu
 
-Tato omezení jsou teoretické. Výkon se snížila na nižší čísla.
+Tato omezení jsou teoretická. Výkon se sníží na nižších číslech.
 
-|Object|Maximální velikosti/čísla|  
+|Object|Maximální velikost/čísla|  
 |------------|----------------------------|  
 |Databáze v instanci|16,000|  
-|Souhrnný počet tabulky a sloupce v databázi|16,000|  
-|Řádky v tabulce|Unlimited<br /><br /> **Upozornění:** S omezením, že žádné jeden sloupec v tabulce můžete mít více než 1,999,999,997 jedinečné hodnoty.|  
-|Hierarchie v tabulce|15,999|  
-|Úrovně v hierarchii|15,999|  
+|Kombinovaný počet tabulek a sloupců v databázi|16,000|  
+|Řádky v tabulce|Unlimited<br /><br /> **Upozornění** Omezením, že žádný jeden sloupec v tabulce nemůže mít více než 1 999 999 997 jedinečných hodnot.|  
+|Hierarchie v tabulce|15 999|  
+|Úrovně v hierarchii|15 999|  
 |Relace|8 000|  
-|Sloupce klíčů všechny tabulky|15,999|  
-|Míry v tabulkách|2^31-1 = 2,147,483,647|  
-|Buňky vrácených dotazem|2^31-1 = 2,147,483,647|  
-|Velikost záznamu zdroj dotazu|64 K|  
+|Klíčové sloupce ve všech tabulkách|15 999|  
+|Míry v tabulkách|2 ^ 31-1 = 2 147 483 647|  
+|Buňky vrácené dotazem|2 ^ 31-1 = 2 147 483 647|  
+|Velikost záznamu pro zdrojový dotaz|64 K|  
 |Délka názvů objektů|512 znaků|  
 
 

@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 0e9bdb22baed74ef948f369f9259784900486860
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: daa9937294cb3ffa594d83fbd56777bc8af8900a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569082"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981462"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení Azure SQL
 
@@ -58,51 +58,51 @@ Pokud se připojujete z oblasti mimo Azure, připojení mají `Proxy` ve výchoz
 
 V následující tabulce jsou uvedené IP adresy bran podle oblasti. Pokud se chcete připojit k Azure SQL Database, je potřeba, abyste povolili & síťového provozu ze **všech** bran pro danou oblast.
 
-Když budete pokračovat, přidáme do každé oblasti další brány a vyřadíme brány ve sloupci IP adresa vyřazené brány v následující tabulce. Další podrobnosti o procesu vyřazení z provozu uvedeného v následujícím článku: [Azure SQL Database migrace provozu na novější brány](sql-database-gateway-migration.md)
+Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních oblastech, najdete v následujícím článku: [Azure SQL Database migrace provozu na novější brány](sql-database-gateway-migration.md)
 
 
-| Název oblasti          | IP adresa brány | Vyřazení brány z provozu </br> IP adresa| Poznámky k vyřazení z provozu | 
-| --- | --- | --- | --- |
-| Austrálie – střed    | 20.36.105.0 | | |
-| Central2 Austrálie   | 20.36.113.0 | | |
-| Austrálie – východ       | 13.75.149.87, 40.79.161.1 | | |
-| Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251 | | |
-| Brazílie – jih         | 104.41.11.5        |                 | |
-| Kanada – střed       | 40.85.224.249      |                 | |
-| Kanada – východ          | 40.86.226.166      |                 | |
-| Střední USA           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | Žádná připojení po 1. září 2019 |
-| Čína – východ           | 139.219.130.35     |                 | |
-| Čína – východ 2         | 40.73.82.1         |                 | |
-| Čína – sever          | 139.219.15.17      |                 | |
-| Čína – sever 2        | 40.73.50.0         |                 | |
-| Východní Asie            | 191.234.2.139, 52.175.33.150 |       | |
-| East US              | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | Žádná připojení po 1. září 2019 |
-| Východní USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0 | 191.239.224.107    | Žádná připojení po 1. září 2019 |
-| Francie – střed       | 40.79.137.0, 40.79.129.1 |           | |
-| Střední Německo      | 51.4.144.100       |                 | |
-| Německo – sever východ   | 51.5.144.179       |                 | |
-| Indie – střed        | 104.211.96.159     |                 | |
-| Indie – jih          | 104.211.224.146    |                 | |
-| Indie – západ           | 104.211.160.80     |                 | |
-| Japonsko – východ           | 13.78.61.196, 40.79.184.8, 13.78.106.224 | 191.237.240.43 | Žádná připojení po 1. září 2019 |
-| Japonsko – západ           | 104.214.148.156, 40.74.100.192 | 191.238.68.11 | Žádná připojení po 1. září 2019 |
-| Jižní Korea – střed        | 52.231.32.42       |                 | |
-| Jižní Korea – jih          | 52.231.200.86      |                 | |
-| Středoseverní USA     | 23.96.178.199      | 23.98.55.75     | Žádná připojení po 1. září 2019 |
-| Severní Evropa         | 40.113.93.91       | 191.235.193.75  | Žádná připojení po 1. září 2019 |
-| Jižní Afrika – sever   | 102.133.152.0      |                 | |
-| Jižní Afrika – západ    | 102.133.24.0       |                 | |
-| Středojižní USA     | 13.66.62.124       | 23.98.162.75    | Žádná připojení po 1. září 2019 |
-| Jihovýchodní Asie      | 104.43.15.0        | 23.100.117.95   | Žádná připojení po 1. září 2019 |
-| Spojené arabské emiráty – střed          | 20.37.72.64        |                 | |
-| Spojené arabské emiráty – sever            | 65.52.248.0        |                 | |
-| Velká Británie – jih             | 51.140.184.11      |                 | |
-| Spojené království – západ              | 51.141.8.11        |                 | |
-| Středozápadní USA      | 13.78.145.25       |                 | |
-| Západní Evropa          | 40.68.37.158       | 191.237.232.75  | Žádná připojení po 1. září 2019 |
-| USA – západ              | 104.42.238.205     | 23.99.34.75     | Žádná připojení po 1. září 2019 |
-| USA – západ 2            | 13.66.226.202      |                 | |
-|                      |                    |                 | |
+| Název oblasti          | IP adresy brány |
+| --- | --- |
+| Austrálie – střed    | 20.36.105.0 |
+| Central2 Austrálie   | 20.36.113.0 |
+| Austrálie – východ       | 13.75.149.87, 40.79.161.1 |
+| Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251 |
+| Brazílie – jih         | 104.41.11.5,191.233.200.14 |
+| Kanada – střed       | 40.85.224.249      |
+| Kanada – východ          | 40.86.226.166      |
+| Střed USA           | 13.67.215.62, 52.182.137.15 , 23.99.160.139, 104.208.16.96 | 
+| Čína – východ           | 139.219.130.35     |
+| Čína – východ 2         | 40.73.82.1         |
+| Čína – sever          | 139.219.15.17      |
+| Čína – sever 2        | 40.73.50.0         |
+| Východní Asie            | 191.234.2.139, 52.175.33.150,13.75.32.4 |
+| East US              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| Východní USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
+| Francie – střed       | 40.79.137.0, 40.79.129.1 |
+| Střední Německo      | 51.4.144.100       |
+| Německo – sever východ   | 51.5.144.179       |
+| Indie – střed        | 104.211.96.159     |
+| Indie – jih          | 104.211.224.146    |
+| Indie – západ           | 104.211.160.80     |
+| Japonsko – východ           | 13.78.61.196, 40.79.184.8, 13.78.106.224 , 191.237.240.43, 40.79.192.5 | 
+| Japonsko – západ           | 104.214.148.156, 40.74.100.192 | 191.238.68.11,40.74.97.10 | 
+| Jižní Korea – střed        | 52.231.32.42       |
+| Jižní Korea – jih          | 52.231.200.86      |
+| Střed USA – sever     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
+| Severní Evropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
+| Jižní Afrika – sever   | 102.133.152.0      |
+| Jižní Afrika – západ    | 102.133.24.0       |
+| Střed USA – jih     | 13.66.62.124 , 23.98.162.75, 104.214.16.32   | 
+| Jihovýchodní Asie      | 104.43.15.0 , 23.100.117.95, 40.78.232.3   | 
+| Spojené arabské emiráty – střed          | 20.37.72.64        |
+| Spojené arabské emiráty – sever            | 65.52.248.0        |
+| Velká Británie – jih             | 51.140.184.11      |
+| Spojené království – západ              | 51.141.8.11        |
+| Západní střed USA      | 13.78.145.25       |
+| Západní Evropa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
+| USA – západ              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
+| USA – západ 2            | 13.66.226.202      |
+|                      |                    |
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Změna zásad Azure SQL Databaseho připojení
 

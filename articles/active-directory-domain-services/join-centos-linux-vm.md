@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: f28933623100ed18320df37741c7c1e82ccffa9f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 183f1190e4ccbd730600290305a5847f83853c39
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612843"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990729"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače se systémem CentOS Linux ke spravované doméně
 V tomto článku se dozvíte, jak připojit virtuální počítač s CentOS Linux v Azure k spravované doméně Azure AD Domain Services.
@@ -84,7 +84,7 @@ Teď, když jsou na virtuálním počítači se systémem Linux nainstalované p
 1. Seznamte se se spravovanou doménou služby AAD Domain Services. Do terminálu SSH zadejte následující příkaz:
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -100,7 +100,7 @@ Teď, když jsou na virtuálním počítači se systémem Linux nainstalované p
     > * Zadejte název domény velkými písmeny, jinak kinit neproběhne.
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. Připojte počítač k doméně. Do terminálu SSH zadejte následující příkaz:
@@ -111,7 +111,7 @@ Teď, když jsou na virtuálním počítači se systémem Linux nainstalované p
     > Pokud se váš virtuální počítač nemůže připojit k doméně, ujistěte se, že skupina zabezpečení sítě virtuálního počítače umožňuje odchozí přenosy protokolu Kerberos na portu TCP + UDP 464 do podsítě virtuální sítě pro spravovanou doménu Azure služba AD DS.
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM'
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM'
     ```
 
 Pokud se počítač úspěšně připojí ke spravované doméně, měla by se zobrazit zpráva ("úspěšně zaregistrovaný počítač ve sféře").
@@ -120,10 +120,10 @@ Pokud se počítač úspěšně připojí ke spravované doméně, měla by se z
 ## <a name="verify-domain-join"></a>Ověření připojení k doméně
 Ověřte, jestli se počítač úspěšně připojil ke spravované doméně. Připojte se k virtuálnímu počítači CentOS připojenému k doméně pomocí jiného připojení SSH. Použijte účet uživatele domény a potom zkontrolujte, jestli je uživatelský účet správně vyřešený.
 
-1. Do terminálu SSH zadejte následující příkaz, který se připojí k doméně připojené k doméně CentOS pomocí SSH. Použijte doménový účet, který patří do spravované domény (napříkladbob@contoso.COMv tomto případě).
+1. Do terminálu SSH zadejte následující příkaz, který se připojí k doméně připojené k doméně CentOS pomocí SSH. Použijte doménový účet, který patří do spravované domény (napříkladbob@CONTOSO.COMv tomto případě).
     
     ```console
-    ssh -l bob@contoso.COM contoso-centos.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-centos.contoso.com
     ```
 
 2. V terminálu SSH zadejte následující příkaz, který zjistí, zda byl domovský adresář správně inicializován.

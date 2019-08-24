@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b626f906738e3a6e65053408cfdc2002d459a6e2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
-ms.translationtype: MT
+ms.openlocfilehash: 347e7c2aa2ff4fb4f188847b81d03006c1909166
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973854"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997653"
 ---
-# <a name="build-and-deploy-the-opc-ua-certificate-management-service"></a>Sestavení a nasazení služby správy certifikátů OPC UA
+# <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Sestavení a nasazení služby správy certifikátů úložiště OPC
 
-Tento článek vysvětluje, jak nasadit službu OPC UA Certificate Management v Azure.
+Tento článek vysvětluje, jak nasadit službu správy certifikátů trezoru OPC v Azure.
 
 > [!NOTE]
 > Další informace o podrobnostech a pokynech k nasazení najdete v [úložišti OPC trezoru](https://github.com/Azure/azure-iiot-opc-vault-service)GitHubu.
@@ -59,20 +59,20 @@ nebo zadejte úplný příkazový řádek:
 7. Pokud plánujete vývoj s tímto nasazením, přidejte `-development 1` , abyste povolili uživatelské rozhraní Swagger a nasadili sestavení ladění.
 6. Pokud se chcete přihlásit ke svému předplatnému a poskytnout další informace, postupujte podle pokynů ve skriptu.
 9. Po úspěšné operaci sestavení a nasazení by se měla zobrazit následující zpráva:
+   ```
+   To access the web client go to:
+   https://myResourceGroup.azurewebsites.net
 
-```
-To access the web client go to:
-https://myResourceGroup.azurewebsites.net
+   To access the web service go to:
+   https://myResourceGroup-service.azurewebsites.net
 
-To access the web service go to:
-https://myResourceGroup-service.azurewebsites.net
+   To start the local docker GDS server:
+   .\myResourceGroup-dockergds.cmd
 
-To start the local docker GDS server:
-.\myResourceGroup-dockergds.cmd
+   To start the local dotnet GDS server:
+   .\myResourceGroup-gds.cmd
+   ```
 
-To start the local dotnet GDS server:
-.\myResourceGroup-gds.cmd
-```
 V případě, že spustíte problémy, postupujte podle [](#troubleshooting-deployment-failures)následujících kroků.
 
 8. Otevřete oblíbený prohlížeč a otevřete stránku aplikace:`https://myResourceGroup.azurewebsites.net`
@@ -86,7 +86,7 @@ Je také možné znovu nasadit pouze binární soubory webové aplikace. S param
 
 Po úspěšném nasazení můžete začít používat tyto služby: [Správa služby správy certifikátů trezoru OPC](howto-opc-vault-manage.md)
 
-## <a name="delete-the-certificate-management-services-from-the-subscription"></a>Odstranit služby správy certifikátů z předplatného
+## <a name="delete-the-certificate-management-service-from-the-subscription"></a>Odstranit službu správy certifikátů z předplatného
 
 1. Přihlaste se k Azure Portal `https://portal.azure.com`:.
 2. Přejít do skupiny prostředků, ve které byla služba nasazena.
