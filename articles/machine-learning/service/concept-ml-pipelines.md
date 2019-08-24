@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22d1da4c194b392993b37b16ab20673120c3362e
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 160be4224e31793b5bb172f5b913c364ae2c8a59
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951801"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013040"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Co jsou kanály ML ve službě Azure Machine Learning Service?
 
@@ -69,7 +69,7 @@ Mezi klíčové výhody použití kanálů pro pracovní postupy machine learnin
 
 ## <a name="the-python-sdk-for-pipelines"></a>Python SDK pro kanály
 
-[Pomocí sady Python SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) můžete vytvářet kanály ml v preferovaných poznámkách IDE nebo Jupyter. Sada SDK Azure Machine Learning nabízí imperativní konstrukce pro pořadí úloh a paralelní provádění kroků ve vašich kanálů, když je k dispozici žádná data závislost. 
+[Pomocí sady Python SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) můžete vytvářet kanály ml v upřednostňovaném integrovaném vývojovém prostředí (IDE) nebo v poznámkových blocích Jupyter. Sada SDK Azure Machine Learning nabízí imperativní konstrukce pro pořadí úloh a paralelní provádění kroků ve vašich kanálů, když je k dispozici žádná data závislost. 
 
 Použití závislostí deklarativní data, můžete optimalizovat vaše úkoly. Sada SDK obsahuje architekturu předem připravených modulů pro běžné úlohy, jako je například přenos dat a publikování modelu. Rozhraní můžete roztáhnout tak, aby modeloval vlastní konvence implementací vlastních kroků opakovaně použitelných napříč kanály. Výpočetní cíle a prostředky úložiště můžete spravovat také přímo ze sady SDK.
 
@@ -77,7 +77,7 @@ Uložte kanály jako šablony a nasaďte je do koncového bodu REST pro úlohy d
 
 K dispozici jsou dva balíčky Pythonu pro kanály s Azure Machine Learning: [AzureML-Pipelines – Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) a [AzureML-Pipeline-Steps](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/?view=azure-ml-py).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 + Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md).
 

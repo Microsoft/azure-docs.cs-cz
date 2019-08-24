@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 0ab658b26a44e98b073c477c1aaeeb683372ee46
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f3995e8904396dbb0bcbeeea1f993913d68587e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988489"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013119"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 
-Microsoft Azure Service Bus je plně spravovaná enterprise [integrace](https://azure.com/integration) zprostředkovatele zpráv. Service Bus se nejčastěji používá k vzájemnému oddělení aplikací a služeb a je spolehlivou a bezpečnou platformou pro přenos asynchronních dat a stavu. Data se mezi různými aplikacemi a službami přenáší pomocí *zpráv*. Zpráva se v binárním formátu, který může obsahovat pouze text, JSON nebo XML. 
+Microsoft Azure Service Bus je plně spravovaný zprostředkovatel zpráv [](https://azure.com/integration) Enterprise Integration. Service Bus se nejčastěji používá k vzájemnému oddělení aplikací a služeb a je spolehlivou a bezpečnou platformou pro přenos asynchronních dat a stavu. Data se mezi různými aplikacemi a službami přenáší pomocí *zpráv*. Zpráva je v binárním formátu, který může obsahovat JSON, XML nebo jenom text. 
 
 Mezi běžné scénáře zasílání zpráv patří:
 
@@ -39,7 +39,7 @@ Zprávy se odesílají do *front* a přijímají se z nich. Fronty umožňují u
 
 ![Fronta](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Zprávy ve frontách jsou seřazené a časovým razítkem při doručení. Jakmile je zpráva přijata, uchovává se bezpečně v redundantním úložišti. Zprávy se doručí do *o přijetí změn* režimu, který doručuje zprávy na vyžádání.
+Zprávy ve frontách jsou seřazené a mají časové razítko při příjezdu. Jakmile je zpráva přijata, uchovává se bezpečně v redundantním úložišti. Zprávy jsou doručovány v režimu *Pull* , který doručuje zprávy na vyžádání.
 
 ## <a name="topics"></a>Témata
 
@@ -93,11 +93,11 @@ Odběratelé mohou definovat zprávy, které chtějí z tématu přijímat. Tyto
 
 ### <a name="duplicate-detection"></a>Vyhledávání duplicit
 
-Pokud dojde k chybě, která způsobí, že klient má pochybností o výsledku operace odeslání [vyhledávání duplicit](duplicate-detection.md) trvá nejisté z těchto situací tím, že odesílatel znovu odeslat stejné zprávy a fronty nebo tématu zahodí všechny duplicitní kopie.
+Pokud dojde k chybě, která způsobí, že klient bude mít pochybnosti o výsledku operace odeslání, zjistí [duplicity](duplicate-detection.md) nejisté pochybnosti, že odesílatel může znovu odeslat stejnou zprávu, a fronta nebo téma zruší jakékoli duplicity. zkopíruje.
 
 ### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS, RBAC a spravované identity pro prostředky Azure
 
-Service Bus podporuje protokoly zabezpečení, jako jsou [sdílené přístupové podpisy](service-bus-sas.md) (SAS), [řízení přístupu na základě role](service-bus-role-based-access-control.md) (RBAC) a [spravované identity pro prostředky Azure](service-bus-managed-service-identity.md).
+Service Bus podporuje protokoly zabezpečení, jako jsou [sdílené přístupové podpisy](service-bus-sas.md) (SAS), [řízení přístupu na základě role](authenticate-application.md) (RBAC) a [spravované identity pro prostředky Azure](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geografické zotavení po havárii
 

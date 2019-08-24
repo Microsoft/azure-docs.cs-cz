@@ -6,25 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
+ms.localizationpriority: high
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 65bf4e973ce33b2898abf585fe306a8bc85c64a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 983edcc19a27b91599ea1e312268934b37f8b0ca
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477786"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012882"
 ---
 ::: zone target="docs"
 
-# <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Rychlý start: Nasazení disku Azure Data Box pomocí webu Azure portal
+# <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Rychlý start: Nasazení Azure Data Box Disk pomocí Azure Portal
 
 ::: zone-end
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Začínáme s Azure Data Box Disk pomocí webu Azure portal
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Začínáme s Azure Data Box Disk pomocí Azure Portal
 
 ::: zone-end
 
@@ -32,7 +33,7 @@ ms.locfileid: "67477786"
 
 Toto rychlé zprovoznění popisuje, jak nasadit Azure Data Box Disk pomocí webu Azure Portal. Obsahuje například postup rychlého vytvoření objednávky, přijetí disků, vybalení, připojení a zkopírování dat na disky, aby se mohla nahrát do Azure.
 
-Pro podrobné podrobný postup nasazení a pokyny pro sledování, přejděte na [kurzu: Objednávka disku Azure Data Box](data-box-disk-deploy-ordered.md). 
+Podrobné pokyny k [nasazení a sledování najdete v tématu Kurz: Pořadí Azure Data Box Disk](data-box-disk-deploy-ordered.md). 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -40,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ::: zone target="chromeless"
 
-Toto rychlé zprovoznění popisuje, jak nasadit Azure Data Box Disk pomocí webu Azure Portal. Postup zahrnutí kontroly předpokladů, odemknout disky, připojit a kopírovat data na disky, který odešle do služby Azure.
+Toto rychlé zprovoznění popisuje, jak nasadit Azure Data Box Disk pomocí webu Azure Portal. Tyto kroky zahrnují kontrolu požadavků, odemknutí disků, připojení a kopírování dat na disky, aby se načetly do Azure.
 
 ::: zone-end
 
@@ -52,7 +53,7 @@ Než začnete:
 
 - Ujistěte se, že je ve vašem předplatném povolená služba Azure Data Box. Pokud chcete ve svém předplatném povolit tuto službu, [zaregistrovat si ji](https://aka.ms/azuredataboxfromdiskdocs).
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs).
 
@@ -62,18 +63,18 @@ Přihlaste se k webu Azure Portal na adrese [https://aka.ms/azuredataboxfromdisk
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Vaši objednávku na použití disku Data Box jste umístili [kurzu: Objednávka disku Azure Data Box](data-box-disk-deploy-ordered.md).
+- V tomto [kurzu jste nastavili vaši objednávku pro data box disk: Pořadí Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 - Obdrželi jste disky a stav úlohy na portálu je aktualizovaný na **Dodáno**.
-- Budete mít klientský počítač, který je k dispozici, ze kterého můžete zkopírovat data. Klientský počítač musí splňovat tyto požadavky:
+- Máte k dispozici klientský počítač, ze kterého můžete kopírovat data. Klientský počítač musí splňovat tyto požadavky:
 
-    - Spuštění [s podporovaným operačním systémem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
-    - Mít [jiného požadovaného softwaru](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) nainstalován, pokud je klient Windows.
+    - Spusťte [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+    - Mít nainstalovaný [Další požadovaný software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) , pokud se jedná o klienta Windows.
 
 ::: zone-end
 
 ::: zone target="docs"
 
-## <a name="order"></a>Objednání
+## <a name="order"></a>Pořadí
 
 Tento krok trvá přibližně 5 minut.
 
@@ -103,25 +104,25 @@ Tento krok trvá přibližně 5 minut.
 
     1. Na webu Azure Portal přejděte na **Obecné > Detaily zařízení** a získejte přístupový klíč.
     2. Na počítači sloužícím ke kopírování dat na disky stáhněte a rozbalte odemykací nástroj Data Box Disku specifický pro operační systém. 
-    3. Spusťte odemykací nástroj Data Box Disku a zadejte klíč. Při vložení dalšího disku vždy znovu spusťte odemykací nástroj a zadejte klíč. **K odemknutí disku nepoužívejte dialogové okno nástroje BitLocker ani klíč nástroje BitLocker.** Další informace o tom, jak disky odemknout, přejděte na [odemknout disky na klientovi Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) nebo [odemknout disků v klientovi Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client).
+    3. Spusťte odemykací nástroj Data Box Disku a zadejte klíč. Při vložení dalšího disku vždy znovu spusťte odemykací nástroj a zadejte klíč. **K odemknutí disku nepoužívejte dialogové okno nástroje BitLocker ani klíč nástroje BitLocker.** Další informace o tom, jak odemknout disky, najdete v tématu [odemčení disků v klientovi Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) nebo [odemčení disků v klientovi](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)se systémem Linux.
     4. Nástroj zobrazí písmeno jednotky přiřazené k danému disku. Poznamenejte si písmeno diskové jednotky. Budete ho potřebovat v dalších krocích.
 
 ## <a name="copy-data-and-validate"></a>Kopírování dat a ověření
 
 Doba trvání této operace závisí na množství dat.
 
-1. Daná jednotka *PageBlob*, *BlockBlob*, *AzureFile*, *ManagedDisk*, a *DataBoxDiskImport* složek. Přetáhněte data ke kopírování, která chcete importovat jako objekty blob bloku, do složky *BlockBlob*. Podobně, přetáhněte a umístěte data, jako jsou VHD/VHDX na *PageBlob* složky a dat pro *AzureFile*. Zkopírovat virtuální pevné disky, které chcete nahrát jako spravovaných disků do složky v *ManagedDisk*.
+1. Jednotka obsahuje složky *PageBlob*, *BlockBlob*, *AzureFile*, *ManagedDisk*a *DataBoxDiskImport* . Přetáhněte data ke kopírování, která chcete importovat jako objekty blob bloku, do složky *BlockBlob*. Podobně přetáhněte data, jako jsou VHD/VHDX, do složky *PageBlob* a příslušná data *AzureFile*. Zkopírujte virtuální pevné disky, které chcete nahrát jako spravované disky, do složky v rámci *ManagedDisk*.
 
-    V účtu služby Azure Storage se pro každou podsložku ve složkách *BlockBlob* a *PageBlob* vytvoří zvláštní kontejner. Vytvoření sdílené složky pro dílčí složku ve složce *AzureFile*.
+    V účtu služby Azure Storage se pro každou podsložku ve složkách *BlockBlob* a *PageBlob* vytvoří zvláštní kontejner. Pro podsložku v rámci *AzureFile*se vytvoří sdílená složka.
 
-    Všechny soubory ve složkách *BlockBlob* a *PageBlob* se zkopírují do výchozího kontejneru `$root` v účtu Azure Storage. Zkopírujte soubory do složky v rámci *AzureFile*. Všechny soubory zkopírovány přímo *AzureFile* složky selhání a jsou odeslány jako objekty BLOB bloku.
+    Všechny soubory ve složkách *BlockBlob* a *PageBlob* se zkopírují do výchozího kontejneru `$root` v účtu Azure Storage. Zkopírujte soubory do složky v rámci *AzureFile*. Všechny soubory zkopírované přímo do složky *AzureFile* selžou a nahrají se jako objekty blob bloku.
 
     > [!NOTE]
-    > - Všechny kontejnery, objekty BLOB a soubory by měly odpovídat [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Při nedodržení těchto pravidel se odesílání dat do Azure nezdaří.
-    > - Ujistěte se, že soubory nepřekročí ~4.75 TB pro objekty BLOB bloku a 8 TB pro objekty BLOB stránky, ~ 1 TB pro soubory Azure.
+    > - Všechny kontejnery, objekty BLOB a soubory by měly odpovídat konvencím pojmenování [Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Při nedodržení těchto pravidel se odesílání dat do Azure nezdaří.
+    > - Zajistěte, aby soubory nepřesáhly ~ 4,75 TiB pro objekty blob bloku, ~ 8 TiB pro objekty blob stránky a ~ 1 TiB pro soubory Azure.
 
-2. **(Volitelné, ale doporučené)**  Po dokončení kopírování, důrazně doporučujeme přinejmenším spustit `DataBoxDiskValidation.cmd` součástí *DataBoxDiskImport* složky a vyberte možnost 1 ověření souborů. Doporučujeme také tento čas umožňující také generovat kontrolních součtů pro ověření použijete možnost 2 (může chvíli trvat v závislosti na velikosti dat). Tyto kroky minimalizovat pravděpodobnost selhání při odesílání dat do Azure.
-3. Na jednotce bezpečně odeberte.
+2. **(Volitelné, ale doporučené)** Až se kopie dokončí, důrazně doporučujeme, abyste měli aspoň na výběr, `DataBoxDiskValidation.cmd` který jste zadali ve složce *DataBoxDiskImport* , a vyberte možnost 1 pro ověření souborů. Doporučujeme také, abyste tuto dobu vybrali a pomocí možnosti 2 vygenerovali kontrolní součty pro ověření (může trvat i čas v závislosti na velikosti dat). Tyto kroky minimalizují riziko případného selhání při nahrávání dat do Azure.
+3. Jednotku bezpečně odeberte.
 
 ## <a name="ship-to-azure"></a>Odeslání do Azure
 
@@ -156,7 +157,7 @@ Na závěr můžete objednávku Data Boxu zrušit a potom odstranit.
 
     Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém zprovoznění jste nasadili Azure Data Box Disk, který umožňuje importovat data do Azure. Další informace o správě Azure Data Box Disku získáte v následujícímu kurzu:
 

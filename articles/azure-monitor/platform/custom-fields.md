@@ -1,6 +1,6 @@
 ---
-title: Vlastní pole ve službě Azure Monitor | Dokumentace Microsoftu
-description: Funkci vlastních polí služby Azure Monitor umožňuje vytvořit vlastní prohledávatelná pole ze záznamů v pracovním prostoru Log Analytics, které aplikacím dodávají vlastnosti shromážděných záznamu.  Tento článek popisuje postup, jak vytvořit vlastní pole a poskytuje podrobný návod s událost vzorku.
+title: Vlastní pole v Azure Monitor | Microsoft Docs
+description: Funkce vlastní pole Azure Monitor umožňuje vytvořit vlastní hledaná pole ze záznamů v pracovním prostoru Log Analytics, který se přidává do vlastností shromážděného záznamu.  Tento článek popisuje proces vytvoření vlastního pole a poskytuje podrobný návod s ukázkovou událostí.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,127 +11,127 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2019
+ms.date: 08/23/2019
 ms.author: bwren
-ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6b9c21a3d65e75abe11e705eba058b1d1fb17ff
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61461815"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012739"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Vytvoření vlastních polí v pracovním prostoru Log Analytics ve službě Azure Monitor
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Vytváření vlastních polí v pracovním prostoru Log Analytics v Azure Monitor
 
 > [!NOTE]
-> Tento článek popisuje, jak analyzovat textová data v pracovním prostoru Log Analytics, jako jsou shromažďovány. Existují výhody analýzy textová data v dotazu, jakmile se shromáždí, jak je popsáno v [Parsování textových dat ve službě Azure Monitor](../log-query/parse-text.md).
+> Tento článek popisuje, jak analyzovat textová data v Log Analytics pracovním prostoru při jejich shromažďování. Po shromáždění textu podle pokynů popsaných v tématu [Analýza textových dat v Azure monitor](../log-query/parse-text.md)doporučujeme analyzovat textová data ve filtru dotazu. Nabízí několik výhod používání vlastních polí.
 
-**Vlastní pole** funkce služby Azure Monitor umožňuje rozšířit existující záznamy v pracovním prostoru Log Analytics tak, že přidáte vlastní prohledávatelná pole.  Vlastní pole se vyplní automaticky z dat extrahují z dalších vlastností ve stejném záznamu.
+Funkce **vlastní pole** Azure monitor umožňuje rozšíření existujících záznamů v pracovním prostoru Log Analytics přidáním vlastních vyhledávacích polí.  Vlastní pole jsou automaticky vyplněna z dat extrahovaných z jiných vlastností ve stejném záznamu.
 
 ![Přehled](media/custom-fields/overview.png)
 
-Například následující ukázka záznam obsahuje užitečné údaje schovaný v popisu události. Extrahování dat do samostatných vlastnost zpřístupňuje je pro činnosti, jako je filtrování a řazení.
+Například následující ukázkový záznam obsahuje užitečné ukryto dat v popisu události. Extrakce těchto dat do samostatné vlastnosti je dostupná pro tyto akce jako řazení a filtrování.
 
-![Ukázka extrahovat](media/custom-fields/sample-extract.png)
-
-> [!NOTE]
-> Ve verzi Preview platí omezení na 100 vlastních polí v pracovním prostoru.  Toto omezení se rozbalí, pokud tuto funkci ve fázi obecné dostupnosti.
-
-## <a name="creating-a-custom-field"></a>Vytváření vlastního pole
-Při vytváření vlastního pole Log Analytics musí pochopit, která data se mají použít k naplnění jeho hodnotu.  Používá technologii od Microsoft Research volá FlashExtract rychle identifikovat tato data.  Namísto toho, aby vám poskytují explicitní pokyny, Azure Monitor se blíže Seznamuje data, která mají být extrahovány z příkladů, které zadáte.
-
-Postup pro vytvoření vlastní pole v následujících částech.  V dolní části tohoto článku je návod k extrakci vzorku.
+![Ukázkový extrakce](media/custom-fields/sample-extract.png)
 
 > [!NOTE]
-> Vlastní pole se vyplní podle záznamy odpovídající zadaným kritériím se přidají do pracovního prostoru Log Analytics, takže se zobrazí pouze na záznamy shromážděné po vytvoření vlastního pole.  Vlastní pole se nepřidá záznamy, které jsou již v úložišti dat při jeho vytvoření.
+> Ve verzi Preview můžete v pracovním prostoru omezit na 100 vlastních polí.  Toto omezení se rozšíří, když tato funkce dosáhne všeobecné dostupnosti.
+
+## <a name="creating-a-custom-field"></a>Vytvoření vlastního pole
+Když vytvoříte vlastní pole, Log Analytics musí pochopit, která data se mají použít k naplnění její hodnoty.  K rychlé identifikaci těchto dat používá technologii z Microsoft Research s názvem FlashExtract.  Místo toho, abyste museli poskytnout explicitní pokyny, Azure Monitor se naučíte, jak se data, která chcete extrahovat, z příkladů, které poskytnete.
+
+Následující části obsahují postup pro vytvoření vlastního pole.  V dolní části tohoto článku se jedná o návod k extrakci ukázek.
+
+> [!NOTE]
+> Vlastní pole je vyplněno jako záznamy, které odpovídají zadaným kritériím, jsou přidány do pracovního prostoru Log Analytics, takže se zobrazí pouze u záznamů shromážděných po vytvoření vlastního pole.  Vlastní pole nebude přidáno k záznamům, které jsou již v úložišti dat, když je vytvořen.
 > 
 
-### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Krok 1 – identifikace záznamy, které budou mít vlastní pole
-Prvním krokem je identifikace záznamy, které vám pomůžou vlastní pole.  Začínáte [standardním protokolu dotazu](../log-query/log-query-overview.md) a pak vyberte záznam tak, aby fungoval jako model, který Azure Monitor se dozvíte z.  Pokud určíte, že budete extrahovat data do vlastního pole **Průvodce extrakce pole** se otevře, kde můžete ověřit a zpřesnit kritéria.
+### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Krok 1 – identifikace záznamů, které budou mít vlastní pole
+Prvním krokem je identifikace záznamů, které získají vlastní pole.  Začnete se [standardním dotazem protokolu](../log-query/log-query-overview.md) a pak vyberete záznam, který se bude chovat jako model, ze kterého Azure monitor vědět.  Pokud určíte, že budete chtít extrahovat data do vlastního pole, otevře se **Průvodce extrakcí polí** , kde ověříte a upřesníte kritéria.
 
-1. Přejděte na **protokoly** a použít [dotaz pro načtení záznamů](../log-query/log-query-overview.md) , která bude mít vlastní pole.
-2. Vyberte záznam, který bude používat Log Analytics tak, aby fungoval jako model pro extrahování dat k vyplnění pole vlastní.  Bude identifikovat data, která mají být extrahovány z tohoto záznamu a Log Analytics bude tyto informace slouží k určení logiku k naplnění vlastní pole pro všechny podobné záznamy.
-3. Rozbalte vlastnosti záznamu, klikněte na tlačítko se třemi tečkami nalevo od hlavní vlastnosti záznamu a vyberte **extrahovat pole z**.
-4. **Průvodce extrakce pole** se otevře, a zobrazí se v záznamu, který jste vybrali **hlavním příkladem** sloupce.  Vlastní pole bude potřeba definovat pro ty záznamy pomocí stejných hodnot ve vlastnostech, které jsou vybrány.  
-5. Pokud je výběr přesně požadujete, vyberte další pole, chcete-li zúžit kritéria.  Chcete-li změnit hodnoty pro kritéria polí, musíte zrušit a vybrat jiný záznam odpovídající kritériím, která potřebujete.
+1. Přejít na **protokoly** a použít [dotaz k načtení záznamů](../log-query/log-query-overview.md) , které budou mít vlastní pole.
+2. Vyberte záznam, který Log Analytics použít jako model pro extrakci dat, aby bylo možné naplnit vlastní pole.  Budete identifikovat data, která chcete extrahovat z tohoto záznamu, a Log Analytics bude tyto informace používat k určení logiky pro naplnění vlastního pole pro všechny podobné záznamy.
+3. Rozbalte vlastnosti záznamu, klikněte na elipsu nalevo od vlastnosti horní části záznamu a vyberte **extrahovat pole z**.
+4. Otevře se **Průvodce extrakcí polí** a vybraný záznam se zobrazí ve sloupci **hlavní příklad** .  Vlastní pole bude definováno pro tyto záznamy se stejnými hodnotami ve vlastnostech, které jsou vybrány.  
+5. Pokud výběr přesně nechcete, vyberte další pole a upřesněte kritéria.  Aby bylo možné změnit hodnoty polí pro kritéria, je nutné zrušit a vybrat jiný záznam, který odpovídá požadovaným kritériím.
 
-### <a name="step-2---perform-initial-extract"></a>Krok 2: provést počáteční extrakce.
-Jakmile identifikujete záznamy, které budou mít vlastní pole, identifikovat data, která mají být extrahovány.  Log Analytics bude tyto informace použít k identifikaci podobné vzory v podobných záznamů.  V kroku po to bude možné ověřit výsledky a poskytnout další podrobnosti ke službě Log Analytics pro použití v jejich analýzu.
+### <a name="step-2---perform-initial-extract"></a>Krok 2 – proveďte počáteční extrakci.
+Jakmile identifikujete záznamy, které budou mít vlastní pole, identifikujte data, která chcete extrahovat.  Log Analytics budou tyto informace používat k identifikaci podobných vzorů v podobných záznamech.  V tomto kroku budete moci ověřit výsledky a poskytnout další podrobnosti, které Log Analytics použít při analýze.
 
-1. Zvýrazněte text ve vzorku záznam, který má naplnit vlastní pole.  Pak zobrazí se dialogové okno, zadejte název a datový typ pro pole a provést počáteční extrakce.  Znaky  **\_CF** se automaticky připojí.
-2. Klikněte na tlačítko **extrahovat** provádět analýzu shromážděných záznamů.  
-3. **Souhrn** a **výsledky hledání** části zobrazení výsledků extract, takže si můžete prohlédnout její přesnost.  **Souhrn** zobrazí kritéria použít k identifikaci a počet záznamů pro všechny hodnoty data identifikovat.  **Výsledky hledání** poskytuje podrobný seznam záznamů, které odpovídají kritériím.
+1. Zvýrazněte text v ukázkovém záznamu, který chcete vyplnit vlastní pole.  Pak se zobrazí dialogové okno, kde můžete zadat název a datový typ pro pole a provést počáteční extrakci.  **Znaky\_CR** budou automaticky připojeny.
+2. Kliknutím na **extrahovat** proveďte analýzu shromážděných záznamů.  
+3. V sekcích **Souhrn** a **výsledky hledání** se zobrazují výsledky extrakce, abyste mohli zkontrolovat jeho přesnost.  **Souhrn** zobrazuje kritéria sloužící k identifikaci záznamů a počtu identifikovaných hodnot dat.  **Výsledky hledání** obsahují podrobný seznam záznamů, které odpovídají kritériím.
 
-### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>Krok 3 – ověřte správnost extract a vytvořit vlastní pole
-Po provedení počátečního extract, Log Analytics se zobrazí její výsledky na základě dat, která již byla shromážděna.  Pokud výsledky vypadají přesné můžete vytvořit vlastní pole se žádná další práce.  Pokud ne, pak můžete upřesnit výsledky tak, aby Log Analytics můžete zlepšit svou logikou.
+### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>Krok 3 – ověření správnosti extrakce a vytvoření vlastního pole
+Jakmile provedete počáteční extrakci, Log Analytics zobrazí výsledky na základě dat, která již byla shromážděna.  Pokud výsledky vypadají přesně, můžete vytvořit vlastní pole bez další práce.  Pokud ne, můžete výsledky Upřesnit tak, aby Log Analytics mohli vylepšit jeho logiku.
 
-1. Pokud se všechny hodnoty v počáteční extract nejsou správné, klikněte **upravit** ikonu vedle nepřesné záznamu a vyberte **upravit toto zvýraznění** k úpravě výběru.
-2. Položka je zkopírován do **Další příklady** části pod **hlavním příkladem**.  Zvýraznění Tady můžete upravit na pomoct pochopit, výběr, který by měl mít provedené Log Analytics.
-3. Klikněte na tlačítko **extrahovat** do této nové informace slouží k vyhodnocení všechny existující záznamy.  Výsledky mohou být upraveny pro záznamy než ten, který jste právě upravili založené na této nové informace.
-4. Dál přidejte opravy, dokud se všechny záznamy v extract správně identifikovat dat k vyplnění pole nové vlastní.
-5. Klikněte na tlačítko **uložit extrakci** až budete s výsledky spokojeni.  Vlastní pole je teď definovaný, ale zatím nebude přidána k žádné záznamy.
-6. Počkejte pro nové záznamy odpovídající zadaným kritériím shromažďování a poté znovu spusťte prohledávání protokolů. Nové záznamy by měl mít vlastní pole.
-7. Použijte vlastní pole, stejně jako jakoukoli jinou vlastnosti záznamu.  Můžete použít k datům agregují a skupiny a dokonce využít k vytvoření nové poznatky.
+1. Pokud některé hodnoty v počátečním extrakci nejsou správné, klikněte na ikonu **Upravit** vedle nepřesného záznamu a výběrem **změnit toto zvýraznění** , aby se výběr změnil.
+2. Položka se zkopíruje do části **Další příklady** pod **hlavním příkladem**.  Zvýraznění zde můžete nastavit tak, aby bylo možné Log Analytics porozumět výběru, který by měl být proveden.
+3. Kliknutím na **extrahovat** můžete tyto nové informace použít k vyhodnocení všech stávajících záznamů.  Výsledky se můžou upravovat pro jiné záznamy než ta, kterou jste právě změnili v závislosti na této nové inteligentní službě.
+4. Pokračujte v přidávání oprav, dokud všechny záznamy v extrahování správně neidentifikují data k naplnění nového vlastního pole.
+5. Až budete s výsledky spokojeni, klikněte na **Uložit extrakci** .  Vlastní pole je nyní definováno, ale ještě nebude přidáno do žádných záznamů.
+6. Počkejte na shromáždění nových záznamů, které odpovídají zadaným kritériím, a poté znovu spusťte hledání protokolu. Nové záznamy by měly mít vlastní pole.
+7. Použijte vlastní pole jako jakoukoli jinou vlastnost záznamu.  Můžete ji použít k agregaci a seskupení dat a dokonce ji použít k vytvoření nových přehledů.
 
 ## <a name="viewing-custom-fields"></a>Zobrazení vlastních polí
-Můžete zobrazit seznam všech vlastních polí ve skupině pro správu z **Upřesnit nastavení** nabídce pracovního prostoru Log Analytics na portálu Azure portal.  Vyberte **Data** a potom **vlastní pole** seznam všech vlastních polí v pracovním prostoru.  
+Seznam všech vlastních polí ve skupině pro správu můžete zobrazit v nabídce **Upřesnit nastavení** v pracovním prostoru Log Analytics v Azure Portal.  Vyberte **data** a potom **vlastní pole** pro seznam všech vlastních polí v pracovním prostoru.  
 
 ![Vlastní pole](media/custom-fields/list.png)
 
-## <a name="removing-a-custom-field"></a>Odebrání vlastní pole
-Existují dva způsoby, jak odstranit vlastní pole.  První je **odebrat** možnost pro každé pole při prohlížení seznamu dokončení, jak je popsáno výše.  Další metodou je načíst záznam a klikněte na tlačítko vlevo od pole.  V nabídce bude mít možnost odstranit vlastní pole.
+## <a name="removing-a-custom-field"></a>Odebrání vlastního pole
+Existují dva způsoby, jak odebrat vlastní pole.  První je možnost **Odebrat** pro každé pole při zobrazení úplného seznamu, jak je popsáno výše.  Druhou metodou je načíst záznam a kliknout na tlačítko nalevo od pole.  Nabídka bude mít možnost odebrat vlastní pole.
 
 ## <a name="sample-walkthrough"></a>Ukázkový názorný postup
-Následující části vás provede úplný příklad vytvoření vlastního pole.  V tomto příkladu získává název služby v události Windows, které označují mění se stav služby.  To závisí na události vytvořené během spuštění systému na počítačích s Windows pomocí Správce řízení služeb.  Pokud chcete postupovat podle tohoto příkladu, musí být [shromažďování událostí informace v systémovém protokolu](data-sources-windows-events.md).
+Následující část vás provede úplným příkladem vytvoření vlastního pole.  Tento příklad extrahuje název služby v událostech systému Windows, které označují stav změny služby.  To se spoléhá na události vytvořené nástrojem řízení služeb během spouštění systému v počítačích se systémem Windows.  Pokud chcete postupovat podle tohoto příkladu, musíte [shromažďovat události informací pro systémový protokol](data-sources-windows-events.md).
 
-Jsme zadejte následující dotaz, který vrátí všechny události ze Správce řízení služeb, které mají ID události z 7036, což je událost, která znamená spouštění nebo zastavování služby.
+Do následujícího dotazu zadáte následující dotaz, který vrátí všechny události ze Správce řízení služeb, který má ID události 7036, což je událost, která označuje, že služba se spouští nebo zastavuje.
 
 ![Dotaz](media/custom-fields/query.png)
 
-My pak vyberte a rozbalte libovolný záznam s událostí ID 7036.
+Pak vybereme a rozbalíme libovolný záznam s ID události 7036.
 
 ![Zdrojový záznam](media/custom-fields/source-record.png)
 
-Kliknutím na tři tečky vedle hlavní vlastnosti definujeme vlastních polí.
+Vlastní pole definujeme tak, že kliknete na tři tečky vedle vlastnosti Top (začátek).
 
-![Rozbalte pole](media/custom-fields/extract-fields.png)
+![Extrahovat pole](media/custom-fields/extract-fields.png)
 
-**Průvodce extrakce pole** se otevře a **EventLog** a **EventID** pole jsou vybrána v **hlavním příkladem** sloupce.  To znamená, že vlastní pole bude definici pro události v systémovém protokolu s ID události 7036.  To je dostatečná, proto nepotřebujeme můžete vybrat jiné pole.
+Otevře se **Průvodce extrakcí polí** a pole **EventLog** a **ID události** jsou vybrána v **hlavním příkladu** sloupce.  To znamená, že vlastní pole bude definováno pro události ze systémového protokolu s ID události 7036.  To je dostačující, takže nemusíme vybírat žádná další pole.
 
 ![Hlavní příklad](media/custom-fields/main-example.png)
 
-Jsme zvýrazněte název služby v **RenderedDescription** vlastnost a použití **služby** k identifikaci názvu služby.  Vlastní pole bude volána **Service_CF**. Typ pole v tomto případě je řetězec, proto jsme můžete nechat, beze změny.
+Ve vlastnosti **RenderedDescription** se zvýrazní název služby a k identifikaci názvu služby používá **službu** .  Vlastní pole se nazývá **Service_CF**. Typ pole v tomto případě je řetězec, takže ho můžeme nechat beze změny.
 
 ![Název pole](media/custom-fields/field-title.png)
 
-Vidíme, že název služby je správně identifikovat pro některé záznamy, ale ne pro ostatní uživatele.   **Výsledky hledání** zobrazit část názvu **adaptér výkonu služby WMI** nebyla vybrána.  **Souhrn** zobrazuje tento jeden záznam identifikovat **instalační služba modulů** místo **Instalační služby systému Windows moduly**.  
+Uvidíme, že název služby je pro některé záznamy správně identifikovaný, ale ne pro jiné.   Ve **výsledcích hledání** se nevybere část názvu **adaptéru výkonu služby WMI** .  V **souhrnu** se zobrazí, že místo **instalačního programu pro moduly systému Windows**jeden záznam identifikoval **moduly** .  
 
-![Výsledky hledání](media/custom-fields/search-results-01.png)
+![Výsledky vyhledávání](media/custom-fields/search-results-01.png)
 
-Začneme s **adaptér výkonu služby WMI** záznamu.  Kliknete na jeho ikonu a pak **upravit toto zvýraznění**.  
+Začneme záznamem **adaptéru výkonu služby WMI** .  Kliknu na ikonu pro úpravu a pak na **změnit toto zvýraznění**.  
 
-![Upravit zvýraznění](media/custom-fields/modify-highlight.png)
+![Změnit zvýraznění](media/custom-fields/modify-highlight.png)
 
-Doporučujeme zvýšit zvýraznění zahrnout slovo **WMI** a pak znovu spusťte extract.  
+Zvětšili jsme zvýraznění tak, aby obsahovalo **rozhraní WMI** pro Word, a pak znovu spustit extrakci.  
 
 ![Další příklad](media/custom-fields/additional-example-01.png)
 
-Můžeme vidět, které položky pro **adaptér výkonu služby WMI** byly opraveny, a Log Analytics také používají tyto informace k odstranění záznamů pro **instalační program modulu Windows**.
+Vidíte, že položky pro **adaptér výkonu WMI** byly opraveny, a Log Analytics také tyto informace použít k opravě záznamů pro **Instalační službu modulu systému Windows**.
 
-![Výsledky hledání](media/custom-fields/search-results-02.png)
+![Výsledky vyhledávání](media/custom-fields/search-results-02.png)
 
-Teď můžeme spustit dotaz, který ověřuje **Service_CF** se vytvoří, ale zatím není přidán do žádné záznamy. Důvodem je skutečnost, že vlastní pole nebude fungovat proti existující záznamy, proto budeme muset počkat, než pro nové záznamy, které se mají shromažďovat.
+Teď můžeme spustit dotaz, který ověří **Service_CF** , ale ještě není přidaný do žádných záznamů. Důvodem je skutečnost, že vlastní pole nefunguje u stávajících záznamů, takže musíme počkat na shromáždění nových záznamů.
 
 ![Počáteční počet](media/custom-fields/initial-count.png)
 
-Po nějakou dobu tak nové události se shromažďují, vidíme, **Service_CF** pole teď přidáte na záznamy, které odpovídají našimi kritérii.
+Po uplynutí určité doby se budou shromažďovat nové události, abychom zjistili, že pole **Service_CF** se teď přidávají do záznamů, které odpovídají kritériím.
 
-![Konečných výsledků](media/custom-fields/final-results.png)
+![Konečné výsledky](media/custom-fields/final-results.png)
 
-Teď můžeme použít vlastní pole, stejně jako jakoukoli jinou vlastnosti záznamu.  Pro znázornění, se nám vytvořit dotaz, který se seskupí podle nového **Service_CF** pole, které chcete zkontrolovat, které služby jsou nejaktivnější.
+Nyní můžeme použít vlastní pole jako jakoukoli jinou vlastnost záznamu.  Pro ilustraci vytvoříme dotaz, který seskupí podle nového pole **Service_CF** , aby se zkontrolovaly, které služby jsou v nejvyšším případě aktivní.
 
 ![Seskupit podle dotazu](media/custom-fields/query-group.png)
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) sestavování dotazů pomocí vlastních polí pro kritéria.
-* Monitorování [vlastního protokolu souborů](data-sources-custom-logs.md) , která můžete analyzovat pomocí vlastní pole.
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si o [dotazech protokolu](../log-query/log-query-overview.md) pro vytváření dotazů pomocí vlastních polí pro kritéria.
+* Monitorujte [vlastní soubory protokolů](data-sources-custom-logs.md) , které analyzujete pomocí vlastních polí.
 

@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: c4339aa8548ef66c862200ad61b6aaca90332ad0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f478956c3a220ea4435c4f6e8b1096a1e9fdcadf
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174726"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70014752"
 ---
-Po vytvoření vaší sledovacího procesu `AnchorLocated` událost se aktivuje pro každou ukotvení požadovaný. Tato událost je vyvoláno, když ukotvení se nachází, nebo pokud ukotvení nejde najít. Pokud taková situace nastane, důvod se bude zobrazovat v stav. Po zpracování všech kotvy sledování nalezen nebo nebyl nalezen, pak bude `LocateAnchorsCompleted` událost se aktivuje.
+Po vytvoření `AnchorLocated` sledovacího procesu se událost aktivuje pro všechny požadované kotvy. Tato událost je aktivována při umístění kotvy nebo v případě, že kotvu nelze nalézt. Pokud k této situaci dojde, bude důvod uveden ve stavu. Po zpracování, nalezení nebo nenalezení `LocateAnchorsCompleted` všech kotev sledovacího procesu se událost aktivuje. U každého sledovacího procesu je povolený limit 35 identifikátorů. 

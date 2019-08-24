@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0ebf18fe2dc6906bc2c06d94388d126fb55c6024
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: bf2b83725f8ce8e712974c182c9a11e8ed0d04f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981421"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013222"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty úložiště a fronty Service Bus – porovnání a kontrast
 Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure dnes: Fronty úložiště a fronty Service Bus. Tyto informace můžete použít ke srovnání příslušných technologií a pomůžou vám kvalifikovaněji se rozhodnout, které řešení nejlíp vyhovuje vašim potřebám.
@@ -52,7 +52,9 @@ Jako architekt nebo vývojář řešení **byste měli zvážit použití Servic
 * Chcete, aby aplikace zpracovala zprávy jako paralelní dlouhodobé proudy (zprávy jsou přidruženy ke streamu pomocí vlastnosti [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) ve zprávě). V tomto modelu každý uzel v náročné aplikaci soutěží na datové proudy, nikoli na zprávy. Když je datový proud přidělen k náročnému uzlu, uzel může prošetřit stav stavu datového proudu aplikace pomocí transakcí.
 * Vaše řešení vyžaduje transakční chování a nedělitelnost při odesílání nebo přijímání více zpráv z fronty.
 * Vaše aplikace zpracovává zprávy, které mohou překročit 64 KB, ale nebude se nejspíš přiblíží limitu 256 KB.
-* Vyřešíte požadavek na poskytování modelu přístupu na základě role do front a různá práva a oprávnění pro odesílatele a příjemce. Další informace najdete v tématu [Access Control založené na rolích služby Active Directory (Preview)](service-bus-role-based-access-control.md) .
+* Vyřešíte požadavek na poskytování modelu přístupu na základě role do front a různá práva a oprávnění pro odesílatele a příjemce. Další informace najdete v následujících článcích:
+    - [Ověřování pomocí spravovaných identit](service-bus-managed-service-identity.md)
+    - [Ověřování z aplikace](authenticate-application.md)
 * Velikost fronty nebude větší než 80 GB.
 * Chcete použít protokol zasílání zpráv založený na standardu AMQP 1,0. Další informace o AMQP najdete v tématu [Přehled služby Service Bus AMQP](service-bus-amqp-overview.md).
 * V konečném důsledku může být migrace z Point-to-Point na komunikaci typu Point-to-Point do vzoru výměny zprávy, která umožňuje bezproblémovou integraci dalších přijímačů (předplatitelů), z nichž každý obdrží nezávislé kopie kteréhokoli nebo všech. zprávy odeslané do fronty. Druhá z nich odkazuje na funkce publikování/odběru nativně poskytované Service Bus.
@@ -187,7 +189,7 @@ Získáním hlubšího porozumění těchto dvou technologií budete moci učini
 
 Vzhledem k tomu, že fronty Service Bus poskytují řadu pokročilých funkcí, jako jsou například relace, transakce, zjišťování duplicitních dat, automatické nedoručení a trvalé možnosti publikování a odběru, můžou být upřednostňovanou volbou, pokud vytváříte hybridní aplikace nebo pokud vaše aplikace jinak vyžaduje tyto funkce.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Následující články poskytují další doprovodné materiály a informace o používání front úložiště nebo Service Bus front.
 
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

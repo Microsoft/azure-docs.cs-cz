@@ -12,16 +12,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/26/2019
 ms.author: kumud
-ms.openlocfilehash: e97a5a478871d94e074b59558a11df1ec752b0f9
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b397c874045a89f5992aeadacfbbd4434a486977
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249846"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012839"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>Nasazení aplikace s duálním zásobníkem IPv6 se základní Load Balancer v Azure-Template (Preview)
 
-Tento článek poskytuje seznam úloh konfigurace protokolu IPv6 s částí Azure Resource Manager šablony virtuálního počítače, která se vztahuje na. Pomocí šablony popsané v tomto článku můžete v Azure nasadit aplikaci duálního zásobníku (IPv4 + IPv6), která zahrnuje virtuální síť s duálním zásobníkem s podsítěmi IPv4 a IPv6, nástroj pro vyrovnávání zatížení s duálními konfiguracemi protokolu IPv4 + IPv6, virtuální počítače se síťovými kartami, které mají duální IP adresu. konfigurace, skupina zabezpečení sítě a veřejné IP adresy. 
+Tento článek poskytuje seznam úloh konfigurace protokolu IPv6 s částí Azure Resource Manager šablony virtuálního počítače, která se vztahuje na. Pomocí šablony popsané v tomto článku můžete nasadit aplikaci duálního zásobníku (IPv4 + IPv6) se základní Load Balancer, která zahrnuje virtuální síť s duálním zásobníkem s podsítěmi IPv4 a IPv6, základní Load Balancer se dvěma (IPv4 + IPv6) front-endové konfigurace, virtuální počítače s Síťové adaptéry, které mají konfiguraci s duální IP adresou, skupinu zabezpečení sítě a veřejné IP adresy.
+
+Postup nasazení aplikace s duálním zásobníkem (IPV4 + IPv6) pomocí Standard Load Balancer najdete v tématu [nasazení duální aplikace s protokolem IPv6 pomocí Standard Load Balancer-Template](ipv6-configure-standard-load-balancer-template-json.md).
 
 ## <a name="required-configurations"></a>Požadované konfigurace
 
@@ -176,7 +178,7 @@ Pokud používáte síťové virtuální zařízení, přidejte trasy IPv6 do sm
 ```
 
 ## <a name="sample-vm-template-json"></a>Ukázka JSON šablony virtuálního počítače
-Pokud chcete nasadit aplikaci s duálním zásobníkem IPv6 ve službě Azure Virtual Network pomocí šablony Azure Resource Manager, [tady](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)si můžete zobrazit ukázkovou šablonu.
+Postup nasazení aplikace s duálním zásobníkem IPv6 se základními Load Balancer ve službě Azure Virtual Network pomocí šablony Azure Resource Manager zobrazíte ukázkovou šablonu [zde](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/).
 
 ## <a name="next-steps"></a>Další postup
 

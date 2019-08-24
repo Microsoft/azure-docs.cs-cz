@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8987c14fab141a71ba2dd9f1ed228a56ce419bce
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982826"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011645"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak služba Azure Machine Learning funguje: Architektura a koncepty
 
@@ -151,7 +151,7 @@ Příklad najdete v tématu [kurz: Školení modelu klasifikace obrázků pomoc�
 
 ### <a name="runs"></a>Spuštění
 
-Spuštění je záznam, který obsahuje následující informace:
+Spuštění je jediné spuštění školicího skriptu. Azure Machine Learning zaznamenává všechna spuštění a ukládá následující informace:
 
 * Metadata o běhu (časové razítko, doba trvání atd.)
 * Metriky, které jsou protokolovány vaším skriptem
@@ -237,7 +237,7 @@ Další informace o kanálech strojového učení s touto službou najdete v té
 
 Při vývoji řešení použijte sadu Azure Machine Learning Python SDK ve vašem skriptu Pythonu k protokolování libovolných metrik. Po spuštění dotazu na metriky určete, zda běh vytvořil model, který chcete nasadit.
 
-### <a name="next-steps"></a>Další postup
+### <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít používat službu Azure Machine Learning, přečtěte si:
 

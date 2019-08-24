@@ -1,10 +1,9 @@
 ---
-title: Spravované identity pro prostředky Azure s verzí preview služby Azure Service Bus | Dokumentace Microsoftu
-description: Použití spravované identity pro prostředky Azure pomocí Azure Service Bus
+title: Spravované identity pro prostředky Azure s Azure Service Bus | Microsoft Docs
+description: Použití spravovaných identit pro prostředky Azure s Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
@@ -12,90 +11,135 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/01/2018
+ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 8477ff8c8ff0bc1629ff4cdc61f7c28c6eed778c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a671b2ddd3cfa1237b6d843369e78233960f1c14
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978803"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013172"
 ---
-# <a name="managed-identities-for-azure-resources-with-service-bus"></a>Spravované identity pro prostředky Azure pomocí služby Service Bus 
-
+# <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus
 [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce, mezi Azure, která umožňuje vytvořit zabezpečené identitu přidruženou k nasazení, pod kterým běží kód vaší aplikace. Potom můžete tuto identitu přidružit role řízení přístupu, které vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje.
 
-Pomocí spravované identity spravuje Platforma Azure tuto identitu modulu runtime. Není potřeba ukládat a chránit přístupových klíčů v kódu aplikace nebo konfigurace pro identitu, samotné nebo pro prostředky, které potřebujete získat přístup. Service Bus klientskou aplikaci pro spuštění povoleno v aplikaci Azure App Service nebo na virtuálním počítači s spravovaných entit pro prostředky Azure, není potřeba podporu zpracování pravidel SAS a klíče nebo jiné přístupové tokeny. Klientská aplikace potřebuje pouze adresu koncového bodu z oboru názvů služby Service Bus Messaging. Když se aplikace připojí, vytvoří vazbu služby Service Bus spravované entity kontext klienta v operaci, která se zobrazí v příklad dále v tomto článku. Jakmile je přidružen k spravovanou identitu, váš klient služby Service Bus můžete provést všechny schválené operace. Povolení uděleno tím, že přidružíte spravované entity s rolí služby Service Bus. 
+Pomocí spravované identity spravuje Platforma Azure tuto identitu modulu runtime. Není potřeba ukládat a chránit přístupových klíčů v kódu aplikace nebo konfigurace pro identitu, samotné nebo pro prostředky, které potřebujete získat přístup. Klientská aplikace Service Bus spuštěná v aplikaci Azure App Service nebo ve virtuálním počítači s povolenými spravovanými entitami pro podporu prostředků Azure nemusí zpracovávat pravidla a klíče SAS ani žádné jiné přístupové tokeny. Klientská aplikace potřebuje jenom adresu koncového bodu oboru názvů pro zasílání zpráv Service Bus. Když se aplikace připojí, Service Bus sváže kontext spravované entity s klientem v operaci, která je uvedená v příkladu dále v tomto článku. Po přidružení ke spravované identitě může klient Service Bus provádět všechny autorizované operace. Autorizace se uděluje přidružením spravované entity k rolím Service Bus. 
 
-## <a name="service-bus-roles-and-permissions"></a>Role služby Service Bus a oprávnění
+## <a name="overview"></a>Přehled
+Když se objekt zabezpečení (uživatel, skupina nebo aplikace) pokusí o přístup k Service Bus entitě, musí být žádost autorizována. S Azure AD je přístup k prostředku v procesu se dvěma kroky. 
 
-Spravovanou identitu můžete přidat do role "Vlastník dat služby Service Bus" oboru názvů služby Service Bus. Uděluje identitu, úplné řízení (pro správu a operace s daty) na všechny entity v oboru názvů.
+ 1. Nejprve je ověřená identita objektu zabezpečení a je vrácen token OAuth 2,0. 
+ 1. V dalším kroku se token předává jako součást požadavku služby Service Bus k autorizaci přístupu k zadanému prostředku.
 
->[!IMPORTANT]
-> Dříve podporován spravovanou identitu pro přidání **"Vlastník"** nebo **"Přispěvatel"** role.
->
-> Nicméně oprávnění pro přístup k datům **"Vlastník"** a **"Přispěvatel"** role se už zachované. Pokud jste používali **"Vlastník"** nebo **"Přispěvatel"** role a ty pak bude muset být přizpůsobena využívat **"Vlastník dat služby Service Bus"** role.
+Krok ověřování vyžaduje, aby žádost o aplikaci obsahovala přístupový token OAuth 2,0 za běhu. Pokud je aplikace spuštěná v rámci entity Azure, jako je třeba virtuální počítač Azure, sada škálování virtuálního počítače nebo aplikace funkce Azure, může pro přístup k prostředkům použít spravovanou identitu. Informace o tom, jak ověřit požadavky prováděné spravovanou identitou pro Service Bus službu, najdete v tématu [ověření přístupu k prostředkům Azure Service Bus pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](service-bus-managed-service-identity.md). 
 
-Pokud chcete použít novou integrovanou roli, dokončete prosím níže uvedený postup –
+Autorizační krok vyžaduje, aby se k objektu zabezpečení přiřadila jedna nebo více rolí RBAC. Azure Service Bus poskytuje role RBAC, které zahrnují sady oprávnění pro prostředky Service Bus. Role, které jsou přiřazeny objektu zabezpečení, určují oprávnění, která bude mít objekt zabezpečení. Další informace o přiřazení rolí RBAC k Azure Service Bus najdete v tématu [předdefinované role RBAC pro Azure Service Bus](#built-in-rbac-roles-for-azure-service-bus). 
 
-1. Pokračujte [webu Azure portal](https://portal.azure.com)
-2. Přejděte do oboru názvů služby Service Bus, ve které máte aktuálně instalace role "Vlastník" nebo "Přispěvatel".
-3. V levé nabídce klikněte na "Control(IAM) přístup".
-4. Přejít k přidání nové přiřazení role, jak je uvedeno níže
+Nativní aplikace a webové aplikace, které vytvářejí požadavky na Service Bus, mohou být také autorizovány pomocí Azure AD. V tomto článku se dozvíte, jak požádat o přístupový token a použít ho k autorizaci žádostí o Service Bus prostředky. 
 
-    ![](./media/service-bus-role-based-access-control/ServiceBus_RBAC_SBDataOwner.png)
 
-5. Klikněte na "Uložit" se uložit přiřazení nové role.
+## <a name="assigning-rbac-roles-for-access-rights"></a>Přiřazení rolí RBAC pro přístupová práva
+Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md). Azure Service Bus definuje sadu integrovaných rolí RBAC, které zahrnují společné sady oprávnění používané pro přístup k Service Busm entitám, a můžete také definovat vlastní role pro přístup k datům.
 
-## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Service Bus pomocí spravované identity pro prostředky Azure
+Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezen na úrovni předplatného, skupiny prostředků nebo oboru názvů Service Bus. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo spravovanou identitou pro prostředky Azure.
 
-Následující část popisuje kroky potřebné k vytvoření a nasazení ukázkové aplikace, na kterém běží pod spravovanou identitu, jak udělit této identity přístup k oboru názvů zasílání zpráv Service Bus a jak aplikace komunikuje s entitami služby Service Bus pomocí tuto identitu.
+## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Předdefinované role RBAC pro Azure Service Bus
+Pro Azure Service Bus už je Správa oborů názvů a všech souvisejících prostředků prostřednictvím Azure Portal a rozhraní API pro správu prostředků Azure chráněná pomocí modelu *řízení přístupu na základě role* (RBAC). Azure poskytuje níže vestavěné role RBAC pro autorizaci přístupu k oboru názvů Service Bus:
 
-Tento úvod popisuje webové aplikaci hostované v [služby Azure App Service](https://azure.microsoft.com/services/app-service/). Kroky potřebné pro aplikace hostované na virtuálním počítači jsou podobné.
+- [Azure Service Bus vlastník dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Umožňuje přístup k datům Service Bus obor názvů a jeho entit (fronty, témata, odběry a filtry).
+- [Azure Service Bus odesílatel dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Tuto roli použijte k poskytnutí přístupu pro přístup k oboru názvů Service Bus a jeho entitám.
+- [Azure Service Bus příjemce dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver): Tuto roli použijte k poskytnutí přístupu k oboru názvů Service Bus a jeho entitám. 
 
-### <a name="create-an-app-service-web-application"></a>Vytvořit webovou aplikaci služby App Service
+## <a name="resource-scope"></a>Obor prostředku 
+Než přiřadíte roli RBAC objektu zabezpečení, určete rozsah přístupu, který má objekt zabezpečení mít. Osvědčené postupy určují, že vždy nejlépe přidělíte jenom nejužšímu možnému rozsahu.
 
-Prvním krokem je vytvoření aplikace App Service ASP.NET. Pokud nejste obeznámeni s jak postupovat v Azure, postupujte podle [Tato příručka](../app-service/app-service-web-get-started-dotnet-framework.md). Místo vytváření aplikace MVC, jak je znázorněno v tomto kurzu, vytvořte aplikaci webových formulářů.
+Následující seznam popisuje úrovně, na jejichž základě můžete nastavit rozsah přístupu k prostředkům Service Bus, počínaje nejužším rozsahem:
 
-### <a name="set-up-the-managed-identity"></a>Nastavit spravované identity
+- **Zařazení do fronty**, **tématu**nebo předplatného: Přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí RBAC na úrovni předplatného. 
+- **Obor názvů Service Bus**: Přiřazení role zahrnuje celou topologii Service Bus pod oborem názvů a do skupiny příjemců, která je k ní přidružená.
+- **Skupina prostředků**: Přiřazení role se vztahuje na všechny prostředky Service Bus v rámci skupiny prostředků.
+- **Předplatné:** Přiřazení role se vztahuje na všechny prostředky Service Bus ve všech skupinách prostředků v rámci předplatného.
 
-Jakmile vytvoříte aplikaci, přejděte na nově vytvořenou webovou aplikaci na webu Azure Portal (také je znázorněno postupy) a pak přejděte na **identita spravované služby** stránce a povolení této funkce: 
+> [!NOTE]
+> Mějte na paměti, že rozšíření přiřazení rolí RBAC může trvat až pět minut. 
 
-![](./media/service-bus-managed-service-identity/msi1.png)
+Další informace o tom, jak jsou předdefinované role definované, najdete v tématu [vysvětlení definic rolí](../role-based-access-control/role-definitions.md#management-and-data-operations). Informace o vytváření vlastních rolí RBAC najdete v tématu [Vytvoření vlastních rolí pro Azure založené na rolích Access Control](../role-based-access-control/custom-roles.md).
 
-Po povolení funkce, je novou identitu služby vytvořené ve službě Azure Active Directory a nakonfigurováno v hostiteli služby App Service.
+## <a name="enable-managed-identities-on-a-vm"></a>Povolení spravovaných identit na virtuálním počítači
+Než budete moct použít spravované identity pro prostředky Azure k autorizaci Service Bus prostředků z virtuálního počítače, musíte nejdřív na VIRTUÁLNÍm počítači povolit spravované identity pro prostředky Azure. Informace o tom, jak povolit spravované identity pro prostředky Azure, najdete v jednom z těchto článků:
 
-### <a name="create-a-new-service-bus-messaging-namespace"></a>Vytvořit nový obor názvů zasílání zpráv Service Bus
+- [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+- [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+- [Šablona Azure Resource Manager](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Klientské knihovny Azure Resource Manager](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-Dále [vytvoření oboru názvů služby Service Bus Messaging](service-bus-create-namespace-portal.md). 
+## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Udělení oprávnění spravované identitě v Azure AD
+Pokud chcete autorizovat požadavek na službu Service Bus ze spravované identity ve vaší aplikaci, nejdřív nakonfigurujte nastavení řízení přístupu na základě role (RBAC) pro tuto spravovanou identitu. Azure Service Bus definuje role RBAC, které zahrnují oprávnění k posílání a čtení z Service Bus. Když je role RBAC přiřazená ke spravované identitě, má spravovaná identita udělený přístup k entitám Service Bus v příslušném oboru.
 
-Přejděte do oboru názvů **řízení přístupu (IAM)** stránky na portálu a potom klikněte na tlačítko **přidat přiřazení role** přidáte spravovanou identitu do **vlastníka** role. Uděláte to tak, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na příslušnou položku. Potom klikněte na **Uložit**.
+Další informace o přiřazování rolí RBAC najdete v tématu [ověřování a autorizace pomocí Azure Active Directory pro přístup k prostředkům Service Bus](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus).
 
-Webová aplikace spravovaná identita má nyní přístup k oboru názvů služby Service Bus a do fronty jste předtím vytvořili. 
+## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Použití Service Bus se spravovanými identitami pro prostředky Azure
+Chcete-li použít Service Bus se spravovanými identitami, je nutné přiřadit identitu roli a příslušnému oboru. Postup v této části používá jednoduchou aplikaci, která běží pod spravovanou identitou a přistupuje k prostředkům Service Bus.
+
+Tady používáme ukázkovou webovou aplikaci hostovanou v [Azure App Service](https://azure.microsoft.com/services/app-service/). Podrobné pokyny pro vytvoření webové aplikace najdete v tématu [Vytvoření webové aplikace v ASP.NET Core v Azure](../app-service/app-service-web-get-started-dotnet.md) .
+
+Po vytvoření aplikace proveďte tyto kroky: 
+
+1. Přejít na **Nastavení** a vybrat **identitu**. 
+1. Vyberte **stav** , který má být **zapnut**. 
+1. Vyberte **Uložit** a nastavení se uloží. 
+
+    ![Spravovaná identita pro webovou aplikaci](./media/service-bus-managed-service-identity/identity-web-app.png)
+
+Po povolení tohoto nastavení se v Azure Active Directory (Azure AD) vytvoří nová identita služby a nakonfiguruje se na hostitele App Service.
+
+Teď tuto identitu služby přiřaďte roli v požadovaném oboru ve vašich Service Busch prostředcích.
+
+### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>Přiřazení rolí RBAC pomocí Azure Portal
+Chcete-li přiřadit roli k oboru názvů Service Bus, přejděte na obor názvů v Azure Portal. Zobrazit nastavení Access Control (IAM) prostředku a podle těchto pokynů můžete spravovat přiřazení rolí:
+
+> [!NOTE]
+> Následující kroky přiřadí roli identity služby vašim oborům názvů Service Bus. Stejný postup můžete použít k přiřazení role v jiných podporovaných oborech (skupina prostředků a předplatné). 
+> 
+> Pokud nemáte [obor názvů pro zasílání zpráv Service Bus, vytvořte](service-bus-create-namespace-portal.md) ho. 
+
+1. V Azure Portal přejděte na svůj obor názvů Service Bus a zobrazte **Přehled** oboru názvů. 
+1. V nabídce vlevo vyberte **Access Control (IAM)** a zobrazte nastavení řízení přístupu pro obor názvů Service Bus.
+1.  Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
+3.  Pokud chcete přidat novou roli, vyberte **Přidat** .
+4.  Na stránce **Přidat přiřazení role** vyberte role Azure Service Bus, které chcete přiřadit. Pak vyhledejte identitu služby, kterou jste zaregistrovali pro přiřazení role.
+    
+    ![Přidat stránku přiřazení role](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
+5.  Vyberte **Uložit**. Identita, ke které jste přiřadili roli, se zobrazí v seznamu v rámci této role. Například následující obrázek ukazuje, že identita služby má Azure Service Bus vlastníka dat.
+    
+    ![Identita přiřazená k roli](./media/service-bus-managed-service-identity/role-assigned.png)
+
+Po přiřazení role bude webová aplikace mít přístup k entitám Service Bus v rámci definovaného oboru. 
 
 ### <a name="run-the-app"></a>Spuštění aplikace
 
-Nyní upravte výchozí stránku aplikace technologie ASP.NET, kterou jste vytvořili. Můžete použít kód webové aplikace z [úložiště GitHub](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet).  
+Nyní upravte výchozí stránku aplikace ASP.NET, kterou jste vytvořili. Můžete použít kód webové aplikace z [tohoto úložiště GitHub](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet).  
 
-Stránku Default.aspx je cílovou stránkou. Kód můžete najít v souboru Default.aspx.cs. Výsledkem je minimální webové aplikace s několika polí pro zadávání a **odeslat** a **přijímat** tlačítka, která připojení k Service Bus k odesílání nebo příjmu zpráv.
+Stránka default. aspx je cílovou stránkou. Kód najdete v souboru Default.aspx.cs. Výsledkem je minimální webová aplikace s několika vstupními poli a tlačítky **Odeslat** a **přijmout** , která se připojují k Service Bus k odeslání nebo přijetí zpráv.
 
-Poznámka: Jak [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objekt je inicializován. Namísto použití zprostředkovatele tokenu sdíleného přístupového tokenu (SAS), kód vytvoří poskytovatel tokenů pro spravovanou identitu s `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` volání. V důsledku toho nejsou žádné tajných kódů a zachovat. Tok kontextu spravovanou identitu služby Service Bus a ověření metody handshake jsou automaticky zpracovány poskytovatelem tokenu. Je jednodušší model než pomocí SAS.
+Poznámka: Jak [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objekt je inicializován. Namísto použití zprostředkovatele tokenu sdíleného přístupového tokenu (SAS), kód vytvoří poskytovatel tokenů pro spravovanou identitu s `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` volání. V takovém případě nejsou k dispozici žádné tajné kódy k uchování a používání. Tok spravované identity, který se má Service Bus, a ověřovací metodou handshake automaticky zpracovává Poskytovatel tokenů. Je to jednodušší model než použití SAS.
 
-Po provedení těchto změn, publikování a spuštění aplikace. Můžete-li získat správný publikování dat snadno, stahování a import profilu publikování v sadě Visual Studio:
+Po provedení těchto změn, publikování a spuštění aplikace. Správná data publikování můžete snadno získat tak, že si stáhnete a pak importujete profil publikování v aplikaci Visual Studio:
 
-![](./media/service-bus-managed-service-identity/msi3.png)
+![Získat profil publikování](./media/service-bus-managed-service-identity/msi3.png)
  
-Odesílat nebo přijímat zprávy, zadejte název oboru názvů a název sady entit, které jste vytvořili. Potom klikněte na možnost **odeslat** nebo **přijímat**.
+Chcete-li odesílat nebo přijímat zprávy, zadejte název oboru názvů a název vytvořené entity. Pak klikněte na **Odeslat** nebo **přijmout**.
 
 
 > [!NOTE]
-> - Spravovaná identita funguje jenom v prostředí Azure, v App Service, virtuální počítače Azure a škálovací sady. Pro aplikace .NET knihovnu Microsoft.Azure.Services.appauthentication přistupovat, který používá balíček NuGet služby Service Bus poskytuje abstrakci přes tento protokol a podporuje místní vývojové prostředí. Tato knihovna také umožňuje testovat kód místně na svém vývojovém počítači, pomocí uživatelského účtu Visual Studio, Azure CLI 2.0 nebo integrované ověřování Active Directory. Další informace o místním vývojovém možnosti k této knihovně najdete v tématu [ověřování služba služba do služby Azure Key Vault pomocí rozhraní .NET](../key-vault/service-to-service-authentication.md).  
+> - Spravovaná identita funguje jenom v prostředí Azure, ve službě App Services, na virtuálních počítačích Azure a v sadách škálování. V případě aplikací .NET poskytuje knihovna Microsoft. Azure. Services. AppAuthentication, která je používána balíčkem Service Bus NuGet, abstrakci prostřednictvím tohoto protokolu a podporuje místní vývojové prostředí. Tato knihovna také umožňuje testovat kód místně na vašem vývojovém počítači pomocí uživatelského účtu ze sady Visual Studio, Azure CLI 2,0 nebo integrovaného ověřování služby Active Directory. Další informace o možnostech místního vývoje s touto knihovnou najdete v tématu [ověřování služba-služba pro Azure Key Vault pomocí rozhraní .NET](../key-vault/service-to-service-authentication.md).  
 > 
-> - V současné době spravované identity nebude fungovat s sloty nasazení služby App Service.
+> - Spravované identity v současné době nefungují s App Service sloty nasazení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o zasílání zpráv Service Bus, najdete v následujících tématech:
+Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7ba2cf14d9fac100f44a1ef23997b27ba062bee0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 5afba1ddf2d25e079d9f742f4e403dab6c0c0c4b
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295863"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013399"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Korelace cloudových inteligentních výstrah v Azure Security Center (incidenty)
 
-Security Center průběžně analyzuje úlohy hybridního cloudu pomocí pokročilých analýz a analýzy hrozeb, které vás upozorňují na škodlivou aktivitu.
+Azure Security Center průběžně analyzuje hybridní cloudové úlohy pomocí pokročilých analýz a analýzy hrozeb, které vás upozorňují na škodlivou aktivitu.
 
-Vzhledem k tomu, že se rozsah hrozeb zvyšuje a nutnost detekovat ještě mírné označení napadení, může být pro analytiky zabezpečení obtížné určit různé výstrahy a identifikovat skutečný útok. Security Center pomáhá analytikům vypořádat se únavou a diagnostikou útoků při jejich výskytu tím, že koreluje různé výstrahy a signály s nízkou přesností na incidenty zabezpečení.
+Šířka pokrytí hrozbami roste. Nutnost detekovat i mírné ohrožení zabezpečení je důležité a může být náročné na to, aby analytici zabezpečení mohli určit různé výstrahy a identifikovat skutečný útok. Security Center pomáhá analytikům vypořádat se s tímto neúnavou výstrahou. Pomáhá diagnostikovat útoky při jejich výskytu tím, že koreluje různé výstrahy a signály s nízkou věrností do incidentů zabezpečení.
 
-Fúze je technologický a analytický back-end, který splňuje Security Center incidenty, a umožňuje tak korelaci různých výstrah a kontextových signálů společně. Fúze funguje tak, že se podíváme na různé signály nahlášené na základě předplatného napříč prostředky a vyhledáme základní vzory, které zobrazují průběh útoku nebo signály se sdílenými kontexty informací, které určují jednotnou odpověď. vybere se pro ně.
+Fusion Analytics je technologický a analytický back-end, který splňuje Security Center incidenty a umožňuje tak korelaci různých výstrah a kontextových signálů. Fúze vychází z různých signálů hlášených u předplatného napříč prostředky. Fusion vyhledá vzory, které odhalí průběh útoku nebo signály se sdílenými kontexty informací, což značí, že byste pro ně měli použít jednotný postup odezvy.
 
-Analytics Analytics kombinuje znalostní bázi domény zabezpečení se systémem AI a analyzuje výstrahy a zjišťuje nové vzory útoků, když k nim dojde. 
+Analytics Analytics kombinuje znalostní bázi zabezpečení domény se systémem AI a analyzuje výstrahy a zjišťuje nové vzory útoků, když k nim dojde. 
 
-Security Center využívá matrici útoků MITRE k přidružení výstrah k jejich vnímanému záměru a pomáhá znalostní bázi formalizovat zabezpečení domény. Kromě toho můžete pomocí informací shromážděných pro každý krok útoku Security Center vyfiltrovat aktivitu, která se jeví jako kroky útoku, ale ne.  
+Security Center využívá matrici útoků MITRE k přidružení výstrah k jejich vnímanému záměru a pomáhá znalostní bázi formalizovat zabezpečení domény. Kromě toho můžete pomocí informací shromážděných pro každý krok útoku Security Center vyfiltrovat aktivitu, která se jeví jako kroky útoku, ale ve skutečnosti ne.  
 
-Vzhledem k tomu, že k útokům často dochází v různých klientech, Security Center můžou kombinovat algoritmy AI a analyzovat tak sekvence útoků, které jsou nahlášeny v každém předplatném, aby je identifikovaly jako rozšířené vzory výstrah, a ne jenom incidenty přidružené jiná.
+Vzhledem k tomu, že k útokům často dochází v různých klientech, Security Center mohou kombinovat algoritmy AI a analyzovat tak sekvence útoků, které jsou hlášeny v každém předplatném Tato technika identifikuje posloupnosti útoků jako vzorové výstrahy, místo toho, aby se k sobě navzájemně nepřidružil.
 
 V průběhu vyšetřování incidentu často potřebují analytikům přístup k závěru o povaze hrozby a o tom, jak ho zmírnit. Například, i když je zjištěna anomálie sítě, bez pochopení, co se děje v síti nebo s ohledem na cílový prostředek, je obtížné pochopit, jaké akce mají být další. Pro usnadnění může incident zabezpečení zahrnovat artefakty, související události a informace. Další informace, které jsou k dispozici pro incidenty zabezpečení, se liší v závislosti na typu zjištěné hrozby a konfiguraci vašeho prostředí. 
 
-![Podrobnosti o incidentu zabezpečení](./media/security-center-alerts-cloud-smart/security-incident.png)
+![Snímek obrazovky s zjištěnou událostí bezpečnostního incidentu](./media/security-center-alerts-cloud-smart/security-incident.png)
 
 Chcete-li lépe porozumět incidentům zabezpečení, přečtěte si téma [jak řešit incidenty zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident).
 

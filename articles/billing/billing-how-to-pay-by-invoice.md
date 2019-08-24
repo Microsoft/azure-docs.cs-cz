@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/23/2019
 ms.author: banders
-ms.openlocfilehash: 90c7014e3c22ac7186854d5c01b911aa630d20dd
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 9e4e05acd88e9b0f0c17d4dd4caf5eb5a883d63d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774663"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012599"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Plaťte za vaše předplatné Azure podle faktury
 
@@ -24,7 +24,8 @@ Pokud přepnete na platbu fakturou, znamená to, že platíte za vaše vyúčtov
 
 > [!IMPORTANT]
 > * Fakturovatelné platby (kontrolní nebo přenosový přenos) je k dispozici jenom pro obchodní účty.
-> * Před přepnutím na fakturovat platbu musíte zaplatit všechny zbývající poplatky.
+> * Před přepnutím na fakturaci platíte všechny zbývající poplatky.
+> * V současné době platba na faktuře není podporovaná pro globální Azure v Číně.
 
 ## <a name="request-to-pay-by-invoice"></a>Žádost o platbu fakturou
 
@@ -64,7 +65,7 @@ Pokud přepnete na platbu fakturou, znamená to, že platíte za vaše vyúčtov
          Specific region & series of Subscription:
 
     - **Název společnosti** a **adresa společnosti** by měly odpovídat informacím, které jste zadali pro účet Azure. Informace o zobrazení nebo aktualizaci informací najdete v tématu [Změna informací o profilu účtu Azure](billing-how-to-change-azure-account-profile.md).
-    - Aby bylo možné schválit úvěrový limit, musíte do Azure Portal přidat své kontaktní údaje. Kontaktní údaje by se měly vztahovat na závazky společnosti nebo finanční oddělení. Fakturační kontaktní údaje aktualizujete tak, že přejdete na [centrum účtů Azure](https://account.azure.com/Profile).
+    - Před schválením limitu kreditu přidejte do Azure Portal informace o fakturačním kontaktu. Kontaktní údaje by se měly vztahovat na závazky společnosti nebo finanční oddělení. Fakturační kontaktní údaje aktualizujete tak, že přejdete na [centrum účtů Azure](https://account.azure.com/Profile).
 
 6. Zkontrolujte své kontaktní informace a upřednostňovaný způsob kontaktování a pak klikněte na **Vytvořit**.
 
@@ -72,9 +73,9 @@ Pokud musíme spustit kontrolu kreditu z důvodu množství kreditu, který pot�
 
 ## <a name="switch-to-invoice-pay-checkwire-transfer"></a>Přepnout na fakturaci faktury (ověření/přenos po drátě)
 
-Jakmile schválíte platbu na fakturu, můžete v Azure Portal přepnout na fakturaci s platbami (check/Link Transfer).
+Jakmile schválíte platbu podle faktury, můžete v Azure Portal přepnout na fakturaci s platbami (check/přenosová komunikace).
 
-Pokud máte účet programu Microsoft Online Services, můžete přepnout předplatné Azure na kontrolu a přenos přenosu. Pokud máte smlouvu o zákaznících Microsoftu, můžete svůj fakturační profil přepnout na kontrolu a přenos. [Naučte se kontrolovat typ účtu](#check-access-to-a-microsoft-customer-agreement).
+Pokud máte účet programu Microsoft Online Services, můžete přepnout předplatné Azure na kontrolu a přenos přenosu. Se smlouvou o zákaznících Microsoftu můžete svůj fakturační profil přepínat na kontrolu a přenos. [Naučte se kontrolovat typ účtu](#check-access-to-a-microsoft-customer-agreement).
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Přepnutí předplatného Azure na kontrolu/přenos přenosu
 
@@ -93,7 +94,7 @@ Použijte následující postup, chcete-li přepnout předplatné Azure na faktu
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>Přepnutí fakturačního profilu na kontrolu/přenos přenosu
 
-Podle následujícího postupu přepněte profil pro účtování na kontrolu/přenos přenosu. Upozorňujeme, že pouze osoba, která se zaregistrovala v Azure, může změnit výchozí způsob platby pro fakturační profil.
+Podle následujícího postupu přepněte profil pro účtování na kontrolu/přenos přenosu. Pouze osoba, která se zaregistrovala v Azure, může změnit výchozí způsob platby pro fakturační profil.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Hledat na **Cost Management a fakturace**.
@@ -106,7 +107,7 @@ Podle následujícího postupu přepněte profil pro účtování na kontrolu/p�
 
    ![Snímek obrazovky, který zobrazuje způsoby platby v nabídce](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
 
-1. Klikněte na modrý banner, který uvádí, že máte nárok na platbu pomocí kontroly/přenosu.
+1. Klikněte na modrý banner s oznámením, že máte nárok na platbu pomocí kontroly/přenosové komunikace.
 
     ![Snímek obrazovky, který zobrazuje modrý banner pro přepnutí na kontrolu a přenos](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
 

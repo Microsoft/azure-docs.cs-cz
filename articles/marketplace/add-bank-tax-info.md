@@ -1,57 +1,30 @@
 ---
-title: Přidání informací o bank a daň | Azure Marketplace
-description: Informace o bank a daň přidejte ke svému účtu Dev Center.
+title: Přidat bankovní a daňové informace | Azure Marketplace
+description: Přidejte bankovní a daňové informace do svého účtu centra vývojářů.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+author: qianw211
+manager: evansma
 ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: b435260edcbb132adc19f65b6bfcab7edd3afb9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: blevens
+ms.openlocfilehash: 469268637db0b3118b2db8190e9eaf2043662dea
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935675"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011486"
 ---
-# <a name="add-bank-and-tax-information"></a>Přidání informací o bank a daně  
-Bankovní a daň informace jsou nezbytné pro všechny obchodní nabídky pomocí příkazů jazyka transact typ seznamu.  
-*   Pokud publikujete obchodní nabídky k nákupu, pak je nutné přidat informace výplata a daň a ověření žádosti Dev Center.  
-    >[!IMPORTANT]
-    >Obchodní nabídky (transact), je třeba provést bank a daň informace předtím, než budete moct svoje nabídky přejít do produkčního prostředí.  
+# <a name="add-bank-and-tax-information"></a>Přidat bankovní a daňové informace  
 
-*   Pokud jste publikování jenom bezplatné nebo verzi BYOL nabízí a není nutné přidat informace. Můžete přidat později informace, ale ověřovací informace daň za nějakou dobu trvá. Pokud máte v plánu nabídnout obchodní nabídky pro nákup, měli byste přidat informace co nejdříve.  
+Bankovní a daňové informace jsou požadovány pro všechny komerční nabídky používající typ výpisu transakcí.  
 
-## <a name="add-bank-information"></a>Přidat bance informace  
-1.  Přihlaste se pomocí účtu Microsoft ID. Dev Center  
-    *   Pro přihlášení na Centrum pro vývojáře, navštivte stránku umístěného v na Windows Dev Center [dev.windows.com](https://dev.windows.com).  
-2.  Vyberte účet výběr v nabídce vlevo.
-3.  Na `Choose payment method` stránce `Bank account` nebo `PayPal`.  
-    >[!IMPORTANT]
-    >Pokud budete mít obchodní nabídky, které zákazníci zakoupit na webu Marketplace, pak výběr je váš účet kam budete dostávat výběr na nákupy.  
+## <a name="partner-center"></a>Partnerské centrum
 
-4.  Zadání platebních údajů. Až si ověříte, že údaje jsou správné, klikněte na tlačítko Uložit.  
-    >[!IMPORTANT]
-    >Je-li aktualizovat nebo změnit váš výběr účtu, musí podle stejných kroků nahradit aktuální informace o nové informace. Změny ke svému účtu výběr může způsobit prodlevu plateb až jeden platby cyklu. Tomuto zpoždění dochází, protože Microsoft musíte ověřit změnu účtu, to je stejný jako při prvním nastavování můžete výběr účtu. Získat nezaplatili celou částku, jakmile váš účet byl ověřen. Všechny platby z důvodu aktuálního platby cyklu jsou přidány do dalšího cyklu.  
+Bankovní a daňové informace se teď spravují v partnerském centru. Pokyny pro konfiguraci těchto nastavení najdete v části finanční podrobnosti v tématu [Správa účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details).
 
-4.  Klikněte na tlačítko Další. 
-
----
-
-## <a name="add-tax-information"></a>Přidejte informace o daních  
-1.  Přihlaste se pomocí účtu Microsoft ID. Dev Center  
-    *   Pro přihlášení na Centrum pro vývojáře, navštivte stránku umístěného v na Windows Dev Center [dev.windows.com](https://dev.windows.com).  
-2.  V nabídce vlevo vyberte profil daně. 
-3.  Na `Set up your tax form` vyberte zemi nebo oblast, kde máte trvalý rezidence.  
-    
-    Vyberte zemi nebo oblast, kde podržte primární citizenship.  
-    
-    Klikněte na tlačítko Další. 
-4.  Zadejte podrobnosti o daně.  
-5.  Klikněte na tlačítko Další.  
 
 ## <a name="next-steps"></a>Další postup
-*   Přejděte [Azure Marketplace a AppSource příručce pro vydavatele](./marketplace-publishers-guide.md) stránky.  
+*   Navštivte stránku [Příručka pro vydavatele Azure Marketplace a AppSource](./marketplace-publishers-guide.md) .  
  
 ---

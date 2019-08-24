@@ -15,12 +15,12 @@ ms.date: 08/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 09551eb2620349fa2445c1da3a7e0d66062ebaf0
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 776b8303e3454b40979691ea32fdcca11be4fa71
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899742"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013371"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -54,15 +54,15 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 | [Operátor Runbooku služby Automation](#automation-runbook-operator) | Číst vlastnosti Runbooku – abyste mohli vytvářet úlohy Runbooku. |
 | [Přispěvatel avere](#avere-contributor) | Může vytvořit a spravovat cluster avere vFXT. |
 | [Avere – operátor](#avere-operator) | Používá cluster avere vFXT ke správě clusteru. |
-| [Azure Event Hubs Data Owner (Preview)](#azure-event-hubs-data-owner-preview) | Umožňuje úplný přístup k prostředkům Azure Event Hubs. |
-| [Příjemce dat Event Hubs Azure (Preview)](#azure-event-hubs-data-receiver-preview) | Umožňuje získat přístup k prostředkům Azure Event Hubs. |
-| [Odesilatel dat Event Hubs Azure (Preview)](#azure-event-hubs-data-sender-preview) | Povoluje odesílání přístup k prostředkům Azure Event Hubs. |
+| [Vlastník dat Event Hubs Azure](#azure-event-hubs-data-owner) | Umožňuje úplný přístup k prostředkům Azure Event Hubs. |
+| [Přijímač dat Event Hubs Azure](#azure-event-hubs-data-receiver) | Umožňuje získat přístup k prostředkům Azure Event Hubs. |
+| [Odesilatel dat Event Hubs Azure](#azure-event-hubs-data-sender) | Povoluje odesílání přístup k prostředkům Azure Event Hubs. |
 | [Role Správce clusteru služby Azure Kubernetes](#azure-kubernetes-service-cluster-admin-role) | Vypíše akci přihlašovacích údajů správce clusteru. |
 | [Role uživatele clusteru služby Azure Kubernetes](#azure-kubernetes-service-cluster-user-role) | Vypíše akci přihlašovacích údajů uživatele clusteru. |
 | [Čtečka dat Azure Maps (Preview)](#azure-maps-data-reader-preview) | Udělí přístup ke čtení dat souvisejících s mapou z účtu Azure Maps. |
-| [Azure Service Bus vlastník dat (Preview)](#azure-service-bus-data-owner-preview) | Umožňuje úplný přístup k Azure Service Bus prostředkům. |
-| [Azure Service Bus příjemce dat (Preview)](#azure-service-bus-data-receiver-preview) | Umožňuje získat přístup k prostředkům Azure Service Bus. |
-| [Odesílatel dat Azure Service Bus (Preview)](#azure-service-bus-data-sender-preview) | Umožňuje odeslat přístup k prostředkům Azure Service Bus. |
+| [Azure Service Bus vlastník dat](#azure-service-bus-data-owner) | Umožňuje úplný přístup k Azure Service Bus prostředkům. |
+| [Azure Service Bus přijímač dat](#azure-service-bus-data-receiver) | Umožňuje získat přístup k prostředkům Azure Service Bus. |
+| [Azure Service Bus odesílatel dat](#azure-service-bus-data-sender) | Umožňuje odeslat přístup k prostředkům Azure Service Bus. |
 | [Vlastník registrace Azure Stack](#azure-stack-registration-owner) | Umožňuje spravovat Azure Stack registrace. |
 | [Přispěvatel zálohování](#backup-contributor) | Umožňuje správu služby zálohování, ale nemůže vytvářet trezory a udělovat přístup jiným uživatelům. |
 | [Operátor zálohování](#backup-operator) | Umožňuje správu zálohovacích služeb s výjimkou odebrání zálohování, vytváření trezoru a poskytování přístupu jiným uživatelům. |
@@ -556,7 +556,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="azure-event-hubs-data-owner-preview"></a>Vlastník dat Event Hubs Azure (Preview)
+## <a name="azure-event-hubs-data-owner"></a>Vlastník dat Event Hubs Azure
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -571,7 +571,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="azure-event-hubs-data-receiver-preview"></a>Příjemce dat Event Hubs Azure (Preview)
+## <a name="azure-event-hubs-data-receiver"></a>Přijímač dat Event Hubs Azure
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -586,7 +586,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="azure-event-hubs-data-sender-preview"></a>Odesilatel dat Event Hubs Azure (Preview)
+## <a name="azure-event-hubs-data-sender"></a>Odesilatel dat Event Hubs Azure
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -646,7 +646,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="azure-service-bus-data-owner-preview"></a>Azure Service Bus vlastník dat (Preview)
+## <a name="azure-service-bus-data-owner"></a>Azure Service Bus vlastník dat
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -661,7 +661,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="azure-service-bus-data-receiver-preview"></a>Azure Service Bus příjemce dat (Preview)
+## <a name="azure-service-bus-data-receiver"></a>Azure Service Bus přijímač dat
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -678,7 +678,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="azure-service-bus-data-sender-preview"></a>Odesílatel dat Azure Service Bus (Preview)
+## <a name="azure-service-bus-data-sender"></a>Azure Service Bus odesílatel dat
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

@@ -1,6 +1,6 @@
 ---
-title: Vytvořit pravidlo povolení služby Service Bus pomocí šablony Azure Resource Manageru | Dokumentace Microsoftu
-description: Vytvořit pravidlo autorizace sběrnice pro obor názvů a fronty pomocí šablony Azure Resource Manageru
+title: Vytvoření autorizačního pravidla Service Bus pomocí šablony Azure Resource Manager | Microsoft Docs
+description: Vytvoření autorizačního pravidla Service Bus pro obor názvů a frontu pomocí šablony Azure Resource Manager
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: f2c82c8ff353889f06dfc1c2ff5c3f316013c54b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8769979fe3e5107e4ca788f65ff1e721b266776b
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171241"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013066"
 ---
-# <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Vytvořit pravidlo autorizace sběrnice pro obor názvů a frontu pomocí šablony Azure Resource Manageru
+# <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Vytvoření autorizačního pravidla Service Bus pro obor názvů a frontu pomocí šablony Azure Resource Manager
 
-Tento článek ukazuje, jak použít šablonu Azure Resource Manageru, která vytvoří [autorizační pravidlo](service-bus-authentication-and-authorization.md#shared-access-signature-authentication) pro obor názvů služby Service Bus a fronty. Tento článek popisuje, jak k určení prostředků, které jsou nasazené a tom, jak definovat parametry, které jsou zadané při spouštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
+Tento článek ukazuje, jak použít šablonu Azure Resource Manager, která vytváří [autorizační pravidlo](service-bus-authentication-and-authorization.md#shared-access-signature) pro obor názvů Service Bus a frontu. V tomto článku se dozvíte, jak určit, které prostředky se nasazují a jak definovat parametry, které jsou zadané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
 
-Další informace o vytváření šablon najdete v tématu [šablon pro vytváření Azure Resource Manageru][Authoring Azure Resource Manager templates].
+Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager][Authoring Azure Resource Manager templates].
 
-Úplnou šablonu najdete v článku [šablony pravidla autorizace Service Bus] [ Service Bus auth rule template] na Githubu.
+Úplnou šablonu najdete v tématu [Šablona autorizačního pravidla Service Bus][Service Bus auth rule template] na GitHubu.
 
 > [!NOTE]
-> Následující šablony Azure Resource Manageru jsou k dispozici ke stažení a nasazení.
+> Následující šablony Azure Resource Manager jsou k dispozici ke stažení a nasazení.
 > 
-> * [Vytvoření oboru názvů služby Service Bus](service-bus-resource-manager-namespace.md)
-> * [Vytvoření oboru názvů služby Service Bus s frontou](service-bus-resource-manager-namespace-queue.md)
-> * [Vytvoření oboru názvů služby Service Bus s tématem a předplatným](service-bus-resource-manager-namespace-topic.md)
-> * [Vytvoření oboru názvů služby Service Bus s tématem, předplatné a pravidla](service-bus-resource-manager-namespace-topic-with-rule.md)
+> * [Vytvoření oboru názvů Service Bus](service-bus-resource-manager-namespace.md)
+> * [Vytvoření oboru názvů Service Bus s využitím fronty](service-bus-resource-manager-namespace-queue.md)
+> * [Vytvoření oboru názvů Service Bus s tématem a předplatným](service-bus-resource-manager-namespace-topic.md)
+> * [Vytvoření oboru názvů Service Bus s použitím tématu, předplatného a pravidla](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> Vyhledat nejnovější šablony, najdete v tématu [šablony pro rychlý start Azure] [ Azure Quickstart Templates] galerie a vyhledejte **služby Service Bus**.
+> Pokud chcete vyhledat nejnovější šablony, přejděte na galerii [šablon Azure pro rychlý Start][Azure Quickstart Templates] a vyhledejte **Service Bus**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-will-you-deploy"></a>Co budete nasazovat?
 
-Pomocí této šablony nasadíte služby Service Bus autorizačního pravidla pro obor názvů a entity pro zasílání zpráv (v tomto případě fronty).
+Pomocí této šablony můžete nasadit autorizační pravidlo Service Bus pro obor názvů a entitu zasílání zpráv (v tomto případě front).
 
-Tato šablona používá [sdíleného přístupového podpisu (SAS)](service-bus-sas.md) pro ověřování. SAS umožňuje aplikacím k ověření pomocí přístupového klíče nakonfigurovaná v oboru názvů nebo u entity zasílání zpráv (fronty nebo tématu) pomocí kterého se konkrétní práva přidružené služby Service Bus. Potom můžete tento klíč k vygenerování tokenu SAS, který můžou Klienti pak použít k ověření do služby Service Bus.
+Tato šablona používá pro ověřování [sdílený přístupový podpis (SAS)](service-bus-sas.md) . SAS umožňuje aplikacím ověřovat Service Bus pomocí přístupového klíče nakonfigurovaného v oboru názvů nebo v entitě zasílání zpráv (ve frontě nebo tématu), ke kterým jsou přidružená příslušná práva. Pomocí tohoto klíče pak můžete vygenerovat token SAS, který klienti můžou použít k ověření Service Bus.
 
 Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
 
@@ -53,12 +53,12 @@ Pokud chcete nasazení spustit automaticky, klikněte na následující tlačít
 
 ## <a name="parameters"></a>Parametry
 
-Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje část s názvem `Parameters` , který obsahuje všechny hodnoty parametrů. Byste měli definovat parametr pro tyto hodnoty, které se liší podle projektu, které nasazujete nebo podle prostředí, které nasazujete. Nedefinujte parametry pro hodnoty, které zůstane vždy stejný. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků.
+Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje oddíl s názvem `Parameters` , který obsahuje všechny hodnoty parametrů. Měli byste definovat parametr pro tyto hodnoty, které se budou lišit v závislosti na projektu, který nasazujete, nebo na základě prostředí, do kterého nasazujete. Nedefinujte parametry pro hodnoty, které budou vždycky zůstat stejné. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků.
 
 Šablona definuje následující parametry.
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-Název oboru názvů služby Service Bus k vytvoření.
+Název oboru názvů Service Bus, který se má vytvořit
 
 ```json
 "serviceBusNamespaceName": {
@@ -67,7 +67,7 @@ Název oboru názvů služby Service Bus k vytvoření.
 ```
 
 ### <a name="namespaceauthorizationrulename"></a>namespaceAuthorizationRuleName
-Název autorizačního pravidla oboru názvů.
+Název autorizačního pravidla pro obor názvů.
 
 ```json
 "namespaceAuthorizationRuleName ": {
@@ -76,7 +76,7 @@ Název autorizačního pravidla oboru názvů.
 ```
 
 ### <a name="servicebusqueuename"></a>serviceBusQueueName
-Název fronty v oboru názvů služby Service Bus.
+Název fronty v oboru názvů Service Bus.
 
 ```json
 "serviceBusQueueName": {
@@ -85,7 +85,7 @@ Název fronty v oboru názvů služby Service Bus.
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
-Verze rozhraní API služby Service Bus šablony.
+Verze Service Bus rozhraní API šablony.
 
 ```json
 "serviceBusApiVersion": { 
@@ -97,7 +97,7 @@ Verze rozhraní API služby Service Bus šablony.
 ```
 
 ## <a name="resources-to-deploy"></a>Prostředky k nasazení
-Vytvoří standardní obor názvů služby Service Bus tohoto typu **zasílání zpráv**a pravidla autorizace Service Bus pro obor názvů a entity.
+Vytvoří standardní obor názvů Service Bus typu **zasílání zpráv**a Service Bus autorizační pravidlo pro obor názvů a entitu.
 
 ```json
 "resources": [
@@ -149,7 +149,7 @@ Vytvoří standardní obor názvů služby Service Bus tohoto typu **zasílání
     ]
 ```
 
-Syntaxi JSON a vlastnostech najdete v tématu [obory názvů](/azure/templates/microsoft.servicebus/namespaces), [fronty](/azure/templates/microsoft.servicebus/namespaces/queues), a [autorizačních pravidel](/azure/templates/microsoft.servicebus/namespaces/authorizationrules).
+Informace o syntaxi a vlastnostech JSON najdete v tématu [obory názvů](/azure/templates/microsoft.servicebus/namespaces), [fronty](/azure/templates/microsoft.servicebus/namespaces/queues)a [autorizačních pravidel](/azure/templates/microsoft.servicebus/namespaces/authorizationrules).
 
 ## <a name="commands-to-run-deployment"></a>Příkazy pro spuštění nasazení
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
@@ -167,11 +167,11 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste vytvořili a nasadili prostředky pomocí Azure Resource Manageru, zjistěte, jak tyto zdroje spravovat pomocí těchto článků:
+Teď, když jste vytvořili a nasadili prostředky pomocí Azure Resource Manager, Naučte se spravovat tyto prostředky zobrazením těchto článků:
 
 * [Správa služby Service Bus pomocí PowerShellu](service-bus-powershell-how-to-provision.md)
 * [Správa prostředků Service Bus pomocí Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
-* [Ověřování a autorizace Service Bus](service-bus-authentication-and-authorization.md)
+* [Service Bus ověřování a autorizace](service-bus-authentication-and-authorization.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus

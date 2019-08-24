@@ -4,15 +4,15 @@ description: Naučte se, jak začlenit správu delegovaných prostředků do Azu
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: d1876977d819b50569b6f07242af91fb1d6832ee
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934318"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012059"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak můžete jako poskytovatel služeb připojit z
 
 Tento postup můžete opakovat, pokud spravujete prostředky pro více zákazníků. Když se pak ověřený uživatel přihlásí k vašemu tenantovi, může být tento uživatel autorizovaný v rámci oborů zákaznických tenantů, aby mohl provádět operace správy, aniž by se musel přihlašovat ke každému tenantovi zákazníka.
 
-Můžete přidružit své ID Microsoft Partner Network (MPN) k připojeným předplatným a sledovat tak svůj dopad napříč zapojením zákazníků. Další informace najdete v tématu [propojení ID partnera s účty Azure](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
+Můžete přidružit své ID Microsoft Partner Network (MPN) k připojeným předplatným, abyste mohli sledovat váš dopad napříč zapojením zákazníků a získávat rozpoznávání. Další informace najdete v tématu [propojení ID partnera s účty Azure](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Všimněte si, že budete muset toto přidružení provést samostatně pro každého tenanta zákazníka, ve kterém spravujete prostředky. 
 
 > [!NOTE]
 > Zákazníci se můžou připojit automaticky při nákupu nabídky spravované služby (veřejné nebo soukromé), kterou jste publikovali na Azure Marketplace. Další informace najdete v tématu [publikování nabídek spravovaných služeb na Azure Marketplace](publish-managed-services-offers.md). Můžete také použít proces zprovoznění, který je zde popsán, pomocí nabídky publikované do Azure Marketplace.
@@ -71,7 +71,7 @@ Zákazník si může ověřit, že předplatné je připravené k registraci, je
 ### <a name="azure-portal"></a>portál Azure
 
 1. V Azure Portal vyberte předplatné.
-1. Vyberte **poskytovatelé prostředků**.
+1. Vyberte **Poskytovatelé prostředků**.
 1. Potvrďte, že se **Microsoft. ManagedServices** zobrazí jako zaregistrované.
 
 ### <a name="powershell"></a>PowerShell
@@ -329,7 +329,7 @@ Get-AzContext
 az account list
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
 - V Azure Portal můžete [Zobrazit a spravovat zákazníky](view-manage-customers.md) .

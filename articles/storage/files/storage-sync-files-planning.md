@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f89e7307d75b159886cb47bde3e1fceb5ed557f5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: HT
+ms.openlocfilehash: bd587bfed7fcfea8e8cd99ca155ee9d86222ae3d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699319"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013533"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
-Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Azure File Sync transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
+Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
 
 Tento článek popisuje důležité informace o nasazení Azure File Sync. Doporučujeme také, abyste si přečetli téma [plánování pro nasazení souborů Azure](storage-files-planning.md). 
 
@@ -149,7 +149,7 @@ Zobrazení výsledků ve formátu CSV:
 | \\SyncShareState | Složka pro synchronizaci |
 
 ### <a name="failover-clustering"></a>Clusteringu s podporou převzetí služeb při selhání
-Clustering s podporou převzetí služeb při selhání ve Windows serveru podporuje Azure File Sync pro možnost nasazení souborový server pro obecné použití. Clustering s podporou převzetí služeb při selhání není podporován na souborovém serveru se škálováním na více systémů pro data aplikací (SOFS) nebo na sdílených svazcích clusteru (CSV).
+Clustering s podporou převzetí služeb při selhání ve Windows serveru podporuje Azure File Sync pro možnost nasazení souborový server pro obecné použití. Clustering s podporou převzetí služeb při selhání není podporován na Souborový server se škálováním na více systémů pro data aplikací (SOFS) nebo na sdílených svazcích clusteru (CSV).
 
 > [!Note]  
 > Aby synchronizace fungovala správně, musí být na každém uzlu v clusteru s podporou převzetí služeb při selhání nainstalovaný agent Azure File Sync.
@@ -249,18 +249,21 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Kanada – střed | Toronto |
 | Kanada – východ | Québec |
 | Střed Indie | Puné |
-| Střední USA | Iowa |
+| Střed USA | Iowa |
 | Východní Asie | Hongkong – zvláštní správní oblast |
 | East US | Virginie |
 | USA – východ 2 | Virginie |
 | Francie – střed | Paříž |
-| Jižní Korea – střed| Soul |
-| Jižní Korea – jih| Busan |
+| Francie – jih * | Marseille |
+| Jižní Korea – střed | Soul |
+| Jižní Korea – jih | Busan |
 | Japonsko – východ | Tokio, Saitama |
 | Japonsko – západ | Ósaka |
-| Středoseverní USA | Illinois |
+| Střed USA – sever | Illinois |
 | Severní Evropa | Irsko |
-| Středojižní USA | Texas |
+| Jižní Afrika – sever | Johannesburg |
+| Jižní Afrika – západ * | Kapské město |
+| Střed USA – jih | Texas |
 | Jižní Indie | Čennaj |
 | Jihovýchodní Asie | Singapur |
 | Velká Británie – jih | Londýn |
@@ -269,11 +272,13 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | USA (Gov) – Texas | Texas |
 | USA (Gov) – Virginia | Virginie |
 | Západní Evropa | Nizozemsko |
-| Středozápadní USA | Wyoming |
+| Západní střed USA | Wyoming |
 | USA – západ | Kalifornie |
 | USA – západ 2 | Washington |
 
 Azure File Sync podporuje synchronizaci jenom se sdílenou složkou Azure, která je ve stejné oblasti jako služba synchronizace úložiště.
+
+U oblastí označených hvězdičkami musíte kontaktovat podporu Azure a požádat o přístup k Azure Storage v těchto oblastech. Tento postup je popsaný v [tomto dokumentu](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 ### <a name="azure-disaster-recovery"></a>Zotavení po havárii Azure
 Kvůli ochraně před ztrátou oblasti Azure Azure File Sync integrace s možností redundance redundantního [úložiště](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). GRS Storage funguje pomocí asynchronního blokování replikace mezi úložištěm v primární oblasti, se kterým obvykle pracujete, a úložištěm v spárované sekundární oblasti. V případě havárie, který způsobí, že se oblast Azure dočasně nebo trvale převede do režimu offline, bude Microsoft převzetí služeb při selhání úložiště do spárované oblasti. 
@@ -287,22 +292,25 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 |---------------------|--------------------|
 | Austrálie – východ      | Austrálie – jihovýchod|
 | Austrálie – jihovýchod | Austrálie – východ     |
-| Brazílie – jih        | Středojižní USA   |
+| Brazílie – jih        | Střed USA – jih   |
 | Kanada – střed      | Kanada – východ        |
 | Kanada – východ         | Kanada – střed     |
 | Střed Indie       | Jižní Indie        |
-| Střední USA          | Východní USA 2          |
+| Střed USA          | Východní USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
 | East US             | USA – západ            |
-| Východ USA 2           | Střední USA         |
+| Východ USA 2           | Střed USA         |
 | Francie – střed      | Francie – jih       |
+| Francie – jih        | Francie – střed     |
 | Japonsko – východ          | Japonsko – západ         |
 | Japonsko – západ          | Japonsko – východ         |
 | Jižní Korea – střed       | Jižní Korea – jih        |
 | Jižní Korea – jih         | Jižní Korea – střed      |
 | Severní Evropa        | Západní Evropa        |
-| Středoseverní USA    | Středojižní USA   |
-| Středojižní USA    | Středoseverní USA   |
+| Střed USA – sever    | Střed USA – jih   |
+| Jižní Afrika – sever  | Jižní Afrika – západ  |
+| Jižní Afrika – západ   | Jižní Afrika – sever |
+| Střed USA – jih    | Střed USA – sever   |
 | Jižní Indie         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
 | Velká Británie – jih            | Spojené království – západ            |
@@ -311,9 +319,9 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | US Gov – Iowa         | USA (Gov) – Virginia    |
 | USA (Gov) – Virginia      | USA (Gov) – Texas       |
 | Západní Evropa         | Severní Evropa       |
-| Středozápadní USA     | USA – západ 2          |
+| Západní střed USA     | USA – západ 2          |
 | USA – západ             | East US            |
-| USA – západ 2           | Středozápadní USA    |
+| USA – západ 2           | Západní střed USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

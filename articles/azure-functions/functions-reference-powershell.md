@@ -1,6 +1,6 @@
 ---
-title: Referenční informace prostředí PowerShell pro vývojáře pro službu Azure Functions
-description: Naučte se vyvíjet funkce s použitím prostředí PowerShell.
+title: Referenční příručka pro vývojáře PowerShellu pro Azure Functions
+description: Naučte se vyvíjet funkce pomocí prostředí PowerShell.
 services: functions
 documentationcenter: na
 author: tylerleonhardt
@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8c6f13f85b692d2405928fe06605d8b2ac0ec8e7
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706399"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012719"
 ---
-# <a name="azure-functions-powershell-developer-guide"></a>Příručka pro vývojáře Azure Functions Powershellu
+# <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
-Tento článek obsahuje podrobnosti o tom, jak psát Azure Functions pomocí Powershellu.
+Tento článek poskytuje podrobné informace o tom, jak píšete Azure Functions pomocí prostředí PowerShell.
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-PowerShell Azure – funkce (funkce) je vyjádřena jako skript prostředí PowerShell, který se spustí při spuštění. Každý skript funkce má se souvisejícím `function.json` soubor, který definuje, jak funkce se chová, jako je například jak se aktivuje a její vstupní a výstupní parametry. Další informace najdete v tématu [triggery a vazby článku](functions-triggers-bindings.md). 
+Funkce PowerShellu Azure (Function) je reprezentovaná jako PowerShellový skript, který se spustí, když se aktivuje. Každý skript funkce má související `function.json` soubor, který definuje, jak se funkce chová, jako je například jeho aktivace a vstupní a výstupní parametry. Další informace najdete v [článku triggery a vazby](functions-triggers-bindings.md). 
 
-Stejně jako jiné druhy funkce, funkce skriptu Powershellu trvat, než se parametry, které odpovídají názvům vstupní vazby definované v `function.json` souboru. A `TriggerMetadata` , který obsahuje další informace o aktivační událost, která spuštění funkce také předat parametr.
+Podobně jako u jiných druhů funkcí mají funkce skriptu PowerShellu parametry, které odpovídají názvům všech vstupních vazeb definovaných v `function.json` souboru. Předává se i parametr, který obsahuje další informace o triggeru, který tuto funkci spustil. `TriggerMetadata`
 
-Tento článek předpokládá, že jste si už přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md). Byste měli mít také dokončenou [funkce Rychlý start pro PowerShell](functions-create-first-function-powershell.md) k vytvoření první funkce prostředí PowerShell.
+V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). K vytvoření první funkce PowerShellu byste měli také dokončit [rychlé zprovoznění funkcí pro PowerShell](functions-create-first-function-powershell.md) .
 
-## <a name="folder-structure"></a>struktura složek
+## <a name="folder-structure"></a>Struktura složek
 
-Strukturu složek požadované pro prostředí PowerShell projekt vypadá takto. Toto výchozí nastavení je možné změnit. Další informace najdete v tématu [Soubor_skriptu](#configure-function-scriptfile) níže v části.
+Požadovaná struktura složky pro projekt PowerShell vypadá následovně. Toto výchozí nastavení lze změnit. Další informace najdete v části [scriptFile](#configure-function-scriptfile) níže.
 
 ```
 PSFunctionApp
@@ -57,17 +57,17 @@ PSFunctionApp
  | - bin
 ```
 
-V kořenovém adresáři projektu neexistuje sdílené [ `host.json` ](functions-host-json.md) soubor, který můžete použít ke konfiguraci aplikace function app. Každá funkce má složku s vlastními souboru s kódem (.ps1) a vazbu konfigurační soubor (`function.json`). Název souboru function.json nadřazený adresář je vždy název vaší funkce.
+V kořenovém adresáři projektu je k dispozici sdílený [`host.json`](functions-host-json.md) soubor, který lze použít ke konfiguraci aplikace Function App. Každá funkce má složku se svým vlastním souborem kódu (. ps1) a konfiguračním souborem vazby (`function.json`). Název nadřazeného adresáře souboru Function. JSON je vždycky název vaší funkce.
 
-Některé vazby vyžaduje přítomnost `extensions.csproj` souboru. Vazba rozšíření vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime, které jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](functions-bindings-register.md#extension-bundles). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
+Některé vazby vyžadují přítomnost `extensions.csproj` souboru. Rozšíření vazby požadovaná ve [verzi 2. x](functions-versions.md) modulu runtime Functions jsou definována v `extensions.csproj` souboru se skutečnými soubory `bin` knihoven ve složce. Při vývoji místně je nutné [zaregistrovat rozšíření vazby](functions-bindings-register.md#extension-bundles). Při vývoji funkcí v Azure Portal se tato registrace provede za vás.
 
-V prostředí PowerShell aplikace Function App, může volitelně obsahovat `profile.ps1` která se spouští při spuštění aplikace function app (jinak znát pod některým z  *[studený start](#cold-start)* . Další informace najdete v tématu [Powershellu profilu](#powershell-profile).
+Ve funkcích aplikace PowerShell Functions můžete volitelně mít, `profile.ps1` která se spustí, když se spustí aplikace Function App (jinak ví, jak *[začít znovu spustit](#cold-start)* ). Další informace najdete v tématu [profil PowerShellu](#powershell-profile).
 
-## <a name="defining-a-powershell-script-as-a-function"></a>Definice skriptu prostředí PowerShell jako funkce
+## <a name="defining-a-powershell-script-as-a-function"></a>Definování skriptu PowerShellu jako funkce
 
-Ve výchozím nastavení, modul runtime služby Functions hledá vaši funkci v `run.ps1`, kde `run.ps1` sdílí stejné nadřazený adresář jako odpovídající `function.json`.
+Ve výchozím nastavení vyhledává modul runtime Functions funkci v `run.ps1`, kde `run.ps1` sdílí stejný nadřazený adresář jako odpovídající `function.json`.
 
-Skript je předán počet argumentů na spuštění. Chcete-li zpracovat tyto parametry, přidejte `param` bloku do horní části skriptu jako v následujícím příkladu:
+Vašemu skriptu je při provádění předán určitý počet argumentů. Chcete-li tyto parametry zpracovat, `param` přidejte do horní části skriptu blok, jako v následujícím příkladu:
 
 ```powershell
 # $TriggerMetadata is optional here. If you don't need it, you can safely remove it from the param block
@@ -76,7 +76,7 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 
 ### <a name="triggermetadata-parameter"></a>Parametr TriggerMetadata
 
-`TriggerMetadata` Parametr slouží k zadání dalších informací o aktivační události. Další metadata se liší od vazby vazby, ale všechny obsahují `sys` vlastnost, která obsahuje následující data:
+`TriggerMetadata` Parametr se používá k poskytnutí dalších informací o triggeru. Další metadata se liší od vazby k vazbě, ale všechny obsahují `sys` vlastnost, která obsahuje následující data:
 
 ```powershell
 $TriggerMetadata.sys
@@ -84,29 +84,29 @@ $TriggerMetadata.sys
 
 | Vlastnost   | Description                                     | type     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | Pokud ve standardu UTC, funkce aktivovalo        | Datetime |
-| methodName | Název funkce, která byla aktivována.     | řetězec   |
-| RandGuid   | Jedinečný identifikátor guid pro toto spuštění funkce | řetězec   |
+| UtcNow     | Když v UTC, byla funkce aktivována.        | DateTime |
+| MethodName | Název aktivované funkce     | řetězec   |
+| RandGuid   | Jedinečný identifikátor GUID tohoto spuštění funkce | řetězec   |
 
-Každý typ aktivační události má jinou sadu metadat. Například `$TriggerMetadata` pro `QueueTrigger` obsahuje `InsertionTime`, `Id`, `DequeueCount`, mimo jiné. Další informace o aktivační událost fronty metadat, přejděte [oficiální dokumentaci pro aktivační procedury řízení front](functions-bindings-storage-queue.md#trigger---message-metadata). Přečtěte si dokumentaci k na [aktivační události](functions-triggers-bindings.md) pracujete, pokud chcete zobrazit, co se dodává v metadatech aktivační události.
+Každý typ triggeru má jinou sadu metadat. Například `$TriggerMetadata` pro `QueueTrigger` obsahuje ,`InsertionTime` ,`DequeueCount`,mimo jiné. `Id` Další informace o metadatech triggeru fronty najdete v [oficiální dokumentaci k aktivačním událostem fronty](functions-bindings-storage-queue.md#trigger---message-metadata). V dokumentaci k aktivačním [událostem](functions-triggers-bindings.md) , se kterými pracujete, můžete zjistit, co se nachází uvnitř metadat triggeru.
 
 ## <a name="bindings"></a>Vazby
 
-V prostředí PowerShell [vazby](functions-triggers-bindings.md) se konfigurují a definované v function.json funkce. Funkce s vazby pracovat několika způsoby.
+V prostředí PowerShell jsou [vazby](functions-triggers-bindings.md) konfigurovány a definovány ve funkci Function. JSON. Funkce pracují s vazbami různými způsoby.
 
-### <a name="reading-trigger-and-input-data"></a>Čtení triggeru a vstupních dat
+### <a name="reading-trigger-and-input-data"></a>Čtení triggerů a vstupních dat
 
-Aktivační událost a vstupní vazby se číst jako parametry předané do funkce. Mít vstupní vazby `direction` nastavena na `in` v function.json. `name` Vlastnosti definované v `function.json` se název parametru, `param` bloku. Protože pojmenované parametry Powershellu použije k vytvoření vazby, není důležité pořadí parametrů. Je však osvědčeným postupem podle pořadí z vazeb definovaných v `function.json`.
+Triggery a vstupní vazby jsou čteny jako parametry předané do vaší funkce. Vstupní vazby mají `direction` `in` v Function. JSON nastavenou hodnotu. Vlastnost definovaná v `function.json` je název parametru v `param` bloku. `name` Vzhledem k tomu, že prostředí PowerShell používá pro vazbu pojmenované parametry, pořadí parametrů nezáleží. Osvědčeným postupem je však postupovat podle pořadí vazeb definovaných v `function.json`.
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
 ```
 
-### <a name="writing-output-data"></a>Zápis výstupní data
+### <a name="writing-output-data"></a>Zápis výstupních dat
 
-Ve funkcích, má výstupní vazbu `direction` nastavena na `out` v function.json. Je možné zapsat do výstupní vazbu pomocí `Push-OutputBinding` rutiny, která je k dispozici pro modul runtime služby Functions. Ve všech případech `name` vlastnost vazby, jak jsou definovány v `function.json` odpovídá `Name` parametr `Push-OutputBinding` rutiny.
+Ve funkcích má `direction` výstupní vazba `out` nastavenou hodnotu ve funkci Function. JSON. Do výstupní vazby můžete zapisovat pomocí `Push-OutputBinding` rutiny, která je k dispozici pro modul runtime Functions. Ve všech případech `name` vlastnost vazby, jak je definováno v `function.json` , odpovídá `Name` parametru `Push-OutputBinding` rutiny.
 
-Následující ukazuje způsob volání `Push-OutputBinding` ve skriptu funkce:
+Následující příklad ukazuje, jak zavolat `Push-OutputBinding` do skriptu funkce:
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -114,7 +114,7 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Push-OutputBinding -Name myQueue -Value $myValue
 ```
 
-Můžete také předat hodnotu pro konkrétní vazbu prostřednictvím kanálu.
+Můžete také předat hodnotu konkrétní vazby prostřednictvím kanálu.
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -122,25 +122,25 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-`Push-OutputBinding` jak se bude chovat různě v závislosti na hodnotě zadané pro `-Name`:
+`Push-OutputBinding`se chová odlišně na základě hodnoty zadané pro `-Name`:
 
-* Když se zadaným názvem nelze přeložit na platnou výstupní vazby, je vržena chyba.
+* Pokud zadaný název nelze přeložit na platnou výstupní vazbu, je vyvolána chyba.
 
-* Pokud výstupní vazbu přijímá kolekci hodnot, můžete volat `Push-OutputBinding` opakovaně tak, aby nabízel více hodnot.
+* Když výstupní vazba akceptuje kolekci hodnot, můžete opakovaně volat `Push-OutputBinding` , aby bylo možné vložit více hodnot.
 
-* Pokud výstupní vazbu akceptuje pouze hodnotu singleton, volání `Push-OutputBinding` podruhé vyvolá chybu.
+* Pokud výstupní vazba akceptuje jenom hodnotu typu Singleton, vyvolá `Push-OutputBinding` se chyba při druhém volání.
 
-#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` Syntaxe
+#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding`syntaktick
 
-Následují platné parametry pro volání `Push-OutputBinding`:
+Níže jsou uvedené platné parametry pro volání `Push-OutputBinding`:
 
 | Name | type | Pozice | Popis |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | Řetězec | 1 | Název výstupní vazbu chcete nastavit. |
-| **`-Value`** | Object | 2 | Hodnota výstupní vazbu chcete nastavit, který je přijímán z kanálu ByValue. |
-| **`-Clobber`** | SwitchParameter | s názvem | (Volitelné) -Li zadána, vynutí hodnota k nastavení pro vazby zadaným výstupem. | 
+| **`-Name`** | Řetězec | 1 | Název výstupní vazby, kterou chcete nastavit. |
+| **`-Value`** | Object | 2 | Hodnota výstupní vazby, kterou chcete nastavit, která je přijímána z ByValue kanálu. |
+| **`-Clobber`** | Přepínací parametr | Jmenovanou | Volitelné Když se tato hodnota zadá, vynutí nastavení hodnoty pro zadanou výstupní vazbu. | 
 
-Rovněž jsou podporovány následující běžné parametry: 
+Podporovány jsou i tyto společné parametry: 
 * `Verbose`
 * `Debug`
 * `ErrorAction`
@@ -153,9 +153,9 @@ Rovněž jsou podporovány následující běžné parametry:
 
 Další informace najdete v tématu [o CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-#### <a name="push-outputbinding-example-http-responses"></a>Příklad OutputBinding nabízených oznámení: Odpovědi protokolu HTTP
+#### <a name="push-outputbinding-example-http-responses"></a>Příklad push-OutputBinding: Odpovědi HTTP
 
-Aktivační událost HTTP vrátí odpověď s použitím výstupní vazbu s názvem `response`. V následujícím příkladu výstupu vazba `response` má hodnotu "výstup #1":
+Aktivační událost protokolu HTTP vrátí odpověď pomocí výstupní vazby s názvem `response`. V následujícím příkladu `response` má výstupní vazba hodnotu "výstupní #1":
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -164,7 +164,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-Protože výstupem je do protokolu HTTP, který přijímá hodnotu singleton, je vyvolána k chybě, když `Push-OutputBinding` nazývá podruhé.
+Vzhledem k tomu, že výstup je http, který přijímá pouze hodnotu singleton, je vyvolána chyba, `Push-OutputBinding` Pokud je volána podruhé.
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -173,7 +173,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-Výstupy, které přijímají pouze hodnoty typu singleton, můžete použít `-Clobber` parametr přepsat původní hodnotu namísto pokusu o přidání do kolekce. V následujícím příkladu se předpokládá, že jste ho už přidali hodnotu. S použitím `-Clobber`, přepíše existující hodnoty k vrácení hodnoty "výstup #3" odpověď z následujícího příkladu:
+U výstupů, které přijímají pouze hodnoty typu Singleton, `-Clobber` lze použít parametr k přepsání staré hodnoty místo pokusu o přidání do kolekce. Následující příklad předpokládá, že jste již přidali hodnotu. Pomocí příkazu `-Clobber`, odpověď z následujícího příkladu přepíše existující hodnotu a vrátí hodnotu "Output #3":
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -182,33 +182,33 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>Příklad OutputBinding nabízených oznámení: Výstupní vazba fronty
+#### <a name="push-outputbinding-example-queue-output-binding"></a>Příklad push-OutputBinding: Výstupní vazba fronty
 
-`Push-OutputBinding` slouží k odesílání dat do výstupní vazby, například [Azure Queue storage výstupní vazby](functions-bindings-storage-queue.md#output). Zprávy do fronty v následujícím příkladu má hodnotu "výstup #1":
+`Push-OutputBinding`slouží k odesílání dat do výstupních vazeb, jako je například [Výstupní vazba Azure Queue Storage](functions-bindings-storage-queue.md#output). V následujícím příkladu má zpráva zapsaná do fronty hodnotu "výstupní #1":
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
 ```
 
-Výstupní vazby pro fronty úložiště je možné zadat více výstupní hodnoty. V takovém případě volání v následujícím příkladu po první zapisuje do fronty, seznam se dvěma položkami: "výstup #1" a "výstup #2".
+Výstupní vazba pro frontu úložiště přijímá více výstupních hodnot. V tomto případě volání následujícího příkladu po prvním zápisu do fronty seznam se dvěma položkami: "výstupní #1" a "výstupní #2".
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #2"
 ```
 
-Následující příklad, když je volána po předchozí dvě přidá dva další hodnoty do kolekce výstup:
+Následující příklad, který je volán za předchozích dvou, přidá do výstupní kolekce dvě další hodnoty:
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 ```
 
-Při zápisu do fronty, zpráva obsahuje tyto čtyři hodnoty: "output #1", "výstupu #2", "výstup #3" a "výstup #4".
+Při zápisu do fronty obsahuje zpráva tyto čtyři hodnoty: "výstupní #1", "výstupní #2", "výstupní #3" a "výstupní #4".
 
-#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding` Rutiny
+#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding`rutiny
 
-Můžete použít `Get-OutputBinding` rutina pro načtení hodnoty aktuálně nastavené pro výstupní vazby. Tato rutina načte zatřiďovací tabulka, která obsahuje názvy výstupních vazeb s jejich příslušných hodnot. 
+Pomocí `Get-OutputBinding` rutiny můžete načíst hodnoty, které jsou aktuálně nastaveny pro vaše výstupní vazby. Tato rutina načte zatřiďovací tabulku, která obsahuje názvy výstupních vazeb s příslušnými hodnotami. 
 
-Následuje příklad použití `Get-OutputBinding` k vrácení aktuální hodnoty vazby:
+Následuje příklad použití `Get-OutputBinding` pro vrácení aktuálních hodnot vazby:
 
 ```powershell
 Get-OutputBinding
@@ -221,7 +221,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding` také obsahuje parametr s názvem `-Name`, které můžete použít k filtrování vrácených vazby, jako v následujícím příkladu:
+`Get-OutputBinding`obsahuje také parametr s názvem `-Name`, který lze použít k filtrování vrácené vazby, jako v následujícím příkladu:
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -233,30 +233,30 @@ Name                           Value
 MyQueue                        myData
 ```
 
-Zástupné znaky (*) jsou podporovány v `Get-OutputBinding`.
+Zástupné znaky (*) jsou `Get-OutputBinding`podporovány v.
 
 ## <a name="logging"></a>Protokolování
 
-Protokolování v prostředí PowerShell funkce funguje jako regulární protokolování Powershellu. Rutiny protokolování můžete použít k zápisu do každého výstupního datového proudu. Každá rutina mapuje na úroveň protokolu používané funkcí.
+Protokolování funkcí prostředí PowerShell funguje jako běžné protokolování do PowerShellu. K zápisu do každého výstupního datového proudu můžete použít rutiny protokolování. Každá rutina se mapuje na úroveň protokolu využívané funkcemi.
 
-| Funkce úroveň protokolování | Rutiny protokolování |
+| Úroveň protokolování funkcí | Rutina protokolování |
 | ------------- | -------------- |
 | Chyba | **`Write-Error`** |
 | Upozornění | **`Write-Warning`**  | 
-| Informace | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informace | Zapíše do _informace_ úrovně protokolování. |
+| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | Zapisuje do protokolování na úrovni _informací_ . |
 | Ladění | **`Write-Debug`** |
 | Trasování | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
-Kromě těchto rutin, nic se zapisují do kanálu je přesměrován na `Information` protokolu úrovně a zobrazují se pomocí Powershellu výchozí formátování.
+Kromě těchto rutin se vše zapsané do kanálu přesměruje na `Information` úroveň protokolu a zobrazí se s výchozím formátováním PowerShellu.
 
 > [!IMPORTANT]
-> Použití `Write-Verbose` nebo `Write-Debug` rutiny není dostatečně podrobné a ladit úrovně protokolování. Musíte také nakonfigurovat práh úroveň protokolu, který deklaruje jaké úroveň protokoly vám skutečně záleží. Další informace najdete v tématu [nakonfigurovat úroveň protokolu aplikace funkce](#configure-the-function-app-log-level).
+> Použití rutiny `Write-Debug`nebonení dostatečné pro zobrazení protokolování na úrovni podrobností a ladění. `Write-Verbose` Musíte taky nakonfigurovat prahovou hodnotu úrovně protokolu, která deklaruje, na jakou úroveň protokolů se vám ve skutečnosti záleží. Další informace najdete v tématu [Konfigurace úrovně protokolu aplikace Function App](#configure-the-function-app-log-level).
 
-### <a name="configure-the-function-app-log-level"></a>Nakonfigurujte úroveň protokolu aplikace – funkce
+### <a name="configure-the-function-app-log-level"></a>Konfigurace úrovně protokolu aplikace Function App
 
-Azure Functions umožňuje definovat prahové hodnoty úroveň k tomu, aby ovládací prvek způsob, jak funkce zapíše do protokolů. Chcete-li nastavení prahové hodnoty pro všechna trasování zapsána do konzoly, použijte `logging.logLevel.default` vlastnost v [ `host.json` souboru][referenční materiály k host.json]. Toto nastavení platí pro všechny funkce v aplikaci function app.
+Azure Functions umožňuje definovat úroveň prahové hodnoty, která usnadňuje kontrolu způsobu, jakým funkce zapisuje do protokolů. Chcete-li nastavit prahovou hodnotu pro všechna trasování zapsaná do konzoly `logging.logLevel.default` , použijte vlastnost [ `host.json` ]v[odkazu soubor host. JSON]. Toto nastavení platí pro všechny funkce aplikace Function App.
 
-Následující příklad nastaví prahovou hodnotu Zapnutí podrobného protokolování pro všechny funkce, ale nastaví prahovou hodnotu a povolit protokolování ladění pro funkci s názvem `MyFunction`:
+Následující příklad nastaví prahovou hodnotu pro povolení podrobného protokolování pro všechny funkce, ale nastaví prahovou hodnotu pro povolení protokolování ladění pro funkci s `MyFunction`názvem:
 
 ```json
 {
@@ -269,21 +269,21 @@ Následující příklad nastaví prahovou hodnotu Zapnutí podrobného protokol
 }  
 ```
 
-Další informace najdete v tématu [referenční materiály k host.json].
+Další informace naleznete v tématu [reference Host. JSON].
 
 ### <a name="viewing-the-logs"></a>Zobrazení protokolů
 
-Pokud vaše aplikace Function App běží v Azure, můžete ji sledovat Application Insights. Čtení [monitorování Azure Functions](functions-monitoring.md) získat další informace o zobrazení a dotazování protokolů funkce.
+Pokud váš Function App běží v Azure, můžete ho monitorovat pomocí Application Insights. Přečtěte si [Azure Functions monitorování](functions-monitoring.md) , kde najdete další informace o zobrazení a dotazování protokolů funkcí.
 
-Pokud používáte aplikaci Function App místně pro vývoj, protokoluje výchozí systém souborů. Chcete-li zobrazit protokoly v konzole, nastavte `AZURE_FUNCTIONS_ENVIRONMENT` proměnnou prostředí, aby `Development` před spuštěním aplikace Function App.
+Pokud používáte Function App místně pro vývoj, protokoluje výchozí systém souborů. Chcete-li zobrazit protokoly v konzole nástroje, nastavte `AZURE_FUNCTIONS_ENVIRONMENT` `Development` před spuštěním Function App proměnnou prostředí.
 
-## <a name="triggers-and-bindings-types"></a>Triggery a vazby typů
+## <a name="triggers-and-bindings-types"></a>Triggery a typy vazeb
 
-Existuje několik triggerů a vazeb k dispozici pro použití s vaší aplikace function app. Úplný seznam aktivačními událostmi a vazbami [najdete tady](functions-triggers-bindings.md#supported-bindings).
+K dispozici je řada triggerů a vazeb pro použití s aplikací Function App. Úplný seznam aktivačních událostí a vazeb najdete [tady](functions-triggers-bindings.md#supported-bindings).
 
-Všechny aktivační události a vazby jsou vyjádřené v kódu několik typů reálná data:
+Všechny triggery a vazby jsou reprezentovány v kódu jako několik reálných datových typů:
 
-* Zatřiďovací tabulka
+* Hashtable
 * řetězec
 * Byte
 * int
@@ -291,45 +291,45 @@ Všechny aktivační události a vazby jsou vyjádřené v kódu několik typů 
 * HttpRequestContext
 * HttpResponseContext
 
-Prvních pět typů v tomto seznamu jsou standardní typy .NET. Poslední dva se používají pouze [HttpTrigger trigger](#http-triggers-and-bindings).
+Prvních pět typů v tomto seznamu je standardní typy .NET. Poslední dva jsou používány pouze [triggerem HttpTrigger](#http-triggers-and-bindings).
 
-Každý parametr vazby ve vašich funkcí musí být jeden z těchto typů.
+Každý parametr vazby ve vašich funkcích musí být jedním z těchto typů.
 
-### <a name="http-triggers-and-bindings"></a>HTTP aktivačními událostmi a vazbami
+### <a name="http-triggers-and-bindings"></a>Aktivační události a vazby HTTP
 
-HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpovědí objekty představují zasílání zpráv protokolu HTTP.
+Aktivační události HTTP a Webhooku a výstupní vazby HTTP používají objekty žádosti a odpovědi, které reprezentují zprávy HTTP.
 
-#### <a name="request-object"></a>Objekt žádosti
+#### <a name="request-object"></a>Request – objekt
 
-Žádost o objekt, který je předán do skriptu je typu `HttpRequestContext`, který má následující vlastnosti:
+Objekt Request, který je předán do skriptu, je typu `HttpRequestContext`, který má následující vlastnosti:
 
 | Vlastnost  | Description                                                    | type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Objekt, který obsahuje text žádosti. `Body` je serializován do nejlepší typ založené na datech. Například pokud jsou data JSON, to je předáno jako zatřiďovací tabulku. Pokud jsou data řetězce, je předán v podobě řetězce. | objekt |
-| **`Headers`** | Slovník, který obsahuje hlavičky požadavku.                | Dictionary < string, string ><sup>*</sup> |
+| **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body`je serializována do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | objekt |
+| **`Headers`** | Slovník, který obsahuje hlavičky požadavku.                | Řetězec < slovníku, řetězec ><sup>*</sup> |
 | **`Method`** | Metoda HTTP požadavku.                                | řetězec                    |
-| **`Params`**  | Objekt, který obsahuje směrování parametry požadavku. | Dictionary < string, string ><sup>*</sup> |
-| **`Query`** | Objekt, který obsahuje parametry dotazu.                  | Dictionary < string, string ><sup>*</sup> |
+| **`Params`**  | Objekt, který obsahuje parametry směrování požadavku. | Řetězec < slovníku, řetězec ><sup>*</sup> |
+| **`Query`** | Objekt, který obsahuje parametry dotazu.                  | Řetězec < slovníku, řetězec ><sup>*</sup> |
 | **`Url`** | Adresa URL požadavku.                                        | řetězec                    |
 
-<sup>*</sup> Všechny `Dictionary<string,string>` klíče jsou malá a velká písmena.
+<sup>*</sup>U `Dictionary<string,string>` všech klíčů se nerozlišují velká a malá písmena.
 
 #### <a name="response-object"></a>Objekt odpovědi
 
-Objekt odpovědi, který se má odeslat zpět je typu `HttpResponseContext`, který má následující vlastnosti:
+Objekt Response, který byste měli poslat zpátky, je typu `HttpResponseContext`, který má následující vlastnosti:
 
 | Vlastnost      | Description                                                 | type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Objekt, který obsahuje text odpovědi.           | objekt                    |
-| **`ContentType`** | Krátký ručně k nastavení typu obsahu pro odpověď. | řetězec                    |
-| **`Headers`** | Objekt, který obsahuje hlavičky odpovědi.               | Slovník nebo zatřiďovací tabulky   |
-| **`StatusCode`**  | Stavový kód HTTP odpovědi.                       | řetězec nebo int             |
+| **`Body`**  | Objekt, který obsahuje tělo odpovědi.           | objekt                    |
+| **`ContentType`** | Krátká ruka pro nastavení typu obsahu pro odpověď. | řetězec                    |
+| **`Headers`** | Objekt, který obsahuje hlavičky odpovědi.               | Slovník nebo zatřiďovací tabulka   |
+| **`StatusCode`**  | Stavový kód protokolu HTTP odpovědi.                       | řetězec nebo int             |
 
-#### <a name="accessing-the-request-and-response"></a>Přístup k požadavku a odpovědi
+#### <a name="accessing-the-request-and-response"></a>Přístup k žádosti a odpovědi
 
-Při práci s triggerů HTTP, můžete přistupovat požadavku HTTP stejným způsobem jako u jiných vstupní vazby. Jedná `param` bloku.
+Když pracujete s triggery HTTP, můžete získat přístup k požadavku HTTP stejným způsobem jako u jakékoli jiné vstupní vazby. Je v `param` bloku.
 
-Použití `HttpResponseContext` objekt vrátí odpověď, jak je znázorněno v následujícím:
+`HttpResponseContext` Pomocí objektu můžete vrátit odpověď, jak je znázorněno v následujícím příkladu:
 
 `function.json`
 
@@ -362,48 +362,48 @@ Push-OutputBinding -Name res -Value ([HttpResponseContext]@{
 })
 ```
 
-Výsledek volání této funkce by byl:
+Výsledek vyvolání této funkce by byl:
 
 ```
 PS > irm http://localhost:5001?Name=Functions
 Hello Functions!
 ```
 
-### <a name="type-casting-for-triggers-and-bindings"></a>Přetypování typu pro triggery a vazby
+### <a name="type-casting-for-triggers-and-bindings"></a>Přetypování typů pro triggery a vazby
 
-Pro některé vazby jako vazby objektů blob, mohli jste k určení typu parametru.
+Pro určité vazby, jako je vazba objektů blob, můžete zadat typ parametru.
 
-Například pokud chcete, aby data z úložiště objektů Blob zadaná jako řetězec, přidejte následující přetypovat na typ Moje `param` blok:
+Pokud například chcete, aby data z úložiště objektů BLOB byla dodávána jako řetězec, přidejte do svého `param` bloku následující přetypování:
 
 ```powershell
 param([string] $myBlob)
 ```
 
-## <a name="powershell-profile"></a>Profil prostředí PowerShell
+## <a name="powershell-profile"></a>Profil PowerShellu
 
-V prostředí PowerShell je Princip profil prostředí PowerShell. Pokud nejste obeznámeni s profily Powershellu, přečtěte si téma [o profilech](/powershell/module/microsoft.powershell.core/about/about_profiles).
+V prostředí PowerShell existuje koncept profilu PowerShellu. Pokud nejste obeznámeni s profily PowerShellu, přečtěte si téma [o profilech](/powershell/module/microsoft.powershell.core/about/about_profiles).
 
-V prostředí PowerShell funkce spustí skript profil při spuštění aplikace function app. Aplikace Function App spustit při prvním nasazení a po se nečinný ([studený start](#cold-start)).
+Ve funkcích PowerShellu se skript profilu spustí při spuštění aplikace Function App. Aplikace Function App se spustí při prvním nasazení a po nečinnosti (při[studeném startu](#cold-start)).
 
-Když vytvoříte aplikaci function app pomocí nástrojů, jako je Visual Studio Code a Azure Functions Core Tools, výchozí `profile.ps1` se vytvoří za vás. Výchozí profil je udržován [v úložišti Core Tools GitHub](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) a obsahuje:
+Když vytvoříte aplikaci funkcí pomocí nástrojů, jako je například Visual Studio Code a Azure Functions Core Tools, vytvoří se pro `profile.ps1` vás výchozí hodnota. Výchozí profil se udržuje [v úložišti GitHub Core Tools](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) a obsahuje:
 
-* Automatické ověřování MSI do Azure.
-* Možnost zapnout prostředí Azure PowerShell `AzureRM` aliasy prostředí PowerShell, pokud byste o ni.
+* Automatické ověřování MSI do Azure
+* Možnost zapnout aliasy Azure PowerShell `AzureRM` PowerShellu, pokud byste chtěli.
 
 ## <a name="powershell-version"></a>Verze prostředí PowerShell
 
-Následující tabulka uvádí verze Powershellu používá každá hlavní verze modul runtime služby Functions:
+Následující tabulka ukazuje verzi prostředí PowerShell, kterou používá každá hlavní verze běhového modulu Functions:
 
 | Verze funkcí | Verze prostředí PowerShell                             |
 |-------------------|------------------------------------------------|
-| 1.x               | Windows PowerShell 5.1 (uzamčeno modulem runtime) |
+| verze               | Windows PowerShell 5,1 (uzamčeno modulem runtime) |
 | 2.x               | PowerShell Core 6                              |
 
-Zobrazí aktuální verzi s tiskem `$PSVersionTable` z jakékoli funkce.
+Aktuální verzi můžete zobrazit pomocí tisku `$PSVersionTable` z libovolné funkce.
 
 ## <a name="dependency-management"></a>Správa závislostí
 
-Funkce Powershellu podporují správu moduly Azure pomocí služby. Úpravy host.json a nastavením vlastnosti managedDependency povoleno na hodnotu true, bude soubor requirements.psd1 zpracovat. Nejnovější moduly Azure bude automaticky staženy a k dispozici funkce.
+Funkce PowerShellu podporují správu modulů Azure pomocí služby. Úpravou souboru Host. JSON a nastavením vlastnosti managedDependency Enabled na hodnotu true se zpracuje soubor požadavky. psd1. Nejnovější moduly Azure budou automaticky staženy a zpřístupněny této funkci.
 
 host.json
 ```json
@@ -414,7 +414,7 @@ host.json
 }
 ```
 
-Requirements.psd1
+požadavky. psd1
 
 ```powershell
 @{
@@ -422,27 +422,27 @@ Requirements.psd1
 }
 ```
 
-Využívá vlastní nebo moduly z [Galerie prostředí PowerShell](https://powershellgallery.com) se trochu liší od jak by to provedete normálně.
+Použití vlastních modulů nebo modulů z [Galerie prostředí PowerShell](https://powershellgallery.com) je trochu jiné, než byste to proznamenali normálně.
 
-Při instalaci modulu na místním počítači odkazuje v jednom z globálně dostupné složky ve vaší `$env:PSModulePath`. Vaše funkce běží v Azure, nebudete mít přístup k modulům na vašem počítači nainstalovaný. To vyžaduje, aby `$env:PSModulePath` funkce prostředí PowerShell aplikace se liší od `$env:PSModulePath` regulární Powershellového skriptu.
+Když modul nainstalujete do místního počítače, přejde do jedné z globálních dostupných složek v `$env:PSModulePath`. Vzhledem k tomu, že vaše funkce běží v Azure, nebudete mít přístup k modulům nainstalovaným na vašem počítači. To vyžaduje, aby `$env:PSModulePath` se aplikace funkce PowerShellu odlišná `$env:PSModulePath` na běžném skriptu PowerShellu.
 
-Ve službě Functions `PSModulePath` obsahuje dvě cesty:
+Ve funkcích `PSModulePath` obsahuje dvě cesty:
 
-* A `Modules` složku, která existuje v kořenovém adresáři aplikace Function App.
-* Cesta k `Modules` složku, která se nachází uvnitř pracovních procesů jazyk prostředí PowerShell.
+* `Modules` Složka, která existuje v kořenu Function App.
+* Cesta ke `Modules` složce, která je umístěná v pracovním procesu PowerShellu jazyka.
 
-### <a name="function-app-level-modules-folder"></a>Funkce na úrovni aplikace `Modules` složky
+### <a name="function-app-level-modules-folder"></a>Složka na úrovni `Modules` aplikace Function App
 
-Pokud chcete použít vlastní moduly nebo moduly Powershellu z Galerie prostředí PowerShell, můžete umístit moduly, na kterých závisí vaše funkce v `Modules` složky. Z této složky moduly jsou automaticky dostupné pro modul runtime služby functions. Všechny funkce v aplikaci function app můžete použít tyto moduly.
+Chcete-li použít vlastní moduly nebo moduly prostředí PowerShell z Galerie prostředí PowerShell, můžete umístit moduly, na kterých jsou funkce závislé `Modules` ve složce. Z této složky jsou moduly automaticky dostupné pro modul runtime Functions. Všechny funkce ve Function App můžou tyto moduly používat.
 
-Pokud chcete využít výhod této funkce, vytvořte `Modules` složku v kořenovém adresáři aplikace function App. Uložte modulů, které chcete používat ve vašich funkcí v tomto umístění.
+Pokud chcete tuto funkci využít, vytvořte `Modules` složku v kořenovém adresáři aplikace Function App. Uložte moduly, které chcete použít, do svých funkcí v tomto umístění.
 
 ```powershell
 mkdir ./Modules
 Save-Module MyGalleryModule -Path ./Modules
 ```
 
-Použít `Save-Module` uložit všechny moduly, funkce použít nebo zkopírovat vlastní moduly pro `Modules` složky. Se složkou moduly aplikace function app by měl mít následující strukturu složek:
+Slouží `Save-Module` k uložení všech modulů, které vaše funkce používají, nebo `Modules` ke zkopírování vlastních modulů do složky. Ve složce modulů by vaše aplikace Function App měla mít následující strukturu složek:
 
 ```
 PSFunctionApp
@@ -457,22 +457,22 @@ PSFunctionApp
  | - host.json
 ```
 
-Při spuštění aplikace function app se pracovní proces jazyk prostředí PowerShell přidá to `Modules` složku `$env:PSModulePath` tak, aby se můžete spolehnout na modul autoloading stejně, jako byste to udělali v pravidelných skript prostředí PowerShell.
+Když spustíte aplikaci Function App, pracovní proces PowerShellu přidá tuto `Modules` složku `$env:PSModulePath` na, takže se můžete spoléhat na automatické načítání modulu stejně jako v běžném skriptu PowerShellu.
 
-### <a name="language-worker-level-modules-folder"></a>Úroveň pracovních procesů jazyka `Modules` složky
+### <a name="language-worker-level-modules-folder"></a>Složka na úrovni `Modules` jazykových pracovních procesů
 
-Několik modulů se běžně používají pracovní proces jazyk prostředí PowerShell. Tyto moduly, které jsou definovány v poslední pozice `PSModulePath`. 
+PowerShell Language Worker obvykle používá několik modulů. Tyto moduly jsou definovány v poslední pozici `PSModulePath`. 
 
 Aktuální seznam modulů je následující:
 
-* [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): modul používaný pro práci s archivy, jako je třeba `.zip`, `.nupkg`a další.
-* **ThreadJob**: Implementace založená na vláknech úlohy prostředí PowerShell, rozhraní API.
+* [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): modul používaný pro práci s archivy, `.zip`jako `.nupkg`je, a další.
+* **ThreadJob**: Implementace rozhraní API úlohy PowerShellu založené na vláknech.
 
-Funkce používá nejnovější verze těchto modulů. Pokud chcete použít konkrétní verzi tyto moduly, můžete umístit na konkrétní verzi `Modules` složky vaší aplikace function App.
+Nejnovější verzi těchto modulů používají funkce. Pokud chcete použít konkrétní verzi těchto modulů, můžete zadat konkrétní verzi ve `Modules` složce aplikace Function App.
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-Ve službě Functions [nastavení aplikace](functions-app-settings.md), jako je například připojení služby jsou řetězce, zveřejní jako proměnné prostředí během provádění. Může přistupovat tato nastavení pomocí `$env:NAME_OF_ENV_VAR`, jak je znázorněno v následujícím příkladu:
+V funkcích jsou [nastavení aplikace](functions-app-settings.md), jako jsou například připojovací řetězce služby, vystavena jako proměnné prostředí během provádění. K těmto nastavením můžete přistupovat pomocí `$env:NAME_OF_ENV_VAR`, jak je znázorněno v následujícím příkladu:
 
 ```powershell
 param($myTimer)
@@ -484,14 +484,14 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Při místním spuštění, nastavení aplikace se načítají z [local.settings.json](functions-run-local.md#local-settings-file) souboru projektu.
+Při místním spuštění se nastavení aplikace čtou ze souboru [Local. Settings. JSON](functions-run-local.md#local-settings-file) projektu.
 
 ## <a name="concurrency"></a>Souběžnost
 
-Ve výchozím nastavení modul runtime funkcí Powershellu zpracovat pouze jednoho vyvolání funkce v čase. Tato úroveň souběžnosti však nemusí být dostatečné v následujících situacích:
+Ve výchozím nastavení může běhový modul PowerShellu funkcí zpracovat pouze jedno vyvolání funkce. Tato úroveň souběžnosti ale nemusí být dostatečná v následujících situacích:
 
-* Když se snažíte zpracovat velký počet volání ve stejnou dobu.
-* Pokud máte funkce, které vyvolají další funkce uvnitř stejné aplikace function app.
+* Při pokusu o zpracování velkého počtu vyvolání současně.
+* Pokud máte funkce, které vyvolávají jiné funkce v rámci stejné aplikace Function App.
 
 Toto chování můžete změnit nastavením následující proměnné prostředí na celočíselnou hodnotu:
 
@@ -499,31 +499,31 @@ Toto chování můžete změnit nastavením následující proměnné prostřed�
 PSWorkerInProcConcurrencyUpperBound
 ```
 
-Nastavte tuto proměnnou prostředí [nastavení aplikace](functions-app-settings.md) vaší aplikace Function App.
+Tuto proměnnou prostředí nastavíte v [nastavení aplikace](functions-app-settings.md) Function App.
 
-### <a name="considerations-for-using-concurrency"></a>Důležité informace týkající se použití souběžného zpracování
+### <a name="considerations-for-using-concurrency"></a>Předpoklady pro použití souběžnosti
 
-PowerShell je _jeden zřetězený_ skriptovací jazyk, ve výchozím nastavení. Souběžnost však lze přidat pomocí více prostředí runspace prostředí PowerShell v rámci stejného procesu. Tato funkce je, jak modul runtime Azure Functions PowerShell funguje.
+PowerShell je ve výchozím nastavení jediným skriptovacím jazykem s _více vlákny_ . Souběžnost se však dá přidat pomocí několika prostředí runspace prostředí PowerShell v jednom procesu. Tato funkce je způsob, jakým funguje modul runtime Azure Functions PowerShellu.
 
-Existují některé nevýhody tohoto přístupu.
+Tento přístup má několik nevýhod.
 
-#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>Je jenom tak dobré jako počítač, na kterém je spuštěn na souběžnost
+#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>Souběžnost je stejně dobrá jako počítač, na kterém je spuštěný.
 
-Pokud vaše aplikace function app běží na [plán služby App Service](functions-scale.md#app-service-plan) , který podporuje pouze jedním jádrem a většinu souběžnosti nepomůže. Důvodem je skutečnost, že neexistují žádné další jádra k vyrovnávají zatížení. V takovém případě výkon se může lišit při jedním jádrem musí přepnutí kontextu mezi prostředí runspace.
+Pokud vaše aplikace Function App běží na [App Service plánu](functions-scale.md#app-service-plan) , který podporuje jenom jeden jádro, pak souběžnost nebude mít spoustu. To je proto, že nejsou k dispozici žádné další jádra, které by pomohly vyrovnávat zatížení. V takovém případě se výkon může lišit v případě, že jeden jádro má kontextový přepínač mezi prostředí runspace.
 
-[Plánu Consumption](functions-scale.md#consumption-plan) spouští pomocí pouze jednoho jádra, nemůžou využívat souběžnosti. Pokud chcete využívat všech výhod souběžnosti, místo toho nasazení vašich funkcí na aplikaci funkcí spuštěnou v vyhrazený plán služby App Service s dostatečný počet jader.
+[Plán spotřeby](functions-scale.md#consumption-plan) běží jenom s jedním jádrem, takže nemůžete využít souběžnost. Pokud chcete plně využít výhod souběžnosti, nasaďte funkce do aplikace Function App běžící na vyhrazeném App Service plánu s dostatečnými jádry.
 
-#### <a name="azure-powershell-state"></a>Stav Azure Powershellu
+#### <a name="azure-powershell-state"></a>Azure PowerShell stav
 
-Prostředí Azure PowerShell používá některé _úrovni procesu_ kontextů a stav šetřit z nadbytečné psát. Nicméně pokud zapnete souběžnosti v aplikaci function app a vyvolat akce, které mění stav, vám může dojít k jejich časování. Tyto konflikty časování je obtížné ladit, protože jeden volání spoléhá na a jejich určitého stavu a o vyvolání změnil stav.
+Azure PowerShell používá některé kontexty _na úrovni procesu_ a stav, které vám pomůžou ušetřit nadměrné typování. Pokud však zapnete souběžnost ve vaší aplikaci Function App a vyvoláte akce, které mění stav, můžete se zaměřit na konflikty časování. Tyto konflikty časování je obtížné ladit, protože jedno vyvolání spoléhá na určitý stav a druhé vyvolání změnilo stav.
 
-Je tak mimořádnou hodnot souběžnosti ovládacím prvkem prostředí Azure PowerShell, protože některé operace může trvat poměrně dlouhou dobu. Však musí pokračovat opatrně. Pokud máte podezření, že se zobrazuje časování, nastavte souběžnost zpět `1` a akci opakujte.
+Obrovské je hodnota v souběžnosti s Azure PowerShell, protože některé operace mohou trvat značnou dobu. Je však třeba postupovat opatrně. Pokud máte podezření, že jste se setkali s časováním, nastavte nastavení aplikace PSWorkerInProcConcurrencyUpperBound `1` na a místo toho použijte [izolaci úrovně pracovního procesu jazyka](functions-app-settings.md#functions_worker_process_count) pro souběžnost.
 
-## <a name="configure-function-scriptfile"></a>Konfigurace funkce `scriptFile`
+## <a name="configure-function-scriptfile"></a>Konfigurovat funkci`scriptFile`
 
-Ve výchozím nastavení, prostředí PowerShell funkce se provede, z `run.ps1`, soubor, který sdílí stejné nadřazený adresář jako odpovídající `function.json`.
+Ve výchozím nastavení je funkce PowerShellu spouštěna `run.ps1`z, soubor, který sdílí stejný nadřazený adresář jako odpovídající. `function.json`
 
-`scriptFile` Vlastnost `function.json` můžete použít k získání struktury složek, která vypadá jako v následujícím příkladu:
+Vlastnost v rámci `function.json` lze použít k získání struktury složky, která vypadá jako v následujícím příkladu: `scriptFile`
 
 ```
 FunctionApp
@@ -534,7 +534,7 @@ FunctionApp
  | | - PSFunction.ps1
 ```
 
-V takovém případě `function.json` pro `myFunction` zahrnuje `scriptFile` vlastnost odkazuje na soubor s exportovanou funkci spustit.
+V tomto případě zahrnuje `function.json` `scriptFile` vlastnost for `myFunction` , která odkazuje na soubor s exportovanou funkcí, která má být spuštěna.
 
 ```json
 {
@@ -545,12 +545,12 @@ V takovém případě `function.json` pro `myFunction` zahrnuje `scriptFile` vla
 }
 ```
 
-## <a name="use-powershell-modules-by-configuring-an-entrypoint"></a>Pomocí konfigurace objektu entryPoint modulů Powershellu
+## <a name="use-powershell-modules-by-configuring-an-entrypoint"></a>Použití modulů PowerShellu konfigurací vstupního bodu
 
-Tento článek obsahuje uvedené funkce Powershellu ve výchozím `run.ps1` vygenerované šablony souboru skriptu.
-Ale můžete použít také funkce do modulů prostředí PowerShell. Můžete odkazovat pomocí kódu specifické funkce v modulu `scriptFile` a `entryPoint` polí function.json' konfigurační soubor.
+V tomto článku se zobrazily funkce PowerShellu `run.ps1` ve výchozím souboru skriptu generovaném šablonami.
+Do modulů PowerShellu ale můžete také zahrnout své funkce. Můžete odkazovat na konkrétní kód funkce v modulu pomocí `scriptFile` polí a `entryPoint` v konfiguračním souboru Function. JSON.
 
-V takovém případě `entryPoint` je název funkce nebo rutiny v modulu prostředí PowerShell odkazuje `scriptFile`.
+V tomto případě je `entryPoint` název funkce nebo rutiny v modulu PowerShellu, na který se odkazuje `scriptFile`v.
 
 Vezměte v úvahu následující strukturu složek:
 
@@ -575,7 +575,7 @@ function Invoke-PSTestFunc {
 Export-ModuleMember -Function "Invoke-PSTestFunc"
 ```
 
-V tomto příkladu konfiguraci `myFunction` zahrnuje `scriptFile` vlastnost, která odkazuje na `PSFunction.psm1`, což je modul prostředí PowerShell v jiné složce.  `entryPoint` Odkazy na vlastnosti `Invoke-PSTestFunc` funkce, která je vstupním bodem v modulu.
+V tomto příkladu konfigurace pro `myFunction` `scriptFile` zahrnuje vlastnost, která odkazuje `PSFunction.psm1`na, což je modul prostředí PowerShell v jiné složce.  Vlastnost odkazuje na `Invoke-PSTestFunc` funkci, která je vstupním bodem v modulu. `entryPoint`
 
 ```json
 {
@@ -587,19 +587,19 @@ V tomto příkladu konfiguraci `myFunction` zahrnuje `scriptFile` vlastnost, kte
 }
 ```
 
-S touto konfigurací `Invoke-PSTestFunc` přesně tak, jak se provede `run.ps1` by.
+V této konfiguraci bude `Invoke-PSTestFunc` provedeno přesně tak, `run.ps1` jako by bylo.
 
-## <a name="considerations-for-powershell-functions"></a>Důležité informace týkající se funkcí Powershellu
+## <a name="considerations-for-powershell-functions"></a>Předpoklady pro funkce PowerShellu
 
-Při práci s funkcemi prostředí PowerShell, mějte na paměti aspekty uvedené v následujících částech.
+Při práci s funkcemi PowerShellu si pamatujte na informace v následujících částech.
 
-### <a name="cold-start"></a>Studený Start
+### <a name="cold-start"></a>Studený start
 
-Při vývoji v Azure Functions [bez serveru model hostingu](functions-scale.md#consumption-plan), studenou zprovoznění jsou realitou. *Studený start* odkazuje na dobu to trvá pro aplikace function app na spuštění ke zpracování požadavku. Úplné spuštění se stane více často spotřeby plánování, protože během období nečinnosti získá vypnout aplikaci function app.
+Při vývoji Azure Functions v [modelu hostování bez serveru](functions-scale.md#consumption-plan)je to realita. *Studená Start* odkazuje na dobu, kterou aplikace Function App spustí pro zpracování žádosti. K studenému startu dochází častěji v plánu spotřeby, protože aplikace Function App se během období nečinnosti ukončí.
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>Moduly sady místo použití `Install-Module`
+### <a name="bundle-modules-instead-of-using-install-module"></a>Místo použití použít modul sady`Install-Module`
 
-Spuštění skriptu na každé vyvolání. Vyhněte se použití `Install-Module` ve skriptu. Místo toho použijte `Save-Module` před publikováním tak, že funkce nebude muset ztrácet čas stahování modulu. Pokud souvisejícím s úplným spuštěním mají vliv na vaše funkce, zvažte nasazení aplikace function app na [plán služby App Service](functions-scale.md#app-service-plan) nastavena na *AlwaysOn* nebo [plán Premium](functions-scale.md#premium-plan).
+Váš skript se spustí při každém vyvolání. Vyhněte `Install-Module` se použití ve vašem skriptu. Místo toho `Save-Module` použijte před publikováním, aby vaše funkce nemusela ztrácet čas stažením modulu. Pokud mají tyto funkce vliv na studená spuštění, zvažte nasazení aplikace Function App do [plánu App Service](functions-scale.md#app-service-plan) nastaveného na hodnotu *Always On* nebo [Premium](functions-scale.md#premium-plan).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -607,6 +607,6 @@ Další informace naleznete v následujících materiálech:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
-* [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)
+* [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
 
-[referenční materiály k Host.JSON]: functions-host-json.md
+[Reference Host. JSON]: functions-host-json.md

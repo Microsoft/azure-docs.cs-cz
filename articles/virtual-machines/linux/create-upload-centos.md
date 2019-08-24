@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 72ed518af579bb6b95d3b13400f2fbf6679cd036
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 6f7175e24f4eb85229847470bc37a6224ac6dd6e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248175"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013687"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na CentOS pro Azure
 
@@ -174,11 +174,14 @@ V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podo
 
     Případně můžete postupovat podle pokynů k ruční instalaci na [stránce pro stažení aplikace LIS](https://go.microsoft.com/fwlink/?linkid=403033) a nainstalovat na virtuální počítač službu ot./min.
 
-12. Nainstalujte agenta a závislosti pro Azure Linux:
+12. Nainstalujte agenta a závislosti pro Azure Linux. Spusťte a povolte službu waagent:
 
     ```bash
     sudo yum install python-pyasn1 WALinuxAgent
+    sudo service waagent start
+    sudo chkconfig waagent on
     ```
+
 
     Balíček WALinuxAgent odstraní balíčky NetworkManager a NetworkManager-GNOME, pokud již nebyly odebrány, jak je popsáno v kroku 3.
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8987a22d4546fe887d1dda9adff8f46afe667618
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 8d3d08c772c28ff4e3a32e736253ba69b03684f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644992"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012313"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak získat přístup k testovacímu prostředí v učebně v Azure Lab Services
 Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobrazit všechny laboratoře, ke kterým máte přístup, jak spustit nebo zastavit virtuální počítač v testovacím prostředí a jak se připojit k virtuálnímu počítači. 
@@ -55,11 +55,38 @@ Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobra
 2. Proveďte jeden z následujících kroků: 
     1. U virtuálních počítačů s **Windows** uložte soubor **RDP** na pevný disk. Otevřete soubor RDP pro připojení k virtuálnímu počítači. Přihlaste se k počítači pomocí **uživatelského jména** a **hesla** , které jste získali z Educator/profesor. 
     3. Pro virtuální počítače se **systémem Linux** můžete k připojení použít **SSH** nebo **RDP** (Pokud je povolený). Další informace najdete v tématu [Povolení připojení ke vzdálené ploše pro počítače se systémem Linux](how-to-enable-remote-desktop-linux.md). 
+    1. Pokud pro připojení k virtuálnímu počítači testovacího prostředí používáte **Mac** , postupujte podle pokynů v následující části. 
+
+## <a name="connect-to-a-vms-ui-using-rdp-on-a-mac"></a>Připojení k uživatelskému rozhraní virtuálního počítače pomocí protokolu RDP na Macu
+V této části se dozvíte, jak může student připojit k uživatelskému rozhraní (UI) virtuálního počítače z počítače Mac pomocí protokolu RDP. Tady jsou rychlé kroky následované podrobnostmi: 
+
+1. Nainstalujte Vzdálená plocha Microsoft na Macu.
+2. Připojte se k uživatelskému rozhraní virtuálního počítače z počítače Mac pomocí protokolu RDP. 
+
+### <a name="install-microsoft-remote-desktop-on-a-mac"></a>Instalace Vzdálená plocha Microsoft na Macu
+1. Otevřete App Store na Macu a vyhledejte **Vzdálená plocha Microsoft**.
+
+    ![Vzdálená plocha Microsoft](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
+1. Nainstalujte nejnovější verzi Vzdálená plocha Microsoft. 
+
+### <a name="access-the-vms-ui-from-your-mac-using-rdp"></a>Přístup k uživatelskému rozhraní virtuálního počítače z Mac pomocí protokolu RDP
+1. Otevřete soubor **RDP** , který je stažený na počítači s nainstalovaným **Vzdálená plocha Microsoft** . Mělo by se začít připojovat k virtuálnímu počítači. 
+
+    ![Připojení k uživatelskému rozhraní virtuálního počítače](../media/how-to-use-classroom-lab/connect-linux-vm.png)
+1. Pokud se zobrazí následující chyba, vyberte **pokračovat** . 
+
+    ![Chyba certifikátu](../media/how-to-use-classroom-lab/certificate-error.png)
+1. Měl by se zobrazit uživatelské rozhraní virtuálního počítače. 
+
+    > [!NOTE]
+    > Následující příklad je pro virtuální počítač s CentOS Linux. 
+
+    ![UŽIVATELSKÉ ROZHRANÍ VIRTUÁLNÍHO POČÍTAČE](../media/how-to-use-classroom-lab/vm-ui.png)
 
 ## <a name="progress-bar"></a>Indikátor průběhu 
 Indikátor průběhu na dlaždici zobrazuje počet hodin použitých pro počet [hodin](how-to-configure-student-usage.md#set-quotas-for-users) , které vám jsou přiřazeny. Tentokrát je další čas, který jste si naplánovali vedle naplánovaného času pro testovací prostředí. Barva indikátoru průběhu a textu pod indikátorem průběhu se liší podle následujících scénářů:
 
-- Pokud třída probíhá (v rámci plánu třídy), indikátor průběhu je šedý a představuje nepoužívané hodiny kvóty. 
+- Pokud třída probíhá (v rámci plánu třídy), indikátor průběhu je zobrazen šedě, aby představovala nepoužité hodiny kvóty. 
 
     ![Indikátor průběhu v šedé barvě](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-class-in-progress.png)
 - Pokud kvóta není přiřazena (0 hodin), text **dostupný pouze během tříd** je zobrazen místo indikátoru průběhu. 
@@ -83,7 +110,7 @@ Po registraci do testovacích prostředí se můžete podívat na všechny labor
     ![Zobrazit všechna testovací prostředí](../media/how-to-use-classroom-lab/all-labs.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
 - [Účty testovacího prostředí se vytvářejí a spravují jako správce.](how-to-manage-lab-accounts.md)

@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 07/16/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9481263773cc919fecacce80191cf209ec2a1282
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d115b7d56609b95f2ea10b3fee2f8900102b94e4
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359238"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012469"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Vyhledat chyby fondu a uzlů
 
@@ -64,7 +64,7 @@ Batch nastaví [stav fondu](https://docs.microsoft.com/rest/api/batchservice/poo
 
 ## <a name="pool-compute-node-errors"></a>Chyby výpočetního uzlu fondu
 
-I když Batch úspěšně přiděluje uzly ve fondu, můžou různé problémy způsobit, že některé uzly nejsou v pořádku a nemůžou spouštět úlohy. Těmto uzlům se pořád účtují poplatky, takže je důležité detekovat problémy, abyste se vyhnuli placení uzlů, které se nedají použít.
+I když Batch úspěšně přiděluje uzly ve fondu, můžou různé problémy způsobit, že některé uzly nejsou v pořádku a nemůžou spouštět úlohy. Těmto uzlům se pořád účtují poplatky, takže je důležité detekovat problémy, abyste se vyhnuli placení uzlů, které se nedají použít. Kromě běžných chyb uzlů je důležité vědět, že aktuální [stav úlohy](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate) je užitečný při řešení potíží.
 
 ### <a name="start-task-failures"></a>Selhání úlohy spuštění
 
@@ -92,7 +92,7 @@ Můžete zadat jeden nebo více odkazů na kontejner ve fondu. Batch stáhne zad
 
 ### <a name="node-in-unusable-state"></a>Uzel v nepoužitelném stavu
 
-Azure Batch může nastavit [stav uzlu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) na nepoužitelné z mnoha důvodů. Když je stav uzlu nastavený na nepoužitelné, úlohy nejde naplánovat na uzel, ale pořád se tam účtují poplatky.
+Azure Batch může nastavit [stav uzlu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) na nepoužitelné z mnoha důvodů. Když je stav uzlu nastavený nanepoužitelné, úlohy nejde naplánovat na uzel, ale pořád se tam účtují poplatky.
 
 Uzly v nepoužitelném stavu, ale bez [chyb](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) znamená, že Batch nemůže komunikovat s virtuálním počítačem. V takovém případě se dávka vždy pokusí o obnovení virtuálního počítače. Dávka se automaticky nepokusí obnovit virtuální počítače, které selhaly při instalaci balíčků nebo kontejnerů aplikací, i když jejich stav není **použitelný**.
 
@@ -118,7 +118,7 @@ Proces dávkového agenta, který běží na jednotlivých uzlech fondu, může 
 
 ### <a name="node-disk-full"></a>Plný disk uzlu
 
-Dočasná jednotka pro virtuální počítač uzlu fondu je používána dávkou pro soubory úloh, soubory úloh a sdílené soubory. 
+Dočasná jednotka pro virtuální počítač uzlu fondu je používána dávkou pro soubory úloh, soubory úloh a sdílené soubory.
 
 - Soubory balíčků aplikací
 - Soubory prostředků úloh

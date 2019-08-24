@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e56be394bc7667dfca9a0b417593e8e587073712
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699647"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013566"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Vytvoření sdílené složky ve službě Soubory Azure
 Sdílené složky Azure můžete vytvořit pomocí [Azure Portal](https://portal.azure.com/), rutin Azure Storage PowerShellu, Azure Storage klientských knihoven nebo Azure Storage REST API. V tomto kurzu se dozvíte:
@@ -41,24 +41,25 @@ Pokud chcete vytvořit sdílenou složku Azure, můžete použít už existujíc
 
 
 ## <a name="create-file-share-through-powershell"></a>Vytvoření sdílené složky prostřednictvím PowerShellu
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-K používání PowerShellu budete potřebovat stáhnout a nainstalovat rutiny modulu Azure PowerShell. Pokyny k instalaci a instalaci najdete v tématu [instalace a konfigurace Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/) instalačního bodu.
+K používání PowerShellu budete potřebovat stáhnout a nainstalovat rutiny modulu Azure PowerShell. Pokyny k instalaci a instalaci najdete v tématu [instalace a konfigurace Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) instalačního bodu.
 
 > [!Note]  
 > Doporučuje se stáhnout a nainstalovat nebo upgradovat na nejnovější modul Azure PowerShell.
 
-1. **Vytvořte kontext pro účet úložiště a klíč.** Kontext obsahuje název účtu úložiště a klíč účtu. Pokyny k kopírování klíče účtu z [Azure Portal](https://portal.azure.com/)najdete v tématu [přístupové klíče k účtu úložiště](../common/storage-account-manage.md#access-keys).
+1. **Vytvořit nový účet úložiště:** Účet úložiště je sdílený fond úložiště, ve kterém můžete nasazovat sdílené složky Azure i další prostředky úložiště, jako jsou objekty blob nebo fronty.
 
-    ```powershell
-    $storageContext = New-AzStorageContext <storage-account-name> <storage-account-key>
+    ```PowerShell
+    $resourceGroup = "myresourcegroup"
+    $storAcctName = "myuniquestorageaccount"
+    $region = "westus2"
+    $storAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storAcctName -SkuName Standard_LRS -Location $region -Kind StorageV2
     ```
-    
+
 2. **Vytvořte novou sdílenou složku:**    
     
     ```powershell
-    $share = New-AzStorageShare logs -Context $storageContext
+    $shareName = "myshare"
+    $share = New-AzStorageShare -Context $storAcct.Context -Name $shareName
     ```
 
 > [!Note]  
@@ -84,7 +85,7 @@ K používání PowerShellu budete potřebovat stáhnout a nainstalovat rutiny m
     az storage share create --name files --quota 2048 --connection-string $current_env_conn_string > /dev/null
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Připojení ke sdílené složce a její připojení – Windows](storage-how-to-use-files-windows.md)
 * [Připojení ke sdílené složce a její připojení – Linux](../storage-how-to-use-files-linux.md)
 * [Připojení ke sdílené složce a její připojení – macOS](storage-how-to-use-files-mac.md)

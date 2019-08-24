@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/03/2019
+ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6b551ee9a0a9c7ef9a8f5ff1bd7452a24dc04b7
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 0442b987c502533bfbd55990f201a5c02b119804
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014197"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011298"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
 
@@ -270,3 +270,7 @@ Pokud potřebujete pomoc s upgradem na novější verzi Azure AD Connect, otevř
 * Vyhledejte technické dotazy a odpovědi nebo položte své dotazy na [komunitu Azure AD](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
 
 [Získat podporu pro Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+
+**Otázka: Proč se mi zobrazují události 6311 a 6401 po chybách kroku synchronizace?**
+
+V případě událostí 6311- **v serveru došlo k neočekávané chybě při zpětném volání** a 6401- **kontroler agenta pro správu zjistil neočekávanou chybu** – jsou vždy protokolovány po chybě kroku synchronizace. Chcete-li tyto chyby vyřešit, je nutné vyčistit chyby kroku synchronizace.  Další informace najdete v tématu [řešení chyb při synchronizaci](tshoot-connect-sync-errors.md) a [odstraňování potíží s synchronizací objektů pomocí Azure AD Connect synchronizace](/tshoot-connect-objectsync.md) .

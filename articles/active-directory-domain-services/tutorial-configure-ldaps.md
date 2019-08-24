@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: f575dd882c217badb3320b85229149d9793ceb5f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 505a3104968e285a7fe4801db8029dc45647087a
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619261"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011346"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace protokolu Secure LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -213,7 +213,7 @@ Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup 
 
     | Nastavení                           | Value        |
     |-----------------------------------|--------------|
-    | Source                            | IP adresy |
+    | Source                            | Adresy IP |
     | Zdrojové IP adresy/rozsahy CIDR | Platná IP adresa nebo rozsah pro vaše prostředí |
     | Source port ranges                | *            |
     | Cíl                       | Any          |
@@ -275,7 +275,7 @@ Pokud jste přidali položku DNS do souboru místní hostitelé vašeho počíta
 1. Vyhledejte a otevřete soubor *C:\WINDOWS\SYSTEM32\DRIVERS\ETC*
 1. Odstraňte řádek pro záznam, který jste přidali, například`40.121.19.239    ldaps.contoso.com`
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 
@@ -286,7 +286,7 @@ V tomto kurzu jste se naučili:
 > * Vytvoření vazby a testování zabezpečeného protokolu LDAP pro spravovanou doménu Azure služba AD DS
 
 > [!div class="nextstepaction"]
-> [Informace o tom, jak synchronizace funguje ve spravované doméně Azure AD Domain Services](synchronization.md)
+> [Konfigurace synchronizace hodnot hash hesel pro hybridní prostředí Azure AD](tutorial-configure-password-hash-sync.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

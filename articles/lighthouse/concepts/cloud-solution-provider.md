@@ -1,50 +1,41 @@
 ---
-title: Azure maják a programu Cloud Solution Provider
-description: Při používání Azure delegovat správu prostředků, je potřeba zvážit zabezpečení a řízení přístupu.
+title: Program Azure Lighthouse a Cloud Solution Provider
+description: Při použití správy delegovaných prostředků Azure je důležité vzít v úvahu zabezpečení a řízení přístupu.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 09552c66d2dc841cff8b5cb52e26dc657568e08f
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 399d2cb829c0425e3c9ee70a61cafde8568f903b
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809957"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012118"
 ---
-# <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure maják a programu Cloud Solution Provider
+# <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Program Azure Lighthouse a Cloud Solution Provider
 
-Pokud jste [CSP (Cloud Solution Provider)](https://docs.microsoft.com/partner-center/csp-overview) partnera, dostanete předplatná Azure vytvořená pro vaše zákazníky prostřednictvím programu CSP pomocí [jménem Správa (funkce AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) funkce. Tento přístup umožňuje přímo podporují, konfigurovat a spravovat odběry pro vaše zákazníky.
+Pokud jste partnerem [CSP (Cloud Solution Provider)](https://docs.microsoft.com/partner-center/csp-overview) , můžete již přístup k předplatným Azure vytvořeným pro vaše zákazníky prostřednictvím programu CSP použít pomocí funkce [Spravovat za uživatele (administrate)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) . Tento přístup umožňuje přímou podporu, konfiguraci a správu předplatných vašich zákazníků.
 
-Funkce AOBO mechanismus uděluje úplný přístup k prostředí zákazníků. Správa prostředků Azure delegované spolu s funkce AOBO pomáhá zlepšit zabezpečení tím, že umožňuje snížit nepotřebné přístup tím, že odstupňovaných oprávnění pro uživatele. 
+Pomocí Azure Lighthouse můžete využít správu delegovaných prostředků Azure spolu s ADMINISTRATE. To pomáhá zvýšit zabezpečení a omezuje zbytečný přístup tím, že umožňuje uživatelům přesnější oprávnění. Umožňuje taky zvýšit efektivitu a škálovatelnost, protože uživatelé můžou pracovat na několika zákaznických předplatných pomocí jediného přihlášení ve vašem tenantovi.
 
-## <a name="administer-on-behalf-of-aobo"></a>Správa jménem (funkce AOBO)
+## <a name="administer-on-behalf-of-aobo"></a>Správa jménem (ADMINISTRATE)
 
-Pomocí funkce AOBO, každý uživatel s [Agent pro správu](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) role ve vašem tenantovi budou mít funkce AOBO přístupu k předplatným Azure, které vytvoříte prostřednictvím programu CSP. Všichni uživatelé, kteří potřebují přístup k předplatným žádný zákazník musí být členem této skupiny. Funkce AOBO neumožňuje flexibilitu vytvoření odlišné skupiny, které využívají různé zákazníky nebo chcete povolit různé role pro uživatele nebo skupiny.
+V ADMINISTRATE bude mít každý uživatel s rolí [agenta správce](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) ve vašem tenantovi administrate přístup k předplatným Azure, která vytvoříte prostřednictvím programu CSP. Všichni uživatelé, kteří potřebují přístup k předplatným zákazníků, musí být členy této skupiny. ADMINISTRATE neumožňuje flexibilní vytváření různých skupin, které pracují s různými zákazníky, nebo pro povolení různých rolí pro skupiny nebo uživatele.
 
-![Správa tenantů prostřednictvím funkce AOBO](../media/csp-1.jpg)
+![Správa tenanta pomocí ADMINISTRATE](../media/csp-1.jpg)
 
-## <a name="azure-delegated-resource-management"></a>Správa delegovaného prostředků Azure
+## <a name="azure-delegated-resource-management"></a>Správa delegovaných prostředků Azure
 
-Pomocí Azure delegované správy prostředků, můžete přiřadit různé skupiny pro různé zákazníky nebo role, jak je znázorněno v následujícím diagramu. Vzhledem k tomu, že uživatelé budou mít odpovídající úroveň přístupu prostřednictvím prostředků Azure delegované správy, můžete snížit počet uživatelů, kteří mají roli Agent pro správu (a tedy mít úplný přístup funkce AOBO). To nabízí vyšší úroveň zabezpečení tím, že omezíte nepotřebné přístup k prostředkům vašich zákazníků. Také nabízí větší flexibilitu pro správu více zákazníků ve velkém měřítku.
+Pomocí delegované správy prostředků Azure můžete přiřadit různé skupiny různým zákazníkům nebo rolím, jak je znázorněno v následujícím diagramu. Vzhledem k tomu, že uživatelé budou mít odpovídající úroveň přístupu prostřednictvím delegované správy prostředků Azure, můžete snížit počet uživatelů, kteří mají roli agenta správce (a mít tak úplný přístup k ADMINISTRATE). To pomáhá zlepšovat zabezpečení tím, že omezuje zbytečný přístup k prostředkům vašich zákazníků. Nabízí také větší flexibilitu při správě více zákazníků ve velkém měřítku.
 
-Připojování předplatné, které jste vytvořili prostřednictvím programu CSP bude postupovat podle kroků popsaných v [připojení předplatného Azure Delegovaná správa prostředků](../how-to/onboard-customer.md). Každý uživatel, který má roli Agent pro správu ve vašem tenantovi můžete provést toto připojení.
+Registrace předplatného, které jste vytvořili prostřednictvím programu CSP, se řídí postupem popsaným v tématu připojení předplatného [ke správě delegovaných prostředků Azure](../how-to/onboard-customer.md). Tuto registraci může provádět libovolný uživatel, který má ve vašem tenantovi roli agenta správce.
 
-Všimněte si, že pro předplatná vytvořená prostřednictvím programů CSP, žádosti o podporu můžete generovat pouze uživatelé s rolí správce agenta v tenantovi poskytovatele služeb. Uživatelé přidaní prostřednictvím prostředků Azure delegované správy nebude možné otevřít žádosti o podporu pro delegované prostředky v těchto předplatných.
+![Správa tenanta pomocí ADMINISTRATE a správy delegovaných prostředků Azure](../media/csp-2.jpg)
 
-![Správa tenanta prostřednictvím funkce AOBO a Azure Delegovaná správa prostředků](../media/csp-2.jpg)
+## <a name="next-steps"></a>Další kroky
 
-## <a name="partner-admin-link"></a>Partnerské propojení správce
-
-Vaše ID Microsoft Partner Network (MPN) můžete přidružit vaše předplatná připojili ke sledování vliv mezi zákazníky.
-
-Pokud jste [publikovat na webu Azure Marketplace nabídku spravovaných služeb](../how-to/publish-managed-services-offers.md), svoje ID MPN je přidružený k profilu vydavatele a je automaticky přiřazen k nabídky. Výnosy vygenerovaných vašimi prostředky Azure prostřednictvím v rámci této nabídky bude mít s přidělenými atributy pro vaši organizaci. V partnerovi reporting systémy, třeba partnerského centra nebo MPN přidělení se zobrazí jako Partner správce odkaz (PAL).
-
-Pokud jste [onboardingu zákazníků Azure Delegovaná správa prostředků pomocí šablon Azure Resource Manageru](../how-to/onboard-customer.md), stále můžete přidružit svoje ID MPN. aby bylo možné přijímat rozpoznávání pro vaše dopad na zákazníky, ale budete mít Chcete-li to provést ručně. Další informace najdete v tématu [propojit ID partnera k účtům Azure](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). 
-
-## <a name="next-steps"></a>Další postup
-
-- Další informace o [napříč tenanty činnosti správy](cross-tenant-management-experience.md).
-- Další informace o [programu Cloud Solution Provider](https://docs.microsoft.com/partner-center/csp-overview).
+- Přečtěte si o [prostředích pro správu mezi klienty](cross-tenant-management-experience.md).
+- Naučte se, jak připojit [předplatné ke správě delegovaných prostředků Azure](../how-to/onboard-customer.md).
+- Přečtěte si o [programu Cloud Solution Provider](https://docs.microsoft.com/partner-center/csp-overview).

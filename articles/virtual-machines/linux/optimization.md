@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: ea8f3f1860223e102aeccf81f72b5294283b83f6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ad512baad86133cc1aad80438a6b68d2a31a6cc6
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640755"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013593"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytváření virtuálních počítačů se systémem Linux je snadné z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit, že jste ho nastavili tak, aby optimalizoval jeho výkon na platformě Microsoft Azure. V tomto tématu se používá virtuální počítač s Ubuntu serverem, ale můžete také vytvořit virtuální počítač se systémem Linux pomocí [vlastních imagí jako šablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -53,7 +53,7 @@ Když se zaměříte na úlohy s vysokým počtem vstupně-výstupních operací
 ## <a name="your-vm-temporary-drive"></a>Dočasná jednotka virtuálního počítače
 Když vytvoříte virtuální počítač, Azure ve výchozím nastavení poskytuje disk s operačním systémem ( **/dev/sda**) a dočasný disk ( **/dev/sdb**).  Všechny další disky, které přidáte, se zobrazí jako **/dev/sdc**, **/dev/SDD**, **/dev/SDE** atd. Všechna data na dočasném disku ( **/dev/sdb**) nejsou trvalá a můžou se ztratit, pokud konkrétní události, jako je změna velikosti virtuálního počítače, opětovné nasazení nebo údržba, vynutí restartování vašeho virtuálního počítače.  Velikost a typ dočasného disku souvisí s velikostí virtuálního počítače, kterou jste zvolili v době nasazení. Všechny virtuální počítače s velikostí Premium (DS, G a DS v2 Series) dočasné jednotky se zálohují na místní jednotku SSD, která má další výkon až 48k IOps. 
 
-## <a name="linux-swap-file"></a>Odkládací soubor Linux
+## <a name="linux-swap-partition"></a>Oddíl odkládacího oddílu Linux
 Pokud je váš virtuální počítač Azure z image Ubuntu nebo CoreOS, můžete k odeslání cloudové konfigurace do Cloud-init použít CustomData. Pokud jste [nahráli vlastní image Linux](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , která používá Cloud-init, nakonfigurujete také odkládací oddíly pomocí Cloud-init.
 
 V případě cloudových imagí Ubuntu je potřeba ke konfiguraci odkládacího oddílu použít Cloud-init. Další informace najdete v tématu [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
@@ -127,6 +127,8 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Použití softwarového pole RAID k dosažení vyššího vstupně-funkční operace
 Pokud vaše úlohy vyžadují víc IOps než jeden disk, budete muset použít softwarovou konfiguraci RAID o více discích. Vzhledem k tomu, že Azure už provádí odolnost disku v místní vrstvě prostředků infrastruktury, dosahuje nejvyšší úrovně výkonu z konfigurace prokládání RAID-0.  Zřizování a vytváření disků v prostředí Azure a jejich připojení k VIRTUÁLNÍmu počítači se systémem Linux před vytvořením oddílů, formátování a připojení jednotek.  Další podrobnosti o konfiguraci nastavení RAID softwaru na VIRTUÁLNÍm počítači Linux v Azure najdete v dokumentu **[Konfigurace softwarového pole RAID v systému Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** .
+
+Jako alternativu k tradiční konfiguraci RAID se taky můžete rozhodnout nainstalovat Správce logických svazků (LVM), aby se nakonfigurovali řada fyzických disků na jeden prokládaný svazek logického úložiště. V této konfiguraci jsou čtení a zápisy distribuované na více disků, které jsou obsažené ve skupině svazků (podobně jako RAID0). Z důvodů výkonu je pravděpodobně vhodné proložit logické svazky tak, aby čtení a zápis využily všechny připojené datové disky.  Další podrobnosti o konfiguraci prokládaného logického svazku na VIRTUÁLNÍm počítači Linux v Azure najdete v části **[Konfigurace LVM na virtuálním počítači Linux v Azure](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** Documentation.
 
 ## <a name="next-steps"></a>Další kroky
 Mějte na paměti, že stejně jako u všech diskusí optimalizace je potřeba provést testy před a po každé změně, aby se projevil dopad změny.  Optimalizace je podrobný proces, který má různé výsledky v různých počítačích ve vašem prostředí.  To, co pro jednu konfiguraci funguje, nemusí fungovat pro jiné.

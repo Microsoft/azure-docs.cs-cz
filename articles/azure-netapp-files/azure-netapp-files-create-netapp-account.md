@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e60f5251f911ffe2b917dcc30e433e0a960823e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522814"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012575"
 ---
 # <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
 Vytvoření účtu NetApp umožňuje nastavit fond kapacity a následně vytvořit svazek. K vytvoření nového účtu NetApp se používá okno Azure NetApp Files.
 
-## <a name="before-you-begin"></a>Než začnete
-Musí mít dostanete e-mailu od týmu Azure NetApp Files potvrzení, že vám byl udělen přístup ke službě. Zobrazit [odeslat waitlist žádost o přístup k službě](azure-netapp-files-register.md#waitlist).
+## <a name="before-you-begin"></a>Před zahájením
+Je nutné, abyste obdrželi e-mail od Azure NetApp Files týmu potvrzujícího, že vám byl udělen přístup k této službě. Viz [odeslání žádosti o přístup ke službě pořadníku](azure-netapp-files-register.md#waitlist).
 
-Musíte také jste se zaregistrovali předplatné poskytovatele prostředků NetApp. Zobrazit [zaregistrujte poskytovatele prostředků NetApp](azure-netapp-files-register.md#resource-provider).
+Musíte taky zaregistrovat předplatné pro používání poskytovatele prostředků NetApp. Viz [registrace poskytovatele prostředků NetApp](azure-netapp-files-register.md#resource-provider).
 
 ## <a name="steps"></a>Kroky 
 
@@ -58,11 +58,12 @@ Musíte také jste se zaregistrovali předplatné poskytovatele prostředků Net
    Vytvořený účet NetApp se teď zobrazí v okně Azure NetApp Files. 
 
 > [!NOTE] 
-> Pokud nebyl udělen přístup ke službě soubory Azure NetApp, obdržíte při pokusu o vytvoření první účet NetApp následující chybu:  
+> Pokud jste neudělili přístup ke službě Azure NetApp Files, při pokusu o vytvoření prvního účtu NetApp se zobrazí následující chyba:  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
-[Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
+* [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
+* [Správa prostředků Azure NetApp Files pomocí Azure CLI](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)
 

@@ -6,26 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.localizationpriority: high
+ms.date: 08/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 9e3159a083d21e4a7a81df2fcf7a7d5db882b757
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6dcd55cc2c269024179e450d789df544bb8ff9a9
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976915"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012918"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Kurz: Vrácení Azure Data Box Disk a ověření nahrávání dat do Azure
+# <a name="tutorial-return-azure-data-box-disk"></a>Kurz: Vrátit Azure Data Box Disk 
 
-Toto je poslední kurz řady: Nasazení Azure Data Box Disk. V tomto kurzu se naučíte, jak:
+V tomto kurzu se dozvíte, jak naplánovat, aby se vybralo vrácení Azure Data Box Disk. Pokyny k výběru najdete v závislosti na tom, kde zařízení vracíte. 
+
+V tomto kurzu se naučíte, jak:
 
 > [!div class="checklist"]
 > * Odeslání Data Box Disku do Microsoftu
-> * Ověření nahrání dat do Azure
-> * Vymazání dat z Data Box Disku
+> * Výběr Data Box Disk v různých oblastech
+
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,18 +45,15 @@ Než začnete, ujistěte se, že jste dokončili [kurz: Zkopírujte data Azure D
 
 Další kroky určíte tak, že zařízení vracíte.
 
-### <a name="pick-up-in-us-canada"></a>Projměte v USA, Kanadě
+## <a name="pick-up-in-us-canada"></a>Projměte v USA, Kanadě
 
 Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
 
 1. Použijte zpáteční expediční štítek v průhledném plastovém obalu připevněném k tomuto boxu. Pokud je popisek poškozený nebo ztracený:
-    - Přejděte na **Přehled > Stáhnout expediční štítek**.
+    - Přejděte na **přehled > Stáhněte si expediční štítek** a stáhněte zpáteční dodací štítek.
 
         ![Stáhnout expediční štítek](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
 
-        Tato akce stáhne zpáteční expediční štítek, jak je zobrazeno dál.
-
-        ![Ukázkový expediční štítek](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
     - Připevněte popisek na zařízení.
 
 2. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
@@ -65,18 +65,15 @@ Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
     - Místo plánování vyzvednutí můžete také Data Box Disk umístit na nejbližší místo pro vyřazení.
 
 
-### <a name="pick-up-in-europe"></a>Vyzvednout v Evropě
+## <a name="pick-up-in-europe"></a>Vyzvednout v Evropě
 
 Pokud se zařízení vrátí do Evropy, proveďte následující kroky.
 
 1. Použijte zpáteční expediční štítek v průhledném plastovém obalu připevněném k tomuto boxu. Pokud je popisek poškozený nebo ztracený:
-    - Přejděte na **Přehled > Stáhnout expediční štítek**.
+    - Přejděte na **přehled > Stáhněte si expediční štítek** a stáhněte zpáteční dodací štítek.
 
         ![Stáhnout expediční štítek](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
 
-        Tato akce stáhne zpáteční expediční štítek, jak je zobrazeno dál.
-
-        ![Ukázkový expediční štítek](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
     - Připevněte popisek na zařízení.
 
 2. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
@@ -89,11 +86,11 @@ Pokud se zařízení vrátí do Evropy, proveďte následující kroky.
 
       ![Naplánovat vyzvednutí](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
 
-### <a name="pick-up-in-asia-pacific-region"></a>Výběr v Asii – Tichomoří – oblast
+## <a name="pick-up-in-asia-pacific"></a>Vyzvednout v Asii – Tichomoří
 
 Tato oblast obsahuje pokyny pro výdej v Japonsku, Koreji, Austrálii a Singapuru.
 
-#### <a name="pick-up-in-australia"></a>Vyzvednout v Austrálii
+### <a name="pick-up-in-australia"></a>Vyzvednout v Austrálii
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít rozšířené oznámení. Pro vyzvednutí v Austrálii proveďte následující kroky.
 
@@ -104,7 +101,7 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
     - Adresa
     - Jméno kontaktu
 
-#### <a name="pick-up-in-japan"></a>Vyzvednout v Japonsku
+### <a name="pick-up-in-japan"></a>Vyzvednout v Japonsku
 
 1. Jako informace o odesílateli napište název vaší společnosti a uveďte informace na zásilce.
 2. Odešlete e-mailem Quantium řešení pomocí následující e-mailové šablony.
@@ -131,7 +128,7 @@ V případě potřeby můžete kontaktovat podporu řešení Quantium (japonský
 - ElektronCustomerservice.JP@quantiumsolutions.com 
 - Telefon: 03-5755-0150 
 
-#### <a name="pick-up-in-korea"></a>Vyzvednout v Koreji
+### <a name="pick-up-in-korea"></a>Vyzvednout v Koreji
 
 1. Nezapomeňte zahrnout zpáteční poznámku ze zásilky.
 2. Požádat o vyzvednutí, pokud je k dispozici Poznámka k expedici:
@@ -148,13 +145,10 @@ V případě potřeby můžete kontaktovat podporu řešení Quantium (japonský
 ### <a name="pick-up-in-singapore"></a>Vyzvednout v Singapuru
 
 1. Vytiskněte popisek pro expedici a připojte se k poli. Pokud je popisek poškozený nebo ztracený:
-    - Přejděte na **Přehled > Stáhnout expediční štítek**.
+    - Přejděte na **přehled > stáhnout expediční štítek** a získat expediční štítek pro návrat.
 
         ![Stáhnout expediční štítek](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
 
-        Tato akce stáhne zpáteční expediční štítek, jak je zobrazeno dál.
-
-        ![Ukázkový expediční štítek](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
     - Připevněte popisek na zařízení. Ujistěte se, že je popisek viditelný.
 
 2. Požadavek na vyzvednutí:
@@ -165,107 +159,39 @@ V případě potřeby můžete kontaktovat podporu řešení Quantium (japonský
 3. Předají se na Courier. 
 
 
-## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
-
-Jakmile přepravce vyzvedne disky, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
-
-![Disky jsou vyzvednuté](media/data-box-disk-deploy-picked-up/data-box-portal-pickedup.png)
-
-Když Microsoft dostane disky a prohledá je, stav úlohy se změní na **Přijato**. 
-
-![Disky jsou přijaté](media/data-box-disk-deploy-picked-up/data-box-portal-received.png)
-
-Jakmile jsou disky připojené k serveru v datovém centru Azure, data se automaticky zkopírují. V závislosti na velikosti dat může operace kopírování trvat několik hodin až dní. Průběh kopírování můžete sledovat na portálu.
-
-Po dokončení kopírování se stav objednávky změní na **Dokončeno**.
-
-![Kopírování dat je dokončené](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
-
-Pokud se kopie dokončí s chybami, přečtěte si téma [řešení chyb při nahrávání](data-box-disk-troubleshoot-upload.md).
-
-Než odstraníte data ze zdroje, ujistěte se, že je máte v účtech úložiště. Vaše data můžou být v:
-
-- Váš účet Azure Storage. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
-
-  - Objekty blob bloku a objekty blob stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-  - Soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
-
-    Alternativně můžete přejít na svůj účet Azure Storage na webu Azure Portal a dokončit navigaci tam.
-
-- Skupiny prostředků spravovaného disku. Při vytváření spravovaných disků se virtuální pevné disky nahrají jako objekty blob stránky a pak se převedou na spravované disky. Spravované disky jsou připojené ke skupinám prostředků zadaným v době vytváření objednávky.
-
-  - Pokud byla vaše kopie na spravované disky v Azure úspěšná, můžete přejít na **Podrobnosti objednávky** v Azure Portal a poznamenat si skupinu prostředků zadanou pro službu Managed disks.
-
-      ![Zobrazit podrobnosti objednávky](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
-
-    Přejděte do vyznačené skupiny prostředků a vyhledejte své spravované disky.
-
-      ![Skupina prostředků pro spravované disky](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
-
-  - Pokud jste zkopírovali VHDX nebo dynamický/Rozdílový virtuální pevný disk, pak se disk VHDX/VHD nahraje do pracovního účtu úložiště jako objekt blob bloku. Do svého přípravného **účtu úložiště > objekty blob** a pak vyberte odpovídající kontejner – StandardSSD, StandardHDD nebo PremiumSSD. Soubory VHDX/VHD by se měly zobrazit jako objekty blob bloku v přípravném účtu úložiště.
-
-Pokud chcete ověřit, že se data nahrála do Azure, postupujte takto:
-
-1. Přejděte k účtu úložiště přidruženému k vaší objednávce disků.
-2. Přejděte na **Blob service > Procházet objekty blob**. Zobrazí se seznam kontejnerů. Ve vašem účtu úložiště se vytvoří kontejnery se stejným názvem jako podsložky, které jste vytvořili ve složkách *BlockBlob* a *PageBlob*.
-    Pokud názvy složek neodpovídají zásadám vytváření názvů v Azure, nahrávání dat do Azure selže.
-
-4. K ověření, že se nahrála kompletní datová sada, použijte Průzkumníka služby Azure Storage. Připojte účet úložiště odpovídající objednávce pronájmu disků a prohlédněte si seznam kontejnerů objektů blob. Vyberte kontejner, klikněte na **…Další** a potom klikněte na **statistiku složky**. V podokně **Aktivity** se zobrazí statistika pro příslušnou složku, včetně počtu objektů blob a jejich celkové velikosti. Celková velikost objektů blob v bajtech by měla odpovídat velikosti datové sady.
-
-    ![Statistika složky v Průzkumníku služby Storage](media/data-box-disk-deploy-picked-up/folder-statistics-storage-explorer.png)
-
-## <a name="erasure-of-data-from-data-box-disk"></a>Vymazání dat z Data Box Disku
-
-Jakmile se kopírování dokončí a ověříte, že data jsou v účtu úložiště Azure, disky se bezpečně vymažou v souladu se standardem NIST.
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například jste se naučili:
 
 > [!div class="checklist"]
 > * Odeslání Data Box Disku do Microsoftu
-> * Ověření nahrání dat do Azure
-> * Vymazání dat z Data Box Disku
+> * Výběr Data Box Disk v různých oblastech
 
-
-Přejděte k dalšímu postupu, kde se naučíte, jak spravovat Data Box Disk prostřednictvím webu Azure Portal.
+Přejděte k dalšímu postupu, kde se dozvíte, jak ověřit nahrávání dat z Data Box Disk k účtu Azure Storage.
 
 > [!div class="nextstepaction"]
-> [Použití webu Azure Portal ke správě Azure Data Box Disku](./data-box-portal-ui-admin.md)
+> [Ověřit nahrávání dat z Azure Data Box Disk](./data-box-disk-deploy-picked-up.md)
 
 ::: zone-end
 
 
 ::: zone target="chromeless"
 
-# <a name="return-the-disk-and-verify-upload-to-azure"></a>Vrátit disk a ověřit odeslání do Azure
-
-## <a name="ship-to-azure"></a>Odeslání do Azure
+# <a name="return-the-disk-to-azure"></a>Vrátit disk do Azure
 
 1. Po dokončení ověření dat odpojte disky. Odeberte propojovací kabely.
 2. Zabalte všechny disky a propojovací kabely do bublinkové fólie a vložte je do přepravního boxu. Poplatky mohou platit, pokud chybí příslušenství.
     - Opětovné použití balíčku z prvotní dodávky  
     - Doporučujeme zabalit disky pomocí dobře zabezpečeného zalomení.
     - Ujistěte se, že je přizpůsobení Snug, aby se snížilo jakékoli přesuny v rámci pole.
+
 3. Další kroky určíte tak, že zařízení vracíte.
+
     - [Naplánujte si vyzvednutí v případě, že zařízení vrátíte v USA a Kanadě](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
     - [Naplánujte si vyzvednutí v rámci DHL pro Evropu](data-box-disk-deploy-picked-up.md#pick-up-in-europe) návštěvou svého webu a zadáním čísla faktury zpátečního.
-    - [Naplánování výdeje pro země v oblasti Austrálie – Tichomoří](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific-region) , jako je Austrálie, Japonsko, Korea a Singapur.
-4. Jakmile váš operátor vybere disky, stav objednávky na portálu se aktualizuje a zobrazí se ID sledování.
+    - [Naplánování výdeje pro země v oblasti Austrálie – Tichomoří](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific) , jako je Austrálie, Japonsko, Korea a Singapur.
 
-## <a name="verify-upload-to-azure"></a>Ověření nahrávání do Azure
-
-Po nahrání dat do Azure ověřte, že jsou vaše data v účtech úložiště, než je odstraníte ze zdroje. Vaše data můžou být v:
-
-- Váš účet Azure Storage. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
-
-    - **Pro objekty blob bloku a objekty blob stránky**: https://< storage_account_name >. blob. Core. Windows.<containername>NET//Files/a.txt
-
-    - **Pro soubory Azure**: https://< storage_account_name >. File. Core. Windows. NET/<sharename>/Files/a.txt
-
-    Alternativně můžete přejít na svůj účet Azure Storage na webu Azure Portal a dokončit navigaci tam.
-
-- Skupiny prostředků spravovaného disku. Při vytváření spravovaných disků se virtuální pevné disky nahrají jako objekty blob stránky a pak se převedou na spravované disky. Spravované disky jsou připojené ke skupinám prostředků zadaným v době vytváření objednávky.
+Po zvednutí disků vaším operátorem se zobrazí stav objednávky na portálu a zobrazí se ID sledování.
 
 ::: zone-end
 

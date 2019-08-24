@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 8/20/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: feaefef23b433a296d25cc11b5cd89d86acd280f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 34b4192a75978e90ded7554491a522387f6c663f
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650196"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013652"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače se systémem Linux v Azure Portal
 
@@ -110,7 +110,7 @@ Až budete hotovi, zadáním příkazu `exit` ukončete relaci SSH.
 
 V libovolném webovém prohlížeči zobrazte výchozí úvodní stránku serveru NGINX. Jako webovou adresu zadejte veřejnou IP adresu virtuálního počítače. Veřejnou IP adresu najdete na stránce přehledu virtuálního počítače nebo v připojovacím řetězci SSH, který jste použili dříve.
 
-![Výchozí web NGINX](./media/quick-create-cli/nginx.png)
+![Výchozí web NGINX](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

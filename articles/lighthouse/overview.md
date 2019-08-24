@@ -1,44 +1,49 @@
 ---
-title: Co je Azure maják?
-description: Azure maják umožňuje poskytovat spravované služby pro své zákazníky s využitím efektivity a vyšší automatizace ve velkém měřítku poskytovatelů služeb.
+title: Co je Azure Lighthouse?
+description: Azure Lighthouse umožňuje poskytovatelům služeb poskytovat spravované služby pro zákazníky s vyšším stupněm automatizace a efektivitou.
 author: JnHs
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 ms.service: lighthouse
 manager: carmonm
-ms.openlocfilehash: eb55af5a1121eb193bb76efc9f9e0b833f4b5a1f
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 05fa16504e25a6bf0f6aa1c0a348284abba6e1ed
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809817"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011906"
 ---
-# <a name="what-is-azure-lighthouse"></a>Co je Azure maják?
+# <a name="what-is-azure-lighthouse"></a>Co je Azure Lighthouse?
 
-Azure maják nabízí poskytovatelé služeb roviny jeden ovládací prvek zobrazení a správa Azure napříč svým zákazníkům s vyšší automatizace, škálování a vylepšené zásad správného řízení. S Azure maják poskytovatelů služeb doručovat spravované služby pomocí nástroje pro správu komplexní a robustní integrovaná do platformy Azure. Tuto nabídku mohou také těžit podnikové IT organizace, Správa prostředků ve více tenantech.
+Azure Lighthouse nabízí poskytovatelům služeb jedinou řídicí plochu pro zobrazení a správu Azure napříč všemi zákazníky, kteří mají vyšší automatizaci, škálování a vylepšené zásady správného řízení. S Azure Lighthouse můžou poskytovatelé služeb poskytovat spravované služby pomocí komplexních a robustních nástrojů pro správu, které jsou integrované v platformě Azure. Tato nabídka může také těžit z podnikových IT organizací, které spravují prostředky napříč více klienty.
 
-![Diagram s přehledem nástroje maják Azure](media/azure-lighthouse-overview.jpg)
+![Diagram s přehledem Azure Lighthouse](media/azure-lighthouse-overview.jpg)
 
 ## <a name="benefits"></a>Výhody
 
-Maják Azure vám umožní ziskem a efektivně vytvářet a poskytovat spravované služby pro vaše zákazníky. Mezi výhody patří:
+Azure Lighthouse pomáhá efektivně a efektivně sestavovat a doručovat spravované služby pro vaše zákazníky. Mezi výhody patří:
 
-- **Správy ve velkém měřítku**: Operace zapojení a životního cyklu zákazníků ke správě prostředků zákazníků jsou větší škálovatelnost a jednodušší.
-- **Nabízí větší přehled a přesnosti pro zákazníky, kteří**: Zákazníci, jehož prostředky, které spravujete, bude mít větší přehled o vašich akcí a mít naprostou kontrolu nad oboru delegují pro správu, zatímco vaše IP adresa se zachovají.
-- **Nástroje pro komplexní a unifikované platformy**: Naše nástroje a funkce řeší klíče služby poskytovatele scénáře, včetně více licenční modely, jako je například EA, CSP a s průběžnými platbami. Nové možnosti práce s existující nástroje a rozhraní API, licenční modely a partnerských programy, jako [programu Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/csp-overview). Azure maják možností si zvolit je možné integrovat do stávajících pracovních postupů a aplikací, a můžete sledovat vliv na zákazníky podle [propojení ID partnera](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
+- **Správa ve**velkém měřítku: Činnost zákazníků a operace životního cyklu pro správu zákaznických prostředků jsou jednodušší a lépe škálovatelné.
+- **Lepší viditelnost a přesnost pro zákazníky**: Zákazníci, jejichž prostředky, které spravujete, budou mít lepší přehled o vašich akcích a přesnou kontrolu nad oborem, který je delegovaný pro správu, zatímco vaše IP adresa se zachová.
+- **Komplexní a sjednocené nástroje pro platformu**: Naše nástroje využívají klíčové scénáře poskytovatele služeb, včetně několika modelů licencování, jako jsou EA, CSP a průběžné platby. Nové funkce fungují s existujícími nástroji a rozhraními API, licenčními modely a partnerskými programy, jako je například [program Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/csp-overview). Možnosti Azure Lighthouse, které zvolíte, se dají integrovat do stávajících pracovních postupů a aplikací. svůj dopad na zapojení zákazníků můžete sledovat tak, že propojíte [ID partnera](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
 
-Nejsou žádné další náklady spojené s použitím maják Azure ke správě prostředků Azure vašich zákazníků.
+K používání Azure Lighthouse se nevztahují žádné další poplatky za správu prostředků Azure vašich zákazníků.
 
 ## <a name="capabilities"></a>Možnosti
 
-Azure maják zahrnuje několik způsobů, jak vám pomůžou zjednodušit zapojení zákazníků a správy:
+Azure Lighthouse nabízí několik způsobů, jak zjednodušit zapojení a správu zákazníků:
 
-- **Delegovaná správa prostředků Azure**: Spravovat vaši zákazníci prostředků Azure z v rámci vašeho vlastního tenanta, aniž byste museli přepínat kontext a ovládací prvek rovin. Další informace najdete v tématu [delegovat správu prostředků Azure](./concepts/azure-delegated-resource-management.md).
-- **Nový web Azure portal, prostředí**: Zobrazit informace o napříč tenanty v nové **zákazníci** stránku [webu Azure portal](https://portal.azure.com). Odpovídající **poskytovatelé služeb** okno dá vašim zákazníkům umožňuje zobrazit a spravovat přístup poskytovatele služeb. Další informace najdete v tématu [zobrazit a spravovat zákazníky](./how-to/view-manage-customers.md) a [zobrazení a Správa poskytovatelů služeb](./how-to/view-manage-service-providers.md).
-- **Šablony Azure Resource Manageru**: Mnohem snazší provádět úlohy správy, včetně zprovoznění zákazníků Azure delegovat správu prostředků. Další informace najdete v tématu naše [ukázkové úložiště](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates) a [zapojení zákazníků Azure Delegovaná správa prostředků](how-to/onboard-customer.md).
-- **Spravované služby nabídky na webu Azure Marketplace**: Nabídka služeb zákazníkům prostřednictvím nabídky privátní nebo veřejné a potom kliknul automaticky připojit ke správě prostředků Azure delegovaný jako alternativu k registraci pomocí šablon Azure Resource Manageru. Další informace najdete v tématu [spravované nabídky služeb v Azure Marketplace](./concepts/managed-services-offers.md).
-- **Spravované aplikace Azure**: Balíček a dodávejte aplikace, které jsou vaši zákazníci mohli nasazení a používání v jejich vlastních předplatných. Aplikace je nasazená do skupiny prostředků můžete přistupovat z vašeho tenanta, takže můžete jednoduše spravovat službu jako součást celkové prostředí Azure maják. Další informace najdete v tématu [Azure managed applications přehled](https://docs.microsoft.com/azure/managed-applications/overview).
+- **Správa delegovaných prostředků Azure**: Spravujte prostředky Azure vašich zákazníků bezpečně z vlastního tenanta, aniž byste museli přepínat mezi nimi a řídicími rovinami kontextu. Další informace najdete v tématu [Správa delegovaných prostředků Azure](./concepts/azure-delegated-resource-management.md).
+- **Nové prostředí Azure Portal**: Zobrazit informace pro různé klienty na stránce noví **moji zákazníci** v [Azure Portal](https://portal.azure.com). Odpovídající okno **poskytovatelé služeb** umožňuje vašim zákazníkům zobrazovat a spravovat přístup k poskytovateli služeb. Další informace najdete v tématech [zobrazení a Správa zákazníků](./how-to/view-manage-customers.md) a [zobrazení a Správa poskytovatelů služeb](./how-to/view-manage-service-providers.md).
+- **Šablony Azure Resource Manager**: Snadnější provádění úloh správy, včetně připojování zákazníků pro správu delegovaných prostředků Azure Další informace najdete v našem [úložišti ukázek](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates) a připojení [zákazníka k delegované správě prostředků Azure](how-to/onboard-customer.md).
+- **Spravované služby nabízí Azure Marketplace**: Poskytněte svým službám zákazníkům soukromé nebo veřejné nabídky a automaticky je přiřaďte do správy delegovaných prostředků Azure, jako alternativu k připojování pomocí Azure Resource Manager šablon. Další informace najdete v tématu [Azure Marketplace nabídky spravovaných služeb](./concepts/managed-services-offers.md).
+- **Spravované aplikace Azure**: Balíčky a aplikace, které můžou zákazníci snadno nasadit a používat ve svých vlastních předplatných. Aplikace se nasadí do skupiny prostředků, ke které přistupujete z vašeho tenanta, což vám umožní spravovat službu jako součást celkového prostředí Azure Lighthouse. Další informace najdete v tématu [Přehled spravovaných aplikací Azure](https://docs.microsoft.com/azure/managed-applications/overview).
 
 > [!NOTE]
-> Možnosti popsané výše jsou aktuálně k dispozici ve veřejných cloudech. Regionální dostupnost jednotlivých služeb, naleznete v tématu [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/).
+> Výše popsané možnosti jsou aktuálně k dispozici ve veřejných cloudech. Informace o regionální dostupnosti jednotlivých služeb najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/).
+
+## <a name="next-steps"></a>Další postup
+
+- Další informace o [správě delegovaných prostředků Azure](concepts/azure-delegated-resource-management.md)
+- Přečtěte si o [prostředích pro správu mezi klienty](concepts/cross-tenant-management-experience.md).

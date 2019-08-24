@@ -4,17 +4,16 @@ description: Kontrolní seznam atributů zabezpečení pro vyhodnocení Azure Se
 services: service-bus-messaging
 ms.service: service-bus-messaging
 documentationcenter: ''
-author: msmbaldwin
-manager: barbkess
+author: axisc
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 0e1d6e041b47a261b549fb8b608cf09d0d6362dd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.author: aschhab
+ms.openlocfilehash: 875754282f9e7a2b8dd92b0eb2d7e277ac842696
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443900"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013114"
 ---
 # <a name="security-attributes-for-azure-service-bus-messaging"></a>Atributy zabezpečení pro zasílání zpráv Azure Service Bus
 
@@ -52,7 +51,7 @@ Tento článek popisuje atributy zabezpečení integrované do Azure Service Bus
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
 | Ověřování| Ano | Spravované prostřednictvím [Azure Active Directory identita spravované služby](service-bus-managed-service-identity.md); viz [Service Bus ověřování a autorizace](service-bus-authentication-and-authorization.md).|
-| Authorization| Ano | Podporuje autorizaci pomocí [RBAC](service-bus-role-based-access-control.md) (Preview) a tokenu SAS; viz [Service Bus ověřování a autorizace](service-bus-authentication-and-authorization.md). |
+| Authorization| Ano | Podporuje autorizaci pomocí [RBAC](authenticate-application.md) a tokenu SAS; viz [Service Bus ověřování a autorizace](service-bus-authentication-and-authorization.md). |
 
 
 

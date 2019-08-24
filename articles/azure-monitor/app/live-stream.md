@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f8203cade1d2e34a9852e945df03dc2fddc1fbe5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4e1d83d99f6df9407e24e2ae57af70f68858092d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359411"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012742"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Monitorování & diagnostiky s využitím 1 sekundové latence
 
@@ -107,7 +107,12 @@ Pokud chcete monitorovat určitou instanci role serveru, můžete filtrovat podl
 ![Ukázka neaktivních selhání](./media/live-stream/live-stream-filter.png)
 
 ## <a name="sdk-requirements"></a>Požadavky sady SDK
+
+### <a name="net"></a>.NET
 Vlastní Live Metrics Stream jsou k dispozici v rámci verze 2.4.0-beta2 nebo novější sady [Application Insights SDK pro web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/). Nezapomeňte z správce balíčků NuGet vybrat možnost zahrnout předběžné verze.
+
+### <a name="nodejs"></a>Node.js
+Live Metrics Stream je k dispozici v rámci verze 1.3.0 nebo novější sady [Application Insights SDK pro Node. js](https://npmjs.com/package/applicationinsights). Nezapomeňte použít `setSendLiveMetrics(true)` při konfiguraci sady SDK ve vašem kódu.
 
 ## <a name="secure-the-control-channel"></a>Zabezpečení řídicího kanálu
 Vlastní kritéria filtrů, která zadáte, se vrátí zpět na komponentu živých metrik v sadě Application Insights SDK. Filtry mohou potenciálně obsahovat citlivé informace, jako jsou například KódZákazníka. Kanál můžete nastavit jako zabezpečený pomocí tajného klíče rozhraní API, a to i pomocí klíče instrumentace.

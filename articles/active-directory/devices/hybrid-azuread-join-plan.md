@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ff24acd58d00f737a4342a7f45ddd22261a55be
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 62496aceb1454283449e952c0ed86623597e9e66
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562114"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011676"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -87,11 +87,13 @@ Pokud se spoléháte na nástroj pro přípravu systému (Sysprep) a pokud pro i
 
 Pokud při vytváření dalších virtuálních počítačů spoléháte na snímek virtuálního počítače, ujistěte se, že snímek není z virtuálního počítače, který je už zaregistrovaný ve službě Azure AD, jako připojení k hybridní službě Azure AD.
 
-Pokud jsou už vaše zařízení připojená k doméně Windows 10 registrovaná pro vašeho tenanta, důrazně doporučujeme tento stav odebrat předtím, než povolíte [službu](overview.md#getting-devices-in-azure-ad) Azure AD JOIN. Z verze Windows 10 1809 byly provedeny následující změny, aby se předešlo tomuto duálnímu stavu:
+Pokud jsou vaše zařízení připojená k doméně Windows 10 [registrovaná](overview.md#getting-devices-in-azure-ad) ve vašem tenantovi, může to vést k duálnímu stavu připojení k hybridní službě Azure AD a k zaregistrovanému zařízení Azure AD. Pro automatické vyřešení tohoto scénáře doporučujeme upgradovat na Windows 10 1803 (s použitím KB4489894) nebo novějším. Ve verzích starších než 1803 budete muset před povolením hybridního připojení k Azure AD ručně odebrat stav registrovaný pro službu Azure AD. V 1803 a vyšších verzích byly provedeny následující změny, aby nedocházelo k tomuto duálnímu stavu:
 
-- Veškerý stávající stav registrovaný v Azure AD by se po připojení zařízení k hybridní službě Azure AD automaticky odebral.
+- Veškerý stávající stav registrovaný v Azure AD by se <i>po připojení zařízení k hybridní službě Azure AD</i>automaticky odebral.
 - Zařízení připojenému k doméně můžete zabránit v registraci Azure AD přidáním tohoto klíče registru – HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = DWORD: 00000001.
-- Tato změna je nyní k dispozici pro vydání systému Windows 10 1803 s KB4489894. Pokud ale máte nakonfigurovaný Windows Hello pro firmy, uživatel musí po vyčištění duálního stavu znovu nastavit Windows Hello pro firmy.
+- Pokud máte v systému Windows 10 1803 nakonfigurovanou možnost Windows Hello pro firmy, uživatel musí po vyčištění duálního stavu znovu nastavit Windows Hello pro firmy. Tento problém se vyřešil pomocí KB4512509.
+
+
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD
 
@@ -150,7 +152,7 @@ V následující tabulce najdete podrobné informace o podpoře místních UPN s
 | Balíček | Spravovaní | Nepodporuje se | |
 | Bez směrování | Spravovaní | Nepodporuje se | |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Konfigurace hybridního Azure Active Directory JOIN pro federované prostředí](hybrid-azuread-join-federated-domains.md)

@@ -1,7 +1,7 @@
 ---
-title: Převést vlastnictví fakturace předplatného Azure na jiný účet | Dokumentace Microsoftu
-description: Popisuje, jak převést vlastnictví fakturace předplatného Azure na jiný účet a některé nejčastější dotazy (FAQ) o procesu
-keywords: Převod předplatného přenos předplatného azure, azure, přesunout předplatné azure na jiný účet azure změnit vlastníka předplatného, přenos předplatného azure do jiné převod účtu, azure billing
+title: Přeneste vlastnictví fakturace předplatného Azure na jiný účet | Microsoft Docs
+description: Popisuje, jak přenést vlastnictví fakturace předplatného Azure na jiný účet a nejčastější dotazy k procesu.
+keywords: Přeneste si předplatné Azure, předplatné Azure transferu, přesuňte předplatné Azure na jiný účet, vlastníka Azure Change Subscription, přeneste předplatné Azure na jiný účet, fakturační přenos Azure
 author: bandersmsft
 manager: amberb
 tags: billing,top-support-issue
@@ -13,207 +13,209 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d41e32065e3de37eb8f01ab1b836040e7f57b12
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 1e4496e2b5d2b21fd878ef68665b8e5b06fa6cc5
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657877"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012551"
 ---
-# <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převést vlastnictví fakturace předplatného Azure na jiný účet
+# <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Přenos vlastnictví fakturace předplatného Azure na jiný účet
 
-Můžete chtít převést vlastnictví fakturace předplatného Azure, pokud jsou byste museli opustit organizaci, nebo chcete, aby vaše předplatné účtovat na jiný účet. Převést vlastnictví fakturace na jiný účet poskytuje správcům v rámci nového účtu oprávnění k provádění fakturační úkoly, jako změnit způsob platby, zobrazení nákladů a zrušit předplatné.
+Pokud odejdete do vaší organizace, nebo chcete, aby se vaše předplatné účtovalo na jiný účet, můžete chtít přenést vlastnictví fakturace vašeho předplatného Azure. Převod vlastnictví fakturace na jiný účet poskytuje správcům v novém účtu oprávnění k provádění fakturačních úkolů, jako je třeba Změna způsobu platby, zobrazit poplatky a zrušit předplatné.
 
-Pokud chcete zachovat vlastnictví fakturace ale změnit typ vašeho předplatného, přečtěte si téma [přepnout vašeho předplatného Azure na jinou nabídku](billing-how-to-switch-azure-offer.md). Pokud chcete řídit, kdo může spravovat prostředky v rámci předplatného, přečtěte si téma [předdefinované role pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Pokud chcete zachovat vlastnictví fakturace, ale změnit typ vašeho předplatného, přečtěte si téma [Přepnutí předplatného Azure na jinou nabídku](billing-how-to-switch-azure-offer.md). Pokud chcete řídit, kdo může spravovat prostředky v předplatném, přečtěte si téma [předdefinované role pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
-Pokud jste zákazníkem Agreement(EA) organizace, může správce organizace převést vlastnictví fakturace z vašich předplatných mezi účty. Další informace najdete v tématu [převést vlastnictví fakturace předplatného Enterprise Agreement (EA)](#transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions).
+Pokud jste zákazníkem smlouva Enterprise (EA), můžou správci vaší organizace přenášet vlastnictví fakturace vašich předplatných mezi účty. Další informace najdete v tématu [přenos vlastnictví fakturace předplatných smlouva Enterprise (EA)](#transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions).
 
-## <a name="transfer-billing-ownership-of-an-azure-subscription"></a>Převést vlastnictví fakturace předplatného Azure
+## <a name="transfer-billing-ownership-of-an-azure-subscription"></a>Přenos vlastnictví fakturace předplatného Azure
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce fakturační účet, který má předplatné, které chcete převést. Pokud jste správce, najdete v tématu [– nejčastější dotazy](#faq).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce fakturačního účtu s předplatným, které chcete přenést. Chcete-li zjistit, zda jste správce, přečtěte si [Nejčastější dotazy](#faq).
 
 1. Hledat na **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
 
-1. Vyberte **předplatná** v levém podokně. V závislosti na přístup, budete muset vybrat fakturační obor a pak vyberte **předplatná** nebo **předplatná Azure**.
+1. V levém podokně vyberte odběry. V závislosti na vašem přístupu možná budete muset vybrat obor fakturace a pak vybrat předplatná nebo **předplatné Azure**.
 
-1. Vyberte **převést vlastnictví fakturace** pro předplatné, které chcete převést. 
+1. U předplatného, které chcete přenést, vyberte **přenést vlastnictví fakturace** . 
 
-   ![Vyberte předplatné pro přenos](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
+   ![Vyberte předplatné, které chcete přenést.](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
 
-1. Zadejte e-mailová adresa uživatele, který je správcem fakturace účtu, který bude nový vlastník předplatného a pak vyberte **odeslat žádost o převod**.
+1. Zadejte e-mailovou adresu uživatele, který je správcem fakturace účtu, který bude novým vlastníkem tohoto předplatného.
+
+1. Pokud přenášíte předplatné na účet v jiném tenantovi služby Azure AD, vyberte, jestli chcete přesunout předplatné do tenanta nového účtu. Další informace najdete v tématu [přenos předplatného do účtu v jiném tenantovi služby Azure AD](#transferring-subscription-to-an-account-in-another-azure-ad-tenant) .
 
     > [!IMPORTANT]
     >
-    > Pokud se převést vlastnictví fakturace předplatného na účet uživatele v jiné služby Azure AD tenanta, všechny [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) přiřazení ke správě prostředků v předplatném se trvale odeberou. Nový vlastník budou mít přístup ke správě prostředků v předplatném. Další informace najdete v tématu [přenos předplatného na uživatele v jiném tenantovi Azure AD](../active-directory/managed-identities-azure-resources/known-issues.md).
+    > Pokud se rozhodnete přesunout předplatné do tenanta Azure AD nového účtu, trvale se odeberou všechna přiřazení [řízení přístupu na základě rolí (RBAC)](../role-based-access-control/overview.md) pro správu prostředků v předplatném. Přístup ke správě prostředků v předplatném bude mít jenom uživatel v novém účtu, který požadavek na přenos přijme. Další informace najdete v tématu [přenos předplatného uživateli v jiném tenantovi služby Azure AD](../active-directory/managed-identities-azure-resources/known-issues.md). Případně můžete zrušit políčko u předplatného tenanta Azure AD, abyste přenesli vlastnictví fakturace bez přesunu předplatného na tenanta nového účtu. Pokud to uděláte, zachovají se stávající oprávnění RBAC pro správu prostředků Azure.
   
-    ![Odeslat zprávu na pager přenosu](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
+    ![Stránka pro odeslání přenosu](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
-1. Uživatel dostane e-mail s pokyny ke kontrole vašeho požadavku na převedení.
+1. Vyberte **Odeslat požadavek na přenos**.
 
-   ![E-mailu přenos předplatného příjemci](./media/billing-subscription-transfer/billing-receiver-email.png)
+1. Uživatel dostane e-mail s pokyny ke kontrole žádosti o přenos.
 
-1. Schválit žádost o převod, uživatel vybere odkaz v e-mailu a postupuje podle pokynů. Uživatel bude muset vyberte způsob platby, který se použije k úhradě předplatného. Kromě toho pokud uživatel nemá účet Azure, by mají si zaregistrovat nový účet. 
+   ![E-mail pro přenos předplatných odeslaný příjemci](./media/billing-subscription-transfer/billing-receiver-email.png)
 
-   ![První předplatné přenos webové stránky](./media/billing-subscription-transfer/billing-accept-ownership-step1.png)
+1. Pokud chcete žádost o přenos schválit, uživatel vybere odkaz v e-mailu a postupuje podle pokynů. Uživatel bude muset zvolit způsob platby, který se použije k platbě za předplatné. Pokud navíc uživatel nemá účet Azure, musel by se zaregistrovat k novému účtu. 
 
-   ![Druhý předplatné přenos webové stránky](./media/billing-subscription-transfer/billing-accept-ownership-step2.png)
+   ![Webová stránka převodu prvního předplatného](./media/billing-subscription-transfer/billing-accept-ownership-step1.png)
 
-   ![Druhý předplatné přenos webové stránky](./media/billing-subscription-transfer/billing-accept-ownership-step3.png)
+   ![Druhá webová stránka převodu předplatného](./media/billing-subscription-transfer/billing-accept-ownership-step2.png)
 
-1. Výborně! Nyní převodu předplatného.
+   ![Druhá webová stránka převodu předplatného](./media/billing-subscription-transfer/billing-accept-ownership-step3.png)
 
-## <a name="transferring-subscription-to-an-account-in-another-azure-ad-tenant"></a>Přenos předplatného do účtu v jiném tenantovi Azure AD
+1. Výborně! Předplatné se teď přenáší.
 
-Tenanta služby Azure Active Directory (AD) se vytvoří pro vás při registraci k Azure. Klient představuje váš účet. Správa přístupu ke svým předplatným a prostředkům pomocí tenanta.
+## <a name="transferring-subscription-to-an-account-in-another-azure-ad-tenant"></a>Převod předplatného na účet v jiném tenantovi služby Azure AD
 
-Když vytvoříte nové předplatné, je hostován v tenantovi Azure AD vašeho účtu. Pokud chcete poskytnout ostatním přístup k předplatnému nebo prostředkům, musíte pozvat do tenanta. Díky tomu můžete řídit přístup ke svým předplatným a prostředkům.
+Tenant Azure Active Directory (AD) se vytvoří za vás při registraci do Azure. Tenant představuje váš účet. Tenant se používá ke správě přístupu k předplatným a prostředkům.
 
-Když převést vlastnictví fakturace předplatného do účtu v jiném tenantovi Azure AD, předplatné se přesune do nového účtu tenanta. Všechny uživatele, skupiny nebo instanční objekty, kteří měli [na základě rolí (RBAC) přístup](../role-based-access-control/overview.md) ke správě prostředků v předplatném přijít o přístup. Pouze uživatel na nový účet, který přijímá vašeho požadavku na převedení bude mít přístup ke správě prostředků. Pokud chcete poskytnout přístup uživatelům, kteří původně měli přístup, musel nového vlastníka [ručně přidat tyto uživatele k předplatnému](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Když vytváříte nové předplatné, je hostované v tenantovi Azure AD vašeho účtu. Pokud chcete poskytnout ostatním uživatelům přístup k vašemu předplatnému nebo jeho prostředkům, musíte je pozvat, aby se připojili k vašemu tenantovi. To vám pomůže řídit přístup k předplatným a prostředkům.
+
+Když přenášíte vlastnictví fakturace předplatného na účet v jiném tenantovi služby Azure AD, můžete přesunout předplatné do tenanta nového účtu. Pokud to uděláte, všichni uživatelé, skupiny nebo instanční objekty, které mají [přístup na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md) , ke správě předplatných a jejich prostředky ztratí přístup. Přístup ke správě prostředků bude mít jenom uživatel v novém účtu, který přijme vaši žádost o přenos. Aby bylo možné poskytnout přístup uživatelům, kteří mají původně přístup, bude muset nový vlastník [Přidat tyto uživatele do předplatného ručně](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 
-## <a name="transferring-visual-studio-microsoft-partner-network-mpn-and-pay-as-you-go-devtest-subscriptions"></a>Přenos sady Visual Studio, Microsoft Partner Network (MPN) a průběžné platby. vývojové a testovací předplatné
+## <a name="transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions"></a>Přenos předplatných pro vývoj a testování v programu Visual Studio, MPN a průběžné platby
 
-Předplatná sady Visual Studio a Microsoft Partner Network máte opakované kreditu Azure měsíčně k nim má přiřazené. Při přenosu těchto předplatných, váš kredit není k dispozici v cílovém fakturačního účtu. Předplatné používá tento kredit v cílovém fakturačního účtu. Například pokud Bob přenese předplatné Visual Studio Enterprise pro účet na 9. září a Jana Jana přijme přenos. Po dokončení přenosu předplatného spustí pomocí platební Jana účtu. Kreditu obnoví každý měsíc na 9. 
+K předplatným sady Visual Studio a Microsoft Partner Network se přiřadí měsíční kredit Azure, který je k nim přidružený. Při přenosu těchto předplatných není váš kredit k dispozici v cílovém fakturačním účtu. Předplatné používá kredit v cílovém fakturačním účtu. Například pokud Bob přenáší Visual Studio Enterprise předplatné na účet Jana v 9 září a Jana akceptuje přenos. Po dokončení přenosu začne předplatné používat kredit v účtu Jana. Kredit se resetuje každý měsíc 9. 
 
 
 <a id="EA"></a>
 
-## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Převést vlastnictví fakturace předplatného Enterprise Agreement (EA)
+## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Přenos vlastnictví fakturace předplatných smlouva Enterprise (EA)
 
-Podnikový správce může převést vlastnictví předplatného mezi účty v rámci registrace. Další informace najdete v tématu [přenos vlastnictví účtu](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) přes portál EA.
+Podnikový správce může přenášet vlastnictví předplatných mezi účty v rámci registrace. Další informace najdete v tématu [přenos vlastnictví účtu](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) na portálu EA.
 
-<a id="CSP"></a>
+## <a name="next-steps-after-accepting-billing-ownership"></a>Další kroky po přijetí vlastnictví fakturace
 
-## <a name="next-steps-after-accepting-billing-ownership"></a>Další kroky následující po přijetí vlastnictví fakturace
+Pokud jste přijali vlastnictví fakturace předplatného Azure, doporučujeme vám projít si tyto další kroky:
 
-Pokud jste přijali vlastnictví fakturace předplatného Azure, doporučujeme, abyste že si přečetli tyto další kroky:
-
-1. Zkontrolovat a aktualizovat Správce služby, Spolusprávci a ostatní role RBAC. Další informace najdete v tématu [přidat nebo změnit správce předplatného Azure](billing-add-change-azure-subscription-administrator.md) a [správě přístupu pomocí RBAC a webu Azure portal](../role-based-access-control/role-assignments-portal.md).
-1. Aktualizace přihlašovacích údajů spojené se službami tohoto předplatného, včetně:
-   1. Certifikáty pro správu, které uživateli udělit oprávnění správce pro prostředky předplatného. Další informace najdete v tématu [vytvoření a nahrání certifikátu pro správu pro Azure](../cloud-services/cloud-services-certs-create.md)
-   1. Přístupové klíče pro služby, jako jsou úložiště. Další informace najdete v tématu [účty Azure storage](../storage/common/storage-create-storage-account.md)
-   1. Pověření vzdáleného přístupu pro služby, jako jsou Azure Virtual Machines.
-1. Pokud pracujete s partnerem, zvažte aktualizaci ID partnera v tomto předplatném. Můžete aktualizovat ID partnera v [webu Azure portal](https://portal.azure.com). Další informace najdete v tématu [propojit účtů Azure s ID partnera.](billing-partner-admin-link-started.md)
+1. Zkontrolujte a aktualizujte Správce služby, spolusprávce a další role RBAC. Další informace najdete v tématech [Přidání nebo změna správců předplatného Azure](billing-add-change-azure-subscription-administrator.md) a [Správa přístupu pomocí RBAC a Azure Portal](../role-based-access-control/role-assignments-portal.md).
+1. Aktualizujte přihlašovací údaje přidružené k službám tohoto předplatného, včetně:
+   1. Certifikáty pro správu, které udělují oprávnění správce uživatelům k prostředkům předplatného. Další informace najdete v tématu [Vytvoření a nahrání certifikátu pro správu pro Azure](../cloud-services/cloud-services-certs-create.md) .
+   1. Přístupové klíče pro služby, jako je úložiště Další informace najdete v tématu [informace o účtech Azure Storage](../storage/common/storage-create-storage-account.md) .
+   1. Přihlašovací údaje vzdáleného přístupu pro služby, jako je Azure Virtual Machines.
+1. Pokud pracujete s partnerem, zvažte aktualizaci ID partnera v tomto předplatném. ID partnera můžete aktualizovat v [Azure Portal](https://portal.azure.com). Další informace najdete v tématu [propojení ID partnera s účty Azure](billing-partner-admin-link-started.md) .
 
 <a id="supported"></a>
 
-## <a name="supported-subscription-types"></a>Typy podporované předplatného
+## <a name="supported-subscription-types"></a>Podporované typy předplatného
 
-Převod předplatného na webu Azure Portal je k dispozici níže uvedené typy předplatného. Aktuálně není podporován převod pro [bezplatnou zkušební verzi](https://azure.microsoft.com/offers/ms-azr-0044p/) nebo [Azure v Open (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) předplatných. Alternativní řešení, najdete v části [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md). Přenášet další předplatná, jako jsou [sponzorství](https://azure.microsoft.com/offers/ms-azr-0036p/) nebo plány podpory, [obraťte na podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Přenos předplatného v Azure Portal je k dispozici pro níže uvedené typy předplatného. V současné době se přenos nepodporuje pro odběry [bezplatné zkušební verze](https://azure.microsoft.com/offers/ms-azr-0044p/) nebo [systém Azure v rámci licenčního programu Open (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) . Alternativní řešení najdete v článku [Přesunutí prostředků do nové skupiny prostředků nebo](../azure-resource-manager/resource-group-move-resources.md)předplatného. Pokud chcete přenést další předplatná [](https://azure.microsoft.com/offers/ms-azr-0036p/) , jako jsou sponzorství nebo plány podpory, obraťte se na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 - [Smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
 - [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)  
-- [Předplatitelé sady Visual Studio Enterprise (MPN)](https://azure.microsoft.com/offers/ms-azr-0029p/) 
-- [Předplatné MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p/)  
-- [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/) 
-- [Vývoj/testování s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0023p/)
+- [Předplatitelé Visual Studio Enterprise (MPN)](https://azure.microsoft.com/offers/ms-azr-0029p/) 
+- [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p/)  
+- [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) 
+- [Průběžné platby dle aktuálního využití pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)
 - [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
 - [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)
 - [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)
 - [Microsoft Azure Plan](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
 
-\* [Na portálu EA](#EA).
+\*[Prostřednictvím portálu EA](#EA).
 
-\*\* Podporováno pouze pro účty, které jsou vytvořeny během přihlášení si na webu Azure. 
+\*\*Podporuje se jenom pro účty, které se vytvořily během registrace na webu Azure. 
 
 <a id="faq"></a>
 
-## <a name="frequently-asked-questions-faq-for-senders"></a>Nejčastější dotazy (FAQ) pro odesílatele
+## <a name="frequently-asked-questions-faq-for-senders"></a>Nejčastější dotazy týkající se odesílatelů
 
-Tyto nejčastější dotazy k použití pro uživatele, kteří se převést vlastnictví fakturace předplatného Azure na jiný účet.
+Tyto nejčastější dotazy se vztahují na uživatele, kteří převádějí vlastnictví fakturace předplatného Azure na jiný účet.
 
-### <a name="whoisaa"></a> Kdo je správcem fakturačního účtu?
+### <a name="whoisaa"></a>Kdo je účet správcem fakturace účtu?
 
-Správce fakturace je osoba, která má oprávnění ke správě fakturace pro účet. Mají autorizaci pro přístup k fakturaci na [webu Azure portal](https://portal.azure.com) a provádění různých úloh fakturace, jako je vytvoření předplatných, zobrazení a platit podle faktury nebo aktualizace platebních metod.
+Správce fakturace je osoba, která má oprávnění ke správě fakturace pro účet. Mají oprávnění získat přístup k fakturaci na [Azure Portal](https://portal.azure.com) a provádět různé fakturační úkoly, jako je vytváření předplatných, zobrazení a platby faktury nebo aktualizace způsobů platby.
 
-K identifikaci předplatná, u kterých jste správcem fakturace, postupujte následovně:
+K identifikaci účtů, u kterých jste správcem fakturace, použijte následující postup:
 
-1. Přejděte [Správa nákladů a fakturace stránky na webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
-1. Vyberte **předplatná** v levém podokně. V závislosti na přístup, budete muset vybrat fakturační obor a pak vyberte **předplatná** nebo **předplatných Azure**
-1. Na stránce předplatná zobrazí všechna předplatná, u kterých jste správcem fakturace.
+1. Přejděte na [stránku cost management + fakturace v Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
+1. V levém podokně vyberte **všechny fakturační rozsahy** . 
+1. Na stránce Předplatná najdete seznam všech předplatných, pro které jste správcem fakturace.
 
-### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Všechno, co přenosu? Včetně skupin prostředků, virtuální počítače, disků a další služby spuštěné?
+### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Převádí všechno? Včetně skupin prostředků, virtuálních počítačů, disků a dalších spuštěných služeb?
 
-Všechny prostředky, jako jsou virtuální počítače, disky a websites přenosy do nového účtu. Ale pokud se převod předplatného do účtu v jiné služby Azure AD tenanta, některé [role správce](billing-add-change-azure-subscription-administrator.md) a [řízení přístupu na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md) přiřazení předplatného [nepodporují přenos](#transferring-subscription-to-an-account-in-another-azure-ad-tenant). Navíc [registrace aplikací](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) a dalších služeb specifickým pro tenanta se nepřevádějí spolu se předplatné.
+Všechny vaše prostředky, jako jsou virtuální počítače, disky a weby, se přenesou do nového účtu. Pokud však přenášíte předplatné na účet v jiném tenantovi služby Azure AD, žádné [role správce](billing-add-change-azure-subscription-administrator.md) a přiřazení [Access Control na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md) v předplatném se nepřenášejí. [](#transferring-subscription-to-an-account-in-another-azure-ad-tenant) [Registrace aplikací](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) a jiné služby specifické pro tenanta se také nepřenosují společně s předplatným.
 
-### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Může převést vlastnictví na účet v jiné zemi?
-Bohužel křížové země převody nelze provést na webu Azure Portal. Pro přenos předplatného v zemích, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Můžu přenášet vlastnictví na účet v jiné zemi?
+Transfery mezi země se v Azure Portal bohužel nedají provést. Pokud chcete přenést předplatné mezi země, [obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)se na podporu.
 
-### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>Jsem správce na dva účty. Je možné převést předplatné z jednoho účty do jiného?
-Ano, můžete převod předplatného mezi účty. Vaše účty považují koncepčně účty ve dvou různých uživatelů, proto použijete výše uvedené kroky pro přenos předplatného mezi účty.
+### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>Jsem správce na dvou účtech. Můžu přenášet předplatné z jednoho z mých účtů na jiný?
+Ano, můžete přenést předplatné mezi vašimi účty. Vaše účty jsou koncepčně považované za účty dvou různých uživatelů, abyste mohli použít výše uvedené kroky k přenosu předplatných mezi vašimi účty.
 
-### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Převod předplatného za následek způsobilo výpadek služeb?
+### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Způsobí přenos předplatného nějaké výpadky služeb?
 
-Pokud převod předplatného na uživatele ve stejném tenantovi Azure AD, neexistuje žádný vliv na prostředky spuštěné v rámci předplatného.  Ale pokud převedete předplatné pro uživatele v jiném tenantovi, všechny uživatele, skupiny nebo instanční objekty, kteří měli [na základě rolí (RBAC) přístup](../role-based-access-control/overview.md) ke správě prostředků v předplatném přijít o přístup. 
+Pokud přenesete předplatné na účet ve stejném tenantovi Azure AD, nebude to mít žádný vliv na prostředky spuštěné v rámci předplatného. Pokud však přenesete předplatné na účet v jiném tenantovi a rozhodnete se přesunout předplatné do tenanta, všichni uživatelé, skupiny a instanční objekty, které mají [přístup na základě role (RBAC)](../role-based-access-control/overview.md) pro správu prostředků v předplatném, ztratí přístup . To může vést k výpadkům služby.
 
-### <a name="does-the-recipient-have-access-to-usage-and-billing-history"></a>Má příjemce přístup k využití a historii fakturace?
+### <a name="do-users-in-new-account-have-access-to-usage-and-billing-history"></a>Mají uživatelé v novém účtu přístup k historii využití a fakturace?
 
-Jediná informace, které jsou k dispozici pro příjemce je toto poslední měsíc nákladů pro vaše předplatné. Zbývající část využití a historii fakturace nepřenese s předplatným
+Jediné informace, které jsou k dispozici uživatelům v novém účtu, jsou náklady za poslední měsíc vašeho předplatného. Zbytek historie využití a fakturace se nepřevádí do předplatného.
 
-### <a name="how-do-i-migrate-data-and-services-for-my-azure-subscription-to-new-subscription"></a>Jak migrovat data a služby pro svoje předplatné Azure k novému předplatnému?
+### <a name="how-do-i-migrate-data-and-services-for-my-azure-subscription-to-new-subscription"></a>Návody migrovat data a služby pro předplatné Azure do nového předplatného?
 
-Pokud nelze převést vlastnictví předplatného, můžete ručně migrovat vaše prostředky. Zobrazit [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
+Pokud nemůžete převést vlastnictví předplatného, můžete prostředky migrovat ručně. Viz [Přesunutí prostředků do nové skupiny prostředků nebo](../azure-resource-manager/resource-group-move-resources.md)předplatného.
 
-### <a name="if-i-transfer-a-visual-studio-or-microsoft-partner-network-subscription-does-my-credit-carry-forward-with-the-subscription-in-the-new-account"></a>Pokud je možné převést předplatné sady Visual Studio nebo programu Microsoft Partner Network, svůj kredit převést do dalšího období předplatného na nový účet?
+### <a name="if-i-transfer-a-visual-studio-or-microsoft-partner-network-subscription-does-my-credit-carry-forward-with-the-subscription-in-the-new-account"></a>Když Přenáším předplatné sady Visual Studio nebo Microsoft Partner Network, přenese můj kredit do nového účtu předplatné?
 
-Ne, váš kredit není k dispozici v rámci nového účtu. Uživatel, který přijme žádost o převod musí mít licenci sady Visual Studio tak, aby přijímal žádosti o přenos. Odběr využívá kredit sady Visual Studio, která je k dispozici v účtu uživatele. Další informace najdete v tématu [předplatných sady Visual Studio přenosu, Microsoft Partner Network (MPN) a průběžné platby pro vývoj/testování](#transferring-visual-studio-microsoft-partner-network-mpn-and-pay-as-you-go-devtest-subscriptions)
+Ne, váš kredit není v novém účtu k dispozici. Uživatel, který přijme požadavek na přenos, musí mít licenci sady Visual Studio, aby mohl přijmout žádost o přenos. Předplatné používá kredit sady Visual Studio, který je k dispozici v uživatelském účtu. Další informace najdete v tématech [přenos sady Visual Studio, Microsoft Partner Network (MPN) a průběžné platby podle svých předplatných pro vývoj a testování](#transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions).
 
 
-## <a name="frequently-asked-questions-faq-for-recipients"></a>Nejčastější dotazy (FAQ) pro příjemce
+## <a name="frequently-asked-questions-faq-for-recipients"></a>Nejčastější dotazy týkající se příjemců
 
-Tyto nejčastější dotazy k použití pro uživatele, kteří jsou převzetí vlastnictví fakturace předplatného služby Azure z jiného účtu.
+Tyto nejčastější dotazy se vztahují na uživatele, kteří přijímají vlastnictví fakturace předplatného Azure z jiného účtu.
 
-### <a name="if-i-take-over-billing-ownership-of-a-subscription-from-another-account-do-users-in-that-account-continue-to-have-access-to-my-resources"></a>Pokud převzít vlastnictví fakturace předplatného z jiného účtu dělat v tom, že účet i nadále mít přístup k prostředkům Moje uživatele?
+### <a name="if-i-take-over-billing-ownership-of-a-subscription-from-another-account-do-users-in-that-account-continue-to-have-access-to-my-resources"></a>Pokud převezmem vlastnictví fakturace předplatného z jiného účtu, budou mít uživatelé tohoto účtu i nadále přístup k mým prostředkům?
 
-Pokud předplatné je přenesené na účet ve stejném tenantovi Azure AD, všechny uživatele, skupiny nebo instanční objekty, kteří měli [na základě rolí (RBAC) přístup](../role-based-access-control/overview.md) ke správě prostředků v předplatném zachovat jejich přístup. Chcete-li zobrazit, kteří mají přístup RBAC k předplatnému, postupujte následovně:
+Ano. Pokud je ale váš účet v tenantovi Azure AD, který se liší od tenanta předplatného a uživatel, který odeslal požadavek na přenos, přesune předplatné do tenanta vašeho účtu, všechny [role správců](billing-add-change-azure-subscription-administrator.md) a [Access Control na základě rolí (RBAC). ](../role-based-access-control/role-assignments-portal.md)přiřazení se odeberou. Chcete-li zobrazit uživatele, kteří mají přístup na [základě rolí (RBAC)](../role-based-access-control/overview.md) pro správu prostředků v rámci předplatného, použijte následující postup:
 
-1. Přejděte [stránku předplatné na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Vyberte předplatné, které chcete zkontrolovat a pak vyberte **řízení přístupu (IAM)** v levém podokně.
-1. Vyberte **přiřazení rolí** z horní části stránky. Na stránce přiřazení role uvedeny všechny uživatele, kteří mají přístup RBAC v rámci předplatného.
+1. Navštivte [stránku předplatného v Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Vyberte předplatné, které chcete kontrolovat, a pak v levém podokně vyberte **řízení přístupu (IAM)** .
+1. V horní části stránky vyberte **přiřazení rolí** . Na stránce přiřazení rolí jsou uvedeni všichni uživatelé, kteří mají k předplatnému přístup RBAC.
 
-Pokud předplatné je přenesené na účet v jiném tenantovi Azure AD, všechny uživatele, skupiny nebo instanční objekty, kteří měli [na základě rolí (RBAC) přístup](../role-based-access-control/overview.md) ke správě prostředků v předplatném přijít o přístup. Nicméně i v případě, že už nemají přístup RBAC, může stále mají přístup k předplatnému přes některé mechanismy zabezpečení, včetně:
+I když během přenosu dojde k odebrání přiřazení [Access Control na základě role (RBAC)](../role-based-access-control/role-assignments-portal.md) , mohou uživatelé v původním účtu vlastníka stále mít přístup k předplatnému prostřednictvím některých mechanismů zabezpečení, včetně těchto:
 
-* Certifikáty pro správu, které uživateli udělit oprávnění správce pro prostředky předplatného. Další informace najdete v tématu [vytvoření a nahrání certifikátu pro správu pro Azure](../cloud-services/cloud-services-certs-create.md).
-* Přístupové klíče pro služby, jako jsou úložiště. Další informace najdete v článku o [účtech Azure Storage](../storage/common/storage-create-storage-account.md).
-* Pověření vzdáleného přístupu pro služby, jako jsou Azure Virtual Machines.
+* Certifikáty pro správu, které udělují oprávnění správce uživatelům k prostředkům předplatného. Další informace najdete v tématu [Vytvoření a nahrání certifikátu pro správu pro Azure](../cloud-services/cloud-services-certs-create.md).
+* Přístupové klíče pro služby, jako je úložiště Další informace najdete v článku o [účtech Azure Storage](../storage/common/storage-create-storage-account.md).
+* Přihlašovací údaje vzdáleného přístupu pro služby, jako je Azure Virtual Machines.
 
-Pokud příjemce je potřeba omezit, přístup ke svým prostředkům, zvažte jejich aktualizuje všechny tajné kódy související se službou. Většinu prostředků lze aktualizovat pomocí následujících kroků:
+Pokud příjemce potřebuje omezit přístup ke svým prostředkům, měl by zvážit aktualizaci tajných kódů přidružených k této službě. Většinu prostředků je možné aktualizovat pomocí následujících kroků:
 
   1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
   2. V nabídce centra vyberte **všechny prostředky**.
   3. Vyberte prostředek.
-  4. Na stránce prostředků klikněte na **nastavení**. Tady si můžete zobrazit a aktualizovat existující tajných kódů.
+  4. Na stránce prostředek klikněte na **Nastavení**. Tady můžete zobrazit a aktualizovat existující tajné kódy.
 
-### <a name="if-i-take-over-the-billing-ownership-of-a-subscription-in-the-middle-of-the-billing-cycle-do-i-have-to-pay-for-the-entire-billing-cycle"></a>Pokud převzít vlastnictví fakturace předplatného uprostřed fakturačního cyklu musím platit pro celý fakturační cyklus?
+### <a name="if-i-take-over-the-billing-ownership-of-a-subscription-in-the-middle-of-the-billing-cycle-do-i-have-to-pay-for-the-entire-billing-cycle"></a>Pokud převezmem vlastnictví fakturace předplatného uprostřed fakturačního cyklu, musím platit za celý fakturační cyklus?
 
-Váš účet je zodpovědná za platby za jakékoliv využití, jež bude nahlášena z doby přenosu a vyšší. Může existovat několik využití, která proběhla před převodem ale byla nahlášena později. Využití je součástí vašeho účtu vyúčtování.
+Váš účet zodpovídá za platbu za jakékoliv použití, které je nahlášené od okamžiku přenosu. Může dojít k některému využití, které bylo provedeno před přenosem, ale následně bylo oznámeno. Využití je součástí faktury vašeho účtu.
 
-### <a name="can-i-use-a-different-payment-method"></a>Můžete použít jiný způsob platby?
+### <a name="can-i-use-a-different-payment-method"></a>Můžu použít jiný způsob platby?
 
-Ano. Při přijímání žádost o převod, můžete vybrat existující způsob platby, který je propojený s vaším účtem nebo přidat nový způsob platby.
+Ano. Při přijímání žádosti o přenos můžete vybrat stávající způsob platby, který je propojený s vaším účtem, nebo přidat nový způsob platby.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a id="no-button"></a> Proč nevidíte tlačítko "Převod předplatného"?
+### <a id="no-button"></a>Proč se mi nezobrazuje tlačítko "předplatné přenosu"?
 
-Bohužel není k dispozici pro váš fakturační účet samoobslužné převedení předplatného. V současné době nepodporujeme, přenos, vlastnictví fakturace účtu Enterprise Agreement (EA) na webu Azure Portal. Kromě toho účty Microsoft smlouvy zákazníka, které jsou vytvořeny při práci prostřednictvím Microsoft sales nepodporují převést vlastnictví fakturace předplatného. 
+Pro fakturační účet není k dispozici migrace samoobslužného předplatného. V současné době nepodporujeme převod vlastnictví předplatných v rámci účtů smlouva Enterprise (EA) v Azure Portal. Účty zákaznických slev společnosti Microsoft, které jsou vytvořeny při práci s zástupcem společnosti Microsoft, navíc nepodporují přenos vlastnictví fakturace. 
 
-### <a id="no-button"></a> Proč se mi nezobrazuje můj odběr zadejte přenos podporu? 
+### <a id="no-button"></a>Proč můj typ předplatného nepodporuje přenos? 
 
-Bohužel není podporováno všemi typy předplatných fakturační přenos vlastnictví. Chcete-li zobrazit seznam typů předplatného, které podporují přenosy, naleznete v tématu [podporované typy předplatného](#supported-subscription-types)
+Ne všechny typy předplatných podporují přenos vlastnictví fakturace. Seznam typů předplatného, které podporují přenosy, najdete v tématu [podporované typy](#supported-subscription-types) předplatného.
 
-### <a id="no-button"></a> Proč dochází při pokusu převést vlastnictví fakturace předplatného chybu odepření přístupu? 
+### <a id="no-button"></a>Proč se mi zobrazuje chyba odepření přístupu při pokusu o přenos vlastnictví předplatného? 
 
-Pokud se snažíte převod předplatného Microsoft Azure plánování a nemáte potřebná oprávnění, zobrazí se tato chyba. Na převod předplatného plánu Microsoft Azure, musíte být vlastníkem nebo přispěvatelem části faktury, ke kterému se účtuje předplatné. Další informace najdete v tématu [spravovat předplatná pro části faktury](billing-understand-mca-roles.md#manage-subscriptions-for-invoice-section).
+Tato chyba se zobrazí, pokud se pokoušíte přenést předplatné plánu Microsoft Azure a nemáte potřebná oprávnění. Pokud chcete přenést předplatné plánu Microsoft Azure, musíte být vlastníkem nebo přispěvatelem na faktuře, ke které se předplatné účtuje. Další informace najdete v [části Správa předplatných pro fakturu](billing-understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další postup
 
-- Zkontrolovat a aktualizovat Správce služby, Spolusprávci a ostatní role RBAC. Další informace najdete v tématu [přidat nebo změnit správce předplatného Azure](billing-add-change-azure-subscription-administrator.md) a [správě přístupu pomocí RBAC a webu Azure portal](../role-based-access-control/role-assignments-portal.md).
+- Zkontrolujte a aktualizujte Správce služby, spolusprávce a další role RBAC. Další informace najdete v tématech [Přidání nebo změna správců předplatného Azure](billing-add-change-azure-subscription-administrator.md) a [Správa přístupu pomocí RBAC a Azure Portal](../role-based-access-control/role-assignments-portal.md).
