@@ -83,10 +83,10 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |Východní USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Východní USA 2     |     S8, S9   |    1    |
-|Střed USA – sever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Střed USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Střed USA – jih     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Západní střed USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|Středoseverní USA     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Střední USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Středojižní USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Středozápadní USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA – západ     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |USA – západ     |    S8, S9   |    2  |
 |Západní USA 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |

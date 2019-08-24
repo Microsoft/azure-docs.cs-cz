@@ -44,7 +44,7 @@ Kombinace služeb a oblastí Azure, které podporují Zóny dostupnosti:
 
 |                                 |Amerika |              |           |           | Evropa |              |          |              | Asie a Tichomoří |                 |
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|
-|          |Střed USA|East US|Východní USA 2|USA – západ 2|Francie – střed|Severní Evropa|Velká Británie – jih|Západní Evropa|Japonsko – východ|Jihovýchodní Asie|
+|          |Střední USA|East US|Východní USA 2|USA – západ 2|Francie – střed|Severní Evropa|Velká Británie – jih|Západní Evropa|Japonsko – východ|Jihovýchodní Asie|
 | **Compute**                         |            |              |           |           |                |              |          |             |            |                |
 | Linux Virtual Machines          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Windows Virtual Machines        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |

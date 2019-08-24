@@ -54,7 +54,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
 
-  * Střed USA
+  * Střední USA
   * Střední USA – EUAP
 
 * Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs/) s povoleným zatížením pro [desktopový vývoj C++ ](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .

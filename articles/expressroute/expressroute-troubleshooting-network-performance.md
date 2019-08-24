@@ -182,7 +182,7 @@ Nastavení testu:
 |ExpressRoute<br/>Umístění|Azure<br/>Oblast|Odhad<br/>Distance (km)|Latence|1 relace<br/>Šířka pásma|Maximum<br/>Šířka pásma|
 | Seattle | Západní USA 2        |    191 km |   5 ms | 262.0 Mbit/s |  3.74 Gbits za sekundu |
 | Seattle | Západní USA          |  1,094 km |  18 ms |  82.3 Mbit/s |  3.70 Gbits za sekundu |
-| Seattle | USA – střed       |  2,357 km |  40 ms |  38.8 Mbit/s |  2.55 Gbits za sekundu |
+| Seattle | Střední USA       |  2,357 km |  40 ms |  38.8 Mbit/s |  2.55 Gbits za sekundu |
 | Seattle | Středojižní USA |  2,877 km |  51 ms |  30.6 Mbit/s |  2.49 Gbits za sekundu |
 | Seattle | Středoseverní USA |  2,792 km |  55 ms |  27.7 Mbit/s |  2.19 Gbits za sekundu |
 | Seattle | Východní USA 2        |  3,769 km |  73 ms |  21.3 Mbit/s |  1.79 Gbits za sekundu |

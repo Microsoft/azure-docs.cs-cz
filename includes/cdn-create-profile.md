@@ -36,7 +36,7 @@ Profil CDN představuje kontejner pro koncové body CDN a určuje cenovou úrove
     | **Název** | Jako název profilu zadejte *my-cdn-profile-123*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. |
     | **Předplatné** | V rozevíracím seznamu vyberte předplatné Azure. |
     | **Skupina prostředků** | Vyberte **Vytvořit nový** a jako název skupiny prostředků zadejte *my-resource-group-123*. Pokud už se používá, můžete zadat jiný název nebo můžete vybrat **Použít existující** a v rozevíracím seznamu zvolit **my-resource-group-123**. | 
-    | **Umístění skupiny prostředků** | V rozevíracím seznamu vyberte **Střed USA**. |
+    | **Umístění skupiny prostředků** | V rozevíracím seznamu vyberte **Střední USA**. |
     | **Cenová úroveň** | V rozevíracím seznamu vyberte **Verizon úrovně Standard**. |
     | **Vytvořte teď nový koncový bod CDN** | Tuto možnost ponechejte nevybranou. |  
    

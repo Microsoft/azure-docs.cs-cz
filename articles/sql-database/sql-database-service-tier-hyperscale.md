@@ -13,7 +13,7 @@ ms.reviewer: ''
 ms.date: 05/06/2019
 ms.openlocfilehash: ce6fc5d32fc9e17499a56cec7f4db2849370a1ec
 ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/26/2019
 ms.locfileid: "68566726"
@@ -156,7 +156,7 @@ Azure SQL Database úroveň škálování je aktuálně dostupná v následujíc
 - Austrálie – jihovýchod
 - Brazílie – jih
 - Kanada – střed
-- Střed USA
+- Střední USA
 - Čína – východ 2
 - Čína – sever 2
 - Východní Asie
@@ -167,10 +167,10 @@ Azure SQL Database úroveň škálování je aktuálně dostupná v následujíc
 - Japonsko – západ
 - Jižní Korea – střed
 - Jižní Korea – jih
-- Střed USA – sever
+- Středoseverní USA
 - Severní Evropa
 - Jižní Afrika – sever
-- Střed USA – jih
+- Středojižní USA
 - Jihovýchodní Asie
 - Velká Británie – jih
 - Spojené království – západ

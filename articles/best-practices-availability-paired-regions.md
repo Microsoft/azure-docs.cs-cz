@@ -43,9 +43,9 @@ Obrázek 1 – Azure oblastních párech
 | Japonsko |Japonsko – východ |Japonsko – západ |
 | Jižní Korea |Korea – střed |Jižní Korea – jih |
 | Severní Amerika |USA – východ |Západní USA |
-| Severní Amerika |Východní USA 2 |USA – střed |
+| Severní Amerika |Východní USA 2 |Střední USA |
 | Severní Amerika |Středoseverní USA |Středojižní USA |
-| Severní Amerika |Západní USA 2 |Západní střed USA 
+| Severní Amerika |Západní USA 2 |Středozápadní USA 
 | Jižní Afrika | Jižní Afrika – sever | Jižní Afrika – západ
 | Spojené království |Spojené království – západ |Velká Británie – jih |
 | Spojené arabské emiráty | Spojené arabské emiráty – sever | Spojené arabské emiráty – střed

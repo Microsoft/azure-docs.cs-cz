@@ -43,7 +43,7 @@ Pomocí skriptu PowerShellu vytvoříte prostředky.  Když spustíte skript, zo
 |Parametr|Hodnota|
 |------|------|
 |Název skupiny prostředků Azure | Zadejte jedinečný název pro skupinu prostředků.|
-|Umístění| Zadejte oblast Azure, například „Střed USA“. |
+|Umístění| Zadejte oblast Azure, například „Střední USA“. |
 |Název výchozího účtu úložiště | Zadejte jedinečný název účtu úložiště. |
 |Název clusteru | Zadejte jedinečný název clusteru Spark HDInsight.|
 |Přihlašovací údaje clusteru | Tento účet slouží pro připojení k řídicímu panelu clusteru v pozdější fázi rychlého startu.|

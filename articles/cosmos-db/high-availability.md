@@ -80,7 +80,7 @@ Tato funkce je k dispozici v následujících oblastech Azure:
 * Jihovýchodní Asie 
 * East US
 * Východní USA 2 
-* Střed USA
+* Střední USA
 * Západní Evropa
 * USA – západ 2
 

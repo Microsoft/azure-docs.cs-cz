@@ -63,7 +63,7 @@ ms.locfileid: "67305266"
 |:---|:---|:---|
 | Maximální počet sloupců v tabulce         | 500 | |
 | Maximální počet znaků pro název sloupce | 500 | |
-| Oblasti plně využívá kapacitu | Západní střed USA | Nelze vytvořit aktuálně nový pracovní prostor v této oblasti protože se nachází v dočasné kapacity. Toto omezení se plánuje ji adresovat podle konce září. května 2019. |
+| Oblasti plně využívá kapacitu | Středozápadní USA | Nelze vytvořit aktuálně nový pracovní prostor v této oblasti protože se nachází v dočasné kapacity. Toto omezení se plánuje ji adresovat podle konce září. května 2019. |
 | Export dat | není aktuálně k dispozici | Agregovat a export dat pomocí funkce Azure Functions nebo Logic App. | 
 
 >[!NOTE]

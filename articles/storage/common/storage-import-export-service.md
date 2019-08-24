@@ -125,10 +125,10 @@ Služba Azure Import/Export podporuje kopírování dat do a ze všech účtů �
 |Západní USA     |Západní Evropa         | Indie – jih        | US DoD – východ        |
 |Východní USA 2    | Východní Asie        |  Indie – západ        | US DoD – střed        |
 |Západní USA 2     | Jihovýchodní Asie        | Kanada – střed        | Čína – východ         |
-|USA – střed     | Austrálie – východ        | Kanada – východ        | Čína – sever        |
+|Střední USA     | Austrálie – východ        | Kanada – východ        | Čína – sever        |
 |Středoseverní USA     |  Austrálie – jihovýchod       | Brazílie – jih        | Velká Británie – jih        |
 |Středojižní USA     | Japonsko – západ        |Jižní Korea – střed         | Německo – střed        |
-|Západní střed USA     |  Japonsko – východ       | USA (Gov) – Virginia        | Německo – severovýchod        |
+|Středozápadní USA     |  Japonsko – východ       | USA (Gov) – Virginia        | Německo – severovýchod        |
 
 
 ## <a name="security-considerations"></a>Aspekty zabezpečení

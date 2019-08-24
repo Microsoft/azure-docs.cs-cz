@@ -46,7 +46,7 @@ Než začnete používat toto rozhraní API, pochopte:
 | Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Brazílie – jih | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kanada – střed | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Střed USA | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Střední USA | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Východní USA 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -54,9 +54,9 @@ Než začnete používat toto rozhraní API, pochopte:
 | Indie – střed | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Japonsko – východ | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Jižní Korea – střed | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Střed USA – sever | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Středoseverní USA | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Severní Evropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Střed USA – jih | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Středojižní USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Jihovýchodní Asie | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Velká Británie – jih | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Západní Evropa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |

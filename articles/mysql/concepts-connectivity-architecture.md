@@ -33,7 +33,7 @@ V následující tabulce jsou uvedeny primárních a sekundárních IP adres Azu
 | Brazílie – jih | 104.41.11.5 | |
 | Kanada – střed | 40.85.224.249 | |
 | Kanada – východ | 40.86.226.166 | |
-| USA – střed | 23.99.160.139 | 13.67.215.62 |
+| Střední USA | 23.99.160.139 | 13.67.215.62 |
 | Východní Čína 1 | 139.219.130.35 | |
 | Čína – východ 2 | 40.73.82.1 | |
 | Čína – sever 1 | 139.219.15.17 | |

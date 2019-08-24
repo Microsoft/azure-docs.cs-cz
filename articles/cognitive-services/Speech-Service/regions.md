@@ -38,9 +38,9 @@ Sada Speech SDK je k dispozici v těchto oblastech pro **rozpoznávání řeči*
  USA – západ 2 | `westus2` | https://westus2.cris.ai
  East US | `eastus` | https://eastus.cris.ai
  Východní USA 2 | `eastus2` | https://eastus2.cris.ai
- Střed USA | `centralus` | https://centralus.cris.ai
- Střed USA – sever | `northcentralus` | https://northcentralus.cris.ai
- Střed USA – jih | `southcentralus` | https://southcentralus.cris.ai
+ Střední USA | `centralus` | https://centralus.cris.ai
+ Středoseverní USA | `northcentralus` | https://northcentralus.cris.ai
+ Středojižní USA | `southcentralus` | https://southcentralus.cris.ai
  Střed Indie | `centralindia` | https://centralindia.cris.ai
  Východní Asie | `eastasia` | https://eastasia.cris.ai
  Jihovýchodní Asie | `southeastasia` | https://southeastasia.cris.ai
@@ -66,8 +66,8 @@ Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speec
  Evropa | Západní Evropa | `westeurope`
  Severní Amerika | East US | `eastus`
  Severní Amerika | Východní USA 2 | `eastus2`
- Severní Amerika | Střed USA – jih | `southcentralus`
- Severní Amerika | Západní střed USA | `westcentralus`
+ Severní Amerika | Středojižní USA | `southcentralus`
+ Severní Amerika | Středozápadní USA | `westcentralus`
  Severní Amerika | USA – západ | `westus`
  Severní Amerika | USA – západ 2 | `westus2`
  Jižní Amerika | Brazílie – jih | `brazilsouth`

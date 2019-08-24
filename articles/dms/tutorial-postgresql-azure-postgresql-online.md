@@ -260,7 +260,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
     Například následující příkaz vytvoří projekt s použitím těchto parametrů:
 
-   * Umístění: Západní střed USA
+   * Umístění: Středozápadní USA
    * Název skupiny prostředků: PostgresDemo
    * Název služby: PostgresCLI
    * Název projektu: PGMigration

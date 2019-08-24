@@ -41,14 +41,14 @@ ASC pro IoT Insights a vytváření sestav jsou k dispozici pomocí Azure IoT Hu
 ## <a name="supported-service-regions"></a>Podporované oblasti služby 
 
 ASC pro IoT se v současné době podporuje pro centra IoT v následujících oblastech Azure:
-  - Střed USA  
+  - Střední USA  
   - East US 
   - Východní USA 2
-  - Západní střed USA
+  - Středozápadní USA
   - USA – západ
   - Západní USA 2
   - Střed USA – jih
-  - Střed USA – sever
+  - Středoseverní USA
   - Kanada – střed
   - Kanada – východ 
   - Severní Evropa    

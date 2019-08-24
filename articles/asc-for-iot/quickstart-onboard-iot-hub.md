@@ -40,9 +40,9 @@ Tento článek popisuje, jak povolit Azure Security Center pro službu IoT v exi
 
 |Podporované oblasti služeb Azure | ||
 |---|---|---|
-| Střed USA |East US |Východní USA 2 |
-| Západní střed USA |USA – západ |Západní USA 2 |
-| Střed USA – jih|Střed USA – sever | Kanada – střed|
+| Střední USA |East US |Východní USA 2 |
+| Středozápadní USA |USA – západ |Západní USA 2 |
+| Střed USA – jih|Středoseverní USA | Kanada – střed|
 | Kanada – východ| Severní Evropa|Brazílie – jih|
 | Francie – střed| Spojené království – západ|Velká Británie – jih|
 |Západní Evropa|Severní Evropa| Japonsko – západ|

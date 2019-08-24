@@ -40,7 +40,7 @@ Přehled: V této části použijete šablonu rychlého nasazení Azure k vytvo�
     1. V poli **Skupina prostředků** vyberte **vytvořit novou** a zadejte název **OnPremADVRG** .
     1. Pro zbytek polí šablony zadejte následující podrobnosti:
 
-        * **Umístění**: Střed USA
+        * **Umístění**: Střední USA
         * **Uživatelské jméno správce**: HDIFabrikamAdmin
         * **Heslo správce**: < YOUR_PASSWORD >
         * **Doména**: HDIFabrikam.com

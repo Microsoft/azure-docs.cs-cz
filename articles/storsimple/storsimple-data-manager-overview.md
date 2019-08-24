@@ -51,7 +51,7 @@ StorSimple Data Manager je k dispozici v následujících 7 oblastech:
  - East US
  - USA – západ
  - Západ USA 2
- - Západní střed USA
+ - Středozápadní USA
  - Severní Evropa
  - Západní Evropa
 

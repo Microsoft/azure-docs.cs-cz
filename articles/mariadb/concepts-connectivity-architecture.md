@@ -35,7 +35,7 @@ V následující tabulce jsou uvedeny primárních a sekundárních IP adresy sl
 | Brazílie – jih | 104.41.11.5 | |
 | Kanada – střed | 40.85.224.249 | |
 | Kanada – východ | 40.86.226.166 | |
-| Střed USA | 23.99.160.139 | 13.67.215.62 |
+| Střední USA | 23.99.160.139 | 13.67.215.62 |
 | Východní Čína 1 | 139.219.130.35 | |
 | Čína – východ 2 | 40.73.82.1 | |
 | Čína – sever 1 | 139.219.15.17 | |
@@ -52,9 +52,9 @@ V následující tabulce jsou uvedeny primárních a sekundárních IP adresy sl
 | Japonsko – západ | 191.238.68.11 | 104.214.148.156 |
 | Jižní Korea – střed | 52.231.32.42 | |
 | Jižní Korea – jih | 52.231.200.86 |  |
-| Střed USA – sever | 23.98.55.75 | 23.96.178.199 |
+| Středoseverní USA | 23.98.55.75 | 23.96.178.199 |
 | Severní Evropa | 191.235.193.75 | 40.113.93.91 |
-| Střed USA – jih | 23.98.162.75 | 13.66.62.124 |
+| Středojižní USA | 23.98.162.75 | 13.66.62.124 |
 | Jihovýchodní Asie | 23.100.117.95 | 104.43.15.0 |
 | Velká Británie – jih | 51.140.184.11 | |
 | Spojené království – západ | 51.141.8.11| |

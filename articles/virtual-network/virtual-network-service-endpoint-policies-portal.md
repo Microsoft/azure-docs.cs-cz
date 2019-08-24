@@ -46,7 +46,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
    - Předplatné: Vyberte své předplatné pro zásady.    
    - Skupina prostředků: Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.     
    - Název: myEndpointPolicy
-   - Umístění: Západní střed USA     
+   - Umístění: Středozápadní USA     
  
    ![Vytvoření koncového bodu služby Základy zásad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-startpane.PNG)
    
@@ -100,7 +100,7 @@ Než budete moct přidružit zásadu k podsíti, budete muset vytvořit virtuál
    - Adresní prostor: 10.0.0.0/16      
    - Předplatné: Vyberte své předplatné. Zásada by měla být ve stejném předplatném jako virtuální síť     
    - Skupina prostředků: Vyberte **použít existující** a pak vyberte *myResourceGroup*     
-   - Umístění: Západní střed USA     
+   - Umístění: Středozápadní USA     
    - Název podsítě: privátní     
    - Rozsah adres: 10.0.0.0/24
      

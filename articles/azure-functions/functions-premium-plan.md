@@ -110,7 +110,7 @@ Níže jsou uvedené aktuálně podporované oblasti pro verzi Public Preview pr
 |Austrálie – východ| ✔ | |
 |Austrálie – jihovýchod | ✔ | ✔ |
 |Kanada – střed| ✔ |  |
-|Střed USA| ✔ |  |
+|Střední USA| ✔ |  |
 |Východní Asie| ✔ |  |
 |East US | | ✔ |
 |Východní USA 2| ✔ |  |
@@ -118,9 +118,9 @@ Níže jsou uvedené aktuálně podporované oblasti pro verzi Public Preview pr
 |Japonsko – východ|  | ✔ |
 |Japonsko – západ| ✔ | |
 |Jižní Korea – střed| ✔ |  |
-|Střed USA – sever| ✔ |  |
+|Středoseverní USA| ✔ |  |
 |Severní Evropa| ✔ | ✔ |
-|Střed USA – jih| ✔ |  |
+|Středojižní USA| ✔ |  |
 |Jižní Indie | ✔ | |
 |Jihovýchodní Asie| ✔ | ✔ |
 |Spojené království – západ| ✔ |  |

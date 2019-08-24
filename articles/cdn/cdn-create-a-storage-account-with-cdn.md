@@ -70,7 +70,7 @@ K vytvoření účtu úložiště můžete použít několik metod, včetně web
     | -------- | ----- |
     | **Model nasazení** | Použijte výchozí hodnotu. |
     | **Druh účtu** | Použijte výchozí hodnotu. |
-    | **Location**    | V rozevíracím seznamu vyberte **Střed USA**. |
+    | **Location**    | V rozevíracím seznamu vyberte **Střední USA**. |
     | **Replikace** | Použijte výchozí hodnotu. |
     | **Výkon** | Použijte výchozí hodnotu. |
     | **Vyžádání bezpečného přenosu** | Použijte výchozí hodnotu. |

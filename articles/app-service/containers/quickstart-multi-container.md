@@ -17,7 +17,7 @@ ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: fce819e84d5c532777ffee91ed4e75a0b65dec9b
 ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/12/2019
 ms.locfileid: "67853690"
@@ -60,7 +60,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
-Ve službě Cloud Shell vytvořte skupinu prostředků pomocí příkazu [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *Střed USA – jih*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
+Ve službě Cloud Shell vytvořte skupinu prostředků pomocí příkazu [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *Středojižní USA*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"

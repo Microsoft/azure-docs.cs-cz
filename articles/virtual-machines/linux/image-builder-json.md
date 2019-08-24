@@ -57,7 +57,7 @@ Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imag
 
 - East US
 - Východní USA 2
-- Západní střed USA
+- Středozápadní USA
 - USA – západ
 - USA – západ 2
 

@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Ve verzi preview streamovaných zařízení je momentálně podporována pouze pro IoT hub, které jsou vytvořeny v těchto oblastech:
 
-  * USA – střed
+  * Střední USA
   * Střed USA – EUAP
 
 * Ke spuštění aplikace místní služby v rámci tohoto rychlého startu, potřebujete Node.js v10.x.x nebo později na vývojovém počítači.

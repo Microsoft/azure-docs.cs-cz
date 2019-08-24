@@ -74,7 +74,7 @@ Ano. Toto je seznam regionálních koncových bodů, které můžete použít s 
 | | Austrálie – východ | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brazílie – jih | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Kanada – střed | `https://canadacentral.api.cognitive.microsoft.com` |
-| | Střed USA | `https://centralus.api.cognitive.microsoft.com` |
+| | Střední USA | `https://centralus.api.cognitive.microsoft.com` |
 | | Východní Asie | `https://eastasia.api.cognitive.microsoft.com` |
 | | East US | `https://eastus.api.cognitive.microsoft.com` |
 | | Východní USA 2 | `https://eastus2.api.cognitive.microsoft.com` |
@@ -82,13 +82,13 @@ Ano. Toto je seznam regionálních koncových bodů, které můžete použít s 
 | | Indie – střed | `https://centralindia.api.cognitive.microsoft.com` |
 | | Japonsko – východ | `https://japaneast.api.cognitive.microsoft.com` |
 | | Jižní Korea – střed | `https://koreacentral.api.cognitive.microsoft.com` |
-| | Střed USA – sever | `https://northcentralus.api.cognitive.microsoft.com` |
+| | Středoseverní USA | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Severní Evropa | `https://northeurope.api.cognitive.microsoft.com` |
 | | Jižní Afrika – sever | `https://southafricanorth.api.cognitive.microsoft.com` |
-| | Střed USA – jih | `https://southcentralus.api.cognitive.microsoft.com` |
+| | Středojižní USA | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Jihovýchodní Asie | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Velká Británie – jih | `https://uksouth.api.cognitive.microsoft.com` |
-| | Západní střed USA | `https://westcentralus.api.cognitive.microsoft.com` |
+| | Středozápadní USA | `https://westcentralus.api.cognitive.microsoft.com` |
 | | Západní Evropa | `https://westeurope.api.cognitive.microsoft.com` |
 | | Západní USA | `https://westus.api.cognitive.microsoft.com` |
 | | USA – západ 2 | `https://westus2.api.cognitive.microsoft.com` |

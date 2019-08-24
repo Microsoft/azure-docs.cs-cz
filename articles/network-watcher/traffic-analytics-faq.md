@@ -67,12 +67,12 @@ Pokud nevidíte žádný výstup, obraťte se na příslušného Správce předp
 
 Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
 - Kanada – střed
-- Západní střed USA
+- Středozápadní USA
 - East US
 - Východní USA 2
-- Střed USA – sever
-- Střed USA – jih
-- Střed USA
+- Středoseverní USA
+- Středojižní USA
+- Střední USA
 - USA – západ
 - USA – západ 2
 - Francie – střed
@@ -94,11 +94,11 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 - Kanada – střed
-- Západní střed USA
+- Středozápadní USA
 - USA – západ
 - USA – západ 2
-- Střed USA – jih
-- Střed USA
+- Středojižní USA
+- Střední USA
 - East US
 - Východní USA 2
 - Francie – střed

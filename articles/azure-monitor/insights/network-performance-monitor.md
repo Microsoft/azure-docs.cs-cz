@@ -44,7 +44,7 @@ Další informace o různých funkcích podporovaných nástrojem [Network Perfo
 ## <a name="supported-regions"></a>Podporované oblasti
 NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části světa, a to z pracovního prostoru hostovaného v jedné z následujících oblastí:
 * Západní Evropa
-* Západní střed USA
+* Středozápadní USA
 * East US
 * Východní Japonsko
 * Jihovýchodní Asie
@@ -104,7 +104,7 @@ Network Performance Monitor používá syntetické transakce k monitorování v�
 ### <a name="configure-the-solution"></a>Konfigurovat řešení 
 
 1. Přidejte řešení Network Performance Monitor do svého pracovního prostoru z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Můžete také použít proces popsaný v tématu [přidání Azure monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md). 
-2. Otevřete pracovní prostor Log Analytics a vyberte dlaždici  s přehledem. 
+2. Otevřete pracovní prostor Log Analytics a vyberte dlaždici s přehledem. 
 3. Vyberte dlaždici **Network Performance Monitor** s řešením zpráv *vyžaduje další konfiguraci*.
 
    ![Dlaždice Network Performance Monitor](media/network-performance-monitor/npm-config.png)
@@ -129,7 +129,7 @@ Network Performance Monitor používá syntetické transakce k monitorování v�
     
 Monitorování těchto okruhů a partnerských vztahů je zpočátku v zakázaném stavu. Vyberte všechny prostředky, které chcete monitorovat, a nakonfigurujte monitorování pro ně ze zobrazení podrobností na pravé straně. Kliknutím na **Uložit** uložte konfiguraci. Další informace najdete v článku Konfigurace monitorování ExpressRoute. 
 
-Po dokončení instalace bude trvat 30 minut až hodinu, než se data naplní. I když řešení agreguje data z vaší sítě, zobrazí se na dlaždici s přehledem Network Performance Monitor, že tato  zpráva *vyžaduje další konfiguraci* . Po shromáždění a indexování dat se ikona **přehledu** změní a informuje o stavu vaší sítě ve shrnutí. Pak můžete upravit monitorování uzlů, na kterých jsou nainstalované agenti Log Analytics, a také podsítě zjištěné ve vašem prostředí.
+Po dokončení instalace bude trvat 30 minut až hodinu, než se data naplní. I když řešení agreguje data z vaší sítě, zobrazí se na dlaždici s přehledem Network Performance Monitor, že tato zpráva *vyžaduje další konfiguraci* . Po shromáždění a indexování dat se ikona **přehledu** změní a informuje o stavu vaší sítě ve shrnutí. Pak můžete upravit monitorování uzlů, na kterých jsou nainstalované agenti Log Analytics, a také podsítě zjištěné ve vašem prostředí.
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Úprava nastavení monitorování pro podsítě a uzly 
 
@@ -193,7 +193,7 @@ Po povolení řešení Network Performance Monitor poskytuje dlaždice řešení
 
 * **Monitorování připojení služby**: Tato stránka poskytuje souhrny stavu pro různé testy, které jste vytvořili. Dlaždice **topologie** znázorňuje počet monitorovaných koncových bodů. Kliknutím na tuto dlaždici přejdete do zobrazení **topologie** .
 
-* **Sledování výkonu**: Tato stránka obsahuje souhrny stavu pro **síťové** odkazy a odkazy  na podsítě, které řešení monitoruje. Dlaždice **topologie** zobrazuje počet síťových cest, které jsou monitorovány ve vaší síti. Kliknutím na tuto dlaždici přejdete do zobrazení **topologie** . 
+* **Sledování výkonu**: Tato stránka obsahuje souhrny stavu pro **síťové** odkazy a odkazy na podsítě, které řešení monitoruje. Dlaždice **topologie** zobrazuje počet síťových cest, které jsou monitorovány ve vaší síti. Kliknutím na tuto dlaždici přejdete do zobrazení **topologie** . 
 
 * **Běžné dotazy**: Tato stránka obsahuje sadu vyhledávacích dotazů, které přímo načítají data monitorování nezpracovaných sítí. Tyto dotazy můžete použít jako výchozí bod k vytvoření vlastních dotazů pro přizpůsobené vytváření sestav. 
 

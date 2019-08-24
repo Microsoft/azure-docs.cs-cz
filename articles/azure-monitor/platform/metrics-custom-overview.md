@@ -172,7 +172,7 @@ Ve verzi public preview je k dispozici pouze v podmnožině oblastí s Azure mo�
 |---|---|
 |USA – východ| https:\//eastus.monitoring.azure.com/ |
 |Středojižní USA| https:\//southcentralus.monitoring.azure.com/ |
-|Západní střed USA| https:\//westcentralus.monitoring.azure.com/ |
+|Středozápadní USA| https:\//westcentralus.monitoring.azure.com/ |
 |Západní USA 2| https:\//westus2.monitoring.azure.com/ |
 |Jihovýchodní Asie| https:\//southeastasia.monitoring.azure.com/ |
 |Severní Evropa| https:\//northeurope.monitoring.azure.com/ |

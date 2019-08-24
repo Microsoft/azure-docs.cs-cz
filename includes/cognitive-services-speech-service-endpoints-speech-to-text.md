@@ -15,7 +15,7 @@ ms.locfileid: "68306085"
 |--------|----------|
 | Austrálie – východ | `https://australiaeast.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | Kanada – střed | `https://canadacentral.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
-| Střed USA | `https://centralus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
+| Střední USA | `https://centralus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | Východní Asie | `https://eastasia.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | East US | `https://eastus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | Východní USA 2 | `https://eastus2.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
@@ -23,9 +23,9 @@ ms.locfileid: "68306085"
 | Indie – střed | `https://centralindia.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | Japonsko – východ | `https://japaneast.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | Jižní Korea – střed | `https://koreacentral.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
-| Střed USA – sever | `https://northcentralus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
+| Středoseverní USA | `https://northcentralus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | Severní Evropa | `https://northeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
-| Střed USA – jih | `https://southcentralus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
+| Středojižní USA | `https://southcentralus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | Jihovýchodní Asie | `https://southeastasia.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | Velká Británie – jih | `https://uksouth.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | Západní Evropa | `https://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |

@@ -13,7 +13,7 @@ ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
 ms.openlocfilehash: 0e9bdb22baed74ef948f369f9259784900486860
 ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/26/2019
 ms.locfileid: "68569082"
@@ -70,7 +70,7 @@ Když budete pokračovat, přidáme do každé oblasti další brány a vyřadí
 | Brazílie – jih         | 104.41.11.5        |                 | |
 | Kanada – střed       | 40.85.224.249      |                 | |
 | Kanada – východ          | 40.86.226.166      |                 | |
-| Střed USA           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | Žádná připojení po 1. září 2019 |
+| Střední USA           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | Žádná připojení po 1. září 2019 |
 | Čína – východ           | 139.219.130.35     |                 | |
 | Čína – východ 2         | 40.73.82.1         |                 | |
 | Čína – sever          | 139.219.15.17      |                 | |
@@ -88,17 +88,17 @@ Když budete pokračovat, přidáme do každé oblasti další brány a vyřadí
 | Japonsko – západ           | 104.214.148.156, 40.74.100.192 | 191.238.68.11 | Žádná připojení po 1. září 2019 |
 | Jižní Korea – střed        | 52.231.32.42       |                 | |
 | Jižní Korea – jih          | 52.231.200.86      |                 | |
-| Střed USA – sever     | 23.96.178.199      | 23.98.55.75     | Žádná připojení po 1. září 2019 |
+| Středoseverní USA     | 23.96.178.199      | 23.98.55.75     | Žádná připojení po 1. září 2019 |
 | Severní Evropa         | 40.113.93.91       | 191.235.193.75  | Žádná připojení po 1. září 2019 |
 | Jižní Afrika – sever   | 102.133.152.0      |                 | |
 | Jižní Afrika – západ    | 102.133.24.0       |                 | |
-| Střed USA – jih     | 13.66.62.124       | 23.98.162.75    | Žádná připojení po 1. září 2019 |
+| Středojižní USA     | 13.66.62.124       | 23.98.162.75    | Žádná připojení po 1. září 2019 |
 | Jihovýchodní Asie      | 104.43.15.0        | 23.100.117.95   | Žádná připojení po 1. září 2019 |
 | Spojené arabské emiráty – střed          | 20.37.72.64        |                 | |
 | Spojené arabské emiráty – sever            | 65.52.248.0        |                 | |
 | Velká Británie – jih             | 51.140.184.11      |                 | |
 | Spojené království – západ              | 51.141.8.11        |                 | |
-| Západní střed USA      | 13.78.145.25       |                 | |
+| Středozápadní USA      | 13.78.145.25       |                 | |
 | Západní Evropa          | 40.68.37.158       | 191.237.232.75  | Žádná připojení po 1. září 2019 |
 | USA – západ              | 104.42.238.205     | 23.99.34.75     | Žádná připojení po 1. září 2019 |
 | USA – západ 2            | 13.66.226.202      |                 | |

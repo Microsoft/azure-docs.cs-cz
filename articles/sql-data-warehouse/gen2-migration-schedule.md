@@ -37,7 +37,7 @@ Následující tabulka shrnuje podle oblasti v případě, že bude k dispozici 
 | Brazílie – jih |K dispozici |Dokončeno |
 | Kanada – střed |K dispozici |Dokončeno |
 | Kanada – východ |1\. června 2020 |Od 1. července 2020 |
-| Střed USA |K dispozici |Dokončeno |
+| Střední USA |K dispozici |Dokončeno |
 | Čína – východ |\* |\* |
 | Čína – východ 2 |K dispozici |Dokončeno |
 | Čína – sever |\* |\* |
@@ -55,15 +55,15 @@ Následující tabulka shrnuje podle oblasti v případě, že bude k dispozici 
 | Japonsko – západ |K dispozici |Dokončeno |
 | Jižní Korea – střed |K dispozici |Dokončeno |
 | Jižní Korea – jih |K dispozici |Dokončeno |
-| Střed USA – sever |K dispozici |Dokončeno |
+| Středoseverní USA |K dispozici |Dokončeno |
 | Severní Evropa |K dispozici |Dokončeno |
 | Jižní Afrika – sever |12. července 2019 |Dokončeno |
-| Střed USA – jih |K dispozici |Dokončeno |
+| Středojižní USA |K dispozici |Dokončeno |
 | Jihovýchodní Asie |K dispozici |Dokončeno |
 | Spojené arabské emiráty – sever |20. července 2019 |Dokončeno |
 | Velká Británie – jih |K dispozici |Probíhá |
 | Spojené království – západ |K dispozici |Probíhá |
-| Západní střed USA |Od 1. září 2019 |Od 1. října 2019|
+| Středozápadní USA |Od 1. září 2019 |Od 1. října 2019|
 | Západní Evropa |K dispozici |Dokončeno |
 | USA – západ |K dispozici |Dokončeno |
 | USA – západ 2 |K dispozici |Dokončeno |

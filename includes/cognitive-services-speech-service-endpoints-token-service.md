@@ -15,7 +15,7 @@ Oblast| Koncový bod služby tokenu
 -|-
 Austrálie – východ | `https://australiaeast.api.cognitive.microsoft.com/sts/v1.0/issueToken`
 Kanada – střed | `https://canadacentral.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-USA – střed | `https://centralus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Střední USA | `https://centralus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
 Východní Asie | `https://eastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
 USA – východ | `https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
 Východní USA 2 | `https://eastus2.api.cognitive.microsoft.com/sts/v1.0/issueToken`

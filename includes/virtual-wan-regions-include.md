@@ -19,7 +19,7 @@ V následující tabulce jsou uvedené dostupné podporované oblasti pro funkce
 
 |Geopolitická oblast | Oblasti Azure|
 |---|---|
-|Severní Amerika | Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Střed USA – západ, Střední Kanada, Východní Kanada |
+|Severní Amerika | Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střední USA, Středojižní USA, Středoseverní USA, Středozápadní USA, Střední Kanada, Východní Kanada |
 |Jižní Amerika |Brazílie – jih |
 | Evropa | Francie – střed, Francie – jih, Severní Evropa, Západní Evropa, Velká Británie – západ, Velká Británie – jih |
 | Asie | Východní Asie, Jihovýchodní Asie |

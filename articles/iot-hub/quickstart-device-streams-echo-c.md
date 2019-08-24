@@ -42,7 +42,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Ve verzi preview streamovaných zařízení je momentálně podporována pouze pro IoT hub, které jsou vytvořeny v těchto oblastech:
 
-  * USA – střed
+  * Střední USA
   * Střed USA – EUAP
 
 * Nainstalujte [Visual Studio 2017](https://www.visualstudio.com/vs/) s [vývoj desktopových aplikací pomocí C++ ](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) povolenou sadu funkcí.

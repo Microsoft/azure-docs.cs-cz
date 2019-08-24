@@ -12,7 +12,7 @@ ms.reviewer: vanto
 ms.date: 07/01/2019
 ms.openlocfilehash: 85691464684ff327c01a85bf357514f447564dd7
 ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/26/2019
 ms.locfileid: "68568107"
@@ -30,11 +30,11 @@ První kolo vyřazení brány z provozu je naplánováno na 1. září 2019 v n�
 - USA – západ
 - Západní Evropa
 - East US
-- Střed USA
+- Střední USA
 - Jihovýchodní Asie
-- Střed USA – jih
+- Středojižní USA
 - Severní Evropa
-- Střed USA – sever
+- Středoseverní USA
 - Japonsko – západ
 - Japonsko – východ
 - Východní USA 2

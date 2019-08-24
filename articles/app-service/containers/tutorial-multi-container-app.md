@@ -69,7 +69,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
-Ve službě Cloud Shell pomocí příkazu [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) vytvořte skupinu prostředků. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *Střed USA – jih*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
+Ve službě Cloud Shell pomocí příkazu [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) vytvořte skupinu prostředků. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *Středojižní USA*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"

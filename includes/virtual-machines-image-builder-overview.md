@@ -37,7 +37,7 @@ Pro verzi Preview jsou tyto funkce podporované:
 Služba Azure image Builder bude k dispozici pro verzi Preview v těchto oblastech. Obrázky lze distribuovat mimo tyto oblasti.
 - East US
 - Východní USA 2
-- Západní střed USA
+- Středozápadní USA
 - USA – západ
 - USA – západ 2
 

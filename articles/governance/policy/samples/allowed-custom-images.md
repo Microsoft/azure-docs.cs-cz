@@ -59,7 +59,7 @@ Kód JSON definující parametry zásady, který se používá Azure CLI a Azure
 Při vytváření přiřazení přes PowerShell nebo Azure CLI je možné předat hodnoty parametrů ve formátu JSON buď v řetězci, nebo prostřednictvím souboru pomocí parametru `-PolicyParameter` (PowerShell) nebo `--params` (Azure CLI).
 PowerShell podporuje také parametr `-PolicyParameterObject`, který vyžaduje, aby se rutině předala zatřiďovací tabulka názvů a hodnot, kde **název** je název parametru a **hodnota** je jedna hodnota nebo pole hodnot, které se předávají během přiřazení.
 
-V tomto ukázkovém parametru se povolí pouze image _ContosoStdImage_ ve skupině prostředků _YourResourceGroup_ nebo verze image Windows Serveru 2016 Datacenter z května 2018 v umístění USA – střed.
+V tomto ukázkovém parametru se povolí pouze image _ContosoStdImage_ ve skupině prostředků _YourResourceGroup_ nebo verze image Windows Serveru 2016 Datacenter z května 2018 v umístění Střední USA.
 
 ```json
 {

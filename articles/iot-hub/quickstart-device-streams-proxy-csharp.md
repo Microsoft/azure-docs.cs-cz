@@ -51,7 +51,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Ve verzi preview streamovaných zařízení je momentálně podporována pouze pro IoT hub, které jsou vytvořeny v těchto oblastech:
 
-  * USA – střed
+  * Střední USA
   * Střed USA – EUAP
 
 * Dvě ukázkové aplikace, které běží v rámci tohoto rychlého startu jsou zapsány pomocí C#. Budete potřebovat sadu .NET Core SDK 2.1.0 nebo novějším na vývojovém počítači.

@@ -59,7 +59,7 @@ Stáhněte si ukázkový projekt Node.js z https://github.com/Azure-Samples/azur
 
 Abyste mohli dokončit tento kurz, musí vaše předplatné Azure obsahovat centrum IoT se zařízením přidaným do registru identit zařízení. Záznam v registru identit zařízení umožňuje připojení simulovaného zařízení, které v tomto kurzu spustíte, do vašeho centra.
 
-Pokud ještě nemáte služby IoT hub nastavit v rámci vašeho předplatného, můžete nastavit jednu pomocí následujícího skriptu příkazového řádku. Skript používá pro centrum IoT název **tutorial-iot-hub**. Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **USA – střed**, kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci k připojení do centra IoT:
+Pokud ještě nemáte služby IoT hub nastavit v rámci vašeho předplatného, můžete nastavit jednu pomocí následujícího skriptu příkazového řádku. Skript používá pro centrum IoT název **tutorial-iot-hub**. Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **Střední USA**, kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci k připojení do centra IoT:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub

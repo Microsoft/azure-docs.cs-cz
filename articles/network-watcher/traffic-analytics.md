@@ -60,12 +60,12 @@ Analýza provozu prověřuje protokoly nezpracovaných toků NSG Flow a zachycuj
 Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
 
 * Kanada – střed
-* Západní střed USA
+* Středozápadní USA
 * East US
 * Východní USA 2
-* Střed USA – sever
-* Střed USA – jih
-* Střed USA
+* Středoseverní USA
+* Středojižní USA
+* Střední USA
 * USA – západ
 * USA – západ 2
 * Francie – střed
@@ -89,13 +89,13 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Kanada – střed
-* Západní střed USA
+* Středozápadní USA
 * East US
 * Východní USA 2
-* Střed USA – jih
+* Středojižní USA
 * Západ USA
 * USA – západ 2
-* Střed USA
+* Střední USA
 * Francie – střed
 * Severní Evropa
 * Západní Evropa

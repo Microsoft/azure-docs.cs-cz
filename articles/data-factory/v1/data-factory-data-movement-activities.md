@@ -97,10 +97,10 @@ Když jsou zdroje a jímky úložiště dat v cloudu, datová továrna použív�
 |:--- |:--- |:--- |
 | Spojené státy | East US | East US |
 | &nbsp; | Východní USA 2 | Východní USA 2 |
-| &nbsp; | Střed USA | Střed USA |
-| &nbsp; | Střed USA – sever | Střed USA – sever |
-| &nbsp; | Střed USA – jih | Střed USA – jih |
-| &nbsp; | Západní střed USA | Západní střed USA |
+| &nbsp; | Střední USA | Střední USA |
+| &nbsp; | Středoseverní USA | Středoseverní USA |
+| &nbsp; | Středojižní USA | Středojižní USA |
+| &nbsp; | Středozápadní USA | Středozápadní USA |
 | &nbsp; | USA – západ | USA – západ |
 | &nbsp; | USA – západ 2 | USA – západ 2 |
 | Kanada | Kanada – východ | Kanada – střed |

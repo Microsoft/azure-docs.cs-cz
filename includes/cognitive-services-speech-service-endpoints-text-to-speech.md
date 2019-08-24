@@ -19,7 +19,7 @@ Tato tabulka slouží k určování dostupnosti standardní a neuronových sít�
 |--------|----------|-----------------|---------------|
 | Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | Ano | Ano |
 | Kanada – střed | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Ano | Ano |
-| USA – střed | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | Ano | Ne |
+| Střední USA | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | Ano | Ne |
 | Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Ano | Ne |
 | USA – východ | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | Ano | Ano |
 | Východní USA 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | Ano | Ne |
@@ -44,7 +44,7 @@ Pokud jste vytvořili vlastní hlasové písmo, použijte koncového bodu, kter�
 |--------|----------|
 | Austrálie – východ | `https://australiaeast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | Kanada – střed | `https://canadacentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
-| USA – střed | `https://centralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Střední USA | `https://centralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | Východní Asie | `https://eastasia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | USA – východ | `https://eastus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | Východní USA 2 | `https://eastus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |

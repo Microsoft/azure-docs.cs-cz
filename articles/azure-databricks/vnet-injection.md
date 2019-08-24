@@ -138,7 +138,7 @@ Seznam povolených adres podsítě provozu s využitím následující IP adresy
 |USA – východ|Rovina řízení NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Východní USA 2|Rovina řízení NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Středoseverní USA|Rovina řízení NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|USA – střed|Rovina řízení NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|Střední USA|Rovina řízení NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Středojižní USA|Rovina řízení NAT </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Západní USA|Rovina řízení NAT </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Západní USA 2|Rovina řízení NAT </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
