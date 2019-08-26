@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: e1b8da52870af80b2f9e34ee26d80d9b71d39851
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c25a1deb08c816088e9d5811a73bb19890657a43
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839825"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966516"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopírování dat z HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -41,7 +41,7 @@ Konkrétně tento konektor HDFS podporuje:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li kopírovat data z HDFS, která nejsou veřejně přístupná, je třeba nastavit Integration Runtime v místním prostředí. Další informace najdete v článku [Integration runtime](concepts-integration-runtime.md) v místním prostředí.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 > [!NOTE]
 > Ujistěte se, že Integration Runtime mít přístup ke **všem** [názvový server Node]: [název uzlu port] a [servery datových uzlů]: [port datového uzlu] clusteru Hadoop. Výchozí [název uzlu port] je 50070 a výchozí [port datového uzlu] je 50075.
@@ -63,7 +63,7 @@ Pro propojenou službu HDFS jsou podporovány následující vlastnosti:
 | authenticationType | Povolené hodnoty jsou: **Anonymní**nebo **Windows**. <br><br> Pokud chcete pro konektor HDFS použít **ověřování pomocí protokolu Kerberos** , v [této části](#use-kerberos-authentication-for-hdfs-connector) si odpovídajícím způsobem nastavte místní prostředí. |Ano |
 | userName |Uživatelské jméno pro ověřování systému Windows. Pro ověřování protokolem Kerberos `<username>@<domain>.com`zadejte. |Ano (pro ověřování systému Windows) |
 | password |Heslo pro ověřování systému Windows. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano (pro ověřování systému Windows) |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad: použití anonymního ověřování**
 
@@ -483,5 +483,5 @@ Existují dvě možnosti nastavení místního prostředí, aby se používalo o
 * Nakonfigurujte konektor HDFS pomocí **ověřování systému Windows** společně s účtem domény nebo objektem Kerberos pro připojení ke zdroji dat HDFS. Podrobnosti o konfiguraci najdete v části [Vlastnosti propojené služby HDFS](#linked-service-properties) .
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

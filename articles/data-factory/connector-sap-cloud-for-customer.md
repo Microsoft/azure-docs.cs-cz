@@ -211,14 +211,14 @@ Při kopírování dat z cloudu SAP pro zákazníka se z cloudu SAP pro typy zá
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
-| EDM. Single | Single |
+| Edm.Single | Single |
 | Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | String |
-| EDM. time | TimeSpan |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 
