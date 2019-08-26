@@ -263,6 +263,10 @@
               href: integrate-environments-devops-pipeline.md
             - name: Použití DevTest Labs v kanálech sestavování a vydávání verzí Azure Pipelines
               href: use-devtest-labs-build-release-pipelines.md
+        - name: Rozšíření DevTest Labs
+          items:
+            - name: Rozšíření DevTest Labs s využitím služby Azure Functions
+              href: extend-devtest-labs-azure-functions.md
         - name: Hlášení využití testovacích prostředí
           href: report-usage-across-multiple-labs-subscriptions.md
         - name: DevTest Labs v podniku

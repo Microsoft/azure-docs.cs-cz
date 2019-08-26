@@ -1,78 +1,78 @@
 ---
-title: Zvolte distribuční sloupce ve službě Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
-description: Vhodná rozhodnutí pro rozdělení sloupce v běžných scénářů hyperškálovatelný systém
+title: Výběr distribučních sloupců v Azure Database for PostgreSQL – Citus (škálování)
+description: Dobré možnosti pro distribuční sloupce v běžných scénářích s škálovatelným škálováním
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: e9fba14b8979f739fd29bc277e32fb544221d08a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0d1f343aa9b125ab0a5a9ab559d0788253037aa
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65078982"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998193"
 ---
-# <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Zvolte distribuční sloupce ve službě Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
+# <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Výběr distribučních sloupců v Azure Database for PostgreSQL – Citus (škálování)
 
-Výběr distribučního sloupce každou tabulku je **jeden z vašich nejdůležitějších** modelování rozhodnutí. Velkokapacitní ukládá řádků v horizontálním oddílům podle hodnoty distribučního sloupce řádky.
+Volba sloupce pro distribuci jednotlivých tabulek je jedním z nejdůležitějších rozhodnutí o modelování, která provedete. Azure Database for PostgreSQL – ve verzi Preview jsou uloženy řádky v horizontálních oddílů na základě hodnoty sloupce distribuce řádků.
 
-Správný výběr skupiny související data společně na stejné fyzických uzlů, aby dotazy rychlé a přidává podporu pro všechny součásti SQL. Nesprávná volba díky systému provoz bude pomalý a nebude podporují všechny funkce SQL mezi uzly.
+Správné skupiny voleb vztahující se k datům společně na stejných fyzických uzlech, které urychlují dotazy a přidávají podporu pro všechny funkce SQL. Nesprávná volba způsobí, že systém pracuje pomalu a nepodporuje všechny funkce SQL napříč uzly.
 
-Tato část obsahuje distribuční sloupce tipy pro dva nejběžnější scénáře hyperškálovatelný systém.
+Tento článek obsahuje popisy pro distribuční sloupce dvou nejběžnějších scénářů Citus (s větším měřítkem).
 
-### <a name="multi-tenant-apps"></a>Aplikace s více Tenanty
+### <a name="multi-tenant-apps"></a>Aplikace s více tenanty
 
-Víceklientská architektura používá formu hierarchické modelování a distribuuje dotazy mezi uzly ve skupině pro server databáze.  Nejvyšší úrovni hierarchie dat se označuje jako *ID tenanta*a musí být uložen ve sloupci pro každou tabulku.
+Architektura s více klienty používá formu hierarchického modelování databáze pro distribuci dotazů mezi uzly ve skupině serverů. Horní část hierarchie dat se označuje jako *ID tenanta* a musí se ukládat do sloupce v každé tabulce.
 
-Velkokapacitní kontroluje zjistí, u kterého ID tenanta zahrnují a najde odpovídající horizontálních oddílů tabulky. Dotaz se směruje do jednoho pracovního uzlu, který obsahuje horizontálního oddílu. Spouštění dotazů s všechny relevantní data umístěná na stejném uzlu se nazývá společné umístění.
+Citus () kontroluje dotazy, aby se zobrazilo, které ID tenanta zahrnuje a vyhledá vyhovující tabulku horizontálních oddílů. Směruje dotaz na jeden pracovní uzel, který obsahuje horizontálních oddílů. Spuštění dotazu se všemi relevantními daty umístěnými na stejném uzlu se nazývá společné umístění.
 
-Následující diagram znázorňuje společné umístění v datovém víceklientského modelu. Obsahuje dvě tabulky, účty a kampaně, rozdělené podle `account_id`. Šedivá představují horizontálních oddílů, z jehož barvu každý představuje, které pracovní uzel obsahuje. Zelená horizontálních oddílů se ukládají společně na jedné pracovní uzel a modrá na jiném. Všimněte si, jak dotaz spojení mezi účty a kampaně by měla všechna potřebná data společně na jednom uzlu při omezování obou tabulek do stejného účtu\_id.
+Následující diagram znázorňuje společné umístění v datovém modelu s více klienty. Obsahuje dvě tabulky, účty a kampaně, z `account_id`nichž každý distribuuje. Šedivá pole reprezentují horizontálních oddílů. Zelený horizontálních oddílů je uložen společně na jednom pracovním uzlu a modrý horizontálních oddílů je uložený na jiném pracovním uzlu. Všimněte si, jak dotaz spojení mezi účty a kampaněmi obsahuje všechna data potřebná na jednom uzlu, pokud jsou obě tabulky omezené na stejné ID\_účtu.
 
-![společné umístění více tenantů](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
+![Souběžné umístění pro více tenantů](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-Chcete-li použít tento návrh ve vlastní schéma, určete, co se považuje za klienta ve vaší aplikaci. Běžné instance zahrnují funkce společnosti, účet, organizace nebo zákazníků. Název sloupce budou vypadat `company_id` nebo `customer_id`. Zkontrolujte každé z vašich dotazů a položte si otázku: by to fungovat, pokud má další klauzule WHERE pro omezení všechny tabulky související s řádky se stejným ID tenanta?
-Dotazy v modelu s více tenanty jsou omezené na klienta, například dotazy na prodej nebo z inventáře by zařadit do oboru v rámci určité úložiště.
-
-#### <a name="best-practices"></a>Osvědčené postupy
-
--   **Oddíl distribuované tabulky podle společné tenanta\_sloupec id.** Například v aplikaci SaaS, kde tenantů se společností, tenant\_id budou pravděpodobně společnosti\_id.
--   **Malé tabulky napříč tenanty převeďte na referenční tabulky.** Když několik tenantů sdílí malé tabulky informací, distribuujte ho jako referenční tabulku.
--   **Omezení filtru všechny aplikace se dotazuje tenantem\_id.** Každý dotaz by měl požádat o informace pro jednoho tenanta v čase.
-
-Čtení [kurzu práce s více tenanty](./tutorial-design-database-hyperscale-multi-tenant.md) Příklad sestavování tohoto typu aplikace.
-
-### <a name="real-time-apps"></a>Aplikací v reálném čase
-
-Víceklientská architektura představuje hierarchickou strukturu a používá společné umístění dat ke směrování dotazů na tenanta. Naopak architektury v reálném čase, závisí na konkrétní distribuční vlastnosti svoje data k zajištění vysoce paralelní zpracování.
-
-"Entity ID" používáme jako označení pro rozdělení sloupců v modelu v reálném čase. Typické entity jsou uživatelé, hostitelů nebo zařízení.
-
-Dotazy v reálném čase obvykle požádat o číselné agregace seskupené podle data nebo kategorie. Velkokapacitní odesílá dotazy pro každý horizontální oddíl pro částečné výsledky a sestaví konečné odpovědí na koordinační uzel. Dotazy spustit nejrychlejší kdy co nejvíce přispívá mnoha uzly a když žádné jeden uzel musí neúměrné množství práce.
+Chcete-li tento návrh použít ve vašem vlastním schématu, určete, co v aplikaci znamená klienta. Mezi běžné instance patří společnost, účet, organizace nebo zákazník. Název sloupce bude něco podobného `company_id` nebo. `customer_id` Prověřte jednotlivé dotazy a položte si je, kdyby fungovaly, pokud měly další klauzule WHERE k omezení všech tabulek zahrnutých do řádků se stejným ID tenanta?
+Dotazy v modelu víceklientské architektury jsou vymezeny na tenanta. Například dotazy na prodej nebo inventář jsou vymezeny v rámci určitého úložiště.
 
 #### <a name="best-practices"></a>Osvědčené postupy
 
--   **Zvolte sloupec s vysokou kardinalitou jako sloupec distribuce.** Pro porovnání \"stav\" pole v tabulce objednávky s hodnotami "nové", "placené" a "dodán" je špatně zvolený distribuční sloupce. Předpokládá pouze několik hodnoty, což omezuje počet horizontálních dělení, které mohou obsahovat data a počet uzlů, které může zpracovat. Mezi sloupce s vysokou kardinalitou je dobré navíc zvolit ty, které jsou často používány v klauzulí group by nebo join klíče.
--   **Vyberte sloupec s rovnoměrná distribuce.** Pokud distribuujete tabulku podle sloupce zkosený určité společné hodnoty, data v tabulce se mají shromáždit v některých horizontálních oddílů. Uzly uchovávající těchto horizontálních oddílů přestane dělat více práce než jiné uzly.
--   **Distribuujte tabulkami faktů a dimenzí na jejich společné sloupce.**
-    Vaše tabulka faktů může mít pouze jeden distribuční klíč. Tabulky, které na jiný klíč nesmí být umístěna společně s tabulkou faktů. Zvolte jeden dimenze společné umístění na základě četnosti je připojen a velikosti spojování řádků.
--   **Změňte některé tabulky dimenzí v referenční tabulky.** Pokud tabulky dimenze nelze společně umísťovat s tabulkou faktů, může zlepšit výkon dotazů díky distribuci kopií tabulky dimenze do všech uzlů v podobě referenční tabulku.
+-   **Rozdělení distribuovaných tabulek pomocí společného sloupce\_ID tenanta** Například v aplikaci SaaS, kde jsou vzdálení klienti, se ID tenanta\_pravděpodobně považuje za ID společnosti.\_
+-   **Převod malých tabulek pro více tenantů na referenční tabulky.** Pokud více klientů sdílí malou tabulku informací, distribuujte ji jako referenční tabulku.
+-   **Omezí filtrování všech dotazů aplikace podle ID\_tenanta.** Každý dotaz by měl požadovat informace pro jednoho klienta v jednom okamžiku.
 
-Čtení [řídicího panelu v reálném čase kurzu](./tutorial-design-database-hyperscale-realtime.md) Příklad sestavování tohoto typu aplikace.
+Příklad, jak tento druh aplikace sestavit, najdete v [kurzu pro více tenantů](./tutorial-design-database-hyperscale-multi-tenant.md) .
 
-### <a name="timeseries-data"></a>Data časové řady
+### <a name="real-time-apps"></a>Aplikace v reálném čase
 
-V úloze časových řad aplikace dotazují informacemi z nedávné doby při archivaci zastaralé informace.
+Architektura víceklientské architektury zavádí hierarchickou strukturu a používá společné umístění dat ke směrování dotazů na tenanta. Naproti tomu architektury v reálném čase závisí na konkrétních vlastnostech distribuce jejich dat k dosažení vysoce paralelního zpracování.
 
-Nejběžnější chybu v časové řadě informace v Hyperškálovacím modelování používá časové razítko sama jako distribučního sloupce. Distribuci algoritmus hash na základě času bude distribuovat časy zdánlivě náhodně do různých horizontálních oddílech spíše než udržování rozsahů doby společně v horizontálních oddílech. Dotazy zahrnující čas obecně odkazovat rozsahy času (například nejnovější data), takže taková distribuci algoritmus hash by mohlo dojít k sítě režie.
+Jako termín pro distribuční sloupce v modelu reálného času používáme "ID entity". Typickými entitami jsou uživatelé, hostitelé nebo zařízení.
+
+Dotazy v reálném čase obvykle požadují číselné agregace seskupené podle data nebo kategorie. Citus () odesílá dotazy do každého horizontálních oddílů pro částečné výsledky a sestaví konečnou odpověď na uzel koordinátora. Dotazy budou spouštěny nejrychleji, když co je možné co nejvíce přispívat, a pokud žádný jeden uzel nemůže provést neúměrný objem práce.
 
 #### <a name="best-practices"></a>Osvědčené postupy
 
--   **Nevybírejte časové razítko jako sloupec distribuce.** Vyberte jiný distribuční sloupce. V aplikaci s více tenanty použijte ID tenanta, nebo v aplikaci v reálném čase použijte ID entity.
--   **Použijte PostgreSQL dělení tabulky dobu místo.** Dělení tabulky použijte k rozdělení velké tabulky časově řazenou dat do několika tabulek zděděné s každým obsahující různé časové rozsahy.  Distribuce Postgres dělené tabulky v Hyperškálovacím vytvoří horizontálních oddílů pro zděděné tabulky.
+-   **Vyberte sloupec s vysokou mohutnosti jako distribuční sloupec.** Pro porovnání je pole stav v tabulce Order s hodnotami New, placed a expedováno špatným výběrem distribučního sloupce. Předpokládá jenom několik hodnot, které omezují počet horizontálních oddílů, která můžou uchovávat data, a počet uzlů, které ho můžou zpracovat. Mezi sloupci s vysokou mohutnosti je také vhodné zvolit tyto sloupce, které se často používají v klauzulích Group by nebo as JOIN.
+-   **Vyberte sloupec s ještě distribucí.** Pokud rozšíříte tabulku na sloupec zkosených na určité běžné hodnoty, data v tabulce budou v určitých horizontálních oddílůch sečtena. Uzly, které obsahují tyto horizontálních oddílů, končí více práce než jiné uzly.
+-   **Rozdělte tabulky faktů a dimenzí na své společné sloupce.**
+    Tabulka faktů může mít pouze jeden distribuční klíč. Tabulky, které se připojují k jinému klíči, nebudou společně umístěny v tabulce faktů. Vyberte jednu dimenzi, která se bude hledat na základě toho, jak často je připojená, a velikosti spojovacích řádků.
+-   **Změňte některé tabulky dimenzí na referenční tabulky.** Pokud tabulka dimenze nemůže být společně umístěná v tabulce faktů, můžete zlepšit výkon dotazu distribucí kopií tabulky dimenzí do všech uzlů ve formě referenční tabulky.
 
-Čtení [časové řady kurzu](https://aka.ms/hyperscale-tutorial-timeseries) Příklad sestavování tohoto typu aplikace.
+Příklad vytvoření tohoto typu aplikace najdete v [kurzu řídicího panelu v reálném čase](./tutorial-design-database-hyperscale-realtime.md) .
+
+### <a name="time-series-data"></a>Data časové řady
+
+V rámci úlohy časových řad aplikace při archivaci starých informací dotazují poslední informace.
+
+Nejběžnější Chyba při modelování informací o datové řadě v Citus () je použití samotného časového razítka jako distribučního sloupce. Rozdělení hodnoty hash na základě času distribuuje náhodné časy do různých horizontálních oddílů A neudržuje rozsahy času společně v horizontálních oddílů. Dotazy, které zahrnují čas obvykle odkazují na časové rozsahy, například nejnovější data. Tento typ distribuce hodnoty hash vede k zatížení sítě.
+
+#### <a name="best-practices"></a>Osvědčené postupy
+
+-   **Nevybírejte jako distribuční sloupec časové razítko.** Vyberte jiný distribuční sloupec. V aplikaci s více klienty použijte ID tenanta nebo v aplikaci v reálném čase použijte ID entity.
+-   **Místo toho použijte dělení tabulky PostgreSQL.** Pomocí dělení tabulky můžete rozdělit velkou tabulku časově uspořádaných dat do několika zděděných tabulek s každou tabulkou, která obsahuje různé časové rozsahy. Distribuce tabulky Postgres-partition v Citus () vytvoří horizontálních oddílů pro zděděné tabulky.
+
+Příklad vytvoření tohoto typu aplikace najdete v [kurzu pro časovou řadu](https://aka.ms/hyperscale-tutorial-timeseries) .
 
 ## <a name="next-steps"></a>Další postup
-- Zjistěte, jak [společné umístění](concepts-hyperscale-colocation.md) mezi distribuovaných dat pomáhá rychle spouštět dotazy
+- Přečtěte si, jak společné [umístění](concepts-hyperscale-colocation.md) mezi distribuovanými daty pomáhá rychle spustit dotazy.

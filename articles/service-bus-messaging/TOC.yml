@@ -79,10 +79,6 @@
       href: service-bus-samples.md
 - name: Koncepty
   items:
-    - name: Spravované identity pro prostředky Azure
-      href: service-bus-managed-service-identity.md
-    - name: Řízení přístupu na základě rolí (Preview)
-      href: service-bus-role-based-access-control.md
     - name: Zasílání zpráv úrovně Premium
       href: service-bus-premium-messaging.md
     - name: Srovnání front Azure a front Service Bus
@@ -95,8 +91,25 @@
       href: service-bus-async-messaging.md
     - name: Zvládání výpadků a havárií
       href: service-bus-outages-disasters.md
-    - name: Běžné atributy zabezpečení Azure
-      href: service-bus-messaging-security-attributes.md
+    - name: Zabezpečení
+      items:
+        - name: Ověřování a autorizace
+          href: service-bus-authentication-and-authorization.md
+          items:
+            - name: Použití sdílených přístupových podpisů
+              items:
+                - name: Migrace z ACS do SAS
+                  href: service-bus-migrate-acs-sas.md
+                - name: Ověřování pomocí sdílených přístupových podpisů
+                  href: service-bus-sas.md
+            - name: Použití Azure Active Directory
+              items:
+                - name: Ověřování pomocí spravovaných identit pro prostředky Azure
+                  href: service-bus-managed-service-identity.md
+                - name: Ověření z aplikace
+                  href: authenticate-application.md
+        - name: Běžné atributy zabezpečení Azure
+          href: service-bus-messaging-security-attributes.md
 - name: Návody
   items:
     - name: Vytvoření oboru názvů
@@ -119,13 +132,6 @@
               href: service-bus-to-event-grid-integration-concept.md
             - name: Příklady Azure Event Gridu
               href: service-bus-to-event-grid-integration-example.md
-        - name: Ověřování a autorizace
-          href: service-bus-authentication-and-authorization.md
-          items:
-            - name: Migrace z ACS do SAS
-              href: service-bus-migrate-acs-sas.md
-            - name: Ověřování pomocí sdílených přístupových podpisů
-              href: service-bus-sas.md
         - name: Akce a filtry témat
           href: topic-filters.md
         - name: Migrace z oborů názvů Standard na obory názvů Premium

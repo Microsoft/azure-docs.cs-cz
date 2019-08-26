@@ -71,12 +71,24 @@
           href: event-hubs-geo-dr.md
     - name: Zabezpečení
       items:
-        - name: Spravovaná identita pro prostředky Azure
-          href: event-hubs-managed-service-identity.md
-        - name: Řízení přístupu na základě rolí (Preview)
-          href: event-hubs-role-based-access-control.md
-        - name: Přehled ověřování a modelu zabezpečení
-          href: event-hubs-authentication-and-security-model-overview.md
+        - name: Autorizace
+          items:
+            - name: Autorizace přístupu ke službě Azure Event Hubs
+              href: authorize-access-event-hubs.md
+            - name: Autorizace přístupu pomocí Azure Active Directory
+              href: authorize-access-azure-active-directory.md
+            - name: Autorizace přístupu pomocí sdíleného přístupového podpisu
+              href: authorize-access-shared-access-signature.md
+        - name: Authentication
+          items:
+            - name: Ověřování pomocí Azure Active Directory
+              items:
+                - name: Ověřování pomocí spravované identity
+                  href: authenticate-managed-identity.md
+                - name: Ověření z aplikace
+                  href: authenticate-application.md
+            - name: Ověřování pomocí sdíleného přístupového podpisu
+              href: authenticate-shared-access-signature.md
         - name: Atributy zabezpečení
           href: event-hubs-security-attributes.md
     - name: Průvodce protokolem AMQP 1.0
@@ -166,6 +178,8 @@
           href: event-hubs-service-endpoints.md
         - name: Povolení bran firewall a integrace virtuálních sítí v oboru názvů Event Hubs
           href: event-hubs-tutorial-virtual-networks-firewalls.md
+        - name: Konfigurace klíčů spravovaných zákazníkem pro šifrování neaktivních uložených dat
+          href: configure-customer-managed-key.md
     - name: Řešení potíží
       items:
         - name: Výjimky

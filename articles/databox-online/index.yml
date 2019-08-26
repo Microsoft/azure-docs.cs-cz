@@ -1,39 +1,95 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Data Box – online přenos
+summary: Službu Azure Data Box Gateway a zařízení Azure Data Box Edge použijte pro velké datové přenosy prostřednictvím sítě. Pokud chcete odesílat data pro cloudovou archivaci nebo zotavení po havárii nebo zpracovávat data v cloudovém měřítku, zvolte Data Box Gateway. Pokud chcete před přenosem do Azure filtrovat, analyzovat a transformovat data, použijte Data Box Edge.
 metadata:
-  title: Dokumentace ke službám Data Box Gateway a Data Box Edge pro přenos dat po síti do Azure
-  description: 'Data Box Edge a Data Box Gateway můžete využít k vysoce výkonným přenosům dat přes síť do Azure, a to rychle, levně a spolehlivě.'
+  title: Dokumentace ke službě Azure Data Box – online přenos
+  description: Dokumentace ke službě Data Box Gateway a Data Boxu Edge pro velké datové přenosy prostřednictvím sítě do Azure
   services: databox
-  author: alkohli
-  manager: twooley
   ms.service: databox
   ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 03/25/2019
+  ms.collection: collection
+  author: alkohli
   ms.author: alkohli
-abstract:
-  description: 'Řada služeb Azure Data Box umožňuje přenášet stovky terabajtů dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Data Box Edge a Data Box Gateway použijte pro velké datové přenosy prostřednictvím sítě.<p>Pokud chcete odesílat data pro cloudovou archivaci nebo zotavení po havárii nebo zpracovávat data v cloudovém měřítku, zvolte Data Box Gateway.  Pokud chcete během přenosu do Azure filtrovat, analyzovat a transformovat data, použijte Data Box Edge.</p><p>V našich kurzech se dozvíte, jak se Data Box Gateway a Data Box Edge dají použít pro síťové přenosy dat.</p>'
-sections:
-  - title: Kurzy
-    items:
-      - type: paragraph
-        text: <b>Pro Data Box Gateway</b>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="data-box-gateway-deploy-prep">Příprava k nasazení služby Azure Data Box Gateway</a>
-          - html: <a href="data-box-gateway-deploy-provision-hyperv">Zřízení služby Azure Data Box Gateway v Hyper-V</a>
-          - html: <a href="data-box-gateway-deploy-provision-vmware">Zřízení služby Azure Data Box Gateway ve VMWare</a>
-          - html: '<a href="data-box-gateway-deploy-connect-setup-activate">Připojení, nastavení a aktivace služby Azure Data Box Gateway</a>'
-          - html: <a href="data-box-gateway-deploy-add-shares">Přenos dat pomocí služby Azure Data Box Gateway</a>
-      - type: paragraph
-        text: <b>Pro Data Box Edge</b>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="data-box-edge-deploy-prep">Příprava k nasazení služby Azure Data Box Edge</a>
-          - html: <a href="data-box-edge-deploy-install">Instalace služby Azure Data Box Edge</a>
-          - html: '<a href="data-box-edge-deploy-connect-setup-activate">Připojení, nastavení a aktivace služby Azure Data Box Edge</a>'
-          - html: <a href="data-box-edge-deploy-add-shares">Přenos dat pomocí služby Azure Box Edge</a>
-          - html: <a href="data-box-edge-deploy-configure-compute">Transformace dat pomocí služby Azure Box Edge</a>
+  ms.date: 08/15/2019
+  ms.openlocfilehash: f1b3c4f8473807b7bbffa2b40f1d3a89b6acff5a
+  ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/23/2019
+  ms.locfileid: "70012869"
+landingContent:
+- title: Řada služeb Azure Data Box
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Data Box Gateway?
+      url: data-box-gateway-overview.md
+    - text: Co je Data Box Edge?
+      url: data-box-edge-overview.md
+  - linkListType: architecture
+    links:
+    - text: Volba možností přenosu dat v Azure
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: Použití síťového nebo offline přenosu
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+  - linkListType: whats-new
+    links:
+    - text: Poznámky k verzi 1905
+      url: data-box-gateway-1905-release-notes.md
+- title: Požadavky a omezení
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Požadavky pro službu Data Box Gateway
+      url: data-box-gateway-system-requirements.md
+    - text: Požadavky pro Data Box Edge
+      url: data-box-edge-system-requirements.md
+    - text: Omezení služby Data Box Gateway
+      url: data-box-gateway-limits.md
+    - text: Omezení Data Boxu Edge
+      url: data-box-edge-limits.md
+- title: Nasazení
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Data Box Gateway
+      url: data-box-gateway-deploy-prep.md
+    - text: Data Box Edge
+      url: data-box-edge-deploy-prep.md
+- title: Vývoj
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Modul výpočetní funkce Edge v jazyce C#
+      url: data-box-edge-create-iot-edge-module.md
+  - linkListType: download
+    links:
+    - text: Ukázky – Jazyk C# pro Data Box Edge
+      url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
+- title: Spravovat
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Sdílené složky služby Data Box Gateway
+      url: data-box-gateway-manage-shares.md
+    - text: Sdílené složky Data Boxu Edge
+      url: data-box-edge-manage-shares.md
+    - text: Výpočetní funkce Edge
+      url: data-box-edge-manage-compute.md
+    - text: Síť výpočetních funkcí Edge
+      url: data-box-edge-extend-compute-access-modules.md
+- title: Řešení potíží
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Data Box Gateway
+      url: data-box-gateway-troubleshoot.md
+    - text: Data Box Edge
+      url: data-box-edge-troubleshoot.md
+    - text: Moduly výpočetních funkcí Edge
+      url: data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
+    - text: Vrácení nebo výměna Data Boxu Edge
+      url: data-box-edge-return-device.md
+    - text: Otevření lístku podpory
+      url: data-box-edge-contact-microsoft-support.md

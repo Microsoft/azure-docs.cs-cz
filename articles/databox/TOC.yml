@@ -95,8 +95,10 @@
               href: data-box-disk-deploy-set-up.md
             - name: 3 – Kopírování a ověření
               href: data-box-disk-deploy-copy-data.md
-            - name: '4 – Vrácení, odeslání, ověření'
+            - name: 4 – Vrácení
               href: data-box-disk-deploy-picked-up.md
+            - name: 5 – Ověření nahrání
+              href: data-box-disk-deploy-upload-verify.md
         - name: Koncepty
           items:
             - name: Kontrola požadavků

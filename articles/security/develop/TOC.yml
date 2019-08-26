@@ -3,8 +3,14 @@
 - name: Ukázkové aplikace
   expanded: true
   items:
-    - name: Webová aplikace v linuxovém kontejneru
-      href: secure-web-app.md
+    - name: Nováček v oblasti zabezpečeného vývoje
+      items:
+        - name: Webová aplikace v linuxovém kontejneru
+          href: secure-web-app.md
+    - name: Řešení dodržující oborové předpisy
+      items:
+        - name: Odvětví platebních karet
+          href: secure-pci-web-app.md
 - name: Koncepty
   expanded: true
   items:

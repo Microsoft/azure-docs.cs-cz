@@ -17,12 +17,16 @@
       href: tutorial-create-management-vm.md
     - name: Konfigurace protokolu Secure LDAP
       href: tutorial-configure-ldaps.md
+    - name: Konfigurace synchronizace hodnot hash hesel
+      href: tutorial-configure-password-hash-sync.md
 - name: Ukázky
   items:
     - name: Vytvoření instance Azure AD DS pomocí Azure Powershellu
       href: powershell-create-instance.md
 - name: Koncepty
   items:
+    - name: Obvyklé scénáře nasazení
+      href: scenarios.md
     - name: Jak funguje synchronizace Azure AD DS
       href: synchronization.md
     - name: Jak funguje synchronizace hodnot hash hesel
@@ -37,8 +41,6 @@
   items:
     - name: Konfigurace běžných nastavení
       items:
-        - name: Povolení synchronizace hodnoty hash hesel
-          href: active-directory-ds-getting-started-password-sync-synced-tenant.md
         - name: Konfigurace synchronizace s vymezeným oborem z Azure AD
           href: scoped-synchronization.md
         - name: Vytvoření organizační jednotky
@@ -47,8 +49,6 @@
           href: create-gmsa.md
     - name: Plán pro Azure AD DS
       items:
-        - name: Obvyklé scénáře
-          href: scenarios.md
         - name: Požadavky na virtuální síť
           href: network-considerations.md
     - name: Správa Azure AD DS

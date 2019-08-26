@@ -67,8 +67,6 @@
       href: templates-cloud-consistency.md
     - name: Režimy nasazení
       href: deployment-modes.md
-    - name: Odstranění prostředku
-      href: resource-group-delete.md
     - name: Deployment Manager
       items:
         - name: Přehled
@@ -186,6 +184,8 @@
             - name: Použití Azure Powershell
               displayName: 'open,delete,deploy,move,lock,tag'
               href: manage-resources-powershell.md
+        - name: Odstranění skupin prostředků a prostředků
+          href: resource-group-delete.md
         - name: Uzamčení prostředků
           href: resource-group-lock-resources.md
         - name: Ověřovací rozhraní API pro přístup k předplatným

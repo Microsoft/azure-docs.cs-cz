@@ -350,3 +350,5 @@
       href: reference-connect-adsynctools.md
     - name: Referenční informace k ADConnectivityTools
       href: reference-connect-adconnectivitytools.md
+    - name: msExchUserHoldPolicies a cloudMSExchUserHoldPolicies
+      href: reference-connect-msexchuserholdpolicies.md

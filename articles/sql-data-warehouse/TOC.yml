@@ -253,14 +253,20 @@
           href: sql-data-warehouse-connect-overview.md
         - name: Připojovací řetězce
           href: sql-data-warehouse-connection-strings.md
-        - name: Instalace rozšíření Visual Studio SSDT
-          href: sql-data-warehouse-install-visual-studio.md
-        - name: Dotazování pomocí rozšíření Visual Studio SSDT
-          href: sql-data-warehouse-query-visual-studio.md
-        - name: Dotazování pomocí aplikace SSMS
-          href: sql-data-warehouse-query-ssms.md
-        - name: Připojení a dotazování pomocí sqlcmd
-          href: sql-data-warehouse-get-started-connect-sqlcmd.md
+        - name: Nasazení a správa změn
+          items:
+            - name: Instalace rozšíření Visual Studio SSDT
+              href: sql-data-warehouse-install-visual-studio.md
+            - name: Integrace správy zdrojového kódu
+              href: sql-data-warehouse-source-control-integration.md
+        - name: Připojení a dotazování
+          items:
+            - name: Visual Studio SSDT
+              href: sql-data-warehouse-query-visual-studio.md
+            - name: SSMS
+              href: sql-data-warehouse-query-ssms.md
+            - name: sqlcmd
+              href: sql-data-warehouse-get-started-connect-sqlcmd.md
     - name: Správa úloh
       items:
         - name: Analýza úloh

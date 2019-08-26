@@ -41,6 +41,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-web-app">Webová aplikace v linuxovém kontejneru</a>
+          - html: <a href="/azure/security/develop/secure-pci-web-app">Odvětví platebních karet</a>
   - title: Koncepty
     items:
       - type: list
