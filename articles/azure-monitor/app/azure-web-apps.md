@@ -356,7 +356,7 @@ Následující tabulka obsahuje podrobnější vysvětlení toho, co tyto hodnot
 |`AppContainsDiagnosticSourceAssembly**:true`|Tato hodnota označuje, že rozšíření zjistilo `System.Diagnostics.DiagnosticSource` odkazy na v aplikaci a bude se přepínat.| Odeberte odkaz.
 |`IKeyExists:false`|Tato hodnota označuje, že klíč instrumentace není přítomen v AppSetting, `APPINSIGHTS_INSTRUMENTATIONKEY`. Možné příčiny: Hodnoty mohou být omylem odstraněny, zapomněli jste nastavit hodnoty ve skriptu automatizace atd. | Ujistěte se, že se nastavení nachází v nastavení aplikace App Service.
 
-### <a name="appinsightsjavascriptenabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression se nepodporují.
+### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression se nepodporují.
 
 Pokud používáte APPINSIGHTS_JAVASCRIPT_ENABLED = true v případech, kde je obsah kódovaný, může dojít k chybám jako: 
 
