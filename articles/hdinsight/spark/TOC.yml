@@ -311,8 +311,6 @@
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Selhání úlohy Apache Sparku – InvalidClassException
           href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: Pomalé úlohy Apache Sparku – listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: Pomalé úlohy Apache Sparku – kontejner úložiště
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: Výjimka IllegalArgumentException

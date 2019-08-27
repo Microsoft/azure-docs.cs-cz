@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Dokumentace k rozhraní API pro počítačové zpracování obrazu
 metadata:
-  title: Dokumentace k rozhraní API  – počítačové zpracování obrazu – Azure Cognitive Services | Microsoft Docs
+  title: Dokumentace k rozhraní API – Počítačové zpracování obrazu
+  titleSuffix: Azure Cognitive Services
   description: 'Naučte se využívat k počítačové zpracování obrazu ke zpracování obrázků a vrácení informací. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.'
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/26/2019
   ms.author: nitinme
