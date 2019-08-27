@@ -327,6 +327,8 @@
           href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
         - name: Protokol událostí Apache Sparku – RequestBodyTooLarge
           href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
+        - name: U Apache ZooKeeperu selhává kvorum
+          href: ./zookeeper-troubleshoot-quorum-fails.md
 - name: Referenční informace
   items:
     - name: Ukázky kódů

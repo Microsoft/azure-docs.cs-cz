@@ -121,6 +121,8 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: Konektor
+      href: /connectors/aci
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

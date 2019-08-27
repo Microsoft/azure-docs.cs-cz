@@ -3,15 +3,14 @@ documentType: LandingData
 title: Dokumentace k rozhraní API Bingu pro vyhledávání na webu
 metadata:
   document_id: 6111ada8-aec2-11e7-abc4-cec278b6b50a
-  title: 'Dokumentace k rozhraní API Bingu pro vyhledávání na webu – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs'
+  title: 'Dokumentace k rozhraní API pro Vyhledávání na webu Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API'
+  titleSuffix: Azure Cognitive Services
   description: 'Naučte se využívat rozhraní API Bingu pro vyhledávání na webu k vyhledávání webových stránek, obrázků, videí, zpráv a dalších informací.'
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-web-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 7/25/2019
   ms.author: nitinme

@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Dokumentace rozhraní API Bingu pro vyhledávání videí
 metadata:
-  title: 'Dokumentace k rozhraní API Bingu pro vyhledávání videí – kurzy, rychlá zprovoznění, reference k rozhraní API | Microsoft Docs'
+  title: 'Dokumentace k rozhraní API pro Vyhledávání videí Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API'
+  titleSuffix: Azure Cognitive Services
   description: Naučte se využívat rozhraní API Bingu pro vyhledávání videí pro hledání videí na webu.
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

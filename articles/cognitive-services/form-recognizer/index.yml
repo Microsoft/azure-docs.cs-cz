@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Dokumentace ke službě Rozpoznávání formulářů
 metadata:
-  title: Dokumentace k rozhraní API – Rozpoznávání formulářů – Azure Cognitive Services | Microsoft Docs
+  title: Dokumentace k rozhraní API – Rozpoznávání formulářů
+  titleSuffix: Azure Cognitive Services
   description: Naučíte se využívat Rozpoznávání formulářů k inteligentnímu extrahování dat klíč-hodnota z vašich formulářových dokumentů.
   services: cognitive-services
   author: PatrickFarley
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/16/2019
   ms.author: pafarley

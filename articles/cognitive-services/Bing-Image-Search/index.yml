@@ -3,15 +3,14 @@ documentType: LandingData
 title: Dokumentace k rozhraní API Bingu pro vyhledávání obrázků
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'Dokumentace k rozhraní API Bingu pro vyhledávání obrázků – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs'
+  title: 'Dokumentace k rozhraní API pro Vyhledávání obrázků Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API'
+  titleSuffix: Azure Cognitive Services
   description: 'Zjistěte, jak vyhledávat obrázky na webu pomocí rozhraní API Bingu pro vyhledávání obrázků.'
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-image-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 7/25/2019
   ms.author: nitinme

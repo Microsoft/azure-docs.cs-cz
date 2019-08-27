@@ -106,8 +106,6 @@
               href: users.md
             - name: Nastavení připojení virtuální sítě k privátnímu cloudu
               href: virtual-network-connection.md
-            - name: Úprava profilu uživatele
-              href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: Nastavení virtuálních počítačů VMware pro privátní cloud
           items:
             - name: Vytvoření virtuálního počítače v Azure
@@ -147,7 +145,7 @@
             - name: Migrace virtuálních počítačů úloh do privátního cloudu
               href: migrate-workloads.md
             - name: Zajištění vysoké dostupnosti aplikace ve VMware v Azure
-              href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+              href: ensuring-high-availability.md
             - name: Volba metody vyrovnávání zatížení
               href: load-balancers.md
         - name: Ekosystém VMware
@@ -156,8 +154,10 @@
               href: backup-workloads-veeam.md
             - name: Konfigurace privátního cloudu jako lokality pro zotavení po havárii s využitím Zerto
               href: disaster-recovery-zerto.md
+            - name: Konfigurace privátního cloudu jako lokality pro zotavení po havárii s využitím VMware SRM
+              href: disaster-recovery-site-recovery-manager.md
             - name: Průvodce řešením VMware Horizon
-              href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
+              href: horizon-guide.md
             - name: Konfigurace šifrování vSAN pro váš privátní cloud
               href: vsan-encryption.md
             - name: Optimalizace privátního cloudu pro Oracle RAC

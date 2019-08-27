@@ -3,15 +3,14 @@ documentType: LandingData
 title: Dokumentace k rozhraní API pro vizuální vyhledávání Bingu
 metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
-  title: 'Dokumentace k rozhraní API pro vizuální vyhledávání Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API | Microsoft Docs'
+  title: 'Dokumentace k rozhraní API pro Vizuální vyhledávání Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API'
+  titleSuffix: Azure Cognitive Services
   description: Naučte se používat rozhraní API pro vizuální vyhledávání Bingu k získání podrobných informací o obrázku.
   services: cognitive-services
   author: swhite-msft
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-visual-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/16/2019
   ms.author: scottwhi

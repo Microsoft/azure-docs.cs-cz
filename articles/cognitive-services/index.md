@@ -7,19 +7,158 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 07/22/2019
+ms.date: 08/21/2019
 ms.topic: hub-page
-ms.openlocfilehash: ad403b58a0f6aad37e9d8d547d269b9f45566559
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 13bd9d8c9b5c8337e616b315187242633fce8308
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442817"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971415"
 ---
 <div id="main" class="v2">
 <h1>Dokumentace ke službě Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které umožní vidět a slyšet vaše zákazníky, mluvit s nimi a porozumět jejich požadavkům prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.</p>
         <p> Každá služba má svou vlastní <a href="/azure/cognitive-services/language-support">jazykovou podporu</a> a <a href="/azure/cognitive-services/cognitive-services-and-machine-learning#service-requirements-for-the-data-model">požadavky na datový model</a>, od plně vyškoleného modelu až po plně přizpůsobitelný model. 
+
+
+<h2>Začínáme</h2>
+<ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
+        <li>
+            <a href="/azure/cognitive-services/welcome/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_overview.svg" alt="Learn about Azure Cognitive Services and how to use the different APIs to build intelligent apps." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Co jsou služby Cognitive Services?</h3>
+                                <p>Přečtěte si o službách Azure Cognitive Services a o tom, jak pomocí různých rozhraní API vytvářet inteligentní aplikace.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-and-machine-learning/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_guidelines.svg" alt="Learn where Azure Cognitive Services fits in with other Azure offerings for machine learning." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Cognitive Services a strojové učení</h3>
+                                <p>Projděte si víc o vztahu Azure Cognitive Services k ostatním nabídkám Azure pro strojové učení.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-apis-create-account/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/account-management.svg" alt="Learn how to create an Azure Cognitive Services resource." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Vytvoření prostředku služeb Cognitive Services</h3>
+                                <p>Přečtěte si, jak vytvořit prostředek služeb Azure Cognitive Services.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/language-support/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/mic-abc.svg" alt="Learn about the human languages supported by Cognitive Services APIs." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Podpora jazyků ve službách Cognitive Services</h3>
+                                <p>Přečtěte si informace o lidských jazycích podporovaných v rozhraních API služeb Cognitive Services.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-container-support/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/virtual-containers.svg" alt="Learn how to use Azure Cognitive Services in Containers." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Použití služeb Cognitive Services v kontejnerech</h3>
+                                <p>Přečtěte si, jak využít služby Azure Cognitive Services v kontejnerech.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/authentication/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/account-management.svg" alt="Learn how to authenticate API requests to Azure Cognitive Services." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Ověření žádosti</h3>
+                                <p>Naučte se ověřovat požadavky na rozhraní API pro Azure Cognitive Services.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="https://docs.microsoft.com/learn/browse/?products=azure-cognitive-services">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/grad-hat.svg" alt="Up your game with a module or learning path tailored to today's developer and technology masterminds and designed to prepare you for industry-recognized Microsoft certifications." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Microsoft Learn</h3>
+                                <p>Využijte moduly nebo studijní programy přizpůsobené způsobu myšlení současných špiček v oblasti vývoje a technologií navržené tak, aby vás připravily na uznávané certifikace Microsoftu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+</ul>
+
 
 
 <h2>Rozhraní API služeb Cognitive Services</h2>
@@ -29,7 +168,8 @@ ms.locfileid: "68442817"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Rozhraní API pro zpracování obrazu</h3>
+                        <h3>Obraz</h3>
+                        <h4>Využijte možnost rozpoznávat, identifikovat, indexovat a moderovat vaše obrázky, videa a obsah digitálního rukopisu a opatřovat je titulky.</h4><br>
                         <p><a href="/azure/cognitive-services/computer-vision/">Počítačové zpracování obrazu</a></p>
                         <p><a href="/azure/cognitive-services/Custom-Vision-Service/">Custom Vision Service</a></p>
                         <p><a href="/azure/cognitive-services/face/">Rozhraní API pro rozpoznávání tváře</a></p>
@@ -46,7 +186,8 @@ ms.locfileid: "68442817"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Rozhraní Speech API</h3>
+                        <h3>Řeč</h3>
+                        <h4>Převádějte řeč na text a text na přirozeně znějící řeč. Překládejte z jednoho jazyka do druhého a používejte možnost ověření a rozpoznání mluvčího.</h4><br>
                         <p><a href="/azure/cognitive-services/speech-service">Hlasové služby</a></p>
                         <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>Rozpoznávání mluvčího&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/speech/home"><span>Rozhraní API pro zpracování řeči Bingu&nbsp;<sup style="font-size:70%">– VYŘAZENÍ Z PROVOZU</sup></span></a></p>
@@ -61,7 +202,8 @@ ms.locfileid: "68442817"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Rozhraní API pro jazyk</h3>
+                        <h3>Jazyk</h3>
+                        <h4>Umožněte svým aplikacím, aby zpracovávaly přirozený jazyk s využitím předem sestavených skriptů, vyhodnocovaly subjektivní hodnocení a naučily se rozpoznávat, co uživatelé chtějí.</h4><br>
                         <p><a href="/azure/cognitive-services/immersive-reader"><span>Asistivní čtečka&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>                        <p><a href="/azure/cognitive-services/luis/">Language Understanding (LUIS)</a></p>
                         <p><a href="/azure/cognitive-services/qnamaker/index">QnA Maker</a></p>
                         <p><a href="/azure/cognitive-services/text-analytics/">Analýza textu</a></p>
@@ -76,7 +218,8 @@ ms.locfileid: "68442817"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Search API</h3>
+                        <h3>Search</h3>
+                        <h4>Přidejte do svých aplikací rozhraní API pro Vyhledávání Bingu a využijte možnosti pročesávat miliardy webů, obrázků, videí a novinek pomocí jediného volání rozhraní API.</h4><br>
                         <p><a href="/azure/cognitive-services/bing-news-search/">Vyhledávání zpráv Bingu</a></p>
                         <p><a href="/azure/cognitive-services/Bing-Video-Search/">Vyhledávání videí Bingu</a></p>
                         <p><a href="/azure/cognitive-services/bing-web-search/">Vyhledávání na webu Bingu</a></p>
@@ -98,6 +241,7 @@ ms.locfileid: "68442817"
                 <div class="card">
                     <div class="cardText">
                         <h3>Rozhraní API pro rozhodování</h3>
+                        <h4>Sestavujte aplikace, které zveřejňují doporučení pro informované a efektivní rozhodování.</h4><br>
                         <p><a href="/azure/cognitive-services/anomaly-detector/"><span>Detektor anomálií&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/content-moderator/">Content Moderator</a></p>
                         <p><a href="https://go.microsoft.com/fwlink/?linkid=2088324"><span>Personalizace&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
@@ -109,123 +253,6 @@ ms.locfileid: "68442817"
 </ul>
 </div>
 
-<h2>Začínáme</h2>
-<ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
-        <li>
-            <a href="/azure/cognitive-services/welcome/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_overview.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Co jsou služby Cognitive Services?</h3>
-                                <p>Přečtěte si o službách Azure Cognitive Services a o tom, jak pomocí různých rozhraní API vytvářet inteligentní aplikace.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/cognitive-services-and-machine-learning/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_get-started.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Cognitive Services a strojové učení</h3>
-                                <p>Projděte si víc o vztahu Azure Cognitive Services k ostatním nabídkám Azure pro strojové učení.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/cognitive-services-apis-create-account/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_get-started.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Vytvoření účtu služeb Cognitive Services</h3>
-                                <p>Přečtěte si, jak vytvořit účet služeb Azure Cognitive Services.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/authentication/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_guidelines.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Ověření žádosti</h3>
-                                <p>Naučte se ověřovat žádosti pro Azure Cognitive Services.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/language-support/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_guidelines.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Podpora jazyků ve službách Cognitive Services</h3>
-                                <p>Přečtěte si informace o lidských jazycích podporovaných v rozhraních API služeb Cognitive Services.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/cognitive-services-container-support/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_guidelines.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Použití služeb Cognitive Services v kontejnerech</h3>
-                                <p>Přečtěte si, jak využít služby Azure Cognitive Services v kontejnerech.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-</ul>
 <h2>Zprovoznění během 5 minut</h2>
 <ul class="cardsF panelContent singlePanelContent cols cols3" style="display:flex!important;">
     <li>
@@ -396,4 +423,48 @@ ms.locfileid: "68442817"
     </li>
 </ul>
 
-
+<h2>Další zdroje</h2>
+<ul class="cardsF panelContent singlePanelContent" style="display:flex!important;">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3></h3>
+                        <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+                        <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services">PowerShell</a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3></h3>
+                        <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/">Rozhraní REST API</a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3></h3>
+                        <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet">.Net</a></p>
+                        <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices">Go</a></p>
+                        <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable">Java</a></p>
+                        <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest">Node.js</a></p>
+                        <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python">Python</a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+</div>

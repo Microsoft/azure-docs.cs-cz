@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Dokumentace k Vyhledávání entit Bingu
 metadata:
-  title: 'Dokumentace k rozhraní API Bingu pro vyhledávání entit – kurzy, šablony rychlá zprovoznění, reference k rozhraní API | Microsoft Docs'
+  title: 'Dokumentace k rozhraní API pro Vyhledávání entit Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API'
+  titleSuffix: Azure Cognitive Services
   description: 'Naučte se používat rozhraní API Bingu pro vyhledávání entit k získání informací o lidech, místech nebo dalších definovaných subjektech. Kurzy vysvětlují, jak vytvářet aplikace, které tuto službu používají.'
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-entity-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

@@ -149,6 +149,8 @@
       items:
         - name: Architektura využívající technologii OPC Twin
           href: overview-opc-twin-architecture.md
+        - name: Architektura služby OPC Vault
+          href: overview-opc-vault-architecture.md
     - name: Návody
       items:
         - name: Propojená továrna
@@ -169,14 +171,14 @@
               href: howto-opc-twin-deploy-dependencies.md
         - name: OPC Vault
           items:
-            - name: Nasazení služby OPC Vault pro existující projekt
-              items:
-                - name: Zabezpečená komunikace klienta OPC a OPC PLC
-                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
-                - name: Zabezpečení aplikace serveru uživatelských agentů OPC a klienta uživatelských agentů OPC
-                  href: howto-opc-vault-deploy-existing-client-server-communication.md
-            - name: Nasazení služby OPC Vault od nuly
-              href: howto-opc-vault-deploy-scratch.md
+            - name: Nasazení služby OPC Vault
+              href: howto-opc-vault-deploy.md
+            - name: Správa služby OPC Vault
+              href: howto-opc-vault-manage.md
+            - name: Zabezpečení komunikace zařízení OPC UA s využitím služby OPC Vault
+              href: howto-opc-vault-secure.md
+            - name: Zabezpečený provoz služby OPC Vault
+              href: howto-opc-vault-secure-ca.md
         - name: Vydavatel OPC
           items:
             - name: Konfigurace vydavatele OPC

@@ -3,15 +3,14 @@ documentType: LandingData
 title: Dokumentace k rozhraní API pro kontrolu pravopisu Bingu
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'Dokumentace k rozhraní API pro kontrolu pravopisu Bingu – kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs'
+  title: 'Dokumentace k rozhraní API pro Kontrolu pravopisu Bingu – kurzy, reference k rozhraní API'
+  titleSuffix: Azure Cognitive Services
   description: 'Naučte se používat rozhraní API Bingu pro kontrolu pravopisu k získání navržených oprav pro textové dokumenty. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.'
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-spell-check
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi
