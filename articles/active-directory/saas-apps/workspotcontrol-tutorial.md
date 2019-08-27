@@ -176,7 +176,7 @@ V této části vytvoříte testovacího uživatele na webu Azure Portal.
 
     1. V **název** zadejte **BrittaSimon**.
   
-    1. V **uživatelské jméno** zadejte **brittasimon@* yourcompanydomain.extension* **. Zadejte například  **BrittaSimon@contoso.<i> </i>com**.
+    1. V **uživatelské jméno** zadejte **brittasimon@* yourcompanydomain.extension***. Zadejte například  **BrittaSimon@contoso.<i> </i>com**.
 
     1. Vyberte **zobrazit heslo** zaškrtávací políčko. Zapište si hodnotu, která se zobrazí **heslo** pole.
 
