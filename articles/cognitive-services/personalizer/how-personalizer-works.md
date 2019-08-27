@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: diberry
-ms.openlocfilehash: e55ccb508760c4473f71245c183948219f31985c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663914"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034380"
 ---
 # <a name="how-personalizer-works"></a>Jak služba Personalizace funguje
 
@@ -163,7 +163,7 @@ Můžete použít moduly pro doporučení s přizpůsobením:
 
 ## <a name="adding-content-safeguards-to-your-application"></a>Přidání ochrany obsahu do aplikace
 
-Pokud vaše aplikace umožňuje velké odchylky v obsahu zobrazeného uživatelům a některý z těchto obsahů může být pro některé uživatele nebezpečný nebo nevhodný, měli byste předem naplánovat, aby se zajistilo, že jsou zavedená správná ochranná opatření, aby se uživatelům zabránilo v nepřijatelném zobrazení. sušin. Nejlepším způsobem, jak implementovat ochranu, je: Nejlepším způsobem, jak implementovat ochranu, je:
+Pokud vaše aplikace umožňuje velké odchylky v obsahu zobrazeného uživatelům a některý z těchto obsahů může být pro některé uživatele nebezpečný nebo nevhodný, měli byste předem naplánovat, aby se zajistilo, že jsou zavedená správná ochranná opatření, aby se uživatelům zabránilo v nepřijatelném zobrazení. sušin. Nejlepším způsobem, jak implementovat ochranu, je:
     * Získejte seznam akcí, které je potřeba seřadit.
     * Vyfiltrujte ty, které nejsou pro cílovou skupinu životaschopné.
     * Tyto životaschopné akce je možné seřadit pouze.

@@ -49,6 +49,15 @@
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
 - name: Postup
   items:
+    - name: Starší verze komponent
+      href: legacy-components.md
+      items:
+        - name: Migrace z Azure Media Encoderu
+          href: migrate-azure-media-encoder.md
+          displayName: AME
+        - name: Migrace z Azure Media Encoderu pro Windows
+          href: migrate-windows-azure-media-encoder.md
+          displayName: WAME
     - name: Spravovat
       items:
         - name: Účty

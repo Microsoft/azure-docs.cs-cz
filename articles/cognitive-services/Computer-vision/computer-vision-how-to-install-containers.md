@@ -11,16 +11,17 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cbf199c391b49518bb595d7d1a0ed47147903a85
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564577"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034499"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalace a spuštění kontejnerů Rozpoznávání textu
 
-Rozpoznávání textu část pro počítačové zpracování obrazu je také k dispozici jako kontejner Dockeru. Umožňuje detekovat a extrahovat tištěný text z obrázků s různými povrchy a pozadími, jako je potvrzení a plakáty nebo vizitky různé objekty.  
+Rozpoznávání textu část pro počítačové zpracování obrazu je také k dispozici jako kontejner Dockeru. Umožňuje detekovat a extrahovat tištěný text z obrázků s různými povrchy a pozadími, jako je potvrzení a plakáty nebo vizitky různé objekty.
+
 > [!IMPORTANT]
 > Kontejner rozpoznat Text v současné době používá pouze angličtinu.
 
@@ -38,7 +39,7 @@ Před použitím Rozpoznávání textu kontejnerů musíte splnit následující
 
 ## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k registru kontejneru soukromého
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>Hostitelský počítač
 
@@ -46,16 +47,7 @@ Před použitím Rozpoznávání textu kontejnerů musíte splnit následující
 
 ### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
-V následující tabulce jsou popsány minimální a doporučené PROCESORy a paměťová jádra, která se mají přidělit pro každý Rozpoznávání textu kontejner.
-
-| Kontejner | Minimální | Doporučené |TPS<br>(Minimum, maximum)|
-|-----------|---------|-------------|--|
-|Rozpoznávání textu|1 jádro, 8 GB paměti, 0,5 TPS|2 jádra, 8 GB paměti, 1 TPS|0.5, 1|
-
-* Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
-* TPS-transakcí za sekundu
-
-Základní a paměť odpovídají `--cpus` nastavení a `--memory` , která se `docker run` používají jako součást příkazu.
+[!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí`docker pull`
 

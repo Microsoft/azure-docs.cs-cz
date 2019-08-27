@@ -179,6 +179,9 @@
         - name: Ladění hyperparametrů
           displayName: parameter
           href: how-to-tune-hyperparameters.md
+        - name: Použití služby Key Vault během trénování
+          displayName: secrets keyvault
+          href: how-to-use-secrets-in-runs.md
     - name: Sledování a monitorování experimentů
       items:
         - name: 'Spuštění, monitorování nebo zrušení běhů'
