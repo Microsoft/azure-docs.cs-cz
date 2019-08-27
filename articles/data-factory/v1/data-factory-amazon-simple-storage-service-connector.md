@@ -65,7 +65,7 @@ Propojená služba propojuje úložiště dat s datovou továrnou. Vytvoříte p
 
 | Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| accessKeyID |ID tajný přístupový klíč. |řetězec |Ano |
+| accessKeyID |ID tajný přístupový klíč. |string |Ano |
 | secretAccessKey |Vlastního klíče přístupu k tajným klíčům. |Šifrovaný tajný řetězec |Ano |
 
 >[!NOTE]
@@ -94,10 +94,10 @@ Oddíly, jako jsou struktura, dostupnost a zásady, jsou podobné pro všechny t
 
 | Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| bucketName |Název sektoru S3. |Řetězec |Ano |
-| key |Klíč objektu S3. |Řetězec |Ne |
-| prefix |Předpona klíče objektu S3. Objekty, jejichž klíče začínat touto předponou vybráno. Platí pouze v případě, že klíč je prázdný. |Řetězec |Ne |
-| version |Verze objektu S3, pokud je povolená Správa verzí S3. |Řetězec |Ne |
+| bucketName |Název sektoru S3. |String |Ano |
+| key |Klíč objektu S3. |String |Ne |
+| prefix |Předpona klíče objektu S3. Objekty, jejichž klíče začínat touto předponou vybráno. Platí pouze v případě, že klíč je prázdný. |String |Ne |
+| version |Verze objektu S3, pokud je povolená Správa verzí S3. |String |Ne |
 | format | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát Orc](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete kopírovat soubory mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. | |Ne |
 | compression | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **Gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně jsou: **Optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). | |Ne |
 
@@ -221,7 +221,7 @@ Ukázka kopíruje data z Amazon S3 do objektu blob Azure každou hodinu. Vlastno
 
 ### <a name="amazon-s3-input-dataset"></a>Vstupní datová sada Amazon S3
 
-Nastavení **"External": hodnota true** informuje službu Data Factory, že datová sada je externí pro datovou továrnu. Nastavte tuto vlastnost na true pro vstupní datovou sadu, která není vytvořená aktivitou v kanálu.
+Nastavení **"External": true** informuje službu Data Factory, že datová sada je externí pro datovou továrnu. Nastavte tuto vlastnost na true pro vstupní datovou sadu, která není vytvořená aktivitou v kanálu.
 
 ```json
     {
